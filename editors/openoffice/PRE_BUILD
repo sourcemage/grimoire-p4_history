@@ -1,4 +1,4 @@
-if ! test "`gaze installed bison`" = "1.875a" ; then
+if ! [[ "$(installed_version bison)" = "1.875a" ]] ; then
         mk_source_dir $SOURCE_DIRECTORY3 &&
         cd $BUILD_DIRECTORY 		 &&
         unpack $SOURCE3 ${MD5[2]} 	 &&
