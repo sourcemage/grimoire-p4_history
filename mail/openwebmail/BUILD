@@ -5,11 +5,15 @@ if  spell_installed  "apache";     then
   LOC="/usr/share/httpd"
 # same, but to be used withing search/replace regexp
   SLOC="\/usr\/share\/httpd\/htdocs"
+elif  spell_installed  "apache-mod_ssl";  then
+  LOC="/usr/share/httpsd"
+  SLOC="\/usr\/share\/httpsd\/htdocs"
 elif  spell_installed  "apache2";  then
   LOC="/usr/share/apache2"
   SLOC="\/usr\/share\/apache2"
 fi
 
+prepare_install
 
 # move docs
 mkdir /usr/doc/openwebmail 1>/dev/null 2>&1
