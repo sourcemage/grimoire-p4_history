@@ -1,10 +1,16 @@
 (
 
-  MAKE_OPTS="DESTDIR=/usr/bin  PIXDIR=/usr/share/althea  DOCDIR=/usr/doc/althea"
+  sedit  's!local/!!'  Makefile  &&
+  sedit  "s/^DEBUGFLAGS =/& $CFLAGS -Wno-deprecated/"  Makefile  &&
+  sedit  's/-g//'  Makefile  &&
+  sedit  '/-r Documentation/d'  Makefile  &&
 
-  sedit  "s:CFLAGS = :CFLAGS = $CFLAGS :"  Makefile
-  make  $MAKE_OPTS  &&
-  prepare_install   &&
-  make    install  $MAKE_OPTS
+  sedit  '8s/^$/using namespace std;/'  tolower.h  &&
+  sedit  '11s/^$/using namespace std;/'  MIME.h  &&
+  sedit  '94s/unsigned//'  MIME.cpp  &&
 
-) > $C_FIFO 2>&1
+  make  &&
+  prepare_install  &&
+  make  install
+
+)  >  $C_FIFO  2>&1
