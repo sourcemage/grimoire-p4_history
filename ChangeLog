@@ -1,6 +1,13 @@
 2004-01-29 Eric Sandall <eric@sandall.us>
 	* Moved z-video/xvid to devel grimoire video-libs/xvid
 
+2004-01-27 hgg <hgreig@bigpond.net.au>
+	* bash: spell has changed to now source files from /etc/profile.d/*.sh
+	The spells that used to add variables to /etc/profile have been modified to install /etc/profile.d/*.sh
+	files now, but to avoid having to recast all of these the bash spell will attempt to convert your current
+	/etc/profile and will back it up to /etc/profile.d/profile. It would be extremely wise to check it has
+	worked before logging out or rebooting
+
 2004-01-08 hgg <hgreig@bigpond.net.au>
 	* libnjb-cvs removed, dispel libnjb-cvs, then cast -r -c libnjb to choose cvs version if wanted
 
