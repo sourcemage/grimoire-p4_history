@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/krb5-1.2.8.patch &&
-
   cd  src
   ./configure  --enable-dns-for-kdc    \
                --enable-dns-for-realm  \
