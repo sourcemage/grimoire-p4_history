@@ -1,27 +1,32 @@
 # db is optional, but we use it as a recommended default backend
-depends db '--enable-bdb' 'Berkeley DB is recommended default back-end' &&
+depends  db  "--enable-bdb"  "Berkeley DB is recommended default back-end"  &&
 
-optional_depends readline                    \
-                 '--with-readline'           \
-                 '--without-readline'        \
-                 'for readline intergration' &&
-optional_depends bash                \
-                 '--enable-shell'    \
-                 '--disable-shell'   \
-                 'for shell backend' &&
-optional_depends unixODBC          \
-                 '--enable-sql'    \
-                 '--disable-sql'   \
-                 'for SQL backend' &&
-optional_depends openssl               \
-                 '--with-tls'          \
-                 '--without-tls'       \
-                 'for SSL/TLS support' &&
-#optional_depends perl               \
-#                 '--enable-perl'    \
-#                 '--disable-perl'   \
-#                 'for perl backend' &&
-optional_depends cyrus-sasl                \
-                 '--with-cyrus-sasl'       \
-                 '--without-cyrus-sasl'    \
-                 'for SASL authentication'
+optional_depends  readline                     \
+                  "--with-readline"            \
+                  "--without-readline"         \
+                  "for readline intergration"  &&
+
+optional_depends  bash                 \
+                  "--enable-shell"     \
+                  "--disable-shell"    \
+                  "for shell backend"  &&
+
+optional_depends  unixodbc           \
+                  "--enable-sql"     \
+                  "--disable-sql"    \
+                  "for SQL backend"  &&
+
+optional_depends  openssl                \
+                  "--with-tls"           \
+                  "--without-tls"        \
+                  "for SSL/TLS support"  &&
+
+#optional_depends  perl                \
+#                  "--enable-perl"     \
+#                  "--disable-perl"    \
+#                  "for perl backend"  &&
+
+optional_depends  cyrus-sasl                 \
+                  "--with-cyrus-sasl"        \
+                  "--without-cyrus-sasl"     \
+                 "for SASL authentication"
