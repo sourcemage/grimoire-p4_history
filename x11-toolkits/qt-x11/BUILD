@@ -46,6 +46,10 @@ fi                                                  &&
   make install                                     &&
 
   ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so &&
-  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so
+  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so  &&
+
+  mkdir -p ${INSTALL_ROOT}/etc/profile.d/   &&
+  install -m 0644 $SCRIPT_DIRECTORY/qt.sh   \
+           ${INSTALL_ROOT}/etc/profile.d/
 
 ) > $C_FIFO 2>&1
