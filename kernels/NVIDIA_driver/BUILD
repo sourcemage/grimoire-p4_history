@@ -13,7 +13,7 @@
 
   cd usr/src/nv                 &&
 
-  # We look at the Makefile in the kernel sources for the Version Number!
+  ### We look at the Makefile in the kernel sources for the Version Number!
   KPATCHLEVEL=$(head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*= //')
 
   if [[ $KPATCHLEVEL == 5 ]]  || [[ $KPATCHLEVEL == 6 ]]
@@ -23,12 +23,14 @@
       patch  -p0  <  $SOURCE_CACHE/$SOURCE3   # Workaround for stupid stupid stupid people who dont update versions.
     fi
     ln  -s  Makefile.kbuild Makefile
-  fi                            &&
-#please no-one remove this???
-  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION &&
+  fi                                                        &&
+  ### please no-one remove this
+  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION            &&
 
-  prepare_install               &&
-  export IGNORE_CC_MISMATCH=1   &&
+  prepare_install                                           &&
+  mkdir -p ${INSTALL_ROOT}/usr/X11R6/lib/modules/drivers    &&
+  mkdir -p ${INSTALL_ROOT}/usr/X11R6/lib/modules/extensions &&
+  export IGNORE_CC_MISMATCH=1                               &&
   make install
 
 ) > $C_FIFO 2>&1
