@@ -1,0 +1,16 @@
+           SPELL=eclipse
+         VERSION=2.1.2
+          SOURCE=${SPELL}-sourceBuild-srcIncluded-$VERSION.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION 
+   SOURCE_URL[0]=ftp://download.eclipse.org/R-${VERSION}-200311030802/${SOURCE}
+          MD5[0]=24fc3bf3be3d3f3e306786ab7b13bcce
+        WEB_SITE=http://www.eclipse.org/
+      MAINTAINER="embiopterid@yahoo.com"
+         ENTERED=200301211
+         UPDATED=200301211
+      LICENSE[0]=CPL
+      ACTIVE_FTP="on"
+           SHORT="Eclipse is an attempt to provide open platform for ide-style application development tools; written in java, pluggin architecture."
+cat << EOF
+The eclipse project for the development of software design tools was originally formed by Borland, IBM, MERANT, QNX Software Systems, Rational Software3, Red Hat, SuSE, TogetherSoft3 and Webgain2, and was later joined by other major companies.  The licensing scheme is intended to encourage the development of integrated third party software which may or may not be open source and/or free.  The program actually exists as a core (they call it a microkernel) with functionality added by pluggins.  It has support for several languages, including java and c++ and has extensions that allow UML round trip engineering.  It also is supposed to be able to use system development tools, like debuggers, compilers, tracers, etc.
+EOF
