@@ -8,18 +8,6 @@ support you need to recompile your kernel with ACPI support enabled.
 EOF
 fi
 
-if [ ! -a /etc/init.d/acpid.init ] ; then
-	cp $SCRIPT_DIRECTORY/acpid.init /etc/init.d/acpid.init
-fi
-
-chmod a+x /etc/init.d/acpid.init
-
-for runlev in 2 3 4 5; do
-  cd /etc/rc${runlev}.d
-  ln -s ../init.d/acpid.init S44acpid
-  ln -s ../init.d/acpid.init K66acpid
-done
-
 if [ ! -d /etc/acpi ] ; then
 	mkdir /etc/acpi
 	mkdir /etc/acpi/events
@@ -54,4 +42,3 @@ else
 	fi
 
 fi
-
