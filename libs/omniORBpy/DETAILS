@@ -1,15 +1,15 @@
            SPELL=omniORBpy
-         VERSION=2.3
+         VERSION=2.4
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=$SOURCEFORGE_URL/omniorb/$SOURCE
-          MD5[0]=ba352541a7100ec0c44904f0b8b35645
+          MD5[0]=fac9b46b1e7ef40ee459f2e544402703
         WEB_SITE=http://omniorb.sourceforge.net/
          ENTERED=20030304
          UPDATED=20030304
-      MAINTAINER=c_mertes@bigfoot.de
       LICENSE[0]=LGPL
-           SHORT="omniORB is a robust high performance CORBA ORB for C++ and Python."
+       BUILD_API=2
+           SHORT="Robust high performance CORBA ORB for Python."
 cat << EOF
 omniORB is a robust, high-performance, multi-threaded CORBA 2 ORB,
 developed by AT&T Laboratories Cambridge. The native transport is
