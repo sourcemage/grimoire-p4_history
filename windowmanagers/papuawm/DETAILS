@@ -1,15 +1,16 @@
            SPELL=papuawm
-         VERSION=20040303
-          SOURCE="${SPELL}_snap-${VERSION}.tar.bz2"
-SOURCE_DIRECTORY="${BUILD_DIRECTORY}/${SPELL}_snap-${VERSION}"
-      SOURCE_URL="http://lillesvin.linux.dk/papuawm/${SOURCE}"
+         VERSION=0.4
+          SOURCE=PapuaWM-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+      SOURCE_URL=http://www.daimi.au.dk/~pg/$SPELL/$SOURCE
          ENTERED=20040308
-         UPDATED=20040308
-          MD5[0]=96f211ca56a1c3de3506cca042c1e18a
-      LICENSE[0]="GPL"
-      MAINTAINER="Anders K. Madsen <lillesvin@tiscali.dk>"
-        WEB_SITE="http://papuaos.org/papuawm"
+         UPDATED=20040409
+          MD5[0]=583660401ff44ffbe8a605f1823a5fa2
+      LICENSE[0]=GPL
+      MAINTAINER=hnaz@we-are-root.org
+        WEB_SITE=http://papuaos.org/papuawm
            SHORT="PapuaWM is a window manager based on EvilWM --- simplicity is the goal"
+
 cat << EOF
 PapuaWM is a very simple window manager based on EvilWM, but it's
 configurable, flexible and VERY light.
