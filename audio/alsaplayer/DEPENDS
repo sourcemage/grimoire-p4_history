@@ -1,14 +1,49 @@
 depends  gtk+      &&
 
-optional_depends  "nas"            \
-                  "--enable-nas"   \
-                  "--disable-nas"  \
-                  ""               &&
+#optional_depends  "nas"            \
+#                  "--enable-nas"   \
+#                  "--disable-nas"  \
+#                  ""               &&
 
-optional_depends  "alsa-lib"		 \
-		  ""			 \
-		  ""			 \
-		  "for ALSA support"      &&
+optional_depends  "flac"                           \
+                  "--enable-flac"                  \
+                  "--disable-flac"                 \
+                  "for flac lossless audio codec"  &&
+
+optional_depends  "mad"                   \
+                  "--enable-mad"          \
+                  "--disable-mad"         \
+                  "for MAD MPEG decoder"  &&
+
+optional_depends  "id3lib"            \
+                  "--enable-id3lib"   \
+                  "--disable-id3lib"  \
+                  "for ID3 tags"      &&
+
+optional_depends  "xosd"                \
+                  "--enable-xosd"       \
+                  "--disable-xosd"      \
+                  "for XOSD interface"  &&
+
+optional_depends  "jack"                               \
+                  "--enable-jack"                      \
+                  "--disable-jack"                     \
+                  "for JACK low-latency audio server"  &&
+
+optional_depends  "libsndfile"           \
+                  "--enable-sndfile"     \
+                  "--disable-sndfile"    \
+                  "for sndfile support"  &&
+
+optional_depends  "alsa-lib"          \
+                  "--enable-alsa"     \
+                  "--disable-alsa"    \
+                  "for ALSA support"  &&
+
+optional_depends  "cdparanoia"                   \
+                  "--enable-cdda"                \
+                  "--disable-cdda"               \
+                  "for CDDA extraction support"  &&
 
 optional_depends  "audiofile"            \
                   "--enable-audiofile"   \
