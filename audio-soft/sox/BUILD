@@ -8,6 +8,8 @@
 	./configure	$OPTS	&&
 	make			&&
 	prepare_install		&&
-	make install
+	make install            &&
+        make install-play       &&
+        make install-lib
 
 ) > $C_FIFO 2>&1
