@@ -1,7 +1,7 @@
 (
   export PVM_HOME=/usr                        &&
   export F77=g77                              &&
-  export PVM_SRC=$SOURCE_DIRECTORY/pvm3       &&
+  export PVM_SRC=$SOURCE_DIRECTORY            &&
   export PVM_ROOT=$PVM_SRC                    &&
   cd ${PVM_SRC}                               &&
   make clean                                  &&
