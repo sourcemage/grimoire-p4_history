@@ -1,20 +1,20 @@
-diff -urpN udev-039.orig/Makefile udev-039/Makefile
---- udev-039.orig/Makefile	2004-10-16 10:39:53.583371440 -0700
-+++ udev-039/Makefile	2004-10-16 10:40:11.912584976 -0700
-@@ -407,8 +407,7 @@ uninstall-man:
+diff -uNr udev-048.orig/Makefile udev-048/Makefile
+--- udev-048.orig/Makefile	2004-12-10 00:45:48.224822032 +0100
++++ udev-048/Makefile	2004-12-10 00:45:48.224822000 +0100
+@@ -421,8 +421,7 @@
  	- rm $(mandir)/man8/udevd.8
  	- rm $(mandir)/man8/udevsend.8
  
--install: install-initscript install-config install-man install-dev.d all
+-install: install-config install-man install-dev.d all
 -	$(INSTALL) -d $(DESTDIR)$(udevdir)
 +install: install-man install-dev.d all
  	$(INSTALL) -d $(DESTDIR)$(hotplugdir)
  	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
  	$(INSTALL_PROGRAM) -D $(DAEMON) $(DESTDIR)$(sbindir)/$(DAEMON)
-@@ -419,10 +418,6 @@ install: install-initscript install-conf
+@@ -431,10 +430,6 @@
+ 	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
  	- ln -f -s $(sbindir)/udev $(DESTDIR)$(sbindir)/$(STARTER)
  	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
- 	- ln -f -s $(sbindir)/$(WAIT) $(DESTDIR)$(hotplugdir)/05-wait_for_sysfs.hotplug
 -ifndef DESTDIR
 -	- killall $(DAEMON)
 -	- rm -rf $(udevdb)
