@@ -1,0 +1,23 @@
+2004-10-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added WEB_SITE
+	  Thunderbird uses the MOZILLA license, not "Thunderbird"
+	  Check for CRYPTO and add enigmail 0.86.1 and ipc 1.1.1
+	* DEPENDS: Added dependency on libmng (for system mng in BUILD)
+	  Added dependency on g++, freetype2, and zip
+	  Added optional dependencies on openldap, libart_lgpl, and gnome-vfs2
+	  Formatted to Guru Handbook
+	* BUILD: Cleaned up formatting
+	  Moved configure flags for gtk+2, libmng, libpng, zlib, and jpeg to DEPENDS
+	  Check for CRYPTO and apply flag to OPTS
+	  Make --enable-strip use our LDFLAGS
+	  Apply freetype patch in PRE_BUILD
+	  Added MOZ_THUNDERBIRD=1 to make
+	* INSTALL: Removed (was default_install)
+	* PREPARE: Added to query for crypto
+	* PRE_BUILD: Unpack enigmail if wanted
+	  Apply patches here
+	* HISTORY: Made history +x
+
+2004-10-28 Thomas Houssin <Thomas.Houssin@gmail.com>
+	* Initial creation
+
