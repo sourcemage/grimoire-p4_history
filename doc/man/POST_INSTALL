@@ -1,4 +1,5 @@
 if  spell_installed  less; 
     then
     sedit "s/PAGER		\/bin\/less -is/PAGER		\/bin\/less -isR/" /usr/share/misc/man.conf
-fi
+fi  &&
+/usr/sbin/makewhatis
