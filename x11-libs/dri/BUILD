@@ -26,9 +26,9 @@ fi &&
   mkdir -p /lib/modules/`uname -r`/kernel/drivers/char/drm &&
 
 if [ "`uname -r | cut -c-3`" == "2.6" ]; then
-  cp $SOURCE_DIRECTORY/xc-Trunk/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/*.ko /lib/modules/`uname -r`/kernel/drivers/char/drm/
+  cp $SOURCE_DIRECTORY/drm-Trunk/linux/drm/*.ko /lib/modules/`uname -r`/kernel/drivers/char/drm/
 else
-  cp $SOURCE_DIRECTORY/xc-Trunk/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/*.o /lib/modules/`uname -r`/kernel/drivers/char/drm/
+  cp $SOURCE_DIRECTORY/drm-Trunk/linux/drm/*.o /lib/modules/`uname -r`/kernel/drivers/char/drm/
 fi &&
 depmod -a
 
