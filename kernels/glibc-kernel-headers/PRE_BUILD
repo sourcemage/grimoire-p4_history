@@ -3,5 +3,7 @@ if [ "$KERN" = "2.4" ]; then
   cd $SOURCE_DIRECTORY  &&
   unpack $SOURCE ${MD5[0]}
 else
-  default_pre_build
+  default_pre_build                                &&
+  cd  $SOURCE_DIRECTORY                            &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/config.h.patch
 fi
