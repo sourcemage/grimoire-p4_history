@@ -1,9 +1,6 @@
+# Mozilla
 mk_source_dir $SOURCE_DIRECTORY &&
 unpack $SOURCE ${MD5[0]} &&
-
-# Galeon patch
-cd $SOURCE_DIRECTORY/mailnews/compose/src/ &&
-patch -p1 < $SCRIPT_DIRECTORY/mailperf-1.3a.patch &&
 
 # Enigmail extensions
 cd $SOURCE_DIRECTORY/extensions/ &&
