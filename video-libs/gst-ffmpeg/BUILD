@@ -1,3 +1,3 @@
-# needs -O3 to compile the mmx code
-export CFLAGS="$CFLAGS -O3"  &&
+# needs -O3 and -fomit-frame-pointer to compile the mmx code with gcc 3.4.x
+CFLAGS="$CFLAGS -O3 -fomit-frame-pointer"  &&
 default_build
