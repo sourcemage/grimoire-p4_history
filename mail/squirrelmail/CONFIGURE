@@ -1,21 +1,4 @@
 message  "${MESSAGE_COLOR}Remember that the default IMAP port in pine it's 220.${DEFAULT_COLOR}"
 
-if ! grep -q "BACKUP=" $SPELL_CONFIG; then
-  if query "Backup $SPELL config on dispel ?"  y
-    then  echo   "BACKUP=y"  >>  $SPELL_CONFIG
-    else  echo   "BACKUP=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if  !  grep  -q  "ORDER="  $SPELL_CONFIG;  then
-  if    query  "Sort users by lastname (instead of name) ? "  n
-    then  echo   "ORDER=y"  >>  $SPELL_CONFIG
-    else  echo   "ORDER=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-
-
-
-
-
+config_query  SQUIRRELMAIL_BACKUP  "Backup config on dispel?"              y  &&
+config_query  SQUIRRELMAIL_ORDER   "Sort by lastname (instead of first)?"  n
