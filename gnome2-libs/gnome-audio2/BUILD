@@ -1,13 +1,14 @@
 (
 
-  prepare_install  &&
-  cd sounds
-  for I in *.wav */*.wav ; do \
-     mkdir -p ${INSTALL_ROOT}/usr/share/sounds/`dirname $$I`; \
-     installl -c -m 444 $$I $(prefix)/share/sounds/$$I; \
-  done
-  cd ${INSTALL_ROOT}/usr/share/sounds
-  ln -sfn startup3.wav login.wav
+  prepare_install                                                        &&
+  cd sounds                                                              &&
+  install -d -m 755 ${INSTALL_ROOT}/usr/share/sounds/panel               &&
+  install -d -m 755 ${INSTALL_ROOT}/usr/share/sounds/gtk-events          &&
+  install -m 444 panel/*.wav ${INSTALL_ROOT}/usr/share/sounds/panel      &&
+  install -m 444 panel/*.wav ${INSTALL_ROOT}/usr/share/sounds/gtk-events &&
+  install -m 444 *.wav ${INSTALL_ROOT}/usr/share/sounds                  &&
+  cd ${INSTALL_ROOT}/usr/share/sounds                                    &&
+  ln -sfn startup3.wav login.wav                                         &&
   ln -sfn shutdown1.wav logout.wav
 
 ) > $C_FIFO 2>&1
