@@ -12,7 +12,11 @@
   mkdir -p            /usr/bin  &&
   cp Player/swfplayer /usr/bin/ &&
 
-  mkdir -p             /usr/lib/mozilla/plugins  &&
-  cp Plugin/npflash.so /usr/lib/mozilla/plugins/
+  mkdir -p             /usr/lib/mozilla/plugins   &&
+  cp Plugin/npflash.so /usr/lib/mozilla/plugins/  &&
+
+  # Install libraries                         
+  cp  Lib/flash.h     /usr/include  &&
+  cp  Lib/libflash.a  /usr/lib
 
 ) >$C_FIFO 2>&1
