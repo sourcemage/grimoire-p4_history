@@ -55,10 +55,16 @@ create_defaults()
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
+		persistent_remove MAKEMODE
+		persistent_save
+		persistent_load
 		mode="oldktree"
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ${SPELL_CONFIG}.p
+		persistent_load
+		persistent_remove MAKEMODE
+		persistent_save
 		persistent_load
 		mode="newktree"
 	else
@@ -643,24 +649,22 @@ create_details()
 					LATEST*)
 						. $patchesdir/*/${!patch}
 						echo "PATCH[${counter}]=\$${patch}"
-						echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
-						echo -n $counter
-						echo ']}'
-						echo "SOURCE${counter}=\$source"
-						echo "MD5[${counter}]=\$md5sum"
-						echo "SOURCE${counter}_URL=\${source_url}"
 						;;
 					*)
 						. $patchesdir/*/${patch}
 						echo "PATCH[${counter}]=${patch}"
-						echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
-						echo -n $counter
-						echo ']}'
-						echo "SOURCE${counter}=\$source"
-						echo "MD5[${counter}]=\$md5sum"
-						echo "SOURCE${counter}_URL=\$source_url"
 						;;
 				esac
+				echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
+				echo -n $counter
+				echo ']}'
+				echo "SOURCE${counter}=\$source"
+				echo "MD5[${counter}]=\$md5sum"
+				echo "SOURCE${counter}_URL=\$source_url"
+				if [[ "$counter" == "1" ]]
+				then
+					echo 'PATCHVER=${patchversion}'
+				fi
 				counter="`expr $counter + 1`"
 			done
 			if [[ $appliedkernels ]]
