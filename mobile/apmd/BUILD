@@ -7,6 +7,14 @@ leave_config()  {
 (
   sedit  "s/-O /$CFLAGS /"  Makefile
 
+  # If xfree86 is not installed, do not compile xapm (as it would 
+  # fail and break spell), Bug #491
+  if !  spell_installed  "xfree86";  then
+    sedit  's/EXES=apm apmd xapm apmsleep/EXES=apm apmd apmsleep/'     Makefile  &&
+    sedit  's/install        xapm            ${PREFIX}/bin//'          Makefile  &&
+    sedit  's/install -m 644 xapm.1          ${MANDIR}/man1/xapm.1//'  Makefile
+  fi
+
   make                               &&
   prepare_install                    &&
   leave_config                       &&
