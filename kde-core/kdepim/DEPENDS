@@ -63,8 +63,9 @@ then
 fi  &&
 
 
-config_query PALM_PILOT  \
-             "Would you like to enable Palm Pilot support in KDE-PIM?" y
+config_query  PALM_PILOT                                                    \
+    "Would you like to enable Palm compatible PDAs support in KDE-PIM?"  y  &&
+
 if [ $PALM_PILOT == "y" ]
 then
   optional_depends  pilot-link                        \
