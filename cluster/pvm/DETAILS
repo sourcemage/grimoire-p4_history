@@ -1,0 +1,17 @@
+           SPELL=pvm
+         VERSION=3.4.3
+          SOURCE=$SPELL$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.netlib.org/pvm3/$SOURCE
+   SOURCE_URL[1]=http://online-no.linux.tucows.com/files/$SOURCE
+        WEB_SITE=http://www.epm.ornl.gov/pvm/
+         ENTERED=20020122
+         UPDATED=20020122
+           SHORT="network-hooked computers used as a large parallel computer."
+      MAINTAINER=zoran@idi.ntnu.no
+cat << EOF
+PVM (Parallel Virtual Machine) is a software package that permits a heterogeneous
+collection of Unix and/or NT computers hooked together by a network to be used as 
+a single large parallel computer. Thus large computational problems can be solved 
+more cost effectively by using the aggregate power and memory of many computers.
+EOF
