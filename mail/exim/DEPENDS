@@ -1,21 +1,21 @@
 depends  db    &&
 depends  gawk  &&
 
-message  "Exim can use either hc-cron or or fcron"  \
-         "to periodically attempt to resend undelivered mail."  &&
+message  "Exim can use either hc-cron or or fcron"             \
+         "to periodically attempt to resend undelivered mail"  &&
 
 if  spell_ok  hc-cron
 then
-  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  y
+  config_query  EXIM_HCCRON  "Attempt to resend undelivered via hc-cron?"  y
 else
-  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  n
+  config_query  EXIM_HCCRON  "Attempt to resend undelivered via hc-cron?"  n
 fi  &&
 
 if  spell_ok  fcron
 then
-  config_query  FCRON   "Attempt to resend undelivered via fcron?"  y
+  config_query  EXIM_FCRON  "Attempt to resend undelivered via fcron?"  y
 else
-  config_query  FCRON   "Attempt to resend undelivered via fcron?"  n
+  config_query  EXIM_FCRON  "Attempt to resend undelivered via fcron?"  n
 fi  &&
 
 # The spell only mentioned xfree86, haven't tested with others
@@ -26,73 +26,120 @@ if  spell_ok  xfree86        ||
     spell_ok  xfree86-libs   ||
     spell_ok  xorg
 then
-  config_query  XFREE86  "Use XFree86 for exim monitor?"  y
+  config_query  EXIM_XFREE86  "Build X11 exim monitor?"  y
 else
-  config_query  XFREE86  "Use XFree86 for exim monitor?"  n
+  config_query  EXIM_XFREE86  "Build X11 exim monitor?"  n
 fi  &&
 
 if  spell_ok  tcp_wrappers
 then
-  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" y
+  config_query  EXIM_TCPWRAPPERS  "Use tcp_wrappers for controlling access?"  y
 else
-  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" n
+  config_query  EXIM_TCPWRAPPERS  "Use tcp_wrappers for controlling access?"  n
 fi  &&
 
-#if  spell_ok  mysql
-#then
-#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  y
-#else
-#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  n
-#fi  &&
-message  "${MESSAGE_COLOR}MySQL support is currently broken${DEFAULT_COLOR}"  &&
-persistent_add  MYSQL  &&
-MYSQL="n"  &&
+if  spell_ok  mysql
+then
+  config_query  EXIM_MYSQL  "Use mysql for SQL lookup tables?"  y
+else
+  config_query  EXIM_MYSQL  "Use mysql for SQL lookup tables?"  n
+fi  &&
+
+if  spell_ok  postgresql
+then
+  config_query  EXIM_PGSQL  "Use postgresql for SQL lookup tables?"  y
+else
+  config_query  EXIM_PGSQL  "Use postgresql for SQL lookup tables?"  y
+fi  &&
 
 if  spell_ok  linux-pam
 then
-  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  y
+  config_query  EXIM_LINUXPAM  "Use linux-pam For PAM authentication?"  y
 else
-  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  n
+  config_query  EXIM_LINUXPAM  "Use linux-pam For PAM authentication?"  n
 fi  &&
 
 if  spell_ok  openldap
 then
-  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  y
+  config_query  EXIM_OPENLDAP  "Use openldap for LDAP lookup tables?"  y
 else
-  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  n
+  config_query  EXIM_OPENLDAP  "Use openldap for LDAP lookup tables?"  n
 fi  &&
 
-if  [  "$HCCRON"  ==  "y"  ]
+if  spell_ok  openssl
+then
+  config_query  EXIM_OPENSSL  "Use openssl for TLS support?"  y
+else
+  config_query  EXIM_OPENSSL  "Use openssl for TLS support?"  n
+fi  &&
+
+if  spell_ok  gnutls
+then
+  config_query  EXIM_GNUTLS  "Use gnutls for TLS support?"  y
+else
+  config_query  EXIM_GNUTLS  "Use gnutls for TLS support?"  n
+fi  &&
+
+if  spell_ok  cyrus-sasl
+then
+  config_query  EXIM_SASL  "Use cyrus-sasl for authentication?"  y
+else
+  config_query  EXIM_SASL  "Use cyrus-sasl for authentication?"  n
+fi  &&
+
+if  spell_ok  readline
+then
+  config_query  EXIM_READLINE  "Use readline for read data testing?"  y
+else
+  config_query  EXIM_READLINE  "Use readline for read data testing?"  n
+fi  &&
+
+if  [  "$EXIM_HCCRON"  ==  "y"  ]
 then
   depends  hc-cron
 fi  &&
 
-if  [  "$FCRON"  ==  "y"  ]
+if  [  "$EXIM_FCRON"  ==  "y"  ]
 then
   depends  fcron
 fi  &&
 
-if  [  "$XFREE86"  ==  "y"  ]
+if  [  "$EXIM_XFREE86"  ==  "y"  ]
 then
   depends  X11-LIBS
 fi  &&
 
-if  [  "$TCPWRAPPERS"  ==  "y"  ]
+if  [  "$EXIM_TCPWRAPPERS"  ==  "y"  ]
 then
   depends  tcp_wrappers
 fi  &&
 
-if  [  "$MYSQL"  ==  "y"  ]
+if  [  "$EXIM_MYSQL"  ==  "y"  ]
 then
   depends  mysql
 fi  &&
 
-if  [ "$LINUXPAM"  ==  "y"  ]
+if  [ "$EXIM_LINUXPAM"  ==  "y"  ]
 then
   depends  linux-pam
 fi  &&
 
-if  [ "$OPENLDAP"  ==  "y"  ]
+if  [ "$EXIM_OPENLDAP"  ==  "y"  ]
 then
   depends  openldap
+fi  &&
+
+if  [ "$EXIM_OPENSSL"  ==  "y"  ]
+then
+  depends  openssl
+fi  &&
+
+if  [ "$EXIM_GNUTLS"  ==  "y"  ]
+then
+  depends  gnutls
+fi  &&
+
+if  [  "$EXIM_SASL"  ==  "y"  ]
+then
+  depends  cyrus-sasl
 fi

@@ -1,19 +1,34 @@
-persistent_add  backup_file  &&
+persistent_add  exim_backup_file  &&
 
-config_query  BACKUPCONFIG  "Backup $SPELL config?"  y
+config_query EXIM_BACKUPCFG "Backup $SPELL config?"                        y  &&
+config_query EXIM_MAILDIR   "Support maildir for appendfile transport?"    n  &&
+config_query EXIM_MAILSTORE "Support mailstore for appendfile transport?"  n  &&
+config_query EXIM_MBX       "Support MBX for appendfile transport?"        n  &&
+config_query EXIM_NIS       "Enable NIS lookups?"                          n  &&
+config_query EXIM_NISPLUS   "Enable NIS+ lookups?"                         n  &&
+#
+# Oracle doesn't quite compile...
+#
+#config_query EXIM_ORACLE    "Enable Oracle lookups?"                       n  &&
+config_query EXIM_PASSWD    "Enable /etc/passwd lookups?"                  n  &&
+config_query EXIM_SCAN      "Enable content scanning (exiscan)?"           n  &&
+config_query EXIM_MD5       "Enable cram/md5 authentication?"              n  &&
+config_query EXIM_PLAINTEXT "Enable plaintext authentication?"             n  &&
+config_query EXIM_SPA       "Enable SPA authentication?"                   n  &&
+config_query EXIM_FROZEN    "Enable moving frozen messages?"               n  &&
 
 # look for a backup file
-backup_file=`ls -t -1 -r /etc/$SPELL-backup* | tail -n 1`  &&
+exim_backup_file=`ls -t -1 -r /etc/$SPELL-backup* | tail -n 1`  &&
 
-if [ "$backup_file" != "" ]; then
+if [ "$exim_backup_file" != "" ]; then
   message "${MESSAGE_COLOR} "                                                           &&
-  message "Found $backup_file as your latest postfix configuration backup..."           &&
+  message "Found $exim_backup_file as your latest postfix configuration backup..."           &&
   message "You should restore backup settings if you went throught a sorcery rebuild."  &&
   message "If this is a simple cast, or sorcery update, don't use it."                  &&
   message " ${DEFAULT_COLOR}"                                                           &&
 
-  config_query  SKIPRESTORE  "Skip restoring backup settings ?"  y
+  config_query  EXIM_SKIPRESTORE  "Skip restoring backup settings ?"  y
 else
-  persistent_add  SKIPRESTORE  &&
+  persistent_add  EXIM_SKIPRESTORE  &&
   SKIPRESTORE="y"
 fi
