@@ -11,7 +11,7 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   if query 'Would you like to build a statically linked SVN client' n; then
     SO_OPTION='--disable-shared --enable-static'
 
-    if query 'Would you also like to use bundled APR, APU and Neon' n; then
+    if query 'Would you also like to use bundled APR, APU and Neon (not recommended)' n; then
       echo "USE_BUNDLED_LIBS=y" >> $SPELL_CONFIG
     fi
   fi
