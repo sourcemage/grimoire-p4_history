@@ -1,0 +1,19 @@
+2004-12-07 Eric Sandall <eric@sandall.us>
+	* Added to video  (Bug #7179)
+	* DETAILS: Updated to 0.16
+	  SOURCE_URL uses http://www.mythtv.org/mc  (Thanks Jason)
+	  Added BUILD_API=2 and MAKE_NJOBS=1
+	  Added DOCS to catch default key bindings
+	* BUILD: Converted to build_api 2
+	  Added comments to support multiple jobs and/or distcc
+	  Don't copy mythbackend
+	  Modify configure and settings.pro to install to /usr, not
+	  /usr/local
+	* DEPENDS: Formatted to Guru Handbook
+	  Added dependency on imlib2
+	* mythbackend: Moved to init.d/mythtv.conf
+	* init.d/mythtv: Converted to simpleinit-msb
+
+2004-07-27 Bearcat M. Sandor <sorcerer@TheDragonsEdge.com>
+	* Initial version of spell
+
