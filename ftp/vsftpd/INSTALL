@@ -5,9 +5,9 @@ if  [  !  -e  /etc/vsftpd.conf  ];  then
   echo  "secure_chroot_dir=/var/empty"  >>  /etc/vsftpd.conf
 fi  &&
 
-#to use in standalone mode. (could break if INIT_ENABLED is renamed)
-if [[ $INIT_INSTALLED == "vsftpd" ]]; then 
-	if [[ $INIT_ENABLED == "vsftpd" ]]; then
+#to use in standalone mode. (!could break if those vars are renamed!)
+if list_find "$INIT_INSTALLED" "vsftpd" ; then 
+	if list_find "$INIT_ENABLED" "vsftpd" ; then
 		sedit '1i #standalone mode (init.d) \nlisten=YES' \
 		/etc/vsftpd.conf
 	else
