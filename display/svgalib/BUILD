@@ -5,8 +5,7 @@
   #
   for  i  in  svgalib-1.9.18-gcc33.patch        \
               svgalib-1.9.18-gcc34.patch        \
-              svgalib-1.9.18-linux2.6-v2.patch  \
-              svgalib-1.9.18-gentoo.patch
+              svgalib-1.9.18-linux2.6-v2.patch
   do
     patch  -p1  <  ${SCRIPT_DIRECTORY}/$i
   done                                          &&
