@@ -1,17 +1,17 @@
            SPELL=libsigc++3
-         VERSION=2.0.9
+         VERSION=2.0.10
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=libsigc++-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/libsigc++-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/libsigc++/$BRANCH/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/libsigc/$SOURCE
-          MD5[0]='2c75cdee55d0108f2b3f6dfc4dbedbf9'
+          MD5[0]='1cb7caccfb88f829a006d476e9ab6636'
       LICENSE[0]=LGPL
       MAKE_NJOBS=1
        BUILD_API=2
         WEB_SITE=http://libsigc.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20050203
+         UPDATED=20050224
            SHORT="Callback system for use in widget libraries"
 cat << EOF
 Libsigc++ implements a full callback system for use in widget libraries,
