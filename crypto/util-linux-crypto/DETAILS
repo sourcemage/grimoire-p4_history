@@ -15,6 +15,14 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/util-linux-$VERSION
       LICENSE[0]=GPL
       MAINTAINER=adamsgl@dhbit.ca
            SHORT="util-linux patched with crypto support"
+
+#
+# selinux patch
+#
+SOURCE3=util-linux-selinux.patch.gz
+SOURCE3_URL[0]=http://www.nsa.gov/selinux/patches/$SOURCE2
+MD5[2]=cfe33ac23ed48fd279eb5fed7bd3b6a2
+
 cat << EOF
 Util-linux patched with crypto, needed if you want to use CryptoAPI or the 
 the international crypto patch for Linux.
