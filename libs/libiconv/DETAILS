@@ -1,0 +1,17 @@
+           SPELL=libiconv
+         VERSION=1.8
+          SOURCE=$SPELL-$VERSION.tar.gz
+          MD5[0]='2e5207e8950232f80b1344521b4cd1c8'
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/$SPELL/
+         ENTERED=20021010
+         UPDATED=20021104
+           SHORT="library provides an iconv() implementation"
+cat << EOF
+This library provides an iconv() implementation, for use on systems
+which don't have one, or whose implementation cannot convert from/to Unicode.
+
+Watch also http://sourceforge.net/projects/libiconv/ for related information.
+EOF
