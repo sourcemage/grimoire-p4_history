@@ -1,7 +1,7 @@
            SPELL=gtkglextmm
          VERSION=0.7.0
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL-${VERSION}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/gtkglext/${SOURCE}
           MD5[0]=8d340d7a513855ed8bf5c21df9306d96
         WEB_SITE=http://gtkglext.sourceforge.net/
@@ -13,5 +13,6 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL-${VERSION}
 cat << EOF
 GtkGLExt provides the GDK objects to support OpenGL rendering in GTK, and GtkWidget API add-ons to make GTK+ widgets OpenGL-capable.
 
-As opposed to Jane Loff's GtkGLArea , it does not provide any OpenGL widget, but an interface to use OpenGL on *ANY* GTK+ widget.
+As opposed to Jane Loff\'s GtkGLArea , it does not provide any OpenGL
+widget, but an interface to use OpenGL on *ANY* GTK+ widget.
 EOF
