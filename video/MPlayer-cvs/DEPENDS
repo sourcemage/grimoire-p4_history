@@ -14,6 +14,7 @@ optional_depends  "MPlayer-codecs"  ""  ""  "for additional audio/video codecs" 
 optional_depends  "xvid" "" "" "for encoding with the xvid codec (distribution in USA and Japan is forbidden)" &&
 optional_depends  "xmms" "--enable-xmms" "" "for xmms input plugin support" &&
 optional_depends  "libmatroska"  ""  ""  "for matroska media support (.mkv, .mka)"  &&
+optional_depends  "faad2" "--enable-external-faad" "" "to use shared faad for AAC decoding"  &&
 
 # output devices
 optional_depends  "svgalib"  ""  ""  "for svgalib video output" &&
