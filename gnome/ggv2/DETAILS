@@ -1,17 +1,17 @@
            SPELL=ggv2
-         VERSION=2.0.0
+         VERSION=2.0.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=ggv-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/ggv-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/ggv/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/ggv/$BRANCH/$SOURCE
-          MD5[0]="595d511d61fcd43d898d0a82a1625af0"
-        WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]="f5c7b4d4d438155e73969c5e4d8d9284"
       LICENSE[0]=GPL
       LICENSE[1]=FDL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020510
-         UPDATED=20030415
+         UPDATED=20030609
            SHORT="GGV is GNOME GhostView"
 cat << EOF
 GGV is a PDF/PostScript renderer for GNOME. It is based on GhostScript.
