@@ -1,10 +1,10 @@
-diff -Naur coreutils-5.0.orig/configure.ac coreutils-5.0/configure.ac
---- coreutils-5.0.orig/configure.ac	2003-03-30 22:11:59.000000000 +1000
-+++ coreutils-5.0/configure.ac	2004-02-10 14:13:12.768005473 +1100
+diff -Naur coreutils-5.2.0/configure.ac coreutils/configure.ac
+--- coreutils-5.2.0/configure.ac	2004-02-09 07:12:18.000000000 +1100
++++ coreutils/configure.ac	2004-02-25 03:14:15.903224808 +1100
 @@ -9,6 +9,14 @@
- AM_INIT_AUTOMAKE([1.6b gnits dist-bzip2])
  
- AC_GNU_SOURCE
+ gl_DEFAULT_POSIX2_VERSION
+ gl_USE_SYSTEM_EXTENSIONS
 +
 +dnl Give the chance to enable PAM
 +AC_ARG_ENABLE(pam, dnl
@@ -16,17 +16,17 @@ diff -Naur coreutils-5.0.orig/configure.ac coreutils-5.0/configure.ac
  jm_PERL
  AC_PROG_CC
  AC_PROG_CPP
-diff -Naur coreutils-5.0.orig/doc/coreutils.texi coreutils-5.0/doc/coreutils.texi
---- coreutils-5.0.orig/doc/coreutils.texi	2003-04-03 04:19:11.000000000 +1000
-+++ coreutils-5.0/doc/coreutils.texi	2004-02-10 14:13:12.784002071 +1100
-@@ -11344,33 +11344,6 @@
- 
- @end table
+diff -Naur coreutils-5.2.0/doc/coreutils.texi coreutils/doc/coreutils.texi
+--- coreutils-5.2.0/doc/coreutils.texi	2004-02-19 04:45:02.000000000 +1100
++++ coreutils/doc/coreutils.texi	2004-02-25 03:15:39.877458784 +1100
+@@ -11904,33 +11904,6 @@
+ the exit status of the subshell otherwise
+ @end display
  
 -@cindex wheel group, not supported
 -@cindex group wheel, not supported
 -@cindex fascism
--@heading Why GNU @command{su} does not support the @samp{wheel} group
+-@subsection Why GNU @command{su} does not support the @samp{wheel} group
 -
 -(This section is by Richard Stallman.)
 -
@@ -53,21 +53,21 @@ diff -Naur coreutils-5.0.orig/doc/coreutils.texi coreutils-5.0/doc/coreutils.tex
  @node Process control
  @chapter Process control
  
-diff -Naur coreutils-5.0.orig/src/Makefile.am coreutils-5.0/src/Makefile.am
---- coreutils-5.0.orig/src/Makefile.am	2003-04-02 20:20:10.000000000 +1000
-+++ coreutils-5.0/src/Makefile.am	2004-02-10 14:13:12.765006111 +1100
-@@ -65,7 +65,7 @@
+diff -Naur coreutils-5.2.0/src/Makefile.am coreutils/src/Makefile.am
+--- coreutils-5.2.0/src/Makefile.am	2004-02-02 19:12:57.000000000 +1100
++++ coreutils/src/Makefile.am	2004-02-25 03:14:17.756943000 +1100
+@@ -63,7 +63,7 @@
  
- uptime_LDADD = $(LDADD) @GETLOADAVG_LIBS@
+ uptime_LDADD = $(LDADD) $(GETLOADAVG_LIBS)
  
--su_LDADD = $(LDADD) @LIB_CRYPT@
-+su_LDADD = $(LDADD) @LIB_CRYPT@ @LIB_PAM@
+-su_LDADD = $(LDADD) $(LIB_CRYPT)
++su_LDADD = $(LDADD) $(LIB_CRYPT) $(LIB_PAM)
  
  $(PROGRAMS): ../lib/libfetish.a
  
-diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
---- coreutils-5.0.orig/src/su.c	2002-08-31 17:28:18.000000000 +1000
-+++ coreutils-5.0/src/su.c	2004-02-10 14:13:12.767005686 +1100
+diff -Naur coreutils-5.2.0/src/su.c coreutils/src/su.c
+--- coreutils-5.2.0/src/su.c	2004-01-22 09:27:02.000000000 +1100
++++ coreutils/src/su.c	2004-02-25 03:25:53.440183072 +1100
 @@ -38,6 +38,16 @@
     restricts who can su to UID 0 accounts.  RMS considers that to
     be fascist.
@@ -98,9 +98,9 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
 +#endif /* USE_PAM */
 +
  #include "system.h"
- #include "closeout.h"
  #include "dirname.h"
-@@ -142,7 +160,9 @@
+ 
+@@ -141,7 +159,9 @@
  /* The user to become if none is specified.  */
  #define DEFAULT_USER "root"
  
@@ -110,7 +110,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
  char *getpass ();
  char *getusershell ();
  void endusershell ();
-@@ -150,8 +170,12 @@
+@@ -149,8 +169,12 @@
  
  extern char **environ;
  
@@ -124,7 +124,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
  
  /* The name this program was run with.  */
  char *program_name;
-@@ -263,7 +287,22 @@
+@@ -262,7 +286,22 @@
  }
  #endif
  
@@ -147,7 +147,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
     Return 1 if the user gives the correct password for entry PW,
     0 if not.  Return 1 without asking for a password if run by UID 0
     or if PW has an empty password.  */
-@@ -271,6 +310,34 @@
+@@ -270,6 +309,34 @@
  static int
  correct_password (const struct passwd *pw)
  {
@@ -182,7 +182,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
    char *unencrypted, *encrypted, *correct;
  #if HAVE_GETSPNAM && HAVE_STRUCT_SPWD_SP_PWDP
    /* Shadow passwd stuff for SVR3 and maybe other systems.  */
-@@ -295,6 +362,7 @@
+@@ -294,6 +361,7 @@
    encrypted = crypt (unencrypted, correct);
    memset (unencrypted, 0, strlen (unencrypted));
    return strcmp (encrypted, correct) == 0;
@@ -190,7 +190,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
  }
  
  /* Update `environ' for the new shell based on PW, with SHELL being
-@@ -304,16 +372,24 @@
+@@ -303,16 +371,24 @@
  modify_environment (const struct passwd *pw, const char *shell)
  {
    char *term;
@@ -200,24 +200,25 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
    if (simulate_login)
      {
 -      /* Leave TERM unchanged.  Set HOME, SHELL, USER, LOGNAME, PATH.
-+      /* Leave TERM, DISPLAY, XAUTHORITY unchanged.  Set HOME, SHELL, USER, LOGNAME, PATH.
-          Unset all other environment variables.  */
+-         Unset all other environment variables.  */
++       /* Leave TERM, DISPLAY, XAUTHORITY unchanged.  Set HOME, SHELL, USER, LOGNAME, PATH.
++           Unset all other environment variables.  */
        term = getenv ("TERM");
 +      display = getenv ("DISPLAY");
 +      xauthority = getenv ("XAUTHORITY");
-       environ = (char **) xmalloc (2 * sizeof (char *));
+       environ = xmalloc (2 * sizeof (char *));
        environ[0] = 0;
        if (term)
  	xputenv (concat ("TERM", "=", term));
 +      if (display)
-+	xputenv (concat ("DISPLAY", "=", display));
++       xputenv (concat ("DISPLAY", "=", display));
 +      if (xauthority)
-+	xputenv (concat ("XAUTHORITY", "=", xauthority));
++       xputenv (concat ("XAUTHORITY", "=", xauthority));
        xputenv (concat ("HOME", "=", pw->pw_dir));
        xputenv (concat ("SHELL", "=", shell));
        xputenv (concat ("USER", "=", pw->pw_name));
-@@ -350,22 +426,73 @@
-     error (EXIT_FAILURE, errno, _("cannot set groups"));
+@@ -349,11 +425,39 @@
+     error (EXIT_FAIL, errno, _("cannot set groups"));
    endgrent ();
  #endif
 +#ifdef USE_PAM
@@ -226,11 +227,10 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
 +    error (1, 0, pam_strerror(pamh, retval));
 +#endif /* USE_PAM */
    if (setgid (pw->pw_gid))
-     error (EXIT_FAILURE, errno, _("cannot set group id"));
+     error (EXIT_FAIL, errno, _("cannot set group id"));
    if (setuid (pw->pw_uid))
-     error (EXIT_FAILURE, errno, _("cannot set user id"));
+     error (EXIT_FAIL, errno, _("cannot set user id"));
  }
- 
 +#ifdef USE_PAM
 +static int caught=0;
 +/* Signal handler for parent process later */
@@ -247,17 +247,17 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
 +  env = pam_getenvlist(pamh);
 +  if(env) {
 +    while(*env) {
-+	xputenv(*env);
-+	env++;
++      xputenv(*env);
++      env++;
 +    }
 +  }
 +  return(0);
 +}
 +#endif
-+
+ 
  /* Run SHELL, or DEFAULT_SHELL if SHELL is empty.
     If COMMAND is nonzero, pass it to the shell with the -c option.
-    If ADDITIONAL_ARGS is nonzero, pass it to the shell as more
+@@ -361,10 +465,31 @@
     arguments.  */
  
  static void
@@ -278,11 +278,10 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
 +  }
 +
 +/* do this at the last possible moment, because environment variables may
-+   be passed even in the session phase
-+*/
++   be passed even in the session phase */
 +  if(pam_copyenv(pamh) != PAM_SUCCESS)
 +     fprintf (stderr, "error copying PAM environment\n");
-+  
++
 +  child = fork();
 +  if (child == 0) {  /* child shell */
 +  change_identity (pw);
@@ -290,8 +289,8 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
 +#endif
  
    if (additional_args)
-     args = (const char **) xmalloc (sizeof (char *)
-@@ -403,6 +530,61 @@
+     args = xmalloc (sizeof (char *)
+@@ -402,6 +527,61 @@
      error (0, errno, "%s", shell);
      exit (exit_status);
    }
@@ -353,7 +352,7 @@ diff -Naur coreutils-5.0.orig/src/su.c coreutils-5.0/src/su.c
  }
  
  /* Return 1 if SHELL is a restricted shell (one not returned by
-@@ -575,9 +757,15 @@
+@@ -577,9 +757,15 @@
      }
    modify_environment (pw, shell);
  
