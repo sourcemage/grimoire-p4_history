@@ -1,0 +1,5 @@
+make    PREFIX=/usr  ETCDIR=/etc  install               &&
+install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
+                  /usr/bin                              &&
+install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
+                  /usr/share/xsessions
