@@ -1,5 +1,6 @@
 (
 
+  patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch                        &&
   patch  modules/stream_out/transcode.c $SCRIPT_DIRECTORY/ffmpeg.patch  &&
 
   if  [  "$JOYSTICK"  =  "y"  ];  then
