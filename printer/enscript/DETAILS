@@ -3,18 +3,19 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.iki.fi/mtr/g$SPELL/$SOURCE
-   SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
         WEB_SITE=http://people.ssh.fi/mtr/genscript/
-         LICENSE=GPL
-             MD5=ec717f8b0de7db00a21a21f70d354610
+      LICENSE[0]=GPL
+          MD5[0]=5f7a5a3852c3a7cc7582bc8e7f1c8b9e
          ENTERED=20020407
          UPDATED=20020407
       MAINTAINER=sergeyli@pisem.net
            SHORT="GNU enscript is a free replacement for the Adobe's enscript program"
 
 cat << EOF
+
 Enscript converts ASCII files to PostScript and spools generated PostScript
 output to the specified printer or leaves it to file. Enscript can be easily
 extended to handle different output media and it has many options that can be
 used to customize printouts.
+
 EOF

@@ -5,16 +5,18 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnu.org/gnu/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.enst.fr/pub/unix/$SPELL/$SOURCE
         WEB_SITE=http://www.inf.enst.fr/~demaille/a2ps
-         LICENSE=GPL
-             MD5=0c8e0c31b08c14f7a7198ce967eb3281
+      LICENSE[0]=GPL
+          MD5[0]=cd2fa0ac9c973754df6c40c2557b7f13
          ENTERED=20010922
          UPDATED=20010922
       MAINTAINER=jasonflatt@wizard.com
            SHORT="a2ps is an any to postscript filter."
 cat << EOF
-a2ps is an Any to PostScript filter. Of course it processes plain text
-files, but also pretty prints quite a few popular languages (66).
-Moreover it has the ability to delegate the processing of some files to
-other filters (such as groff, texi2dvi, dvips, gzip etc.), which allows
-a uniform treatment (n-up, page selection etc.) of heterogeneous files.
+
+a2ps is an Any to PostScript filter.  Of course it processes plain text files,
+but also pretty prints quite a few popular languages (66).  Moreover it has
+the ability to delegate the processing of some files to other filters (such as
+groff, texi2dvi, dvips, gzip etc.), which allows a uniform treatment (n-up,
+page selection etc.) of heterogeneous files.
+
 EOF
