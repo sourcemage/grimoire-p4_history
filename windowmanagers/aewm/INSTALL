@@ -1,0 +1,6 @@
+mkdir  -p  /usr/X11R6/man/man1                          &&
+default_install                                         &&
+install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
+                  /usr/bin                              &&
+install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
+                  /usr/share/xsessions
