@@ -26,10 +26,92 @@ VERSIONS="1000_O1_PE_LL_0306300059_2.4.21-ck3
 MD5S[0]=88ae6b245065a3bd1599d5b3974438a6
 MD5S[1]=5fe3e852bedfe5c7641b0732004d3c24
 
+CUSTOM=ck_custom
+CMENU=(\
+    "1000_O1_PE_LL_0306300059_2.4.21-ck3"     "Base ck patch"               "Base ck contains the batch O(1) scheduler, preemptible, low latency and my interactivity patch" \
+    "1010_CKVM_0306300027_2.4.21-ck3"         "Autoregulation vm hacks"     "This uses the default VM but changes the page inactivation according to the degree of memory stress, and the system stress." \
+    "1011_SP_0306102217_2.4.21-ck2"           "Swap prefetching"            "If you have >10% free physical ram and any used swap it will start swapping pages back into physical ram." \
+    "1020_RL2_0305310042_2.4.21-ck2"          "Read Latency 2"              "Read Latency 2" \
+    "1021_DT1_030531616_2.4.21-ck2"           "Desktop Tuning 1"            "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
+    "1030_VH_0306200116_2.4.21-ck2"           "Variable HZ setting"         "If you change the Hz, use a multiple of 100. There really is no point going above 1000 Hz." \
+    "1031_DT2_0306200119_2.4.21-ck2"          "Desktop Tuning 2"            "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
+    "1040_ST_0306230135_2.4.21-ck2"           "Scheduler Tunables"          "This will let you alter the scheduler settings in /proc/sys/sched/." \
+    "1050_SM1.2.7_0306201731_2.4.21-ck2.patch" "Supermount-NG v1.2.7"       "Supermount-NG v1.2.7" \
+    "1060_XFS1.3.0pre2_0306201757_2.4.21-ck2" "XFS file system 1.3.0pre2"   "This is possibly safer with preempt disabled. It may have unimportant patch reject with aavm but works ok." \
+    "1070_ACPI_0306300010_2.4.21-ck3"         "ACPI 20030619"               "ACPI 20030619" \
+    "1080_NF2_0305311048_2.4.21-ck2"          "Nvidia Nforce2 update"       "Nvidia Nforce2 update" \
+    "1090_BS_0306020027_2.4.21-ck2"           "Bootsplash"                  "See http://www.bootsplash.org" \
+    "1161_GRS1.9.9h_0306230051_2.4.21-ck2"    "Grsec 1.9.9h"                "needs 1010 and 1060" \
+   )
+
+CMD5=(\
+    "88ae6b245065a3bd1599d5b3974438a6" \
+    "46d7289aa8b995bc20b7dd4ff4b650d4" \
+    "048375f60a90ab16ec203130cbcb738f" \
+    "cf7cdf5d347ebf02278008170e149cb1" \
+    "eaa93d63a1ac62181b3c58cfd26aff7b" \
+    "0a5a1b72ff7394c5c3d9909601c897db" \
+    "90b41d56ddf0b1496956d33b30eac37a" \
+    "28ad3d1806e64b6991c21b3d41726879" \
+    "56daa302c69cf2a573b511a8981f8bb3" \
+    "a1d8eb9ef0d8fc6281d342f6517abbbc" \
+    "7ea411c05ce20560941480a5a374c18e" \
+    "3aed541743df1580ff872d636ee89267" \
+    "14fdf37adda08d6be2f5978127521176" \
+    "2e6f1cb4fbf1366e5878cea38c7c7c98" \
+   )
+
 if [[ "$1" == "CONFIG" ]]; then
-echo "
+  if [[ "${!PATCH}" == "custom" ]]; then
+    for CPATCH in $CK_PATCH; do
+      echo "
+SOURCE${COUNTER}=patch-${CPATCH}.bz2
+SOURCE${COUNTER}_URL[0]=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+    (ck_md5_custom $(( $COUNTER - 1 )) $CPATCH) >> ${SPELL_CONFIG}.DETAILS
+    COUNTER=$(( $COUNTER + 1 ))
+    done
+    COUNTER=$(( $COUNTER - 1 ))
+  else
+    echo "
 SOURCE${COUNTER}=patch-${!PATCH}.bz2
 SOURCE${COUNTER}_URL[0]=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
-source $SCRIPT_DIRECTORY/MD5PATCH
+    source $SCRIPT_DIRECTORY/MD5PATCH
+  fi
 fi
+
+ck_md5_custom()
+{
+  local CMENU_COUNT=${#CMENU[@]}
+  local INDEX=0
+  while [[ $INDEX -lt $CMENU_COUNT ]]; do
+    if [[ "$2" == "${CMENU[$INDEX * 3]}" ]]; then
+      echo "MD5[$1]=${CMD5[$INDEX]}
+"
+    fi
+    INDEX=$(( $INDEX + 1 ))
+  done
+}
+
+ck_checklist()
+{
+  local CMENU_COUNT=${#CMENU[@]}
+  local INDEX=0
+  while [[ $INDEX -lt $CMENU_COUNT ]]; do
+    echo ${CMENU[$INDEX]}
+    echo ${CMENU[$(( $INDEX + 1 ))]}
+    echo "OFF"
+    echo ${CMENU[$(( $INDEX + 2 ))]}
+    INDEX=$(( $INDEX + 3 ))
+  done
+}
+
+ck_custom()
+{
+  CK_PATCH=$( $DIALOG --title "$DESCRIPTION"  \
+           --item-help                        \
+           --separate-output                  \
+           --checklist                        \
+           "$SHORT" 0 0 0                     \
+           $(ck_checklist) )
+}
