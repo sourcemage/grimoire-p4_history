@@ -2,6 +2,8 @@
 	* CONFLICTS: instead of using 'conflicts glibc-kernel-headers y', just
 	  dispel --notriggers glibc-kernel-headers so any remaining glibc
 	  triggers aren't executed
+	* PRE_BUILD: disable libgd detection/building memusagestat by sediting
+	  configure, quick&dirty fix for bug #8277
 
 2005-02-18 Eric Sandall <eric@sandall.us>
 	* config.h.patch: Don't say the compilation was aborted when it wasn't
