@@ -1,17 +1,13 @@
            SPELL=SDL
-         VERSION=1.2.5
+         VERSION=1.2.6
           SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=sdl-${VERSION}-missing-quotes.patch.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.libsdl.org/release/$SOURCE
-  SOURCE2_URL[0]=http://evanidus.ath.cx:8080/l14h/patches/needed-with-gcc-3.3/${SOURCE2}
-          MD5[0]=38ff3996a9fd4bccaee912d4cea5751d
-          MD5[1]=3d52b16491085131e695523931077ad5
+          MD5[0]=4aeff27e8bb396c977717bc4eda93b6e
       LICENSE[0]=LGPL
-      LICENSE[1]=LGPL
         WEB_SITE=http://www.libsdl.org
          ENTERED=20010922
-         UPDATED=20020424
+         UPDATED=20040216
             DOCS="docs/html docs/index.html COPYING README*"
            SHORT="SDL is a portable game library for low-level access to hardware."
 cat << EOF

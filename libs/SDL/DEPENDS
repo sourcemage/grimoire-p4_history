@@ -33,4 +33,9 @@ optional_depends  "arts"            \
 optional_depends  "nas"            \
                   "--enable-nas"   \
                   "--disable-nas"  \
-                  "for nas audio output support"
+                  "for nas audio output support"   &&
+optional_depends  "directfb"            \
+                  "--enable-video-directfb"   \
+                  "--enable-video-directfb=no"  \
+                  "for DirectFB support"
+
