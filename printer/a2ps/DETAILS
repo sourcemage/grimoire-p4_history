@@ -1,9 +1,9 @@
            SPELL=a2ps
          VERSION=4.13
-          SOURCE=$SPELL-${VERSION}b.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gnu.org/gnu/$SPELL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.enst.fr/pub/unix/$SPELL/$SOURCE
+          SOURCE=${SPELL}-${VERSION}b.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${GNU_URL}/${SPELL}/${SOURCE}
+   SOURCE_URL[1]=ftp://ftp.enst.fr/pub/unix/${SPELL}/${SOURCE}
         WEB_SITE=http://www.inf.enst.fr/~demaille/a2ps
       LICENSE[0]=GPL
           MD5[0]=cd2fa0ac9c973754df6c40c2557b7f13
