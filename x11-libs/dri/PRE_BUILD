@@ -11,9 +11,16 @@ fi &&
 
 mk_source_dir  ${SOURCE_DIRECTORY}      &&
 cd  ${SOURCE_DIRECTORY}                 &&
+
 unpack  ${SOURCE}  ${MD5[0]}            &&
 unpack  ${SOURCE2}  ${MD5[1]}           &&
 unpack  ${SOURCE3}  ${MD5[2]}           &&
-sedit "s:\(#define MesaSrcDir\).*:\1 ${SOURCE_DIRECTORY}/Mesa-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
-sedit "s:\(#define DRMSrcDir\).*:\1 ${SOURCE_DIRECTORY}/drm-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def
 
+
+sedit "s:\(#define MesaSrcDir\).*:\1 ${SOURCE_DIRECTORY}/Mesa-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+sedit "s:\(#define DRMSrcDir\).*:\1 ${SOURCE_DIRECTORY}/drm-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+
+if [ "`cat /proc/cpuinfo | grep sse`" != "" ]
+then
+echo #define MesaUseKatmai YES >> ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def 
+fi
