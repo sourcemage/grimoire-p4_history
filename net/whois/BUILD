@@ -1,10 +1,7 @@
 (
 
-  sedit  "s/prefix=\/usr\/local/prefix=\/usr/"  Makefile  &&
-  sedit  "s/OPTS=-O2/OPTS=\$\(CFLAGS\)/"        Makefile  &&
-
-  make             &&
+  make  OPTS="$CFLAGS"  &&
   prepare_install  &&
-  make    install       
+  make  prefix="${INSTALL_ROOT}/usr"  install       
 
 ) > $C_FIFO 2>&1
