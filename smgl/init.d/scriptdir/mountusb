@@ -6,7 +6,7 @@
 #
 #  Version:  @(#)mountnfs.sh  1.0.0  2003-06-29  Eric Sandall <eric@sandall.us>
 #
-# SGL-script-version=20030629
+# SGL-script-version=20030711
 # Need to start after proc is mounted (mount) and modutils is loaded
 # SGL-START:3 4 5:S20
 # SGL-STOP:0 1 2 6:K70
@@ -15,7 +15,7 @@
 
 start() {
 
-  if  [  -f  /proc/bus/usb  ]
+  if  [  -d  /proc/bus/usb  ]
   then
     echo  -n  "Mounting USB filesystem..."
     mount    -t usbdevfs  usbdevfs  /proc/bus/usb
@@ -29,7 +29,7 @@ start() {
 
 stop() {
 
-  if  [  -f  /proc/bus/usb  ]
+  if  [  -d  /proc/bus/usb  ]
   then
     echo     -n "Unmounting USB filesystem... "
     umount   /proc/bus/usb
