@@ -5,7 +5,7 @@ service ntp
   wait            = no
   user            = root
   server          = /usr/bin/ntpd
-  # server_args     =
+  server_args     = -u ntp:ntp -i /var/chroot/ntp
   per_source      = 8
   log_type	      = FILE  /var/log/xinetd/ntp
   log_on_success	= PID  HOST  USERID  EXIT  DURATION
