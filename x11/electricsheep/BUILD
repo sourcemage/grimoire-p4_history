@@ -1,4 +1,12 @@
-patch -p1 < $SCRIPT_DIRECTORY/Makefile.am.patch
-patch -p1 < $SCRIPT_DIRECTORY/Makefile.in.patch
-patch -p1 < $SCRIPT_DIRECTORY/prefix.patch
-default_build
+(
+  patch -p1 < $SCRIPT_DIRECTORY/prefix.patch &&
+   sedit "s/-Werror//" ./mpeg2dec/configure  &&
+  ./configure --prefix=${INSTALL_ROOT}/usr  \
+          --sysconfdir=${INSTALL_ROOT}/etc  \
+       --localstatedir=${INSTALL_ROOT}/var  \
+                       $OPTS                 &&
+  make                                       &&
+  prepare_install                            &&
+  mkdir -p   ${INSTALL_ROOT}/usr/X11R6/lib/xscreensaver &&
+  make    install
+) >$C_FIFO  2>&1
