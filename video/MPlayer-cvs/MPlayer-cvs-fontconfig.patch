@@ -1,10 +1,10 @@
 Index: Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/Makefile,v
-retrieving revision 1.276
-diff -u -r1.276 Makefile
---- Makefile	4 Oct 2003 22:00:01 -0000	1.276
-+++ Makefile	13 Oct 2003 08:38:46 -0000
+retrieving revision 1.277
+diff -u -r1.277 Makefile
+--- Makefile	19 Oct 2003 20:20:45 -0000	1.277
++++ Makefile	22 Oct 2003 22:38:26 -0000
 @@ -36,9 +36,9 @@
  VO_LIBS = $(AA_LIB) $(X_LIB) $(SDL_LIB) $(GGI_LIB) $(MP1E_LIB) $(MLIB_LIB) $(SVGA_LIB) $(DIRECTFB_LIB) 
  AO_LIBS = $(ARTS_LIB) $(ESD_LIB) $(NAS_LIB) $(SGIAUDIO_LIB)
@@ -20,11 +20,11 @@ diff -u -r1.276 Makefile
 Index: configure
 ===================================================================
 RCS file: /cvsroot/mplayer/main/configure,v
-retrieving revision 1.783
-diff -u -r1.783 configure
---- configure	11 Oct 2003 19:31:29 -0000	1.783
-+++ configure	13 Oct 2003 08:39:04 -0000
-@@ -165,6 +165,7 @@
+retrieving revision 1.792
+diff -u -r1.792 configure
+--- configure	22 Oct 2003 18:24:57 -0000	1.792
++++ configure	22 Oct 2003 22:38:41 -0000
+@@ -172,6 +172,7 @@
    --disable-css          Disable old-style libcss DVD support [autodetect]
    --disable-cdparanoia   Disable cdparanoia support [autodetect]
    --disable-freetype     Disable freetype2 font rendering support [autodetect]
@@ -32,7 +32,7 @@ diff -u -r1.783 configure
    --disable-unrarlib     Disable Unique RAR File Library [enabled]
    --enable-menu          Enable OSD menu support (NOT DVD MENU) [disabled]
    --disable-sortsub      Disable subtitles sorting [enabled]
-@@ -1157,6 +1158,7 @@
+@@ -1173,6 +1174,7 @@
  _cdparanoia=auto
  _big_endian=auto
  _freetype=auto
@@ -40,7 +40,7 @@ diff -u -r1.783 configure
  _shared_pp=no
  _menu=no
  _qtx=auto
-@@ -1371,6 +1373,8 @@
+@@ -1387,6 +1389,8 @@
    --disable-big-endian) _big_endian=no  ;;
    --enable-freetype)    _freetype=yes   ;;
    --disable-freetype)   _freetype=no    ;;
@@ -49,7 +49,7 @@ diff -u -r1.783 configure
    --enable-unrarlib)	_unrarlib=yes	;;
    --disable-unrarlib)	_unrarlib=no	;;
    --enable-ftp)         _ftp=yes        ;;
-@@ -4151,6 +4155,40 @@
+@@ -4180,6 +4184,40 @@
  fi
  echores "$_freetype"
  
@@ -90,7 +90,7 @@ diff -u -r1.783 configure
  
  echocheck "fribidi with charsets"
  if test "$_fribidi" = yes ; then
-@@ -5740,6 +5778,8 @@
+@@ -5777,6 +5815,8 @@
  CDPARANOIA_LIB = $_ld_cdparanoia
  FREETYPE_INC = $_inc_freetype
  FREETYPE_LIB = $_ld_freetype
@@ -99,7 +99,7 @@ diff -u -r1.783 configure
  FRIBIDI_INC = $_inc_fribidi
  FRIBIDI_LIB = $_ld_fribidi
  LIBLZO_LIB= $_ld_liblzo
-@@ -6179,6 +6219,9 @@
+@@ -6216,6 +6256,9 @@
  
  /* enable FreeType support */
  $_def_freetype
@@ -112,10 +112,10 @@ diff -u -r1.783 configure
 Index: mencoder.c
 ===================================================================
 RCS file: /cvsroot/mplayer/main/mencoder.c,v
-retrieving revision 1.218
-diff -u -r1.218 mencoder.c
---- mencoder.c	13 Aug 2003 16:29:00 -0000	1.218
-+++ mencoder.c	13 Oct 2003 08:39:09 -0000
+retrieving revision 1.219
+diff -u -r1.219 mencoder.c
+--- mencoder.c	22 Oct 2003 17:04:15 -0000	1.219
++++ mencoder.c	22 Oct 2003 22:38:46 -0000
 @@ -418,6 +418,10 @@
  #ifdef USE_OSD
  #ifdef HAVE_FREETYPE
@@ -130,11 +130,11 @@ diff -u -r1.218 mencoder.c
 Index: mplayer.c
 ===================================================================
 RCS file: /cvsroot/mplayer/main/mplayer.c,v
-retrieving revision 1.731
-diff -u -r1.731 mplayer.c
---- mplayer.c	4 Oct 2003 01:24:50 -0000	1.731
-+++ mplayer.c	13 Oct 2003 08:39:22 -0000
-@@ -1054,8 +1054,15 @@
+retrieving revision 1.732
+diff -u -r1.732 mplayer.c
+--- mplayer.c	16 Oct 2003 21:06:18 -0000	1.732
++++ mplayer.c	22 Oct 2003 22:38:56 -0000
+@@ -1057,8 +1057,15 @@
  
  //------ load global data first ------
  
@@ -151,7 +151,7 @@ diff -u -r1.731 mplayer.c
    if(font_name){
         vo_font=read_font_desc(font_name,font_factor,verbose>1);
         if(!vo_font) mp_msg(MSGT_CPLAYER,MSGL_ERR,MSGTR_CantLoadFont,font_name);
-@@ -1065,9 +1072,6 @@
+@@ -1068,9 +1075,6 @@
         if(!vo_font)
         vo_font=read_font_desc(MPLAYER_DATADIR "/font/font.desc",font_factor,verbose>1);
    }
@@ -164,10 +164,10 @@ diff -u -r1.731 mplayer.c
 Index: DOCS/de/documentation.html
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/de/documentation.html,v
-retrieving revision 1.72
-diff -u -r1.72 documentation.html
---- DOCS/de/documentation.html	9 Jul 2003 20:10:34 -0000	1.72
-+++ DOCS/de/documentation.html	13 Oct 2003 08:39:35 -0000
+retrieving revision 1.73
+diff -u -r1.73 documentation.html
+--- DOCS/de/documentation.html	14 Oct 2003 21:03:37 -0000	1.73
++++ DOCS/de/documentation.html	22 Oct 2003 22:39:06 -0000
 @@ -1108,6 +1108,11 @@
          ~/.mplayer/subfont.ttf</CODE></LI>
      </UL>
@@ -180,13 +180,13 @@ diff -u -r1.72 documentation.html
  </UL>
  
  <P>Wenn du eine Nicht-TrueType-Schrift benutzt, dann entpacke die Dateien  nach
-Index: DOCS/de/mplayer.1
+Index: DOCS/man/de/mplayer.1
 ===================================================================
-RCS file: /cvsroot/mplayer/main/DOCS/de/mplayer.1,v
+RCS file: /cvsroot/mplayer/main/DOCS/man/de/mplayer.1,v
 retrieving revision 1.31
 diff -u -r1.31 mplayer.1
---- DOCS/de/mplayer.1	21 Sep 2003 14:21:40 -0000	1.31
-+++ DOCS/de/mplayer.1	13 Oct 2003 08:39:50 -0000
+--- DOCS/man/de/mplayer.1	21 Sep 2003 14:21:40 -0000	1.31
++++ DOCS/man/de/mplayer.1	22 Oct 2003 22:39:18 -0000
 @@ -912,6 +912,8 @@
  Die \-subfont-*-Optionen sind nur verfügbar, wenn FreeType eincompieliert
  wurde. Wenn die FreeType-Unterstützung aktiviert wurde, dann kann die
@@ -205,14 +205,14 @@ diff -u -r1.31 mplayer.1
  .RE
  .PD 1
  .
-Index: DOCS/en/mplayer.1
+Index: DOCS/man/en/mplayer.1
 ===================================================================
-RCS file: /cvsroot/mplayer/main/DOCS/en/mplayer.1,v
-retrieving revision 1.447
-diff -u -r1.447 mplayer.1
---- DOCS/en/mplayer.1	8 Oct 2003 18:38:23 -0000	1.447
-+++ DOCS/en/mplayer.1	13 Oct 2003 08:40:04 -0000
-@@ -1112,6 +1112,8 @@
+RCS file: /cvsroot/mplayer/main/DOCS/man/en/mplayer.1,v
+retrieving revision 1.465
+diff -u -r1.465 mplayer.1
+--- DOCS/man/en/mplayer.1	22 Oct 2003 19:45:19 -0000	1.465
++++ DOCS/man/en/mplayer.1	22 Oct 2003 22:39:31 -0000
+@@ -1138,6 +1138,8 @@
  With FreeType, this option determines path to the text font file.
  .br
  The \-subfont-* options are available only with FreeType support compiled in.
@@ -221,8 +221,8 @@ diff -u -r1.447 mplayer.1
  
  .I EXAMPLE:
  .PD 0
-@@ -1119,6 +1121,8 @@
- \-font ~/\:.mplayer/\:arial\-14/\:font.desc
+@@ -1145,6 +1147,8 @@
+ \-font ~/\:.mplayer/\:arial-14/\:font.desc
  .br
  \-font ~/\:.mplayer/\:arialuni.ttf
 +.br
@@ -236,7 +236,7 @@ RCS file: /cvsroot/mplayer/main/DOCS/xml/en/install.xml,v
 retrieving revision 1.11
 diff -u -r1.11 install.xml
 --- DOCS/xml/en/install.xml	21 Sep 2003 13:05:42 -0000	1.11
-+++ DOCS/xml/en/install.xml	13 Oct 2003 08:40:10 -0000
++++ DOCS/xml/en/install.xml	22 Oct 2003 22:39:35 -0000
 @@ -766,6 +766,22 @@
    RAW plugin too, see URL below)
    <!-- FIXME: where's that URL? -->
@@ -266,7 +266,7 @@ RCS file: /cvsroot/mplayer/main/libvo/font_load_ft.c,v
 retrieving revision 1.10
 diff -u -r1.10 font_load_ft.c
 --- libvo/font_load_ft.c	9 Jun 2003 12:15:47 -0000	1.10
-+++ libvo/font_load_ft.c	13 Oct 2003 08:40:21 -0000
++++ libvo/font_load_ft.c	22 Oct 2003 22:39:46 -0000
 @@ -23,6 +23,10 @@
  #include <freetype/freetype.h>
  #include <freetype/ftglyph.h>

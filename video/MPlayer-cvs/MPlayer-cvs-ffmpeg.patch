@@ -1,11 +1,27 @@
+Index: configure
+===================================================================
+RCS file: /cvsroot/mplayer/main/configure,v
+retrieving revision 1.792
+diff -u -r1.792 configure
+--- configure	22 Oct 2003 18:24:57 -0000	1.792
++++ configure	22 Oct 2003 23:47:01 -0000
+@@ -4829,6 +4829,8 @@
+ elif test "$_libavcodecso" = yes ; then
+   _def_libavcodec='#define USE_LIBAVCODEC 1'
+   _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
++  _def_ffpostprocess='#define FF_POSTPROCESS 1'
++  _def_haveffpostprocess='yes'
+   _ld_libavcodec='-lavcodec'
+   _codecmodules="libavcodec.so $_codecmodules"
+ else
 Index: libmpcodecs/Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/libmpcodecs/Makefile,v
-retrieving revision 1.108
-diff -u -r1.108 Makefile
---- libmpcodecs/Makefile	4 Oct 2003 22:00:24 -0000	1.108
-+++ libmpcodecs/Makefile	5 Oct 2003 23:31:39 -0000
-@@ -37,7 +37,7 @@
+retrieving revision 1.110
+diff -u -r1.110 Makefile
+--- libmpcodecs/Makefile	22 Oct 2003 21:21:52 -0000	1.110
++++ libmpcodecs/Makefile	22 Oct 2003 23:47:05 -0000
+@@ -41,7 +41,7 @@
  SRCS2=$(ENCODER_SRCS)
  OBJS2=$(SRCS2:.c=.o)
  
@@ -20,7 +36,7 @@ RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_pp.c,v
 retrieving revision 1.30
 diff -u -r1.30 vf_pp.c
 --- libmpcodecs/vf_pp.c	31 Aug 2003 22:18:27 -0000	1.30
-+++ libmpcodecs/vf_pp.c	5 Oct 2003 23:31:40 -0000
++++ libmpcodecs/vf_pp.c	22 Oct 2003 23:47:06 -0000
 @@ -20,10 +20,10 @@
  
  #define EMU_OLD

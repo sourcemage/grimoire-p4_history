@@ -27,6 +27,8 @@
   (
     install  -m  644 libavcodec/bswap.h        \
                  ${INSTALL_ROOT}/usr/include/ffmpeg  &&
+    install  -m  644 libavcodec/rational.h     \
+                 ${INSTALL_ROOT}/usr/include/ffmpeg  &&
     install  -m  644 libavformat/os_support.h  \
                  ${INSTALL_ROOT}/usr/include/ffmpeg
   )  &&
