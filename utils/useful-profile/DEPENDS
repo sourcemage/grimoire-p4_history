@@ -1,7 +1,6 @@
-depends  perl
-
-depends  system-logger
-depends  MAIL-TRANSPORT-AGENT
-depends  email-client
+depends  SYSTEM-LOGGER         &&
+depends  MAIL-TRANSPORT-AGENT  &&
+depends  EMAIL-CLIENT          &&
+depends  perl                  &&
 
 optional_depends  "xfree86"  ""  ""  "for x11 desktop"
