@@ -1,8 +1,5 @@
 (
 
-  # unbreak the brokenness
-  sedit  's/$(PROGTEST)//'  Makefile  &&
-
   export    CFLAGS="${CFLAGS/-funroll-loops/} -O3"
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 
