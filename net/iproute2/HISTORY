@@ -1,3 +1,9 @@
+2005-02-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.6.10-050209
+	  Unpacks to 2.6.9-050209...
+	* Makefile.patch: No longer needed, removed
+	* PRE_BUILD: No longer apply Makefile.patch
+
 2005-01-25 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.6.10-ss050124
 	  SOURCE_DIRECTORY uses the last part of VERSION
@@ -14,7 +20,7 @@
 2004-12-22 Robert Helgesson <rhelgesson@sourcemage.org>
 	* PREPARE: Removed.
 	* BUILD: Added nicer fix to the SCTP problem (fixes bug #7868).
-		Removed linking with pthread (fixed bug #7867).
+	  Removed linking with pthread (fixed bug #7867).
 
 2004-12-22 Robert Helgesson <rhelgesson@sourcemage.org>
 	* PREPARE: Added text to notify Linux 2.4 user to enable SCTP.
