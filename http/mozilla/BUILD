@@ -10,6 +10,10 @@
 	    ;;
     esac &&
 
+  if [ "$MOZILLA_CALENDAR" == "y" ]; then
+    OPTS="$OPTS --enable-calendar"
+  fi &&
+
     case $MOZILLA_JAVA  in
 	y|Y|j|J)	OPTS="$OPTS --enable-java-supplement"
 	    ;;
