@@ -57,7 +57,7 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   cd bin 					&&
   FF=changeDBAPassword.sh			&&
   if [ ! -f $FF ];then
-    cp $SRC/bin/$FF ./				&&
+    cp $SOURCE_DIRECTORY/gen/install/bin/$FF ./	&&
     sed -e "s:rc\.d/::;s:d/f:d/runlevels/\%3/f:" -i ./$FF
   fi						&&
 
