@@ -3,6 +3,10 @@ optional_depends  "ffmpeg-cvs"                            \
                   "--enable-avformat --enable-avcodec"    \
                   "--disable-avformat --disable-avcodec"  \
                   "for lots of video formats/codecs"  &&
+optional_depends  "mpeg2dec"         \
+                  "--enable-mpeg2"   \
+                  "--disable-mpeg2"  \
+                  "for mpeg2 video support"  &&
 optional_depends  "audiofile"            \
                   "--enable-audiofile"   \
                   "--disable-audiofile"  \
