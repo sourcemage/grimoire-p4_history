@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SMGL-script-version=20030216
+# SMGL-script-version=20030712
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
@@ -47,7 +47,7 @@ case "$1" in
 		else
 # only load module if necessary; i.e. not built into kernel.
 		    if [ ! -z "$MODULE" ]; then
-			echo "Starting $0 with $DEVICE ..."
+			echo "Starting network with $DEVICE ..."
 			loadproc modprobe  $MODULE
 		    fi
 		    if [ "$MODE" = dynamic ]; then
@@ -93,7 +93,7 @@ case "$1" in
 		    fi
 # only do this if network device is a module
 		    if [ ! -z "$MODULE" ]; then
-			echo "Stopping $0 on $DEVICE ..."
+			echo "Stopping network on $DEVICE ..."
 			modprobe -r $MODULE
 			evaluate_retval
 		    fi
