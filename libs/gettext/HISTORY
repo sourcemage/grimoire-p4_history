@@ -1,3 +1,13 @@
+2005-02-25 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.14.2
+	  Removed explicit gnu.org SOURCE_URL[1]
+	* CONFIGURE: Query for usage of tetex
+	* DEPENDS: Use config_query and if/fi to use tetex only if they want, not
+	  just if it's installed (so I can test gettext without g++, since tetex
+	  needs g++ [Bug #8319])
+	* PRE_BUILD,g++.patch.bz2: Removed, no longer needed (and doesn't apply ;))
+	* BUILD,INSTALL: Only use tetex if the user wants, not if it's installed
+
 2004-12-13 Eric Sandall <eric@sandall.us>
 	* DETAILS: Shortened SHORT
 	* DEPENDS: Optionally depend on CSHARP and g++
