@@ -1,0 +1,8 @@
+diff -urpN entrance-cvs.old/src/daemon/Makefile.am entrance-cvs/src/daemon/Makefile.am
+--- entrance-cvs.old/src/daemon/Makefile.am	2004-09-09 12:40:35.644939464 -0700
++++ entrance-cvs/src/daemon/Makefile.am	2004-09-09 12:46:59.742547752 -0700
+@@ -13,4 +13,3 @@ entranced_LDADD = @x_libs@ -lXau @ecore_
+ 
+ install-data-hook:
+ 	$(mkinstalldirs) $(DESTDIR)$(prefix)/../$(localstatedir)
+-	chmod 700 $(DESTDIR)$(prefix)/../$(localstatedir)

@@ -1,0 +1,29 @@
+diff -urpN entrance-cvs.old/config/Makefile.am entrance-cvs/config/Makefile.am
+--- entrance-cvs.old/config/Makefile.am	2004-09-09 12:40:35.855907392 -0700
++++ entrance-cvs/config/Makefile.am	2004-09-09 12:41:02.022929400 -0700
+@@ -1 +1 @@
+-SUBDIRS = init.d pam.d
++SUBDIRS = pam.d
+diff -urpN entrance-cvs.old/configure.in entrance-cvs/configure.in
+--- entrance-cvs.old/configure.in	2004-09-09 12:40:35.850908152 -0700
++++ entrance-cvs/configure.in	2004-09-09 12:41:12.357358328 -0700
+@@ -206,8 +206,6 @@ src/client/Makefile
+ src/daemon/Makefile
+ src/daemon/entrance_wrapper
+ config/Makefile
+-config/init.d/Makefile
+-config/init.d/entrance
+ config/pam.d/Makefile
+ data/Makefile
+ data/config/Makefile
+diff -urpN entrance-cvs.old/entrance.spec entrance-cvs/entrance.spec
+--- entrance-cvs.old/entrance.spec	2004-09-09 12:40:35.914898424 -0700
++++ entrance-cvs/entrance.spec	2004-09-09 12:41:17.668550904 -0700
+@@ -38,7 +38,6 @@ test "x$RPM_BUILD_ROOT" != "x/" && rm -r
+ %defattr(-, root, root)                          
+ %doc AUTHORS COPYING* README
+ %{_sysconfdir}/entrance_config.db
+-%{_sysconfdir}/init.d/entrance
+ %{_sysconfdir}/pam.d/entrance
+ %{_bindir}/entrance
+ %{_bindir}/entrance_edit
