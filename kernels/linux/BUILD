@@ -16,6 +16,7 @@ fi
       mips64) ARCH=mips64  ;;
       parisc) ARCH=parisc  ;;
      powerpc) ARCH=ppc     ;;
+         ppc) ARCH=ppc     ;;
    powerpc64) ARCH=ppc64   ;;
         s390) ARCH=s390    ;;
        s390x) ARCH=s390x   ;;
