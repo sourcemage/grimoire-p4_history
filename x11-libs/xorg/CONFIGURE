@@ -317,4 +317,7 @@ if  spell_installed  Linux-PAM;  then
   config_query  PAM  "Use Linux-PAM for authentication?"  y
 else
   config_query  PAM  "Use Linux-PAM for authentication?"  n
-fi
+fi  &&
+
+config_query  IPV6   "Build IPv6 support?"  n
+config_query  DEBUG  "Build X.Org with debug code?"  y

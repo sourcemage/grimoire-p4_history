@@ -42,4 +42,30 @@ fi  &&
 
 if  [  "$PAM"  ==  "y"  ];  then
   echo  "#define  HasPam  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi  &&
+
+#
+# Let's give our OS name to X ;)
+#
+sedit  's:DefaultLinuxDistribution:LinuxSourceMage:'  \
+       $SOURCE_DIRECTORY/config/cf/site.def           &&
+
+#
+# Now to define some of our user-specified settings
+#
+if  [  "$IPV6"  ==  "y"  ];  then
+  echo  "#define  BuildIPv6   YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi  &&
+
+if  spell_installed  groff;  then
+  echo  "#define  HasGroff  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi  &&
+
+if  spell_installed  libpng;  then
+  echo  "#define  HasLibpng  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi  &&
+
+if  [  "$DEBUG"  == "n"  ]      ||
+    grep  -q  "\-Os"  $CFLAGS;  then
+  echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi

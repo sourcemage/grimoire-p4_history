@@ -13,5 +13,15 @@ depends  fontconfig  &&
 depends  zlib        &&
 depends  ncurses     &&
 depends  expat       &&
-#xc/config/cf/linux.cf defines this so unless we want to rewrite the spell we need it as full depends
-depends  libpng
+#xc/config/cf/linux.cf defines having GhostScript by default
+depends  POSTSCRIPT-INTERPRETER  &&
+
+optional_depends  groff                          \
+                  ""                             \
+                  ""                             \
+                  "for formatted documentation"  &&
+
+optional_depends  libpng                   \
+                  ""                       \
+                  ""                       \
+                  "for PNG image support"
