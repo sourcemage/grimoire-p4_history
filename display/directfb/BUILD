@@ -10,6 +10,7 @@
           --sysconfdir=${INSTALL_ROOT}/etc              \
        --localstatedir=${INSTALL_ROOT}/var              \
                --enable-linux-input                     \
+               --with-gfxdrivers=$gfxdrivers            \
                $OPTS                                    &&
   make                                                  &&
   prepare_install                                       &&
