@@ -7,6 +7,10 @@
   then  WITH_APACHE="--with-apxs2"
   fi
 
+  if    spell_installed  xfree86
+  then  ARGS="$ARGS  --with-xpm-dir=/usr/X11R6"
+  fi
+
 ./configure \
 	--prefix=/usr 			\
 	--sysconfdir=/etc 		\
@@ -19,12 +23,9 @@
 	--enable-pic			\
 	--enable-bcmath 		\
 	--enable-magic-quotes 		\
-	--enable-track-vars 		\
-	--enable-safe-mode 		\
 	--enable-sysvsem 		\
 	--enable-sysvshm 		\
 	--enable-force-cgi-redirect 	\
-	--enable-trans-sid 		\
 	--enable-yp 			\
 	--enable-ftp 			\
 	--enable-wddx 			\
