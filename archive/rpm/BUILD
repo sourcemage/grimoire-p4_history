@@ -1,5 +1,5 @@
 (
-  export CFLAGS=${CFLAGS/\-z combreloc/} &&
+  export LDFLAGS=${LDFLAGS/-z combreloc/} &&
   configure --prefix=${INSTALL_ROOT}/usr &&
   make             &&
   prepare_install  &&
