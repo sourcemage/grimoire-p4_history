@@ -16,6 +16,11 @@ if [ ! -f $netdevdir/$DEV.dev ]; then
   exit 1
 fi
 
+if ! ifconfig $DEV > /dev/null 2>&1 ; then
+  echo "$DEV already down"
+  exit 0
+fi
+
 unset MODE MODULE IP BROADCAST NETMASK GATEWAY
 
 . $netdevdir/$DEV.dev

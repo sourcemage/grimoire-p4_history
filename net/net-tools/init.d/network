@@ -7,11 +7,9 @@ NEEDS="+syslog"
 
 . /etc/init.d/smgl_init
 
-test -x /sbin/ifup     || exit 5
-test -x /sbin/ifdown   || exit 5
-test -x /sbin/ifconfig || exit 5
-test -x /sbin/route    || exit 5
-test -x /sbin/modprobe || exit 5
+required_executable /sbin/ifconfig
+required_executable /sbin/route
+required_executable /sbin/modprobe
 
 netdevdir=/etc/sysconfig/network
 
@@ -26,6 +24,8 @@ fi
 
 start()
 {
+  required_executable  /sbin/ifup
+
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
     echo "$(/sbin/ifup $DEVICE)"
@@ -35,6 +35,8 @@ start()
 
 stop()
 {
+  required_executable /sbin/ifdown
+
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
     echo "$(/sbin/ifdown $DEVICE)"
@@ -58,13 +60,6 @@ status()
       ifconfig $DEVICE
     fi
   done
-}
-
-restart()
-{
-  $0 stop
-  sleep 1
-  $0 start
 }
 
 reload() { exit 3; }

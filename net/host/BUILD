@@ -1,11 +1,10 @@
 (
 
-  cp  Makefile  Makefile.old
-  sed 's/\/usr\/local/\/usr/' < Makefile.old > Makefile
+  sedit  's!/usr/local!/usr!'  Makefile  &&
+  sedit  "s/^LDFLAGS =/& $LDFLAGS/"  Makefile  &&
 
-  make             &&
+  make  RES_LIB=-lresolv  COPTIM="$CFLAGS"  DEBUGDEFS=""  CDEBUG=""  &&
   prepare_install  &&
-  make man         &&
   make install
 
 ) > $C_FIFO 2>&1
