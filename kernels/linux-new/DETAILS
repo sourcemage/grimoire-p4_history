@@ -6,8 +6,10 @@
                VERSION=2.6.11.6
 	         TMPFS=0
 	       # variables we set
+test -f ${SCRIPT_DIRECTORY}/latest.defaults &&
 . ${SCRIPT_DIRECTORY}/latest.defaults
                # variables set by prepare script
+test -f ${CONFIG_CACHE}/details.defaults &&
 . ${CONFIG_CACHE}/details.defaults
                VERSION=${PATCHVER=${KERNEL_VERSION=${LATEST_2_6}}}
       SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-cache-${VERSION}

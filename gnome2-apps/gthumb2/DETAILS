@@ -1,12 +1,13 @@
-ca           SPELL=gthumb2
+           SPELL=gthumb2
 if [ "$DEVEL" == "y" ]; then
          VERSION=2.6.4
+          BRANCH=2.6
           MD5[0]='27f164500e9a9af128ced90679074341'
 else
          VERSION=2.6.4
+          BRANCH=2.6
           MD5[0]='27f164500e9a9af128ced90679074341'
 fi
-          BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=gthumb-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gthumb-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gthumb/$BRANCH/$SOURCE
