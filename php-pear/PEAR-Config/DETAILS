@@ -1,7 +1,8 @@
-         VERSION=1.7
-          MD5[0]='0eb2a4f309e6f0b520b1b245c6b93f13'
-         UPDATED=20030729
+         VERSION=1.8.1
+          MD5[0]='bae037171f1b368373ae40dc31941995'
+         UPDATED=20030917
            SPELL=PEAR-Config
+        WEB_SITE=http://pear.php.net/package/Config/
       LICENSE[0]=PHP
            SHORT='PEAR: Your configurations swiss-army knife.'
 cat << EOF
@@ -9,12 +10,13 @@ The Config package provides methods for
 configuration manipulation.
 * Creates configurations from scratch
 * Parses and outputs different formats (XML,
-PHP, INI, Apache...).
+PHP, INI, Apache...)
 * Edits existing configurations
 * Converts configurations to other formats
 * Allows manipulation of sections, comments,
 directives...
 * Parses configurations into a tree structure
+* Provides XPath like access to directives
 EOF
 
 source $SCRIPT_DIRECTORY/../PEAR_DETAILS
