@@ -1,7 +1,7 @@
-(
+# rm -rf is fix for this version, and should be probably removed in next
+rm -rf data/plugins/pynsource/pynsource-1.4a &&
 
-  python setup.py build  &&
-  prepare_install        &&
-  python setup.py install
+# also should have been fixed in next version
+patch -p0 < $SCRIPT_DIRECTORY/msgfmt.patch  &&
 
-) > $C_FIFO 2>&1
+python setup.py build
