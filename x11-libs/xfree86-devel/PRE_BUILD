@@ -6,8 +6,6 @@ unpack         $SOURCE4  ${MD5[3]}  &&
 unpack         $SOURCE5  ${MD5[4]}  &&
 unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
-#unpack         $SOURCE26 ${MD5[25]}  &&
-#patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE27 &&
 cd $SOURCE_DIRECTORY                &&
 INDEX=7                             &&
 for p in ${PATCH_SOURCES[*]}
