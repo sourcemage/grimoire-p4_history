@@ -3,12 +3,11 @@
            SOURCE=WordNet-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/WordNet-$VERSION
     SOURCE_URL[0]=ftp://ftp.cogsci.princeton.edu/pub/$SPELL/$VERSION/$SOURCE
-    SOURCE_URL[1]=ftp://ftp.ims.uni-stuttgart.de/pub/WordNet/$VERSION/$SOURCE
            MD5[0]=bc3d167059a286dafa27e7818f9773ad
          WEB_SITE=http://www.cogsci.princeton.edu/~wn
           ENTERED=20020611
-          UPDATED=20021018
-       MAINTAINER=zoran@idi.ntnu.no
+          UPDATED=20040103
+       MAKE_NJOBS=1
           LICENSE=ftp://ftp.cogsci.princeton.edu/pub/wordnet/1.7/LICENSE
             SHORT="a lexical database for the English language"
 cat << EOF
