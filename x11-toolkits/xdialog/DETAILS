@@ -1,9 +1,15 @@
-           SPELL=Xdialog
+           SPELL=xdialog
          VERSION=2.1.1
+          SOURCE=Xdialog-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Xdialog-$VERSION
+   SOURCE_URL[0]=http://thgodef.nerim.net/$SPELL/${SOURCE}
+          MD5[0]=43220b1675da7e1d01150bb294f65d6d
         WEB_SITE=http://xdialog.dyns.net/
          ENTERED=20050228
          UPDATED=20050228
-           SHORT="X-windows drop-in replacement for dialog."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="X-windows drop-in replacement for dialog.
 cat << EOF
 Xdialog is designed to be a drop in replacement for the 
 'dialog' or 'cdialog' programs. It converts any terminal 

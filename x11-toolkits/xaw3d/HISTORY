@@ -1,10 +1,12 @@
 2005-02-28 Eric Sandall <eric@sandall.us>
-	* Renamed to xaw3d
-	* DETAILS: Removed SOURCE information
+	* Renamed from Xaw3d
+	* DETAILS: Renamed to xaw3d
+	  Changed LICENSE to LICENSE[0]
 	  Updated UPDATED
-	* DEPENDS: Depend only on xaw3d
-	* PRE_BUILD,BUILD: Run only `true`
-	* TRIGGERS: On cast Xaw3d, dispel self
+	  Cleaned up long description
+	* CONFLICTS: Auto-conflicts with Xaw3d
+	* BUILD: Converted to build_api 2
+	* INSTALL: Added
 
 2003-10-10 hgg <hgreig@bigpond.net.au>
 	* DEPENDS: Change x11-libs to X11-LIBS

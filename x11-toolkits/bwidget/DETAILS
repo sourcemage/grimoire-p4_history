@@ -1,9 +1,14 @@
-           SPELL=BWidget
+           SPELL=bwidget
          VERSION=1.6.0
+          SOURCE=BWidget-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/BWidget-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/tcllib/$SOURCE
+          MD5[0]=4358963d93b53ec2d16410209f6126fa
         WEB_SITE=http://tcllib.sourceforge.net
          ENTERED=20050228
          UPDATED=20050228
       LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="A widget set that goes with tcllib"
 cat << EOF
 BWidget includes a number of helpful gui widgets for tcl:
