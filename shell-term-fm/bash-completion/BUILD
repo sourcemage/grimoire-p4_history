@@ -1,25 +1,19 @@
 (
 
-  prepare_install                                      &&
-  cp -v $SOURCE_DIRECTORY/bash_completion              \
-        /etc/profile.d/bash_completion                 &&
-  chmod 644 /etc/profile.d/bash_completion             &&
-
-  mkdir -pv /etc/bash_completion.d                     &&
-  cp -rv contrib /etc/bash_completion.d                &&
-  cp -v $SCRIPT_DIRECTORY/smgl_completion              \
-        /etc/bash_completion.d/smgl_completion         &&
-  chmod 644 /etc/bash_completion.d/smgl_completion     &&
+  prepare_install                                                     &&
+  mkdir -p ${INSTALL_ROOT}/etc/profile.d                              &&
+  install -m 0644 $SCRIPT_DIRECTORY/start_completion ${INSTALL_ROOT}/etc/profile.d/bash_completion.sh &&
+  install -m 0644 $SOURCE_DIRECTORY/bash_completion ${INSTALL_ROOT}/etc/bash_completion               &&
+  mkdir -pv ${INSTALL_ROOT}/etc/bash_completion.d                     &&
+  cp -rv contrib ${INSTALL_ROOT}/etc/bash_completion.d/               &&
+  install -m 0644 $SCRIPT_DIRECTORY/smgl_completion ${INSTALL_ROOT}/etc/bash_completion.d/smgl_completion         &&
 
   case $BASHCOMP_P4 in
-    y|Y|j|J)  cp -v /etc/bash_completion.d/contrib/p4  \
-              /etc/bash_completion.d/                  &&
-              chmod 644 /etc/bash_completion.d/p4
-              ;;
+    y|Y|j|J)  install -m 0644 ${INSTALL_ROOT}/etc/bash_completion.d/contrib/p4  ${INSTALL_ROOT}/etc/bash_completion.d/ ;;
           *)  ;;
-  esac                                                 &&
-  mkdir -pv /usr/doc/$SPELL                            &&
-  cp -v README Changelog COPYING /usr/doc/$SPELL       &&
-  chmod 644 /usr/doc/$SPELL/*
+  esac                                                                &&
+  mkdir -pv ${INSTALL_ROOT}/usr/doc/$SPELL                            &&
+  cp -v README Changelog COPYING ${INSTALL_ROOT}/usr/doc/$SPELL       &&
+  chmod 644 ${INSTALL_ROOT}/usr/doc/$SPELL/*
 
 ) > $C_FIFO 2>&1
