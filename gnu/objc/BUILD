@@ -6,6 +6,7 @@ $SOURCE_DIRECTORY/configure                                \
              --mandir=${INSTALL_ROOT}/usr/share/man        \
              --enable-threads=posix                        \
              --with-system-zlib                            \
+             --enable-languages=objc                       \
              $OPTS                                         &&
 
 make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
