@@ -1,17 +1,17 @@
            SPELL=fluxbox
 if [  "$CVS"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
-          SOURCE=$SPELL-cvs.tar.bz2
+          SOURCE=$SPELL-cvsroot.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/fluxbox:fluxbox
           MD5[0]=IGNORE
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvsroot
 else
-         VERSION=0.9.9
+         VERSION=0.9.10
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=84dbd936c13befe9192563f41cd263fc
+          MD5[0]=734df4a39cf07f9526cd8bb114395318
 fi
         WEB_SITE=http://www.fluxbox.org
          ENTERED=20011210
