@@ -69,6 +69,7 @@ start() {
     else
       if [ -x $alsactl ]; then
         echo "Restoring alsa settings..."
+	sleep 5
         $alsactl -F -f $asoundcfg restore
         evaluate_retval
       fi
