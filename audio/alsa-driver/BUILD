@@ -27,7 +27,9 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 (
 if ! echo ${CFLAGS} | grep -q "mcpu=pentium4" ; 
 then 
-  sedit  "s:\-O2:${CFLAGS}:"  configure
+  export  CFLAGS=${CFLAGS/pentium4/i686}      &&
+  export  CXXFLAGS=${CXXFLAGS/pentium4/i686}  &&
+  sedit  's:pentium4:i686:' Makefile.conf     &&
 fi				    &&
 
 ln -sf /bin/awk /usr/bin/awk        &&
