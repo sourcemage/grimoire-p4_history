@@ -1,15 +1,15 @@
            SPELL=ghex
-         VERSION=2.5.2
+         VERSION=2.6.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='f99551f84800c07702499d5df2551e1a'
+          MD5[0]='911e9f3a3c59046ad78b09dc9d7088fa'
       MAKE_NJOBS=1
         WEB_SITE=http://www.gnome.org
          ENTERED=20020716
-         UPDATED=20040311
+         UPDATED=20040425
            SHORT="Hex editor for Gnome2"
 cat << EOF
 Hex editor for Gnome 2.
