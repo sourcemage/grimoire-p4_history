@@ -3,6 +3,8 @@
 	* BUILD: Something's wrong with this package's configure script, as it
 	doesn't honor --prefix, it still installs to '/' even when all the other
 	packages I've fixed install to "${INSTALL_ROOT}/"
+	Fixed so that we now change the hardcoded entries in MCONFIG to be
+	prepended with the value of INSTALL_ROOT
 
 2003-11-30 Eric Sandall <eric@sandall.us>
 	* BUILD,POST_INSTALL: Now uses INSTALL_ROOT
