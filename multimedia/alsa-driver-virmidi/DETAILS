@@ -1,13 +1,14 @@
-           SPELL=alsa-driver
+           SPELL=alsa-driver-virmidi
          VERSION=0.9.0rc1
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=alsa-driver-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/alsa-driver-$VERSION
    SOURCE_URL[0]=ftp://ftp.alsa-project.org/pub/driver/$SOURCE
         WEB_SITE=http://www.alsa-project.org/
-         ENTERED=20010922
-         UPDATED=20020426
+         ENTERED=20010516
+         UPDATED=20020516
          ARCHIVE="off"
-           SHORT="ALSA drivers are sound drivers from the Advanced Linux Sound Architecture project."
+           SHORT="ALSA drivers are sound drivers from the Advanced Linux
+Sound Architecture project. Enhanced version with Virtual MIDI support."
 cat << EOF
 From http://www.alsa-project.org/intro.php3
 The Advanced Linux Sound Architecture project is being developed in the
