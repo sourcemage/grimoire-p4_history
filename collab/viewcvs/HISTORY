@@ -1,5 +1,17 @@
 SPELL HISTORY: viewcvs
 
+2002-05-20 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Patched (?) a cross-site scripting vulnerability in viewcvs.py.
+
+	Added a patch to copy conf files with .default suffix, now viewcvs
+	never overwrites configuration, so it's ready to be smoothly upgraded.
+	These .default files are now installed with mode 0600.
+
+	Earlier added a patch to ".tar.bz2" conf files, and package repository
+	tarball as .tar.bz2 instead of .tar.gz, but the resulting file is corrupted
+	when downloaded.
+
 2002-04-11 Sergey Lipnevich <sergeyli@pisem.net>
 
 	Integrated patch of Alexander Belopolsky <alexb@rentec.com> for cvsdb.py
