@@ -1,0 +1,30 @@
+diff -urN jpgraph-1.6.3/src/jpgraph.php jpgraph/src/jpgraph.php
+--- jpgraph-1.6.3/src/jpgraph.php	2002-05-13 17:42:36.000000000 -0400
++++ jpgraph/src/jpgraph.php	2002-05-21 07:39:18.000000000 -0400
+@@ -16,7 +16,7 @@
+ 
+ // The full absolute name of directory to be used as a cache. This directory MUST
+ // be readable and writable for PHP. Must end with '/'
+-DEFINE("CACHE_DIR","/tmp/jpgraph_cache/");
++DEFINE("CACHE_DIR","/tmp/jpgraph/");
+ 
+ // The URL relative name where the cache can be found, i.e
+ // under what HTTP directory can the cache be found. Normally
+@@ -25,7 +25,7 @@
+ DEFINE("APACHE_CACHE_DIR","/jpgraph_cache/");
+ 
+ // Directory for TTF fonts. Must end with '/'
+-DEFINE("TTF_DIR","/usr/local/fonts/ttf/");
++DEFINE("TTF_DIR","/usr/share/fonts/ttf/");
+ 
+ //------------------------------------------------------------------------
+ // Various JpGraph Settings. PLEASE adjust accordingly to you
+@@ -106,7 +106,7 @@
+ // Please note that the Apache user must be a member of the
+ // specified group since otherwise it is impossible for Apache
+ // to set the specified group.
+-DEFINE("CACHE_FILE_GROUP","wwwadmin");
++DEFINE("CACHE_FILE_GROUP","nogroup");
+ 
+ // What permissions should the cached file have
+ // (Set to "" will give the default persmissions for the "PHP-user")
