@@ -9,6 +9,7 @@ optional_depends  "libvorbis"  ""  ""  "to play ogg/vorbis audio" &&
 optional_depends  "libdv"  ""  ""  "to play files encoded with libdv (used by most digital camcorders)" &&
 optional_depends  "mad"  ""  ""  "to play mp3 audio using libmad" &&
 optional_depends  "MPlayer-codecs"  ""  ""  "for additional audio/video codecs" &&
+optional_depends  "xvid" "" "" "for encoding with the xvid codec (distribution in USA and Japan is forbidden)" &&
 
 # output devices
 optional_depends  "svgalib"  ""  ""  "for svgalib video output" &&
@@ -34,5 +35,5 @@ fi  &&
 
 if    [  "$FREETYPE2"  =  "y"  ]
 then  depends  freetype2
-else  depends  MPlayer-fonts
+else  optional_depends  MPlayer-fonts
 fi
