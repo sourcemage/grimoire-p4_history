@@ -1,14 +1,14 @@
            SPELL=gsl
-         VERSION=1.4
+         VERSION=1.5
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.mirror.ac.uk/sites/sources.redhat.com/pub/gsl/$SOURCE
-          MD5[0]=7f7ddeb567cae3359caa654d486484ed
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+          MD5[0]=81bbf889f15941a4ba0df68d4bb3698a
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnu.org/software/gsl
          ENTERED=20020308
          UPDATED=20040523
-      MAINTAINER=unet@sourcemage.org
            SHORT="The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers."
 
 cat << EOF
