@@ -1,0 +1,10 @@
+if ! grep -q CONFIGURED $SPELL_CONFIG; then
+	if query "update freetype2, openssl, Python to current grimoire version ? (also speeds compilation 
+by making certain modules with multiple jobs ,if problems 
+occur just use default bundled versions)" n
+          then UPDATED=yes
+          else UPDATED=no
+        fi
+	echo UPDATED=$UPDATED >> $SPELL_CONFIG &&
+        echo CONFIGURED=yes   >> $SPELL_CONFIG 
+fi
