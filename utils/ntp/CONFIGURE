@@ -1,0 +1,8 @@
+if  !  grep  -q  "NTPD_BOOT="  $SPELL_CONFIG;  then
+
+	if    query  "Invoke NTPd during boot?" y
+	then  echo   "NTPD_BOOT=y"  >>  $SPELL_CONFIG
+	else  echo   "NTPD_BOOT=n"  >>  $SPELL_CONFIG
+	fi
+
+fi
