@@ -1,0 +1,37 @@
+diff -Naur qingy-0.5.3/src/DirectFB/directfb_mode.c qingy-0.5.3-patched/src/DirectFB/directfb_mode.c
+--- qingy-0.5.3/src/DirectFB/directfb_mode.c	2005-01-03 11:43:38.000000000 +0100
++++ qingy-0.5.3-patched/src/DirectFB/directfb_mode.c	2005-03-08 01:40:00.000000000 +0100
+@@ -532,7 +532,7 @@
+ 			primary->DrawString (primary, "shutting down system...", -1, screen_width / 2, screen_height / 2, DSTF_CENTER);
+ 			primary->Flip (primary, NULL, 0);
+ 		}
+-		execl ("/sbin/shutdown", "/sbin/shutdown", "-h", "now", (char*)NULL);
++		execl ("/sbin/shutdown", "/sbin/shutdown", "-q", "-h", "now", (char*)NULL);
+ 	}
+   if (action == RESTART)
+ 	{
+@@ -541,7 +541,7 @@
+ 			primary->DrawString (primary, "rebooting system...", -1, screen_width / 2, screen_height / 2, DSTF_CENTER);
+ 			primary->Flip (primary, NULL, 0);
+ 		}
+-		execl ("/sbin/shutdown", "/sbin/shutdown", "-r", "now", (char*)NULL);
++		execl ("/sbin/shutdown", "/sbin/shutdown", "-q", "-r", "now", (char*)NULL);
+ 	}
+   
+   /* we should never get here unless call to /sbin/shutdown fails */
+diff -Naur qingy-0.5.3/src/main.c qingy-0.5.3-patched/src/main.c
+--- qingy-0.5.3/src/main.c	2004-12-28 09:29:11.000000000 +0100
++++ qingy-0.5.3-patched/src/main.c	2005-03-08 01:45:17.000000000 +0100
+@@ -152,10 +152,10 @@
+ 			text_mode();
+ 			break;
+ 		case SHUTDOWN_R:
+-			execl ("/sbin/shutdown", "/sbin/shutdown", "-r", "now", (char*)NULL);
++			execl ("/sbin/shutdown", "/sbin/shutdown", "-q", "-r", "now", (char*)NULL);
+ 			break;
+ 		case SHUTDOWN_H:
+-			execl ("/sbin/shutdown", "/sbin/shutdown", "-h", "now", (char*)NULL);
++			execl ("/sbin/shutdown", "/sbin/shutdown", "-q", "-h", "now", (char*)NULL);
+ 			break;
+ 		case DO_SLEEP:
+ 			if (SLEEP_CMD) execl (SLEEP_CMD, SLEEP_CMD, (char*)NULL);
