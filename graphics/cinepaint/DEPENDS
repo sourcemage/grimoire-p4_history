@@ -1,4 +1,8 @@
-depends  gtk+  &&
-depends  zlib  &&
-depends  tiff  &&
-depends  jpeg
+depends  gtk+     &&
+depends  lcms     &&
+depends  openexr  &&
+
+optional_depends  python                          \
+                  "--with-python"                 \
+                  "--without-python"              \
+                  "for Python scripting support"
