@@ -1,0 +1,27 @@
+           SPELL=docbook-dsssl
+         VERSION=1.78
+          SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SPELL-doc-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/docbook/$SOURCE
+   SOURCE_URL[1]=http://umn.sourceforge.net/sourceforge/docbook/$SOURCE
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/docbook/$SOURCE2
+  SOURCE2_URL[1]=http://umn.sourceforge.net/sourceforge/docbook/$SOURCE2
+          MD5[0]='f68511313035edc94a475478b73b5b93'
+          MD5[1]='46013feb252c3548df76e3c1bec6af98'
+        WEB_SITE=http://docbook.sourceforge.net/projects/dsssl/index.html
+      LICENSE[0]=http://www.oasis-open.org/who/intellectualproperty.php
+      LICENSE[1]=http://www.oasis-open.org/who/intellectualproperty.php
+         ENTERED=20040810
+         UPDATED=20040810
+            DOCS="WhatsNew doc README VERSION"
+           SHORT="DSSSL stylesheets for the DocBook"
+cat <<EOF
+These are DSSSL stylesheets for the DocBook DTD (they are also completely
+compatible with the DocBook XML DTD and the Simplified DocBook DTD).
+
+DSSSL is a stylesheet language for both print and online rendering.
+The acronym stands for Document Style Semantics and Specification Language.
+It is defined by ISO/IEC 10179:1996. For more general information about
+DSSSL, see http://www.jclark.com/dsssl/
+EOF
