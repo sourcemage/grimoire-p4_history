@@ -2,21 +2,23 @@
 if [ "$CVS" = "y" ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
+  FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/eet
           MD5[0]=IGNORE
 else
-		 VERSION=0.9.9
-		  SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.9.9
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-	  SOURCE_URL=$SOURCEFORGE_URL/enlightenment/$SOURCE
-	      MD5[0]=7737439b863d1ff84106aa071463ef65
+      SOURCE_URL=$SOURCEFORGE_URL/enlightenment/$SOURCE
+          MD5[0]=7737439b863d1ff84106aa071463ef65
 fi
+       BUILD_API=2
       LICENSE[0]=BSD
         WEB_SITE=http://enlightenment.org/pages/eet.html
          ENTERED=20040311
          UPDATED=20040311
-           SHORT="EET is a par of the EFL."
+           SHORT="EET is a part of the EFL"
 cat << EOF
 EET is a tiny library designed to write an arbitary set of chunks of data to a file and optionally compress each chunk (very much like a zip file) and allow fast random-access reading of the file later on. It does not do zip as a zip itself has more complexity than is needed, and it was much simpler to impliment this once here.
 
