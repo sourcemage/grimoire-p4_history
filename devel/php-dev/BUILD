@@ -11,6 +11,7 @@
     OPTS="$OPTS --enable-safe-mode"
   fi &&
 
+  ./buildconf                          &&
   ./configure                          \
     --prefix=/usr                      \
     --sysconfdir=/etc                  \
