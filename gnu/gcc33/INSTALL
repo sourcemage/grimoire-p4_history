@@ -1,8 +1,16 @@
+# create a symlink to version 5 runtime in regular prefix $INSTALL_ROOT/usr
+## @param runtime library name relative to prefix
+function link_runtime ()
+{
+  local TARGET_LINK=$INSTALL_ROOT/opt/gcc33/$1 &&
+  if [[ -f "$TARGET_LINK" ]]; then
+    local TARGET=$(readlink $TARGET_LINK) &&
+    ln -fns ${TARGET##$INSTALL_ROOT} $INSTALL_ROOT/usr/$1 &&
+    message "${MESSAGE_COLOR}Linked $1 to $TARGET${DEFAULT_COLOR}"
+  fi
+}
+
 make prefix=${INSTALL_ROOT}/opt/gcc33 install-no-fixedincludes &&
 
-# create a symlink to version 5 runtime in regular prefix $INSTALL_ROOT/usr
-RUNTIME=lib/libstdc++.so.5 &&
-if ! [[ -f $INSTALL_ROOT/usr/$RUNTIME ]]; then
-  RUNTIME_TARGET=$(readlink $INSTALL_ROOT/opt/gcc33/$RUNTIME) &&
-  ln -fns ${RUNTIME_TARGET##$INSTALL_ROOT} $INSTALL_ROOT/usr/$RUNTIME
-fi
+link_runtime lib/libstdc++.so.5 &&
+link_runtime lib64/libstdc++.so.5
