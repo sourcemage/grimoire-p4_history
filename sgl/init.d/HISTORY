@@ -1,51 +1,54 @@
+2002-11-17  Neal Birch <nealbirch@attbi.com>
+	    Added function to remove wayward mount.sh files. Cleaned code a bit.
+2002-11-16  Neal Birch <nealbirch@attbi.com>
+	    Added --localtime to stop function in localtime.sh to fix bug 1679. Modified configure to fix bug 1692.
+2002-11-11  Neal Birch <nealbirch@attbi.com>
+	    Added localtime.sh to spell.
+2002-10-24  Neal Birch <nealbirch@attbi.com>
+	    Moved networking.sh to net-tools and modified CONFIGURE to recognize that. Modified mount.sh to not mount networked drives. Added mountnfs.sh to scriptdir to provide for networked drives. Modified configure to detect and allow for custom scripts. Added lib_runlevel functions for runlevel management.
+2002-10-20  Neal Birch <nealbirch@attbi.com>
+	    Modified networking.sh to take into consideration those who have GATEWAY set by another program, such as PPP for aDSL.
+
+2002-10-16  Neal Birch <nealbirch@attbi.com>
+	    Modified networking.sh and the CONFIGURE script to take in consideration those who put their network device drivers into the kernel, fixes bug 1308. Corrected usage info to reflect ability to load a specific device or devices.
+
+2002-10-10  Eric Schabell <eschabell@sourcemage.org>
+
+		Removed -H from networking script, fixes bug#1196.
+
+2002-10-02  Eric Sandall <eric@sandall.us>
+		Modified mount.new.sh to not mount networked filesystems, as networking hasn't been started at this stage in the boot process.
+		Added mountnfs.sh which mounts the networked filesystems, since networking should have been started by now.  :)  This and mount.new should replace the current mount.sh, once they've been tested a little more.  :)  I use them on all of my machines, and they got rid of those "Failed" errors for mount and the "RPC not found" for trying to mount my networked filesystems.
+		Added and xdm.sh, gdm.sh and kdm.sh to start those login managers, should create
+one for wdm as well (when is my wdm spell going to go in?).
+
+2002-10-2   Neal Birch <nealbirch@attbi.com>
+	    Fixed typo in libinit.d. Thanks nkj!
 2002-9-30   Neal Birch <nealbirch@attbi.com>
-	* Modified BUILD to take care of lack of check for existing script file 
-	  bug (Thanks, Treeve!); changed scripts directory name to scriptdir to 
-	  prevent possible naming conflicts, changed name of script.que to 
-	  scriptque.temp to ease removal of temp files.
-
+	    Modified BUILD to take care of lack of check for existing script file bug (Thanks, Treeve!); changed scripts directory name to scriptdir to prevent possible naming conflicts, changed name of script.que to scriptque.temp to ease removal of temp files.
 2002-9-29   Neal Birch <nealbirch@attbi.com>
-	* Added CONFIGURE and modified BUILD to match. Now uses dialog to make 
-	  life a little easier. 
-
+	    Added CONFIGURE and modified BUILD to match. Now uses dialog to make life a little easier. 
 2002-9-24   Neal Birch <nealbirch@attbi.com>
-	* Modified networking.sh further. Added change to save scripts that 
-	  uses current date and time as extension for backup purposes. Cleaned 
-	  up and reordered the BUILD code a little.
-
+	    Modified networking.sh further. Added change to save scripts that uses current date and time as extension for backup purposes. Cleaned up and reordered the BUILD code a little.
 2002-9-23   Neal Birch <nealbirch@attbi.com>
-	* Modified Build to correct error due to quotes around a variable 
-	  causing build failure. Changed SGL-script-version to reflect date 
-	  script was modified (yearmonthday: 20020923) vs sequential numbering 
-	  system for ease of tracking updates per M.L.'s suggestion. 
-
+	    Modified Build to correct error due to quotes around a variable causing build failure. Changed SGL-script-version to reflect date script was modified (yearmonthday: 20020923) vs sequential numbering system for ease of tracking updates per M.L.'s suggestion. 
 2002-09-22  Neal Birch <nealbirch@attbi.com>
-	* Modified BUILD to install new networking schema. It should copy 
-	  existing information from the current networking.sh and setup the 
-	  links for the runlevels properly.
+	    Modified BUILD to install new networking schema. It should copy existing information from the current networking.sh and setup the links for the runlevels properly.
 
 2002-09-16  Eric Sandall <eric@sandall.us>
-	* Added Nealbirch's init.d scripts, but just so they're here, ready to 
-	  be used.  Nothing is done with them as of yet.  :)
-	* Removed functions.bz2 (I thought I did this already...)
-	* Modified BUILD to check for each symlink, at WaRL0CK's, Oadae's, and 
-	  toomanymirrors' suggestion.  Fixes the mounting problems everyone has 
-	  been having, though I still don't know where the problem came from.  
-	  Oadae suggested it happened from the transition for e2fsprogs->init.d 
-	  and the changes which kept happening, and this might be correct.  
-	  Anyways, symlinks will now be (re)created if they don't exist.
+		Added Nealbirch's init.d scripts, but just so they're here, ready to be used.  Nothing is done with them as of yet.  :)
+		Removed functions.bz2 (I thought I did this already...)
+		Modified BUILD to check for each symlink, at WaRL0CK's, Oadae's, and toomanymirrors' suggestion.  Fixes the mounting problems everyone has been having, though I still don't know where the problem came from.  Oadae suggested it happened from the transition for e2fsprogs->init.d and the changes which kept happening, and this might be correct.  Anyways, symlinks will now be (re)created if they don't exist.
 
 2002-09-12  Eric Sandall <eric@sandall.us>
-	* Uncompressed functions.bz2 and mount.sh.bz2
-	  Made BUILD simpler, for now
+		Uncompressed functions.bz2 and mount.sh.bz2
+		Made BUILD simpler, for now
 
 2002-09-09  Eric Sandall <eric@sandall.us>
-	* Added 'true' to POST_INSTALL and PRE_BUILD
-	* Moved mount.sh from e2fsprogs to init.d (Bug #914)
-	* Revised BUILD to track (via 'install') the files installed
+		Added 'true' to POST_INSTALL and PRE_BUILD
+		Moved mount.sh from e2fsprogs to init.d (Bug #914)
+		Revised BUILD to track (via 'install') the files installed
 
 2002-08-21  Eric Sandall <eric@sandall.us>
-	* This spell adds /etc/init.d/functions for general use init functions 
-	  and variables 
-	* Will go into a basesystem-type spell once we get that worked out
-
+		This spell adds /etc/init.d/functions for general use init functions and variables
+		Will go into a basesystem-type spell once we get that worked out
