@@ -11,6 +11,80 @@ function configure_optional() {
   grep -q "${2#--}" $SPELL_CONFIG
 }
 
+#
+# Fake C directory install
+#
+# Eventually work out local installs
+
+function global_install {
+	if ! grep -q CROOT $SPELL_CONFIG; then
+		if query "Do you wish to use the default directory for the global Fake 'C' directory? (/usr/share/wine)" y
+		then
+			CROOT=/usr/share/wine # C Drive
+		else
+			query "Where do you wish the Fake 'C' directory to be?"
+			read CROOT
+		fi
+	fi
+	if ! grep -q GLOBAL_CONFIG $SPELL_CONFIG; then
+		if query "Do you wish to have a global config file" y
+			then GLOBAL_CONFIG=y
+			else GLOBAL_CONFIG=n
+		fi
+	fi
+
+}
+
+#function local_install {
+#	CROOT=~/.wine/fake_C
+#	GLOBAL_CONFIG=n
+#}
+#
+#if ! grep -q GLOBAL_C $SPELL_CONFIG; then
+#	if query "Do you wish to have a global Fake 'C' directory?" y
+#		then GLOBAL_C=y
+#		else GLOBAL_C=n
+#	fi
+#fi
+
+#if [ "$GLOBAL_C" == "y" ]; then
+	global_install
+#else
+#	local_install
+#fi
+
+#Floppy Configuration
+if ! grep -q FLOPPY $SPELL_CONFIG; then
+	if query "Do you have a floppy drive?" y
+		then FLOPPY=y
+		else FLOPPY=n
+	fi
+	if [ "$FLOPPY" == "y" ]; then
+		if query "Do you mount the floppy drive on '/mnt/floppy'?" y
+		then
+			AROOT=/mnt/floppy # A Drive
+		else
+			query "Where do you mount the floppy drive?"
+			read AROOT
+		fi		
+	fi
+fi
+
+#CD-ROM Configuration
+if ! grep -q DROOT $SPELL_CONFIG; then
+	if query "Do you mount the CD-ROM drive on '/mnt/cdrom'?" y
+	then
+		DROOT=/mnt/cdrom # A Drive
+	else
+		query "Where do you mount the CD-ROM drive?"
+		read DROOT
+	fi
+fi
+
+#
+# Configure switches
+#
+
 configure_optional      'debug'         '--enable-debug'        '--disable-debug'       'Compile in all debugging message?' n
 configure_optional      'trace'         '--enable-trace'        '--disable-trace'       'Compile in TRACE messages?' n
 configure_optional      'opengl'         '--with-opengl'        '--without-opengl'       'enable OpenGL support?' y
@@ -18,3 +92,9 @@ configure_optional      'win16'        '--enable-win16'      '--disable-win16'  
 configure_optional      'curses'         '--with-curses'        '--without-curses'       'use curses?' y
 
 echo "OPTS=\"\$OPTS --with-x\"" >> $SPELL_CONFIG
+echo "CROOT=$CROOT" >> $SPELL_CONFIG
+echo "AROOT=$AROOT" >> $SPELL_CONFIG
+echo "DROOT=$DROOT" >> $SPELL_CONFIG
+echo "FLOPPY=$FLOPPY" >> $SPELL_CONFIG
+echo "GLOBAL_CONFIG=$GLOBAL_CONFIG" >> $SPELL_CONFIG
+#echo "GLOBAL_C=$GLOBAL_C" >> $SPELL_CONFIG

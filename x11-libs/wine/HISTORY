@@ -1,3 +1,18 @@
+2004-03-24 Geoffrey Derber <gderber@sourcemage.org>
+	* BUILD: added "$CROOT" to the beginning of the list of directories to create
+			fixes bug 6341
+	* PRE_BUILD: added to set variables that will last through POST_BUILD
+	* POST_BUILD: added to fix problem of all files in the fake_C being tracked
+				fixes bug 6257
+		     now has a global registry through symlinks
+				fixes bug 6258
+	* CONFIGURE: added global / local config options,
+		     more options for configuring the location
+		     of various drives (fake_C, floppy, CD-ROM)
+
+2004-03-13 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: version=20040309
+
 2004-02-26 Geoffrey Derber <gderber@sourcemage.org>
 	* BUILD: changed the fake C directory to /usr/share/wine from /mnt/wine
 

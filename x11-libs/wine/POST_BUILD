@@ -1,0 +1,71 @@
+# Install global config file and Registry
+
+function install_root_config {
+	echo "Creating Root Config"
+	[ -d ~/.wine ] || mkdir ~/.wine
+	[ -f /root/.wine/config ] || [ -h /root/.wine/config ] || cp $EXDIR/config ~/.wine/config
+}
+
+function install_root_registry {
+	# It is expected if regedit is run to see an error message
+	# about a missing winedefault.reg.
+	# With the latest wine version, if no registry exists
+	# The first time a wine application is run, one is created.
+	# Unfortunately, to suppress a windowed output, adding the
+	# file to the end was nesissary.
+	echo "Creating Root Registry"
+	[ -f /root/.wine/system.reg ] || [ -h /root/.wine/system.reg ] || regedit $SOURCE_DIRECTORY/winedefault.reg
+}
+
+function global_registry {
+	echo "Creating Global Config file"
+	[ -d $SYSCONFDIR ] || mkdir -p $SYSCONFDIR
+	[ -f $SYSCONFDIR/wine.conf ] || mv /root/.wine/config $SYSCONFDIR/wine.conf
+	[ -f /root/.wine/config ] || [ -h /root/.wine/config ] || ln -s $SYSCONFDIR/wine.conf /root/.wine/config
+
+
+	# sometimes it takes a few seconds for the registry to appear in the directory
+	# do nothing loop to ensure that the files appear after the regedit above.
+	DONOTHING=1
+	while [ ! -f /root/.wine/system.reg ] && [ ! -h /root/.wine/system.reg ]
+	do
+		DONOTHING=$[$DONOTHING + 1]
+	done
+
+	echo "Creating Global Registry"
+	[ -f $SYSCONFDIR/wine.systemreg ] || mv /root/.wine/system.reg $SYSCONFDIR/wine.systemreg
+	[ -f /root/.wine/system.reg ] || [ -h /root/.wine/system.reg ] || ln -s $SYSCONFDIR/wine.systemreg /root/.wine/system.reg
+	[ -f $SYSCONFDIR/wine.userdefreg ] || mv /root/.wine/userdef.reg $SYSCONFDIR/wine.userdefreg
+	[ -f /root/.wine/userdef.reg ] || [ -h /root/.wine/userdef.reg ] || [ -h /root/.wine/userdef.reg ] || ln -s $SYSCONFDIR/wine.userdefreg /root/.wine/userdef.reg
+	[ -f $SYSCONFDIR/wine.userreg ] || mv /root/.wine/user.reg $SYSCONFDIR/wine.userreg
+	[ -f /root/.wine/user.reg ] || [ -h /root/.wine/user.reg ] || ln -s $SYSCONFDIR/wine.userreg /root/.wine/user.reg
+
+	# ensures that users can write to the registry
+	chgrp -R users $SYSCONFDIR
+	chmod -R g+w $SYSCONFDIR
+}
+
+function local_registry {
+	#for all normal users
+	echo "Installing user config files and registries"
+	for i in `grep home /etc/passwd|cut -d: -f1`
+	do
+		if [ "$i" != "nobody" ] && [ "$i" != "ftp" ]
+		then
+			su -c "[ -d ~/.wine/ ] || mkdir ~/.wine/" $i &&
+			if [ "$GLOBAL_CONFIG" == "y" ]; then
+				su -c "[ -f ~/.wine/config ] || [ -h ~/.wine/config ] || ln -s $SYSCONFDIR/wine.conf ~/.wine/config" $i
+			else
+				su -c "[ -f ~/.wine/config ] || [ -h ~/.wine/config ] || cp $SYSCONFDIR/wine.conf ~/.wine/config" $i
+			fi
+			su -c "[ -f ~/.wine/system.reg ] || [ -h ~/.wine/system.reg ] || ln -s $SYSCONFDIR/wine.systemreg ~/.wine/system.reg" $i
+			su -c "[ -f ~/.wine/userdef.reg ] || [ -h ~/.wine/userdef.reg ] || ln -s $SYSCONFDIR/wine.userdefreg ~/.wine/userdef.reg" $i
+			su -c "[ -f ~/.wine/user.reg ] || [ -h ~/.wine/user.reg ] || ln -s $SYSCONFDIR/wine.userreg ~/.wine/user.reg" $i
+		fi
+	done
+}
+
+install_root_config &&
+install_root_registry
+global_registry &&
+local_registry
