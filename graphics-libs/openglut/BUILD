@@ -2,6 +2,11 @@ if  [  "$CVS"  ==  "y"  ];  then
   cd  lib       &&
   ./autogen.sh
 fi  &&
-#OPTS="$OPTS  --replace-glut  --enable-fast"  &&
+
+if  [  "$OPENGLUT_GLUT"  =  "y"  ];  then
+  OPTS="$OPTS  --replace-glut"
+fi  &&
+
 OPTS="$OPTS  --enable-fast"  &&
+
 default_build

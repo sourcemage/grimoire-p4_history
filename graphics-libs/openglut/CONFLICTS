@@ -1,2 +1,4 @@
-conflicts  glut
+if  [  "$OPENGLUT_GLUT"  =  "y"  ];  then
+  conflicts  glut
+fi
 # Can coexist with freeglut
