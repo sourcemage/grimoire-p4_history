@@ -1,15 +1,27 @@
 depends automake &&
 depends autoconf &&
 depends libmcrypt &&
-
-optional_depends linux-pam '--with-pam'      '--without-pam'     'support for PAM authentication' &&
-optional_depends openssl   '--with-openssl'  '--without-openssl' 'support for NTLM and OTP'       &&
-optional_depends krb5      '--enable-gssapi' '--disable-gssapi'  'support for Kerberos 5 GSSAPI'  &&
-
-if [ "$SASLAUTHD_LDAP" == "y" ]; then
-  depends openldap '--with-ldap --without-dblib'
-elif [ "$SASLDB_BDB" == "y" ]; then
-  depends db '--with-dblib=berkeley'
-elif [ "$SASLDB_GDBM" == "y" ]; then
-  depends gdbm '--with-dblib=gdbm'
+if [ "$CS_GSSAPI" == "y" ]; then
+  depends krb5
+fi &&
+if [ "$CS_DB" == "y" ]; then
+  depends db
+fi &&
+if [ "$CS_GDBM" == "y" ]; then
+  depends gdbm
+fi &&
+if [ "$CS_SQLITE" == "y" ]; then
+  depends sqlite
+fi &&
+if [ "$CS_MYSQL" == "y" ]; then
+  depends mysql
+fi &&
+if [ "$CS_PSQL" == "y" ]; then
+  depends postgresql
+fi &&
+if [ "$CS_SASLD" == "LDAP" ]; then
+  depends openldap
+fi &&
+if [ "$CS_SASLD" == "PAM" ]; then
+  depends linux-pam
 fi

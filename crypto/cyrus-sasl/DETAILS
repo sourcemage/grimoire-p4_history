@@ -9,7 +9,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=BSD
         WEB_SITE=http://asg.web.cmu.edu/sasl/
          ENTERED=20020717
-         UPDATED=20030822
+         UPDATED=20050326
            SHORT="Cyrus SASL (RFC 2222) Library"
 cat << EOF
 This is the Cyrus SASL API implentation. It can be used on the client or server
@@ -19,7 +19,7 @@ The following mechanisms are included in this distribution:
 * CRAM-MD5
 * KERBEROS_V4
 * PLAIN
-* SCRAM-MD5 (deprecated)
+* CRAM-MD5 (deprecated)
 * GSSAPI (MIT Kerberos 5 or Heimdal Kerberos 5)
 * DIGEST-MD5
 * LOGIN (unsupported)

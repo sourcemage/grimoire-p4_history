@@ -1,11 +1,5 @@
 default_install  &&
 
-if [ "$SASLAUTHD" == "y" ]; then
-  cp saslauthd/testsaslauthd $INSTALL_ROOT/usr/bin
-fi  &&
-
-if [ "$SASLAUTHD" == "y" ]; then
-  mkdir -p --mode=700 $INSTALL_ROOT/var/run/saslauthd
-elif [ "$SASLDB" == "y" ]; then
-  mkdir -p --mode=700 $INSTALL_ROOT/etc/sasldb
+if echo ${CS_MECH}|grep -q saslauthd; then
+  cp saslauthd/testsaslauthd ${INSTALL_ROOT}/usr/bin
 fi
