@@ -1,15 +1,16 @@
            SPELL=qt-x11
-         VERSION=3.0.4 
-	       SOURCE=qt-x11-free-$VERSION.tar.bz2
+         VERSION=3.0.5
+          SOURCE=qt-x11-free-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-x11-free-$VERSION
    SOURCE_URL[0]=ftp://ftp.trolltech.com/qt/source/$SOURCE
-          MD5[0]=aba3e78cde90d98a753ffd0d6d07a0cf
+          MD5[0]=3e6119ec1122dd8967a28f696d9a4493
         WEB_SITE=http://www.trolltech.com/qt 
- 	      ENTERED=20020410
-	      UPDATED=20020410
+         ENTERED=20020410
+         UPDATED=20020820
       LICENSE[0]=QPL
       MAINTAINER=eric@lasvegasdata.com
            SHORT="Qt simplifies the task of writing and maintaining GUI applications."
+# qt-x11 is primarily needed by kde apps.  
 cat << EOF
 Qt is a toolkit for software developers. Qt simplifies the task of
 writing and maintaining GUI (graphical user interface) applications. Qt
@@ -18,4 +19,3 @@ toolkit. When you implement a program with Qt, you can run it on the X
 Window System (Unix/X11) or Microsoft Windows NT/95/98/2000. Simply
 compile the source code for the platform you want.
 EOF
-

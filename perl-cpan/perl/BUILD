@@ -1,3 +1,5 @@
+unset LANG
+
 CONFIG="$DEPENDS_CONFIG/perl_config.sh"
 
 case  $CUSTOM  in

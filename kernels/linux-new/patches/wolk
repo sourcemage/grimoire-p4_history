@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DESCRIPTION="Working Overloaded Linux Kernel"
+SHORT="Working Overloaded Linux Kernel"
+HELP="The WOLK's are development kernels and for testing purpose only, containing
+many useful patches from many projects. Use it in production at your own
+risk. Goal: Stability, provide many useful patches."
+VERSIONS="2.4.18-wolk3.5"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}-patch.patch.bz2
+SOURCE${COUNTER}_URL=\$SOURCEFORGE_URL/wolk/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi

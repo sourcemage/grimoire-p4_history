@@ -2,7 +2,7 @@
 
   ./configure  --prefix=/usr                                   		\
                --sysconfdir=/etc/httpd                         		\
-               --localstatedir=/var/lib/httpd                    	\
+               --localstatedir=/var                         \
                --enable-modules=most,max,auth_db,php   			\
                --enable-info                     			\
                --enable-cgi                      			\

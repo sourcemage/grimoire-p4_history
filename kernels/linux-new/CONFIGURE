@@ -126,7 +126,7 @@ then
   echo  "KERNEL_VERSION=$KERNEL_VERSION" >  $SPELL_CONFIG  &&
   echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG  &&
   LIST=$(ls ${PATCH_DIR})
-  COUNTER=4
+  COUNTER=5
   for  PATCH in $LIST;  do
     if [[ ${!PATCH} != "" ]]; then
       source ${PATCH_DIR}/${PATCH} CONFIG

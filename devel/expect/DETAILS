@@ -1,8 +1,8 @@
             SPELL=expect
           VERSION=5.38
-           SOURCE=expect.tar.gz
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/expect-$VERSION
-    SOURCE_URL[0]=http://expect.nist.gov/$SOURCE
+           SOURCE=$SPELL-$VERSION.0.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+    SOURCE_URL[0]=http://expect.nist.gov/src/$SOURCE
          VERSION2=8.3.4
           SOURCE1=tcl$VERSION2.tar.gz
           SOURCE2=tk$VERSION2.tar.gz

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DESCRIPTION="ACPI patch"
+SHORT="Advanced Configuration and Power Interface"
+HELP="Committed to the development of fundamental ACPI (Advanced Configuration and Power Interface) components for Linux. This includes a generic ACPI table parser, AML interpreter, bus and device drivers, policy, user interface, and support tools."
+VERSIONS="acpi-20020815-2.5.31
+acpi-20020821-2.4.18-ia64-020722
+acpi-20020821-2.4.19-ia64-020821
+acpi-20020821-2.4.19
+acpi-20020821-2.4.20-pre4"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}.diff.gz
+SOURCE${COUNTER}_URL=\$SOURCEFORGE_URL/acpi/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi

@@ -5,7 +5,7 @@ service finger
 	wait		= no
 	user		= root
 	server		= /usr/sbin/in.fingerd
-	server_args	=
+#       server_args	=
 	per_source	= 8
 	log_type	= FILE /var/log/xinetd/fingerd
 	log_on_success	= PID HOST USERID EXIT DURATION

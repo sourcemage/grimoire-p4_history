@@ -26,11 +26,17 @@ if  [  -f  $CONFIG_CACHE/kernel.config  ];  then
   cp     $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
 fi
 
+#Get our logo on the framebuffer
+cd  linux/include/linux
+unpack $SOURCE2
+mv  -f  raven_linux_logo.h linux_logo.h
+
+
 cd  /usr/src/linux
 
 local COUNTER
 local VAR
-for ((COUNTER=2; COUNTER <= 10 ; COUNTER++))
+for ((COUNTER=3; COUNTER <= 10 ; COUNTER++))
 do
   VAR=SOURCE${COUNTER}
   if [[ "${!VAR}" != "" ]]; then
@@ -44,5 +50,3 @@ do
     fi
   fi
 done
-# Still coding
-# exit 1
