@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.5
+         VERSION=0.6
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20031018
-          MD5[0]=3ce4c6e7757ed16c86e68388235a37f8
+         UPDATED=20031214
+          MD5[0]=a5f42110ec181716a2b96efe300506b6
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -32,18 +32,19 @@ Guru experience:
   spellify                -  takes some software-version.tar.{gz|bz2}, makes a
                              #{MYSPELLS}/software and DETAILS in your local 
 														 spell dir ${MYSPELLS} and cp the tarball to spool 
-														 then scribe reindex ${MYGRIMOIRE}.
+														 then scribe reindex ${MYGRIMOIRE}. Uses 
+														 /etc/sorcery/local/guruinfo for guru info.
 
   summonsection           - This script is usefull for lazy section
                             maintainters who get bored first deleting cached
                             files, then summon'em one by one, by hand.
                             Summonsection kills cached files, and summons
                             new files automaticaly.
-                              (by M.L.).
+                            (by M.L.).
 
   upspell                 - This script updates a spell DETAILS and HISTORY.
                             Just goes to the spell's directory and run it...
-                              (by M.L.).
+														Uses /etc/sorcery/local/guruinfo for guru info.
 
   update_spell            - Typical parameters are "DETAILS -s -m -v 1.2.3",
                             it only works on the first SOURCE for now.
