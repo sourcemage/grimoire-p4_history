@@ -1,0 +1,5 @@
+depends  kdebase  &&
+
+message "You need either SQLite or MySQL.  If you choose MySQL, you need Qt compiled with MySQL support built in:"
+optional_depends  "sqlite"  ""  ""  "for a backend database to store the recipes"  &&
+optional_depends  "mysql"   ""  ""  "for a backend database to store the recipes"
