@@ -4,4 +4,6 @@ mkdir  -p       /etc/xinetd.d
 [  -f           /etc/xinetd.conf  ]  ||
 echo  "$ID"  >  /etc/xinetd.conf
 
-/etc/init.d/xinetd.sh  start
+if  [ -x  /etc/init.d/xinetd.sh ];  then
+  /etc/init.d/xinetd.sh  start
+fi

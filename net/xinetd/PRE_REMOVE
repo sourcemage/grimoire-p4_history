@@ -1,1 +1,3 @@
-/etc/init.d/xinetd.sh  stop
+if [ -x /etc/init.d/xinetd.sh ];  then
+  /etc/init.d/xinetd.sh  stop
+fi
