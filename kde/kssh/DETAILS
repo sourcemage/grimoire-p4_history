@@ -1,0 +1,16 @@
+           SPELL=kssh
+         VERSION=0.6
+          SOURCE=$SPELL-$VERSION-rc.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://unc.dl.sourceforge.net/kssh/$SOURCE
+   SOURCE_URL[1]=http://telia.dl.sourceforge.net/kssh/$SOURCE
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/kssh/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.kde.org/pub/kde/stable/apps/KDE3.x/network/$SOURCE
+        WEB_SITE=http://kssh.sourceforge.net/
+         ENTERED=20020521
+         UPDATED=20020521
+      MAINTAINER=sandalle@yahoo.com
+           SHORT="KDE front-end to ssh"
+cat << EOF
+KSSH is a simple KDE front-end for Secure Shell (ssh). It calls a terminal where it will execute an ssh call based on user-specified parameters (host, username, port, etc.). 
+EOF
