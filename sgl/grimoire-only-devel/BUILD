@@ -1,3 +1,5 @@
+rm /var/lib/sorcery/grimoire/LICENSE			1>/dev/null  2>&1
+
 dispel  archive audio chat 				1>/dev/null  2>&1
 dispel  cluster collab crypto 				1>/dev/null  2>&1
 dispel  devel disk doc 					1>/dev/null  2>&1
