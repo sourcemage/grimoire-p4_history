@@ -18,15 +18,6 @@ fags_boot_install () {
     chmod  0640       /etc/fags/config
   fi
 
-  # install init script
-  cp  $SCRIPT_DIRECTORY/fags.sh  /etc/init.d
-
-  ln  -sf  ../init.d/fags.sh  /etc/rc0.d/K00fags
-  ln  -sf  ../init.d/fags.sh  /etc/rc6.d/K00fags
-
-  ln  -sf  ../init.d/fags.sh  /etc/rc3.d/S99fags
-  ln  -sf  ../init.d/fags.sh  /etc/rc4.d/S99fags
-  ln  -sf  ../init.d/fags.sh  /etc/rc5.d/S99fags
 }
 
 (
