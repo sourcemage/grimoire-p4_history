@@ -1,27 +1,20 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/apache_1.3.23_db4.patch
-
-  ./configure  --prefix=/usr                     \
-               --sysconfdir=/etc/httpd           \
-               --localstatedir=/var/lib/httpd    \
-               --logfiledir=/var/log/httpd       \
-               --proxycachedir=/var/cache/httpd  \
-               --runtimedir=/var/run/httpd       \
-               --enable-module=most              \
-               --enable-shared=max               \
-               --enable-module=auth_db           \
-               --enable-module=mmap_static       \
-               --disable-module=auth_dbm         \
-               --with-layout=GNU                 &&
-  make                                           &&
-  prepare_install                                &&
+  ./configure  --prefix=/usr                              \
+               --sysconfdir=/etc/httpd                    \
+               --localstatedir=/var/lib/httpd             \
+               --enable-module=most,auth_db,mmap_static   \
+               --disable-auth                             \
+               --enable-layout=GNU                        &&
+  make                                           	  &&
+  prepare_install                                	  &&
   make    install
 
 ) > $C_FIFO 2>&1  &&
 
 (
 
+  ln -s /usr/sbin/httpd /usr/bin/httpd
   cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d
 
   case  $APACHE_BOOT  in

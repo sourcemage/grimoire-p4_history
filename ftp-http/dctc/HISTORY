@@ -1,3 +1,17 @@
+2002-04-07  Eric Schabell <eric@schabell.com>
+
+		Updated version to 0.78.0:
+		* In this release, the BerkeleyDB detection was improved. The transfer
+ 		  key of broken clients can now be accepted. When a transfer with an
+ 		  user ends, other waiting transfers with him are now woken up. Minor
+ 		  bugs were fixed in download and search. It is now possible to link
+ 		  DCTCs of different computers to allow them to share the user IP
+ 		  address database (UADDR) and to perform searchs on hub where you are
+ 		  not directly connected to. With the GUI, users can now be flagged from
+ 		  GDL list, the seen hub list is saved faster on leaving, each GDL has a
+ 		  time to complete its task, and the user share list is displayed as a
+ 		  tree and is now buffered to improve display speed.
+		
 2002-04-02  Eric Schabell <eric@schabell.com>
 
 		Updated version to 0.77.0:
