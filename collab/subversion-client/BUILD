@@ -15,15 +15,15 @@ if echo "$OPTS" | grep -q 'enable-all-static'; then
   export LDFLAGS="$LDFLAGS -lpthread"
 fi &&
 
-./configure \
-  --build=$BUILD \
-  --prefix=/usr \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --disable-debug \
-  --disable-mod-activation \
-  --without-apxs \
-  --without-berkeley-db \
-  $OPTS &&
-make  &&
+./configure                 \
+  --build=$BUILD            \
+  --prefix=/usr             \
+  --sysconfdir=/etc         \
+  --localstatedir=/var      \
+  --disable-debug           \
+  --disable-mod-activation  \
+  --without-apxs            \
+  --without-berkeley-db     \
+  $OPTS                     &&
+make                        &&
 make_if_swig  swig-py
