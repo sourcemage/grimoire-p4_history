@@ -1,0 +1,23 @@
+--- intltool-merge.in.orig	2004-04-25 12:36:35.914641416 -0500
++++ intltool-merge.in	2004-04-25 12:38:36.985235888 -0500
+@@ -53,9 +53,9 @@
+ push @INC, "$dir/modules";
+ push @INC, "$dir/intltool-modules";
+ 
+-$ret = eval 'require XML::Parser::Style::OrigTree';
++$ret = eval 'require XML::Parser::Style::Tree';
+ if(!$ret) {
+-    die "The OrigTree module doesn't seem to be properly installed $0\n\n";
++    die "The Tree module doesn't seem to be properly installed $0\n\n";
+ }
+ 
+ my $must_end_tag      = -1;
+@@ -890,7 +890,7 @@
+         die "ERROR Cannot find filename: $filename\n";
+     }
+ 
+-    my $xp = new XML::Parser(Style => 'XML::Parser::Style::OrigTree');
++    my $xp = new XML::Parser(Style => 'XML::Parser::Style::Tree');
+     my $tree = $xp->parsefile($filename);
+ 
+ # <foo><head id="a">Hello <em>there</em></head><bar>Howdy<ref/></bar>do</foo>
