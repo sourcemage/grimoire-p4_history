@@ -1,4 +1,5 @@
 depends  bash          &&
+depends  binutils      &&
 depends  bzip2         &&
 depends  coreutils     &&
 depends  cpio          &&
@@ -7,16 +8,23 @@ depends  e2fsprogs     &&
 depends  file          &&
 depends  findutils     &&
 depends  gawk          &&
+depends  gettext       &&
+depends  gcc           &&
+depends  glibc         &&
 depends  grep          &&
 depends  gzip          &&
 depends  init.d        &&
 depends  installwatch  &&
 depends  less          &&
 depends  lockexec      &&
+depends  module-init-tools &&
 depends  nano          &&
+depends  net-tools     &&
+depends  ncurses       &&
 depends  patch         &&
 depends  perl          &&
 depends  procps        &&
+depends  readline      &&
 depends  rpmunpack     &&
 depends  sed           &&
 depends  shadow        &&
@@ -24,9 +32,12 @@ depends  simpleinit-msb &&
 depends  tar           &&
 depends  texinfo       &&
 depends  unzip         &&
-depends  util-linux    &&
 depends  wget          &&
-
+depends  zlib          &&
+if query "Use cryptographic util-linux package (not necessary)" n
+then depends  util-linux-crypto 
+else depends  util-linux    
+fi                     &&  
 optional_depends  "xdelta" "" "" "For tar and binary patching"
 
 optional_depends  "sorcery-sound-simpsons"                     \
