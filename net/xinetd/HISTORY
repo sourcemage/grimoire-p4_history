@@ -1,0 +1,10 @@
+2002-04-13	Jeff Schmidt <jschmidt@fnal.gov>
+
+                Added this History file.
+		added tcp_wrappers as optional dependancy,
+		until now, we have *not* had tcp_wrapper support
+		for xinetd daemons!
+
+		I have also added (default) support for the max_load config
+		option, thereby allowing the admin to disable individual
+		services if the system's load is above a specified level.
