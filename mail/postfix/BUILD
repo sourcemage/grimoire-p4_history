@@ -9,72 +9,85 @@
   chown  mail:mail  /var/spool/mail							&&
   chgrp  mail       /var/spool/mail/*							&&
 
-  if  spell_installed  openldap
-  then
-    if [ "$LDAP" == "y" ]; then
-      AUXLIBS="-lldap -llber"								&&
-      CCARGS="-DHAS_LDAP"								&&
-      message "${MESSAGE_COLOR}Openldap detected: Using Openldap ${DEFAULT_COLOR}"
-    fi
+  if  spell_installed  openldap && [ "$LDAP" == "y" ]
+  then AUXLIBS="-lldap -llber"								&&
+       CCARGS="-DHAS_LDAP"								&&
+       message "${MESSAGE_COLOR}Openldap detected: Using Openldap ${DEFAULT_COLOR}"
   fi											&&
 
-  if  spell_installed  Linux-PAM
-  then
-    if [ "$PAM" == "y" ]; then
-      AUXLIBS="$AUXLIBS -lpam -lpam_misc"						&&
-      CCARGS="$CCARGS  -DHAS_PAM"							&&
-      message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM ${DEFAULT_COLOR}"
-    fi
+  if  spell_installed  Linux-PAM && [ "$PAM" == "y" ]
+  then AUXLIBS="$AUXLIBS -lpam -lpam_misc"						&&
+       CCARGS="$CCARGS  -DHAS_PAM"							&&
+       message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM ${DEFAULT_COLOR}"
   fi											&&
 
-  if  spell_installed  cyrus-sasl
-  then
-    if [ "$SASL" == "y" ]; then
-      AUXLIBS="$AUXLIBS -lsasl2"							&&
-      CCARGS="$CCARGS  -DUSE_SASL_AUTH"							&&
-      message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
-    fi
+  if  spell_installed  cyrus-sasl && [ "$SASL" == "y" ]
+  then AUXLIBS="$AUXLIBS -lsasl2"							&&
+       CCARGS="$CCARGS  -DUSE_SASL_AUTH -I/usr/include/sasl"				&&
+       message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
   fi                                                    				&&
 
-  if spell_installed mysql
-  then
-    if [ "$MYSQL" == "y" ]; then  
-      AUXLIBS="$AUXLIBS -L/usr/lib -lmysqlclient -lz -lm"     				&&
-      CCARGS="$CCARGS -DHAS_MYSQL -I/usr/include/mysql"      				&&
-      message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}"
-    fi
+  if spell_installed mysql && [ "$MYSQL" == "y" ]
+  then AUXLIBS="$AUXLIBS -L/usr/lib -lmysqlclient -lz -lm"     				&&
+       CCARGS="$CCARGS -DHAS_MYSQL -I/usr/include/mysql"      				&&
+       message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}"
   fi  					                                                &&
 
-  if  spell_installed  openssl
-  then  
-    if [ "$SSL" == "y" ]; then
-      AUXLIBS="$AUXLIBS -lssl -lcrypto"               			   	   	&&
+  if  spell_installed  openssl && [ "$SSL" == "y" ]
+  then AUXLIBS="$AUXLIBS -lssl -lcrypto"               			   	   	&&
       CCARGS="$CCARGS -DHAS_SSL -I/usr/include/openssl"       		   		&&
       message "${MESSAGE_COLOR}OpenSSL detected: Using OpenSSL ${DEFAULT_COLOR}"
-    fi
   fi                                                    				&&
 
   case $SSL_TLS in
-    y|Y|j|J)	
+    y|Y)	
       message "${MESSAGE_COLOR}Trying to patch Postfix for SSL/TLS support ${DEFAULT_COLOR}" &&
-      patch -p1 < $SOURCE2_DIRECTORY/pfixtls.diff  || PATCH_FAILED=true		&&
+      patch -Np1 < $SOURCE2_DIRECTORY/pfixtls.diff  || PATCH_FAILED=true		&&
       if [ "$PATCH_FAILED" == "true" ]; then
         message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"	&&
-	message "and answer no to the TLS/SSL patch question. ${DEFAULT_COLOR}"
+	message "and answer no to the TLS/SSL patch question. ${DEFAULT_COLOR}"		&&
         exit 1
       fi
   esac                                                    				&&
+
+  case $PGSQL in
+    y|Y)	
+      message "${MESSAGE_COLOR}Trying to patch Postfix for PostgreSQL support ${DEFAULT_COLOR}" &&
+      patch -Np1 < $SOURCE3_DIRECTORY/$SOURCE3  || PATCH_FAILED=true			&&
+      if [ "$PATCH_FAILED" == "true" ]; then
+        message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"	&&
+	message "and answer no to the Postgresql patch question. ${DEFAULT_COLOR}"	&&
+        exit 1
+      fi										&&
+      AUXLIBS="$AUXLIBS /usr/lib/libpq.a -lcrypt"					&&
+      CCARGS="$CCARGS  -DHAS_PGSQL -I/usr/include/postgresql"				&&
+      mkdir -p /usr/doc/$SPELL								&&
+      mkdir -p /usr/doc/$SPELL/$NAME4							&&
+      cp -r $SOURCE4_DIRECTORY/$NAME4/* /usr/doc/$SPELL/$NAME4
+  esac											&&
+
+  case $VDA in
+    y|Y)	
+      message "${MESSAGE_COLOR}Trying to patch Postfix with VDA support ${DEFAULT_COLOR}" &&
+      patch -Np1 < $SOURCE5_DIRECTORY/$NAME5   || PATCH_FAILED=true			&&
+      if [ "$PATCH_FAILED" == "true" ]; then
+        message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"	&&
+	message "and answer no to the VDA patch question. ${DEFAULT_COLOR}"		&&
+        exit 1
+      fi
+  esac											&&
 
   # fix to get man pages to install in /usr/man
 
   sedit  "s:/usr/local:/usr:"  src/global/mail_params.h					&&
 
-  make makefiles 			   						&&
+  make makefiles 		\
+	"CC=gcc"		\
+        "OPT=$CFLAGS"		\
+        "AUXLIBS=$AUXLIBS" 	\
+        "CCARGS=$CCARGS"       		   						&&
 
-  make  "CC=gcc"               \
-        "OPT=$CFLAGS"          \
-        "AUXLIBS=$AUXLIBS"     \
-        "CCARGS=$CCARGS"       								&&
+  make  										&&
 
   prepare_install              								&&
 
@@ -83,8 +96,6 @@
   else
     make install	       				
   fi			       								&&
-
-  installscript postfix.sh								&&
 
   ln  -sf  ../sbin/sendmail   /usr/lib/sendmail  					&&
 

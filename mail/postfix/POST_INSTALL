@@ -64,4 +64,19 @@ if [ "$SSL_TLS" == "y" ]; then
   message " "
 fi
 
+#
+# Postgresql tables info
+#
+if [ "$PGSQL" == "y" ]; then
+  message " "
+  message "${MESSAGE_COLOR}About the Postgresql patch:"
+  message "This patch is experimental."
+  message " "
+  message "This patch enables postfix to use postgresql as its lookup table. ie. You can use"
+  message "postgresql to store all data about virtual users and domains."
+  message "See /usr/doc/$SPELL/$NAME4 for some examples (They might be also used with some"
+  message "modifications with mysql database) ${DEFAULT_COLOR}"
+  message " "
+fi
+
 /etc/init.d/postfix.sh  start
