@@ -1,0 +1,12 @@
+	mk_source_dir $SOURCE_DIRECTORY &&
+	unpack $SOURCE ${MD5[0]} &&
+
+	if [ "$GAIM_ENCRYPTION" = "y" ] ; then
+		cd $SOURCE_DIRECTORY/plugins/ &&
+		unpack $SOURCE2 ${MD5[1]}
+	fi
+
+	#if spell_installed gpgme && spell_installed libgcrypt ; then
+		#cd $SOURCE_DIRECTORY/plugins/ &&
+		#unpack $SOURCE3 ${MD5[2]}
+	#fi
