@@ -14,5 +14,3 @@ until grep  -q  "^[[:blank:]]*SORCERY_BRANCH="  $SPELL_CONFIG;  do
   esac
 
 done
-
-sedit 's/^\([[:blank:]]*SOURCE=\).*/\1\${SPELL}-'${SORCERY_BRANCH}'.tar.bz2/' ${SCRIPT_DIRECTORY}/DETAILS
