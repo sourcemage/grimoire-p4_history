@@ -1,0 +1,34 @@
+           SPELL=fwlogwatch
+         VERSION=0.9.3
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://www.kyb.uni-stuttgart.de/boris/sw/$SOURCE
+          MD5[0]=6f74a81a8361a78c8a140b042bd2cb68
+        WEB_SITE=http://cert.uni-stuttgart.de/projects/fwlogwatch/
+         ENTERED=20040225
+         UPDATED=20040225
+      LICENSE[0]=GPL
+      MAINTAINER=unet@sourcemage.org
+           SHORT="fwlogwatch is a packet filter/firewall/IDS log analyzer"
+cat << EOF
+#  General features:
+
+    * Can detect and process log entries in the following formats:
+      Linux ipchains, Linux netfilter/iptables, Solaris/BSD/Irix/HP-UX 
+ipfilter, Cisco IOS, Cisco PIX, NetScreen Windows XP firewall, Elsa 
+Lancom router and Snort IDS.
+    * Entries can be parsed in combined log files, the parsers to be 
+used can be selected.
+    * Gzip-compressed logs are supported.
+    * Can separate recent from old entries and detects timewarps in log 
+files.
+    * Can recognize 'last message repeated' entries concerning the 
+firewall.
+    * Integrated resolver for protocols, services and host names.
+    * Can do lookups in the whois database.
+    * Own DNS and whois information cache for faster lookups.
+    * Hosts, ports, chains and branches (targets) can be selected or 
+excluded as needed.
+    * Support for internationalization (available in English, German, 
+Portuguese, simplified and traditional Chinese and Swedish). 
+EOF
