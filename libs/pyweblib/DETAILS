@@ -1,0 +1,24 @@
+           SPELL=pyweblib
+         VERSION=1.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.stroeder.com/pylib/PyWebLib/download/$SOURCE
+          MD5[0]=7c077544fd0898f16fe014750937c436
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.stroeder.com/pylib/PyWebLib/
+         ENTERED=20021211
+         UPDATED=20021211
+           SHORT='Yet another web programming framework for Python'
+cat << EOF
+The module package pyweblib consists of several submodules:
+pyweblib.forms
+    class library for handling <FORM> input
+pyweblib.session
+    server-side web session handling
+pyweblib.helper
+    misc. stuff useful in CGI-BINs
+pyweblib.sslenv
+    retrieves SSL-related env vars
+pyweblib.httphelper
+    very basic HTTP functions/classes
+EOF
