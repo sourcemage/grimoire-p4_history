@@ -39,7 +39,7 @@ cd  kernel/svgalib_helper                                              &&
 if  [  `uname  -r  |  cut  -d.  -f1,2`  ==  "2.6"  ]
 then
   message  "${MESSAGE_COLOR}Building for 2.6...${DEFAULT_COLOR}"       &&
-  make  clean  all
+  make
 else
   message  "${MESSAGE_COLOR}Building for 2.4...${DEFAULT_COLOR}"       &&
   env  -u  ARCH                                                        \
