@@ -8,6 +8,6 @@
   make    configure                 &&
   make                              &&
   prepare_install                   &&
-  make install install-dev install-lib
+  make install install-dev 
 
 ) > $C_FIFO 2>&1
