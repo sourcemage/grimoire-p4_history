@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=551932cea066577f88166b188b574623
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=a19f7b96431f97622029b58b29b9ecaf
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=f1df82db76d6c2cbc2a81738b3cde4ba
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -18,8 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="kdeadmin system administration programs."
+           SHORT="System administration programs for KDE."
 cat << EOF
 System administration programs.
 EOF

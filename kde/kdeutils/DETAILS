@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=d46de3c1265b3e27d18eedc90ac22a65
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-         MD5[0]=fef8be8d7ab2b6f33a4c1e07747b6039
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=7e43730d97bf7444f3d45eaee1bf766a
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -19,8 +19,7 @@ fi
        BUILD_API=2
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="kdeutils contains desktop tools like a calculator and editor."
+           SHORT="Desktop tools like a calculator and editor for KDE."
 cat << EOF
 Various desktop tools like a calculator, an editor and other nifty stuff.
 EOF

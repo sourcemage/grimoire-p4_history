@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=06a76242c0d8e327814ce92bf63c383f
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-          MD5[0]=e9cd0bc7f532270f811a6ae8ab00ea46
+          MD5[0]=d75a948e18168aa75ed2dc44921156ee
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -18,8 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="kdenetwork contains news client, and other programs."
+           SHORT="News client, and other programs for KDE."
 cat << EOF
 Network applications. Currently contains the news
 reader, and several other network-related programs.

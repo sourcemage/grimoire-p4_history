@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=c20de30be14c00eeaaabe42f920b8ad3
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=d3aafe52c7c111cece9b8bf8851ee947
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=8866da5be24df2eff2791cab6df95f77
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -18,7 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
 	   LICENSE[0]=GPL
-           SHORT="kdeaddons contains plugins for kate, kicker, konqueror, noatun, knewsticker."
+           SHORT="Plugins for kate, kicker, konqueror, noatun, knewsticker."
 cat << EOF
 kdeaddons contains 
 * Plugins for Kate
