@@ -1,0 +1,29 @@
+           SPELL=guru-tools
+         VERSION=0.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
+        WEB_SITE=http://www.schabell.com
+         ENTERED=20030602
+         UPDATED=20030603
+	      MD5[0]=a5100fe677f3bdd8fe0777b29ac6b600
+	     LICENSE=GPL
+      MAINTAINER=eschabell@sourcemage.org
+           SHORT="Collection of useful Guru Tools."
+cat << EOF
+There are various useful tools that have been written by Source Mage
+developers over the years. Here we have bundled them together for your
+Guru experience:
+
+  findSharedFiles			- A tool for finding files shared between spells.
+							  (by Rasmus Ory Nielsen) 
+
+  gazeSpider [<item ...]	- Validates urls for entire grimoire or if item
+  							  give, for one or more items. Items may be either 
+							  spells or sections.
+
+  md5unpack <tarball>		- provides md5sum info from source tarball. 
+
+If you have more to contribute, mail to maintainer.
+
+EOF
