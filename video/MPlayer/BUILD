@@ -31,8 +31,13 @@
 
     if (ldd /usr/bin/mplayer | grep freetype) > /dev/null; then
       if ! (ldd /usr/bin/mplayer | grep fontconfig) > /dev/null; then
-        cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
-            /usr/share/mplayer/subfont.ttf
+        if  [  -f  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf ]; then
+          cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
+              /usr/share/mplayer/subfont.ttf
+        else
+          message "Couldn't find a font to install as default subtitle font."
+          message "Make sure you copy a font to ~/.mplayer/subfont.ttf"
+        fi
       fi
     fi
   
