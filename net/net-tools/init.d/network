@@ -26,6 +26,7 @@ fi
 start()
 {
   for DEVICE in $devices ; do
+    [ "$DEVICE" = "lo" ] && continue
     /sbin/ifup $DEVICE
     evaluate_retval
   done
@@ -34,6 +35,7 @@ start()
 stop()
 {
   for DEVICE in $devices ; do
+    [ "$DEVICE" = "lo" ] && continue
     /sbin/ifdown $DEVICE
     evaluate_retval
   done
