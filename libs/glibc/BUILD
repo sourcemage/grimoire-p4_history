@@ -15,7 +15,7 @@
   then  export     CXXFLAGS="$CFLAGS -Os"
   fi                                          &&
   export  CFLAGS="$(  echo  $CFLAGS  |  sed  s/-ffast-math//  )"  &&
-  export CC=gcc                                &&
+  export  CC=gcc                              &&
   $SOURCE_DIRECTORY/configure                 \
                --host=$BUILD                  \
                --build=$BUILD                 \
@@ -30,7 +30,8 @@
 
 ### glibc install only installs these if the file differs 
 ### we like tracking files and removing them creates a major difference :)
-for i in /usr/include/bits/syscall.h /usr/include/gnu/stubs.h  
+for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h \
+         ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
 do if [ -f $i ]
    then  rm -vf $i
    fi
@@ -44,8 +45,8 @@ fi                                            &&
   make    install                             &&
   (  ldconfig  ||  true  )                    &&
 
-### comment this out to allow tracking of locale stuff
-### might need re-instating for a major version update
+### comment this out to allow tracking of locale stuff might need 
+### re-instating for a major version update 
 ### unset   LD_PRELOAD                          &&
 
   if  [  -z  "$GLIBC_LOCALES"  ];  then
@@ -53,7 +54,7 @@ fi                                            &&
     while  read  LOCALE  DESCRIPTION;  do
       INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  /usr/lib/locale/$INPUTFILE
+      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE
       echo "localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE"
             localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
     done
@@ -62,7 +63,7 @@ fi                                            &&
     for  LOCALE  in  $GLIBC_LOCALES;  do
       INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  /usr/lib/locale/$INPUTFILE
+      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE
       echo "localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE"
             localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
     done
