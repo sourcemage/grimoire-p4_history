@@ -1,3 +1,12 @@
+2003-09-23  Robert Helgesson <rycee@home.se>
+
+		Update of network device file format, completely backwards
+		compatible. You can now define the following functions in a
+		device file (found in /etc/sysconfig/network): do_device_up,
+		do_device_down, do_route_up, do_route_down, do_status, on_up
+		and on_down. The following new variables are also available:
+		MTU and POINTTOPOINT.
+
 2003-09-19  Seth Woolley <seth@tautology.org>
 
 		fixed network init.d script to not inherit echo override

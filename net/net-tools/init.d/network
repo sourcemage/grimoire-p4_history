@@ -29,11 +29,13 @@ start()
 {
   required_executable  /sbin/ifup
 
+  _OBEY_UP_ON_BOOT=1
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
     echo "$(unset -f echo; /sbin/ifup $DEVICE)"
     evaluate_retval
   done
+  unset _OBEY_UP_ON_BOOT
 }
 
 stop()
@@ -50,11 +52,13 @@ stop()
 status()
 {
   for DEVICE in $devices ; do
-    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+    unset MODE on_status
 
     . $netdevdir/$DEVICE.dev
 
-    if [ -z "$MODE" ] ; then
+    if [ "$( type -t do_status )" = function ] ; then
+      do_status         # If on_status is defined in the device file
+    elif [ -z "$MODE" ] ; then
       echo " There are errors in $netdevdir/$DEVICE.dev"
     else
       if [ "$MODE" = dynamic ]; then
