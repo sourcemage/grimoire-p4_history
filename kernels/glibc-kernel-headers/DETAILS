@@ -1,5 +1,6 @@
            SPELL=glibc-kernel-headers
          VERSION=${VERSION:=2.4.24}
+       BUILD_API=2
 if [ "$KERN" = "2.4" ]; then
          VERSION=2.4.24
           MD5[0]=e39bbcb45b828deaef298266a44825e7
@@ -7,8 +8,8 @@ if [ "$KERN" = "2.4" ]; then
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
       SOURCE_URL=http://download.sourcemage.org/mirror/$SOURCE
 elif [ "$KERN" = "2.6" ]; then
-         VERSION=2.6.5.2
-          MD5[0]=6da62db6ec5165d5e8aad51fdd03002b
+         VERSION=2.6.6.0
+          MD5[0]=2105b929c9ad04d26a87cc58e0fc7339
           SOURCE=linux-libc-headers-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/linux-libc-headers-$VERSION
       SOURCE_URL=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE
