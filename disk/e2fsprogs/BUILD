@@ -10,7 +10,6 @@
   make    install                   &&
   make    install-libs              &&
 
-  install  -d  /devices
   install  -d  /usr/include/uuid
   install  -m  644  lib/uuid/libuuid.a  /usr/lib
   install  -m  644  lib/uuid/uuid.h     /usr/include/uuid
