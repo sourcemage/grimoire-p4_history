@@ -4,17 +4,19 @@ DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
 HELP="See http://kernel.kolivas.net
  
-batch O(1) scheduler, preemptible, low latency
+batch O(1) scheduler, interactivity update, preemptible, low latency
 Andrea Arcangeli's newest vm addons
 Read Latency2 disk hack by Andrew Morton
 Supermount
-XFS file system v1.2pre5
+XFS file system v1.2
 ACPI
 Packet writing for CDRW/DVD
+Variable HZ setting
+Scheduler Tunables
 Desktop Tuning"
 
-VERSIONS="ck4_2.4.20"
-MD5S[0]=19793c8cd68f27455994504067bb2096
+VERSIONS="ck5_2.4.20"
+MD5S[0]=922789bc52c2006955a4224cd4c49d41
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
