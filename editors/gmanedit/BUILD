@@ -1,12 +1,2 @@
-(
-
-  ./configure  --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               --disable-nls         \
-               $OPTS                 &&
-  make                               &&
-  prepare_install                    &&
-  make    install
-
-) > $C_FIFO 2>&1
+OPTS=`echo "${OPTS} --disable-nls"` &&
+default_build

@@ -1,9 +1,1 @@
-(
-
-  prepare_install                                                &&
-  buildhash  american.med+  english.aff  /usr/lib/american.hash  &&
-  buildhash  british.med+   english.aff  /usr/lib/english.hash   &&
-  buildhash  american.xlg   english.aff  /usr/lib/US-xlg.hash    &&
-  buildhash  british.xlg    english.aff  /usr/lib/UK-xlg.hash
-
-) > $C_FIFO 2>&1
+true
