@@ -1,6 +1,4 @@
 
-# used to figure out which mode, kernel version, patches to apply
-configfile="${CONFIG_CACHE}/details.conf"
 # kernel information directory
 kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
 # patches information directory
@@ -12,20 +10,6 @@ detailsdefaults="${CONFIG_CACHE}/details.defaults"
 latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
 # debug log duh ;)
 debug="${SCRIPT_DIRECTORY}/debug.log"
-
-# replace the details.conf file veriable ($1) with value ($2)
-# if the variable doesn't exist then cat it onto the end of the file
-replace_config_var()
-{
-	line="`grep "^$1" $configfile`"
-	new="$1=\"$2\""
-	if [ "$line" == "" ]
-	then
-		echo "$new" >> $configfile
-	else
-		sedit "s/$line/$new/" $configfile
-	fi
-}
 
 # Create the default KERNEL_ARCH variable
 arch_default()
@@ -73,6 +57,8 @@ create_defaults()
 	persistent_add reconf
 	kver="LATEST_2_6"
 	persistent_add kver
+	patches=""
+	persistent_add patches
 	persistent_save
 	persistent_load
 }
@@ -561,7 +547,9 @@ patch_menu()
 				new_patch_list="${new_patch_list}${command} "
 			fi
 		else
-			replace_config_var patches $new_patch_list
+			patches=$new_patch_list
+			persistent_save
+			persistent_load
 			break
 		fi
 	done
@@ -580,7 +568,7 @@ old_src_menu()
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			replace_config_var old_src_tree $old_src_tree
+			persistent_add old_src_tree
 			break
 		else
 			break
@@ -593,7 +581,6 @@ old_src_menu()
 calculate_depends()
 {
 	# really this should be done with a make file
-	. $configfile
 	new_patch_list=""
 	for patch in $patches
 	do
@@ -614,7 +601,8 @@ calculate_depends()
 				;;
 		esac
 		new_patch_list="${new_patch_list}${patch} "
-		replace_config_var patches ${new_patch_list}
+		persistent_save
+		persistent_load
 	done
 }
 
@@ -622,16 +610,13 @@ calculate_depends()
 # stuff like that
 create_details()
 {
-	. $configfile
 	persistent_load
 	. $latestdefaults
 	local counter="1"
 	case "$mode" in
 		*ktree)
 			(
-			. $configfile
 			calculate_depends
-			. $configfile
 			for patch in $patches
 			do
 				case "$patch" in
@@ -688,12 +673,9 @@ create_details()
 # if it's not there create it
 create_defaults
 
-. $configfile
-
 if [[ "$reconf" == "true" || "$kver" == "" ]]
 then
 	main_menu
-	. $configfile
 	persistent_load
 	if [ "$kver" == "" ]
 	then
@@ -703,7 +685,6 @@ then
 	while [ "$kver" == "" ]
 	do
 		main_menu
-		. $configfile
 		persistent_load
 		if [ "$kver" == "" ]
 		then
@@ -713,7 +694,7 @@ then
 	done
 	create_details
 else
-	echo "No Reconfigure, using $configfile for defaults"
+	echo "No Reconfigure, using ${SPELL_CONFIG}.p for defaults"
 fi
 
 persistent_load

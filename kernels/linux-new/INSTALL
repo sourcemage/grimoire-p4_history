@@ -1,8 +1,6 @@
 
 cd ${LINUX_SOURCE_DIRECTORY}
 
-. ${CONFIG_CACHE}/details.conf
-
 # make the append
 append="`echo ${LINUX_SOURCE_DIRECTORY} | awk -F'/' '{ print $NF }'`"
 append="`echo $append | awk -F'-' '{ for(i=2; i <= NF; i++)

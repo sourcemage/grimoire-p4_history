@@ -1,7 +1,6 @@
 
 cd ${LINUX_SOURCE_DIRECTORY}
 echo "This is the version: $VERSION"
-. ${CONFIG_CACHE}/details.conf
 case "$VERSION" in
 	2.6*)
 		echo "making for a 2.6 kernel"

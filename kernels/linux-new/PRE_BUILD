@@ -1,4 +1,4 @@
-. ${CONFIG_CACHE}/details.conf
+
 if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $SOURCE_DIRECTORY 
@@ -9,7 +9,6 @@ then
 	
 	. ${SCRIPT_DIRECTORY}/functions
 	. ${SCRIPT_DIRECTORY}/latest.defaults
-	. ${CONFIG_CACHE}/details.conf
 	for patch in $patches
 	do
 		case "$patch" in
@@ -49,7 +48,6 @@ else
 fi
 cd ${LINUX_SOURCE_DIRECTORY}
 
-. ${CONFIG_CACHE}/details.conf
 if [[ "$reconf" == "true" || ! -f ./.config ]]
 then
 	if [[ $COMPILE ]]
