@@ -1,1 +1,5 @@
-requires  java
+requires  java		&&
+
+if [ "$WITH_ANTLR" == "y" ]; then
+  depends "antlr"  ""  ""  "for ANTLR optinal Ant task"
+fi
