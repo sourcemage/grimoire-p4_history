@@ -8,6 +8,7 @@
 # for each network device, with the same name as the device
 # with the following variables set as needed:
 # MODULE=
+# leave MODULE blank if device driver built into the kernel
 # MODE=dynamic if you use dhcpcd
 # MODE=static if you do not
 # The following is needed only if you do not use dhcpcd
@@ -38,11 +39,14 @@ case "$1" in
 	    if [ -f $netdevdir/$DEVICE ]; then
 		unset MODE MODULE IP BROADCAST NETMASK GATEWAY
 		. $netdevdir/$DEVICE
-		if [ -z "$MODE" ] || [ -z "$MODULE" ]; then
+		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE"
 		else
-		    echo "$1ing $0 with $DEVICE ..."
-		    loadproc modprobe  $MODULE
+# only load module if necessary
+		    if [ ! -z "$MODULE" ]; then
+			echo "$1ing $0 with $DEVICE ..."
+			loadproc modprobe  $MODULE
+		    fi
 		    if [ `echo $MODE` = dynamic ]; then
 			echo "$1ing dhcpcd on $DEVICE ..."
 			if [ -e $DHCPD_PATH$DEVICE.pid ]; then
@@ -70,8 +74,7 @@ case "$1" in
 	    if [ -f $netdevdir/$DEVICE ]; then
 		unset MODE MODULE IP BROADCAST NETMASK GATEWAY
 		. $netdevdir/$DEVICE
-# this is probably unnecessary since these checks were made during start, but...
-		if [ -z "$MODE" ] || [ -z "$MODULE" ]; then
+		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE"
 		else
 		    if [ `echo $MODE` = dynamic ]; then 
@@ -82,9 +85,12 @@ case "$1" in
 		    else
 			ifconfig $DEVICE down
 		    fi
-		    echo "$1ping $0 on $DEVICE ..."
-		    modprobe -r $MODULE
-		    evaluate_retval
+# only do this if network device is a module
+		    if [ ! -z "$MODULE" ]; then
+			echo "$1ping $0 on $DEVICE ..."
+			modprobe -r $MODULE
+			evaluate_retval
+		    fi
 		fi
 	    fi
 	done
@@ -100,7 +106,7 @@ case "$1" in
 	for DEVICE in $devices; do
 	    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
 	    . $netdevdir/$DEVICE
-		if [ -z "$MODE" ] || [ -z "$MODULE" ]; then
+		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE"
 		else
 		    if [ `echo $MODE` = dynamic ]; then
@@ -112,7 +118,7 @@ case "$1" in
 	;;
 
     *)
-	echo "Usage: $0 {start|stop|restart|status}"
+	echo "Usage: $0 {start|stop|restart|status} [DEVICE]"
 	exit 1
 	;;
 esac

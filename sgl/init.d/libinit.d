@@ -8,7 +8,8 @@ cat_headers ()
 # config file for $nicfile
 # use dynamic or static for MODE=
 # dynamic and static both require:
-# MODULE= kernel module for $nicfile
+# MODULE= module for $nicfile
+# if $nicfile driver built into kernel leave blank
 # static requires the following in addition:
 # IP= ip address of $nicfile (if you have one, MODE=static)
 # BROADCAST= broadcast address
