@@ -1,4 +1,9 @@
 default_pre_build                                      &&
 cd  $SOURCE_DIRECTORY                                  &&
-bzcat  $SCRIPT_DIRECTORY/g++.patch.bz2  |  patch  -p1  &&
-patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.in.patch
+if [ "$THEORA_SVN" = "y" ]; then
+  sedit  's/examples//'  Makefile.am  &&
+  ./autogen.sh
+else
+  patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.in.patch   &&
+  bzcat  $SCRIPT_DIRECTORY/g++.patch.bz2  |  patch  -p1
+fi  
