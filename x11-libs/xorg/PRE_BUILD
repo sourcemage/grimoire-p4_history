@@ -8,6 +8,14 @@ then  cp     $CONFIG_CACHE/host.def                \
              $SOURCE_DIRECTORY/config/cf/host.def
 fi  &&
 
+# Now that we're using PIC-enabled libraries, we need to prevent use of X's loader
+# This option is needed for compatibility with pre-20050406 host.def files
+if  !  grep  -q  MakeDllModules             $SOURCE_DIRECTORY/config/cf/host.def; then
+  echo  '#define MakeDllModules   YES'  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+  echo  '#define DoLoadableServer YES'  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+  message  "${MESSAGE_COLOR}You may want to update your host.def file...${DEFAULT_COLOR}"
+fi  &&
+
 if  !  grep  -q  InstallFontconfigLibrary  $SOURCE_DIRECTORY/config/cf/host.def
   then echo  "#define InstallFontconfigLibrary NO"     \
              >>  $SOURCE_DIRECTORY/config/cf/host.def
