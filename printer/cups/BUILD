@@ -28,7 +28,8 @@ fake_redhat()  {
 
 
   if  [  !  -e  /usr/lib/cups/filter/cupsomatic  ];  then
-    cp  /var/spool/sorcery/cupsomatic  /usr/lib/cups/filter/
+    unpack  $SOURCE2 ${MD5[1]}  &&
+    cp  $SOURCE_CACHE/$SOURCE2  /usr/lib/cups/filter/
   fi
 
   chmod  755  /usr/lib/cups/filter/cupsomatic
