@@ -49,8 +49,10 @@
   cp  -f  ./mtest/mtest   /usr/bin/					 &&
 
   if  spell_installed  stunnel;  then
-    ln  -sf  stunnel.pem  /etc/ssl/certs/imapd.pem			 &&
-    ln  -sf  stunnel.pem  /etc/ssl/certs/ipop3d.pem
+    ln  -sf  /etc/stunnel/stunnel.pem   \
+             /etc/ssl/certs/imapd.pem   &&
+    ln  -sf  /etc/stunnel/stunnel.pem   \
+             /etc/ssl/certs/ipop3d.pem
   fi									 &&
 
   message "${MESSAGE_COLOR}If you get 'unknown AUTHORIZATION state command'"  	&&
