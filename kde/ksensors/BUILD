@@ -1,4 +1,6 @@
 (
+patch -p0 < $SCRIPT_DIRECTORY/ksensors-0.7-startupcrash.diff &&
+patch -p0 < $SCRIPT_DIRECTORY/ksensors-0.7-fix.diff &&
 
   ./configure  --prefix=/usr        \
                --sysconfdir=/etc    \

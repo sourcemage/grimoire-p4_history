@@ -1,16 +1,13 @@
            SPELL=kssh
-         VERSION=0.6
-          SOURCE=$SPELL-$VERSION-rc.tar.gz
+         VERSION=0.7
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/kssh/$SOURCE
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/kssh/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/kssh/$SOURCE
-   SOURCE_URL[3]=ftp://ftp.kde.org/pub/kde/stable/apps/KDE3.x/network/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/kssh/$SOURCE
         WEB_SITE=http://kssh.sourceforge.net/
          ENTERED=20020521
          UPDATED=20020521
       MAINTAINER=sandalle@yahoo.com
-             MD5=64a79285747727843a80127ed9624a97
+             MD5=eb8e0a482642f966c564ffa617374c89
          LICENSE=GPL
            SHORT="KDE front-end to ssh"
 cat << EOF
