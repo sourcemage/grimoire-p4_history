@@ -121,7 +121,7 @@ main_menu()
 {
 	while true
 	do
-		tmp=${patchversion=${KERNEL_VERSION=${LATEST_2_6}}}
+		tmp=${patchversion=${kver=${LATEST_2_6}}}
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
@@ -330,23 +330,23 @@ restore_config()
 				"/proc/config.gz")
 					if [ -f ${menu_option} ]
 					then
-						zcat /proc/config.gz > ${CONFIG_CACHE}/kernel.config
+						zcat /proc/config.gz > /usr/src/linux/.config
 					fi
 					;;
 				"/boot/config-$VERSION")
 					if [ -f ${menu_option} ]
 					then
-						cp /boot/config-$VERSION ${CONFIG_CACHE}/kernel.config
+						cp /boot/config-$VERSION /usr/src/linux/.config
 					fi
 					;;
 				"Custom")
 					menu_option=$( $dialog --title "Config Restore" \
 						--nocancel --inputbox \
-						"Enter Custom File to Save to ${CONFIG_CACHE}/kernel.config" \
+						"Enter Custom File to Save to /usr/src/linux/.config" \
 						0 0 ${menu_option} )
 					if [ -f ${menu_option} ]
 					then
-						cp ${menu_option} ${CONFIG_CACHE}/kernel.config
+						cp ${menu_option} /usr/src/linux/.config
 					fi
 					;;
 			esac
@@ -388,7 +388,8 @@ options_menu()
 					restore_config
 					;;
 				"Initrd")
-					
+					echo "Not implemented yet"
+					sleep 5
 					;;
 				*) break ;;
 			esac
@@ -411,7 +412,7 @@ new_tree_menu()
 		do
 			menu="${menu}${version} Linux_Kernel Select_one "
 		done
-		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
+		menu="CUSTOM Linux_Kernel Enter_your_own_version $( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 		command=$( $dialog --title "Select Kernel Version" \
 		--item-help --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
@@ -427,6 +428,10 @@ new_tree_menu()
 				LATEST*)
 					kver=$command
 					patch_menu $kver
+					;;
+				CUSTOM*)
+					echo "Not Implemented Yet"
+					sleep 5
 					;;
 				*) 
 					break 
