@@ -1,7 +1,7 @@
 create_account gdm                                                      &&
 
-if    spell_installed  Linux-PAM;  then  SCHEME="pam"
-elif  spell_installed  shadow;     then  SCHEME="shadow"
+if    spell_ok  linux-pam;  then  SCHEME="pam"
+elif  spell_ok  shadow;     then  SCHEME="shadow"
 else  SCHEME="auto"
 fi                                                                      &&
 
