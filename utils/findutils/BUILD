@@ -1,5 +1,6 @@
 (
-  ./configure   --build=$BUILD                                   \
+  ./configure   --build=${BUILD}                                 \
+                --host=${HOST}                                   \
                 --prefix=${INSTALL_ROOT}/usr                     \
                 --libexecdir=${INSTALL_ROOT}/usr/bin             \
                 --sysconfdir=${INSTALL_ROOT}/etc     		 \
