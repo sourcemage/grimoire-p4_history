@@ -1,0 +1,2 @@
+[ -e /etc/sysconfig/alsa ] || exit 0
+sedit "s:CARD=.*$:CARD=$CARD:"  /etc/sysconfig/alsa
