@@ -16,7 +16,7 @@
  
  ${TGT}: Makefile ${TGT}.c 
 -	${CC} -Wall -g -O2 -D${ARCH} -DPREFIX=\"${PREFIX}\" ${TGT}.c -o ${TGT} ${LIBS}
-+	${CC} ${CFLAGS} -D${ARCH} -DPREFIX=\"${PREFIX}\" ${TGT}.c -o ${TGT} ${LIBS}
++	${CC} ${CFLAGS} -D${ARCH} -DPREFIX=\"${PREFIX}\" ${TGT}.c -o ${TGT} ${LIBS} ${LDFLAGS}
  
  install: ${TGT} 
  	cp ${TGT} ${BINDIR}/${TGT}

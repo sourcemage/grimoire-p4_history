@@ -1,11 +1,4 @@
-(
-
- ./configure  --prefix=/usr  &&
-  make                       &&
-  prepare_install            &&
-  make    install
-
-) > $C_FIFO 2>&1  &&  (
+default_build  &&  (
 
   case  $YPBIND_BOOT  in
     y|Y|j|J)  cp  $SCRIPT_DIRECTORY/ypbind.sh  /etc/init.d

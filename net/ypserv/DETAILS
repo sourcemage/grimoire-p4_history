@@ -1,10 +1,11 @@
            SPELL=ypserv
-         VERSION=2.5
+         VERSION=2.6
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.kernel.org/pub/linux/utils/net/NIS/$SOURCE
-        WEB_SITE=http://www.suse.de/~kukuk/nis/ypserv
-          MD5[0]="420c1bc8f5da8fed00236a4bf068b49d"
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/net/NIS/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/net/NIS/$SOURCE
+          MD5[0]=3a93f0d87dffb16cf1a860e1d64e6cb0
+        WEB_SITE=http://www.linux-nis.org/nis/ypserv/
            SHORT="NIS provides a simple network lookup service consisting of databases and processes."
          ENTERED=20011022
          UPDATED=20011126

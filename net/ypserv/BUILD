@@ -1,9 +1,6 @@
 (
 
-  ./configure  --prefix=/usr  &&
-  make                        &&
-  prepare_install             &&
-  make    install             &&
+  default_build  &&
   
   cp  $SCRIPT_DIRECTORY/ypserv.sh     /etc/init.d  &&
   cp  $SCRIPT_DIRECTORY/yppasswdd.sh  /etc/init.d

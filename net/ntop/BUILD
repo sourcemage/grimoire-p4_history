@@ -17,7 +17,8 @@
   cd  ../ntop                              &&
   ./autogen.sh							   &&
   ./configure  --prefix=/usr               \
-               --localstatedir=/var/cache  &&
+               --localstatedir=/var/cache  \
+               $OPTS                       &&
   make                                     &&
   prepare_install                          &&
   make    install                          &&

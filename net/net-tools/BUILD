@@ -2,9 +2,8 @@
 
   cp  $CONFIG_CACHE/net-tools.config.h  config.h  &&
 
-  sedit  "s:-O2:$CFLAGS:"  Makefile  &&
-  make             &&
-  prepare_install  &&
+  make COPTS="-D_GNU_SOURCE -Wall $CFLAGS" LOPTS="$LDFLAGS"  &&
+  prepare_install                                            &&
   make  BASEDIR=/  install
 
 ) > $C_FIFO 2>&1  &&  (

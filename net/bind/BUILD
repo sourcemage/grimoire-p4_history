@@ -5,7 +5,8 @@
 
   ./configure  --prefix=/usr           \
                --sysconfdir=/etc/bind  \
-               --localstatedir=/var    &&
+               --localstatedir=/var    \
+               $OPTS                   &&
   make                                 &&
   prepare_install                      &&
   make    install
