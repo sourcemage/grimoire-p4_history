@@ -1,3 +1,19 @@
+2004-11-19 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED for security update
+	* apache-patches-2.0.52-r1.tar.bz2: Removed, broken into separate patches
+	* 01_all_gentoo_ipv6.patch,03_all_redhat_xfsz.patch,
+	  04_all_ssl_makefile.patch,05_all_can_2004_0885.patch:
+	  Added from apache-patches-2.0.52-r1.tar.bz2 (the other patches broke
+	  apache2)
+	* PRE_BUILD: Apply all patches here
+	* BUILD: Remove application of build.diff patch
+	  Formatted to Guru Handbook
+
+2004-11-19 Seth Woolley <seth@tautology.org>
+	* Updated DoS SECURITY FIX with gentoo patch
+	* apache-patches-2.0.52-r1.tar.bz2: Added
+	* BUILD: Apply apache-patches-2.0.52-r1.tar.bz2
+
 2004-09-28 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.0.52
 	  SECURITY FIX http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0811
