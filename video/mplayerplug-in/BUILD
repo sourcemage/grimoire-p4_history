@@ -1,5 +1,5 @@
 if spell_ok firefox; then
-   patch -p0 < $SCRIPT_DIRECTORY/configure-firefox.diff &&
+   patch -p1 < $SCRIPT_DIRECTORY/configure-firefox.diff &&
    CFLAGS="$CFLAGS -I/usr/include/firefox"
 else
    CFLAGS="$CFLAGS -I/usr/include/mozilla"

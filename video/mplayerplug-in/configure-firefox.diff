@@ -1,6 +1,7 @@
---- configure.orig	2005-01-30 16:22:27.265707176 -0600
-+++ configure	2005-01-30 16:24:01.656357616 -0600
-@@ -2843,23 +2843,23 @@
+diff -Naur mplayerplug-in.orig/configure mplayerplug-in/configure
+--- mplayerplug-in.orig/configure	2005-02-15 23:21:45.938001200 -0800
++++ mplayerplug-in/configure	2005-02-15 23:22:08.706539856 -0800
+@@ -2872,23 +2872,23 @@
    else
       PKG_CONFIG_MIN_VERSION=0.9.0
       if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
@@ -29,7 +30,7 @@
              echo "$as_me:$LINENO: result: $MOZPLUG_LIBS" >&5
  echo "${ECHO_T}$MOZPLUG_LIBS" >&6
          else
-@@ -2867,7 +2867,7 @@
+@@ -2896,7 +2896,7 @@
              MOZPLUG_LIBS=""
              ## If we have a custom action on failure, don't print errors, but
              ## do set a variable so people can do so.
@@ -38,7 +39,7 @@
  
          fi
  
-@@ -2880,7 +2880,7 @@
+@@ -2909,7 +2909,7 @@
    fi
  
    if test $succeeded = yes; then
