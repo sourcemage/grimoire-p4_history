@@ -1,6 +1,7 @@
 (
 
-  OVERRIDE="prefix=/usr  JSRCDIR=$SOURCE_DIRECTORY/jpeg-6b"
+  OVERRIDE1="prefix=/usr"
+  OVERRIDE2="JSRCDIR=$SOURCE_DIRECTORY/jpeg-6b"
 
   cp   src/all-arch.mak  src/all-arch.mak.original
   sed  "s/\/local//g"    src/all-arch.mak.original  >  src/all-arch.mak
@@ -14,9 +15,9 @@
 
   ln   -s  src/unix-gcc.mak  makefile 
 
-  make  $OVERRIDE  so         &&
-  prepare_install             &&
-  make  $OVERRIDE  soinstall  &&
+  make  $OVERRIDE1  $OVERRIDE2  so         &&
+  prepare_install                          &&
+  make  $OVERRIDE1  $OVERRIDE2  soinstall  &&
   ln    -sf  gsc  /usr/bin/gs
 
 ) > $C_FIFO 2>&1

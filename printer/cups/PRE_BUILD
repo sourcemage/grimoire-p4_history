@@ -1,38 +1,40 @@
-echo  "This spell conflicts with gnulpr and will cause at least two spells to be dispelled."
-if  query  "To see a list of affected spells, enter a 'y': "  y
-  then
+if  [  -f  /etc/init.d/cups  ];  then
+  mv  /etc/init.d/cups  /etc/init.d/cups.backup
+fi
+
+
+if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  then
+  echo  "This spell conflicts with gnulpr and will cause it and any dependants to be dispelled."
+
+  if  query  "Would you like to see a list of affected spells?  "  y;  then
     gaze  depends  gnulpr
     echo  "gnulpr"
 
-    if  query  "To continue casting enter a 'y': "  y
-      then
-        for  CASTED_SPELL  in  `gaze  depends  gnulpr`
-        do
-          if  [  "`gaze  installed  $CASTED_SPELL  |  grep  $CASTED_SPELL`"  =  ""  ]
-          then
-            dispel  $CASTED_SPELL
-          fi
-        done
+    if  query  "Would you like to continue casting?  "  y;  then
+      for  CASTED_SPELL  in  `gaze  depends  gnulpr`;  do
+        if  [  "`gaze  installed  |  grep  $CASTED_SPELL  |  cut  -d:  -f1`"  =  "$CASTED_SPELL"  ];  then
+          dispel  $CASTED_SPELL
+        fi
+      done
 
-        dispel  gnulpr
-      else
-	exit
+      dispel  gnulpr
+    else
+      exit
     fi
   else
-    if  query  "To continue casting enter a 'y': "  y
-      then
-        for  CASTED_SPELL  in  `gaze  depends  gnulpr`
-        do
-          if  [  "`gaze  installed  $CASTED_SPELL  |  grep  $CASTED_SPELL`"  =  ""  ]
-          then
-            dispel  $CASTED_SPELL
-          fi
-        done
+    if  query  "Would you like to continue casting?  "  y;  then
+      for  CASTED_SPELL  in  `gaze  depends  gnulpr`;  do
+        if  [  "`gaze  installed  |  grep  $CASTED_SPELL  |  cut  -d:  -f1`"  =  "$CASTED_SPELL"  ];  then
+          dispel  $CASTED_SPELL
+        fi
+      done
 
-        dispel  gnulpr
-      else
-	exit
+      dispel  gnulpr
+    else
+      exit
     fi
+  fi
 fi
+
 
 default_pre_build

@@ -1,4 +1,5 @@
 (
+  patch -p1 < $SCRIPT_DIRECTORY/xc1810fixme3.diff
 
   case $IPV6 in
     y|Y) OPTS="$OPTS --enable-ipv6"
@@ -10,6 +11,7 @@
                --sysconfdir=/etc     \
                --localstatedir=/var  \
                --disable-zvt         \
+               --disable-perl        \
                $OPTS                 &&
   make                               &&
   prepare_install                    &&
