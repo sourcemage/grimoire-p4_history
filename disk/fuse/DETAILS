@@ -1,15 +1,16 @@
            SPELL=fuse
-if [ "$CVS" != "yes" ]; then
-         VERSION=1.2
+if [ "$CVS" != "y" ]; then
+         VERSION=1.3
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/avf/$SOURCE
-          MD5[0]=9ea9e88535cb32913fad342c43d92075
+          MD5[0]=f4f7eee8593e2e7d2a965c52752eb51c
 else
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/avf:fuse
           MD5[0]=IGNORE
 fi
+       BUILD_API=2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://sourceforge.net/projects/avf/
          ENTERED=20040209
