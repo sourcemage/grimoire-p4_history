@@ -1,0 +1,17 @@
+           SPELL=ddd
+         VERSION=3.3.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnu.org/gnu/ddd/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/ddd
+         ENTERED=20020427
+         UPDATED=20020427
+      MAINTAINER=burududu@hotpop.com
+            SHORT="ddd is the GNU Data Display Debugger"
+cat << EOF
+GNU DDD is a graphical front-end for command-line debuggers
+such as GDB, DBX, WDB, Ladebug, JDB, XDB, the Perl debugger, or the
+Python debugger. Besides ``usual'' front-end features such as viewing
+source texts, DDD has become famous through its interactive graphical
+data display, where data structures are displayed as graphs.
+EOF

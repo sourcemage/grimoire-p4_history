@@ -1,0 +1,15 @@
+           SPELL=PEAR-Log
+         VERSION=1.1
+          SOURCE=${SPELL#*-}-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL#*-}-$VERSION
+   SOURCE_URL[0]=http://pear.php.net/get/$SOURCE
+        WEB_SITE=http://pear.php.net/package-info.php?pacid=8
+         ENTERED=20020428
+         UPDATED=20020428
+      MAINTAINER=sergeyli@pisem.net
+           SHORT="PEAR Log utilities"
+cat << EOF
+The Log framework provides an abstracted logging system. It supports
+logging to console, file, syslog, SQL, and mcal targets. It also
+provides a subject - observer mechanism.
+EOF
