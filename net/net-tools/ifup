@@ -15,6 +15,16 @@ exists_in_text()
   return 1
 }
 
+# $1 - device name
+device_is_up()
+{
+  if [ -x /usr/bin/grep ]; then
+    /sbin/ifconfig  | grep -A1 "^${1}\ " | grep 'inet addr' >& /dev/null
+  else
+    /sbin/ifconfig 2>&1 | exists_in_text $1
+  fi
+}
+
 _do_device_up()
 {
   if [ "$MODE" = dynamic ]; then
@@ -87,7 +97,7 @@ if [ ! -f $netdevdir/$DEV.dev ]; then
   exit 1
 fi
 
-if /sbin/ifconfig 2>&1 | exists_in_text $DEV ; then
+if device_is_up $DEV ; then
   echo "$DEV already up"
   exit 0
 fi

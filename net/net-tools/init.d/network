@@ -29,7 +29,7 @@ start()
 {
   required_executable  /sbin/ifup
 
-  _OBEY_UP_ON_BOOT=1
+  export _OBEY_UP_ON_BOOT=1
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
     echo "$(unset -f echo; /sbin/ifup $DEVICE)"
