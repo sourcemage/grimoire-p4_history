@@ -15,4 +15,19 @@ optional_depends  libidn                                   \
 optional_depends  qca-tls                                            \
                   ""                                                 \
                   ""                                                 \
-                  "for SSL support in Kopete Jabber (req's libidn)"
+                  "for SSL support in Kopete Jabber (req's libidn)"  &&
+
+optional_depends  openslp                                                 \
+                  "--enable-slp"                                          \
+                  "--disable-slp"                                         \
+                  "to enable browsing to find available remote desktops"  &&
+
+optional_depends  wireless_tools                                           \
+                  ""                                                       \
+                  ""                                                       \
+                  "needed to build KWiFiManager and the KWireless applet"  &&
+
+optional_depends  xmms                                                       \
+                  ""                                                         \
+                  ""                                                         \
+                  "needed for Kopete's NowListening plugin to support xmms"

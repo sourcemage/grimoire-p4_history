@@ -7,5 +7,19 @@ source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
 optional_depends  xpdf                                                      \
                   ""                                                        \
                   ""                                                        \
-                  "to enable KDE to find extra information from PDF files" 
+                  "to enable KDE to find extra information from PDF files"  &&
 
+optional_depends  libgphoto2                   \
+                  ""                           \
+                  ""                           \
+                  "for digital camera access"  &&
+
+optional_depends  sane-backends                                    \
+                  ""                                               \
+                  ""                                               \
+                  "needed for Kooka, the KDE scanner application"  &&
+
+optional_depends  openexr                                              \
+                  ""                                                   \
+                  ""                                                   \
+                  "for support for the OpenEXR high-def image format"
