@@ -4,8 +4,9 @@
 
   ./configure                                                            \
                --prefix=/usr                                             \
-               --sysconfdir=/etc/${SPELL}                                \
-               --localstatedir=/var                                      \
+               --datadir=/usr/share/courier                              \
+               --sysconfdir=/etc/courier                                 \
+               --localstatedir=/var/courier                              \
                --disable-root-check                                      \
                --with-mailuser=courier                                   \
                --with-mailgroup=courier                                  \
@@ -18,7 +19,7 @@
 
   make                                                                   &&
   prepare_install                                                        &&
-  mkdir   -p  /usr/share/${SPELL}                                        &&
+#  mkdir   -p  /usr/share/courier                                         &&
   make    install                                                        &&
   make    install-configure
 
