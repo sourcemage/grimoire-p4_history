@@ -1,11 +1,10 @@
 depends  linuxdoc-tools  &&
 depends  gimp            &&
-
-optional_depends  "cups"         \
-                  "--with-cups"  \
-                  ""             \
-                  "for cups support"         &&
-optional_depends  "ghostscript"  \
-                  "--with-gimp"  \
-                  ""             \
-                  "for ghostscript support"
+optional_depends  "cups"                    \
+                  "--with-cups"             \
+                  ""                        \
+                  "for cups support"        &&
+optional_depends  "postscript-interpreter"  \
+                  "--with-gimp"             \
+                  ""                        \
+                  "for postscript support"
