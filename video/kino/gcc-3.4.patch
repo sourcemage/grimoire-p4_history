@@ -1,0 +1,11 @@
+--- src/ieee1394io.h~	2004-03-28 20:42:50.000000000 +0200
++++ src/ieee1394io.h	2004-05-30 11:19:59.399889426 +0200
+@@ -33,7 +33,7 @@
+ 
+ class IEEE1394Reader
+ {
+-private:
++protected:
+ 	/// the number of frames that had to be thrown away because
+ 	/// our inFrames queue did not contain available frames
+ 	static int droppedFrames;
