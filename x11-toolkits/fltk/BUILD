@@ -1,4 +1,2 @@
-(
-  OPTS="${OPTS} --enable-shared --enable-xft" &&
-  default_build
-) > $C_FIFO 2>&1  
+OPTS="$OPTS --enable-shared --enable-xft" &&
+default_build
