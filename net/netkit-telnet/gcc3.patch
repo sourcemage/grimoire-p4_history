@@ -1,75 +1,48 @@
-diff -urp netkit-telnet-0.17.orig/telnet/main.cc netkit-telnet-0.17/telnet/main.cc
---- netkit-telnet-0.17.orig/telnet/main.cc	2003-02-25 21:29:11.000000000 +0100
-+++ netkit-telnet-0.17/telnet/main.cc	2003-02-25 21:29:57.000000000 +0100
-@@ -46,6 +46,7 @@ char main_rcsid[] = 
- #include <sys/types.h>
- #include <getopt.h>
- #include <string.h>
+diff -Nur netkit-telnet-0.17-orig/telnet/externs.h netkit-telnet-0.17/telnet/externs.h
+--- netkit-telnet-0.17-orig/telnet/externs.h	1999-08-19 11:34:15.000000000 +0200
++++ netkit-telnet-0.17/telnet/externs.h	2003-09-06 20:40:42.000000000 +0200
+@@ -43,6 +43,8 @@
+ #include <sys/ioctl.h>
+ #include <features.h>
+ #include <termios.h>
 +#include <stdlib.h>
- 
- #include "ring.h"
- #include "externs.h"
-diff -urp netkit-telnet-0.17.orig/telnet/netlink.cc netkit-telnet-0.17/telnet/netlink.cc
---- netkit-telnet-0.17.orig/telnet/netlink.cc	2003-02-25 21:29:11.000000000 +0100
-+++ netkit-telnet-0.17/telnet/netlink.cc	2003-02-25 21:32:21.000000000 +0100
-@@ -2,6 +2,7 @@
- #include <stdio.h>
- #include <unistd.h>
- #include <stdlib.h>
 +#include <string.h>
- #include <sys/socket.h>
- #include <netinet/in.h>
- #include <arpa/inet.h>
-diff -urp netkit-telnet-0.17.orig/telnet/network.cc netkit-telnet-0.17/telnet/network.cc
---- netkit-telnet-0.17.orig/telnet/network.cc	2003-02-25 21:29:11.000000000 +0100
-+++ netkit-telnet-0.17/telnet/network.cc	2003-02-25 21:30:22.000000000 +0100
-@@ -42,6 +42,7 @@ char net_rcsid[] = 
+ 
+ #if defined(NO_CC_T)
+ typedef unsigned char cc_t;
+diff -Nur netkit-telnet-0.17-orig/telnet/Makefile netkit-telnet-0.17/telnet/Makefile
+--- netkit-telnet-0.17-orig/telnet/Makefile	1999-08-01 07:06:37.000000000 +0200
++++ netkit-telnet-0.17/telnet/Makefile	2003-09-06 20:40:27.000000000 +0200
+@@ -7,7 +7,7 @@
+ 
+ # -DAUTHENTICATE
+ CXXFLAGS += -DUSE_TERMIO -DKLUDGELINEMODE
+-LIBS += $(LIBTERMCAP)
++LIBS += $(LIBTERMCAP) -lstdc++
+ 
+ SRCS = commands.cc main.cc network.cc ring.cc sys_bsd.cc telnet.cc \
+ 	terminal.cc tn3270.cc utilities.cc genget.cc environ.cc netlink.cc
+diff -Nur netkit-telnet-0.17-orig/telnet/netlink.cc netkit-telnet-0.17/telnet/netlink.cc
+--- netkit-telnet-0.17-orig/telnet/netlink.cc	2000-07-23 06:16:25.000000000 +0200
++++ netkit-telnet-0.17/telnet/netlink.cc	2003-09-06 20:42:03.000000000 +0200
+@@ -8,6 +8,7 @@
+ #include <sys/ioctl.h>
  #include <sys/time.h>
- #include <errno.h>
- #include <arpa/telnet.h>
-+#include <stdlib.h>
- 
- #include "ring.h"
- #include "defines.h"
-diff -urp netkit-telnet-0.17.orig/telnet/terminal.cc netkit-telnet-0.17/telnet/terminal.cc
---- netkit-telnet-0.17.orig/telnet/terminal.cc	2003-02-25 21:29:11.000000000 +0100
-+++ netkit-telnet-0.17/telnet/terminal.cc	2003-02-25 21:31:36.000000000 +0100
-@@ -45,6 +45,8 @@ char terminal_rcsid[] = 
- #include <signal.h>
- #include <errno.h>
- #include <stdio.h>
-+#include <stdlib.h>
+ #include <netdb.h>
 +#include <string.h>
- 
+ #include "netlink.h"
+ #include "proto.h"
  #include "ring.h"
- #include "defines.h"
-@@ -468,7 +470,7 @@ void TerminalNewMode(int f)
+diff -Nur netkit-telnet-0.17-orig/telnet/telnet.cc netkit-telnet-0.17/telnet/telnet.cc
+--- netkit-telnet-0.17-orig/telnet/telnet.cc	2000-07-23 05:24:53.000000000 +0200
++++ netkit-telnet-0.17/telnet/telnet.cc	2003-09-06 20:40:55.000000000 +0200
+@@ -61,7 +61,9 @@
+  * Due to lossage in some linux distributions/kernel releases/libc versions
+  * this must come *after* termios.h (which is included in externs.h)
+  */
++extern "C" {
+ #include <termcap.h>
++}
  
- #ifdef	SIGINFO
- 	signal(SIGINFO, ayt);
--#endif	SIGINFO
-+#endif	/* SIGINFO */
- 
- #if defined(NOKERNINFO)
- 	tmp_tc.c_lflag |= NOKERNINFO;
-@@ -504,7 +506,7 @@ void TerminalNewMode(int f)
- 
- #ifdef	SIGINFO
- 	signal(SIGINFO, ayt_status);
--#endif	SIGINFO
-+#endif	/* SIGINFO */
- 
- #ifdef	SIGTSTP
- 	signal(SIGTSTP, SIG_DFL);
-diff -urp netkit-telnet-0.17.orig/telnet/utilities.cc netkit-telnet-0.17/telnet/utilities.cc
---- netkit-telnet-0.17.orig/telnet/utilities.cc	2003-02-25 21:29:11.000000000 +0100
-+++ netkit-telnet-0.17/telnet/utilities.cc	2003-02-25 21:31:56.000000000 +0100
-@@ -47,6 +47,8 @@ char util_rcsid[] = 
- #include <sys/socket.h>
- #include <unistd.h>
- #include <ctype.h>
-+#include <stdlib.h>
-+#include <string.h>
- 
- #include "ring.h"
- #include "defines.h"
+ #ifdef USE_NCURSES
+ #include <term.h>
