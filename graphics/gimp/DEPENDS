@@ -1,8 +1,10 @@
 depends  gtk+2        &&
-depends  gimp-print   &&
 depends  libart_lgpl  &&
 depends  XML-Parser-Expat &&
-
+optional_depends  gimp-print \
+					""\
+					"--disable-print"\
+					"to support printing from gimp"  &&
 optional_depends  libexif	               \
                   ""                           \
                   "--without-libexif"          \
