@@ -1,0 +1,19 @@
+           SPELL=uml
+         VERSION=2.4.20
+       PATCH_REV=5
+          SOURCE=linux-$VERSION.tar.bz2
+         SOURCE2=uml-patch-$VERSION-$PATCH_REV.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/user-mode-linux
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/$SOURCE
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/user-mode-linux/$SOURCE2
+          MD5[0]=e26e79b0cec2ceca109e9df6a5338eb9
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+        WEB_SITE=http://user-mode-linux.sourceforge.net/
+      MAINTAINER=rycee@home.se
+         ENTERED=20030530
+         UPDATED=20030530
+           SHORT="User Mode Linux, runs a Linux kernel as a virtual machine"
+cat << EOF
+User Mode Linux, runs a Linux kernel as a virtual machine.
+EOF
