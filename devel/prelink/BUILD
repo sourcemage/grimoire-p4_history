@@ -7,14 +7,12 @@
          --exec-prefix=${INSTALL_ROOT}/usr  \
           --sysconfdir=${INSTALL_ROOT}/etc  \
        --localstatedir=${INSTALL_ROOT}/var  \
-                       $OPTS                 &&
-  patch -p0 < $SPELL_DIRECTORY/src-Makefile.patch &&
-  make                                       &&
-  prepare_install                            &&
-  OLD_LD_PRELOAD="$LD_PRELOAD"               &&
-  unset LD_PRELOAD                           &&
-#  make    check                              &&
-  LD_PRELOAD="$OLD_LD_PRELOAD"               &&
+                       $OPTS                &&
+  make                                      &&
+  prepare_install                           &&
+  OLD_LD_PRELOAD="$LD_PRELOAD"              &&
+  unset LD_PRELOAD                          &&
+  LD_PRELOAD="$OLD_LD_PRELOAD"              &&
   make    install                            
 
 ) > $C_FIFO 2>&1
