@@ -6,7 +6,7 @@ depends  libpng  &&
 depends  jpeg    &&
 
 if  [  "$OPENVRML_JS"     =  "y"  -o  \
-       "$OPENVRML_JAVA"   =  "y"  -o  ];  then
+       "$OPENVRML_JAVA"   =  "y"      ];  then
   depends  JAVA             &&
   depends  MOZILLA-BROWSER
 fi  &&
