@@ -4,7 +4,6 @@
                --localstatedir=/var \
                --disable-debug      \
                --enable-final       \
-               --disable-gui        \
                $OPTS                &&
   make                              &&
   prepare_install                   &&
