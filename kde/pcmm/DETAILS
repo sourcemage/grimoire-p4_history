@@ -4,14 +4,13 @@
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
         WEB_SITE=http://pcmm.sourceforge.net/
-      MAINTAINER=jason@flattfamily.com
       LICENSE[0]=GPL
           MD5[0]=7fae17619d49bf0114787bb220928189
          ENTERED=20021228
          UPDATED=20021228
-           SHORT="Portos Commander is a file manager patterned after Midnight Commander and Norton Commander."
+       BUILD_API=2
+           SHORT="Portos Commander is a file manager"
 cat << EOF
-
 Portos Commander is a powerful and intuitive file manager patterned after
 old-school managers like Midnight Commander and Norton Commander.  It features
 basically all your file-management needs, quick document viewing according to
@@ -20,5 +19,4 @@ other clients, file selection using wildcards or regular expressions, file
 searching using various criteria, directory bookmarking, automatic file status
 updating (via FAM), displaying the free space on the current partition, and
 drag'n'drop.
-
 EOF
