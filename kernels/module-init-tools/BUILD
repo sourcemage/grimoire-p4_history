@@ -23,11 +23,13 @@
     touch      ${INSTALL_ROOT}/etc/modules                    &&
     touch      ${INSTALL_ROOT}/etc/modules.conf               &&
     cd $SOURCE_DIRECTORY                                      &&
-    rm_source_dir $SOURCE_DIRECTORY2                          
+    rm_source_dir $SOURCE_DIRECTORY2                          &&
+    make moveold
   fi                                                          &&
-  make moveold                                                &&
   make install                                                &&
-  ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf  &&
+  if [ $OLD_TOO == y ] ; then
+    ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf
+  fi                                                          &&
   cp modprobe.devfs ${INSTALL_ROOT}/etc                       &&
   #run depmod on all current kernel trees
   for i in `ls ${INSTALL_ROOT}/lib/modules/`; do depmod $i; done > /dev/null 
