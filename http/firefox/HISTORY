@@ -1,3 +1,10 @@
+2004-12-16 Eric Sandall <eric@sandall.us>
+	* INSTALL: Thanks to johnny17, we need to create these directories before
+	  doing Wolfgang's fix of `make install` before the symlinks, otherwise
+	  `make install` creates both firefox and firefox-$VERSION, which we then
+	  can't symlink to the other and then firefox installs part in firefox and
+	  the rest to firefox-$VERSION, which makes libmozjs.so not found. :)
+
 2004-12-15 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on g++
 	* INSTALL: A more correct approach to installing nss, thanks Wolfgang :)

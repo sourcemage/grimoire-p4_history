@@ -7,14 +7,32 @@ fi  &&
 #
 # Firefox now installs to /usr/lib/firefox and leaves /usr/lib/mozilla alone
 
-mkdir  -p  $FIREFOX_HOME                                   &&
-make  install                                              &&
+#
+# Make sure these directories exist, symlink them, and /then/ install
+# This fixes both Wolfgang's problems and johnny17's problems. :)
+#
+if  [  !  -d  $FIREFOX_HOME  ];  then
+  mkdir  -p  $FIREFOX_HOME
+fi  &&
+
+if  [  !  -d  ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION
+fi  &&
+
+if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox-$VERSION  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox-$VERSION
+fi  &&
+
+if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox/nss  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox/nss
+fi  &&
+
 ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
 ln  -fns   ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
            ${INSTALL_ROOT}/usr/share/idl/firefox           &&
 ln  -fns   ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
            ${INSTALL_ROOT}/usr/include/firefox             &&
-mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox/nss         &&
+make  install                                              &&
 cp  -vfL   dist/public/nss/*.h                             \
            ${INSTALL_ROOT}/usr/include/firefox/nss         &&
 
