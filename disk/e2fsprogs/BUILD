@@ -1,14 +1,14 @@
 (
 
-  ./configure  --host=${BUILD}               \
-               --prefix=${INSTALL_ROOT}/usr  \
-               --with-root-prefix=           \
-               --enable-elf-shlibs           \
-               ${OPTS}                       &&
-  make                                       &&
-  prepare_install                            &&
-  make    install                            &&
-  make    install-libs                       &&
+  ./configure  --host=${BUILD}                     \
+               --prefix=${INSTALL_ROOT}/usr        \
+               --with-root-prefix=${INSTALL_ROOT}  \
+               --enable-elf-shlibs                 \
+               ${OPTS}                             &&
+  make                                             &&
+  prepare_install                                  &&
+  make    install                                  &&
+  make    install-libs                             &&
 
   install  -d  ${INSTALL_ROOT}/usr/include/uuid       &&
   install  -m  644  lib/uuid/libuuid.a                \
