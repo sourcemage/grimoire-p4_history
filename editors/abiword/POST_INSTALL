@@ -1,39 +1,15 @@
-xf86config_load_entry() {
+if  [  -f  /etc/X11/XF86Config-4  ];  then
+  XF86CONFIG=/etc/X11/XF86Config-4
+elif  [  -f  /etc/X11/XF86Config  ];  then
+  XF86CONFIG=/etc/X11/XF86Config
+else
+  echo "You need to have XFree86 configured, first"
+  return 1
+fi
 
-  cat << EOF
+cp  $XF86CONFIG  ${XF86CONFIG}.old
 
-  Load "type1"
+# The following line of code comes with _many_ thanks to Dufflebunk, slightly modified
+grep -q "type1" $XF86CONFIG || awk '/Module/{ print $0; print "\tLoad \t\"type1\""; } !/Module/{print $0;}' $XF86CONFIG  >  ${XF86CONFIG}.new
 
-EOF
-
-}
-
-update_xf86config() {
-
-  XF86CONFIG="/etc/X11/XF86Config-4"
-
-  if  !  grep  -q  " Load \"type1\""  $XF86CONFIG;  then
-
-    IFS_OLD=$IFS
-    export IFS=""
-
-    rm -rf ${XF86CONFIG}.new
-    cp $XF86CONFIG ${XF86CONFIG}.old
-
-    for  LINE  in  `cat $XF86CONFIG`;  do
-      if   echo  $LINE  |  grep  -q  "Section \"Module\""  ; then
-         echo  -e  "`xf86config_image_entry`"  >>  ${XF86CONFIG}.new
-      fi
-
-      echo $LINE >> ${XF86CONFIG}.new
-
-    done
-
-    cp ${XF86CONFIG}.new $XF86CONFIG
-
-    export IFS=$IFS_OLD
-
-  fi
-}
-
-echo "You need to add Load "type1" to Section "Module" in /etc/X11/XF86Config-4"
+cp  ${XF86CONFIG}.new  $XF86CONFIG
