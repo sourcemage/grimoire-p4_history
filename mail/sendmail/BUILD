@@ -18,8 +18,9 @@
   sh Build 	                     				&&
   prepare_install                    				&&
   sh Build install                   				&&
-  cp -r cf/cf*  /usr/doc/sendmail    				&&
-  cp -r contrib /usr/doc/sendmail    				
+  cp -r cf        /usr/doc/sendmail                             &&
+  cp -r devtools  /usr/doc/sendmail                             &&
+  cp -r contrib   /usr/doc/sendmail                                           
 
 ) > $C_FIFO 2>&1  &&  (
 
