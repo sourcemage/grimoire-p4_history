@@ -2,25 +2,4 @@ depends  zlib              &&
 depends  libpng            &&
 depends  tiff              &&
 depends  jpeg              &&
-
 optional_depends  svgalib  
-
-
-#### needs to run before summon
-
-(
-  CHDIR=`echo $SOURCE_DIRECTORY | sed -e 's/.*\///'`
-  if [ -e $SOURCE_CACHE/$SOURCE ]
-  then 
-    if [ test `tar -tzf $SOURCE_CACHE/$SOURCE |
-          grep "$CHDIR"'/$'` != "$CHDIR"'/' ] ||
-        test  "`md5sum $SOURCE_CACHE/$SOURCE |
-          cut -d' ' -f1`" = "2a7e44295f046157a948bbecbf1aa942" 
-    then 
-      rm $SOURCE_CACHE/$SOURCE
-    fi
-  fi
-) 2> /dev/null
-
-# the md5sum hack part is to clean out the old source of version 1 of 
-# version 3.50c so to ensure we have version 2 of version 3.50c
