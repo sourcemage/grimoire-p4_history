@@ -34,6 +34,8 @@ do
     PREPATCH=$PATCH
   elif [[ $PATCH == test* ]]; then
     PREPATCH=$PATCH
+  elif [[ $PATCH == mm* ]]; then
+    MM_PATCH=$PATCH
   else
     echo "Failed parsing patches"
     exit 1
@@ -76,6 +78,13 @@ fi
 if [[ "${DJ_PATCH}" != "" ]]; then
   SOURCE6="patch-${VERSION}.diff.bz2"
   SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}/patch-${VERSION}.diff.bz2"
+  SOURCE7="${SOURCE6}.sign"
+  SOURCE7_URL="${SOURCE6_URL}.sign"
+fi
+
+if [[ "${MM_PATCH}" != "" ]]; then
+  SOURCE6="${VERSION}.bz2"
+  SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/${TREE}/${RELEASE}-${PREPATCH}/${VERSION}/${VERSION}.bz2"
   SOURCE7="${SOURCE6}.sign"
   SOURCE7_URL="${SOURCE6_URL}.sign"
 fi
