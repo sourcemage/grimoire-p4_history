@@ -8,6 +8,10 @@ depends apr-util '--with-apr-util=/usr' &&
 depends neon '--with-neon=/usr' &&
 depends db '--with-berkeley-db' &&
 
+if [ "$SVN_EXPORT_HEAD" == 'y' ]; then
+  depends Python
+fi &&
+
 optional_depends swig             \
                  '--with-swig'    \
                  '--without-swig' \

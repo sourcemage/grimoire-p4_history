@@ -6,7 +6,7 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
     echo "VERSION=${REPOSITORY_TAG:-HEAD}" >> $SPELL_CONFIG
     echo "SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:${REPOSITORY_TAG:-HEAD}" >> $SPELL_CONFIG
     echo 'FORCE_DOWNLOAD=on' >> $SPELL_CONFIG
-    echo 'SUFFIX=.tar.bz2'
+    echo 'SUFFIX=.tar.bz2' >> $SPELL_CONFIG
   fi
   echo 'CONFIGURED=y' >> $SPELL_CONFIG
 fi

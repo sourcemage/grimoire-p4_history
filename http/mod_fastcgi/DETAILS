@@ -1,9 +1,9 @@
            SPELL=mod_fastcgi
-         VERSION=2.4.0
+         VERSION=2.4.1-SNAP-0306232149
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='1da8bde59bd658b3fd54d8038abf3c14'
+          MD5[0]='7141541f1e53589d0d27028114648d1d'
       LICENSE[0]=
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION#*-}
    SOURCE_URL[0]=http://www.fastcgi.com/dist/$SOURCE
         WEB_SITE=http://www.fastcgi.com/
          ENTERED=20021017

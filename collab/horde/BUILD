@@ -17,6 +17,10 @@ PHP_MODULES=$(php -m 2>/dev/null)
   echo "$PHP_MODULES" | grep -q imap &&
   echo "$PHP_MODULES" | grep -q xml &&
 
+  # kill remnants of CVS, if any
+  rm -fr $(find ./ -type d -and -name CVS)        &&
+  rm -fr $(find ./ -type f -and -name .cvsignore) &&
+
   CONFIG_PATCH="$SCRIPT_DIRECTORY/$SPELL-config.patch"
   if [ -r "$CONFIG_PATCH" ]; then
     message "${MESSAGE_COLOR}Applying a patch necessary to relocate $HORDE_DIR/config directory to $HORDE_CONFIG_DIR${DEFAULT_COLOR}" &&
