@@ -1,16 +1,16 @@
            SPELL=gtk+2
-         VERSION=2.2.2
+         VERSION=2.2.3
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=gtk+-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk+-$VERSION
    SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v2.2/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/gtk+/$BRANCH/$SOURCE
-          MD5[0]="1230998c8241946abfcf56c1ad9684ef"
+          MD5[0]='6a9761d31777024bac14b6785113ea98'
       LICENSE[0]=LGPL
         WEB_SITE=http://www.gtk.org
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020314
-         UPDATED=20030610
+         UPDATED=20030828
            SHORT="GTK+ is a widget toolkit"
 cat << EOF
 GTK+ is a widget toolkit for X and other windowing systems. It 
