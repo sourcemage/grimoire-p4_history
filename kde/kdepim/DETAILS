@@ -1,10 +1,9 @@
            SPELL=kdepim
-         VERSION=3.0
-          SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=$(grep "KDE_VERSION=" $GRIMOIRE/kde/KDE_DETAILS | awk -F '=' '{print $2;}')
+          SOURCE=$SPELL-$VERSION
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.kde.org/pub/kde/stable/$VERSION/src/$SOURCE
-        WEB_SITE=http://www.kde.org
+        WEB_SITE=$(grep "KDE_WEB_SITE=" $GRIMOIRE/kde/KDE_DETAILS | awk -F '=' '{print $2;}')
          ENTERED=20010922
          UPDATED=20020409
            SHORT="kdepim personal information management for kde."
