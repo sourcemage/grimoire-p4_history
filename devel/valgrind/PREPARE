@@ -1,0 +1,10 @@
+if ! grep -q CVS $SPELL_CONFIG; then
+  if  /lib/libc.so.6 | grep -q NPTL; then
+    CVS=yes
+  elif query "Use cvs version?" n
+  then CVS=yes
+  else CVS=no
+  fi
+
+  echo "CVS=$CVS" >> $SPELL_CONFIG
+fi
