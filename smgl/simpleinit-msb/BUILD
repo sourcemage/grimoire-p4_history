@@ -1,11 +1,12 @@
 (
 
-  ./configure                     &&
-  make  OPT="$CFLAGS"             &&
+  ./configure                             &&
+  make  OPT="$CFLAGS"                     &&
+  prepare_install                         &&
+  make  DESTDIR=${INSTALL_ROOT}           \
+           ROOT=${INSTALL_ROOT}           \
+        install                           &&
 
-  prepare_install                 &&
-
-  make  install                   &&
-  install  -m 644  $SCRIPT_DIRECTORY/inittab /etc/
+  install  -m 644  $SCRIPT_DIRECTORY/inittab  ${INSTALL_ROOT}/etc/
 
 ) > $C_FIFO 2>&1
