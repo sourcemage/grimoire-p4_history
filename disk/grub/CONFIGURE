@@ -56,7 +56,7 @@ config_query  GRUB_FFS        "Enable FFS support in stage 2?"             y  &&
 config_query  GRUB_MINIX      "Enable MinixFS support in stage 2?"         y  &&
 config_query  GRUB_REISER     "Enable ReiserFS support in stage 2?"        y  &&
 config_query  GRUB_REISER4    "Enable Reiser4 support in stage 2? \
-(Will disable diskless support and splash image to get it compiling)"	   y  &&
+(Will disable diskless support and splash image to get it compiling)"	   n  &&
 config_query  GRUB_JFS        "Enable IBM's JFS support in stage 2?"       y  &&
 config_query  GRUB_XFS        "Enable SGI's XFS support in stage 2?"       y  &&
 config_query  GRUB_VSTA       "Enable VSTAFS support in stage 2?"          y  &&
@@ -82,7 +82,7 @@ config_query  GRUB_EXOS205    "Enable EXOS205 driver?"                     n  &&
 config_query  GRUB_NI5010     "Enable Racal-InterLAN NI5010 driver?"       n  &&
 config_query  GRUB_NI5210     "Enable Racal-InterLAN NI5210 driver?"       n  &&
 config_query  GRUB_NI6510     "Enable Racal-InterLAN NI6510 driver?"       n  &&
-config_query  GRUB_LANCE      "Enable Lance PCI PCNet/32 driver?"          y  &&
+config_query  GRUB_LANCE      "Enable Lance PCI PCNet/32 driver?"          n  &&
 config_query  GRUB_NE         "Enable Novell NE1000/2000 ISA driver?"      n  &&
 config_query  GRUB_NE2000     "Enable Novell NE2000 PCI driver?"           n  &&
 config_query  GRUB_NE2100     "Enable Novell NE2100 driver?"               n  &&
@@ -91,10 +91,10 @@ config_query  GRUB_WD         "Enable WD8003/8013, SMC8216/8416 driver?"   n  &&
 config_query  GRUB_OTULIP     "Enable old Tulip driver?"                   n  &&
 config_query  GRUB_TULIP      "Enable Tulip driver?"                       n  &&
 config_query  GRUB_RTL8139    "Enable RealTek 8139 driver?"                n  &&
-config_query  GRUB_SIS900     "Enable SIS 900 and SIS 7016 driver?"        y  &&
+config_query  GRUB_SIS900     "Enable SIS 900 and SIS 7016 driver?"        n  &&
 config_query  GRUB_SK_G16     "Enable Schneider and Koch G16 driver?"      n  &&
 config_query  GRUB_TIARA      "Enable Tiara driver?"                       n  &&
-config_query  GRUB_VIARHINE   "Enable Via/Rhine-I/II driver?"              y  &&
+config_query  GRUB_VIARHINE   "Enable Via/Rhine-I/II driver?"              n  &&
 config_query  GRUB_W89C840    "Enable Winbond W89c840, Compex RL100-ATX?"  n  &&
 config_query  GRUB_COMP_FIX   "Enable fix for Compex RL2000 PCI card?"     n  &&
 [ "$GRUB_REISER4" = "y" ] || config_query  GRUB_DISKLESS   "Enable diskless operation?"                 y  &&
