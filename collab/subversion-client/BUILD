@@ -1,7 +1,9 @@
 # $Id: BUILD,v 1.11 2002/12/11 16:57:15 sergeyli Exp $
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/swigpyext.patch &&
+  if echo $OPTS | grep -q 'without-berkeley-db'; then
+    patch -p1 < $SCRIPT_DIRECTORY/swigpyext.patch
+  fi &&
 
   ./configure                \
     --build=$BUILD           \
