@@ -1,11 +1,11 @@
-           SPELL=coda-lwp
-         VERSION=1.9
-          SOURCE=lwp-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/lwp-$VERSION
-   SOURCE_URL[0]=http://www.coda.cs.cmu.edu/pub/lwp/src/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.wu-wien.ac.at/pub/systems/lwp/src/$SOURCE
-   SOURCE_URL[2]=ftp://ftp.planetmirror.com/pub/lwp/src/$SOURCE
-   SOURCE_URL[3]=ftp://ftp.co.it.pt/pub/lwp/src/$SOURCE
+           SPELL=coda
+         VERSION=5.3.19
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.coda.cs.cmu.edu/pub/coda/src/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.wu-wien.ac.at/pub/systems/coda/src/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.planetmirror.com/pub/coda/src/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.co.it.pt/pub/coda/src/$SOURCE
           MD5[0]=
         WEB_SITE=http://www.coda.cs.cmu.edu/
       LICENSE[0]=GPL
@@ -24,5 +24,5 @@ Coda is a distributed filesystem with its origin in AFS2. It has many features t
   * continued operation during partial network failures in server network
   * network bandwith adaptation
   * good scalability
-  * well defined semantics of sharing, even in the presence of network failures
+  * well defined semantics of sharing, even in the presence of network failures 
 EOF
