@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SGL-script-version=20020924
+# SGL-script-version=20021016
 # this sets the run levels and priority for links
 # SGL-START:3 4 5:S30
 # SGL-STOP:0 1 2 6:K70
@@ -8,7 +8,7 @@
 # for each network device, with the same name as the device
 # with the following variables set as needed:
 # MODULE=
-# leave MODULE blank if device driver built into the kernel
+# leave MODULE= blank if device driver built into the kernel
 # MODE=dynamic if you use dhcpcd
 # MODE=static if you do not
 # The following is needed only if you do not use dhcpcd
