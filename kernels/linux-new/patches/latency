@@ -1,0 +1,13 @@
+!/bin/bash
+
+DESCRIPTION="low latency patch"
+SHORT=" "
+HELP=""
+VERSIONS="2.4.19
+2.4.18-rc1"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}-low-latency.patch.gz
+SOURCE${COUNTER}_URL=http://www.zip.com.au/~akpm/linux/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi

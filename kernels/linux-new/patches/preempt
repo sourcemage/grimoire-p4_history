@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DESCRIPTION="preemptible kernel patch"
+SHORT="This patch enables a preemptible kernel"
+HELP="This patch enables a preemptible kernel, which reduces the latency of the kernel.
+It allows processes to be preempted even if in kernel mode.
+
+The design used is to allow a task to be preempted anywhere within the kernel, using spinlocks as markers for non-preemptibility regions.
+The resulting system response is greatly increased, with measured average latencies under 1ms."
+VERSIONS="
+2.4.19-1
+2.4.20-pre2-ac3-1"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=preempt-kernel-rml-${!PATCH}.patch
+SOURCE${COUNTER}_URL=\${KERNEL_URL}/pub/linux/kernel/people/rml/preempt-kernel/v2.4/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi
