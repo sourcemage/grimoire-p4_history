@@ -2,8 +2,7 @@ VOYEUR=on
 
 /etc/init.d/postfix.sh  stop
 
-if query "Backup $SPELL config ?" y
-then
+if [ "$BACKUP" = "y" ]; then
  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
  tar -cyvf "/etc/postfix-backup-$CUR_DATE.tar.bz2" /etc/postfix 1>/dev/null 2>&1
 fi

@@ -1,0 +1,18 @@
+if spell_installed postfix; then
+
+  if  !  grep  -q  "POSTFIX_GLOBAL="  $SPELL_CONFIG;  then
+
+    message "${MESSAGE_COLOR}You have the oportunity here to setup Mail-SpamAssassin"
+    message "as  a global default spam filter (directly  inserted to"
+    message "postfix's master.cf file)."
+    message "These modifications should be reverted when you dispell"
+    message "the  Mail-SpamAssassin  spell  (under most conditions).${DEFAULT_COLOR}"
+
+
+    if    query  "Use SpammAssassin as a global spamfilter for postfix ?" n
+      then  echo   "POSTFIX_GLOBAL=y"  >>  $SPELL_CONFIG
+      else  echo   "POSTFIX_GLOBAL=n"  >>  $SPELL_CONFIG
+    fi
+  fi
+
+fi

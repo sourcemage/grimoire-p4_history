@@ -39,6 +39,17 @@
   ln  -sf  postfix/aliases     \
               /etc/aliases
 
+  if [ "$BENCH" == "y" ]; then
+    chmod 544 src/smtpstone/qmqp-source src/smtpstone/smtp-sink src/smtpstone/smtp-source
+    cp src/smtpstone/qmqp-source /usr/sbin
+    cp src/smtpstone/smtp-sink   /usr/sbin
+    cp src/smtpstone/smtp-source /usr/sbin
+  fi
+ 
+  mkdir /usr/doc/$SPELL 1>/dev/null 2>&1
+  cp -r README_FILES /usr/doc/$SPELL/
+  cp -r html /usr/doc/$SPELL/
+
 ) > $C_FIFO 2>&1  &&  (
 
   cp  $SCRIPT_DIRECTORY/postfix.sh  /etc/init.d

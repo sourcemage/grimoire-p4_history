@@ -74,4 +74,13 @@ sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $
 #echo "account    required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 #echo "password   required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 
+# Initialize openwebmail
+if [ "$MAIL_STATS" == "n" ]; then
+  message "${MESSAGE_COLOR}Patching OpenWebmail init file to skip email report...${DEFAULT_COLOR}"
+  patch --verbose $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl.patch
+fi
+
+message "${MESSAGE_COLOR}Initializing OpenWebmail${DEFAULT_COLOR}"
+$LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init
+
 ) > $C_FIFO 2>&1  

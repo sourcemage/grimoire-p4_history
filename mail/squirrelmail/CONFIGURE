@@ -1,1 +1,9 @@
 message  "${MESSAGE_COLOR}Remember that the default IMAP port in pine it's 220.${DEFAULT_COLOR}"
+
+if ! grep -q "BACKUP=" $SPELL_CONFIG; then
+  if query "Backup $SPELL config on dispel ?"  y
+    then  echo   "BACKUP=y"  >>  $SPELL_CONFIG
+    else  echo   "BACKUP=n"  >>  $SPELL_CONFIG
+  fi
+fi
+

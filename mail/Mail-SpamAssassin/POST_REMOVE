@@ -1,11 +1,8 @@
 if [ -e /etc/postfix/master.cf-rollback.patch ]; then
-  message "A rollback file was found..."
-  if query "Do you want to use it to remove Mail-SpamAssassin changes from /etc/postfix/master.cf file ?" y
-  then
-    patch /etc/postfix/master.cf /etc/postfix/master.cf-rollback.patch
-    rm -f /etc/postfix/master.cf-rollback.patch
-    /etc/init.d/postfix.sh restart
-  fi
+  message "Rollback file found, removing MSA config from postfix master.cf..."
+  patch /etc/postfix/master.cf /etc/postfix/master.cf-rollback.patch
+  rm -f /etc/postfix/master.cf-rollback.patch
+  /etc/init.d/postfix.sh restart
 else
   message "Rollback file missing... unable to remove Mail-SpamAssassin from /etc/postfix/master.cf"
   message "filtering rules automaticaly..."
@@ -14,4 +11,3 @@ else
 fi
 rm -f master.cf-Mail-SpamAssassin-sample
 rm -f /usr/sbin/postfixfilter
-userdel postfixfilter 1>/dev/null 2>&1

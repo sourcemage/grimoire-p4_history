@@ -1,21 +1,27 @@
            SPELL=Mail-SpamAssassin
-         VERSION=2.42
+         VERSION=2.43
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://us.spamassassin.org/released/$SOURCE
-          MD5[0]=ea42ee07f869b48aad4517edb4227b06
+          MD5[0]=0e3ee4b18763a60372102646d93b7cf1
    SOURCE_URL[1]=http://spamassassin.taint.org/released/$SOURCE
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=http://au.spamassassin.org/released/$SOURCE
           MD5[2]=${MD5[0]}
    SOURCE_URL[3]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
           MD5[3]=${MD5[0]}
-        WEB_SITE=http://spamassassin.taint.org/
+        WEB_SITE=http://spamassassin.taint.org
       MAINTAINER=bluebird@optushome.net.au
          ENTERED=20020313
          UPDATED=20020419
          LICENSE=http://spamassassin.taint.org
            SHORT="Mail::Spamassassin: A module to fight spam."
+    MENU_ITEM[0]="spamassassin"
+    MENU_EXEC[0]="spamassassin"
+    MENU_DESC[0]="mail filter to identify spam using text analysis"
+    MENU_ITEM[1]="spamd"
+    MENU_EXEC[1]="spamd"
+    MENU_DESC[1]="daemonized version of spamassassin"
 cat << EOF
 SpamAssassin is a mail filter which attempts to identify spam using text
 analysis and several internet-based realtime blacklists.
@@ -28,6 +34,6 @@ Once identified, the mail can then be optionally tagged as spam for later
 filtering using the user's own mail user-agent application.
 
 In its most recent test, SpamAssassin differentiated between spam and
-non-spam mail correctly in 99.94% of cases.  Since then, it's just been
+non-spam mail correctly in 99.94% of cases. Since then, it's just been
 getting better and better!
 EOF

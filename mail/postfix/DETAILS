@@ -1,9 +1,9 @@
            SPELL=postfix
-         VERSION=1.1.11
+         VERSION=1.1.12
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
-          MD5[0]=a7cb6be2737da87b35fd49ec912a93aa
+          MD5[0]=aaa5cfae95e23a29421faaabd644f94b
    SOURCE_URL[1]=ftp://ftp.club-internet.fr/pub/mirrors/ftp.porcupine.org/postfix-release/official/$SOURCE
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://ftp.doc.cs.univ-paris8.fr/mirrors/ftp.porcupine.org/postfix-release/official/$SOURCE
@@ -47,6 +47,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20020530
          LICENSE=IBMPL
            SHORT="postfix is a MTA."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="sendmail"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Postfix is an attempt to provide an alternative to the widely-used
 Sendmail program. Postfix attempts to be fast, easy to administer,

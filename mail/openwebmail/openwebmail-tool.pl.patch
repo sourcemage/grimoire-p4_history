@@ -1,0 +1,29 @@
+--- openwebmail-tool.pl.org	2002-11-27 22:22:23.000000000 +0100
++++ openwebmail-tool.pl	2002-11-27 22:23:18.000000000 +0100
+@@ -340,16 +340,16 @@
+    my $content=qq|OS: $os\n|.
+                qq|Perl: $]\n|.
+                qq|WebMail: $config{'name'} $config{'version'} $config{'releasedate'}\n|;
+-   print qq|\nWelcome to the Open WebMail!\n\n|.
+-         qq|This program is going to send a short message back to the developer,\n|.
+-         qq|so we could have the idea that who is installing and how many sites are\n|.
+-         qq|using this software, the content to be sent is:\n\n|.
+-         qq|$content\n|.
+-         qq|Please hit 'Enter' to continue or Ctrl-C to break.\n|;
+-   $_=<STDIN> if (!$opt_yes);
+-
+-   send_mail("$id\@$hostname", $realname, $to, $date, $subject, "$content \n");
+-   print qq|Thank you.\n|;
++#   print qq|\nWelcome to the Open WebMail!\n\n|.
++#         qq|This program is going to send a short message back to the developer,\n|.
++#         qq|so we could have the idea that who is installing and how many sites are\n|.
++#         qq|using this software, the content to be sent is:\n\n|.
++#         qq|$content\n|.
++#         qq|Please hit 'Enter' to continue or Ctrl-C to break.\n|;
++#   $_=<STDIN> if (!$opt_yes);
++#
++#   send_mail("$id\@$hostname", $realname, $to, $date, $subject, "$content \n");
++#   print qq|Thank you.\n|;
+    return 0;
+ }
+ 
