@@ -1,5 +1,10 @@
 (
 
+  # remove APR and APU and reconfigure to use external ones
+  rm -fr srclib/apr*/ &&
+  patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
+  ./buildconf --with-apr=/usr/share/apache2 --with-apr-util=/usr/share/apache2 &&
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/httpd \

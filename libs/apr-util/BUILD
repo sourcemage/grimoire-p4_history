@@ -6,6 +6,7 @@
   if  spell_installed  db    ;  then  DBM=db    ;  fi
   OPTS="$OPTS --with-dbm=$DBM"
 
+  patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
   ./buildconf --with-apr=/usr/share/apache2 &&
 
   ./configure \
@@ -20,4 +21,9 @@
   prepare_install &&
   make install
 
-) >$C_FIFO 2>&1
+) >$C_FIFO 2>&1 && (
+
+  FIX_PATH_REGEX='s|/usr/src/apr-util-[^/"]*|/usr/share/apache2|' &&
+  sedit $FIX_PATH_REGEX /usr/bin/apu-config
+
+)

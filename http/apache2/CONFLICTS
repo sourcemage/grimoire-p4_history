@@ -1,2 +1,7 @@
 conflicts  apache-mod_ssl
 conflicts  apache
+
+# the funny thing is, it uses include files in both /usr/include/apache2
+# and in /usr/src/httpd-2.*/include, and it fails because of double
+# declaration; we're preventing this by using `conflicts' like this
+conflicts  apache2

@@ -8,7 +8,7 @@ diff -purN apr-0.9.4/Makefile.in apr/Makefile.in
 -	if [ -f build/apr_rules.mk ]; then \
 -		cp build/apr_rules.mk $(DESTDIR)$(installbuilddir); \
 -	fi;
-+	for f in apr_common.m4 apr_rules.mk config.guess config.sub find_apr.m4 install.sh make_exports.awk make_var_export.awk mkdir.sh; do \
++	for f in apr_common.m4 apr_rules.mk config.guess config.sub find_apr.m4 install.sh make_exports.awk make_var_export.awk mkdir.sh PrintPath; do \
 +		if [ -f build/$$f ]; then \
 +			cp build/$$f $(DESTDIR)$(installbuilddir); \
 +		fi \
