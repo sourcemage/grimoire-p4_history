@@ -1,16 +1,16 @@
            SPELL=acme
-         VERSION=2.0.1
+         VERSION=2.0.2
           BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="664c02b01d5f39454ed688ff8e20b760"
+          MD5[0]="743f26b551269b7ab4cb7fb083baabca"
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020314
-         UPDATED=20030119
+         UPDATED=20030202
            SHORT="Laptop Multimedia button activator."
 cat << EOF
 A small tool for your laptops. It makes the small multimedia buttons
