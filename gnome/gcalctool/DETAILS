@@ -1,14 +1,15 @@
            SPELL=gcalctool
-         VERSION=4.2.43
+         VERSION=4.2.77
+          BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/calctool/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/2.0.1/sources/$SPELL/$SOURCE
-          MD5[0]="dfacad3af9dae910e5ebb51b8bbe79a1"
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=$SOURCEFORGE_URL/calctool/$SOURCE
+          MD5[0]="969ed67bfb49775fa9a433a7d238bec1"
       LICENSE[0]="LGPL"
         WEB_SITE=http://calctool.sourceforge.net
          ENTERED=20020607
-         UPDATED=20030216
+         UPDATED=20030329
       MAINTAINER=rcook@wyrms.net 
            SHORT="GCalctool is a desktop calculator"
 cat << EOF
