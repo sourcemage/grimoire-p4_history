@@ -1,23 +1,24 @@
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
+
            SPELL=kdeutils
-if [ "$DEVEL" == "yes" ] ;then
+if  [  "$KDE_DEVEL"  ==  "y"  ];  then
          VERSION=3.3.0-rc2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
    SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
           MD5[0]=b64521ef656cb430bbafa8530b0489e3
 else
-         VERSION=3.3.0
+         VERSION=3.3.1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.3/src/$SOURCE
-          MD5[0]='82ecb6fde7b225bd88e86ed228a0ae6e'
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+          MD5[0]=dc0d6fd4719223a9b232a3fca0138802
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
          UPDATED=20040820
        BUILD_API=2
-    DISTCC_HOSTS=
       LICENSE[0]=GPL
            SHORT="Desktop tools like a calculator and editor for KDE."
 cat << EOF
