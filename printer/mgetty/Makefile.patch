@@ -1,0 +1,20 @@
+--- Makefile	2001-12-23 08:08:08.000000000 -0700
++++ mgetty/Makefile	2002-08-13 17:37:13.000000000 -0600
+@@ -177,7 +177,7 @@
+ #
+ # prefix, where most (all?) of the stuff lives, usually /usr/local or /usr
+ #
+-prefix=/usr/local
++prefix=/usr
+ #
+ # prefix for all the spool directories (usually /usr/spool or /var/spool)
+ #
+@@ -197,7 +197,7 @@
+ #
+ # where the configuration files (*.config, aliases, fax.allow/deny) go to
+ #
+-CONFDIR=$(prefix)/etc/mgetty+sendfax
++CONFDIR=/etc/mgetty+sendfax
+ #CONFDIR=/etc/default/
+ #
+ #
