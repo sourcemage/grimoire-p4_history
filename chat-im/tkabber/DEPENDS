@@ -1,4 +1,14 @@
 depends tcl &&
 depends tk  &&
 depends tcllib &&
-depends BWidget
+depends BWidget &&
+
+optional_depends tls \
+                 "" \
+                 "" \
+                 "for connecting to TLS (SSL) servers" &&
+
+optional_depends tclgpgme \
+                 "" \
+                 "" \
+                 "for GPG support"
