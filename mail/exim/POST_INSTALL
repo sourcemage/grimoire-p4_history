@@ -28,7 +28,7 @@ if [ "$backup_file" != "" ]; then
 
   if query "Skip restoring backup settings ?" y
   then
-    message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file lather yourself)"
+    message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file later yourself)"
     message " ${DEFAULT_COLOR}"
   else
     tar -C / -xyvPf $backup_file
