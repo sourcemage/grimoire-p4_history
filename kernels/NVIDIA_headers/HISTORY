@@ -1,23 +1,9 @@
-2003-06-29  hgg <hgreig@bigpond.net.au>
+2003-06-23  hgg <hgreig@bigpond.net.au>
 
-		Realised old cache is removed as part of prune so changed prepare to show current 
-		version only
-
-2003-06-20  hgg <hgreig@bigpond.net.au>
-
-		Changed PREPARE to be fully automatic, so it catches cache no matter the previous 
-		version.
-
-2003-06-20  hgg <hgreig@bigpond.net.au>
-
-		Removing ARCHIVE=off from DETAILS (its just confusing having it there)
-
-2003-06-19  hgg <hgreig@bigpond.net.au>
-
-		Found out how to make ARCHIVE=off work with a POST_BUILD file
-		this fixes issue of resurrection killing the backup.
+		ARCHIVE=off fix is in bugzilla under bug #1068. reverting all changes from 13314/5
 		
-		Some installs will have a cache so added a PREPARE file to remove bad cache before any problems occur
+		Some installs will have a cache so added a PREPARE file to remove bad cache 
+		before any problems occur
 
 2003-06-15  Eric Sandall <eric@sandall.us>
 
