@@ -1,229 +1,192 @@
-2003-09-19  Eric Sandall <eric@sandall.us>
-
-		Changed mozilla to mozilla-browser  (Bug #4278)
-
-2003-09-02  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade to Mozilla 1.5b,  Enigmail 0.76.6, and IPC 1.0.4.
-		Removed conflict with self (why?).
-		Minor patching...
-
-2003-08-23  Eric Sandall <eric@sandall.us>
-
-		Conflicts with mozilla-nightly, phoenix-devel and Firebird
-
-2003-08-10  hgg <hgreig@bigpond.net.au>
-
-		Update BUILD for gcc3.3.1 (--disable-pedantic switch)
-
-2003-07-23  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade to Mozilla 1.5a and Enigmail 0.76.3.
-		Single make job, otherwise Enigmail IDL compilation fails.
-		[A little later] Downgrade to 1.4 because 1.5a is too raw.
-
-2003-07-09  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Sorry, Mozilla, no -O3 for you...
-
-2003-06-30  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade to Mozilla 1.4 and Enigmail 0.76.1.
-
-2003-06-29  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Removed the part where pentium4 architecture will not use -O3 optimization.
-		This is fixed by GCC 3.3 (bug 2949). Discovered by Steven Fodstad.
-
-2003-06-16  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Changed the UPDATED value to bring everyone to this new version if they want.
-
-2003-06-13  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Removed custom install procedure in favor of standard `make install'+ln.
-		Thanks to Arwed v. Merkatz for the `make install' idea and
-		to Jimmy Yen for `sln dir dir-$VERSION' idea!
-		It appears to be not so trivial for a full build, but anyway...
-		Fix gtk2 directive thanks to CuZnDragon.
-		Fix Enigmail compilation with two patches.
-
-2003-05-26  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Downgraded Enigmail to a proper version 0.75.0.
-		Remove Blackwood Java extension option.
-		Make CONFIGURE and BUILD leaner.
-		Make CONFIGURE ask about Enigmail only if Mail/News client is selected.
-		Added a composer option.
-		Added a JavaScript profiling option.
-		Removed optional dependency on freetype2 because it's part of xfree86 starting from 4.3.
-
-2003-05-21  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade to 1.4b, Enigmail 0.75.1.
-		Added a whopping number of mirrors, eleven (!), thanks to M.L.
-
-2003-04-06  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade to 1.4a, Enigmail 0.74.1, and IPC 1.0.3.
-		URLs changed for Enigmail and IPC.
-		Replaced --with-xft with --enable-xft, thanks to Kyle (kfergusson@mpdlaw.com).
-		Remove Tab character from BUILD.
-
-2003-04-05  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Put back optimization flags tweaking thanks to Eric Sandall.
-		See http://bugs.sourcemage.org/show_bug.cgi?id=2949.
-
-2003-03-27  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		removed the setting of PKG_CONFIG_PATH in BUILD
-		(xfree spell now takes care that pkg-config finds the .pc files)
-
-2003-03-27  Gareth Clay <garethclay@ntlworld.com>
-
-		Removed dependency on Xft2 (now uses XFree86's Xft2)
-
-2003-03-13  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgrade to 1.3 release.
-
-2003-02-20  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Added Calendar support as suggested by Jimmy Yen.
-		Tests show that libical is not required.
-
-2003-02-18  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgraded to Enigmail 0.73.1 and IPC 1.0.2, required for Mozilla 1.3b.
-		Updated URLs of these two source tarballs.
-
-2003-02-17  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Added `--disable-installer' to ./configure.
-		Upgraded to 1.3b, but no Enigmail 0.73.0 source tarball is available ATM.
-		Choosing Enigmail plugin is not recommended.
-
-2003-01-16  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Added `web-browser' and `graphical-web-browser' to
-		the `provides' file.
-
-2002-12-16  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Updated to 1.3a + a fix for mail performance regression.
-		Made Xinerama support disabled by default because GTK+2
-		doesn't have it by default as well.
-
-2002-12-15  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Question about LDAP schema will be asked.
-		Patch for Galeon is back.
-
-2002-12-04  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgraded to 1.2.1 and Enigmail to 0.71.0.
-		Made PSM (and hence Enigmail) to compile and function.
-		Reorganized support for Xft2 and freetype2 into optional
-		dependencies, no questions asked in CONFIGURE.
-		Changed to depend on ORBit2.
-		Made a temporary fix where answer for MOZILLA_EMAIL is
-		the fefault for MOZILLA_ENIGMAIL, so that there is a chance
-		that people will not ask for Enigmail without Mail client.
-		TODO: fix the above mentioned fix.
-		Added libIDL as required dependency.
-
-2002-11-10  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgraded to version 1.2.
-		Removed patching for Xft2 and GTK+2.
-		Added optional depends for openldap instead
-		of asking for them in CONFIGURE. Let the sorcery rule this.
-		Calendar question removed because the calendar itself is not
-		included in the standard source.
-
-2002-11-10  Sergey Lipnevich <sergeyli@pisem.net>
-
-		Upgraded Enigmail plugin to 0.70.0.
-		"No questions asked" Galeon 2 support. Default toolkit is GTK 2 now.
-
-2002-11-03  Robin Cook <rcook@wyrms.net>
-
-                Added galeon2 support
-                Added installing of mozilla-gtkmozembed.pc
-
-2002-10-09  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		Added fontconfig/Xft2 support
-
-2002-10-02  Sergey Lipnevich <sergeyli@pisem.net>
-
-		Introduced a function configure_set_bool in CONFIGURE.
-
-2002-09-30  Geoffrey Derber <gderber@sourcemage.org>
-
-		Added the Enigmail plugin.
-
-2002-09-01  Sergey Lipnevich <sergeyli@pisem.net>
-
-		Updated to 1.1, added checksum and license information.
-		Created a SOURCE_URI variable to use in SOURCE_URL[n] array.
-		Added `provides' information according to bug 805.
-
-2002-07-02  Justin Rocha <jrocha@sourcemage.org>
-
-		Removed compile optomizations, as per Mozilla bug #148723
-
-2002-06-06  Mads Laursen <dossen+sgl@daimi.au.dk>
-
-		Even more options (mail/news, chat and freetype).
-		And added Mads as maintainer (Eric Schabell)
-
-2002-06-05  Mads Laursen <dossen+sgl@daimi.au.dk>
-
-		BUILD updated to build with SVG support and other optional stuff.
-		Added dependency for perl (configure checks for it).
-		Ohh, and it's version 1.0...
-
-2002-05-12  Justin Rocha <jrocha@sourcemage.org>
-
-                Bumped version to 1.0rc2
-
-2002-04-24  Eric Schabell <eric@schabell.com>
-
-		Bug fix, my fault, fixed DETAILS file source line,
-		copied dezmond's fix incorrectly...
-		flame me not him! ;)
-
-2002-04-23  The Well-Beloved Bard <dezmond@bardicgrove.org>
-
-		Version upgrade 1.0rc1:
-		Mozilla has released a new version (1.0rc1), and broken the spell in 
-		doing so. The directory and filename represent the version differently.
-
-2002-04-11  Yoav Avitzour <avitzour@princeton.edu>
-
-		Commented the /etc/mozilla references from BUILD. This means
-		the spell ignores any previous configuration that existed
- 		in /etc/mozilla, however, since this configuration is from 
-		some reason deleted anyway during the cast, it does not 
-		matter for now and it's a bad fix (but still a fix) for a 
-		broken spell 
-
-2002-04-08  Jon Svendsen <jon-sven@frisurf.no>
-
-		* Install NSS headers
-		* symlink libraries into /usr/lib on install
-
-2002-03-29  Mads Laursen <dossen+sgl@daimi.au.dk>
-
-                Added symlink to config in /etc
-
-2002-03-18  Eric Schabell <eric@schabell.com>
-
-		Updated UPDATE field as was set to OO for 
-		month, sorry for the recompile.... I know...
-		
-2002-03-13  Eric Schabell <eric@schabell.com>
-
-		Added this History file.
+-*- mode: change-log -*-
+
+2003-09-02 Sergey Lipnevich <sergey@sourcemage.org>
+	* Added operation to get rid of /root/.mozconfig in PRE_BUILD.
+
+2003-09-19 Eric Sandall <eric@sandall.us>
+	* Changed mozilla to mozilla-browser (Bug #4278).
+
+2003-09-02 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to Mozilla 1.5b, Enigmail 0.76.6, and IPC 1.0.4.
+	* Removed conflict with self (why?).
+	* Minor patching.
+
+2003-08-23 Eric Sandall <eric@sandall.us>
+	* Conflicts with mozilla-nightly, phoenix-devel and Firebird
+
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* Update BUILD for gcc3.3.1 (--disable-pedantic switch)
+
+2003-07-23 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to Mozilla 1.5a and Enigmail 0.76.3.
+	* Single make job, otherwise Enigmail IDL compilation fails.
+	* [A little later] Downgrade to 1.4 because 1.5a is too raw.
+
+2003-07-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* Sorry, Mozilla, no -O3 for you...
+
+2003-06-30 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to Mozilla 1.4 and Enigmail 0.76.1.
+
+2003-06-29 Sergey Lipnevich <sergey@sourcemage.org>
+	* Removed the part where pentium4 architecture will not use -O3 optimization.
+	* This is fixed by GCC 3.3 (bug 2949). Discovered by Steven Fodstad.
+
+2003-06-16 Sergey Lipnevich <sergey@sourcemage.org>
+	* Changed the UPDATED value to bring everyone to this new version if they want.
+
+2003-06-13 Sergey Lipnevich <sergey@sourcemage.org>
+	* Removed custom install procedure in favor of standard `make install'+ln.
+	* Thanks to Arwed v. Merkatz for the `make install' idea and
+	  to Jimmy Yen for `sln dir dir-$VERSION' idea!
+	* It appears to be not so trivial for a full build, but anyway...
+	* Fix gtk2 directive thanks to CuZnDragon.
+	* Fix Enigmail compilation with two patches.
+
+2003-05-26 Sergey Lipnevich <sergey@sourcemage.org>
+	* Downgraded Enigmail to a proper version 0.75.0.
+	* Remove Blackwood Java extension option.
+	* Make CONFIGURE and BUILD leaner.
+	* Make CONFIGURE ask about Enigmail only if Mail/News client is selected.
+	* Added a composer option.
+	* Added a JavaScript profiling option.
+	* Removed optional dependency on freetype2 because it's part of xfree86 starting from 4.3.
+
+2003-05-21 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 1.4b, Enigmail 0.75.1.
+	* Added a whopping number of mirrors, eleven (!), thanks to M.L.
+
+2003-04-06 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 1.4a, Enigmail 0.74.1, and IPC 1.0.3.
+	* URLs changed for Enigmail and IPC.
+	* Replaced --with-xft with --enable-xft, thanks to Kyle (kfergusson@mpdlaw.com).
+	* Remove Tab character from BUILD.
+
+2003-04-05 Sergey Lipnevich <sergey@sourcemage.org>
+	* Put back optimization flags tweaking thanks to Eric Sandall.
+	* See http://bugs.sourcemage.org/show_bug.cgi?id=2949.
+
+2003-03-27 Arwed v. Merkatz <v.merkatz@gmx.net>
+	  removed the setting of PKG_CONFIG_PATH in BUILD
+	* (xfree spell now takes care that pkg-config finds the .pc files)
+
+2003-03-27 Gareth Clay <garethclay@ntlworld.com>
+	* Removed dependency on Xft2 (now uses XFree86's Xft2)
+
+2003-03-13 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 1.3 release.
+
+2003-02-20 Sergey Lipnevich <sergeyli@pisem.net>
+	* Added Calendar support as suggested by Jimmy Yen.
+	* Tests show that libical is not required.
+
+2003-02-18 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded to Enigmail 0.73.1 and IPC 1.0.2, required for Mozilla 1.3b.
+	* Updated URLs of these two source tarballs.
+
+2003-02-17 Sergey Lipnevich <sergeyli@pisem.net>
+	* Added `--disable-installer' to ./configure.
+	* Upgraded to 1.3b, but no Enigmail 0.73.0 source tarball is available ATM.
+	* Choosing Enigmail plugin is not recommended.
+
+2003-01-16 Sergey Lipnevich <sergeyli@pisem.net>
+	* Added `web-browser' and `graphical-web-browser' to
+	  the `provides' file.
+
+2002-12-16 Sergey Lipnevich <sergeyli@pisem.net>
+	* Updated to 1.3a + a fix for mail performance regression.
+	* Made Xinerama support disabled by default because GTK+2
+	  doesn't have it by default as well.
+
+2002-12-15 Sergey Lipnevich <sergeyli@pisem.net>
+	* Question about LDAP schema will be asked.
+	* Patch for Galeon is back.
+
+2002-12-04 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded to 1.2.1 and Enigmail to 0.71.0.
+	* Made PSM (and hence Enigmail) to compile and function.
+	* Reorganized support for Xft2 and freetype2 into optional
+	  dependencies, no questions asked in CONFIGURE.
+	* Changed to depend on ORBit2.
+	* Made a temporary fix where answer for MOZILLA_EMAIL is
+	  the fefault for MOZILLA_ENIGMAIL, so that there is a chance
+	  that people will not ask for Enigmail without Mail client.
+	* TODO: fix the above mentioned fix.
+	* Added libIDL as required dependency.
+
+2002-11-10 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded to version 1.2.
+	* Removed patching for Xft2 and GTK+2.
+	* Added optional depends for openldap instead
+	  of asking for them in CONFIGURE. Let the sorcery rule this.
+	* Calendar question removed because the calendar itself is not
+	  included in the standard source.
+
+2002-11-10 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded Enigmail plugin to 0.70.0.
+	* "No questions asked" Galeon 2 support. Default toolkit is GTK 2 now.
+
+2002-11-03 Robin Cook <rcook@wyrms.net>
+	* Added galeon2 support
+	* Added installing of mozilla-gtkmozembed.pc
+
+2002-10-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* Added fontconfig/Xft2 support
+
+2002-10-02 Sergey Lipnevich <sergeyli@pisem.net>
+	* Introduced a function configure_set_bool in CONFIGURE.
+
+2002-09-30 Geoffrey Derber <gderber@sourcemage.org>
+	* Added the Enigmail plugin.
+
+2002-09-01 Sergey Lipnevich <sergeyli@pisem.net>
+	* Updated to 1.1, added checksum and license information.
+	* Created a SOURCE_URI variable to use in SOURCE_URL[n] array.
+	* Added `provides' information according to bug 805.
+
+2002-07-02 Justin Rocha <jrocha@sourcemage.org>
+	* Removed compile optomizations, as per Mozilla bug #148723
+
+2002-06-06 Mads Laursen <dossen+sgl@daimi.au.dk>
+	* Even more options (mail/news, chat and freetype).
+	* And added Mads as maintainer (Eric Schabell)
+
+2002-06-05 Mads Laursen <dossen+sgl@daimi.au.dk>
+	* BUILD updated to build with SVG support and other optional stuff.
+	* Added dependency for perl (configure checks for it).
+	* Ohh, and it's version 1.0...
+
+2002-05-12 Justin Rocha <jrocha@sourcemage.org>
+	* Bumped version to 1.0rc2
+
+2002-04-24 Eric Schabell <eric@schabell.com>
+	* Bug fix, my fault, fixed DETAILS file source line,
+	  copied dezmond's fix incorrectly...
+	  flame me not him! ;)
+
+2002-04-23 The Well-Beloved Bard <dezmond@bardicgrove.org>
+	* Version upgrade 1.0rc1:
+	* Mozilla has released a new version (1.0rc1), and broken the spell in 
+	  doing so. The directory and filename represent the version differently.
+
+2002-04-11 Yoav Avitzour <avitzour@princeton.edu>
+	* Commented the /etc/mozilla references from BUILD. This means
+	  the spell ignores any previous configuration that existed
+	  in /etc/mozilla, however, since this configuration is from 
+	  some reason deleted anyway during the cast, it does not 
+	  matter for now and it's a bad fix (but still a fix) for a 
+	  broken spell 
+
+2002-04-08 Jon Svendsen <jon-sven@frisurf.no>
+	* Install NSS headers
+	  symlink libraries into /usr/lib on install
+
+2002-03-29 Mads Laursen <dossen+sgl@daimi.au.dk>
+	* Added symlink to config in /etc
+
+2002-03-18 Eric Schabell <eric@schabell.com>
+	* Updated UPDATE field as was set to OO for 
+	  month, sorry for the recompile.... I know...
+
+2002-03-13 Eric Schabell <eric@schabell.com>
+	* Added this History file.
