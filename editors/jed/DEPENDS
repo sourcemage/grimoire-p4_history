@@ -1,1 +1,9 @@
-depends  slang
+depends  slang                          &&
+optional_depends  "gpm"                 \
+                  "useGPM"              \
+                  ""                    \
+                  "use gpm?"            &&
+optional_depends  "X11-SERVER"          \
+                  "useX"                \
+                  ""                    \
+                  "use X?"
