@@ -484,10 +484,10 @@ if    query  "Configure host.def?"  n
   then  configure_host_def
 fi  &&
 
-if  spell_ok  Linux-PAM;  then
-  config_query  PAM  "Use Linux-PAM for authentication?"  y
+if  spell_ok  linux-pam;  then
+  config_query  PAM  "Use linux-pam for authentication?"  y
 else
-  config_query  PAM  "Use Linux-PAM for authentication?"  n
+  config_query  PAM  "Use linux-pam for authentication?"  n
 fi  &&
 
 config_query  IPV6      "Build IPv6 support?"           n

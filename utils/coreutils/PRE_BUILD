@@ -5,6 +5,6 @@ patch  -p1  <  $SCRIPT_DIRECTORY/coreutils-cp-mv-oMFS-bug.patch  &&
 # patch for pam support in su
 #
 if  echo  $OPTS  |  grep  -q  enable-pam;  then
-   message "${MESSAGE_COLOR} Linux-PAM is  enabled ${DEFAULT_COLOR}"   &&
+   message "${MESSAGE_COLOR} linux-pam is  enabled ${DEFAULT_COLOR}"   &&
    patch  -p1  <  $SCRIPT_DIRECTORY/coreutils-use-pam.patch
 fi

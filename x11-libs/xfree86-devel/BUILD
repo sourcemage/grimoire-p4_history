@@ -39,7 +39,7 @@ fi                                                      &&
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
   fi                                               &&
 
-  if  spell_installed  Linux-PAM
+  if  spell_installed  linux-pam
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                               &&
 

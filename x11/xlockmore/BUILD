@@ -1,6 +1,6 @@
 (
 
-  if  spell_installed  Linux-PAM;  then
+  if  spell_installed  linux-pam;  then
     ENABLE_PAM="--enable-pam"
   fi
 
