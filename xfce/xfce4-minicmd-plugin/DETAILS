@@ -1,0 +1,19 @@
+           SPELL=xfce4-minicmd-plugin
+         VERSION=0.1.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.berlios.de/xfce-goodies/$SOURCE
+        WEB_SITE=http://xfce-goodies.berlios.de
+          MD5[0]=ddda19d051ee7a711b1be9b80ac6e288
+      LICENSE[0]=GPL
+         ENTERED=20030827
+         UPDATED=20030827
+      MAINTAINER=v.merkatz@gmx.net
+           SHORT="A command entry box for the XFce4 panel"
+cat << EOF
+minicmd puts a small entry widget onto your panel. You can execute programs by
+typing their names in the widget and hitting Enter or Ctrl+Enter. The latter
+runs the command in a terminal.
+It maintains history which is shared with xfrun4. This history can be accessed
+by Up and Down keys.
+EOF
