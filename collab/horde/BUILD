@@ -20,9 +20,9 @@ PHP_MODULES=$(php -m)
   echo "$PHP_MODULES" | grep -q imap &&
   echo "$PHP_MODULES" | grep -q xml &&
 
-  if [ -r $SPELL-config.patch ]; then
+  if [ -r $SCRIPT_DIRECTORY/$SPELL-config.patch ]; then
     echo "Applying a patch necessary to relocate $HORDE_DIR/config directory to $HORDE_CONFIG_DIR" &&
-    patch -p1 < $SPELL-config.patch
+    patch -p1 < $SCRIPT_DIRECTORY/$SPELL-config.patch
   fi &&
 
   prepare_install &&
