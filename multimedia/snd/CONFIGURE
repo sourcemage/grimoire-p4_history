@@ -1,0 +1,23 @@
+function ask() {
+
+	if ! grep -q "CFG_$2=" $SPELL_CONFIG; then
+		
+		if query "Build Snd with $1?" $3
+			then cfg="--with-$2"
+			else cfg="--without-$2"
+			if cfg="--with-float"
+			then cfg="--with-float-samples"
+			fi
+		fi
+
+	echo "CFG_$2=\"$cfg\"" >> $SPELL_CONFIG
+
+	fi
+}
+
+ask	"ALSA support (doesn't work on my machine)"					"alsa"		"y"
+ask	"GTK interface (if no, use Motif)"		"gtk"		"y"
+ask	"Ruby scripting (if no, use Guile)"		"ruby"		"y"
+ask	"doubles (use doubles)" 			"doubles"	"y"
+ask	"internal float samples representation"  	"float" "y"
+ask	"run *under development*"			"run" "y"
