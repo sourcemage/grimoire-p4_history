@@ -1,2 +1,3 @@
-mkdir -p /usr/share/smgl-pubkeys
-cp $SCRIPT_DIRECTORY/*.gpg /usr/share/smgl-pubkeys
+local key_dir=${GPG_KEY_DIR:-/usr/share/smgl-pubkeys}
+mkdir -p $key_dir
+cp $SCRIPT_DIRECTORY/*.gpg $key_dir
