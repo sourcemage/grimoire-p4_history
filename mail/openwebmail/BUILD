@@ -80,6 +80,9 @@ if [ "$MAIL_STATS" == "n" ]; then
   patch --verbose $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl.patch
 fi
 
+message "${MESSAGE_COLOR}Patching OpenWebmail for remote vulnerability...${DEFAULT_COLOR}"
+patch --verbose $LOC/cgi-bin/openwebmail/ow-shared.pl < $SCRIPT_DIRECTORY/1.8x
+
 message "${MESSAGE_COLOR}Initializing OpenWebmail${DEFAULT_COLOR}"
 $LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init
 

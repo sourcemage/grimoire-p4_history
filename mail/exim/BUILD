@@ -24,6 +24,7 @@ chown  -R  exim:exim  /var/spool/mail/db     /var/spool/mail/db/*
 chown  -R  exim:exim  /var/spool/mail/input  /var/spool/mail/input/*
 chown  -R  exim:exim  /var/spool/mail/log    /var/spool/mail/log/*
 chown  -R  exim:exim  /var/spool/mail/msglog /var/spool/mail/msglog/*
+chgrp      exim       /var/spool/mail/*
 
 mkdir  -p  Local
 
