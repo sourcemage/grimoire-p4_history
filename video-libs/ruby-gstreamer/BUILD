@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   gstreamer   &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&

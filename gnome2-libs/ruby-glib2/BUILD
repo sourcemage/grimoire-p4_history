@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   glib        &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&

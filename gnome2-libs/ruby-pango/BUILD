@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   pango       &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&

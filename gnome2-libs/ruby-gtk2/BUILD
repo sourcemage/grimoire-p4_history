@@ -1,5 +1,6 @@
 (
 
+  cd   gtk         &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&

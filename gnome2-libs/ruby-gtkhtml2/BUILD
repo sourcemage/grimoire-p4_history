@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   gtkhtml2    &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&
