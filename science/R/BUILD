@@ -5,7 +5,7 @@
     mv /tmp/dataentry.c ${SOURCE_DIRECTORY}/src/modules/X11/
   fi
 
-  configure  &&
+  ./configure  &&
   make  &&
   prepare_install  &&
   make    install
