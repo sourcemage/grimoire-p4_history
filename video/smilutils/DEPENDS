@@ -1,6 +1,8 @@
-depends libavcodec	&&
-depends libdv		&&
-depends SDL		&&
-depends imlib2		&&
-depends libxml2		&&
-depends gdk-pixbuf
+depends  libdv       &&
+depends  imlib2      &&
+depends  libxml2     &&
+depends  gdk-pixbuf  &&
+optional_depends  "libavcodec"                         \
+                  "--with-ffmpeg=/usr/include/ffmpeg"  \
+                  ""                                   \
+                  "for ffmpeg2raw transcode utility"
