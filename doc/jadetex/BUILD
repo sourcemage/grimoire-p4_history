@@ -1,7 +1,6 @@
 (
 
-    TEXMF=`kpsetool -v '$TEXMF'`                                &&
-    TEXMF=`echo $TEXMF | sed -e "s/\!*//"`                      &&
+    TEXMF=`kpsetool -v '$TEXMFMAIN'`                           &&
    
     cp -r $TEXMF/tex/latex/config /tmp                          &&
     cd    /tmp/config                                           &&
