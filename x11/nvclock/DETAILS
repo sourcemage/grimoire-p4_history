@@ -1,14 +1,15 @@
            SPELL=nvclock
-         VERSION=0.6.2
+         VERSION=0.7
           SOURCE=$SPELL$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL$VERSION
    SOURCE_URL[0]=http://www.linuxhardware.org/nvclock/$SOURCE
-          MD5[0]=2520f15edd0ae54dc43f555ea62ba7d6
+          MD5[0]=
         WEB_SITE=http://nvclock.sourceforge.net/
          ENTERED=20020815
          UPDATED=20020815
       MAINTAINER=doubletwist@spack.nu
-         LICENSE=GPL
+      LICENSE[0]=GPL
+      MAKE_NJOBS=1
            SHORT="Allows you to overclock [or underclock] your NVDIA vidio cards"
 cat << EOF
 NVClock is a small utility that allows users to overclock[or underclock] NVIDIA based video cards running on the Linux platform.
