@@ -2,11 +2,12 @@
 ## @param runtime library name relative to prefix
 function link_runtime ()
 {
-  local TARGET_LINK=$INSTALL_ROOT/opt/gcc33/$1 &&
+  local TARGET_LINK="$INSTALL_ROOT/opt/gcc33/$1" &&
   if [[ -f "$TARGET_LINK" ]]; then
-    local TARGET=$(readlink $TARGET_LINK) &&
-    ln -fns ${TARGET##$INSTALL_ROOT} $INSTALL_ROOT/usr/$1 &&
-    message "${MESSAGE_COLOR}Linked $1 to $TARGET${DEFAULT_COLOR}"
+    local TARGET=$(readlink -f "$TARGET_LINK") &&
+    message "${MESSAGE_COLOR}Linking $1 to $TARGET...${DEFAULT_COLOR}" &&
+    [[ -f "$TARGET" ]] &&
+    ln -fns "${TARGET##$INSTALL_ROOT}" "$INSTALL_ROOT/usr/$1"
   fi
 }
 
