@@ -1,3 +1,18 @@
+2003-07-25  Vladimir Vydra <vydra@fria.fri.utc.sk>
+
+		Updated version to 2.0.1 .
+		Added missing LICENSE field to DETAILS.
+		Added myself as MAINTAINER :).
+		Changed ruleset from stable to current branch.
+		Changed sysconfig dir from /etc to /etc/snort.
+		Completly changed init.d script.
+		Added PRE_REMOVE to stop snort.
+
+		Created PREPARE, CONFIGURE, DEPENDS and modified BUILD
+		- added support for RDBMS and other configure options.
+		- added snort user,group.		
+		ToDO: fish acid dep. spell.
+		
 2003-05-01  Rob Verkuylen <rob@verkuylen.net>
 
 		Copied /init.d/snort.sh to /init.d/snort
