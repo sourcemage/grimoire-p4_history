@@ -1,8 +1,0 @@
-if  !  grep  -q  "GRTALKD_BOOT="  $SPELL_CONFIG;  then
-
-  if    query  "Invoke grtalkd during boot?" y
-  then  echo   "GRTALKD_BOOT=y"  >>  $SPELL_CONFIG
-  else  echo   "GRTALKD_BOOT=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
