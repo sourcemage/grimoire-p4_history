@@ -9,8 +9,10 @@ EOF
 }
 
 (
+  patch -p0 < $SPELL_DIRECTORY/mk.diff etc/Makefile			&&
+  sedit "s:/local::" man/Makefile					&&
+  sedit "s:/usr/src/linux:/lib/modules/$(uname -r)/build:" config.in	&&
   cfg |  make config		&&
-#  make auto_config         	&&
   make all 			&&
   prepare_install               &&
   make   install     
