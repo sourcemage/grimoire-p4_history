@@ -1,6 +1,6 @@
 fake_redhat()  {
 
-  if  !  [  -d  /etc/rc.d  ]   ||
+  if  !  [  -d  /etc/rc.d  ]   &&
       !  [  -h  /etc/rc.d  ];  then
       ln  -s  . /etc/rc.d
   fi
