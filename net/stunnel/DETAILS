@@ -1,13 +1,16 @@
            SPELL=stunnel
-         VERSION=4.05
+         VERSION=4.06
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.stunnel.org/download/stunnel/src/$SOURCE
-          MD5[0]=21fd95eccf9846aac999c890958640ae
+   SOURCE_URL[1]=http://mirror.hudecof.net/stunnel/$SOURCE
+   SOURCE_URL[2]=http://stunnel.md5.com.ar/$SOURCE
+          MD5[0]=2909b58542eb2ea463582efd927f2917
         WEB_SITE=http://www.stunnel.org/
          ENTERED=20011108
          UPDATED=20020115
-           SHORT="stunnel: multiplatform SSL tunneling proxy"
+       BUILD_API=2
+           SHORT="Multiplatform SSL tunneling proxy"
 cat << EOF
 The stunnel program is designed to work as an SSL encryption wrapper between
 remote client and local (inetd-startable) or remote server. It can be used to

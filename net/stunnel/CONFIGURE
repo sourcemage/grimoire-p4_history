@@ -1,19 +1,7 @@
-# $1 - variable name, $2 - message, $3 - default value
-ask_user()
-{
-
-  grep  -q  "^$1="  $SPELL_CONFIG  ||  {
-    eval "read  -p  \"$2 [$3]: \"  $1"
-    [  -z  "$( eval echo \$$1 )"  ]  &&  eval  $1=\"$3\"
-    eval  echo  "$1=\\\"\$$1\\\""  >>  $SPELL_CONFIG
-  }
-
-}
-
 get_info_from_user()
 {
 
-  cat  <<EOF
+  cat <<EOF
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -22,39 +10,43 @@ For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 EOF
 
-  ask_user  COUNTRY_NAME    "Country Name (2 letter code)"        "PL"
-  ask_user  PROVINCE_NAME   "State or Province Name (full name)"  "Some-State"
-  ask_user  LOCALITY_NAME   "Locality Name (eg, city)"
-  ask_user  ORG_NAME        "Organization Name (eg, company)"  \
-                                                      "Stunnel Developers Ltd"
-  ask_user  ORG_UNIT_NAME   "Organizational Unit Name (eg, section)"
-  ask_user  COMMON_NAME     "Common Name (FQDN of your server)"   "localhost"
+  config_query_string COUNTRY_NAME "Country Name (2 letter code)" "PL"
+
+  config_query_string PROVINCE_NAME \
+      "State or Province Name (full name)"  "Some-State"
+
+  config_query_string LOCALITY_NAME "Locality Name (eg, city)"
+
+  config_query_string ORG_NAME \
+        "Organization Name (eg, company)" "Stunnel Developers Ltd"
+
+  config_query_string ORG_UNIT_NAME "Organizational Unit Name (eg, section)"
+
+  config_query_string COMMON_NAME \
+        "Common Name (FQDN of your server)" "localhost"
 
 }
 
-if  [  -f  /etc/stunnel.pem  ];  then
-  mv  /etc/stunnel.pem  /etc/ssl/certs/
+if [ -f /etc/stunnel.pem ] ; then
+  mv /etc/stunnel.pem /etc/ssl/certs/
 fi
 
 # Heh
-if  [  -f  /etc/ssl/certs/stunnel.pem  ];  then
-  mv  /etc/ssl/certs/stunnel.pem  /etc/stunnel/
+if [ -f /etc/ssl/certs/stunnel.pem ] ; then
+  mv /etc/ssl/certs/stunnel.pem /etc/stunnel/
 fi
 
-if  [  !  -f  /etc/stunnel/stunnel.pem  ]  ;  then
+persistent_add CERTIFICATE
+
+if [ ! -f /etc/stunnel/stunnel.pem ] ; then
   get_info_from_user
   CERTIFICATE="y"
-elif  !  grep  -q  "^CERTIFICATE="  $SPELL_CONFIG  &&
-      query  "Generate a self signed certificate?" n  ;  then
+elif [[ $CERTIFICATE == "" ]] &&
+      query "Generate a self signed certificate?" n ; then
   get_info_from_user
   CERTIFICATE="y" 
 else
   CERTIFICATE="n"
 fi
 
-
-TEMP=`grep  -v  "CERTIFICATE="        $SPELL_CONFIG`
-echo  "$TEMP"                     >   $SPELL_CONFIG
-echo  "CERTIFICATE=$CERTIFICATE"  >>  $SPELL_CONFIG
-
-unset ask_user get_info_from_user
+unset get_info_from_user
