@@ -1,5 +1,16 @@
-2003-07-18 Eric Sandall <eric@sandall.us>
-	* Added TRIGGERS (Bug #3661)
+2004-08-03 Eric Sandall <eric@sandall.us>
+	* DETAILS: Reverted to 1.20.0 (2.0 breaks frozen-bubble)
+	  BUILD_API=2
+	  Changed LICENSE to LICENSE[0]
+	* BUILD: Converted to BUILD_API 2
+	* DEPENDS: SDL_image, SDL_mixer, and SDL_ttf renamed to sdl*
+	  Removed SDL as the above and smpeg depend on sdl
+	* TRIGGERS: Renamed SDL, SDL_gfx, SDL_image, SDL_mixer, SDL_net, SDL_sound,
+	  and SDL_ttf to sdl*
+	* HISTORY: Formatted to Guru Handbook
+
+2003-09-08 Lyon Lemmens <llemmens@sourcemage.org>
+	* DETAILS: bumped version to 2.0
 
 2003-01-14 Lyon Lemmens <llemmens@sourcemage.org>
 	* DETAILS: bumped version to 1.20.0
@@ -15,12 +26,13 @@
 
 2002-09-01 Lyon Lemmens <redlemon@knoware.nl>
 	* DETAILS: version bump to 1.18.5
-	* DETAILS: removed SOURCE_URL[0] and updated and promoted SOURCE_URL[1] to SOURCE_URL[0]
-	* DETAILS: removed USEGCC2. SDL now runs with gcc 3.2
+	  removed SOURCE_URL[0] and updated and promoted SOURCE_URL[1] to
+	  SOURCE_URL[0]
+	* USEGCC2: removed. SDL now runs with gcc 3.2
 
 2002-06-18 Lyon Lemmens <redlemon@knoware.nl>
 	* DETAILS: added MD5 signature
-	* DETAILS: added LICENSE
+	  added LICENSE
 
 2002-04-03 Lyon Lemmens <redlemon@knoware.nl>
 	* DETAILS: Updated version to 1.15
