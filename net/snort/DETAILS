@@ -1,12 +1,15 @@
            SPELL=snort
-         VERSION=1.9.0
+         VERSION=1.9.1
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=${SPELL}rules-stable.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.snort.org/dl/$SOURCE
+  SOURCE2_URL[0]=http://www.snort.org/dl/rules/$SOURCE2
         WEB_SITE=http://www.snort.org
-          MD5[0]="44be1a616a811ce77da90b4015c9a690"
+          MD5[0]=bb5b1026119dbae432b2bb2ccef98d30
+          MD5[1]=6308cf28c52821ffc68ece8821156d1c
          ENTERED=20011022
-         UPDATED=20021113
+         UPDATED=20030305
            SHORT="snort is a lightweight network intrustion detection program."
 cat << EOF
 Snort is a lightweight network intrusion detection system, capable of 

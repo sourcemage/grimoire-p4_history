@@ -1,22 +1,36 @@
 default_build  &&  (
 
-  if  [  !  -f  /etc/snort.conf  ];  then
-    sed  "s/include /include snort\//"  snort.conf  >  /etc/snort.conf
-  fi
+  echo making directory /etc/snort &&
+  mkdir  -p  /etc/snort      &&
 
-  mkdir  -p  /etc/snort
-  mkdir  -p  /var/log/snort
+  echo making directory /var/log/snort &&
+  mkdir  -p  /var/log/snort  &&	
 
-  if  [  !  -f  /etc/snort/classification.config  ];  then
-    cp  classification.config  /etc/snort
-  fi
+  cd etc &&
+
+  
+  for  FILE  in  `ls  *conf*`;  do
+    if  [  !  -f  /etc/snort/$FILE  ];  then
+      echo installing etc/$FILE to /etc &&
+      /usr/bin/install -c -m 644  $FILE  /etc
+    fi
+  done &&
+
+  sedit "s:../rules:/etc/snort/:" /etc/snort.conf &&
+
+  cd .. &&
+
+  cd rules &&
 
   for  FILE  in  `ls  *.rules`;  do
     if  [  !  -f  /etc/snort/$FILE  ];  then
-      cp  $FILE   /etc/snort
+      echo installing rules/$FILE to /etc/snort &&
+      /usr/bin/install -c -m 644  $FILE   /etc/snort
     fi
-  done
+  done &&
 
+
+ (
   cp  $SCRIPT_DIRECTORY/snort.sh  /etc/init.d/
 
   chmod  a+x  /etc/init.d/snort.sh
@@ -29,5 +43,5 @@ default_build  &&  (
   ln     -sf  ../init.d/snort.sh  /etc/rc3.d/S40snort            
   ln     -sf  ../init.d/snort.sh  /etc/rc4.d/S40snort
   ln     -sf  ../init.d/snort.sh  /etc/rc5.d/S40snort
-
+ )
 )
