@@ -1,9 +1,16 @@
            SPELL=dvdrtools
          VERSION=0.1.5
+if  [  "$ATAPI"  !=  "y"  ]; then
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://freesoftware.fsf.org/download/${SPELL}/${SPELL}.pkg/${VERSION}/${SOURCE}
           MD5[0]=2c19eca754a9afc35371038b6990763b
+else
+          SOURCE=${SPELL}-${VERSION}atapi.tar.bz2
+SOURCE_DIRECTORY=${SPELL}-${VERSION}atapi
+   SOURCE_URL[0]=ftp://ftp.gnumonks.org/pub/patches/$SOURCE
+          MD5[0]=1015c8e844a2036a571c7d344c430876
+fi
         WEB_SITE=http://www.freesoftware.fsf.org/dvdrtools/
       MAINTAINER=jean@kcco.com
       LICENSE[0]=GPL

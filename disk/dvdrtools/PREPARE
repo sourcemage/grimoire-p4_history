@@ -1,0 +1,13 @@
+SPELL=dvdrtools
+if  !  grep  -q ATAPI  $SPELL_CONFIG; then
+  if  echo $(uname -r) | grep -q "^2.6"
+  then  DEFAULT=y
+  else  DEFAULT=n
+  fi
+  if    query  "Use dvdrtools with ATAPI support (unofficial)?" $DEFAULT
+  then  ATAPI=y
+  else  ATAPI=n
+  fi
+
+  echo  "ATAPI=$ATAPI"  >>  $SPELL_CONFIG
+fi

@@ -1,8 +1,11 @@
-if  !  grep  -q  "IDE_SCSI="  $SPELL_CONFIG;  then
-
-  if    query  "Will you be using an IDE burner?"  n
-  then  echo  "IDE_SCSI=y"  >>  $SPELL_CONFIG
-  else  echo  "IDE_SCSI=n"  >>  $SPELL_CONFIG
+if  !  grep  -q  "ATAPI=y"  $SPELL_CONFIG; then
+  if  !  grep  -q  "IDE_SCSI="  $SPELL_CONFIG;  then
+    if    query  "Do you want to use ide-scsi to burn cds/dvds with an IDE writer?" n
+    then  IDE_SCSI=y
+    else  IDE_SCSI=n
+    fi
+    echo  "IDE_SCSI=$IDE_SCSI"  >>  $SPELL_CONFIG
   fi
-
+else
+  echo  "IDE_SCSI=n"  >>  $SPELL_CONFIG
 fi
