@@ -1,14 +1,14 @@
            SPELL=gst-python
-         VERSION=0.1.0
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.7.92
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/gstreamer/$SOURCE
-        WEB_SITE=http://www.gstreamer.net/bindings/python/
-          MD5[0]=374c5720f40c0e8893046c071897d7e6
+   SOURCE_URL[0]=http://gstreamer.freedesktop.org/src/$SPELL/$SOURCE
+        WEB_SITE=http://gstreamer.freedesktop.org
+          MD5[0]=17284509b57763f005479e92522901ed
       LICENSE[0]=LGPL
          ENTERED=20030827
          UPDATED=20030827
-      MAINTAINER=v.merkatz@gmx.net
+       BUILD_API=2
            SHORT="Python bindings for gstreamer"
 cat << EOF
 gst-python: the Python bindings for the GStreamer project. These bindings
