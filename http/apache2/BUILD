@@ -20,12 +20,4 @@
   ln -s /usr/sbin/httpd /usr/bin/httpd
   mkdir -p /var/run/httpd
 
-
-  case  $APACHE_BOOT  in
-    y|Y|j|J)
-           installscript apache.sh
-	  ;;
-          *)  true  ;;
-  esac
-
 )
