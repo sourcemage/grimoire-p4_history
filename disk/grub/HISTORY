@@ -1,3 +1,9 @@
+2005-01-14 Flavien Bridault <disk@sourcemage.org>
+	* CONFIGURE: Corrected a bug that use partition instead of MBR.
+	* CONFIGURE, DEPENDS, PREBUILD, BUILD : included Thomas Houssin changes
+	  in order to get reiser4 support. However this is for now exclusive with
+	  diskless support, and splash image. :(
+
 2004-12-12 Flavien Bridault <disk@sourcemage.org>
 	* FINAL: Use now grub-install instead of all the grub-shell stuff.
 	* CONFIGURE: Changed GRUB_TARGET format, now use the /dev format, which
