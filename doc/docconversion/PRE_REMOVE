@@ -3,10 +3,10 @@
 #
 # Need to cleanup postgresql db for docconversion.
 #
-DROPUSER="/usr/bin/dropuser -q -h localhost -U postgres"
-  DROPDB="/usr/bin/dropdb -q -h localhost -U postgres"
+DROPUSER="/usr/bin/dropuser -q -U postgres"
+  DROPDB="/usr/bin/dropdb -q -U postgres"
 
- CONNECT="/usr/bin/psql -d clearinghouse -h localhost -U postgres -q"
+ CONNECT="/usr/bin/psql -d clearinghouse -U postgres -q"
 		 
 if  [  -f /usr/bin/dropdb  ]; then
 
