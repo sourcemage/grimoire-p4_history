@@ -8,7 +8,7 @@ if  [  "$SCSV_GTK"  =  "y"  ];  then
   depends  libglade2
 fi  &&
 
-optional_depends  Linux-PAM                                     \
+optional_depends  linux-pam                                     \
                   "--with-pam"                                  \
                   "--without-pam"                               \
                   "for Pluggable Authentication Modules (PAM)"  &&
