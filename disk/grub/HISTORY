@@ -1,6 +1,11 @@
 2004-11-09 Eric Sandall <eric@sandall.us>
 	* DETAILS: Remove SOURCE2 (included in the spell) and SOURCE2_URL
 	* BUILD,INSTALL: Move creation of /boot/grub to INSTALL
+	* CONFIGURE,BUILD: Use config_query and if/then instead of
+	  config_query_option as we don't want to keep appending the answers
+	  Somehow fixes a problem where GRUB_ROOT wasn't being remembered
+	  (probably from all the config_query_options overwriting OPTS)
+	* CONFIGURE: Change default network config to enable all network cards
 	* PRE_BUILD: Apply patches here
 	  Change to SOURCE_DIRECTORY to apply patches
 	  grub-0.95-endedit.patch now uses -p1

@@ -16,253 +16,52 @@ fi  &&
 # the leading space appears to be critical, hence the escaped quotes:
 message  "GRUB is configured to install on $GRUB_TARGET."
 
-config_query_option  OPTS                                  \
-                     "Enable ext2 support in stage 2?"  y  \
-                     "--enable-ext2fs"                     \
-                     "--disable-ext2fs"                    &&
-
-config_query_option  OPTS                                      \
-                     "Enable FAT16/32 support in stage 2?"  y  \
-                     "--enable-fat"                            \
-                     "--disable-fat"                           &&
-
-config_query_option  OPTS                                 \
-                     "Enable FFS support in stage 2?"  n  \
-                     "--enable-ffs"                       \
-                     "--disable-ffs"                      &&
-
-config_query_option  OPTS                                     \
-                     "Enable MinixFS support in stage 2?"  y  \
-                     "--enable-minix"                         \
-                     "--disable-minix"                        &&
-
-config_query_option  OPTS                                      \
-                     "Enable ReiserFS support in stage 2?"  y  \
-                     "--enable-reiserfs"                       \
-                     "--disable-reiserfs"                      &&
-
-config_query_option  OPTS                                     \
-                     "Enable VSTAaFS support in stage 2?"  n  \
-                     "--enable-vstafs"                        \
-                     "--disable-vstafs"                       &&
-
-config_query_option  OPTS                                       \
-                     "Enable IBM's JFS support in stage 2?"  y  \
-                     "--enable-jfs"                             \
-                     "--disable-jfs"                            &&
-
-config_query_option  OPTS                                       \
-                     "Enable SGI's XFS support in stage 2?"  y  \
-                     "--enable-xfs"                             \
-                     "--disable-xfs"                            &&
-
-config_query_option  OPTS                                        \
-                     "Enable gzip decompression in stage 2?"  y  \
-                     "--enable-gunzip"                           \
-                     "--disable-gunzip"                          &&
-
-config_query_option  OPTS                                   \
-                     "Enable MD5 passwords in stage 2?"  y  \
-                     "--enable-md5-password"                \
-                     "--disable-md5-password"               &&
-
-config_query_option  OPTS                                  \
-                     "Enable packet retransmission?"    n  \
-                     "--enable-packet-retransmission"      \
-                     "--disable-packet-retransmission"     &&
-
-config_query_option  OPTS                                             \
-                     "Access PCI directly instead of using BIOS?"  n  \
-                     "--enable-pci-direct"                            \
-                     "--disable-pci-direct"                           &&
-
-config_query_option  OPTS                            \
-                     "Enable 3Com 3c503 driver?"  n  \
-                     "--enable-3c503"                \
-                     "--disable-3c503"               &&
-
-config_query_option  OPTS                                \
-                     "Use 3c503 shared memory mode?"  n  \
-                     "--enable-3c503-shmem"              \
-                     "--disable-3c503-shmem"             &&
-
-config_query_option  OPTS                                     \
-                     "Use AUI by default on 3c503 cards?"  n  \
-                     "--enable-3c503-aui"                     \
-                     "--disable-3c503-aui"                    &&
-
-config_query_option  OPTS                            \
-                     "Enable 3Com 3c507 driver?"  n  \
-                     "--enable-3c507"                \
-                     "--disable-3c507"               &&
-
-config_query_option  OPTS                             \
-                     "Enable 3Com 3c509 driver?"  n   \
-                     "--enable-3c509"                 \
-                     "--disable-3c509"                &&
-
-config_query_option  OPTS                             \
-                     "Enable 3Com 3c529 driver?"  n   \
-                     "--enable-3c529"                 \
-                     "--disable-3c529"                &&
-
-config_query_option  OPTS                             \
-                     "Enable 3Com 3c595 driver?"  n   \
-                     "--enable-3c595"                 \
-                     "--disable-3c595"                &&
-
-config_query_option  OPTS                             \
-                     "Enable 3Com 3c90x driver?"  n   \
-                     "--enable-3c90x"                 \
-                     "--disable-3c90x"                &&
-
-config_query_option  OPTS                         \
-                     "Enable CS89x0 driver?"  n   \
-                     "--enable-cs89x0"            \
-                     "--disable-cs89x0"           &&
-
-config_query_option  OPTS                         \
-                     "Enable Davicom driver?"  n  \
-                     "--enable-davicom"           \
-                     "--disable-davicom"          &&
-
-config_query_option  OPTS                       \
-                     "Enable DEPCA driver?"  n  \
-                     "--enable-depca"           \
-                     "--disable-depca"          &&
-
-config_query_option  OPTS                                           \
-                     "Enable Intel EtherExpress Pro/10 driver?"  n  \
-                     "--enable-eepro"                               \
-                     "--disable-eepro"                              &&
-
-config_query_option  OPTS                                            \
-                     "Enable Intel EtherExpress Pro/100 driver?"  n  \
-                     "--enable-eepro100"                             \
-                     "--disable-eepro100"                            &&
-
-config_query_option  OPTS                                     \
-                     "Enable SMC 83c170 EPIC/100 driver?"  n  \
-                     "--enable-epic100"                       \
-                     "--disable-epic100"                      &&
-
-config_query_option  OPTS                         \
-                     "Enable SMC9000 driver?"  n  \
-                     "--enable-smc9000"           \
-                     "--disable-smc9000"          &&
-
-config_query_option  OPTS                         \
-                     "Enable EXOS205 driver?"  n  \
-                     "--enable-exos205"           \
-                     "--disable-exos205"          &&
-
-config_query_option  OPTS                                       \
-                     "Enable Racal-InterLAN NI5010 driver?"  n  \
-                     "--enable-ni5010"                          \
-                     "--disable-ni5010"                         &&
-
-config_query_option  OPTS                                       \
-                     "Enable Racal-InterLAN NI5210 driver?"  n  \
-                     "--enable-ni5210"                          \
-                     "--disable-ni5210"                         &&
-
-config_query_option  OPTS                                       \
-                     "Enable Racal-InterLAN NI6510 driver?"  n  \
-                     "--enable-ni6510"                          \
-                     "--disable-ni6510"                         &&
-
-config_query_option  OPTS                                    \
-                     "Enable Lance PCI PCNet/32 driver?"  n  \
-                     "--enable-lance"                        \
-                     "--disable-lance"                       &&
-
-config_query_option  OPTS                               \
-                     "Enable Novell NE2100 driver?"  n  \
-                     "--enable-ne2100"                  \
-                     "--disable-ne2100"                 &&
-
-config_query_option  OPTS                                 \
-                     "Enable NatSemi DP8381x driver?"  n  \
-                     "--enable-natsemi"                   \
-                     "--disable-natsemi"                  &&
-
-config_query_option  OPTS                                 \
-                     "Enable NE1000/2000 ISA driver?"  n  \
-                     "--enable-ne"                        \
-                     "--disable-ne"                       &&
-
-config_query_option  OPTS                            \
-                     "Enable NE2000 PCI driver?"  n  \
-                     "--enable-ns8390"               \
-                     "--disable-ns8390"              &&
-
-config_query_option  OPTS                                           \
-                     "Enable WD8003/8013, SMC8216/8416 driver?"  n  \
-                     "--enable-wd"                                  \
-                     "--disable-wd"                                 &&
-
-config_query_option  OPTS                           \
-                     "Enable old Tulip driver?"  n  \
-                     "--enable-otulip"              \
-                     "--disable-otulip"             &&
-
-config_query_option  OPTS                       \
-                     "Enable Tulip driver?"  n  \
-                     "--enable-tulip"           \
-                     "--disable-tulip"          &&
-
-config_query_option  OPTS                              \
-                     "Enable Realtek 8139 driver?"  n  \
-                     "--enable-rtl8139"                \
-                     "--disable-rtl8139"               &&
-
-config_query_option  OPTS                                      \
-                     "Enable SIS 900 and SIS 7016 driver?"  n  \
-                     "--enable-sis900"                         \
-                     "--disable-sis900"                        &&
-
-config_query_option  OPTS                                        \
-                     "Enable Schneider and Koch G16 driver?"  n  \
-                     "--enable-sk-g16"                           \
-                     "--disable-sk-g16"                          &&
-
-config_query_option  OPTS                       \
-                     "Enable Tiara driver?"  n  \
-                     "--enable-tiara"           \
-                     "--disable-tiara"          &&
-
-config_query_option  OPTS                                \
-                     "Enable Via/Rhine-I/II driver?"  n  \
-                     "--enable-via-rhine"                \
-                     "--disable-via-rhine"               &&
-
-config_query_option  OPTS                                                   \
-                     "Enable Winbond W89c840, Compex RL100-ATX driver?"  n  \
-                     "--enable-w89c840"                                     \
-                     "--disable-w89c840"                                    &&
-
-config_query_option  OPTS                                        \
-                     "Do you have a Compex RL2000 PCI card?"  n  \
-                     "--enable-compex-rl2000-fix"                \
-                     "--disable-compex-rl2000-fix"               &&
-
-config_query_option  OPTS                     \
-                     "Enable diskless?"    n  \
-                     "--enable-diskless"      \
-                     "--disable-diskless"     &&
-
-config_query_option  OPTS                                    \
-                     "Enable hercules terminal support?"  n  \
-                     "--enable-hercules"                     \
-                     "--disable-hercules"                    &&
-
-config_query_option  OPTS                                  \
-                     "Enable serial terminal support?"  y  \
-                     "--enable-serial"                     \
-                     "--disable-serial"                    &&
-
-config_query_option  OPTS                                  \
-                     "Pass mem= option automatically?"  n  \
-                     "--enable-auto-linux-mem-opt"         \
-                     "--disable-auto-linux-mem-opt"
-
+config_query  GRUB_EXT2       "Enable ext2 support in stage 2?"            y  &&
+config_query  GRUB_FAT        "Enable FAT16/32 support in stage 2?"        y  &&
+config_query  GRUB_FFS        "Enable FFS support in stage 2?"             y  &&
+config_query  GRUB_MINIX      "Enable MinixFS support in stage 2?"         y  &&
+config_query  GRUB_REISER     "Enable ReiserFS support in stage 2?"        y  &&
+config_query  GRUB_JFS        "Enable IBM's JFS support in stage 2?"       y  &&
+config_query  GRUB_XFS        "Enable SGI's XFS support in stage 2?"       y  &&
+config_query  GRUB_VSTA       "Enable VSTAFS support in stage 2?"          y  &&
+config_query  GRUB_GZIP       "Enable gzip decompression in stage 2?"      y  &&
+config_query  GRUB_MD5        "Enable MD5 passwords in stage 2?"           y  &&
+config_query  GRUB_PACKET     "Enable packet retransmission?"              n  &&
+config_query  GRUB_PCI        "Access PCI directly instead of via BIOS?"   n  &&
+config_query  GRUB_3C503      "Enable 3Com 3c503 driver?"                  y  &&
+config_query  GRUB_3C503_SH   "Use 3Com 3c503 shared memory mode?"         n  &&
+config_query  GRUB_3C503_AUI  "Use 3Com 3c503 AUI?"                        n  &&
+config_query  GRUB_3C507      "Enable 3Com 3c507 driver?"                  y  &&
+config_query  GRUB_3C509      "Enable 3Com 3c509 driver?"                  y  &&
+config_query  GRUB_3C529      "Enable 3Com 3c529 driver?"                  y  &&
+config_query  GRUB_3C90x      "Enable 3Com 3c90x driver?"                  y  &&
+config_query  GRUB_CS89x0     "Enable CS89x0 driver?"                      y  &&
+config_query  GRUB_DAVICOM    "Enable Davicom driver?"                     y  &&
+config_query  GRUB_DEPCA      "Enable DEPCA driver?"                       y  &&
+config_query  GRUB_EEPRO10    "Enable Intel EtherExpress Pro/10 driver?"   y  &&
+config_query  GRUB_EEPRO100   "Enable Intel EtherExpress Pro/100 driver?"  y  &&
+config_query  GRUB_EPIC100    "Enable SMC 83c170 EPIC/100 driver?"         y  &&
+config_query  GRUB_SMC9000    "Enable SMC 9000 driver?"                    y  &&
+config_query  GRUB_EXOS205    "Enable EXOS205 driver?"                     y  &&
+config_query  GRUB_NI5010     "Enable Racal-InterLAN NI5010 driver?"       y  &&
+config_query  GRUB_NI5210     "Enable Racal-InterLAN NI5210 driver?"       y  &&
+config_query  GRUB_NI6510     "Enable Racal-InterLAN NI6510 driver?"       y  &&
+config_query  GRUB_LANCE      "Enable Lance PCI PCNet/32 driver?"          y  &&
+config_query  GRUB_NE         "Enable Novell NE1000/2000 ISA driver?"      y  &&
+config_query  GRUB_NE2000     "Enable Novell NE2000 PCI driver?"           y  &&
+config_query  GRUB_NE2100     "Enable Novell NE2100 driver?"               y  &&
+config_query  GRUB_NATSEMI    "Enable NatSemi DP8381x driver?"             y  &&
+config_query  GRUB_WD         "Enable WD8003/8013, SMC8216/8416 driver?"   y  &&
+config_query  GRUB_OTULIP     "Enable old Tulip driver?"                   y  &&
+config_query  GRUB_TULIP      "Enable Tulip driver?"                       y  &&
+config_query  GRUB_RTL8139    "Enable RealTek 8139 driver?"                y  &&
+config_query  GRUB_SIS900     "Enable SIS 900 and SIS 7016 driver?"        y  &&
+config_query  GRUB_SK_G16     "Enable Schneider and Koch G16 driver?"      y  &&
+config_query  GRUB_TIARA      "Enable Tiara driver?"                       y  &&
+config_query  GRUB_VIARHINE   "Enable Via/Rhine-I/II driver?"              y  &&
+config_query  GRUB_W89C840    "Enable Winbond W89c840, Compex RL100-ATX?"  y  &&
+config_query  GRUB_COMP_FIX   "Enable fix for Compex RL2000 PCI card?"     y  &&
+config_query  GRUB_DISKLESS   "Enable diskless operation?"                 y  &&
+config_query  GRUB_HERCULES   "Enable Hercules terminal support?"          n  &&
+config_query  GRUB_SERIAL     "Enable serial terminal support?"            y  &&
+config_query  GRUB_LINUX_MEM  "Pass mem= option automatically?"            n
