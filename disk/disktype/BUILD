@@ -5,6 +5,7 @@
   make                        &&
   prepare_install             &&
 
-  cp disktype /usr/bin/disktype
+  install -m 0755 disktype    /usr/bin   &&
+  install -m 0644 disktype.1  /usr/share/man/man1
 
 ) > $C_FIFO 2>&1
