@@ -1,6 +1,6 @@
-optional_depends db              \
-                 '--enable-bdb'  \
-                 '--disable-bdb' &&
+# db is optional, but we use it as a recommended default backend
+depends db '--enable-bdb' 'Berkeley DB is recommended default back-end' &&
+
 optional_depends readline                    \
                  '--with-readline'           \
                  '--without-readline'        \

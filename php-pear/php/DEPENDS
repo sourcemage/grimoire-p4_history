@@ -1,9 +1,9 @@
 requires webserver &&
 
-optional_depends zlib                               \
-                 '--with-zlib --with-zlib-dir=/usr' \
-                 '--without-zlib'                   \
-                 'for LZ compression support'       &&
+# Officially ZLib is optional, but we require it because some other
+# optional extensions depend on it, and it's omnipresent anyway.
+depends zlib '--with-zlib --with-zlib-dir=/usr' 'for LZ compression support' &&
+
 optional_depends bzip2                     \
                  '--with-bz2=/usr'         \
                  '--without-bz2'           \

@@ -1,5 +1,5 @@
            SPELL=turba
-         VERSION=${VERSION:-1.2.1-RC1}
+         VERSION=${VERSION:-1.2.1}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
@@ -11,7 +11,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
            SHORT='Turba is the Horde contact management application'
 
 [ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='278911011f8e9e1e278367abdb4d4df6'
+          MD5[0]='0d2204c54a356c987ad97496940f54f8'
 
 cat << EOF
 Turba is the Horde addressbook/contact management program. It grew out of the

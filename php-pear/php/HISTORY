@@ -1,6 +1,15 @@
+2003-09-19  Eric Sandall <eric@sandall.us>
+
+		Changed php to PHP for requires/provides  (Bug #4278)
+
+2003-09-19  Sergey Lipnevich  <sergey@sourcemage.org>
+
+		Made ZLib a non-optional dependency, see DEPENDS for a comment.
+
 2003-09-17  Sergey Lipnevich  <sergey@sourcemage.org>
 
 		Upgrade to 4.3.3.
+
 		Remove re/start of HTTPD service.
 
 2003-08-18  Sergey Lipnevich  <sergey@sourcemage.org>
@@ -60,8 +69,11 @@
 
 		"Variable tracking" and "transparent session id" removed because
 		these options are not supported by ./configure anymore.
+
 		"Socket support" option integrated into BUILD.
+
 		Enabled calendar functions.
+
 		Safe mode disabled by default because otherwise PEAR might have
 		problems installing itself at the end of installation routine.
 
@@ -99,15 +111,19 @@
 
 		* BUILD: add patches to fix ldap and apache2 problems (thanks
 		to Eric Sandall).
+
 		* php.apache2.diff: add.
+
 		* php.ldap.diff: add.
 
 2002-05-21  Julian v. Bock  <julian@wongr.net>
 
 		* CONFIGURE: add options for --enable-track-vars, --enable-safe-mode,
 		and --enable-trans-sid.
+
 		* DEPENDS: add t1lib optional dependency; change freetype dir to
 		/usr/lib.
+
 		* BUILD: use --with-xpm-dir if xfree86 is installed.
 
 2002-05-14  Julian v. Bock  <julian@wongr.net>
@@ -181,24 +197,24 @@ optional_depends  "mm"       	"--with-mm"  		""  "for sharing memory between rel
 optional_depends  "expat"      	"--with-xml --with-expat-dir=/usr"  		""  "expat is a XML parsing library"   	&&
 
 
-20011219, php-4.1.0, kongar
+2001-12-19, php-4.1.0, kongar
 
-- added mod_ssl support to POST_INSTALL
+		- added mod_ssl support to POST_INSTALL
 
-- added mod_ssl support to BUILD
+		- added mod_ssl support to BUILD
 
-- added mod_ssl support to POST_REMOVE
+		- added mod_ssl support to POST_REMOVE
 
 
-20011212, php-4.1.0, kongar
+2001-12-12, php-4.1.0, kongar
 
-- readline optional dependency is removed. It is now only for CGI build of php.
+		- readline optional dependency is removed. It is now only for CGI build of php.
 
-- added configure prefence --enable-socket for socket functions support
-  php doc says it is EXPERIMENTAL, but working.
+		- added configure prefence --enable-socket for socket functions support
+		php doc says it is EXPERIMENTAL, but working.
   
-- added optional dependency --with-pspell for pspell support
+		- added optional dependency --with-pspell for pspell support
 
-- added optional dependency --with-bz2 bzip2 compression support
+		- added optional dependency --with-bz2 bzip2 compression support
 
-- some syntax changes on the DEPENDS file
+		- some syntax changes on the DEPENDS file
