@@ -1,0 +1,24 @@
+echo "makeing hotplug dir"
+[ ! -d /usr/lib/hotplug/firmware ] && mkdir -p /usr/lib/hotplug/firmware  
+echo "makeing ipw dir"
+[ ! -d $SOURCE_DIRECTORY ] && mkdir -p $SOURCE_DIRECTORY 
+echo "cding into dir and untaring" 
+cd $SOURCE_DIRECTORY  && tar -xvzf /var/spool/sorcery/$SOURCE  
+extras="`ls $SOURCE_DIRECTORY`"
+echo "license agreement"
+
+less $SOURCE_DIRECTORY/LICENSE && 
+
+if ! query "Do you agree to the terms of the license?" y; then
+  rm $SOURCE_DIRECTORY/*
+  return 1 
+fi
+
+
+echo "moving files" 
+mv $SOURCE_DIRECTORY/*.fw /usr/lib/hotplug/firmware/
+for x in $extras
+do
+  rm /usr/src/$x
+done
+return 0
