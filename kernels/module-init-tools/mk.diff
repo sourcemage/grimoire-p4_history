@@ -6,7 +6,7 @@ diff -ur module-init-tools-3.1-pre2/Makefile.in module-init-tools-3.1-pre2-copy/
  OBJEXT = @OBJEXT@
  PATH_SEPARATOR = @PATH_SEPARATOR@
 -mandir = $(shell if [ `echo $(prefix)/ | tr -s /` = / ]; then echo /usr/share/man; else echo $(prefix)/man; fi)
-+mandir = $(prefix)/share/man
++mandir = $(prefix)/usr/share/man
  INSTALL = $(SHELL) $(top_srcdir)/install-with-care
  AMTAR = @AMTAR@
  AWK = @AWK@
