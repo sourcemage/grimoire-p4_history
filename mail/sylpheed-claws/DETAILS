@@ -1,0 +1,20 @@
+           SPELL=sylpheed-claws
+         VERSION=0.8.3
+          SOURCE=sylpheed-${VERSION}claws.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/sylpheed-${VERSION}claws
+   SOURCE_URL[0]=http://switch.dl.sourceforge.net/sourceforge/sylpheed-claws/$SOURCE
+          MD5[0]=0a605ce1db550512ac652a371e6d46fd
+        WEB_SITE=http://sylpheed-claws.sourceforge.net/
+         ENTERED=20020928
+         UPDATED=20020928
+      MAINTAINER=tmarx@digitalprojects.com
+         LICENSE=GPL
+           SHORT="Sylpheed-Claws is the bleeding edge version of Sylpheed, an e-mail client (& news reader) based on GTK+."
+cat << EOF
+Sylpheed is a GTK+ based, lightweight, and fast email client. Almost
+all commands are accessible with the keyboard. It also has many
+features such as multiple accounts, POP3/APOP support, thread display, 
+and multipart MIME. One of Sylpheed's future goals is to be fully 
+internationalized. The messages are managed in the MH format, so 
+you'll be able to use it together with another mailer that uses the MH format.
+EOF
