@@ -58,12 +58,12 @@
   pinfo "Other stuff..."                                      &&
 
   # Proper shutdown procedure
-  ln -fsv ${INSTALL_ROOT}/etc/sysconfig/shutdown ${INSTALL_ROOT}/etc/shutdown.conf          &&
+  ln -fsv /etc/sysconfig/shutdown ${INSTALL_ROOT}/etc/shutdown.conf          &&
 
   # Yeah, I know
-  ln  -sfv  ${INSTALL_ROOT}/bin/true  $RD/rc                                 &&
+  ln  -sfv  /bin/true  $RD/rc                                 &&
 
   # LILO uses the auto runlevel when it doesn't encounter any user input
-  ln  -sfv  ${INSTALL_ROOT}/etc/init.d/runlevels/%default  ${INSTALL_ROOT}/etc/init.d/runlevels/%auto
+  ln  -sfv  /etc/init.d/runlevels/%default  ${INSTALL_ROOT}/etc/init.d/runlevels/%auto
 
 ) > $C_FIFO 2>&1
