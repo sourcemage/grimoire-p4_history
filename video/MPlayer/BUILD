@@ -12,16 +12,14 @@
     y|Y)  OPTS="$OPTS  --enable-freetype"  ;;
   esac
 
+  case  $OSD_MENU  in
+    y|Y)  OPTS="$OPTS  --enable-menu"  ;;
+  esac
+  
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
                $OPTS          &&
-  # workaround for a glitch in the Makefile
-  case  $FREETYPE2  in
-    y|Y) sedit 's:-o $(PRG):-o $(PRG) -L/usr/lib -lfreetype:' Makefile
-         sedit 's:-o $(PRG_MENCODER):-o $(PRG_MENCODER) -L/usr/lib -lfreetype:'\
-           Makefile
-         ;;
-  esac
+
   make                        &&
   prepare_install             &&
   make    install             &&
