@@ -1,3 +1,30 @@
+2005-03-30 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* patches/PATCH_ORDER: Update comments
+
+2005-03-27 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* CONFIGURE, PRE_BUILD, patches/*: Further patch engine work, including
+	  a mutt_default_patch() function and bzipping everything that can be
+	* DEPENDS, BUILD, FINAL: Add (and remove) $TMP_MUTT_OPTS instead of
+	  using $OPTS
+
+2005-03-23 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* CONFIGURE, DEPENDS, PRE_BUILD: Remove unneeded variable checks
+	* patches/maildir_header_cache/DETAILS: Remove cvs branch as supported
+	  since the patch has been integrated upstream
+	* WIP: I'm changing my mind on this patch system, there's a better way
+
+2005-03-21 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* patches/*/PATCH: Save some space by not including pre-patched patches
+
+2005-03-21 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* DEPENDS: Reorder some queries, also don't add --with-ssl for the
+	  S/MIME openssl query
+	* patch/attachment_counting/PATCH: Fix patch filename
+
+2005-03-21 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* BUILD, CONFIGURE, CONFLICTS, DEPENDS, DETAILS, FINAL, POST_INSTALL,
+	  PRE_BUILD, PREPARE, patches/*: Completely reworked version of spell
+
 2004-11-08 Seth Woolley <seth@tautology.org>
 	* DETAILS, BUILD, CONFIGURE: addition of maildir/imap header cache
 

@@ -1,1 +1,8 @@
-config_query  CVS "Build the cvs version?" n
+# temporary, to migrate old branch preference
+if  [ "${CVS}" == "y" ]; then
+  persistent_add BRANCH
+  BRANCH="cvs"
+  persistent_remove CVS
+fi
+
+config_query_list BRANCH "Build which version?" stable devel cvs

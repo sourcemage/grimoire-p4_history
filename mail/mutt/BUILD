@@ -1,59 +1,10 @@
-#
-# patch for multiple signatures and allows selection.
-#
-if [ "$PATCH_SIGNATURE" == "y" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.0.cd.signatures_menu.2.1
-fi  &&
-
-#
-# patch for trash bin.
-#
-if [ "$PATCH_TRASH" == "y" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.0.cd.trash_folder.3.1
-fi  &&
-
-#
-# patch for libesmtp support
-#
-if [ "$PATCH_SMTP" == "y" ]; then 
-  patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.sde.libesmtp.3
-  aclocal -I m4 && autoheader && (cd m4 && make -f Makefile.am.in) &&
-  automake ; autoconf ;
-  cd ${SOURCE_DIRECTORY} &&
-  OPTS="${OPTS} --with-libesmtp"
+if [ ! -x ./configure ]; then
+  ./prepare
 fi &&
 
-# for cvs use 
-if [ "$CVS" == "y" ]; then 
-	# for sidebar patch only works with cvs 
-	if [ "$PATCHBAR" == "y" ]; then 
-		patch -p1 < $SCRIPT_DIRECTORY/patch-1.5.6.jrh.sidebar.13		
-	fi  &&
-	if [ "$MAILDIR_CACHE" == "y" ]; then
-		patch -p1 < $SCRIPT_DIRECTORY/mutt-cvs-header-cache.25
-		OPTS="$OPTS --enable-hcache"
-	fi  &&
-./prepare  --build=$BUILD                       \
-             --prefix=${INSTALL_ROOT}/usr         \
-             --sysconfdir=${INSTALL_ROOT}/etc     \
-             --localstatedir=${INSTALL_ROOT}/var  \
-             --enable-pop                         \
-             --enable-imap                        \
-             --with-mailpath=/var/spool/mail      \
-             --mandir=${INSTALL_ROOT}/usr/share/man  \
-             --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt  \
-             $OPTS                                &&
-  	make
-else 
-./configure  --build=$BUILD                       \
-             --prefix=${INSTALL_ROOT}/usr         \
-             --sysconfdir=${INSTALL_ROOT}/etc     \
-             --localstatedir=${INSTALL_ROOT}/var  \
-             --enable-pop                         \
-             --enable-imap                        \
-             --with-mailpath=/var/spool/mail      \
-             --mandir=${INSTALL_ROOT}/usr/share/man  \
-             --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt  \
-             $OPTS                                &&
-make
+OPTS="--build=${BUILD} --with-mailpath=/var/spool/mail --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt ${MUTT_OPTS} ${TMP_MUTT_OPTS} ${OPTS}" &&
+default_build &&
+
+if [ "${UPDATE_DOC}" == "y" ]; then
+  make update-doc
 fi

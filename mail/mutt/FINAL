@@ -5,12 +5,15 @@ if [ ! -d ${INSTALL_ROOT}/var/spool/mail ]; then
   then
     mkdir -p ${INSTALL_ROOT}/var/spool/mail
   fi
-fi
+fi &&
 
 if [ ! -e ${INSTALL_ROOT}/var/spool/mail/root ] && [ -d ${INSTALL_ROOT}/var/spool/mail ]; then
   if query "${INSTALL_ROOT}/var/spool/mail/root mailbox is missing... do you want to create one ?" y
   then
-    touch ${INSTALL_ROOT}/var/spool/mail/root
+    touch ${INSTALL_ROOT}/var/spool/mail/root &&
     chmod 660 ${INSTALL_ROOT}/var/spool/mail/root
   fi
-fi
+fi &&
+
+persistent_remove REAL_PATCHES &&
+persistent_remove TMP_MUTT_OPTS

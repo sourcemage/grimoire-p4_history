@@ -1,36 +1,46 @@
            SPELL=mutt
-         VERSION=1.4.2i
-   if [ "$CVS" == "y" ]; then 
+ PATCH_DIRECTORY=${SCRIPT_DIRECTORY}/patches
+
+   case ${BRANCH} in
+
+      cvs)
+
          VERSION=cvs
- 	  SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous:anonymous@cvs.mutt.org:/home/roessler/cvs:mutt
   FORCE_DOWNLOAD=on 
-	  MD5[0]="IGNORE"
-   else
-          SOURCE=$SPELL-$VERSION.tar.gz
-   
-          MD5[0]=07e7daa837c57456a4fde22d9ca2cca5
-   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/$SOURCE
-   SOURCE_URL[1]=ftp://uiarchive.cso.uiuc.edu/mirrors/ftp/ftp.mutt.org/mutt/$SOURCE
-   SOURCE_URL[2]=ftp://ftp.linux.it/pub/mirrors/mutt/$SOURCE
-   SOURCE_URL[3]=ftp://ftp.franken.de/pub/linux/mutt/$SOURCE
-   SOURCE_URL[4]=ftp://unix.nitnet.com.br/pub/mutt/$SOURCE
-   SOURCE_URL[5]=ftp://sunsite.uio.no/pub/mail/mutt/$SOURCE
-   SOURCE_URL[6]=ftp://ftp.gin.cz/pub/MIRRORS/ftp.mutt.org/pub/mutt/$SOURCE
-   SOURCE_URL[7]=ftp://pgp.rasip.fer.hr/pub/mutt/$SOURCE
-   SOURCE_URL[8]=ftp://ftp.arch.pwr.wroc.pl/pub/mutt/$SOURCE
-   SOURCE_URL[9]=ftp://sunsite.dk/mirrors/mutt/$SOURCE
-   SOURCE_URL[10]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.4.2
-fi
- 
-       WEB_SITE=http://www.mutt.org
+          MD5[0]="IGNORE"
+
+      ;;
+      devel)
+
+         VERSION=1.5.9
+          MD5[0]=61f6db7e1cd11f24adf5d181b4d95b8f
+          SOURCE=${SPELL}-${VERSION}i.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/devel/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+
+      ;;
+      *)
+
+         VERSION=1.4.2.1
+          MD5[0]=f068f31af619676fcc4dd2c51a919689
+          SOURCE=${SPELL}-${VERSION}i.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+
+      ;;
+   esac
+
+        WEB_SITE=http://www.mutt.org/
          ENTERED=20010922
          UPDATED=20020530
          LICENSE=GPL
        BUILD_API=2
-           SHORT="mutt is a text-based MIME Email client."
+           SHORT="mutt is a text-based MIME mail client."
 cat << EOF
 
 Mutt is a small but very powerful text-based MIME mail client. It is
@@ -39,19 +49,9 @@ advanced features like key bindings, keyboard macros, mail threading,
 regular expression searches, and a powerful pattern matching language
 for selecting groups of messages.
 
-For details about the multi-signatures patch:
-http://cedricduval.free.fr/mutt/index.php3#sig
+This spell contains various optional patches for each branch of mutt.
+For details on any of the patches, see:
 
-For details about the trash patch:
-http://cedricduval.free.fr/mutt/index.php3#trash
-
-For details about the libesmtp patch
-http://www.deez.info/sengelha/projects/mutt/libesmtp/
-
-For details about the sidebar patch for cvs only
-http://vorlon.cwru.edu/~jrh29/mutt/
-
-For details about the Maildir/IMAP cache for cvs only
-http://wwwcip.informatik.uni-erlangen.de/~sithglan/mutt/
+http://wiki.mutt.org/index.cgi?PatchList
 
 EOF
