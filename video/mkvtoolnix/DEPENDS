@@ -1,5 +1,12 @@
+depends  expat             &&
+depends  lzo               &&
+depends  libvorbis         &&
 depends  libmatroska       &&
 optional_depends  "wxGTK"  \
                   ""       \
                   ""       \
-                  "for mkvinfo and mmg gui"
+                  "for mkvinfo and mmg gui"  &&
+optional_depends  "flac"  \
+                  ""      \
+                  ""      \
+                  "for FLAC support"
