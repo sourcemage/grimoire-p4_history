@@ -1,6 +1,5 @@
 (
  prepare_install                             &&
- gunzip doc/rasmol.1.gz                      &&
  cd src                                      &&
  ln -s ../doc .                              &&
  ln -s ../data .                             &&
