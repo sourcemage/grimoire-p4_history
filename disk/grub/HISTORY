@@ -2,6 +2,8 @@
 	* DETAILS: Remove SOURCE2 (included in the spell) and SOURCE2_URL
 	* BUILD,INSTALL: Move creation of /boot/grub to INSTALL
 	* PRE_BUILD: Apply patches here
+	  Change to SOURCE_DIRECTORY to apply patches
+	  grub-0.95-endedit.patch now uses -p1
 	* grub-0.90-append.patch, grub-0.94-geometry-26kernel.patch
 	  grub-0.90-symlinkmenulst.patch,grub-0.94-i2o.patch
 	  grub-0.91-splashimagehelp.patch,grub-0.94-initrdmax.patch
@@ -12,6 +14,12 @@
 	  grub-0.94-addsyncs.patch: Added from Bug #7587
 	  Thanks to  Richard Johns <johnsr1@lincoln.ac.nz> for the patches from
 	  Fedora's SRPMS.
+	* grub-0.90-append.patch,grub-0.90-symlinkmenulst.patch,
+	  grub-0.91-splashimagehelp.patch,grub-0.93-endedit.patch,
+	  grub-0.93-graphics-bootterm.patch,grub-0.93-once.patch,
+	  grub-0.93-special-device-names.patch,grub-0.94-addsyncs.patch,
+	  grub-0.94-geometry-26kernel.patch grub-0.94-initrdmax.patch,
+	  grub-0.94-installcopyonly.patch: Updated and renamed to 0.95
 
 2004-06-22 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 0.95
