@@ -16,7 +16,7 @@ fi  &&
 if  [  "$PAM"  ==  "y"  ];  then
   AUXLIBS="$AUXLIBS -lpam -lpam_misc"  &&
   CCARGS="$CCARGS  -DHAS_PAM"          &&
-  message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}Linux-Pam detected: Using linux-pam${DEFAULT_COLOR}"
 fi  &&
 
 if  [  "$SASL"  ==  "y"  ];  then
