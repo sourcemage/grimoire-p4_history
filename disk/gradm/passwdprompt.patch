@@ -1,18 +1,16 @@
 diff -uNr gradm2.old/Makefile gradm2/Makefile
---- gradm2.old/Makefile	2004-11-15 23:23:07.914385496 +0100
-+++ gradm2/Makefile	2004-11-15 23:23:47.520364472 +0100
-@@ -118,14 +118,6 @@
+--- gradm2.old/Makefile	2005-01-26 21:37:51.934313568 +0100
++++ gradm2/Makefile	2005-01-26 21:38:48.591700336 +0100
+@@ -115,11 +115,6 @@
  	fi
  	mkdir -p $(DESTDIR)$(MANDIR)/man8
  	$(INSTALL) -m 0644 gradm.8 $(DESTDIR)$(MANDIR)/man8/$(GRADM_BIN).8
--	@if [ -z $(DESTDIR) ] ; then \
--		if [ -x /sbin/$(GRADM_BIN) ] ; then \
--			$(FIND) $(GRSEC_DIR) -type f -name pw -size 48c -exec rm -f $(GRSEC_DIR)/pw \; ; \
--			if [ ! -f $(GRSEC_DIR)/pw ] ; then \
--				/sbin/$(GRADM_BIN) -P ; \
--                        fi \
+-	@if [ -x $(DESTDIR)/sbin/$(GRADM_BIN) ] ; then \
+-		$(FIND) $(DESTDIR)$(GRSEC_DIR) -type f -name pw -size 48c -exec rm -f $(DESTDIR)$(GRSEC_DIR)/pw \; ; \
+-		if [ ! -f $(DESTDIR)$(GRSEC_DIR)/pw ] ; then \
+-			$(DESTDIR)/sbin/$(GRADM_BIN) -P ; \
 -		fi \
 -	fi
- 
++
  clean:
  	rm -f core *.o $(GRADM_BIN) lex.*.c *.tab.c *.tab.h grlearn
