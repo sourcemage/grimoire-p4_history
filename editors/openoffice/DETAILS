@@ -1,0 +1,27 @@
+            SPELL=openoffice
+          VERSION=1.1rc3
+	 BVERSION=1.875a
+           SOURCE=OOo_${VERSION}_source.tar.bz2
+	  SOURCE2=Linux-PAM-0.76-headers.tar.bz2
+	  SOURCE3=bison-$BVERSION.tar.bz2
+  	   MD5[0]=43fbd3cf8587902b89d9eaa6b6df053f
+	   MD5[1]=791cc25e0b22eeb822d48932b313e034
+	   MD5[2]=7a5e425232e65eb001b264ff58fec494
+       LICENSE[0]=GPL
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/oo_${VERSION}_src
+SOURCE_DIRECTORY2=$BUILD_DIRECTORY/security
+SOURCE_DIRECTORY3=$BUILD_DIRECTORY/bison-$BVERSION
+    SOURCE_URL[0]=http://sf1.mirror.OpenOffice.org/stable/$VERSION/$SOURCE
+    SOURCE_URL[1]=http://ny1.mirror.OpenOffice.org/stable/$VERSION/$SOURCE
+   SOURCE2_URL[0]=http://www.linuxfromscratch.org/~tushar/hints/files/OpenOfficeFromScratch/$SOURCE2
+   SOURCE3_URL[0]=http://download.sourcemage.org/mirror/$SOURCE3
+         WEB_SITE=http://www.openoffice.org
+          ENTERED=20021127
+          UPDATED=20030311
+            SHORT="OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology for the popular StarOffice productivity suite."
+
+cat << EOF
+OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology for the popular StarOffice productivity suite.
+EOF
+
+#[ -f $CONFIG_CACHE/oo.languages ] && . $CONFIG_CACHE/oo.languages || true

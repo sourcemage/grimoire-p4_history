@@ -1,0 +1,32 @@
+#warn_rejected &&
+#ask_continue_with_rejected &&
+
+if ! test "`gaze installed bison`" = "1.875a" ; then
+        mk_source_dir $SOURCE_DIRECTORY3 &&
+        cd $BUILD_DIRECTORY 		 &&
+        unpack $SOURCE3 ${MD5[2]} 	 &&
+	cd $SOURCE_DIRECTORY3		 &&
+        ./configure --prefix=/opt/bison/ &&
+        make                             &&
+        make install
+fi
+
+PATH=/opt/bison/bin:$PATH &&
+
+
+mk_source_dir	$SOURCE_DIRECTORY  4g	&&
+cd		$BUILD_DIRECTORY	&&
+unpack		$SOURCE	${MD5[0]}	&&
+
+if ! spell_installed "Linux-PAM"; then
+	mk_source_dir $SOURCE_DIRECTORY2 &&
+	cd $BUILD_DIRECTORY		 &&
+	unpack $SOURCE2 ${MD5[1]}	 &&
+	if [ -d /usr/include/security ]; then
+		mv -f security/* /usr/include/security/
+	else
+		mv security/  /usr/include/
+	fi
+fi
+	
+	
