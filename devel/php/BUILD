@@ -3,6 +3,8 @@
   if    spell_installed  apache  ||
         spell_installed  apache-mod_ssl
   then  WITH_APACHE="--with-apxs"
+  elif  spell_installed  apache2
+  then  WITH_APACHE="--with-apxs2"
   fi
 
 ./configure \
@@ -31,11 +33,11 @@
 	--with-regex=system 		\
 	--with-versioning 		\
 	--with-mod_charset 		\
-	--with-layout=GNU		\
+	--with-layout=GNU                   \
     --with-x-includes=/usr/X11/include  \
-    --with-x-libraries=/usr/X11/lib  \
-	$WITH_APACHE                  	\
- 	$OPTS                         	&&
+    --with-x-libraries=/usr/X11/lib     \
+	$WITH_APACHE                  	    \
+ 	$OPTS                               &&
   make                                 	&&
   prepare_install                       &&
   make    install                       &&

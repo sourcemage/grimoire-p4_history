@@ -1,0 +1,9 @@
+if  !  grep  -q  "SSHD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke SSHD via init at boot?" y
+  then  echo   "SSHD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "SSHD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
+
