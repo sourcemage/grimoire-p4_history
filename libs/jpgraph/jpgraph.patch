@@ -1,25 +1,16 @@
-diff -urN jpgraph-1.6.3/src/jpgraph.php jpgraph/src/jpgraph.php
---- jpgraph-1.6.3/src/jpgraph.php	2002-05-13 17:42:36.000000000 -0400
-+++ jpgraph/src/jpgraph.php	2002-05-21 07:39:18.000000000 -0400
-@@ -16,7 +16,7 @@
- 
- // The full absolute name of directory to be used as a cache. This directory MUST
- // be readable and writable for PHP. Must end with '/'
+diff -ruN jpgraph-1.9/src/jpgraph.php jpgraph-1.9.new/src/jpgraph.php
+--- jpgraph-1.9/src/jpgraph.php	2002-10-26 17:37:10.000000000 +0200
++++ jpgraph-1.9.new/src/jpgraph.php	2002-10-28 04:06:26.000000000 +0100
+@@ -19,7 +19,7 @@
+ // define (furter down) is false. If you enable the cache please note that
+ // this directory MUST be readable and writable for the process running PHP. 
+ // Must end with '/'
 -DEFINE("CACHE_DIR","/tmp/jpgraph_cache/");
 +DEFINE("CACHE_DIR","/tmp/jpgraph/");
  
- // The URL relative name where the cache can be found, i.e
- // under what HTTP directory can the cache be found. Normally
-@@ -25,7 +25,7 @@
- DEFINE("APACHE_CACHE_DIR","/jpgraph_cache/");
- 
- // Directory for TTF fonts. Must end with '/'
--DEFINE("TTF_DIR","/usr/local/fonts/ttf/");
-+DEFINE("TTF_DIR","/usr/share/fonts/ttf/");
- 
- //------------------------------------------------------------------------
- // Various JpGraph Settings. PLEASE adjust accordingly to you
-@@ -106,7 +106,7 @@
+ // Directory for jpGraph TTF fonts. Must end with '/'
+ // Note: The fonts must follow the naming conventions as
+@@ -126,7 +126,7 @@
  // Please note that the Apache user must be a member of the
  // specified group since otherwise it is impossible for Apache
  // to set the specified group.
