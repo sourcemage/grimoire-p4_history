@@ -1,79 +1,41 @@
-export  SSL_BASE=SYSTEM
-export  EAPI_MM=SYSTEM
-
-
-APACHE_CONFIGURE=\
-"./configure  --prefix=/usr
-              --sysconfdir=/etc/httpsd
-              --localstatedir=/var/lib/httpsd
-              --logfiledir=/var/log/httpsd
-              --proxycachedir=/var/cache/httpsd
-              --runtimedir=/var/run/httpsd
-              --datadir=/usr/share/httpsd
-              --enable-module=ssl
-              --enable-module=most
-              --enable-shared=max
-              --enable-module=auth_db
-              --enable-module=mmap_static
-              --disable-module=auth_dbm
-	      --enable-rule=EAPI
-              --with-layout=GNU
-              $OPTS"
-
-
-case  $CERTIFICATE  in
-
-  y|Y|j|J)
-
-    cd  mod_ssl-$VERSION                         &&
-    ./configure  --with-apache=../$SOURCE2_BASE  \
-                 $OPTS				 &&
-    cd  ../$SOURCE2_BASE                         &&
-    $APACHE_CONFIGURE                            &&
-    make  certificate  TYPE="custom"             &&
-    echo  "CERTIFICATE=done"  >>  $SPELL_CONFIG  &&
-    (  make             &&
-       prepare_install  &&
-       make    install
-    ) > $C_FIFO 2>&1
-  ;;
-
-  *)
-
-    (  cd  mod_ssl-$VERSION                         &&
-       ./configure  --with-apache=../$SOURCE2_BASE  \
-                    $OPTS			    &&
-       cd  ../$SOURCE2_BASE                         &&
-       $APACHE_CONFIGURE                            &&
-       make  certificate  TYPE="existing"           \
-             CRT=/etc/httpsd/ssl.crt/server.crt     &&
-       make                                         &&
-       prepare_install                              &&
-       make    install
-    ) > $C_FIFO 2>&1
-  ;;
-
-esac  &&
-
 (
 
-  cp  $SCRIPT_DIRECTORY/apache_modssl.sh  /etc/init.d
+  export SSL_BASE=SYSTEM &&
+  export EAPI_MM=SYSTEM &&
 
-  SOURCE="../init.d/apache_modssl.sh"
-   START="S90apache_modssl"
-    STOP="K10apache_modssl"
+  patch -p1 < $SCRIPT_DIRECTORY/../apache/db-4.1.diff &&
 
-  case  $MODSSL_BOOT  in
-    y|Y|j|J)  ln  -sf  $SOURCE  /etc/rc0.d/$STOP
-              ln  -sf  $SOURCE  /etc/rc1.d/$STOP
-              ln  -sf  $SOURCE  /etc/rc2.d/$STOP
-              ln  -sf  $SOURCE  /etc/rc6.d/$STOP
+  cd mod_ssl-$VERSION &&
+  ./configure --with-apache=../$SOURCE2_BASE $OPTS &&
+  cd  ../$SOURCE2_BASE &&
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc/httpsd \
+              --localstatedir=/var/lib/httpsd \
+              --logfiledir=/var/log/httpsd \
+              --proxycachedir=/var/cache/httpsd \
+              --runtimedir=/var/run/httpsd \
+              --datadir=/usr/share/httpsd \
+              --enable-module=most \
+              --enable-shared=max \
+              --enable-module=mmap_static \
+              --disable-module=auth_dbm \
+              --enable-rule=EAPI \
+              --with-layout=GNU \
+              $OPTS &&
 
-              ln  -sf  $SOURCE  /etc/rc3.d/$START
-              ln  -sf  $SOURCE  /etc/rc4.d/$START
-              ln  -sf  $SOURCE  /etc/rc5.d/$START
-              ;;
-          *)  true  ;;
-  esac
+  if [ "$CERTIFICATE" == 'y' ]; then
+    make certificate TYPE='custom' &&
+    echo 'CERTIFICATE=done' >> $SPELL_CONFIG
+  else
+    make certificate TYPE='existing' CRT=/etc/httpsd/ssl.crt/server.crt
+  fi &&
+  make &&
+
+  prepare_install &&
+  make    install
+
+) >$C_FIFO 2>&1 && (
+
+  mkdir -p /var/run/httpsd
 
 )
