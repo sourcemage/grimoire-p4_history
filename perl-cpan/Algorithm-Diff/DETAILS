@@ -1,0 +1,16 @@
+           SPELL=Algorithm-Diff
+         VERSION=1.15
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/N/NE/NEDKONZ/$SOURCE
+         LICENSE=ART
+        WEB_SITE=http://search.cpan.org/search?dist=Algorithm-Diff
+         ENTERED=20020731
+         UPDATED=20020731
+           SHORT="Algorithm::Diff - Compute intelligent differences between two files or lists"
+cat << EOF
+This is a module for computing the difference between two files, two strings, or
+any other two lists of things.  It uses an  intelligent algorithm similar to (or
+identical to) the one used by the Unix diff program.   It is guaranteed to find
+the *smallest possible* set of differences.
+EOF

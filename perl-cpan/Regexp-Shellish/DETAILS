@@ -1,0 +1,14 @@
+           SPELL=Regexp-Shellish
+         VERSION=0.93
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/R/RB/RBS/$SOURCE
+         LICENSE=ART
+        WEB_SITE=http://search.cpan.org/search?dist=Regexp-Shellish
+         ENTERED=20020731
+         UPDATED=20020731
+           SHORT="Regexp::Shellish - Shell-like regular expressions"
+cat << EOF
+Provides shell-like regular expressions. The wildcards provided are ?, * and **,
+where ** is like * but matches /. See /compile_shellish for details.
+EOF
