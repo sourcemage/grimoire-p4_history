@@ -5,73 +5,91 @@
   create_account mail
  
   mkdir  -p         /var/spool/mail
-  chmod  1777       /var/spool/mail			&&
-  chown  mail:mail  /var/spool/mail			&&
-  chgrp  mail       /var/spool/mail/*			&&
+  chmod  1777       /var/spool/mail							&&
+  chown  mail:mail  /var/spool/mail							&&
+  chgrp  mail       /var/spool/mail/*							&&
 
   if  spell_installed  openldap
-  then  AUXLIBS="-lldap -llber"				&&
-         CCARGS="-DHAS_LDAP"				&&
-	message "${MESSAGE_COLOR}Openldap detected: Using Openldap ${DEFAULT_COLOR}"
-  fi							&&
+  then
+    if [ "$LDAP" == "y" ]; then
+      AUXLIBS="-lldap -llber"								&&
+      CCARGS="-DHAS_LDAP"								&&
+      message "${MESSAGE_COLOR}Openldap detected: Using Openldap ${DEFAULT_COLOR}"
+    fi
+  fi											&&
 
   if  spell_installed  Linux-PAM
-  then  AUXLIBS="$AUXLIBS -lpam -lpam_misc"		&&
-         CCARGS="$CCARGS  -DHAS_PAM"			&&
-	message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM ${DEFAULT_COLOR}"
-  fi							&&
+  then
+    if [ "$PAM" == "y" ]; then
+      AUXLIBS="$AUXLIBS -lpam -lpam_misc"						&&
+      CCARGS="$CCARGS  -DHAS_PAM"							&&
+      message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM ${DEFAULT_COLOR}"
+    fi
+  fi											&&
 
   if  spell_installed  cyrus-sasl
-  then  AUXLIBS="$AUXLIBS -lsasl2"			&&
-         CCARGS="$CCARGS  -DUSE_SASL_AUTH"		&&
-	message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
-  fi                                                    &&
+  then
+    if [ "$SASL" == "y" ]; then
+      AUXLIBS="$AUXLIBS -lsasl2"							&&
+      CCARGS="$CCARGS  -DUSE_SASL_AUTH"							&&
+      message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
+    fi
+  fi                                                    				&&
 
   if spell_installed mysql
   then
     if [ "$MYSQL" == "y" ]; then  
-      message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}" 	&&
-      AUXLIBS="$AUXLIBS -L/usr/lib -lmysqlclient -lz -lm" 			&&
-      CCARGS="$CCARGS -DHAS_MYSQL -I/usr/include/mysql"
+      AUXLIBS="$AUXLIBS -L/usr/lib -lmysqlclient -lz -lm"     				&&
+      CCARGS="$CCARGS -DHAS_MYSQL -I/usr/include/mysql"      				&&
+      message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}"
     fi
-  fi                                                    &&
+  fi  					                                                &&
+
+  if  spell_installed  openssl
+  then  
+    if [ "$SSL" == "y" ]; then
+      AUXLIBS="$AUXLIBS -lssl -lcrypto"               			   	   	&&
+      CCARGS="$CCARGS -DHAS_SSL -I/usr/include/openssl"       		   		&&
+      message "${MESSAGE_COLOR}OpenSSL detected: Using OpenSSL ${DEFAULT_COLOR}"
+    fi
+  fi                                                    				&&
 
   # fix to get man pages to install in /usr/man
 
-  sedit  "s:/usr/local:/usr:"  src/global/mail_params.h	&&
+  sedit  "s:/usr/local:/usr:"  src/global/mail_params.h					&&
 
-  make -f Makefile.init makefiles "CC=gcc"   		&&
+  make makefiles 			   						&&
 
   make  "CC=gcc"               \
         "OPT=$CFLAGS"          \
         "AUXLIBS=$AUXLIBS"     \
-        "CCARGS=$CCARGS"       				&&
+        "CCARGS=$CCARGS"       								&&
 
-  prepare_install              				&&
+  prepare_install              								&&
 
   if [ -d /etc/postfix ]; then
     make upgrade               				
   else
     make install	       				
-  fi			       				&&
+  fi			       								&&
 
-  ln  -sf  ../sbin/sendmail   /usr/lib/sendmail  	&&
+  ln  -sf  ../sbin/sendmail   /usr/lib/sendmail  					&&
 
-  ln  -sf  postfix/aliases    /etc/aliases		&&
+  ln  -sf  postfix/aliases    /etc/aliases						&&
 
   if [ "$BENCH" == "y" ]; then
     chmod 544 	src/smtpstone/qmqp-source \
 		src/smtpstone/smtp-sink   \
-		src/smtpstone/smtp-source		&&
-    cp src/smtpstone/qmqp-source /usr/sbin		&&
-    cp src/smtpstone/smtp-sink   /usr/sbin		&&
+		src/smtpstone/smtp-source						&&
+    cp src/smtpstone/qmqp-source /usr/sbin						&&
+    cp src/smtpstone/smtp-sink   /usr/sbin						&&
     cp src/smtpstone/smtp-source /usr/sbin		
-  fi							&&
+  fi											&&
  
-  mkdir /usr/doc/$SPELL 1>/dev/null 2>&1 || true	&&
-  cp -r README_FILES /usr/doc/$SPELL/			&&
-  cp INSTALL /usr/doc/$SPELL/README_FILES		&&
-  cp RELEASE_NOTES /usr/doc/$SPELL/README_FILES		&&
+  mkdir /usr/doc/$SPELL 1>/dev/null 2>&1 || true					&&
+  cp -r README_FILES /usr/doc/$SPELL/							&&
+  cp INSTALL /usr/doc/$SPELL/README_FILES						&&
+  cp RELEASE_NOTES /usr/doc/$SPELL/README_FILES						&&
   cp -r html /usr/doc/$SPELL/
 
 ) > $C_FIFO 2>&1  &&  (

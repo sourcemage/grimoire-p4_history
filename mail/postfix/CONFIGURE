@@ -59,8 +59,36 @@ fi
 
 
 if ! grep -q "MYSQL" $SPELL_CONFIG; then
-  if query "Add MySQL support in postfix if available ?"  y
-    then  echo   "MYSQL=y"  >>  $SPELL_CONFIG
+  if query "Add MySQL support in postfix ?"  y
+    then  echo   "MYSQL=y"  >>  $SPELL_CONFIG ; MYSQL=y
     else  echo   "MYSQL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "PAM" $SPELL_CONFIG; then
+  if query "Add PAM support in postfix ?"  y
+    then  echo   "PAM=y"  >>  $SPELL_CONFIG ; PAM=y
+    else  echo   "PAM=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "SSL" $SPELL_CONFIG; then
+  if query "Add SSL support in postfix ?"  y
+    then  echo   "SSL=y"  >>  $SPELL_CONFIG ; SSL=y
+    else  echo   "SSL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "LDAP" $SPELL_CONFIG; then
+  if query "Add LDAP support in postfix ?"  y
+    then  echo   "LDAP=y"  >>  $SPELL_CONFIG ; LDAP=y
+    else  echo   "LDAP=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "SASL" $SPELL_CONFIG; then
+  if query "Add SASL support in postfix ?"  y
+    then  echo   "SASL=y"  >>  $SPELL_CONFIG ; SASL=y
+    else  echo   "SASL=n"  >>  $SPELL_CONFIG
   fi
 fi
