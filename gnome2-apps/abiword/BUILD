@@ -1,6 +1,3 @@
-if [ "$DEVEL" == "n" ] ;then
-  patch  -p0  <  $SCRIPT_DIRECTORY/gcc-3.4.patch    
-fi  &&
 cd  abi                                 &&
 
 sedit "s/-pedantic -ansi//g" configure  &&
