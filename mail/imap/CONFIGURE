@@ -5,3 +5,13 @@ if ! grep -q "IMAP_MAILSUBDIR=" $SPELL_CONFIG; then
 		echo "IMAP_MAILSUBDIR=n" >> $SPELL_CONFIG
 	fi
 fi
+
+if spell_installed openssl; then
+  if ! grep -q "USE_SSL=" $SPELL_CONFIG; then
+        if query "Use openssl (for stunnel) for imapds?" y; then
+                echo "USE_SSL=y" >> $SPELL_CONFIG
+        else
+                echo "USE_SSL=n" >> $SPELL_CONFIG
+        fi
+  fi
+fi

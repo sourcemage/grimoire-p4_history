@@ -2,10 +2,7 @@ unalias  make
 
 (
 
-  ./configure  --prefix=/usr  &&
-  make                        &&
-  prepare_install             &&
-  make    install             &&
+  default_build               &&
 
   cp  $SCRIPT_DIRECTORY/nfslock.sh  /etc/init.d  &&
   cp  $SCRIPT_DIRECTORY/nfs.sh      /etc/init.d  &&

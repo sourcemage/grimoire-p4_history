@@ -1,9 +1,6 @@
 (
 
-  ./configure --prefix=/usr --sysconfdir=/etc  --localstatedir=/var --with-spooldir=/var/spool/wwwoffle &&
+  OPTS="$OPTS --with-spooldir=/var/spool/wwwoffle"
+  default_build
 
-  make							&&
-  prepare_install                                	&&
-  make    install
-
-) > $C_FIFO 2>&1  
+) > $C_FIFO 2>&1

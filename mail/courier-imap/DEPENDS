@@ -1,16 +1,22 @@
-optional_depends        "Linux-PAM"              \
-                        "--with-authpam"         \
-                        "--without-authpam"      \
-                        "Enable PAM support for Courier IMAP"        &&
+if [ "$PAM" == "y" ]; then
+  optional_depends        "Linux-PAM"              \
+                          ""                       \
+                          ""                       \
+                          "Enable PAM support for Courier IMAP"        
+fi &&
+
 depends  openssl  &&
+
 optional_depends        "gdbm"                   \
                         "--with-db=gdbm"         \
                         ""                       \
                         "Use gdbm. Either gdbm or db should be selected" &&
+
 optional_depends        "db"                     \
                         "--with-db=db"           \
                         ""                       \
                         "Use berkely db. Either gdbm or db should be selected" &&
+
 optional_depends        "openldap"               \
                         "--with-authldap"        \
                         "--without-authldap"     \

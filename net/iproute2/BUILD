@@ -1,4 +1,7 @@
 (
+
+  patch  -p1  <  $SCRIPT_DIRECTORY/htb3.6_tc.diff  &&
+
 	make	&&
 	if spell_installed teTeX && spell_installed psutils; then
 		cd $SOURCE_DIRECTORY/doc &&

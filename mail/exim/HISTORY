@@ -1,3 +1,27 @@
+2003-02-25  M.L. <mlubrano@sourcemage.org>
+
+		Removed db-4.1.patch (unused spell patch file).
+
+2003-02-24  M.L. <mlubrano@sourcemage.org>
+
+                Fixed bug 2649, added SECURITY file.
+
+2003-02-23  M.L. <mlubrano@sourcemage.org>
+
+		Fixed bug 2644, thanks to eric@sandall.us (Eric Sandall)
+
+2003-02-18  Eric Schabell <eschabell@sourcemage.org>
+
+		There was no logging for exim, possible with /etc/exim.conf variable
+		but this is strongly discouraged as you miss events that fail on startup:
+		"It is generally advisable, however, to set the string in Local/Makefile 
+		rather than at run time, because then the setting is available right from 
+		the start of Exim's execution. Otherwise, if there's something it wants to 
+		log before it has read the configuration file (for example, an error in 
+		the configuration file) it will not use the path you want, and may not be 
+		able to log at all."
+		I have added it to the BUILD file for /var/log/exim_{panic|main|reject}.
+
 2002-12-18  M.L. <mlubrano@sourcemage.org>
  
 		Version++ (4.12).

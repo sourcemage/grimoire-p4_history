@@ -1,28 +1,4 @@
-(
+export  LIBS=$LDFLAGS          # Makes stripping work
+OPTS="$OPTS --with-loadavg"
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               --with-loadavg        \
-               $OPTS                 &&
-  make                               &&
-  prepare_install                    &&
-  make    install
-
-)  >  $C_FIFO 2>&1  &&  (
-
-  mkdir  -p  /var/log/xinetd
-
-  cp  $SCRIPT_DIRECTORY/xinetd.sh  /etc/init.d
-
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc0.d/K60xinetd
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc1.d/K60xinetd
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc2.d/K60xinetd
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc6.d/K60xinetd
-
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc3.d/S40xinetd
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc4.d/S40xinetd
-  ln  -sf  ../init.d/xinetd.sh  /etc/rc5.d/S40xinetd
-
-)
+default_build
