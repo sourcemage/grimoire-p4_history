@@ -1,3 +1,6 @@
 depends  autoconf  &&
 depends  libtool   &&
-depends  CVS
+if [ "$APR_CVS" == 'y' ]; then
+  depends python &&
+  depends SVN
+fi
