@@ -6,7 +6,8 @@ if [ "$CVS_CHECKOUT" == "y" ]
 then
 	depends gdl &&
 	depends devhelp &&
-	depends gnome-build
+	depends gnome-build &&
+	depends autogen
 fi &&
 
 optional_depends  "gdb"  ""  ""  "for the GNU Debugger"  &&
