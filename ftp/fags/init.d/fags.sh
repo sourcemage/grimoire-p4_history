@@ -3,6 +3,7 @@
 # chkconfig: 345 99 00
 #
 # Source Mage init.d install information
+# SMGL-script-version=20030331
 # SMGL-START:3 4 5:S99
 # SMGL-STOP:0 6:K00
 #
