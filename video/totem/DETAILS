@@ -1,10 +1,12 @@
            SPELL=totem
-         VERSION=0.95.1
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.96.0
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.hadess.net/files/software/$SPELL/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=http://www.hadess.net/files/software/$SPELL/$SOURCE
         WEB_SITE=http://www.hadess.net/totem.php3
-          MD5[0]=32f38b2d1132e9308b049052c09e04c7
+          MD5[0]=9a3d935e0b7bddbfc6e7190ee2385ac3
       LICENSE[0]=GPL
          ENTERED=20030203
          UPDATED=20030203
