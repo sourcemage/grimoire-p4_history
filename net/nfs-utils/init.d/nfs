@@ -1,42 +1,35 @@
 #!/bin/bash
 
-PROGRAM=/usr/sbin/exportfs
+PROGRAM=/bin/false
 RUNLEVEL=3
 NEEDS="+remote_fs +network +portmap"
 
 . /etc/init.d/smgl_init
+. /etc/sysconfig/nfs
 
-[  -e /etc/exports  ]  ||  exit 0
-
-NUMSERVERS=8
-MOUNTDOPTS=
+if [ ! -e /etc/exports ] ; then
+  $FAILURE
+  echo "Please create an /etc/exports file. Exiting without starting nfs..."
+  $NORMAL
+  exit 1
+fi
 
 start()
 {
+  required_executable /usr/sbin/exportfs
+  required_executable /usr/sbin/rpc.rquotad
+  required_executable /usr/sbin/rpc.mountd
+  required_executable /usr/sbin/rpc.nfsd
+  required_executable /usr/sbin/rpc.statd
+
   echo "Starting NFS services"
-  exportfs -r 
+  /usr/sbin/exportfs -r 
   evaluate_retval
 
-  pkill      "^rpc.rquotad$"  &&  sleep  5
-  evaluate_retval
-  pkill      "^rpc.mountd$"   &&  sleep  5
-  evaluate_retval
-  pkill  -1  "^nfsd$"         &&  sleep  5
-  evaluate_retval
-  pkill      "^rpc.statd$"    &&  sleep  5
-  evaluate_retval
-
-  ps  -C  portmap  >  /dev/null  ||
-  /sbin/portmap
-  evaluate_retval
-  /usr/sbin/rpc.rquotad
-  evaluate_retval
-  /usr/sbin/rpc.mountd  $MOUNTDOPTS
-  evaluate_retval
-  /usr/sbin/rpc.nfsd    $NUMSERVERS
-  evaluate_retval
-  /usr/sbin/rpc.statd
-  evaluate_retval
+  loadproc /usr/sbin/rpc.rquotad
+  loadproc /usr/sbin/rpc.mountd  $MOUNTDOPTS
+  loadproc /usr/sbin/rpc.nfsd    $NUMSERVERS
+  loadproc /usr/sbin/rpc.statd
 }
 
 stop()
@@ -45,13 +38,8 @@ stop()
   /usr/sbin/exportfs -au
   evaluate_retval
     
-  pkill      "^rpc.rquotad$"
-  evaluate_retval
-  pkill      "^rpc.mountd$"
-  evaluate_retval
-  pkill  -1  "^nfsd$"
-  evaluate_retval
-  pkill      "^rpc.statd$"
-  evaluate_retval
+  killproc /usr/sbin/rpc.rquotad
+  killproc /usr/sbin/rpc.mountd
+  killproc /usr/sbin/rpc.nfsd
+  killproc /usr/sbin/rpc.statd 
 }
-
