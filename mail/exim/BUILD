@@ -51,7 +51,7 @@ fi  &&
 if  [  "$LINUXPAM"  ==  "y"  ]
 then
   echo  "SUPPORT_PAM=yes"  >>  Local/Makefile
-  if  spell_installed  tcp_wrappers
+  if  spell_ok  tcp_wrappers
   then  echo  "EXTRALIBS=-lpam -ldl -lwrap"  >>  Local/Makefile  
   else  echo  "EXTRALIBS=-lpam -ldl"         >>  Local/Makefile  
   fi
