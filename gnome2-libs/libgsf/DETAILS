@@ -1,16 +1,15 @@
            SPELL=libgsf
-         VERSION=1.8.1
+         VERSION=1.8.2
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/libgsf/$BRANCH/$SOURCE
-          MD5[0]="6d12f7368424f89e90fb7d1bb851b27a"
+          MD5[0]='726f296ea4aae432d7e8591accbfe8da'
       LICENSE[0]=GNU
         WEB_SITE=http://www.gnome.org/projects/gnumeric
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020510
-         UPDATED=20030609
+         UPDATED=20030913
            SHORT="libgsf is The GNOME Structured File library"
 cat << EOF
 libgsf is The GNOME Structured File library. It is a replacement
