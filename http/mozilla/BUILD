@@ -1,11 +1,4 @@
 (
-    case $MOZILLA_XFT2  in
-        y|Y|j|J) patch  -p0  <  $SCRIPT_DIRECTORY/mozilla.2002-08-02.diff
-            ;;
-        *)       ;;
-    esac &&
-
-    patch  -p0  < $SCRIPT_DIRECTORY/mozilla_12b_patch
     
     case $MOZILLA_MAIL  in
 	n|N)	OPTS="$OPTS --disable-mailnews"
@@ -38,12 +31,6 @@
 	*)	;;
     esac &&
 
-    case $MOZILLA_LDAP  in
-	y|Y|j|J)	OPTS="$OPTS --enable-ldap-experimental"
-	    ;;
-	*)	;;
-    esac &&
-
     case $MOZILLA_XINERAMA  in
 	y|Y|j|J)	OPTS="$OPTS --enable-xinerama"
 	    ;;
@@ -56,8 +43,8 @@
 	*)	;;
     esac &&
 
-    export	CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )" &&
-    export	CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )" &&
+#    export	CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )" &&
+#    export	CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )" &&
 
     ./configure	--prefix=/usr		\
 	--disable-tests			\
