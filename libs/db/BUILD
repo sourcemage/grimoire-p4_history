@@ -18,7 +18,7 @@
     export JAVA_HOME
   fi &&
 
-  if /lib/libc.so.6 | grep -q NPTL; then
+  if glibc_is_nptl; then
     LDFLAGS="$LDFLAGS -lpthread"
   fi &&
 
