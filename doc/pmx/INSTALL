@@ -1,7 +1,0 @@
-TEXMF=`kpsetool -v '$TEXMFLOCAL'`               &&
-
-install --directory ${TEXMF}/tex/$SPELL         &&
-
-make    BINDIR=${INSTALL_ROOT}/usr/bin  install &&
-
-install -m 644  pmx.tex ${TEXMF}/tex/$SPELL

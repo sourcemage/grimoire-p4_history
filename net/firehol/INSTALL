@@ -1,5 +1,0 @@
-IR=$INSTALLROOT
-install -m 754 firehol.sh $IR/etc/init.d/runlevels/%3/smgl-firehol &&
-install -D --backup=t examples/client-all.conf $IR/etc/firehol/firehol.conf &&
-install man/firehol.1 $IR/usr/man/man1 &&
-install man/firehol.conf.5 $IR/usr/man/man5

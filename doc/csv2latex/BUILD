@@ -1,1 +1,0 @@
-gcc $CFLAGS -o $SPELL $SPELL.c

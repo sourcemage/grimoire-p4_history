@@ -1,9 +1,0 @@
-(
-
-  message "${MESSAGE_COLOR}Checking for PEAR script...${DEFAULT_COLOR}" &&
-  PEAR_CMD=$(which pear 2>/dev/null) &&
-  [ -n "$PEAR_CMD" ] &&
-  prepare_install &&
-  pear install --force --nodeps $SOURCE_CACHE/$SOURCE
-
-) >$C_FIFO 2>&1

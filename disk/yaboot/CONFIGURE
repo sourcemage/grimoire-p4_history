@@ -1,8 +1,0 @@
-if  !  grep  -q  "RUN_YBIN"  $SPELL_CONFIG;  then
-
-  if    query  "Run bootloader automatically upon upgrades?" n
-  then  echo   "RUN_YBIN=true"   >>  $SPELL_CONFIG
-  else  echo   "RUN_YBIN=false"  >>  $SPELL_CONFIG
-  fi
-
-fi

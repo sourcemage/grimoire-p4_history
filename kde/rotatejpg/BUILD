@@ -1,6 +1,0 @@
-(
-
-cp rotatejpg.desktop ${INSTALL_ROOT}/usr/share/apps/konqueror/servicemenus/
-cp jpegtran-rotate ${INSTALL_ROOT}/usr/bin
-
-) > $C_FIFO 2>&1
