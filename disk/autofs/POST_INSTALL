@@ -1,1 +1,4 @@
-/etc/init.d/autofs start
+if  [  -x  /etc/init.d/autofs  ]
+then
+  /etc/init.d/autofs.sh  start
+fi
