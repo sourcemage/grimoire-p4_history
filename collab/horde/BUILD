@@ -39,7 +39,7 @@ PHP_MODULES=$(php -m 2>/dev/null)
     # config/*.conf.dist files, which have to be updated
     mv -f  ./config/* "$HORDE_CONFIG_DIR/" &&
     rm -fr ./config
-  fi
+  fi &&
 
   mkdir -p "$HORDE_DIR"  &&
   # we create a link to a full-path target, so no relative path dangers here
