@@ -1,16 +1,17 @@
            SPELL=zsh
-         VERSION=4.0.6
+         VERSION=4.0.7
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.zsh.org/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.fu-berlin.de/pub/unix/shells/$SPELL/$SOURCE
    SOURCE_URL[2]=ftp://ftp.cs.elte.hu/pub/$SPELL/$SOURCE
+          MD5[0]=14d43295e1c402f243473e72e15dc1a8
         WEB_SITE=http://www.zsh.org/
       MAINTAINER=paul@moway.co.uk
          ENTERED=20011112
          UPDATED=20020916
-	  MD5[0]=14d43295e1c402f243473e72e15dc1a8
       LICENSE[0]=BSD
+      MAKE_NJOBS=1
            SHORT="zsh is a shell designed for interactive use"
 cat << EOF
 Zsh is a UNIX command interpreter (shell) which of the standard
