@@ -1,6 +1,0 @@
-mk_source_dir  ${SOURCE_DIRECTORY}   &&
-unpack         ${SOURCE}  ${MD5[0]}  &&
-
-mv ${SOURCE_DIRECTORY}/Makefile ${SOURCE_DIRECTORY}/Makefile.old
-sed ${SOURCE_DIRECTORY}/Makefile.old -e 's\prefix=/usr/local\prefix=/usr\g' > \
-  ${SOURCE_DIRECTORY}/Makefile
