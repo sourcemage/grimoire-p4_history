@@ -5,10 +5,12 @@ else
 fi
 
 cd  $SPELL-$VERSION/src
-./configure  --enable-dns-for-kdc    \
-             --enable-dns-for-realm  \
-             --enable-shared         \
-             --prefix=/usr           \
-             --localstatedir=/var    \
-             $OPTS                   &&
+./configure  --enable-dns-for-kdc      \
+             --enable-dns-for-realm    \
+             --infodir=/usr/share/info \
+             --mandir=/usr/share/man   \
+             --enable-shared           \
+             --prefix=/usr             \
+             --localstatedir=/var      \
+             $OPTS                     &&
 make
