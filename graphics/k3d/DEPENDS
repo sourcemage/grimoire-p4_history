@@ -6,4 +6,17 @@ depends  libtool   &&
 optional_depends  "plib"                    \
                   "--with-plib"             \
                   "--without-plib"          \
-                  "enable plib extensions"
+                  "enable plib import/export library"  &&
+optional_depends "Python"                     \
+                  "--with-python"             \
+                  "--without-python"          \
+                  "enable python script engines"
+optional_depends "graphviz"                     \
+                  "--with-graphviz"             \
+                  "--without-graphviz"          \
+                  "enable graphviz source documentation diagrams"
+optional_depends "freetype2"                     \
+                  "--with-freetype2"             \
+                  "--without-freetype2"          \
+                  "enable freetype2 text plugin"
+
