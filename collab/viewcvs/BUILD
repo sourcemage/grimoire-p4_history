@@ -1,42 +1,37 @@
 (
-	# target directory is embedded in this patch along with options
-	# to use cvsgraph and enscript and some minor changes
-	patch -p1 < $SCRIPT_DIRECTORY/$SPELL-$VERSION.patch &&
 
-	if find /usr/share/viewcvs -name "*.conf" > /dev/null 2>&1; then
-		NOW=`date +%Y%m%d`
-		echo "saving previous configuration using timestamp $NOW"
-		
-		pushd /usr/share/viewcvs/ > /dev/null &&
-		for CONF in `ls -1 *.conf`; do
-			cp $CONF ${CONF%.conf}.$NOW.conf;
-		done                                 &&
-		popd                      > /dev/null
-	else
-		echo "looking for existing CVS repositories (this may take some time)"
+	readonly -a LABELS=([0]="Main" [1]="Extra")
+
+#	target directory is embedded in this patch along with options
+#	to use cvsgraph and enscript and other changes (see HISTORY)
+#	this patch also makes sure configuration is not overwritten
+	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
+	
+	(
+		message "Looking for existing CVS repositories (this may take some time)"
 		CVS_CONFIG=/CVSROOT/config,v
-		REPOSITORY_LIST=
-		LABEL=CVS
+		REPOSITORY_LIST=""
 		COUNT=0
 		for REPOSITORY_PATH in `find / -mount -path *$CVS_CONFIG`; do
-			COUNT=$(($COUNT + 1))
 			[ -n "$REPOSITORY_LIST" ] && REPOSITORY_LIST="$REPOSITORY_LIST,"
-			REPOSITORY_LIST="$REPOSITORY_LIST $LABEL$COUNT : ${REPOSITORY_PATH%${CVS_CONFIG}}"
-		done          &&
+			REPOSITORY_LIST="$REPOSITORY_LIST ${LABELS[$COUNT]:-CVS$COUNT} : ${REPOSITORY_PATH%${CVS_CONFIG}}"
+			COUNT=$(($COUNT + 1))
+		done
 		if [ -n "$REPOSITORY_LIST" ]; then
-			pushd cgi > /dev/null                                            &&
+			pushd cgi > /dev/null
 
 			sed "s/cvs_roots\W*=.*$/cvs_roots =${REPOSITORY_LIST//\//\\/}/" \
 				< viewcvs.conf.dist                                         \
-				> viewcvs.conf.dist.1                                       &&
-			sed "s/default_root\W*=.*$/default_root = ${LABEL}1/"           \
+				> viewcvs.conf.dist.1
+			sed "s/default_root\W*=.*$/default_root = ${LABELS[0]}/"        \
 				< viewcvs.conf.dist.1                                       \
-				> viewcvs.conf.dist                                         &&
-			rm -f viewcvs.conf.dist.1                                       &&
+				> viewcvs.conf.dist
+			rm -f viewcvs.conf.dist.1
 
 			popd      > /dev/null
 		fi
-	fi                &&
+		true
+	)                 &&
 
 	prepare_install   &&
 	./viewcvs-install

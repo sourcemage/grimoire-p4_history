@@ -3,7 +3,8 @@
           SOURCE=sorcery.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
    SOURCE_URL[0]=$SORCERY_URL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.smee.org/pub/sgl/stable/$SOURCE
+   SOURCE_URL[1]=http://codex.sourcemage.org/stable-grimoire/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.smee.org/pub/sgl/stable/$SOURCE
         WEB_SITE=http://www.sourcemage.org
          ENTERED=20020429
          UPDATED=20020429
@@ -19,8 +20,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
 cat << EOF
 
 Grimoire stable updated only  -  
-	This is the most stable grimoire,  
-	maintained by Tony Smith.
+
+	Spells have to maintain a stable state in the test grimoire for at least two 
+	weeks before making it into the stable grimoire. The only exception is URL
+        changes which move through all grimoires immediatly.
+
+	This is the most stable grimoire, maintained by Tony Smith. 
 	Installed into /var/lib/sorcery/grimoire
 
 EOF

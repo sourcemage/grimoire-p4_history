@@ -1,0 +1,14 @@
+           SPELL=atlas
+         VERSION=3.4.0
+          SOURCE=${SPELL}$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ATLAS
+   SOURCE_URL[0]=http://belnet.dl.sourceforge.net/sourceforge/math-atlas/$SOURCE
+   SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/math-atlas/$SOURCE
+        WEB_SITE=http://math-atlas.sourceforge.net
+         ENTERED=20020514
+         UPDATED=20020514
+      MAINTAINER=zoran@idi.ntnu.no
+           SHORT="Automatically Tuned Linear Algebra Software (ATLAS)"
+cat << EOF
+ATLAS (Automatically Tuned Linear Algebra Software) provides highly optimized Linear Algebra kernels for arbitrary cache-based architectures. ATLAS provides ANSI C and Fortran77 interfaces for the entire BLAS API, and a small portion of the LAPACK API.
+EOF

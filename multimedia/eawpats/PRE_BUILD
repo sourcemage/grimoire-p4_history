@@ -1,0 +1,8 @@
+rm -rf 	/usr/share/timidity	&&
+mkdir   /usr/share/timidity	&&
+cp	/var/spool/sorcery/$SOURCE /usr/share/timidity/    &&
+cd	/usr/share/timidity	&&
+
+unrar x  $SOURCE	&&
+rm -rf $SOURCE
+

@@ -1,0 +1,16 @@
+           SPELL=shorewall
+         VERSION=1.2.11
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://www.shorewall.net/pub/$SPELL/$SOURCE
+        WEB_SITE=http://www.shorewall.net/
+      MAINTAINER=bluebird@optushome.com.au
+         ENTERED=20020513
+         UPDATED=20020513
+           SHORT="Shorewall is an iptable based firewall"
+cat << EOF
+Shorewall is an [2]iptables based firewall that can be used on a dedicated
+firewall system, a multi-function gateway/router/server or on a standalone
+Linux system.
+
+EOF

@@ -1,0 +1,10 @@
+unpack  $SOURCE			&&
+
+cp /var/lib/sorcery/grimoire/multimedia/TiMidity++/$SOURCE2 /usr/src &&
+
+zcat $SOURCE2 | patch -p0	&&
+
+rm -rf /usr/src/$SOURCE2
+
+
+

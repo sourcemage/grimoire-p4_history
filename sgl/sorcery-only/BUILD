@@ -1,5 +1,3 @@
-rm -rf var/lib/sorcery/grimoire
-
 (
 
   prepare_install  &&

@@ -5,10 +5,12 @@ sedit  "s/\$(OPT)//"                   MCONFIG
  ./configure  --build=$BUILD           \
               --prefix=/usr            &&
   make                                 &&
+  (
   if    spell_installed      util-linux
   then  dispel  --nosustain  util-linux
   fi                                   &&
-  prepare_install                      &&
+  prepare_install
+  ) &&
   make    install
 
 ) > $C_FIFO 2>&1  &&

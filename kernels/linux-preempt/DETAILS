@@ -12,11 +12,5 @@
          ARCHIVE="off"
            SHORT="linux with preempt patch applied."
 cat << EOF
-Linux is a clone of the Unix kernel, written from scratch by Linus
-Torvalds with assistance from a loosely-knit team of hackers across the
-Net. It aims towards POSIX and Single UNIX Specification compliance. It
-has all the features you would expect in a modern fully-fledged Unix
-kernel, including true multitasking, virtual memory, shared libraries,
-demand loading, shared copy-on-write executables, proper memory
-management, and TCP/IP networking.
+The preemptible Linux kernel can stop itself in the middle of what are normally blocking operations such as disk io, in order to go do something else. The result is that programs can continue running while the kernel would normally be busy, which means a faster system.
 EOF
