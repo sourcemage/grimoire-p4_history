@@ -1,0 +1,21 @@
+           SPELL=cairo
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.cairographics.org:/cvs/cairo:$SPELL
+        WEB_SITE=http://www.freedesktop.org/Cairo/Home
+          MD5[0]=IGNORE
+      LICENSE[0]=MIT
+         ENTERED=20040617
+         UPDATED=20040617
+  FORCE_DOWNLOAD=on
+       BUILD_API=2
+           SHORT="Multi-platform 2D graphics library"
+cat << EOF
+Cairo is a vector graphics library with cross-device output
+support. Currently supported output targets include the X Window
+System and in-memory image buffers. PostScript and PDF file output is
+planned. Cairo is designed to produce identical output on all output
+media while taking advantage of display hardware acceleration when
+available (eg. through the X Render Extension).
+EOF
