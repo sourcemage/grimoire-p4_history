@@ -67,10 +67,6 @@ if  spell_installed  libpng;  then
   echo  "#define  HasLibpng  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  spell_installed  libusb;  then
-  echo  "#define  HasLibUsb  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
-fi  &&
-
 if  [  "$DEBUG"  == "n"  ]         ||
     (echo $LDFLAGS | grep -q -- "-s");  then
   echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
@@ -88,10 +84,5 @@ fi  &&
 
 if  [  "$JAPANESE"  ==  "y"  ];  then
   echo  "#define  InstallJapaneseDocs  YES"  \
-    >>  $SOURCE_DIRECTORY/config/cf/site.def
-fi  &&
-
-if  [  "$USBMOUSE"  ==  "y"  ];  then
-  echo  "#define  UsbMouseSupport  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi
