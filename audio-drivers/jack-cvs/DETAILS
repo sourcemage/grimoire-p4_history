@@ -1,14 +1,15 @@
-           SPELL=jack
-         VERSION=0.91.1
-          SOURCE=$SPELL-audio-connection-kit-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-audio-connection-kit-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/jackit/$SOURCE
+           SPELL=jack-cvs
+         VERSION=head
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.jackit.sourceforge.net:/cvsroot/jackit:jack
         WEB_SITE=http://jackit.sf.net
-         ENTERED=20030921
-         UPDATED=20030921
-	       MD5[0]=f475013fa52a08ae69d196cba46acbdd
+         ENTERED=20031207
+         UPDATED=20031207
+	       MD5[0]=IGNORE
 	   LICENSE[0]=GPL
 	   MAINTAINER=audio@sourcemage.org
+	FORCE_DOWNLOAD=on
            SHORT="Jack is a low latency audio server."
 cat << EOF
 JACK is a low-latency audio server, written primarily for the GNU/Linux operating system. 
