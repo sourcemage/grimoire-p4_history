@@ -1,0 +1,104 @@
+diff -ur strace-4.5.1/mem.c strace-4.5.1.plasmaroo/mem.c
+--- strace-4.5.1/mem.c	2003-09-26 00:06:04.000000000 +0100
++++ strace-4.5.1.plasmaroo/mem.c	2003-12-30 23:49:42.000000000 +0000
+@@ -32,15 +32,19 @@
+  *	$Id: strace-4.5.1-2.6.patch,v 1.2 2003/12/30 23:56:53 plasmaroo Exp $
+  */
+ 
+-#include "defs.h"
+-
+ #ifdef LINUX
+ #include <linux/mman.h>
+ #endif
+ #include <sys/mman.h>
+ 
++#include "defs.h"
++
+ #if defined(LINUX) && defined(I386)
+-#include <asm/ldt.h>
++	#include <asm/ldt.h>
++	#include <linux/version.h>
++	#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,47)
++		#define modify_ldt_ldt_s user_desc
++	#endif
+ #endif
+ #if defined(LINUX) && defined(SH64)
+ #include <asm/page.h>	    /* for PAGE_SHIFT */
+diff -ur strace-4.5.1/process.c strace-4.5.1.plasmaroo/process.c
+--- strace-4.5.1/process.c	2003-11-13 22:32:26.000000000 +0000
++++ strace-4.5.1.plasmaroo/process.c	2003-12-30 23:49:41.000000000 +0000
+@@ -526,8 +526,12 @@
+ };
+ 
+ # ifdef I386
+-#  include <asm/ldt.h>
+-extern void print_ldt_entry();
++	#include <asm/ldt.h>
++	#include <linux/version.h>
++	#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,47)
++		#define modify_ldt_ldt_s user_desc
++	#endif
++	extern void print_ldt_entry();
+ # endif
+ 
+ # if defined IA64
+diff -ur strace-4.5.1/system.c strace-4.5.1-plasmaroo/system.c
+--- strace-4.5.1/system.c	2002-11-06 14:00:13.000000000 +0000
++++ strace-4.5.1-plasmaroo/system.c	2003-12-25 00:32:03.000000000 +0000
+@@ -77,6 +77,7 @@
+ #endif
+ 
+ #include <linux/sysctl.h>
++#include <linux/version.h>
+ 
+ static struct xlat mount_flags[] = {
+ 	{ MS_RDONLY,	"MS_RDONLY"	},
+@@ -1625,19 +1626,35 @@
+ 	{ 0, NULL }
+ };
+ 
+-static struct xlat sysctl_vm[] = {
+-	{ VM_SWAPCTL, "VM_SWAPCTL" },
+-	{ VM_SWAPOUT, "VM_SWAPOUT" },
+-	{ VM_FREEPG, "VM_FREEPG" },
+-	{ VM_BDFLUSH, "VM_BDFLUSH" },
+-	{ VM_OVERCOMMIT_MEMORY, "VM_OVERCOMMIT_MEMORY" },
+-	{ VM_BUFFERMEM, "VM_BUFFERMEM" },
+-	{ VM_PAGECACHE, "VM_PAGECACHE" },
+-	{ VM_PAGERDAEMON, "VM_PAGERDAEMON" },
+-	{ VM_PGT_CACHE, "VM_PGT_CACHE" },
+-	{ VM_PAGE_CLUSTER, "VM_PAGE_CLUSTER" },
+-	{ 0, NULL },
+-};
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,0)
++	static struct xlat sysctl_vm[] = {
++		{ VM_UNUSED1, "VM_UNUSED1" },
++		{ VM_UNUSED2, "VM_UNUSED2" },
++		{ VM_UNUSED3, "VM_UNUSED3" },
++		{ VM_UNUSED4, "VM_UNUSED4" },
++		{ VM_OVERCOMMIT_MEMORY, "VM_OVERCOMMIT_MEMORY" },
++		{ VM_UNUSED5, "VM_UNUSED5" },
++		{ VM_UNUSED7, "VM_UNUSED7" },
++		{ VM_UNUSED8, "VM_UNUSED8" },
++		{ VM_UNUSED9, "VM_UNUSED9" },
++		{ VM_PAGE_CLUSTER, "VM_PAGE_CLUSTER" },
++		{ 0, NULL },
++	};
++#else
++	static struct xlat sysctl_vm[] = {
++		{ VM_SWAPCTL, "VM_SWAPCTL" },
++		{ VM_SWAPOUT, "VM_SWAPOUT" },
++		{ VM_FREEPG, "VM_FREEPG" },
++		{ VM_BDFLUSH, "VM_BDFLUSH" },
++		{ VM_OVERCOMMIT_MEMORY, "VM_OVERCOMMIT_MEMORY" },
++		{ VM_BUFFERMEM, "VM_BUFFERMEM" },
++		{ VM_PAGECACHE, "VM_PAGECACHE" },
++		{ VM_PAGERDAEMON, "VM_PAGERDAEMON" },
++		{ VM_PGT_CACHE, "VM_PGT_CACHE" },
++		{ VM_PAGE_CLUSTER, "VM_PAGE_CLUSTER" },
++		{ 0, NULL },
++	};
++#endif
+ 
+ static struct xlat sysctl_net[] = {
+ 	{ NET_CORE, "NET_CORE" },
