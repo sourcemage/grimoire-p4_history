@@ -1,9 +1,10 @@
 (
 
-  sedit  "s/-O2/$CFLAGS/" config    &&
-  make INSTALL_ROOT=/usr            &&
-  make INSTALL_ROOT=/usr so         &&
-  prepare_install                   &&
-  make INSTALL_ROOT=/usr soinstall  
+  sedit  's/^so:/& all/'  Makefile  &&
+
+  make  MYCFLAGS="$CFLAGS"  MYLDFLAGS="$LDFLAGS -Wl,-E"  \
+        LOADLIB="-DUSE_DLOPEN=1"  DLLIB="-ldl"  all  so  &&
+  prepare_install  &&
+  make  INSTALL_ROOT=/usr  install  soinstall
 
 ) > $C_FIFO 2>&1
