@@ -1,0 +1,11 @@
+--- libkpimexchange/core/exchangeaccount.cpp	2003-05-07 21:48:01.000000000 +1000
++++ ../logs/exchangeaccount.cpp.newest	2003-09-06 18:35:46.000000000 +1000
+@@ -255,7 +255,7 @@
+   return result;
+ }
+   
+-static QString ExchangeAccount::tryMailbox( const QString& _url, const QString& user, const QString& password ) {
++QString ExchangeAccount::tryMailbox( const QString& _url, const QString& user, const QString& password ) {
+   KURL url = KURL( _url );
+   url.setUser( user );
+   url.setPass( password );

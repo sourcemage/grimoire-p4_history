@@ -1,5 +1,5 @@
 (
-
+patch -p0 < $SCRIPT_DIRECTORY/kolf-gcc3.3.X.patch  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr        \
                --sysconfdir=${INSTALL_ROOT}/etc    \
                --localstatedir=${INSTALL_ROOT}/var \
