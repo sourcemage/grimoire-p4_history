@@ -14,7 +14,7 @@ default_build  &&
   fi
 
   if  [  !  -e                       /etc/ppp/peers/isp  ];  then
-    cp  $SCRIPT_DIRECTORY/peers.isp  /etc/ppp/peers/isp
+    cp  $SCRIPT_DIRECTORY/peers      /etc/ppp/peers/isp
   fi
 
   if  [  !  -e                 /etc/ppp/chat/isp  ];  then
