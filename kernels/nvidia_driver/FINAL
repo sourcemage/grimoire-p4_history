@@ -1,14 +1,22 @@
 # this is to fix the cleanse --fix problem when you have nvidia_driver and xorg installed
 X_TYPES="xorg xfree86"
-X_LOG_FILE="`gaze version ${X_TYPES} | awk 'NR >= 3 { if($5 != "-" && $5 != "") {print $3 "-" $5} }'`"
-INSTALL_LOG="${INSTALL_ROOT}/var/log/sorcery/install/${X_LOG_FILE}"
-MD5_LOG="${INSTALL_ROOT}/var/log/sorcery/md5sum/${X_LOG_FILE}"
+for X_TYPE in ${X_TYPES}
+do
+	if spell_installed ${X_TYPE}
+	then
+		X_LOG_FILE="${X_TYPE}-$(installed_version ${X_TYPE})"
+		INSTALL_LOG="${INSTALL_ROOT}/var/log/sorcery/install/${X_LOG_FILE}"
+		MD5_LOG="${INSTALL_ROOT}/var/log/sorcery/md5sum/${X_LOG_FILE}"
+		echo ${X_LOG_FILE}
+	fi
+done
 
 if [ -f ${INSTALL_LOG} ]
 then
-	sedit 's/X11R6\/lib\/libGL.[so,so.1,so.1.2]/""/' ${INSTALL_LOG} 
-	sedit 's/modules\/extensions\/lib[glx][GLcore].so/""/' ${INSTALL_LOG}
-	sedit 's/X11R6\/lib\/libGL.[so,so.1,so.1.2]/""/' ${MD5_LOG} 
-	sedit 's/modules\/extensions\/lib[glx][GLcore].so/""/' ${MD5_LOG}
-	
+	sedit 's/\/usr\/X11R6\/lib\/libGL.*//' ${INSTALL_LOG}
+	sedit 's/\/usr\/X11R6\/lib\/modules\/extensions\/libglx.*//' ${INSTALL_LOG}
+	sedit 's/\/usr\/X11R6\/lib\/modules\/extensions\/libGLcore.*//' ${INSTALL_LOG}
+	sedit 's/\/usr\/X11R6\/lib\/libGL.*//' ${MD5_LOG}
+	sedit 's/\/usr\/X11R6\/lib\/modules\/extensions\/libglx.*//' ${MD5_LOG}
+	sedit 's/\/usr\/X11R6\/lib\/modules\/extensions\/libGLcore.*//' ${MD5_LOG} 
 fi
