@@ -1,3 +1,4 @@
+depends g++        &&
 if  spell_installed  kdelibs;  then
   if  query  "Do you want full KDE support (window management, dialog boxes, etc.) built into Rekall (answer no for base Qt only)? " y;  then
     depends  kdelibs  "--with-gui=kde"

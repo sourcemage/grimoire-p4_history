@@ -5,8 +5,12 @@
 
   PREFIX=${INSTALL_ROOT}/usr/firebird		&&
 # fix compiler flags
+  if [ `g++ -dumpversion | cut -c -3` == 3.4 ]; then
+    CFLAGS="${CFLAGS//-O3/}" 
+    CXXFLAGS="${CXXFLAGS//-O3/}" 
+  fi                                            &&
   sed -i -e \
-"s/-O3 -march=i586 -mcpu=i686//;s/-ggdb/$CFLAGS/;s/-shared/-shared $LDFLAGS/" \
+"s/-O3 -march=i586 -mcpu=i686//;s/-ggdb//;s/-shared/-shared $LDFLAGS/" \
        -e "s/-fno-builtin//;s/-fno-omit-frame-pointer//"      \
 	builds/posix/prefix.linux		&&
 
