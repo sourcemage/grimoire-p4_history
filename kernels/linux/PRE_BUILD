@@ -131,15 +131,15 @@ chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
 mkdir  -p  ../include
 
 if [[ ! -d ../include/asm-generic ]]; then
-  ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -s
+  ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -sf
 fi
 
 if [[ ! -d ../include/asm ]]; then
-  ln ../src/linux-${VERSION}/include/asm        ..//include/ -s
+  ln ../src/linux-${VERSION}/include/asm        ..//include/ -sf
 fi
 
 if [[ ! -d ../include/linux ]]; then
-  ln ../src/linux-${VERSION}/include/linux      ..//include/ -s
+  ln ../src/linux-${VERSION}/include/linux      ..//include/ -sf
 fi
 
 cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
