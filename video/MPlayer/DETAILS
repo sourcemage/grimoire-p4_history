@@ -7,16 +7,16 @@ if [ "$CVS" = "yes" ]; then
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
-         VERSION=1.0pre3
+         VERSION=1.0pre3try2
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=ftp://mplayerhq.hu/$SPELL/releases/$SOURCE
-          MD5[0]=4f57d63ce8eee4b4e06b48deb0331754
+          MD5[0]=557a7513369ff47832aa723b68e8c366
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 fi
         WEB_SITE=http://www.mplayerhq.hu
       LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20030120
+         UPDATED=20040330
             DOCS="$DOCS etc/*.conf"
            SHORT="MPlayer is a movie and animation player."
 cat << EOF
