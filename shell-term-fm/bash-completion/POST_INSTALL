@@ -1,5 +1,0 @@
-if  [  -e  /etc/profile ] && ! grep -q "bash_completion" /etc/profile;  
-then cat $SCRIPT_DIRECTORY/start_completion >> /etc/profile;
-else echo completion not added to /etc/profile
-fi
-
