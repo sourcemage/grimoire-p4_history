@@ -1,2 +1,3 @@
-  OPTS="--disable-debug --enable-final ${OPTS}"  &&
-  default_build
+OPTS="$OPTS  $KDEPIM_EXCHANGE"  &&
+
+source  $SCRIPT_DIRECTORY/../KDE_BUILD

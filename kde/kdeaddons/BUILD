@@ -1,3 +1,1 @@
-  OPTS="--disable-debug --enable-final ${OPTS}"  &&
-  default_build
-
+source  $SCRIPT_DIRECTORY/../KDE_BUILD

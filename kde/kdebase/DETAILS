@@ -1,5 +1,7 @@
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
+
            SPELL=kdebase
-if [ "$DEVEL" == "yes" ] ;then
+if  [  "$KDE_DEVEL"  ==  "y"  ];  then
          VERSION=3.3.0-rc2
           SOURCE=$SPELL-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
@@ -17,7 +19,6 @@ fi
          ENTERED=20010912
          UPDATED=20040820
       LICENSE[0]=GPL
-    DISTCC_HOSTS=
            SHORT="Base applications that form the core of KDE."
 cat << EOF
 This package contains the base applications that form the core of

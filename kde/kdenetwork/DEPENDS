@@ -1,17 +1,18 @@
-depends  kdebase	                             &&
+depends  kdebase  &&
 
-optional_depends	"ppp"		                     \
-			""		                                   \
-			""		                                   \
-			"for dialup support"                     &&
+source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
 
-optional_depends  "libidn"                     \
-      ""                                       \
-      ""                                       \
-      "for Jabber protocol support in Kopete"  &&
+optional_depends  ppp                   \
+                  ""                    \
+                  ""                    \
+                  "for dialup support"  &&
 
-optional_depends "qca-tls"                     \
-      ""                                       \
-      ""                                       \
-      "for SSL support in Kopete Jabber (req's libidn)"
+optional_depends  libidn                                   \
+                  ""                                       \
+                  ""                                       \
+                  "for Jabber protocol support in Kopete"  &&
 
+optional_depends  qca-tls                                            \
+                  ""                                                 \
+                  ""                                                 \
+                  "for SSL support in Kopete Jabber (req's libidn)"
