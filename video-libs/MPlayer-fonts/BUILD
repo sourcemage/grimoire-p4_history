@@ -1,9 +1,13 @@
 (
 
-  prepare_install  &&
+  if  [  -d  /usr/share/mplayer/font  ]
+  then
+    rmdir    /usr/share/mplayer/font
+  fi                                   &&
+  prepare_install                      &&
   mkdir  -p  /usr/share/mplayer/fonts  &&
   cp  -R  *  /usr/share/mplayer/fonts  &&
-  mkdir  -p  /usr/share/mplayer/font   &&
-  cp -u  font-arial-iso-8859-*/*/*  /usr/share/mplayer/font
+  ln  -sf   /usr/share/mplayer/fonts   \
+            /usr/share/mplayer/font
 
 ) > $C_FIFO 2>&1
