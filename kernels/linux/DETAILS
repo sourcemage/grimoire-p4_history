@@ -44,6 +44,10 @@ SOURCE_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/linux-${RELEASE}.tar.bz2"
 SOURCE2=framebuffer-0.1.tar.bz2
 SOURCE2_URL=http://download.sourcemage.org/distro/kernel/$SOURCE2
 
+# Quick and Dirty fix - summon doesn't allow gaps in the SOURCE-numbers any more
+SOURCE3=" "
+SOURCE4=" "
+
 if [[ "${PREPATCH}" != "" ]]; then
   SOURCE3="patch-${PRERELEASE}-${PREPATCH}.bz2"
   SOURCE3_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/testing/patch-${PRERELEASE}-${PREPATCH}.bz2"
