@@ -1,13 +1,10 @@
 depends   gtk+2  &&
 if [ "$GAIM_ENCRYPTION" = "y" ] ; then
-	depends "nss" "--with-nspr-includes=/usr/include/nspr  --with-nspr-libs=/usr/lib --with-nss-includes=/usr/include/nss \
---with-nss-libs=/usr/lib" 
-else optional_depends "nss" "--with-nspr-includes=/usr/include/nspr  --with-nspr-libs=/usr/lib --with-nss-includes=/usr/include/nss \
---with-nss-libs=/usr/lib" "--enable-nss=no" "To use mozilla NSS for SSL support"
+     depends nss
+else optional_depends nss
 fi               &&
 
 optional_depends  "audiofile" "--enable-audio" "--disable-audio"  \
                   "to play aiff, snd, wave, and au files" #&&
 #optional_depends  "gpgme" "" "" "for gaim-e gpg encryption"  &&
-
 #optional_depends  "libgcrypt" "" "" "for gaim-e gpg encryption"
