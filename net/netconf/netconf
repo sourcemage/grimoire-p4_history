@@ -22,6 +22,49 @@
 # Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2004-01-20  charkins <charkins@pobox.com>
+#     - small fix in cfg_mtu() where dialog was defaulting to GATEWAY
+#       rather than MTU
+#     - modified save_update() to use new cat_or_sedit() function
+#     - added cat_or_sedit() to selectively sedit or cat depending
+#       on if the sed pattern can be greped from the file; fixes
+#       problem of adding new fields to an existing device file
+#     - version 1.1
+#
+# 2003-10-28  charkins <charkins@pobox.com>
+#     - stole sedit() function from sorcery's libmisc
+#     - renamed save_device() to confirm_save() for clarity
+#     - renamed real_save() to save_new() for clarity
+#     - added save_update() to make in-place changes to a device file
+#       using sedit, allowing network functions to be preserved in files
+#     - confirm_save() confirms if the user wishes to save a device
+#       file, if they answer yes, it calls either save_new() or 
+#       save_update() to save the file depending on if the device
+#       file exists
+#     - made use of local in many functions and removed unset's where
+#       no longer needed
+#     - corrected spelling error in 2003-06-19 change entry :-)
+#     - version 1.0
+#
+# 2003-10-26  charkins <charkins@pobox.com>
+#     - shortened a couple strings to prevent them from being cut off
+#     - added cfg_pointopoint()
+#     - added cfg_mtu()
+#     - added toggle_boot()
+#     - updated loadnetdev() and cfg_device() to support POINTOPOINT,
+#       MTU and UP_ON_BOOT options
+#
+# 2003-08-04  charkins <charkins@pobox.com>
+#     - fixed a case bug in cfg_ns(): changed '*') to *)
+# 
+# 2003-07-28  charkins <charkins@pobox.com>
+#     - cfg_hostname() dialog now has a cancel button
+#     - cancelling changes to hostname or trying to set a blank
+#       hostname will now leave /etc/hostname unchanged
+# 
+# 2003-07-17  charkins <charkins@pobox.com>
+#     - minor reorganization of configuration variables
+#
 # 2003-06-20  charkins <charkins@pobox.com>
 #     - added mangle_hosts() function to update the /etc/hosts file
 #       when the hostname is changed, all entries for 127.0.0.1 are
@@ -43,7 +86,7 @@
 # 2003-06-19  charkins <charkins@pobox.com>
 #     - change_hostname now creates the hostname file automatically
 #       with the hostname='sourcemage' if it doesn't exist, this
-#       should gauruntee its existence whether the user likes it or
+#       should gaurantee its existence whether the user likes it or
 #       not :-)
 #     - added some command line options for performing some basic
 #       tasks, only one may be specified at a time and it will
@@ -116,39 +159,35 @@
 #     - initial implementation
 #     - version 0.1
 #
-# ----------------------- Testing Tips ------------------------------ #
-# To test this script without being logged in as root (or being prompted
-# for the root password) and without mucking with your real hostname
-# and network settings, uncomment the second ROOTCHECK, NETDEVDIR, HOSTSFN
-# and HOSTNAMEFN variables below. This will not check if you are root,
-# use the ./network/ as the network device directory and ./hostname
-# as the hostname file. Feel free to change these to other locations
-# as needed.
-#
 # ----------------------- Configuration ----------------------------- #
-# version
-NETCONFVERSION='0.9'
-
-# ROOTCHECK - if set to 1, check if UID is 0, if not su to root first
+# NETCONFVERSION: version number of this script
+#      ROOTCHECK: if user is not root, then su and run script
+#      NETDEVDIR: directory to store network device files
+#     HOSTNAMEFN: name of file containing hostname
+#        HOSTSFN: name of file containing hosts
+#       RESOLVFN: name of file containing nameservers
+#
+NETCONFVERSION='1.1'
 ROOTCHECK=1
-#ROOTCHECK=0
-
-# NETDEVDIR - specifies the directory for network device files
 NETDEVDIR=/etc/sysconfig/network
-#NETDEVDIR=network
-
-# HOSTNAMEFN - specifies file where the hostname is stored
 HOSTNAMEFN=/etc/hostname
-#HOSTNAMEFN=hostname
-
-# HOSTSFN - specifies file where the hosts are stored
 HOSTSFN=/etc/hosts
-#HOSTSFN=hosts
-
-# RESOLVFN - specified file where name servers are listed
 RESOLVFN=/etc/resolv.conf
+
+# -------------------------- Testing -------------------------------- #
+# To test this script without running as root and without modifying
+# the actual network settings for a system, uncomment the following
+# block of variables. This will disable the root check and look in
+# the current working directory for the various files.
+# 
+#ROOTCHECK=0
+#NETDEVDIR=network
+#HOSTNAMEFN=hostname
+#HOSTSFN=hosts
 #RESOLVFN=resolv.conf
 
+
+# ----------------------- Other Globals ----------------------------- #
 # DIALOG - dialog program used, could be taken from /etc/sorcery/config
 DIALOG="dialog --aspect 25"
 
@@ -180,6 +219,8 @@ getnetmods() {
 		return 0;
 	fi
 
+	local id
+
 	unset NETMODSMENU NETMODS
 	id=0
 	for i in `modprobe -l |grep net`; do
@@ -188,7 +229,6 @@ getnetmods() {
 		NETMODS[$id]="${modname}"
 		id=$((id+1))
 	done
-	unset id
 	GOTNETMODS=1
 }
 
@@ -206,6 +246,9 @@ getnetdevs() {
 	if [ -n "$GOTNETDEVS" ]; then
 		return 0;
 	fi
+
+	local id
+
 	unset NETDEVSMENU NETDEVS
 	id=0
 	for i in `ls $NETDEVDIR/*.dev`; do
@@ -213,7 +256,6 @@ getnetdevs() {
 		NETDEVS[$id]="${i}"
 		id=$((id+1))
 	done
-	unset id
 	GOTNETDEVS=1
 }
 
@@ -232,12 +274,12 @@ cfg_ns() {
 		exit 1
 	fi
 
-	unset ns
+	local ns
 	case $1 in 
 		'1') ns=$ns1 ;;
 		'2') ns=$ns2 ;;
 		'3') ns=$ns3 ;;
-		'*') ns=""   ;;
+		  *) ns=""   ;;
 	esac
 
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
@@ -257,7 +299,6 @@ cfg_ns() {
 		esac
 	fi
 
-	unset ns
 }
 
 
@@ -273,8 +314,9 @@ cfg_dns() {
 		touch $RESOLVFN
 	fi
 
+	local ns1 ns2 ns3
+
 	# find the current nameservers
-	unset ns1 ns2 ns3
 	for i in `grep ^nameserver $RESOLVFN | sed 's/^nameserver //'`; do
 		if [ -z $ns1 ]; then
 			ns1=$i
@@ -303,7 +345,6 @@ cfg_dns() {
 		                 "Save" "Save changes to $RESOLVFN and return to main menu"`
 
 		if [ $? != 0 ]; then
-			unset ns1 ns2 ns3
 			return 0
 		fi
 
@@ -325,7 +366,6 @@ cfg_dns() {
 					echo "nameserver $ns3" >> $RESOLVFN
 				fi
 				rm /tmp/resolv.conf.$$
-				unset ns1 ns2 ns3
 				return 0
 				;;
 		esac
@@ -362,6 +402,9 @@ check_hostname() {
 #   used.
 cfg_hostname() {
 
+	local curhostname
+
+	# read in current hostname
 	if [ -f "$HOSTNAMEFN" ]; then
 		curhostname=`cat $HOSTNAMEFN`
 	else
@@ -370,24 +413,23 @@ cfg_hostname() {
 		mangle_hosts
 	fi
 
+	# prompt user to change hostname
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
 	                 --stdout                                                  \
 	                 --title "Configure Hostname"                              \
 	                 --ok-label       "$BTN_ACCEPT"                            \
-	                 --nocancel                                                \
+	                 --cancel-label   "$BTN_CANCEL"                            \
 	                 --inputbox                                                \
 	                 "What should this computer be called?"                    \
 	                  0 0 $curhostname`
 
+	# check if user accepted their changes
 	if [ $? -eq 0 ] && [ ${#COMMAND} -gt 0 ]; then
 		curhostname="$COMMAND"
-	else
-		curhostname="sourcemage"
+		echo "$curhostname" > $HOSTNAMEFN
+		mangle_hosts
 	fi
 
-	echo "$curhostname" > $HOSTNAMEFN
-	mangle_hosts
-	unset curhostname
 }
 
 # mangle_hosts()
@@ -489,7 +531,7 @@ check_lo() {
 		if [ $? -eq 0 ]; then
 			loadnetdev "$NETDEVDIR/lo.dev"
 			devname="lo.dev"
-			real_save "$NETDEVDIR/lo.dev"
+			save_new "$NETDEVDIR/lo.dev"
 			unset devname
 		fi
 	fi
@@ -504,12 +546,15 @@ check_lo() {
 # PARAMETERS: absolute path to network device file
 #
 # POST-CONDITIONS:
-#	MODULE     - kernel module to load, or blank for static driver
-#	MODE       - 'dynamic' for dhcp, or 'static' for static
-#	IP         - IP address
-# 	BROADCAST  - broadcast address
-#	NETMASK    - netmask
-#	GATEWAY    - gateway address
+#	MODULE      - kernel module to load, or blank for static driver
+#	MODE        - 'dynamic' for dhcp, or 'static' for static
+#	IP          - IP address
+# 	BROADCAST   - broadcast address
+#	NETMASK     - netmask
+#	GATEWAY     - gateway address
+#	POINTOPOINT - point to point address
+#	MTU         - maximum transfer unit
+#	UP_ON_BOOT  - bring up the network device on boot
 #
 loadnetdev() {
 	if [ -z "$1" ]; then
@@ -517,7 +562,9 @@ loadnetdev() {
 		exit 1
 	fi
 
-	unset MODULE MODE IP BROADCAST NETMASK GATEWAY
+	local devname
+
+	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU UP_ON_BOOT
 
 	devname=`basename $1 .dev`
 
@@ -532,12 +579,17 @@ loadnetdev() {
 		BROADCAST='127.255.255.255'
 		NETMASK='255.0.0.0'
 		GATEWAY=''
+		POINTOPOINT=''
+		MTU=''
+		UP_ON_BOOT='yes'
 	else
 		# new non-loopback device, set defaults
 		MODE='dynamic'
+		POINTOPOINT=''
+		MTU=''
+		UP_ON_BOOT='yes'
 	fi
 
-	unset devname
 }
 
 # cfg_module_enter()
@@ -771,6 +823,69 @@ cfg_gateway() {
 	return 0
 }
 
+# cfg_pointopoint()
+#
+# Prompts user to enter the point to point address.
+#
+# POST-CONDITIONS:
+#	POINTOPOINT - point to point address
+#
+cfg_pointopoint() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
+	                 --stdout                                                  \
+	                 --title "Configure POINTOPOINT address"                   \
+	                 --ok-label       "$BTN_ACCEPT"                            \
+	                 --cancel-label   "$BTN_CANCEL"                            \
+	                 --inputbox                                                \
+	                 "Enter the point to point address for this network device"\
+	                 0 0 $POINTOPOINT`
+
+	if [ $? -eq 0 ]; then
+		POINTOPOINT=$COMMAND
+	fi
+	return 0
+}
+
+# cfg_mtu()
+#
+# Prompts user to enter the maximum transfer unit.
+#
+# POST-CONDITIONS:
+#	MTU        - maximum transfer unit
+#
+cfg_mtu() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
+	                 --stdout                                                  \
+	                 --title "Configure MTU"                                   \
+	                 --ok-label       "$BTN_ACCEPT"                            \
+	                 --cancel-label   "$BTN_CANCEL"                            \
+	                 --inputbox                                                \
+	                 "Enter the maximum transfer unit for this network device" \
+	                 0 0 $MTU`
+
+	if [ $? -eq 0 ]; then
+		MTU=$COMMAND
+	fi
+	return 0
+}
+
+# toggle_boot()
+#
+# Toggles UP_ON_BOOT state
+#
+# POST-CONDITIONS:
+#	UP_ON_BOOT       - opposite of previous UP_ON_BOOT value
+#
+toggle_boot() {
+	if [ $UP_ON_BOOT = "no" ]; then
+		UP_ON_BOOT="yes"
+	else
+		UP_ON_BOOT="no"
+	fi
+
+	return 0
+}
+
 # remove_device()
 #
 # Prompts user to confirm removing the device file.
@@ -782,6 +897,8 @@ remove_device() {
 		echo "Error: remove_device() called with no parameter"
 		exit 1
 	fi
+
+	local devname
 
 	devname=`basename $1 .dev`
 
@@ -812,22 +929,22 @@ remove_device() {
 		return 1 # return 1 to return back to main menu
 	fi
 
-	unset devname
 	return 0
 }
 
-# save_device()
+# confirm_save()
 #
 # Prompts user to confirm saving the device file.
 #
 # PARAMETERS: absolute path to network device file
 #
-save_device() {
+confirm_save() {
 	if [ -z "$1" ]; then
-		echo "Error: save_device() called with no parameter"
+		echo "Error: confirm_save() called with no parameter"
 		exit 1
 	fi
 
+	local devname
 	devname=$(basename $1)
 
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
@@ -838,42 +955,141 @@ save_device() {
 	                 0 0`
 
 	if [ $? -eq 0 ]; then
-		real_save $1
-		unset devname
+		if [ -e $1 ]; then
+			save_update $1
+		else
+			save_new $1
+		fi
 		return 1 # return 1 to return back to main menu
 	fi
 	
-	unset devname
 	return 0
 }
 
-# real_save()
+# save_new()
 #
-# Saves the network device file.
-#
+# Saves a new network device file.
+# 
 # PARAMETERS: absolute path to network device file
 #
 # POST-CONDITIONS:
 #	device file is saved
 #
-real_save() {
+save_new() {
 	if [ -z "$1" ]; then
-		echo "Error: real_save() called with no parameter"
+		echo "Error: save_new() called with no parameter"
 		exit 1
 	fi
+
+	local now
+	now=`date`
 	cat > $1 << EOF
 # $devname configuration
 # created by: ${BACKTITLE}
-# last modified: `date`
+# created on: $now
+# last modified: $now
 MODULE=${MODULE}
 MODE=${MODE}
 IP=${IP}
 BROADCAST=${BROADCAST}
 NETMASK=${NETMASK}
 GATEWAY=${GATEWAY}
+POINTOPOINT=${POINTOPOINT}
+MTU=${MTU}
+UP_ON_BOOT=${UP_ON_BOOT}
 EOF
 
 }
+
+# save_update()
+#
+# Updates an existing network device file.
+# 
+# PARAMETERS: absolute path to network device file
+#
+# POST-CONDITIONS:
+#	device file is saved
+#
+save_update() {
+	if [ -z "$1" ]; then
+		echo "Error: save_update() called with no parameter"
+		exit 1
+	fi
+
+	if [ ! -e $1 ]; then
+		echo "Error: save_update() device file does not exist: $1"
+		exit 1
+	fi
+
+	cat_or_sedit "^# created by:.*" "# created by: ${BACKTITLE}" $1
+	cat_or_sedit "^# last modified:.*" "# last modified: `date`" $1
+	cat_or_sedit "^MODULE=.*" "MODULE=${MODULE}" $1
+	cat_or_sedit "^MODE=.*" "MODE=${MODE}" $1
+	cat_or_sedit "^IP=.*" "IP=${IP}" $1
+	cat_or_sedit "^BROADCAST=.*" "BROADCAST=${BROADCAST}" $1
+	cat_or_sedit "^NETMASK=.*" "NETMASK=${NETMASK}" $1
+	cat_or_sedit "^GATEWAY=.*" "GATEWAY=${GATEWAY}" $1
+	cat_or_sedit "^POINTOPOINT=.*" "POINTOPOINT=${POINTOPOINT}" $1
+	cat_or_sedit "^MTU=.*" "MTU=${MTU}" $1
+	cat_or_sedit "^UP_ON_BOOT=.*" "UP_ON_BOOT=${UP_ON_BOOT}" $1
+
+
+	#sedit "s/^# created by:.*/# created by: ${BACKTITLE}/" $1
+	#sedit "s/^# last modified:.*/# last modified: `date`/" $1
+	#sedit "s/^MODULE=.*/MODULE=${MODULE}/" $1
+	#sedit "s/^MODE=.*/MODE=${MODE}/" $1
+	#sedit "s/^IP=.*/IP=${IP}/" $1
+	#sedit "s/^BROADCAST=.*/BROADCAST=${BROADCAST}/" $1
+	#sedit "s/^NETMASK=.*/NETMASK=${NETMASK}/" $1
+	#sedit "s/^GATEWAY=.*/GATEWAY=${GATEWAY}/" $1
+	#sedit "s/^POINTOPOINT=.*/POINTOPOINT=${POINTOPOINT}/" $1
+	#sedit "s/^MTU=.*/MTU=${MTU}/" $1
+	#sedit "s/^UP_ON_BOOT=.*/UP_ON_BOOT=${UP_ON_BOOT}/" $1
+
+}
+
+# cat_or_sedit()
+#
+# A hack to either sedit an existing line, or add a new
+# line if one doesn't exist.
+#
+# PARAMETERS: <pattern> <line> <filename>
+#
+# POST-CONDITIONS:
+#   <line> is in <filename>
+#
+cat_or_sedit() {
+	if ( cat $3 | grep -q "$1" ); then
+		sedit "s/${1}/${2}/" ${3}
+	else
+		echo "$2" >> ${3}
+	fi
+}
+
+
+
+# sedit
+# 
+# sedit function stolen from sorcery to perform sed commands
+# "in-place" on a file. Modified slightly to restore the file
+# if sed command fails.
+#
+# PARAMETERS: sed command
+#             filename
+#
+# source: /var/lib/sorcery/modules/libmisc::real_sedit()
+sedit()  {
+	(
+		# Execute in a subshell to avoid globally affecting the umask
+		umask 077
+		TMP_FILE="/tmp/`basename  $2`.$$.$RANDOM"      &&
+		rm    -rf    $TMP_FILE                         &&
+		cp    $2     $TMP_FILE                         &&
+                ( sed "$1" $TMP_FILE > $2 || cp $TMP_FILE $2 ) &&
+		rm -rf $TMP_FILE
+	)
+}
+
 
 # add_device()
 #
@@ -925,19 +1141,33 @@ cfg_device() {
 	# load the network device file
 	loadnetdev "$1"
 
+	local dmodule dmtu dpointopoint
+
 	true
 	while [ $? -eq 0 ]; do
 
 		if [ -z "$MODULE" ]; then
-			dmodule="None (use static driver)"
+			dmodule="Use static driver"
 		else
 			dmodule=$MODULE
+		fi
+
+		if [ -z "$MTU" ]; then
+			dmtu="Use default MTU"
+		else
+			dmtu=$MTU
+		fi
+
+		if [ -z "$POINTOPOINT" ]; then
+			dpointopoint="None"
+		else
+			dpointopoint=$POINTOPOINT
 		fi
 
 		if [ `echo $MODE` = 'dynamic' ]; then
 			COMMAND=`$DIALOG --backtitle "$BACKTITLE"                          \
 			                 --stdout                                          \
-		                     --title "Modify, Remove Network Device"           \
+		                     --title "Modify, Remove Network Device"               \
 			                 --ok-label       "$BTN_SELECT"                    \
 			                 --cancel-label   "$BTN_BACK"                      \
 			                 --menu                                            \
@@ -945,8 +1175,11 @@ cfg_device() {
 			                 0 0 0                                             \
 			                 "MODULE" "${dmodule}"                             \
 			                 "MODE" "dynamic (use dhcp)"                       \
+			                 "POINTOPOINT" "${dpointopoint}"                   \
+			                 "MTU"  "${dmtu}"                                  \
+			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
-			                 "Save" "Save these settings to the device file"`
+			                 "Save" "Save this device file"`
 		else
 			COMMAND=`$DIALOG --backtitle "$BACKTITLE"                          \
 			                 --stdout                                          \
@@ -962,30 +1195,34 @@ cfg_device() {
 			                 "BROADCAST" "${BROADCAST}"                        \
 			                 "NETMASK" "${NETMASK}"                            \
 			                 "GATEWAY" "${GATEWAY}"                            \
+			                 "POINTOPOINT" "${dpointopoint}"                   \
+			                 "MTU"  "${dmtu}"                                  \
+			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
-			                 "Save" "Save these settings to the device file"`
+			                 "Save" "Save this device file"`
 		fi
 
 
 		if [ $? != 0 ]; then
-			unset dmodule
 			return 0
 		fi
 
 		case $COMMAND in
-			'MODULE')    cfg_module          ;;
-			'MODE')      cfg_mode            ;;
-			'IP')        cfg_ip              ;;
-			'BROADCAST') cfg_broadcast       ;;
-			'GATEWAY')   cfg_gateway         ;;
-			'NETMASK')   cfg_netmask         ;;
-			'Remove')    remove_device "$1"  ;;
-			'Save')      save_device "$1"    ;;
+			'MODULE')      cfg_module          ;;
+			'MODE')        cfg_mode            ;;
+			'IP')          cfg_ip              ;;
+			'BROADCAST')   cfg_broadcast       ;;
+			'GATEWAY')     cfg_gateway         ;;
+			'NETMASK')     cfg_netmask         ;;
+			'POINTOPOINT') cfg_pointopoint     ;;
+			'MTU')         cfg_mtu             ;;
+			'UP_ON_BOOT')  toggle_boot         ;;
+			'Remove')      remove_device "$1"  ;;
+			'Save')        confirm_save "$1"   ;;
 		esac
 
 	done
 
-	unset dmodule
 	return 0
 }
 
@@ -1032,6 +1269,7 @@ main() {
 	check_devdir
 	check_lo
 
+	local curhostname
 	unset GOTNETMODS GOTNETDEVS
 
 	true
@@ -1066,7 +1304,6 @@ main() {
 			*)          cfg_device "${NETDEVS[$COMMAND]}" ;;
 		esac
 
-		unset curhostname
 	done
 }
 
