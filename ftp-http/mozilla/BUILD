@@ -37,12 +37,18 @@
          /usr/lib/mozilla/regchrome
   touch  /usr/lib/mozilla/chrome/user-skins.rdf
   touch  /usr/lib/mozilla/chrome/user-locales.rdf
-  if [ -d /etc/mozilla ]; then
-    echo "Old mozilla config in /etc/mozilla kept."
-    echo "New default config moved to /usr/lib/mozilla/new-defaults."
-    mv /usr/lib/mozilla/defaults/ /usr/lib/mozilla/new-defaults/
-  else
-    mv     /usr/lib/mozilla/defaults/ /etc/mozilla
-  fi
-  ln -s  /etc/mozilla/ /usr/lib/mozilla/defaults
+
+# The following lines have been commented out since they break the spell.
+# The reason is that somewhere before this check is done, the files from 
+# /etc/mozilla are deleted leaving the tree intact, leaving mozilla with
+# no config files what so ever. 
+
+#  if [ -d /etc/mozilla ]; then
+#    echo "Old mozilla config in /etc/mozilla kept."
+#    echo "New default config moved to /usr/lib/mozilla/new-defaults."
+#    mv /usr/lib/mozilla/defaults/ /usr/lib/mozilla/new-defaults/
+#  else
+#    mv     /usr/lib/mozilla/defaults/ /etc/mozilla
+#  fi
+#  ln -s  /etc/mozilla/ /usr/lib/mozilla/defaults
 )
