@@ -5,9 +5,11 @@ depends  flex    &&
 # optional extensions depend on it, and it's omnipresent anyway.
 depends  zlib  '--with-zlib --with-zlib-dir=/usr'  &&
 
-# PCRE is required to install PEAR
-depends  pcre  '--with-pcre-regex=/usr'  &&
- 
+# this is broken in php5, using internal regex always
+## PCRE is required to install PEAR
+#depends  pcre  '--with-pcre-regex=/usr'  &&
+# 
+
 if  [  "$IMAP"  ==  "y"  ]
 then
   depends  imap
