@@ -36,11 +36,11 @@ export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
                                -xft                \
                                $OPTS               &&
 
-  make symlinks sub-src sub-tools                  &&
+  make                                             &&
   prepare_install                                  &&
   make install                                     &&
 
-  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
+  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so &&
   ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so
 
 ) > $C_FIFO 2>&1
