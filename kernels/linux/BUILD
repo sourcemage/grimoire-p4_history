@@ -1,30 +1,32 @@
 cd  ${INSTALL_ROOT}/usr/src/linux
 
 
-if  [[ $HOST != "" ]]; then
-  case  ${HOST}  in
-         alpha-*) ARCH=alpha   ;;
-           arm-*) ARCH=arm     ;;
-          cris-*) ARCH=cris    ;; 
-          ia64-*) ARCH=ia64    ;;
-          i*86-*) ARCH=i386    ;;
-          m68k-*) ARCH=m68k    ;;
-          mips-*) ARCH=mips    ;;
-        mips64-*) ARCH=mips64  ;;
-        parisc-*) ARCH=parisc  ;;
-       powerpc-*) ARCH=ppc     ;;
-     powerpc64-*) ARCH=ppc64   ;;
-          s390-*) ARCH=s390    ;;
-         s390x-*) ARCH=s390x   ;;
-           sh*-*) ARCH=sh      ;;
-         sparc-*) ARCH=sparc   ;;
-       sparc64-*) ARCH=sparc64 ;;
-        x86_64-*) ARCH=x86_64  ;;
-  esac
+if  [[ -z $HOST ]]; then
+  HOST=$BUILD
+fi
 
-  if  [[ $HOST != $BUILD ]]; then
-    CROSS_COMPILE="${HOST}-"
-  fi
+  case  ${HOST}  in
+       alpha-*) ARCH=alpha   ;;
+         arm-*) ARCH=arm     ;;
+        cris-*) ARCH=cris    ;; 
+        ia64-*) ARCH=ia64    ;;
+        i*86-*) ARCH=i386    ;;
+        m68k-*) ARCH=m68k    ;;
+        mips-*) ARCH=mips    ;;
+      mips64-*) ARCH=mips64  ;;
+      parisc-*) ARCH=parisc  ;;
+     powerpc-*) ARCH=ppc     ;;
+   powerpc64-*) ARCH=ppc64   ;;
+        s390-*) ARCH=s390    ;;
+       s390x-*) ARCH=s390x   ;;
+         sh*-*) ARCH=sh      ;;
+       sparc-*) ARCH=sparc   ;;
+     sparc64-*) ARCH=sparc64 ;;
+      x86_64-*) ARCH=x86_64  ;;
+esac
+
+if  [[ $HOST != $BUILD ]]; then
+  CROSS_COMPILE="${HOST}-"
 fi
 
 echo "ARCH is '${ARCH}', CROSS_COMPILE is '${CROSS_COMPILE}'"
@@ -75,9 +77,10 @@ backup_modules()  {
   yes  n  |  run_make   oldconfig
   cp  .config  $CONFIG_CACHE/kernel.config
   run_make  dep               &&
-  case  ${HOST}  in
-    sparc*-linux-gnu)  run_make  vmlinux ||  exit  1 ;;
-                   *)  run_make  bzImage ||  exit  1 ;;
+  case  ${ARCH}  in
+    sparc*)  run_make  vmlinux ||  exit  1 ;;
+        sh)  run_make   zImage ||  exit  1 ;;
+         *)  run_make  bzImage ||  exit  1 ;;
   esac
 
   # Only install modules if module support is wanted
@@ -92,10 +95,10 @@ backup_modules()  {
 
   mkdir  -p  ${INSTALL_ROOT}/boot
 
-  case  $BUILD  in
-   powerpc-linux-gnu)  cp                 vmlinux  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
-    sparc*-linux-gnu)  gzip  -c9       vmlinux  >  ${INSTALL_ROOT}/boot/vmlinuz-$VERSION   ;;
-                   *)  cp  arch/i386/boot/bzImage  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
+  case  ${ARCH}  in
+       ppc)  cp                 vmlinux     ${INSTALL_ROOT}/boot/vmlinux-$VERSION   ;;
+    sparc*)  gzip  -c9          vmlinux  >  ${INSTALL_ROOT}/boot/vmlinuz-$VERSION   ;;
+         *)  cp  arch/${ARCH}/boot/bzImage  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
   esac
 
 ) > $C_FIFO 2>&1
