@@ -2,7 +2,13 @@
 
 		Added gpgme as optional_depends, though this should be
 		made more specific, for it's only dependant if
-		using gaim-e
+		using gaim-e.
+
+		Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD
+		to configure gaim-e support correctly.
+
+		Modified BUILD to patch gaim-e plugin to install
+		into /usr/lib/gaim instead of /usr/local/lib/gaim.
 
 2002-10-09  Adam Clark <adamsgl@dhbit.ca>
 
