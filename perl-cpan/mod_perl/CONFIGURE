@@ -1,5 +1,1 @@
-if ! grep -q 'MOD_PERL' $SPELL_CONFIG; then
-  if query 'Would you like to build mod_perl for Apache 2' n; then
-    echo 'MOD_PERL=2' >> $SPELL_CONFIG
-  fi
-fi
+config_query MOD_PERL_2 "Would you like to build mod_perl for Apache 2" n
