@@ -3,45 +3,51 @@
 _dispel () {
 
    # Do simple completions or get the first state.
-   _arguments -C -s \
-    '(--exile)-e[Removes spells]:' \
-    '(-e)--exile:' \
-    '(--downgrade)-d[Downgrade spell]:' \
-    '(-d)--downgrade:' \
-    '*:'
+   #_arguments -C -s \
+   _arguments -C \
+    '(--exile)-e[Removes spells]:*:spells:->spells' \
+    '(-e)--exile:spells:*:spells:->spells' \
+    '(--downgrade)-d[Downgrade spell]:*:downgrade:->downgrade' \
+    '(-d)--downgrade:*:downgrade:->downgrade' \
+    '*:spells:->spells' && ret=0
 
-   if [[ "${words[2]}" == "-d" ]] ||
-      [[ "${words[2]}" == "--downgrade" ]]; then
-       _downgrade
-   else
-       _installed_spells       
-   fi
+  while [[ -n "$state" ]]; do
 
+    # Copy the state and reset `state', to simplify the test below.
+    lstate="$state"
+    state=''
+
+
+    # Dispatch...
+    case "$lstate" in
+      spells)
+	    _installed_spells
+	    ;;
+      downgrade)
+      
+            # 1st arguemnt
+	    if (( CURRENT == 3 )); then
+		_installed_spells       
+
+            # Complete version number of the target. 
+	    elif (( CURRENT == 4 )); then
+		_comp_spell_version "${words[3]}" && ret=0
+
+	    fi
+	    ;;
+    esac
+  done
 }
+	    
+_comp_spell_version() {
 
-(( $+functions[_downgrade] )) ||
-_downgrade () {
+    local SPELL=$1
+    typeset -g `cat /etc/sorcery/config|grep INSTALL_CACHE`
+    compadd -P '' $(
+	/bin/ls ${INSTALL_CACHE}/${SPELL}*.tar.bz2 \
+	    |sed -e 's+.*/++' \
+	    -e "s/${SPELL}-\(.\+\)-\(i[3-6]86-\|power\)pc-linux-gnu\.tar\.bz2/\1/" )
 
-    # 1st arguemnt
-    if (( CURRENT == 3 )); then
-       _installed_spells       
-
-    # Complete version number of the target. 
-    elif (( CURRENT == 4 )); then
-        INSTALL_CACHE=$(
-            eval $( sed '/SUBROUTINES/d' /etc/sorcery/config )
-            echo $INSTALL_CACHE
-        )
-        local SPELL="${words[3]}"
-        compadd -P '' $( /bin/ls ${INSTALL_CACHE}/${SPELL}*.tar.bz2 | \
-            sed -e 's!.*/!!' -e "s/${SPELL}-//" \
-                -e 's/-[^-]*-[^-]*-[^-]*-.*//' - )
-	unset INSTALL_CACHE
-
-    # "downgrade" dosen't need 3rd (or more) argument.
-    else
-        false
-    fi
 }
 
 _dispel "$@"

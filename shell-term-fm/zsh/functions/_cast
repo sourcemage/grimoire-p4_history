@@ -6,19 +6,15 @@ _cast () {
  
   # Do simple completions or get the first state.
   _arguments -C -s \
-    '(--fix)-f+[Discover and fix broken spells]:*:fix:->fix' \
-    '(-f)--fix:*:fix:->fix' \
-    '(--nofix)-n+[Discover, but do not fix broken spells]' \
-    '(-n)--nofix:*:fix:->fix' \
+    '(-n --no-fix)'{--fix+,-f+}'[Discover and fix broken spells]:*:fix:->fix' \
+    '(--fix -f)'{--nofix+,-n+}'[Discover, but do not fix broken spells]' \
     '-s+[Download 1st, cast 2nd]' \
-    '(--compile)-c+[Ignore /var/cache/sorcery and compiles]' \
-    '(-c)--compile' \
-    '(--reconfigure)-r+[Select new dependencies for spells]' \
-    '(-r)--reconfigure' \
-    '--deps+[Only configure spells and determine dependencies]' \
+    {-c,--compile}'[Ignore /var/cache/sorcery and compiles]' \
+    {-r,--reconfigure}'[Select new dependencies for spells]' \
+    '--deps[Only configure spells and determine dependencies]' \
     '--from+[Specify an alternate for /var/spool/sorcery]:*:from:_summon_from' \
     '--url+[Specify an alternate download URL]:*:url:_summon_url' \
-    '--pam+[re-casts all installed spells that can use Linux-PAM]' \
+    '--pam[re-casts all installed spells that can use Linux-PAM]' \
     '*:install:->install' && ret=0
 
   ## If mode is defined. ##
