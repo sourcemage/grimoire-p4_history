@@ -21,6 +21,12 @@
   make    install                                &&
 
   cp  $SCRIPT_DIRECTORY/squid.sh  /etc/init.d    &&
+  if ! [ -x /var/log/squid ]; then
+    mkdir  -p  /var/log/squid                    &&
+    touch      /var/log/squid/access.log         &&
+    touch      /var/log/squid/cache.log          &&
+    touch      /var/log/squid/store.log
+  fi                                             &&
 
   case  $SQUID_BOOT  in
     y|Y|j|J)  ln  -sf  ../init.d/squid.sh  /etc/rc0.d/K25squid
