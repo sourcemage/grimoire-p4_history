@@ -1,7 +1,7 @@
            SPELL=mod_perl
 if [ "$MOD_PERL" == '2' ]; then
-         VERSION=1.99_13
-          MD5[0]='a442f059fbc44e06c8328b4421013f33'
+         VERSION=1.99_14
+          MD5[0]=37690d940b86dbba96a8ca3c8a567c45
 else
          VERSION=1.29
           MD5[0]='c489fa1a8c6535e0181a287d9f62171b'
@@ -14,7 +14,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20010922
          UPDATED=20040112
       LICENSE[0]=APACHE
-      MAINTAINER="redlemon@knoware.nl"
+       BUILD_API=2
            SHORT="mod_perl incoporates PERL into the Apache HTTP server"
 cat << EOF
 The Apache/Perl integration project brings together the full power of
