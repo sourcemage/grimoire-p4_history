@@ -1,24 +1,26 @@
 (
-### patch for ls memorey bug
+  ### patch for ls memory bug
   patch -p1 < $SCRIPT_DIRECTORY/coreutils-ls-bug.patch         &&
   patch -p1 < $SCRIPT_DIRECTORY/coreutils-cp-mv-oMFS-bug.patch &&
+  ### patch for pam support in su
+  if echo $OPTS | grep -q enable-pam; then
+     message "${MESSAGE_COLOR} Linux-PAM is  enabled ${DEFAULT_COLOR}"   &&
+     patch -p1 < $SCRIPT_DIRECTORY/coreutils-use-pam.patch     &&
+     MAKEFLAG='CPPFLAGS=-DUSE_PAM su_LDFLAGS=-lpam_misc'         
+  fi                                                           &&
   ./configure                                  \
      --build=$BUILD                            \
      --bindir=${INSTALL_ROOT}/bin              \
      --prefix=${INSTALL_ROOT}/usr              \
      $OPTS                                     &&
-  make                                         &&
-
-# We need this directory in the path for the following utilities
-# cut, dirname, tail, and uniq
+  make   $MAKEFLAG                             &&
+  # We need this directory in the path for the following utilities
+  # cut, dirname, tail, and uniq
   export PATH="$SOURCE_DIRECTORY/src:$PATH"    && 
-
   prepare_install                              &&
-
-#horrible hack, some of my best work ;-)
+  #horrible hack, some of my best work ;-)
   ./src/ginstall  src/ginstall                 \
                   ${INSTALL_ROOT}/bin/install  &&
-
   make    install                              &&
 
 #some problems with everything in /bin
