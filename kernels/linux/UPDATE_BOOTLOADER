@@ -97,7 +97,7 @@ update_silo()  {
       if   echo  $LINE  |  grep  -q  "image"  ||
            echo  $LINE  |  grep  -q  "other"  ;  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`silo_image_entry`"  >>  /etc/silo.conf.new
+          echo  -e  "`lilo_image_entry`"  >>  /etc/silo.conf.new
         fi
         ((  IMAGE_COUNT++  ))
       fi
@@ -111,7 +111,7 @@ update_silo()  {
     done
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`silo_image_entry`"  >>  /etc/silo.conf.new
+      echo  -e  "`lilo_image_entry`"  >>  /etc/silo.conf.new
     fi
 
     cp  /etc/silo.conf.new  /etc/silo.conf
