@@ -1,7 +1,6 @@
-diff -Nur libmpeg3-1.5.0/Makefile libmpeg3-1.5.0-shared/Makefile
---- libmpeg3-1.5.0/Makefile	2002-06-21 14:35:24.000000000 +0200
-+++ libmpeg3-1.5.0-shared/Makefile	2003-04-25 16:47:56.000000000 +0200
-@@ -49,6 +49,7 @@
+--- Makefile-old	2003-08-10 00:21:59.000000000 +0200
++++ Makefile	2003-09-02 12:38:28.000000000 +0200
+@@ -66,6 +66,7 @@
  
  CFLAGS += \
  	-I. \
@@ -9,18 +8,18 @@ diff -Nur libmpeg3-1.5.0/Makefile libmpeg3-1.5.0-shared/Makefile
  	-I$(A52DIR)/include \
  	-I$(A52DIR)/liba52
  
-@@ -122,18 +123,15 @@
+@@ -132,18 +133,13 @@
  	$(OBJDIR)/audio \
  	$(OBJDIR)/video
  
 -include Makefile.a52
- 
+-
 -DIRS += $(A52DIRS)
- 
+-
 -
 -OUTPUT = $(OBJDIR)/libmpeg3.a
 +OUTPUT = $(OBJDIR)/libmpeg3.so
- UTILS = $(OBJDIR)/mpeg3dump $(OBJDIR)/mpeg3cat $(OBJDIR)/mpeg3toc 
+ UTILS = $(OBJDIR)/mpeg3dump $(OBJDIR)/mpeg3toc  $(OBJDIR)/mpeg3cat
  
  #$(OBJDIR)/mpeg3split
  
@@ -30,29 +29,31 @@ diff -Nur libmpeg3-1.5.0/Makefile libmpeg3-1.5.0-shared/Makefile
  
  $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(OBJDIR) \; fi )
  
-@@ -147,16 +145,16 @@
- 	if ! test -d $@ ; then mkdir -p $@ ; fi
+@@ -156,18 +152,18 @@
  
- $(OUTPUT): $(OBJS) $(ASMOBJS) $(NASMOBJS) $(A52OBJS) $(UTILOBJS)
+ 
+ $(OUTPUT): $(OBJS) $(ASMOBJS) $(NASMOBJS) $(A52OBJS)
 -	ar rcs $(OUTPUT) `cat $(OBJDIR)/objs`
 +	ld -shared -o $(OUTPUT) `cat $(OBJDIR)/objs` $(LIBS) -la52
  
- $(OBJDIR)/mpeg3dump: $(OUTPUT)
+ 
+ 
+ $(OBJDIR)/mpeg3dump: $(OUTPUT) mpeg3dump.c
 -	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3dump mpeg3dump.c $(OUTPUT) $(LIBS)
 +	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3dump mpeg3dump.c -lmpeg3 $(LIBS)
  
- $(OBJDIR)/mpeg3cat: $(OUTPUT)
--	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c $(OUTPUT) $(LIBS)
-+	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c -lmpeg3 $(LIBS)
- 
- $(OBJDIR)/mpeg3toc: $(OUTPUT)
+ $(OBJDIR)/mpeg3toc: $(OUTPUT) mpeg3toc.c
 -	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3toc mpeg3toc.c $(OUTPUT) $(LIBS)
 +	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3toc mpeg3toc.c -lmpeg3 $(LIBS)
  
+ $(OBJDIR)/mpeg3cat: $(OUTPUT) mpeg3cat.c
+-	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c $(OUTPUT) $(LIBS)
++	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c -lmpeg3 $(LIBS)
+ 
  #$(OBJDIR)/mpeg3split: $(OUTPUT)
  #	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3split mpeg3split.c $(OUTPUT) $(LIBS)
-@@ -175,7 +173,11 @@
- util: $(UTILS)
+@@ -184,7 +180,11 @@
+ 		-ldl
  
  install: 
 +	mkdir -p /usr/include/libmpeg3
@@ -63,15 +64,3 @@ diff -Nur libmpeg3-1.5.0/Makefile libmpeg3-1.5.0-shared/Makefile
  
  clean:
  	rm -rf $(OBJDIR)
-Binary files libmpeg3-1.5.0/.Makefile.swp and libmpeg3-1.5.0-shared/.Makefile.swp differ
-diff -Nur libmpeg3-1.5.0/mpeg3private.h libmpeg3-1.5.0-shared/mpeg3private.h
---- libmpeg3-1.5.0/mpeg3private.h	2002-10-18 03:38:19.000000000 +0200
-+++ libmpeg3-1.5.0-shared/mpeg3private.h	2003-04-25 16:31:08.000000000 +0200
-@@ -3,6 +3,7 @@
- 
- #include <stdint.h>
- #include <stdio.h>
-+#include <pthread.h>
- 
- 
- 
