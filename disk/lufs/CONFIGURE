@@ -13,5 +13,9 @@ if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
     then  echo   'OPTS="$OPTS  --enable-suid"'   >>  ${SPELL_CONFIG}
   fi
 
+  if      query  "Has kernel already been patched for lufs support?"  n
+    then  echo   'OPTS="$OPTS  --disable-kernel-support"'   >>  ${SPELL_CONFIG}
+  fi
+
   echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
 fi
