@@ -1,8 +1,8 @@
-if  [ -d  /usr/lib/perl5/5.6.1 ]
+if  [ -n "$CURRENT_VERSION"  -a  "$CURRENT_VERSION" != "$VERSION" ]
 then
     cat  <<- ____EOM
 
-	I see you've got a 5.6.1 perl library. This probably
+	I see you've got a $CURRENT_VERSION perl library. This probably
 	means that you're upgrading perl.
 
 	If this is not the case you can skip the next paragraph
@@ -15,8 +15,8 @@ then
 	   After all spells have successfully been build you'll have to
 	   remember to _MANUALLY_ remove the following directories:
 	   
-	      rm -rf /usr/lib/perl5/5.6.1
-	      rm -rf /usr/lib/perl5/site_perl/5.6.1
+	      rm -rf /usr/lib/perl5/$CURRENT_VERSION
+	      rm -rf /usr/lib/perl5/site_perl/$CURRENT_VERSION
 
 ____EOM
 
@@ -26,16 +26,17 @@ ____EOM
 	do
 	    if [ $spell != perl ]
 	    then 
-		gaze  installed  $spell  &&  cast  $spell
+		gaze  installed  $spell  &&  cast -c $spell
 	    fi
 	done
 
 	cat  <<- ________EOM
 
 	if all spells have successfully been build, you can now
-	remove the 5.6.1 libraries, unless you've been installing
-	perl modules without using spells. It is a good idea to update
-	those too and remove the 5.6.1 libs.
+	remove the $CURRENT_VERSION libraries, unless you've been installing
+	perl modules without using spells (which of course you haven't ;-). 
+	It is a good idea to update those too and remove the $CURRENT_VERSION
+	libs.
 
 ________EOM
 

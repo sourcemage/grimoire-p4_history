@@ -1,6 +1,9 @@
 (
     unset LANG
 
+    # save current version so we can do a POST_INSTALL
+    #
+    CURRENT_VERSION="`installed_version perl`"
     CONFIG="$DEPENDS_CONFIG/perl_config.sh"
 
     patch -p1 < $SCRIPT_DIRECTORY/installperl.patch  &&
