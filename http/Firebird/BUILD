@@ -50,6 +50,12 @@ export MOZ_PHOENIX=1                         &&
 
   make install                                      &&
   cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla
+  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla  &&
+
+
+  if  !  grep  -q  "mozilla"  /etc/ld.so.conf
+  then
+    echo  "/usr/lib/mozilla"  >>  /etc/ld.so.conf
+  fi
   
 ) >$C_FIFO 2>&1
