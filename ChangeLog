@@ -1,3 +1,9 @@
+2005-03-22 Eric Sandall <eric@sandall.us>
+	* accounts,groups: Added ntp
+
+2005-03-20 Arjan Bouter <abouter@sourcemage.org>
+	* FUNCTIONS: added remove_shell and install_shell functions
+
 2005-03-18 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* audio-plugins/gst-tta: removed deprecated spell
 	* xfce/xfce4-themes: removed deprecated spell
@@ -13,8 +19,8 @@
 
 2005-03-15 Eric Sandall <eric@sandall.us>
 	* php-pear/API_VERSION: Added BUILD_API=2
-	* php-pear/PEAR_DETAILS: Removed PACKAGE_VERSION (now in each spell as they
-	  are lower-cased and not easily converted back for the PHP names)
+	* php-pear/PEAR_DETAILS: Removed PACKAGE_VERSION (now in each spell as
+	  they are lower-cased and not easily converted back for the PHP names)
 	  Removed BUILD_API=2
 
 2005-03-11 Arjan Bouter <abouter@sourcemage.org>
@@ -47,14 +53,15 @@
 	  mail/squirrelmail-AddressTake, mail/squirrelmail-BlockSender,
 	  mail/squirrelmail-Notes, mail/YoSucker, utils/sysvinit: Removed
 	  deprecated spells
-	* collab/HORDE_{INSTALL,PREPARE}: Branched from collab/horde/{BUILD,PREPARE}
+	* collab/HORDE_{INSTALL,PREPARE}: Branched from collab/horde/{BUILD,
+	  PREPARE}
 	  Converted to build_api 2 and cleaned up queries
 	  No longer restarts the slapd service
 	* ChangeLog: Some formatting cleanup
 	* graphics/gSculpt: Renamed to graphics/gsculpt
 	* graphics/imgSeekLite: Renamed to graphics/imgseeklite
-	* graphics/Hermes: Renamed to graphics-libs/libhermes (already a hermes in
-	  the collab section)
+	* graphics/Hermes: Renamed to graphics-libs/libhermes (already a hermes
+	  in the collab section)
 	  Once this gets to stable, arcade-clanbomber, games-libs, clanlib, and
 	  games-libs/clanlib-devel need to have it renamed in their DEPENDS
 	* x11/STonX: Renamed to x11/STonX
@@ -160,8 +167,10 @@
 	* mail/Mail-SpamAssassin: Renamed to mail/spamassassin
 	* mail/squirrelmail-AbookGroup: Renamed to mail/squirrelmail-abookgroup
 	* mail/squirrelmail-AddressAdd: Renamed to mail/squirrelmail-addressadd
-	* mail/squirrelmail-AddressTake: Renamed to mail/squirrelmail-addresstake
-	* mail/squirrelmail-BlockSender: Renamed to mail/squirrelmail-blocksender
+	* mail/squirrelmail-AddressTake: Renamed to
+	  mail/squirrelmail-addresstake
+	* mail/squirrelmail-BlockSender: Renamed to
+	  mail/squirrelmail-blocksender
 	* mail/squirrelmail-Notes: Renamed to mail/squirrelmail-notes
 	* mail/YoSucker: Renamed to mail/yosucker
 
@@ -204,7 +213,8 @@
 	* xfce/xfce4-themes, xfce/xffm-icons: deprecated spells
 
 2004-11-04 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* FUNCTIONS: added function glibc_is_nptl to detect NPTL support in glibc
+	* FUNCTIONS: added function glibc_is_nptl to detect NPTL support in
+	  glibc
 
 2004-10-30 George Sherwood <george@beernabeer.com>
 	* chat-im/gabber: removed deprecated spell
@@ -225,8 +235,8 @@
 2004-09-26 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* video/GTKsubtitler, video/LiVES, video/MPlayer, video/Video-DVDRip,
 	  video-libs/MPlayer-codecs, video-libs/MPlayer-fonts,
-		video-libs/MPlayer-gui, video-libs/w32codec:
-		removed deprecated spells
+	  video-libs/MPlayer-gui, video-libs/w32codec:
+	  removed deprecated spells
 
 2004-09-24 Ladislav Hagara <hgr@vabo.cz>
 	* e/Eterm: removed deprecated spell
@@ -396,8 +406,8 @@
 	* editors/TeXmacs: Renamed to editors/texmacs
 
 2004-07-17 Eric Sandall <eric@sandall.us>
-	* audio-drivers/alsa-lib,audio-drivers/alsa-driver: Moved alsa init script
-	  from alsa-driver to alsa-lib
+	* audio-drivers/alsa-lib,audio-drivers/alsa-driver: Moved alsa init
+	  script from alsa-driver to alsa-lib
 	* ChangeLog: Formatted to 80 columns ;)
 	* kernels/NVIDIA_driver,kernels/NVIDIA_headers,kernels/NVIDIA_nforce:
 	  Renamed to nvidia_*
@@ -423,8 +433,8 @@
 	  windowmanagers/windowmaker-extra
 
 2004-07-13 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* video-libs/MPlayer-codecs: deprecated, replacements are quicktime-codecs,
-	  real-codecs, xanim-codecs
+	* video-libs/MPlayer-codecs: deprecated, replacements are
+	  quicktime-codecs, real-codecs, xanim-codecs
 	* video-libs/w32codec: deprecated, replacement is win32codecs
 
 2004-07-12 Eric Sandall <eric@sandall.us>
@@ -469,15 +479,16 @@
 	* kernels/splashutils: Renamed to kernels/bootsplash
 
 2004-05-24 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* video/MPlayer-cvs: removed deprecated MPlayer-cvs spell, MPlayer provides
-	  both stable and cvs version
+	* video/MPlayer-cvs: removed deprecated MPlayer-cvs spell, MPlayer
+	  provides both stable and cvs version
 
 2004-04-22 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* libs/libiconv: removed libiconv spell, has been deprecated for some months
+	* libs/libiconv: removed libiconv spell, has been deprecated for some
+	  months
 
 2004-04-03 Eric Sandall <eric@sandall.us>
-	* pidentd,oidentd: Removed root versions of these (I accidently added them
-	  in Changeset #26587 Bug #6546
+	* pidentd,oidentd: Removed root versions of these (I accidently added
+	  them in Changeset #26587 Bug #6546
 
 2004-03-26 Ladislav Hagara <hgr@vabo.cz>
 	* e: new section - The Enlightenment Project
@@ -503,15 +514,16 @@
 
 2004-01-27 hgg <hgreig@bigpond.net.au>
 	* bash: spell has changed to now source files from /etc/profile.d/*.sh
-	  The spells that used to add variables to /etc/profile have been modified
-	  to install /etc/profile.d/*.sh files now, but to avoid having to recast
-	  all of these the bash spell will attempt to convert your current
-	  /etc/profile and will back it up to /etc/profile.d/profile. It would be
-	  extremely wise to check it has worked before logging out or rebooting
+	  The spells that used to add variables to /etc/profile have been
+	  modified to install /etc/profile.d/*.sh files now, but to avoid
+	  having to recast all of these the bash spell will attempt to convert
+	  your current /etc/profile and will back it up to
+	  /etc/profile.d/profile. It would be extremely wise to check it has
+	  worked before logging out or rebooting
 
 2004-01-08 hgg <hgreig@bigpond.net.au>
-	* libnjb-cvs: removed, dispel libnjb-cvs, then cast -r -c libnjb to choose
-	  cvs version if wanted
+	* libnjb-cvs: removed, dispel libnjb-cvs, then cast -r -c libnjb to
+	  choose cvs version if wanted
 
 2004-01-05 Eric Sandall <eric@sandall.us>
 	* devel/MAINTAINER: Open section
@@ -520,7 +532,7 @@
 
 2003-10-03  hgg <hgreig@bigpond.net.au>
 	* GRIMOIRE: test grimoire now has support for optional_requires to allow
-	  full use of xfree86-devel or xfree86-libs or xdirectfb spells to provide
-	  x11-{libs,server}.  THE CATCH IS YOU MUST USE DEVEL SORCERY OR YOU WILL
-	  GET NOTHING BUT ERRORS DURING CAST.
+	  full use of xfree86-devel or xfree86-libs or xdirectfb spells to
+	  provide x11-{libs,server}.  THE CATCH IS YOU MUST USE DEVEL SORCERY
+	  OR YOU WILL GET NOTHING BUT ERRORS DURING CAST.
 
