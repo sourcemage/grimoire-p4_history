@@ -1,2 +1,9 @@
-optional_depends  "Python"  "--enable-python"  ""  "to build Mk4py extension"  &&
-optional_depends  "tcl"  ""  ""  "to build Mk4tcl extension"
+optional_depends  Python                      \
+                  "--enable-python"           \
+                  ""                          \
+                  "to build Mk4py extension"  &&
+
+optional_depends  tcl                          \
+                  ""                           \
+                  ""                           \
+                  "to build Mk4tcl extension"
