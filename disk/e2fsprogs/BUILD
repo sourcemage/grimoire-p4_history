@@ -16,7 +16,10 @@
   cp  lib/uuid/libuuid.a  /usr/lib
   cp  lib/uuid/uuid.h     /usr/include/uuid
 
-  cp  $SCRIPT_DIRECTORY/mount.sh  /etc/init.d
+  # Fixes Bug #914
+  if  [  !  -f  /etc/init.d/mount.sh  ];  then
+    cp  $SCRIPT_DIRECTORY/mount.sh  /etc/init.d
+  fi
   ln      -sf ../init.d/mount.sh  /etc/rcS.d/S10mount
   ln      -sf ../init.d/mount.sh  /etc/rc0.d/K90mount
   ln      -sf ../init.d/mount.sh  /etc/rc6.d/K90mount
