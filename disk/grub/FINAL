@@ -1,3 +1,5 @@
+persistent_add  GRUB_ROOT  &&
+
 function generate_menu_lst_skel()  {
   # find current running kernel
   # this isn't perfect, but it will give a reasonable starting place
@@ -81,28 +83,18 @@ EOF`
 
   if  [  "${POSSIBLE_GRUB_ROOT}" == ""  ]
   then
-    message  "Automatic identification of GRUB_ROOT failed.  You will have to"
-    message  "enter your GRUB_ROOT partition (generally the same partition as"
-    message  "/boot) by hand.  Use (hd0,0) for the first partition on the first"
-    message  "drive, (hd1,2) for the third partition on the second drive, etc."
-    message  "Note that you NEED to enter the parenthesis, and should have no"
-    message  "spaces within the parenthesis."
-    echo -n  "GRUB_ROOT=(hd#,#): "
-    read GRUB_ROOT
+    config_query_string  GRUB_ROOT  \
+                         "Automatic identification of GRUB_ROOT failed.  You will have to enter your GRUB_ROOT partition (generally the same partition as /boot) by hand.  Use (hd0,0) for the first partition on the first drive, (hd1,2) for the third partition on the second drive, etc.  Note that you NEED to enter the parenthesis, and should have no spaces within the parenthesis."  \
+                     $GRUB_ROOT
   else 
     message  "GRUB_ROOT (where /boot/grub resides) has been identified as $GRUB_ROOT"
     if  query  "Would you like to override this value with your own?" n
     then  
-      message  "Enter the grub root partition (probably /boot) in the form of (hdN,N)"
-      message  "For example, the first partition of the first drive would be (hd0,0)"
-      message  "Don't forget to include the parenthesis, and include NO SPACES"
-      message  "within the parenthesis"
-      echo -n  "GRUB_ROOT=(hd#,#): "
-      read GRUB_ROOT
+      config_query_string  GRUB_ROOT  \
+                           "Enter the grub root partition (probably /boot) in the form of (hdN,N) For example, the first partition of the first drive would be (hd0,0) Don't forget to include the parenthesis, and include NO SPACES within the parenthesis"  \
+                     $GRUB_ROOT
     fi
   fi
-
-  echo  "GRUB_ROOT=$GRUB_ROOT"  >>  $SPELL_CONFIG
 }
 
 generate_menu_lst_skel
