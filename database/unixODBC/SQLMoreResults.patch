@@ -1,0 +1,12 @@
+diff -r -u unixODBC-2.2.7.old/DriverManager/SQLMoreResults.c unixODBC-2.2.7/DriverManager/SQLMoreResults.c
+--- unixODBC-2.2.7.old/DriverManager/SQLMoreResults.c	Thu Oct 30 18:20:46 2003
++++ unixODBC-2.2.7/DriverManager/SQLMoreResults.c	Sat Jan 10 11:17:45 2004
+@@ -262,7 +262,7 @@
+          * We don't know for sure
+          */
+         statement -> hascols = 0;
+-        statement -> state = STATE_S4;
++        statement -> state = STATE_S5;
+ #endif
+     }
+     else if ( ret == SQL_STILL_EXECUTING )
