@@ -2,13 +2,15 @@
   cd                   $SOURCE_DIRECTORY  &&
   if ! [[ -z $SOURCE ]]
   then
-    unpack               $SOURCE
+    unpack               $SOURCE  ${MD5[0]}
     i=2
+    m=1
     ii=SOURCE$i
     while ! [[ -z ${!ii} ]]
     do
-      unpack               ${!ii}
+      unpack               ${!ii}  ${MD5[$m]}
       i=$[$i+1]
+      m=$[$m+1]
       ii=SOURCE$i
     done
   fi
