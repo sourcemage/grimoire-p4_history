@@ -14,7 +14,7 @@
 
 
   if [ "$NPTL" = "yes" ] 
-  then OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=current" 
+  then OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=2.6" 
   else OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel=2.4" &&
   ### Apply gcc 3.3 patch
    bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1 
