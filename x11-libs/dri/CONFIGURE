@@ -34,7 +34,7 @@ then
    if [ "{$X11_SAVAGE_DRIVER_IA32}" == "savage" ] ; then
    config_query_option DRI_DRIVER "Support for Savage" y "savage" ""
    fi
-   config_query_option DRI_DRIVER "Support for gamma" y "gamma" ""
+   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" y "gamma" ""
    config_query_option DRI_DRIVER "Support for ffb" y "ffb" ""
 
 elif [ "`find ${ARCH_SPECS}  -type f -name ${ARCHITECTURE} | awk -F/ '{print$6;}'`" == "ppc" ]
