@@ -1,2 +1,2 @@
-sed -i 's/\/usr\/local\/bin/\/usr\/bin/g' Makefile &&
+sed -i "s/\/usr\/local\/bin/${INSTALL_ROOT}\/usr\/bin/g" Makefile &&
 make
