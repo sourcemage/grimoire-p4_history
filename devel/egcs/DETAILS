@@ -1,10 +1,10 @@
            SPELL=egcs
          VERSION=1.1.2
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://mirrors.rcn.net/pub/sourceware/gcc/old-releases/egcs/egcs-1.1.2.tar.bz2
-   SOURCE_URL[1]=ftp://ftp.gwdg.de/pub/misc/gcc/old-releases/egcs/egcs-1.1.2.tar.bz2
-   SOURCE_URL[2]=ftp://ftp.mirror.ac.uk/sites/sources.redhat.com/pub/gcc/old-releases/egcs/egcs-1.1.2.tar.bz2
+   SOURCE_URL[0]=ftp://mirrors.rcn.net/pub/sourceware/gcc/old-releases/egcs/${SOURCE}
+   SOURCE_URL[1]=ftp://ftp.gwdg.de/pub/misc/gcc/old-releases/egcs/${SOURCE}
+   SOURCE_URL[2]=ftp://ftp.mirror.ac.uk/sites/sources.redhat.com/pub/gcc/old-releases/egcs/${SOURCE}
           MD5[0]=1ec8cede6af54c43fb8d85401d427f1a
       LICENSE[0]=GPL
         WEB_SITE=http://gcc.gnu.org/egcs-1.1
