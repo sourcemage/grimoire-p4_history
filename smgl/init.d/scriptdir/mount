@@ -98,11 +98,11 @@ stop() {
         echo "Unmounting RAID $mddevice..."
 	umount $mddevice
 	evaluate_retval
-        echo "Stoping RAID... $mddevice"
+        echo "Stopping RAID... $mddevice"
         /sbin/raidstop $mddevice
         evaluate_retval
       done
-      echo "Stoping other RAID..."
+      echo "Stopping other RAID..."
       /sbin/raidstop --all
       evaluate_retval
     fi
