@@ -1,0 +1,26 @@
+depends cyrus-sasl "--with-cyrus-sasl=$INSTALL_ROOT/usr" &&
+
+optional_depends openssl \
+                 '--with-openssl' \
+                 '--without-openssl' \
+                 'for encrypted communications support' &&
+optional_depends db \
+                 '--with-berkeley-db' \
+                 '--without-berkeley-db' \
+                 'for Berkeley DB storage and authentication driver [recommended]' &&
+optional_depends mysql \
+                 '--with-mysql' \
+                 '--without-mysql' \
+                 'for MySQL storage and authentication driver' &&
+optional_depends postgresql \
+                 '--with-pgsql' \
+                 '--without-pgsql' \
+                 'for PostgreSQL storage and authentication driver' &&
+optional_depends openldap \
+                 '--with-openldap' \
+                 '--without-openldap' \
+                 'for LDAP-based authentication driver' &&
+optional_depends Linux-PAM \
+                 '--with-pam' \
+                 '--without-pam' \
+                 'for PAM-based authentication driver'
