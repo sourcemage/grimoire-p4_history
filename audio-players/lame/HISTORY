@@ -1,5 +1,7 @@
 2004-12-14 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Depends on g++
+	* PRE_BUILD: Apply g++ removal patch:
+	* g++.patch.bz2: Remove g++ checks from configure, otherwise
+	  this fails without g++ installed (stupid packagers!)
 
 2004-09-12 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 3.96.1
