@@ -1,10 +1,10 @@
            SPELL=epiphany
-         VERSION=1.3.8
+         VERSION=1.4.0
           BRANCH=$(echo $VERSION|cut -d . -f 1,2)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='b35627ac85e43f28e42fac07a5de2ac9'
+          MD5[0]=ce0c54dd09c60e0f3f441bbb3be3d03b
       LICENSE[0]=GPL
       MAKE_NJOBS=1
        BUILD_API=2
