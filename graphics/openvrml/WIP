@@ -1,0 +1,17 @@
+Fails with:
+checking for mozilla-plugin >= 1.6... Package mozilla-plugin was not found in th
+e pkg-config search path.
+Perhaps you should add the directory containing `mozilla-plugin.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'mozilla-plugin' found
+Package mozilla-plugin was not found in the pkg-config search path.
+Perhaps you should add the directory containing `mozilla-plugin.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'mozilla-plugin' found
+checking for xpidl... no
+configure: error: xpidl not found
+See `config.log' for more details.
+./configure: line 19336: PATH_SEPARATOR: command not found
+configure: error: /bin/sh './configure' failed for mozilla-plugin
+
+I think it may need mozilla and not firefox. Anyone with mozilla care to test? If so, the depends and flags need to be changed to account for needing mozilla, even when I say --disable-mozilla-plugin. :(
