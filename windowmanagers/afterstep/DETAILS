@@ -1,9 +1,14 @@
-           SPELL=AfterStep
+           SPELL=afterstep
          VERSION=2.00.beta4b
+          SOURCE=AfterStep-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/AfterStep-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/$SOURCE
+          MD5[0]=585488abce7132ffda4f0c0bccb351d5
         WEB_SITE=http://www.afterstep.org
          ENTERED=20011101
          UPDATED=20040408
       LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="AfterStep an X11 windows manager."
 cat << EOF
 AfterStep is a Window Manager for X which started by emulating the

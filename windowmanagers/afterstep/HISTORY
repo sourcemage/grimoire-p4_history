@@ -1,9 +1,11 @@
 2004-07-15 Eric Sandall <eric@sandall.us>
-	* Renamed to afterstep
-	* DETAILS: Removed SOURCEs
+	* DETAILS: Renamed to afterstep
 	  Removed MAINTAINER
-	* DEPENDS: Depends only on afterstep
-	* BUILD,PRE_BUILD: Added "true" files
+	  BUILD_API=2
+	* CONFLICTS: Added conflicts with AfterStep
+	* afterstep.desktop,startafterstep: Startup scripts for login managers
+	* INSTALL: Install login manager scripts
+	* DEPENDS: Add a space ;)
 
 2004-04-08 Johannes Weiner <hnaz@we-are-root.org>
 	* DETAILS: Updated to 2.00beta4
