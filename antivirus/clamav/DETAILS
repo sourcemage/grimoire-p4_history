@@ -1,12 +1,12 @@
-          VERSION=0.70-rc
+          VERSION=0.70
             SPELL=clamav
            SOURCE=$SPELL-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE   
     SOURCE_URL[1]=http://clamav.catt.com/stable/$SOURCE
          WEB_SITE=http://www.clamav.net
-          LICENCE=GPL
-           MD5[0]=41bedbd61ba07ed121e2bbbfd363a327
+          LICENSE=GPL
+           MD5[0]=ded690b00c46ce3bd980b1440aafaa5e
             SHORT="Clam AntiVirus is an anti-virus toolkit for Unix"
 cat << EOF
 Clam AntiVirus is an anti-virus toolkit for Unix. The main purpose 
@@ -19,13 +19,13 @@ use in your own software.
 EOF
 
            SPELL2=clamdmail
-         VERSION2=0.15
+         VERSION2=0.15a
           SOURCE2=$SPELL2-$VERSION2.tar.gz
-   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE3
+   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
 SOURCE2_DIRECTORY=$SPELL2-$VERSION2
         WEB_SITE2=http://$SPELL2.SourceForge.net
-         LICENCE2=GPL
-           MD5[1]=bc931ed3e0072735190719afc3720bf5
+         LICENSE2=GPL
+           MD5[1]=1883f5ea50fdb2d0731c5a5a2dbb9aef
 
 
           ENTERED=20030909
