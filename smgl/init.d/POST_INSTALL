@@ -13,11 +13,11 @@ if  [  -e  /tmp/devices2dev  ]  ;  then
     fi
   done
 
-  sedit  's!/devices!/dev!'  /etc/sysconfig/devices
+  sedit  's!/devices$!/dev!'  /etc/sysconfig/devices
 
   rm  /tmp/devices2dev
 else
-  sedit  's!/dev!/devices!'  /etc/sysconfig/devices
+  sedit  's!/dev$!/devices!'  /etc/sysconfig/devices
 fi
 
 true
