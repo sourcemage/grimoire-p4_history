@@ -122,7 +122,8 @@ optional_depends  "flac"                   \
 
 # video codec options
 if  [  "$FFMPEG"  =  "y"  ];  then
-  requires libavcodec
+  #requires libavcodec
+  depends  ffmpeg-cvs
 fi  &&
 
 optional_depends  "xvid"                   \
