@@ -7,7 +7,7 @@ create_account  fcron
 # fi
 WITH_PAM="--with-pam=no"
 
-EDITOR=`which $EDITOR  2>/dev/null`  ||
+EDITOR=`which ${EDITOR%% *}  2>/dev/null`  ||
 EDITOR=`which nano`
 
 sedit  "s/-O2/$CFLAGS/"  configure
