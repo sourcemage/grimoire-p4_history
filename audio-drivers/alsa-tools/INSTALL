@@ -1,6 +1,3 @@
-message "${MESSAGE_COLOR}Chosen tools: $ALSATOOLS"
-message "${DEFAULT_COLOR}"
-
 for ALSATOOL in $ALSATOOLS
 do
 
@@ -10,9 +7,9 @@ do
     cd $SOURCE_DIRECTORY/$ALSATOOL
   fi
 
-  message "${MESSAGE_COLOR}Tool $ALSATOOL is being built ..."
+  message "${MESSAGE_COLOR}Tool $ALSATOOL is being instaled ..."
   message "${DEFAULT_COLOR}"
 
-  default_build
+  default_install
 
 done
