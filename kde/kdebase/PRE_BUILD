@@ -8,3 +8,8 @@ if  spell_installed  Xft2  ;  then
   touch  /tmp/qt-x11.xft2.suspend
 fi
 
+mk_source_dir  $SOURCE_DIRECTORY  &&
+cd             $SOURCE_DIRECTORY  &&
+unpack         $SOURCE
+mv             $SPELL-$VERSION/* .
+
