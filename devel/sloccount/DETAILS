@@ -1,16 +1,15 @@
            SPELL=sloccount
-         VERSION=2.24
+         VERSION=2.26
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.dwheeler.com/sloccount/$SOURCE
-          MD5[0]='24e6dc82e4faeb34cd534b21bda42fc0'
-      LICENSE[0]=GPL
+          MD5[0]=f38795bb25307f49b4fbe25f8098e16c
         WEB_SITE=http://www.dwheeler.com/sloccount/
-      MAINTAINER=rycee@home.se
          ENTERED=20021116
          UPDATED=20021116
-           SHORT="Source Lines of Code (SLOC) counting tool."
-
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Source Lines of Code (SLOC) counting tool"
 cat << EOF
 SLOCCount is a suite of programs for counting physical source lines of code
 (SLOC) in possibly large software systems. It can count physical SLOC for a
