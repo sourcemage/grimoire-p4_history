@@ -1,5 +1,14 @@
---- Makefile	2001-12-23 08:08:08.000000000 -0700
-+++ mgetty/Makefile	2002-08-13 17:37:13.000000000 -0600
+--- Makefile	2004-02-21 19:30:03.000000000 -0800
++++ Makefile	2004-02-13 20:17:01.000000000 -0800
+@@ -107,7 +107,7 @@
+ # prompt first. Don't forget to activate the /AutoPPP/ line in login.config!
+ #
+ #CFLAGS=-Wall -O2 -pipe -DSECUREWARE -DUSE_POLL
+-CFLAGS=-O2 -Wall -pipe
++CFLAGS=${MGETTY_CFLAGS} -Wall
+ #CFLAGS=-O -DSVR4
+ #CFLAGS=-O -DSVR4 -DSVR42
+ #CFLAGS=-O -DUSE_POLL
 @@ -177,7 +177,7 @@
  #
  # prefix, where most (all?) of the stuff lives, usually /usr/local or /usr
@@ -18,3 +27,12 @@
  #CONFDIR=/etc/default/
  #
  #
+@@ -220,7 +220,7 @@
+ # (it's possible to run faxrunq(d) as root, but the FAX_OUT_USER 
+ #  MUST NOT BE root or any other privileged account).
+ #
+-FAX_OUT_USER=fax
++FAX_OUT_USER=phone
+ #
+ #
+ # Where section 1 manual pages should be placed
