@@ -1,15 +1,15 @@
            SPELL=MPlayer-cvs
          VERSION=head
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:anonymous@mplayerhq.hu:/cvsroot/mplayer:main
+#          SOURCE=$SPELL-$VERSION.tar.bz2
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+#   SOURCE_URL[0]=cvs://:pserver:anonymous@mplayerhq.hu:/cvsroot/mplayer:main
         WEB_SITE=http://www.mplayerhq.hu
       MAINTAINER=v.merkatz@gmx.net
       LICENSE[0]=GPL
           MD5[0]=IGNORE
          ENTERED=20010922
-         UPDATED=20030120
-            DOCS="$DOCS etc/*.conf"
+         UPDATED=20040127
+     GATHER_DOCS=off
   FORCE_DOWNLOAD=on
            SHORT="MPlayer is a movie and animation player."
 cat << EOF
@@ -27,4 +27,6 @@ Radeon) too! Most of them supports software or hardware scaling, so you can
 enjoy movies in fullscreen.
 MPlayer supports displaying through some hardware MPEG decoder boards, such as the DVB and  DXR3/Hollywood+ !
 And what about the nice big antialiased shaded subtitles (9 supported types!!!) with european/ISO 8859-1,2 (hungarian, english, czech, etc), cyrillic, korean fonts, and OSD? 
+
+Note: this spell is deprecated and will be removed, use MPlayer instead
 EOF

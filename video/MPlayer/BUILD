@@ -3,14 +3,16 @@
   # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
-  patch -p1 < $SCRIPT_DIRECTORY/matroska-C-demux.patch  &&
-
+  if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
+    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch
+  fi &&
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
 
-if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
-    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch
-fi &&
+  if [ "$CVS" = "no" ]; then
+    patch -p1 < $SCRIPT_DIRECTORY/matroska-C-demux.patch
+  fi  &&
+
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
   esac  &&
@@ -51,7 +53,9 @@ fi &&
       sedit  "s/include =/# include =/"         etc/example.conf
       sedit  "s/# vo=/vo=/"                     etc/example.conf
       sedit  "s/# ao=/ao=/"                     etc/example.conf
-      sedit  "s/# skin = default/skin = Blue/"  etc/example.conf
+      if  [ "$GUI" = "y" ]; then
+        sedit  "s/# skin = default/skin = Blue/"  etc/example.conf
+      fi
       cp  etc/example.conf                      /etc/mplayer/mplayer.conf
     fi
 
