@@ -10,7 +10,7 @@ then
   cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/*GL* $INSTALL_ROOT/usr/X11R6/lib
   cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/*Mesa* $INSTALL_ROOT/usr/X11R6/lib
 else
-  make install PROJECTROOT=$INSTALL_ROOT/X11R6
+  make install PROJECTROOT=$INSTALL_ROOT/usr/X11R6
 fi &&
 
 #Let's install the proper modules
