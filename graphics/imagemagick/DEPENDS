@@ -20,4 +20,14 @@ message  "If you are going to install cups, choose espgs instead of ghostscript.
 optional_depends  POSTSCRIPT-INTERPRETER                      \
                   ""                                          \
                   ""                                          \
-                  "for generating Postscript and PDF output"
+                  "for generating Postscript and PDF output"  &&
+
+optional_depends  libwmf                                 \
+                  "--with-wmf=yes"                       \
+                  "--with-wmf=no"                        \
+                  "for Windows Metafile Format support"  &&
+
+optional_depends  lcms                                    \
+                  "--with-lcms=yes"                       \
+                  "--with-lcms=no"                        \
+                  "for speed optimized color management"
