@@ -1,8 +1,3 @@
-(
-
-  ./autogen.sh  &&
-  autoheader    &&
-
-  default_build
-
-) > $C_FIFO 2>&1
+./autogen.sh   &&
+autoheader     &&
+default_build
