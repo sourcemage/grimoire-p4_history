@@ -1,0 +1,12 @@
+--- config	2002-03-15 08:47:23.000000000 -0800
++++ config.new	2002-07-09 15:23:20.000000000 -0700
+@@ -387,7 +387,8 @@
+   # then strip off whatever prefix Cygnus prepends the number with...
+   GCCVER=`echo $GCCVER | sed 's/^[a-z]*\-//'`
+   # peak single digit before and after first dot, e.g. 2.95.1 gives 29
+-  GCCVER=`echo $GCCVER | sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/'`
++  GCCVER=`echo $GCCVER | sed 's/[^[:digit:].]*\([0-9]\)\.\([0-9]\).*/\1\2/'`
++
+ else
+   CC=cc
+ fi

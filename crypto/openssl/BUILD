@@ -1,4 +1,5 @@
 (
+  patch -p0 < $SCRIPT_DIRECTORY/config.patch
 
   ./config  --prefix=/usr          \
             --openssldir=/etc/ssl  \
