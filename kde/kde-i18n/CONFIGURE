@@ -1,9 +1,11 @@
+
 source $SCRIPT_DIRECTORY/../KDE_CONFIGURE
 
 CFG=$SPELL_CONFIG
 
 
 get_kdelanguages()  {
+local i
 if  ! `grep -q "$SPELL"  $CFG `
 then
 touch $CFG
