@@ -1,9 +1,10 @@
            SPELL=fvwm
-         VERSION=2.4.18
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.fvwm.org/pub/fvwm/version-2/$SOURCE
-          MD5[0]=de973e05c745a20ed60eadbfc25ddb57
+         VERSION=2.4.19
+          BRANCH=`echo ${VERSION} | cut -d. -f1`
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.fvwm.org/pub/${SPELL}/version-${BRANCH}/${SOURCE}
+          MD5[0]=ba147117979a92e710fb76e6f20b4496
         WEB_SITE=http://www.fvwm.org
          ENTERED=20010922
          UPDATED=20040409
