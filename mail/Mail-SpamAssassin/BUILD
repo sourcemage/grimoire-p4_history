@@ -1,7 +1,7 @@
 (
 
-  perl  Makefile.PL  RUN_RAZOR2_TESTS=y RUN_RAZOR1_TESTS=y  		&&
-  make               							&&
+  echo "\n" | perl  Makefile.PL  RUN_RAZOR2_TESTS=y RUN_RAZOR1_TESTS=y  &&
+  make     								&&
   prepare_install    							&&
   MAKE_NJOBS_OLD=$MAKE_NJOBS						&&
   MAKE_NJOBS=1								&&
