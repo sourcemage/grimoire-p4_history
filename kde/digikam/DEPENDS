@@ -1,5 +1,9 @@
-depends kdebase  &&
-depends kdesdk   &&
-depends libgphoto2 &&
-depends libexif	 &&
-depends imlib
+depends  kdesdk      &&
+depends  libgphoto2  &&
+depends  libexif     &&
+depends  imlib       &&
+
+if  [  "$CVS"  ==  "y"  ]
+then
+  depends  CVS
+fi

@@ -1,25 +1,23 @@
            SPELL=digikam
-       BUILD_API=2
-if [ "$USECVS" == "yes" ];then
+if  [  "$CVS"  ==  "y"  ];  then
          VERSION=`date -u +%Y%m%d`
           SOURCE=${SPELL}3-cvs-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
    SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
-             MD5=IGNORE
+          MD5[0]=IGNORE
 else
          VERSION=0.6.2
           SOURCE=${SPELL}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/digikam
    SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
-             MD5=2a977d397afbcdf24ea2206092f0c301
+          MD5[0]=2a977d397afbcdf24ea2206092f0c301
 fi
         WEB_SITE=http://digikam.sourceforge.net
-         LICENSE=GPL
          ENTERED=20020305
          UPDATED=20040114
-      MAINTAINER=treeve01@pi.be
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="digital camera interface for KDE, using gphoto2"
-
 cat << EOF
 Digikam - A KDE frontend for gphoto2. Designed to be a standalone 
 application to preview and download images from a digital camera
