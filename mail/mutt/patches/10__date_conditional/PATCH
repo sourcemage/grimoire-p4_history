@@ -1,8 +1,0 @@
-case "${BRANCH}" in
-  stable)
-    patch -p0 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.3.24.ats.date_optional.1"
-  ;;
-  devel|cvs)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.8.ats.date_conditional.1"
-  ;;
-esac

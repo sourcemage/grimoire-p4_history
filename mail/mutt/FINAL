@@ -15,4 +15,5 @@ if [ ! -e ${INSTALL_ROOT}/var/spool/mail/root ] && [ -d ${INSTALL_ROOT}/var/spoo
   fi
 fi &&
 
-persistent_remove REAL_PATCHES
+persistent_remove REAL_PATCHES &&
+persistent_remove TMP_MUTT_OPTS

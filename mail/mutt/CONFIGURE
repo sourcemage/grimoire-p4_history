@@ -21,28 +21,33 @@ if [ "${PATCHBAR}" == "y" ]; then
   persistent_remove PATCHBAR
 fi &&
 
+# $PATCHES stores the user preferences.  $REAL_PATCHES is the subset of
+# $PATCHES that is valid for this build.
 persistent_add REAL_PATCHES &&
 REAL_PATCHES="" &&
 
-for PATCH in `find "${PATCH_DIRECTORY}" -mindepth 1 -maxdepth 1 -type d | sort`
+# Because the exact order matters.
+for PATCH in `grep -v '^#' "${PATCH_DIRECTORY}/PATCH_ORDER"`
 do
-  if [ -x "${PATCH}/DETAILS" ]; then
-    . "${PATCH}/DETAILS" &&
-    if ! list_find "${BRANCHES}" "${BRANCH}"; then
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/DETAILS" ]; then
+    PATCH_BRANCHES=""
+    PATCH_NEEDS=""
+    . "${PATCH_DIRECTORY}/${PATCH}/DETAILS" &&
+    if ! list_find "${PATCH_BRANCHES}" "${BRANCH}"; then
       continue
     fi &&
-    P=`basename "${PATCH}" | cut -c '5-'` &&
-    if [ "${P}" == "purge_message" ]; then
-      if ! list_find "${PATCHES}" "trash_folder"; then
-        continue
+    for NEED in ${PATCH_NEEDS}
+    do
+      if ! list_find "${PATCHES}" "${NEED}"; then
+        continue 2
       fi
-    fi
-    config_query_option PATCHES "Apply the ${P} patch?"                \
+    done &&
+    config_query_option PATCHES "Apply the ${PATCH} patch?"            \
                         "n"                                            \
-                        "${P}"                                         \
-                        "-${P}"                                        &&
-    if list_find "${PATCHES}" "${P}"; then
-      REAL_PATCHES="${REAL_PATCHES} `basename ${PATCH}`"
+                        "${PATCH}"                                     \
+                        "-${PATCH}"                                    &&
+    if list_find "${PATCHES}" "${PATCH}"; then
+      REAL_PATCHES="${REAL_PATCHES} ${PATCH}"
     fi
   fi
 done &&
@@ -72,9 +77,9 @@ config_query_option MUTT_OPTS "Enable IMAP support?"                 \
                               "--enable-imap"                        \
                               "--disable-imap"                       &&
 
-for P in ${REAL_PATCHES}; do
-  if [ -x "${PATCH_DIRECTORY}/${P}/CONFIGURE" ]; then
-    . "${PATCH_DIRECTORY}/${P}/CONFIGURE"
+for PATCH in ${REAL_PATCHES}; do
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/CONFIGURE" ]; then
+    . "${PATCH_DIRECTORY}/${PATCH}/CONFIGURE"
   fi
 done
 
