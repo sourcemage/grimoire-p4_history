@@ -3,6 +3,9 @@
   export    CFLAGS="$( echo  $CFLAGS    |  sed  s/-funroll-loops// )"
   export  CXXFLAGS="$( echo  $CXXFLAGS  |  sed  s/-funroll-loops// )"
 
+  export    CFLAGS="$CFLAGS -O3"
+  export  CXXFLAGS="$CXXFLAGS -O3"
+
   if    [  "$MMX"  ==  "n"  ]
   then  OPTS="$OPTS  --disable-mmx"
   fi

@@ -12,9 +12,10 @@
     n|N|f|F)  patch  -p1  <  $SCRIPT_DIRECTORY/libdv-no-mxx.patch  ;;
   esac
 
-  ./configure --prefix=/usr  &&
-  make                       &&
-  prepare_install            &&
+  export CFLAGS="$CFLAGS -O3"      && # fix compile issues
+  ./configure --prefix=/usr  $OPTS &&
+  make                             &&
+  prepare_install                  &&
   make    install
 
 ) > $C_FIFO 2>&1
