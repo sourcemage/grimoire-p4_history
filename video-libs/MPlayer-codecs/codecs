@@ -1,5 +1,13 @@
 # codec = Name basename md5 target_dir
-codecs[0]="QuickTime qt6dlls 5ae1ccb43d90f7053761cb9d2c12815c win32"
-codecs[1]="RealPlayer rp9codecs b9eaf74e1d3bafb640131de8e4823e62 RealPlayer8/Codecs"
-codecs[2]="XAnim xanimdlls 1e14862ef2fe2f701cf3fd7afd4f6f1e xanim"
-num_codecs=3
+
+# for now only supports pcc and x86 (we don't have an alpha port yet ;)
+if [ `uname -m` = "ppc" ]; then
+  codecs[0]="RealPlayer rp8codecs-ppc 816b6bbf8cd0082222989b7e87013c9c RealPlayer8/Codecs"
+  codecs[1]="XAnim xanimdlls-ppc cc20d05f95676569e2a406f9b634a648 xanim"
+  num_codecs=2
+else
+  codecs[0]="QuickTime qt6dlls 5ae1ccb43d90f7053761cb9d2c12815c win32"
+  codecs[1]="RealPlayer rp9codecs b9eaf74e1d3bafb640131de8e4823e62 RealPlayer8/Codecs"
+  codecs[2]="XAnim xanimdlls 1e14862ef2fe2f701cf3fd7afd4f6f1e xanim"
+  num_codecs=3
+fi
