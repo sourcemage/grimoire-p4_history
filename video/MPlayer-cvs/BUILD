@@ -5,8 +5,6 @@
 
   if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
     patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch  &&
-    # no fbdev on 2.6 until someone finds a clean way to make it work
-    OPTS="$OPTS --disable-fbdev"
   fi  &&
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch       &&
   patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch  &&
@@ -25,7 +23,8 @@
   
   # temporary work around a configure bug for faad
   touch config.h  &&
-
+  sedit "s/head -/head -n /g" configure &&
+  sedit "s/tail -/tail -n /g" configure &&
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
                $OPTS          &&

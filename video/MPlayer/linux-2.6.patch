@@ -1,0 +1,11 @@
+--- mencoder.c~	2003-12-15 07:05:05.000000000 +0100
++++ mencoder.c	2003-12-15 07:05:23.000000000 +0100
+@@ -72,6 +72,8 @@
+ #ifdef USE_LIBAVCODEC
+ // for lavc audio encoding
+ 
++#undef inline
++#undef __inline
+ #ifdef USE_LIBAVCODEC_SO
+ #include <ffmpeg/avcodec.h>
+ #else
