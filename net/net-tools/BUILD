@@ -1,13 +1,13 @@
 (
 
-  cp  $CONFIG_CACHE/net-tools.config.h     config.h            &&
-  cp  $CONFIG_CACHE/net-tools.config.make  config.make         &&
+  cp  $CONFIG_CACHE/net-tools.config.h     config.h                &&
+  cp  $CONFIG_CACHE/net-tools.config.make  config.make             &&
 
-  make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"  &&
-  prepare_install                                              &&
-  make  BASEDIR=/  install                                     &&
-  install  -m 755  $SCRIPT_DIRECTORY/ifup    /sbin             &&
-  install  -m 755  $SCRIPT_DIRECTORY/ifdown  /sbin
+  make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"      &&
+  prepare_install                                                  &&
+  make  BASEDIR=${INSTALL_ROOT}/  install                          &&
+  install  -m 755  $SCRIPT_DIRECTORY/ifup    ${INSTALL_ROOT}/sbin  &&
+  install  -m 755  $SCRIPT_DIRECTORY/ifdown  ${INSTALL_ROOT}/sbin
 
 ) > $C_FIFO 2>&1  &&  (
 
