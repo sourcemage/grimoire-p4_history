@@ -1,4 +1,9 @@
 (
+ # security fix from http://security.e-matters.de/advisories/012004.html
+ if [ "$CVS" = "no" ]; then
+   patch  -p0  <  ${SOURCE_CACHE}/${SOURCE3}
+ fi  &&
+
  ### had to cook up some pkg-config files for nss and nspr 
   if spell_installed nss
   then export PKG_CONFIG_PATH="/usr/include/nss:/usr/include/nspr" 
