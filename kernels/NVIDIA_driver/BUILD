@@ -11,13 +11,17 @@
 
   if [[ $AGPFW == "y" ]]; then sedit "s/NVreg_EnableAGPFW = 0;/NVreg_EnableAGPFW = 1;/" usr/src/nv/os-registry.c; fi &&
 
-  ( cd usr/src/nv  &&
+  cd usr/src/nv                 &&
+  if [[ $(installed_version linux|cut -d. -f1,2) == 2.5 ]]  ||
+     [[ $(installed_version linux|cut -d. -f1,2) == 2.4 ]]
+  then
     patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
     patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
-    ln  -s  Makefile.kbuild Makefile )
+    ln  -s  Makefile.kbuild Makefile
+  fi                            &&
 
-  prepare_install
-  export IGNORE_CC_MISMATCH=1
+  prepare_install               &&
+  export IGNORE_CC_MISMATCH=1   &&
   make install
 
 ) > $C_FIFO 2>&1
