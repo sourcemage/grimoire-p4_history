@@ -1,16 +1,14 @@
            SPELL=libgail-gnome
-         VERSION=1.0.2
+         VERSION=1.0.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="56bba6a95844888764f670ed722ca098"
-        WEB_SITE=http://developer.gnome.org/projects/gap
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]='a08c5919b26b2a117c6f3a7bf9eaa882'
       LICENSE[0]=LGPL
+        WEB_SITE=http://developer.gnome.org/projects/gap
          ENTERED=20020509
-         UPDATED=20021204
+         UPDATED=20040311
            SHORT="libgail-gnome has something to do with the GNOME A11y Project"
 cat << EOF
 libgail-gnome has something to do with the GNOME Accessability Project.

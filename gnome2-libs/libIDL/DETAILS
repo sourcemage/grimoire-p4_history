@@ -1,16 +1,14 @@
            SPELL=libIDL
-         VERSION=0.8.2
+         VERSION=0.8.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=e260344a67e866457c37f356afbe3cdb
+          MD5[0]='f400e0be73dd7bf97247ba0e9c9d555f'
       LICENSE[0]=LGPL
         WEB_SITE=http://orbit-resource.sourceforge.net
-      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020509
-         UPDATED=20030527
+         UPDATED=20040307
            SHORT="libIDL is a library for creating trees of CORBA IDL files."
 cat << EOF
 libIDL is a library licensed under the GNU LGPL for creating trees of
