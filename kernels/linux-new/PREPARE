@@ -59,15 +59,16 @@ main_menu()
 
 new_tree_menu() 
 {
-	local menu=""
-	versions="`ls -r1 $kernelsdir`"
-	for version in $versions
-	do
-		menu="${menu}${version} Linux_Kernel Select_one "
-	done
-	menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 	while true
 	do
+		menu=""
+		versions="`ls -r1 $kernelsdir`"
+		for version in $versions
+		do
+			menu="${menu}${version} Linux_Kernel Select_one "
+		done
+		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
+
 		kernelver=$( $dialog --title "Select Kernel Version" \
 		--item-help --default-item "$kver" \
 		--cancel-label "Exit and Save" \
@@ -106,9 +107,6 @@ patch_list()
 			;;
 	esac
 	patches="`ls -1 $patchesdir/`"
-	echo "Patch_Version"
-	echo "Info"
-	echo "List"
 	for patch in $patches
 	do
 		tmp="LATEST_$patch"
@@ -146,13 +144,18 @@ patch_menu()
 {
 	while true
 	do
+		menu=$(patch_list $1)
+		if [ "$menu" == "" ]
+		then
+			menu="No_Patches Available Sorry"
+		fi
 		command=$( $dialog --title "Select Patches" \
 			--item-help --cancel-label "Exit and Save"\
 			--menu \
-			"Currently selected patches: $new_patch_list" 0 0 0 $(patch_list $1)
+			"Currently selected patches: $new_patch_list" 0 0 0 ${menu}
 			)
 		retval="$?"
-		if [[ "$retval" == "0" ]]
+		if [[ "$retval" == "0" && "$command" != "No_Patches" ]]
 		then
 			found=false
 			tmp_patch_list=""
@@ -181,7 +184,7 @@ patch_menu()
 
 list_usr_src()
 {
-	local menu=""
+	menu=""
 	linuxsrcs="`ls -1d $BUILD_DIRECTORY/linux-*`"
 	for linuxsrc in $linuxsrcs
 	do
