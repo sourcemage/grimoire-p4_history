@@ -1,59 +1,50 @@
-2003-08-03  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-10-16 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-rc1
+	* BUILD: removed the CFLAGS edits, i don't think they're needed
+	anymore with gcc 3.3.x
+	added LDFLAGS="$LDFLAGS -lm", so xvid detection works
 
-		updated to 1-rc0a
+2003-08-03 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-rc0a
 
-2003-07-17  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-17 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added w32codec as optional_depends
 
-		added w32codec as optional_depends
+2003-05-12 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-beta12
 
-2003-05-12  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-04-29 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-beta11
 
-		updated to 1-beta12
+2003-04-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-beta10
 
-2003-04-29  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-03-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added BUILD file (fixes bug #2973)
 
-		updated to 1-beta11
+2003-03-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-beta9
 
-2003-04-09  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-03-08 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1-beta8
 
-		updated to 1-beta10
+2003-02-26 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* TRIGGERS: removed file (zlib linked dynamically) updated to 1-beta6
+	* DETAILS: updated description
+	* DEPENDS: added lots of optional_depends
 
-2003-03-31  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-11-23 Seth Woolley <seth@tautology.org>
+	* DETAILS: Fixed bug 1716
 
-		added BUILD file (fixes bug #2973)
+2002-10-25 Seth Woolley <seth@tautology.org>
+	* TRIGGERS: Added TRIGGERS file for zlib
+	* DETAILS: UPDATED incremented to force recompile for zlib
 
-2003-03-22  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-08-18 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated from version 0.9.12 to 0.9.13.
 
-		updated to 1-beta9
+2002-06-27 Unet <burududu@hotpop.com>
+	* DETAILS: Updated to 0.9.12
 
-2003-03-08  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 1-beta8
-
-2003-02-26  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		removed TRIGGERS file (zlib linked dynamically)
-		updated to 1-beta6
-		updated description
-		added lots of optional_depends
-
-2002-11-23  Seth Woolley <seth@tautology.org>
-
-                Fixed bug 1716
-
-2002-10-25  Seth Woolley <seth@tautology.org>
-
-                Added TRIGGERS file for zlib
-		UPDATED incremented to force recompile for zlib
-
-2002-08-18  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated from version 0.9.12 to 0.9.13.
-
-2002-06-27  Unet <burududu@hotpop.com>
-	
-		Updated to 0.9.12
-
-2002-06-12  Unet <burududu@hotpop.com>
-	
-		Created this.
+2002-06-12 Unet <burududu@hotpop.com>
+	* ALL: Created this.
