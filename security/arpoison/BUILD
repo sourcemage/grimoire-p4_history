@@ -5,7 +5,7 @@
   make                            &&
   prepare_install                 &&
 
-  cp arpoison /usr/sbin/arpoison  &&
-  cp arpoison.8 /usr/man/man8
+  cp arpoison ${INSTALL_ROOT}/usr/sbin/arpoison  &&
+  cp arpoison.8 ${INSTALL_ROOT}/usr/share/man/man8
 
 ) > $C_FIFO 2>&1
