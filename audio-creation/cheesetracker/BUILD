@@ -1,7 +1,7 @@
 (
 
 export QTDIR=/usr &&
-make &&
-make install
+scons &&
+scons install prefix=/usr
 
 ) > $C_FIFO 2>&1  
