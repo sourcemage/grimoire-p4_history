@@ -1,0 +1,8 @@
+  SPELL_ROOT=/usr/share                                                    &&
+  mkdir  -p  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}                         &&
+  cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/                        &&
+  if [ -d /etc/httpd ]; then
+    cp $SCRIPT_DIRECTORY/postgresql.conf.default /etc/httpd/
+  fi                                                                       &&
+  echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
+
