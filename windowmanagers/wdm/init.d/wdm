@@ -11,7 +11,7 @@ PROVIDES=display_manager
 start() {
   echo "Starting wdm..."
   if [ -e /usr/bin/wdm ]; then
-	  /usr/bin/wdm &
+	  /usr/bin/wdm -config /etc/wdm/wdm-config &
   else
     print_status failure
     exit 1
