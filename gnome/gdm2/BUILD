@@ -11,7 +11,7 @@ OPTS="$OPTS --enable-authentication-scheme=$SCHEME"
 
 LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"
 
-#patch  -p 0  <  $SCRIPT_DIRECTORY/gdm.patch  &&
+patch  -p 1  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch  &&
 
 #default_build                      &&
 
@@ -19,7 +19,7 @@ LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"
               --prefix=/usr        \
               --sysconfdir=/etc    \
               --localstatedir=/var \
-              $OPTS                 &&
+              $OPTS                &&
 
 sedit 's#$(LINK)#$(LINK) $(LIBS)#' daemon/Makefile   &&
 make            &&
