@@ -18,6 +18,8 @@
                --with-answer-all=no   \
                $WITH_PAM              \
                --with-editor=$EDITOR  \
+               --bindir=/bin          \
+               --sbindir=/sbin        \
                $OPTS                  &&
   make                                &&
   prepare_install                     &&
