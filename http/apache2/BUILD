@@ -6,7 +6,6 @@
                --enable-modules=most,max,auth_db,php   			\
                --enable-info                     			\
                --enable-cgi                      			\
-               --disable-auth                    			\
                --enable-layout=GNU               			&&
   make                                           			&&
   prepare_install                                			&&
