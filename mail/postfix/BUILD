@@ -84,6 +84,8 @@
     make install	       				
   fi			       								&&
 
+  installscript postfix.sh								&&
+
   ln  -sf  ../sbin/sendmail   /usr/lib/sendmail  					&&
 
   ln  -sf  postfix/aliases    /etc/aliases						&&
