@@ -1,2 +1,4 @@
-#umount /usr/src/pcmcia-cs-`installed_version pcmcia-cs` &&
-rm -rf /usr/src/pcmcia-cs-`installed_version pcmcia-cs`
+if [ "$PCMCIA" == "y" ] 
+then
+  rm -rf /usr/src/pcmcia-cs-`installed_version pcmcia-cs`
+fi

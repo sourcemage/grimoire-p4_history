@@ -1,33 +1,44 @@
-2003-08-30  Justin Rocha <jrocha@sourcemage.org>
+2003-11-27 Treeve Jelbert <Treeve01@pi.be>
+	* PRE_BUILD POST_INSTALL: fix typo
 
-		Version bump to 0.2.1-pre11
+2003-11-27 Treeve Jelbert <Treeve01@pi.be>
+	* DETAILS: Version bump to 0.2.1-pre15
+	LICENCE=MPL
+	* TRIGGERS: add linux, as the modules are in the kernel
+	* BUILD: add USB support, as I've just got a usb wlan card
+	pcmcia is not needed if you only use usb or pci
+	* CONFIGURE: add
+	* DEPENDS PRE_BUILD POST_INSTALL: pcmcia-cs is optional
+	hotplug is optional
+	* HISTORY: reformatted
 
-2003-04-17  Seth Woolley <seth@tautology.org>
+2003-08-30 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Version bump to 0.2.1-pre11
 
-		md5 unpack arg: warning very much a hack ;)
+2003-04-17 Seth Woolley <seth@tautology.org>
+	* DETAILS: md5 unpack arg: warning very much a hack ;)
 
-2003-04-17  Eric Womack <eric@sourcemage.com>
-		Updated to 0.2.1-pre1
-		Cleaned HISTORY
+2003-04-17 Eric Womack <eric@sourcemage.com>
+	* DETAILS: Updated to 0.2.1-pre1
+	* HISTORY: Cleaned
 
-2003-04-04  M.L. <mlubrano@sourcemage.org>
-                Added missing MD5 on PRE_BUILD file.
+2003-04-04 M.L. <mlubrano@sourcemage.org>
+	* PRE_BUILD: Added missing MD5
 
-2003-02-23  Justin Rocha <jrocha@sourcemage.org>
-		Fixing a little snafoo with the last version bump, as per bug #2625
+2003-02-23 Justin Rocha <jrocha@sourcemage.org>
+	* BUILD: Fixing a little snafoo with the last version bump,
+	 as per bug #2625
 
-2002-10-24  Eric Schabell <eschabell@sourcemage.org>
-		finally, version bump and various changes have 
-		gotten it solved, fixed bug #1393.
+2002-10-24 Eric Schabell <eschabell@sourcemage.org>
+	* DETAILS: finally, version bump 
+	* BUILD: various changes have  gotten it solved, fixed bug #1393.
 
-2002-10-23  Eric Schabell <eschabell@sourcemage.org>
-		still messed up, just update pcmcia version in
-		pre_install file. see bug#1393 (also borked with
-		gcc2 or gcc3).
-		
-2002-10-17  Eric Schabell <eschabell@sourcemage.org>
-	        removed gcc2 file.
+2002-10-23 Eric Schabell <eschabell@sourcemage.org>
+	* PRE_INSTALL: still messed up, just update pcmcia version
+	see bug#1393 (also borked with gcc2 or gcc3).
 
-2002-04-22  Jeff Schmidt <jschmidt@fnal.gov>
-       		Added this History file.
-		
+2002-10-17 Eric Schabell <eschabell@sourcemage.org>
+	* USEGCC2: removed
+
+2002-04-22 Jeff Schmidt <jschmidt@fnal.gov>
+	* HISTORY: Added this History file.
