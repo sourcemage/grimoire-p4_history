@@ -1,6 +1,7 @@
---- Makefile.old	2004-10-08 18:54:39.681392295 +0200
-+++ Makefile	2004-10-08 18:55:10.512462707 +0200
-@@ -388,8 +388,7 @@
+diff -urpN udev-038.orig/Makefile udev-038/Makefile
+--- udev-038.orig/Makefile	2004-10-15 13:20:14.560018248 -0700
++++ udev-038/Makefile	2004-10-15 13:20:36.005758000 -0700
+@@ -413,8 +413,7 @@ uninstall-man:
  	- rm $(mandir)/man8/udevd.8
  	- rm $(mandir)/man8/udevsend.8
  
@@ -10,7 +11,7 @@
  	$(INSTALL) -d $(DESTDIR)$(hotplugdir)
  	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
  	$(INSTALL_PROGRAM) -D $(DAEMON) $(DESTDIR)$(sbindir)/$(DAEMON)
-@@ -400,10 +399,6 @@
+@@ -425,10 +424,6 @@ install: install-initscript install-conf
  	- ln -f -s $(sbindir)/udev $(DESTDIR)$(sbindir)/$(STARTER)
  	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
  	- ln -f -s $(sbindir)/$(WAIT) $(DESTDIR)$(hotplugdir)/05-wait_for_sysfs.hotplug
