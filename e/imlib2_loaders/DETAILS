@@ -1,0 +1,17 @@
+           SPELL=imlib2_loaders
+         VERSION=1.0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+        WEB_SITE=http://enlightenment.org
+         ENTERED=20011101
+         UPDATED=20020510
+	MD5[0]=095bcbc32ff1f3f384e3265c1355571d
+	LICENSE[0]=GPL
+	MAINTAINER=unet@sourcemage.org
+           SHORT="imlib2_loaders contains loaders for imlib2."
+cat << EOF
+This package contains image loader plugins for Imlib 2 that are not
+dis-tributed together with the Imlib 2 package itself. More about 
+Imlib 2 can be found on http://www.rasterman.com/imlib.html.
+EOF
