@@ -1,11 +1,12 @@
            SPELL=ewl
-         VERSION=cvs
+         VERSION=$(date +%Y%m%d)
        BUILD_API=2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/ewl
           MD5[0]=IGNORE
       LICENSE[0]=BSD
+  FORCE_DOWNLOAD=on
         WEB_SITE=http://www.enlightenment.org/pages/ewl.html
          ENTERED=20040311
          UPDATED=20040311
