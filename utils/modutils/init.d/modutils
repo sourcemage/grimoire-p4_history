@@ -24,13 +24,12 @@ if  [  -x  /sbin/depmod  ];  then
 fi
 
 if [ -e /etc/modules ] && [ -x /sbin/modprobe ] ; then
-  echo  "Loading modules..."
-  ( cat  /etc/modules;  echo ) |
+  ( cat  /etc/modules;  builtin echo ) |
   while  read  MODULE ARGS;  do
     case  $MODULE in
       \#*|"")  continue  ;;
     esac
-    echo "  $MODULE"
+    echo "Loading module $MODULE..."
     loadproc modprobe  $MODULE  $ARGS
   done
 fi
