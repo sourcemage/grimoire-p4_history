@@ -1,11 +1,11 @@
            SPELL=thunderbird
-          VERSION=0.8
-          SOURCE=$SPELL-source-$VERSION.tar.bz2
+          VERSION=0.9
+          SOURCE=$SPELL-$VERSION-source.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/mozilla
-   SOURCE_URL[0]=http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/0.8/$SOURCE
-          MD5[0]=3c2b51b1e64c0a77cc0d70a2b74f6641
+   SOURCE_URL[0]=http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$VERSION/$SOURCE
+          MD5[0]=6f7120f837e4b1d04e9004a573f4ee2a
 if  [  "$CRYPTO"  ==  "y"  ];  then
-ENIGMAIL_VERSION=0.86.1
+ENIGMAIL_VERSION=0.89.0
      IPC_VERSION=1.1.1
          SOURCE2=enigmail-$ENIGMAIL_VERSION.tar.gz
          SOURCE3=ipc-$IPC_VERSION.tar.gz
@@ -17,7 +17,7 @@ E2
   SOURCE3_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE3
   SOURCE3_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURC
 E3
-          MD5[1]=49cda8acb10c067f766ff01801f3ab42
+          MD5[1]=6e1fac67b7b5c84d34eb56d845af4ff5
           MD5[2]=94195ec692a0c99ebf4876aec73cfd4f
       LICENSE[1]=MPL
       LICENSE[2]=MPL
@@ -26,6 +26,7 @@ fi
          ENTERED=20041028
          UPDATED=20041028
       LICENSE[0]=MOZILLA
+      MAKE_NJOBS=1
        BUILD_API=2
            SHORT="Mozilla Mail Client"
 cat << EOF
