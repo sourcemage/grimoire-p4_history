@@ -34,10 +34,11 @@ optional_depends  "xosd"                  \
                   "--disable-xosd"        \
                   "for xosd interface"    &&
 
-optional_depends  "MOZILLA-BROWSER"       \
-                  "--enable-mozilla"      \
-                  "--disable-mozilla"     \
-                  "for a mozilla plugin"  &&
+# doesn't compile with any of our mozilla versions
+#optional_depends  "MOZILLA-BROWSER"       \
+#                  "--enable-mozilla"      \
+#                  "--disable-mozilla"     \
+#                  "for a mozilla plugin"  &&
 
 # control plugins
 optional_depends  "lirc"                  \
@@ -96,7 +97,7 @@ optional_depends  "a52dec"                 \
 optional_depends  "libmad"                 \
                   "--enable-mad"           \
                   "--disable-mad"          \
-                  "for mad mp3 decoder"    &&
+                  "for fixed point mp3 decoder"  &&
 
 optional_depends  "libvorbis"              \
                   "--enable-vorbis"        \
