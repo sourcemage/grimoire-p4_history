@@ -1,1 +1,5 @@
-depends  ncurses 
+depends  ncurses  &&
+optional_depends "curl"              \
+                 ""                   \
+                 "--disable-msn"      \
+                 "curl required for msn support"
