@@ -13,6 +13,13 @@
 	# now we delete all files so that nothing is picked for documentation
 	# and duplicated in /usr/doc/$SPELL
 	# bugzilla refers to docs/ URI in the bug submission page anyway
-	rm    -fr *
+	rm    -fr *                                    &&
+
+	# still, it's good to have docs
+	if [ -d /usr/doc/$SPELL ]; then
+		rm -fr /usr/doc/$SPELL/
+	fi                                             &&
+	ln -nsf /usr/share/$SPELL/docs /usr/doc/$SPELL &&
+	chmod -R 755 /usr/doc/$SPELL
     
 ) > $C_FIFO 2>&1

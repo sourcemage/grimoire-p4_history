@@ -28,5 +28,5 @@
   if [ ! -f /etc/mailman/mm_cfg.py ];  then
     mv  /usr/share/mailman/Mailman/mm_cfg.py  /etc/mailman
   fi
-  ln  -sf  /etc/mailman/mm_cfg.py  /usr/share/mailman/Mailman
+  ln  -nsf  /etc/mailman/mm_cfg.py  /usr/share/mailman/Mailman
 )
