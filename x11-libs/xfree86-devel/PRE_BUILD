@@ -13,7 +13,7 @@ for p in ${PATCH_SOURCES[*]}
     SUM=$(bzip2 -cd $SOURCE_CACHE/$p | md5sum | cut -d ' ' -f 1)                          &&
     if [ "$SUM" != "${MD5[$((INDEX++))]}" ]
        then message "${PROBLEM_COLOR}Integrity check for patch $p failed${DEFAULT_COLOR}" &&
-            exit 1  # in a loop, '&&' thingy doesn't do what it's supposed to
+            return 1  # in a loop, '&&' thingy doesn't do what it's supposed to
     fi                                                                                    &&
     message "${MESSAGE_COLOR}Applying patch $p...${DEFAULT_COLOR}"                        &&
     if ! bzip2 -cd $SOURCE_CACHE/$p | patch -N -p1 -s; then

@@ -8,7 +8,7 @@ get_dir()
   done
   if ! [ -d "$DIR" ] ; then
     if  ! query "Directory doesn't exist. Create it?" "n" ; then
-      exit
+      return 1
     fi
   fi
     
