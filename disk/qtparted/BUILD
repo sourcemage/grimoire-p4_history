@@ -1,9 +1,4 @@
-(
-
-  # don't assume a specific automake version
-  sedit  's/-${am__api_version}//'  configure
-
-  OPTS="$OPTS --enable-static=no" &&
-  default_build
-
-) > $C_FIFO 2>&1
+# don't assume a specific automake version
+sedit  's/-${am__api_version}//'  configure &&
+OPTS="$OPTS --enable-static=no" &&
+default_build
