@@ -1,5 +1,6 @@
 # This is an adaptation of a script i found on xmlsoft.org
 #                                Jon Svendsen
+# 2003-09-13: remove the backwards compat options (Arwed v. Merkatz)
 
 ROOTCATALOG=/etc/xml/catalog
 CATALOG=/etc/xml/docbook
@@ -113,3 +114,7 @@ xmlcatalog --noout --del \
     "ISO 8879:1986" \
     $ROOTCATALOG
 
+# remove backwards compatibility
+xmlcatalog --noout --del \
+    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    $CATALOG

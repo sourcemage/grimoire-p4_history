@@ -1,5 +1,7 @@
 # This is an adaptation of a script i found on xmlsoft.org
 #                                Jon Svendsen
+# 2003-09-13: added backwards compatibility options, fixes the eons long
+#             scrollkeeper delays (Arwed v. Merkatz)
 
 ROOTCATALOG=/etc/xml/catalog
 CATALOG=/etc/xml/docbook
@@ -194,3 +196,10 @@ xmlcatalog --noout --add "delegatePublic" \
     "ISO 8879:1986" \
     "file://$CATALOG" $ROOTCATALOG
 
+# add backwards compatiblity options
+xmlcatalog --noout --add "rewriteSystem" \
+    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    "file://$docbookdir" $CATALOG
+xmlcatalog --noout --add "rewriteURI" \
+    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    "file://$docbookdir" $CATALOG
