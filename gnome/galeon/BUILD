@@ -1,9 +1,9 @@
 (
 
-  ./configure  --prefix=/usr               \
-               --sysconfdir=/etc           \
-               --disable-werror            \
-               --with-mozilla-snapshot=1.3 \
+  ./configure  --prefix=${INSTALL_ROOT}/usr     \
+               --sysconfdir=${INSTALL_ROOT}/et  \
+               --disable-werror                 \
+               --with-mozilla-snapshot=1.3      \
                $OPTS                       &&
   make                                     &&
   prepare_install                          &&
