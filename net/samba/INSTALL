@@ -18,8 +18,8 @@ then
   echo  "Installing nsswitch/libnss_winbind.so to /lib"                  &&
   cp  source/nsswitch/libnss_winbind.so  /lib                            &&
   echo  "Symlinking /lib/libnss_winbind.so.2 to /lib/libnss_winbind.so"  &&
-  ln  -s  /lib/libnss_winbind.so                                         \
-          /lib/libnss_winbind.so.2
+  ln  -sf  /lib/libnss_winbind.so                                        \
+           /lib/libnss_winbind.so.2
 fi  &&
 
 if  [  -f  source/nsswitch/libnss_wins.so  ]
@@ -27,8 +27,8 @@ then
   echo  "Installing nsswitch/libnss_wins.so to /lib"               &&
   cp  source/nsswitch/libnss_wins.so  /lib                         &&
   echo  "Symlinking /lib/libnss_wins.so.2 to /lib/libnss_wins.so"  &&
-  ln  -s  /lib/libnss_wins.so                                      \
-          /lib/libnss_wins.so.2
+  ln  -sf  /lib/libnss_wins.so                                     \
+           /lib/libnss_wins.so.2
 fi  &&
 
 cp  -f  examples/smb.conf.default  /etc/samba/  &&
