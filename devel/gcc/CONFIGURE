@@ -18,7 +18,7 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   then  LANG="$LANG,objc"
   fi
 
-  if    query  "Install fixed includes?"  y
+  if    query  "Install fixed includes (might cause problems)?"  n
   then  echo  'FIXEDINCLS="yes"'  >>  $SPELL_CONFIG
   fi
 
