@@ -1,7 +1,7 @@
 (
 
   if  !  spell_installed  linuxdoc-tools  ||
-      !  spell_installed  teTeX;          then
+      !  spell_installed  tetex;          then
     export  HAVE_SGML2LATEX=no
   fi
 

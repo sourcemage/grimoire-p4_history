@@ -1,16 +1,16 @@
-           SPELL=ABC2PS
+           SPELL=abc2ps
          VERSION=1.3.3
-          SOURCE=$SPELL-$VERSION.tar.Z
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=ABC2PS-$VERSION.tar.Z
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ABC2PS-$VERSION
    SOURCE_URL[0]=http://www.ihp-ffo.de/~msm/abc_src/$SOURCE
           MD5[0]=d6b6f91146d7cd94bb661ef64db58b02
         WEB_SITE=http://www.ihp-ffo.de/~msm/
          ENTERED=20020730
          UPDATED=20020730
-         LICENSE=GPL
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="Processes abc files into Postscript"
 cat << EOF
-
 abc is a language designed to notate tunes in an ascii format. It was
 designed primarily for folk and traditional tunes of Western European origin
 (such as English, Irish and Scottish) which can be written on one stave in
@@ -30,6 +30,4 @@ of the notation makes it fairly easy to notate tunes. In addition, the ability
 to write music in abc notation means that it can be easily and portably stored
 or transported electronically hence enabling the discussion and dissemination
 of music via email.
-
-
 EOF

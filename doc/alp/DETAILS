@@ -1,9 +1,8 @@
-           SPELL=ALP
+           SPELL=alp
          VERSION=200106
-       BUILD_API=2
           SOURCE=advanced-linux-programming.pdf
          SOURCE2=ALP-listings.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ALP
    SOURCE_URL[0]=http://www.advancedlinuxprogramming.com/$SOURCE
   SOURCE2_URL[0]=http://www.advancedlinuxprogramming.com/$SOURCE2
           MD5[0]=5e722dc5dfcde263ea06fa193e9f61b4
@@ -12,8 +11,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
          ENTERED=20020408
          UPDATED=20020408
          ARCHIVE="off"
-      MAINTAINER=djcomputer@gmx.net
-         LICENSE=OPL
+      LICENSE[0]=OPL
+       BUILD_API=2
            SHORT="Advanced Linux Programming (PDF book)"
 cat << EOF
 If you are a developer for the GNU/Linux system, this book

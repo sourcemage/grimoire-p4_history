@@ -1,13 +1,14 @@
-           SPELL=OpenSP
+           SPELL=opensp
          VERSION=1.5.1
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=OpenSP-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/OpenSP-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/openjade/$SOURCE
           MD5[0]=9020e0393031dc286d699dd323dd88a8
         WEB_SITE=http://openjade.sourceforge.net
          ENTERED=20030713
          UPDATED=20030713
-         LICENSE=BSD
+      LICENSE[0]=BSD
+       BUILD_API=2
            SHORT="The OpenJade Group's SGML and XML parsing tools"
 cat << EOF
 This package is a collection of SGML/XML tools called OpenSP. It is a fork from

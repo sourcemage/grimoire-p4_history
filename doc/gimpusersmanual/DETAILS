@@ -1,9 +1,8 @@
-           SPELL=GimpUsersManual
+           SPELL=gimpusersmanual
          VERSION=SecondEdition
-       BUILD_API=2
-          SOURCE=${SPELL}_${VERSION}-PDF.pdf
-         SOURCE2=${SPELL}_${VERSION}-PDF_Color.pdf
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL
+          SOURCE=GimpUsersManual_${VERSION}-PDF.pdf
+         SOURCE2=GimpUsersManual_${VERSION}-PDF_Color.pdf
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/GimpUsersManual
    SOURCE_URL[0]=ftp://manual.gimp.org/pub/manual/$SOURCE
    SOURCE_URL[1]=http://www.mirror.ac.uk/sites/manual.gimp.org/pub/manual/$SOURCE
   SOURCE2_URL[0]=ftp://manual.gimp.org/pub/manual/$SOURCE2
@@ -14,7 +13,8 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL
          ENTERED=20020601
          UPDATED=20020601
          ARCHIVE="off"
-         LICENSE=OPL
+      LICENSE[0]=OPL
+       BUILD_API=2
            SHORT="The Official GIMP manual"
 cat << EOF
 The Official GIMP manual

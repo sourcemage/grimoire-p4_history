@@ -10,7 +10,7 @@ export CC=gcc   			              &&
                --includedir=${INSTALL_ROOT}/usr/local/include \
                $OPTS                                  &&
   make                                                &&
-if spell_installed teTeX ; 
+if spell_installed tetex ; 
 then cd gettext-tools/doc &&
      make dvi  &&
      make ps   &&
@@ -26,7 +26,7 @@ fi  &&
   rm ${INSTALL_ROOT}/usr/local/include/libintl.h &&
   mv ${INSTALL_ROOT}/usr/local/include/{autosprintf.h,gettext-po.h} \
      ${INSTALL_ROOT}/usr/include/       &&
-if spell_installed teTeX ; 
+if spell_installed tetex ; 
 then cd gettext-tools/doc &&  
   make    install-pdf     &&
   make    install-ps      &&

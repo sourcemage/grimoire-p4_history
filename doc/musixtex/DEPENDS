@@ -1,6 +1,26 @@
-depends teTeX
-optional_depends    "musixlyr"  ""  ""  "for easier lyric support"
-optional_depends    "musixps"   ""  ""  "for postscript fonts"
-optional_depends    "musixpss"  ""  ""  "for postscript slurs"
-optional_depends    "musixser"  ""  ""  "for voice wise entery of multi-voice music"
-optional_depends    "pmx"       ""  ""  "A MusixTeX Pre-processor"
+depends  tetex  &&
+
+optional_depends  musixlyr                    \
+                  ""                          \
+                  ""                          \
+                  "for easier lyric support"  &&
+
+optional_depends  musixps                 \
+                  ""                      \
+                  ""                      \
+                  "for postscript fonts"  &&
+
+optional_depends  musixpss                \
+                  ""                      \
+                  ""                      \
+                  "for postscript slurs"  &&
+
+optional_depends  musixser                                      \
+                  ""                                            \
+                  ""                                            \
+                  "for voice wise entery of multi-voice music"  &&
+
+optional_depends  pmx                         \
+                  ""                          \
+                  ""                          \
+                  "A MusixTeX Pre-processor"
