@@ -1,6 +1,8 @@
 2005-01-06 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* DEPENDS: added --disable-arts switch to optional_depends kdemultimedia
-	  so it's possible to build without arts installed
+	* DEPENDS: added --without-arts switch to optional_depends kdemultimedia
+	  so it's possible to build without arts installed,
+	  added optional_depends on kdebase
+	* BUILD: fix Makefiles to make it build if kdebase isn't installed
 
 2004-12-09 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
 	* Updated to 1.2-beta2
