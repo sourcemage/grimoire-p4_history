@@ -2,7 +2,7 @@ MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
 export MOZ_PHOENIX=1                         &&
 
 # Patches for freetype 2.1.8 and gcc 3.4
-patch -p0 < $SCRIPT_DIRECTORY/firefox-pkgconfig.diff &&
+patch -p1 < $SCRIPT_DIRECTORY/firefox-pkgconfig.diff &&
 patch -p0 < $SCRIPT_DIRECTORY/freetype.patch &&
 # patch -p0<$SCRIPT_DIRECTORY/nsRegion.patch
 
