@@ -1,0 +1,14 @@
+--- src/xine_interface.cxx.orig	2004-07-08 19:29:29.816800023 +0200
++++ src/xine_interface.cxx	2004-07-08 19:32:58.969142417 +0200
+@@ -163,9 +163,9 @@
+ 			 xine_get_input_plugin_description (xine_data->xine,
+ 							    autoscan_plugins
+ 							    [i]));
+-		(const char *const) auto_plugins[i].plugin_id =
++		auto_plugins[i].plugin_id = (char *)
+ 			autoscan_plugins[i];
+-		(const char *) auto_plugins[i].plugin_desc =
++		auto_plugins[i].plugin_desc = (char *)
+ 			xine_get_input_plugin_description (xine_data->xine,
+ 							   autoscan_plugins
+ 							   [i]);

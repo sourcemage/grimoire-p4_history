@@ -1,14 +1,8 @@
-(
+mkdir  config
+echo  /usr  >  config/PREFIX
+echo  /usr  >  config/QTDIR
 
-  mkdir  config
-  echo  /usr  >  config/PREFIX
-  echo  /usr  >  config/QTDIR
-
-  sedit  "s:qtdir+'/include':qtdir+'/include/qt':"  SConstruct.py  &&
-  sedit  "s/install: all/install:/"     Makefile  &&
-  sedit  "s/cp uninstall_emotion.*$//"  Makefile  &&
-  make             &&
-  prepare_install  &&
-  make    install
-
-) > $C_FIFO 2>&1
+sedit  "s:qtdir+'/include':qtdir+'/include/qt':"  SConstruct.py  &&
+sedit  "s/install: all/install:/"     Makefile  &&
+sedit  "s/cp uninstall_emotion.*$//"  Makefile  &&
+make
