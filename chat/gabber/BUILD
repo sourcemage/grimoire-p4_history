@@ -1,7 +1,8 @@
 (
   ./configure  --prefix=/usr      \
                --sysconfdir=/etc  \
-               --enable-optimize  &&
+               --enable-optimize  \
+               $OPTS              &&
   sedit  "s/-I\/usr\/include //g" Makefile &&
   sedit  "s/-I\/usr\/include //g" src/Makefile &&
   make                            &&
