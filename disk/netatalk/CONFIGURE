@@ -1,12 +1,71 @@
-if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
 
-  if  query  "Enable timelord? (time server) " n;  then
-    echo  'OPTS="$OPTS --enable-timelord"'  >>  $SPELL_CONFIG
-  fi
-  if  query  "Disable valid shell check?" n; then
-    echo  'OPTS="$OPTS --disable-shell-check"' >> $SPELL_CONFIG
+  if  query  "Enable admin group"? y;  then
+    echo  'OPTS="$OPTS  --enable-admin-grou"'    >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-admin-group"'  >>  ${SPELL_CONFIG}
   fi
 
-  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+  if  query  "Enable timelord? (time server)" n;  then
+    echo  'OPTS="$OPTS  --enable-timelord"'  >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-timelord"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable valid shell check?" n;  then
+    echo  'OPTS="$OPTS  --enable-shell-check"'   >> ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-shell-check"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable filename mangling?" n;  then
+    echo  'OPTS="$OPTS  --with-mangling"'     >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --without-mangling"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable CNID with Concurrent Data Store?" n;  then
+    echo  'OPTS="$OPTS  --with-cdb"'     >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --without-cdb"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable flock locks support?" n;  then
+    echo  'OPTS="$OPTS  --with-flock-locks"'     >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --without-flock-locks"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable AFS support?" n;  then
+    echo  'OPTS="$OPTS  --enable-afs"'   >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-afs"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable ddp?" y;  then
+    echo  'OPTS="$OPTS  --enable-ddp"'   >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-ddp"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable the EXPERIMENTAL dropbox fix (INSECURE!)?" n;  then
+    echo  'OPTS="$OPTS  --enable-dropkludge"'   >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-dropkludge"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Enable debug code?" n;  then
+    echo  'OPTS="$OPTS  --enable-debug"'   >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-debug"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Allow forcing of uid/gid per volume  (BROKEN!)?" n;  then
+    echo  'OPTS="$OPTS  --enable-force-uidgid"'   >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="$OPTS  --disable-force-uidgid"'  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
 
 fi

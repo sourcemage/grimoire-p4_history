@@ -1,3 +1,23 @@
+2003-04-22  Eric Sandall <eric@sandall.us>
+
+		Updated to 1.6.2  (Bug #3186, thanks to Marc Greene)
+
+		Added more optional_depends
+
+		Removed Linux-PAM check from BUILD as it's now taken
+		care of in DEPENDS
+
+		Added more CONFIGURE options
+
+		Changed Disable to Enable for shell check to match
+		the other queries
+
+		Added --enable-redhat for RH-type sysv configuration
+		to BUILD, as I belive this is what we use.  Other 
+		options were: suse, cobalt, or netbsd
+
+		Added --enable-fhs for FHS compatibility to BUILD
+
 2003-03-31  Eric Sandall <eric@sandall.us>
 
 		Updated to use sorcery's init.d
