@@ -1,15 +1,18 @@
            SPELL=ruby
-         VERSION=1.6.8
+         VERSION=1.8.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.ruby-lang.org/pub/ruby/$SOURCE
-          MD5[0]=85a2f576c8a7508d35e4bc2e05202096
-      LICENSE[0]=GPL
+   SOURCE_URL[1]=ftp://xyz.lcs.mit.edu/pub/ruby/$SOURCE
+   SOURCE_URL[2]=ftp://www.ibiblio.org/pub/languages/ruby/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.mirror.ac.uk/sites/helium.ruby-lang.org/ruby/$SOURCE
+          MD5[0]=efe6091f28055d1a9190e05c573391d3
         WEB_SITE=http://www.ruby-lang.org
-           SHORT="Ruby is a scripting language"
          ENTERED=20020106
          UPDATED=20020310
+      LICENSE[0]=GPL
       MAINTAINER=nhudson@hiwaay.net
+           SHORT="Ruby is a scripting language"
 cat << EOF
 Ruby is the interpreted scripting language for quick and easy
 object-oriented programming.  It has many features to process text files
