@@ -12,7 +12,9 @@
     unpack $FFMPEGSOURCE
     echo "building ffmpeg-$FFMPEGVERSION ..."
     cd ffmpeg
-    ./configure
+    export    CFLAGS="$CFLAGS -O3"   # -O3 safeguard.
+    export  CXXFLAGS="$CXXFLAGS -O3"
+    ./configure  $OPTS
     make -C libavcodec
     cd ..
     OPTS="$OPTS --enable-ffmpeg --with-ffmpeg-tree=./ffmpeg"
