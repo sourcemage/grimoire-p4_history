@@ -46,6 +46,11 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2005-03-31  Arjan Bouter <abouter@sourcemage.org>
+#     - updated wifi the wifi support to be a full submenu
+#     - added cfg_wifi_{nwid,essid,rate,security}
+#     - version 1.6
+#
 # 2004-12-08  Arjan Bouter <abouter@sourcemage.org>
 #     - added WIFI settings
 #     - added cfg_wifi
@@ -220,7 +225,7 @@
 #        HOSTSFN: name of file containing hosts
 #       RESOLVFN: name of file containing nameservers
 #
-NETCONFVERSION='1.5'
+NETCONFVERSION='1.6'
 ROOTCHECK=1
 NETDEVDIR=/etc/sysconfig/network
 HOSTNAMEFN=/etc/hostname
@@ -649,7 +654,11 @@ function check_devdir() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
-## @Global    WIFI: wifi settings passed to iwconfig.<br>
+## @Global    WIFI_NWID: wifi network-id.<br>
+## @Global    WIFI_ESSID: wifi ssid.<br>
+## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_SECMODE: wifi security mode.<br>
+## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 #---
 function loadnetdev() {
@@ -660,7 +669,9 @@ function loadnetdev() {
 
 	local devname
 
-	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU WIFI UP_ON_BOOT
+	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU \
+              WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_SECMODE WIFI_ENCKEY \
+              UP_ON_BOOT
 
 	devname=$(get_basename $1 .dev)
 
@@ -672,7 +683,6 @@ function loadnetdev() {
 		MODE='dynamic'
 		POINTOPOINT=''
 		MTU=''
-		WIFI=''
 		UP_ON_BOOT='yes'
 	fi
 
@@ -958,27 +968,190 @@ function cfg_mtu() {
 	return 0
 }
 
+#--- cfg_wifi_nwid()
+##
+## Sets the wifi Network ID
+##
+## @Global    WIFI_NWID: wifi network-id.<br>
+## @External  dialog
+#---
+function cfg_wifi_nwid() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure NetworkID"              \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Enter the name of the network"            \
+	                 0 0 ${WIFI_NWID}`
+
+	if [ $? -eq 0 ]; then
+		WIFI_NWID="${COMMAND}"
+	fi
+}
+
+#--- cfg_wifi_essid()
+##
+## This sets the ssid of the network
+##
+## @Global    WIFI_ESSID: wifi ssid.<br>
+## @External  dialog
+#---
+function cfg_wifi_essid() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure SSID"                   \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Enter the ssid of the network" \
+	                 0 0 ${WIFI_ESSID}`
+
+	if [ $? -eq 0 ]; then
+		WIFI_ESSID="${COMMAND}"
+	fi
+}
+
+#--- cfg_wifi_rate()
+##
+## This sets the maximum bitrate
+##
+## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @External  dialog
+#---
+function cfg_wifi_rate() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure the bitrate"            \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Enter maximum bitrate of the network (examples: 5,5 11 or 54)" \
+	                 0 0 ${WIFI_RATE}`
+
+	if [ $? -eq 0 ]; then
+		WIFI_RATE="${COMMAND}"
+	fi
+}
+
+#--- cfg_wifi_secmode()
+##
+## The wifi security mode
+##
+## @Global    WIFI_SECMODE: wifi security mode.<br>
+## @External  dialog
+#---
+function cfg_wifi_secmode() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure the bitrate"            \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_BACK"               \
+	                 --menu                                     \
+	                 "Select the security mode"                 \
+	                 0 0 0                                      \
+                         "1"	"Open (default)"                    \
+			 "2"	"Restricted"`
+
+	if [ $? -eq 0 ]; then
+		case $COMMAND in
+			'1') WIFI_SECMODE="open" ;;
+			'2') WIFI_SECMODE="restricted" ;;
+		esac
+	fi
+}
+
+#--- cfg_wifi_enckey()
+##
+## This sets the encryption key
+##
+## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @External  dialog
+#---
+function cfg_wifi_enckey() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure the bitrate"            \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Encryption key (hexadecimal)" \
+	                 0 0 ${WIFI_ENCKEY}`
+
+	if [ $? -eq 0 ]; then
+		WIFI_ENCKEY="${COMMAND}"
+	fi
+}
+
+#--- cfg_wifi_security()
+##
+## The wifi security submenu
+##
+## @External  dialog
+#---
+function cfg_wifi_security() {
+  true
+  while [ $? -eq 0 ]; do
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Select the crypto options"            \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --menu                                                \
+	                 "The security settings" \
+	                 0 0 0 \
+			 "1" "Security mode (enc)" \
+			 "2" "Encryption key (key)" `
+
+	if [ $? != 0 ]; then
+		# Exit
+		return 0
+	fi
+
+	if [ $? -eq 0 ]; then
+		case $COMMAND in
+			'1') cfg_wifi_secmode ;;
+			'2') cfg_wifi_enckey ;;
+		esac
+	fi
+    done
+}
+
 #--- cfg_wifi()
 ##
-## Prompts user to set wifi settings
+## The wifi settings submenu
 ##
-## @Global    WIFI: wifi settings passed to iwconfig.<br>
 ## @External  dialog
 #---
 function cfg_wifi() {
-	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
-	                 --stdout                                                  \
-	                 --title "Configure WIFI"                                   \
-	                 --ok-label       "$BTN_ACCEPT"                            \
-	                 --cancel-label   "$BTN_CANCEL"                            \
-	                 --inputbox                                                \
-	                 "Enter the settings for the wifi network. These will be passed to iwconfig" \
-	                 0 0 $WIFI`
+    while [ $? -eq 0 ]; do
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                      \
+	                 --stdout                                      \
+	                 --title "Configure WIFI"                      \
+	                 --ok-label       "$BTN_SELECT"                \
+	                 --cancel-label   "$BTN_BACK"                  \
+	                 --menu                                        \
+	                 "The settings for the wifi network. These will be passed to iwconfig" \
+	                 0 0 0 \
+			 "1" "Network or Domain ID, nwid" \
+			 "2" "Network name, essid" \
+			 "3" "Bitrate ,rate" \
+			 "4" "Security menu" `
+
+	if [ $? != 0 ]; then
+		# Exit
+		return 0
+	fi
 
 	if [ $? -eq 0 ]; then
-		WIFI=\"$COMMAND\"
+		case $COMMAND in
+			'1') cfg_wifi_nwid ;;
+			'2') cfg_wifi_essid ;;
+			'3') cfg_wifi_rate ;;
+			'4') cfg_wifi_security ;;
+		esac
 	fi
-	return 0
+  done
 }
 
 #--- toggle_boot()
@@ -1094,7 +1267,11 @@ function confirm_save() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
-## @Global    WIFI: wifi settings passed to iwconfig<br>
+## @Global    WIFI_NWID: wifi network-id.<br>
+## @Global    WIFI_ESSID: wifi ssid.<br>
+## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_SECMODE: wifi security mode.<br>
+## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  cat, date
 #---
@@ -1119,9 +1296,24 @@ NETMASK=${NETMASK}
 GATEWAY=${GATEWAY}
 POINTOPOINT=${POINTOPOINT}
 MTU=${MTU}
-WIFI=${WIFI}
 UP_ON_BOOT=${UP_ON_BOOT}
 EOF
+
+	if [ ! -z ${WIFI_NWID} ]; then
+		echo "WIFI_NWID=\"${WIFI_NWID}\"" >> $1
+	fi
+	if [ ! -z ${WIFI_ESSID} ]; then
+		echo "WIFI_ESSID=\"${WIFI_ESSID}\"" >> $1
+	fi
+	if [ ! -z ${WIFI_RATE} ]; then
+		echo "WIFI_RATE=\"${WIFI_RATE}\"" >> $1
+	fi
+	if [ ! -z ${WIFI_SECMODE} ]; then
+		echo "WIFI_SECMODE=\"${WIFI_SECMODE}\"" >> $1
+	fi
+	if [ ! -z ${WIFI_ENCKEY} ]; then
+		echo "WIFI_ENCKEY=\"${WIFI_ENCKEY}\"" >> $1
+	fi
 
 }
 
@@ -1145,7 +1337,11 @@ EOF
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
-## @Global    WIFI: wifi settings passed to iwconfig<br>
+## @Global    WIFI_NWID: wifi network-id.<br>
+## @Global    WIFI_ESSID: wifi ssid.<br>
+## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_SECMODE: wifi security mode.<br>
+## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  date
 #---
@@ -1170,7 +1366,31 @@ function save_update() {
 	cat_or_sedit "^GATEWAY=.*" "GATEWAY=${GATEWAY}" $1
 	cat_or_sedit "^POINTOPOINT=.*" "POINTOPOINT=${POINTOPOINT}" $1
 	cat_or_sedit "^MTU=.*" "MTU=${MTU}" $1
-	cat_or_sedit "^WIFI=.*" "WIFI=${WIFI}" $1
+	if [ ! -z ${WIFI_NWID} ]; then
+	  cat_or_sedit "^WIFI_NWID=.*" "WIFI_NWID=\"${WIFI_NWID}\"" $1
+	else
+	  sed -i '/^WIFI_NWID=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_ESSID} ]; then
+	  cat_or_sedit "^WIFI_ESSID=.*" "WIFI_ESSID=\"${WIFI_ESSID}\"" $1
+	else
+	  sed -i '/^WIFI_ESSID=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_RATE} ]; then
+	  cat_or_sedit "^WIFI_RATE=.*" "WIFI_RATE=\"${WIFI_RATE}\"" $1
+	else
+	  sed -i '/^WIFI_RATE=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_SECMODE} ]; then
+	  cat_or_sedit "^WIFI_SECMODE=.*" "WIFI_SECMODE=\"${WIFI_SECMODE}\"" $1
+	else
+	  sed -i '/^WIFI_SECMODE=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_ENCKEY} ]; then
+	  cat_or_sedit "^WIFI_ENCKEY=.*" "WIFI_ENCKEY=\"${WIFI_ENCKEY}\"" $1
+	else
+	  sed -i '/^WIFI_ENCKEY=.*/d' $1
+	fi
 	cat_or_sedit "^UP_ON_BOOT=.*" "UP_ON_BOOT=${UP_ON_BOOT}" $1
 
 }
@@ -1243,7 +1463,11 @@ function add_device() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
-## @Global    WIFI: wifi settings passed to iwconfig<br>
+## @Global    WIFI_NWID: wifi network-id.<br>
+## @Global    WIFI_ESSID: wifi ssid.<br>
+## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_SECMODE: wifi security mode.<br>
+## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  dialog
 #---
@@ -1273,12 +1497,6 @@ function cfg_device() {
 			dmtu=$MTU
 		fi
 
-		if [ -z "$WIFI" ]; then
-			dwifi="No wifi settings"
-		else
-			dwifi=$WIFI
-		fi
-
 		if [ -z "$POINTOPOINT" ]; then
 			dpointopoint="None"
 		else
@@ -1298,7 +1516,7 @@ function cfg_device() {
 			                 "MODE" "dynamic (use dhcp)"                       \
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
-			                 "WIFI"  "${dwifi}"                                \
+			                 "WIFI"  "Wifi menu"                               \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
@@ -1319,7 +1537,7 @@ function cfg_device() {
 			                 "GATEWAY" "${GATEWAY}"                            \
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
-			                 "WIFI"  "${dwifi}"                                \
+			                 "WIFI"  "Wifi submenu"                            \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
