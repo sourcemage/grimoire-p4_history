@@ -7,7 +7,11 @@ if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/$FOO ];
 then message "${MESSAGE_COLOR}Unpacking source file ${SPELL_COLOR}$FOO \
 ${DEFAULT_COLOR}${MESSAGE_COLOR} for ${SPELL_COLOR}$SPELL"     &&
 	tar jxf $SOURCE_CACHE/$FOO 
-else unpack ${SOURCE} ${MD5[0]}
+else unpack  ${SOURCE}   ${MD5[0]}                             &&
+     unpack  ${SOURCE2}  ${MD5[1]}                             &&
+     cd  ${SOURCE_DIRECTORY}                                   &&
+     patch  -p0  <  ${SOURCE_CACHE}/${SOURCE2}                 &&
+     cd  -
 fi                                                             &&
 
 #cvs updates anyone?
