@@ -1,5 +1,5 @@
-depends gcc2  &&
-depends emacs &&
+depends  emacs  &&
+
 #optional_depends "gmp" "" "--enable-gmp=no" "To use GMP (gnu multiprecision arithmetic)" &&
 #it had it's own version i updated to current and decided to leave this here for now
 optional_depends "tcl" "--enable-tclconfig=$(gaze from tclConfig.sh | cut -d/ -f2-3)" "" \

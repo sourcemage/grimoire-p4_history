@@ -1,18 +1,18 @@
            SPELL=gcl
-         VERSION=2.4.0
-          SOURCE=$SPELL-$VERSION.tgz
+         VERSION=2.5.3
+          SOURCE=$SPELL-$VERSION.tar.gz
          SOURCE2=gmp-4.1.2.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.ma.utexas.edu/pub/$SPELL/$SOURCE
-  SOURCE2_URL[0]=ftp://ftp.gnu.org/pub/gnu/gmp/$SOURCE2
-          MD5[0]=f2f575af6310f9f05d1aa8917301762c
+   SOURCE_URL[0]=${GNU_URL}/$SPELL/$SOURCE
+  SOURCE2_URL[0]=${GNU_URL}/gmp/$SOURCE2
+          MD5[0]=655a99bf9a07409b347cc9585faf00d9
           MD5[1]=bc9ab838452f4df80486bd8bd46f3267
-        WEB_SITE=http://www.ma.utexas.edu/gcl.html
+        WEB_SITE=http://www.gnu.org/software/gcl/
          ENTERED=20020312
          UPDATED=20030907
-      MAKE_NJOBS=1
-      MAINTAINER=eric@sandall.us
       LICENSE[0]=GPL
+      LICENSE[1]=GPL
+      MAKE_NJOBS=1
            SHORT="GNU Compiler and interpreter for Common Lisp"
 cat << EOF
 GNU Common Lisp (GCL, formerly known as Austin Kyoto Common Lisp) is a compiler and interpreter for Common Lisp. GCL is very portable and extremely efficient on a wide class of applications, and compares favorably in performance with commercial Lisps on several large theorem--prover and symbolic algebra systems. GCL supports the CLtL1 specification.
