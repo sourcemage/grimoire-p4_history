@@ -2,15 +2,18 @@
          VERSION=1.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/cups/$SOURCE
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  Virginia, USA
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  North Carolina, USA
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  Belgium
         WEB_SITE=http://cups.sourceforge.net/xpp/
          ENTERED=20020213
          UPDATED=20020213
       MAINTAINER=jasonflatt@wizard.com
            SHORT="X-Windows frontend to configure every possible CUPS option."
 cat << EOF
-The X Printing Panel (XPP) is a completely free (GPL) tool for easy
-choosing of the desired printer out of a list of all available printers
-and for setting CUPS printer options by an easy-to-use graphical user
-interface.
+
+The X Printing Panel (XPP) is a completely free (GPL) tool for easy choosing
+of the desired printer out of a list of all available printers and for
+setting CUPS printer options by an easy-to-use graphical user interface.
+
 EOF

@@ -11,7 +11,7 @@
         GV_DOCDIR=/usr/bin/       \
         GV_LIBDIR=/usr/lib/gv/    \
         GV_MANDIR=/usr/man/man1/  \
-        install
+        install                   &&
   make  GV_BINDIR=/usr/bin/       \
         GV_DOCDIR=/usr/bin/       \
         GV_LIBDIR=/usr/lib/gv/    \
