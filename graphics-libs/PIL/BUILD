@@ -12,9 +12,8 @@ EXTRA_COMPILE_ARGS = None\
 EXTRA_LINK_ARGS = None' set1.py > setup.py &&
   python  setup.py  build                                          &&
   prepare_install                                                  &&
-#I hate the python version hardcode in here.  (ref bug #5266)
   cd  libImaging                                                   &&
-  cp  ImConfig.h  ImPlatform.h  Imaging.h  /usr/include/python2.3  &&
+  cp  ImConfig.h  ImPlatform.h  Imaging.h  /usr/include/python$(installed_version Python|cut -d . -f 1,2)  &&
   cd  ..                                                           &&
   python  setup.py  install
 
