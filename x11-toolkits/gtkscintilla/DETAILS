@@ -1,9 +1,14 @@
            SPELL=GtkScintilla
          VERSION=0.8.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/moleskine/$SOURCE
+          MD5[0]=ab204a6d43126408d0951828d69f94de
       LICENSE[0]=GPL
         WEB_SITE=http://www.micampe.it/software/moleskine/
-         ENTERED=20050228
-         UPDATED=20050228
+         ENTERED=20020318
+         UPDATED=20020318
+      MAINTAINER=fkb@iago.polito.it
            SHORT="Wrapper library for a free source code editing component"
 cat << EOF
 This is GtkScintilla, a wrapper for Scintilla (www.scintilla.org).

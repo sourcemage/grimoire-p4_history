@@ -1,10 +1,11 @@
 2005-02-28 Eric Sandall <eric@sandall.us>
-	* Renamed to bwidget
-	* DETAILS: Removed SOURCE information
+	* Renamed from BWidget
+	* DETAILS: Renamed to bwidget
 	  Updated UPDATED
-	* DEPENDS: Depend only on bwidget
-	* PRE_BUILD,BUILD: Run only `true`
-	* TRIGGERS: On cast BWidget, dispel self
+	  Removed MAINTAINER
+	  Added BUILD_API=2
+	* DEPENDS: Removed dependencies on tk and tcl (tcllib already has both)
+	* CONFLICTS: Auto-conflicts with BWidget
 
 2003-09-04 Eric Sandall <eric@sandall.us>
 	* Added to libs (Bug #4229)
