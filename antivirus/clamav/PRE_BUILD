@@ -10,6 +10,7 @@ default_pre_build                        	&&
 case $CLAMDMAIL in
 y|Y|j|J)
 	cd $SOURCE_DIRECTORY 				&&
-	unpack $SOURCE2 ${MD5[1]}			;;
+	unpack $SOURCE2 ${MD5[1]}			&&
+        patch -p0 < $SPELL_DIRECTORY/clamdmail-patches   ;;
 *) true;;
 esac
