@@ -1,7 +1,7 @@
 depends  db  &&
 
-if [ "$BUILD_DOCS" = "y" ] ; then
-  depends  teTeX  &&
-  depends  psutils  &&
-  depends  linuxdoc-tools
+if  [  "$BUILD_DOCS" ==  "y"  ];  then
+  depends  linuxdoc-tools  &&
+  depends  psutils         &&
+  depends  tetex
 fi

@@ -1,0 +1,19 @@
+           SPELL=tetex
+         VERSION=2.0.2
+          SOURCE=$SPELL-src-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-${VERSION}
+   SOURCE_URL[0]=$CTAN_URL/systems/unix/teTeX/current/distrib/$SOURCE
+          MD5[0]=4671772820b1e2ce01293ec127679ab2
+        WEB_SITE=http://www.tug.org/tetex/
+         ENTERED=20010922
+         UPDATED=20040526
+      MAKE_NJOBS=1
+      LICENSE[0]=http://www.ctan.org/tex-archive/systems/unix/teTeX/1.0/distrib/sources/LICENSE
+       BUILD_API=2
+           SHORT="TeX distribution that includes web2c, pdfTeX, e-Tex etc."
+cat << EOF
+TeTex is by far, the best TeX distribution available for Linux,
+includes latest versions of web2c, pdfTeX, e-TeX, Omega, xdvi, ps2pk,
+makeinfo, texinfo, texconfig and lots of fonts and macros. It's easy to
+install and easy to customize.
+EOF

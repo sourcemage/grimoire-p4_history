@@ -1,23 +1,23 @@
 depends  X11-LIBS  &&
-depends  perl     &&
-depends  teTeX    &&
+depends  perl      &&
+depends  tetex     &&
 
-optional_depends  "Python"                                    \
+optional_depends  Python                                      \
                   "--with-python"                             \
                   ""                                          \
                   "for importing old LyX files with lyx2lyx"  &&
 
-optional_depends  "ispell"                                    \
+optional_depends  ispell                                      \
                   "--with-ispell"                             \
                   ""                                          \
                   "for spell checker support through ispell"  &&
 
-optional_depends  "aspell"                                    \
+optional_depends  aspell                                      \
                   "--with-pspell"                             \
                   ""                                          \
                   "for spell checker support through aspell"  &&
 
-optional_depends  "xforms"                  \
+optional_depends  xforms                    \
                   "--with-frontend=xforms"  \
                   ""                        \
                   "to use xforms frontend"  &&
@@ -25,9 +25,9 @@ optional_depends  "xforms"                  \
 optional_depends  "qt-x11"                                                  \
                   "--with-frontend=qt  --with-qt-includes=/usr/include/qt"  \
                   ""                                                        \
-                  "to use QT frontend"
+                  "to use QT frontend"                                      &&
 
-optional_depends  "latex-xft-fonts"                                         \
+optional_depends  latex-xft-fonts                                           \
                   ""                                                        \
                   ""                                                        \
                   "ttf fonts with math symbols - used at least by the QT frontend"

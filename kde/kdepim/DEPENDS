@@ -1,9 +1,12 @@
 depends  flex    &&
 depends  bison   &&
 depends  kdebase &&
-depends  gpgme   &&
-optional_depends  "pilot-link"	\
-					""	\
-					""	\
-					"To have kpilot built"
+optional_depends "gnupg"           \
+                                            ""     \
+                                            ""     \
+                                            "To enable GnuPG support in KMail"
+optional_depends  "pilot-link"       \
+                                            ""     \
+                                            ""     \
+                                            "To have kpilot built"
 
