@@ -1,0 +1,12 @@
+diff -Nurp source.orig/python/setup.py source/python/setup.py
+--- source.orig/python/setup.py	2003-10-13 01:22:27.000000000 +0200
++++ source/python/setup.py	2003-10-13 01:23:03.000000000 +0200
+@@ -57,6 +57,8 @@ for lib in string.split(samba_libs):
+     if lib[0:2] == "-L":
+         library_dirs.append(lib[2:])
+         continue
++    if lib in ("-s", "-z", "combreloc"):
++        continue
+     print "Unknown entry '%s' in $LIBS variable passed to setup.py" % lib
+     sys.exit(1)
+ 

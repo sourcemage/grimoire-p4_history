@@ -1,21 +1,11 @@
 (
 
+  OPTS="$OPTS --with-swatdir=/usr/share/swat --with-smbmount --with-fhs \
+      --with-automount --with-winbind"
+
+  patch  -p0  <  $SCRIPT_DIRECTORY/krb5config.patch  &&
   pushd  source  &&
-  ./configure  \
-    --prefix=/usr  \
-    --sysconfdir=/etc  \
-    --localstatedir=/var  \
-    --with-swatdir=/usr/share/swat  \
-    --with-smbmount  \
-    --with-fhs  \
-    --with-automount  \
-    --with-smbmount  \
-    --with-syslog  \
-    --with-winbind  \
-    $OPTS  &&
-  make  &&
-  prepare_install  &&
-  make  install  &&
+  default_build  &&
   popd
 
 ) >$C_FIFO 2>&1 && (

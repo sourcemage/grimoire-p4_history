@@ -27,4 +27,8 @@ optional_depends  cups  \
 optional_depends  Python  \
                   '--with-python'  \
                   '--without-python'  \
-                  'library for Samba support in Python'
+                  'library for Samba support in Python'  &&
+optional_depends  system-logger  \
+                  '--with-syslog'  \
+                  '--without-syslog' \
+                  'enables logging though a syslog daemon'
