@@ -13,7 +13,8 @@
 	       $OPTS		      &&	
   make                                &&
   prepare_install                     &&
-  make    install
+  make    install                     &&
+  chmod -R 600 /etc/silc
 
 ) > $C_FIFO 2>&1
 
