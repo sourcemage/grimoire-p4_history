@@ -1,3 +1,8 @@
+2003-12-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/udev: don't use echo to set DEVPATH, fails due to echo being
+	redefined in init
+	create /sys if it doesn't exist, make sure sysfs is mounted there
+
 2003-12-16 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 009
 
