@@ -1,0 +1,8 @@
+default_pre_build  &&
+
+if  [  "${EXISCAN}"  ==  "yes"  ]
+then
+  unpack  ${SOURCE2}  ${MD5[1]}  &&
+  unpack  ${SOURCE3}  ${MD5[2]}  &&
+  unpack  ${SOURCE4}  ${MD5[3]}
+fi

@@ -1,3 +1,9 @@
+if [ "${EXISCAN}"  ==  "yes" ]
+then
+  message  "${MESSAGE_COLOR}Patching for exiscan${DEFAULT_COLOR}"  &&
+  bzcat  ${SOURCE_CACHE}/${SOURCE2}  |  patch  -p1
+fi  &&
+
 IVER=$( installed_version  exim |  cut  -c1  )
 if    [  "$IVER"  ==  "3"  ]
 then  if    [  -e  /etc/exim.conf  ]
@@ -70,7 +76,14 @@ echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
 
   make             &&
   prepare_install  &&
-  make    install
+  make    install  &&
+
+  if [ "${EXISCAN}"  ==  "yes" ]
+  then
+    mkdir  -p  /usr/doc/${SPELL}/exiscan-acl                         &&
+    cp  ${SOURCE_CACHE}/${SOURCE3}  /usr/doc/${SPELL}/exiscan-acl    &&
+    cp  ${SOURCE_CACHE}/${SOURCE4}  /usr/doc/${SPELL}/exiscan-acl
+  fi
 
 ) > $C_FIFO 2>&1  &&  (
 
