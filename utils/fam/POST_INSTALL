@@ -1,0 +1,11 @@
+if  [  "$XINETD"  =  "y"  ]; then
+  if  [  -e  /etc/init.d/portmap.sh  ]; then
+    /etc/init.d/portmap.sh restart
+  else
+    pkill "^portmap$"  &&  sleep  1
+    /sbin/portmap
+  fi
+  /etc/init.d/xinetd.sh restart
+else
+  /etc/init.d/fam.sh restart
+fi

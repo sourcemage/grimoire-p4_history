@@ -1,0 +1,8 @@
+if  !  grep  -q  "XINETD"  $SPELL_CONFIG;  then
+
+  if    query  "Invoke fam via xinetd? (if no, then it will be run on boot by inetd)" y
+  then  echo   "XINETD=y"  >>  $SPELL_CONFIG
+  else  echo   "XINETD=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
