@@ -28,6 +28,8 @@ message  "Building X.org takes a very long time."
   ### Apply linux version patch to support 2.6.X
 #  patch  -p1  <  $SCRIPT_DIRECTORY/XFree86-4.3.0-linux-2.6.0.patch  &&
 
+  ### fix the broken xcursor.pc file
+  sedit  '/Requires/d'  lib/Xcursor/xcursor.pc.in  &&
   ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
