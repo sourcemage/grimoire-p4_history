@@ -2,13 +2,25 @@ depends  libgnomeprintui  &&
 depends  gnome-vfs2       &&
 depends  pcre             &&
 depends  vte              &&
-if [ "$CVS_CHECKOUT" == "y" ]
-then
-	depends gdl &&
-	depends devhelp &&
-	depends gnome-build &&
-	depends autogen
-fi &&
 
-optional_depends  "gdb"  ""  ""  "for the GNU Debugger"  &&
-optional_depends  "indent"  ""  ""  "for source code formatting"
+if  [  "$CVS_CHECKOUT"  ==  "y"  ];  then
+  depends  gdl          &&
+  depends  devhelp      &&
+  depends  gnome-build  &&
+  depends  autogen
+fi  &&
+
+optional_depends  gdb                     \
+                  ""                      \
+                  ""                      \
+                  "for the GNU Debugger"  &&
+
+optional_depends  indent                        \
+                  ""                            \
+                  ""                            \
+                  "for source code formatting"  &&
+
+optional_depends  devhelp               \
+                  ""                    \
+                  ""                    \
+                  "for GNOME API help"
