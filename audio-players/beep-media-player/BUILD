@@ -10,6 +10,10 @@ if [ "$USERPLUGINDIR" = "n" ]; then
    OPTS="$OPTS --disable-user-plugin-dir"
 fi &&
 
+if [ "$OSS" = "n" ]; then
+   OPTS="$OPTS --disable-oss"
+fi &&
+
 if [ "$SIMD" = "y" ]; then
    OPTS="$OPTS --enable-simd"
 fi &&
