@@ -15,6 +15,10 @@
     export JAVA_HOME
   fi &&
 
+  if /lib/libc.so.6 | grep -q NPTL; then
+    LDFLAGS="$LDFLAGS -lpthread"
+  fi &&
+
   cd  build_unix                         &&
   PATH="$PATH:$JAVA_HOME/bin"            &&
   ../dist/configure  --prefix=/usr       \
