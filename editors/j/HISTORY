@@ -1,29 +1,21 @@
-2003-10-03  hgg <hgreig@bigpond.net.au>
+2003-10-10 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change x11-libs to X11-LIBS
 
-		Change requires x11-libs to depends x11-libs
+2003-10-03 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change requires x11-libs to depends x11-libs
 
-2003-09-17  hgg <hgreig@bigpond.net.au>
+2003-09-17 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change depends xfree86 to requires x11-libs
 
-                Change depends xfree86 to requires x11-libs
+2003-03-14 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Changed 'depends j2sdk' to 'requires java'
+	* DETAILS,BUILD: Replaced TABs with SPACEs in DETAILS and BUILD
+	* DETAILS: Updated md5sum to use uncompressed tarball
+	Added MAINTAINER to DETAILS
+	* BUILD: Fixed BUILD to work with spells which provide 'java' (j2sdk-bin and j2sdk)
+	Added more from default_build to BUILD
+	* POST_BUILD: Removed POST_BUILD, as it breaks the install log and
+	removes installed documentation of j
 
-2003-03-14  Eric Sandall <eric@sandall.us>
-
-		Changed 'depends j2sdk' to 'requires java'
-
-		Replaced TABs with SPACEs in DETAILS and BUILD
-
-		Added more from default_build to BUILD
-
-		Added MAINTAINER to DETAILS
-
-		Updated md5sum to use uncompressed tarball
-
-		Fixed BUILD to work with spells which provide 'java'
-		(j2sdk-bin and j2sdk)
-
-		Removed POST_BUILD, as it breaks the install log and
-		removes installed documentation of j
-
-2003-03-14	Harri Tikkala	<htikkala@nietos.tokem.fi>
-
-		Spell written.
+2003-03-14 Harri Tikkala <htikkala@nietos.tokem.fi>
+	* ALL: Spell written.

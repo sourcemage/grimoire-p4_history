@@ -1,142 +1,112 @@
-2003-10-03  hgg <hgreig@bigpond.net.au>
+2003-10-10 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change x11-libs to X11-LIBS
 
-		Change optional_depends xfree86 to x11-libs, needs devel sorcery now
+2003-10-03 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change optional_depends xfree86 to x11-libs, needs devel sorcery now
 
-2003-10-01  Eric Sandall <eric@sandall.us>
-		* DETAILS: Update to 5.5.7-11, added MAKE_NJOBS=1
-		as it fails with multiple jobs
+2003-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 5.5.7-11, added MAKE_NJOBS=1 as it fails with multiple jobs
 
-2003-09-01  David Braaten <xiticix47@hotmail.com>
+2003-09-01 David Braaten <xiticix47@hotmail.com>
+	* DEPENDS: Optional depends on libexif, ghostscript.
 
-		Optional depends on libexif, ghostscript.
+2003-08-13 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated the MD5 due to an updated tarball on SourceForge.
 
-2003-08-13  Jason Flatt <jason@flattfamily.com>
+2003-07-10 Jason Flatt <jason@flattfamily.com>
+	* DETAILS:Version bump to 5.5.7-10.
+	(Wow!  A whole month between changes.)
 
-		Updated the MD5 due to an updated tarball on SourceForge.
+2003-06-11 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7-9.
 
-2003-07-10  Jason Flatt <jason@flattfamily.com>
+2003-05-31 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: *sigh*  Version bump to 5.5.7-7.
+	(Maybe I shouldn't be so hasty with these updates.)
 
-		Version bump to 5.5.7-10.
-		(Wow!  A whole month between changes.)
+2003-05-31 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7-6.
 
-2003-06-11  Jason Flatt <jason@flattfamily.com>
+2003-05-30 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed bad MD5.
 
-		Version bump to 5.5.7-9.
+2003-05-30 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: updated to 5.5.7-5
+	added SOURCE_URL[1] - birthplace of ImageMagick
 
-2003-05-31  Jason Flatt <jason@flattfamily.com>
+2003-05-24 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7-4.
+	Also, changed the way the version is dealt with.
 
-		*sigh*  Version bump to 5.5.7-7.
-		(Maybe I shouldn't be so hasty with these updates.)
+2003-05-18 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7-2.
 
-2003-05-31  Jason Flatt <jason@flattfamily.com>
+2003-05-17 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7-1.
 
-		Version bump to 5.5.7-6.
+2003-05-14 Seth Woolley <seth@tautology.org>
+	* DETAILS: Modified DETAILS to fix md5 for SOURCE.
 
-2003-05-30  M.L. <mlubrano@sourcemage.org>
- 
-		Fixed bad MD5.
- 
-2003-05-30  Ladislav Hagara <hgr@vabo.cz>
+2003-05-11 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.7.
 
-		updated to 5.5.7-5
-		added SOURCE_URL[1] - birthplace of ImageMagick
+2003-04-29 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Change to use SOURCEFORGE_URL for SOURCE_URL definition.
+	Updated license URL.
 
-2003-05-24  Jason Flatt <jason@flattfamily.com>
+2003-04-25 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated MAINTAINER e-mail address
 
-		Version bump to 5.5.7-4.
-		Also, changed the way the version is dealt with.
+2003-03-01 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 5.5.6.
 
-2003-05-18  Jason Flatt <jason@flattfamily.com>
+2003-03-01 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump to 5.5.5-3.
 
-		Version bump to 5.5.7-2.
+2003-02-06 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump to 5.5.4-4.
 
-2003-05-17  Jason Flatt <jason@flattfamily.com>
+2003-01-20 Seth Woolley <seth@tautology.org>
+	* BUILD: Fixed $OPTS issue not in BUILD bug 2280
 
-		Version bump to 5.5.7-1.
+2003-01-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v5.5.3-2  (Bug #1601)
 
-2003-05-14  Seth Woolley <seth@tautology.org>
+2002-09-17 Jason Flatt <jasonflatt@wizard.com>
+	* BUILD: Added --build=$BUILD to BUILD for completeness based on Eric Sandall's
+	suggestion, although it doesn't appear to change anything.
 
-		Modified DETAILS to fix md5 for SOURCE.
+2002-09-16 Jason Flatt <jasonflatt@wizard.com>
+	* BUILD,DETAILS: Cleaned up formatting of BUILD and MD5 and LICENSE in DETAILS.
 
-2003-05-11  Jason Flatt <jason@flattfamily.com>
+2002-09-14 Andrew Stitt <afrayedknot@thefrayedknot.armory.com>
+	* DETAILS: Version bump to 5.4.9-1 also updated md5sum
 
-		Version bump to 5.5.7.
+2002-09-12 Eric Schabell <eschabell@sourcemage.org>
+	* DETAILS,HISTORY:  Updated to 5.4.8 as 5.4.8 no longer avail,
+	updated md5 and history.
 
-2003-04-29  Sergey Lipnevich <sergey@sourcemage.org>
+2002-08-18 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated MD5.
 
-		Change to use SOURCEFORGE_URL for SOURCE_URL definition.
-		Updated license URL.
+2002-08-18 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated version from 5.4.7-1 to 5.4.8.
 
-2003-04-25  Jason Flatt <jason@flattfamily.com>
+2002-07-06 Eric Schabell <eric@schabell.com>
+	* DETAILS: Version bump fixes bug #358.
 
-		Updated MAINTAINER e-mail address
+2002-05-18 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Update VERSION in DETAILS from 5.4.4-5 to 5.4.5-1.
 
-2003-03-01  Jason Flatt <jason@flattfamily.com>
+2002-05-08 Jason Flatt <jasonflatt@wizard.com>
+	* HISTORY: Reformatted file to conform to new template.
 
-		Version bump to 5.5.6.
+2002-04-21 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated UPDATED field for new version number on 2002-04-14.
+	Updated long description for improved readability.
+	* HISTORY: Corrected this HISTORY file.
 
-2003-03-01  Jason Flatt <jasonflatt@wizard.com>
-
-		Version bump to 5.5.5-3.
-
-2003-02-06  Jason Flatt <jasonflatt@wizard.com>
-
-		Version bump to 5.5.4-4.
-
-2003-01-20  Seth Woolley <seth@tautology.org>
-
-		Fixed $OPTS issue not in BUILD bug 2280
-
-2003-01-05  Eric Sandall <eric@sandall.us>
-
-		Updated to v5.5.3-2  (Bug #1601)
-
-2002-09-17  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added --build=$BUILD to BUILD for completeness based on Eric Sandall's
-		suggestion, although it doesn't appear to change anything.
-
-2002-09-16  Jason Flatt  <jasonflatt@wizard.com>
-
-		Cleaned up formatting of BUILD and MD5 and LICENSE in DETAILS.
-
-2002-09-14  Andrew Stitt <afrayedknot@thefrayedknot.armory.com>
-
-		Version bump to 5.4.9-1 also updated md5sum
-
-2002-09-12  Eric Schabell <eschabell@sourcemage.org>
-
-		Updated to 5.4.8 as 5.4.8 no longer avail,
-		updated md5 and history.
-
-2002-08-18  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated MD5.
-
-2002-08-18  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated version from 5.4.7-1 to 5.4.8.
-
-2002-07-06  Eric Schabell <eric@schabell.com>
-
-		Version bump fixes bug #358.
-
-2002-05-18  Jason Flatt  <jasonflatt@wizard.com>
-
-		Update VERSION in DETAILS from 5.4.4-5 to 5.4.5-1.
-
-2002-05-08  Jason Flatt  <jasonflatt@wizard.com>
-
-		Reformatted HISTORY file to conform to new template.
-
-2002-04-21  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated UPDATED field for new version number on 2002-04-14.
-		Corrected this HISTORY file.
-		Updated long description for improved readability.
-
-2002-04-14  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added this HISTORY file.
-		Added MAINTAINER=jasonflatt@wizard.com to the DETAILS file.
-		Updated VERSION from 5.4.3-10 to 5.4.4-5.
+2002-04-14 Jason Flatt <jasonflatt@wizard.com>
+	* HISTORY: Added this file.
+	* DETAILS: Added MAINTAINER=jasonflatt@wizard.com to the DETAILS file.
+	Updated VERSION from 5.4.3-10 to 5.4.4-5.

@@ -19,6 +19,7 @@ cat <<__EOF__ >config/cf/site.def
 #define DefaultGcc2i386Opt    $CFLAGS
 #define LibraryCDebugFlags    $CFLAGS
 #define DefaultCDebugFlags    $CFLAGS
+#define ProjectRoot           /usr/X11R6
 #define HasShm                   YES
 #define HasZlib                  YES
 #define HasFreetype2             YES
@@ -100,6 +101,10 @@ __EOF__
 
   if  [  !  -e                         /usr/include/X11  ];  then
     ln      -sf  ../X11R6/include/X11  /usr/include/X11
+  fi
+  
+  if  [  !  -e                         /usr/include/GL  ];  then
+    ln      -sf  ../X11R6/include/GL  /usr/include/GL
   fi
 
   if  [  !  -e                     /usr/lib/X11  ];  then

@@ -1,86 +1,66 @@
-2003-10-03  hgg <hgreig@bigpond.net.au>
+2003-10-10 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change x11-libs to X11-LIBS
 
-		Change requires x11-libs to depends x11-libs
+2003-10-03 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change requires x11-libs to depends x11-libs
 
-2003-09-17  hgg <hgreig@bigpond.net.au>
+2003-09-17 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change depends xfree86 to requires x11-libs
 
-                Change depends xfree86 to requires x11-libs
+2003-08-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added dependency on xfree86, needed if compiled without gnome1
+	or gnome2 support
 
-2003-08-28  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
 
-		added dependency on xfree86, needed if compiled without gnome1
-		or gnome2 support
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update TRIGGERS for Linux-PAM
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-07-22 hgg <hgreig@bigpond.net.au>
+	* CONFIGURE: Add CONFIGURE to ask for gnome1 or gnome2 suppport
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-04-17 Eric Sandall <eric@sandall.us>
+	* BUILD: Added Xinerama, xf86vmode, xf86gamma, proc interrupts,
+	xshm, xdbe, readdisplay, and DPMS extensions to BUILD
+	* DEPENDS: Actually fixed Bug #2657 (PAM support)
+	Added quite a few more optional_depends
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
+2003-03-27 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 4.09 (fixes bug #2854)
 
-		Update TRIGGERS for Linux-PAM
+2003-02-20 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: version bumped to 4.07
 
-2003-07-22  hgg <hgreig@bigpond.net.au>
+2002-11-18 Joel Mayes <bluebird@optushome.com.au>
+	* CONFLICTS: Added CONFLICTS file added conflicts with MesaLib (bug #1884)
+	* HISTORY: Reformated HISTORY file
 
-		Add CONFIGURE to ask for gnome1 or gnome2 suppport
+2002-11-18 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: version bumped to 4.06
 
-2003-04-17  Eric Sandall <eric@sandall.us>
+2002-10-22 Joel Mayes <bluebird@optushome.com.au>
+	* TRIGGERS: Added TRIGGERS file
 
-		Added Xinerama, xf86vmode, xf86gamma, proc interrupts,
-		xshm, xdbe, readdisplay, and DPMS extensions to BUILD
+2002-08-10 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
 
-		Actually fixed Bug #2657 (PAM support)
+2002-07-19 Joel Mayes <bluebird@optushome.com.au>
+	* DEPENDS: Removed unneeded depends on gnome-core
 
-		Added quite a few more optional_depends
+2002-06-24 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added LICENSE field to DETAILS
 
-2003-03-27  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-06-21 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added MD5 field to DETAILS
 
-		updated to 4.09 (fixes bug #2854)
+2002-06-20 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Version bump to 4.05
 
-2003-02-20  Joel Mayes <bluebird@optushome.com.au>
+2002-06-07 Eric Schabell <eric@schabell.com>
+	* BUILD: Fixed bug #195, BUILD line 6 modified, thanks to duffelbunk).
 
-		version bumped to 4.07
-
-2002-11-18  Joel Mayes <bluebird@optushome.com.au>
-
-		Added CONFLICTS file
-		added conflicts with MesaLib (bug #1884)
-		Reformated HISTORY file
-
-2002-11-18  Joel Mayes <bluebird@optushome.com.au>
-
-		version bumped to 4.06
-
-2002-10-22  Joel Mayes <bluebird@optushome.com.au>
-
-		Added TRIGGERS file
-
-2002-08-10  Joel Mayes <bluebird@optushome.com.au>
-
-		updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
-
-2002-07-19  Joel Mayes <bluebird@optushome.com.au>
-
-		Removed unneeded depends on gnome-core
-
-2002-06-24  Joel Mayes <bluebird@optushome.com.au>
-
-		Added LICENSE field to DETAILS
-
-2002-06-21  Joel Mayes <bluebird@optushome.com.au>
-
-		Added MD5 field to DETAILS
-
-2002-06-20  Joel Mayes <bluebird@optushome.com.au>
-
-		Version bump to 4.05
-
-2002-06-07  Eric Schabell <eric@schabell.com>
-
-		Fixed bug #195, BUILD line 6 modified,
-		thanks to duffelbunk).
-
-2002-05-27  Adam Clark <adamsgl@dhbit.ca>
-
-		moved spell to X11 section
-		updated to 4.03 + applied compile fix
-		added this HISTORY file
+2002-05-27 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: moved spell to X11 section
+	updated to 4.03 + applied compile fix
+	* HISTORY: added this HISTORY file
