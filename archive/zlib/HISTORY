@@ -1,28 +1,26 @@
-2002-03-14  Christoph Steckelberg <heffer@mailberlin.net>
+2002-06-10  Christoph Steckelberg <heffer@mailberlin.net>
+	* Added LICENCE tag to DETAILS
 
-	Changed Kongars script a bit to automatically do
-        recompilation of affected spells
-        POST_INSTALL now asks for permission due to the fact
-        that recompilation could take a long time
+2002-03-14  Christoph Steckelberg <heffer@mailberlin.net>
+	* Changed Kongars script a bit to automatically do
+          recompilation of affected spells
+        * POST_INSTALL now asks for permission due to the fact
+          that recompilation could take a long time
 
 2002-03-13  Christoph Steckelberg <heffer@mailberlin.net>
-
-	removed POST_BUILD because it was broken.
-        Now using POST_INSTALL - It is basically Kongars 
-	script to find applications that are statically 
-	linked against zlib 
+	* removed POST_BUILD because it was broken.
+        * Now using POST_INSTALL - It is basically Kongars 
+	  script to find applications that are statically 
+	  linked against zlib 
 
 2002-03-12  Christoph Steckelberg <heffer@mailberlin.net>
-
-	changed VERSION to 1.1.4
-
-	added POST_BUILD to automatically rebuild spells
-        which were statically linked against zlib
+	* changed VERSION to 1.1.4
+	* added POST_BUILD to automatically rebuild spells
+          which were statically linked against zlib
 
 2002-03-11  Christoph Steckelberg <heffer@mailberlin.net>
+	* added MAINTAINTER tag to each spell
+	  the tag reflects latest available information posted by
+	  Jean Michel Smith to sgl-spells
 
-	added MAINTAINTER tag to each spell
-	the tag reflects latest available information posted by
-	Jean Michel Smith to sgl-spells
-
-	See DETAILS for details ;-)
+	  See DETAILS for details ;-)
