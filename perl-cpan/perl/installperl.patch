@@ -6,7 +6,7 @@ diff -uprN perl-5.8.1.old/installperl perl-5.8.1/installperl
  	$xname =~ s/^\Q$destdir\E// if $destdir;
  	$packlist->{$xname} = { type => 'file' };
 -	if ($force || compare($_, "$installlib/$name") || $nonono) {
-+	if (true) {
++	if (1) {
  	    unlink("$installlib/$name");
  	    mkpath("$installlib/$dir", $verbose, 0777);
  	    # HP-UX (at least) needs to maintain execute permissions
@@ -15,7 +15,7 @@ diff -uprN perl-5.8.1.old/installperl perl-5.8.1/installperl
      -f $from || $perlpodbadsymlink || warn "$0: $from not found";
      $packlist->{$xto} = { type => 'file' };
 -    if ($force || compare($from, $to) || $nonono) {
-+    if (true) {
++    if (1) {
  	safe_unlink($to);   # In case we don't have write permissions.
  	if ($nonono) {
  	    $from = $depth . "/" . $from if $depth;
