@@ -9,7 +9,7 @@ sgl_logo="SOURCE MAGE GNU LINUX NET-TOOLS SETUP"
 # for the initial switch to net-tools
 switch2net_tools ()
 {
-    if [ -d $netdir ] && [ ! -e $netdir/lo ]; then
+    if [ -d $netdir ] && [ ! -e $netdir/lo.dev ]; then
 	netdevices=$(ls $netdir)
 	for netdevice in $netdevices; do
 	    mv $netdir/$netdevice $netdir/$netdevice.dev
@@ -36,7 +36,7 @@ unset_modvars ()
 make_lo ()
 {
     check_netdir
-    if [ ! -f $netdir/lo ]; then
+    if [ ! -f $netdir/lo.dev ]; then
 	cat > $netdir/lo.dev <<EOF
 # config file for lo
 # use dynamic or static for MODE
