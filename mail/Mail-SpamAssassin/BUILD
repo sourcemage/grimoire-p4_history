@@ -1,24 +1,6 @@
-(
+if  [  "$MAILSPAM_SSL"  =  "y"  ];  then
+  CFLAGS="$CFLAGS  -DSPAMC_SSL"
+fi  &&
 
-  echo "\n" | perl  Makefile.PL  RUN_RAZOR2_TESTS=y RUN_RAZOR1_TESTS=y  &&
-  make     								&&
-  prepare_install    							&&
-  MAKE_NJOBS_OLD=$MAKE_NJOBS						&&
-  MAKE_NJOBS=1								&&
-  make    install							&&
-  MAKE_NJOBS=$MAKE_NJOBS_OLD						&&
-
-  mkdir -p 	/usr/doc/$SPELL						&&
-  cp ninjabutton.png /usr/doc/$SPELL           				&&
-  cp *.txt	/usr/doc/$SPELL                 			&&
-  cp TRADEMARK	/usr/doc/$SPELL                 			&&
-  cp README	/usr/doc/$SPELL                 			&&
-  cp procmailrc.example /usr/doc/$SPELL         			&&
-  cp Changes    /usr/doc/$SPELL                 			&&
-  cp -r contrib /usr/doc/$SPELL                 			&&
-  cp -r masses  /usr/doc/$SPELL                 			&&
-  cp -r rules   /usr/doc/$SPELL                 			&&
-  cp -r sql     /usr/doc/$SPELL                 			&&
-  cp -r tools	/usr/doc/$SPELL	
-
-) > $C_FIFO 2>&1 
+echo "\n" | perl  Makefile.PL  RUN_RAZOR2_TESTS=y RUN_RAZOR1_TESTS=y  &&
+make

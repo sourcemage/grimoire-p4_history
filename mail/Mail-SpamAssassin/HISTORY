@@ -1,3 +1,20 @@
+2004-10-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.0.1
+	  SOURCE_URL changed to use APACHE_URL
+	  WEB_SITE moved to apache.org
+	  LICENSE[0] is now APACHE
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* BUILD: Converted to build_api 2
+	  Add -DSPAMC_SSL to CFLAGS if MAILSPAM_SSL is "y"
+	* INSTALL: Added
+	  Removed TABs
+	* DEPENDS: Formatted to Guru Handbook
+	  Added dependency on openssl if MAILSPAM_SSL is "y"
+	* CONFIGURE: Added to query for SSL-enabled spamc
+	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* TRIGGERS: Clean up formatting
+
 2004-08-05 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.64
 	  SOURCE_URL changed
