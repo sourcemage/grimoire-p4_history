@@ -1,7 +1,6 @@
 (
 
-  groupadd smmsp          2>/dev/null
-  useradd  smmsp -g smmsp 2>/dev/null
+  create_accound smmsp
 
   mkdir -p          /var/spool/mqueue
   chmod 1777        /var/spool/mqueue
@@ -9,17 +8,17 @@
   ln -s /var/spool/mqueue /var/spool/mail
 
   cd cf/cf
-  ln -s generic-linux.mc sendmail.mc &&
-  sh Build sendmail.cf               &&
-  sh Build install-cf                &&
-  cd ../..                           &&
-  sh Build 	                     &&
-  prepare_install                    &&
-  sh Build install                   &&
-  mkdir         /usr/doc/sendmail    &&
-  mkdir         /usr/doc/sendmail/cf &&
-  cp -r cf/cf*  /usr/doc/sendmail    &&
-  cp -r contrib /usr/doc/sendmail
+  ln -s generic-linux.mc sendmail.mc 				&&
+  sh Build sendmail.cf               				&&
+  sh Build install-cf                				&&
+  cd ../..                           				&&
+  sh Build 	                     				&&
+  prepare_install                    				&&
+  sh Build install                   				&&
+  mkdir         /usr/doc/sendmail    				&&
+  mkdir         /usr/doc/sendmail/cf 				&&
+  cp -r cf/cf*  /usr/doc/sendmail    				&&
+  cp -r contrib /usr/doc/sendmail    				
 
 ) > $C_FIFO 2>&1  &&  (
 
