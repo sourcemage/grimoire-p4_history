@@ -1,4 +1,12 @@
            SPELL=gnupg
+       BUILD_API=2
+if [ "$DEVEL" == "y" ];then
+        VERSION=1.3.6
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
+          MD5[0]=2c3f53665a1bc15c3a714258cb8cca17
+else
          VERSION=1.2.4
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -8,6 +16,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[3]=ftp://ftp.franken.de/pub/crypt/mirror/ftp.gnupg.org/gcrypt/$SPELL/$SOURCE
    SOURCE_URL[4]=ftp://ftp.linux.it/pub/mirrors/gnupg/$SPELL/$SOURCE
           MD5[0]=82bcfbff7b40b67c78ce287f174d88d2
+fi
         WEB_SITE=http://www.gnupg.org
          ENTERED=20010922
          UPDATED=20010922
