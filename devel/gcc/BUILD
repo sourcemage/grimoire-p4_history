@@ -1,6 +1,5 @@
 (
 
-  mk_source_dir  $SOURCE_DIRECTORY.bld  &&
   cd $SOURCE_DIRECTORY.bld              &&
 
   $SOURCE_DIRECTORY/configure           \
@@ -17,8 +16,6 @@
 
   ln    -sf  ../../../../bin/cpp  \
              /usr/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
-  ln    -sf  ../usr/bin/cpp  /lib/cpp              &&
-
-  rm_source_dir  $SOURCE_DIRECTORY.bld
+  ln    -sf  ../usr/bin/cpp  /lib/cpp
 
 ) > $C_FIFO 2>&1
