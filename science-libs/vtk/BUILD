@@ -56,8 +56,8 @@ make
 
 # java is a little broken for now
 #  if echo $OPTS| grep -q "with-java" ; then
-#     if spell_installed j2sdk ; then export JAVA_HOME=/usr/java/j2sdk; 
-#     elif spell_installed j2sdk-bin ; then export JAVA_HOME=/usr/lib/j2sdk1.4.1 ; 
+#     if spell_ok j2sdk ; then export JAVA_HOME=/usr/java/j2sdk; 
+#     elif spell_ok j2sdk-bin ; then export JAVA_HOME=/usr/lib/j2sdk1.4.1 ; 
 #     fi &&
 #  sedit "s/Java language.\" OFF/Java language.\" ON/" CMakeLists.txt  &&
 #  stupid thing fails first time on purpose ! so don't use && OK !
