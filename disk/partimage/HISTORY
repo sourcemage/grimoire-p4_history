@@ -1,3 +1,13 @@
+2005-01-28 Flavien Bridault <disk@sourcemage.org>
+        * DETAILS: Converted to BUILD_API 2
+          Removed MAINTAINER
+	* BUILD: Removed all stuff to PRE_BUILD
+	* PRE_BUILD: Added, changed Makefile.am sedit to
+	  Makefile.in sedit, since autogen.sh is no more
+	  launched ;-)
+	* partimage-0.6.1.patch: Removed since this stuff is
+	  done with sedit
+
 2004-02-29 Treeve Jelbert <treeve01@pi.be>
 	* BUILD: construct missing ./mkinstalldirs
 	  fixes bug #5808
