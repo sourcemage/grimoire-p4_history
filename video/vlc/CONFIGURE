@@ -1,0 +1,10 @@
+if  !  grep  -q  "FFMPEG"  $SPELL_CONFIG;  then
+
+  if    query  "Compile with ffmpeg for additional codec support?" y
+  then  FFMPEG=y
+  else  FFMPEG=n
+  fi
+
+  echo  "FFMPEG=$FFMPEG"  >>  $SPELL_CONFIG
+
+fi

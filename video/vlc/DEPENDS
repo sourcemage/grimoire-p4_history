@@ -121,10 +121,9 @@ optional_depends  "flac"                   \
                   "for flac audio decoder" &&
 
 # video codec options
-optional_depends  "ffmpeg"                 \
-                  "--enable-ffmpeg"        \
-                  ""                       \
-                  "for ffmpeg video decoder" &&
+if  [  "$FFMPEG"  =  "y"  ];  then
+  requires libavcodec
+fi  &&
 
 optional_depends  "xvid"                   \
                   "--enable-xvid"          \
