@@ -23,8 +23,10 @@
                $FRONTENDS                                 \
 	       $OPTS                                      &&
 
-  make  bootstrap                                         &&
-
+#  make  bootstrap                                         &&
+  make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
+       profiledbootstrap       &&
+#
   if  echo $FRONTENDS | grep -q ada; then
     # build ada tools and lib
     cd    gcc                &&
