@@ -1,5 +1,7 @@
 (
 
+  patch  -p1  <  $SCRIPT_DIRECTORY/sysklogd-1.4.1-kernel_header.patch  &&
+
   sedit  "s:BINDIR = /usr/sbin:BINDIR=/sbin:"  Makefile  &&
   make             &&
   prepare_install  &&
