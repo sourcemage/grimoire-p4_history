@@ -1,17 +1,14 @@
            SPELL=netpbm
-       # VERSION=9.18
-         VERSION=9.25
+         VERSION=10.8
           SOURCE=$SPELL-$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=e97081235570c39be10ddd296929ab08
         WEB_SITE=http://netpbm.sourceforge.net
          ENTERED=20010922
          UPDATED=20020510
-	MD5=cb8036f3649c93cf51ee377971ddbf1c
-	LICENSE=GPL
-	MAINTAINER=burududu@hotpop.com
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="netpbm contains 220 programs that convert graphics formats."
 cat << EOF
 NetPBM (formerly PBMplus) is a package of over 220 programs that convert
