@@ -1,11 +1,11 @@
            SPELL=php-dev
-         VERSION=4
+         VERSION=5.0
+             TAG=HEAD
           SOURCE=$SPELL-$VERSION.tar.bz2
           MD5[0]=IGNORE
       LICENSE[0]=http://www.php.net/license/3_0.txt
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:cvsread@cvs.php.net:/repository:php4:PHP_$VERSION
-# FORCE_DOWNLOAD=on
+   SOURCE_URL[0]=cvs://:pserver:cvsread@cvs.php.net:/repository:php${VERSION%%.*}:$TAG
         WEB_SITE=http://www.php.net/
          ENTERED=20020802
          UPDATED=20020918
