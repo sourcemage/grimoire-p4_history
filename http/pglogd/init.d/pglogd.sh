@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S33
+# SMGL-STOP:0 1 2 6:K11
+#
 
 case $1 in
      start|restart  )  echo      "$1ing pglogd - Apache web server logger."
