@@ -1,9 +1,9 @@
 depends  perl         &&
-depends  DBI          &&
-depends  Digest       &&
-depends  Digest-MD5   &&
+depends  dbi          &&
+depends  digest       &&
+depends  digest-md5   &&
 depends  HTML-Tagset  &&
-depends  Date-Parse   &&
+depends  date-parse   &&
 depends  HTML-Template &&
 depends  dbd-sqlite   
 
@@ -13,8 +13,3 @@ depends  dbd-sqlite
 
 #optional_depends dbd-sqlite    "" "" "new style popfile database(small)"&&
 #optional_depends dbd-interbase "" "" "new style popfile database(large)"
-
-
-# BerkeleyDB is only for existing popfile installations, which already 
-# have it installed, so we don't need a depends for it
-#optional_depends BerkeleyDB    "" "" "if upgrading a popfile-0.20.x database"
