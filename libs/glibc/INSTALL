@@ -10,9 +10,9 @@ if  [  "$CROSS_INSTALL"  =  "on"  ];  then
   if  [  "$GLIBC_NPTL"  =  "y"  ];  then
     sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/nptl/Makefile  &&
     sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/nptl/Makefile
- else
-   sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/linuxthreads/Makefile  &&
-   sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
+  else
+    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/linuxthreads/Makefile  &&
+    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
   fi
 fi  &&
 

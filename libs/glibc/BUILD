@@ -56,10 +56,11 @@ if  [  "$GLIBC_NPTL"  =  "y"  ];  then
   cd  $GLIBC_HEADERS_DIR/include  &&
   ln  -sf  asm-$GLIBC_ARCH  asm
 else
-  cd  $GLIBC_HEADERS_DIR                       &&
-  ln  -sf  asm-generic  include                &&
-  cd  include                                  &&
-  ln  -sf  ../asm-$GLIBC_ARCH  asm
+  cd  $GLIBC_HEADERS_DIR              &&
+  ln  -sf  asm-generic  include       &&
+  cd  include                         &&
+  ln  -sf  ../asm-$GLIBC_ARCH  asm    &&
+  ln  -sf  ../linux            linux
 fi  &&
 #
 # End sanitised glibc-kernel-headers setup
