@@ -1,16 +1,15 @@
            SPELL=pavuk
-         VERSION=0.9pl28
-          SOURCE=$SPELL-$VERSION.tgz
-          MD5[0]='499e3f21b3119b6b9097415fef4f558d'
+         VERSION=0.9.31
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.idata.sk/~ondrej/sw/$SOURCE
-   SOURCE_URL[1]=http://www.pavuk.org/sw/$SOURCE
-   SOURCE_URL[2]=http://www.doc.cs.univ-paris8.fr/mirrors/pavuk/sw/$SOURCE
-        WEB_SITE=http://www.idata.sk/~ondrej/pavuk/
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]='f9574576d9467f0fff75bdcf6205ae95'
+        WEB_SITE=http://pavuk.sourceforge.net/
+      LICENSE[0]=GPL
          ENTERED=20020219
          UPDATED=20020219
-      MAINTAINER=eric@schabell.com
-           SHORT="Pavuk is a Web grabber with an optional GTK GUI."
+           SHORT="Web grabber with an optional GTK GUI"
 cat << EOF
 Pavuk is a Web grabber with an optional GTK GUI, and optional support 
 for downloading with multiple threads. It supports the HTTP, HTTPS, 
