@@ -16,16 +16,13 @@ linux_new_uncompress()
 }
 
 
-if [[ "$mode" == "oldktree" ]]
+if [[ "$mode" == "oldktree" && -d ${LINUX_SOURCE_DIRECTORY} ]]
 then
-	if [ -d ${LINUX_SOURCE_DIRECTORY} ]
-	then
-		message "${MESSAGE_COLOR}Okay dir does exist${DEFAULT_COLOR}" 
-	else
-		message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
-		exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
-		mode="newktree"
-	fi &&
+	message "${MESSAGE_COLOR}Okay dir does exist${DEFAULT_COLOR}" 
+else
+	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
+	exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
+	mode="newktree"
 fi &&
 
 if [[ "$mode" == "newktree" ]]
@@ -56,7 +53,7 @@ then
 elif [[ "$mode" == "oldktree" ]]
 then
 	message "${MESSAGE_COLOR}mode is oldktree${DEFAULT_COLOR}" &&
-	cd $LINUX_SOURCE_DIRECTORY &&
+	cd $LINUX_SOURCE_DIRECTORY
 else
 	message "${PROBLEM_COLOR}I don't know what $mode is${DEFAULT_COLOR}" &&
 	return 1
@@ -81,9 +78,9 @@ then
 				MENUCONFIG_EXIT="y" 
 			else
 				MENUCONFIG_EXIT="n"
-			fi &&
-		done &&
+			fi 
+		done
 	else
 		ARCH=${kernel_arch} make $MAKEMODE
-	fi &&
+	fi
 fi

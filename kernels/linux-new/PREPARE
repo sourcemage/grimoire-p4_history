@@ -355,7 +355,6 @@ options_menu()
 			"Options Menu Yeah Fun" 0 0 0 \
 			"Clean" "Options" "Clean the Source Tree" \
 			"Arch" "Selection" "Select Arch Default is $ARCH" \
-			#"Optional" "Build Dir" "Build the source to an output directory" \
 			"Config" "Restoration" "Optional config restoration" \
 			"Other" "Packages" "Make an RPM or Debian Package" \
 			"Initrd" "Creation" "Make an bootable initrd" 
@@ -369,9 +368,6 @@ options_menu()
 					;;
 				"Arch")
 					arch_menu
-					;;
-				"Optional")
-					build_dir_menu
 					;;
 				"Other")
 					other_package_menu
@@ -656,8 +652,8 @@ create_details()
 	local counter="1"
 	case "$mode" in
 		*ktree)
-	                # add required smgl patches
-	                new_patch_list=""
+			# add required smgl patches
+			new_patch_list=""
 			for patch in $selected_patches
 			do
 				case "${patch}" in
@@ -665,7 +661,7 @@ create_details()
 						. ${patchesdir}/*/${!patch}
 					;;
 					*)
-						. ${patchesdir/*/${patch}
+						. ${patchesdir}/*/${patch}
 					;;
 				esac
 				if [ "$post_patch" != "" ]
@@ -675,7 +671,8 @@ create_details()
 					new_patches_list="${new_patches_list}${patch} "
 				fi
 			done
-			selected_patches="${new_patch_list}"
+			selected_patches="${new_patches_list}"
+			patches=""
 			calculate_depends
 			(
 			depends=""
