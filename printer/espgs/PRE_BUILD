@@ -6,3 +6,7 @@ then
 else
   default_pre_build
 fi
+
+rm  -f  ${SOURCE_DIRECTORY}/Makefile.in  &&
+cp  ${SOURCE_DIRECTORY}/src/Makefile.in  \
+    ${SOURCE_DIRECTORY}/Makefile.in
