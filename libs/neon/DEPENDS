@@ -1,3 +1,4 @@
-depends  libxml  &&
+depends  zlib   "--with-zlib"   &&
+depends  expat  "--with-expat"  &&
 
 optional_depends  openssl  "--with-ssl"  "--without-ssl"  "for SSL/TLS support"
