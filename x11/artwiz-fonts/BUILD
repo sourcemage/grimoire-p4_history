@@ -1,6 +1,6 @@
   rm -rf /tmp/artwiz-fonts                              &&
   cd /tmp                                               &&
-  unpack $SOURCE                                        &&
+  unpack $SOURCE ${MD5[0]}                              &&
 
 (
 
