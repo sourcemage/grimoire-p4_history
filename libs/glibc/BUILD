@@ -14,7 +14,7 @@
   then  export     CXXFLAGS="$CFLAGS -Os"
   fi                                          &&
   export  CFLAGS="$(  echo  $CFLAGS  |  sed  s/-ffast-math//  )"  &&
-  exprt CC=gcc                                &&
+  export CC=gcc                                &&
   $SOURCE_DIRECTORY/configure                 \
                --host=$BUILD                  \
                --build=$BUILD                 \
