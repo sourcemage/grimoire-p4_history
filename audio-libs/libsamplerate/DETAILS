@@ -1,16 +1,15 @@
            SPELL=libsamplerate
-         VERSION=0.1.0
+         VERSION=0.1.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://www.mega-nerd.com/SRC/$SPELL-$VERSION.tar.gz
-       WEB_SITE=http://www.mega-nerd.com/SRC
+   SOURCE_URL[0]=http://www.mega-nerd.com/SRC/$SPELL-$VERSION.tar.gz
+          MD5[0]=9c2c22d8874729e4a27a62e14c123df2
+        WEB_SITE=http://www.mega-nerd.com/SRC
          ENTERED=20031207
          UPDATED=20031207
-	LICENSE[0]=GPL
-      MAINTAINER=audio@sourcemage.org
-	MD5[0]=d7b157fe48086caac50ac5ebf6b154be
-	SHORT="Secret Rabbit Code (aka libsamplerate) is a Sample Rate 
-Converter for audio."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Secret Rabbit Code is a Sample Rate Converter for audio."
 cat << EOF
 Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for 
 audio. One example of where such a thing would be useful is 
