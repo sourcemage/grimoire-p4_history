@@ -5,6 +5,10 @@
   SEARCHFORM=search.html
   WEBPREFIX=/htdig
 
+  export CPPFLAGS="-Wno-deprecated $CPPFLAGS"
+  export CFLAGS="-Wno-deprecated $CFLAGS"
+  export CXXFLAGS="-Wno-deprecated $CXXFLAGS"
+
   ./configure  --prefix=/usr                      \
                --sysconfdir=/etc                  \
                --with-config-dir=$HTDIGDIR/conf   \

@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.1 2002/08/20 14:20:14 sergeyli Exp $
+# $Id: BUILD,v 1.2 2002/09/06 01:03:41 sergeyli Exp $
 (
 	message "${MESSAGE_COLOR}Phase 1. Checking out the source${DEFAULT_COLOR}" &&
 
@@ -8,10 +8,8 @@
 	pushd srclib/                              &&
 	cvs -z 9 ex -f -r HEAD apr                 &&
 	cvs -z 9 ex -f -r HEAD apr-util            &&
-	cd ../modules/                             &&
-	cvs -z 9 ex -f -r HEAD httpd-ldap          &&
-	cd httpd-ldap/                             &&
-	patch -p0 < $SCRIPT_DIRECTORY/LDAPv3.patch &&
+	cd ../modules/experimental/                &&
+	patch -p1 < $SCRIPT_DIRECTORY/LDAPv3.patch &&
 	popd                                       &&
 
 	message "${MESSAGE_COLOR}Phase 2. Building${DEFAULT_COLOR}" &&
