@@ -38,7 +38,7 @@ function mk_mailman_dir() {
   if [ ! -f $CONF/mm_cfg.py ];  then
     mv -f $PREFIX/Mailman/mm_cfg.py $CONF/
   fi &&
-  ln -fns $CONF/mm_cfg.py $PREFIX/Mailman/ &&
+  ln -fns $CONF/mm_cfg.py $PREFIX/Mailman/
 
 ) > $C_FIFO 2>&1 && (
  
