@@ -8,5 +8,5 @@ optional_depends tcl \
                  'for TCL interface generation' &&
 
 if grep -q "JAVADB='--enable-java'" $SPELL_CONFIG; then
-  requires java 
+  depends  JAVA
 fi
