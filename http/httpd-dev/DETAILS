@@ -1,16 +1,17 @@
-# $Id: DETAILS,v 1.6 2002/12/08 19:46:34 sergeyli Exp $
+# $Id: DETAILS,v 1.7 2003/01/07 19:02:09 sergeyli Exp $
            SPELL=httpd-dev
-         VERSION=STRIKER_2_0_44_PRE1
+         VERSION=2.0.44_PRE2
+             TAG=STRIKER_${VERSION//\./_}
           SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]=ff4db620057b499a6651e6eed670e22d
+          MD5[0]='966ae1d6cde0d96a07d85548d78bbb78'
          SOURCE2=$SPELL-apr-$VERSION.tar.bz2
-          MD5[1]=d1326609d6876792be3d72932b663176
+          MD5[1]='d015b90523b9d39b9e57ed909db1c4e7'
          SOURCE3=$SPELL-apr-util-$VERSION.tar.bz2
-          MD5[2]=72157fdfc344b596ad52371fee46b61e
+          MD5[2]='9944b3d316d1537459f18a2b9950b1c8'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:httpd-2.0:$VERSION
-  SOURCE2_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:$VERSION
-  SOURCE3_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr-util:$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:httpd-2.0:$TAG
+  SOURCE2_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:$TAG
+  SOURCE3_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr-util:$TAG
         WEB_SITE=http://httpd.apache.org/
          ENTERED=20020802
          UPDATED=20020916
