@@ -1,7 +1,7 @@
            SPELL=gaim
           SPELL2=gaim-encryption
-         VERSION=${VERSION:=0.78}
-        VERSION2=${VERSION2:=2.26}
+         VERSION=${VERSION:=0.79}
+        VERSION2=${VERSION2:=2.27}
 if [ "$CVS" = "yes" ]; then
          VERSION=cvs
         VERSION2=cvs
@@ -17,8 +17,8 @@ else
          SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
-          MD5[0]=b54b50cce0dc222e7d0f5cb225fab21c
-          MD5[1]=0895c7a0aa8183e6a6696d29b0a78eeb
+          MD5[0]='7a629f9c7970280120a4b78d5105b946'
+          MD5[1]='4f1956e73ae944c6512c4134f0d228db'
       LICENSE[2]=GPL
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
