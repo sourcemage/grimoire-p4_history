@@ -1,14 +1,13 @@
            SPELL=amarok
-         VERSION=1.0-beta1
+         VERSION=1.0
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%_RC*}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
-          MD5[0]=0ba337567efff8b415a1aa33af102b6a
+          MD5[0]=0aacd88d153f267c2f8a3c6fc1ff0edd
         WEB_SITE=http://amarok.sourceforge.net/
          ENTERED=20040105
          UPDATED=20040105
       LICENSE[0]=GPL
-      MAINTAINER=kernels@sourcemage.org
            SHORT="a new media player for KDE"
 cat << EOF
 There are many media players around these days, true. What's missing from
