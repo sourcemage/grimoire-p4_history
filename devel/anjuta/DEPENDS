@@ -2,6 +2,9 @@ depends  libgnomeprintui  &&
 depends  gnome-vfs2       &&
 depends  pcre             &&
 depends  vte              &&
-
+if [ "$CVS_CHECKOUT" == "y" ]
+then
+	depends gdl
+fi
 optional_depends  "gdb"  ""  ""  "for the GNU Debugger"  &&
 optional_depends  "indent"  ""  ""  "for source code formatting"
