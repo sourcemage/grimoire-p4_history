@@ -1,0 +1,27 @@
+           SPELL=bing
+         VERSION=1.1.3
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.fibrespeed.net/~mbabcock/mirrors/bing/$SOURCE
+        WEB_SITE=http://www.cnam.fr/reseau/bing.html
+          MD5[0]=579cf4dd1444c4a020122b7104bb43f0
+      LICENSE[0]=BSD
+      MAINTAINER=phane@langochat.net
+         ENTERED=20030206
+         UPDATED=20030206
+           SHORT="Bing is a point-to-point bandwidth measurement tool (hence the 'b'), based on ping."
+cat << EOF
+Bing is a point-to-point bandwidth measurement tool (hence the 'b'), based on ping. It is written by Pierre Beyssac <pb@fasterix.freenix.fr>. 
+
+Bing determines the real (raw, as opposed to available or average) throughput on a link by measuring ICMP echo requests roundtrip times for different packet sizes for each end of the link. 
+
+Suppose we are on host A and want to know the throughput between L1 and L2, two extremities of a point-to-point link. 
+
+        A ----( the Internet )--- L1 --- L2
+
+If we know the rtt (roundtrip time) between A and L1, and the rtt between A and L2, we can deduce the rtt between L1 and L2. 
+
+If we do that for two different packet sizes, we can compute the raw capacity (bps) of the link. 
+
+Note that bing can also be used to have an idea of ethernet cards performance.
+EOF
