@@ -1,15 +1,15 @@
-           SPELL=PyPanel
+           SPELL=pypanel
          VERSION=1.2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=PyPanel-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/PyPanel-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/pypanel/$SOURCE
           MD5[0]=bf602a65bea522276f5b1889d5be2f8a
         WEB_SITE=http://pypanel.sourceforge.net/
-      MAINTAINER=rgeorge@yatusabes.com
       LICENSE[0]=GPL
          ENTERED=20040709
          UPDATED=20040709
-           SHORT="PyPanel taksbar"
+       BUILD_API=2
+           SHORT="PyPanel taskbar"
 
 cat << EOF
 PyPanel is a lightweight panel/taskbar written in Python and C for X11 window managers. It can be easily customized to match any desktop theme or taste.
