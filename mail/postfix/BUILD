@@ -28,7 +28,7 @@
   make  "CC=gcc"               \
         "OPT=$CFLAGS"          \
         "AUXLIBS=$AUXLIBS"     \
-        "CCARGS=CCARGS"        				&&
+        "CCARGS=$CCARGS"       				&&
 
   prepare_install              				&&
 
