@@ -1,8 +1,47 @@
-cd  /usr/src/linux
+cd  ${INSTALL_ROOT}/usr/src/linux
+
+
+if  [[ $HOST != "" ]]; then
+  case  ${HOST}  in
+         alpha-*) ARCH=alpha   ;;
+           arm-*) ARCH=arm     ;;
+          cris-*) ARCH=cris    ;; 
+          ia64-*) ARCH=ia64    ;;
+          i*86-*) ARCH=i386    ;;
+          m68k-*) ARCH=m68k    ;;
+          mips-*) ARCH=mips    ;;
+        mips64-*) ARCH=mips64  ;;
+        parisc-*) ARCH=parisc  ;;
+       powerpc-*) ARCH=ppc     ;;
+     powerpc64-*) ARCH=ppc64   ;;
+          s390-*) ARCH=s390    ;;
+         s390x-*) ARCH=s390x   ;;
+           sh*-*) ARCH=sh      ;;
+         sparc-*) ARCH=sparc   ;;
+       sparc64-*) ARCH=sparc64 ;;
+        x86_64-*) ARCH=x86_64  ;;
+  esac
+
+  if  [[ $HOST != $BUILD ]]; then
+    CROSS_COMPILE="${HOST}-"
+  fi
+fi
+
+echo "ARCH is '${ARCH}', CROSS_COMPILE is '${CROSS_COMPILE}'"
+
+run_make() {
+  make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} INSTALL_MOD_PATH=${INSTALL_ROOT} "$@"
+}
+  
+run_make  mrproper
+
+if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
+  cp $CONFIG_CACHE/kernel.config .config
+fi
 
 while
   case  $CONFIG_KERNEL in
-    y|Y)  make  menuconfig
+    y|Y)  run_make  menuconfig
           if  query  "Repeat menuconfig?  "  n
           then  CONFIG_KERNEL=y
           else  CONFIG_KERNEL=n
@@ -16,10 +55,10 @@ done
 
 backup_modules()  {
 
-  if    [  -d  /lib/modules/$VERSION      ];  then
-    rm   -rf   /lib/modules/$VERSION.old
-    mv         /lib/modules/$VERSION      \
-               /lib/modules/$VERSION.old
+  if    [  -d  ${INSTALL_ROOT}/lib/modules/$VERSION      ];  then
+    rm   -rf   ${INSTALL_ROOT}/lib/modules/$VERSION.old
+    mv         ${INSTALL_ROOT}/lib/modules/$VERSION      \
+               ${INSTALL_ROOT}/lib/modules/$VERSION.old
   fi
 
 }
@@ -31,29 +70,32 @@ backup_modules()  {
   # That leads to troubles on a localized system (if "install:" is translated)
 
   unset LANG
+  
 
-  yes  n  |  make  oldconfig
+  yes  n  |  run_make   oldconfig
   cp  .config  $CONFIG_CACHE/kernel.config
-  make  dep               &&
-  case  ${BUILD}  in
-    sparc*-linux-gnu)  make  vmlinux ||  exit  1 ;;
-                   *)  make  bzImage ||  exit  1 ;;
+  run_make  dep               &&
+  case  ${HOST}  in
+    sparc*-linux-gnu)  run_make  vmlinux ||  exit  1 ;;
+                   *)  run_make  bzImage ||  exit  1 ;;
   esac
 
   # Only install modules if module support is wanted
   if  grep  -q "CONFIG_MODULES=y"  .config;  then
-    make   modules          &&
-    backup_modules          &&
-    prepare_install         &&
-    make   modules_install  ||  exit  1;
+    run_make   modules       &&
+    backup_modules           &&
+    prepare_install                      &&
+    run_make   modules_install  ||  exit  1;
   else
     prepare_install         ||  exit  1;
   fi
 
+  mkdir  -p  ${INSTALL_ROOT}/boot
+
   case  $BUILD  in
-   powerpc-linux-gnu)  cp                 vmlinux  /boot/vmlinubz-$VERSION  ;;
-    sparc*-linux-gnu)  gzip  -c9       vmlinux  >  /boot/vmlinuz-$VERSION   ;;
-                   *)  cp  arch/i386/boot/bzImage  /boot/vmlinubz-$VERSION  ;;
+   powerpc-linux-gnu)  cp                 vmlinux  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
+    sparc*-linux-gnu)  gzip  -c9       vmlinux  >  ${INSTALL_ROOT}/boot/vmlinuz-$VERSION   ;;
+                   *)  cp  arch/i386/boot/bzImage  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
   esac
 
 ) > $C_FIFO 2>&1
