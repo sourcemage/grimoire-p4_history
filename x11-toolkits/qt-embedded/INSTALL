@@ -1,6 +1,9 @@
-default_install  &&
-ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so  &&
-ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so               &&
+default_install                                        &&
+ln  -sf  ${INSTALL_ROOT}/usr/lib/libqte.so.${VERSION}  \
+         $INSTALL_ROOT/usr/lib/libqte.so               &&
+
+ln  -sf  ${INSTALL_ROOT}/usr/lib/libqte.so             \
+         $INSTALL_ROOT/usr/lib/libqt.so                &&
 
 mkdir -p ${INSTALL_ROOT}/etc/profile.d/   &&
 install -m 0644 $SCRIPT_DIRECTORY/qt.sh   \
@@ -12,4 +15,4 @@ sed -e 's/QTDIR)\/include/QTDIR)\/include\/qt/'                 \
 
 # The qmake program is installed incorrectly by make install.
 rm /usr/bin/qmake  &&
-install -m 0755 qmake/qmake /usr/bin
+install  -m  0755  qmake/qmake  /usr/bin
