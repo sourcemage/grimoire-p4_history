@@ -4,7 +4,7 @@
     *)    IPV6="--with-ipv6" 	 ;;
   esac
 
-  ./configure $IPV6 --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-root-check  &&
+  ./configure $IPV6 --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-root-check  --enable-workarounds-for-imap-client-bugs &&
 
   make                                &&
   prepare_install                     &&
