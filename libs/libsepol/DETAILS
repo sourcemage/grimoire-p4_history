@@ -1,0 +1,14 @@
+           SPELL=libsepol
+         VERSION=1.0
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.nsa.gov/selinux/archives/${SOURCE}
+          MD5[0]=
+        WEB_SITE=http://www.nsa.gov/selinux/
+         ENTERED=20040917
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="NSA SELinux policy library"
+cat << EOF
+This archive contains the libsepol library to work with binary policies.
+EOF
