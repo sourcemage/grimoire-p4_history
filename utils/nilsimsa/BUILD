@@ -1,8 +1,8 @@
 (
 
-  ./configure       &&
-  make              &&
-  prepare_install   &&
+  ./configure $OPTS      &&
+  make              	 &&
+  prepare_install   	 &&
   make install
 
 ) > $C_FIFO 2>&1

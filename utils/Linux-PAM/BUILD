@@ -5,7 +5,7 @@
     export  HAVE_SGML2LATEX=no
   fi
 
-  ./configure  --enable-read-both-confs        &&
+  ./configure  --enable-read-both-confs $OPTS  &&
   sedit  "s/examples//"  Makefile              &&
   sedit  "s/read yes//"     conf/install_conf  &&
   sedit  "s/read yes//"  modules/install_conf  &&

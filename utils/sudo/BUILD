@@ -4,7 +4,8 @@ EDITOR=`which  nano`                  &&
 (
 
   ./configure  --prefix=/usr          \
-               --with-editor=$EDITOR  &&
+               --with-editor=$EDITOR  \
+               $OPTS		      &&
   make                                &&
   prepare_install                     &&
   make    install

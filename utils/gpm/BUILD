@@ -1,6 +1,6 @@
 (
 
-  ./configure  --prefix=/usr                         &&
+  ./configure  --prefix=/usr  $OPTS                  &&
   sedit  "s/src doc contrib/src contrib/"  Makefile  &&
   make                                               &&
   prepare_install                                    &&

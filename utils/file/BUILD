@@ -2,7 +2,8 @@
 
   ./configure  --build=$BUILD             \
                --prefix=/usr              \
-               --datadir=/usr/share/misc  &&
+               --datadir=/usr/share/misc  \
+	       $OPTS			  &&
   make                                    &&
   prepare_install                         &&
   make    install

@@ -1,7 +1,8 @@
 (
 
   ./configure --datadir=/share  \
-              --mandir=/man     &&
+              --mandir=/man     \
+	      $OPTS		&&
 
   make                          &&
   prepare_install               &&

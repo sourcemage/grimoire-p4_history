@@ -1,6 +1,6 @@
 (
 
-  ./configure  --prefix=/usr 		\
+  ./configure  --prefix=/usr $OPTS	\
   --sysconfdir=/etc          		\
   --localstatedir=/var	     		\
   --enable-fpu               		\
