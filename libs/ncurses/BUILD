@@ -1,7 +1,6 @@
 (
 
-  sedit  "55s/(_IO_va_list)//"  c++/cursesw.cc
-  sedit  "77s/(_IO_va_list)//"  c++/cursesw.cc
+  patch  -p1  <  $SCRIPT_DIRECTORY/ncurses-5.2-gcc31.patch
 
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
