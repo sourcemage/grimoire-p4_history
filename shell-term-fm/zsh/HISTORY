@@ -1,3 +1,14 @@
+2004-07-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* POST_INSTALL, FINAL: moved POST_INSTALL to FINAL for build_api 2
+	* BUILD, INSTALL: split for build_api 2
+	* DETAILS: updated UPDATED for the zprofile change
+	* zshenv: export TMP and TMPDIR (bug #6875), don't unset path, so
+	  the paths added by profile.d/* isn't overwritten
+
+2004-05-15 Clement Mathieu <cykl@mAdchAt.org>
+	* zprofile: added
+	* BUILD: zprofile added
+
 2004-04-22 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 4.2.0
 	* functions/*: lots of cleanups and fixes
