@@ -1,9 +1,9 @@
 (
   ./bootstrap                         &&
-  configure  --enable-shared          \
-             --disable-vorbistest     \
-             --disable-rpath          \
-             $OPTS                    &&
+  ./configure  --enable-shared        \
+               --disable-vorbistest   \
+               --disable-rpath        \
+               $OPTS                  &&
   make                                &&
   prepare_install                     &&
   make install
