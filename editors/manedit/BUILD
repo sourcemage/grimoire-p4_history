@@ -1,11 +1,7 @@
-(
-
   ./configure  Linux               \
                --prefix=/usr       \
                --CFLAGS="$CFLAGS"  \
                $OPTS               &&
-  make                             &&
-  prepare_install                  &&
-  make    install
+  make
 
-) > $C_FIFO 2>&1
+
