@@ -1,13 +1,14 @@
             SPELL=apmd
-         VERSION=3.0.2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=http://www.worldvisions.ca/~apenwarr/apmd/$SOURCE
-          MD5[0]=3dd14006a680ddea5b071cf429c07013
+         VERSION=3.2.2
+          SOURCE=${SPELL}_${VERSION}.orig.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION.orig
+   SOURCE_URL[0]=ftp://ftp.debian.org/debian/pool/main/a/apmd/$SOURCE
+          MD5[0]=c145b51e352c0c59e4e110db4bccdd27
         WEB_SITE=http://www.worldvisions.ca/~apenwarr/apmd/
          ENTERED=20020404
          UPDATED=20030822
       LICENSE[0]=GPL
+       BUILD_API=2
       MAINTAINER=djcomputer@gmx.net
            SHORT="Linux APM Daemon"
 cat << EOF
