@@ -1,7 +1,7 @@
 (
 
-  sedit "s/ri.##v/ri.v/g" $SOURCE_DIRECTORY/plug-ins/python/pydia-geometry.c &&
-  sedit "s/rf.##v/rf.v/g" $SOURCE_DIRECTORY/plug-ins/python/pydia-geometry.c &&
+#  sedit "s/ri.##v/ri.v/g" $SOURCE_DIRECTORY/plug-ins/python/pydia-geometry.c &&
+#  sedit "s/rf.##v/rf.v/g" $SOURCE_DIRECTORY/plug-ins/python/pydia-geometry.c &&
 
   ./configure  --build=$BUILD                       \
                --prefix=${INSTALL_ROOT}/usr         \
