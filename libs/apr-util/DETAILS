@@ -1,17 +1,17 @@
            SPELL=apr-util
-         VERSION=0.9.3
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.9.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.apache.org/dist/apr/testing/$SOURCE
-   SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
-   SOURCE_URL[2]=http://www.apache.org/dist/apr/old/$SOURCE
-          MD5[0]=a88bc5c5d73fc43ffe650cddb3621589
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr-util:APACHE_2_0_46
+#  SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+          MD5[0]=IGNORE
         WEB_SITE=http://apr.apache.org/
       MAINTAINER=rycee@home.se
       LICENSE[0]=APACHE
          ENTERED=20030302
-         UPDATED=20030302
-           SHORT="Apache Portable Runtime Utility Library"
+         UPDATED=20030704
+           SHORT='Apache Portable Runtime Utility Library'
 cat << EOF
-Apache Portable Runtime Utility Library.
+Apache Portable Runtime Utility library provides various services
+on top of APR.
 EOF

@@ -1,4 +1,0 @@
-# Need to fix some crazy paths
-FIX_PATH_REGEX='s!/usr/src/apr-[^/"]*!/usr/share/apr!'
-sedit  $FIX_PATH_REGEX  /usr/bin/apr-config  &&
-sedit  $FIX_PATH_REGEX  /usr/share/apr/build/apr_rules.mk

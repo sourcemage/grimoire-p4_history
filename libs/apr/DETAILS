@@ -1,17 +1,16 @@
            SPELL=apr
-         VERSION=0.9.3
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.9.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.apache.org/dist/apr/testing/$SOURCE
-   SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
-   SOURCE_URL[2]=http://www.apache.org/dist/apr/old/$SOURCE
-          MD5[0]=f567a463d4702be3784c16b4bfbdc16f
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:APACHE_2_0_46
+#  SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+          MD5[0]=IGNORE
         WEB_SITE=http://apr.apache.org/
       MAINTAINER=rycee@home.se
       LICENSE[0]=APACHE
          ENTERED=20030302
-         UPDATED=20030302
-           SHORT="The Apache Portable Runtime (APR) library."
+         UPDATED=20030704
+           SHORT='The Apache Portable Runtime (APR) library'
 cat << EOF
 The mission of the Apache Portable Runtime (APR) is to provide a free library
 of C data structures and routines, forming a system portability layer to as
