@@ -1,8 +1,7 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/libebml-gcc3.3.patch
-
   cd  make/linux   &&
+  sedit  "s:/usr/local:${INSTALL_ROOT}/usr:"  Makefile  &&
   make  INSTALL_ROOT=${INSTALL_ROOT}  &&
   prepare_install                     &&
   make  INSTALL_ROOT=${INSTALL_ROOT}  install
