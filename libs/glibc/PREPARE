@@ -1,22 +1,5 @@
-if ! grep -q /sbin/ldconfig $PROTECTED
-then echo "/sbin/ldconfig" >> $PROTECTED
-fi 
+if  [[  $(uname -r)  =  2.6.*  ]];  then
+  config_query  GLIBC_NPTL  "As you are running a 2.6 kernel, would you like to use the new nptl (Native Posix Thread Libary)?"  y
+fi  &&
 
-if ! grep -q NPTL $SPELL_CONFIG 
-   then NPTL=no && 
-   if [[ $(uname -r) == 2.6.* ]] 
-      then if query "As you are running a 2.6 kernel, would you like to use the new nptl 
-           (Native Posix Thread Library)" y
-              then NPTL=yes
-           fi
-   fi  
-echo NPTL=$NPTL >> $SPELL_CONFIG 
-fi
-if ! grep -q UTF $SPELL_CONFIG 
-   then UTF=no && 
-   if query "Would you like to generate UTF-8 locale data (Unicode) as well as the native charset data ?" n
-              then UTF=yes
-   fi  
-echo UTF=$UTF >> $SPELL_CONFIG 
-fi
-
+config_query  GLIBC_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the  native charset data?"  n

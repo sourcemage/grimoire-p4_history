@@ -1,33 +1,36 @@
            SPELL=glibc
-         VERSION=${VERSION:=2.3.2}
-if [ "$NPTL" = "yes" ] ; then
-         VERSION=2.3.3 #snapshot prerelease 
-          SOURCE=$SPELL-20040628.tar.bz2 
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-20040628
-   SOURCE_URL[0]=http://download.sourcemage.org/mirror/$SOURCE 
-          MD5[0]=76829920b1fd530bdc714b5dd2422048
-    DISTCC_HOSTS= 
-else     VERSION=2.3.2
-          SOURCE=$SPELL-$VERSION.tar.bz2 
+         VERSION=2.3.4
+if  [  "$GLIBC_NPTL"  =  "y"  ];  then
+         #snapshot prerelease 
+ HEADERS_VERSION=2.6.10.0
+         SOURCE2=linux-libc-headers-$HEADERS_VERSION.tar.bz2
+  SOURCE2_URL[0]=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE2
+          MD5[1]=870235543dd8f358453e19a90165054b
+else
+ HEADERS_VERSION=2.4.24
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2 
-         SOURCE3=${SPELL}-${VERSION}.patch.bz2 
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
-   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE 
-   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE 
+         SOURCE3=$HEADERS_VERSION-kernel-headers.tar.bz2
   SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2 
   SOURCE2_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE2 
-  SOURCE3_URL[0]=http://download.sourcemage.org/mirror/${SOURCE3} 
-          MD5[0]=3d5d27ea7774a5f358b6fa8b56bd8ab3 
-          MD5[1]=8120b2efd845b49e3a17d79df8239d4c 
-          MD5[2]=767ad0e00360cf13d68f74e05f62e3af
+  SOURCE3_URL[0]=http://download.sourcemage.org/mirror/$SOURCE3
+          MD5[1]=f8a65adaf20025d0fdf531ba94d8f022
+          MD5[2]=e39bbcb45b828deaef298266a44825e7
 fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
+          SOURCE=$SPELL-$VERSION.tar.bz2 
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE 
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE 
+          MD5[0]=fa0b1a43ae3833e7381c791dceed6bd6
         WEB_SITE=http://www.gnu.org/software/libc
       LICENSE[0]=LGPL 
       LICENSE[1]=LGPL 
-      LICENSE[2]=LGPL 
+      LICENSE[2]=GPL
+    DISTCC_HOSTS= 
+      MAKE_NJOBS=1
+       BUILD_API=2
          ENTERED=20010922
-         UPDATED=20040703
-           SHORT="glibc is a C library for use with GNU/Hurd and GNU/Linux."
+         UPDATED=20041123
+           SHORT="C library for use with GNU/Hurd and GNU/Linux"
 cat << EOF
 glibc - Library for use with GNU/Hurd and GNU/Linux.
 GNU C Library is one of the most important components of the GNU Hurd

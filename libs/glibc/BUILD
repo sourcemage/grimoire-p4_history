@@ -1,117 +1,111 @@
-(
-  ### bug#5570 ccache sometimes has trouble correctly recognising minor differences 
-  ### in configurations and doesn't force recompile when it should. This stops it from using the old cache entries.
-  export CCACHE_RECACHE=true                  &&
+#
+# bug#5570 ccache sometimes has trouble correctly recognising minor differences 
+# in configurations and doesn't force recompile when it should. This stops it from
+# using the old cache entries.
+#
+export  CCACHE_RECACHE=true  &&
+#
+# End ccache fix
+#
 
-  ### remove these from this spells log then
-  ### in case glibc had provided these headers before
-    for i in $INSTALL_LOGS/glibc*
-    do if [ -f $i ] ; then sedit '/\/usr\/include\/asm/D' $i      &&
-       sedit '/\/usr\/include\/linux/D' $i
-       fi
-    done                                      &&
-  ###
+if  [  "$GLIBC_NPTL"  =  "y"  ];  then
+  OPTS="$OPTS  --enable-add-ons=nptl  \
+               --with-tls             \
+               --enable-kernel=2.6"
+else
+  OPTS="$OPTS  --enable-add-ons=linuxthreads  \
+               --enable-kernel=2.4"
+fi  &&
 
+if  !  echo  "$CFLAGS"  |  grep  -q  --  "-O";  then
+  export  CFLAGS="$CFLAGS  -Os"
+fi  &&
 
-  if [ "$NPTL" = "yes" ] 
-  then OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=2.6"  &&
-       patch -p0 < $SCRIPT_DIRECTORY/glibcshared.patch
-  else OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel=2.4" &&
-  ### Apply gcc 3.3 patch
-   bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1 
-  fi                                          &&
-  if ! echo "$CFLAGS" | grep -q -- "-O"
-  then export CFLAGS="$CFLAGS -Os"
-  fi                                          &&
-  if ! echo "$CXXFLAGS" | grep -q -- "-O"
-  then  export CXXFLAGS="$CFLAGS -Os"
-  fi                                          &&
-  export CFLAGS="$(echo $CFLAGS | sed s/-ffast-math// )"  &&
-  export CC=gcc                               &&
-  cd $SOURCE_DIRECTORY.bld                    &&
-  ### LD_LIBRARY_PATH includes $PWD bug 
-  unset LD_LIBRARY_PATH                       &&
-  $SOURCE_DIRECTORY/configure                 \
-               --host=$HOST                   \
-               --build=$BUILD                 \
-               --prefix=/usr   \
-               --infodir=/usr/share/info \
-               --mandir=/usr/share/man   \
-               --sysconfdir=/etc         \
-               --with-elf                     \
-               --enable-shared                \
-               --disable-profile              \
-               --with-headers="${INSTALL_ROOT}/usr/src/linux/include/" \
-               $OPTS			      &&
-  make                                        &&
-  if [ -z $INSTALL_ROOT ]; then
-    [[ $(uname -m) = ppc* ]]  &&
-    ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld.so.1  ||
-    ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld-linux.so.2
-  fi  &&
-  prepare_install                             &&
-  if [ "$CROSS_INSTALL" = "on" ] ; then
-  echo "prefix = ${INSTALL_ROOT}/usr" > configparms                                                &&
-  echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                                              &&
-  echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                                         &&
-  echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                                           &&
-  echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                                   &&
-  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                                        &&
-  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                    &&
-   if [ "$NPTL" = "yes" ]
-   then sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile             &&
-        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile
-   else sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile     &&
-        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile
-   fi
-  fi                                                                              &&
- ### making these symlinks and unsetting the (sorcery) preload of old libs should 
- ### finally fix the glibc install problems. 
- ### Had to add a check for saved libraries, as an empty log means none can be saved
- if [ -f $SOURCE_DIRECTORY/old.libraries/ld-*.so ] ; then
-  . /$SCRIPT_DIRECTORY/makelinks              &&
-  make_install_links                          &&
-  unset  LD_LIBRARY_PATH                      &&
- ### must use -X or ldconfig will relink to any alien files found in /lib or /usr/lib
-  (  ldconfig -X ||  true  )                  
- fi                                           &&
+export  CFLAGS="${CFLAGS/-ffast-math/}"  &&
+export  CC=gcc                           &&
 
- ### glibc only installs these if the file differs
-  for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
-     do if [ -f $i ] ; then  rm -vf $i ; fi
-  done                                        &&
- ### INSTALL 
-  make  install                               &&
-  (  ldconfig  ||  true  )                    &&
+#
+# LD_LIBRARY_PATH includes $PWD bug 
+#
+unset  LD_LIBRARY_PATH  &&
 
- ### generate the localedef file from installed specs
-  if  [  -z  "$GLIBC_LOCALES"  ];  then
-    cat  $SCRIPT_DIRECTORY/locales-$VERSION  |
-    while  read  LOCALE  DESCRIPTION;  do
-      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
-        CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                 &&
-      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE		$DESCRIPTION " &&
-      localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE                              &&
-      if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
-         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8		$DESCRIPTION (UNICODE Charset)" &&
-              localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
-      fi
-    done
-    true
+#
+# Setup sanitised glibc-kernel-headers for the glibc compile
+#
+persistent_add  GLIBC_ARCH  &&
+if    [[  $(uname  -m)  =  *86_64    ]];  then
+  GLIBC_ARCH=x86_64
+elif  [[  $(uname  -m)  =  ppc       ]];  then
+  GLIBC_ARCH=ppc
+elif  [[  $(uname  -m)  =  *86       ]];  then
+  GLIBC_ARCH=i386
+elif  [[  $(uname  -m)  =  *sparc64  ]];  then
+  #
+  # If we're not compiling for 64-bit SPARC then we need to use the sparc
+  # headers, not sparc64
+  #
+  if  echo  "$CFLAGS"  |  grep  -q  --  "-m64";  then
+    GLIBC_ARCH=sparc64  &&
+    export  CC=gcc64
   else
-    for  LOCALE  in  $GLIBC_LOCALES;  do
-      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1` 
-        CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE &&
-      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE" &&
-      localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
-      if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
-         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8" &&
-              localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
-      fi
-    done
-    true
-  fi 
-) > $C_FIFO 2>&1
+    GLIBC_ARCH=sparc
+  fi  &&
 
+  #
+  # Fixes from Gentoo's 2.3.3.20040420-r2 ebuild
+  #
+  sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
+  export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export    CFLAGS="$CFLAGS  -fcall-used-g6"
+  export    CFLAGS="${CFLAGS/-mcpu=v9/}"
+  export    CFLAGS="${CFLAGS/-mtune=ultrasparc/}"
+  export    CFLAGS="${CFLAGS/-mvis/}"
+
+  # Setup the HOST properly to insure "sparcv9"
+  # This passes -mcpu=ultrasparc -Wa,-Av9a to the compiler
+  [  "$HOST"  =  "sparc-unknown-linux-gnu"  ]   &&  
+  export HOST="sparcv9-unknown-linux-gnu"       &&
+  [  "$BUILD"  =  "sparc-unknown-linux-gnu"  ]  &&  
+  export BUILD="sparcv9-unknown-linux-gnu"
+elif  [[  $(uname  -m)  =  *sparc    ]];  then
+  GLIBC_ARCH=sparc  &&
+  #
+  # Fixes from Gentoo's 2.3.3.20040420-r2 ebuild
+  #
+  sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
+  export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export    CFLAGS="$CFLAGS  -fcall-used-g6"
+fi  &&
+
+# set the asm headers to point to the correct architecture
+cd  $GLIBC_HEADERS_DIR/include  &&
+ln  -sf  asm-$GLIBC_ARCH  asm   &&
+
+# CPPFLAGS setting is needed so the check for cpp works on boxes that don't
+# have any kernel headers in /usr/include yet
+export CPPFLAGS="$CPPFLAGS -I$GLIBC_HEADERS_DIR/include"  &&
+#
+# End sanitised glibc-kernel-headers setup
+#
+
+#
+# Change to where we're going to actually build
+#
+cd  $SOURCE_DIRECTORY.bld  &&
+
+#
+# Configure glibc to use the sanitised headers
+# http://bugs.sourcemage.org/show_bug.cgi?id=7560
+#
+$SOURCE_DIRECTORY/configure  --host=$HOST                       \
+                            --build=$BUILD                      \
+                           --prefix=/usr                        \
+                          --infodir=/usr/share/info             \
+                           --mandir=/usr/share/man              \
+                       --sysconfdir=/etc                        \
+                             --with-elf                         \
+                           --enable-shared                      \
+                          --disable-profile                     \
+                     --with-headers=$GLIBC_HEADERS_DIR/include  \
+                                    $OPTS                       &&
+make

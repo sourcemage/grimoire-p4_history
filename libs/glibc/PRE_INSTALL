@@ -1,0 +1,23 @@
+lock_resources "libgrimoire" "install"  &&
+if [ -z $INSTALL_ROOT ]; then
+  mkdir $SOURCE_DIRECTORY.bld/old.libs  &&
+  local each  &&
+  for each in /lib/*; do
+    if test -f "$each"; then
+      cp "$each" $SOURCE_DIRECTORY.bld/old.libs
+    fi
+  done  &&
+  ldconfig $SOURCE_DIRECTORY.bld/old.libs  &&
+  local LD  &&
+  if [[ $(uname -m) = ppc* ]]; then
+    LD=$(readlink /lib/ld.so.1)  &&
+    ln -sf $SOURCE_DIRECTORY.bld/old.libs/$LD /lib/ld.so.1
+  else
+    LD=$(readlink /lib/ld-linux.so.2)  &&
+    ln -sf $SOURCE_DIRECTORY.bld/old.libs/$LD /lib/ld-linux.so.2
+  fi
+fi  &&
+
+if  spell_ok  glibc;  then
+  dispel  --notriggers  --nosustain  glibc
+fi
