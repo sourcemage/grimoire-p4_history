@@ -6,6 +6,7 @@
   # this spell used to be inside gphoto2, in case you are wondering.
 
   OPTS="$OPTS  --with-drivers=$DRIVER"
+  patch -p0 < $SCRIPT_DIRECTORY/cam.diff camlibs/ptp2/library.c	&&
   default_build  &&
   cd  doc  &&
   make  install-man
