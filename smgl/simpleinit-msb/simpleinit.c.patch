@@ -1,0 +1,13 @@
+diff -Nurp simpleinit-msb-1.1.orig/login-utils/simpleinit.c simpleinit-msb-1.1/login-utils/simpleinit.c
+--- simpleinit-msb-1.1.orig/login-utils/simpleinit.c	2004-01-10 17:00:59.000000000 +0100
++++ simpleinit-msb-1.1/login-utils/simpleinit.c	2004-01-10 21:38:58.000000000 +0100
+@@ -786,6 +786,10 @@ void read_inittab (void)
+ 		  err(_("unrecognized command in inittab\n"));
+ 		  continue;
+ 		} 
++
++		/* Initialize with something sane */
++		gettimeofday(&inittab[i].last_start, NULL);
++		inittab[i].last_start.tv_sec -= 10;				/* Don't trigger rate limiter */
+ 		
+ 		strcpy(inittab[i].line, buf);
