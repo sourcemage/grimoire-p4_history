@@ -389,3 +389,14 @@ diff -Nur linux-libc-headers-2.6.2.0/include/linux/config.h linux-libc-headers-2
 -#include <linux/err_kernel_only.h>
 -
 +#warning linux/config.h included in userspace! this should never be done.
+diff -Naur linux-libc-headers-2.6.2.0/include/linux/input.h linux-libc-headers-2.6.2.0-fixed/include/linux/input.h
+--- linux-libc-headers-2.6.2.0/include/linux/input.h	2004-02-12 09:00:12.000000000 +1100
++++ linux-libc-headers-2.6.2.0-fixed/include/linux/input.h	2004-02-28 16:50:12.986868680 +1100
+@@ -190,6 +190,7 @@
+ #define KEY_KP3			81
+ #define KEY_KP0			82
+ #define KEY_KPDOT		83
++#define KEY_103RD		84
+ 
+ #define KEY_ZENKAKUHANKAKU	85
+ #define KEY_102ND		86
