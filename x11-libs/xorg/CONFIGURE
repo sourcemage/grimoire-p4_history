@@ -261,7 +261,7 @@ generate_host_def()  {
   fi  &&
 
   if  [  -z  "$XInputDrivers"  ];  then
-    echo  "#define XInputDrivers mouse"
+    echo  "#define XInputDrivers keyboard mouse"
   else
     XInputDrivers=`echo  $XInputDrivers  |  tr  '
 ' ' '`
