@@ -1,10 +1,10 @@
 (
 
-  if spell_installed libmrproject; then
+  if spell_ok libmrproject; then
   dispel libmrproject
   fi                                               &&
 
-  if spell_installed mrproject; then
+  if spell_ok mrproject; then
   dispel mrproject
   fi                                               &&
 
