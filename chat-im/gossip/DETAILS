@@ -1,15 +1,14 @@
            SPELL=gossip
-         VERSION=0.5
+         VERSION=0.7.4
           BRANCH=$(echo $VERSION | cut -d. -f1,2)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-        WEB_SITE=http://www.imendio.com/projects/gossip/
-          MD5[0]=c11ce37271f1905e1c2d0e5b64b2138f
+        WEB_SITE=http://gossip.imendio.org/
+          MD5[0]=86aebcf4e88fff629c14df7f53e06041
       LICENSE[0]=GPL
          ENTERED=20030823
          UPDATED=20030823
-      MAINTAINER=v.merkatz@gmx.net
            SHORT="Gossip aims at making Instant Messaging with Jabber as easy as possible"
 cat << EOF
 Gossip aims at making Instant Messaging with Jabber as easy as possible, while
