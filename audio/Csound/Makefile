@@ -4,7 +4,6 @@
 INCLUDE	= /usr/include
 LIB	= /usr/lib
 DEST	= /usr/bin
-SHARE	= /usr/share/csound
 MAN	= /usr/man
 MAN1	= $(MAN)/man1
 CAT1	= $(MAN)/cat1
@@ -12,7 +11,7 @@ CAT1	= $(MAN)/cat1
 
 CDEP =
 COBS =	$(COBJS)
-CC = cc
+CC = gcc
 # choose either -
 #	CDEP =			for UNIX
 #	COBS = $(COBJS)
@@ -24,7 +23,7 @@ CC = cc
 #	.c.o:
 #		$(CC) $(CFLAGS) -c $*.c -o $@
 
-DEFINES = -DWINDOWS -DRTAUDIO -DSFIRCAM -DSYS5 -DLINUX -DPIPES -DMACROS -DTCLTK
+DEFINES = -DWINDOWS -DRTAUDIO -DSFIRCAM -DSYS5 -DLINUX -DPIPES -DMACROS -DTCLTK -DIV_SCHED -DRWD_DBFS
 # choose any of -
 #	-DSYS5	    invoke System 5 headers (e.g. 'string.h' for 'strings.h')
 #	-DWINDOWS   include window system calls (X11, SGI, or FG graphics)
@@ -49,12 +48,8 @@ DEFINES = -DWINDOWS -DRTAUDIO -DSFIRCAM -DSYS5 -DLINUX -DPIPES -DMACROS -DTCLTK
 # If LINUX is defined, but the target is Linux on a big-endian architecture
 # (e.g., Linux on SPARC [not tested]), you should also define -
 #       -DLINUX_BE      Linux audio device handler for big-endian samples
-# Be sure to include 'LINUXaudio.o' under 'AUDOBJ' below as well.
-#                                  --  Jonathan Mohr  1995 Oct 17
 
-CFLAGS = -O3 -march=i686 -malign-loops=4 -malign-jumps=4 -ffast-math 
--fomit-frame-pointer -finline-functions -funroll-loops -DWITHx87 
-$(RPM_OPT_FLAGS) $(DEFINES)
+CFLAGS = $(FLAGS) -z $(OPTS) -falign-loops=4 -ffast-math -fomit-frame-pointer -finline-functions -funroll-loops -DWITHx87 $(RPM_OPT_FLAGS) $(DEFINES)
 #	-O		Simple optimisation
 #	-O2		to be more specific about the optimization level
 #	-f		compile single-precision floats (4.3,VAX,DEC-RISC)
@@ -69,16 +64,27 @@ $(RPM_OPT_FLAGS) $(DEFINES)
 #	+x		generate HP inline 68020 and 68881 code
 #	+Nd1200		expand SYS5 pass3 tablesize
 #	-DWITHx87	for fpt chip on LINUX
-#	-march=i686	Recommended for GNU/Linux
+#	-march=i586 -mcpu=i686	Recommended for GNU/Linux is PentiumIII/Athlon.#
+#			Still not clear for which processor this works
 #	-malign-loops=4	Recommended for GNU/Linux
 #	-malign-jumps=4	Recommended for GNU/Linux
+#       -malign-functions=4
+#       -fno-gcse -fno-strict-aliasing    (recommended bug-arounds for gcc 2.9x)
+#       -mfancy-math-387                  (may not be necessary, but safe to add)
+#       -ffast-math                       produces faster and smaller code, not
+#						 fully tested:
+#   these produce larger code, but may (or may not) be faster:
+#     -fomit-frame-pointer
+#     -finline-functions                  (N.B. do not use this with gcc 2.95.2)
+#     -funroll-loops                      (unfortunately this option generates
+#                                           much larger executables)
 #	-I/usr/demo/SOUND		to find SUN4.1 audio includes
 #	-I/usr/include/X11R4		to find HP X11 includes, v.4
 #	-I/usr/include/sys		to find NeXT malloc.h
 #	-I/usr/openwin/include		Solaris openwin interface
 #	-I/usr/demo/SOUND/include	Solaris sound interface
-
-LIBS =	-L /usr/X11R6/lib -lX11 -ltcl8.3 -ltk8.3 -lm 
+#       -I/usr/X11R6/include            non-RedHat distributions of Linux
+LIBS =	-L /usr/X11R6/lib -lX11 -ltcl8.3 -ltk8.3 -lm -ldl
 #	-lefence
 #	-lm		    		required
 #	-lX11				for X window calls
@@ -93,7 +99,9 @@ LIBS =	-L /usr/X11R6/lib -lX11 -ltcl8.3 -ltk8.3 -lm
 #	-lmidi				on NeXT, to find the midi support
 #	-lbsd				on old LINUX
 #	-L/usr/demo/SOUND/lib		on Solaris 2.4
-#	-L/usr/X11R6/li			on LINUX
+#	-L/usr/X11R6/lib		on LINUX
+# note: SuSE 7.3 users should use -ltcl8.3 -ltk8.3, but another
+# (probably better) solution is to create symbolic links
 
 WINSRC = winX11.c
 WINOBJ = winX11.o
@@ -191,11 +199,12 @@ CSRCH = pvlook.c scansyn.c sfont.c vbap.c vbap_four.c vbap_eight.c
 CSRCI = vbap_sixteen.c vbap_zak.c control.c bowedbar.c phisem.c sdif.c
 CSRCJ = sdif-mem.c babo.c ugmoss.c bbcut.c spat3d.c pvxanal.c mxfft.c
 CSRCK = pvsanal.c pstream.c pvfileio.c oscbnk.c scansynx.c oscils.c
-CSRCL = wave-terrain.c dnoise.c dnfft.c
-
+CSRCL = wave-terrain.c dnoise.c dnfft.c mididevice.c clfilt.c midiinterop.c
+CSRCM = dl_opcodes.c jpff_glue.c
 CSRCS =	$(CSRC1) $(CSRC2) $(CSRC3) $(CSRC4) $(CSRC5) $(CSRC6) $(CSRC7) \
 	$(CSRC8) $(CSRC9) $(CSRCA) $(CSRCB) $(CSRCC) $(CSRCD) $(CSRCE) \
-	$(CSRCF) $(CSRCG) $(CSRCH) $(CSRCI) $(CSRCJ) $(CSRCK) $(CSRCL)
+	$(CSRCF) $(CSRCG) $(CSRCH) $(CSRCI) $(CSRCJ) $(CSRCK) $(CSRCL) \
+	$(CSRCM)
 
 CSCM  = cscormai.o natben.o
 COBJ1 =	main.o argdecode.o musmon.o otran.o oload.o rdorch.o express.o
@@ -218,10 +227,12 @@ COBJH = pvlook.o scansyn.o sfont.o vbap.o vbap_four.o vbap_eight.o
 COBJI = vbap_sixteen.o vbap_zak.o control.o bowedbar.o phisem.o sdif.o 
 COBJJ = sdif-mem.o babo.o ugmoss.o bbcut.o spat3d.o pvxanal.o mxfft.o
 COBJK = pvsanal.o pstream.o pvfileio.o oscbnk.o scansynx.o oscils.o
-COBKL = wave-terrain.o dnoise.o dnfft.o
+COBKL = wave-terrain.o dnoise.o dnfft.o mididevice.o clfilt.o midiinterop.o
+COBJM = dl_opcodes.o jpff_glue.o
 COBJS =	$(COBJ1) $(COBJ2) $(COBJ3) $(COBJ4) $(COBJ5) $(COBJ6) $(COBJ7) \
 	$(COBJ8) $(COBJ9) $(COBJA) $(COBJB) $(COBJC) $(COBJD) $(COBJE) \
-	$(COBJF) $(COBJG) $(COBJH) $(COBJI) $(COBJJ) $(COBJK) $(COBKL)
+	$(COBJF) $(COBJG) $(COBJH) $(COBJI) $(COBJJ) $(COBJK) $(COBKL) \
+	$(COBJM)
 
 HDRS =  3Dug.h aiff.h aops.h bowed.h brass.h butter.h clarinet.h \
 	cmath.h complex.h convolve.h cs.h cscore.h dam.h diskin.h disprep.h \
@@ -239,7 +250,8 @@ HDRS =  3Dug.h aiff.h aops.h bowed.h brass.h butter.h clarinet.h \
 	ugsc.h fout.h sndinfUG.h scansyn.h sf.h sfont.h sfenum.h sftype.h \
 	vbap.h control.h bowedbar.h phisem.h sdif.h sdif-mem.h babo.h \
 	ugmoss.h bbcut.h spat3d.h pstream.h pvfileio.h pvxanal.h oscbnk.h \
-	scansynx.h oscils.h wave-terrain.h
+	scansynx.h oscils.h wave-terrain.h clfilt.h midiinterop.h opcode.h \
+	csdl.h
 
 PROGS   = csound
 SUBDIRS = anals utils1 utils2 utils3
@@ -273,12 +285,14 @@ makedb:	makedb.c text.h
 	$(CC) -o makedb makedb.c
 
 .c.o:
-	$(CC) $(CFLAGS) -c $*.c
+	$(CC) $(CFLAGS) -c $*.c -o $*.o
 
 ADSYNS = hetro 						#targets in anal/adsyn
 LPCS = lpanal						#targets in anal/lpc
 PVOCS = pvanal 						#targets in anal/pvoc
-ANALS = adsyns $(ADSYNS) lpcs $(LPCS) pvocs $(PVOCS)	#targets in anal
+CVL = cvanal						#targets in anal/convol
+#targets in anal
+ANALS = adsyns $(ADSYNS) lpcs $(LPCS) pvocs $(PVOCS) cvl $(CVL)
 anals $(ANALS):
 		cd anal; $(MAKE) $@
 
@@ -305,8 +319,6 @@ install:	$(PROGS) $(CSA) csound.a sdif2ad
 		-strip $(PROGS)
 		-rm $(DEST)/csound
 		cp $(PROGS) $(DEST)
-		[ -d "$(SHARE)" ] || mkdir -p "$(SHARE)"
-		cp csound.xmg $(SHARE)
 		-rm $(LIB)/libcsound.a
 		-cp csound.a $(LIB)/libcsound.a
 		cd anal; $(MAKE) install
@@ -400,5 +412,8 @@ distrib:	all Csound.tar.gz
 depend:
 	gcc -M $(DEFINES) $(CSRCS) $(CSMS) $(UTIL3) > deps
 	cat Makefile deps > makefile
+
+testlib.so: testlib.o
+	ld -E --shared testlib.o -o testlib.so
 
 # DO NOT DELETE THIS LINE
