@@ -3,7 +3,8 @@
   prepare_install  &&
   mkdir  -p        /usr/share/mplayer/Skin    &&
   cp     -R  Blue  /usr/share/mplayer/Skin    &&
-  chmod  755  /usr/share/mplayer/Skin/Blue   &&
-  chmod  644  /usr/share/mplayer/Skin/Blue/*
+  chmod  755  /usr/share/mplayer/Skin/Blue    &&
+  chmod  644  /usr/share/mplayer/Skin/Blue/*  &&
+  ln  -sf  /usr/share/mplayer/Skin/Blue  /usr/share/mplayer/Skin/default
 
 ) > $C_FIFO 2>&1
