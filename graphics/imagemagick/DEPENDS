@@ -1,6 +1,10 @@
 depends  freetype2  &&
 
-optional_depends  "graphviz"  "--with-dot=yes" "--with-dot=no" "for dot file support"  &&
+optional_depends  graphviz                \
+                  "--with-dot=yes"        \
+                  "--with-dot=no"         \
+                  "for dot file support"  &&
+
 optional_depends  libexif                      \
                   "--with-exif"                \
                   "--without-exif"             \
@@ -13,5 +17,7 @@ optional_depends  X11-LIBS                                                \
 
 message  "If you are going to install cups, choose espgs instead of ghostscript."  &&
 
-optional_depends  POSTSCRIPT-INTERPRETER  ""  ""              \
+optional_depends  POSTSCRIPT-INTERPRETER                      \
+                  ""                                          \
+                  ""                                          \
                   "for generating Postscript and PDF output"
