@@ -1,4 +1,5 @@
-sedit  "s/gmake/make/"  buildLavCodec.sh        &&
-sedit  "s/-O2/$CFLAGS/"  adm_lavcodec/Makefile  &&
+(
 
-default_build
+  message  "this spell is deprecated and replaced by avidemux2"
+
+) > $C_FIFO 2>&1
