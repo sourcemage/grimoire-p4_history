@@ -2,4 +2,8 @@ default_pre_build                     &&
 cd      $SOURCE_DIRECTORY             &&
 unpack  $SOURCE2  ${MD5[1]}           &&
 unpack  $SOURCE3  ${MD5[2]}           &&
+mkdir  kernel_headers                 &&
+cd     kernel_headers                 &&
+unpack  $SOURCE5  ${MD5[4]}           &&
+tar  xfj  glibc-kernheaders.tar.bz2   &&
 mk_source_dir  $SOURCE_DIRECTORY.bld
