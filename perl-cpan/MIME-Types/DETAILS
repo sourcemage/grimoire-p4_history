@@ -1,0 +1,29 @@
+           SPELL=MIME-Types
+         VERSION=1.004
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/$SOURCE
+          MD5[0]="d89ac7f91dc9ffa9bce67c00f0dc9e45"
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?dist=MIME-Types"
+         ENTERED=
+         UPDATED=
+           SHORT="modules for typing MIME entities"
+cat << EOF
+
+MIME::Types
+===========
+
+A start for a more detailed data-structure to keep knowledge
+about various data types are defined by MIME.  Some basic
+treatments with mime types are implemented.
+
+The first special data item is whether a data type is binary
+or ascii.  This is required for correctly encoding e-mail
+attachments, and implemented for the Mail::Box v2.01 module.
+
+Improvements and additions please to
+       Mark Overmeer, <mimetypes@overmeer.net>
+
+
+EOF
