@@ -1,0 +1,21 @@
+diff -Nur -X dontdiff -x tcmplex orig-transcode-0.6.3/import/clone.c transcode-0.6.3/import/clone.c
+--- orig-transcode-0.6.3/import/clone.c	Fri May  3 13:30:11 2002
++++ transcode-0.6.3/import/clone.c	Mon Feb  3 09:26:29 2003
+@@ -297,10 +297,15 @@
+ char *clone_fifo() 
+ {
+ 
+-  char *name;
++  char *name, *a, b[PATH_MAX];
+   
+   //need to create a pipe here
+-  name=tmpnam(NULL);
++  if ((a = getenv("TMPDIR")) != NULL)
++      snprintf(b, PATH_MAX, "%s/%s", a, "fileXXXXXX");
++  else 
++      snprintf(b, PATH_MAX, "%s/%s", "/tmp", "fileXXXXXX");
++  
++  name = mktemp(b);
+   
+   logfile=strdup(name);
+ 
