@@ -1,3 +1,7 @@
+2004-11-30 Eric Sandall <eric@sandall.us>
+	* BUILD: Need to echo $CFLAGS into grep for it to work
+	  Removed all references to CXXFLAGS (glibc has never used C++...)
+
 2004-11-29 Eric Sandall <eric@sandall.us>
 	* BUILD: Apply CFLAGS fixes from a Gentoo ebuild for sparc and sparc64.
 	  No longer uses echo to remove -ffast-math from CFLAGS.

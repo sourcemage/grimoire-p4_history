@@ -21,10 +21,6 @@ if  !  echo  "$CFLAGS"  |  grep  -q  --  "-O";  then
   export  CFLAGS="$CFLAGS  -Os"
 fi  &&
 
-if  !  echo  "$CXXFLAGS"  |  grep  -q  --  "-O";  then
-  export  CXXFLAGS="$CFLAGS -Os"
-fi  &&
-
 export  CFLAGS="${CFLAGS/-ffast-math/}"  &&
 export  CC=gcc                           &&
 
@@ -48,7 +44,7 @@ elif  [[  $(uname  -m)  =  *sparc64  ]];  then
   # If we're not compiling for 64-bit SPARC then we need to use the sparc
   # headers, not sparc64
   #
-  if  grep  -q  --  "-m64"  $CFLAGS;  then
+  if  echo  "$CFLAGS"  |  grep  -q  --  "-m64";  then
     GLIBC_ARCH=sparc64  &&
     export  CC=gcc64
   else
@@ -60,15 +56,10 @@ elif  [[  $(uname  -m)  =  *sparc64  ]];  then
   #
   sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
   export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
-  export  CXXFLAGS="${CFLAGS/-fcall-used-g7/}"
   export    CFLAGS="$CFLAGS  -fcall-used-g6"
-  export  CXXFLAGS="$CFLAGS  -fcall-used-g6"
   export    CFLAGS="${CFLAGS/-mcpu=v9/}"
-  export  CXXFLAGS="${CFLAGS/-mcpu=v9/}"
   export    CFLAGS="${CFLAGS/-mtune=ultrasparc/}"
-  export  CXXFLAGS="${CFLAGS/-mtune=ultrasparc/}"
   export    CFLAGS="${CFLAGS/-mvis/}"
-  export  CXXFLAGS="${CFLAGS/-mvis/}"
 elif  [[  $(uname  -m)  =  *sparc    ]];  then
   GLIBC_ARCH=sparc  &&
   #
@@ -76,9 +67,7 @@ elif  [[  $(uname  -m)  =  *sparc    ]];  then
   #
   sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
   export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
-  export  CXXFLAGS="${CFLAGS/-fcall-used-g7/}"
   export    CFLAGS="$CFLAGS  -fcall-used-g6"
-  export  CXXFLAGS="$CFLAGS  -fcall-used-g6"
 fi  &&
 
 #
