@@ -9,12 +9,12 @@ linkscript ()
       for level in $(grep "# $action" $initdir/$init_script | cut -d: -f2)
 	do
 	pri=$(grep "# $action" $initdir/$init_script | cut -d: -f3)
-	if [ ! -f /etc/rc$level.d/*$truncname* ]; then
+	if [ ! -f /etc/rc$level.d/*$truncname ]; then
 	    ln -s $initdir/$init_script /etc/rc$level.d/$pri$truncname
 	else
-	    pri2=$(ls /etc/rc$level.d/*$truncname* | sed s/$truncname// | sed s/\.sh// | cut  -d/ -f4)
+	    pri2=$(ls /etc/rc$level.d/*$truncname | sed s/$truncname// | sed s/\.sh// | cut  -d/ -f4)
 	    if [ ! $pri = $pri2 ]; then
-		rm -f /etc/rc$level.d/*$truncname*
+		rm -f /etc/rc$level.d/*$truncname
 		ln -s $initdir/$init_script /etc/rc$level.d/$pri$truncname
 	    fi
 	fi
@@ -22,7 +22,7 @@ linkscript ()
     done
 }
 
-# Function to backup existing scripts and install updated ones 
+# Function to backup existing scripts and install updated ones
 installscript ()
 {
 # setup invironmental stuff
@@ -31,9 +31,8 @@ installscript ()
     else
 	prm=755
     fi
-# I want to back up the old scripts, I'm just that kinda guy, I guess.
-# Check to see the damn thing is there first. Thanks Treeve!
     if [ -e /etc/init.d/$init_script ]; then
+    
        mv /etc/init.d/$init_script /etc/init.d/$init_script.$savetime
     fi
     install  -m  $prm  $SCRIPT_DIRECTORY/scriptdir/$init_script  /etc/init.d

@@ -1,0 +1,235 @@
+# functions for net-tools configure
+# set some variables here
+
+initdir=/etc/init.d
+netdir=/etc/sysconfig/network
+savetime=$(date +%Y%m%d%k%M)
+sgl_logo="SOURCE MAGE GNU LINUX NET-TOOLS SETUP"
+
+# for the initial switch to net-tools
+switch2net_tools ()
+{
+    if [ -d $netdir ] && [ ! -e $netdir/lo ]; then
+	netdevices=$(ls $netdir)
+	for netdevice in $netdevices; do
+	    mv $netdir/$netdevice $netdir/$netdevice.dev
+	done
+    fi
+}
+# ensures that the netdir directory exists
+check_netdir ()
+{
+    if [ ! -d $netdir ]; then
+	if [ ! -d /etc/sysconfig ]; then
+	    mkdir /etc/sysconfig
+	fi
+	mkdir /etc/sysconfig/network
+    fi
+}
+# this function unsets the nic variables
+unset_modvars ()
+{
+    for modvars in MODE MODULE IP BROADCAST NETMASK GATEWAY; do
+	unset $modvars
+    done
+}
+make_lo ()
+{
+    check_netdir
+    if [ ! -f $netdir/lo ]; then
+	cat > $netdir/lo.dev <<EOF
+# config file for lo
+# use dynamic or static for MODE
+# do not use space or tabs in these fields
+MODE=static
+IP=127.0.0.1
+BROADCAST=127.255.255.255
+NETMASK=255.0.0.0
+GATEWAY=
+MODULE=
+EOF
+    fi
+}
+# This makes the headers for the device files
+cat_headers () 
+{
+    cat > $netdir/$nicfile.dev <<EOF
+# config file for $nicfile
+# MODE=dynamic if you use dhcp, static otherwise
+# dynamic and static both require 
+# MODULE= (kernel module for $nicfile)
+# if your $nicfile driver is built into kernel then leave blank
+# static requires the following in addition:
+# IP= ip address of $nicfile
+# BROADCAST= broadcast address
+# NETMASK= netmask address
+# GATEWAY= gateway address (leave blank if gateway is set by other program)
+EOF
+}
+
+# this function builds a nicfile from user input
+
+make_nicfile () 
+{
+    cat_headers
+    unset_modvars
+# try for the new scheme
+    dialog --backtitle "$sgl_logo" --nocancel --inputbox "What kernel module does your network device $nicfile use? Enter the module name without the .o in the space provided. If you built the driver into the kernel, leave this space blank." 0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+    infodata=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+    echo MODULE=$infodata >>$netdir/$nicfile.dev
+    dialog --backtitle "$sgl_logo" --nocancel --menu\
+	"How does the network device $nicfile determine its IP address?" 0 0 0\
+	"dynamic" "I will use DHCP to determine the network devices IP address."\
+	"static" "I will give the network device its own IP address."\
+	2>$SCRIPT_DIRECTORY/infodata.temp
+    infodata=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+    echo MODE=$infodata >>$netdir/$nicfile.dev
+    if [ $infodata = static ]; then
+	dialog --backtitle "$sgl_logo" --nocancel --inputbox\
+		"What will the network device $nicfile use for its GATEWAY address? If you have another program determine the GATEWAY address, leave this space blank also."\
+		0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+	    infodata=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+	    echo GATEWAY=$infodata >>$netdir/$nicfile.dev
+	for info in IP BROADCAST NETMASK; do
+	    dialog --backtitle "$sgl_logo" --nocancel --inputbox\
+		"What will the network device $nicfile use for its $info address?"\
+		0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+	    infodata=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+	    echo $info=$infodata >>$netdir/$nicfile.dev
+	done
+    fi
+}
+
+# This function takes care of possible naming conflicts while
+# making a nicfile then calls function make_nicfile
+setup_nicfile () 
+{
+    dialog --backtitle "$sgl_logo"  --yesno\
+	"Do you need to setup a network card?" 0 0
+    ans1=$?
+    while [ $ans1 = 0 ]; do
+	dialog --backtitle "$sgl_logo"  --inputbox\
+	    "What does your ethernet card use for a device designation? i.e. eth0, eth1, etc?" 0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+	nicfile=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+	if [ ! -f $netdir/$nicfile.dev ]; then 
+	    make_nicfile
+	else
+# if the nicfile already exists, this should cover all the bases
+#
+	    ans2=y
+	    while [ $ans2 = y ]; do
+		dialog --backtitle "$sgl_logo" --nocancel --menu\
+		    "There currently exists a file for $nicfile, what do you want to do with it?" 0 0 0\
+		    "Replace" "Backup the existing $nicfile file and rewrite it."\
+		    "Edit" "Edit the existing file $nicfile."\
+		    "View" "View the existing file $nicfile."\
+		    "Finished" "I don't need to change this file"\
+		    2>$SCRIPT_DIRECTORY/nicexists.temp
+		nic_test=$(cat $SCRIPT_DIRECTORY/nicexists.temp)
+		case $nic_test in
+		    Replace )
+			ans2=n
+			mv $netdir/$nicfile.dev $netdir/$nicfile.$savetime
+			make_nicfile
+			;;
+		    Edit )
+			ans2=y
+			edit_file $netdir/$nicfile.dev
+			;;
+		    View )
+			ans2=y
+			dialog --backtitle "$sgl_logo" --textbox $netdir/$nicfile.dev 0 0
+			;;
+		    Finished )
+			ans2=n
+			;;
+		    * )
+			ans2=y
+			dialog --backtitle "$sgl_logo" --msgbox\
+			    "You must select an option!" 0 0
+			;;
+		esac
+	    done
+	fi
+	dialog --backtitle "$sgl_logo"  --yesno\
+	    "do you have another network card you need to setup?" 0 0
+	ans1=$?
+    done
+}
+
+# this should only be needed for the initial change to the 
+# new networking schema; the information should be present
+# or the user should know what it is.
+transfer_data ()
+{
+    unset_modvars
+    IP=$(grep ^IP= $initdir/networking.sh)
+    if  [ -z "$IP" ]; then
+	MODE=dynamic
+    else
+	MODE=static
+    fi
+    MODULE=`grep ^MODULE= $initdir/networking.sh`
+    BROADCAST=`grep ^BROADCAST= $initdir/networking.sh`
+    NETMASK=`grep ^NETMASK= $initdir/networking.sh`
+    GATEWAY=`grep ^GATEWAY= $initdir/networking.sh`
+    dialog --backtitle "$sgl_logo"  --yesno\
+	"Does the device $nicfile have the following attributes?\n
+        "$MODULE"\n
+          "$MODE"\n
+       "$IP"\n
+     "$BROADCAST"\n
+      "$NETMASK"\n
+      "$GATEWAY"" 0 0
+    retval=$?
+    if [ $retval = 0 ]; then 
+	cat_headers
+	for info in MODULE MODE IP BROADCAST NETMASK GATEWAY; do
+	    cat $info >>$netdir/$nicfile.dev
+	done
+    else
+	setup_nicfile
+    fi
+}
+# mostly for new and clean installs
+install_networking ()
+{
+    if [ -e $initdir/networking.sh ]; then
+	nicfile=`grep ^DEVICE= $initdir/networking.sh | cut -d= -f2`
+	if [ -n "$nicfile" ]; then
+	    dialog --backtitle "$sgl_logo" --yesno\
+		"Do you want to attempt to use your existing networking data to\
+ create the necessary network files for device $nicfile?" 0 0 
+	    retval=#?
+	    if [ "$retval" = "0" ]; then 
+		if [ ! -f $netdir/$nicfile.dev ]; then
+		    transfer_data
+		else
+		    dialog --backtitle "$sgl_logo" --yesno\
+			"You already have a $nicfile file.
+ This is what it currently contains: \
+ `sed 's/^.*$/&\\\n/' $netdir/$nicfile.dev` /n Do you want to keep this one?" 0 0 
+		    retval=#?
+		    if [ "$retval" = "1" ]; then
+# add the date to the network device file so networking.sh
+# doesn't try and load it but we don't delete anything.
+			mv $netdir/$nicfile.dev /$netdir/$nicfile.$savetime
+			transfer_data
+		    else
+			dialog --backtitle "$sgl_logo" --msgbox\
+			    "You will need to ensure that your $netdir/$nicfile file is in accordance\
+ with the SGL networking.sh script or you will have difficulties starting and stopping your networking."
+		    fi
+		fi
+	    else
+		dialog --backtitle "$sgl_logo" --msgbox\
+		    "We need to get some information on your network to setup a ethernet card." 0 0
+		setup_nicfile
+	    fi
+	else
+	    dialog --backtitle "$sgl_logo" --msgbox\
+		"We need to get some information on your network to setup a ethernet card." 0 0
+	    setup_nicfile
+	fi
+    fi
+}

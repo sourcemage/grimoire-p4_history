@@ -1,83 +1,46 @@
-# CONFIGURE script for init.d
-# most functions are for install and create networking
-# also builds install que for init.d BUILD
-source $SCRIPT_DIRECTORY/libinit.d
-
+# CONFIGURE for init.d
+# builds install que for init.d BUILD
 # start with setting up environment and directory structure
-sgl_logo="SOURCEMAGE GNU LINUX NETWORKING SETUP"
+sgl_logo="SOURCEMAGE GNU LINUX INIT.D SETUP"
 initdir=/etc/init.d
-netdir=/etc/sysconfig/network
-# date format year month day hour(24hr) minute
-savetime=$(date +%Y%m%d%k%M)
 # This builds the scriptque.temp for BUILD
 scriptlist=$(ls $SCRIPT_DIRECTORY/scriptdir/ )
-
+# this should be done at end of BUILD, but it's here just in case...
 if [ -e $SCRIPT_DIRECTORY/checklist.temp ]; then
     rm $SCRIPT_DIRECTORY/checklist.temp
 fi
-# this doesn't check if the program is installed yet
-# which may or may not be an issue.
 for script in $scriptlist; do
     sglver=$(grep "# SGL-script-version=" $SCRIPT_DIRECTORY/scriptdir/$script | cut -d= -f2)
     installedver=$(grep "# SGL-script-version=" $initdir/$script | cut -d= -f2)
-    if [ -z "$installedver" ]; then
-	installedver=$((0))
-    fi
-    if [ $sglver -gt $installedver ]; then
-	item="update"
-	status="on"
-    elif [ $sglver -eq $installedver ]; then
-	item="installed"
+    if [ $installedver = custom ]; then
+	dialog --backtitle "$sgl_logo" --msgbox "You have designated $script as custom, please ensure we haven't done anything to break it for you if you use the SMGL functions script and you install an updated one. You may replace your custom $script if you wish to do so and it will be backed up during the installation of the new $script file."
+	item="custom"
 	status="off"
+	echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
     else
-	item="fuxored"
-	status="off"
+	if [ -z "$installedver" ]; then
+	    installedver=$((0))
+	fi
+	if [ $sglver -gt $installedver ]; then
+	    item="update"
+	    status="on"
+	elif [ $sglver -eq $installedver ]; then
+	    item="installed"
+	    status="off"
+	else
+	    item="non-SGML"
+	    status="off"
+	fi
+	echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
     fi
-    echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
 done
-dialog --backtitle "$sgl_logo" --nocancel --checklist\
-    "The following init.d/scripts are available for installation or updating."\
-    0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
-# strip out the quotes in previous output
-sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
-# if networking is in the install que, do the following.
-netcheck=$(grep networking $SCRIPT_DIRECTORY/scriptque.temp)
-if [ -n "$netcheck" ]; then
-# check if it's an initial install, update or whatever
-    ans=y
-    while [ $ans = y ]; do
-	dialog --backtitle "$sgl_logo" --nocancel --menu\
-	    "You selected networking for updating or installation. You\
- can also add a new nic card or change your network settings\
- at this point. Which do you want to do?" 0 0 0\
-	    "Install" "Install the networking from scratch."\
-	    "Update" "Update the networking.sh only."\
-	    "Add" "Add info for a new NIC card."\
-	    "Remove" "Remove networking from the install que."\
-	    2>$SCRIPT_DIRECTORY/trouble.temp
-	network_test=$(cat $SCRIPT_DIRECTORY/trouble.temp)
-	case $network_test in
-	    Install )
-		ans=n
-		install_networking
-		;;
-	    Update )
-		ans=n
-		;;
-	    Add )
-		ans=n
-		setup_nicfile
-		;;
-	    Remove )
-		ans=n
-		sedit "s/networking.sh//" $SCRIPT_DIRECTORY/scriptque.temp
-		;;
-	    * )
-		ans=y
-		dialog --backtitle "$sgl_logo"  --msgbox "You must select an option!" 0 0
-		;;
-	    
-	esac
-    done
-fi
+dialog --backtitle "$sgl_logo" --nocancel --checklist "The following script files are available for installation or updating. If the script is selected, there is an update available or it is not currently installed. If you have designated a script as custom it is NOT selected; select it only if you wish to replace your custom file with the default SMGL file. 
 
+The functions script provides a number of functions needed in the SMGL scripts and must be installed for their proper operation. 
+
+The mount.sh script is used to mount local file systems. 
+
+The mountnfs.sh is used to mount network file systems. " 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
+# strip out the quotes in previous output so it's usable
+sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
+# end
