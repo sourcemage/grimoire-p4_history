@@ -15,6 +15,9 @@
     --enable-layout=GNU \
     --enable-threads \
     $OPTS &&
+
+  sedit 's|[^_]off64_t| __off64_t|' include/apr.h &&
+
   make &&
   prepare_install &&
   make install &&
