@@ -1,11 +1,21 @@
            SPELL=psi
-         VERSION=0.9.2
        BUILD_API=2
-          SOURCE=${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
-        WEB_SITE=http://psi.sourceforge.net/
-          MD5[0]=f2b076ab4ea031041a4642bd91b1395d
+
+if [ "$DEVEL" == "y" ]; then
+         VERSION=0.9.3-test2
+         SOURCE=$SPELL-$VERSION.tar.bz2
+         MD5[0]='29c439b7674214da67d00a2c4bd2155d'
+         SOURCE_URL[0]=http://people.ex.ac.uk/kismith/psi/$SOURCE
+         SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+else
+         VERSION=0.9.2
+           SOURCE=${SPELL}-${VERSION}.tar.bz2
+           SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+          SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+          SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+          MD5[0]='f2b076ab4ea031041a4642bd91b1395d'
+fi
+        WEB_SITE=http://psi.sourceforce.net/
 	 LICENSE=GPL
          ENTERED=20020806
          UPDATED=20040420
