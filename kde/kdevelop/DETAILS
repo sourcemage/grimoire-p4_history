@@ -2,11 +2,11 @@ source  $SCRIPT_DIRECTORY/../KDE_DETAILS
 
            SPELL=kdevelop
 if  [  "$KDE_DEVEL"  ==  "y"  ];  then
-         VERSION=3.1.0-rc2
+         VERSION=3.1.92
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
-   SOURCE_URL[0]=$KDE_URL/unstable/3.3.0rc2/src/$SOURCE
-          MD5[0]=8253857d390bc7087fe903712e761402
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/unstable/3.3.92/src/$SOURCE
+          MD5[0]=e75a1465a1b3673f1e41964ecfcc190e
 else
          VERSION=3.1.2
           SOURCE=${SPELL}-${VERSION}.tar.bz2
