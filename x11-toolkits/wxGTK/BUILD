@@ -6,7 +6,7 @@ function do_subdir() {
 
 (
 
-  #patch  -p1  <  $SCRIPT_DIRECTORY/gtk-2.4-fix.patch  &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/gtk-2.4-fix.patch  &&
   # --x-libraries doesn't work :-(
   # export LIBS="$LIBS -L/usr/X11R6/lib" &&
   ./configure \
