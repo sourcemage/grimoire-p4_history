@@ -1,5 +1,9 @@
-Sendmail has a bad security history, consider using postfix or exim.
 Please make sure you do not run an open mail relay, which
 might be abused by spammers.
-Please consider using SMTP over SSL because all SMTP Traffic
-is unencrypted and can be sniffed.
+
+You should try open relay checkers (make a search for 
+"open relay check" with your favorite search engine) on your
+mail server.
+
+You may also use authentication and/or encryption for
+smtp services.
