@@ -5,8 +5,8 @@ if [ "$DEVEL" == "yes" ] ;then
          VERSION=3.2.92
             SITE=$KDE_URL/unstable/$VERSION/src/$SPELL
 else
-         VERSION=3.2.3
-            SITE=$KDE_URL/stable/$VERSION/src/$SPELL
+         VERSION=3.3.0
+            SITE=$KDE_URL/stable/${VERSION/\.0/}/src/$SPELL
 fi
        BUILD_API=2
 

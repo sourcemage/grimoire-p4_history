@@ -6,7 +6,7 @@ CFG=$SPELL_CONFIG
 
 get_kdelanguages()  {
 local i
-if  ! `grep -q "$SPELL"  $CFG `
+if  ! grep -q "$SPELL"  $CFG
 then
 touch $CFG
 LANGUAGES=`cat $SCRIPT_DIRECTORY/kde.languages`
@@ -25,20 +25,22 @@ i=1
 for LANGUAGE in $LANGUAGES
 do
 # BUG HERE	LANGUAGE=${LANGUAGE:1:${#LANGUAGE}-2}
+        LANGUAGE=`echo $LANGUAGE|sed 's:"::g'`
 	if [[ $i == 1 ]]
 	then
-	echo SOURCE=$SPELL-$LANGUAGE-$VERSION.tar.bz2 >> $CFG
-	echo SOURCE_URL[0]=\$SITE/\$SOURCE >> $CFG
+          LANGUAGE=`echo $LANGUAGE|sed 's:"::g'`
+	  echo SOURCE=$SPELL-$LANGUAGE-$VERSION.tar.bz2 >> $CFG
+	  echo SOURCE_URL[0]=$SITE/\$SOURCE >> $CFG
 	else
-	echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CFG
-	echo SOURCE${i}_URL[0]=\$SITE/\$SOURCE$i >> $CFG
+	  echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CFG
+	  echo SOURCE${i}_URL[0]=$SITE/\$SOURCE$i >> $CFG
 	fi
 	echo MD5[$i]=IGNORE >>$CFG
 	i=$[$i+1]
 done
 else
 echo SOURCE=$SPELL-$VERSION.tar.bz2 >> $CFG
-echo SOURCE_URL[0]=\$SITE/\$SOURCE >> $CFG
+echo SOURCE_URL[0]=$SITE/\$SOURCE >> $CFG
 fi
 else
 echo use existing config  
