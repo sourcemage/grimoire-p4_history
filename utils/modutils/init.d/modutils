@@ -1,28 +1,36 @@
-#!/bin/sh
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:S:S20
-# SMGL-STOP:0 1 2 6:K75
-#
+#!/bin/bash
+
+RUNLEVEL=S
+NEEDS="+local_fs"
+
+. /etc/init.d/smgl_init
+
+test -x /sbin/depmod    || exit 5
+test -x /sbin/modprobe  || exit 5
+
+case $1 in
+  start)    ;;        # Fall through
+  stop)     exit 0  ;;
+  *)        echo "Usage: $0 {start|stop}"
+            exit 1
+            ;;
+esac
+
+# Handle start action
 
 if  [  -x  /sbin/depmod  ];  then
-
-  echo    -n  "depmod -a ... "
-  depmod  -a
-  echo  "done."
-
+  echo  "Running depmod..."
+  loadproc depmod  -a
 fi
 
-if  [  -e  /etc/modules    ]   &&
-    [  -x  /sbin/modprobe  ];  then
-
-  echo  "Loading modules."
+if [ -e /etc/modules ] && [ -x /sbin/modprobe ] ; then
+  echo  "Loading modules..."
   ( cat  /etc/modules;  echo ) |
   while  read  MODULE ARGS;  do
     case  $MODULE in
       \#*|"")  continue  ;;
     esac
-    modprobe  $MODULE  $ARGS
+    echo "  $MODULE"
+    loadproc modprobe  $MODULE  $ARGS
   done
 fi
