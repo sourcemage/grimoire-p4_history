@@ -1,4 +1,5 @@
            SPELL=digikam
+       BUILD_API=2
 if [ "$USECVS" == "yes" ];then
          VERSION=`date -u +%Y%m%d`
           SOURCE=${SPELL}3-cvs-$VERSION.tar.bz2
@@ -6,12 +7,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
    SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
              MD5=IGNORE
 else
-         VERSION=0.6.2RC
+         VERSION=0.6.2
           SOURCE=${SPELL}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/digikam
-#   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
-   SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
-             MD5=5e043f64d231252a53487d2f3e222080
+   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
+             MD5=2a977d397afbcdf24ea2206092f0c301
 fi
         WEB_SITE=http://digikam.sourceforge.net
          LICENSE=GPL
