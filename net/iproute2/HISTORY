@@ -1,28 +1,34 @@
+2004-02-07 Robert Helgesson <rhelgesson@sourcemage.org>
+	* BUILD: Applied fix from bug #5644. Documentation should install
+		nicely now.
+	* HISTORY: Finished format conversion and minor cleanups.
+
 2003-11-19 Robert Helgesson <rycee@home.se>
 	* BUILD: Make it compile with Linux 2.4.22 (bug #4448).
 	* DEPENDS: Added db as a dependency.
 
 2003-11-18 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.4.7-now-ss020116-try
-	Added LICENSE
-	* BUILD,iproute2-2.4.7-now-ss020116-try-2.4.22.patch: Partial fix for Bug #4448
-	Obtained from Slackware:
-	http://englanders.cc/pub/linux/patches/iproute2-2.4.7-now-ss020116-try-2.4.22.patch
-	* BUILD,iproute2-2.4.7-now-ss020116-try-2.4.22.patch: Removed patch, as Robert's fix
-	does it cleaner, and it actually builds with his fix.
+	* DETAILS: Added LICENSE
+	* BUILD,iproute2-2.4.7-now-ss020116-try-2.4.22.patch: Partial fix for
+		Bug #4448 Obtained from Slackware:
+		http://englanders.cc/pub/linux/patches/iproute2-2.4.7-now-ss020116-try-2.4.22.patch
+	* BUILD,iproute2-2.4.7-now-ss020116-try-2.4.22.patch: Removed patch,
+		as Robert's fix does it cleaner, and it actually builds with
+		his fix.
 
 2003-10-10 Robert Helgesson <rycee@home.se>
 	* HISTORY: Converted to new format.
 
 2003-08-29 Eric Sandall <eric@sandall.us>
-	  Cleaned up BUILD, now stops if anything fails
+	* BUILD: Cleaned up BUILD, now stops if anything fails
 
 2003-01-21 Robert Helgesson <rycee@home.se>
-	  Added htb3 traffic shaper patch (bug #1835)
+	* htb3.6_tc.diff: Added htb3 traffic shaper patch (bug #1835)
 
 2002-10-17 Eric Schabell <eschabell@sourcemage.org>
-	  removed gcc2 file.
+	* USEGCC2: removed gcc2 file.
 
 2002-05-28 Jeff Schmidt <jschmidt@fnal.gov>
 	  new spell submission
-	  added HISTORY
+	* HISTORY: added HISTORY
