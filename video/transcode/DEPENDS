@@ -5,7 +5,7 @@ depends nasm      &&
 optional_depends  "avifile"                      \
                   "--enable-avifile6"            \
                   "--with-avifile-mode"          \
-                  "for AVI support"              &&
+                  "for AVI decoding support using avifile"  &&
 optional_depends  "a52dec"                       \
                   "--with-a52"                   \
                   "--without-a52"                \
@@ -65,4 +65,8 @@ optional_depends  "SDL"                          \
 optional_depends  "gtk+2"                        \
                   ""                             \
                   ""                             \
-                  "for GTK+ GUI support"
+                  "for GTK+ GUI support"         &&
+optional_depends  "xvid"                         \
+                  ""                             \
+                  ""                             \
+                  "for xvid de-/encoding support"
