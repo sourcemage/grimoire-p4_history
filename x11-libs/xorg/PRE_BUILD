@@ -80,4 +80,12 @@ fi  &&
 if  [  "$JAPANESE"  =  "y"  ];  then
   echo  "#define  InstallJapaneseDocs  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi  &&
+
+if  provider_ok  POSTSCRIPT-INTERPRETER;  then
+  #sedit  's:# define HasGhostScript YES:# define HasGhostScript NO:'
+  #       >>  $SOURCE_DIRECTORY/config/cf/linux.cf
+  echo  "#define  HasGhostScript  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+else
+  echo  "#define  HasGhostScript  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi
