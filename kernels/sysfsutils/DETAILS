@@ -1,13 +1,14 @@
            SPELL=sysfsutils
-         VERSION=0.4.0
+         VERSION=1.0.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/linux-diag/$SOURCE
-          MD5[0]=cdbcf2047e20e6583c037915198accbd
+          MD5[0]=6ca3b85adbcf6d131e21a72faa47cc26
         WEB_SITE=http://linux-diag.sourceforge.net/
          ENTERED=20031122
          UPDATED=20031122
-      LICENSE[0]="GPL LGPL"
+      LICENSE[0]="GPL"
+      LICENSE[1]="LGPL"
            SHORT="Utilities that work with sysfs including libsysfs."
 cat << EOF
 Utilities that work with sysfs including libsysfs, a library that creates an API for working with the device tree, and systool, an application that lists buses, device classes, and system devices.
