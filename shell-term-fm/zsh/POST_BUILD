@@ -1,9 +1,0 @@
-default_post_build  &&
-(
-  # In order to enable "chsh"
-  if [ -f /etc/shells ]; then
-	if [ -z `grep /bin/zsh /etc/shells` ]; then
-		echo /bin/zsh >> /etc/shells
-	fi
-  fi
-)

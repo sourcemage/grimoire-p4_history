@@ -8,4 +8,5 @@ if  [  !  -f  /etc/zshrc  ]  ;  then
 fi
 if  [  !  -f  /etc/zprofile  ]  ;  then
   install  -m 644  $SCRIPT_DIRECTORY/zprofile  /etc
-fi
+fi  &&
+install_shell zsh /bin/zsh
