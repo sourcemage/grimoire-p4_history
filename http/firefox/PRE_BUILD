@@ -39,7 +39,7 @@ if  [  "$FIREFOX_CVS"  =  "y"  ];  then
   mv  -v  $FIREFOX_TARBALL  $SOURCE_CACHE/
 fi                                                                          &&
 
-cd  $SOURCE_DIRECTORY
+cd  $SOURCE_DIRECTORY                                                       &&
 
 # Patches for freetype 2.1.8 and gcc 3.4
-# patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch
+patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch
