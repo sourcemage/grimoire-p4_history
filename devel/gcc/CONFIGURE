@@ -14,7 +14,7 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   then  FRONTENDS="$FRONTENDS,objc"
   fi
 
-  if    query  "Install fixed includes (might cause problems)?"  n
+  if    query  "Installing fixed includes breaks more than it fixes (hit <enter> NOT to install)?"  n
   then  echo  'FIXEDINCLS="yes"'  >>  $SPELL_CONFIG
   fi
 
