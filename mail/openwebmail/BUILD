@@ -45,7 +45,7 @@ fi												&&
 cp -ra ./cgi-bin/* $LOC/cgi-bin/ 1>/dev/null 2>&1						&&
 cp -ra ./data/* $LOC/htdocs/ 1>/dev/null 2>&1							&&
 
-ln -s /etc/openwebmail.conf $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 1>/dev/null 2>&1	&&
+ln -sfn /etc/openwebmail.conf $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 1>/dev/null 2>&1	&&
 
 # Security team'll shoot me...
 message "${MESSAGE_COLOR}Setting up rights... ${DEFAULT_COLOR}"					&&
