@@ -9,17 +9,6 @@ install_drm()  {
 
 }
 
-#hack for  kernels > 2.5.X
-youbadkernelyou(){
-    KVERSION=` head -1 /usr/src/linux/Makefile |           sed 's/.*=//'`    &&
-    KPATCHLEVEL=` head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'` && 
-    KERNEL=`echo "${KVERSION}.${KPATCHLEVEL}" |  sed 's/ //g'`               &&
-if [ $KERNEL != 2.4 ]; then
-sedit '75,80D' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c           && 
-sedit '74a\
-\#  define rate period\' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c 
-fi
-}
 
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
@@ -28,11 +17,6 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
-  #hgg's "house of bad hacks" brings you
-  #"hack for devel kernels"
-  #
-  youbadkernelyou                                  &&
-
   #removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   #leaving the original file untouched 
   #for when this gcc bug gets fixed (hgg09/08/03)
