@@ -1,14 +1,15 @@
-           SPELL=Plone
+           SPELL=plone
          VERSION=1.0.5
-          SOURCE=CMF${SPELL}${VERSION}.tar.gz
-          MD5[0]='2b782d72afb00aef465d38f3a47f14b6'
-      LICENSE[0]=GPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/CMF${SPELL}-$VERSION
+          SOURCE=CMFPlone${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/CMFPlone-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/plone/$SOURCE
+          MD5[0]=2b782d72afb00aef465d38f3a47f14b6
         WEB_SITE=http://www.plone.org/
          ENTERED=20030527
          UPDATED=20030527
-           SHORT='Plone is a user friendly and powerful Content Management System based on Zope'
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="User friendly and powerful Zope Content Management System"
 cat << EOF
 Plone is a user friendly and powerful Content Management System.
 Plone is built on top of the open source application server Zope and the accompanying

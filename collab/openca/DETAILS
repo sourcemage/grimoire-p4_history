@@ -1,15 +1,15 @@
-# $Id: DETAILS,v 1.6 2003/01/08 18:35:55 sergeyli Exp $
-           SPELL=OpenCA
+           SPELL=openca
          VERSION=0.9.1
-          SOURCE=openca-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%%-*}
+   SOURCE_URL[0]=ftp://ftp.openca.org/pub/$SPELL/developers/bell/releases/$SOURCE
           MD5[0]='af9c16167035012461dfeb81db4cf9d4'
-      LICENSE[0]=BSD
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/openca-${VERSION%%-*}
-   SOURCE_URL[0]=ftp://ftp.openca.org/pub/openca/developers/bell/releases/$SOURCE
         WEB_SITE=http://www.openca.org/
          ENTERED=20020509
          UPDATED=20020509
-           SHORT="OpenCA is an Open Source Certification Authority Toolkit"
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Open Source Certification Authority Toolkit"
 cat << EOF
 The OpenCA Project is a collaborative effort to develop a robust, full-featured
 and Open Source out-of-the-box Certification Authority implementing the most

@@ -1,15 +1,15 @@
-           SPELL=PHP-Nuke
+           SPELL=php-nuke
          VERSION=7.0
-          SOURCE=${SPELL}-${VERSION}.zip
-          MD5[0]='e58de86107e90079a6d054992c98a195'
-      LICENSE[0]=GPL
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+          SOURCE=PHP-Nuke-${VERSION}.zip
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/PHP-Nuke-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/phpnuke/${SOURCE}
+          MD5[0]=e58de86107e90079a6d054992c98a195
         WEB_SITE=http://www.phpnuke.org/
          ENTERED=20021006
          UPDATED=20040109
-      MAINTAINER=eric@sandall.us
-           SHORT="PHP-Nuke is a news automated system."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="News automated system."
 cat << EOF
 PHP-Nuke is a news automated system specially designed to be used
 in Intranets and Internet. The Administrator has total control of
