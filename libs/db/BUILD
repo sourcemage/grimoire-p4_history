@@ -14,7 +14,9 @@
       export  JAVA_HOME=/usr/lib/j2sdk1.4.1
     fi
   fi &&
-
+  if  [[ $JAVA_HOME ]] &&  [ "$JAVADB" == '--enable-java' ]
+  then OPTS="$OPTS $JAVADB"
+  fi &&
   if [ "$DB_OSO_DIRECT" == 'n' ]; then
     patch -p1 < $SCRIPT_DIRECTORY/db_oso_direct.patch
   fi &&
