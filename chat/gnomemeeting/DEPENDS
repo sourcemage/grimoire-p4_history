@@ -1,5 +1,6 @@
 depends  openssl      &&
 depends  openldap     &&
-depends  gtk+         &&
-depends  gdk-pixbuf   &&
-depends  GConf
+depends  libgnomeui   &&
+
+optional_depends "SDL" "" "" "For full-screen video" &&
+optional_depends "arts" "" "" "For ARTS support"
