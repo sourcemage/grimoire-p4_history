@@ -1,0 +1,28 @@
+depends ladspa    &&
+depends glibc     &&
+depends libxml    &&
+
+optional_depends  "glib2"               \
+                  "--with-glib2"        \
+                  "--without-glib2"     \
+                  "support for GUI, also requires gtk+2"        &&
+
+optional_depends  "guile"               \
+                  "--with-guile"        \
+                  "--without-guile"     \
+                  "support for scripting."                      &&
+
+optional_depends  "audiofile"           \
+                  "--with-audiofile"    \
+                  "--without-audiofile" \
+                  "support full-feature I/O to file."           &&
+
+optional_depends  "alsa-lib"            \
+                  "--with-alsa-lib"     \
+                  "--without-alsa-lib"  \
+                  "support full-feature I/O to hardware."       &&
+
+optional_depends  "libmad"              \
+                  "--with-libmad"       \
+                  "--without-libmad"    \
+                  "support for MPEG format."
