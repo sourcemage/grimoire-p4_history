@@ -1,10 +1,13 @@
 (
 
-  if  spell_installed    "apache";   then
-    LOC="/usr/share/httpd/htdocs/$SPELL"
-  elif  spell_installed  "apache2";  then
-    LOC="/usr/share/apache2/htdocs/$SPELL"
+  if  spell_installed    "apache";   then 
+    LOC="/usr/share/httpd/htdocs/$SPELL" 
+  elif  spell_installed  "apache-mod_ssl";  then 
+    LOC="/usr/share/httpsd/htdocs/$SPELL" 
+  elif  spell_installed  "apache2";  then 
+    LOC="/usr/share/apache2/htdocs/$SPELL" 
   fi
+
 
   rm -fr $LOC/doc 
   rm -fr /usr/doc/$SPELL
