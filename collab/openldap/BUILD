@@ -4,7 +4,7 @@ default_build  &&
 
   cp  -f  /usr/libexec/slapd  /usr/sbin/
 
-  . $SCRIPT_DIRECTORY/mkdefault.sh
+  . $SCRIPT_DIRECTORY/mkconf.sh
 
   case  $SLAPD_BOOT  in
     y|Y|j|J)  cp  $SCRIPT_DIRECTORY/slapd.sh  /etc/init.d/

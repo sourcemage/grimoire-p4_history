@@ -1,3 +1,4 @@
+#!/bin/sh
 HOST=`hostname`
 ORG=${HOST#*.}
 SUFFIX="o=$ORG"
@@ -111,18 +112,6 @@ uri	ldap://127.0.0.1/
 # Filter to AND with uid=%s
 # May speed up searches
 pam_filter	objectclass=posixAccount
-
-# Hash password locally; required for University of
-# Michigan LDAP server, and works with Netscape
-# Directory Server if you're using the UNIX-Crypt
-# hash mechanism and not using the NT Synchronization
-# service. 
-pam_password crypt
-
-# Update Active Directory password, by
-# creating Unicode password and updating
-# unicodePwd attribute.
-pam_password ad
 
 # Use the OpenLDAP password change
 # extended operation to update the password.
