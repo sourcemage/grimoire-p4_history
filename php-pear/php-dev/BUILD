@@ -35,6 +35,8 @@
     --enable-dbase                     \
     --enable-sockets                   \
     --enable-calendar                  \
+    --with-iconv-dir=/usr              \
+    --with-xmlrpc                      \
     --with-regex=system                \
     --with-versioning                  \
     --with-mod_charset                 \

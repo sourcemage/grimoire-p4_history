@@ -10,8 +10,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20021104
            SHORT="library provides an iconv() implementation"
 cat << EOF
+DO NOT USE THIS SPELL, glibc PROVIDES THIS FUNCTIONALITY.
+THE SPELL WILL FAIL IF CAST.
+
 This library provides an iconv() implementation, for use on systems
 which don't have one, or whose implementation cannot convert from/to Unicode.
-
 Watch also http://sourceforge.net/projects/libiconv/ for related information.
 EOF

@@ -2,8 +2,6 @@ depends autoconf &&
 depends libtool  &&
 depends bison    &&
 
-#requires iconv &&
-
 if [ "$USE_BUNDLED_LIBS" != 'y' ]; then
   depends apr '--with-apr=/usr' &&
   depends apr-util '--with-apr-util=/usr' &&
