@@ -7,7 +7,7 @@ INSTALLDIR=/usr/lib/transcode/contrib
     mkdir $INSTALLDIR                                &&
     cp $SCRIPT_DIRECTORY/Makefile $SOURCE_DIRECTORY  &&
     cp -ruv $SOURCE_DIRECTORY $INSTALLDIR            &&
-    cd $INSTALLDIR/$SPELL                            &&
+    cd $INSTALLDIR/subtitleripper                    &&
 	make
 
   else
