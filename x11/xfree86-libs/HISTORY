@@ -1,3 +1,9 @@
+2003-10-11 hgg <hgreig@bigpond.net.au>
+	* BUILD,DEPENDS: libgnomeui depends on expat but having expat installed and letting xfree86 
+	provide expat for this spell seems to cause pkg-config failures.
+	So ...  this spell now depends on fontconfig and expat and doesn't build these internally.
+	also added the symlink so all pkg-config files are in the same dir.
+
 2003-10-10 hgg <hgreig@bigpond.net.au>
 	* BUILD: add ProjectRoot so it all installs to /usr/X11R6
 	Add link for GL includes
