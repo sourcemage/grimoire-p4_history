@@ -1,30 +1,33 @@
            SPELL=odbcjdbc
+local SPELLX SFCVS
           SPELLX=OdbcJdbc
        BUILD_API=2
         WEB_SITE=http://www.ibphoenix.com
-cast $WHICH
-  when cvs
+case $WHICH
+  when cvs)
 # 	 VERSION=v1-1-release
  	 VERSION=v1-3-0
-             CVS=OdbcJdbc
           SOURCE=${SPELLX}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot  
-   SOURCE_URL[0]=$SFCVS/firebird:$CVS:$VERSION
+   SOURCE_URL[0]=$SFCVS/firebird:$SPELLX:$VERSION
           MD5[0]=IGNORE
-  when stable
-         VERSION=1.2.0.69
-          SOURCE=${SPELLX}\_${VERSION}.src.tar.gz
+;;
+  when stable)
+         VERSION=1-2-1
+          SOURCE=${SPELLX}\_Source-${VERSION}.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
-   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
-          MD5[0]=e72dd9f6667b97fc3c84cce9ad232271
-  when devel
+   SOURCE_URL[0]=$WEB_SITE/downloads/$SOURCE
+          MD5[0]=
+;;
+  when devel)
          VERSION=01.03.00.0073
           SOURCE=${SPELLX}\_Source\_Beta_1-3.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
    SOURCE_URL[0]=http://www.praktik.km.ua/downloads/$SOURCE
-          MD5[0]=6c6efaea705aa0347c7ee4324e15003a
-  FORCE_DOWNLOAD=on
+          MD5[0]=86d0a39af0ae8be44eb6a1c9474196c2
+#  FORCE_DOWNLOAD=on
+;;
 esac
          LICENSE=IDPL
          ENTERED=20031205
