@@ -16,7 +16,7 @@ fi                                                      &&
 if ! grep -q InstallFontconfigLibrary config/cf/host.def
   then echo  "#define InstallFontconfigLibrary NO" >> config/cf/host.def
 fi  &&
-message  "Building XFree86 takes a very long time."
+message  "Building X.org takes a very long time."
 
 ( 
   
