@@ -7,6 +7,6 @@
   prepare_install                   &&
   make  prefix=/usr install         &&
   make  prefix=/usr install-compat  &&
-  ln    -sf  libgdbm.so.2.0.0  /usr/lib/libndbm.so
+  ln    -sf  libgdbm.so.3.0.0  /usr/lib/libndbm.so
 
 ) > $C_FIFO 2>&1
