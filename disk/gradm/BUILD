@@ -1,11 +1,5 @@
 (
-
+  # Do not prompt for password, let the user setting it later
   patch  -p1  <  ${SCRIPT_DIRECTORY}/passwdprompt.patch  &&
-
-  make             &&
-  prepare_install  &&
-  make    install  &&
-
-  message  "${MESSAGE_COLOR}\nRun '/sbin/gradm -P' to configure gradm passwords.${DEFAULT_COLOR}\n"
-
+  make
 ) > $C_FIFO 2>&1
