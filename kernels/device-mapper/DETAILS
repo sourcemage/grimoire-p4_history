@@ -1,0 +1,24 @@
+           SPELL=device-mapper
+         VERSION=1.00.07
+          SOURCE=$SPELL.$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL.$VERSION
+   SOURCE_URL[0]=ftp://ftp.sistina.com/pub/LVM2/$SPELL/$SOURCE
+        WEB_SITE=http://www.sistina.com/products_lvm.htm
+         ENTERED=20031210
+         UPDATED=20030720
+          MD5[0]=6edc5b80707adf30faffcedcbdbb8398
+           SHORT="device-mapper is the kernel patch/module needed for LVM2 support."
+      LICENSE[0]=GPL
+cat << EOF
+The goal of this driver is to support volume management.  
+The driver enables the definition of new block devices composed of
+ranges of sectors of existing devices.  This can be used to define
+disk partitions - or logical volumes.  This light-weight kernel
+component can support user-space tools for logical volume management.
+
+The driver maps ranges of sectors for the new logical device onto
+'mapping targets' according to a mapping table.  Currently the mapping 
+table must be supplied to the driver through an ioctl interface.
+Earlier versions of the driver also had a custom file system interface 
+(dmfs), but we stopped work on this because of pressure of time.
+EOF
