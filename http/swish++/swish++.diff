@@ -1,6 +1,6 @@
 diff -purN swish++-5.15.3/config/config.mk swish++/config/config.mk
 --- swish++-5.15.3/config/config.mk	2002-12-24 01:59:08.000000000 -0500
-+++ swish++/config/config.mk	2004-03-09 18:16:57.000000000 -0500
++++ swish++/config/config.mk	2004-03-09 18:27:09.000000000 -0500
 @@ -149,9 +149,9 @@ RM:=		rm -fr
  #		The command to remove files recursively and ignore errors;
  #		usually "rm -fr" for Unix or "erase" for Windows.
@@ -22,6 +22,313 @@ diff -purN swish++-5.15.3/config/config.mk swish++/config/config.mk
  #		The top-level directory of where SWISH++ will be installed.
  
  I_BIN:=		$(I_ROOT)/bin
+diff -purN swish++-5.15.3/config/config.mk~ swish++/config/config.mk~
+--- swish++-5.15.3/config/config.mk~	1969-12-31 19:00:00.000000000 -0500
++++ swish++/config/config.mk~	2004-03-09 18:16:57.000000000 -0500
+@@ -0,0 +1,278 @@
++##
++#	SWISH++
++#	config/config.mk
++#
++#	Copyright (C) 1998  Paul J. Lucas
++#
++#	This program is free software; you can redistribute it and/or modify
++#	it under the terms of the GNU General Public License as published by
++#	the Free Software Foundation; either version 2 of the License, or
++#	(at your option) any later version.
++#
++#	This program is distributed in the hope that it will be useful,
++#	but WITHOUT ANY WARRANTY; without even the implied warranty of
++#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#	GNU General Public License for more details.
++#
++#	You should have received a copy of the GNU General Public License
++#	along with this program; if not, write to the Free Software
++#	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++##
++
++##
++#	Note: If you later redefine any of these variables, you *MUST* first
++#	do a "make distclean" before you do another "make".
++##
++
++###############################################################################
++#
++#	OS selection
++#
++#	Uncomment whichever line represents your OS.  If your OS isn't listed
++#	here, just pick Linux and see if that works.
++#
++###############################################################################
++
++#FREE_BSD:=	-DFreeBSD
++LINUX:=		-DLinux -D_BSD_SOURCE
++#MAC_OS_X:=	-DMacOSX
++#SOLARIS:=	-DSolaris
++#WIN32:=		-DWIN32
++
++# Leave the following line alone!
++OS:=		$(FREE_BSD) $(LINUX) $(MAC_OS_X) $(SOLARIS) $(WIN32)
++
++###############################################################################
++#
++#	SWISH++ stuff
++#
++###############################################################################
++
++MOD_LIST:=	html id3 latex mail man rtf
++#		The indexing modules you want built into index(1).  If you want
++#		to index mail files and you want to be able to index HTML
++#		attachments, then you need to build-in "html"; similarly, if
++#		you want to be able to index RTF attachments, then you need to
++#		build-in "rtf".
++
++CHARSET_LIST:=	utf7 utf8 utf16
++#		The character sets you want index(1) to be able to decode.
++#		Note that "us-ascii" and "iso8859-1" are implicitly included.
++#
++#		If you have no intention of indexing mail or news files, then
++#		you do not need utf7.
++#
++#		If you have no intention of indexing either mail, news, or MP3
++#		files and being able to index ID3 tags containing Unicode
++#		characters, then you do not need either utf8 or utf16.
++
++ENCODING_LIST:=	base64 quoted_printable
++#		The Content-Transfer-Encodings you want index(1) to be able to
++#		decode only when MOD_LIST contains "mail".
++
++#------------->	Including any character sets or encodings requires more
++#		processing PER CHARACTER and therefore will be slower for ALL
++#		files (not just those that are encoded).  So if you don't need
++#		any character sets (other than ISO 8859-1) or encodings, do NOT
++#		compile them in.
++
++# Leave the following lines alone!
++CHARSET_DEFS:=	$(foreach charset,$(CHARSET_LIST),-DCHARSET_$(charset))
++ENCODING_DEFS:=	$(foreach encoding,$(ENCODING_LIST),-DENCODING_$(encoding))
++MOD_DEFS:=	$(foreach mod,$(MOD_LIST),-DMOD_$(mod))
++
++# These too!
++ifneq ($(CHARSET_DEFS),"")
++DECODING:=	-DIMPLEMENT_DECODING
++endif
++ifneq ($(ENCODING_DEFS),"")
++DECODING:=	-DIMPLEMENT_DECODING
++endif
++
++ifndef WIN32
++#		The search daemon ability is not currently supported for
++#		Windows.  The only way it will ever be is if somebody
++#		volunteers to port the socket and multithreading code.
++
++SEARCH_DAEMON:=	-DSEARCH_DAEMON -DMULTI_THREADED -D_REENTRANT
++#		These definitions will build search(1) with the ability to run
++#		in the background as a multi-threaded daemon process.  Comment
++#		this out if you have no need for this feature.  Currently, the
++#		daemon ability is supported only for Unix and not Windows.
++#
++#		In order to build with the search daemon ability, use of the C
++#		global variable "errno" must be thread-safe.  This usually
++#		means that "errno" is defined as a macro rather than an integer
++#		variable.  Different operating systems have different ways to
++#		enable this.  For example, Solaris requires that you #define
++#		_REENTRANT; FreeBSD has it enabled automatically; for all other
++#		operating systems, check your documentation.  (Start with
++#		error(3) and intro(2).)
++
++ifdef SEARCH_DAEMON
++
++ifdef FREE_BSD
++PTHREAD_LINK:=	-pthread
++else
++PTHREAD_LINK:=	-lpthread
++endif
++#		Library to link against for POSIX threads if building with the
++#		search daemon ability.
++
++ifdef LINUX
++SEARCH_DAEMON+=	-D_XOPEN_SOURCE=500
++#		Linux needs this to define more POSIX thread functions.
++endif
++
++ifdef SOLARIS
++SOCKET_LINK:=	-lsocket -lnsl
++#		Library to link against for sockets if building with the search
++#		daemon ability.
++endif
++
++endif # SEARCH_DAEMON
++endif # WIN32
++
++ifeq ($(findstring id3,$(MOD_LIST)),id3)
++ZLIB_LINK:=	-lz
++#		Library to link against for zlib compression if building with
++#		the ID3 module.
++endif
++
++###############################################################################
++#
++#	General stuff
++#
++###############################################################################
++
++RM:=		rm -fr
++#		The command to remove files recursively and ignore errors;
++#		usually "rm -fr" for Unix or "erase" for Windows.
++
++PERL:=		/usr/bin/perl
++#		The full path to the Perl 5 executable; usually "/bin/perl" or
++#		"/usr/bin/perl" for Unix or "\Perl\bin\perl" for
++#		Windows.  You need this only if you intend on using
++#		httpindex(1) or searchc(1).
++
++RANLIB:=	ranlib
++#		The command to generate library tables-of-contents; usually
++#		"ranlib".  If your OS doesn't need this done to libraries, you
++#		can still leave this here since errors from this command are
++#		ignored in the makefiles.
++
++SHELL:=		/bin/sh
++#		The shell to spawn for subshells; usually "/bin/sh".
++
++STRIP:=		strip
++#		The command to strip symbolic information from executables;
++#		usually "strip".  You can leave this defined even if your OS
++#		doesn't have it or any equivalent since any errors from this
++#		command are ignored in the Makefiles.
++
++###############################################################################
++#
++#	C++ compiler
++#
++###############################################################################
++
++CC:=		g++
++#		The C++ compiler you are using; usually "CC" or "g++".
++
++#DEBUG:=		true
++ifdef DEBUG
++OPTIM:=		-g
++else
++OPTIM:=		-O2
++#		The optimization level.  Many compilers allow a digit after the
++#		O to specify the level of optimization; if so, set yours to the
++#		highest number your compiler allows without eliciting problems
++#		in the optimizer.
++#
++#		Using g++, -O3 under Cynwin under Windows produces bad code;
++#		-O3 with 3.0 causes the optimizer to take ridiculously long and
++#		use most of the CPU and memory.
++#
++#		If SWISH++ doesn't work correctly with optimization on, but it
++#		works just fine with it off, then there is a bug in your
++#		compiler's optimizer.
++
++ifeq ($(findstring g++,$(CC)),g++)
++OPTIM+=		-fomit-frame-pointer
++endif
++endif # DEBUG
++
++CCFLAGS:=	-I. $(CHARSET_DEFS) $(ENCODING_DEFS) $(DECODING) $(MOD_DEFS) \
++		$(SEARCH_DAEMON) $(OS) $(OPTIM)
++#		Flags for the C++ compiler.
++
++ifeq ($(findstring g++,$(CC)),g++)
++CCFLAGS+=	-fno-exceptions -fno-rtti
++#		Since SWISH++ doesn't use exceptions or RTTI, turn off code
++#		generation for them to save space in the executables.
++endif
++
++ifeq ($(findstring g++,$(CC)),g++)
++#CCFLAGS+=	-fmessage-length=0 -W -Wcast-align -Wcast-qual -Wnon-virtual-dtor -Wpointer-arith -Wreorder -Wswitch -Wtraditional -Wuninitialized -Wunreachable-code -Wunused #-Winline -Wshadow
++endif
++#		Warning flags specific to g++.  Unless you are modifying the
++#		source code, you should leave this commented out.
++
++###############################################################################
++#
++#	Installation
++#
++###############################################################################
++
++INSTALL:=	$(ROOT)/install-sh
++#		Install command; usually "$(ROOT)/install-sh".
++
++I_ROOT:=	/usr
++#		The top-level directory of where SWISH++ will be installed.
++
++I_BIN:=		$(I_ROOT)/bin
++#		Where executables are installed; usually "$(I_ROOT)/bin".
++
++I_ETC:=		$(I_ROOT)/etc
++#		Where .conf files are installed; usually "$(I_ROOT)/etc".
++
++I_LIB:=		$(I_ROOT)/lib
++#		Where libraries are installed; usually "$(I_ROOT)/lib".
++
++I_MAN:=		$(I_ROOT)/man
++#		Where manual pages are installed; usually "$(I_ROOT)/man".
++
++I_OWNER:=	-o bin
++#		The owner of the installed files.
++
++I_GROUP:=	-g bin
++#		The group of the installed files.
++
++I_MODE:=	-m 644
++#		File permissions for regular files (non executables).
++
++I_XMODE:=	-m 755
++#		File permissions for eXecutables and directories.
++
++MKDIR:=		$(INSTALL) $(I_OWNER) $(I_GROUP) $(I_XMODE) -d
++#		Command used to create a directory.
++
++########## You shouldn't have to change anything below this line. #############
++
++# $(ROOT) is defined by the Makefile including this.
++
++.%.d : %.c $(ROOT)/platform.h
++	$(SHELL) -ec '$(CC) -MM $(CFLAGS) $< | sed "s!\([^:]*\):!\1 $@ : !g" > $@; [ -s $@ ] || $(RM) $@'
++
++ifneq ($(findstring platform,$(TARGET)),platform)
++$(ROOT)/platform.h $(ROOT)/config/platform.mk:
++	@$(MAKE) -C $(ROOT)/config
++endif
++
++.SUFFIXES: .in
++% :: %.in
++	$(PERL) $(ROOT)/config/config.pl $< < $(ROOT)/config/config.mk
++
++##
++# The end.
++##
+diff -purN swish++-5.15.3/config.h swish++/config.h
+--- swish++-5.15.3/config.h	2003-08-18 13:12:10.000000000 -0400
++++ swish++/config.h	2004-03-09 18:27:09.000000000 -0500
+@@ -202,9 +202,6 @@ char const	ShellFilenameEscapeChars[]	= 
+ #ifdef	WIN32
+ char const	TempDirectory_Default[]		= "/temp";
+ #else
+-#error		You have not set TempDirectory_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+ char const	TempDirectory_Default[]		= "/tmp";
+ #endif
+ //		Default directory to use for temporary files during indexing.
+@@ -231,10 +228,7 @@ int const	WordPercentMax_Default		= 100;
+ //		it is discarded as being too frequent; this can be overridden
+ //		either in a config. file or on the command line.
+ 
+-#error		You have not set WordThreshold_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+-int const	WordThreshold_Default		= 250000;
++int const	WordThreshold_Default		= 524288;
+ //		The word count past which partial indicies are generated and
+ //		merged since all the words are too big to fit into memory at
+ //		the same time.  If you index and your machine begins to swap
 diff -purN swish++-5.15.3/man/man8/searchd.8 swish++/man/man8/searchd.8
 --- swish++-5.15.3/man/man8/searchd.8	2001-11-11 23:43:11.000000000 -0500
 +++ swish++/man/man8/searchd.8	2004-03-09 18:16:57.000000000 -0500
@@ -80,7 +387,7 @@ diff -purN swish++-5.15.3/searchmonitor.in swish++/searchmonitor.in
  ########### You shouldn't have to change anything below this line. ############
 diff -purN swish++-5.15.3/www_example/search.cgi swish++/www_example/search.cgi
 --- swish++-5.15.3/www_example/search.cgi	2002-12-17 12:27:20.000000000 -0500
-+++ swish++/www_example/search.cgi	2004-03-09 18:16:57.000000000 -0500
++++ swish++/www_example/search.cgi	2004-03-09 18:27:16.000000000 -0500
 @@ -1,4 +1,4 @@
 -#! /usr/local/bin/perl
 +#! /usr/bin/perl
@@ -96,3 +403,200 @@ diff -purN swish++-5.15.3/www_example/search.cgi swish++/www_example/search.cgi
  #		The full path to the bin directory where you installed the
  #		SWISH++ executables.
  
+diff -purN swish++-5.15.3/www_example/search.cgi~ swish++/www_example/search.cgi~
+--- swish++-5.15.3/www_example/search.cgi~	1969-12-31 19:00:00.000000000 -0500
++++ swish++/www_example/search.cgi~	2004-03-09 18:16:57.000000000 -0500
+@@ -0,0 +1,193 @@
++#! /usr/bin/perl
++###############################################################################
++#
++# NAME
++#
++#	search.cgi
++#
++# SYNOPSIS
++#
++#	<form action="search.cgi">
++#	  <input type="text" name="Search" /><br />
++#	  <input type="checkbox" name="Stem" /><b>Stem words</b>
++#	  <input type="submit" value="Search" />
++#	</form>
++#
++# DESCRIPTION
++#
++#	This is a toy example CGI script written in Perl 5 to show how to
++#	interface SWISH++ to a web-based search form.  For errors, it simply
++#	calls "die" and the message goes to the web server log file and the
++#	user sees "Internal Server Error."  A real CGI script should report
++#	errors better.  This is an exercise for the reader.
++#
++# SEE ALSO
++#
++#	search(1), CGI(3)
++#
++#	Larry Wall, et al.  "Programming Perl," 3rd ed., O'Reilly and
++#	Associates, Inc., Sebastopol, CA, 2000.
++#
++###############################################################################
++
++use lib qw( /home/www/swish++/lib/ );
++#		Put the path to where the WWW library is above.
++require WWW;
++
++$SWISH_BIN =	'/usr/bin';
++#		The full path to the bin directory where you installed the
++#		SWISH++ executables.
++
++$DOC_ROOT =	'/home/www/httpd/htdocs';
++#		The top-level directory for your document tree presumeably
++#		where the index was generated from.
++
++$INDEX_FILE =	'/home/www/swish++.index';
++#		The full path to the index file to be searched through.
++
++#$SOCKET_FILE =	'/tmp/search.socket';
++#		The full path to the socket file.  Uncomment this only if you
++#		run 'search' as a daemon listening to a Unix domain socket.
++
++#$SOCKET_ADDRESS = '*:1967';
++#		The host:port of the TCP socket.  Uncomment this only if you
++#		run 'search' as a daemon listening to a TCP socket.
++
++##
++# Get Search parameter.
++##
++use CGI;
++my $q = new CGI;
++my $search = $q->param( 'Search' ) || die "no Search parameter";
++
++##
++# Add in specified options.
++##
++my @options;
++push( @options, '-s' ) if $q->param( 'Stem' );
++
++##
++# Call 'search' either as a client or as a command.  In a real CGI, as opposed
++# to this toy example, you would have the code only for the case you are
++# actually doing.
++##
++if ( $SOCKET_FILE || $SOCKET_ADDRESS ) {
++	use Socket;
++	if ( $SOCKET_FILE ) {
++		##
++		# Connect to the 'search' server via a Unix domain socket.
++		##
++		socket( SEARCH, PF_UNIX, SOCK_STREAM, 0 ) || die "socket: $!";
++		connect( SEARCH, sockaddr_un( $SOCKET_FILE ) ) ||
++			die "connect: $!";
++	} else {
++		##
++		# Connect to the 'search' server via a TCP socket.
++		##
++		my( $host, $port ) = $SOCKET_ADDRESS =~ /(?:([^\s:]+):)?(\d+)/;
++		$host = 'localhost' if $host eq '' || $host =~ /^\*?$/;
++		my $iaddr = inet_aton( $host ) ||
++			die "$me: \"$host\": bad or unknown host\n";
++		socket( SEARCH, PF_INET, SOCK_STREAM, getprotobyname('tcp') ) ||
++			die "socket: $!";
++		connect( SEARCH, sockaddr_in( $port, $iaddr ) ) ||
++			die "connect: $!";
++	}
++
++	##
++	# We *MUST* set autoflush for the socket filehandle otherwise the
++	# server thread will hang since I/O buffering will wait for the buffer
++	# to fill that will never happen since queries are short.  See [Wall],
++	# p. 781.
++	##
++	select( (select( SEARCH ), $| = 1)[0] );
++
++	##
++	# We should end command-line options with "--" to signal the end of
++	# legitimate options.  If not given, it may be possible for a user to
++	# give options in the search terms.
++	#
++	# We also *MUST* print a trailing newline since the server reads an
++	# entire line of input (so therefore it looks and waits for a newline).
++	##
++	print SEARCH "search @options -- $search\n";
++} else {
++	##
++	# Zap dangerous characters before exposing to shell; escape rest.
++	##
++	$search =~ s/[^\s&'()*\-=\w]/ /g;
++	$search =~ s/([&'()*])/\\$1/g;
++
++	##
++	# Open a pipe from the 'search' command.
++	#
++	# We should end command-line options with "--" to signal the end of
++	# legitimate options.  If not given, it may be possible for a user to
++	# give options in the search terms.
++	##
++	open( SEARCH, "$SWISH_BIN/search -i $INDEX_FILE @options -- $search |" )
++		|| die "open: $!";
++}
++
++##
++# Print header HTML
++##
++print <<END;
++Content-Type: text/html
++
++<html>
++<head><title>Search Results</title></head>
++<body>
++<big><b>Search Results</b></big><hr>
++<table border="0" cellpadding="0" cellspacing="0">
++END
++
++##
++# Read the search results back.
++##
++while ( <SEARCH> ) {
++	if ( /^# ignored: / ) {
++		##
++		# Get the ignored words so we can report them to the user.
++		##
++		$ignored = $';
++		next;
++	}
++	##
++	# Future releases of SWISH++ may emit other comments: ignore ones we
++	# don't know about.
++	##
++	next if /^#/;
++
++	my( $rank, $file, $size, $title ) = split( / /, $_, 4 );
++
++	my $desc = WWW::extract_description( "$DOC_ROOT/$file" );
++	WWW::hyperlink( $desc );
++	$size = int( $size / 1024 );
++	if ( $size ) {
++		$size .= 'K';
++	} else {
++		$size = '&lt;1K';
++	}
++
++	print <<END;
++	<tr valign="top"><td align="right">$rank%&nbsp;&nbsp;</td>
++	<td><dl><dt><b><a href="$file">$title</a></b> ($size)<dd>$desc</dl></td>
++END
++}
++close( SEARCH ) || die "close: $!";
++
++print "</table>\n";
++if ( $? ) {
++	print "<b>malformed query</b>\n";
++} else {
++	print "<p>ignored: $ignored\n" if $ignored;
++}
++
++##
++# Print footer HTML
++##
++print <<END;
++</body>
++</html>
++END
