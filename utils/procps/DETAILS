@@ -1,5 +1,5 @@
            SPELL=procps
-         VERSION=3.1.15
+         VERSION=3.2.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://procps.sourceforge.net/$SOURCE
@@ -7,21 +7,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[2]=http://www.arte.unipi.it/Public/Linux/$SOURCE
    SOURCE_URL[3]=ftp://ftp-linux.cc.gatech.edu/pub/linux/system/status/ps/$SOURCE
    SOURCE_URL[4]=ftp://postgresql.sai.msu.ru/pub/Linux/procps/$SOURCE
-# corrupted mirrors:
-#   SOURCE_URL[0]=ftp://sunsite.unc.edu/pub/Linux/system/status/ps/$SOURCE
-#   SOURCE_URL[1]=ftp://ftp.ibiblio.org/pub/Linux/system/status/ps/$SOURCE
-#   SOURCE_URL[0]=ftp://ftp.iks-jena.de/pub/software/linux/sysutils/$SOURCE
-#   SOURCE_URL[1]=ftp://ftp.uni-jena.de/pub/linux/MIRROR.sunsite/system/status/ps/$SOURCE
-#   SOURCE_URL[4]=http://ftp.fi.muni.cz/pub/linux/metalab.unc.edu/system/status/ps/$SOURCE
-#   SOURCE_URL[6]=ftp://ftp.lip6.fr/pub/linux/sunsite/system/status/ps/$SOURCE
-#  SOURCE_URL[9]=ftp://ftp.cs.cuhk.hk/pub/Linux/system/status/ps/$SOURCE
-#  SOURCE_URL[10]=ftp://ftp.sun.ac.za/mirrorsites/sunsite.unc.edu/pub/Linux/system/status/ps/$SOURCE
-          MD5[0]=c5b9565c9f2d21a4af9afb0164e80774
+          MD5[0]=9455ac736da2bfab942daeb641d8e386
         WEB_SITE=http://procps.sourceforge.net
          ENTERED=20010922
          UPDATED=20030919
       LICENSE[0]=GPL
-      MAINTAINER=jschmidt@fnal.gov
            SHORT="procps contains utilities to report the state of the box."
 cat << EOF
 procps is a package of utilities which report on the state of the
