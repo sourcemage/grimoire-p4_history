@@ -20,6 +20,7 @@ if [[ "$mode" == "oldktree" && -d ${LINUX_SOURCE_DIRECTORY} ]]
 then
 	message "${MESSAGE_COLOR}Okay dir does exist${DEFAULT_COLOR}" 
 elif [[ "$mode" == "oldktree" ]]
+then
 	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
 	exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
 	mode="newktree"
