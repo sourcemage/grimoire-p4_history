@@ -1,0 +1,7 @@
+if  !  grep  -q  XINE_BACKEND  $SPELL_CONFIG;  then
+  if    query  "Use xine-lib backend instead of gstreamer?" n
+  then  XINE_BACKEND=y
+  else  XINE_BACKEND=n
+  fi
+  echo  "XINE_BACKEND=$XINE_BACKEND"  >>  $SPELL_CONFIG
+fi
