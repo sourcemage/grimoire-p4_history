@@ -38,56 +38,56 @@ if [ "$found" = "" ] ; then
     exit 1
 fi
 
-dtd421=""
+dtd42=""
 for dtd in $found; do
-    check=`grep '//OASIS//DTD DocBook XML V4.1.2//EN' $dtd`
+    check=`grep '//OASIS//DTD DocBook XML V4.2//EN' $dtd`
     if [ "$check" != "" ] ; then
-        dtd421=$dtd
+        dtd42=$dtd
         break
     fi
 done
 
-if [ "$dtd421" = "" ] ; then
-    echo could not locate version 4.1.2 of DocBook XML
+if [ "$dtd42" = "" ] ; then
+    echo could not locate version 4.2 of DocBook XML
     exit 1
 fi
 
-docbookdir=`dirname $dtd421`
-echo Found DocBook XML 4.1.2 DTD in $docbookdir
+docbookdir=`dirname $dtd42`
+echo Found DocBook XML 4.2 DTD in $docbookdir
 if [ ! -w $docbookdir ] ; then
     echo Cannot write to $docbookdir
     exit 2
 fi
 
 xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.1.2//EN" \
+    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.2//EN" \
     "file://$docbookdir/dbpoolx.mod" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML V4.1.2//EN" \
+    "-//OASIS//DTD DocBook XML V4.2//EN" \
     "file://$docbookdir/docbookx.dtd" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Character Entities V4.1.2//EN" \
+    "-//OASIS//ENTITIES DocBook XML Character Entities V4.2//EN" \
     "file://$docbookdir/dbcentx.mod" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Notations V4.1.2//EN" \
+    "-//OASIS//ENTITIES DocBook XML Notations V4.2//EN" \
     "file://$docbookdir/dbnotnx.mod" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.1.2//EN" \
+    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.2//EN" \
     "file://$docbookdir/dbgenent.mod" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.1.2//EN" \
+    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.2//EN" \
     "file://$docbookdir/dbhierx.mod" $CATALOG
 xmlcatalog --noout --add "public" \
     "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
     "file://$docbookdir/soextblx.dtd" $CATALOG
 xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML CALS Table Model V4.1.2//EN" \
+    "-//OASIS//DTD DocBook XML CALS Table Model V4.2//EN" \
     "file://$docbookdir/calstblx.dtd" $CATALOG
 xmlcatalog --noout --add "rewriteSystem" \
-    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    "http://www.oasis-open.org/docbook/xml/4.2" \
     "file://$docbookdir" $CATALOG
 xmlcatalog --noout --add "rewriteURI" \
-    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    "http://www.oasis-open.org/docbook/xml/4.2" \
     "file://$docbookdir" $CATALOG
 
 xmlcatalog --noout --add "delegatePublic" \
