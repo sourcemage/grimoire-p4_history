@@ -1,69 +1,31 @@
-(
+# fixes bug #6833
+patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
-  # fixes bug #6833
-  patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
+# mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
+sedit  's/-fomit-frame-pointer//'  configure       &&
 
-  # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
-  sedit  's/-fomit-frame-pointer//'  configure       &&
+patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
+if [ "$CVS" = "y" ]; then
+  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
+else
+  OPTS="$OPTS --enable-libavcodec"
+fi  &&
 
-  patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
-  if [ "$CVS" = "yes" ]; then
-    patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
-  else
-    OPTS="$OPTS --enable-libavcodec"
-  fi  &&
+case  $GUI  in
+  y|Y)  OPTS="$OPTS  --enable-gui"  ;;
+esac  &&
 
-  case  $GUI  in
-    y|Y)  OPTS="$OPTS  --enable-gui"  ;;
-  esac  &&
+case  $JOYSTICK  in
+  y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
+esac  &&
 
-  case  $JOYSTICK  in
-    y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
-  esac  &&
+case  $OSD_MENU  in
+  y|Y)  OPTS="$OPTS  --enable-menu"  ;;
+esac  &&
 
-  case  $OSD_MENU  in
-    y|Y)  OPTS="$OPTS  --enable-menu"  ;;
-  esac  &&
-  
-  CFLAGS= ./configure  --prefix=/usr    \
-               --confdir=/etc/mplayer   \
-               --mandir=/usr/share/man  \
-               $OPTS          &&
+CFLAGS= ./configure  --prefix=/usr    \
+             --confdir=/etc/mplayer   \
+             --mandir=/usr/share/man  \
+             $OPTS          &&
 
-  make                        &&
-  prepare_install             &&
-  make    install             &&
-
-  (
-
-    if (ldd /usr/bin/mplayer | grep freetype) > /dev/null; then
-      if ! (ldd /usr/bin/mplayer | grep fontconfig) > /dev/null; then
-        if  [  -f  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf ]; then
-          cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
-              /usr/share/mplayer/subfont.ttf
-        else
-          message "Couldn't find a font to install as default subtitle font."
-          message "Make sure you copy a font to ~/.mplayer/subfont.ttf"
-        fi
-      else
-        echo  "fontconfig=1"  >>  etc/example.conf
-      fi
-    fi
-  
-    if  [  !  -f  /etc/mplayer/mplayer.conf  ];  then
-      sedit  "s/include =/# include =/"         etc/example.conf
-      sedit  "s/# vo=/vo=/"                     etc/example.conf
-      sedit  "s/# ao=/ao=/"                     etc/example.conf
-      if  [ "$GUI" = "y" ]; then
-        sedit  "s/# skin = default/skin = Blue/"  etc/example.conf
-      fi
-      cp  etc/example.conf                      /etc/mplayer/mplayer.conf
-    fi
-
-    if  [  !  -f  /etc/mplayer/input.conf  ];  then
-      cp  etc/input.conf                 /etc/mplayer/input.conf
-    fi
-
-  )
-
-) > $C_FIFO 2>&1
+make
