@@ -1,12 +1,18 @@
            SPELL=mysql
+       BUILD_API=2
+if [ "$DEVEL" == "y" ];then
+         VERSION=5.0.0-alpha
+          MD5[0]=33ac8034463ac8c397e2f9bd9f0ab899
+else
          VERSION=4.0.20
+          MD5[0]=2b92fb0fb2dd501306ebf8c6d2ded265
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       SOURCE_URI=MySQL-${VERSION%\.*}/$SOURCE
    SOURCE_URL[0]=ftp://mirror.mcs.anl.gov/pub/mysql/Downloads/$SOURCE_URI
    SOURCE_URL[1]=http://mysql.he.net/Downloads/$SOURCE_URI
    SOURCE_URL[2]=ftp://ftp.mysql.com/$SOURCE_URI
-          MD5[0]=2b92fb0fb2dd501306ebf8c6d2ded265
         WEB_SITE=http://www.mysql.com/
          ENTERED=20011114
          UPDATED=20030920
