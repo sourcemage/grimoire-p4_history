@@ -1,16 +1,19 @@
            SPELL=bluefish
-         VERSION=0.7
-          SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]='ec08d87a6ef4a3012f75e15cd8037df2'
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+         VERSION=0.8
+          SOURCE=$SPELL-gtk2-$VERSION.tar.bz2
+          MD5[0]=4136402f3bf6551acc1f5c982c4a6b36
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-gtk2-$VERSION
    SOURCE_URL[0]=http://pkedu.fbt.eitn.wau.nl/~olivier/downloads/$SOURCE
-        WEB_SITE=http://bluefish.openoffice.nl
+   SOURCE_URL[1]=ftp://bluefish.advancecreations.com/bluefish/downloads/$SOURCE
+   SOURCE_URL[2]=http://bluefish.mrball.net/downloads/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.ratisbona.com/pub/bluefish/downloads/$SOURCE
+        WEB_SITE=http://bluefish.openoffice.nl/
          ENTERED=20011106
-         UPDATED=20011118
-      MAINTAINER=eric@schabell.com
-           SHORT="Bluefish is a GTK HTML editor"
+         UPDATED=20021213
+           SHORT='Bluefish is a GTK2 HTML editor'
 cat << EOF
-Bluefish is a programmer's HTML editor written using GTK, designed to 
+Bluefish is a programmer's HTML editor written using GTK2, designed to 
 save the experienced webmaster some keystrokes. It features a
 multiple file editor, multiple toolbars, custom menus, image and
 thumbnail dialogs, open from the Web, CSS dialogs, PHP, SSI and RXML
