@@ -1,5 +1,6 @@
-depends	cups		&&
-#depends autoconf	&&
-#depends automake	&&
-depends gtk+		&&
-optional_depends  "openssl"    "--enable-ssl"  ""  "for encrypted communications"
+depends	cups  &&
+depends gtk+  &&
+optional_depends  "openssl"                       \
+                  "--enable-ssl"                  \
+                  ""                              \
+                  "for encrypted communications"
