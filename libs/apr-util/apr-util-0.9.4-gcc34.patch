@@ -1,0 +1,38 @@
+
+Fix code which gives undefined behaviour by the C99 standard
+(section 6.3.2.3 para 8), and generates a warning for every
+use of the macro with gcc 3.4.
+
+--- apr-util-0.9.4/include/apr_optional.h.gcc34
++++ apr-util-0.9.4/include/apr_optional.h
+@@ -109,9 +109,10 @@
+  * confusingly but correctly, the function itself can be static!
+  * @param name The name of the function
+  */
+-#define APR_REGISTER_OPTIONAL_FN(name) \
+-    (((void (*)(const char *, APR_OPTIONAL_FN_TYPE(name) *)) \
+-               &apr_dynamic_fn_register)(#name,name))
++#define APR_REGISTER_OPTIONAL_FN(name) do { \
++  APR_OPTIONAL_FN_TYPE(name) *apu__opt = name; \
++  apr_dynamic_fn_register(#name,(apr_opt_fn_t *)apu__opt); \
++} while (0)
+ 
+ /** @internal
+  * Private function! DO NOT USE! 
+--- apr-util-0.9.4/include/apr_optional_hooks.h.gcc34
++++ apr-util-0.9.4/include/apr_optional_hooks.h
+@@ -99,10 +99,10 @@
+  * @param nOrder an integer determining order before honouring aszPre and aszSucc (for example HOOK_MIDDLE)
+  */
+ 
+-#define APR_OPTIONAL_HOOK(ns,name,pfn,aszPre,aszSucc,nOrder) \
+-    ((void (APR_THREAD_FUNC *)(const char *,ns##_HOOK_##name##_t *,const char * const *, \
+-	       const char * const *,int))&apr_optional_hook_add)(#name,pfn,aszPre, \
+-							   aszSucc, nOrder)
++#define APR_OPTIONAL_HOOK(ns,name,pfn,aszPre,aszSucc,nOrder) do { \
++  ns##_HOOK_##name##_t *apu__hook = pfn; \
++  apr_optional_hook_add(#name,(void (*)(void))apu__hook,aszPre, aszSucc, nOrder); \
++} while (0)
+ 
+ /**
+  * @internal
