@@ -1,7 +1,7 @@
 (
 
   # these modules are not enabled by default and not part of any dependency
-  ENABLE_MODULES=$(cat enable-modules | while read m; do echo -n " --enable-$m"; done) &&
+  ENABLE_MODULES=$(cat $SCRIPT_DIRECTORY/enable-modules | while read m; do echo -n " --enable-$m"; done) &&
 
   ./buildconf                         &&
   ./configure                         \
