@@ -1,72 +1,45 @@
 2004-03-07 Treeve Jelbert <treeve01@pi.be>
-	* CONFLICTS: conflicts xfree86-4.3
-
+	the original xfree86 spell, renamed as xfree86-4.3
+	* DETAILS: SPELL=xfree86-4.3
+	* CONFLICTS: conflicts xfree86
+ 
 2004-02-27 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Added dependency on bison  (Thanks to elshaa)
-	* DETAILS: Remove .903 patch (fails)
-	* PRE_BUILD: Remove fontfile patch and application (fails)
-
-2004-02-19 Treeve Jelbert <treeve01@pi.be>
-	* DETAILS PRE_BUILD: remove fontfile.diff patch
-	* fontfile.diff: delete
-	this patch is already included in 4.3.99.903
-
-2004-02-19 Treeve Jelbert <treeve01@pi.be>
-	* DETAILS: version 4.3.99.903
-	renumber fontfile.diff patch, 
-	as all the other patches must be in sequence
-	* PRE_BUILD: renumber fontfile.diff patch
 
 2004-02-13 Seth Woolley <seth@tautology.org>
-	* DETAILS, PRE_BUILD: fontfile.diff patch changed
+	* DETAILS, PRE_BUILD: fontfile.diff patch changed.
 
 2004-02-11 Seth Woolley <seth@tautology.org>
-	* DETAILS, PRE_BUILD: fontfile.diff patch local root SECURITY FIX
+	* PRE_BUILD, DETAILS: fontfile.diff patch local root SECURITY FIX
 
-2003-12-24 hgg <hgreig@bigpond.net.au>
-	* DETAILS: update to 4.3.99.902
+2004-01-09 hgg <hgreig@bigpond.net.au>
+	* BUILD,XFree86-4.3.0-linux-2.6.0.patch: patch for 2.6.0 headers support
+	* BUILD: change the drm stuff to go to $(uname -r)
 
 2003-12-15 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* POST_INSTALL: run ldconfig after adding /usr/X11R6/lib
 	to /etc/ld.so.conf
 
-2003-12-08 hgg <hgreig@bigpond.net.au>
-	* DETAILS: update to 4.3.99.901
-	* BUILD: reorder some hacks, add a freetype one too
-
-2003-11-10 hgg <hgreig@bigpond.net.au>
-	* DETAILS: Update to 4.3.99.15
+2003-11-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, Xi-locking.patch: apply patch to fix an application deadlock
+	issue cause by xfree (http://bugs.xfree86.org/show_bug.cgi?id=260)
 
 2003-10-20 hgg <hgreig@bigpond.net.au>
 	* POST_INSTALL: correct typo
 
-2003-10-11 Jose Bernardo <jbernardo@sourcemage.org>
-	* BUILD: fixed sis_common.h in the GL libs, by copying over the one
-	in the drivers directory. Now sis DRI is supposed to work again!
-
-2003-10-11 Jose Bernardo <jbernardo@sourcemage.org>
-	* DETAILS: update VERSION field to 4.3.99.14 
-
-2003-10-11 hgg <hgreig@bigpond.net.au>
-	* DETAILS: update to 4.3.99.14 
-
 2003-10-10 hgg <hgreig@bigpond.net.au>
-	* DETAILS: update to 4.3.99.13
 	* HISTORY: convert to new format
-	* POST_INSTALL: add /usr/X11R6/lib to /etc/ld.so.conf
-	* PROVIDES: upper case provides
+	* PROVIDES: upper case
+	* POST_INSTALL: add /usr/X11R6/lib to /etc/ld.so.conf	
 
 2003-09-25 hgg <hgreig@bigpond.net.au>
 	* BUILD: Imake "YES" is case sensitive, adjust BUILD to use YES
 
 2003-09-19 hgg <hgreig@bigpond.net.au>
-	* DETAILS,PREPARE,BUILD: Update to 4.3.99.12 for all the band-aid brigade
-	Branch into xfree86-devel, Remove all options for patches
-	Add some fallback defaults to BUILD, Move a bugfix in BUILD to before "make World" so it won't fail
-       (when it does fail it calls "make World" again which actually involves a "make clean")
-
-2003-09-18 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PREBUILD,PREPARE: Revert to stable 4.3.0.1 version ( at long last)
 	* CONFLICTS: Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
+	* BUILD: Move a bugfix in BUILD to before "make World" so it won't fail
+	(when it does fail it calls "make World" again which actually involves a "make clean")
 
 2003-09-15 hgg <hgreig@bigpond.net.au>
 	* PROVIDES: Add Provides, it now has 3 categories x11-server, x11-libs and opengl (last one only needed fro 
