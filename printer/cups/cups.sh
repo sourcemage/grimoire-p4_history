@@ -1,0 +1,53 @@
+#!/bin/sh
+# /etc/init.d/cups.sh
+# SGL-script-version=20021020
+# this sets the run levels and priority for links
+# SGL-START:1 2 3 5:S99
+# SGL-STOP:0 6:K00
+#
+# "$Id: cups-printing.txt,v 1.3 2001/10/05 22:43:15 ian Exp $"
+#
+#   Startup/shutdown script for the Common UNIX Printing System (CUPS).
+#
+#   Copyright 1997-2001 by Easy Software Products, all rights reserved.
+#
+#   Slightly changed by Alex Kloss
+#
+#
+# Start or stop the CUPS server based upon the first argument to the script.
+#
+
+source /etc/init.d/functions
+
+case $1 in
+        start)
+                echo "Starting CUPS Printserver..."
+                loadproc /usr/sbin/cupsd
+                ;;
+
+        stop)
+                echo "Stopping CUPS Printserver..."
+                killproc cupsd
+                ;;
+
+        reload)
+                echo "Reloading CUPS Printserver..."
+                reloadproc /usr/sbin/cupsd
+                ;;
+
+        restart)
+                $0 stop
+                /usr/bin/sleep 1
+                $0 start
+                ;;
+
+        status)
+                statusproc cupsd
+                ;;
+
+        *)
+                echo "Usage: $0 {start|stop|reload|restart|status}"
+                exit 1
+                ;;
+esac
+# end of cups startup script
