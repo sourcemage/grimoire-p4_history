@@ -8,7 +8,7 @@
   ;;
   esac                                                                   &&
 
-  if spell_installed openssl; then
+  if spell_ok openssl; then
     if [ "$USE_SSL" == "y" ]; then
       message "${MESSAGE_COLOR}Building with OpenSSL...${DEFAULT_COLOR}" &&
       SSLOPTS="SSLTYPE=unix           \
@@ -25,7 +25,7 @@
     SSLOPTS="SSLTYPE=none"
   fi                                                                     &&
 
-  if spell_installed linux-pam; then
+  if spell_ok linux-pam; then
     message "${MESSAGE_COLOR}Building with PAM...${DEFAULT_COLOR}"     	 &&
     TARGET=lnp
   else
@@ -48,7 +48,7 @@
   cp  -f  ./ipopd/ipop3d  /usr/sbin/					 &&
   cp  -f  ./mtest/mtest   /usr/bin/					 &&
 
-  if  spell_installed  stunnel;  then
+  if  spell_ok  stunnel;  then
     ln  -sf  /etc/stunnel/stunnel.pem   \
              /etc/ssl/certs/imapd.pem   &&
     ln  -sf  /etc/stunnel/stunnel.pem   \
