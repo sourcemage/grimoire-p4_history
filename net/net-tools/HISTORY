@@ -1,3 +1,13 @@
+2003-08-01  Eric Sandall <eric@sandall.us>
+
+		network (when using dhcpcd) uses syslog
+		(dhcpcd -d)
+
+		Still need to make loading modules not
+		display all the information, should use
+		syslog (modprobe -s), but that still doesn't
+		help, nor does '-q' (at least with my 3c59x)
+
 2003-07-31  Eric Sandall <eric@sandall.us>
 
 		Added init.d/mountnetwork to mount networked
