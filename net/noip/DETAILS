@@ -1,13 +1,14 @@
            SPELL=noip
-         VERSION=1.6
-          SOURCE=noip_updater_v$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/noip_updater_v$VERSION
+         VERSION=2.0.3b
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.no-ip.com/client/linux/$SOURCE
-          MD5[0]=ed73fa68347e25b23945a959f900f11c
+          MD5[0]=cd22eedc69cb5502f59d5d17766adb26
         WEB_SITE=http://www.no-ip.com
          ENTERED=20020326
          UPDATED=20020326
-      MAINTAINER=m.l@compaqnet.fr
+      MAINTAINER=mlubrano@sourcemage.org
+         LICENSE=GPL
            SHORT="No-IP Updater updates your IP address on DDNS service"
 cat << EOF
 No-IP is a Dynamic DNS service, available (basic account for free) from www.no-ip.com, witch cool domain names and so on...
