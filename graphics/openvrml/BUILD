@@ -33,4 +33,9 @@ fi  &&
 #
 OPTS="$OPTS  --disable-tests"  &&
 
+#
+# Mozilla plugin is broken with mozilla 1.7.5
+#
+OPTS="$OPTS  --disable-mozilla-plugin"  &&
+
 default_build
