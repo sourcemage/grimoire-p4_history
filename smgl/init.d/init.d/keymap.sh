@@ -3,6 +3,7 @@
 PROGRAM=/bin/loadkeys
 RUNLEVEL=S
 NEEDS="+local_fs"
+RECOMMENDED=yes
 
 . /etc/init.d/smgl_init
 . /etc/sysconfig/keymap

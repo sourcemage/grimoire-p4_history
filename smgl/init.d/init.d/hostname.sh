@@ -2,6 +2,7 @@
 
 PROGRAM=/bin/hostname
 RUNLEVEL=S
+RECOMMENDED=yes
 
 . /etc/init.d/smgl_init
 
