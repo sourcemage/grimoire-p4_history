@@ -10,14 +10,7 @@ optional_depends  X11-LIBS                                                \
                   ""                                                      \
                   "To support X display and auto some other dependecies"  &&
 
-if  spell_installed  espgs;  then
-  depends  "espgs"  ""  ""                             \
-           "for generating Postscript and PDF output"
-elif  spell_installed  ghostscript;  then
-  depends  "ghostscript"  ""  ""                       \
-           "for generating Postscript and PDF output"
-else
-  message  "If you are going to install cups, choose espgs instead of ghostscript:"
-  optional_depends  POSTSCRIPT-INTERPRETER  ""  ""              \
-                    "for generating Postscript and PDF output"  &&
-fi
+message  "If you are going to install cups, choose espgs instead of ghostscript."  &&
+
+optional_depends  POSTSCRIPT-INTERPRETER  ""  ""              \
+                  "for generating Postscript and PDF output"
