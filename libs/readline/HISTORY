@@ -1,3 +1,11 @@
+2004-07-29 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 5.0, removed patches, added SOURCE_URL[2] as
+	  fallback since the tarball isn't on ftp.gnu.org yet
+	* PRE_BUILD: removed
+	* BUILD: converted to build_api 2
+	* INSTALL: symlink to libreadline.so.4/libhistory.so.4 so bash isn't
+	  broken by the update
+
 2004-05-17 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: usr --infodir and --mandir
 	* POST_REMOVE: infodir is /usr/share/info, not /usr/info
