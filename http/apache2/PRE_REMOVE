@@ -1,1 +1,3 @@
-/etc/init.d/apache.sh  stop
+httpd -t &&
+[ -x /etc/init.d/apache.sh ] &&
+/etc/init.d/apache.sh stop
