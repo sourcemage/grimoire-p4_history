@@ -1,0 +1,53 @@
+diff -Nur vlc-0.5.0-orig/configure vlc-0.5.0/configure
+--- vlc-0.5.0-orig/configure	2003-02-03 02:36:00.000000000 +0100
++++ vlc-0.5.0/configure	2003-02-05 19:44:40.000000000 +0100
+@@ -16637,7 +16637,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lxvid  $LIBS"
++LIBS="-lxvidcore  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ #line $LINENO "configure"
+ /* confdefs.h.  */
+@@ -16688,7 +16688,7 @@
+ if test $ac_cv_lib_xvid_xvid_init = yes; then
+ 
+       PLUGINS="${PLUGINS} xvid"
+-      LDFLAGS_xvid="${LDFLAGS_xvid} -lxvid"
++      LDFLAGS_xvid="${LDFLAGS_xvid} -lxvidcore"
+ else
+    { { echo "$as_me:$LINENO: error: Cannot find libxvidcore library..." >&5
+ echo "$as_me: error: Cannot find libxvidcore library..." >&2;}
+@@ -21424,7 +21424,7 @@
+   if test "x${enable_qt}" = "xyes"; then
+      PLUGINS="${PLUGINS} qt"
+      ALIASES="${ALIASES} qvlc"
+-     LDFLAGS_qt="${LDFLAGS_qt} -lqt -L${QTDIR}/lib"
++     LDFLAGS_qt="${LDFLAGS_qt} -lqt-mt -L${QTDIR}/lib"
+      CPPFLAGS_qt="${CPPFLAGS_qt} -I/usr/include/qt -I${QTDIR}/include"
+      if test -x ${QTDIR}/bin/moc
+      then
+diff -Nur vlc-0.5.0-orig/modules/codec/spudec/spudec.c vlc-0.5.0/modules/codec/spudec/spudec.c
+--- vlc-0.5.0-orig/modules/codec/spudec/spudec.c	2003-01-30 17:36:04.000000000 +0100
++++ vlc-0.5.0/modules/codec/spudec/spudec.c	2003-02-05 19:45:21.000000000 +0100
+@@ -58,7 +58,7 @@
+     add_file( "spudec-font", NULL, NULL,
+               FONT_TEXT, FONT_LONGTEXT );
+ #else
+-    add_file( "spudec-font", "./share/" DEFAULT_FONT, NULL,
++    add_file( "spudec-font", "/usr/share/vlc/" DEFAULT_FONT, NULL,
+               FONT_TEXT, FONT_LONGTEXT );
+ #endif
+     set_description( _("subtitles decoder module") );
+diff -Nur vlc-0.5.0-orig/share/Makefile.in vlc-0.5.0/share/Makefile.in
+--- vlc-0.5.0-orig/share/Makefile.in	2003-02-03 02:35:51.000000000 +0100
++++ vlc-0.5.0/share/Makefile.in	2003-02-05 19:44:57.000000000 +0100
+@@ -1055,6 +1055,7 @@
+ EXTRA_DIST = $(DIST_rsrc) $(DIST_fonts)
+ 
+ dist_pkgdata_DATA = \
++	$(DIST_fonts) \
+ 	$(DIST_familiar) \
+ 	$(DIST_icons16) \
+ 	$(DIST_icons32) \
