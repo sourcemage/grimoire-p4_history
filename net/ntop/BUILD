@@ -2,19 +2,20 @@
 
   sedit  "s/@CC@/@CC@ $CFLAGS/"           gdchart0.94c/Makefile.in
   sedit  "s/CFLAGS=-O/CFLAGS=$CFLAGS/"    gdchart0.94c/gd-1.8.3/Makefile
-  sedit  "s/-O3 -funroll-loops/$CFLAGS/"  gdchart0.94c/gd-1.8.3/libpng-1.0.8/scripts/makefile.linux
-  patch  -p0  <  $SCRIPT_DIRECTORY/ntop.patch
+  sedit  "s/-O3 -funroll-loops/$CFLAGS/"  gdchart0.94c/gd-1.8.3/libpng-1.2.1/scripts/makefile.linux
+  
   cd  gdchart0.94c                         &&
   ./configure                              &&
-  cd  gd-1.8.3/libpng-1.0.8                &&
+  cd  gd-1.8.3/libpng-1.2.1                &&
   cp  scripts/makefile.linux  Makefile     &&
   make                                     &&
-  cd ../../zlib-1.1.3                      &&
+  cd ../../zlib-1.1.4                      &&
   ./configure                              &&
   make                                     &&
   cd  ..                                   &&
   make                                     &&
   cd  ../ntop                              &&
+  ./autogen.sh							   &&
   ./configure  --prefix=/usr               \
                --localstatedir=/var/cache  &&
   make                                     &&
