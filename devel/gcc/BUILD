@@ -35,10 +35,10 @@
   prepare_install                       && 
 
   if  [  -z  "$FIXEDINCLS"  ]
-  then  make  prefix=/${INSTALL_ROOT}/usr install-no-fixedincludes  &&
+  then  make  prefix=${INSTALL_ROOT}/usr install-no-fixedincludes  &&
         cp  -a  $SOURCE_DIRECTORY/libobjc/objc  \
                 ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/include
-  else  make  prefix=/${INSTALL_ROOT}/usr install
+  else  make  prefix=${INSTALL_ROOT}/usr install
   fi                                    &&
 
   ln    -sf gcc ${INSTALL_ROOT}/usr/bin/cc                        &&
