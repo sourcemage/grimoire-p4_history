@@ -1,4 +1,5 @@
 (
+  patch -p1 < $SCRIPT_DIRECTORY/javafix.diff &&
   sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/doc/db|' dist/Makefile.in &&
 
   if echo "$OPTS" | grep -q 'enable-java'; then
@@ -11,8 +12,7 @@
     fi &&
     message 'Checking that JAVA_HOME is defined...' &&
     [ -n "$JAVA_HOME" ] &&
-    export JAVA_HOME &&
-    export CLASSPATH=".:$CLASSPATH"
+    export JAVA_HOME
   fi &&
 
   cd  build_unix                         &&

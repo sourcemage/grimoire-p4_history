@@ -1,5 +1,6 @@
 if grep -q 'enable-java' $SPELL_CONFIG; then
   depends JAVA '--enable-java' &&
+  depends uudeview &&
   depends swig
 fi &&
 if grep -q 'enable-test' $SPELL_CONFIG; then
