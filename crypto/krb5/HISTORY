@@ -1,79 +1,66 @@
-2003-09-13  Ladislav Hagara <hgr@vabo.cz>
+2004-01-06 Ladislav Hagara <hgr@vabo.cz>
+	* CONFIGURE, BUILD: enable/disable Kerberos V4 backwards compatibility [Bug 5475]
+	* HISTORY: reformatted
 
-		updated to 1.3.1
+2003-09-13 Ladislav Hagara <hgr@vabo.cz>
+	* updated to 1.3.1
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* Update UPDATED purely for test grimoire integration.
 
-		Update UPDATED purely for test grimoire integration.
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-07-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* updated to new init system
+	changed dependency on Linux-PAM to optional_depends
+	removed CONFIGURE, if the system should be a KDC or Master KDC,
+	the user just says yes to the init script installation
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-07-26 Ladislav Hagara <hgr@vabo.cz>
+	* updated to 1.3
+	used SOURCE from ftp.debian.org because crypto-publish is out-of-date
+	removed MAINTAINER, adamsgl@dhbit.ca is no longer with us
 
-2003-07-31  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* Update TRIGGERS for Linux-PAM
 
-		updated to new init system
-		changed dependency on Linux-PAM to optional_depends
-		removed CONFIGURE, if the system should be a KDC or Master KDC,
-		the user just says yes to the init script installation
+2003-06-10 Ladislav Hagara <hgr@vabo.cz>
+	* updated to 1.2.8
+	commented out 'server_args' in xinetd.d/*
+	remove 2002-002-kadm4.patch
+	added krb5-1.2.8.patch - errno.h
 
-2003-07-26  Ladislav Hagara <hgr@vabo.cz>
+2003-03-31 Eric Sandall <eric@sandall.us>
+	* Updated to use sorcery init.d installer
 
-		updated to 1.3
-		used SOURCE from ftp.debian.org because crypto-publish is out-of-date
-		removed MAINTAINER, adamsgl@dhbit.ca is no longer with us
+2002-10-25 Eric Sandall <eric@sandall.us>
+	* Updated to v1.2.6
+	Security fix for kadm4
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
+2002-10-16 Ladislav Hagara <hgr@vabo.cz>
+	* Removed nonfunctional mirror - bug 1337
 
-		Update TRIGGERS for Linux-PAM
+2002-10-12 Ladislav Hagara <hgr@vabo.cz>
+	* Corrected MD5
+	Reformatted HISTORY file according to Grimoire Gurus Handbook
 
-2003-06-10  Ladislav Hagara <hgr@vabo.cz>
+2002-08-19 M.L. <m.l@compaqnet.fr>
+	* Fixed security bug #692.
+	Maintainer note: The patch never made it in when originally
+	updated by EricS or someone else forcing the change through.
+	Patch is now applied as of Sept. 12.
 
-		updated to 1.2.8
-		commented out 'server_args' in xinetd.d/*
-		remove 2002-002-kadm4.patch
-		added krb5-1.2.8.patch - errno.h
+2002-08-19 Adam Clark <adamsgl@dhbit.ca>
+	* Added sourcemage download URL, fixed LICENSE field
 
-2003-03-31  Eric Sandall <eric@sandall.us>
+2002-08-19 Eric Schabell <eric@schabell.com>
+	* Security fix, version bump to 1.2.5, License field added,
+	History updated, MD5 added, noted in bug #692 for testing 
+	as I don't run this (only updated to fix security problem).
 
-		Updated to use sorcery init.d installer
+2002-05-07 Julian v. Bock <julian@wongr.net>
+	* DEPENDS: change tcl-tk dependency to tcl.
 
-2002-10-25  Eric Sandall <eric@sandall.us>
-
-		Updated to v1.2.6
-
-		Security fix for kadm4
-
-2002-10-16  Ladislav Hagara <hgr@vabo.cz>
-
-		Removed nonfunctional mirror - bug 1337
-
-2002-10-12  Ladislav Hagara <hgr@vabo.cz>
-
-		Corrected MD5
-		Reformatted HISTORY file according to Grimoire Gurus Handbook
-
-2002-08-19  M.L. <m.l@compaqnet.fr>
-
-		Fixed security bug #692.
-		Maintainer note: The patch never made it in when originally
-		updated by EricS or someone else forcing the change through.
-		Patch is now applied as of Sept. 12.
-
-2002-08-19  Adam Clark <adamsgl@dhbit.ca>
-
-		Added sourcemage download URL, fixed LICENSE field
-
-2002-08-19  Eric Schabell <eric@schabell.com>
-
-		Security fix, version bump to 1.2.5, License field added,
-		History updated, MD5 added, noted in bug #692 for testing 
-		as I don't run this (only updated to fix security problem).
-
-2002-05-07  Julian v. Bock <julian@wongr.net>
-
-		DEPENDS: change tcl-tk dependency to tcl.
-
-2002-03-20  Luis M. Lourenco <aeron@netcabo.pt>
-
-		DETAILS: Added myself as MAINTAINER, no previous one.
+2002-03-20 Luis M. Lourenco <aeron@netcabo.pt>
+	* DETAILS: Added myself as MAINTAINER, no previous one.
