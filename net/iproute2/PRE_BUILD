@@ -13,11 +13,6 @@ if  [  "$BUILD_DOCS"  =  y  ];  then
 fi  &&
 
 #
-# this fixes the makefile to not strip shell scripts *sigh*
-#
-patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch &&
-
-#
 # This fixes a compile error, thanks to Lunar:
 # http://lunar-linux.org/pipermail/lunar-bugs/2004-May/002350.html
 #
