@@ -1,2 +1,9 @@
+2004-12-14 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Optionally depend on sdl
+	  Depends on libvorbis, not just libogg
+	* PRE_BUILD: Apply g++ removal patch:
+	* g++.patch.bz2: Remove g++ checks from configure, otherwise
+	  this fails without g++ installed (stupid packagers!)
+
 2004-06-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, DEPENDS, DETAILS, HISTORY: created this spell
