@@ -8,7 +8,7 @@
   then
     if  spell_installed  j2sdk
     then
-      export  JAVA_HOME=/opt/java/j2sdk
+      export  JAVA_HOME=/usr/java/j2sdk
     elif  spell_installed  j2sdk-bin
     then
       export  JAVA_HOME=/usr/lib/j2sdk1.4.1
