@@ -1,16 +1,15 @@
 depends   gtk+2  &&
 optional_depends "MOZILLA-NSS" "--enable-nss=yes" "--enable-nss=no" "for gaim-encryption plugin , or MSN's new protool 9" &&
-optional_depends  "audiofile" "--enable-audio" "--disable-audio" "to play aiff, snd, wave, and au files"  &&
-optional_depends  "gtkspell" "" "" "For spell checking"                                                   &&
-optional_depends  "startup-notification" "" "" "build support for startup notification spec from freedesktop.org"  &&
-optional_depends  "nas"      "--enable-nas"  "--disable-nas"  "for Network Audio System support"
+optional_depends  "audiofile" "--enable-audio" "--disable-audio" "to play aiff, snd, wave, and au files"         &&
+optional_depends  "gtkspell" "" "" "For spell checking"                                                          &&
+optional_depends  "startup-notification" "" "" "support for the startup-notification spec from freedesktop.org"  &&
+optional_depends  "nas"      "--enable-nas"  "--disable-nas" "for Network Audio System support"                  &&
+optional_depends  "tcl"  ""  "--disable-tcl"  "for tcl scripting support"                                        &&
+optional_depends  "tk"   ""  "--disable-tk"   "for tcl/tk scripting support"                                     &&
+if [ "$CVS" = "yes" ]
+then depends cvs 
+fi
 
-# gaim only works with tcl/tk v8.3
-#optional_depends  "tcl"  ""  "--disable-tcl"  "for tcl scripting support"     &&
-#optional_depends  "tk"   ""  "--disable-tk"   "for tcl/tk scripting support"
+# gaim requires gnutls >= 0.9.91 still (20040113-hgg)
+#optional_depends "gnutls" "--enable-gnutls=yes" "--enable-gnutls=no" "an alternative to nss for MSN protocol SSL support"
 
-# gaim requires gnutls >= 0.9.91
-#optional_depends "gnutls" "--enable-gnutls=yes" "--enable-gnutls=no" "an alternative to nss for MSN protocol SSL support" &&
-
-#optional_depends  "gpgme" "" "" "for gaim-e gpg encryption"  &&
-#optional_depends  "libgcrypt" "" "" "for gaim-e gpg encryption"

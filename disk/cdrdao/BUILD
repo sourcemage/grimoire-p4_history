@@ -1,5 +1,5 @@
 (
-  [ "$CVS" = "yes" ] && ./autogen.sh          ;
+  if [ "$CVS" = "yes" ] ; then ./autogen.sh ; fi &&
   sedit  's/xdao=xdao/xdao=no/'  configure    &&
   sedit  's:#include <linux/sysctl.h>::'  dao/dao.cc  &&
   default_build
