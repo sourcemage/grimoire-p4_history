@@ -1,6 +1,8 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/htb3.6_tc.diff  &&
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/htb3.6_tc.diff                                &&
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/iproute2-2.4.7-now-ss020116-try-2.4.22.patch  &&
+  #sedit  's:db.h:db_cxx.h:'  misc/arpd.c  &&
 
   make  &&
   if spell_installed teTeX    &&
