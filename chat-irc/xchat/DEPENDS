@@ -1,25 +1,31 @@
 depends  glib2  &&
-optional_depends  "gtk+2"				\
-		  "--enable-gtkfe"			\
-		  "--disable-gtkfe --enable-textfe"     \
-		  "for building the gtk frontend"	&&
 
-optional_depends  "tcl"				\
-                  "--enable-tcl=/usr/lib"	\
-                  ""				\
-                  "for tcl scripting support"	&&
+optional_depends  "gettext"                  \
+                  ""                         \
+                  "--disable-nls"            \
+                  "to use gettext for i18n"  &&
 
-optional_depends  "perl"			\
-		  ""				\
-		  "--disable-perl"		\
-		  "for perl scripting support"	&&
+optional_depends  "gtk+2"                            \
+                  "--enable-gtkfe"                   \
+                  "--disable-gtkfe --enable-textfe"  \
+                  "for building the gtk frontend"    &&
 
-optional_depends  "Python"			\
-		  ""				\
-		  "--disable-python"		\
-		  "for Python scripting support" &&
+optional_depends  "tcl"                        \
+                  "--enable-tcl=/usr/lib"      \
+                  ""                           \
+                  "for tcl scripting support"  &&
 
-optional_depends  "openssl" 			\
-		  "--enable-openssl=/usr/bin/openssl" \
-		  ""				\
-		  "enable use of openSSL"
+optional_depends  "perl"                        \
+                  ""                            \
+                  "--disable-perl"              \
+                  "for perl scripting support"  &&
+
+optional_depends  "Python"                        \
+                  ""                              \
+                  "--disable-python"              \
+                  "for Python scripting support"  &&
+
+optional_depends  "openssl"                            \
+                  "--enable-openssl=/usr/bin/openssl"  \
+                  ""                                   \
+                  "enable use of openSSL"
