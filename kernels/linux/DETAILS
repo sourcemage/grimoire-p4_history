@@ -4,11 +4,14 @@
 if [ -f $DEPENDS_CONFIG/$SPELL ]; then
   source $DEPENDS_CONFIG/$SPELL
 fi
-# Load list with Kernel Versions
-source ${GRIMOIRE}/${SECTION}/${SPELL}/KERNELS
 
+# This is for the the web scripts that parse the version number
+VERSION=2.4.19
+
+# Load list with Kernel Versions, and then overwrite the version to use
 # Kernel Version: either a Variable (LATEST_...) or a version number itself. otherwise default to LATEST_2_4)
-VERSION=${!KERNEL_VERSION=${KERNEL_VERSION=${LATEST_2_4}}}
+# This is done in one line so the web scripts don't recognize it.
+source ${GRIMOIRE}/${SECTION}/${SPELL}/KERNELS && VERSION=${!KERNEL_VERSION=${KERNEL_VERSION=${LATEST_2_4}}}
 
 # --- Parse version number ---
 
