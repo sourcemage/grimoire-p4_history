@@ -1,25 +1,10 @@
 (
 
-  #
-  # Apply patches for 2.6 and gcc 3.3, 3.4
-  #
-  for  i  in  svgalib-1.9.18-gcc33.patch        \
-              svgalib-1.9.18-gcc34.patch        \
-              svgalib-1.9.18-linux2.6-v2.patch
-  do
-    patch  -p1  <  ${SCRIPT_DIRECTORY}/$i
-  done                                          &&
-
   # Some other fixes I needed to do
   sedit  's:<config.h>:\"config.h\":'  threeDKit/3dinit.c     &&
   sedit  's:<config.h>:\"config.h\":'  threeDKit/3dkit.c      &&
   sedit  's:<config.h>:\"config.h\":'  threeDKit/triangl.c    &&
   sedit  's:<config.h>:\"config.h\":'  threeDKit/wrapsurf.c   &&
-
-  #
-  # Some fixes from Gentoo's ebuild
-  # http://www.gentoo.org/cgi-bin/viewcvs.cgi/media-libs/svgalib/svgalib-1.9.18-r1.ebuild?rev=1.1&content-type=text/vnd.viewcvs-markup
-  #
 
   # Disable kernel module support while building stages
   sedit  's:installmodule ::'  Makefile                                  &&

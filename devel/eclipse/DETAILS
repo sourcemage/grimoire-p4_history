@@ -1,10 +1,14 @@
            SPELL=eclipse
-         VERSION=2.1.3
-          SOURCE=${SPELL}-sourceBuild-srcIncluded-$VERSION.zip
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION 
-   SOURCE_URL[0]=ftp://download.eclipse.org/R-${VERSION}-200403101828/${SOURCE}
-   SOURCE_URL[1]=ftp://eclipse.objectweb.org/R-${VERSION}-200403101828/${SOURCE}
-          MD5[0]=cd8132138afbd252bf35bb83546534dc
+          PREFIX=S
+         VERSION=3.0RC2
+          TSTAMP=200406111814
+          SOURCE=$SPELL-sourceBuild-srcIncluded-$VERSION.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
+      SOURCE_URI=$PREFIX-$VERSION-$TSTAMP/$SOURCE
+   SOURCE_URL[0]=ftp://download.eclipse.org/$SOURCE_URI
+   SOURCE_URL[1]=http://eclipse.mirrors.tds.net/downloads/drops/$SOURCE_URI
+          MD5[0]='d332e81d71f41bb1fea0cea2a9dbc0b0'
+     GATHER_DOCS=off
         WEB_SITE=http://www.eclipse.org/
  if [ "$SSH2" = "y" ] ; then
          SOURCE2=org.eclipse.team.cvs.ssh2_0.1.2-src.zip
@@ -13,9 +17,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
  fi
       MAINTAINER="embiopterid@yahoo.com"
          ENTERED=20031211
-         UPDATED=20031211
+         UPDATED=20040620
       LICENSE[0]=CPL
-      ACTIVE_FTP="on"
+      ACTIVE_FTP=on
            SHORT="Eclipse is an attempt to provide open platform for ide-style application development tools; written in java, pluggin architecture."
 cat << EOF
 The eclipse project for the development of software design tools was originally formed by Borland, IBM, MERANT, QNX Software Systems, Rational Software3, Red Hat, SuSE, TogetherSoft3 and Webgain2, and was later joined by other major companies.  The licensing scheme is intended to encourage the development of integrated third party software which may or may not be open source and/or free.  The program actually exists as a core (they call it a microkernel) with functionality added by pluggins.  It has support for several languages, including java and c++ and has extensions that allow UML round trip engineering.  It also is supposed to be able to use system development tools, like debuggers, compilers, tracers, etc.

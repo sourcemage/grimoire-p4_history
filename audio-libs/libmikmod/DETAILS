@@ -1,15 +1,14 @@
            SPELL=libmikmod
-         VERSION=3.1.10
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=3.2.0-beta2
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://mikmod.org/files/$SPELL/$SOURCE
-        WEB_SITE=http://mikmod.org
+   SOURCE_URL[0]=http://mikmod.raphnet.net/files/$SOURCE
+        WEB_SITE=http://mikmod.raphnet.net/
+          MD5[0]='e2aff69da4c9ee46c209c95fb9867888'
+      LICENSE[0]=LGPL
          ENTERED=20010922
          UPDATED=20020305
-	MD5[0]=ad44b08936976315a6fa88b9508fe348
-	LICENSE[0]=LGPL
-	MAINTAINER=unet@sourcemage.org
-           SHORT="libmikmod is a library for playing mod, s3m, xm, it, med, mtm, 669 files."
+           SHORT='libmikmod is a library for playing mod, s3m, xm, it, med, mtm, 669 files'
 cat << EOF
 libmikmod is a portable sound library, which used to be packaged with
 the MikMod module player, but is now released independentely. It is

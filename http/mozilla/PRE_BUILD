@@ -3,6 +3,10 @@ unpack $SOURCE ${MD5[0]} &&
 
 cd $SOURCE_DIRECTORY &&
 
+# fixes the "nsBuildID.h: No such file or directory" problem
+patch -p0 < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff &&
+patch -p0 < $SCRIPT_DIRECTORY/libreg-standalone.diff &&
+
 # Enigmail extensions
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   cd $SOURCE_DIRECTORY/extensions &&
