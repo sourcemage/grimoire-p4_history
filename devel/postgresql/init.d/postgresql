@@ -1,35 +1,22 @@
-#!/bin/sh
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:3 4 5:S90
-# SMGL-STOP:0 6:K10
-#
+#!/bin/bash
 
 CTL=/usr/bin/pg_ctl
-USER=postgres
-DBPATH=/var/lib/postgres
-LOGFILE=/var/log/postgres
+RUNLEVEL=3
+NEEDS="+remotefs"
 
+. /etc/init.d/smgl_init
+. /etc/sysconfig/postgresql
 
-case "$1" in
-    start)
-        echo "starting postmaster"
-        su $USER -c "$CTL -D $DBPATH -l $LOGFILE start"
-    ;;
+start()
+{
+    echo "Starting postmaster..."
+    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start"
+    evaluate_retval
+}
 
-    stop)
-        echo "stopping postmaster"
-        su $USER -c "$CTL -D $DBPATH -l $LOGFILE -m fast stop"
-    ;;
-
-    restart)
-        $0 stop
-        $0 start
-    ;;
-
-    *)
-        echo "Usage: $0 {start|stop|restart}"
-        exit 1
-    ;;
-esac
+stop()
+{
+    echo "Stopping postmaster..."
+    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE -m fast stop"
+    evaluate_retval
+}
