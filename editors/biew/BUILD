@@ -16,7 +16,10 @@
   fi
 
   echo "UM=$UM"
-
+  # Something changed in the way sorcery saves the architecture
+  # Going to use the 'uname' call to figure out the architecture for now
+  # Fixes Bug #936
+  TP=`uname -m`
   sedit  "s/TARGET_OS=unix/TARGET_OS=linux/"            makefile  &&
   sedit  "s/TARGET_PLATFORM=i386/TARGET_PLATFORM=$TP/"  makefile  &&
   sedit  "s/HOST_CFLAGS=/HOST_CFLAGS=$HC/"              makefile  &&
