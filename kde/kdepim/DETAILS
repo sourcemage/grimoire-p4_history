@@ -1,10 +1,15 @@
            SPELL=kdepim
+         VERSION=3.0.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/3.0.2/src/$SOURCE
+          MD5[0]=84f531b8e4c201d8a048eedd274a4d2d
+        WEB_SITE=http://www.kde.org
+         UPDATED=20020528
          ENTERED=20010922
-  . $GRIMOIRE/$SECTION/KDE_DETAILS
+      LICENSE[0]=GPL
       MAINTAINER=eric@lasvegasdata.com
-             MD5=kdepim_MD5SUM
-         LICENSE=GPL
-	   SHORT="kdepim personal information management for kde."
+           SHORT="kdepim personal information management for kde."
 cat << EOF
 * kab2: another design for the KDE addressbook
 There is also quite an amount of infrastructure in this package:
