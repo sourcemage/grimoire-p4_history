@@ -1,6 +1,8 @@
-2003-09-27  hgg <hgreig@bigpond.net.au>
+2003-09-29  hgg <hgreig@bigpond.net.au>
 
-		Re-add export CC=gcc to BUILD
+		Remove that hack, and edit BUILD to remove the files 
+		during prepare_install, re-add the export CC=gcc line 
+		needed for new install
 
 2003-09-22  Eric D. Schabell <eschabell@sourcemage.org>
 
@@ -13,15 +15,16 @@
 
 2003-07-23  hgg <hgreig@bigpond.net.au>
 
-		Comment " unset LD_PRELOAD" so locale stuff is tracked(Major version updates might 
-		require	it later)
+		Comment "unset LD_PRELOAD" so locale stuff is tracked
+		(Major version updates might require it later)
 
-		Add to TRIGGERS and update UPDATED in case libiconv is installed then dispelled 
-		removing some of glibc's files.
+		Add to TRIGGERS and update UPDATED in case libiconv is installed 
+		then dispelled 	removing some of glibc's files.
 
 2003-07-08  Eric Sandall <eric@sandall.us>
 
-	        * BUILD: Fixes a 'gcc not found' error during configure on some systems
+	        * BUILD: Fixes a 'gcc not found' error during configure on some
+		systems
 
 2003-06-15  Eric Sandall <eric@sandall.us>
 
@@ -30,7 +33,8 @@
 2003-03-30  Julian v. Bock  <julian@wongr.net>
 
 		* locales: fix some spelling errors.
-		* BUILD: remove unset LD_PRELOAD; remove -ffast-math from CFLAGS.
+		* BUILD: remove unset LD_PRELOAD; remove -ffast-math from 
+		CFLAGS.
 
 2003-04-08  M.L. <mlubrano@sourcemage.org>
 
@@ -72,7 +76,6 @@
 2002-10-06  Julian v. Bock  <julian@wongr.net>
 
 		* DETAILS: set VERSION to 2.3.1.
-
 		* glibc-2.2.5-weak-alias.patch: remove.
 		* glibc-2.2.5.patch: likewise.
 		* sunrpc-2.2.5.patch: likewise.
@@ -83,10 +86,9 @@
 		(thanks to Robert Helgesson).
 
 2002-08-21  Julian v. Bock  <julian@wongr.net>
-
-		* glibc-2.2.5-weak-alias.patch: add.
+	
+ 		* glibc-2.2.5-weak-alias.patch: add.
 		* BUILD: apply patch.
-
 		* PRE_BUILD: remove autoconf stuff.
 
 2002-03-10  Julian v. Bock  <julian@wongr.net>
@@ -95,11 +97,11 @@
 
 2002-01-22  Kyle Sallee
 
-		Create patch for compiling and installing glibc 2.2.5. Also
-		happy birthday to me.
+		Create patch for compiling and installing 
+		glibc 2.2.5. Also happy birthday to me.
 
 2002-01-11  Kyle Sallee
 
-		added the saving old libs into a directory and exporting
-		LD_LIBRARY_PATH with that directory. This should keep the make
-		install from breaking.
+		added the saving old libs into a directory and 
+		exporting LD_LIBRARY_PATH with that directory. 
+		This should keep the make install from breaking.
