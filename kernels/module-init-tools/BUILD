@@ -9,7 +9,7 @@
     cd $SOURCE_DIRECTORY
   fi                                              &&
 
-  patch -p0 < $SCRIPT_DIRECTORY/module-man.patch  &&
+  patch -p0 < $SPELL_DIRECTORY/mk.diff            &&
   ./configure  --prefix=${INSTALL_ROOT}/          \
                $OPTS                              &&
   make                                            &&
@@ -22,7 +22,7 @@
     touch      ${INSTALL_ROOT}/etc/modules                    &&
     touch      ${INSTALL_ROOT}/etc/modules.conf               &&
     cd $SOURCE_DIRECTORY                                      &&
-    rm_source_dir $SOURCE_DIRECTORY2
+    rm_source_dir $SOURCE_DIRECTORY2                          
   fi                                                          &&
   make moveold                                                &&
   make install                                                &&

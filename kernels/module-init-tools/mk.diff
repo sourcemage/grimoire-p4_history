@@ -1,6 +1,6 @@
---- /usr/src/module-init-tools-0.9.15-pre2/Makefile.in	2003-09-29 16:25:01.000000000 +1000
-+++ Makefile.in	2003-10-28 19:28:03.000000000 +1100
-@@ -771,14 +771,14 @@
+--- Makefile.in.cp	2003-12-12 20:31:38.000000000 +0100
++++ Makefile.in	2003-12-12 20:32:24.000000000 +0100
+@@ -771,15 +771,6 @@
  		ln -sf `ls -l /sbin/$$f | sed 's/.* -> //'`.old /sbin/$$f;  \
  	    fi;								    \
  	    mv /sbin/$$f /sbin/$$f.old;					    \
@@ -10,15 +10,9 @@
 -	    elif [ -f /usr/share/man/man8/$$f.8.bz2 ]; then		    \
 -	        mv /usr/share/man/man8/$$f.8.bz2			    \
 -			/usr/share/man/man8/$$f.old.8.bz2;		    \
-+	    if [ -f /usr/man/man8/$$f.8.gz ]; then		    \
-+		mv /usr/man/man8/$$f.8.gz				    \
-+			/usr/man/man8/$$f.old.8.gz;		    \
-+	    elif [ -f /usr/man/man8/$$f.8.bz2 ]; then		    \
-+	        mv /usr/man/man8/$$f.8.bz2			    \
-+			/usr/man/man8/$$f.old.8.bz2;		    \
- 	    else							    \
+-	    else							    \
 -	        mv /usr/share/man/man8/$$f.8 /usr/share/man/man8/$$f.old.8; \
-+	        mv /usr/man/man8/$$f.8 /usr/man/man8/$$f.old.8; \
- 	    fi;								    \
+-	    fi;								    \
  	done
  	for f in kallsyms ksyms; do					    \
+ 	    if [ -L /sbin/$$f ]; then					    \
