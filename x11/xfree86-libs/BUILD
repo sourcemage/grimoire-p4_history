@@ -24,6 +24,8 @@ cat <<__EOF__ >config/cf/site.def
 #define HasZlib                  YES
 #define HasFreetype2             YES
 #define BuildFreetype2Library     NO
+#define HasExpat                 YES
+#define HasFontconfig            YES
 
 #define	BuildServer		  NO
 #define BuildFontServer		  NO
@@ -82,6 +84,9 @@ __EOF__
 
   make  World                                      &&
   prepare_install                                  &&
+  #### the following is needed for pkgconfig to find the .pc files
+  mkdir  -p  /usr/X11R6/lib                                      &&
+  ln -sf  /usr/lib/pkgconfig  /usr/X11R6/lib                     &&
   make  install                                    &&
   sedit 's/die/print/' ./config/util/mkhtmlindex.pl &&
   make  install.man

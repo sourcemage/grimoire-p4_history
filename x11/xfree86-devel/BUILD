@@ -53,6 +53,9 @@ message  "Building XFree86 takes a very long time."
   ### Fix Bug #3486, which stops the build process
   ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
   
+  ### Copy sis_common.h from the drivers to the GL dri dir
+  cp -f $SOURCE_DIRECTORY.bld/programs/Xserver/hw/xfree86/drivers/sis/sis_common.h $SOURCE_DIRECTORY.bld/lib/GL/mesa/src/drv/sis/ &&
+  
   make World
   
   ### will this fix the mysterious error ?
