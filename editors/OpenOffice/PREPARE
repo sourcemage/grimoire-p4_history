@@ -4,7 +4,6 @@
 # delete existing oo.languages, it has wrong URLs and format
 #rm $CONFIG_CACHE/oo.languages
 
-
 get_oolanguages()  {
   if ! [ -f $CONFIG_CACHE/oo.languages ]
   then
@@ -59,5 +58,14 @@ get_oodictionaries()  {
   fi
 }
 
-get_oolanguages     &&
-get_oodictionaries
+if  query  "Configure ${SPELL}?" n
+then
+  get_oolanguages     &&
+  get_oodictionaries
+else
+  #
+  # Set default language and dictionary if none are selected
+  #
+  LANGAUGE=${LANGUAGE:=01}
+  DICTIONARY=${DICTIONARY:=ENUS}
+fi

@@ -1,9 +1,5 @@
 do_bootstrap()
 {
-  #
-  # Just in case...
-  #
-  sh  LinuxIntelEnv.Set.sh  &&
 
   #
   # Begin dmake creation
@@ -42,24 +38,9 @@ do_bootstrap()
     cd ${SRC_ROOT}
   fi                                             &&
 
-  #make sure build.pl is executable
-
   chmod +x solenv/bin/build.pl       &&
   chmod +x solenv/bin/zipdep.pl      &&
   chmod +x solenv/bin/gccinstlib.pl
-
-  # Some fun cleanup...
-  sedit  's:target.mk:solenv/inc/target.mk:'  makefile.mk  &&
-  for i in `grep .mk solenv/inc/target.mk | grep INCLUDE | \
-            grep -v IGNORE | awk '{print $3}' | grep -v ^\_ | \
-            uniq`
-  do
-    sedit  "s:$i:solenv/inc/$i:g"  solenv/inc/target.mk
-  done
-
-  #sedit  's:/bin/build.pl:solenv/bin/build.pl:'  LinuxIntelEnv.Set  &&
-  #sedit  's:/bin$/build.pl:solenv/bin/build.pl:g'  makefile.mk
-
   #
   # End environ setup
   #
@@ -84,7 +65,7 @@ do_bootstrap()
               --enable-libart               \
                        $OPTS                &&
   cd  ..                                    &&
-  sh  LinuxIntelEnv.Set.sh                  &&
+  .  LinuxIntelEnv.Set.sh                   &&
   do_bootstrap                              &&
   #
   # Keep getting this error:

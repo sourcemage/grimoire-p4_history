@@ -1,13 +1,3 @@
-if ! query "${MESSAGE_COLOR}For $SPELL to cast, you NEED to be root with access to an X display, otherwise this will fail in the end.  Is the above true?${DEFAULT_COLOR}" n ; then
-	exit 1
-fi
-
-if ! test "`gaze installed bison`" = "1.75" && ! test "`gaze installed bison`" = "1.35" ; then
-	if ! query "${MESSAGE_COLOR}For $SPELL to cast, you also NEED to have a version of Bison = to 1.75 || 1.35, otherwise this will fail with various errors during compile. All you need to do is a 'dispel -d bison 1.75' before casting $SPELL. Is the above true?${DEFAULT_COLOR}" n ; then
-		exit 1
-	fi
-fi
-
 if [ -f /usr/include/jni.h ] ; then
 	mv /usr/include/jni.h /usr/include/jni_gcc.h
 fi                                     &&
