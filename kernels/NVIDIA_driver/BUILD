@@ -13,7 +13,7 @@
 
   cd usr/src/nv                 &&
   if [[ $(installed_version linux|cut -d. -f1,2) == 2.5 ]]  ||
-     [[ $(installed_version linux|cut -d. -f1,2) == 2.4 ]]
+     [[ $(installed_version linux|cut -d. -f1,2) == 2.6 ]]
   then
     patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
     patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
