@@ -1,4 +1,4 @@
-   sedit "s/std::pow/::pow/" lib/qhacc.cpp      &&
+   patch -p0 < $SPELL_DIRECTORY/gcc-3.4.diff    &&
    PREFIX=/usr/qhacc				&&
    OPTS="--prefix=$PREFIX $OPTS"                &&
    default_build                                &&
