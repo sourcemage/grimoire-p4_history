@@ -3,6 +3,9 @@
  export  CFLAGS="${CFLAGS//-O3/-O2}"     &&
  export  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
 
+if [ -f /root/.mozconfig ]
+ then rm -f /root/.mozconfig
+fi                                           &&
 MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
 if [ "$SVG" = "yes" ];
  then OPTS="$OPTS --enable-svg --enable-svg-renderer-libart" &&
@@ -43,7 +46,8 @@ export MOZ_PHOENIX=1                         &&
   mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
   ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
 
-  make install                                     && 
+  make install                                      &&
+  cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
   ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla
   
 ) >$C_FIFO 2>&1

@@ -1,9 +1,9 @@
 depends   gtk+2  &&
 if [ "$GAIM_ENCRYPTION" = "y" ] ; then
-     depends nss
-else optional_depends "nss" "" "--enable-nss=no" "for network secure sockets, needed for MSN's new protool 9"
+     depends "MOZILLA-NSS" "--enable-nss" "" ""
+else optional_depends "MOZILLA-NSS" "" "--enable-nss=no" "for network secure sockets, needed for MSN's new protool 9"
 fi               &&
-optional_depends "gnutls" "--enable-tls=yes" "--enable-tls=no" "For MSN protocol  SSL support"
+optional_depends "gnutls" "--enable-gnutls=yes" "--enable-gnutls=no" "For MSN protocol  SSL support"
 
 optional_depends  "audiofile" "--enable-audio" "--disable-audio"  \
                   "to play aiff, snd, wave, and au files" #&&
