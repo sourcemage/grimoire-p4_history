@@ -1,10 +1,10 @@
            SPELL=pekwm
          VERSION=0.1.3
-if [ "$CVS" = "y" ]; then  
+if [ "$CVS" == "y" ]; then  
 	 VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anoncvs@pekwm.org:/usr/local/cvs:pekwm
-          MD5[0]="IGNORED"
+          MD5[0]=IGNORE
 else
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=http://pekwm.org/files/source/$SOURCE

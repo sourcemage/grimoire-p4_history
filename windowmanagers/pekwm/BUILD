@@ -1,4 +1,4 @@
-if [ "$CVS" = "y" ]; then 
+if  [  "$CVS"  ==  "y"  ];  then 
 	( patch -p0 < $SCRIPT_DIRECTORY/pekwm-shape.diff || die )
 fi
 
