@@ -6,11 +6,11 @@ if  [  "$CVS"  ==  "y"  ];  then
   FORCE_DOWNLOAD="on"
           MD5[0]=IGNORE
 else
-         VERSION=1.8.9
+         VERSION=1.8.10
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=http://www.gnucash.org/pub/gnucash/sources/stable/${SOURCE/bz2/gz}
    SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-          MD5[0]=bb846da1ffe22a3d79d6301e4615d2da
+          MD5[0]=bebc4870e6a1f3677f95898c984e188d
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.gnucash.org
@@ -18,7 +18,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20040830
       LICENSE[0]=GPL
        BUILD_API=2
-           SHORT="GNUCash a open source personal finance suite"
+           SHORT="Open source personal finance suite"
 cat << EOF
 GnuCash allows you to track bank accounts, stocks, income, and expenses.
 As quick and intuitive to use as a checkbook register, it is based on
