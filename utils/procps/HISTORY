@@ -1,65 +1,51 @@
-2003-09-22  Eric Laberge <demon_lord@myrealbox.com>
+2003-12-02 Eric Sandall <eric@sandall.us>
+	* BUILD: Use INSTALL_ROOT
+	* HISTORY: Formatted to Guru Handbook
 
-		Version++, 3.1.13
+2003-09-22 Eric Laberge <demon_lord@myrealbox.com>
+	* DETAILS: Version++, 3.1.13
 
-2003-09-19  Seth Woolley <seth@tautology.org>
+2003-09-19 Seth Woolley <seth@tautology.org>
+	* fixed a bug in the init script
+	if +local_fs is not loaded first, /proc will mount here
+	and mount (if it comes after) will partially fail with a 
+	warning that /proc was already mounted.
 
-		fixed a bug in the init script
-		if +local_fs is not loaded first, /proc will mount here
-		and mount (if it comes after) will partially fail with a 
-		warning that /proc was already mounted.
+2003-09-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* fixed a bug in the init script
 
-2003-09-18  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* updated to new init system
 
-		fixed a bug in the init script
+2003-07-20 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.1.11, moved some sources around,
+	* CONFLICTS: Removed (Bug #3795)
 
-2003-07-28  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.1.10  (Bug #3793)
 
-		updated to new init system
+2003-07-01 Eric Sandall <eric@sandall.us>
+	* Fixed Bug #3635
 
-2003-07-20  Eric Sandall <eric@sandall.us>
+2003-05-30 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added mirrors, trying to fix bug#3432.
+	Added WEBSITE=...
 
-		Updated to 3.1.11, moved some sources around,
-		and removed CONFLICTS  (Bug #3795)
+2003-03-31 Eric Sandall <eric@sandall.us>
+	* Updated to use sorcery's init.d installer
 
-2003-07-18  Eric Sandall <eric@sandall.us>
+2003-03-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 3.1.8
 
-		Updated to 3.1.10  (Bug #3793)
+2003-01-28Jeff Schmidt <jschmidt@fnal.gov>
+	* DETAILS: vers. inc. to 3.1.5
 
-2003-07-01  Eric Sandall <eric@sandall.us>
+2002-12-18 Jeff Schmidt <jschmidt@fnal.gov>
+	* DETAILS: Upgraded to 3.1.4
 
-		Fixed Bug #3635
+2002-11-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v3.0.4 since 2.0.7 is no longer available
+	Added MD5, LICENSE, and MAINTAINER
+	* Removed old, invalid patches
+	* HISTORY: Created
 
-2003-05-30  M.L. <mlubrano@sourcemage.org>
-
-		Added mirrors, trying to fix bug#3432.
-
-		Added WEBSITE=...
-
-2003-03-31  Eric Sandall <eric@sandall.us>
-
-		Updated to use sorcery's init.d installer
-
-2003-03-28  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 3.1.8
-
-2003-01-28	Jeff Schmidt <jschmidt@fnal.gov>
-
-		vers. inc. to 3.1.5
-
-
-2002-12-18	Jeff Schmidt <jschmidt@fnal.gov>
-
-		Upgraded to 3.1.4
-
-
-2002-11-01  Eric Sandall <eric@sandall.us>
-
-		Updated to v3.0.4 since 2.0.7 is no longer available
-
-		Removed old, invalid patches
-
-		Added MD5, LICENSE, and MAINTAINER
-
-		Created HISTORY
