@@ -1,12 +1,6 @@
 (
 
-  sedit "s|-O3|$CFLAGS|" configure &&
-
-  ./configure     \
-    --prefix=/usr \
-    $OPTS         &&
-  make            &&
-  prepare_install &&
-  make    install
+  sedit  's/-O -g3//'  configure  &&
+  default_build
 
 ) >$C_FIFO 2>&1
