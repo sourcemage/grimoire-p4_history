@@ -1,11 +1,7 @@
 depends  SDL      &&
 depends  zlib     &&
 depends  Python   &&
-
-optional_depends  "openal"                \
-                  "--enable-openal"       \
-                  "--disable-openal"      \
-                  "for openal sound support"  &&
+depends  openal   &&
 
 optional_depends  "libpng"                \
                   ""                      \
