@@ -1,0 +1,10 @@
+if  !  grep  -q  "GAMEBLENDER"  $SPELL_CONFIG;  then
+
+  if    query  "Build the gameblender engine?"  y
+  then  GAMEBLENDER=y
+  else  GAMEBLENDER=n
+  fi
+
+  echo  "GAMEBLENDER=$GAMEBLENDER"  >>  $SPELL_CONFIG
+
+fi

@@ -1,0 +1,18 @@
+           SPELL=filmgimp
+         VERSION=0.5
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+        WEB_SITE=http://filmgimp.sourceforge.net/
+         ENTERED=20021031
+         UPDATED=20021031
+          MD5[0]=398c230aed0055527807757b5e41bf41
+      LICENSE[0]=GPL
+      MAINTAINER=eric@sandall.us
+    MENU_ITEM[0]="Film GIMP"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+           SHORT="Motion picture editing tool based on GIMP"
+cat << EOF
+Film Gimp is a motion picture editing tool primarily used for painting and retouching of movies. Its application to feature movie productions includes the movies Scooby-Doo, Harry Potter, and Stuart Little. Film Gimp is the most successful open source tool in feature motion picture work today. Film Gimp runs on Linux and SGI Irix. A Windows version is planned for release in December 2002, and Macintosh native in 2003.
+EOF
