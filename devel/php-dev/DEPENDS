@@ -1,63 +1,105 @@
-requires         webserver &&
-
-depends          zlib          "--with-zlib --with-zlib-dir=/usr"  &&
-depends          bzip2         "--with-bz2"                        &&
-
-optional_depends mhash               \
-                 "--with-mhash"      \
-                 "--without-mhash"   \
-                 "for mhash support" &&
-optional_depends curl                         \
-                 "--with-curl"                \
-                 "--without-curl"             \
-                 "for URL operations support" &&
-optional_depends gettext               \
-                 "--with-gettext"      \
-                 "--without-gettext"   \
-                 "for gettext support" &&
-optional_depends openssl             \
-                 "--with-openssl"    \
-                 "--without-openssl" \
-                 "for SSL support"   &&
-optional_depends mcrypt              \
-                 "--with-mcrypt"     \
-                 "--without-mcrypt"  \
-                 "for CRYPT support" &&
+requires webserver &&
+                                                                                                                                   
+optional_depends zlib                               \
+                 '--with-zlib --with-zlib-dir=/usr' \
+                 '--without-zlib'                   \
+                 'for LZ compression support'       &&
+optional_depends bzip2                     \
+                 '--with-bz2'              \
+                 '--without-bz2'           \
+                 'for compression support' &&
 optional_depends pspell                   \
-                 "--with-pspell"          \
-                 "--without-pspell"       \
-                 "for spelling functions" &&
+                 '--with-pspell'          \
+                 '--without-pspell'       \
+                 'for spelling functions' &&
+optional_depends mhash                        \
+                 '--with-mhash'               \
+                 '--without-mhash'            \
+                 'for hash functions support' &&
+optional_depends mcrypt               \
+                 '--with-mcrypt'      \
+                 '--without-mcrypt'   \
+                 'for crypto library' &&
+optional_depends curl                                      \
+                 '--with-curl'                             \
+                 '--without-curl'                          \
+                 'for transferring files using URL syntax' &&
 optional_depends gmp                                   \
-                 "--with-gmp"                          \
-                 "--without-gmp"                       \
-                 "GNU multi precision library support" &&
+                 '--with-gmp'                          \
+                 '--without-gmp'                       \
+                 'GNU multi precision library support' &&
+optional_depends openssl               \
+                 '--with-openssl'      \
+                 '--without-openssl'   \
+                 'for OpenSSL support' &&
+optional_depends gettext                   \
+                 '--with-gettext'          \
+                 '--without-gettext'       \
+                 'for GNU gettext support' &&
+optional_depends pcre                     \
+                 '--with-pcre'            \
+                 '--without-pcre'         \
+                 'for Perl regex support' &&
 optional_depends postgresql                      \
-                 "--with-pgsql=/usr"             \
-                 "--without-pgsql"               \
-                 "for native Postgresql support" &&
+                 '--with-pgsql'                  \
+                 '--without-pgsql'               \
+                 'for native Postgresql support' &&
 optional_depends mysql                      \
-                 "--with-mysql=/usr"        \
-                 "--without-mysql"          \
-                 "for native MySQL support" &&
-optional_depends gdbm                                            \
-                 "--with-gdbm"                                   \
-                 "--without-gdbm"                                \
-                 "database routines that use extensible hashing" &&
+                 '--with-mysql'             \
+                 '--without-mysql'          \
+                 'for native MySQL support' &&
+optional_depends gdbm                                           \
+                 '--with-gdbm'                                  \
+                 '--without-gdbm'                               \
+                 'database routines that use extensive hashing' &&
 optional_depends mm                                             \
-                 "--with-mm"                                    \
-                 "--without-mm"                                 \
-                 "for sharing memory between related processes" &&
-optional_depends imap                    \
-                 "--with-imap"           \
-                 "--without-imap"        \
-                 "for IMAP/POP3 support" &&
+                 '--with-mm'                                    \
+                 '--without-mm'                                 \
+                 'for sharing memory between related processes' &&
 optional_depends openldap           \
-                 "--with-ldap"      \
-                 "--without-ldap"   \
-                 "for LDAP support" &&
-optional_depends expat       "--with-xml --with-expat-dir=/usr"  ""  "expat is a XML parsing library"  &&
-optional_depends t1lib       "--with-t1lib=/usr/share/t1lib"  ""  "for t1lib support"  &&
-optional_depends gd  \
-   "--with-gd --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr  \
-    --with-freetype-dir=/usr/lib "     \
-    "" "for on the fly graphics creation"
+                 '--with-ldap'      \
+                 '--without-ldap'   \
+                 'for LDAP support' &&
+optional_depends libiconv                               \
+                 '--with-iconv-dir=/usr --with-xmlrpc'  \
+                 '--without-iconv'                      \
+                 'for iconv() support'                  &&
+optional_depends expat                                \
+                 '--enable-xml --with-expat-dir=/usr' \
+                 '--disable-xml'                      \
+                 'for XML parsing'                    &&
+optional_depends Sablot                             \
+                 '--enable-xslt --with-xslt-sablot' \
+                 '--disable-xslt'                   \
+                 'for XSLT support'                 &&
+optional_depends libxml2               \
+                 '--with-dom'          \
+                 '--without-dom'       \
+                 'for DOM XML support' &&
+optional_depends libxslt                                  \
+                 '--with-dom-xslt --with-dom-exslt'       \
+                 '--without-dom-xslt --without-dom-exslt' \
+                 'for DOM XSLT support'                   &&
+optional_depends t1lib                           \
+                 '--with-t1lib=/usr/share/t1lib' \
+                 '--without-tlib'                \
+                 'for t1lib support'             &&
+optional_depends jpeg                                      \
+                 '--with-jpeg-dir=/usr'                    \
+                 '--without-jpeg-dir'                      \
+                 'for JPEG support (also required for GD)' &&
+optional_depends libpng                                   \
+                 '--with-png-dir=/usr'                    \
+                 '--without-png-dir'                      \
+                 'for PNG support (also required for GD)' &&
+optional_depends gd                                                              \
+                 '--with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/lib' \
+                 '--without-gd'                                                  \
+                 'for on the fly graphics creation (GD support)'                 &&
+optional_depends xfree86                     \
+                 '--with-xpm-dir=/usr/X11R6' \
+                 ''                          \
+                 'for XFree86 support'       &&
+                                                                                                                                   
+#imap_ssl=$(spell_installed openssl && echo '--with-imap-ssl')
+#optional_depends imap "--with-imap $imap_ssl" '--without-imap' 'for IMAP protocol support'

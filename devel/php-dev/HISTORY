@@ -1,3 +1,16 @@
+2003-02-23  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		"Variable tracking" and "transparent session id" removed because
+		these options are not supported by ./configure anymore.
+		"Socket support" option integrated into BUILD.
+		Enabled calendar functions.
+		Safe mode disabled by default because otherwise PEAR might have
+		problems installing itself at the end of installation routine.
+		Introduced optional dependency on Sablotron for XSLT support.
+		Normalized dependency code for xfree86, zlib, bzip2, Apache.
+		Added Apache config file syntax check before restarting.
+		Added check-out from PHP_4 branch.
+
 2003-01-30  Seth Woolley <seth@tautology.org>
 
 		Added MD5[0]=IGNORE (cvs spell)

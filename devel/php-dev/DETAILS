@@ -1,15 +1,15 @@
            SPELL=php-dev
-         VERSION=4.3.0
+         VERSION=4
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:cvsread@cvs.php.net:/repository:php4:HEAD
+          MD5[0]=IGNORE
       LICENSE[0]=http://www.php.net/license/3_0.txt
-  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread@cvs.php.net:/repository:php4:PHP_4
+# FORCE_DOWNLOAD=on
         WEB_SITE=http://www.php.net/
          ENTERED=20020802
          UPDATED=20020918
-          MD5[0]=IGNORE
-           SHORT="php is the personal home page scripting language."
+           SHORT='PHP is the Personal Home Page scripting language'
 cat << EOF
 PHP is a widely-used Open Source general-purpose scripting language
 that is especially suited for Web development and can be embedded
