@@ -8,13 +8,9 @@ cfg()
 EOF
 }
 
-(
-  patch -p0 < $SPELL_DIRECTORY/mk.diff etc/Makefile			&&
-  sedit "s:/local::" man/Makefile					&&
-  sedit "s:/usr/src/linux:/lib/modules/$(uname -r)/build:" config.in	&&
-  cfg |  make config		&&
-  make all 			&&
-  prepare_install               &&
-  make   install     
 
-) > $C_FIFO 2>&1
+patch -p0 < $SPELL_DIRECTORY/mk.diff etc/Makefile			&&
+sedit "s:/local::" man/Makefile					&&
+sedit "s:/usr/src/linux:/lib/modules/$(uname -r)/build:" config.in	&&
+cfg |  make config		&&
+make all 		
