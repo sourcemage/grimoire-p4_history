@@ -200,11 +200,9 @@ CSRCI = vbap_sixteen.c vbap_zak.c control.c bowedbar.c phisem.c sdif.c
 CSRCJ = sdif-mem.c babo.c ugmoss.c bbcut.c spat3d.c pvxanal.c mxfft.c
 CSRCK = pvsanal.c pstream.c pvfileio.c oscbnk.c scansynx.c oscils.c
 CSRCL = wave-terrain.c dnoise.c dnfft.c mididevice.c clfilt.c midiinterop.c
-CSRCM = dl_opcodes.c jpff_glue.c
 CSRCS =	$(CSRC1) $(CSRC2) $(CSRC3) $(CSRC4) $(CSRC5) $(CSRC6) $(CSRC7) \
 	$(CSRC8) $(CSRC9) $(CSRCA) $(CSRCB) $(CSRCC) $(CSRCD) $(CSRCE) \
-	$(CSRCF) $(CSRCG) $(CSRCH) $(CSRCI) $(CSRCJ) $(CSRCK) $(CSRCL) \
-	$(CSRCM)
+	$(CSRCF) $(CSRCG) $(CSRCH) $(CSRCI) $(CSRCJ) $(CSRCK) $(CSRCL)
 
 CSCM  = cscormai.o natben.o
 COBJ1 =	main.o argdecode.o musmon.o otran.o oload.o rdorch.o express.o
@@ -228,11 +226,9 @@ COBJI = vbap_sixteen.o vbap_zak.o control.o bowedbar.o phisem.o sdif.o
 COBJJ = sdif-mem.o babo.o ugmoss.o bbcut.o spat3d.o pvxanal.o mxfft.o
 COBJK = pvsanal.o pstream.o pvfileio.o oscbnk.o scansynx.o oscils.o
 COBKL = wave-terrain.o dnoise.o dnfft.o mididevice.o clfilt.o midiinterop.o
-COBJM = dl_opcodes.o jpff_glue.o
 COBJS =	$(COBJ1) $(COBJ2) $(COBJ3) $(COBJ4) $(COBJ5) $(COBJ6) $(COBJ7) \
 	$(COBJ8) $(COBJ9) $(COBJA) $(COBJB) $(COBJC) $(COBJD) $(COBJE) \
-	$(COBJF) $(COBJG) $(COBJH) $(COBJI) $(COBJJ) $(COBJK) $(COBKL) \
-	$(COBJM)
+	$(COBJF) $(COBJG) $(COBJH) $(COBJI) $(COBJJ) $(COBJK) $(COBKL)
 
 HDRS =  3Dug.h aiff.h aops.h bowed.h brass.h butter.h clarinet.h \
 	cmath.h complex.h convolve.h cs.h cscore.h dam.h diskin.h disprep.h \
@@ -250,8 +246,7 @@ HDRS =  3Dug.h aiff.h aops.h bowed.h brass.h butter.h clarinet.h \
 	ugsc.h fout.h sndinfUG.h scansyn.h sf.h sfont.h sfenum.h sftype.h \
 	vbap.h control.h bowedbar.h phisem.h sdif.h sdif-mem.h babo.h \
 	ugmoss.h bbcut.h spat3d.h pstream.h pvfileio.h pvxanal.h oscbnk.h \
-	scansynx.h oscils.h wave-terrain.h clfilt.h midiinterop.h opcode.h \
-	csdl.h
+	scansynx.h oscils.h wave-terrain.h clfilt.h midiinterop.h opcode.h
 
 PROGS   = csound
 SUBDIRS = anals utils1 utils2 utils3
@@ -290,9 +285,7 @@ makedb:	makedb.c text.h
 ADSYNS = hetro 						#targets in anal/adsyn
 LPCS = lpanal						#targets in anal/lpc
 PVOCS = pvanal 						#targets in anal/pvoc
-CVL = cvanal						#targets in anal/convol
-#targets in anal
-ANALS = adsyns $(ADSYNS) lpcs $(LPCS) pvocs $(PVOCS) cvl $(CVL)
+ANALS = adsyns $(ADSYNS) lpcs $(LPCS) pvocs $(PVOCS)   #targets in anal
 anals $(ANALS):
 		cd anal; $(MAKE) $@
 
@@ -412,8 +405,5 @@ distrib:	all Csound.tar.gz
 depend:
 	gcc -M $(DEFINES) $(CSRCS) $(CSMS) $(UTIL3) > deps
 	cat Makefile deps > makefile
-
-testlib.so: testlib.o
-	ld -E --shared testlib.o -o testlib.so
 
 # DO NOT DELETE THIS LINE

@@ -1,14 +1,16 @@
-           SPELL=Csound
-         VERSION=4.21
-#          SOURCE=$SPELL$VERSION.tar.gz
-#SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-#   SOURCE_URL[0]=ftp://earth.cs.bath.ac.uk/pub/dream/newest/$SOURCE
-#          MD5[0]=c67fbe92062441791fb9a694f29d4668
+           SPELL=csound
+         VERSION=4.23f12
+          SOURCE=${SPELL}_src${VERSION/\./}.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+#   SOURCE_URL[1]=ftp://earth.cs.bath.ac.uk/pub/dream/newest/$SOURCE
+          MD5[0]=0157f34fafd68008915abef86e1bc4e3
         WEB_SITE=http://www.csounds.com
          ENTERED=20020513
          UPDATED=20021016
       LICENSE[0]=LGPL
-           SHORT="Csound is the top of sound synthesis language."
+       BUILD_API=2
+           SHORT="Top of sound synthesis language."
 cat << EOF
 Csound is an incredibly powerful and versatile software synthesis program. Drawing from a toolkit of over 450 signal processing modules, one can use
 Csound to model virtually any commercial synthesizer or multi-effects processor. Csound literally transforms a personal computer into a high-end digital
@@ -18,4 +20,3 @@ and dedication. You will soon discover that Csound is the ultimate musical instr
 by producing some of the richest textures and uniquely beautiful timbres you have ever heard. In the audio world of Csound, knowledge and experience are
 the key... and your imagination the only limitation.
 EOF
-
