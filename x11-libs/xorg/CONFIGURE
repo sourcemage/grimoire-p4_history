@@ -193,19 +193,19 @@ initialize()  {
                     BuildSpeedo BuildSpeedoFonts BuildType1"
       FONT_OPTIONS="$YES_FONT_OPTIONS  $NO_FONT_OPTIONS"
 
-    YES_EXTENSIONS="BuildXF86RushExt BuildDBElib BuildRECORDlib BuildXKBlib 
-                    BuildScreenSaverExt BuildXInputExt BuildXinerama BuildGlxExt
-                    BuildRender BuildXF86VidModeExt BuildXF86MiscExt
-                    BuildXF86DGA BuildDPMSExt BuildXvMCExt BuildXResExt"
-     NO_EXTENSIONS="JoystickSupport"
-        EXTENSIONS="$YES_EXTENSIONS  $NO_EXTENSIONS"
+#    YES_EXTENSIONS="BuildXF86RushExt BuildDBElib BuildRECORDlib BuildXKBlib 
+#                    BuildScreenSaverExt BuildXInputExt BuildXinerama BuildGlxExt
+#                    BuildRender BuildXF86VidModeExt BuildXF86MiscExt
+#                    BuildXF86DGA BuildDPMSExt BuildXvMCExt BuildXResExt"
+#     NO_EXTENSIONS="JoystickSupport"
+#        EXTENSIONS="$YES_EXTENSIONS  $NO_EXTENSIONS"
 
-     YES_LIBRARIES="BuildGLULibrary BuildOSMesaLib BuildScreenSaverLibrary
-                    BuildXF86MiscLibrary BuildXF86DGALibrary BuildXVLibrary
-                    BuildXF86VidModeLibrary BuildXvMCLibrary BuildGLXLibrary
-                    BuildXResLibrary"
-      NO_LIBRARIES=""
-         LIBRARIES="$YES_LIBRARIES  $NO_LIBRARIES"
+#     YES_LIBRARIES="BuildGLULibrary BuildOSMesaLib BuildScreenSaverLibrary
+#                    BuildXF86MiscLibrary BuildXF86DGALibrary BuildXVLibrary
+#                    BuildXF86VidModeLibrary BuildXvMCLibrary BuildGLXLibrary
+#                    BuildXResLibrary"
+#      NO_LIBRARIES=""
+#         LIBRARIES="$YES_LIBRARIES  $NO_LIBRARIES"
 
   YES_MISC_OPTIONS="HasShm BuildXF86DRI BuildXF86OldDRMCompat UseRgbTxt
                     InstallXinitConfig InstallXdmConfig XnestServer"
@@ -285,21 +285,21 @@ generate_host_def()  {
     echo  "#define $ITEM  NO"
   done
 
-  for  ITEM  in  $YES_EXTENSIONS;  do
-    echo  "#define $ITEM  YES"
-  done  &&
+#  for  ITEM  in  $YES_EXTENSIONS;  do
+#    echo  "#define $ITEM  YES"
+#  done  &&
 
-  for  ITEM  in  $NO_EXTENSIONS;  do
-    echo  "#define $ITEM  NO"
-  done  &&
+#  for  ITEM  in  $NO_EXTENSIONS;  do
+#    echo  "#define $ITEM  NO"
+#  done  &&
 
-  for  ITEM  in  $YES_LIBRARIES;  do
-    echo  "#define $ITEM  YES"
-  done  &&
+#  for  ITEM  in  $YES_LIBRARIES;  do
+#    echo  "#define $ITEM  YES"
+#  done  &&
 
-  for  ITEM  in  $NO_LIBRARIES;  do
-    echo  "#define $ITEM  NO"
-  done
+#  for  ITEM  in  $NO_LIBRARIES;  do
+#    echo  "#define $ITEM  NO"
+#  done
 
 }
 
@@ -369,55 +369,55 @@ select_misc_options() {
 
 }
 
-select_extensions() {
+#select_extensions() {
+#
+#  TITLE="Select Extensions"
+#  CHECKLIST="`build_checklist  ON   Option  $YES_EXTENSIONS`
+#             `build_checklist  OFF  Option   $NO_EXTENSIONS`"
+#  HELP="Key:  [X] = on, [ ] = off"
+#
+#  if  ON_EXTENSIONS=`dialog  --backtitle  "$BACKTITLE"  \
+#                             --title      "$TITLE"      \
+#                             --stdout                   \
+#                             --separate-output          \
+#                             --checklist  "$HELP"       \
+#                             18 55 10                   \
+#                             $CHECKLIST`
+#  then
+#    YES_EXTENSIONS=$ON_EXTENSIONS
+#     NO_EXTENSIONS=$EXTENSIONS
+#
+#    for  ITEM  in  $YES_EXTENSIONS;  do
+#      NO_EXTENSIONS=`echo  $NO_EXTENSIONS  |  sed  s/$ITEM//`
+#    done
+#  fi
+#
+#}
 
-  TITLE="Select Extensions"
-  CHECKLIST="`build_checklist  ON   Option  $YES_EXTENSIONS`
-             `build_checklist  OFF  Option   $NO_EXTENSIONS`"
-  HELP="Key:  [X] = on, [ ] = off"
-
-  if  ON_EXTENSIONS=`dialog  --backtitle  "$BACKTITLE"  \
-                             --title      "$TITLE"      \
-                             --stdout                   \
-                             --separate-output          \
-                             --checklist  "$HELP"       \
-                             18 55 10                   \
-                             $CHECKLIST`
-  then
-    YES_EXTENSIONS=$ON_EXTENSIONS
-     NO_EXTENSIONS=$EXTENSIONS
-
-    for  ITEM  in  $YES_EXTENSIONS;  do
-      NO_EXTENSIONS=`echo  $NO_EXTENSIONS  |  sed  s/$ITEM//`
-    done
-  fi
-
-}
-
-select_libraries() {
-
-  TITLE="Select Libraries"
-  CHECKLIST="`build_checklist  ON   Option  $YES_LIBRARIES`
-             `build_checklist  OFF  Option   $NO_LIBRARIES`"
-  HELP="Key:  [X] = on, [ ] = off"
-
-  if  ON_LIBRARIES=`dialog  --backtitle  "$BACKTITLE"  \
-                            --title      "$TITLE"      \
-                            --stdout                   \
-                            --separate-output          \
-                            --checklist  "$HELP"       \
-                            18 55 10                   \
-                            $CHECKLIST`
-  then
-    YES_LIBRARIES=$ON_LIBRARIES
-     NO_LIBRARIES=$LIBRARIES
-
-    for  ITEM  in  $YES_LIBRARIES;  do
-      NO_LIBRARIES=`echo  $NO_LIBRARIES  |  sed  s/$ITEM//`
-    done
-  fi
-
-}
+#select_libraries() {
+#
+#  TITLE="Select Libraries"
+#  CHECKLIST="`build_checklist  ON   Option  $YES_LIBRARIES`
+#             `build_checklist  OFF  Option   $NO_LIBRARIES`"
+#  HELP="Key:  [X] = on, [ ] = off"
+#
+#  if  ON_LIBRARIES=`dialog  --backtitle  "$BACKTITLE"  \
+#                            --title      "$TITLE"      \
+#                            --stdout                   \
+#                            --separate-output          \
+#                            --checklist  "$HELP"       \
+#                            18 55 10                   \
+#                            $CHECKLIST`
+#  then
+#    YES_LIBRARIES=$ON_LIBRARIES
+#     NO_LIBRARIES=$LIBRARIES
+#
+#    for  ITEM  in  $YES_LIBRARIES;  do
+#      NO_LIBRARIES=`echo  $NO_LIBRARIES  |  sed  s/$ITEM//`
+#    done
+#  fi
+#
+#}
 
 configure_host_def()  {
 
@@ -425,6 +425,15 @@ configure_host_def()  {
 
   while  
 
+#
+# for dialog
+#                     "Extensions"       "Select X Extensions"              \
+#                     "Libraries"        "Select X Libraries"               \
+#
+# For case statement
+#           Extensions)  select_extensions            ;;
+#            Libraries)  select_libraries             ;;
+#
     COMMAND=`dialog  --backtitle  "$BACKTITLE"                             \
                      --stdout                                              \
                      --title  "Main Menu"                                  \
@@ -438,8 +447,6 @@ configure_host_def()  {
                      "DriDrivers"       "Select DRI Drivers"               \
                      "DevelDriDrivers"  "Select Development DRI Drivers"   \
                      "XInputDrivers"    "Select Input Drivers"             \
-                     "Extensions"       "Select X Extensions"              \
-                     "Libraries"        "Select X Libraries"               \
                      "Fonts"            "Select Font Options"              \
                      "Misc"             "Set other Options"                \
                      "Save"             "Save current configuration"       \
@@ -458,8 +465,6 @@ configure_host_def()  {
            DriDrivers)  select_dridrivers            ;;
       DevelDriDrivers)  select_devel_dridrivers      ;;
         XInputDrivers)  select_input_drivers         ;;
-           Extensions)  select_extensions            ;;
-            Libraries)  select_libraries             ;;
                 Fonts)  select_font_options          ;;
                  Misc)  select_misc_options          ;;
     esac
