@@ -791,6 +791,8 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
+					echo "SOURCE2=\${source}.sign"
+					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 				*)
 					. $kernelsdir/${!kver}
@@ -799,6 +801,8 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
+					echo "SOURCE2=\${source}.sign"
+					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
 			if [[ ${patchversion} ]]
