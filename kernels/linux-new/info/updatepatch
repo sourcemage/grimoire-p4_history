@@ -22,7 +22,7 @@ if [ "$4" != "" ]
 then
 	p4 delete info/patches/$1/$4
 fi
-vim info/patches/$1/$3
+$EDITOR info/patches/$1/$3
 (
 echo "`date +%Y-%m-%d` $NAME <$EMAIL>"
 echo "	* latest.defaults updated latest to $3"
