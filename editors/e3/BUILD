@@ -1,2 +1,1 @@
-  make  OS=LINUX2\ -DLINUX
-
+make
