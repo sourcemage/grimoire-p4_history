@@ -1,10 +1,14 @@
+2005-02-23 Eric Sandall <eric@sandall.us>
+	* init.d/exim: Added  (Bug #8032)
+	* services: Removed  (Bug #7125)
+
 2005-02-22 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 4.50
 	  Removed FORCE_DOWNLOAD for exiscan
 	* PREPARE,PRE_BUILD: Removed (exiscan is now part of exim :))
 	* CONFIGURE: Added queries for maildir, mailstore, and mbx support in
 	  appendfile transport (default 'n')
-	  Added Oracle, /etc/passwd, and NIS lookups (default 'n')
+	  Added /etc/passwd, and NIS lookups (default 'n')
 	  Added cram/md5, plaintext, and spa authentication
 	  Added option for frozen message moving
 	  Added "&&" after config_queries
