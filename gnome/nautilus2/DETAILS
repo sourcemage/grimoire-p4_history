@@ -1,9 +1,10 @@
            SPELL=nautilus2
          VERSION=2.0.7
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=nautilus-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/nautilus-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.2/sources/nautilus/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.2/sources/nautilus/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/nautilus/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/nautilus/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org/projects/nautilus
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

@@ -1,9 +1,10 @@
            SPELL=librep2
          VERSION=0.16
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=librep-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/librep-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/librep/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/librep/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/librep/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/librep/$BRANCH/$SOURCE
         WEB_SITE=http://www.dcs.warwick.ac.uk/~john/sw/librep.html
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

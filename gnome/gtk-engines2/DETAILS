@@ -1,9 +1,10 @@
            SPELL=gtk-engines2
          VERSION=1.9.0
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gtk-engines-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk-engines-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/gtk-engines/$SOURCE
-   SOURCE_URL[1]=ftp.gnome.org/pub/GNOME/2.0.0/sources/gtk-engines/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/gtk-engines/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp.gnome.org/pub/GNOME/sources/gtk-engines/$BRANCH/$SOURCE
         WEB_SITE=http://www.gtk.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

@@ -1,9 +1,10 @@
            SPELL=eel2
          VERSION=2.0.7
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=eel-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/eel-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.2/sources/eel/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.2/sources/eel/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/eel/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/eel/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL

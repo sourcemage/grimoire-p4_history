@@ -1,9 +1,10 @@
            SPELL=bug-buddy2
          VERSION=2.2.0
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=bug-buddy-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/bug-buddy-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/bug-buddy/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/bug-buddy/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/bug-buddy/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/bug-buddy/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
