@@ -1,2 +1,2 @@
-[  -x  /etc/init.d/nfs.sh      ]  &&  /etc/init.d/nfs.sh      stop
-[  -x  /etc/init.d/nfslock.sh  ]  &&  /etc/init.d/nfslock.sh  stop
+telinit  run  nfs      stop  &&
+telinit  run  nfslock  stop
