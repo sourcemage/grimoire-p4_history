@@ -1,4 +1,6 @@
 depends  ghostscript-fonts-std  &&
+depends  jpeg                   &&
+
 optional_depends  "gtk+"                                                                                   \
                   "--with-x"                                                                               \
                   ""                                                                                       \
@@ -18,8 +20,4 @@ optional_depends  "zlib"                                                        
 optional_depends  "libpng"                                                                                 \
                   ""                                                                                       \
                   ""                                                                                       \
-                  "for the Ghostscript PNG output drivers (which also requires ZLIB)"                      &&
-optional_depends  "jpeg"                                                                                   \
-                  ""                                                                                       \
-                  ""                                                                                       \
-                  "for the Ghostscript JPEG output drivers and filters"
+                  "for the Ghostscript PNG output drivers (which also requires ZLIB)"
