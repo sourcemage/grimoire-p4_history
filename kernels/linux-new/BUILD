@@ -1,4 +1,4 @@
-persistent_load
+
 cd ${LINUX_SOURCE_DIRECTORY}
 echo "This is the version: $VERSION"
 . ${CONFIG_CACHE}/details.conf
