@@ -1,10 +1,10 @@
            SPELL=ayttm
 if [ "$CVS" = "no" ] ; then
-         VERSION=0.4.6
+         VERSION=0.4.6-17
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-0.4.6 
    SOURCE_URL[0]=$SOURCEFORGE_URL/ayttm/$SOURCE
-          MD5[0]=2b32ce672a51baffca8f5a3c1d652139
+          MD5[0]='7e16b05add7514375dc632e52d1fa3f3'
 else [ "$CVS" = "yes" ]
          VERSION=cvs
   FORCE_DOWNLOAD=1
