@@ -1,5 +1,8 @@
 (
 
+  # Apply gcc 3.3 patch
+  bzcat  ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
+
   cd $SOURCE_DIRECTORY.bld                    &&
 
   if    !  echo  "$CFLAGS"  |  grep  -q -- "-O"

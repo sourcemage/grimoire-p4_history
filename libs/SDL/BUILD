@@ -1,2 +1,2 @@
-patch  -p0  <  ${SCRIPT_DIRECTORY}/SDL_stretch.c.patch  &&
+bzcat  ${SOURCE_CACHE}/${SOURCE2}  |  patch  -p1  &&
 default_build
