@@ -7,7 +7,7 @@ config_query  CF_PERFMON  "Do you wish to enable the Snort perfmonitor preproces
 
 # Flexible responce
 message  "${MESSAGE_COLOR}Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next option working."
-if  spell_installed  libnet;  then
+if  spell_ok  libnet;  then
   message  "You have libnet v`installed_version libnet` installed${DEFAULT_COLOR}"
 else
   message  "You do not have libnet installed, but v`gaze version libnet|grep libnet|awk '{print $4}'` would be used${DEFAULT_COLOR}"
@@ -25,14 +25,14 @@ if  [  "$CF_DB"  ==  "y"  ]; then
   message "${MESSAGE_COLOR}(U can choose all of them :).${DEFAULT_COLOR}"
  
   # MySQL
-  if  spell_installed  mysql;  then
+  if  spell_ok  mysql;  then
     config_query  CF_MYSQL  "Do you want use $SPELL with MySQL?"  y
   else
     config_query  CF_MYSQL  "Do you want use $SPELL with MySQL?"  n
   fi  &&
 
   # PostgreSQL
-  if  spell_installed  postgresql;  then
+  if  spell_ok  postgresql;  then
     config_query  CF_PSQL   "Do you want use $SPELL with PostgreSQL?"  y
   else
     config_query  CF_PSQL   "Do you want use $SPELL with PostgreSQL?"  n
@@ -43,7 +43,7 @@ if  [  "$CF_DB"  ==  "y"  ]; then
   config_query  CF_ORA    "Do you want use $SPELL with Oracle?"  n
 
   # UnixODBC
-  if  spell_installed  unixodbc;  then
+  if  spell_ok  unixodbc;  then
     config_query  CF_ODBC   "Do you want use $SPELL with ODBC support?"  y
   else
     config_query  CF_ODBC   "Do you want use $SPELL with ODBC support?"  n
