@@ -1,0 +1,20 @@
+           SPELL=graveman
+         VERSION=0.3.8
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+   SOURCE_URL[0]=http://savannah.nongnu.org/download/graveman/${SOURCE}
+          MD5[0]=fa8edfd5c4e7f7d646ce6be65e86005d
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://graveman.tuxfamily.org/
+         ENTERED=20050304
+         UPDATED=20050304
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT=A GTK frontend for burning CD's and DVD's
+cat << EOF
+Graveman is a burning application written in GTK+2. It is a GUI frontend to     
+    * cdrecord
+    * mkisofs
+    * readcd
+    * sox
+    * dvd+rw-format/dvd+rw-tools
+EOF
