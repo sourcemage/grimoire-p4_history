@@ -52,11 +52,11 @@ LDFLAGS=${LDFLAGS//-z combreloc/}
 #
 # Hopefully the next 3 patches will allow better global config
 # global registry usage.
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-initial.patch &&
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-winelauncher.patch &&
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-defaultcfg.patch &&
+patch -p1 < $SCRIPT_DIRECTORY/wine-20040408-initial.patch &&
+patch -p1 < $SCRIPT_DIRECTORY/wine-20040408-winelauncher.patch &&
+patch -p1 < $SCRIPT_DIRECTORY/wine-20040408-defaultcfg.patch &&
 # minor fix to wine/documentation/configuring.sgml
-#patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-documentation.patch &&
+#patch -p1 < $SCRIPT_DIRECTORY/wine-20040408-documentation.patch &&
 
 # fix config file
 # changes the Drive C from /c to $CROOT 
