@@ -6,18 +6,18 @@ if [ "$GETCVS" == "y" ]; then
           MD5[0]='IGNORE'
   FORCE_DOWNLOAD=1
 else
-         VERSION=2.8.3
+         VERSION=2.8.3.1
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='33aaea6ec52653f704179d166277776e'
+          MD5[0]='66d16986a41742bf0498b00eb966c196'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]="LGPL"
        BUILD_API=2
         WEB_SITE=http://java-gnome.sourceforge.net/cgi-bin/bin/view
          ENTERED=20041028
-         UPDATED=20050207
+         UPDATED=20050224
            SHORT="Java wrapper library for GTK+"
 cat << EOF
 Java wrapper library for GTK+2 and GLIB2

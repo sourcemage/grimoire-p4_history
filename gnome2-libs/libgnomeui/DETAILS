@@ -1,16 +1,16 @@
            SPELL=libgnomeui
-         VERSION=2.8.0
+         VERSION=2.8.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='a8952e7e52cae1a5d8b8a503e5d0d2dc'
+          MD5[0]='05b6bc4dc6b989c546ac993ac017cc5c'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
+       BUILD_API=2
         WEB_SITE=http://developer.gnome.org
          ENTERED=20020508
-         UPDATED=20040915
-       BUILD_API=2
+         UPDATED=20050224
            SHORT="The GNOME User Interface Library Functions"
 cat << EOF
 The GNOME User Interface Library Functions - This includes
