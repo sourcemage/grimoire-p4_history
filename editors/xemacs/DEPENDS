@@ -4,10 +4,10 @@ depends  db           &&
 depends  xemacs-base  &&
 depends  efs
 
-optional_depends  "lesstif"                                      \
-                  ""                                             \
-                  "--with-dialog=athena  --with-widgets=athena"  \
-                  "for OSF/Motif standard GUI"                   &&
+optional_depends  "lesstif"                                       \
+                  ""                                              \
+                  "--with-dialogs=athena  --with-widgets=athena"  \
+                  "for OSF/Motif standard GUI"                    &&
 
 optional_depends  "libpng"                             \
                   "--with-png"                         \
