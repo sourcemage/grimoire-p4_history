@@ -1,6 +1,6 @@
 default_install                                                 &&
 
-if grep -q 'GATHER_DOCS="on"' /etc/sorcery/local/config; then
+if grep -q 'GATHER_DOCS="on"' $LOCAL_CONFIG; then
     cd ${INSTALL_ROOT}/usr/share/doc    &&
     ln -s ../rtf2latex2e/doc $SPELL
 fi
