@@ -1,7 +1,7 @@
 if query "Backup package config ?" y
 then
- CUR_DATE=`date +%s`
- tar -c --use-compress-program=bzip2 -f "/usr/share/httpd/squirrelmail-config-backup-$CUR_DATE.tar.bz2" /usr/share/httpd/htdocs/squirrelmail/config 1>/dev/null 2>&1
+ CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
+ tar -cyvf "/usr/share/httpd/squirrelmail-config-backup-$CUR_DATE.tar.bz2" /usr/share/httpd/htdocs/squirrelmail/config 1>/dev/null 2>&1
 fi
 
 # apache/apache2 auto setup
