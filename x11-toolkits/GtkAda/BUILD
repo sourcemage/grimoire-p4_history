@@ -1,6 +1,6 @@
 (
 
-  if  !  spell_installed  MesaLib; then
+  if  !  spell_ok  MesaLib; then
     sedit  "s/-lGLU/-lglut/"  configure
   fi
   ./configure   --host=${HOST}              \
