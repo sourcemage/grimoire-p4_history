@@ -1,3 +1,9 @@
+2004-05-22 Robin Cook <rcook@wyrms.net>
+	* PRE_BUILD: moved the buildconf lines from BUILD to PRE_BUILD
+	  so that configure exists when BUILD runs to allow the adding
+	  of user desired OPTS
+	* BUILD: removed the buildconf lines moved to PRE_BUILD
+
 2004-03-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PROVIDES: added provides APACHE, so WEBSERVER can be used more
 	  generally for other web servers too
