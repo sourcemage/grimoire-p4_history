@@ -15,6 +15,6 @@
   prepare_install               &&
   make  PREFIX=/usr install     &&
   make  -f  Makefile-libbz2_so  &&
-  cp    -a  libbz2.so* /usr/lib
+  cp    -af  libbz2.so* /usr/lib
 
 ) > $C_FIFO 2>&1
