@@ -1,3 +1,6 @@
-depends  gtk+ &&
-depends  jpeg &&
-depends  gimp-print
+depends  gtk+        &&
+depends  gimp-print  &&
+
+optional_depends  "tiff"    ""  "--without-libtiff"  "for TIFF graphics file format support"  &&
+optional_depends  "jpeg"    ""  "--without-libjpeg"  "for JPEG graphics file format support"  &&
+optional_depends  "libpng"  ""  "--without-libpng"   "for PNG graphics file format support"
