@@ -1,17 +1,11 @@
-if ! grep -q "CONFIGURED=y" $SPELL_CONFIG; then
+config_query_option  OPTS                                                \
+                     "Enable Lightweight DB Manager (LDBM) backend?"  n  \
+                     "--enable-ldbm"                                     \
+                     "--disable-ldbm"
 
-  if ! grep -q "able-ldbm" $SPELL_CONFIG; then
-    if query "Enable Lightweight DB Manager (LDBM) backend?" n; then
-      echo 'OPTS="$OPTS --enable-ldbm"' >> $SPELL_CONFIG
-    fi
-  fi
-
-  # --enable-dnssrv	  enable dnssrv backend [no]
-  # --enable-ldap	  enable ldap backend [no]
-  # --enable-meta	  enable metadirectory backend [no]
-  # --enable-monitor	  enable monitor backend [no]
-  # --enable-null	  enable null backend [no]
-  # --enable-passwd	  enable passwd backend [no]
-
-  echo "CONFIGURED=y" >> $SPELL_CONFIG
-fi
+# --enable-dnssrv   enable dnssrv backend [no]
+# --enable-ldap     enable ldap backend [no]
+# --enable-meta     enable metadirectory backend [no]
+# --enable-monitor  enable monitor backend [no]
+# --enable-null     enable null backend [no]
+# --enable-passwd   enable passwd backend [no]
