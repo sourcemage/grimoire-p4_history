@@ -1,9 +1,14 @@
            SPELL=sqlite
+if [ "$DEVEL" == "n" ];then
          VERSION=2.8.14
+          MD5[0]=05ea42a9f4922f1165d8f9496dac3cb8
+else
+         VERSION=3.0.2
+          MD5[0]=f1515c15d5b4f51d0724cd07885a8151
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=http://www.hwaci.com/sw/sqlite/$SOURCE
-          MD5[0]=05ea42a9f4922f1165d8f9496dac3cb8
       LICENSE[0]=PD
         WEB_SITE=http://www.hwaci.com/sw/sqlite/
          ENTERED=20011016
