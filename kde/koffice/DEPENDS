@@ -2,11 +2,7 @@ depends  tk       &&
 depends  kdebase  &&
 depends  libxslt  &&
 
-#source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
-#
-# Fails without arts. :(
-#
-depends  arts  &&
+source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
 
 optional_depends  Python                                  \
                   ""                                      \
