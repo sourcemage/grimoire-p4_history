@@ -1,10 +1,10 @@
            SPELL=encfs
-         VERSION=1.0.4
+         VERSION=1.1.4-1
           SOURCE=$SPELL-$VERSION.tgz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=14d93a546a144c919fcdd6c2133acd9c
-        WEB_SITE=http://encfs.sourceforge.net/
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=http://arg0.net/users/vgough/download/$SOURCE
+          MD5[0]=f2bd45e93ee3b8b154b8d7a5fff92904
+        WEB_SITE=http://arg0.net/users/vgough/encfs.html
          ENTERED=20040209
          UPDATED=20040209
       LICENSE[0]=GPL
