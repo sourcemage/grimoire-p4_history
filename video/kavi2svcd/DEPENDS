@@ -1,5 +1,7 @@
 depends  VCDImager   &&
 depends  kdelibs     &&
 depends  transcode   &&
-depends  cdrdao      &&
-depends  mjpegtools
+depends  mjpegtools  &&
+
+optional_depends  "cdrdao"  ""  ""  "to burn SVCDs with cdrdao"  &&
+optional_depends  "CD-BURN-UTILITY"  ""  ""  "to burn SVCDs with cdrecord"
