@@ -3,18 +3,26 @@
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://unc.dl.sourceforge.net/slrn/$SOURCE
+          MD5[0]=da944c58f301cf07a41f996d91de8431
    SOURCE_URL[1]=http://telia.dl.sourceforge.net/slrn/$SOURCE
+          MD5[1]=${MD5[0]}
    SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/slrn/$SOURCE
+          MD5[2]=${MD5[0]}
    SOURCE_URL[3]=ftp://ftp.fh-heilbronn.de/pub/mirrors/slrn/$SOURCE
+          MD5[3]=${MD5[0]}
    SOURCE_URL[4]=ftp://ftp.fu-berlin.de/pub/unix/news/slrn/$SOURCE
+          MD5[4]=${MD5[0]}
    SOURCE_URL[5]=ftp://ftp.ntua.gr/pub/lang/slang/slrn/$SOURCE
+          MD5[5]=${MD5[0]}
    SOURCE_URL[6]=ftp://ftp.plig.org/pub/slrn/$SOURCE
+          MD5[6]=${MD5[0]}
+   SOURCE_URL[7]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[7]=${MD5[0]}
         WEB_SITE=http://slrn.sourceforge.net
          ENTERED=20010922
          UPDATED=20020316
       MAINTAINER=eru@subdimension.com
          LICENSE=GPL
-             MD5=da944c58f301cf07a41f996d91de8431
            SHORT="slrn is an nntp-based threaded newsreader."
 cat << EOF
 SLRN is an NNTP-based newsreader for Unix, VMS, win32, BeOS, and OS/2
