@@ -40,7 +40,7 @@
 
   prepare_install              				&&
 
-  if [ -e /etc/postfix/main.cf ]; then
+  if [ -d /etc/postfix ]; then
     make upgrade               				
   else
     make install	       				
