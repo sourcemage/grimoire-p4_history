@@ -41,9 +41,9 @@
   install  -v  -m 754  $FD/_rescue          $RD/%rescue       &&
   install  -v  -m 754  $FD/_single          $RD/%single       &&
 
-  pinfo "Installing facility and init configfiles..."         &&
+  pinfo "Installing facility, shutdown, and init configfiles..."  &&
 
-  _init_install_conf_files facilities init                    &&
+  _init_install_conf_files facilities shutdown init           &&
 
   pinfo "Creating runlevel dependency files..."               &&
 
@@ -55,6 +55,9 @@
   mkdep 5 4                                                   &&
 
   pinfo "Other stuff..."                                      &&
+
+  # Proper shutdown procedure
+  ln -fsv /etc/sysconfig/shutdown /etc/shutdown.conf          &&
 
   # Yeah, I know
   ln  -sfv  /bin/true  $RD/rc                                 &&
