@@ -1,0 +1,29 @@
+diff -Naur lilo-22.5.8/boot.c lilo-22.5.8-fixed/boot.c
+--- lilo-22.5.8/boot.c	2003-10-09 06:10:34.000000000 +1000
++++ lilo-22.5.8-fixed/boot.c	2003-12-17 18:11:33.820473669 +1100
+@@ -31,6 +31,11 @@
+ #include "boot.h"
+ #include "loader.h"
+ 
++/* PAGE_SHIFT determines the page size */
++#define PAGE_SHIFT      12
++#define PAGE_SIZE       (1UL << PAGE_SHIFT)
++#define PAGE_MASK       (~(PAGE_SIZE-1))
++
+ /* the number of sectors between the 15M memory hole and 1M
+    this is the max. for a bzImage kernel + initrd unless "large-memory"
+    or "mem=XXX" raises the limit  			*/
+diff -Naur lilo-22.5.8/partition.c lilo-22.5.8-fixed/partition.c
+--- lilo-22.5.8/partition.c	2003-08-15 14:00:43.000000000 +1000
++++ lilo-22.5.8-fixed/partition.c	2003-12-17 18:10:37.681308753 +1100
+@@ -35,6 +35,10 @@
+ #include "loader.h"
+ 
+ 
++/* PAGE_SHIFT determines the page size */
++#define PAGE_SHIFT      12
++#define PAGE_SIZE       (1UL << PAGE_SHIFT)
++#define PAGE_MASK       (~(PAGE_SIZE-1))
+        
+        _syscall5(int,  _llseek,  unsigned int,  fd, unsigned long, hi,
+            unsigned long, lo, loff_t *, res, unsigned int, wh);
