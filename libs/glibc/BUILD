@@ -6,8 +6,9 @@
   ### remove these from this spells log then
   ### in case glibc had provided these headers before
     for i in $INSTALL_LOGS/glibc*
-    do sedit '/\/usr\/include\/asm/D' $i      &&
+    do if [ -f $i ] ; then sedit '/\/usr\/include\/asm/D' $i      &&
        sedit '/\/usr\/include\/linux/D' $i
+       fi
     done                                      &&
   ###
 
@@ -33,11 +34,12 @@
   ### LD_LIBRARY_PATH includes $PWD bug 
   unset LD_LIBRARY_PATH                       &&
   $SOURCE_DIRECTORY/configure                 \
-               --host=$BUILD                  \
+               --host=$HOST                   \
                --build=$BUILD                 \
-               --prefix=${INSTALL_ROOT}/usr   \
-               --infodir=${INSTALL_ROOT}/usr/share/info \
-               --mandir=${INSTALL_ROOT}/usr/share/man   \
+               --prefix=/usr   \
+               --infodir=/usr/share/info \
+               --mandir=/usr/share/man   \
+               --sysconfdir=/etc         \
                --with-elf                     \
                --enable-shared                \
                --disable-profile              \
@@ -45,6 +47,17 @@
                $OPTS			      &&
   make                                        &&
   prepare_install                             &&
+  if [ "$CROSS_INSTALL" = "on" ] ; then 
+  echo "prefix = ${INSTALL_ROOT}/usr" > configparms                                                &&
+  echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                                              &&
+  echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                                         &&
+  echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                                           &&
+  echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                                   &&
+  sedit "s/\$(slibdir)/\lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                     &&
+  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                &&
+  sedit "s/\$(slibdir)/\lib/g" $SOURCE_DIRECTORY/Makerules                                         &&
+  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                
+  fi
 
  ### making these symlinks and unsetting the (sorcery) preload of old 
  ### libs should finally fix the glibc install problems. Had to add a 
@@ -66,7 +79,7 @@
      then  rm -rf ${INSTALL_ROOT}/usr/lib/locale/ && echo "REMOVING OLD LOCALE FILES" 
   fi &&
  ### INSTALL 
-  make install                                &&
+  make  install                               &&
   (  ldconfig  ||  true  )                    &&
 
  ### generate the localedef file from installed specs
@@ -77,10 +90,10 @@
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
       mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                 &&
       echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE		$DESCRIPTION " &&
-      localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE                              &&
+      localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE                              &&
       if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
          then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8		$DESCRIPTION (UNICODE Charset)" &&
-              localedef  -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
+              localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
       fi
     done
     true
@@ -90,10 +103,10 @@
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
       mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE &&
       echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE" &&
-      localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
+      localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
       if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
          then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8" &&
-              localedef  -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
+              localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
       fi
     done
     true

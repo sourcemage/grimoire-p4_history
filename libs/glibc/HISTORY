@@ -1,3 +1,8 @@
+2004-02-03 hgg <hgreig@bigpond.net.au>
+	* BUILD: modify behaviour for CROSS_INSTALL. uses regular paths to compile (or it hardcodes invalid paths)
+	but then installs to INSTALL_ROOT. Works for a x86 -> x86 crossinstall (iso procduction), will work for other 
+	"non-cross-compile" crossinstalls. true cross-compiling might need more work.
+
 2004-01-31 hgg <hgreig@bigpond.net.au>
 	* DETAILS: update UPDATED, this needs testing by more than sandalle before it can be integrated into test.
 
