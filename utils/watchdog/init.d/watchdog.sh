@@ -1,4 +1,11 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-script-version=20030331
+# SMGL-START:3 4 5:S10
+# SMGL-STOP:0 1 2 6:K90
+#
+
        case "$1" in
            start)
                echo "Starting watchdog."
