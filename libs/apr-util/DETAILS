@@ -1,22 +1,22 @@
            SPELL=apr-util
 if [ "$APR_BRANCH" == '1' ]; then
-         VERSION=1.0pre1
+         VERSION=1.0.0
              TAG=HEAD
-          MD5[0]=''
+          MD5[0]='e6609bb2639980c1a157052c0990d916'
 else
          VERSION=0.9.5
              TAG=APU_0_9_BRANCH
-#         MD5[0]=''
-   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:APACHE_2_0_48
-          MD5[0]=IGNORE
+          MD5[0]=''
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:APACHE_2_0_50
 fi
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 if [ "$APR_CHECKOUT" == 'y' ]; then
+         VERSION=$TAG
   FORCE_DOWNLOAD=on
    SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
           MD5[0]=IGNORE
 fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
         WEB_SITE=http://apr.apache.org/
       LICENSE[0]=APACHE
