@@ -55,7 +55,8 @@ create_defaults()
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
 	then
-		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
+		cp ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ${SPELL_CONFIG}.p
+		mode="newktree"
 	else
 		mode="newktree"
 		reconf="true"
