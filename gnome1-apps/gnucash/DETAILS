@@ -6,11 +6,11 @@ if  [  "$CVS"  ==  "y"  ];  then
   FORCE_DOWNLOAD="on"
           MD5[0]=IGNORE
 else
-         VERSION=1.8.10
+         VERSION=1.8.11
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=http://www.gnucash.org/pub/gnucash/sources/stable/${SOURCE/bz2/gz}
    SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-          MD5[0]=bebc4870e6a1f3677f95898c984e188d
+          MD5[0]=2ef162b74d182e6640e9c867da133554
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.gnucash.org
