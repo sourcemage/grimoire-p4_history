@@ -1,4 +1,4 @@
-make    PREFIX=/usr  ETCDIR=/etc  install               &&
+default_install                                         &&
 install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
                   /usr/bin                              &&
 if ! [ -d /usr/share/xsessions ] ; then
