@@ -1,6 +1,11 @@
 #!/bin/sh
 # mosstatd     This shell script takes care of starting and stopping \
 #              the mosstatd daemon.
+#
+# Source Mage init.d install information
+# SMGL-START:3 5:S90
+# SMGL-STOP:0 6:K10
+#
 
 [ -x /usr/bin/mosstatd ] || exit 0
 
