@@ -42,7 +42,18 @@ fake_redhat()  {
   fi
 
 
-  source  $SCRIPT_DIRECTORY/lib_runlevel
-  installscript  cups.sh
+  if  [  -e  /etc/init.d/functions  ];
+  then
+    source  $SCRIPT_DIRECTORY/lib_runlevel
+    installscript  cups.sh
+  else
+    install  -m  755  $SCRIPT_DIRECTORY/cups.old.sh  $initdir/cups.sh
+    ln  -sf  $initdir/cups.sh  /etc/rc1.d/S99cups
+    ln  -sf  $initdir/cups.sh  /etc/rc2.d/S99cups
+    ln  -sf  $initdir/cups.sh  /etc/rc3.d/S99cups
+    ln  -sf  $initdir/cups.sh  /etc/rc5.d/S99cups
+    ln  -sf  $initdir/cups.sh  /etc/rc0.d/K00cups
+    ln  -sf  $initdir/cups.sh  /etc/rc6.d/K00cups
+  fi
 
 ) > $C_FIFO 2>&1
