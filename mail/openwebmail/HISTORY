@@ -1,3 +1,13 @@
+2002-06-12  M.L. <m.l@compaqnet.fr>
+
+	Version++ (1.70)
+	You need to patch /etc/openwebmail.conf and add:
+		"dbm_ext                 .db"
+		"dbmopen_ext             .none"
+	A patch is applied to /usr/share/httpd/cgi-bin/openwebmail/openwebmail-shared.pl in DBMTEST section to skip dbm tests at startup... (OWM test fails, I can't figure out why).
+
+	Removed USEGCC2.
+
 2002-06-11  M.L. <m.l@compaqnet.fr>
 
         Added MD5.

@@ -6,9 +6,12 @@ rm -r -f ./data/openwebmail/doc
 
 # check for previous config file
 if [ -e /etc/openwebmail.conf ]; then
- message "Previous config file detected..."
+ message " "
+ message "${MESSAGE_COLOR}Previous config file detected..."
  message "The new sample config file will be named openwebmail-new.conf."
- message "Your actual config is maintained (beware of conf file format changes)."
+ message "Your actual config is maintained (beware of conf file format changes).${DEFAULT_COLOR}"
+ message " "
+
  mv ./cgi-bin/openwebmail/etc/openwebmail.conf /etc/openwebmail-new.conf  1>/dev/null 2>&1
 else
  mv ./cgi-bin/openwebmail/etc/openwebmail.conf /etc/openwebmail.conf 1>/dev/null 2>&1
@@ -53,4 +56,10 @@ sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/\/usr\/share\/httpd\/cgi-bin\/o
 #echo "auth       required     /lib/security/pam_unix.so" > /etc/pam.d/openwebmail
 #echo "account    required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 #echo "password   required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
+
+# Tune DBMTEST to SMGL style 
+message "${MESSAGE_COLOR}This patch turns DBM test off (see HISTORY file)${DEFAULT_COLOR}"
+patch /usr/share/httpd/cgi-bin/openwebmail/openwebmail-shared.pl <$SCRIPT_DIRECTORY/openwebmail-shared.pl.patch
+message " "
+
 ) > $C_FIFO 2>&1  
