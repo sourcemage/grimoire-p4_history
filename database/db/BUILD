@@ -12,6 +12,8 @@ if [ "JSUP" == "enable-java" ]; then
       JAVA_HOME=$INSTALL_ROOT/usr/java/j2sdk
     elif spell_ok j2sdk-bin; then
       JAVA_HOME=$INSTALL_ROOT/usr/lib/j2sdk1.4.2
+    elif spell_ok jdk1.5-bin; then
+      JAVA_HOME=$INSTALL_ROOT/usr/lib/jdk1.5.0_01
     fi
   fi &&
   message 'Checking that JAVA_HOME is defined...' &&
