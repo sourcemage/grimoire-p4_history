@@ -1,0 +1,8 @@
+if  !  grep  -q  "PORTSENTRY_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke PORTSENTRY at boot?" y
+  then  echo   "PORTSENTRY_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "PORTSENTRY_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

@@ -1,0 +1,15 @@
+           SPELL=kdelibs
+         VERSION=3.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+
+SOURCE_URL[0]=ftp://ftp.kde.org/pub/kde/stable/$VERSION/src/$SOURCE
+        WEB_SITE=http://www.kde.org
+         ENTERED=20020322
+         UPDATED=20020410
+           SHORT="kdelibs contains the base applications that form the core of KDE."
+cat << EOF
+This package contains the base applications that form the core of
+the K Desktop Environment like the window manager, the terminal
+emulator, the control center, the file manager, and the panel.
+EOF

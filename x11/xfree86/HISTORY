@@ -1,3 +1,9 @@
+20020401        Marc Greene
+        Modified CONFIGURE and POST_INSTALL to copy and recover existing 
+	xdm and xinit configs as "#define InstallXdmConfig  NO" and 
+	"#define InstallXinitConfig  NO" were not effective at 
+	preventing these files from being reaped.
+
 20020319        Marc Greene
         Added zlib security patch: 4.2.0-zlib-security.patch
 

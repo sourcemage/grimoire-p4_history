@@ -1,6 +1,8 @@
 (
+  mkdir buildit
+  cd buildit
 
-  ./configure  --host=$BUILD  \
+  ../configure  --host=$BUILD  \
                --prefix=/usr  &&
   make  tooldir=/usr          &&
   message  "${MESSAGE_COLOR}Preparing to install"  \

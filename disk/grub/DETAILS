@@ -1,0 +1,16 @@
+ SPELL=grub
+         VERSION=0.91
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://alpha.gnu.org/gnu/grub/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/grub/
+      LICENSE[0]=http://www.gnu.org/copyleft/gpl.html
+         ENTERED=20020403
+         UPDATED=20020403
+      MAINTAINER=jean@kcco.com
+           SHORT="GNU GRUB bootloader"
+cat << EOF
+Install this package only after you have created, and tested, a rescue disk using the 'mkrescue' command.  Failure to do so could result in your system becoming unbootable if something goes wrong during installation.  You have been warned.
+
+GNU GRUB is a Multiboot boot loader. It was derived from GRUB, GRand Unified Bootloader, which was originally designed and implemented by Erich Stefan Boleyn.  Spell originally submitted by ashaman@flyingtemple.com, radically altered by jean@kcco.com to add autodetection of some partitions and protections against accidentally making your system unbootable.
+EOF

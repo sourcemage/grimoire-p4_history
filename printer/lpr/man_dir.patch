@@ -1,0 +1,11 @@
+--- lpr-0.72/Makefile	Sat Mar  2 20:45:52 2002
++++ lpr-0.72/Makefile	Sat Mar  2 20:45:52 2002
+@@ -13,7 +13,7 @@
+ 
+ install:
+ 	for i in $(SUBDIRS); do make -C $$i install; done
+-	install -m644 printcap.5 $(DESTDIR)$(MANDIR)/man5/
++	install -m644 printcap.5 $(DESTDIR)$(MANDIR)/man5 
+ 
+ clean:
+ 	for i in $(SUBDIRS); do make -C $$i clean; done

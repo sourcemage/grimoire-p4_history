@@ -1,0 +1,115 @@
+# This is an adaptation of a script i found on xmlsoft.org
+#                                Jon Svendsen
+
+ROOTCATALOG=/etc/xml/catalog
+CATALOG=/etc/xml/docbook
+
+xmlcatalog --noout --del \
+    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//DTD DocBook XML V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//ENTITIES DocBook XML Character Entities V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//ENTITIES DocBook XML Notations V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//DTD DocBook XML CALS Table Model V4.1.2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "http://www.oasis-open.org/docbook/xml/4.1.2" \
+    $CATALOG
+
+xmlcatalog --noout --del \
+    "-//OASIS//ENTITIES DocBook XML" \
+    $ROOTCATALOG
+xmlcatalog --noout --del \
+    "-//OASIS//DTD DocBook XML" \
+    $ROOTCATALOG
+xmlcatalog --noout --del \
+    "http://www.oasis-open.org/docbook/" \
+    $ROOTCATALOG
+xmlcatalog --noout --del \
+    "http://www.oasis-open.org/docbook/" \
+    $ROOTCATALOG
+
+#
+# find the prefix for ISO DocBook entities
+#
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Publishing//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Greek Letters//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Box and Line Drawing//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Greek Symbols//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Diacritical Marks//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Monotoniko Greek//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Russian Cyrillic//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES General Technical//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Latin 1//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Latin 2//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN" \
+    $CATALOG
+xmlcatalog --noout --del \
+    "ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN" \
+    $CATALOG
+
+xmlcatalog --noout --del \
+    "ISO 8879:1986" \
+    $ROOTCATALOG
+

@@ -1,0 +1,11 @@
+{
+if query "Do you want to configure noip now ?" y
+then
+ /usr/sbin/noip-configure.sh
+fi
+
+case  $NOIP_BOOT  in
+  y|Y)  /etc/init.d/noip.sh  start  ;;
+  *)    true                        ;;
+esac
+}

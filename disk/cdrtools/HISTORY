@@ -1,4 +1,13 @@
-2002-03-17 Jean-Michel Smith
+2002-04-05  Jean-Michel Smith
 
-   * added LICENSE[0] information to DETAILS file
+  * removed 'provides' which was erroneously included (and created a
+    circular dependency), thanks "Gabriel Devenyi" <ace118@hotmail.com>
+    for identifying this.
 
+2002-03-30  Jean-Michel Smith
+
+  * initial creation of the cdrtools metaspell, after renaming the old
+    cdrtools spell 'cdrutils'.  This is designed to facilitate a relatively
+    seemless substitution, so that spells that depend on cdrtools can
+    use either the new FSF dvdrtools fork, or the original fork, without
+    any modification of those spells.  Examples include gcombust and eroaster.

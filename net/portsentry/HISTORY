@@ -1,0 +1,32 @@
+2002-04-07      Jeff Schmidt            <jschmidt@fnal.gov>
+
+                moved config file to /etc/ and the variable output
+                to /var/portsentry/
+
+                added David as MAINTAINER (he did all the *real* work  ;^)
+
+                incremented UPDATED
+
+                corrected spelling in portsentry.modes
+
+                changed ":" to "." and Start|Stop to start|stop in init, and
+                renamed it. (picky bastard, ain't I?)
+
+2002-04-05	David D. Huff Jr.	<David.Huff@computer-critters.com>
+
+
+	*	Patch to portsentry.conf to enable iptables support for kernel 2.4.x
+
+		Added init file and symlinks with CONFIGURE so program
+	        actually does something upon install
+
+		Added portsentry.modes file to enable very easy changes to
+		usage mode without recompilation. (Default: Advanced Stealth)
+
+		Renamed Changelog to HISTORY
+		
+
+20011213, portsentry 1.1, Kongar
+
+- hacked BUILD file to add optimizations to the Makefile
+

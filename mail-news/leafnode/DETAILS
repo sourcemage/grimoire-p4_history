@@ -1,0 +1,37 @@
+	SPELL=leafnode
+	VERSION=1.9.21
+   SOURCE=$SPELL-$VERSION.rel.tar.bz2
+	SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www-dt.e-technik.uni-dortmund.de/~ma/leafnode/$SOURCE
+   SOURCE_URL[1]=ftp://wpxx02.toxi.uni-wuerzburg.de/pub/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.karlsruhe.org/pub/news/servers/leafnode/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.unixpower.org/pub/leafnode/$SOURCE
+   WEB_SITE=http://www.leafnode.org/
+	MAINTAINER=joel_mayes@dingoblue.net.au
+   ENTERED=20020202
+   UPDATED=20020408
+   SHORT="Leafnode is a NNTP sever for small site"
+cat << EOF
+Leafnode is a USENET software package designed for small sites running any
+flavour of Unix, with a few tens of readers and only a slow link to the net. It
+was originally written by Arnt Gulbrandsen and is currently being maintained by
+Cornelius Krasel <krasel@wpxx02.toxi.uni-wuerzburg.de>. 
+
+The package consists of several programs:
+
+* Leafnode is the NNTP server. It talks to the normal news clients, and
+  stores readership data.
+* Fetchnews is the program which gets news from upstream servers and sends 
+  your posted articles to the upstream servers. 
+  It also can find out which groups you read and gets articles accordingly.
+* Fetch supports filtering incoming articles for regular expressions.
+* Texpire is responsible for deleting old and uninteresting news.
+  It deletes all discussion threads that are old and not recently
+  read. 
+* Applyfilter applies the contents of your filterfile to
+  articles that you have already retrieved.
+* Checkgroups inserts the titles of newsgroups into the
+  newsgroup database.  
+* Newsq shows which news are waiting
+  to be transferred to your upstream server.
+EOF

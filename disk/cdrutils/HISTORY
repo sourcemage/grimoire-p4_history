@@ -1,0 +1,22 @@
+2002-04-05  Jean-Michel Smith
+
+  * added 'provides' which was erroneously excluded, thanks "Gabriel Devenyi" 
+    <ace118@hotmail.com> for identifying the problem.
+
+2002-03-31  Jean-Michel Smith <jean@kcco.com>
+
+  * changed spell name to cdrutils to facilitate coexistence with dvdrtools
+    (both provide 'cdrtools') without requiring changes to those spells which
+    depend upon cdrtools.
+  * added 'provides' cd-burn-utility
+
+2002-03-30  Jean-Michel Smith <jean@kcco.com>
+
+  * removed zisofs dependency per request, as it had broken the entire
+    cdrtools spell.  This will also facilitate adding dvdrtools to the
+    grimoire.
+
+2002-03-17  Jean-Michel Smith <jean@kcco.com>
+
+  * added LICENSE[0] information to DETAILS file
+

@@ -1,11 +1,12 @@
            SPELL=SDL-sdlpl
-         VERSION=1.12
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://sdlperl.org/$SOURCE
-        WEB_SITE=http://sdlperl.org
+         VERSION=1.15
+          SOURCE=SDL_perl-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/SDL_perl-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/D/DG/DGOEHRIG/$SOURCE
+   SOURCE_URL[1]=http://sdlperl.org/$SOURCE
+	 WEB_SITE="http://search.cpan.org?module=SDL"
          ENTERED=20020209
-         UPDATED=20020315
+         UPDATED=20020403
       MAINTAINER="redlemon@knoware.nl"
            SHORT="SDL-sdlpl is the glue that binds perl to SDL"
 cat << EOF

@@ -1,0 +1,18 @@
+            SPELL=fte
+          VERSION=20020324
+           SOURCE=$SPELL-$VERSION-src.zip
+          SOURCE2=$SPELL-$VERSION-common.zip
+          SERVER0=http://prdownloads.sourceforge.net/fte
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+SOURCE2_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+    SOURCE_URL[0]=$SERVER0/$SOURCE
+   SOURCE2_URL[0]=$SERVER0/$SOURCE2
+         WEB_SITE=http://fte.sourceforge.net/
+          ENTERED=20020406
+          UPDATED=20020406
+       MAINTAINER=peter@schneider-kamp.de
+            SHORT="fte is the Folding Text Editor."
+cat << EOF
+FTE is a free (licensed under the GNU GPL) text editor for developers.
+It is really powerful, yet very easy and intuitive to use.
+EOF
