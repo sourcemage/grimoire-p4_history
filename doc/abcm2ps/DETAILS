@@ -1,14 +1,18 @@
            SPELL=abcm2ps
+if [ "$DEVEL" == "y" ]; then
+         VERSION=4.7.0
+          MD5[0]='debba30170dfef23956b4e65a1c757fd'
+else
          VERSION=3.7.18
+          MD5[0]='816b2396ba587d2996089369a2ba3397'
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://moinejf.free.fr/$SOURCE
         WEB_SITE=http://moinejf.free.fr
          ENTERED=20030923
          UPDATED=20031003
-          MD5[0]=816b2396ba587d2996089369a2ba3397
       LICENSE[0]=GPL
-      MAINTAINER=terry@aliboom.com
            SHORT="A music typesetter, based on the ABC language."
 cat << EOF
 abcm2ps is a package that converts music tunes from ABC format to PostScript.
