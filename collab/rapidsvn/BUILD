@@ -3,6 +3,8 @@
 # message "${MESSAGE_COLOR}Downloading recent source...${DEFAULT_COLOR}" &&
 # svn export --force http://svn.collab.net/repos/rapidsvn/trunk/ . &&
 
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/action.hpp.patch  &&
+
   if ! [ -x ./configure ]; then
     ./autogen.sh | true
   fi &&
