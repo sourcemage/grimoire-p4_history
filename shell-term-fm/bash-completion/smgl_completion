@@ -12,7 +12,7 @@ eval `. /etc/sorcery/config;
 _spell_list()
 {
     for GRIMOIRE in `. $GRIMOIRE_LIST; echo ${GRIMOIRE_DIR[*]}`; do
-	COMPREPLY=( ${COMPREPLY[@]} $( cat "$GRIMOIRE/codex.index" | cut -d' ' -f1 ) )
+	COMPREPLY=( ${COMPREPLY[@]} $( cut -d' ' -f1 "$GRIMOIRE/codex.index" ) )
     done
 }
 
