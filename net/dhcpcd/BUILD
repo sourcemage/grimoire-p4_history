@@ -3,7 +3,7 @@
   patch -p0 < $SCRIPT_DIRECTORY/pid-file.patch &&
   
   ./configure  --build=$BUILD        \
-               --prefix=/usr         \
+               --prefix=/            \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
                $OPTS                 &&
