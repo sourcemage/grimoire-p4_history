@@ -57,6 +57,7 @@
     --enable-optimize="$CFLAGS"	\
     --disable-debug             \
     --disable-tests             \
+    --disable-installer         \
     $OPTS                       &&
   make                          &&
 
