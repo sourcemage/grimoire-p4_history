@@ -2,7 +2,8 @@
 
   ./configure  --build=$BUILD   \
                --prefix=/usr    \
-               --enable-shared  &&
+               --enable-shared  \
+               $OPTS            &&
   make                          &&
   prepare_install               &&
   make    install
