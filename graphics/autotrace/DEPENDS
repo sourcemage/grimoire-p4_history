@@ -1,2 +1,9 @@
-depends  ImageMagick  &&
-depends  libpng
+optional_depends  "ImageMagick"                        \
+                  ""                                   \
+                  ""                                   \
+                  "for support of many image formats"  &&
+
+optional_depends  "libpng"                 \
+                  ""                       \
+                  ""                       \
+                  "for PNG image support"
