@@ -18,7 +18,8 @@
                --prefix=/usr                  \
                --enable-add-ons=linuxthreads  \
                --with-elf                     \
-               --enable-shared                &&
+               --enable-shared                \
+               $OPTS			      &&
   make                                        &&
   prepare_install                             &&
   make    install                             &&

@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr                    \
                --enable-require-all-recipients  \
-               --enable-libitdl-install=no      &&
+               --enable-libitdl-install=no      \
+               $OPTS				&&
   make                                          &&
   prepare_install                               &&
   make    install

@@ -1,7 +1,8 @@
 (
 
   ./configure  --build=$BUILD  \
-	       --prefix=/usr   &&
+	       --prefix=/usr   \
+	       $OPTS	       &&
   make                         &&
   prepare_install              &&
   make    install

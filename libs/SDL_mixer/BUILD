@@ -5,7 +5,8 @@
                           timidity/config.h             &&
 
   ./configure  --prefix=/usr                            \
-               --disable-sdltest                        &&
+               --disable-sdltest                        \
+	       $OPTS					&&
   make                                                  &&
   prepare_install                                       &&
   make    install                                       &&

@@ -2,7 +2,7 @@
 
   sedit  "s/-O/$CFLAGS/"  Makefile.in
 
-  ./configure  --prefix=/usr        &&
+  ./configure  --prefix=/usr $OPTS  &&
   make                              &&
   prepare_install                   &&
   make  prefix=/usr install         &&

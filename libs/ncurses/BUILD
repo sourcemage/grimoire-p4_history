@@ -5,7 +5,8 @@
                --libdir=/lib      \
                --with-normal      \
                --with-shared      \
-               --disable-termcap  &&
+               --disable-termcap  \
+	       $OPTS		  &&
   make                            &&
   prepare_install                 &&
   make    install

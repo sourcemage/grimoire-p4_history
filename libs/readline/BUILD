@@ -2,7 +2,8 @@
 
   ./configure  --build=$BUILD  \
                --prefix=/usr   \
-               --libdir=/lib   &&
+               --libdir=/lib   \
+	       $OPTS	       &&
   make  shared                 &&
   prepare_install              &&
   make    install
