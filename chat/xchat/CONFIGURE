@@ -23,10 +23,9 @@ function configure_optional() {
   grep -q "${2#--}" $SPELL_CONFIG
 }
 
-configure_optional 'ipv6' '--enable-ipv6' '' 'enable IPv6 (default: no)' n
-configure_optional 'xft' '--enable-xft' '' 'enable use of Xft directly (default: no)' n
-configure_optional 'gtkfe' '--disable-gtkfe' '' 'disable building gtk frontend' n
-configure_optional 'textfe' '--disable-textfe' '' 'disable building text frontend' n
-configure_optional 'xlib' '--disable-xlib' '' 'disable use of xlib (for non X11 systems)' n
-configure_optional 'plugin' '--disable-plugin' '' 'disable plugin support' n
-configure_optional 'mmx' '--disable-mmx' '' 'disable MMX assembly routines' n
+configure_optional 'ipv6'	'--enable-ipv6'		'--disable-ipv6'	'enable IPv6 (default: no)' n
+configure_optional 'xft'	'--enable-xft'		'--disable-xft'		'enable use of Xft directly (default: no)' n
+configure_optional 'textfe'	'--enable-textfe'	'--disable-textfe'	'build the text frontend' y
+configure_optional 'xlib'	'--enable-xlib'		'--disable-xlib'	'use of xlib (for X11 systems)' y
+configure_optional 'plugin'	'--enable-plugin'	'--disable-plugin'	'enable plugin support' y
+configure_optional 'mmx'	'--enable-mmx'		'--disable-mmx'		'enable MMX assembly routines' y
