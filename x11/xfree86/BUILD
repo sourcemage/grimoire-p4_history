@@ -14,7 +14,7 @@ youbadkernelyou(){
     KVERSION=` head -1 /usr/src/linux/Makefile |           sed 's/.*=//'`    &&
     KPATCHLEVEL=` head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'` && 
     KERNEL=`echo "${KVERSION}.${KPATCHLEVEL}" |  sed 's/ //g'`               &&
-if [ $KERNEL > 2.4 ]; then
+if [ $KERNEL != 2.4 ]; then
 sedit '75,80D' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c           && 
 sedit '74a\
 \#  define rate period\' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c 
