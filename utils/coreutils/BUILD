@@ -16,9 +16,6 @@
   ./src/ginstall src/ginstall /bin/install     &&
 
   make    install                              &&
-  if [ -f ${INSTALL_ROOT}/usr/bin/install ]
-     then rm -rf ${INSTALL_ROOT}/usr/bin/install
-  fi                                           &&
   ln -sf ${INSTALL_ROOT}/bin/install ${INSTALL_ROOT}/usr/bin/install &&
 #provided by other packages
 rm -f ${INSTALL_ROOT}/bin/readlink             &&
