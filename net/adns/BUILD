@@ -1,2 +1,2 @@
-default_build &&
-ln -sf /usr/lib/libadns.so.1 /usr/lib/libadns.so
+patch -p0 < $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
+default_build
