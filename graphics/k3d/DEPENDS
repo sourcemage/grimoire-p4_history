@@ -1,4 +1,7 @@
 depends  sdplibs   &&
+depends  glib      &&
+depends  gtk+      &&
+depends  libsigc++ &&
 depends  autoconf  &&
 depends  automake  &&
 depends  libtool   &&
@@ -10,7 +13,7 @@ optional_depends  "plib"                    \
 optional_depends "Python"                     \
                   "--with-python"             \
                   "--without-python"          \
-                  "enable python script engines"
+                  "enable python script engines (python2.2 only)"
 optional_depends "graphviz"                     \
                   "--with-graphviz"             \
                   "--without-graphviz"          \
