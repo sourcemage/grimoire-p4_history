@@ -355,7 +355,7 @@ options_menu()
 			"Options Menu Yeah Fun" 0 0 0 \
 			"Clean" "Options" "Clean the Source Tree" \
 			"Arch" "Selection" "Select Arch Default is $ARCH" \
-			"Optional" "Build Dir" "Build the source to an output directory" \
+			#"Optional" "Build Dir" "Build the source to an output directory" \
 			"Config" "Restoration" "Optional config restoration" \
 			"Other" "Packages" "Make an RPM or Debian Package" \
 			"Initrd" "Creation" "Make an bootable initrd" 
@@ -656,9 +656,28 @@ create_details()
 	local counter="1"
 	case "$mode" in
 		*ktree)
+	                # add required smgl patches
+	                new_patch_list=""
+			for patch in $selected_patches
+			do
+				case "${patch}" in
+					LATEST*)
+						. ${patchesdir}/*/${!patch}
+					;;
+					*)
+						. ${patchesdir/*/${patch}
+					;;
+				esac
+				if [ "$post_patch" != "" ]
+				then
+					new_patches_list="${new_patches_list}${patch} ${post_patch} "
+				else
+					new_patches_list="${new_patches_list}${patch} "
+				fi
+			done
+			selected_patches="${new_patch_list}"
 			calculate_depends
 			(
-			#this might be cool if it didn't take more than what's up there.
 			depends=""
 			echo 'TXTMESSAGE=""'
 			for patch in $patches
@@ -727,8 +746,6 @@ create_details()
 			fi
 			) > $detailsdefaults
 			;;
-#		oldktree)
-#			;;
 		*)
 			echo "I don't know what the hell is $mode"
 			;;

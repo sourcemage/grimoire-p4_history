@@ -4,13 +4,7 @@ echo  "This is the version: $VERSION"  &&
 case "$VERSION" in
   2.6*)
     echo "making for a 2.6 kernel"  &&
-    #if [[ ! ${OPTIONAL_BUILD_DIR} ]]
-    #then
-      ARCH="$kernel_arch" make
-    #else
-    #  mkdir -p ${OPTIONAL_BUILD_DIR}                      &&
-    #  ARCH="$kernel_arch" make O="${OPTIONAL_BUILD_DIR}"
-    #fi
+    ARCH="$kernel_arch" make || return 1
   ;;
   2.[024]*)
     echo "making for a 2.4 kernel"  &&
@@ -21,7 +15,7 @@ case "$VERSION" in
           sh)  ARCH="$kernel_arch"  make   zImage  ||  return  1  ;;
            *)  ARCH="$kernel_arch"  make  bzImage  ||  return  1  ;;
     esac  &&
-    ARCH="$kernel_arch" make modules 
+    ARCH="$kernel_arch" make modules || return 1
   ;;
   *)
     echo "There is no kernel version: $VERSION"  &&

@@ -11,7 +11,6 @@
 
 basic_config() {
   # Perform any configuration in here that doesn't involve modules
-  local SWITCH
 
   if query "Turn on debugging and compile-time warnings?" n
   then
@@ -26,10 +25,10 @@ module_list() {
   for NAME in $MODULELIST
   do
     source $MODULEDIR/$NAME
-    echo $NAME
-    echo $TYPE
-    echo $STATUS
-    echo $SHORT
+    echo '$NAME'
+    echo '$TYPE'
+    echo '$STATUS'
+    echo '$SHORT'
   done
 }
 
@@ -37,11 +36,12 @@ module_config() {
 
   while true
   do
-    OUTPUT=$( $DIALOG --title "$TITLE" --help-button --item-help --nocancel \
-    --checklist "Select the modules you would like to be compiled into your Apache2. It's generally a good idea to compile base modules. The rest are completely up to you!" \
+    MAIN_OUTPUT="$DIALOG --title "$TITLE" --help-button --item-help --nocancel \
+    --checklist 'Select the modules you would like to be compiled into your Apache2. Its generally a good idea to compile base modules. The rest are completely up to you!' \
     0 0 0 \
-    $(module_list) )
-
+    $(module_list)"
+    echo $MAIN_OUTPUT
+    OUTPUT=$($MAIN_OUTPUT)
     RETVAL=$?
     if [ $RETVAL == 0 ]
     then
@@ -115,23 +115,17 @@ output_module_config() {
 
 # Perform the configuration
 if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
-  local oldIFS=$IFS
-  export IFS="
-"
 
-  TITLE="Apache2 Configuration"
+  TITLE="Apache2_Configuration"
   MODULEDIR="$SCRIPT_DIRECTORY/modules"
   MODULELIST=`ls $MODULEDIR`
-  DIALOG="dialog
---backtitle
-Apache2 Configuration
---stdout"
+  DIALOG="dialog --backtitle Apache2_Configuration --stdout"
 
   basic_config
   module_config
-
+  
   echo 'CONFIGURED=y' >> $SPELL_CONFIG
 
-  IFS=$oldIFS
-
 fi
+
+config_query HTTPD_CHECKOUT "Would you like to use svn to checkout httpd-dev?" n
