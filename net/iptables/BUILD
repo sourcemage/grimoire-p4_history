@@ -1,7 +1,8 @@
 (
 
 # sedit  "s/-O2/$CFLAGS/"  Makefile  &&
-  make  LIBDIR=/usr/lib              &&
+  make  LIBDIR=/usr/lib              \
+        KERNEL_DIR=/usr              &&
   prepare_install                    &&
   make  LIBDIR=/usr/lib              \
         BINDIR=/usr/sbin             \
