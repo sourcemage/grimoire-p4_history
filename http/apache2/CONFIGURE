@@ -275,7 +275,7 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   else    echo   'OPTS="$OPTS  --disable-rewrite"'  >>  $SPELL_CONFIG
   fi
 
-  if      query  "DSO capability?"  n
+  if      query  "DSO capability?"  y
     then  echo   'OPTS="$OPTS  --enable-so"'   >>  $SPELL_CONFIG
   else    echo   'OPTS="$OPTS  --disable-so"'  >>  $SPELL_CONFIG
   fi

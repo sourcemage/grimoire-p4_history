@@ -1,15 +1,14 @@
 (
-  echo  "OPTS=$OPTS"
-  ./configure  --prefix=/usr                                   		\
-               --sysconfdir=/etc/httpd                         		\
-               --localstatedir=/var                         \
-               --enable-modules=most,max \
-               --enable-info                     			\
-               --enable-cgi                      			\
-               --enable-layout=GNU               			\
-               $OPTS                                     &&
-  make                                           			&&
-  prepare_install                                			&&
+
+  ./configure                \
+    --prefix=/usr            \
+    --sysconfdir=/etc/httpd  \
+    --localstatedir=/var     \
+    --enable-layout=GNU      \
+    $OPTS                    &&
+
+  make            &&
+  prepare_install &&
   make    install
 
 ) > $C_FIFO 2>&1  &&
