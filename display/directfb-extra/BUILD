@@ -7,8 +7,8 @@
               --prefix=${INSTALL_ROOT}/usr              \
           --sysconfdir=${INSTALL_ROOT}/etc              \
        --localstatedir=${INSTALL_ROOT}/var              \
-	            --enable-avifile=no                      \
-			      $OPTS                                    &&
+               --disable-avifile                        \
+               $OPTS                                    &&
   make                                                  &&
   make install                                          &&
 
