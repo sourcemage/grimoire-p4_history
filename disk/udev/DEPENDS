@@ -1,1 +1,4 @@
-depends  hotplug
+depends  hotplug &&
+if [ "${UDEV_SELINUX}" == "y" ]; then
+ depends libselinux
+fi
