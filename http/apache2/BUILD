@@ -6,8 +6,6 @@
     --localstatedir=/var \
     --enable-layout=GNU \
     --enable-modules=most,max \
-    --enable-info \
-    --enable-cgi \
     $OPTS &&
   make &&
   prepare_install &&
