@@ -1,7 +1,8 @@
 (
+
+  patch  -p0  <  $SCRIPT_DIRECTORY/gcc-3.4.patch    &&
   cd  abi                                           &&
 
-  ./autogen.sh                                      &&
   sedit "s/-pedantic -ansi//g" configure            &&
   ./configure  --build=$BUILD                       \
                --prefix=${INSTALL_ROOT}/usr         \
