@@ -87,6 +87,7 @@ logger_func()
   }
   true
 }
+export -f logger_func
 
 print_status()
 {
@@ -107,15 +108,17 @@ print_status()
 
   local line
   builtin echo "$INITSTORE" | while read line; do
-    [ -n "$line" -o "$1" != "message" ] &&
-    logger_func -p user.info -t init.d "$SCRIPT: $@: $line" &&
-    builtin echo -n  "init.d: $SCRIPTW"                 &&
+    [ -n "$line" -o "$1" != "message" ]         &&
+    if [ -n "$SYSLOG_INIT" ]; then
+      logger_func -p user.info -t init.d "$SCRIPT: $@: $line"
+    fi                                          &&
+    builtin echo -n  "$SCRIPTW"                 &&
     if [ ! "$1" = "message" ]; then
       builtin echo -n ": "   &&
       $COLORCODE             &&
       builtin echo -n "$@"   &&
       $NORMAL
-    fi                                                 &&
+    fi                                          &&
     if [ -n "$line" ]; then
       builtin echo -n  ": $line"
     fi
@@ -130,6 +133,7 @@ print_status()
   fi
 
 }
+export -f print_status
 
 getpids()
 {
