@@ -4,7 +4,7 @@ unpack         $SOURCE ${MD5[0]}		&&
 if [ "${PCMCIA}" == "y" ]
 then
   echo using pcmcia				&&
-  VV = `installed_version pcmcia-cs`		&&
+  VV=`installed_version pcmcia-cs`		&&
   mk_source_dir  pcmcia-cs-${VV} 			&&
   unpack pcmcia-cs-$VV.tar.gz $(echo "$(gaze DETAILS pcmcia-cs)" \
 	| fgrep 'MD5[0]' | cut -d= -f2 ) 		&&
