@@ -1,7 +1,8 @@
 (
   
-  # Fix the "gcc" problem for some machines
-  export  CC="gcc"  &&
+	# Add a blank to those files so that they get tracked
+  echo >> /usr/include/bits/syscall.h
+  echo >> /usr/include/gnu/stubs.h
 
   # Apply gcc 3.3 patch
   bzcat  ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
