@@ -1,0 +1,7 @@
+if query "Do you want to enable Kerberos V4 backwards compatibility ?" n ; then
+    KRB4=y
+else
+    KRB4=n
+fi
+
+echo "KRB4=$KRB4" >> $SPELL_CONFIG
