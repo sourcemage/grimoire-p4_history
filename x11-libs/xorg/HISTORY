@@ -1,3 +1,7 @@
+2004-09-05 Eric Sandall <eric@sandall.us>
+	* BUILD: Fails if explicitly set to use PIC
+	* HISTORY: Formatted to Guru Handbook
+
 2004-07-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: added dependency on CVS for cvs version
 	* BUILD, DETAILS, PRE_BUILD, PREPARE: uses config_query for the cvs
@@ -77,14 +81,17 @@
 	* BUILD: Imake "YES" is case sensitive, adjust BUILD to use YES
 
 2003-09-19 hgg <hgreig@bigpond.net.au>
-	* DETAILS,PREBUILD,PREPARE: Revert to stable 4.3.0.1 version ( at long last)
+	* DETAILS,PREBUILD,PREPARE: Revert to stable 4.3.0.1 version ( at long
+	  last)
 	* CONFLICTS: Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
 	* BUILD: Move a bugfix in BUILD to before "make World" so it won't fail
-	  (when it does fail it calls "make World" again which actually involves a "make clean")
+	  (when it does fail it calls "make World" again which actually involves
+	  a "make clean")
 
 2003-09-15 hgg <hgreig@bigpond.net.au>
-	* PROVIDES: Add Provides, it now has 3 categories x11-server, x11-libs and opengl (last one only needed fro 
-	  fresco spell about to be submitted)
+	* PROVIDES: Add Provides, it now has 3 categories x11-server, x11-libs
+	  and opengl (last one only needed fro fresco spell about to be
+	  submitted)
 
 2003-08-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: Obscure bug where $PWD isn't in PATH
@@ -99,16 +106,19 @@
 	  Fix Bug #3986 (my fault entirely)
 
 2003-08-10 hgg <hgreig@bigpond.net.au>
-	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work the way
+	  it is documented)
 	* BUILD: Add sedit of CFLAGS to BUILD bug#3694
 
 2003-08-09 hgg <hgreig@bigpond.net.au>
-	* PREBUILD,BUILD,POST_INSTALL: Add shadow structure to BUILD as per xfree86.org's recommendations.Fixes bug where 
-	  include paths aren't setup properly and make fails when it doesn't find the includes.
+	* PREBUILD,BUILD,POST_INSTALL: Add shadow structure to BUILD as per
+	  xfree86.org's recommendations.Fixes bug where include paths aren't
+	  setup properly and make fails when it doesn't find the includes.
 	  Sedit out -Os from /usr/src/xc/config/cf/host.def for bug#3694
 
 2003-08-08 hgg <hgreig@bigpond.net.au>
-	* DEPENDS: Change libpng to depends as xc/config/cf/linux.cf tells the build it is already there.
+	* DEPENDS: Change libpng to depends as xc/config/cf/linux.cf tells the
+	  build it is already there.
 
 2003-07-28 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* init.d/*: updated to new init system
@@ -144,8 +154,8 @@
 	* DEPENDS: fontconfig added
 	  made libpng optional (bug #2747)
 	* CONFIGURE: added options to CONFIGURE
-	  added HasFontconfig and HasExpat to host.def (expat implied by fontconfig)
-	  (see bug #2759 for more details)
+	  added HasFontconfig and HasExpat to host.def (expat implied by
+	  fontconfig) (see bug #2759 for more details)
 
 2003-03-11 Joel Mayes <bluebird@optushome.com.au>
 	* DEPENDS: libpng added
@@ -163,11 +173,13 @@
 
 2002-11-22 Vladimir Vydra <vydra@fria.fri.utc.sk>
 	* BUILD: Created && added patches fixing missing semi-colon in gram.y,
-	  to_wfont.y,cfgparse.y and patch fixing two incorect semi-colon in xkbparsen.y
+	  to_wfont.y,cfgparse.y and patch fixing two incorect semi-colon in
+	  xkbparsen.y
 
 2002-11-07 Joel Mayes <bluebird@optushome.com.au>
-	* BUILD: Added patch by Andrew Stitt to fix missing semi-colon in xftgram.y
-	* HISTORY: Corrected My (and Kyle's) bad spelling and reformated HISTORY file
+	* BUILD: Added patch by Andrew Stitt to fix missing semi-colon in
+	  xftgram.y
+	* HISTORY: Corrected My (and Kyle's) bad spelling and reformated HISTORY
 
 2002-10-22 Joel Mayes <bluebird@optushome.com.au>
 	* TRIGGERS: Added TRIGGERS file
@@ -201,10 +213,10 @@
 	* DETAILS: Added MD5 field to DETAILS
 
 2002-04-01 Marc Greene <anonymous@sourcemage.org>
-	* CONFIGURE,POST_INSTALL: Modified CONFIGURE and POST_INSTALL to copy and recover
-	  existing xdm and xinit configs as "#define InstallXdmConfig
-	  NO" and "#define InstallXinitConfig NO" were not effective at
-	  preventing these files from being reaped.
+	* CONFIGURE,POST_INSTALL: Modified CONFIGURE and POST_INSTALL to copy
+	  and recover existing xdm and xinit configs as
+	  "#define InstallXdmConfig NO" and "#define InstallXinitConfig NO"
+	  were not effective at preventing these files from being reaped.
 
 2002-03-19 Marc Greene <anonymous@sourcemage.org>
 	* DETAILS,BUILD: Added zlib security patch: 4.2.0-zlib-security.patch
