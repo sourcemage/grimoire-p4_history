@@ -1,9 +1,13 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/libmatroska-gcc3.3.patch  &&
   cd  make/linux   &&
-  make  INSTALL_ROOT=${INSTALL_ROOT}  &&
-  prepare_install                     &&
-  make  INSTALL_ROOT=${INSTALL_ROOT}  install
+  sedit  "s:/usr/local:${INSTALL_ROOT}/usr:"  Makefile  &&
+  sedit  "s:^\(LIBEBML_INCLUDE_DIR=\).*$:\1${INSTALL_ROOT}/usr/include/ebml:"  \
+         Makefile  &&
+  sedit  "s:^\(LIBEBML_LIB_DIR=\).*$:\1${INSTALL_ROOT}/usr/lib:"  \
+         Makefile  &&
+  make             && 
+  prepare_install  &&
+  make    install
 
 ) > $C_FIFO 2>&1
