@@ -1,6 +1,6 @@
-         VERSION=0.6.2
-          MD5[0]='937cfd8191986b66de619008396de10f'
-         UPDATED=20031110
+         VERSION=1.0
+          MD5[0]='485ee1da81bb95ece25909b546ab7404'
+         UPDATED=20031205
            SPELL=PEAR-HTML_Progress
         WEB_SITE=http://pear.php.net/package/HTML_Progress/
       LICENSE[0]=PHP
@@ -11,23 +11,25 @@ fully customizable in existing XHTML documents.
 Your browser should accept DHTML feature.
 
 Features:
-- allows usage of an existing stylesheet for
-colors and size model
-- all colors and size elements are customizable
-- show or hide text percent information
-- set/add and returns value of current status of
-progress
-- compliant with all CSS/XHMTL standards
-- integration with template engine ITx family is
-possible
 - create horizontal and also vertival bar
-- optional message line come with progress
-status
-- percent text info is floating all around the
+- allows usage of an existing external
+StyleSheet and/or JavaScript
+- all elements (progress, cells, string) are
+customizable by their html properties
+- percent/string is floating all around the
 progress bar
-- scale can be change (default is 100)
-- legend of percent text info can be change
-(default is "%")
+- compliant with all CSS/XHMTL standards
+- integration with all template engines is very
+easy
+- implements a Observer design pattern. It is
+possible to add Listeners.
+- adds a customizable UI monitor pattern to
+display a progress bar.
+User-end can abort progress at any time.
+- Look and feel can be sets by internal API or
+external config file.
+- Allows many progress bar on same page without
+uses of iframe solution.
 EOF
 
 source $SCRIPT_DIRECTORY/../PEAR_DETAILS
