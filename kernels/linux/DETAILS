@@ -6,7 +6,7 @@ if [ -f $DEPENDS_CONFIG/$SPELL ]; then
 fi
 
 # This is for the the web scripts that parse the version number
-VERSION=2.6.7
+VERSION=2.6.8.1
 
 # Load list with Kernel Versions, and then overwrite the version to use
 # Kernel Version: either a Variable (LATEST_...) or a version number itself. otherwise default to LATEST_2_4)
@@ -17,7 +17,10 @@ source ${SCRIPT_DIRECTORY}/KERNELS && VERSION=${!KERNEL_VERSION=${KERNEL_VERSION
 
 RELEASE=${VERSION%%-*}
 PRERELEASE=${RELEASE}
-TREE=${RELEASE%.*}
+MAJOR=${RELEASE%%\.*}
+MAJOR_TAIL=${VERSION#$MAJOR\.}
+MINOR=${MAJOR_TAIL%%\.*}
+TREE=$MAJOR.$MINOR
 TAIL=${VERSION#$RELEASE}
 
 while [[ $TAIL == -* ]]
