@@ -36,6 +36,13 @@ then
 fi  &&
 
 #
+# Fix for starting firefox without running as root first
+# from Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
+#
+tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
+       -C  ${MOZILLA_HOME}                               &&
+
+#
 # Script to set MOZILLA_FIVE_HOME
 #
 cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
