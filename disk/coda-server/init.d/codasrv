@@ -21,7 +21,7 @@ start()
     required_executable /usr/sbin/startserver
     
     if [ ! -f ${VICESRV}/CRASH ]; then
-	echo   "Starting Coda server"
+	echo "Starting Coda server"
 	loadproc /usr/sbin/volutil
 	loadproc /usr/sbin/codasrv
 	loadproc /usr/sbin/startserver
@@ -32,14 +32,19 @@ start()
 
 }
 
+
 stop()
 {
     volutil shutdown
-    echon "sleeping 30 secs to let srv shutdown..."
-    sleep 30
+    echo "Sleeping 30 secs to let srv shutdown..."
     
-    OU BIEN
-
-    echo   "Stopping Coda server"
-    killproc /usr/sbin/codasrv
+    # Normally, the upper step is sufficient
+    # But in the initial script there was an "hard-stop" action
+    # which did the following :
+    #
+    # echo   "Stopping Coda server"
+    # killproc /usr/sbin/codasrv
+    #
+    # It might be necessary to do this...
+    # I need some testing !
 }
