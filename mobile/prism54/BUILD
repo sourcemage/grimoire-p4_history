@@ -11,7 +11,7 @@
   cp ${SOURCE_CACHE}/${SOURCE2} /usr/lib/hotplug/firmware	&&
 #  cp $SCRIPT_DIRECTORY/firmware.agent /etc/hotplug/		&&
 
-  depmod -ae								&&
+  depmod -ae $(installed_version linux)				&&
 
   message "Don't forget to enable CONFIG_FW_LOADER on your kernel!!"
 
