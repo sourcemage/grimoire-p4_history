@@ -7,7 +7,7 @@ unpack         $SOURCE5  ${MD5[4]}  &&
 unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
 #recommended by xfree86.org
-mk_source_dir  $SOURCE_DIRECTORY.bld
+mk_source_dir  $SOURCE_DIRECTORY.bld &&
 
 if [ -n "$XFREE86_APPLY_PATCH" ]; then
   cd $SOURCE_DIRECTORY &&
@@ -28,7 +28,5 @@ if [ -n "$XFREE86_APPLY_PATCH" ]; then
       true
     fi
   done &&
-  rm -fr lib/zlib &&  # moved in CVS, patch doesn't apply cleanly
-  cd programs/Xserver/hw/xfree86/ddc &&
-  patch -p0 < $SCRIPT_DIRECTORY/xf86DDC.c.diff
+  rm -fr lib/zlib   # moved in CVS, patch doesn't apply cleanly
 fi

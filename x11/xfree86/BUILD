@@ -9,6 +9,18 @@ install_drm()  {
 
 }
 
+#hack for  kernels > 2.5.X
+youbadkernelyou(){
+    KVERSION=` head -1 /usr/src/linux/Makefile |           sed 's/.*=//'`    &&
+    KPATCHLEVEL=` head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'` && 
+    KERNEL=`echo "${KVERSION}.${KPATCHLEVEL}" |  sed 's/ //g'`               &&
+if [ $KERNEL > 2.4 ]; then
+sedit '75,80D' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c           && 
+sedit '74a\
+\#  define rate period\' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c 
+fi
+}
+
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
 fi
@@ -16,16 +28,21 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
+  #hgg's "house of bad hacks" brings you
+  #"hack for devel kernels"
+  #
+  youbadkernelyou                                  &&
+
   #removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   #leaving the original file untouched 
   #for when this gcc bug gets fixed (hgg09/08/03)
   #
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
-  fi  &&
+  fi                                               &&
   if  !  (echo $CFLAGS | grep -q -- "-Os"); then
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
-  fi  &&
+  fi                                               &&
 
   if  spell_installed  Linux-PAM
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
@@ -36,11 +53,11 @@ message  "Building XFree86 takes a very long time."
   #with gcc not setting up the include paths properly, previously include files weren't found if 
   #xfree86 wasn't already installed (mentioned in bug#3694) (hgg09/08/03)]
   #
-  cd config/util &&
-  make -f Makefile.ini lndir &&
-  cp lndir $SOURCE_DIRECTORY.bld/  &&
-  cd $SOURCE_DIRECTORY.bld &&
-  lndir ../xc/ &&
+  cd config/util                                   &&
+  make -f Makefile.ini lndir                       &&
+  cp lndir $SOURCE_DIRECTORY.bld/                  &&
+  cd $SOURCE_DIRECTORY.bld                         &&
+  lndir ../xc/                                     &&
 
   make World
   
