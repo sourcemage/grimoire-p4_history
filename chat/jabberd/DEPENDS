@@ -1,9 +1,5 @@
 depends cyrus-sasl "--with-cyrus-sasl=$INSTALL_ROOT/usr" &&
 
-optional_depends libiconv \
-                 "--with-libiconv-prefix=$INSTALL_ROOT/usr" \
-                 '--without-libiconv-prefix' \
-                 'for i18n support' &&
 optional_depends openssl \
                  '--with-openssl' \
                  '--without-openssl' \
