@@ -1,5 +1,4 @@
 depends  libpng       &&
-depends  psiconv      &&
 depends  zlib         &&
 depends  gtk+2        &&
 depends  fribidi      &&
@@ -9,6 +8,7 @@ depends  popt         &&
 depends  fontconfig   &&
 depends  libglade2    &&
 
+optional_depends psiconv "" "" "to import Psion files"                      &&
 optional_depends "curl" "" "" "to enable on the fly dictionary downloading" &&
 optional_depends "jpeg" "" "" "for jpeg image support"  &&
 optional_depends "aspell"  ""  ""  "for spell checking support"  &&
