@@ -1,14 +1,15 @@
            SPELL=mlview
-         VERSION=0.6.0
-          BRANCH=$(echo $VERSION|cut -d . -f 1,2)
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+       BUILD_API=2
+         VERSION=0.6.3
+          BRANCH=${(echo ${VERSION}|cut -d . -f 1,2)}
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
         WEB_SITE=http://www.freespiders.org/projects/gmlview/index.html
-          MD5[0]=22ac5f64dbcd114dd029b8ea06e15296
+          MD5[0]=935b1db19d7d2fc08753eeb2f507ad64
       LICENSE[0]=GPL
          ENTERED=20030905
-         UPDATED=20030905
+         UPDATED=20040618
       MAINTAINER=v.merkatz@gmx.net
            SHORT="Mlview is an attempt to develop a tree oriented xml editor for gnome."
 cat << EOF
