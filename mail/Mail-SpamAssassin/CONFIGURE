@@ -10,9 +10,18 @@ if spell_installed postfix; then
 
 
     if    query  "Use SpammAssassin as a global spamfilter for postfix ?" n
-      then  echo   "POSTFIX_GLOBAL=y"  >>  $SPELL_CONFIG
-      else  echo   "POSTFIX_GLOBAL=n"  >>  $SPELL_CONFIG
+      then  echo "POSTFIX_GLOBAL=y" >> $SPELL_CONFIG
+      else  echo "POSTFIX_GLOBAL=n" >> $SPELL_CONFIG
     fi
+  fi
+
+fi
+
+if  !  grep  -q  "ERASE_ROLLBACK="  $SPELL_CONFIG;  then
+
+  if query "Do you want to erase previous rollback file ?" n
+    then  echo "ERASE_ROLLBACK=y" >> $SPELL_CONFIG
+    else  echo "ERASE_ROLLBACK=n" >> $SPELL_CONFIG
   fi
 
 fi

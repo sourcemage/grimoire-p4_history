@@ -1,16 +1,14 @@
            SPELL=dcgui
-         VERSION=0.1beta5
+         VERSION=0.2beta1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/dc-gui/$SOURCE
-   SOURCE_URL[1]=http://belnet.dl.sourceforge.net/sourceforge/dc-gui/$SOURCE
-   SOURCE_URL[2]=http://telia.dl.sourceforge.net/sourceforge/dc-gui/$SOURCE
-        WEB_SITE=http://dc.ketelhot.de
+   SOURCE_URL[0]=$SOURCEFORGE_URL/dc-gui/$SOURCE
+        WEB_SITE=http://dc.ketelhot.de/
          ENTERED=20020522
-         UPDATED=20020522
-      MAINTAINER=zoran@idi.ntnu.no
-           SHORT="direct connect 4 linux - gui."
-
+         UPDATED=20021114
+      LICENSE[0]=GPL
+          MD5[0]='34a2dd23425d7e7ca27c887e9fb7b0d1'
+           SHORT="direct connect 4 linux - GUI"
 cat << EOF
 Direct Connect offers a community-oriented, open, user-controlled 
 network. Direct Connect's network architecture is built on a 

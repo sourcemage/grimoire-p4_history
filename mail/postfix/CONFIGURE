@@ -1,6 +1,6 @@
 # check if postfix was installed before
 
-message "Probing for previously casted $SPELL..."
+message "${MESSAGE_COLOR}Probing for previously casted $SPELL...${DEFAULT_COLOR}"
 
 unset alreadyThere
 
@@ -14,8 +14,44 @@ then
 fi
 
 if [ -z "$alreadyThere" ]; then
-  message "Previous $SPELL install not detected."
+  message "${MESSAGE_COLOR}Previous $SPELL install not detected.${DEFAULT_COLOR}"
 else
-  message "Previous $SPELL install detected."
+  message "${MESSAGE_COLOR}Previous $SPELL install detected.${DEFAULT_COLOR}"
 fi
 
+if ! grep  -q  "BENCH="  $SPELL_CONFIG;  then
+ if query "Also install smtpstone benckmarking tools ?"  y
+  then  echo   "BENCH=y"  >>  $SPELL_CONFIG
+  else  echo   "BENCH=n"  >>  $SPELL_CONFIG
+ fi
+fi
+
+
+if ! grep -q "BACKUP" $SPELL_CONFIG; then
+
+  message "${MESSAGE_COLOR}smtp configuration files loss may expose your system to SPAM relaying. You should backup and restore configuration files and ask y to the next two questions...${DEFAULT_COLOR}"
+
+  if query "Backup $SPELL config on dispel ?"  y
+    then  echo   "BACKUP=y"  >>  $SPELL_CONFIG
+    else  echo   "BACKUP=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+
+if ! grep -q "RESTORE" $SPELL_CONFIG; then
+  if query "Restore $SPELL config on rebuild/update ?"  y
+    then  echo   "RESTORE=y"  >>  $SPELL_CONFIG
+    else  echo   "RESTORE=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+
+if ! grep -q "ALIAS" $SPELL_CONFIG; then
+ 
+  message "${MESSAGE_COLOR}You should run newaliases after each aliases file update, and on first $spell cast...${DEFAULT_COLOR}"
+
+  if query "Run newaliases after cast ?"  y
+    then  echo   "ALIAS=y"  >>  $SPELL_CONFIG
+    else  echo   "ALIAS=n"  >>  $SPELL_CONFIG
+  fi
+fi

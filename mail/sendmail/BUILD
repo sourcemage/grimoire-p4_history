@@ -1,8 +1,9 @@
 (
 
-  create_accound smmsp
+  create_account smmsp
 
-  mkdir -p          /var/spool/mqueue
+  mkdir -p          /var/spool/mqueue 1>/dev/null 2>&1
+  mkdir -p          /etc/mail 1>/dev/null 2>&1
   chmod 1777        /var/spool/mqueue
   chown smmsp:smmsp /var/spool/mqueue
   mkdir         /usr/doc/sendmail                               
