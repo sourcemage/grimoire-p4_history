@@ -1,107 +1,89 @@
-2003-09-29  hgg <hgreig@bigpond.net.au>
+2003-10-20 Seth Woolley <seth@tautology.org>
+	* BUILD, DETAILS: Security fix, downloads patch for grp/initgroups.c
+	* HISTORY: new history format
 
-		Remove that hack, and edit BUILD to remove the files 
-		during prepare_install, re-add the export CC=gcc line 
-		needed for new install
+2003-09-29 hgg <hgreig@bigpond.net.au>
+	* BUILD: Remove that hack, and edit BUILD to remove the files 
+	during prepare_install, re-add the export CC=gcc line 
+	needed for new install
 
-2003-09-22  Eric D. Schabell <eschabell@sourcemage.org>
+2003-09-22 Eric D. Schabell <eschabell@sourcemage.org>
+	* BUILD: Patch for Build file, allows for tracking of two files
+	that were alien in glibc. (fix for iso team).
 
-		Patch for Build file, allows for tracking of two files
-		that were alien in glibc. (fix for iso team).
+2003-08-31 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Remove trigger "on_cast  gettext cast_self"
 
-2003-08-31  hgg <hgreig@bigpond.net.au>
+2003-07-23 hgg <hgreig@bigpond.net.au>
+	* BUILD: Comment "unset LD_PRELOAD" so locale stuff is tracked
+	(Major version updates might require it later)
+	* TRIGGERS: Add to TRIGGERS and update UPDATED in case libiconv
+	is installed then dispelled removing some of glibc's files.
 
-		Remove trigger "on_cast  gettext cast_self"
+2003-07-08 Eric Sandall <eric@sandall.us>
+        * BUILD: Fixes a 'gcc not found' error during configure on some
+	systems
 
-2003-07-23  hgg <hgreig@bigpond.net.au>
+2003-06-15 Eric Sandall <eric@sandall.us>
+	* BUILD/DETAILS: gcc 3.3 patch from LFS, thanks to Wolfgang
 
-		Comment "unset LD_PRELOAD" so locale stuff is tracked
-		(Major version updates might require it later)
+2003-03-30 Julian v. Bock <julian@wongr.net>
+	* locales: fix some spelling errors.
+	* BUILD: remove unset LD_PRELOAD; remove -ffast-math from 
+	CFLAGS.
 
-		Add to TRIGGERS and update UPDATED in case libiconv is installed 
-		then dispelled 	removing some of glibc's files.
+2003-04-08 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Added $OPTS in BUILD.
 
-2003-07-08  Eric Sandall <eric@sandall.us>
+2003-03-19 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.3.2.
+	* BUILD: build glibc in separate directory.
+	* PRE_BUILD: likewise.
+	* POST_INSTALL: add.
 
-	        * BUILD: Fixes a 'gcc not found' error during configure on some
-		systems
+2003-02-26 Julian v. Bock <julian@wongr.net>
+	* TRIGGERS: add.
 
-2003-06-15  Eric Sandall <eric@sandall.us>
+2003-01-07 Julian v. Bock <julian@wongr.net>
+	* PRE_BUILD: pass md5 to unpack.
 
-		* BUILD/DETAILS: gcc 3.3 patch from LFS, thanks to Wolfgang
+2002-12-10 Julian v. Bock <julian@wongr.net>
+	* CONFIGURE: source $SPELL_CONFIG if the user does not
+	reconfigure locales.
 
-2003-03-30  Julian v. Bock  <julian@wongr.net>
+2002-11-16 Julian v. Bock <julian@wongr.net>
+	* DEPENDS: add gettext dependency.
+	* DETAILS: update UPDATED because of gettext update.
 
-		* locales: fix some spelling errors.
-		* BUILD: remove unset LD_PRELOAD; remove -ffast-math from 
-		CFLAGS.
+2002-11-10 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-2003-04-08  M.L. <mlubrano@sourcemage.org>
+2002-10-24 Julian v. Bock <julian@wongr.net>
+	* BUILD: execute ldconfig after make install.
 
-		Added $OPTS in BUILD.
+2002-10-06 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.3.1.
+	* glibc-2.2.5-weak-alias.patch: remove.
+	* glibc-2.2.5.patch: likewise.
+	* sunrpc-2.2.5.patch: likewise.
 
-2003-03-19  Julian v. Bock  <julian@wongr.net>
+2002-10-02 Julian v. Bock <julian@wongr.net>
+	* CONFIGURE: replace newlines locale list with spaces
+	(thanks to Robert Helgesson).
 
-		* DETAILS: set VERSION to 2.3.2.
-		* BUILD: build glibc in separate directory.
-		* PRE_BUILD: likewise.
-		* POST_INSTALL: add.
+2002-08-21 Julian v. Bock <julian@wongr.net>
+	* glibc-2.2.5-weak-alias.patch: add.
+	* BUILD: apply patch.
+	* PRE_BUILD: remove autoconf stuff.
 
-2003-02-26  Julian v. Bock  <julian@wongr.net>
+2002-03-10 Julian v. Bock <julian@wongr.net>
+	* BUILD: escape grep -O option.
 
-		* TRIGGERS: add.
+2002-01-22 Kyle Sallee <cromwell@metalab.unc.edu>
+	* BUILD: Create patch for compiling and installing 
+	glibc 2.2.5. Also happy birthday to me.
 
-2003-01-07  Julian v. Bock  <julian@wongr.net>
-
-		* PRE_BUILD: pass md5 to unpack.
-
-2002-12-10  Julian v. Bock  <julian@wongr.net>
-
-		* CONFIGURE: source $SPELL_CONFIG if the user does not
-		reconfigure locales.
-
-2002-11-16  Julian v. Bock  <julian@wongr.net>
-
-		* DEPENDS: add gettext dependency.
-		* DETAILS: update UPDATED because of gettext update.
-
-2002-11-10  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE and MD5 fields.
-
-2002-10-24  Julian v. Bock  <julian@wongr.net>
-
-		* BUILD: execute ldconfig after make install.
-
-2002-10-06  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 2.3.1.
-		* glibc-2.2.5-weak-alias.patch: remove.
-		* glibc-2.2.5.patch: likewise.
-		* sunrpc-2.2.5.patch: likewise.
-
-2002-10-02  Julian v. Bock  <julian@wongr.net>
-
-		* CONFIGURE: replace newlines locale list with spaces
-		(thanks to Robert Helgesson).
-
-2002-08-21  Julian v. Bock  <julian@wongr.net>
-	
- 		* glibc-2.2.5-weak-alias.patch: add.
-		* BUILD: apply patch.
-		* PRE_BUILD: remove autoconf stuff.
-
-2002-03-10  Julian v. Bock  <julian@wongr.net>
-
-		* BUILD: escape grep -O option.
-
-2002-01-22  Kyle Sallee
-
-		Create patch for compiling and installing 
-		glibc 2.2.5. Also happy birthday to me.
-
-2002-01-11  Kyle Sallee
-
-		added the saving old libs into a directory and 
-		exporting LD_LIBRARY_PATH with that directory. 
-		This should keep the make install from breaking.
+2002-01-11 Kyle Sallee <cromwell@metalab.unc.edu>
+	* BUILD: Added the saving old libs into a directory and 
+	exporting LD_LIBRARY_PATH with that directory. 
+	This should keep the make install from breaking.

@@ -3,12 +3,14 @@
           SOURCE=$SPELL-$VERSION.tar.bz2
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2
          SOURCE3=glibc-${VERSION}-sscanf-decl-fix.patch.bz2
+         SOURCE4=initgroups.c.diff\?r1\=1.28\&r2\=1.29\&cvsroot\=glibc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
   SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2
   SOURCE2_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE2
   SOURCE3_URL[0]=http://evanidus.ath.cx:8080/l14h/patches/needed-with-gcc-3.3/${SOURCE3}
+  SOURCE4_URL[0]='http://sources.redhat.com/cgi-bin/cvsweb.cgi/libc/grp/initgroups.c.diff\?r1=1.28\&r2=1.29\&cvsroot=glibc'
           MD5[0]=3d5d27ea7774a5f358b6fa8b56bd8ab3
           MD5[1]=8120b2efd845b49e3a17d79df8239d4c
           MD5[2]=fafc1d90f99dfaed9beae9f28a720e06
@@ -17,7 +19,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[2]=LGPL
         WEB_SITE=http://www.gnu.org/software/libc
          ENTERED=20010922
-         UPDATED=20030929
+         UPDATED=20031020
            SHORT="glibc is a C library for use with GNU/Hurd and GNU/Linux."
 cat << EOF
 glibc - Library for use with GNU/Hurd and GNU/Linux.
