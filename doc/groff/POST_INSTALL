@@ -1,12 +1,4 @@
 if  spell_installed  less; 
     then
-    if  [  -e  /etc/profile ] && ! grep -q "groff_profile" /etc/profile;
-        then 
-            cat $SCRIPT_DIRECTORY/groff_profile >> /etc/profile;
-        else 
-            echo completion not added to /etc/profile
-    fi
-
+    sedit "s/PAGER		\/bin\/less -is/PAGER		\/bin\/less -isR/" /usr/share/misc/man.conf
 fi
-
-source /etc/profile
