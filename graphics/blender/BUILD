@@ -1,6 +1,7 @@
 (
   ./bootstrap                         &&
-  ./configure  --enable-shared        \
+  ./configure  --prefix=/usr          \
+               --enable-shared        \
                --disable-vorbistest   \
                --disable-rpath        \
                $OPTS                  &&
