@@ -1,3 +1,9 @@
+2004-02-26 Eric Sandall <eric@sandall.us>
+	* POST_INSTALL: No longer auto-start autofs
+	Added `depmod -a` from BUILD  (Bug #6264)
+	* BUILD: Remove `depmod -a`  (Bug #6264)
+	* PRE_REMOVE: Removed (no longer auto-stop autofs)
+
 2003-11-19 Eric Sandall <eric@sandall.us>
 	* init.d/autofs: New autofs script from Chris Dombroski  (Bug #4243)
 	* DETAILS: Updated UPDATED

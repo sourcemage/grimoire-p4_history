@@ -27,7 +27,6 @@
 
   grep    -q  "$INC"      $MOD  ||
   echo        "$INC"  >>  $MOD
-  depmod  -a
 
   for  FILE  in  auto.home auto.master auto.misc
   do  [  -f  /etc/$FILE ]  ||  cp  $SCRIPT_DIRECTORY/$FILE  /etc
