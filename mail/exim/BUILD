@@ -20,7 +20,10 @@ chown  -R  exim:exim  /var/spool/mail/log
 [  -e                 /var/spool/mail/msglog  ]  &&
 chown  -R  exim:exim  /var/spool/mail/msglog
 
-chown  -R  exim:exim  /var/spool/mail*
+chown  -R  exim:exim  /var/spool/mail/db     /var/spool/mail/db/*
+chown  -R  exim:exim  /var/spool/mail/input  /var/spool/mail/input/*
+chown  -R  exim:exim  /var/spool/mail/log    /var/spool/mail/log/*
+chown  -R  exim:exim  /var/spool/mail/msglog /var/spool/mail/msglog/*
 
 mkdir  -p  Local
 
