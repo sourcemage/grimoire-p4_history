@@ -8,11 +8,11 @@ export  MOZ_THUNDERBIRD="1"   &&
 export  CFLAGS="${CFLAGS//-O3/-O2}"      &&
 export  CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
-if  [  "$CRYPTO"  =  "y"  ];  then
-  OPTS="${OPTS}  --enable-crypto"
-else
-  OPTS="${OPTS}  --disable-crypto"
-fi  &&
+#if  [  "$CRYPTO"  =  "y"  ];  then
+#  OPTS="${OPTS}  --enable-crypto"
+#else
+  OPTS="${OPTS}  --disable-crypto" &&
+#fi  &&
 
 if  [  "$THUNDERBIRD_MATHML"  =  "y"  ];  then
   OPTS="${OPTS}  --enable-mathml"

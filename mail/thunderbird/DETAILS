@@ -4,24 +4,22 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/mozilla
    SOURCE_URL[0]=http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$VERSION/source/$SOURCE
           MD5[0]=198143fe31ea7264954e0e6e9744c995
-if  [  "$CRYPTO"  ==  "y"  ];  then
-ENIGMAIL_VERSION=0.90.0
-     IPC_VERSION=1.1.2
-         SOURCE2=enigmail-$ENIGMAIL_VERSION.tar.gz
-         SOURCE3=ipc-$IPC_VERSION.tar.gz
-  SOURCE2_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE2
-  SOURCE2_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE2
-  SOURCE2_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURC
-E2
-  SOURCE3_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE3
-  SOURCE3_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE3
-  SOURCE3_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURC
-E3
-          MD5[1]=a23de43efc23ced13556bb3893d8d94a
-          MD5[2]=ff6f455a67d5fd87c5eff29bfd84e7e6
-      LICENSE[1]=MPL
-      LICENSE[2]=MPL
-fi
+#if  [  "$CRYPTO"  ==  "y"  ];  then
+#ENIGMAIL_VERSION=0.90.0
+#     IPC_VERSION=1.1.2
+#         SOURCE2=enigmail-$ENIGMAIL_VERSION.tar.gz
+#         SOURCE3=ipc-$IPC_VERSION.tar.gz
+#  SOURCE2_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE2
+#  SOURCE2_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE2
+#  SOURCE2_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURCE2
+#  SOURCE3_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE3
+#  SOURCE3_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE3
+#  SOURCE3_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURCE3
+#          MD5[1]=a23de43efc23ced13556bb3893d8d94a
+#          MD5[2]=ff6f455a67d5fd87c5eff29bfd84e7e6
+#      LICENSE[1]=MPL
+#      LICENSE[2]=MPL
+#fi
         WEB_SITE=http://www.mozilla.org/products/thunderbird/
          ENTERED=20041028
          UPDATED=20041028
