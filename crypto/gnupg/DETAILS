@@ -1,11 +1,11 @@
            SPELL=gnupg
        BUILD_API=2
 if [ "$DEVEL" == "y" ];then
-        VERSION=1.3.6
+        VERSION=1.3.90
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
-          MD5[0]=2c3f53665a1bc15c3a714258cb8cca17
+          MD5[0]=2c72c001a108cf82b039d553faa02986
 else
          VERSION=1.2.6
           SOURCE=$SPELL-$VERSION.tar.bz2
