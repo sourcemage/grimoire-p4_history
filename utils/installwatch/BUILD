@@ -1,11 +1,14 @@
-(
+#!/bin/sh
 
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/ld_preload.patch                 &&
-  sedit  "s:PREFIX=/usr/local:PREFIX=${INSTALL_ROOT}/usr:"  Makefile  &&
-  sedit  "s/gcc /gcc $CFLAGS /"              Makefile                 &&
+patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-ld-preload.diff" &&
+patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-errno.diff"  &&
+patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-buffer.diff" &&
+patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-cflags.diff" &&
+patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-syslog.diff" &&
 
-  make             &&
-  prepare_install  &&
-  make    install
+# If LIB is not defined, we do not have the bi-arch sorcery, so we
+# define LIB
 
-) > $C_FIFO 2>&1
+LIB="${LIB:-/lib}"
+make PREFIX="${INSTALL_ROOT}/usr" LIBDIR="${INSTALL_ROOT}/usr/${LIB}"
+
