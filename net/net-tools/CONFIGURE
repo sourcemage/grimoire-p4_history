@@ -1,10 +1,17 @@
 # CONFIGURE for net-tools
 
-if  [  -f  $CONFIG_CACHE/net-tools.config.h  ];  then  
-    if    query  "Reconfigure net-tools?" n
-	then  rm  -f  $CONFIG_CACHE/net-tools.config.h
-    fi
+pushd $SCRIPT_DIRECTORY > /dev/null
+DO_CONFIG=yes
+if  [  -f  $CONFIG_CACHE/net-tools.config.h  ]  ;  then
+  query  "Reconfigure net-tools?"  n  ||  DO_CONFIG=no
 fi
+
+if  [  "$DO_CONFIG" = "yes"  ]  ;  then
+  ./configure.sh  config.in
+  cp  config.h  $CONFIG_CACHE/net-tools.config.h
+  rm  -f  config.h  config.make  config.log  config.status
+fi
+popd > /dev/null
 
 # lib_netsetup has a group of variables and functions we will use.
 

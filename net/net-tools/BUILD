@@ -1,13 +1,8 @@
-if  [  -f  $CONFIG_CACHE/net-tools.config.h  ];  then
-  cp       $CONFIG_CACHE/net-tools.config.h  config.h
-else
-  ./configure.sh  config.in
-  cp  config.h  $CONFIG_CACHE/net-tools.config.h
-fi
-
 (
 
-  sedit  "s:-O2:$CFLAGS:"  Makefile
+  cp  $CONFIG_CACHE/net-tools.config.h  config.h  &&
+
+  sedit  "s:-O2:$CFLAGS:"  Makefile  &&
   make             &&
   prepare_install  &&
   make  BASEDIR=/  install

@@ -2,8 +2,10 @@ VOYEUR=on
 
 /etc/init.d/postfix.sh  stop
 
-if [ "$BACKUP" = "y" ]; then
- message "${MESSAGE_COLOR}Backing up config files. ${DEFAULT_COLOR}"
+source /etc/sorcery/local/depends/postfix
+
+if [ "$BACKUP" == "y" ]; then
  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
- tar -cyvf "/etc/postfix-backup-$CUR_DATE.tar.bz2" /etc/postfix 1>/dev/null 2>&1
+ message "${MESSAGE_COLOR}Backing up config files (date: $CUR_DATE). ${DEFAULT_COLOR}"
+ tar -cyvf "/etc/postfix-backup-$CUR_DATE.tar.bz2" /etc/postfix
 fi
