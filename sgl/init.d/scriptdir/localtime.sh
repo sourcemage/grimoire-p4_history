@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# SGL-script-version=20021027
+# SGL-script-version=20021116
 # SGL-START:S:S15
 # SGL-STOP:0 6:K75
 
@@ -14,7 +14,7 @@ case $1 in
 	;;
     stop)
 	echo "Setting the Hardware Clock to the current System Time."
-	/sbin/hwclock --systohc
+	/sbin/hwclock --systohc --localtime
 	evaluate_retval
 	;;
     adjust)

@@ -5,46 +5,59 @@ sgl_logo="SOURCEMAGE GNU LINUX INIT.D SETUP"
 initdir=/etc/init.d
 # This builds the scriptque.temp for BUILD
 scriptlist=$(ls $SCRIPT_DIRECTORY/scriptdir/ )
+
+build_scriptque()
+{
 # this should be done at end of BUILD, but it's here just in case...
-if [ -e $SCRIPT_DIRECTORY/checklist.temp ]; then
-    rm $SCRIPT_DIRECTORY/checklist.temp
-fi
-for script in $scriptlist; do
-    sglver=$(grep "# SGL-script-version=" $SCRIPT_DIRECTORY/scriptdir/$script | cut -d= -f2)
-    installedver=$(grep "# SGL-script-version=" $initdir/$script | cut -d= -f2)
-    if [ $installedver = custom ]; then
-	dialog --backtitle "$sgl_logo" --msgbox "You have designated $script as custom, please ensure we haven't done anything to break it for you if you use the SMGL functions script and you install an updated one. You may replace your custom $script if you wish to do so and it will be backed up during the installation of the new $script file."
-	item="custom"
-	status="off"
-	echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
-    else
-	if [ -z "$installedver" ]; then
-	    installedver=$((0))
-	fi
-	if [ $sglver -gt $installedver ]; then
-	    item="update"
-	    status="on"
-	elif [ $sglver -eq $installedver ]; then
-	    item="installed"
-	    status="off"
-	else
-	    item="non-SGML"
-	    status="off"
-	fi
-	echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
+    if [ -e $SCRIPT_DIRECTORY/checklist.temp ]; then
+	rm $SCRIPT_DIRECTORY/checklist.temp
     fi
-done
-dialog --backtitle "$sgl_logo" --nocancel --checklist "The following script files are available for installation or updating. If the script is selected, there is an update available or it is not currently installed. If you have designated a script as custom it is NOT selected; select it only if you wish to replace your custom file with the default SMGL file. 
+    for script in $scriptlist; do
+	sglver=$(grep "# SGL-script-version=" $SCRIPT_DIRECTORY/scriptdir/$script | cut -d= -f2)
+	installedver=$(grep "# SGL-script-version=" $initdir/$script | cut -d= -f2)
+	if [ $installedver = custom ]; then
+	    dialog --backtitle "$sgl_logo" --msgbox "You have designated $script as custom, please ensure we haven't done anything to break it for you if you use the SMGL functions script and you install an updated one. You may replace your custom $script if you wish to do so and it will be backed up during the installation of the new $script file."
+	    item="custom"
+	    status="off"
+	    echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
+	else
+	    if [ -z "$installedver" ]; then
+		installedver=$((0))
+	    fi
+	    if [ $sglver -gt $installedver ]; then
+		item="update"
+		status="on"
+	    elif [ $sglver -eq $installedver ]; then
+		item="installed"
+		status="off"
+	    else
+		item="non-SGML"
+		status="off"
+	    fi
+	    echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
+	fi
+    done
+    dialog --backtitle "$sgl_logo" --nocancel --help-button --checklist "The following script files are available for installation or updating. If the script is selected, there is an update available or it is not currently installed. If you have designated a script as custom it is NOT selected; select it only if you wish to replace your custom script with the SMGL one." 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
+}
 
-The functions script provides a number of functions needed in the SMGL scripts and must be installed for their proper operation. 
+display_init_help()
+{
+    dialog --backtitle "INIT.D SCRIPTS DESCRIPTIONS" --nocancel --msgbox "The functions script provides a number of functions needed in the SMGL scripts and must be installed for their proper operation. 
 
-The localtime.sh provides the functionality to set the system time with the hardware clock at startup, set the hardware clock with the system time settings at shutdown, adjust the hardware clock as needed and to show the hardware clock timewhen called. More information can be found at man hwclock.
+The localtime.sh is used to set the system time at startup, set the hardware clock at shutdown, adjust the hardware clock and show the hardware clock time when called. More information can be found at man hwclock.
 
 The mount.sh script is used to mount local file systems.  
 
 The mountnfs.sh is used to mount network file systems.
 
-information on both mount.sh and mountnfs.sh can be found at man mount and man fstab. " 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
+More information on the commands used can be found at the hwclock, mount and fstab man pages." 0 0
+}
+
+build_scriptque
+while [ $? == 2 ]; do
+    display_init_help
+    build_scriptque
+done
 # strip out the quotes in previous output so it's usable
-sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
+    sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
 # end
