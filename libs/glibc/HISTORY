@@ -1,4 +1,8 @@
-2005-01-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+2005-02-06 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* INSTALL: fix installation of asm-generic headers for linuxthreads
+	  glibc
+
+2005-02-05 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_INSTALL: don't use default_pre_install, sorcerys save_libraries
 	  can do harmful things for glibc. PRE_INSTALL now copies all regular
 	  files from /lib to $SOURCE_DIRECTORY.bld/old.libs, ldconfig's that
