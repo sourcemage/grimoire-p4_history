@@ -1,0 +1,12 @@
+diff -u -r1.143.2.6 html_documentimpl.cpp
+--- html/html_documentimpl.cpp	27 Jun 2003 09:55:33 -0000	1.143.2.6
++++ html/html_documentimpl.cpp	10 Jul 2003 11:45:11 -0000
+@@ -85,7 +85,7 @@
+ DOMString HTMLDocumentImpl::referrer() const
+ {
+     if ( view() )
+-        return view()->part()->referrer();
++        return view()->part()->pageReferrer();
+     return DOMString();
+ }
+ 

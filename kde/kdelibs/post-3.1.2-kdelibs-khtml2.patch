@@ -1,0 +1,15 @@
+diff -u -r1.197.2.5 khtml_part.h
+--- khtml_part.h	18 May 2003 12:34:36 -0000	1.197.2.5
++++ khtml_part.h	10 Jul 2003 11:45:11 -0000
+@@ -702,6 +702,11 @@
+   QString referrer() const;
+ 
+   /**
++   * Referrer used to obtain this page.
++   */
++  QString pageReferrer() const;
++
++  /**
+    * Last-modified date (in raw string format), if received in the [HTTP] headers.
+    */
+   QString lastModified() const;
