@@ -15,8 +15,11 @@ PHP_MODULES=$(php -m 2>/dev/null)
 (
 
   message "${MESSAGE_COLOR}Checking for necessary modules in ${SPELL_COLOR}php${DEFAULT_COLOR}" &&
+  message "${MESSAGE_COLOR}Checking for gettext in ${SPELL_COLOR}php${DEFAULT_COLOR}" &&
   echo "$PHP_MODULES" | grep -q gettext &&
+  message "${MESSAGE_COLOR}Checking for imap in ${SPELL_COLOR}php${DEFAULT_COLOR}" &&
   echo "$PHP_MODULES" | grep -q imap &&
+  message "${MESSAGE_COLOR}Checking for xml in ${SPELL_COLOR}php${DEFAULT_COLOR}" &&
   echo "$PHP_MODULES" | grep -q xml &&
 
   # kill remnants of CVS, if any
