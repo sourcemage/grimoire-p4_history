@@ -1,10 +1,11 @@
-depends  cvs        &&
+depends  CVS        &&
 depends  autoconf   &&
 depends  omniORB    &&
 depends  freetype2  &&
 depends  libpng     &&
 depends  perl       &&
 depends  OPENGL     &&
+
 optional_depends "libggi" "--enable-ggi" "--enable-ggi=no" "to use General Graphics Interface to run display server"     &&
 optional_depends "Python" "--enable-python-runtime" "--enable-python-runtime=no" "To enable Python runtime support"      &&
 optional_depends "omniORBpy" "--enable-python-demos" "--enable-python-demos=no" "To build the bundled demos"             &&

@@ -1,6 +1,7 @@
-depends zlib   '--with-system-zlib' &&
-depends jpeg   '--with-system-jpeg' &&
-depends libpng '--with-system-png'  &&
+depends  zlib    '--with-system-zlib'  &&
+depends  jpeg    '--with-system-jpeg'  &&
+depends  libpng  '--with-system-png'   &&
+
 if [ "$GTK" = "1" ]
 then depends  gtk+ '--enable-default-toolkit=gtk' &&
      depends  ORBit
@@ -12,6 +13,6 @@ fi                                  &&
 depends zip                         &&
 depends perl                        &&
 if [ "$HEADCODE" = "yes" ] 
-then depends cvs  
+then  depends  CVS
 fi
 
