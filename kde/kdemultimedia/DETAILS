@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=b603a13865f03240244d4a71fdc6584a
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=fe66aac77a1a11534e644787627bcde7
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=63666dcb6a250a1719162b7c62d82cc6
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
@@ -18,8 +18,7 @@ fi
          ENTERED=20010922
          UPDATED=20040210
     DISTCC_HOSTS=
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="kdemultimeda contains applications like a CD player and mixer."
+           SHORT="Applications like a CD player and mixer for KDE."
 cat << EOF
 Multimedia applications like a CD player and a mixer.
 EOF

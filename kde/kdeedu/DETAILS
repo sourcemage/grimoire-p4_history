@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=0aac0619577498ea8df0699beee4d93f
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=f4ebbf83417bea839f44f38ce73158c2
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=7780ef16b866da5709adc4b00139a0ca
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -18,8 +18,7 @@ fi
          UPDATED=20040206
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="educational games and programs for KDE."
+           SHORT="Educational games and programs for KDE."
 cat << EOF
 Educational games and programs for KDE.
 EOF

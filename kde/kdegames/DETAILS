@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=66dd8683e44c953f6bf461f287e2b08f
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=d0651a47fcda97298310fe2736503ced
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=dfa549b6cd41d1ea2a10f472467f894b
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -18,8 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="kdegames contains various games like mahjongg, snake, asteroids, and tetris."
+           SHORT="Various games like mahjongg, snake, asteroids, and tetris."
 cat << EOF
 Various games like mahjongg, snake, asteroids, and tetris.
 EOF

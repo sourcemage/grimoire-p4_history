@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=1c3360346d84a8eb0afa37f7d497ac8d
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=6f1b002d14af81f09193d9aa6d8dd510
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=ef5353f245261e562337ea321d1e3ed6
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
@@ -18,7 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-           SHORT="kdeartwork contains additional themes, sounds, wallpapers, and styles."
+           SHORT="Additional themes, sounds, wallpapers, and styles for KDE."
 cat << EOF
 kdeartwork contains additional
 * themes,

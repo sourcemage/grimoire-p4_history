@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=8b1f0e1a224fedf12d2c46ca48d3fb4d
 else
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=63550819ce7b54eb6361fa2db17b318b
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
+          MD5[0]=35b4ba7657466390ad5884d92881fdd8
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
@@ -18,7 +18,7 @@ fi
          UPDATED=20040116
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-           SHORT="kdebindings contains DCOP bindings and kdejava bindings."
+           SHORT="DCOP bindings and kdejava bindings for KDE."
 cat << EOF
 This package contains
 * dcopc: DCOP bindings for C
