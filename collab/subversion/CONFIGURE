@@ -1,15 +1,8 @@
-if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
-
-  if query 'Download Subversion source code HEAD revision?' n
-  then echo 'SVN_EXPORT_HEAD=y' >> $SPELL_CONFIG
-  else echo 'SVN_EXPORT_HEAD=n' >> $SPELL_CONFIG
-  fi
-
-  echo 'CONFIGURED=y' >> $SPELL_CONFIG
-fi
-
-if httpd -t; then
-  if [ -x /etc/init.d/runlevels/%3/apache ]; then
-    config_query  RHTTPD  "Would you like to restart the HTTPD?"  n
-  fi
+config_query  SVN_EXPORT_HEAD  "Download Subversion source code HEAD revision?" n
+if  [  -x  /usr/sbin/httpd  ]
+then
+  config_query  RHTTPD  "Would you like to restart the HTTPD?"  n
+else
+  persistant_add  RHTTPD  &&
+  RHTTPD="n"
 fi
