@@ -1,12 +1,4 @@
 #!/bin/bash
-### BEGIN INIT INFO
-# Provides:       alsasound
-# Required-Start: $remote_fs
-# Required-Stop: $remote_fs
-# Default-Start:  2 3 5
-# Default-Stop:
-# Description:    Loading ALSA drivers and store/restore the current setting
-### END INIT INFO
 
 . /etc/sysconfig/alsa
 
@@ -35,9 +27,11 @@ start() {
   #
   # insert all sound modules
   #
-  echo "Loading driver for $CARD..."
-  probe_module snd-$CARD
-  evaluate_retval
+  for card in $CARDS; do
+    echo "Loading driver for $card..."
+    probe_module snd-$card
+    evaluate_retval
+  done
 
   #
   # insert sequencer modules
@@ -53,6 +47,18 @@ start() {
     done
   fi
 
+  #
+  # load oss emulation
+  #
+  if [ $OSS == yes ]; then
+    echo "Loading OSS pcm emulation..."
+    /sbin/modprobe snd-pcm-oss
+    evaluate_retval
+    echo "Loading OSS mixer emulation..."
+    /sbin/modprobe snd-mixer-oss
+    evaluate_retval
+  fi
+  
   #
   # restore driver settings
   #
