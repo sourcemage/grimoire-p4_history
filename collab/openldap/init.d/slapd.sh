@@ -8,7 +8,7 @@
 
 # remove ldaps part if you don't want to slapd to listen
 # on ldaps port, i.e. if ssl/tls support is not compiled in
-SLAPD_URL="ldap://127.0.0.1 ldaps://127.0.0.1
+SLAPD_URL='ldap:// ldaps://'
 
 case $1 in
 	restart)

@@ -1,15 +1,25 @@
-# $Id: DETAILS,v 1.2 2002/10/23 18:55:16 sergeyli Exp $
            SPELL=mantis
-         VERSION=0.17.5
-          SOURCE=${SPELL}-${VERSION}.tar.gz
-          MD5[0]='6d3d7a727d1303cb9558aa9d10220e6b'
+         VERSION=0.18.0a4
+          SOURCE=$SPELL-$VERSION.tar.gz
+          MD5[0]='dadce3afc02367b9e791c5cc712674c2'
       LICENSE[0]=GPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/mantisbt/$SOURCE
         WEB_SITE=http://mantisbt.sf.net/
          ENTERED=20021010
-         UPDATED=20021010
-           SHORT="Mantis is a php/MySQL/web based bugtracking system"
+         UPDATED=20030726
+           SHORT='Mantis is a php/MySQL/web based bugtracking system'
 cat << EOF
 Mantis is a php/MySQL/web based bugtracking system.
+Features and benefits:
+* Free;
+* Easy to install;
+* Web based;
+* Platform independent;
+* Multiple projects;
+* Multiple languages;
+* Emailing;
+* Simple Search;
+* Viewing filters;
+* PHP3 and PHP4.
 EOF
