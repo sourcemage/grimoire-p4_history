@@ -1,7 +1,7 @@
 if  [  -f  ${INSTALL_ROOT}/etc/sysconfig/devices  ]  ;  then
   (
     .  ${INSTALL_ROOT}/etc/sysconfig/devices
-    sedit  "s!/devices!$DEVICES!"  ${INSTALL_ROOT}/etc/inittab
+    sedit  "s!/dev!$DEVICES!"  ${INSTALL_ROOT}/etc/inittab
   )
 fi
 
