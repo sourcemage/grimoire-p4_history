@@ -1,7 +1,7 @@
 (
 
-  # we have automake version 1.7.x
-  sedit  "s/\"1.4\"/\"1.7\"/"   configure
+  # don't assume a specific automake version
+  sedit  's/-${am__api_version}//'  configure
 
   OPTS="$OPTS --enable-static=no" &&
   default_build
