@@ -1,8 +1,2 @@
-(
-
-  make    PREFIX=/usr  ETCDIR=/etc  depend  &&
-  make    PREFIX=/usr  ETCDIR=/etc          &&
-  prepare_install                           &&
-  make    PREFIX=/usr  ETCDIR=/etc  install
-
-) > $C_FIFO 2>&1
+make  PREFIX=/usr  ETCDIR=/etc  LUA_DIR=/usr  depend  &&
+make  PREFIX=/usr  ETCDIR=/etc  LUA_DIR=/usr
