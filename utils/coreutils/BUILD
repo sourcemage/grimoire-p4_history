@@ -1,4 +1,6 @@
 (
+### patch for ls memorey bug
+  patch -p1 < $SCRIPT_DIRECTORY/coreutils-ls-bug.patch &&
   ./configure                                  \
      --build=$BUILD                            \
      --bindir=${INSTALL_ROOT}/bin              \
