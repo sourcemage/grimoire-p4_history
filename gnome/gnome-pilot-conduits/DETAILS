@@ -1,16 +1,16 @@
            SPELL=gnome-pilot-conduits
-         VERSION=0.9
+         VERSION=0.10
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='0f1230445c00c2697b24db62e6751e2a'
+          MD5[0]="33c27508b8fe3fc7e659f36b32a983af"
+      LICENSE[0]=GPL
         WEB_SITE=http://www.eskil.org/gnome-pilot/
       MAINTAINER=jon-sven@frisurf.no
-      LICENSE[0]=GPL
          ENTERED=20020216
-         UPDATED=20020216
+         UPDATED=20021103
            SHORT="gnome-pilot-conduits contains conduits for gnome-pilot"
 cat << EOF
 Gnome-pilot-conduits contains additional conduits for gnome-pilot.
