@@ -1,21 +1,19 @@
-/usr/sbin/apachectl  stop
+# PHP is using APXS to alter httpd.conf, hence installwatch
+# is picking it up as installed file. httpd.conf should not
+# be part of PHP installation.
+sedit 's|.*/httpd\.conf.*||g' $INSTALL_LOGS/$SPELL-$VERSION
 
-sleep 5
+INC="AddType application/x-httpd-php .php .phtml
+LoadModule php4_module libexec/libphp4.so"
 
 if    [  -e  /etc/httpd/httpd.conf  ]
 then  MOD="/etc/httpd/httpd.conf"
-      INC="AddType application/x-httpd-php .php .phtml
-LoadModule php4_module libexec/libphp4.so"
-
-      grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      httpd -t && /usr/sbin/apachectl  start
+      grep  -q  php4_module  $MOD  ||  echo  "$INC"  >>  $MOD
+      httpd -t
 fi
 
 if    [  -e  /etc/httpsd/httpd.conf  ]
 then  MOD="/etc/httpsd/httpd.conf"
-      INC="AddType application/x-httpd-php .php .phtml
-LoadModule php4_module libexec/libphp4.so"
-
-      grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      httpd -t && /usr/sbin/apachectl  startssl
+      grep  -q  php4_module  $MOD  ||  echo  "$INC"  >>  $MOD
+      httpd -t
 fi
