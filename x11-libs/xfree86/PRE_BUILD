@@ -6,24 +6,5 @@ unpack         $SOURCE4  ${MD5[3]}  &&
 unpack         $SOURCE5  ${MD5[4]}  &&
 unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
-#unpack         $SOURCE8  ${MD5[7]}  &&
-#unpack         $SOURCE9  ${MD5[8]}  &&
-#
-patch xc/programs/xdm/socket.c <<EOF
-diff -u -r3.16 socket.c
---- socket.c    30 Mar 2004 17:22:46 -0000      3.16
-+++ socket.c    20 May 2004 01:33:02 -0000
-@@ -66,6 +66,9 @@
-     char *name = localHostname ();
-     registerHostname (name, strlen (name));
- 
-+    if (request_port == 0)
-+       return;
-+
- #if defined(IPv6) && defined(AF_INET6)
-     chooserFd = socket (AF_INET6, SOCK_STREAM, 0);
-     if (chooserFd < 0)
-EOF
-#patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE9 &&
-#recommended by xfree86.org
+
 mk_source_dir  $SOURCE_DIRECTORY.bld 
