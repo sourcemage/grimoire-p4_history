@@ -1,6 +1,6 @@
 unpack  $SOURCE			&&
 
-cp /var/lib/sorcery/grimoire/audio/TiMidity++/patch.gz /usr/src &&
+cp $SPELL_DIRECTORY/patch.gz /usr/src &&
 
 zcat patch.gz | patch -p0	&&
 
