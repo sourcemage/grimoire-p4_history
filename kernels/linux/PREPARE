@@ -57,19 +57,16 @@ kernel_menu() {
            --item-help --default-item "$DEFAULT" --menu      \
            "Select a kernel version to use" 0 0 0            \
            "CUSTOM"             "Manually enter some other Version Number"         "You can enter any valid version number" \
-           "LATEST_2_4"         "Latest stable Kernel Release"                     "Currently at version ${LATEST_2_4}" \
-           "LATEST_2_6"         "Latest 2.6.X Kernel"                              "Currently at version ${LATEST_2_6}" \
+           "LATEST_2_6"         "Latest \"stable\" Kernel Release"                     "Currently at version ${LATEST_2_6}" \
+           "LATEST_2_6_PRE"     "prepatched 2.6.x Kernel"                          "Currently at version ${LATEST_2_6_PRE}" \
+           "LATEST_2_4"         "2.4.x Kernel (recommended)                    "   "Currently at version ${LATEST_2_4}" \
            "LATEST_2_4_PRE"     "prepatched 2.4.x Kernel"                          "Currently at version ${LATEST_2_4_PRE}" \
-           "LATEST_2_5"         "Latest Development Kernel Release"                "Currently at version ${LATEST_2_5}" \
-           "LATEST_2_5_PRE"     "prepatched 2.5.x Development Kernel"              "Currently at version ${LATEST_2_5_PRE}" \
            "LATEST_2_2"         "2.2.x Kernel for the ones that don't trust 2.4"   "Currently at version ${LATEST_2_2}" \
            "LATEST_2_2_PRE"     "prepatched 2.2.x Kernel"                          "Currently at version ${LATEST_2_2_PRE}" \
            "LATEST_2_0"         "2.0.x Kernel in for the nostalgic of you"         "Currently at version ${LATEST_2_0}" \
            "LATEST_2_0_PRE"     "prepatched 2.0.x Kernel"                          "Currently at version ${LATEST_2_0_PRE}" \
            "LATEST_2_4_AC"      "2.4.x Kernel with Alan Cox Patch"                 "Currently at version ${LATEST_2_4_AC}" \
            "LATEST_2_6_AC"      "2.6.x Kernel with Alan Cox Patch"                 "Currently at version ${LATEST_2_6_AC}" \
-           "LATEST_2_5_DJ"      "2.5.x Kernel with David Jones Patch"              "Currently at version ${LATEST_2_5_DJ}" \
-           "LATEST_2_6_TEST"    "2.6.0-testx Kernel"                               "Currently at version ${LATEST_2_6_TEST}" \
            "LATEST_2_6_MM"      "2.6.0 Kernel with Andrew Mortons Patch"           "Currently at version ${LATEST_2_6_MM}" \
     )
     retval=$?
