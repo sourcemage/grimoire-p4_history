@@ -1,68 +1,56 @@
-2003-10-17  David Braaten <xiticix47@hotmail.com>
+2003-11-07 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.30
+	* BUILD: Needs '-lpng -lz -lm' added to LDFLAGS
+	Doesn't need ./bootstrap anymore
+	* HISTORY: Formatted to Guru Handbook
+
+2003-10-17 David Braaten <xiticix47@hotmail.com>
+	* DETAILS: Version++ (2.28c).
  
-		* DETAILS: Version++ (2.28c).
- 
-2003-08-29  Eric Sandall <eric@sandall.us>
+2003-08-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.28a
 
-        Updated to 2.28a
+2003-08-04 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on openal now
 
-2003-08-04  Eric Sandall <eric@sandall.us>
+2003-07-31 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.28
+	* BUILD: Now installs into /usr instead of /usr/local
 
-		Depends on openal now, still only tracks the
-		blender binary...
+2003-07-16 Eric Sandall <eric@sandall.us>
+	* Fixed typo  (Bug #3726)
 
-2003-07-31  Eric Sandall <eric@sandall.us>
+2003-06-18 Eric Sandall <eric@sandall.us>
+	* Fixed gameengine/plugin problem
 
-		Updated to 2.28
+2003-06-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.27 (fixes Bug #2923)
 
-		Now installs into /usr instead of /usr/local
+2003-05-12 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Added conflicts blender_cvs
 
-2003-07-16  Eric Sandall <eric@sandall.us>
+2003-03-09 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added dependency on ode (as some systems seem
+	to need this to compile) for GameBlender, thanks
+	to Chris Brien (removed from CONFIGURE), but it
+	is going to be commented out as GameBlender is
+	disabled in this version.
+	* TRIGGERS: Added TRIGGERS on ode, as it builds static
+	libraries, thanks to Robert Helgesson
+	* CONFIGURE,DEPENDS:: Moved CONFIGURE option for plugin
+	support to DEPENDS, as it requires mozilla anyways.
+	(removed CONFIGURE, as it is now unneeded)
 
-        Fixed typo  (Bug #3726)
+2003-03-08 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added dependency on Python
+	Added optional dependencies for mozilla,
+	libogg, libvorbis
+	Changed dependencies on openssl, libpng,
+	and jpeg to optional_depends
+	* CONFIGURE: Updated CONFIGURE for blenderplugin support
+	and to add gameblender to OPTS
+	* DETAILS: Updated to 2.26 (first true GPL release! :))
 
-2003-06-18  Eric Sandall <eric@sandall.us>
+2002-10-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* Created this spell
 
-		Fixed gameengine/plugin problem
-
-2003-06-05  Eric Sandall <eric@sandall.us>
-
-		Updated to 2.27 (fixes Bug #2923)
-
-2003-05-12  Eric Sandall <eric@sandall.us>
-
-		Added conflicts blender_cvs
-
-2003-03-09  Eric Sandall <eric@sandall.us>
-
-		Added dependency on ode (as some systems seem
-		to need this to compile) for GameBlender, thanks
-		to Chris Brien (removed from CONFIGURE), but it
-		is going to be commented out as GameBlender is
-		disabled in this version.
-
-		Added TRIGGERS on ode, as it builds static
-		libraries, thanks to Robert Helgesson
-
-		Moved CONFIGURE option for plugin support to
-		DEPENDS, as it requires mozilla anyways.
-		(removed CONFIGURE, as it is now unneeded)
-
-2003-03-08  Eric Sandall <eric@sandall.us>
-
-		Added dependency on Python
-
-		Added optional dependencies for mozilla,
-		libogg, libvorbis
-
-		Changed dependencies on openssl, libpng,
-		and jpeg to optional_depends
-
-		Updated CONFIGURE for blenderplugin support
-		and to add gameblender to OPTS
-
-		Updated to 2.26 (first true GPL release! :))
-
-2002-10-18  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		Created this spell

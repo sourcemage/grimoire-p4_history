@@ -1,4 +1,7 @@
 (
+
+  LDFLAGS="${LDFLAGS} -lpng -lz -lm"  &&
+
   ./bootstrap                         &&
   ./configure  --prefix=/usr          \
                --enable-shared        \
