@@ -1,0 +1,124 @@
+diff -Nur cinelerra-1.1.5/build/Makefile.cinelerra cinelerra-1.1.5-shared/build/Makefile.cinelerra
+--- cinelerra-1.1.5/build/Makefile.cinelerra	2003-02-10 04:12:25.000000000 +0100
++++ cinelerra-1.1.5-shared/build/Makefile.cinelerra	2003-04-25 19:24:54.000000000 +0200
+@@ -11,14 +11,10 @@
+ DIRS := \
+ 	$(AVIFILE_DIR) \
+ 	doc \
+-	libmpeg3 \
+-	tiff \
+ 	esound \
+-	$(FREETYPE_DIR) \
+ 	libsndfile \
+ 	mplexhi \
+ 	mplexlo \
+-	quicktime \
+ 	guicast \
+ 	cinelerra \
+ 	plugins
+@@ -70,7 +66,6 @@
+ install:
+ 	make -C cinelerra install
+ 	make -C plugins install
+-	make -C libmpeg3 install
+ 	make -C mplexhi install
+ 	make -C mplexlo install
+ 	cp $(OBJDIR)/soundtest /usr/bin
+diff -Nur cinelerra-1.1.5/cinelerra/Makefile cinelerra-1.1.5-shared/cinelerra/Makefile
+--- cinelerra-1.1.5/cinelerra/Makefile	2003-01-29 07:33:06.000000000 +0100
++++ cinelerra-1.1.5-shared/cinelerra/Makefile	2003-04-25 19:38:29.000000000 +0200
+@@ -267,11 +267,8 @@
+ 
+ STATICLIBS = \
+ 	../libavc/$(OBJDIR)/libavc.a \
+-	../quicktime/$(OBJDIR)/libquicktime.a \
+         $(ESOUNDLIBS) \
+-	../tiff/$(OBJDIR)/libtiff.a \
+ 	../guicast/$(OBJDIR)/libguicast.a \
+-	../libmpeg3/$(OBJDIR)/libmpeg3.a \
+ 	../libsndfile/$(OBJDIR)/libsndfile.a
+ 
+ LIBS = \
+@@ -289,7 +286,11 @@
+ 	$(XXF86VM) \
+ 	-lpng \
+ 	-lz \
+-	-ldl
++	-ldl \
++	-lmpeg3 \
++	-lquicktime \
++	-ltiff \
++	-lvorbisfile
+ 
+ # Static libraries for distribution
+ ifeq ($(USE_STATIC),y)
+diff -Nur cinelerra-1.1.5/cinelerra/tracksedit.C cinelerra-1.1.5-shared/cinelerra/tracksedit.C
+--- cinelerra-1.1.5/cinelerra/tracksedit.C	2002-12-14 06:10:45.000000000 +0100
++++ cinelerra-1.1.5-shared/cinelerra/tracksedit.C	2003-04-25 19:35:41.000000000 +0200
+@@ -745,7 +745,7 @@
+ 	dest_edit->insert_transition(server->title);
+ }
+ 
+-void Tracks::paste_video_transition(PluginServer *server, int first_track = 0)
++void Tracks::paste_video_transition(PluginServer *server, int first_track)
+ {
+ 	for(Track *current = first; current; current = NEXT)
+ 	{
+diff -Nur cinelerra-1.1.5/guicast/bctheme.C cinelerra-1.1.5-shared/guicast/bctheme.C
+--- cinelerra-1.1.5/guicast/bctheme.C	2002-12-21 04:01:43.000000000 +0100
++++ cinelerra-1.1.5-shared/guicast/bctheme.C	2003-04-25 19:35:02.000000000 +0200
+@@ -86,7 +86,7 @@
+ }
+ 
+ 
+-void BC_Theme::overlay(VFrame *dst, VFrame *src, int in_x1 = -1, int in_x2 = -1)
++void BC_Theme::overlay(VFrame *dst, VFrame *src, int in_x1, int in_x2)
+ {
+ 	int w;
+ 	int h;
+diff -Nur cinelerra-1.1.5/mplexlo/Makefile cinelerra-1.1.5-shared/mplexlo/Makefile
+--- cinelerra-1.1.5/mplexlo/Makefile	2002-07-13 04:19:23.000000000 +0200
++++ cinelerra-1.1.5-shared/mplexlo/Makefile	2003-04-25 19:34:10.000000000 +0200
+@@ -7,7 +7,7 @@
+ OUTPUT := $(OBJDIR)/mplexlo
+ 
+ $(OUTPUT): $(OBJS)
+-	$(CC) -o $(OUTPUT) $(OBJS) ../libmpeg3/$(OBJDIR)/libmpeg3.a -lpthread -lm
++	$(CC) -o $(OUTPUT) $(OBJS) -lmpeg3 -lpthread -lm
+ 
+ $(OBJS):
+ 	$(CC) -c $(CFLAGS) $(subst $(OBJDIR)/,, $*.c) -o $*.o
+diff -Nur cinelerra-1.1.5/plugins/mpeg2enc/Makefile cinelerra-1.1.5-shared/plugins/mpeg2enc/Makefile
+--- cinelerra-1.1.5/plugins/mpeg2enc/Makefile	2002-08-03 04:18:42.000000000 +0200
++++ cinelerra-1.1.5-shared/plugins/mpeg2enc/Makefile	2003-04-25 19:40:28.000000000 +0200
+@@ -1,6 +1,6 @@
+ include ../../global_config
+ CC = gcc
+-CFLAGS += -I../../libmpeg3 -I../../quicktime
++CFLAGS += -I/usr/include/libmpeg3 -I../../quicktime
+ 
+ 
+ ifeq ($(OBJDIR), i686)
+@@ -48,8 +48,8 @@
+ 	$(OBJDIR)/writepic.o
+ 
+ LIBS = \
+-	../../quicktime/$(OBJDIR)/libquicktime.a \
+-	../../libmpeg3/$(OBJDIR)/libmpeg3.a \
++        -lquicktime \
++	-lmpeg3 \
+ 	-lpthread \
+ 	-lpng \
+ 	-lz \
+diff -Nur cinelerra-1.1.5/plugins/titler/Makefile cinelerra-1.1.5-shared/plugins/titler/Makefile
+--- cinelerra-1.1.5/plugins/titler/Makefile	2002-08-17 04:26:42.000000000 +0200
++++ cinelerra-1.1.5-shared/plugins/titler/Makefile	2003-04-25 19:41:57.000000000 +0200
+@@ -7,7 +7,7 @@
+ 	$(OBJDIR)/titlewindow.o \
+ 	../colors/$(OBJDIR)/colorpicker.o \
+ 	../colors/$(OBJDIR)/plugincolors.o \
+-	$(FREETYPE_DIR)/objs/.libs/libfreetype.a
++	-lfreetype
+ 
+ OUTPUT = ../$(OBJDIR)/titler.plugin
+ 
