@@ -15,18 +15,6 @@
 ) > $C_FIFO 2>&1  &&  (
 
 
-  if    [  "$KDC"  ==  "y"  ]
-  then  cp  $SCRIPT_DIRECTORY/krb5.sh  /etc/init.d/
-        ln  -sf  ../init.d/krb5.sh     /etc/rc3.d/S40krb5
-        ln  -sf  ../init.d/krb5.sh     /etc/rc4.d/S40krb5
-        ln  -sf  ../init.d/krb5.sh     /etc/rc5.d/S40krb5
-
-        ln  -sf  ../init.d/krb5.sh     /etc/rc0.d/K60krb5
-        ln  -sf  ../init.d/krb5.sh     /etc/rc1.d/K60krb5
-        ln  -sf  ../init.d/krb5.sh     /etc/rc2.d/K60krb5
-        ln  -sf  ../init.d/krb5.sh     /etc/rc6.d/K60krb5
-  fi
-
   if    [  "$MASTER"  ==  "y"  ]
   then  sedit  "s:# /usr:/usr:"  /etc/init.d/krb5.sh
   fi
