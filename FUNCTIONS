@@ -62,6 +62,9 @@ function install_wmfiles ()
 
   if ( spell_ok qingy ); then
     if [ -x ${wm_startwm_dir}/start${SPELL} ] ; then
+      if  [  !  -d  ${INSTALL_ROOT}/etc/qingy/xsessions  ];  then
+        install  -d  -m  755  ${INSTALL_ROOT}/etc/qingy/xsessions
+      fi                                                 &&
       ln -s ${wm_startwm_dir}/start${SPELL}              \
             ${INSTALL_ROOT}/etc/qingy/xsessions/${SPELL}
     fi
