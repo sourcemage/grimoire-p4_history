@@ -1,13 +1,11 @@
-(
+./configure --sysvdir=/tmp/dansbuild	\
+	    --cgidir=$CGIDIR		\
+	    --runas_usr=nobody		\
+	    --runas_grp=nogroup		\
+	    --piddir=/var/run		\
+	    --logrotatedir=/tmp/dansbuild \
+	    --gccver=3			\
+	    $OPTS			&&
 
-  ./configure                                     \
-    --prefix=${INSTALL_ROOT}                      \
-    --runas_usr=nobody                            \
-    --runas_grp=nogroup                           \
-    --sysconfdir=${INSTALL_ROOT}/etc/dansguardian \
-    --sysvdir=${INSTALL_ROOT}/etc/init.d          \
-    $OPTS                                         &&
-  make            &&
-  make    install
-
-) >$C_FIFO 2>&1
+make					&&
+rm -rf /tmp/dansbuild
