@@ -1,8 +1,3 @@
-#  Patch to get glibc 2.2.5 compiled  -Kyle
-patch -p1  <  $SCRIPT_DIRECTORY/glibc-2.2.5.patch
-patch -p1  <  $SCRIPT_DIRECTORY/sunrpc-2.2.5.patch
-patch -p0  <  $SCRIPT_DIRECTORY/glibc-2.2.5-weak-alias.patch
-
 (
 
   unset  LDFLAGS
