@@ -9,6 +9,6 @@
   python setup.py build                         &&
   prepare_install                               &&
   python setup.py install --prefix=/usr         &&
-  mkdir -p /etc/webcleaner                      &&
-  webcleaner-certificates install
+  mkdir -p /etc/webcleaner                      
+#  webcleaner-certificates install
 ) >$C_FIFO 2>&1
