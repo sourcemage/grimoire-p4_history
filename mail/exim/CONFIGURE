@@ -1,13 +1,16 @@
-if  !  grep  -q  "CRON="  $SPELL_CONFIG;  then
+persistent_add  backup_file  &&
 
-  message  "Exim can use either hc-cron or or fcron"  \
-           "to periodically attempt to resend undelivered mail."
+config_query  BACKUPCONFIG  "Backup $SPELL config?"  y
 
-  if    query  "Attempt to resend undelivered via hc-cron?"  y
-  then  CRON=h
-  else  CRON=f
-  fi
+# look for a backup file
+backup_file=`ls -t -1 -r /etc/$SPELL-backup* | tail -n 1`  &&
 
-  echo  "CRON=$CRON"  >>  $SPELL_CONFIG
+if [ "$backup_file" != "" ]; then
+  message "${MESSAGE_COLOR} "                                                           &&
+  message "Found $backup_file as your latest postfix configuration backup..."           &&
+  message "You should restore backup settings if you went throught a sorcery rebuild."  &&
+  message "If this is a simple cast, or sorcery update, don't use it."                  &&
+  message " ${DEFAULT_COLOR}"                                                           &&
 
+  config_query  SKIPRESTORE  "Skip restoring backup settings ?"  y
 fi
