@@ -1,7 +1,7 @@
 (
 
   # Set proper prefix
-  sedit  "s/^\(prefix =\).*/\1 \/usr/"  config.mk
+  sedit  "s:^\(prefix =\).*:\1 ${INSTALL_ROOT}/usr:"  config.mk
 
   # Set proper CFLAGS
   sedit  "s/^\(CFLAGS\.opt =\).*/\1 $CFLAGS/"  config.mk
