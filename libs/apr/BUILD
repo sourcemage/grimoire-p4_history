@@ -7,6 +7,7 @@
     --host=$HOST \
     --build=$BUILD \
     --prefix=/usr \
+    --includedir=/usr/include/apr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --enable-layout=GNU \
