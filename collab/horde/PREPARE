@@ -1,12 +1,1 @@
-if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
-  if query "Would you like to use the $SPELL_COLOR$SPELL$QUERY_COLOR source code from development repository?" n; then
-    # REPOSITORY_TAG can be used by the individual spells
-    # to provide "recommended" version to use for source code
-    # checked out of the repository
-    echo "VERSION=${REPOSITORY_TAG:-HEAD}" >> $SPELL_CONFIG
-    echo "SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:${REPOSITORY_TAG:-HEAD}" >> $SPELL_CONFIG
-    echo 'FORCE_DOWNLOAD=on' >> $SPELL_CONFIG
-    echo 'SUFFIX=.tar.bz2' >> $SPELL_CONFIG
-  fi
-  echo 'CONFIGURED=y' >> $SPELL_CONFIG
-fi
+source  $SCRIPT_DIRECTORY/../HORDE_PREPARE

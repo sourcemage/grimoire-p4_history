@@ -1,17 +1,22 @@
            SPELL=horde
-         VERSION=${VERSION:-2.2.5}
-          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-      LICENSE[0]=LGPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=3.0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=d3ced450ff604edf5df182fb875a8254
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.horde.org/horde/
          ENTERED=20020428
          UPDATED=20030108
-           SHORT="Horde Application Framework is a general-purpose web application framework in PHP"
-
-[ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='5abb2e4f27bb04b5d2bb342c9e22efc7'
-
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="General-purpose web application framework in PHP"
 cat << EOF
 The Horde Framework is the glue that all Horde applications have in common.
 It is many things, including some coding standards, common code, and

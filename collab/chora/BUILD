@@ -1,1 +1,1 @@
-. $SCRIPT_DIRECTORY/../horde/BUILD
+true

@@ -1,5 +1,20 @@
-2005-02-26 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Removed PEAR-Log as Horde-VFS depends on it
+2005-02-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.0.3
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* DEPENDS: Added message for php requirements
+	  Removed openldap (php optionally depends on it already)
+	  Removed Horde-Util (Horde-XML_SVG depends on it)
+	  Added dependency on PEAR-DB and PEAR-File
+	  Formatted to Guru Handbook
+	  Can use any provider of PHP
+	* PREPARE: Updated to config_query, moved variable modification to
+	  an if/then inside DETAILS
+	  Moved to ../HORDE_PREPARE and now just source
+	  $SECTION_DIRECTORY/HORDE_PREPARE
+	* BUILD: Run only `true`
+	* INSTALL: Use global SECTION_DIR/HORDE_INSTALL
+	* HISTORY: Formatted to 80 columns
 
 2005-01-23 Eric Sandall <eric@sandall.us>
 	* BUILD: Use spell_ok instead of spell_installed
@@ -20,8 +35,8 @@
 	* HISTORY: Formatted to Guru Handbook
 
 2003-10-27 Sergey Lipnevich <sergey@sourcemage.org>
-	* PREPARE: fix SUFFIX assignment in spell config file when CVS is used for
-	  source.
+	* PREPARE: fix SUFFIX assignment in spell config file when CVS is used
+	  for source.
 	* BUILD: remove CVS working directories.
 
 2003-10-18 Ladislav Hagara <hgr@vabo.cz>
@@ -50,7 +65,8 @@
 
 2003-02-17 Sergey Lipnevich <sergeyli@pisem.net>
 	* DETAILS: Upgraded to 2.2.1.
-	* Added removal of config/ directory per Eric Sandall's suggestion (thanks!)
+	* Added removal of config/ directory per Eric Sandall's suggestion
+	  (thanks!)
 	* Added a patch for config/ relocation to work.
 
 2003-01-18 Sergey Lipnevich <sergeyli@pisem.net>
@@ -70,9 +86,9 @@
 	* Changed copying command to not force files into destination directory.
 
 2002-05-24 Sergey Lipnevich <sergeyli@pisem.net>
-	* Updated for 2.1RC3, removed patching of configuration for LDAP but left
-	  patching slapd.conf. Now comes with only one schema file, so extra info
-	  has been removed from gawk script.
+	* Updated for 2.1RC3, removed patching of configuration for LDAP but
+	  left patching slapd.conf. Now comes with only one schema file, so
+	  extra info has been removed from gawk script.
 
 2002-04-28 Sergey A. Lipnevich <sergeyli@pisem.net>
 	* Spell created. Preferred method of authentication and preference

@@ -1,12 +1,14 @@
 # PEAR-Net_Socket is bundled with PHP
-depends  PEAR-Mail_Mime    &&
-depends  PEAR-Date         &&
-depends  PEAR-HTML_Common  &&
-depends  PEAR-HTML_Select  &&
-depends  PEAR-HTTP_Request &&
-depends  Horde-Util        &&
-depends  Horde-VFS         &&
-depends  Horde-XML_SVG     &&
-depends  php4              &&
-
-optional_depends openldap '' '' 'for LDAP-based Preferences container'
+depends  PEAR-Log           &&
+depends  PEAR-Mail_Mime     &&
+depends  PEAR-Date          &&
+depends  PEAR-HTML_Common   &&
+depends  PEAR-HTML_Select   &&
+depends  PEAR-HTTP_Request  &&
+depends  PEAR-DB            &&
+depends  PEAR-File          &&
+depends  Horde-VFS          &&
+depends  Horde-XML_SVG      &&
+message  "${MESSAGE_COLOR}Horde needs the following options enabled in php:"  \
+         "gettext, XML, and DOMXML${DEFAULT_COLOR}"                           &&
+depends  PHP
