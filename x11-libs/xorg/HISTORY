@@ -5,6 +5,8 @@
 	  Commenting out Arwed's /usr/lib/libGL work as we should be able to use
 	  volatiles for this (though that may not be the correct approach either)
 	  Added WIP comment to Arwed's libGL fix
+	* volatiles: Added to ignore /usr/X11R6/lib/modules/extensions/libGLcore.a
+	  and /usr/X11R6/lib/modules/extensions/libglx.a (for nvidia_driver)
 
 2005-02-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD: don't let X install /usr/lib/libGL, should make X and
