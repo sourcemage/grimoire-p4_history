@@ -1,0 +1,9 @@
+depends  xen-kernel    &&
+depends  Twisted       &&
+depends  bridge-utils  &&
+
+if  [  "$XEN_DOCS"  =  "y"  ];  then
+  depends  transfig    &&
+  depends  tgif        &&
+  depends  latex2html
+fi
