@@ -1,0 +1,17 @@
+           SPELL=wvdial
+         VERSION=1.54.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://open.nit.ca/download/$SOURCE
+          MD5[0]=2e89eda94e109efb136eddbbf769a1e8
+        WEB_SITE=http://open.nit.ca/wiki/?page=WvDial
+         ENTERED=20040601
+         UPDATED=20040601
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Allows easy modem connection to the Internet"
+cat << EOF
+WvDial is a program that makes it easy to connect your Linux workstation to the
+Internet. It will automatically detect your modem, and it can log into almost
+any Internet provider's server without any special configuration.
+EOF
