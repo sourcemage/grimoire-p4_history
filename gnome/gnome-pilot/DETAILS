@@ -1,15 +1,15 @@
            SPELL=gnome-pilot
-         VERSION=2.0.0
+         VERSION=2.0.1
 	  BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="6bb02ef77b72272ba41153f4f8f40446"
+          MD5[0]="b8b69ae42cfabc9f496381f317e5ee8b"
       LICENSE[0]=GPL
         WEB_SITE=http://www.eskil.org/gnome-pilot/
          ENTERED=20020214
-         UPDATED=20030225
+         UPDATED=20030312
            SHORT="gnome-pilot contains utilities for the 3Com PalmPilot"
 cat << EOF
 gnome-pilot is a daemon for pilot synchronization, that includes
