@@ -1,15 +1,15 @@
            SPELL=scsh
-         VERSION=0.6.4
+         VERSION=0.6.5
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.scsh.net/pub/scsh/0.6/scsh-$VERSION.tar.gz
-          MD5[0]=b0b171903ad06729a9338e8ea963bfce
+          MD5[0]=6bab8f0ba7b306133045a24bcf353dbc
       LICENSE[0]=BSD
         WEB_SITE=http://www.scsh.net
            SHORT="Scsh is a Unix shell embedded in Scheme"
+      MAKE_NJOBS=1
          ENTERED=20020310
-         UPDATED=20020310
-      MAINTAINER=julian@wongr.net
+         UPDATED=20031212
 cat << EOF
 Scsh is a Unix shell embedded in Scheme. It provides full access to
 POSIX as well as extensions common to most Unix implementations. Scsh
