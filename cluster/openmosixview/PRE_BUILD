@@ -1,0 +1,34 @@
+# have emailed the author of OMV so hopefully this can be removed soon
+# you can't just do an ./configure because it looks for QT < 3.x?
+# and with SMGL using new libs and no way of nicely installing older ones.
+# You try aclocal autoconf but autoconf errs because
+# acinclued.m4 which has all the KDE macros is for an older version.
+# After looking at the dev notes & CVS on the KDE site  
+# you need the admin dir as its for some super build. 
+# Copied admin,acinclude.m4, modified configure.in to work again
+# and after all this it actually compiles :-)    
+# but it's not at all nice...
+# thanks to Matt the updated build scripts for 1.4 are all  
+# fine except for the collector & view 
+
+default_pre_build              &&
+cd     $SOURCE_DIRECTORY/openmosixcollector 
+	
+cp ../acinclude.m4 . 
+cp ../configure.in .
+sedit "s/view/collector/" configure.in
+
+if [ -e admin ]
+  then
+    rm -rf admin
+  fi
+ln -s ../admin admin	   
+             
+cd     $SOURCE_DIRECTORY/
+aclocal 
+
+#patch to make openmosixcollector script work with SMGL
+
+cd     $SOURCE_DIRECTORY/openmosixview 
+
+sedit "s/\/etc\/init.d\/openmosixcollector/\/etc\/init.d\/openmosixcollector.sh/" openmosixview.cpp
