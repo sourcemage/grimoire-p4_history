@@ -30,4 +30,17 @@ y|Y|j|J) cd clamdmail* &&
 	make install;; 
 *) true;;
 esac
+
+CONF=/etc/freshclam.conf
+if [ ! -f "$CONF" ]
+then
+     cp $SOURCE_DIRECTORY/etc/freshclam.conf $CONF
+fi
+
+CONF=/etc/clamav.conf
+if [ ! -f "$CONF" ]
+then
+     cp $SOURCE_DIRECTORY/etc/freshclam.conf $CONF
+fi
+
 ) > $C_FIFO 2>&1
