@@ -1,15 +1,14 @@
            SPELL=libgnomemm
-         VERSION=2.5.1
+         VERSION=2.6.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='19aa4356e24a11fa57063438eac7220f'
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='9ed9686113b66db9b1707d614a30ac53'
       LICENSE[0]="LGPL"
         WEB_SITE=http://gtkmm.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20040311
+         UPDATED=20040412
            SHORT="C++ wrapper library for libgnome"
 cat << EOF
 C++ wrapper library for libgnome
