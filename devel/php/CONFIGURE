@@ -1,11 +1,23 @@
 if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
-  if  query  "Is MySQL already intalled? If yes, answer y now and n when asked again" y;  then
-    echo  'OPTS="$OPTS --with-mysql=/usr"'  >>  $SPELL_CONFIG
+  if    query  "Is MySQL already intalled? If yes, answer y now and n when asked again"  y
+  then  echo   'OPTS="$OPTS --with-mysql=/usr"'  >>  $SPELL_CONFIG
   fi
 
-  if  query  "Enable sockets support (experimental)?" y;  then
-    echo  'OPTS="$OPTS --enable-sockets"'  >>  $SPELL_CONFIG
+  if    query  "Enable sockets support (experimental)?"  y
+  then  echo   'OPTS="$OPTS --enable-sockets"'  >>  $SPELL_CONFIG
+  fi
+
+  if    query  "Enable PHP variable tracking?"  y
+  then  echo   'OPTS="$OPTS --enable-track-vars"'  >>  $SPELL_CONFIG
+  fi
+
+  if    query  "Enable PHP safe mode?"  y
+  then  echo   'OPTS="$OPTS --enable-safe-mode"'  >>  $SPELL_CONFIG
+  fi
+
+  if    query  "Enable PHP transparent session id?"  y
+  then  echo   'OPTS="$OPTS --enable-trans-sid"'  >>  $SPELL_CONFIG
   fi
 
   echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
