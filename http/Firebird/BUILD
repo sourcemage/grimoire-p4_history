@@ -4,7 +4,8 @@
  export  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
 
 MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
-export MOZ_PHOENIX=1       &&
+MOZI_VERS=1.5b                               &&
+export MOZ_PHOENIX=1                         &&
 
     ./configure \
     --prefix=${INSTALL_ROOT}/usr    \
@@ -30,14 +31,17 @@ export MOZ_PHOENIX=1       &&
 
 
   prepare_install &&
-# everything coming into /usr/lib/mozilla-$VERSION/
+# everything coming into /usr/lib/mozilla-$MOZI_VERS/
 # must actually go to /usr/lib/mozilla/
+# TODO: work out what it uses to decide it's installdir ?
+# I know it uses mozilla HEAD naming but what variable is that?
+
   mkdir -p $MOZILLA_HOME                         &&
-  ln -fns $MOZILLA_HOME $MOZILLA_HOME-$VERSION   &&
+  ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZI_VERS   &&
   mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla &&
-  ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$VERSION &&
+  ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZI_VERS &&
   mkdir -p ${INSTALL_ROOT}/usr/include/mozilla   &&
-  ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$VERSION     &&
+  ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
 
   make install
 

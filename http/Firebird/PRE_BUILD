@@ -1,7 +1,7 @@
 if [ ! -f /root/.cvspass ]; then
   touch /root/.cvspass
 fi                                                             &&
-export FOO=Firebird_cvs.tar.bz2                                &&
+FOO=Firebird_cvs.tar.bz2                                       &&
 mk_source_dir $SOURCE_DIRECTORY                                &&
 if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/$FOO ];
 then message "${MESSAGE_COLOR}Unpacking source file ${SPELL_COLOR}$FOO \
@@ -24,7 +24,6 @@ cd ../                                                         &&
 message "${MESSAGE_COLOR}Generating tarball for next cast"     &&
 tar jcf $FOO mozilla/                                          &&
 message "${MESSAGE_COLOR}Moving $FOO to/var/spool/sorcery.${DEFAULT_COLOR}"     &&
-mv -v $FOO $SOURCE_CACHE/                                      &&
-echo -e "HEADCODE=yes\nSOURCE=$FOO\nCONFIGURED=yes" >> $SPELL_CONFIG
+mv -v $FOO $SOURCE_CACHE/                                      
 fi
 
