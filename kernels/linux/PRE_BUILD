@@ -110,21 +110,16 @@ ask_risky|ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
 
 cd       ${INSTALL_ROOT}/usr/src
 
-echo "check for existing tree"
-if  [  -d linux-${VERSION}  ];  then
-  echo "tree found"
-  echo "if you don't want to do a whole rebuild from fresh sources you can reuse the existing ones. (no checks, no new patches)"
-  if  query "reuse existing source tree?" "y"  == "yes"  ;then
-    echo reuse
-    ln -sf ${INSTALL_ROOT}/usr/src/linux-${VERSION} linux
-    cd linux-${VERSION}
-    return 0
-  else
-    echo "delete it"
-    rm   -r  linux-${VERSION}
-  fi
+if  [  "$REUSE_SOURCE"  ==  "y"  ];  then
+  message  "${MESSAGE_COLOR}Reusing existing Linux source tree (/usr/src/linux-${VERSION}).${DEFAULT_COLOR}"
+  ln -sf ${INSTALL_ROOT}/usr/src/linux-${VERSION} linux
+  cd linux-${VERSION}
+  return 0
+else
+  message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"
+  rm   -r  linux-${VERSION}
 fi
-message "building a new tree";
+message "${MESSAGE_COLOR}Building a new tree.${DEFAULT_COLOR}";
 
 
 check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1

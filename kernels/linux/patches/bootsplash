@@ -2,25 +2,34 @@
 
 DESCRIPTION="Bootsplash patch"
 SHORT="A graphical boot splash for linux."
-HELP="This patch allows you to use a graphical boot splash screen instead of all that fugly text."
-VERSIONS="3.1.4-2.6.6
+HELP="This patch allows you to use a graphical boot splash screen instead of all that fugly text.
+
+See http://www.bootsplash.de"
+
+VERSIONS="3.1.4-2.6.7-rc3
+3.1.4-2.6.6
 3.1.4-2.6.5
 3.1.4-2.6.4-r3
 3.1.4-2.6.3
+3.0.7-2.4.25-debian
+3.0.7-2.4.26-debian
 3.0.7-2.4.22-vanilla
 3.0.7-2.4.20-vanilla"
-MD5S[0]=6dff970bf648d1c7ae8fe7a591e2d351
-MD5S[1]=d6e08e52fc9b21f43b6826a8add4d8af
-MD5S[2]=e411ca6985fa1950fb57f5e456259d44
-MD5S[3]=4a939f0562d2ef619cf262c76174ebdb
-MD5S[4]=d9a1d57c00156e77660fb32b4c1a9df7
-MD5S[5]=bd1de9d02172047227fc52a04fc94d81
+MD5S[0]=cc7b066a419f445567a00a3191da1bc3
+MD5S[1]=6dff970bf648d1c7ae8fe7a591e2d351
+MD5S[2]=d6e08e52fc9b21f43b6826a8add4d8af
+MD5S[3]=e411ca6985fa1950fb57f5e456259d44
+MD5S[4]=4a939f0562d2ef619cf262c76174ebdb
+MD5S[5]=b6ba5515e5715390a193c961e7ca9b9c
+MD5S[6]=041571a3e5ac577a8e59055d87b2a7ca
+MD5S[7]=d9a1d57c00156e77660fb32b4c1a9df7
+MD5S[8]=bd1de9d02172047227fc52a04fc94d81
 
 if [[ "$1" == "CONFIG" ]]; then
    if [[ "${!PATCH}" > "3.1.4-2.5.9" ]]; then
 echo "
 SOURCE${COUNTER}=bootsplash-${!PATCH}.diff
-SOURCE${COUNTER}_URL=http://dediziert.org/~tyrant/linux/bootsplash/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}_URL=http://www.bootsplash.de/files/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 source $SCRIPT_DIRECTORY/MD5PATCH
    else
 echo "

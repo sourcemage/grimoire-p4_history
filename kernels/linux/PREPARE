@@ -121,11 +121,10 @@ Sorcery Spell Management Utility
 
 PATCH_DIR="${SCRIPT_DIRECTORY}/patches"
 
+config_query  CONFIG_KERNEL  "Configure the Linux kernel?"  n
 
-if    query  "Configure linux kernel?"  n
+if  [  "$CONFIG_KERNEL"  ==  "y"  ]
 then
-  CONFIG_KERNEL=y
-
   source ${SCRIPT_DIRECTORY}/KERNELS
 
   # if Version is not yet set, default to LATEST_2_4
@@ -135,7 +134,6 @@ then
 
   # Recreate the config
   echo  "KERNEL_VERSION=$KERNEL_VERSION" >  ${SPELL_CONFIG}  &&
-  echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  ${SPELL_CONFIG}  &&
   LIST=$(ls ${PATCH_DIR})
   COUNTER=8
   echo -n "" > ${SPELL_CONFIG}.DETAILS
@@ -146,11 +144,6 @@ then
       COUNTER=$((${COUNTER}+1))
     fi
   done
-else
-  CONFIG_KERNEL=n
-  TEMP=$(grep  -v  "CONFIG_KERNEL="         ${SPELL_CONFIG}) &&
-  echo  "$TEMP"                         >   ${SPELL_CONFIG}  &&
-  echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  ${SPELL_CONFIG}
 fi
 
 IFS=$oldIFS
