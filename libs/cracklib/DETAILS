@@ -3,17 +3,18 @@
 # NOTE: this is *not* a typo, this really is the tarball's name
           SOURCE=$SPELL,$VERSION.tar.gz
 	 SOURCE2=allwords
-   SOURCE_URL[1]=http://www.crypticide.com/users/alecm/security/${SOURCE}
-  SOURCE2_URL[1]=http://www.cotse.com/wordlists/allwords
+   SOURCE_URL[0]=http://www.crypticide.com/users/alecm/security/${SOURCE}
+  SOURCE2_URL[0]=http://www.cotse.com/wordlists/allwords
           MD5[0]=655677387ae4e0aa1f3373d0fb57691b
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL,$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL,$VERSION
         WEB_SITE=http://www.crypticide.com/users/alecm/
-       WEB_SITE2=http://www.cotse.com/tools/wordlists1.htm
+       WEB_SITE2=http://www.cotse.com/tools/wordlists.htm
          ENTERED=20050310
-         UPDATED=20050310
+         UPDATED=20050331
       LICENSE[0]=Derived from artistic license
+     GATHER_DOCS='HISTORY LICENCE MANIFEST POSTER'
        BUILD_API=2
-           SHORT=Password-strength checking library
+           SHORT='Password strength-checking library'
 cat << EOF
 CrackLib is a library containing a C function which may be used in a
 "passwd"-like program.
