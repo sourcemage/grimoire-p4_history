@@ -1,12 +1,15 @@
            SPELL=xpdf
-         VERSION=3.00
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+         VERSION=3.00pl1
+          SOURCE=$SPELL-3.00.tar.gz
+         SOURCE2=$SPELL-$VERSION.patch
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-3.00
    SOURCE_URL[0]=ftp://ftp.foolabs.com/pub/xpdf/$SOURCE
+  SOURCE2_URL[1]=ftp://ftp.foolabs.com/pub/xpdf/$SOURCE2
         WEB_SITE=http://www.foolabs.com/xpdf
           MD5[0]=58ac11c6e9461641338f4b0492a11446
+          MD5[1]=ff5842b168b80a42a3ebfb48d7ce4caa
          ENTERED=20010923
-         UPDATED=20041014
+         UPDATED=20041125
          LICENSE=GPL
            SHORT="xpdf: a PDF viewer for X11R6."
 cat << EOF
