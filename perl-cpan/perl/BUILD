@@ -3,25 +3,23 @@
 
     CONFIG="$DEPENDS_CONFIG/perl_config.sh"
 
-    case  $CUSTOM  in
+    case  $OLD_CUSTOM  in
 
-      y|Y|j|J)
-	    sound  REPORT
-	    if  [ -f $CONFIG ]
-	    then
-	        cp  $CONFIG  config.sh   &&
-	        ./Configure -S           &&
-	        make  depend
-	    else
-	        ./Configure  -d -e -Dprefix=/usr  -Dusethreads -Ulocincpth
-	    fi
-	    cp config.sh $CONFIG
-            ;;
+	y|Y) cp $CONFIG ./config.sh  &&
+	      ./Configure -S         &&
+	      make depend
+	      ;;
 
-
-      *)    ./Configure  -d -e -Dprefix=/usr -Dusethreads -Ulocincpth
-	    ;;
-
+	   *) case $NEW_CUSTOM  in
+		 y|Y)  ./Configure  -Dprefix=/usr -Dlibperl=libperl.so   &&
+			cp config.sh $CONFIG                             &&
+			echo "OLD_CUSTOM=y" | cat > $DEPENDS_CONFIG/perl &&
+			echo "NEW_CUSTOM=n" | cat > $DEPENDS_CONFIG/perl
+			;;
+		    *)  ./Configure  -Dprefix=/usr -d -e  \
+			    -Dusethreads -Ulocincpth -Dlibperl=libperl.so
+			;;
+	      esac
     esac             &&
 
     make             &&
