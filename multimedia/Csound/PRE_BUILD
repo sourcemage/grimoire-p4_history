@@ -1,0 +1,12 @@
+mkdir   $SOURCE_DIRECTORY 	&&
+cd      $SOURCE_DIRECTORY        &&
+
+unpack  $SOURCE			&&
+
+cp /var/lib/sorcery/grimoire/multimedia/Csound/Makefile $SOURCE_DIRECTORY &&
+
+cp /var/lib/sorcery/grimoire/multimedia/Csound/patch-*  $SOURCE_DIRECTORY &&
+
+zcat patch-4.19.1-4.19.2.gz | patch -p1         &&
+zcat patch-4.19.2-4.19.3.gz | patch -p1         &&
+zcat patch-4.19.3-4.19.4.gz | patch -p1    
