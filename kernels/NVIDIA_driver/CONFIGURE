@@ -21,7 +21,7 @@ fi
 
 if  !  grep  -q  "AGPFW"  $SPELL_CONFIG;  then
   if    query "Enable AGP Fast Writes on all supported chipsets, which might cause instability?" n
-  then  echo  "AGPFw=y"  >>  $SPELL_CONFIG
-  else  echo  "AGPFw=n"  >>  $SPELL_CONFIG
+  then  echo  "AGPFW=y"  >>  $SPELL_CONFIG
+  else  echo  "AGPFW=n"  >>  $SPELL_CONFIG
   fi
 fi
