@@ -1,5 +1,7 @@
 (
-
+#the bison and flex checks were seriously borked, I patch the configure
+export YACC=yacc                                               &&
+patch -p1 < $SCRIPT_DIRECTORY/mozart.patch                     &&
   ./configure \
     --host=$HOST \
     --build=$BUILD \
