@@ -9,4 +9,6 @@ usermod   bind  -G  bind  2>/dev/null
              --sysconfdir=/etc/bind  \
              --localstatedir=/var    \
              $OPTS                   &&
+
+make_single  &&
 make

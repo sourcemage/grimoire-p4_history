@@ -1,3 +1,5 @@
+make_single  &&
+
 if [ "$CVS" == "y" ]; then
    export OPENH323DIR=$SOURCE_DIRECTORY         &&
    cd $SOURCE_DIRECTORY                         &&
@@ -13,4 +15,6 @@ else
    unset LD_PRELOAD                             &&
    make	-j 1					&&
    export LD_PRELOAD="$LD_PRELOAD_OLD"          
-fi
+fi  &&
+
+make_normal

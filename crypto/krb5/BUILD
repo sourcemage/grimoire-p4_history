@@ -11,12 +11,13 @@ for i in $(find -name configure | sed -e 's/\/configure$//'); do
 sedit 's/test "x$ac_old_val" != "x$ac_new_val"/false/' $i/configure
 done
 
-./configure  --enable-dns-for-kdc      \
-             --enable-dns-for-realm    \
-             --infodir=/usr/share/info \
-             --mandir=/usr/share/man   \
-             --enable-shared           \
-             --prefix=/usr             \
-             --localstatedir=/var      \
-             $OPTS                     &&
+./configure  --enable-dns-for-kdc       \
+             --enable-dns-for-realm     \
+             --infodir=/usr/share/info  \
+             --mandir=/usr/share/man    \
+             --enable-shared            \
+             --prefix=/usr              \
+             --localstatedir=/var       \
+             $OPTS                      &&
+make_single                             &&
 make

@@ -6,6 +6,8 @@ function make_if_swig() {
   fi
 }
 
+make_single  &&
+
 if echo $OPTS | grep -q 'without-berkeley-db'; then
   patch -p1 < $SCRIPT_DIRECTORY/swigpyext.patch
 fi &&

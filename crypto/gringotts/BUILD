@@ -5,4 +5,7 @@ fi  &&
 if [ "$ENV_CHECK" == "n" ]; then
   OPTS="$OPTS --disable-env-check"
 fi  &&
-default_build
+
+make_single    &&
+default_build  &&
+make_normal

@@ -1,3 +1,16 @@
+2005-03-17 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed MAKE_NJOBS=1
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* BUILD: Converted to build_api 2
+	  Prepended SPOOL, CONF, and PREFIX with MAILMAN_
+	  Added MAILMAN_{CONF,PREFIX} as persistent variables
+	  Use create_account instead of adduser/groupadd
+	  Cleaned up formatting
+	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
+	  Remove MAILMAN_{CONF,PREFIX} from persistent variables
+
 2005-02-15 Seth Woolley <seth@tautology.org>
 	* DETAILS: patch for XSS vuln SECURITY FIX
 	* mailman.driver.security.patch: added for 2.1.5 security fix
@@ -37,13 +50,13 @@
 2003-04-28 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 2.1.2.
 
-2003-03-26 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-26 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 2.1.1.
 	* No more cron dependency.
 
-2003-01-08 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-08 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 2.1, the production release.
 
-2002-11-04 Sergey Lipnevich <sergeyli@pisem.net>
+2002-11-04 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 2.1b4.
 

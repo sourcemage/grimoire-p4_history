@@ -28,3 +28,62 @@ function update_desktop_database ()
     /usr/bin/update-desktop-database
   fi
 }
+
+#---------------------------------------------------------------------
+## this function installs the *.desktop, start* files and qingy links
+## this function is intended to be used by spells for windowmanagers
+#---------------------------------------------------------------------
+function install_wmfiles ()
+{
+  local wm_desktopfile_dir="${INSTALL_ROOT}/usr/share/xsessions"
+  local wm_startwm_dir="${INSTALL_ROOT}/usr/bin"
+
+  # install the start* file for the windowmanager if it's not
+  # installed already
+  if [ -f ${SCRIPT_DIRECTORY}/start${SPELL} ] ; then
+    if ! [ -e ${wm_startwm}/start${SPELL} ] ; then
+      install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
+                        ${wm_startwm_dir}
+    fi
+  fi
+
+  # making sure the destination directory exists
+  if ! [ -d  ${wm_desktopfile_dir} ] ; then
+      mkdir  ${wm_desktopfile_dir}
+  fi                                                        &&
+
+  # install the windowmanagers desktop file
+  if [ -f ${SCRIPT_DIRECTORY}/${SPELL}.desktop ] ; then
+    if ! [ -e ${wm_desktopfile_dir}/${SPELL}.desktop ]; then
+      install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop   \
+                        ${wm_desktopfile_dir}
+    fi
+  fi
+
+  if ( spell_ok qingy ); then
+    if [ -x ${wm_startwm_dir}/start${SPELL} ] ; then
+      ln -s ${wm_startwm_dir}/start${SPELL}              \
+            ${INSTALL_ROOT}/etc/qingy/xsessions/${SPELL}
+    fi
+  fi
+}
+
+#---------------------------------------------------------------------
+## Sets the current script to run only one make job
+#---------------------------------------------------------------------
+
+function make_single ()
+{
+  JOBS_PER_HOST=0  &&
+     MAKE_NJOBS=1
+}
+
+#---------------------------------------------------------------------
+## Re-enables the normal Sorcery make (cancels single_make)
+#---------------------------------------------------------------------
+
+function make_normal ()
+{
+  source $COMPILE_CONFIG
+}
+

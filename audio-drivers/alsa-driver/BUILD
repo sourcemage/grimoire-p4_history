@@ -13,4 +13,5 @@ sedit  "s:root.root:root.audio:"   snddevices                &&
              --with-debug=none     \
              --with-cards=$CARDS   \
              $OPTS                 &&
+make_single                        &&
 make
