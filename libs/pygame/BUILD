@@ -1,6 +1,5 @@
 (
-
-  python  setup.py  build     &&
+ echo -e "y \n" | python  setup.py  build     &&
 
   prepare_install             &&
   
