@@ -1,5 +1,9 @@
 make  prefix=${INSTALL_ROOT}/usr  install                              &&
 cd  kernel/svgalib_helper                                              &&
+if  [  `uname -r  |  cut -d. -f1,2`  ==  "2.6"  ]
+then
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/linux-2.6.patch
+fi                                                                     &&
 env  -u  ARCH                                                          \
 make  -f  Makefile.alt    prefix=${INSTALL_ROOT}                       \
 INCLUDEDIR="/usr/src/linux/include" install

@@ -4,6 +4,10 @@
 	* BUILD: Converted to BUILD_API 2
 	Add "-I../include" to CFLAGS for making demoprogs  (Bug #7069)
 	* INSTALL: Added
+	Apply linux-2.6.patch if running a 2.6 kernel
+	* linux-2.6.patch: Patch for no modversions.h in 2.6 kernels
+	(Bug #7072)
+	* WIP: The patch is never applied...
 
 2004-07-02 Seth Woolley <seth@tautology.org>
 	* BUILD: make all, not modules for helper module.
