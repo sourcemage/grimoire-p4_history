@@ -96,9 +96,15 @@ backup_modules()  {
   mkdir  -p  ${INSTALL_ROOT}/boot
 
   case  ${ARCH}  in
-       ppc)  cp                 vmlinux     ${INSTALL_ROOT}/boot/vmlinux-$VERSION   ;;
-    sparc*)  gzip  -c9          vmlinux  >  ${INSTALL_ROOT}/boot/vmlinuz-$VERSION   ;;
-         *)  cp  arch/${ARCH}/boot/bzImage  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  ;;
+       ppc)  cp                 vmlinux     ${INSTALL_ROOT}/boot/vmlinux-$VERSION   &&
+             ln  -sf  ${INSTALL_ROOT}/boot/vmlinux-${VERSION}                       \
+                      ${INSTALL_ROOT}/boot/vmlinux                                  ;;
+    sparc*)  gzip  -c9          vmlinux  >  ${INSTALL_ROOT}/boot/vmlinuz-$VERSION   &&
+             ln  -sf  ${INSTALL_ROOT}/boot/vmlinuz-${VERSION}                       \
+                      ${INSTALL_ROOT}/boot/vmlinuz                                  ;;
+         *)  cp  arch/${ARCH}/boot/bzImage  ${INSTALL_ROOT}/boot/vmlinubz-$VERSION  &&
+             ln  -sf  ${INSTALL_ROOT}/boot/vmlinubz-${VERSION}                      \
+                      ${INSTALL_ROOT}/boot/vmlinubz                                 ;;
   esac
 
 ) > $C_FIFO 2>&1
