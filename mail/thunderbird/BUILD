@@ -35,26 +35,34 @@ then
   OPTS="${OPTS}  --enable-strip"
 fi  &&
 
+cp mail/config/mozconfig .mozconfig &&
+
 ./configure  --prefix=${INSTALL_ROOT}/usr                 \
              --with-user-appdir=.thunderbird              \
              --with-pthreads                              \
              --disable-accessibility                      \
-             --disable-tests                              \
-             --disable-debug                              \
              --disable-logging                            \
              --disable-calendar                           \
              --disable-pedantic                           \
              --disable-installer                          \
-             --disable-oji                                \
-             --disable-jsd                                \
-             --disable-necko-disk-cache                   \
-             --disable-profilesharing                     \
-             --enable-reorder                             \
-             --enable-cpp-rtti                            \
-             --enable-extensions=$THUNDERBIRD_EXTENSIONS  \
-             --enable-necko-protocols=$NECKO_PROTOCOLS    \
-             --enable-optimize="$CFLAGS"                  \
-             --enable-extensions                          \
-             --enable-single-profile                      \
              $OPTS                                        &&
 make  MOZ_THUNDERBIRD=1
+
+# already in mozconfig
+#             --enable-extensions=$THUNDERBIRD_EXTENSIONS  \
+#             --enable-necko-protocols=$NECKO_PROTOCOLS    \
+#             --enable-extensions                          \
+#             --enable-single-profile                      \
+#             --disable-tests                              \
+#             --disable-oji                                \
+#             --disable-necko-disk-cache                   \
+#             --disable-profilesharing                     \
+
+# I want to see these for now
+#             --disable-debug                              \
+#             --disable-jsd                                \
+
+# try without optimizations first
+#             --enable-reorder                             \
+#             --enable-cpp-rtti                            \
+#             --enable-optimize="$CFLAGS"                  \
