@@ -6,6 +6,7 @@ patchesdir="${SCRIPT_DIRECTORY}/info/patches"
 # sourced from DETAILS to create SOURCE_URL SOURCE
 # KERNEL_VERSION environmental vars
 detailsdefaults="${CONFIG_CACHE}/details.defaults"
+dependsmakefile="${CONFIG_CACHE}/makefile.patches"
 # Latest versions of your favorite kernel sources and patches
 latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
 # debug log duh ;)
@@ -601,11 +602,56 @@ old_src_menu()
 # for example the mm patches apply against the pre patched kernel
 calculate_depends()
 {
+	# create Makefile
+	dependslist=""
+	if [[ "$patches" != "" ]]
+	then
+		(
+		echo "all: $patches"
+		echo ""
+		for patch in $patches
+		do
+			depends=""
+			case "$patch" in
+				LATEST*)
+					. ${patchesdir}/*/${!patch}
+					;;
+				*)
+					. ${patchesdir}/*/${patch}
+					;;
+			esac
+			if [[ "${depends}" == "" ]] 
+			then
+				echo "${patch}:"
+				echo "	echo \"${patch}\""
+				echo ""
+			else
+				echo "${patch}: ${depends}"
+				echo "	echo \"${patch}\""
+				echo ""
+				dependslist="${dependslist}${depends} "
+			fi
+		done
+		for depends in $dependslist
+		do
+			echo "$depends:"
+			echo "	echo \"$depends\""
+			echo ""
+		done
+		) > $dependsmakefile
+		# this doesn't work with persistent vars don't know why?
+		#patches=$(make -sf $dependsmakefile all)
+		echo $patches
+	fi
+}
+calculate_depends_old()
+{
 	# really this should be done with a make file
 	new_patch_list=""
 	rnew_patch_list=""
 	for patch in $patches
 	do
+		depends=""
 		case "$patch" in
 			LATEST*)
 				. $patchesdir/*/${!patch}
@@ -639,7 +685,7 @@ create_details()
 	local counter="1"
 	case "$mode" in
 		*ktree)
-			calculate_depends
+			calculate_depends_old
 			(
 			#this might be cool if it didn't take more than what's up there.
 			depends=""
