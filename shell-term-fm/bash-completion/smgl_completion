@@ -12,8 +12,7 @@ eval `. /etc/sorcery/config;
 _spell_list()
 {
     for GRIMOIRE in `. $GRIMOIRE_LIST; echo ${GRIMOIRE_DIR[*]}`; do
-	COMPREPLY=( ${COMPREPLY[@]} $( find $GRIMOIRE -type f -follow -mindepth 3 -maxdepth 3 -regex "$GRIMOIRE/.*/$cur[^/]*/DETAILS" -printf "%h\n" | \
-	    sed -ne 's/^.*\/\([^\/]*\)/\1/p' ) )
+	COMPREPLY=( ${COMPREPLY[@]} $( cat "$GRIMOIRE/codex.index" | cut -d' ' -f1 ) )
     done
 }
 
