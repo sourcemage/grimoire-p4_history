@@ -1,23 +1,8 @@
 default_pre_build                                                        &&
 cd  $SOURCE_DIRECTORY                                                    &&
+
 if  [  "$GRUB_REISER4"  =  "y"  ];  then
-	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-reiser4.patch
-else 
-	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-graphics.patch              
-	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-graphics-bootterm.patch     
-fi &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-symlinkmenulst.patch        &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-installcopyonly.patch       &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-addsyncs.patch              &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-staticcurses.patch          &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-endedit.patch               &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-append.patch                &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-once.patch                  &&
-#patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-graphics.patch              &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-splashimagehelp.patch       &&
-#patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-graphics-bootterm.patch     &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-hiddenmenu-tweak.patch      &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-special-device-names.patch  &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-initrdmax.patch             &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.94-i2o.patch                   &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.95-geometry-26kernel.patch
+	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-reiser4-20040130.patch
+else
+	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-graphics.patch
+fi

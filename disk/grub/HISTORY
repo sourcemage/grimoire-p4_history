@@ -1,3 +1,24 @@
+2005-03-12 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: Updated to 0.96
+	* grub-0.95-endedit.patch,
+	  grub-0.90-append.patch, grub-0.94-geometry-26kernel.patch,
+	  grub-0.90-symlinkmenulst.patch,grub-0.94-i2o.patch,
+	  grub-0.91-splashimagehelp.patch,grub-0.94-initrdmax.patch,
+	  grub-0.93-endedit.patch,grub-0.94-installcopyonly.patch,
+	  grub-0.93-graphics-bootterm.patch,grub-0.95-graphics.patch,
+	  grub-0.93-once.patch,grub-0.95-hiddenmenu-tweak.patch,
+	  grub-0.93-special-device-names.patch,grub-0.95-staticcurses.patch,
+	  grub-0.94-addsyncs.patch,
+	  grub-0.90-append.patch,grub-0.90-symlinkmenulst.patch,
+	  grub-0.91-splashimagehelp.patch,grub-0.93-endedit.patch,
+	  grub-0.93-graphics-bootterm.patch,grub-0.93-once.patch,
+	  grub-0.93-special-device-names.patch,grub-0.94-addsyncs.patch,
+	  grub-0.94-geometry-26kernel.patch grub-0.94-initrdmax.patch,
+	  grub-0.94-installcopyonly.patch: Removed
+	* grub-0.96-graphics.patch, 
+	  grub-0.96-reiser4-20040130.patch : Added
+	* PRE_BUILD: Apply the new patches and do not apply the old ones ;-p
+	
 2005-01-14 Flavien Bridault <disk@sourcemage.org>
 	* CONFIGURE: Corrected a bug that use partition instead of MBR.
 	* CONFIGURE, DEPENDS, PREBUILD, BUILD : included Thomas Houssin changes
