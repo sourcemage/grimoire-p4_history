@@ -1,12 +1,9 @@
-(
+#sedit  "6690s/Screensaver/Screensaver Properties/"  po/es.po    &&
 
-  #sedit  "6690s/Screensaver/Screensaver Properties/"  po/es.po    &&
+OPTS="$OPTS --with-dpms-ext --with-xinerama-ext --with-xf86vmode-ext     \
+            --with-xf86gamma-ext --with-proc-interrupts --with-xshm-ext  \
+            --with-xdbe-ext --with-readdisplay --without-gnome           \
+            --without-motif                                              \
+            $XSCSV_GTK"                                                  &&
 
-  OPTS="$OPTS --with-dpms-ext --with-xinerama-ext --with-xf86vmode-ext  \
-              --with-xf86gamma-ext --with-proc-interrupts --with-xshm-ext  \
-              --with-xdbe-ext --with-readdisplay --without-gnome  \
-              --without-motif"
-
-  default_build
-
-) > $C_FIFO 2>&1
+default_build
