@@ -4,26 +4,14 @@
 # the specific option is set in the DEPENDS file
 
 # jabber
-if ! grep -q OPTS $SPELL_CONFIG; then
-  if query "Enable Jabber protocol? " y; then
-    echo  'OPTS="${OPTS} --jabber=1"'  >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="${OPTS} --jabber=0"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option BITLBEE_OPTS "Enable Jabber protocol? " n \
+                     "--jabber=1" "--jabber=0"
 
   # oscar (icq, aim)
-  if query "Enable Oscar protocol (for ICQ or AIM)? " y; then
-    echo  'OPTS="${OPTS} --oscar=1"'  >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="${OPTS} --oscar=0"'  >>  ${SPELL_CONFIG}
-  fi
+
+config_query_option BITLBEE_OPTS "Enable Oscar protocol (for ICQ or AIM)? " \
+                     y "--oscar=1" "--oscar=0"
 
   # yahoo
-  if query "Enable Yahoo protocol? " y; then
-    echo  'OPTS="${OPTS} --yahoo=1"'  >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="${OPTS} --yahoo=0"'  >>  ${SPELL_CONFIG}
-  fi
-fi
-
-. $SPELL_CONFIG
+config_query_option BITLBEE_OPTS "Enable Yahoo protocol? " y   \
+                     "--yahoo=1" "--yahoo=0"
