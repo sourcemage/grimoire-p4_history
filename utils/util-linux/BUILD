@@ -12,7 +12,6 @@ sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG  &&
 
 CFLAGS=${CFLAGS/-DPIC -fPIC/}  &&
 
-patch  -p1  <  $SCRIPT_DIRECTORY/linux-headers-2.6.0-fix.patch  &&
 default_build                                                   &&
 if    spell_installed      util-linux-crypto
   then  dispel  --nosustain  util-linux-crypto
