@@ -20,3 +20,12 @@
   if [ ! -f ${SND_DFILE} ]; then
     install -c -D etc/dev.d/snd/controlC0/alsa.dev ${SND_DFILE}
   fi
+  # Temporary stuff, inform the users that there have been changes
+  if [ ! -f ${UDEV_CFG}/udev.rules.example ]; then
+    cp $SCRIPT_DIRECTORY/udev.rules  ${UDEV_CFG}/udev.rules.example
+  fi  &&
+  message "${MESSAGE_COLOR}"
+  message "Please note that since udev 0.51, udev.permissions file is no longer used."
+  message "udev.rules file syntax has changed to include the permissions stuff."
+  message "${PROBLEM_COLOR}Please UPDATE your configuration before rebooting.${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}An example file has been placed in /etc/udev/udev.rules.example${DEFAULT_COLOR}\n"
