@@ -1,13 +1,14 @@
            SPELL=net-snmp
-         VERSION=5.0.5
+         VERSION=5.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-        WEB_SITE=http://www.net-snmp.org
+   SOURCE_URL[1]=ftp://ftp.net-snmp.org/pub/sourceforge/net-snmp/$SOURCE
+        WEB_SITE=http://www.net-snmp.org/
          ENTERED=20011108
          UPDATED=20021007
-             MD5=c608f01107b5922a7bca1cb05240870a
-		 LICENSE=UNKNOWN
+          MD5[0]=6371efe2f3e07ebb38423b841949d094
+         LICENSE=http://www.net-snmp.org/COPYING.txt
            SHORT="Net-SNMP SNMP agent, libraries and utilities"
 cat << EOF
 net-snmp provides tools and libraries relating to SNMP (the Simple Network
