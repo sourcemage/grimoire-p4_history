@@ -1,0 +1,17 @@
+           SPELL=thinkpad
+         VERSION=4.999-trial1
+          SOURCE=${SPELL}\_${VERSION}.tar.gz
+#          SOURCE=thinkpad\_${VERSION}.tar.gz
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-5.0
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://$SPELL.SourceForge.net
+         LICENCE=GPL
+            DOCS="{R,S,T}*"
+           MD5[0]=39ae8ff55299432f33b5245d62d298b9
+          ENTERED=20040110
+          UPDATED=
+SHORT="tpctl is a package of tools for configuring an IBM ThinkPad"
+cat << EOF
+tpctl is a package of tools for configuring an IBM ThinkPad
+EOF
