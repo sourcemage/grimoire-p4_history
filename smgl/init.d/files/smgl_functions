@@ -82,7 +82,10 @@ evaluate_retval()
 logger_func()
 {
   [ -e /bin/logger ] && /bin/logger $* ||
-  [ -e /usr/bin/logger ] && /usr/bin/logger $*
+  {
+    [ -e /usr/bin/logger ] && /usr/bin/logger $*
+  }
+  true
 }
 
 print_status()
@@ -99,13 +102,14 @@ print_status()
     message) ;; # null
   esac
 
-  local SCRIPT="$($SCRIPTC)$(builtin echo $0 | sed -e 's!/.*/!!')$($NORMAL)"
+  local SCRIPT="$(builtin echo $0 | sed -e 's!/.*/!!')"
+  local SCRIPTW="$($SCRIPTC)$SCRIPT$($NORMAL)"
 
   local line
   builtin echo "$INITSTORE" | while read line; do
     [ -n "$line" -o "$1" != "message" ] &&
     logger_func -p user.info -t init.d "$SCRIPT: $@: $line" &&
-    builtin echo -n  "init.d: $SCRIPT"                 &&
+    builtin echo -n  "init.d: $SCRIPTW"                 &&
     if [ ! "$1" = "message" ]; then
       builtin echo -n ": "   &&
       $COLORCODE             &&
