@@ -1,16 +1,16 @@
            SPELL=ORBit
-         VERSION=0.5.16
+         VERSION=0.5.17
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='b4872cfd7a615035a6c4fc524156283e'
+          MD5[0]="994014cd201304008286558afa4fe673"
+      LICENSE[0]=GPL
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://orbit-resource.sourceforge.net
-      LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20020330
+         UPDATED=20021103
            SHORT="ORBit is a COBRA 2.2-compliant Object Request Broker."
 cat << EOF
 ORBit is a CORBA 2.2-compliant Object Request Broker (ORB) featuring
