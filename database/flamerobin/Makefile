@@ -8,6 +8,7 @@ OBJECTS=\
 	DatabaseRegistrationInfoFrame.o DatabaseRegistrationInfoFrameImpl.o \
 	ServerRegistrationInfoFrame.o ServerRegistrationInfoFrameImpl.o \
 	ExecuteSqlFrame.o ExecuteSqlFrameImpl.o \
+	BackupDialog.o BackupDialogImpl.o RestoreDialog.o RestoreDialogImpl.o ProgressDialog.o \
 	subject.o observer.o treeitem.o myTreeCtrl.o myDataGrid.o \
 	ugly.o converters.o config.o main.o
 
