@@ -2,7 +2,7 @@
 if ! [ "$(uname -r|cut -f1,2 -d.)" == "2.6" ]; then
          VERSION=2.0.2
 else
-         VERSION=2.0.4-pre2
+         VERSION=2.0.4-pre3
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -12,7 +12,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 if [ "$VERSION" == "2.0.2" ]; then
           MD5[0]="5bf4d11b21a62bc3ade75f2810c854d6"
 else
-          MD5[0]="f2c729233138ce901e1d34236ffaeb47"
+          MD5[0]=637896baeda98cca75402b59f44b99ab
 fi
            SHORT="File access monitoring module."
        BUILD_API=2
