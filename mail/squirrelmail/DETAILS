@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=xavier@dospins.com
          LICENSE=GPL
            SHORT="Webmail packge written in PHP4."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 SquirrelMail is a standards-based webmail package written in PHP4.
 It includes built-in pure PHP support for the IMAP and SMTP protocols,

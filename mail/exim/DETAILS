@@ -47,6 +47,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20020614
          LICENSE=GPL
            SHORT="exim is an Email server."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="sendmail"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Exim is a message transfer agent (MTA) developed at the University of
 Cambridge for use on Unix systems connected to the Internet. It is

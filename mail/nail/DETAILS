@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          LICENSE=BSD
       MAINTAINER=bluebird@optushome.com.au
            SHORT="A simple command line MTA"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 
 Nail is a mail user agent derived from Berkeley Mail 8.1 and contains builtin

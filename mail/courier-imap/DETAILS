@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=jan.sabbe@student.kuleuven.ac.be
          LICENSE=GPL
            SHORT="courier-imap is an imap server"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="imapd"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Courier-IMAP is a server that provides IMAP access to Maildirs. This
 IMAP server does NOT handle traditional mailbox files (/var/spool/mail,

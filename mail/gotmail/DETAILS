@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          LICENSE=http://ssl.usu.edu/paul/gotmail
       MAINTAINER=dufflebunk@dufflebunk.homeip.net
            SHORT="Utility to download mail from Hotmail accounts"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Gotmail is a utility to non-interactively download email from a Hotmail
 account. It can download messages from all folders, messages from

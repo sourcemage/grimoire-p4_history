@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=paul@moway.co.uk
          LICENSE=http://m-net.arbornet.org/~dlbeer/tty-grin
            SHORT="TTY-Grin is a screen-orientated interactive news and email client"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 TTY-Grin is a screen-orientated interactive news and email client with
 MIME support, the ability to browse multiple news servers, and LISP

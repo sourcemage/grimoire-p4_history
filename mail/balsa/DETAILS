@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=jon-sven@frisurf.no
          LICENSE=GPL
            SHORT="Balsa is a GNOME email client."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Balsa is a GNOME email client. It supports mbox, maildir, and mh local 
 mailboxes, and IMAP4 and POP3 remote mailboxes. You can send mail via 

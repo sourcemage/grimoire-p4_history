@@ -14,6 +14,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20020716
          UPDATED=20020716
            SHORT="Getmail is intended as a simple replacement for fetchmail."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Getmail is intended as a simple replacement for fetchmail. It retrieves mail
 (either all messages, or only unread messages) from one or more POP3 servers

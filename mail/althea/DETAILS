@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=ringram@gargoylecc.com
          LICENSE=GPL
            SHORT="IMAP email client for GTK+"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Althea is intended to be a "stable, easy to use, GUI, IMAP (Internet 
 Message Access Protocol) e-mail client for X Windows."  The design 

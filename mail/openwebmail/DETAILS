@@ -27,9 +27,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://turtle.ee.ncku.edu.tw/openwebmail
          ENTERED=20020323
          UPDATED=20020607
-      MAINTAINER=m.l@compaqnet.fr
+      MAINTAINER=mlubrano@sourcemage.org
          LICENSE=GPL
            SHORT="Open WebMail is a webmail"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Open WebMail is a webmail system based on the Neomail version 1.14 from Ernie Miller. Open WebMail is designed to manage very large mail folder files in a memory efficient way. It also provides a range of features to help users migrate smoothly from Microsoft Outlook to Open WebMail.
 EOF

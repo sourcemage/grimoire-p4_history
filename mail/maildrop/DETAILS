@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=jan.sabbe@student.kuleuven.ac.be
          LICENSE=GPL
            SHORT="maildrop - mail delivery agent with filtering abilities."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 maildrop is a replacement for your local mail delivery agent. maildrop
 reads a mail message from standard input, then delivers the message to

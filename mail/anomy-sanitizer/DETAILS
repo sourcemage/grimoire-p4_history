@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=djcomputer@gmx.net
          LICENSE=GPL
            SHORT="An efficient filter for sanitizing email messages."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="sanitizer.pl"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 The Anomy mail sanitizer is a filter designed to block
 email-based security risks, such as trojans and viruses. It

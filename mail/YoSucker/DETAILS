@@ -11,7 +11,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20020717
          LICENSE=http://$SPELL.sourceforge.net
       MAINTAINER=dufflebunk@dufflebunk.homeip.net
-           SHORT="A simple portable perl application, that would simulate a user actions to retrieve my mail to my local Yahoo! inbox."
+           SHORT="YoSucker simulate user actions to retrieve mails from the Yahoo! inbox."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Yahoo Mail Sucker allows you to download Yahoo Mail messages to your
 local inbox (after the free POP3 service has been suspended). 

@@ -39,6 +39,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/pine$VERSION
          UPDATED=20020115
          LICENSE=UW-PINE
            SHORT="pine-pop3 is a pop3 daemon (part of pine)."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="pop3d"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Pine is a tool for reading, sending, and managing electronic messages.
 Pine was designed by the Office of Computing & Communications at the
