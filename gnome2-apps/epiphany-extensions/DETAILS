@@ -1,15 +1,15 @@
            SPELL=epiphany-extensions
-         VERSION=1.0
+         VERSION=1.1.4
           BRANCH=$(echo $VERSION|cut -d . -f 1,2)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='06f9f8d255189427cc83d45fcc754023'
+          MD5[0]='297a0f4f9454f0f32420713ae545794d'
       LICENSE[0]=GPL
        BUILD_API=2
         WEB_SITE=http://epiphany.mozdev.org
          ENTERED=20040312
-         UPDATED=20040803
+         UPDATED=20040904
            SHORT="Extension for the Epiphany web browser"
 cat << EOF
 Extension plugins for Epiphany web browser

@@ -1,0 +1,17 @@
+           SPELL=vino
+         VERSION=2.7.92
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
+          MD5[0]='4acb319a6a7722d7be8a4ee2cb946cfa'
+      LICENSE[0]=LGPL
+      MAKE_NJOBS=1
+       BUILD_API=2
+        WEB_SITE=http://fixme
+         ENTERED=20040904
+         UPDATED=20040904
+           SHORT=""
+cat << EOF
+
+EOF

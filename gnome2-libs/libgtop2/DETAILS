@@ -1,14 +1,15 @@
            SPELL=libgtop2
-         VERSION=2.6.0
+         VERSION=2.7.92
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=libgtop-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/libgtop-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/libgtop/$BRANCH/$SOURCE
-          MD5[0]='6c5cb8b1e4d2896e9181934d2096c496'
+          MD5[0]='006dbeed87d7271209f1f33c33397f80'
       LICENSE[0]=GPL
+       BUILD_API=2
         WEB_SITE=http://www.gnome.org
          ENTERED=20020509
-         UPDATED=20040409
+         UPDATED=20040904
            SHORT="libgtop fetches information about a system."
 cat << EOF
 libgtop is a library that fetches information about the running

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+. /etc/sysconfig/hald
+
+PROGRAM=/usr/sbin/hald
+RUNLEVEL=3
+NEEDS=""
+#PIDFILE=/var/run/hald/pid
+
+. /etc/init.d/smgl_init
+
+start()
+{
+  echo "Starting hald..."
+  ${PROGRAM} --daemon=$DAEMON
+  evaluate_retval
+}

@@ -1,13 +1,14 @@
            SPELL=gnome-keyring-manager
-         VERSION=0.0.2
+         VERSION=0.0.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='c4e80130bf0d6de8631a9548523ab78e'
+          MD5[0]='d8fa8f38f9168739c12c215696f813c9'
       LICENSE[0]=LGPL
+       BUILD_API=2
          ENTERED=20040712
-         UPDATED=20040713
+         UPDATED=20040730
            SHORT="This a keyring management program for the GNOME Desktop." 
 cat << EOF
 This a keyring management program for the GNOME Desktop.

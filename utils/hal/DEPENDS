@@ -1,0 +1,19 @@
+depends glib    &&
+depends gawk    &&
+depends libtool &&
+depends Python  &&
+depends dbus    &&
+depends hotplug &&
+
+
+optional_depends "expat"                  \
+                 ""                       \
+                 ""                       \
+                 "Enable expat use"       &&
+optional_depends "doxygen"                \
+                 "--enable-doxygen-docs"  \
+                 "--disable-doxygen-docs" \
+                 "Generate Doxygen docs"  
+
+
+# expat should have --with-expat or --without-expat but there is an bug in configure.
