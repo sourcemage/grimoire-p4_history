@@ -3,10 +3,12 @@
           SOURCE=$SPELL-$VERSION.tar.Z
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.cac.washington.edu/$SPELL/$SOURCE
-        WEB_SITE=http://www.washington.edu/imap/
+          MD5[0]=8566cd03027085361f8651553737f135
+   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[1]=${MD5[0]}
+        WEB_SITE=http://www.washington.edu/imap
          ENTERED=20010922
          UPDATED=20020723
-             MD5=8566cd03027085361f8651553737f135
       MAINTAINER=sergeyli@pisem.net
          LICENSE=UW-FF
            SHORT="University of Washington IMAP server with POP3 gateway"
