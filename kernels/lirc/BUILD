@@ -1,5 +1,4 @@
-./configure.sh --build=$BUILD        \
-               --prefix=/usr         \
+./configure    --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
 	       --with-driver=any
