@@ -1,12 +1,14 @@
            SPELL=docconversion
-         VERSION=0.2
+         VERSION=0.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/docconversion/$SOURCE
-          MD5[0]=2ce7a161a3ce7cedfafce38df0c9fc12
+   SOURCE_URL[1]=http://www.schabell.com/linux/mirror/$SOURCE
+          MD5[0]=57e2370c5a777510c4d5870204fea94b
+          MD5[1]=${MD5[0]}
         WEB_SITE=http://docconversion.sf.net
          ENTERED=20031009
-         UPDATED=20031009
+         UPDATED=20031017
       LICENSE[0]=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Command line document conversion tool."
