@@ -1,8 +1,7 @@
 depends Python &&
-depends PyXML  &&
-depends libxml2 &&
-depends pydns  &&
-depends flex   &&
-depends bison  &&
-depends fox  &&
-depends FXPy
+depends PIL &&
+depends pycrypto &&
+depends MOZILLA-BROWSER &&
+
+optional_depends fox  '' '' 'for GUI' &&
+optional_depends FXPy '' '' 'for GUI'
