@@ -1,4 +1,10 @@
-2005-01-23 Eric Sandall <eric@sandall.us>
+2005-01-25 Eric Sandall <eric@sandall.us>
+	* BUILD: Check OPTS for no-krb5 and then pass that, if needed
+	  The real OPTS variable breaks openssl's ./Configure
+	  Forgot to copy my "working" BUILD before submitting
+	* HISTORY: Fixed date (day + 1)
+
+2005-01-24 Eric Sandall <eric@sandall.us>
 	* DETAILS: Added BUILD_API=2
 	* DEPENDS: Added optional dependency on krb5
 	* BUILD: Converted to build_api 2
