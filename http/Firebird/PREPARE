@@ -1,0 +1,19 @@
+if ! grep -q CONFIGURED $SPELL_CONFIG; then
+
+if query "\tThis spell will download the latest offical release of MozillaFirebird.
+\tIt is then possible to update the Firebird code
+\tvia  cvs and get ALL the nice changes since the last release.
+\tWould you like to update to cvs HEAD ?" n 
+then echo "HEADCODE=yes" >> $SPELL_CONFIG
+
+fi &&
+
+echo -e  "VERSION=0.6.1
+SOURCE=MozillaFirebird-source-\$VERSION.tar.bz2
+SOURCE_URL[0]=http://ftp.mozilla.org/pub/firebird/releases/\$VERSION/\$SOURCE
+SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/firebird/releases/\$VERSION/\$SOURCE
+SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/firebird/releases/\$VERSION/\$SOURCE
+SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
+MD5[0]=a7f2c4663356dfd4d1f426b220e3fab9" >> $SPELL_CONFIG &&
+echo CONFIGURED=yes >> $SPELL_CONFIG
+fi
