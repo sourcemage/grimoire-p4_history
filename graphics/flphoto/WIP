@@ -1,0 +1,15 @@
+when used as a spell, it fails on my system with the following error, but doing 'make' 
+manually, builds the .po files ok!!
+
+
+Compiling espmsg.c...
+cc1: warning: "-fno-rtti" is valid for C++ but not for C/ObjC
+cc1: warning: "-fno-rtti" is valid for C++ but not for C/ObjC
+espmsg.c: In function `translate_messages':
+espmsg.c:716: warning: `ch' might be used uninitialized in this function
+Linking espmsg...
+ ! Problem Detected !
+Generating po/de...
+make[1]: *** [po/de] Segmentation fault
+make[1]: Leaving directory `/usr/src/flphoto-1.2'
+
