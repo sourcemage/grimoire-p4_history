@@ -9,6 +9,6 @@
   install -m 0644 $SOURCE_LIB/libf77blas.a  /usr/lib  &&
   install -m 0644 $SOURCE_LIB/liblapack.a   /usr/lib  &&
   install -m 0644 $SOURCE_DIRECTORY/include/cblas.h      /usr/include  &&
-  install -m 0644 $SOURCE_DIRECTORY/include/clapack.h.a  /usr/include
+  install -m 0644 $SOURCE_DIRECTORY/include/clapack.h    /usr/include
 
 ) > $C_FIFO 2>&1
