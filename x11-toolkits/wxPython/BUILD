@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/glcanvas.diff &&
+#  patch -p1 < $SCRIPT_DIRECTORY/glcanvas.diff &&
   cd wxPython &&
   python setup.py WXPORT=gtk2 build &&
 
