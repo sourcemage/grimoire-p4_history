@@ -1,4 +1,6 @@
-depends db '--with-bdb' &&
+depends raptor '--with-raptor=system'  &&
+
+depends db '--with-bdb=/usr' &&
 depends libxml2 '--with-xml-parser=libxml' &&
 depends openssl '--with-openssl-digests' &&
 
