@@ -1,6 +1,7 @@
            SPELL=xfree86
-         VERSION=4.3.0
-        XVERSION=${VERSION//./}
+         VERSION=4.3.0.1
+     OLD_VERSION=4.3.0
+        XVERSION=${OLD_VERSION//./}
           SOURCE=X${XVERSION}src-1.tgz
          SOURCE2=X${XVERSION}src-2.tgz
          SOURCE3=X${XVERSION}src-3.tgz
@@ -8,15 +9,17 @@
          SOURCE5=X${XVERSION}src-5.tgz
          SOURCE6=X${XVERSION}src-6.tgz
          SOURCE7=X${XVERSION}src-7.tgz
+         SOURCE8=${OLD_VERSION}-${VERSION}.diff.gz
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
-   SOURCE_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE
-  SOURCE2_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE2
-  SOURCE3_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE3
-  SOURCE4_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE4
-  SOURCE5_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE5
-  SOURCE6_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE6
-  SOURCE7_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE7
+   SOURCE_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE
+  SOURCE2_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE2
+  SOURCE3_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE3
+  SOURCE4_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE4
+  SOURCE5_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE5
+  SOURCE6_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE6
+  SOURCE7_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE7
+  SOURCE8_URL[0]=$XFREE86_URL/${OLD_VERSION}/fixes/$SOURCE8
           MD5[0]=90fd1261c1a70510a12fececedadf1a9
           MD5[1]=b8a1c45dd8c59549e435111115a439d3
           MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
@@ -24,14 +27,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
           MD5[4]=3b8d6ded289c64af6055c915f05326e8
           MD5[5]=fb8a4e286d9691a13bc2df84e5149a0e
           MD5[6]=f689e23a1bf1c15a91c998be971e5660
+          MD5[7]=204b3ba31b6c34442bfa902337a548db
         WEB_SITE=http://www.xfree86.org/
          ENTERED=20010922
          UPDATED=20021202
-         LICENSE=XCL
+      LICENSE[0]=XCL
            SHORT="xfree86 is a free implementation of the X Window System."
-    
 cat << EOF
-
 What is XFree86?
 
 The XFree86 Project, Inc is an organisation which produces
@@ -54,11 +56,4 @@ MIPS CPU families.
 Our goal at XFree86 is to have X run on every platform
 available, including those we do not currently support, as
 the best windowing system available on that platform.
-
 EOF
-
-
-
-
-
-

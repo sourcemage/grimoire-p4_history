@@ -17,21 +17,46 @@ message  "Building XFree86 takes a very long time."
 
 ( 
 
+  # Apply 4.3.0.1 patch
+  zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
+
   if  spell_installed  Linux-PAM
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
-  fi
+  fi                                               &&
 
-  make  World                                                    &&
+  #
+  # 'make  World' substitutes for the following
+  # 'make  Makefile'
+  # 'make  Makefiles'
+  # 'make  includes'
+  # 'make  depend'
+  # 'make'
+  #
+  # If you want 'make  World' to stop on the first error
+  # encountered, use 'make  WORLDOPTS= World'
+  #
+
+  make  World
+
+  # Fix Bug #3486, which stops the build process
+  #
+
+  mkdir  lib/font/builtins/unshared                              &&
+  cp  lib/font/builtins/*.*  lib/font/builtins/unshared          &&
+
+  #
+  # Start compiling where the prior left off
+  #
+
+  make                                                           &&
   prepare_install                                                &&
   # the following is needed for pkgconfig to find the .pc files
   mkdir  -p  /usr/X11R6/lib                                      &&
   ln -sf  /usr/lib/pkgconfig  /usr/X11R6/lib                     &&
-  cd    $SOURCE_DIRECTORY                                        &&
   make  install                                                  &&
   make  install.man                                              &&
         install_drm                                              &&
   mkdir  -p  /usr/X11R6/include/GL
-
 
 ) > $C_FIFO 2>&1  &&  (
 
