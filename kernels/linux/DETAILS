@@ -5,6 +5,14 @@ if [ -f $DEPENDS_CONFIG/$SPELL ]; then
   source $DEPENDS_CONFIG/$SPELL
 fi
 
+#
+# oldconfig needs to be seen when asking for input
+#
+if  [  "$OLD_CONFIG"  ==  "y"  ]
+then
+  VOYEUR="on"
+fi
+
 # This is for the the web scripts that parse the version number
 VERSION=2.6.8.1
 

@@ -6,24 +6,27 @@ HELP="This patch allows you to use a graphical boot splash screen instead of all
 
 See http://www.bootsplash.de"
 
-VERSIONS="3.1.4-2.6.7-rc3
+VERSIONS="3.1.4-sp3-2.6.8.1
+3.1.4-sp3-2.6.7
+3.1.4-2.6.7-mm5
 3.1.4-2.6.6
 3.1.4-2.6.5
 3.1.4-2.6.4-r3
 3.1.4-2.6.3
 3.0.7-2.4.25-debian
 3.0.7-2.4.26-debian
-3.0.7-2.4.22-vanilla
-3.0.7-2.4.20-vanilla"
-MD5S[0]=cc7b066a419f445567a00a3191da1bc3
-MD5S[1]=6dff970bf648d1c7ae8fe7a591e2d351
-MD5S[2]=d6e08e52fc9b21f43b6826a8add4d8af
-MD5S[3]=e411ca6985fa1950fb57f5e456259d44
-MD5S[4]=4a939f0562d2ef619cf262c76174ebdb
-MD5S[5]=b6ba5515e5715390a193c961e7ca9b9c
-MD5S[6]=041571a3e5ac577a8e59055d87b2a7ca
-MD5S[7]=d9a1d57c00156e77660fb32b4c1a9df7
-MD5S[8]=bd1de9d02172047227fc52a04fc94d81
+3.0.7-2.4.22-vanilla"
+
+MD5S[0]=fd988cbdc7b312b5c4a5cebe50818bf1
+MD5S[1]=5d20d8a240a449da80e0e0be30b68495
+MD5S[2]=15e6f997321e9cb84a17e3b76fe0c4f5
+MD5S[3]=6dff970bf648d1c7ae8fe7a591e2d351
+MD5S[4]=d6e08e52fc9b21f43b6826a8add4d8af
+MD5S[5]=e411ca6985fa1950fb57f5e456259d44
+MD5S[6]=4a939f0562d2ef619cf262c76174ebdb
+MD5S[7]=b6ba5515e5715390a193c961e7ca9b9c
+MD5S[8]=041571a3e5ac577a8e59055d87b2a7ca
+MD5S[9]=d9a1d57c00156e77660fb32b4c1a9df7
 
 if [[ "$1" == "CONFIG" ]]; then
    if [[ "${!PATCH}" > "3.1.4-2.5.9" ]]; then
