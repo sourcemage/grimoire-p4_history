@@ -1,6 +1,10 @@
 patch -p0 < $SCRIPT_DIRECTORY/Makefile-shared.patch  &&
 patch -p0 < $SCRIPT_DIRECTORY/libmpeg3-fixes.patch   &&
 
+# fails to compile with -DPIC -fPIC
+CFLAGS=${CFLAGS/-DPIC/}  &&
+CFLAGS=${CFLAGS/-fPIC/}  &&
+
 if ! echo $CFLAGS | grep -q -- "-O."; then
   CFLAGS="$CFLAGS -O2"
 fi  &&

@@ -7,6 +7,11 @@ if gcc -dumpversion ! grep -q ^3.3; then
   CFLAGS=${CFLAGS/pentium4/i686}
 fi
 
+# fails to compile with -DPIC and -fPIC
+CFLAGS=${CFLAGS/-DPIC/}
+CFLAGS=${CFLAGS/-fPIC/}
+CXXFLAGS=$CFLAGS
+
 # gcc 3.4 fix
 sedit  's/KEEP_SOURCE:/KEEP_SOURCE: ;/'  lavtools/lavpipe.c   &&
 sedit  's/(uint8_t \*)/uint8_t */'       mpeg2enc/picture.cc  &&
