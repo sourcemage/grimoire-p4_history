@@ -7,11 +7,11 @@ if [ "$KERN" = "2.4" ]; then
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
       SOURCE_URL=http://download.sourcemage.org/mirror/$SOURCE
 elif [ "$KERN" = "2.6" ]; then
-         VERSION=2.6.5.1
-          MD5[0]=0ea75dd6414b1d5ac41dda70ebe8ca84
+         VERSION=2.6.5.2
+          MD5[0]=6da62db6ec5165d5e8aad51fdd03002b
           SOURCE=linux-libc-headers-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/linux-libc-headers-$VERSION
-      SOURCE_URL=http://ep09.pld-linux.org/~mmazur/glibc-kernel-headers/$SOURCE
+      SOURCE_URL=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE
 fi
       LICENSE[0]=GPL
          ENTERED=20040129
