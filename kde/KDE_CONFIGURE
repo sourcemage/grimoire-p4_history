@@ -1,26 +1,12 @@
-#
-# config_query_option doesn't clear the variables, but we don't
-# want to keep appending
-#
-unset  KDE_DEBUG  KDE_FINAL
-
-config_query  KDE_DEVEL  "Use DEVEL (unstable) version?"  n
-
-config_query_option  KDE_DEBUG                \
-                     "Enable debug code?"  n  \
-                     "--enable-debug"         \
-                     "--disable-debug"
-
-message  "${MESSAGE_COLOR}Final code builds size optimized apps (experimental - needs lots of memory)${DEFAULT_COLOR}"
-
-config_query_option  KDE_FINAL                \
-                     "Enable final code?"  n  \
-                     "--enable-final"         \
-                     "--disable-final"
+config_query  KDE_DEVEL  "Use DEVEL (unstable) version?"  n  &&
+config_query  KDE_DEBUG  "Enable debug code?"             n  &&
+message  "${MESSAGE_COLOR}Final code builds size optimized apps (experimental - needs lots of memory)"  \
+         "Final code can send files up to 250Mb if used with distcc${DEFAULT_COLOR}"  &&
+config_query  KDE_FINAL  "Enable final code?"             n  &&
 
 #
 # Final code makes objects up to 250Mb
 #
-message  "${MESSAGE_COLOR}Final code can send files up to 250Mb if used with distcc${DEFAULT_COLOR}"
-
 config_query  KDE_DISTCC  "Enable distcc?"  y
+
+#config_query  KDE_DNOTIFY  "Use Linux directory notifications?"  n
