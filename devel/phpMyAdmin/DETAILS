@@ -1,17 +1,16 @@
            SPELL=phpMyAdmin
-         VERSION=2.5.7-pl1
+         VERSION=2.6.0-pl1
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/phpmyadmin/${SOURCE}
+          MD5[0]=f2c37e176cf8763a7d0437b36b2c3784
         WEB_SITE=http://www.phpmyadmin.net/
-      MAINTAINER=jason@flattfamily.com
-      LICENSE[0]=GPL
-          MD5[0]='db790e573a1158a85ee7692fa222a80e'
          ENTERED=20030120
          UPDATED=20040209
-           SHORT="phpMyAdmin is a PHP/Web-based MySQL server/database management tool."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="PHP/Web-based MySQL server/database management tool."
 cat << EOF
-
 phpMyAdmin can manage a whole MySQL-server (needs a super-user) but also a
 single database.  To accomplish the latter you'll need a properly set up
 MySQL-user who can read/write only the desired database.  It's up to you to
@@ -37,5 +36,4 @@ look up the appropriate part in the MySQL manual.  Currently phpMyAdmin can:
 (*) phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2 formats) dumps and
 CSV exports if you use PHP4 >= 4.0.4 with Zlib support (--with-zlib) and/or
 Bzip2 support (--with-bz2).
-
 EOF
