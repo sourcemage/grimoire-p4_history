@@ -9,6 +9,7 @@ PIDFILE=/var/run/dbus/pid
 
 start() {
   echo  "Starting system message bus..."
+  mkdir -p  /var/run/dbus
   loadproc $PROGRAM $ARGS
 }
 
