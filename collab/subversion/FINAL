@@ -1,6 +1,3 @@
-# $Id: POST_INSTALL,v 1.3 2002/10/30 19:39:23 sergeyli Exp $
-if httpd -t; then
-  if [ -x /etc/init.d/runlevels/%3/apache ]; then
-    query 'Would you like to restart the HTTPD?' n && telinit run apache restart
-  fi
+if  [  "RHTTPD"  ==  "y"  ];  then
+  telinit  run  apache  restart
 fi
