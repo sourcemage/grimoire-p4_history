@@ -1,0 +1,118 @@
+*** config.h-dist
+--- config.h-dist
+***************
+*** 21,27 ****
+   * following to change the default headers
+   */
+   
+! /* #define GNKSA	*/
+  
+  
+  /************************* DATABASE CONFIGURATION ***************************
+--- 21,27 ----
+   * following to change the default headers
+   */
+   
+! #define GNKSA
+  
+  
+  /************************* DATABASE CONFIGURATION ***************************
+***************
+*** 100,106 ****
+   *	LIB_DIRECTORY defined below.
+   */
+  
+! #define NNTP_SERVER	"/usr/local/lib/nntp_server"
+  
+  /*
+   *	Define NNTP_PATH_HOSTNAME to force a specific hostname into the
+--- 100,106 ----
+   *	LIB_DIRECTORY defined below.
+   */
+  
+! #define NNTP_SERVER	"/etc/nntp_server"
+  
+  /*
+   *	Define NNTP_PATH_HOSTNAME to force a specific hostname into the
+***************
+*** 138,144 ****
+   *	conf/s-template.h as a starting point for writing you own.
+   */
+  
+! #include "s-sunos5.h"
+  
+  
+  /********************** MACHINE DEPENDENT DEFINITIONS **********************
+--- 138,144 ----
+   *	conf/s-template.h as a starting point for writing you own.
+   */
+  
+! #include "s-linux.h"
+  
+  
+  /********************** MACHINE DEPENDENT DEFINITIONS **********************
+***************
+*** 149,155 ****
+   *	conf/m-template.h as a starting point for writing you own.
+   */
+  
+! #include "m-sparc.h"
+  
+  
+  /**************************** LOCALIZATION ****************************
+--- 149,155 ----
+   *	conf/m-template.h as a starting point for writing you own.
+   */
+  
+! #include "m-i80386.h"
+  
+  
+  /**************************** LOCALIZATION ****************************
+***************
+*** 182,189 ****
+   *			   (= LIB_DIRECTORY/Log if undefined).
+   */
+  
+! #define BIN_DIRECTORY	"/usr/local/bin"
+! #define LIB_DIRECTORY	"/usr/local/lib/nn"
+  
+  
+  /*************************** NEWS TRANSPORT **************************
+--- 182,189 ----
+   *			   (= LIB_DIRECTORY/Log if undefined).
+   */
+  
+! #define BIN_DIRECTORY	"/usr/bin"
+! #define LIB_DIRECTORY	"/usr/lib/nn"
+  
+  
+  /*************************** NEWS TRANSPORT **************************
+***************
+*** 307,319 ****
+   *	DAEMON_MAN	- nnmaster
+   */
+  
+! #define USER_MAN_DIR	"/usr/local/man/man1"
+  #define USER_MAN_SECTION	"1"
+  
+! #define SYS_MAN_DIR	"/usr/local/man/man1"
+  #define SYS_MAN_SECTION		"1m"
+  
+! #define DAEMON_MAN_DIR	"/usr/local/man/man8"
+  #define DAEMON_MAN_SECTION	"8"
+  
+  
+--- 307,319 ----
+   *	DAEMON_MAN	- nnmaster
+   */
+  
+! #define USER_MAN_DIR	"/usr/man/man1"
+  #define USER_MAN_SECTION	"1"
+  
+! #define SYS_MAN_DIR	"/usr/man/man1"
+  #define SYS_MAN_SECTION		"1m"
+  
+! #define DAEMON_MAN_DIR	"/usr/man/man8"
+  #define DAEMON_MAN_SECTION	"8"
+  
+  
