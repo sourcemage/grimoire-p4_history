@@ -21,7 +21,7 @@ message  "Building XFree86 takes a very long time."
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi
 
-  make  World                                                    &&
+  make  WORLDOPTS= World                                         &&
   prepare_install                                                &&
   # the following is needed for pkgconfig to find the .pc files
   mkdir  -p  /usr/X11R6/lib                                      &&
