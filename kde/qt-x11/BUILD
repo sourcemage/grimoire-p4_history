@@ -37,6 +37,6 @@ export QTDIR=$SOURCE_DIRECTORY  &&
   make symlinks sub-src sub-tools                  &&
   prepare_install                                  &&
   make install                                     &&
-  ln -sf /usr/lib/libqt-mt.so.${VERISON} /usr/lib/libqt-mt.so
+  ln -sf /usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
 
 ) > $C_FIFO 2>&1
