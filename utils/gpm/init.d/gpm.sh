@@ -20,7 +20,7 @@ MOUSECFG=/etc/sysconfig/mouse
 case  $1  in
   start)
     echo "$1ing gpm"
-    loadproc  gpm -t "$MOUSE" -m "$DEV"
+    loadproc  gpm -m "$DEV" -t "$MOUSE"
     ;;
 
   stop)
@@ -31,7 +31,7 @@ case  $1  in
   restart)
     echo "Reloading gpm"
     killproc  gpm 
-    loadproc  gpm -t "$MOUSE" -m "$DEV"
+    loadproc  gpm -m "$DEV" -t "$MOUSE"
     ;;
 
   status)
