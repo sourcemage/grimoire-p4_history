@@ -1,2 +1,2 @@
-message ${RED} Firebird is now called firefox, this has transition has bee magical except for this failure ${DEFAULT_COLOR} &&
+message ${RED} Firebird is now called firefox, the transition has been magical except for this failure ${DEFAULT_COLOR} &&
 false
