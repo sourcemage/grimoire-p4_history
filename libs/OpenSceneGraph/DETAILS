@@ -1,14 +1,13 @@
            SPELL=OpenSceneGraph
-         VERSION=0.9.4-2
+         VERSION=0.9.6-2
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/\-2/}
-   SOURCE_URL[0]=http://www.openscenegraph.org/download/snapshots/$SOURCE
-          MD5[0]=adbe70fbcfcfa43e92bfcbb2ab5b24fe
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openscenegraph/$SOURCE
+          MD5[0]=67fabde1c16e90d049bbd56fe77052d2
       LICENSE[0]=LGPL
         WEB_SITE=http://www.openscenegraph.org/
-      MAINTAINER=rycee@home.se
          ENTERED=20021102
-         UPDATED=20021102
+         UPDATED=20031208
            SHORT="A free scene graph library."
 
 cat << EOF
