@@ -1,6 +1,30 @@
+2005-02-22 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.50
+	  Removed FORCE_DOWNLOAD for exiscan
+	* PREPARE,PRE_BUILD: Removed (exiscan is now part of exim :))
+	* CONFIGURE: Added queries for maildir, mailstore, and mbx support in
+	  appendfile transport (default 'n')
+	  Added Oracle, /etc/passwd, and NIS lookups (default 'n')
+	  Added cram/md5, plaintext, and spa authentication
+	  Added option for frozen message moving
+	  Added "&&" after config_queries
+	  Prepend variables with EXIM_
+	  Renamed backup_file to exim_backup_file
+	  Fixes Bug #8073
+	* DEPENDS: Added optional (via config_query) dependencies on openssl,
+	  gnutls, readline, cyrus-sasl, and postgresql
+	  Enabled mysql (no longer broken) and postgresql support
+	  Prepend variables with EXIM_
+	* CONFLICTS: Added "&&"s
+	* BUILD: configure Local/Makefile for options from CONFIGURE and DEPENDS
+	  Removed exiscan patch
+	  Added missing "&&"s
+	* INSTALL: Removed explicit exiscan installation
+	* FINAL: Prepend variables with EXIM_
+	  Renamed backup_file to exim_backup_file
+
 2005-01-29 Arjan Bouter <abouter@sourcemage.org>
-        * BUILD, DEPENDS, PRE_REMOVE:
-	  spell_installed -> spell_ok conversion
+	* BUILD, DEPENDS, PRE_REMOVE: spell_installed -> spell_ok conversion
 
 2005-01-22 Rafael George <george.rafael@gmail.com>
     * linux-pam rename lower case

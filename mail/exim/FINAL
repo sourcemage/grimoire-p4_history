@@ -10,7 +10,7 @@ then
   fcrontab -                2>/dev/null
 fi  &&
 
-if  [  "$HCCRON"  ==  "y"  ]
+if  [  "$EXIM_HCCRON"  ==  "y"  ]
 then
  echo  -e  "`crontab  -l           |
  sed   -n  4~1p                    |
@@ -18,12 +18,12 @@ then
  crontab -
 fi  &&
 
-if  [  "$SKIPRESTORE"  ==  "y"  ]
+if  [  "$EXIM_SKIPRESTORE"  ==  "y"  ]
 then
-  message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file later yourself)"  &&
+  message "${MESSAGE_COLOR}Restore skipped. (you can still use $exim_backup_file later yourself)"  &&
   message " ${DEFAULT_COLOR}"
 else
-  tar -C / -xjvPf $backup_file
+  tar -C / -xjvPf $exim_backup_file
 fi
 
 message  "${MESSAGE_COLOR}Be sure to verify your mail server still relays as"  \

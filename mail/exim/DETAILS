@@ -1,5 +1,5 @@
            SPELL=exim
-         VERSION=4.44
+         VERSION=4.50
           SOURCE=exim-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.us.exim.org/ftp/exim4/$SOURCE
@@ -22,16 +22,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
   SOURCE_URL[17]=ftp://nagoya.linux.or.jp/mirror/exim/exim4/$SOURCE
   SOURCE_URL[18]=ftp://ftp.demon.nl/pub/mirrors/exim/exim4/$SOURCE
   SOURCE_URL[19]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[0]=d5d0216fd807a62ea8d354e3505827ed
+          MD5[0]=04a9bf1f61687ebf94eabfe71af205f6
         WEB_SITE=http://www.exim.org
          ENTERED=20020227
          UPDATED=20050112
       LICENSE[0]=GPL
-       BUILD_API=2
       MAKE_NJOBS=1
-if  [  "$EXISCAN"  ==  "y"  ];  then
-  FORCE_DOWNLOAD="on"
-fi
+       BUILD_API=2
            SHORT="An e-mail server"
 cat << EOF
 Exim is a message transfer agent (MTA) developed at the University of
