@@ -17,9 +17,12 @@ message  "Building XFree86 takes a very long time."
 
 ( 
 
+  # Apply 4.3.0.1 patch
+  zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
+
   if  spell_installed  Linux-PAM
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
-  fi
+  fi                                               &&
 
   #
   # 'make  World' substitutes for the following
