@@ -48,7 +48,7 @@ message  "${MESSAGE_COLOR}MySQL support is currently broken${DEFAULT_COLOR}"  &&
 persistent_add  MYSQL  &&
 MYSQL="n"  &&
 
-if  spell_installed  Linux-PAM
+if  spell_installed  linux-pam
 then
   config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  y
 else
@@ -89,7 +89,7 @@ fi  &&
 
 if  [ "$LINUXPAM"  ==  "y"  ]
 then
-  depends  Linux-PAM
+  depends  linux-pam
 fi  &&
 
 if  [ "$OPENLDAP"  ==  "y"  ]
