@@ -41,8 +41,6 @@
 #
 #########################################################################
 #
-#source /etc/sorcery/config
-source /var/lib/sorcery/modules/libgrimoire
 
 ACE_ERRFILE=/tmp/myacemaker.err
 OLD_ACE_TAR_FILE=oldACE.tar
@@ -60,6 +58,7 @@ USAGE="<Usage> : myacemaker [ auto ]"
 
 MY_ACEDIR=/usr/src
 ACE_ROOT=/usr/lib/ACE
+TAO_ROOT=/usr/lib/ACE/TAO
 
 #######################################################
 # Platform specific config file in ${ACE_ROOT}/ace/
@@ -250,18 +249,21 @@ then
 fi
 
 echo ""
-echo "Making ACE now. Examine file ${ACE_ERRFILE} for errors ..."
+echo "Making ACE now..."
 echo ""
 
 cd ${ACE_ROOT}
-
-echo ""
-echo "Executing <make> ..."
-echo ""
 make 
 
 echo ""
-echo "********** End of myacemaker script !!! ***********"
+echo "Making TAO now..."
+echo ""
+
+cd ${TAO_ROOT}
+make
+
+echo ""
+echo "********** End of myacemaker installation script, get ready to ACE/TAO !!! ***********"
 echo ""
 
 #

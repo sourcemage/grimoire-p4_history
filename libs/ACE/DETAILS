@@ -1,14 +1,17 @@
            SPELL=ACE
+          SPELL2=TAO
          VERSION=5.3
-          SOURCE=$SPELL-$VERSION.tar.gz
+        VERSION2=1.3
+          SOURCE=${SPELL}-${VERSION}+${SPELL2}-${VERSION2}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_wrappers
    SOURCE_URL[0]=http://deuce.doc.wustl.edu/$SOURCE
-          MD5[0]=08bb06cc2734c8beece68fd7506ebb78
+          MD5[0]=2dfd27dc599ff26c2868888557c0602d
       LICENSE[0]=http://www.cs.wustl.edu/~schmidt/ACE-copying.html
         WEB_SITE=http://www.cs.wustl.edu/~schmidt/ACE.html
+      MAINTAINER=eschabell@sourcemage.org
          ENTERED=20031012
-         UPDATED=20031012
-           SHORT="ACE is a framework for concerent communication software."
+         UPDATED=20031013
+           SHORT="ACE/TAO is a framework for concerent communication software."
 cat << EOF
 The ADAPTIVE Communication Environment (ACE) is a freely available, 
 open-source object-oriented (OO) framework that implements many core 
@@ -29,10 +32,13 @@ concurrency. In addition, ACE automates system configuration and
 reconfiguration by dynamically linking services into applications at 
 run-time and executing these services in one or more processes or threads. 
 
-ACE continues to improve and its future is bright. ACE is supported 
-commercially via the Riverace corporation using an open-source business 
-model. In addition, many members of the ACE development team are currently 
-working on building The ACE ORB (TAO). 
+TAO is a freely available, open-source, and standards-compliant real-time 
+implementation of CORBA that provides efficient, predictable, and scalable 
+quality of service (QoS) end-to-end. Unlike conventional implementations of 
+CORBA, which are inefficient, unpredictable, non-scalable, and often 
+non-portable, TAO applies the best software practices and patterns to 
+automate the delivery of high-performance and real-time QoS to distributed 
+applications. 
 
 Notes:
 	This is a massive communications framework, so be aware that building 
