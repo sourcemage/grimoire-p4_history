@@ -7,18 +7,18 @@ cd $SOURCE_DIRECTORY  && tar -xvzf /var/spool/sorcery/$SOURCE
 extras="`ls $SOURCE_DIRECTORY`"
 echo "license agreement"
 
-less $SOURCE_DIRECTORY/LICENSE && 
+less $SOURCE_DIRECTORY/LICENSE  
 
-if ! query "Do you agree to the terms of the license?" y; then
-	rm $SOURCE_DIRECTORY/*
-	return 1 
-fi
-
-
-echo "moving files" 
-mv $SOURCE_DIRECTORY/*.fw /usr/lib/hotplug/firmware/
+# because the tarball is just files and no dir *lame* 
 for x in $extras
 do
 	rm /usr/src/$x
 done
-return 0
+
+if ! query "Do you agree to the terms of the license?" y; then
+	rm $SOURCE_DIRECTORY/*
+	return 1 
+else
+	cp $SOURCE_DIRECTORY/*.fw /usr/lib/hotplug/firmware/
+	return 0
+fi
