@@ -1,13 +1,13 @@
             SPELL=vtk
-          VERSION=4.0
-           SOURCE=vtk40Src.tar.gz
+          VERSION=4.2.2
+           SOURCE=VTK-${VERSION}.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/VTK
-    SOURCE_URL[0]=http://public.kitware.com/VTK/files/release/$VERSION/$SOURCE
+    SOURCE_URL[0]=http://public.kitware.com/VTK/files/release/${VERSION/\.2/}/$SOURCE
          WEB_SITE=http://public.kitware.com/VTK
        LICENSE[0]=http://public.kitware.com/VTK/copyright.php
-	   MD5[0]=IGNORE
+	   MD5[0]=a5fd6d61a24a9231854b2acd5ea45d3e
           ENTERED=20020606
-          UPDATED=20020606
+          UPDATED=20030708
        MAINTAINER=zoran@idi.ntnu.no
             SHORT="library for visualization, image processing, 3D graphics"
 cat << EOF
