@@ -1,0 +1,21 @@
+           SPELL=objprelink
+         VERSION=unknown
+          SOURCE=objprelink.c.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://leon.bottou.com/objprelink/objprelink.c.gz
+        WEB_SITE=http://leon.bottou.com/objprelink/
+         ENTERED=20020310
+         UPDATED=20020310
+           SHORT="Faster startups by fixing C++ object files"
+cat << EOF
+This is a Hack.
+It does not work with binutils 2.12 - you need to downgrade to 2.11.x,
+otherwise things will crash all the time !
+
+Also. this will most likely be obsolete in the future, when we manage to
+switch to Jakub Jelinek's prelinker or something similar.
+
+Program objprelink runs after the C++ compiler and before the C++ linker.
+It transforms the .o files and tries to replace expensive relocations by cheaper ones.
+This eventually requires less work from the dynamical loader and provides for faster startups in large C++ applications.
+EOF
