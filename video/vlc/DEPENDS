@@ -4,6 +4,11 @@ optional_depends  "gtk+"                  \
                   "--disable-gtk"         \
                   "for gtk interface"     &&
 
+optional_depends  "wxGTK"                 \
+                  ""                      \
+                  ""                      \
+                  "for wxGTK interface"   &&
+
 optional_depends  "gnome-libs"            \
                   "--enable-gnome"        \
                   ""                      \
@@ -14,11 +19,10 @@ optional_depends  "qt-x11"                \
                   ""                      \
                   "for qt interface"      &&
 
-#optional_depends  "kdelibs"               \
-#                  "--enable-kde"          \
-#                  ""                      \
-#                  "for kde interface"     &&
-# Only works for kde 2 for now... :(
+optional_depends  "kdelibs"               \
+                  "--enable-kde"          \
+                  ""                      \
+                  "for kde interface"     &&
 
 optional_depends  "ncurses"               \
                   "--enable-ncurses"      \
@@ -34,12 +38,22 @@ optional_depends  "lirc"                  \
 optional_depends  "SDL"                   \
                   ""                      \
                   "--disable-sdl"         \
-                  "for SDL support"       &&
+                  "for SDL video output"  &&
 
 optional_depends  "aalib"                 \
                   "--enable-aa"           \
                   ""                      \
-                  "for aalib support"     &&
+                  "for aalib video output" &&
+
+optional_depends  "libggi"                \
+                  "--enable-ggi"          \
+                  ""                      \
+                  "for GGI video output"  &&
+
+optional_depends  "svgalib"               \
+                  "--enable-svgalib"      \
+                  ""                      \
+                  "for svgalib video output" &&
 
 # audio output options
 optional_depends  "esound"                \
@@ -68,13 +82,24 @@ optional_depends  "libvorbis"              \
                   "--disable-vorbis"       \
                   "for ogg vorbis decoder" &&
 
+# video codec options
+optional_depends  "ffmpeg"                 \
+                  "--enable-ffmpeg"        \
+                  ""                       \
+                  "for ffmpeg video decoder" &&
+
+optional_depends  "xvid"                   \
+                  "--enable-xvid"          \
+                  ""                       \
+                  "for xvid video decoder" &&
+
 # dvd options
 optional_depends  "libdvdcss"              \
                    ""                      \
-                   ""                      \
-                   "to play encrypted DVDs (you can also use libdvdread for this, see next option)" &&
+                   "--disable-dvd"         \
+                   "for DVD support"       &&
 
-optional_depends  "libdvdread"             \
-                  "--enable-dvdread"       \
+optional_depends  "libdvdplay"             \
                   ""                       \
-                  "to play encrypted DVDs"
+                  ""                       \
+                  "for DVD navigation support"

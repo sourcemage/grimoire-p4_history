@@ -1,15 +1,15 @@
            SPELL=pciutils
-         VERSION=2.1.10
-          SOURCE=${SPELL}-${VERSION}.tar.gz
-          MD5[0]='4b44ee3b20a986fbefabc605af41b5cf'
+         VERSION=2.1.11
+          SOURCE=$SPELL-$VERSION.tar.gz
+          MD5[0]='8fe6b789898a3c6fe08d2134ca542526'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/$SOURCE
    SOURCE_URL[1]=$KERNEL_URL/pub/software/utils/pciutils/$SOURCE
    SOURCE_URL[2]=http://www.ibiblio.org/pub/Linux/hardware/$SOURCE
-        WEB_SITE=unknown
+        WEB_SITE=http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html
          ENTERED=20020125
-         UPDATED=20020807
-           SHORT="setpci and lspci utils."
+         UPDATED=20030116
+           SHORT="setpci and lspci utilities"
 cat << EOF
 
 The PCI Utilities package contains a library for portable access to PCI
@@ -27,4 +27,5 @@ setpci:		allows to read from and write to PCI device
 		configuration registers.  For example, you can adjust
 		the latency timers with it.
 
+See also http://pciids.sourceforge.net/.
 EOF

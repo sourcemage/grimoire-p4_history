@@ -1,0 +1,92 @@
+diff -uprN horde-2.2.1/config/registry.php.dist horde/config/registry.php.dist
+--- horde-2.2.1/config/registry.php.dist	2002-12-29 20:26:06.000000000 -0500
++++ horde/config/registry.php.dist	2003-02-17 10:06:54.000000000 -0500
+@@ -76,14 +76,14 @@ $this->registry['tasks']['add'] = 'nag';
+  */
+ 
+ $this->applications['horde'] = array(
+-    'fileroot' => dirname(__FILE__) . '/..',
++    'fileroot' => HORDE_BASE,
+     'webroot' => '/horde',
+     'initial_page' => 'login.php',
+     'icon' => '/horde/graphics/home.gif',
+     'name' => _("Horde"),
+     'allow_guests' => true,
+     'status' => 'active',
+-    'templates' => dirname(__FILE__) . '/../templates',
++    'templates' => HORDE_BASE . '/templates',
+     'cookie_domain' => $_SERVER['SERVER_NAME'],
+     'cookie_path' => '/horde',
+     'server_name' => $_SERVER['SERVER_NAME'],
+@@ -91,7 +91,7 @@ $this->applications['horde'] = array(
+ );
+ 
+ $this->applications['logout'] = array(
+-    'fileroot' => dirname(__FILE__) . '/..',
++    'fileroot' => HORDE_BASE,
+     'webroot' => $this->applications['horde']['webroot'],
+     'initial_page' => 'login.php?reason=logout',
+     'icon' => $this->applications['horde']['webroot'] . '/graphics/logout.gif',
+@@ -101,7 +101,7 @@ $this->applications['logout'] = array(
+ );
+ 
+ $this->applications['imp'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../imp',
++    'fileroot' => HORDE_BASE . '/imp',
+     'webroot' => $this->applications['horde']['webroot'] . '/imp',
+     'icon' => $this->applications['horde']['webroot'] . '/imp/graphics/imp.gif',
+     'name' => _("Mail"),
+@@ -110,7 +110,7 @@ $this->applications['imp'] = array(
+ );
+ 
+ $this->applications['turba'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../turba',
++    'fileroot' => HORDE_BASE . '/turba',
+     'webroot' => $this->applications['horde']['webroot'] . '/turba',
+     'icon' => $this->applications['horde']['webroot'] . '/turba/graphics/turba.gif',
+     'name' => _("Address Book"),
+@@ -119,7 +119,7 @@ $this->applications['turba'] = array(
+ );
+ 
+ $this->applications['kronolith'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../kronolith',
++    'fileroot' => HORDE_BASE . '/kronolith',
+     'webroot' => $this->applications['horde']['webroot'] . '/kronolith',
+     'icon' => $this->applications['horde']['webroot'] . '/kronolith/graphics/kronolith.gif',
+     'name' => _("Calendar"),
+@@ -128,7 +128,7 @@ $this->applications['kronolith'] = array
+ );
+ 
+ $this->applications['mnemo'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../mnemo',
++    'fileroot' => HORDE_BASE . '/mnemo',
+     'webroot' => $this->applications['horde']['webroot'] . '/mnemo',
+     'icon' => $this->applications['horde']['webroot'] . '/mnemo/graphics/mnemo.gif',
+     'name' => _("Memos"),
+@@ -137,7 +137,7 @@ $this->applications['mnemo'] = array(
+ );
+ 
+ $this->applications['nag'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../nag',
++    'fileroot' => HORDE_BASE . '/nag',
+     'webroot' => $this->applications['horde']['webroot'] . '/nag',
+     'icon' => $this->applications['horde']['webroot'] . '/nag/graphics/nag.gif',
+     'name' => _("Tasks"),
+@@ -146,7 +146,7 @@ $this->applications['nag'] = array(
+ );
+ 
+ $this->applications['chora'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../chora',
++    'fileroot' => HORDE_BASE . '/chora',
+     'webroot' => $this->applications['horde']['webroot'] . '/chora',
+     'icon' => $this->applications['horde']['webroot'] . '/chora/graphics/chora.gif',
+     'name' => _("CVS"),
+@@ -155,7 +155,7 @@ $this->applications['chora'] = array(
+ );
+ 
+ $this->applications['klutz'] = array(
+-    'fileroot' => dirname(__FILE__) . '/../klutz',
++    'fileroot' => HORDE_BASE . '/klutz',
+     'webroot' => $this->applications['horde']['webroot'] . '/klutz',
+     'icon' => $this->applications['horde']['webroot'] . '/klutz/graphics/klutz.gif',
+     'name' => _("Comics"),

@@ -6,7 +6,8 @@
   export    CFLAGS="$CFLAGS -O3"
   export  CXXFLAGS="$CXXFLAGS -O3"
 
-  ./configure  --prefix=/usr  \
+  ./configure  --prefix=/usr    \
+               --enable-shared  \
                $OPTS          &&
   make                        &&
   prepare_install             &&

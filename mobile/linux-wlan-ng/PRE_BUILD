@@ -1,7 +1,7 @@
 mk_source_dir  $SOURCE_DIRECTORY  &&
-mk_source_dir  pcmcia-cs-3.2.0 &&
+mk_source_dir  pcmcia-cs-`installed_version pcmcia-cs` &&
 unpack         $SOURCE            &&
-unpack         pcmcia-cs-3.2.0.tar.gz &&
-cd /usr/src/pcmcia-cs-3.2.0 &&
+unpack         pcmcia-cs-`installed_version pcmcia-cs`.tar.gz &&
+cd /usr/src/pcmcia-cs-`installed_version pcmcia-cs` &&
 make oldconfig &&
 cd ..         

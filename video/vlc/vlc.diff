@@ -1,0 +1,35 @@
+diff -Nur vlc-0.5.1-orig/configure vlc-0.5.1/configure
+--- vlc-0.5.1-orig/configure	2003-02-17 07:35:24.000000000 +0100
++++ vlc-0.5.1/configure	2003-02-18 20:10:47.000000000 +0100
+@@ -21457,7 +21457,7 @@
+   if test "x${enable_qt}" = "xyes"; then
+      PLUGINS="${PLUGINS} qt"
+      ALIASES="${ALIASES} qvlc"
+-     LDFLAGS_qt="${LDFLAGS_qt} -lqt -L${QTDIR}/lib"
++     LDFLAGS_qt="${LDFLAGS_qt} -lqt-mt -L${QTDIR}/lib"
+      CPPFLAGS_qt="${CPPFLAGS_qt} -I/usr/include/qt -I${QTDIR}/include"
+      if test -x ${QTDIR}/bin/moc
+      then
+diff -Nur vlc-0.5.1-orig/modules/codec/spudec/spudec.c vlc-0.5.1/modules/codec/spudec/spudec.c
+--- vlc-0.5.1-orig/modules/codec/spudec/spudec.c	2003-02-17 06:50:31.000000000 +0100
++++ vlc-0.5.1/modules/codec/spudec/spudec.c	2003-02-18 20:12:18.000000000 +0100
+@@ -59,7 +59,7 @@
+     add_file( "spudec-font", NULL, NULL,
+               FONT_TEXT, FONT_LONGTEXT );
+ #else
+-    add_file( "spudec-font", "share/" DEFAULT_FONT, NULL,
++    add_file( "spudec-font", "/usr/share/vlc/" DEFAULT_FONT, NULL,
+               FONT_TEXT, FONT_LONGTEXT );
+ #endif
+     set_description( _("subtitles decoder module") );
+diff -Nur vlc-0.5.1-orig/share/Makefile.in vlc-0.5.1/share/Makefile.in
+--- vlc-0.5.1-orig/share/Makefile.in	2003-02-17 07:35:15.000000000 +0100
++++ vlc-0.5.1/share/Makefile.in	2003-02-18 20:13:07.000000000 +0100
+@@ -1063,6 +1063,7 @@
+ EXTRA_DIST = $(DIST_rsrc) $(DIST_fonts)
+ 
+ dist_pkgdata_DATA = \
++	$(DIST_fonts) \
+ 	$(DIST_familiar) \
+ 	$(DIST_icons16) \
+ 	$(DIST_icons32) \

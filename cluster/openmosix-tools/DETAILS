@@ -1,0 +1,20 @@
+           SPELL=openmosix-tools
+          BLINKY=openMosixUserland
+         VERSION=0.2.4
+          SOURCE=${BLINKY}-${VERSION}.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$BLINKY-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openmosix/$SOURCE
+          MD5[0]="f42e0fd4f554a8d6f5d4bdbb446dfd2f"
+        WEB_SITE=http://openmosix.sourceforge.net
+         ENTERED=20021115
+         UPDATED=20021115
+         LICENSE=GPL
+           SHORT="Userland tools for the openMosix clustering system"
+      MAKE_NJOBS=1
+cat << EOF
+openMosix is a Linux kernel extension for single-system image clustering. Taking n PC boxes, openMosix gives users and applications the illusion of one single computer with n CPUs. openMosix is perfectly scalable and adaptive.
+
+This spell will enable openMosix on this machine. Cast it on every other machine in the cluster.
+
+This spell requires the openMosix kernel patch to be applied, and for each kernel to be built with the same openMosix configuration.
+EOF

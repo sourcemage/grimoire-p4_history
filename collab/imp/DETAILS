@@ -1,8 +1,7 @@
 # $Id: DETAILS,v 1.8 2003/01/08 18:35:55 sergeyli Exp $
            SPELL=imp
-         VERSION=${VERSION:-3.1}
+         VERSION=${VERSION:-3.2-RC3}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-          MD5[0]=${FORCE_DOWNLOAD:+7e4fe9ebaa01be1f990fbcb1e1a80c2b}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
    SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
@@ -10,7 +9,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
          ENTERED=20020428
          UPDATED=20030108
       MAINTAINER=sergeyli@pisem.net
-           SHORT="IMP provides webmail access to IMAP and POP3 accounts"
+           SHORT='IMP provides webmail access to IMAP and POP3 accounts'
+
+[ -z $FORCE_DOWNLOAD ] &&
+          MD5[0]='2a556d1d86b046a06028ea62696c41d7'
+
 cat << EOF
 IMP (Internet Messaging Program) provides webmail access to any IMAP or POP3
 mailbox, and handles internet standard MIME attachments, user defined filters,

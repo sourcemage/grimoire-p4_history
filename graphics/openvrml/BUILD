@@ -2,6 +2,7 @@
 
   ./configure  --prefix=/usr    \
                --without-mozjs  &&
+               $OPTS            &&
   make                          &&
   prepare_install               &&
   make    install

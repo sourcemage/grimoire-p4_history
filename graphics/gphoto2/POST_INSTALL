@@ -1,7 +1,0 @@
-if [[ -f /etc/hotplug/usb.usermap ]] ; then
-  echo  removing old camera definitions
-  sedit "/^usbcam/d" /etc/hotplug/usb.usermap
-  echo updating usbmap
-  gphoto2 --print-usb-usermap  |sort -m -u >> /etc/hotplug/usb.usermap
-  echo you may want to blacklist the usb module for your camera
-fi

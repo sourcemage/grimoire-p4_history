@@ -3,7 +3,8 @@
   ./configure  --prefix=/usr         \
                --datadir=/usr/share  \
                --enable-xft=yes      \
-               --sysconfdir=/etc     &&
+               --sysconfdir=/etc     \
+               $OPTS                 &&
   make                               &&
   prepare_install                    &&
   make    install

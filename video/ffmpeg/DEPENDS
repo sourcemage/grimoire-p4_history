@@ -1,1 +1,12 @@
-optional_depends  "nasm"  ""  "--disable-mmx"  "for MMX support"
+optional_depends  "nasm"             \
+                  ""                 \
+                  "--disable-mmx"    \
+                  "for MMX support"  &&
+optional_depends  "lame"              \
+                  "--enable-mp3lame"  \
+                  ""                  \
+                  "for mp3 encoding via libmp3lame"  &&
+optional_depends  "libvorbis"        \
+                  "--enable-vorbis"  \
+                  ""                 \
+                  "for ogg/vorbis support"

@@ -3,7 +3,9 @@ sedit  "s/\$(OPT)//"                   MCONFIG
 (
 
  ./configure  --build=$BUILD           \
-              --prefix=/usr            &&
+              --prefix=/usr            \
+              $OPTS                    &&
+
   make                                 &&
   (
   if    spell_installed      util-linux

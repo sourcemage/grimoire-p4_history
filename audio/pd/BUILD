@@ -6,8 +6,6 @@ cd src &&
 	    --enable-alsa  \
 	    $OPTS           &&
 
-cp $SCRIPT_DIRECTORY/makefile $SOURCE_DIRECTORY/src/. &&
-
 make depend && 
 make && 
 make install

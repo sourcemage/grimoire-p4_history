@@ -12,3 +12,12 @@ depends  libgda
 # depends  guile
 
 # Does it depend on gnome-core ?
+
+optional_depends gtk+extra "" "" "Add gtk+extra graphing support" &&
+
+optional_depends  "evolution"                            \
+                  "--with-evolution"                     \
+                  "--without-evolution"                  \
+                  "to send spreadsheats with Evolution"
+
+

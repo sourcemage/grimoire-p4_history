@@ -1,16 +1,16 @@
            SPELL=glib2
-         VERSION=2.2.0
+         VERSION=2.2.1
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=glib-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/glib-$VERSION
    SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v2.2/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/glib/$BRANCH/$SOURCE
-          MD5[0]="493b8523474e63fe77b310ec8a46861f"
+          MD5[0]="f203606f3f95782d2221f51136e91779"
         WEB_SITE=http://www.gtk.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020314
-         UPDATED=20021228
+         UPDATED=20030202
            SHORT="GLib is the library that forms the basis of GTK+ and GNOME"
 cat << EOF
 GLib is the low-level core library that forms the basis of GTK+ and

@@ -1,13 +1,15 @@
 (
 
   patch  -p1  <  ${SCRIPT_DIRECTORY}/STLport-4.5.3-gcc3.patch  &&
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/STLport-4.5.3-gcc3.2.patch  &&
 
   #  Set compile to use STLport's headers before gcc's...
 
   PATH_HOLD=${PATH}                    &&
   export  PATH=${PWD}/stlport:${PATH}  &&
   echo  PATH = ${PATH}                 &&
+
+  sedit  "s:../g++-v3:/usr/include/c++/`installed_version gcc`:g"  \
+         stlport/config/stl_gcc.h                 &&
 
   cd  src                                         &&
   cp  gcc.mak  Makefile                           &&

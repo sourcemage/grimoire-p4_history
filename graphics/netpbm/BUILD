@@ -1,6 +1,7 @@
 (
 
   echo  -e  "gnu\nregular\nshared\ny\n\n\n\n\n\n\n\n\n\n"  |
+  #  Ignores  $OPTS
   ./configure                     &&
   make  all                       &&
   make  package  DIR=/tmp/netpbm  &&

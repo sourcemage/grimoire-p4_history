@@ -1,0 +1,21 @@
+           SPELL=kavi2svcd
+         VERSION=0.5.5
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.cornelinux.de/linux/kavi2svcd/dl/$SOURCE
+          MD5[0]=e12ae557c0b4bc31dd0ac0c62b3c7241
+        WEB_SITE=http://www.cornelinux.de/linux/$SPELL/index-english.html
+      LICENSE[0]=GPL
+         ENTERED=20030116
+         UPDATED=20030116
+      MAINTAINER=eschabell@sourcemage.org
+           SHORT="GUI for generating MPEG files from an AVI file."
+cat << EOF
+
+kavi2svcd is a GUI for generating MPEG files from an AVI file using 
+transcode and mplex. It then generates a Video CD image using vcdimager 
+and burns to CD with cdrdao. It can generate m1v, m2v, and mpa files, 
+multiplex the MPEG file, generate cue and bin files, and allows the 
+generated command lines to be edited before executing them. 
+
+EOF

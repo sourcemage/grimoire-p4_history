@@ -1,14 +1,16 @@
 (
 
-  cp $SPELL_DIRECTORY/povray.ini $SOURCE_DIRECTORY && # because we change PREFIX to /usr
-  sedit "s/DEFAULT_OUTPUT_FORMAT  't'/DEFAULT_OUTPUT_FORMAT  'n'/g"                                               src/config.h &&
-  sedit "s/#error.*//g"                                                                                             src/optout.h &&
-  sedit "s/FILL IN NAME HERE........................./Source Mage GNU\/Linux, email seth@tautology.org with bugs/g" src/optout.h &&
-  ./configure --prefix=/usr  &&
-  make                       &&
-  make check                 &&
-  prepare_install            &&
-  make  install
+  cp  $SPELL_DIRECTORY/povray.ini  $SOURCE_DIRECTORY                  &&  #  because we change PREFIX to /usr
+
+  sedit  "s/DEFAULT_OUTPUT_FORMAT  't'/DEFAULT_OUTPUT_FORMAT  'n'/g"                                                  src/config.h  &&
+  sedit  "s/#error.*//g"                                                                                              src/optout.h  &&
+  sedit  "s/FILL IN NAME HERE........................./Source Mage GNU\/Linux, email seth@tautology.org with bugs/g"  src/optout.h  &&
+
+  ./configure  --prefix=/usr  \
+               $OPTS          &&
+  make                        &&
+  make    check               &&
+  prepare_install             &&
+  make    install
 
 ) > $C_FIFO 2>&1
-

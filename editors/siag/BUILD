@@ -1,11 +1,12 @@
 (
 
-  ./configure  --with-xawm=Xaw3d	    \
+  ./configure  --with-xawm=Xaw3d     \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               --prefix=/usr 	       &&
+               --prefix=/usr         \
+               ${OPTS}               &&
   make                               &&
   prepare_install                    &&
   make install
 
-)  >  $C_FIFO  2>&1
+)  >  ${C_FIFO}  2>&1

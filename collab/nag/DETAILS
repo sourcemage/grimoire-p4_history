@@ -2,7 +2,6 @@
            SPELL=nag
          VERSION=${VERSION:-1.1}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-          MD5[0]=${FORCE_DOWNLOAD:+75f3033c98d873490b0f1e7e2128203c}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
    SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
@@ -10,7 +9,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
          ENTERED=20020718
          UPDATED=20030108
       MAINTAINER=sergeyli@pisem.net
-           SHORT="Nag is a simple, multiuser task list manager"
+           SHORT='Nag is a simple, multiuser task list manager'
+
+[ -z $FORCE_DOWNLOAD ] &&
+          MD5[0]='75f3033c98d873490b0f1e7e2128203c'
+
 cat << EOF
 Nag is a set of PHP scripts that implement a simple, multiuser task list
 manager. It makes extensive use of the new Horde 2.0 web application framework.

@@ -1,0 +1,12 @@
+
+# configure mosstatd service, do before running install_xinetd_confs
+# must remember that $SCRIPT_DIRECTORY/services needs a CR at EOL 
+
+install_services
+
+# configure xinetd else standalone
+if [ -d /etc/xinetd.d ]; then
+  install_xinetd_confs
+else 
+  /bin/cp -f $SCRIPT_DIRECTORY/mosstatd /etc/init.d/mosstatd
+fi

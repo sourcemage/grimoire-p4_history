@@ -1,18 +1,18 @@
            SPELL=scrollkeeper
-         VERSION=0.3.11
+         VERSION=0.3.12
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[2]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='6be9789555cb28d95f39b83843338ca8'
+          MD5[0]="4f3bac2a0082a68e77ddac1b3837bed7"
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://scrollkeeper.sourceforge.net
       LICENSE[0]=LGPL
       LICENSE[1]=FDL
          ENTERED=20010922
-         UPDATED=20020906
+         UPDATED=20030123
            SHORT="scrollkeeper is a cataloging system."
 cat << EOF
 This is the Scrollkeeper Open Documentation Cataloging System. 

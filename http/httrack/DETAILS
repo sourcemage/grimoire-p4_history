@@ -1,15 +1,15 @@
            SPELL=httrack
-         VERSION=3.16
+         VERSION=3.22-3
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='5a5c9d80d790b154b315a692aad8298c'
+          MD5[0]='4c455a4f3cefe720eb9a922a95b9e657'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.httrack.com/$SOURCE
-   SOURCE_URL[1]=http://www.httrack.com/cserv.php3?File=$SPELL.tar.gz
-        WEB_SITE=http://www.httrack.com
+   SOURCE_URL[1]=http://httrack.free.fr/mirror/$SOURCE
+        WEB_SITE=http://www.httrack.com/
          ENTERED=20020210
          UPDATED=20020210
       MAINTAINER=eric@schabell.com
-           SHORT="An multi-thread and feature-rich offline browser"
+           SHORT='An multi-thread and feature-rich offline browser'
 cat << EOF
 HTTrack is an easy-to-use offline browser utility. It allows you to download
 a Web site from the Internet to a local directory, building recursively all

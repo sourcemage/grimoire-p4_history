@@ -1,9 +1,10 @@
            SPELL=nano
-         VERSION=1.0.9
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.nano-editor.org/dist/v1.0/$SOURCE
-          MD5[0]=99484584da813cee91918685f8ea7c1e
+         VERSION=1.2.0
+          BRANCH=`echo  ${VERSION}|cut -d . -f1,2`
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.nano-editor.org/dist/v${BRANCH}/${SOURCE}
+          MD5[0]=0f962ba70f56bcf236c8a00b59ed43e3
         WEB_SITE=http://www.nano-editor.org
          ENTERED=20010922
          UPDATED=20020414

@@ -2,7 +2,6 @@
            SPELL=kronolith
          VERSION=${VERSION:-1.0}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-          MD5[0]=${FORCE_DOWNLOAD:+9ea394b4279c40a3af28f137df84e0a9}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
    SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
@@ -10,7 +9,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
          ENTERED=20020427
          UPDATED=20030108
       MAINTAINER=sergeyli@pisem.net
-           SHORT="Kronolith is the Horde calendar application"
+           SHORT='Kronolith is the Horde calendar application'
+
+[ -z $FORCE_DOWNLOAD ] &&
+          MD5[0]='9ea394b4279c40a3af28f137df84e0a9'
+
 cat << EOF
 The Kronolith calendar project currently provides a robust web-based calendar
 for individual users with repeating events, and a smart algorithm to display

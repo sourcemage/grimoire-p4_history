@@ -1,0 +1,138 @@
+diff -pruN rapidsvn-0.1.2/configure.in rapidsvn/configure.in
+--- rapidsvn-0.1.2/configure.in	2003-02-13 01:47:18.000000000 -0500
++++ rapidsvn/configure.in	2003-02-18 17:06:20.000000000 -0500
+@@ -10,37 +10,37 @@ CPPFLAGS="$CPPFLAGS -Wall -g -fexception
+ CXXFLAGS="$CXXFLAGS -Wall -g -fexceptions"
+ 
+ dnl
+-dnl APR
++dnl Subversion
+ dnl
+ 
+-APRCONFIG=apr-config
+-AC_ARG_WITH(apr-config,
+-[[  --with-apr-config=FILE    Use the given path to apr-config when determining
+-                            APR configuration; defaults to "apr-config"]],
++SVNCONFIG=svn-config
++AC_ARG_WITH(svn-config,
++[[  --with-svn-config=FILE    Use the given path to svn-config when determining
++                            Subversion configuration; defaults to "svn-config"]],
+ [
+     if test "$withval" != "yes" -a "$withval" != ""; then
+-        APRCONFIG=$withval
++        SVNCONFIG=$withval
+     fi
+ ])
+-AC_MSG_CHECKING([for APR])
+-if $APRCONFIG --cflags > /dev/null; then
++AC_MSG_CHECKING([for Subversion])
++if $SVNCONFIG --cflags > /dev/null; then
+     AC_MSG_RESULT([found])
+ else
+     AC_MSG_RESULT([not found])
+-    AC_MSG_ERROR([APR is required. Try --with-apr-config.])
++    AC_MSG_ERROR([Subversion is required. Try --with-svn-config.])
+ fi
+-CPPFLAGS="$CPPFLAGS  `$APRCONFIG --cppflags` `$APRCONFIG --includes`"
+-CXXFLAGS="$CXXFLAGS `$APRCONFIG --cflags`"
+-APR_LIBS="`$APRCONFIG --link-ld --libs`"
++CPPFLAGS="$CPPFLAGS $($SVNCONFIG --cppflags) $($SVNCONFIG --includes)"
++CXXFLAGS="$CXXFLAGS $($SVNCONFIG --cflags)"
++SVN_LIBS="$($SVNCONFIG --libs)"
+ 
+ dnl
+-dnl Subversion
++dnl Subversion headers
+ dnl
+ 
+-SVN_INCLUDE="/usr/local/include"
++SVN_INCLUDE="/usr/include"
+ AC_ARG_WITH(svn-include,
+ [[  --with-svn-include=DIR   Use the given path to the subversion headers;
+-                           defaults to "/usr/local/include"]],
++                           defaults to "/usr/include"]],
+ [
+     if test "$withval" != "yes" -a "$withval" != ""; then
+         SVN_INCLUDE=$withval
+@@ -55,23 +55,6 @@ else
+ fi
+ CPPFLAGS="$CPPFLAGS -I$SVN_INCLUDE/subversion-1"
+ 
+-SVN_LIB="/usr/local/lib"
+-AC_ARG_WITH(svn-lib,
+-[[  --with-svn-lib=DIR  Use the given path to the subversion libraries;
+-                      defaults to "/usr/local/lib"]],
+-[
+-    if test "$withval" != "yes" -a "$withval" != ""; then
+-        SVN_LIB=$withval
+-    fi
+-])
+-AC_MSG_CHECKING([for Subversion libraries])
+-if test -f "$SVN_LIB/libsvn_client-1.so"; then
+-    AC_MSG_RESULT([found])
+-else
+-    AC_MSG_RESULT([not found])
+-    AC_MSG_ERROR([Subversion libraries are required. Try --with-svn-lib.])
+-fi
+-   
+ dnl
+ dnl wxWindows
+ dnl
+@@ -121,9 +104,8 @@ AC_ARG_WITH(cppunit-config,
+     fi
+ ])
+ 
+-AC_SUBST(APR_LIBS)
++AC_SUBST(SVN_LIBS)
+ AC_SUBST(WX_LIBS)
+-AC_SUBST(SVN_LIB)
+ 
+ AC_OUTPUT(Makefile src/Makefile src/svncpp/Makefile src/res/Makefile)
+ 
+diff -pruN rapidsvn-0.1.2/src/Makefile.am rapidsvn/src/Makefile.am
+--- rapidsvn-0.1.2/src/Makefile.am	2003-02-13 01:48:27.000000000 -0500
++++ rapidsvn/src/Makefile.am	2003-02-18 16:49:49.000000000 -0500
+@@ -48,10 +48,6 @@ rapidsvn_SOURCES= \
+ 	update_dlg.cpp \
+ 	utils.cpp
+ 
+-rapidsvn_LDFLAGS=-L$(SVN_LIB) -Lsvncpp
+-rapidsvn_LDADD= -lsvncpp \
+-	-lsvn_client-1 -lsvn_wc-1 -lsvn_ra-1 -lsvn_delta-1 -lsvn_subr-1 \
+-	-laprutil-0 -lapr-0 -lneon $(APR_LIBS) \
+-	$(WX_LIBS)
++rapidsvn_LDFLAGS=$(SVN_LIBS) $(WX_LIBS)
+ rapidsvn_DEPENDENCIES=svncpp/libsvncpp.la
+ 
+diff -pruN rapidsvn-0.1.2/src/tests/svncpp/Makefile.in rapidsvn/src/tests/svncpp/Makefile.in
+--- rapidsvn-0.1.2/src/tests/svncpp/Makefile.in	2003-02-13 01:49:18.000000000 -0500
++++ rapidsvn/src/tests/svncpp/Makefile.in	2003-02-18 16:53:39.000000000 -0500
+@@ -14,17 +14,14 @@ OBJECTS= \
+ 	../../svncpp/pool.o \
+ 	../../svncpp/status.o
+ 
+-APR_LIBS=@APR_LIBS@
++SVN_LIBS=@SVN_LIBS@
+ WX_LIBS=@WX_LIBS@
+ CPPUNIT_LIBS=@CPPUNIT_LIBS@
+ # insert -lefence if you want to debug memory problems
+-LIBS=-lsvn_client-1 -lsvn_wc-1 -lsvn_ra-1 -lsvn_delta-1 -lsvn_subr-1 \
+-		$(SVN_APRUTIL_LIBS) $(SVN_APR_LIBS) $(NEON_LIBS) $(APR_LIBS) \
+-		$(WX_LIBS) $(CPPUNIT_LIBS)
++LIBS=$(SVN_LIBS) $(WX_LIBS) $(CPPUNIT_LIBS)
+ #you can debug your application with electric fence.
+ #just uncomment the following line (you must have electric fence installed)
+ #LIBS=-lefence $(LIBS)
+-SVN_INC=-I/usr/local/include/subversion-1
+ CXXFLAGS=@CXXFLAGS@ @CPPUNIT_CXXFLAGS@ -I../.. -Wall -fexceptions
+ 
+ # implementation
+@@ -32,7 +29,7 @@ CXXFLAGS=@CXXFLAGS@ @CPPUNIT_CXXFLAGS@ -
+ .SUFFIXES:	.o .cpp
+ 
+ .cpp.o:
+-	$(CXX) -c -g $(SVN_INC) $(CXXFLAGS) -o $@ $<
++	$(CXX) -c -g $(CXXFLAGS) -o $@ $<
+ 
+ all:    $(PROGRAM)
+ 

@@ -10,7 +10,7 @@
   install  -d  $Q_DIR/cur  &&
   install  -d  $Q_DIR/examples  &&
   install  -d  $Q_DIR/fonts  &&
-  install  -d  $Q_DIR/messages/old  &&
+  install  -d  $Q_DIR/messages  &&
   install  -d  $Q_DIR/hatches  &&
   install  -d  $Q_DIR/po  &&
   install  -d  $Q_DIR/libraries/hydraulics/symbols  &&
@@ -43,7 +43,7 @@
   install  -m  644  fonts/*.txt  $Q_DIR/fonts  &&
   install  -m  644  messages/*.qm  $Q_DIR/messages  &&
   install  -m  644  messages/*.lang  $Q_DIR/messages  &&
-  install  -m  644  messages/old/*.qm  $Q_DIR/messages/old  &&
+  install  -m  644  messages/*.qm  $Q_DIR/messages  &&
   install  -m  644  hatches/*.dxf  $Q_DIR/hatches  &&
   install  -m  644  po/*.po  $Q_DIR/po  &&
   install  -m  644  po/*.ts  $Q_DIR/po  &&

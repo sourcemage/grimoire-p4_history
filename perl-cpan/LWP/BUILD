@@ -1,5 +1,6 @@
 (
 
+  echo 'y'               |
   perl  Makefile.PL  -n &&
   make                  &&
   prepare_install       &&

@@ -1,16 +1,14 @@
            SPELL=ffmpeg
-         VERSION=0.4.5
+         VERSION=0.4.6
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/ffmpeg/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/ffmpeg/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/ffmpeg/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/ffmpeg/$SOURCE
         WEB_SITE=http://ffmpeg.sourceforge.net
          ENTERED=20020129
          UPDATED=20020509
-	MD5[0]=c5c3e9965bd3b4d17f8951390baf4dc7
-	LICENSE[0]=GPL
-	MAINTAINER=burududu@hotpop.com
+          MD5[0]=e389f865d6d7ea7b00d47d8e1b842374
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="ffmpeg is complete video and audio broadcasting solution"
 cat << EOF
 FFMpeg is a complete and free Internet live audio and video

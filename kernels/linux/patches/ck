@@ -1,30 +1,23 @@
 #!/bin/bash
 
-DESCRIPTION="Con Kolivas Patch"
+DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
 HELP="NOTE: This is suitable for ordinary not very stressed desktops.
-ck1  for Kernel 2.4.20 contains: O(1)B,PE,LL,AA,ALSA,SM,XFS,ACPI
-ck14 for Kernel 2.4.19 contains: O(1)B,PE,LL,AA,CC,ALSA,SM,XFS,ACPI, 1000Hz,Autoreg-timeslice
+ck3 Contains: O(1)B,PE,LL,AA,RL2,SM,XFS,ACPI,Tuning
 
-Warning from 2.4.19:
-DO NOT ENABLE Compressed Caching with preempt if you are using ext2/3 or vfat filesystems 
-Contains: O(1)B,PE,LL,AA,CC,ALSA,SM,XFS,ACPI,1000Hz,Autoreg-timeslice
+alsa got removed - use the 
+
+*DO NOT USE COMRESSED CACHING WITH PREEMPT - FS UNSAFE*
 
 http://kernel.kolivas.net"
 
-VERSIONS="ck1_2.4.20
-ck14_2.4.19"
+VERSIONS="ck3_2.4.20"
+MD5S[0]=a288eb4a8ff5909ec31e3fba4079b455
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=${!PATCH}.patch.bz2
-SOURCE${COUNTER}_URL=http://members.optusnet.com.au/con.man/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
-if [[ "${!PATCH}" == "ck14_2.4.19" ]]; then
-COUNTER=$((${COUNTER}+1))
-echo "
-SOURCE${COUNTER}=sDfix_ck14.diff
-SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/sDfix_ck14.diff" >> $SPELL_CONFIG
-fi
-
+source $SCRIPT_DIRECTORY/MD5PATCH
 fi

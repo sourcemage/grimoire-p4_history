@@ -1,15 +1,15 @@
            SPELL=libglademm
-         VERSION=2.0.0
+         VERSION=2.0.1
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="134a002293539413ddb52a464e19e2e3"
+          MD5[0]="5f39902a111a1ad6b0fe8d85ad09dc8b"
       LICENSE[0]="LGPL"
         WEB_SITE=http://gtkmm.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20021223
+         UPDATED=20030208
       MAINTAINER=rcook@wyrms.net
            SHORT="C++ wrapper library for libglade2"
 cat << EOF

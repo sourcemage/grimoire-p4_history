@@ -1,5 +1,7 @@
 (
-    make &&
-    prepare_install &&
-    make install
+
+  make            &&
+  prepare_install &&
+  make    install
+
 ) > $C_FIFO 2>&1
