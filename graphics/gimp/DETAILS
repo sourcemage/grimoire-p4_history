@@ -2,15 +2,17 @@
        BUILD_API=2
 
 if [ "$DEVEL" == "y" ];then
-         VERSION=2.1.7
-          MD5[0]=d47aa6a2fd08adbbddfe6e169de5a1f0
+         VERSION=2.2-pre1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+          MD5[0]=2ce5eaa15d6ceda8b7f61b27e6c2141e
+   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v2.2/testing/$SOURCE
 else
          VERSION=2.0.6
+          SOURCE=$SPELL-$VERSION.tar.bz2
           MD5[0]=1c06f26effeb273c0113e2df03cde561
+   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/$SOURCE
 fi
 
-          SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/$SOURCE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.gimp.org/
          ENTERED=20010922
