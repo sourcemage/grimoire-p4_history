@@ -1,10 +1,1 @@
-(
- prepare_install                                                         &&
- /opt/ant/bin/ant jar                                                                 &&
- mkdir /usr/doc/jmol                                                     &&
- cp -a build/doc/* /usr/doc/jmol                                         &&
- mkdir /usr/share/jmol                                                   &&
- cp -a samples /usr/share/jmol                                           &&
- cp jmol.jar /usr/share/jmol                                             && 
- cp jmol /usr/bin
-) > $C_FIFO 2>&1
+/opt/ant/bin/ant jar
