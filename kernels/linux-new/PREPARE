@@ -576,6 +576,10 @@ patch_menu()
 						source_patch $tmp
 						;;
 				esac
+				$dialog --msgbox "Selecting this will keep the kernel tree updated.\n$help" 0 0
+			else
+				tmp=${command/HELP /}
+				. $patchesdir/${command/HELP /}/.info
 				$dialog --msgbox "$help" 0 0
 			fi
 		else
