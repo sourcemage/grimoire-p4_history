@@ -21,10 +21,16 @@
                --localstatedir=${INSTALL_ROOT}/var  \
                --enable-glib2                       \
                --with-libxml=2                      \
+               --with-gnutls-includes=no            \
+               --with-gnutls-libs=no                \
                $OPTS                                &&
 
   # Fix a typo in their generated Makefile...
   # sedit  "s:;;: :"  src/libsoup-apache/Makefile   &&
+
+  if /lib/libc.so.6 | grep -q NPTL; then
+    LDFLAGS="$LDFLAGS -lpthread"
+  fi                                                &&
 
   make                                              &&
   prepare_install                                   &&
