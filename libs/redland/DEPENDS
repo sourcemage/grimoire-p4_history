@@ -2,7 +2,7 @@ depends db '--with-bdb' &&
 depends libxml2 '--with-xml-parser=libxml' &&
 depends openssl '--with-openssl-digests' &&
 
-optional_depends xfree86 '--x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib' '' 'for graphics support' &&
+optional_depends x11-libs '--x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib' '' 'for graphics support' &&
 optional_depends w3c-libwww '--with-libwww' '--without-libwww' 'to use W3C libwww library' &&
 optional_depends perl '' '' 'for Perl API' &&
 optional_depends Python '' '' 'for Python API' &&
