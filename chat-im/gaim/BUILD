@@ -12,23 +12,23 @@
                --localstatedir=/var               \
                $OPTS                              &&
   make                                            &&
-  if [ "$GAIM_ENCRYPTION" = "y" ] ; then
-    cd plugins/gaim-encryption-$VERSION2          &&
-    if [ "$CVS" = "yes" ];then ./autogen.sh ;fi   &&
-    ./configure  --build=$BUILD                   \
-                 --prefix=/usr                    \
-                 --sysconfdir=/etc                \
-                 --localstatedir=/var             \
-                 $OPTS                            &&
-     make      
-  fi                                              &&
+#  if [ "$GAIM_ENCRYPTION" = "y" ] ; then
+#    cd plugins/gaim-encryption-$VERSION2          &&
+#    if [ "$CVS" = "yes" ];then ./autogen.sh ;fi   &&
+#    ./configure  --build=$BUILD                   \
+#                 --prefix=/usr                    \
+#                 --sysconfdir=/etc                \
+#                 --localstatedir=/var             \
+#                 $OPTS                            &&
+#     make      
+#  fi                                              &&
   cd $SOURCE_DIRECTORY                            &&
   prepare_install                                 &&
   make    install                                 &&
-  cp plugins/*.pl /usr/lib/gaim                   &&
-  if [ "$GAIM_ENCRYPTION" = "y" ] ; then
-    cd plugins/gaim-encryption-$VERSION2/         &&
-    make install
-  fi
+  cp plugins/*.pl /usr/lib/gaim                  
+#  if [ "$GAIM_ENCRYPTION" = "y" ] ; then
+#    cd plugins/gaim-encryption-$VERSION2/         &&
+#    make install
+#  fi
 
 ) > $C_FIFO 2>&1

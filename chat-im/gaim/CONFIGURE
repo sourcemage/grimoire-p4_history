@@ -1,9 +1,0 @@
-if  ! grep -q  GAIM_ENCRYPTION  $SPELL_CONFIG; then
-
-	if query		"Enable gaim-encryption plugin? (you must also say yes to a MOZILLA_NSS spell)" n
- 		then		GAIM_ENCRYPTION=y
-		else            GAIM_ENCRYPTION=n
-	fi
-  echo "GAIM_ENCRYPTION=$GAIM_ENCRYPTION" >> $SPELL_CONFIG
-
-fi
