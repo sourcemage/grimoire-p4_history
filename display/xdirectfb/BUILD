@@ -8,7 +8,7 @@ message  "Building xdirectfb takes a very long time."
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
   fi                                                                                &&
 
-  if  spell_installed  Linux-PAM
+  if  spell_ok  linux-pam
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                                                                &&
 
