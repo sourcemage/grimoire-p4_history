@@ -1,16 +1,15 @@
            SPELL=gail
-         VERSION=1.2.1
+         VERSION=1.2.2
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="343e0682b216e27d2d2767147cc79355"
-        WEB_SITE=http://developer.gnome.org/projects/gap
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]=c97e32545b501111c62077e15d9175ab
       LICENSE[0]=LGPL
+      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020505
-         UPDATED=20030416
+         UPDATED=20030512
            SHORT="gail has something to do with the GNOME A11y Project"
 cat << EOF
 gail has something to do with the GNOME Accessability Project. The
