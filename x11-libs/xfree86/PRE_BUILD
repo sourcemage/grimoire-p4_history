@@ -23,7 +23,7 @@ diff -u -r3.16 socket.c
  #if defined(IPv6) && defined(AF_INET6)
      chooserFd = socket (AF_INET6, SOCK_STREAM, 0);
      if (chooserFd < 0)
-EOF &&
+EOF
 #patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE9 &&
 #recommended by xfree86.org
 mk_source_dir  $SOURCE_DIRECTORY.bld 
