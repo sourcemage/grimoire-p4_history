@@ -11,5 +11,9 @@ optional_depends  "openssl"              \
 optional_depends  "gpgme"                \
                   "--enable-gpgme"       \
                   ""                     \
-                  "for encrypted email"
+                  "for encrypted email"  &&
 
+optional_depends  "Mail-SpamAssassin"             \
+                  "--enable-spamassassin-plugin"  \
+                  ""                              \
+                  "for SpamProtection"
