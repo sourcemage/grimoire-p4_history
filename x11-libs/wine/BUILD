@@ -1,4 +1,6 @@
 (
+# fix wine build problem
+LDFLAGS=${LDFLAGS//-z combreloc/}
 
 [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
