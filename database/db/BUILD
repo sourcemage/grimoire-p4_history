@@ -19,9 +19,10 @@
     export JAVA_HOME
   fi &&
 
-#  if glibc_is_nptl; then
-#    LDFLAGS="$LDFLAGS -lpthread"
-#  fi &&
+# this is needed to make db using stuff work on nptl glibc, do _not_ remove it!
+  if glibc_is_nptl; then
+    LDFLAGS="$LDFLAGS -lpthread"
+  fi &&
 
   cd  build_unix                         &&
   PATH="$PATH:$JAVA_HOME/bin"            &&
