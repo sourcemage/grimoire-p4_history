@@ -1,0 +1,51 @@
+#! /bin/bash
+#
+#
+#   Startup/shutdown script for clam-antivirus
+#
+#
+# Start or stop clam-antivirus based upon the first argument to the script.
+#
+
+source /etc/init.d/smgl_functions
+
+
+RUNLEVEL=3
+NEEDS="+network"
+PROVIDES="antivirus"
+
+PROGRAM=/usr/sbin/clamd
+
+start() {
+        echo Starting $PROGRAM
+	$PROGRAM
+        evaluate_retval
+}
+
+stop() {
+        echo  Stopping $PROGRAM
+	pkill  -f $PROGRAM
+        evaluate_retval
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+#exit $?
