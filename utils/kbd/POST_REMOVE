@@ -1,4 +1,4 @@
-if  [  !  -f   /etc/init.d/sunfont.sh  ];  then
+if  [  -e   /etc/init.d/sunfont.sh  ];  then
   rm -f /etc/init.d/sunfont.sh
   for runlev in 2 3 4 5; do
     rm -f /etc/rc${runlev}.d/S80sunfont
@@ -6,7 +6,7 @@ if  [  !  -f   /etc/init.d/sunfont.sh  ];  then
 fi
 
 
-if  [  !  -f   /etc/init.d/log2cons.sh  ];  then
+if  [  -e   /etc/init.d/log2cons.sh  ];  then
   rm -f /etc/init.d/log2cons.sh
   for runlev in 2 3 4 5; do
     rm -f /etc/rc${runlev}.d/S10log2cons
@@ -14,10 +14,10 @@ if  [  !  -f   /etc/init.d/log2cons.sh  ];  then
 fi
 
 
-if  [  !  -f   /usr/bin/logcolorise.pl ];  then
+if  [  -e   /usr/bin/logcolorise.pl ];  then
   rm -f /usr/bin/logcolorise.pl
 fi
 
-if  [  !  -f   /usr/bin/tailfmessages ];  then
+if  [  -e   /usr/bin/tailfmessages ];  then
   rm -f /usr/bin/tailfmessages
 fi
