@@ -21,4 +21,18 @@ optional_depends  "cscope"                        \
 optional_depends  "gpm"                           \
                   "--enable-gpm"                  \
                   "--disable-gpm"                 \
-                  "for console mouse support"
+                  "for console mouse support"     &&
+
+if  [  "$GUI"  =  "gtk"  ]
+then  depends  gtk+
+elif  [  "$GUI"  =  "gnome"  ]
+then  depends  gnome-libs
+elif  [  "$GUI"  =  "gtk2"  ]
+then  depends  gtk+2
+elif  [  "$GUI"  =  "gnome2"  ]
+then  depends  libgnomeui
+elif  [  "$GUI"  =  "motif"  ]
+then  depends  MOTIF
+elif  [  "$GUI"  =  "athena"  ]
+then  depends  X11-LIBS
+fi
