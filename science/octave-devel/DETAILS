@@ -1,0 +1,23 @@
+            SPELL=octave-devel
+          VERSION=2.1.59
+           SOURCE=octave-$VERSION.tar.bz2
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/octave-$VERSION
+    SOURCE_URL[0]=ftp://ftp.octave.org/pub/octave/bleeding-edge/$SOURCE
+    SOURCE_URL[1]=ftp://ftp.math.uni-hamburg.de/pub/soft/math/octave/bleeding-edge/$SOURCE
+    SOURCE_URL[2]=ftp://ftp.eos.hokudai.ac.jp/pub/GNU/misc/octave/bleeding-edge/$SOURCE
+    SOURCE_URL[3]=ftp://ftp.u-aizu.ac.jp/pub/SciEng/numanal/Octave/bleeding-edge/$SOURCE
+         WEB_SITE=http://www.octave.org
+       LICENSE[0]=GPL
+	         MD5[0]=9e488971fa031e7537c3b5764f52cc7a
+          ENTERED=20020319
+          UPDATED=20020427
+       MAINTAINER=avitzour@princeton.edu
+            SHORT="Octave is a MATLAB clone"
+
+cat << EOF
+GNU Octave is a high-level language, primarily intended for numerical 
+computations. It provides a convenient command line interface for solving 
+linear and nonlinear problems numerically, and for performing other numerical
+experiments using a language that is mostly compatible with Matlab. It may 
+also be used as a batch-oriented language. 
+EOF
