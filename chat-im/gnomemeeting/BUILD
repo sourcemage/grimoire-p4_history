@@ -4,7 +4,9 @@
 #then it is easier to update
 #
   export PWLIBDIR=$SOURCE_DIRECTORY/pwlib-1.5.0             &&
-  export OPENH323DIR=$SOURCE_DIRECTORY/openh323-1.12.0      &&
+  export OPENH323DIR=$SOURCE_DIRECTORY/openh323             && 
+# xml bug
+  sedit "s/xmlSAXHandler/xmlSAXHandlerV1/" lib/xdap/xdap.c  && 
 #pwlib
   cd $PWLIBDIR                                              &&
   ./configure --disable-shared                              &&
@@ -31,8 +33,7 @@
                --with-ptlib-includes=$PWLIBDIR/include/ptlib         \
                --with-ptlib-libs=$PWLIBDIR/lib                       \
 	       $OPTS					             &&
-  make                                                               &&
-  prepare_install                                                    &&
-  make install
-
+  make             &&
+  prepare_install  &&
+  make install     
 ) > $C_FIFO 2>&1

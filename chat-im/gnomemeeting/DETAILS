@@ -1,21 +1,22 @@
             SPELL=gnomemeeting
-          VERSION=0.98.0
+          VERSION=0.98.5
            SOURCE=$SPELL-$VERSION.tar.gz
           SOURCE2=pwlib-1.5.0.tar.gz
-          SOURCE3=openh323-1.12.0.tar.gz
+          SOURCE3=openh323_1.12.2.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE
    SOURCE2_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE2
    SOURCE3_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE3
+           MD5[0]=0f71caea5941180de9da4e05900d0a64
+           MD5[1]=b2bd7c0fa65f3c2952b3c2f8faac7837
+           MD5[2]=17ffdad389eb348ac31b27628ee43dfa
          WEB_SITE=http://www.gnomemeeting.org
           ENTERED=20020508
-          UPDATED=20030816
-           MD5[0]=d0c2ce2154d78b84517dc788962d5e01
-           MD5[1]=b2bd7c0fa65f3c2952b3c2f8faac7837
-           MD5[2]=7544b79a4c5407a60cce49fed657e3dc
+          UPDATED=20031127
           LICENSE=GPL
             SHORT="H323 videoconference tool"
-       MAINTAINER=zoran@idi.ntnu.no
 cat << EOF
-GnomeMeeting is the first Linux H.323 compatible client designed for the Gnome desktop. It is compatible with Netmeeting and other H.323 products. It is the first free H323 videoconference tool with a powerfull GUI interface to be available under GNU/Linux.
+GnomeMeeting is the first Linux H.323 compatible client designed for the Gnome desktop. 
+It is compatible with Netmeeting and other H.323 products. It is the first free H323 
+videoconference tool with a powerfull GUI interface to be available under GNU/Linux.
 EOF
