@@ -1,7 +1,8 @@
            SPELL=deskmenu
          VERSION=1.4.0-2
+       BUILD_API=2
           SOURCE=${SPELL}_${VERSION}.tar.gz
-	  BRANCH=`echo  ${VERSION}|cut -d - -f1`
+          BRANCH=`echo  ${VERSION}|cut -d - -f1`
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${BRANCH}
    SOURCE_URL[0]=http://www.oroborus.org/debian/dists/sid/main/source/x11/${SOURCE}
           MD5[0]=3f4deed602b6679528204d22cc0e7c23
@@ -11,7 +12,7 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${BRANCH}
          UPDATED=20040923
            SHORT="a root menu program"
 cat << EOF
-DeskMenu is a root menu program which is activated by clicking the root window. 
-It is configured from a .deskmenurc file in your home directory. DeskMenu is 
+DeskMenu is a root menu program which is activated by clicking the root window.
+It is configured from a .deskmenurc file in your home directory. DeskMenu is
 useful for window managers which do not provide a menu such as Oroborus.
 EOF
