@@ -1,4 +1,8 @@
 (
+  ### bug#5570 ccache sometimes has trouble correctly recognising minor differences 
+  ### in configurations and doesn't force recompile when it should. This stops it from using the old cache entries.
+  export CCACHE_RECACHE=true                  &&
+
   ### remove these from this spells log then
   ### in case glibc had provided these headers before
     for i in $INSTALL_LOGS/glibc*

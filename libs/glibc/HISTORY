@@ -1,3 +1,7 @@
+2004-01-20 hgg <hgreig@bigponnd.et.au>
+	* DEPENDS: remove autoconf
+	* BUILD: add export CCACHE_RECACHE=true so ccache users can't be bitten by bug#5570
+
 2004-01-20 hgg <hgreig@bigpond.net.au>
 	* BUILD: check for saved libraries (from prepare_install) as an empty install log ruins the whole plan
 	* BUILD,CONFIGURE,DEPENDS: remove the headers copying, now depends on a glibc-kernel-headers spell
