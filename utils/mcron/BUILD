@@ -1,4 +1,4 @@
-if [ "$DEBUG" == y ];
+if [ "$DEBUG_SUP" == y ];
 then
     MYCONF="$MYCONF --enable-debug"                              &&
     message "${MESSAGE_COLOR}Debug code enabled${DEFAULT_COLOR}"
