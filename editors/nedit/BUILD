@@ -2,11 +2,16 @@
 
   cd   makefiles
   cp   Makefile.linux  Makefile.linux.orig
-  sed  "s/CFLAGS\=/CFLAGS:=/"  Makefile.linux.orig       |
+  sed  "s/CFLAGS\=/CFLAGS:=-DBUILD_BROKEN_NEDIT /"  Makefile.linux.orig       |
   sed  "s/-DUSE_LPR_PRINT_CMD/& \$\(CFLAGS\)/"  >        \
        Makefile.linux
   cd   ..
-  make  linux                                            &&
+  if  spell_installed  lesstif
+  then
+    echo  ""  |  make  linux
+  else
+    make  linux
+  fi                                                     &&
   prepare_install
 
 ) > $C_FIFO 2>&1  &&  (

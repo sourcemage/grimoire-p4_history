@@ -1,11 +1,11 @@
            SPELL=nedit
-         VERSION=5.3
+         VERSION=5.4
           SOURCE=$SPELL-$VERSION-source.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.nedit.org/ftp/v5_3/$SOURCE
-   SOURCE_URL[1]=ftp://humbolt.geo.uu.nl/pub/mirror/NEdit/v5_3/$SOURCE
-          MD5[0]=bf8f2bbd49cd41aaa797863da6d072bb
-        WEB_SITE=http://www.nedit.org
+   SOURCE_URL[0]=http://www.nedit.org/ftp/v${VERSION/./_}/$SOURCE
+   SOURCE_URL[1]=ftp://humbolt.geo.uu.nl/pub/mirror/NEdit/v${VERSION/./_}/$SOURCE
+          MD5[0]=a0427c3a5d15b1fb7c211560311be4fc
+        WEB_SITE=http://www.nedit.org/
          ENTERED=20011120
          UPDATED=20011213
       LICENSE[0]=GPL

@@ -1,27 +1,27 @@
-2002-09-06  Eric Sandall <eric@sandall.us>
+2003-11-23 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.4
+	Uses $VERSION instead of hardcoding it in for SOURCE_URLs
+	* BUILD: Nedit doesn't like lesstif > 0.98, so it complains
+	* HISTORY: Formatted to Guru Handbook
 
-		Updated to 5.3 (Bug #886)
+2002-09-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.3 (Bug #886)
+	Added MAINTAINER
 
-		Added MAINTAINER
+2002-07-17 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added LICENSE
 
-2002-07-17  Eric Sandall <sandalle@yahoo.com>
+2002-06-27 Eric Sandall <sandalle@yahoo.com>
+	* CONFLICTS: Added nc as conflicts, as they both install
+	/usr/bin/nc, thanks to Dufflebunk
 
-		Added LICENSE
+2002-06-14 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added MD5 entry
 
-2002-06-27  Eric Sandall <sandalle@yahoo.com>
+2002-05-29 Eric Sandall <sandalle@yahoo.com>
+	* Renamed Changelog to HISTORY
+	* USEGCC2: Removed
 
-		Added nc as conflicts, as they both install /usr/bin/nc, thanks to Dufflebunk
+2001-12-13 Kongar
+	* BUILD: Hacked to add optimizations to the Makefile.linux
 
-2002-06-14  Eric Sandall <sandalle@yahoo.com>
-
-		Added MD5 entry to DETAILS
-
-2002-05-29  Eric Sandall <sandalle@yahoo.com>
-
-		Renamed Changelog to HISTORY
-
-		Works with gcc3
-
-2001-12-13  Kongar
-
-		Hacked BUILD file to add optimizations to the Makefile.linux
