@@ -1,32 +1,31 @@
 (
 
-#  if [ -f /usr/bin/objprelink ]; then
-
-  if  spell_installed objprelink; then
-    patch -p 0 < $SCRIPT_DIRECTORY/qt-configs.patch
-  fi
-
   export  QTDIR=$SOURCE_DIRECTORY
 
-  echo  "yes"  |  ./configure  -release            \
-                               -shared             \
+  if  spell_installed  postgresql;  then
+    cd  $SOURCE_DIRECTORY  &&
+    tar  -zxpf  /var/spool/sorcery/postgresql-`installed_version postgresql`.tar.gz  &&
+    cd  postgresql-`installed_version postgresql`  &&
+    ./configure  &&
+    cd  $SOURCE_DIRECTORY
+  fi  &&
+
+  echo  "yes"  |  ./configure                      \
+                               -prefix /usr/lib/qt \
+                               -bindir /usr/bin    \
+                               -libdir /usr/lib    \
+                               -docdir /usr/doc/qt-copy \
+                               -headerdir /usr/include/qt \
+                               -datadir /usr/share/qt \
                                -thread             \
-                               -gif                \
-                               -system-libmng      \
-                               -system-libpng      \
-                               -system-jpeg        \
-                               -system-zlib        \
+                               -qt-gif             \
                                -no-g++-exceptions  \
                                -xft                \
                                $OPTS               &&
-  make                                             &&
+  make symlinks sub-src sub-tools                  &&
   prepare_install                                  &&
-  mkdir  -p                /usr/include/qt         &&
-  cp         include/*     /usr/include/qt         &&
-  cp     -r  lib           /usr                    &&
-  cp     -r  bin           /usr                    &&
-  cp     -r  doc/man       /usr                    &&
-  mkdir  -p                /usr/doc/qt             &&
-  cp     -r  doc/html      /usr/doc/qt
+  make install                                     &&
+  mv -f /usr/lib/qt/bin/* /usr/bin                 &&
+  rm -rf /usr/lib/qt/bin
 
 ) > $C_FIFO 2>&1

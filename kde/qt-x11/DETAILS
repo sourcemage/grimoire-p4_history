@@ -1,18 +1,23 @@
            SPELL=qt-x11
-# Version 2.3.2 is not recommended.
-# Version 3.0.1 is latestest, version 2.3.1 is used for kde.
-         VERSION=2.3.1
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-$VERSION
-   SOURCE_URL[0]=ftp://ftp.trolltech.com/qt/source/$SOURCE
+# Version 3.0.3 is for kde3, version 2.3.1 is used for kde 2.2.2.
+         VERSION=3.0.3
+     KDE_VERSION=3.0
+          SOURCE=qt-copy-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-copy-$VERSION
+   SOURCE_URL[0]=ftp://ftp.kde.org/pub/kde/stable/$KDE_VERSION/src/$SOURCE
+   SOURCE_URL[1]=ftp://download.au.kde.org/pub/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[2]=ftp://download.at.kde.org/pub/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.du.se/pub/mirrors/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[4]=ftp://download.us.kde.org/pub/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[5]=ftp://ftp.gtlib.cc.gatech.edu/pub/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[6]=ftp://ibiblio.org/pub/packages/desktops/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[7]=ftp://download.uk.kde.org/pub/kde/stable/3.0/src/$SOURCE
         WEB_SITE=http://www.trolltech.com/qt
-         ENTERED=20010922
-         UPDATED=20010922
+         ENTERED=20020322
+         UPDATED=20020410
            SHORT="Qt simplifies the task of writing and maintaining GUI applications."
 
 # qt-x11 is primarily needed by kde apps.  
-# When KDE 3.0 is released which requires qt-x11 3, 
-# then the version on this spell will be increased.
 
 cat << EOF
 Qt is a toolkit for software developers. Qt simplifies the task of
