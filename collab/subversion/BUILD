@@ -10,7 +10,22 @@
 #	We don't need Apache stuff here, but "their" neon has to stay
 	rm -fr apr/              &&
 	rm -fr apr-util/         &&
-#	rm -fr neon/             &&
+	rm -fr neon/             &&
+
+#	message "${MESSAGE_COLOR}Fixing neon API rename...${DEFAULT_COLOR}"
+#	for S in `find -name "*.[ch]" -and -type f`; do
+#		sedit "s/struct uri/ne_uri/"          $S
+#		sedit "s/uri_parse\((.*), NULL\);/ne_uri_parse\(\1\);/"     $S
+#		sedit "s/uri_free/ne_uri_free/"       $S
+#		sedit "s/uri_compare/ne_uri_compare/" $S
+#		sedit "s/sock_init/ne_sock_init/"     $S
+#	done &&
+
+	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch
+
+#	Change required neon version to whatever we have
+	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
+		./build/buildcheck.sh                                     &&
 
 #	Build client to bootstrap to source
 	./configure              \
@@ -23,8 +38,12 @@
 	make                     &&
 
 #	Download latest source
-	./subversion/clients/cmdline/svn checkout        \
-		http://svn.collab.net/repos/svn/trunk -d svn &&
+	./subversion/clients/cmdline/svn checkout           \
+		http://svn.collab.net:80/repos/svn/trunk -d svn &&
+
+#
+# -=* ACTUAL BUILD *=-
+#
 
 	message "${MESSAGE_COLOR}Starting actual build of the most recent ${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"
 	cd svn                   &&
