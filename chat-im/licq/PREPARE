@@ -1,0 +1,16 @@
+SPELL=licq
+if ! grep -q CVS $SPELL_CONFIG; then
+  if    query "Build CVS version?" n
+  then  CVS=yes
+  else  CVS=no
+  fi
+  echo  "CVS=$CVS"  >>  $SPELL_CONFIG
+fi &&
+if ! grep -q XOSD $SPELL_CONFIG; then
+  if	query "Build xosd plugin (depends on xosd)?" n
+  then XOSD=yes
+  else XOSD=no
+  fi
+  echo	"XOSD=$XOSD" >> $SPELL_CONFIG
+fi
+. $SPELL_CONFIG
