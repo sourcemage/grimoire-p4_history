@@ -10,7 +10,6 @@ cut_label()  {
 
 }
 
-
 lilo_image_entry()  {
 
   cat  <<  EOF
@@ -60,7 +59,7 @@ update_lilo()  {
       echo  -e  "`lilo_image_entry`"  >>  /etc/lilo.conf.new
     fi
 
-    cp  /etc/lilo.conf.new  /etc/lilo.conf
+    mv  /etc/lilo.conf.new  /etc/lilo.conf
 
     export  IFS=$IFS_OLD
 
@@ -151,7 +150,7 @@ update_yaboot()  {
       echo  -e  "`lilo_image_entry`"  >>  /etc/yaboot.conf.new
     fi
 
-    cp  /etc/yaboot.conf.new  /etc/yaboot.conf
+    mv  /etc/yaboot.conf.new  /etc/yaboot.conf
 
     export  IFS=$IFS_OLD
 
@@ -161,10 +160,76 @@ update_yaboot()  {
 
 }
 
+grub_image_entry() {
+
+KERNEL=`grep kernel /boot/grub/menu.lst|cut -d' ' -f2|grep \(|head -1`
+ROOT=`grep root /boot/grub/menu.lst|cut -d' ' -f3|cut -d= -f2|grep \(|head -1`
+if grep -q boot $KERNEL
+then
+  KERNEL=`echo $KERNEL|cut -d/ -f1,2`
+else
+  KERNEL=`echo $KERNEL|cut -d/ -f1`
+fi
+  cat << EOF
+title Source Mage GNU/Linux 
+kernel  ${KERNEL}/vmlinubz-${VERSION}  root=${ROOT}  devfs=nomount
+EOF
+}
+
+update_grub() {
+
+  if  !  grep  -q  "${VERSION}$"  /boot/grub/menu.lst;  then
+
+    IFS_OLD=$IFS
+    export  IFS="
+"
+
+    rm  -rf  /boot/grub/menu.lst.old
+    cp  /boot/grub/menu.lst  /boot/grub/menu.lst.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /boot/grub/menu.lst`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`grub_image_entry`"  >>  /boot/grub/menu.lst.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+
+      echo  $LINE  >>  /boot/grub/menu.lst.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`grub_image_entry`"  >>  /boot/grub/menu.lst.new
+    fi
+
+    # !!!  UNTESTED  !!!
+    #mv  /boot/grub/menu.lst.new  /boot/grub/menu.lst
+
+    export  IFS=$IFS_OLD
+
+  fi
+
+}
 
 # Changed from 'case $BUILD  in' as $BUILD is not defined yet
 case  `uname -m`  in
   powerpc)  update_yaboot  ;;
    sparc*)  update_silo    ;;
-        *)  update_lilo    ;;
+        *)  if  spell_installed  lilo
+            then
+              update_lilo
+            fi
+            if  spell_installed  grub
+            then
+              update_grub
+            fi             ;;
 esac

@@ -1,19 +1,21 @@
            SPELL=postgresql
-         VERSION=7.3.3
+         VERSION=7.3.4
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       SOURCE_URI=v$VERSION/$SOURCE
-   SOURCE_URL[0]=http://www.postgresql.org/ftpsite/source/$SOURCE_URI
-   SOURCE_URL[1]=ftp://ftp3.us.postgresql.org/pub/postgresql/source/$SOURCE_URI
-   SOURCE_URL[2]=ftp://ftp8.us.postgresql.org/pub/pgsql/source/$SOURCE_URI
-   SOURCE_URL[3]=ftp://ftp9.us.postgresql.org/pub/mirrors/postgresql/source/$SOURCE_URI
-   SOURCE_URL[4]=ftp://ftp10.us.postgresql.org/pub/postgresql/source/$SOURCE_URI
-   SOURCE_URL[5]=ftp://ftp15.us.postgresql.org/source/$SOURCE_URI
-          MD5[0]=29004ecf1d297a31963d6c44c183967f
+   SOURCE_URL[0]=http://www.postgresql.org/ftpsite/pub/$SOURCE_URI
+   SOURCE_URL[1]=ftp://ftp3.us.postgresql.org/pub/postgresql/$SOURCE_URI
+   SOURCE_URL[2]=ftp://ftp5.us.postgresql.org/pub/PostgreSQL/$SOURCE_URI
+   SOURCE_URL[3]=ftp://ftp8.us.postgresql.org/pub/pgsql/$SOURCE_URI
+   SOURCE_URL[4]=ftp://ftp9.us.postgresql.org/pub/mirrors/postgresql/$SOURCE_URI
+   SOURCE_URL[5]=ftp://ftp10.us.postgresql.org/pub/postgresql/$SOURCE_URI
+   SOURCE_URL[6]=ftp://ftp13.us.postgresql.org/mirror/postgresql/$SOURCE_URI
+   SOURCE_URL[7]=ftp://ftp15.us.postgresql.org/$SOURCE_URI
+          MD5[0]=5a39f552598eab946aa65d6a10d73f65
       LICENSE[0]=BSD
         WEB_SITE=http://www.postgresql.org/
          ENTERED=20011113
-         UPDATED=20030810
+         UPDATED=20030822
            SHORT='PostgreSQL is a sophisticated Object-Relational DBMS'
 cat << EOF
 PostgreSQL is a sophisticated Object-Relational DBMS, supporting almost

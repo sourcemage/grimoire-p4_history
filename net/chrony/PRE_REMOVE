@@ -1,5 +1,0 @@
-if  [  -x  /etc/init.d/chrony.sh  ];  then
-  /etc/init.d/chrony.sh  stop;
-else
-  killall  -HUP  xinetd
-fi

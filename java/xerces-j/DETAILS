@@ -1,19 +1,19 @@
            SPELL=xerces-j
        PKG_SPELL=Xerces-J
-         VERSION=2.3.0
-     PKG_VERSION=2_3_0
+         VERSION=2.5.0
+     PKG_VERSION=${VERSION//\./_}
           SOURCE=${PKG_SPELL}-src.${VERSION}.tar.gz
 	 SOURCE2=${PKG_SPELL}-tools.${VERSION}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xerces-${PKG_VERSION}
-   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/Xerces-J-src.2.3.0.tar.gz
-          MD5[0]=84ecf974c24a5e657d0150d586378c7e
+   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/$SOURCE
+          MD5[0]='63c4e4a391d9de389db16a97864ea4dc'
       LICENSE[0]=APACHE
-  SOURCE2_URL[0]=http://xml.apache.org/dist/$SPELL/Xerces-J-tools.2.3.0.tar.gz
-          MD5[1]=8ae49855aecfaa31147a9ebbb2d764f1
+  SOURCE2_URL[0]=http://xml.apache.org/dist/$SPELL/$SOURCE2
+          MD5[1]='166062926f38d78bee2f11bbecee6588'
       LICENSE[1]=APACHE
         WEB_SITE=http://xml.apache.org/xerces2-j/index.html
          ENTERED=20030326
-         UPDATED=20030326
+         UPDATED=20030801
       MAINTAINER=vydra@fria.fri.utc.sk
            SHORT="Xerces2 is the next generation of fully compliant XML parsers."
 cat << EOF

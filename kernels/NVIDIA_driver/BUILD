@@ -12,11 +12,16 @@
   if [[ $AGPFW == "y" ]]; then sedit "s/NVreg_EnableAGPFW = 0;/NVreg_EnableAGPFW = 1;/" usr/src/nv/os-registry.c; fi &&
 
   cd usr/src/nv                 &&
-  if [[ $(installed_version linux|cut -d. -f1,2) == 2.5 ]]  ||
-     [[ $(installed_version linux|cut -d. -f1,2) == 2.6 ]]
+
+  # We look at the Makefile in the kernel sources for the Version Number!
+  KPATCHLEVEL= $(head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//')
+
+  if [[ $KPATCHLEVEL == 5 ]]  || [[ $KPATCHLEVEL == 6 ]]
   then
-    patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
-    patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
+    patch  -p1  <  $SOURCE_CACHE/$SOURCE2
+    if ! grep -q KERNEL_2_6 nv-linux.h; then
+      patch  -p0  <  $SOURCE_CACHE/$SOURCE3   # Workaround for stupid stupid stupid people who dont update versions.
+    fi
     ln  -s  Makefile.kbuild Makefile
   fi                            &&
 #please no-one remove this???

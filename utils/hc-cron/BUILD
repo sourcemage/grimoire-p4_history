@@ -1,8 +1,8 @@
 (
 
-  cp   compat.h  compat.h.old          &&
-  sed  "s/SYS_TIME_H 1/SYS_TIME_H 0/"  \
-       compat.h.old > compat.h         &&
+  sedit  's:$(DESTROOT)/sbin:/sbin:'  Makefile     &&
+  sedit  's:$(DESTROOT)/bin:/bin:'    Makefile     &&
+  sedit  "s/SYS_TIME_H 1/SYS_TIME_H 0/"  compat.h  &&
   make                                 &&
   prepare_install                      &&
   make    install

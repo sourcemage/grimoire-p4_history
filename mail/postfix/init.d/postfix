@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-# SMGL-script-version=20030318
-# SMGL-START:3 4 5:S90
-# SMGL-STOP:0 1 2 6:K10
+PROGRAM=/usr/libexec/postfix/master
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
 
-. /etc/init.d/functions
+. /etc/init.d/smgl_init
 
-case $1 in
-   start)  echo     "Starting postfix..."
+start() {
+  echo     "Starting postfix..."
 	   if [ -e /etc/aliases ]; then
 	     if [ -e /etc/aliases.db ] &&
 	        [ ""`/usr/bin/find /etc/aliases -follow -newer /etc/aliases.db` != "" ]; then
@@ -15,24 +15,21 @@ case $1 in
 	     fi
            fi
            loadproc  postfix  start
-           ;;
+}
 
-    stop)  echo     "Stopping postfix..."
+stop() {
+           echo     "Stopping postfix..."
            postfix  stop
            loadproc true
-           ;;
+}
 
-    restart)
+restart() {
 	   			 $0 stop
             	sleep 1
 	   			 $0 start
-           ;;  
-    reload) echo     "Reloading postfix..."
+}
+
+reload() {
+            echo     "Reloading postfix..."
 					 loadproc  postfix  reload
-           ;;    
-    status)
-           statusproc master
-           ;;
-       *)  echo     "Usage: $0 {start|stop|restart|reload|status}"
-           ;;
-esac
+}

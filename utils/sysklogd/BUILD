@@ -1,5 +1,6 @@
 (
 
+  sedit  "s:BINDIR = /usr/sbin:BINDIR=/sbin:"  Makefile  &&
   make             &&
   prepare_install  &&
   make    install

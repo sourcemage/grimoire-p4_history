@@ -10,13 +10,10 @@
 
 ) > $C_FIFO 2>&1  &&  (
 
-
-  if    [  !  -f  /etc/ftplockout  ]
-  then  cp  pam/ftplockout  /etc
-  fi
-
-  if    [  !  -e  /etc/pure-ftpd.conf  ]
-  then  cp  $SCRIPT_DIRECTORY/pure-ftpd.conf /etc/pure-ftpd.conf
-  fi
+  /bin/true
+# this file ( pam/ftplockout ) doesn't exist, what should it be?
+#  if    [  !  -f  /etc/ftplockout  ]
+#  then  cp  pam/ftplockout  /etc
+#  fi
 
 )

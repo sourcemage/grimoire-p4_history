@@ -1,0 +1,8 @@
+if  [  !  -e  /etc/sysconfig/hwclock  ];  then
+  if  query  "Should the hardware clock store time in UTC (may break systems like MS Windows)?"  y;  then
+    UTC=yes
+  else
+    UTC=no
+  fi
+  export UTC
+fi

@@ -1,25 +1,13 @@
-#!/bin/sh
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:3 4 5:S40
-# SMGL-STOP:0 1 2 6:K60
-#
+#!/bin/bash
 
-NISDOMAIN=`cat  /etc/nisdomain`
+PROGRAM=/usr/sbin/ypbind
+RUNLEVEL=3
+NEEDS="+remote_fs +network +portmap"
 
-case $1 in
-  start|restart)  echo   "$1ing ypbind."
-                  pkill  "^ypbind$"  &&  sleep 2
-                  ps  -C  portmap  >  /dev/null  ||  portmap
-                  /bin/nisdomainname $NISDOMAIN
-                  /usr/sbin/ypbind
-                  ;;
-              
-           stop)  echo   "$1ping ypbind."
-                  pkill  "^ypbind$"
-                  ;;
+. /etc/init.d/smgl_init
 
-              *)  echo  "Usage: $0 {start|stop|restart}"
-                  ;;
-esac
+start()
+{
+  /bin/nisdomainname -F /etc/nisdomainname &&
+  _start
+}

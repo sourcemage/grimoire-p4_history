@@ -1,29 +1,35 @@
-#!/bin/sh
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:3 4 5:S10
-# SMGL-STOP:0 1 2 6:K90
-#
+#!/bin/bash
 
-       case "$1" in
-           start)
-               echo "Starting watchdog."
-# REMOVE -q to have a REAL watchdog. (-q means "simulating only")
-               /usr/sbin/watchdog -q -v -c /etc/watchdog.conf 
-           ;;
-           stop)
-               echo "Shutting down watchdog."
-               thePid=`cat /var/run/watchdog.pid`
-               kill -TERM $thePid
-               sleep 1
-           ;;
-           restart)
-               $0 stop
-               $0 start
-           ;;
-           *)
-               echo "Usage: $0 {start|restart|stop}"
-               exit 1
-esac
-exit 0
+. /etc/sysconfig/watchdog
+
+PROGRAM=/usr/sbin/watchdog
+ARGS="$WD_OPTS"
+RUNLEVEL=3
+NEEDS="+remote_fs"
+
+. /etc/init.d/smgl_init
+
+start()
+{
+  echo "Starting watchdog..."
+  . /etc/sysconfig/devices
+  if ! ([ -e $DEVICES/misc/watchdog ] && [ -e $DEVICES/misc/temperature ]); then
+    echo "No watchdog support in the kernel!"
+    exit 5
+  else
+    [ -e /dev/watchdog ]    || ln -s $DEVICES/misc/watchdog    /dev/watchdog
+    [ -e /dev/temperature ] || ln -s $DEVICES/misc/temperature /dev/temperature
+  fi
+  loadproc $PROGRAM $ARGS
+}
+
+stop()
+{
+  echo "Stopping watchdog..."
+  if [ -e /var/run/watchdog.pid ]; then
+    kill $(cat /var/run/watchdog.pid)
+  else
+    /bin/false
+  fi
+  evaluate_retval
+}

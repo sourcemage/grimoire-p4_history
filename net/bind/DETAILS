@@ -2,13 +2,14 @@
          VERSION=9.2.2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.isc.org/isc/bind9/$VERSION/$SOURCE
-        WEB_SITE=http://www.isc.org/products/BIND
+      MAKE_NJOBS=1
+   SOURCE_URL[0]=ftp://ftp.isc.org/isc/bind${VERSION%%\.*}/$VERSION/$SOURCE
+        WEB_SITE=http://www.isc.org/products/BIND/
           MD5[0]=41645f9ab91ebfb7f75af39524a9f8fc
          ENTERED=20010922
-         UPDATED=20020502
+         UPDATED=20030822
          LICENSE=ISC
-           SHORT="BIND contains a DNS server and dig"
+           SHORT='BIND contains a DNS server and dig utility'
 cat << EOF
 ISC BIND
 BIND (Berkeley Internet Name Domain) is an implementation of the Domain

@@ -1,0 +1,49 @@
+(
+ # No fast optimization for Mozilla, bit us so many times...
+ export  CFLAGS="${CFLAGS//-O3/-O2}"     &&
+ export  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
+
+MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
+if [ "$SVG" = "yes" ];
+ then OPTS="$OPTS --enable-svg --enable-svg-renderer-libart" &&
+ export MOZ_INTERNAL_LIBART_LGPL=1           
+fi &&
+export MOZ_PHOENIX=1                         &&
+    ./configure \
+    --prefix=${INSTALL_ROOT}/usr    \
+    --with-x            \
+    --with-pthreads     \
+    --enable-reorder    \
+    --enable-cpp-rtti   \
+    --enable-strip      \
+    --enable-optimize="$CFLAGS"   \
+    --with-default-mozilla-five-home=$MOZILLA_HOME \
+    --disable-debug     \
+    --disable-tests     \
+    --disable-installer \
+    --disable-pedantic  \
+    --disable-mailnews  \
+    --disable-composer  \
+    --enable-crypto     \
+    $OPTS               &&
+
+    make                &&
+
+
+  prepare_install &&
+
+# everything coming into /usr/lib/mozilla-$MOZI_VERS/
+# must actually go to /usr/lib/mozilla/
+
+  MOZI_VERS=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
+  mkdir -p $MOZILLA_HOME                           &&
+  ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZI_VERS   &&
+  mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
+  ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZI_VERS &&
+  mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
+  ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
+
+  make install                                     && 
+  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla
+  
+) >$C_FIFO 2>&1

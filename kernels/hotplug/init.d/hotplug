@@ -13,36 +13,57 @@
 # Modified for Source Mage GNU/Linux (http://www.sandall.us)
 # 2003-07-10  Eric Sandall <eric@sandall.us>
 #
-# SMGL-script-version=20030710
+# Modified for Source Mage GNU/Linux (http://www.sandall.us)
+# 2003-07-31  Jose Bernardo Silva <jbernardo@sourcemage.org>
+#
+# SMGL-script-version=20030731
 #
 # SMGL-START:1 2 3 4 S:S11
 # SMGL-STOP:0 6:K89
 #
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
+PROGRAM=/bin/true
+RUNLEVEL=S
+NEEDS="+local_fs"
 
 # source function library
-. /etc/init.d/functions
+. /etc/init.d/smgl_init
 
-# Bug #1702
-[ -d /var/lock/subsys ] || mkdir -p /var/lock/subsys
 
-case "$1" in
-    start|restart|status)
+start(){
+	[ -d /var/lock/subsys ] || mkdir -p /var/lock/subsys
 	for RC in /etc/hotplug/*.rc
 	do
-	    $RC $1
+	    $RC start
 	done
 	touch /var/lock/subsys/hotplug
-	;;
-    stop)
+	echo "Hotplug started"
+}
+
+restart(){
+	for RC in /etc/hotplug/*.rc
+	do
+	    $RC restart
+	done
+}
+
+status(){
+	for RC in /etc/hotplug/*.rc
+	do
+	    $RC status
+	done
+}
+
+stop(){
 	for RC in /etc/hotplug/*.rc
         do
             $RC stop
         done
         rm -f /var/lock/subsys/hotplug
-        ;;
-    force-reload)
+	echo "Hotplug stopped"
+}
+
+reload(){
 	for RC in /etc/hotplug/*.rc
         do
             $RC stop
@@ -52,10 +73,5 @@ case "$1" in
             $RC start
         done
         rm -f /var/lock/subsys/hotplug
-        ;;
+}
 
-    *)
-	echo $"Usage: $0 {start|stop|restart|status|force_reload}"
-	exit 3
-	;;
-esac

@@ -1,37 +1,29 @@
 #!/bin/sh
-#
-# SMGL-script-version=20030224
-# SMGL-START:1 2 3 4 5:S35
-# SMGL-STOP:0 6:K50
 
-. /etc/init.d/functions
+PROGRAM=/usr/sbin/sshd
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
 
+. /etc/init.d/smgl_init
 
-case $1 in
+start() {
+  echo "Starting sshd..."
+  $PROGRAM
+  sleep 1
+  if [ -e /var/run/sshd.pid ]; then
+    ps -p `cat /var/run/sshd.pid` > /dev/null  && evaluate_retval
+  else
+    print_status failure
+    exit 1
+  fi
+}
 
-        start)  echo "$1ing sshd."
-                loadproc sshd
-                ;;
-
-      restart)  echo "$1ing sshd."
-                #
-                # Below is commented out due to causing
-                # the loss of connection when remotely connected
-                # and issuing a restart.
-                #
-                #reloadproc sshd
-				if [ -e /var/run/sshd.pid ]; then
-                       kill `cat /var/run/sshd.pid`
-                       sleep 1
-                fi
-                loadproc sshd
-                ;;
-
-         stop)  echo "$1ping sshd."
-                killproc sshd
-                ;;
-
-            *)  echo "Usage: $0 {start|stop|restart}"
-                exit 1
-                ;;
-esac
+reload() {
+  # reloadproc causes loss of connection when remotely connected
+  echo "Reloading sshd..."
+  if [ -e /var/run/sshd.pid ]; then
+    kill `cat /var/run/sshd.pid`
+    sleep 1
+  fi
+  $0 start
+}

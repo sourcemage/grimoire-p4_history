@@ -1,0 +1,24 @@
+           SPELL=jonah
+         VERSION=${VERSION:-0.0.2}
+          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20030804
+         UPDATED=20030804
+      MAINTAINER=eric@sandall.us
+           SHORT='RSS Content management and display'
+
+[ -z $FORCE_DOWNLOAD ] &&
+          MD5[0]='2a55b6ebe258db2027cd64b1a90527f1'
+
+cat << EOF
+Welcome to the Jonah homepage. Jonah is a set of scripts, written in PHP and using the Horde framework, to manage content and display for a portal-like site.
+
+Right now Jonah includes a backend which will fetch RDF/RSS/syndicated XML site summary or headline files, store them locally, parse them, and generate (and save) html from them. My.Netscape style RSS files and My.UserLand XML storylist files seem to both work. The frontend is extremely simplistic - it lists the available channels and lets you view the generated html for them. There's a really long list of channels available here: http://www.syndic8.com/genfeed.php?Format=ocs.
+
+This is just the beginning - Jonah will eventually have a complete my.netscape style portal frontend, and as many backend content sources as people are interested in. But I'll need some help for all that to happen, so...
+
+Jonah received a friendly mention in this IBM developerWorks article entitled " Essential tools and libraries for using XML with PHP."
+EOF

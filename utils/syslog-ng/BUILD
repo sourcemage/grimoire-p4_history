@@ -6,6 +6,7 @@
 		--prefix=/usr			\
 		--sysconfdir=/etc		\
 		--localstatedir=/var/run	\
+                --sbindir=/sbin                 \
                $OPTS				&&
 	       
   make			&&

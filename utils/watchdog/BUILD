@@ -1,6 +1,6 @@
 (
 
-  patch include/sundries.h < $SCRIPT_DIRECTORY/sundries.h.diff	&&
+  patch -p1 < $SCRIPT_DIRECTORY/watchdog-gcc3.patch	&&
 
   default_build                  &&
 

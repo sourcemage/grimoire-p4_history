@@ -33,8 +33,4 @@
   prepare_install &&
   make    install
 
-) >$C_FIFO 2>&1 && (
-
-  mkdir -p /var/run/httpsd
-
-)
+) >$C_FIFO 2>&1

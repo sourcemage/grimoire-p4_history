@@ -1,40 +1,57 @@
-#!/bin/sh
+#!/bin/bash
 
-# SMGL-script-version=20030225
-# SMGL-START:3 4 5:S40
-# SMGL-STOP:0 1 2 6:K60
+PROGRAM=/usr/sbin/exportfs
+RUNLEVEL=3
+NEEDS="+remote_fs +network +portmap"
+
+. /etc/init.d/smgl_init
 
 [  -e /etc/exports  ]  ||  exit 0
 
 NUMSERVERS=8
 MOUNTDOPTS=
 
-case $1 in
-   start|restart)  echo "$1ing NFS services"
-                   exportfs -r 
+start()
+{
+  echo "Starting NFS services"
+  exportfs -r 
+  evaluate_retval
 
-                   pkill      "^rpc.rquotad$"  &&  sleep  5
-                   pkill      "^rpc.mountd$"   &&  sleep  5
-                   pkill  -1  "^nfsd$"         &&  sleep  5
-                   pkill      "^rpc.statd$"    &&  sleep  5
+  pkill      "^rpc.rquotad$"  &&  sleep  5
+  evaluate_retval
+  pkill      "^rpc.mountd$"   &&  sleep  5
+  evaluate_retval
+  pkill  -1  "^nfsd$"         &&  sleep  5
+  evaluate_retval
+  pkill      "^rpc.statd$"    &&  sleep  5
+  evaluate_retval
 
-                   ps  -C  portmap  >  /dev/null  ||
-                   /usr/sbin/portmap
-                   /usr/sbin/rpc.rquotad
-                   /usr/sbin/rpc.mountd  $MOUNTDOPTS
-                   /usr/sbin/rpc.nfsd    $NUMSERVERS
-                   /usr/sbin/rpc.statd
-                   ;;
+  ps  -C  portmap  >  /dev/null  ||
+  /usr/sbin/portmap
+  evaluate_retval
+  /usr/sbin/rpc.rquotad
+  evaluate_retval
+  /usr/sbin/rpc.mountd  $MOUNTDOPTS
+  evaluate_retval
+  /usr/sbin/rpc.nfsd    $NUMSERVERS
+  evaluate_retval
+  /usr/sbin/rpc.statd
+  evaluate_retval
+}
 
-            stop)  echo "$1ping NFS services"
-                   /usr/sbin/exportfs -au
+stop()
+{
+  echo "Stopping NFS services"
+  /usr/sbin/exportfs -au
+  evaluate_retval
     
-                   pkill      "^rpc.rquotad$"
-                   pkill      "^rpc.mountd$"
-                   pkill  -1  "^nfsd$"
-                   pkill      "^rpc.statd$"
-                   ;;
+  pkill      "^rpc.rquotad$"
+  evaluate_retval
+  pkill      "^rpc.mountd$"
+  evaluate_retval
+  pkill  -1  "^nfsd$"
+  evaluate_retval
+  pkill      "^rpc.statd$"
+  evaluate_retval
+}
 
-               *)  echo "Usage: $0 {start|stop|restart}"
-                   ;;
-esac

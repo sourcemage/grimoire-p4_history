@@ -1,19 +1,28 @@
 #!/bin/sh
 
-# SMGL-script-version=20030225
-# SMGL-START:3 4 5:S40
-# SMGL-STOP:0 1 2 6:K60
+PROGRAM=/usr/sbin/exportfs
+RUNLEVEL=3
+NEEDS="+remote_fs +network +portmap nfs"
 
-case $1 in
-  start|restart)  echo   "$1ing NFS file locking services, rpc.statd"
-                  pkill  "^rpc.statd$"  &&  sleep  5
-                  ps  -C  portmap  >  /dev/null  ||
-                  /usr/sbin/portmap
-                  /usr/sbin/rpc.statd
-                  ;;
-           stop)  echo "$1ping NFS file locking services"
-                  pkill  "^rpc.statd$"
-                  ;;
-              *)  echo "Usage $0 {start|stop|restart}"
-                  ;;
-esac
+. /etc/init.d/smgl_init
+
+start()
+{
+  echo   "Starting NFS file locking services, rpc.statd"
+  pkill  "^rpc.statd$"  &&  sleep  5
+  evaluate_retval
+  ps  -C  portmap  >  /dev/null  ||
+  evaluate_retval
+  /usr/sbin/portmap
+  evaluate_retval
+  /usr/sbin/rpc.statd
+  evaluate_retval
+}
+
+stop()
+{
+  echo "Stopping NFS file locking services"
+  pkill  "^rpc.statd$"
+  evaluate_retval
+}
+

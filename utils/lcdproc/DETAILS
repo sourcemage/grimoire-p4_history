@@ -3,13 +3,11 @@
           SOURCE=$SPELL-$VERSION.tar.gz
           MD5[0]=1298f5d7d9c456fbbdde51a7fada97de
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://lcdproc.omnipotent.net/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/lcdproc/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/lcdproc/$SOURCE
-   SOURCE_URL[3]=http://telia.dl.sourceforge.net/lcdproc/$SOURCE
+   SOURCE_URL[0]=http://lcdproc.omnipotent.net/download/$SOURCE
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/lcdproc/$SOURCE
         WEB_SITE=http://lcdproc.omnipotent.net
          ENTERED=20020116
-         UPDATED=20020116
+         UPDATED=20030822
            SHORT="lcdproc provides a support for small lcd displays"
 cat << EOF
 lcdproc provides a server/client interface for small text based

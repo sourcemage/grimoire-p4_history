@@ -1,37 +1,32 @@
-#!/bin/sh
-#
-# SMGL-script-version=20030224
-# SMGL-START:S:S20
-# SMGL-STOP:0 6:K70
+#!/bin/bash
 
-source /etc/init.d/functions
+RUNLEVEL=S
+NEEDS="+local_fs"
+PROVIDES=syslog
+
+. /etc/init.d/smgl_init
 
 case $1 in
-  		start)
-				echo  "$1ing system and kernel log daemons."
-                loadproc syslogd -m 60
-                loadproc klogd
-                ;;
+  start)    echo "Starting system log daemon..."
+            loadproc /sbin/syslogd -m 60
+            echo "Starting kernel log daemon..."
+            loadproc /sbin/klogd
+            ;;
 
-		stop)
-		   		echo  "Stopping system and kernel log daemons."
-                killproc syslogd
-                killproc klogd
-                ;;
-				
-		restart)
-				echo  "Restarting system and kernel log daemons."
-				reloadproc syslogd
-				reloadproc klogd
-				;;
+  restart)  $0 stop
+            $0 start
+            ;;
 
-         status)
-		 		statusproc syslogd
-				statusproc klogd
-				;;
+  stop)     echo "Stopping kernel log daemon..."
+            killproc /sbin/klogd
+            echo "Stopping system log daemon..."
+            killproc /sbin/syslogd
+            ;;
 
-		 *)  
-		 		echo  "Usage: $0 {start|stop|restart|status}"
-	          	exit 1
-                ;;
+  status)   statusproc /sbin/syslogd
+            statusproc /sbin/klogd
+            ;;
+
+  *)        echo "Usage: $0 {start|stop|restart|status}"
+            ;;
 esac

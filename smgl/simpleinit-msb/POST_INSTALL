@@ -1,0 +1,8 @@
+if  [  -f  /etc/sysconfig/mount  ]  ;  then
+  (
+    .  /etc/sysconfig/mount
+    sedit  "s!/devices!$DEVICES!"  /etc/inittab
+  )
+fi
+
+true

@@ -4,7 +4,3 @@ mkdir  -p       /var/log/xinetd
 
 [  -f           /etc/xinetd.conf  ]  ||
 echo  "$ID"  >  /etc/xinetd.conf
-
-if  [ -x  /etc/init.d/xinetd.sh ];  then
-  /etc/init.d/xinetd.sh  start
-fi

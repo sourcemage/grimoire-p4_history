@@ -1,40 +1,29 @@
-#!/bin/sh
-# /etc/init.d/quota.sh
-# SGL-script-version=20030410
-# this sets the run levels and priority for links
-# SGL-START:S:S11
-# SGL-STOP:0 6:K89
+#!/bin/bash
 
-source /etc/init.d/functions
+RUNLEVEL=S
+NEEDS="+local_fs"
+
+. /etc/init.d/smgl_init
 
 start() {
 
   # Check quota and then turn quota on. 
-  if [ -x /usr/sbin/quotacheck ] 
-        then 
-               echo "Checking quotas. This may take some time." 
-               /usr/sbin/quotacheck -avug 
-               evaluate_retval
+  echo "Checking quotas. This may take some time." 
+  /sbin/quotacheck -avug 
+  evaluate_retval
 
-        fi 
-         if [ -x /usr/sbin/quotaon ] 
-        then 
-                echo "Turning on quota..." 
-                /usr/sbin/quotaon -avug 
-                evaluate_retval
-        fi
+  echo "Turning on quota..." 
+  /sbin/quotaon -avug 
+  evaluate_retval
 
 }
 
 
 stop() {
 
-         if [ -x /usr/sbin/quotaoff ] 
-        then 
-                echo "Turning off quota..." 
-                /usr/sbin/quotaoff -avug 
-                evaluate_retval
-        fi
+  echo "Turning off quota..." 
+  /sbin/quotaoff -avug 
+  evaluate_retval
 
 }
 

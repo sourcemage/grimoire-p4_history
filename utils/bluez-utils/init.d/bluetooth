@@ -8,14 +8,17 @@
 # SMGL-START:S:S25
 # SMGL-STOP:0 6:K90
 #
-
 # Source function library.
-. /etc/init.d/functions
+#. /etc/init.d/functions
+. /etc/init.d/smgl_init
 
 # Source Bluetooth configuration.
 #. /etc/sysconfig/bluetooth
 
 prog="Bluetooth"
+PROGRAM=/sbin/hcid
+RUNLEVEL=3
+NEEDS="+local_fs"
 
 UART_CONF="/etc/bluetooth/uart"
 
@@ -59,9 +62,6 @@ stop()
 	rm -f  /var/lock/subsys/bluetooth
 }
 
-[ -f /sbin/hcid ] || exit 0
-
-# See how we were called.
 case "$1" in
   start)
 	start

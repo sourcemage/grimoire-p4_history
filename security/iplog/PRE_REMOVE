@@ -1,0 +1,8 @@
+# Stop iplog service
+ if  [  -x  /etc/init.d/iplog.sh  ];  then
+     /etc/init.d/iplog.sh  stop
+ else
+     if  [  -x  /etc/init.d/iplog  ];  then
+         /etc/init.d/iplog  stop
+     fi
+ fi

@@ -1,1 +1,5 @@
-[  -x  /etc/init.d/gpm.sh  ]  &&  /etc/init.d/gpm.sh  start
+CONF=/etc/sysconfig/gpm
+if [ -e $CONF ]; then
+  grep  -q  MOUSE=MTYPE  $CONF  &&  sedit  "s:MTYPE:$MOUSE:"  $CONF
+  grep  -q  DEV=MDEV     $CONF  &&  sedit  "s:MDEV:$DEV:"     $CONF
+fi

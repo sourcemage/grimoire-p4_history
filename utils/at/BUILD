@@ -10,6 +10,8 @@ SENDMAIL='#define  SENDMAIL  "/usr/sbin/sendmail"'
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
+               --bindir=/bin         \
+               --sbindir=/sbin       \
                $OPTS                 &&
   echo  "$SENDMAIL"  >>  config.h    &&
   make                               &&

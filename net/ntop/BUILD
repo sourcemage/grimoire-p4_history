@@ -21,11 +21,6 @@
   make                                     &&
   prepare_install                          &&
   make    install                          &&
-  mkdir  -p  /var/cache/ntop               &&
-
-  # install config file for init script (if it doesn't already exists)
-  if  [  !  -f /etc/sysconfig/ntop  ]  ;  then
-    install  -m 644  $SCRIPT_DIRECTORY/init.d/ntop.config  /etc/sysconfig/ntop
-  fi
+  mkdir  -p  /var/cache/ntop
 
 ) > $C_FIFO 2>&1

@@ -1,34 +1,7 @@
-#!/bin/sh
-#
-#  xdm.sh  Load the XDM login manager at boot
-#
-#               Written for Source Mage GNU/Linux
-#
-#  Version:  @(#)xdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
-#
-# SMGL-script-version=20030224
-# no symlinks are made for this one, must do it by hand!
+#!/bin/bash
 
-source /etc/init.d/functions
+PROGRAM=/usr/X11R6/bin/xdm
+RUNLEVEL=5
+PROVIDES=display_manager
 
-case  $1  in
-          start)  
-		  		echo  "$1ing xdm"
-                loadproc  xdm
-                ;;
-
-           stop)
-		   		echo  "$1ping xdm"
-                killproc  xdm
-                ;;
-
-        restart)
-				echo  "Restarting xdm"
-				reloadproc xdm
-				;;
-
-              *)
-			  	echo "Usage: $0 {start|stop|restart}"
-                exit 1
-				;;
-esac
+. /etc/init.d/smgl_init

@@ -19,8 +19,4 @@
   prepare_install                                &&
   make    install
 
-) >$C_FIFO 2>&1 && (
-
-  mkdir -p /var/run/httpd
-
-)
+) >$C_FIFO 2>&1

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DESCRIPTION="Bootsplash patch"
+SHORT="A graphical boot splash for linux."
+HELP="This patch allows you to use a graphical boot splash screen instead of all that fugly text."
+VERSIONS="3.0.7-2.4.20"
+MD5S[0]=bd1de9d02172047227fc52a04fc94d81
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=bootsplash-${!PATCH}-vanilla.diff
+SOURCE${COUNTER}_URL=ftp://ftp.suse.com/pub/people/stepan/bootsplash/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

@@ -6,8 +6,8 @@ if ! grep -q "MOUSE" $SPELL_CONFIG
     MOUSETYPES=$(dialog \
       --backtitle 'GPM Configuration Menu' \
       --stdout \
-      --title     'Select a SINGLE mouse type please' \
-      --radiolist '' 0 100 10 $MOUSETYPES)
+      --title     'Select your mouse type please' \
+      --menu      '' 0 100 10 $MOUSETYPES)
     echo "MOUSE=${MOUSETYPES//\"/}" >> $SPELL_CONFIG
 fi
 }
@@ -19,8 +19,8 @@ if ! grep -q "DEV" $SPELL_CONFIG
     MOUSEDEV=$(dialog \
       --backtitle 'GPM Configuration Menu' \
       --stdout \
-      --title     'Select a SINGLE device entry please' \
-      --radiolist '' 0 100 10 $MOUSEDEV)
+      --title     'Select your mouse device entry please' \
+      --menu      '' 0 100 10 $MOUSEDEV)
     echo "DEV=${MOUSEDEV//\"/}" >> $SPELL_CONFIG
 fi
 }
