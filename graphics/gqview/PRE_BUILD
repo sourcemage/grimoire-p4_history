@@ -1,0 +1,3 @@
+mv src/Makefile src/Makefile.old
+cat src/Makefile.old | sed -e 's/^LIBS = $/LIBS = $(LTLIBINTL)/' >src/Makefile
+default_pre_build
