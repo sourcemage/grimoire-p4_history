@@ -2,7 +2,9 @@
          VERSION=0.3.6
           SOURCE=$SPELL-all-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/cups/$SOURCE
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  Virginia, USA
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  North Carolina, USA
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/cups/$SOURCE  #  Belgium
         WEB_SITE=http://cups.sourceforge.net
          ENTERED=20010922
          UPDATED=20010922
@@ -10,11 +12,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=jasonflatt@wizard.com
            SHORT="cups-drivers provides drivers for cups."
 cat << EOF
-CUPS is a wonderful printing system that uses the emerging IPP protocol.
-The only drawback is that there is quite no free driver available to
-print with. CUPS-drivers address this issue by providing a generic
-printer driver using GNU GhostScript. Not many printers are supported to
-date, but all is in place to support as many printers as GS can. If GS
-supports your printer, then CUPS-drivers will support it as well. Help
-and feedback are welcomed.
+
+CUPS is a wonderful printing system that uses the emerging IPP protocol.  The
+only drawback is that there is quite no free driver available to print with.
+CUPS-drivers address this issue by providing a generic printer driver using
+GNU GhostScript.  Not many printers are supported to date, but all is in
+place to support as many printers as GS can.  If GS supports your printer,
+then CUPS-drivers will support it as well.  Help and feedback are welcomed.
+
 EOF
