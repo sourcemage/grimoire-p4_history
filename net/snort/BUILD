@@ -10,7 +10,7 @@ default_build  &&  (
 
   
   for  FILE  in  `ls  *conf*`;  do
-    if  [  !  -f  /etc/snort/$FILE  ];  then
+    if  [  !  -f  /etc/$FILE  ];  then
       echo installing etc/$FILE to /etc &&
       /usr/bin/install -c -m 644  $FILE  /etc
     fi
