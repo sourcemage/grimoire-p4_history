@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# $1 - needle
+exists_in_text()
+{
+  [ "$1" == "" ] && return 0
+
+  IFS=" 	
+"
+
+  for x in $( cat ) ; do
+    [ "$1" == "$x" ] && return 0
+  done
+
+  return 1
+}
+
 netdevdir=/etc/sysconfig/network
 
 #change this if your .pid file hides somewhere else
@@ -16,7 +31,7 @@ if [ ! -f $netdevdir/$DEV.dev ]; then
   exit 1
 fi
 
-if ! ifconfig $DEV > /dev/null 2>&1 ; then
+if ! /sbin/ifconfig $DEV 2>&1 | exists_in_text UP ; then
   echo "$DEV already down"
   exit 0
 fi
@@ -41,7 +56,7 @@ fi
 
 # only do this if network device is a module
 # sort needed to ensure unique lsmod module name (often 2x entries in table)
-if [ "$MODULE" ] && [ $(/sbin/lsmod | grep -Eo "$MODULE" | sort -u) ] ; then
+if [ "$MODULE" ] && /sbin/lsmod | exists_in_text "$MODULE" ; then
   echo "Unloading module $MODULE for $DEV ..."
   modprobe -r $MODULE
 fi
