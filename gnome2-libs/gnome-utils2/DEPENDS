@@ -2,7 +2,3 @@ depends gnome-panel &&
 depends libgnomeui  &&
 depends e2fsprogs   &&
 depends scrollkeeper
-
-[[ $(grep UTS_RELEASE ${INSTALL_ROOT}/usr/include/linux/version.h | awk '{ print $3 }' | sed -e 's/"//g') == 2.6.* ]] && \
-depends 2.4-kernel-headers ;
-

@@ -1,5 +1,6 @@
 (
 
+  patch  dosfsck/boot.c  $SCRIPT_DIRECTORY/boot.patch  &&
   make             &&
   prepare_install  &&
   make    install

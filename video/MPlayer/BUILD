@@ -3,9 +3,6 @@
   # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
-  if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
-    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch
-  fi &&
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
 

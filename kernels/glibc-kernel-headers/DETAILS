@@ -3,15 +3,18 @@
 if [ "$KERN" = "2.4" ]; then
          VERSION=2.4.24
           MD5[0]=e39bbcb45b828deaef298266a44825e7
-else     VERSION=2.6.1
-          MD5[0]=6cc513ec3e715b86c3715b43e51c7e08
-fi
           SOURCE=$VERSION-kernel-headers.tar.bz2  
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
       SOURCE_URL=http://download.sourcemage.org/mirror/$SOURCE
+else     VERSION=2.6.1.3
+          MD5[0]=d31acd0b6470f2c670063d5396f4fa0e
+          SOURCE=linux-libc-headers-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/linux-libc-headers-$VERSION
+      SOURCE_URL=http://ep09.pld-linux.org/~mmazur/glibc-kernel-headers/$SOURCE
+fi
       LICENSE[0]=GPL
          ENTERED=20040129
-         UPDATED=20040129
+         UPDATED=20040211
            SHORT="sanitised glibc-kernel-headers are a fact of life for 2.6.X kernels"
 cat << EOF
 A set of headers (partly-sanitised 2.6.X WIP if wanted) to install so userspace gets same tree as glibc was built 
