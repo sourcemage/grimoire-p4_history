@@ -1,18 +1,18 @@
+if    [  -f  $CONFIG_CACHE/host.def  ];  then
+  cp     $CONFIG_CACHE/host.def  config/cf/host.def
+fi  &&
 
-if    [  -f  $CONFIG_CACHE/host.def  ]
-then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
-fi                                               &&
-if [ -f config/cf/host.def ]
-  then sedit s"/-Os//g" config/cf/host.def
-fi                                               &&
+if [ -f config/cf/host.def ];  then
+  sedit s"/-Os//g" config/cf/host.def
+fi  &&
+
 message  "Building XFree86 takes a very long time."
 
-( 
-if    (echo $CFLAGS | grep -q -- "-Os"); then
+if  (echo $CFLAGS | grep -q -- "-Os");  then
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
-fi                                               &&
+fi  &&
 
-  #disable bad libs
+#disable bad libs
 cat <<__EOF__ >config/cf/site.def
 
 #define DefaultCCOptions      $CFLAGS
@@ -77,46 +77,12 @@ cat <<__EOF__ >config/cf/site.def
 #define BuildXF86DRM            NO
 
 __EOF__
-  # end 
+# end 
 
-  cd config/util                                   &&
-  make -f Makefile.ini lndir                       &&
-  cp lndir $SOURCE_DIRECTORY.bld/                  &&
-  cd $SOURCE_DIRECTORY.bld                         &&
-  ./lndir ../xc/                                   &&
+cd config/util                                   &&
+make -f Makefile.ini lndir                       &&
+cp lndir $SOURCE_DIRECTORY.bld/                  &&
+cd $SOURCE_DIRECTORY.bld                         &&
+./lndir ../xc/                                   &&
 
-  make  World                                      &&
-  prepare_install                                  &&
-  #### the following is needed for pkgconfig to find the .pc files
-  mkdir  -p  /usr/X11R6/lib                                      &&
-  ln -sf  /usr/lib/pkgconfig  /usr/X11R6/lib                     &&
-  make  install                                    &&
-  sedit 's/die/print/' ./config/util/mkhtmlindex.pl &&
-  make  install.man
-
-
-) > $C_FIFO 2>&1  &&  (
-  rm     -f  /usr/X11R6/include/zlib.h
-  rm     -f  /usr/X11R6/lib/libz.a
-
-  if  [  !  -e                    /usr/bin/X11  ];  then
-    ln      -sf   /usr/X11R6/bin  /usr/bin/X11
-  fi
-
-  if  [  !  -e          /usr/X11  ];  then
-    ln      -sf  X11R6  /usr/X11
-  fi
-
-  if  [  !  -e                         /usr/include/X11  ];  then
-    ln      -sf  ../X11R6/include/X11  /usr/include/X11
-  fi
-  
-  if  [  !  -e                         /usr/include/GL  ];  then
-    ln      -sf  ../X11R6/include/GL  /usr/include/GL
-  fi
-
-  if  [  !  -e                     /usr/lib/X11  ];  then
-    ln      -sf  ../X11R6/lib/X11  /usr/lib/X11
-  fi
-
-)
+make  World
