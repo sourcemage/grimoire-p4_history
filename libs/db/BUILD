@@ -8,9 +8,9 @@
   if echo "$OPTS" | grep -q 'enable-java'; then
     if [ -z $JAVA_HOME ]; then
       if spell_installed j2sdk; then
-        JAVA_HOME=/usr/java/j2sdk
+        JAVA_HOME=$INSTALL_ROOT/usr/java/j2sdk
       elif spell_installed j2sdk-bin; then
-        JAVA_HOME=/usr/lib/j2sdk1.4.2
+        JAVA_HOME=$INSTALL_ROOT/usr/lib/j2sdk1.4.2
       fi
     fi &&
     message 'Checking that JAVA_HOME is defined...' &&
@@ -24,7 +24,7 @@
 
   cd  build_unix                         &&
   PATH="$PATH:$JAVA_HOME/bin"            &&
-  ../dist/configure  --prefix=/usr       \
+  ../dist/configure  --prefix=$INSTALL_ROOT/usr       \
                      --build=$BUILD      \
                      --enable-dynamic    \
                      --enable-compat185  \
@@ -36,9 +36,9 @@
 
   if echo "$OPTS" | grep -q 'enable-test'; then
     sedit 's|^set tcllib.*$||' ../test/include.tcl &&
-    echo "set tcllib /usr/lib/libdb_tcl-${VERSION%.*}.so" >> ../test/include.tcl &&
-    mkdir -p /usr/share/$SPELL &&
-    cp -R ../test /usr/share/$SPELL/
+    echo "set tcllib $INSTALL_ROOT/usr/lib/libdb_tcl-${VERSION%.*}.so" >> ../test/include.tcl &&
+    mkdir -p $INSTALL_ROOT/usr/share/$SPELL &&
+    cp -R ../test $INSTALL_ROOT/usr/share/$SPELL/
   fi
 
 ) >$C_FIFO 2>&1
