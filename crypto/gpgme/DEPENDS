@@ -1,5 +1,6 @@
-if [ "$DEVEL" == "y" ];then
-  depends  gnupg-exp
-fi                &&
-depends  gnupg
+depends  gnupg  &&
 
+optional_depends  gnupg-exp  \
+                  ""         \
+                  ""         \
+                  "to support the S/MIME variant of gpg - GpgSM"

@@ -1,11 +1,6 @@
            SPELL=seahorse
-if [ "$GETDEVEL" == "y" ]; then
          VERSION=0.7.6
           MD5[0]='f134a1287428ebf02a4826f012730051'
-else
-         VERSION=0.6.3
-          MD5[0]=5fbae7052d81db6f79b467a9d74d7aa2
-fi
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -15,7 +10,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        BUILD_API=2
         WEB_SITE=http://seahorse.sourceforge.net
          ENTERED=20011123
-         UPDATED=20041019
+         UPDATED=20050329
            SHORT="GNOME interface for GnuPG"
 cat << EOF
 Seahorse is a Gnome interface for GnuPG.
