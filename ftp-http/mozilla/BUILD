@@ -18,8 +18,16 @@
   rm     -f                          /usr/lib/mozilla/component.reg
   mkdir  -p                          /usr/lib/mozilla
   cp     -rL  dist/bin/*             /usr/lib/mozilla
-  mkdir  -p                      /usr/include/mozilla
-  cp	 -rL  dist/include/*     /usr/include/mozilla
+  mkdir  -p                          /usr/include/mozilla
+  cp	 -rL  dist/include/*         /usr/include/mozilla
+  mkdir  -p                          /usr/include/moznss
+  cp     -L   dist/public/security/* /usr/include/moznss  
+
+  for  library  in  /usr/lib/mozilla/*.so;  do 
+    libname=`basename  $library`
+    ln  -sf  mozilla/$libname /usr/lib/$libname
+  done
+
   cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin
 
   export  MOZILLA_FIVE_HOME=/usr/lib/mozilla
