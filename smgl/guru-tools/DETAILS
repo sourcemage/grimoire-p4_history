@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=1.1
+         VERSION=1.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.ataraxy.net/~schabell/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20040625
-          MD5[0]='243451b95cfbc734e5004edb2a345c0b'
+         UPDATED=20040714
+          MD5[0]='a81dab8fbb7f4912a3751005bfc165e1'
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -43,10 +43,19 @@ historyfix.pl           - outputs an sh script for editing and patching all the 
                           historyfix.pl with arguments does only the files
                           supplied in the args. (by Seth Woolley)
                           
+image.sh <grimoire-path> - print a grimoire image. This script is used to
+                          create images for the report.pl tool listed below.
+                          Try piping output as follows: '| tee <file.image>'
+                          and then pass the files to report.pl below.
+
 md5unpack <tarball>     - provides md5sum info from source tarball. 
 
 rebuildPackages         - In case you delete your /var/state/sorcery/packages
                           file ;)
+
+report.pl <image1> <image2> - this tool take two different images created by
+                          the image.sh tool and report the differences,
+                          amazing amount of information! (see image.sh above)
 
 spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           #{MYSPELLS}/software and DETAILS in your local 
