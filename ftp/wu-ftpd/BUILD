@@ -5,7 +5,7 @@
 	patch  -p1  <  $SCRIPT_DIRECTORY/wu-ftpd-2.6.0-nonrootfix.patch
 	
  ./configure --disable-quota --enable-pam --disable-rfc931 --enable-ratios \
-	--enable-passwd --enable-ls		&&
+	--enable-passwd --enable-ls $OPTS	&&
   make                                          &&
   prepare_install            			&&
   make    prefix=/usr	install

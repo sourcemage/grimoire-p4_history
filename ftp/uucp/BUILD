@@ -8,9 +8,9 @@
   sedit 's:/usr/spool/uucp/Stats:/var/log/uucp/Stats:'  policy.h
   sedit 's:/usr/spool/uucp:/var/spool/uucp:'            policy.h
 
-  ./configure      &&
-  make             &&
-  prepare_install  &&
+  ./configure $OPTS &&
+  make              &&
+  prepare_install   &&
   make    install
 
 ) > $C_FIFO 2>&1  &&

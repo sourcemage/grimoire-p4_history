@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr         \
-               --with-guess-winsize  &&
+               --with-guess-winsize  \
+	       $OPTS		     &&
   make                               &&
   prepare_install                    &&
   make    install 
