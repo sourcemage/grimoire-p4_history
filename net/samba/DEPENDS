@@ -1,3 +1,13 @@
+if [ "$AD" = "y" ]; then
+  depends openldap 	'--with-ldap'	&&
+  depends krb5		'--with-krb5 --with-ads'
+else
+  optional_depends  openldap  \
+                  '--with-ldap'  \
+                  '--without-ldap'  \
+                  'for LDAP support' 
+fi  &&
+
 depends  popt  '--without-included-popt'  &&
 
 optional_depends  readline  \
@@ -12,14 +22,6 @@ optional_depends  Linux-PAM  \
 #                  '--with-ssl'  \
 #                  '--without-ssl'  \
 #                  'for encrypted communication'  &&
-optional_depends  openldap  \
-                  '--with-ldap'  \
-                  '--without-ldap'  \
-                  'for LDAP support'  &&
-optional_depends  krb5  \
-                  '--with-krb5 --with-ads'  \
-                  '--without-krb5'  \
-                  'for Kerberos 5 and Active Directory support, Kerberos is required for AD'  &&
 optional_depends  cups  \
                   '--enable-cups'  \
                   '--disable-cups'  \
