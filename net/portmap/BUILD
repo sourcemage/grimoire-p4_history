@@ -5,11 +5,11 @@
 
   sedit  "s/const char \*what/__const char \*what/"  portmap.c  &&
 
-  make  WRAP_DIR=/usr/lib  &&
-  prepare_install          &&
-  cp  portmap    /sbin     &&
-  cp  pmap_dump  /sbin     &&
-  cp  pmap_set   /sbin
+  make  WRAP_DIR=/usr/lib   &&
+  prepare_install           &&
+  cp  portmap    /usr/sbin  &&
+  cp  pmap_dump  /usr/sbin  &&
+  cp  pmap_set   /usr/sbin
 
 ) > $C_FIFO 2>&1  &&  (
 

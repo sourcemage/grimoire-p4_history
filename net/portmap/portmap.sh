@@ -1,15 +1,23 @@
 #!/bin/sh
 
+source /etc/init.d/functions
+
 case $1 in
-  start|restart)  echo "$1ing portmap."
-                  pkill  "^portmap$"  &&  sleep  5
-                  /sbin/portmap
-                  ;;
+  start)    echo "Starting portmap."
+            loadproc portmap
+            ;;
 
-           stop)  echo "$1ping portmap."
-                  pkill  "^portmap$"
-                  ;;
+  restart)  $0 stop
+            $0 start
+            ;;
 
-              *)  echo  "Usage: $0 {start|stop|restart}"
-                  ;;
+  stop)     echo "Stopping portmap."
+            killproc portmap
+            ;;
+
+  status)   statusproc portmap
+            ;;
+
+  *)        echo  "Usage: $0 {start|stop|restart|status}"
+            ;;
 esac
