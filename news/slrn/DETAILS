@@ -24,6 +24,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=eru@subdimension.com
          LICENSE=GPL
            SHORT="slrn is an nntp-based threaded newsreader."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 SLRN is an NNTP-based newsreader for Unix, VMS, win32, BeOS, and OS/2
 systems. Unlike many other newsreaders, SLRN supports color terminals

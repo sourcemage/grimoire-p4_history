@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
             FUZZ="off"
          LICENSE=GPL
            SHORT="Pan is a newsreader, loosely based on Agent and Gravity."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Pan is a newsreader, loosely based on Agent and Gravity, which attempts
 to be pleasant to use for new and advanced users alike. It has all the

@@ -21,6 +21,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20011005
          LICENSE=GPL
            SHORT="Gnus is the Emacs newsreader.  It can also handle mail."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Gnus is a newsreader written in Emacs Lisp.  It has powerful scoring and
 filtering capabilites, as well as binary handling, offline reading,

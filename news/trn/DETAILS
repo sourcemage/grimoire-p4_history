@@ -13,6 +13,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20010922
          LICENSE=http://trn.sourceforge.net
            SHORT="trn is a threaded news reader."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Trn is Threaded RN, a newsreader that uses an article's references to
 order the discussions in a very natural, reply-ordered sequence called

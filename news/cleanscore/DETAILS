@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=bluebird@optushome.com.au
            SHORT="A perl script to clean slrn score files"
          LICENSE=GPL
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 
 If you heavily use slrn's scoring capabilities, your scorefile will soon become

@@ -18,6 +18,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION.rel
          UPDATED=20020606
          LICENSE=LGPL
            SHORT="Leafnode is a NNTP sever for small site"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Leafnode is a USENET software package designed for small sites running any
 flavour of Unix, with a few tens of readers and only a slow link to the net. It

@@ -11,6 +11,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=eric@lasvegasdata.com
          LICENSE=GPL
            SHORT="cg is a semi-automatic newsgroup binary downloader"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 cg is a semi-automatic newsgroup binary downloader.  It assembles
 parts based on subject headers and then offers them in an editor for
