@@ -1,9 +1,5 @@
 
 
-# remove these
-
-####
-
 configfile="${SCRIPT_DIRECTORY}/details.conf"
 kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
 patchesdir="${SCRIPT_DIRECTORY}/info/patches"
@@ -13,7 +9,7 @@ debug="${SCRIPT_DIRECTORY}/debug.log"
 # globals that get dumped to $configfile
 # if we are making a new src tree or not
 # mode two values are 'newktree' or 'oldktree'
-new_tree=""
+mode=""
 # version of kernel we are dealing with
 kernelver=""
 # old source tree location for rebuilding old kernel
@@ -69,7 +65,7 @@ new_tree_menu()
 	do
 		menu="${menu}${version} Linux_Kernel Select_one "
 	done
-	menu="$( awk -F= '{ print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
+	menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 	while true
 	do
 		kernelver=$( $dialog --title "Select Kernel Version" \
