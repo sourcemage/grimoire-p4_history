@@ -26,6 +26,11 @@ fake_redhat()  {
   make    install                    &&
 
 
+  if  [  !  -e  /usr/share/cups/model/cupsomatic  ];  then
+    cp  -a  $SCRIPT_DIRECTORY/cupsomatic  /usr/share/cups/model/
+  fi
+
+
   # Remove all possible regular files which may have been previously installed
   if  [  -f  /etc/rc0.d/K*cups  ];  then
     rm  /etc/rc0.d/K*cups
