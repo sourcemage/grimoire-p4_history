@@ -1,0 +1,7 @@
+if [ $PATCH24 == 'y' ]; then
+	if [ -f ${SCRIPT_DIRECTORY}/patches-2.4/$PATCHFILE ]; then 
+		patch -p1 <${SCRIPT_DIRECTORY}/patches-2.4/$PATCHFILE
+	else
+		message "${PROBLEM_COLOR}There isn't a 2.4 patch out yet${DEFAULT_COLOR}"
+	fi
+fi
