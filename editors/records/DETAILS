@@ -1,13 +1,13 @@
            SPELL=records
        BUILD_API=2
-         VERSION=1.4.9
+         VERSION=1.5.0
           SOURCE=${SPELL}-${VERSION}.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://heanet.dl.sourceforge.net/sourceforge/records/${SOURCE}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
         WEB_SITE=http://sf.net/projects/records/
          ENTERED=20040326 
          UPDATED=20040326
-          MD5[0]=3d68a89ee254dc0d5e524804a099a4d3
+          MD5[0]=a25b0a62b9574e621fee6a5628a75f9e
       LICENSE[0]=GPL
            SHORT="An emacs elisp application for note track."
 cat << EOF

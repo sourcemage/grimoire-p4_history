@@ -1,7 +1,0 @@
-if [ ! -d ${INSTALL_ROOT}/usr/share/emacs/site-lisp/records ]
-  then
-  mkdir ${INSTALL_ROOT}/usr/share/emacs/site-lisp/records 
-fi
-
-install -m0755 recordsadmin ${INSTALL_ROOT}/usr/bin
-install -m0644 *.el ${INSTALL_ROOT}/usr/share/emacs/site-lisp/records
