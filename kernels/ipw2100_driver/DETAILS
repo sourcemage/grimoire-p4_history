@@ -1,11 +1,13 @@
            SPELL=ipw2100_driver   
-         VERSION=1.0.5
+         VERSION=1.1.0
        BUILD_API=2 
           SOURCE=ipw2100-$VERSION.tgz
-       PATCHFILE=ipw2100-1.0.4-1.patch
+         SOURCE2=ipw2100-1.1.0-1.patch
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/ipw2100-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/ipw2100/$SOURCE   
-          MD5[0]=d809858feeb9dddb05fbeaf7b651398e 
+   SOURCE_URL[0]=$SOURCEFORGE_URL/ipw2100/$SOURCE
+  SOURCE2_URL[0]=http://dellaric.home.cern.ch/dellaric/ipw2100/$SOURCE2
+          MD5[0]=5860f5cc30fc2abef0b6bcac22863ae8 
+	  MD5[1]=9c966cc62a7b7cf9b88f8e5d9c9a85b0 
         WEB_SITE=http://ipw2100.sf.net/
          ENTERED=20041015
          UPDATED=20041019
