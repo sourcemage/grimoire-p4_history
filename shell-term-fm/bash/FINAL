@@ -101,8 +101,6 @@ A sample script has been installed as \"/etc/profile.d/dummy\" ${DEFAULT_COLOR}"
 
 ) &&
 
-default_post_install
-
 ### put the recursion stuff into users files
 for i in ${INSTALL_ROOT}/home/*/.bash_profile /root/.bash_profile ;
    do sedit "s/recursion/iteration/" $i &&
