@@ -88,7 +88,7 @@ done  &&
 #
 # Set DISTCC_HOSTS and MAKE_NJOBS back
 #
-DISTCC_HOSTS=   &&
+DISTCC_HOSTS="" &&
   MAKE_NJOBS=1  &&
 
 #
