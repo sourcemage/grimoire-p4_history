@@ -1,17 +1,3 @@
-# $Id: CONFIGURE,v 1.2 2002/09/17 15:45:41 sergeyli Exp $
-if ! grep -q "APACHE_MPM=" $SPELL_CONFIG; then
-  message "${MESSAGE_COLOR}Apache 2 can use prefork (default), worker, or perchild (risky) MPM${DEFAULT_COLOR}"
-  if query 'Apache 2 will use prefork MPM (default, Apache 1.3 legacy)?' y; then
-    echo 'APACHE_MPM=prefork'  >> $SPELL_CONFIG
-  elif query 'Apache 2 will use worker MPM (optimal performance)?' y; then
-    echo 'APACHE_MPM=worker'   >> $SPELL_CONFIG
-  else
-    message "${MESSAGE_COLOR}Apache 2 will use perchild MPM . Be careful!${DEFAULT_COLOR}"
-    echo 'APACHE_MPM=perchild' >> $SPELL_CONFIG
-  fi
-fi
-
-# The following question is asked no matter what
-if query "Would you like to export the most recent source?" n; then
-  export FORCE_DOWNLOAD=on
-fi
+message "${MESSAGE_COLOR}HTTPD 2 can use either new multi-threaded MPM \`worker' or legacy HTTPD 1.3-compatible MPM \`prefork'${DEFAULT_COLOR}"
+config_query_list HTTPD_MPM      'Which core multi-processing module (MPM) to use?' worker prefork
+config_query      HTTPD_CHECKOUT 'Use the latest source code?' n
