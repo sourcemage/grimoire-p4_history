@@ -1,22 +1,14 @@
-if  !  grep  -q  "CONFIGURE" ${SPELL_CONFIG}
+config_query  EXISCAN  "Would you like to use exiscan mail content scanner (http://duncanthrax.net/exiscan-acl)?" n
+
+if  [  "$EXISCAN"  ==  "y"  ]
 then
-
-  EXISCAN=no  &&
- 
-  if    query  "Would you like to use exiscan mail content scanner (http://duncanthrax.net/exiscan-acl)?" n
-  then   EXISCAN=yes
-         echo   "SOURCE2=exiscan-acl-4.34-21.patch.bz2"                          >>  ${SPELL_CONFIG}
-         echo   "SOURCE3=exiscan-acl-spec.txt"                                   >>  ${SPELL_CONFIG}
-         echo   "SOURCE4=exiscan-acl-examples.txt"                               >>  ${SPELL_CONFIG}
-         echo   "SOURCE2_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE2}"  >>  ${SPELL_CONFIG}
-         echo   "SOURCE3_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE3}"  >>  ${SPELL_CONFIG}
-         echo   "SOURCE4_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE4}"  >>  ${SPELL_CONFIG}
-         echo   "MD5[1]=6fa74ecf1c2a83dbce1e46f991fce27b"                        >>  ${SPELL_CONFIG}
-         echo   "MD5[2]=09b86e9b403728a42a53ed8a428d99f6"                        >>  ${SPELL_CONFIG}
-         echo   "MD5[3]=c9defaaf61bf1fdfe7f7b23ba5e986bf"                        >>  ${SPELL_CONFIG}
-  fi  &&
-
-  echo  "EXISCAN=${EXISCAN}"  >>  ${SPELL_CONFIG}  &&
-  echo  "CONFIGURED='y'"      >>  ${SPELL_CONFIG}
-
+  echo   "SOURCE2=exiscan-acl-4.40-23.patch.bz2"                          >>  ${SPELL_CONFIG}
+  echo   "SOURCE3=exiscan-acl-spec.txt"                                   >>  ${SPELL_CONFIG}
+  echo   "SOURCE4=exiscan-acl-examples.txt"                               >>  ${SPELL_CONFIG}
+  echo   "SOURCE2_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE2}"  >>  ${SPELL_CONFIG}
+  echo   "SOURCE3_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE3}"  >>  ${SPELL_CONFIG}
+  echo   "SOURCE4_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE4}"  >>  ${SPELL_CONFIG}
+  echo   "MD5[1]=611f652859d354cdef675f764b7c885b"                        >>  ${SPELL_CONFIG}
+  echo   "MD5[2]=c25f2668d969c496baaafd60bbfc8f12"                        >>  ${SPELL_CONFIG}
+  echo   "MD5[3]=c9defaaf61bf1fdfe7f7b23ba5e986bf"                        >>  ${SPELL_CONFIG}
 fi

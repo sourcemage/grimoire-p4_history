@@ -1,4 +1,4 @@
-if [ "${EXISCAN}"  ==  "yes" ]
+if  [  "$EXISCAN"  ==   "y"  ]
 then
   message  "${MESSAGE_COLOR}Patching for exiscan${DEFAULT_COLOR}"  &&
   bzcat  ${SOURCE_CACHE}/${SOURCE2}  |  patch  -p1
@@ -81,47 +81,5 @@ echo  "EXIM_GID=`id -g exim`"            >>  Local/Makefile
 echo  "EXIM_USER=exim"                   >>  Local/Makefile
 echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
 
-(
-
-  sedit  's:tail \-1:tail \-n 1:'  scripts/Configure-config.h  &&
-  make             &&
-  prepare_install  &&
-  make    install  &&
-
-  if [ "${EXISCAN}"  ==  "yes" ]
-  then
-    mkdir  -p  /usr/doc/${SPELL}/exiscan-acl                         &&
-    cp  ${SOURCE_CACHE}/${SOURCE3}  /usr/doc/${SPELL}/exiscan-acl    &&
-    cp  ${SOURCE_CACHE}/${SOURCE4}  /usr/doc/${SPELL}/exiscan-acl
-  fi  &&
-
-  touch  /var/log/exim_main /var/log/exim_panic /var/log/exim_reject  &&
-  chown  exim.exim /var/log/exim_main /var/log/exim_panic /var/log/exim_reject
-
-) > $C_FIFO 2>&1  &&  (
-
-# copy usefull convert tool
-  message "Look @ /usr/doc/exim/doc for convert tools..."
-  cp -v src/convert*.src doc/
-
-  ln     -sf  ../sbin/exim   /usr/lib/sendmail
-  ln     -sf  exim          /usr/sbin/sendmail
-  ln     -sf  exim          /usr/sbin/mailq
-  ln     -sf  exim          /usr/sbin/rsmtp
-  ln     -sf  exim          /usr/sbin/rmail
-  ln     -sf  exim          /usr/sbin/runq
-  ln     -sf  exim          /usr/sbin/newaliases
-
-  if    !  touch  /etc/aliases
-  then  rm  -f    /etc/aliases
-        touch     /etc/aliases
-  fi
-
-  sedit  "s:var/mail:var/spool/mail:"         /etc/exim.conf
-  sedit  "s/\# group = exim/  group = exim/"  /etc/exim.conf
-  sedit  "s/\# mode = 0660/  mode = 0660/"    /etc/exim.conf
-
-# install man page
-  cp $SOURCE_DIRECTORY/doc/exim.8 /usr/man/man8/exim.8
-
-)
+sedit  's:tail \-1:tail \-n 1:'  scripts/Configure-config.h  &&
+make
