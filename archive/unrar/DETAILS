@@ -1,11 +1,12 @@
            SPELL=unrar
-         VERSION=2.71
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=3.00
+          SOURCE=${SPELL}src.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://metalab.unc.edu/pub/Linux/utils/compress/$SOURCE
+#   SOURCE_URL[0]=ftp://metalab.unc.edu/pub/Linux/utils/compress/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.elf.stuba.sk/pub/pc/pack/$SOURCE
         WEB_SITE=http://freshmeat.net/projects/unrar/
          ENTERED=20011117
-         UPDATED=20011117
+         UPDATED=20020605
       MAINTAINER=paul@moway.co.uk
            SHORT="unRAR is a utility to extract, view, and test the contents of an RAR archive, version 1.50 and above."
 cat << EOF
