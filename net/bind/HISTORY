@@ -1,10 +1,13 @@
 2003-09-18  Seth Woolley <seth@tautology.org>
 
+		Added a mkzones.sh file which helps with replication
+		Generates the named.root from dig . ns
+		Chroots to /etc/bind which is actually in /var/chroot/bind (symlink)
 		Patchlevel 1 for fixing broken NXDOMAIN behavior of
 		delegated gTLDs that use wildcard fields
 		Made some more .conf files and some auto-configuring of many files
 		If you are updating from an older version, please consider using
-		the new named.conf file.
+		the new named.conf file setup and mkzones.sh; seems easier to me.
 
 2003-08-22  hgg <hgreig@bigpond.net.au>
 
