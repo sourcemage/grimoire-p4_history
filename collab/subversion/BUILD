@@ -85,6 +85,6 @@ make_if_swig swig-py &&
 # make -jN local-all
 
 # Test if built from current source
-if [ "$SVN_EXPORT_HEAD" == 'y' ] && spell_installed Python; then
-  make check
+if  [  "$SVN_EXPORT_HEAD"  ==  'y'  ]  &&  spell_ok  python;  then
+  make  check
 fi
