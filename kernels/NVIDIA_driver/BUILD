@@ -11,6 +11,11 @@
 
   if [[ $AGPFW == "y" ]]; then sedit "s/NVreg_EnableAGPFW = 0;/NVreg_EnableAGPFW = 1;/" usr/src/nv/os-registry.c; fi &&
 
+  ( cd usr/src/nv  &&
+    patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
+    patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
+    ln  -s  Makefile.kbuild Makefile )
+
   prepare_install
   export IGNORE_CC_MISMATCH=1
   make install
