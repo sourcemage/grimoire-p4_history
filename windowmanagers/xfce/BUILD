@@ -1,5 +1,5 @@
 (
-
+  export CPPFLAGS="-I/usr/include/freetype2" &&
   ./configure  --prefix=/usr         \
                --datadir=/usr/share  \
                --enable-xft=yes      \
