@@ -1,3 +1,10 @@
+2005-01-30 Robin Cook <rcook@wyrms.net>
+	* DEPENDS: changed from MOZILLA-BROWSER to GECKO
+	* BUILD: if firefox installed apply configure-firefox.diff and add to
+	  $CFLAGS -I/usr/include/firefox to allow it to build with firefox 
+	  instead of mozilla
+	* INSTALL: copy mplayerplug-in.xpt to plugin directory
+
 2005-01-10 Eric Sandall <eric@sandall.us>
 	* INSTALL: Thanks to David Brown. Needs mozilla to compile, but works
 	  fine with firefox, go figure.
