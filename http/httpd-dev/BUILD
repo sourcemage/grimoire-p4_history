@@ -1,7 +1,7 @@
 (
 
   # these modules are not enabled by default and not part of any dependency
-  ENABLE_MODULES=$(cat $SCRIPT_DIRECTORY/enable-modules | while read m; do echo -n " --enable-$m"; done) &&
+  ENABLE_MODULES=$(cat $SCRIPT_DIRECTORY/enable-modules | while read m; do echo -n " --enable-$m=shared"; done) &&
 
   ./buildconf                         &&
   ./configure                         \
@@ -10,7 +10,7 @@
     --localstatedir=/var              \
     --with-mpm=${APACHE_MPM:=prefork} \
     --enable-layout=GNU               \
-    --enable-so                       \
+    --enable-so=static                \
     --enable-mods-shared=all          \
     $ENABLE_MODULES                   \
     $OPTS                             &&
