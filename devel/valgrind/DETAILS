@@ -4,14 +4,15 @@ if [ "$CVS" != "y" ]; then
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=http://developer.kde.org/~sewardj/$SOURCE
           MD5[0]=b126a4498e83d8ccb0e526501183f293
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 else
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.kde.org:/home/kde:valgrind
           MD5[0]=IGNORE
   FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 fi
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=GPL
         WEB_SITE=http://valgrind.kde.org
          ENTERED=20020731
