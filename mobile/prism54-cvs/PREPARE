@@ -5,3 +5,4 @@ if ! grep -q TARGET_KERNEL $SPELL_CONFIG
    fi  
 echo TARGET_KERNEL=$TARGET_KERNEL >> $SPELL_CONFIG 
 fi
+[ -f ${SOURCE_CACHE}/${SPELL}-latest.tar.bz2 ] && rm ${SOURCE_CACHE}/${SPELL}-latest.tar.bz2
