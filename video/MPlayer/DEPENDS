@@ -1,20 +1,41 @@
-depends  unzip       &&
-depends  libdvdread  &&
-depends  w32codec    &&
+# input devices
+optional_depends  "cdparanoia"  ""  ""  "to play audio cds"             &&
+optional_depends  "libdvdnav"  ""  ""  "for additional dvd navigation"  &&
 
-optional_depends  "SDL"            \
-                  "--enable-sdl"   \
-                  ""               \
-                  "to use SDL to output video signal"            &&
+# input codecs
+optional_depends  "zlib"  ""  ""  "to play movies using losless compression algorithms" &&
+optional_depends  "w32codec"  ""  ""  "to use windows codec DLLs for video decoding" &&
+optional_depends  "libvorbis"  ""  ""  "to play ogg/vorbis audio" &&
+optional_depends  "libdv"  ""  ""  "to play files encoded with libdv (used by most digital camcorders)" &&
+optional_depends  "mad"  ""  ""  "to play mp3 audio using libmad" &&
+optional_depends  "libdivxdecore"      \
+                  "--enable-opendivx"  \
+                  ""                   \
+                  "for decoding of divx videos with OpenDivx"  &&
 
-optional_depends  "alsa-lib"  ""  ""  "for ALSA sound support"   &&
-optional_depends  "aalib"     ""  ""  "for ascii art rendering"  &&
+# output devices
+optional_depends  "svgalib"  ""  ""  "for svgalib video output" &&
+optional_depends  "SDL"  ""  ""  "for SDL video and ESD audio output" &&
+optional_depends  "aalib"  ""  ""  "for aalib (ascii) video output" &&
+optional_depends  "libggi"  ""  ""  "for GGI video output" &&
+optional_depends  "arts"  ""  ""  "for arts audio output" &&
+optional_depends  "alsa-lib"  ""  ""  "for alsa audio output" &&
+
+# output codecs
+optional_depends  "libungif"  ""  ""  "to output to .gif files" &&
+optional_depends  "libpng"  ""  ""  "to output to .png files" &&
+optional_depends  "jpeg"  ""  ""  "to output to .jpeg files" &&
+optional_depends  "lame"  ""  ""  "to encode files with mp3 audio (mencoder)" &&
+
+# input devices
+optional_depends  "lirc"  ""  ""  "for remote-control" &&
 
 if    [  "$GUI"  =  "y"  ]
-then  depends  libpng  &&
-      depends  gtk+
-else  optional_depends  "libpng"         \
-                        "--enable-png"   \
-                        "--disable-png"  \
-                        "to display portable network graphics files"
+then  depends  gtk+ &&
+      depends  MPlayer-gui
+fi  &&
+
+if    [  "$FREETYPE2"  =  "y"  ]
+then  depends  freetype2
+else  depends  MPlayer-fonts
 fi
