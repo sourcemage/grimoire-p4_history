@@ -1,0 +1,20 @@
+[ -e /dev/watchdog ]    || mknod /dev/watchdog    c 10 130
+[ -e /dev/temperature ] || mknod /dev/temperature c 10 131
+
+/etc/init.d/watchdog.sh start
+
+if [ -e /etc/metalog.conf ]; then
+  rv=`grep "watchdog" /etc/metalog.conf`
+  if [ "$rv" == "" ]; then
+    echo " " 					>> /etc/metalog.conf
+    echo "Watchdog messages :" 			>> /etc/metalog.conf
+    echo "program  = \"watchdog\""		>> /etc/metalog.conf
+    echo "logdir   = \"/var/log/watchdog\""	>> /etc/metalog.conf
+    /etc/init.d/metalog.sh restart
+  fi
+fi
+
+message "${MESSAGE_COLOR}Warning, with $SPELL you may encounter continuous reboot if it is misconfigured..."
+message "Use with care, and do try your settings with '-q' argument in /etc/init.d/watchdog.sh (simulation only) prior using it for real."
+message "Watch in /var/log/watchdog/current for output. ${DEFAULT_COLOR}"
+

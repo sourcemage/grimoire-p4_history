@@ -1,0 +1,8 @@
+if  !  grep  -q  "WD_BOOT"  $SPELL_CONFIG
+then
+  if    query  "Invoke watchdog during boot? "  n
+  then  echo   "WD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "WD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
