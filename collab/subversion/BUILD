@@ -56,6 +56,7 @@
     --disable-debug \
     --disable-static \
     --enable-dso \
+    --disable-mod-activation \
     --enable-shared \
     --with-apr=$(which apr-config) \
     --with-apr-util=/usr \
