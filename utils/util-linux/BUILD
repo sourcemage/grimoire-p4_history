@@ -5,10 +5,17 @@ sedit  "s/\$(OPT)//"                            MCONFIG  &&
 sedit  "s:/dev:${INSTALL_ROOT}/dev:"            MCONFIG  &&
 sedit  "s:/etc:${INSTALL_ROOT}/etc:"            MCONFIG  &&
 # Stupid people who use TABs in their files...
-sedit  "s:	/sbin: ${INSTALL_ROOT}/sbin:"   MCONFIG  &&
+sedit  "s:      /sbin: ${INSTALL_ROOT}/sbin:"   MCONFIG  &&
 sedit  "s:/usr:${INSTALL_ROOT}/usr:g"           MCONFIG  &&
-sedit  "s: /bin: ${INSTALL_ROOT}/bin:"          MCONFIG  &&
-sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG  &&
+sedit  "s:BIN_DIR=        /bin: BIN_DIR=${INSTALL_ROOT}/bin:"    MCONFIG  &&
+sedit  "s:=       /var/:=       ${INSTALL_ROOT}/var:g" MCONFIG  &&
+
+#ORIGINAL Below############################################
+#sedit  "s:	/sbin: ${INSTALL_ROOT}/sbin:"   MCONFIG  &&
+#sedit  "s:/usr:${INSTALL_ROOT}/usr:g"           MCONFIG  &&
+#sedit  "s: /bin: ${INSTALL_ROOT}/bin:"          MCONFIG  &&
+#sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG  &&
+############################################################
 
 if [ "$SELINUX" == "y" ]; then
   sedit  "s/HAVE_SELINUX=no/HAVE_SELINUX=yes/" MCONFIG &&
