@@ -1,24 +1,14 @@
            SPELL=quanta
          VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=css.tar.bz2
-         SOURCE3=html.tar.bz2
-         SOURCE4=javascript.tar.bz2
-         SOURCE5=php.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
-  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE2
-  SOURCE3_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE3
-  SOURCE4_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE4
-  SOURCE5_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE5
           MD5[0]=dd2382a70768d8584db5b17581f59bd0
-          MD5[1]=9a464e359cc33c956904f21df002b90c
-          MD5[2]=242bf5580430516652ee55bccd8129eb
-          MD5[3]=0d1b9d9582818ecc9f33d5e09fb96afb
-          MD5[4]=1d3e41408a1ef7e50c471ab10b7e3130
         WEB_SITE=http://quanta.sourceforge.net/
          ENTERED=20011212
          UPDATED=20030805
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="HTML editor for KDE."
 cat << EOF
 Quanta Plus is a web development tool for the KDE desktop environment.
