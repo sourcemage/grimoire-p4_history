@@ -6,7 +6,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/bash_completion
           MD5[0]=fb2eee5d3da36d21cc257a381153d010
         WEB_SITE=http://www.caliban.org/bash/index.shtml#completion
          ENTERED=20020215
-         UPDATED=20031218
+         UPDATED=20040127
       LICENSE[0]=GPL
            SHORT="bash programmable completion."
 cat << EOF
@@ -23,8 +23,9 @@ produce programmable completion routines for the most common Linux/UNIX
 commands, reducing the amount of typing sysadmins and programmers need
 to do on a daily basis.
 
-NOTE: The code to start completion is installed in /etc/profile.
-      Existing users must have it added manually.
+NOTE: The code to start completion is installed in /etc/profile.d/bash_completion.sh
+      Existing users might need sourcing /etc/profile.d/* added manually.
+      New users will have it automatically added.
 
       The SMGL specific completions are adapted from a patch by 
       Lunar_fr (lunar@l-a-p.org).

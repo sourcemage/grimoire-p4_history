@@ -10,6 +10,13 @@
 	* profile: SECURITY FIX. Removed "." from the path. Should NEVER
 	  have been in there.
 
+2004-01-27 hgg <hgreig@bigpond.net.au>
+	* HISTORY: This spell has changed to source /etc/profile.d/*.sh during login and will attempt to convert 
+	  your old file into the new files.
+	  No other spells will edit /etc/profile ever again, but the conversion of your /etc/profile additions into 
+	  the newer /etc/profile.d/*.sh files should be checked before logging out or rebooting.
+	* DETAILS: update UPDATED for stable grimoire users
+
 2004-01-20 hgg <hgreig@bigpond.net.au>
 	* POST_BUILD,profile: handle ldpreload differently, change recusrions to iteration
 
