@@ -4,13 +4,13 @@
 # Need to setup postgresql db for docconversion.
 #
     INITDB="/usr/bin/initdb -U postgres /var/lib/postgres/data"
-  CREATEDB="/usr/bin/createdb -q -h localhost -U postgres"
-CREATEUSER="/usr/bin/createuser -q -h localhost -U postgres -A -D"
+  CREATEDB="/usr/bin/createdb -q -U postgres"
+CREATEUSER="/usr/bin/createuser -q -U postgres -A -D"
 	
-  DROPUSER="/usr/bin/dropuser -q -h localhost -U postgres"
-	  DROPDB="/usr/bin/dropdb -q -h localhost -U postgres"
+  DROPUSER="/usr/bin/dropuser -q -U postgres"
+	  DROPDB="/usr/bin/dropdb -q -U postgres"
 
-	 CONNECT="/usr/bin/psql -d clearinghouse -h localhost -U postgres -q"
+	 CONNECT="/usr/bin/psql -d clearinghouse -U postgres -q"
 
 if  [  -f  /usr/bin/createdb  ]; then
 
