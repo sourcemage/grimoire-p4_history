@@ -7,7 +7,7 @@ case  $CUSTOM  in
               ./Configure -S          &&
               make depend
             else
-              ./Configure  -Dprefix=/usr  -Dusethreads
+              ./Configure  -Dprefix=/usr  -Dusethreads -Ulocincpth
             fi
             cp config.sh $CONFIG  ;;
         *)  true  ;;
@@ -17,8 +17,8 @@ esac
 
   case  $CUSTOM  in
     y|Y|j|J)  true  ;;
-          *)  ./Configure  -Dprefix=/usr -d -e  \
-                           -Dusethreads         ;;
+          *)  ./Configure  -Dprefix=/usr -d -e      \
+                           -Dusethreads -Ulocincpth ;;
   esac             &&
   make             &&
   prepare_install  &&
