@@ -11,14 +11,14 @@ case $1 in
 			echo "$1ing Apache web server"
 			apachectl $1
 			#	apachectl startssl
-			eval_retval
+			evaluate_retval
 			;;
 			
   	restart)
 			echo "$1ing Apache web server."
 			if [ -f /var/run/httpd.pid ]; then
 				apachectl $1
-				eval_retval
+				evaluate_retval
 			else
 				$0 start
 			fi
@@ -27,7 +27,7 @@ case $1 in
 	   stop)
 			echo "$1ping Apache web server."
 			apachectl $1
-			eval_retval
+			evaluate_retval
 			;;
 			
 	      *)
