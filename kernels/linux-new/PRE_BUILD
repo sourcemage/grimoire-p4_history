@@ -35,7 +35,6 @@ then
 	unpack $SOURCE ${MD5[0]} &&
 	mv ./*/* ./
 	
-	. ${SCRIPT_DIRECTORY}/functions
 	. ${SCRIPT_DIRECTORY}/latest.defaults
 	for patch in $patches
 	do
@@ -48,7 +47,7 @@ then
 		esac
 		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
-		unpack ${source}
+		cp ${SOURCE_CACHE}/${source} ./
 		linux_new_uncompress ./${source}
 		echo "Patching ${patch}"
 		sleep 3
