@@ -16,7 +16,6 @@ if [ "$SVG" = "yes" ];
   then OPTS="$OPTS --enable-svg --enable-svg-renderer-libart" &&
   export MOZ_INTERNAL_LIBART_LGPL=1           
 fi &&
-#  --enable-single-profile \
 ./configure         \
   --prefix=${INSTALL_ROOT}/usr    \
   --with-x            \
@@ -34,5 +33,6 @@ fi &&
   --disable-composer  \
   --enable-crypto     \
   --enable-extensions \
+  --enable-single-profile \
   $OPTS               &&
 make

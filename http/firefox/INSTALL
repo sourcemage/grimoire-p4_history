@@ -1,4 +1,5 @@
 MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
+FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox &&
 
 if spell_installed Firebird; then
   dispel Firebird
@@ -7,9 +8,11 @@ fi                                               &&
 # everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
 # must actually go to /usr/lib/mozilla/
 
-MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
+MOZILLA_VERSION=0.9.2		&&
+#mozilla-config has the "mozilla" codebase version, not the firefox version
+#MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
 mkdir -p $MOZILLA_HOME                           &&
-ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZILLA_VERSION   &&
+ln -fns $MOZILLA_HOME $FIREFOX_HOME-$MOZILLA_VERSION   &&
 mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
 ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZILLA_VERSION &&
 mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
