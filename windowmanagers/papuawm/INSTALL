@@ -1,6 +1,2 @@
 default_install                                         &&
-install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
-                  ${INSTALL_ROOT}/usr/bin               &&
-mkdir -p ${INSTALL_ROOT}/usr/share/xsessions            &&
-install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
-                  ${INSTALL_ROOT}/usr/share/xsessions
+install_wmfiles
