@@ -1,10 +1,11 @@
            SPELL=nedit
        BUILD_API=2
-         VERSION=5.5RC2
-          SOURCE=$SPELL-$VERSION-src.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.nedit.org/ftp/beta/${SOURCE}
-          MD5[0]=638f6281a0d4b5d134a46af5bd546ed2
+         VERSION=5.5
+          BRANCH=`echo ${VERSION}|sed -e 's/\./_/g'`
+          SOURCE=${SPELL}-${VERSION}-src.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.nedit.org/ftp/v${BRANCH}/${SOURCE}
+          MD5[0]=c7fe9371ece6bd95486c0ab4eb9231b3
         WEB_SITE=http://www.nedit.org/
          ENTERED=20011120
          UPDATED=20011213
