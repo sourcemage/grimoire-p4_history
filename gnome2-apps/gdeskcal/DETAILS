@@ -1,10 +1,13 @@
-           SPELL=gDeskCal
+           SPELL=gdeskcal
          VERSION=0_56
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/_/.}
+          SOURCE=gDeskCal-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gDeskCal-${VERSION/_/.}
+   SOURCE_URL[0]=http://www.pycage.de/download/$SOURCE
+          MD5[0]='adfcee6a5139bfe30ee0a51d0c08ee8c'
       LICENSE[0]=GPL
         WEB_SITE=http://www.pycage.de/software_gdeskcal.html
          ENTERED=20030216
-         UPDATED=20041005
+         UPDATED=20040119
       MAINTAINER=rcook@wyrms.net
            SHORT="Cute little eye-candy calendar for your desktop"
 cat << EOF
