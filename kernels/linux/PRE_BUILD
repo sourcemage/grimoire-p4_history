@@ -124,7 +124,11 @@ else
   check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
 
   message "extracting ${SOURCE}"                                          &&
+  mkdir -p linux-${VERSION}   &&
+  cd linux-${VERSION}         &&
   unpack_override  $SOURCE '' #we will ignore MD5 because of above check  &&
+  mv $(ls)/* .                &&
+  cd ..                       &&
 
   chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
 
