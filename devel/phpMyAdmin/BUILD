@@ -4,13 +4,17 @@
     SPELL_ROOT=`grep  '^DocumentRoot'  ${INSTALL_ROOT}/etc/httpd/httpd.conf   |  cut  -d\"  -f2`
   elif  [  -e  ${INSTALL_ROOT}/etc/httpsd/httpd.conf  ];  then
     SPELL_ROOT=`grep  '^DocumentRoot'  ${INSTALL_ROOT}/etc/httpsd/httpd.conf  |  cut  -d\"  -f2`
-  else
-    SPELL_ROOT=${INSTALL_ROOT}/usr/share
-  fi
+  fi                                                                       &&
 
-  cd  ${SOURCE_DIRECTORY}                            &&
-  prepare_install                                    &&
-  mkdir  -p  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}   &&
-  cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/
+  if  [  "${SPELL_ROOT}"  ==  ""  ];  then
+    SPELL_ROOT=/usr/share
+  fi                                                                       &&
 
-) > $C_FIFO 2>&1
+  cd  ${SOURCE_DIRECTORY}                                                  &&
+  prepare_install                                                          &&
+  mkdir  -p  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}                         &&
+  cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/                        &&
+
+  echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
+
+) >$C_FIFO 2>&1
