@@ -1,0 +1,391 @@
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-alpha/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-alpha/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-alpha/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-alpha/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,13 @@
++#ifndef _ASMAXP_UCONTEXT_H
++#define _ASMAXP_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	old_sigset_t	  uc_osf_sigmask;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASMAXP_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-arm/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-arm/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-arm/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-arm/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASMARM_UCONTEXT_H
++#define _ASMARM_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASMARM_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-arm26/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-arm26/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-arm26/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-arm26/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASMARM_UCONTEXT_H
++#define _ASMARM_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASMARM_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-cris/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-cris/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-cris/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-cris/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASM_CRIS_UCONTEXT_H
++#define _ASM_CRIS_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASM_CRIS_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-h8300/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-h8300/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-h8300/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-h8300/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,23 @@
++#ifndef _H8300_UCONTEXT_H
++#define _H8300_UCONTEXT_H
++
++typedef int greg_t;
++#define NGREG 10
++typedef greg_t gregset_t[NGREG];
++
++struct mcontext {
++	int version;
++	gregset_t gregs;
++};
++
++#define MCONTEXT_VERSION 1
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct mcontext	  uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-i386/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-i386/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-i386/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-i386/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASMi386_UCONTEXT_H
++#define _ASMi386_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASMi386_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-ia64/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-ia64/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-ia64/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-ia64/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASM_IA64_UCONTEXT_H
++#define _ASM_IA64_UCONTEXT_H
++
++struct ucontext {
++	struct sigcontext uc_mcontext;
++};
++
++#define uc_link		uc_mcontext.sc_gr[0]	/* wrong type; nobody cares */
++#define uc_sigmask	uc_mcontext.sc_sigmask
++#define uc_stack	uc_mcontext.sc_stack
++
++#endif /* _ASM_IA64_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-m68k/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-m68k/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-m68k/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-m68k/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,32 @@
++#ifndef _M68K_UCONTEXT_H
++#define _M68K_UCONTEXT_H
++
++typedef int greg_t;
++#define NGREG 18
++typedef greg_t gregset_t[NGREG];
++
++typedef struct fpregset {
++	int f_pcr;
++	int f_psr;
++	int f_fpiaddr;
++	int f_fpregs[8][3];
++} fpregset_t;
++
++struct mcontext {
++	int version;
++	gregset_t gregs;
++	fpregset_t fpregs;
++};
++
++#define MCONTEXT_VERSION 2
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct mcontext	  uc_mcontext;
++	unsigned long	  uc_filler[80];
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-m68knommu/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-m68knommu/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-m68knommu/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-m68knommu/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,38 @@
++#ifndef _M68KNOMMU_UCONTEXT_H
++#define _M68KNOMMU_UCONTEXT_H
++
++typedef int greg_t;
++#define NGREG 18
++typedef greg_t gregset_t[NGREG];
++
++#ifdef CONFIG_FPU
++typedef struct fpregset {
++	int f_pcr;
++	int f_psr;
++	int f_fpiaddr;
++	int f_fpregs[8][3];
++} fpregset_t;
++#endif
++
++struct mcontext {
++	int version;
++	gregset_t gregs;
++#ifdef CONFIG_FPU
++	fpregset_t fpregs;
++#endif
++};
++
++#define MCONTEXT_VERSION 2
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct mcontext	  uc_mcontext;
++#ifdef CONFIG_FPU
++	unsigned long	  uc_filler[80];
++#endif
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-mips/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-mips/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-mips/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-mips/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,21 @@
++/*
++ * This file is subject to the terms and conditions of the GNU General Public
++ * License.  See the file "COPYING" in the main directory of this archive
++ * for more details.
++ *
++ * Low level exception handling
++ *
++ * Copyright (C) 1998, 1999 by Ralf Baechle
++ */
++#ifndef _ASM_UCONTEXT_H
++#define _ASM_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* _ASM_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-parisc/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-parisc/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-parisc/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-parisc/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASM_PARISC_UCONTEXT_H
++#define _ASM_PARISC_UCONTEXT_H
++
++struct ucontext {
++	unsigned int	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASM_PARISC_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-ppc/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-ppc/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-ppc/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-ppc/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,27 @@
++#ifndef _ASMPPC_UCONTEXT_H
++#define _ASMPPC_UCONTEXT_H
++
++#include <asm/elf.h>
++#include <asm/signal.h>
++
++struct mcontext {
++	elf_gregset_t	mc_gregs;
++	elf_fpregset_t	mc_fregs;
++	unsigned long	mc_pad[2];
++	elf_vrregset_t	mc_vregs __attribute__((__aligned__(16)));
++};
++
++struct ucontext {
++	unsigned long	 uc_flags;
++	struct ucontext *uc_link;
++	stack_t		 uc_stack;
++	int		 uc_pad[7];
++	struct mcontext	*uc_regs;	/* points to uc_mcontext field */
++	sigset_t	 uc_sigmask;
++	/* glibc has 1024-bit signal masks, ours are 64-bit */
++	int		 uc_maskext[30];
++	int		 uc_pad2[3];
++	struct mcontext	 uc_mcontext;
++};
++
++#endif /* !_ASMPPC_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-ppc64/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-ppc64/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-ppc64/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-ppc64/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,22 @@
++#ifndef _ASMPPC64_UCONTEXT_H
++#define _ASMPPC64_UCONTEXT_H
++
++#include <asm/sigcontext.h>
++
++/*
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version
++ * 2 of the License, or (at your option) any later version.
++ */
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	sigset_t	  uc_sigmask;
++	sigset_t	  __unsued[15];	/* Allow for uc_sigmask growth */
++	struct sigcontext uc_mcontext;  /* last for extensibility */
++};
++
++#endif /* _ASMPPC64_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-s390/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-s390/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-s390/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-s390/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,20 @@
++/*
++ *  include/asm-s390/ucontext.h
++ *
++ *  S390 version
++ *
++ *  Derived from "include/asm-i386/ucontext.h"
++ */
++
++#ifndef _ASM_S390_UCONTEXT_H
++#define _ASM_S390_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	_sigregs          uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* !_ASM_S390_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-sh/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-sh/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-sh/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-sh/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef __ASM_SH_UCONTEXT_H
++#define __ASM_SH_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* __ASM_SH_UCONTEXT_H */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-um/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-um/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-um/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-um/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,6 @@
++#ifndef _ASM_UM_UCONTEXT_H
++#define _ASM_UM_UCONTEXT_H
++
++#include "asm/arch/ucontext.h"
++
++#endif
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-v850/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-v850/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-v850/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-v850/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,14 @@
++#ifndef __V850_UCONTEXT_H__
++#define __V850_UCONTEXT_H__
++
++#include <asm/sigcontext.h>
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif /* __V850_UCONTEXT_H__ */
+diff -Nur linux-libc-headers-2.6.2.0/include/asm-x86_64/ucontext.h linux-libc-headers-2.6.2.0-fixed/include/asm-x86_64/ucontext.h
+--- linux-libc-headers-2.6.2.0/include/asm-x86_64/ucontext.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/asm-x86_64/ucontext.h	2004-02-15 13:16:18.000000000 +0100
+@@ -0,0 +1,12 @@
++#ifndef _ASMX8664_UCONTEXT_H
++#define _ASMX8664_UCONTEXT_H
++
++struct ucontext {
++	unsigned long	  uc_flags;
++	struct ucontext  *uc_link;
++	stack_t		  uc_stack;
++	struct sigcontext uc_mcontext;
++	sigset_t	  uc_sigmask;	/* mask last for extensibility */
++};
++
++#endif
+diff -Nur linux-libc-headers-2.6.2.0/include/linux/config.h linux-libc-headers-2.6.2.0-fixed/include/linux/config.h
+--- linux-libc-headers-2.6.2.0/include/linux/config.h	2003-12-19 20:25:17.000000000 +0100
++++ linux-libc-headers-2.6.2.0-fixed/include/linux/config.h	2004-02-15 13:21:02.000000000 +0100
+@@ -1,2 +1 @@
+-#include <linux/err_kernel_only.h>
+-
++#warning linux/config.h included in userspace! this should never be done.
