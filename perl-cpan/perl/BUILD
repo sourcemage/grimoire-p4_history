@@ -18,10 +18,10 @@ case  $OLD_CUSTOM  in
            cp config.sh $CONFIG                                 &&
            echo "OLD_CUSTOM=y" | cat > $DEPENDS_CONFIG/perl     &&
            echo "NEW_CUSTOM=n" | cat > $DEPENDS_CONFIG/perl
-         ;
+         ;;
      *)  ./Configure  -Dprefix=/usr -d -e      \
          -Ui_db -Dusethreads -Ulocincpth -Dlibperl=libperl.so
-         ;
+         ;;
    esac
 esac  &&
 
