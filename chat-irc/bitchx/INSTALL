@@ -1,6 +1,6 @@
   make    install		  &&
 
-  if spell_installed gnome-libs ; then
+  if spell_ok gnome-libs ; then
 
     make clean                    &&
     ./configure --prefix=/usr     \

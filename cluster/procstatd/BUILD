@@ -9,8 +9,7 @@
   make                                             &&
   make  install                                    &&
 
-  if  spell_installed  perl
-  then
+  if  spell_ok  perl;  then
     cd  webwatch
 
     install  -m 644  webwatch.config    /etc/webwatch.config.default
