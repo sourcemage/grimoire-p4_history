@@ -1,1 +1,3 @@
-/etc/init.d/netatalk.sh stop
+if  [  -x  /etc/init.d/netatalk.sh  ];  then
+  /etc/init.d/netatalk.sh stop
+fi

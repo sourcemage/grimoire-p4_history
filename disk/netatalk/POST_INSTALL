@@ -1,2 +1,4 @@
-echo "Starting netatalk" &&
-/etc/init.d/netatalk.sh start
+if  [  -x  /etc/init.d/netatalk.sh  ];  then
+  echo "Starting netatalk"       &&
+  /etc/init.d/netatalk.sh start
+fi
