@@ -1,4 +1,4 @@
-VERSION=0.9.1
+VERSION=0.9.2
 ### have moved this to the beginning so the rest can stay untouched for each new update.
 ### this deletes everything below line 5 and replaces it with the current version data
 ### if any new options, variables are added to the file they must be put at the top 
@@ -11,7 +11,7 @@ echo -e  "VERSION=$VERSION
  SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/\$SPELL/releases/\${VERSION}/\$SOURCE
  SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/\$SPELL/releases/\${VERSION}/\$SOURCE
  SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
-        MD5[0]=8adf86eec1447e6f8c39bed9d627d7ae"  >>  ${SPELL_CONFIG}  
+        MD5[0]=71cfdddc8d90cb6ad05cedd84b9cb0e5"  >>  ${SPELL_CONFIG}  
 }
 
 if ! grep -q VERSION=$VERSION $SPELL_CONFIG ;
