@@ -3,8 +3,8 @@ service pop3s
 	socket_type		= stream
 	protocol		= tcp
 	wait			= no
-	#user			= root
-	user			= nobody
+	user			= root
+	#user			= nobody
 	server			= /usr/sbin/stunnel
 	server_args		= -l /usr/sbin/ipop3d
 	# pop3s will work without stunnel if you have /etc/ssl/certs/ipop3d.pem

@@ -17,7 +17,7 @@ if spell_installed postfix; then
     OUTPUT_FILE="/etc/postfix/master.cf-Mail-SpamAssassin-sample"
   fi
 
-  CUR_DATE=`date +%y.%m.%d.%S`
+  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
   cp /etc/postfix/master.cf /etc/postfix/master.cf.backup-Mail-SpamAssassin-$CUR_DATE
 
   FILTER_SIGNATURE="# Begin Mail-SpamAssassin filtering rules...DO NOT REMOVE THIS LINE..."

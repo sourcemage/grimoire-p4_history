@@ -1,11 +1,19 @@
-if query "Backup package config ?" y
+if query "Backup $SPELL config ?" y
 then
- CUR_DATE=`date +%s`
+ CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
  cp /etc/openwebmail.conf /etc/openwebmail-backup-$CUR_DATE.conf 1>/dev/null 2>&1
 fi
 
 # clean
-rm -r -f /usr/share/httpd/cgi-bin/openwebmail 
-rm -r -f /usr/share/httpd/htdocs/openwebmail
-# noy yet rm -f /etc/pam.d/openwebmail
+# apache/apache2 auto setup
+if  spell_installed  "apache";     then
+  LOC="/usr/share/httpd"
+elif  spell_installed  "apache2";  then
+  LOC="/usr/share/apache2"
+fi
+
+
+rm -r -f $LOC/cgi-bin/openwebmail 
+rm -r -f $LOC/htdocs/openwebmail
+# not yet rm -f /etc/pam.d/openwebmail
 rm -f /var/log/openwebmail.log

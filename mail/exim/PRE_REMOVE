@@ -11,8 +11,8 @@ if  spell_installed  hc-cron;  then
   crontab -
 fi
 
-if query "Backup package config ?" y
+if query "Backup $SPELL config ?" y
 then
- CUR_DATE=`date +%s`
- cp /etc/exim.conf /etc/exim-backup-$CUR_DATE.conf 1>/dev/null 2>&1
+ CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
+ tar -cyvf /etc/$SPELL-backup-$CUR_DATE.tar.bz2 /etc/exim.conf 1>/dev/null 2>&1
 fi
