@@ -1,9 +1,16 @@
            SPELL=anjuta
+if [ "$CVS_CHECKOUT" == "y" ]
+then
+	 VERSION=cvs
+	  MD5[0]=IGNORE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:anjuta
+else
          VERSION=1.2.2
+          MD5[0]=8585a28dcca90acf2e1ec2f50f484be1
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=8585a28dcca90acf2e1ec2f50f484be1
         WEB_SITE=http://anjuta.sourceforge.net/
          ENTERED=20011124
          UPDATED=20040207
