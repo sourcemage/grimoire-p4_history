@@ -1,6 +1,6 @@
 (
   cd $SOURCE_DIRECTORY            &&
-  ./configure --prefix=${INSTALL_ROOT}/usr \ 
+  ./configure --prefix=${INSTALL_ROOT}/usr \
               --enable-install-termcap     \
 	      $OPTS               &&
   make                            &&
