@@ -1,11 +1,10 @@
 (
 
-  # Doesn't like Python 2.3 yet
-  #if  spell_installed  Python
-  #then
+  # Doesn't like Python 2.4 yet
+  #if  spell_ok  python;  then
   #  export  OPTS="${OPTS}  PYTHON_ROOT=/usr"    &&
-  #  export  OPTS="${OPTS}  PYTHON_VERSION=2.3"
-  #fi
+  #  export  OPTS="${OPTS}  PYTHON_VERSION=2.4"
+  #fi  &&
 
   export CXXFLAGS="$CFLAGS"                 &&
 
