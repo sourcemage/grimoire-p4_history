@@ -1,18 +1,19 @@
            SPELL=pfaedit
-         VERSION=030904
+         VERSION=031029
           SOURCE=${SPELL}_full-$VERSION.tgz
          SOURCE2=${SPELL}_htdocs-$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://pfaedit.sourceforge.net/$SOURCE
   SOURCE2_URL[0]=http://pfaedit.sourceforge.net/$SOURCE2
-        WEB_SITE=pfaedit.sourceforge.net
-          MD5[0]=bf69cfbd2f2fcb6f0dc4a7fe372ba873
-          MD5[1]=7ad507a4803c5b7cea51742b2d68223b
-         LICENSE=BSD
-      MAINTAINER=v.merkatz@gmx.net
+        WEB_SITE=http://pfaedit.sourceforge.net
+          MD5[0]=39bc8587d15e785cc1f907c55f4bef04
+          MD5[1]=2427871dc305aa6b41ff95b38ad79fb5
          ENTERED=20030628
          UPDATED=20030628
-           SHORT="A postscript font editor that lets you create your own postscript, truetype, opentype, cid-keyed and bitmap (bdf) fonts, or edit existing ones."
+      LICENSE[0]=BSD
+      MAINTAINER=v.merkatz@gmx.net
+      MAKE_NJOBS=1
+           SHORT="A postscript font editor that lets you create your own fonts, or edit existing ones."
 cat << EOF
 PfaEdit -- A postscript font editor that lets you create your own postscript, truetype, opentype, cid-keyed and bitmap (bdf) fonts, or edit existing ones. Also lets you convert one format to another.
 EOF
