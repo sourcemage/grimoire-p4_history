@@ -1,0 +1,25 @@
+if [ "$( gunzip -c /proc/config.gz | grep 'CONFIG_DRM=y' )" ]; then
+    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
+    exit 1
+elif [ "$( grep 'CONFIG_DRM=y' /etc/sorcery/local/kernel.config )" ]; then
+    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
+    exit 1
+elif [ "$( grep 'CONFIG_DRM=y' /usr/src/linux/.config )" ]; then
+    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
+    exit 1
+fi &&
+
+#Add sorcery user and a check for the user
+
+#if [ "`grep sorcery /etc/passwd | wc -l`" == "0" ]; then
+#   useradd -g sorcery -s /bin/false sorcery
+#fi &&
+
+mk_source_dir  ${SOURCE_DIRECTORY}      &&
+chmod a+rw ${SOURCE_DIRECTORY}          &&
+#su sorcery                              &&
+cd  ${SOURCE_DIRECTORY}                 &&
+unpack  ${SOURCE}  ${MD5[0]}            &&
+unpack  ${SOURCE2}  ${MD5[1]}           &&
+sedit "s:\(#define MesaSrcDir\).*:\1 ${SOURCE_DIRECTORY}/Mesa-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def
+
