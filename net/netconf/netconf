@@ -46,6 +46,9 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2005-04-04  Arjan Bouter <abouter@sourcemage.org>
+#     - added cfg_wifi_mode to select the cards mode
+#
 # 2005-03-31  Arjan Bouter <abouter@sourcemage.org>
 #     - updated wifi the wifi support to be a full submenu
 #     - added cfg_wifi_{nwid,essid,rate,security}
@@ -657,6 +660,7 @@ function check_devdir() {
 ## @Global    WIFI_NWID: wifi network-id.<br>
 ## @Global    WIFI_ESSID: wifi ssid.<br>
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_MODE: wifi max bitrate.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
 ## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
@@ -670,8 +674,8 @@ function loadnetdev() {
 	local devname
 
 	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU \
-              WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_SECMODE WIFI_ENCKEY \
-              UP_ON_BOOT
+              WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_MODE WIFI_SECMODE \
+              WIFI_ENCKEY UP_ON_BOOT
 
 	devname=$(get_basename $1 .dev)
 
@@ -982,7 +986,7 @@ function cfg_wifi_nwid() {
 	                 --ok-label       "$BTN_ACCEPT"             \
 	                 --cancel-label   "$BTN_CANCEL"             \
 	                 --inputbox                                 \
-	                 "Enter the name of the network"            \
+	                 "Enter network name (ONLY for pre-802.11 hardware!)" \
 	                 0 0 ${WIFI_NWID}`
 
 	if [ $? -eq 0 ]; then
@@ -1004,7 +1008,7 @@ function cfg_wifi_essid() {
 	                 --ok-label       "$BTN_ACCEPT"             \
 	                 --cancel-label   "$BTN_CANCEL"             \
 	                 --inputbox                                 \
-	                 "Enter the ssid of the network" \
+	                 "Enter the ssid of the network (default: any)" \
 	                 0 0 ${WIFI_ESSID}`
 
 	if [ $? -eq 0 ]; then
@@ -1031,6 +1035,33 @@ function cfg_wifi_rate() {
 
 	if [ $? -eq 0 ]; then
 		WIFI_RATE="${COMMAND}"
+	fi
+}
+
+#--- cfg_wifi_mode()
+##
+## This sets the maximum bitrate
+##
+## @Global    WIFI_MODE: wifi card mode.<br>
+## @External  dialog
+#---
+function cfg_wifi_mode() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure the mode"               \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --menu                                     \
+	                 "Select if you're using ad-hoc or managed mode" \
+	                 0 0 0                                      \
+                         "1"	"Managed (default)"                    \
+			 "2"	"Ad-Hoc"`
+
+	if [ $? -eq 0 ]; then
+		case $COMMAND in
+			'1') WIFI_MODE="Managed" ;;
+			'2') WIFI_MODE="Ad-Hoc" ;;
+		esac
 	fi
 }
 
@@ -1136,7 +1167,8 @@ function cfg_wifi() {
 			 "1" "Network or Domain ID, nwid" \
 			 "2" "Network name, essid" \
 			 "3" "Bitrate ,rate" \
-			 "4" "Security menu" `
+			 "4" "Mode" \
+			 "5" "Security menu" `
 
 	if [ $? != 0 ]; then
 		# Exit
@@ -1148,7 +1180,8 @@ function cfg_wifi() {
 			'1') cfg_wifi_nwid ;;
 			'2') cfg_wifi_essid ;;
 			'3') cfg_wifi_rate ;;
-			'4') cfg_wifi_security ;;
+			'4') cfg_wifi_mode ;;
+			'5') cfg_wifi_security ;;
 		esac
 	fi
   done
@@ -1270,6 +1303,7 @@ function confirm_save() {
 ## @Global    WIFI_NWID: wifi network-id.<br>
 ## @Global    WIFI_ESSID: wifi ssid.<br>
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
 ## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
@@ -1308,6 +1342,9 @@ EOF
 	if [ ! -z ${WIFI_RATE} ]; then
 		echo "WIFI_RATE=\"${WIFI_RATE}\"" >> $1
 	fi
+	if [ ! -z ${WIFI_MODE} ]; then
+		echo "WIFI_MODE=\"${WIFI_MODE}\"" >> $1
+	fi
 	if [ ! -z ${WIFI_SECMODE} ]; then
 		echo "WIFI_SECMODE=\"${WIFI_SECMODE}\"" >> $1
 	fi
@@ -1340,6 +1377,7 @@ EOF
 ## @Global    WIFI_NWID: wifi network-id.<br>
 ## @Global    WIFI_ESSID: wifi ssid.<br>
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
 ## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
@@ -1380,6 +1418,11 @@ function save_update() {
 	  cat_or_sedit "^WIFI_RATE=.*" "WIFI_RATE=\"${WIFI_RATE}\"" $1
 	else
 	  sed -i '/^WIFI_RATE=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_MODE} ]; then
+	  cat_or_sedit "^WIFI_MODE=.*" "WIFI_MODE=\"${WIFI_MODE}\"" $1
+	else
+	  sed -i '/^WIFI_MODE=.*/d' $1
 	fi
 	if [ ! -z ${WIFI_SECMODE} ]; then
 	  cat_or_sedit "^WIFI_SECMODE=.*" "WIFI_SECMODE=\"${WIFI_SECMODE}\"" $1
@@ -1466,6 +1509,7 @@ function add_device() {
 ## @Global    WIFI_NWID: wifi network-id.<br>
 ## @Global    WIFI_ESSID: wifi ssid.<br>
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
+## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
 ## @Global    WIFI_ENCKEY: wifi encryption key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
