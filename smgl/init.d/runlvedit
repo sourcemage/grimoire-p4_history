@@ -30,19 +30,25 @@ print TMP << 'EOT';
 #    on this,  see  the  man-pages for shutdown(8) and inittab(5).
 #
 # Usage: 
-#   Just place to appropriate character as follows in the placeholder for
+#   First you need to name the service.
+#   Then you enter a STARTING value. This number relates to the starting 
+#   position in the specific runlevel you want this service to be started 
+#   in. The STOPPING value is computed for you automatically.
+#   Finally, place the appropriate character (from the following list) for
 #   each runlevel that you want to have the service started or stoped:
 #   
-#   o - start service
-#   x - stop service
+#      o - start service
+#      x - stop service
 #
 # Example: Here apache is shown. 
-#  (clarification has been requested from submitter as to how to set
-#   the start and stop numerical values...)
 #
 # Name          99  0123456S  Description
-#
 # apache        10  xxxooox-  -*-*-*-*-
+#
+# *** So apache service will be started in runlevels 3 - 5 and stoped in the
+#     rest. It will not be started in runlevel S (see above for it's usage).
+#     It will receive the value of S10 when entered into the runlevels it is
+#     to start at. The stop value will be computed for you.
 #
 
 EOT
