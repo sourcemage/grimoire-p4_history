@@ -1,3 +1,5 @@
+patch -p1 < $SCRIPT_DIRECTORY/bash-3.0-avoid_WCONTINUED-1.patch &&
+
 ./configure  --build=$BUILD                \
              --prefix=${INSTALL_ROOT}/usr  \
              --bindir=${INSTALL_ROOT}/bin  \

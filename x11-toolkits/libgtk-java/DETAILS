@@ -3,21 +3,21 @@ if [ "$GETCVS" == "y" ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:java-gnome/libgtk-java
-          MD5[0]=IGNORE
+          MD5[0]='IGNORE'
   FORCE_DOWNLOAD=1
 else
-         VERSION=2.4.5
+         VERSION=2.4.6
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='8529635eb04fa7738e93f4597d8c8578'
+          MD5[0]='f53101a94975079621c34ffc5fe7e1df'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]="LGPL"
        BUILD_API=2
         WEB_SITE=http://java-gnome.sourceforge.net/cgi-bin/bin/view
          ENTERED=20041026
-         UPDATED=20041026
+         UPDATED=20041106
            SHORT="Java wrapper library for GTK+"
 cat << EOF
 Java wrapper library for GTK+2 and GLIB2
