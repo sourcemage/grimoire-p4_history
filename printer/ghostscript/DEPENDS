@@ -1,12 +1,22 @@
 depends  libpng                 &&
 depends  zlib                   &&
-depends  gtk+                   &&
+depends  jpeg                   &&
 depends  ghostscript-fonts-std  &&
+
+if  grep  -q  "LIBGS=y"  $SPELL_CONFIG;  then
+  depends  gtk+
+fi                                                                     &&
+
+optional_depends  "X11-LIBS"                                           \
+                  "--with-x"                                           \
+                  "--without-x"                                        \
+                  "for x11 devices"                                    &&
 
 optional_depends  "ghostscript-fonts-other"                            \
                   ""                                                   \
                   ""                                                   \
                   "for additional fonts"                               &&
+
 optional_depends  "gimp-print"                                         \
                   "--with-gimp-print"                                  \
                   ""                                                   \

@@ -1,23 +1,25 @@
 (
 
-  OVERRIDE1="prefix=${INSTALL_ROOT}/usr"
-  OVERRIDE2="JSRCDIR=$SOURCE_DIRECTORY/jpeg-6b"
+  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
-  cp   src/all-arch.mak  src/all-arch.mak.original
-  sed  "s/\/local//g"    src/all-arch.mak.original  >  src/all-arch.mak
+  ./configure  --prefix=${INSTALL_ROOT}/usr                                   \
+               --sysconfdir=${INSTALL_ROOT}/etc                               \
+               --localstatedir=${INSTALL_ROOT}/var                            \
+               --mandir=${INSTALL_ROOT}/usr/share/man                         \
+               --infodir=${INSTALL_ROOT}/usr/share/info                       \
+               $OPTS                                                          &&
 
-  cp   src/unix-gcc.mak  src/unix-gcc.mak.original
-  cat                    src/unix-gcc.mak.original  |
-  sed  "s/SHARE_LIBPNG=0/SHARE_LIBPNG=1/"           |
-  sed  "s/SHARE_ZLIB=0/SHARE_ZLIB=1/"               >  src/unix-gcc.mak
+  make                                                                        &&
 
-  echo   "#include <time.h>"  >>  src/time_.h
+  if  grep  -q  "LIBGS=y"  $SPELL_CONFIG;  then
+    make  so
+  fi                                                                          &&
 
-  ln   -s  src/unix-gcc.mak  makefile
+  prepare_install                                                             &&
+  make    install                                                             &&
 
-  make  $OVERRIDE1  $OVERRIDE2  so         &&
-  prepare_install                          &&
-  make  $OVERRIDE1  $OVERRIDE2  soinstall  &&
-  ln    -sf  gsc  ${INSTALL_ROOT}/usr/bin/gs
+  if  grep  -q  "LIBGS=y"  $SPELL_CONFIG;  then
+    make  soinstall
+  fi
 
 ) > $C_FIFO 2>&1
