@@ -1,0 +1,38 @@
+echo  "This spell conflicts with cups and will cause at least two spells to be dispelled."
+if  query  "To see a list of affected spells, enter a 'y': "  y
+  then
+    gaze  depends  cups
+    echo  "cups"
+
+    if  query  "To continue casting enter a 'y': "  y
+      then
+        for  CASTED_SPELL  in  `gaze  depends  cups`
+        do
+          if  [  "`gaze  installed  $CASTED_SPELL  |  grep  $CASTED_SPELL`"  =  ""  ]
+          then
+            dispel  $CASTED_SPELL
+          fi
+        done
+
+        dispel  cups
+      else
+	exit
+    fi
+  else
+    if  query  "To continue casting enter a 'y': "  y
+      then
+        for  CASTED_SPELL  in  `gaze  depends  cups`
+        do
+          if  [  "`gaze  installed  $CASTED_SPELL  |  grep  $CASTED_SPELL`"  =  ""  ]
+          then
+            dispel  $CASTED_SPELL
+          fi
+        done
+
+        dispel  cups
+      else
+	exit
+    fi
+fi
+
+default_pre_build
