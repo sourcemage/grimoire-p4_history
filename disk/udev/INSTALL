@@ -1,6 +1,8 @@
   make  install                      &&
   install -d ${INSTALL_ROOT}/sys     &&
   UDEV_CFG=${INSTALL_ROOT}/etc/udev  &&
+  DEV_DDIR=/etc/dev.d                &&
+  SND_DFILE=${DEV_DDIR}/snd/controlC0/alsa.dev &&
   mkdir  -p  ${UDEV_CFG}             &&
   DFS=etc/udev/udev.rules.devfs      &&
   if [ ! -f ${INSTALL_ROOT}/$DFS ];then
@@ -17,4 +19,7 @@
   fi  &&
   if [ ! -f ${UDEV_CFG}/udev.missing ]; then
     cp $SCRIPT_DIRECTORY/udev.missing  ${UDEV_CFG}
+  fi  &&
+  if [ ! -f ${SND_DFILE} ]; then
+    install -c -D etc/dev.d/snd/controlC0/alsa.dev ${SND_DFILE}
   fi
