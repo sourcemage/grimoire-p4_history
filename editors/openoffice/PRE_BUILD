@@ -13,14 +13,14 @@ unpack		$SOURCE	${MD5[0]}	&&
 # have a depends on LINUX-PAM-HEADER
 # which both linux-pam and the new spell PROVIDE
 #
-if ! spell_ok "linux-pam"; then
-	mk_source_dir $SOURCE_DIRECTORY2 &&
-	cd $BUILD_DIRECTORY		 &&
-	unpack $SOURCE2 ${MD5[1]}	 &&
-        mkdir -p /usr/include/security   &&
-        mv -f security/*  /usr/include/security/ &&
-        rm_source_dir $SOURCE_DIRECTORY2
-fi
+#if ! spell_ok "linux-pam"; then
+#	mk_source_dir $SOURCE_DIRECTORY2 &&
+#	cd $BUILD_DIRECTORY		 &&
+#	unpack $SOURCE2 ${MD5[1]}	 &&
+#        mkdir -p /usr/include/security   &&
+#        mv -f security/*  /usr/include/security/ &&
+#        rm_source_dir $SOURCE_DIRECTORY2
+#fi
 
 #
 # Set OO to use our optimizations
