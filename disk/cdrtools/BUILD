@@ -1,2 +1,2 @@
-  sedit  's:/usr/src/linux/include::'  DEFAULTS/Defaults.linux
-  make
+sedit  's:/usr/src/linux/include::'  DEFAULTS/Defaults.linux  &&
+make
