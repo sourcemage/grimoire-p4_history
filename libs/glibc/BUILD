@@ -42,16 +42,19 @@
  ln -sf $SOURCE_DIRECTORY.bld/nis/libnsl.so ${INSTALL_ROOT}/lib/libnsl.so.1 &&
  ln -sf $SOURCE_DIRECTORY.bld/crypt/libcrypt.so ${INSTALL_ROOT}/lib/libcrypt.so.1 &&
  ln -sf $SOURCE_DIRECTORY.bld/login/libutil.so ${INSTALL_ROOT}/lib/libutil.so.1   &&
- if [ "$NPTL" = "yes" ] ; then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ; fi         &&
- if [ "$NPTL" = "no" ] ; then  ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ; fi &&
+ if [ "$NPTL" = "yes" ]
+    then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
+ fi  &&
+ if [ "$NPTL" = "no" ]
+    then  ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
+ fi &&
  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2   &&
  unset  LD_LIBRARY_PATH                                                     &&
  (  ldconfig  ||  true  )                                                   &&
 
  ### glibc only installs these if the file differs (or is removed :) )
-  for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h \
-        ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
-     do [ -f $i ] && rm -vf $i 
+  for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
+     do if [ -f $i ] ; then rm -vf $i ; fi
   done                                        &&
  ### old systems have left over files in /usr/lib/locale/* 
  if [ -d ${INSTALL_ROOT}/usr/lib/locale ] 
@@ -83,7 +86,11 @@
     true
   fi &&
  ### copy the headers if wanted
- [ "$HEADERS" = "yes" ] && rm -rf ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux} && for i in asm asm-generic linux; do cp -aL \
- ${INSTALL_ROOT}/lib/modules/$(uname -r)/build/include/$i ${INSTALL_ROOT}/usr/include ; done ;
+ if [ "$HEADERS" = "yes" ] 
+    then  rm -rf ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux} && 
+          for i in asm asm-generic linux
+              do cp -aL  ${INSTALL_ROOT}/lib/modules/$(uname -r)/build/include/$i ${INSTALL_ROOT}/usr/include 
+          done
+ fi
 ) > $C_FIFO 2>&1
 
