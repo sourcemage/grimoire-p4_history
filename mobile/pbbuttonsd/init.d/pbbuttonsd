@@ -2,8 +2,8 @@
 
 PROGRAM=/usr/bin/pbbuttonsd
 RUNLEVEL=3
-NEEDS="+remote_fs"
 PIDFILE=/var/run/pbbuttonsd.pid
+ARGS="-d $PIDFILE"
 
 . /etc/init.d/smgl_init
 
