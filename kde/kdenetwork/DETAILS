@@ -1,10 +1,15 @@
            SPELL=kdenetwork
+         VERSION=3.0.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/3.0.2/src/$SOURCE
+          MD5[0]=5407d4b315c522ab88ffe55c5ff6a155
+        WEB_SITE=http://www.kde.org
          ENTERED=20010922
-    . $GRIMOIRE/$SECTION/KDE_DETAILS
-    MAINTAINER=eric@lasvegasdata.com
-             MD5=kdenetwork_MD5SUM
-         LICENSE=GP
-	   SHORT="kdenetwork contains an email and news client, and other programs."
+         UPDATED=20020528
+      LICENSE[0]=GP
+      MAINTAINER=eric@lasvegasdata.com
+           SHORT="kdenetwork contains an email and news client, and other programs."
 cat << EOF
 Network applications. Currently contains the mail program, the news
 reader, and several other network-related programs.
