@@ -1,2 +1,1 @@
-[ -e /etc/sysconfig/alsa ] || exit 0
-sedit "s:\$CARD:$CARD:"  /etc/sysconfig/alsa
+[ -e /etc/sysconfig/alsa ] && sedit "s:\$CARD:$CARD:"  /etc/sysconfig/alsa
