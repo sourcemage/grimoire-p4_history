@@ -12,4 +12,8 @@
   prepare_install                   &&
   make   -f $MAKEFILE  prefix=/usr  install
 
+  cp /usr/include/libpng12/* /usr/include
+
 ) > $C_FIFO 2>&1
+
+
