@@ -1,8 +1,15 @@
-if  !  grep  -q  "IDE_SCSI="  $SPELL_CONFIG;  then
+if  !  grep  -q  "CONFIGURED"  $SPELL_CONFIG;  then
 
   if    query  "Will you be using an IDE burner?"  n
   then  echo  "IDE_SCSI=y"  >>  $SPELL_CONFIG
   else  echo  "IDE_SCSI=n"  >>  $SPELL_CONFIG
   fi
+
+  if    query  "Allow any user to write with cdrecord?" n
+  then  echo   "SUDO=y"  >>  ${SPELL_CONFIG}
+  else  echo   "SUDO=n"  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
 
 fi
