@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# SMGL-script-version=20030224
+# SMGL-script-version=20030723
 # SMGL-START:S:S15
 # SMGL-STOP:0 6:K75
 
@@ -9,13 +9,13 @@
 case $1 in 
     start)
 			echo  "Setting System Time using the Hardware Clock."
-			/sbin/hwclock  --hctosys  --localtime
+			/sbin/hwclock  --hctosys
 			evaluate_retval
 			;;
     
 	stop)
 			echo  "Setting the Hardware Clock to the current System Time."
-			/sbin/hwclock --systohc --localtime
+			/sbin/hwclock --systohc
 			evaluate_retval
 			;;
     

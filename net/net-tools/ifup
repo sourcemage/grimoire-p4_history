@@ -1,0 +1,54 @@
+#!/bin/bash
+
+netdevdir=/etc/sysconfig/network
+
+#change this if your .pid file hides somewhere else
+DHCPCD_PATH="/etc/dhcpc/dhcpcd-"
+DEV=$1
+
+if [ -z $DEV ]; then
+  echo "Usage: ifup <device>"
+  exit 2
+fi
+
+if [ ! -f $netdevdir/$DEV.dev ]; then
+  echo "$DEV: no such network device"
+  exit 1
+fi
+
+unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+
+. $netdevdir/$DEV.dev
+
+if [ -z "$MODE" ]; then
+  echo "There are errors in $netdevdir/$DEV.dev"
+  exit 1
+fi
+
+if [ "$MODULE" ] && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ] ; then
+  echo "Loading module $MODULE for $DEV ..."
+  modprobe  $MODULE
+fi
+
+if [ "$MODE" = dynamic ]; then
+  echo "Starting dhcpcd on $DEV ..."
+  if [ -e $DHCPCD_PATH$DEV.pid ]; then
+    dhcpcPid=`cat $DHCPCD_PATH$DEV.pid`
+    dhcpcd -k $DEV 1>/dev/null 2>&1 &&
+    renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEV.pid &&
+    sleep 1
+  fi &&
+  dhcpcd -t 30 -d $DEV
+elif [ "$MODE" = static ]; then
+  echo "Setting up static networking on $DEV..."
+  ifconfig  $DEV $IP broadcast $BROADCAST netmask $NETMASK &&
+
+  # check if GATEWAY is set; gateway is set by PPP or other software in some
+  # cases
+  if [ "$GATEWAY" ]; then
+    route add default gateway $GATEWAY dev $DEV
+  fi
+else
+  echo "There are errors in $netdevdir/$DEV.dev"
+  exit 1
+fi

@@ -1,3 +1,39 @@
+2003-07-23  Eric Sandall <eric@sandall.us>
+
+		Updated script version of localtime[.sh]
+
+2003-07-23  Eric Schabell <eschabell@sourcemage.org>
+
+		Adjusted localtime(.sh) scripts to not touch --localtime,
+		fixes bug #3825.
+
+2003-07-20  Eric Sandall <eric@sandall.us>
+
+        Added rc and rcS scripts, needed for booting
+        (found out about this while converting my Gentoo
+        install on my Sparc to SMGL...)
+
+        Also added installation of inittab...same reason
+
+2003-07-12  Eric Sandall <eric@sandall.us>
+
+        mountusb: Removing this script as (thanks to Jose and
+        W0rf) I found the hotplug spell, which takes care of
+        this kind of functionality
+
+2003-07-11  Eric Sandall <eric@sandall.us>
+
+        mountusb: Fixed mountusb to check for directory, not file
+
+        mountusb: Changed SGL tags to SMGL...stupid me
+
+        mountnfs[.sh]: now listed as an SMGL script
+        (had an 'o' instead of a '0')
+
+2003-06-29  Eric Sandall <eric@sandall.us>
+
+		Added mountusb to mount usbdevfs on /proc/bus/usb
+
 2003-06-05  Eric Schabell <eschabell@sourcemage.org>
 
 		Fixed bug #3429, now possible to run init.d 

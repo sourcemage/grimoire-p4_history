@@ -1,17 +1,23 @@
            SPELL=webcleaner
-         VERSION=1.6
+         VERSION=1.13
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='93277b644debed5a4fc3fa59a3d95e65'
+          MD5[0]='2686c16a12d52bb9e863f6bf97725a63'
       LICENCE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://webcleaner.sourceforge.net/
          ENTERED=20020409
          UPDATED=20020811
-           SHORT='remove adverts ad other junk from web pages'
+           SHORT='WebCleaner is a filtering HTTP proxy'
 cat << EOF
-WebCleaner is a filtering HTTP proxy. It can disable animated GIFs,
-compress documents on-the-fly (with gzip), add/remove HTTP headers,
-and remove unwanted HTML (adverts, Javascript, etc.). It can be
-customized to your needs. 
+WebCleaner is a filtering HTTP proxy.
+Features
+* disable animated GIFs;
+* compress documents on-the-fly (with gzip);
+* remove/add HTTP headers;
+* remove unwanted HTML (adverts, javascript, ...);
+* customizable to suit your (filtering) needs;
+* HTTP/1.1 support;
+* Proxy Authentication (requires HTTP/1.1 capable browser);
+* JavaScript support.
 EOF

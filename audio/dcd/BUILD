@@ -1,7 +1,7 @@
 (
-  cp    Makefile  Makefile.original
-  sed   "s/NET = true/# NET = true/"                <  Makefile.original  |
-  sed   "s/UNKNOWN_CD = true/# UNKNOWN_CD = true/"  >  Makefile
+  sedit  "s/NET = true/# NET = true/"                Makefile
+  sedit  "s/UNKNOWN_CD = true/# UNKNOWN_CD = true/"  Makefile
+  sedit  "s/\/dev\/cdroms\/cdrom0/\/devices\/cdroms\/cdrom0/" Makefile
 
   make  PREFIX=/usr  &&
   prepare_install    &&

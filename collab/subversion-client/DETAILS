@@ -1,13 +1,15 @@
            SPELL=subversion-client
-         VERSION=0.24.2
+         VERSION=0.26.0
           SOURCE=${SPELL%-*}-$VERSION.tar.gz
-          MD5[0]='81ccec4b37dd7c26c3d0df0c61ab4df1'
+          MD5[0]='8e951ab4a26f935420ab263ca96170de'
       LICENSE[0]=APACHE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
-   SOURCE_URL[0]=http://subversion.tigris.org/files/documents/15/4807/$SOURCE
+      MAKE_NJOBS=1
+     GATHER_DOCS=off
+   SOURCE_URL[0]=http://subversion.tigris.org/files/documents/15/5322/$SOURCE
         WEB_SITE=http://subversion.tigris.org/
          ENTERED=20030218
-         UPDATED=20030705
+         UPDATED=20030722
            SHORT='Client for Subversion - a compelling replacement for CVS'
 cat << EOF
 The goal of the Subversion project is write a version control system that takes

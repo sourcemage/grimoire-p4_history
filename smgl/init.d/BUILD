@@ -78,6 +78,17 @@ done
 cleanup_old
 
 #
+# Installing /etc/inittab
+#
+if  [  !  -f  /etc/inittab  ]
+then
+  echo  "Installing /etc/inittab ..."
+  cp  ${SCRIPT_DIRECTORY}/inittab /etc
+else
+  echo  "/etc/inittab already exists, not installing a new one"
+fi
+
+#
 # Finally install runlevel editing tool: runlvedit
 #
 echo  "Installing your Source Mage runlevel editor..."

@@ -1,12 +1,14 @@
 (
 
-  cd     Amaya                 &&
-  mkdir  obj                   &&
-  cd     obj                   &&
-  ../configure  --prefix=/usr  \
-                $OPTS	       &&
-  make                         &&
-  prepare_install              &&
+  cd Amaya &&
+  mkdir obj &&
+  cd obj &&
+  ../configure \
+    --prefix=/usr \
+    --with-dav \
+    $OPTS &&
+  make &&
+  prepare_install &&
   make    install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SMGL-script-version=20030723
+# SMGL-script-version=20030727
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
@@ -23,10 +23,6 @@
 . /etc/init.d/functions
 netdevdir=/etc/sysconfig/network
 
-#change this if your .pid file hides somewhere else
-
-DHCPCD_PATH="/etc/dhcpc/dhcpcd-"
-
 # this provides you with the ability to start/stop/check status on 
 # one or more cards if you so desire.
 
@@ -37,96 +33,43 @@ else
 fi
 
 case "$1" in
-    start)
-	for DEVICE in $devices; do
-	    if [ -f $netdevdir/$DEVICE.dev ]; then
-		unset MODE MODULE IP BROADCAST NETMASK GATEWAY
-		. $netdevdir/$DEVICE.dev
-		if [ -z "$MODE" ]; then
-		    echo " There are errors in $netdevdir/$DEVICE.dev"
-		else
-# only load module if necessary; i.e. not built into kernel.
-		    if [ ! -z "$MODULE" ] && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ]
-            then
-			echo "Starting network with $DEVICE ..."
-			loadproc modprobe  $MODULE
-		    fi
-		    if [ "$MODE" = dynamic ]; then
-			echo "Starting dhcpcd on $DEVICE ..."
-			if [ -e $DHCPCD_PATH$DEVICE.pid ]; then
-			    dhcpcPid=`cat $DHCPCD_PATH$DEVICE.pid`
-			    dhcpcd -k $DEVICE 1>/dev/null 2>&1
-			    renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEVICE.pid
-			    sleep 1
-			fi
-			loadproc dhcpcd -t 30 -d $DEVICE
-		    elif [ "$MODE" = static ]; then
-			echo "Setting up static networking on $DEVICE"
-			ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
-# check if GATEWAY is set; gateway is set by PPP or other software in some cases
-			if [ ! -z "$GATEWAY" ]; then
-			    route add default gateway $GATEWAY dev $DEVICE
-			fi
-			evaluate_retval
-		    else 
-			echo " There are errors in $netdevdir/$DEVICE.dev"
-		    fi
-		fi
-	    fi
-	done
-	;;
+  start)
+    for DEVICE in $devices; do
+      /sbin/ifup $DEVICE
+      evaluate_retval
+    done
+    ;;
 
-    stop)
-	for DEVICE in $devices; do
-	    if [ -f $netdevdir/$DEVICE.dev ]; then
-		unset MODE MODULE IP BROADCAST NETMASK GATEWAY
-		. $netdevdir/$DEVICE.dev
-		if [ -z "$MODE" ]; then
-		    echo " There are errors in $netdevdir/$DEVICE.dev"
-		else
-		    if [ "$MODE" = dynamic ]; then 
-			echo "Stopping dhcpcd on $DEVICE ..."
-			dhcpcd -k $DEVICE
-			evaluate_retval
-			sleep 2
-		    else
-			ifconfig $DEVICE down
-		    fi
-# only do this if network device is a module
-		    if [ ! -z "$MODULE" ]  && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ]
-            then
-			echo "Stopping network on $DEVICE ..."
-			modprobe -r $MODULE
-			evaluate_retval
-		    fi
-		fi
-	    fi
-	done
-	;;
+  stop)
+    for DEVICE in $devices; do
+      /sbin/ifdown $DEVICE
+      evaluate_retval
+    done
+    ;;
 
-    restart)
-	$0 stop
-	sleep 1
-	$0 start
-	;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
 
-    status)
-	for DEVICE in $devices; do
-	    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
-	    . $netdevdir/$DEVICE.dev
-		if [ -z "$MODE" ]; then
-		    echo " There are errors in $netdevdir/$DEVICE.dev"
-		else
-		    if [ "$MODE" = dynamic ]; then
-			statusproc dhcpcd
-		    fi
-		    ifconfig $DEVICE
-		fi
-	done
-	;;
+  status)
+    for DEVICE in $devices; do
+      unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+      . $netdevdir/$DEVICE.dev
+      if [ -z "$MODE" ]; then
+        echo " There are errors in $netdevdir/$DEVICE.dev"
+      else
+        if [ "$MODE" = dynamic ]; then
+          statusproc dhcpcd
+        fi
+        ifconfig $DEVICE
+      fi
+      done
+      ;;
 
-    *)
-	echo "Usage: $0 {start|stop|restart|status} [DEVICE]"
-	exit 1
-	;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status} [DEVICE...]"
+    exit 1
+    ;;
 esac

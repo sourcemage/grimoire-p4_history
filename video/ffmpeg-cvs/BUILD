@@ -4,6 +4,7 @@
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops//} -O3"
 
   sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
+  sedit  's:-Werror::'  libavformat/Makefile  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr  \
                --enable-shared               \
                --enable-shared-pp            \
@@ -19,7 +20,7 @@
     make  install               &&
     install  -m  644 postprocess_internal.h  \
                  ${INSTALL_ROOT}/usr/include/postproc
-  )
+  )  &&
   
   if    [  !  -f               ${INSTALL_ROOT}/etc/ffserver.conf  ]
   then  cp  doc/ffserver.conf  ${INSTALL_ROOT}/etc/ffserver.conf

@@ -19,7 +19,7 @@
     patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
     ln  -s  Makefile.kbuild Makefile
   fi                            &&
-  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION  &&
+
   prepare_install               &&
   export IGNORE_CC_MISMATCH=1   &&
   make install

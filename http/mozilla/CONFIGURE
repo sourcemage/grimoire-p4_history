@@ -34,6 +34,8 @@ configure_optional 'calendar' '--enable-calendar' '--disable-calendar' 'Build Ca
 configure_optional 'composer' '--enable-composer' '--disable-composer' 'Build Composer component?' y
 #if query 'Enable Spellcheck extension?' y; then
 #  echo 'MOZILLA_EXT=$MOZILLA_EXT,spellcheck' >> $SPELL_CONFIG
+#  message "${MESSAGE_COLOR}Type in the word 'guest' below...${DEFAULT_COLOR}"
+#  cvs -d :pserver:guest@mozdev.org:/cvs login
 #fi
 configure_optional 'mathml' '--enable-mathml' '--disable-mathml' 'Enable MathML?' y
 if configure_optional 'svg' '--enable-svg --enable-svg-renderer-libart' '--disable-svg' 'Enable SVG?' y; then

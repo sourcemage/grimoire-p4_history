@@ -1,2 +1,5 @@
-# do nothing
-true
+if  query  "Configure network devices?"  n  ;  then
+	/usr/sbin/netconf
+else
+	echo "You may add/remove/modify your network devices by running 'netconf'"
+fi

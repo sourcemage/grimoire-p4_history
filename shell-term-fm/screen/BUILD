@@ -5,7 +5,18 @@
                $OPTS			          &&
   make                                            &&
   prepare_install                                 &&
-  make    install                                 &&
-  cp  etc/etcscreenrc /etc/screenrc
+  make    install
 
-) > $C_FIFO 2>&1
+) > $C_FIFO 2>&1  &&  (
+
+  if  [  -f  /etc/screenrc  ]; then
+      if  [  "$REPLACE_RC" == "y"  ]; then
+          cp  ${SCRIPT_DIRECTORY}/screenrc  /etc/screenrc
+      else
+          cp  ${SCRIPT_DIRECTORY}/screenrc  /etc/screenrc.new
+      fi
+  else
+      cp  ${SCRIPT_DIRECTORY}/screenrc  /etc/screenrc
+  fi
+
+)

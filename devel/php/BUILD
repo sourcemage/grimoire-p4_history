@@ -1,7 +1,9 @@
 (
   if httpd -v | grep -q "Apache/2\."; then
     message "${MESSAGE_COLOR}Configuring for Apache 2.x${DEFAULT_COLOR}" &&
-    OPTS="$OPTS --with-apxs2"
+    OPTS="$OPTS --with-apxs2" &&
+    # fix the "missing APR include files" error
+    CFLAGS="$CFLAGS -I/usr/include/apr"
   else
     message "${MESSAGE_COLOR}Configuring for Apache 1.x${DEFAULT_COLOR}" &&
     OPTS="$OPTS --with-apxs"

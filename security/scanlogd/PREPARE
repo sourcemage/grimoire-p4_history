@@ -1,0 +1,13 @@
+message "Creation of ${SPELL} user ${MESSAGE_COLOR} scanlogd ${DEFAULT_COLOR}."
+
+if  !  exists_account  scanlogd;  then
+    message "${MESSAGE_COLOR} ERROR:${DEFAULT_COLOR} The ${SPELL} user and group was not yet defined.";
+    message "Solution: "
+    message "          echo "scanlogd:119:119" >> /etc/sorcery/accounts"
+    message "          echo "scanlogd:119:" >> /etc/sorcery/groups"
+    exit  1
+else
+    if  [  "`grep  'scanlogd'  /etc/passwd`"  ==  ""  ];  then
+        create_account  scanlogd
+    fi
+fi
