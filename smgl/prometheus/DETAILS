@@ -1,11 +1,11 @@
            SPELL=prometheus
-         VERSION=0.3.0
-          SOURCE=${SPELL}-0.2.9.tar.gz 
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-0.2.9
+         VERSION=0.3.1-pre2
+          SOURCE=${SPELL}-${VERSION}.tar.gz 
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-{$VERSION}
    SOURCE_URL[0]=ftp://t.armory.com/${SOURCE}
-      MAINTAINER=astitt@sourcemage.org #games@sourcemage.org (temporary)
+      MAINTAINER=astitt@sourcemage.org
          LICENSE=GPL
-          MD5[0]=84c124df57245acf6b7fcc6a0c49956f
+          MD5[0]=1cf9700e0986ffb01dfa3402821d650f
          ENTERED=20030730
          UPDATED=20031112
            SHORT="Prometheus is a tinderbox for sourcemage"
@@ -31,14 +31,5 @@ run pm-setup
 run pm-test once
 
 please read the docs/wiki/source or email me with questions/comments/bugs
-
-NOTE: due to UI changes, prometheus currently only works with stable
-sorcery 1.3, not with devel sorcery. If you want to hack up pm-autocast
-to deal with the new requires menu it would be greatly appreciated.
-
-NOTE: prometheus now handles provides by just choosing the first entry in the list 
-This will change in the future but is a simple fix for now.
-For now please contact Hamish Greig <games@sourcemage.org> with any queries, Andrew (the author) is busy finishing 
-school.
 
 EOF
