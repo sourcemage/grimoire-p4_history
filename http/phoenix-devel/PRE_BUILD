@@ -1,0 +1,18 @@
+if [ ! -f /var/spool/sorcery/$SOURCE ] ; then 
+	if [ ! -f /root/.cvspass ]; then
+		touch /root/.cvspass
+	fi
+	cd $HOME &
+echo	"export MOZ_PHOENIX=1
+	 mk_add_options MOZ_PHOENIX=1
+	 ac_add_options --enable-crypto
+	 ac_add_options --disable-test
+	 ac_add_options --disable-debug
+	 ac_add_options --disable-mailnews
+	 ac_add_options --disable-composer" > $HOME/.mozconfig	
+fi
+
+cd /usr/src &
+cvs -d:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot checkout mozilla/client.mk
+cd /usr/src/mozilla
+make -f client.mk checkout
