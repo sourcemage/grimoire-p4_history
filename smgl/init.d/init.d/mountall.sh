@@ -38,7 +38,13 @@ start()
   required_executable /bin/mount
   required_executable /sbin/fsck
 
-  if [ -f /etc/raidtab ] ; then
+  #
+  # Prefer the newer mdadm to raidtools
+  #
+  if   [ -f /etc/mdadm.conf ] ; then
+    mdadm  --assemble  --scan
+    mdadm  --follow    --scan  --delay=120  --daemonise  >  /var/run/mdadm.pid
+  elif [ -f /etc/raidtab    ] ; then
     raidstart  --all
   fi
 
