@@ -1,10 +1,9 @@
 #!/bin/sh
-# $Id: apache.sh,v 1.1 2002/08/20 14:20:14 sergeyli Exp $
+# $Id: apache.sh,v 1.2 2003/01/08 19:22:54 sergeyli Exp $
 
 case $1 in
 start)
 	echo "$1ing Apache web server"
-	mkdir -p /var/run/httpd
 	apachectl $1
 #	apachectl startssl
 	;;

@@ -18,9 +18,9 @@
 
   ln -s /usr/sbin/envvars /usr/bin/envvars
   ln -s /usr/sbin/httpd /usr/bin/httpd
-  mkdir /var/lib/httpd/run
+  mkdir -p /var/run/httpd
 
-  cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d
+  [ -x /etc/init.d/apache.sh ] || cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d/
 
   case  $APACHE_BOOT  in
     y|Y|j|J)
