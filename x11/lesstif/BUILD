@@ -11,7 +11,9 @@
   make                             &&
   prepare_install                  &&
   make    install                  &&
-  rm  -rf  /usr/doc/LessTif        &&
-  mv  /usr/LessTif  /usr/doc
-
+### sorcery has trouble tracking mv-ed files ?
+  rm  -rf  /usr/doc/LessTif/        &&
+  cp  -af /usr/LessTif/  /usr/doc/LessTif/ &&
+  rm  -rf  /usr/LessTif/
+  
 ) > $C_FIFO 2>&1
