@@ -3,14 +3,21 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.openssl.org/source/$SOURCE
+          MD5[0]=515ed54165a55df83f4eb4e4e9078d3f
    SOURCE_URL[1]=ftp://sunsite.cnlab-switch.ch/mirror/openssl/source/$SOURCE
+          MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://ftp.funet.fi/pub/crypt/cryptography/libs/openssl/source/$SOURCE
+          MD5[2]=${MD5[0]}
    SOURCE_URL[3]=ftp://ftp.mirror.ac.uk/sites/ftp.openssl.org/source/$SOURCE
+          MD5[3]=${MD5[0]}
    SOURCE_URL[4]=ftp://sunsite.uio.no/pub/security/openssl/source/$SOURCE
+          MD5[4]=${MD5[0]}
+   SOURCE_URL[5]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[4]=${MD5[0]}
         WEB_SITE=http://www.openssl.org
          ENTERED=20010922
          UPDATED=20010922
-          MD5[0]=515ed54165a55df83f4eb4e4e9078d3f
+         LICENSE=http://www.cgicentral.net/400CS/Docs/openssl/LICENSE.openssl.html
       MAINTAINER=adamsgl@dhbit.ca
            SHORT="openssl is a library for providing encrypted transport layers."
 cat << EOF

@@ -1,1 +1,54 @@
-true
+cd       /usr/src
+rm  -rf  linux
+
+rm -rf linux-$VERSION
+
+unpack  $SOURCE
+mv  linux-$VERSION  linux
+
+# Get our logo on the framebuffer
+cd  linux/include/linux
+unpack $SOURCE2
+mv  -f  raven_linux_logo.h linux_logo.h
+cd  /usr/src
+
+chown  -R  root:root  linux
+
+if  [  -f   $CONFIG_CACHE/kernel.config  ];  then
+  cp        $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
+fi
+
+rm -f $BOOST_LOCK
+
+KERNEL_PATCHES=`cat $SCRIPT_DIRECTORY/PATCHES`
+
+EXTRAVERSION=""
+
+for  KERNEL_PATCH  in  $KERNEL_PATCHES;  do
+  if  spell_installed  linux-$KERNEL_PATCH;  then
+    local  PATCH_VERSION=`gaze  DETAILS  linux-$KERNEL_PATCH |
+                                           grep  "VERSION="  |  cut  -d"="  -f2`
+    touch  /tmp/sorcery.patching
+					     
+    cast  -c  linux-$KERNEL_PATCH   &&
+    EXTRAVERSION="${EXTRAVERSION}-${KERNEL_PATCH}-${PATCH_VERSION}" ||
+    exit 1
+
+    rm     /tmp/sorcery.patching
+  fi
+done
+
+touch  $BOOST_LOCK
+
+cat  $DEPENDS_CONFIG/$SPELL  |  grep  -v  "EXTRAVERSION"  >  /tmp/$SPELL.$$
+cp  /tmp/$SPELL.$$  $DEPENDS_CONFIG/$SPELL
+echo  EXTRAVERSION="\"$EXTRAVERSION\""  >>  $DEPENDS_CONFIG/$SPELL
+
+sedit  "s/EXTRAVERSION =.*/EXTRAVERSION = $EXTRAVERSION/"  /usr/src/linux/Makefile
+
+if  [  -d  linux-${VERSION}${EXTRAVERSION}  ];  then
+  rm   -r  linux-${VERSION}${EXTRAVERSION}
+fi
+
+mv  linux  linux-${VERSION}${EXTRAVERSION}
+ln  -s     linux-${VERSION}${EXTRAVERSION}  linux

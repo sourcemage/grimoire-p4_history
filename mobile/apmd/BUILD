@@ -15,6 +15,24 @@ leave_config()  {
     sedit  's/install -m 644 xapm.1          ${MANDIR}/man1/xapm.1//'  Makefile
   fi
 
+patch apmsleep.c << PATCH
+ --- apmsleep.c-old    2002-08-20 18:57:43.000000000 +0200
+ +++ apmsleep.c        2002-08-20 19:09:54.000000000 +0200
+ @@ -46,7 +46,11 @@
+  #include <linux/version.h>
+  
+  #if LINUX_VERSION_CODE > KERNEL_VERSION(2,2,0)
+ -#include <asm/spinlock.h>
+ +# if LINUX_VERSION_CODE < KERNEL_VERSION(2,4,19)
+ +#  include <asm/spinlock.h>
+ +# else
+ +#  include <linux/spinlock.h>
+ +# endif
+  #endif
+  
+  #include <linux/mc146818rtc.h>
+PATCH
+
   make                               &&
   prepare_install                    &&
   leave_config                       &&

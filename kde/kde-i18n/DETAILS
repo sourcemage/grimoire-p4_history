@@ -1,0 +1,47 @@
+           SPELL=kde-i18n
+         VERSION=3.0.3
+get_kdelanguages()  {
+  if ! [ -f $CONFIG_CACHE/kde.languages ]
+  then
+    touch $CONFIG_CACHE/kde.languages
+    LANGUAGES=`cat $SCRIPT_DIRECTORY/kde.languages`
+    LANGUAGES=`dialog  --backtitle  "KDE i18n Configuration Menu" \
+                      --stdout                                   \
+                      --title      "Select language please"      \
+                      --checklist                                \
+                      ""                                         \
+                      0 50 10                                     \
+                      $LANGUAGES`
+    if [[ $LANGUAGES == ${LANGUAGES/ALL/} ]]
+    then
+      i=1
+      for LANGUAGE in $LANGUAGES
+      do
+        LANGUAGE=${LANGUAGE:1:${#LANGUAGE}-2}
+        if [[ $i == 1 ]]
+        then
+          echo SOURCE=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages
+          echo SOURCE_URL[0]=\$KDE_URL/stable/\$VERSION/src/\$SPELL/\$SOURCE >> $CONFIG_CACHE/kde.languages
+        else
+          echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages >> $CONFIG_CACHE/kde.languages
+          echo SOURCE${i}_URL[0]=\$KDE_URL/stable/\$VERSION/src/\$SPELL/\$SOURCE$i >> $CONFIG_CACHE/kde.languages
+        fi
+        i=$[$i+1]
+      done
+    else
+      echo SOURCE=\$SPELL-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages
+      echo SOURCE_URL[0]=\$KDE_URL/stable/\$VERSION/src/\$SPELL/\$SOURCE >> $CONFIG_CACHE/kde.languages
+    fi
+  fi
+  . $CONFIG_CACHE/kde.languages
+}
+get_kdelanguages
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.kde.org
+         ENTERED=20020817
+         UPDATED=20020819
+      LICENSE[0]=GPL
+           SHORT="kde-i18n containts translated KDE messages."
+cat << EOF
+kde-i18n containts translated KDE messages.
+EOF

@@ -1,22 +1,22 @@
            SPELL=libdvdcss
-        VERSION=1.2.1
-#        VERSION=0.0.3.ogle3
-         SOURCE=$SPELL-$VERSION.tar.gz
-#         SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=1.2.2
+#         VERSION=0.0.3.ogle3
+          SOURCE=$SPELL-$VERSION.tar.gz
+#          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-  SOURCE_URL[0]=http://www.videolan.org/pub/videolan/$SPELL/$VERSION/$SOURCE
+   SOURCE_URL[0]=http://www.videolan.org/pub/videolan/$SPELL/$VERSION/$SOURCE
 #   SOURCE_URL[0]=http://www.videolan.org/pub/videolan/libdvdcss/1.0.1/$SOURCE
         WEB_SITE=http://www.videolan.org
          ENTERED=20010927
          UPDATED=20020602
-	MD5=e5c01162806456a03f4bd474ac7e64a3
-	LICENSE=GPL
-	MAINTAINER=burududu@hotpop.com
+             MD5=8dd2d9f7c809d2dc984dcfc837da935b
+         LICENSE=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="libdvdcss is a library for DVD CSS decrpytion."
 cat << EOF
 libdvdcss is a cross-platform library for transparent DVD device
-access with on the fly CSS decryption. It currently runs under Linux, 
+access with on the fly CSS decryption. It currently runs under Linux,
 FreeBSD, BSD/OS, Solaris, BeOS, Win98 and Win2k. It is used for the
-vlc DVD player because of its portability and because, unlike similar 
+vlc DVD player because of its portability and because, unlike similar
 libraries, it does not require your DVD drive to be region-locked.
 EOF

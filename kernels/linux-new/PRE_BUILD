@@ -1,0 +1,48 @@
+
+cd       /usr/src
+rm  -rf  linux
+if  [  -d  linux-${VERSION}  ];  then
+  rm   -r  linux-${VERSION}
+fi
+
+mkdir linux-${VERSION}
+cd /usr/src/linux-${VERSION}
+echo "extract ${SOURCE}"
+unpack  $SOURCE
+EXTRACT_PATH=$(ls)
+mv /usr/src/linux-${VERSION}/${EXTRACT_PATH}/* /usr/src/linux-${VERSION}/
+rmdir /usr/src/linux-${VERSION}/${EXTRACT_PATH}/
+cd /usr/src
+
+chown  -R  root:root  /usr/src/linux-${VERSION}
+
+ln  -s     linux-${VERSION}  linux
+
+if  [  -f  $CONFIG_CACHE/.config  ]; then
+  mv $CONFIG_CACHE/.config $CONFIG_CACHE/kernel.config
+fi
+
+if  [  -f  $CONFIG_CACHE/kernel.config  ];  then
+  cp     $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
+fi
+
+cd  /usr/src/linux
+
+local COUNTER
+local VAR
+for ((COUNTER=2; COUNTER <= 10 ; COUNTER++))
+do
+  VAR=SOURCE${COUNTER}
+  if [[ "${!VAR}" != "" ]]; then
+    echo "apply ${!VAR}"
+    if [[ ${!VAR} == *.bz2 ]] ; then
+      bzcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    elif [[ ${!VAR} == *.gz ]] ; then
+      zcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    else
+      cat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    fi
+  fi
+done
+# Still coding
+# exit 1

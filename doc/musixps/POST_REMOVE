@@ -1,10 +1,4 @@
-cp  /usr/share/texmf/dvipdfm/config/config    /tmp/dvipdfm.conf    &&
-cp  /usr/share/texmf/pdftex/config/pdftex.cfg /tmp/pdftex.cfg      &&
-
-sed -e 's/f musix\.map//g'\
-< /tmp/dvipdfm.conf > /usr/share/texmf/dvipdfm/config/config       &&
-
-sed -e 's/map musix\.map//g'\
-< /tmp/pdftex.cfg > /usr/share/texmf/pdftex/config/pdftex.cfg    &&
+sedit "/f musix\.map/d"    /usr/share/texmf/dvipdfm/config/config       &&
+sedit "/map musix\.map/d"  /usr/share/texmf/pdftex/config/pdftex.cfg    &&
 
 texhash

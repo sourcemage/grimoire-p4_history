@@ -1,6 +1,6 @@
 (
 
-  patch -p1   <  $SCRIPT_DIRECTORY/vnc.patch
+#  patch -p1   <  $SCRIPT_DIRECTORY/vnc.patch
   xmkmf            &&
   make  World      &&
   cd    Xvnc       &&

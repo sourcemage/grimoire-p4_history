@@ -60,10 +60,9 @@ chmod 660            /var/log/openwebmail.log
 sedit "s/\/etc\/master.passwd/\/etc\/shadow/" $LOC/cgi-bin/openwebmail/auth_unix.pl
 sedit "s/\/usr\/sbin\/pwd_mkdb/none/" $LOC/cgi-bin/openwebmail/auth_unix.pl
 
-# Tune OWM defaults to SGL style
-
+# Tune OWM defaults to SMGL style
 sedit "s/\/var\/mail/\/var\/spool\/mail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf
-sedit "s/\/usr\/local\/www\/data\/openwebmail/$SLOC\/openwebmail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf
+sedit "s/\/usr\/local\/www\/data\/openwebmail/$SLOC\/htdocs\/openwebmail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf
 sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf
 
 # This is for future use of perl+PAM

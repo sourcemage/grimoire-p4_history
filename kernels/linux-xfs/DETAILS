@@ -1,20 +1,14 @@
            SPELL=linux-xfs
-         VERSION=2.4.18-xfs
-          SOURCE=linux-2.4.18.tar.bz2
-         SOURCE2=xfs-1.1-2.4.18-all.patch.bz2
-
-          MD5[0]=ad92859baaa837847b34d842b9f39d38
-          MD5[1]=868544f6f024144916680e53766c4f84
-
-   SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/$SOURCE
-   SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.4/$SOURCE
-  SOURCE2_URL[0]=ftp://oss.sgi.com/projects/xfs/download/Release-1.1/kernel_patches/$SOURCE2
-        WEB_SITE=http://www.kernel.org
+         VERSION=1.1
+          SOURCE=xfs-2.4.19-all-i386.bz2
+          MD5[0]=79e210e277dcda8aa8f5e5fd9991b9cc
+   SOURCE_URL[0]=ftp://oss.sgi.com/projects/xfs/download/patches/2.4.19/$SOURCE
+        WEB_SITE=http://oss.sgi.com/projects/xfs
          ENTERED=20020227
          UPDATED=20020304
          ARCHIVE="off"
-           SHORT="linux with xfs patch applied."
+           SHORT="The xfs filesystem from Silicon Graphics."
+      LICENSE[0]=GPL
 cat << EOF
-The Linux kernel with the xfs filesystem support from Silicon Graphics.
-xfs is a journalled filesystem with support ACLs and other neat stuff.
+xfs is a journalled filesystem with support for ACLs and other neat stuff.
 EOF

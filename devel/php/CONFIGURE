@@ -20,6 +20,11 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   then  echo   'OPTS="$OPTS --enable-trans-sid"'  >>  $SPELL_CONFIG
   fi
 
+  if    query  "Do you want imap support?"  n
+  then  echo   'OPTS="$OPTS --with-imap"'  >>  $SPELL_CONFIG
+        requires  imapd
+  fi
+  
   echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
 
 fi

@@ -8,18 +8,22 @@
                 --sysconfdir=/etc/${SPELL}        \
                 --disable-root-check              \
                $OPTS                  &&
+
   make                                &&
   prepare_install                     &&
   make    install                     &&
   make    install-configure           &&
   mkimapdcert                         &&
+
   if spell_installed Linux-PAM
-  then cp $SCRIPT_DIRECTORY/pam.d/* /etc/pam.d
+    then cp $SCRIPT_DIRECTORY/pam.d/* /etc/pam.d
   fi
 ) > $C_FIFO 2>&1 && (
+ 
+ chmod 555 *.rc
 
  case  $IMAP_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/imapd.sh  /etc/init.d
+    y|Y|j|J)  cp  imapd.rc  /etc/init.d/imapd.sh
 
               ln  -sf  ../init.d/imapd.sh  /etc/rc0.d/K10imapd
               ln  -sf  ../init.d/imapd.sh  /etc/rc1.d/K10imapd
@@ -35,7 +39,7 @@
 ) && (
 
  case  $IMAPS_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/imapd-ssl.sh  /etc/init.d
+    y|Y|j|J)  cp  imapd-ssl.rc  /etc/init.d/imapd-ssl.sh
 
               ln  -sf  ../init.d/imapd-ssl.sh  /etc/rc0.d/K10imapd-ssl
               ln  -sf  ../init.d/imapd-ssl.sh  /etc/rc1.d/K10imapd-ssl
@@ -51,7 +55,7 @@
 ) && (
 
  case  $POP3_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/pop3d.sh  /etc/init.d
+    y|Y|j|J)  cp  pop3d.rc  /etc/init.d/pop3d.sh
 
               ln  -sf  ../init.d/pop3d.sh  /etc/rc0.d/K10pop3d
               ln  -sf  ../init.d/pop3d.sh  /etc/rc1.d/K10pop3d
@@ -67,7 +71,7 @@
 ) && (
 
  case  $POP3S_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/pop3d-ssl.sh  /etc/init.d
+    y|Y|j|J)  cp  pop3d-ssl.rc  /etc/init.d/pop3d-ssl.sh
 
               ln  -sf  ../init.d/pop3d-ssl.sh  /etc/rc0.d/K10pop3d-ssl
               ln  -sf  ../init.d/pop3d-ssl.sh  /etc/rc1.d/K10pop3d-ssl

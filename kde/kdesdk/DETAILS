@@ -1,10 +1,15 @@
            SPELL=kdesdk
+         VERSION=3.0.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/3.0.2/src/$SOURCE
+          MD5[0]=b453200b29d8ea22c5cec966f61ea5fc
+        WEB_SITE=http://www.kde.org
+         UPDATED=20020528
          ENTERED=20010922
-. $GRIMOIRE/$SECTION/KDE_DETAILS
-            MAINTAINER=eric@lasvegasdata.com
-             MD5=kdesdk_MD5SUM
-         LICENSE=GPL
-	   SHORT="kdesdk is a collection of tools used by KDE developers."
+      LICENSE[0]=GPL
+      MAINTAINER=eric@lasvegasdata.com
+           SHORT="kdesdk is a collection of tools used by KDE developers."
 cat << EOF
 This is a collection of applications and tools used by KDE developers.
 It also has example code for use in learning KDE programming or starting

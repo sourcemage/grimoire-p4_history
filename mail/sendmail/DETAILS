@@ -1,0 +1,54 @@
+           SPELL=sendmail
+         VERSION=8.12.5
+          SOURCE=$SPELL.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.sedmail.org/pub/$SPELL/$SOURCE
+          MD5[0]=ced6944368114d99939bf8f415e5c047
+   SOURCE_URL[1]=http://www.sendmail.org/ftp/$SOURCE
+          MD5[1]=${MD5[0]}
+   SOURCE_URL[2]=ftp://ftp.ciril.fr/pub/messagerie/sendmail/$SOURCE
+          MD5[2]=${MD5[0]}
+   SOURCE_URL[3]=ftp://sunsite.cnlab-switch.ch/mirror/sendmail/$SOURCE
+          MD5[3]=${MD5[0]}
+   SOURCE_URL[4]=http://www.rge.com/pub/mail/sendmail/$SOURCE
+          MD5[4]=${MD5[0]}
+   SOURCE_URL[5]=ftp://ftp.informatik.uni-kiel.de/pub/networking/mail/sendmail/$SOURCE
+          MD5[5]=${MD5[0]}
+   SOURCE_URL[6]=ftp://ftp.cs.berkeley.edu/ucb/sendmail/$SOURCE
+          MD5[6]=${MD5[0]}
+   SOURCE_URL[7]=ftp://mirrors.unam.mx/pub/sendmail/$SOURCE
+          MD5[7]=${MD5[0]}
+   SOURCE_URL[8]=ftp://ftp.gamma.ru/pub/mirror/sendmail/$SOURCE
+          MD5[8]=${MD5[0]}
+   SOURCE_URL[9]=ftp://sunsite.org.uk/Mirrors/ftp.sendmail.org/pub/sendmail/$SOURCE
+          MD5[9]=${MD5[0]}
+   SOURCE_URL[10]=ftp://ftp.arnes.si/packages/sendmail/$SOURCE
+          MD5[10]=${MD5[0]}
+   SOURCE_URL[11]=ftp://ftp.plig.org/pub/sendmail/$SOURCE
+          MD5[11]=${MD5[0]}
+   SOURCE_URL[12]=ftp://ftp.ayamura.org/pub/sendmail/$SOURCE
+          MD5[12]=${MD5[0]}
+   SOURCE_URL[13]=ftp://ftp.pop-mg.com.br/pub/sendmail/$SOURCE
+          MD5[13]=${MD5[0]}
+   SOURCE_URL[14]=ftp://ftp.gva.es/pub/mirror/sendmail/$SOURCE
+          MD5[14]=${MD5[0]}
+   SOURCE_URL[15]=ftp://ftp.linux.is/pub/sendmail/$SOURCE
+          MD5[15]=${MD5[0]}
+   SOURCE_URL[16]=ftp://chuck.ucs.indiana.edu/pub/sendmail/$SOURCE
+          MD5[16]=${MD5[0]}
+   SOURCE_URL[17]=ftp://giswitch.sggw.waw.pl/pub/sendmail/$SOURCE
+          MD5[17]=${MD5[0]}
+   SOURCE_URL[18]=http://planetmirror.com/pub/sendmail/$SOURCE
+          MD5[18]=${MD5[0]}
+   SOURCE_URL[19]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror$SOURCE
+          MD5[19]=${MD5[0]}
+         ENTERED=20020820
+         UPDATED=20020820
+         LICENSE=SENDMAIL
+      MAINTAINER=m.l@compaqnet.fr
+           SHORT="sendmail is a complex MTA."
+cat << EOF
+Sendmail is a complex, yet powerfull Mail-Transport Agent.
+
+It is now outperformed by newer MTAs (like postfix and exim, wich are easier to configure) but how can you live without sendmail if you are a unix guru ? ;)
+EOF

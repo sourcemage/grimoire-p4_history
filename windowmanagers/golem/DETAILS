@@ -1,14 +1,18 @@
-         SPELL=golem
-         VERSION=0.0.5
-         SOURCE=$SPELL-$VERSION.tar.gz
-	 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-         SOURCE_URL[0]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE  
-	 SOURCE_URL[1]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE    
-	 SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE 		   
-         WEB_SITE=http://golem.sourceforge.net/
-         ENTERED=20011211
-         UPDATED=20020605
-	 SHORT="Golem is an X11 Window Manager."
+SPELL=golem
+VERSION=0.0.5
+SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE    
+SOURCE_URL[1]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE 		   
+SOURCE_URL[2]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE  
+MD5[0]=610eb4ffa5c80245227b88fa62867f76
+MD5[1]=610eb4ffa5c80245227b88fa62867f76
+MD5[2]=610eb4ffa5c80245227b88fa62867f76
+LICENSE[0]=BSD
+WEB_SITE=http://golem.sourceforge.net/
+ENTERED=20011211
+UPDATED=20020605
+SHORT="Golem is an X11 Window Manager."
 cat << EOF
 Golem is an X11 Window Manager. Design goals are that it be fast and
 lightweight, as well as very customizable in any way that will not

@@ -1,0 +1,14 @@
+  mk_source_dir        $SOURCE_DIRECTORY  &&
+  cd                   $SOURCE_DIRECTORY  &&
+  if ! [[ -z $SOURCE ]]
+  then
+    unpack               $SOURCE
+    i=2
+    ii=SOURCE$i
+    while ! [[ -z ${!ii} ]]
+    do
+      unpack               ${!ii}
+      i=$[$i+1]
+      ii=SOURCE$i
+    done
+  fi

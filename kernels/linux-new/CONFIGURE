@@ -1,0 +1,145 @@
+
+patch_list(){
+  LIST=$(ls ${PATCH_DIR})
+  for  LINE in $LIST;  do
+    source ${PATCH_DIR}/${LINE}
+    echo $LINE
+    echo "[${!LINE= }] ${DESCRIPTION}"
+    echo $SHORT
+  done
+}
+
+patch_versions(){
+  echo "off"
+  echo "Don't apply"
+  for  VERSION in $VERSIONS;  do
+    echo $VERSION
+    echo "Version"
+  done
+}
+
+patch_menu() {
+  local DEFAULT=${!PATCH}
+  local COMMAND
+  while true
+  do
+    COMMAND=$( $DIALOG --title "Select Patch Version" \
+           --default-item "$DEFAULT" --menu           \
+           "${HELP}" 0 0 0 $(patch_versions)
+    )
+    retval=$?
+    if [[ "$retval" == "0" ]]; then
+      if [[ ${COMMAND} != "off" ]]; then
+        eval "${PATCH}=${COMMAND}"
+      else
+        eval "unset ${PATCH}"
+      fi
+      break
+    else
+      break
+    fi
+  done
+}
+
+kernel_menu() {
+  local DEFAULT=${KERNEL_VERSION}
+  local COMMAND
+  while true
+  do
+    COMMAND=$( $DIALOG --title "Select Kernel Version"       \
+           --item-help --default-item "$DEFAULT" --menu      \
+           "Select a kernel version to use" 0 0 0            \
+           "CUSTOM"             "Manually enter some other Version Number"         "You can enter any valid version number" \
+           "LATEST_2_4"         "Latest stable Kernel Release"                     "Currenly at version ${LATEST_2_4}" \
+           "LATEST_2_4_PRE"     "prepatched 2.4.x Kernel"                          "Currenly at version ${LATEST_2_4_PRE}" \
+           "LATEST_2_5"         "Latest Delvelopment Kernel Release"               "Currenly at version ${LATEST_2_5}" \
+           "LATEST_2_5_PRE"     "prepatched 2.5.x Development Kernel"              "Currenly at version ${LATEST_2_5_PRE}" \
+           "LATEST_2_2"         "2.2.x Kernel for the ones that don't trust 2.4"   "Currenly at version ${LATEST_2_2}" \
+           "LATEST_2_2_PRE"     "prepatched 2.2.x Kernel"                          "Currenly at version ${LATEST_2_2_PRE}" \
+           "LATEST_2_0"         "2.0.x Kernel in for the nostalgic of you"         "Currenly at version ${LATEST_2_0}" \
+           "LATEST_2_0_PRE"     "prepatched 2.0.x Kernel"                          "Currenly at version ${LATEST_2_0_PRE}" \
+           "LATEST_2_4_AC"      "2.4.x Kernel with Alan Cox Patch"                 "Currenly at version ${LATEST_2_4_AC}" \
+           "LATEST_2_4_PRE_AC"  "prepatched 2.4.x Kernel with Alan Cox Patch"      "Currenly at version ${LATEST_2_4_PRE_AC}" \
+           "LATEST_2_5_DJ"      "2.5.x Kernel with David Jones Patch"              "Currenly at version ${LATEST_2_5_DJ}" \
+    )
+    retval=$?
+    if [[ "$retval" == "0" ]]; then
+      if [[ $COMMAND == "CUSTOM" ]]; then
+        COMMAND=$($DIALOG --nocancel --inputbox "Which Kernel do you want to build?\nYou can enter any valid version number.\nExamples:\n${LATEST_2_4_PRE_AC}\n${LATEST_2_5}" 0 0 ${KERNEL_VERSION})
+      fi
+      KERNEL_VERSION=$COMMAND
+      break
+    else
+      break
+    fi
+  done
+}
+
+main_menu() {
+local DEFAULT
+while true
+do
+  COMMAND=$( $DIALOG --title "Main Kernel Menu"                  \
+           --item-help --cancel-label "Exit and Save" --ok-label "Select" \
+           --default-item "$DEFAULT" --menu                      \
+           "Select a Kernel Version and optional Patches.\nIt's up to you which Patch you apply to which Kernel. The more the version number differs, the more likely the patch does not work." \
+           0 0 0 \
+           "kernel" "(${!KERNEL_VERSION=$KERNEL_VERSION}) Kernel Version" "KERNEL_VERSION=${KERNEL_VERSION}" \
+           $(patch_list) )
+  retval=$?
+  DEFAULT=$COMMAND
+  if [[ "$retval" == "0" ]]; then
+     case "$COMMAND" in
+       "kernel") kernel_menu ;;
+       *) source ${PATCH_DIR}/${COMMAND}
+          PATCH=${COMMAND}
+          patch_menu
+       ;;
+     esac
+  else
+     break
+  fi
+  done
+}
+
+export IFS="
+"
+
+DIALOG="dialog
+--backtitle
+Sorcery Spell Management Utility
+--stdout"
+
+PATCH_DIR="${GRIMOIRE}/${SECTION}/${SPELL}/patches"
+
+
+
+if    query  "Configure linux kernel?"  n
+then
+  CONFIG_KERNEL=y
+
+  source ${GRIMOIRE}/${SECTION}/${SPELL}/KERNELS
+
+  main_menu
+
+  # Recreate the config
+  echo  "KERNEL_VERSION=$KERNEL_VERSION" >  $SPELL_CONFIG  &&
+  echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG  &&
+  LIST=$(ls ${PATCH_DIR})
+  COUNTER=4
+  for  PATCH in $LIST;  do
+    if [[ ${!PATCH} != "" ]]; then
+      source ${PATCH_DIR}/${PATCH} CONFIG
+      echo "${PATCH}=${!PATCH}"  >>  $SPELL_CONFIG
+      COUNTER=$((${COUNTER}+1))
+    fi
+  done
+else
+  CONFIG_KERNEL=n
+  TEMP=$(grep  -v  "CONFIG_KERNEL="         $SPELL_CONFIG) &&
+  echo  "$TEMP"                         >   $SPELL_CONFIG  &&
+  echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG
+fi
+
+# still debugging - don't build
+#exit 1

@@ -1,14 +1,17 @@
            SPELL=linux-devel
-         VERSION=2.5.24
+         VERSION=2.5.30
           SOURCE=linux-$VERSION.tar.bz2
-          MD5[0]=7b3c8a8369afecbc605545d334d66497
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.5/$SOURCE
    SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.5/$SOURCE
+	 SOURCE2=framebuffer-0.1.tar.bz2
+	  MD5[1]=800fe693212024b1f28346458d51c908
+  SOURCE2_URL[0]=http://download.sourcemage.org/distro/kernel/$SOURCE2
         WEB_SITE=http://www.kernel.org
          ENTERED=20020227
          UPDATED=20020510
          ARCHIVE="off"
            SHORT="linux 2.5.x with no patches."
+      LICENSE[0]=GPL
 cat << EOF
 The very latest ultramodern superb and generally very cool development kernel straight from kernel guru Linus Torvalds.
 EOF

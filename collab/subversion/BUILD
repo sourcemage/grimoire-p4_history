@@ -1,52 +1,62 @@
-# $Id: BUILD,v 1.4 2002/06/11 02:32:21 sergeyli Exp $
+# $Id: BUILD,v 1.7 2002/08/20 14:57:06 sergeyli Exp $
 (
 
-	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"
-	message "${MESSAGE_COLOR}repository and check out the latest client and Apache 2 module source${DEFAULT_COLOR}"
-	message "${MESSAGE_COLOR}code. Then, these will be built and installed.${DEFAULT_COLOR}"
+	message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
+	httpd -v | grep -q "Apache/2\."                                   &&
 
-	message "${MESSAGE_COLOR}Checking if mod_dav has been built for ${SPELL_COLOR}apache2${DEFAULT_COLOR}"
-	gaze compile apache2 | egrep "/libtool .* mod_dav" > /dev/null 2>&1 &&
+	message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
+	test -f /usr/libexec/mod_dav.so                                                &&
 
-#	Build static client to bootstrap to repository
-	./configure                  \
-		--build=$BUILD           \
-		--prefix=/usr            \
-		--sysconfdir=/etc        \
-		--localstatedir=/var     \
-		--disable-shared         \
-		--enable-maintainer-mode &&
-	make                         &&
+	CLIENT=`which svn` &&
+
+	if ! spell_installed $SPELL && [ -z "$CLIENT" ]; then
+		message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}" &&
+		message "${MESSAGE_COLOR}repository and check out the latest client and Apache 2 module source${DEFAULT_COLOR}" &&
+		message "${MESSAGE_COLOR}code. Then, these will be built and installed.${DEFAULT_COLOR}"                        &&
+
+#		Build static client to bootstrap to repository
+		./configure                  \
+			--build=$BUILD           \
+			--prefix=/usr            \
+			--sysconfdir=/etc        \
+			--localstatedir=/var     \
+			--disable-shared         \
+			--enable-maintainer-mode &&
+		make                         &&
+
+		CLIENT=`pwd`/subversion/clients/cmdline/svn
+	fi
 
 #	Download HEAD revision
-	./subversion/clients/cmdline/svn checkout           \
-		http://svn.collab.net:80/repos/svn/trunk -d svn &&
+	message "${MESSAGE_COLOR}Using client: $CLIENT${DEFAULT_COLOR}"
+	$CLIENT checkout http://svn.collab.net:80/repos/svn/trunk current &&
 
 #
 # -=* ACTUAL BUILD *=-
 #
 
-	message "${MESSAGE_COLOR}Starting actual build of the most recent ${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"
-	cd svn                   &&
-
-#	Change required neon version to whatever we have
-#	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
-#		./build/buildcheck.sh                                     &&
+	message "${MESSAGE_COLOR}Starting actual build of the most recent ${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}" &&
+	cd current &&
 
 #	Build from checked-out source
 #	We no longer have APR, APR-UTIL or neon in this folder, so we use what's on the system
-	sh ./autogen.sh          &&
+	./autogen.sh             &&
 	./configure              \
 		--build=$BUILD       \
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--with-apr=/usr      \
+		--with-apr-util=/usr \
+		--with-apxs=apxs     \
+		--disable-neon-version-check \
 		$OPTS                &&
 	make                     &&
 
 #	Use this instead of just 'make' for -jN option:
 #	make -jN external-all
 #	make -jN local-all
+
 
 #	Install
 	prepare_install          &&

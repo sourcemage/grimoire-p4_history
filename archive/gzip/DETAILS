@@ -3,14 +3,13 @@
           SOURCE=$SPELL-${VERSION/b/a}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/b/a}
    SOURCE_URL[0]=ftp://gatekeeper.dec.com/pub/GNU/$SPELL/$SOURCE
-   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
- # SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+   SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
         WEB_SITE=http://www.gzip.org
          ENTERED=20010922
          UPDATED=20020312
-      MAINTAINER=heffer@mailberlin.net
-             MD5=39053e044b18ecd0627f80fbe7cfeaad
-         LICENCE=GPL
+      MAINTAINER=Christoph Steckelberg <heffer@mailberlin.net>
+          MD5[0]=c04db2076b9a25af95fae5dbb6e01c65
+      LICENSE[0]=GPL
            SHORT="gzip is a compression utility designed to replace compress."
 cat << EOF
 gzip - Compresses and decompresses files
