@@ -1,13 +1,4 @@
 (
-
-  ./configure --prefix=${INSTALL_ROOT}/usr   \
-          --sysconfdir=${INSTALL_ROOT}/etc   \
-       --localstatedir=${INSTALL_ROOT}/var   \
-       --disable-debug                       \
-    --disable-warnings                       \
-                       $OPTS                 &&
-  make                                       &&
-  prepare_install                            &&
-  make    install
-
+  OPTS="--disable-debug --disable-warnings ${OPTS}"   &&
+  default_build
 )  >  ${C_FIFO}  2>&1
