@@ -1,3 +1,28 @@
+2004-10-16 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.3.1
+	* kde.languages: Remove af, az, id, ko, lt, lv, mt, th, ven, vi, xh, zu
+	  Added bn, cy, eu, hi, hsb, mn, ms, nds, pa, sr@Latn, tg, uz
+	* CONFIGURE: Changed "ignore" to "IGNORE"
+	  Use config_query to ask about reconfiguring
+	  Updated ALL languages size
+	  Changed SOURCE_URL for ALL language option
+	  Moved MD5[0]="IGNORE" to language selection and create a real MD5[0]
+	  for the ALL languages tarball
+	  Formatted to Guru Handbook
+	  Made LANGUAGE and LANGUAGES local
+	* PRE_BUILD: Passed MD5s to unpack
+	  Added "&&" for continuity
+	* DETAILS, DEPENDS: Source KDE-generic scripts
+	* BUILD: Source KDE-generic scripts
+	  Made BUILD_SUBDIRECTORY local
+	  Moved my_build code into loop
+	  Removed my_build
+	  Display message about where we are in the build
+	* INSTALL: Made BUILD_SUBDIRECTORY local
+	  Moved my_install code into loop
+	  Removed my_install
+	  Display message about where we are in the install
+
 2004-09-27 Eric Sandall <eric@sandall.us>
 	* DETAILS: Use KDE_DEVEL from ../KDE_CONFIGURE
 

@@ -1,13 +1,12 @@
-my_install() {
-  cd $BUILD_SUBDIRECTORY             &&
-  make    install                    &&
-  cd -
-}
+local  BUILD_SUBDIRECTORY  &&
 
-  for BUILD_SUBDIRECTORY in $SOURCE_DIRECTORY/$SPELL*
-  do
-    if [ -d $BUILD_SUBDIRECTORY ]
-    then
-      my_install
-    fi
-  done
+for  BUILD_SUBDIRECTORY  in  $SOURCE_DIRECTORY/$SPELL*
+do
+  if  [  -d  $BUILD_SUBDIRECTORY  ]
+  then
+    message  "${MESSAGE_COLOR}Installing $BUILD_SUBDIRECTORY...${DEFAULT_COLOR}"  &&
+    cd    $BUILD_SUBDIRECTORY  &&
+    make  install              &&
+    cd  -
+  fi
+done
