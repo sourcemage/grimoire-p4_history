@@ -40,8 +40,8 @@
   ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc
   [  -e  ${INSTALL_ROOT}/etc/login.defs       ]  \
   ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc/login.defs
-  [  -e  ${INSTALL_ROOT}/etc/defaults         ]  \
-  ||  mkdir                 ${INSTALL_ROOT}/etc/defaults
+  [  -e  ${INSTALL_ROOT}/etc/default          ]  \
+  ||  mkdir                 ${INSTALL_ROOT}/etc/default
 
   cp  $SCRIPT_DIRECTORY/adduser  ${INSTALL_ROOT}/usr/sbin  &&
   cp  $SCRIPT_DIRECTORY/deluser  ${INSTALL_ROOT}/usr/sbin
