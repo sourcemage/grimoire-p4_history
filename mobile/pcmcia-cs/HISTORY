@@ -1,44 +1,42 @@
-2003-09-18  Eric Sandall <eric@sandall.us>
+2003-12-19 hgg <hgreig@bigpond.net.au>
+	* BUILD: autodetect 2.6.X kernel and handle correctly, drivers must be built in the kernel config now
+	* TRIGGERS: make conditional upon kernel version
+	* HISTORY: do the hokey pokey, turn around and reformat
 
-		Update to 3.2.5  (Bug #4342)
+2003-09-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 3.2.5  (Bug #4342)
+	Remove redundant SOURCE_URLs
 
-		Remove redundant SOURCE_URLs
+2003-08-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/pcmcia.conf: made 'yenta-socket' the default PCIC in pcmcia.conf, hopefully
+	this should work out of the box for most people now
 
-2003-08-31  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update UPDATED purely for test grimoire integration.
 
-		made 'yenta-socket' the default PCIC in pcmcia.conf, hopefully
-		this should work out of the box for most people now
+2003-08-01 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/*: updated to new init system
+	note: i don't know if the init script works like it's supposed
+	      to, since i can't test it completely (don't have pcmcia)
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-06-23 hgg <hgreig@bigpond.net.au>
+	* PREPARE: ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315, keeping 13321
+	Added PREPARE to remove cache after fixing bug #1068
 
-		Update UPDATED purely for test grimoire integration.
+2003-04-17 Eric Womack  <eric@sourcemage.com
+	* DETAILS: Updated to 3.2.4
+	* HISTORY: Cleaned 
 
-2003-08-01  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-12-16 Jose Bernardo Silva <josebernardo1@yahoo.com>
+	* DETAILS: updated version to 3.2.3
+	fixed $SOURCEFORGE_URL
+	* TRIGGERS: added TRIGGERS to force recast after linux
 
-		updated to new init system
-		note: i don't know if the init script works like it's supposed
-		      to, since i can't test it completely (don't have pcmcia)
+2002-10-17 Eric Schabell <eschabell@sourcemage.org>
+	* USEGCC2 removed gcc2 file.
 
-2003-06-23  hgg <hgreig@bigpond.net.au>
+2002-07-24 Jeff Schmidt <jschmidt@fnal.gov>
+	* DETAILS: vers. inc. 3.2.0
 
-		ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315, keeping 13321
-
-		Added PREPARE to remove cache after fixing bug #1068
-
-2003-04-17  Eric Womack  <eric@sourcemage.com
-		Updated to 3.2.4
-		Cleaned HISTORY
-
-2002-12-16  Jose Bernardo Silva <josebernardo1@yahoo.com>
-		updated version to 3.2.3
-		fixed $SOURCEFORGE_URL
-		added TRIGGERS to force recast after linux
-
-2002-10-17  Eric Schabell <eschabell@sourcemage.org>
-		removed gcc2 file.
-
-2002-07-24	Jeff Schmidt <jschmidt@fnal.gov>
-		vers. inc. 3.2.0
-
-2002-05-21  Eric Sandall <sandalle@yahoo.com>
-  		* Fixed SourceForge URLS at Jeff Schmidt's request
+2002-05-21 Eric Sandall <sandalle@yahoo.com>
+	* Fixed SourceForge URLS at Jeff Schmidt's request
