@@ -1,3 +1,12 @@
+#simple hack to remove old cache before it becomes a problem
+#PREPARE doesn't know version, atleast old version is covered by "prune"
+NUMBER="$(grep VERSION= $SCRIPT_DIRECTORY/DETAILS | cut -d= -f2)"
+OLDCACHE="$INSTALL_CACHE/$SPELL-$NUMBER-$BUILD.tar.bz2"
+if [ -f $OLDCACHE ] ;
+then rm -rf $OLDCACHE
+fi &&
+message "${SPELL_COLOR} ${SPELL} won't ARCHIVE installed files${DEFAULT_COLOR}"
+#end of my hack
 SPELL=MPlayer-codecs
 hash_put "codecMD5Table" "qt6dlls" "5ae1ccb43d90f7053761cb9d2c12815c"
 hash_put "codecMD5Table" "rp9codecs" "b9eaf74e1d3bafb640131de8e4823e62"
