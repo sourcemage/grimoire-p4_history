@@ -1,20 +1,30 @@
            SPELL=firebird
-# using cvs, as there is no official tarball yet
+           SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
+if [ "$USECVS" == "yes" ];then
          VERSION=cvs
-             CVS=B1_5_Release
+             CVS=HEAD
           SOURCE=${SPELL}-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/firebird:firebird2:$CVS
-
-# this is a temporary url and tarball
+   SOURCE_URL[0]=$SFCVS/firebird:firebird2:$CVS
+          MD5[0]=IGNORE
+#  FORCE_DOWNLOAD=on
+else
+# using cvs, as there is no official tarball yet
+         VERSION=B1_5_Release
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+   SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+#	 VERSION="not available"
+#	 VERSION=1.5-rc7
+# this is a temporary url and unofficial tarball, but it is bad
 #          SOURCE=${SPELL}-1.5.tar.bz
-#SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
-#SOURCE_URL[0]=http://mapopa.tripod.com/firebird/$SOURCE
-
-#$SOURCEFORGE_URL/firebird/$SOURCE
+#   SOURCE_URL[0]=http://mapopa.tripod.com/firebird/$SOURCE
+##$SOURCEFORGE_URL/firebird/$SOURCE
+#          MD5[0]=18cf28729ab9138b11376790a9458b2f
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
         WEB_SITE=http://www.firebirdsql.org
          LICENCE=MPL
-          MD5[0]=IGNORE
          ENTERED=20031111
          UPDATED=
  	    DOCS="ChangeLog doc/*"

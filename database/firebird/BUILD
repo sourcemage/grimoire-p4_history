@@ -6,13 +6,13 @@
 
   PREFIX=${INSTALL_ROOT}/usr/firebird		&&
 
-# apply Erik LaBianca's patches for a more logical install
-patch -u -p0 < $SPELL_DIRECTORY/patches/ac_cxxflags.patch	&&
+# fix compiler flags
+  sed -i -e "s/-O3 -march=i586 -mcpu=i686/$CFLAGS/" \
+	builds/posix/prefix.linux	&&
 
 echo install=$INST				&&
 
 NOCONFIGURE=1 . ./autogen.sh			&&
-
 #        --sysconfdir=/etc/firebird 	\
 #        --localstatedir=/var/firebird  	\
 #	--datadir=$PREFIX/share/firebird\
@@ -110,7 +110,7 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   cd ..						&&
 
 # symlink for includes
-  ln -sf $PWD/include /usr/include/firebird
+  ln -sf $PWD/include /usr/include/firebird	&&
 
 # fix permissions
   chown -R firebird:firebird $PREFIX		&&
