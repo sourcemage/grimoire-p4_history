@@ -12,8 +12,11 @@ config_query_option  QT_THREAD  "Enable threading support?"             y  \
 
 config_query_option  QT_NIS     "Enable Network Information Services?"  y  \
                                 "-nis"                                     \
-                                "-no-nis"                                  &&
+                                "-no-nis"
 
-config_query_option  QT_XRAMA   "Enable Xinerama support?"              n  \
-                                "-xinerama"                                \
-                                "-no-xinerama"
+#
+# Some of these seem to fail to compile; needs more testing
+#
+#config_query_list  QT_GFX_DRIVER  "Enable which graphics driver?"          \
+#                   mach64  matrox  qvfb  shadowfb  snap  transformed       \
+#                   vga16  vnc  voodoo

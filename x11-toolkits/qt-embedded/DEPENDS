@@ -1,6 +1,10 @@
 depends  g++       &&
-depends  X11-LIBS  &&
 depends  uudeview  &&
+
+optional_depends  freetype2                     \
+                  "-freetype"                   \
+                  "-no-freetype"                \
+                  "for FreeType2 font support"  &&
 
 optional_depends  jpeg                              \
                   "-system-libjpeg"                 \

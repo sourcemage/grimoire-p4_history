@@ -27,8 +27,15 @@ OPTS="$OPTS       \
       $QT_IPV6    \
       $QT_DEBUG   \
       $QT_THREAD  \
-      $QT_NIS     \
-      $QT_XRAMA"  &&
+      $QT_NIS"    &&
+
+#
+# Enable some basic drivers for PCs
+#
+OPTS="-qt-kbd-tty   -qt-kbd-usb    \
+      -qt-mouse-pc  -qt-mouse-bus  \
+      -depths 4,8,16,24,32"        &&
+      #-qt-gfx-$QT_GFX_DRIVER       \
 
 echo  "yes"  |  ./configure                                                \
                              -prefix ${INSTALL_ROOT}/usr/lib/qt            \
@@ -38,8 +45,6 @@ echo  "yes"  |  ./configure                                                \
                              -headerdir ${INSTALL_ROOT}/usr/include/qt     \
                              -datadir ${INSTALL_ROOT}/usr/share/qt         \
                              -qt-gif                                       \
-                             -xft                                          \
-                             -dlopen-opengl                                \
                              $OPTS                                         &&
 
 make  symlinks  sub-src sub-tools
