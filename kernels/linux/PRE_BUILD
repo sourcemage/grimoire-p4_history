@@ -68,11 +68,11 @@ md5check() { # $1 md5 $2 file
   mFILE=$SOURCE_CACHE/$2
   #message " testing $mMD5 == md5sum of uncompressed $mFILE"
   if [[ ${mFILE} == *.bz2 ]] ; then
-    test "$mMD5" == "`bzcat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+    test "$mMD5" == "`bzcat $mFILE | md5sum | cut -d ' ' -f 1`" || return 1
   elif [[ ${mFILE} == *.gz ]] ; then
-    test "$mMD5" == "`zcat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+    test "$mMD5" == "`zcat $mFILE | md5sum | cut -d ' ' -f 1`" || return 1
   else
-    test "$mMD5" == "`cat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+    test "$mMD5" == "`cat $mFILE | md5sum | cut -d ' ' -f 1`" || return 1
   fi
   message "check passed.";  
   return 0
