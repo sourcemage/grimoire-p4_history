@@ -10,6 +10,6 @@ NEEDS="+local_fs"
 start()
 {
 	echo "Starting TraceDaemon for ${PROC_INFO_FILE}"
-	$PROGRAM ${LOG_DIR}/${PROC_INFO_FILE} /proc/${PROC_INFO_FILE}
+	$PROGRAM ${OPTS} ${LOG_DIR}/${PROC_INFO_FILE} /proc/${PROC_INFO_FILE}
 	evaluate_retval
 }
