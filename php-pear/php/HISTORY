@@ -8,9 +8,9 @@
 	* FINAL, POST_REMOVE: called php5 not php4 now
 	* FINAL: Remove references to php4 from http{,s}d.conf
 	  INSTALL_LOG logic to fix httpd.conf is broken, removed
-	  Only append AddType to http{,s}d.conf as php already
-	  adds the Loadmodule code
-	* POST_REMOVE, PRE_REMOVE: Added code to restore httpd.conf
+	  Comment out AddModule php5.c as it breaks apache2
+	* PRE_REMOVE, POST_REMOVE: installwatch is not run in either of these
+	  Backup and restore httpd.conf
 
 2004-08-16 Jason Flatt <jflatt@sourcemage.org>
 	* BUILD: Removed extra "&&" on the last line.
