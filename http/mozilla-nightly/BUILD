@@ -54,6 +54,7 @@
 
   ./configure  --disable-tests              \
                --disable-debug              \
+               --disable-pedantic           \
                --enable-optimize="$CFLAGS"  \
                --without-jpeg               \
                --without-zlib               \
