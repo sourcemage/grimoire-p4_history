@@ -1,3 +1,8 @@
+2004-02-04 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: zlib is a depends of this
+	* BUILD: correct INSTALL_ROOT usage, it becomes hardcoded into files 
+	so it can't be used during ./configure, must be fixed at "make install" time
+
 2004-01-29 hgg <hgreig@bigpond.net.au>
 	* DEPENDS: remove, autoconf no longer needed
 

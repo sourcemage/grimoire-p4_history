@@ -26,7 +26,7 @@ for i in \
     install env ptx sha1sum split sum tac tr tsort unexpand dirname expr factor cut \
     sort md5sum hostid id logname nice nohup pathchk pinky printenv printf seq tee \
     tty users who whoami yes ;
-do  ln -sfn ${INSTALL_ROOT}/bin/$i ${INSTALL_ROOT}/usr/bin/$i
+do  ln -sfn ../bin/$i ${INSTALL_ROOT}/usr/bin/$i
 done &&
 
   mkdir -p ${INSTALL_ROOT}/etc/profile.d/ &&
