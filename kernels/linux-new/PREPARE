@@ -748,7 +748,7 @@ rec_dep_make()
 create_details()
 {
 	. $latestdefaults
-	local counter="1"
+	local counter="2"
 	case "$mode" in
 		*ktree)
 			# add required smgl patches
@@ -802,6 +802,7 @@ create_details()
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
 					echo "SOURCE2=\${source}.sign"
+					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}"
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
