@@ -1,14 +1,15 @@
            SPELL=abiword
 if [ "$DEVEL" == "y" ] ;then
-         VERSION=2.2.3
-          MD5[0]='28c2113e58a543627b9d257fa621be7f'
+         VERSION=2.2.4
+          MD5[0]='24cf5e95da3c8de6b50fe3e98be7a147'
 else
-         VERSION=2.2.3
-          MD5[0]='28c2113e58a543627b9d257fa621be7f'
+         VERSION=2.2.4
+          MD5[0]='24cf5e95da3c8de6b50fe3e98be7a147'
 fi
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://www.abisource.com/downloads/abiword/$VERSION/source/$SOURCE
       LICENSE[0]=GPL
       MAKE_NJOBS=1
        BUILD_API=2
