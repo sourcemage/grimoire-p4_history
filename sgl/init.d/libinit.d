@@ -42,9 +42,9 @@ setup_nicfile ()
     ans=$?
     while [ "$ans" = "0" ]; do
 	dialog --backtitle "$sgl_logo"  --inputbox\
-	    "What does your ethernet card use for device designation?" 0 0 2>infodata.temp
-	nicfile=$(cat infodata.temp)
-	if [! -f $netdir/$nicfile ]; then 
+	    "What does your ethernet card use for device designation?" 0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+	nicfile=$(cat $SCRIPT_DIRECTORY/infodata.temp)
+	if [ ! -f $netdir/$nicfile ]; then 
 	    make_nicfile
 	else
 # if the nicfile already exists, this should cover all the bases
