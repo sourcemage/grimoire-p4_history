@@ -29,7 +29,7 @@ _do_device_up()
       renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEV.pid &&
       sleep 1
     fi &&
-    dhcpcd -t $TIMEOUT $ARGS $DEV
+    dhcpcd -t $TIMEOUT $ARGS $OPTIONS $DEV
   elif [ "$MODE" = static ]; then
     echo "Setting up static networking on $DEV..."
     ARGS=""

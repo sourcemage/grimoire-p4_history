@@ -1,18 +1,19 @@
            SPELL=samba
-         VERSION=2.2.8a
+         VERSION=3.0.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://us1.samba.org/samba/ftp/$SOURCE
    SOURCE_URL[1]=ftp://us2.samba.org/pub/$SPELL/$SOURCE
    SOURCE_URL[2]=ftp://www.mirror.ac.uk/sites/ftp.samba.org/$SOURCE
    SOURCE_URL[3]=ftp://de.samba.org/samba.org/$SOURCE
-          MD5[0]="8aeee2a2e35e5561e7fa9c5cfbbba3f6"
-        WEB_SITE=http://www.samba.org
+          MD5[0]='cb54629a84ef2d2e51d99a0ed2f8b594'
+        WEB_SITE=http://www.samba.org/
          ENTERED=20010922
          UPDATED=20030913
       LICENSE[0]=GPL
       MAKE_NJOBS=1
-           SHORT="Samba provides seamless file and print services to SMB/CIFS clients."
+            DOCS='Manifest Read-Manifest-Now Roadmap WHATSNEW.txt examples/'
+           SHORT='Samba provides file and print services to SMB/CIFS clients'
 cat << EOF
 SMB server to provide Windows NT and LAN manager-style file and print
 services to SMB clients such as Windows. A NetBIOS nameserver which
