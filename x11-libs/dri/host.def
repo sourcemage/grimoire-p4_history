@@ -1,86 +1,100 @@
-#define XFree86CustomVersion "Minimal DRI build from X.org tree"
+/*
+# Instructions:
+# This is minimal build of X.Org XServer. You need to have X already
+# installed, `*-devel' packages may also be neccesary. I usualle have
+#  my server instaled in `/opt/xorg' but you can changed that.
+#
+# In order to build:
+# $ cd /opt
+# $ mkdir xorg 
+# $ cd xorg
+# $ lndidr /usr/X11R6
+# $ cd ${xorgsrcdir}
+# $ make World
+# $ make install
+#
+# Change modules path in xorg.conf to point to `/opt/xorg/lib/modules'
+# and start tart server using `startx -- /opt/bin/Xorg'
+#
+# For debug you can change `DoLoadableServer' to `No', all modules
+# will be built into the main server binary.
+#
+*/
 
-/* Compiler options */
-#define DefaultGcc2i386Opt -O2 -gstabs+ -pipe
 
-/* DDX drivers to build: trim this list to your needs */
-#define XF86CardDrivers whatever
+#define XorgCustomVersion		"Very minimal DRI build ;)"
 
-/* DRI drivers are built from Mesa CVS */
-#define DriDrivers whatever
-#define DevelDRIDrivers /**/
+#define ProjectRoot			/usr/X11R6
+#define UserLibDir			/usr/X11R6/lib
+#define NothingOutsideProjectRoot	YES
 
-/* Build development (insecure) DRI-aware 2D drivers */
-#define BuildDevelDRIDrivers NO
+#define DefaultGcc2i386Opt		-O0
+#define LibraryCDebugFlags		-O0
+#define GccWarningOptions		-Wall -Wpointer-arith -Wstrict-prototypes\
+					-Wmissing-prototypes -Wmissing-declarations\
+					-Wredundant-decls -Wnested-externs -Wundef
+#define DefaultCCOptions		-ansi -pedantic GccWarningOptions -pipe -g
 
-/* Only shared libGL */
-#define NormalLibGlx NO
+#define XF86CardDrivers			ati
+#define DriDrivers			r200 radeon
+#define XInputDrivers			mouse keyboard
 
-/* Link the drivers against static libexpat to make binary snapshots
- * more usable and to reduce build problems on Linux machines without
- * expat.
- */
-#if defined(LinuxArchitecture) && !defined(AMD64Architecture)
-# define ExpatLibrary		StaticLibrary($(BUILDLIBDIR),expat)
-# define NormalLibExpat 	YES
-#endif
+#define BuildXF86DRI			YES
+#define BuildGLXLibrary			YES
+#define BuildXDriInfo			NO
 
+#define XdmxServer			NO
+#define XnestServer			NO
+#define XVirtualFramebufferServer	NO
+
+#define NormalLibGlx			NO
 /* Optionally turn these on for debugging */
-/* #define GlxBuiltInTdfx YES */
-/* #define GlxBuiltInI810 YES */
-/* #define GlxBuiltInMga YES */
-/* #define GlxBuiltInR128 YES */
-/* #define GlxBuiltInRadeon YES */
-#define DoLoadableServer YES
+/* #define GlxBuiltInTdfx		YES */
+/* #define GlxBuiltInI810		YES */
+/* #define GlxBuiltInMga		YES */
+/* #define GlxBuiltInR128		YES */
+/* #define GlxBuiltInRadeon		YES */
+#define DoLoadableServer		NO
 
-/* Optionally turn this on to change the place where you install the build.
- * Warning: trailing blanks will cause build failures.
- */
-/* #define ProjectRoot /usr/X11R6-XORG */
-
-/* Don't install anything outside the ProjectRoot directory */
-#define NothingOutsideProjectRoot YES
-
-/* #define UsrLibDir /usr/X11R6/lib */
-
-/* Optionally build the Xnest, Xvfb and Xdmx servers */
-#define XnestServer NO
-#define XVirtualFramebufferServer NO
-#define BuildDmx NO
 
 /*
- * Build as little as possible (usually no need to change anthing here)
+ * Do not change anything below or build may fail.
  */
-#define BuildServersOnly YES
-#define BuildLibraries NO
-#define BuildLibrariesForXServers NO
-#define BuildLibrariesForConfigTools NO
-#define BuildXIE NO
-#define BuildPexExt NO
-#define XF86AFB NO
-#define XprtServer NO
-#define BuildXprint NO
-/* HasFontconfig avoids installing a new libfontconfig with its own
- * configuration files. This way you keep your font configuration without
- * copying configuration files around after make install. */
-#define HasFontconfig YES
 
-/*
- * Don't change anything below or the build will fail.
- */
-#define BuildXF86DRI YES
-#define BuildXDriInfo YES
-#define BuildGLXLibrary YES
-#define BuildXdmcpLib YES
-#define BuildXInputLib YES
-#define BuildXvLibrary YES
-#define BuildXF86VidModeLibrary YES
-#define BuildXvMCLibrary YES
-#define BuildExpatLibrary YES
-#define SharedLibFont NO
+#define BuildServersOnly		YES
+#define BuildXFree86ConfigTools		NO
+#define BuildXprint			NO
+#define XprtServer			NO
+
+#define BuildFonts			NO
+#define SharedLibFont			NO
+
+#define BuildLibraries			NO
+#define BuildLibrariesForXServers	NO
+#define BuildLibrariesForConfigTools	NO
+
+#define BuildXdmcpLib			YES
+#define BuildXftLib			NO
+#define BuildXft1Lib			NO
+
+#define BuildXF86VidModeLibrary		NO
+#define BuildXvLibrary			NO
+#define BuildXvMCLibrary		NO
+#define BuildXInputLib			NO
+#define BuildFontconfigLibrary		NO
+#define BuildGLwLibrary			NO
+#define BuildGLULibrary			NO
+#define BuildRenderLibrary		NO
+#define BuildXcursorLibrary		NO
+
+#define BuildXIE			NO
+#define BuildPexExt			NO
+
+#define XF86AFB				NO
 #if DoLoadableServer
-#undef XF1Bpp
-#undef XF4Bpp
-#define XF1Bpp NO
-#define XF4Bpp NO
+#	undef XF1Bpp
+#	undef XF4Bpp
+
+#	define XF1Bpp			NO
+#	define XF4Bpp			NO
 #endif
