@@ -10,10 +10,6 @@ function make_crypto() {
 
   MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla &&
 
-  if echo $CFLAGS | grep -q pentium4; then
-    export CFLAGS="${CFLAGS/-O3/}"
-  fi &&
-
   ./configure \
     --prefix=$INSTALL_ROOT/usr \
     --with-x \
