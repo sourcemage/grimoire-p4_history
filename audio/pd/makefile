@@ -31,10 +31,10 @@ LDFLAGS = -Wl,-export-dynamic
 LIB =   -ldl -lm -lpthread -lasound
 
 #select either the DBG and OPT compiler flags below:
-OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
+OPT_CFLAGS = -z $(OPTS) -funroll-loops -fomit-frame-pointer
 WARN_CFLAGS = -Wall -W -Wstrict-prototypes  -Werror \
     -Wno-unused -Wno-parentheses -Wno-switch
-ARCH_CFLAGS = -DPD -DUNIX 
+ARCH_CFLAGS = $(FLAGS) -DPD -DUNIX 
 
 CFLAGS = $(ARCH_CFLAGS) $(WARN_CFLAGS) $(OPT_CFLAGS) $(DEFINES) $(MORECFLAGS)
 

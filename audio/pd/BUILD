@@ -1,10 +1,14 @@
 (
 
-cd src
+cd src &&
 
 ./configure --enable-alsa --prefix=/usr &&
-cp $CODEX/audio/pd/makefile . ||
-cp $GRIMOIRE_DIR/audio/pd/makefile &&
+
+export OPTS=`echo $OPTIMIZATIONS | sed 's/ / -z /g'` &&
+export FLAGS=$CFLAGS &&
+
+cp $SCRIPT_DIRECTORY/makefile $SOURCE_DIRECTORY/src/. &&
+
 make depend && 
 make && 
 make install
