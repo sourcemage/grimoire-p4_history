@@ -5,7 +5,8 @@ depends  kdebase  &&
 source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
 
 
-query ENCRYPTION "Would you like to enable encryption support in KMail?" y
+config_query ENCRYPTION  \
+             "Would you like to enable encryption support in KMail?" y
 if [ $ENCRYPTION == "y" ]
 then
 optional_depends  gnupg                                             \
@@ -30,7 +31,8 @@ optional_depends  pinentry                                          \
 fi  &&
 
 
-query SPAM_FILTER "Would you like to enable spam filtering in KMail?" y
+config_query SPAM_FILTER  \
+             "Would you like to enable spam filtering in KMail?" y
 if [ $SPAM_FILTER == "y" ]
 then
   optional_depends  bogofilter                              \
@@ -50,17 +52,19 @@ then
 fi  &&
 
 
-query ANTI_VIRUS "Would you like to enable virus scanning in KMail?" y
+config_query ANTI_VIRUS  \
+             "Would you like to enable virus scanning in KMail?" y
 if [ $ANTI_VIRUS == "y" ]
 then
   optional_depends  clamav                              \
                     ""                                  \
                     ""                                  \
-                    "to use ClamAV as a virus scanner"  &&
+                    "to use ClamAV as a virus scanner"
 fi  &&
 
 
-query PALM_PILOT "Would you like to enable Palm Pilto support in KDE-PIM?" y
+config_query PALM_PILOT  \
+             "Would you like to enable Palm Pilto support in KDE-PIM?" y
 if [ $PALM_PILOT == "y" ]
 then
   optional_depends  pilot-link                        \
@@ -71,7 +75,7 @@ then
   optional_depends  libmal                            \
                     "--with-mal"                      \
                     "--without-mal"                   \
-                    "for malsync support"             &&
+                    "for malsync support"
 fi  &&
 
   
