@@ -1,11 +1,11 @@
 (
-  ./configure  --build=$BUILD        \
+  ./configure  --build=${BUILD}      \
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               $OPTS                 &&
-  make 	  all                        &&
+               ${OPTS}               &&
+  make 	  all                       &&
   prepare_install                    &&
   make    install
 
-) > $C_FIFO 2>&1
+) > ${C_FIFO} 2>&1
