@@ -15,7 +15,7 @@ spell_present()  {
     sed  's/cd doc && $(MAKE) html//'  >  Makefile.am
 
   fi
-
+export CC=gcc   			&&
   ./configure  --build=$BUILD           \
                --host=$BUILD            \
                --prefix=/usr            \
