@@ -1,9 +1,19 @@
 config_query  MIDI    "include sndlib midi module?"  n
 config_query  HOBBIT  "include arity check support for hobbit?"  n
-config_query  GTK     "use the GTK interface (instead of Motif)?"  y
 config_query  RUBY    "use ruby as scripting language (instead of Guile)?"  y
+config_query  GUI     "configure snd with a GUI?"  y
 
-persistent_add  MIDI_OPTS  HOBBIT_OPTS  &&
+persistent_add  MIDI_OPTS  HOBBIT_OPTS  GUI_OPTS  &&
+
+if  [  "$GUI"  ==  "y"  ]
+then
+  GUI_OPTS="--with-x"
+  config_query  GTK     "use the GTK interface (instead of Motif)?"  y
+else
+  persistent_add  GTK      &&
+  GUI_OPTS="--with-no-gui" &&
+  GTK="n"
+fi  &&
 
 if  [  "$MIDI"  ==  "y"  ]
 then

@@ -5,14 +5,18 @@
 	  Shortened SHORT
 	* BUILD: Converted to BUILD_API 2
 	  Pass MIDI_OPTS and HOBBIT_OPTS to configure
+	  Remove --with-static-xm
 	* INSTALL: Added
 	  Convert echo to message
 	* DEPENDS: Use optional_depends instead of query for ALSA and JACK
+	  Added code to compile snd without a GUI
+	  Added optional dependency on gettext and esound
+	  Added configure flags for gtkglext, openmotif, ruby, guile, alsa and jack
 	  Removed dependency on gtk+2 (gtkglext depends on gtk+2)
 	  Moved the queries to CONFIGURE and converted to config_query
 	  Formatted to Guru Handbook
 	  Depends on an OPENGL provider not GLUT
-	* CONFIGURE: New configure options (midi and hobbit)
+	* CONFIGURE: New configure options (GUI, midi and hobbit)
 	  Added config_queries for options in DEPENDS
 	* HISTORY: Formatted to Guru Handbook
 
