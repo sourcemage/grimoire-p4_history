@@ -8,13 +8,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
           MD5[1]=${MD5[0]}
         WEB_SITE=http://www.flounder.net/~mrsam/maildrop
          ENTERED=20020309
-         UPDATED=20020323
+         UPDATED=20050403
       MAINTAINER=jan.sabbe@student.kuleuven.ac.be
          LICENSE=GPL
-           SHORT="maildrop - mail delivery agent with filtering abilities."
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
+       BUILD_API=2
+           SHORT="mail delivery agent with filtering"
 cat << EOF
 maildrop is a replacement for your local mail delivery agent. maildrop
 reads a mail message from standard input, then delivers the message to
