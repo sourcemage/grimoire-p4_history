@@ -23,17 +23,23 @@ export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 #    cd  $SOURCE_DIRECTORY
 #  fi  &&
 
-echo  "yes"  |  ./configure                                             \
-                             -prefix ${INSTALL_ROOT}/usr/lib/qt         \
-                             -bindir ${INSTALL_ROOT}/usr/bin            \
-                             -libdir ${INSTALL_ROOT}/usr/lib            \
-                             -docdir ${INSTALL_ROOT}/usr/share/doc/qt-x11 \
-                             -headerdir ${INSTALL_ROOT}/usr/include/qt  \
-                             -datadir ${INSTALL_ROOT}/usr/share/qt      \
-                             -thread                                    \
-                             -qt-gif                                    \
-                             -xft                                       \
-                             -dlopen-opengl                             \
-                             $OPTS                                      &&
+OPTS="$OPTS       \
+      $QT_IPV6    \
+      $QT_DEBUG   \
+      $QT_THREAD  \
+      $QT_NIS     \
+      $QT_XRAMA"  &&
+
+echo  "yes"  |  ./configure                                                \
+                             -prefix ${INSTALL_ROOT}/usr/lib/qt            \
+                             -bindir ${INSTALL_ROOT}/usr/bin               \
+                             -libdir ${INSTALL_ROOT}/usr/lib               \
+                             -docdir ${INSTALL_ROOT}/usr/share/doc/qt-x11  \
+                             -headerdir ${INSTALL_ROOT}/usr/include/qt     \
+                             -datadir ${INSTALL_ROOT}/usr/share/qt         \
+                             -qt-gif                                       \
+                             -xft                                          \
+                             -dlopen-opengl                                \
+                             $OPTS                                         &&
 
 make  symlinks  sub-src sub-tools
