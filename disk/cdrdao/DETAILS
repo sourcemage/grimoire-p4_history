@@ -1,13 +1,21 @@
            SPELL=cdrdao
-         VERSION=1.1.7
-          SOURCE=$SPELL-$VERSION.src.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=b3f82390d13572fbf5a30aa7a739ddac
+         VERSION=${VERSION:=1.1.7}
+[ "$CVS" = "no" ] && \
+          SOURCE=$SPELL-$VERSION.src.tar.gz \
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE \
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION \
+          MD5[0]=b3f82390d13572fbf5a30aa7a739ddac ;
+[ "$CVS" = "yes" ] && \
+         VERSION=cvs \
+  FORCE_DOWNLOAD=1 \
+          SOURCE=$SPELL.tar.bz2 \
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL \
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/cdrdao:cdrdao \
+          MD5[0]=IGNORE ;
         WEB_SITE=http://cdrdao.sourceforge.net/index.html
       LICENSE[0]=GPL
          ENTERED=20020201
-         UPDATED=20031111
+         UPDATED=20040108
            SHORT="cdrdao is a program to burn DAO audio or data cdrs"
 cat << EOF
 Cdrdao records audio/data CD-Rs in disk-at-once (DAO) mode based on a 

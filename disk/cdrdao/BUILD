@@ -1,5 +1,5 @@
 (
-
+  [ "$CVS" = "yes" ] && ./autogen.sh          ;
   sedit  's/xdao=xdao/xdao=no/'  configure    &&
   default_build
 

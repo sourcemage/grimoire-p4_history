@@ -1,1 +1,3 @@
-depends  libusb
+depends  libusb  &&
+depends  hotplug "--with-hotplug=/etc/hotplug" 
+[ "$CVS" = "yes" ] && depends cvs 
