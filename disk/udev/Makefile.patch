@@ -16,8 +16,8 @@ diff -urpN udev-039.orig/Makefile udev-039/Makefile
  	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
  	- ln -f -s $(sbindir)/$(WAIT) $(DESTDIR)$(hotplugdir)/05-wait_for_sysfs.hotplug
 -ifndef DESTDIR
--	- killall udevd
--	- rm -f $(udevdir)/.udev.tdb
+-	- killall $(DAEMON)
+-	- rm -rf $(udevdb)
 -endif
  	@extras="$(EXTRAS)" ; for target in $$extras ; do \
  		echo $$target ; \
