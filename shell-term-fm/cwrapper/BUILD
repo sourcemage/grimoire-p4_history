@@ -1,1 +1,2 @@
-sedit "s:/usr/local:/usr:" Makefile
+sedit "s:/usr/local:${INSTALL_ROOT}/usr:" Makefile  &&
+make
