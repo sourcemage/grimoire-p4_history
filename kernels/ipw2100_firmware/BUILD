@@ -1,18 +1,1 @@
-FIRMWARE_DIR="/lib/firmware"
-
-
-echo "making hotplug dir"
-[ ! -d ${FIRMWARE_DIR} ] && mkdir -p ${FIRMWARE}  
-echo "license agreement"
-
-less /usr/src/LICENSE  
-
-if ! query "Do you agree to the terms of the license?" y; then
-	rm /usr/src/*.fw
-	rm /usr/src/LICENSE
-	return 1 
-else
-	mv /usr/src/*.fw $FIRMWARE_DIR/
-	mv /usr/src/LICENSE $FIRMWARE_DIR/
-	return 0
-fi
+true
