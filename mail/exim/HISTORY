@@ -1,206 +1,162 @@
-2003-10-17  Ladislav Hagara <hgr@vabo.cz>
+2003-12-03 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.30
+	* HISTORY: Formatted to Guru Handbook
 
-		PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
+2003-10-17 Ladislav Hagara <hgr@vabo.cz>
+	* PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
 
-2003-10-01  Eric Sandall <eric@sandall.us>
-		DETAILS: Update to 4.24 (tested on my server)
+2003-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 4.24 (tested on my server)
 
-2003-08-29  Eric Sandall <eric@sandall.us>
+2003-08-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.22
+	Changed LICENSE to LICENSE[0]
 
-        Updated to 4.22
+2003-08-24 Eric Sandall <eric@sandall.us>
+	* Fixed Bug #4088  (thanks to Arwed)
 
-        Changed LICENSE to LICENSE[0]
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	(doesn't work the way it is documented)
 
-2003-08-24  Eric Sandall <eric@sandall.us>
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-		Fixed Bug #4088  (thanks to Arwed)
+2003-07-08 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added MAKE_NJOBS=1 as it fails with multiple compiles
+	* HISTORY: Cleaned up
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
-
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
-
-2003-07-26  hgg <hgreig@bigpond.net.au>
-
-		Update TRIGGERS for Linux-PAM
-
-2003-07-08  Eric Sandall <eric@sandall.us>
-
-        Added MAKE_NJOBS=1 as it fails with multiple compiles
-
-        Cleaned up HISTORY
-
-2003-05-14  M.L. <mlubrano@sourcemage.org>
+2003-05-14 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.20).
  
-		Version++ (4.20).
+2003-04-16 M.L. <mlubrano@sourcemage.org>
+	* SECURITY: Pacified (was last meeting request).
+
+2003-03-12 M.L. <mlubrano@sourcemage.org>
+	* POST_INSTALL,PRE_REMOVE: Corrected tar -y to -j option.
+
+2003-03-12 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.14).
  
-2003-04-16  M.L. <mlubrano@sourcemage.org>
+2003-02-25 M.L. <mlubrano@sourcemage.org>
+	* Removed db-4.1.patch (unused spell patch file).
 
-		Pacified SECURITY file (was last meeting request).
+2003-02-24 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug 2649, added SECURITY file.
 
-2003-03-12  M.L. <mlubrano@sourcemage.org>
+2003-02-23 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug 2644, thanks to eric@sandall.us (Eric Sandall)
 
-        Corrected tar -y to -j option.
+2003-02-18 Eric Schabell <eschabell@sourcemage.org>
+	* There was no logging for exim, possible with /etc/exim.conf variable
+	but this is strongly discouraged as you miss events that fail on startup:
+	"It is generally advisable, however, to set the string in Local/Makefile 
+	rather than at run time, because then the setting is available right from 
+	the start of Exim's execution. Otherwise, if there's something it wants to 
+	log before it has read the configuration file (for example, an error in 
+	the configuration file) it will not use the path you want, and may not be 
+	able to log at all."
+	I have added it to the BUILD file for /var/log/exim_{panic|main|reject}.
 
-2003-03-12  M.L. <mlubrano@sourcemage.org>
+2002-12-18 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.12).
  
-		Version++ (4.14).
+2002-12-16 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Added chown to make /var/spool/mail*
+	belongs to exim user and group.
+
+2002-12-11 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.11).
  
-2003-02-25  M.L. <mlubrano@sourcemage.org>
+2002-11-10 M.L. <mlubrano@sourcemage.org>
+	* POST_INSTALL: Fixed typo
 
-		Removed db-4.1.patch (unused spell patch file).
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-2003-02-24  M.L. <mlubrano@sourcemage.org>
+2002-10-25 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Converted spell to use sorcery uid/gid features.
 
-        Fixed bug 2649, added SECURITY file.
+2002-09-24 Lyon Lemmens <llemmens@sourcemage.org>
+	* LL: Added an ugly patch to make exim work with db-4.1.x.
+	* ML: made patch optional if db-4.1.x is detected. (keep it safe ;)	
 
-2003-02-23  M.L. <mlubrano@sourcemage.org>
+2002-09-10 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug #926.
 
-		Fixed bug 2644, thanks to eric@sandall.us (Eric Sandall)
+2002-08-21 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
-2003-02-18  Eric Schabell <eschabell@sourcemage.org>
+2002-08-15 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
+	Added source url of last ressort (sourcemage mirror).
 
-		There was no logging for exim, possible with /etc/exim.conf variable
-		but this is strongly discouraged as you miss events that fail on startup:
-		"It is generally advisable, however, to set the string in Local/Makefile 
-		rather than at run time, because then the setting is available right from 
-		the start of Exim's execution. Otherwise, if there's something it wants to 
-		log before it has read the configuration file (for example, an error in 
-		the configuration file) it will not use the path you want, and may not be 
-		able to log at all."
-		I have added it to the BUILD file for /var/log/exim_{panic|main|reject}.
+2002-07-22 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (4.10)
 
-2002-12-18  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (4.12).
- 
-2002-12-16  M.L. <mlubrano@sourcemage.org>
+2002-07-20 M.L. <m.l@compaqnet.fr>
+	* Config files may now be restored upon sorcery rebuild (or spell rebuild).
+	(like postfix's bug #462)
 
-		Added chown in BUILD file to make /var/spool/mail* belongs to exim user and group.
+2002-06-14 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (4.05)
+	* Gcc3 non-regressive tests ok.
 
-2002-12-11  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (4.11).
- 
-2002-11-10  M.L. <mlubrano@sourcemage.org>
+2002-06-11 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added MD5.
+	Really added LICENSE... (oops).
 
-		Fixed typo in POST_INSTALL.
+2002-06-10 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added LICENSE.
 
-2002-11-05  M.L. <mlubrano@sourcemage.org>
+2002-06-04 M.L. <m.l@compaqnet.fr>
+	* USEGCC2: Removed
 
-        Added MENU_* entries to DETAILS file.
+2002-05-07 Foxy foxy@linuxfreemail.com
+	* BUILD: Patched to install man page (8).
 
-2002-10-25  M.L. <mlubrano@sourcemage.org>
+2002-04-27 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added mirrors.
 
-		Converted spell to use sorcery uid/gid features.
-
-2002-09-24  Lyon Lemmens  <llemmens@sourcemage.org>
-
-		LL: Added an ugly patch to make exim work with db-4.1.x.
-	 	ML: made patch optional if db-4.1.x is detected. (keep it safe ;)	
-
-2002-09-10  M.L. <mlubrano@sourcemage.org>
-
-		Fixed bug #926.
-
-2002-08-21  M.L. <m.l@compaqnet.fr>
-
-		MD5[0] field updated, built from the ".tar" archive.
-
-2002-08-15  M.L. <m.l@compaqnet.fr>
-
-        MD5[x] field format conforming to grimoire-gurus handbook.
-
-        Added source url of last ressort (sourcemage mirror).
-
-2002-07-22  M.L. <m.l@compaqnet.fr>
-
-		Version++ (4.10)
-
-2002-07-20  M.L. <m.l@compaqnet.fr>
-
-        Config files may now be restored upon sorcery rebuild (or spell rebuild).
-        (like postfix's bug #462)
-
-2002-06-14  M.L. <m.l@compaqnet.fr>
-
-		Version++ (4.05)
-		Gcc3 non-regressive tests ok.
-
-2002-06-11  M.L. <m.l@compaqnet.fr>
-
-        Added MD5.
-
-        Really added LICENSE... (oops).
-
-2002-06-10  M.L. <m.l@compaqnet.fr>
-
-        Added LICENSE.
-
-2002-06-04  M.L. <m.l@compaqnet.fr>
-
-        Gcc3 compile and trial run ok.
-
-2002-05-07  Foxy foxy@linuxfreemail.com
-
-		Patched BUILD file to install man page (8).
-
-2002-04-27  M.L. <m.l@compaqnet.fr>
-
-		Added mirrors.
-
-2002-04-19  M.L.
-
-		Version++ (4.04... 4.03 was not released)
-		Patched BUILD to copy config files convert tools to doc dir.
+2002-04-19 M.L.
+	* DETAILS: Version++ (4.04... 4.03 was not released)
+	* BUILD: Patched to copy config files convert tools to doc dir.
 		
-2002-04-15  M.L.
-	
-        Version++ (4.03)
+2002-04-15 M.L.
+	* DETAILS: Version++ (4.03)
 
-2002-09-26  M.L.
+2002-09-26 M.L.
+	* DETAILS: Version++
+	Added a few mirrors.
 
-        Version++
+2002-09-15 M.L.
+	* ChangeLog,HISTORY: mv Changelog HISTORY
+	* PRE_REMOVE: Patched
 
-        Added a few mirrors.
+2002-01-24 Kongar
+	* DETAILS: exim 3.34, kongar
+	* corrected a typo in POST_INSTALL which was a bug,
+	disabling fcrons exim line
+	* added EXIM_UID=`id -u mail` and EXIM_GID=`id -g mail` to the BUILD.  
+	Also hacked xinetd, exim is started as mail:mail now. The problem is
+	the directory and file permissions. Without those hacks, anyone
+	is capable of reading others mails.
+	* added an option to disable RFC1413 (identd) queries. This is 
+	a performance hack. Default timeout is 30 secs and noone is using
+	identd nowadays. Hacked CONFIGURE and BUILD.
+	* remarked xinetd logging options in xinetd.d/exim file, those adds a real
+	amount of wait time (20 secs on 100Mb, per connection) if the remote host 
+	can not be reverse mapped.
+	* added mysql as an optional depend, hacked BUILD script to satisfy that.
+	Now, if mysql is installed, it is possible to lookup mysql databases
 
-2002-09-15  M.L.	
+2002-01-18 ?
+	* The xinetd.d conf file for exim has been
+	updated to prevent exim act as an open relay.
 
-        mv Changelog HISTORY, patched PRE_REMOVE
+2002-01-10 Kyle Sallee
+	* Added PAM support and CFLAGS optimization to exim spell
 
-2002-01-24  Kongar
+2002-01-14 Kyle Sallee
+	* Fixed the spell so that it updates root's crontab and fcrontab properly.
 
-        exim 3.34, kongar
-
-        - corrected a typo in POST_INSTALL which was a bug,
-        disabling fcrons exim line
-	
-        - added EXIM_UID=`id -u mail` and EXIM_GID=`id -g mail` to the BUILD.  
-	   	Also hacked xinetd, exim is started as mail:mail now. The problem is
-	   	the directory and file permissions. Without those hacks, anyone
-	   	is capable of reading others mails.
-	
-	   	- added an option to disable RFC1413 (identd) queries. This is 
-	   	a performance hack. Default timeout is 30 secs and noone is using
-	   	identd nowadays. Hacked CONFIGURE and BUILD.
-	
-	   	- remarked xinetd logging options in xinetd.d/exim file, those adds a real
-	   	amount of wait time (20 secs on 100Mb, per connection) if the remote host 
-	  	can not be reverse mapped.
-	
-	   	- added mysql as an optional depend, hacked BUILD script to satisfy that.
-	   	Now, if mysql is installed, it is possible to lookup mysql databases
-	
-	
-2002-01-18  ?
-
-        The xinetd.d conf file for exim has been
-
-        updated to prevent exim act as an open relay.
-
-2002-01-10  Kyle Sallee
-
-        Added PAM support and CFLAGS optimization to exim spell
-
-2002-01-14  Kyle Sallee
-
-        Fixed the spell so that it updates root's crontab and fcrontab properly.
