@@ -1,7 +1,7 @@
 (
   sedit "s/www/www-data/"     Makefile.in &&
   sedit "s/\/www-data/\/www/" Makefile.in &&
-  ./configure --prefix=/usr               &&
+  ./configure --prefix=/usr $OPTS         &&
   make                                    &&
   prepare_install                         &&
   make    install

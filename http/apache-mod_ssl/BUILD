@@ -17,7 +17,8 @@ APACHE_CONFIGURE=\
               --enable-module=mmap_static
               --disable-module=auth_dbm
 	      --enable-rule=EAPI
-              --with-layout=GNU"
+              --with-layout=GNU
+              $OPTS"
 
 
 case  $CERTIFICATE  in
@@ -25,7 +26,8 @@ case  $CERTIFICATE  in
   y|Y|j|J)
 
     cd  mod_ssl-$VERSION                         &&
-    ./configure  --with-apache=../$SOURCE2_BASE  &&
+    ./configure  --with-apache=../$SOURCE2_BASE  \
+                 $OPTS				 &&
     cd  ../$SOURCE2_BASE                         &&
     $APACHE_CONFIGURE                            &&
     make  certificate  TYPE="custom"             &&
@@ -39,7 +41,8 @@ case  $CERTIFICATE  in
   *)
 
     (  cd  mod_ssl-$VERSION                         &&
-       ./configure  --with-apache=../$SOURCE2_BASE  &&
+       ./configure  --with-apache=../$SOURCE2_BASE  \
+                    $OPTS			    &&
        cd  ../$SOURCE2_BASE                         &&
        $APACHE_CONFIGURE                            &&
        make  certificate  TYPE="existing"           \

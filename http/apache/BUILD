@@ -11,7 +11,8 @@
                --enable-module=auth_db           \
                --enable-module=mmap_static       \
                --disable-module=auth_dbm         \
-               --with-layout=GNU                 &&
+               --with-layout=GNU                 \
+	       $OPTS				 &&
   make                                           &&
   prepare_install                                &&
   make    install
