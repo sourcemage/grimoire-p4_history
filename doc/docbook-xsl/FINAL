@@ -12,7 +12,7 @@ fi
 
 if [ "$xsldir" = "" ] ; then
     echo could not locate DocBook XSLT stylesheets
-    exit 1
+    return 1
 fi
 echo Found DocBook XSLT stylesheets in $xsldir
 for version in current 1.39 1.40 1.41 1.42 1.43 1.44 1.45 1.46 1.47 \

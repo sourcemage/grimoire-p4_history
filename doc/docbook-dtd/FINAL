@@ -55,7 +55,7 @@ if [ ! -r $ROOTCATALOG ] ; then
 fi
 if [ ! -r $ROOTCATALOG ] ; then
    echo Failed creating XML Catalog root $ROOTCATALOG
-   exit 1
+   return 1
 fi
 if [ ! -r $CATALOG ] ; then
    echo creating DocBook XML Catalog $CATALOG
@@ -64,7 +64,7 @@ if [ ! -r $CATALOG ] ; then
 fi
 if [ ! -r $CATALOG ] ; then
    echo Failed creating DocBook XML Catalog $CATALOG
-   exit 1
+   return 1
 fi
 
 register_docbook 4.1.2
