@@ -9,9 +9,7 @@
     mkdir /etc/acpi/events                                            &&
     mkdir /etc/acpi/actions                                           &&
     cp $SOURCE_DIRECTORY/samples/sample.conf /etc/acpi/events         &&
-    cp $SOURCE_DIRECTORY/samples/acpi_handler.sh /etc/acpi/actions    &&
-    cp $SOURCE_DIRECTORY/debian/default /etc/acpi/events              &&
-    cp $SOURCE_DIRECTORY/debian/default.sh /etc/acpi/
+    cp $SOURCE_DIRECTORY/samples/acpi_handler.sh /etc/acpi/actions
   else
     if [ ! -d /etc/acpi/events ] ; then
       mkdir /etc/acpi/events
@@ -29,13 +27,6 @@
       cp $SOURCE_DIRECTORY/samples/acpi_handler.sh /etc/acpi/actions
     fi
 
-    if [ ! -a /etc/acpi/events/default ] ; then
-      cp $SOURCE_DIRECTORY/debian/default /etc/acpi/events
-    fi
-
-    if [ ! -a /etc/acpi/default.sh ] ; then
-      cp $SOURCE_DIRECTORY/debian/default.sh /etc/acpi
-    fi
   fi
 
 ) > $C_FIFO 2>&1
