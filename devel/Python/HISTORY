@@ -1,74 +1,65 @@
-2003-10-06  Eric Sandall <eric@sandall.us>
-		* DETAILS: Updated to 2.3.2
+2003-12-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.3.3
+	* HISTORY: Formatted to Guru Handbook
 
-2003-09-26  Eric Sandall <eric@sandall.us>
+2003-10-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.3.2
 
-		Update to 2.3.1
+2003-09-26 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.3.1
 
-2003-09-04  hgg <hgreig@bigpond.net.au>
+2003-09-04 hgg <hgreig@bigpond.net.au>
+	* BUILD: Bug#4196 needs to sedit setup.py
 
-		Bug#4196 needs BUILD to sedit setup.py
+2003-08-01 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 2.3.
+	* Remove a temporary fix.
+	* IDLE has been integrated back into the package.
+	* BUILD: Removed; no longer needed.
+	* More spells need triggers to cast after Python upgrade
+	when the version changes, because files in old
+	/usr/lib/pythonX.Y/site-packages/ become useless.
 
-2003-08-01  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-25 hgg <hgreig@bigpond.net.au>
+	* BUILD: Add IDLE IDE to default Build
 
-		Upgrade to 2.3.
-		Remove a temporary fix.
-		IDLE has been integrated back into the package.
-		BUILD no longer needed.
-		More spells need triggers to cast after Python upgrade
-		when the version changes, because files in old
-		/usr/lib/pythonX.Y/site-packages/ become useless.
+2002-12-11 Sergey Lipnevich <sergeyli@pisem.net>
+	* BUILD: change to use default_build and take advantage
+	of all optimizations.
 
-2003-07-25  hgg <hgreig@bigpond.net.au>
+2002-10-28 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.2.2.
+	* BUILD: don't apply zw-fix patch.
+	* zw-fix: remove.
 
-		Add IDLE IDE to default Build
+2002-10-03 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-2002-12-11  Sergey Lipnevich  <sergeyli@pisem.net>
+2002-09-11 Julian v. Bock <julian@wongr.net>
+	* zw-fix: add.
+	* BUILD: apply patch (tmp file security fix).
 
-		* BUILD: change to use default_build and take advantage
-		of all optimizations.
+2002-06-11 Julian v. Bock <julian@wongr.net>
+	* CONFIGURE: remove.
+	* Python-tk.patch: remove.
+	* DEPENDS: make tk a simple optional dependency; remove CONFIGURE
+	related code.
+	* BUILD: don't apply tk patch; remove CONFIGURE related code.
 
-2002-10-28  Julian v. Bock  <julian@wongr.net>
+2002-05-14 Julian v. Bock <julian@wongr.net>
+	* BUILD: add libpython2.2.1.a symlink as temporary fix for
+	some other configure files.
 
-		* DETAILS: set VERSION to 2.2.2.
-		* BUILD: don't apply zw-fix patch.
-		* zw-fix: remove.
+2002-05-07 Julian v. Bock <julian@wongr.net>
+	* DEPENDS: change tcl-tk dependency to tk.
 
-2002-10-03  Julian v. Bock  <julian@wongr.net>
+2002-04-18 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.2.1.
 
-		* DETAILS: add LICENSE and MD5 fields.
+2002-03-23 Julian v. Bock <julian@wongr.net>
+	* DETAILS: downgrade version to 2.2 since there are problems with
+	various other software packages.
 
-2002-09-11  Julian v. Bock  <julian@wongr.net>
+2002-03-19 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.2.1c1.
 
-		* zw-fix: add.
-		* BUILD: apply patch (tmp file security fix).
-
-2002-06-11  Julian v. Bock  <julian@wongr.net>
-
-		* CONFIGURE: remove.
-		* Python-tk.patch: remove.
-		* DEPENDS: make tk a simple optional dependency; remove CONFIGURE
-		related code.
-		* BUILD: don't apply tk patch; remove CONFIGURE related code.
-
-2002-05-14  Julian v. Bock  <julian@wongr.net>
-
-		* BUILD: add libpython2.2.1.a symlink as temporary fix for
-		some other configure files.
-
-2002-05-07  Julian v. Bock  <julian@wongr.net>
-
-		* DEPENDS: change tcl-tk dependency to tk.
-
-2002-04-18  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 2.2.1.
-
-2002-03-23  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: downgrade version to 2.2 since there are problems with
-		various other software packages.
-
-2002-03-19  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.2.1c1.
