@@ -1,4 +1,8 @@
-depends  glib     &&
-depends  jpeg     &&
+depends  glib      &&
+depends  jpeg      &&
 depends  X11-LIBS  &&
-depends  nasm
+depends  nasm      &&
+optional_depends  "libpng" "" "" "for png input support"                     &&
+optional_depends  "libdv" "--with-dv" "--without-dv" "for dv video support"  &&
+optional_depends  "gtk+" "" "" "for glav gui support"                        &&
+optional_depends  "SDL" "" "" "for software playback"
