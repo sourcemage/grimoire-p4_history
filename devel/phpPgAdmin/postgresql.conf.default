@@ -1,4 +1,6 @@
 Alias /postgresql/ /usr/share/phpPgAdmin/
 <Directory /usr/share/phpPgAdmin>
 	DirectoryIndex index.php
+	Order Allow,Deny
+	Allow from All
 </Directory>
