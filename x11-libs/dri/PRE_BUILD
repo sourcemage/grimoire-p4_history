@@ -9,10 +9,6 @@ cp ${SCRIPT_DIRECTORY}/host.def ${SOURCE_DIRECTORY}/xc-Trunk/config/cf/host.def
 sedit "s:\(#define XF86CardDrivers\).*:\1 ${X11_DRIVER}:" ${SOURCE_DIRECTORY}/xc-Trunk/config/cf/host.def  &&
 sedit "s:\(#define DriDrivers\).*:\1 ${DRI_DRIVER}:" ${SOURCE_DIRECTORY}/xc-Trunk/config/cf/host.def  &&
 
-cd ${SOURCE_DIRECTORY}/xc-Trunk &&
-cp ${SCRIPT_DIRECTORY}/buildtools.patch ${SOURCE_DIRECTORY}/xc-Trunk/buildtools.patch &&
-patch -p0 < buildtools.patch &&
-
 if [ "${DRI_SSE_OPTIMIZATIONS}" == "y" ]
 then
 echo "#define MesaUseKatmai YES" >> ${SOURCE_DIRECTORY}/xc-Trunk/config/cf/host.def 
