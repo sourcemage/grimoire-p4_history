@@ -1,8 +1,8 @@
 
 if [[ "$mode" == "newktree" ]]
 then
-	mk_source_dir $SOURCE_DIRECTORY &&
-	cd $SOURCE_DIRECTORY &&
+	mk_source_dir $LINUX_SOURCE_DIRECTORY &&
+	cd $LINUX_SOURCE_DIRECTORY &&
 	unpack $SOURCE ${MD5[0]} &&
 	mv ./*/* ./
 	
@@ -33,7 +33,6 @@ else
 	echo "I don't know what $mode is"
 	return 1
 fi
-cd ${SOURCE_DIRECTORY}
 
 if [[ $COMPILE ]]
 then

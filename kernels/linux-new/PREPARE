@@ -699,10 +699,10 @@ create_details()
 			fi
 			if [[ "$mode" == "newktree" ]]
 			then
-				echo "SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
+				echo "LINUX_SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
 			elif [[ "$mode" == "oldktree" ]]
 			then
-				echo "SOURCE_DIRECTORY=$old_src_tree"
+				echo "LINUX_SOURCE_DIRECTORY=$old_src_tree"
 			else
 				echo "AHHH what the hell is $mode"
 				return 1

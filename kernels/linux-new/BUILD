@@ -1,5 +1,5 @@
 
-cd ${SOURCE_DIRECTORY}
+cd ${LINUX_SOURCE_DIRECTORY}
 echo "This is the version: $VERSION"
 case "$VERSION" in
 	2.6*)
