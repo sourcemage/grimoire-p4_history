@@ -90,6 +90,8 @@ install  -d  ${INSTALL_ROOT}/usr/include/linux       &&
 cp  -fa  linux/*  ${INSTALL_ROOT}/usr/include/linux  &&
 
 echo  "installing asm-$GLIBC_ARCH headers to /usr/include/asm"  &&
+# workaround the 0.9.3 iso installing broken glibc-kernel-headers
+rm -f ${INSTALL_ROOT}/usr/include/asm/mach-*  &&
 #
 #  asm is a symlink to asm-$GLIBC-ARCH
 #
