@@ -1,3 +1,11 @@
+2004-02-12 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 1.5.0.4288 (rc9)
+	* BUILD: remove obsolete comments
+	* PRE_BUILD: create_account may cause problems
+	some versions of groupadd do not work with -G parameter
+	shadow-4.0.4.1:/usr/sbin/groupadd 
+	This is a sorcery bug #5790
+
 2004-01-02 Treeve Jelbert <treeve01@pi.be>
         * BUILD: suppress debugging info asap
 	use the makeInstallImage script
