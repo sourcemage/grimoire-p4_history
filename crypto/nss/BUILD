@@ -7,7 +7,10 @@ persistent_add  NSS_LINUX_VERSION                  &&
 #   NSS_LINUX_VERSION=`uname  -r  |  cut  -c  1-3`
 # fi                                                 &&
 
-NSS_LINUX_VERSION=`uname  -r  |  cut  -d. -f-2`    &&
+# NSS_LINUX_VERSION=`uname  -r  |  cut  -d. -f-2`    &&
+
+NSS_LINUX_VERSION=`uname  -r  |  cut  -d-  -f1`    &&
+NSS_LINUX_VERSION=${NSS_LINUX_VERSION%.*}          &&
 
 cd  security/nss                                   &&
 cp  ../coreconf/Linux2.5.mk                        \
