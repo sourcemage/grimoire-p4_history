@@ -1,0 +1,12 @@
+if ! grep -q "FFMPEG=" $SPELL_CONFIG; then
+
+  message "vlc can use ffmpeg statically linked to play"     \
+          "divx movies. (NOTE: this will not install ffmpeg" \
+          ", only download the ffmpeg sources for static"    \
+          "linking)"
+
+  if     query "use ffmpeg for divx video support?" y
+    then echo  "FFMPEG=y" >> $SPELL_CONFIG
+    else echo  "FFMPEG=n" >> $SPELL_CONFIG
+  fi
+fi

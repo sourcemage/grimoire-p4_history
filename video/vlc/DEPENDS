@@ -1,31 +1,74 @@
-depends gtk+                            &&
+# interface options
+optional_depends  "gtk+"                  \
+                  ""                      \
+                  "--disable-gtk"         \
+                  "for gtk interface"     &&
 
-optional_depends  "gnome-libs"          \
-                  "--enable-gnome"      \
-                  ""                    \
-                  "for gnome support"   &&
+optional_depends  "gnome-libs"            \
+                  "--enable-gnome"        \
+                  ""                      \
+                  "for gnome interface"   &&
 
-#optional_depends  "qt-x11"              \
-#                  "--enable-qt"         \
-#                  "--enable-qt"         \
-#                  "for qt support"      &&
+optional_depends  "qt-x11"                \
+                  "--enable-qt"           \
+                  ""                      \
+                  "for qt interface"      &&
 
-#optional_depends  "kdelibs"             \
-#                  "--enable-kde"        \
-#                  ""                    \
-#                  "for kde support"     &&
+optional_depends  "kdelibs"               \
+                  "--enable-kde"          \
+                  ""                      \
+                  "for kde interface"     &&
 
-optional_depends  "SDL"                 \
-                  ""                    \
-                  "--disable-sdl"       \
-                  "for SDL support"     &&
+optional_depends  "ncurses"               \
+                  "--enable-ncurses"      \
+                  ""                      \
+                  "for ncurses support"   &&
 
-optional_depends  "ncurses"             \
-                  "--enable-ncurses"    \
-                  ""                    \
-                  "for ncurses support"
+# video output options
+optional_depends  "SDL"                   \
+                  ""                      \
+                  "--disable-sdl"         \
+                  "for SDL support"       &&
 
-optional_depends  "libdvdcss"           \
-                   "--with-dvdcss=/usr"  \
-                   "--with-dvdcss=no"    \
-                   "to play encrypted DVDs"
+optional_depends  "aalib"                 \
+                  "--enable-aa"           \
+                  ""                      \
+                  "for aalib support"     &&
+
+# audio output options
+optional_depends  "esound"                \
+                  "--enable-esd"          \
+                  ""                      \
+                  "for esd audio output"  &&
+
+optional_depends  "arts"                  \
+                  "--enable-arts"         \
+                  ""                      \
+                  "for arts audio output" &&
+
+optional_depends  "alsa-lib"               \
+                  "--enable-alsa"          \
+                  ""                       \
+                  "for alsa audio output"  &&
+
+# audio codec options
+optional_depends  "mad"                    \
+                  "--enable-mad"           \
+                  ""                       \
+                  "for mad mp3 decoder"    &&
+
+optional_depends  "libvorbis"              \
+                  ""                       \
+                  "--disable-vorbis"       \
+                  "for ogg vorbis decoder" &&
+
+# dvd options
+optional_depends  "libdvdcss"              \
+                   ""                      \
+                   ""                      \
+                   "to play encrypted DVDs (you can also use libdvdread for this, see next option)" &&
+
+optional_depends  "libdvdread"             \
+                  ""                       \
+                  ""                       \
+                  "to play encrypted DVDs"
