@@ -1,6 +1,7 @@
---- functions/addressbook.php~	2002-12-31 04:49:31.000000000 -0800
-+++ functions/addressbook.php	2003-04-10 09:11:29.000000000 -0700
-@@ -542,7 +542,7 @@
+diff -Naur squirrelmail-1.4.4.orig/functions/addressbook.php squirrelmail-1.4.4/functions/addressbook.php
+--- squirrelmail-1.4.4.orig/functions/addressbook.php	2005-02-01 10:59:05.572877664 -0800
++++ squirrelmail-1.4.4/functions/addressbook.php	2005-02-01 10:59:12.050892856 -0800
+@@ -544,7 +544,7 @@
              return -1;
          }
      }
@@ -8,4 +9,4 @@
 +    return (strtolower($a['lastname']) > strtolower($b['lastname'])) ? 1 : -1;
  }
  
- ?>
+ 
