@@ -1,6 +1,11 @@
 #!/bin/sh
 # FAGS startup script for Source Mage GNU/Linux
 # chkconfig: 345 99 00
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S99
+# SMGL-STOP:0 6:K00
+#
 
 case $1 in
      start)    echo   "$1ing fags."
