@@ -1,0 +1,16 @@
+           SPELL=Crypt-Blowfish
+         VERSION=2.09
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/D/DP/DPARIS/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Crypt::Blowfish"
+         ENTERED=20020320
+         UPDATED=20020320
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="XS-based implementation of Blowfish"
+cat << EOF
+Blowfish is capable of strong encryption and can use key
+sizes up to 56 bytes (a 448 bit key).  You're encouraged
+to take advantage of the full key size to ensure the
+strongest encryption possible from this module.
+EOF

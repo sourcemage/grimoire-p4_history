@@ -1,0 +1,7 @@
+/etc/init.d/postfix.sh  stop
+
+if query "Backup package config ?" y
+then
+ CUR_DATE=`date +%s`
+ tar -c --use-compress-program=bzip2 -f "/etc/postfix-backup-$CUR_DATE.tar.bz2" /etc/postfix 1>/dev/null 2>&1
+fi

@@ -1,0 +1,12 @@
+cd       /usr/src
+rm  -rf  linux
+rm  -rf  linux-$VERSION
+
+unpack  $SOURCE
+chown  -R  root:root  linux-$VERSION
+
+ln  -s     linux-$VERSION  linux
+
+if  [  -f   $CONFIG_CACHE/.config  ];  then
+  cp        $CONFIG_CACHE/.config  /usr/src/linux
+fi

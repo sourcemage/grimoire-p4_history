@@ -1,0 +1,8 @@
+if  !  grep  -q  "BIND_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke BIND at boot?" n
+  then  echo   "BIND_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "BIND_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

@@ -1,0 +1,18 @@
+if  !  grep  -q  "NFS_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke NFS at boot?"  n
+  then  echo   "NFS_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "NFS_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+  case  $NFS_BOOT  in
+    y|Y|j|J)  echo  "NFSLOCK_BOOT=n"  >>  $SPELL_CONFIG
+              ;;
+          *)  if    query  "Invoke NFSLOCK at boot?"  n
+              then  echo   "NFSLOCK_BOOT=y"  >>  $SPELL_CONFIG
+              else  echo   "NFSLOCK_BOOT=n"  >>  $SPELL_CONFIG
+              fi
+              ;;
+  esac
+
+fi

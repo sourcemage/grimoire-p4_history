@@ -1,0 +1,14 @@
+           SPELL=libusb
+         VERSION=0.1.5
+	  SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://sourceforge.net/projects/libusb/
+         ENTERED=20020213
+         UPDATED=20020213
+      MAINTAINER="eru@subdimension.com"
+           SHORT="Library for USB devices."
+cat << EOF
+Library to enable user space application programs to communicate with 
+USB devices
+EOF

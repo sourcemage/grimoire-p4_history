@@ -1,0 +1,42 @@
+diff  -U2 glibc-2.2.5/sunrpc/Makefile glibc-2.2.5/sunrpc/Makefile
+--- glibc-2.2.5/sunrpc/Makefile	Mon Jan 21 14:32:58 2002
++++ glibc-2.2.5/sunrpc/Makefile	Mon Jan 21 14:32:58 2002
+@@ -127,5 +127,5 @@
+ 
+ # Tell rpcgen where to find the C preprocessor.
+-rpcgen-cmd = $(built-program-cmd) -Y ../scripts
++rpcgen-cmd = $(built-program-cmd)
+ 
+ # Install the rpc data base file.
+diff -U2 glibc-2.2.5/Makefile glibc-2.2.5/Makefile
+--- glibc-2.2.5/Makefile	Mon Jan 21 14:32:56 2002
++++ glibc-2.2.5/Makefile.new	Tue Jan 22 01:04:06 2002
+@@ -98,28 +98,4 @@
+ 	$(MAKE) -C $(@D) $(@F)
+ 
+-# Create links for shared libraries using the `ldconfig' program if possible.
+-# Ignore the error if we cannot update /etc/ld.so.cache.
+-ifeq (no,$(cross-compiling))
+-ifeq (yes,$(build-shared))
+-install: install-symbolic-link
+-.PHONY: install-symbolic-link
+-install-symbolic-link: subdir_install
+-	$(symbolic-link-prog) $(symbolic-link-list)
+-	rm -f $(symbolic-link-list)
+-
+-install:
+-	-test ! -x $(common-objpfx)elf/ldconfig || LC_ALL=C LANGUAGE=C \
+-	  $(common-objpfx)elf/ldconfig $(addprefix -r ,$(install_root)) \
+-				       $(slibdir) $(libdir)
+-ifneq (no,$(PERL))
+-ifeq (/usr,$(prefix))
+-ifeq (,$(install_root))
+-	CC="$(CC)" $(PERL) scripts/test-installation.pl $(common-objpfx)
+-endif
+-endif
+-endif
+-endif
+-endif
+-
+ # Build subdirectory lib objects.
+ lib-noranlib: subdir_lib

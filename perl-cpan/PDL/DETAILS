@@ -1,0 +1,21 @@
+           SPELL=PDL
+         VERSION=2.3.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/K/KG/KGB/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=PDL"
+         ENTERED=20020314
+         UPDATED=20020324
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Perl Data Language - numeric analysis env"
+cat << EOF
+
+The perlDL project aims to turn perl into an efficient
+numerical language for scientific computing. The PDL module
+gives standard perl the ability to COMPACTLY store and
+SPEEDILY manipulate the large N-dimensional data sets which
+are the bread and butter of scientific computing. e.g.
+$a=$b+$c can add two 2048x2048 images in only a fraction of
+a second.
+
+EOF

@@ -1,0 +1,18 @@
+           SPELL=db
+         VERSION=4.0.14
+       # VERSION=3.3.11
+          SOURCE=$SPELL-$VERSION.tar.gz
+       # SOURCE2=patch.3.3.11.1
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.sleepycat.com/update/$VERSION/$SOURCE
+# SOURCE2_URL[0]=http://www.sleepycat.com/update/3.3.11/$SOURCE2
+        WEB_SITE=http://www.sleepycat.com
+         ENTERED=20010922
+         UPDATED=20020210
+           SHORT="Berkeley DB provides database support."
+cat << EOF
+Berkeley DB is a programmatic toolkit that provides fast, reliable,
+scalable, and mission-critical database support in software ranging from
+applications running on hand-held appliances to enterprise-scale
+servers.
+EOF

@@ -1,0 +1,78 @@
+#!/bin/sh
+#
+# this script finds the static libraries and executables in
+# $TRACKED subdirectories, in order to list and re-compile
+# the spells created those.
+#
+# This way, we will get rid of buggy static compiles.
+#
+# 20020313, kongar
+############################
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# $Id: POST_INSTALL,v 1.1.1.1 2002/03/20 17:03:32 erics Exp $
+############################
+
+
+##### end sanity checks
+
+show_from()  {
+
+     cd  $INSTALL_LOGS
+     grep  $1  *
+
+}
+
+find_libs() {
+
+   LIB_LIST=`find /usr/lib   \
+        ! -regex '.*/doc/.*'  ! -regex '.*/man/.*'   ! -regex '.*/include/.*'  \
+        ! -regex '.*/src/.*'  ! -regex '.*/share/.*' ! -regex '.*/fonts/.*'    \
+        ! -regex '.*/info/.*' ! -regex '.*/perl5/.*' ! -regex '.*/site-packages/.*' \
+        ! -regex '.*\.so.*'   \
+        -exec file {} \;     \
+             |  egrep "current ar archive|statically linked" \
+             |  cut -d ":" -f 1-1`
+             
+   AFFECTED=`nm --print-file-name $LIB_LIST | egrep "deflate|inflate" | cut -d ":" -f 1-1 `
+
+   for TARGET in $AFFECTED; do echo $TARGET >> $TMPFILE; done
+   SORTED=`cat $TMPFILE | sort | grep -v libz | uniq`
+   for SPELL in $SORTED; 
+   do 
+      for INSTALLED_SPELL in $INSTALLED_SPELLS;
+      do
+         if [ `show_from $SPELL | cut -d ":" -f 1-1 | grep $INSTALLED_SPELL` ]; then
+             cast $INSTALLED_SPELL; 
+         fi
+      done
+   done
+}
+
+main() {
+   echo "zlib will now recompile software that is statically linked against it."
+   echo "This may take some time. If you stopped it, disturbed it, your machine "
+   echo "hangs or whatever, you can issue a /var/lib/sorcery/grimoire/archive/zlib/POST_INSTALL "
+   echo "at any time to recompile the affected spells." 
+   echo
+   if query "Do you want to recompile affected spells now ?" y; then
+      find_libs;
+      rm $TMPFILE
+   else echo "Not recompiling affected spells - your system will be insecure until you "
+        echo "issue a /var/lib/sorcery/grimoire/archive/zlib/POST_INSTALL"
+   fi
+}
+
+. /etc/sorcery/config
+TMPFILE=/tmp/zlibfind.`uuidgen`
+INSTALLED_SPELLS=`gaze installed | cut -d ":" -f 1-1`
+main  $*

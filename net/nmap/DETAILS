@@ -1,0 +1,21 @@
+           SPELL=nmap
+       # Version 2.53 is stable, but doesn not compile.
+       # VERSION=2.53
+         VERSION=2.54BETA30
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.insecure.org/$SPELL/dist/$SOURCE
+        WEB_SITE=http://www.insecure.org/nmap
+         ENTERED=20010922
+         UPDATED=20011202
+           SHORT="nmap is a utility for network exploration or security auditing."
+cat << EOF
+Nmap is a utility for network exploration or security auditing. It
+supports ping scanning (determine which hosts are up), many port
+scanning techniques (determine what services the hosts are offering),
+and TCP/IP fingerprinting (remote host operating system identification).
+Nmap also offers flexible target and port specification, decoy scanning,
+determination of TCP sequence predictability characteristics, sunRPC
+scanning, reverse-identd scanning, and more. Console and X-Window
+versions are available.
+EOF

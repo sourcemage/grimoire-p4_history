@@ -1,0 +1,8 @@
+if  !  grep  -q  "NTOP_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke NTOP at boot?" n
+  then  echo   "NTOP_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "NTOP_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

@@ -1,0 +1,18 @@
+           SPELL=pan
+         VERSION=0.11.2
+         # Latest unstable is 0.11.1.94
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://pan.rebelbase.com/download/$VERSION/SOURCE/$SOURCE
+        WEB_SITE=http://pan.rebelbase.com
+         ENTERED=20010922
+         UPDATED=20020208
+            FUZZ="off"
+           SHORT="Pan is a newsreader, loosely based on Agent and Gravity."
+cat << EOF
+Pan is a newsreader, loosely based on Agent and Gravity, which attempts
+to be pleasant to use for new and advanced users alike. It has all the
+typical features found in newsreaders, and also supports offline
+reading, multiple connections, and a number of features for power users
+and alt.binaries fans.
+EOF

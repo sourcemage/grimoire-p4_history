@@ -1,0 +1,20 @@
+           SPELL=bonobo
+         VERSION=1.0.19
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20020129
+           SHORT="Bonobo are CORBA interfaces for creating reusable components."
+cat << EOF
+Bonobo is a set of language and system independant CORBA interfaces
+for creating reusable components, controls and creating compound
+documents.
+The Bonobo distribution includes a Gtk+ based implementation of the
+Bonobo interfaces, enabling developers to create reusable
+components and applications that can be used to form more complex
+documents.
+EOF

@@ -1,0 +1,10 @@
+if  !  grep  -q  "FTPD_BOOT="  $SPELL_CONFIG  &&
+    !  grep  -q  "xinetd"      $SPELL_CONFIG
+then
+
+  if    query  "Invoke pureftpd during boot? "  n
+  then  echo   "FTPD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "FTPD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

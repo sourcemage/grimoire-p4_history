@@ -1,0 +1,11 @@
+if query "Backup package config ?" y
+then
+ CUR_DATE=`date +%s`
+ cp /etc/openwebmail.conf /etc/openwebmail-backup-$CUR_DATE.conf 1>/dev/null 2>&1
+fi
+
+# clean
+rm -r -f /usr/share/httpd/cgi-bin/openwebmail 
+rm -r -f /usr/share/httpd/htdocs/openwebmail
+# noy yet rm -f /etc/pam.d/openwebmail
+rm -f /var/log/openwebmail.log

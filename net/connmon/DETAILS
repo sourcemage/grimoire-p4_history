@@ -1,0 +1,16 @@
+           SPELL=connmon
+         VERSION=0.12.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.student.lu.se/~nbi98oli/src/$SOURCE
+        WEB_SITE=http://www.student.lu.se/~nbi98oli/
+         ENTERED=20011116
+         UPDATED=20020207
+           SHORT="A console connection and bandwidth monitoring program"
+cat << EOF
+Connection Monitor is a connection and bandwidth monitoring program
+with a console-based user interface. It displays a list of open TCP
+and UDP connections with transfer rate (in bytes per second) for each
+connection. ConnMon uses the GNU adns library to make asynchronous
+DNS lookups.
+EOF

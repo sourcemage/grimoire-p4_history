@@ -1,0 +1,5 @@
+if  [  "$TK"  ==  "y"  ];  then
+  depends  tcl-tk
+fi
+depends  db  &&
+optional_depends  "expat"  ""  ""  "for an xml parser module"

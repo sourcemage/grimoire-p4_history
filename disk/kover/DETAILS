@@ -1,0 +1,25 @@
+	   SPELL=kover
+         VERSION=0.8.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://lisas.de/kover/$SOURCE
+        WEB_SITE=http://lisas.de/kover
+         ENTERED=20020216
+         UPDATED=20020311
+      MAINTAINER=mtzanidakis@yahoo.com
+           SHORT="An easy to use WYSIWYG CD cover printer with CDDB support."
+cat << EOF
+Kover is an easy to use WYSIWYG CD cover printer with CDDB support.
+Features :
+o CDDB support via freedb.org
+o Supports proxies with authentification
+o Image embedding in inlet and booklet
+o Should read files saved with Easy CD Pro 2.0
+o Saves CDDB queries locally, and uses them next time the same CD is inserted.
+o Print to file or printer (surprising?)
+o Able to save and load with kover created covers
+o Save and load files via ftp
+o Do CDDB query without the CD. Just enter the ID and category
+o French, german and norwegian translation available
+EOF
+

@@ -1,0 +1,22 @@
+           SPELL=flac
+         VERSION=1.0.2
+          SOURCE=$SPELL-$VERSION-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://flac.sourceforge.net/
+         ENTERED=20020209
+         UPDATED=20020209
+           SHORT="FLAC is an open-source, patent-free lossless audio codec."
+cat << EOF
+FLAC (http://flac.sourceforge.net/) is an Open Source lossless audio
+codec developed by Josh Coalson.
+
+FLAC is comprised of 1) 'libFLAC', a library which implements
+reference encoders and decoders, licensed under the GNU Lesser
+General Public Licence (LGPL); 2) 'flac', a command-line program for
+encoding and decoding files, licensed under the GNU General Public
+License (GPL); 3) 'metaflac', a command-line program for editing
+FLAC metadata, licensed under the GPL; 4) player plugins for XMMS
+and Winamp, licensed under the GPL; and 5) documentation, licensed
+under the GNU Free Documentation License.
+EOF

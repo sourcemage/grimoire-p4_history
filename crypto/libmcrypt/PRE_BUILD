@@ -1,0 +1,3 @@
+default_pre_build         &&
+cd     $SOURCE_DIRECTORY  &&
+bzcat  $SCRIPT_DIRECTORY/libmcrypt-2.4.18.patch.bz2  | patch -p 0

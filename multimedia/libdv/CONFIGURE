@@ -1,0 +1,8 @@
+if  !  grep  -q  "MMX"  $SPELL_CONFIG;  then
+
+ if  query  "Does Your CPU support MMX?"  y
+  then  echo  "MMX=y"  >>  $SPELL_CONFIG
+  else  echo  "MMX=n"  >>  $SPELL_CONFIG
+ fi
+ 
+fi

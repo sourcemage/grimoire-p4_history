@@ -1,0 +1,4 @@
+11c11
+< LDADD = /usr/local/lib/libepplet.la -L$(libdir) -L$(prefix)/lib $(LIBS) $(X_LIBS) -lxmms -lglib
+---
+> LDADD = /usr/lib/libepplet.so -L$(libdir) -L$(prefix)/lib $(LIBS) $(X_LIBS) -lxmms -lglib

@@ -1,0 +1,15 @@
+(
+  ./configure  --prefix=/usr               \
+               --sysconfdir=/etc/silc      \
+               --localstatedir=/var/run    \
+	       --with-logsdir=/var/log	   \
+	       --with-simdir=/usr/lib/silc-client \
+	       --with-docdir=/usr/doc/silc-client/doc \
+	       --with-helpdir=/usr/share/silc/help \
+	       --without-perl \
+	       $OPTS		      &&	
+  make                                &&
+  prepare_install                     &&
+  make    install
+
+) > $C_FIFO 2>&1

@@ -1,0 +1,20 @@
+           SPELL=gmp
+         VERSION=3.1.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/directory/gnump.html
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="gmp is the GNU mathematics precision library."
+cat << EOF
+GNUmp is a library operating on signed integers, rational numbers, and
+floating point numbers. All functions have a standardized interface.
+GNUmp is designed to be as fast as possible by using fullwords as the
+basic arithmetic type, by using fast algorithms, by carefully optimizing
+assembly code for the most common inner loops for many CPUs, and by a
+general emphasis on speed (as opposed to simplicity or elegance).
+GNUmp's speed advantage increases with the operand size, since GNUmp in
+many cases has asymptomatically faster algorithms.
+EOF

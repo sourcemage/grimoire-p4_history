@@ -1,0 +1,15 @@
+           SPELL=gnome-pim
+         VERSION=1.4.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="gnome-pim contains a calendar tool and address book."
+cat << EOF
+This package contains a calendar tool with notifications and multiple           
+views, and an address book.
+EOF

@@ -1,0 +1,273 @@
+--- kdebase-2.2.2/ksmserver/server.h	Sun Jun 10 23:37:39 2001
++++ kdebase-2.2.2/ksmserver/server.h	Sat Feb 23 01:02:59 2002
+@@ -133,6 +133,8 @@
+     void startApplication( const QStringList& command );
+     void executeCommand( const QStringList& command );
+ 
++    void haltReboot();
++
+  private:
+     QList<KSMListener> listener;
+     QList<KSMClient> clients;
+@@ -154,6 +156,7 @@
+ 
+     int progress;
+     int appsToStart;
++    int typeOfLog;   
+ };
+ 
+ #endif
+--- kdebase-2.2.2/ksmserver/server.cpp	Sun Jul 29 06:56:45 2001
++++ kdebase-2.2.2/ksmserver/server.cpp	Sat Feb 23 02:53:06 2002
+@@ -79,7 +79,9 @@
+ 
+ #include "server.moc"
+ 
++#include <kprocess.h>
+ #include <kdebug.h>
++#include <ksimpleconfig.h>
+ 
+ extern "C" {
+     /* int umask(...); */
+@@ -990,7 +992,8 @@
+         connect( KSMShutdownFeedback::self(), SIGNAL( aborted() ), SLOT( cancelShutdown() ) );
+     }
+ 
+-    if ( !confirmLogout || KSMShutdownDlg::confirmShutdown( saveSession ) ) {
++    typeOfLog=1;
++    if ( !confirmLogout || KSMShutdownDlg::confirmShutdown( saveSession,typeOfLog ) ) {
+ 	// Set the real desktop background to black so that exit looks
+ 	// clean regardless of what was on "our" desktop.
+ 	kapp->desktop()->setBackgroundColor( Qt::black );
+@@ -1180,8 +1183,7 @@
+     }
+ 
+     if ( clients.isEmpty() ) {
+-	kdDebug(0) << "Calling qApp->quit()" << endl;
+-	qApp->quit();
++      haltReboot();
+     } else {
+ 	for (KSMClient *c = clients.first(); c; c = clients.next()) {
+ 	    if (! c->wasPhase2)
+@@ -1193,9 +1195,38 @@
+     }
+ }
+ 
+-void KSMServer::timeoutQuit()
++void KSMServer::haltReboot()
+ {
+-    qApp->quit();
++  KProcess *proc= new KProcess;
++  KSimpleConfig kdmConf( QString::fromLatin1( KDE_CONFDIR "/kdm/kdmrc" ) );
++  kdmConf.setGroup("Shutdown");
++  QString halt("/sbin/halt");//kdmConf.readEntry("HaltCmd","/sbin/halt");
++  QString reboot("/sbin/reboot");//kdmConf.readEntry("RebootCmd","/sbin/reboot");
++
++  
++  if(typeOfLog==1)
++    {
++      //logout
++    }
++  else if(typeOfLog==2)
++    {
++      //halt
++      *proc << halt;
++      proc->start(KProcess::NotifyOnExit, KProcess::AllOutput);
++    }
++  else if(typeOfLog==3)
++    {
++      //reboot
++      *proc<<reboot;
++      proc->start(KProcess::NotifyOnExit, KProcess::AllOutput);
++    }
++  sleep(1);
++  qApp->quit();
++}
++
++void KSMServer::timeoutQuit()
++{ 
++  haltReboot();
+ }
+ 
+ void KSMServer::discardSession()
+--- kdebase-2.2.2/ksmserver/shutdown.h	Sun Jan  7 14:54:00 2001
++++ kdebase-2.2.2/ksmserver/shutdown.h	Sat Feb 23 01:02:59 2002
+@@ -10,6 +10,7 @@
+ #include <qpixmap.h>
+ #include <qdialog.h>
+ class QCheckBox;
++class QRadioButton;
+ 
+ // The (singleton) widget that makes the desktop gray.
+ class KSMShutdownFeedback : public QWidget
+@@ -47,7 +48,7 @@
+     KSMShutdownDlg( QWidget* parent = 0 );
+     ~KSMShutdownDlg() {}
+ 
+-    static bool confirmShutdown( bool& saveSession );
++    static bool confirmShutdown( bool& saveSession,int &typeOfLogout ); 
+ 
+     const QPixmap & pixmap() { return pm; }
+ 
+@@ -57,7 +58,10 @@
+ private:
+     virtual void mousePressEvent( QMouseEvent * ){}
+     virtual void showEvent( QShowEvent * e );
++    void securityLevel(); 
+     QCheckBox* checkbox;
++    QRadioButton *rLogout,*rReboot,*rHalt;
++    bool allowHaltReboot;
+     QPixmap pm;
+ };
+ 
+--- kdebase-2.2.2/ksmserver/shutdown.cpp	Sun Jun  3 11:13:32 2001
++++ kdebase-2.2.2/ksmserver/shutdown.cpp	Sat Feb 23 03:48:08 2002
+@@ -12,6 +12,7 @@
+ #include <qgroupbox.h>
+ #include <qcheckbox.h>
+ #include <qpushbutton.h>
++#include <qradiobutton.h>
+ #include <qlabel.h>
+ #include <qvbox.h>
+ #include <qpainter.h>
+@@ -24,8 +25,16 @@
+ 
+ #include <X11/Xlib.h>
+ 
++#include <qbuttongroup.h>
++#include <qfile.h>
++#include <qfileinfo.h>
+ #include "shutdown.moc"
+ 
++#include <pwd.h>
++#include <sys/types.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <libintl.h>
+ KSMShutdownFeedback * KSMShutdownFeedback::s_pSelf = 0L;
+ 
+ KSMShutdownFeedback::KSMShutdownFeedback()
+@@ -71,6 +80,8 @@
+     frame->setLineWidth( style().defaultFrameWidth() );
+     vbox->addWidget( frame );
+     vbox = new QVBoxLayout( frame, 15, 5 );
++    allowHaltReboot=false;
++    securityLevel();
+ 
+     QLabel* label = new QLabel(i18n(
+          "<center><b><big><big>End KDE Session?</big></big></b></center>"),
+@@ -78,15 +89,41 @@
+     vbox->addWidget( label );
+     vbox->addStretch();
+ 
++
++    if(allowHaltReboot)
++      {
++       QVBoxLayout* vbox2 = new QVBoxLayout( vbox );
++       vbox2->addStretch();
++       QButtonGroup *grp = new QButtonGroup( 1, QGroupBox::Horizontal,frame);
++       grp->setRadioButtonExclusive( TRUE );
++
++       rLogout=new QRadioButton(dgettext("gtk+mdk","Logout"),grp);
++
++       rHalt=new QRadioButton(dgettext("gtk+mdk","Halt"),grp);
++
++       rReboot=new QRadioButton(dgettext("gtk+mdk","Reboot"),grp);
++
++       rLogout->setChecked(true);
++
++       vbox2->addWidget( grp);
++      }
++    else
++      {
++       rLogout=0L;
++       rReboot=0L;
++       rHalt=0L;
++      }
++
++
+     checkbox = new QCheckBox( i18n("&Restore session when logging in next time"), frame );
+     vbox->addWidget( checkbox, 0, AlignRight  );
+     vbox->addStretch();
+ 
+     QHBoxLayout* hbox = new QHBoxLayout( vbox );
+     hbox->addStretch();
+-    QPushButton* yes = new QPushButton(i18n("&Logout"), frame );
++    QPushButton* yes = new QPushButton(i18n("&Ok"), frame );
+     connect( yes, SIGNAL( clicked() ), this, SLOT( accept() ) );
+-    yes->setDefault( TRUE );
++    
+     hbox->addWidget( yes );
+     QPushButton* cancel = new QPushButton(i18n("&Cancel"), frame );
+     connect( cancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+@@ -94,18 +131,47 @@
+ 
+     QTimer::singleShot( 0, this, SLOT( requestFocus() ) );
+     checkbox->setFocus();
++    cancel->setDefault(TRUE);      
++}
++
++void KSMShutdownDlg::securityLevel()
++{
++  if(getuid()==0)
++    {
++      allowHaltReboot=true;
++      return;
++    }
++  else
++    {
++      QFileInfo halt_command("/sbin/halt");
++      kdDebug()<<"halt_command.isExecutable () :"<<halt_command.isExecutable ()<<endl;
++      if(halt_command.isExecutable ())
++       allowHaltReboot=true;
++      return;
++    }
+ }
+ 
++
+ void KSMShutdownDlg::requestFocus()
+ {
+     XSetInputFocus( qt_xdisplay(), winId(), RevertToParent, CurrentTime );
+ }
+ 
+-bool KSMShutdownDlg::confirmShutdown( bool& saveSession )
++bool KSMShutdownDlg::confirmShutdown( bool& saveSession,int &typeOfLogout )
+ {
+     kapp->enableStyles();
+     KSMShutdownDlg* l = new KSMShutdownDlg( KSMShutdownFeedback::self() );
+     l->checkbox->setChecked( saveSession );
++    if(l->allowHaltReboot)
++      {
++       if(typeOfLogout==2)
++         l->rHalt->setChecked(true);
++       else if(typeOfLogout==3)
++         l->rReboot->setChecked(true);
++       else
++	 l->rLogout->setChecked(true);
++      }
++
+ 
+     // Show dialog (will save the background in showEvent)
+     QSize sh = l->sizeHint();
+@@ -115,6 +181,21 @@
+     	    rect.y() + (rect.height() - sh.height())/2);
+     l->show();
+     saveSession = l->checkbox->isChecked();
++    if(l->allowHaltReboot)
++      {
++      if(l->rLogout->isChecked())
++       typeOfLogout=1;
++      else if(l->rHalt->isChecked())
++       typeOfLogout=2;
++      else if(l->rReboot->isChecked())
++       typeOfLogout=3;
++      else
++       typeOfLogout=0;
++      }
++    else //logout or halt unautorized
++      typeOfLogout=-1;
++
++
+     bool result = l->result();
+     l->hide();
+ 

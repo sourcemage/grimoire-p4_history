@@ -1,0 +1,19 @@
+           SPELL=MIME-Base64
+         VERSION=2.12
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/G/GA/GAAS/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=MIME::Base64"
+         ENTERED=20020312
+         UPDATED=20020313
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Encode/decode Base 64 (RFC 2045)"
+cat << EOF
+This module provides functions to encode and decode
+strings into the Base64 encoding specified in RFC 2045 -
+MIME (Multipurpose Internet Mail Extensions). The Base64
+encoding is designed to represent arbitrary sequences of
+octets in a form that need not be humanly readable. A
+65-character subset ([A-Za-z0-9+/=]) of US-ASCII is used,
+enabling 6 bits to be represented per printable character.
+EOF

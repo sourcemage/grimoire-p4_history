@@ -1,0 +1,14 @@
+optional_depends  "pspell"      "--with-pspell"      ""  "for spelling functions"              &&
+optional_depends  "bzip2"       "--with-bz2"         ""  "for compression support"             &&
+optional_depends  "mhash"       "--with-mhash"       ""  "for hash functions support"          &&
+optional_depends  "mcrypt"      "--with-mcrypt"      ""  "for crypto library"                  &&
+optional_depends  "gmp"         "--with-gmp"         ""  "GNU math precision library support"  &&
+optional_depends  "openssl"     "--with-openssl"     ""  "for OpenSSL support"                 &&
+optional_depends  "gettext"     "--with-gettext"     ""  "for GNU gettext support"             &&
+optional_depends  "postgresql"  "--with-pgsql=/usr"  ""  "for native Postgresql support"       &&
+optional_depends  "mysql"       "--with-mysql=/usr"  ""  "for native MySQL support"            &&
+
+optional_depends  "gd"  \
+   "--with-gd --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr  \
+    --with-xpm-dir=/usr/X11R6 --with-zlib --with-freetype-dir=/usr/X11R6 "     \
+    "" "for on the fly graphics creation"

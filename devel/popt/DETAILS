@@ -1,0 +1,18 @@
+           SPELL=popt
+         VERSION=1.6.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://sorcerer.wox.org/mirror/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.0.x/$SOURCE
+        WEB_SITE=ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.0.x
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="The popt library exists essentially for parsing command line options."
+cat << EOF
+The popt library exists essentially for parsing command line options.
+Some specific advantages of popt are no global variables (allowing
+multiple passes in parsing argv), parsing an arbitrary array of
+argv-style elements (allowing parsing of command-line-strings from any
+source), a standard method of option aliasing, ability to exec external
+option filters, and automatica generation of help and usage messages.
+EOF

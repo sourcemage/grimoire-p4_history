@@ -1,0 +1,17 @@
+           SPELL=ftpfs
+         VERSION=0.6.2-k2.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ftp1.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://planetmirror.com/sourceforge/$SPELL/$SOURCE
+        WEB_SITE=http://ftpfs.sourceforge.net
+         ENTERED=20010922
+         UPDATED=20010922
+         ARCHIVE="off"
+           SHORT="ftpfs provides kernel module for mounting FTP servers as directories."
+cat << EOF
+FTP File System is a Linux kernel module that transparently implements
+the file transfer protocol under the VFS layer. It enables the
+"mounting" of FTP volumes locally, and offers the full advantage of
+local file ops for remote FTP-based resources.
+EOF

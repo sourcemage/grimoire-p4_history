@@ -1,0 +1,134 @@
+cut_label()  {
+
+  if    ((  $(  echo  $1  |  wc  -c  )  >  15  ));  then
+    echo  "$1"            |
+    sed   "s/linux-//"    |
+    cut   -c1-15
+  else
+    echo  "$1"
+  fi
+
+}
+
+
+lilo_image_entry()  {
+
+  cat  <<  EOF
+
+image			=	/boot/vmlinubz-$VERSION
+	label		=	$(  cut_label linux-$VERSION  )
+	read-only
+	restricted
+
+EOF
+
+}
+
+
+update_lilo()  {
+
+  if  !  grep  -q  "	$VERSION$"  /etc/lilo.conf;  then
+
+    IFS_OLD=$IFS
+    export  IFS="
+"
+
+    rm  -rf  /etc/lilo.conf.new
+    cp  /etc/lilo.conf  /etc/lilo.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/lilo.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`lilo_image_entry`"  >>  /etc/lilo.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+    
+      echo  $LINE  >>  /etc/lilo.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`lilo_image_entry`"  >>  /etc/lilo.conf.new
+    fi
+
+    cp  /etc/lilo.conf.new  /etc/lilo.conf
+
+    export  IFS=$IFS_OLD
+
+  fi
+
+  /sbin/lilo
+
+}
+
+
+update_yaboot()  {
+
+  if  !  grep  -q  "$VERSION"  /etc/yaboot.conf;  then
+
+    IFS_OLD=$IFS
+    export  IFS="
+"
+
+    rm  -rf  /etc/yaboot.conf.new
+    cp  /etc/yaboot.conf  /etc/yaboot.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/yaboot.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`lilo_image_entry`"  >>  /etc/yaboot.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+
+      echo  $LINE  >>  /etc/yaboot.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`lilo_image_entry`"  >>  /etc/yaboot.conf.new
+    fi
+
+    cp  /etc/yaboot.conf.new  /etc/yaboot.conf
+
+    export  IFS=$IFS_OLD
+
+  fi
+
+  /usr/sbin/ybin
+
+}
+
+
+case  $BUILD  in
+  powerpc-linux-gnu)  update_yaboot  ;;
+                  *)  update_lilo    ;;
+esac
+
+#  Reinstall packages that add their own kernel modules
+
+rm  -f  $BOOST_LOCK
+if  spell_installed  cvsfs;          then  cast  cvsfs;          fi
+if  spell_installed  NVIDIA_kernel;  then  cast  NVIDIA_kernel;  fi
+if  spell_installed  alsa-driver;    then  cast  alsa-driver;    fi
+if  spell_installed  cryptoapi;      then  cast  cryptoapi;      fi
+if  spell_installed  pcmcia-cs;      then  cast  pcmcia-cs;      fi
+if  spell_installed  mwavem;         then  cast  mwavem;         fi
+if  spell_installed  ftpfs;          then  cast  ftpfs;          fi

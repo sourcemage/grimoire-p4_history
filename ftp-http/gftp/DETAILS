@@ -1,0 +1,18 @@
+           SPELL=gftp
+         VERSION=2.0.11
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://gftp.seul.org/gftp-$VERSION.tar.gz
+        WEB_SITE=http://gftp.seul.org
+         ENTERED=20011031
+         UPDATED=20020104
+           SHORT="gFTP is a graphical ftp client"
+
+cat << EOF
+gFTP is a multithreaded FTP client for X Windows written using GTK+.
+It features simultaneous downloads, resuming of interrupted file
+transfers, FTP, HTTP, and SSH protocols, file transfer queues,
+downloading of entire directories, FTP and HTTP proxy support, remote 
+directory caching, passive and non-passive file transfers,
+drag-n-drop support, a very nice connection manager, and more.
+EOF

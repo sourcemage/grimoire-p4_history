@@ -1,0 +1,14 @@
+           SPELL=mknbi
+         VERSION=1.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/etherboot/$SOURCE
+        WEB_SITE=http://sourceforge.net/projects/etherboot/
+         ENTERED=20011016
+         UPDATED=20011016
+           SHORT="mknbi creates images for network booting via etherboot"
+cat << EOF
+mknbi creates images for network booting via etherboot.
+These are used to boot a diskless x86 PC over protocols like
+bootp/arp/dhcp and tftp.
+EOF

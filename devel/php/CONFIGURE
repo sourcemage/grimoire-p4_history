@@ -1,0 +1,17 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if  query  "Install ftp support?" y;  then
+    echo  'OPTS="$OPTS --enable-ftp"'  >>  $SPELL_CONFIG
+  fi
+
+  if  query  "Enable transparant session id?" y;  then
+    echo  'OPTS="$OPTS --enable-trans-sid"'  >>  $SPELL_CONFIG
+  fi
+  
+  if  query  "Enable sockets support (experimental)?" y;  then
+    echo  'OPTS="$OPTS --enable-sockets"'  >>  $SPELL_CONFIG
+  fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi

@@ -1,0 +1,22 @@
+           SPELL=Date-Parse
+         VERSION=1.10
+          SOURCE=TimeDate-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/TimeDate-$VERSION
+   SOURCE_URL[0]=http://www.perl.com/CPAN/authors/id/GBARR/$SOURCE
+        WEB_SITE=http://www.perl.com/CPAN
+         ENTERED=20020226
+         UPDATED=20020319
+      MAINTAINER=nealbirch@attbi.com
+           SHORT="This is the perl5 TimeDate distribution."
+
+cat << EOF
+
+This distribution replaces the GetDate distribution, which was
+only a date parser. The date parser contained in this distribution is
+far superior to the yacc based parser, and a *lot* faster.
+
+The parser contained here will only parse absolute dates, if you want a
+date parser that can parse relative dates then take a look at the Time
+modules by David Muir on CPAN.
+
+EOF

@@ -1,0 +1,15 @@
+           SPELL=SDL_image
+         VERSION=1.2.1
+       # VERSION=1.2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.libsdl.org/projects/$SPELL/release/$SOURCE
+        WEB_SITE=http://www.libsdl.org/projects/SDL_image
+         ENTERED=20010922
+         UPDATED=20011219
+           SHORT="SDL_image is a simple library to load images of various formats as SDL surfaces."
+cat << EOF
+SDL_image is a simple library to load images of various formats as SDL
+surfaces. It supports BMP, PPM, XPM, PCX, GIF, JPEG, PNG, and TGA
+formats.
+EOF

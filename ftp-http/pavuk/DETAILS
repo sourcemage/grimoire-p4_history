@@ -1,0 +1,22 @@
+           SPELL=pavuk
+         VERSION=0.9pl28
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.idata.sk/~ondrej/sw/$SOURCE
+   SOURCE_URL[1]=http://www.pavuk.org/sw/$SOURCE
+   SOURCE_URL[2]=http://www.doc.cs.univ-paris8.fr/mirrors/pavuk/sw/$SOURCE
+        WEB_SITE=http://www.idata.sk/~ondrej/pavuk/
+         ENTERED=20020219
+         UPDATED=20020219
+           SHORT="Pavuk is a Web grabber with an optional GTK GUI."
+cat << EOF
+Pavuk is a Web grabber with an optional GTK GUI, and optional support 
+for downloading with multiple threads. It supports the HTTP, HTTPS, 
+FTP, FTP via SSL, and Gopher protocols, as well as HTTP GET, and POST 
+requests. It is capable of filling HTML forms while downloading HTML 
+trees, and lets you mirror Web documents for local browsing. You can 
+even synchronize changes to these documents. Recent versions also 
+support processing of Javascript patterns in HTML pages. Pavuk have 
+JavaScript bindings that allow writing of own scripts to perform 
+special tasks.
+EOF

@@ -1,0 +1,12 @@
+echo ""
+echo "This spell was renamed to XML-Parser-Expat to match a name"
+echo "change on CPAN."
+echo ""
+echo "XML-Parser will be exiled if you installed it and XML-Parser-Expat"
+echo "will be cast."
+echo ""
+
+if ! query "Do you want to continue?" y
+  then
+    exit 0
+fi

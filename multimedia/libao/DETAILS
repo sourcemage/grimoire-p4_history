@@ -1,0 +1,15 @@
+           SPELL=libao
+         VERSION=0.8.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.xiph.org/ogg/vorbis/download/$SOURCE
+        WEB_SITE=http://www.xiph.org/ogg/vorbis
+         ENTERED=20010922
+         UPDATED=20020311
+           SHORT="libao is a way to easily add cross-platform audio output to your program."
+cat << EOF
+libao is a way to easily add cross-platform audio output to your
+program. Output devices are implemented as dynamic plugins, and support
+for OSS, ESD, ALSA, aRTs, Solaris, and Irix outputs are currently
+supported.
+EOF

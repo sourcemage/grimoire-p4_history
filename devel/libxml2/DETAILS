@@ -1,0 +1,17 @@
+           SPELL=libxml2
+         VERSION=2.4.18
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://xmlsoft.org/$SOURCE
+        WEB_SITE=http://xmlsoft.org
+         ENTERED=20010922
+         UPDATED=20020319
+           SHORT="libxml2 is the XML version 2 parser for Gnome."
+cat << EOF
+The libXML library allows you to manipulate XML files. It offers SAX or
+DOM tree generation interfaces. It supports XML and HTML (real world
+ones) parsing, flexible DTD validation, XPath, XPointer-XInclude, and
+pull and push modes with FTP and HTTP modules. It's written in C and
+should be fairly portable. The design is modular; most of the extensions
+can be compiled out.
+EOF

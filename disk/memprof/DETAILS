@@ -1,0 +1,14 @@
+           SPELL=memprof
+         VERSION=0.4.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://people.redhat.com/~otaylor/$SPELL/$SOURCE
+        WEB_SITE=http://people.redhat.com/~otaylor/memprof/
+      LICENSE[0]=http://www.gnu.org/copyleft/gpl.html
+         ENTERED=20020320
+         UPDATED=20020320
+      MAINTAINER=gerrit.germis@pi.be
+           SHORT="Memory profiling tool"
+cat << EOF
+MemProf is a tool for profiling memory usage and finding memory leaks.
+EOF

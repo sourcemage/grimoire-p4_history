@@ -1,0 +1,16 @@
+20020126	Kyle Sallee
+
+Modified init.d scripts and added line to autogenerate /etc/rndc.key
+
+20020127	Kyle Sallee
+
+Added useful bind documentation, although it helps to already know what
+bind is, what it does and how it works.  Paul Albitz's & Cricket Liu's
+"DNS and BIND" book by O'Reilly is excellent for learning BIND.
+
+Although bind drops most of root's privlidges after binding to port 53 I
+thought that it might still be a good idea to also have bind change it's
+user when running to bind for extra security.  I might even modify the
+spell so that bind runs in a chrooted jail.  Any comments?  But perhaps
+I won't, because I should leave some paranoia available to the SA,
+right?

@@ -1,0 +1,13 @@
+if [ -x /etc/init.d/imapd.sh ]; then
+        /etc/init.d/imapd.sh start
+fi
+if [ -x /etc/init.d/imapd-ssl.sh ]; then
+        /etc/init.d/imapd-ssl.sh start
+fi
+if [ -x /etc/init.d/pop3d.sh ]; then
+        /etc/init.d/pop3d.sh start
+fi
+if [ -x /etc/init.d/pop3d-ssl.sh ]; then
+        /etc/init.d/pop3d-ssl.sh start
+fi
+

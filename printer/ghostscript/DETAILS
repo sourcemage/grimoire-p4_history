@@ -1,0 +1,22 @@
+           SPELL=ghostscript
+         VERSION=7.04
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=jpegsrc.v6b.tar.gz
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gs$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+  SOURCE2_URL[0]=ftp://ftp.uu.net/graphics/jpeg/$SOURCE2
+        WEB_SITE=http://www.ghostscript.org
+         ENTERED=20010922
+         UPDATED=20020314
+           SHORT="ghostcript is a an interpreter for the PostScript langauge."
+cat << EOF
+Ghostscript is the name of a set of software that provides:
+    * An interpreter for the PostScript language and the PDF file
+      format,
+    * A set of C procedures (the Ghostscript library) that implement the
+      graphics capabilities that appear as primitive operations in the 
+      PostScript language, and
+    * A wide variety of output drivers for various file formats and
+      printers.
+EOF

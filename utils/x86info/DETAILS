@@ -1,0 +1,16 @@
+           SPELL=x86info
+         VERSION=1.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.suse.com/pub/people/davej/$SPELL/$SOURCE
+        WEB_SITE=http://www.suse.de/~davej/projects/x86info.html
+         ENTERED=20011122
+         UPDATED=20011218
+         ARCHIVE="off"
+           SHORT="x86info probes the CPU registers"
+cat << EOF
+Unlike other cpuinfo tools which just parse /proc/cpuinfo, x86info
+probes the CPU registers to find out a lot more information. It can
+discover the contents of model-specific registers, discover CPU silicon
+revisions, and lots more.
+EOF

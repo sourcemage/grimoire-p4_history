@@ -1,0 +1,20 @@
+diff -U2  wget-1.8.1/src/ftp.c  wget-1.8.1/src/ftp.c
+--- wget-1.8.1/src/ftp.c	Mon Dec  3 10:22:05 2001
++++ wget-1.8.1/src/ftp.c	Mon Dec  3 10:22:05 2001
+@@ -853,6 +853,14 @@
+ 
+   /* Get the contents of the document.  */
+-  res = get_contents (dtsock, fp, len, restval, expected_bytes, &con->rbuf,
+-		      0, &con->dltime);
++  /*  Or don't if spider is set.  Patch by Kyle Sallee 20020207  */
++  if  (opt.spider)
++    {
++       res = RETRFINISHED;
++       return  res;
++    }
++  else
++    res = get_contents (dtsock, fp, len, restval, expected_bytes, &con->rbuf,
++		        0, &con->dltime);
++
+   tms = time_str (NULL);
+   tmrate = retr_rate (*len - restval, con->dltime, 0);

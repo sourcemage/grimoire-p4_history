@@ -1,0 +1,11 @@
+if query "Backup package config ?" y
+then
+ CUR_DATE=`date +%s`
+ tar -c --use-compress-program=bzip2 -f "/usr/share/httpd/squirrelmail-config-backup-$CUR_DATE.tar.bz2" /usr/share/httpd/htdocs/squirrelmail/config 1>/dev/null 2>&1
+fi
+
+if query "Remove squirrelmail directory ?" y
+then
+ rm -r -f /usr/share/httpd/htdocs/squirrelmail
+ rm -r -f /usr/doc/squirrelmail
+fi

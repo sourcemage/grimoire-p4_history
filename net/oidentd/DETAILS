@@ -1,0 +1,17 @@
+           SPELL=oidentd
+         VERSION=2.0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/ojnk/$SOURCE
+        WEB_SITE=http://dev.ojnk.net/
+         ENTERED=20011218
+         UPDATED=20011230
+           SHORT="Oidentd is an ident (rfc1413 compliant) daemon."
+cat << EOF
+oidentd is an ident (rfc1413 compliant) daemon that runs on Linux,
+FreeBSD, OpenBSD and Solaris.  oidentd can handle IP masqueraded/NAT
+connections on Linux, FreeBSD and OpenBSD.  oidentd has a flexible
+mechanism for specifying ident responses.  Users can be granted
+permission to specify their own ident responses.  Responses can be
+specified according to host and port pairs.
+EOF

@@ -1,0 +1,17 @@
+depends  autoconf     &&
+depends  automake     &&
+depends  libpng       &&
+depends  expat        &&
+depends  ImageMagick  &&
+depends  psiconv      &&
+depends  zlib         &&
+depends  gtk+         &&
+
+#  This is naughty but effective in removing the old problematic depends
+grep  -v  "ABI_OPT"         $DEPENDS_STATUS  >  $DEPENDS_STATUS_BACKUP  &&
+cp  $DEPENDS_STATUS_BACKUP  $DEPENDS_STATUS                             &&
+
+optional_depends  "gal"	            \
+		  "--enable-gnome"  \
+		  ""                \
+		  "to enable gnome support"

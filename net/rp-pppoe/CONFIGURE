@@ -1,0 +1,14 @@
+if  grep  -q  "CONFIG_PPPOE="  $SPELL_CONFIG  &&
+    [  -f  /etc/ppp/pppoe.conf  ]
+then  message  "Reconfiguration is optional"
+else  message  "Configuration is recommended"
+fi
+
+if    query  "Configure Roaring Penguin PPPOE?" n
+then  CONFIG_PPPOE="y"
+else  CONFIG_PPPOE="n"
+fi
+
+TEMP=`grep  -v  "CONFIG_PPPOE="               $SPELL_CONFIG`
+echo  "$TEMP"                              >  $SPELL_CONFIG
+echo  "CONFIG_PPPOE=$CONFIG_PPPOE"         >  $SPELL_CONFIG

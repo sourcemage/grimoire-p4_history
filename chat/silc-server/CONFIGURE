@@ -1,0 +1,8 @@
+if  !  grep  -q  "SILCD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke SILCD at boot?" n
+  then  echo   "SILCD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "SILCD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

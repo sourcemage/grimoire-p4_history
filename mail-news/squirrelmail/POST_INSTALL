@@ -1,0 +1,27 @@
+{
+# move the doc dir to /usr/doc
+mkdir /usr/doc/squirrelmail 1>/dev/null 2>&1
+mv /usr/share/httpd/htdocs/squirrelmail/doc/* /usr/doc/squirrelmail/
+rm -r -f /usr/share/httpd/htdocs/squirrelmail/doc
+ln -s /usr/doc/squirrelmail/ /usr/share/httpd/htdocs/squirrelmail/doc
+chown nobody.nogroup /usr/share/httpd/htdocs/squirrelmail/doc
+chmod 555 /usr/share/httpd/htdocs/squirrelmail/doc
+mv /usr/share/httpd/htdocs/squirrelmail/AUTHORS /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/COPYING /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/INSTALL /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/MIRRORS /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/README /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/ChangeLog /usr/doc/squirrelmail
+mv /usr/share/httpd/htdocs/squirrelmail/ReleaseNotes /usr/doc/squirrelmail/Release-Notes
+mv /usr/share/httpd/htdocs/squirrelmail/UPGRADE /usr/doc/squirrelmail
+
+# This gives you a clue about why squirrelmail shows php code in the browser instead of the login page...
+echo "#Add php4 extention support..." > /usr/share/httpd/htdocs/squirrelmail/doc/httpd-sample-squirrelmail.conf
+echo "<IfModule mod_php4.c>" >> /usr/share/httpd/htdocs/squirrelmail/doc/httpd-sample-squirrelmail.conf
+echo "AddType application/x-httpd-php .phtml .php .php4 .php3" >> /usr/share/httpd/htdocs/squirrelmail/doc/httpd-sample-squirrelmail.conf
+echo "</IfModule mod_php4.c>" >> /usr/share/httpd/htdocs/squirrelmail/doc/httpd-sample-squirrelmail.conf
+chown nobody.nogroup /usr/share/httpd/htdocs/squirrelmail/doc/httpd-sample-squirrelmail.conf
+
+message "Look at /usr/doc/squirrelmail/httpd-sample-squirrelmail.conf for apache's config"
+message "Remember to run /usr/share/httpd/htdocs/squirrelmail/configure to setup squirrelmail"
+}

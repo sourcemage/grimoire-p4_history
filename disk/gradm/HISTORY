@@ -1,0 +1,17 @@
+20020201, gradm-1.1.c, hvisage
+
+- Moved make instaal back into "FIFO"
+- Fixed Makefile to NOT do the password thingy
+- Added POST_INSTAL which does the checking for the password existance, and 
+  then create it or not.
+
+20020201, gradm-1.1.c, kongar
+
+- hacked BUILD script to fix the bug if VOYEUR is off. The spell is 
+  asking a password and if fifo enabled, no user intervention. I took
+  the make install part out of the fifo.
+
+- added ACL documentation to the spell, hacked DETAILS and PRE_BUILD
+  scripts. The doc is now installed via the standard install mechanism
+
+

@@ -1,0 +1,18 @@
+           SPELL=nasm
+         VERSION=0.98
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.kernel.org/pub/software/devel/nasm/source/$SOURCE
+        WEB_SITE=http://www.web-sites.co.uk/nasm
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="nasm is an 80x86 assembler designed for portability and modularity."
+cat << EOF
+NASM is an 80x86 assembler designed for portability and modularity. It
+supports a range of object file formats including Linux a.out and ELF,
+COFF, Microsoft 16-bit OBJ and Win32. It will also output plain binary
+files. Its syntax is designed to be simple and easy to understand,
+similar to Intel's but less complex. It supports Pentium, P6, MMX,
+3DNow! and SSE opcodes, and has macro capability. It includes a
+disassembler as well.
+EOF

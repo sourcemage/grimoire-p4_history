@@ -1,0 +1,8 @@
+if  !  grep  -q  "PORTMAP_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke portmap at boot?" n
+  then  echo   "PORTMAP_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "PORTMAP_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

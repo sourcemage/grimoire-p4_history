@@ -1,0 +1,3 @@
+if    spell_installed  apache;          then   /usr/sbin/apachectl  graceful
+elif  spell_installed  apache_mod_ssl;  then   /etc/init.d/apache_modssl.sh restart
+fi

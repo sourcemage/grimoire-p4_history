@@ -1,0 +1,17 @@
+           SPELL=Net-FTP
+         VERSION=1.10
+          SOURCE=libnet-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/libnet-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/G/GB/GBARR/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Net::FTP"
+         ENTERED=20020312
+         UPDATED=20020324
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Interface to File Transfer Protocol"
+cat << EOF
+
+"Net::FTP" is a class implementing a simple FTP client in
+Perl as described in RFC959.  It provides wrappers for a
+subset of the RFC959 commands. Its part of the Bundle-libnet
+
+EOF

@@ -1,0 +1,17 @@
+           SPELL=mod_perl
+         VERSION=1.26
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/S/SA/SAMPO/$SOURCE
+        WEB_SITE="http://search.cpan.org/search?module=mod_perl"
+         ENTERED=20010922
+         UPDATED=20020315
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="mod_perl incoporates PERL into the Apache HTTP server."
+cat << EOF
+The Apache/Perl integration project brings together the full power of
+the Perl programming language and the Apache HTTP server. With mod_perl
+it is possible to write Apache modules entirely in Perl. In addition,
+the persistent interpreter embedded in the server avoids the overhead of
+starting an external interpreter and the penalty of Perl start-up time.
+EOF

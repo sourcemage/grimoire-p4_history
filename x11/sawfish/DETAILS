@@ -1,0 +1,21 @@
+           SPELL=sawfish
+         VERSION=1.0.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/sawmill/$SOURCE
+        WEB_SITE=http://sawmill.sourceforge.net/
+         ENTERED=20010922
+         UPDATED=20011018
+      MAINTAINER=jon-sven@frisurf.no 
+           SHORT="Sawfish is an extensible X11 window manager"
+cat << EOF
+Sawfish is an extensible window manager using a Lisp-based scripting 
+language --all window decorations are configurable and all user-interface 
+policy is controlled through the extension language. This is no layer on 
+top of twm, but a wholly new architecture.
+Despite this extensibility its policy is very minimal compared to most 
+window managers. Its aim is simply to manage windows in the most flexible 
+and attractive manner possible. As such it does not implement desktop 
+backgrounds, applications docks, or other things that may be achieved 
+through separate applications.
+EOF

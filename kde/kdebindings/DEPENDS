@@ -1,0 +1,7 @@
+depends  kdebase      &&
+depends  kdenetwork  &&
+
+optional_depends  "j2sdk"    ""  ""  "for kdejava"  &&
+optional_depends  "mozilla"  ""  ""  "for http support"  &&
+optional_depends  "objprelink" "--enable-objprelink" ""  "for faster startups"
+

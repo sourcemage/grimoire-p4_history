@@ -1,0 +1,8 @@
+if  !  grep  -q  "INETD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke INETD at boot?" n
+  then  echo   "INETD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "INETD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

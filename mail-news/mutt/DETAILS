@@ -1,0 +1,18 @@
+           SPELL=mutt
+       # version 1.3.27 unstable?
+       # VERSION=1.3.27
+         VERSION=1.2.5.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.mutt.org/pub/$SPELL/$SOURCE
+        WEB_SITE=http://www.mutt.org
+         ENTERED=20010922
+         UPDATED=20011211
+           SHORT="mutt is a text-based MIME Email client."
+cat << EOF
+Mutt is a small but very powerful text-based MIME mail client. It is
+highly configurable, and is well-suited to the mail power user with
+advanced features like key bindings, keyboard macros, mail threading,
+regular expression searches, and a powerful pattern matching language
+for selecting groups of messages.
+EOF

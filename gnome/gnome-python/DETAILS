@@ -1,0 +1,14 @@
+           SPELL=gnome-python
+         VERSION=1.4.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20020106
+           SHORT="gnome-python -- Python bindings for GNOME"
+cat << EOF
+This is a set of bindings for the GNOME libraries for use with python.
+EOF

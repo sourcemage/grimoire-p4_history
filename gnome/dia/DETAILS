@@ -1,0 +1,18 @@
+           SPELL=dia
+         VERSION=0.88.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/dia/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.lysator.liu.se/~alla/dia
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="dia is a GTK-based diagram drawing program, similar to Visio"
+cat << EOF
+Dia is a program for creating diagrams of all kinds. The current
+version can do UML class diagrams, Entity-Relationship modeling,
+network diagrams, and much more. The engine is very flexible and
+dynamically loads diagram-types from disk. It can currently export to 
+PostScript and load/save in an XML format.
+EOF

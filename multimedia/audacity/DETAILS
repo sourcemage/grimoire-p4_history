@@ -1,0 +1,20 @@
+           SPELL=audacity
+         VERSION=src-0.98
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://audacity.sourceforge.net/
+         ENTERED=20011217
+         UPDATED=20020318
+           SHORT="audacity is a simple soundfile editor"
+cat << EOF
+Audacity is a program that lets you manipulate digital audio waveforms.
+In addition to letting you record sounds directly from within the
+program, it imports many sound file formats, including WAV, AIFF, and
+MP3. It supports all common editing operations such as Cut, Copy, and
+Paste, plus it will mix tracks and let you apply plug-in effects to any
+part of a sound. It also has a built-in amplitude envelope editor, a
+customizable spectrogram mode and a frequency analysis window for audio
+analysis applications. 
+EOF
+

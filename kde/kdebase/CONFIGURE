@@ -1,0 +1,21 @@
+if  !  grep  -q  "XINERAMA"  $SPELL_CONFIG;  then
+
+  if    query  "Enable Xinerama support?" y
+    then  XINERAMA=y
+    else  XINERAMA=n
+  fi
+
+  echo  "XINERAMA=$XINERAMA"  >>  $SPELL_CONFIG
+
+fi
+
+if  !  grep -q  "SHUTDOWN"  $SPELL_CONFIG;  then
+
+  if    query  "Apply patch to allow shutdown/reboot from KDE logout dialog?" y
+    then  SHUTDOWN=y
+    else  SHUTDOWN=n
+  fi
+
+  echo  "SHUTDOWN=$SHUTDOWN"  >>  $SPELL_CONFIG
+
+fi

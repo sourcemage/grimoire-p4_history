@@ -1,0 +1,18 @@
+           SPELL=scrollkeeper
+         VERSION=0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20020116
+           SHORT="scrollkeeper is a cataloging system."
+cat << EOF
+This is the Scrollkeeper Open Documentation Cataloging System. 
+The following modules are included:
+Scrollkeeper_cl, the Content List handling system in the cl subdir.
+Scrollkeeper_toc, the Table Of Contents extraction utility from DocBook
+files in the toc subdir.
+EOF

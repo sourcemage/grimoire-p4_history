@@ -1,0 +1,18 @@
+           SPELL=nt
+         VERSION=1.30
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.krasu.ru/soft/chuchelo/files/$SOURCE
+        WEB_SITE=http://www.krasu.ru/soft/chuchelo/
+         ENTERED=20011023
+         UPDATED=20011027
+           SHORT="nt is a download manager for X"
+
+cat << EOF
+from http://www.krasu.ru/soft/chuchelo
+This program is a linux graphics program for downloading files through
+the internet which supports both ftp and http (not completed yet but
+curent realisation is quite enough for downloading) protocols. Program
+also supports RESUMING if server side supports it too.  Also includes
+drag and drop and recurisive downloading on http and ftp.
+EOF

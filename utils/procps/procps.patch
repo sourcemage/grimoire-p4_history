@@ -1,0 +1,44 @@
+diff -c top.c top.c
+*** top.c	Thu Jul 13 15:19:21 2000
+--- top.c	Fri Jan 11 23:51:46 2002
+***************
+*** 1026,1034 ****
+  	    sprintf(tmp, "%4.1f ", (float)pmem / 10);
+  	    break;
+  	  case P_TTY: {
+! 	      char outbuf[9];
+! 	      dev_to_tty(outbuf, 8, task->tty, task->pid, ABBREV_DEV);
+! 	      sprintf(tmp, "%-8.8s ", outbuf);
+  	    }
+  	    break;
+  	  case P_PRI:
+--- 1026,1034 ----
+  	    sprintf(tmp, "%4.1f ", (float)pmem / 10);
+  	    break;
+  	  case P_TTY: {
+! 	      char outbuf[14];
+! 	      dev_to_tty(outbuf, 13, task->tty, task->pid, ABBREV_DEV);
+! 	      sprintf(tmp, "%-13.13s ", outbuf);
+  	    }
+  	    break;
+  	  case P_PRI:
+diff -c top.h top.h
+*** top.h	Thu Jul 13 15:19:22 2000
+--- top.h	Fri Jan 11 23:51:30 2002
+***************
+*** 135,141 ****
+  {
+      "  PID ", " PPID ", " UID ",
+      "USER     ", "%CPU ", "%MEM ",
+!     "TTY      ", "PRI ", " NI ",
+      "PAGEIN ", "TSIZE ", "DSIZE ",
+      " SIZE ", " TRS ", "SWAP ",
+      "SHARE ", "  A ", " WP ",
+--- 135,141 ----
+  {
+      "  PID ", " PPID ", " UID ",
+      "USER     ", "%CPU ", "%MEM ",
+!     "     TTY      ", "PRI ", " NI ",
+      "PAGEIN ", "TSIZE ", "DSIZE ",
+      " SIZE ", " TRS ", "SWAP ",
+      "SHARE ", "  A ", " WP ",

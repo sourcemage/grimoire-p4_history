@@ -1,0 +1,15 @@
+           SPELL=libghttp
+         VERSION=1.0.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="libghttp is the gnome http client library."
+cat << EOF
+gnome-http -- gnome http client library
+maybe required by Enlightenment for autoupgrades?
+EOF

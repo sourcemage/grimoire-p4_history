@@ -1,0 +1,17 @@
+           SPELL=uptimed
+         VERSION=0.1.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://cx.capsi.com/src/uptimed/$SOURCE
+        WEB_SITE=http://cx.capsi.com/code-uptimed.html
+         ENTERED=20020129
+         UPDATED=20020129
+           SHORT='Keeps record of highest uptimes'
+cat << EOF
+uptimed is an uptime record daemon keeping track of the highest uptimes
+the system ever had. Instead of using a pid file to keep sessions apart
+from each other, it uses the system boot time. Uptimed has the ability
+to inform you of records and milestones though syslog and e-mail, and
+comes with a console front end to parse the records, which can also
+easily be used to show your records on your Web page.
+EOF

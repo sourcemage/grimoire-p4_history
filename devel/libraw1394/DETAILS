@@ -1,0 +1,31 @@
+           SPELL=libraw1394
+         VERSION=0.9.0
+          SOURCE=$SPELL\_$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.sourceforge.net/libraw1394/$SOURCE
+        WEB_SITE=http://linux1394.sourceforge.net/
+         ENTERED=20020125
+         UPDATED=20020127
+      MAINTAINER=jean@kcco.com
+           SHORT="libraw1394 provides an API to the Linux ieee1394 (firewire) driver."
+cat << EOF
+libraw1394 provides an API to the Linux IEEE1394 (firewire) driver.
+IEEE1394 (firewire) has many uses, one common one is video capture from
+a camcorder using dvgrab or kino.  To use this library and any programs
+which rely upon it you MUST have the IEEE 1394 kernel driver modules
+available.  If you did not select IEEE1394 drivers when you compiled
+the kernel, you will want to "cast -r linux" to reconfigure and rebuild
+the kernel.  If you rebuild the kernel will want to select the
+following, as modules:
+
+[M]   IEEE 1394 (FireWire support)
+------------------------------
+[M]   Texas Instruments PCILynx support
+[M]   OHCI-1394 support
+[M]   OHCI-1394 Video support
+[M]   SBP-2 support (Harddisks etc.)
+[M]   Raw IEEE1394 I/O Support
+
+Finally, you will need to add users authorized to access the IEEE1394
+(firewire) hardware to the "firewire" group in /etc/group.
+EOF

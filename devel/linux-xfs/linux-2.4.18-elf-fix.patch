@@ -1,0 +1,14 @@
+--- fs/binfmt_elf.c	Mon Mar 18 02:08:53 2002
++++ fs/binfmt_elf.c.mod	Mon Mar 18 02:08:42 2002
+@@ -563,7 +563,10 @@
+ 	     		// FIXME - ratelimit this before re-enabling
+ 			// printk(KERN_WARNING "ELF: Ambiguous type, using ELF\n");
+ 			interpreter_type = INTERPRETER_ELF;
+-		}
++		} else {
++			/* Executables without an interpreter also need a personality  */
++			SET_PERSONALITY(elf_ex, ibcs2_interpreter);
++		}
+ 	}
+ 
+ 	/* OK, we are done with that, now set up the arg stuff,
