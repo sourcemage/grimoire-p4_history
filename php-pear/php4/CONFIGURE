@@ -12,4 +12,8 @@ config_query_option  PHP4_CALENDAR  "Enable calendar support?"          y  \
 
 config_query_option  PHP4_PCRE      "Enable perl regular expressions?"  y  \
                      "--with-pcre-regex"                                   \
-                     "--without-pcre-regex"
+                     "--without-pcre-regex"				   &&
+
+config_query_option  PHP4_PCNTL     "Enable experimental pcntl support (CLI/CGI only)" n \
+                     "--enable-pcntl"                                      \
+		     "--disable-pcntl"

@@ -5,6 +5,7 @@ OPTS="$OPTS           \
       $PHP4_SAFE      \
       $PHP4_CALENDAR  \
       $PHP4_PCRE      \
+      $PHP4_PCNTL     \
       $PHP4_FTP"      &&
 
 #
