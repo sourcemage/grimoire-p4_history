@@ -9,8 +9,12 @@
 # SMGL-script-version=20030224
 # no symlinks are made for this one, must do it by hand!
 
-source /etc/init.d/functions
+NEEDS="+remote_fs"
+PROGRAM=/usr/bin/sensors
 
+. /etc/init.d/smgl_init
+
+RUNLEVEL=3
 CONFIG=/etc/sysconfig/lm_sensors
 MODULES=`grep \^MODULE_ $CONFIG | cut -d= -f2`
 
