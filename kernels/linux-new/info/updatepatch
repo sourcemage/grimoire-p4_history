@@ -1,0 +1,32 @@
+#!/bin/sh
+# developer tool for automating update of patches
+# updates the patches
+# $1 is patch dir to update
+# $2 is old latest patch
+# $3 is new latest patch
+# $4 is deleted patch (not required)
+
+p4 edit latest.defaults
+p4 edit HISTORY
+sed "s/$2/$3/g" latest.defaults > latest.defaults.new
+mv -v latest.defaults.new latest.defaults
+cp -v info/patches/$1/$2 info/patches/$1/$3
+chmod 755 info/patches/$1/$3
+p4 add info/patches/$1/$3
+if [ "$4" != "" ]
+then
+	p4 delete info/patches/$1/$4
+fi
+vim info/patches/$1/$3
+(
+echo "`date +%Y-%m-%d` David Brown <dmlb2000@excite.com>"
+echo "	* latest.defaults updated latest to $3"
+echo "	* info/patches/$1/$3 added"
+if [ "$4" != "" ]
+then
+	echo "	* info/patches/$1/$4 deleted"
+fi
+echo ""
+) > HISTORY.new
+cat HISTORY > HISTORY.new
+mv -v HISTORY.new HISTORY
