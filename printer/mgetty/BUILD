@@ -1,7 +1,5 @@
 (
 
-  create_account  phone                                       &&
-
   cp  policy.h-dist  policy.h                                 &&
   patch  <  $SCRIPT_DIRECTORY/Makefile.patch                  &&
 
