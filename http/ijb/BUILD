@@ -22,16 +22,4 @@
   [  -f  $ETC/strust.ini    ]  ||  cp  strust.ini    $ETC
    
 
-  [  -f     /etc/init.d/junkbuster.sh  ]  ||
-  cp  $SCRIPT_DIRECTORY/junkbuster.sh  /etc/init.d
-
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc3.d/S40junkbuster
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc4.d/S40junkbuster
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc5.d/S40junkbuster
-
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc0.d/K60junkbuster
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc1.d/K60junkbuster
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc2.d/K60junkbuster
-  ln     -sf  ../init.d/junkbuster.sh  /etc/rc6.d/K60junkbuster
-
 )
