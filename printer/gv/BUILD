@@ -9,17 +9,17 @@
   patch  -p1  <  $SCRIPT_DIRECTORY/asa-0000.gv-3.5.8.patch  &&
   xmkmf                                                     &&
   make  Makefiles                                           &&
-  make				                            &&
+  make                                                      &&
   prepare_install                                           &&
-  make  GV_BINDIR=/usr/bin/                                 \
-        GV_DOCDIR=/usr/bin/                                 \
-        GV_LIBDIR=/usr/lib/gv/                              \
-        GV_MANDIR=/usr/man/man1/                            \
+  make  GV_BINDIR=${INSTALL_ROOT}/usr/bin/                  \
+        GV_DOCDIR=${INSTALL_ROOT}/usr/bin/                  \
+        GV_LIBDIR=${INSTALL_ROOT}/usr/lib/gv/               \
+        GV_MANDIR=${INSTALL_ROOT}/usr/man/man1/             \
         install                                             &&
-  make  GV_BINDIR=/usr/bin/                                 \
-        GV_DOCDIR=/usr/bin/                                 \
-        GV_LIBDIR=/usr/lib/gv/                              \
-        GV_MANDIR=/usr/man/man1/                            \
+  make  GV_BINDIR=${INSTALL_ROOT}/usr/bin/                  \
+        GV_DOCDIR=${INSTALL_ROOT}/usr/bin/                  \
+        GV_LIBDIR=${INSTALL_ROOT}/usr/lib/gv/               \
+        GV_MANDIR=${INSTALL_ROOT}/usr/man/man1/             \
         install.man
 
 ) > $C_FIFO 2>&1

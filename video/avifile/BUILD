@@ -1,14 +1,5 @@
-(
+sedit  's:$subdirs plugins/libmad/libmad:$subdirs:'  configure  &&
+sedit  's/class const_iterator/public: class const_iterator/'   \
+       include/avm_map.h                                        &&
 
- unset CFLAGS CXXFLAGS LDFLAGS
-
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               $OPTS                 &&
-  make                               &&
-  prepare_install                    &&
-  make    install
-
-) > $C_FIFO 2>&1
+default_build

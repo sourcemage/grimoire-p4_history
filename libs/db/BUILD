@@ -1,6 +1,5 @@
 (
-
-  patch  -p0  <  $SCRIPT_DIRECTORY/db.patch   &&
+  sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/doc/db|' dist/Makefile.in &&
 
   if  [  -z  $JAVA_HOME  ]
   then
@@ -11,10 +10,14 @@
     then
       export  JAVA_HOME=/usr/lib/j2sdk1.4.1
     fi
-  fi
+  fi &&
+
+  if [ "$DB_OSO_DIRECT" == 'n' ]; then
+    patch -p1 < $SCRIPT_DIRECTORY/db_oso_direct.patch
+  fi &&
 
   cd  build_unix                         &&
-  PATH=$JAVA_HOME:$PATH                  &&
+  PATH=$JAVA_HOME/bin:$PATH              &&
   ../dist/configure  --prefix=/usr       \
                      --build=$BUILD      \
                      --enable-dynamic    \
@@ -26,4 +29,4 @@
   prepare_install                        &&
   make    install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

@@ -45,14 +45,13 @@
     sedit  's:\$(OGG)::'  Rules.make
   fi
 
-  # Always remove FLAC support until fixed
-  #if  !  spell_installed  "flac"  ;  then
+  if  !  spell_installed  "flac"  ;  then
     sedit  's:^FLAC:#FLAC:'  Rules.make
     sedit  's:^FLACLIB:#FLACLIB:'  Rules.make
     sedit  's:-DUSE_FLAC$::'  Rules.make
     sedit  's:\$(FLACLIB)::'  Rules.make
     sedit  's:\$(FLAC)::'  Rules.make
-  #fi
+  fi
 
   if  !  spell_installed  "mad"  ;  then
     sedit  's:MAD:#MAD:'  Rules.make
@@ -64,17 +63,8 @@
 
   make                             &&
   prepare_install                  &&
-  make  PREFIX=/usr  install       &&
-  cd  /usr/share/games/freecraft   &&
-  # Now, unpack the media files...
-  # Should update the spell to optionally use
-  # the CD, similar to quake2
-  unpack  ${SOURCE2}  ${MD5[1]}    &&
-  # Now, unpack compressed media files
-  for i in `find ./ -type f|grep gz`
-  do
-    gzip -d $i
-  done                             &&
+  make  PREFIX=${INSTALL_ROOT}/usr  install       &&
+  cd  ${INSTALL_ROOT}/usr/share/games/freecraft   &&
   chmod  755  *  -R                &&
   chown  root.games  *  -R
 

@@ -1,5 +1,6 @@
 (
 
+  unpack  $SOURCE2  ${MD5[1]}            &&
   patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
   aclocal   &&
   autoconf  &&

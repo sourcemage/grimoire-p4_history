@@ -5,9 +5,11 @@ USR="/usr/include"
 if  [  !  -h  ${USR}/libgnomevfs  ]
 then
   ln  -sf  ${USR}/gnome-vfs-1.0/libgnomevfs/  ${USR}/libgnomevfs
-fi
+fi &&
 
 if  [  !  -h  ${USR}/glade  ]
 then
   ln  -sf  ${USR}/libglade-1.0/glade  ${USR}/glade
-fi
+fi &&
+
+default_pre_build

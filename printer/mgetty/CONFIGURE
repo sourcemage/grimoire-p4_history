@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ############################################################
 ##  Select the options to enable.
 if  query  "Apply login prompt and login timeout patch? "  n;  then
@@ -63,7 +61,7 @@ echo  "NUM_RINGS=${NUM_RINGS}"  >>  ${SPELL_CONFIG}
 ############################################################
 ##  Set the TTY device to be used for mgetty.
 message  "${MESSAGE_COLOR}The following questions will setup the device to use ${SPELL_COLOR}mgetty${MESSAGE_COLOR} on:${DEFAULT_COLOR}"
-for  TTY_DEVICE  in  `ls  /dev/ttyS*`;  do
+for  TTY_DEVICE  in  `ls  ${INSTALL_ROOT}/dev/ttyS*`;  do
   if  query  "Use ${TTY_DEVICE} for the mgetty device? " n;  then
     echo  "TTY_DEVICE=${TTY_DEVICE}"  >>  ${SPELL_CONFIG}
     break
@@ -74,5 +72,5 @@ done
 
 ############################################################
 # Setup final /etc/inittab string
-INITTAB_STRING="'${TTY_DEVICE:8}:${RUN_LEVEL}:respawn:/usr/sbin/mgetty -n ${NUM_RINGS} ${TTY_DEVICE}'"
+INITTAB_STRING="'${TTY_DEVICE:8}:${RUN_LEVEL}:respawn:${INSTALL_ROOT}/usr/sbin/mgetty -n ${NUM_RINGS} ${TTY_DEVICE}'"
 echo  "INITTAB_STRING=${INITTAB_STRING}"  >>  ${SPELL_CONFIG}

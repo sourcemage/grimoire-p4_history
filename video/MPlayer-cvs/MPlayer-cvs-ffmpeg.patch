@@ -1,0 +1,36 @@
+Index: libmpcodecs/Makefile
+===================================================================
+RCS file: /cvsroot/mplayer/main/libmpcodecs/Makefile,v
+retrieving revision 1.96
+diff -u -r1.96 Makefile
+--- libmpcodecs/Makefile	11 May 2003 18:29:07 -0000	1.96
++++ libmpcodecs/Makefile	12 May 2003 18:00:36 -0000
+@@ -37,7 +37,7 @@
+ SRCS2=$(ENCODER_SRCS)
+ OBJS2=$(SRCS2:.c=.o)
+ 
+-CFLAGS  = $(OPTFLAGS) -I. -Inative -I.. -I../libmpdemux -I../loader $(EXTRA_INC) -D_GNU_SOURCE
++CFLAGS  = $(OPTFLAGS) -I. -Inative -I.. -I../libmpdemux -I../loader $(EXTRA_INC) -D_GNU_SOURCE -I/usr/include/ffmpeg
+ 
+ .SUFFIXES: .c .o
+ 
+Index: libmpcodecs/vf_pp.c
+===================================================================
+RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_pp.c,v
+retrieving revision 1.28
+diff -u -r1.28 vf_pp.c
+--- libmpcodecs/vf_pp.c	18 Apr 2003 22:12:36 -0000	1.28
++++ libmpcodecs/vf_pp.c	12 May 2003 18:00:37 -0000
+@@ -20,10 +20,10 @@
+ 
+ #define EMU_OLD
+ 
+-#include "../libavcodec/libpostproc/postprocess.h"
++#include "libpostproc/postprocess.h"
+ 
+ #ifdef EMU_OLD
+-#include "../libavcodec/libpostproc/postprocess_internal.h"
++#include "libpostproc/postprocess_internal.h"
+ #endif
+ 
+ struct vf_priv_s {

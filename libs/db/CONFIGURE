@@ -1,0 +1,8 @@
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+  if query 'Disable direct disk access (only for very rare circumstances)' n
+  then echo 'DB_OSO_DIRECT=n' >> $SPELL_CONFIG
+  else echo 'DB_OSO_DIRECT=y' >> $SPELL_CONFIG
+  fi
+  echo 'CONFIGURED=y' >> $SPELL_CONFIG
+  echo $SPELL_CONFIG
+fi
