@@ -11,9 +11,7 @@ patch -p0 < $SCRIPT_DIRECTORY/libreg-standalone.diff &&
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   cd $SOURCE_DIRECTORY/extensions &&
   unpack $SOURCE2 ${MD5[1]} &&
-  unpack $SOURCE3 ${MD5[2]} &&
-  # fixes the "usage: ../../../config/nsinstall ..." problem
-  patch -p1 < $SCRIPT_DIRECTORY/extensions-enigmail-src.diff
+  unpack $SOURCE3 ${MD5[2]}
 fi &&
 
 # remove /root/.mozconfig, it causes too much trouble
