@@ -1,3 +1,5 @@
+# -*- mode: shell-script; -*-
+
 ## conditionally run `make' if SWIG dependency is on
 ## @usage <1:make target>
 function make_if_swig() {
@@ -14,7 +16,9 @@ function make_if_swig() {
   httpd -v | grep -q 'Apache/2\.'                                   &&
 
   message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
-  [ -e /usr/libexec/mod_dav.so ]                                                  &&
+  if ! [ -e /usr/libexec/mod_dav.so ] && ! httpd -l | grep -q 'mod_dav\.c'; then
+    false
+  fi &&
 
   if [ "$SVN_EXPORT_HEAD" == 'y' ]; then
 #   Client executable may be available but not working, so we need an extra check
@@ -76,6 +80,11 @@ function make_if_swig() {
 # make -jN external-all
 # make -jN local-all
 
+# Test if built from current source
+  if [ "$SVN_EXPORT_HEAD" == 'y' ] && spell_installed Python; then
+    make check
+  fi
+
 # Install
   prepare_install &&
   make install &&
@@ -83,67 +92,6 @@ function make_if_swig() {
 
 ) >$C_FIFO 2>&1 && (
 
-  cat > /etc/httpd/svn.conf.default << __EOF__
-#
-# See INSTALL and Apache security manuals for more details
-#
-<Location /svn>
-	#
-	# This will give anyone unrestricted access to the repositories
-	# located at /absolute/path/to/repositories/parent/directory
-	#
-	DAV svn
-	SVNParentPath /absolute/path/to/repositories/parent/directory
-
-	#
-	# If you want limited access, read or write, you add these lines:
-	#
-	AuthType Basic
-	AuthName "Subversion repository"
-	AuthUserFile /path/to/passwd
-
-	#
-	# ...and...
-	#
-	# a) For a read/write restricted repository:
-	#
-
-	Require valid-user
-
-	#
-	# b) For a write restricted repository:
-	#    NOTE: prop{get|set} operations are not protected by this
-	#
-
-	<LimitExcept GET PROPFIND OPTIONS REPORT>
-		Require valid-user
-	</LimitExcept>
-
-	#
-	# c) For seperate restricted read and write access:
-	#    NOTE: prop{get|set} operations are not protected by this
-	#
-
-	AuthGroupFile /path/to/group
-	<LimitExcept GET PROPFIND OPTIONS REPORT>
-		Require group svn_committers
-	</LimitExcept>
-	<Limit GET PROPFIND OPTIONS REPORT>
-		Require group svn_committers
-		Require group svn_readers
-	</Limit>
-</Location>
-__EOF__
-
-  if spell_installed Python; then
-#    # set library paths
-#    WD=$(pwd)
-#    for d in $(find subversion/ -maxdepth 1 -name 'lib*' -a -type d); do
-#      LD_LIBRARY_PATH="$LD_LIBRARY_PATH${LD_LIBRARY_PATH:+:}$WD/$d/.libs/"
-#    done &&
-#    export LD_LIBRARY_PATH &&
-#    # run tests
-    make check
-  fi
+  cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/
 
 )
