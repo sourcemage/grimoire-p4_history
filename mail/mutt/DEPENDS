@@ -80,13 +80,11 @@ if [ ! -z "${REAL_PATCHES}" ] || [ "${BRANCH}" == "cvs" ]; then
   depends "autoconf"
 fi &&
 
-if [ ! -z "${REAL_PATCHES}" ]; then
-  for P in ${REAL_PATCHES}; do
-    if [ -x "${PATCH_DIRECTORY}/${P}/DEPENDS" ]; then
-      . "${PATCH_DIRECTORY}/${P}/DEPENDS"
-    fi
-  done
-fi
+for P in ${REAL_PATCHES}; do
+  if [ -x "${PATCH_DIRECTORY}/${P}/DEPENDS" ]; then
+    . "${PATCH_DIRECTORY}/${P}/DEPENDS"
+  fi
+done
 
 if [ "${UPDATE_DOC}" == "y" ]; then
   depends linuxdoc-tools

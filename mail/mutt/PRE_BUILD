@@ -2,15 +2,14 @@ default_pre_build &&
 
 cd "${SOURCE_DIRECTORY}" &&
 
-if [ ! -z "${REAL_PATCHES}" ]; then
-  for PATCH in ${REAL_PATCHES}; do
-    P=`echo "${PATCH}" | cut -c '5-'` &&
-    if [ -x "${PATCH_DIRECTORY}/${PATCH}/PATCH" ]; then
-      message "${MESSAGE_COLOR}Applying patch ${P}${DEFAULT_COLOR}" &&
-      . "${PATCH_DIRECTORY}/${PATCH}/PATCH" || return 1
-    else
-      message "${PROBLEM_COLOR}Instructions for patch ${SPELL_COLOR}${P}${PROBLEM_COLOR} not found${DEFAULT_COLOR}"
-    fi
-  done &&
-  ./prepare
-fi
+for PATCH in ${REAL_PATCHES}; do
+  P=`echo "${PATCH}" | cut -c '5-'` &&
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/PATCH" ]; then
+    message "${MESSAGE_COLOR}Applying patch ${P}${DEFAULT_COLOR}" &&
+    . "${PATCH_DIRECTORY}/${PATCH}/PATCH" || return 1
+  else
+    message "${PROBLEM_COLOR}Instructions for patch ${SPELL_COLOR}${P}${PROBLEM_COLOR} not found${DEFAULT_COLOR}"
+  fi
+done &&
+
+./prepare

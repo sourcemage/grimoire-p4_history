@@ -72,13 +72,11 @@ config_query_option MUTT_OPTS "Enable IMAP support?"                 \
                               "--enable-imap"                        \
                               "--disable-imap"                       &&
 
-if [ ! -z "${REAL_PATCHES}" ]; then
-  for P in ${REAL_PATCHES}; do
-    if [ -x "${PATCH_DIRECTORY}/${P}/CONFIGURE" ]; then
-      . "${PATCH_DIRECTORY}/${P}/CONFIGURE"
-    fi
-  done
-fi
+for P in ${REAL_PATCHES}; do
+  if [ -x "${PATCH_DIRECTORY}/${P}/CONFIGURE" ]; then
+    . "${PATCH_DIRECTORY}/${P}/CONFIGURE"
+  fi
+done
 
 if [ "${BRANCH}" != "stable" ]; then 
   config_query_option MUTT_OPTS "Enable the header cache?"           \
