@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DESCRIPTION="Asus ACPI extras"
+SHORT="Asus laptops specific ACPI"
+HELP="Provides ACPI access to LCD brightness, video out switching, fan control and leds control. ***REQUIRES*** the ACPI patch"
+VERSIONS="2.4.19-acpi-20020918
+2.4.19
+2.4.18"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=asus_acpi-${!PATCH}.diff.bz2
+SOURCE${COUNTER}_URL=http://julien.lerouge.free.fr/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi

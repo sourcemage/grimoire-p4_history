@@ -18,6 +18,10 @@ chown  -R  root:root  /usr/src/linux-${VERSION}
 
 ln  -s     linux-${VERSION}  linux
 
+if [[ ! -L /usr/include/asm-generic ]]; then
+  ln ../src/linux/include/asm-generic /usr/include/ -s
+fi
+
 if  [  -f  $CONFIG_CACHE/.config  ]; then
   mv $CONFIG_CACHE/.config $CONFIG_CACHE/kernel.config
 fi
@@ -36,7 +40,7 @@ cd  /usr/src/linux
 
 local COUNTER
 local VAR
-for ((COUNTER=3; COUNTER <= 10 ; COUNTER++))
+for ((COUNTER=3; COUNTER <= 15 ; COUNTER++))
 do
   VAR=SOURCE${COUNTER}
   if [[ "${!VAR}" != "" ]]; then

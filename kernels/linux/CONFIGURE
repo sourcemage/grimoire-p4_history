@@ -59,7 +59,7 @@ kernel_menu() {
            "LATEST_2_0"         "2.0.x Kernel in for the nostalgic of you"         "Currenly at version ${LATEST_2_0}" \
            "LATEST_2_0_PRE"     "prepatched 2.0.x Kernel"                          "Currenly at version ${LATEST_2_0_PRE}" \
            "LATEST_2_4_AC"      "2.4.x Kernel with Alan Cox Patch"                 "Currenly at version ${LATEST_2_4_AC}" \
-           "LATEST_2_4_PRE_AC"  "prepatched 2.4.x Kernel with Alan Cox Patch"      "Currenly at version ${LATEST_2_4_PRE_AC}" \
+           "LATEST_2_5_AC"      "2.5.x Kernel with Alan Cox Patch"                 "Currenly at version ${LATEST_2_5_AC}" \
            "LATEST_2_5_DJ"      "2.5.x Kernel with David Jones Patch"              "Currenly at version ${LATEST_2_5_DJ}" \
     )
     retval=$?
@@ -102,6 +102,7 @@ do
   done
 }
 
+local oldIFS=$IFS
 export IFS="
 "
 
@@ -142,3 +143,5 @@ else
   echo  "$TEMP"                         >   $SPELL_CONFIG  &&
   echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG
 fi
+
+IFS=$oldIFS
