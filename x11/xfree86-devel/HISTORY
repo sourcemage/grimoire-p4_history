@@ -1,9 +1,15 @@
 2003-09-19  hgg <hgreig@bigpond.net.au>
 
-		Revert to stable 4.3.0.1 version ( at long last)
-		Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
+		Update to 4.3.99.12 for all the band-aid brigade
+		Branch into xfree86-devel
+		Remove all options for patches
+		Add some fallback defaults to BUILD
 		Move a bugfix in BUILD to before "make World" so it won't fail
-		(when it does fail it calls "make World" again which actually involves a "make clean")
+                (when it does fail it calls "make World" again which actually involves a "make clean")
+
+2003-09-18  hgg <hgreig@bigpond.net.au>
+
+		Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
 
 2003-09-15  hgg <hgreig@bigpond.net.au>
 

@@ -32,10 +32,6 @@ fi                                                      &&
 message  "Building XFree86 takes a very long time."
 
 ( 
-  
-  ### Apply 4.3.0.1 patch
-  zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
-
   ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
@@ -56,7 +52,7 @@ message  "Building XFree86 takes a very long time."
   ### differnet approach to old bug
   ### Fix Bug #3486, which stops the build process
   ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
-
+  
   make World
   
   ### will this fix the mysterious error ?

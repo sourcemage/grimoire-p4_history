@@ -1,24 +1,25 @@
            SPELL=xfree86
-    BASE_VERSION=4.3
-   PATCH_VERSION=$BASE_VERSION.99
-         VERSION=$PATCH_VERSION.10
- SOURCE_BASENAME=X${BASE_VERSION//./}0src
-          SOURCE=$SOURCE_BASENAME-1.tgz
-         SOURCE2=$SOURCE_BASENAME-2.tgz
-         SOURCE3=$SOURCE_BASENAME-3.tgz
-         SOURCE4=$SOURCE_BASENAME-4.tgz
-         SOURCE5=$SOURCE_BASENAME-5.tgz
-         SOURCE6=$SOURCE_BASENAME-6.tgz
-         SOURCE7=$SOURCE_BASENAME-7.tgz
-            FUZZ=off
+         VERSION=4.3.0.1
+     OLD_VERSION=4.3.0
+        XVERSION=${OLD_VERSION//./}
+          SOURCE=X${XVERSION}src-1.tgz
+         SOURCE2=X${XVERSION}src-2.tgz
+         SOURCE3=X${XVERSION}src-3.tgz
+         SOURCE4=X${XVERSION}src-4.tgz
+         SOURCE5=X${XVERSION}src-5.tgz
+         SOURCE6=X${XVERSION}src-6.tgz
+         SOURCE7=X${XVERSION}src-7.tgz
+         SOURCE8=${OLD_VERSION}-${VERSION}.diff.gz
+            FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
-   SOURCE_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE
-  SOURCE2_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE2
-  SOURCE3_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE3
-  SOURCE4_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE4
-  SOURCE5_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE5
-  SOURCE6_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE6
-  SOURCE7_URL[0]=$XFREE86_URL/$BASE_VERSION.0/source/$SOURCE7
+   SOURCE_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE
+  SOURCE2_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE2
+  SOURCE3_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE3
+  SOURCE4_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE4
+  SOURCE5_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE5
+  SOURCE6_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE6
+  SOURCE7_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE7
+  SOURCE8_URL[0]=$XFREE86_URL/${OLD_VERSION}/fixes/$SOURCE8
           MD5[0]=90fd1261c1a70510a12fececedadf1a9
           MD5[1]=b8a1c45dd8c59549e435111115a439d3
           MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
@@ -26,46 +27,15 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
           MD5[4]=3b8d6ded289c64af6055c915f05326e8
           MD5[5]=fb8a4e286d9691a13bc2df84e5149a0e
           MD5[6]=f689e23a1bf1c15a91c998be971e5660
-
-if [ -n "$XFREE86_APPLY_PATCH" ]; then
-         SOURCE8=$BASE_VERSION.0-$PATCH_VERSION.1.diff.bz2
-          MD5[7]=d0a45c02da01c1d0454e60c60de27c62
-     SOURCE8_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE8
-         SOURCE9=$PATCH_VERSION.1-$PATCH_VERSION.2.diff.bz2
-          MD5[8]=90dc8859025ddc5fc9cf8ddbabaa775a
-     SOURCE9_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE9
-        SOURCE10=$PATCH_VERSION.2-$PATCH_VERSION.3.diff.bz2
-          MD5[9]=50af66fc8c9d2da8085b6466f07e40e6
-    SOURCE10_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE10
-        SOURCE11=$PATCH_VERSION.3-$PATCH_VERSION.4.diff.bz2
-         MD5[10]=d48a43d9d364f57fa96ccf15113232b8
-    SOURCE11_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE11
-        SOURCE12=$PATCH_VERSION.4-$PATCH_VERSION.5.diff.bz2
-         MD5[11]=4792fc1915881e4cee2f19183c1edada
-    SOURCE12_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE12
-        SOURCE13=$PATCH_VERSION.5-$PATCH_VERSION.6.diff.bz2
-         MD5[12]=ad6a8b3446b7ae722109ceb1323d154d
-    SOURCE13_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE13
-        SOURCE14=$PATCH_VERSION.6-$PATCH_VERSION.7.diff.bz2
-         MD5[13]=3bfd976d1e70b03c2026dbc85b1cb8d3
-    SOURCE14_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE14
-        SOURCE15=$PATCH_VERSION.7-$PATCH_VERSION.8.diff.bz2
-         MD5[14]=feec1a22ca4af69f4c4e4bbebd5273d5
-    SOURCE15_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE15
-        SOURCE16=$PATCH_VERSION.8-$PATCH_VERSION.9.diff.bz2
-         MD5[15]=260e4b7d239c17df7d5de356e3399432
-    SOURCE16_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE16
-        SOURCE17=$PATCH_VERSION.9-$PATCH_VERSION.10.diff.bz2
-         MD5[16]=2f2a14ae651c754eba38f2ecbd5278ab
-    SOURCE17_URL=ftp://ftp.xfree86.org/pub/XFree86/develsnaps/$SOURCE17
-   PATCH_SOURCES=($SOURCE8 $SOURCE9 $SOURCE10 $SOURCE11 $SOURCE12 $SOURCE13 $SOURCE14 $SOURCE15 $SOURCE16 $SOURCE17)
-fi
+          MD5[7]=204b3ba31b6c34442bfa902337a548db
         WEB_SITE=http://www.xfree86.org/
          ENTERED=20010922
-         UPDATED=20030822
+         UPDATED=20030918
       LICENSE[0]=XCL
-           SHORT='XFree86 is a free implementation of the X Window System'
+           SHORT="xfree86 is the stable free implementation of the X Window System."
 cat << EOF
+What is XFree86?
+
 The XFree86 Project, Inc is an organisation which produces
 XFree86, a freely redistributable open-source
 implementation of the X Window System that runs on UNIX(R)

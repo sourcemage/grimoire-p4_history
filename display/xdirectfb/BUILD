@@ -37,12 +37,12 @@ __EOF__
   cp lndir $SOURCE_DIRECTORY.bld/                                &&
   cd $SOURCE_DIRECTORY.bld                                       &&
   ./lndir ../xc/                                                 &&
+  ### Fix Bug #3486, which stops the build process
+  ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
 
   make World
 
   ### Some IMAKE issues from the XDirectFB patches need fixing
-  mkdir  lib/font/builtins/unshared                              &&
-  cp  lib/font/builtins/*.*  lib/font/builtins/unshared          &&
   ln -sf $SOURCE_DIRECTORY/include/extensions/Xv.h $SOURCE_DIRECTORY.bld/exports/include/X11/extensions/  &&
   sedit "s/STD\_INCLUDES =/& \-I greeter\//" $SOURCE_DIRECTORY.bld/programs/xdm/Makefile                  &&
   man2html $SOURCE_DIRECTORY.bld/doc/man/Xext/XTransparency._man > $SOURCE_DIRECTORY.bld/doc/man/Xext/XTransparency.3x.html  &&
