@@ -1,7 +1,7 @@
            SPELL=gimp-print
 if [ "$DEVEL" == "n" ]; then
-         VERSION=4.2.7-pre1
-          MD5[0]='b69ad1a816c0d3875c30ba78250fec39'
+         VERSION=4.2.7
+          MD5[0]='ad1cb6fdadd95391409ce5c42af33dd6'
 else
          VERSION=5.0.0-beta1
           MD5[0]=f3e939536fb3444306b14a41d3175169
@@ -10,6 +10,7 @@ fi
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
         WEB_SITE=http://gimp-print.sourceforge.net
+       BUILD_API=2
       LICENSE[0]=GPL
          ENTERED=20010922
          UPDATED=20020501
