@@ -1,3 +1,9 @@
+2004-12-15 Eric Sandall <eric@sandall.us>
+	* DEPENDS: X11-LIBS is optional. :)
+	* PRE_BUILD: Apply g++ removal patch:
+	* g++.patch.bz2: Remove g++ checks from configure, otherwise
+	  this fails without g++ installed (stupid packagers!)
+
 2004-09-13 Robin Cook <rcook@wyrms.net>
 	* DETAILS: updated VERSION to 1.6.0
 	  updated MD5
@@ -38,8 +44,8 @@
 	* DETAILS: updated VERSION to 1.2.5
 	  updated MD5
 
-2003-07-31hgg <hgreig@bigpond.net.au>
- * DEPENDS: Add depends xfree86, remove freetype2 and fontconfig
+2003-07-31 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Add depends xfree86, remove freetype2 and fontconfig
 
 2003-06-09 Robin Cook <rcook@wyrms.net>
 	* DETAILS: Updated to 1.2.3
@@ -102,5 +108,5 @@
 	* DETAILS: updated VERSION to 1.0.1
 
 2002-03-14 Jon Svendsen <jon-sven@frisurf.no>
-	* *DETAILS: Added to section (me)
+	* DETAILS: Added to section (me)
 
