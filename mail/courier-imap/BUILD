@@ -37,7 +37,7 @@
   mkimapdcert                                                            &&
   mkpop3dcert                                                            &&
 
-  if ( spell_installed linux-pam ) && ( "$AUTHPAM" != "" );  then
+  if ( spell_ok linux-pam ) && ( "$AUTHPAM" != "" );  then
     message  "${MESSAGE_COLOR}Setting up /etc/pam.d..."                  &&
     cp  -v  $SCRIPT_DIRECTORY/pam.d/* ${INSTALL_ROOT}/etc/pam.d          &&
     message  " ${DEFAULT_COLOR}"
