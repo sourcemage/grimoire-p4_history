@@ -1,9 +1,11 @@
            SPELL=rpm
-         VERSION=4.1
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.1.x/$SOURCE
-          MD5[0]=f3840f4d5a41e5fafa1e7295d7f827c1
+         VERSION=4.2-1
+     RPM_VERSION=${VERSION%-*}
+          SOURCE=$SPELL-$VERSION.src.rpm
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$RPM_VERSION
+   SOURCE_URL[0]=ftp://ftp.rpm.org/pub/rpm/dist/rpm-$RPM_VERSION.x/$SOURCE
+      MAKE_NJOBS=1
+          MD5[0]='97db3603f67c29f23adb94710e54dea5'
         WEB_SITE=http://www.rpm.org/
          ENTERED=20030123
          UPDATED=20030506

@@ -1,0 +1,21 @@
+         VERSION=1.0.1
+          MD5[0]=''
+         UPDATED=20040126
+           SPELL=PEAR-XML_Parser
+        WEB_SITE=http://pear.php.net/package/XML_Parser/
+      LICENSE[0]=PHP
+           SHORT='PEAR: XML parsing class based on PHP's bundled expat'
+cat << EOF
+This is an XML parser based on PHP's built-in
+xml extension.  It
+supports two basic modes of operation: "func"
+and "event".  In "func"
+mode, it will look for a function named after
+each element
+(xmltag_ELEMENT for start tags and
+xmltag_ELEMENT_ for end tags), and
+in "event" mode it uses a set of generic
+callbacks.
+EOF
+
+source $SCRIPT_DIRECTORY/../PEAR_DETAILS
