@@ -2,7 +2,7 @@
 
   prepare_install                    &&
   cp bin/tmake bin/progen /usr/bin   &&
-  mkdir /usr/share/tmake             &&
+  mkdir -p /usr/share/tmake          &&
   cp -Rv lib /usr/share/tmake        &&
   cp -Rv example /usr/share/tmake    &&
   cp LICENSE /usr/share/tmake          
