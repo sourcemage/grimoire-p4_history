@@ -12,4 +12,10 @@ if  [  !  -e  /etc/init.d/smgl_init  ]  ;  then
   done
 fi
 fi
+
+# remove left behind file, bug #5784.
+if [ -f /etc/init.d/runlevels/%3/z-misc.sh ]; then
+  rm /etc/init.d/runlevels/%3/z-misc.sh
+fi
+
 true
