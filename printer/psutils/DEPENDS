@@ -2,6 +2,6 @@ if  !  spell_installed  ghostscript  &&  !  spell_installed  espgs;  then
   echo  ""
   echo  "  **  Do NOT choose ghostscript if you have installed or are installing cups:  **  "
   echo  ""
-fi
-requires  postscript-interpreter  &&
-depends   perl
+fi                               &&
+depends  POSTSCRIPT-INTERPRETER  &&
+depends  perl
