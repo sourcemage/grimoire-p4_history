@@ -17,6 +17,10 @@ source_patch()
 {	
 	local tmp=$(find $patchesdir/*/$1)
 	. $tmp
+}
+source_info()
+{
+	local tmp=$(find $patchesdir/*/$1)
 	[ -f `dirname $tmp`/.info ] && . `dirname $tmp`/.info
 }
 
@@ -570,10 +574,10 @@ patch_menu()
 				. $latestdefaults 
 				case "${tmp}" in
 					LATEST*)
-						source_patch ${!tmp}
+						source_info ${!tmp}
 						;;
 					*)
-						source_patch $tmp
+						source_info $tmp
 						;;
 				esac
 				$dialog --msgbox "Selecting this will keep the kernel tree updated.\n$help" 0 0
