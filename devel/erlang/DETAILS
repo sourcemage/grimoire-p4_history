@@ -5,10 +5,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/otp_src_$VERSION
    SOURCE_URL[0]=http://www.erlang.org/download/$SOURCE
           MD5[0]=70188a834797b437c40dd6b3c0202391
         WEB_SITE=http://www.erlang.org
-      MAINTAINER=hgr@vabo.cz
          ENTERED=20020606
          UPDATED=20020606
+      MAINTAINER=hgr@vabo.cz
       LICENSE[0]=http://www.erlang.org/EPLICENSE
+      MAKE_NJOBS=1
            SHORT="programming language developed at the Ericsson CS Laboratory"
 cat << EOF
 Erlang is a small concurrent functional programming 
