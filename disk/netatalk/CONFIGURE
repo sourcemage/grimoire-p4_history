@@ -30,11 +30,11 @@ if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
     echo  'OPTS="$OPTS  --without-cdb"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Enable flock locks support?" n;  then
-    echo  'OPTS="$OPTS  --with-flock-locks"'     >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --without-flock-locks"'  >>  ${SPELL_CONFIG}
-  fi
+#  if  query  "Enable flock locks support?" n;  then
+#    echo  'OPTS="$OPTS  --with-flock-locks"'     >>  ${SPELL_CONFIG}
+#  else
+#    echo  'OPTS="$OPTS  --without-flock-locks"'  >>  ${SPELL_CONFIG}
+#  fi
 
   if  query  "Enable AFS support?" n;  then
     echo  'OPTS="$OPTS  --enable-afs"'   >>  ${SPELL_CONFIG}
