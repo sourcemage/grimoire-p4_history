@@ -1,0 +1,17 @@
+if  !  grep  -q  "RECAST_PAM_AWARE="  $SPELL_CONFIG;  then
+
+  message  "${MESSAGE_COLOR}If Linux-PAM is being installed for"  \
+           "the first time then all installed or held pam aware"  \
+           "spells should be re-cast for them to use Linux-PAM"   \
+           "to authenticate.${DEFAULT_COLOR}"
+
+  if    query  "Re-cast all Linux-PAM aware spells?" n
+  then  RECAST_PAM_AWARE="y"
+  else  RECAST_PAM_AWARE="n"
+  fi
+
+  TEMP=`grep  -v  "RECAST_PAM_AWARE="             $SPELL_CONFIG`
+  echo  "$TEMP"                               >   $SPELL_CONFIG
+  echo  "RECAST_PAM_AWARE=$RECAST_PAM_AWARE"  >>  $SPELL_CONFIG
+
+fi

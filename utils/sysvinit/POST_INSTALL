@@ -1,0 +1,34 @@
+mkdir  -p  /etc/rc0.d
+mkdir  -p  /etc/rc1.d
+mkdir  -p  /etc/rc2.d
+mkdir  -p  /etc/rc3.d
+mkdir  -p  /etc/rc4.d
+mkdir  -p  /etc/rc5.d
+mkdir  -p  /etc/rc6.d
+mkdir  -p  /etc/rcS.d
+mkdir  -p  /etc/init.d
+mkdir  -p  /var/run
+mkdir  -p  /var/log
+mkdir  -p  /devices
+
+[  -e  /etc/inittab            ]  ||  cp  $SCRIPT_DIRECTORY/inittab     /etc
+[  -e  /etc/init.d/rc          ]  ||  cp  $SCRIPT_DIRECTORY/rc          /etc/init.d
+[  -e  /etc/init.d/rcS         ]  ||  cp  $SCRIPT_DIRECTORY/rcS         /etc/init.d
+[  -e  /etc/init.d/halt.sh     ]  ||  cp  $SCRIPT_DIRECTORY/halt.sh     /etc/init.d
+[  -e  /etc/init.d/reboot.sh   ]  ||  cp  $SCRIPT_DIRECTORY/reboot.sh   /etc/init.d
+[  -e  /etc/init.d/signals.sh  ]  ||  cp  $SCRIPT_DIRECTORY/signals.sh  /etc/init.d
+
+ln     -sf ../init.d/halt.sh     /etc/rc0.d/S90halt
+ln     -sf ../init.d/reboot.sh   /etc/rc6.d/S90reboot
+ln     -sf ../init.d/signals.sh  /etc/rc0.d/K80signals
+ln     -sf ../init.d/signals.sh  /etc/rc6.d/K80signals
+
+touch  /var/run/utmp
+touch  /var/log/wtmp
+touch  /var/log/btmp
+touch  /var/log/lastlog
+
+chmod  644  /var/run/utmp
+chmod  644  /var/log/wtmp
+chmod  644  /var/log/btmp
+chmod  644  /var/log/lastlog

@@ -1,0 +1,24 @@
+           SPELL=gal
+         VERSION=0.19
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/unstable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/unstable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+           SHORT="GAL are the Gnome Application Libraries"
+         ENTERED=20011009
+         UPDATED=20020215
+cat << EOF
+GAL are the Gnome Application Libraries"
+
+This module contains some library functions that came from Gnumeric and
+Evolution.  The idea is to reuse the code across various larger GNOME
+applications that might want to use it.  The API is not frozen and might
+change at any time.  Larger class renaming might happen at any point
+without notice. Use this library at your own risk.
+
+We envision some of this code being moved to Gtk+ or Gnome-Libs at
+some point, but not before 2.0, and certainly we don't know which ones
+yet.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=grtrace
+         VERSION=1.0.1
+          SOURCE=$SPELL.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://grsecurity.net/$SOURCE
+        WEB_SITE=http://www.grsecurity.net/misc.htm
+         ENTERED=20020219
+         UPDATED=20020219
+           SHORT="grtrace is to be used to automatically generate grsecurity ACLs"
+cat << EOF
+Part of grsecurity utils.
+Basically what gtrace does is allow you to automatically create ACLs
+for any binary or running process on your system, without having to have
+any knowledge of how capabilities work or what permissions a program needs
+to have on a certain file or how to interpret strace output 
+(which can be a long, tedious process)  What it does code-wise is hook
+up a process pipe to strace and parse the output.
+Note that for the output ACL to appear, the process has to exit.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=rdesktop
+         VERSION=1.1.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://www.rdesktop.org
+      MAINTAINER=hvisage@envisage.co.za     
+         ENTERED=20010922
+         UPDATED=20011004
+           SHORT="$SPELL is used to connect to Windows terminal servers"
+cat << EOF
+rdesktop is used to connect to windows terminal servers for those
+desktop superior group of people using Un*x, but still need to connect
+to that "you know which" eye-candy strangled GUI based OS
+
+Note, there might be a "better" 1.0.0-patch19 version out there..
+...though it's marked 1.1.0
+
+EOF

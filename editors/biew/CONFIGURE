@@ -1,0 +1,8 @@
+if  !  grep  -q  "USE_MOUSE="  $SPELL_CONFIG;  then
+
+  if    query  "Do you want to enable mouse support?"  y
+  then  echo  "USE_MOUSE=y"  >>  $SPELL_CONFIG
+  else  echo  "USE_MOUSE=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

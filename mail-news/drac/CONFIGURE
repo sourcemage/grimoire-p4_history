@@ -1,0 +1,8 @@
+if  !  grep  -q  "DRAC_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke drac at boot?" n
+  then  echo   "DRAC_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "DRAC_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

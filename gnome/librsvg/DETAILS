@@ -1,0 +1,18 @@
+           SPELL=librsvg
+         VERSION=1.0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20011006
+         UPDATED=20020124
+           SHORT="librsvg is a library for rendering vector-graphic files."
+cat << EOF
+The librsvg library is a lightweight library for parsing and
+rendering vector-graphic files in SVG format (like the ones made by
+sodipodi).  It also includes functions that render anti-aliased fonts
+using freetype, including caching of glyphs. It's used by Nautilus for
+drawing vector icons and anti-aliased type.
+EOF

@@ -1,0 +1,16 @@
+           SPELL=wireless_tools
+         VERSION=23
+          SOURCE=$SPELL.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL.$VERSION
+   SOURCE_URL[0]=http://pcmcia-cs.sourceforge.net/ftp/contrib/$SOURCE
+        WEB_SITE=http://hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
+         ENTERED=20020220
+         UPDATED=20020220
+           SHORT="Tools for wireless networking."
+cat << EOF
+Wireless tools. Includes:
+    * iwconfig manipulate the basic wireless parameters
+    * iwlist (formerly part of iwspy) allow to list addresses, frequencies, bit-rates...
+    * iwspy allow to get per node link quality
+    * iwpriv allow to manipulate the Wireless Extensions specific to a driver (private)
+EOF

@@ -1,0 +1,19 @@
+           SPELL=gawk
+         VERSION=3.1.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/gawk/gawk.html
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="gawk is a free version of awk."
+cat << EOF
+gawk - Free version of awk
+gawk performs simple data reformatting tasks, such as making changes in
+various text files whenever certain patterns appear or extracting data
+from parts of certain lines while discarding the rest, with just a few
+lines of code. It provides several useful extensions not found in other
+implementations. It is upwardly compatible with the latest POSIX
+specification of awk.
+EOF

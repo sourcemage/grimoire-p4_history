@@ -1,0 +1,41 @@
+Index: xc/lib/zlib/infblock.c
+===================================================================
+RCS file: /home/x-cvs/xc/lib/zlib/infblock.c,v
+retrieving revision 1.4
+retrieving revision 1.4.6.2
+diff -u -r1.4 -r1.4.6.2
+--- xc/lib/zlib/infblock.c	2001/01/17 19:43:53	1.4
++++ xc/lib/zlib/infblock.c	2002/02/14 16:22:45	1.4.6.2
+@@ -249,10 +249,11 @@
+                              &s->sub.trees.tb, z);
+       if (t != Z_OK)
+       {
+-        ZFREE(z, s->sub.trees.blens);
+         r = t;
+-        if (r == Z_DATA_ERROR)
++        if (r == Z_DATA_ERROR) {
++          ZFREE(z, s->sub.trees.blens);
+           s->mode = BAD;
++        }
+         LEAVE
+       }
+       s->sub.trees.index = 0;
+@@ -317,14 +318,16 @@
+ #endif
+         t = inflate_trees_dynamic(257 + (t & 0x1f), 1 + ((t >> 5) & 0x1f),
+                                   s->sub.trees.blens, &bl, &bd, &tl, &td, z);
+-        ZFREE(z, s->sub.trees.blens);
+         if (t != Z_OK)
+         {
+-          if (t == (uInt)Z_DATA_ERROR)
++          if (t == (uInt)Z_DATA_ERROR) {
++            ZFREE(z, s->sub.trees.blens);
+             s->mode = BAD;
++          }
+           r = t;
+           LEAVE
+         }
++        ZFREE(z, s->sub.trees.blens);
+         Tracev((stderr, "inflate:       trees ok, %d * %d bytes used\n",
+               inflate_hufts, sizeof(inflate_huft)));
+         if ((c = inflate_codes_new(bl, bd, tl, td, z)) == Z_NULL)

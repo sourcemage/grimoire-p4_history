@@ -1,0 +1,20 @@
+           SPELL=kdebindings
+         VERSION=2.2.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.kde.org/pub/kde/stable/$VERSION/src/$SOURCE
+        WEB_SITE=http://www.kde.org
+         ENTERED=20010922
+         UPDATED=20020314
+           SHORT="kdebindings contains DCOP bindings and kdejava bindings."
+cat << EOF
+This package contains
+* dcopc: DCOP bindings for C
+* dcopjava: DCOP bindings for JAVA
+* dcopperl: DCOP bindings for Perl
+* dcoppython: DCOP bindings for Python
+* kdejava: KDE bindings for Java JNI to use Qt/KDE classes with Java
+* qtjava: Qt bindings for Java JNI to use Qt/KDE classes with Java
+* xparts: allows you to embed non-KDE apps as a KPart
+EOF

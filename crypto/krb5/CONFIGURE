@@ -1,0 +1,10 @@
+if  !  grep  -q  "KDC="  $SPELL_CONFIG;  then
+
+  if    query  "Will this machine be serving as a KDC?" y
+  then  echo  "KDC=y"  >>  $SPELL_CONFIG
+        if    query  "Will this machine be servering as a Master KDC?" y
+        then  echo  "MASTER=y"  >>  $SPELL_CONFIG
+        fi
+  else  echo  "KDC=n"  >>  $SPELL_CONFIG
+  fi
+fi

@@ -1,0 +1,38 @@
+           SPELL=sorcery
+         VERSION=`date -u +%Y%m%d`
+          SOURCE=$SPELL.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://sgl.bccs.net/sorcery/$SOURCE
+   SOURCE_URL[1]=http://www.cs.vu.nl/~edschabe/erics/linux/$SOURCE
+        WEB_SITE=http://sgl.bccs.net
+         ENTERED=20010922
+         UPDATED=20020311
+        NO_CACHE="--cache=off"
+        LIFESPAN="10"
+            FUZZ="off"
+    VIEW_REPORTS="off"
+          SILENT="on"
+           SOUND="off"
+         ARCHIVE="off"
+           SHORT="sorcery contains the package management tools for Sorcerer GNU Linux."
+cat << EOF
+sorcery  -  Tools package management by source.
+
+sorcery includes the following files:
+  /etc/sorcery/*                    configuration files.
+  /usr/doc/sorcery/*                documentation, please read
+  /usr/sbin/sorcery                 menu driven interface
+  /usr/sbin/leach                   downloads spells' sources
+  /usr/sbin/cast                    installs  spells
+  /usr/sbin/vcast                   installs  spells  verbosely
+  /usr/sbin/dispel                  removes   spells
+  /usr/sbin/gaze                    provides information about the box
+  /var/lib/sorcery/apprentice       spell:/location/binary for launchers
+  /var/lib/sorcery/excluded         list of files that are ignored
+  /var/lib/sorcery/grimoire/*       the spell book
+  /var/lib/sorcery/protected        list of files that will not be deleted
+  /var/lib/sorcery/subroutines      common subroutines
+
+  and man pages.
+
+EOF

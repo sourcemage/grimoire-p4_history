@@ -1,0 +1,8 @@
+if  !  grep  -q  "MMX"  $SPELL_CONFIG;  then
+
+  if    query  "Enable MMX support?"  y
+  then  echo   "MMX=y"  >>  $SPELL_CONFIG;  depends  nasm
+  else  echo   "MMX=n"  >>  $SPELL_CONFIG
+  fi
+ 
+fi

@@ -1,0 +1,19 @@
+           SPELL=gzip
+         VERSION=1.2.4b
+          SOURCE=$SPELL-${VERSION/b/a}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/b/a}
+   SOURCE_URL[0]=ftp://gatekeeper.dec.com/pub/GNU/$SPELL/$SOURCE
+ # SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+ # SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.gzip.org
+         ENTERED=20010922
+         UPDATED=20020312
+      MAINTAINER=heffer@mailberlin.net
+           SHORT="gzip is a compression utility designed to replace compress."
+cat << EOF
+gzip - Compresses and decompresses files
+A compression utility designed to replace compress. Much better
+compression and freedom from patented algorithms are its main advantages
+over compress. Gzip decompresses files created by gzip, compress, or
+pack; it detects the input format automatically.
+EOF

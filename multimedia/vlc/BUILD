@@ -1,0 +1,17 @@
+unset  CFLAGS
+unset  CXXFLAGS
+
+(
+
+  ./configure  --prefix=/usr               \
+               --sysconfdir=/etc           \
+               --localstatedir=/var        \
+               --with-dvdcss=local-static  \
+               $OPTS                       &&
+  make                                     &&
+  prepare_install                          &&
+  make    install                          &&
+  rm  -f   /usr/lib/libdvdcss.*            &&
+  rm  -rf  /usr/include/videolan
+
+) > $C_FIFO 2>&1

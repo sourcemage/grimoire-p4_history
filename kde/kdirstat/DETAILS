@@ -1,0 +1,17 @@
+           SPELL=kdirstat
+         VERSION=1.8.5-beta
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://kdirstat.sourceforge.net/download/$SOURCE
+        WEB_SITE=http://kdirstat.sourceforge.net/
+         ENTERED=20020130
+         UPDATED=20020130
+           SHORT="KDirStat - graphical directory statistics for KDE."
+	 MAINTAINER="jacksonje@health.missouri.edu"
+cat << EOF
+KDirStat (for KDE Directory Statistics) is a small utility program that sums
+up disk usage for direcory trees - very much like the Unix 'du' command. But
+unlike 'du', it tries to do that in a structured, comprehensive manner. It 
+tries to provide the information you are looking for - exactly where all your 
+disk space has gone.
+EOF

@@ -1,0 +1,16 @@
+           SPELL=cvsfs
+         VERSION=1.0.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://sourceforge.net/projects/cvsfs/
+         ENTERED=20020105
+         UPDATED=20020105
+      MAINTAINER=cromwell@kublai.com
+         ARCHIVE="off"
+           SHORT="cvsfs mounts a CVS project to a directory like a filesystem."
+cat << EOF
+cvsfs is an attempt to let a user mount a CVS project like any file
+system. It allows you to navigate and browse through a project tree.
+No preparations are required on the CVS server side.
+EOF

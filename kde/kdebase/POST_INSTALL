@@ -1,0 +1,5 @@
+if  [  "$SHUTDOWN"  ==  "y"  ];  then
+  echo  "Setting u+s on /sbin/halt to allow users to do reboot/shutdowns"                                               &&
+  echo  "Remember to set execute permissions on /sbin/halt to reflect which users are allowed to do reboot/shutdowns!"  &&
+  chmod  u+s  /sbin/halt
+fi

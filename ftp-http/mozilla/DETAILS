@@ -1,0 +1,22 @@
+           SPELL=mozilla
+         VERSION=0.9.9
+          SOURCE=$SPELL-source-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla/releases/$SPELL$VERSION/src/$SOURCE
+   SOURCE_URL[1]=ftp://archive.progeny.com/mozilla/mozilla/releases/$SPELL$VERSION/src/$SOURCE
+        WEB_SITE=http://www.mozilla.org
+         ENTERED=20010922
+         UPDATED=20020312
+      MAINTAINER=eric@schabell.com
+           FUZZ="off"
+           SHORT="Mozilla is a Web browser."
+cat << EOF
+Mozilla is a Web browser that is being developed by the Free Software
+Community with the cooperation and support of Netscape. Initially,
+its development was based on an early version of Netscape Communicator 5.0.
+But most of it was disposed of halfway, and the current Mozilla is
+a completely new software based on the "NGLayout" layout engine 
+developed for Netscape Communicator 6. "Netscape 6" (the Web browser 
+from Netscape) and "Beonex Communicator" are based on Mozilla. Many 
+other projects use/embed Mozilla's rendering engine.
+EOF

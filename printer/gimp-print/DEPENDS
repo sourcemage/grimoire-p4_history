@@ -1,0 +1,16 @@
+depends  linuxdoc-tools  &&
+
+optional_depends  "gimp"             \
+                  "--with-gimp"      \
+                  ""                 \
+                  "for gimp plugin"  &&
+
+optional_depends  "cups"         \
+                  "--with-cups"  \
+                  ""             \
+                  "for cups support"
+
+# optional_depends  "ghostscript"  \
+#                   "--with-gimp"  \
+#                   ""             \
+#                   "for ghostscript support"

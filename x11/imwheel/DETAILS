@@ -1,0 +1,19 @@
+           SPELL=imwheel
+         VERSION=1.0.0pre1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://jcatki.2y.net/imwheel/files/$SOURCE
+SOURCE_URL[1]=http://jonatkins.org/imwheel/files/$SOURCE
+        WEB_SITE=http://jonatkins.org/imwheel/
+         ENTERED=20011009
+         UPDATED=20011009
+      MAINTAINER=torgeir@nes.ac
+           SHORT="imwheel makes the wheel of your intellimouse and buttons work in X11."
+cat << EOF
+Imwheel makes the wheel of your Intellimouse (and other wheel and
+stick mice) work in Linux/X11 to scroll windows up and down, or send
+keys to programs. It runs in the background as a daemon and requires
+little reconfiguration of the XWindows setup. 4 or more button mice
+and Alps Glidepad 'Taps' may also be used. imwheel includes a
+modified gpm for an alternate method of wheel input.
+EOF

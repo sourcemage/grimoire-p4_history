@@ -1,0 +1,14 @@
+           SPELL=apache
+         VERSION=1.3.23
+          SOURCE=${SPELL}_$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_$VERSION
+   SOURCE_URL[0]=http://httpd.apache.org/dist/httpd/$SOURCE
+        WEB_SITE=http://www.apache.org
+         ENTERED=20010922
+         UPDATED=20020125
+           SHORT="apache is a popular HTTP server."
+cat << EOF
+Apache is the world's most popular HTTP server, being quite possibly
+the best around in terms of functionality, efficiency, security and
+speed.
+EOF

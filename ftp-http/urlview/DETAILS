@@ -1,0 +1,22 @@
+           SPELL=urlview
+         VERSION=0.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.mutt.org/pub/mutt/contrib/$SOURCE
+        WEB_SITE=unknown
+         ENTERED=20020126
+         UPDATED=20020126
+           SHORT="urlview, finds URLs in a text file and passes them to a viewer(lynx w3m ...)"
+cat << EOF
+urlview 0.9
+===========
+
+ftp://ftp.mutt.org/pub/mutt/contrib/urlview-0.9.tar.gz
+
+urlview is a curses program for extracting URLs from text files and
+displaying a menu from which you can select a specific URL to view using
+your favorite browser program.
+
+Requires: working regcomp() or GNU rx.
+
+EOF

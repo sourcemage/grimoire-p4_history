@@ -1,0 +1,14 @@
+           SPELL=gnome-spell
+         VERSION=0.4.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/unstable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/unstable/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020224
+         UPDATED=20020224
+     MAINTAINER="sasha@goldnet.ca"
+          SHORT="Spellcheck for Gnome apps."
+cat << EOF
+Spellcheck for gnome apps.
+EOF

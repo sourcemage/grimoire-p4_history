@@ -1,0 +1,55 @@
+add_status()  {
+
+  while  [  -n  "$1"  ];  do
+    echo  "$1"
+    echo  "$2"
+    echo  "off"
+    shift 2
+  done
+
+}
+
+
+make_locales_checklist()  {
+
+  add_status  `cat  $SCRIPT_DIRECTORY/locales`
+
+}
+
+
+select_locales()  {
+
+  BACKTITLE="Glibc Configuration"
+      TITLE="Locale Selection"
+       HELP="Translated messages are automatically installed, 
+but the locale database that controls other behavior is not.  
+Please select desired locale or locales.
+If none are selected then all will be installed."
+
+  dialog  --backtitle  "$BACKTITLE"  \
+          --title      "$TITLE"      \
+          --stdout                   \
+          --separate-output          \
+          --checklist  "$HELP"       \
+          0 0 0                      \
+         `make_locales_checklist`
+
+}
+
+if    grep  -q  "GLIBC_LOCALES="  $SPELL_CONFIG
+then  message  "Selecting locales is optional"
+fi
+
+
+if  query  "Would you like to select locales" n
+then
+  OLD_IFS=$IFS
+  export  IFS="	
+"
+  GLIBC_LOCALES=`select_locales`
+  TEMP=`grep  -v  "GLIBC_LOCALES="             $SPELL_CONFIG`
+  echo  "$TEMP"                             >  $SPELL_CONFIG
+  echo  "GLIBC_LOCALES=\"$GLIBC_LOCALES\""  >> $SPELL_CONFIG
+  export  IFS=$OLD_IFS
+
+fi

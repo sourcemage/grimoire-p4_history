@@ -1,0 +1,24 @@
+           SPELL=busybox
+         VERSION=0.60.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://oss.lineo.com/$SPELL/$SOURCE
+        WEB_SITE=http://busybox.lineo.com
+      MAINTAINER=cromwell@kublai.com
+         ENTERED=20011020
+         UPDATED=20011119
+           SHORT="busybox is a time statically linked rescue shell."
+cat << EOF
+BusyBox combines tiny versions of many common 
+UNIX utilities into a single small executable.
+It provides minimalist replacements for most 
+of the utilities you usually find in GNU 
+fileutils, shellutils, etc.  The utilities in 
+BusyBox generally have fewer options than their
+full-featured GNU cousins; however, the options 
+that are included provide the expected 
+functionality and behave very much like their 
+GNU counterparts.  BusyBox provides a fairly 
+complete POSIX environment for any small or 
+embedded system.
+EOF

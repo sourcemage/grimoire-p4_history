@@ -1,0 +1,17 @@
+function ask_enable() {
+
+	if  !  grep  -q  "CFG_$2="  $SPELL_CONFIG;  then
+
+	  if    query "Enable $1 ?" $4
+	  then  cfg="--enable-$2$3"
+	  else  cfg="--disable-$2$3"
+	  fi
+	  echo  "CFG_$2=\"$cfg\""  >> $SPELL_CONFIG
+
+	fi
+}
+
+ask_enable "debugging"			"debug"	""		"n"
+ask_enable "assembly optimizations"	"asm" "-optimizations"	"y"
+ask_enable "SSE opcodes support"	"sse" ""		"n"
+ask_enable "3DNOW! opcodes support"	"3dnow"	""		"n"

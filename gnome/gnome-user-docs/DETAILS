@@ -1,0 +1,16 @@
+           SPELL=gnome-user-docs
+         VERSION=1.4.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="gnome-user-docs provides documentation for GNOME."
+cat << EOF
+This package contains documents which will be packaged together and
+shipped as gnome-user-docs in the core GNOME distribution.  They should 
+be documents targetted for end-users of GNOME.
+EOF

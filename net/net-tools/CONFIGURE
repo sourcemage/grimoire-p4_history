@@ -1,0 +1,7 @@
+if  [  -f  $CONFIG_CACHE/net-tools.config.h  ];  then  
+
+  if    query  "Reconfigure net-tools?" n
+  then  rm  -f  $CONFIG_CACHE/net-tools.config.h
+  fi
+
+fi

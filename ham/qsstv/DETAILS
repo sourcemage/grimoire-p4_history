@@ -1,0 +1,17 @@
+         SPELL=qsstv
+         VERSION=5.0g
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://users.pandora.be/on1mh/snapshots/$SOURCE
+        WEB_SITE=http://users.pandora.be/on1mh/
+         ENTERED=20011212
+         UPDATED=20011212
+           SHORT="Slow-scan tv and fax program for hams"
+
+cat << EOF
+Application which uses /dev/dsp to receive and transmit slow scan
+television.  Uses the Qt library.  Supports Martins 1/2, Scottie 1/2,
+Wraase SC2 180, Robot36, VIS -code and Sync/Non-Synced operation.
+Transmit modes are Martin 1 and 2.  Can store images on your harddisk.
+Nice gui.
+EOF

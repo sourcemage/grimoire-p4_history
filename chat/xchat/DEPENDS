@@ -1,0 +1,9 @@
+depends  gtk+  &&
+optional_depends  "gnome-core"         \
+                  "--enable-panel"     \
+                  "--disable-gnome"    \
+                  "for gnome support"  &&
+optional_depends  "openssl"             \
+                  ""                    \
+                  ""                    \
+                  "for encrypted communication" 

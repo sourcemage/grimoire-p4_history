@@ -1,0 +1,42 @@
+(
+
+  sedit  "s/@CC@/@CC@ $CFLAGS/"           gdchart0.94c/Makefile.in
+  sedit  "s/CFLAGS=-O/CFLAGS=$CFLAGS/"    gdchart0.94c/gd-1.8.3/Makefile
+  sedit  "s/-O3 -funroll-loops/$CFLAGS/"  gdchart0.94c/gd-1.8.3/libpng-1.0.8/scripts/makefile.linux
+  patch  -p0  <  $SCRIPT_DIRECTORY/ntop.patch
+  cd  gdchart0.94c                         &&
+  ./configure                              &&
+  cd  gd-1.8.3/libpng-1.0.8                &&
+  cp  scripts/makefile.linux  Makefile     &&
+  make                                     &&
+  cd ../../zlib-1.1.3                      &&
+  ./configure                              &&
+  make                                     &&
+  cd  ..                                   &&
+  make                                     &&
+  cd  ../ntop                              &&
+  ./configure  --prefix=/usr               \
+               --localstatedir=/var/cache  &&
+  make                                     &&
+  prepare_install                          &&
+  make    install                          &&
+  mkdir  -p  /var/cache/ntop
+
+) > $C_FIFO 2>&1  && (
+
+  if  [  "$NTOP_BOOT"  ==  "y"  ];  then
+
+    cp  $SCRIPT_DIRECTORY/ntop.sh  /etc/init.d
+
+    ln  -sf  ../init.d/ntop.sh  /etc/rc0.d/K10ntop
+    ln  -sf  ../init.d/ntop.sh  /etc/rc1.d/K10ntop
+    ln  -sf  ../init.d/ntop.sh  /etc/rc2.d/K10ntop
+    ln  -sf  ../init.d/ntop.sh  /etc/rc6.d/K10ntop
+
+    ln  -sf  ../init.d/ntop.sh  /etc/rc3.d/S90ntop
+    ln  -sf  ../init.d/ntop.sh  /etc/rc4.d/S90ntop
+    ln  -sf  ../init.d/ntop.sh  /etc/rc5.d/S90ntop
+
+  fi
+
+)

@@ -1,0 +1,18 @@
+if  spell_installed  fcron;  then
+  fcrontab  -l  2>/dev/null  |
+  grep  -v  exim             |
+  fcrontab -    2>/dev/null
+fi
+
+if  spell_installed  hc-cron;  then
+  crontab   -l    |
+  sed   -n  4~1p  |
+  grep  -v  exim  |
+  crontab -
+fi
+
+if query "Backup package config ?" y
+then
+ CUR_DATE=`date +%s`
+ cp /etc/exim.conf /etc/exim-backup-$CUR_DATE.conf
+fi

@@ -1,0 +1,21 @@
+         SPELL=mp3kult
+         VERSION=0.6.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/mp3kult/$SOURCE
+        WEB_SITE=http://mp3kult.sourceforge.net/
+         ENTERED=20020116
+         UPDATED=20020318
+           SHORT="Mp3Kult organizes your mp3 collection"
+cat << EOF
+Mp3Kult is an application for KDE 2 (K Desktop Environment)
+Mp3Kult organizes your mp3 collection in a Mysql database.
+It can read Mp3 Tag and song information 
+(length, bit rate, sample rate etc...), make playlists, 
+play song with an external player (xmms, gqmpeg),
+find a song in database,(base and advanced search) and make 
+a copy of a playlist on your hard disk 
+(to play the playlist without inserting cdroms).
+Mp3Kult can scan recursivly directories, looking for mp3s and
+automatically mount, umount, eject cdroms before/after job.
+EOF

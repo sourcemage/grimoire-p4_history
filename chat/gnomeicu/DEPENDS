@@ -1,0 +1,9 @@
+depends  gnome-libs  &&
+depends  gtk+        &&
+depends  gnet        &&
+depends  libglade    &&
+
+optional_depends "gnome-core" 		\
+		 "--enable-applet"	\
+		 "--enable-applet=no"	\
+		 "for panel applet support"

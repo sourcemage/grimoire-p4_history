@@ -1,0 +1,8 @@
+if  !  grep  -q  "YPBIND_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke YPBIND at boot?" n
+  then  echo   "YPBIND_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "YPBIND_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

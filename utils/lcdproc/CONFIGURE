@@ -1,0 +1,8 @@
+if  !  grep  -q  "LCDPROC_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke Lcdproc during boot?" y
+  then  echo   "LCDPROC_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "LCDPROC_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

@@ -1,0 +1,26 @@
+           SPELL=evolution
+         VERSION=1.0.2
+       DBVERSION=3.1.17
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=db-$DBVERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+ # SOURCE_URL[2]=ftp://ftp.ximian.com/pub/source/$SPELL/$SOURCE
+  SOURCE2_URL[0]=http://ftp.sleepycat.com/update/$DBVERSION/$SOURCE2
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.ximian.com/products/ximian_evolution
+         ENTERED=20011109
+         UPDATED=20020201
+           SHORT="Ximian Evolution is an information management solution."
+cat << EOF
+Ximian Evolution^(TM) is the premiere personal and workgroup
+information management solution for Linux and UNIX-based systems.  The
+software seamlessly integrates email, calendaring, meeting scheduling,
+contact management and online task lists in one powerful, fast, and easy
+to use application.  Ximian Evolution also delivers a comprehensive set
+of features that help you keep your work organized and your projects on
+track.  Automatic email indexing keeps your information at your
+fingertips. The unique Ximian vFolders^(TM) are virtual folders you use
+to create and save powerful contextual views of your email messages.
+EOF

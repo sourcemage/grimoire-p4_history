@@ -1,0 +1,10 @@
+if  !  grep  -q  "GUI"  $SPELL_CONFIG;  then
+
+  if    query  "Enable GUI support?" y
+  then  GUI=y
+  else  GUI=n
+  fi
+
+  echo  "GUI=$GUI"  >>  $SPELL_CONFIG
+
+fi

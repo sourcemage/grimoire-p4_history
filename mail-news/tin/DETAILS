@@ -1,0 +1,16 @@
+           SPELL=tin
+         VERSION=1.4.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.tin.org/pub/news/clients/tin/stable/$SOURCE
+        WEB_SITE=http://www.tin.org
+         ENTERED=20010922
+         UPDATED=20010922
+      MAINTAINER=kongar@tsrsb.org.tr
+           SHORT="tin is a powerful text mode news reader."
+cat << EOF
+Tin is a powerful text mode news reader. It features threaded news
+reading, regex driven killfiles/message selections, pgp encryption,
+ispell support, and can read from both a local spool or from a remote
+NNTP server.
+EOF

@@ -1,0 +1,25 @@
+         SPELL=fluxbox
+         VERSION=0.1.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://$SPELL.sourceforge.net/
+         ENTERED=20011210
+         UPDATED=20020302
+      MAINTAINER=paul@moway.co.uk
+	   SHORT="Fluxbox is yet another windowmanager!"
+cat << EOF
+Fluxbox is yet another windowmanager!
+
+It is based on the Blackbox 0.61.1 code. Fluxbox looks like blackbox
+and handles styles, colors, window placement and similar thing exactly
+like blackbox. 
+
+FEATURES:
+Here are the major features of fluxbox:
+* Our custom keygrabber (support for emacs-styled kkeychains)
+* Iconbar (the toolbar shows minimized windows, one click and they pop back up)
+* Configurable titlebar (placement of buttons, new buttons etc)
+* Window tabs (see this page for more info and screenshot)
+In addition to all this many small fixes and minor features have been added
+EOF

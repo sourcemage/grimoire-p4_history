@@ -1,0 +1,21 @@
+if  [  !  -f   /etc/init.d/sunfont.sh  ];  then
+  rm -f /etc/init.d/sunfont.sh
+  rm -f /etc/rc2.d/S80sunfont
+  rm -f /etc/rc3.d/S80sunfont
+fi
+
+
+if  [  !  -f   /etc/init.d/log2cons.sh  ];  then
+  rm -f /etc/init.d/log2cons.sh
+  rm -f /etc/rc2.d/S10log2cons
+  rm -f /etc/rc3.d/S10log2cons
+fi
+
+
+if  [  !  -f   /usr/bin/logcolorise.pl ];  then
+  rm -f /usr/bin/logcolorise.pl
+fi
+
+if  [  !  -f   /usr/bin/tailfmessages ];  then
+  rm -f /usr/bin/tailfmessages
+fi

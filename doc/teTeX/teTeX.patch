@@ -1,0 +1,119 @@
+diff -u teTeX-1.0/Makefile.in teTeX-1.0/Makefile.in
+--- teTeX-1.0/Makefile.in	Tue Jun 15 22:46:57 1999
++++ teTeX-1.0/Makefile.in	Tue Nov  6 19:23:24 2001
+@@ -51,19 +51,19 @@
+ infodir = @infodir@
+ texmf = @texmfmain@
+ 
+-NCURSESDIR=libs/ncurses
+-ZLIBDIR=libs/zlib
+-LIBPNGDIR=libs/libpng
+-LIBWWWDIR=libs/libwww
++NCURSESDIR=/lib
++ZLIBDIR=/usr/lib
++LIBPNGDIR=/usr/lib
++LIBWWWDIR=/usr/lib
+ 
+ #### End of system configuration section. ####
+ 
+-ALLPROGS = access afm2tfm bibtex dialog dmp dvicopy dvilj dvilj2p dvilj4 \
++ALLPROGS = access afm2tfm bibtex dmp dvicopy dvilj dvilj2p dvilj4 \
+   dvilj4l dvips dvitomp dvitype etex gftodvi gftopk gftype gsftopk \
+-  install-info kpsestat kpsewhich mag makeindex makeinfo mf mfw \
++  kpsestat kpsewhich mag makeindex mf mfw \
+   mft mpost mpto newer odvicopy odvips odvitype ofm2opl omega opl2ofm \
+   otangle otp2ocp outocp ovf2ovp ovp2ovf oxdvi.bin patgen pdftex pfb2pfa \
+-  pk2bm pktogf pktype pltotf pooltype ps2pk readlink tangle tex texindex \
++  pk2bm pktogf pktype pltotf pooltype ps2pk readlink tangle tex \
+   tftopl tie ttf2afm vftovp vptovf weave xdvi.bin pdfetex
+ 
+ VERSION = 1.0
+@@ -113,7 +113,7 @@
+ Makefile: Makefile.in config.status
+ 	$(SHELL) ./config.status
+ 
+-all: @LIBSDEP@
++all:
+ all clean mostlyclean:
+ 	for dir in $(ESUBDIRS); do \
+ 	  echo making $@ in $$dir; \
+@@ -154,15 +154,6 @@
+ pdftex:
+ 	cd texk/web2c; $(MAKE) pdftex
+ 	test -f texk/web2c/pdftex && ls -l texk/web2c/pdftex
+-
+-$(NCURSESDIR)/lib/libncurses.a:
+-	cd $(NCURSESDIR)/ncurses; $(MAKE) ../lib/libncurses.a
+-$(ZLIBDIR)/libz.a:
+-	cd $(ZLIBDIR); $(MAKE) libz.a
+-$(LIBPNGDIR)/libpng.a:
+-	cd $(LIBPNGDIR); $(MAKE) libpng.a
+-$(LIBWWWDIR)/libwww.a:
+-	cd $(LIBWWWDIR); $(MAKE) libwww.a
+ 
+ # Prevent GNU make v3 from overflowing arg limit on SysV.
+ .NOEXPORT:
+diff -u teTeX-1.0/texk/oxdvik/Makefile.in teTeX-1.0/texk/oxdvik/Makefile.in
+--- teTeX-1.0/texk/oxdvik/Makefile.in	Sat May  8 09:03:37 1999
++++ teTeX-1.0/texk/oxdvik/Makefile.in	Tue Nov  6 19:20:04 2001
+@@ -21,9 +21,8 @@
+ #   -lXaw -lXmu -lXt -lSM -lICE -lXext -lX11 (some may not be present).
+ x_link = $(LDLIBWWW) $(x_ldflags) $(x_tool_libs) $(x_pre_libs) $(x_ext_lib) -lX11 $(x_extra_libs)
+ 
+-LDLIBWWW=@LDLIBWWW@
++LDLIBWWW=`libwww-config  --libs`
+ LIBWWWCPPFLAGS=@LIBWWWCPPFLAGS@
+-LIBWWWDEP=@LIBWWWDEP@
+ LIBWWWDIR = ../../libs/libwww
+ LIBWWWSRCDIR = $(srcdir)/../../libs/libwww
+ 
+@@ -61,8 +60,8 @@
+ 	$(SHELL) $(srcdir)/mksedscript $(srcdir) pkpath sizes vfpath \
+ 	figpath headerpath $(DEFS) $(prog_cflags) >$@
+ 
+-$(LIBWWWDIR)/libwww.a:
+-	cd $(LIBWWWDIR); $(MAKE) $(makeargs) libwww.a
++#$(LIBWWWDIR)/libwww.a:
++#	cd $(LIBWWWDIR); $(MAKE) $(makeargs) libwww.a
+ 
+ ac_include ../make/tkpathsea.mk
+ 
+diff -u teTeX-1.0/texk/web2c/Makefile.in teTeX-1.0/texk/web2c/Makefile.in
+--- teTeX-1.0/texk/web2c/Makefile.in	Sat Jun 26 05:12:25 1999
++++ teTeX-1.0/texk/web2c/Makefile.in	Tue Nov  6 19:22:39 2001
+@@ -361,10 +361,6 @@
+ 	date >stamp-tangle
+ # This is not run unless tangle.web or tangle.ch is changed.
+ tangleboot.p: tangle.web tangle.ch
+-	$(shared_env) ./tangle $(srcdir)/tangle.web $(srcdir)/tangle.ch
+-	mv tangle.p tangleboot.p
+-	date >stamp-tangle
+-	$(MAKE) $(common_makeargs) tangle
+ 
+ # Even web2c itself uses the library.
+ # It's annoying to have to give all the filenames here, 
+diff -u teTeX-1.0/texk/xdvik/Makefile.in teTeX-1.0/texk/xdvik/Makefile.in
+--- teTeX-1.0/texk/xdvik/Makefile.in	Sat May  8 08:56:37 1999
++++ teTeX-1.0/texk/xdvik/Makefile.in	Tue Nov  6 19:19:49 2001
+@@ -21,9 +21,8 @@
+ #   -lXaw -lXmu -lXt -lSM -lICE -lXext -lX11 (some may not be present).
+ x_link = $(LDLIBWWW) $(x_ldflags) $(x_tool_libs) $(x_pre_libs) $(x_ext_lib) -lX11 $(x_extra_libs)
+ 
+-LDLIBWWW=@LDLIBWWW@
++LDLIBWWW=`libwww-config  --libs`
+ LIBWWWCPPFLAGS=@LIBWWWCPPFLAGS@
+-LIBWWWDEP=@LIBWWWDEP@
+ LIBWWWDIR = ../../libs/libwww
+ LIBWWWSRCDIR = $(srcdir)/../../libs/libwww
+ 
+@@ -61,8 +60,8 @@
+ 	$(SHELL) $(srcdir)/mksedscript $(srcdir) pkpath sizes vfpath \
+ 	figpath headerpath $(DEFS) $(prog_cflags) >$@
+ 
+-$(LIBWWWDIR)/libwww.a:
+-	cd $(LIBWWWDIR); $(MAKE) $(makeargs) libwww.a
++#$(LIBWWWDIR)/libwww.a:
++#	cd $(LIBWWWDIR); $(MAKE) $(makeargs) libwww.a
+ 
+ ac_include ../make/tkpathsea.mk
+ 

@@ -1,0 +1,16 @@
+           SPELL=imlib2
+         VERSION=1.0.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/enlightenment/$SOURCE
+        WEB_SITE=http://enlightenment.org
+         ENTERED=20010922
+         UPDATED=20020122
+           SHORT="imlib2 is the successor to imlib graphics library."
+cat << EOF
+Imlib2 is the successor to Imlib. It is NOT a newer version -- it is a
+completely new library. Imlib 2 can be installed alongside Imlib 1.x
+without any problems since they are effectively different libraries
+which have very similar functionality. Please see the homepage for the
+long description of the differences.
+EOF

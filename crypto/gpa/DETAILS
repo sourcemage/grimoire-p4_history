@@ -1,0 +1,17 @@
+           SPELL=gpa
+         VERSION=0.4.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnupg.org
+         ENTERED=20020312
+         UPDATED=20020312
+      MAINTAINER=aeron@netcabo.pt
+           SHORT="GUI frontend for GnuPG"
+cat << EOF
+The GNU Privacy Assistant is a graphical user interface for the
+GNU Privacy Guard (GnuPG). GnuPG is a system that provides you 
+with privacy by encrypting emails or other documents and with 
+authentication of received files by signature management.
+GPA utilizes the GIMP Tool Kit (GTK) and compiles for various platforms.
+EOF

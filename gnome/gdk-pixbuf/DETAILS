@@ -1,0 +1,20 @@
+           SPELL=gdk-pixbuf
+         VERSION=0.16.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/unstable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/unstable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20020124
+           SHORT="gdk-pixbuf is a graphics library."
+cat << EOF
+The GdkPixbuf library provides a number of features:
+        - GdkPixbuf structure for representing images.
+        - Image loading facilities, both synchronous and progressive.
+        - Rendering of a GdkPixbuf into various formats:
+          drawables (windows, pixmaps), GdkRGB buffers.
+        - Fast scaling and compositing of pixbufs.
+        - Simple animation loading (ie. animated gifs).
+EOF

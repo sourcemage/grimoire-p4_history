@@ -1,0 +1,15 @@
+           SPELL=gnome-mime-data
+         VERSION=1.0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020124
+         UPDATED=20020124
+           SHORT="gnome-mime-data contains the base MIME/app database for GNOME"
+cat << EOF
+This module contains the base MIME and Application database for GNOME.
+It is meant to be accessed through the MIME functions in GnomeVFS.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=glade
+       # Version 0.6.3 & 0.6.4 are considered unstable
+       # Version 0.6.2 doesn't compile, argh.
+         VERSION=0.6.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://glade.gnome.org
+         ENTERED=20010922
+         UPDATED=20020203
+           SHORT="Glade is a GUI builder for GTK+ and GNOME."
+cat << EOF
+Glade is a GUI builder for GTK+ and GNOME. It stores projects in an XML
+format and can generate C code from this meta-format. Additionally, the
+meta-format can be converted to other languages via modules. For
+example, glade-- can generate C++ code.
+EOF

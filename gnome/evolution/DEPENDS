@@ -1,0 +1,33 @@
+depends  perl         &&
+depends  gnome-libs   &&
+depends  ORBit        &&
+depends  bonobo       &&
+depends  bonobo-conf  &&
+depends  oaf          &&
+depends  libglade     &&
+depends  gdk-pixbuf   &&
+depends  gtkhtml      &&
+depends  gnome-vfs    &&
+depends  libxml       &&
+depends  gal          &&
+
+optional_depends  "openssl"  ""  ""  "for SSL support"             &&
+optional_depends  "gnupg"    ""  ""  "for encrypted mail support"  &&
+
+optional_depends  "mozilla"                                        \
+                  "--with-nspr-includes=/usr/include/mozilla/nspr  \
+                   --with-nspr-libs=/usr/lib/mozilla               \
+                   --with-nss-includes=/usr/include/mozilla        \
+                   --with-nss-libs=/usr/lib/mozilla"               \
+                  ""                                               \
+                  "for mozilla support"                            &&
+
+optional_depends  "openldap"             \
+                  "--with-openldap=yes"  \
+                  ""                     \
+                  "for LDAP support"     &&
+
+optional_depends  "gnome-pilot-conduits"  \
+                  "--enable-pilot-conduits=yes  --with-pisock --enable-pilotlinktest"  \
+                  ""  \
+                  "for palm pilot support"

@@ -1,0 +1,24 @@
+diff -ru psiconv-0.8.2/program/psiconv/gen_image.c psiconv-0.8.2-patched/program/psiconv/gen_image.c
+--- psiconv-0.8.2/program/psiconv/gen_image.c	Sat Jun 30 15:35:24 2001
++++ psiconv-0.8.2/program/psiconv/gen_image.c	Sun Dec  2 01:55:25 2001
+@@ -221,7 +221,7 @@
+   ff.output = psiconv_gen_image;
+   for (mi = GetMagickFileList(); mi ; mi = mi->next) {
+     if (mi->encoder) {
+-      ff.name = strdup(mi->tag);
++      ff.name = strdup(mi->name);
+       ff.description = strdup(mi->description);
+       psiconv_list_add(fileformat_list,&ff);
+     }
+diff -ru psiconv-0.8.2/program/psiconv/magick-aux.c psiconv-0.8.2-patched/program/psiconv/magick-aux.c
+--- psiconv-0.8.2/program/psiconv/magick-aux.c	Sat Jun 30 15:36:00 2001
++++ psiconv-0.8.2/program/psiconv/magick-aux.c	Sun Dec  2 01:55:05 2001
+@@ -23,7 +23,7 @@
+ 
+ #include "magick-aux.h"
+ #include <magick/magick.h>
+-#include <magick/config.h>
++#include <magick/magick_config.h>
+ 
+ /* This used to be very ugly, but nowadays it is much better */
+ 

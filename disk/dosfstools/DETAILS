@@ -1,0 +1,18 @@
+           SPELL=dosfstools
+         VERSION=2.8
+          SOURCE=$SPELL-$VERSION.src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.uni-erlangen.de/pub/Linux/LOCAL/dosfstools/$SOURCE
+        WEB_SITE=ftp://ftp.uni-erlangen.de/pub/Linux/LOCAL/dosfstools/
+      LICENSE[0]=http://www.gnu.org/copyleft/gpl.html
+         ENTERED=20011217
+         UPDATED=20011217
+      MAINTAINER=kongar@tsrsb.org.tr
+           SHORT="Utilities to create and check MS-DOS filesystems under Linux"
+			  
+cat << EOF
+Utilities to create and check MS-DOS filesystems under Linux.
+Includes : 
+  mkdosfs mkfs.msdos mkfs.vfat 
+  dosfsck fsck.msdos fsck.vfat
+EOF

@@ -1,0 +1,6 @@
+if  !  grep  -q  "VIA4X"  $SPELL_CONFIG;  then
+  if    query "Enable AGP 4x mode on VIA chipsets, which might cause instability?" n
+  then  echo  "VIA4X=y"  >>  $SPELL_CONFIG
+  else  echo  "VIA4X=n"  >>  $SPELL_CONFIG
+  fi
+fi

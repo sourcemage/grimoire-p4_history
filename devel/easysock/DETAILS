@@ -1,0 +1,17 @@
+           SPELL=easysock
+         VERSION=0.3.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.sourceforge.net/ggz/$SOURCE
+   SOURCE_URL[1]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://ggz.sourceforge.net
+         ENTERED=20020305
+         UPDATED=20020305
+           SHORT="easysock is a networking library for the GGZ Gaming
+Zone"
+cat << EOF
+The GGZ Gaming Zone easysock library provides a simple low-level API for
+synchronous communication over TCP and Unix domain sockets.
+The GGZ Project uses easysock extensively for both client/server and
+game module communication.
+EOF

@@ -1,0 +1,9 @@
+case  $NFS_BOOT  in
+  y|Y|j|J)  /etc/init.d/nfs.sh  start  ;;
+        *)  true                       ;;
+esac
+
+case  $NFSLOCK_BOOT  in
+  y|Y|j|J)  /etc/init.d/nfslock.sh  start  ;;
+        *)  true                           ;;
+esac

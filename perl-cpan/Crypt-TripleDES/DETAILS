@@ -1,0 +1,17 @@
+           SPELL=Crypt-TripleDES
+         VERSION=0.24
+          SOURCE=Crypt-TripleDES-0.24.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Crypt-TripleDES-0.24
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/V/VI/VIPUL/Crypt-TripleDES-0.24.tar.gz
+        WEB_SITE=http://search.cpan.org/search?mode=module&query=Crypt-TripleDES
+         ENTERED=20020320
+         UPDATED=20020320
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Triple DES encyption."
+cat << EOF
+This module implements 3DES encryption in ECB mode. The
+code is based on Eric Young's implementation of DES in
+pure perl. It's quite slow because of the way Perl handles
+bit operations and is not recommended for use with large
+texts.
+EOF

@@ -1,0 +1,10 @@
+if  [  "`installed_version  autoconf`"  !=  "2.13"  ];  then
+  message  "glibc 2.2.5 requires autoconf 2.13 to compile."
+  rm  -f  /var/lock/casting.glibc
+  cast  -c  autoconf
+  echo  $$  >  /var/lock/casting.glibc
+fi
+
+default_pre_build          &&
+cd      $SOURCE_DIRECTORY  &&
+unpack  $SOURCE2

@@ -1,0 +1,19 @@
+           SPELL=modplugxmms
+         VERSION=2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/modplug-xmms/$SOURCE
+        WEB_SITE=http://modplug-xmms.sourceforge.net/
+         ENTERED=20020209
+         UPDATED=20020213
+           SHORT="ModPlug Plugin for XMMS v2.0 / libmodplug v0.7"
+cat << EOF
+Olivier Lapicque, author of ModPlug, which is arguably the best quality
+MOD-playing software available, has placed his sound rendering code in
+the public domain.  This library and plugin is based on that code.
+
+NOTE TO FELLOW OPEN SOURCE PROGRAMMERS (from the README):
+ "I (Kenton Varda) no longer have the time or desire to maintain this
+  library. If anyone would like to take over for me, please e-mail me at
+  <temporal@gauge3d.org>. Thanks."
+EOF
