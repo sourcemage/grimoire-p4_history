@@ -1,10 +1,7 @@
-(
-
   sedit  's/^LIBS.*/& -lz -lm/'  Makefile  &&
 
-  ./configure  --prefix=/usr  $OPTS  &&
-  make  &&
-  prepare_install  &&
-  make  install                             
-
-) > $C_FIFO 2>&1
+  ./configure  --prefix=/usr             \
+               --mandir=/usr/share/man   \
+               --infodir=/usr/share/info \
+               $OPTS  &&
+  make
