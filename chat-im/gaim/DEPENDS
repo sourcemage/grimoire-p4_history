@@ -6,9 +6,9 @@ then
 fi  &&
 
 optional_depends  evolution2                                             \
-                  ""                                                     \
-                  "--disable-gevolution"                                 \
-                  "this will disable gevolution which is broke in 0.79"  &&
+                  "--enable-gevolution"                            \
+                  "--disable-gevolution"                           \
+                  "for gevolution plugin"  &&
 
 optional_depends  MOZILLA-NSS                                            \
                   "--enable-nss=yes"                                     \
