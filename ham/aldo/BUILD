@@ -1,8 +1,9 @@
 (
 
-  make                    &&
-  prepare_install         &&
+  make libs                   &&
+  make aldo                   &&
+  prepare_install             &&
+  make install                
 
-  cp  src/aldo  /usr/bin
 
 ) > $C_FIFO 2>&1
