@@ -2,7 +2,7 @@
 #
 # /etc/init.d/samba.sh
 #
-# SMGL-script-version=20030225
+# SMGL-script-version=20030404
 # SMGL-START:3 4 5:S50
 # SMGL-STOP:0 1 2 6:K50
 #
@@ -15,8 +15,8 @@ source /etc/init.d/functions
 #
 start_samba()
 {
-  if [ ! -e /tmp/samba ]; then
-    mkdir /tmp/samba
+  if [ ! -e /var/run/samba ]; then
+    mkdir /var/run/samba
   fi
   if ! netstat -l --udp | grep -q netbios-ns ; then
     echo "NetBIOS nameserver"

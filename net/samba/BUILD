@@ -7,7 +7,9 @@
   cd  source  &&
 
   OPTS="$OPTS --with-smbmount --with-fhs $WITH_PAM"
-  default_build
+  default_build  &&
+
+  mkdir  -p  /etc/samba/private
   
 ) > $C_FIFO 2>&1  &&  (
 
