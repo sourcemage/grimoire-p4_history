@@ -1,10 +1,16 @@
            SPELL=eclipse
-         VERSION=2.1.2
+         VERSION=2.1.3
           SOURCE=${SPELL}-sourceBuild-srcIncluded-$VERSION.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION 
-   SOURCE_URL[0]=ftp://download.eclipse.org/R-${VERSION}-200311030802/${SOURCE}
-          MD5[0]=24fc3bf3be3d3f3e306786ab7b13bcce
+   SOURCE_URL[0]=ftp://download.eclipse.org/R-${VERSION}-200403101828/${SOURCE}
+   SOURCE_URL[1]=ftp://eclipse.objectweb.org/R-${VERSION}-200403101828/${SOURCE}
+          MD5[0]=cd8132138afbd252bf35bb83546534dc
         WEB_SITE=http://www.eclipse.org/
+ if [ "$SSH2" = "y" ] ; then
+         SOURCE2=org.eclipse.team.cvs.ssh2_0.1.2-src.zip
+  SOURCE2_URL[0]=http://www.jcraft.com/eclipse-cvsssh2/${SOURCE2}
+          MD5[1]=658d956d4f74506510ce9def920c29e6
+ fi
       MAINTAINER="embiopterid@yahoo.com"
          ENTERED=20031211
          UPDATED=20031211
