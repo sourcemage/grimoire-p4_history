@@ -1,9 +1,8 @@
 (
 
-  cd  src                &&
-  cp  gvx.mak  makefile  &&
+  cp srcunx/unx.mak Makefile  &&
   make                   &&
   prepare_install        &&
-  make    install
+  make  GSVIEW_ROOT=/usr   install
 
 ) > $C_FIFO 2>&1
