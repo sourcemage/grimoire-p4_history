@@ -1,3 +1,15 @@
+2003-09-20  Seth Woolley <seth@tautolog.org>
+
+		Fixed syslog logger sometimes not there bug (I hope).
+		DEVICES=/dev now, by default (otherwise recasting sucks).
+		PARALLEL_INIT support (optional, default off).
+		See /etc/sysconfig/init:PARALLEL_INIT to enable.
+		Different script display now that supports PARALLEL_INIT.
+		Updated to version 2.1.
+
+		Really fixed my logger fix.
+		Make sure colors don't to to logger, only screen
+
 2003-08-25  Eric Schabell <eschabell@sourcemage.org>
 
 		Applied /usr mounting fix to smgl_init for rycee.

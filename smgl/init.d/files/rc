@@ -53,7 +53,7 @@ start()
   echo
   echo "Booting to runlevel $target_runlevel..."
   echo
-  need "%$target_runlevel"
+  need "%$target_runlevel" # not PARALLEL so login prompt comes after
 }
 
 ######################

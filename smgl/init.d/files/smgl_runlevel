@@ -128,16 +128,34 @@ start_dir()
   for script in * ; do
     [ "$script" = "runlevel.config" ] && continue
     [ ! -x "$script" ] && continue                  # Not executable
-
-    if ! need $script ; then
-      is_essential $script && exit 1
+    if [[ "$PARALLEL_INIT" ]]; then
+      ( if ! need $script ; then
+          is_essential $script && exit 1
+        fi 
+      ) & # PARALLEL
+    else
+      if ! need $script ; then
+        is_essential $script && exit 1
+      fi 
     fi
   done
+  # PARALLEL need to run it again to make sure all the needs are met for this runlevel before continuing on
+  if [[ "$PARALLEL_INIT" ]] ; then
+    for script in * ; do
+      [ "$script" = "runlevel.config" ] && continue
+      [ ! -x "$script" ] && continue                  # Not executable
+
+      if ! need $script ; then
+        is_essential $script && exit 1
+      fi # not PARALLEL to get the whole runlevel loaded
+    done
+  fi
   popd > /dev/null
 }
 
 start()
 {
+  
   if [ "$NEEDS" ] ; then
     need $NEEDS || exit 7
   fi
@@ -147,6 +165,7 @@ start()
   fi
 
   echo "Entered runlevel $self_runlevel..."
+  # not PARALLEL to get the whole runlevel loaded.
 }
 
 stop()
