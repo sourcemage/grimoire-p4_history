@@ -1,0 +1,8 @@
+mkdir -p                                   /usr/share/eclipse &&
+unzip -o result/linux-$ws-$arch-sdk.zip -d /usr/share         &&
+cp eclipse-script                          /usr/bin/eclipse   &&
+
+if [ "$SSH2" = "y" ] ; then
+  unzip ${SOURCE_CACHE}/${SOURCE2} -d ${INSTALL_ROOT}/usr/share/eclipse/plugins
+fi  
+
