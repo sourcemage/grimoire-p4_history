@@ -1,15 +1,15 @@
-           SPELL=gsv
+           SPELL=gsview
          VERSION=4.3
-          SOURCE=${SPELL}43src.zip
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/gsview-${VERSION}
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=ftp://sunsite.cnlab-switch.ch/mirror/ghost/ghostgum/${SOURCE}
    SOURCE_URL[1]=ftp://ftp.mirror.ac.uk/sites/mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${SOURCE}
    SOURCE_URL[2]=ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${SOURCE}
         WEB_SITE=http://www.cs.wisc.edu/~ghost/gsview
       LICENSE[0]=http://www.cs.wisc.edu/~ghost/doc/cvs/Public.htm
-          MD5[0]=010acab6815215989d97c8db039d2192
+          MD5[0]=3e4b60af2f2d6a9e2fbb92e6c808d9ee
          ENTERED=20011122
-         UPDATED=20020215
+         UPDATED=20030217
       MAINTAINER=jasonflatt@wizard.com
            SHORT="gsv is a nice GUI for viewing PDF & PS files via AFPL ghostscript."
 cat << EOF

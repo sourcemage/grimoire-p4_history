@@ -1,9 +1,9 @@
 #!/bin/sh
 # /etc/init.d/cups.sh
-# SGL-script-version=20021020
 # this sets the run levels and priority for links
-# SGL-START:1 2 3 5:S99
-# SGL-STOP:0 6:K00
+# SMGL-script-version=20030224
+# SMGL-START:1 2 3 5:S99
+# SMGL-STOP:0 6:K00
 #
 # "$Id: cups-printing.txt,v 1.3 2001/10/05 22:43:15 ian Exp $"
 #
