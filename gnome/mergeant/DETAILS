@@ -1,17 +1,17 @@
            SPELL=mergeant
-         VERSION=0.9.0
+         VERSION=0.10.0
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome-db.org/pub/gnome-db/sources/v$VERSION/$SOURCE
-          MD5[0]="114b7677f6301931221e35df7ebda3bb"
+          MD5[0]="fa0e1d0459bae337978336a9547b4e29"
       LICENSE[0]="GPL"
       LICENSE[1]="LGPL"
         WEB_SITE=http://www.gnome-db.org
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020716
-         UPDATED=20021211
+         UPDATED=20030130
            SHORT="Mergeant: Front-end for database administrators and database application developers."
 cat << EOF
 Mergeant: Front-end for database administrators and database
