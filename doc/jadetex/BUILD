@@ -9,7 +9,7 @@
     mv latex.fmt $TEXMF/web2c                                   &&
     rm -r /tmp/config                                           &&
 
-    cd $BUILD_DIRECTORY/$SOURCE_DIRECTORY                       &&
+    cd $SOURCE_DIRECTORY                                        &&
 
     make  jadetex.fmt                                           &&
     make  pdfjadetex.fmt                                        &&

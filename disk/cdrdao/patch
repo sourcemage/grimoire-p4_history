@@ -1,0 +1,839 @@
+diff -uNr cdrdao-1.1.5.orig/dao/main.cc cdrdao-1.1.5/dao/main.cc
+--- cdrdao-1.1.5.orig/dao/main.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/dao/main.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,6 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <config.h>
+ 
+ #include <sys/types.h>
+@@ -28,7 +30,8 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <errno.h>
+-#include <fstream.h>
++#include <iostream>
++#include <fstream>
+ #include <stdarg.h>
+ #include <signal.h>
+ #include <pwd.h>
+@@ -2053,7 +2056,7 @@
+ 	}
+       }
+ 
+-      ofstream out(TOC_FILE);
++      std::ofstream out(TOC_FILE);
+       if (!out) {
+ 	message(-2, "Cannot open \"%s\" for writing: %s", TOC_FILE,
+ 		strerror(errno));
+@@ -2106,7 +2109,7 @@
+ 	}
+       }
+ 
+-      ofstream out(TOC_FILE);
++      std::ofstream out(TOC_FILE);
+       if (!out) {
+ 	message(-2, "Cannot open \"%s\" for writing: %s",
+ 		TOC_FILE, strerror(errno));
+diff -uNr cdrdao-1.1.5.orig/trackdb/CdTextContainer.cc cdrdao-1.1.5/trackdb/CdTextContainer.cc
+--- cdrdao-1.1.5.orig/trackdb/CdTextContainer.cc	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/CdTextContainer.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,9 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <iostream.h>
++using namespace std;
++
++#include <iostream>
+ #include <assert.h>
+ 
+ #include "CdTextContainer.h"
+@@ -109,7 +111,7 @@
+     language_[i] = -1;
+ }
+ 
+-void CdTextContainer::print(int isTrack, ostream &out) const
++void CdTextContainer::print(int isTrack, std::ostream &out) const
+ {
+   CdTextItem *run;
+   int i;
+diff -uNr cdrdao-1.1.5.orig/trackdb/CdTextContainer.h cdrdao-1.1.5/trackdb/CdTextContainer.h
+--- cdrdao-1.1.5.orig/trackdb/CdTextContainer.h	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/CdTextContainer.h	2002-05-27 03:42:35.000000000 -0700
+@@ -37,7 +37,7 @@
+ 
+   void remove(CdTextItem::PackType, int blockNr);
+ 
+-  void print(int isTrack, ostream &) const;
++  void print(int isTrack, std::ostream &) const;
+ 
+   // checks if a pack exists for given 'blockNr' (language)
+   int existBlock(int blockNr) const;
+diff -uNr cdrdao-1.1.5.orig/trackdb/CdTextItem.cc cdrdao-1.1.5/trackdb/CdTextItem.cc
+--- cdrdao-1.1.5.orig/trackdb/CdTextItem.cc	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/CdTextItem.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,10 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <iostream.h>
++using namespace std;
++
++#include <iostream>
++#include <iomanip>
+ #include <assert.h>
+ #include <string.h>
+ #include <ctype.h>
+@@ -115,7 +118,7 @@
+   next_ = NULL;
+ }
+ 
+-void CdTextItem::print(int isTrack, ostream &out) const
++void CdTextItem::print(int isTrack, std::ostream &out) const
+ {
+   int i;
+ 
+@@ -129,7 +132,7 @@
+       else if (isprint(data_[i]))
+ 	out << data_[i];
+       else
+-	out.form("\\%03o", (unsigned int)data_[i]);
++	out << '\\' << setfill('0') << setw(3) << setbase(8) << (unsigned int)data_[i];
+     }
+ 
+     out << "\"";
+@@ -140,7 +143,7 @@
+     out << " {";
+     for (i = 0; i < dataLen_; i++) {
+       if (i == 0) {
+-	out.form("%2d", (unsigned int)data_[i]);
++	out << '\\' << setw(2) << setbase(10) << (unsigned int)data_[i];
+       }
+       else {
+ 	if (i % 12 == 0) 
+@@ -148,7 +151,7 @@
+ 	else
+ 	  out << ", ";
+ 
+-	out.form("%2d", (unsigned int)data_[i]);
++	out << setw(2) << setbase(10) << (unsigned int)data_[i];
+       }
+     }
+ 
+diff -uNr cdrdao-1.1.5.orig/trackdb/CdTextItem.h cdrdao-1.1.5/trackdb/CdTextItem.h
+--- cdrdao-1.1.5.orig/trackdb/CdTextItem.h	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/CdTextItem.h	2002-05-27 03:42:35.000000000 -0700
+@@ -20,8 +20,6 @@
+ #ifndef __CDTEXTITEM_H__
+ #define __CDTEXTITEM_H__
+ 
+-class ostream;
+-
+ class CdTextItem {
+ public:
+   enum DataType { SBCC, DBCC, BINARY };
+@@ -65,7 +63,7 @@
+ 
+   long dataLen() const { return dataLen_; }
+ 
+-  void print(int isTrack, ostream &) const;
++  void print(int isTrack, std::ostream &) const;
+ 
+   int operator==(const CdTextItem &);
+   int operator!=(const CdTextItem &);
+diff -uNr cdrdao-1.1.5.orig/trackdb/Toc.cc cdrdao-1.1.5/trackdb/Toc.cc
+--- cdrdao-1.1.5.orig/trackdb/Toc.cc	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/Toc.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -24,7 +24,9 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <ctype.h>
+-#include <fstream.h>
++#include <fstream>
++
++using namespace std;
+ 
+ #include "Toc.h"
+ #include "util.h"
+@@ -216,7 +218,7 @@
+ }
+ 
+ // writes contents in TOC file syntax
+-void Toc::print(ostream &out) const
++void Toc::print(std::ostream &out) const
+ {
+   int i;
+   TrackEntry *t;
+diff -uNr cdrdao-1.1.5.orig/trackdb/Toc.h cdrdao-1.1.5/trackdb/Toc.h
+--- cdrdao-1.1.5.orig/trackdb/Toc.h	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/Toc.h	2002-05-27 03:42:35.000000000 -0700
+@@ -20,7 +20,7 @@
+ #ifndef __TOC_H__
+ #define __TOC_H__
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include "Track.h"
+ #include "CdTextContainer.h"
+ #include "CdTextItem.h"
+@@ -87,7 +87,7 @@
+   void trackSummary(int *nofAudioTracks, int *nofMode1Tracks,
+ 		    int *nofMode2Tracks) const;
+ 
+-  void print(ostream &) const;
++  void print(std::ostream &) const;
+ 
+   static const char *tocType2String(TocType);
+ 
+diff -uNr cdrdao-1.1.5.orig/trackdb/Track.cc cdrdao-1.1.5/trackdb/Track.cc
+--- cdrdao-1.1.5.orig/trackdb/Track.cc	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/Track.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -24,6 +24,8 @@
+ #include <ctype.h>
+ #include <string.h>
+ 
++using namespace std;
++
+ #include "Track.h"
+ #include "util.h"
+ #include "TrackDataList.h"
+@@ -468,7 +470,7 @@
+ }
+ 
+ // writes out track data in TOC file syntax
+-void Track::print(ostream &out) const
++void Track::print(std::ostream &out) const
+ {
+   SubTrack *st;
+   int i;
+diff -uNr cdrdao-1.1.5.orig/trackdb/Track.h cdrdao-1.1.5/trackdb/Track.h
+--- cdrdao-1.1.5.orig/trackdb/Track.h	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/Track.h	2002-05-27 03:42:35.000000000 -0700
+@@ -20,7 +20,9 @@
+ #ifndef __TRACK_H__
+ #define __TRACK_H__
+ 
+-#include <iostream.h>
++//using namespace std;
++
++#include <iostream>
+ 
+ #include "SubTrack.h"
+ #include "Msf.h"
+@@ -109,7 +111,7 @@
+     return cdtext_.getPack(blockNr, t);
+   }
+ 
+-  void print(ostream &) const;
++  void print(std::ostream &) const;
+ 
+ private:
+   friend class TocParserGram;
+diff -uNr cdrdao-1.1.5.orig/trackdb/TrackData.cc cdrdao-1.1.5/trackdb/TrackData.cc
+--- cdrdao-1.1.5.orig/trackdb/TrackData.cc	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/TrackData.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -28,6 +28,8 @@
+ #include <string.h>
+ #include <errno.h>
+ 
++using namespace std;
++
+ #include "TrackData.h"
+ #include "Msf.h"
+ #include "util.h"
+@@ -332,7 +334,7 @@
+ }
+ 
+ // writes out contents of object in TOC file syntax
+-void TrackData::print(ostream &out) const
++void TrackData::print(std::ostream &out) const
+ {
+   unsigned long blen;
+ 
+diff -uNr cdrdao-1.1.5.orig/trackdb/TrackData.h cdrdao-1.1.5/trackdb/TrackData.h
+--- cdrdao-1.1.5.orig/trackdb/TrackData.h	2002-05-27 03:42:11.000000000 -0700
++++ cdrdao-1.1.5/trackdb/TrackData.h	2002-05-27 03:42:35.000000000 -0700
+@@ -21,7 +21,7 @@
+ #ifndef __TRACKDATA_H__
+ #define __TRACKDATA_H__
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include "Sample.h"
+ 
+ #define AUDIO_BLOCK_LEN 2352
+@@ -76,7 +76,7 @@
+   void split(unsigned long, TrackData **part1, TrackData **part2);
+   TrackData *merge(const TrackData *) const;
+ 
+-  void print(ostream &) const;
++  void print(std::ostream &) const;
+ 
+   static int checkAudioFile(const char *fn, unsigned long *length);
+   static int waveLength(const char *filename, long offset, long *hdrlen,
+diff -uNr cdrdao-1.1.5.orig/utils/toc2cue.cc cdrdao-1.1.5/utils/toc2cue.cc
+--- cdrdao-1.1.5.orig/utils/toc2cue.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/utils/toc2cue.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,6 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <config.h>
+ 
+ #include <stdio.h>
+@@ -26,7 +28,8 @@
+ #include <errno.h>
+ #include <stdarg.h>
+ #include <getopt.h>
+-#include <fstream.h>
++#include <fstream>
++#include <iomanip>
+ 
+ #include "util.h"
+ #include "Toc.h"
+@@ -275,7 +278,7 @@
+     exit(1);
+   }
+ 
+-  ofstream out(cueFile);
++  std::ofstream out(cueFile);
+ 
+   if (!out) {
+     message(-2, "Cannot open cue file \'%s\' for writing: %s", cueFile,
+@@ -291,7 +294,7 @@
+        trun != NULL;
+        trun = titr.next(start, end), trackNr++) {
+     out << "  TRACK ";
+-    out.form("%02d ", trackNr);
++    out << setfill('0') << setw(2) << setbase(10) << trackNr;
+ 
+     switch (trun->type()) {
+     case TrackData::AUDIO:
+diff -uNr cdrdao-1.1.5.orig/xdao/AddSilenceDialog.cc cdrdao-1.1.5/xdao/AddSilenceDialog.cc
+--- cdrdao-1.1.5.orig/xdao/AddSilenceDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/AddSilenceDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,10 +17,13 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+ #include "AddSilenceDialog.h"
+ 
+diff -uNr cdrdao-1.1.5.orig/xdao/AudioCDChild.cc cdrdao-1.1.5/xdao/AudioCDChild.cc
+--- cdrdao-1.1.5.orig/xdao/AudioCDChild.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/AudioCDChild.cc	2002-05-27 03:41:09.000000000 -0700
+@@ -17,12 +17,14 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+-#include <fstream.h>
++#include <fstream>
+ #include <string.h>
+ #include <errno.h>
+ #include <stdarg.h>
+-#include <strstream.h>
++#include <iostream>
+ 
+ #include "xcdrdao.h"
+ #include "guiUpdate.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/AudioCDView.cc cdrdao-1.1.5/xdao/AudioCDView.cc
+--- cdrdao-1.1.5.orig/xdao/AudioCDView.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/AudioCDView.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,19 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+-#include <fstream.h>
++#include <fstream>
+ #include <string.h>
+ #include <errno.h>
+ #include <stdarg.h>
+-#include <strstream.h>
++#include <iosfwd>
++#include <ios>
++#include <istream>
++#include <ostream>
++#include <string>
++#include <cstring>
+ 
+ #include "xcdrdao.h"
+ #include "guiUpdate.h"
+@@ -40,7 +47,10 @@
+ #include "TrackInfoDialog.h"
+ #include "AddFileDialog.h"
+ #include "AddSilenceDialog.h"
++
+ #include <gnome.h>
++//#include <libgnome/gnome-defs.h>
++//#include <libgnome/gnome-config.h>
+ 
+ AudioCDView::AudioCDView(AudioCDChild *child, AudioCDProject *project) 
+ {
+diff -uNr cdrdao-1.1.5.orig/xdao/CdDevice.cc cdrdao-1.1.5/xdao/CdDevice.cc
+--- cdrdao-1.1.5.orig/xdao/CdDevice.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/CdDevice.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,6 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <stddef.h>
+@@ -27,8 +29,10 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <assert.h>
++#include <cstring>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "TocEdit.h"
+ #include "CdDevice.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/CdTextDialog.cc cdrdao-1.1.5/xdao/CdTextDialog.cc
+--- cdrdao-1.1.5.orig/xdao/CdTextDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/CdTextDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,15 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include "CdTextDialog.h"
+ 
+ #include <gnome--.h>
+ 
+ #include <stddef.h>
+ #include <string.h>
++#include <cstring>
+ 
+ #include "TocEdit.h"
+ #include "Toc.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/DeviceConfDialog.h cdrdao-1.1.5/xdao/DeviceConfDialog.h
+--- cdrdao-1.1.5.orig/xdao/DeviceConfDialog.h	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/DeviceConfDialog.h	2002-05-27 03:42:35.000000000 -0700
+@@ -56,8 +56,11 @@
+ #ifndef __DEVICE_CONF_DIALOG_H
+ #define __DEVICE_CONF_DIALOG_H
+ 
++using namespace std;
++
+ #include <gtk--.h>
+ #include <gtk/gtk.h>
++#include <cstring>
+ 
+ class TocEdit;
+ class CdDevice;
+diff -uNr cdrdao-1.1.5.orig/xdao/DeviceList.cc cdrdao-1.1.5/xdao/DeviceList.cc
+--- cdrdao-1.1.5.orig/xdao/DeviceList.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/DeviceList.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,16 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "DeviceList.h"
+ #include "MessageBox.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/MDIWindow.cc cdrdao-1.1.5/xdao/MDIWindow.cc
+--- cdrdao-1.1.5.orig/xdao/MDIWindow.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/MDIWindow.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,14 +17,21 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+-#include <fstream.h>
++#include <fstream>
+ #include <string.h>
+ #include <errno.h>
+ #include <stdarg.h>
+-#include <strstream.h>
++#include <iosfwd>
++#include <ios>
++#include <istream>
++#include <ostream>
++#include <string>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "util.h"
+ #include "xcdrdao.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/MessageBox.cc cdrdao-1.1.5/xdao/MessageBox.cc
+--- cdrdao-1.1.5.orig/xdao/MessageBox.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/MessageBox.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -61,8 +61,11 @@
+ 
+ static char rcsid[] = "$Id: MessageBox.cc,v 1.7 2000/09/21 02:07:06 llanero Exp $";
+ 
++using namespace std;
++
+ #include <stddef.h>
+ #include <stdarg.h>
++#include <cstring>
+ 
+ #include <gnome--.h>
+ 
+diff -uNr cdrdao-1.1.5.orig/xdao/ProgressDialog.cc cdrdao-1.1.5/xdao/ProgressDialog.cc
+--- cdrdao-1.1.5.orig/xdao/ProgressDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/ProgressDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,10 +17,13 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <stddef.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <cstring>
+ 
+ #include <gnome--.h>
+ 
+diff -uNr cdrdao-1.1.5.orig/xdao/Project.cc cdrdao-1.1.5/xdao/Project.cc
+--- cdrdao-1.1.5.orig/xdao/Project.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/Project.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,9 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <strstream.h>
++using namespace std;
++
++#include <iostream>
+ #include <errno.h>
+ 
+ #include "util.h"
+@@ -32,7 +34,8 @@
+ #include "TocEdit.h"
+ #include "TocEditView.h"
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ Project::Project() : Gnome::App("gcdmaster", APP_NAME)
+ {
+@@ -271,19 +274,14 @@
+ 
+ void Project::statusMessage(const char *fmt, ...)
+ {
++  char buf[BUFSIZ];
++
+   va_list args;
+   va_start(args, fmt);
+-
+-  strstream str;
+-
+-  str.vform(fmt, args);
+-  str << ends;
+-
+-  flash(str.str());
+-
+-  str.freeze(0);
+-
++  std::vsprintf(buf, fmt, args);
+   va_end(args);
++
++  flash(buf);
+ }
+ 
+ int Project::projectNumber()
+diff -uNr cdrdao-1.1.5.orig/xdao/RecordCDSource.cc cdrdao-1.1.5/xdao/RecordCDSource.cc
+--- cdrdao-1.1.5.orig/xdao/RecordCDSource.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/RecordCDSource.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,11 +17,14 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
+ #include <unistd.h>
++#include <cstring>
+ 
+ #include "RecordCDSource.h"
+ #include "MessageBox.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/RecordCDTarget.cc cdrdao-1.1.5/xdao/RecordCDTarget.cc
+--- cdrdao-1.1.5.orig/xdao/RecordCDTarget.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/RecordCDTarget.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,16 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "RecordCDTarget.h"
+ #include "RecordCDSource.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/RecordGenericDialog.cc cdrdao-1.1.5/xdao/RecordGenericDialog.cc
+--- cdrdao-1.1.5.orig/xdao/RecordGenericDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/RecordGenericDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,10 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <gnome--.h>
++#include <cstring>
+ 
+ #include "RecordGenericDialog.h"
+ #include "RecordTocSource.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/RecordHDTarget.cc cdrdao-1.1.5/xdao/RecordHDTarget.cc
+--- cdrdao-1.1.5.orig/xdao/RecordHDTarget.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/RecordHDTarget.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,16 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "RecordHDTarget.h"
+ #include "RecordCDSource.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/RecordTocSource.cc cdrdao-1.1.5/xdao/RecordTocSource.cc
+--- cdrdao-1.1.5.orig/xdao/RecordTocSource.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/RecordTocSource.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,16 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "RecordTocSource.h"
+ #include "MessageBox.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/SampleDisplay.cc cdrdao-1.1.5/xdao/SampleDisplay.cc
+--- cdrdao-1.1.5.orig/xdao/SampleDisplay.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/SampleDisplay.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -84,10 +84,14 @@
+ 
+ static char rcsid[] = "$Id: SampleDisplay.cc,v 1.10 2001/04/29 12:10:27 andreasm Exp $";
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <iostream>
++#include <cstring>
+ 
+ #include "TocEdit.h"
+ #include "SampleDisplay.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/SampleManager.cc cdrdao-1.1.5/xdao/SampleManager.cc
+--- cdrdao-1.1.5.orig/xdao/SampleManager.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/SampleManager.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -57,10 +57,13 @@
+  *
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <assert.h>
++#include <cstring>
+ 
+ #include <gtk--.h>
+ #include <gtk/gtk.h>
+diff -uNr cdrdao-1.1.5.orig/xdao/TextEdit.cc cdrdao-1.1.5/xdao/TextEdit.cc
+--- cdrdao-1.1.5.orig/xdao/TextEdit.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/TextEdit.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -32,10 +32,13 @@
+ 
+ static char rcsid[] = "$Id: TextEdit.cc,v 1.2 2000/02/20 23:34:54 llanero Exp $";
+ 
++using namespace std;
++
+ #include "TextEdit.h"
+ 
+ #include <stddef.h>
+ #include <ctype.h>
++#include <cstring>
+ 
+ TextEdit::TextEdit(const char *sample) : Gtk::Entry()
+ {
+diff -uNr cdrdao-1.1.5.orig/xdao/TocInfoDialog.cc cdrdao-1.1.5/xdao/TocInfoDialog.cc
+--- cdrdao-1.1.5.orig/xdao/TocInfoDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/TocInfoDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,6 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include "TocInfoDialog.h"
+ 
+ #include <gnome--.h>
+@@ -25,6 +27,7 @@
+ #include <stddef.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <cstring>
+ 
+ #include "TocEdit.h"
+ //#include "TocEditView.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/TrackInfoDialog.cc cdrdao-1.1.5/xdao/TrackInfoDialog.cc
+--- cdrdao-1.1.5.orig/xdao/TrackInfoDialog.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/TrackInfoDialog.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,6 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include "TrackInfoDialog.h"
+ 
+ #include <gnome--.h>
+@@ -25,6 +27,7 @@
+ #include <stddef.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <cstring>
+ 
+ #include "TocEdit.h"
+ #include "TocEditView.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/ViewSwitcher.cc cdrdao-1.1.5/xdao/ViewSwitcher.cc
+--- cdrdao-1.1.5.orig/xdao/ViewSwitcher.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/ViewSwitcher.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,8 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include "ViewSwitcher.h"
+ 
+diff -uNr cdrdao-1.1.5.orig/xdao/ViewSwitcher.h cdrdao-1.1.5/xdao/ViewSwitcher.h
+--- cdrdao-1.1.5.orig/xdao/ViewSwitcher.h	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/ViewSwitcher.h	2002-05-27 03:42:35.000000000 -0700
+@@ -20,6 +20,8 @@
+ #ifndef __VIEW_SWITCHER_H__
+ #define __VIEW_SWITCHER_H__
+ 
++using namespace std;
++
+ #include <gtk--.h>
+ #include <gtk/gtk.h>
+ #include <gnome--.h>
+diff -uNr cdrdao-1.1.5.orig/xdao/gcdmaster.cc cdrdao-1.1.5/xdao/gcdmaster.cc
+--- cdrdao-1.1.5.orig/xdao/gcdmaster.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/gcdmaster.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,7 +17,12 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include <gnome.h>
++using namespace std;
++
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
++
++#include <cstring>
+ 
+ #include "xcdrdao.h"
+ #include "DeviceConfDialog.h"
+diff -uNr cdrdao-1.1.5.orig/xdao/gcdmaster.h cdrdao-1.1.5/xdao/gcdmaster.h
+--- cdrdao-1.1.5.orig/xdao/gcdmaster.h	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/gcdmaster.h	2002-05-27 03:42:35.000000000 -0700
+@@ -20,6 +20,8 @@
+ #ifndef __GCDMASTER_H__
+ #define __GCDMASTER_H__
+ 
++using namespace std;
++
+ #include <gtk--.h>
+ #include <gtk/gtk.h>
+ #include <gnome--.h>
+diff -uNr cdrdao-1.1.5.orig/xdao/xcdrdao.cc cdrdao-1.1.5/xdao/xcdrdao.cc
+--- cdrdao-1.1.5.orig/xdao/xcdrdao.cc	2002-05-27 03:42:12.000000000 -0700
++++ cdrdao-1.1.5/xdao/xcdrdao.cc	2002-05-27 03:42:35.000000000 -0700
+@@ -17,12 +17,15 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++using namespace std;
++
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <signal.h>
+ #include <stdlib.h>
+ 
+-#include <gnome.h>
++#include <libgnome/gnome-defs.h>
++#include <libgnome/gnome-config.h>
+ 
+ #include <gtk--.h>
+ #include <gtk/gtk.h>

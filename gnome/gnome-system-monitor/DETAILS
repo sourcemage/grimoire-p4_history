@@ -1,0 +1,19 @@
+           SPELL=gnome-system-monitor
+         VERSION=2.0.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+         ENTERED=20020509
+         UPDATED=20020519
+           SHORT="System monitor for the GNOME 2.0 Desktop"
+cat << EOF
+System monitor for the GNOME 2.0 Desktop
+
+Procman is a nicer, simpler, easier to use replacement
+to gtop. It uses libgtop for the process monitoring
+and gtktreeview for the viewing.
+EOF

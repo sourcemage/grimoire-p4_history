@@ -1,0 +1,17 @@
+           SPELL=gnome-session
+         VERSION=2.0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp.gnome.org/pub/GNOME/2.0.0/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+      LICENSE[2]=FDL
+         ENTERED=20020505
+         UPDATED=20020514
+           SHORT="The GNOME 2.0 Session manager"
+cat << EOF
+The GNOME 2.0 Session manager
+EOF

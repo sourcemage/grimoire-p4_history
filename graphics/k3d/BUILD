@@ -1,6 +1,9 @@
 (
+	cd $SOURCE_DIRECTORY &&
+  ln -sf /usr/share/automake-1.6/install-sh install-sh &&
+  ln -sf /usr/share/automake-1.6/mkinstalldirs mkinstalldirs &&
+  ln -sf /usr/share/automake-1.6/missing missing &&
 
-  echo "If you're upgrading, please dispel sdp-libs before !!!!" &&
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
                --datadir=/usr/share/k3d              \

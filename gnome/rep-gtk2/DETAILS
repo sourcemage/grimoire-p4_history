@@ -1,0 +1,16 @@
+           SPELL=rep-gtk2
+         VERSION=0.16
+          SOURCE=rep-gtk-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/rep-gtk-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/rep-gtk/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/rep-gtk/$SOURCE
+        WEB_SITE=http://rep-gtk.sourceforge.net
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+         ENTERED=20020510
+         UPDATED=20020510
+           SHORT="rep-gtk is bindings of GTK+/GDK 2.0 for librep."
+cat << EOF
+rep-gtk is a binding of the GTK+ and GDK 2.0 libraries for the librep
+Lisp environment.
+EOF
