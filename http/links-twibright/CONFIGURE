@@ -1,0 +1,18 @@
+if  !  grep  -q  "JAVA_SCRIPT="  $SPELL_CONFIG;  then
+
+    if    query  "Enable Javascript support?" y
+        then  echo   "JAVA_SCRIPT=y"  >>  $SPELL_CONFIG
+        else  echo   "JAVA_SCRIPT=n"  >>  $SPELL_CONFIG
+    fi
+
+fi
+        
+if  !  grep  -q  "GUI="  $SPELL_CONFIG;  then
+
+    if    query  "Enable GUI?" y
+        then  echo   "GUI=y"  >>  $SPELL_CONFIG
+        else  echo   "GUI=n"  >>  $SPELL_CONFIG
+    fi
+
+fi
+        
