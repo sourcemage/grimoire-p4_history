@@ -1,14 +1,10 @@
-/usr/sbin/apachectl  stop
-
-sleep 5
-
 if    [  -e  /etc/httpd/httpd.conf  ]
 then  MOD="/etc/httpd/httpd.conf"
       INC="AddType application/x-httpd-php .php .phtml
 LoadModule php4_module libexec/libphp4.so"
 
       grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      httpd -t && /usr/sbin/apachectl  start
+      httpd -t
 fi
 
 if    [  -e  /etc/httpsd/httpd.conf  ]
@@ -17,5 +13,5 @@ then  MOD="/etc/httpsd/httpd.conf"
 LoadModule php4_module libexec/libphp4.so"
 
       grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      httpd -t && /usr/sbin/apachectl  startssl
+      httpd -t
 fi
