@@ -41,7 +41,7 @@ fi
 
 # only do this if network device is a module
 # sort needed to ensure unique lsmod module name (often 2x entries in table)
-if [ "$MODULE" ] && [ ! $(/sbin/lsmod | grep -Eo "$MODULE" | sort -u) ] ; then
+if [ "$MODULE" ] && [ $(/sbin/lsmod | grep -Eo "$MODULE" | sort -u) ] ; then
   echo "Unloading module $MODULE for $DEV ..."
   modprobe -r $MODULE
 fi
