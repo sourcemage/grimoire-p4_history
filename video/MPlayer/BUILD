@@ -6,6 +6,8 @@
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
   if [ "$CVS" = "yes" ]; then
     patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
+  else
+    OPTS="$OPTS --enable-libavcodec"
   fi  &&
 
   case  $GUI  in
