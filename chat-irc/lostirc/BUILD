@@ -1,4 +1,3 @@
-(
   if [ "$CVS" = "yes" ] ; then ./autogen.sh; fi   &&
 
   ./configure  --build=$BUILD                     \
@@ -6,8 +5,6 @@
                --sysconfdir=/etc                  \
                --localstatedir=/var               \
                $OPTS                              &&
-  make                                            &&
-  cd $SOURCE_DIRECTORY                            &&
-  prepare_install                                 &&
-  make    install
-) > $C_FIFO 2>&1
+  make 
+#  cd $SOURCE_DIRECTORY                            &&
+
