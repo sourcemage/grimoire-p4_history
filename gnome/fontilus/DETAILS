@@ -1,18 +1,18 @@
            SPELL=fontilus
-         VERSION=0.2
+         VERSION=0.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[0]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="b3b7192d7060d7b0c6c7456f744959ef"
+          MD5[0]="46af508331f58bcbd5e9683374d32589"
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
          ENTERED=20020505
-         UPDATED=20021217
+         UPDATED=20030110
            SHORT="Fontilus is a small collection of programs to help manage fonts on GNOME systems using fontconfig,"
 cat << EOF
 The first part is a gnome-vfs module that implements a "fonts:" 
