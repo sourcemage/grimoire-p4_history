@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# SMGL-script-version=20030722
+# SMGL-script-version=20030723
 # SMGL-START:S:S15
 # SMGL-STOP:0 6:K75
 
