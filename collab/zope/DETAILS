@@ -1,15 +1,15 @@
            SPELL=zope
-         VERSION=2.7.1
+         VERSION=2.7.2-0
           SOURCE=Zope-$VERSION.tgz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/Zope-$VERSION-0
-   SOURCE_URL[0]=http://www.zope.org/Products/Zope/$VERSION/$SOURCE
-          MD5[0]=71108ed6f9c21835978ae7f1fd4064c5
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Zope-$VERSION
+   SOURCE_URL[0]=http://www.zope.org/Products/Zope/${VERSION/\-0/}/$SOURCE
+          MD5[0]=945ec29b34b5980a2056d403eca5db2c
         WEB_SITE=http://www.zope.org/
          ENTERED=20030527
          UPDATED=20030822
       LICENSE[0]=ZPL
        BUILD_API=2
-           SHORT='Content management, portals, and custom applications server'
+           SHORT="Content management, portals, and custom applications server"
 cat << EOF
 Zope is a leading open source application server, specializing in content management, portals,
 and custom applications. Zope enables teams to collaborate in the creation and management of
