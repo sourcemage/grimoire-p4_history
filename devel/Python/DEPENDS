@@ -1,5 +1,3 @@
-if  [  "$TK"  ==  "y"  ];  then
-  depends  tk
-fi
 depends  db  &&
+optional_depends  "tk"  ""  ""  "for tk support"               &&
 optional_depends  "expat"  ""  ""  "for an xml parser module"
