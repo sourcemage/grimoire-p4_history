@@ -56,6 +56,11 @@ function make_crypto() {
   ln -fns /usr/include/mozilla /usr/include/mozilla-$VERSION &&
 
   make install &&
-  make_crypto install
+  make_crypto install  &&
+
+  if  !  grep  -q  "mozilla"  /etc/ld.so.conf
+  then
+    echo  "/usr/lib/mozilla"  >>  /etc/ld.so.conf
+  fi
 
 ) >$C_FIFO 2>&1

@@ -60,7 +60,13 @@
                --without-png                \
                $OPTS                        &&
   make                                      &&
-  prepare_install
+  prepare_install                           &&
+
+
+  if  !  grep  -q  "mozilla"  /etc/ld.so.conf
+  then
+    echo  "/usr/lib/mozilla"  >>  /etc/ld.so.conf
+  fi
 
 ) > $C_FIFO 2>&1  &&  (
 
