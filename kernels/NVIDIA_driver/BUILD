@@ -4,7 +4,7 @@
   cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION/usr/src/nv                 &&
 
   ### We look at the Makefile in the kernel sources for the Version Number!
-  KPATCHLEVEL=$(head -2 /lib/modules/$(uname -r)/build/Makefile | tail -1 | sed 's/.*= //')
+  KPATCHLEVEL=$(head -n 2 /lib/modules/$(uname -r)/build/Makefile | tail -n 1 | sed 's/.*= //')
 
   if [[ $KPATCHLEVEL == 5 ]]  || [[ $KPATCHLEVEL == 6 ]]
   then
