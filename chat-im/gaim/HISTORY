@@ -1,3 +1,19 @@
+2004-08-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.81
+	  Removed gaim-encryption comments
+	  BUILD_API=2
+	  Shortened SHORT
+	  Use config_query response
+	* PREPARE: Converted to config_query
+	* POST_INSTALL, FINAL: POST_INSTALL renamed to FINAL
+	* BUILD: Converted to BUILD_API 2
+	  Use config_query response
+	* INSTALL: Added
+	* DEPENDS: Formatted to Guru Handbook
+	  Use config_query response
+	* HISTORY: Formatted to Guru Handbook
+	* WIP: Removed
+
 2004-07-17 George Sherwood <george@beernabeer.com>
 	* DETAILS: Updated to 0.80
 
@@ -12,7 +28,7 @@
 
 2004-05-31 George Sherwood <george@beernabeer.com>
 	* DETAILS: Updated to 0.78
-	* DETAILS: Updated gaim-encryption to 2.26
+	  Updated gaim-encryption to 2.26
 
 2004-05-14 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on any provider of CVS (Bug #6396)
@@ -41,11 +57,13 @@
 	  Updated UPDATED
 
 2004-02-27 Eric Sandall <eric@sandall.us>
-	* DETAILS: Rearrange if statement so 0.75 is default when PREPARE hasn't been run
+	* DETAILS: Rearrange if statement so 0.75 is default when PREPARE hasn't
+	  been run
 
 2004-01-27 Eric Sandall <eric@sandall.us>
-	* DETAILS,BUILD: Download and apply security patch for http://security.e-matters.de/advisories/012004.html
-	* DETAILS: Updated UPDATED
+	* DETAILS,BUILD: Download and apply security patch
+	  for http://security.e-matters.de/advisories/012004.html
+	  Updated UPDATED
 
 2004-01-13 hgg <hgreig@bigpond.net.au>
 	* DETAILS: duplicate SOURCE andd SOURCE2 lines or SOURCE_URL won't work
@@ -53,8 +71,8 @@
 2004-01-13 hgg <hgreig@bigpond.net.au>
 	* DETAILS: update to 0.7.5 and 2.2.0
 	* DETAILS,PREPARE,BUILD: add optional CVS version
-	* DEPENDS: add cvs if cvs version is being cast; uncomment tcl and tk stuff as it now supports current 
-	  versions of them
+	* DEPENDS: add cvs if cvs version is being cast; uncomment tcl and tk stuff
+	  as it now supports current versions of them
 	* ALL: completely remove the gaim-e stuff, it doesn't work.
 
 2003-11-26 Eric Sandall <eric@sandall.us>
@@ -70,12 +88,14 @@
 
 2003-11-04 hgg <hgreig@bigopond.net.au>
 	* DETAILS: update to 0.72 and gaim-encryption 2.16
-	* CONFIGURE,DEPENDS: Bug 4567 can't have both optional_depends and full depends at the same time, the full
-	  gets listed in /var/state/sorcery/depends not the optional
+	* CONFIGURE,DEPENDS: Bug 4567 can't have both optional_depends and full
+	  depends at the same time, the full gets listed in
+	  /var/state/sorcery/depends not the optional
 	* DEPENDS: add gtkspell for the unwashed illiterate masses
 
 2003-10-23 David Braaten <xiticix47@hotmail.com>
-	* DEPENDS: make some nss options explicit. optional_depends is slightly broken atm, though. (see bug 4567)
+	* DEPENDS: make some nss options explicit. optional_depends is slightly
+	  broken atm, though. (see bug 4567)
 
 2003-10-21 hgg <hgreig@bigpond.net.au>
 	* DEPENDS: modify so either nss or Firebird can provide MOZILLA-NSS
@@ -96,7 +116,8 @@
 	* DEPENDS: Needed a rewrite of nss spell so cast nss first!
 
 2003-09-26 hgg <hgreig@bigpond.net.au>
-	* DETAILS,PRE_BUILD,BUILD: Update to 0.69 for yahoo protocol fix, every "add-on" now broken
+	* DETAILS,PRE_BUILD,BUILD: Update to 0.69 for yahoo protocol fix, every
+	  "add-on" now broken
 
 2003-09-19 hgg <hgreig@bigpond.net.au>
 	* DEPENDS,BUILD,PRE_BUILD: Fixed gaim-encryption
@@ -116,7 +137,8 @@
 	* POST_INSTALL: POST_INSTALL not needed, warning no longer applies
 
 2003-05-30 Justin Rocha <jrocha@sourcemage.org>
-	* DETAILS: Teach me to not check for updates when playing with spells....version bump to 0.64
+	* DETAILS: Teach me to not check for updates when playing with spells....
+	  version bump to 0.64
 
 2003-05-29 Justin Rocha <jrocha@sourcemage.org>
 	* CONFIGURE,BUILD,PRE_BUILD,DETAILS: Added gaim-encryption plugin
@@ -144,10 +166,11 @@
 	* DETAILS: Removed sourcemage mirror URL - redundant (Bug 1332)
 
 2002-10-13 Eric Sandall <eric@sandall.us>
-	* DEPENDS,BUILD,CONFIGURE,PRE_BUILD: Added gpgme as optional_depends, though this should 
-	  be made more specific, for it's only dependant if using gaim-e.
-	  Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD to configure gaim-e support correctly.
-	  Modified BUILD to patch gaim-e plugin to install into /usr/lib/gaim instead of /usr/local/lib/gaim.
+	* DEPENDS,BUILD,CONFIGURE,PRE_BUILD: Added gpgme as optional_depends, though
+	  this should be made more specific, for it's only dependant if using gaim-e.
+	  Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD to configure gaim-e
+	  support correctly. Modified BUILD to patch gaim-e plugin to install into
+	  /usr/lib/gaim instead of /usr/local/lib/gaim.
 
 2002-10-09 Adam Clark <adamsgl@dhbit.ca>
 	* DETAILS: Updated to 0.59.4
