@@ -1,15 +1,15 @@
            SPELL=parted
-         VERSION=1.6.11
+         VERSION=1.6.12
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${GNU_URL}/${SPELL}/${SOURCE}
-   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/${SPELL}/${SOURCE}
-          MD5[0]=9074b13bc2054369b9d762fa18b0bae2
+          MD5[0]=75faec4508e9828c8d6fbd9e81f8abd4
         WEB_SITE=http://www.gnu.org/software/parted
-      LICENSE[0]=GPL
          ENTERED=20010922
          UPDATED=20030802
-           SHORT="GNU Parted allows you to create, destroy, resize, and copy partitions."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Create, destroy, resize, and copy partitions."
 cat << EOF
 GNU Parted allows you to create, destroy, resize, and copy partitions.  
 Supported partition types include ext2 and FAT (FAT 16 and FAT32)
