@@ -24,6 +24,9 @@
 
   ln    -sf  ../../../../bin/cpp  \
              /opt/gcc2/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
-  ln    -sf  ../opt/gcc2/bin/cpp  /lib/cpp
+  ln    -sf  ../opt/gcc2/bin/cpp  /lib/cpp              &&
+  # Compatibility lib
+  ln    -sf  /opt/gcc2/lib/libstdc++-3-libc6.3-2-2.10.0.so  \
+             /opt/gcc2/lib/libstdc++-libc6.2-2.so.3
 
 ) > $C_FIFO 2>&1
