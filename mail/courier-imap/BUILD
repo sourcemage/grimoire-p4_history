@@ -12,7 +12,7 @@
           unset PAM               ;;
   esac									&&
 
-  ./configure $IPV6 $PAM --prefix=/usr     --localstatedir=/var     	\
+  ./configure $OPTS $IPV6 $PAM --prefix=/usr     --localstatedir=/var   \
                          --sysconfdir=/etc/$SPELL --disable-root-check 	\
                          --enable-workarounds-for-imap-client-bugs 	\
                          --datadir=/usr/share/$SPELL                    \

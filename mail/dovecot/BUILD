@@ -39,7 +39,7 @@
   fi										&&
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var 		\
-              $IPV6 $SSL $POP3D		 					&&
+              $IPV6 $SSL $POP3D $OPTS	 					&&
   make										&&
 
   prepare_install								&&

@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr            \
                --disable-more-warnings  \
-               --enable-gtkhtml         &&
+               --enable-gtkhtml         \
+	       $OPTS			&&
   make                                  &&
   prepare_install                       &&
   make    install

@@ -5,7 +5,7 @@
               --prefix=/usr         \
               --sysconfdir=/etc     \
               --localstatedir=/var  \
-               $OPTS                 &&
+               $OPTS                &&
 
   case  $MAILDIR  in
     y|Y|j|J)  sedit "s;/var/spool/mail;./Maildir/;" maildrop/config.h  ;;

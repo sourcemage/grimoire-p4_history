@@ -1,9 +1,13 @@
 (
 
   ./configure  --with-emacs=emacs                               \
-               --with-gnus-dir=/usr/share/emacs/site-lisp/gnus  &&
+               --with-gnus-dir=/usr/share/emacs/site-lisp/gnus  \
+	       $OPTS						&&
+
   make  bbdb  gnus  info                                        &&
+
   prepare_install                                               &&
+
   rm  -rf  /usr/share/emacs/site-lisp/bbdb                      &&
   mkdir    /usr/share/emacs/site-lisp/bbdb                      &&
   cd  $SOURCE_DIRECTORY                                         &&

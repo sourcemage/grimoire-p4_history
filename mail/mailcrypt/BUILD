@@ -1,7 +1,7 @@
 (
 
   export MCRYPT_DIR=/usr/share/emacs/site-lisp/mailcrypt  &&
-  ./configure                                             &&
+  ./configure $OPTS                                       &&
   make                                                    &&
   prepare_install                                         &&
   make lispdir=$MCRYPT_DIR infodir=/usr/info install 
