@@ -1,4 +1,5 @@
-depends  jpeg     &&
-depends  libpng   &&
-depends  lesstif  &&
-optional_depends  "gtk+"  "--with-gtk"  ""  "for it's graphics library"
+depends jpeg   &&
+depends libpng &&
+depends tiff   &&
+
+optional_depends 'gtk+' '--with-gtk' '--without-gtk' 'for GTK+ graphics library'
