@@ -1,3 +1,11 @@
+2005-01-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* INSTALL: move compatibility link creation before make install,
+	  copy the libs from lib/ to $INSTALL_ROOT/lib as the first thing,
+	  fixes the spell breaking the system when switching from plain
+	  ncurses to ncurses with utf-8 support,
+	  use relative links instead of absolute links for the compatibility
+	  symlinks
+
 2004-12-14 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Optionally depend on g++
 
