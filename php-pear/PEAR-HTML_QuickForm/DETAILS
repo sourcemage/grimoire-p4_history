@@ -1,34 +1,30 @@
-         VERSION=3.1.1
-          MD5[0]='a6828db0062d4164a8917ac76fe1553c'
-         UPDATED=20030917
+         VERSION=3.2
+          MD5[0]='e8a71aae2b1aec0877eb882e7dd15f5f'
+         UPDATED=20031110
            SPELL=PEAR-HTML_QuickForm
         WEB_SITE=http://pear.php.net/package/HTML_QuickForm/
       LICENSE[0]=PHP
            SHORT='PEAR: The PEAR::HTML_QuickForm package provides'
 cat << EOF
-The PEAR::HTML_QuickForm package provides
-methods for creating, validating, processing
-HTML forms.
+The HTML_QuickForm package provides methods for
+dynamically create, validate and render HTML
+forms.
+
 Features:
-* Creates xHTML compliant form elements of
-various type.
-* Allows you to choose an unlimited number of
-html attributes.
-* Allows you to create your own custom elements
-using your own classes.
-* Process form values (you should override the
-process method).
-* Creates javascript validation code using
-regular expression.
-* Server-side validation too.
-* Allows you to create your own validation
+* More than 20 ready-to-use form elements.
+* XHTML compliant generated code.
+* Numerous mixable and extendable validation
 rules.
-* Manages file uploads.
-* Allows you to freeze some elements in your
-form.
-* Allows you to customize the look of your form
-in many ways.
-* Template-like form elements customization...
+* Automatic server-side validation and
+filtering.
+* On request javascript code generation for
+client-side validation.
+* File uploads support.
+* Total customization of form rendering.
+* Support for external template engines (ITX,
+Sigma, Flexy, Smarty).
+* Pluggable elements, rules and renderers
+extensions.
 EOF
 
 source $SCRIPT_DIRECTORY/../PEAR_DETAILS
