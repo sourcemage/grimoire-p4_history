@@ -1,14 +1,23 @@
            SPELL=ayttm
-         VERSION=0.4.2
-          SOURCE=$SPELL-$VERSION.tar.gz
+if [ "$CVS" = "no" ] ; then
+         VERSION=0.4.5
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/ayttm/$SOURCE
+          MD5[0]=ddb24bbf2496a4b4b65d6b26e3dec377
+else [ "$CVS" = "yes" ]
+         VERSION=cvs
+  FORCE_DOWNLOAD=1
+          SOURCE=$SPELL.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/$SPELL:$SPELL
+          MD5[0]=IGNORE
+fi
       MAINTAINER=jbernardo@sourcemage.org
         WEB_SITE=http://ayttm.sourceforge.net
          ENTERED=20030504
-         UPDATED=20030504
+         UPDATED=20040118
       LICENSE[0]=GPL
-          MD5[0]=b95ada63798a3058e5e61edc501570fd
            SHORT="ayttm is a universal instant messaging client"
 cat << EOF
 Ayttm is designed to become a Universal Instant Messaging client 
