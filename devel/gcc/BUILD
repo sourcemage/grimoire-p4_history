@@ -17,6 +17,8 @@
   $SOURCE_DIRECTORY/configure                \
                --host=$BUILD                 \
                --prefix=${INSTALL_ROOT}/usr  \
+               --infodir=${INSTALL_ROOT}/usr/share/info \
+               --mandir=${INSTALL_ROOT}/usr/share/man   \
                --enable-threads=posix        \
                $FRONTENDS                    \
 	       $OPTS                             &&
