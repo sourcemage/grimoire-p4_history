@@ -8,11 +8,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
    SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
           MD5[0]=e53e25b291571242dfcdd41f62f72920
 else
-         VERSION=3.3.0
+         VERSION=3.3.1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.3/src/$SOURCE
-          MD5[0]='5bc9baeffa6ab3aba817d7f0c0920bf8'
+   SOURCE_URL[0]=$KDE_URL/stable/3.3.1/src/$SOURCE
+          MD5[0]='9a6de44eddc93ea9243995d32532d7d9'
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
@@ -22,6 +22,13 @@ fi
            SHORT="Collection of tools used by KDE developers."
 cat << EOF
 This is a collection of applications and tools used by KDE developers.
+* Cervisia: a CVS front end
+* KBabel:
+* kbugbuster: a bugzilla front end
+* kcachegrind: for analysing application performance
+* Kompare: for comparing files
+* umbrello: a UML diagramming tool
+
 It also has example code for use in learning KDE programming or starting
 a new KDE application.
 * kapptemplate: shell script to easy the beginning of new apps
