@@ -1,1 +1,4 @@
-/etc/init.d/crond.sh  start
+if  [  -x  /etc/init.d/crond.sh  ]
+then
+  /etc/init.d/crond.sh  start
+fi
