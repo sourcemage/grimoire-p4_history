@@ -1,0 +1,15 @@
+if  !  grep  -q  "CONFIGURED"  $SPELL_CONFIG;  then
+
+	if    query  "Invoke NTPd during boot using init.d?" n
+        then  echo   "INTPD_BOOT=y"  >>  $SPELL_CONFIG
+	else  echo   "INTPD_BOOT=n"  >>  $SPELL_CONFIG
+        fi
+
+        if   query  "Invoke NTPd during boot using xinetd?" y
+        then  echo   "XNTPD_BOOT=y"  >>  $SPELL_CONFIG
+        else  echo   "XNTPD_BOOT=n"  >>  $SPELL_CONFIG
+	fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi

@@ -1,9 +1,11 @@
 (
 
-  if    spell_installed  Linux-PAM
-  then  WITH_PAM="--with-pam=yes"
-  else  WITH_PAM="--with-pam=no"
-  fi
+  # Removed according to Bug #385
+  # if    spell_installed  Linux-PAM
+  # then  WITH_PAM="--with-pam=yes"
+  # else  WITH_PAM="--with-pam=no"
+  # fi
+  WITH_PAM="--with-pam=no"
 
   EDITOR=`which $EDITOR  2>/dev/null`  ||
   EDITOR=`which nano`

@@ -1,8 +1,11 @@
 (
 
-  ./configure  --prefix=/usr        \
-               --with-root-prefix=  \
-               --enable-elf-shlibs  &&
+  patch -p0  <  $SCRIPT_DIRECTORY/Makefile.patch  &&
+
+  export  OPTIMIZER=-O1             &&
+  export  DEBUG=-DNDEBUG            &&
+  rm      configure                 &&
+  make    configure                 &&
   make                              &&
   prepare_install                   &&
   make    install                   &&

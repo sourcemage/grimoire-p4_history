@@ -1,9 +1,6 @@
            SPELL=ltmodem
          VERSION=6.00c2
           SOURCE=$SPELL-$VERSION.tar.gz
-
-          MD5[0]=3fc72b13c3af49e88b1d28a25aaef22b
-
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.physcip.uni-stuttgart.de/heby/$SPELL/$SOURCE
    SOURCE_URL[1]=http://www.sfu.ca/~cth/$SPELL/$SOURCE
@@ -11,6 +8,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20020512
          UPDATED=20020512
            SHORT="A driver for lucent chipset software modems."
+      LICENSE[0]=GPL
+      LICENCE[1]=UNKNOWN
 cat << EOF
 LTModem is a driver for software modems based on the Lucent Apollo (ISA) and Mars (PCI) chipsets. Lucent AMR modems are not supported by this driver. The core communications code of these kits is the property of Agere Systems, Inc. (formerly known as Microelectronics Group of Lucent Technologies). The driver was developed and is maintained by Soumyendu Sarkar at Agere Systems, the open source parts were modified by Mark Spieth, Marvin Stodolsky and Christoph Hebeisen to implement some additional features. 
 EOF

@@ -1,0 +1,26 @@
+           SPELL=R
+         VERSION=1.5.1
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://cran.r-project.org/src/base/$SOURCE
+      SOURCE_MD5=5be01408b5354e35f4c02aa124c9ed77
+      SOURCE_LIC=GPL
+          MD5[0]=$SOURCE_MD5
+      LICENSE[0]=$SOURCE_LIC
+      MAINTAINER=sergeyli@pisem.net
+        WEB_SITE=http://www.r-project.org/
+         ENTERED=20020803
+         UPDATED=20020803
+           SHORT='R is "GNU S", a freely available language and environment for statistical computing and graphics'
+cat << EOF
+R is "GNU S" - A language and environment for statistical computing and
+graphics. R is similar to the award-winning S system, which was developed at
+Bell Laboratories by John Chambers et al. It provides a wide variety of
+statistical and graphical techniques (linear and nonlinear modelling,
+statistical tests, time series analysis, classification, clustering, ...).
+
+R is designed as a true computer language with control-flow constructions for
+iteration and alternation, and it allows users to add additional functionality
+by defining new functions. For computationally intensive tasks, C, C++ and
+Fortran code can be linked and called at run time.
+EOF

@@ -1,0 +1,15 @@
+           SPELL=dictd
+         VERSION=1.7.1
+          SOURCE=${SPELL}-$VERSION.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.dict.org/pub/dict/$SOURCE
+          MD5[0]=9f77fcd0f06ab5319a65b72479278b59
+        WEB_SITE=http://www.dict.org
+         ENTERED=20020807
+         UPDATED=20020807
+      LICENSE[0]=GPL
+      MAINTAINER=robin@kallisti.2y.net
+           SHORT="Client/server for the Dictionary Server Protocol"
+cat << EOF
+The Dictionary Server Protocol (DICT) is a TCP transaction based query/response protocol that allows a client to access dictionary definitions from a set of natural language dictionary databases.
+EOF

@@ -1,2 +1,3 @@
-/etc/init.d/apmd.sh  stop
-
+if [ -x /etc/init.d/apmd.sh ];  then
+  /etc/init.d/apmd.sh  stop
+fi

@@ -1,3 +1,15 @@
+2002-08-07  16:48 PST  Eric Sandall <sandalle@hellhound.homeip.net>
+
+  * Added option to choose between xinetd and/or init.d
+  * Cleaned up POST_INSTALL and PRE_REMOVE to include restarting xinetd and only restarting ntpd.sh if it exists
+  * Added LICENSE and MD5
+
+2002-08-07  11:50 PST  Eric Sandall <sandalle@hellhound.homeip.net>
+
+  * Added init script from Sergey
+  * Moved all options to ./configure. Added init-script. (Sergey)
+  * Removed USEGCC2
+
 2002-05-28  Eric Schabell <eric@schabell.com>
 
 		Removed one source link that was broken.

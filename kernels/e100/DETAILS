@@ -1,7 +1,6 @@
            SPELL=e100
-         VERSION=1.8.37
+         VERSION=2.1.6
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]=7596f3b9393b9c449baa2f26229db3f8
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://aiedownload.intel.com/df-support/2896/eng/$SOURCE
         WEB_SITE=http://www.intel.com/support/network/adapter/ans/linux/linansoverview.htm
@@ -9,6 +8,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20020326
       MAINTAINER="paul@moway.co.uk"
            SHORT="Intel's EEPRO/100 drivers for linux"
+      LICENSE[0]=FILE
 cat << EOF
 Linux* base driver 1.8.37 for the Intel® PRO/100 family of network adapters (except Intelligent Server Adapter, Mobile Adapters**, and PRO/100B**). Known to build properly on 2.2.x kernels through 2.2.20 and on 2.4.x kernels
 through 2.4.7.

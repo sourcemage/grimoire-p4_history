@@ -1,0 +1,24 @@
+--- Makefile.old	2002-08-06 10:48:37.000000000 -0700
++++ Makefile	2002-08-06 11:21:43.000000000 -0700
+@@ -63,8 +63,9 @@
+ $(CONFIGURE):
+ 	autoconf
+ 	./configure \
+-		--prefix=/ \
+-		--exec-prefix=/ \
++		--build=$$BUILD \
++		--prefix=/usr \
++		--exec-prefix=/usr \
+ 		--sbindir=/sbin \
+ 		--bindir=/usr/sbin \
+ 		--libdir=/lib \
+@@ -72,6 +73,9 @@
+ 		--includedir=/usr/include \
+ 		--mandir=/usr/share/man \
+ 		--datadir=/usr/share \
++		--sysconfdir=/etc \
++		--localstatedir=/var \
++		$$OPTS \
+ 		$$LOCAL_CONFIGURE_OPTIONS
+ 	touch .census
+ 

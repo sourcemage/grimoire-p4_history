@@ -1,0 +1,5 @@
+if  [  -x  /etc/init.d/ntpd.sh  ];  then
+  /etc/init.d/ntpd.sh  stop;
+else
+  killall  -HUP  xinetd
+fi

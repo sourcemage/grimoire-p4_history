@@ -1,0 +1,16 @@
+if  !  grep  -q  "LRZSZ_STRIP_L="  $SPELL_CONFIG;  then
+
+  if    query  "Strip leading 'l', and install as rz/sz?" n
+  then  echo   "LRZSZ_STRIP_L=y"  >>  $SPELL_CONFIG
+	if  !  grep  -q  "LRZSZ_LINK_L="  $SPELL_CONFIG;  then
+
+  	  if    query  "Create links for lrz/lsz?" y
+  	  then  echo   "LRZSZ_LINK_L=y"  >>  $SPELL_CONFIG
+  	  else  echo   "LRZSZ_LINK_L=n"  >>  $SPELL_CONFIG
+  	  fi
+
+	fi
+  else  echo   "LRZSZ_STRIP_L=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

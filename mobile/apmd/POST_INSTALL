@@ -1,1 +1,3 @@
-/etc/init.d/apmd.sh  start
+if  [ -x /etc/init.d/apmd.sh ];  then
+  /etc/init.d/apmd.sh  start
+fi
