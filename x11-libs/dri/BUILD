@@ -1,9 +1,8 @@
 (
   cd $SOURCE_DIRECTORY/xc-Trunk/xc                   &&
   make World                  &&
-  cd $SOURCE_DIRECTORY/xc-Trunk/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel &&
-  make -f Makefile.linux &&
-#  su root &&
+  cd $SOURCE_DIRECTORY/drm-Trunk/drm/linux &&
+  make &&
   cd $SOURCE_DIRECTORY/xc-Trunk/xc &&
   prepare_install                  &&
   make    install                  &&
