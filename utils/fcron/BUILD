@@ -1,33 +1,22 @@
-(
+create_account  fcron
 
-  create_account  fcron
+# Removed according to Bug #385
+# if    spell_installed  Linux-PAM
+# then  WITH_PAM="--with-pam=yes"
+# else  WITH_PAM="--with-pam=no"
+# fi
+WITH_PAM="--with-pam=no"
 
-  # Removed according to Bug #385
-  # if    spell_installed  Linux-PAM
-  # then  WITH_PAM="--with-pam=yes"
-  # else  WITH_PAM="--with-pam=no"
-  # fi
-  WITH_PAM="--with-pam=no"
+EDITOR=`which $EDITOR  2>/dev/null`  ||
+EDITOR=`which nano`
 
-  EDITOR=`which $EDITOR  2>/dev/null`  ||
-  EDITOR=`which nano`
+sedit  "s/-O2/$CFLAGS/"  configure
 
-  sedit  "s/-O2/$CFLAGS/"  configure
-
-  ./configure  --prefix=/usr          \
-               --with-answer-all=no   \
-               $WITH_PAM              \
-               --with-editor=$EDITOR  \
-               --bindir=/bin          \
-               --sbindir=/sbin        \
-               $OPTS                  &&
-  make                                &&
-  prepare_install                     &&
-  make    install
-
-)  > $C_FIFO 2>&1  &&  (
-
-  [ -e /etc/fcron.allow ]  ||  cp  files/fcron.allow  /etc
-  [ -e /etc/fcron.deny  ]  ||  cp  files/fcron.deny   /etc
-
-)
+./configure  --prefix=/usr          \
+             --with-answer-all=no   \
+             $WITH_PAM              \
+             --with-editor=$EDITOR  \
+             --bindir=/bin          \
+             --sbindir=/sbin        \
+             $OPTS                  &&
+make
