@@ -1,5 +1,5 @@
 rm -f  newt.spec                  &&
-unpack  $SOURCE                   &&
+unpack  $SOURCE  ${MD5[0]}        &&
 mk_source_dir  $SOURCE_DIRECTORY  &&
 tar xzf  $SPELL-$VERSION.tar.gz   &&
 rm  newt.spec                     &&

@@ -12,9 +12,8 @@
 
   cd  /                              &&
   rm_source_dir  $SOURCE_DIRECTORY   &&
-  rm_source_dir  $SOURCE1_DIRECTORY   &&
-  rm_source_dir  $SOURCE2_DIRECTORY  
+  rm_source_dir  $SOURCE2_DIRECTORY   &&
+  rm_source_dir  $SOURCE3_DIRECTORY  
  
-
 ) > $C_FIFO 2>&1
 
