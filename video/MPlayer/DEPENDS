@@ -1,6 +1,7 @@
 # input devices
 optional_depends  "cdparanoia"  ""  ""  "to play audio cds"             &&
 optional_depends  "libdvdnav"  ""  ""  "for additional dvd navigation"  &&
+optional_depends  "live"  "--enable-live"  ""  "for live.com Streaming Media (sdp/rtsp) support"  &&
 
 # input codecs
 optional_depends  "zlib"  ""  ""  "to play movies using losless compression algorithms" &&
@@ -11,6 +12,7 @@ optional_depends  "mad"  ""  ""  "to play mp3 audio using libmad" &&
 optional_depends  "MPlayer-codecs"  ""  ""  "for additional audio/video codecs" &&
 optional_depends  "xvid" "" "" "for encoding with the xvid codec (distribution in USA and Japan is forbidden)" &&
 optional_depends  "xmms" "--enable-xmms" "" "for xmms input plugin support" &&
+optional_depends  "faad2"  ""  ""  "for AAC audio support"  &&
 
 # output devices
 optional_depends  "svgalib"  ""  ""  "for svgalib video output" &&
