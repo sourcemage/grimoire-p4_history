@@ -1,14 +1,13 @@
            SPELL=mod_perl
 if [ "$MOD_PERL" == '2' ]; then
-         VERSION=1.99_09
-          MD5[0]='d317de72ec66dfa1a563ed5131eb4bd4'
+         VERSION=1.28
 else
          VERSION=1.28
-          MD5[0]='e92e987c420f3acd7104acbe1c2a2e00'
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://perl.apache.org/dist/$SOURCE
+          MD5[0]="e92e987c420f3acd7104acbe1c2a2e00"
          LICENSE=APACHE
         WEB_SITE=http://perl.apache.org/
          ENTERED=20010922
