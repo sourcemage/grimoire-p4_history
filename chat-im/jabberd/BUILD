@@ -2,7 +2,7 @@
 
 # create_account jabberd &&
 
-  for f in $(ls -1 etc/*); do
+  for f in $(find . -name "*"); do
     sedit 's|/jabberd/log|/log/jabberd|' $f
   done &&
 
@@ -24,6 +24,7 @@
     --enable-storage="$STORAGE" \
     --enable-authreg="$AUTHREG" \
     --enable-debug \
+    --with-libiconv-prefix=/usr \
     $OPTS &&
   make &&
   prepare_install &&
