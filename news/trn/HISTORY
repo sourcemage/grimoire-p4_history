@@ -1,3 +1,12 @@
+2004-03-08 Robert Helgesson <rycee@home.se>
+	* DETAILS: Added DOCS variable.
+	* BUILD: Added sedit to fix bad handling of PATH in Configure. Fixes
+		bug #5853.
+	* BUILD: Added quotes around $ORG.
+	* BUILD: Use $CFLAGS and $LDFLAGS.
+	* CONFIGURE: Minor cleanup. Fixed a quoting bug.
+	* HISTORY: Minor reformatting.
+
 2003-11-19 hgg <hgreig@bigpond.net.au>
 	* BUILD,CONFIGURE: add organization PM bug 4077
 	* HISTORY: format
@@ -23,8 +32,10 @@
       	Added source url of last ressort (sourcemage mirror).
 
 2002-07-27 M.L. <m.l@compaqnet.fr>
-	* Fixed bug #515 (thanks to bluebird@optushome.com.au (Joel Mayes)).
-	mv POST_BUILD POST_INSTALL, added PRE_REMOVE.
+	* POST_BUILD, POST_INSTALL: Fixed bug #515 (thanks to
+		bluebird@optushome.com.au (Joel Mayes)). mv POST_BUILD
+		POST_INSTALL
+	* PRE_REMOVE: added
 
 2002-06-11 M.L. <m.l@compaqnet.fr>
         * DETAILS: Added MD5.
@@ -34,7 +45,8 @@
 	!!! TO BE TUNED !!!	
 
 2002-06-03 M.L. <m.l@compaqnet.fr>
-	* POST_BUILD: Added POST_BUILD file to create /usr/lib/news/active if needed.
+	* POST_BUILD: Added POST_BUILD file to create /usr/lib/news/active if
+		needed.
 	* USEGCC2: Gcc3 compile and trial run: ok. Removed USEGCC2.
 
 2002-03-15 M.L.

@@ -1,9 +1,9 @@
 (
 
-    patch -i   $SCRIPT_DIRECTORY/nn.patch       &&
+    patch  -p1  <  $SCRIPT_DIRECTORY/nn.patch   &&
     cp  config.h-dist  config.h                 &&
 
-    make all                                    &&
+    make  CFLAGS="-Iconf $CFLAGS"  all          &&
 
     prepare_install                             &&
 

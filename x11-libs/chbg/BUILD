@@ -1,14 +1,2 @@
-(
-
-  ./configure  --build=$BUILD        \
-               --prefix=/usr/share   \
-               --bindir=/usr/bin     \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               $OPTS                 &&
-
-  make                               &&
-  prepare_install                    &&
-  make    install
-
-)  >  $C_FIFO  2>&1
+sedit  's/^LIBS =/& -lpng/'  src/Makefile.in  &&
+default_build

@@ -1,8 +1,4 @@
-(
+[  "$HARBOUR" = y  ]  &&  OPTS="$OPTS --enable-harbour"
+[  "$XINERAMA" = y  ]  &&  OPTS="$OPTS --enable-xinerama"
 
-  ./configure     --prefix=/usr \
-                  $OPTS         &&
-  make                          &&
-  make install
-
-) > $C_FIFO 2>&1
+default_build

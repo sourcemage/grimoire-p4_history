@@ -1,1 +1,4 @@
-depends  X11-LIBS 
+depends  X11-LIBS  &&
+
+optional_depends  xosd  "--with-xosd"  "--without-xosd"  \
+        "Allows xosd to display your commands on screen."
