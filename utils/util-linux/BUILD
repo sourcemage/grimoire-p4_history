@@ -10,17 +10,8 @@ sedit  "s:/usr:${INSTALL_ROOT}/usr:g"           MCONFIG
 sedit  "s: /bin: ${INSTALL_ROOT}/bin:"          MCONFIG
 sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG
 
-(
-
   patch -p1 < $SCRIPT_DIRECTORY/linux-headers-2.6.0-fix.patch &&
- ./configure  --build=$BUILD                  \
-              --prefix=${INSTALL_ROOT}/usr    \
-	      $OPTS			      &&
-  make                                        &&
+  default_build                                 &&
   if    spell_installed      util-linux-crypto
   then  dispel  --nosustain  util-linux-crypto
-  fi                                          &&
-  prepare_install                             &&
-  make    install
-
-) > $C_FIFO 2>&1
+  fi
