@@ -1,0 +1,20 @@
+           SPELL=pxlib
+         VERSION=0.2.2
+          SOURCE=$SPELL\_$VERSION.orig.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://pxlib.sourceforge.net/
+SOURCE_URL[0]=$SOURCEFORGE_URL/pxlib/$SOURCE
+          LICENCE=GPL
+           MD5[0]=fd486aa87642127b97545c8e7c15132a
+          ENTERED=20031130
+          UPDATED=
+#            DOCS="ChangeLog README doc/*"
+SHORT="pxlib is a small C library to read and write Paradox DB files"
+cat << EOF
+pxlib is a simply and still small C library to read and write Paradox DB files. 
+It supports all versions starting from 3.0. It currently has a very limited set 
+of functions like to open a DB file, read its header and read every single 
+record. It can also extract blob data and write it to a file.
+EOF
+
+

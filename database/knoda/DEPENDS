@@ -1,0 +1,10 @@
+depends kdebase		&&
+depends hk_classes	&&	
+#optional_depends "SQL" "" "" "database"         &&
+#optional_depends "something" "yes-flags" "no-flags" "what for"
+#optional_depends "unixODBC" "" "" "database"		&&
+#optional_depends "postgresql" "" "" "database"		&&
+#optional_depends "mysql" "" "" "database"		&&
+optional_depends "Python" " --with-pythondir=/usr" "" "scripting support" 
+#optional_depends "Python" "" "--disable-python" "scripting support" 
+
