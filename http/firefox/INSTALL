@@ -23,4 +23,19 @@ ln -fns ${MOZILLA_HOME}firefox /usr/bin/                &&
 
 if ! grep -q mozilla /etc/ld.so.conf; then
   echo  '/usr/lib/mozilla'  >>  /etc/ld.so.conf
-fi
+fi  &&
+
+#
+# Create symlink to mozilla for hardwired applications
+# Only create if /usr/bin/mozilla does not exist or is
+# already a symlink
+#
+if  [  !  -f  /usr/bin/mozilla  -o  -h  /usr/bin/mozilla  ]
+then
+  ln  -sf  /usr/bin/firefox  /usr/bin/mozilla
+fi  &&
+
+#
+# Script to set MOZILLA_FIVE_HOME
+#
+cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d

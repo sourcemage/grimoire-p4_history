@@ -16,4 +16,9 @@ find $SOURCE_DIRECTORY/security/nss/lib -type f -name '*.h' -exec cp {} $INSTALL
 
 if ! grep -q 'mozilla' $INSTALL_ROOT/etc/ld.so.conf; then
   echo '/usr/lib/mozilla' >> $INSTALL_ROOT/etc/ld.so.conf
-fi
+fi  &&
+
+#
+# Script to set MOZILLA_FIVE_HOME
+#
+cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
