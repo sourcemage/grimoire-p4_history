@@ -17,6 +17,9 @@ function make_if_swig() {
 
   message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
   if ! [ -e /usr/libexec/mod_dav.so ] && ! httpd -l | grep -q 'mod_dav\.c'; then
+    message "${MESSAGE_COLOR}mod_dav.so not found!${DEFAULT_COLOR}" &&
+    message "${MESSAGE_COLOR}This build will fail. Please recompile Apache 2 with mod_dav.so${DEFAULT_COLOR}"
+    message "${MESSAGE_COLOR}support. (shared module support)${DEFAULT_COLOR}"
     false
   fi &&
 
