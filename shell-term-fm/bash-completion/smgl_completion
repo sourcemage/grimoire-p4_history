@@ -1,0 +1,232 @@
+#!/bin/bash
+
+# Sorcerer GNU/Linux config vars are exported to current environment
+[ -f /etc/sorcery/config ] &&
+eval `. /etc/sorcery/config; 
+      echo "export GRIMOIRE_LIST=$GRIMOIRE_LIST";
+      echo "export SPELL_STATUS=$SPELL_STATUS"`
+
+# Sorcerer GNU/Linux utility functions used by actual completion functions
+# by Lunar_fr (lunar@l-a-p.org)
+#
+_spell_list()
+{
+    for GRIMOIRE in `. $GRIMOIRE_LIST; echo ${GRIMOIRE_DIR[*]}`; do
+	COMPREPLY=( ${COMPREPLY[@]} $( find $GRIMOIRE -type f -follow -mindepth 3 -maxdepth 3 -regex "$GRIMOIRE/.*/$cur[^/]*/DETAILS" -printf "%h\n" | \
+	    sed -ne 's/^.*\/\([^\/]*\)/\1/p' ) )
+    done
+}
+
+_dashify()
+{
+    local i
+    for (( i=0; i < ${#COMPREPLY[@]}; i++ )); do
+	if [ ${#COMPREPLY[i]} -le 2 ]; then
+	    COMPREPLY[i]=-${COMPREPLY[i]}
+	else
+	    COMPREPLY[i]=--${COMPREPLY[i]}
+	fi
+    done
+}
+
+_add_installed_spell_list()
+{
+    COMPREPLY=( ${COMPREPLY[@]}
+	$( sed -ne 's/^\('$cur'.*\):[0-9]*:installed:[0-9a-z.]*$/\1/p' $SPELL_STATUS ) )
+}
+
+_add_section_list()
+{
+    for GRIMOIRE in `. $GRIMOIRE_LIST; echo ${GRIMOIRE_DIR[*]}`; do
+	COMPREPLY=( ${COMPREPLY[@]} $( ls $GRIMOIRE | \
+	    sed -ne 's/^\('$cur'.*\)/\1/p' ) )
+    done
+}
+
+# Sorcerer GNU/Linux gaze(1) completion
+# by Lunar_fr (lunar@l-a-p.org)
+#
+have gaze &&
+_gaze()
+{
+    local cur prev
+    
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+    
+    if [ $COMP_CWORD = 1 ]; then
+	COMPREPLY=( $( compgen -W 'alien from search service provides what \
+                where website install installed compile sources history sum \
+                md5sum export import section maintainer grimoire html newer \
+                older prune voyeur pam orphans depends spider \
+		DETAILS CONFIGURE DEPENDS CONFLICTS PRE_BUILD BUILD POST_BUILD \
+		POST_INSTALL POST_REMOVE' $cur ))
+    elif [ $COMP_CWORD = 2 ]; then
+	case "$prev" in
+	    @(what|where|website|sources|maintainer|depends|history))
+                _spell_list
+		return 0
+		;;
+	    @(compile|install|sum|md5sum))
+	        _spell_list
+		return 0
+		;;
+	    installed)
+	        _add_installed_spell_list
+		return 0
+		;;
+	    section)
+		_add_section_list
+		return 0
+		;;
+	    voyeur)
+		_spell_list
+		return 0
+		;;
+	    spider)
+		_spell_list
+		return 0
+		;;
+	    @(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE))
+		_spell_list
+		return 0
+		;;
+	    import)
+	        COMPREPLY=( $( compgen -d $cur ) )
+		return 0
+	        ;;
+	    *)
+		return 0
+		;;
+	esac
+    else
+        case "${COMP_WORDS[1]}" in
+	    spider)
+		_spell_list
+		return 0
+		;;
+	    *)
+		return 0
+		;;
+	esac
+    fi
+	    
+    return 0
+	
+}
+[ "$have" ] && complete -F _gaze -o default gaze
+
+# Sorcerer GNU/Linux cast(8) completion
+# by Lunar_fr (lunar@l-a-p.org)
+#
+have cast &&
+_cast()
+{        
+    local cur prev
+    
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+	case "$cur" in
+	    --*)
+		COMPREPLY=( $( compgen -W 'quiet dot fix nofix download deps compile reconfigure from url pam queue' ${cur#--} ) )
+		_dashify
+		return 0
+		;;
+	    -*)
+		COMPREPLY=( $( compgen -W 'q t f n d s c r' ${cur#-} ) )
+		_dashify
+		return 0
+		;;
+	esac
+    fi
+    case "$prev" in
+	--from)
+	    COMPREPLY=( $( compgen -d $cur ) )
+	    return 0
+	    ;;
+	*)
+	    _spell_list
+	    return 0
+	    ;;
+    esac
+    
+    return 0
+}
+[ "$have" ] && complete -F _cast -o default cast
+
+# Sorcerer GNU/Linux summon(8) completion
+# by Mads Laursen (dossen+sgl@daimi.au.dk)
+#
+have summon &&
+_summon()
+{
+    local cur prev
+    
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+    
+    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+	case "$cur" in
+	    --*)
+		COMPREPLY=( $( compgen -W 'from url download queue all' ${cur#--} ) )
+		_dashify
+		return 0
+		;;
+	    -*)
+		COMPREPLY=( $( compgen -W 'd' ${cur#-} ) )
+		_dashify
+		return 0
+		;;
+	esac
+    fi
+    case "$prev" in
+	--from)
+	    COMPREPLY=( $( compgen -d $cur ) )
+	    return 0
+	    ;;
+	*)
+	    _spell_list
+	    return 0
+	    ;;
+    esac
+
+    return 0
+}
+[ "$have" ] && complete -F _summon -o default summon
+
+# Sorcerer GNU/Linux dispel(8) completion
+# by Mads Laursen (dossen+sgl@daimi.au.dk)
+#
+have dispel &&
+_dispel()
+{
+    local cur prev
+    
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+	case "$cur" in
+	    --*)
+		COMPREPLY=( $( compgen -W 'exile downgrade' ${cur#--} ) )
+		_dashify
+		return 0
+		;;
+	    -*)
+		COMPREPLY=( $( compgen -W 'e d' ${cur#-} ) )
+		_dashify
+		return 0
+		;;
+	esac
+    fi
+    _add_installed_spell_list
+    
+    return 0
+}
+[ "$have" ] && complete -F _dispel -o default dispel

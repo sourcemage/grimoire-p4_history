@@ -1,5 +1,5 @@
            SPELL=bash-completion
-         VERSION=20020819
+         VERSION=20021007
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/bash_completion
    SOURCE_URL[0]=http://www.caliban.org/files/bash/$SOURCE
@@ -7,7 +7,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/bash_completion
          ENTERED=20020215
          UPDATED=20020822
       MAINTAINER="dossen+sgl@daimi.au.dk"
-	  MD5[0]=f74ee4bbc558dec447fb50feb5e24dda
+           MD5[0]="651b2b9f7845f255285f22eba8ef936e"
       LICENSE[0]=GPL
            SHORT="bash programmable completion."
 cat << EOF
@@ -30,3 +30,4 @@ NOTE: The code to start completion is installed in /etc/profile.
       The SGL specific completions are adapted from a patch by 
       Lunar_fr (lunar@l-a-p.org).
 EOF
+
