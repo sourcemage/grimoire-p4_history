@@ -194,42 +194,10 @@ transfer_data ()
 # mostly for new and clean installs
 install_networking ()
 {
-    if [ -e $initdir/networking.sh ]; then
-	nicfile=`grep ^DEVICE= $initdir/networking.sh | cut -d= -f2`
-	if [ -n "$nicfile" ]; then
-	    dialog --backtitle "$smgl_logo" --yesno\
-		"Do you want to attempt to use your existing networking data to\
- create the necessary network files for device $nicfile?" 0 0 
-	    retval=#?
-	    if [ "$retval" = "0" ]; then 
-		if [ ! -f $netdir/$nicfile.dev ]; then
-		    transfer_data
-		else
-		    dialog --backtitle "$smgl_logo" --yesno\
-			"You already have a $nicfile file.
- This is what it currently contains: \
- `sed 's/^.*$/&\\\n/' $netdir/$nicfile.dev` /n Do you want to keep this one?" 0 0 
-		    retval=#?
-		    if [ "$retval" = "1" ]; then
-# add the date to the network device file so networking.sh
-# doesn't try and load it but we don't delete anything.
-			mv $netdir/$nicfile.dev /$netdir/$nicfile.$savetime
-			transfer_data
-		    else
-			dialog --backtitle "$smgl_logo" --msgbox\
-			    "You will need to ensure that your $netdir/$nicfile file is in accordance\
- with the SGL networking.sh script or you will have difficulties starting and stopping your networking."
-		    fi
-		fi
-	    else
-		dialog --backtitle "$smgl_logo" --msgbox\
-		    "We need to get some information on your network to setup a ethernet card." 0 0
-		setup_nicfile
-	    fi
-	else
-	    dialog --backtitle "$smgl_logo" --msgbox\
-		"We need to get some information on your network to setup a ethernet card." 0 0
+    if [ -d $initdir ]; then
+	  rm -rf $initdir
 	    setup_nicfile
-	fi
+	else 
+	    setup_nicfile
     fi
 }
