@@ -13,33 +13,37 @@ MODULES=`grep \^MODULE_ $CONFIG | cut -d= -f2`
 
 case "$1" in
     start)
-	for i in $MODULES; do
-              echo "Starting hardware sensor $i ..."
-	      modprobe $i &>/dev/null
-              evaluate_retval
-    done
-             echo "Starting sensors ..."
-             loadproc /usr/bin/sensors -s
-    ;;
+		for i in $MODULES; do
+        	echo "Starting hardware sensor $i ..."
+			modprobe $i &>/dev/null
+			evaluate_retval
+    	done
+			echo "Starting sensors ..."
+			loadproc /usr/bin/sensors -s
+		;;
+
     stop)
-    for i in $MODULES; do
-	echo "Stopping hardware sensor $i ..."
-	modprobe -r $i &>/dev/null
-	evaluate_retval
-    done
-    ;;
+    	for i in $MODULES; do
+			echo "Stopping hardware sensor $i ..."
+			modprobe -r $i &>/dev/null
+			evaluate_retval
+    	done
+    	;;
+
     restart)
-        $0 stop
+		$0 stop
         sleep 1
         $0 start
-    ;;
+    	;;
+
     status)
-        /usr/bin/sensors
-	;;
+        statusproc sensors
+		;;
 
     *)
 		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1    
+		exit 1
+		;;    
   
 esac
 

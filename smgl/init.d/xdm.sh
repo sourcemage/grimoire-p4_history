@@ -6,20 +6,26 @@
 #
 #  Version:  @(#)xdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
 #
+source /etc/init.d/functions
 
 case  $1  in
-          start)  echo "$1ing xdm"
-                  xdm
-                  ;;
+          start)  
+		  		echo  "$1ing xdm"
+                loadproc  xdm
+                ;;
 
-           stop)  echo "$1ping xdm"
-                  pkill  "^xdm$"
-                  ;;
+           stop)
+		   		echo  "$1ping xdm"
+                killproc  xdm
+                ;;
 
-        restart)  stop   $0  &&
-                  start  $0
-                  ;;
+        restart)
+				echo  "Restarting xdm"
+				reloadproc xdm
+				;;
 
-              *)  echo "Usage: $0 {start|stop|restart}"
-                  ;;
+              *)
+			  	echo "Usage: $0 {start|stop|restart}"
+                exit 1
+				;;
 esac

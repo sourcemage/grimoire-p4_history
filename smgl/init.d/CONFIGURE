@@ -1,7 +1,7 @@
 # CONFIGURE for init.d
 # builds install que for init.d BUILD
 # start with setting up environment and directory structure
-sgl_logo="SOURCEMAGE GNU LINUX INIT.D SETUP"
+smgl_logo="SOURCEMAGE GNU LINUX INIT.D SETUP"
 initdir=/etc/init.d
 # This builds the scriptque.temp for BUILD
 scriptlist=$(ls $SCRIPT_DIRECTORY/scriptdir/ )
@@ -13,10 +13,10 @@ build_scriptque()
 	rm $SCRIPT_DIRECTORY/checklist.temp
     fi
     for script in $scriptlist; do
-	sglver=$(grep "# SGL-script-version=" $SCRIPT_DIRECTORY/scriptdir/$script | cut -d= -f2)
-	installedver=$(grep "# SGL-script-version=" $initdir/$script | cut -d= -f2)
+	sglver=$(grep "# SMGL-script-version=" $SCRIPT_DIRECTORY/scriptdir/$script | cut -d= -f2)
+	installedver=$(grep "# SMGL-script-version=" $initdir/$script | cut -d= -f2)
 	if [ $installedver = custom ]; then
-	    dialog --backtitle "$sgl_logo" --msgbox "You have designated $script as custom, please ensure we haven't done anything to break it for you if you use the SMGL functions script and you install an updated one. You may replace your custom $script if you wish to do so and it will be backed up during the installation of the new $script file."
+	    dialog --backtitle "$smgl_logo" --msgbox "You have designated $script as custom, please ensure we haven't done anything to break it for you if you use the SMGL functions script and you install an updated one. You may replace your custom $script if you wish to do so and it will be backed up during the installation of the new $script file."
 	    item="custom"
 	    status="off"
 	    echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
@@ -37,7 +37,7 @@ build_scriptque()
 	    echo "$script $item $status" >>$SCRIPT_DIRECTORY/checklist.temp
 	fi
     done
-    dialog --backtitle "$sgl_logo" --nocancel --help-button --checklist "The following script files are available for installation or updating. If the script is selected, there is an update available or it is not currently installed. If you have designated a script as custom it is NOT selected; select it only if you wish to replace your custom script with the SMGL one." 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
+    dialog --backtitle "$smgl_logo" --nocancel --help-button --checklist "The following script files are available for installation or updating. If the script is selected, there is an update available or it is not currently installed. If you have designated a script as custom it is NOT selected; select it only if you wish to replace your custom script with the SMGL one." 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
 }
 
 display_init_help()

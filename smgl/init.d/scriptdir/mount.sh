@@ -1,9 +1,9 @@
 #!/bin/sh
 # /etc/init.d/mount.sh
-# SGL-script-version=20021024
+# SMGL-script-version=20030224
 # this sets the run levels and priority for links
-# SGL-START:S:S10
-# SGL-STOP:0 6:K90
+# SMGL-START:S:S10
+# SMGL-STOP:0 6:K90
 
 source /etc/init.d/functions
 

@@ -6,20 +6,30 @@
 #
 #  Version:  @(#)gdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
 #
+source /etc/init.d/functions
 
 case  $1  in
-          start)  echo "$1ing gdm"
-                  gdm
-                  ;;
+          start)
+		  		echo "$1ing gdm"
+				loadproc gdm
+				;;
+				
+           stop)
+		   		echo "$1ping gdm"
+				killproc gdm
+				;;
 
-           stop)  echo "$1ping gdm"
-                  pkill  "^gdm$"
-                  ;;
+        restart)
+				stop   $0  &&
+                start  $0
+                ;;
 
-        restart)  stop   $0  &&
-                  start  $0
-                  ;;
+		status)
+				statusproc gdm
+				;;
 
-              *)  echo "Usage: $0 {start|stop|restart}"
-                  ;;
+              *)
+			  	echo "Usage: $0 {start|stop|restart}"
+				exit 1
+                ;;
 esac
