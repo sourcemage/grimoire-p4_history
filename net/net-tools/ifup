@@ -51,6 +51,10 @@ if [ "$MODULE" ] && ! /sbin/lsmod | exists_in_text "$MODULE" ; then
 fi
 
 if [ "$MODE" = dynamic ]; then
+  . /etc/sysconfig/dhcpcd
+  ARG=""
+  [ "$USE_SYSLOG" = "yes" ] && ARG="-d"
+
   echo "Starting dhcpcd on $DEV ..."
   if [ -e $DHCPCD_PATH$DEV.pid ]; then
     dhcpcPid=`cat $DHCPCD_PATH$DEV.pid`
@@ -58,7 +62,7 @@ if [ "$MODE" = dynamic ]; then
     renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEV.pid &&
     sleep 1
   fi &&
-  dhcpcd -t 30 -d $DEV
+  dhcpcd -t $TIMEOUT $ARG $DEV
 elif [ "$MODE" = static ]; then
   echo "Setting up static networking on $DEV..."
   ifconfig  $DEV $IP broadcast $BROADCAST netmask $NETMASK &&
