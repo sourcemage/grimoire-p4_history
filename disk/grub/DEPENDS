@@ -1,2 +1,4 @@
-optional_depends ncurses '--with-curses' '--without-curses' 'use curses'
+optional_depends  ncurses  '--with-curses'  '--without-curses'  'use curses'  &&
+optional_depends  texinfo  ""              ""                   "for documentation"
+
 #optional_depends binutils '--with-binutils=/usr/bin' '' 'search the directory DIR to find binutils'
