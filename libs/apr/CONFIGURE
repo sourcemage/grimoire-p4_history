@@ -9,7 +9,8 @@ if ! grep -q APR_BRANCH $SPELL_CONFIG; then
 fi
 if ! grep -q APR_CHECKOUT $SPELL_CONFIG; then
   if query 'Would you like to use the latest source code?' n
-    then echo 'APR_CHECKOUT=y' >> $SPELL_CONFIG
+    then echo 'APR_CHECKOUT=y' >> $SPELL_CONFIG  &&
+         depends  Python
     else echo 'APR_CHECKOUT=n' >> $SPELL_CONFIG
   fi
 fi
