@@ -1,4 +1,9 @@
+
+
 ./configure  &&
+
+sedit "s/include $(DEFINES)/include $(DEFINES) -lpthread /" Makefile &&
+
 make         &&
 
 if [ "$BUILD_DOCS" = y ] ; then
