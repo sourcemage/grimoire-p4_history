@@ -4,10 +4,12 @@
   xmkmf            &&
   make  World      &&
   cd    Xvnc       &&
-  make  World      &&
+#  make  World      &&
+  ./configure      &&
+  make             &&
   prepare_install  &&
   cd    ..         &&
-  ./vncinstall   /usr/bin              &&
+  ./vncinstall   /usr/bin /usr/man     &&
   mkdir  -p      /usr/bin/vnc.classes  &&
   cp  classes/*  /usr/bin/vnc.classes
 

@@ -1,63 +1,66 @@
+2002-06-04  M.L. <m.l@compaqnet.fr>
+
+        Gcc3 compile and trial run ok.
+
 2002-05-07  Foxy foxy@linuxfreemail.com
 
-		Patched BUILD file to install man page (8).
+	Patched BUILD file to install man page (8).
 
 2002-04-27  M.L. <m.l@compaqnet.fr>
 
-		Added mirrors.
+	Added mirrors.
 
 2002-04-19  M.L.
 
-		Version++ (4.04... 4.03 was not released)
-		Patched BUILD to copy config files convert tools to doc dir.
+	Version++ (4.04... 4.03 was not released)
+	Patched BUILD to copy config files convert tools to doc dir.
 		
 2002-04-15  M.L.
 	
-	    	Version++ (4.03)
+    	Version++ (4.03)
 
 2002-09-26  M.L.
 
-	    	Version++
-	    	Added a few mirrors.
+    	Version++
+    	Added a few mirrors.
 
 2002-09-15  M.L.	
 
-	    	mv Changelog HISTORY, patched PRE_REMOVE
+    	mv Changelog HISTORY, patched PRE_REMOVE
 
 2002-01-24  Kongar
 
-		exim 3.34, kongar
+	exim 3.34, kongar
 
-	    	- corrected a typo in POST_INSTALL which was a bug,
-	    	disabling fcrons exim line
+    	- corrected a typo in POST_INSTALL which was a bug,
+    	disabling fcrons exim line
 
-	    	- added EXIM_UID=`id -u mail` and EXIM_GID=`id -g mail` to the BUILD.  
-	   	Also hacked xinetd, exim is started as mail:mail now. The problem is
-	   	the directory and file permissions. Without those hacks, anyone
-	   	is capable of reading others mails.
+    	- added EXIM_UID=`id -u mail` and EXIM_GID=`id -g mail` to the BUILD.  
+   	Also hacked xinetd, exim is started as mail:mail now. The problem is
+   	the directory and file permissions. Without those hacks, anyone
+   	is capable of reading others mails.
 
-	   	- added an option to disable RFC1413 (identd) queries. This is 
-	   	a performance hack. Default timeout is 30 secs and noone is using
-	   	identd nowadays. Hacked CONFIGURE and BUILD.
+   	- added an option to disable RFC1413 (identd) queries. This is 
+   	a performance hack. Default timeout is 30 secs and noone is using
+   	identd nowadays. Hacked CONFIGURE and BUILD.
 
-	   	- remarked xinetd logging options in xinetd.d/exim file, those adds a real
-	   	amount of wait time (20 secs on 100Mb, per connection) if the remote host 
-	  	can not be reverse mapped.
+   	- remarked xinetd logging options in xinetd.d/exim file, those adds a real
+   	amount of wait time (20 secs on 100Mb, per connection) if the remote host 
+  	can not be reverse mapped.
 
-	   	- added mysql as an optional depend, hacked BUILD script to satisfy that.
-	   	Now, if mysql is installed, it is possible to lookup mysql databases
-
+   	- added mysql as an optional depend, hacked BUILD script to satisfy that.
+   	Now, if mysql is installed, it is possible to lookup mysql databases
 
 
 2002-01-18  ?
 
-	    	The xinetd.d conf file for exim has been
-	    	updated to prevent exim act as an open relay.
+    	The xinetd.d conf file for exim has been
+    	updated to prevent exim act as an open relay.
 
 2002-01-10  Kyle Sallee
 
-	    	Added PAM support and CFLAGS optimization to exim spell
+    	Added PAM support and CFLAGS optimization to exim spell
 
 2002-01-14  Kyle Sallee
 
-	    	Fixed the spell so that it updates root's crontab and fcrontab properly.
+    	Fixed the spell so that it updates root's crontab and fcrontab properly.

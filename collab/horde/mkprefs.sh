@@ -1,3 +1,4 @@
+# $Id: mkprefs.sh,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 #!/bin/sh
 HOST=`hostname`
 

@@ -1,3 +1,4 @@
+# $Id: mkaccount.sh,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 #!/bin/sh
 echo -n "# "
 SUFFIX=`gawk '/^suffix\W+/ { match($2, /"?([^"]*)"?/, a); print a[1]; nextfile; }' /etc/openldap/slapd.conf`

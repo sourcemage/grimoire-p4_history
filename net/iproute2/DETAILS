@@ -1,0 +1,18 @@
+           SPELL=iproute2
+         VERSION=2.4.7-now-ss010824
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/iproute2
+   SOURCE_URL[0]=ftp://ftp.inr.ac.ru/ip-routing/$SOURCE
+        WEB_SITE=http://lartc.org
+         ENTERED=20020528
+         UPDATED=20020528
+           SHORT="iproute is the userland tools for the kernel network traffic control code."
+cat << EOF
+iproute2 contains the programs ip, rtmon, and tc. These programs
+allow you to specify rules for policy routing and traffic shaping
+on Linux machines which are being used as routers. A common usage
+would be to prevent upstream bandwidth saturation on asymmetric
+links such as cable modems.
+The HOWTO on lartc.org provides a decent introduction to
+iproute2 and other components of a fully-functional Linux router.
+EOF

@@ -1,9 +1,11 @@
            SPELL=gnome-pilot-conduits
-         VERSION=0.8
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.9
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.eskil.org/gnome-pilot/download/tarballs/$SOURCE 
+   SOURCE_URL[0]=$GNOME_URL/unstable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/unstable/sources/$SPELL/$SOURCE
         WEB_SITE=http://www.eskil.org/gnome-pilot/
+      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020216
          UPDATED=20020216
            SHORT="gnome-pilot-conduits contains conduits for gnome-pilot"

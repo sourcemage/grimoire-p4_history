@@ -1,0 +1,18 @@
+           SPELL=libtrash
+         VERSION=1.0
+          SOURCE=$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.m-arriaga.net/software/$SPELL/$SOURCE
+        WEB_SITE=http://m-arriaga.net/software/libtrash/
+         ENTERED=20020525
+         UPDATED=20020525
+           SHORT="A linux trashcan"
+cat << EOF
+a shared library which, when preloaded, implements a trash can under GNU/Linux.
+This way, your mistakes (at least those of the "rm -rf dir /" class :-)) will
+no longer cause the loss of a week's work or your system's binaries.
+
+WARNING
+
+This program will crash mutt
+EOF

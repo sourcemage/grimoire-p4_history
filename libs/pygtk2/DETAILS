@@ -1,0 +1,16 @@
+           SPELL=pygtk2
+         VERSION=1.99.10
+          SOURCE=pygtk-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/pygtk-$VERSION
+   SOURCE_URL[0]=http://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/pygtk/$SOURCE
+        WEB_SITE=http://www.gnome.org/
+         ENTERED=20020523
+         UPDATED=20020523
+      MAINTAINER=rcook@wyrms.net
+           SHORT="pygtk is a set of perl bindings for GTK."
+cat << EOF
+PyGTK is a set of bindings for the GTK widget set.  It provides an
+object oriented interface that is slightly higher level than the C one.
+It automatically does all the type casting  and reference counting that
+you would have to do normally with the C API.
+EOF

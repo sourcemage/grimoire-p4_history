@@ -1,2 +1,14 @@
-depends mysql &&
-depends perl
+# $Id: DEPENDS,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# DBD-mysql in turn depends on perl, mysql and DBI
+depends DBD-mysql        &&
+
+# Template-Toolkit depends on AppConfig which is required
+depends Template-Toolkit &&
+
+depends Data-ShowTable   &&
+depends Date-Parse       &&
+
+optional_depends Chart            "" "" "for bug charting"                   &&
+optional_depends DB_File          "" "" "for bug charting"                   &&
+optional_depends MIME-Tools       "" "" "for contrib/bug_email.pl interface" &&
+optional_depends XML-Parser-Expat "" "" "for bug data interchange"

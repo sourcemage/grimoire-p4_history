@@ -1,11 +1,14 @@
            SPELL=iptraf
-         VERSION=2.6.1
+         VERSION=2.7.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.cebu.mozcom.com/pub/linux/net/$SOURCE
+   SOURCE_URL[1]=ftp://iptraf.seul.org/pub/iptraf/$SOURCE
+   SOURCE_URL[2]=ftp://the.wiretapped.net/pub/security/network-monitoring/iptraf/$SOURCE
         WEB_SITE=http://cebu.mozcom.com/riker/iptraf/
          ENTERED=20020202
-         UPDATED=20020506
+         UPDATED=20020528
+	 MAINTAINER=doubletwist@spack.nu
            SHORT="IPTraf is a console-based network statistics utility"
 cat << EOF
 IPTraf is a console-based network statistics utility for Linux.

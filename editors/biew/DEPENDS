@@ -1,8 +1,6 @@
 depends  slang  &&
 
-case  $USE_MOUSE  in
-
-   y|Y|j|J) depends  gpm  ;;
-         *) true          ;;
-
-esac
+optional_depends  "gpm"                \
+                  ""                   \
+                  ""                   \
+                  "for mouse support"

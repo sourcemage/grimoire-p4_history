@@ -1,0 +1,8 @@
+# $Id: CONFIGURE,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
+if ! grep -q "MAILMAN_BOOT=" $SPELL_CONFIG; then
+
+	MAILMAN_BOOT=n
+	query "Invoke $SPELL during boot?" "y" && MAILMAN_BOOT=y
+	echo "MAILMAN_BOOT=${MAILMAN_BOOT}" >> $SPELL_CONFIG
+
+fi

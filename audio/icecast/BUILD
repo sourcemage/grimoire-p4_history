@@ -1,4 +1,5 @@
 (
+  export CPPFLAGS="-I /usr/include/libxml2/libxml $CPPFLAGS"
   ./autogen.sh                      &&
   ./configure  --build=$BUILD        \
                --prefix=/usr         \

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 case "$1" in
-  start|reload)
+  start|reload|restart)
     echo  "$1ing squid"
     squid  -k  shutdown  >  /dev/null  2>&1
     squid  -z -F         >  /dev/null  2>&1

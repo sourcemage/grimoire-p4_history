@@ -1,6 +1,6 @@
 (
 
-  ./configure --prefix=/usr --with-httpddir=/usr/share/httpd --sysconfdir=/etc
+  ./configure --prefix=/usr --with-httpddir=/usr/share/httpd --sysconfdir=/etc &&
 
   make                          &&
 

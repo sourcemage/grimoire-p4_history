@@ -27,7 +27,8 @@ EOF
 
 update_lilo()  {
 
-  if  !  grep  -q  "	$VERSION$"  /etc/lilo.conf;  then
+#  if  !  grep  -q  "	$VERSION$"  /etc/lilo.conf;  then
+  if  !  grep  -q  "${VERSION}$"  /etc/lilo.conf;  then
 
     IFS_OLD=$IFS
     export  IFS="

@@ -1,12 +1,11 @@
            SPELL=kdevelop
-         VERSION=2.1
-          SOURCE=$SPELL-$VERSION'_for_KDE_3.0.tar.bz2'
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION'_for_KDE_3.0'
-   SOURCE_URL[0]=$KDE_URL/stable/3.0/src/$SOURCE
-        WEB_SITE=http://www.kde.org
+. $GRIMOIRE/$SECTION/KDE_DETAILS         
+	VERSION=$KDEVELOP_VERSION
+	 SOURCE=$SPELL-${KDEVELOP_VERSION}_for_KDE_3.0.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${KDEVELOP_VERSION}_for_KDE_3.0
+   SOURCE_URL[0]=$KDE_URL/stable/$KDE_VERSION/src/$SOURCE
          ENTERED=20010922
-         UPDATED=20020403
-           SHORT="kdevelop version 2.1"
+	   SHORT="kdevelop"
 cat << EOF
 This is version 2.1 of KDevelop for kde3.
 EOF

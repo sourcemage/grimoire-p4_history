@@ -1,0 +1,10 @@
+diff -r -U2 esdl-0.91.0415.ori/c_src/Makefile esdl-0.91.0415/c_src/Makefile
+--- esdl-0.91.0415.ori/c_src/Makefile	2002-04-15 16:14:27.000000000 +0200
++++ esdl-0.91.0415/c_src/Makefile	2002-06-06 16:25:34.000000000 +0200
+@@ -13,5 +13,5 @@
+ #USE_GL_INCLUDE_DIR  = -DFULL_PATH_TO_GL_INCLUDE_DIR
+ 
+-GL_LIBS		= -L$(OGLDIR)/lib -lGL -lGLU 
++GL_LIBS		= -L/usr/X11/lib -L$(OGLDIR)/lib -lGL -lGLU 
+ GL_INCS		= -I$(OGLDIR)/include/$(GL_INCLUDE_DIR)
+ 

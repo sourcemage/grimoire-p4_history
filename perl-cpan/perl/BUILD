@@ -1,6 +1,15 @@
+CONFIG="$DEPENDS_CONFIG/perl_config.sh"
+
 case  $CUSTOM  in
   y|Y|j|J)  sound  REPORT
-            ./Configure  -Dprefix=/usr  ;;
+            if [ -f $CONFIG ]; then
+              cp $CONFIG ./config.sh  &&
+              ./Configure -S          &&
+              make depend
+            else
+              ./Configure  -Dprefix=/usr  -Dusethreads
+            fi
+            cp config.sh $CONFIG  ;;
         *)  true  ;;
 esac
 

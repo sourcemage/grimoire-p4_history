@@ -1,3 +1,4 @@
+# $Id: mkconf.sh,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
 #!/bin/sh
 HOST=`hostname`
 ORG=${HOST#*.}
@@ -126,7 +127,7 @@ cat > /etc/openldap/top.ldif << __EOF__
 #
 # Replace $SUFFIX with suffix from slapd.conf
 # Use the following command to create th hierarchy:
-# 	ldapadd -D "$SUFFIX" -W -f /etc/openldap/top.ldif
+# 	ldapadd -D "cn=root,$SUFFIX" -W -f /etc/openldap/top.ldif
 #
 
 dn: $SUFFIX

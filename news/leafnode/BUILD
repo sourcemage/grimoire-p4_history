@@ -1,10 +1,20 @@
-./configure --prefix=/usr \
-            --sysconfdir=/etc/leafnode \
+(
+
+./configure --prefix=/usr                                       \
+            --localstatedir=/var                                \
+            --sysconfdir=/etc/leafnode                          \
+            --with-lockfile=/var/lock/fetchnews.lck             \
             $OPTS                                               &&
-make all                                                        &&
-make install                                                    &&
-cp $SCRIPT_DIRECTORY/leafnode.xinetd /etc/xinetd.d/leafnode	&&
-mk /etc/leafnode                                                &&
+
+make    all                                                     &&
+
+prepare_install                                                 &&
+make    install                                                 &&
+
+mkdir  -p  /etc/leafnode
+
 cp $SOURCE_DIRECTORY/config.example /etc/leafnode/config        &&
-chgrp news /etc/leafnode/config*                            	&&
-chmod g+w /etc/leafnode/config*
+chgrp news /etc/leafnode/config                                 &&
+chmod g+w /etc/leafnode/config
+
+) > $C_FIFO 2>&1

@@ -9,11 +9,13 @@
   fi
 
 
-  case  $USE_MOUSE  in
-     y|Y|j|J) UM="y"  ;;
-           *) UM="n"  ;;
-  esac
+  if spell_installed gpm ; then
+    UM="y"
+  else
+    UM="n"
+  fi
 
+  echo "UM=$UM"
 
   sedit  "s/TARGET_OS=unix/TARGET_OS=linux/"            makefile  &&
   sedit  "s/TARGET_PLATFORM=i386/TARGET_PLATFORM=$TP/"  makefile  &&

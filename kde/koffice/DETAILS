@@ -1,12 +1,12 @@
            SPELL=koffice
-         VERSION=1.1.1
-          SOURCE=$SPELL-$VERSION-kde3.tar.bz2
+. $GRIMOIRE/$SECTION/KDE_DETAILS          
+	VERSION=$KOFFICE_VERSION
+	SOURCE=$SPELL-$VERSION-kde3.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.kde.org/pub/kde/stable/$SPELL-$VERSION-kde3/src/$SOURCE
+   SOURCE_URL[0]=$KDE_URL/stable/$SPELL-$VERSION/src/$SOURCE
         WEB_SITE=http://www.koffice.org
            SHORT="The KOffice office suite"
          ENTERED=20020405
-         UPDATED=20020409
 cat << EOF
 From www.koffice.org:
 

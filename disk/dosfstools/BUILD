@@ -1,13 +1,7 @@
 (
 
-  #cp   Makefile  Makefile.original
-  #sed  "s/-O2 -fomit-frame-pointer/$CFLAGS/"  \
-  #     Makefile.original  >  Makefile
-
-  MAKE_OPTS="PREFIX=/usr  MANDIR=/usr/man/man8"
-
-  make  $MAKE_OPTS  &&
-  prepare_install   &&
-  make  $MAKE_OPTS  install
+  make             &&
+  prepare_install  &&
+  make    install
 
 ) > $C_FIFO 2>&1

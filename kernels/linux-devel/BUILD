@@ -27,6 +27,8 @@ backup_modules()  {
 
 (
 
+  ln  -sf /usr/src/linux/include/asm-generic  /usr/include/asm-generic
+
   yes  n  |  make  oldconfig
   cp  .config  $CONFIG_CACHE
   make  dep               &&

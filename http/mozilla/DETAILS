@@ -1,15 +1,13 @@
            SPELL=mozilla
-	FTP_VERSION=1.0rc2
-         VERSION=1.0rc2
+         VERSION=1.0
           SOURCE=$SPELL-source-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla/releases/$SPELL$FTP_VERSION/src/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla/releases/$SPELL$VERSION/src/$SOURCE
    SOURCE_URL[1]=ftp://archive.progeny.com/mozilla/releases/$SPELL$VERSION/src/$SOURCE
         WEB_SITE=http://www.mozilla.org
          ENTERED=20010922
-         UPDATED=20020512
-      MAINTAINER=eric@schabell.com
-           FUZZ="off"
+         UPDATED=20020605
+      MAINTAINER=dossen+sgl@daimi.au.dk
            SHORT="Mozilla is a Web browser."
 cat << EOF
 Mozilla is a Web browser that is being developed by the Free Software

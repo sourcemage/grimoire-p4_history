@@ -1,3 +1,4 @@
+# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
 (
 
 	readonly -a LABELS=([0]="Main" [1]="Extra")
