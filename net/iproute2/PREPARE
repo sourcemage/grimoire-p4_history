@@ -1,3 +1,0 @@
-if uname -r | grep -q ^2\.4 ; then
-  message "${PROBLEM_COLOR}When building iproute2 on a Linux 2.4 system please make sure that SCTP is enabled in the kernel. Without it the ip command fails to build.${DEFAULT_COLOR}"
-fi

@@ -1,6 +1,12 @@
 ./configure  &&
 
-sedit  "s/include $(DEFINES)/include $(DEFINES) -lpthread /"  Makefile  &&
+if gcc -include linux/in.h -E - < /dev/null | grep -q IPPROTO_SCTP ; then
+  echo "" > sctpfix.h
+else
+  echo "enum { IPPROTO_SCTP = 132 };" > sctpfix.h
+fi &&
+
+sedit "s!^CFLAGS =!& -include ${PWD}/sctpfix.h !" Makefile &&
 
 make         &&
 
