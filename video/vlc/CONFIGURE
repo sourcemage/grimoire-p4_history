@@ -1,10 +1,15 @@
 if  !  grep  -q  "FFMPEG"  $SPELL_CONFIG;  then
-
-  if    query  "Compile with ffmpeg for additional codec support?" y
+  if    query  "Compile with ffmpeg for more video codecs (currently depends on ffmpeg-cvs)?" y
   then  FFMPEG=y
   else  FFMPEG=n
   fi
-
   echo  "FFMPEG=$FFMPEG"  >>  $SPELL_CONFIG
+fi
 
+if  !  grep  -q  "JOYSTICK"  $SPELL_CONFIG; then
+  if    query  "Enable Joystick support?" y
+  then  JOYSTICK=y
+  else  JOYSTICK=n
+  fi
+  echo "JOYSTICK=$JOYSTICK"  >>  $SPELL_CONFIG
 fi
