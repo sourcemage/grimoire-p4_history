@@ -46,7 +46,11 @@ then
 		esac &&
 		pval=1 &&
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch} &&
-		cp ${SOURCE_CACHE}/${source} ./ &&
+		if [ "$md5sum" != "" ]
+		then
+			unpack ${source} ${md5sum}
+		fi &&
+		cp -v ${SOURCE_CACHE}/${source} ./ &&
 		linux_new_uncompress ./${source} &&
 		message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
 		patch -p${pval} <${patch} || return 1

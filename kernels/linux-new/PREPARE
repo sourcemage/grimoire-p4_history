@@ -701,6 +701,7 @@ create_details()
 				echo "MD5[${counter}]=\$md5sum"
 				echo "SOURCE${counter}_URL=\$source_url"
 				echo 'TXTMESSAGE="${TXTMESSAGE}${txtmessage} "'
+				echo 'SHORT="${SHORT}${short} "'
 				counter="`expr $counter + 1`"
 			done
 			if [[ "$appliedkernels" != "" && "$patchversion" != "" ]]

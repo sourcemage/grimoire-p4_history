@@ -2,14 +2,14 @@
          VERSION=head
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.jackit.sourceforge.net:/cvsroot/jackit:jack
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.jackit.sourceforge.net:/cvsroot/jackit:jack
         WEB_SITE=http://jackit.sf.net
          ENTERED=20031207
          UPDATED=20031207
-	       MD5[0]=IGNORE
-	   LICENSE[0]=GPL
-	   MAINTAINER=audio@sourcemage.org
-	FORCE_DOWNLOAD=on
+       BUILD_API=2
+          MD5[0]=IGNORE
+      LICENSE[0]=GPL
+  FORCE_DOWNLOAD=on
            SHORT="Jack is a low latency audio server."
 cat << EOF
 JACK is a low-latency audio server, written primarily for the GNU/Linux operating system. 

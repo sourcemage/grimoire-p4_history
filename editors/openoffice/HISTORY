@@ -1,3 +1,31 @@
+2005-02-12 Geoffrey Derber <gderber@sourcemage.org>
+	* DEPENDS: commented out stlport since
+		openoffice requires stlport 4 and 
+		we are using stlport 5.
+	* PRE_BUILD: dirty hack to fix java compile
+		issues in berkleydb
+
+2005-02-02 Geoffrey Derber <gderber@sourcemage.org>
+	* DEPENDS: mixed up the syntax for
+		optional_depends and depends for
+		LINUX-PAM-HEADERS
+
+2005-02-01 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: finished removal of Linux-PAM hack
+	* DEPENDS: added nas back in as an optional depends
+	* BUILD: fix nas headers problem
+
+2005-01-29 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS, PRE_BUILD: removed Linux-PAM hack
+	* DEPENDS: changed optional_depends linux-pam to
+		depends LINUX-PAM-HEADERS
+	* FINAL: ready for removal
+
+2005-01-27 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: split VERSION into VERSION and VERSION2
+		reduced the number of source_urls
+	* BUILD: replaced hardcoded version number with $VERSION
+
 2005-01-26 Pieter Lenaerts <e-type@cwazy.co.uk>
 	* CONFLICTS: added openoffice-bin
 

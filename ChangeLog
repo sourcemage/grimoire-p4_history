@@ -1,10 +1,20 @@
 2005-02-28 Eric Sandall <eric@sandall.us>
-	* collab/CMF: Removed deprecated spell
-	* collab/Epoz: Removed deprecated spell
-	* collab/MigrationTools: Removed deprecated spell
-	* collab/OpenCA: Removed deprecated spell
-	* collab/PHP-Nuke: Removed deprecated spell
-	* collab/Plone: Removed deprecated spell
+	* collab/CMF, collab/Epoz, collab/MigrationTools, collab/OpenCA,
+	  collab/PHP-Nuke, collab/Plone, gnome1-libs/GConf, gnome1-libs/Guppi,
+	  gnome1-libs/ORBit, gnome2-libs/libIDL, kernels/eagle,
+	  graphics/ImageMagick, graphics/OpenEXR, graphics-libs/PIL,
+	  graphics-libs/PyOpenGL, gnome2-apps/gDesklets, gnome2-apps/gDeskCal,
+	  x11-libs/Wine, devel/phpMyAdmin, devel/4Suite, devel/CMake, devel/CSSC,
+	  devel/ElectricFence, devel/phpPgAdmin, devel/Pyrex, devel/Python,
+	  devel/Squeak, devel/Twisted, mail/IlohaMail, mail/Mail-SpamAssassin,
+	  mail/squirrelmail-AbookGroup, mail/squirrelmail-AddressAdd,
+	  mail/squirrelmail-AddressTake, mail/squirrelmail-BlockSender,
+	  mail/squirrelmail-Notes, mail/YoSucker, utils/sysvinit: Removed
+	  deprecated spells
+	* collab/HORDE_{INSTALL,PREPARE}: Branched from collab/horde/{BUILD,PREPARE}
+	  Converted to build_api 2 and cleaned up queries
+	  No longer restarts the slapd service
+	* ChangeLog: Some formatting cleanup
 
 2005-02-26 Eric Sandall <eric@sandall.us>
 	* php-pear/pear_mk: Default to depend on any provider of PHP
@@ -56,14 +66,15 @@
 	* added account amavis for amavisd-new spell
 
 2005-01-15 Robin Cook <rcook@wyrms.net>
-	* gnome2-libs/crux spell depreicated now part of gtk-engines2
-	* gnome2-libs/gtk-thinice-theme2 depricated now part of gtk-engines2
-	* gnome2-libs/gnome-2-desktop-profile depricated and renamed to gnome2-profile
-	* gnome2-libs/libgnomeprint20 depricated no longer needed
-	* gnome2-libs/libgnomeprintui20 depricated no longer needed
-	* gnome2-libs/libmrproject removed has been depricated a long time
-	* gnome2-libs/Nuvola removed has been depricated a long time
-	* gnome2-libs/nuvola depricate part of gnome-themes-extras
+	* gnome2-libs/crux: spell depreicated now part of gtk-engines2
+	* gnome2-libs/gtk-thinice-theme2: depricated now part of gtk-engines2
+	* gnome2-libs/gnome-2-desktop-profile: depricated and renamed to
+	  gnome2-profile
+	* gnome2-libs/libgnomeprint20: depricated no longer needed
+	* gnome2-libs/libgnomeprintui20: depricated no longer needed
+	* gnome2-libs/libmrproject: removed has been depricated a long time
+	* gnome2-libs/Nuvola: removed has been depricated a long time
+	* gnome2-libs/nuvola: depricate part of gnome-themes-extras
 
 2005-01-11 Pieter Lenaerts <e-type@cwazy.co.uk>
 	* editors/OOodi: removed depreciated spell
@@ -154,7 +165,7 @@
 2004-10-10 George Sherwood <george@beernabeer.com>
 	* chat-im/everybuddy: removed deprecated spell
 
-2004-10-05  <phobox@terra>
+2004-10-05 <phobox@terra>
 	* gnome2-apps/gDesklets: renamed to gdesklets
 	* gnome2-apps/gDeskCal: renamed to gdeskcal
 
@@ -423,7 +434,7 @@
 
 2004-03-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* utils/banshee-linux: removed banshee-linux spell, project is dead and
-	vanished from the net
+	 vanished from the net
 
 2004-03-12 Eric Sandall <eric@sandall.us>
 	* java/jaf,jms,jmx,jdmk,jndi,java_xml_pack,javamail,jdbc-optional,jta:

@@ -1,5 +1,6 @@
 ### configure
 	cd $SOURCE_DIRECTORY/config_office/               &&
+        CXXFLAGS="${CXXFLAGS} -I/usr/X11R6/include"       &&
 	./configure 				          \
 		--with-lang=ENUS		          \
 		--prefix=${INSTALL_ROOT}/usr	          \
@@ -71,5 +72,5 @@ sedit  "s:setenv LINK \"gcc\":&\nsetenv CFLAGS \"$CFLAGS\"       \
            env && \
            dmake" &&
   cd $SOURCE_DIRECTORY/instsetoo/unxlngi4.pro/01/normal	                            &&
-  sedit "s:oo_home=OpenOffice.org1.1.0:oo_home=openoffice:" install                 &&
+  sedit "s:oo_home=OpenOffice.org${VERSION}:oo_home=openoffice:" install                 &&
   chmod +x install

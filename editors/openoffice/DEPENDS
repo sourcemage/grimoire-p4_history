@@ -1,4 +1,4 @@
-depends  X11-SERVER   "--with-x"                   &&
+depends  X11-SERVER  "--with-x"                   &&
 depends  zip                                       &&
 depends  unzip                                     &&
 depends  which                                     &&
@@ -6,7 +6,7 @@ depends  mktemp                                    &&
 depends  ant         "--with-ant-home=${ANT_HOME}" &&
 depends  libart_lgpl  "--enable-libart"            &&
 depends  zlib         "--with-system-zlib"         &&
-
+depends  LINUX-PAM-HEADERS &&
 #
 # Untested
 #
@@ -21,19 +21,19 @@ depends  tcsh                                      &&
 #		  "--with-use-shell=/bin/bash"     \
 #                  "Use tcsh shell for compiling (safer)" &&
 
-
-#
-# Saying "No" here seems to compile, yes fails in berkleydb
-#
 optional_depends  "JAVA"                                       \
                   "--enable-java --with-jdk-home=${JAVA_HOME}" \
                   "--disable-java"                             \
                   "Build with Java support."                   &&
 
-optional_depends  stlport                            \
-                  "--with-stlport4-home=/usr"        \
-                  ""                                 \
-                  "to use system installed STLport"  &&
+#
+# We now have stlport 5 in the grimoire
+# This will no longer work
+#
+#optional_depends  stlport                            \
+#                  "--with-stlport4-home=/usr"        \
+#                  ""                                 \
+#                  "to use system installed STLport"  &&
 
 optional_depends  startup-notification        \
                   "--enable-libsn"            \
@@ -75,17 +75,7 @@ optional_depends  freetype2                                  \
                   ""                                         \
                   "for up-to-date freetype2"                 &&
 
-#
-# I need to investigate, it can't find NAS if you say yes
-#
-#optional_depends  nas                                    \
-#                  "--with-system-nas"                    \
-#                  ""                                     \
-#                  "for up-to-date Network Audio System" &&
-
-#I honestly do not know what this next spell is used for, but
-#some of the Linux-PAM source files are needed to compile.
-optional_depends  linux-pam          \
-                  ""                 \
-                  ""                 \
-                  "for PAM headers"
+optional_depends  nas                                    \
+                  "--with-system-nas"                    \
+                  ""                                     \
+                  "for up-to-date Network Audio System"
