@@ -1,0 +1,26 @@
+diff -r -u3 papuawm_snap-20040303.orig/src/configurator.c papuawm_snap-20040303/src/configurator.c
+--- papuawm_snap-20040303.orig/src/configurator.c	2004-03-03 00:58:05.000000000 -0600
++++ papuawm_snap-20040303/src/configurator.c	2004-03-08 19:40:44.000000000 -0600
+@@ -30,6 +30,7 @@
+ LList *commands = NULL;
+ LList *key_handlers = NULL;
+ char *default_config_file=".papuawm.conf";
++char *system_config_file="/etc/papuawm.conf";
+ char error_string[ERROR_STRING_SIZE];
+ 
+ 
+@@ -613,9 +614,11 @@
+   }
+ 
+   if( parse_file(filename) ) {
+-    printf("Cannot open configuration file (%s)\n", filename);
+-    printf("EXITING\n");
+-    exit(-1);
++    if ( parse_file(system_config_file) ) {
++      printf("Cannot open configuration file (%s) or system wide configuration file (%s)\n", filename, system_config_file);
++      printf("EXITING\n");
++      exit(-1);
++    }
+   }
+ }
+ 
