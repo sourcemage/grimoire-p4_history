@@ -60,3 +60,9 @@ if spell_installed postfix;
 
   fi
 fi
+
+if [ "$SPAMD" == "y" ]; then
+  /etc/init.d/spamd.sh stop 1> /dev/null 2>&1
+  sleep 1
+  /etc/init.d/spamd.sh start
+fi

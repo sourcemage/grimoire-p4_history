@@ -7,3 +7,15 @@ if ! grep -q "BACKUP=" $SPELL_CONFIG; then
   fi
 fi
 
+if  !  grep  -q  "ORDER="  $SPELL_CONFIG;  then
+  if    query  "Sort users by lastname (instead of name) ? "  n
+    then  echo   "ORDER=y"  >>  $SPELL_CONFIG
+    else  echo   "ORDER=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+
+
+
+
+

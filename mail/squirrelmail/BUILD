@@ -46,4 +46,10 @@ echo "</IfModule mod_php4.c>"        >> $LOC/doc/httpd-sample-squirrelmail.conf
 
 chown nobody.nogroup $LOC/doc/httpd-sample-squirrelmail.conf
 
+if [ "$ORDER" == "y" ]; then
+  cd $LOC
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/addressbook.diff
+fi
+
+
 ) > $C_FIFO 2>&1

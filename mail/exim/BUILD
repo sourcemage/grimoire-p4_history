@@ -10,15 +10,21 @@ create_account mail
 
 mkdir  -p             /var/spool/mail
 chmod  1777           /var/spool/mail
-chown      mail:mail  /var/spool/mail
-[  -e                 /var/spool/mail/db      ]  && 
-chown  -R  mail:mail  /var/spool/mail/db
+chown      exim:exim  /var/spool/mail
+[  -e                 /var/spool/mail/db      ]  &&
+chown  -R  exim:exim  /var/spool/mail/db
 [  -e                 /var/spool/mail/input   ]  &&
-chown  -R  mail:mail  /var/spool/mail/input
+chown  -R  exim:exim  /var/spool/mail/input
 [  -e                 /var/spool/mail/log     ]  &&
-chown  -R  mail:mail  /var/spool/mail/log
+chown  -R  exim:exim  /var/spool/mail/log
 [  -e                 /var/spool/mail/msglog  ]  &&
-chown  -R  mail:mail  /var/spool/mail/msglog
+chown  -R  exim:exim  /var/spool/mail/msglog
+
+chown  -R  exim:exim  /var/spool/mail/db     /var/spool/mail/db/*
+chown  -R  exim:exim  /var/spool/mail/input  /var/spool/mail/input/*
+chown  -R  exim:exim  /var/spool/mail/log    /var/spool/mail/log/*
+chown  -R  exim:exim  /var/spool/mail/msglog /var/spool/mail/msglog/*
+chgrp      exim       /var/spool/mail/*
 
 mkdir  -p  Local
 

@@ -15,11 +15,13 @@ case $1 in
            postfix  stop
            ;;
 
- restart)
+    restart)
 	   $0 stop
 	   $0 start
            ;;  
-
-       *)  echo     "Usage: $0 {start|stop|restart}"
+    reload)
+	   $0 restart
+           ;;
+       *)  echo     "Usage: $0 {start|stop|restart|reload}"
            ;;
 esac

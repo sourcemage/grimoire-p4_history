@@ -1,0 +1,11 @@
+--- functions/addressbook.php.old	2002-07-30 18:07:57.000000000 -0700
++++ functions/addressbook.php	2002-07-30 18:28:16.000000000 -0700
+@@ -522,7 +522,7 @@
+             return -1;
+         }
+     }
+-    return (strtolower($a['name']) > strtolower($b['name'])) ? 1 : -1;
++    return (strtolower($a['lastname']) > strtolower($b['lastname'])) ? 1 : -1;
+ }
+ 
+ ?>
