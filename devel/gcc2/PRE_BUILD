@@ -1,0 +1,7 @@
+default_pre_build         &&
+cd     $SOURCE_DIRECTORY  &&
+
+if    [  "$PASCAL"  ]
+then  unpack  $SOURCE2             &&
+      mv      gpc-20020510/p  gcc
+fi

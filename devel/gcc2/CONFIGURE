@@ -1,0 +1,25 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  LANG="--enable-languages=c,c++"
+
+  if    query  "Enable Fortran 77 support?"  y
+  then  LANG="$LANG,f77"
+  fi
+
+  if    query  "Enable Java support?"  y
+  then  LANG="$LANG,java"
+  fi
+
+  if    query  "Enable Objective C support?"  y
+  then  LANG="$LANG,objc"
+  fi
+
+  if    query  "Enable Pascal support?"  n
+  then  LANG="$LANG,pascal"
+        echo  "PASCAL=y"  >>  $SPELL_CONFIG
+  fi
+
+  echo  LANG="$LANG"  >>  $SPELL_CONFIG
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi
