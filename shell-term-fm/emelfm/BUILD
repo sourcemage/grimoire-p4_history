@@ -1,5 +1,3 @@
-(
-
   cat  <<  EOF  >>  Makefile.common
 PREFIX		=	/usr
 BIN_DIR		=	/usr/bin
@@ -9,8 +7,4 @@ DOC_DIR		=	/usr/share/emelfm/docs
 CC		=	gcc  $CFLAGS
 EOF
 
-  make             &&
-  prepare_install  &&
-  make    install
-
-) > $C_FIFO 2>&1
+  make
