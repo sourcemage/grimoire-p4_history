@@ -67,3 +67,23 @@ function install_wmfiles ()
     fi
   fi
 }
+
+#---------------------------------------------------------------------
+## Sets the current script to run only one make job
+#---------------------------------------------------------------------
+
+function make_single ()
+{
+  JOBS_PER_HOST=0  &&
+     MAKE_NJOBS=1
+}
+
+#---------------------------------------------------------------------
+## Re-enables the normal Sorcery make (cancels single_make)
+#---------------------------------------------------------------------
+
+function make_normal ()
+{
+  source $COMPILE_CONFIG
+}
+
