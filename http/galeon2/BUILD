@@ -1,5 +1,6 @@
 (
 
+  sedit  "s/GtkToolbarChildType/EggToolbarChildType/"  libegg/eggtoolbar.c  &&
   ./configure  --prefix=/usr      \
                --sysconfdir=/etc  \
                --localstatedir=/var \

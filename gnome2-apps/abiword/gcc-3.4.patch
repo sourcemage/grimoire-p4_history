@@ -1,0 +1,14 @@
+--- abi/src/text/fmt/xp/fl_DocLayout.h~	2003-05-28 17:05:38.000000000 +0200
++++ abi/src/text/fmt/xp/fl_DocLayout.h	2004-05-09 13:15:15.000000000 +0200
+@@ -248,10 +248,10 @@
+ 
+ 	void		__dump(FILE * fp) const;
+ #endif
++	void				_toggleAutoSpell(bool bSpell);
+ 	
+ protected:
+ 	static void			_backgroundCheck(UT_Worker * pTimer);
+-	void				_toggleAutoSpell(bool bSpell);
+ 	void				_toggleAutoSmartQuotes(bool bSQ);
+ 	
+ 	static void			_prefsListener(class XAP_App *, class XAP_Prefs *, 
