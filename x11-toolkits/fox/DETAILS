@@ -1,11 +1,16 @@
            SPELL=fox
+if [ "$OLD_STABLE" == "yes" ]; then
+         VERSION=1.0.52
+          MD5[0]='9b5e3cbad0e625ac20e67692ef2b9326'
+else
          VERSION=1.2.5
+          MD5[0]='98443ed6565029dfd7d4662074b1e775'
+fi
        BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.fox-toolkit.org/ftp/$SOURCE
    SOURCE_URL[1]=ftp://ftp.fox-toolkit.org/pub/$SOURCE
-          MD5[0]=98443ed6565029dfd7d4662074b1e775
         WEB_SITE=http://www.fox-toolkit.org
          ENTERED=20020425
          UPDATED=20020829
