@@ -8,7 +8,8 @@ optional_depends  "libdvdnav"  ""  ""  "for extended DVD source support"  &&
 optional_depends  "cdparanoia"  ""  ""  "for audio CD source support"  &&
 
 # audio output
-optional_depends  "alsa-lib"  ""  ""  "for ALSA audio input/output"  &&
+# doesn't compile with alsa 1.0(pre1) and is broken anyway
+#optional_depends  "alsa-lib"  ""  ""  "for ALSA audio input/output"  &&
 optional_depends  "arts"  ""  ""  "for arts audio output"  &&
 optional_depends  "esound"  ""  ""  "for esd audio output"  &&
 optional_depends  "ladspa"  ""  ""  "for ladspa plugin support"  &&

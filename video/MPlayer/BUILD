@@ -1,20 +1,22 @@
 (
 
+  patch -p1 < $SCRIPT_DIRECTORY/alsa-1.0.patch  &&
+
   if  [  "$FONTCONFIG"  =  "y"  ];  then
     patch -p1 < $SCRIPT_DIRECTORY/MPlayer-0.90-fontconfig.patch
-  fi
+  fi  &&
 
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
-  esac
+  esac  &&
 
   case  $JOYSTICK  in
     y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
-  esac
+  esac  &&
 
   case  $OSD_MENU  in
     y|Y)  OPTS="$OPTS  --enable-menu"  ;;
-  esac
+  esac  &&
   
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
