@@ -1,27 +1,16 @@
-if  [  -f  $CONFIG_CACHE/net-tools.config.h  ];  then
-  cp       $CONFIG_CACHE/net-tools.config.h  config.h
-else
-  ./configure.sh  config.in
-  cp  config.h  $CONFIG_CACHE/net-tools.config.h
-fi
-
 (
 
-  sedit  "s:-O2:$CFLAGS:"  Makefile
-  make             &&
-  prepare_install  &&
+  cp  $CONFIG_CACHE/net-tools.config.h  config.h               &&
+
+  make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"  &&
+  prepare_install                                              &&
   make  BASEDIR=/  install
 
 ) > $C_FIFO 2>&1  &&  (
 
-. $SCRIPT_DIRECTORY/lib_runlevel
-
-installscript hostname.sh
-installscript networking.sh
 # clean up .temp files
-scratch_list=$(ls $SCRIPT_DIRECTORY | grep .temp)
-for scratch_file in $scratch_list; do
-    rm -f $SCRIPT_DIRECTORY/$scratch_file
+for  scratch_file  in  $SCRIPT_DIRECTORY/*.temp  ;  do
+    rm  -f  $scratch_file
 done
 
 )

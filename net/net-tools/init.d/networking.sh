@@ -1,11 +1,11 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SGL-script-version=20021020
+# SMGL-script-version=20030216
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
-# SGL-START:3 4 5:S30
-# SGL-STOP:0 1 2 6:K70
+# SMGL-START:3 4 5:S30
+# SMGL-STOP:0 1 2 6:K70
 # this script requires a file in /etc/sysconfig/network
 # for each network device named <device>.dev
 # with the following variables set as needed:
@@ -25,12 +25,12 @@ netdevdir=/etc/sysconfig/network
 
 #change this if your .pid file hides somewhere else
 
-DHCPD_PATH="/etc/dhcpc/dhcpcd-"
+DHCPCD_PATH="/etc/dhcpc/dhcpcd-"
 
 # this provides you with the ability to start/stop/check status on 
 # one or more cards if you so desire.
 
-if [ $# -le 2 ]; then
+if [ $# -le 1 ]; then
     devices=$(ls $netdevdir | grep dev$ | cut -d. -f1)
 else
     devices=$(echo $@ | sed s/$1//)
@@ -47,19 +47,19 @@ case "$1" in
 		else
 # only load module if necessary; i.e. not built into kernel.
 		    if [ ! -z "$MODULE" ]; then
-			echo "$1ing $0 with $DEVICE ..."
+			echo "Starting $0 with $DEVICE ..."
 			loadproc modprobe  $MODULE
 		    fi
-		    if [ `echo $MODE` = dynamic ]; then
-			echo "$1ing dhcpcd on $DEVICE ..."
-			if [ -e $DHCPD_PATH$DEVICE.pid ]; then
-			    dhcpcPid=`cat $DHCPD_PATH$DEVICE.pid`
+		    if [ "$MODE" = dynamic ]; then
+			echo "Starting dhcpcd on $DEVICE ..."
+			if [ -e $DHCPCD_PATH$DEVICE.pid ]; then
+			    dhcpcPid=`cat $DHCPCD_PATH$DEVICE.pid`
 			    dhcpcd -k $DEVICE 1>/dev/null 2>&1
-			    renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPD_PATH$DEVICE.pid
+			    renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEVICE.pid
 			    sleep 1
 			fi
-			loadproc dhcpcd $DEVICE 
-		    elif [ `echo $MODE` = static ]; then
+			loadproc dhcpcd -t 30 -d $DEVICE
+		    elif [ "$MODE" = static ]; then
 			echo "Setting up static networking on $DEVICE"
 			ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
 # check if GATEWAY is set; gateway is set by PPP or other software in some cases
@@ -83,8 +83,8 @@ case "$1" in
 		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE.dev"
 		else
-		    if [ `echo $MODE` = dynamic ]; then 
-			echo "$1ping dhcpcd on $DEVICE ..."
+		    if [ "$MODE" = dynamic ]; then 
+			echo "Stopping dhcpcd on $DEVICE ..."
 			dhcpcd -k $DEVICE
 			evaluate_retval
 			sleep 2
@@ -93,7 +93,7 @@ case "$1" in
 		    fi
 # only do this if network device is a module
 		    if [ ! -z "$MODULE" ]; then
-			echo "$1ping $0 on $DEVICE ..."
+			echo "Stopping $0 on $DEVICE ..."
 			modprobe -r $MODULE
 			evaluate_retval
 		    fi
@@ -115,7 +115,7 @@ case "$1" in
 		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE.dev"
 		else
-		    if [ `echo $MODE` = dynamic ]; then
+		    if [ "$MODE" = dynamic ]; then
 			statusproc dhcpcd
 		    fi
 		    ifconfig $DEVICE
