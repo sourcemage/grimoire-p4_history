@@ -62,7 +62,7 @@ echo  "EXIM_GROUP=mail"                  >>  Local/Makefile
 (
   db_ver=`gaze version db | grep db | cut -b35-37`
 
-  if [ "$db_ver" == "4.0" ]; then
+  if [ "$db_ver" == "4.1" ]; then
     message "${MESSAGE_COLOR}It seems you're running 4.1.x db series..."
     message "exim should not compile with db 4.1.x without being patched.${DEFAULT_COLOR}"
   
