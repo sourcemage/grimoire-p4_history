@@ -1,4 +1,11 @@
-# frontend doesn't compile
-sedit  "s/frontend//"  Makefile.am  &&
-./bootstrap  &&
-default_build
+(
+	patch -p0 < $SCRIPT_DIRECTORY/patch.faad2	&&
+	./bootstrap					&&
+	./configure					&&
+	make						&&
+	prepare_install					&&
+	make install
+
+) > $C_FIFO 2>&1
+
+
