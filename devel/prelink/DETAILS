@@ -1,17 +1,15 @@
            SPELL=prelink
          VERSION=20030515
-#         VERSION=0.3.0-2
           SOURCE=$SPELL-$VERSION.tar.bz2
-#          SOURCE=$SPELL-$VERSION.src.rpm
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=ftp://people.redhat.com/jakub/$SPELL/$SOURCE
-#   SOURCE_URL[0]=ftp://people.redhat.com/jakub/$SPELL/$VERSION/$SOURCE
           MD5[0]=03b41416ffd664ec18f8798259f29877
-#          MD5[0]=8c9721106624ce880c8efd89007ad9e6
-      LICENSE[0]=GPL
         WEB_SITE=ftp://people.redhat.com/jakub/$SPELL/
          ENTERED=20031203
          UPDATED=20031203
+          CCACHE="off"
+    DISTCC_HOSTS=
+      LICENSE[0]=GPL
            SHORT="prelink reduces relocation loading time and memory consumption"
 cat << EOF
 prelink is a program which modifies ELF shared libraries and ELF 
