@@ -18,7 +18,10 @@
   make    install                              &&
 
 #some problems with everything in /bin
-for i in install env true ;
+for i in \
+    install env true ptx sha1sum split sum tac tr tsort unexpand wc basename dirname expr factor cut \
+    uptime sort md5sum hostid id logname nice nohup pathchk pinky printenv printf seq sleep tee test \
+    tty users who whoami yes ;
 do  ln -sfn ${INSTALL_ROOT}/bin/$i ${INSTALL_ROOT}/usr/bin/$i
 done                                           &&
 
