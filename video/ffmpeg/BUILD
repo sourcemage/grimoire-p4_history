@@ -3,9 +3,9 @@
   export    CFLAGS="${CFLAGS/-funroll-loops//} -O3"
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops//} -O3"
 
-  ./configure  --prefix=/usr    \
-               --enable-shared  \
-               $OPTS          &&
+  ./configure  --prefix=${INSTALL_ROOT}/usr  \
+               --enable-shared               \
+               $OPTS                         &&
   make                        &&
   prepare_install             &&
   make    install             &&
