@@ -31,4 +31,5 @@ if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  
   fi
 fi
 
-default_pre_build
+default_pre_build &&
+patch $SOURCE_DIRECTORY/pdftops/XRef.cxx < $SCRIPT_DIRECTORY/xpdf-pl3.patch
