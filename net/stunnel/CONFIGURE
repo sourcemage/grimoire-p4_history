@@ -36,7 +36,12 @@ if  [  -f  /etc/stunnel.pem  ];  then
   mv  /etc/stunnel.pem  /etc/ssl/certs/
 fi
 
-if  [  !  -f  /etc/ssl/certs/stunnel.pem  ]  ;  then
+# Heh
+if  [  -f  /etc/ssl/certs/stunnel.pem  ];  then
+  mv  /etc/ssl/certs/stunnel.pem  /etc/stunnel/
+fi
+
+if  [  !  -f  /etc/stunnel/stunnel.pem  ]  ;  then
   get_info_from_user
   CERTIFICATE="y"
 elif  !  grep  -q  "^CERTIFICATE="  $SPELL_CONFIG  &&
