@@ -17,10 +17,21 @@ ln  -fns    ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
 make  install                                               &&
 cp  -vaL  dist/public/nss                                   \
           ${INSTALL_ROOT}/usr/include/firefox/              &&
-ln  -fns  ${FIREFOX_HOME}/firefox-bin  /usr/bin/firefox     &&
 
-if  !  grep  -q  firefox  /etc/ld.so.conf;  then
-  echo  '/usr/lib/firefox'  >>  /etc/ld.so.conf
+#
+# Don't do this!
+# http://lists.freebsd.org/pipermail/freebsd-gnome/2004-October/008443.html
+#
+#if  !  grep  -q  firefox  /etc/ld.so.conf;  then
+#  echo  '/usr/lib/firefox'  >>  /etc/ld.so.conf
+#fi  &&
+
+#
+# Make sure $INSTALL_ROOT/usr/lib/firefox is not in $INSTALL_ROOT/etc/ld.so.conf
+#
+if  grep  -q  firefox  $INSTALL_ROOT/etc/ld.so.conf;  then
+  sedit  "s:/usr/lib/firefox::"  $INSTALL_ROOT/etc/ld.so.conf  &&
+  /sbin/ldconfig
 fi  &&
 
 #
@@ -28,8 +39,9 @@ fi  &&
 # Only create if /usr/bin/mozilla does not exist or is
 # already a symlink
 #
-if  [  !  -f  /usr/bin/mozilla  -o  -h  /usr/bin/mozilla  ]
-then
+if  [  !  -f   $INSTALL_ROOT/usr/bin/mozilla
+       -o  -h  $INSTALL_ROOT/usr/bin/mozilla
+       -a      "$FIREFOX_MOZLINK"  =  "y"     ];  then
   ln  -sf  /usr/bin/firefox  /usr/bin/mozilla
 fi  &&
 
@@ -43,4 +55,10 @@ patch  -d  $FIREFOX_HOME           -p1  -N      \
 #
 # Script to set MOZILLA_FIVE_HOME
 #
-cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
+cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  $INSTALL_ROOT/etc/profile.d  &&
+
+#
+# Install firefox script so it loads properly
+#
+install  -m  755  -o  root  -g  root  $SCRIPT_DIRECTORY/firefox  \
+         $INSTALL_ROOT/usr/bin

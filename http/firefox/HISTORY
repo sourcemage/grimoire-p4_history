@@ -1,5 +1,14 @@
 2004-12-09 Eric Sandall <eric@sandall.us>
 	* BUILD: Try to use ~/.firefox instead of ~/.mozilla
+	* CONFIGURE: Prompt to create a mozilla -> firefox symlink
+	* CONFLICTS: Removed, no longer conflicts with mozilla
+	* INSTALL: Only create the mozilla -> firefox symlink if wanted and it
+	  isn't a binary
+	  Copy firefox script to set proper LD_LIBRARY_PATH
+	  Don't symlink /usr/bin/firefox -> /usr/lib/firefox/firefox-bin
+	  Use INSTALL_ROOT for profile.d
+	* firefox-pkgconfig.diff: Removed
+	* PRE_BUILD: Removed commented firefox-pkgconfig.diff and nsRegion.patch
 
 2004-12-08 Eric Sandall <eric@sandall.us>
 	* firefox no longer uses /usr/lib/mozilla for future compatibility
