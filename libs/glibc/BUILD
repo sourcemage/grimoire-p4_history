@@ -60,6 +60,13 @@ elif  [[  $(uname  -m)  =  *sparc64  ]];  then
   export    CFLAGS="${CFLAGS/-mcpu=v9/}"
   export    CFLAGS="${CFLAGS/-mtune=ultrasparc/}"
   export    CFLAGS="${CFLAGS/-mvis/}"
+
+  # Setup the HOST properly to insure "sparcv9"
+  # This passes -mcpu=ultrasparc -Wa,-Av9a to the compiler
+  [  "$HOST"  =  "sparc-unknown-linux-gnu"  ]   &&  
+  export HOST="sparcv9-unknown-linux-gnu"       &&
+  [  "$BUILD"  =  "sparc-unknown-linux-gnu"  ]  &&  
+  export BUILD="sparcv9-unknown-linux-gnu"
 elif  [[  $(uname  -m)  =  *sparc    ]];  then
   GLIBC_ARCH=sparc  &&
   #
