@@ -1,50 +1,47 @@
+2003-10-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Now it will actually download the modutils
+	source if it isn't already there
+	Corrected too many typos
+	Updated modutils to 2.4.26
+	* HISTORY: Formatted to Guru Handbook
+
 2003-10-28 hgg <hgreig@bigpond.net.au>
-	* BUILD,module-man.patch: add patch to Makefile.in for man page in moveold so make moveold can be &&'ed
+	* BUILD,module-man.patch: add patch to Makefile.in for man
+	page in moveold so make moveold can be &&'ed
 
-2003-10-16  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+2003-10-16 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	Updated to Updated to 0.9.15-pre2  (Bug #4549)
 
-		Updated to Updated to 0.9.15-pre2  (Bug #4549)
+2003-04-10 Eric Schabell <eschabell@sourcemage.org>
+	Updated BUILD file to cp modprobe.devfs to /etc
+	which is needed for proper starting of 2.6.x kernels
+	using devfs.
 
-2003-04-10  Eric Schabell <eschabell@sourcemage.org>
+2003-09-20 Eric Sandall <eric@sandall.us>
+	Updated to 0.9.15-pre1  (Bug #4360)
 
-		Updated BUILD file to cp modprobe.devfs to /etc
-		which is needed for proper starting of 2.6.x kernels
-		using devfs.
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	Update UPDATED purely for test grimoire integration.
 
-2003-09-20  Eric Sandall <eric@sandall.us>
+2003-08-03 hgg <hgreig@bigpond.net.au>
+	Add mktemp to DEPENDS
+	Add MAKE_NJOBS=1 to DETAILS
 
-		Updated to 0.9.15-pre1  (Bug #4360)
+2003-08-02 Seth Woolley <seth@tautology.org>
+	Tried to fix this mess up by compiling modutils in _here_...
+	The fancy *.old stuff messes up cast --fix unless it's done this way.
+	CONFLICTS is safe again, I hope.
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-08-03 hgg <hgreig@bigpond.net.au>
+	Remove CONFLICTS, actually depends on modutils for kernels <2.6.XX
 
-		Update UPDATED purely for test grimoire integration.
+2003-07-30 hgg <hgreig@bigpond.net.au>
+	Add CONFLICTS on modutils
+	Add depmod -a to BUILD
 
-2003-08-03  hgg <hgreig@bigpond.net.au>
+2003-07-27 Eric Sandall <eric@sandall.us>
+	Updated to 0.9.13-pre  (Bug #3768)
 
-		Add mktemp to DEPENDS
+2003-04-10 Eric Schabell <eschabell@sourcemage.org>
+	Created spell.
 
-		Add MAKE_NJOBS=1 to DETAILS
-
-2003-08-02  Seth Woolley <seth@tautology.org>
-
-		Tried to fix this mess up by compiling modutils in _here_...
-		The fancy *.old stuff messes up cast --fix unless it's done this way.
-		CONFLICTS is safe again, I hope.
-
-2003-08-03  hgg <hgreig@bigpond.net.au>
-
-		Remove CONFLICTS, actually depends on modutils for kernels <2.6.XX
-
-2003-07-30  hgg <hgreig@bigpond.net.au>
-
-		Add CONFLICTS on modutils
-
-		Add depmod -a to BUILD
-
-2003-07-27  Eric Sandall <eric@sandall.us>
-
-		Updated to 0.9.13-pre  (Bug #3768)
-
-2003-04-10  Eric Schabell <eschabell@sourcemage.org>
-
-		Created spell.

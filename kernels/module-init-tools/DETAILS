@@ -1,12 +1,12 @@
 # old modutils data
 
            SPELL2=modutils
-         VERSION2=2.4.25
-          SOURCE2=$SPELL2-$VERSION2.tar.bz2
-SOURCE_DIRECTORY2=$BUILD_DIRECTORY/$SPELL2-$VERSION2
-   SOURCE_URL2[0]=$KERNEL_URL/pub/linux/utils/kernel/$SPELL/v2.4/$SOURCE
-   SOURCE_URL2[1]=ftp://ftp.kernel.org/pub/linux/utils/kernel/$SPELL/v2.4/$SOURCE
-           MD5[1]=856f183722d67c2ef56328af1bebc9ec
+         VERSION2=2.4.26
+          SOURCE2=${SPELL2}-${VERSION2}.tar.bz2
+SOURCE_DIRECTORY2=${BUILD_DIRECTORY}/${SPELL2}-${VERSION2}
+   SOURCE2_URL[0]=${KERNEL_URL}/pub/linux/utils/kernel/${SPELL2}/v2.4/${SOURCE2}
+   SOURCE2_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/kernel/${SPELL2}/v2.4/${SOURCE2}
+           MD5[1]=417620c96a251bf479372ffa87035310
         WEB_SITE2=http://freshmeat.net/projects/modutils/
        LICENSE[1]=GPL
 
@@ -21,10 +21,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.kernel.org
          ENTERED=20030410
          UPDATED=20030822
-      MAKE_NJOBS=1
            SHORT="Module-init-tools for 2.5.x kernel modules."
       LICENSE[0]=GPL
       LICENCE[1]=UNKNOWN
+      MAKE_NJOBS=1
 cat << EOF
 
 This module-init-tools spell will work with 2.5.x kernels and install 
