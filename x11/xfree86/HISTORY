@@ -1,5 +1,11 @@
 2002-08-10  Joel Mayes <bluebird@optushome.com.au>
 
+        removed messgae in CONFIGURE warning of conflict with
+        linux kernel DRM as this is no longer valid with linux 
+        kernel 2.4.19
+
+2002-08-10  Joel Mayes <bluebird@optushome.com.au>
+
         updated MD5[*] field to reflect the .tar not .tar.(bz2|gz|Z)
 
 2002-06-24  Joel Mayes <bluebird@optushome.com.au>
@@ -11,30 +17,36 @@
         Added MD5 field to DETAILS
 
 20020401        Marc Greene
+
         Modified CONFIGURE and POST_INSTALL to copy and recover existing 
-	xdm and xinit configs as "#define InstallXdmConfig  NO" and 
-	"#define InstallXinitConfig  NO" were not effective at 
-	preventing these files from being reaped.
+        xdm and xinit configs as "#define InstallXdmConfig  NO" and 
+        "#define InstallXinitConfig  NO" were not effective at 
+        preventing these files from being reaped.
 
 20020319        Marc Greene
+
         Added zlib security patch: 4.2.0-zlib-security.patch
 
 20020120	Kyle Sallee
-	Modified spell to support version 4.2.0 & Linux-PAM
+
+        Modified spell to support version 4.2.0 & Linux-PAM
 
 20020102	Kyle Sallee
-	Modified CONFIGURE to give SAs a more precise configuration.
+
+        Modified CONFIGURE to give SAs a more precise configuration.
 
 20020109	Kyle Sallee
-	Modified BUILD so that "#define BuildXF86DRM  NO" is added
-	to config/cf/host.def is "CONFIG_DRM=y" is in
-	/usr/src/linux/.config.  In simple terms an SA can compile 
-	DRM in xfree86 or the linux kernel, but not both, otherwise
-	xfree86 fails to compile & install.  Jon Svendsen figured 
-	out the conflict, I added the fix.  Great teamwork, Jon!
+
+        Modified BUILD so that "#define BuildXF86DRM  NO" is added
+        to config/cf/host.def is "CONFIG_DRM=y" is in
+        /usr/src/linux/.config.  In simple terms an SA can compile 
+        DRM in xfree86 or the linux kernel, but not both, otherwise
+        xfree86 fails to compile & install.  Jon Svendsen figured 
+        out the conflict, I added the fix.  Great teamwork, Jon!
 
 20020110	Kyle Sallee
-	I was incorrect about my assumptiosn on 20020109.  The
-	problem turned out to be mistake in a 
-	xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/drm.h
-	within the xfree86 source.  I included a patch.
+
+        I was incorrect about my assumptiosn on 20020109.  The
+        problem turned out to be mistake in a 
+        xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/drm.h
+        within the xfree86 source.  I included a patch.
