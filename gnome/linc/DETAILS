@@ -1,16 +1,16 @@
            SPELL=linc
-         VERSION=0.7.1
+         VERSION=1.0.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="7344a94166e11a04c7be933d05e51029"
+          MD5[0]="03713cd9a813a9da4cbd6bcbbce0d280"
       LICENSE[0]=LGPL
         WEB_SITE=http://orbit-resource.sourceforge.net
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020509
-         UPDATED=20021230
+         UPDATED=20030114
            SHORT="linc is a library for writing networked servers & clients."
 cat << EOF
 linc is a library that eases the task of writing networked servers &
