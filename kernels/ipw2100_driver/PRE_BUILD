@@ -1,8 +1,6 @@
 mk_source_dir $SOURCE_DIRECTORY &&
-cd $SOURCE_DIRECTORY &&
 unpack $SOURCE ${MD5[0]} &&
-unpack $SOURCE1 ${MD5[1]} &&
-cd ipw2100-$VERSION
+cd $SOURCE_DIRECTORY &&
 
 
 if [ $PATCH24 == 'y' ]; then
@@ -13,4 +11,3 @@ if [ $PATCH24 == 'y' ]; then
 	fi
 fi
 
-cd ../
