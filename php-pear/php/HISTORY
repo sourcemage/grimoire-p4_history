@@ -1,3 +1,17 @@
+2004-08-24 Eric Sandall <eric@sandall.us>
+	* BUILD: Use config_query responses
+	  Removed httpd.conf fix, doesn't work anymore
+	* DEPENDS: Use config_query responses
+	  Formatted to Guru Handbook
+	* CONFIGURE: Converted to config_query
+	* INSTALL: Cleanup
+	* FINAL, POST_REMOVE: called php5 not php4 now
+	* FINAL: Remove references to php4 from http{,s}d.conf
+	  INSTALL_LOG logic to fix httpd.conf is broken, removed
+	  Only append AddType to http{,s}d.conf as php already
+	  adds the Loadmodule code
+	* POST_REMOVE, PRE_REMOVE: Added code to restore httpd.conf
+
 2004-08-16 Jason Flatt <jflatt@sourcemage.org>
 	* BUILD: Removed extra "&&" on the last line.
 
