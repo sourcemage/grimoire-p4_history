@@ -1,54 +1,52 @@
+
 cd       /usr/src
 rm  -rf  linux
+if  [  -d  linux-${VERSION}  ];  then
+  rm   -r  linux-${VERSION}
+fi
 
-rm -rf linux-$VERSION
-
+mkdir linux-${VERSION}
+cd /usr/src/linux-${VERSION}
+echo "extract ${SOURCE}"
 unpack  $SOURCE
-mv  linux-$VERSION  linux
+EXTRACT_PATH=$(ls)
+mv /usr/src/linux-${VERSION}/${EXTRACT_PATH}/* /usr/src/linux-${VERSION}/
+rmdir /usr/src/linux-${VERSION}/${EXTRACT_PATH}/
+cd /usr/src
 
-# Get our logo on the framebuffer
+chown  -R  root:root  /usr/src/linux-${VERSION}
+
+ln  -s     linux-${VERSION}  linux
+
+if  [  -f  $CONFIG_CACHE/.config  ]; then
+  mv $CONFIG_CACHE/.config $CONFIG_CACHE/kernel.config
+fi
+
+if  [  -f  $CONFIG_CACHE/kernel.config  ];  then
+  cp     $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
+fi
+
+#Get our logo on the framebuffer
 cd  linux/include/linux
 unpack $SOURCE2
 mv  -f  raven_linux_logo.h linux_logo.h
-cd  /usr/src
 
-chown  -R  root:root  linux
 
-if  [  -f   $CONFIG_CACHE/kernel.config  ];  then
-  cp        $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
-fi
+cd  /usr/src/linux
 
-rm -f $BOOST_LOCK
-
-KERNEL_PATCHES=`cat $SCRIPT_DIRECTORY/PATCHES`
-
-EXTRAVERSION=""
-
-for  KERNEL_PATCH  in  $KERNEL_PATCHES;  do
-  if  spell_installed  linux-$KERNEL_PATCH;  then
-    local  PATCH_VERSION=`gaze  DETAILS  linux-$KERNEL_PATCH |
-                                           grep  "VERSION="  |  cut  -d"="  -f2`
-    touch  /tmp/sorcery.patching
-					     
-    cast  -c  linux-$KERNEL_PATCH   &&
-    EXTRAVERSION="${EXTRAVERSION}-${KERNEL_PATCH}-${PATCH_VERSION}" ||
-    exit 1
-
-    rm     /tmp/sorcery.patching
+local COUNTER
+local VAR
+for ((COUNTER=3; COUNTER <= 10 ; COUNTER++))
+do
+  VAR=SOURCE${COUNTER}
+  if [[ "${!VAR}" != "" ]]; then
+    echo "apply ${!VAR}"
+    if [[ ${!VAR} == *.bz2 ]] ; then
+      bzcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    elif [[ ${!VAR} == *.gz ]] ; then
+      zcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    else
+      cat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+    fi
   fi
 done
-
-touch  $BOOST_LOCK
-
-cat  $DEPENDS_CONFIG/$SPELL  |  grep  -v  "EXTRAVERSION"  >  /tmp/$SPELL.$$
-cp  /tmp/$SPELL.$$  $DEPENDS_CONFIG/$SPELL
-echo  EXTRAVERSION="\"$EXTRAVERSION\""  >>  $DEPENDS_CONFIG/$SPELL
-
-sedit  "s/EXTRAVERSION =.*/EXTRAVERSION = $EXTRAVERSION/"  /usr/src/linux/Makefile
-
-if  [  -d  linux-${VERSION}${EXTRAVERSION}  ];  then
-  rm   -r  linux-${VERSION}${EXTRAVERSION}
-fi
-
-mv  linux  linux-${VERSION}${EXTRAVERSION}
-ln  -s     linux-${VERSION}${EXTRAVERSION}  linux
