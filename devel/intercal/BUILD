@@ -1,8 +1,5 @@
 (
-
-  cd src          &&
-  make all        &&
-  prepare_install &&
-  make install
+sedit '/#define YYLINENO_BY_HAND/d' ick.h &&
+default_build
 
 ) > $C_FIFO 2>&1
