@@ -1,6 +1,6 @@
 (
 
-  ./autogen.sh                                      &&
+#  ./autogen.sh                                      &&
   ./configure  --build=${BUILD}                     \
                --prefix=/usr                        \
                --sysconfdir=/etc                    \
