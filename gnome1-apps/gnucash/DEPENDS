@@ -1,12 +1,14 @@
 depends  libtool     &&
 depends  gnome-libs  &&
 depends  glade       &&
-depends  Guppi       &&
+depends  guppi       &&
 depends  slib        &&
 depends  g-wrap      &&
 depends  gtkhtml     &&
 depends  libghttp    &&
 depends  libxml2     &&
-optional_depends      \
-"doxygen" "--enable-doxygen --enable-html-docs" "" \
-"enable documentation generation"
+
+optional_depends  doxygen                                \
+                  "--enable-doxygen --enable-html-docs"  \
+                  ""                                     \
+                  "enable documentation generation"

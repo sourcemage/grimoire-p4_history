@@ -1,16 +1,10 @@
            SPELL=GConf
          VERSION=1.0.9
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='fd9c6e4e3ecac6872c22fd7e0a14fa95'
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20010922
-         UPDATED=20020230
+         UPDATED=20040718
            SHORT="GConf is a system for storing configuration information, that is, key-value pairs."
 cat << EOF
 GConf is a system for storing configuration information, that is,
