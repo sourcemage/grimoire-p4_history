@@ -1,0 +1,45 @@
+CFG=$SPELL_CONFIG
+
+
+get_kdelanguages()  {
+  if  ! `grep -q "$SPELL"  $CFG `
+  then
+    touch $CFG
+    LANGUAGES=`cat $SCRIPT_DIRECTORY/kde.languages`
+    LANGUAGES=`dialog  --backtitle  "KDE i18n Configuration Menu" \
+                      --stdout                                   \
+                      --title      "Select language please"      \
+                      --checklist                                \
+                      ""                                         \
+                      0 50 10                                     \
+                      $LANGUAGES`
+    echo VERSION=$VERSION >> $CFG
+    echo MD5[0]=ignore >>$CFG
+    if [[ $LANGUAGES == ${LANGUAGES/ALL/} ]]
+    then
+      i=1
+      for LANGUAGE in $LANGUAGES
+      do
+        LANGUAGE=${LANGUAGE:1:${#LANGUAGE}-2}
+        if [[ $i == 1 ]]
+        then
+          echo SOURCE=$SPELL-$LANGUAGE-$VERSION.tar.bz2 >> $CFG
+          echo SOURCE_URL[0]=\$SITE/\$SOURCE >> $CFG
+        else
+          echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CFG
+          echo SOURCE${i}_URL[0]=\$SITE/\$SOURCE$i >> $CFG
+        fi
+        echo MD5[$i]=ignore >>$CFG
+        i=$[$i+1]
+      done
+    else
+      echo SOURCE=$SPELL-$VERSION.tar.bz2 >> $CFG
+      echo SOURCE_URL[0]=\$SITE/\$SOURCE >> $CFG
+    fi
+else
+    echo use existing config  
+    sedit "s/3\.[0-9]\.[0-9][0-9][0-9]\?/$VERSION/g" $CFG
+  fi
+}
+get_kdelanguages
+. $CFG
