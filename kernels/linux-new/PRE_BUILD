@@ -1,31 +1,30 @@
+. ${SCRIPT_DIRECTORY}/details.conf
 if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $SOURCE_DIRECTORY 
-fi
-cd ${SOURCE_DIRECTORY} &&
-echo "This is the linux source: $SOURCE" &&
-if [[ "$mode" == "newktree" ]]
-then
-	unpack $SOURCE ${MD5[0]} 
-fi
-cd linux-$VERSION 
-if [[ "$mode" == "newktree" ]]
-then
-	counter="1"
-	tmppatch="PATCH[${counter}]"
+
+	echo "This is the linux source: $SOURCE" &&
+	cd ${SOURCE_DIRECTORY}
+	unpack $SOURCE ${MD5[0]}
+	cd linux-${KERNEL_VERSION}
+	
 	. ${SCRIPT_DIRECTORY}/functions
-	while [[ ${!tmppatch} ]]
+	. ${SCRIPT_DIRECTORY}/latest.defaults
+	. ${SCRIPT_DIRECTORY}/details.conf
+	for patch in $patches
 	do
-		tmpsrc="SOURCE${counter}"
-		tmpmd5="MD5[${counter}]"
-		tmppatch="PATCH[${counter}]"
-		. ${SCRIPT_DIRECTORY}/info/patches/*/${!tmppatch}
-		cp ${INSTALL_ROOT}/var/spool/sorcery/${!tmpsrc} ./
-		unpack ${!tmpsrc} ${tmpmd5}
-		linux_new_uncompress ./${!tmpsrc}
-		patch -p${pval} <${!tmppatch}
-		counter="`expr $counter + 1`"
-		tmppatch="PATCH[${counter}]"
+		case "$patch" in
+			LATEST*)
+				patch=${!patch}
+				;;
+			*)
+				;;
+		esac
+		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
+		cp ${INSTALL_ROOT}/var/spool/sorcery/${source} ./
+		unpack ${source} ${md5sum}
+		linux_new_uncompress ./${source}
+		patch -p${pval} <${patch}
 	done
 
 	if [[ $patchversion == "" ]]
@@ -34,6 +33,7 @@ then
 	else
 		append=$patchversion
 	fi
+	. ${SCRIPT_DIRECTORY}/details.defaults
 	[ -d ${BUILD_DIRECTORY}/linux-$append ] && 
 	rm -r ${BUILD_DIRECTORY}/linux-$append
 	mkdir ${BUILD_DIRECTORY}/linux-$append
@@ -49,9 +49,23 @@ else
 	exit 1
 fi
 cd ${LINUX_SOURCE_DIRECTORY}
-if [[ "$mode" == "newktree" || $RECONFIGURE ]]
+
+. ${SCRIPT_DIRECTORY}/details.conf
+if [[ "$RECONFIGURE" == "true" || ! -f ./.config ]]
 then
-	cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
-	make $MAKEMODE
-	cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+	if [[ $COMPILE ]]
+	then
+		make mrproper
+	fi
+	if [ "${output_dir}" == "" ]
+	then
+		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
+		ARCH="${kernel_arch}" make $MAKEMODE
+		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+	else
+		mkdir -p ${output_dir}
+		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config "${output_dir}"
+		ARCH="${kernel_arch}" make O="${output_dir}" $MAKEMODE
+		cp ${output_dir}/.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+	fi
 fi

@@ -1,53 +1,114 @@
 
-
+# used to figure out which mode, kernel version, patches to apply
 configfile="${SCRIPT_DIRECTORY}/details.conf"
+# kernel information directory
 kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
+# patches information directory
 patchesdir="${SCRIPT_DIRECTORY}/info/patches"
+# sourced from DETAILS to create SOURCE_URL SOURCE
+# KERNEL_VERSION environmental vars
 detailsdefaults="${SCRIPT_DIRECTORY}/details.defaults"
+# Latest versions of your favorite kernel sources and patches
 latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
+# debug log duh ;)
 debug="${SCRIPT_DIRECTORY}/debug.log"
-# globals that get dumped to $configfile
-# if we are making a new src tree or not
-# mode two values are 'newktree' or 'oldktree'
-mode=""
-# version of kernel we are dealing with
-kernelver=""
-# old source tree location for rebuilding old kernel
-old_src_tree=""
-# patches we are applying to kernel
-new_patch_list=""
 
-#old defaults
-if [ -f $configfile ]
-then
-	source $configfile
-fi
+# replace the details.conf file veriable ($1) with value ($2)
+# if the variable doesn't exist then cat it onto the end of the file
+replace_config_var()
+{
+	line="`grep "^$1" $configfile`"
+	new="$1=\"$2\""
+	if [ "$line" == "" ]
+	then
+		echo "$new" >> $configfile
+	else
+		sedit "s/$line/$new/" $configfile
+	fi
+}
 
-dialog="dialog --stdout"
+# Create the default KERNEL_ARCH variable
+arch_default()
+{
+	if [ -z "$KERNEL_ARCH" ]
+	then
+		case  `uname -m`  in
+			alpha) KERNEL_ARCH=alpha   ;;
+			arm) KERNEL_ARCH=arm     ;;
+			cris) KERNEL_ARCH=cris    ;;
+			ia64) KERNEL_ARCH=ia64    ;;
+			i*86) KERNEL_ARCH=i386    ;;
+			m68k) KERNEL_ARCH=m68k    ;;
+			mips) KERNEL_ARCH=mips    ;;
+			mips64) KERNEL_ARCH=mips64  ;;
+			parisc) KERNEL_ARCH=parisc  ;;
+			powerpc) KERNEL_ARCH=ppc     ;;
+			ppc) KERNEL_ARCH=ppc     ;;
+			powerpc64) KERNEL_ARCH=ppc64   ;;
+			s390) KERNEL_ARCH=s390    ;;
+			s390x) KERNEL_ARCH=s390x   ;;
+			sh*) KERNEL_ARCH=sh      ;;
+			sparc) KERNEL_ARCH=sparc   ;;
+			sparc64) KERNEL_ARCH=sparc64 ;;
+			x86_64) KERNEL_ARCH=x86_64  ;;
+		esac		
+	fi
+}
 
+# create the defaults file from scratch
+# do this with every -r command
+create_defaults()
+{
+	arch_default
+	replace_config_var kernel_arch "$KERNEL_ARCH"
+}
+
+# dialog command works even if you add --nocancel as part of the arguments
+dialog="dialog --stdout --cancel-label Save_and_Exit"
+
+# simply list ${BUILD_DIRECTORY} linux sources 
+list_usr_src()
+{
+        linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux-*`"
+        for linuxsrc in $linuxsrcs
+        do
+                if [ -d $linuxsrc ]
+                then
+                        echo "$linuxsrc"
+                        echo "Source_Tree"
+                        echo "Use_${linuxsrc}_as_the_source_tree"
+                fi
+	done
+}
+																			
+# main menu uhhh, what else is there to say?
 main_menu()
 {
 	while true
 	do
 		mode=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
-		--cancel-label "Exit and Save"\
 		--menu \
 		"Would you like to use a new kernel tree or an existing one?" 0 0 0 \
 		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
 		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
+		"Options" "Menu" "Kernel Arch, Build Dir, Cleaning"  \
+		
 		)
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
 			case "$mode" in
 				"newktree") 
-					echo "mode=\"$mode\"" > $configfile
+					replace_config_var mode $mode
 					new_tree_menu 
 					;;
 				"oldktree")
-					echo "mode=\"$mode\"" >> $configfile
-					list_usr_src 
+					replace_config_var mode $mode
+					old_src_menu
+					;;
+				"Options")
+					options_menu
 					;;
 				*) break ;;
 			esac
@@ -57,6 +118,253 @@ main_menu()
 	done
 }
 
+# clean a source directory ($1)
+clean_src_menu()
+{
+	while true
+	do
+		clean_options=$( $dialog --title "Clean Menu" \
+			--item-help --menu \
+			"How to Clean" 0 0 0 \
+			"mrproper" "Clean $1 with mrproper" "Clean Source" \
+			"clean" "Clean $1 with clean" "Clean Source" )
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			tmpdir="`pwd`"
+			cd $1
+			make ${clean_options}
+			cd ${tmpdir}
+		else
+			break
+		fi
+	done
+}
+# select which kernel source to clean
+# pass that kernel source to clean_src_menu
+clean_menu()
+{
+        while true
+        do
+                menu_option=$( $dialog --title "Clean Menu" \
+			--item-help --menu \
+			"Which Kenrel" 0 0 0 $( list_usr_src ) )
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			clean_src_menu ${menu_option}
+		else
+			break
+		fi
+	done
+}
+
+# making other package types for other Linux distros
+other_pkg_src_menu()
+{
+	while true
+	do
+		menu_option=$( $dialog --title "Options Menu" \
+			--item-help --menu \
+			"Other Package Creation" 0 0 0 \
+			"rpm" "Make an RPM package" "Requires RPM" \
+			"rpm-pkg" "Make another RPM package" "Requires RPM" \
+			"binrpm-pkg" "Okay more RPM packages" "Requires RPM" \
+			"deb-pkg" "Make a Debian Package" "Requires Debian Package Utilities" 
+			)
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			tmpdir="`pwd`"
+			cd $1
+			make ${menu_option}
+			cd $tmpdir
+		else
+			break
+		fi
+	done
+}
+
+# list the linux sources to make other package types
+other_package_menu()
+{
+	while true
+	do
+		menu_option=$( $dialog --title "Options Menu" \
+			--item-help --menu \
+			"Select a Kernel Source" 0 0 0 $( list_usr_src ) )
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			other_pkg_src_menu ${menu_option}
+		else
+			break
+		fi
+	done
+}
+
+# select other arch to compile for
+arch_menu() 
+{
+	arch_default
+	local DEFAULT=${KERNEL_ARCH}
+	local COMMAND
+	while true
+	do
+		COMMAND=$( $dialog --title "Select Kernel Architecture"       \
+		--item-help --default-item "$DEFAULT" --menu      \
+		"Select a kernel architecture to use" 0 0 0            \
+		"CUSTOM"             "Manually enter some other Architecture"           "You can enter any valid architecture" \
+		"DEFAULT"            "Default Kernel Architecture"                      "The detected architecture for your platform, $DEFAULT" \
+		"alpha"              "DEC/Compaq 64-bit Alpha"                          "DEC Alpha" \
+		"arm"                "Embedded Processors using 32-bit ARM processors"  "ARM 32-bit" \
+		"cris"               "Embedded Axis ETRAX CRIS processors 32-bit"       "Axis ETRAX CRIS" \
+		"ia64"               "Intel Architecture 64-bit Itanium"                "Intel IA64 64-bit" \
+		"i386"               "Intel Architecture 32-bit 386 through Pentium 4"  "Intel x86 32-bit" \
+		"m68k"               "Motorola 68000 series 32-bit (older Macintosh)"   "m68k 32-bit" \
+		"mips"               "MIPS Technologies 32-bit compatible processors"   "MIPS32 platforms" \
+		"mips64"             "MIPS Technologies 64-bit compatible processors"   "MIPS64 platforms" \
+		"parisc"             "HP PA-RISC 32 and 64-bit processors"              "PA-RISC 32-bit mode" \
+		"ppc"                "PowerPC 32-bit (IBM and Motorola) G3/G4 Mac"      "PPC32 G3/G4" \
+		"ppc64"              "PowerPC 64-bit (IBM) G5 Mac"                      "PPC64 G5" \
+		"s390"               "IBM s390  31-bit systems"                         "IBM s390 31-bit" \
+		"s390x"              "IBM s390x 64-bit systems"                         "IBM s390 64-bit" \
+		"sh"                 "SuperH processors sh4 is 32-bit, sh5 is 64-bit"   "SH4 and SH5 32-bit mode" \
+		"sparc"              "Sun SPARC 32-bit processors"                      "Sun SPARC 32-bit" \
+		"sparc64"            "Sun SPARC 64-bit processors"                      "Sun SPARC 64-bit" \
+		"x86_64"             "AMD x86-64 64-bit Hammer/Opteron/Athlon64 chips"  "AMD x86-64 Hammer"
+		)
+		retval=$?
+		if [[ "$retval" == "0" ]]
+		then
+			if [[ $COMMAND == "CUSTOM" ]]
+			then
+				COMMAND=$($dialog --nocancel --inputbox "Which Architecture do you want to build?\nYou can enter any valid architecture.\nExamples:\n$i386\nppc\nx86_64\nsparc\nsparc64" 0 0 ${KERNEL_ARCH})
+			elif [[ $COMMAND == "DEFAULT" ]]
+			then
+				COMMAND="$DEFAULT"
+			fi
+			KERNEL_ARCH=$COMMAND
+			replace_config_var kernel_arch $COMMAND
+			break
+		else
+			break
+		fi
+	done
+}
+
+# change the O option for the kernel
+build_dir_menu()
+{
+	output_dir=$( $dialog --nocancel --inputbox \
+	"Would you like to select a kernel output dir.\n\
+	Leave it blank for no output dir\n" 0 0 ${output_dir} )
+	retval="$?"
+	echo $retval
+	if [[ "$retval" == "0" || "$output_dir" != "" ]]
+	then
+		echo "Having problems with a straight sed replacement of a dir"
+	else
+		echo "Having problems with a straight sed replacement of a dir"
+	fi
+	sleep 5
+}
+
+# restore a config file from a different location
+restore_config()
+{
+	. ${SCRIPT_DIRECTORY}/DETAILS
+	while true
+	do
+		menu_option=$( $dialog --title "Config Restore" \
+			--item-help --menu \
+			"Restore Config From:" 0 0 0 \
+			"/proc/config.gz" "Restore" "Save /proc/config.gz to ${CONFIG_CACHE}/kernel.config" \
+			"/boot/config-$VERSION" "Restore" "Save /boot/config-$VERSION to ${CONFIG_CACHE}/kernel.config" \
+			"Custom" "Restore" "Save custom config file to ${CONFIG_CACHE}/kernel.config" \
+			)
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			case "${menu_option}" in
+				"/proc/config.gz")
+					if [ -f ${menu_option} ]
+					then
+						zcat /proc/config.gz > ${CONFIG_CACHE}/kernel.config
+					fi
+					;;
+				"/boot/config-$VERSION")
+					if [ -f ${menu_option} ]
+					then
+						cp /boot/config-$VERSION ${CONFIG_CACHE}/kernel.config
+					fi
+					;;
+				"Custom")
+					menu_option=$( $dialog --title "Config Restore" \
+						--nocancel --inputbox \
+						"Enter Custom File to Save to ${CONFIG_CACHE}/kernel.config" \
+						0 0 ${menu_option} )
+					if [ -f ${menu_option} ]
+					then
+						cp ${menu_option} ${CONFIG_CACHE}/kernel.config
+					fi
+					;;
+			esac
+			break
+		else
+			break
+		fi
+	done
+}
+
+# other misc options menu
+options_menu()
+{
+	while true
+	do
+		menu_option=$( $dialog --title "Options Menu" \
+			--item-help --menu \
+			"Options Menu Yeah Fun" 0 0 0 \
+			"Clean" "Options" "Clean the Source Tree" \
+			"Arch" "Selection" "Select Arch Default is $ARCH" \
+			"Optional" "Build Dir" "Build the source to an output directory" \
+			"Config" "Restoration" "Optional config restoration" \
+			"Other" "Packages" "Make an RPM or Debian Package" \
+			"Initrd" "Creation" "Make an bootable initrd" 
+			)
+		retval="`echo $?`"
+		if [[ "$retval" == "0" ]]
+		then
+			case "${menu_option}" in
+				"Clean")
+					clean_menu
+					;;
+				"Arch")
+					arch_menu
+					;;
+				"Optional")
+					build_dir_menu
+					;;
+				"Other")
+					other_package_menu
+					;;
+				"Config")
+					restore_config
+					;;
+				"Initrd")
+					
+					;;
+				*) break ;;
+			esac
+		else
+			break
+		fi
+	done
+}
+
+# create a new linux source tree
+# I use awk to parse the latest.defaults file
+# that should be changed but how?
 new_tree_menu() 
 {
 	while true
@@ -70,9 +378,7 @@ new_tree_menu()
 		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 
 		kernelver=$( $dialog --title "Select Kernel Version" \
-		--item-help --default-item "$kver" \
-		--cancel-label "Exit and Save" \
-		--menu \
+		--item-help --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
 		$menu )
 		retval="$?"
@@ -80,11 +386,11 @@ new_tree_menu()
 		then
 			case "$kernelver" in
 				2.[0-9].[0-9]*) 
-					echo "kver=\"$kernelver\"" >> $configfile
+					replace_config_var kver "$kernelver"
 					patch_menu $kernelver
 					;;
 				LATEST*)
-					echo "kver=\"$kernelver\"" >> $configfile
+					replace_config_var kver "$kernelver"
 					patch_menu $kernelver
 					;;
 				*) break ;;
@@ -95,6 +401,7 @@ new_tree_menu()
 	done
 }
 
+# find all patches list the directories and LATEST patches for the kernel version $1
 patch_list()
 {
 	. $latestdefaults
@@ -124,22 +431,58 @@ patch_list()
 			done
 		fi
 		patchvers="`ls -1 $patchesdir/${patch}`"
+		found="false"
 		for patchver in $patchvers
 		do
 			. $patchesdir/$patch/$patchver
 			for applied in $appliedkernels
 			do
-				if [ $applied == $argv1 ]
+				if [ $argv1 == $applied ]
 				then
-					echo $patchver
-					echo Patch
-					echo $patch
+					found="true"
 				fi
 			done
+		done
+		if [ "$found" == "true" ]
+		then
+			echo $patch
+			echo Patch
+			echo Select_Specific_$patch
+		fi
+	done
+}
+
+# list all patches for kernel version $1 and for patch $2
+list_specific_patch_dir()
+{
+	. $latestdefaults
+	case $1 in
+		LATEST*)
+			argv1=${!1}
+			;;
+		*)
+			argv1=$1
+			;;
+	esac
+	patchvers="`ls -1 $patchesdir/$2`"
+	for patchver in $patchvers
+	do
+		. $patchesdir/$2/$patchver
+		for applied in $appliedkernels
+		do
+			if [ $argv1 == $applied ]
+			then
+				echo $patchver
+				echo PATCH
+				echo $2
+			fi
 		done
 	done
 }
 
+# main patch menu called from main_menu
+# list directories and valid latest patches
+# that apply to the kernel version $1
 patch_menu() 
 {
 	while true
@@ -150,13 +493,24 @@ patch_menu()
 			menu="No_Patches Available Sorry"
 		fi
 		command=$( $dialog --title "Select Patches" \
-			--item-help --cancel-label "Exit and Save"\
-			--menu \
+			--item-help --menu \
 			"Currently selected patches: $new_patch_list" 0 0 0 ${menu}
 			)
 		retval="$?"
 		if [[ "$retval" == "0" && "$command" != "No_Patches" ]]
 		then
+			case "$command" in
+				LATEST*)
+					;;
+				*)
+					echo $1
+					echo $command	
+					command=$( $dialog --title "Select Patches" \
+						--item-help --menu \
+						"Currently selected patches: $new_patch_list" 0 0 0 \
+						$(list_specific_patch_dir $1 $command) )
+					;;
+			esac
 			found=false
 			tmp_patch_list=""
 			for patch in $new_patch_list
@@ -176,31 +530,26 @@ patch_menu()
 				new_patch_list="${new_patch_list}${command} "
 			fi
 		else
-			echo "patches=\"$new_patch_list\"" >> $configfile
+			replace_config_var patches $new_patch_list
 			break
 		fi
 	done
 }
 
-list_usr_src()
+# list the old source menu to reconfigure an old source tree
+old_src_menu()
 {
-	menu=""
-	linuxsrcs="`ls -1d $BUILD_DIRECTORY/linux-*`"
-	for linuxsrc in $linuxsrcs
-	do
-		menu="${menu}${linuxsrc} "Source_Tree" "Use_this_src_tree" "
-	done
 	while true
 	do
 		old_src_tree=$( $dialog --title "Select Old Source Tree" \
 				--item-help \
 				--default-item "$BUILD_DIRECTORY/$old_src_tree"\
-				--cancel-label "Exit and Save" --menu \
-				"Select Old Source Tree" 0 0 0 ${menu} )
+				--menu \
+				"Select Old Source Tree" 0 0 0 $( list_usr_src ) )
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			echo -n "old-src_tree=\"$old_src_tree\"" >> $configfile
+			replace_config_var old_src_tree $old_src_tree
 			break
 		else
 			break
@@ -208,6 +557,38 @@ list_usr_src()
 	done
 }
 
+# if any of the patches needs any other patches applied before it is
+# for example the mm patches apply against the pre patched kernel
+calculate_depends()
+{
+	# really this should be done with a make file
+	. $configfile
+	new_patch_list=""
+	for patch in $patches
+	do
+		case "$patch" in
+			LATEST*)
+				. $patchesdir/*/${!patch}
+				if [ "$depends" != "" ]
+				then
+					new_patch_list="${new_patch_list}${depends} "
+				fi
+				;;
+			*)
+				. $patchesdir/*/${patch}
+				if [ "$depends" != "" ]
+				then
+					new_patch_list="${new_patch_list}${depends} "
+				fi
+				;;
+		esac
+		new_patch_list="${new_patch_list}${patch} "
+		replace_config_var patches ${new_patch_list}
+	done
+}
+
+# created details.defaults file to be sourced by DETAILS file for VERSION SOURCE_URL SOURCE
+# stuff like that
 create_details()
 {
 	. $configfile
@@ -219,20 +600,22 @@ create_details()
 			case "$kver" in
 				LATEST*)
 					. $kernelsdir/${!kver}
-					echo "VERSION=\$$kver"
+					echo "KERNEL_VERSION=\$$kver"
 					echo "SOURCE=$source"
 					echo "MD5[0]=$md5sum"
 					echo "SOURCE_URL=$source_url"
 					;;
 				*)
 					. $kernelsdir/${kver}
-					echo "VERSION=$kver"
+					echo "KERNEL_VERSION=$kver"
 					echo "SOURCE=$source"
 					echo "MD5[0]=$md5sum"
 					echo "SOURCE_URL=$source_url"
 					;;
 				
 			esac
+			. $configfile
+			calculate_depends
 			. $configfile
 			for patch in $patches
 			do
@@ -243,10 +626,13 @@ create_details()
 						echo "SOURCE${counter}=$source"
 						echo "MD5[${counter}]=$md5sum"
 						echo "SOURCE${counter}_URL=${source_url}"
+						echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
+						echo -n $counter
+						echo ']}'
 						;;
 					*)
 						. $patchesdir/*/${patch}
-						echo "PATCH[${counter}]=${patch}"
+						echo "PATCH[${counter}]=${patchversion}"
 						echo "SOURCE${counter}=$source"
 						echo "MD5[${counter}]=$md5sum"
 						echo "SOURCE${counter}_URL=$source_url"
@@ -264,24 +650,44 @@ create_details()
 	esac
 }
 
+# Start of the execution
+
+# if it's not there create it
+if [ ! -f $configfile ]
+then
+        create_defaults
+fi
+
+# for some reason I couldn't get it to show up in
+# PRE_BUILD so I put it in the config file
 if [[ $RECONFIGURE ]]
 then
-	rm $configfile
-	while [ ! -f $configfile ]
-	do
-		main_menu
-	done
-	create_details
-elif [ ! -f $configfile ]
+        replace_config_var RECONFIGURE true
+else
+        replace_config_var RECONFIGURE false
+fi
+
+. $configfile
+
+if [[ "$RECONFIGURE" == "true" || "`grep 'kver=' $configfile`" == "" ]]
 then
-	while [ ! -f $configfile ]
+	main_menu
+	. $configfile
+	if [ "`grep 'kver=' $configfile`" == "" ]
+	then
+		echo "You really need to tell the spell what linux kernel you are dealing with."
+		sleep 5
+	fi
+	while [ "`grep 'kver=' $configfile`" == "" ]
 	do
 		main_menu
-		if [ ! -f $configfile ]
+		. $configfile
+		if [ "`grep 'kver=' $configfile`" == "" ]
 		then
 			echo "You really need to tell the spell what linux kernel you are dealing with."
 			sleep 5
 		fi
+		
 	done
 	create_details
 else

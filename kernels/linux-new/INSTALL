@@ -1,28 +1,76 @@
 cd ${LINUX_SOURCE_DIRECTORY}
 
+. ${SCRIPT_DIRECTORY}/details.conf
+
+# make the append
+append="`echo ${LINUX_SOURCE_DIRECTORY} | awk -F'/' '{ print $NF }'`"
+append="`echo $append | awk -F'-' '{ for(i=2; i <= NF; i++)
+					{
+						printf("%s", $i);
+						if( i != NF )
+							printf("-");
+					}
+				   }'`"
+mkdir -p ${INSTALL_ROOT}/boot
 case "$VERSION" in
 	2.6*)
-		echo "installing for a 2.6 kernel"
-		make modules_install &&
-		INSTALL_PATH="/boot/" make install
+		echo "installing for a 2.x kernel"
+		if [ "${output_dir}" == "" ]
+		then
+			ARCH="$kernel_arch" make modules_install
+		else
+			ARCH="$kernel_arch" make O="${output_dir}" modules_install
+		fi
 		;;
-	2.4*)
-		echo "installing for a 2.4 kernel"
-		echo "This part isn't implemented yet"
-		exit 1
-		;;
-	2.2*)
-		echo "installing for a 2.2 kernel"
-		echo "This part isn't implemented yet"
-		exit 1
-		;;
-	2.0*)
-		echo "installing for a 2.0 kernel"
-		echo "This part isn't implemented yet"
-		exit 1
+	2.[024]*)
+		echo "installing for a $VERSION kernel"
+		ARCH="$kernel_arch" make modules_install
 		;;
 	*)
 		echo "I again don't know what version: $VERSION is"
 		exit 1
 		;;
-esac 
+esac
+if [ "${output_dir}" == "" ]
+then
+	root="${INSTALL_ROOT}"
+else
+	root="${output_dir}"
+fi
+case  ${kernel_arch}  in
+	ppc)
+		cp vmlinux \
+		${root}/boot/vmlinux-$append &&
+		ln -sf ${root}/boot/vmlinux-${append} \
+		${root}/boot/vmlinux
+		;;
+	sparc*)
+		gzip -c9 vmlinux > \
+		${root}/boot/vmlinuz-$append &&
+		ln -sf ${root}/boot/vmlinuz-${append} \
+		${root}/boot/vmlinuz
+		;;
+	*)
+		cp arch/${kernel_arch}/boot/bzImage \
+		${root}/boot/vmlinubz-$append &&
+		ln -sf ${root}/boot/vmlinubz-${append} \
+		${root}/boot/vmlinubz
+	;;
+esac
+
+cp System.map ${INSTALL_ROOT}/boot/System.map-${append}
+ln -sf ${INSTALL_ROOT}/boot/System.map-${append} \
+	${INSTALL_ROOT}/boot/System.map
+cp ./.config ${INSTALL_ROOT}/boot/config-${append}
+ln -sf ${INSTALL_ROOT}/boot/config-${append} \
+	${INSTALL_ROOT}/boot/config
+
+tmpdir="`pwd`"
+cd ${BUILD_DIRECTORY}
+rm linux
+ln -s linux-$VERSION linux
+cd $tmpdir
+
+# I don't know why I have to write it this way but VERSION
+# doesn't carry over to UPDATE_BOOTLOADER
+VERSION=$VERSION ${SCRIPT_DIRECTORY}/UPDATE_BOOTLOADER

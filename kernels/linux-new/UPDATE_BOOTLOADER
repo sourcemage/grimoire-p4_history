@@ -37,10 +37,6 @@ update_lilo()  {
 
   if  !  grep  -q  "${VERSION}$"  /etc/lilo.conf;  then
 
-    IFS_OLD=$IFS
-    export  IFS="
-"
-
     rm  -rf  /etc/lilo.conf.new
     cp  /etc/lilo.conf  /etc/lilo.conf.old
 
@@ -70,8 +66,6 @@ update_lilo()  {
 
     mv  /etc/lilo.conf.new  /etc/lilo.conf
 
-    export  IFS=$IFS_OLD
-
   fi
 
   /sbin/lilo
@@ -82,10 +76,6 @@ update_lilo()  {
 update_silo()  {
 
   if  !  grep  -q  "${VERSION}$"  /etc/silo.conf;  then
-
-    IFS_OLD=$IFS
-    export  IFS="
-"
 
     rm  -rf  /etc/silo.conf.new
     cp  /etc/silo.conf  /etc/silo.conf.old
@@ -116,8 +106,6 @@ update_silo()  {
 
     cp  /etc/silo.conf.new  /etc/silo.conf
 
-    export  IFS=$IFS_OLD
-
   fi
 
   echo  "Updated /etc/silo.conf"
@@ -127,10 +115,6 @@ update_silo()  {
 update_yaboot()  {
 
   if  !  grep  -q  "$VERSION"  /etc/yaboot.conf;  then
-
-    IFS_OLD=$IFS
-    export  IFS="
-"
 
     rm  -rf  /etc/yaboot.conf.new
     cp  /etc/yaboot.conf  /etc/yaboot.conf.old
@@ -161,8 +145,6 @@ update_yaboot()  {
 
     mv  /etc/yaboot.conf.new  /etc/yaboot.conf
 
-    export  IFS=$IFS_OLD
-
   fi
 
   /usr/sbin/ybin
@@ -171,10 +153,10 @@ update_yaboot()  {
 
 grub_image_entry() {
 
-local KERNEL=$(grep kernel /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+local KERNEL=$(grep "^kernel" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
 KERNEL=${KERNEL%\/vm*}
 
-local GROOT=$(grep "root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
+local GROOT=$(grep "^root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
 
 local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
 
@@ -194,7 +176,7 @@ EOF
 update_grub() {
 
   local MENU=/boot/grub/menu.lst
-
+  
   if  !  grep  -q  "vmlinubz-${VERSION} "  $MENU;  then
 
     rm  -rf  $MENU.old

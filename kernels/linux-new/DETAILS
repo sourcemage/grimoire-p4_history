@@ -6,7 +6,7 @@ BUILD_API=2
 . ${SCRIPT_DIRECTORY}/latest.defaults
 . ${SCRIPT_DIRECTORY}/details.defaults
 # $files is from details.defaults
-
+VERSION=${patchversion=${KERNEL_VERSION}}
 SOURCE_DIRECTORY="${BUILD_DIRECTORY}/linux-new-${VERSION}"
 
 WEB_SITE=http://www.kernel.org
