@@ -1,25 +1,28 @@
-#!/bin/sh
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:3 4 5:S90
-# SMGL-STOP:0 1 2 6:K25
-#
+#!/bin/bash
 
-case "$1" in
-  start|reload|restart)
-    echo  "$1ing squid"
-    squid  -k  shutdown  >  /dev/null  2>&1
-    squid  -z -F         >  /dev/null  2>&1
-    squid  $SQUID_OPTS
-    ;;
+PROGRAM=/usr/sbin/squid
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
 
-  stop)
-    echo   "$1ping squid"
-    squid  -k  shutdown
-    ;;
+. /etc/init.d/smgl_init
 
-  *)
-    echo  "Usage: $0 {start|stop|reload|restart}"
-    exit  1
-esac
+start()
+{
+  echo "Starting squid..."
+  /usr/sbin/squid -z -F > /dev/null 2>&1
+  loadproc /usr/sbin/squid
+}
+
+reload()
+{
+  echo "Reloading squid..."
+  /usr/sbin/squid -k reconfigure > /dev/null 2>&1
+  evaluate_retval
+}
+
+stop()
+{
+  echo "Stopping squid..."
+  /usr/sbin/squid -k shutdown > /dev/null 2>&1
+  evaluate_retval
+}
