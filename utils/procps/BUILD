@@ -1,4 +1,6 @@
 (
+  patch -p0 < $SCRIPT_DIRECTORY/procps.patch                  &&
+  patch -p1 < $SCRIPT_DIRECTORY/01-01-procps-2.0.7-intl.patch &&
 
   make                                &&
   prepare_install                     &&
