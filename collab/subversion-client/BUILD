@@ -9,13 +9,17 @@
     --disable-dso             \
     --disable-maintainer-mode \
     --disable-mod-activation  \
-    --disable-shared          \
-    --enable-static           \
-    --without-berkeley-db     &&
-  make                        &&
+    --disable-static          \
+    --enable-shared=all       \
+    --without-berkeley-db     \
+    $OPTS                     &&
+
+  make &&
+  make swig-py-ext &&
+  if spell_installed Python; then make check; fi &&
 
   prepare_install &&
   make    install &&
-  make    check
+  make    install-swig-py-ext
 
 ) >$C_FIFO 2>&1

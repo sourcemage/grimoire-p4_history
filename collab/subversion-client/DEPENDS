@@ -1,11 +1,24 @@
 # $Id: DEPENDS,v 1.6 2002/12/11 16:57:15 sergeyli Exp $
-# Dependencies according to http://svn.collab.net/repos/svn/trunk/INSTALL
+APRCONFIG=$(which apr-config 2>/dev/null)
+
+# We need to use the APR which is installed,
+# otherwise Subversion's install will overwrite it
+if [ -n "$APRCONFIG" ]; && APRVERSION=$($APRCONFIG --version >/dev/null 2>&1); then
+  APRFROM=$(gaze from $APRCONFIG | head -1) &&
+  APRSPELL=${APRFROM%-*:*}                  &&
+  message "${MESSAGE_COLOR}Using APR $APRVERSION from spell ${APRSPELL}${DEFAULT_COLOR}" &&
+  depends $APRSPELL "--with-apr=$APRCONFIG --with-apr-util=/usr"
+fi &&
 
 depends autoconf &&
 depends libtool  &&
 depends bison    &&
-depends libxml   &&
-depends Python   &&
 depends swig '--with-swig' &&
  
-optional_depends openssl '--with-ssl' '--without-ssl' 'for SSL/TLS support'
+# If there's no Neon, people will have a choice to install it or use bundled version
+# If there's Neon already installed, it's going to be consumed automatically
+optional_depends neon               \
+                 '--with-neon=/usr' \
+                 ''                 \
+                 'install neon separately ("n" installs Subversion-bundled neon library)' &&
+optional_depends openssl '--with-ssl' '--without-ssl' 'for SSL/TLS support (recommended)'
