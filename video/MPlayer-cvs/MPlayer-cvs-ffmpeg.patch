@@ -1,11 +1,26 @@
+Index: Makefile
+===================================================================
+RCS file: /cvsroot/mplayer/main/Makefile,v
+retrieving revision 1.277
+diff -u -r1.277 Makefile
+--- Makefile	19 Oct 2003 20:20:45 -0000	1.277
++++ Makefile	3 Nov 2003 18:00:36 -0000
+@@ -39,6 +39,7 @@
+ COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB) $(FLAC_LIB)
+ 
+ CFLAGS = $(OPTFLAGS) -Ilibmpdemux -Iloader -Ilibvo $(FREETYPE_INC) $(EXTRA_INC) $(CDPARANOIA_INC) $(SDL_INC) $(X11_INC) $(FRIBIDI_INC) $(DVB_INC) # -Wall
++CFLAGS += -I/usr/include/ffmpeg
+ 
+ PARTS = libmpdemux libmpcodecs mp3lib liba52 libmpeg2 libavcodec libao2 drivers osdep postproc input libvo libaf
+ ifeq ($(INTERNAL_FAAD),yes)
 Index: configure
 ===================================================================
 RCS file: /cvsroot/mplayer/main/configure,v
-retrieving revision 1.797
-diff -u -r1.797 configure
---- configure	27 Oct 2003 01:06:35 -0000	1.797
-+++ configure	27 Oct 2003 11:39:11 -0000
-@@ -4832,6 +4832,8 @@
+retrieving revision 1.802
+diff -u -r1.802 configure
+--- configure	3 Nov 2003 16:35:17 -0000	1.802
++++ configure	3 Nov 2003 18:00:55 -0000
+@@ -4864,6 +4864,8 @@
  elif test "$_libavcodecso" = yes ; then
    _def_libavcodec='#define USE_LIBAVCODEC 1'
    _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
@@ -14,13 +29,29 @@ diff -u -r1.797 configure
    _ld_libavcodec='-lavcodec'
    _codecmodules="libavcodec.so $_codecmodules"
  else
+Index: mencoder.c
+===================================================================
+RCS file: /cvsroot/mplayer/main/mencoder.c,v
+retrieving revision 1.220
+diff -u -r1.220 mencoder.c
+--- mencoder.c	3 Nov 2003 16:35:17 -0000	1.220
++++ mencoder.c	3 Nov 2003 18:01:01 -0000
+@@ -74,7 +74,7 @@
+ 
+ #ifdef USE_LIBAVCODEC
+ // for lavc audio encoding
+-#include "libavcodec/avcodec.h"
++#include "avcodec.h"
+ static AVCodec        *lavc_acodec;
+ static AVCodecContext *lavc_actx = NULL;
+ extern char    *lavc_param_acodec;
 Index: libmpcodecs/Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/libmpcodecs/Makefile,v
 retrieving revision 1.112
 diff -u -r1.112 Makefile
 --- libmpcodecs/Makefile	26 Oct 2003 23:07:21 -0000	1.112
-+++ libmpcodecs/Makefile	27 Oct 2003 11:39:15 -0000
++++ libmpcodecs/Makefile	3 Nov 2003 18:01:06 -0000
 @@ -41,7 +41,7 @@
  SRCS2=$(ENCODER_SRCS)
  OBJS2=$(SRCS2:.c=.o)
@@ -36,7 +67,7 @@ RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_pp.c,v
 retrieving revision 1.30
 diff -u -r1.30 vf_pp.c
 --- libmpcodecs/vf_pp.c	31 Aug 2003 22:18:27 -0000	1.30
-+++ libmpcodecs/vf_pp.c	27 Oct 2003 11:39:16 -0000
++++ libmpcodecs/vf_pp.c	3 Nov 2003 18:01:07 -0000
 @@ -20,10 +20,10 @@
  
  #define EMU_OLD
@@ -53,12 +84,12 @@ diff -u -r1.30 vf_pp.c
 Index: libmpcodecs/vf_spp.c
 ===================================================================
 RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_spp.c,v
-retrieving revision 1.3
-diff -u -r1.3 vf_spp.c
---- libmpcodecs/vf_spp.c	27 Oct 2003 00:14:33 -0000	1.3
-+++ libmpcodecs/vf_spp.c	27 Oct 2003 11:39:16 -0000
-@@ -32,8 +32,8 @@
- #include "../config.h"
+retrieving revision 1.14
+diff -u -r1.14 vf_spp.c
+--- libmpcodecs/vf_spp.c	31 Oct 2003 13:23:33 -0000	1.14
++++ libmpcodecs/vf_spp.c	3 Nov 2003 18:01:09 -0000
+@@ -36,8 +36,8 @@
+ 
  #include "../mp_msg.h"
  #include "../cpudetect.h"
 -#include "../libavcodec/avcodec.h"
