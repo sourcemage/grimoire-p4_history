@@ -1,6 +1,15 @@
-message "Note:  if this is a fresh install, follow the instructions in"
-message "'/usr/doc/mailman/INSTALL', starting at paragraph 4:"
-message "${MESSAGE_COLOR}'4. Final system set-up'${DEFAULT_COLOR}."
-message "These substitutions apply there:"
-message "\$prefix='/usr/share/mailman'"
-message "\$varprefix='/var/spool/mailman'"
+if  [ -s /tmp/mailman.cron ];  then
+  mv  /tmp/mailman.cron  /usr/share/mailman/cron/crontab.old
+  message "Your original crontab for user 'mailman' has been saved to"
+  message "'/usr/share/mailman/cron/crontab.old'. You now can restart"
+  message "mailman and set up again crontab. If you are doing a version"
+  message "upgrade, please check INSTALL and UPGRADING files before."
+else
+  rm -f  /tmp/mailman.cron
+  message "Note:  if this is fresh install, follow the instructions in"
+  message "'/usr/doc/mailman/INSTALL', starting at paragraph 4:"
+  message "${MESSAGE_COLOR}'4. Final system set-up'${DEFAULT_COLOR}."
+  message "These substitutions apply there:"
+  message "\$prefix='/usr/share/mailman'"
+  message "\$varprefix='/var/spool/mailman'"
+fi

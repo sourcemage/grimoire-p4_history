@@ -19,6 +19,12 @@
                $OPTS                                 &&
   make                                               &&
   prepare_install                                    &&
+  ( 
+    if  spell_installed  mailman-i18n;  then
+      dispel  mailman-i18n
+    fi
+    true
+  )
   make    install
 
 ) > $C_FIFO 2>&1  &&
