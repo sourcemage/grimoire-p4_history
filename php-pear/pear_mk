@@ -3,7 +3,8 @@ declare -r MY_NAME=$(basename "$0")
 declare -r MY_DIRECTORY=${0%\/$MY_NAME}
 
 # standard PEAR packages included with the PHP distribution as of PHP 4.3.2
-declare -ar PEAR_STANDARD=(Archive_Tar Console_Getopt DB HTTP Mail Net_SMTP Net_Socket PEAR XML_Parser XML_RPC)
+#declare -ar PEAR_STANDARD=(Archive_Tar Console_Getopt DB HTTP Mail Net_SMTP Net_Socket PEAR XML_Parser XML_RPC)
+declare -ar PEAR_STANDARD=(Console_Getopt PEAR)
 
 function say() {
   echo "$MY_NAME: $*"
