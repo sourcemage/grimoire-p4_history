@@ -1,12 +1,9 @@
 (
-rm -rf  /usr/share/timidity     &&
-mkdir   /usr/share/timidity     &&
-cp      /var/spool/sorcery/$SOURCE /usr/share/timidity/    &&
-cd      /usr/share/timidity     &&
+rm -rf    /usr/share/timidity     &&
+mkdir -p  /usr/share/timidity     &&
+cp  -R    /usr/src/eawpats12/* /usr/share/timidity/    &&
 
-rm $SOURCE              &&
-mv eawpats12/* .        &&
-rm -r eawpats12/	&&
+rm -rf eawpats12/	&&
 
 echo "Should work now... Enjoy a new MIDI experience :)"
 
