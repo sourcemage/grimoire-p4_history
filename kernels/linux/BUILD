@@ -37,6 +37,24 @@ run_make() {
   
 run_make  mrproper
 
+#
+# If the architecture-dependent assembly hasn't been linked
+# to the generic 'asm' directory, do so.
+#
+# 2003-10-10  sandalle
+#
+
+if [ ! -h  include/asm ]
+then
+  cd  include                &&
+  ln  -sf  asm-${ARCH}  asm  &&
+  cd  ..
+fi  &&
+
+#
+# End fix
+#
+
 if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
   cp $CONFIG_CACHE/kernel.config .config
 fi
