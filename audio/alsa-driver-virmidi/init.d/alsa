@@ -93,7 +93,7 @@ stop() {
   # remove all sound modules
   #
   $lsmod | grep -E "^snd" | grep -Ev "(snd-page-alloc|snd_page_alloc)" | while read line; do
-     module=$(echo $line | cut -d ' ' -f1)  &&
+     module=$(builtin echo $line | cut -d ' ' -f1)  &&
      echo "Unloading module: $module"       &&
      /sbin/rmmod $module                    &&
      evaluate_retval || break
