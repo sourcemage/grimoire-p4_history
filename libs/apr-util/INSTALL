@@ -3,19 +3,20 @@ default_install &&
 case "$APR_VERSION" in
 	1.*)
 		# needed for httpd-dev from svn
-		cp -v ./Makefile.in /usr/share/apache2/
+		cp -v ./Makefile.in ${INSTALL_ROOT}/usr/share/apache2/
 		for file in $NEEDED_BUILD_FILES
 		do
-			cp -v ./build/$file /usr/share/apache2/build-1/
+			cp -v ./build/$file ${INSTALL_ROOT}/usr/share/apache2/build-1/
 		done
-		[ -d /usr/share/apache2/build ] && rm -rvf /usr/share/apache2/build
-		ln -fns build-1 /usr/share/apache2/build
-		ln -fns apr-1-config /usr/bin/apr-config
+		[ -d /usr/share/apache2/build ] && 
+		rm -rvf ${INSTALL_ROOT}/usr/share/apache2/build
+		ln -fns build-1 ${INSTALL_ROOT}/usr/share/apache2/build
+		ln -fns apr-1-config ${INSTALL_ROOT}/usr/bin/apr-config
 	;;
 	*)
 		for file in $NEEDED_BUILD_FILES
 		do
-			cp -v ./build/$file /usr/share/apache2/build/
+			cp -v ./build/$file ${INSTALL_ROOT}/usr/share/apache2/build/
 		done
 	;;
 esac
