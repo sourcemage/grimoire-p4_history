@@ -1,15 +1,14 @@
            SPELL=sqlite
-         VERSION=2.8.4
+         VERSION=2.8.5
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=http://www.hwaci.com/sw/sqlite/$SOURCE
-          MD5[0]='bc7648b1d97127369d85955fb44e7ac2'
+          MD5[0]='92408a1eee882c9947fb39c2d0dc6d29'
       LICENSE[0]=PD
         WEB_SITE=http://www.hwaci.com/sw/sqlite/
          ENTERED=20011016
          UPDATED=20020423
-      MAINTAINER=svolli@svolli.de
-           SHORT="An SQL engine in a C library."
+           SHORT='An SQL engine in a C library'
 
 cat << EOF
 SQLite is a C library that implements an SQL database engine. A large
@@ -20,6 +19,6 @@ of an SQL database without the administrative hassles of supporting a
 separate database server. Because it omits the client-server interaction
 overhead and writes directly to disk, SQLite is also faster than the big
 database servers for most operations. In addition to the C library, the
-SQLite distribution includes a command-line tool for interacting nwith
+SQLite distribution includes a command-line tool for interacting with
 SQLite databases and SQLite bindings for Tcl/Tk.
 EOF

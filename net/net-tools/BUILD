@@ -5,8 +5,7 @@
 
   make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"  &&
   prepare_install                                              &&
-  make  BASEDIR=/  install                                     &&
-  cp $SCRIPT_DIRECTORY/netconf /usr/sbin/netconf
+  make  BASEDIR=/  install
 
 ) > $C_FIFO 2>&1  &&  (
 

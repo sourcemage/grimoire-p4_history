@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SMGL-script-version=20030712
+# SMGL-script-version=20030723
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
@@ -46,7 +46,8 @@ case "$1" in
 		    echo " There are errors in $netdevdir/$DEVICE.dev"
 		else
 # only load module if necessary; i.e. not built into kernel.
-		    if [ ! -z "$MODULE" ]; then
+		    if [ ! -z "$MODULE" ] && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ]
+            then
 			echo "Starting network with $DEVICE ..."
 			loadproc modprobe  $MODULE
 		    fi
@@ -92,7 +93,8 @@ case "$1" in
 			ifconfig $DEVICE down
 		    fi
 # only do this if network device is a module
-		    if [ ! -z "$MODULE" ]; then
+		    if [ ! -z "$MODULE" ]  && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ]
+            then
 			echo "Stopping network on $DEVICE ..."
 			modprobe -r $MODULE
 			evaluate_retval
