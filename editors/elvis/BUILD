@@ -1,15 +1,13 @@
 (
 
-  sedit  "s/-O2/$CFLAGS/"  configure      &&
-
-  ./configure  --build=$BUILD             \
-               --bindir=/usr/bin          \
-               --libs=/lib/libncurses.so  \
-               --datadir=/var/lib/elvis   \
-               $OPTS                      &&
-  make                                    &&
-  prepare_install                         &&
-  make    install                         &&
-  ln  -sf  elvis  /usr/bin/vi
+  sedit  "s/-O2/$CFLAGS/"  configure                      &&
+  sedit "s:\/usr\/local:${INSTALL_ROOT}\/usr:" instman.sh &&
+  ./configure  --prefix=${INSTALL_ROOT}/usr               \
+               --datadir=${INSTALL_ROOT}/usr/share/elvis  \
+               $OPTS linux                                &&
+  make                                                    &&
+  prepare_install                                         &&
+  make    install                                         &&
+  ln  -sf  elvis  ${INSTALL_ROOT}/usr/bin/vi
 
 )  >  $C_FIFO  2>&1
