@@ -1,8 +1,6 @@
 (
 	PHP_EXT=`php-config --extension-dir`       &&
 
-	patch -p0 < $SCRIPT_DIRECTORY/$SPELL.patch &&
-
 	phpize                                     &&
 	./configure --enable-xdebug                &&
 	make                                       &&
