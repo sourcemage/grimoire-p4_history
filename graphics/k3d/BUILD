@@ -5,6 +5,8 @@
   sedit  's:python2.2:python2.3:g'  acinclude.m4  &&
   sedit  's:python2.2:python2.3:g'  aclocal.m4    &&
   sedit  's:python2.2:python2.3:g'  configure     &&
+  # remove undefined symbol 'mkdir_p'
+  sedit '/mkdir_p/D' Makefile.in    &&
 
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
@@ -13,8 +15,7 @@
                ${OPTS}                               &&
   make                                               &&
   prepare_install                                    &&
-  make  install                                      #&&
-  # make install has some stupid check in it.
+  make  install                                      &&
   install  -m  755  ${SCRIPT_DIRECTORY}/k3d  /usr/bin
 
 )  >  ${C_FIFO}  2>&1
