@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr       \
-               --with-gnu-gettext  &&
+               --with-gnu-gettext  \
+	       $OPTS		   &&
   make                             &&
   prepare_install                  &&
   make    install

@@ -5,11 +5,13 @@
   sedit  "s/-O/$CFLAGS/"  Makefile
 
   ./configure  --prefix=/usr  \
-               --shared       &&
+               --shared       \
+               $OPTS	      &&
   make                        &&
   prepare_install             &&
   make    install             &&
-  ./configure  --prefix=/usr  &&
+  ./configure  --prefix=/usr  \
+	       $OPTS	      &&
   make                        &&
   make    install
 
