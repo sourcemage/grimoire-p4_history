@@ -1,6 +1,4 @@
 (
-  # Apply gcc 3.3 patch
-  bzcat  ${SOURCE_CACHE}/${SOURCE2}  |  patch  -p1  &&
 
   #  the following export was to deal with a zvt compilation problem.
   export  CFLAGS="$CFLAGS -I/usr/include/gnome-1.0"
