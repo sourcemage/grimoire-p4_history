@@ -12,6 +12,7 @@ depends  perl        &&
 depends  fontconfig  &&
 depends  zlib        &&
 depends  ncurses     &&
+depends  expat       &&
 #xc/config/cf/linux.cf defines having GhostScript by default
 depends  POSTSCRIPT-INTERPRETER  &&
 
@@ -23,4 +24,9 @@ optional_depends  groff                          \
 optional_depends  libpng                   \
                   ""                       \
                   ""                       \
-                  "for PNG image support"
+                  "for PNG image support"  &&
+
+optional_depends  libusb                          \
+                  ""                              \
+                  ""                              \
+                  "for USB input device support"

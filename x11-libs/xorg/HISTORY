@@ -4,21 +4,36 @@
 	  Changed long description to that from X.Org
 	  Added BUILD_API=2
 	* DEPENDS: Depends on ncurses and a POSTCRIPT-INTERPRETER
-	  Optionally depends on groff and libpng
+	  Optionally depends on groff, libpng, and libusb
 	* PRE_BUILD: Copy config/cf/xorgsite.def to config/cf/host.def
+	  Modify site.def appropriate to options and system state
 	* PRE_BUILD,POST_INSTALL,BUILD: Let's not use the shadow .bld directory
 	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
-	* PRE_BUILD,BUILD: Move modification of host.def to PRE_BUILD
-	  Move source code modification to PRE_BUILD
+	* PRE_BUILD,BUILD: Moved modification of host.def to PRE_BUILD
+	  Moved source code modification to PRE_BUILD
 	* CONFIGURE,DEPENDS,PRE_BUILD: Only use PAM if the user wants, not just
 	  if it's installed
-	* CONFIGURE: Add options for DEBUG and IPv6
-	  Add dialogs for development X drivers and development DRI drivers
-	  Alphabetize OFF_CARD_DRIVERS and OFF_DRI
+	* CONFIGURE: Added options for DEBUG and IPv6
+	  Added option to install Japanese documentation
+	  Added dialogs for development X drivers and development DRI drivers
+	  Alphabetized OFF_CARD_DRIVERS and OFF_DRI
 	  Added dummy, nsc, sunleo, suncg6, suncg3, suncg14, suntcx, sunbw2,
 	  and sunffb to OFF_CARD_DRIVERS
 	  Removed i830, mach64, s3v, and trident from OFF_DRI
 	  Added i915 to OFF_DRI
+	  Added menus and options for Extensions and Libraries
+	  Renamed BuildXF86DRM to BuildXF86OldDRMCompat in YES_MISC_OPTIONS
+	  Added UseRgbTxt to YES_MISC_OPTIONS
+	  Moved BuildGlxExt from YES_MISC_OPTIONS to ON_EXTENSIONS
+	  Moved BuildGLULibrary and BuildOSMesaLib from YES_MISC_OPTIONS to
+	  ON_LIBRARIES
+	  Added BuildXF86BigfontExt, BuildCID, and BuildFreeType to
+	  YES_FONT_OPTIONS
+	  Added BuildSPeedo and BuildType1 to NO_FONT_OPTIONS
+	  Moved BuildSpeedoFonts from YES_FONT_OPTIONS to NO_FONT_OPTIONS
+	  Moved BUILDCIDFonts and BuildCyrillicFonts from NO_FONT_OPTIONS to
+	  YES_FONT_OPTIONS
+	  Added query for USB mouse support...not sure why they default to "NO"
 	* BUILD: Redo driver makefiles so that it only uses what we defined
 	  Message should set the color
 	  General cleanup
