@@ -1,12 +1,12 @@
 # the remaining details of this spell are provided by CONFIGURE
 source  $SCRIPT_DIRECTORY/../KDE_DETAILS
            SPELL=kde-i18n
-if  [  "$KDE_DEVEL"  ==  "y"  ];  then
-         VERSION=3.2.92
+if  [ $KDE_DEVEL  ==  "y" ];  then
+         VERSION=3.3.92
             SITE=$KDE_URL/unstable/$VERSION/src/$SPELL
 else
          VERSION=3.3.2
-            SITE=$KDE_URL/stable/${VERSION/\.0/}/src/$SPELL
+            SITE=$KDE_URL/stable/$VERSION/src/$SPELL
 fi
        BUILD_API=2
 
