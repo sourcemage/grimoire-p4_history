@@ -662,7 +662,7 @@ create_details()
 				echo "SOURCE${counter}=\$source"
 				echo "MD5[${counter}]=\$md5sum"
 				echo "SOURCE${counter}_URL=\$source_url"
-				if [[ "$counter" == "1" ]]
+				if [[ "$counter" == "1" && "${patchversion}" != "" ]]
 				then
 					echo 'PATCHVER=${patchversion}'
 				fi
