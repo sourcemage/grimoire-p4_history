@@ -7,3 +7,9 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
 
   echo 'CONFIGURED=y' >> $SPELL_CONFIG
 fi
+
+if httpd -t; then
+  if [ -x /etc/init.d/runlevels/%3/apache ]; then
+    config_query  RHTTPD  "Would you like to restart the HTTPD?"  n
+  fi
+fi

@@ -1,17 +1,18 @@
            SPELL=subversion
          VERSION=1.0.5
           SOURCE=${SPELL%-*}-$VERSION.tar.bz2
-          MD5[0]='bf9730ca101404892ff8e4bd209c3ab1'
-      LICENSE[0]=APACHE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
-      MAKE_NJOBS=1
-     GATHER_DOCS=off
    SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
 #  SOURCE_URL[1]=http://subversion.tigris.org/files/documents/15/13432/$SOURCE
+          MD5[0]='bf9730ca101404892ff8e4bd209c3ab1'
         WEB_SITE=http://subversion.tigris.org/
          ENTERED=20020528
          UPDATED=20031205
-           SHORT='Subversion - a compelling replacement for CVS'
+      MAKE_NJOBS=1
+      LICENSE[0]=APACHE
+     GATHER_DOCS=off
+       BUILD_API=2
+           SHORT='Compelling replacement for CVS'
 cat << EOF
 The goal of the Subversion project is write a version control system that takes
 over CVS's current and future user base 1. The first release has all the major
