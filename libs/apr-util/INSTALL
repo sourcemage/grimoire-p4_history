@@ -2,6 +2,8 @@ NEEDED_BUILD_FILES="find_apu.m4 apu-conf.m4 apu-hints.m4"
 default_install &&
 case "$APR_VERSION" in
 	1.*)
+		# needed for httpd-dev from svn
+		cp -v ./Makefile.in /usr/share/apache2/
 		for file in $NEEDED_BUILD_FILES
 		do
 			cp -v ./build/$file /usr/share/apache2/build-1/
