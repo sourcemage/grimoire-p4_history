@@ -1,2 +1,2 @@
-depends  pccts  "--with-pcctsbin=/usr/bin --with-pcctsinc=/usr/include/pccts" &&
+optional_depends  "pccts"  "--with-pcctsbin=/usr/bin --with-pcctsinc=/usr/include/pccts"  ""  "to use an install pccts for parser generation" &&
 optional_depends  "lame"  "--with-lame"  "--without-lame"  "for toc2mp3 tool"
