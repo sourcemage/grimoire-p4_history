@@ -3,7 +3,7 @@
   bunzip2  -cd  $SCRIPT_DIRECTORY/gcc-2.95.3-2.patch.bz2  |
   patch  -p 1
   sedit  "s/read junk//"  gcc/p/config-lang.in
-  LANGUAGES="c,c++,objective-c,pascal,fortran,java"
+  LANGUAGES="c,c++,objc,pascal,fortran,java"
 
 
   ./configure  --host=$BUILD     \
