@@ -1,71 +1,89 @@
-if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
+config_query_option  OPTS                        \
+                     "Enable admin group?"    y  \
+                     "--enable-admin-group"      \
+                     "--disable-admin-group"     &&
 
-  if  query  "Enable admin group"? y;  then
-    echo  'OPTS="$OPTS  --enable-admin-group"'    >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-admin-group"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                                 \
+                     "Enable timelord (time server)?"  n  \
+                     "--enable-timelord"                  \
+                     "--disable-timelord"                 &&
 
-  if  query  "Enable timelord? (time server)" y;  then
-    echo  'OPTS="$OPTS  --enable-timelord"'  >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-timelord"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                            \
+                     "Enable valid shell check?"  y  \
+                     "--enable-shell-check"          \
+                     "--disable-shell-check"         &&
 
-  if  query  "Enable valid shell check?" y;  then
-    echo  'OPTS="$OPTS  --enable-shell-check"'   >> ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-shell-check"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                            \
+                     "Enable filename mangling?"  y  \
+                     "--with-mangling"               \
+                     "--without-mangling"            &&
 
-  if  query  "Enable filename mangling?" y;  then
-    echo  'OPTS="$OPTS  --with-mangling"'     >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --without-mangling"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                                    \
+                     "Enable Andrew FileSystem support?"  n  \
+                     "--enable-afs"                          \
+                     "--disable-afs"                         &&
 
-#  if  query  "Enable CNID with Concurrent Data Store?" n;  then
-#    echo  'OPTS="$OPTS  --with-cdb"'     >>  ${SPELL_CONFIG}
-#  else
-#    echo  'OPTS="$OPTS  --without-cdb"'  >>  ${SPELL_CONFIG}
-#  fi
+config_query_option  OPTS              \
+                     "Enable DDP?"  y  \
+                     "--enable-ddp"    \
+                     "--disable-ddp"   &&
 
-#  if  query  "Enable flock locks support?" n;  then
-#    echo  'OPTS="$OPTS  --with-flock-locks"'     >>  ${SPELL_CONFIG}
-#  else
-#    echo  'OPTS="$OPTS  --without-flock-locks"'  >>  ${SPELL_CONFIG}
-#  fi
+config_query_option  OPTS                        \
+                     "Enable AFP 3.x calls?"  y  \
+                     "--enable-afp3"             \
+                     "--disable-afp3"            &&
 
-#  if  query  "Enable AFS support?" n;  then
-#    echo  'OPTS="$OPTS  --enable-afs"'   >>  ${SPELL_CONFIG}
-#  else
-#    echo  'OPTS="$OPTS  --disable-afs"'  >>  ${SPELL_CONFIG}
-#  fi
+config_query_option  OPTS                                                   \
+                     "Enable the EXPERIMENTAL dropbox fix (INSECURE!)?"  n  \
+                     "--enable-dropkludge"                                  \
+                     "--disable-dropkludge"                                 &&
 
-  if  query  "Enable ddp?" y;  then
-    echo  'OPTS="$OPTS  --enable-ddp"'   >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-ddp"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                             \
+                     "Enable Apple2 boot server?"  n  \
+                     "--enable-a2boot"                \
+                     "--disable-a2boot"               &&
 
-  if  query  "Enable the EXPERIMENTAL dropbox fix (INSECURE!)?" n;  then
-    echo  'OPTS="$OPTS  --enable-dropkludge"'   >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-dropkludge"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                     \
+                     "Enable debug code?"  n  \
+                     "--enable-debug1"        \
+                     "--disable-debug1"       &&
 
-  if  query  "Enable debug code?" n;  then
-    echo  'OPTS="$OPTS  --enable-debug"'   >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-debug"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                                                    \
+                     "Enable CNID with Concurrent DBD Data Store (cdb)?"  y  \
+                     "--with-cnid-cdb-backend"                               \
+                     "--without-cnid-cdb-backend"                            &&
 
-  if  query  "Allow forcing of uid/gid per volume  (BROKEN!)?" n;  then
-    echo  'OPTS="$OPTS  --enable-force-uidgid"'   >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-force-uidgid"'  >>  ${SPELL_CONFIG}
-  fi
+config_query_option  OPTS                                                     \
+                     "Enable CNID with Database Daemon Data Store (dbd)?"  y  \
+                     "--with-cnid-dbd-backend"                                \
+                     "--without-cnid-dbd-backend"                             &&
 
-  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+config_query_option  OPTS                                              \
+                     "Enable transaction support for dbd backend?"  n  \
+                     "--with-cnid-dbd-txn"                             \
+                     "--without-cnid-dbd-txn"                          &&
 
-fi
+config_query_option  OPTS                                                 \
+                     "Enable CNID with transactional BDB Data Store?"  n  \
+                     "--with-cnid-db3-backend"                            \
+                     "--without-cnid-db3-backend"                         &&
+
+config_query_option  OPTS                           \
+                     "Enable LAST CNID scheme?"  y  \
+                     "--with-cnid-last-backend"     \
+                     "--without-cnid-last-backend"  &&
+
+config_query_option  OPTS                           \
+                     "Enable HASH CNID scheme?"  n  \
+                     "--with-cnid-hash-backend"     \
+                     "--without-cnid-hash-backend"  &&
+
+config_query_option  OPTS                          \
+                     "Enable DID CNID scheme?"  n  \
+                     "--with-cnid-tdb-backend"     \
+                     "--without-cnid-tdb-backend"  &&
+
+config_query_option  OPTS                           \
+                     "Enable MTAB CNID scheme?"  n  \
+                     "--with-mtab-backend"          \
+                     "--without-mtab-backend"
