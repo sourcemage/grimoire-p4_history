@@ -1,24 +1,17 @@
 if [ ! -f /root/.cvspass ]; then
   touch /root/.cvspass
 fi                                                             &&
-FOO=Firebird_cvs.tar.bz2                                       &&
+FOO=firefox_cvs.tar.bz2                                       &&
 mk_source_dir $SOURCE_DIRECTORY                                &&
 if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/$FOO ];
 then message "${MESSAGE_COLOR}Unpacking source file ${SPELL_COLOR}$FOO \
 ${DEFAULT_COLOR}${MESSAGE_COLOR} for ${SPELL_COLOR}$SPELL"     &&
 	tar jxf $SOURCE_CACHE/$FOO 
-else unpack  ${SOURCE}   ${MD5[0]}                             &&
-     unpack  ${SOURCE2}  ${MD5[1]}                             &&
-   if  [ "$HEADCODE" = "no" ]; then 
-     cd  ${SOURCE_DIRECTORY}                                   &&
-     patch  -p0  <  ${SOURCE_CACHE}/${SOURCE2}                 &&
-     cd  -
-   fi
+else unpack  ${SOURCE}   ${MD5[0]}                             
 fi                                                             &&
 
 #cvs updates anyone?
 #
-
 if [ "$HEADCODE" = "yes" ];
 then message "\tIt can take some considerable time to regenerate the cvs tags,
 \tyou will not see much progress for a time but do not despair 

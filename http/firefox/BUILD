@@ -12,7 +12,7 @@ if [ "$SVG" = "yes" ];
  export MOZ_INTERNAL_LIBART_LGPL=1           
 fi &&
 export MOZ_PHOENIX=1                         &&
-    ./configure \
+    ./configure         \
     --prefix=${INSTALL_ROOT}/usr    \
     --with-x            \
     --with-pthreads     \
@@ -35,8 +35,10 @@ export MOZ_PHOENIX=1                         &&
     make                &&
 
 
-  prepare_install &&
-
+  prepare_install                                  &&
+  if spell_installed Firebird; then
+  dispel Firebird
+  fi                                               &&
 # everything coming into /usr/lib/mozilla-$MOZI_VERS/
 # must actually go to /usr/lib/mozilla/
 
@@ -50,7 +52,7 @@ export MOZ_PHOENIX=1                         &&
 
   make install                                      &&
   cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla  &&
+#  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla  &&
 
 
   if  !  grep  -q  "mozilla"  /etc/ld.so.conf
