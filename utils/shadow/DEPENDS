@@ -1,4 +1,2 @@
 optional_depends  "Linux-PAM"  "--with-libpam"  ""  "for PAM authentication"
-if [ "$SELINUX" == "y" ]; then
-  depends  "libselinux"  "--with-selinux"  ""  "for selinux support"
-fi
+optional_depends  "libselinux"  "--with-selinux"  ""  "for selinux support"
