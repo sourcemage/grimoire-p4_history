@@ -1,4 +1,3 @@
-(
   export COREDIR=$SOURCE_DIRECTORY/core                     &&
   export EBQTDIR=$SOURCE_DIRECTORY/ebqt                     && 
 #core
@@ -12,10 +11,4 @@
     ./configure --prefix=${INSTALL_ROOT}/usr  \
           --sysconfdir=${INSTALL_ROOT}/etc  \
        --localstatedir=${INSTALL_ROOT}/var                  &&
-  make                                                      &&
-  prepare_install                                           &&
-  cd $COREDIR                                               &&
-  make install                                              &&
-  cd $EBQTDIR                                               &&
-  make install
-) > $C_FIFO 2>&1
+  make
