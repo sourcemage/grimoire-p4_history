@@ -1,5 +1,5 @@
 if ! grep -q 'XFREE86_APPLY_PATCH' $SPELL_CONFIG; then
-  if query 'Would you like to apply the latest published patch to XFree86?' y; then
+  if query 'Would you like to apply the latest published patch to XFree86?' n; then
     echo 'XFREE86_APPLY_PATCH=y' >> $SPELL_CONFIG
   fi
 fi
