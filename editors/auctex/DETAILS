@@ -1,13 +1,14 @@
            SPELL=auctex
-         VERSION=11.13
+       BUILD_API=2
+         VERSION=11.14
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://savannah.gnu.org/download/auctex/stable.pkg/11.13/$SOURCE
-          MD5[0]=7f711589ff56c1142a6b4f43072bd139
+   SOURCE_URL[0]=http://ftp.gnu.org/pub/gnu/auctex/${VERSION}/${SOURCE}
+          MD5[0]=853e2946d88982877ab80488933e4ead
         WEB_SITE=ftp://ftp.sunsite.dk/pub/emacs/auctex/ftp/auctex
       LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20020419
+         UPDATED=20020617
            SHORT="AUC TeX is a LaTeX enviroment for emacs"
 cat << EOF
 AUC TeX is an extensible package that supports writing and formatting TeX
