@@ -9,7 +9,6 @@ sedit  's:-Werror::'  libavformat/Makefile  &&
              --enable-shared               \
              --enable-pp                   \
              --enable-shared-pp            \
-             --enable-a52                  \
              --enable-gpl                  \
              $OPTS                         &&
 cd  libavcodec/libpostproc  &&
