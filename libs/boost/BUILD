@@ -4,7 +4,7 @@
   #if  spell_installed  Python
   #then
   #  export  OPTS="${OPTS}  PYTHON_ROOT=/usr"    &&
-  #  export  OPTS="${OPTS}  PYTHON_VERSOIN=2.3"
+  #  export  OPTS="${OPTS}  PYTHON_VERSION=2.3"
   #fi
 
   cd  libs/config                           &&
