@@ -1,14 +1,14 @@
 if ! grep -q CONFIGURED $SPELL_CONFIG; then
 
-if query "\tThis spell will download the latest offical release of MozillaFirebird.
-\tIt is then possible to update the Firebird code
+if query "This spell will download the latest offical release of MozillaFirebird.\n
+\tIt is then possible to UPDATE the Firebird code
 \tvia  cvs and get ALL the nice changes since the last release.
 \tWould you like to update to cvs HEAD ?" n 
 then echo "HEADCODE=yes" >> $SPELL_CONFIG &&
 
 #choose SVG
 if ! grep -q SVG $SPELL_CONFIG ;
-then if query "Would you like native SVG support (scalable vector graphics) " n
+then if query "\nWould you like native SVG support (scalable vector graphics) " n
             then echo SVG=yes >> $SPELL_CONFIG
     fi 
 fi 
@@ -29,10 +29,12 @@ fi &&
 #choose toolkit
 
 if ! grep -q GTK $SPELL_CONFIG ;
-then if query "Would you like to use GTK+2 toolkit with font anti-aliasing support (DEFAULT)?\n\tNice \
-looking but slightly slower \n\tthan the original gtk+ (without anti-aliasing) " y
+then if query "\nWould you like to use GTK+2 toolkit with in-built anti-aliasing (DEFAULT)?\n\tNicer \
+looking but slower than the original gtk+ " y
             then echo GTK2=yes >> $SPELL_CONFIG
-            elif query "Would you like to use original GTK+ toolkit ?" y
+            elif query "\nWould you like to use original GTK+ toolkit ?
+\t http://wiki.sourcemage.org/index.php?page=FaqUsage#mozfonts \n\t\tIs a brief HOWTO for font \
+anti-aliasing with gtk+ toolkit" y
                  then  echo GTK=yes >> $SPELL_CONFIG
             else echo GTK2=yes >> $SPELL_CONFIG
     fi 
