@@ -13,8 +13,11 @@ depends  fontconfig  &&
 depends  zlib        &&
 depends  ncurses     &&
 depends  expat       &&
-#xc/config/cf/linux.cf defines having GhostScript by default
-depends  POSTSCRIPT-INTERPRETER  &&
+
+optional_depends  POSTSCRIPT-INTERPRETER          \
+                  ""                              \
+                  ""                              \
+                  "for PostScript documentation"  &&
 
 optional_depends  groff                          \
                   ""                             \
@@ -26,7 +29,7 @@ optional_depends  libpng                   \
                   ""                       \
                   "for PNG image support"  &&
 
-optional_depends  g++  \
-                  ""   \
-                  ""   \
+optional_depends  g++                   \
+                  ""                    \
+                  ""                    \
                   "for OpenGL support"
