@@ -4,12 +4,13 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.net-snmp.org/pub/sourceforge/n/ne/net-snmp/$SOURCE
+          MD5[0]=4dd31be484dd9ec4b66657b117897f33
         WEB_SITE=http://www.net-snmp.org/
          ENTERED=20011108
          UPDATED=20021007
-          MD5[0]=4dd31be484dd9ec4b66657b117897f33
-         LICENSE=http://www.net-snmp.org/COPYING.txt
-           SHORT="Net-SNMP SNMP agent, libraries and utilities"
+      LICENSE[0]=http://www.net-snmp.org/COPYING.txt
+       BUILD_API=2
+           SHORT="SNMP agent, libraries and utilities"
 cat << EOF
 net-snmp provides tools and libraries relating to SNMP (the Simple Network
 Management Protocol) including:
