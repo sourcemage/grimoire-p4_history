@@ -1,25 +1,25 @@
 2004-02-21 Treeve Jelbert <treeve01@pi.be>
-        * DETAILS: version 1.5.0.4290
-        * BUILD: make symlink for libgds.so, 
-	some applications expect to find it
+	* DETAILS: version 1.5.0.4290
+	* BUILD: make symlink for libgds.so, 
+	  some applications expect to find it
 	* PRE_BUILD: check for existing firebird account
 
 2004-02-12 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 1.5.0.4288 (rc9)
 	* BUILD: remove obsolete comments
 	* PRE_BUILD: create_account may cause problems
-	some versions of groupadd do not work with -G parameter
-	shadow-4.0.4.1:/usr/sbin/groupadd 
-	This is a sorcery bug #5790
+	  some versions of groupadd do not work with -G parameter
+	  shadow-4.0.4.1:/usr/sbin/groupadd 
+	  This is a sorcery bug #5790
 
 2004-01-02 Treeve Jelbert <treeve01@pi.be>
-        * BUILD: suppress debugging info asap
-	use the makeInstallImage script
+	* BUILD: suppress debugging info asap
+	  use the makeInstallImage script
 	* DETAILS: VERSION=15-RC8, 
-	there is now an official tarball at sourceforge
+	  there is now an official tarball at sourceforge
 	* init.d/firebird: ensure that actually runs as 'user firebird'
 	* PRE_BUILD: make sure that firebird user is actually created
-	remember to ask sorcery for a firebird user and group
+	  remember to ask sorcery for a firebird user and group
 	* POST_INSTALL: removed
 
 2003-12-28 Treeve Jelbert <treeve01@pi.be>
@@ -34,22 +34,21 @@
 
 2003-12-02 Treeve Jelbert <treeve01@pi.be>
 	* BUILD firebird scripts: install to /usr/firebird
-	fix permissions on include directory and bin/changeDBAPassword.sh
-	move log file to /var/log
+	  fix permissions on include directory and bin/changeDBAPassword.sh
+	  move log file to /var/log
 	* CONFIGURE: clean up
 
 2003-11-26 Treeve Jelbert <treeve01@pi.be>
-        * BUILD: enable config patch, to improve compiler optimisation
-	now do my own install, it's much shorter
-	use configured options
+	* BUILD: enable config patch, to improve compiler optimisation
+	  now do my own install, it's much shorter
+	  use configured options
 	* DETAILS: specify DOCS
 	* patches/ac* : add
 	* scripts/*: remove
 	* install.sh.cp: remove
 	* CONFIGURE init.d/firebird xinetd/firebird: add
-
-	It appears that the xinetd script does not get installed when 
-	building a classic server. install it manually and restart xinetd
+	* It appears that the xinetd script does not get installed when 
+	  building a classic server. install it manually and restart xinetd
 
 2003-11-24 Treeve Jelbert <treeve01@pi.be>
 	* post*, pre*: remove obsolete files
@@ -57,22 +56,22 @@
 2003-11-23 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version = cvs
 	* BUILD: use a modified version of the latest binary 
-	Firebird install script, which actually install the init.d or 
-	xinet.d script as appropriate, but I have made smgl specific scripts
+	  Firebird install script, which actually install the init.d or 
+	  xinet.d script as appropriate, but I have made smgl specific scripts
 	* PROVIDES *.patch scripts/*: add
 	* CONFLICTS: remove
 	* POST_INSTALL: clean up
-	
 
 2003-11-13 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: rename spell as firebird
 	* DEPENDS: added openssl libmcrypt ncurses
 	* BUILD: only build CLASSIC Server for the moment
-	this does not need an init.d script
-	preserve existing settings
-	don't use their install script
+	  this does not need an init.d script
+	  preserve existing settings
+	  don't use their install script
 
 2003-11-11 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 1.5-rc7 (from cvs)
 	* BUILD init.d xinet.d services
-	spell created
+	  spell created
+

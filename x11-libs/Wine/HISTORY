@@ -1,12 +1,12 @@
 2004-03-14 Treeve Jelbert <treeve01@pi.be>
-        * DETAILS: version=20040309
+	* DETAILS: version=20040309
 	* BUILD: add
-	the new wine build system fails with our LDFLAGS
-	see Wine bug#2095
+	  the new wine build system fails with our LDFLAGS
+	  see Wine bug#2095
 
 2004-02-14 Treeve Jelbert <treeve01@pi.be>
-        * DETAILS: version=20040213
-	add Sourceforge as an alternative url
+	* DETAILS: version=20040213
+	  add Sourceforge as an alternative url
 
 2004-01-22 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 20040121
@@ -32,7 +32,7 @@
 	* DETAILS: Updated to 20030408
 
 2003-03-29 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 20030318  (Bug #2849)
+	* DETAILS: Updated to 20030318 (Bug #2849)
 
 2003-03-03 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Fixed error is DETAILS file
@@ -43,7 +43,7 @@
 	* HISTORY: Reformated this file
 
 2003-01-05 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 20021219  (Bug #2009)
+	* DETAILS: Updated to 20021219 (Bug #2009)
 
 2002-11-26 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021125
@@ -51,12 +51,10 @@
 2002-11-08 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021031
 
-2002-10-24  Eric Schabell <eschabell@sourcemage.org>
+2002-10-24 Eric Schabell <eschabell@sourcemage.org>
 	* BUILD: rm patch from top of build, was failing, have been two version 
-	bumps since patch introduced so am assuming it has no longer the desired affect.
-	Included here so that it can be easilly replaced should I be wrong:
-
-*********************************************************
+	  bumps since patch introduced so am assuming it has no longer the desired affect.
+	  Included here so that it can be easilly replaced should I be wrong:
 
 patch -p0 << EOF
 
@@ -69,17 +67,18 @@ patch -p0 << EOF
 static void xs_init(void)
 
 {
-	* <files(s)>: extern void boot_wine(CV *cv);
-
-+    extern my_perl;
-	* <files(s)>: newXS("wine::bootstrap", boot_wine,__FILE__);
+ * <files(s)>: extern void boot_wine(CV *cv);
+ 
+ extern my_perl;
+ * <files(s)>: newXS("wine::bootstrap", boot_wine,__FILE__);
 
 }
 
 EOF
 
-*********************************************************
-	 this fixes bug #1464.
+ 
+ this fixes bug #1464.
+
 
 2002-09-04 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021007

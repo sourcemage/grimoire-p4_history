@@ -1,13 +1,13 @@
 2004-03-13 hgg <hgreig@bigpond.net.au>
 	* BUILD: revert previous, LDFLAGS no honoured, 
-	pity because stripping debugging at least halves the disk footprint
+	  pity because stripping debugging at least halves the disk footprint
 
 2004-03-13 hgg <hgreig@bigpond.net.au>
 	* BUILD: adding our LDFLAGS to Makefile.in
 
 2004-02-18 Eric Sandall <eric@sandall.us>
 	* DETAILS: Changed mirror to use gcc.gnu.org
-	Removed MAINTAINER
+	  Removed MAINTAINER
 
 2004-02-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 3.3.3.
@@ -29,35 +29,35 @@
 	* DETAILS: Update to gcc3.3.1
 
 2003-07-26 Eric Sandall <eric@sandall.us>
-	* CONFIGURE,PREPARE: Added Arwed's Ada patch  (Bug #3846)
+	* CONFIGURE,PREPARE: Added Arwed's Ada patch (Bug #3846)
 
 2003-07-26 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PREPARE: added and reenabled ada as language option
 
 2003-07-09 hgg <hgreig@bigpond.net.au>
 	* BUILD: remove cosmetic configure switch.
-	Use "head-from-arse-extraction-tool" and remove export as it should have
-	gone into glibc/BUILD :-)
+	  Use "head-from-arse-extraction-tool" and remove export as it should have
+	  gone into glibc/BUILD :-)
 
 2003-06-24 hgg <hgreig@bigpond.net.au>
 	* CONFIGURE: Reword fix includes query to cater for feebleminded monkeys
 
 2003-06-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: Make symlink after build/install for stupid apps
-	like flash that expect RedHat compat libs
+	  like flash that expect RedHat compat libs
 
 2003-06-19 hgg <hgreig@bigpond.net.au>
 	* BUILD: Add configure switch for c++ ABI compatibility
 
 2003-05-22 Julian v. Bock <julian@wongr.net>
 	* BUILD: copy objc headers manually when fixed
-	includes are disabled.
+	  includes are disabled.
 
 2003-05-15 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 3.3.
 	* CONFIGURE: use $FRONTENDS instead of $LANG.
 
-2003-04-30 Julian v. Bock  <julian@wongr.net>
+2003-04-30 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 3.2.3.
 	* DEPENDS: remove.
 	* CONFIGURE: remove ada language option.
@@ -82,26 +82,27 @@
 
 2002-10-26 Julian v. Bock <julian@wongr.net>
 	* BUILD: unset LD_PRELOAD before make install because of problems
-	with installwatch.
+	  with installwatch.
 
 2002-10-03 Julian v. Bock <julian@wongr.net>
 	* DETAILS: add LICENSE and MD5 fields.
 
 2002-09-04 Julian v. Bock <julian@wongr.net>
 	* BUILD: move creation / deletion of build directory to
-	PRE_BUILD and POST_INSTALL.
+	  PRE_BUILD and POST_INSTALL.
 	* PRE_BUILD: likewise.
 	* POST_INSTALL: likewise.
 
 2002-08-?? Julian v. Bock <julian@wongr.net>
-	* DETAILS: set VERSION to 3.2.
+ * DETAILS: set VERSION to 3.2.
+
 
 2002-05-26 Julian v. Bock <julian@wongr.net>
 	* DETAILS: update spell for gcc-3.1; remove pascal stuff.
 	* BUILD: remove pascal stuff; remove --enable-shared; add
-	--enable-threads=posix; build everything in a separate directory.
+	  *-enable-threads=posix; build everything in a separate directory.
 	* CONFIGURE: add Ada 95 frontend; remove pascal frontend; add
-	configure options for all frontends but C and C++.
+	  configure options for all frontends but C and C++.
 	* PRE_BUILD: remove.
 	* DEPENDS: add.
 
@@ -120,7 +121,7 @@
 
 2002-04-23 Julian v. Bock <julian@wongr.net>
 	* BUILD: add pascal fix by Lyon Lemmens; don't use
-	--enable-languages.
+	  *-enable-languages.
 
 2002-04-18 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set PASCAL_VERSION to 20020410.
@@ -130,7 +131,7 @@
 
 2002-04-03 Julian v. Bock <julian@wongr.net>
 	* DETAILS: update PASCAL_VERSION to 20020402; set SORUCE2_URL[0]
-	to http://www.gnu-pascal.de/current/$SOURCE2.
+	  to http://www.gnu-pascal.de/current/$SOURCE2.
 
 2002-03-29 Julian v. Bock <julian@wongr.net>
 	* BUILD: don't build chill frontend

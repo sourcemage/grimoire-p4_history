@@ -9,8 +9,8 @@
 
 2003-10-28 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS, BUILD, (new) CONFIGURE: make it configurable what branch of APR
-	is being used, 0.9 (stable for httpd 2.0) or 1.0 (development for httpd 2.1),
-	and whether to check out latest source from ASF source repository.
+	  is being used, 0.9 (stable for httpd 2.0) or 1.0 (development for httpd 2.1),
+	  and whether to check out latest source from ASF source repository.
 
 2003-10-25 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Set tag to HEAD.
@@ -19,34 +19,28 @@
 2003-10-11 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 1.0 tree (current tag STRIKER_2_1_0_PRE3).
 
-2003-07-19  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-19 Sergey Lipnevich <sergey@sourcemage.org>
+	* Make APR include files install in their own directory instead
+	  of /usr/include/apache2, so that this directory is not used
+	  as an origin of include files during compilation.
 
-		Make APR include files install in their own directory instead
-		of /usr/include/apache2, so that this directory is not used
-		as an origin of include files during compilation.
+2003-07-17 Sergey Lipnevich <sergey@sourcemage.org>
+	* Added a patch to adjust the build system for subsequent httpd build.
+	  Added code to replace paths in `apu-config' similar to apr/BUILD.
 
-2003-07-17  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.9.4 from Apache 2.0.47.
 
-		Added a patch to adjust the build system for subsequent httpd build.
-		Added code to replace paths in `apu-config' similar to apr/BUILD.
+2003-07-04 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.9.4 taken from CVS (no published tarball).
+	  Improve DEPENDS settings passed into OPTS.
 
-2003-07-09  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-05-08 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 0.9.3; add mirrors.
 
-		Upgrade to 0.9.4 from Apache 2.0.47.
+2003-03-26 Julian v. Bock <julian@wongr.net>
+	* add spell.
 
-2003-07-04  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-03-02 Robert Helgesson <rycee@home.se>
+	* Created spell
 
-		Upgrade to 0.9.4 taken from CVS (no published tarball).
-		Improve DEPENDS settings passed into OPTS.
-
-2003-05-08  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 0.9.3; add mirrors.
-
-2003-03-26  Julian v. Bock  <julian@wongr.net>
-
-		add spell.
-
-2003-03-02  Robert Helgesson <rycee@home.se>
-
-		Created spell

@@ -8,7 +8,7 @@
 	* DEPENDS: Change depends xfree86 to requires x11-libs
 
 2003-08-23 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Added dependency on xfree86  (Bug #4066)
+	* DEPENDS: Added dependency on xfree86 (Bug #4066)
 
 2002-08-10 Joel Mayes <bluebird@optushome.com.au>
 	* DEPENDS: added depends on perl (bug 821)
@@ -23,19 +23,20 @@
 	* DETAILS: Added MD5 field to DETAILS
 
 2002-05-23 Adam Clark <adamsgl@dhbit.ca>
-	* BUILD: Commenting out the perl lines breaks build.  Uncommented, builds.
+	* BUILD: Commenting out the perl lines breaks build. Uncommented, builds.
 
 2002-05-23 Eric Schabell <eric@schabell.com>
 	* HISTORY: Added History file
 	* BUILD: added fix to BUILD from Jason Flatt, commented out and
-	added the following 	lines:
-	#  perl -i -pe 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
-	#  perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
-  	sedit 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
-  	sedit 's/#include <widec.h>//' XawI18n.h &&
-  	sedit 's/#define wcslen.*$//'  XawI18n.h &&
-  	sedit 's/#define wcscpy.*$//'  XawI18n.h &&
-  	sedit 's/#define wcsncpy.*$//' XawI18n.h &&
-	This fixes gv dependencies so that gv can compile, only optional
-	depends in devel (scilab) and shell-term-fm (xfm) so should have
-	no affect on these.
+	  added the following lines:
+	  # perl -i -pe 's/# (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+	  # perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
+	  sedit 's/# (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+	  sedit 's/#include <widec.h>//' XawI18n.h &&
+	  sedit 's/#define wcslen.*$//' XawI18n.h &&
+	  sedit 's/#define wcscpy.*$//' XawI18n.h &&
+	  sedit 's/#define wcsncpy.*$//' XawI18n.h &&
+	  This fixes gv dependencies so that gv can compile, only optional
+	  depends in devel (scilab) and shell-term-fm (xfm) so should have
+	  no affect on these.
+

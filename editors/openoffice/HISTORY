@@ -2,20 +2,20 @@
 	* DETAILS,PRE_BUILD: removed special version of bison as grimoire version has been updated
 	* CONFIGURE: made updates and parallel jobs an optional part of the regular build
 	* BUILD,fix-j2sdk+kernel.patch: add patch for j2sdk 1.4.2 and kernel 2.6.0*
-	general clean up also
+	  general clean up also
 	* PRE_BUILD: add rm_source_dir for PAM and need to mkdir -p /usr/include/security
 	* patches: add patches for the version updates rather that wordy sedits(much cleaner like this)
 	* DEPENDS: remove db as bundled version is used
 
 2003-10-29 Eric Sandall <eric@sandall.us>
-	* DEPENDS:  Depends on JAVA
+	* DEPENDS: Depends on JAVA
 
 2003-10-27 hgg <hgreig@bigpond.net.au>
 	* BUILD: set JAVA_HOME if not already set
 
 2003-10-20 hgg <hgreig@bigpond.net.au>
 	* DEPENDS,BUILD: fixed for use of system installed STLport and needs X11-SERVER not X11-LIBS
-	(might be repairable but fails currently with only libs installed), Add libart_lgpl 
+	  (might be repairable but fails currently with only libs installed), Add libart_lgpl 
 	* HISTORY: convert format
 
 2003-10-18 hgg <hgreig@bigpond.net.au>
@@ -25,18 +25,18 @@
 2003-10-13 Geoffrey Derber <gderber@sourcemage.org>
 	* DETAILS,BUILD: Updated to 1.1.0
 	* HISTORY: Leaving HISTORY alone until I can
-	get the conversion script to work properly on it.
+	  get the conversion script to work properly on it.
 
 2003-09-11 Geoffrey Derber <gderber@sourcemage.org>
 	* DETAILS: Updated to 1.1rc4
 	* BUILD: somewhat re-wrote BUILD
-	removing lots of excess code not needed for 1.1
-	-enable-libart option removes dependency on libgpc
+	  removing lots of excess code not needed for 1.1
+	  *enable-libart option removes dependency on libgpc
 	* PRE_BUILD: re-wrote & removed 1.0 patching
-	added a bison build  added PAM header files needed for compile
-	*TODO: figure out the language (--with-lang) 
-	and the dictionary (--with-dict) options possible values 
-	(incompletely?) listed in: oo_1.1rc4_src/config_office/set_soenv
+	  added a bison build added PAM header files needed for compile
+	  *TODO: figure out the language (--with-lang) 
+	  and the dictionary (--with-dict) options possible values 
+	  (incompletely?) listed in: oo_1.1rc4_src/config_office/set_soenv
 
 2003-09-05 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Add US mirrors.
@@ -46,7 +46,7 @@
 
 2003-05-19 Seth Woolley <seth@tautology.org>
 	* DETAILS: Commenting out SOURCE24 was bad because
-	SOURCE25 was not downloaded :(
+	  SOURCE25 was not downloaded :(
 
 2003-05-15 Seth Woolley <seth@tautology.org>
 	* PRE_BUILD: Messed with PRE_BUILD to get it to validate with MD5s commented out SOURCE24 in DETAILS
@@ -56,7 +56,7 @@
 
 2003-04-18 Seth Woolley <seth@tautology.org>
 	* DETAILS: Modified DETAILS to insert md5 for SOURCE25.
-	Modified DETAILS to insert md5 for SOURCE3.
+	  Modified DETAILS to insert md5 for SOURCE3.
 
 2003-03-10 Jose Bernardo Silva <josebernardo1@yahoo.com>
 	* DETAILS,BUILD: Updated for OpenOffice 1.0.2
@@ -70,7 +70,7 @@
 	* BUILD: Added the bison compatibility patches.
 
 2002-12-10 Geoffrey Derber <gderber@sourcemage.org>
-	* Spell completely rewriten.  Is now a source based spell.
+	* Spell completely rewriten. Is now a source based spell.
 
 2002-11-27 Geoffrey Derber <gderber@sourcemage.org>
 	* DETAILS: Fixed a problem caused by URLs changing.
@@ -82,12 +82,13 @@
 	* PRE_INSTALL: warning messages and updated DETAILS with download size warning.
 
 2002-07-13 Chris Brien <christopher_brien@hotmail.com>
-	* After spending weeks attempting to build OpenOffice, I  decided to just go get the binary. 
-	This spell is heading  straight to z-rejected. 
+	* After spending weeks attempting to build OpenOffice, I decided to just go get the binary. 
+	  This spell is heading straight to z-rejected.
 
 2002-05-01 Eric Sandall <sandalle@yahoo.com>
-	*  Avitzour <avitzour@princeton.edu> for pointing me here.
+	* Avitzour <avitzour@princeton.edu> for pointing me here.
 
 2002-03-06 Eric Sandall <sandalle@yahoo.com>
-	* DETAILS:  Modified DETAILS (finally figured this out ;) to have  gpc as SOURCE2, rather than 
-	creating a whole other spell  for 2 header files that just need to be copied for OpenOffice.
+	* DETAILS: Modified DETAILS (finally figured this out ;) to have gpc as SOURCE2, rather than 
+	  creating a whole other spell for 2 header files that just need to be copied for OpenOffice.
+

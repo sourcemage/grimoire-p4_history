@@ -2,7 +2,7 @@
 	* POST_INSTALL: reorder and add / to $INSTALL_ROOT so it won't fail when unset
 
 2004-03-25 hgg <hgreig@bigpond.net.au>
-	* BUILD,POST_INSTALL: sick of depmod tracking all my kernels 
+	* BUILD,POST_INSTALL: sick of depmod tracking all my kernels
 
 2004-03-12 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated modutils to 2.4.27
@@ -23,17 +23,17 @@
 	* DEPENDS: add flex
 
 2004-01-30 Eric Sandall <eric@sandall.us>
-	* DETAILS: Reverted to 3.0-pre5  (Bug #5599)
-	
+	* DETAILS: Reverted to 3.0-pre5 (Bug #5599)
+
 2004-01-24 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: make it work for OLD_TOO=n
 	* CONFIGURE, DETAILS, PREPARE, PRE_BUILD: move question to PREPARE,
-	only download/unpack modutils tarball if OLD_TOO=y
+	  only download/unpack modutils tarball if OLD_TOO=y
 
 2004-01-24 Justin Rocha <jrocha@sourcemage.org>
 	* DETAILS: Version to 3.0-pre7
-	Fix to SOURCE_URL
-	Updated short and description
+	  Fix to SOURCE_URL
+	  Updated short and description
 
 2004-01-15 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 3.0-pre5
@@ -43,58 +43,58 @@
 	* BUILD: actually apply a patch
 	* mk.diff: add
 	* module-man.patch WIP: delete
-	update patching and fix bug #462
+	  update patching and fix bug #462
 
 2003-12-02 Eric Sandall <eric@sandall.us>
 	* BUILD: Use INSTALL_ROOT
 	* WIP: 'make moveold' doesn't like it when binaries
-	are installed anywhere besides /sbin
+	  are installed anywhere besides /sbin
 
 2003-10-30 Eric Sandall <eric@sandall.us>
 	* DETAILS: Now it will actually download the modutils
-	source if it isn't already there
-	Corrected too many typos
-	Updated modutils to 2.4.26
-	Updated UPDATED so it will be marked as 'new'
+	  source if it isn't already there
+	  Corrected too many typos
+	  Updated modutils to 2.4.26
+	  Updated UPDATED so it will be marked as 'new'
 	* HISTORY: Formatted to Guru Handbook
 
 2003-10-28 hgg <hgreig@bigpond.net.au>
 	* BUILD,module-man.patch: add patch to Makefile.in for man
-	page in moveold so make moveold can be &&'ed
+	  page in moveold so make moveold can be &&'ed
 
 2003-10-16 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-	Updated to Updated to 0.9.15-pre2  (Bug #4549)
+	* Updated to Updated to 0.9.15-pre2 (Bug #4549)
 
 2003-04-10 Eric Schabell <eschabell@sourcemage.org>
-	Updated BUILD file to cp modprobe.devfs to /etc
-	which is needed for proper starting of 2.6.x kernels
-	using devfs.
+	* Updated BUILD file to cp modprobe.devfs to /etc
+	  which is needed for proper starting of 2.6.x kernels
+	  using devfs.
 
 2003-09-20 Eric Sandall <eric@sandall.us>
-	Updated to 0.9.15-pre1  (Bug #4360)
+	* Updated to 0.9.15-pre1 (Bug #4360)
 
 2003-08-22 hgg <hgreig@bigpond.net.au>
-	Update UPDATED purely for test grimoire integration.
+	* Update UPDATED purely for test grimoire integration.
 
 2003-08-03 hgg <hgreig@bigpond.net.au>
-	Add mktemp to DEPENDS
-	Add MAKE_NJOBS=1 to DETAILS
+	* Add mktemp to DEPENDS
+	  Add MAKE_NJOBS=1 to DETAILS
 
 2003-08-02 Seth Woolley <seth@tautology.org>
-	Tried to fix this mess up by compiling modutils in _here_...
-	The fancy *.old stuff messes up cast --fix unless it's done this way.
-	CONFLICTS is safe again, I hope.
+	* Tried to fix this mess up by compiling modutils in _here_...
+	  The fancy *.old stuff messes up cast --fix unless it's done this way.
+	  CONFLICTS is safe again, I hope.
 
 2003-08-03 hgg <hgreig@bigpond.net.au>
-	Remove CONFLICTS, actually depends on modutils for kernels <2.6.XX
+	* Remove CONFLICTS, actually depends on modutils for kernels <2.6.XX
 
 2003-07-30 hgg <hgreig@bigpond.net.au>
-	Add CONFLICTS on modutils
-	Add depmod -a to BUILD
+	* Add CONFLICTS on modutils
+	  Add depmod -a to BUILD
 
 2003-07-27 Eric Sandall <eric@sandall.us>
-	Updated to 0.9.13-pre  (Bug #3768)
+	* Updated to 0.9.13-pre (Bug #3768)
 
 2003-04-10 Eric Schabell <eschabell@sourcemage.org>
-	Created spell.
+	* Created spell.
 

@@ -10,8 +10,8 @@
 	* DETAILS: updated to 0.7.0, changed SOURCE_URL to download.videolan.org
 	* BUILD, ffmpeg.patch: removed ffmpeg patch
 	* DEPENDS: added optional_depends on live, libcdio, libcddb,
-	vcdimager-cdio and libid3tag
-	removed optional_depends on xvid and libdv
+	  vcdimager-cdio and libid3tag
+	  removed optional_depends on xvid and libdv
 	* BUILD, DEPENDS: reenable optional_depends on MOZILLA-BROWSER
 	* BUILD, mkv-fix.patch: fix matroska demuxer compilation
 
@@ -21,7 +21,7 @@
 
 2003-12-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: removed optional_depends on MOZILLA-BROWSER (doesn't work
-	with the current mozilla versions)
+	  with the current mozilla versions)
 	* BUILD: added --disable-mozilla
 
 2003-12-11 Unet <audio@sourcemage.org>
@@ -39,15 +39,15 @@
 2003-10-21 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* CONFIGURE: removed questions for ffmpeg and mozilla
 	* DEPENDS: changed requires mozilla-browser/libavcodec to
-	optional_depends
+	  optional_depends
 	* BUILD: removed $OPTS changes for mozilla/ffmpeg (now handled by the
-	optional_depends)
-	removed the matroska sedit fix
-	added LDFLAGS="-lm" so xvid works
+	  optional_depends)
+	  removed the matroska sedit fix
+	  added LDFLAGS="-lm" so xvid works
 	* BUILD, ffmpeg.patch: added patch to compile with recent ffmpeg
 
 2003-09-19 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Changed mozilla to mozilla-browser  (Bug #4278)
+	* DEPENDS: Changed mozilla to mozilla-browser (Bug #4278)
 
 2003-08-26 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* CONFIGURE: added option to build the mozilla plugin
@@ -74,7 +74,7 @@
 
 2003-06-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 0.6.0
-	added SOURCE2 for libmpeg2 snapshot
+	  added SOURCE2 for libmpeg2 snapshot
 	* BUILD: build libmpeg2.a
 	* DEPENDS: now depends on ffmpeg-cvs
 
@@ -83,7 +83,7 @@
 
 2003-05-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* CONFIGURE: added CONFIGURE option for ffmpeg, so i can use
-	requires libavcodec
+	  requires libavcodec
 
 2003-04-10 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS added MAKE_NJOBS=1 to DETAILS
@@ -102,7 +102,7 @@
 2003-02-05 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to version 0.5.0
 	* CONFIGURE: removed option to statically link ffmpeg (now
-	linked dynamically)
+	  linked dynamically)
 	* DEPENDS: some more optional_depends
 
 2002-10-23 Seth Woolley <seth@tautology.org>
@@ -111,14 +111,15 @@
 
 2002-07-18 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: added MD5 and LICENSE fields
-	updated to version 0.4.2
+	  updated to version 0.4.2
 
 2002-06-05 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated version to 0.4.1
-	changed the long description in DETAILS to reflect the changes
-	to the spell
+	  changed the long description in DETAILS to reflect the changes
+	  to the spell
 	* DEPENDS: added lots of optional_depends
 	* CONFIGURE: added option to link statically with ffmpeg for divx
-        video support
+	  video support
 	* BUILD: rewrote BUILD file to reflect the ffmpeg option
-	* HISTORY:  added this HISTORY file
+	* HISTORY: added this HISTORY file
+

@@ -1,8 +1,8 @@
 2003-11-24 Jason Flatt <jason@flattfamily.com>
-	* DETAILS:  Version bump to 1.1.20.
+	* DETAILS: Version bump to 1.1.20.
 
 2003-11-10 Jason Flatt <jason@flattfamily.com>
-	* DETAILS:  Version bump to 1.1.20rc6.
+	* DETAILS: Version bump to 1.1.20rc6.
 
 2003-10-27 Jason Flatt <jason@flattfamily.com>
 	* DETAILS: Updated MD5 and VERSION to 1.1.20rc5.
@@ -25,7 +25,7 @@
 
 2003-08-10 hgg <hgreig@bigpond.net.au>
 	* Revert on_dispel Linux-PAM cast_self (doesn't work the way it is
-		documented)
+	  documented)
 
 2003-07-28 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* init.d/cups: updated to new init system
@@ -35,11 +35,11 @@
 
 2003-06-23 hgg <hgreig@bigpond.net.au>
 	* DETAILS: ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315,
-		keeping 13321.
+	  keeping 13321.
 	* PREPARE: Added to remove cache after fixing bug #1068
 
 2003-05-27 Jason Flatt <jason@flattfamily.com>
-	* DETAILS: Version bump to 1.1.19.  Includes previous security fix.
+	* DETAILS: Version bump to 1.1.19. Includes previous security fix.
 
 2003-05-27 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* Apply security fix, see http://www.cups.org/str.php?L75
@@ -49,15 +49,15 @@
 
 2003-04-25 Jason Flatt <jason@flattfamily.com>
 	* Removed all references to cupsomatic since I am unable to find the file
-		on any public Web or FTP site, and since it has been replaced with
-		foomatic-rip.
+	  on any public Web or FTP site, and since it has been replaced with
+	  foomatic-rip.
 	* Also, some minor code clean up.
 
 2003-05-14 Seth Woolley <seth@tautology.org>
 	* BUILD: Added unpack for SOURCE2
 
 2003-05-02 Rob Verkuylen <rob@verkuylen.net>
-	* Copied /init.d/cups.sh to /init.d/cups.  Step 1/3 in bug #3115.
+	* Copied /init.d/cups.sh to /init.d/cups. Step 1/3 in bug #3115.
 
 2003-04-25 Jason Flatt <jason@flattfamily.com>
 	* DETAILS: Updated MAINTAINER e-mail address.
@@ -67,7 +67,7 @@
 
 2003-03-04 Jason Flatt <jason@flattfamily.com>
 	* Changed where the cupsomatic file was being installed (thanks to
-		Christian Sonne [FreakCERS] for the heads up).
+	  Christian Sonne [FreakCERS] for the heads up).
 
 2003-02-25 Jason Flatt <jasonflatt@wizard.com>
 	* Forgot to change the script from SGL to SMGL.
@@ -80,21 +80,21 @@
 
 2003-01-17 Jason Flatt <jasonflatt@wizard.com>
 	* lib_runlevel: Modified to pad date with zeros (%H) instead of spaces
-		(%k).  Fixes bug 2257, thanks to Robert Helgesson (rycee).
+	  (%k). Fixes bug 2257, thanks to Robert Helgesson (rycee).
 
 2002-12-20 Jason Flatt <jasonflatt@wizard.com>
 	* DETAILS: Version update to 1.1.18.
 
 2002-11-01 Jason Flatt <jasonflatt@wizard.com>
 	* BUILD: Modified to use lib_runlevel for both parts of init script
-		installation.
+	  installation.
 
 2002-11-01 Jason Flatt <jasonflatt@wizard.com>
 	* BUILD: Fixed to take care of bug # 1542.
 	* POST_INSTALL, PRE_REMOVE: Fixed to account for cups init script name
-		change (thanks to Tom Garland).
+	  change (thanks to Tom Garland).
 	* Added a second cups init script to account for another bug which was
-		discovered during the fixing and testing of the above two bugs.  :^)
+	  discovered during the fixing and testing of the above two bugs. :^)
 
 2002-10-25 Jason Flatt <jasonflatt@wizard.com>
 	* HISTORY: Set correct date for MD5 removal entry.
@@ -104,8 +104,8 @@
 
 2002-10-25 Jason Flatt <jasonflatt@wizard.com>
 	* DETAILS: Removed MD5 for cupsomatic as it changes frequently and I
-		don't want to keep the spell from casting when I will not be able to
-		keep up on the MD5.
+	  don't want to keep the spell from casting when I will not be able to
+	  keep up on the MD5.
 
 2002-10-23 Jason Flatt <jasonflatt@wizard.com>
 	* TRIGGERS: Added for optional_depends LinuxPAM.
@@ -125,27 +125,27 @@
 2002-09-24 Jason Flatt <jasonflatt@wizard.com>
 	* CONFIGURE: Moved symlink queries to (hopefully fixes bug # 895).
 	* cupsomatic: Removed and set it up to be downloaded during cast.
-	* Makefile.diff: Re-added.  (I have no idea what happened to that file.)
+	* Makefile.diff: Re-added. (I have no idea what happened to that file.)
 
 2002-09-08 Eric Sandall <eric@sandall.us>
 	* Fixed Bug #856
 
 2002-08-27 Jason Flatt <jasonflatt@wizard.com>
-	* DEPENDS: Cleaned up.  Changed espgs from optional_depends to depends.
+	* DEPENDS: Cleaned up. Changed espgs from optional_depends to depends.
 	* HISTORY: Reformatted this file.
 
 2002-08-17 Jason Flatt <jasonflatt@wizard.com>
-	* cupsomatic: Compressed as it is rather large.  Doing my part for the
-		dial-up users of the world.  :^)
+	* cupsomatic: Compressed as it is rather large. Doing my part for the
+	  dial-up users of the world. :^)
 
 2002-08-16 Jason Flatt <jasonflatt@wizard.com>
 	* cupsomatic: Added to spell for easy access during install.
 
 2002-08-15 Jason Flatt <jasonflatt@wizard.com>
 	* DEPENDS: Modified how CUPS is installed w/Samba to eliminate a
-		(unreported) bug in the original code.
+	  (unreported) bug in the original code.
 	* PRE_BUILD: Modified the conflict checking to hopefully work a little
-		better.
+	  better.
 	* Added a suggestion from Eric Sandall to hopefully kill bug # 237.
 	* Revamped how the init scripts are installed and setup.
 
@@ -158,9 +158,9 @@
 
 2002-06-23 Jason Flatt <jasonflatt@wizard.com>
 	* CONFLICTS: Removed to modify the way cups and gnulpr handle conflicts
-		with each other (fixes bug # 207).
+	  with each other (fixes bug # 207).
 	* PRE_BUILD: Added to modify the way cups and gnulpr handle conflicts with
-		each other (fixes bug # 207).
+	  each other (fixes bug # 207).
 
 2002-06-22 Jason Flatt <jasonflatt@wizard.com>
 	* DETAILS: Added LICENSE and MD5 to DETAILS.
@@ -188,3 +188,4 @@
 2002-03-24 Jason Flatt <jasonflatt@wizard.com>
 	* DETAILS: Added MAINTAINER=jasonflatt@wizard.com to DETAILS file.
 	* HISTORY: Added this file.
+

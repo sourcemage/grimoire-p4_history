@@ -26,127 +26,128 @@
 2003-11-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 0.33.0.
 
-2003-11-10 Sergey Lipnevich  <sergey@sourcemage.org>
+2003-11-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* DEPENDS, BUILD: make a web server optional in case someone
-	wants to build a Subversion or svn+ssh server for example.
+	  wants to build a Subversion or svn+ssh server for example.
 
 2003-11-02 Eric Sandall <eric@sandall.us>
 	* svn.conf.default: Now loads the module as well
 	* DEPENDS: Changed requires to depends, and uppercase
 
-2003-10-23 Sergey Lipnevich  <sergey@sourcemage.org>
+2003-10-23 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.32.0.
 	* DEPENDS: needs Python to generate build files if HEAD checked out.
 
 2003-10-09 Justin Rocha <jrocha@sourcemage.org>
 	* DETAILS: Version bump and changed SOURCE_URL[0].
 	* POST_INSTALL: Fixed so it will detect the correct init script
-	and restart apache using telinit.
+	  and restart apache using telinit.
 	* BUILD: Added message if mod_dav.so isn't found.
 
-2003-09-24  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.30.0.
+2003-09-24 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.30.0.
 
-2003-09-05  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.29.0.
-	Set to a single make job, and no documentation gathering.
-	Enable checking for built-in mod_dav Apache module.
-	Make tests conditional on what source is used.
-	Move tests back in front of installation.
-	Create a separate file for default mod_dav_svn configuration.
-	Use 'apache' instead of 'apache.sh' for init script.
+2003-09-05 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.29.0.
+	  Set to a single make job, and no documentation gathering.
+	  Enable checking for built-in mod_dav Apache module.
+	  Make tests conditional on what source is used.
+	  Move tests back in front of installation.
+	  Create a separate file for default mod_dav_svn configuration.
+	  Use 'apache' instead of 'apache.sh' for init script.
 
-2003-07-25  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.26.0.
+2003-07-25 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.26.0.
 
-2003-07-19  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.25.
-	Make tests run after installation because they need all shared libraries.
+2003-07-19 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.25.
+	  Make tests run after installation because they need all shared libraries.
 
-2003-07-05  Sergey Lipnevich  <sergey@sourcemage.org>
-	Make Subversion depend on apr spells.
-	Get rid of $INSTALL_ROOT.
+2003-07-05 Sergey Lipnevich <sergey@sourcemage.org>
+	* Make Subversion depend on apr spells.
+	  Get rid of $INSTALL_ROOT.
 
-2003-06-09  Sergey Lipnevich  <sergey@sourcemage.org>
-	Fix Python bindings building.
-	Fix neon dependency.
+2003-06-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* Fix Python bindings building.
+	  Fix neon dependency.
 
-2003-05-19  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.23.0.
+2003-05-19 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.23.0.
 
-2003-05-14  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.22.2.
+2003-05-14 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.22.2.
 
-2003-05-08  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.22.0.
-	Reinstate "no module activation" directive, because
-	it wipes out httpd.conf too often.
+2003-05-08 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.22.0.
+	  Reinstate "no module activation" directive, because
+	  it wipes out httpd.conf too often.
 
-2003-04-16  Sergey Lipnevich  <sergey@sourcemage.org>
-	Upgrade to 0.21.0.
+2003-04-16 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.21.0.
 
-2003-03-27  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.20.1.
+2003-03-27 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.20.1.
 
-2003-03-21  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.20.
-	Make downloading latest source an option.
-	Run tests if Python is present but don't require it.
+2003-03-21 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.20.
+	  Make downloading latest source an option.
+	  Run tests if Python is present but don't require it.
 
-2003-03-12  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.19.
-	Tarball signature changed from revision to version number.
-	Make DETAILS similar to that of subversion-client spell to
-	be able to apply patches easily.
-	Upgrade to 0.19.1 due to bug in svnserve shortly after.
+2003-03-12 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.19.
+	  Tarball signature changed from revision to version number.
+	  Make DETAILS similar to that of subversion-client spell to
+	  be able to apply patches easily.
+	  Upgrade to 0.19.1 due to bug in svnserve shortly after.
 
-2003-02-26  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.18.1.
+2003-02-26 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.18.1.
 
-2003-02-20  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.18.0 (revision 4973).
-	Removed diffutils and patch from dependencies.
-	Run `make check' before installing.
-	Prompt to restart Apache.
+2003-02-20 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.18.0 (revision 4973).
+	  Removed diffutils and patch from dependencies.
+	  Run `make check' before installing.
+	  Prompt to restart Apache.
 
-2003-01-25  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgrade to 0.17.1 (revision 4503).
+2003-01-25 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgrade to 0.17.1 (revision 4503).
 
-2003-01-13  Sergey Lipnevich  <sergeyli@pisem.net>
-	Added `services' file with newly assigned port number.
+2003-01-13 Sergey Lipnevich <sergeyli@pisem.net>
+	* Added `services' file with newly assigned port number.
 
-2003-01-07  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgraded to 0.16.1.
+2003-01-07 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded to 0.16.1.
 
-2002-12-04  Sergey Lipnevich  <sergeyli@pisem.net>
-	Upgraded to 0.16.
+2002-12-04 Sergey Lipnevich <sergeyli@pisem.net>
+	* Upgraded to 0.16.
 
 2002-11-07 Sergey Lipnevich <sergeyli@pisem.net>
-	Upgraded to 0.15, added SWIG bindings for Python.
+	* Upgraded to 0.15, added SWIG bindings for Python.
 
 2002-10-30 Sergey Lipnevich <sergeyli@pisem.net>
-	Upgraded to 0.14.5 (Alpha 5). Source URI has to change because of the way
-	files are posted on tigris.org site.
-	Make Apache restart in POST_INSTALL instead of stop/starting it separately.
-	POST_INSTALL will also check configurtion and only restart if it's good.
-	Fixed a bug where existing client would not be used for checkout.
+	* Upgraded to 0.14.5 (Alpha 5). Source URI has to change because of the way
+	  files are posted on tigris.org site.
+	  Make Apache restart in POST_INSTALL instead of stop/starting it separately.
+	  POST_INSTALL will also check configurtion and only restart if it's good.
+	  Fixed a bug where existing client would not be used for checkout.
 
 2002-10-24 Sergey Lipnevich <sergeyli@pisem.net>
-	Disable SVN module activation in httpd.conf.
-	Enable checking for proper neon version.
-	Sample config file now uses SVNParentPath as a recommended option.
+	* Disable SVN module activation in httpd.conf.
+	  Enable checking for proper neon version.
+	  Sample config file now uses SVNParentPath as a recommended option.
 
 2002-08-20 Sergey Lipnevich <sergeyli@pisem.net>
-	Added an instruction to ignore neon version.
-	Build process now checks if the client is available in PATH and invokes it
-	to check out the latest source. If there is no client, it is built first from
-	the SOURCE package.
+	* Added an instruction to ignore neon version.
+	  Build process now checks if the client is available in PATH and invokes it
+	  to check out the latest source. If there is no client, it is built first from
+	  the SOURCE package.
 
 2002-08-10 Sergey Lipnevich <sergeyli@pisem.net>
-	Converted Python optional dependency into a firm one.
+	* Converted Python optional dependency into a firm one.
 
 2002-08-02 Sergey Lipnevich <sergeyli@pisem.net>
-	Updated to "requires webserver" in DEPENDS.
+	* Updated to "requires webserver" in DEPENDS.
 
 2002-05-28 Sergey Lipnevich <sergeyli@pisem.net>
-	Spell created.
+	* Spell created.
+

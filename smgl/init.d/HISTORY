@@ -4,10 +4,10 @@
 2004-04-08 hgg <hgreig@bigpond.net.au>
 	* MAKEDEV: forgot to add this script
 
-2004-04-07 hgg <hgreig@bigpond.net.au> && Arwed v. Merkatz <v.merkatz@gmx.net>
+2004-04-07 hgg && Arwed v. Merkatz <v.merkatz@gmx.net> <hgreig@bigpond.net.au>
 	* BUILD,init.d/mountall.sh, init.d/devices, init.d/facilities.conf:
-        new %DEV runlevel and devices script for interoperation with udev.
-	Safely defaults to devfs unless running 2.6 with hotplug and ramfs support.
+	  new %DEV runlevel and devices script for interoperation with udev.
+	  Safely defaults to devfs unless running 2.6 with hotplug and ramfs support.
 
 2004-02-13 Eric Sandall <eric@sandall.us>
 	* init.d/mountall.sh: Mount RAID filesystems, if needed
@@ -17,12 +17,12 @@
 
 2004-02-07 Robert Helgesson <rhelgesson@sourcemage.org>
 	* init.d/keymap.conf: Added ENABLE_EURO and CONSOLECHARS_ARGS options.
-	Fixes bug #4487
+	  Fixes bug #4487
 	* init.d/z-misc.sh, init.d/smgl-misc: Moved z-misc.sh to smgl-misc.
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
 	* mountall.sh: only mount tmpfs mounts after the physical partitions are mounted.
-	(bug 3597)
+	  (bug 3597)
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
 	* BUILD: install_root fixes
@@ -31,7 +31,7 @@
 
 2003-12-15 Robert Helgesson <rhelgesson@sourcemage.org>
 	* files/smgl_function: Don't pass on the modified echo when running a
-	program through loadproc.
+	  program through loadproc.
 
 2003-11-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* CONFIGURE, POST_INSTALL: add DEVFS_ON_DEV config variable so
@@ -87,8 +87,8 @@
 	* PREPARE: Changed the check for new init to match the one
 	  in PRE_BUILD.
 	  Added two checks to PREPARE:
-	  - check for current devel sorcery (i.e. check for libinitd)
-	  - check for current coreutils (i.e. check for /bin/false)
+	* check for current devel sorcery (i.e. check for libinitd)
+	* check for current coreutils (i.e. check for /bin/false)
 	  If either of these checks fails, PREPARE exits with an exit
 	  code of 1 which makes sorcery abort the cast.
 	  These checks were added to make sure that the preparations for
@@ -121,7 +121,7 @@
 	* Added syslog logging of init and some more telinit commands.
 
 2003-08-01 Eric Sandall <eric@sandall.us>
-	* Misspelling.  :)
+	* Misspelling. :)
 
 2003-07-31 Robert Helgesson <rycee@home.se>
 	* Don't mess with /etc/sysconfig/devices unless user is
@@ -145,8 +145,8 @@
 	* Added new simpleinit system to grimoire. Also changed
 	  BUILD script to deal with manipulation of %<files> in the
 	  form of _<files>.
-
 	* Bug fix to POST_INSTALL sedit lines, added $.
 
 2003-05-07 Robert Helgesson <rycee@home.se>
 	* created spell
+

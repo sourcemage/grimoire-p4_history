@@ -1,43 +1,42 @@
 2003-10-23 Eric Sandall <eric@sandall.us>
 	* BUILD,POST_INSTALL: Move reminder to change password
-	to BUILD
+	  to BUILD
 	* passwdprompt.patch: Added to remove prompt for password
-	during 'make install'  (Bug #3159)
+	  during 'make install' (Bug #3159)
 	* HISTORY: Formatted to Guru Handbook
 
 2003-09-02 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 1.9.12  (Bug #4194)
+	* DETAILS: Updated to 1.9.12 (Bug #4194)
 
 2003-04-17 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 1.9.9f  (Bug #3143, thanks to Marc Greene)
+	* DETAILS: Updated to 1.9.9f (Bug #3143, thanks to Marc Greene)
 
 2003-01-25 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 1.6  (Bug #2362, thanks to Snakebyte)
+	* DETAILS: Updated to 1.6 (Bug #2362, thanks to Snakebyte)
 
 2002-10-12 Eric Sandall <eric@sandall.us>
 	* HISTORY: Cleaned up to match Guru's Handbook
 	* DETAILS: Added MAINTAINER
-	Updated to 1.5a  (Bug #1242)
+	  Updated to 1.5a (Bug #1242)
 
 2002-06-14 Eric Sandall <sandalle@yahoo.com>
 	* DETAILS: Added MD5 entry
 
 2002-05-29 Eric Sandall <sandalle@yahoo.com>
 	* BUILD: Moved the sedit line below configure, so that Makefile
-	will exist.
-	Tested and works with gcc3
+	  will exist.
+	  Tested and works with gcc3
 
-2002-02-01, gradm-1.1.c, hvisage
+2002-02-01 gradm-1.1.c hvisage <anonymous@sourcemage.org>
 	* BUILD: Moved 'make install' back into "FIFO"
-	Fixed Makefile to NOT do the password thingy
+	  Fixed Makefile to NOT do the password thingy
 	* POST_INSTALL: Added, which does the checking for the
-	password existance, and then create it or not.
+	  password existance, and then create it or not.
 
-2002-02-01, gradm-1.1.c, kongar
+2002-02-01 gradm-1.1.c kongar <anonymous@sourcemage.org>
 	* BUILD: Hacked to fix the bug if VOYEUR is off. The spell
-	is asking a password and if fifo enabled, no user intervention. I
-	took the make install part out of the fifo.
-
+	  is asking a password and if fifo enabled, no user intervention. I
+	  took the make install part out of the fifo.
 	* DETAILS,PRE_BIULD: Added ACL documentation to the spell.
-	The doc is now installed via the standard install mechanism 
+	  The doc is now installed via the standard install mechanism
 

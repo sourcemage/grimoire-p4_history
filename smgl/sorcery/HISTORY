@@ -1,14 +1,12 @@
 2003-12-03 Eric Schabell <eschabell@sourcemage.org>
 	* DETAILS: version updated to cat the /etc/sorcery/version file.
 
-2003-06-23  hgg <hgreig@bigpond.net.au>
+2003-06-23 hgg <hgreig@bigpond.net.au>
+	* ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315, keeping 13321
+	* Added PREPARE to remove cache after fixing bug #1068
 
-		ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315, keeping 13321
+2003-01-08 Eric Schabell <eschabell@sourcemage.org>
+	* Spell is now only to cleanout old sorcery reminant spells
+	  and installs a rescue script in /tmp. Will maybe be remomved
+	  at later date.
 
-		Added PREPARE to remove cache after fixing bug #1068
-
-2003-01-08  Eric Schabell <eschabell@sourcemage.org>
-
-		Spell is now only to cleanout old sorcery reminant spells
-		and installs a rescue script in /tmp. Will maybe be remomved
-		at later date.

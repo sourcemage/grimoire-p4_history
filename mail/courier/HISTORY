@@ -1,15 +1,15 @@
 2004-04-05 Jason Flatt <jflatt@sourcemage.org>
 	* DETAILS: Version bump to 0.45.4. Removed MAINTAINER.
 	* BUILD, PREPARE: Removed PREPARE and put create_account in BUILD
-	where it belongs.
-	Removed disable-root-check.patch command.
+	  where it belongs.
+	  Removed disable-root-check.patch command.
 	* CONFIGURE: Added a check for a previous configuration, so it
-	doesn't ask every time w/o the -r in cast.
+	  doesn't ask every time w/o the -r in cast.
 	* DEPENDS: Changed the default answer to installing GDBM over Berkley
-	DB.
+	  DB.
 	* disable-root-check.patch: Removed as it is no longer needed.
 	* init.d/courier-authdaemon: Corrected a bug in the stopping of the
-	script.
+	  script.
 
 2004-03-30 Seth Woolley <seth@tautology.org>
 	* DETAILS: Version bump to 0.45.1
@@ -37,11 +37,11 @@
 2003-09-19 Jason Flatt <jason@flattfamily.com>
 	* DETAILS: Version update to 0.43.2
 	* init.d/*: update init scripts for
-	simpleinit-msb (bug # 4295).
+	  simpleinit-msb (bug # 4295).
 
 2003-08-10 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
-	(doesn't work the way it is documented)
+	  (doesn't work the way it is documented)
 
 2003-07-26 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Update for Linux-PAM
@@ -54,11 +54,11 @@
 2003-04-22 Jason Flatt <jason@flattfamily.com>
 	* CONFLICTS: Added
 	* BUILD: Added LDFLAGS line to eliminate the combreloc
-	option during compile.
-	Added code to copy PAM files.
+	  option during compile.
+	  Added code to copy PAM files.
 	* PREPARE: Removed combreloc check and warning
 	* PRE_REMOVE: Added so the Courier tasks get stopped
-	before the scripts get removed.
+	  before the scripts get removed.
 
 2003-04-17 Jason Flatt <jason@flattfamily.com>
 	* Created this spell.

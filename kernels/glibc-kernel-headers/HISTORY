@@ -7,36 +7,37 @@
 
 2004-02-28 hgg <hgreig@bigpond.net.au>
 	* header-fixes.patch: add #define KEY_103RD 84 to input.h 
-	it was in 2.6.1 but is missing from >2.6.2 ?
+	  it was in 2.6.1 but is missing from >2.6.2 ?
 	* DETAILS: update UPDATED so it gets installed
 
 2004-02-15 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, error-warning.patch, header-fixes.patch:
-	new patch to add asm/ucontext.h header, needed for hddtemp
+	  new patch to add asm/ucontext.h header, needed for hddtemp
 
 2004-02-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated 2.6 headers to 2.6.2.0
 
 2004-02-12 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, error-warning.patch: remove the error from linux/config.h and
-	replace it with a #warning
+	  replace it with a #warning
 
 2004-02-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, DETAILS, PRE_BUILD: changed 2.6 headers to use the sanitized
-	headers from http://ep09.pld-linux.org/~mmazur/glibc-kernel-headers/
+	  headers from http://ep09.pld-linux.org/~mmazur/glibc-kernel-headers/
 	* PREPARE: made installing the 2.6 headers the default, pretty safe now
 
 2004-02-10 hgg <hgreig@bigpond.net.au>
 	* BUILD: change from 'mv' to 'cp -a'
-	
+
 2004-02-08 hgg <hgreig@bigpond.net.au>
 	* PREPARE: shuffle so it only asks about 2.6 if uname -r has 2.6 in it.
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
-	* DETAILS: move SOURCE_URL to download.sourcemage.org, it's  got a lot phatter pipe than me
+	* DETAILS: move SOURCE_URL to download.sourcemage.org, it's got a lot phatter pipe than me
 
 2004-02-01 hgg <hgreig@bigpond.net.au>
 	* DETAILS: remove archive=off, want cache for ISO installs
 
 2004-01-29 hgg <hgreig@bigpond.net.au>
 	* submit spell to devel for acceptance
+
