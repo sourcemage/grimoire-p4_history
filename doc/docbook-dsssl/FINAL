@@ -1,5 +1,4 @@
-local CATALOG=$INSTALL_ROOT/etc/sgml/catalog                            &&
-
-if ! grep -qs 'CATALOG "/etc/sgml/docbook-dsssl.cat"' $CATALOG; then
-    echo 'CATALOG "/etc/sgml/docbook-dsssl.cat"' >> $CATALOG
-fi
+install-catalog --add ${INSTALL_ROOT}/etc/sgml/dsssl-docbook-stylesheets.cat \
+ /usr/share/sgml/docbook/dsssl-stylesheets/${VERSION}/catalog                &&
+install-catalog --add ${INSTALL_ROOT}/etc/sgml/sgml-docbook.cat \
+ /etc/sgml/dsssl-docbook-stylesheets.cat                        
