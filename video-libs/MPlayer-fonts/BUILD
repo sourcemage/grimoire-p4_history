@@ -4,6 +4,6 @@
   mkdir  -p  /usr/share/mplayer/fonts  &&
   cp  -R  *  /usr/share/mplayer/fonts  &&
   mkdir  -p  /usr/share/mplayer/font   &&
-  cp  font-arial-iso-8859-*/*/*  /usr/share/mplayer/font
+  cp -u  font-arial-iso-8859-*/*/*  /usr/share/mplayer/font
 
 ) > $C_FIFO 2>&1
