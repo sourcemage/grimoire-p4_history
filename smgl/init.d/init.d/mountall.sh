@@ -36,7 +36,7 @@ checkfs()
 start()
 {
   required_executable /bin/mount
-  required_executable /bin/fsck
+  required_executable /sbin/fsck
 
   if [ "$DEVICES" != "/dev" ] ; then
     echo "Mounting /devices..."
