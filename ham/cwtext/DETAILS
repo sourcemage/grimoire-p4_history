@@ -2,15 +2,19 @@
          VERSION=0.90
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  Virginia, USA
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  North Carolina, USA
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  Belgium
         WEB_SITE=http://sourceforge.net/projects/$SPELL/
          ENTERED=20011212
          UPDATED=20011212
+      MAINTAINER=jasonflatt@wizard.com
            SHORT="Converts text to morse code"
-
 cat << EOF
-Convert text to International Morse Code.  Input is ASCII text. 
-Output can be: - . -..- - on the console, raw 8bit PCM suitable for
-piping to /dev/audio, .wav files or even (mp3|ogg).  Good for headlines
-on your MP3 player or code practice.
+
+Convert text to International Morse Code.  Input is ASCII text.  Output can
+be: - . -..- - on the console, raw 8bit PCM suitable for piping to
+/dev/audio, .wav files or even (mp3|ogg).  Good for headlines on your MP3
+player or code practice.
+
 EOF

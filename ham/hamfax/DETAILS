@@ -2,13 +2,17 @@
          VERSION=0.5.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  Virginia, USA
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  North Carolina, USA
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE  #  Belgium
         WEB_SITE=http://hamfax.sourceforge.net/english.php3
          ENTERED=20011114
          UPDATED=20011129
+      MAINTAINER=jasonflatt@wizard.com
            SHORT="hamfax is a gui-app for faxing by hamradio."
-
 cat << EOF
-HamFax is an application for sending and receiving facsimiles in amateur 
+
+HamFax is an application for sending and receiving facsimiles in amateur
 radio and for receiving public facsimile broadcasts like weather maps.
+
 EOF
