@@ -17,6 +17,7 @@
                --without-texinfo        \
                --without-dialog         \
                --disable-multiplatform  \
+	       $OPTS			\
                $OMIT_X11                &&
   make  all                             &&
   prepare_install                       &&
