@@ -1,5 +1,5 @@
 if  !  grep  -q  "FFMPEG"  $SPELL_CONFIG;  then
-  if    query  "Compile with ffmpeg for more video codecs (currently depends on ffmpeg-cvs)?" y
+  if    query  "Compile with ffmpeg support for more video codecs?" y
   then  FFMPEG=y
   else  FFMPEG=n
   fi

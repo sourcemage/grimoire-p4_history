@@ -1,9 +1,7 @@
 (
 
   patch -p0 < $SCRIPT_DIRECTORY/configure.in.shared-ffmpeg.patch  &&
-  if  spell_installed  ffmpeg-cvs;  then
-    patch -p1 < $SCRIPT_DIRECTORY/ffmpeg-cvs.patch
-  fi  &&
+  patch -p1 < $SCRIPT_DIRECTORY/ffmpeg-cvs.patch    &&
   autoconf                                          &&
   ./configure  --prefix=${INSTALL_ROOT}/usr         \
                --sysconfdir=${INSTALL_ROOT}/etc     \
