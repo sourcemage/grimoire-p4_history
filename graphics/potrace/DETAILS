@@ -1,15 +1,14 @@
            SPELL=potrace
-         VERSION=1.5
+         VERSION=1.6
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://potrace.sourceforge.net/download/$SOURCE
-          MD5[0]=1c1c3e0f1a38b9dd31db7b5cffc39e6d
+          MD5[0]=3b17a54b0dced554c6b1bd96d947e0a9
         WEB_SITE=http://potrace.sourceforge.net/
          ENTERED=20030813
          UPDATED=20030813
       LICENSE[0]=GPL
-      MAINTAINER=hgr@vabo.cz
            SHORT="potrace transforms bitmaps into vector graphics"
 cat << EOF
 potrace is a utility for tracing a bitmap, which means, transforming a bitmap into a smooth, scalable image. The input is a bitmap (PBM, PGM, PPM, or BMP format), and the default output is an encapsulated PostScript file (EPS). A typical use is to create EPS files from scanned data, such as company or university logos, handwritten notes, etc. The resulting image is not "jaggy" like a bitmap, but smooth. It can then be rendered at any resolution.
