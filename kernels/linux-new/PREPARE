@@ -105,8 +105,7 @@ patch_list()
 			argv1=$1
 			;;
 	esac
-	
-	patches="`ls -1 $patchesdir/`"
+	. "$kernelsdir/$argv1"
 	if [ "$patches" != "" ]
 	then
 		for patch in $patches
@@ -159,7 +158,24 @@ patch_menu()
 		retval="$?"
 		if [[ "$retval" == "0" ]]
 		then
-			new_patch_list="${new_patch_list}${command} "
+			found=false
+			tmp_patch_list=""
+			for patch in $new_patch_list
+			do
+				if [ "$command" != "$patch" ]
+				then
+					tmp_patch_list="${tmp_patch_list}${patch} "
+				else
+					found="true"
+				fi
+					
+			done
+			if [ "$found" == "true" ]
+			then
+				new_patch_list=$tmp_patch_list
+			else
+				new_patch_list="${new_patch_list}${command} "
+			fi
 		else
 			echo "patches=\"$new_patch_list\"" >> $configfile
 			break
