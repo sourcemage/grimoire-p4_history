@@ -2,7 +2,7 @@
 
 cd src
 
-./configure --prefix=/usr &&
+./configure --enable-alsa --prefix=/usr &&
 make depend && 
 make && 
 make install
