@@ -1,6 +1,16 @@
---- Makefile.in.cp	2003-12-12 20:31:38.000000000 +0100
-+++ Makefile.in	2003-12-12 20:32:24.000000000 +0100
-@@ -771,15 +771,6 @@
+diff -ur module-init-tools-3.1-pre2/Makefile.in module-init-tools-3.1-pre2-copy/Makefile.in
+--- module-init-tools-3.1-pre2/Makefile.in	2004-06-14 07:54:21.000000000 +0200
++++ module-init-tools-3.1-pre2-copy/Makefile.in	2004-06-19 19:16:37.614111176 +0200
+@@ -67,7 +67,7 @@
+ EXEEXT = @EXEEXT@
+ OBJEXT = @OBJEXT@
+ PATH_SEPARATOR = @PATH_SEPARATOR@
+-mandir = $(shell if [ `echo $(prefix)/ | tr -s /` = / ]; then echo /usr/share/man; else echo $(prefix)/man; fi)
++mandir = $(prefix)/share/man
+ INSTALL = $(SHELL) $(top_srcdir)/install-with-care
+ AMTAR = @AMTAR@
+ AWK = @AWK@
+@@ -783,15 +783,6 @@
  		ln -sf `ls -l /sbin/$$f | sed 's/.* -> //'`.old /sbin/$$f;  \
  	    fi;								    \
  	    mv /sbin/$$f /sbin/$$f.old;					    \
