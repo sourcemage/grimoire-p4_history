@@ -1,17 +1,17 @@
            SPELL=kio_sql
-         VERSION=0.21
+         VERSION=0.4
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.bnro.de/~harry/sql_io/$SOURCE
         WEB_SITE=http://www.bnro.de/~harry/sql_io
          ENTERED=20020408
          UPDATED=20020408
-      MAINTAINER=geo@drasil.uklinux.net
-             MD5=5908f63e95ae66a0113ca794bf0a0c46
+          MD5[0]='2ee798ecea0e8847b5685a8279dcf62a'
          LICENSE=GPL
-           SHORT="KDE 3 ioslave for SQL databases."
+       BUILD_API=2
+           SHORT="KDE ioslave for SQL databases."
 cat << EOF
-kio_sql is a KDE 3 IOSlave using the Qt 3 SQL capabilities. 
+kio_sql is a KDE IOSlave using the Qt 3 SQL capabilities. 
 
 It can display tables, queries and execute any SQL command. Results
 can be displayed in different output formats (text, html...). 
