@@ -1,16 +1,17 @@
 (
 
-  # Fixes Bugs #2736 and 2355
-  cp  ${SCRIPT_DIRECTORY}/resolver_parser.c.patch           \
-      ${SOURCE_DIRECTORY}/coda-src/asr                      &&
-  patch  -p0  <  ${SCRIPT_DIRECTORY}/asr-Makefile.in.patch  &&
-
-  echo  CODA_SVR = ${CODA_SVR}       &&
   ./configure  --build=${BUILD}      \
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
                ${OPTS}               &&
+
+
+  make                              
+  # Stupid bison 1.875 has problems, and stupid
+  # GNU people are taking their time putting the
+  # fixed 'a' release up!
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/resolver_parser.c.patch  &&
   make                               &&
   prepare_install                    &&
 

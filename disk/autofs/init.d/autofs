@@ -1,23 +1,11 @@
 #! /bin/bash
-#
-# rc file for automount using a Sun-style "master map".
-# We first look for a local /etc/auto.master, then a YP
-# map with that name
-#
 
-# Location of the automount daemon and the init directory
-#
-# Source Mage init.d install information
-# SMGL-script-version=20030331
-# SMGL-START:S:S80
-# SMGL-STOP:0 6:K20
-#
-
-DAEMON=/usr/sbin/automount
+RUNLEVEL=3
+PROGRAM=/usr/sbin/automount
 
 # check if program is installed
 #
-test -x $DAEMON || exit 5
+test -x $PROGRAM || exit 5
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 export PATH
@@ -69,11 +57,11 @@ then
                   s/--*t\(imeout\)*[ \t]*[0-9][0-9]*//g
                   s/\(^\|[ \t]\)-/\1/g'`
 		if [ -x $map ]; then
-		    echo "$DAEMON $daemonoptions $mountoptions $dir program $map $options $localoptions"
+		    echo "$PROGRAM $daemonoptions $mountoptions $dir program $map $options $localoptions"
 		elif [ -f $map ]; then
-		    echo "$DAEMON $daemonoptions $mountoptions $dir file $map $options $localoptions"
+		    echo "$PROGRAM $daemonoptions $mountoptions $dir file $map $options $localoptions"
 		else
-		    echo "$DAEMON $daemonoptions $mountoptions $dir yp `basename $map` $options $localoptions"
+		    echo "$PROGRAM $daemonoptions $mountoptions $dir yp `basename $map` $options $localoptions"
 		fi
 	    fi
 	done
@@ -92,7 +80,7 @@ function status()
 	echo ""
 	echo "Active Mount Points:"
 	echo "--------------------"
-	ps -C automount -o command= | grep "^$DAEMON "
+	ps -C automount -o command= | grep "^$PROGRAM "
 }
 
 # return true if at least one pid is alive
@@ -114,8 +102,8 @@ function alive()
 #
 return=0
 
-case "$1" in
-  start)
+start()
+{
 	# Check if the automounter is already running?
 	#
 	if [ ! -f /var/lock/subsys/autofs ]; then
@@ -123,9 +111,11 @@ case "$1" in
 	    getmounts | sh || return=1
 	    touch /var/lock/autofs
 	fi
-	;;
-  stop)
-	pids=$(/bin/pidof $DAEMON)
+}
+
+stop()
+{
+	pids=$(/bin/pidof $PROGRAM)
         kill -TERM $pids 2> /dev/null && sleep 1
         count=1
         while alive $pids; do
@@ -141,9 +131,10 @@ case "$1" in
             echo "Automounter stopped"
         fi
         rm -f /var/lock/autofs
-        ;;
+}
 
-  reload|restart)
+restart()
+{
 	if [ ! -f /var/lock/autofs ]; then
 		echo "Automounter not running"
 		exit 1
@@ -152,7 +143,7 @@ case "$1" in
         TMP1=`mktemp /tmp/autofs.XXXXXX` || { echo "could not make temp file" >& 2; exit 1; }
         TMP2=`mktemp /tmp/autofs.XXXXXX` || { echo "could not make temp file" >& 2; exit 1; }
 	getmounts >$TMP1
-	ps -C automount -o pid=,command= | grep " $DAEMON " | (
+	ps -C automount -o pid=,command= | grep " $PROGRAM " | (
 	    while read pid command; do
 		echo "$command" >>$TMP2
 		if ! grep -q "^$command" $TMP1; then
@@ -172,14 +163,8 @@ case "$1" in
 		fi
         done ) < $TMP1
 	rm -f $TMP1 $TMP2
-	;;
-  status)
-        status
-	;;
-  *)
-	echo "Usage: $initdir/autofs {start|stop|restart|reload|status}"
-	exit 1
-esac
-
-exit 0
-
+}
+status()
+{
+  status
+}
