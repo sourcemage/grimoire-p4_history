@@ -1,0 +1,10 @@
+UNNING_KERNEL=$(uname -r)
+mkdir -p /lib/modules/${RUNNING_KERNEL}/kernel/misc
+
+[ `echo ${RUNNING_KERNEL} | grep 2.4` ] && cp cloop.o ${INSTALL_ROOT}/lib/modules/${RUNNING_KERNEL}/kernel/misc/
+[ `echo ${RUNNING_KERNEL} | grep 2.6` ] && cp cloop.ko ${INSTALL_ROOT}/lib/modules/${RUNNING_KERNEL}/kernel/misc/
+depmod -a
+
+cp -a extract_compressed_fs ${INSTALLROOT}/usr/sbin/extract_compressed_fs
+cp -a create_compressed_fs ${INSTALL_ROOT}/usr/sbin/create_compressed_fs
+
