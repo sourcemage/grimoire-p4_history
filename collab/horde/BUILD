@@ -3,9 +3,11 @@
 	
 HORDE_DIR=/usr/share/horde
 HORDE_CONFIG_DIR=/etc/horde
+HORDE_PREFIX=''
 if [ "$SPELL" != 'horde' ]; then
   HORDE_DIR="$HORDE_DIR/$SPELL"
   HORDE_CONFIG_DIR="$HORDE_CONFIG_DIR/$SPELL"
+  HORDE_PREFIX="/$SPELL"
 fi
 
 PHP_MODULES=$(php -m 2>/dev/null)
@@ -21,11 +23,15 @@ PHP_MODULES=$(php -m 2>/dev/null)
   rm -fr $(find ./ -type d -and -name CVS)        &&
   rm -fr $(find ./ -type f -and -name .cvsignore) &&
 
-  CONFIG_PATCH="$SCRIPT_DIRECTORY/$SPELL-config.patch"
-  if [ -r "$CONFIG_PATCH" ]; then
-    message "${MESSAGE_COLOR}Applying a patch necessary to relocate $HORDE_DIR/config directory to $HORDE_CONFIG_DIR${DEFAULT_COLOR}" &&
-    patch -p1 < "$CONFIG_PATCH"
-  fi &&
+  # replace all occurrences of
+  #   dirname(__FILE__) . '/..
+  # to references to HORDE_BASE
+  message "${MESSAGE_COLOR}Applying changes necessary to relocate $HORDE_DIR/config directory to $HORDE_CONFIG_DIR${DEFAULT_COLOR}" &&
+  cd config &&
+  for f in *.php*; do
+    sedit "s|dirname(__FILE__) \. '\/\.\.|HORDE_BASE . '$HORDE_PREFIX|" $f
+  done &&
+  cd .. &&
 
   prepare_install &&
 
