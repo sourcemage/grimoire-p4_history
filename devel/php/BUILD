@@ -34,7 +34,6 @@
     --enable-dbase                     \
     --enable-sockets                   \
     --enable-calendar                  \
-    --with-regex=system                \
     --with-versioning                  \
     --with-mod_charset                 \
     --with-pear                        \
