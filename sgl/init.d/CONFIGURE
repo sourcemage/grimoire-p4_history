@@ -38,9 +38,13 @@ dialog --backtitle "$sgl_logo" --nocancel --checklist "The following script file
 
 The functions script provides a number of functions needed in the SMGL scripts and must be installed for their proper operation. 
 
-The mount.sh script is used to mount local file systems. 
+The localtime.sh provides the functionality to set the system time with the hardware clock at startup, set the hardware clock with the system time settings at shutdown, adjust the hardware clock as needed and to show the hardware clock timewhen called. More information can be found at man hwclock.
 
-The mountnfs.sh is used to mount network file systems. " 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
+The mount.sh script is used to mount local file systems.  
+
+The mountnfs.sh is used to mount network file systems.
+
+information on both mount.sh and mountnfs.sh can be found at man mount and man fstab. " 0 0 0 `cat $SCRIPT_DIRECTORY/checklist.temp` 2>$SCRIPT_DIRECTORY/scriptque.temp
 # strip out the quotes in previous output so it's usable
 sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
 # end
