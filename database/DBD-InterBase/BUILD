@@ -5,17 +5,18 @@ cat <<EOF
 /usr/firebird/bin
 /usr/firebird/include
 /usr/firebird/lib
-/tmp/test.fdb
+./test.fdb
 sysdba
 masterkey
 EOF
 }
-
-  answer | perl  Makefile.PL  &&
-  sedit "s/CCFLAGS =/CCFLAGS +=$CFLAGS -DIB_API_V6/" Makefile	&&
-  make               &&
-  make test	&&
-  prepare_install    &&
+  sedit \
+"298,304d;s#path = ''#path = '/usr/firebird/bin'#;s#=> ''#=> '$CFLAGS'#" \
+	Makefile.PL				&&
+  answer | perl  Makefile.PL  			&&
+  make               				&&
+  make test					&&
+  prepare_install    				&&
   make    install
 
 ) >> $C_FIFO 2>&1
