@@ -1,0 +1,12 @@
+if spell_installed GConf2
+then
+   if ! search_depends_status_exact "GConf2" "gtk+2" "on" "optional"
+   then
+      message ${PROBLEM_COLOR} GConf2 is not cast with gtk+2 enabled. Please recast GConf2 and enable the gtk+2 optional depends. ${DEFAULT_COLOR}
+      exit
+   fi
+else
+   message ${QUERY_COLOR} Please enable gtk+2 during the GConf2 configure or casting will fail. ${DEFAULT_COLOR} &&
+   sleep 5
+fi
+
