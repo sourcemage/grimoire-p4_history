@@ -1,0 +1,86 @@
+#define XFree86CustomVersion "Minimal DRI build from X.org tree"
+
+/* Compiler options */
+#define DefaultGcc2i386Opt -O2 -gstabs+ -pipe
+
+/* DDX drivers to build: trim this list to your needs */
+#define XF86CardDrivers whatever
+
+/* DRI drivers are built from Mesa CVS */
+#define DriDrivers whatever
+#define DevelDRIDrivers /**/
+
+/* Build development (insecure) DRI-aware 2D drivers */
+#define BuildDevelDRIDrivers NO
+
+/* Only shared libGL */
+#define NormalLibGlx NO
+
+/* Link the drivers against static libexpat to make binary snapshots
+ * more usable and to reduce build problems on Linux machines without
+ * expat.
+ */
+#if defined(LinuxArchitecture) && !defined(AMD64Architecture)
+# define ExpatLibrary		StaticLibrary($(BUILDLIBDIR),expat)
+# define NormalLibExpat 	YES
+#endif
+
+/* Optionally turn these on for debugging */
+/* #define GlxBuiltInTdfx YES */
+/* #define GlxBuiltInI810 YES */
+/* #define GlxBuiltInMga YES */
+/* #define GlxBuiltInR128 YES */
+/* #define GlxBuiltInRadeon YES */
+#define DoLoadableServer YES
+
+/* Optionally turn this on to change the place where you install the build.
+ * Warning: trailing blanks will cause build failures.
+ */
+/* #define ProjectRoot /usr/X11R6-XORG */
+
+/* Don't install anything outside the ProjectRoot directory */
+#define NothingOutsideProjectRoot YES
+
+/* #define UsrLibDir /usr/X11R6/lib */
+
+/* Optionally build the Xnest, Xvfb and Xdmx servers */
+#define XnestServer NO
+#define XVirtualFramebufferServer NO
+#define BuildDmx NO
+
+/*
+ * Build as little as possible (usually no need to change anthing here)
+ */
+#define BuildServersOnly YES
+#define BuildLibraries NO
+#define BuildLibrariesForXServers NO
+#define BuildLibrariesForConfigTools NO
+#define BuildXIE NO
+#define BuildPexExt NO
+#define XF86AFB NO
+#define XprtServer NO
+#define BuildXprint NO
+/* HasFontconfig avoids installing a new libfontconfig with its own
+ * configuration files. This way you keep your font configuration without
+ * copying configuration files around after make install. */
+#define HasFontconfig YES
+
+/*
+ * Don't change anything below or the build will fail.
+ */
+#define BuildXF86DRI YES
+#define BuildXDriInfo YES
+#define BuildGLXLibrary YES
+#define BuildXdmcpLib YES
+#define BuildXInputLib YES
+#define BuildXvLibrary YES
+#define BuildXF86VidModeLibrary YES
+#define BuildXvMCLibrary YES
+#define BuildExpatLibrary YES
+#define SharedLibFont NO
+#if DoLoadableServer
+#undef XF1Bpp
+#undef XF4Bpp
+#define XF1Bpp NO
+#define XF4Bpp NO
+#endif
