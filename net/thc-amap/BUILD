@@ -1,5 +1,8 @@
 (
 
+  sedit '139,162s/$/\\n\\/' amap.c    &&
+  sedit '53,73s/$/\\n\\/' amapcrap.c  &&
+
   make all                            &&
 
   prepare_install                     &&
