@@ -1,6 +1,5 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/vim-6.1.patch &&
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \
@@ -14,10 +13,10 @@
        /$/i\
        endif
        d
-       }' "runtime/syntax/sh.vim"
+       }' "runtime/syntax/sh.vim"    &&
   make                               &&
   prepare_install                    &&
-  make    install
+  make    install                    &&
   ln  -sf  vim  /usr/bin/vi
 
 ) > $C_FIFO 2>&1
