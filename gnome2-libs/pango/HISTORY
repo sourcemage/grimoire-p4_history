@@ -1,5 +1,7 @@
 2004-12-15 Eric Sandall <eric@sandall.us>
-	* DEPENDS: X11-LIBS is optional. :)
+	* DEPENDS: X11-LIBS is optional for gtk+-directfb, but we'll
+	  leave it in as most people won't use it until we find a
+	  cleaner system for this kind of dependency.
 	* PRE_BUILD: Apply g++ removal patch:
 	* g++.patch.bz2: Remove g++ checks from configure, otherwise
 	  this fails without g++ installed (stupid packagers!)
