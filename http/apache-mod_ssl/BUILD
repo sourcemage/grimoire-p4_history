@@ -1,4 +1,4 @@
-#patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.24_db4.patch
+patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.26_db4.patch
 
 export  SSL_BASE=SYSTEM
 export  EAPI_MM=SYSTEM
@@ -27,8 +27,8 @@ case  $CERTIFICATE  in
   y|Y|j|J)
 
     cd  mod_ssl-$VERSION                         &&
-    ./configure  --with-apache=../apache_1.3.24  &&
-    cd  ../apache_1.3.24                         &&
+    ./configure  --with-apache=../apache_1.3.26  &&
+    cd  ../apache_1.3.26                         &&
     $APACHE_CONFIGURE                            &&
     make  certificate  TYPE="custom"             &&
     echo  "CERTIFICATE=done"  >>  $SPELL_CONFIG  &&
@@ -41,8 +41,8 @@ case  $CERTIFICATE  in
   *)
 
     (  cd  mod_ssl-$VERSION                         &&
-       ./configure  --with-apache=../apache_1.3.24  &&
-       cd  ../apache_1.3.24                         &&
+       ./configure  --with-apache=../apache_1.3.26  &&
+       cd  ../apache_1.3.26                         &&
        $APACHE_CONFIGURE                            &&
        make  certificate  TYPE="existing"           \
              CRT=/etc/httpsd/ssl.crt/server.crt     &&
