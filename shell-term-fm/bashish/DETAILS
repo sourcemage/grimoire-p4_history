@@ -1,15 +1,14 @@
            SPELL=bashish
-         VERSION=DR7.8.1
+         VERSION=1.9.20
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://cesnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://umn.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+   SOURCE_URL[1]=http://osdn.dl.sourceforge.net/sourceforge/${SPELL}/${SOURCE}
         WEB_SITE=http://bashish.sourceforge.net/
       MAINTAINER=vydra@fria.fri.utc.sk
          ENTERED=20020911
-         UPDATED=20020911
-          MD5[0]=555e3a85c3e07383c711603e6bec7842
+         UPDATED=20030428
+          MD5[0]=d00714c6b74acbd5dd16d8a353b2617f
       LICENSE[0]=GPL
            SHORT="Bashish is a theme engine for the console."
 cat << EOF
