@@ -169,9 +169,15 @@ case "$mode" in
     fi
     evaluate_retval
     ;;
+  'restart')
+     echo "Restarting mysql server"
+     $0 stop
+     $0 start
+     evaluate_retval
+     ;;
   *)
     # usage
-    echo "usage: $0 start|stop"
+    echo "usage: $0 start|stop|restart"
     exit 1
     ;;
 esac
