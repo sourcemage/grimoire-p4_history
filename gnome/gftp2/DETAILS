@@ -1,14 +1,15 @@
            SPELL=gftp2
-         VERSION=2.0.13
+         VERSION=2.0.14
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gftp-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gftp-$VERSION
-   SOURCE_URL[0]=http://gftp.seul.org/$SOURCE
-          MD5[0]='8368f82aa2ea7696a628fc4b1be31d17'
+   SOURCE_URL[0]=http://www.gftp.org/$SOURCE
+          MD5[0]="49c6b39c82a3f376e46e10e88fbf0894"
         WEB_SITE=http://gftp.seul.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020521
-         UPDATED=20020521
+         UPDATED=20021207
            SHORT="gFTP is a graphical ftp client"
 cat << EOF
 gFTP is a multithreaded FTP client for X Windows written using GTK+.
