@@ -1,16 +1,16 @@
 message 'APR and APU are used by Apache 2 spells'
-message 'Do not select the development branch if you plan to use apache2 spell (HTTPD 2.0)'
-message 'Select development branch if you need httpd-dev spell (HTTPD 2.1)'
+message 'Do *not* select the main trunk if you plan to use apache2 spell (HTTPD 2.0)'
 if ! grep -q APR_BRANCH $SPELL_CONFIG; then
-  if query 'Would you like to use development branch?' n
+  if query 'Would you like to use main trunk (HTTPD 2.1+)?' n
     then echo 'APR_BRANCH=1' >> $SPELL_CONFIG
     else echo 'APR_BRANCH=0' >> $SPELL_CONFIG
   fi
 fi
 if ! grep -q APR_CHECKOUT $SPELL_CONFIG; then
-  if query 'Would you like to use the latest source code?' n
-    then echo 'APR_CHECKOUT=y' >> $SPELL_CONFIG  &&
-         depends  Python
-    else echo 'APR_CHECKOUT=n' >> $SPELL_CONFIG
+  if query 'Would you like to use the latest source code that may not build?' n; then
+    echo 'APR_CHECKOUT=y' >> $SPELL_CONFIG  &&
+    depends Python
+  else
+    echo 'APR_CHECKOUT=n' >> $SPELL_CONFIG
   fi
 fi
