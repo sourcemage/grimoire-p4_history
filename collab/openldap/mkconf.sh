@@ -183,5 +183,5 @@ gidNumber: 1001
 homeDirectory: /home/john
 __EOF__
 
-message "${MESSAGE_COLOR}Use /var/lib/sorcery/grimoire/`gaze where openldap`/openldap/mkaccount.sh${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Use $SCRIPT_DIRECTORY/mkaccount.sh${DEFAULT_COLOR}"
 message "${MESSAGE_COLOR}to create LDIF for new account${DEFAULT_COLOR}"
