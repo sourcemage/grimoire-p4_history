@@ -35,7 +35,11 @@
   install  -v  -m 644  $FD/smgl_runlevel    $ID/              &&
 
   # Some non-directory based runlevels
-  install  -v  -m 754  $FD/%*               $RD/              &&
+  # note, these are stored as _<script-name> and 
+  #  copied to %<script-name>
+  install  -v  -m 754  $FD/_default         $RD/%default      &&
+  install  -v  -m 754  $FD/_rescue          $RD/%rescue       &&
+  install  -v  -m 754  $FD/_single          $RD/%single       &&
 
   pinfo "Installing facility and init configfiles..."         &&
 
