@@ -6,8 +6,8 @@ NEEDS="+network +remote_fs"
 . /etc/init.d/smgl_init
 
 case  $1  in
-    start)  echo   "Starting Berkley Internet Name Domain"
-            loadproc named -u bind
+    start)  echo   "Starting chrooted Berkley Internet Name Domain"
+            loadproc named -u bind -t /etc/bind
             ;;
 
    reload)  echo   "Reloading Berkley Internet Name Domain"
