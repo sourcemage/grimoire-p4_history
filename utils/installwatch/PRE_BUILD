@@ -1,18 +1,18 @@
-if  [  -u  /usr/bin/make  ]   ||
-    [  -g  /usr/bin/make  ];  then
-  message  "A non setuid/gid /usr/bin/make is required."
+if  [  -u  ${INSTALL_ROOT}/usr/bin/make  ]   ||
+    [  -g  ${INSTALL_ROOT}/usr/bin/make  ];  then
+  message  "A non setuid/gid ${INSTALL_ROOT}/usr/bin/make is required."
   cast  -c  make
 fi
 
 
-if  !  ldd  /bin/tar  >  /dev/null;  then
-  message  "A dynamically linked /bin/tar is required."
+if  !  ldd  ${INSTALL_ROOT}/bin/tar  >  /dev/null;  then
+  message  "A dynamically linked ${INSTALL_ROOT}/bin/tar is required."
   cast  -c  tar
 fi
 
 
-if  !  ldd  /usr/bin/bzip2  >  /dev/null;  then
-  message  "A dynamically linked /usr/bin/bzip2 is required."
+if  !  ldd  ${INSTALL_ROOT}/usr/bin/bzip2  >  /dev/null;  then
+  message  "A dynamically linked ${INSTALL_ROOT}/usr/bin/bzip2 is required."
   cast  -c  bzip2
 fi
 
