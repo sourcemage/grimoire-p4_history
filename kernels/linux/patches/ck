@@ -12,37 +12,29 @@ Contains:
  Supermount-NG
  XFS file system, Bootsplash, Grsec"
 
-VERSIONS="2.4.22-ck2
-2.4.21-ck3"
+VERSIONS="2.4.23-ck1"
 
-MD5S[0]=c3fb8c10931b2c17c18713805d260d9b
-MD5S[1]=5fe3e852bedfe5c7641b0732004d3c24
+MD5S[0]=ddc0d6fc327a6d12afb2c4c837070b51
 
 CUSTOM=ck_custom
 CMENU=(\
-    "2.4.22-1000-ckbase-0309132043"     "Base ck patch"               "Base ck contains the batch O(1) scheduler, preemptible, low latency and my interactivity patch" \
-    "2.4.22-1010-aavm-0309132047"         "Autoregulation vm hacks"     "This uses the default VM but changes the page inactivation according to the degree of memory stress, and the system stress." \
-    "2.4.22-1020-rl2"          "Read Latency 2"              "Read Latency 2" \
-    "2.4.22-1021-rl2dt"           "Desktop Tuning 1"            "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
-    "2.4.22-1030-vh"           "Variable HZ setting"         "If you change the Hz, use a multiple of 100. There really is no point going above 1000 Hz." \
-    "2.4.22-1031-vhdt"          "Desktop Tuning 2"            "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
-    "2.4.22-1040-sm" "Supermount-NG v1.2.8"       "Supermount-NG v1.2.8" \
-    "2.4.22-1050-bs"           "Bootsplash"                  "See http://www.bootsplash.org" \
-    "2.4.22-1060-xfs-0309131631" "XFS file system"   "This is possibly safer with preempt disabled. It may have unimportant patch reject with aavm but works ok." \
-    "2.4.22-1070-grsec-0309132055"    "Grsec"                "needs 1010 and 1060" \
+    "2.4.23-ckbase-0312022106"     "Base ck patch"          "Base ck contains the batch O(1) scheduler, preemptible, low latency and my interactivity patch" \
+    "2.4.23-ckbase-rl2-0312021358" "Read Latency 2"         "Read Latency 2" \
+    "2.4.23-rl2-rl2dt-0312022027"  "RL2 Desktop Tuning"     "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
+    "2.4.23-rl2dt-vhzj64-0312022318" "Variable HZ setting with 64bit jiffies"         "If you change the Hz, use a multiple of 100. There really is no point going above 1000 Hz." \
+    "2.4.23-vhzj64-sm1.2.10-0312022322" "Supermount-NG v1.2.10" "Supermount-NG v1.2.10" \
+    "2.4.23-sm1.2.10-bs3.0.7-0312022344" "Bootsplash"   "See http://www.bootsplash.org" \
+    "2.4.23-bs3.0.7-xfs1.3.1-0312030031" "XFS file system"   "This is possibly safer with preempt disabled. It may have unimportant patch reject with aavm but works ok." \
    )
 
 CMD5=(\
-    "115543958883b582b7aa3f5464e3a1b1" \
-    "d825991c7085650eb8d367530526ccc6" \
-    "84de014de201ae71ab0e8916ecea4db1" \
-    "b5ef4d1c46ee5c8f87f28a91980052d7" \
-    "8fa3d2a2ff25f8a0e2fc5da14084d420" \
-    "42dcd60df8554ae445789c64d8a0695c" \
-    "83fc8add1714bd4a85221c8229926621" \
-    "b1a2b9d0479cdf46707f6cebc8114dfe" \
-    "faf6c417d13bb8265e8e33e2f765c09d" \
-    "0f48accbb191d15497ff3e6096296b2c" \
+    "4976155c568264afc0b5b3739400dc41" \
+    "8018f69b3dbc1e17978e4d9368013020" \
+    "2895f109afa4847af70b3b1f8dfe477e" \
+    "df82eb06a58755a61cf15e724cc33b92" \
+    "521e75840ec2729b71b4108edd4dd626" \
+    "5db4cc3f8a8ed12bf9c6c8c425c9f424" \
+    "281e2031abe178fa8c3e3efbbfcb2578" \
    )
 
 if [[ "$1" == "CONFIG" ]]; then
@@ -50,7 +42,7 @@ if [[ "$1" == "CONFIG" ]]; then
     for CPATCH in $CK_PATCH; do
       echo "
 SOURCE${COUNTER}=patch-${CPATCH}.bz2
-SOURCE${COUNTER}_URL[0]=http://ck.kolivas.org/patches/2.4/2.4.22/2.4.22-ck2/split-out/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/2.4.23/2.4.23-ck1/split-out/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
     (ck_md5_custom $(( $COUNTER - 1 )) $CPATCH) >> ${SPELL_CONFIG}.DETAILS
     COUNTER=$(( $COUNTER + 1 ))
     done
@@ -58,8 +50,7 @@ SOURCE${COUNTER}_URL[0]=http://ck.kolivas.org/patches/2.4/2.4.22/2.4.22-ck2/spli
   else
     echo "
 SOURCE${COUNTER}=patch-${!PATCH}.bz2
-SOURCE${COUNTER}_URL[0]=http://ck.kolivas.org/patches/2.4/2.4.22/2.4.22-ck2/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
-
+SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/2.4.23/2.4.23-ck1/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
     source $SCRIPT_DIRECTORY/MD5PATCH
   fi
 fi
