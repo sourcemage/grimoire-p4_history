@@ -1,16 +1,14 @@
            SPELL=htdig
-         VERSION=3.1.6
+         VERSION=3.2.0b3
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='d19893c5dab6fa4606be1474366d5a07'
+          MD5[0]='c7c992cb34f71cc3e63b7ee2c79f1fc8'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.htdig.org/files/$SOURCE
-   SOURCE_URL[1]=http://htdig.sourceforge.net/files/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://www.htdig.org/files/$SOURCE
         WEB_SITE=http://www.htdig.org/
          ENTERED=20020207
-         UPDATED=20020207
-      MAINTAINER=jacksonje@health.missouri.edu
-           SHORT="The ht://Dig system is a complete world wide web indexing and searching system."
-
+         UPDATED=20020726
+           SHORT='The ht://Dig system is a complete world wide web indexing and searching system'
 cat << EOF
 The ht://Dig system is a complete world wide web indexing and searching system
 for a domain or intranet. This system is not meant to replace the need for
