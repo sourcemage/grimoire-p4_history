@@ -1,18 +1,19 @@
 # $Id: BUILD,v 1.11 2002/12/11 16:57:15 sergeyli Exp $
 (
 
-  ./configure                 \
-    --build=$BUILD            \
-    --prefix=/usr             \
-    --sysconfdir=/etc         \
-    --localstatedir=/var      \
-    --disable-dso             \
-    --disable-maintainer-mode \
-    --disable-mod-activation  \
-    --disable-static          \
-    --enable-shared=all       \
-    --without-berkeley-db     \
-    $OPTS                     &&
+  ./configure                \
+    --build=$BUILD           \
+    --prefix=/usr            \
+    --sysconfdir=/etc        \
+    --localstatedir=/var     \
+    --disable-debug          \
+    --disable-mod-activation \
+    --disable-static         \
+    --enable-dso             \
+    --enable-shared          \
+    --without-apxs           \
+    --without-berkeley-db    \
+    $OPTS                    &&
 
   make &&
   make swig-py-ext &&

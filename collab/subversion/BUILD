@@ -41,29 +41,32 @@
 
 #	Build from checked-out source
 #	We no longer have APR, APR-UTIL or neon in this folder, so we use what's on the system
-	./autogen.sh             &&
-	./configure              \
-		--build=$BUILD       \
-		--prefix=/usr        \
-		--sysconfdir=/etc    \
+	./autogen.sh &&
+	./configure \
+		--build=$BUILD \
+		--prefix=/usr \
+		--sysconfdir=/etc \
 		--localstatedir=/var \
-		--with-apr=/usr      \
+		--disable-debug \
+		--disable-static \
+		--enable-dso \
+		--enable-shared \
+		--with-apr=$(which apr-config) \
 		--with-apr-util=/usr \
-		--with-apxs=apxs     \
-		$OPTS                &&
+		--with-apxs \
+		$OPTS &&
 	make             &&
 	make swig-py-lib &&
+	make check       &&
 
 #	Use this instead of just 'make' for -jN option:
 #	make -jN external-all
 #	make -jN local-all
 
-
 #	Install
 	prepare_install &&
 	make    install &&
-	make    install-swig-py-lib &&
-	make    check
+	make    install-swig-py-lib
 
 ) > $C_FIFO 2>&1 && (
 
