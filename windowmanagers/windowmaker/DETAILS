@@ -1,6 +1,15 @@
-           SPELL=WindowMaker
+           SPELL=windowmaker
          VERSION=0.80.2
+          SOURCE=WindowMaker-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/WindowMaker-$VERSION
+   SOURCE_URL[0]=ftp://www.windowmaker.org/pub/source/release/$SOURCE
+   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
         WEB_SITE=http://www.windowmaker.org
+          MD5[0]=a59f07699a9ccae86ffb8520eceb9fde
+      LICENSE[0]=GPL
+      LICENSE[1]=http://windowmaker.org/disclaimer.html
+      MAKE_NJOBS=1
+       BUILD_API=2
          ENTERED=20010922
          UPDATED=20021113
            SHORT="WindowMaker is an X11 windows manager, similar to NeXTSTEP."
