@@ -1,0 +1,6 @@
+config_query GETCVS "Get from CVS?" n &&
+
+if [ "$GETCVS" == "n" ]; then
+   config_query GETSNAP "Get 4.0 snapshot?" n
+fi
+
