@@ -11,8 +11,8 @@ optional_depends perl \
                  '--without-perl' \
                  'to include Perl 5 support' &&
 optional_depends php \
-                 "--with-php=$INSTALL_ROOT/usr/bin/php" \
-                 '--without-php' \
+                 "--with-php4=$INSTALL_ROOT/usr/bin/php" \
+                 '--without-php4' \
                  'to include PHP 4 support (NOTE: problematic now)' &&
 optional_depends ruby \
                  "--with-ruby=$INSTALL_ROOT/usr/bin/ruby" \
