@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/spamassassin -P | /usr/sbin/sendmail -i "$@"
+
+exit $?
