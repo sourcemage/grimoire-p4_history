@@ -10,6 +10,7 @@
 # no symlinks are made for this one, must do it by hand!
 
 NEEDS="+remote_fs"
+PROGRAM=/usr/bin/sensors
 RUNLEVEL=3
 
 . /etc/init.d/smgl_init
@@ -17,39 +18,35 @@ RUNLEVEL=3
 CONFIG=/etc/sysconfig/lm_sensors
 MODULES=`grep \^MODULE_ $CONFIG | cut -d= -f2`
 
-case "$1" in
-    start)
-		for i in $MODULES; do
-		echo "Starting hardware sensor $i ..."
-			modprobe $i 2>&1 >/dev/null
-			evaluate_retval
-		done
-		echo "Starting sensors ..."
-		/usr/bin/sensors -s > /dev/null
-		evaluate_retval
-		;;
+start()
+{
+  for i in $MODULES; do
+    echo "Starting hardware sensor $i ..."
+    modprobe $i 2>&1 >/dev/null
+    evaluate_retval
+  done
+  echo "Starting sensors ..."
+  ${PROGRAM} -s > /dev/null
+  evaluate_retval
+}
 
-    stop)
-		for i in $MODULES; do
-			echo "Stopping hardware sensor $i ..."
-			modprobe -r $i 2>&1 >/dev/null
-			evaluate_retval
-		done
-		;;
+stop()
+{
+  for i in $MODULES; do
+    echo "Stopping hardware sensor $i ..."
+    modprobe -r $i 2>&1 >/dev/null
+    evaluate_retval
+  done
+}
 
-    restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+restart()
+{
+  stop      &&
+  sleep  1  &&
+  start
+}
 
-    status)
-		sensors
-		;;
-
-    *)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;    
-
-esac
+status()
+{
+  ${PROGRAM}
+}
