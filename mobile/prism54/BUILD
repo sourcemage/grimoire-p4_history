@@ -7,9 +7,9 @@
   prepare_install	&&
   make install		&&
 
-  mkdir -p /var/lib/hotplug/firmware				&&
-  cp ${SOURCE_CACHE}/${SOURCE2} /var/lib/hotplug/firmware	&&
-  cp $SCRIPT_DIRECTORY/firmware.agent /etc/hotplug/		&&
+  mkdir -p /usr/lib/hotplug/firmware				&&
+  cp ${SOURCE_CACHE}/${SOURCE2} /usr/lib/hotplug/firmware	&&
+#  cp $SCRIPT_DIRECTORY/firmware.agent /etc/hotplug/		&&
 
   depmod -ae								&&
 
