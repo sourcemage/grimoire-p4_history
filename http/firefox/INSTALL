@@ -7,15 +7,15 @@ fi  &&
 #
 # Firefox now installs to /usr/lib/firefox and leaves /usr/lib/mozilla alone
 
-mkdir  -p   $FIREFOX_HOME                                   &&
-ln  -fns    $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
-ln  -fns    ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
-            ${INSTALL_ROOT}/usr/share/idl/firefox           &&
-ln  -fns    ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
-            ${INSTALL_ROOT}/usr/include/firefox             &&
-make  install                                               &&
-cp  -vaL  dist/public/nss                                   \
-          ${INSTALL_ROOT}/usr/include/firefox/              &&
+mkdir  -p  $FIREFOX_HOME                                   &&
+make  install                                              &&
+ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
+ln  -fns   ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
+           ${INSTALL_ROOT}/usr/share/idl/firefox           &&
+ln  -fns   ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
+           ${INSTALL_ROOT}/usr/include/firefox             &&
+cp  -vaL   dist/public/nss                                 \
+           ${INSTALL_ROOT}/usr/include/firefox/            &&
 
 #
 # Don't do this!
