@@ -1,6 +1,0 @@
-if  !  grep  -q  'libsmbclient'  $SPELL_CONFIG;  then
-  if  query  'Build and install Samba client library?'  y
-    then  echo  'OPTS="$OPTS --with-libsmbclient"'     >>  $SPELL_CONFIG
-    else  echo  'OPTS="$OPTS --without-libsmbclient"'  >>  $SPELL_CONFIG
-  fi
-fi
