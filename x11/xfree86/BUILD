@@ -41,7 +41,7 @@ message  "Building XFree86 takes a very long time."
   make -f Makefile.ini lndir                       &&
   cp lndir $SOURCE_DIRECTORY.bld/                  &&
   cd $SOURCE_DIRECTORY.bld                         &&
-  lndir ../xc/                                     &&
+  ./lndir ../xc/                                   &&
 
   make World
   
