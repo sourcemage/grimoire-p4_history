@@ -20,7 +20,7 @@
 
   prepare_install  					&&
 
-  cp  busybox  /sbin
+  install  -m  755  busybox  ${INSTALL_ROOT}/sbin
 
 #  This one is needed only when symlinks needed ...
 #  make  PREFIX=/  install
