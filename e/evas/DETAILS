@@ -1,15 +1,19 @@
            SPELL=evas
-         VERSION=0.6.0
+         VERSION=cvs
+#        VERSION=0.6.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-          MD5[0]=1121961f7c7ac2d4ce7471ff7ee429b8
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/evas
+#  SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+          MD5[0]=IGNORE
+#         MD5[0]=1121961f7c7ac2d4ce7471ff7ee429b8
         WEB_SITE=http://www.enlightenment.org
          ENTERED=20011101
          UPDATED=20020509
-      LICENSE[0]=GPL
+      LICENSE[0]=BSD
+#      LICENSE[0]=GPL
       MAINTAINER=unet@sourcemage.org
-           SHORT="evas is a canvis for e17"
+           SHORT="evas is a canvas for e17"
 cat << EOF
 Evas is a canvas library, designed to work with the X Window System.
 It is designed to be able to take advantage of any graphics hardware
