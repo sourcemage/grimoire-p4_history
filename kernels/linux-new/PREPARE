@@ -107,37 +107,44 @@ patch_list()
 	esac
 	
 	patches="`ls -1 $patchesdir/`"
-	for patch in $patches
-	do
-		tmp="LATEST_$patch"
-		if [ "${!tmp}" != "" ]
-		then
-			. $patchesdir/$patch/${!tmp}
-			for applied in $appliedkernels
-			do
-				if [ $applied == $argv1 ]
-				then
-					echo LATEST_$patch
-					echo $patchversion
-					echo $patch
-				fi
-			done
-		fi
-		patchvers="`ls -1 $patchesdir/${patch}`"
-		for patchver in $patchvers
+	if [ "$patches" != "" ]
+	then
+		for patch in $patches
 		do
-			. $patchesdir/$patch/$patchver
-			for applied in $appliedkernels
+			tmp="LATEST_$patch"
+			if [ "${!tmp}" != "" ]
+			then
+				. $patchesdir/$patch/${!tmp}
+				for applied in $appliedkernels
+				do
+					if [ $applied == $argv1 ]
+					then
+						echo LATEST_$patch
+						echo $patchversion
+						echo $patch
+					fi
+				done
+			fi
+			patchvers="`ls -1 $patchesdir/${patch}`"
+			for patchver in $patchvers
 			do
-				if [ $applied == $argv1 ]
-				then
-					echo $patchver
-					echo Patch
-					echo $patch
-				fi
+				. $patchesdir/$patch/$patchver
+				for applied in $appliedkernels
+				do
+					if [ $applied == $argv1 ]
+					then
+						echo $patchver
+						echo Patch
+						echo $patch
+					fi
+				done
 			done
 		done
-	done
+	else
+		echo "No"
+		echo "Patches"
+		echo "Available"
+	fi
 }
 
 patch_menu() 
