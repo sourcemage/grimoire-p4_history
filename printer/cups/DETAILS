@@ -1,9 +1,12 @@
            SPELL=cups
-         VERSION=1.1.21rc2
+         VERSION=1.1.21
        BUILD_API=2
           SOURCE=$SPELL-$VERSION-source.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.easysw.com/pub/cups/test/$SOURCE
+   SOURCE_URL[0]=ftp://ftp3.easysw.com/pub/cups/1.1.21/$SOURCE                          ##  California, USA
+   SOURCE_URL[1]=ftp://ftp2.easysw.com/pub/cups/1.1.21/$SOURCE                          ##  Maryland, USA
+   SOURCE_URL[2]=ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/cups/1.1.21/$SOURCE  ##  Finland
+   SOURCE_URL[3]=ftp://ftp.easysw.com/pub/cups/1.1.21/$SOURCE                           ##  Oregon, USA
         WEB_SITE=http://www.cups.org
       LICENSE[0]=http://www.cups.org/faq0003.html
           MD5[0]=fc9248af7ebebe947615925a6ac4a731
