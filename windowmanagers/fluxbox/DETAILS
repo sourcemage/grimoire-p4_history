@@ -1,15 +1,17 @@
            SPELL=fluxbox
-         VERSION=0.9.4
+         VERSION=0.9.6pre1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
+   SOURCE_URL[0]=http://fluxbox.org/download/$SOURCE
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+   SOURCE_URL[2]=http://download.sourcemage.org/mirror/$SOURCE
         WEB_SITE=http://$SPELL.sourceforge.net/
-          MD5[0]=0a439800837746b01ebc46a360002490
-          MD5[1]=0a439800837746b01ebc46a360002490
+          MD5[0]=c9fc8bcd14f6dab3d665229f8351783c
+          MD5[1]=c9fc8bcd14f6dab3d665229f8351783c
+          MD5[2]=c9fc8bcd14f6dab3d665229f8351783c
       LICENSE[0]=MIT
          ENTERED=20011210
-         UPDATED=20021209
+         UPDATED=20030904
       MAINTAINER=paul@moway.co.uk
            SHORT="Fluxbox is yet another windowmanager!"
 cat << EOF
@@ -17,7 +19,7 @@ Fluxbox is yet another windowmanager!
 
 It is based on the Blackbox 0.61.1 code. Fluxbox looks like blackbox
 and handles styles, colors, window placement and similar thing exactly
-like blackbox. 
+like blackbox.
 
 FEATURES:
 Here are the major features of fluxbox:
