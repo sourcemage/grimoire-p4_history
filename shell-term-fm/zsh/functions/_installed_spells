@@ -1,0 +1,8 @@
+#autoload
+
+#Define global values
+if (( !$+SPELL_STATUS )); then
+    typeset -g `cat /etc/sorcery/config|grep SPELL_STATUS`
+fi
+
+compadd -P '' $( /bin/cat $SPELL_STATUS|grep installed|cut -d: -f1 )
