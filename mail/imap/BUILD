@@ -25,7 +25,7 @@
     SSLOPTS="SSLTYPE=none"
   fi                                                                     &&
 
-  if spell_installed Linux-PAM; then
+  if spell_installed linux-pam; then
     message "${MESSAGE_COLOR}Building with PAM...${DEFAULT_COLOR}"     	 &&
     TARGET=lnp
   else
