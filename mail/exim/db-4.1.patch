@@ -1,0 +1,31 @@
+--- dbstuff.h	2002-07-22 10:59:48.000000000 +0200
++++ dbstuff.h.new	2002-09-24 22:24:05.000000000 +0200
+@@ -126,6 +126,20 @@
+ 
+ /* Access functions */
+ 
++/* db 4.1 added a transaction param smack in the middle of the param list ! */
++
++#if DB_VERSION_MINOR >= 0
++
++/* EXIM_DBOPEN - sets *dbpp to point to an EXIM_DB, NULL if failed */
++#define EXIM_DBOPEN(name, flags, mode, dbpp)         \
++       if (db_create(dbpp, NULL, 0) != 0 || \
++         (*dbpp)->open(*dbpp, NULL, CS name, NULL, \
++         ((flags) == O_RDONLY)? DB_UNKNOWN : DB_HASH, \
++         ((flags) == O_RDONLY)? DB_RDONLY : DB_CREATE, \
++         mode) != 0) *(dbpp) = NULL
++
++#else
++
+ /* EXIM_DBOPEN - sets *dbpp to point to an EXIM_DB, NULL if failed */
+ #define EXIM_DBOPEN(name, flags, mode, dbpp)         \
+        if (db_create(dbpp, NULL, 0) != 0 || \
+@@ -133,6 +147,7 @@
+          ((flags) == O_RDONLY)? DB_UNKNOWN : DB_HASH, \
+          ((flags) == O_RDONLY)? DB_RDONLY : DB_CREATE, \
+          mode) != 0) *(dbpp) = NULL
++#endif
+ 
+ /* EXIM_DBGET - returns TRUE if successful, FALSE otherwise */
+ #define EXIM_DBGET(db, key, data)      \
