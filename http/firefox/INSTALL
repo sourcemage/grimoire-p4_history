@@ -25,8 +25,8 @@ cp  -vaL  dist/public/nss                                   \
           ${INSTALL_ROOT}/usr/include/firefox-$VERSION/     &&
 ln  -fns  ${FIREFOX_HOME}/firefox  /usr/bin/                &&
 
-if  !  grep  -q  mozilla  /etc/ld.so.conf;  then
-  echo  '/usr/lib/mozilla'  >>  /etc/ld.so.conf
+if  !  grep  -q  firefox  /etc/ld.so.conf;  then
+  echo  '/usr/lib/firefox'  >>  /etc/ld.so.conf
 fi  &&
 
 #
