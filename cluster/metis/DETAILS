@@ -1,0 +1,18 @@
+           SPELL=metis
+         VERSION=4.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www-users.cs.umn.edu/~karypis/metis/$SPELL/files/$SOURCE
+        WEB_SITE=http://www-users.cs.umn.edu/~karypis/metis/metis
+         ENTERED=20020604
+         UPDATED=20020604
+      MAINTAINER=zoran@idi.ntnu.no
+           SHORT="graph partitioning programs"
+
+cat << EOF
+METIS is a set of programs for partitioning graphs, 
+partitioning finite element meshes, and for producing 
+fill reducing orderings for sparse matrices. The 
+algorithms implemented in METIS are based on 
+multilevel graph partitioning schemes.
+EOF
