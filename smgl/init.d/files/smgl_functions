@@ -151,7 +151,7 @@ loadproc()
   getpids $1
 
   if [ -z "$pidlist" ] ; then
-    "$@"
+    ( unset -f echo ; "$@" ; )
     evaluate_retval
   else
     $SET_WCOL
