@@ -3,8 +3,12 @@ ${MESSAGE_COLOR}BACKING UP EXISTING XFREE86 HEADERS${DEFAULT_COLOR}" &&
   XFREE_DIR=${INSTALL_ROOT}/usr/include/GL/xfree &&
   GL_DIR=${INSTALL_ROOT}/usr/include/GL/ &&	 
 if ! [ -d ${XFREE_DIR} ] 
-	then mkdir ${XFREE_DIR} && 
-	for i in gl.h glx.h glxtokens.h ; 
-		do  cp  ${GL_DIR}/$i ${XFREE_DIR} ;
+	then mkdir ${XFREE_DIR} 
+fi &&
+if ! [ -f ${XFREE_DIR}/done ]
+  then	for i in gl.h glx.h glxtokens.h ; 
+		do  cp -v ${GL_DIR}/$i ${XFREE_DIR} &&
+		    touch ${XFREE_DIR}/done
 		done
+  else message "${SPELL_COLOR}ALREADY BACKED UP STANDARD XFREE86 HEADERS${DEFAULT_COLOR}"
 fi
