@@ -20,7 +20,9 @@ message  "Building XFree86 takes a very long time."
   #leaving the original file untouched 
   #for when this gcc bug gets fixed (hgg09/08/03)
   #
-  sedit s"/-Os//g" config/cf/host.def &&
+  if [ -f config/cf/host.def ] 
+  then sedit s"/-Os//g" config/cf/host.def 
+  fi  &&
   if  !  (echo $CFLAGS | grep -q -- "-Os"); then
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
   fi  &&
