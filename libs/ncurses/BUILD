@@ -1,5 +1,7 @@
 (
 
+  patch  -p0  <  $SCRIPT_DIRECTORY/ncurses-ada-fix.patch  &&
+
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
                --libdir=/lib      \
