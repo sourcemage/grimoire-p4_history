@@ -1,6 +1,6 @@
 depends   gtk+2  &&
-if [ "$GAIM_ENCRYPTION" = "y" ] ; then
-depends nss 
+if [ "$NSS_ENCRYPTION" = "y" ] ; then
+	depends nss 
 fi               &&
 
 optional_depends  "audiofile" "--enable-audio" "--disable-audio"  \
