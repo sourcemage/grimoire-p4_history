@@ -1,14 +1,34 @@
-depends  autoconf  &&
-depends  automake  &&
+depends  autoconf   &&
+depends  automake &&
 depends  kdebase   &&
-depends  ctags     &&
-depends  gdb       &&
+depends  ctags        &&
+depends  gdb          &&
+depends  db            &&
 
-optional_depends  linuxdoc-tools  ""  ""  "for DTD SGML documentation support"  &&
-optional_depends  graphviz        ""  ""  "for graph support"                   &&
-optional_depends  kdesdk          ""  ""  "for KDE development support"         &&
-optional_depends  a2ps            ""  ""  "for postscript printing support"     &&
-optional_depends  kdbg            ""  ""  "for KDE-based GNU Debugger"          &&
+optional_depends  linuxdoc-tools     \
+                  ""     \
+                  ""     \
+                  "for DTD SGML documentation support"  &&
+
+optional_depends  graphviz     \
+                  ""     \
+                  ""     \
+                  "for graph support"  &&
+
+optional_depends  kdesdk     \
+                  ""     \
+                  ""     \
+                  "for KDE development support"  &&
+
+optional_depends  a2ps     \
+                  ""     \
+                  ""     \
+                  "for postscript printing support"  &&
+
+optional_depends  kdbg     \
+                  ""     \
+                  ""     \
+                  "for KDE-based GNU Debugger"  &&
 
 optional_depends  Python                                  \
                   "--enable-python --enable-scripting"    \
