@@ -7,3 +7,5 @@ fi
 if [ ! -e /etc/mail/relay-domains ]; then
   hostname -d > /etc/mail/relay-domains 2>/dev/null
 fi
+
+/etc/init.d/sendmail start
