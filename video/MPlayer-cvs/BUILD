@@ -4,7 +4,6 @@
   sedit  's/-fomit-frame-pointer//'  configure  &&
 
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch       &&
-  patch -p0 < $SCRIPT_DIRECTORY/alsa-1.0.patch            &&
   patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch  &&
 
   if  [  "$FONTCONFIG"  =  "y"  ];  then
