@@ -1,6 +1,7 @@
 (
 
-	patch -p1 < $SCRIPT_DIRECTORY/nolocal.patch &&
+  sedit  "s/ -I\/usr\/local\/include//"  configure
+  sedit  "s/\"-L\"\/usr\/local\/lib//"   configure
 
 	./configure                    \
 		--build=$BUILD             \
