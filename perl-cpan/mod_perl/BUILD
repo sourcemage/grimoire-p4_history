@@ -1,6 +1,5 @@
 if [ "$MOD_PERL_2" == "y" ]; then
   OPTIONS="MP_APXS=$(which apxs) MP_APR_CONFIG=$(which apr-config)"
 fi &&
-echo $OPTIONS
 perl  Makefile.PL  NO_HTTPD=1  $OPTIONS  &&
 make
