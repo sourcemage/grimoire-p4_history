@@ -1,18 +1,17 @@
 
-SPELL=linux-new
-BUILD_API=2
+                 SPELL=linux-new
+             BUILD_API=2
 
 . ${SCRIPT_DIRECTORY}/latest.defaults
 . ${CONFIG_CACHE}/details.defaults
 # $files is from details.defaults
-CLEAN_SOURCE="off"
-VERSION=${PATCHVER=${KERNEL_VERSION=${LATEST_2_6}}}
+               VERSION=${PATCHVER=${KERNEL_VERSION=${LATEST_2_6}}}
+      SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-cache-${VERSION}
 LINUX_SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-${VERSION}
-WEB_SITE=http://www.kernel.org
-ENTERED=20020819
-ARCHIVE="off"
-SHORT="linux is the kernel - the core of the GNU/Linux operating system."
-LICENSE[0]=GPL
+              WEB_SITE=http://www.kernel.org
+               ENTERED=20020819
+                 SHORT="linux is the kernel - the core of the GNU/Linux operating system."
+            LICENSE[0]=GPL
 cat << EOF
 Linux is a clone of the Unix kernel, written from scratch by Linus
 Torvalds with assistance from a loosely-knit team of hackers across the
