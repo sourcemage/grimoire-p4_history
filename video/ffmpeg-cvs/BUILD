@@ -23,6 +23,12 @@
     install  -m  644 postprocess_internal.h  \
                  ${INSTALL_ROOT}/usr/include/postproc
   )  &&
+  (
+    install  -m  644 libavcodec/bswap.h        \
+                 ${INSTALL_ROOT}/usr/include/ffmpeg  &&
+    install  -m  644 libavformat/os_support.h  \
+                 ${INSTALL_ROOT}/usr/include/ffmpeg
+  )  &&
   
   if    [  !  -f               ${INSTALL_ROOT}/etc/ffserver.conf  ]
   then  cp  doc/ffserver.conf  ${INSTALL_ROOT}/etc/ffserver.conf
