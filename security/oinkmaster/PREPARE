@@ -5,7 +5,7 @@ if  !  exists_account  snort;  then
     message "Solution: "
     message "          echo "snort:118:118" >> /etc/sorcery/accounts"
     message "          echo "snort:118:" >> /etc/sorcery/groups"
-    exit  1
+    return  1
 else
     if  [  "`grep  'snort'  /etc/passwd`"  ==  ""  ];  then
         create_account  snort

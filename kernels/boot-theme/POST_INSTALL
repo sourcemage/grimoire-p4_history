@@ -5,7 +5,7 @@ message  "${MESSAGE_COLOR}Remember to add \"initrd=/boot/initrd.splash\" to your
 ## Please don't remove it.  --  Jason Flatt
 #update_lilo()
 #{
-#  cp /etc/lilo.conf /etc/lilo.conf.old || exit 1
+#  cp /etc/lilo.conf /etc/lilo.conf.old || return 1
 #  grep -q initrd /etc/lilo.conf
 #
 #  if [ $? -ne "0" ]; then

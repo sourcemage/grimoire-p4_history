@@ -25,7 +25,7 @@
       --without-libiconv-prefix \
       $OPTS                                &&
     make
-  ) || exit 1
+  ) || return 1
   done                         &&
 
   prepare_install              &&
@@ -39,7 +39,7 @@
   (
     cd $dir                    &&
     make install
-  ) || exit 1
+  ) || return 1
   done                         &&
   
   # move config file to a sane place

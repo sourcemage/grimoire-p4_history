@@ -5,7 +5,7 @@ if  !  exists_account  iplog;  then
     message "Solution: "
     message "          echo "iplog:120:120" >> /etc/sorcery/accounts"
     message "          echo "iplog:120:" >> /etc/sorcery/groups"
-    exit  1
+    return  1
 else
     if  [  "`grep  'iplog'  /etc/passwd`"  ==  ""  ];  then
         create_account  iplog

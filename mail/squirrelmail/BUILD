@@ -12,7 +12,7 @@ fi
 if [ "$LOC" == "" ]; then
   message "${MESSAGE_COLOR}Unable to find apache or apache2 installed version..."
   message "$SPELL cast aborded. ${DEFAULT_COLOR}"
-  exit 1
+  return 1
 fi
 
 rm -fr $LOC/doc 
