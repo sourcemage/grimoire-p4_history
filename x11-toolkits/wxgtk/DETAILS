@@ -5,12 +5,13 @@ if [ "$DEVEL" = "n" ];then
          VERSION=2.4.2
           MD5[0]=996810364b64a267c0fcb0d473e0271c
 else
-         VERSION=2.5.4
-          MD5[0]=c5fbf16a70674f7e8a36ac3f51cdeef1
+         VERSION=2.5.5
+          MD5[0]=74658a1ef66b1b0a281e4caf52aa4050
 fi
           SOURCE=$SPELLX-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
+#   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
+   SOURCE_URL[0]=ftp://biolpc22.york.ac.uk/pub/$VERSION/$SOURCE
       LICENSE[0]=http://www.wxwidgets.org/licence3.txt
         WEB_SITE=http://www.wxwidgets.org/
          ENTERED=20011217
