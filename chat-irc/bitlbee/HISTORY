@@ -1,0 +1,26 @@
+* TODO
+	Automatically edit /etc/inetd.conf to add a bitlbee line
+	Use a init.d script to run bitlbee as a daemon
+	(wait for the experimental daemon mode to work properly)
+
+2004-01-15 Eric Sandall <eric@sandall.us>
+	* Added to chat-irc  (Bug #4633)
+	* HISTORY: Formatted to Guru Handbook
+
+2003-11-10 GeO <geogiraux@yahoo.fr>
+	* DEPENDS: Added a missing dependence for the MSN protocol support
+	* services: Added a services file for bitlbee (sorcery IS magic)
+	* xinetd.d/bitlbee: Added a customized bitlbee configuration file for xinetd
+	(instead of the one provided in the tarball)
+	Thanks to sandalle for correcting my first spell
+
+2003-11-08 GeO <geogiraux@yahoo.fr>
+	* DETAILS: Updated to 0.82
+	* Add the bitlbee configuration file from tarball to /etc/xinetd.d/
+	* POST_BUILD: Display a few messages to help running easily bitlbee
+
+2003-10-24 GeO <geogiraux@yahoo.fr>
+	* First version of this spell
+	* CONFIGURE: Give the user the choice of IM protocols he wants bitlbee to use
+	* Great thanks to benoit, Oadae and swoolley
+
