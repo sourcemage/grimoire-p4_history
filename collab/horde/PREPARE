@@ -1,0 +1,10 @@
+# $Id: PREPARE,v 1.1 2002/11/14 21:30:35 sergeyli Exp $
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+  if query "Would you like to use the \`$SPELL' source code from development repository?" n; then
+    DEFAULT_VERSION="HEAD_`date +%Y%m%d`"
+    echo "VERSION=${REPOSITORY_VERSION:-$DEFAULT_VERSION}" >> $SPELL_CONFIG
+    echo "SOURCE_URL=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD" >> $SPELL_CONFIG
+    echo 'FORCE_DOWNLOAD=on' >> $SPELL_CONFIG
+    echo 'CONFIGURED=y' >> $SPELL_CONFIG
+  fi
+fi
