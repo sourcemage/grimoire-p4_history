@@ -511,7 +511,8 @@ list_specific_patch_dir()
 # that apply to the kernel version $1
 patch_menu() 
 {
-	new_patch_list=$patches
+#	new_patch_list=$patches
+	new_patch_list=""
 	while true
 	do
 		menu=$(patch_list $1)
