@@ -1,13 +1,14 @@
          SPELL=fwbuilder
-         VERSION=1.0.5
+         VERSION=1.0.8
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://telia.dl.sourceforge.net/fwbuilder/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/fwbuilder/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/fwbuilder/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/fwbuilder/$SOURCE
+   SOURCE_URL[1]=http://belnet.dl.sourceforge.net/fwbuilder/$SOURCE
+          MD5[0]=9478a5978dd53654927f98e5ff28ae4e
+      LICENSE[0]=GPL
         WEB_SITE=http://www.fwbuilder.org/
          ENTERED=20011213
-         UPDATED=20020923
+         UPDATED=20021121
            SHORT="Firewall Builder"
 cat << EOF
 Object-oriented GUI and set of compilers for various firewall platforms.

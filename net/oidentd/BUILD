@@ -1,11 +1,9 @@
 (
 
-  ./configure  --prefix=/usr  &&
-  make                        &&
-  prepare_install             &&
-  make    install
+  sedit  '299s/;//'  src/oidentd_cfg_parse.y  &&
+  default_build
 
-) > $C_FIFO 2>&1  && (
+) > $C_FIFO 2>&1  &&  (
 
   cp  $SCRIPT_DIRECTORY/oidentd.sh  /etc/init.d
 
