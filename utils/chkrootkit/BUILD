@@ -9,7 +9,7 @@
   cp ./chkproc	   /usr/bin				&&
   cp ./chkwtmp     /usr/bin				&&
   cp ./ifpromisc   /usr/bin     			&&
-  cp ./strings     /usr/bin     			&&
+  cp ./strings-static     /usr/bin     			&&
   mkdir            /usr/doc/chkrootkit 1>/dev/null 2>&1 &&
   cp ./COPYRIGHT   /usr/doc/chkrootkit  		&&
   cp ./README*     /usr/doc/chkrootkit  		&&
