@@ -1,0 +1,8 @@
+(
+
+./configure --prefix=/usr --with-ttf-includes=/usr/include/freetype \
+		--with-ttf-libraries=/usr/lib &&
+make && 
+make install
+
+) > $C_FIFO 2>&1
