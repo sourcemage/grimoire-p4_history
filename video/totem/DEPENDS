@@ -1,4 +1,4 @@
-depends  libgnomeui  &&
+depends  gnome-desktop  &&
 optional_depends  "lirc"  ""  ""  "for remote control"  &&
 if    [  "$GSTREAMER"  =  "y"  ]
 then  depends  gst-plugins  "--enable-gstreamer"
