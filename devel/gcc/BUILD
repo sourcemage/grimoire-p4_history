@@ -12,9 +12,13 @@
   prepare_install                       && 
 
   unset  LD_PRELOAD                     &&
-  make  install                         &&
-  ln    -sf gcc /usr/bin/cc             &&
 
+  if  [  -z  "$FIXEDINCLS"  ]
+  then  make  install-no-fixedincludes
+  else  make  install
+  fi                                    &&
+
+  ln    -sf gcc /usr/bin/cc             &&
   ln    -sf  ../../../../bin/cpp  \
              /usr/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
   ln    -sf  ../usr/bin/cpp  /lib/cpp
