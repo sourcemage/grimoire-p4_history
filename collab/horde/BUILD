@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/07/29 23:53:53 sergeyli Exp $
 #
 # this BUILD is also used for Horde applications
 # like IMP and Turba
@@ -14,20 +14,17 @@ HORDE_DEST=/usr/share/horde
 	gaze compile php | egrep "/libtool .*/ext/imap/"    > /dev/null 2>&1 &&
 	gaze compile php | egrep "/libtool .*/ext/xml/"     > /dev/null 2>&1 &&
 
-	prepare_install
-
-) > $C_FIFO 2>&1 && (
-
-	gather_docs
-	rm -fr ./README* ./docs/
+	prepare_install                                                      &&
 
 	# force copy everything because no configuration files are overwritten
 	# all Horde packages come with config/*.conf.dist files, which better
 	# be updated by force copy anyway
+	mkdir -p    $HORDE_DEST                                              &&
+	cp    -R ./ $HORDE_DEST/
 
-	mkdir -p     $HORDE_DEST
-	cp    -fR ./ $HORDE_DEST/
-	cd           $HORDE_DEST/
+) > $C_FIFO 2>&1 && (
+
+	cd $HORDE_DEST/
 
 	SLAPD_CONF=/etc/openldap/slapd.conf
 	SLAPD_SCHEMA=/etc/openldap/schema

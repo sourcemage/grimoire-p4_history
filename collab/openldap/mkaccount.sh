@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: mkaccount.sh,v 1.4 2002/07/15 05:06:13 sergeyli Exp $
+# $Id: mkaccount.sh,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
 
 if [ "$UID" != 0 ]; then
 	su - -c "$PWD/$0 $*"
@@ -9,7 +9,7 @@ fi
 echo "#"
 echo "# Usage: $0 <login> <id> <password>"
 
-echo "# `grep $1 /etc/passwd`"
+echo "# `grep '${1:nobody}' /etc/passwd`"
 
 SUFFIX=`gawk '/^suffix\W+/ { match($0, /suffix\W+"?([^"]*)"?/, a); print a[1]; nextfile; }' /etc/openldap/slapd.conf`
 
@@ -23,7 +23,6 @@ ID=${2:-1001}
 
 cat << __EOF__
 dn:           cn=$1,ou=Groups,$SUFFIX
-objectClass:  top
 objectClass:  posixGroup
 cn:           $1
 userPassword: {CRYPT}x
@@ -31,7 +30,6 @@ gidNumber:    $ID
 memberuid:    $1
 
 dn:               cn=$1,ou=Users,$SUFFIX
-objectClass:      top
 objectClass:      account
 objectClass:      posixAccount
 objectClass:      shadowAccount

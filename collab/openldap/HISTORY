@@ -1,5 +1,11 @@
-$Id: HISTORY,v 1.2 2002/07/11 01:22:52 sergeyli Exp $
+$Id: HISTORY,v 1.2 2002/07/29 23:53:53 sergeyli Exp $
 SPELL HISTORY: openldap
+
+2002-07-24 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Scripts for generating default configuration have been changed to use new
+	structure: ou=<Users|Groups>,dc=<company>,dc=<TLD>. They will try to guess
+	the <company> and <TLD> parts from the host name.
 
 2002-07-10 Sergey Lipnevich <sergeyli@pisem.net>
 

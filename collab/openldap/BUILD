@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/07/11 01:22:52 sergeyli Exp $
+# $Id: BUILD,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
 (
 
 	./configure              \

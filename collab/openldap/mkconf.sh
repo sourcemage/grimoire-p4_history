@@ -1,9 +1,14 @@
 #!/bin/sh
-# $Id: mkconf.sh,v 1.5 2002/07/15 04:41:45 sergeyli Exp $
+# $Id: mkconf.sh,v 1.4 2002/07/29 23:53:53 sergeyli Exp $
 
+# full host name
 HOST=`hostname`
-ORG=${HOST#*.}
-SUFFIX="o=$ORG"
+# domain name part
+DOMAIN=${HOST#*\.}
+# supposedly a company name
+ORG=${DOMAIN%\.*}
+# common LDAP tree suffix
+SUFFIX="dc=${DOMAIN//\./,dc=}"
 PASS=123456
 
 message "${MESSAGE_COLOR}Creating default slapd.conf${DEFAULT_COLOR}"
@@ -13,7 +18,7 @@ cat > /etc/openldap/slapd.conf.default << __EOF__
 # This file should NOT be world readable.
 #
 # Auto-generated $NOW
-# Change $SUFFIX to o=<your-org-short-name>
+# Change $SUFFIX to dc=company,dc=com for company.com
 #
 pidfile		/var/run/slapd.pid
 argsfile	/var/run/slapd.args
@@ -22,24 +27,17 @@ schemacheck	on
 
 include		/etc/openldap/schema/core.schema
 include		/etc/openldap/schema/cosine.schema
-include		/etc/openldap/schema/nis.schema
-include		/etc/openldap/schema/misc.schema
 include		/etc/openldap/schema/inetorgperson.schema
-include		/etc/openldap/schema/openldap.schema
-include		/etc/openldap/schema/java.schema
+include		/etc/openldap/schema/nis.schema
+#include		/etc/openldap/schema/misc.schema
+#include		/etc/openldap/schema/openldap.schema
+#include		/etc/openldap/schema/java.schema
 
 #
 # slapd provides ample logging, so enable this for debugging only
 # consult slapd.conf(8) manpage for values
 #
 #loglevel	968
-
-# Load dynamic backend modules:
-# modulepath	/usr/libexec/openldap
-# moduleload	back_ldap.la
-# moduleload	back_ldbm.la
-# moduleload	back_passwd.la
-# moduleload	back_shell.la
 
 # The userPassword by default can be changed
 # by the entry owning it if they are authenticated.
@@ -133,17 +131,16 @@ cat > /etc/openldap/top.ldif << __EOF__
 #
 
 dn: $SUFFIX
-objectclass: top
+objectclass: dcObject
 objectclass: organization
+dc: $ORG
 o: $ORG
 
 dn: ou=Users,$SUFFIX
-objectclass: top
 objectclass: organizationalUnit
 ou: Users
 
 dn: ou=Groups,$SUFFIX
-objectclass: top
 objectclass: organizationalUnit
 ou: Groups
 __EOF__
@@ -157,7 +154,6 @@ cat > /etc/openldap/usergroup.ldif << __EOF__
 #
 
 dn: cn=john,ou=Groups,$SUFFIX
-objectClass: top
 objectClass: posixGroup
 cn: john
 userPassword: {CRYPT}x
@@ -165,14 +161,13 @@ gidNumber: 1001
 memberuid: john
 
 dn: cn=john,ou=Users,$SUFFIX
-objectClass: top
 objectClass: account
 objectClass: posixAccount
 objectClass: shadowAccount
 cn: john
 uid: john
-# Sample password: $PASS
-userPassword: `slappasswd -s "$PASS"`
+# Sample password: john
+userPassword: `slappasswd -s "john"`
 shadowLastChange: 11763
 shadowMax: 99999
 shadowWarning: 7

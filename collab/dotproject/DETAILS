@@ -1,0 +1,34 @@
+# $Id: DETAILS,v 1.1 2002/07/29 23:53:53 sergeyli Exp $
+           SPELL=dotproject
+         VERSION=0.2.1.5
+        PACKAGER=ajd
+          SOURCE=$SPELL-${PACKAGER}.${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      SOURCE_MD5=ef6a062aa8e673b22d9001ea7fb72833
+      SOURCE_LIC=BSD
+             MD5=$SOURCE_MD5
+         LICENSE=$SOURCE_LIC
+        WEB_SITE=http://www.dotmarketing.org/dotproject/
+         ENTERED=20020729
+         UPDATED=20020729
+           SHORT="dotproject is a PHP+MySQL web based project management tool"
+cat << EOF
+dotproject is a PHP+MySQL beta level web based project management tool that
+dotmarketing started in Dec. 2000 then left fallow for about 10 months. It is
+about 50% there (there being a very high quality product, not some half-baked
+simple form-into-db pages). With a little open source love, dotproject could be
+an MS Project killer.
+
+Features:
+* User Management
+* Email based trouble Ticket System, (Integrated voxel.net's ticketsmith)
+* Client/Company Management
+* Project listings
+* Hierarchical Task List
+* File Repository
+* Contact List
+* Calendar
+* Discussion Forum
+* Resource Based Permissions 
+EOF

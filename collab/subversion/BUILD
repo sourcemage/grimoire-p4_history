@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.4 2002/06/11 02:32:21 sergeyli Exp $
+# $Id: BUILD,v 1.5 2002/07/29 23:53:53 sergeyli Exp $
 (
 
 	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"
@@ -19,8 +19,8 @@
 	make                         &&
 
 #	Download HEAD revision
-	./subversion/clients/cmdline/svn checkout           \
-		http://svn.collab.net:80/repos/svn/trunk -d svn &&
+	./subversion/clients/cmdline/svn checkout        \
+		http://svn.collab.net:80/repos/svn/trunk svn &&
 
 #
 # -=* ACTUAL BUILD *=-
