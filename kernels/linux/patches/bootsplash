@@ -3,14 +3,16 @@
 DESCRIPTION="Bootsplash patch"
 SHORT="A graphical boot splash for linux."
 HELP="This patch allows you to use a graphical boot splash screen instead of all that fugly text."
-VERSIONS="3.0.7-2.4.22
-3.0.7-2.4.20"
-MD5S[0]=d9a1d57c00156e77660fb32b4c1a9df7
-MD5S[1]=bd1de9d02172047227fc52a04fc94d81
+VERSIONS="3.1.3-2.6.0-test9
+3.0.7-2.4.22-vanilla
+3.0.7-2.4.20-vanilla"
+MD5S[0]=ce0cef5cb09cafee02e6c6b11ba189b2
+MD5S[1]=d9a1d57c00156e77660fb32b4c1a9df7
+MD5S[2]=bd1de9d02172047227fc52a04fc94d81
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=bootsplash-${!PATCH}-vanilla.diff
+SOURCE${COUNTER}=bootsplash-${!PATCH}.diff
 SOURCE${COUNTER}_URL=ftp://ftp.suse.com/pub/people/stepan/bootsplash/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 source $SCRIPT_DIRECTORY/MD5PATCH
 fi
