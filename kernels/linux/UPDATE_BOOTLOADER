@@ -163,60 +163,51 @@ update_yaboot()  {
 grub_image_entry() {
 
 KERNEL=`grep kernel /boot/grub/menu.lst|cut -d' ' -f2|grep \(|head -1`
-ROOT=`grep root /boot/grub/menu.lst|cut -d' ' -f3|cut -d= -f2|grep \(|head -1`
-if grep -q boot $KERNEL
+ROOT=`grep root /boot/grub/menu.lst|cut -d' ' -f3|cut -d= -f2|head -1`
+if echo $KERNEL |grep -q boot
 then
   KERNEL=`echo $KERNEL|cut -d/ -f1,2`
 else
   KERNEL=`echo $KERNEL|cut -d/ -f1`
 fi
   cat << EOF
-
-title Source Mage GNU/Linux 
-kernel  ${KERNEL}/vmlinubz-${VERSION}  root=${ROOT}  devfs=nomount
-
+title Source Mage GNU/Linux Kernel ${VERSION}
+kernel ${KERNEL}/vmlinubz-${VERSION} root=${ROOT} devfs=mount
 EOF
+
 }
 
 update_grub() {
 
-  if  !  grep  -q  "${VERSION}$"  /boot/grub/menu.lst;  then
+  local MENU=/boot/grub/menu.lst
 
-    IFS_OLD=$IFS
-    export  IFS="
-"
+  if  !  grep  -q  "${VERSION}$"  $MENU;  then
 
-    rm  -rf  /boot/grub/menu.lst.old
-    cp  /boot/grub/menu.lst  /boot/grub/menu.lst.old
+    rm  -rf  $MENU.old
+    rm  -rf  $MENU.new
+    cp  $MENU  $MENU.old
 
-    (( IMAGE_COUNT=0  ))
+    IMAGE_COUNT=0
 
-    for  LINE  in  `cat /boot/grub/menu.lst`;  do
+    while read LINE; do
 
-      if   echo  $LINE  |  grep  -q  "image"  ||
-           echo  $LINE  |  grep  -q  "other"  ;  then
+      if   echo  $LINE  |  grep  -q  "^title";  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`grub_image_entry`"  >>  /boot/grub/menu.lst.new
+          echo  "`grub_image_entry`"  >>  $MENU.new
+          echo  >>  $MENU.new
         fi
         ((  IMAGE_COUNT++  ))
       fi
 
-      if  ((  IMAGE_COUNT == 14  ));  then
-        break
-      fi
+      echo  "$LINE"  >>  $MENU.new
 
-      echo  $LINE  >>  /boot/grub/menu.lst.new
-
-    done
+    done < $MENU
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`grub_image_entry`"  >>  /boot/grub/menu.lst.new
+      echo  -e  "`grub_image_entry`"  >>  $MENU.new
     fi
 
-    # !!!  UNTESTED  !!!
-    #mv  /boot/grub/menu.lst.new  /boot/grub/menu.lst
-
-    export  IFS=$IFS_OLD
+    mv  $MENU.new  $MENU
 
   fi
 
