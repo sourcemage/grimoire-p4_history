@@ -1,1 +1,5 @@
-depends  libxml2
+depends  libxml2  &&
+optional_depends  "Python"            \
+                  "--with-python"     \
+                  "--without-python"  \
+                  "to build python bindings for libxslt"
