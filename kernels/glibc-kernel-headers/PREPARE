@@ -1,8 +1,9 @@
 if ! grep -q KERN $SPELL_CONFIG
-then if query "Install WIP 2.6 kernel headers for userspace ? \nPLEASE REALISE THEY ARE WORK IN PROGRESS, BUG 
-REPORTS WITH PATCHES OR FIXES ATTACHED ARE WANTED" n && [[ $(uname -r) == 2.6* ]] 
-        then KERN=2.6
-     else KERN=2.4
-     fi  
+then KERN=2.4 && if [[ $(uname -r) == 2.6* ]] ; 
+     then if query "Install WIP 2.6 kernel headers for userspace ? \nPLEASE REALISE THEY ARE WORK IN PROGRESS, BUG 
+REPORTS WITH PATCHES OR FIXES ATTACHED ARE WANTED" n 
+          then KERN=2.6
+          fi
+     fi
 echo KERN=$KERN >> $SPELL_CONFIG 
 fi
