@@ -111,10 +111,10 @@ cd  ${INSTALL_ROOT}/usr/src  &&
 
 if  [  "$REUSE_SOURCE"  ==  "y"  ];  then
   message  "${MESSAGE_COLOR}Reusing existing Linux source tree (/usr/src/linux-${VERSION}).${DEFAULT_COLOR}"  &&
-  ln  -sf  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  linux  &&
+  ln  -sf  linux-${VERSION}  linux  &&
   cd  linux-${VERSION}
 else
-  if  [  -d  /usr/src/linux-${VERSION}  ];  then
+  if  [  -d  linux-${VERSION}  ];  then
     message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"  &&
     rm   -rf  linux-${VERSION}
   fi
@@ -123,19 +123,10 @@ else
 
   check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
 
-  mkdir linux-${VERSION}                       &&
-  cd ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
-
   message "extracting ${SOURCE}"                                          &&
   unpack_override  $SOURCE '' #we will ignore MD5 because of above check  &&
-  EXTRACT_PATH=$(ls)                                                      &&
-  mv  ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/*          \
-      ${INSTALL_ROOT}/usr/src/linux-${VERSION}/                           &&
-  rmdir  ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/        &&
-  cd  ${INSTALL_ROOT}/usr/src                                             &&
 
   chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
-
 
   mkdir  -p  ../include  &&
 
@@ -152,8 +143,8 @@ else
   fi  &&
 
   #reinstated so module-less kernels have an identifiable header tree
-  ln -sfn linux-${VERSION} ${INSTALL_ROOT}/usr/src/linux  &&
-  cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}            &&
+  ln -sfn linux-${VERSION} linux  &&
+  cd  linux-${VERSION}            &&
 
   # patch 2.6 make file, to allow use of xconfig
   if [ -d scripts/kconfig ];  then
