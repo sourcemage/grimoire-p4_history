@@ -1,21 +1,19 @@
 # Created 2002-10-05  by Eric Sandall <eric@sandall.us>
+#
+# No ./configure instructions in connection with PHP exist
+# in Apache 2, so optional dependency on PHP has been removed [SL].
 
-optional_depends  "openssl"                            \
-                  "--enable-ssl  --with-ssl=/usr/lib"  \
-                  "--disable-ssl"                      \
-                  "for OpenSSL support"                &&
+optional_depends  openssl               \
+                  ' --enable-ssl'       \
+                  '--disable-ssl'       \
+                  'for OpenSSL support' &&
 
-optional_depends  "php"              \
-                  "--enable-php"     \
-                  "--disable-php"    \
-                  "for PHP support"  &&
+optional_depends  db                                       \
+                  ' --enable-auth_db'                      \
+                  '--disable-auth-db'                      \
+                  'for DBM-based access databases support' &&
 
-optional_depends  "db"                                      \
-                  "--enable-auth_db"                        \
-                  "--disable-auth-db"                       \
-                  "for DBM-based access databases support"  &&
-
-optional_depends  "openldap"                           \
-                  "--enable-ldap  --enable-auth-ldap"  \
-                  "--disable-ldap"                     \
-                  "for LDAP-based authentication"
+optional_depends  openldap                                                                \
+                  ' --enable-auth-ldap  --enable-ldap    --with-auth-ldap    --with-ldap' \
+                  '--disable-auth-ldap --disable-ldap --without-auth-ldap --without-ldap' \
+                  'for LDAP-based authentication'
