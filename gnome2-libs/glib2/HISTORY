@@ -1,3 +1,18 @@
+2003-10-17 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: added to supply libiconv option to ./configure;
+	  the idea is that when --with-libiconv=no is passed, the
+	  ./configure script is designed to detect support for iconv()
+	  in glibc and use it. The relevant parts of config.log are:
+	  configure:4410: checking for iconv_open
+	  configure:4460: gcc -o conftest -g -O2   conftest.c  >&5
+	  configure:4463: $? = 0
+	  configure:4466: test -s conftest
+	  configure:4469: $? = 0
+	  configure:4480: result: yes
+	  ...
+	  ac_cv_func_iconv_open=yes
+	  ...
+
 2003-08-23 Robin Cook <rcook@wyrms.net>
 
 	* Updated to 2.2.3
