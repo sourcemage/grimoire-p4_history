@@ -31,7 +31,7 @@ start()
 
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
-    echo "$(/sbin/ifup $DEVICE)"
+    echo "$(unset -f echo; /sbin/ifup $DEVICE)"
     evaluate_retval
   done
 }
@@ -42,7 +42,7 @@ stop()
 
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
-    echo "$(/sbin/ifdown $DEVICE)"
+    echo "$(unset -f echo; /sbin/ifdown $DEVICE)"
     evaluate_retval
   done
 }
