@@ -1,2 +1,9 @@
 rm  -f  $BOOST_LOCK
+
+if    [ -d /var/tmp/X11.xdm.tmp ] 
+then  cp -a /var/tmp/X11.xdm.tmp/* /etc/X11/xdm
+      cp -a /var/tmp/X11.xinit.tmp/* /etc/X11/xinit
+      rm -fr /var/tmp/X11.xdm.tmp /var/tmp/X11.xinit.tmp
+fi
+
 if    spell_installed  NVIDIA_GLX;  then  cast  NVIDIA_GLX;  fi

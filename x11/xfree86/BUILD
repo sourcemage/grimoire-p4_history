@@ -13,7 +13,6 @@ install_drm()  {
 
 }
 
-
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
 fi
