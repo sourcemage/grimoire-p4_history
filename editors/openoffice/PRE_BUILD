@@ -1,16 +1,11 @@
-if [ "$UPDATED" = "yes" ];
- then echo "Summoning updates if not already in spool" &&
-      summon freetype2 openssl Python
-fi                                       &&
+if  [  "$OO_UPDATED"  = "y"  ];  then
+  message  "${MESSAGE_COLOR}Summoning updates...${DEFAULT_COLOR}"  &&
+  summon  openssl  Python
+fi  &&
+
 mk_source_dir	$SOURCE_DIRECTORY  4g	&&
 cd		$BUILD_DIRECTORY	&&
-unpack		$SOURCE	${MD5[0]}
+unpack		$SOURCE	${MD5[0]}       &&
 
-#if ! spell_installed "Linux-PAM"; then
-#	mk_source_dir $SOURCE_DIRECTORY2 &&
-#	cd $BUILD_DIRECTORY		 &&
-#	unpack $SOURCE2 ${MD5[1]}	 &&
-#        mkdir -p /usr/include/security   &&
-#        mv -f security/*  /usr/include/security/ &&
-#        rm_source_dir $SOURCE_DIRECTORY2
-#fi
+cd  $SOURCE_DIRECTORY                   &&
+patch  -p1  <  $SCRIPT_DIRECTORY/fix-j2sdk+kernel.patch

@@ -1,0 +1,12 @@
+cd  instsetoo/unxlngi4.pro/01/normal                                 &&
+cp  install  install.orig                                            &&
+sedit  "s:oo_home=OpenOffice.org1.1.3:oo_home=openoffice:"  install  &&
+chmod  +x  install                                                   &&
+
+./install  --prefix=/usr  &&
+
+for  APP  in  swriter  scalc  sdraw  simpress  smath  soffice;  do
+  rm  -f   /usr/bin/$APP                 &&
+  ln  -sf  /opt/openoffice/program/$APP  \
+           /usr/bin/$APP
+done
