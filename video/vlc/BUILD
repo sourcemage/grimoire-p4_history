@@ -1,5 +1,7 @@
 (
 
+  patch  modules/stream_out/transcode.c $SCRIPT_DIRECTORY/ffmpeg.patch  &&
+
   if  [  "$JOYSTICK"  =  "y"  ];  then
     export OPTS="$OPTS --enable-joystick"
   fi  &&
