@@ -1,16 +1,16 @@
            SPELL=bonobo-conf
-         VERSION=0.14
+         VERSION=0.16
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='c1a0cbe26500b17957118598ee8b5820'
+          MD5[0]="ada5bfc0d6be1a42ebcccc937012e3cf"
+      LICENSE[0]=GPL
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://www.gnome.org
-      LICENSE[0]=GPL
          ENTERED=20011109
-         UPDATED=20011109
+         UPDATED=20021103
            SHORT="The Bonobo Configuration System"
 cat << EOF
 The Bonobo Configuration System (BCS) consists of several parts. An API
