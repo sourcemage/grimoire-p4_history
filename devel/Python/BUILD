@@ -1,4 +1,3 @@
-(
 export OPT="$CFLAGS"
 export OPTS="$OPTS --enable-shared"
 sedit "s/\['ndbm'\]/\['ndbm', 'gdbm_compat'\]/g" setup.py &&
@@ -9,10 +8,4 @@ if [ -f /usr/lib/python2.3/pydcop.py ];  then
   mv  /usr/lib/python2.3/pydcop.py /tmp
 fi  &&
 
-default_build  &&
-
-if [ -f /tmp/pydcop.py ];  then
-  mv /tmp/pydcop.py /usr/lib/python2.3
-fi
-
-)  >  ${C_FIFO}  2>&1
+default_build
