@@ -1,3 +1,16 @@
+2005-02-12 David Brown <dmlb2000@excite.com>
+	* BUILD, PRE_BUILD, INSTALL, FINAL: added && everywhere
+	  and cleaned up commented deprecated features also added
+	  colored output to the message text
+	* PREPARE: added post_patch variable to patchfiles
+	  post_patch contains a space separated list of patches that
+	  are required to be patched after the current patch is complete.
+	  Also remove optional build dir, for most patched kernels it 
+	  doesn't work and don't know why you would do this in the first 
+	  place so I removed the code from BUILD PRE_BUILD INSTALL and
+	  commented out the menu in PREPARE so if someone wanted they 
+	  could make this work.
+
 2005-02-11 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated mm patches
 	* info/patches/mm_patches/2.6.11-rc3-mm2 added

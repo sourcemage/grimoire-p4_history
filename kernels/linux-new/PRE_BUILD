@@ -8,34 +8,32 @@ linux_new_uncompress()
 		bunzip2 $1
 	elif [ "`file $1 | grep diff`" != "" ]
 	then
-		echo "$1 doesn't need uncompressing"
+		message "${MESSAGE_COLOR}$1 doesn't need uncompressing${DEFAULT_COLOR}"
 	else
-		echo "$1 has some unknown/unimplemented compression type"
+		message "${PROBLEM_COLOR}$1 has some unknown/unimplemented compression type${DEFAULT_COLOR}"
 		return 1
 	fi
 }
 
 
-if [[ "$mode" == "oldktree" ]]
+if [[ "$mode" == "oldktree" && -d ${LINUX_SOURCE_DIRECTORY} ]]
 then
-	if [ -d ${LINUX_SOURCE_DIRECTORY} ]
-	then
-		echo "Okay dir does exist"
-	else
-		echo "Ah, ${LINUX_SOURCE_DIRECTORY} doesn't exist"
-		echo "Going to newktree mode"
-		mode="newktree"
-	fi
-fi
+	message "${MESSAGE_COLOR}Okay dir does exist${DEFAULT_COLOR}" 
+elif [[ "$mode" == "oldktree" ]]
+then
+	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
+	exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
+	mode="newktree"
+fi &&
 
 if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $LINUX_SOURCE_DIRECTORY &&
 	cd $LINUX_SOURCE_DIRECTORY &&
 	unpack $SOURCE ${MD5[0]} &&
-	mv ./*/* ./
+	mv ./*/* ./ &&
 	
-	. ${SCRIPT_DIRECTORY}/latest.defaults
+	. ${SCRIPT_DIRECTORY}/latest.defaults &&
 	for patch in $patches
 	do
 		case "$patch" in
@@ -44,67 +42,46 @@ then
 				;;
 			*)
 				;;
-		esac
-		pval=1
-		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
-		cp ${SOURCE_CACHE}/${source} ./
-		linux_new_uncompress ./${source}
-		echo "Patching ${patch}"
-		sleep 3
-		patch -p${pval} <${patch}
-	done
-	make mrproper
+		esac &&
+		pval=1 &&
+		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch} &&
+		cp ${SOURCE_CACHE}/${source} ./ &&
+		linux_new_uncompress ./${source} &&
+		message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
+		patch -p${pval} <${patch} || return 1
+	done &&
+	make mrproper 
 elif [[ "$mode" == "oldktree" ]]
 then
-	echo "mode is oldktree"
+	message "${MESSAGE_COLOR}mode is oldktree${DEFAULT_COLOR}" &&
 	cd $LINUX_SOURCE_DIRECTORY
 else
-	echo "I don't know what $mode is"
+	message "${PROBLEM_COLOR}I don't know what $mode is${DEFAULT_COLOR}" &&
 	return 1
-fi
+fi &&
 
 if [[ "$TXTMESSAGE" != "" ]]
 then
-        message $TXTMESSAGE
+        message $TXTMESSAGE &&
         sleep 5
-fi
-
-# somehow this breaks the PRE_BUILD script
-#if [[ ! -f ${LINUX_SOURCE_DIRECTORY}/.config && -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.config ]]
-#then
-#	cp /boot/config-$(installed_version linux-new) \
-#	${LINUX_SOURCE_DIRECTORY}/.config
-#if
+fi &&
 
 if [[ "$reconf" == "true" ]]
 then
 	if [[ "$MAKEMODE" == "menuconfig" ]]
 	then
-		MENUCONFIG_EXIT="n"
+		MENUCONFIG_EXIT="n" &&
 		while [[ "$MENUCONFIG_EXIT" == "n" ]]
 		do
-			ARCH=${kernel_arch} make $MAKEMODE
+			ARCH=${kernel_arch} make $MAKEMODE &&
 			if query "Do you really want to exit menuconfig?" y 
 			then
-				MENUCONFIG_EXIT="y"
+				MENUCONFIG_EXIT="y" 
 			else
 				MENUCONFIG_EXIT="n"
-			fi
+			fi 
 		done
 	else
 		ARCH=${kernel_arch} make $MAKEMODE
 	fi
 fi
-# this doesn't work can't quite get it so I'm not going to use it, think its a bug in the kernel
-#	if [[ ${OPTIONAL_BUILD_DIR} ]]
-#	then
-#		mkdir -p ${OPTIONAL_BUILD_DIR}
-#		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ${OPTIONAL_BUILD_DIR}/.config
-#		ARCH="${kernel_arch}" make O=${OPTIONAL_BUILD_DIR} $MAKEMODE
-#		cp ${OPTIONAL_BUILD_DIR}/.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
-#	else
-#		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./
-#		ARCH="${kernel_arch}" make $MAKEMODE
-#		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
-#	fi
-#fi

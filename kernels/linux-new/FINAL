@@ -1,8 +1,5 @@
 # Add a lilo/grub/whatever entry for this kernel
-export VERSION
-$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER 
-
-#if [[ "$TREE" == 2.6 ]] && [[ "$(gaze installed module-init-tools | fgrep 'not installed')" != "" ]] ; then cast module-init-tools ; fi
-# doesn't like the above line...
+export VERSION &&
+$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER &&
 
 cp  ${SPELL_CONFIG}.p ${LINUX_SOURCE_DIRECTORY}/.spell-config.p
