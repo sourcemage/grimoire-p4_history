@@ -1,10 +1,10 @@
            SPELL=wwwoffle
-         VERSION=2.7h
+         VERSION=2.8a
           SOURCE=$SPELL-$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.ibiblio.org/pub/Linux/apps/www/servers/$SOURCE
    SOURCE_URL[1]=ftp://ftp.demon.co.uk/pub/unix/httpd/$SOURCE
-          MD5[0]=5de8bb599832305f317ed368a864d4c8
+          MD5[0]=2f7d3fcfecd2325f20b0cec676b98fde
         WEB_SITE=http://www.gedanken.demon.co.uk/wwwoffle/
          ENTERED=20021126
          UPDATED=20021126
@@ -14,97 +14,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     MENU_EXEC[0]=${SPELL}
     MENU_DESC[0]=${SHORT}
 cat << EOF
-World Wide Web Offline Explorer
-
-The wwwoffled program is a simple proxy server with special features for use with dial-up internet links. This means that it is possible to browse web pages and read them without having to remain connected.
-
-Basic Features
-
-    * Caching of HTTP, FTP and finger protocols.
-    * Allows the 'GET', 'HEAD', 'POST' and 'PUT' HTTP methods.
-    * Interactive or command line control of online/offline/autodial status.
-    * Highly configurable.
-* Low maintenance, start/stop and online/offline status can be automated.
-
-While Online
-
-    * Caching of pages that are viewed for later review.
-    * Conditional fetching to only get pages that have changed.
-    o Based on expiration date, time since last fetched or once per session.
-    * Non cached support for SSL (Secure Socket Layer e.g. https).
-    * Can be used with one or more external proxies based on web page.
-    * Control which pages cannot be accessed.
-    o Allow replacement of blocked pages.
-* Control which pages are not to be stored in the cache.
-
-While Offline
-
-    * Can be configured to use dial-on-demand for pages that are not cached.
-    * Selection of pages to download next time online
-          o Using normal browser to follow links.
-    o Command line interface to select pages for downloading.
-    * Control which pages can be requested when offline.
-* Provides non-cached access to intranet servers.
-
-Automated Download
-
-    * Downloading of specified pages non-interactively.
-    * Options to automatically fetch objects in requested pages
-          o Understands various types of pages
-          + HTML 4.0, Java classes, VRML (partial), XML (partial).
-          o Options to fetch different classes of objects
-          + Images, Stylesheets, Frames, Scripts, Java or other objects.
-    * Automatically follows links for pages that have been moved.
-    * Can monitor pages at regular intervals to fetch those that have changed.
-    * Recursive fetching
-          o To specified depth.
-          o On any host or limited to same server or same directory.
-          o Chosen from command line or from browser.
-    o Control over which links can be fetched recursively.
-
-Convenience
-
-    * Optional information footer on HTML pages showing date cached and options.
-    * Options to modify HTML pages
-          o Remove Javascript.
-          o Stop animated GIFs.
-          o Indicate cached and uncached links.
-          o Remove the blink tag.
-          o Demoronise HTML character sets.
-    o Remove refresh tags.
-    * Automatic proxy configuration for Netscape.
-    * Searchable cache with the addition of the ht://Dig or UdmSearch programs.
-    * Built in simple web-server for local pages.
-    * Timeouts to stop proxy lockups
-          o DNS name lookups.
-          o Remote server connection.
-    o Data transfer.
-    * Timeouts for server connection and data transfer to stop server lockups.
-    * Continue or stop downloads interrupted by client.
-    o Based on file size of fraction downloaded.
-    * Purging of pages from cache
-          o Based on URL matching.
-          o To keep the cache size below a specified limit.
-          o To keep the free disk space above a specified limit.
-    o Interactive or command line control.
-
-Indexes
-
-    * Multiple indexes of pages stored in cache
-          o Servers for each protocol (http, ftp ...).
-          o Pages on each server.
-          o Pages waiting to be fetched.
-          o Pages fetched last time online.
-          o Pages requested last time offline.
-    o Pages monitored on a regular basis.
-    * Configurable indexes
-          o Sorted by name, date, server domain name, type of file.
-          o Options to delete, refresh or monitor pages.
-    o Selection of complete list of pages or hide un-interesting pages.
-
-Security
-
-    * Works with pages that require basic username/password authentication.
-    * Automates proxy authentication for external proxies that require it.
-    * Control over access to the proxy
+The WWWOFFLE programs simplify World Wide Web browsing from computers that use
+intermittent (dialup) connections to the Internet. It is a simple proxy server
+with special features for use with dial-up Internet links. It makes it possible
+to browse Web pages and read them without having to remain connected. There are
+too many features to mention, but they include privacy control, cookie/advert
+blocking, efficient bandwidth usage by specifying intervals between refreshes,
+options to monitor pages regularly, recursive fetching, HTML cleaning,
+highlighting of cached links, indexes of cached pages, searching of cached
+pages, and many more.
 EOF
