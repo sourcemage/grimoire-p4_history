@@ -7,7 +7,7 @@
 
 export CFLAGS="-O1 $CFLAGS"           &&
 #for gcc3.3
-if [ $(gcc -dumpversion)   == "3.3" ] ; then
+if [[ $(gcc -dumpversion)   == 3.3* ]] ; then
   sedit "s/hack\!\\\n/hack\!\\\n \\\ /g" contrib/codepage.c 
 fi  &&
   ./configure  --host=$BUILD         \

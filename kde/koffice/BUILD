@@ -1,6 +1,6 @@
 (
 #gcc3.3 bugfix
-if [ $(gcc -dumpversion)   == "3.3" ] ; then
+if [[ $(gcc -dumpversion)   == 3.3* ]] ; then
 patch -p1 < $SCRIPT_DIRECTORY/koffice-1.2.1-gcc3.3.patch
 fi                                                 &&
   ./configure  --prefix=${INSTALL_ROOT}/usr        \

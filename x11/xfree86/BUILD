@@ -16,11 +16,14 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
-  #removing -Os from copied host.def bug#3694
+  #removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   #leaving the original file untouched 
   #for when this gcc bug gets fixed (hgg09/08/03)
   #
   sedit s"/-Os//g" config/cf/host.def &&
+  if  !  (echo $CFLAGS | grep -q -- "-Os"); then
+    export CFLAGS="-O2 ${CFLAGS//-Os/}"
+  fi  &&
 
   if  spell_installed  Linux-PAM
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
