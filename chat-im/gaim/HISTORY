@@ -1,155 +1,105 @@
-2003-10-01  hgg <hgreib@bigpond.net.au>
+2003-10-11 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 0.71 and gaim-encryption 2.15
+	* HISTORY: convert to new format
 
-		Update DEPENDS to --enable-nss=no if nss spell isn't installed
+2003-10-01 hgg <hgreib@bigpond.net.au>
+	* DEPENDS: Update DEPENDS to --enable-nss=no if nss spell isn't installed
 
-2003-09-30  hgg <hgreig@bigpond.net.au>
+2003-09-30 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 0.70 and gaim-encryption2.13
+	* DEPENDS: Needed a rewrite of nss spell so cast nss first!
 
-		Update to 0.70 and gaim-encryption2.13
-		Needed a rewrite of nss spell so cast nss first!
+2003-09-26 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PRE_BUILD,BUILD: Update  to 0.69 for yahoo protocol fix, every "add-on" now broken
 
-2003-09-26  hgg <hgreig@bigpond.net.au>
+2003-09-19 hgg <hgreig@bigpond.net.au>
+	* DEPENDS,BUILD,PRE_BUILD: Fixed gaim-encryption
 
-		Update  to 0.69 for yahoo protocol fix, every "add-on" now broken
+2003-09-18 Geoffrey Derber <gderber@sourcemage.org>
+	* CONFIGURE,PRE_BUILD,BUILD: commented out encryption stuff
 
-2003-09-19  hgg <hgreig@bigpond.net.au>
+2003-08-18 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Bumped version to 0.67
+	Added myself as maintainer, removed Adam
 
-		Fixed gaim-encryption
+2003-08-08 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Bumped version to 0.66
 
-2003-09-18  Geoffrey Derber <gderber@sourcemage.org>
+2003-06-20 Geoffrey Derber <ashaman@flyingtemple.com>
+	* DETAILS,DEPENDS,BUILD: Gaim-e works again readded
+	* POST_INSTALL: POST_INSTALL not needed, warning no longer applies
 
-		commented out encryption stuff
+2003-05-30 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Teach me to not check for updates when playing with spells....version bump to 0.64
 
-2003-08-18  Justin Rocha <jrocha@sourcemage.org>
+2003-05-29 Justin Rocha <jrocha@sourcemage.org>
+	* CONFIGURE,BUILD,PRE_BUILD,DETAILS: Added gaim-encryption plugin
 
-		gaim-encryption is now optional via CONFIGURE
-		gaim-e is disabled until such time as it works again
-		Bumped version to 0.67
-		Added myself as maintainer, removed Adam
+2003-05-19 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Version bump to 0.63
 
-2003-08-08  Justin Rocha <jrocha@sourcemage.org>
+2003-04-15 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.61
+	Removed gaim-e plugin for now, as it doesn't seem to like 0.61
 
-		Disabled gaim-e until it's updated for the new gaim version
-		Disabled gaim-encryption until a way around the nss problem is found
-		Bumped version to 0.66
+2003-03-19 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.9
 
-2003-06-20  Geoffrey Derber <ashaman@flyingtemple.com>
+2003-01-08 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.8
 
-		Gaim-e works again readded
-		POST_INSTALL not needed, warning no longer
-			applies
+2003-01-05 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS:: Updated to 0.59.7
 
-2003-05-30  Justin Rocha <jrocha@sourcemage.org>
+2002-11-10 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.6 to fix annoying bug.
 
-		Teach me to not check for updates when playing with spells....version bump to 0.64
+2002-10-22 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Removed sourcemage mirror URL - redundant (Bug 1332)
 
-2003-05-29  Justin Rocha <jrocha@sourcemage.org>
+2002-10-13 Eric Sandall <eric@sandall.us>
+	* DEPENDS,BUILD,CONFIGURE,PRE_BUILD: Added gpgme as optional_depends, though this should 
+	be made more specific, for it's only dependant if using gaim-e.
+	Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD to configure gaim-e support correctly.
+	Modified BUILD to patch gaim-e plugin to install into /usr/lib/gaim instead of /usr/local/lib/gaim.
 
-		Added gaim-encryption plugin
+2002-10-09 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.4
+	* BUILD: Added in gaim-e support submitted by Seth Wooley
 
-2003-05-19  Justin Rocha <jrocha@sourcemage.org>
+2002-09-15 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.3
 
-		Version bump to 0.63
-
-2003-04-15  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.61
-	Removed gaim-e plugin for now, as it doesn't
-	seem to like 0.61
-
-2003-03-19  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.9
-
-2003-01-08  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.8
-
-2003-01-05  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.7
-
-2002-11-10  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.6 to fix annoying bug.
-
-2002-10-22  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.5 which is simply a bugfix release
-        Removed sourcemage mirror URL - redundant (Bug 1332)
-
-2002-10-13  Eric Sandall <eric@sandall.us>
-
-		Added gpgme as optional_depends, though this should be
-		made more specific, for it's only dependant if
-		using gaim-e.
-
-		Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD
-		to configure gaim-e support correctly.
-
-		Modified BUILD to patch gaim-e plugin to install
-		into /usr/lib/gaim instead of /usr/local/lib/gaim.
-
-2002-10-13  Eric Sandall <eric@sandall.us>
-
-		Added gpgme as optional_depends, though this should be
-		made more specific, for it's only dependant if
-		using gaim-e.
-
-		Modified BUILD,DEPENDS,CONFIGURE, and PRE_BUILD
-		to configure gaim-e support correctly.
-
-		Modified BUILD to patch gaim-e plugin to install
-		into /usr/lib/gaim instead of /usr/local/lib/gaim.
-
-2002-10-09  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.4
-	Added in gaim-e support submitted by Seth Wooley
-
-2002-09-15  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.3
-
-2002-09-10  Adam Clark <adamsgl@dhbit.ca>
-
-	Updated to 0.59.2
+2002-09-10 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.2
 	Fixed to use $SOURCEFORGE_URL
 
-2002-08-26  Adam Clark <adamsgl@dhbit.ca>
+2002-08-26 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Updated to 0.59.1
+	* BUILD: Fixes a compile issue with Perl 5.8.0  - Yay!
 
-	Updated to 0.59.1
-	Fixes a compile issue with Perl 5.8.0  - Yay!
+2002-07-23 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: Corrected MD5 & LICENSE fields
 
-2002-07-23  Adam Clark <adamsgl@dhbit.ca>
+2002-07-11 Adam Clark <adamsgl@dhbit.ca>
+	* ALL: Enhanced spell with gnome panel support
 
-	Corrected MD5 & LICENSE fields
-
-2002-07-11  Adam Clark <adamsgl@dhbit.ca>
-
-	Enhanced spell with gnome panel support
-
-2002-06-25  Adam Clark <adamsgl@dhbit.ca>
-
-	updated to 0.59
+2002-06-25 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: updated to 0.59
 	added MD5 and LICENSE fields to DETAILS
 
-2002-05-15  Adam Clark <adamsgl@dhbit.ca>
+2002-05-15 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: updated to 0.58
 
-	updated to 0.58
+2002-05-06 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: fixed sourceforge download URL
 
-2002-05-06  Adam Clark <adamsgl@dhbit.ca>
+2002-04-14 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: updated to 0.56
 
-	fixed sourceforge download URL
+2002-04-02   Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: updated to 0.55
 
-2002-04-14  Adam Clark <adamsgl@dhbit.ca>
-
-	updated to 0.56
-
-2002-04-2   Adam Clark <adamsgl@dhbit.ca>
-
-	updated to 0.55
-
-2002-03-11  Adam Clark <adamsgl@dhbit.ca>
-
-	added MAINTAINTER tag to DETAILS file
-	added this HISTORY file
+2002-03-11 Adam Clark <adamsgl@dhbit.ca>
+	* DETAILS: added MAINTAINTER tag to DETAILS file
+	* HISTORY: added this HISTORY file

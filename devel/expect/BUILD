@@ -1,5 +1,5 @@
 (
-
+export LDFLAGS="$LDFLAGS -L /usr/X11R6/lib" &&
   cd  $SOURCE_DIRECTORY/             &&
   ./configure  --prefix=/usr \
                --with-tcl=/usr/lib \
