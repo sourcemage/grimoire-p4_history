@@ -27,21 +27,6 @@ default_build  &&  (
       echo installing rules/$FILE to /etc/snort &&
       /usr/bin/install -c -m 644  $FILE   /etc/snort
     fi
-  done &&
+  done
 
-
- (
-  cp  $SCRIPT_DIRECTORY/snort.sh  /etc/init.d/
-
-  chmod  a+x  /etc/init.d/snort.sh
-
-  ln     -sf  ../init.d/snort.sh  /etc/rc0.d/K60snort
-  ln     -sf  ../init.d/snort.sh  /etc/rc1.d/K60snort
-  ln     -sf  ../init.d/snort.sh  /etc/rc2.d/K60snort
-  ln     -sf  ../init.d/snort.sh  /etc/rc6.d/K60snort
-                     
-  ln     -sf  ../init.d/snort.sh  /etc/rc3.d/S40snort            
-  ln     -sf  ../init.d/snort.sh  /etc/rc4.d/S40snort
-  ln     -sf  ../init.d/snort.sh  /etc/rc5.d/S40snort
- )
 )
