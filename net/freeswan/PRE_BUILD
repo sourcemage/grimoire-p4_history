@@ -1,0 +1,7 @@
+cd		$BUILD_DIRECTORY	&&
+unpack		$SOURCE		&&
+
+unpack		$SOURCE2	&&
+cd $SOURCE_DIRECTORY		&&
+patch -p1 < $SOURCE2_DIRECTORY/freeswan.diff	&&
+patch -p0 < $SCRIPT_DIRECTORY/local.diff
