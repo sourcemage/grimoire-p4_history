@@ -3,14 +3,13 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-        WEB_SITE=http://$SPELL.sourceforge.net/
           MD5[0]=ce4159c270fb5b669a72fefffe7eba95
-      LICENSE[0]=GPL
+        WEB_SITE=http://$SPELL.sourceforge.net/
          ENTERED=20020806
          UPDATED=20040409
-      MAINTAINER=hnaz@we-are-root.org
-           SHORT="Ratpoison is a simple Window Manager"
-
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Simple Window Manager"
 cat << EOF
 Ratpoison is a simple Window Manager with no fat library dependencies, 
 no fancy graphics, no window decorations, and no rodent dependence. It 
