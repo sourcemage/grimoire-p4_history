@@ -1,0 +1,6 @@
+if [ -z $INSTALL_ROOT ]; then
+  [[  $(uname -m) = ppc* ]]  &&
+  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld.so.1  ||
+  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld-linux.so.2
+fi  &&
+default_pre_install

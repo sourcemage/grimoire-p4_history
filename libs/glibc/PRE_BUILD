@@ -14,12 +14,7 @@ if  [  "$GLIBC_NPTL"  =  "y"  ];  then
   unpack  $SOURCE2  ${MD5[1]}                         &&
   cd  $GLIBC_HEADERS_DIR                              &&
   patch  -p1  <  $SCRIPT_DIRECTORY/config.h.patch     &&
-  #
-  # Now fixup the normal glibc
-  #
-  cd  $SOURCE_DIRECTORY                               &&
-  patch  -p0  <  $SCRIPT_DIRECTORY/glibcshared.patch  &&
-  cd  $SOURCE_DIRECTORY/include                       &&
+  cd  $GLIBC_HEADERS_DIR/include                      &&
   chmod  -R  +r  *                                    &&
   find  .  -type  d  -exec  chmod  +x  '{}'  ';'
 else
@@ -35,6 +30,12 @@ else
   cd  $GLIBC_HEADERS_DIR                            &&
   unpack  $SOURCE3  ${MD5[2]}
 fi  &&
+
+#
+# Now fixup the normal glibc
+#
+cd  $SOURCE_DIRECTORY                               &&
+patch  -p0  <  $SCRIPT_DIRECTORY/glibcshared.patch  &&
 
 #
 # Create the build directory
