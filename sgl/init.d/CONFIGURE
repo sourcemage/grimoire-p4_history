@@ -58,6 +58,4 @@ while [ $? == 2 ]; do
     display_init_help
     build_scriptque
 done
-# strip out the quotes in previous output so it's usable
-    sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
 # end
