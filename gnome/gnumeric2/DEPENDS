@@ -4,5 +4,9 @@ depends gal2-0          &&
 depends scrollkeeper    &&
 depends libgsf
 
-optional_depends  "libgda2"  ""  ""  "for database support"
-optional_depends  "Python"  ""  ""  "for python scripting"
+optional_depends  "libbonobo"   "--with-bonobo"    "--without-bonobo"    "Add bonobo support"
+optional_depends  "Python"      "--with-python"    "--without-python"    "for python scripting"
+#optional_depends  "libgda2"     "--with-gda"       "--without-gda"       "for database support"  #wait for new gda support
+#optional_depends  "gtk+extra-2" "--with-graphs"    "--without-graphs"    "for plotting support"  #wait until gtk+2 support
+#optional_depends  "guile"       "--with-guile"     "--without-guild"     "for guile support"     #Currently disabled in gnumeric2
+#optional_depends  "evolution"   "--with-evolution" "--without-evolution" "for evolution support" #wait until gnome2 support
