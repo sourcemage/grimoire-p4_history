@@ -30,8 +30,6 @@
   if [ $OLD_TOO == y ] ; then
     ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf
   fi                                                          &&
-  cp modprobe.devfs ${INSTALL_ROOT}/etc                       &&
-  #run depmod on all current kernel trees
-  for i in `ls ${INSTALL_ROOT}/lib/modules/`; do depmod $i; done > /dev/null 
+  cp modprobe.devfs ${INSTALL_ROOT}/etc                       
   
 ) > $C_FIFO 2>&1
