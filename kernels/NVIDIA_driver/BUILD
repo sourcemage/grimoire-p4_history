@@ -8,7 +8,8 @@
 
   if [[ $KPATCHLEVEL == 5 ]]  || [[ $KPATCHLEVEL == 6 ]]
   then
-    patch  -p1  <  $SOURCE_CACHE/$SOURCE2                   &&
+    bzcat $SOURCE_CACHE/$SOURCE2 | patch  -p1   &&
+
     ln  -s  Makefile.kbuild Makefile
   fi                                                        &&
   ### please no-one remove this
