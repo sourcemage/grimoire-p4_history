@@ -27,6 +27,6 @@ default_build  &&  (
       echo installing rules/$FILE to /etc/snort &&
       /usr/bin/install -c -m 644  $FILE   /etc/snort
     fi
-  done &&
+  done
 
 )
