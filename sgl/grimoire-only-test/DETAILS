@@ -3,7 +3,8 @@
           SOURCE=sorcery.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
    SOURCE_URL[0]=$SORCERY_URL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.smee.org/pub/sgl/test/$SOURCE
+   SOURCE_URL[1]=http://codex.sourcemage.org/test-grimoire/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.smee.org/pub/sgl/test/$SOURCE
         WEB_SITE=http://www.sourcemage.org
          ENTERED=20020429
          UPDATED=20020429
@@ -19,6 +20,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
 cat << EOF
 
 Grimoire test updated only  -  
+
+	Spells have to maintain a stable state in devel grimoire for one week
+	before they make it into the test grimoire. The only exception is URL
+	changes which move through all grimoires immediatly.
+
 	This is the testing grimoire, where spells are moved between 
 	devel and stable for a quality check, please report problems.
 	Most up to date spell book, maintained by Tony Smith.
