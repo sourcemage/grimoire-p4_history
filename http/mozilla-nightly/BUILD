@@ -85,6 +85,11 @@
 
   cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin
 
+  #
+  # Script to set MOZILLA_FIVE_HOME
+  #
+  cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
+
   export  MOZILLA_FIVE_HOME=/usr/lib/mozilla
   export    LD_LIBRARY_PATH=/usr/lib/mozilla:$LD_LIBRARY_PATH
 
