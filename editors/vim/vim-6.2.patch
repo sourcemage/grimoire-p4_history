@@ -1,0 +1,24 @@
+diff -r -u vim62/src/digraph.c vim62.patched/src/digraph.c
+--- vim62/src/digraph.c	2003-10-29 14:35:15.000000000 +0100
++++ vim62.patched/src/digraph.c	2003-10-29 14:37:01.000000000 +0100
+@@ -2175,7 +2175,7 @@
+ 	str = skipwhite(str);
+ 	if (!isdigit(*str))
+ 	{
+-	    EMSG(_(e_number));
++	    EMSG(_(e_nrexpect));
+ 	    return;
+ 	}
+ 	n = getdigits(&str);
+diff -r -u vim62/src/globals.h vim62.patched/src/globals.h
+--- vim62/src/globals.h	2003-10-29 14:34:12.000000000 +0100
++++ vim62.patched/src/globals.h	2003-10-29 14:37:01.000000000 +0100
+@@ -1253,7 +1253,7 @@
+ EXTERN char_u e_nowrtmsg[]	INIT(=N_("E37: No write since last change (add ! to override)"));
+ EXTERN char_u e_null[]		INIT(=N_("E38: Null argument"));
+ #ifdef FEAT_DIGRAPHS
+-EXTERN char_u e_number[]	INIT(=N_("E39: Number expected"));
++EXTERN char_u e_nrexpect[]	INIT(=N_("E39: Number expected"));
+ #endif
+ #ifdef FEAT_QUICKFIX
+ EXTERN char_u e_openerrf[]	INIT(=N_("E40: Can't open errorfile %s"));

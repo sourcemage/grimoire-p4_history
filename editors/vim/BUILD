@@ -1,4 +1,5 @@
 (
+   patch -p1 < $SCRIPT_DIRECTORY/vim-6.2.patch &&
 
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
