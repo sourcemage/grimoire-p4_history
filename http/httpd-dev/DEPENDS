@@ -1,4 +1,4 @@
-# $Id: DEPENDS,v 1.1 2002/08/20 14:20:14 sergeyli Exp $
+# $Id: DEPENDS,v 1.2 2002/09/27 01:48:40 sergeyli Exp $
 optional_depends openssl           \
 	" --enable-ssl"                \
 	"--disable-ssl"                \
@@ -6,5 +6,5 @@ optional_depends openssl           \
 
 optional_depends openldap                                                   \
 	" --enable-auth-ldap  --enable-ldap --with-auth-ldap    --with-ldap   " \
-	"--disable-auth-ldap --disable-ldap --with-auth-ldap=no --with-ldap=no" \
+	"--disable-auth-ldap --disable-ldap --without-auth-ldap --without-ldap" \
 	"for LDAP-based authentication"
