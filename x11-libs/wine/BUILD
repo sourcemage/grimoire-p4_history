@@ -50,8 +50,7 @@ function create_windows_directories {
 	"$CROOT/windows/Fonts" "$CROOT/windows/Start Menu/Programs/Startup"
       do [ -d "$tdir" ] || mkdir "$tdir"
     done
-    [ -f "$CROOT/windows/win.ini" ]    || cp "$WININI"    "$CROOT/windows/win.ini"
-    [ -f "$CROOT/windows/system.ini" ] || cp "$SYSTEMINI" "$CROOT/windows/system.ini"
+    cp $SOURCE_DIRECTORY/tools/wine.inf "$CROOT/windows/system/wine.inf"
 }
 
 function link_app {
