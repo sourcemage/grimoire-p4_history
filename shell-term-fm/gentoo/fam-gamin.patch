@@ -1,0 +1,20 @@
+--- src/gfam.c~	2004-05-01 23:38:06.000000000 +0200
++++ src/gfam.c	2004-09-13 14:29:33.996605417 +0200
+@@ -205,7 +205,7 @@
+ 		the_faminfo.block_cnt = 0;
+ 	}
+ 	else
+-		g_warning(_("FAM open failed, error %d--FAM will not be used"), FAMErrno);
++		g_warning(_("FAM open failed, --FAM will not be used"));
+ 
+ 	return the_faminfo.ok;
+ }
+@@ -227,7 +227,7 @@
+ 	if(FAMMonitorDirectory2(&the_faminfo.conn, dp->dir.path, &the_faminfo.req[dp->index]) != 0)
+ 	{
+ 		the_faminfo.req[dp->index].reqnum = 0;
+-		g_warning(_("Couldn't add FAM monitor on \"%s\", error %s (restart with --no-fam to go around, perhaps)"), dp->dir.path, FamErrlist[FAMErrno]);
++		g_warning(_("Couldn't add FAM monitor on \"%s\" (restart with --no-fam to go around, perhaps)"), dp->dir.path);
+ 	}
+ }
+ 
