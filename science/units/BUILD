@@ -1,5 +1,5 @@
 (
-if [[ $(installed_version gcc) == 3.3 ]]
+if [[ $(installed_version gcc) == 3.3* ]]
 then patch -p1 < $SCRIPT_DIRECTORY/units-gcc3.3.patch
 fi
   ./configure  --build=$BUILD        				\
