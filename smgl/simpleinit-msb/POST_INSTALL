@@ -1,8 +1,0 @@
-if  [  -f  ${INSTALL_ROOT}/etc/sysconfig/devices  ]  ;  then
-  (
-    .  ${INSTALL_ROOT}/etc/sysconfig/devices
-    sedit  "s!/dev!$DEVICES!"  ${INSTALL_ROOT}/etc/inittab
-  )
-fi
-
-true

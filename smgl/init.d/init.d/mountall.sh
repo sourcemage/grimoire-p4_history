@@ -7,7 +7,6 @@ PROVIDES=local_fs
 ESSENTIAL=yes
 
 . /etc/init.d/smgl_init
-. /etc/sysconfig/devices
 . /etc/sysconfig/init
 
 checkfs()
@@ -39,21 +38,6 @@ start()
   required_executable /bin/mount
   required_executable /sbin/fsck
 
-  if [ "$DEVICES" != "/dev" ] ; then
-    echo "Mounting /devices..."
-    mount -n  -t  devfs devfs $DEVICES
-    evaluate_retval
-  fi
-
-  if [ -x "/sbin/devfsd" ] ; then
-    /sbin/devfsd $DEVICES
-    evaluate_retval
-  elif [ "$DEVICES" == "/dev" ] ; then
-    ln -s /proc/self/fd/0 /dev/stdin &&
-    ln -s /proc/self/fd/1 /dev/stdout &&
-    ln -s /proc/self/fd/2 /dev/stderr
-  fi
-
   if [ -f /etc/raidtab ] ; then
     raidstart  --all
   fi
@@ -75,11 +59,6 @@ start()
     echo -n "Activating swap... "
     swapon -a 2> /dev/null
     evaluate_retval
-  fi
-
-  if [[ $DEVICES_COMPAT == "y" && $DEVICES != "/devices" ]] ; then
-    [ -e /devices ] && rm -rf /devices
-    ln -sf $DEVICES /devices
   fi
 
   echo "Mounting local filesystems..."

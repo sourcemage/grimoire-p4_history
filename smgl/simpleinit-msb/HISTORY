@@ -1,10 +1,7 @@
-2004-03-26 hgg <hgreig@bigpond.net.au>
-	* CONFLICTS: only move the old binaries if CROSS_INSTALL is off
-
-2004-02-20 Arwed v. Merkatz <v.merkatz@gmx.net>
+2004-04-07 hgg <hgreig@bigpond.net.au> && Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, simpleinit.patch, POST_INSTALL:
 	add patch that's needed for /dev on a virtual filesystem,
-	edit inittab in POST_INSTALL to use /dev/tty[1-6] on udev
+	remove POST_INSTALL, inittab now in init.d spell
 
 2004-01-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 1.2

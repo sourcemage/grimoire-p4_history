@@ -1,3 +1,22 @@
+check_static_dev () { (
+  echo "checking if your static /dev is ok..."
+  mkdir /tmp/$$.bindmount
+  mount --bind / /tmp/$$.bindmount
+  cd /tmp/$$.bindmount/dev
+  if [ ! -c console -o ! -c null ]; then
+    if query "You don't seem to have a static /dev tree, should i create it ?" y
+    then $SCRIPT_DIRECTORY/MAKEDEV generic-nopty md
+         mkdir -p shm pts
+         mknod initctl p
+    fi
+  else
+    echo "seems ok"
+  fi
+  cd /
+  umount /tmp/$$.bindmount
+  rmdir /tmp/$$.bindmount
+) }
+
 (
 
   pinfo() { echo -e "\n${SPELL_COLOR}${*}${DEFAULT_COLOR}\n" ; }
@@ -21,9 +40,12 @@
 
   prepare_install                                             &&
 
+  if  [ "$DEVICES" != "devfs" ]; then
+    check_static_dev
+  fi  &&
   pinfo "Creating directories..."                             &&
 
-  mkdir  -pv  $RD/%S  $RD/%1  $RD/%2  $RD/%3  $RD/%4  $RD/%5  &&
+  mkdir  -pv  $RD/%DEV $RD/%S  $RD/%1  $RD/%2  $RD/%3  $RD/%4  $RD/%5  &&
   mkdir  -pv  ${INSTALL_ROOT}/etc/sysconfig                                  &&
 
   pinfo "Installing files..."                                 &&
@@ -48,12 +70,16 @@
 
   pinfo "Creating runlevel dependency files..."               &&
 
-  mkdep S                                                     &&
+  mkdep DEV
+  mkdep S DEV                                                 &&
   mkdep 1 S                                                   &&
   mkdep 2 1                                                   &&
   mkdep 3 2                                                   &&
   mkdep 4 3                                                   &&
   mkdep 5 4                                                   &&
+
+  pinfo "Installing /etc/inittab..."                          &&
+  install -v -m 644 $FD/inittab ${INSTALL_ROOT}/etc/inittab   &&
 
   pinfo "Other stuff..."                                      &&
 

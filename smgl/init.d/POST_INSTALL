@@ -20,8 +20,20 @@ if  [  -e  /tmp/devices2dev  ]  ;  then
   rm  /tmp/devices2dev
 fi
 
-if  [  "$DEVFS_ON_DEV" = "n"  ];  then
-  sedit  's!/dev$!/devices!'  /etc/sysconfig/devices
+sedit  "s/DEVICES=.*/DEVICES=$DEVICES/"  /etc/sysconfig/devices
+
+if  [  "$DEVICES" == "devfs"  ]; then
+  sedit  "s:/dev/tty\(.\):/dev/vc/\1:"  ${INSTALL_ROOT}/etc/inittab
+  message "tty devices in inittab set to $DEVICES/vc/[1-6]"
+else
+  message "tty devices in inittab set to /dev/tty[1-6]"
 fi
 
+# remove /etc/inittab from the simpleinit install log
+for i in $INSTALL_LOGS/simpleinit* $MD5SUM_LOGS/simpleinit*
+do if [ -f $i ] ; then
+  sedit  "/\/etc\/inittab/D"  $i
+  fi
+done
+ 
 true

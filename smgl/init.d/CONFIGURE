@@ -1,28 +1,23 @@
-if  !  grep  -q DEVFS_ON_DEV  $SPELL_CONFIG; then
-  if  [  -d  /devices  -a  !  -h  /devices  ]  ;  then
-    message  "It looks like you still have the old /devices devfs setup,"
-    message  "would you like to update to the standard way of doing this?"
-    message  "By saying yes, I will try to make the system mount devfs on"
-    message  "/dev instead of /devices, I will also prompt to update various"
-    message  "system files I know of that use /devices"
-
-    if  query  "update /devices to mount on /dev"  n  ;  then
-      message  "Please note that you may have to modify the 'append' option in"
-      message  "/etc/lilo.conf so that it contains 'devfs=mount'."
-      message  "For example: 'append=\"devfs=mount\""
-
-      FTF=""    # Files To Fix
-      query  "Fix /etc/fstab?"  y  &&  FTF="$FTF /etc/fstab"
-      query  "Fix /etc/inittab?"  y  &&  FTF="$FTF /etc/inittab"
-      query  "Fix /etc/securetty?"  y  &&  FTF="$FTF /etc/securetty"
-      echo  $FTF  >  /tmp/devices2dev
-      message  "Okay thats all for now"
-      DEVFS_ON_DEV=y
-    else
-      DEVFS_ON_DEV=n
-    fi
+if ! grep -q DEVICES $SPELL_CONFIG; then
+  message "\nYou can choose devfs, udev or static dev for /dev management."
+  [ -e /dev/.devfsd ] && message "\n${PROBLEM_COLOR}\n\t\t+++++++++++++++++++++++++++++++++++++++++++\n\n\
+CONVERTING TO UDEV OR STATIC FROM DEVFS CURRENTLY NEEDS MANUAL CHANGING OF THE /ETC/FSTAB \
+\n\n\t\t+++++++++++++++++++++++++++++++++++++++++++${DEFAULT_COLOR}" && sleep 5
+  if grep -q devfs /proc/filesystems \
+     &&  [ -e /dev/.devfsd ] \
+     && query  "Use devfs to manage /dev ?" y; then
+    DEVICES=devfs
   else
-    DEVFS_ON_DEV=y
+    message "devfs doesn't seem to be enabled in your kernel or isn't already running, skipping devfs."
+    if [[ `uname -r` == 2.6* ]] \
+       && grep -q hotplug /proc/kallsyms \
+       && grep -q ramfs /proc/filesystems \
+       && query  "Use udev to manage /dev ?" y; then
+    DEVICES=udev
+    else
+      message "you need hotplug and ramfs support in your kernel for udev, skipping udev."
+      DEVICES=static
+    fi
   fi
-  echo  "DEVFS_ON_DEV=$DEVFS_ON_DEV"  >>  $SPELL_CONFIG
+  echo "DEVICES=$DEVICES" >> $SPELL_CONFIG
 fi

@@ -1,3 +1,8 @@
+2004-04-07 hgg <hgreig@bigpond.net.au> && Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD,init.d/mountall.sh, init.d/devices, init.d/facilities.conf:
+        new %DEV runlevel and devices script for interoperation with udev.
+	Safely defaults to devfs unless running 2.6 with hotplug and ramfs support.
+
 2004-02-13 Eric Sandall <eric@sandall.us>
 	* init.d/mountall.sh: Mount RAID filesystems, if needed
 
