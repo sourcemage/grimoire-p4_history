@@ -90,6 +90,9 @@ else
   ln  -sf  ../asm-$GLIBC_ARCH  asm    &&
   ln  -sf  ../linux            linux
 fi  &&
+# CPPFLAGS setting is needed so the check for cpp works on boxes that don't
+# have any kernel headers in /usr/include yet
+export CPPFLAGS="$CPPFLAGS -I$GLIBC_HEADERS_DIR/include"  &&
 #
 # End sanitised glibc-kernel-headers setup
 #
