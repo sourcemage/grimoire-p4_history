@@ -1,0 +1,27 @@
+#!/bin/bash
+
+RUNLEVEL=3
+PROGRAM=/sbin/shorewall
+NEEDS="+network +remote_fs"
+
+. /etc/init.d/smgl_init
+
+start()
+{
+  ${PROGRAM}  start
+}
+
+stop()
+{
+  ${PROGRAM}  stop
+}
+
+status()
+{
+  ${PROGRAM}  status
+}
+
+reload()
+{
+  ${PROGRAM}  refresh
+}
