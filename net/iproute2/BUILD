@@ -1,8 +1,9 @@
 ./configure  &&
-make  &&
+make         &&
 
 if [ "$BUILD_DOCS" = y ] ; then
-  cd $SOURCE_DIRECTORY/doc   &&
-  make                       &&
-  mkdir -p /usr/doc/iproute2
+  patch  -p1  <  $SCRIPT_DIRECTORY/doc.patch  &&
+  cd $SOURCE_DIRECTORY/doc                    &&
+  make                                        &&
+  mkdir -p /usr/share/doc/iproute2
 fi
