@@ -1,15 +1,14 @@
            SPELL=x11-ssh-askpass
          VERSION=1.2.4.1
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://ftp.ntua.gr/pub/linux/openpkg/sources/DST/$SPELL/$SOURCE
-#  SOURCE_URL[0]=http://www.ntrnet.net/~jmknoble/software/$SPELL/$SOURCE
+   SOURCE_URL[0]=http://www.jmknoble.net/software/x11-ssh-askpass/$SOURCE
+   SOURCE_URL[1]=http://ftp.ntua.gr/pub/linux/openpkg/sources/DST/$SPELL/$SOURCE
           MD5[0]=bd51940ff68100547c26c2153a4d8413
-        WEB_SITE=UNKNOWN
-#       WEB_SITE=http://www.ntrnet.net/~jmknoble/software/x11-ssh-askpass/
+        WEB_SITE=http://www.jmknoble.net/software/x11-ssh-askpass/
          ENTERED=20021210
          UPDATED=20021210
-      MAINTAINER=dossen+sgl@daimi.au.dk
            SHORT="x11-ssh-askpass is a lightweight passphrase dialog for OpenSSH"
 cat << EOF
 x11-ssh-askpass is a lightweight passphrase dialog for OpenSSH or other
