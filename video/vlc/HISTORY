@@ -1,3 +1,12 @@
+2004-01-08 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.8.0, changed SOURCE_URL to download.videolan.org
+	* BUILD, ffmpeg.patch: removed ffmpeg patch
+	* DEPENDS: added optional_depends on live, libcdio, libcddb,
+	vcdimager-cdio and libid3tag
+	removed optional_depends on xvid and libdv
+	* BUILD, DEPENDS: reenable optional_depends on MOZILLA-BROWSER
+	* BUILD, mkv-fix.patch: fix matroska demuxer compilation
+
 2003-12-13 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: added depends on mpeg2dec
 	* BUILD, DETAILS, PRE_BUILD: removed libmpeg2 snapshot

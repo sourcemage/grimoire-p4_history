@@ -1,14 +1,15 @@
            SPELL=libcdio
-         VERSION=0.64
+         VERSION=0.65
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://savannah.nongnu.org/download/libcdio/libcdio.pkg/$VERSION/$SOURCE
-          MD5[0]=3030a18065b198664c18f5b6a09de7a8
+   SOURCE_URL[0]=${GNU_URL}/libcdio/$SOURCE
+          MD5[0]=6bf68111f9a7af3aedc8acbc7f9ab22d
       LICENSE[0]=GPL
-        WEB_SITE=http://xine.sourceforge.net
+        WEB_SITE=http://www.gnu.org/software/libcdio/
          ENTERED=20030222
          UPDATED=20030614
       MAINTAINER=v.merkatz@gmx.net
+            DOCS="COPYING NEWS README"
            SHORT="library for accessing cdrom drives"
 cat << EOF
 library for accessing cdrom drives
