@@ -1,15 +1,20 @@
            SPELL=mod_perl
+if [ "$MOD_PERL" == '2' ]; then
+         VERSION=1.99_09
+          MD5[0]='d317de72ec66dfa1a563ed5131eb4bd4'
+else
          VERSION=1.27
+          MD5[0]='2d6da99b63e06f90f7089a4a1e0289ad'
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/D/DO/DOUGM/$SOURCE
-          MD5[0]="2d6da99b63e06f90f7089a4a1e0289ad"
+   SOURCE_URL[0]=http://perl.apache.org/dist/$SOURCE
          LICENSE=APACHE
-        WEB_SITE="http://search.cpan.org/search?module=mod_perl"
+        WEB_SITE=http://perl.apache.org/
          ENTERED=20010922
-         UPDATED=20020315
+         UPDATED=20030613
       MAINTAINER="redlemon@knoware.nl"
-           SHORT="mod_perl incoporates PERL into the Apache HTTP server."
+           SHORT="mod_perl incoporates PERL into the Apache HTTP server"
 cat << EOF
 The Apache/Perl integration project brings together the full power of
 the Perl programming language and the Apache HTTP server. With mod_perl

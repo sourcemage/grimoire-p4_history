@@ -14,7 +14,17 @@ case $1 in
                 ;;
 
       restart)  echo "$1ing sshd."
-                reloadproc sshd
+                #
+                # Below is commented out due to causing
+                # the loss of connection when remotely connected
+                # and issuing a restart.
+                #
+                #reloadproc sshd
+				if [ -e /var/run/sshd.pid ]; then
+                       kill `cat /var/run/sshd.pid`
+                       sleep 1
+                fi
+                loadproc sshd
                 ;;
 
          stop)  echo "$1ping sshd."

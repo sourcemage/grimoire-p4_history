@@ -3,26 +3,33 @@
 DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
 HELP="See http://kernel.kolivas.net
-NOTE: C.K. has not yet released a full patch yet, so i put together his split out patches myself for now.
 
-basic contains:
-batch O(1) scheduler, preemptible, low latency,
-CK's autoregulation vm hacks, Read Latency2, Variable HZ setting
-Desktop Tuning 1,2,Scheduler Tunables
+Base (1000_O1_PE_LL_0306231337_2.4.21-ck3) contains the batch O(1) scheduler, preemptible, low latency and .K.'s interactivity patch
 
-full also contains:
-Supermount-NG, XFS, ACPI, Nvidia Nforce2 update, Bootsplash"
+Full (2.4.21-ck3) additionally contains:
+ CK's autoregulation vm hacks
+ Swap prefetching
+ Read Latency2
+ Variable HZ setting
+ Desktop Tuning 1 and 2
+ Scheduler Tunables
+ Supermount-NG v1.2.7
+ XFS file system 1.3.0pre2
+ ACPI 20030522
+ Nvidia Nforce2 update
+ Bootsplash
+ Grsec 1.9.9h"
 
-VERSIONS="2.4.21-ck1-basic-20030619
-2.4.21-ck1-full-20030619"
+VERSIONS="1000_O1_PE_LL_0306231337_2.4.21-ck3
+2.4.21-ck3"
 
-MD5S[0]=b3246c0b13c1f37edf10ecba109f75e4
-MD5S[1]=dbd7e8e52bc0d229aba02924a80ca371
+MD5S[0]=99573b1659124f36a0c33e1a841a4edd
+MD5S[1]=5fe3e852bedfe5c7641b0732004d3c24
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=linux-${!PATCH}.patch.bz2
-SOURCE${COUNTER}_URL=http://download.sourcemage.org/distro/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}=patch-${!PATCH}.bz2
+SOURCE${COUNTER}_URL[0]=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
 source $SCRIPT_DIRECTORY/MD5PATCH
 fi

@@ -1,7 +1,14 @@
   mk_source_dir $SOURCE_DIRECTORY &&
-  unpack $SOURCE ${MD5[0]}
+  unpack $SOURCE ${MD5[0]} &&
+
+
   cd $SOURCE_DIRECTORY/plugins/ &&
   unpack $SOURCE2 ${MD5[1]}
   cd encrypt/ &&
   patch -p0 < patchfile.0.63 &&
-  touch Makefile.in
+  touch Makefile.in &&
+
+  if spell_installed gpgme && spell_installed libgcrypt ; then
+		cd $SOURCE_DIRECTORY/plugins/ &&
+		unpack $SOURCE3 ${MD5[2]}
+  fi

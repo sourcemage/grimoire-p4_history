@@ -1,6 +1,6 @@
 (
+  sedit  "s/gmake/make/"  Make/instexamplesrc  &&
 
-  sedit  "s/gmake/make/"  Make/instdemosrc  &&
 
   make  OPTF="\"$CFLAGS\""  GIF_LIBS="-lungif"  &&
   prepare_install  &&

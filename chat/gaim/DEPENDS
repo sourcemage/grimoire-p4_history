@@ -1,16 +1,22 @@
 depends   gtk+2  &&
 
+optional_depends  "atk"	\
+		  ""	\
+		  ""	\
+		  "what is this needed for?"	&&
+
 optional_depends  "audiofile"            \
                   "--enable-audio"   \
                   "--disable-audio"  \
-                  "to play aiff, snd, wave, and au files"
+                  "to play aiff, snd, wave, and au files" &&
 
-#optional_depends  "system-tray-applet"   \
-#		  ""			 \
-#		  ""			 \
-#		  "for gnome panel support"
-#
-# optional_depends  "gpgme"                      \
-#                   ""                           \
-#                   ""                           \
-#                   "for gaim-e gpg encryption"
+
+optional_depends  "gpgme"                      \
+                  ""                           \
+                  ""                           \
+                  "for gaim-e gpg encryption"  &&
+
+optional_depends  "libgcrypt"			\
+		  ""				\
+		  ""				\
+		  "for gaim-e gpg encryption"

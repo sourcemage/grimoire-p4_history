@@ -1,3 +1,18 @@
+2003-06-26  Eric Schabell <eschabell@sourcemage.org>
+
+		Applied fixes as given by Casey in bug #3531, 
+		which fixes this bug! Finally! ;-)
+
+2003-06-19  Casey Harkins <charkins@pobox.com>
+
+		Added netconf tool for configuring network devices.
+		The tool is installed in /usr/sbin from BUILD. The
+		"configure network devices" prompt was moved from
+		CONFIGURE into POST_INSTALL and simply calls
+		/usr/sbin/netconf when the user answers yes. Removed
+		lib_netsetup as it is no longer needed. This and a
+		patch to the installer should resolve bug #3531.
+		
 2003-05-20  Eric Sandall <eric@sandall.us>
 
 		Fixed Bug #3342
