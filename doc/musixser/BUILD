@@ -1,11 +1,10 @@
 (
 
-    TEXMF=`kpsetool -v '$TEXMF'`                        &&
-    TEXMF=`echo $TEXMF | sed -e "s/\!*//"`              &&
+    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                   &&
 
     prepare_install                                     &&
     
-    cp  musixser.tex    $TEXMF/tex/generic/musixtex     &&
+    cp  musixser.tex    $TEXMF/tex/musixtex     &&
     mkdir   -p          /usr/doc/$SPELL                 &&
     cp  mxserdoc.tex    /usr/doc/$SPELL                 &&
     cp  mxserdoc.dvi    /usr/doc/$SPELL
