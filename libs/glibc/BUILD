@@ -46,14 +46,24 @@
               message "${MESSAGE_COLOR}Please check the headers in /usr/include/{asm,asm-generic,linux}.${DEFAULT_COLOR}"
             )
           fi
- fi                                                                         &&
- ln -sf $SOURCE_DIRECTORY.bld/libc.so ${INSTALL_ROOT}/lib/libc.so.6         &&
- ln -sf $SOURCE_DIRECTORY.bld/rt/librt.so ${INSTALL_ROOT}/lib/librt.so.1    &&
- ln -sf $SOURCE_DIRECTORY.bld/math/libm.so ${INSTALL_ROOT}/lib/libm.so.6    &&
- ln -sf $SOURCE_DIRECTORY.bld/dlfcn/libdl.so ${INSTALL_ROOT}/lib/libdl.so.2 &&
- ln -sf $SOURCE_DIRECTORY.bld/nis/libnsl.so ${INSTALL_ROOT}/lib/libnsl.so.1 &&
- ln -sf $SOURCE_DIRECTORY.bld/crypt/libcrypt.so ${INSTALL_ROOT}/lib/libcrypt.so.1 &&
- ln -sf $SOURCE_DIRECTORY.bld/login/libutil.so ${INSTALL_ROOT}/lib/libutil.so.1   &&
+ fi                                                                                    &&
+ ln -sf $SOURCE_DIRECTORY.bld/libc.so ${INSTALL_ROOT}/lib/libc.so.6                    &&
+ ln -sf $SOURCE_DIRECTORY.bld/rt/librt.so ${INSTALL_ROOT}/lib/librt.so.1               &&
+ ln -sf $SOURCE_DIRECTORY.bld/math/libm.so ${INSTALL_ROOT}/lib/libm.so.6               &&
+ ln -sf $SOURCE_DIRECTORY.bld/dlfcn/libdl.so ${INSTALL_ROOT}/lib/libdl.so.2            &&
+ ln -sf $SOURCE_DIRECTORY.bld/nis/libnsl.so ${INSTALL_ROOT}/lib/libnsl.so.1            &&
+ ln -sf $SOURCE_DIRECTORY.bld/nis/libnss_compat.so ${INSTALL_ROOT}/lib/libnss_compat.so.2   &&
+ ln -sf $SOURCE_DIRECTORY.bld/nis/libnss_nis.so ${INSTALL_ROOT}/lib/libnss_nis.so.2         &&
+ ln -sf $SOURCE_DIRECTORY.bld/nis/libnss_nisplus.so ${INSTALL_ROOT}/lib/libnss_nisplus.so.2 &&
+ ln -sf $SOURCE_DIRECTORY.bld/nss/libnss_files.so ${INSTALL_ROOT}/lib/libnss_files.so.2     &&
+ ln -sf $SOURCE_DIRECTORY.bld/malloc/libmemusage.so ${INSTALL_ROOT}/lib/libmemusage.so      &&
+ ln -sf $SOURCE_DIRECTORY.bld/crypt/libcrypt.so ${INSTALL_ROOT}/lib/libcrypt.so.1           &&
+ ln -sf $SOURCE_DIRECTORY.bld/login/libutil.so ${INSTALL_ROOT}/lib/libutil.so.1             &&
+ ln -sf $SOURCE_DIRECTORY.bld/resolv/libresolv.so ${INSTALL_ROOT}/lib/libresolv.so.2        &&
+ ln -sf $SOURCE_DIRECTORY.bld/resolv/libanl.so ${INSTALL_ROOT}/lib/libanl.so.1              &&
+ ln -sf $SOURCE_DIRECTORY.bld/resolv/libnss_dns.so ${INSTALL_ROOT}/lib/libnss_dns.so.2      &&
+ ln -sf $SOURCE_DIRECTORY.bld/locale/libBrokenLocale.so ${INSTALL_ROOT}/lib/libBrokenLocale.so.1        &&
+ ln -sf $SOURCE_DIRECTORY.bld/hesiod/libnss_hesiod.so ${INSTALL_ROOT}/lib/libnss_hesiod.so.2            &&
  if [ "$NPTL" = "yes" ]
     then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
  fi  &&
@@ -82,18 +92,26 @@
     while  read  LOCALE  DESCRIPTION;  do
       INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE
-      echo "localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE"
-            localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
+      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                 &&
+      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE		$DESCRIPTION " &&
+      localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE                              &&
+      if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
+         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8		$DESCRIPTION (UNICODE Charset)" &&
+              localedef  -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
+      fi
     done
     true
   else
     for  LOCALE  in  $GLIBC_LOCALES;  do
-      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
+      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1` 
         CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE
-      echo "localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE"
-            localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
+      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE &&
+      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE" &&
+      localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
+      if [ "$UTF" = "yes" ] && ! [ "$CHARMAP" = "UTF-8" ]
+         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8" &&
+              localedef  -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
+      fi
     done
     true
   fi 

@@ -1,3 +1,10 @@
+2004-01-04 hgg <hgreig@bigpond.net.au>
+	* locales: regenerated from the actual locale files and now using the proper native charset.
+	Now if you want to use UTF-8 for a locale that has it's own native charset, just change LANG to $LANG.UTF-8 in your profile
+	* PREPARE,BUILD: ask if user wants UTF-8 locales (to fix bug with gtk+ apps) and
+	shuffle the localedef stuff for nicer output, add optional UTF-8 usage , fixes bug #5444
+	* BUILD: more symlinks so normal system is maintained during the make install stage
+	
 2003-12-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: copy the headers immediately after prepare_install
 	* BUILD: use the headers from currently running kernel
