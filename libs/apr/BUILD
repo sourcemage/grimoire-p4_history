@@ -1,7 +1,9 @@
 (
 
   patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
-  ./buildconf &&
+  if ! [ -x configure ]; then
+    ./buildconf
+  fi &&
 
   ./configure \
     --host=$HOST \

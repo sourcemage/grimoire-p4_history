@@ -1,16 +1,26 @@
            SPELL=apr
-         VERSION=1.0
+if [ "$APR_BRANCH" == '1' ]; then
+         VERSION=1.0pre1
              TAG=HEAD
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          MD5[0]=''
+else
+         VERSION=0.9.5
+             TAG=APR_0_9_BRANCH
+          MD5[0]=''
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+if [ "$APR_CHECKOUT" == 'y' ]; then
   FORCE_DOWNLOAD=on
-   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:$TAG
-#  SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
           MD5[0]=IGNORE
+else
+   SOURCE_URL[0]=http://www.apache.org/dist/apr/$SOURCE
+fi
         WEB_SITE=http://apr.apache.org/
       LICENSE[0]=APACHE
          ENTERED=20030302
-         UPDATED=20031025
+         UPDATED=20031028
            SHORT='The Apache Portable Runtime (APR) library'
 cat << EOF
 The mission of the Apache Portable Runtime (APR) is to provide a free library
