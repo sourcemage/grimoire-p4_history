@@ -1,8 +1,1 @@
-if  !  grep  -q  "MAILDIR"  $SPELL_CONFIG;  then
-
-  if    query  "Enable MAILDIR support?" y
-  then  echo   "MAILDIR=y"  >>  $SPELL_CONFIG
-  else  echo   "MAILDIR=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
+config_query MAILDIR "Enable MAILDIR support?" y
