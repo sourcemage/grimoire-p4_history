@@ -13,15 +13,20 @@
 	builds/posix/prefix.linux		&&
 
 # make this compatible with smgl init system
-  FF=src/install/arch-specific/linux/misc/changeDBAPassword.sh.in&&
+  if [ "$USECVS" == "yes" ];then
+    SCRIPT=builds
+  else
+    SCRIPT=src
+  fi                                            &&
+  FF=$SCRIPT/install/arch-specific/linux/misc/changeDBAPassword.sh.in&&
   sed -e "s:rc\.d/::;s:d/f:d/runlevels/\%3/f:" -i $FF &&
 
   echo install=$INST				&&
 
   NOCONFIGURE=1 . ./autogen.sh			&&
+#	--with-editline			\
   ./configure 				\
 	--prefix=$PREFIX 		\
-	--with-editline			\
 	$OPTS					&&
   make 						&&
 
