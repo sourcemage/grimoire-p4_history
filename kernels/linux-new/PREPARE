@@ -64,6 +64,15 @@ create_defaults()
 	persistent_add kernel_arch
 	mode="newktree"
 	persistent_add mode
+	if [[ $RECONFIGURE ]]
+	then
+		reconf="true"
+	else
+		reconf="false"
+	fi
+	persistent_add reconf
+	kver="LATEST_2_6"
+	persistent_add kver
 	persistent_save
 	persistent_load
 }
@@ -393,24 +402,28 @@ new_tree_menu()
 			menu="${menu}${version} Linux_Kernel Select_one "
 		done
 		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
-
-		kernelver=$( $dialog --title "Select Kernel Version" \
+		kver=$( $dialog --title "Select Kernel Version" \
 		--item-help --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
 		$menu )
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			case "$kernelver" in
+			case "$kver" in
 				2.[0-9].[0-9]*) 
-					replace_config_var kver "$kernelver"
-					patch_menu $kernelver
+					persistent_save
+					persistent_load
+					patch_menu $kver
 					;;
 				LATEST*)
-					replace_config_var kver "$kernelver"
-					patch_menu $kernelver
+					persistent_save
+					persistent_load
+					patch_menu $kver
 					;;
-				*) break ;;
+				*) 
+					persistent_load
+					break 
+					;;
 			esac
 		else
 			break
@@ -674,36 +687,28 @@ create_details()
 # if it's not there create it
 create_defaults
 
-# for some reason I couldn't get it to show up in
-# PRE_BUILD so I put it in the config file
-if [[ $RECONFIGURE ]]
-then
-        replace_config_var RECONFIGURE true
-else
-        replace_config_var RECONFIGURE false
-fi
-
 . $configfile
 
-if [[ "$RECONFIGURE" == "true" || "`grep 'kver=' $configfile`" == "" ]]
+if [[ "$reconf" == "true" || "$kver" == "" ]]
 then
 	main_menu
+	persistent_load
 	. $configfile
-	if [ "`grep 'kver=' $configfile`" == "" ]
+	if [ "$kver" == "" ]
 	then
 		echo "You really need to tell the spell what linux kernel you are dealing with."
 		sleep 5
 	fi
-	while [ "`grep 'kver=' $configfile`" == "" ]
+	while [ "$kver" == "" ]
 	do
 		main_menu
 		. $configfile
-		if [ "`grep 'kver=' $configfile`" == "" ]
+		persistent_load
+		if [ "$kver" == "" ]
 		then
 			echo "You really need to tell the spell what linux kernel you are dealing with."
 			sleep 5
-		fi
-		
+		fi	
 	done
 	create_details
 else

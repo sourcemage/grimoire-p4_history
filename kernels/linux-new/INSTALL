@@ -54,7 +54,7 @@ case  ${kernel_arch}  in
 		${INSTALL_ROOT}/boot/vmlinuz
 		;;
 	*)
-		cp ${root}arch/${kernel_arch}/boot/bzImage \
+		cp ${root}/arch/${kernel_arch}/boot/bzImage \
 		${INSTALL_ROOT}/boot/vmlinubz-$append &&
 		ln -sf ${INSTALL_ROOT}/boot/vmlinubz-${append} \
 		${INSTALL_ROOT}/boot/vmlinubz

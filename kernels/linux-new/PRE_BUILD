@@ -51,7 +51,7 @@ fi
 cd ${LINUX_SOURCE_DIRECTORY}
 
 . ${CONFIG_CACHE}/details.conf
-if [[ "$RECONFIGURE" == "true" || ! -f ./.config ]]
+if [[ "$reconf" == "true" || ! -f ./.config ]]
 then
 	if [[ $COMPILE ]]
 	then
