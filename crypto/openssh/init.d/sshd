@@ -29,3 +29,7 @@ reload() {
   fi
   $0 start
 }
+
+restart() {
+run_func reload
+}
