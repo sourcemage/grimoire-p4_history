@@ -1,16 +1,17 @@
 	   SPELL=ooo-build
+     OOO_VERSION=OOO_1_1_2
 if [ "$CVS" == "y" ]; then
          VERSION=cvs
   FORCE_DOWNLOAD=1
-   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:ooo-build
-	  MD5[0]='IGNORE'
-else
-         VERSION=1.3.5.1
-   SOURCE_URL[0]=http://ooo.ximian.com/packages/${OOO_VERSION}/${SOURCE}
-	  MD5[0]='470759ce819973aebe3cf53c1616167c'
-fi
-     OOO_VERSION=OOO_1_1_2
 	  SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:ooo-build
+          MD5[0]='IGNORE'
+else
+         VERSION=1.3.5.3
+	  SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://ooo.ximian.com/packages/${OOO_VERSION}/${SOURCE}
+          MD5[0]='470759ce819973aebe3cf53c1616167c'
+fi
          SOURCE2=${OOO_VERSION}.tar.bz2
          SOURCE3=ooo-icons-OOO_1_1-10.tar.gz
          SOURCE4=ooo-scaled-icons.tar.gz
