@@ -1,7 +1,3 @@
-(
-aclocal &&
-automake --foreign --add-missing &&
-autoconf &&
- default_build
+patch  -p0  <  ${SCRIPT_DIRECTORY}/MessengerThread.cpp.patch  &&
+default_build
 
-) > $C_FIFO 2>&1
