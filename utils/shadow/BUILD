@@ -1,4 +1,7 @@
 (
+  # gcc 3.4 fix
+  sedit  "s:extern char://extern char:"  libmisc/xmalloc.c
+
 #  Every new version of shadow arrives with bugs.  :(
   sedit  "s/-lpam_misc/-lpam_misc -lpam/"  configure
   sedit  "s/ln -s/ln -sf/g"  configure
