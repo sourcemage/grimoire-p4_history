@@ -4,4 +4,3 @@ plugins_src/accel/Makefile             &&
 export ESDL_PATH=/usr/lib/esdl         &&
 WINGS3D_PATH=/usr/lib/wings            &&
 make
-
