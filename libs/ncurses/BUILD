@@ -1,2 +1,2 @@
-  OPTS="--with-normal --with-shared ${OPTS}" &&
-  default_build
+OPTS="$OPTS --with-shared --libdir=${INSTALL_ROOT}/lib"
+default_build
