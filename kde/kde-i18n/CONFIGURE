@@ -29,7 +29,7 @@ get_kdelanguages()  {
           echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CFG
           echo SOURCE${i}_URL[0]=\$SITE/\$SOURCE$i >> $CFG
         fi
-        echo MD5[$i]=ignore >>$CFG
+        echo MD5[$i]=IGNORE >>$CFG
         i=$[$i+1]
       done
     else
@@ -38,7 +38,7 @@ get_kdelanguages()  {
     fi
 else
     echo use existing config  
-    sedit "s/3\.[0-9]\.[0-9][0-9][0-9]\?/$VERSION/g" $CFG
+    sedit "s/3\.[0-9]\.[0-9]\?/$VERSION/g" $CFG
   fi
 }
 get_kdelanguages
