@@ -1,0 +1,4 @@
+  XFREE_DIR=${INSTALL_ROOT}/usr/include/GL/xfree &&
+  GL_DIR=${INSTALL_ROOT}/usr/include/GL/ &&	 
+message "${MESSAGE_COLOR}REINSTALLING XFREE86 HEADERS ${SPELL_COLOR}" 
+mv -v ${XFREE_DIR}/* ${GL_DIR} &&  rmdir  ${XFREE_DIR} 
