@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/04 11:46:54 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/06/11 02:32:21 sergeyli Exp $
 (
 
 	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"
@@ -8,25 +8,17 @@
 	message "${MESSAGE_COLOR}Checking if mod_dav has been built for ${SPELL_COLOR}apache2${DEFAULT_COLOR}"
 	gaze compile apache2 | egrep "/libtool .* mod_dav" > /dev/null 2>&1 &&
 
-#	We don't need Apache stuff here, but "their" neon has to stay
-	rm -fr apr/              &&
-	rm -fr apr-util/         &&
-#	rm -fr neon/             &&
+#	Build static client to bootstrap to repository
+	./configure                  \
+		--build=$BUILD           \
+		--prefix=/usr            \
+		--sysconfdir=/etc        \
+		--localstatedir=/var     \
+		--disable-shared         \
+		--enable-maintainer-mode &&
+	make                         &&
 
-#	Build client to bootstrap to source
-	CFLAGS_SAVE=$CFLAGS
-	CFLAGS="$CFLAGS -I/usr/include/libxml2/libxml"
-	./configure              \
-		--build=$BUILD       \
-		--prefix=/usr        \
-		--sysconfdir=/etc    \
-		--localstatedir=/var \
-		--disable-shared     \
-		$OPTS                &&
-	make                     &&
-	CFLAGS=$CFLAGS_SAVE
-
-#	Download latest source
+#	Download HEAD revision
 	./subversion/clients/cmdline/svn checkout           \
 		http://svn.collab.net:80/repos/svn/trunk -d svn &&
 
@@ -38,19 +30,17 @@
 	cd svn                   &&
 
 #	Change required neon version to whatever we have
-	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
-		./build/buildcheck.sh                                     &&
+#	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
+#		./build/buildcheck.sh                                     &&
 
 #	Build from checked-out source
+#	We no longer have APR, APR-UTIL or neon in this folder, so we use what's on the system
 	sh ./autogen.sh          &&
 	./configure              \
 		--build=$BUILD       \
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
-		--with-apr=/usr      \
-		--with-apr-util=/usr \
-		--with-apxs=apxs     \
 		$OPTS                &&
 	make                     &&
 
