@@ -1,4 +1,3 @@
-local  FIREFOX_HOME  MOZ_PHOENIX  MOZ_INTERNAL_LIBART_LGPL  &&
 FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox                &&
 export  MOZ_PHOENIX=1                                       &&
 
