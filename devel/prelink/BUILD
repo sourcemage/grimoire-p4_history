@@ -11,7 +11,11 @@
   patch -p0 < $SPELL_DIRECTORY/src-Makefile.patch &&
   make                                       &&
   prepare_install                            &&
-  make    install
+  OLD_LD_PRELOAD="$LD_PRELOAD"               &&
+  unset LD_PRELOAD                           &&
+  make    check                              &&
+  LD_PRELOAD="$OLD_LD_PRELOAD"               &&
+  make    install                            
 
 ) > $C_FIFO 2>&1
 
