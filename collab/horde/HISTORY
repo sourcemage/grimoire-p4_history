@@ -1,73 +1,64 @@
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * DEPENDS: Changed requires to depends
+    * HISTORY: Formatted to Guru Handbook
+
 2003-10-27 Sergey Lipnevich <sergey@sourcemage.org>
 	* PREPARE: fix SUFFIX assignment in spell config file when CVS is used for source.
 	* BUILD: remove CVS working directories.
 
-2003-10-18  Ladislav Hagara <hgr@vabo.cz>
+2003-10-18 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: mail-transport-agent -> MAIL-TRANSPORT-AGENT
 
-2003-09-19  Eric Sandall <eric@sandall.us>
+2003-09-19 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Changed php to PHP for requires/provides  (Bug #4278)
 
-2003-09-10  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-09-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 2.2.4.
 
-2003-07-29  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-29 Sergey Lipnevich <sergey@sourcemage.org>
 	* BUILD: clean up.
 	* horde-config.patch: update config patch to apply cleanly to 2.2.3.
 	* DEPENDS: add PEAR dependencies.
 
-2003-04-25  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-04-25  Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 2.2.3.
 
-2003-04-07  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-04-07 Sergey Lipnevich <sergey@sourcemage.org>
+	* Now that spells summon from CVS repositories are updated
+	instead of being static, we don't need a date in the version.
 
-		Now that spells summon from CVS repositories are updated
-		instead of being static, we don't need a date in the version.
+2003-03-11 Eric Sandall <eric@sandall.us>
+	* BUILD: Fixed to look in correct location for patch
 
-2003-03-11  Eric Sandall <eric@sandall.us>
+2003-02-17 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.2.1.
+	* Added removal of config/ directory per Eric Sandall's suggestion (thanks!).
+	* Added a patch for config/ relocation to work.
 
-		Fixed BUILD to look in correct location for patch
+2003-01-18 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.2.
 
-2003-02-17  Sergey Lipnevich  <sergeyli@pisem.net>
+2003-01-08 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Changed the URL according to new FTP site layout.
+	Upgraded to 2.2 RC1.
+	Improved the "take from CVS" code.
+	* BUILD: Made /etc/horde the location of configuration files.
 
-		Upgraded to 2.2.1.
-
-		Added removal of config/ directory per Eric Sandall's suggestion (thanks!).
-
-		Added a patch for config/ relocation to work.
-
-2003-01-18  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgraded to 2.2.
-
-2003-01-08  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Changed the URL according to new FTP site layout.
-
-		Upgraded to 2.2 RC1.
-
-Improved the "take from CVS" code.
-
-		Made /etc/horde the location of configuration files.
-
-2002-11-14  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Added ability do install the latest version of Horde from their CVS
-		repository.
+2002-11-14 Sergey Lipnevich <sergeyli@pisem.net>
+	* Added ability do install the latest version of Horde from their CVS
+	repository.
 
 2002-07-29 Sergey Lipnevich <sergeyli@pisem.net>
-
-		Chaged copying command to not force files into destination directory.
+	* Changed copying command to not force files into destination directory.
 
 2002-05-24 Sergey Lipnevich <sergeyli@pisem.net>
-
-		Updated for 2.1RC3, removed patching of configuration for LDAP but left
-		patching slapd.conf. Now comes with only one schema file, so extra info
-		has been removed from gawk script.
+	* Updated for 2.1RC3, removed patching of configuration for LDAP but left
+	patching slapd.conf. Now comes with only one schema file, so extra info
+	has been removed from gawk script.
 
 2002-04-28 Sergey A. Lipnevich <sergeyli@pisem.net>
+	* Spell created. Preferred method of authentication and preference
+	serialization is using LDAP, hence slapd.conf gets updated when
+	necessary. Depends on the latest php as described in DETAILS,
+	in particular on --with-imap and --with-ldap.
 
-		Spell created. Preferred method of authentication and preference
-		serialization is using LDAP, hence slapd.conf gets updated when
-		necessary. Depends on the latest php as described in DETAILS,
-		in particular on --with-imap and --with-ldap.

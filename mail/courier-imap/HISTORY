@@ -1,120 +1,97 @@
-2003-09-21  Jason Flatt <jason@flattfamily.com>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Upper-case provides
+    * HISTORY: Formatted to Guru Handbook
 
-		Version update to 2.1.2.
-		Modify various files for simpleinit-msb.
-		Remove files and code for automatically starting on completion of cast.
-		Updated dependencies and authentication queries.
+2003-09-21 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version update to 2.1.2.
+	* init.d/*: Modify various files for simpleinit-msb.
+	* Remove files and code for automatically starting on completion of cast.
+	Updated dependencies and authentication queries.
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	(doesn't work the way it is documented)
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
-
-		Update TRIGGERS for Linux-PAM
-
-2003-05-14  M.L. <mlubrano@sourcemage.org>
+2003-05-14 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.7.2).
  
-		Version++ (1.7.2).
+2003-04-08 M.L. <mlubrano@sourcemage.org>
+	Added $OPTS in BUILD.
+
+2003-03-17 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.7.1).
  
-2003-04-08  M.L. <mlubrano@sourcemage.org>
+2003-03-11 M.L. <mlubrano@sourcemage.org>
+	* DEPENDS: Fixed bug #2766 (added expect depends) thanks to   
+	eric@sandall.us (Eric Sandall)
 
-                Added $OPTS in BUILD.
-
-2003-03-17  M.L. <mlubrano@sourcemage.org>
+2003-02-25 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.7.0). Guess it closes 2195 & 2205.
  
-		Version++ (1.7.1).
+2003-01-20 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.6.0).
  
-2003-03-11  M.L. <mlubrano@sourcemage.org>
+2003-01-19 M.L. <mlubrano@sourcemage.org>
+	* Added pam workaround spell features. See bug #2205.
 
-		Fixed bug #2766 (added expect depends) thanks to   
-		eric@sandall.us (Eric Sandall)
+2003-01-15 M.L. <mlubrano@sourcemage.org>
+	* Added configure flag for broken imap clients support.
 
-2003-02-25  M.L. <mlubrano@sourcemage.org>
+2003-01-02 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.6.2).
  
-		Version++ (1.7.0). Guess it closes 2195 & 2205.
+2002-11-12 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.6.1).
  
-2003-01-20  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (1.6.0).
- 
-2003-01-19  M.L. <mlubrano@sourcemage.org>
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-		Added pam workaround spell features. See bug #2205.
+2002-10-26 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.6.0).
 
-2003-01-15  M.L. <mlubrano@sourcemage.org>
+2002-10-13 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed bug #1285 (MD5).
 
-		Added configure flag for broken imap clients support.
+2002-09-10 M.L. <mlubrano@sourcemage.org>
+	* Fixed compile problem (thanks to LKThomas).
 
-2003-01-02  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (1.6.2).
- 
-2002-11-12  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (1.6.1).
- 
-2002-11-05  M.L. <mlubrano@sourcemage.org>
+2002-08-17 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (1.5.3).
 
-                Added MENU_* entries to DETAILS file.
+2002-08-16 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Replaced ftp1.sourceforge.net by $SOURCEFORGE_URL in DETAILS.
 
-2002-10-26  M.L. <mlubrano@sourcemage.org>
+2002-08-15 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
+	Added source url of last ressort (sourcemage mirror).
 
-		Version++ (1.6.0).
+2002-07-17 M.L. <m.l@compaqnet.fr>
+	* PROVIDES: Added
 
-2002-10-13  M.L. <mlubrano@sourcemage.org>
+2002-07-14 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (1.5.1)
 
-	        Fixed bug #1285 (MD5).
+2002-06-11 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added MD5.
 
-2002-09-10  M.L. <mlubrano@sourcemage.org>
+2002-06-10 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added LICENSE.
 
-		Fixed compile problem (thanks to LKThomas).
+2002-06-04 M.L. <m.l@compaqnet.fr>
+	* USEGCC2: Removed
 
-2002-08-17  M.L. <m.l@compaqnet.fr>
+2002-05-10 M.L. <m.l@compaqnet.fr>
+	* CONFLICTS: Modified (because of pine split).
 
-		Version++ (1.5.3).
+2002-05-07 M.L. <m.l@compaqnet.fr>
+	* CONFLICTS: Added
 
-2002-08-16  M.L. <m.l@compaqnet.fr>
+2002-04-13 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version+=2 (1.4.4)
 
-		Replaced ftp1.sourceforge.net by $SOURCEFORGE_URL in DETAILS.
+2002-03-24 M.L. <m.l@compaqnet.fr>
+	* HISTORY: Added
 
-2002-08-15  M.L. <m.l@compaqnet.fr>
-
-	        MD5[x] field format conforming to grimoire-gurus handbook.
-	        Added source url of last ressort (sourcemage mirror).
-
-2002-07-17  M.L. <m.l@compaqnet.fr>
-
-		Added provides file.
-
-2002-07-14  M.L. <m.l@compaqnet.fr>
-
-		Version++ (1.5.1)
-
-2002-06-11  M.L. <m.l@compaqnet.fr>
-
-	        Added MD5.
-
-2002-06-10  M.L. <m.l@compaqnet.fr>
-
-	        Added LICENSE.
-
-2002-06-04  M.L. <m.l@compaqnet.fr>
-
-	        Gcc3 compile and trial run ok.
-
-2002-05-10  M.L. <m.l@compaqnet.fr>
-
-		Modified CONFLICTS file (because of pine split).
-
-2002-05-07  M.L. <m.l@compaqnet.fr>
-
-        	Added CONFLICTS file.
-
-2002-04-13  M.L. <m.l@compaqnet.fr>
-
-		Version+=2 (1.4.4)
-
-2002-03-24  M.L. <m.l@compaqnet.fr>
-	
-		Added HISTORY file.

@@ -1,146 +1,117 @@
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Uppercase provides
+    * HISTORY: Formatted to Guru Handbook
+
 2003-10-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Senses whether the VERSION has stable or alpha signature
-	  and adjusts SOURCE_URL accordingly. Alphas are pretty stable with
-	  this guy, and contain new features. SOURCE_DIRECTORY also senses
-	  difference between alpha and stable tarballs.
+	and adjusts SOURCE_URL accordingly. Alphas are pretty stable with
+	this guy, and contain new features. SOURCE_DIRECTORY also senses
+	difference between alpha and stable tarballs.
 
-2003-06-21  Seth Woolley <seth@tautology.org>
+2003-06-21 Seth Woolley <seth@tautology.org>
+	* DETAILS: Modified DETAILS to fix md5 for SOURCE.
 
-		Modified DETAILS to fix md5 for SOURCE.
+2003-06-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.00.3  (Bug #3559)
 
-2003-06-18  Eric Sandall <eric@sandall.us>
+2003-03-03 Eric Sandall <eric@sandall.us>
+	* DETAILS: Reverted to stable version: 2.0
 
-        Updated to 2.00.3  (Bug #3559)
+2003-02-17 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.01a03
 
-2003-03-03  Eric Sandall <eric@sandall.us>
+2003-02-03 Eric Sandall <eric@sandall.us>
+	* Fixed Bug #2415 (cdrtools mess)
 
-		Reverted to stable version: 2.0
+2003-01-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.01a02 (and they fixed the untar dir, a little)
 
-2003-02-17  Eric Sandall <eric@sandall.us>
+2003-01-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v2.01a01
 
-        Updated to 2.01a03
+2003-01-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v2.0
 
-2003-02-03  Eric Sandall <eric@sandall.us>
+2002-12-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Changed SOURCE_URL and SOURCE extension,
+	thanks to Adam Clark.
 
-        Fixed Bug #2415 (cdrtools mess)
+2002-11-25 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a40
 
-2003-01-29  Eric Sandall <eric@sandall.us>
+2002-10-28 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a39
 
-		Updated to 2.01a02 (and they fixed the untar dir, a little)
+2002-10-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a38
 
-2003-01-21  Eric Sandall <eric@sandall.us>
+2002-10-14 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a37
 
-		Updated to v2.01a01
+2002-10-07 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a36
 
-2003-01-05  Eric Sandall <eric@sandall.us>
+2002-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a35
+	Changed SOURCE to use .bz2 instead of .gz
 
-		Updated to v2.0
+2002-09-23 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a34
 
-2002-12-18  Eric Sandall <eric@sandall.us>
+2002-09-14 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a33
 
-		Changed SOURCE_URL and SOURCE extension,
-		thanks to Adam Clark.
+2002-09-02 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a32
 
-2002-11-25  Eric Sandall <eric@sandall.us>
+2002-08-27 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v1.11a31
 
-		Updated to v1.11a40
+2002-08-20 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated VERSION to 1.11a30
 
-2002-10-28  Eric Sandall <eric@sandall.us>
+2002-08-19 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated VERSION to 1.11a29
 
-		Updated to v1.11a39
+2002-07-30 Eric Sandall <sandalle@hellhound.homeip.net>
+	* DETAILS: Updated VERSION to 1.11a28
 
-2002-10-21  Eric Sandall <eric@sandall.us>
+2002-07-22 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Updated VERSION to 1.11a27
 
-		Updated to v1.11a38
+2002-07-10 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Updated VERSION to 1.11a25
 
-2002-10-14  Eric Sandall <eric@sandall.us>
+2002-06-14 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added MD5 entry to DETAILS
 
-		Updated to v1.11a37
+2002-06-03 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Upped VERSION to 1.11a24
 
-2002-10-07  Eric Sandall <eric@sandall.us>
+2002-05-29 Eric Sandall <sandalle@yahoo.com>
+	* USEGCC2: Removed
 
-		Updated to v1.11a36
+2002-05-15 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Now using v1.11a23, as it _is_ stable
 
-2002-10-01  Eric Sandall <eric@sandall.us>
+2002-05-14 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added SOURCE_DIRECTORY line for VERSION 1.11, thanks to day
 
-		Updated to v1.11a35
-		Changed SOURCE to use .bz2 instead of .gz
+2002-04-05 Jean-Michel Smith
+	* PROVIDES: Added 'provides' which was erroneously excluded, thanks "Gabriel Devenyi" 
+	<ace118@hotmail.com> for identifying the problem.
 
-2002-09-23  Eric Sandall <eric@sandall.us>
+2002-03-31 Jean-Michel Smith <jean@kcco.com>
+	* Changed spell name to cdrutils to facilitate coexistence with dvdrtools
+	(both provide 'cdrtools') without requiring changes to those spells which
+	depend upon cdrtools.
+	Added 'provides' cd-burn-utility
 
-		Updated to v1.11a34
+2002-03-30 Jean-Michel Smith <jean@kcco.com>
+	* DEPENDS: Removed zisofs dependency per request, as it had broken the entire
+	cdrtools spell.  This will also facilitate adding dvdrtools to the
+	grimoire.
 
-2002-09-14  Eric Sandall <eric@sandall.us>
+2002-03-17 Jean-Michel Smith <jean@kcco.com>
+	* DETAILS: Added LICENSE[0] information
 
-		Updated to v1.11a33
-
-2002-09-02  Eric Sandall <eric@sandall.us>
-
-		Updated to v1.11a32
-
-2002-08-27  Eric Sandall <eric@sandall.us>
-
-		Updated to v1.11a31
-
-2002-08-20  Eric Sandall <eric@sandall.us>
-
-		Updated VERSION to 1.11a30
-
-2002-08-19  Eric Sandall <eric@sandall.us>
-
-		Updated VERSION to 1.11a29
-
-2002-07-30  Eric Sandall <sandalle@hellhound.homeip.net>
-
-		Updated VERSION to 1.11a28
-
-2002-07-22  Eric Sandall <sandalle@yahoo.com>
-
-		Updated VERSION to 1.11a27
-
-2002-07-10  Eric Sandall <sandalle@yahoo.com>
-
-		Updated VERSION to 1.11a25
-
-2002-06-14  Eric Sandall <sandalle@yahoo.com>
-
-		Added MD5 entry to DETAILS
-
-2002-06-03  Eric Sandall <sandalle@yahoo.com>
-
-		Upped VERSION to 1.11a24
-
-2002-05-29  Eric Sandall <sandalle@yahoo.com>
-
-		Tested and works with gcc3
-
-2002-05-15  Eric Sandall <sandalle@yahoo.com>
-
-		Now using v1.11a23, as it _is_ stable
-
-2002-05-14  Eric Sandall <sandalle@yahoo.com>
-
-		Added SOURCE_DIRECTORY line for VERSION 1.11, thanks to day
-
-2002-04-05  Jean-Michel Smith
-
-		Added 'provides' which was erroneously excluded, thanks "Gabriel Devenyi" 
-		<ace118@hotmail.com> for identifying the problem.
-
-2002-03-31  Jean-Michel Smith <jean@kcco.com>
-
-		Changed spell name to cdrutils to facilitate coexistence with dvdrtools
-		(both provide 'cdrtools') without requiring changes to those spells which
-		depend upon cdrtools.
-
-		Added 'provides' cd-burn-utility
-
-2002-03-30  Jean-Michel Smith <jean@kcco.com>
-
-		Removed zisofs dependency per request, as it had broken the entire
-		cdrtools spell.  This will also facilitate adding dvdrtools to the
-		grimoire.
-
-2002-03-17  Jean-Michel Smith <jean@kcco.com>
-
-		Added LICENSE[0] information to DETAILS file

@@ -1,164 +1,133 @@
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Upper-case provides
+	* HISTORY: Formatted to Guru Handbook
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	(doesn't work the way it is documented)
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-		Update TRIGGERS for Linux-PAM
-
-2003-05-30  M.L. <mlubrano@sourcemage.org>
+2003-05-30 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002d).
  
-		Version++ (2002d).
+2003-04-19 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002c1).
  
-2003-04-19  M.L. <mlubrano@sourcemage.org>
+2003-04-17 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002c).
  
-		Version++ (2002c1).
+2003-02-06 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug 2507 (thanks to tony@smee.org)
+
+2003-01-14 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002b).
  
-2003-04-17  M.L. <mlubrano@sourcemage.org>
+2002-12-22 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002a).
  
-		Version++ (2002c).
+2002-12-16 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Changed VOYEUR=off to on...
+
+2002-12-06 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed bug #1883, added VOYEUR=off in DETAILS.
+	Thanks to eric@sandall.us (Eric Sandall).
+
+2002-11-20 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002).
  
-2003-02-06  M.L. <mlubrano@sourcemage.org>
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-		Fixed bug 2507 (thanks to tony@smee.org)
-
-2003-01-14  M.L. <mlubrano@sourcemage.org>
+2002-10-31 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002.RC10).
  
-		Version++ (2002b).
+2002-10-30 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002.RC9).
  
-2002-12-22  M.L. <mlubrano@sourcemage.org>
+2002-10-17 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002.RC8).
  
-		Version++ (2002a).
- 
-2002-12-16  M.L. <mlubrano@sourcemage.org>
+2002-10-07 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002.RC7) thanks to Eric eric@sandall.us
 
-		Changed VOYEUR=off to on...
+2002-09-15 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (2002.RC6).
 
-2002-12-06  M.L. <mlubrano@sourcemage.org>
+2002-09-10 M.L. <mlubrano@sourcemage.org>
+	* xinetd.d/imap: Fixed files (thanks to LKThomas). 
+	* BUILD: Patched so cast imap now generate an install log.
 
-		Fixed bug #1883, added VOYEUR=off in DETAILS.
-		Thanks to eric@sandall.us (Eric Sandall).
+2002-09-05 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (2002.RC5).
 
-2002-11-20  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (2002).
- 
-2002-11-05  M.L. <mlubrano@sourcemage.org>
+2002-09-02 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (2002.RC4).
+	Thanks to "Thomas Graham" <lkthomas@sml.dyndns.org>
 
-                Added MENU_* entries to DETAILS file.
+2002-08-21 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
-2002-10-31  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (2002.RC10).
- 
-2002-10-30  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (2002.RC9).
- 
-2002-10-17  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (2002.RC8).
- 
-2002-10-07  M.L. <mlubrano@sourcemage.org>
+2002-08-15 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
+	Added source url of last ressort (sourcemage mirror).
 
-		Version++ (2002.RC7) thanks to Eric eric@sandall.us
+2002-07-24 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Changed licence to UW-FF
 
-2002-09-15  M.L. <mlubrano@sourcemage.org>
+2002-07-23 M.L. <m.l@compaqnet.fr>
+	* Fixed bug #492, uses user "root" in xinet.d/ files instead of nobody.
+	Updated to 2002-RC2 (fixes buffer overflow security bug with root account,
+	which is now used by default in xinetd files).
 
-		Version++ (2002.RC6).
+2002-07-17 M.L. <m.l@compaqnet.fr>
+	* PROVIDES: Added
 
-2002-09-10  M.L. <mlubrano@sourcemage.org>
+2002-06-11 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added MD5.
 
-		Fixed xinetd.d/imap files (thanks to LKThomas). 
-		Patched BUILD file so cast imap now generate an install log.
+2002-06-10 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added LICENSE.
+	!!! TO BE TUNED !!!
 
-2002-09-05  M.L. <m.l@compaqnet.fr>
-
-		Version++ (2002.RC5).
-
-2002-09-02  M.L. <m.l@compaqnet.fr>
-
-		Version++ (2002.RC4).
-		Thanks to "Thomas Graham" <lkthomas@sml.dyndns.org>
-
-2002-08-21  M.L. <m.l@compaqnet.fr>
-
-		MD5[0] field updated, built from the ".tar" archive.
-
-2002-08-15  M.L. <m.l@compaqnet.fr>
-
-        	MD5[x] field format conforming to grimoire-gurus handbook.
-	        Added source url of last ressort (sourcemage mirror).
-
-2002-07-24  M.L. <m.l@compaqnet.fr>
-
-		Changed licence to UW-FF
-
-2002-07-23  M.L. <m.l@compaqnet.fr>
-
-		Fixed bug #492, uses user "root" in xinet.d/ files instead of nobody.
-		Updated to 2002-RC2 (fixes buffer overflow security bug with root account,
-		which is now used by default in xinetd files).
-
-2002-07-17  M.L. <m.l@compaqnet.fr>
-
-	        Added provides file.
-
-2002-06-11  M.L. <m.l@compaqnet.fr>
-
-	        Added MD5.
-
-2002-06-10  M.L. <m.l@compaqnet.fr>
-
-	        Added LICENSE.
-		!!! TO BE TUNED !!!
-
-2002-06-04  M.L. <m.l@compaqnet.fr>
-
-	        Gcc3 compile and trial run ok.
+2002-06-04 M.L. <m.l@compaqnet.fr>
+	* USEGCC2: Removed
 
 2002-05-10 M.L. <m.l@compaqnet.fr>
-
-		Modified CONFLICTS file (because of pine split).
+	* CONFLICTS: Modified (because of pine split).
 
 2002-05-08 M.L. <m.l@compaqnet.fr>
-
-		Added courier-imap to CONFLICTS file. Added Sergey as
-		MAINTAINER in DETAILS file. Thanks to him for this spell.
+	* CONFLICTS: Added courier-imap to CONFLICTS file
+	* DETAILS: Added Sergey as MAINTAINER. Thanks to him for this spell.
 	
 2002-05-08 Sergey Lipnevich <sergeyli@pisem.net>
-
-		Make option NOSSL corrected to SSLTYPE, added patch to use ~/.imap/
-		instead of ~, improved the structure of BUILD script by combining four
-		separate 'make' into one parameterized. UPDATED changed because SSL was
-		effectively not enabled.
+	* Make option NOSSL corrected to SSLTYPE, added patch to use ~/.imap/
+	instead of ~, improved the structure of BUILD script by combining four
+	separate 'make' into one parameterized. UPDATED changed because SSL was
+	effectively not enabled.
 
 2002-04-16 sergeyli@pisem.net
-
-		Added copying of mtest binary to /usr/bin, changed all 'cp'
-		to 'cp -f' for binaries. No UPDATED change. Added CONFLICTS
-		to indicate conflict with current pine spell.
+	* Added copying of mtest binary to /usr/bin, changed all 'cp'
+	to 'cp -f' for binaries. No UPDATED change. Added CONFLICTS
+	to indicate conflict with current pine spell.
 
 2002-04-12 Sergey Lipnevich <sergeyli@pisem.net>
+	* Separated IMAPd into a separate spell, imap. Fixed 'services' according to
+	http://www.iana.org/assignments/port-numbers. 'services' and xinet.d/*
+	changed to be non-executable. All services run under 'nobody'. Removed
+	copying of manpages because they don't come with this archive. Removed
+	copying of client binaries: only imapd, ipop2d and ipop3d are copied.
 
-		Separated IMAPd into a separate spell, imap. Fixed 'services' according to
-		http://www.iana.org/assignments/port-numbers. 'services' and xinet.d/*
-		changed to be non-executable. All services run under 'nobody'. Removed
-		copying of manpages because they don't come with this archive. Removed
-		copying of client binaries: only imapd, ipop2d and ipop3d are copied.
+2002-09-15 M.L.
+	* Changelog,HISTORY: mv Changelog HISTORY
 
-2002-09-15  M.L.
+2002-01-15 Kyle Sallee	
+	* fixed pam authentication & imaps/pop3s
 
-	    	    mv Changelog HISTORY
+2001-01-06 Kyle Sallee	
+	* Added support launching imapd from xinetd
 
-2002-01-15  Kyle Sallee	
+2002-01-14 Kyle Sallee	
+	* Added imaps support to spell.
 
-		    fixed pam authentication & imaps/pop3s
-
-2001-01-06  Kyle Sallee	
-
-		    Added support launching imapd from xinetd
-
-2002-01-14  Kyle Sallee	
-
-		    Added imaps support to spell.

@@ -1,102 +1,83 @@
-2003-09-13  Ladislav Hagara <hgr@vabo.cz>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Upper-case provides
+    * HISTORY: Formatted to Guru Handbook
 
-		updated to 4.58
+2003-09-13 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: updated to 4.58
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	(doesn't work the way it is documented)
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
-
-		Update TRIGGERS for Linux-PAM
-
-2003-05-30  M.L. <mlubrano@sourcemage.org>
+2003-05-30 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.56).
  
-		Version++ (4.56).
+2003-04-17 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.55).
  
-2003-04-17  M.L. <mlubrano@sourcemage.org>
+2003-03-02 M.L. <mlubrano@sourcemage.org>
+	* TRIGGERS: Added
+
+2003-01-16 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.53).
  
-		Version++ (4.55).
+2003-01-10 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.52).
  
-2003-03-02  M.L. <mlubrano@sourcemage.org>
+2002-12-14 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.51).
 
-                Added TRIGGER file.
+2002-12-04 M.L. <mlugrano@sourcemage.org>
+	Added TRIGGERS file (on pam: recast).
 
-2003-01-16  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (4.53).
- 
-2003-01-10  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (4.52).
- 
-2002-12-14  M.L. <mlubrano@sourcemage.org>
+2002-12-11 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (4.50).
+	* BUILD: Fixed
 
-                Version++ (4.51).
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-2002-12-04  M.L. <mlugrano@sourcemage.org>
+2002-08-21 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
-                Added TRIGGERS file (on pam: recast).
+2002-08-15 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
+	Added source url of last ressort (sourcemage mirror).
 
-2002-12-11  M.L. <mlubrano@sourcemage.org>
+2002-07-17 M.L. <m.l@compaqnet.fr>
+	* PROVIDES: Added
 
-                Version++ (4.50).
-		Fixed BUILD file.
+2002-06-11 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added MD5.
 
-2002-11-05  M.L. <mlubrano@sourcemage.org>
+2002-06-10 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added LICENSE.
+	!!! TO BE TUNED !!!
 
-                Added MENU_* entries to DETAILS file.
+2002-06-04 M.L. <m.l@compaqnet.fr>
+	* USEGCC2: Removed
 
-2002-08-21  M.L. <m.l@compaqnet.fr>
+2002-05-10 M.L. <m.l@compaqnet.fr>
+	* Split pine into pine-client, pine-pop2, pine-pop3, pine-imap and pico.
 
-		MD5[0] field updated, built from the ".tar" archive.
+2002-05-07 M.L. <m.l@compaqnet.fr>
+	* CONFLICTS: Added with impa/courier-imap conflict.
 
-2002-08-15  M.L. <m.l@compaqnet.fr>
+2002-04-27 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added mirrors.
 
-	        MD5[x] field format conforming to grimoire-gurus handbook.
-	        Added source url of last ressort (sourcemage mirror).
+2002-04-15 M.L.
+	* Changelog,HISTORY: mv Changelog HISTORY
 
-2002-07-17  M.L. <m.l@compaqnet.fr>
+2002-01-15 Kyle Sallee	
+	* fixed pam authentication & imaps/pop3s
 
-	        Added provides file.
+2001-01-06 Kyle Sallee	
+	* Added support launching imapd from xinetd
 
-2002-06-11  M.L. <m.l@compaqnet.fr>
+2002-01-14 Kyle Sallee	
+	* Added imaps support to spell.
 
-	        Added MD5.
-
-2002-06-10  M.L. <m.l@compaqnet.fr>
-
-	        Added LICENSE.
-	        !!! TO BE TUNED !!!
-
-2002-06-04  M.L. <m.l@compaqnet.fr>
-
-	        Gcc3 compile and trial run ok.
-
-2002-05-10  M.L. <m.l@compaqnet.fr>
-
-		Split pine into pine-client, pine-pop2, pine-pop3, pine-imap and pico.
-
-2002-05-07  M.L. <m.l@compaqnet.fr>
-
-		Added CONFLICTS file with impa/courier-imap conflict.
-
-2002-04-27  M.L. <m.l@compaqnet.fr>
-
-		Added mirrors.
-
-2002-04-15  M.L.
-
-		mv Changelog HISTORY
-
-2002-01-15  Kyle Sallee	
-
-		fixed pam authentication & imaps/pop3s
-
-2001-01-06  Kyle Sallee	
-
-		Added support launching imapd from xinetd
-
-2002-01-14  Kyle Sallee	
-
-		Added imaps support to spell.

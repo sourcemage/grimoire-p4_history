@@ -1,39 +1,40 @@
-2003-10-17  Ladislav Hagara <hgr@vabo.cz>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Upper-case provides
+    * HISTORY: Formatted to Guru Handbook
 
-		PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
+2003-10-17 Ladislav Hagara <hgr@vabo.cz>
+	* PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
 
-2003-09-21  Jason Flatt <jason@flattfamily.com>
+2003-09-21 Jason Flatt <jason@flattfamily.com>
+	* Remove files and code for automatically starting on completion of cast.
+	* DEPENDS: Made some minor modifications
 
-		Remove files and code for automatically starting on completion of cast.
-		Made some minor modifications to DEPENDS.
+2003-09-19 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version update to 0.43.2
+	* init.d/*: update init scripts for
+	simpleinit-msb (bug # 4295).
 
-2003-09-19  Jason Flatt <jason@flattfamily.com>
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	(doesn't work the way it is documented)
 
-		Version update to 0.43.2 and update init scripts for
-		simpleinit-msb (bug # 4295).
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-05-30 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 0.42.2
+	* Bug fixes and code clean up.
+	* BUILD: Added ${INSTALL_ROOT}.
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-04-22 Jason Flatt <jason@flattfamily.com>
+	* CONFLICTS: Added
+	* BUILD: Added LDFLAGS line to eliminate the combreloc
+	option during compile.
+	Added code to copy PAM files.
+	* PREPARE: Removed combreloc check and warning
+	* PRE_REMOVE: Added so the Courier tasks get stopped
+	before the scripts get removed.
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
+2003-04-17 Jason Flatt <jason@flattfamily.com>
+	* Created this spell.
 
-		Update TRIGGERS for Linux-PAM
-
-2003-05-30  Jason Flatt <jason@flattfamily.com>
-
-		Version bump to 0.42.2
-		Bug fixes and code clean up.
-		Added ${INSTALL_ROOT}.
-
-2003-04-22  Jason Flatt <jason@flattfamily.com>
-
-		Added CONFLICTS file.
-		Added LDFLAGS line to BUILD file to eliminate the combreloc option during compile.
-		Removed combreloc check and warning from PREPARE.
-		Added code to BUILD to copy PAM files.
-		Added PRE_REMOVE so the Courier tasks get stopped before the scripts get removed.
-
-2003-04-17  Jason Flatt <jason@flattfamily.com>
-
-		Created this spell.

@@ -114,7 +114,7 @@ optional_depends  "flac"                   \
                   "for flac audio decoder" &&
 
 # video codec options
-optional_depends  "libavcodec"             \
+optional_depends  LIBAVCODEC               \
                   "--enable-ffmpeg"        \
                   "--disable-ffmpeg"       \
                   "for lots of video codecs"  &&
