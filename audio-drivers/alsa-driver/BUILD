@@ -62,7 +62,7 @@ fi
     sedit  "s: install-scripts : :"    Makefile  &&
     sedit  "s:root.root:root.audio:"   snddevices &&
 
-	patch -p1 < $SCRIPT_DIRECTORY/alsa.patch &&
+#	patch -p1 < $SCRIPT_DIRECTORY/alsa.patch &&
 
     
     ./configure  --prefix=/usr         \
