@@ -1,0 +1,8 @@
+if  [  "$SOURCE2"  !=  ""  ];
+then
+  default_pre_build          &&
+  cd      $SOURCE_DIRECTORY  &&
+  unpack  $SOURCE2
+else
+  default_pre_build
+fi
