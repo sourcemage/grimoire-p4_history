@@ -23,8 +23,6 @@
   
   # temporary work around a configure bug for faad
   touch config.h  &&
-  sedit "s/head -/head -n /g" configure &&
-  sedit "s/tail -/tail -n /g" configure &&
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
                $OPTS          &&
