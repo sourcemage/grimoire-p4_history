@@ -1,5 +1,1 @@
-(
-  OPTS="--disable-debug --enable-final ${OPTS}" &&
-  default_build
-
-) > $C_FIFO 2>&1
+source  $SCRIPT_DIRECTORY/../KDE_BUILD

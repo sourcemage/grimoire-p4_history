@@ -1,1 +1,6 @@
-source $SCRIPT_DIRECTORY/../KDE_CONFIGURE
+source $SCRIPT_DIRECTORY/../KDE_CONFIGURE  &&
+
+config_query_option  KDEPIM_EXCHANGE                                     \
+                     "Enable Microsoft Exchange 2000 in korganizer?"  y  \
+                     "--enable-exchange"                                 \
+                     "--disable-exchange"
