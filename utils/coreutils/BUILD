@@ -1,6 +1,7 @@
 (
 ### patch for ls memorey bug
-  patch -p1 < $SCRIPT_DIRECTORY/coreutils-ls-bug.patch &&
+  patch -p1 < $SCRIPT_DIRECTORY/coreutils-ls-bug.patch         &&
+  patch -p1 < $SCRIPT_DIRECTORY/coreutils-cp-mv-oMFS-bug.patch &&
   ./configure                                  \
      --build=$BUILD                            \
      --bindir=${INSTALL_ROOT}/bin              \
