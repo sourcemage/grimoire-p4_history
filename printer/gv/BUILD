@@ -8,9 +8,9 @@
 
   patch  -p1  <  $SCRIPT_DIRECTORY/asa-0000.gv-3.5.8.patch  &&
   xmkmf                                                     &&
-  cd source                                                 &&
-  inc_2lit                                                  &&
-  cd -                                                      &&  
+  cd  source                                                &&
+  ./inc_2lit                                                &&
+  cd  -                                                     &&
   make  Makefiles                                           &&
   make                                                      &&
   prepare_install                                           &&
