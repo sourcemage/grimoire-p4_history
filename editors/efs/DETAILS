@@ -1,13 +1,14 @@
            SPELL=efs
-         VERSION=1.29
-          SOURCE=$SPELL-$VERSION-pkg.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://ftp.xemacs.org/packages/$SOURCE
-          MD5[0]=ca74f7fc8a40302f489438eea39ad63a
+       BUILD_API=2
+         VERSION=1.32
+          SOURCE=${SPELL}-${VERSION}-pkg.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://ftp.xemacs.org/packages/${SOURCE}
+          MD5[0]=49ff74ba4ee0ad424556013a413e4f8b
         WEB_SITE=http://www.xemacs.org/
       LICENSE[0]=GPL
          ENTERED=20011112
-         UPDATED=20020413
+         UPDATED=20040617
            SHORT="efs is a system for transparent ftp between remote VMS, CMS, MTS, MVS, Twenex, Explorer"
 cat << EOF
 EFS is a system for transparent file-transfer between remote VMS,
