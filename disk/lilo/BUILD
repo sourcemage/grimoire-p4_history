@@ -1,12 +1,12 @@
 (
-  if  grep  UTS_RELEASE /usr/include/linux/version.h | grep -q \"2.6; then
+  if  grep  UTS_RELEASE $INSTALL_ROOT/usr/include/linux/version.h | grep -q \"2.6; then
     patch -p0 < $SCRIPT_DIRECTORY/linux-2.6.patch
   fi  &&
-  if /lib/libc.so.6 | grep -q NPTL; then
+  if $INSTALL_ROOT/lib/libc.so.6 | grep -q NPTL; then
   patch -p1 < $SCRIPT_DIRECTORY/headers.patch
   fi                                           &&
-  make  ROOT=                                  &&
+  make  ROOT=$INSTALL_ROOT                                  &&
   prepare_install                              &&
-  make  ROOT= install                                              
+  make  ROOT=$INSTALL_ROOT install                                              
 
 ) > $C_FIFO 2>&1 
