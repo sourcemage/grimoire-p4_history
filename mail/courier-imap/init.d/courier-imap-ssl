@@ -20,8 +20,8 @@ TLS_CACHEFILE=""
 case $1 in
 start)
 	LIBAUTHMODULES=""
-	for f in `echo $AUTHMODULES`; do
-		LIBAUTHMODULES="$LIBAUTHMODULES /usr/libexec/courier-imap/authlib/$f"
+	for f in `builtin echo $AUTHMODULES`; do
+		LIBAUTHMODULES="$LIBAUTHMODULES ${libexecdir}/authlib/$f"
 	done
 
 	if test -x ${libexecdir}/authlib/authdaemond; then
@@ -37,13 +37,13 @@ start)
 			prefix=/usr ;
 			exec_prefix=/usr ;
 			bindir=${exec_prefix}/bin ;
-			libexecdir=/usr/libexec/courier-imap ;
+			libexecdir=${libexecdir} ;
 			. /etc/courier-imap/imapd ; \
 			. /etc/courier-imap/imapd-ssl ; \
 			IMAP_TLS=1; export IMAP_TLS; \
 
-			/usr/libexec/courier-imap/couriertcpd -address=$SSLADDRESS \
-			-stderrlogger=/usr/libexec/courier-imap/courierlogger \
+			${libexecdir}/couriertcpd -address=$SSLADDRESS \
+			-stderrlogger=${libexecdir}/courierlogger \
 			-stderrloggername=imapd-ssl \
 			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
 			-pid=$SSLPIDFILE $TCPDOPTS \
@@ -52,7 +52,7 @@ start)
 			${exec_prefix}/bin/imapd Maildir"
 	;;
 stop)
-	/usr/libexec/courier-imap/couriertcpd -pid=$SSLPIDFILE -stop
+	${libexecdir}/couriertcpd -pid=$SSLPIDFILE -stop
 	if test -x ${libexecdir}/authlib/authdaemond; then
 		${libexecdir}/authlib/authdaemond stop
 	fi
