@@ -1,6 +1,6 @@
 if httpd -v | grep -q "Apache/2\."; then
   MOD_PYTHON_BRANCH=3
-elseif httpd -v | grep -q "Apache/1\."; then
+elif httpd -v | grep -q "Apache/1\."; then
   MOD_PYTHON_BRANCH=2
 else
   message "${PROBLEM_COLOR}Could not determine Apache version!${DEFAULT_COLOR}"

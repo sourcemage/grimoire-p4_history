@@ -1,13 +1,3 @@
-if  !  grep  -q  "MODSSL_BOOT="  $SPELL_CONFIG;  then
-
-  if    query  "Invoke apache-modssl during boot?" y
-  then  echo   "MODSSL_BOOT=y"  >>  $SPELL_CONFIG
-  else  echo   "MODSSL_BOOT=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-
-
 if  grep  -q  "CERTIFICATE="  $SPELL_CONFIG
 then  CERTIFICATE="n"
 else  CERTIFICATE="y"

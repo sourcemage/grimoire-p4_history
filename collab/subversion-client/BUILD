@@ -14,9 +14,9 @@ function make_if_swig() {
 
   ./configure \
     --build=$BUILD \
-    --prefix=$INSTALL_ROOT/usr \
-    --sysconfdir=$INSTALL_ROOT/etc \
-    --localstatedir=$INSTALL_ROOT/var \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
     --disable-debug \
     --disable-mod-activation \
     --disable-static \

@@ -1,0 +1,18 @@
+--- Makefile.old	2003-07-10 14:44:32.000000000 -0700
++++ Makefile	2003-07-10 14:46:00.000000000 -0700
+@@ -52,7 +52,6 @@
+ 
+ $(RELEASE_DIR).tar.gz: clean
+ 	@chmod +x sbin/hotplug
+-	@chmod +x etc/rc.d/init.d/hotplug
+ 	@chmod +x etc/hotplug/*.agent etc/hotplug/*.rc
+ 	@-rm -rf $(RELEASE_DIR)
+ 	@mkdir $(RELEASE_DIR)
+@@ -91,7 +90,6 @@
+ 	for F in etc/hotplug/{blacklist,usb.{user,hand,dist}map} ; do \
+ 	    ${INSTALL_DATA} $$F $(etcdir)/hotplug ; \
+ 	    done
+-	${INSTALL_SCRIPT} -D etc/rc.d/init.d/hotplug $(etcdir)/init.d/hotplug
+ 	$(INSTALL_DATA) -D hotplug.8  $(mandir)/man8/hotplug.8
+ 	$(INSTALL) -d $(prefix)/var/log/hotplug $(prefix)/var/run
+ 	$(INSTALL) -d -m 700 $(prefix)/var/run/usb

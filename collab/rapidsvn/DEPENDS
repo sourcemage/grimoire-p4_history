@@ -1,2 +1,5 @@
 requires subversion-client &&
-depends wxGTK
+
+depends apr '--with-apr=/usr' &&
+depends apr-util '--with-apr-util=/usr' &&
+depends wxGTK "--with-wx-config=$(which wx-config)"

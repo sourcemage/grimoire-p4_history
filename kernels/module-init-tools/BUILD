@@ -1,7 +1,9 @@
 (
 
   ./configure  --prefix=/                      &&
-  #make moveold                                 &&
+  if  [[ ! -f /sbin/modprobe.old ]]; then
+    make moveold # Only do this once!
+  fi
   make                                         &&
   prepare_install                              &&
   make install                                 &&

@@ -8,7 +8,14 @@ case  $CERTIFICATE  in
                  --localstatedir=/var           \
                  --with-pem-dir=/etc/ssl/certs  \
                  $OPTS                          &&
-    make  cert                                  &&
+    make  cert  <<EOF                           &&
+$COUNTRY_NAME
+$PROVINCE_NAME
+$LOCALITY_NAME
+$ORG_NAME
+$ORG_UNIT_NAME
+$COMMON_NAME
+EOF
     (  make  all                                &&
        prepare_install                          &&
        make    install

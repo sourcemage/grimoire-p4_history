@@ -15,11 +15,13 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   if      query  "User-based access control?"  n
     then  echo   'OPTS="$OPTS  --enable-auth"'   >>  $SPELL_CONFIG
       if      query  "Anonymous user access?"  y
-        then  echo   'OPTS="$OPTS  --enable-auth-anon"'   >>  $SPELL_CONFIG
+        then  echo   'OPTS="$OPTS  --enable-auth-anon"'     >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-auth-anon"'    >>  $SPELL_CONFIG
       fi
 
       if      query  "RFC2617 Digest authentication?"  n
         then  echo   'OPTS="$OPTS  --enable-auth-digest"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-auth-digest"'  >>  $SPELL_CONFIG
       fi
   else    echo   'OPTS="$OPTS  --disable-auth"'         >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-auth-anon"'    >>  $SPELL_CONFIG
@@ -65,31 +67,37 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
     then  echo   'OPTS="$OPTS  --enable-example"'   >>  $SPELL_CONFIG
       if      query  "Example uppercase conversion filter?"  n
         then  echo   'OPTS="$OPTS  --enable-case-filter"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-case-filter"'  >>  $SPELL_CONFIG
       fi
 
       if      query  "Example uppercase conversion input filter?"  n
         then  echo   'OPTS="$OPTS  --enable-case-filter-in"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-case-filter"'     >>  $SPELL_CONFIG
       fi
 
       if      query  "Example optional hook exporter?"  n
         then  echo   'OPTS="$OPTS  --enable-optional-hook-export"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-optional-hook-export"'  >>  $SPELL_CONFIG
       fi
 
       if      query  "Example optional hook importer?"  n
         then  echo   'OPTS="$OPTS  --enable-optional-hook-import"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-optional-hook-import"'  >>  $SPELL_CONFIG
       fi
 
       if      query  "Example optional function exporter?"  n
         then  echo   'OPTS="$OPTS  --enable-optional-fn-export"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-optional-fn-export"'  >>  $SPELL_CONFIG
       fi
 
       if      query  "Example optional function importer?"  n
         then  echo   'OPTS="$OPTS  --enable-optional-fn-import"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-optional-fn-import"'  >>  $SPELL_CONFIG
       fi
   else    echo   'OPTS="$OPTS  --disable-example"'               >>  $SPELL_CONFIG
-          echo   'OPTS="$OPTS  --disable-optional-hook-export"'  >>  $SPELL_CONFIG
-          echo   'OPTS="$OPTS  --disable-case-filter-in"'        >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-case-filter"'           >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-case-filter-in"'        >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-optional-hook-export"'  >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-optional-hook-import"'  >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-optional-fn-export"'    >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-optional-fn-import"'    >>  $SPELL_CONFIG
@@ -163,22 +171,26 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
   if      query  "Apache proxy?"  n
     then  echo   'OPTS="$OPTS  --enable-proxy"'   >>  $SPELL_CONFIG
+
+    if      query  "Apache proxy CONNECT?"  n
+      then  echo   'OPTS="$OPTS  --enable-proxy-connect"'   >>  $SPELL_CONFIG
+    else    echo   'OPTS="$OPTS  --disable-proxy-connect"'  >>  $SPELL_CONFIG
+    fi
+
+    if      query  "Apache proxy FTP?"  n
+      then  echo   'OPTS="$OPTS  --enable-proxy-ftp"'   >>  $SPELL_CONFIG
+    else    echo   'OPTS="$OPTS  --disable-proxy-ftp"'  >>  $SPELL_CONFIG
+    fi
+
+    if      query  "Apache proxy HTTP?"  n
+      then  echo   'OPTS="$OPTS  --enable-proxy-http"'   >>  $SPELL_CONFIG
+    else    echo   'OPTS="$OPTS  --disable-proxy-http"'  >>  $SPELL_CONFIG
+    fi
+
   else    echo   'OPTS="$OPTS  --disable-proxy"'  >>  $SPELL_CONFIG
-  fi
-
-  if      query  "Apache proxy CONNECT?"  n
-    then  echo   'OPTS="$OPTS  --enable-proxy-connect"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-proxy-connect"'  >>  $SPELL_CONFIG
-  fi
-
-  if      query  "Apache proxy FTP?"  n
-    then  echo   'OPTS="$OPTS  --enable-proxy-ftp"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-proxy-ftp"'  >>  $SPELL_CONFIG
-  fi
-
-  if      query  "Apache proxy HTTP?"  n
-    then  echo   'OPTS="$OPTS  --enable-proxy-http"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-proxy-http"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-proxy-connect"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-proxy-ftp"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-proxy-http"'  >>  $SPELL_CONFIG
   fi
 
   if      query  "Buckets manipulation?"  n
@@ -195,6 +207,7 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
     then  echo   'OPTS="$OPTS  --enable-dav"'   >>  $SPELL_CONFIG
       if      query  "DAV provider for the filesystem?" n
         then  echo   'OPTS="$OPTS  --enable-dav-fs"'   >>  $SPELL_CONFIG
+      else    echo   'OPTS="$OPTS  --disable-dav-fs"'  >>  $SPELL_CONFIG
      fi
   else    echo   'OPTS="$OPTS  --disable-dav"'  >>  $SPELL_CONFIG
           echo   'OPTS="$OPTS  --disable-dav-fs"'  >>  $SPELL_CONFIG
