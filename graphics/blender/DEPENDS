@@ -1,5 +1,33 @@
-depends  SDL  &&
-depends  zlib  &&
-depends  libpng  &&
-depends  jpeg  &&
-depends  openssl
+depends  SDL      &&
+depends  zlib     &&
+depends  Python   &&
+
+optional_depends  "libpng"                \
+                  ""                      \
+                  ""                      \
+                  "for PNG file support"  &&
+
+optional_depends  "jpeg"                   \
+                  ""                       \
+                  ""                       \
+                  "for JPEG file support"  &&
+
+optional_depends  "openssl"                     \
+                  ""                            \
+                  ""                            \
+                  "for SSL encryption support"  &&
+
+optional_depends  "mozilla"                     \
+                  ""                            \
+                  ""                            \
+                  "for Mozilla plugin support"  &&
+
+optional_depends  "libogg"                \
+                  ""                      \
+                  ""                      \
+                  "for OGG file support"  &&
+
+optional_depends  "libvorbis"                \
+                  ""                         \
+                  ""                         \
+                  "for Vorbis file support"
