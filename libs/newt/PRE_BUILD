@@ -4,6 +4,4 @@ mk_source_dir  $SOURCE_DIRECTORY  &&
 tar xzf  $SPELL-$VERSION.tar.gz   &&
 rm  newt.spec                     &&
 rm  $SPELL-$VERSION.tar.gz        &&
-cd $SOURCE_DIRECTORY              &&
-zcat $SCRIPT_DIRECTORY/$SPELL-$VERSION.SGL-patch.gz |
-patch -p 0
+cd $SOURCE_DIRECTORY

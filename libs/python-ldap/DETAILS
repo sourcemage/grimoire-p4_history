@@ -1,13 +1,11 @@
            SPELL=python-ldap
-         VERSION=2.0.0pre05
+         VERSION=2.0.0pre06
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
-          MD5[0]=06aff439068ff85c81e9bf1830792355
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]='2af2a931bb2aec52c178a9f6ba732059'
       LICENSE[0]=UNKNOWN
-        WEB_SITE=http://python-ldap.sf.net/
+        WEB_SITE=http://$SPELL.sf.net/
          ENTERED=20020416
          UPDATED=20020416
            SHORT="Python interface to LDAP"

@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/ncurses-5.2-gcc31.patch
-
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
                --libdir=/lib      \
