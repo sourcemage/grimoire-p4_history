@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.8 2002/10/09 11:50:30 sergeyli Exp $
+# $Id: BUILD,v 1.9 2002/10/24 22:49:28 sergeyli Exp $
 (
 
 	SVN_CLIENT=`which svn 2>/dev/null`
@@ -49,7 +49,7 @@
 		--with-apr=/usr      \
 		--with-apr-util=/usr \
 		--with-apxs=apxs     \
-		--disable-neon-version-check \
+		--disable-mod-activation \
 		$OPTS                &&
 	make                     &&
 
@@ -69,12 +69,13 @@
 #
 # See INSTALL and Apache security manuals for more details
 #
-<Location /svn/repos>
+<Location /svn>
 	#
-	# This will give anyone unrestricted access to the repository
+	# This will give anyone unrestricted access to the repositories
+	# located at /absolute/path/to/repositories/parent/directory
 	#
 	DAV svn
-	SVNPath /absolute/path/to/repository
+	SVNParentPath /absolute/path/to/repositories/parent/directory
 
 	#
 	# If you want limited access, read or write, you add these lines:
