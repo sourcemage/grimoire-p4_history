@@ -1,0 +1,26 @@
+#name:user:group:mode
+
+# misc
+console:root:root:0600
+null:root:root:0666
+zero:root:root:0666
+*random:root:root:0644
+rtc:root:root:0644
+tty:root:root:0666
+
+input/*:root:root:0644
+
+# needed to creates ptys
+ptmx:root:root:0666
+
+# printer
+lp*:root:root:0666
+
+# audio devices
+adsp:root:audio:0660
+dsp*:root:audio:0660
+dmmidi:root:audio:0660
+audio:root:audio:0660
+midi:root:audio:0660
+mixer:root:audio:0660
+snd/*:root:audio:0660
