@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.3 2002/06/04 11:46:54 sergeyli Exp $
 (
 
 	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"
@@ -11,24 +11,11 @@
 #	We don't need Apache stuff here, but "their" neon has to stay
 	rm -fr apr/              &&
 	rm -fr apr-util/         &&
-	rm -fr neon/             &&
-
-#	message "${MESSAGE_COLOR}Fixing neon API rename...${DEFAULT_COLOR}"
-#	for S in `find -name "*.[ch]" -and -type f`; do
-#		sedit "s/struct uri/ne_uri/"          $S
-#		sedit "s/uri_parse\((.*), NULL\);/ne_uri_parse\(\1\);/"     $S
-#		sedit "s/uri_free/ne_uri_free/"       $S
-#		sedit "s/uri_compare/ne_uri_compare/" $S
-#		sedit "s/sock_init/ne_sock_init/"     $S
-#	done &&
-
-	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch
-
-#	Change required neon version to whatever we have
-	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
-		./build/buildcheck.sh                                     &&
+#	rm -fr neon/             &&
 
 #	Build client to bootstrap to source
+	CFLAGS_SAVE=$CFLAGS
+	CFLAGS="$CFLAGS -I/usr/include/libxml2/libxml"
 	./configure              \
 		--build=$BUILD       \
 		--prefix=/usr        \
@@ -37,6 +24,7 @@
 		--disable-shared     \
 		$OPTS                &&
 	make                     &&
+	CFLAGS=$CFLAGS_SAVE
 
 #	Download latest source
 	./subversion/clients/cmdline/svn checkout           \
@@ -49,8 +37,6 @@
 	message "${MESSAGE_COLOR}Starting actual build of the most recent ${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"
 	cd svn                   &&
 
-#	We don't need neon anymore
-
 #	Change required neon version to whatever we have
 	sedit "s@^\\(NEON_\\w*\\)=.*\$@\\1=`installed_version neon`@" \
 		./build/buildcheck.sh                                     &&
@@ -62,6 +48,9 @@
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--with-apr=/usr      \
+		--with-apr-util=/usr \
+		--with-apxs=apxs     \
 		$OPTS                &&
 	make                     &&
 

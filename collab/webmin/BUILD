@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/06/07 03:52:22 sergeyli Exp $
 # Attempt is made here to lock in Webmin configuration,
 # making it more predictable and secure.
 # Port and password are generated using week random
@@ -14,7 +14,8 @@
 	var_dir="/var/log/webmin"
 	perl="`which perl`"
 	host="`hostname`"
-	port=$((RANDOM +2048))
+#	generate port number between 2048 and (16384 - 1)
+	port=$((RANDOM % (16384 - 2048) + 2048))
 	os_type="debian-linux"
 	os_version="3.0"
 	real_os_type="Source Mage GNU/Linux"
@@ -31,8 +32,13 @@
 		os_type os_version real_os_type real_os_version \
 		atboot ssl login password
 
-	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch
-	prepare_install &&
+	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
+
+	prepare_install                &&
+	mkdir -p     /usr/share/webmin &&
+	cp    -dfR . /usr/share/webmin &&
+	cd           /usr/share/webmin &&
+
 	./setup.sh
 
 ) > $C_FIFO 2>&1
