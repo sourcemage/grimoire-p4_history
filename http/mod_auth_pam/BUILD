@@ -3,6 +3,8 @@
   message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
   httpd -v | grep -q "Apache/2\." &&
 
+  patch -p1 < $SCRIPT_DIRECTORY/aaa.patch &&
+
   make &&
   prepare_install &&
   make install
