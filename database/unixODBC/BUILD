@@ -7,6 +7,7 @@
                $OPTS                &&
   make                              &&
   prepare_install                   &&
-  make    install
-
+  make    install		    &&
+# install some extra files
+  cp include/{ini,log,lst}.h ${INSTALL_ROOT}/usr/include
 ) > $C_FIFO 2>&1
