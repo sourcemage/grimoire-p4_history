@@ -1,1 +1,19 @@
 . $GRIMOIRE/libaccount
+
+#---------------------------------------------------------------------
+## @return 0 if glibc was compiled with NPTL
+## @return 1 otherwise
+##
+## Detects if the current glibc includes NPTL support.
+##
+#---------------------------------------------------------------------
+function glibc_is_nptl ()
+{
+  if /lib/libc.so.6 | grep -q NPTL; then
+    return 0
+  fi
+  if /lib/libc.so.6 | grep -q "Native POSIX Threads Library"; then
+    return 0
+  fi
+  return 1
+}
