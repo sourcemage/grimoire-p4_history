@@ -1,5 +1,3 @@
-(
-  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
   case  $ONLY  in
       y|Y)  OPTS="$OPTS --disable-multinet" ;;
@@ -11,7 +9,4 @@
               --infodir=${INSTALL_ROOT}/usr/share/info  \
               $OPTS  &&
   make depend        &&
-  make opt           &&
-  prepare_install    &&
-  make    install
-) > $C_FIFO 2>&1
+  make opt           
