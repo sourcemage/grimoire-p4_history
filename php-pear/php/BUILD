@@ -29,7 +29,6 @@
     --enable-sysvsem                   \
     --enable-sysvshm                   \
     --enable-force-cgi-redirect        \
-    --enable-yp                        \
     --enable-ftp                       \
     --enable-wddx                      \
     --enable-filepro                   \
