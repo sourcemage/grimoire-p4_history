@@ -26,6 +26,14 @@
 #
 ############################################################
 #
+#  HISTORY
+#   2002-08-15:  
+#   Run TeX in batchmode
+#
+#
+#
+############################################################
+#
 #  You may need to customize the following
 #  
 ############################################################
@@ -180,10 +188,10 @@ clean_up()
 
 first_pass() 
 { 
-    header "First pass"     >>  $DEBUG   2>&1
-    tex $FILE               >>  $DEBUG   2>&1
+    header "First pass"                       >>  $DEBUG   2>&1
+    tex --interaction=batchmode $FILE         >>  $DEBUG   2>&1
     pss 
-    musixflx $FILE          >>  $DEBUG   2>&1
+    musixflx $FILE                            >>  $DEBUG   2>&1
 }
 
 pss() 
@@ -204,15 +212,15 @@ pss()
 
 second_pass() 
 { 
-    header "Second pass"        >>  $DEBUG   2>&1
-    tex $FILE                   >>  $DEBUG   2>&1
-    musixflx $FILE              >>  $DEBUG   2>&1
+    header "Second pass"                      >>  $DEBUG   2>&1
+    tex --interaction=batchmode $FILE         >>  $DEBUG   2>&1
+    musixflx $FILE                            >>  $DEBUG   2>&1
 }
 
 third_pass() 
 { 
-    header "Third pass"         >>  $DEBUG   2>&1
-    tex $FILE                   >>  $DEBUG   2>&1
+    header "Third pass"                       >>  $DEBUG   2>&1
+    tex --interaction=batchmode $FILE         >>  $DEBUG   2>&1
 }
 
 display() { 
