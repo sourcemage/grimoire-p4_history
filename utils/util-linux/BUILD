@@ -5,7 +5,7 @@ sedit  "s/\$(OPT)//"                   MCONFIG
 (
 
  ./configure  --build=$BUILD                  \
-              --prefix=/usr                   \
+              --prefix=${INSTALL_ROOT}/usr    \
 	      $OPTS			      &&
   make                                        &&
   if    spell_installed      util-linux-crypto
