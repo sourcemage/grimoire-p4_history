@@ -1,0 +1,124 @@
+#!/bin/sh
+# $1 is the kernel version
+# this is a really simple way to create an initrd
+# if you want to have filesystem modules instead of
+# compiling them directly into the kernel
+# this doesn't deal with RAID LVM IDE/SCSI modules
+# just file system modules
+# modify the count variable to create the proper size
+# (in KB) of the initrd
+
+count=4096
+
+modules="`ls -1 /lib/modules/$1/kernel/fs/*/*.ko`"
+for module in $modules
+do
+	menu="${menu}${module} module Help "
+done
+while true
+do
+	command=$(dialog --stdout --cancel-label "Save and Exit" \
+	--title "Select File System Modules" \
+	--item-help --menu \
+	"File System Modules Available\nFile System Modules Selected: $selected" 0 0 0 $menu )
+	retval="$?"
+	tmp_selected=""
+	found="false"
+	if [[ $retval == "0" ]]
+	then
+		for module in $selected
+		do
+			if [ "$command" != "$module" ]
+			then
+				tmp_selected="${tmp_selected}${module} "
+			else
+				found="true"
+			fi
+			
+		done
+		if [ "$found" == "true" ]
+		then
+			selected=$tmp_selected
+		else
+			selected="${selected}${command} "
+		fi
+	else
+		break
+	fi
+done
+
+modules=""
+for module in $selected
+do
+	modules="${modules}`basename $module` "
+done
+
+rm /boot/initrd-$1
+dd if=/dev/zero of=/boot/initrd-$1 bs=1K count=$count
+mke2fs -F -m 0 -b 1024 /boot/initrd-$1
+
+[ -d /mnt/initrd ] || mkdir /mnt/initrd
+mount -t ext2 -o loop /boot/initrd-$1 /mnt/initrd
+
+# make basic dir structure
+cd /mnt/initrd
+mkdir bin dev etc lib proc sbin var sys usr mnt
+cd var
+mkdir lock log
+cd ../lib
+mkdir -p modules/$1/kernel/drivers/video/console
+cd ../usr
+mkdir sbin
+cd ../mnt
+mkdir initrd
+
+# copy executables
+cd /sbin
+cp -a insmod /mnt/initrd/sbin/
+cd /bin
+cp -a bash sh /mnt/initrd/bin/
+
+# copy libs
+cd /lib
+cp -a ld-* /mnt/initrd/lib
+cp -a libc[-.]* /mnt/initrd/lib
+cp -a libreadline.* /mnt/initrd/lib
+cp -a libhistory.* /mnt/initrd/lib
+cp -a libncurses.* /mnt/initrd/lib
+cp -a libdl* /mnt/initrd/lib
+# don't need these files
+rm /mnt/initrd/lib/*.a
+
+# cp relevent modules
+for module in $selected
+do
+	cp -a $module /mnt/initrd/lib/modules
+done
+
+# cp console null hd's
+cp -a /dev/hd[a-z]* /mnt/initrd/dev/
+cp -a /dev/console /mnt/initrd/dev/
+cp -a /dev/null /mnt/initrd/dev/
+
+# create linuxrc
+(
+cat << EOF
+#!/bin/bash
+
+PATH=/bin:/sbin
+export PATH
+
+modules="$modules"
+
+for module in \$modules
+do
+	# file systems
+	insmod /lib/modules/\$module
+done
+
+EOF
+) > /mnt/initrd/linuxrc
+
+chmod 755 /mnt/initrd/linuxrc
+
+umount /mnt/initrd
