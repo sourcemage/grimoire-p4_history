@@ -12,27 +12,6 @@ if ! grep -q "TERM" $SPELL_CONFIG; then
   fi
 fi
 
-if ! grep -q "SVGA" $SPELL_CONFIG; then
-  if query "Add SVGA (svga console display) support in bochs ?"  y
-    then  echo   "SVGA=--with-svga"     >>  $SPELL_CONFIG
-    else  echo   "SVGA=--without-svga"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "WX" $SPELL_CONFIG; then
-  if query "Add WX (wxGTK display) support in bochs ?"  y
-    then  echo   "WX=--with-wx"          >>  $SPELL_CONFIG
-    else  echo   "WX=--without-wx"       >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "SDL" $SPELL_CONFIG; then
-  if query "Add SDL (SDL display) support in bochs ?"  y
-    then  echo   "SDL=--with-sdl"          >>  $SPELL_CONFIG
-    else  echo   "SDL=--without-sdl"       >>  $SPELL_CONFIG
-  fi
-fi
-
 if ! grep -q "SB16" $SPELL_CONFIG; then
   if query "Add SB16 support in bochs ?"  y
     then  echo   "SB16=--enable-sb16=linux"  >>  $SPELL_CONFIG 
@@ -65,8 +44,7 @@ fi
 
 if ! grep -q "IPS" $SPELL_CONFIG; then
   if query "Set the SHOW IPS debug flag on in bochs (only used for debugging/calibrating IPS on your box) ?"  n
-    then  echo   "IPS=y"        >>  $SPELL_CONFIG
+    then  echo   "IPS=y"       >>  $SPELL_CONFIG
     else  echo   "IPS=n"       >>  $SPELL_CONFIG
   fi
 fi
-

@@ -1,3 +1,15 @@
+2004-02-24 Robert Helgesson <rycee@home.se>
+	* Modifications to address bugs 4459, 5543 & 5752:
+	* DETAILS: Added DOCS field.
+	* DEPENDS: Made the optional depends on wxGTK and SDL nicer. Also
+		added optional depends on svgalib, readline and zlib.
+	* CONFIGURE: Removed the questions about svgalib, readline and zlib.
+	* BUILD: Considerably simplification, use default_build.
+	* BUILD: Enabled --enable-repeat-speedups and
+		--enable-config-interface configure options.
+	* POST_REMOVE, POST_INSTALL: Removed since the font no longer is
+		required.
+
 2004-03-01 Treeve Jelbert <treeve01@pi.be>
         * DETAILS: fix MD5
 
