@@ -27,8 +27,12 @@ fi &&
 if [ "$CVS" == "y" ]; then 
 	# for sidebar patch only works with cvs 
 	if [ "$PATCHBAR" == "y" ]; then 
-		patch -p1 < $SCRIPT_DIRECTORY/patch-1.5.6.jrh.sidebar.13
-	fi &&
+		patch -p1 < $SCRIPT_DIRECTORY/patch-1.5.6.jrh.sidebar.13		
+	fi  &&
+	if [ "$MAILDIR_CACHE" == "y" ]; then
+		patch -p1 < $SCRIPT_DIRECTORY/mutt-cvs-header-cache.25
+		OPTS="$OPTS --enable-hcache"
+	fi  &&
 ./prepare  --build=$BUILD                       \
              --prefix=${INSTALL_ROOT}/usr         \
              --sysconfdir=${INSTALL_ROOT}/etc     \
