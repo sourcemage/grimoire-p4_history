@@ -60,6 +60,14 @@ message  "Building XFree86 takes a very long time."
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi
 
+  # begin: Don't compile xfree86 own freetype2 lib
+  message "${MESSAGE_COLOR} Aplying freetyp2 fix ${DEFAULT_COLOR}"
+  echo "#define HasFreetype2             YES" >> config/cf/site.def
+  echo "#define BuildFreetype2Library     NO" >> config/cf/site.def
+  echo "#define Freetype2Dir            /usr" >> config/cf/site.def
+  # end 
+
+
   make  World                                                    &&
   prepare_install                                                &&
   cd    $SOURCE_DIRECTORY                                        &&
