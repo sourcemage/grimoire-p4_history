@@ -1,17 +1,28 @@
            SPELL=apr-util
-         VERSION=1.0
-             TAG=STRIKER_2_1_0_PRE3
+if [ "$APR_BRANCH" == '1' ]; then
+         VERSION=1.0pre1
+             TAG=HEAD
+          MD5[0]=''
+else
+         VERSION=0.9.5
+             TAG=APU_0_9_BRANCH
+#         MD5[0]=''
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:APACHE_2_0_48
+          MD5[0]=IGNORE
+fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+if [ "$APR_CHECKOUT" == 'y' ]; then
   FORCE_DOWNLOAD=on
-   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr-util:$TAG
-#  SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
           MD5[0]=IGNORE
+fi
+   SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
         WEB_SITE=http://apr.apache.org/
       LICENSE[0]=APACHE
          ENTERED=20030302
-         UPDATED=20030709
-           SHORT='Apache Portable Runtime Utility Library'
+         UPDATED=20031028
+           SHORT='Apache Portable Runtime Utility (APU) Library'
 cat << EOF
 Apache Portable Runtime Utility library provides various services
 on top of APR.

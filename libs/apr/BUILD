@@ -1,7 +1,9 @@
 (
 
   patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
-  ./buildconf &&
+  if ! [ -x configure ]; then
+    ./buildconf
+  fi &&
 
   ./configure \
     --host=$HOST \
@@ -16,7 +18,7 @@
   make &&
   prepare_install &&
   make install &&
-  ln -fns /usr/share/apache2/build/libtool /usr/share/apache2/
+  ln -fns ./build/libtool /usr/share/apache2/libtool
 
 ) >$C_FIFO 2>&1 && (
 

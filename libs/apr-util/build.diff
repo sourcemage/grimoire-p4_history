@@ -23,15 +23,6 @@ diff -purN apr-util-0.9.4/Makefile.in apr-util/Makefile.in
  top_srcdir=@abs_srcdir@
  top_blddir=@abs_builddir@
  
-@@ -62,7 +63,7 @@ install: $(TARGET_LIB)
- 	if [ -n "$(top_blddir)" ]; then \
- 		cp -p $(top_blddir)/include/*.h $(DESTDIR)$(includedir); \
- 	fi;
--	
-+
- 	if [ ! -d $(DESTDIR)$(libdir) ]; then \
- 	    @APR_SOURCE_DIR@/build/mkdir.sh $(DESTDIR)$(libdir); \
- 	fi;
 @@ -71,6 +72,16 @@ install: $(TARGET_LIB)
  	done
  	$(LIBTOOL) --mode=install cp $(TARGET_LIB) $(DESTDIR)$(libdir)

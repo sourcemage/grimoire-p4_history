@@ -12,15 +12,18 @@ function make_if_swig() {
 
   SVN_CLIENT=$(which svn 2>/dev/null)
 
-  message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
-  httpd -v | grep -q 'Apache/2\.'                                   &&
+  # onlcy check for Apache if the modules are needed
+  if echo $OPTS | grep -q 'with-apxs'; then
+    message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
+    httpd -v | grep -q 'Apache/2\.'                                   &&
 
-  message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
-  if ! [ -e /usr/libexec/mod_dav.so ] && ! httpd -l | grep -q 'mod_dav\.c'; then
-    message "${MESSAGE_COLOR}mod_dav.so not found!${DEFAULT_COLOR}" &&
-    message "${MESSAGE_COLOR}This build will fail. Please recompile Apache 2 with mod_dav.so${DEFAULT_COLOR}"
-    message "${MESSAGE_COLOR}support. (shared module support)${DEFAULT_COLOR}"
-    false
+    message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
+    if ! [ -e /usr/libexec/mod_dav.so ] && ! httpd -l | grep -q 'mod_dav\.c'; then
+      message "${MESSAGE_COLOR}mod_dav.so not found!${DEFAULT_COLOR}" &&
+      message "${MESSAGE_COLOR}This build will fail. Please recompile Apache 2 with mod_dav.so${DEFAULT_COLOR}"
+      message "${MESSAGE_COLOR}support. (shared module support)${DEFAULT_COLOR}"
+      false
+    fi
   fi &&
 
   if [ "$SVN_EXPORT_HEAD" == 'y' ]; then
@@ -74,7 +77,6 @@ function make_if_swig() {
     --enable-dso \
     --disable-mod-activation \
     --enable-shared \
-    --with-apxs \
     $OPTS &&
   make &&
   make_if_swig swig-py &&
