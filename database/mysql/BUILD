@@ -11,6 +11,7 @@
                --without-bench                            \
                --enable-assembler                         \
                --enable-thread-safe-client                \
+               --with-named-thread-libs=-lpthread         \
                $OPTS                                      &&
   export  LD_PRELOAD="$LD_PRELOAD_OLD"                    &&
   make  pkglibdir=/usr/lib                                &&
