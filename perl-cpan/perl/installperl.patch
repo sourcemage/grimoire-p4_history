@@ -1,0 +1,21 @@
+diff -Naur perl-5.8.0.ori/installperl perl-5.8.0/installperl
+--- perl-5.8.0.ori/installperl	2002-07-16 20:57:32.000000000 +0200
++++ perl-5.8.0/installperl	2003-09-24 09:19:15.000000000 +0200
+@@ -783,7 +783,7 @@
+ 	    unlink("$installarchlib/$name");
+ 	}
+         $packlist->{"$installlib/$name"} = { type => 'file' };
+-	if (compare($_, "$installlib/$name") || $nonono) {
++	if (true) {
+ 	    unlink("$installlib/$name");
+ 	    mkpath("$installlib/$dir", $verbose, 0777);
+ 	    # HP-UX (at least) needs to maintain execute permissions
+@@ -840,7 +840,7 @@
+     }
+     -f $from || $perlpodbadsymlink || warn "$0: $from not found";
+     $packlist->{$to} = { type => 'file' };
+-    if (compare($from, $to) || $nonono) {
++    if (true) {
+ 	safe_unlink($to);   # In case we don't have write permissions.
+         if ($nonono) {
+             $from = $depth . "/" . $from if $depth;
