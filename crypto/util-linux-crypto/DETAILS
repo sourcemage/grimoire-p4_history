@@ -4,7 +4,7 @@
          SOURCE2=util-linux-$VERSION.patch.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/util-linux-$VERSION
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/util-linux/$SOURCE
-          MD5[0]=0fe107dfc0e8451ce260e9428b299bcb
+          MD5[0]=26882be34346b20abbc6ab60921fc093
    SOURCE_URL[1]=http://www.kernel.org/pub/linux/utils/util-linux/$SOURCE
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
@@ -18,7 +18,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/util-linux-$VERSION
         WEB_SITE=http://www.kernel.org/pub/linux/people/hvr/util-linux-patch-int
          ENTERED=20010924
          UPDATED=20020319
-         LICENSE=GPL
+      LICENSE[0]=GPL
       MAINTAINER=adamsgl@dhbit.ca
            SHORT="util-linux patched with crypto support"
 cat << EOF

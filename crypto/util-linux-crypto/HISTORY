@@ -1,36 +1,37 @@
+2002-10-12  Ladislav Hagara <hgr@vabo.cz>
+
+		Corrected MD5
+		Reformatted HISTORY file according to Grimoire Gurus Handbook
+
 2002-08-21  Adam Clark <adamsgl@dhbit.ca>
 
-	They changed the format of the patch, so I have to change
-	the PRE_BUILD back to using -p1.  Fun fun fun.
+		They changed the format of the patch, so I have to change
+		the PRE_BUILD back to using -p1.  Fun fun fun.
 
 2002-08-19  Adam Clark <adamsgl@dhbit.ca>
 
-	Added MD5, LICENSE fields to DETAILS
-	Added SM backup URLs
+		Added MD5, LICENSE fields to DETAILS
+		Added SM backup URLs
 
 2002-05-09  Ole Tange <sgl-spell-util-linux-crypto@tange.dk>
 
-        REBUILD Fails if util-linux is not installed. Fixed
+		REBUILD Fails if util-linux is not installed. Fixed
 
 2002-04-25  Adam Clark <adamsgl@dhbit.ca>
 
-	Fixed SOURCE_URL[0]
+		Fixed SOURCE_URL[0]
 
 2002-04-22  Adam Clark <adamsgl@dhbit.ca>
 
-	Updated to 2.11o
+		Updated to 2.11o
 
-2002-03-19  Luis M. Lourenco  <aeron@netcabo.pt>
+2002-03-19  Luis M. Lourenco <aeron@netcabo.pt>
 
-        * DETAILS: Changed description to a more clear one. Changed SOURCE_URL2
-        to the util-linux patch for crypto support. Changed website to the 
-        directory of the util-linux patch for crypto. Changed UPDTAED field.
-
-        * BUILD: Removed sedit for ADD_RAW, it wasn't doing anything what it 
-        was trying to change to is the default. 
-
-        * PRE_BUILD: Added patch command for hvr's util-linux crypto patch.
-        
-        * DEPENDS: Removed, doesn't depend on cryptoapi to build.
-
-        * CONFLICTS: Removed. Not needed.
+		DETAILS: Changed description to a more clear one. Changed SOURCE_URL2
+		to the util-linux patch for crypto support. Changed website to the 
+		directory of the util-linux patch for crypto. Changed UPDTAED field.
+		BUILD: Removed sedit for ADD_RAW, it wasn't doing anything what it 
+		was trying to change to is the default. 
+		PRE_BUILD: Added patch command for hvr's util-linux crypto patch.
+		DEPENDS: Removed, doesn't depend on cryptoapi to build.
+		CONFLICTS: Removed. Not needed.
