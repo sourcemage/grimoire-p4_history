@@ -36,29 +36,32 @@ depends  UTIL-LINUX         &&
 depends  wget               &&
 depends  zlib               &&
 
-optional_depends  "xdelta"  ""  ""  "For tar and binary patching"  &&
+optional_depends  sorcery-sound-simpsons                               \
+                  ""                                                   \
+                  ""                                                   \
+                  "to have sorcery signal events with simpson sounds"  &&
 
-optional_depends  "sorcery-sound-simpsons"                     \
-                   ""                                          \
-                   ""                                          \
-                   "to have sorcery signal events with simpson sounds"  &&
-
-optional_depends  "openssh"                                       \
+optional_depends  openssh                                         \
                   ""                                              \
                   ""                                              \
                   "to use cabal multi-box system administration"  &&
 
-optional_depends  "mutt"              \
+optional_depends  mutt                \
                   ""                  \
                   ""                  \
                   "to send messages"  &&
 
-optional_depends  "ccache"                                 \
+optional_depends  ccache                                   \
                   ""                                       \
                   ""                                       \
-                  "to accelerate compilation of upgrades"
+                  "to accelerate compilation of upgrades"  &&
 
-optional_depends  BOOTLOADER  ""  ""  "For a system boot loader"  &&
+optional_depends  BOOTLOADER                  \
+                  ""                          \
+                  ""                          \
+                  "For a system boot loader"  &&
 
-optional_depends "nfs-utils" "" "" "NFS is the network file system , this spell provides client or server software"
-
+optional_depends  nfs-utils                      \
+                  ""                             \
+                  ""                             \
+                  "for the network file system"
