@@ -1,0 +1,10 @@
+for  LOCALE  in  $KDE_I18N_LOCALES;  do
+  
+  SOURCE=$SPELL-$LOCALE-$VERSION.tar.bz2
+  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$LOCALE
+  SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+  SOURCE_URL[1]=ftp://ftp.kde.org/pub/kde/stable/$VERSION/src/$SOURCE
+  
+  default_pre_build
+
+done

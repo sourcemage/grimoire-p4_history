@@ -1,0 +1,48 @@
+add_status()  {
+
+  while  [  -n  "$1"  ];  do
+    echo  "$1"
+    echo  "$2"
+    echo  "off"
+    shift 2
+  done
+
+}
+
+
+make_locales_checklist()  {
+
+  add_status  `cat  $SCRIPT_DIRECTORY/locales`
+
+}
+
+
+select_locales()  {
+
+  BACKTITLE="kde-i18n Configuration"
+      TITLE="Locale Selection"
+       HELP="The default locale is US English, if you want a
+different one you will need to select it."
+
+  dialog  --backtitle  "$BACKTITLE"  \
+          --title      "$TITLE"      \
+          --stdout                   \
+          --separate-output          \
+          --checklist  "$HELP"       \
+          0 0 0                      \
+         `make_locales_checklist`
+
+}
+
+if  query  "Would you like to select locales" n
+then
+  OLD_IFS=$IFS
+  export  IFS="	
+"
+  KDE_I18N_LOCALES=`select_locales`
+  TEMP=`grep  -v  "KDE_I18N_LOCALES="                $SPELL_CONFIG`
+  echo  "$TEMP"                                   >  $SPELL_CONFIG
+  echo  "KDE_I18N_LOCALES=\"$KDE_I18N_LOCALES\""  >> $SPELL_CONFIG
+  export  IFS=$OLD_IFS
+
+fi
