@@ -1,5 +1,7 @@
 (
 
+  unpack $SOURCE_CACHE/$SOURCE2 ${MD5[1]} && patch helpers/ntlm_auth/SMB/libntlmssp.c < $SOURCE_CACHE/$SOURCE2
+
   sedit  "s:\$(localstatedir)/logs/squid\.pid:/var/run/squid\.pid:"  src/Makefile.in &&
 
 # This must be set by CONFIGURE ideally

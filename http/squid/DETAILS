@@ -1,12 +1,15 @@
            SPELL=squid
          VERSION=2.5.STABLE5
           SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=libntlmssp.c.patch
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.squid-cache.org/Versions/v${VERSION%%\.*}/${VERSION%\.*}/$SOURCE
+  SOURCE2_URL[0]=http://www.squid-cache.org/~wessels/patch/$SOURCE2
           MD5[0]=8126fe8c81e0408373a662396de85b39
+          MD5[1]=45b9326299f6bbf139afac761be97bfb
         WEB_SITE=http://www.squid-cache.org/
          ENTERED=20011214
-         UPDATED=20030822
+         UPDATED=2040616
       LICENSE[0]=GPL
            SHORT='Squid is a full-featured Web proxy cache'
 cat << EOF
