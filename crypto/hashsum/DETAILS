@@ -1,0 +1,28 @@
+           SPELL=hashsum
+         VERSION=1.6
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.certainkey.com/resources/downloads/$SOURCE
+          MD5[0]=d72953d2553dfc7cafef084a6d9d409f
+        WEB_SITE=http://www.certainkey.com/resources/hashsum.php
+       BUILD_API=2
+         ENTERED=20050404
+         UPDATED=20050404
+      LICENSE[0]=GPL
+           SHORT="ripemd160sum, sha256sum, sha384sum, and sha512sum"
+cat << EOF
+The shell application "md5sum" is widely used in system and security 
+administration. However, the security of the underlying MD5 algorithm1 
+has been brought into question.
+
+Aware of this, CertainKey has written the following applications to 
+replace the infamous "md5sum" applications:
+
+ripemd160sum
+sha256sum
+sha384sum
+sha512sum
+
+md5sum and sha1sum are also included, but to avoid conflicts with 
+coreutils they are not installed.
+EOF
