@@ -13,6 +13,12 @@
 	* CONFIGURE,DEPENDS,PRE_BUILD: Only use PAM if the user wants, not just
 	  if it's installed
 	* CONFIGURE: Add options for DEBUG and IPv6
+	  Add dialogs for development X drivers and development DRI drivers
+	  Alphabetize OFF_CARD_DRIVERS and OFF_DRI
+	  Added dummy, nsc, sunleo, suncg6, suncg3, suncg14, suntcx, sunbw2,
+	  and sunffb to OFF_CARD_DRIVERS
+	  Removed i830, mach64, s3v, and trident from OFF_DRI
+	  Added i915 to OFF_DRI
 	* BUILD: Redo driver makefiles so that it only uses what we defined
 	  Message should set the color
 	  General cleanup

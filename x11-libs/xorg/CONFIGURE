@@ -37,6 +37,31 @@ select_card_drivers()  {
 
 }
 
+select_devel_card_drivers()  {
+
+  TITLE="Development Graphics Card Driver Selection Menu"
+  HELP="Key:  [X] = on, [ ] = off"
+
+  CHECKLIST="`build_checklist ON   Graphics   $ON_DEVEL_CARD_DRIVERS`
+             `build_checklist OFF  Graphics  $OFF_DEVEL_CARD_DRIVERS`"
+
+  if  DevelCardDrivers=`dialog  --backtitle  "$BACKTITLE"  \
+                                --title      "$TITLE"      \
+                                --stdout                   \
+                                --separate-output          \
+                                --checklist  "$HELP"       \
+                                18 55 10                   \
+                                $CHECKLIST`
+  then
+     ON_DEVEL_CARD_DRIVERS=$DevelCardDrivers
+    OFF_DEVEL_CARD_DRIVERS=$DEVEL_CARD_DRIVERS
+
+    for  ITEM  in  $ON_DEVEL_CARD_DRIVERS;  do
+      OFF_DEVEL_CARD_DRIVERS=`echo  $OFF_DEVEL_CARD_DRIVERS  |  sed  s/$ITEM//`
+    done
+  fi
+
+}
 
 select_dridrivers()  {
 
@@ -60,6 +85,33 @@ Key:  [X] = on, [ ] = off"
 
     for  ITEM  in  $ON_DRI;  do
       OFF_DRI=`echo  $OFF_DRI  |  sed  s/$ITEM//`
+    done
+  fi
+
+}
+
+select_devel_dridrivers()  {
+
+  TITLE="Devel DRI Driver Selection Menu"
+  HELP="Not all XOrg supported graphics cards have DRI.
+Key:  [X] = on, [ ] = off"
+
+    CHECKLIST="`build_checklist  ON   DRI   $ON_DEVEL_DRI`
+               `build_checklist  OFF  DRI  $OFF_DEVEL_DRI`"
+
+  if  DevelDriDrivers=`dialog  --backtitle  "$BACKTITLE"  \
+                               --title      "$TITLE"      \
+                               --stdout                   \
+                               --separate-output          \
+                               --checklist  "$HELP"       \
+                               18 55 10                   \
+                               $CHECKLIST`
+  then
+     ON_DEVEL_DRI=$DevelDriDrivers
+    OFF_DEVEL_DRI=$DEVEL_DRI
+
+    for  ITEM  in  $ON_DEVEL_DRI;  do
+      OFF_DEVEL_DRI=`echo  $OFF_DEVEL_DRI  |  sed  s/$ITEM//`
     done
   fi
 
@@ -98,17 +150,22 @@ initialize()  {
   BACKTITLE="Source Mage XOrg host.def Configuration Menu"
 
    ON_CARD_DRIVERS="vga vesa v4l"
-  OFF_CARD_DRIVERS="mga glint nv tga s3virge sis rendition neomagic i740
-                    tdfx savage cirrus vmware tseng trident chips apm
-                    GlideDriver fbdev i128 ati i810 ark cyrix 
-                    siliconmotion via"
+  OFF_CARD_DRIVERS="apm ark ati chips cirrus cyrix dummy fbdev GlideDriver   \
+                    glint i128 i740 i810 mga neomagic nsc nv rendition       \
+                    s3virge savage siliconmotion sis sunbw2 suncg3 suncg6    \
+                    suncg14 sunffb sunleo suntcx tdfx tga trident tseng      \
+                    via vmware"
       CARD_DRIVERS="$ON_CARD_DRIVERS  $OFF_CARD_DRIVERS"
 
+   ON_DEVEL_CARD_DRIVERS=""
+  OFF_DEVEL_CARD_DRIVERS="imstt newport"
 
    ON_DRI=""
-  OFF_DRI="gamma tdfx mga i810 i830 r128 radeon sis r200 mach64
-           s3v trident"
+  OFF_DRI="gamma i810 i915 mga r128 r200 radeon sis tdfx"
       DRI="$ON_DRI  $OFF_DRI"
+
+   ON_DEVEL_DRI=""
+  OFF_DEVEL_DRI="ffb mach64 savage unichrome"
 
 
    ON_INPUT_DRIVERS="mouse keyboard"
@@ -153,11 +210,20 @@ generate_host_def()  {
 
   if  [  -z  "$XF86CardDrivers"  ];  then
     XF86CardDrivers="$ON_CARD_DRIVERS"
-  fi
+  fi  &&
 
   XF86CardDrivers=`echo  $XF86CardDrivers  |  tr  '
 ' ' '`
   echo  "#define XF86CardDrivers $XF86CardDrivers"
+
+
+  if  [  -z  "$DevelCardDrivers"  ];  then
+    echo  "#define DevelDrivers /**/"
+  else
+    DevelDrivers=`echo  $DevelCardDrivers  |  tr  '
+' ' '`
+    echo  "#define DevelDrivers $DevelCardDrivers"
+  fi  &&
 
 
   if  [  -z  "$DriDrivers"  ];  then
@@ -166,9 +232,16 @@ generate_host_def()  {
     DriDrivers=`echo  $DriDrivers  |  tr  '
 ' ' '`
     echo  "#define DriDrivers $DriDrivers"
-  fi
+  fi  &&
 
 
+  if  [  -z  "$DevelDriDrivers"  ];  then
+    echo  "#define DevelDRIDrivers /**/"
+  else
+    DevelDRIDrivers=`echo  $DevelDriDrivers  |  tr  '
+' ' '`
+    echo  "#define DevelDRIDrivers $DevelDriDrivers"
+  fi  &&
 
   if  [  -z  "$XInputDrivers"  ];  then
     echo  "#define XInputDrivers mouse"
@@ -176,25 +249,24 @@ generate_host_def()  {
     XInputDrivers=`echo  $XInputDrivers  |  tr  '
 ' ' '`
     echo  "#define XInputDrivers $XInputDrivers"
-  fi
-
+  fi  &&
 
 
   for  ITEM  in   $YES_FONT_OPTIONS;  do
     echo  "#define $ITEM  YES"
-  done
+  done  &&
 
   for  ITEM  in  $NO_FONT_OPTIONS;  do
     echo  "#define $ITEM  NO"
-  done
+  done  &&
 
   for  ITEM  in   $YES_MISC_OPTIONS;  do
     echo  "#define $ITEM  YES"
-  done
+  done  &&
 
   for  ITEM  in  $NO_MISC_OPTIONS;  do
     echo  "#define $ITEM  NO"
-  done
+  done  &&
 
 }
 
@@ -296,7 +368,9 @@ configure_host_def()  {
                         $EDITOR  /etc/sorcery/local/host.def  ||
                         nano     /etc/sorcery/local/host.def  ;;
       XF86CardDrivers)  select_card_drivers          ;;
+     DevelCardDrivers)  select_devel_card_drivers    ;;
            DriDrivers)  select_dridrivers            ;;
+      DevelDriDrivers)  select_devel_dridrivers      ;;
         XInputDrivers)  select_input_drivers         ;;
                 Fonts)  select_font_options          ;;
                  Misc)  select_misc_options          ;;
@@ -319,5 +393,6 @@ else
   config_query  PAM  "Use Linux-PAM for authentication?"  n
 fi  &&
 
-config_query  IPV6   "Build IPv6 support?"  n
-config_query  DEBUG  "Build X.Org with debug code?"  y
+config_query  IPV6      "Build IPv6 support?"           n
+config_query  DEBUG     "Build X.Org with debug code?"  y
+config_query  DEVELDRI  "Build devel DRI drivers?"      n
