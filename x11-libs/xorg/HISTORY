@@ -1,5 +1,21 @@
+2004-07-14 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added dependency on CVS for cvs version
+	* BUILD, DETAILS, PRE_BUILD, PREPARE: uses config_query for the cvs
+	  question now
+
 2004-06-17 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* BUILD: fix the broken xcursor.pc file
+	* BUILD: fix the xcursor.pc file
+
+2004-06-16 Sergey Lipnevich <sergey@sourcemage.org>
+	* PRE_BUILD: actually unpack the source if used with CVS;
+	  fix "&&" problem;
+	  rise the size allocated for compilation if tmpfs is used.
+	* BUILD: minor improvements.
+
+2004-06-06 Unet <audio@sourcemage.org>
+	* DETAILS: Added cvs support
+	* PREPARE: Added
+	* BUILD, PRE_BUILD: Modified for cvs support
 
 2004-04-27 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, XFree86-kernel_headers.patch: removed patch

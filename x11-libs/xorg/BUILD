@@ -16,17 +16,15 @@ fi                                                      &&
 if ! grep -q InstallFontconfigLibrary config/cf/host.def
   then echo  "#define InstallFontconfigLibrary NO" >> config/cf/host.def
 fi  &&
+
+if [ "$CVS" == "y" ] 
+  then echo "#define HasMotif NO" >>config/cf/host.def 
+       echo "#define HasMotif2 NO" >>config/cf/host.def
+fi &&
+	
 message  "Building X.org takes a very long time."
 
 ( 
-  
-  ### Apply 4.3.0.1 patch
-#  zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
-
-  ### Apply Xinput locking patch
-#  patch  -p2  <  $SCRIPT_DIRECTORY/Xi-locking.patch  &&
-  ### Apply linux version patch to support 2.6.X
-#  patch  -p1  <  $SCRIPT_DIRECTORY/XFree86-4.3.0-linux-2.6.0.patch  &&
 
   ### fix the broken xcursor.pc file
   sedit  '/Requires/d'  lib/Xcursor/xcursor.pc.in  &&
@@ -46,10 +44,10 @@ message  "Building X.org takes a very long time."
   make -f Makefile.ini lndir                       &&
   cp lndir $SOURCE_DIRECTORY.bld/                  &&
   cd $SOURCE_DIRECTORY.bld                         &&
-  ./lndir ../xc/                                   &&
+  ./lndir ../$(basename $SOURCE_DIRECTORY)         &&
   ### differnet approach to old bug
   ### Fix Bug #3486, which stops the build process if builtinfonts is selected
-  ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
+#  ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
 
   make World
   

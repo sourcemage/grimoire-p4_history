@@ -1,13 +1,21 @@
            SPELL=xorg
+if [ "$CVS" == "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.freedesktop.org:/cvs/xorg:xc
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
          VERSION=6.7.0
-         XVERSION=X11R${VERSION}
-           SOURCE=${XVERSION}-src1.tar.gz
-          SOURCE2=${XVERSION}-src2.tar.gz
-          SOURCE3=${XVERSION}-src3.tar.gz
-          SOURCE4=${XVERSION}-src4.tar.gz
-          SOURCE5=${XVERSION}-src5.tar.gz
-          SOURCE6=${XVERSION}-src6.tar.gz
-          SOURCE7=${XVERSION}-src7.tar.gz
+        XVERSION=X11R${VERSION}
+          SOURCE=${XVERSION}-src1.tar.gz
+         SOURCE2=${XVERSION}-src2.tar.gz
+         SOURCE3=${XVERSION}-src3.tar.gz
+         SOURCE4=${XVERSION}-src4.tar.gz
+         SOURCE5=${XVERSION}-src5.tar.gz
+         SOURCE6=${XVERSION}-src6.tar.gz
+         SOURCE7=${XVERSION}-src7.tar.gz
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
    SOURCE_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE
@@ -24,6 +32,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
           MD5[4]=17fdb62325cbe45df92ab883554ba8a8
           MD5[5]=967c51cc9d631502e11abe3febe81a8e
           MD5[6]=57d2df6d7b301ba4121710158f2889ab
+fi
         WEB_SITE=http://freedesktop.org/~xorg/
          ENTERED=20040407
          UPDATED=20040617
