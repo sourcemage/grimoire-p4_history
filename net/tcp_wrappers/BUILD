@@ -2,19 +2,19 @@
 
   patch  -p 1  <  $SCRIPT_DIRECTORY/tcp_wrappers.patch
 
-  make  REAL_DAEMON_DIR=/usr/sbin linux  &&
+  make  REAL_DAEMON_DIR=${INSTALL_ROOT}/usr/sbin linux  &&
   prepare_install                        &&
   for  EXECUTABLE in *; do
     if  [  -x  $EXECUTABLE ];  then
-      cp       $EXECUTABLE  /usr/sbin
+      cp       $EXECUTABLE  ${INSTALL_ROOT}/usr/sbin
     fi
   done                                   &&
-  cp  tcpd.h     /usr/include            &&
-  cp  libwrap.a  /usr/lib                &&
+  cp  tcpd.h     ${INSTALL_ROOT}/usr/include            &&
+  cp  libwrap.a  ${INSTALL_ROOT}/usr/lib                &&
 
   # Copy man pages
   for i in $( seq 1 8 ) ; do
-    install -m 644 *.$i /usr/man/man$i > /dev/null 2>&1
+    install -m 644 *.$i ${INSTALL_ROOT}/usr/man/man$i > /dev/null 2>&1
   done
 
 ) > $C_FIFO 2>&1

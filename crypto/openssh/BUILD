@@ -2,14 +2,14 @@
 
   create_account sshd
 
-  ./configure  --prefix=/usr            \
-               --sysconfdir=/etc/ssh    \
-               --with-md5-passwords     \
-               --mandir=/usr/share/man  \
-               $OPTS                    &&
+  ./configure  --prefix=${INSTALL_ROOT}/usr            \
+               --sysconfdir=${INSTALL_ROOT}/etc/ssh    \
+               --with-md5-passwords                    \
+               --mandir=${INSTALL_ROOT}/usr/share/man  \
+               $OPTS                                   &&
 
-  make                                  &&
-  prepare_install                       &&
+  make                                                 &&
+  prepare_install                                      &&
   make install
 
 ) > $C_FIFO 2>&1
