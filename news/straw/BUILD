@@ -1,10 +1,8 @@
 (
 
-  sedit 's:python2.2:python2.3:'  Makefile   &&
-  sedit 's:python2.2:python2.3:'  src/straw  &&
-
-  make             &&
+  python setup.py build  &&
   prepare_install  &&
-  make  install 
+  python setup.py install  --prefix=${INSTALL_ROOT}/usr  \
+                       --sysconfdir=${INSTALL_ROOT}/etc
 
 ) > $C_FIFO 2>&1
