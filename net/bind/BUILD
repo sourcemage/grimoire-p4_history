@@ -16,6 +16,7 @@
 
 ( 
 
+
   # Install man pages.
 
   for  DIRECTORY in doc/man/*;  do
@@ -24,7 +25,9 @@
     done
   done
 
-  devoke_installwatch && # nothing past here should be in the install log unless it's tracked manually.
+  LD_PRELOAD_BAK="$LD_PRELOAD"
+  LD_PRELOAD="`echo  "$LD_PRELOAD" | sed -e 's!/usr/lib/installwatch\.so!!'`"
+  # devoke_installwatch && # nothing past here should be in the install log unless it's tracked manually.
 
   [  -d  /etc/bind             ]  ||  mkdir     /etc/bind
 
@@ -106,9 +109,12 @@
     ln -s /var/chroot/bind /etc/bind
   fi
 
-  invoke_installwatch
+  LD_PRELOAD="$LD_PRELOAD_BAK"
+  #invoke_installwatch
 
-  track_manual /etc/bind/dev/random /etc/bind/dev /etc/bind/m/localhost/rev /etc/bind/delegation-only.conf /etc/bind/named.root /etc/bind/named.conf \
+  # removed /etc/bind/dev/random from the list because it tries to md5 it.
+
+  track_manual /etc/bind/dev /etc/bind/m/localhost/rev /etc/bind/delegation-only.conf /etc/bind/named.root /etc/bind/named.conf \
                /etc/bind/localhost.conf /etc/bind/mkzones.sh
 
 )
