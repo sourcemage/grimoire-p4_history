@@ -1,7 +1,0 @@
-mk_source_dir  $SOURCE_DIRECTORY                                &&
-unpack         $SOURCE  ${MD5[0]}                               &&
-cd             $SOURCE_DIRECTORY                                &&
-if [ "$SELINUX" == "y" ]; then
-  unpack  $SOURCE_CACHE/$SOURCE2  ${MD5[1]}  &&
-  zcat    $SOURCE_CACHE/$SOURCE2  |  patch  -p1
-fi
