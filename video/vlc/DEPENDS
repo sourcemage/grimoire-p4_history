@@ -137,6 +137,11 @@ optional_depends  "libogg"                 \
                   "--disable-ogg"          \
                   "for ogg demuxer support"  &&
 
+optional_depends  "libtheora"              \
+                  "--enable-theora"        \
+                  "--disable-theora"       \
+                  "for Theora video support"  &&
+
 # dvd options
 optional_depends  "libdvdcss"              \
                    "--enable-dvd"          \
