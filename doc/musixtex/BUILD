@@ -3,7 +3,7 @@
     TEXMF=`kpsetool -v '$TEXMF'`                    &&
     TEXMF=`echo $TEXMF | sed -e "s/\!*//"`          &&
 
-    cc -o musixflx systems/c-source/musixflx.c      &&
+    gcc -o musixflx systems/c-source/musixflx.c     &&
 
     prepare_install                                 &&
 
