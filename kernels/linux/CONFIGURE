@@ -65,7 +65,7 @@ kernel_menu() {
     retval=$?
     if [[ "$retval" == "0" ]]; then
       if [[ $COMMAND == "CUSTOM" ]]; then
-        COMMAND=$($DIALOG --nocancel --inputbox "Which Kernel do you want to build?\nYou can enter any valid version number.\nExamples:\n${LATEST_2_4_PRE_AC}\n${LATEST_2_5}" 0 0 ${KERNEL_VERSION})
+        COMMAND=$($DIALOG --nocancel --inputbox "Which Kernel do you want to build?\nYou can enter any valid version number.\nExamples:\n${LATEST_2_4_AC}\n${LATEST_2_5}" 0 0 ${KERNEL_VERSION})
       fi
       KERNEL_VERSION=$COMMAND
       break
