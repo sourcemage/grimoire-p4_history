@@ -71,8 +71,8 @@
 			  $OPTS &&
 	  make            &&
 
-  if [ "$XOSD" == "y" ] && [ "$CVS" != "y" ]; then
-	  cd $SOURCE_DIRECTORY/plugins/osd &&
+  if [ "$XOSD" == "y" ]; then
+	  cd $SOURCE_DIRECTORY/plugins/osd-1.2.7.5 &&
 #	  ./build                                               &&
 	  ./configure --prefix=/usr			\
 	              --sysconfdir=/etc		\

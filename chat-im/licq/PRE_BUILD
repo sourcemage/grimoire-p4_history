@@ -8,7 +8,7 @@ if [ "$CVS" == "y" ]; then
 	rm -rf $SOURCE_DIRECTORY/plugins &&
 	mv $SOURCE_DIRECTORY/$SPELL-plugins-cvs $SOURCE_DIRECTORY/plugins
 fi
-#if [ "$XOSD" = "yes" ]; then
-#	cd $SOURCE_DIRECTORY/plugins	 &&
-#	unpack		  $SOURCE4 ${MD5[3]}
-#fi
+if [ "$XOSD" = "y" ]; then
+	cd $SOURCE_DIRECTORY/plugins	 &&
+	unpack		  $SOURCE4 ${MD5[3]}
+fi
