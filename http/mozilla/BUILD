@@ -108,8 +108,7 @@
          /usr/lib/mozilla/regchrome
   touch  /usr/lib/mozilla/chrome/user-skins.rdf
   touch  /usr/lib/mozilla/chrome/user-locales.rdf
-  if  [  !  -d  /usr/lib/mozilla/plugins  ]
-    then  mkdir  /usr/lib/mozilla/plugins
-  fi
+
+  mkdir  -p /usr/lib/mozilla/plugins
 
 )
