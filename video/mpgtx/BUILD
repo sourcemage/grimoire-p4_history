@@ -1,7 +1,9 @@
 (
-	./configure --prefix=/usr
-	make
-	make install
-) > $C_FIFO
 
-#Not a GNU configure
+  # non-standard configure
+  ./configure --prefix=${INSTALL_ROOT}/usr  &&
+  make                                      &&
+  prepare_install                           &&
+  make    install
+
+) > $C_FIFO 2>&1
