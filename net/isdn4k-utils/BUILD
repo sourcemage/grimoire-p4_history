@@ -1,14 +1,14 @@
 config_isdn()  {
 
-  if  [  -e  $CONFIG_CACHE/.config-$SPELL  ];  then
+  if  [  -e  $CONFIG_CACHE/.config-$SPELL  ]  ;  then
 
     cp $CONFIG_CACHE/.config-$SPELL .config
 
-    read  -t 10  -n 1  -p "Configure $SPELL? "  CONFIRM
-    case  $CONFIRM  in
-      y|Y)  make  config  ;;
-	*)  make  subconfig ;;
-    esac
+    if  query  "Configure $SPELL? "  n  ;  then
+      make  config
+    else
+      make subconfig
+    fi
 
   else
 
@@ -21,6 +21,18 @@ config_isdn()  {
 
 config_isdn
 cp    .config  $CONFIG_CACHE/.config-$SPELL
+
+# begin BAH!
+cd capi20
+autoreconf --force --install
+cd ../capiinfo
+autoreconf --force --install
+cd ../capiinit
+autoreconf --force --install
+cd ../ipppd
+patch  -p0  <  $SCRIPT_DIRECTORY/options.c.patch
+cd ..
+# end BAH!
 
 (
 
