@@ -21,14 +21,14 @@ netdevdir=/etc/sysconfig/network
 if [ $# -le 1 ]; then
     devices="$(ls $netdevdir | grep dev$ | cut -d. -f1)"
 else
-    devices="$(echo $@ | sed s/$1//)"
+    devices="$(builtin echo $@ | sed s/$1//)"
 fi
 
 start()
 {
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
-    /sbin/ifup $DEVICE
+    echo "$(/sbin/ifup $DEVICE)"
     evaluate_retval
   done
 }
@@ -37,7 +37,7 @@ stop()
 {
   for DEVICE in $devices ; do
     [ "$DEVICE" = "lo" ] && continue
-    /sbin/ifdown $DEVICE
+    echo "$(/sbin/ifdown $DEVICE)"
     evaluate_retval
   done
 }
