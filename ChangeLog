@@ -1,3 +1,8 @@
+2004-07-17 Eric Sandall <eric@sandall.us>
+	* audio-drivers/alsa-lib,audio-drivers/alsa-driver: Moved alsa init script
+	  from alsa-driver to alsa-lib
+	* ChangeLog: Formatted to 80 columns ;)
+
 2004-07-16 Eric Sandall <eric@sandall.us>
 	* windowmanagers/xpde-bin: Moved to z-rejected/z-windowmanagers/xpde-bin
 	* windowmanagers/wmCalClock: Renamed to wmcalclock
@@ -6,7 +11,8 @@
 2004-07-15 Eric Sandall <eric@sandall.us>
 	* windowmanagers/AfterStep: Renamed to windowmanagers/afterstep
 	* windowmanagers/WindowMaker: Renamed to windowmanagers/windowmaker
-	* windowmanagers/WindowMaker-extra: Renamed to windowmanagers/windowmaker-extra
+	* windowmanagers/WindowMaker-extra: Renamed to
+	  windowmanagers/windowmaker-extra
 
 2004-07-13 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* video-libs/MPlayer-codecs: deprecated, replacements are quicktime-codecs,
@@ -62,8 +68,8 @@
 	* libs/libiconv: removed libiconv spell, has been deprecated for some months
 
 2004-04-03 Eric Sandall <eric@sandall.us>
-	* pidentd,oidentd: Removed root versions of these (I accidently added them in
-	Changeset #26587 Bug #6546
+	* pidentd,oidentd: Removed root versions of these (I accidently added them
+	  in Changeset #26587 Bug #6546
 
 2004-03-26 Ladislav Hagara <hgr@vabo.cz>
 	* e: new section - The Enlightenment Project
@@ -74,7 +80,7 @@
 
 2004-03-12 Eric Sandall <eric@sandall.us>
 	* java/jaf,jms,jmx,jdmk,jndi,java_xml_pack,javamail,jdbc-optional,jta:
-	Moved to z-rejected/z-java due to licensing
+	  Moved to z-rejected/z-java due to licensing
 
 2004-02-24 Eric Sandall <eric@sandall.us>
 	* antivirus: New section from Treeve
@@ -82,20 +88,22 @@
 
 2004-02-18 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* video/bcast/*: removed bcast spell, the software is unmaintained and
-	broken
+	  broken
 
 2004-01-29 Eric Sandall <eric@sandall.us>
 	* Moved z-video/xvid to devel grimoire video-libs/xvid
 
 2004-01-27 hgg <hgreig@bigpond.net.au>
 	* bash: spell has changed to now source files from /etc/profile.d/*.sh
-	The spells that used to add variables to /etc/profile have been modified to install /etc/profile.d/*.sh
-	files now, but to avoid having to recast all of these the bash spell will attempt to convert your current
-	/etc/profile and will back it up to /etc/profile.d/profile. It would be extremely wise to check it has
-	worked before logging out or rebooting
+	  The spells that used to add variables to /etc/profile have been modified
+	  to install /etc/profile.d/*.sh files now, but to avoid having to recast
+	  all of these the bash spell will attempt to convert your current
+	  /etc/profile and will back it up to /etc/profile.d/profile. It would be
+	  extremely wise to check it has worked before logging out or rebooting
 
 2004-01-08 hgg <hgreig@bigpond.net.au>
-	* libnjb-cvs removed, dispel libnjb-cvs, then cast -r -c libnjb to choose cvs version if wanted
+	* libnjb-cvs: removed, dispel libnjb-cvs, then cast -r -c libnjb to choose
+	  cvs version if wanted
 
 2004-01-05 Eric Sandall <eric@sandall.us>
 	* devel/MAINTAINER: Open section
@@ -103,7 +111,8 @@
 	* GRIMOIRE: optional_requires is now in all grimoires
 
 2003-10-03  hgg <hgreig@bigpond.net.au>
-	* GRIMOIRE: test grimoire now has support for optional_requires to allow full use of xfree86-devel or
-	xfree86-libs or xdirectfb spells to provide x11-{libs,server}.
-	THE CATCH IS YOU MUST USE DEVEL SORCERY OR YOU WILL GET NOTHING BUT ERRORS DURING CAST.
+	* GRIMOIRE: test grimoire now has support for optional_requires to allow
+	  full use of xfree86-devel or xfree86-libs or xdirectfb spells to provide
+	  x11-{libs,server}.  THE CATCH IS YOU MUST USE DEVEL SORCERY OR YOU WILL
+	  GET NOTHING BUT ERRORS DURING CAST.
 
