@@ -39,14 +39,14 @@ gpgcheck() { # $1 sig $2 file $3 pubring
     message "It appears you do not have gpg (gnupg) in your PATH."
     message "${SPELL_COLOR}${SPELL}: ${QUERY_COLOR}For full kernel.org source verification, it is highly suggested that you abort and cast gnupg as soon as possible."
     if [ $MD5SUM_DL != "off" ] ; then
-      message "Note: If you do not have any kernel headers installed, cast gnupg will fail, in which case you shouldn't abort now."
+      message "Note: If you do not have any kernel headers installed, cast gnupg will fail, in which case you shouldn't abort now since the sources and headers have been wiped clean already."
     fi
 
     case $MD5SUM_DL in
-             off)  ;;
-       ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
-      ask_ignore)  query "Abort?" "n"           && exit 1   || echo -n ;;
-            on|*)  message "To continue you need to lower your Download Integrity Checking security  ${RED}Aborting.${DEFAULT_COLOR}" ; exit 1  ;;
+                off)  message "${RED}Continuing!${DEFAULT_COLOR}"         ;;
+ask_risky|ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
+    ask_ignore|on|*)  query "Abort?" "n"           && exit 1   || echo -n ;;
+          abort_all)  message "${RED}Aborting.  gnupg isn't installed and you've just wiped your kernel sources so gnupg won't build.  Try reducing your MD5SUM_DL (Download Integrity) in sorcery to skip the gnupg step and confirm the validity of the sources yourself.${DEFAULT_COLOR}" ; exit 1  ;;
     esac
 
   else
@@ -96,10 +96,10 @@ check() {
     esac
     message "${SPELL_COLOR}${SPELL}: ${QUERY_COLOR}${CTYPE} ${TOCHCK}."
     case $MD5SUM_DL in
-             off)  message "${RED}Continuing!"               ; echo -n ;;
-       ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
-      ask_ignore)  query "Abort?" "n"           && exit 1   || echo -n ;;
-            on|*)  message "${RED}Aborting.${DEFAULT_COLOR}" ; exit 1  ;;
+                off)  message "${RED}Continuing!${DEFAULT_COLOR}"         ;;
+         ask_ignore)  query "Abort?" "n"           && exit 1   || echo -n ;;
+ask_risky|ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
+     on|abort_all|*)  message "${RED}Aborting.${DEFAULT_COLOR}" ; exit 1  ;;
     esac
   fi
   message "check passed.";  
@@ -180,7 +180,7 @@ local COUNTER
 local VARS
 local VARSS
 local MD5V
-for ((COUNTER=8; COUNTER <= 30 ; COUNTER++))
+for ((COUNTER=8; COUNTER <= 40 ; COUNTER++))
 do
   VARS=SOURCE${COUNTER}
   VARSS="${!VARS}"
