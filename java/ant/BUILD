@@ -1,7 +1,7 @@
 if [ -f /etc/profile.d/java.sh ]; then
   . /etc/profile.d/java.sh
 fi                                      &&
-. $SCRIPT_DIRECTORY/../java-functions   &&
+. $SECTION_DIRECTORY/java-functions   &&
   
 set_java_env                            &&
   

@@ -11,4 +11,4 @@ OPTS="$OPTS  $KDEBASE_DPMS  $KDEBASE_XDMCP"  &&
 #  OPTS="$OPTS  --with-krb5auth"
 #fi  &&
 
-source  $SCRIPT_DIRECTORY/../KDE_BUILD
+source  $SECTION_DIRECTORY/KDE_BUILD
