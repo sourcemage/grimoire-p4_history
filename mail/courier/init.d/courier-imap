@@ -4,14 +4,10 @@
 # Copyright 1998 - 1999 Double Precision, Inc.
 # See COPYING for distribution information.
 
-
-
 RUNLEVEL=3
 NEEDS="+network +remotefs"
 
 .  /etc/init.d/smgl_functions
-
-
 
 prefix=/usr
 exec_prefix=/usr
@@ -23,7 +19,7 @@ sbindir=${exec_prefix}/sbin
 case  $1  in
 	start)
 		LIBAUTHMODULES=""
-		for  f  in  `echo  $AUTHMODULES`;  do
+		for  f  in  `builtin  echo  $AUTHMODULES`;  do
 			LIBAUTHMODULES="$LIBAUTHMODULES  ${exec_prefix}/libexec/authlib/$f"
 		done
 		ulimit  -v  $IMAP_ULIMITD

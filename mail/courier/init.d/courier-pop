@@ -11,14 +11,10 @@
 #
 # You must run this as root, and as a daemon process.
 
-
-
 RUNLEVEL=3
 NEEDS="+network +remotefs"
 
 .  /etc/init.d/smgl_functions
-
-
 
 prefix="/usr"
 exec_prefix="/usr"
@@ -40,7 +36,7 @@ case  "$1"  in
 		for  f  in  $AUTHMODULES;  do
 			AUTHMODULELIST="$AUTHMODULELIST  $libexecdir/authlib/$f"
 		done
-		AUTHMODULELIST="`echo  $AUTHMODULELIST`"
+		AUTHMODULELIST="`builtin  echo  $AUTHMODULELIST`"
 		/usr/bin/env  -  /bin/sh  -c  "  set -a;             \
 			prefix=/usr;                                     \
 			exec_prefix=/usr;                                \

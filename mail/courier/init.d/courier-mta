@@ -11,15 +11,11 @@
 #  Argument "stop" stops the daemon (just the listening daemon).
 #  Argument "restart" rereads the smtpaccess.dat file.
 
-
-
 RUNLEVEL=3
 NEEDS="+network +remotefs"
 #PROVIDES=mta
 
 .  /etc/init.d/smgl_functions
-
-
 
 prefix="/usr"
 exec_prefix="/usr"
@@ -82,16 +78,16 @@ case  $1  in
 		fi
 
 		(
-			echo  prefix=${prefix}
-			echo  exec_prefix=${exec_prefix}
-			echo  sysconfdir=${sysconfdir}
-			echo  sbindir=${sbindir}
-			echo  set  -a
+			builtin  echo  prefix=${prefix}
+			builtin  echo  exec_prefix=${exec_prefix}
+			builtin  echo  sysconfdir=${sysconfdir}
+			builtin  echo  sbindir=${sbindir}
+			builtin  echo  set  -a
 			for  f  in  $configfiles;  do
-				echo  .  $f
+				builtin  echo  .  $f
 			done
-			echo  "ulimit  -d  $ULIMIT"
-			echo  ${sbindir}/couriertcpd  $TCPDOPTS $PORT                               \
+			builtin  echo  "ulimit  -d  $ULIMIT"
+			builtin  echo  ${sbindir}/couriertcpd  $TCPDOPTS $PORT                               \
 				${sbindir}/courieresmtpd  $AUTHMODULES  '>/dev/null  2>&1  </dev/null'
 		)  |  /usr/bin/env  -  /bin/sh
 		exit  0
