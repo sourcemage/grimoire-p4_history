@@ -1,3 +1,18 @@
+           SPELL=skak
+         VERSION=1.0
+          SOURCE=$SPELL.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=$CTAN_URL/fonts/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.dante.de/tex-archive/fonts/$SOURCE
+          MD5[0]=bd9a4b2d00cfbe6c1c1fc1cef448f223
+        WEB_SITE=http://www.ctan.org/tex-archive/help/Catalogue/entries/skak.html
+         ENTERED=20020605
+         UPDATED=20020605
+         LICENSE=LPPL
+           SHORT="A set of TeX macros and font to typeset chess games."
+cat << EOF
 
-VERSION=
-UPDATED=
+This package can be used to typeset chess games using PGN and show diagrams of
+the current board in the document.
+
+EOF
