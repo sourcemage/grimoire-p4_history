@@ -23,5 +23,6 @@ function make_install_links(){
     then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
  else ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
  fi                                                                                               &&
- ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2                         
+ [[ `uname -m` == ppc* ]] && ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld.so.1   ||
+ ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2
 }
