@@ -28,6 +28,7 @@ then
 	done
 	make mrproper
 	mk_source_dir ${LINUX_SOURCE_DIRECTORY}
+	ln  -sfn  ${LINUX_SOURCE_DIRECTORY}  linux
 	mv ./* ${LINUX_SOURCE_DIRECTORY}/
 elif [[ "$mode" == "oldktree" ]]
 then

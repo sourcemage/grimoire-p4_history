@@ -451,7 +451,7 @@ patch_list()
 				fi
 			done
 		fi
-		patchvers="`ls -1 $patchesdir/${patch}`"
+		patchvers="`ls -1r $patchesdir/${patch}`"
 		found="false"
 		for patchver in $patchvers
 		do
@@ -485,7 +485,7 @@ list_specific_patch_dir()
 			argv1=$1
 			;;
 	esac
-	patchvers="`ls -1 $patchesdir/$2`"
+	patchvers="`ls -1r $patchesdir/$2`"
 	for patchver in $patchvers
 	do
 		. $patchesdir/$2/$patchver
