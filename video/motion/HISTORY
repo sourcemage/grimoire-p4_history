@@ -1,6 +1,12 @@
+2003-11-15 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 3.0.7
+	changed SOURCE_URL to $SOURCEFORGE_URL/$SPELL/$SOURCE
+	* BUILD: don't apply ffmpeg-cvs patch
+	* ffmpeg-cvs.patch: deleted, not needed anymore
+
 2003-11-02 Eric Sandall <eric@sandall.us>
-    * DEPENDS: Changed requires to depends
-    * HISTORY: Formatted to Guru Handbook
+	* DEPENDS: Changed requires to depends
+	* HISTORY: Formatted to Guru Handbook
 
 2003-05-28 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 3.0.6
@@ -13,16 +19,17 @@
 	(fixes bug 3366)
 
 2003-05-14 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* CONFIGURE: added CONFIGURE option for ffmpeg, to be able to use requires
-	libavcodec
-	* added ffmpeg-cvs patch
+	* CONFIGURE: added CONFIGURE option for ffmpeg, to be able to use
+	requires libavcodec
+	* BUILD, ffmpeg-cvs.patch: make it build with ffmpeg-cvs
 
 2003-03-09 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 3.0.5
 	changed SOURCE_URL and WEB_SITE to sourceforge
 
 2003-02-20 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* DEPENDS: made ffmpeg an optional_depends, added patch for shared ffmpeg
+	* DEPENDS: made ffmpeg an optional_depends, added patch for
+	shared ffmpeg
 
 2002-09-21 David Pradier <pradierdavid@yahoo.fr>
 	* created the spell

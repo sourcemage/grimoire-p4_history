@@ -1,9 +1,8 @@
 (
 
   patch -p0 < $SCRIPT_DIRECTORY/configure.in.shared-ffmpeg.patch  &&
-  patch -p1 < $SCRIPT_DIRECTORY/ffmpeg-cvs.patch    &&
   autoconf                                          &&
-  ./configure  --prefix=${INSTALL_ROOT}/usr         \
+  sh ./configure  --prefix=${INSTALL_ROOT}/usr         \
                --sysconfdir=${INSTALL_ROOT}/etc     \
                --localstatedir=${INSTALL_ROOT}/var  \
                --without-mysql                      \
