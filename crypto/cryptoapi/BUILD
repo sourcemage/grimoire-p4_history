@@ -1,15 +1,7 @@
-no_export_symbol()  {
-  cp  api/cryptoapi.c api/cryptoapi.c.old
- sedit "s|EXPORT_SYMBOL|// EXPORT_SYMBOL|" api/cryptoapi.c
-}
 
-# no_export_symbol
-
-  patch  -p1  <  $SCRIPT_DIRECTORY/cryptoapi.patch
+  patch  -p1  <  $SCRIPT_DIRECTORY/cryptoapi-2.4.7.0.patch
 
 (
-
-  sedit  "s/-O2/$CFLAGS/"  configure
 
   default_build &&
   depmod
