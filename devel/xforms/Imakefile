@@ -1,0 +1,59 @@
+/* Configuration */
+/* Either "NO" or "YES" (case sensitive) */
+
+#define Optimize YES
+#define UseSystemXpm YES
+#define HaveStrerror YES
+#define StaticLink NO
+#define BuildGL NO
+#define BuildShared NO
+#define Solaris64Bit NO 
+
+
+#define XFormsInstallDir /usr
+#define XFormsLibRev 0.9999
+
+#define OptimizationLevel -O4
+
+#	Professional driver.  Closed course.  Do not attempt.
+
+#define IHaveSubdirs
+#define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)'
+
+#if !UseSystemXpm
+XPMDIR	= xpm-3.4k
+#endif
+
+SUBDIRS = \
+	  $(XPMDIR) \
+	  lib \
+	  fdesign \
+ 	  fd2ps \
+	  demos \
+	  /* Don't remove this line */
+	  	
+#if Optimize
+OPTIMIZER	= OptimizationLevel
+#else
+OPTIMIZER	=
+#endif
+
+CDEBUGFLAGS	= -g $(OPTIMZER)
+
+IMAKE_DEFINES	= \
+		  -DUseSystemXpm=UseSystemXpm \
+		  -DSolaris64Bit=Solaris64Bit \
+		  -DHaveStrerror=HaveStrerror \
+		  -DStaticLink=StaticLink \
+		  -DBuildGL=BuildGL \
+		  -DBuildShared=BuildShared \
+		  -DXFormsInstallDir=XFormsInstallDir \
+		  -DXFormsLibRev=XFormsLibRev \
+		  /* Don't remove this line */
+
+MakeSubdirs($(SUBDIRS))
+DependSubdirs($(SUBDIRS))
+
+distclean::
+	make clean
+	$(RM) Makefile
