@@ -108,7 +108,9 @@ if [[ "${MM_PATCH}" != "" ]]; then
   SOURCE7_URL="${SOURCE6_URL}.sign"
 fi
 
-source ${SPELL_CONFIG}.DETAILS
+if [ -f ${SPELL_CONFIG}.DETAILS ] ; then
+  source ${SPELL_CONFIG}.DETAILS
+fi
 
 
 WEB_SITE=http://www.kernel.org
