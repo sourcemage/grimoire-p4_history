@@ -5,10 +5,11 @@ if  spell_installed  "apache";  then
 # location to httpd root doc dir
   LOC="/usr/share/httpd"									&&
 # same, but to be used withing search/replace regexp
-  SLOC="\/usr\/share\/httpd\/htdocs"
+  SLOC="\/usr\/share\/httpd"
 elif  spell_installed  "apache-mod_ssl";  then
   LOC="/usr/share/httpsd"									&&
   SLOC="\/usr\/share\/httpsd\/htdocs"
+  SLOC="\/usr\/share\/httpsd"
 elif  spell_installed  "apache2";  then
   LOC="/usr/share/apache2"									&&
   SLOC="\/usr\/share\/apache2"
@@ -73,43 +74,34 @@ chmod 660            /var/log/openwebmail.log							&&
 #
 patch $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl-DB.patch &&
 
+# Tune OWM defaults to SMGL style
+message "${MESSAGE_COLOR}Tuning OpenWebMail defaults to SMGL style... ${DEFAULTS_COLOR}"	&&
+message "${MESSAGE_COLOR}Directories... ${DEFAULTS_COLOR}"        				&&
+sedit "s/\/var\/mail/\/var\/spool\/mail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 	&&
+sedit "s/\/usr\/local\/www\/data\/openwebmail/$SLOC\/htdocs\/openwebmail/"  $LOC/cgi-bin/openwebmail/etc/openwebmail.conf &&
+sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf &&
+message "${MESSAGE_COLOR}Perl db extentions... ${DEFAULTS_COLOR}"        			&&
+sedit "s/^dbm_ext.*$/dbm_ext .db/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf		&&
+sedit "s/^dbmopen_ext.*$/dbmopen_ext %dbm_ext%/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf	&&
+sedit "s/^dbmopen_haslock.*$/dbmopen_haslock yes/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf &&
+sedit "s/^spellcheck.*$/spellcheck \/usr\/bin\/ispell/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf		
+message "${MESSAGE_COLOR}Passwd files in OWM auth_unix.pl file... ${DEFAULT_COLOR}"             &&
+sedit "s/\/etc\/master.passwd/\/etc\/shadow/"  $LOC/cgi-bin/openwebmail/auth_unix.pl            &&
+sedit "s/\/usr\/sbin\/pwd_mkdb/none/"  $LOC/cgi-bin/openwebmail/auth_unix.pl                    &&
+
 # Initialize openwebmail
 if [ "$MAIL_STATS" == "n" ]; then
   MAIL_OPT="--no"
 else
   MAIL_OPT="--yes"
-fi												&&
-
-message "${MESSAGE_COLOR}Initializing OpenWebmail... ${DEFAULT_COLOR}" 				&&
-$LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init $MAIL_OPT 					&&
-#cp $SCRIPT_DIRECTORY/fr $LOC/cgi-bin/openwebmail/etc/lang
+fi                                                                                              &&
+message "${MESSAGE_COLOR}Initializing OpenWebmail... ${DEFAULT_COLOR}"                          &&
+$LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init $MAIL_OPT                                   &&
 
 mv "$LOC/htdocs/openwebmail/help/en/templates_and_data/version notes.txt" \
-    $LOC/htdocs/openwebmail/help/en/templates_and_data/version_notes.txt
+    $LOC/htdocs/openwebmail/help/en/templates_and_data/version_notes.txt                        &&
 
-) > $C_FIFO 2>&1   && (
+# link index.html to the redirect page
+ln -sf redirect.html $LOC/htdocs/openwebmail/index.html
 
-# apache/apache2 auto setup
-if  spell_installed  "apache";  then
-# location to httpd root doc dir
-  LOC="/usr/share/httpd"                                        
-# same, but to be used withing search/replace regexp
-  SLOC="\/usr\/share\/httpd\/htdocs"
-elif  spell_installed  "apache-mod_ssl";  then
-  LOC="/usr/share/httpsd"                                       
-  SLOC="\/usr\/share\/httpsd\/htdocs"
-elif  spell_installed  "apache2";  then
-  LOC="/usr/share/apache2"                                      
-  SLOC="\/usr\/share\/apache2"
-fi 
-
-message "Editing auth_unix.pl"
-sedit "s/\/etc\/master.passwd/\/etc\/shadow/"  $LOC/cgi-bin/openwebmail/auth_unix.pl
-sedit "s/\/usr\/sbin\/pwd_mkdb/none/"  $LOC/cgi-bin/openwebmail/auth_unix.pl
-
-# Tune OWM defaults to SMGL style
-sedit "s/\/var\/mail/\/var\/spool\/mail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 
-sedit "s/\/usr\/local\/www\/data\/openwebmail/$SLOC\/htdocs\/openwebmail/"  $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 
-sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 
-
-)
+) > $C_FIFO 2>&1
