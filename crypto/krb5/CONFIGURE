@@ -1,4 +1,4 @@
-if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+if  !  grep  -q  "KRB4="  ${SPELL_CONFIG}
 then
 
   if    query "Do you want to enable Kerberos V4 backwards compatibility ?" n
@@ -7,5 +7,4 @@ then
   fi
 
   echo  "KRB4=$KRB4"      >>  ${SPELL_CONFIG}
-  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
 fi
