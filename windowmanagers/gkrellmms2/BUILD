@@ -1,5 +1,5 @@
 (
-
+  cd /usr/src/gkrellmms
   make &&
   prepare_install &&
   mkdir -p /usr/lib/gkrellm/plugins &&
