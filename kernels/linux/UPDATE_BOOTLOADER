@@ -12,14 +12,23 @@ cut_label()  {
 
 lilo_image_entry()  {
 
+if  grep  -q  password  /etc/lilo.conf
+then
   cat  <<  EOF
 
 image			=	/boot/vmlinubz-$VERSION
 	label		=	$(  cut_label linux-$VERSION  )
 	read-only
 	restricted
-
 EOF
+else
+  cat  <<  EOF
+
+image			=	/boot/vmlinubz-$VERSION
+	label		=	$(  cut_label linux-$VERSION  )
+	read-only
+EOF
+fi
 
 }
 
