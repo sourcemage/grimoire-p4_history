@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DESCRIPTION="NSA SELinux patch"
+SHORT="Enhanced security functionality"
+HELP="Security-enhanced Linux is a research prototype of the Linux® kernel and a number of utilities with enhanced security functionality designed simply to demonstrate the value of mandatory access controls to the Linux community and how such controls could be added to Linux. The Security-enhanced Linux kernel contains new architectural components originally developed to improve the security of the Flask operating system. These architectural components provide general support for the enforcement of many kinds of mandatory access control policies, including those based on the concepts of Type Enforcement®, Role-based Access Control, and Multi-level Security.
+
+see http://www.nsa.gov/selinux/ for details"
+
+VERSIONS="2.6.8.1-selinux1
+2.6.8.1-selinux1-nfs1"
+
+PUBRINGFILE=selinux.gpg
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}.patch.gz
+SOURCE${COUNTER}_URL=http://www.nsa.gov/selinux/patches/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/GPGPATCH
+fi
