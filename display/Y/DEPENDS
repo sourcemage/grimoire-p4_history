@@ -1,5 +1,5 @@
 depends  freetype2  &&
 depends  libsigc++  &&
-depends  SDL
+depends  SDL        &&
 
-#optional_depends  iterm  ""  "--disable-yiterm"  "for International terminals"
+optional_depends  iterm  "--enable-yiterm"  "--disable-yiterm"  "for International terminals"
