@@ -9,10 +9,10 @@
 
     ## install configuration files. ##
 
-    if [ -n  /etc/zshenv ];  then
+    if [ ! -f  /etc/zshenv ];  then
 	cp  $SCRIPT_DIRECTORY/zshenv  /etc
     fi
-    if [  -n /etc/zshrc  ];  then
+    if [  ! -f /etc/zshrc  ];  then
 	cp  $SCRIPT_DIRECTORY/zshrc  /etc
     fi
 
