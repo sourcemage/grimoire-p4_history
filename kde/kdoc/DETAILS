@@ -1,0 +1,23 @@
+           SPELL=kdoc
+         VERSION=2.0a54
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.kde.org/pub/kde/stable/3.0/src/$SOURCE
+   SOURCE_URL[2]=ftp://ibiblio.org/pub/packages/desktops/kde/stable/3.0/src/$SOURCE    
+	 WEB_SITE=http://www.kde.org
+         ENTERED=20010922
+         UPDATED=20020409
+      MAINTAINER=eric@lasvegasdata.com
+             MD5=700d735518698e6bccf3f26590c487f5
+         LICENSE=GPL
+           SHORT="kdoc creates cross-referenced docs for c++ and COBRA IDL libraries."
+cat << EOF
+KDOC creates cross-referenced documentation for C++ and CORBA IDL
+libraries directly from the source. Documentation can be embedded in
+special doc comments in the source.
+Also included:
+qt2kdoc:        Generates cross-reference index to link kdoc output with 
+                Qt documentation.
+makekdedoc:     Generates documentation for the KDE libraries.
+EOF
