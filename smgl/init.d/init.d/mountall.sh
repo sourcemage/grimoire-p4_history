@@ -17,7 +17,7 @@ checkfs()
   [ "$FSCKFIX" = yes ]  &&  FIX="-y"  ||  FIX="-a"
 
   echo "Checking file systems..."
-  fsck -T -C -A $FIX $FORCE
+  /sbin/fsck -T -C -A $FIX $FORCE
   evaluate_retval
 
   if [ $? -gt 1 ];  then
@@ -27,8 +27,8 @@ checkfs()
     echo  "manually by running /sbin/fsck"
     echo  "without the -a option"
     $NORMAL
-    sulogin
-    reboot  -f
+    /sbin/sulogin
+    /sbin/reboot  -f
   fi
 
   rm -f /fastboot /forcefsck
@@ -56,13 +56,16 @@ start()
 
   echo "Mounting root file system read only..."
   mount   -n  -o  remount,ro  /
-  evaluate_retval
+  evaluate_retval || exit 1
 
   checkfs
 
-  mount    -n -o remount,rw /
-  echo     > /etc/mtab
-  mount    -f -o remount,rw /
+  echo "Mounting root file system read/write..."
+  {
+    mount    -n -o remount,rw / &&
+    echo     > /etc/mtab        &&
+    mount    -f -o remount,rw /
+  } || exit 1
 
   if optional_executable /sbin/swapon ; then
     echo -n "Activating swap... "
@@ -80,6 +83,8 @@ start()
 # mountnfs.sh will take care of this.
   mount    -a  -t  nosmbfs,nonfs,noncpfs
   evaluate_retval
+
+  exit 0
 }
 
 

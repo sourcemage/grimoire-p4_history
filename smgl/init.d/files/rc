@@ -23,16 +23,6 @@ RUNLEVELS_DIR="/etc/init.d/runlevels"
 . /etc/sysconfig/init
 . /etc/init.d/smgl_functions
 
-
-essential_script_failure()
-{
-  echo
-  echo "Essential script failed..."
-  echo
-  sulogin
-  reboot
-}
-
 ######################
 ######################
 
@@ -43,7 +33,7 @@ start_dir()
     set $1 start
     [ -f "$1/runlevel.config" ] && . $1/runlevel.config
     . /etc/init.d/smgl_runlevel
-  ) || essential_script_failure
+  )
 }
 
 # $1 - full path to directory
@@ -63,7 +53,7 @@ start()
   echo
   echo "Booting to runlevel $target_runlevel..."
   echo
-  need "%$target_runlevel" || essential_script_failure
+  need "%$target_runlevel"
 }
 
 ######################
@@ -91,7 +81,7 @@ run_runlevel()
       echo "not a runlevel: $lvl" > /dev/stderr
       OK_ERR=1
     fi
-  ) || essential_script_failure
+  )
   [ -n "$OK_ERR" ] && exit 1
 }
 

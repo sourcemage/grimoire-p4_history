@@ -172,7 +172,9 @@ case "$action" in
   switch) switch  ;;
   start)  start   ;;
   stop)   stop    ;;
-  *)      exit 1  ;;
+  *)      echo "Bad runlevel action: $action"
+          exit 1
+          ;;
 esac
 
 unset rc_self self action self_runlevel
