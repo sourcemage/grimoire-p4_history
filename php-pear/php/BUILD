@@ -44,4 +44,4 @@ make                                                &&
 if [ -f $INSTALL_LOGS/$SPELL-* ]
 then
   sedit 's|.*/httpd\.conf.*||g' $INSTALL_LOGS/$SPELL-* 
-fi              &&
+fi
