@@ -6,7 +6,8 @@
 
   message "${MESSAGE_COLOR}Changing $SPELL default port from 8080 to 8181... ${DEFAULT_COLOR}" &&
   sedit "s:8080:8181:" /usr/share/$SPELL/UI/HTML.pm      &&
-  sedit "s:8080:8181:" /usr/share/$SPELL/popfile.cfg      &&
+# popfile.cfg only exists after running popfile
+#  sedit "s:8080:8181:" /usr/share/$SPELL/popfile.cfg      &&
 
   chmod u+x     /usr/share/$SPELL/*.pl
 
