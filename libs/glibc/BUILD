@@ -2,15 +2,15 @@
 
   cd $SOURCE_DIRECTORY.bld                    &&
 
-  unset  LDFLAGS
-
   if    !  echo  "$CFLAGS"  |  grep  -q -- "-O"
   then  export     CFLAGS="$CFLAGS -Os"
-  fi
+  fi                                          &&
 
   if    !  echo  "$CXXFLAGS"  |  grep  -q -- "-O"
   then  export     CXXFLAGS="$CFLAGS -Os"
-  fi
+  fi                                          &&
+
+  export  CFLAGS="$(  echo  $CFLAGS  |  sed  s/-ffast-math//  )"  &&
 
   $SOURCE_DIRECTORY/configure                 \
                --host=$BUILD                  \

@@ -5,5 +5,6 @@ service netbios-ns
 	wait		= yes
 	user		= root
 	group		= root
+	server_args	= -o  -s /etc/samba/smb.conf
 	server		= /usr/sbin/nmbd
 }

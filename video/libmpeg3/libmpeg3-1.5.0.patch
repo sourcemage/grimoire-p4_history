@@ -1,0 +1,77 @@
+diff -Nur libmpeg3-1.5.0/Makefile libmpeg3-1.5.0-shared/Makefile
+--- libmpeg3-1.5.0/Makefile	2002-06-21 14:35:24.000000000 +0200
++++ libmpeg3-1.5.0-shared/Makefile	2003-04-25 16:47:56.000000000 +0200
+@@ -49,6 +49,7 @@
+ 
+ CFLAGS += \
+ 	-I. \
++	-I/usr/include/a52dec \
+ 	-I$(A52DIR)/include \
+ 	-I$(A52DIR)/liba52
+ 
+@@ -122,18 +123,15 @@
+ 	$(OBJDIR)/audio \
+ 	$(OBJDIR)/video
+ 
+-include Makefile.a52
+ 
+-DIRS += $(A52DIRS)
+ 
+-
+-OUTPUT = $(OBJDIR)/libmpeg3.a
++OUTPUT = $(OBJDIR)/libmpeg3.so
+ UTILS = $(OBJDIR)/mpeg3dump $(OBJDIR)/mpeg3cat $(OBJDIR)/mpeg3toc 
+ 
+ #$(OBJDIR)/mpeg3split
+ 
+ 
+-LIBS = -lm -lpthread
++LIBS = -lm -lpthread -Li686
+ 
+ $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(OBJDIR) \; fi )
+ 
+@@ -147,16 +145,16 @@
+ 	if ! test -d $@ ; then mkdir -p $@ ; fi
+ 
+ $(OUTPUT): $(OBJS) $(ASMOBJS) $(NASMOBJS) $(A52OBJS) $(UTILOBJS)
+-	ar rcs $(OUTPUT) `cat $(OBJDIR)/objs`
++	ld -shared -o $(OUTPUT) `cat $(OBJDIR)/objs` $(LIBS) -la52
+ 
+ $(OBJDIR)/mpeg3dump: $(OUTPUT)
+-	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3dump mpeg3dump.c $(OUTPUT) $(LIBS)
++	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3dump mpeg3dump.c -lmpeg3 $(LIBS)
+ 
+ $(OBJDIR)/mpeg3cat: $(OUTPUT)
+-	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c $(OUTPUT) $(LIBS)
++	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3cat mpeg3cat.c -lmpeg3 $(LIBS)
+ 
+ $(OBJDIR)/mpeg3toc: $(OUTPUT)
+-	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3toc mpeg3toc.c $(OUTPUT) $(LIBS)
++	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3toc mpeg3toc.c -lmpeg3 $(LIBS)
+ 
+ #$(OBJDIR)/mpeg3split: $(OUTPUT)
+ #	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3split mpeg3split.c $(OUTPUT) $(LIBS)
+@@ -175,7 +173,11 @@
+ util: $(UTILS)
+ 
+ install: 
++	mkdir -p /usr/include/libmpeg3
++	cp libmpeg3.h mpeg3private.h mpeg3protos.h /usr/include/libmpeg3
+ 	cp $(UTILS) /usr/bin
++	cp $(OUTPUT) /usr/lib
++	ldconfig
+ 
+ clean:
+ 	rm -rf $(OBJDIR)
+Binary files libmpeg3-1.5.0/.Makefile.swp and libmpeg3-1.5.0-shared/.Makefile.swp differ
+diff -Nur libmpeg3-1.5.0/mpeg3private.h libmpeg3-1.5.0-shared/mpeg3private.h
+--- libmpeg3-1.5.0/mpeg3private.h	2002-10-18 03:38:19.000000000 +0200
++++ libmpeg3-1.5.0-shared/mpeg3private.h	2003-04-25 16:31:08.000000000 +0200
+@@ -3,6 +3,7 @@
+ 
+ #include <stdint.h>
+ #include <stdio.h>
++#include <pthread.h>
+ 
+ 
+ 

@@ -2,10 +2,6 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
   LANG="--enable-languages=c,c++"
 
-  if    query  "Enable Ada 95 support?"  y
-  then  LANG="$LANG,ada"
-  fi
-
   if    query  "Enable Fortran 77 support?"  y
   then  LANG="$LANG,f77"
   fi

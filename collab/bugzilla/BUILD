@@ -1,21 +1,14 @@
-# $Id: BUILD,v 1.5 2002/12/22 21:53:40 sergeyli Exp $
 (
 
-	# kill remnants of CVS, but make sure we're in the proper directory
-	[ `pwd` == $SOURCE_DIRECTORY ]                 &&
-	rm -fr `find ./ -type d -and -name CVS`        &&
-	rm -fr `find ./ -type f -and -name .cvsignore` &&
+	# kill remnants of CVS, if any
+	rm -fr $(find ./ -type d -and -name CVS)        &&
+	rm -fr $(find ./ -type f -and -name .cvsignore) &&
 
-	# change perl invocation path
-	for F in `find -maxdepth 1 -type f`; do
-		perl -pi -e "s@/usr/bonsaitools/bin/perl@`which perl`@" $F
-	done                                           &&
+	prepare_install &&
 
-	prepare_install                                &&
-
-	mkdir -p                /usr/share/$SPELL      &&
-	cp    -r ./             /usr/share/$SPELL/     &&
-	chown -R nobody:nogroup /usr/share/$SPELL      &&
+	mkdir -p                /usr/share/$SPELL  &&
+	cp    -r ./             /usr/share/$SPELL/ &&
+	chown -R nobody:nogroup /usr/share/$SPELL  &&
 
 	# it's good to have docs
 	if [ -d /usr/doc/$SPELL ]; then
@@ -23,4 +16,4 @@
 	fi                                             &&
 	ln -fns /usr/share/$SPELL/docs /usr/doc/$SPELL
     
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

@@ -1,6 +1,6 @@
 # $Id: BUILD,v 1.1 2002/07/29 23:53:53 sergeyli Exp $
 (
-	cp ./html/mainfile.php ./html/mainfile.php.default    &&
+	rm ./html/mainfile.php                                &&
 
 	prepare_install                                       &&
 
@@ -13,4 +13,4 @@
 	echo "Please point your apache at /usr/share/$SPELL/html and request install.php."
 	echo "You will need to delete /usr/share/$SPELL/html/install.php afterwards."
     
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

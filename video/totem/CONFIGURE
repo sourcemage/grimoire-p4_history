@@ -1,0 +1,10 @@
+if  !  grep  -q  "GSTREAMER"  $SPELL_CONFIG;  then
+
+  if    query  "Enable gstreamer backend (highly experimental, this will disable the xine-lib backend, so if you want totem for everyday use as a mediaplayer, say no)?" n
+  then  GSTREAMER=y
+  else  GSTREAMER=n
+  fi
+
+  echo  "GSTREAMER=$GSTREAMER"  >>  $SPELL_CONFIG
+
+fi
