@@ -13,7 +13,7 @@ PASS=123456 &&
 
 message "${MESSAGE_COLOR}Creating default slapd.conf${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/slapd.conf.default << __EOF__ &&
+cat > /tmp/slapd.conf.default.$$ << __EOF__ &&
 # See slapd.conf(5) for details on configuration options.
 # This file should NOT be world readable.
 #
@@ -87,13 +87,14 @@ rootdn		"cn=root,$SUFFIX"
 rootpw		"$(slappasswd -s "$PASS")"
 __EOF__
 
+mv /tmp/slapd.conf.default.$$ /etc/openldap/slapd.conf.default &&
 if ! [ -e /etc/openldap/slapd.conf ]; then
   cp /etc/openldap/slapd.conf.default /etc/openldap/slapd.conf
 fi &&
 
 message "${MESSAGE_COLOR}Creating default ldap.conf${DEFAULT_COLOR}" &&
 
-cat > /etc/ldap.conf.default << __EOF__ &&
+cat > /tmp/ldap.conf.default.$$ << __EOF__ &&
 # This is the configuration file for the LDAP nameservice
 # switch library and the LDAP PAM module.
 #
@@ -127,13 +128,14 @@ pam_password exop
 ldap_version 3
 __EOF__
 
+mv /tmp/ldap.conf.default.$$ /etc/ldap.conf.default &&
 if ! [ -e /etc/ldap.conf ]; then
   cp /etc/ldap.conf.default /etc/ldap.conf
 fi &&
 
 message "${MESSAGE_COLOR}Creating sample LDIF for top hierarchy${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/top.ldif << __EOF__ &&
+cat > /tmp/top.ldif.$$ << __EOF__ &&
 #
 # Replace $SUFFIX with suffix from slapd.conf
 # Use the following command to create th hierarchy:
@@ -155,9 +157,11 @@ objectclass: organizationalUnit
 ou: Groups
 __EOF__
 
+mv /tmp/top.ldif.$$ /etc/openldap/top.ldif &&
+
 message "${MESSAGE_COLOR}Creating sample LDIF for user and group creation${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/usergroup.ldif << __EOF__ &&
+cat > /tmp/usergroup.ldif.$$ << __EOF__ &&
 #
 # Sample user and group LDIF file
 # Replace $SUFFIX with suffix from slapd.conf
@@ -186,6 +190,8 @@ uidNumber: 1001
 gidNumber: 1001
 homeDirectory: /home/john
 __EOF__
+
+mv /tmp/usergroup.ldif.$$ /etc/openldap/usergroup.ldif &&
 
 message "${MESSAGE_COLOR}Use $SCRIPT_DIRECTORY/mkaccount.sh${DEFAULT_COLOR}" &&
 message "${MESSAGE_COLOR}to create LDIF for new account${DEFAULT_COLOR}"
