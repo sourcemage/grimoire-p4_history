@@ -14,18 +14,18 @@ EOF`
   LIKELY_KERNEL_PARTITION=`echo ${POSSIBLE_KERNEL_PARTITIONS} | cut -d' ' -f1`
 
   LIKELY_ROOT=`df / | grep dev | cut -d' ' -f1`
-  LIEKLY_BOOT=`df /boot | grep dev | cut -d' ' -f1`
+  LIKELY_BOOT=`df /boot | grep dev | cut -d' ' -f1`
 
   # determine if kernel is (hd#,#)/kernel or (hd#,#)/boot/kernel
   if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
   then  
 	KERNEL_LOCATION=${CR_KERNEL}
-	KERNEL_LINK=boot/vmlinubz
+	BOOT_LOC=/boot
   else  
 	KERNEL_LOCATION=${CR_KERNEL_FILE}
-	KERNEL_LINK=vmlinubz
+	BOOT_LOC=""
   fi
-
+  
   cat << EOF > /boot/grub/menu.lst.skel
 # The grub spell attempts to create a sensible skeletin file which you
 # can edit to create a working menu.lst file.  Use this as a guide, but
@@ -47,7 +47,7 @@ timeout 10
 lba32
 
 # Splashimage, provides a nice image for the background
-splashimage ${LIKELY_KERNEL_PARTITION}/grub/images/smgl-splash.xpm.gz
+splashimage ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/grub/images/smgl-splash.xpm.gz
 
 # defines menu foreground/background, highlight foreground/background
 color  black/light-gray white/red
@@ -58,10 +58,10 @@ color  black/light-gray white/red
 # such as ide-scsi= if you're using an IDE CDROM burner.
 
 title  Source Mage GNU/Linux
-kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LINK} root=${LIKELY_ROOT} devfs=mount
+kernel ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/vmlinubz root=${LIKELY_ROOT} devfs=mount
 
 title  Source Mage GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=mount
+kernel ${LIKELY_KERNEL_PARTITION}${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=mount
 
 EOF
 }
@@ -88,11 +88,12 @@ EOF`
                      $GRUB_ROOT
   else 
     message  "GRUB_ROOT (where /boot/grub resides) has been identified as $GRUB_ROOT"
-    if  query  "Would you like to override this value with your own?" n
-    then  
-      config_query_string  GRUB_ROOT  \
-                           "Enter the grub root partition (probably /boot) in the form of (hdN,N) For example, the first partition of the first drive would be (hd0,0) Don't forget to include the parenthesis, and include NO SPACES within the parenthesis"  \
-                     $GRUB_ROOT
+    config_query  OVERRIDE_GRUB_ROOT "Would you like to override this value with your own?" n
+    
+    if  [  $OVERRIDE_GRUB_ROOT == "y"  ]; then  
+	config_query_string  GRUB_ROOT  \
+	    "Enter the grub root partition (probably /boot) in the form of (hdN,N) For example, the first partition of the first drive would be (hd0,0) Don't forget to include the parenthesis, and include NO SPACES within the parenthesis"  \
+	    $GRUB_ROOT
     fi
   fi
 }
@@ -105,7 +106,7 @@ configure_grub_root
 # across
 
 # the stagefile should update with new versions
-cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
+cp -f /usr/share/grub/i386-pc/*stage*  /boot/grub
 
 if  [  -h  /etc/grub.conf  ]
 then
@@ -119,17 +120,19 @@ if  [  -e  /boot/grub/menu.lst  ];  then
     message  "touch anything and you'll want to install GRUB yourself once you"
     message  "your /boot/grub/menu.lst file is to your liking."
 
-    if  query  "Would you like to edit your /boot/grub/menu.lst file?" n
-      then  ${EDITOR:-nano} /boot/grub/menu.lst
+    config_query  EDIT_GRUB_CONF "Would you like to edit your /boot/grub/menu.lst file?" n  
+    if  [  $EDIT_GRUB_CONF == "y"  ]; then
+	${EDITOR:-nano} /boot/grub/menu.lst
     fi
-
+    
 else
-    if  query  "Would you like to edit /boot/grub/menu.lst.skel?" y
-    then  ${EDITOR:-nano} /boot/grub/menu.lst.skel
+    config_query  EDIT_GRUB_SKEL_CONF "Would you like to edit /boot/grub/menu.lst.skel?" y
+    if  [  $EDIT_GRUB_SKEL_CONF == "y"  ]; then
+	${EDITOR:-nano} /boot/grub/menu.lst.skel
     fi
-
-    if query  "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
-    then
+    
+    config_query  APPLY_GRUB_NEW_CONF "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
+    if  [  $APPLY_GRUB_NEW_CONF == "y"  ]; then
 	cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
     fi
 
@@ -138,14 +141,9 @@ fi
 #  if, after all this, the user has created a /boot/grub/menu.lst file in
 #  some fashion, allow them to install GRUB onto the GRUB_TARGET
 if  [  -e  /boot/grub/menu.lst  ];  then
-    if  query  "Would you like to install GRUB onto ${GRUB_TARGET} with GRUB_ROOT ${GRUB_ROOT}?" n
-    then 
-      RUN_GRUB=Y
-    else 
-      RUN_GRUB=N
-    fi
+    config_query  RUN_GRUB  "Would you like to install GRUB onto ${GRUB_TARGET} with GRUB_ROOT ${GRUB_ROOT}?" n
 else
-    RUN_GRUB=N
+    RUN_GRUB=n
 fi
 
 case  $RUN_GRUB  in
@@ -167,10 +165,10 @@ case  $RUN_GRUB  in
   message  "type you like (XFS, JFS, Reiser, ...) as your system root partition."
   message  ""
 
-  if query  "Do you have a tested, working rescue diskette and wish to proceed"  n
-  then
+  config_query  CONFIRM_RUN_GRUB  "Do you have a tested, working rescue diskette and wish to proceed"  n
+  if  [  $CONFIRM_RUN_GRUB == "y"  ]; then
        message  "Overwriting /boot/grub/*stage* with new files ..."
-       /usr/share/grub/i386-pc/*stage*  /boot/grub
+       cp -f /usr/share/grub/i386-pc/*stage*  /boot/grub
        message  "Preparing to install GRUB on ${GRUB_TARGET} (with grubroot ${GRUB_ROOT})..."
        /sbin/grub --batch << EOF || message "GRUB INSTALL FAILED.  INSTALL MANUALLY!  DANGER: YOUR SYSTEM MAY BE UNBOOTABLE!!!"
 root ${GRUB_ROOT}
