@@ -1,3 +1,17 @@
+2005-01-03 Eric Sandall <eric@sandall.us>
+	* Renamed to yosucker
+	* DETAILS: Renamed to yosucker
+	  Removed useless MD5[1]
+	  Changed LICENSE to LICENSE[0]
+	  Shortened SHORT
+	  Added BUILD_API=2
+	  Updated UPDATED
+	* CONFLICTS: Auto-conflicts with YoSucker
+	* BUILD: Run only `true`
+	* DEPENDS: Removed TABs
+	  Formatted to Guru Handbook
+	* HISTORY: Formatted to Guru Handbook
+
 2004-07-07 Andrew "ruskie" Levstik <ruskie@mages.ath.cx>
 	* DETAILS: Version bump pr59
 
@@ -8,39 +22,41 @@
 	* HAllo my name is Hamish i will be hyjacking this spell for a minute
 
 2003-07-03 M.L. <mlubrano@sourcemage.org>
-	* Version++ (pr33).
+	* DETAILS: Version++ (pr33).
 
 2003-05-13 M.L. <mlubrano@sourcemage.org>
-	* Version++ (pr31).
+	* DETAILS: Version++ (pr31).
 
 2003-04-01 M.L. <mlubrano@sourcemage.org>
-	* Version++ (pr29).
+	* DETAILS: Version++ (pr29).
 
 2003-03-28 M.L. <mlubrano@sourcemage.org>
-	* Version++ (27a).
+	* DETAILS: Version++ (27a).
 
 2003-02-10 M.L. <mlubrano@sourcemage.org>
-	* Version++ (pr27).
+	* DETAILS: Version++ (pr27).
 
 2003-01-21 M.L. <mlubrano@sourcemage.org>
-	* Version++ (pr25a).
+	* DETAILS: Version++ (pr25a).
 
 2002-11-05 M.L. <mlubrano@sourcemage.org>
-	* Added MENU_* entries to DETAILS file.
+	* DETAILS: Added MENU_* entries
 
 2002-08-21 M.L. <m.l@compaqnet.fr>
-	* MD5[0] field updated, built from the ".tar" archive.
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
 2002-08-16 M.L. <m.l@compaqnet.fr>
 	* Fixed bug #694:
-	  Removed utils/CheckModules from BUILD, since it may install spell without using cast/sorcery, and it only double check for missing dependices (useless since DEPENDS requires all required libs).
+	* BUILD: Removed utils/CheckModules from BUILD, since it may install spell
+	  without using cast/sorcery, and it only double check for missing
+	  dependices (useless since DEPENDS requires all required libs).
 
 2002-08-15 M.L. <m.l@compaqnet.fr>
-	* MD5[x] field format conforming to grimoire-gurus handbook.
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
 	  Added source url of last ressort (sourcemage mirror).
 
 2002-08-10 M.L. <m.l@compaqnet.fr>
-	* Version++ (0.23a)
+	* DETAILS: Version++ (0.23a)
 
 2002-07-17 Dufflebunk <dufflebunk@dufflebunk.homeip.net>
 	* Created spell.
