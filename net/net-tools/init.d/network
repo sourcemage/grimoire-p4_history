@@ -1,9 +1,12 @@
 #!/bin/bash
 
+. /etc/sysconfig/dhcpcd
+
 PROGRAM=/bin/false    # To get auto_init functionality
 RUNLEVEL=3
 PROVIDES=network
-NEEDS="+syslog"
+
+[ "$USE_SYSLOG" = "yes" ] && NEEDS="+syslog"
 
 . /etc/init.d/smgl_init
 
