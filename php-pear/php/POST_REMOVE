@@ -11,7 +11,6 @@ then
   grep  -v  "AddType application/x-httpd-php .php .html"   	/tmp/conf.tmp1 > /tmp/conf.tmp2	
   grep  -v  "AddModule mod_php5.c"   /tmp/conf.tmp2 >  /etc/httpd/httpd.conf
   rm    -f  /tmp/httpd.conf /tmp/conf.tmp*
-  httpd -t
 fi  &&
 
 if    [  -e         /etc/httpsd/httpd.conf  ]
@@ -21,5 +20,4 @@ then
   grep  -v  "AddType application/x-httpd-php .php .html"   	/tmp/conf.tmp1 > /tmp/conf.tmp2	
   grep  -v  "AddModule mod_php5.c"   /tmp/conf.tmp2 >  /etc/httpsd/httpd.conf
   rm    -f  /tmp/httpd.conf /tmp/conf.tmp*
-  httpd -t
 fi
