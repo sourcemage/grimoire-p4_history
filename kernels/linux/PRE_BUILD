@@ -134,11 +134,12 @@ if [[ ! -L /usr/include/asm-generic ]]; then
   ln ../src/linux/include/asm-generic /usr/include/ -s
 fi
 
+cd  /usr/src/linux
+
 if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
-  mv $CONFIG_CACHE/.config $CONFIG_CACHE/kernel.config
+  cp $CONFIG_CACHE/kernel.config .config
 fi
 
-cd  /usr/src/linux
 
 local COUNTER
 local VARS
