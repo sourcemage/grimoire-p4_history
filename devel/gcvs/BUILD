@@ -1,8 +1,14 @@
 (
 
+  sedit  's/automake /automake -a /'  make_configure
+
   ./make_configure   \
-      --host=$BUILD  \
-      --prefix=/usr  \
+      --prefix=/usr
+
+  cd  cvsunix        &&
+  ./configure        \
+      --prefix=/usr  &&
+  cd  ..             &&
   make               &&
   prepare_install    && 
   make  install
