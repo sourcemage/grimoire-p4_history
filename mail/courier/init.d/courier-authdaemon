@@ -6,12 +6,15 @@
 # NOTE: The 'restart' here does a "hard" stop, and a start.  Be gentle, use
 # "courierd restart" for a kindler, gentler, restart.
 
-# this sets the run levels and priority for links
-# SMGL-script-version=20030427
-# SMGL-START:3 4 5:S90
-# SMGL-STOP:0 1 2 6:K10
 
-.  /etc/init.d/functions
+
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+PROVIDES=mta
+
+.  /etc/init.d/smgl_functions
+
+
 
 prefix="/usr"
 exec_prefix="/usr/bin"
