@@ -1,4 +1,10 @@
 (
+
+  unpack $SOURCE_CACHE/$SOURCE2 ${MD5[1]} && 
+  tail -n 55 $SOURCE_CACHE/$SOURCE2 | head -n 52 | 
+  sed -e 's/word$/word lists.\\n"     , stderr);/' | 
+  grep -v '^lists' | grep -vx '' | patch prog/compress.c &&
+
   # aspell cannot be compiled with "speedy"
   CFLAGS=`echo $CFLAGS | sed "s/-O3/-O2/"`  &&
   CXXFLAGS="$CFLAGS"                        &&
@@ -19,3 +25,4 @@
   make  install  
 
 ) > $C_FIFO 2>&1
+
