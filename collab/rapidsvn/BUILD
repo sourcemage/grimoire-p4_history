@@ -4,14 +4,17 @@
 #  message "${MESSAGE_COLOR}Downloading the up-to-date source...${DEFAULT_COLOR}"
 #  svn export http://svn.collab.net/repos/svn/clients/rapidsvn/trunk . &&
 
+  patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
+
   ./autogen.sh &&
   ./configure                       \
     --build=$BUILD                  \
     --prefix=/usr                   \
     --sysconfdir=/etc               \
     --localstatedir=/var            \
+    --with-svn-config=$(which svn-config) \
     --with-svn-include=/usr/include \
-    --with-svn-lib=/usr/lib         \
+    --with-wx-config=$(which wx-config) \
     $OPTS                           &&
   make       &&
   make check &&
