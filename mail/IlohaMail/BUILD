@@ -7,7 +7,7 @@
     LOC="/usr/share/httpsd/htdocs/$SPELL"
   elif  spell_installed  "apache2";  then
     LOC="/usr/share/apache2/htdocs/$SPELL"
-  fi
+  fi								&&
 
 
   prepare_install 						&&
@@ -22,12 +22,11 @@
   cp -r IlohaMail/* $LOC                                	&&
 
   chmod 700 $LOC/users $LOC/sessions $LOC/uploads $LOC/cache	&&
-  chown nobody  -R /usr/share/httpd/IlohaMail/*			&&
-  chgrp nogroup -R /usr/share/httpd/IlohaMail/*         	&&
+  chown  www-data.www-data  -R  $LOC  				&&
 
   # Copy software Documentation
   mkdir -p /usr/doc/$SPELL					&&
   cp -r Manual /usr/doc/$SPELL					&&
-  cp COPYING DEV_LOG.txt INSTALL README RELEASE_NOTES UPGRADING /usr/doc/$SPELL
+  cp COPYING INSTALL README RELEASE_NOTES UPGRADING /usr/doc/$SPELL
 
 ) > $C_FIFO 2>&1
