@@ -1,15 +1,14 @@
-# $Id: DETAILS,v 1.6 2002/10/23 18:55:17 sergeyli Exp $
+# $Id: DETAILS,v 1.7 2003/01/08 18:35:56 sergeyli Exp $
            SPELL=turba
-         VERSION=1.1
-          SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='15bcc89c060063acd3845819cbb4912f'
+         VERSION=${VERSION:-1.1}
+          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
+          MD5[0]=${FORCE_DOWNLOAD:+15bcc89c060063acd3845819cbb4912f}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-      SOURCE_URI=$SPELL/tarballs/$SOURCE
-   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SOURCE_URI
-        WEB_SITE=http://www.horde.org/turba/
+   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
+        WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20020428
-         UPDATED=20020428
+         UPDATED=20030108
       MAINTAINER=sergeyli@pisem.net
            SHORT="Turba is the Horde contact management application"
 cat << EOF

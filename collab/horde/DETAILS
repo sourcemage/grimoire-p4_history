@@ -1,15 +1,14 @@
-# $Id: DETAILS,v 1.7 2002/11/14 21:30:35 sergeyli Exp $
+# $Id: DETAILS,v 1.8 2003/01/08 18:35:55 sergeyli Exp $
            SPELL=horde
-         VERSION=${VERSION:-2.1}
-          SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='e906708710ef4a3e834293af6325a1da'
+         VERSION=${VERSION:-2.2-RC1}
+          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
+          MD5[0]=${FORCE_DOWNLOAD:+8b78326ebd839dcc10879001eb1c7e81}
       LICENSE[0]=LGPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-      SOURCE_URI=$SPELL/tarballs/$SOURCE
-   SOURCE_URL[0]=${SOURCE_URL:-ftp://ftp.horde.org/pub/$SOURCE_URI}
+   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
         WEB_SITE=http://www.horde.org/horde/
          ENTERED=20020428
-         UPDATED=20021110
+         UPDATED=20030108
            SHORT="Horde Application Framework is a general-purpose web application framework in PHP"
 cat << EOF
 The Horde Framework is the glue that all Horde applications have in common.
@@ -19,18 +18,18 @@ handling things like preferences, permissions, browser detection, user help,
 and more.
 
 Required PHP compilation options (BUILD fails if they were off):
-	--with-gettext	for internationalization support
-	--with-xml		for XML support
-	--with-imap		for IMAP and POP3 support
+--with-gettext for internationalization support
+--with-xml     for XML support
+--with-imap    for IMAP and POP3 support
 Recommended PHP compilation options:
-	--with-mysql	to store preferences in MySQL (tested thoroughly)
-	--with-pgsql	to store preferences in PostgreSQL (teste thoroughly)
-	--with-oracle	to store preferences in Oracle (known to work)
-	--with-ldap		to store preferences in LDAP
-	--with-mcrypt	to provide cryptographics beyond PHP built-in
-	--enable-ftp	for Gollem support
+--with-mysql  to store preferences in MySQL
+--with-pgsql  to store preferences in PostgreSQL
+--with-oracle to store preferences in Oracle
+--with-ldap   to store preferences in LDAP
+--with-mcrypt to provide cryptographics beyond PHP built-in
+--enable-ftp  for Gollem support
 Also recommended:
-	sendmail(8) API and a local sendmail interface (included with sendmail,
-	postfix, qmail, exim, and others) as specified by dependency on
-	mail-transport-agent in DEPENDS
+* sendmail(8) API and a local sendmail interface (included with sendmail,
+* postfix, qmail, exim, and others) as specified by dependency on
+  mail-transport-agent in DEPENDS
 EOF
