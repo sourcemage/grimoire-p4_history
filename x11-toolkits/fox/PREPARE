@@ -1,10 +1,1 @@
-if ! grep -q OLD_STABLE $SPELL_CONFIG; then
-  if query "Would you like to build the older stable release (for use with xfe) of $SPELL ?" n; then
-    OLD_STABLE=yes
-  else
-    OLD_STABLE=no
-  fi
-
-  echo OLD_STABLE=$OLD_STABLE >> $SPELL_CONFIG
-fi
-
+config_query_list REL "Which release?" current devel old
