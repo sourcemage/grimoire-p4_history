@@ -4,7 +4,10 @@
  export  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
 
 MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
-MOZI_VERS=1.5b                               &&
+if [ "$SVG" = "yes" ];
+ then OPTS="$OPTS --enable-svg --enable-svg-renderer-libart" &&
+ export MOZ_INTERNAL_LIBART_LGPL=1           
+fi &&
 export MOZ_PHOENIX=1                         &&
     ./configure \
     --prefix=${INSTALL_ROOT}/usr    \
@@ -29,11 +32,11 @@ export MOZ_PHOENIX=1                         &&
 
 
   prepare_install &&
+
 # everything coming into /usr/lib/mozilla-$MOZI_VERS/
 # must actually go to /usr/lib/mozilla/
-# TODO: work out what it uses to decide it's installdir ?
-# I know it uses mozilla HEAD naming but what variable is that?
 
+  MOZI_VERS=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
   mkdir -p $MOZILLA_HOME                           &&
   ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZI_VERS   &&
   mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&

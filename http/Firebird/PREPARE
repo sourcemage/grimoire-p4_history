@@ -4,7 +4,15 @@ if query "\tThis spell will download the latest offical release of MozillaFirebi
 \tIt is then possible to update the Firebird code
 \tvia  cvs and get ALL the nice changes since the last release.
 \tWould you like to update to cvs HEAD ?" n 
-then echo "HEADCODE=yes" >> $SPELL_CONFIG
+then echo "HEADCODE=yes" >> $SPELL_CONFIG &&
+
+#choose SVG
+if ! grep -q SVG $SPELL_CONFIG ;
+then if query "Would you like native SVG support (scalable vector graphics) " n
+            then echo SVG=yes >> $SPELL_CONFIG
+    fi 
+fi 
+
 
 fi &&
 
@@ -17,12 +25,15 @@ SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
 MD5[0]=a7f2c4663356dfd4d1f426b220e3fab9" >> $SPELL_CONFIG &&
 echo CONFIGURED=yes >> $SPELL_CONFIG
 fi &&
+
+#choose toolkit
+
 if ! grep -q GTK $SPELL_CONFIG ;
-then if query "Would you like to use original GTK+ toolkit?\n(Alternative is GTK+2 with anti-aliasing\
- support) " n
-            then echo GTK=yes >> $SPELL_CONFIG
-            elif query "Use current GTK+2 toolkit ?" y
-                 then  echo GTK2=yes >> $SPELL_CONFIG
+then if query "Would you like to use GTK+2 toolkit with anti-aliasing support ?\n(Alternative is \
+original gtk+) " y
+            then echo GTK2=yes >> $SPELL_CONFIG
+            elif query "Would you like to use original GTK+ toolkit ?" y
+                 then  echo GTK=yes >> $SPELL_CONFIG
     fi 
-fi  
+fi 
 
