@@ -1,3 +1,15 @@
+2003-10-10 Eric Sandall <eric@sandall.us>
+	* BUILD: Now creates generic asm symlink to asm-${ARCH}
+	if it does not exist.  Not sure why this breaks on some
+	2.6 kernels (I only recently found it on -test7 and -test6-
+	mm4 after the 2003-10-08 update, not sure if it's from that
+	update (I doubt it) or if it's semi-random/depends on what
+	system you build it, but it's now fixed if it ever happens
+	again for any kernel.
+	* UPDATE_BOOTLOADER: GRUB kernel entries now have some spacing
+	between each one. Almost ready to be enabled for everyone. ;)
+	* HISTORY: Updated to follow Guru Handbook
+
 2003-10-09 Eric Sandall <eric@sandall.us>
 	* KERNELS: Updated 2.4.23 to -pre7
 
@@ -5,268 +17,202 @@
 	* KERNELS: Updated 2.6.0 to -test7
 
 2003-10-08 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-
-		* DETAILS, KERNELS, PREPARE: Added -mm patch
-		the way it's done with the -ac and -dj patches
+	* DETAILS, KERNELS, PREPARE: Added -mm patch
+	the way it's done with the -ac and -dj patches
 
 2003-10-07 Eric Sandall <eric@sandall.us>
-		* DEPENDS: Added optional dependency on gnupg
+	* DEPENDS: Added optional dependency on gnupg
 
-2003-10-06  Jose Bernardo <jbernardo@sourcemage.org>
-		* patches/acpi: due to patches file format change,
-		removed previous patches and added latest iteraction
-		(2.4.22, 2.4.23-pre4 and 2.6.0-test5)
+2003-10-06 Jose Bernardo <jbernardo@sourcemage.org>
+	* patches/acpi: due to patches file format change,
+	removed previous patches and added latest iteraction
+	(2.4.22, 2.4.23-pre4 and 2.6.0-test5)
 
-2003-10-05  Jason Flatt <jason@flattfamily.com>
-		* patches/i2c: corrected MD5 for 2.4.22
-		* patched/bootsplash: added patch for 2.4.22 (from Hamish)
+2003-10-05 Jason Flatt <jason@flattfamily.com>
+	* patches/i2c: corrected MD5 for 2.4.22
+	* patches/bootsplash: added patch for 2.4.22 (from Hamish)
 
-2003-10-04  Eric Sandall <eric@sandall.us>
-		* patches/mm: Updated to -mm3
+2003-10-04 Eric Sandall <eric@sandall.us>
+	* patches/mm: Updated to -mm3
 
-2003-10-02  Eric Sandall <eric@sandall.us>
-		* patches/mm: Updated to -mm2
+2003-10-02 Eric Sandall <eric@sandall.us>
+	* patches/mm: Updated to -mm2
 
-2003-09-29  Eric Sandall <eric@sandall.us>
+2003-09-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 2.6.0-test6
+	* patches/mm: Update to 2.6.0-test6-mm1
 
-		Update to 2.6.0-test6
+2003-09-25 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* POST_INSTALL: Fix to make sure $VERSION get's passed to
+	UPDATE_BOOTLOADER. Needs some additional testing
 
-		Update mm patches to 2.6.0-test6-mm1
+2003-09-25 Eric Sandall <eric@sandall.us>
+	* patches/mm: Add Andrew Morton's -mm kernel (2.6.0-test5-mm4)
 
-2003-09-25  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+2003-09-24 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.23-pre5.
 
-		Fix to make sure $VERSION get's passed tu UPDATE_BOOTLOADER
-		Needs some additional testing
+2003-09-24 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* BUILD: added a optional make oldconfig [bug 996]
 
-2003-09-25  Eric Sandall <eric@sandall.us>
+2003-09-24 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: updated VERSION to 2.4.22
+	VERSION is used by web scripts [bug 3699]
 
-		Add Andrew Morton's -mm kernel (2.6.0-test5-mm4)
+2003-09-22 Eric Sandall <eric@sandall.us>
+	* patches/ck: Typo in the changed SOURCE_URLs for ck patch
 
-2003-09-24  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-09-20 Eric Sandall <eric@sandall.us>
+	* patches/ck: Updated to use full 2.4.22-ck2 patch
+	Updated incremental 2.4.22-ck2 patches
+	ck patches have a new SOURCE_URL
+	Fixed wrong MD5 for 2.4.21-ck3  (Bug #3704)
+	* BUILD: Added vmlinu[x|z|bz] symlinks  (Bug #4218)
+	Changed spell_install to check for binary  (Bug #4163)
 
-		Upgrade latest 2.4 "pre" version to 2.4.23-pre5.
+2003-09-08 Eric Sandall <eric@sandall.us>
+	* KERNELS: Update latest 2.6_TEST to 2.6.0-test5
+	* patches/openMosix: Update 2.4.22-1
 
-2003-09-24  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+2003-09-05 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* patches/bluez,patches/i2c: Updated bluetooth and I2C support
+	for kernel 2.4.22
 
-		added a optional make oldconfig [bug 996]
+2003-09-02 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.23-pre3.
 
-2003-09-24  Ladislav Hagara <hgr@vabo.cz>
+2003-08-25 Eric Sandall <eric@sandall.us>
+	* KERNELS: Upgrade latest 2.6 to test4
+	Upgrade latest 2.4 to .22 (-rc no longer available)
+	Thanks to Robin
 
-		updated VERSION to 2.4.22
-
-		VERSION is used by web scripts [bug 3699]
-
-2003-09-22  Eric Sandall <eric@sandall.us>
-
-		Typo in the changed SOURCE_URLs for ck patch
-
-2003-09-20  Eric Sandall <eric@sandall.us>
-
-		Updated to use full 2.4.22-ck2 patch
-
-		Updated incremental 2.4.22-ck2 patches
-
-		ck patches have a new SOURCE_URL
-
-		Fixed Bug #3704
-
-		Added vmlinu[x|z|bz] symlinks  (Bug #4218)
-
-		Changed spell_install to check for binary  (Bug #4163)
-
-2003-09-08  Eric Sandall <eric@sandall.us>
-
-		Update latest 2.6_TEST to 2.6.0-test5
-
-		Update openMosix to 2.4.22-1
-
-2003-09-05  Jose Bernardo Silva  <jbernardo@sourcemage.org>
-
-		Updated bluetooth and I2C support for kernel 2.4.22
-
-2003-09-02  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.23-pre3.
-
-2003-08-25  Eric Sandall <eric@sandall.us>
-
-		Upgrade latest 2.6 to test4
-
-		Upgrade latest 2.4 to .22 (-rc no longer available)
-		Thanks to Robin
-
-2003-08-10  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-rc2.
-
-2003-08-07  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-rc1.
-
-2003-08-06  Seth Woolley <seth@tautology.org>
-
-		Tracked down a spurious bug that happens when
-		one version is a substring of another version
-		in the same patch (like ck).  Thanks to Xenith
-		for reporting the symptom.
-
-2003-08-05  Eric Sandall <eric@sandall.us>
-
-		Added preliminary and UNTESTED support for grub
-		Since it's untested, it does not overwrite your
-		default configuration
-
-2003-08-05  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre10.
-
-2003-08-03  Chris Brien <cbrien@sourcemage.org>
-
-		Add bootsplash patch for 2.4
-
-2003-07-30  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre9.
-
-2003-07-29  Seth Woolley <seth@tautology.org>
-
-		Updated 2.6-test branch to 2.6.0-test2
-
-2003-07-25  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre8.
-
-2003-07-24  Ladislav Hagara <hgr@vabo.cz>
-
-		added version 2.4.21.0 of cryptoapi_patch
-
-2003-07-22  Jose Bernardo Silva  <jbernardo@sourcemage.org>
-
-		Added patch for i2c 2.8.x support for kernel 2.4.21
-		Can be generated easily for any other kernel using i2c's
-		mkpatch utility.
-
-2003-07-21  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre7.
-		Likely last update before RCs start to come out.
-
-2003-07-18  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre6.
-
-2003-07-14  Seth Woolley <seth@tautology.org>
-
-		Added 2.6.0-test1 support.
-		Since I don't know how they are going to name pre/rc kernels of
-		the test series, might need more fiddling if they are going to
-		pre/rc them since I hacked this onto the pre/rc code, though
-		it's an easy fix... just wanted to get this in.
-
-2003-07-12  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre5.
-
-2003-07-11  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.5 version to 2.5.75 (the last in the 2.5 series?).
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre4.
-
-2003-07-10  Eric Sandall <eric@sandall.us>
-
-        Added DEPENDS  (Bug #3581)
-
-2003-07-04  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Upgrade latest 2.5 version to 2.5.74.
-
-		Upgrade latest 2.4 "pre" version to 2.4.22-pre3.
-
-2003-06-23  hgg <hgreig@bigpond.net.au>
-		
-		ARCHIVE="off" fix in bugzilla bug #1068, reverting change 13315, 
-		keeping 13321
-
-2003-06-01  Seth Woolley <seth@tautology.org>
-
-		Changed md5 of 2.4.20 xfs patch, as it changed (other
-		versions stayed the same) -- xfs people have been known
-		to do this.
-
-2003-05-23  Seth Woolley <seth@tautology.org>
-
-		Added ioperm patch for security fix, other part of 3362.
-
-2003-05-17  Chris Brien <cbrien@sourcemage.org>
-
-		The spell now respects INSTALL_ROOT and HOST.
-
-2003-05-16  Seth Woolley <seth@tautology.org>
-
-		Changed checkmd5() routine to match our interpreted URL setup
-		(BTW, that's totally borked, but that's sorcery's fault)
-		Added hashDoS patch for security fix. part of bug #3362.
-
-2003-02-27  Eric Sandall <eric@sandall.us>
-
-		Added support for Sparc systems
-
-		Changed case statement in UPDATE_BOOTLOADER to use `uname -m`
-		as $BUILD is not defined yet
-
-2003-01-08  Seth Woolley <seth@tautology.org>
-
-		Added MD5 and GPG support to everything.  Now
-		nothing should be downloaded from this spell
-		without some sort of verification.
-
-		GPG was chosen because the spell allows one to arbitrarily 
-		pick CUSTOM kernels, and kernel.org already has
-		a .sign file for every regular file.
-
-		PRE_BUILD, DETAILS, HISTORY modified
-
-		MD5PATCH, GPGPATCH added
-
-		CONFIGURE changed to PREPARE and modified
-
-		kernel.gpg (for kernel.org) added.
-		grsecurity.gpg (for grsecurity.org) added.
-
-		All patches/* have all MD5s filled in and line added
-		to call MD5PATCH script, unless gpg would work on them
-		as those have a GPGPATCH call instead and their
-		PUBRINGFILE variable set.
-
-		ck split into ck and ck_extras.
-
-		Various patches were updated.
-
-		Raven framebuffer made optional and put in patches/
-
-		If gpg is not found, it will explain steps to get around
-		a lack of gnupg, even if no kernel headers exist.
-
-		Made HISTORY file smgl-compliant.
-
-		Wolfgang debugged and helped immensely.
-
-2002-12-12  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-
-		Finally removed the last "build after linux" spells from 
-		the list so they are forced to use TRIGGERS
-
-2002-09-21  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-
-		Fixed some Variable names to make the spell work with new 
-		sorcery
-
-2002-09-06  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-
-		Finally replacing old kernel spells by this one
-
-2002-08-20  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-
-		Rewrite - Attempt to merge several kernel spells into one
-	  	Now features a menu to select which version to build
+2003-08-10 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-rc2.
+
+2003-08-07 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-rc1.
+
+2003-08-06 Seth Woolley <seth@tautology.org>
+	* Tracked down a spurious bug that happens when
+	one version is a substring of another version
+	in the same patch (like ck).  Thanks to Xenith
+	for reporting the symptom.
+
+2003-08-05 Eric Sandall <eric@sandall.us>
+	* UPDATE_BOOTLOADER: Added preliminary and UNTESTED support for grub
+	Since it's untested, it does not overwrite your default configuration
+
+2003-08-05 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre10.
+
+2003-08-03 Chris Brien <cbrien@sourcemage.org>
+	* patches/bootsplash: Add patch for 2.4
+
+2003-07-30 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre9.
+
+2003-07-29 Seth Woolley <seth@tautology.org>
+	* KERNELS: Updated 2.6-test branch to 2.6.0-test2
+
+2003-07-25 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre8.
+
+2003-07-24 Ladislav Hagara <hgr@vabo.cz>
+	* patches/cryptoapi_patch: added version 2.4.21.0 of cryptoapi_patch
+
+2003-07-22 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* patches/i2c: Added patch for 2.8.x support for kernel 2.4.21
+	Can be generated easily for any other kernel using i2c's
+	mkpatch utility.
+
+2003-07-21 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre7.
+	Likely last update before RCs start to come out.
+
+2003-07-18 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre6.
+
+2003-07-14 Seth Woolley <seth@tautology.org>
+	* KERNELS: Added 2.6.0-test1 support.
+	Since I don't know how they are going to name pre/rc kernels of
+	the test series, might need more fiddling if they are going to
+	pre/rc them since I hacked this onto the pre/rc code, though
+	it's an easy fix... just wanted to get this in.
+
+2003-07-12 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.4 "pre" version to 2.4.22-pre5.
+
+2003-07-11 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.5 version to 2.5.75
+	(the last in the 2.5 series?).
+	Upgrade latest 2.4 "pre" version to 2.4.22-pre4.
+
+2003-07-10 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added  (Bug #3581)
+
+2003-07-04 Sergey Lipnevich <sergey@sourcemage.org>
+	* KERNELS: Upgrade latest 2.5 version to 2.5.74.
+	Upgrade latest 2.4 "pre" version to 2.4.22-pre3.
+
+2003-06-23 hgg <hgreig@bigpond.net.au>
+	* DETAILS: ARCHIVE="off" fix in bugzilla bug #1068,
+	reverting change 13315, keeping 13321
+
+2003-06-01 Seth Woolley <seth@tautology.org>
+	* patches/xfs: Changed md5 of 2.4.20 xfs patch, as it changed (other
+	versions stayed the same) -- xfs people have been known
+	to do this.
+
+2003-05-23 Seth Woolley <seth@tautology.org>
+	* patches/ioperm: Added patch for security fix, other part of 3362.
+
+2003-05-17 Chris Brien <cbrien@sourcemage.org>
+	* BUILD: The spell now respects INSTALL_ROOT and HOST.
+
+2003-05-16 Seth Woolley <seth@tautology.org>
+	* PRE_BUILD: Changed checkmd5() routine to match our interpreted
+	URL setup (BTW, that's totally borked, but that's sorcery's fault)
+	* patches/hashDoS: Added patch for security fix. part of bug #3362.
+
+2003-02-27 Eric Sandall <eric@sandall.us>
+	* BUILD: Added support for Sparc systems
+	* UPDATE_BOOTLOADER: Changed case statement to use `uname -m`
+	as $BUILD is not defined yet
+
+2003-01-08 Seth Woolley <seth@tautology.org>
+	* PRE_BUILD,DETAILS: Added MD5 and GPG support to everything.
+	Now nothing should be downloaded from this spell
+	without some sort of verification.
+	* GPG was chosen because the spell allows one to arbitrarily 
+	pick CUSTOM kernels, and kernel.org already has
+	a .sign file for every regular file.
+	* MD5PATCH, GPGPATCH: added
+	* CONFIGURE: changed to PREPARE and modified
+	* kernel.gpg: (for kernel.org) added.
+	* grsecurity.gpg: (for grsecurity.org) added.
+	* patches/*: All have all MD5s filled in and line added
+	to call MD5PATCH script, unless gpg would work on them
+	as those have a GPGPATCH call instead and their
+	PUBRINGFILE variable set.
+	* patches/ck,patches/ck_extras: ck split into ck and ck_extras.
+	* patches: Various patches were updated.
+	* patches/framebuffer: Raven framebuffer made optional and put in patches/
+	* If gpg is not found, it will explain steps to get around
+	a lack of gnupg, even if no kernel headers exist.
+	* HISTORY: Made smgl-compliant.
+	* Wolfgang debugged and helped immensely.
+
+2002-12-12 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* POST_INSTALL: Finally removed the last "build after linux" spells from 
+	the list so they are forced to use TRIGGERS
+
+2002-09-21 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* Fixed some Variable names to make the spell work with new 
+	sorcery
+
+2002-09-06 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* Finally replacing old kernel spells by this one
+
+2002-08-20 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* Rewrite - Attempt to merge several kernel spells into one
+  	Now features a menu to select which version to build

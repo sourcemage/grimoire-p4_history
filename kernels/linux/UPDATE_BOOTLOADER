@@ -171,8 +171,10 @@ else
   KERNEL=`echo $KERNEL|cut -d/ -f1`
 fi
   cat << EOF
+
 title Source Mage GNU/Linux 
 kernel  ${KERNEL}/vmlinubz-${VERSION}  root=${ROOT}  devfs=nomount
+
 EOF
 }
 
