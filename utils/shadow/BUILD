@@ -1,14 +1,6 @@
 (
-
-#               --enable-shared       \
-#  is it broken or what it won't compile shared libraries?
-#  I checked the shadow CVS 20010107 and it's broke, too
-#  but at least has a fix for what the above patch fixes.
-
-
 #  Every new version of shadow arrives with bugs.  :(
   sedit  "s/-lpam_misc/-lpam_misc -lpam/"  configure
-
   sedit  "s/ln -s/ln -sf/g"  configure
   sedit  "s/ln -s/ln -sf/g"  aclocal.m4
 
