@@ -25,6 +25,8 @@ then
 	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
 	exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
 	mode="newktree"
+else
+	message "${MESSAGE_COLOR}Using ${LINUX_SOURCE_DIRECTORY} for new build${DEFAULT_COLOR}"
 fi &&
 
 if [[ "$mode" == "newktree" ]]
