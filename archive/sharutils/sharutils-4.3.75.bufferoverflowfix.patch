@@ -1,0 +1,48 @@
+--- shar.c-old	2004-04-11 14:10:44.000000000 -0700
++++ shar.c	2004-04-11 14:18:27.000000000 -0700
+@@ -256,10 +256,10 @@
+ static off_t first_file_position;
+ 
+ /* Base for output filename.  FIXME: No fix limit in GNU... */
+-static char output_base_name[50];
++static char output_base_name[512];
+ 
+ /* Actual output filename.  FIXME: No fix limit in GNU... */
+-static char output_filename[50];
++static char output_filename[512];
+ 
+ static char *submitter_address = NULL;
+ 
+@@ -2047,9 +2047,29 @@
+ 	break;
+ 
+       case 'o':
+-	strcpy (output_base_name, optarg);
+-	if (!strchr (output_base_name, '%'))
+-	  strcat (output_base_name, ".%02d");
++	/*
++	 * Note: the magic '6' below is exactly sizeof(".%02d").
++	 * Don't forget to increase size of output_filename[] appropriately
++	 * when you increase field width from 2 up to something greater than 4.
++	 */
++	{
++	  register int i = 0;
++	  register char *str = optarg;
++
++	  while (i < sizeof(output_base_name) - 6) {
++	    register char c;
++
++	    output_base_name[i++] = (c = *str++);
++	    if (c == '%')
++	      if (i < sizeof(output_base_name) - 6)
++	        output_base_name[i++] = c;
++	      else {
++	        i--;
++	        break;
++	      }
++	  }
++	  strcpy (output_base_name + i, ".%02d");
++	}
+ 	part_number = 0;
+ 	open_output ();
+ 	break;
