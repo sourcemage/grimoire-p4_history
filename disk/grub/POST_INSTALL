@@ -16,8 +16,12 @@ EOF`
 
   # determine if kernel is (hd#,#)/kernel or (hd#,#)/boot/kernel
   if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
-  then  KERNEL_LOCATION=${CR_KERNEL}
-  else  KERNEL_LOCATION=${CR_KERNEL_FILE}
+  then  
+	KERNEL_LOCATION=${CR_KERNEL}
+	KERNEL_LINK=boot/vmlinubz
+  else  
+	KERNEL_LOCATION=${CR_KERNEL_FILE}
+	KERNEL_LINK=vmlinubz
   fi
 
   cat << EOF > /boot/grub/menu.lst.skel
@@ -40,6 +44,9 @@ timeout 10
 # uncomment the next line if you wish to use LBA (usual for large IDE drives)
 lba32
 
+# Splashimage, provides a nice image for the background
+splashimage ${LIKELY_KERNEL_PARTITION}/grub/images/smgl-splash.xpm.gz
+
 # defines menu foreground/background, highlight foreground/background
 color  black/light-gray white/red
 
@@ -48,8 +55,11 @@ color  black/light-gray white/red
 # as well as the root= entry.  You may also wish to add additional arguments,
 # such as ide-scsi= if you're using an IDE CDROM burner.
 
+title  Source Mage GNU/Linux
+kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LINK} root=${LIKELY_ROOT} devfs=mount
+
 title  Source Mage GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT}
+kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=mount
 
 EOF
 }
@@ -130,7 +140,6 @@ else
     then
 	cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
 	ln -sf /boot/grub/menu.lst /etc/grub.conf
-	ln -sf /boot/grub/menu.lst /boot/grub/grub.conf	
     fi
 
 fi
