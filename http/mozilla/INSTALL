@@ -4,14 +4,16 @@ MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla &&
 # must actually go to /usr/lib/mozilla/
 mkdir -p $MOZILLA_HOME &&
 ln -fns $MOZILLA_HOME $MOZILLA_HOME-${VERSION/rc*} &&
-mkdir -p /usr/share/idl/mozilla &&
-ln -fns /usr/share/idl/mozilla /usr/share/idl/mozilla-${VERSION/rc*} &&
-mkdir -p /usr/include/mozilla &&
-ln -fns /usr/include/mozilla /usr/include/mozilla-${VERSION/rc*} &&
+mkdir -p $INSTALL_ROOT/usr/share/idl/mozilla &&
+ln -fns $INSTALL_ROOT/usr/share/idl/mozilla $INSTALL_ROOT/usr/share/idl/mozilla-${VERSION/rc*} &&
+mkdir -p $INSTALL_ROOT/usr/include/mozilla/nss &&
+ln -fns $INSTALL_ROOT/usr/include/mozilla $INSTALL_ROOT/usr/include/mozilla-${VERSION/rc*} &&
 
 make install &&
 
-if  !  grep  -q  "mozilla"  /etc/ld.so.conf
-then
-  echo  "/usr/lib/mozilla"  >>  /etc/ld.so.conf
+# install NSS headers -- concept by David Braaten
+find $SOURCE_DIRECTORY/security/nss/lib -type f -name '*.h' -exec cp {} $INSTALL_ROOT/usr/include/mozilla/nss/ \; &&
+
+if ! grep -q 'mozilla' $INSTALL_ROOT/etc/ld.so.conf; then
+  echo '/usr/lib/mozilla' >> $INSTALL_ROOT/etc/ld.so.conf
 fi
