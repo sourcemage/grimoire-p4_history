@@ -1,39 +1,39 @@
-optional_depends  "tcl"              \
+optional_depends  tcl                \
                   "--with-tcl"       \
                   "--without-tcl"    \
                   "for tcl support"  &&
 
-optional_depends  "tk"              \
+optional_depends  tk                \
                   "--with-tk"       \
                   "--without-tk"    \
                   "for tk support"  &&
 
-optional_depends  "perl"              \
+optional_depends  perl                \
                   "--with-perl"       \
                   "--without-perl"    \
                   "for perl support"  &&
 
-optional_depends  "Python"              \
+optional_depends  python                \
                   "--with-python"       \
                   "--without-python"    \
                   "for python support"  &&
 
-optional_depends  "Linux-PAM"      \
+optional_depends  Linux-PAM        \
                   "--with-pam"     \
                   "--without-pam"  \
                   "for PAM auth"   &&
 
-optional_depends  "krb5"                  \
+optional_depends  krb5                    \
                   "--with-krb5"           \
                   "--without-krb5"        \
                   "for Kerberos support"  &&
 
-optional_depends  "unixodbc"                       \
+optional_depends  unixodbc                         \
                   "--enable-odbc --with-unixodbc"  \
                   "--without-unixodbc"             \
                   "for unixODBC support"           &&
 
-optional_depends  "openssl"              \
+optional_depends  openssl                \
                   "--with-openssl"       \
                   "--without-openssl"    \
                   "for OpenSSL support"

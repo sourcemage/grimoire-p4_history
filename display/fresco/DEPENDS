@@ -11,7 +11,7 @@ optional_depends  libggi                                                     \
                   "--enable-ggi=no"                                          \
                   "to use General Graphics Interface to run display server"  &&
 
-optional_depends  Python                              \
+optional_depends  python                              \
                   "--enable-python-runtime"           \
                   "--enable-python-runtime=no"        \
                   "to enable Python runtime support"  &&
@@ -36,7 +36,7 @@ optional_depends  directfb                     \
                   ""                           \
                   "for DirectFB fbdev access"  &&
 
-optional_depends  ttf-bitstream-vera                                                       \
-                  "--with-fontpath=/usr/share/fonts/truetype"                              \
-                  ""                                                                       \
-                  "if you don't already have some fonts for fresco's ./configure to find" 
+optional_depends  ttf-bitstream-vera                                 \
+                  "--with-fontpath=/usr/share/fonts/truetype"        \
+                  ""                                                 \
+                  "if you don't already have some fonts for fresco" 
