@@ -4,11 +4,12 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.winterdrache.de/linux/newboot/$SOURCE
           MD5[0]=d0c693968de153ce0000fd84be2b9265
-      LICENSE[0]=GPL
         WEB_SITE=http://www.winterdrache.de/linux/newboot/
          ENTERED=20030505
          UPDATED=20040919
-           SHORT="Simpleinit-MSB is a replacement for SysVinit."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Replacement for SysVinit"
 cat << EOF
 Simpleinit-MSB is a replacement for the SysVinit. It provides a simple way of
 defining dependancies between initscripts.
