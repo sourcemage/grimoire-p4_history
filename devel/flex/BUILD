@@ -2,6 +2,7 @@
 
   ./configure  --build=$BUILD  \
                --prefix=/usr   \
+               --disable-nls   \
                $OPTS           &&
   make                         &&
   prepare_install              &&
