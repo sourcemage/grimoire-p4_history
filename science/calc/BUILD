@@ -1,10 +1,17 @@
 (
+dispel calc
+
 if [ ! -f Makefile.orig ]
 then
 	cp Makefile Makefile.orig
 fi
 
 cp $SCRIPT_DIRECTORY/configure .
+if [ ! -x ./configure ]
+then
+	chmod +x ./configure
+fi
+
 ./configure $OPTS
 export PAGER=""
 make -j1
