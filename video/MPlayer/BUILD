@@ -11,6 +11,7 @@ patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
 else
+  patch -p0 < $SCRIPT_DIRECTORY/live-api-change.patch  &&
   OPTS="$OPTS --enable-libavcodec"
 fi  &&
 
