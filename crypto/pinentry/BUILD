@@ -1,12 +1,24 @@
 (
 
-  case $KMail in
+  if [ "$KMail" = "y" ]
 
-    y|Y) OPTS="$OPTS --disable-pinentry-gtk      \
-                     --disable-pinentry-curses   \
-                     --disable-fallback-curses"
-         ;;
-  esac
+    then
+      OPTS="$OPTS --disable-pinentry-gtk      \
+                  --disable-pinentry-curses   \
+                  --disable-fallback-curses"
+    else
+
+      if [ "$Qt" = "n" ]
+        then
+	  OPTS="$OPTS --disable-pinentry-qt"
+      fi
+      
+      if [ "$GTK" = "n" ]
+        then
+	  OPTS="$OPTS --disable-pinentry-gtk"
+      fi
+  
+  fi
 
   default_build 
 

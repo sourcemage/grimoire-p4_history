@@ -1,0 +1,9 @@
+if [ "$KMail" = "y" -o "$Qt" = "y" ]
+  then
+    depends qt-x11    
+fi                                    &&
+
+if [ "$GTK" = "y" ]
+  then
+    depends gtk+
+fi
