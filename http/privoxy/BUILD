@@ -1,5 +1,5 @@
 (
-
+  patch -p0 <$SPELL_DIRECTORY/mk.patch &&
   autoheader &&
   autoconf   &&
 
