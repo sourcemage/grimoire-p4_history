@@ -1,63 +1,53 @@
+2003-12-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.13
+	* HISTORY: Formatted to Guru Handbook
+
 2003-10-23 Sergey Lipnevich <sergey@sourcemage.org>
 	* BUILD: don't assume that install/md5sum logs exist.
 
-2003-08-31  hgg <hgreig@bigpond.net.au>
-
-		Change BUILD so libintl.h isn't truly installed so glibc doesn't have to be rebuilt 
-		after gettext.
+2003-08-31 hgg <hgreig@bigpond.net.au>
+	* BUILD: Change so libintl.h isn't truly installed so glibc doesn't have to be rebuilt 
+	after gettext.
 		
-2003-07-14  hgg <hgreig@bigpond.net.au>
+2003-07-14 hgg <hgreig@bigpond.net.au>
+	* BUILD: Fix for bug#3724 and rewrite as source structure changed 
+	for latest release, remove linuxdoc-tools as optional_depends 
 
-		Fix for bug#3724 in BUILD and rewrite as source structure changed 
-		for latest release, remove linuxdoc-tools as optional_depends 
+2003-07-06 hgg <hgreig@bigpond.net.au>
+	* BUILD: Added export from IRC bug
 
-2003-07-06  hgg <hgreig@bigpond.net.au>
+2003-06-26 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Changed dependency from autoconf to automake
 
-		Added export to BUILD from IRC bug
-
-2003-06-26  Eric Sandall <eric@sandall.us>
-
-		Changed dependency from autoconf to automake
-
-2003-06-25  hgg <hgreig@bigpond.net.au>
-
-		Update to 0.12.1
-
-		Remove CONFLICTS on automake
+2003-06-25 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 0.12.1
+	* CONFLICTS: Removed automake
 		
-2002-11-15  Julian v. Bock  <julian@wongr.net>
+2002-11-15 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 0.11.5.
 
-		* DETAILS: set VERSION to 0.11.5.
+2002-11-10 Julian v. Bock <julian@wongr.net>
+	* POST_INSTALL: remove.
 
-2002-11-10  Julian v. Bock  <julian@wongr.net>
+2002-10-14 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-		* POST_INSTALL: remove.
+2002-07-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 0.11.4.
 
-2002-10-14  Julian v. Bock  <julian@wongr.net>
+2002-07-25 Julian v. Bock <julian@wongr.net>
+	* DETAILS: downgrade VERSION to 0.11.2 due to bash compilation
+	problems.
 
-		* DETAILS: add LICENSE and MD5 fields.
+2002-07-23 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 0.11.3.
 
-2002-07-30  Julian v. Bock  <julian@wongr.net>
+2002-06-18 Julian v. Bock <julian@wongr.net>
+	* CONFLICTS: add (spell conflicts with automake).
 
-		* DETAILS: set VERSION to 0.11.4.
+2002-04-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set version number to 0.11.2.
 
-2002-07-25  Julian v. Bock  <julian@wongr.net>
+2002-03-14 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set version number to 0.11.1.
 
-		* DETAILS: downgrade VERSION to 0.11.2 due to bash compilation
-		problems.
-
-2002-07-23  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 0.11.3.
-
-2002-06-18  Julian v. Bock  <julian@wongr.net>
-
-		* CONFLICTS: add (spell conflicts with automake).
-
-2002-04-30  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set version number to 0.11.2.
-
-2002-03-14  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set version number to 0.11.1.
