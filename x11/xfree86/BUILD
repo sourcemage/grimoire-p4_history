@@ -8,6 +8,26 @@ gzip -d < $SCRIPT_DIRECTORY/4.2.0-4.2.1.diff.gz | patch -p1 -E
 message "${MESSAGE_COLOR} Aplying mit-shm security patch ${DEFAULT_COLOR}"
 gzip -d < $SCRIPT_DIRECTORY/4.2.1-mit-shm-security.patch.gz | patch -p1 -E
 
+# gram patch 
+
+message "${MESSAGE_COLOR} Aplying gram patch ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/gram.patch.gz | patch -p0 -E
+
+# xkbparse patch 
+
+message "${MESSAGE_COLOR} Aplying xkbparse patch ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/xkbparse.patch.gz | patch -p0 -E
+
+# cfgparse patch 
+
+message "${MESSAGE_COLOR} Aplying cfgparse patch ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/cfgparse.patch.gz | patch -p0 -E
+
+# to_wfont patch 
+
+message "${MESSAGE_COLOR} Aplying to_wfont patch ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/to_wfont.patch.gz | patch -p0 -E
+
 # xftgram patch. Thanks to Andrew Stitt
 
 message "${MESSAGE_COLOR} Aplying xftgram patch Thanks to Andrew Stitt ${DEFAULT_COLOR}"
