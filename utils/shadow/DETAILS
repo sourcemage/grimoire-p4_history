@@ -9,12 +9,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20010922
          UPDATED=20040524
            SHORT="shadow contains the shadow password file utilities."
-#
-# selinux patch
-#
-SOURCE2=shadow-utils-selinux.patch.gz
-SOURCE2_URL[0]=http://www.nsa.gov/selinux/patches/$SOURCE2
-MD5[1]=53e71e328389ccf3ee0ddbdffce78c63
 
 cat << EOF
 The Shadow password file utilities package includes the programs
