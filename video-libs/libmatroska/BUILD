@@ -6,7 +6,7 @@
          Makefile  &&
   sedit  "s:^\(LIBEBML_LIB_DIR=\).*$:\1${INSTALL_ROOT}/usr/lib:"  \
          Makefile  &&
-  make             && 
+  make lib         && 
   prepare_install  &&
   make    install
 
