@@ -1,15 +1,16 @@
            SPELL=zisofs-tools
-         VERSION=1.0.3
+         VERSION=1.0.4
 # Reminder to self not to forget to modify cdrtools when modifying zisofs-tools.
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/fs/zisofs/$SOURCE
    SOURCE_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/fs/zisofs/$SOURCE
-          MD5[0]=c94b4593e768bf1bb0b8144258e4ded7
+          MD5[0]=910dd83072027160e014895e88b30586
         WEB_SITE=http://www.kernel.org/pub/linux/utils/fs/zisofs/
       LICENSE[0]=GPL
          ENTERED=20011123
          UPDATED=20011123
+      MAINTAINER=eric@sandall.us
            SHORT="tools for creating a compressed ISO9660 filesystem."
 cat << EOF
 The zisofs filesystem is an extension to the ISO9660 filesystem that
