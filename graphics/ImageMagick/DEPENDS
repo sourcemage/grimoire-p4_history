@@ -1,1 +1,13 @@
-depends  freetype2
+depends  freetype2  &&
+optional_depends libexif        \
+					'--with-exif'\
+					'--without-exif'\
+					'for EXIF jpeg tag support' &&
+optional_depends ghostscript        \
+					''\
+					''\
+					'For text annotation support in convert' &&
+optional_depends xfree86        \
+					''\
+					''\
+					'To support X display and auto some other dependecies'
