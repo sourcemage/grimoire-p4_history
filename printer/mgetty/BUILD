@@ -27,15 +27,6 @@
 
   make             &&
   prepare_install  &&
-  make    install  &&
-
-  case  $MGETTY_BOOT  in
-    y|Y|j|J)
-      echo  $INITTAB_STRING  >>  ${INSTALL_ROOT}/etc/inittab
-      ;;
-    *)
-      true
-      ;;
-  esac
+  make    install
 
 ) > $C_FIFO 2>&1
