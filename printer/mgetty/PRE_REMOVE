@@ -1,6 +1,5 @@
-if  [  "pgrep  mgetty"  ];
-then
+if  [  "pgrep  mgetty"  ];  then
   cp  /etc/inittab  /etc/inittab.backup
-  sed  /etc/inittab.backup  -e  /mgetty/d > /etc/inittab
+  sed  /etc/inittab.backup  -e  /mgetty/d  >  /etc/inittab
   telinit  q
 fi
