@@ -51,7 +51,7 @@ case "$1" in
 			    renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPD_PATH$DEVICE.pid
 			    sleep 1
 			fi
-			loadproc dhcpcd $DEVICE -H
+			loadproc dhcpcd $DEVICE 
 		    elif [ `echo $MODE` = static ]; then
 			echo "Setting up static network on $DEVICE"
 			ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
