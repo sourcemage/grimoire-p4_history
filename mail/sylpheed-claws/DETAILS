@@ -1,34 +1,14 @@
            SPELL=sylpheed-claws
-         VERSION=0.9.12
+         VERSION=0.9.12a
           SOURCE=sylpheed-claws-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/sylpheed-claws-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/sylpheed-claws/$SOURCE
-          MD5[0]=c14467382589e0f97052edbc87298132
+          MD5[0]=e502b7e20b6e18ba9de3554bd04203b5
         WEB_SITE=http://sylpheed-claws.sourceforge.net
          ENTERED=20020928
          UPDATED=20020928
       LICENSE[0]=GPL
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
-           SHORT="Sylpheed-Claws is the bleeding edge version of Sylpheed, an e-mail client (& news reader) based on GTK+."
+           SHORT="e-mail client (& news reader) based on GTK+"
 cat << EOF
-Purpose
-The main reason for this bleeding edge branch is to lift some of the burden from the shoulders of Hiroyuki Yamamoto, Sylpheed's creator. The idea is that we regularly resync with Hiroyuki's main branch, and vice-versa.
- 
-Usage
-Input from users is welcome, but if you want stability use Hiroyuki's stable branch.
-If you're curious which features could end up in the stable branch, or if you like testing/crashing things a lot try this bleeding edge branch.
-
-About Sylpheed & Sylpheed-Claws
-Sylpheed is an e-mail client (and news reader) based on GTK+, running on X Window System, and aiming for
-
-    Quick response
-    Graceful, and sophisticated interface
-    Easy configuration, intuitive operation
-    Abundant features
-
-The appearance and interface are similar to some popular e-mail clients for Windows, such as Outlook Express, Becky!, and Datula. The interface is also designed to emulate the mailers on Emacsen, and almost all commands are accessible with the keyboard.
-
-The messages are managed in MH format, and you'll be able to use it together with another mailer based on MH format (like Mew). You can also utilize fetchmail and/or procmail, and external programs on receiving (like inc or imget).
+Sylpheed-Claws is a bleeding edge branch of  Sylpheed, a GTK+ based, lightweight, and fast e-mail client. The messages are managed in MH format. You can also utilize fetchmail and/or procmail, and external programs on receiving (like inc or imget).
 EOF
