@@ -2,6 +2,7 @@
 
   mkdir  build                          &&
   cd     build                          &&
+  chmod 755 ../src/unix/util/mkfrags    &&
   ../src/unix/configure  --prefix=/usr  &&
   make                                  &&
   prepare_install                       &&

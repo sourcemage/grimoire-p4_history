@@ -4,7 +4,9 @@
   xmkmf            &&
   make  World      &&
   cd    Xvnc       &&
-  make  World      &&
+#  make  World      &&
+  ./configure      &&
+  make             &&
   prepare_install  &&
   cd    ..         &&
   ./vncinstall   /usr/bin              &&

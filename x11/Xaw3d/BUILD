@@ -1,8 +1,8 @@
 (
   cd lib/Xaw3d                      &&
   ln -s .. X11			    &&
-#  perl -i -pe 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
-#  perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
+  perl -i -pe 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+  perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
   sedit 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
   sedit 's/#include <widec.h>//' XawI18n.h &&
   sedit 's/#define wcslen.*$//'  XawI18n.h &&
