@@ -16,13 +16,13 @@ case $WHICH in
           MD5[0]=c2897d2106bbe882ba95f944995384ad
 ;;
    devel)
-        /bin/echo no development version currently available!
-        exit 1
-         VERSION=1.5.2.xxxx
+#        /bin/echo no development version currently available!
+#        exit 1
+         VERSION=1.5.2.4634
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-   SOURCE_URL[0]=http://www.firebirdsql.org/download/prerelease/1.5.2/$SOURCE
-   SOURCE_URL[1]=http://firebird.sourceforge.net/download/prerelease/1.5.2/$SOURCE
-          MD5[0]=
+   SOURCE_URL[0]=http://www.firebirdsql.org/download/prerelease/$SOURCE
+   SOURCE_URL[1]=http://firebird.sourceforge.net/download/prerelease/$SOURCE
+          MD5[0]=642c04e554c892d6bc0a09217004e468
 ;;
 esac
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
