@@ -7,10 +7,11 @@
   # to work around, as documented here:
   # http://www.schirmacher.de/cgi-bin/dcforum/dcboard.cgi?az=show_thread&forum=DCForumID1&om=104&omm=3
 
-  case  $MMX  in
-    y|Y|j|J)  patch  -p1  <  $SCRIPT_DIRECTORY/libdv-mxx.patch     ;;
-    n|N|f|F)  patch  -p1  <  $SCRIPT_DIRECTORY/libdv-no-mxx.patch  ;;
-  esac
+  if  [ "$(echo $CFLAGS |grep '\-mmmx')" ]; then
+    patch  -p1  <  $SCRIPT_DIRECTORY/libdv-mxx.patch
+  else
+    patch  -p1  <  $SCRIPT_DIRECTORY/libdv-no-mxx.patch
+  fi
 
   export CFLAGS="$CFLAGS -O3"      && # fix compile issues
   ./configure --prefix=/usr  $OPTS &&
