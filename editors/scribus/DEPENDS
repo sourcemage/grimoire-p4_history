@@ -1,5 +1,15 @@
 depends  qt-x11  &&
 
-message  "If you are going to install cups, choose espgs instead of ghostscript:"
-optional_depends  "espgs"        ""  ""   "for use of eps images"  &&
-optional_depends  "ghostscript"  ""  ""   "for use of eps images"
+if  spell_installed  espgs;  then
+  optional_depends  "espgs"  ""  ""  \
+                    "for use of eps images"
+elif  spell_installed  ghostscript;  then
+  optional_depends  "ghostscript"  ""  ""  \
+                    "for use of eps images"
+else
+  message  "If you are going to install cups, choose espgs instead of ghostscript:"
+  optional_depends  "espgs"  ""  ""  \
+                    "for use of eps images"  &&
+  optional_depends  "ghostscript"  ""  ""  \
+                    "for use of eps images"
+fi
