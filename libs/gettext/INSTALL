@@ -10,7 +10,7 @@ if  spell_ok  g++;  then
       ${INSTALL_ROOT}/usr/include/
 fi  &&
 
-if  spell_ok  tetex;  then
+if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
   cd  gettext-tools/doc  &&
   make  install-pdf      &&
   make  install-ps       &&

@@ -11,7 +11,7 @@ export CC=gcc                                           &&
              $OPTS                                      &&
 make                                                    &&
 
-if  spell_ok  tetex;  then
+if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
   cd  gettext-tools/doc  &&
   make  dvi              &&
   make  ps               &&
