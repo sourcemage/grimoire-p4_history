@@ -71,6 +71,7 @@ create_defaults()
 		   ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
+		persistent_remove UPDATE_BL
 		persistent_save
 		persistent_load
 		mode="oldktree"
@@ -79,6 +80,7 @@ create_defaults()
 		cp ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
+		persistent_remove UPDATE_BL
 		persistent_save
 		persistent_load
 		mode="newktree"
@@ -121,7 +123,7 @@ main_menu()
 {
 	while true
 	do
-		tmp=${patchversion=${KERNEL_VERSION=${LATEST_2_6}}}
+		tmp=${patchversion=${kver=${LATEST_2_6}}}
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
@@ -330,23 +332,23 @@ restore_config()
 				"/proc/config.gz")
 					if [ -f ${menu_option} ]
 					then
-						zcat /proc/config.gz > ${CONFIG_CACHE}/kernel.config
+						zcat /proc/config.gz > /usr/src/linux/.config
 					fi
 					;;
 				"/boot/config-$VERSION")
 					if [ -f ${menu_option} ]
 					then
-						cp /boot/config-$VERSION ${CONFIG_CACHE}/kernel.config
+						cp /boot/config-$VERSION /usr/src/linux/.config
 					fi
 					;;
 				"Custom")
 					menu_option=$( $dialog --title "Config Restore" \
 						--nocancel --inputbox \
-						"Enter Custom File to Save to ${CONFIG_CACHE}/kernel.config" \
+						"Enter Custom File to Save to /usr/src/linux/.config" \
 						0 0 ${menu_option} )
 					if [ -f ${menu_option} ]
 					then
-						cp ${menu_option} ${CONFIG_CACHE}/kernel.config
+						cp ${menu_option} /usr/src/linux/.config
 					fi
 					;;
 			esac
@@ -388,7 +390,8 @@ options_menu()
 					restore_config
 					;;
 				"Initrd")
-					
+					echo "Not implemented yet"
+					sleep 5
 					;;
 				*) break ;;
 			esac
@@ -396,6 +399,50 @@ options_menu()
 			break
 		fi
 	done
+}
+
+custom_kernel()
+{
+	. $latestdefaults
+	command=$($dialog --inputbox "Which Kernel do you want to build?\nYou can enter any valid version number.\nExamples:\nLATEST_PRE_2_4\nLATEST_ac_patches\n${LATEST_2_6}" 0 0 ${kver})
+	retval=$?
+	echo $command
+	case "$command" in
+		LATEST_2*)
+			kver="$command"
+			;;
+		LATEST*)
+			selected_patches="$command"
+			;;
+		*)
+			release=${command%%-*}
+			prerelease=${release}
+			major=${release%%\.*}
+			major_tail=${command#$major\.}
+			minor=${major_tail%%\.*}
+			tree=$major.$minor
+			tail=${command#$release}
+			selected_patches=""
+			while [[ $tail == -* ]]
+			do
+				patch=${tail##*-}
+				tail=${tail%-$patch}
+				echo $patch
+				if [[ $patch == ac* ]] || [[ $patch == ck* ]]; then
+					selected_patches="patch-${release}-${patch} ${selected_patches}"
+				elif [[ $patch == pre* ]] || [[ $patch == rc* ]]; then
+					release=${tree}.$((${prerelease#${tree}.*}-1))  # Reduce Version number by one
+					selected_patches="patch-${prerelease}-${patch} ${selected_patches}"
+				elif [[ $patch == mm* ]]; then
+					selected_patches="${command} ${selected_patches}"
+				else
+					echo "Failed parsing patches"  &&
+					return  1
+				fi
+				
+			done
+			;;
+	esac
 }
 
 # create a new linux source tree
@@ -411,7 +458,7 @@ new_tree_menu()
 		do
 			menu="${menu}${version} Linux_Kernel Select_one "
 		done
-		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
+		menu="CUSTOM Linux_Kernel Enter_your_own_version $( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 		command=$( $dialog --title "Select Kernel Version" \
 		--item-help --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
@@ -427,6 +474,9 @@ new_tree_menu()
 				LATEST*)
 					kver=$command
 					patch_menu $kver
+					;;
+				CUSTOM*)
+					custom_kernel
 					;;
 				*) 
 					break 
