@@ -2,12 +2,8 @@
 
   if  !  spell_installed  xfree86;  then
     OMIT_X11="--without-x11"
-  fi
-  rm  -r  dialog
-
-  # teTeX doesn't compile when doing more than one thing at once
-  MAKE_NJOBS=1
-
+  fi                                    &&
+  rm  -r  dialog                        &&
   ./configure  --prefix=/usr            \
                --with-system-zlib       \
                --with-system-pnglib     \
