@@ -13,7 +13,7 @@ if  [  -d  /devices  -a  !  -h  /devices  ]  ;  then
     FTF=""    # Files To Fix
     query  "Fix /etc/fstab?"  y  &&  FTF="$FTF /etc/fstab"
     query  "Fix /etc/inittab?"  y  &&  FTF="$FTF /etc/inittab"
-    query  "Fix /etc/securettys?"  y  &&  FTF="$FTF /etc/securettys"
+    query  "Fix /etc/securetty?"  y  &&  FTF="$FTF /etc/securetty"
     echo  $FTF  >  /tmp/devices2dev
     message  "Okay thats all for now"
   fi

@@ -7,9 +7,13 @@ fi
 
 if  [  -e  /tmp/devices2dev  ]  ;  then
   for  file  in  $(  cat  /tmp/devices2dev  )  ;  do
-    if  [  -f  $file  ]  ;  then
-      cp  $file  $file.$(  date +'%Y%m%d%H%M'  )  &&
-      sedit  's!/devices!/dev!'  $file
+    if  [  -f  $file  ]  ;  
+       then if [ "$file" = "/etc/securetty" ];
+	    then  cp  $file  $file.$(  date +'%Y%m%d%H%M'  )  &&
+                 sedit  's!/devices/!!'  $file            
+            else cp  $file  $file.$(  date +'%Y%m%d%H%M'  )  &&
+                 sedit  's!/devices!/dev!'  $file            
+            fi
     fi
   done
 
