@@ -1,5 +1,2 @@
-(
-
-  cd src                          &&
-  make                            
-) 
+cd src                          &&
+make                            

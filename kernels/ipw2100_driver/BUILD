@@ -1,4 +1,3 @@
-(
 KERNEL_VER="`grep RELEASE /usr/src/linux/include/linux/version.h | awk '{print $3}'`"
 
 
@@ -7,4 +6,4 @@ message "${PROBLEM_COLOR}firmware_class \nARC4 cipher algorithm (crypto lib supp
 
 
 make KVER=$KERNEL_VER   
-)
+
