@@ -1,0 +1,17 @@
+2002-05-23  Eric Schabell <eric@schabell.com>
+
+		Added History file and added fix to BUILD from
+		Jason Flatt, commented out and added the following
+		lines:
+
+		#  perl -i -pe 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+		#  perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
+  		sedit 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+  		sedit 's/#include <widec.h>//' XawI18n.h &&
+  		sedit 's/#define wcslen.*$//'  XawI18n.h &&
+  		sedit 's/#define wcscpy.*$//'  XawI18n.h &&
+  		sedit 's/#define wcsncpy.*$//' XawI18n.h &&
+
+		This fixes gv dependencies so that gv can compile, only optional
+		depends in devel (scilab) and shell-term-fm (xfm) so should have 
+		no affect on these.
