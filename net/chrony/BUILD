@@ -1,7 +1,7 @@
 (
 
-  ./configure                  \
-    --prefix=/usr              \
+  ./configure                     \
+    --prefix=${INSTALL_ROOT}/usr  \
     $OPTS                      &&
   make                         &&
   make docs                    &&
@@ -9,9 +9,9 @@
   make    install              &&
   make install-docs            &&
 
-  if [ ! -f /etc/chrony.conf ]
+  if [ ! -f ${INSTALL_ROOT}/etc/chrony.conf ]
   then
-    cp  $SCRIPT_DIRECTORY/chrony.conf   /etc/
+    cp  $SCRIPT_DIRECTORY/chrony.conf   ${INSTALL_ROOT}/etc/
   fi
 
 ) > $C_FIFO 2>&1
