@@ -53,9 +53,15 @@ The mountnfs.sh is used to mount network file systems.
 More information on the commands used can be found at the hwclock, mount and fstab man pages." 0 0
 }
 
-build_scriptque
-while [ $? == 2 ]; do
+if  query  "Configure init.d?"  n
+then
+
+  build_scriptque
+
+  while [ $? == 2 ]; do
     display_init_help
     build_scriptque
-done
+  done
+
+fi
 # end
