@@ -1,5 +1,6 @@
 (
-  cp $SPELL_DIRECTORY/Vector* $SOURCE_DIRECTORY/src/Widgets/
+
+  patch -p1 < $SCRIPT_DIRECTORY/gSculpt-0.3-gcc3.patch
   make                       &&
   prepare_install            &&
   cp  bin/gsculpt  /usr/bin
