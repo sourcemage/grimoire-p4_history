@@ -1,20 +1,20 @@
+install_codec() {
+  codec=$2
+  target=$4
+  if [ -d $2 ]; then
+    mkdir -p $INSTALL_ROOT/usr/lib/$4
+    install $2/* $INSTALL_ROOT/usr/lib/$4
+  fi
+}
+
+. $SCRIPT_DIRECTORY/codecs
+
 (
 
   prepare_install  &&
 
-  if [ -d qt6dlls ]; then
-    mkdir -p /usr/lib/win32
-    install qt6dlls/* /usr/lib/win32
-  fi
-
-  if [ -d xanimdlls ]; then
-    mkdir -p /usr/lib/xanim
-    install xanimdlls/* /usr/lib/xanim
-  fi
-
-  if [ -d rp9codecs ]; then
-    mkdir -p /usr/lib/RealPlayer8/Codecs
-    install rp9codecs/* /usr/lib/RealPlayer8/Codecs
-  fi
+  for (( c=0; c < $num_codecs; c++ )); do
+    install_codec ${codecs[$c]}
+  done
 
 ) > $C_FIFO 2>&1
