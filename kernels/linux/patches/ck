@@ -4,21 +4,24 @@ DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
 HELP="See http://kernel.kolivas.net
  
-batch O(1) scheduler, preemptible, low latency
-Andrea Arcangeli's newest vm addons
+Batch O(1) scheduler, preemptible, low latency
+Autoregulation vm hacks
 Read Latency2 disk hack by Andrew Morton
-Supermount
-XFS file system
-ACPI
+Desktop Tuning, Variable HZ setting,...
+Supermount-NG v1.2.6
+XFS file system v1.2
+ACPI 20021212
+CPU Frequency scaling for supported laptops
+Nvidia Nforce2 update
 Packet writing for CDRW/DVD
-Desktop Tuning"
+GCC 3.3 fixes"
 
-VERSIONS="ck6_2.4.20"
-MD5S[0]=7658416f6f0dbf9d2852de865f81b5aa
+VERSIONS="2.4.20-ck7"
+MD5S[0]=27f8eb0063dc6c8f252e65a39695cf57
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=${!PATCH}.patch.bz2
+SOURCE${COUNTER}=linux-${!PATCH}.patch.bz2
 SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
 source $SCRIPT_DIRECTORY/MD5PATCH
