@@ -46,6 +46,10 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2004-12-08  Arjan Bouter <abouter@sourcemage.org>
+#     - added WIFI settings
+#     - added cfg_wifi
+#
 # 2004-10-08  Robert Helgesson <net@sourcemage.org>
 #     - added sw=4 noet to vi settings
 #     - fixed handling when the $NETDEVDIR directory is empty (bug #7459)
@@ -645,6 +649,7 @@ function check_devdir() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
+## @Global    WIFI: wifi settings passed to iwconfig.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 #---
 function loadnetdev() {
@@ -655,7 +660,7 @@ function loadnetdev() {
 
 	local devname
 
-	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU UP_ON_BOOT
+	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU WIFI UP_ON_BOOT
 
 	devname=$(get_basename $1 .dev)
 
@@ -667,6 +672,7 @@ function loadnetdev() {
 		MODE='dynamic'
 		POINTOPOINT=''
 		MTU=''
+		WIFI=''
 		UP_ON_BOOT='yes'
 	fi
 
@@ -952,6 +958,29 @@ function cfg_mtu() {
 	return 0
 }
 
+#--- cfg_wifi()
+##
+## Prompts user to set wifi settings
+##
+## @Global    WIFI: wifi settings passed to iwconfig.<br>
+## @External  dialog
+#---
+function cfg_wifi() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                                  \
+	                 --stdout                                                  \
+	                 --title "Configure WIFI"                                   \
+	                 --ok-label       "$BTN_ACCEPT"                            \
+	                 --cancel-label   "$BTN_CANCEL"                            \
+	                 --inputbox                                                \
+	                 "Enter the settings for the wifi network. These will be passed to iwconfig" \
+	                 0 0 $WIFI`
+
+	if [ $? -eq 0 ]; then
+		WIFI=\"$COMMAND\"
+	fi
+	return 0
+}
+
 #--- toggle_boot()
 ##
 ## Toggles UP_ON_BOOT state
@@ -1065,6 +1094,7 @@ function confirm_save() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
+## @Global    WIFI: wifi settings passed to iwconfig<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  cat, date
 #---
@@ -1089,6 +1119,7 @@ NETMASK=${NETMASK}
 GATEWAY=${GATEWAY}
 POINTOPOINT=${POINTOPOINT}
 MTU=${MTU}
+WIFI=${$WIFI}
 UP_ON_BOOT=${UP_ON_BOOT}
 EOF
 
@@ -1114,6 +1145,7 @@ EOF
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
+## @Global    WIFI: wifi settings passed to iwconfig<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  date
 #---
@@ -1138,6 +1170,7 @@ function save_update() {
 	cat_or_sedit "^GATEWAY=.*" "GATEWAY=${GATEWAY}" $1
 	cat_or_sedit "^POINTOPOINT=.*" "POINTOPOINT=${POINTOPOINT}" $1
 	cat_or_sedit "^MTU=.*" "MTU=${MTU}" $1
+	cat_or_sedit "^WIFI=.*" "WIFI=${WIFI}" $1
 	cat_or_sedit "^UP_ON_BOOT=.*" "UP_ON_BOOT=${UP_ON_BOOT}" $1
 
 }
@@ -1210,6 +1243,7 @@ function add_device() {
 ## @Global    GATEWAY: gateway address<br>
 ## @Global    POINTTOPOINT: point to point address<br>
 ## @Global    MTU: maximum transfer unit<br>
+## @Global    WIFI: wifi settings passed to iwconfig<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  dialog
 #---
@@ -1239,6 +1273,12 @@ function cfg_device() {
 			dmtu=$MTU
 		fi
 
+		if [ -z "$WIFI" ]; then
+			dwifi="No wifi settings"
+		else
+			dwifi=$WIFI
+		fi
+
 		if [ -z "$POINTOPOINT" ]; then
 			dpointopoint="None"
 		else
@@ -1258,6 +1298,7 @@ function cfg_device() {
 			                 "MODE" "dynamic (use dhcp)"                       \
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
+			                 "WIFI"  "${dwifi}"                                \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
@@ -1278,6 +1319,7 @@ function cfg_device() {
 			                 "GATEWAY" "${GATEWAY}"                            \
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
+			                 "WIFI"  "${dwifi}"                                \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
@@ -1297,6 +1339,7 @@ function cfg_device() {
 			'NETMASK')     cfg_netmask         ;;
 			'POINTOPOINT') cfg_pointopoint     ;;
 			'MTU')         cfg_mtu             ;;
+			'WIFI')        cfg_wifi            ;;
 			'UP_ON_BOOT')  toggle_boot         ;;
 			'Remove')      remove_device "$1"  ;;
 			'Save')        confirm_save "$1"   ;;
