@@ -1,4 +1,5 @@
+default_prebuild &&
+cd ${SOURCE_DIRECTORY} &&
 if [ "$IRSSI_SVN" = "y" ]; then
 NOCONFIGURE=yes ./autogen.sh
-fi &&
-default_build
+fi
