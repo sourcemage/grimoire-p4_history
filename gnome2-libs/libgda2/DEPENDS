@@ -1,2 +1,25 @@
 depends glib2   &&
-depends libxslt
+depends libxslt &&
+
+optional_depends unixODBC   "--with-odbc" \
+                            "" \
+                            "Enable Unix ODBC Support" &&
+optional_depends mysql      "--with-mysql" \
+                            "" \
+                            "Enable MySQL DB Support" &&
+optional_depends postgresql "--with-postgresql" \
+                            "" \
+                            "Enable Postgresql DB Support" &&
+optional_depends xbase      "--with-xbase" \
+                            "" \
+                            "Enable Xbase DB Support" &&
+optional_depends firebird   "--with-firebird" \
+                            "" \
+                            "Enable Firebird DB Support" &&
+optional_depends sqlite     "--with-sqlite" \
+                            "" \
+                            "Enable SQLite DB Support" &&
+optional_depends openldap   "--with-ldap" \
+                            "" \
+                            "Enable LDAP DB Support"
+

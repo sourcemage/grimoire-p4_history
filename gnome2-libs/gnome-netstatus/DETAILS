@@ -1,0 +1,15 @@
+           SPELL=gnome-netstatus
+         VERSION=2.6.0.1
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='458a9addea5b4a3e57564949838f88d8'
+      LICENSE[0]=LGPL
+         ENTERED=20020505
+         UPDATED=20040331
+           SHORT="Network Interface Applet"
+cat << EOF
+This package contains an applet which provides information
+about a network interface on your panel.
+EOF

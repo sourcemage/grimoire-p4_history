@@ -1,15 +1,14 @@
            SPELL=zenity
-         VERSION=1.6
+         VERSION=2.6.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='c311d5eecb0943a7470df282ff356add'
+          MD5[0]='476e66a4eac6323f4f5a9630a401cc78'
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnome.org
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20030901
-         UPDATED=20030910
+         UPDATED=20040322
            SHORT="Display dialog boxes from the command line and shell script"
 cat << EOF
 Zenity is a tool that allows you to display Gtk+ dialog boxes 

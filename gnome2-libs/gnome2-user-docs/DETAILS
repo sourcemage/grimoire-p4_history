@@ -1,16 +1,15 @@
            SPELL=gnome2-user-docs
-         VERSION=2.4.1
+         VERSION=2.6.0.1
 	  BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='b4e5afdd13a83bd5e4dadc58bfba2849'
+          MD5[0]='0f035730bd3da0c3cf5e325687e9e28d'
       LICENSE[0]=FDL
         WEB_SITE=http://www.gnome.org
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20020528
-         UPDATED=20031012
+         UPDATED=20040331
            SHORT="Documents targetted for end-users of GNOME 2"
 cat << EOF
 Documents targetted for end-users of GNOME 2
