@@ -1,23 +1,15 @@
 	   SPELL=evolution2
          VERSION=1.5.5
-#       DBVERSION=3.1.17
-#     LDAPVERSION=2.0.25
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=evolution-$VERSION.tar.bz2
-#         SOURCE2=db-$DBVERSION.tar.gz
-#         SOURCE3=openldap-$LDAPVERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/evolution-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/evolution/$BRANCH/$SOURCE
-#  SOURCE2_URL[0]=http://sleepycat.com/update/snapshot/$SOURCE2
-#  SOURCE3_URL[0]=ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$SOURCE3
           MD5[0]='50c93d1fa4a9ba5d460150d1d01f94cf'
-#          MD5[1]=234b7d8d2baa43fec54a0adb1ec0cb15
-#          MD5[2]='f98aa22add61237dfe5521e2077490a7'
       LICENSE[0]=GPL
       LICENSE[1]=FDL
         WEB_SITE=http://developer.ximian.com
          ENTERED=20030312
-         UPDATED=20040312
+         UPDATED=20040317
            SHORT="Ximian Evolution is an information management solution."
 cat << EOF
 Ximian Evolution^(TM) is the premiere personal and workgroup
