@@ -13,6 +13,11 @@ start()
   then
     touch  /var/log/messages
   fi  &&
+  # Shorewall needs subsys
+  if  [  !  -d  /var/lock/subsys/  ]
+  then
+    mkdir  -p  /var/lock/subsys/
+  fi  &&
   ( unset -f echo; ${PROGRAM} start ; )
 }
 
