@@ -1,26 +1,62 @@
 (
-
   export VTK_DATA_ROOT=/usr/share/vtk/VTKData    &&
   export VTK_INSTALL_PATH=/usr                   &&
-  patch -p1 < $SCRIPT_DIRECTORY/vtk-4.0.config   &&
-  cmake                                          &&
+  export CMAKE_INSTALL_PREFIX=/usr               &&
+  sedit "s/shared libraries.\" OFF/shared libraries.\" ON/" CMakeLists.txt &&
+  if echo $OPTS| grep -q "with-python"; then
+  sedit "s/Python language.\" OFF/Python language.\" ON/" CMakeLists.txt 
+  fi              &&
+  if echo $OPTS| grep -q "with-tcl"; then
+  sedit "s/TCL language.\" OFF/TCL language.\" ON/" CMakeLists.txt 
+  fi              &&
 
-  sedit "s/^VTK_DATA_ROOT:PATH=.*$/VTK_DATA_ROOT:PATH=\/usr\/share\/vtk\/VTKData/" CMakeCache.txt  &&
-  sedit "s/^PYTHON_INCLUDE_PATH:PATH=.*$/PYTHON_INCLUDE_PATH:PATH=\/usr\/include\/python2.2/" CMakeCache.txt  &&
-  sedit "s/^PYTHON_LIBRARY:FILEPATH=.*$/PYTHON_LIBRARY:FILEPATH=\/usr\/lib\/python2.2/" CMakeCache.txt  &&
-  sedit "s/^VTK_WRAP_JAVA:BOOL=.*$/VTK_WRAP_JAVA:BOOL=ON/" CMakeCache.txt  &&
-  sedit "s/^JAVA_AWT_INCLUDE_PATH:PATH=.*$/JAVA_AWT_INCLUDE_PATH:PATH=\/usr\/lib\/j2sdk1.3.1\/include/" CMakeCache.txt  &&
-  sedit "s/^JAVA_AWT_LIBRARY:FILEPATH=.*$/JAVA_AWT_LIBRARY:FILEPATH=\/usr\/lib\/j2sdk1.3.1\/jre\/lib\/i386/" CMakeCache.txt  &&
-  sedit "s/^JAVA_INCLUDE_PATH:PATH=.*$/JAVA_INCLUDE_PATH:PATH=\/usr\/lib\/j2sdk1.3.1\/include/" CMakeCache.txt  &&
-  sedit "s/^JAVA_INCLUDE_PATH2:PATH=.*$/JAVA_INCLUDE_PATH2:PATH=\/usr\/lib\/j2sdk1.3.1\/include\/linux/" CMakeCache.txt  &&
+# java is a little broken for now
+  if echo $OPTS| grep -q "with-java" ; then
+     if spell_installed j2sdk ; then export JAVA_HOME=/usr/java/j2sdk; 
+     elif spell_installed j2sdk-bin ; then export JAVA_HOME=/usr/lib/j2sdk1.4.1 ; 
+     fi &&
+  sedit "s/Java language.\" OFF/Java language.\" ON/" CMakeLists.txt  &&
+#  stupid thing fails first time on purpose ! so don't use && OK !
+  cmake 
+  sedit "s:^JAVA_AWT_INCLUDE_PATH\:PATH=.*$:JAVA_AWT_INCLUDE_PATH\:PATH=$JAVA_HOME\/include:" CMakeCache.txt  &&
+  sedit "s:^JAVA_AWT_LIBRARY\:FILEPATH=.*$:JAVA_AWT_LIBRARY\:FILEPATH=$JAVA_HOME\/jre\/lib\/i386\/libawt.so:" CMakeCache.txt  &&
+  sedit "s:^JAVA_INCLUDE_PATH\:PATH=.*$:JAVA_INCLUDE_PATH\:PATH=$JAVA_HOME\/include:" CMakeCache.txt  &&
+  sedit "s:^JAVA_INCLUDE_PATH2\:PATH=.*$:JAVA_INCLUDE_PATH2\:PATH=$JAVA_HOME\/include\/linux:" CMakeCache.txt  
+  fi              &&
+
+#back to real program
+  cmake           &&
   sedit "s/^CMAKE_INSTALL_PREFIX:PATH=.*$/CMAKE_INSTALL_PREFIX:PATH=\/usr/" CMakeCache.txt  &&
-
-  mkdir java                                     &&
-  mkdir java/vtk                                 &&
-  make                                           &&
-  prepare_install				 &&
-  make install
+  sedit "s/BUILD_SHARED_LIBS\:BOOL=OFF/BUILD_SHARED_LIBS\:BOOL=ON/" CMakeCache.txt          &&
+  sedit "s/CMAKE_BUILD_TYPE:STRING=/&Release/" CMakeCache.txt                               &&
+  sedit "s/BUILD_EXAMPLES\:BOOL=OFF/BUILD_EXAMPLES\:BOOL=ON/" CMakeCache.txt                &&
+  sedit "s/CMAKE_CXX_FLAGS_RELEASE\:STRING=-O3/CMAKE_CXX_FLAGS_RELEASE\:STRING=$CFLAGS/" CMakeCache.txt &&
+  if echo $OPTS| grep -q "with-doxygen" ; then
+  sedit "s/BUILD_DOCUMENTATION\:BOOL=OFF/BUILD_DOCUMENTATION\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  #Use the system's expat library.
+  if echo $OPTS| grep -q "with-expat" ; then
+  sedit "s/VTK_USE_SYSTEM_EXPAT\:BOOL=OFF/VTK_USE_SYSTEM_EXPAT\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  #Use the system's jpeg library.
+  if echo $OPTS| grep -q "with-jpeg" ; then
+  sedit "s/VTK_USE_SYSTEM_JPEG\:BOOL=OFF/VTK_USE_SYSTEM_JPEG\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  #Use the system's png library.
+  if echo $OPTS| grep -q "with-libpng" ; then
+  sedit "s/VTK_USE_SYSTEM_PNG\:BOOL=OFF/VTK_USE_SYSTEM_PNG\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  #Use the system's tiff library.
+  if echo $OPTS| grep -q "with-tiff" ; then
+  sedit "s/VTK_USE_SYSTEM_TIFF\:BOOL=OFF/VTK_USE_SYSTEM_TIFF\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  #Use the system's zlib library.
+  if echo $OPTS| grep -q "with-zlib" ; then 
+  sedit "s/VTK_USE_SYSTEM_ZLIB\:BOOL=OFF/VTK_USE_SYSTEM_ZLIB\:BOOL=ON/" CMakeCache.txt
+  fi              &&
+  make            &&
+  prepare_install &&
+  make install    &&
   ln -s /usr/lib/vtk/lib* /usr/lib/
  
 ) > $C_FIFO 2>&1
-
