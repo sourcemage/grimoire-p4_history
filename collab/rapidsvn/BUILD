@@ -1,15 +1,16 @@
 (
 
-#  message "${MESSAGE_COLOR}Downloading the up-to-date source...${DEFAULT_COLOR}"
-#  svn export http://svn.collab.net/repos/svn/clients/rapidsvn/trunk . &&
+  message "${MESSAGE_COLOR}Downloading recent source...${DEFAULT_COLOR}" &&
+  svn export --force http://svn.collab.net/repos/rapidsvn/trunk/ . &&
 
+  if ! [ -x ./configure ]; then
+    ./autogen.sh | true
+  fi &&
   ./configure \
     --build=$BUILD \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --with-svn-include=/usr/include \
-    --with-svn-lib=/usr/lib \
     $OPTS &&
   make &&
   make check &&
