@@ -6,6 +6,10 @@
   rm  -r  dialog
 
   patch  -p1  <  $SCRIPT_DIRECTORY/teTeX.patch
+  patch  -p0  <  $SCRIPT_DIRECTORY/web2c.patch
+
+  # teTeX doesn't compile when doing more than one thing at once
+  MAKE_NJOBS=1
 
   ./configure  --prefix=/usr            \
                --with-system-zlib       \
