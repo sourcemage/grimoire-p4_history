@@ -1,7 +1,5 @@
 (
 
-  # set up the path to mozilla-config script
-  export PATH=$PATH:/usr/lib/mozilla                   &&
   ./configure                                          \
     --host=$HOST                                       \
     --build=$BUILD                                     \
