@@ -1,10 +1,12 @@
 To avoid something like bug #7095 happening in test again, here's a list of successfull compiles of the latest glibc 2.3.3 snapshot:
 
-gcc version || architecture
-===========================
-3.4.x       || i686
-3.4.x       || athlon
-3.4.x       || athlon-mp
-3.3.3       || pentium3
-3.3.3       || athlon-xp
+gcc version || architecture || name
+==========================================
+3.3.3       || athlon-xp    || sandalle
+3.3.3       || pentium3     || sandalle
+3.3.3       || pentium3     || sandalle (different system ;))
+3.3.3       || pentium4     || sandalle
 
+This is waiting on Bug #7702 to be fixed, otherwise recasting glibc breaks.
+
+Still fails on my SPARC64, but I think I'm missing some braindead setup of the glibc-kernel-headers (since my SPARC64 is using the 2.4 headers it may be endemic of those headers, if others want to test 2.4, please let me know, but I'll try and test it when I get back from Thanksgiving if I don't have time tomorrow).

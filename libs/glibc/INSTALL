@@ -1,5 +1,4 @@
-  MAKE_NJOBS=1                                                                    &&
-  if [ "$CROSS_INSTALL" == "on" ] ; then
+if  [  "$CROSS_INSTALL"  =  "on"  ];  then
   echo "prefix = ${INSTALL_ROOT}/usr" > configparms                               &&
   echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                             &&
   echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                        &&
@@ -7,59 +6,101 @@
   echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                  &&
   sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                       &&
   sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                   &&
-   if [ "$NPTL" == "y" ]
-   then sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile             &&
-        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile
-   else sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile     &&
-        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile
-   fi
-  fi                                                                              &&
- ### making these symlinks and unsetting the (sorcery) preload of old libs should 
- ### finally fix the glibc install problems. 
- ### Had to add a check for saved libraries, as an empty log means none can be saved
- if [ -f $SOURCE_DIRECTORY/old.libraries/ld-*.so ] ; then
-  . /$SCRIPT_DIRECTORY/makelinks              &&
-  make_install_links                          &&
-  unset  LD_LIBRARY_PATH                      &&
- ### must use -X or ldconfig will relink to any alien files found in /lib or /usr/lib
-  (  ldconfig -X ||  true  )                  
- fi                                           &&
 
- ### glibc only installs these if the file differs
-  for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
-     do if [ -f $i ] ; then  rm -vf $i ; fi
-  done                                        &&
- ### INSTALL 
-  make  install                               &&
-  (  ldconfig  ||  true  )                    &&
+  if  [  "$GLIBC_NPTL"  =  "y"  ];  then
+    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/nptl/Makefile  &&
+    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/nptl/Makefile
+ else
+   sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/linuxthreads/Makefile  &&
+   sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
+  fi
+fi  &&
 
- ### generate the localedef file from installed specs
-  if  [  -z  "$GLIBC_LOCALES"  ];  then
-    cat  $SCRIPT_DIRECTORY/locales-$VERSION  |
-    while  read  LOCALE  DESCRIPTION;  do
-      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`
-        CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                 &&
-      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE		$DESCRIPTION " &&
-      localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE                              &&
-      if [ "$UTF" == "y" ] && ! [ "$CHARMAP" == "UTF-8" ]
-         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8		$DESCRIPTION (UNICODE Charset)" &&
-              localedef  --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
-      fi
-    done
-    true
-  else
-    for  LOCALE  in  $GLIBC_LOCALES;  do
-      INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1` 
-        CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`
-      mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE &&
-      echo "localedef -f $CHARMAP -i $INPUTFILE $INPUTFILE" &&
-      localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
-      if [ "$UTF" == "y" ] && ! [ "$CHARMAP" == "UTF-8" ]
-         then echo "localedef -f UTF-8 -i $INPUTFILE $INPUTFILE.UTF-8" &&
-              localedef --prefix=${INSTALL_ROOT} -i  $INPUTFILE  -f UTF-8  $INPUTFILE.UTF-8
-      fi
-    done
-    true
-  fi 
+#
+# making these symlinks and unsetting the (sorcery) preload of old libs should 
+# finally fix the glibc install problems. 
+# Had to add a check for saved libraries, as an empty log means none can be saved
+#
+if  [  -f  $SOURCE_DIRECTORY/old.libraries/ld-*.so  ];  then
+  .  /$SCRIPT_DIRECTORY/makelinks  &&
+  make_install_links               &&
+  unset  LD_LIBRARY_PATH           &&
+  #
+  # must use -X or ldconfig will relink to any alien files found in /lib or /usr/lib
+  #
+  (  ldconfig  -X  ||  true  )                  
+fi  &&
+#
+# End preload fix
+#
 
+#
+# glibc only installs these if the file differs
+#
+for  i  in  ${INSTALL_ROOT}/usr/include/bits/syscall.h  \
+            ${INSTALL_ROOT}/usr/include/gnu/stubs.h;    do
+  if  [  -f  $i  ];  then
+    rm  -vf  $i
+  fi
+done  &&
+#
+# End syscall.h and stubs.h fix
+#
+
+#
+# install
+#
+make  install             &&
+(  ldconfig  ||  true  )  &&
+
+#
+# generate the localedef file from installed specs
+#
+local  GLIBC_INPUTFILE  GLIBC_CHARMAP  GLIBC_LOCALE  &&
+if  [  -z  "$GLIBC_LOCALES"  ];  then
+  local  GLIBC_DESCRIPTION                                                         &&
+  cat  $SCRIPT_DIRECTORY/locales-$VERSION  |
+  while  read  GLIBC_LOCALE  GLIBC_DESCRIPTION;  do
+    GLIBC_INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`                             &&
+      GLIBC_CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`                             &&
+    mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$GLIBC_INPUTFILE                     &&
+    echo  "localedef  -f  $GLIBC_CHARMAP  -i  $GLIBC_INPUTFILE  $GLIBC_INPUTFILE"  \
+          " $GLIBC_DESCRIPTION"                                                    &&
+    localedef  --prefix=${INSTALL_ROOT} -i  $GLIBC_INPUTFILE  -f  $GLIBC_CHARMAP   \
+               $GLIBC_INPUTFILE                                                    &&
+    if  [  "$UTF"     =  "y"      ]   &&
+    !   [  "$CHARMAP" =  "UTF-8"  ];  then
+       echo  "localedef  -f  UTF-8  -i  $INPUTFILE  $INPUTFILE.UTF-8  $DESCRIPTION"  \
+             " (UNICODE Charset)"                                                    &&
+       localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  UTF-8  $INPUTFILE.UTF-8
+    fi
+  done  ||  true
+else
+  for  LOCALE  in  $GLIBC_LOCALES;  do
+    INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`                                   &&
+      CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`                                   &&
+    mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                           &&
+    echo  "localedef  -f  $CHARMAP  -i  $INPUTFILE $INPUTFILE"                     &&
+    localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE  &&
+    if  [  "$UTF"      =  "y"     ]   &&
+    !   [  "$CHARMAP"  =  "UTF-8" ];  then
+      echo  "localedef  -f  UTF-8  -i  $INPUTFILE  $INPUTFILE.UTF-8"               &&
+      localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  UTF-8  $INPUTFILE.UTF-8
+    fi
+  done  ||  true
+fi  &&
+
+#
+# Now install sanitised glibc-kernel-headers
+#
+cd  $GLIBC_HEADERS_DIR/include              &&
+echo  "installing glibc linux headers"      &&
+cp  -a  linux  ${INSTALL_ROOT}/usr/include  &&
+
+if [  !  "$GLIBC_NPTL"  =  "y"  ];  then
+  echo  "installing asm-generic headers"            &&
+  cp  -a  asm-generic  ${INSTALL_ROOT}/usr/include
+fi  &&
+
+echo  "installing asm-$GLIBC_ARCH headers to /usr/include/asm"  &&
+cp  -a  asm-$GLIBC_ARCH  ${INSTALL_ROOT}/usr/include/asm

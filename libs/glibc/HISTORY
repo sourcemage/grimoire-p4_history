@@ -1,3 +1,36 @@
+2004-11-23 Eric Sandall <eric@sandall.us>
+	* Merging glibc-kernel-headers with glibc  (Bug #7560)
+	* Removed glibc log cleanup of headers (since it now does install the headers)
+	* I have simplified glibc-kernel-headers selection to either install the 2.6 headers
+	  if you chose NPTL, or 2.4 headers if you didn't choose NPTL, whereas the prior
+	  method allowed you to have 2.6 headers with or without NPTL.
+	* DETAILS: Added glibc-kernel-headers for 2.4 and 2.6 kernels
+	  Moved DISTCC_HOSTS and MAKE_NJOBS=1 to "global" area
+	* BUILD: Use --with-headers= to use included glibc-kernel-headers  (Bug #7560)
+	  Clean up formatting
+	* BUILD,PRE_BUILD: Moved patches from BUILD to PRE_BUILD
+	* PRE_BUILD: Merged permission fix from glibc-kernel-headers
+	* INSTALL: Added ARCH code
+	  Cleaned up formatting
+	  Removed MAKE_NJOBS=1
+	  Renamed UTF, INPUTFILE, CHARMAP, LOCALE, and DESCRIPTION to be prefixed with
+	  GLIBC_
+	  Made GLIBC_INPUTFILE, GLIBC_CHARMAP, GLIBC_LOCALE, and GLIBC_DESCRIPTION local
+	  variables
+	  Install glibc-kernel-headers at the end
+	* PREPARE: Remove ldconfig protected hack (Sorcery takes care of this)
+	  Renamed UTF and NPTL to GLIBC_UTF and GLIBC_NPTL, respectively
+	* DEPENDS: No longer depends on glibc-kernel-headers
+	* CONFLICTS: glibc now conflicts with glibc-kernel-headers ;)
+	* TRIGGERS: On dispel or cast of glibc-kernel-headers, recast glibc
+	  There may be a smarter/better way to do this, but this'll work for now
+	* WIP: Removed all verified tests as the "new" glibc needs testing. :)
+	  Added "name" field to keep track of who has tested
+	* config.h.patch: Fixes xorg (and others) compilation against 2.6
+	  Integrated from glibc-kernel-headers
+	* makelinks, BUILD, INSTALL, PRE_BUILD, DETAILS: Renamed NPTL to GLIBC_NTPL
+	* makelinks: Cleaned up formatting
+
 2004-10-29 Robin Cook <rcook@wyrms.net>
 	* BUILD: changed all "$NPTL" = "yes" to $NPTL = "y"
 	  changed "$CROSS_INSTALL" = "on" to "$CROSS_INSTALL" == "on"
