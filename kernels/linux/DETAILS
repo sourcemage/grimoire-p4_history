@@ -81,14 +81,22 @@ fi
 
 if [[ "${AC_PATCH}" != "" ]]; then
   SOURCE6="patch-${VERSION}.bz2"
-  SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/alan/linux-${TREE}/${PRERELEASE}-${PREPATCH}/patch-${VERSION}.bz2"
+  if  [  !  -z  $PREPATCH  ];  then
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/alan/linux-${TREE}/${PRERELEASE}-${PREPATCH}/patch-${VERSION}.bz2"
+else
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/alan/linux-${TREE}/${PRERELEASE}/patch-${VERSION}.bz2"
+  fi
   SOURCE7="${SOURCE6}.sign"
   SOURCE7_URL="${SOURCE6_URL}.sign"
 fi
 
 if [[ "${DJ_PATCH}" != "" ]]; then
   SOURCE6="patch-${VERSION}.diff.bz2"
-  SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}-${PREPATCH}/patch-${VERSION}.diff.bz2"
+  if  [  !  -z  $PREPATCH  ];  then
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}-${PREPATCH}/patch-${VERSION}.diff.bz2"
+  else
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}/patch-${VERSION}.diff.bz2"
+  fi
   SOURCE7="${SOURCE6}.sign"
   SOURCE7_URL="${SOURCE6_URL}.sign"
 fi
