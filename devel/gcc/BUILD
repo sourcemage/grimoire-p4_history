@@ -35,17 +35,21 @@
   prepare_install                       && 
 
   if  [  -z  "$FIXEDINCLS"  ]
-  then  make  prefix=${INSTALL_ROOT}/usr install-no-fixedincludes  &&
-        cp  -a  $SOURCE_DIRECTORY/libobjc/objc  \
-                ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/include
+  then  make  prefix=${INSTALL_ROOT}/usr install-no-fixedincludes &&
+# this include directory may not exits, so create it
+       mkdir -p ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/include &&
+       cp  -a  $SOURCE_DIRECTORY/libobjc/objc  \
+               ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/include
   else  make  prefix=${INSTALL_ROOT}/usr install
   fi                                    &&
 
-  ln    -sf gcc ${INSTALL_ROOT}/usr/bin/cc                        &&
-  ln    -sf  ../../../../bin/cpp                                  \
-             ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/cpp  &&
-  ln    -sf  ../usr/bin/cpp  ${INSTALL_ROOT}/lib/cpp              &&
+# make some extra symlinks, for various odd spells
+  cd ${INSTALL_ROOT}/usr/bin            &&  
+  ln -sf gcc cc                         &&
+  ln -sf cpp ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/cpp   &&
+  ln -sf  cpp  ${INSTALL_ROOT}/lib/cpp                            &&
 #stupid link needed by stupid apps expecting RedHat compat. libs
-  ln -sf libstdc++.so ${INSTALL_ROOT}/usr/lib/libstdc++-libc6.2-2.so.3 
+  cd ${INSTALL_ROOT}/usr/lib                                      &&
+  ln -sf libstdc++.so libstdc++-libc6.2-2.so.3 
 
 ) > $C_FIFO 2>&1
