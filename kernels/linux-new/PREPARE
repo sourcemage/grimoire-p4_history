@@ -50,6 +50,7 @@ create_defaults()
 	persistent_add reconf
 	persistent_add kver
 	persistent_add patches
+	kver="`gaze version linux-new | awk 'NR == 3 {print $4}'`"
 	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
@@ -82,7 +83,7 @@ list_usr_src()
         linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux-*`"
         for linuxsrc in $linuxsrcs
         do
-                if [ -d $linuxsrc ]
+                if [ -d $linuxsrc ] && [ -f $linuxsrc/.spell-config.p ]
                 then
                         echo "$linuxsrc"
                         echo "Source_Tree"
@@ -99,7 +100,7 @@ main_menu()
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
-		"Would you like to use a new kernel tree or an existing one?" 0 0 0 \
+		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $kver" 0 0 0 \
 		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
 		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
 		"Options" "Menu" "Kernel Arch, Build Dir, Cleaning"  \
