@@ -1,4 +1,6 @@
-depends  db  &&
-
-optional_depends  "openldap"  ""  ""  "for ldap support"
+depends  db    							&&
+depends  pcre  							&&
+optional_depends  "Linux-PAM"  ""  ""  "for PAM support"        &&
+optional_depends  "openssl"    ""  ""  "for encryption support" &&
+optional_depends  "openldap"   ""  ""  "for ldap support"
 

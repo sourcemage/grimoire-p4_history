@@ -29,7 +29,7 @@ fi
 
 if ! grep -q "BACKUP" $SPELL_CONFIG; then
 
-  message "${MESSAGE_COLOR}smtp configuration files loss may expose your system to SPAM relaying. You should backup and restore configuration files and ask y to the next two questions...${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}smtp configuration files loss may expose your system to SPAM relaying. You should backup and restore configuration files and reply y to the next two questions...${DEFAULT_COLOR}"
 
   if query "Backup $SPELL config on dispel ?"  y
     then  echo   "BACKUP=y"  >>  $SPELL_CONFIG
