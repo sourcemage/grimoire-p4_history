@@ -4,10 +4,8 @@
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
-  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
-
-  if [ "$CVS" = "no" ]; then
-    patch -p1 < $SCRIPT_DIRECTORY/matroska-C-demux.patch
+  if [ "$CVS" = "yes" ]; then
+    patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
   fi  &&
 
   case  $GUI  in
