@@ -1,0 +1,13 @@
+(
+
+  prepare_install                     &&
+  mkdir -p      /usr/share/${SPELL}   &&
+  cp    -r .    /usr/share/${SPELL}/  &&
+
+  echo  "Now create the database by: mysqladmin  create  nuke"
+  echo  "And populate the database:  mysql  nuke  <  nuke.sql"
+  echo  "Now edit the file \"config.php\""
+  echo  "Please point your apache at /usr/share/${SPELL}/html/"
+  echo  "To administer, use /admin.php through your web browser."
+    
+)  >  $C_FIFO  2>&1
