@@ -1,0 +1,14 @@
+--- old/html/modules/Your_Account/index.php 2003-02-04 16:44:02.000000000 -0800
++++ new/html/modules/Your_Account/index.php 2003-02-04 16:47:15.000000000 -0800
+@@ -16,5 +16,9 @@
+        die ("You can't access this file directly...");
+ }
+ 
++if (isset($user_avatar)){
++       $user_avatar = mysql_escape_string(htmlspecialchars(stripslashes($user_avatar)));
++}
++
+ require_once("mainfile.php");
+ $module_name = basename(dirname(__FILE__));
+ get_lang($module_name);
+
