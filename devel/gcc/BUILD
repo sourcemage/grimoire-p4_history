@@ -13,17 +13,17 @@
     export  ADAC=$SOURCE_DIRECTORY/smgl-gnat/bin/gcc
   fi  &&
 
-  cd $SOURCE_DIRECTORY.bld                   &&
-  $SOURCE_DIRECTORY/configure                \
-               --host=$BUILD                 \
-               --prefix=${INSTALL_ROOT}/usr  \
-               --infodir=${INSTALL_ROOT}/usr/share/info \
-               --mandir=${INSTALL_ROOT}/usr/share/man   \
-               --enable-threads=posix        \
-               $FRONTENDS                    \
-	       $OPTS                             &&
+  cd $SOURCE_DIRECTORY.bld                                &&
+  $SOURCE_DIRECTORY/configure                             \
+               --host=$HOST                               \
+               --prefix=/usr                              \
+               --infodir=${INSTALL_ROOT}/usr/share/info   \
+               --mandir=${INSTALL_ROOT}/usr/share/man     \
+               --enable-threads=posix                     \
+               $FRONTENDS                                 \
+	       $OPTS                                      &&
 
-  make  bootstrap                       &&
+  make  bootstrap                                         &&
 
   if  echo $FRONTENDS | grep -q ada; then
     # build ada tools and lib
@@ -35,18 +35,17 @@
   prepare_install                       && 
 
   if  [  -z  "$FIXEDINCLS"  ]
-  then  make  install-no-fixedincludes  &&
+  then  make  prefix=/${INSTALL_ROOT}/usr install-no-fixedincludes  &&
         cp  -a  $SOURCE_DIRECTORY/libobjc/objc  \
-                ${INSTALL_ROOT}/usr/lib/gcc-lib/$BUILD/$VERSION/include
-  else  make  install
+                ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/include
+  else  make  prefix=/${INSTALL_ROOT}/usr install
   fi                                    &&
 
   ln    -sf gcc ${INSTALL_ROOT}/usr/bin/cc                        &&
   ln    -sf  ../../../../bin/cpp                                  \
-             ${INSTALL_ROOT}/usr/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
+             ${INSTALL_ROOT}/usr/lib/gcc-lib/$HOST/$VERSION/cpp  &&
   ln    -sf  ../usr/bin/cpp  ${INSTALL_ROOT}/lib/cpp              &&
 #stupid link needed by stupid apps expecting RedHat compat. libs
-  ln -sf ${INSTALL_ROOT}/usr/lib/libstdc++.so                     \
-         ${INSTALL_ROOT}/usr/lib/libstdc++-libc6.2-2.so.3 
+  ln -sf libstdc++.so ${INSTALL_ROOT}/usr/lib/libstdc++-libc6.2-2.so.3 
 
 ) > $C_FIFO 2>&1
