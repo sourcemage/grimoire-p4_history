@@ -1,3 +1,10 @@
+2004-10-12 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added BUILD_API=2
+	  Added the LICENSE
+	* POST_INSTALL: Removed, we don't start/restart services anymore
+	* BUILD: aaa.patch only applies to apache /2.1/!
+	  Converted to BUILD_API 2
+
 2004-03-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: changed WEBSERVER to APACHE
 
@@ -12,7 +19,7 @@
 	* TRIGGERS: Update for Linux-PAM
 
 2003-03-24 Sergey Lipnevich <sergeyli@pisem.net>
-	* Added a patch to comply with Apache 2.1 changes.
+	* aaa.patch: Added patch to comply with Apache 2.1 changes.
 
 2003-02-03 Sergey Lipnevich <sergeyli@pisem.net>
 	* Spell created.
