@@ -20,7 +20,7 @@
     OPTS="$OPTS --enable-ffmpeg --with-ffmpeg-tree=./ffmpeg"
     echo "compiling with options: $OPTS"
   fi
-  
+  patch -p0 < ${SCRIPT_DIRECTORY}/configure.diff	&&
   ./configure  --prefix=/usr               \
                --sysconfdir=/etc           \
                --localstatedir=/var        \
