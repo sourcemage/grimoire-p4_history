@@ -22,6 +22,8 @@ then
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
 		cp ${INSTALL_ROOT}/${SOURCE_CACHE}/${source} ./
 		linux_new_uncompress ./${source}
+		echo "Patching ${patch}"
+		sleep 3
 		patch -p${pval} <${patch}
 	done
 	make mrproper

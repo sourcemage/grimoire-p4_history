@@ -442,7 +442,7 @@ patch_list()
 				if [ $applied == $argv1 ]
 				then
 					echo LATEST_$patch
-					echo $patchversion
+					echo ${!tmp}
 					echo $patch
 				fi
 			done
@@ -600,7 +600,7 @@ calculate_depends()
 				fi
 				;;
 		esac
-		new_patch_list="${new_patch_list}${patch} "
+		patches="${new_patch_list}${patch} "
 		persistent_save
 		persistent_load
 	done
@@ -616,19 +616,20 @@ create_details()
 	case "$mode" in
 		*ktree)
 			(
-			calculate_depends
+			#this might be cool if it didn't take more than what's up there.
+			#calculate_depends
 			for patch in $patches
 			do
 				case "$patch" in
 					LATEST*)
 						. $patchesdir/*/${!patch}
 						echo "PATCH[${counter}]=\$${patch}"
-						echo "SOURCE${counter}=$source"
-						echo "MD5[${counter}]=$md5sum"
-						echo "SOURCE${counter}_URL=${source_url}"
 						echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
 						echo -n $counter
 						echo ']}'
+						echo "SOURCE${counter}=\$source"
+						echo "MD5[${counter}]=\$md5sum"
+						echo "SOURCE${counter}_URL=\${source_url}"
 						;;
 					*)
 						. $patchesdir/*/${patch}
