@@ -1,8 +1,12 @@
+2004-07-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, apr-util-0.9.4-gcc34.patch: patch to fix apache2 segfaulting
+	  if compiled with gcc 3.4
+
 2004-05-22 Robin Cook <rcook@wyrms.net>
-        * PRE_BUILD: moved the buildconf lines from BUILD to PRE_BUILD
-          so that configure exists when BUILD runs to allow the adding
-          of user desired OPTS
-        * BUILD: removed the buildconf lines moved to PRE_BUILD
+	* PRE_BUILD: moved the buildconf lines from BUILD to PRE_BUILD
+	  so that configure exists when BUILD runs to allow the adding
+	  of user desired OPTS
+	* BUILD: removed the buildconf lines moved to PRE_BUILD
 
 2004-04-14 David Braaten <xiticix47@hotmail.com>
 	* BUILD: remove POST_BUILD type lines and put them in
