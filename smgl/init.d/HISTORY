@@ -1,3 +1,10 @@
+2004-08-24 Eric Sandall <eric@sandall.us>
+	* init.d/keymap.sh: Renamed to init.d/keymap
+	  Formatted to simpleinit-msb
+	* init.d/hostname.sh: Renamed to init.d/hostname
+	  Formatted to simpleinit-msb
+	* init.d/mountall.sh: Renamed to init.d/mountall
+
 2004-07-31 Seth Woolley <seth@tautology.org>
 	* files/smgl_telinit: changed head -1 to head -n 1 for POSIX
 
@@ -5,7 +12,8 @@
 	* PRE_BUILD: check and remove old z-misc.sh file, bug #5784.
 
 2004-04-09 hgg <hgreig@bigpond.net.au>
-	* init.d/devices: ln -sf, not ln -s and checck if devfs is running before trying to mount devfs
+	* init.d/devices: ln -sf, not ln -s and checck if devfs is running
+	  before trying to mount devfs
 
 2004-04-08 hgg <hgreig@bigpond.net.au>
 	* MAKEDEV: forgot to add this script
@@ -13,7 +21,8 @@
 2004-04-07 hgg && Arwed v. Merkatz hgreig@bigpond.net.au <v.merkatz@gmx.net>
 	* BUILD,init.d/mountall.sh, init.d/devices, init.d/facilities.conf:
 	  new %DEV runlevel and devices script for interoperation with udev.
-	  Safely defaults to devfs unless running 2.6 with hotplug and ramfs support.
+	  Safely defaults to devfs unless running 2.6 with hotplug and ramfs
+	  support.
 
 2004-02-13 Eric Sandall <eric@sandall.us>
 	* init.d/mountall.sh: Mount RAID filesystems, if needed
@@ -27,13 +36,14 @@
 	* init.d/z-misc.sh, init.d/smgl-misc: Moved z-misc.sh to smgl-misc.
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
-	* mountall.sh: only mount tmpfs mounts after the physical partitions are mounted.
-	  (bug 3597)
+	* mountall.sh: only mount tmpfs mounts after the physical partitions
+	  are mounted.  (bug 3597)
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
 	* BUILD: install_root fixes
 	* PRE_BUILD: only if CROSS_INSTALL is off
-	* rc: add "bash" before executing an initscript so it will still start even if bootdisabled (bug #5595)
+	* rc: add "bash" before executing an initscript so it will still start
+	  even if bootdisabled (bug #5595)
 
 2003-12-15 Robert Helgesson <rhelgesson@sourcemage.org>
 	* files/smgl_function: Don't pass on the modified echo when running a
