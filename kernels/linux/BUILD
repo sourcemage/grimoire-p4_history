@@ -41,6 +41,10 @@ if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
   cp $CONFIG_CACHE/kernel.config .config
 fi
 
+if  query  "make oldconfig? "  n
+  then  run_make oldconfig
+fi
+
 while
   case  $CONFIG_KERNEL in
     y|Y)  run_make  menuconfig
