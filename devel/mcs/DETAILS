@@ -1,13 +1,17 @@
            SPELL=mcs
          VERSION=0.29
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=monocharge-20031226.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.go-mono.com/archive/$SOURCE
-          MD5[0]=fb46072ab4ffa2e01796df341ae888ba
+  SOURCE2_URL[0]=http://www.go-mono.org/daily/${SOURCE2}
+          MD5[0]=64caf22d7fc1b768907dc3ba10e31e0b
+          MD5[1]=cd8776b9372497bc21f69d363fbed81d
         WEB_SITE=http://www.go-mono.com/
          ENTERED=20030910
          UPDATED=20030910
       LICENSE[0]=LGPL
+      LICENSE[1]=LGPL
            SHORT="Mono C# compiler"
 cat << EOF
 The Mono C# compiler is considered feature complete at this point and relatively mature. MCS is able to compile itself and many more C# programs (there is a test suite included that you can use). It is routinely used to compile Mono, roughly half a million lines of C# code.

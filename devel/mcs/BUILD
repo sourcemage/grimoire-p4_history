@@ -1,5 +1,7 @@
 (
 
+  cp  monocharge*/*.dll class/lib                            &&
+  cp  monocharge*/*.exe mcs                                  &&
   echo  "prefix=${INSTALL_ROOT}/usr"  >>  build/config.make  &&
   echo  "CFLAGS=${CFLAGS}"            >>  build/config.make  &&
 
