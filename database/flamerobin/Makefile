@@ -25,7 +25,8 @@ IBPP_LIB=/usr/lib
 # Compiler & linker flags
 # You may need to change wxgtk-2.4-config to wx-config or similar
 COMPILE_FLAGS=-DIBPP_LINUX -DIBPP_GCC -I. -I$(IBPP_INC) `wx-config --cxxflags`
-LINK_FLAGS=`wx-config --libs` -lwx_gtk2_stc-2.4
+# determine installed version of library
+LINK_FLAGS=`wx-config --libs` -lwx_gtk2_stc-`wx-config --version|cut -c-3`
 
 
 # Name of the executable
