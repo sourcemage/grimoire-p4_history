@@ -1,94 +1,67 @@
-#!/bin/sh
-#
-# /etc/init.d/samba.sh
-#
-# SMGL-script-version=20030405
-# SMGL-START:3 4 5:S50
-# SMGL-STOP:0 1 2 6:K50
-#
-# Written by, Jeremy Sutherland
-# Patched by, Robert Helgesson
-#
-# samba init.d script for shared startup with inetd/xinetd
-#
-source /etc/init.d/functions
-#
-start_samba()
+#!/bin/bash
+
+PROGRAM=/bin/true
+RUNLEVEL=3
+NEEDS="+remote_fs"
+
+. /etc/init.d/smgl_init
+
+start()
 {
   if [ ! -e /var/run/samba ]; then
     mkdir /var/run/samba
-  fi
+  fi &&
   if ! netstat -l --udp | grep -q netbios-ns ; then
     echo "NetBIOS nameserver"
     loadproc /usr/sbin/nmbd
-  fi
+    evaluate_retval
+  fi  &&
   if ! netstat -l --tcp | grep -q netbios-ssn ; then
     echo "NetBIOS sessions"
     loadproc /usr/sbin/smbd
+    evaluate_retval
   fi
 }
 #
-stop_samba()
+stop()
 {
   if netstat -l --udp | grep -q netbios-ns ; then
-    if [ ! -e /etc/xinetd.d/netbios-ns ]; then
+    if ps -C nmbd | grep -q nmbd ; then
       echo "NetBIOS nameserver"
       killproc /usr/sbin/nmbd
-    fi
-  fi
+      evaluate_retval
+    fi 
+  fi &&
   if netstat -l --tcp | grep -q netbios-ssn ; then
-    if [ ! -e /etc/xinetd.d/netbios-ssn ]; then
+    if ps -C smbd | grep -q smbd; then
       echo "NetBIOS sessions"
       killproc /usr/sbin/smbd
+      evaluate_retval
     fi
   fi
 }
 #
-status_samba()
+status()
 {
   if netstat -l --udp | grep -q netbios-ns ; then
-    if [ -e /etc/xinetd.d/netbios-ns ]; then
+    if ! ps -C nmbd | grep -q nmbd; then
       echo "NetBIOS nameserver : xinetd"
       evaluate_retval
     fi
-    if [ ! -e /etc/xinetd.d/netbios-ns ]; then
+    if ps -C nmbd | grep -q nmbd; then
       echo "NetBIOS nameserver : daemon"
       evaluate_retval
     fi
-  fi
-  if netstat -l --udp | grep -q netbios-ssn ; then
-    if [ -e /etc/xinetd.d/netbios-ssn ]; then
+  fi  &&
+  if netstat -l --tcp | grep -q netbios-ssn ; then
+    if ! ps -C smbd | grep -q smbd ; then
       echo "NetBIOS sessions : xinetd"
       evaluate_retval
     fi
-    if [ ! -e /etc/xinetd.d/netbios-ssn ]; then
+    if ps -C smbd | grep -q smbd ; then
       echo "NetBIOS sessions : daemon"
       evaluate_retval
     fi
   fi
 }
-#
-case $1 in
 
-  start)   echo "Starting Samba Services"
-           start_samba
-	   ;;
-
-  stop)    echo "Stopping Samba Services"
-           stop_samba
-	   ;;
-
-  restart) echo "Restarting Samba Services"
-           stop_samba
-           start_samba
-           ;;
-
-  status)  echo "Status of Samba Services"
-           status_samba
-	   ;;
-
-  *)       echo "Usage $0 {start|stop|restart|status}"
-           ;;
-
-esac
-#
