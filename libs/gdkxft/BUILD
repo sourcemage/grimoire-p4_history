@@ -1,6 +1,6 @@
 (
 
-  export  CFLAGS="$CFLAGS -I/usr/include/libcapplet1"
+  export  CFLAGS="`freetype-config --cflags` $CFLAGS -I/usr/include/libcapplet1"
   ./configure  --prefix=/usr           \
                --sysconfdir=/etc       \
                --localstatedir=/var    \
