@@ -1,7 +1,7 @@
            SPELL=amarok
-         VERSION=1.0-beta1
+         VERSION=1.0-beta2_RC1
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%_RC*}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
           MD5[0]=0ba337567efff8b415a1aa33af102b6a
         WEB_SITE=http://amarok.sourceforge.net/
