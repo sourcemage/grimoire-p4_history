@@ -6,9 +6,16 @@ depends  zip     &&
 depends  ORBit   &&
 depends  perl    &&
 
-optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support" &&
 case $MOZILLA_CALENDAR in
   Y|y|J|j)
-    optional_depends "libical" "--enable-calendar" " " "for building the Mozilla Calendar"
+    depends libical '--enable-calendar'
     ;;
-esac
+esac &&
+
+case $MOZILLA_ENIGMAIL in
+  Y|y|J|j)
+    depends gnupg
+    ;;
+esac &&
+
+optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
