@@ -1,3 +1,5 @@
+OPTS="$OPTS $CYRUSSASLPLAIN"
+
 if [ "$SASLAUTHD" == "y" ]; then
   OPTS="$OPTS --with-saslauthd=/var/run/saslauthd"
 elif [ "$SASLDB" == "y" ]; then

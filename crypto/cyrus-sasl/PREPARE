@@ -15,3 +15,7 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   fi
   echo 'CONFIGURED=y' >> $SPELL_CONFIG
 fi
+
+config_query_option  CYRUSSASLPLAIN  "Enable PLAIN authentication?"  n  \
+                     "--enable-plain"                                   \
+                     "--disable-plain"
