@@ -5,6 +5,7 @@
   ./configure  --build=$BUILD                   \
                --prefix=/usr                    \
                --sysconfdir=/etc                \
+               --localstatedir=/var		\
                --enable-pop                     \
                --enable-imap                    \
                --with-mailpath=/var/spool/mail  \
