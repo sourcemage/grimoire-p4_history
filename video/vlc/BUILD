@@ -1,4 +1,3 @@
-patch -p0 < $SCRIPT_DIRECTORY/live-api-change.patch  &&
 if  [  "$JOYSTICK"  =  "y"  ];  then
   export OPTS="$OPTS --enable-joystick"
 fi  &&
