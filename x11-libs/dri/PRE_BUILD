@@ -1,14 +1,3 @@
-if [ "$( gunzip -c /proc/config.gz | grep 'CONFIG_DRM=y' )" ]; then
-    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
-    exit 1
-elif [ "$( grep 'CONFIG_DRM=y' /etc/sorcery/local/kernel.config )" ]; then
-    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
-    exit 1
-elif [ "$( grep 'CONFIG_DRM=y' /usr/src/linux/.config )" ]; then
-    echo "Sorry you have DRM support builtin recompile your kernel and remove since this spell makes it's own modules"
-    exit 1
-fi &&
-
 mk_source_dir  ${SOURCE_DIRECTORY}      &&
 cd  ${SOURCE_DIRECTORY}                 &&
 
