@@ -1,21 +1,20 @@
            SPELL=squid
-         VERSION=2.5.STABLE1
+         VERSION=2.5.STABLE2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.squid-cache.org/Versions/v${VERSION%%\.*}/${VERSION%\.*}/$SOURCE
         WEB_SITE=http://www.squid-cache.org/
-          MD5[0]='f0624ea12fd419f220584ee6a59c164b'
+          MD5[0]='d0bd94052973ec5b59332884e4fb16cb'
       LICENSE[0]=GPL
          ENTERED=20011214
          UPDATED=20021105
-           SHORT="Squid is a full-featured Web proxy cache"
+           SHORT='Squid is a full-featured Web proxy cache'
 cat << EOF
 Squid is...
   * a full-featured Web proxy cache
   * designed to run on Unix systems
   * free, open-source software
   * the result of many contributions by unpaid (and paid) volunteers
-
 Squid supports...
   * proxying and caching of HTTP, FTP, and other URL's
   * proxying for SSL
