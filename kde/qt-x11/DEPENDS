@@ -1,10 +1,10 @@
-depends  x11-libs                                     &&
+depends  X11-LIBS                                      &&
 depends  uudeview                                      &&
 depends  jpeg  "-system-libjpeg"                       &&
 optional_depends  "zlib" "-system-zlib" "-qt-zlib" "to use the system zlib library"           &&
 optional_depends  "libmng" "-system-libmng" "-qt-libmng" "to use the system mng library"      &&
 optional_depends  "libpng" "-system-libpng" "-qt-libpng" "to use the system png library"      &&
-optional_depends  "STLport" "" "" "for stlport support ???"                                   &&
+optional_depends  "STLport" "" "" "for stlport support "                                   &&
 optional_depends  "mysql" "-plugin-sql-mysql  -I/usr/include/mysql  -L/usr/lib  -lmysqlclient" \
                   "" "for mysql database support"         &&
 #optional_depends  "postgresql"                         \

@@ -1,53 +1,40 @@
-2003-10-03  hgg <hgreig@bigpond.net.au>
+2003-10-10 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change x11-libs to X11-LIBS
 
-		Change optional_depends xfree86 to x11-libs, needs devel sorcery now
+2003-10-03 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change optional_depends xfree86 to x11-libs, needs devel sorcery now
 
-2003-09-29  hgg <hgreig@bigpond.net.au>
+2003-09-29 hgg <hgreig@bigpond.net.au>
+	* CONFIGURE: Changed CONFIGURE to depends imap for imap support
+	as it needs UW-imap headers
 
-		Changed CONFIGURE to depends imap for imap support 
-		as it needs UW-imap headers
+2003-09-19 Eric Sandall <eric@sandall.us>
+	* PROVIDES: Changed php to PHP for requires/provides  (Bug #4278)
 
-2003-09-19  Eric Sandall <eric@sandall.us>
+2003-08-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DPENDS: added dependency on cvs
 
-		Changed php to PHP for requires/provides  (Bug #4278)
+2003-04-03 Sergey Lipnevich  <sergey@sourcemage.org>
+	* CONFIGURE: Added CONFIGURE.
+	* DETAILS: Checks out PHP 5 source.
 
-2003-08-28  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-02-23 Sergey Lipnevich  <sergeyli@pisem.net>
+	* CONFIGURE: "Variable tracking" and "transparent session id" removed because
+	these options are not supported by ./configure anymore.
+	"Socket support" option integrated into BUILD.
+	Enabled calendar functions.
+	Safe mode disabled by default because otherwise PEAR might have
+	problems installing itself at the end of installation routine.
+	* DEPENDS: Introduced optional dependency on Sablotron for XSLT support.
+	Normalized dependency code for xfree86, zlib, bzip2, Apache.
+	* POST_INSTALL: Added Apache config file syntax check before restarting.
+	* DETAILS: Added check-out from PHP_4 branch.
 
-		added dependency on cvs
+2003-01-30 Seth Woolley <seth@tautology.org>
+	* DETAILS: Added MD5[0]=IGNORE (cvs spell)
 
-2003-04-03  Sergey Lipnevich  <sergey@sourcemage.org>
+2002-10-03 Julian v. Bock  <julian@wongr.net>
+	* DETAILS: add LICENSE field.
 
-		Added CONFIGURE.
-
-		Checks out PHP 5 source.
-
-2003-02-23  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		"Variable tracking" and "transparent session id" removed because
-		these options are not supported by ./configure anymore.
-
-		"Socket support" option integrated into BUILD.
-
-		Enabled calendar functions.
-
-		Safe mode disabled by default because otherwise PEAR might have
-		problems installing itself at the end of installation routine.
-		Introduced optional dependency on Sablotron for XSLT support.
-
-		Normalized dependency code for xfree86, zlib, bzip2, Apache.
-
-		Added Apache config file syntax check before restarting.
-
-		Added check-out from PHP_4 branch.
-
-2003-01-30  Seth Woolley <seth@tautology.org>
-
-		Added MD5[0]=IGNORE (cvs spell)
-
-2002-10-03  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE field.
-
-2002-04-28  Sergey A. Lipnevich  <sergeyli@pisem.net>
-
-		Spell created.
+2002-04-28 Sergey A. Lipnevich  <sergeyli@pisem.net>
+	* ALL: Spell created.

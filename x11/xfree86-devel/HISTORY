@@ -1,213 +1,168 @@
-2003-09-25  hgg <hgreig@bigpond.net.au>
+2003-10-10 hgg <hgreig@bigpond.net.au>
+	* DETAILS: update to 4.3.99.13
+	* HISTORY: convert to new format
+	* POST_INSTALL: add /usr/X11R6/lib to /etc/ld.so.conf
+	* PROVIDES: upper case provides
 
-		Imake "YES" is case sensitive, adjust BUILD to use YES
+2003-09-25 hgg <hgreig@bigpond.net.au>
+	* BUILD: Imake "YES" is case sensitive, adjust BUILD to use YES
 
-2003-09-19  hgg <hgreig@bigpond.net.au>
+2003-09-19 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PREPARE,BUILD: Update to 4.3.99.12 for all the band-aid brigade
+	Branch into xfree86-devel, Remove all options for patches
+	Add some fallback defaults to BUILD, Move a bugfix in BUILD to before "make World" so it won't fail
+       (when it does fail it calls "make World" again which actually involves a "make clean")
 
-		Update to 4.3.99.12 for all the band-aid brigade
-		Branch into xfree86-devel
-		Remove all options for patches
-		Add some fallback defaults to BUILD
-		Move a bugfix in BUILD to before "make World" so it won't fail
-                (when it does fail it calls "make World" again which actually involves a "make clean")
+2003-09-18 hgg <hgreig@bigpond.net.au>
+	* CONFLICTS: Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
 
-2003-09-18  hgg <hgreig@bigpond.net.au>
+2003-09-15 hgg <hgreig@bigpond.net.au>
+	* PROVIDES: Add Provides, it now has 3 categories x11-server, x11-libs and opengl (last one only needed fro 
+        fresco spell about to be submitted)
 
-		Add CONFLICTS for xfree86-libs xdirectfb and xfree86-devel
+2003-08-23 hgg <hgreig@bigpond.net.au>
+	* BUILD: Obscure bug where $PWD isn't in PATH
 
-2003-09-15  hgg <hgreig@bigpond.net.au>
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update UPDATED purely for test grimoire integration.
+	* BUILD: And remove 2.6.X kernel hack as 2.6.X kernel not supported yet.
 
-		Add Provides, it now has 3 categories x11-server, x11-libs and opengl (last one only needed fro 
-                fresco spell about to be submitted)
-
-2003-08-23  hgg <hgreig@bigpond.net.au>
-
-		Obscure bug where $PWD isn't in PATH
-
-2003-08-22  hgg <hgreig@bigpond.net.au>
-
-		Update UPDATED purely for test grimoire integration.
-		And remove 2.6.X kernel hack as 2.6.X kernel not supported yet.
-
-2003-08-17  hgg <hgreig@bigpond.net.au>
-
-		Update to 4.3.99.10 (still optional via cast -r )
-
-		Add possible fix to BUILD for kernels >2.4
-
-		Fix Bug #3986 (my fault entirely)
+2003-08-17 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 4.3.99.10 (still optional via cast -r )
+	* BUILD: Add possible fix to BUILD for kernels >2.4
+	Fix Bug #3986 (my fault entirely)
 
 2003-08-10  hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+	* BUILD: Add sedit of CFLAGS to BUILD bug#3694
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
-		
-		Add sedit of CFLAGS to BUILD bug#3694
+2003-08-09 hgg <hgreig@bigpond.net.au>
+	* PREBUILD,BUILD,POST_INSTALL: Add shadow structure to BUILD as per xfree86.org's recommendations.Fixes bug where 
+	include paths aren't setup properly and make fails when it doesn't find the includes.
+	Sedit out -Os from /usr/src/xc/config/cf/host.def for bug#3694
 
-2003-08-09  hgg <hgreig@bigpond.net.au>
+2003-08-08 hgg <hgreig@bigpond.net.au>
+	* DEPENDS: Change libpng to depends as xc/config/cf/linux.cf tells the build it is already there.
 
-		Add shadow structure to BUILD as per xfree86.org's recommendations.Fixes bug where 
-		include paths aren't setup properly and make fails when it doesn't find the includes.
-
-		Sedit out -Os from /usr/src/xc/config/cf/host.def for bug#3694
-
-2003-08-08  hgg <hgreig@bigpond.net.au>
-
-		Change libpng to depends as xc/config/cf/linux.cf tells the build it is already there.
-
-2003-07-28  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to new init system
+2003-07-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/*: updated to new init system
 
 2003-07-26  hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update TRIGGERS for Linux-PAM
 
-		Update TRIGGERS for Linux-PAM
+2003-07-25 Sergey Lipnevich  <sergey@sourcemage.org>
+	* DETAILS,PREPARE,PREBUILD: Upgrade to 4.3.99.9.
+	Add patch checksum verification in PRE_BUILD.
+	Fix GCC 3.3-related small error.
 
-2003-07-25  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-09 Sergey Lipnevich  <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 4.3.99.8.
 
-		Upgrade to 4.3.99.9.
-		Add patch checksum verification in PRE_BUILD.
-		Fix GCC 3.3-related small error.
+2003-07-04 Sergey Lipnevich  <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 4.3.99.7.
 
-2003-07-09  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-06-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.3.0.1
+	* BUILD: Set BUILD to exit on first error during make
+	* DEPENDS,PRE_BUILD: Cleaned up DEPENDS, DETAILS, and PRE_BUILD
+	* ?: Possible fix for Bug #3486
 
-		Upgrade to 4.3.99.8.
+2003-05-01 Rob Verkuylen <rob@verkuylen.net>
+	* init.d/*: Copied /init.d/xdm.sh to /init.d/xdm
+	Step 1/3 in bug#: 3115
 
-2003-07-04  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-03-31 Eric Sandall <eric@sandall.us>
+	* init.d/*: Moved xdm.sh from init.d to xfree86
 
-		Upgrade to 4.3.99.7.
+2003-03-27 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS:  fontconfig added
+	made libpng optional (bug #2747)
+	* CONFIGURE: added options to CONFIGURE
+	added HasFontconfig and HasExpat to host.def (expat implied by fontconfig)
+	(see bug #2759 for more details)
 
-2003-06-15  Eric Sandall <eric@sandall.us>
+2003-03-11 Joel Mayes <bluebird@optushome.com.au>
+	* DEPENDS: libpng added
 
-		Updated to 4.3.0.1
+2003-02-07 Seth Woolley <seth@tautology.org>
+	* PRE_BUILD: md5 references added
 
-		Set BUILD to exit on first error during make
-
-		Cleaned up DEPENDS, DETAILS, and PRE_BUILD
-
-		Possible fix for Bug #3486
-
-2003-05-01  Rob Verkuylen <rob@verkuylen.net>
-
-		Copied /init.d/xdm.sh to /init.d/xdm
-		Step 1/3 in bug#: 3115
-
-2003-03-31  Eric Sandall <eric@sandall.us>
-
-		Moved xdm.sh from init.d to xfree86
-
-2003-03-27  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		DEPENDS on fontconfig added
-		added options to CONFIGURE
-		added HasFontconfig and HasExpat to host.def (expat implied
-		by fontconfig)
-		(see bug #2759 for more details)
-		made libpng optional (bug #2747)
-
-2003-03-11  Joel Mayes <bluebird@optushome.com.au>
-
-		DEPENDS on libpng added
-
-2003-02-07  Seth Woolley <seth@tautology.org>
-
-		PRE_BUILD md5 references added
-
-2003-01-14  Joel Mayes <bluebird@optushome.com.au>
-
-		Added DEPENDS on freetype2
-		POST_INSTALL will no longer rebuild NVIDIA_GLX
+2003-01-14 Joel Mayes <bluebird@optushome.com.au>
+	* DEPENDS2: freetype2 added
+	* POST_INSTALL:  no longer rebuild NVIDIA_GLX
 
 2002-12-02  Vladimir Vydra <vydra@fria.fri.utc.sk>
+	* BUILD: Modified spell to use freetype2 lib => so It will not try
+	to compile own one => fix of #1763
 
-		Modified speel to use freetype2 lib => so It will not try
-		to comiple own one => fix of #1763
+2002-11-22 Vladimir Vydra <vydra@fria.fri.utc.sk>
+	* BUILD: Created && added patches fixing missing semi-colon in gram.y,
+	to_wfont.y,cfgparse.y and patch fixing two incorect semi-colon in xkbparsen.y
 
-2002-11-22  Vladimir Vydra <vydra@fria.fri.utc.sk>
+2002-11-07 Joel Mayes <bluebird@optushome.com.au>
+	* BUILD: Added patch by Andrew Stitt to fix missing semi-colon in xftgram.y
+	* HISTORY: Corrected My (and Kyle's) bad spelling and reformated HISTORY file
 
-		Created && added patches fixing missing semi-colon in gram.y,
-		to_wfont.y,cfgparse.y and patch fixing two incorect semi-colon 
-		in xkbparsen.y
+2002-10-22 Joel Mayes <bluebird@optushome.com.au>
+	* TRIGGERS: Added TRIGGERS file
 
-2002-11-07  Joel Mayes <bluebird@optushome.com.au>
+2002-10-19 Joel Mayes <bluebird@optushome.com.au>
+	* CONFIGURE: Added new i810 drivers
 
-		Added patch by Andrew Stitt to fix missing semi-colon in
-		xftgram.y
-		Corrected My (and Kyle's) bad spelling and reformated HISTORY
-		file
+2002-09-18 Joel Mayes <bluebird@optushome.com.au>
+	* BUILD: Added mit-shm security patch
 
-2002-10-22  Joel Mayes <bluebird@optushome.com.au>
+2002-09-18 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added version patch to 4.2.1 as it seems the X people
+	aren't going to release the full source for a while :(
+	* BUILD: Removed the zlib + xlib security patch's as they are now
+	unneeded
 
-		Added TRIGGERS file
+2002-09-06 Joel Mayes <bluebird@optushome.com.au>
+	* BUILD: Added xlib security patch: 4.2.0-xlib-security.patch
 
-2002-10-19  Joel Mayes <bluebird@optushome.com.au>
+2002-08-10 Joel Mayes <bluebird@optushome.com.au>
+	* CONFIGURE: Removed message in CONFIGURE warning of conflict with
+	linux kernel DRM as this is no longer valid with linux kernel 2.4.19
 
-		Added new i810 drivers
+2002-08-10 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: updated MD5[*] field to reflect the .tar not .tar.(bz2|gz|Z)
 
-2002-09-18  Joel Mayes <bluebird@optushome.com.au>
+2002-06-24 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added LICENSE field to DETAILS
 
-		Added mit-shm security patch
+2002-06-21 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added MD5 field to DETAILS
 
-2002-09-18  Joel Mayes <bluebird@optushome.com.au>
+2002-04-01 Marc Greene
+	* CONFIGURE,POST_INSTALL: Modified CONFIGURE and POST_INSTALL to copy and recover
+	existing xdm and xinit configs as "#define InstallXdmConfig
+	NO" and "#define InstallXinitConfig  NO" were not effective at
+	preventing these files from being reaped.
 
-		Added version patch to 4.2.1 as it seems the X people
-		aren't going to release the full source for a while :(
+2002-03-19 Marc Greene
+	* DETAILS,BUILD: Added zlib security patch: 4.2.0-zlib-security.patch
 
-		Removed the zlib + xlib security patch's as they are now
-		unneeded
+2002-01-20 Kyle Sallee
+	* ALL: Modified spell to support version 4.2.0 & Linux-PAM
 
-2002-09-06  Joel Mayes <bluebird@optushome.com.au>
 
-		Added xlib security patch: 4.2.0-xlib-security.patch
+2002-01-10 Kyle Sallee
+	* ALL: I was incorrect about my assumptions on 20020109.  
+	The problem turned out to be mistake in a
+	xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/drm.h
+	within the xfree86 source.  I included a patch.
 
-2002-08-10  Joel Mayes <bluebird@optushome.com.au>
+2002-01-09 Kyle Sallee
+	* ALL: Modified BUILD so that "#define BuildXF86DRM  NO" is added to
+	config/cf/host.def is "CONFIG_DRM=y" is in
+	/usr/src/linux/.config.  In simple terms an SA can compile DRM
+	in xfree86 or the linux kernel, but not both, otherwise xfree86
+	fails to compile & install.  Jon Svendsen figured out the
+	conflict, I added the fix.  Great teamwork, Jon!
 
-		Removed message in CONFIGURE warning of conflict with
-		linux kernel DRM as this is no longer valid with linux 
-		kernel 2.4.19
+2002-01-02 Kyle Sallee
+	* ALL: Modified CONFIGURE to give SAs a more precise configuration.
 
-2002-08-10  Joel Mayes <bluebird@optushome.com.au>
 
-		updated MD5[*] field to reflect the .tar not .tar.(bz2|gz|Z)
 
-2002-06-24  Joel Mayes <bluebird@optushome.com.au>
-
-		Added LICENSE field to DETAILS
-
-2002-06-21  Joel Mayes <bluebird@optushome.com.au>
-
-		Added MD5 field to DETAILS
-
-2002-04-01  Marc Greene
-
-		Modified CONFIGURE and POST_INSTALL to copy and recover
-		existing xdm and xinit configs as "#define InstallXdmConfig
-		NO" and "#define InstallXinitConfig  NO" were not effective at
-		preventing these files from being reaped.
-
-2002-03-19  Marc Greene
-
-		Added zlib security patch: 4.2.0-zlib-security.patch
-
-2002-01-20  Kyle Sallee
-
-		Modified spell to support version 4.2.0 & Linux-PAM
-
-2002-01-02  Kyle Sallee
-
-		Modified CONFIGURE to give SAs a more precise configuration.
-
-2002-01-09  Kyle Sallee
-
-		Modified BUILD so that "#define BuildXF86DRM  NO" is added to
-		config/cf/host.def is "CONFIG_DRM=y" is in
-		/usr/src/linux/.config.  In simple terms an SA can compile DRM
-		in xfree86 or the linux kernel, but not both, otherwise xfree86
-		fails to compile & install.  Jon Svendsen figured out the
-		conflict, I added the fix.  Great teamwork, Jon!
-
-2002-01-10  Kyle Sallee
-
-		I was incorrect about my assumptions on 20020109.  
-		The problem turned out to be mistake in a
-		xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/drm.h
-		within the xfree86 source.  I included a patch.

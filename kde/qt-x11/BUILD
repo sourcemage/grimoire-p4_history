@@ -16,6 +16,11 @@ sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 export QTDIR=$SOURCE_DIRECTORY  &&
 export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 
+if [ -x /usr/bin/uic ]
+then for i in $(< SCRIPT_DIRECTORY/install.log)
+     do rm -f $i
+     done
+fi                                                  &&
 #  if  spell_installed  postgresql;  then
 #    cd  $SOURCE_DIRECTORY  &&
 #   tar  -zxpf  /var/spool/sorcery/postgresql-`installed_version postgresql`.tar.gz  &&
