@@ -1,19 +1,8 @@
-INSTALLDIR=/usr/lib/transcode/contrib
 (
 
-  if [ -d /usr/lib/transcode ]; then
-  
-    prepare_install                                  &&
-    mkdir $INSTALLDIR                                &&
-    cp $SCRIPT_DIRECTORY/Makefile $SOURCE_DIRECTORY  &&
-    cp -ruv $SOURCE_DIRECTORY $INSTALLDIR            &&
-    cd $INSTALLDIR/subtitleripper                    &&
-	make
-
-  else
-
-    echo  "Need to install transcode first..."
-
-  fi
+  cp  $SCRIPT_DIRECTORY/Makefile  $SOURCE_DIRECTORY  &&
+  make  &&
+  prepare_install  &&
+  install  pgm2txt srttool subtitle2pgm subtitle2vobsub  /usr/bin
   
 )  >  $C_FIFO  2>&1
