@@ -1,17 +1,9 @@
            SPELL=digikam
-if  [  "$DEVEL"  ==  "y"  ];  then
-         VERSION=0.7.1-beta2
+         VERSION=0.7.2
           SOURCE=${SPELL}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
-          MD5[0]=8cc2dd9c76bfd0489d262cf7c1604486
-else
-         VERSION=0.7.1
-          SOURCE=${SPELL}-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
-   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
-          MD5[0]=061f297c9adc50d93bfc5392d3bd7a02
-fi
+          MD5[0]='14459187441915b6064f9a9d461d8e66'
         WEB_SITE=http://digikam.sourceforge.net
          ENTERED=20020305
          UPDATED=20041014
