@@ -1,6 +1,6 @@
            SPELL=httpd-dev
 if [ "$HTTPD_CHECKOUT" == 'y' ]; then
-         VERSION=svn
+         VERSION=$(date +%Y%m%d)
           MD5[0]=IGNORE
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/httpd/httpd/trunk:${SPELL%-*}-trunk
   FORCE_DOWNLOAD=1
