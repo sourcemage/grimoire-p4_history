@@ -1,6 +1,8 @@
 case "${BRANCH}" in
   stable)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.dgc.deepif.1.smgl"
+    cp "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.dgc.deepif.1" patch-1.4.dgc.deepif.1 &&
+    patch -p0 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.dgc.deepif.1.smgl.diff" &&
+    patch -p1 < patch-1.4.dgc.deepif.1
   ;;
   devel|cvs)
     patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.8.dgc.deepif.1"

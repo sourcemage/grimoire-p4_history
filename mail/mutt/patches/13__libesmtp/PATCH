@@ -1,8 +1,14 @@
 case "${BRANCH}" in
   stable)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.sde.libesmtp.3.smgl"
+    PATCH_SOURCE="patch-1.4.sde.libesmtp.3"
+       SMGL_DIFF="patch-1.4.sde.libesmtp.3.smgl.diff"
   ;;
   devel|cvs)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.3.sde.libesmtp.3.smgl"
+    PATCH_SOURCE="patch-1.5.3.sde.libesmtp.3"
+       SMGL_DIFF="patch-1.5.3.sde.libesmtp.3.smgl.diff"
   ;;
-esac
+esac &&
+
+cp "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}" "${PATCH_SOURCE}" &&
+patch -p0 < "${PATCH_DIRECTORY}/${PATCH}/${SMGL_DIFF}" &&
+patch -p1 < "${PATCH_SOURCE}"

@@ -1,11 +1,18 @@
 case "${BRANCH}" in
   stable)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.2.1.rr.compressed.1.smgl"
+    PATCH_SOURCE="patch-1.4.2.1.rr.compressed.1"
+       SMGL_DIFF="patch-1.4.2.1.rr.compressed.1.smgl.diff"
   ;;
   devel)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.9.rr.compressed.1.smgl"
+    PATCH_SOURCE="patch-1.5.9.rr.compressed.1"
+       SMGL_DIFF="patch-1.5.9.rr.compressed.1.smgl.diff"
   ;;
   cvs)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-cvs.rr.compressed.1.smgl"
+    PATCH_SOURCE="patch-1.5.9.rr.compressed.1"
+       SMGL_DIFF="patch-cvs.rr.compressed.1.smgl.diff"
   ;;
-esac
+esac &&
+
+cp "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}" "${PATCH_SOURCE}" &&
+patch -p0 < "${PATCH_DIRECTORY}/${PATCH}/${SMGL_DIFF}" &&
+patch -p1 < "${PATCH_SOURCE}"

@@ -1,11 +1,17 @@
 case "${BRANCH}" in
   stable)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.0.cd.purge_message.3.smgl"
+    PATCH_SOURCE="patch-1.4.0.cd.purge_message.3"
+       SMGL_DIFF="patch-1.4.0.cd.purge_message.3.smgl.diff"
   ;;
   devel|cvs)
-    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.5.1.cd.purge_message.3.4.smgl"
+    PATCH_SOURCE="patch-1.5.5.1.cd.purge_message.3.4"
+       SMGL_DIFF="patch-1.5.5.1.cd.purge_message.3.4.smgl.diff"
   ;;
 esac &&
+
+cp "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}" "${PATCH_SOURCE}" &&
+patch -p0 < "${PATCH_DIRECTORY}/${PATCH}/${SMGL_DIFF}" &&
+patch -p1 < "${PATCH_SOURCE}" &&
 
 # do this here instead of in the patch to play nicely with other patches
 cat << EOF >> OPS

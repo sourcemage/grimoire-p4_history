@@ -75,10 +75,12 @@ if list_find "${MUTT_OPTS}" "--enable-imap"; then
                    "to enable GSSAPI authentication for IMAP"
 fi &&
 
-if [ ! -z "${REAL_PATCHES}" ]; then
+if [ ! -z "${REAL_PATCHES}" ] || [ "${BRANCH}" == "cvs" ]; then
   depends "automake" &&
-  depends "autoconf" &&
+  depends "autoconf"
+fi &&
 
+if [ ! -z "${REAL_PATCHES}" ]; then
   for P in ${REAL_PATCHES}; do
     if [ -x "${PATCH_DIRECTORY}/${P}/DEPENDS" ]; then
       . "${PATCH_DIRECTORY}/${P}/DEPENDS"
