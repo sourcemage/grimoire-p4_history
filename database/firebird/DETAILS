@@ -1,6 +1,6 @@
            SPELL=firebird
 # using cvs, as there is no official tarball yet
-         VERSION=1.5-rc7
+         VERSION=cvs
              CVS=B1_5_Release
           SOURCE=${SPELL}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
@@ -17,8 +17,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
           MD5[0]=IGNORE
          ENTERED=20031111
          UPDATED=
-# this is for default install script
-# 	    DOCS="ChangeLog"	
  	    DOCS="ChangeLog doc/*"
            SHORT="a very powerful relational dbms"
 cat << EOF

@@ -1,30 +1,12 @@
-known problems:
-	CLASSIC
-	xinet.d/firebird script not installed  - sorcery problem?
-	xinetd not restarted
-	changeDBAPassword.sh fails: with ..
-mkpasswd: no DBM database on system - no action performed
-	it appears that the script thinks that I'm using shadow, but 
-	although it's installed, I don't use it
-	It should use 'openssl passwrd' instead
-
-	fbisql fails
-	fbisql_static ok, as root
-	fbisql_static fails as user, because of mkpasswd problem?
-Statement failed, SQLCODE = -902
-
-operating system directive open failed
--Permission denied
-root@Sourcemage:~# gsec -user sysdba -password masterkey
-root@Sourcemage:~# cd /usr/firebird/
-root@Sourcemage:/usr/firebird# gsec -user sysdba -password masterkey
-GSEC> modify sysdba -pw masterkey
-Warning - maximum 8 significant bytes of password used
-GSEC> quit
-r
-	SUPER
-	fbserver fails unless disable threads
-	can't connect to local host
+2003-11-23 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version = cvs
+	* BUILD: use a modified version of the latest binary 
+	Firebird install script, which actually install the init.d or 
+	xinet.d script as appropriate, but I have made smgl specific scripts
+	* PROVIDES *.patch scripts/*: add
+	* CONFLICTS: remove
+	* POST_INSTALL: clean up
+	
 
 2003-11-13 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: rename spell as firebird
