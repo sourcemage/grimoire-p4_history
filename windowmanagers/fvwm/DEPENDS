@@ -1,4 +1,16 @@
-depends X11-LIBS &&
-optional_depends "libstroke" "" "" "allows interpretation by fvwm of mouse strokes(mouse motion)" &&
-optional_depends "gtk+"  ""  "--disable-gtk"        "With GTK support for FvwmGtk?"               &&
-optional_depends "gnome-libs" "--with-gnome" "--with-gnome=no" "With GNOME support in FvwmGtk?"
+depends  X11-LIBS  &&
+
+optional_depends  libstroke                                                       \
+                  ""                                                              \
+                  ""                                                              \
+                  "allows interpretation by fvwm of mouse strokes(mouse motion)"  &&
+
+optional_depends  gtk+                                          \
+                  ""                                            \
+                  "--disable-gtk"                               \
+                  "With GTK support for FvwmGtk?"               &&
+
+optional_depends  gnome-libs                        \
+                  "--with-gnome"                    \
+                  "--with-gnome=no"                 \
+                  "With GNOME support in FvwmGtk?"
