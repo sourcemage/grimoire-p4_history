@@ -41,9 +41,9 @@
  ln -sf $SOURCE_DIRECTORY.bld/dlfcn/libdl.so ${INSTALL_ROOT}/lib/libdl.so.2 &&
  ln -sf $SOURCE_DIRECTORY.bld/nis/libnsl.so ${INSTALL_ROOT}/lib/libnsl.so.1 &&
  ln -sf $SOURCE_DIRECTORY.bld/crypt/libcrypt.so ${INSTALL_ROOT}/lib/libcrypt.so.1 &&
- ln -sf $SOURCE_DIRECTORY.bld/login/libutil.so ${INSTALL_ROOT}/lib/libutil.so.1 &&
- [ "$NPTL" = "yes" ] && ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ;
- [ "$NPTL" = "no" ] && ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ;
+ ln -sf $SOURCE_DIRECTORY.bld/login/libutil.so ${INSTALL_ROOT}/lib/libutil.so.1   &&
+ if [ "$NPTL" = "yes" ] ; then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ; fi         &&
+ if [ "$NPTL" = "no" ] ; then  ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 ; fi &&
  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2   &&
  unset  LD_LIBRARY_PATH                                                     &&
  (  ldconfig  ||  true  )                                                   &&
@@ -54,8 +54,9 @@
      do [ -f $i ] && rm -vf $i 
   done                                        &&
  ### old systems have left over files in /usr/lib/locale/* 
- [ -d ${INSTALL_ROOT}/usr/lib/locale ] && rm -rf ${INSTALL_ROOT}/usr/lib/locale/ && echo "REMOVING OLD LOCALE FILES" ;
-
+ if [ -d ${INSTALL_ROOT}/usr/lib/locale ] 
+ then  rm -rf ${INSTALL_ROOT}/usr/lib/locale/ && echo "REMOVING OLD LOCALE FILES" 
+ fi &&
  ### INSTALL 
   make install                                &&
   (  ldconfig  ||  true  )                    &&

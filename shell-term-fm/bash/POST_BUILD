@@ -51,13 +51,13 @@ sedit "s:var=val:$(grep -o $i=.*$ $OLDPRO):" $*
         i=LANG &&
                  grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
                  if [ -f $PROFD/lc.sh ] ; then
-                        i=LC ; grep -q $i $OLDPRO && pop_two >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
-                 else i=LC ; grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
-                 fi  
-                 if [ -f $PROFD/lc.sh ] ; then
                      i=LC_ALL ; grep -q $i $OLDPRO && pop_two >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
                  else  i=LC_ALL ; grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
                  fi 
+                 if [ -f $PROFD/lc.sh ] ; then
+                        i=LC ; grep -q "$i=" $OLDPRO && pop_two >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 else i=LC ; grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 fi  
         i=INPUTRC &&
                  grep -q $i $OLDPRO && pop_script >> $PROFD/inputrc.sh && todays_sedit $PROFD/inputrc.sh
         i=LD_PRELOAD &&
