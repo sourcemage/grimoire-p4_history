@@ -1,5 +1,6 @@
 (
 
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/STLport-4.5.3-gcc3.patch  &&
   patch  -p1  <  ${SCRIPT_DIRECTORY}/STLport-4.5.3-gcc3.2.patch  &&
 
   #  Set compile to use STLport's headers before gcc's...

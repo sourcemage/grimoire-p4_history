@@ -7,7 +7,8 @@
                      --build=$BUILD      \
                      --enable-dynamic    \
                      --enable-compat185  \
-                     --enable-cxx        &&
+                     --enable-cxx        \
+                     $OPTS               &&
 
   make                                   &&
   prepare_install                        &&
