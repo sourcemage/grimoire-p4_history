@@ -1,9 +1,17 @@
            SPELL=gpgme
+       BUILD_API=2
+if [ "$DEVEL" == "y" ];then
+         VERSION=0.9.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
+          MD5[0]=38d89e79f839a4061735912126c0dd9d
+else
          VERSION=0.3.16
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/$SPELL/$SOURCE
           MD5[0]=3e52fe0208734eafd660395dbeca871b
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnupg.org/gpgme.html
          ENTERED=20011031
