@@ -1,3 +1,7 @@
+echo
+echo config: $SPELL_CONFIG
+echo
+
 add_status()  {
 
   while  [  -n  "$1"  ];  do
@@ -51,5 +55,6 @@ then
   echo  "$TEMP"                             >  $SPELL_CONFIG
   echo  "GLIBC_LOCALES=\"$GLIBC_LOCALES\""  >> $SPELL_CONFIG
   export  IFS=$OLD_IFS
-
+else
+  .  $SPELL_CONFIG
 fi
