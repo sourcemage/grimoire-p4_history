@@ -27,15 +27,18 @@ cat <<__EOF__ >config/cf/site.def
 #define HasExpat                 YES
 #define HasFontconfig            YES
 
+#define BuildXInputLib          YES
+#define XInputDrivers mouse keyboard
+#define BuildXInputExt          YES
 #define	BuildServer		  NO
 #define BuildFontServer		  NO
 #define BuildXAServer		  NO
 #define BuildLBX		  NO
-#define BuildXF86VidModeLibrary	  NO
+#define BuildXF86VidModeLibrary	  YES
 #define BuildPlugin		  NO
 #define BuildCID		  NO
 #define BuildDPSClients		  NO
-#define BuildServersOnly	  YES
+#define BuildServersOnly	  NO
 #define	BuildClients		  NO
 
 #define BuildFonts                NO
