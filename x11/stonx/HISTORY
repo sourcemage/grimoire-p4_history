@@ -1,11 +1,10 @@
 2005-02-28 Eric Sandall <eric@sandall.us>
-	* Renamed to stonx
-	* DETAILS: Removed SOURCE information
-	  Updated UPDATED
-	* DEPENDS: Depend only on stonx
-	* PRE_BUILD,BUILD: Run only `true`
-	* TRIGGERS: On cast STonX, dispel self
-	* POST_INSTALL: Removed
+	* Renamed from STonX
+	* DETAILS: Renamed to stonx
+	  Removed MAINTAINER
+	  Added BUILD_API=2
+	* CONFLICTS: Auto-conflicts with STonX
+	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
 
 2003-12-01 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 0.6.7.5
