@@ -1,0 +1,22 @@
+         SPELL=mscore
+         VERSION=0.0.6
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://muse.seh.de/$SPELL/bin/$SOURCE
+        WEB_SITE=http://muse.seh.de/mscore
+         ENTERED=20031030
+         UPDATED=20031030
+	MD5[0]=eecde8b0c862b8c941eb77515039a6ac
+	LICENSE[0]=GPL
+	MAINTAINER=audio@sourcemage.org
+           SHORT="MuseScore is the MusE music typesetter"
+cat << EOF
+MuseScore is the MusE music typesetter. Some highlights:
+WYSIWYG, notes are entered on a "virtual note sheet" 
+uses TrueType fonts for screen and printing (adapted from the LilyPond 
+project feta fonts) 
+easy and fast note entry 
+programmed in C++ using the Qt gui library 
+xml file format 
+GPL 
+EOF
