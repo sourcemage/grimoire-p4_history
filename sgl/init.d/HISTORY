@@ -1,3 +1,7 @@
+2002-09-16  Eric Sandall <eric@sandall.us>
+		Removed functions.bz2 (I thought I did this already...)
+		Modified BUILD to check for each symlink, at WaRL0CK's, Oadae's, and toomanymirrors' suggestion.  Fixes the mounting problems everyone has been having, though I still don't know where the problem came from.  Oadae suggested it happened from the transition for e2fsprogs->init.d and the changes which kept happening, and this might be correct.  Anyways, symlinks will now be (re)created if they don't exist.
+
 2002-09-12  Eric Sandall <eric@sandall.us>
 		Uncompressed functions.bz2 and mount.sh.bz2
 		Made BUILD simpler, for now

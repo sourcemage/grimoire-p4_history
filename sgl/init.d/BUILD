@@ -24,8 +24,14 @@
   # have one for now, so...
   if  [  !  -f  /etc/init.d/mount.sh  ];  then
     install  -m  755  $SCRIPT_DIRECTORY/mount.sh  /etc/init.d
+  fi
+  if  [  !  -f  /etc/rcS.d/S10mount.sh  ];  then
     ln  -s  /etc/init.d/mount.sh  /etc/rcS.d/S10mount.sh
+  fi
+  if  [  !  -f  /etc/rc0.d/K90mount.sh  ];  then
     ln  -s  /etc/init.d/mount.sh  /etc/rc0.d/K90mount.sh
+  fi
+  if  [  !  -f  /etc/rc6.d/K90mount.sh  ];  then
     ln  -s  /etc/init.d/mount.sh  /etc/rc6.d/K90mount.sh
   fi
 
