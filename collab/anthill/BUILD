@@ -1,4 +1,3 @@
-# $Id: BUILD,v 1.1 2002/10/10 05:17:54 sergeyli Exp $
 (
 	prepare_install                                    &&
 
