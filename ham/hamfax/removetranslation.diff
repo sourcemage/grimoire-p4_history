@@ -1,0 +1,55 @@
+diff -u -r hamfax-0.6-old/Makefile.in hamfax-0.6-patch/Makefile.in
+--- Makefile.in	Tue Mar 12 21:14:05 2002
++++ Makefile.in	Thu May 23 20:22:39 2002
+@@ -19,46 +19,38 @@
+ exec_prefix=@exec_prefix@
+ bindir=@bindir@
+ docdir=@datadir@/doc/hamfax
+-qmdir=@datadir@/hamfax
+ configdir=/etc
+ INSTALL=@INSTALL@
+ 
+-.PHONY: all binary clean doc distclean install uninstall translations
++.PHONY: all binary clean doc distclean install uninstall
+ 
+-all: binary translations
++all: binary
+ 
+ binary:
+ 	$(MAKE) --directory src/ binary
+ 
+-translations:
+-	$(MAKE) --directory po/ translations
+-
+ doc:
+ 	$(MAKE) --directory doc/ doc
+ 
+ clean:
+ 	rm -rfv moc_bnv_qt_test.*
+ 	$(MAKE) --directory src/ clean
+-	$(MAKE) --directory po/ clean
+ 	$(MAKE) --directory doc/ clean
+ 
+ distclean: clean
+ 	rm -rfv Makefile config.cache config.log config.status
+ 	$(MAKE) --directory src/ distclean
+-	$(MAKE) --directory po/ distclean
+ 	$(MAKE) --directory doc/ distclean
+ 
+-install: binary translations
++install: binary
+ 	$(INSTALL) -o root -g root -m 0755 -d $(bindir)
+ 	$(INSTALL) -o root -g root -m 0755 -s src/hamfax $(bindir)
+ 	$(INSTALL) -o root -g root -m 0755 -d $(docdir)
+ 	$(INSTALL) -o root -g root -m 0644 doc/HamFax.html $(docdir)
+-	$(INSTALL) -o root -g root -m 0755 -d $(qmdir)
+-	$(INSTALL) -o root -g root -m 0644 po/hamfax_de.qm $(qmdir)
+ 	$(INSTALL) -o root -g root -m 0755 -d $(configdir)
+ 	$(INSTALL) -o root -g root -m 0644 etc/hamfaxrc $(configdir)
+ 
+ uninstall:
+-	rm -rfv $(bindir)/hamfax $(docdir)/HamFax.html $(qmdir)/hamfax_de.qm\
++	rm -rfv $(bindir)/hamfax $(docdir)/HamFax.html\
+ 		$(configdir)/hamfaxrc
+-	rmdir -p $(bindir) $(docdir) $(qmdir) $(configdir)
++	rmdir -p $(bindir) $(docdir) $(configdir)
