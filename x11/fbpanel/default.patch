@@ -1,0 +1,107 @@
+diff -urpN fbpanel-3.8.old/config/default.cfg fbpanel-3.8.new/config/default.cfg
+--- fbpanel-3.8.old/config/default.cfg	2004-05-24 22:59:06.000000000 +0000
++++ fbpanel-3.8.new/config/default.cfg	2004-08-11 23:30:04.983366616 +0000
+@@ -55,14 +55,6 @@
+ #     # Reserve panel's space so that it will not be covered by maximazied windows
+ #     # legal values are boolean
+ #     # SetPartialStrut = true
+- 
+-
+-#     # Transparency stuff: 
+-#     # TintColor is a color to composite on root background
+-#     # Alpha is transparency of the tint color.
+-#     # Transparent = true
+-#     # TintColor = 0xFFFFFFFF
+-#     # Alpha = 127
+ # }
+ 
+ 
+@@ -104,7 +96,7 @@ Global {
+     width = 100
+     heighttype = pixel
+     height = 26
+-    roundcorners = false 
++
+ }
+ 
+ 
+@@ -112,7 +104,7 @@ Global {
+ Plugin {
+     type = wincmd
+     config {
+-        image = PREFIX/share/fbpanel/images/Desktop2.png
++        image = /usr/share/fbpanel/images/Desktop2.png
+         tooltip = Left click to iconify all windows. Middle click to shade them.
+     }
+ }
+@@ -121,11 +113,11 @@ Plugin {
+     type = menu
+     config {
+ #        name = menu
+-        image = PREFIX/share/fbpanel/images/Menu.png
++        image = /usr/share/fbpanel/images/Menu.png
+         
+         menu {
+-            name = Networking
+-            image = PREFIX/share/fbpanel/images/Networking.png
++            name = Netorking
++            image = /usr/share/fbpanel/images/Networking.png
+             item {
+ #                image = 
+                 name = mozilla
+@@ -144,12 +136,12 @@ Plugin {
+         }
+         item {
+             name = terminal
+-            image = PREFIX/share/fbpanel/images/GNOME-Terminal.png
++            image = /usr/share/fbpanel/images/GNOME-Terminal.png
+             action = xterm
+         }
+         item {
+             name = emacs
+-            image = PREFIX/share/fbpanel/images/Emacs.png
++            image = /usr/share/fbpanel/images/Emacs.png
+             action = emacs
+         }
+     }
+@@ -165,12 +157,12 @@ Plugin {
+     type = launchbar
+     config {
+         button {
+-            image = PREFIX/share/fbpanel/images/GNOME-Terminal.png
++            image = /usr/share/fbpanel/images/GNOME-Terminal.png
+             tooltip = Terminal
+             action = xterm
+         }
+         button {
+-            image = PREFIX/share/fbpanel/images/Emacs.png
++            image = /usr/share/fbpanel/images/Emacs.png
+             tooltip = Emacs
+             action = emacs
+         }
+@@ -190,15 +182,12 @@ Plugin {
+ Plugin {
+     type = taskbar
+     expand = true
+-    ShowIconified = true
+-    ShowMapped    = true
+-    ShowAllDesks  = false
+     config {
+         tooltips = true
+         iconsonly = false
+         MaxTaskWidth = 150
+         application {
+-            Image = PREFIX/share/fbpanel/images/GNOME-Terminal.png
++            Image = /usr/share/fbpanel/images/GNOME-Terminal.png
+             ClassName = XTerm
+         }
+         application {
+@@ -210,7 +199,7 @@ Plugin {
+             ClassName = URxvt
+         }
+         application {
+-            Image = PREFIX/share/fbpanel/images/Emacs.png
++            Image = /usr/share/fbpanel/images/Emacs.png
+             AppName = emacs
+             ClassName = Emacs
+         }
