@@ -1,17 +1,8 @@
            SPELL=gdl
-if [ "$CVS_CHECKOUT" == "y" ]
-then
 	 VERSION=cvs
 	  MD5[0]=IGNORE
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:gdl
-else
-         VERSION=0.4.0
-          BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=da5268ada0aefa819ac6bd6d9fad1606 
-fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]="GPL"
        BUILD_API=2
