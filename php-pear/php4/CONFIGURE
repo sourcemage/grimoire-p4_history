@@ -1,0 +1,20 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if    query  "Enable PHP safe mode?"  n
+  then  echo   'OPTS="$OPTS --enable-safe-mode"'  >>  $SPELL_CONFIG
+  fi
+  if    query  "Do you want imap support?"  n
+  then  echo   'OPTS="$OPTS --with-imap"'  >>  $SPELL_CONFIG
+        if  spell_installed  openssl
+        then  echo  'OPTS="$OPTS  --with-imap-ssl"'  >>  $SPELL_CONFIG
+        fi
+        depends imap
+  fi
+
+  if    query  "Do you require mail support?"  n
+  then  depends  MAIL-TRANSPORT-AGENT
+  fi
+  
+  echo  'CONFIGURED=y'  >>  $SPELL_CONFIG
+
+fi
