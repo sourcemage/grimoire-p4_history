@@ -1,3 +1,4 @@
+# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
 # Attempt is made here to lock in Webmin configuration,
 # making it more predictable and secure.
 # Port and password are generated using week random

@@ -1,3 +1,4 @@
+# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
 (
   groupadd  mailman             2>/dev/null
   useradd  -g mailman  mailman  2>/dev/null

@@ -1,3 +1,4 @@
+# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 (
 
 	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"

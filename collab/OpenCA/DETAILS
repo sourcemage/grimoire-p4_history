@@ -1,0 +1,21 @@
+# $Id: DETAILS,v 1.1 2002/06/03 04:10:38 sergeyli Exp $
+           SPELL=OpenCA
+         VERSION=0.8.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+      SOURCE_URI=sourceforge/openca/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SOURCE_URI
+   SOURCE_URL[1]=http://telia.dl.sourceforge.net/$SOURCE_URI
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SOURCE_URI
+        WEB_SITE=http://openca.sf.net/
+         ENTERED=20020509
+         UPDATED=20020509
+      MAINTAINER=sergeyli@pisem.net
+           SHORT="OpenCA is an OpenSource Certification Authority Toolkit"
+cat << EOF
+The OpenCA Project is a collaborative effort to develop a robust, full-featured
+and Open Source out-of-the-box Certification Authority implementing the most
+used protocols with full-strength cryptography world-wide. OpenCA is based on
+many Open-Source Projects. Among the supported software is OpenLDAP, OpenSSL,
+Apache Project, Apache mod_ssl.
+EOF

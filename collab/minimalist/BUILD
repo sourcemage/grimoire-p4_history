@@ -1,3 +1,4 @@
+# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 {
 # First, add the global entry in aliases
 echo " " > /etc/aliases.minimalist-sample
