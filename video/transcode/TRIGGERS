@@ -1,1 +1,3 @@
-on_cast  ImageMagick  cast_self
+if  spell_installed  ImageMagick;  then
+  on_cast  ImageMagick  cast_self
+fi
