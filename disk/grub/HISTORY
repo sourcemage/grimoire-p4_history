@@ -1,3 +1,17 @@
+2004-06-22 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.95
+	BUILD_API=2
+	VOYEUR="on" for FINAL configuration
+	* CONFIGURE: Cleaned up to use Sorcery's config_query* options
+	* BUILD: Converted to BUILD_API 2
+	* INSTALL: Added
+	* POST_INSTALL: Renamed to FINAL
+	* DEPENDS: Formatted to Guru Handbook
+	* BUILD: Compiles cleanly now (no more horrendous 0.94 hack)
+	Splashimage fails to load, though. :(
+	Need to figure out how to get the query in FINAL visable without using
+	VOYEUR="on" globally
+
 2004-05-14 Eric Sandall <eric@sandall.us>
 	* POST_INSTALL: Remove /etc/grub.conf symlink creation (Bug #5817)
 	  Remove /etc/grub.conf if it exists as a symlink (for now,

@@ -1,108 +1,268 @@
-# @usage configure_optional <1:test> <2:enable-option> <3:disable-option> <4:prompt> <5:hint>
-# works right if <test> is part of both <enable-option> and <disable-option>
-# @return 0 if disabled
-function configure_optional() {
-  if ! grep -q "${1#-}" $SPELL_CONFIG; then
-    local OPTION="$2"
-    query "$4" "$5" || OPTION="$3"
-    echo "OPTS=\"\$OPTS $OPTION\"" >> $SPELL_CONFIG
-  fi
-  # return the `enabled' flag for the option
-  grep -q "${2#--}" $SPELL_CONFIG
-}
+persistent_add  GRUB_TARGET  &&
 
-if  !  grep  -q  "RUN_GRUB"  $SPELL_CONFIG;  then
- 
-  if    query  "Run GRUB automatically upon GRUB upgrades?" n
-  then  echo   "RUN_GRUB=y"  >>  $SPELL_CONFIG
-  else  echo   "RUN_GRUB=n"  >>  $SPELL_CONFIG
-  fi
- 
-fi
- 
-if  !  grep  -q  "GRUB_TARGET"  $SPELL_CONFIG;  then
- 
-  message  "Please tell me where you would like grub installed."
-  message  "Choices include the MBR of the first drive (hd0),"
-  message  "the MBR of the second (or later) drive (hd1), (hd2) etc."
-  message  "or a partition on one of the drives, e.g. (hd0,0)."
-  if    query  "Would You like GRUB installed onto the MBR of the first drive?" y
-  then
-    GRUB_TARGET=\(hd0\)
-  else
-    message  "IMPORTANT: use the following format: drive,partition (no spaces)"
-    message  "to specify a partition, or 'drive' to specify the MBR of a drive."    message  "All numbers are 0 based, so the first drive is drive '(hd0)', and"    message  "the first partition is partition '(hd0,0)'. I.e. if you want GRUB"    message  "installed on /dev/hda1 (or /dev/sda1 if you have a SCSI system)"
-    message  "then you would specify '(hd0,0)' as the target drive,partition."
-    message  "which drive or drive,partition do you want grub installed on."
-    message  "Be sure to include the parenthesis, with NO spaces within the parenthesis."
-    message  "[e.g. (hd0,0), (hd0,1), (hd1), (hd1,0), etc.]?"
-    echo -n  "GRUB_TARGET=(hd#,#):  "
-    read GRUB_TARGET
-  fi
-  # the leading space appears to be critical, hence the escaped quotes:
-  echo  "GRUB_TARGET=\" $GRUB_TARGET\"" >> $SPELL_CONFIG
-  message  "GRUB is configured to install on $GRUB_TARGET."
-fi
+message  "Please tell me where you would like grub installed."
+message  "Choices include the MBR of the first drive (hd0),"
+message  "the MBR of the second (or later) drive (hd1), (hd2) etc."
+message  "or a partition on one of the drives, e.g. (hd0,0)."
+if    query  "Would You like GRUB installed onto the MBR of the first drive?" y
+then
+  GRUB_TARGET=\(hd0\)
+else
+  config_query_string  GRUB_TARGET  \
+"IMPORTANT: use the following format: drive,partition (no spaces)
+to specify a partition, or 'drive' to specify the MBR of a drive. All numbers are 0 based, so the first drive is drive '(hd0)', and the first partition is partition '(hd0,0)'. I.e. if you want GRUB installed on /dev/hda1 (or /dev/sda1 if you have a SCSI system) then you would specify '(hd0,0)' as the target drive,partition.  Which drive or drive,partition do you want grub installed on.  Be sure to include the parenthesis, with NO spaces within the parenthesis.  [e.g. (hd0,0), (hd0,1), (hd1), (hd1,0), etc.]?"
+                        $GRUB_TARGET
+fi  &&
+# the leading space appears to be critical, hence the escaped quotes:
+message  "GRUB is configured to install on $GRUB_TARGET."
 
-if  query  "Configure filesystems?"  n
-then
-  #echo  OPTS="${OPTS}  --enable-ext2fs  --enable-fat  --enable-ffs  --enable-minix --enable-reiserfs  --enable-vstafs  --enable-jfs  --enable-xfs"  >>  ${SPELL_CONFIG}
-  configure_optional	'ext2fs'		'--enable-ext2fs'			'--disable-ext2fs'			'Enable ext2fs support in Stage 2?' y
-  configure_optional	'fat'			'--enable-fat'				'--disable-fat'				'Enable FAT support in Stage 2?' y
-  configure_optional	'ffs'			'--enable-ffs'				'--disable-ffs'				'Enable FFS support in Stage 2?' y
-  configure_optional	'minix'			'--enable-minix'			'--disable-minix'			'Enable Minix support in Stage 2?' y
-  configure_optional	'reiserfs'		'--enable-reiserfs'			'--disable-reiserfs'			'Enable ReiserFS support in Stage 2?' y
-  configure_optional	'vstafs'		'--enable-vstafs'			'--disable-vstafs'			'Enable VSTAa FS support in Stage 2?' y
-  configure_optional	'jfs'			'--enable-jfs'				'--disable-jfs'				'Enable IBM JFS support in Stage 2?' y
-  configure_optional	'xfs'			'--enable-xfs'				'--disable-xfs'				'Enable SGI XFS support in Stage 2?' y
-fi
-configure_optional	'gunzip'		'--enable-gunzip'			'--disable-gunzip'			'Enable decompression in Stage 2?' y
-configure_optional	'md5-password'		'--enable-md5-password'			'--disable-md5-password'			'Enable MD5 password support in Stage 2?' y
-if  query  "Configure network support?" n
-then
-  #echo  OPTS="${OPTS}  --disable-packet-retransm --disable-pci-direct --disable-3c509 --disable-3c529 --disable-3c595 --disable-3c90x --disable-cs89x0 --disable-davicom --disable-depca --disable-eepro --disable-eepro100 --disable-epic100 --disable-3c507 --disable-exos205 --disable-ni5210 --disable-lance --disable-ne2100 --disable-ni6510 --disable-natsemi --disable-ni5010 --disable-3c503 --disable-ne --disable-ns8390 --disable-wd --disable-otulip --disable-rtl8139 --disable-sis900 --disable-sk-g16 --disable-smc9000 --disable-tiara --disable-tulip --disable-via-rhine --disable-w89c840 --disable-3c503-shmem --disable-3c503-aui --disable-compex-rl2000-fix --disable-diskless"  >>  ${SPELL_CONFIG}
-  configure_optional	'packet-retransmission'	'--enable-packet-retransmission'	'--disable-packet-retransmission'	'Enable packet retransission?' y
-  configure_optional	'pci-direct'		'--enable-pci-direct'			'--disable-pci-direct'			'Access PCI directrly instead of using BIOS?' n
-  configure_optional	'3c509'			'--enable-3c509'			'--disable-3c509'			'Enable 3Com509 driver?' n
-  configure_optional	'3c529'			'--enable-3c529'			'--disable-3c529'			'Enable 3Com529 driver?' n
-  configure_optional	'3c595'			'--enable-3c595'			'--disable-3c595'			'Enable 3Com595 driver?' n
-  configure_optional	'3c90x'			'--enable-3c90x'			'--disable-3c90x'			'Enable 3Com90x driver?' n
-  configure_optional	'cs89x0'		'--enable-cs89x0'			'--disable-cs89x0'			'Enable CS89x0 driver?' n
-  configure_optional	'davicom'		'--enable-davicom'			'--disable-davicom'			'Enable Davicom driver?' n
-  configure_optional	'depca'			'--enable-depca'			'--disable-depca'			'Enable DEPCA driver?' n
-  configure_optional	'eepro'			'--enable-eepro'			'--disable-eepro'			'Enable Etherexpress Pro/10 driver?' n
-  configure_optional	'eepro100'		'--enable-eepro100'			'--disable-eepro100'			'Enable Etherexpress Pro/100 driver?' n
-  configure_optional	'epic100'		'--enable-epic100'			'--disable-epic100'			'Enable SMC 83c170 EPIC/100 driver?' n
-  configure_optional	'3c507'			'--enable-3c507'			'--disable-3c507'			'Enable 3Com507 driver?' n
-  configure_optional	'exos205'		'--enable-exos205'			'--disable-exos205'			'Enable EXOS205 driver?' n
-  configure_optional	'ni5210'		'--enable-ni5210'			'--disable-ni5210'			'Enable Racal-Interlan NI5210 driver?' n
-  configure_optional	'lance'			'--enable-lance'			'--disable-lance'			'Enable Lance PCI PCNet/32 driver?' n
-  configure_optional	'ne2100'		'--enable-ne2100'			'--disable-ne2100'			'Enable Novell NE2100 driver?' n
-  configure_optional	'ni6510'		'--enable-ni6510'			'--disable-ni6510'			'Enable Racal-Interlan NI6510 driver?' n
-  configure_optional	'natsemi'		'--enable-natsemi'			'--disable-natsemi'			'Enable NatSemi DP8381x driver?' n
-  configure_optional	'ni5010'		'--enable-ni5010'			'--disable-ni5010'			'Enable Racal-Interlan NI5010 driver?' n
-  configure_optional	'3c503'			'--enable-3c503'			'--disable-3c503'			'Enable 3Com503 driver?' n
-  configure_optional	'ne'			'--enable-ne'				'--disable-ne'				'Enable NE1000/2000 ISA driver?' n
-  configure_optional	'ns8390'		'--enable-ns8390'			'--disable-ns8390'			'Enable NE2000 PCI driver?' n
-  configure_optional	'wd'			'--enable-wd'				'--disable-wd'				'Enable WD8003/8013, SMC8216/8416 driver?' n
-  configure_optional	'otulip'		'--enable-otulip'			'--disable-otulip'			'Enable old Tulip driver?' n
-  configure_optional	'rtl8139'		'--enable-rtl8139'			'--disable-rtl8139'			'Enable Realtek 8139 driver?' n
-  configure_optional	'sis900'		'--enable-sis900'			'--disable-sis900'			'Enable SIS 900 and SIS 7016 driver?' n
-  configure_optional	'sk-g16'		'--enable-sk-g16'			'--disable-sk-g16'			'Enable Schneider and Koch G16 driver?' n
-  configure_optional	'smc9000'		'--enable-smc9000'			'--disable-smc9000'			'Enable SMC9000 driver?' n
-  configure_optional	'tiara'			'--enable-tiara'			'--disable-tiara'			'Enable Tiara driver?' n
-  configure_optional	'tulip'			'--enable-tulip'			'--disable-tulip'			'Enable Tulip driver?' n
-  configure_optional	'via-rhine'		'--enable-via-rhine'			'--disable-via-rhine'			'Enable Rhine-I/II driver driver?' n
-  configure_optional	'w89c840'		'--enable-w89c840'			'--disable-w89c840'			'Enable Winbond W89c840, Compex RL100-ATX driver?' n
-  configure_optional	'3c503-shmem'		'--enable-3c503-shmem'			'--disable-3c503-shmem'			'Use 3c503 shared memory mode?' n
-  configure_optional	'3c503-aui'		'--enable-3c503-aui'			'--disable-3c503-aui'			'Use AUI by default on 3c503 cards?' n
-  configure_optional	'compex-rl2000-fix'	'--enable-compex-rl2000-fix'		'--disable-compex-rl2000-fix'		'Specify this if you have a Compex RL2000 PCI?' n
-  configure_optional	'diskless'		'--enable-diskless'			'--disable-diskless'			'Enable diskless?' n
-fi
-if  query  "Configure terminal support?" n
-then
-  #echo  OPTS="${OPTS} --disable-hercules --disable-serial"  >>  ${SPELL_CONFIG}
-  configure_optional	'hercules'		'--enable-hercules'			'--disable-hercules'			'Enable hercules terminal support?' y
-  configure_optional	'serial'		'--enable-serial'			'--disable-serial'			'Enable serial terminal support?' y
-configure_optional	'auto-linux-mem-opt'	'--enable-auto-linux-mem-opt'		'--disable-auto-linux-mem-opt'		'Pass Linux mem= option automatically?' n
-fi
+config_query_option  OPTS                                  \
+                     "Enable ext2 support in stage 2?"  y  \
+                     "--enable-ext2fs"                     \
+                     "--disable-ext2fs"                    &&
+
+config_query_option  OPTS                                      \
+                     "Enable FAT16/32 support in stage 2?"  y  \
+                     "--enable-fat"                            \
+                     "--disable-fat"                           &&
+
+config_query_option  OPTS                                 \
+                     "Enable FFS support in stage 2?"  n  \
+                     "--enable-ffs"                       \
+                     "--disable-ffs"                      &&
+
+config_query_option  OPTS                                     \
+                     "Enable MinixFS support in stage 2?"  y  \
+                     "--enable-minix"                         \
+                     "--disable-minix"                        &&
+
+config_query_option  OPTS                                      \
+                     "Enable ReiserFS support in stage 2?"  y  \
+                     "--enable-reiserfs"                       \
+                     "--disable-reiserfs"                      &&
+
+config_query_option  OPTS                                     \
+                     "Enable VSTAaFS support in stage 2?"  n  \
+                     "--enable-vstafs"                        \
+                     "--disable-vstafs"                       &&
+
+config_query_option  OPTS                                       \
+                     "Enable IBM's JFS support in stage 2?"  y  \
+                     "--enable-jfs"                             \
+                     "--disable-jfs"                            &&
+
+config_query_option  OPTS                                       \
+                     "Enable SGI's XFS support in stage 2?"  y  \
+                     "--enable-xfs"                             \
+                     "--disable-xfs"                            &&
+
+config_query_option  OPTS                                        \
+                     "Enable gzip decompression in stage 2?"  y  \
+                     "--enable-gunzip"                           \
+                     "--disable-gunzip"                          &&
+
+config_query_option  OPTS                                   \
+                     "Enable MD5 passwords in stage 2?"  y  \
+                     "--enable-md5-password"                \
+                     "--disable-md5-password"               &&
+
+config_query_option  OPTS                                  \
+                     "Enable packet retransmission?"    n  \
+                     "--enable-packet-retransmission"      \
+                     "--disable-packet-retransmission"     &&
+
+config_query_option  OPTS                                             \
+                     "Access PCI directly instead of using BIOS?"  n  \
+                     "--enable-pci-direct"                            \
+                     "--disable-pci-direct"                           &&
+
+config_query_option  OPTS                            \
+                     "Enable 3Com 3c503 driver?"  n  \
+                     "--enable-3c503"                \
+                     "--disable-3c503"               &&
+
+config_query_option  OPTS                                \
+                     "Use 3c503 shared memory mode?"  n  \
+                     "--enable-3c503-shmem"              \
+                     "--disable-3c503-shmem"             &&
+
+config_query_option  OPTS                                     \
+                     "Use AUI by default on 3c503 cards?"  n  \
+                     "--enable-3c503-aui"                     \
+                     "--disable-3c503-aui"                    &&
+
+config_query_option  OPTS                            \
+                     "Enable 3Com 3c507 driver?"  n  \
+                     "--enable-3c507"                \
+                     "--disable-3c507"               &&
+
+config_query_option  OPTS                             \
+                     "Enable 3Com 3c509 driver?"  n   \
+                     "--enable-3c509"                 \
+                     "--disable-3c509"                &&
+
+config_query_option  OPTS                             \
+                     "Enable 3Com 3c529 driver?"  n   \
+                     "--enable-3c529"                 \
+                     "--disable-3c529"                &&
+
+config_query_option  OPTS                             \
+                     "Enable 3Com 3c595 driver?"  n   \
+                     "--enable-3c595"                 \
+                     "--disable-3c595"                &&
+
+config_query_option  OPTS                             \
+                     "Enable 3Com 3c90x driver?"  n   \
+                     "--enable-3c90x"                 \
+                     "--disable-3c90x"                &&
+
+config_query_option  OPTS                         \
+                     "Enable CS89x0 driver?"  n   \
+                     "--enable-cs89x0"            \
+                     "--disable-cs89x0"           &&
+
+config_query_option  OPTS                         \
+                     "Enable Davicom driver?"  n  \
+                     "--enable-davicom"           \
+                     "--disable-davicom"          &&
+
+config_query_option  OPTS                       \
+                     "Enable DEPCA driver?"  n  \
+                     "--enable-depca"           \
+                     "--disable-depca"          &&
+
+config_query_option  OPTS                                           \
+                     "Enable Intel EtherExpress Pro/10 driver?"  n  \
+                     "--enable-eepro"                               \
+                     "--disable-eepro"                              &&
+
+config_query_option  OPTS                                            \
+                     "Enable Intel EtherExpress Pro/100 driver?"  n  \
+                     "--enable-eepro100"                             \
+                     "--disable-eepro100"                            &&
+
+config_query_option  OPTS                                     \
+                     "Enable SMC 83c170 EPIC/100 driver?"  n  \
+                     "--enable-epic100"                       \
+                     "--disable-epic100"                      &&
+
+config_query_option  OPTS                         \
+                     "Enable SMC9000 driver?"  n  \
+                     "--enable-smc9000"           \
+                     "--disable-smc9000"          &&
+
+config_query_option  OPTS                         \
+                     "Enable EXOS205 driver?"  n  \
+                     "--enable-exos205"           \
+                     "--disable-exos205"          &&
+
+config_query_option  OPTS                                       \
+                     "Enable Racal-InterLAN NI5010 driver?"  n  \
+                     "--enable-ni5010"                          \
+                     "--disable-ni5010"                         &&
+
+config_query_option  OPTS                                       \
+                     "Enable Racal-InterLAN NI5210 driver?"  n  \
+                     "--enable-ni5210"                          \
+                     "--disable-ni5210"                         &&
+
+config_query_option  OPTS                                       \
+                     "Enable Racal-InterLAN NI6510 driver?"  n  \
+                     "--enable-ni6510"                          \
+                     "--disable-ni6510"                         &&
+
+config_query_option  OPTS                                    \
+                     "Enable Lance PCI PCNet/32 driver?"  n  \
+                     "--enable-lance"                        \
+                     "--disable-lance"                       &&
+
+config_query_option  OPTS                               \
+                     "Enable Novell NE2100 driver?"  n  \
+                     "--enable-ne2100"                  \
+                     "--disable-ne2100"                 &&
+
+config_query_option  OPTS                                 \
+                     "Enable NatSemi DP8381x driver?"  n  \
+                     "--enable-natsemi"                   \
+                     "--disable-natsemi"                  &&
+
+config_query_option  OPTS                                 \
+                     "Enable NE1000/2000 ISA driver?"  n  \
+                     "--enable-ne"                        \
+                     "--disable-ne"                       &&
+
+config_query_option  OPTS                            \
+                     "Enable NE2000 PCI driver?"  n  \
+                     "--enable-ns8390"               \
+                     "--disable-ns8390"              &&
+
+config_query_option  OPTS                                           \
+                     "Enable WD8003/8013, SMC8216/8416 driver?"  n  \
+                     "--enable-wd"                                  \
+                     "--disable-wd"                                 &&
+
+config_query_option  OPTS                           \
+                     "Enable old Tulip driver?"  n  \
+                     "--enable-otulip"              \
+                     "--disable-otulip"             &&
+
+config_query_option  OPTS                       \
+                     "Enable Tulip driver?"  n  \
+                     "--enable-tulip"           \
+                     "--disable-tulip"          &&
+
+config_query_option  OPTS                              \
+                     "Enable Realtek 8139 driver?"  n  \
+                     "--enable-rtl8139"                \
+                     "--disable-rtl8139"               &&
+
+config_query_option  OPTS                                      \
+                     "Enable SIS 900 and SIS 7016 driver?"  n  \
+                     "--enable-sis900"                         \
+                     "--disable-sis900"                        &&
+
+config_query_option  OPTS                                        \
+                     "Enable Schneider and Koch G16 driver?"  n  \
+                     "--enable-sk-g16"                           \
+                     "--disable-sk-g16"                          &&
+
+config_query_option  OPTS                       \
+                     "Enable Tiara driver?"  n  \
+                     "--enable-tiara"           \
+                     "--disable-tiara"          &&
+
+config_query_option  OPTS                                \
+                     "Enable Via/Rhine-I/II driver?"  n  \
+                     "--enable-via-rhine"                \
+                     "--disable-via-rhine"               &&
+
+config_query_option  OPTS                                                   \
+                     "Enable Winbond W89c840, Compex RL100-ATX driver?"  n  \
+                     "--enable-w89c840"                                     \
+                     "--disable-w89c840"                                    &&
+
+config_query_option  OPTS                                        \
+                     "Do you have a Compex RL2000 PCI card?"  n  \
+                     "--enable-compex-rl2000-fix"                \
+                     "--disable-compex-rl2000-fix"               &&
+
+config_query_option  OPTS                     \
+                     "Enable diskless?"    n  \
+                     "--enable-diskless"      \
+                     "--disable-diskless"     &&
+
+config_query_option  OPTS                                    \
+                     "Enable hercules terminal support?"  n  \
+                     "--enable-hercules"                     \
+                     "--disable-hercules"                    &&
+
+config_query_option  OPTS                                  \
+                     "Enable serial terminal support?"  y  \
+                     "--enable-serial"                     \
+                     "--disable-serial"                    &&
+
+config_query_option  OPTS                                  \
+                     "Pass mem= option automatically?"  n  \
+                     "--enable-auto-linux-mem-opt"         \
+                     "--disable-auto-linux-mem-opt"
+
