@@ -1,7 +1,7 @@
 (
 
  # Patches for freetype 2.1.8 and gcc 3.4
-patch -p0<$SCRIPT_DIRECTORY/freetype.patch
+patch -p1<$SCRIPT_DIRECTORY/freetype.patch
 # patch -p0<$SCRIPT_DIRECTORY/nsRegion.patch
 
  # No fast optimization for Mozilla, bit us so many times...
@@ -54,9 +54,13 @@ export MOZ_PHOENIX=1                         &&
   mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
   ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
 
-  make install                                                   &&
+#  make install                                                   &&
+#  cd dist/bin	&&
+  cp -vaH dist/bin/* ${MOZILLA_HOME}				&&
+#  cd ../..			&&
   cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-  ln -fns firefox ${INSTALL_ROOT}/usr/bin/mozilla                &&
+  ln -fns ${MOZILLA_HOME}firefox /usr/bin/                &&
+#  ln -fns firefox ${INSTALL_ROOT}/usr/bin/mozilla                &&
 
 
   if  !  grep  -q  "mozilla"  /etc/ld.so.conf
