@@ -1,20 +1,18 @@
            SPELL=shorewall
-         VERSION=1.4.6c
+         VERSION=1.4.9
           SOURCE=$SPELL-$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/$SOURCE
    SOURCE_URL[2]=http://slovakia.shorewall.net/pub/$SPELL/$SOURCE
-          MD5[0]=ba6c108b9c32c3c0ddb4d5793752d487
+          MD5[0]=9f79a5d0634c0101e6d56c4077c0d9c8
         WEB_SITE=http://www.shorewall.net/
          ENTERED=20020513
          UPDATED=20021119
       LICENSE[0]=GPL
-      MAINTAINER=bluebird@optushome.com.au
            SHORT="Shorewall is an iptable based firewall"
 cat << EOF
 Shorewall is an [2]iptables based firewall that can be used on a dedicated
 firewall system, a multi-function gateway/router/server or on a standalone
 Linux system.
-
 EOF
