@@ -1,5 +1,10 @@
 depends kdelibs   &&
 
+optional_depends  arts                              \
+                  "--with-arts"                     \
+                  "--without-arts"                  \
+                  "for arts soundserver support"    &&
+
 optional_depends  "gift-openft"                     \
                   ""                                \
                   ""                                \

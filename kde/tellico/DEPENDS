@@ -2,6 +2,11 @@ depends  kdebase  &&
 depends  libxml2  &&
 depends  libxslt  &&
 
+optional_depends  "arts"                          \
+                  "--with-arts"                   \
+                  "--without-arts"                \
+                  "for arts soundserver support"  &&
+
 optional_depends  "kdemultimedia"  \
                   ""               \
                   ""               \
