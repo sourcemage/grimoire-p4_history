@@ -1,8 +1,5 @@
-optional_depends  "espgs"                                                                                                                    \
-                  ""                                                                                                                         \
-                  ""                                                                                                                         \
-                  "for a postscript interpreter (or ghostscript, next) - choose this one if you have installed or are installing cups"       &&
-optional_depends  "ghostscript"                                                                                                              \
-                  ""                                                                                                                         \
-                  ""                                                                                                                         \
-                  "for a postscript interpreter (or espgs, previous) - do NOT choose this one if you have installed or are installing cups"
+if  !  spell_installed  ghostscript  &&  !  spell_installed  espgs;  then
+  message  "\n${PROBLEM_COLOR}  **  Do NOT choose ghostscript if you have installed or are installing cups:  **  ${DEFAULT_COLOR}\n"
+fi
+
+requires  postscript-interpreter
