@@ -1,7 +1,7 @@
-           SPELL=pine
+           SPELL=pine-client
          VERSION=4.44
-          SOURCE=$SPELL$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL$VERSION
+          SOURCE=pine$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/pine$VERSION
    SOURCE_URL[0]=http://mirror.sit.wisc.edu/pub/net/mail/pine/$SOURCE
    SOURCE_URL[1]=ftp://ftp.univ-lyon1.fr/pub/mirrors/unix/pine/$SOURCE
    SOURCE_URL[2]=ftp://ftp.cac.washington.edu/pine/$SOURCE
@@ -23,7 +23,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL$VERSION
          UPDATED=20020115
            SHORT="pine is a text-based MIME Email client."
 cat << EOF
-Pine? is a tool for reading, sending, and managing electronic messages.
+Pine is a tool for reading, sending, and managing electronic messages.
 Pine was designed by the Office of Computing & Communications at the
 University of Washington specifically with novice computer users in
 mind, but it can be tailored to accommodate the needs of "power users"
