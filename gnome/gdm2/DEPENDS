@@ -1,4 +1,8 @@
-depends libgnomeui &&
-depends libglade2  &&
-depends librsvg2   &&
-depends scrollkeeper 
+depends libgnomeui   &&
+depends libglade2    &&
+depends librsvg2     &&
+depends scrollkeeper &&
+optional_depends "Linux-PAM" "" "" "for PAM authentication" &&
+optional_depends "shadow" "" "" "To use shadow passwords"
+
+

@@ -1,3 +1,6 @@
-depends  perl      &&
-depends  libglade  &&
-depends  gnome-libs
+depends  perl        &&
+depends  libglade    &&
+depends  gnome-libs  &&
+optional_depends "Linux-PAM" "" "" "for PAM authentication" &&
+optional_depends "shadow" "" "" "To use shadow passwords"
+

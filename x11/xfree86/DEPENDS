@@ -1,5 +1,5 @@
 depends  perl        &&
 depends  fontconfig  &&
 depends  zlib        &&
-
+optional_depends  "Linux-PAM" "" "" "for PAM authentication" &&
 optional_depends  "libpng"  ""  ""  "for xcursorgen"

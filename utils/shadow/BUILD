@@ -1,9 +1,5 @@
 (
 
-  if  spell_installed  Linux-PAM;  then
-    WITH_LIBPAM="--with-libpam"
-  fi
-
 #               --enable-shared       \
 #  is it broken or what it won't compile shared libraries?
 #  I checked the shadow CVS 20010107 and it's broke, too
@@ -20,7 +16,6 @@
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               $WITH_LIBPAM          \
                $OPTS                 &&
   make                               &&
   prepare_install                    &&

@@ -1,16 +1,10 @@
 (
-
-  if  spell_installed  Linux-PAM;  then
-    ENABLE_PAM="--enable-pam"
-  fi
-
   sedit  "s/	standalone/	inetd/"    \
          sample-configurations/basic.conf  &&
-  ./configure  --prefix=/usr               \
-               --sysconfdir=/etc           \
-               --localstatedir=/var/run    \
+  ./configure  --prefix=${INSTALL_ROOT}/usr               \
+               --sysconfdir=${INSTALL_ROOT}/etc           \
+               --localstatedir=${INSTALL_ROOT}/var/run    \
                --enable-shadow             \
-               $ENABLE_PAM                 \
                $OPTS                       &&
   sedit  's:RUN_DIR.*"/var/run/proftpd":RUN_DIR "/var/run":' \
          config.h                          &&
