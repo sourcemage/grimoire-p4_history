@@ -4,6 +4,6 @@
   ./configure --prefix=${INSTALL_ROOT}/usr &&
   make             &&
   prepare_install  &&
-  make -j 1   install
+  make    install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1
