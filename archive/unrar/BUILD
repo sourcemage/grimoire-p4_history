@@ -1,6 +1,6 @@
 (
-  sedit "s/-O2/$CFLAGS/" makefile.gcc &&
-  make -f makefile.gcc  &&
+  sedit "s/-O2/$CFLAGS/" makefile.unix &&
+  make -f makefile.unix  &&
   prepare_install       &&
   cp unrar /usr/bin
 
