@@ -20,7 +20,7 @@ fi  &&
 #
 # builddefs.h defaults to using Linux-PAM
 #
-if  !  spell_installed  Linux-PAM;  then
+if  !  spell_ok  linux-pam;  then
   sedit  "s:define VSF_BUILD_PAM:undef VSF_BUILD_PAM:"  builddefs.h
 fi  &&
 
