@@ -1,0 +1,15 @@
+           SPELL=Xft2
+         VERSION=2_0
+          SOURCE=fcpackage.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/fcpackage.$VERSION
+   SOURCE_URL[0]=http://fontconfig.org/release/$SOURCE
+        WEB_SITE=http://fontconfig.org/
+      MAINTAINER=v.merkatz@gmx.net
+          MD5[0]=9529a311d9f2a8325bd4418b069a0383
+      LICENSE[0]=X11
+         ENTERED=20020909
+         UPDATED=20020909
+           SHORT="Xft2 provides a new fonthandling api for X applications"
+cat << EOF
+The current version of Xft (2.0) provides a client-side font API for X applications. It uses Fontconfig to select fonts and the X protocol for rendering them. When available, Xft uses the Render extension to accelerate text drawing. When Render is not available, Xft uses the core protocol to draw client-side glyphs. This provides completely compatible support of client-side fonts for all X servers.
+EOF
