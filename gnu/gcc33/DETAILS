@@ -1,18 +1,16 @@
-           SPELL=gcc
+           SPELL=gcc33
          VERSION=3.3.3
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNU_URL/$SPELL/$SPELL-$VERSION/$SOURCE
-   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/$SPELL/releases/$SPELL-$VERSION/$SOURCE
-          MD5[0]='1809aadd5a8c4d5f358c3766176c420b'
+          SOURCE=gcc-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
+   SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
+   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+          MD5[0]=1809aadd5a8c4d5f358c3766176c420b
       LICENSE[0]=GPL
         WEB_SITE=http://gcc.gnu.org/
          ENTERED=20020525
          UPDATED=20030809
-           SHORT="gcc is the GNU compiler collection."
+       BUILD_API=2
+           SHORT="gcc33 is the 3.3.x release of the GNU Compiler Collection"
 cat << EOF
-gcc - GNU Compiler Collection.
-The GNU Compiler Collection is a suite of compilers that compile C, C++,
-Objective C, Fortran 77, Java, and Ada 95 for a wide variety of
-architectures.
+gcc33 - The 3.3.x release of the GNU C and C++ compilers.
 EOF
