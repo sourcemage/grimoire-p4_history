@@ -1,11 +1,15 @@
            SPELL=ipw2100_driver   
          VERSION=1.0.1
+       FWVERSION=1.3
        BUILD_API=2 
           SOURCE=ipw2100-$VERSION.tgz
+	 SOURCE1=ipw2100-fw-$FWVERSION.tgz
        PATCHFILE=ipw2100-1.0.1-1.patch
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/ipw2100-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/ipw2100/$SOURCE   
+  SOURCE1_URL[0]=http://bughost.org/firmware/$SOURCE1
           MD5[0]=3c6ded2832fbb61b885a336756747884  
+	  MD5[1]=2813b64cb2afba4812d6e23c264e8df1
         WEB_SITE=http://ipw2100.sf.net/
          ENTERED=20041015
          UPDATED=20041019

@@ -1,6 +1,8 @@
 mk_source_dir $SOURCE_DIRECTORY &&
+cd $SOURCE_DIRECTORY &&
 unpack $SOURCE ${MD5[0]} &&
-cd $SOURCE_DIRECTORY
+unpack $SOURCE1 ${MD5[1]} &&
+cd ipw2100-$VERSION
 
 
 if [ $PATCH24 == 'y' ]; then
@@ -10,3 +12,5 @@ if [ $PATCH24 == 'y' ]; then
 		message "${PROBLEM_COLOR}There isn't a 2.4 patch out yet${DEFAULT_COLOR}"
 	fi
 fi
+
+cd ../
