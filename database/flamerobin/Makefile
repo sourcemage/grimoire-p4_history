@@ -2,15 +2,19 @@
 .SUFFIXES: .o .cpp
 
 OBJECTS=\
-	metadata/metadataitem.o metadata/database.o metadata/root.o metadata/server.o \
+	metadata/metadataitem.o metadata/database.o metadata/root.o metadata/server.o metadata/domain.o \
 	metadata/column.o metadata/table.o metadata/view.o metadata/parameter.o metadata/procedure.o \
+	metadata/metadataitemwithcolumns.o \
 	MainFrame.o MainFrameImpl.o \
 	DatabaseRegistrationInfoFrame.o DatabaseRegistrationInfoFrameImpl.o \
 	ServerRegistrationInfoFrame.o ServerRegistrationInfoFrameImpl.o \
-	ExecuteSqlFrame.o ExecuteSqlFrameImpl.o \
+	ExecuteSqlFrame.o ExecuteSqlFrameImpl.o MultilineEnterDialog.o \
+	MetadataItemPropertiesDialog.o MetadataItemPropertiesDialogImpl.o \
+	FieldPropertiesFrame.o FieldPropertiesFrameImpl.o \
+	ReorderFieldsDialog.o ReorderFieldsDialogImpl.o \
 	BackupDialog.o BackupDialogImpl.o RestoreDialog.o RestoreDialogImpl.o ProgressDialog.o \
 	subject.o observer.o treeitem.o myTreeCtrl.o myDataGrid.o \
-	ugly.o converters.o config.o main.o
+    urihandler.o objectdescriptionhandler.o images.o ugly.o converters.o dberror.o config.o main.o
 
 # Path where IBPP .o and .a files can be found
 IBPP_INC=/usr/include
