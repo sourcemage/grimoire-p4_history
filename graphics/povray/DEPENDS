@@ -4,3 +4,18 @@ depends  libpng            &&
 optional_depends  svgalib  &&
 optional_depends  tiff     &&
 optional_depends  jpeg
+
+
+#### needs to run before summon
+
+(
+  CHDIR=`echo $SOURCE_DIRECTORY | sed -e 's/.*\///'`
+  if [ -e $SOURCE_CACHE/$SOURCE ]
+  then 
+    if [ test `tar -tzf $SOURCE_CACHE/$SOURCE |
+          grep "$CHDIR"'/$'` != "$CHDIR"'/' ]
+    then 
+      rm $SOURCE_CACHE/$SOURCE
+    fi
+  fi
+) 2> /dev/null
