@@ -1,7 +1,7 @@
 (
 export CC=gcc   			              &&
   ./configure  --build=$BUILD                         \
-               --host=$BUILD                          \
+               --host=$HOST                           \
                --prefix=${INSTALL_ROOT}/usr           \
                --sysconfdir=${INSTALL_ROOT}/etc       \
                --infodir=${INSTALL_ROOT}/usr/share/info \

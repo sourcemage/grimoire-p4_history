@@ -1,6 +1,11 @@
+2004-02-06 hgg <hgreig@bigpond.net.au>
+	* BUILD: install_root fixes
+	* PRE_BUILD: only if CROSS_INSTALL is off
+	* rc: add "bash" before executing an initscript so it will still start even if bootdisabled (bug #5595)
+
 2003-12-15 Robert Helgesson <rhelgesson@sourcemage.org>
 	* files/smgl_function: Don't pass on the modified echo when running a
-    program through loadproc.
+	program through loadproc.
 
 2003-11-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* CONFIGURE, POST_INSTALL: add DEVFS_ON_DEV config variable so

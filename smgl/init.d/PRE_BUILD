@@ -1,4 +1,5 @@
 # Remove old init.d
+if ! [ "$CROSS_INSTALL" = "on" ] ; then
 if  [  !  -e  /etc/init.d/smgl_init  ]  ;  then
   touch /tmp/initd_first_install
 
@@ -10,5 +11,5 @@ if  [  !  -e  /etc/init.d/smgl_init  ]  ;  then
     [  -d  /etc/rc$l.d  ]  &&  mv  /etc/rc$l.d  /etc/init.d.backup
   done
 fi
-
+fi
 true

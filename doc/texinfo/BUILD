@@ -1,11 +1,13 @@
 (
 
   ./configure  --build=$BUILD  \
-               --prefix=/usr   \
+               --prefix=${INSTALL_ROOT}/usr   \
+               --infodir=${INSTALL_ROOT}/usr/share/info \
+               --mandir=${INSTALL_ROOT}/usr/share/man   \
 	       $OPTS	       &&
   make                         &&
   prepare_install              &&
   make    install              &&
-  make  -e TEXMF=$DEST_DIR/usr/share/texmf install-tex
+  make  -e TEXMF=$DEST_DIR${INSTALL_ROOT}/usr/share/texmf install-tex
 
 ) > $C_FIFO 2>&1
