@@ -1,0 +1,12 @@
+--- audio.c.old	2003-12-28 16:16:32.000000000 +0100
++++ audio.c	2003-12-28 16:17:11.000000000 +0100
+@@ -24,6 +24,9 @@
+ 
+ #include <signal.h>
+ 
++#define ALSA_PCM_OLD_HW_PARAMS_API
++#define ALSA_PCM_OLD_SW_PARAMS_API
++
+ #define error(str) do { \
+ xmms_show_message("ALSA-XMMS Error", str, "OK", 0, NULL, NULL); \
+ g_warning(str); alsa_initialized = 0; return; } while(0);
