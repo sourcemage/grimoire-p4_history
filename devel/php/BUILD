@@ -4,12 +4,15 @@
         spell_installed  apache-mod_ssl
   then  WITH_APACHE="--with-apxs"
   elif  spell_installed  apache2
-  then  WITH_APACHE="--with-apxs2"
+  then  WITH_APACHE="--with-apxs2"  &&
+        patch  -p0  <  $SCRIPT_DIRECTORY/php.apache2.diff
   fi
 
   if    spell_installed  xfree86
   then  ARGS="$ARGS  --with-xpm-dir=/usr/X11R6"
   fi
+
+  patch  -p0  <  $SCRIPT_DIRECTORY/php.ldap.diff  &&
 
 ./configure \
 	--prefix=/usr 			\
