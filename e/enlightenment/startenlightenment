@@ -19,4 +19,17 @@
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
 
+#
+# Fix for slowdown and welcome screen from the E17 docs
+# Thanks to Valtteri Vainikka and Tom Kuther 
+#
+# Put the blow information in your ~/.xinitrc file
+#
+# this removes the intro animation
+#NOSPLASH=1
+#export NOSPLASH
+# and this removes the welcome popup window
+#NOWELCOME=1
+#export NOWELCOME
+
 exec  enlightenment
