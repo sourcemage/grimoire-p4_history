@@ -7,9 +7,11 @@ NEEDS="+network +remote_fs"
 . /etc/init.d/smgl_init
 
 start() {
-  echo "Starting sshd..."
+  echo -n "Starting sshd..."
   $PROGRAM
-  sleep 1
+  ITER=0
+  while [ ! -e /var/run/sshd.pid ] && [ "$ITER" -lt 10 ] ; do sleep 1; echo -n . ;ITER=$((++ITER)); done
+  echo
   if [ -e /var/run/sshd.pid ]; then
     ps -p `cat /var/run/sshd.pid` > /dev/null  && evaluate_retval
   else
