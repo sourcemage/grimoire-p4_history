@@ -1,24 +1,24 @@
-           SPELL=kdebase
+           SPELL=kdelibs
 if [ "$DEVEL" == "yes" ] ;then
          VERSION=3.3.0-rc2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
-          MD5[0]=2a8fb7623ccafac38d8b6919f5bd41cf
+          SOURCE=$SPELL-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
+   SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
+          MD5[0]=dca7103c2579bf7ea01a18dfc76a7de4
 else
-         VERSION=3.2.3
+         VERSION=3.3.0
           SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
-          MD5[0]=9046ebb4842c980cb453549ff2764796
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/3.3/src/$SOURCE
+          MD5[0]='82586a4be8240172b453401f93adfd87'
 fi
        BUILD_API=2
-        WEB_SITE=http://www.kde.org/
-         ENTERED=20010922
-         UPDATED=20030822
-    DISTCC_HOSTS=
+        WEB_SITE=http://www.kde.org
+         ENTERED=20020912
+         UPDATED=20040820
       LICENSE[0]=GPL
-           SHORT="Base applications that from KDE."
+    DISTCC_HOSTS=
+           SHORT="Base applications that form the core of KDE."
 cat << EOF
 This package contains the base applications that form the core of
 the K Desktop Environment like the window manager, the terminal

@@ -6,16 +6,16 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
    SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
           MD5[0]=dcc097733bc0351cf16b593a00e863ba
 else
-         VERSION=3.2.3
+         VERSION=3.3.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
-          MD5[0]=dfa549b6cd41d1ea2a10f472467f894b
+   SOURCE_URL[0]=$KDE_URL/stable/3.3/src/$SOURCE
+          MD5[0]='c52fb9c539c2c93214d54a5f5a98d1fc'
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
-         UPDATED=20040116
+         UPDATED=20040820
     DISTCC_HOSTS=
       LICENSE[0]=GPL
            SHORT="Various games like mahjongg, snake, asteroids, and tetris."
