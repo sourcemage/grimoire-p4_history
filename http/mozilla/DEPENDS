@@ -5,4 +5,10 @@ depends  zlib    &&
 depends  zip     &&
 depends  ORBit   &&
 depends  perl    &&
-optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+
+optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support" &&
+case $MOZILLA_CALENDAR in
+  Y|y|J|j)
+    optional_depends "libical" "--enable-calendar" " " "for building the Mozilla Calendar"
+    ;;
+esac

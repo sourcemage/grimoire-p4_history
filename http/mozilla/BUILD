@@ -1,66 +1,83 @@
 (
+    case $MOZILLA_MAIL  in
+	n|N)	OPTS="$OPTS --disable-mailnews"
+	    ;;
+	*)	;;
+    esac
 
-  case $MOZILLA_MAIL  in
-    n|N)      OPTS="$OPTS --disable-mailnews"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_CHAT  in
+	n|N)	OPTS="$OPTS --disable-chat"
+	    ;;
+	*)	;;
+    esac
 
-  case $MOZILLA_CHAT  in
-    n|N)      OPTS="$OPTS --disable-chat"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_JAVA  in
+	y|Y|j|J)	OPTS="$OPTS --enable-java-supplement"
+	    ;;
+	*)		;;
+    esac
 
-  case $MOZILLA_JAVA  in
-    y|Y|j|J)  OPTS="$OPTS --enable-java-supplement"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_SVG  in
+	y|Y|j|J)	OPTS="$OPTS --enable-svg"
+	    export MOZ_INTERNAL_LIBART_LGPL=1
+	    ;;
+	*)		;;
+    esac
 
-  case $MOZILLA_SVG  in
-    y|Y|j|J)  OPTS="$OPTS --enable-svg"
-              export MOZ_INTERNAL_LIBART_LGPL=1
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_MATHML  in
+	n|N)	OPTS="$OPTS --disable-mathml"
+	    ;;
+	*)	;;
+    esac
 
-  case $MOZILLA_MATHML  in
-    n|N)      OPTS="$OPTS --disable-mathml"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_LDAP  in
+	y|Y|j|J)	OPTS="$OPTS --enable-ldap-experimental"
+	    ;;
+	*)		;;
+    esac
 
-  case $MOZILLA_LDAP  in
-    y|Y|j|J)  OPTS="$OPTS --enable-ldap-experimental"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_XINERAMA  in
+	y|Y|j|J)	OPTS="$OPTS --enable-xinerama"
+	    ;;
+	*)		;;
+    esac
 
-  case $MOZILLA_XINERAMA  in
-    y|Y|j|J)  OPTS="$OPTS --enable-xinerama"
-              ;;
-          *)  ;;
-  esac
+    case $MOZILLA_CRYPTO  in
+	y|Y|j|J)	OPTS="$OPTS --enable-crypto"
+	    ;;
+	*)		;;
+    esac
 
-  case $MOZILLA_CRYPTO  in
-    y|Y|j|J)  OPTS="$OPTS --enable-crypto"
-              ;;
-          *)  ;;
-  esac
 
-  export    CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )"
-  export  CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )"
 
-  ./configure  --disable-tests              \
-               --disable-debug              \
-               --enable-optimize="$CFLAGS"  \
-               --without-jpeg               \
-               --without-zlib               \
-               --without-png                \
-               $OPTS                        &&
-  make                                      &&
-  prepare_install
+
+    export	CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )"
+    export	CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )"
+
+    ./configure	--prefix=/usr			\
+	--disable-tests			\
+	--disable-debug			\
+	--enable-optimize="$CFLAGS"	\
+	--without-jpeg			\
+	--without-zlib			\
+	--without-png                   \
+	$OPTS                        &&
+    make                                      &&
+
+    case $MOZILLA_ENIGMAIL in
+	y|Y|j|J)
+	    cd $SOURCE_DIRECTORY/extensions/ipc
+	    make
+
+	    cd $SOURCE_DIRECTORY/extensions/enigmail
+	    make
+
+	    ;;
+	*) ;;
+    esac
+
+
+    prepare_install
 
 ) > $C_FIFO 2>&1  &&  (
 
@@ -70,14 +87,14 @@
   mkdir  -p                          /usr/include/mozilla
   cp	 -rL  dist/include/*         /usr/include/mozilla
   mkdir  -p                          /usr/include/moznss
-  cp     -L   dist/public/security/* /usr/include/moznss  
+  cp     -L   dist/public/security/* /usr/include/moznss
 
   for  library  in  /usr/lib/mozilla/*.so;  do 
     libname=`basename  $library`
     ln  -sf  mozilla/$libname /usr/lib/$libname
   done
 
-  cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin
+  cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin/mozilla
 
   export  MOZILLA_FIVE_HOME=/usr/lib/mozilla
   export    LD_LIBRARY_PATH=/usr/lib/mozilla:$LD_LIBRARY_PATH
