@@ -1,15 +1,15 @@
            SPELL=dia
-         VERSION=0.92.2
+         VERSION=0.93
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/0.92/$SOURCE
-          MD5[0]='bdd3888e5e8d60afa4e177bbe08345dd'
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='40f14db8f8eab2e43078d6e42200061a'
       LICENSE[0]=GPL
         WEB_SITE=http://www.lysator.liu.se/~alla/dia
       MAINTAINER=rcook@wyrms.net
          ENTERED=20010922
-         UPDATED=20031102
+         UPDATED=20040507
            SHORT="dia is a GTK-based diagram drawing program, similar to Visio"
 cat << EOF
 Dia is a program for creating diagrams of all kinds. The current
