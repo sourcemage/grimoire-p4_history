@@ -4,6 +4,7 @@
     cd $SOURCE_DIRECTORY2                         &&
     ./configure  --build=$BUILD                   \
                  --prefix=${INSTALL_ROOT}/        \
+                 --mandir=${INSTALL_ROOT}/usr/man \
 		 $OPTS                            &&
     make                                          &&
     cd $SOURCE_DIRECTORY
