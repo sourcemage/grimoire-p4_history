@@ -1,5 +1,54 @@
 (
 
+  case $MOZILLA_MAIL  in
+    n|N)      OPTS="$OPTS --disable-mailnews"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_CHAT  in
+    n|N)      OPTS="$OPTS --disable-chat"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_JAVA  in
+    y|Y|j|J)  OPTS="$OPTS --enable-java-supplement"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_SVG  in
+    y|Y|j|J)  OPTS="$OPTS --enable-svg"
+              export MOZ_INTERNAL_LIBART_LGPL=1
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_MATHML  in
+    n|N)      OPTS="$OPTS --disable-mathml"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_LDAP  in
+    y|Y|j|J)  OPTS="$OPTS --enable-ldap-experimental"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_XINERAMA  in
+    y|Y|j|J)  OPTS="$OPTS --enable-xinerama"
+              ;;
+          *)  ;;
+  esac
+
+  case $MOZILLA_CRYPTO  in
+    y|Y|j|J)  OPTS="$OPTS --enable-crypto"
+              ;;
+          *)  ;;
+  esac
+
   export    CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )"
   export  CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )"
 
@@ -9,7 +58,7 @@
                --without-jpeg               \
                --without-zlib               \
                --without-png                \
-               --enable-crypto              &&
+               $OPTS                        &&
   make                                      &&
   prepare_install
 
