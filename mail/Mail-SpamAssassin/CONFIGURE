@@ -25,3 +25,13 @@ if  !  grep  -q  "ERASE_ROLLBACK="  $SPELL_CONFIG;  then
   fi
 
 fi
+
+if  !  grep  -q  "SPAMD="  $SPELL_CONFIG;  then
+
+  if query "Do you want to run spamd on startup ?" n
+    then  echo "SPAMD=y" >> $SPELL_CONFIG
+    else  echo "SPAMD=n" >> $SPELL_CONFIG
+  fi
+
+fi
+
