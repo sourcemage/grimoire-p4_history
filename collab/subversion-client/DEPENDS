@@ -3,11 +3,13 @@ APRCONFIG=$(which apr-config 2>/dev/null)
 
 # We need to use the APR which is installed,
 # otherwise Subversion's install will overwrite it
-if [ -n "$APRCONFIG" ]; && APRVERSION=$($APRCONFIG --version >/dev/null 2>&1); then
+if [ -n "$APRCONFIG" ] && $($APRCONFIG --version >/dev/null 2>&1); then
   APRFROM=$(gaze from $APRCONFIG | head -1) &&
   APRSPELL=${APRFROM%-*:*}                  &&
-  message "${MESSAGE_COLOR}Using APR $APRVERSION from spell ${APRSPELL}${DEFAULT_COLOR}" &&
-  depends $APRSPELL "--with-apr=$APRCONFIG --with-apr-util=/usr"
+  if ! [ "$APRSPELL" == "$SPELL" ]; then
+    message "${MESSAGE_COLOR}Using APR $($APRCONFIG --version) from spell $APRSPELL...${DEFAULT_COLOR}" &&
+    depends $APRSPELL "--with-apr=$APRCONFIG --with-apr-util=/usr"
+  fi
 fi &&
 
 depends autoconf &&
