@@ -1,15 +1,14 @@
            SPELL=ccache
-         VERSION=2.3
+         VERSION=2.4
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://ccache.samba.org/ftp/ccache/$SOURCE
-          MD5[0]=d5d456dc41277d00e46e9e0359a20dd7
+          MD5[0]=9e47561f6862df9422063ce0b2f379df
       LICENSE[0]=GPL
         WEB_SITE=http://ccache.samba.org
            SHORT="ccache is a cache for C/C++ compilers"
          ENTERED=20020416
          UPDATED=20020416
-      MAINTAINER=julian@wongr.net
 cat << EOF
 ccache is a compiler cache. It acts as a caching pre-processor to
 C/C++ compilers, using the -E compiler switch and a hash to detect
