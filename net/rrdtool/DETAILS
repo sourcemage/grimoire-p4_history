@@ -1,0 +1,17 @@
+           SPELL=rrdtool
+         VERSION=1.0.49
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/pub/$SOURCE
+          MD5[0]=eb28b21b0dbb2f9760772eb0b6704597
+        WEB_SITE=http://people.ee.ethz.ch/~oetiker/webtools/rrdtool
+         ENTERED=20020210
+         UPDATED=20020210
+            DOCS="README examples/*.pl examples/*.cgi"
+       BUILD_API=2
+           SHORT="rrd is time-series data logging and graphing"
+cat << EOF
+RRDtool is basically the time-series graphing and data storage/management
+component of MRTG, broken out and done right. Done right means that RRDtool is
+magnitudes faster than MRTG and extremely configurable.
+EOF

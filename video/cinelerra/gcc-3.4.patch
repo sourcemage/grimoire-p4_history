@@ -1,0 +1,113 @@
+--- guicast/arraylist.h~	2004-01-28 02:52:22.000000000 +0100
++++ guicast/arraylist.h	2004-08-31 20:49:25.738849172 +0200
+@@ -1,6 +1,7 @@
+ #ifndef ARRAYLIST_H
+ #define ARRAYLIST_H
+ 
++#include <iostream>
+ // designed for lists of track numbers
+ 
+ template<class TYPE>
+--- mplexhi/multplex.c~	2003-10-14 09:54:14.000000000 +0200
++++ mplexhi/multplex.c	2004-08-31 20:50:38.318598487 +0200
+@@ -341,6 +341,7 @@
+ 		break;
+ 
+ 		default:
++    break;
+ 	}
+ 
+ }
+--- cinelerra/floatautos.C.orig	2004-08-31 21:29:50.503799660 +0200
++++ cinelerra/floatautos.C	2004-08-31 21:29:57.590896370 +0200
+@@ -249,8 +249,9 @@
+ 	float y0, y1, y2, y3;
+  	float t;
+ 
+-	previous = (FloatAuto*)get_prev_auto(position, direction, (Auto*)previous, 0);
+-	next = (FloatAuto*)get_next_auto(position, direction, (Auto*)next, 0);
++// is gcc being incredibly stupid or am i missing something?
++	previous = (FloatAuto*)get_prev_auto((int64_t)position, (int)direction, (Auto* &)previous, 0);
++	next = (FloatAuto*)get_next_auto((int64_t)position, (int)direction, (Auto* &)next, 0);
+ 
+ // Constant
+ 	if(!next && !previous)
+--- cinelerra/panautos.C.orig	2004-08-31 21:35:38.407457442 +0200
++++ cinelerra/panautos.C	2004-08-31 21:35:46.416436654 +0200
+@@ -24,8 +24,8 @@
+ 		PanAuto* &previous,
+ 		PanAuto* &next)
+ {
+-	previous = (PanAuto*)get_prev_auto(position, direction, (Auto*)previous);
+-	next = (PanAuto*)get_next_auto(position, direction, (Auto*)next);
++	previous = (PanAuto*)get_prev_auto((int64_t)position, (int)direction, (Auto*&)previous);
++	next = (PanAuto*)get_next_auto((int64_t)position, (int)direction, (Auto*&)next);
+ 
+ // Constant
+ 	if(previous->handle_x == next->handle_x &&
+--- cinelerra/recordmonitor.C.orig	2004-08-31 21:40:27.387625344 +0200
++++ cinelerra/recordmonitor.C	2004-08-31 21:40:35.567582764 +0200
+@@ -1005,7 +1005,7 @@
+ 
+ int RecVideoDVThread::start_rendering()
+ {
+-	((dv_t*)dv) = dv_new();
++	dv = dv_new();
+ 	return 0;
+ }
+ 
+--- cinelerra/tracks.C.orig	2004-08-31 21:43:59.239623652 +0200
++++ cinelerra/tracks.C	2004-08-31 21:44:06.043756428 +0200
+@@ -293,9 +293,9 @@
+ 	{
+ 		long unit_start = current->to_units(edl->local_session->selectionstart, 0);
+ 		mute_keyframe = (IntAuto*)current->automation->mute_autos->get_prev_auto(
+-			unit_start, 
++			(int64_t)unit_start, 
+ 			PLAY_FORWARD,
+-			(Auto*)mute_keyframe);
++			(Auto* &)mute_keyframe);
+ 
+ 		result += 
+ 			(current->play && type == PLAY) ||
+--- cinelerra/virtualnode.C.orig	2004-08-31 21:48:18.389593575 +0200
++++ cinelerra/virtualnode.C	2004-08-31 21:48:33.517665420 +0200
+@@ -471,8 +471,8 @@
+ 
+ 	IntAuto *prev_keyframe = 0;
+ 	IntAuto *next_keyframe = 0;
+-	prev_keyframe = (IntAuto*)autos->get_prev_auto(input_position, direction, (Auto*)prev_keyframe);
+-	next_keyframe = (IntAuto*)autos->get_next_auto(input_position, direction, (Auto*)next_keyframe);
++	prev_keyframe = (IntAuto*)autos->get_prev_auto((int64_t)input_position, (int)direction, (Auto* &)prev_keyframe);
++	next_keyframe = (IntAuto*)autos->get_next_auto((int64_t)input_position, (int)direction, (Auto* &)next_keyframe);
+ 
+ 	if(direction == PLAY_FORWARD)
+ 	{
+--- cinelerra/virtualanode.C.orig	2004-08-31 21:49:38.917329876 +0200
++++ cinelerra/virtualanode.C	2004-08-31 21:49:46.450369749 +0200
+@@ -471,8 +471,8 @@
+ 
+ 	PanAuto *prev_keyframe = 0;
+ 	PanAuto *next_keyframe = 0;
+-	prev_keyframe = (PanAuto*)autos->get_prev_auto(input_position, direction, (Auto*)prev_keyframe);
+-	next_keyframe = (PanAuto*)autos->get_next_auto(input_position, direction, (Auto*)next_keyframe);
++	prev_keyframe = (PanAuto*)autos->get_prev_auto((int64_t)input_position, (int)direction, (Auto* &)prev_keyframe);
++	next_keyframe = (PanAuto*)autos->get_next_auto((int64_t)input_position, (int)direction, (Auto* &)next_keyframe);
+ 	
+ 	if(direction == PLAY_FORWARD)
+ 	{
+--- cinelerra/virtualvnode.C.orig	2004-08-31 21:50:39.877560162 +0200
++++ cinelerra/virtualvnode.C	2004-08-31 21:50:47.208625778 +0200
+@@ -325,9 +325,9 @@
+ 				IntAuto *mode_keyframe = 0;
+ 				mode_keyframe = 
+ 					(IntAuto*)track->automation->mode_autos->get_prev_auto(
+-						start_position_project, 
+-						direction,
+-						(Auto*)mode_keyframe);
++						(int64_t)start_position_project, 
++						(int)direction,
++						(Auto* &)mode_keyframe);
+ 
+ 				int mode = mode_keyframe->value;
+ 

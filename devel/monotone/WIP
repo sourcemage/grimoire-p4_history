@@ -1,0 +1,32 @@
+if g++ -DLOCALEDIR=\"/usr/share/locale\" -DHAVE_CONFIG_H -I. -I. -I.    -I./lua -I./sqlite -DNDEBUG -DBOOST_DISABLE_THREADS -Wal
+l  -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O3 -MT monotone-lua.o -MD -MP -MF ".deps/monotone-lua.Tpo" -c -o monotone-
+lua.o `test -f 'lua.cc' || echo './'`lua.cc; \
+then mv -f ".deps/monotone-lua.Tpo" ".deps/monotone-lua.Po"; else rm -f ".deps/monotone-lua.Tpo"; exit 1; fi
+In file included from diff_patch.cc:14:
+lcs.hh: In function `void edit_script(A, A, B, B, long int, std::vector<long int, std::allocator<long int> >&, LCS)':
+lcs.hh:509: error: non-template `subarray' used as template
+lcs.hh:509: error: (use `edit_script(A, A, B, B, long int, std::vector<long int, std::allocator<long int> >&, LCS)::calc_t::template subarray' to indicate that it is a template)
+lcs.hh:509: error: declaration does not declare anything
+lcs.hh:510: error: non-template `subarray' used as template
+lcs.hh:510: error: (use `edit_script(A, A, B, B, long int, std::vector<long int, std::allocator<long int> >&, LCS)::calc_t::template subarray' to indicate that it is a template)
+lcs.hh:510: error: declaration does not declare anything
+lcs.hh:514: error: `b' undeclared (first use this function)
+lcs.hh:514: error: (Each undeclared identifier is reported only once for each function it appears in.)
+lcs.hh:514: error: `a' undeclared (first use this function)
+lcs.hh: In function `void longest_common_subsequence(A, A, B, B, long int, LCS)':
+lcs.hh:544: error: non-template `subarray' used as template
+lcs.hh:544: error: (use `longest_common_subsequence(A, A, B, B, long int, LCS)::calc_t::template subarray' to indicate that it is a template)
+lcs.hh:544: error: declaration does not declare anything
+lcs.hh:545: error: non-template `subarray' used as template
+lcs.hh:545: error: (use `longest_common_subsequence(A, A, B, B, long int, LCS)::calc_t::template subarray' to indicate that it is a template)
+lcs.hh:545: error: declaration does not declare anything
+lcs.hh:549: error: `b' undeclared (first use this function)
+lcs.hh:549: error: `a' undeclared (first use this function)
+if g++ -DLOCALEDIR=\"/usr/share/locale\" -DHAVE_CONFIG_H -I. -I. -I.    -I./lua -I./sqlite -DNDEBUG -DBOOST_DISABLE_THREADS -Wall  -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O3 -MT monotone-patch_set.o -MD -MP -MF ".deps/monotone-patch_set.Tpo" -c -o monotone-patch_set.o `test -f 'patch_set.cc' || echo './'`patch_set.cc; \
+then mv -f ".deps/monotone-patch_set.Tpo" ".deps/monotone-patch_set.Po"; else rm -f ".deps/monotone-patch_set.Tpo"; exit 1; fi
+lua.cc: In function `int monotone_mkstemp_for_lua(lua_State*)':
+lua.cc:79: error: `errno' undeclared (first use this function)
+lua.cc:79: error: (Each undeclared identifier is reported only once for each function it appears in.)
+make[3]: *** [monotone-lua.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+make[3]: *** [monotone-diff_patch.o] Error 1

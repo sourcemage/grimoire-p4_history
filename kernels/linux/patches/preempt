@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DESCRIPTION="preemptible kernel patch"
+SHORT="This patch enables a preemptible kernel"
+HELP="This patch enables a preemptible kernel, which reduces the latency of the kernel.
+It allows processes to be preempted even if in kernel mode.
+
+The design used is to allow a task to be preempted anywhere within the kernel, using spinlocks as markers for non-preemptibility regions.
+The resulting system response is greatly increased, with measured average latencies under 1ms."
+VERSIONS="2.4.23-pre5-1
+2.4.22-1
+2.4.21-1
+2.4.20-ac1-1
+2.4.20-3
+2.4.19-2
+2.4.18-5"
+
+MD5S[0]=7bc66701579c02a7b38c8aec0f2087bb
+MD5S[1]=696fc3b466e1994c7246575a90c59fbf
+MD5S[2]=39f24bdadb912bb5b5312cc2d25f5f32
+MD5S[3]=b2e1fae874279ab2363ebe1f162a8a57
+MD5S[4]=54d58d894ee85830fdd3109b7f38d289
+MD5S[5]=5f5d42bce8da6cacde2e5fc24921f173
+MD5S[6]=5960f685403177baf10927fb1dc78c2a
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=preempt-kernel-rml-${!PATCH}.patch
+SOURCE${COUNTER}_URL=\${KERNEL_URL}/pub/linux/kernel/people/rml/preempt-kernel/v2.4/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

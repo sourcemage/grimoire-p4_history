@@ -1,0 +1,21 @@
+           SPELL=metacity
+         VERSION=2.8.8
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='57499628861d3940d0d103064711f790'
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://people.redhat.com/~hp/metacity
+         ENTERED=20020509
+         UPDATED=20041207
+           SHORT="Metacity is a window manager based on GTK+ 2.0"
+cat << EOF
+Metacity is a window manager based on GTK+ 2.0
+
+Metacity is not a meta-City as in an urban center, but rather
+Meta-ness as in the state of being meta. i.e. metacity : meta as
+opacity : opaque. Also it may have something to do with the Meta key
+on UNIX keyboards.
+EOF

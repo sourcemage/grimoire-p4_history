@@ -1,0 +1,14 @@
+echo    "p +musix.map"                          \
+        >> ${TEXMF}/dvips/config/config.ps      &&
+
+# updmap needs to be run from the dvips config dir
+cd  ${TEXMF}/dvips/config                       &&
+updmap                                          &&
+
+echo    "f musix.map"                           \
+        >> ${TEXMF}/dvipdfm/config/config       &&
+
+echo    "map musix.map"                         \
+        >> ${TEXMF}/pdftex/config/pdftex.cfg    &&
+
+texhash

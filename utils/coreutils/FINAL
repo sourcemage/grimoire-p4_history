@@ -1,0 +1,31 @@
+UNTOUCHABLES=/var/lib/sorcery/sustained
+PACKAGELOG=${INSTALL_ROOT}/var/state/sorcery/packages
+ON_GOING_WORK=/var/lib/sorcery/protected
+KIT_KABOODLE=$INSTALL_LOGS
+message "${QUERY_COLOR}cleaning conflicting files from fileutils, textutils and sh-utils${DEFAULT_COLOR}"
+for i in fileutils textutils sh-utils;
+do if [ -f $KIT_KABOODLE/$i* ]
+then for j in $(< $KIT_KABOODLE/$i* );
+       do if ! grep  -q $j $KIT_KABOODLE/$SPELL-$VERSION
+          then rm -f $j
+          else echo "$j is now part of $SPELL, leaving untouched "
+          fi	    
+        done
+   fi
+done   &&
+   if  ! grep -q coreutils $UNTOUCHABLES
+      then echo coreutils >> $UNTOUCHABLES
+   fi   &&
+   sedit "s/\/usr\/bin\/install/\/bin\/install/g"  $ON_GOING_WORK     &&
+   sedit "s/\/usr\/bin\/sort/\/bin\/sort/g"  $ON_GOING_WORK           &&
+   sedit "s/\/usr\/bin\/basename/\/bin\/basename/g"  $ON_GOING_WORK   &&
+   sedit "s/\/usr\/bin\/md5sum/\/bin\/md5sum/g"  $ON_GOING_WORK       && 
+   sedit "s/\/usr\/bin\/sleep/\/bin\/sleep/g"  $ON_GOING_WORK         &&
+   cat $ON_GOING_WORK | sort > /tmp/poopy.$$                          && 
+        mv -f /tmp/poopy.$$  $ON_GOING_WORK                           &&
+   sedit '/fileutils/d' $UNTOUCHABLES  &&
+   sedit '/textutils/d' $UNTOUCHABLES  &&
+   sedit '/sh-utils/d' $UNTOUCHABLES   &&
+   sedit '/fileutils/d' $PACKAGELOG    &&
+   sedit '/textutils/d' $PACKAGELOG    &&
+   sedit '/sh-utils/d' $PACKAGELOG     

@@ -1,0 +1,10 @@
+if ! grep -q CONFIGURED ${SPELL_CONFIG}
+ then 
+ if query "Would you like to compile the utilities?" y
+  then echo 'utils="y"' > ${SPELL_CONFIG}
+ fi
+ if query "Would you like to compile the examples?" y 
+  then echo 'examples="y"' >> ${SPELL_CONFIG}
+ fi
+ echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+fi

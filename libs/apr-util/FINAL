@@ -1,0 +1,9 @@
+ln -fns apu-1-config /usr/bin/apu-config &&
+
+# use configuration from the `apr' spell
+source $DEPENDS_CONFIG/apr.p &&
+
+if [ "$APR_BRANCH_0_9" == 'y' ]; then
+  FIX_PATH_REGEX='s|/usr/src/apr-util-[^/"]*|/usr/share/apache2|' &&
+  sedit $FIX_PATH_REGEX /usr/bin/apu-config
+fi

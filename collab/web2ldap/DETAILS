@@ -1,0 +1,19 @@
+           SPELL=web2ldap
+         VERSION=0.15.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+          MD5[0]='3e0a280a20a7e95556afb7d5dd0880ee'
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.web2ldap.de/download/$SOURCE
+        WEB_SITE=http://www.web2ldap.de/
+         ENTERED=20020416
+         UPDATED=20020416
+           SHORT='web2ldap aims to be a full-featured LDAPv3 client'
+cat << EOF
+Although web2ldap is designed to be very comfortable it is today much
+too powerful for unexperienced users who just want to do simple repeating
+jobs like searching a specific sort of entries or adding same entries many
+times. The reason is that web2ldap is a generic LDAP client providing all
+kind of actions you want to do with a LDAP directory without making any
+assumptions about the directory's DIT or schema.
+EOF

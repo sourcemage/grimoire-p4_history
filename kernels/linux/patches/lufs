@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DESCRIPTION="LUFS file system support patch"
+SHORT="LUFS file system support patch"
+HELP="LUFS is a userland file system framework providing a simple interface. Besides the kernel support enabled by this option, you will also need the lufsd daemon and file system modules available by 'cast lufs'.
+
+More info: http://lufs.sourceforge.net/lufs/
+
+"
+VERSIONS="0.9.7-2.4.22
+0.9.7-2.6.0-test9"
+MD5S[0]=07d65c202e3aa10e3c48d1a1f6907905
+MD5S[1]=356dd5b240f8983275b9313eed1f75b1
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=lufs-${!PATCH}.patch.gz
+SOURCE${COUNTER}_URL=\${SOURCEFORGE_URL}/lufs/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

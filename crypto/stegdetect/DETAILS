@@ -1,0 +1,27 @@
+           SPELL=stegdetect
+         VERSION=0.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.outguess.org/$SOURCE
+          MD5[0]=ea1f77abfe52d884344aec287cac58b6
+        WEB_SITE=http://www.outguess.org
+         ENTERED=20020116
+         UPDATED=20020126
+      LICENSE[0]=BSD
+      MAINTAINER=hgr@vabo.cz
+           SHORT="Stegdetect is an automated tool for detecting steganographic content in images"
+cat << EOF
+Stegdetect is an automated tool for detecting steganographic content in
+images.  It is capable of detecting several different steganographic
+methods to embed hidden information in JPEG images.  Currently, the
+detectable schemes are
+
+- jsteg,
+- jphide (unix and windows),
+- invisible secrets,
+- and outguess 0.13b.
+
+OutGuess 0.2 can not be detected using these techniques.
+Stegbreak is used to launch dictionary attacks against JSteg-Shell,
+JPHide and OutGuess 0.13b.
+EOF

@@ -1,0 +1,123 @@
+diff -purN swish++-6.0/config/config.mk swish++/config/config.mk
+--- swish++-6.0/config/config.mk	2004-03-27 21:35:06.000000000 -0500
++++ swish++/config/config.mk	2004-04-03 23:01:12.000000000 -0500
+@@ -157,9 +157,9 @@ RM:=		rm -fr
+ #		The command to remove files recursively and ignore errors;
+ #		usually "rm -fr" for Unix or "erase" for Windows.
+ 
+-PERL:=		/usr/local/bin/perl
++PERL:=		/usr/bin/perl
+ #		The full path to the Perl 5 executable; usually "/bin/perl" or
+-#		"/usr/local/bin/perl" for Unix or "\Perl\bin\perl" for
++#		"/usr/bin/perl" for Unix or "\Perl\bin\perl" for
+ #		Windows.  You need this only if you intend on using
+ #		httpindex(1) or searchc(1).
+ 
+@@ -241,7 +241,7 @@ endif
+ INSTALL:=	$(ROOT)/install-sh
+ #		Install command; usually "$(ROOT)/install-sh".
+ 
+-I_ROOT:=	/usr/local
++I_ROOT:=	/usr
+ #		The top-level directory of where SWISH++ will be installed.
+ 
+ I_BIN:=		$(I_ROOT)/bin
+diff -purN swish++-6.0/config.h swish++/config.h
+--- swish++-6.0/config.h	2004-03-26 17:59:56.000000000 -0500
++++ swish++/config.h	2004-04-03 23:01:12.000000000 -0500
+@@ -202,9 +202,6 @@ char const	ShellFilenameEscapeChars[]	= 
+ #ifdef	WIN32
+ char const	TempDirectory_Default[]		= "/temp";
+ #else
+-#error		You have not set TempDirectory_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+ char const	TempDirectory_Default[]		= "/tmp";
+ #endif
+ //		Default directory to use for temporary files during indexing.
+@@ -238,10 +235,7 @@ int const	WordPercentMax_Default		= 100;
+ //		it is discarded as being too frequent; this can be overridden
+ //		either in a config. file or on the command line.
+ 
+-#error		You have not set WordThreshold_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+-int const	WordThreshold_Default		= 250000;
++int const	WordThreshold_Default		= 524288;
+ //		The word count past which partial indicies are generated and
+ //		merged since all the words are too big to fit into memory at
+ //		the same time.  If you index and your machine begins to swap
+diff -purN swish++-6.0/man/man8/searchd.8 swish++/man/man8/searchd.8
+--- swish++-6.0/man/man8/searchd.8	2003-10-20 22:52:37.000000000 -0400
++++ swish++/man/man8/searchd.8	2004-04-03 23:01:12.000000000 -0500
+@@ -73,7 +73,7 @@ Customary directory for start/stop scrip
+ \f(CWswish++.conf\f1
+ default configuration file
+ .TP
+-\f(CW/usr/local/bin/search\f1
++\f(CW/usr/bin/search\f1
+ Default location for
+ .BR search (1)
+ .PD
+diff -purN swish++-6.0/man/man8/searchmonitor.8 swish++/man/man8/searchmonitor.8
+--- swish++-6.0/man/man8/searchmonitor.8	2001-11-11 16:49:18.000000000 -0500
++++ swish++/man/man8/searchmonitor.8	2004-04-03 23:01:12.000000000 -0500
+@@ -117,14 +117,14 @@ both in the current directory and in \f(
+ The full path to the location of
+ .BR search (1).
+ (Default is whereever it was installed.
+-The default for that is \f(CW/usr/local/bin/search\f1.)
++The default for that is \f(CW/usr/bin/search\f1.)
+ .SH FILES
+ .PD 0
+ .TP 28
+ \f(CWswish++.conf\f1
+ default configuration file
+ .TP
+-\f(CW/usr/local/bin/search\f1
++\f(CW/usr/bin/search\f1
+ Default location for
+ .BR search (1)
+ .PD
+diff -purN swish++-6.0/scripts/searchd.in swish++/scripts/searchd.in
+--- swish++-6.0/scripts/searchd.in	2004-03-27 14:09:53.000000000 -0500
++++ swish++/scripts/searchd.in	2004-04-03 23:02:29.000000000 -0500
+@@ -36,7 +36,7 @@ PID_FILE_DEFAULT="/var/run/search.pid"
+ # You may need to set LD_LIBRARY_PATH to contain the directory of the C++
+ # run-time library, e.g. libstdc++.so if g++ was used to compile SWISH++.
+ ##
+-#LD_LIBRARY_PATH=/usr/local/lib
++#LD_LIBRARY_PATH=/usr/lib
+ #export LD_LIBRARY_PATH
+ 
+ ##
+diff -purN swish++-6.0/scripts/searchmonitor.in swish++/scripts/searchmonitor.in
+--- swish++-6.0/scripts/searchmonitor.in	2004-03-27 14:09:53.000000000 -0500
++++ swish++/scripts/searchmonitor.in	2004-04-03 23:02:48.000000000 -0500
+@@ -31,7 +31,7 @@ SEARCH_DEFAULT="%%I_BIN%%/search"
+ # You may need to set LD_LIBRARY_PATH to contain the directory of the C++
+ # run-time library, e.g. libstdc++.so if g++ was used to compile SWISH++.
+ ##
+-#LD_LIBRARY_PATH=/usr/local/lib
++#LD_LIBRARY_PATH=/usr/lib
+ #export LD_LIBRARY_PATH
+ 
+ ########### You shouldn't have to change anything below this line. ############
+diff -purN swish++-6.0/www_example/search.cgi swish++/www_example/search.cgi
+--- swish++-6.0/www_example/search.cgi	2002-12-17 12:27:20.000000000 -0500
++++ swish++/www_example/search.cgi	2004-04-03 23:02:48.000000000 -0500
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/perl
++#! /usr/bin/perl
+ ###############################################################################
+ #
+ # NAME
+@@ -34,7 +34,7 @@ use lib qw( /home/www/swish++/lib/ );
+ #		Put the path to where the WWW library is above.
+ require WWW;
+ 
+-$SWISH_BIN =	'/usr/local/bin';
++$SWISH_BIN =	'/usr/bin';
+ #		The full path to the bin directory where you installed the
+ #		SWISH++ executables.
+ 

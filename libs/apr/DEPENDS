@@ -1,0 +1,6 @@
+depends  autoconf  &&
+depends  libtool   &&
+if [ "$APR_CHECKOUT" == 'y' ]; then
+  depends python &&
+  depends SVN
+fi

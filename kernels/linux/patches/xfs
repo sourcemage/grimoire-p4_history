@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DESCRIPTION="sgi's XFS patch"
+SHORT="The xfs filesystem from Silicon Graphics."
+HELP="xfs is a journalled filesystem with support for ACLs and other neat stuff
+http://oss.sgi.com/projects/xfs/"
+VERSIONS="2.4.24-pre1
+2.4.23
+2.4.23-rc1
+2.4.22"
+MD5S[0]=0597b9523d498a3379108b528a0ddb3c
+MD5S[1]=b0d431f0f070d42e55f4d251cdede24a
+MD5S[2]=3fb3bdafc4e7d25f5f1bdc876f787d9c
+MD5S[3]=3447e96b092f4bcb108d5d2f9e799b0c
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=xfs-${!PATCH}-all-i386.bz2
+SOURCE${COUNTER}_URL=ftp://oss.sgi.com/projects/xfs/download/patches/${!PATCH}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

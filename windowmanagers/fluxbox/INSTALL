@@ -1,0 +1,6 @@
+default_install                                         &&
+if ! [ -d /usr/share/xsessions ] ; then
+  mkdir /usr/share/xsessions
+fi                                                      &&
+install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
+                  /usr/share/xsessions

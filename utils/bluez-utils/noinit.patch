@@ -1,0 +1,10 @@
+--- scripts/Makefile.in.orig	2004-12-19 17:26:32.253634312 -0800
++++ scripts/Makefile.in	2004-12-19 17:26:44.549765016 -0800
+@@ -303,7 +303,6 @@
+ 
+ 
+ install-data-local:
+-	$(INSTALL) -D -m 755 $(srcdir)/bluetooth.init $(DESTDIR)$(sysconfdir)/init.d/bluetooth
+ 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/default
+ 	[ -f $(DESTDIR)$(sysconfdir)/default/bluetooth ] || \
+ 		$(INSTALL_DATA) $(srcdir)/bluetooth.default $(DESTDIR)$(sysconfdir)/default/bluetooth

@@ -1,0 +1,18 @@
+           SPELL=paco
+         VERSION=1.7.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/paco/$SOURCE
+          MD5[0]=e7ebd49df5e33906b459ee18f359146d
+        WEB_SITE=http://paco.sourceforge.net/
+         ENTERED=20041107
+         UPDATED=20041107
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Aid package management when installing binary packages"
+cat << EOF
+Paco (pacKAGE oRGANIZER) is a simple, yet powerful tool to aid package management
+when installing programs from source code, paco for command line, gpaco for gnome
+and script called SuperPaco that installs Debian, RPM or Slackware binary packages
+whithout dpkg, rpm or pkgtool, and logs the installation with paco.
+EOF

@@ -1,0 +1,18 @@
+           SPELL=aspell-ru
+         VERSION=0.99f7-1
+   ASPELL_BRANCH=6
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`	 
+          SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
+   SOURCE_URL[0]=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+          MD5[0]=a2e85affb9361d3fe88cf678569a154d
+        WEB_SITE=http://aspell.sourceforge.net
+         ENTERED=20011028
+         UPDATED=20011028
+      LICENSE[0]=UNKOWN
+       BUILD_API=2
+           SHORT="Russian aspell dictionary"
+cat << EOF
+Russian aspell dictionary
+EOF

@@ -1,0 +1,12 @@
+diff -urpN httpd-2.0.52.orig/buildconf httpd-2.0.52/buildconf
+--- httpd-2.0.52.orig/buildconf	2004-11-30 17:16:07.515253928 -0800
++++ httpd-2.0.52/buildconf	2004-11-30 17:21:30.795107920 -0800
+@@ -67,7 +67,7 @@ if [ ! -d "$apr_src_dir" -o ! -f "$apr_s
+     echo ""
+     exit 1
+ fi
+-if [ ! -d "$apu_src_dir" -o ! -f "$apu_src_dir/Makefile.in" ]; then
++if [ ! -d "$apu_src_dir" -o ! -f "$apu_src_dir/build/find_apu.m4" ]; then
+     echo ""
+     echo "You don't have a copy of the apr-util source in $apu_src_dir. "
+     echo "Please get one the source using the following instructions, "

@@ -1,0 +1,28 @@
+--- Makefile.inc.old	2004-01-19 15:03:37.000000000 +0000
++++ Makefile.inc	2004-10-11 12:25:10.303376392 +0000
+@@ -2,7 +2,7 @@
+ 
+ # Where to install stuff
+ 
+-MOSMLHOME=${HOME}/mosml
++MOSMLHOME=/usr
+ 
+ # Various utility programs
+ INSTALL_PROGRAM=cp
+@@ -114,12 +114,12 @@
+ # DOCDIR contains documentation
+ 
+ BINDIR=${MOSMLHOME}/bin
+-LIBDIR=${MOSMLHOME}/lib
++#LIBDIR=${MOSMLHOME}/lib
+ INCDIR=${MOSMLHOME}/include
+ DOCDIR=${MOSMLHOME}/doc
+-TOOLDIR=${MOSMLHOME}/tools
+-# LIBDIR=${MOSMLHOME}/lib/moscow_ml
+-# TOOLDIR=${MOSMLHOME}/libexec/moscow_ml
++#TOOLDIR=${MOSMLHOME}/tools
++LIBDIR=${MOSMLHOME}/lib/moscow_ml
++TOOLDIR=${MOSMLHOME}/libexec/moscow_ml
+ 
+ CAMLRT=../runtime
+ 

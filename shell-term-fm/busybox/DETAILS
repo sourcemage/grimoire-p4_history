@@ -1,0 +1,27 @@
+           SPELL=busybox
+         VERSION=1.0.0
+     PKG_VERSION=1.00
+          SOURCE=${SPELL}-${PKG_VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${PKG_VERSION}
+   SOURCE_URL[0]=http://www.busybox.net/downloads/${SOURCE}
+          MD5[0]=8deab113025810e5af9d13a710808c13 
+        WEB_SITE=http://www.busybox.net
+         ENTERED=20011020
+         UPDATED=20030725
+      LICENSE[0]=GPL2
+       BUILD_API=2
+           SHORT="Statically linked rescue shell"
+cat << EOF
+BusyBox combines tiny versions of many common 
+UNIX utilities into a single small executable.
+It provides minimalist replacements for most 
+of the utilities you usually find in GNU 
+fileutils, shellutils, etc.  The utilities in 
+BusyBox generally have fewer options than their
+full-featured GNU cousins; however, the options 
+that are included provide the expected 
+functionality and behave very much like their 
+GNU counterparts.  BusyBox provides a fairly 
+complete POSIX environment for any small or 
+embedded system.
+EOF

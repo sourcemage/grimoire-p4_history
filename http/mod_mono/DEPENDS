@@ -1,0 +1,8 @@
+depends mono &&
+
+if   spell_installed apache2  ; then depends apache2  ;
+elif spell_installed httpd-dev; then depends httpd-dev;
+else
+  message "${PROBLEM_COLOR}Apache 2 must be present as one of spells: apache2 or httpd-dev${DEFAULT_COLOR}"
+  exit 1
+fi

@@ -1,0 +1,15 @@
+depends  libgnomeui   &&
+if  [  "$XINE_BACKEND"  =  "y"  ];  then
+  depends  xine-lib '--enable-xine'
+else
+  depends  gst-plugins
+fi  &&
+optional_depends  "libvorbis"           \
+                  "--enable-vorbis"     \
+                  "--disable-vorbis"    \
+                  "for vorbis support"
+# disabled, needs musicbrainz >= 2.0
+#optional_depends  "musicbrainz"            \
+#                  "--enable-musicbrainz"   \
+#                  "--disable-musicbrainz"  \
+#                  "for metadata download support"

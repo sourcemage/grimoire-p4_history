@@ -1,0 +1,24 @@
+           SPELL=jail
+         VERSION=1.9a
+          SOURCE=${SPELL}_$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.jmcresearch.com/static/dwn/projects/jail/$SOURCE
+        WEB_SITE=http://www.jmcresearch.com/projects/jail/
+         ENTERED=20040208
+         UPDATED=20040208
+	  MD5[0]='a7edbb06d9606d9ae17bd7d3e773a135'
+      LICENSE[0]=GPL
+           SHORT='Jail is a login tool creating chroot-ed environment for a user'
+cat << EOF
+Jail supports lots of interesting features:
+* Runs on Linux, Solaris, IRIX and freeBSD (tested) and should
+  run in any of the flavours of these operating systems.
+* Modular design, so you can port Jail in an easy way.
+* Support for multiple users in a single chrooted environment.
+* Fully customizable user shell.
+* Support for multiple servers: telnetd, sshd, ftpd...
+* Easy to install thanks to the enviroment creation script.
+* Should work in any UNIX.
+* Ease of porting.
+* Allows run any kind of program as a shell. 
+EOF

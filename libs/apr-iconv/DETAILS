@@ -1,0 +1,29 @@
+           SPELL=apr-iconv
+if [ "$APR_BRANCH" == '1' ]; then
+         VERSION=1.0.0
+             TAG=HEAD
+          MD5[0]='9c12de5f96df3bb2177448ae021897bd'
+else
+         VERSION=0.9.5
+             TAG=APU_0_9_BRANCH
+          MD5[0]=''
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:APACHE_2_0_50
+fi
+if [ "$APR_CHECKOUT" == 'y' ]; then
+         VERSION=$TAG
+  FORCE_DOWNLOAD=on
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
+          MD5[0]=IGNORE
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
+        WEB_SITE=http://apr.apache.org/
+      LICENSE[0]=APACHE
+         ENTERED=20030705
+         UPDATED=20040912
+           SHORT='Apache Portable Runtime Internationalization Library'
+cat << EOF
+Apache Portable Runtime Internationalization library provides the iconv()
+function on top of APR.
+EOF

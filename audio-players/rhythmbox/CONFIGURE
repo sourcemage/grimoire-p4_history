@@ -1,0 +1,15 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if    query  "Use xine-lib backend instead of gstreamer?" n
+  then  echo  "XINE_BACKEND=y"  >>  ${SPELL_CONFIG}
+  else  echo  "XINE_BACKEND=n"  >>  ${SPELL_CONFIG}
+  fi  &&
+
+  if query "flac support?" "y"
+  then
+      depends flac "--enable-flac" &&
+      depends libid3tag
+  fi
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+fi

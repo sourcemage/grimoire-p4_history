@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DESCRIPTION="ALPS Synaptics driver patch"
+SHORT="ALPS Synaptics driver"
+HELP="This is just the ALPS patch from the Synaptics TouchPad package.
+See http://w1.894.telia.com/~u89404340/touchpad/ for more information"
+
+VERSIONS="0.13.5"
+
+MD5S[0]=4b5029a104c659ea00fb0434254ecfb4
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=alps-${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://smgl.sandall.us/patches/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

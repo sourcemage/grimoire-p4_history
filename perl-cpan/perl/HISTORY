@@ -1,0 +1,96 @@
+2004-11-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.8.6
+	* installperl.patch: Updated to 5.8.6
+	* BUILD,PRE_BUILD: Moved patching to PRE_BUILD
+
+2004-09-06 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Converted to config_query
+	  Prompt for threaded perl (default 'n' as threading breaks some apps)
+	* BUILD: Use config_query responses
+	  Check for threading response
+
+2004-07-21 Jose Bernardo <jbernardo@sourcemage.org>
+	* BUILD: added missing ';'
+
+2004-07-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.8.5
+	  BUILD_API=2
+	  Shortened SHORT
+	* BUILD: Converted to BUILD_API 2
+	  Removed TABs
+	* INSTALL: Added
+	* POST_INSTALL: Renamed to FINAL for BUILD_API 2
+
+2004-04-26 Seth Woolley <seth@tautology.org>
+	* installperl.patch: fix s/true/1/g (strict subs requires this)
+	* DETAILS: Updated to 5.8.4
+
+2004-02-06 hgg <hgreig@bigpond.net.au>
+	* BUILD: install_root fixes
+
+2004-01-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.8.3
+	  Removed MAINTAINER
+
+2003-11-30 Eric Sandall <eric@sandall.us>
+	* BUILD,POST_INSTALL: Use INSTALL_ROOT
+
+2003-11-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.8.2
+
+2003-10-12 Lyon Lemmens <llemmens@sourcemage.org>
+	* BUILD, POST_INSTALL: added code to check previous version and offer
+	  full rebuild. Also changed cast to cast -c on the full rebuild (bug# 5468)
+
+2003-10-12 hgg <hgreig@bigpond.net.au>
+	* DETAILS: turn off distcc and ccache
+
+2003-10-02 Eric Sandall <eric@sandall.us>
+	* installperl.patch: Updated for 5.8.1
+
+2003-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 5.8.1
+
+2003-09-24 Lyon Lemmens <llemmens@sourcemage.org>
+	* installperl.patch: Added patch for installperl to get rid of aliens (Bug# 4415)
+
+2003-09-13 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Removed CONFLICTS (Bug #4345)
+
+2003-08-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Changed LICENSE to LICENSE[0]
+
+2003-04-07 Lyon Lemmens <llemmens@sourcemage.org>
+	* BUILD: Disabled DB_File building to accomodate db version update.
+	* BUILD: DB_File is a separate spell and now has triggers on db.
+
+2002-10-17 Lyon Lemmens <llemmens@sourcemage.org>
+	* CONFIGURE,BUILD: fixed BUILD and CONFIGURE
+	  so that rebuilding works correctly (Bug# 1436)
+
+2002-10-17 Lyon Lemmens <llemmens@sourcemage.org>
+	* BUILD: fixed so that config info is also in the compile log.
+
+2002-09-01 Lyon Lemmens <llemmens@sourcemage.org>
+	* BUILD: now unsets LANG (bug 674)
+	* POST_INSTALL: added to rebuild all installed spells (bug 687)
+
+2002-08-08 Eric Schabell <eric@schabell.com>
+	* DETAILS: Updated new release 5.8.0, fixes two bugs
+
+2002-06-20 Lyon Lemmens <llemmens@sourcemage.org>
+	* BUILD: added gcc3 support
+
+2002-06-18 Lyon Lemmens <llemmens@sourcemage.org>
+	* DETAILS: added MD5 signature
+	  added LICENSE
+
+2002-06-02 Harley J Pig <harleypig@harleypig.com>
+	* BUILD: Altered so that custom configuration is saved between builds
+
+2002-03-22 Lyon Lemmens <llemmens@sourcemage.org>
+	* DETAILS: Fixed WEB_SITE and SOURCE_URL
+
+2002-03-15 Lyon Lemmens <llemmens@sourcemage.org>
+	* HISTORY: New history
+

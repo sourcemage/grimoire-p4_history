@@ -1,0 +1,3 @@
+message "${MESSAGE_COLOR}HTTPD 2 can use either new multi-threaded MPM \`worker' or legacy HTTPD 1.3-compatible MPM \`prefork'${DEFAULT_COLOR}"
+config_query_list HTTPD_MPM      'Which core multi-processing module (MPM) to use?' worker prefork
+config_query      HTTPD_CHECKOUT 'Use the latest source code?' n

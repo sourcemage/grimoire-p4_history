@@ -1,0 +1,32 @@
+#!/bin/bash
+
+PROGRAM=/usr/bin/pg_ctl
+RUNLEVEL=3
+NEEDS="+remote_fs"
+
+. /etc/init.d/smgl_init
+. /etc/sysconfig/postgresql
+
+start()
+{
+  echo "Starting postmaster..."
+  if  [  -z  "$PORT"  ];  then
+    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start"
+  else
+    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start -o \"-i -p $PORT\""
+  fi
+  evaluate_retval
+}
+
+stop()
+{
+  echo "Stopping postmaster..."
+  su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE -m fast stop"
+  evaluate_retval
+}
+
+restart()
+{
+  stop   &&
+  start
+}

@@ -1,0 +1,10 @@
+depends  libgnomeui &&
+depends  gnupg      &&
+depends  gpgme      &&
+
+if [ "$GETDEVEL" == "y" ]; then
+   optional_depends gedit2                \
+                    "--enable-gedit"      \
+                    "--disable-gedit"     \
+                    "Enable gedit plugin" 
+fi

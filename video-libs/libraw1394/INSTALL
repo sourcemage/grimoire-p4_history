@@ -1,0 +1,8 @@
+default_install  &&
+. /etc/sysconfig/devices       &&
+if  [ "$DEVICES" == "static" ];  then
+  make    dev                    &&
+  chgrp  firewire  /dev/raw1394  &&
+  chmod  660       /dev/raw1394  &&
+  message  "`cat  $SCRIPT_DIRECTORY/message.txt`"  
+fi

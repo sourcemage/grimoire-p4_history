@@ -1,0 +1,29 @@
+           SPELL=apr
+if [ "$APR_BRANCH_0_9" == 'y' ]; then
+         VERSION=0.9.5
+          MD5[0]='b13b9f44df685ccee0cb32b513a985bd'
+       REPOS_URI=branches/0.9.x
+else
+         VERSION=1.0.1
+          MD5[0]='2ff04591d4a9abbb83627b477338b1c4'
+       REPOS_URI=trunk
+fi
+if [ "$APR_CHECKOUT" == 'y' ]; then
+         VERSION=${VERSION%\.*}-HEAD
+          MD5[0]=IGNORE
+   SOURCE_URL[0]=svn://svn.apache.org/repos/asf/apr/$SPELL/$REPOS_URI:$SPELL-$VERSION
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
+        WEB_SITE=http://apr.apache.org/
+      LICENSE[0]=APACHE
+       BUILD_API=2
+         ENTERED=20030302
+         UPDATED=20050122
+           SHORT='The Apache Portable Runtime (APR) library'
+cat << EOF
+The mission of the Apache Portable Runtime (APR) is to provide a free library
+of C data structures and routines, forming a system portability layer to as
+many operating systems as possible, including Unices, MS Win32, BeOS and OS/2.
+EOF

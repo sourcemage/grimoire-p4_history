@@ -1,0 +1,21 @@
+           SPELL=fvwm
+         VERSION=2.4.19
+          BRANCH=`echo ${VERSION} | cut -d. -f1`
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.fvwm.org/pub/${SPELL}/version-${BRANCH}/${SOURCE}
+          MD5[0]=ba147117979a92e710fb76e6f20b4496
+        WEB_SITE=http://www.fvwm.org
+         ENTERED=20010922
+         UPDATED=20040409
+      LICENSE[0]=GPL
+      LICENSE[1]=MIT
+       BUILD_API=2
+           SHORT="Multiple large virtual desktop X11 windows manager."
+cat << EOF
+FVWM is a multiple large virtual desktop window manager originally
+derived from twm. FVWM is intended to have a small memory footprint and
+a rich feature set, be extremely customizable and extendable and have a
+high degree of Motif mwm compatibility. FVWM is highly extensible
+through its module interface.
+EOF

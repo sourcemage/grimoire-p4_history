@@ -1,0 +1,7 @@
+if  !  grep  -q  MP3  $SPELL_CONFIG;  then
+  if    query  "Enable mp3 support?"  y
+  then  MP3="y"
+  else  MP3="n"
+  fi
+  echo  "MP3=$MP3"  >>  $SPELL_CONFIG
+fi

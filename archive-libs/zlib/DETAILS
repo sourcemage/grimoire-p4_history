@@ -1,0 +1,19 @@
+           SPELL=zlib
+         VERSION=1.2.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.zlib.net/$SOURCE
+          MD5[0]=4a4c0b15d8adf4d9ebc184e7a6dcfb46
+        WEB_SITE=http://www.zlib.net/
+         ENTERED=20010922
+         UPDATED=20040621
+      LICENSE[0]=ZLIB
+       BUILD_API=2
+           SHORT="Legally unencumbered lossless data compression library"
+cat << EOF
+zlib
+zlib is designed to be a free, general-purpose, legally unencumbered --
+that is, not covered by any patents -- lossless data-compression library
+for use on virtually any computer hardware and operating system. The
+zlib data format is itself portable across platforms.
+EOF

@@ -1,0 +1,31 @@
+           SPELL=irssi
+if [ "$IRSSI_SVN" = "y" ]; then
+         VERSION=svn
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+  FORCE_DOWNLOAD=ON
+   SOURCE_URL[0]=svn://svn.irssi.org/repos/irssi/trunk:irssi-svn
+          MD5[0]=IGNORE
+else
+         VERSION=0.8.9
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.irssi.org/files/$SOURCE
+          MD5[0]=c2fcfacb068918ba256b4747d99a2c67
+fi
+        WEB_SITE=http://www.irssi.org
+	BUILD_API=2
+         ENTERED=20011126
+         UPDATED=20020217
+      LICENSE[0]=GPL
+           SHORT="irssi - a textmode irc client" 
+cat << EOF
+irssi - a textmode irc client
+Irssi is a modular IRC client that currently has 
+only text mode user interface, but 80-90% of the 
+code isn't text mode specific, so other UIs could
+be created pretty easily. Also, Irssi isn't really
+even IRC specific anymore, there's already a working
+SILC module available. Support for other protocols
+like ICQ could be created some day too.
+EOF

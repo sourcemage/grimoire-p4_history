@@ -1,0 +1,17 @@
+           SPELL=openvpn
+         VERSION=1.6.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://heanet.dl.sourceforge.net/sourceforge/openvpn/$SOURCE
+          MD5[0]=9e4b1acc57baa742dfa86e6cd6cde3ff
+        WEB_SITE=http://openvpn.sourceforge.net
+         ENTERED=20040506
+         UPDATED=20040506
+      LICENSE[0]=http://openvpn.sourceforge.net/license.html
+       BUILD_API=2
+           SHORT="OpenVPN daemon for creating VPN networks"
+cat << EOF
+OpenVPN is an easy-to-use, robust, and highly configurable VPN (Virtual Private
+Network) daemon which can be used to securely link two or more private networks
+using an encrypted tunnel over the internet.
+EOF

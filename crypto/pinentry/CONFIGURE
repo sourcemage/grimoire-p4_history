@@ -1,0 +1,10 @@
+if  !  grep  -q  Curses  $SPELL_CONFIG
+  then
+    if  query  "Do you want to build Curses pinentry and fallback to Curses?" y
+      then
+        Curses=y
+      else
+        Curses=n
+    fi
+    echo  "Curses=$Curses"  >>  $SPELL_CONFIG
+fi

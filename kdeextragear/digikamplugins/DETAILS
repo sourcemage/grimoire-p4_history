@@ -1,0 +1,35 @@
+           SPELL=digikamplugins
+if [ "$DEVEL" == "y" ];then
+         VERSION=0.7.1-beta1
+             MD5=be9ac708899480b142733e59378a3636
+else
+         VERSION=0.7.1
+             MD5=b5bed55491007830c8b8df69005a4378
+fi
+         SPELLX=digikamimageplugins
+          SOURCE=$SPELLX-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
+       BUILD_API=2
+   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
+        WEB_SITE=http://extragear.kde.org/apps/digikamimageplugins.php
+         LICENSE=GPL
+         ENTERED=20030916
+         UPDATED=20041018
+SHORT="plugins for digikam"
+cat << EOF
+Digikam now uses a plugin architecture for additional functionality.
+Currently implemented plugins are:
+
+- Adjust curves : a tool to adjust the image colors using curves. 
+- Adjust levels : a plugin to adjust the image histogram levels manually.
+- Despeckle : A noise reduction filter (using on Gimp 2.0 algorithm).
+- Unsharp : An unsharped mask image filter (using on Gimp 2.0 algorithm).
+- Free Rotation : a plugin to rotate an image with a free angle in degrees. 
+- SolarizeImage : a plugin to solarize an image.
+- OilPaint : an oil painting effect filter (using Pieter Voloshyn algorithm).
+- Emboss : an embossed image effect filter (using Pieter Voloshyn algorithm).
+- Raindrops : adding the visual effect of raindrops to an image (using Pieter 
+Voloshyn algorithm).
+- Charcoal : a charcoal drawing image effect filter.
+- FilmGrain : simulate film grain to an image.
+EOF

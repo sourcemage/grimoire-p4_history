@@ -1,0 +1,23 @@
+           SPELL=mod_python
+if [ "$MOD_PYTHON_BRANCH" == 2 ]; then
+         VERSION=2.7.10
+          MD5[0]='f3d923d461ccb819773219c5d3dd72dc'
+else
+         VERSION=3.1.3
+          MD5[0]='4ca1a64cb02fc2da5e6e0931596da9ed'
+fi
+          SOURCE=$SPELL-$VERSION.tgz
+      LICENSE[0]=APACHE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.apache.org/dist/httpd/modpython/$SOURCE
+        WEB_SITE=http://www.modpython.org/
+         ENTERED=20021129
+         UPDATED=20030614
+           SHORT='Mod_python is an Apache module that embeds the Python interpreter within the server'
+cat << EOF
+Mod_python is an Apache module that embeds the Python interpreter within
+the server. With mod_python you can write web-based applications in Python
+that will run many times faster than traditional CGI and will have access
+to advanced features such as ability to retain database connections and
+other data between hits and access to Apache internals.
+EOF

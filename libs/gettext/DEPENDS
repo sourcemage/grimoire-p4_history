@@ -1,0 +1,16 @@
+depends  texinfo  &&
+
+optional_depends  g++                      \
+                  "--enable-libasprintf"   \
+                  "--disable-libasprintf"  \
+                  "for libasprintf"        &&
+
+optional_depends  CSHARP              \
+                  "--enable-csharp"   \
+                  "--disable-csharp"  \
+                  " for C# bindings"  &&
+
+optional_depends  tetex                                        \
+                  ""                                           \
+                  ""                                           \
+                  "to build .ps, .pdf and .dvi documentation"  

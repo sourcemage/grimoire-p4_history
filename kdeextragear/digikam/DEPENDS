@@ -1,0 +1,14 @@
+depends  libgphoto2  &&
+
+#if  [  "$DEVEL"  ==  "y"  ]
+#then
+  depends kdebase     &&
+  depends libkexif    &&
+  depends libkipi     &&
+  depends imlib2      &&
+  depends gdbm
+#else
+#  depends  kdesdk      &&
+#  depends  libexif     &&
+#  depends  imlib
+#fi

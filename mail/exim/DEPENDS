@@ -1,0 +1,98 @@
+depends  db    &&
+depends  gawk  &&
+
+message  "Exim can use either hc-cron or or fcron"  \
+         "to periodically attempt to resend undelivered mail."  &&
+
+if  spell_installed  hc-cron
+then
+  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  y
+else
+  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  n
+fi  &&
+
+if  spell_installed  fcron
+then
+  config_query  FCRON   "Attempt to resend undelivered via fcron?"  y
+else
+  config_query  FCRON   "Attempt to resend undelivered via fcron?"  n
+fi  &&
+
+# The spell only mentioned xfree86, haven't tested with others
+if  spell_installed  xfree86        ||
+    spell_installed  xfree86-4.3    ||
+    spell_installed  xfree86-devel  ||
+    spell_installed  xdirectfb      ||
+    spell_installed  xfree86-libs   ||
+    spell_installed  xorg
+then
+  config_query  XFREE86  "Use XFree86 for exim monitor?"  y
+else
+  config_query  XFREE86  "Use XFree86 for exim monitor?"  n
+fi  &&
+
+if  spell_installed  tcp_wrappers
+then
+  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" y
+else
+  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" n
+fi  &&
+
+#if  spell_installed  mysql
+#then
+#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  y
+#else
+#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  n
+#fi  &&
+message  "${MESSAGE_COLOR}MySQL support is currently broken${DEFAULT_COLOR}"  &&
+persistent_add  MYSQL  &&
+MYSQL="n"  &&
+
+if  spell_installed  linux-pam
+then
+  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  y
+else
+  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  n
+fi  &&
+
+if  spell_installed  openldap
+then
+  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  y
+else
+  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  n
+fi  &&
+
+if  [  "$HCCRON"  ==  "y"  ]
+then
+  depends  hc-cron
+fi  &&
+
+if  [  "$FCRON"  ==  "y"  ]
+then
+  depends  fcron
+fi  &&
+
+if  [  "$XFREE86"  ==  "y"  ]
+then
+  depends  X11-LIBS
+fi  &&
+
+if  [  "$TCPWRAPPERS"  ==  "y"  ]
+then
+  depends  tcp_wrappers
+fi  &&
+
+if  [  "$MYSQL"  ==  "y"  ]
+then
+  depends  mysql
+fi  &&
+
+if  [ "$LINUXPAM"  ==  "y"  ]
+then
+  depends  linux-pam
+fi  &&
+
+if  [ "$OPENLDAP"  ==  "y"  ]
+then
+  depends  openldap
+fi

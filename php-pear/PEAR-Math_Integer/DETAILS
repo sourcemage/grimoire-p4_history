@@ -1,0 +1,20 @@
+         VERSION=0.8
+          MD5[0]='b47788ce8ba0e52d5e1a460343af354b'
+         UPDATED=20030917
+           SPELL=PEAR-Math_Integer
+        WEB_SITE=http://pear.php.net/package/Math_Integer/
+      LICENSE[0]=PHP
+           SHORT='PEAR: Package to represent and manipulate integers'
+cat << EOF
+The class Math_Integer can represent integers
+bigger than the
+signed longs that are the default of PHP, if
+either the GMP or
+the BCMATH (bundled with PHP) are present.
+Otherwise it will fall
+back to the internal integer representation.
+The Math_IntegerOp class defines operations on
+Math_Integer objects.
+EOF
+
+source $SCRIPT_DIRECTORY/../PEAR_DETAILS

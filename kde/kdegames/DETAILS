@@ -1,0 +1,25 @@
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
+
+           SPELL=kdegames
+if  [  "$KDE_DEVEL"  ==  "y"  ];  then
+         VERSION=3.3.0-rc2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
+   SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
+          MD5[0]=dcc097733bc0351cf16b593a00e863ba
+else
+         VERSION=3.3.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+          MD5[0]=c73f5412b1408af126c2c7d2fe78770c
+fi
+       BUILD_API=2
+        WEB_SITE=http://www.kde.org
+         ENTERED=20010922
+         UPDATED=20040820
+      LICENSE[0]=GPL
+           SHORT="Various games like mahjongg, snake, asteroids, and tetris."
+cat << EOF
+Various games like mahjongg, snake, asteroids, and tetris.
+EOF

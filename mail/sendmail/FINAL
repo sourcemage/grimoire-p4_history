@@ -1,0 +1,9 @@
+if [ ! -e /etc/mail/local-host-names ]; then
+  hostname  -s  >   /etc/mail/local-host-names  2>/dev/null
+  hostname  -f  >   /etc/mail/local-host-names  2>/dev/null
+  hostname  -a  >>  /etc/mail/local-host-names  2>/dev/null
+fi
+
+if [ ! -e /etc/mail/relay-domains ]; then
+  hostname  -d  >  /etc/mail/relay-domains  2>/dev/null
+fi
