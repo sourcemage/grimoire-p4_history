@@ -9,19 +9,24 @@ optional_depends  pilot-link              \
                   ""                      \
                   "To have kpilot built"  &&
 
-optional_depends  gnupg                         \
-                  "--with-gpg"                  \
-                  "--without-gpg"               \
-                  "for GNUPG support in KMail"  &&
+optional_depends  gnupg                                          \
+                  "--with-gpg"                                   \
+                  "--without-gpg"                                \
+                  "for basic encryption functionality in KMail"  &&
+
+optional_depends  gnupg-exp                                         \
+                  ""                                                \
+                  ""                                                \
+                  "for enhanced encryption functionality in KMail"  &&
 
 optional_depends  gpgme                \
                   ""                   \
                   ""                   \
                   "for GPGME support in KMail"  &&
 
-optional_depends  pinentry                \
-                  ""                   \
-                  ""                   \
+optional_depends  pinentry                         \
+                  ""                               \
+                  ""                               \
                   "for PGP/MIME support in KMail"  &&
 
 optional_depends  libmal                 \
