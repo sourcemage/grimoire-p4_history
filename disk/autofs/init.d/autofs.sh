@@ -7,6 +7,11 @@
 
 # Location of the automount daemon and the init directory
 #
+# Source Mage init.d install information
+# SMGL-START:S:S80
+# SMGL-STOP:0 6:K20
+#
+
 DAEMON=/usr/sbin/automount
 
 # check if program is installed
