@@ -1,6 +1,5 @@
            SPELL=cups
-         VERSION=1.1.22
-       BUILD_API=2
+         VERSION=1.1.23
           SOURCE=$SPELL-$VERSION-source.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp3.easysw.com/pub/cups/$VERSION/$SOURCE                          ##  California, USA
@@ -8,14 +7,14 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[2]=ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/cups/$VERSION/$SOURCE  ##  Finland
    SOURCE_URL[3]=ftp://ftp.easysw.com/pub/cups/$VERSION/$SOURCE                           ##  Oregon, USA
         WEB_SITE=http://www.cups.org
-      LICENSE[0]=http://www.cups.org/faq0003.html
-          MD5[0]=97bb894ff0cfa593b7c7cddd30e45005
+          MD5[0]=76288bfac5ad00f9da7922af6fc7b9f3
          ENTERED=20010922
          UPDATED=20031009
+      LICENSE[0]=http://www.cups.org/faq0003.html
+       BUILD_API=2
          ARCHIVE="off"
-           SHORT="CUPS provides a portable printing layer."
+           SHORT="Common Unix Printing System is a portable printing layer"
 cat << EOF
-
 The Common UNIX Printing System (CUPS) provides a portable printing layer for
 UNIX(r)-based operating systems.  It has been developed to promote a standard
 printing solution for all UNIX vendors and users.  CUPS provides the System V
@@ -38,5 +37,4 @@ NOTE  the three spells cups, espgs and gimp-print represent a circular
   cast espgs        # No to gimp-print
   cast cups
   cast -r -c espgs  # Yes to gimp-print and yes to cups
-
 EOF
