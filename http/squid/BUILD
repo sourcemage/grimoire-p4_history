@@ -1,18 +1,32 @@
 (
 
-  sedit  "s:\$(localstatedir)/logs/squid\.pid:/var/run/squid\.pid:"  src/Makefile.in
+  sedit  "s:\$(localstatedir)/logs/squid\.pid:/var/run/squid\.pid:"  src/Makefile.in &&
 
-  ./configure  --prefix=/usr                     \
-               --sysconfdir=/etc/squid           \
-               --localstatedir=/var/cache/squid  \
-               --enable-async-io                 \
-               --enable-snmp                     \
- 	       --enable-removal-policies	 \
-               --enable-linux-netfilter          \
-               $OPTS                             &&
-  make                                           &&
-  prepare_install                                &&
-  make    install                                &&
+# This must be set by CONFIGURE ideally
+# See src/auth/ directory for a list of authentication protocols
+  SQUID_AUTH=basic &&
+# See helpers/*_auth/ directories for lists of authentication helpers
+  SQUID_AUTH_BASIC=getpwnam,PAM &&
+  SQUID_AUTH_DIGEST='' &&
+  SQUID_AUTH_NTLM='' &&
+
+  ./configure                                         \
+    --prefix=/usr                                     \
+    --sysconfdir=/etc/squid                           \
+    --localstatedir=/var/cache/squid                  \
+    --enable-async-io                                 \
+    --enable-snmp                                     \
+    --enable-removal-policies	                      \
+    --enable-linux-netfilter                          \
+    --enable-auth="$SQUID_AUTH"                       \
+    --enable-basic-auth-helpers="$SQUID_AUTH_BASIC"   \
+    --enable-digest-auth-helpers="$SQUID_AUTH_DIGEST" \
+    --enable-ntlm-auth-helpers="$SQUID_AUTH_NTLM"     \
+    $OPTS                                             &&
+
+  make            &&
+  prepare_install &&
+  make    install &&
 
   cp  $SCRIPT_DIRECTORY/squid.sh  /etc/init.d/   &&
   if ! [ -x /var/log/squid ]; then
