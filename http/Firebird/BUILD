@@ -36,13 +36,14 @@ export MOZ_PHOENIX=1                         &&
 # TODO: work out what it uses to decide it's installdir ?
 # I know it uses mozilla HEAD naming but what variable is that?
 
-  mkdir -p $MOZILLA_HOME                         &&
+  mkdir -p $MOZILLA_HOME                           &&
   ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZI_VERS   &&
-  mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla &&
+  mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
   ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZI_VERS &&
-  mkdir -p ${INSTALL_ROOT}/usr/include/mozilla   &&
+  mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
   ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
 
-  make install
-
+  make install                                     && 
+  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla
+  
 ) >$C_FIFO 2>&1
