@@ -1,3 +1,6 @@
+2004-09-05 Eric Sandall <eric@sandall.us>
+	* CONFIGURE,PRE_BUILD: Cleaned up INSTALL_ROOT usage
+
 2004-09-04 Eric Sandall <eric@sandall.us>
 	* BUILD,PRE_BUILD: Move graphical configs to PRE_BUILD  (Bug #7256)
 	* PRE_BUILD: Use if/fi instead of case/esac for checking CONFIG_KERNEL
@@ -282,7 +285,8 @@
 	* KERNELS: Updated latest MM to 2.6.1-mm2
 
 2004-01-14 hgg <hgreig@bigpond.net.au>
-	* PRE_BUILD: re-add a symlink to /usr/src/linux but still build from /usr/src/linux-$version
+	* PRE_BUILD: re-add a symlink to /usr/src/linux but still build from
+	  /usr/src/linux-$version
 
 2004-01-09 hgg <hgreig@bigpond.net.au>
 	* KERNELS: LATEST_2_6_mm=2.6.1-mm1, LATEST_2_6=2.6.1
@@ -292,8 +296,8 @@
 
 2004-01-08 Eric Sandall <eric@sandall.us>
 	* KERNELS: Updated latest pre 2.6 to 2.6.1-rc3
-	  Updated latest -mm to 2.6.1-rc2-mm1 (released 5 seconds after 2.6.1-rc3,
-	  which has everything from 2.6.1-rc2-mm1)
+	  Updated latest -mm to 2.6.1-rc2-mm1 (released 5 seconds after
+	  2.6.1-rc3, which has everything from 2.6.1-rc2-mm1)
 
 2004-01-07 Unet <unet@sourcemage.org>
 	* BUILD: Added ppc case for correct system.map generation
@@ -604,14 +608,15 @@
 	  PUBRINGFILE variable set.
 	* patches/ck,patches/ck_extras: ck split into ck and ck_extras.
 	* patches: Various patches were updated.
-	* patches/framebuffer: Raven framebuffer made optional and put in patches/
+	* patches/framebuffer: Raven framebuffer made optional and put in
+	  patches/
 	* If gpg is not found, it will explain steps to get around
 	  a lack of gnupg, even if no kernel headers exist.
 	* HISTORY: Made smgl-compliant.
 	* Wolfgang debugged and helped immensely.
 
 2002-12-12 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
-	* POST_INSTALL: Finally removed the last "build after linux" spells from 
+	* POST_INSTALL: Finally removed the last "build after linux" spells from
 	  the list so they are forced to use TRIGGERS
 
 2002-09-21 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
