@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr                     \
                --exec-prefix=/usr                \
-               --sysconfdir=/etc                 &&
+               --sysconfdir=/etc                 \
+	       $OPTS				 &&
   make                                           &&
   prepare_install                                &&
   make    install				 &&

@@ -1,7 +1,8 @@
 (
 
   ./configure  --with-sys-screenrc=/etc/screenrc  \
-               --prefix=/usr                      &&
+               --prefix=/usr                      \
+               $OPTS			          &&
   make                                            &&
   prepare_install                                 &&
   make    install                                 &&
