@@ -15,7 +15,8 @@
 
   if  [  !  -f  /etc/securetty  ]
   then
-    if  grep  -q  "devfs"  /etc/sysconfig/devices
+    . /etc/sysconfig/devices
+    if  [  "$DEVICES"  ==  "devfs"  ]
     then
       cp  $SCRIPT_DIRECTORY/securetty.devfs  /etc/securetty
     else
