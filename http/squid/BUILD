@@ -37,4 +37,4 @@
     touch      /var/log/squid/store.log
   fi
 
-) > $C_FIFO 2>&1 &&
+) >$C_FIFO 2>&1
