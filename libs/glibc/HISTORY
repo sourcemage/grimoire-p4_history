@@ -1,12 +1,25 @@
+2004-11-24 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Removed IFS code and set to use config_query instead of query
+	  Removed add_status() and make_locales_checklist()
+	* locales-2.3.2,locales-2.3.3: Replaced spaces in all description fields
+	  with "_"
+	  Removed TABs
+	  Added "off" flag for each entry
+	  Formatted to look nice. :)
+	* HISTORY: Formatted my prior entries to 80 columns
+
 2004-11-23 Eric Sandall <eric@sandall.us>
 	* Merging glibc-kernel-headers with glibc  (Bug #7560)
-	* Removed glibc log cleanup of headers (since it now does install the headers)
-	* I have simplified glibc-kernel-headers selection to either install the 2.6 headers
-	  if you chose NPTL, or 2.4 headers if you didn't choose NPTL, whereas the prior
-	  method allowed you to have 2.6 headers with or without NPTL.
+	* Removed glibc log cleanup of headers (since it now does install the
+	  headers)
+	* I have simplified glibc-kernel-headers selection to either install the 2.6
+	  headers if you chose NPTL, or 2.4 headers if you didn't choose NPTL,
+	  whereas the prior method allowed you to have 2.6 headers with or without
+	  NPTL.
 	* DETAILS: Added glibc-kernel-headers for 2.4 and 2.6 kernels
 	  Moved DISTCC_HOSTS and MAKE_NJOBS=1 to "global" area
-	* BUILD: Use --with-headers= to use included glibc-kernel-headers  (Bug #7560)
+	* BUILD: Use --with-headers= to use included glibc-kernel-headers
+	  (Bug #7560)
 	  Setup glibc-kernel-headers for compilation (2.4 headers need extra setup)
 	  Clean up formatting
 	* BUILD,PRE_BUILD: Moved patches from BUILD to PRE_BUILD
@@ -14,10 +27,10 @@
 	* INSTALL: Added ARCH code
 	  Cleaned up formatting
 	  Removed MAKE_NJOBS=1
-	  Renamed UTF, INPUTFILE, CHARMAP, LOCALE, and DESCRIPTION to be prefixed with
-	  GLIBC_
-	  Made GLIBC_INPUTFILE, GLIBC_CHARMAP, GLIBC_LOCALE, and GLIBC_DESCRIPTION local
-	  variables
+	  Renamed UTF, INPUTFILE, CHARMAP, LOCALE, and DESCRIPTION to be prefixed
+	  with GLIBC_
+	  Made GLIBC_INPUTFILE, GLIBC_CHARMAP, GLIBC_LOCALE, and GLIBC_DESCRIPTION
+	  local variables
 	  Install glibc-kernel-headers at the end
 	* PREPARE: Remove ldconfig protected hack (Sorcery takes care of this)
 	  Renamed UTF and NPTL to GLIBC_UTF and GLIBC_NPTL, respectively
