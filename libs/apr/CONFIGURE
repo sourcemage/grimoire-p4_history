@@ -1,4 +1,2 @@
-message 'APR and APU are used by Apache 2 spells'
-message 'Do *not* select APR 1.0 if you plan to use apache2 spell (HTTPD 2.0)'
-config_query_list APR_VERSION 'What version would you like to use?' '0.9.6' '1.0.1' '1.1.0'
-config_query APR_CVS   'Would you like to use the latest source code that may not build?'   n
+source $SECTION_DIRECTORY/FUNCTIONS &&
+default_configure_apr
