@@ -1,15 +1,16 @@
            SPELL=twin
-         VERSION=0.4.6
+         VERSION=0.5.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
         WEB_SITE=http://sourceforge.net/projects/twin/
-          MD5[0]=e2e3b24999ce577e4336030177dbbb39
-          MD5[1]=e2e3b24999ce577e4336030177dbbb39
+          MD5[0]=4f43527b8e2d46f42536f112134ff891
          ENTERED=20020924
-         UPDATED=20020924
+         UPDATED=20031012
       LICENSE[0]=GPL
+      MAKE_NJOBS=1
+    DISTCC_HOSTS=
+          CCACHE=off
            SHORT="Twin is a text-mode window environment."
 cat << EOF
 

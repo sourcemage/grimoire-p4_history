@@ -1,64 +1,51 @@
-2003-10-02  Eric Sandall <eric@sandall.us>
-		* installperl.patch: Updated for 5.8.1
+2003-10-12 hgg <hgreig@bigpond.net.au>
+	* DETAILS: turn off distcc and ccache
 
-2003-10-01  Eric Sandall <eric@sandall.us>
-		* DETAILS: Update to 5.8.1
+2003-10-02 Eric Sandall <eric@sandall.us>
+	* installperl.patch: Updated for 5.8.1
 
-2003-09-24  Lyon Lemmens  <redlemon@knoware.nl>
+2003-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 5.8.1
 
-		Added patch for installperl to get rid of aliens (Bug# 4415)
+2003-09-24 Lyon Lemmens <redlemon@knoware.nl>
+	* installperl.patch: Added patch for installperl to get rid of aliens (Bug# 4415)
 
-2003-09-13  Eric Sandall <eric@sandall.us>
+2003-09-13 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Removed CONFLICTS  (Bug #4345)
 
-		Removed CONFLICTS  (Bug #4345)
+2003-08-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Changed LICENSE to LICENSE[0]
 
-2003-08-05  Eric Sandall <eric@sandall.us>
+2003-04-07 Lyon Lemmens <redlemon@knoware.nl>
+	* BUILD: Disabled DB_File building to accomodate db version update.
+	* BUILD: DB_File is a separate spell and now has triggers on db.
 
-		Changed LICENSE to LICENSE[0]
+2002-10-17 Lyon Lemmens <redlemon@knoware.nl>
+	* CONFIGURE,BUILD: fixed BUILD and CONFIGURE
+	so that rebuilding works correctly (Bug# 1436)
 
-2003-04-07  Lyon Lemmens  <redlemon@knoware.nl>
+2002-10-17 Lyon Lemmens <redlemon@knoware.nl>
+	* BUILD: fixed so that config info is also in the compile log.
 
-		Disabled DB_File building to accomodate db version update.
-		DB_File is a separate spell and now has triggers on db.
+2002-09-01 Lyon Lemmens <redlemon@knoware.nl>
+	* BUILD: now unsets LANG (bug 674)
+	* POST_INSTALL: added to rebuild all installed spells (bug 687)
 
-2002-10-17  Lyon Lemmens  <redlemon@knoware.nl>
+2002-08-08 Eric Schabell <eric@schabell.com>
+	* DETAILS: Updated new release 5.8.0, fixes two bugs
 
-		fixed BUILD and CONFIGURE
-		so that rebuilding works correctly (Bug# 1436)
+2002-06-20 Lyon Lemmens <redlemon@knoware.nl>
+	* BUILD: added gcc3 support
 
-2002-10-17  Lyon Lemmens  <redlemon@knoware.nl>
+2002-06-18 Lyon Lemmens <redlemon@knoware.nl>
+	* DETAILS: added MD5 signature
+	added LICENSE
 
-		fixed BUILD so that config info is also in
-		the compile log.
+2002-06-02 Harley J Pig <harleypig@harleypig.com>
+	* BUILD: Altered so that custom configuration is saved between builds
 
-2002-09-01  Lyon Lemmens  <redlemon@knoware.nl>
+2002-03-22 Lyon Lemmens <redlemon@knoware.nl>
+	* DETAILS: Fixed WEB_SITE and SOURCE_URL
 
-		BUILD now unsets LANG (bug 674)
-		added POST_INSTALL to rebuild all installed spells (bug 687)
-
-2002-08-08  Eric Schabell  <eric@schabell.com>
-
-		Updated new release 5.8.0, fixes two bugs
-
-2002-06-20  Lyon Lemmens  <redlemon@knoware.nl>
-
-		added gcc3 support
-
-2002-06-18  Lyon Lemmens  <redlemon@knoware.nl>
-
-		added MD5 signature
-		added LICENSE
-
-2002-06-02  Harley J Pig  <harleypig@harleypig.com>
-
-		Altered BUILD so that custom configuration is saved between
-		builds
-
-2002-03-22  Lyon Lemmens  <redlemon@knoware.nl>
-
-		Fixed WEB_SITE and SOURCE_URL
-
-2002-03-15  Lyon Lemmens  <redlemon@knoware.nl>
-
-		New history
-		Couldn't find maintainer so I put myself up
+2002-03-15 Lyon Lemmens <redlemon@knoware.nl>
+	* HISTORY: New history
