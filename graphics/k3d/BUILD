@@ -1,4 +1,8 @@
 (
+	cd $SOURCE_DIRECTORY &&
+  ln -sf /usr/share/automake-1.6/install-sh install-sh &&
+  ln -sf /usr/share/automake-1.6/mkinstalldirs mkinstalldirs &&
+  ln -sf /usr/share/automake-1.6/missing missing &&
 
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
