@@ -4,9 +4,11 @@
 	  Set SOURCE_URL to use http://www.mythtv.org/mc/$SOURCE
 	  Removed MAINTAINER and TABs
 	  Added BUILD_API=2 and MAKE_NJOBS=1
+	* DEPENDS: Added optional dependency on OPENGL
+	* CONFIGURE: Removed
 	* BUILD: Converted to build_api 2
 	  Modify configure and settings.pro to install to INSTALL_ROOT/usr
-	  Use if/then instead of case/esac for OPENGL
+	  Remove case for OPENGL, just use OPTS
 
 2004-07-27 Bearcat M. Sandor <sorcerer@TheDragonsEdge.com>
 	* Initial version of spell
