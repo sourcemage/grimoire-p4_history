@@ -1,6 +1,6 @@
 (
 
-  make < $SCRIPT_DIRECTORY/atlas-3.4.0.config     &&
+  make < $SCRIPT_DIRECTORY/atlas-3.4.1.config     &&
   ARCH=`ls -1 Make.Linux* | sed -e 's/Make.//'`   &&
   make  install  arch=$ARCH                       &&
   SOURCE_LIB=$SOURCE_DIRECTORY/lib/$ARCH          &&
