@@ -12,7 +12,7 @@ then
     MYCONF="$MYCONF --disable-vrrp "
     message "${MESSAGE_COLOR}Not using VRRP ${DEFAULT_COLOR}"
 fi &&
-if [ "$DEBUG" == "y"  ];
+if [ "$KDEBUG" == "y"  ];
 then
     MYCONF="$MYCONF --enable-debug "
     message "${MESSAGE_COLOR}Enabling debug ${DEFAULT_COLOR}"
