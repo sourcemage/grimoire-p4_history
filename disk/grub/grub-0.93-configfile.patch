@@ -1,0 +1,75 @@
+--- grub/docs/grub.8.config	2002-09-07 22:01:14.000000000 -0400
++++ grub/docs/grub.8	2002-10-01 16:22:52.000000000 -0400
+@@ -15,7 +15,7 @@
+ specify stage2 boot_drive [default=0x0]
+ .TP
+ \fB\-\-config\-file\fR=\fIFILE\fR
+-specify stage2 config_file [default=/boot/grub/menu.lst]
++specify stage2 config_file [default=/boot/grub/grub.conf]
+ .TP
+ \fB\-\-device\-map\fR=\fIFILE\fR
+ use the device map file FILE
+--- grub/docs/grub.texi.config	2002-07-03 16:27:47.000000000 -0400
++++ grub/docs/grub.texi	2002-10-01 16:22:52.000000000 -0400
+@@ -969,7 +969,7 @@
+ keys) that will do everything to boot an OS.
+ 
+ To enable the menu, you need a configuration file,
+-@file{menu.lst} under the boot directory. We'll analyze an example
++@file{grub.conf} under the boot directory. We'll analyze an example
+ file.
+ 
+ The file first contains some general settings, the menu interface
+@@ -1576,8 +1576,8 @@
+ 
+ An absolute file name resembles a Unix absolute file name, using
+ @samp{/} for the directory separator (not @samp{\} as in DOS). One
+-example is @samp{(hd0,0)/boot/grub/menu.lst}. This means the file
+-@file{/boot/grub/menu.lst} in the first partition of the first hard
++example is @samp{(hd0,0)/boot/grub/grub.conf}. This means the file
++@file{/boot/grub/grub.conf} in the first partition of the first hard
+ disk. If you omit the device name in an absolute file name, GRUB uses
+ GRUB's @dfn{root device} implicitly. So if you set the root device to,
+ say, @samp{(hd1,0)} by the command @command{root} (@pxref{root}), then
+@@ -3213,7 +3213,7 @@
+ 
+ @item --config-file=@var{file}
+ Read the configuration file @var{file} instead of
+-@file{/boot/grub/menu.lst}. The format is the same as the normal GRUB
++@file{/boot/grub/grub.conf}. The format is the same as the normal GRUB
+ syntax. See @ref{Filesystem}, for more information.
+ 
+ @item --boot-drive=@var{drive}
+--- grub/grub/asmstub.c.config	2002-08-22 01:59:55.000000000 -0400
++++ grub/grub/asmstub.c	2002-10-01 16:22:52.000000000 -0400
+@@ -71,7 +71,7 @@
+ unsigned long boot_drive = 0;
+ int saved_entryno = 0;
+ char version_string[] = VERSION;
+-char config_file[128] = "/boot/grub/menu.lst"; /* FIXME: arbitrary */
++char config_file[128] = "/boot/grub/grub.conf"; /* FIXME: arbitrary */
+ unsigned long linux_text_len = 0;
+ char *linux_data_tmp_addr = 0;
+ char *linux_data_real_addr = 0;
+--- grub/stage2/asm.S.config	2002-07-12 05:55:55.000000000 -0400
++++ grub/stage2/asm.S	2002-10-01 16:22:52.000000000 -0400
+@@ -97,7 +97,7 @@
+ 	.string VERSION
+ VARIABLE(config_file)
+ #ifndef STAGE1_5
+-	.string "/boot/grub/menu.lst"
++	.string "/boot/grub/grub.conf"
+ #else   /* STAGE1_5 */
+ 	.long	0xffffffff
+ 	.string "/boot/grub/stage2"
+--- grub/stage2/builtins.c.config	2002-07-05 18:15:57.000000000 -0400
++++ grub/stage2/builtins.c	2002-10-01 16:22:52.000000000 -0400
+@@ -3835,7 +3835,7 @@
+ 
+   /* The prefix was determined.  */
+   grub_sprintf (stage2, "%s%s", prefix, "/stage2");
+-  grub_sprintf (config_filename, "%s%s", prefix, "/menu.lst");
++  grub_sprintf (config_filename, "%s%s", prefix, "/grub.conf");
+   *real_config_filename = 0;
+ 
+   /* Check if stage2 exists.  */

@@ -1,0 +1,72 @@
+erich@uruk.org wrote:
+
+...
+> I have the same problem, and think I know what it is.
+> 
+> I think it's the presence of APM checking code in GRUB itself (at least
+> in 0.90 and later) that's the issue.  I've only read the CVS sources
+> in any detail, but it probably applies.
+...
+> I'm going to test this out tonight.
+
+
+OK, it turns out that this was indeed the problem.
+
+I have a patch here which unconditionally performs an APM "disconnect"
+at the end of the probing process, and that resolved it on both of my
+machines I tested it on.
+
+This file is somewhat old (last change about a year ago), so my guess
+is that it's probably identical in the 0.90 version, and therefore
+RedHat's version as well.
+
+Which makes me wonder, should we fix the other changed bits in booting
+then try to release a new GRUB version, say 0.91?
+
+diff -ur grub-0.90/stage2/apm.S grub/stage2/apm.S
+--- grub-0.90/stage2/apm.S	Wed Oct 25 02:16:16 2000
++++ grub/stage2/apm.S	Fri Oct 26 22:09:33 2001
+@@ -91,12 +91,12 @@
+ 	xorw	%cx, %cx
+ 	int     $0x15
+ 	/* error -> should not happen, tidy up */
+-	jc	apm_disconnect
++	jc	done_apm_bios
+ 
+ 	/* check for "PM" signature */
+ 	cmpw	$0x504d, %bx
+ 	/* no signature -> should not happen, tidy up */
+-	jne	apm_disconnect
++	jne	done_apm_bios
+ 
+ 	/* record the APM BIOS version */
+ 	movw	%ax, ABS(EXT_C(apm_bios_info))
+@@ -104,19 +104,17 @@
+ 	movw	%cx, ABS(EXT_C(apm_bios_info)) + 12
+ 	jmp	done_apm_bios
+ 
+-apm_disconnect:
+-	/* Disconnect */
+-	movw	$0x5304, %ax
+-	xorw	%bx, %bx
+-	/* ignore return code */
+-	int     $0x15
+-	jmp	done_apm_bios
+-
+ no_32_apm_bios:
+ 	/* remove 32 bit support bit */
+ 	andw     $0xfffd, ABS(EXT_C(apm_bios_info)) + 12
+ 
+ done_apm_bios:
++ 	/* Some paranoia here: Always Disconnect from APM */
++ 	movw	$0x5304, %ax
++ 	xorw	%bx, %bx
++ 	/* ignore return code */
++ 	int     $0x15
++	
+ 	DATA32	call	EXT_C(real_to_prot)
+ 	.code32
+ 
+Only in grub/stage2: apm.S.orig
+Only in grub/stage2: apm.S.rej
+Only in grub/stage2: apm.S~

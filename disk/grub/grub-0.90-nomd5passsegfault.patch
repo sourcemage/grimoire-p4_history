@@ -1,0 +1,18 @@
+--- grub-0.90/stage2/md5.c~	Fri Oct 20 20:13:55 2000
++++ grub-0.90/stage2/md5.c	Wed Oct 24 17:54:04 2001
+@@ -214,8 +214,14 @@
+   unsigned char alt_result[16];
+   unsigned char *digest;
+ 
+-  if (check)
++  if (check) 
++    {
++    /* if our crypted password isn't 3 chars, then it can't be md5
++       crypted.  so, they don't match */
++    if (strlen(crypted) <= 3)
++      return 1;
+     saltlen = strstr (salt, "$") - salt;
++    }
+   else
+     {
+       char *end = strstr (salt, "$");
