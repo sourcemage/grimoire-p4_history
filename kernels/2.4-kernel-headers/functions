@@ -1,0 +1,22 @@
+# tell the spell were and what to use
+HEADERSOURCE=2.4.23-headers.tar.bz2  
+HEADERMD5=ac4e62691b6b9ba86b2642029d77e2f8 
+
+# a function to setup the headers 
+function prebuild_setup_headers() 
+{
+  if [[ $(grep UTS_RELEASE ${INSTALL_ROOT}/usr/include/linux/version.h | awk '{ print $3 }' | sed -e 's/"//g') == 2.6.* ]]
+  then unpack ${HEADERSOURCE} ${HEADERMD5} &&
+     for i in asm asm-generic linux 
+     do mount --bind $SOURCE_DIRECTORY/include/$i ${INSTALL_ROOT}/usr/include/$i 
+     done
+  fi 
+}
+
+# a function to restore the /usr/include dir to normal
+function postbuild_bind_unmount()
+{
+ exitcode=$?
+ umount ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux}
+ return $exitcode 
+}
