@@ -1,0 +1,17 @@
+           SPELL=hwdata
+         VERSION=0.47
+          SOURCE=$SPELL-$VERSION-1.src.rpm
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.nl.uu.net/pub/linux/redhat/linux/rawhide/SRPMS/SRPMS/$SOURCE
+         ENTERED=20020707
+         UPDATED=20020707
+      MAINTAINER="abrice2@cox.net"
+      LICENSE[0]="GPL"
+      LICENSE[1]="XCL"
+          MD5[0]="2d9cd20597873c624a052c5cc762a844"
+           SHORT="hwdata contains specifications needed for hardware detection"
+cat << EOF
+hwdata contains various hardware identification and configuration data,
+such as the pci.ids database, the XFree86 Cards and MonitorsDb databases.
+EOF

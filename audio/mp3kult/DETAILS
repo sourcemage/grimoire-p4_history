@@ -2,13 +2,12 @@
          VERSION=0.7
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://mp3kult.sourceforge.net/
          ENTERED=20020116
          UPDATED=20020514
-	LICENSE=GPL
+	MD5[0]=96503470113fb7912605346141b94e78
+	LICENSE[0]=GPL
 	MAINTAINER=burududu@hotpop.com
            SHORT="Mp3Kult organizes your mp3 collection"
 cat << EOF

@@ -1,11 +1,12 @@
            SPELL=lirc
-         VERSION=0.6.6pre2
+         VERSION=0.6.6
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://www.lirc.org/$SOURCE
+SOURCE_URL[0]=$SOURCEFORGE_URL/lirc/$SOURCE
         WEB_SITE=http://www.lirc.org
          ENTERED=20020630
          UPDATED=20020630
+          MD5[0]="045ea12fb7245e25f34a3d38f962b254"
            SHORT="Linux Infrared Remote Control"
 cat << EOF
 LIRC is a package that allows you to decode and send infra-red signals of

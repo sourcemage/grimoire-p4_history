@@ -1,0 +1,19 @@
+           SPELL=MPlayer-fonts
+         VERSION=0
+          SOURCE=mp-arial-iso-8859-1.zip
+         SOURCE2=mp-arial-iso-8859-2.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://mplayerhq.hu/MPlayer/releases/$SOURCE
+  SOURCE2_URL[0]=ftp://mplayerhq.hu/MPlayer/releases/$SOURCE2
+        WEB_SITE=http://www.mplayerhq.hu
+      MAINTAINER=v.merkatz@gmx.net
+         LICENSE[0]=GPL
+          MD5[0]=ab23f8e01a860a97852b28a3b0b118da
+          MD5[1]=a5e01dd5fe14d2418a6ee349ff7a1c4b
+         ENTERED=20020924
+         UPDATED=20020924
+         ARCHIVE="off"
+           SHORT="Fonts for MPlayer"
+cat << EOF
+These fonts are used by MPlayer if compiled without freetype2 support.
+EOF

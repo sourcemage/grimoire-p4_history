@@ -1,0 +1,26 @@
+cd  $SOURCE_DIRECTORY
+
+if  [  !  -f  /etc/mplayer/mplayer.conf  ];  then
+  sedit  "s/include =/# include =/"  etc/example.conf
+  sedit  "s/# vo=/vo=/"              etc/example.conf
+  sedit  "s/# ao=/ao=/"              etc/example.conf
+  cp  etc/example.conf               /etc/mplayer/mplayer.conf
+fi
+
+if  [  !  -f  /etc/mplayer/input.conf  ];  then
+  cp  etc/input.conf                 /etc/mplayer/input.conf
+fi
+
+if  [  "$GUI"  =  "n"  ];  then
+  if  spell_installed  MPlayer-gui;  then
+    dispel MPlayer-gui
+  fi
+fi
+
+if  [  "$FREETYPE2"  =  "y"  ];  then
+  if  spell_installed  MPlayer-fonts;  then
+    dispel MPlayer-fonts
+  fi
+  message  "Note:  To use another font than the default one for OSD/Subtitles,"
+  message  "       put any Type1 or Truetype font to ~/.mplayer/subfont.ttf."
+fi

@@ -1,3 +1,24 @@
+2002-10-06  Seth Woolley <seth@tautology.org>
+
+		Appended CFLAGS= to ./configure in BUILD to let it handle 
+		its own compile options.  
+
+2002-09-24  Arwed v. Merkatz <v.merkatz@gmx.net>
+
+		Updated to pre8.
+
+		Basically rewrote the spell with the real optional dependencies,
+		a cleaner BUILD (well, it would be really cleaner if the MPlayer
+		developers had provided a working makefile ;)
+		and a sane default config (done in POST_INSTALL).
+
+		Moved the font installation in a seperate spell MPlayer-fonts,
+		since they are only needed if MPlayer is compiled without
+		freetype2 support.
+		
+		Moved the gui skin installation in a seperate spell MPlayer-gui,
+		so it doesn't get downloaded if the user doesn't want the gui.
+
 2002-09-03  Unet <burududu@hotpop.com>
 
 		Updated to pre6. Will fix the MD5 field as soon as my 56k connection

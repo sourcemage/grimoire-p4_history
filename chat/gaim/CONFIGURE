@@ -6,3 +6,13 @@ if  !  grep  -q  "PANEL="  $SPELL_CONFIG;  then
   fi
 
 fi
+
+if  !  grep  -q  "GAIM_E="  $SPELL_CONFIG;  then
+
+  if    query  "Enable gaim-e gpg encryption for gaim?" n
+  then  echo   "GAIM_E=y"  >>  $SPELL_CONFIG
+  else  echo   "GAIM_E=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
+

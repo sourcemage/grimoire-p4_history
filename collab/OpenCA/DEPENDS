@@ -1,6 +1,9 @@
-# $Id: DEPENDS,v 1.1 2002/06/03 04:10:38 sergeyli Exp $
-depends openssl        &&
-depends perl           &&
-depends apache-mod_ssl &&
+# $Id: DEPENDS,v 1.2 2002/10/03 00:14:27 sergeyli Exp $
+requires webserver &&
 
-optional_depends "openldap" "" "" "for LDAP support"
+depends openssl &&
+depends perl &&
+
+optional_depends db '--enable-db' '--disable-db' 'for Berkeley DB support' &&
+optional_depends openldap '' '' 'for LDAP support' &&
+optional_depends sendmail '--enable-sendmail' '--disable-sendmail' 'for sendmail support'

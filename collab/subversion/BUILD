@@ -1,15 +1,15 @@
-# $Id: BUILD,v 1.7 2002/08/20 14:57:06 sergeyli Exp $
+# $Id: BUILD,v 1.8 2002/10/09 11:50:30 sergeyli Exp $
 (
+
+	SVN_CLIENT=`which svn 2>/dev/null`
 
 	message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
 	httpd -v | grep -q "Apache/2\."                                   &&
 
 	message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
-	test -f /usr/libexec/mod_dav.so                                                &&
+	[ -e /usr/libexec/mod_dav.so ]                                                  &&
 
-	CLIENT=`which svn` &&
-
-	if ! spell_installed $SPELL && [ -z "$CLIENT" ]; then
+	if [ -z "$SVN_CLIENT" ] || ! $CLIENT -version >/dev/null 2>&1; then
 		message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}" &&
 		message "${MESSAGE_COLOR}repository and check out the latest client and Apache 2 module source${DEFAULT_COLOR}" &&
 		message "${MESSAGE_COLOR}code. Then, these will be built and installed.${DEFAULT_COLOR}"                        &&
@@ -24,12 +24,12 @@
 			--enable-maintainer-mode &&
 		make                         &&
 
-		CLIENT=`pwd`/subversion/clients/cmdline/svn
-	fi
+		SVN_CLIENT=`pwd`/subversion/clients/cmdline/svn
+	fi &&
 
 #	Download HEAD revision
-	message "${MESSAGE_COLOR}Using client: $CLIENT${DEFAULT_COLOR}"
-	$CLIENT checkout http://svn.collab.net:80/repos/svn/trunk current &&
+	message "${MESSAGE_COLOR}Using client: ${SVN_CLIENT}${DEFAULT_COLOR}" &&
+	$SVN_CLIENT checkout http://svn.collab.net:80/repos/svn/trunk current &&
 
 #
 # -=* ACTUAL BUILD *=-

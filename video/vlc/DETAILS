@@ -1,20 +1,16 @@
            SPELL=vlc
-         VERSION=0.4.0
+         VERSION=0.4.2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.videolan.org/pub/videolan/$SPELL/$VERSION/$SOURCE
         WEB_SITE=http://www.videolan.org
+          MD5[0]=199928f39bc0b2a0465aba71d1f28ded
+         LICENSE[0]=GPL
          ENTERED=20011113
          UPDATED=20020526
-	MD5=009431f48f8cd0b100b398ce2b877062
-	LICENSE=GPL
-	MAINTAINER=burududu@hotpop.com
+      MAINTAINER=v.merkatz@gmx.net
 	 SHORT="vlc is the videolan client multimedia player"
 cat << EOF
-The VideoLAN Client (VLC) is an MPEG, MPEG2, VCD and DVD player for
-Unix, Windows, MacOS X, BeOS and QNX. It can play MPEG streams from a 
-file, from a network source, or directly from a VCD or DVD. There is
-video support for X11/XVideo, GGI, SDL, the Linux framebuffer device, 
-DirectX, BeOS, and QNX, audio support for OSS, Esound, ALSA, and
-GNOME, GTK+, Qt and KDE interfaces.
+The VideoLAN Client (vlc) is a multi-plateform multimedia player. It can read DVDs, VCDs, MPEG and DivX files from a file and from a satellite card under Linux, Windows, Mac OS X, BeOS, BSD, Solaris, QNX, iPaq... It can also read a stream from a network, sent by the VideoLAN Server or another source. The stream can be MPEG 2 TS in UDP or HTTP packets unicasted or multicasted on an IPv4 or IPv6 network.
+Supports X11/XVideo, SDL, Linux framebuffer, OSS, esound, arts, alsa, GNOME, GTK+, Qt, KDE.
 EOF

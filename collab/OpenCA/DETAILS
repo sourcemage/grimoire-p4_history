@@ -1,18 +1,17 @@
-# $Id: DETAILS,v 1.3 2002/09/29 21:42:47 sergeyli Exp $
+# $Id: DETAILS,v 1.4 2002/10/03 00:14:27 sergeyli Exp $
            SPELL=OpenCA
-         VERSION=0.9.0-2
+         VERSION=0.9.1-RC6
           SOURCE=openca-$VERSION.tar.gz
-      SOURCE_MD5=
+      SOURCE_MD5=637fdfe831117282b592895490f2d1f2
           MD5[0]=$SOURCE_MD5
       SOURCE_LIC=BSD
       LICENSE[0]=$SOURCE_LIC
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/openca/$SOURCE
-        WEB_SITE=http://openca.sf.net/
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/openca-${VERSION%%-*}
+   SOURCE_URL[0]=ftp://ftp.openca.org/pub/openca/developers/bell/releases/$SOURCE
+        WEB_SITE=http://www.openca.org/
          ENTERED=20020509
          UPDATED=20020509
-      MAINTAINER=sergeyli@pisem.net
-           SHORT="OpenCA is an OpenSource Certification Authority Toolkit"
+           SHORT="OpenCA is an Open Source Certification Authority Toolkit"
 cat << EOF
 The OpenCA Project is a collaborative effort to develop a robust, full-featured
 and Open Source out-of-the-box Certification Authority implementing the most

@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/10/10 03:22:10 sergeyli Exp $
 (
 
 	# kill remnants of CVS, but make sure we're in the proper directory
@@ -17,16 +17,11 @@
 	cp    -r ./             /usr/share/$SPELL/     &&
 	chown -R nobody:nogroup /usr/share/$SPELL      &&
 
-	# now we delete all files so that nothing is picked for documentation
-	# and duplicated in /usr/doc/$SPELL
-	# bugzilla refers to docs/ URI in the bug submission page anyway
-	rm    -fr *                                    &&
-
-	# still, it's good to have docs
+	# it's good to have docs
 	if [ -d /usr/doc/$SPELL ]; then
 		rm -fr /usr/doc/$SPELL/
 	fi                                             &&
-	ln -nsf /usr/share/$SPELL/docs /usr/doc/$SPELL &&
+	ln -fns /usr/share/$SPELL/docs /usr/doc/$SPELL &&
 	chmod -R 755 /usr/doc/$SPELL
     
 ) > $C_FIFO 2>&1

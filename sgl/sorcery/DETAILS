@@ -1,32 +1,28 @@
            SPELL=sorcery
-         VERSION=`date -u +%Y%m%d`
-          SOURCE=$SPELL.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=$SORCERY_URL/$SOURCE
-   SOURCE_URL[1]=http://www.smee.org/smgl/test/$SOURCE
-        WEB_SITE=http://sgl.bccs.net
+         VERSION=0.8.2
+#          SOURCE=$SPELL.tar.bz2
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
+#   SOURCE_URL[0]=http://download.sourcemage.org/sorcery/$SOURCE
+        WEB_SITE=http://www.sourcemage.org
          ENTERED=20010922
-         UPDATED=20020527
-      MAINTAINER=eric@schabell.com
-         LICENSE=GPL
-             MD5=
+         UPDATED=20021001
+      MAINTAINER=nkj@namodn.com
         NO_CACHE="--cache=off"
-        LIFESPAN="10"
             FUZZ="off"
     VIEW_REPORTS="off"
           SILENT="on"
            SOUND="off"
          ARCHIVE="off"
-           SHORT="Sorcery version 0.1.6: package management tools for Sorcerer GNU Linux."
+           SHORT="Sorcery: package management tools for SourceMage GNU Linux."
 cat << EOF
-Sorcery (v0.1.6)  -  Tools package management by source.
+Sorcery  -  Tools package management by source.
 
 sorcery includes the following files:
   /etc/sorcery/*                    configuration files.
   /usr/doc/sorcery/*                documentation, please read
   /usr/sbin/sorcery                 menu driven interface
   /usr/sbin/leach                   downloads spells' sources (depreciated)
-  /usr/sbin/summon		    replacement for leach
+  /usr/sbin/summon                  replacement for leach
   /usr/sbin/cast                    installs  spells
   /usr/sbin/vcast                   installs  spells  verbosely
   /usr/sbin/dispel                  removes   spells
@@ -36,6 +32,7 @@ sorcery includes the following files:
   /var/lib/sorcery/grimoire/*       the spell book
   /var/lib/sorcery/protected        list of files that will not be deleted
   /var/lib/sorcery/subroutines      common subroutines
+  /var/lib/sorcery/modules/*        collection of sorcery libraries
 
   and man pages.
 

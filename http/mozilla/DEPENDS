@@ -5,4 +5,26 @@ depends  zlib    &&
 depends  zip     &&
 depends  ORBit   &&
 depends  perl    &&
-optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+
+case $MOZILLA_CALENDAR in
+  Y|y|J|j)
+    depends libical '--enable-calendar'
+    ;;
+esac &&
+
+case $MOZILLA_ENIGMAIL in
+  Y|y|J|j)
+    depends gnupg
+    ;;
+esac &&
+
+case $MOZILLA_XFT2 in
+  Y|y|J|j)
+    depends freetype2   &&
+    depends fontconfig  &&
+    depends Xft2
+    ;;
+  *)
+    optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+    ;;
+esac

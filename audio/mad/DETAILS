@@ -2,13 +2,12 @@
          VERSION=0.14.2b
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://www.mars.org/home/rob/proj/mpeg/
          ENTERED=20011127
          UPDATED=20020511
-	LICENSE=GPL
+	MD5[0]=eb3bfbe634ba9d5b4928aa11e0f6819d
+	LICENSE[0]=GPL
 	MAINTAINER=burududu@hotpop.com
            SHORT="mad is a 24 bit capable .mp3 decoder"
 cat << EOF

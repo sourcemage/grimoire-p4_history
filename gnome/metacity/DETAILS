@@ -1,13 +1,16 @@
            SPELL=metacity
-         VERSION=2.4.1
+         VERSION=2.4.2
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://people.redhat.com/~hp/$SPELL/$SOURCE
+#   SOURCE_URL[0]=http://people.redhat.com/~hp/$SPELL/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="1e1370bd35d83e8328276e686c7f5655"
         WEB_SITE=http://people.redhat.com/~hp/metacity
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020509
-         UPDATED=20020520
+         UPDATED=20021005
            SHORT="Metacity is a window manager based on GTK+ 2.0"
 cat << EOF
 Metacity is a window manager based on GTK+ 2.0

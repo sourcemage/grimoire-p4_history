@@ -1,0 +1,18 @@
+	   SPELL=libical
+         VERSION=0.23
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://softwarestudio.org/download/$SOURCE
+        WEB_SITE=http://softwarestudio.org/libical/
+         ENTERED=20020927
+         UPDATED=20020927
+          MD5[0]=d8e22973fc621d7ddbc2ff36a4ae5e7f
+      LICENSE[0]=GPL
+      MAINTAINER=ashaman@flyingtemple.com
+           SHORT="(a short description of the program)"
+cat << EOF
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols. (RFC 2445, 2446, and 2447). It
+parses iCal components and provides a C API for manipulating the
+component properties, parameters, and subcomponents.
+EOF

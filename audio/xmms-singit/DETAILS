@@ -2,13 +2,12 @@
          VERSION=0.1.20
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
-        WEB_SITE=http://stud.fbi.fh-darmstast.de/~glogow
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+       WEB_SITE=http://stud.fbi.fh-darmstast.de/~glogow
          ENTERED=20020303
          UPDATED=20020424
-	LICENSE=GPL
+	MD5[0]=0c267a16810a7ee569bde2534e1d0525
+	LICENSE[0]=GPL
 	MAINTAINER=heffer@mailberlin.net
 	SHORT="This XMMS plugin displays formatted lyrics."
 cat << EOF

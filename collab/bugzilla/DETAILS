@@ -1,16 +1,16 @@
-# $Id: DETAILS,v 1.4 2002/07/29 23:53:53 sergeyli Exp $
+# $Id: DETAILS,v 1.5 2002/10/10 03:22:10 sergeyli Exp $
            SPELL=bugzilla
-         VERSION=2.16
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=2.16.1
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/webtools/$SOURCE
-      SOURCE_MD5=b657b0ec947d86ef9ea82a57d9b95d3b
+          SOURCE=$SPELL-$VERSION.tar.gz
+      SOURCE_MD5=f898719b0476ed1ec90a44afeb7c0305
              MD5=$SOURCE_MD5
          LICENSE=MPL
+   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/webtools/$SOURCE
         WEB_SITE=http://www.mozilla.org/projects/bugzilla/
          ENTERED=20020430
          UPDATED=20020430
-      MAINTAINER=sergeyli@pisem.net
+     GATHER_DOCS=off
            SHORT="Bugzilla is a web-based defect tracking system written in Perl"
 cat << EOF
 Bugzilla is one example of a class of programs called "Defect Tracking

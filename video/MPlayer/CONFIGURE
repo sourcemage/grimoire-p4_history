@@ -8,3 +8,25 @@ if  !  grep  -q  "GUI"  $SPELL_CONFIG;  then
   echo  "GUI=$GUI"  >>  $SPELL_CONFIG
 
 fi
+
+if  !  grep  -q  "JOYSTICK"  $SPELL_CONFIG;  then
+
+  if    query  "Enable Joystick support?" y
+  then  JOYSTICK=y
+  else  JOYSTICK=n
+  fi
+
+  echo  "JOYSTICK=$JOYSTICK"  >>  $SPELL_CONFIG
+
+fi
+
+if  !  grep  -q  "FREETYPE2"  $SPELL_CONFIG;  then
+
+  if    query  "Use Freetype2 for on-the-fly rendering of OSD/Subtitle fonts?" y
+  then  FREETYPE2=y
+  else  FREETYPE2=n
+  fi
+
+  echo  "FREETYPE2=$FREETYPE2"  >>  $SPELL_CONFIG
+
+fi

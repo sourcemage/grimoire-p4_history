@@ -1,16 +1,14 @@
            SPELL=mhash
-         VERSION=0.8.16
+         VERSION=0.8.17
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/mhash/$SOURCE
-          MD5[0]=9549797230f8a024daf095f1ecae9602
-   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[1]=${MD5[0]}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=28b520a25185f94e7901de98bfb42533
         WEB_SITE=http://mhash.sourceforge.net/
          ENTERED=20011123
          UPDATED=20011123
-         LICENSE=LGPL
-      MAINTAINER=adamsgl@dhbit.ca
+      LICENSE[0]=LGPL
+      MAINTAINER=hgr@vabo.cz
            SHORT="Mhash is a free library for hash algorithms"
 cat << EOF
 mhash is a thread-safe hash library implemented in C, and provides a

@@ -1,14 +1,13 @@
          SPELL=rosegarden
-         VERSION=0.1.5
+         VERSION=4-0.8
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://rosegarden.sf.net
          ENTERED=20020514
-         UPDATED=20020514
-	LICENSE=GPL
+         UPDATED=20020910
+	MD5[0]=ac9d7d5d346af41842b56e96e4673b14
+	LICENSE[0]=GPL
 	MAINTAINER=burududu@hotpop.com
            SHORT="Rosegarden is for music notation"
 cat << EOF

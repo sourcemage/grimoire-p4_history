@@ -1,0 +1,6 @@
+mk_source_dir  $SOURCE_DIRECTORY  &&
+unpack         $SOURCE            &&
+
+mv $SOURCE_DIRECTORY/Makefile $SOURCE_DIRECTORY/Makefile.old &&
+sed $SOURCE_DIRECTORY/Makefile.old -e 's\/usr/local\/usr\g' \
+  > $SOURCE_DIRECTORY/Makefile

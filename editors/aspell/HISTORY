@@ -1,41 +1,49 @@
+2002-10-09  Eric Sandall <eric@sandall.us>
+
+                Cleaned up HISTORY to match Guru's Handbook
+
 2002-09-28  Eric Sandall <eric@sandall.us>
+
 		Updated to v0.50.2 (Bug #1093), thanks to George Sherwood
 
 2002-09-22  Eric Sandall <eric@sandall.us>
+
 		Fixed Bug #1051 (I had already done this on 2002-08-26, but it didn't take, I guess).
 
 2002-08-29  Eric Sandall <eric@sandall.us>
+
 		Updated to v0.50.1
 		Added SOURCE_URL[2]=http://savannah.gnu.org/download/aspell/rel/$SOURCE
 		Now compiles with speedy (-O3)
 
 2002-08-26  Eric Sandall <eric@sandall.us>
+
 		Removed pspell from DEPENDS and added ncurses as optional_depends
 		Added pspell as CONFLICTS (now redundant)
 		All thanks to Treeve Jelbert <treeve01@pi.be>
 
-2002-08-23  08:32 PST  Eric Sandall <eric@sandall.us>
+2002-08-23  Eric Sandall <eric@sandall.us>
 
-  * Updated VERSION to 0.50, thanks to Eric Schabell
-  * Modified BUILD to change -O3 to -O2 in CFLAGS and CXXFLAGS
-  * Removed PRE_BUILD (no patch necessary)
-  * Removed SOURCE2 from DETAILS (no patch necessary)
-  * Cleaned up POST_INSTALL to only remove if the files exist
-  * Added $GNU_URL
+		Updated VERSION to 0.50, thanks to Eric Schabell
+		Modified BUILD to change -O3 to -O2 in CFLAGS and CXXFLAGS
+		Removed PRE_BUILD (no patch necessary)
+		Removed SOURCE2 from DETAILS (no patch necessary)
+		Cleaned up POST_INSTALL to only remove if the files exist
+		Added $GNU_URL
 
-2002-07-17  21:43 PST  Eric Sandall <sandalle@yahoo.com>
+2002-07-17  Eric Sandall <sandalle@yahoo.com>
 
-  * Added LICENSE
-  * Changed to use $SOURCEFORGE_URL
+		Added LICENSE
+		Changed to use $SOURCEFORGE_URL
 
-2002-06-14  13:44 PST  Eric Sandall <sandalle@yahoo.com>
+2002-06-14  Eric Sandall <sandalle@yahoo.com>
 
-  * Added MD5 entry to DETAILS
+		Added MD5 entry to DETAILS
 
-2002-05-28  00:38 PST  Eric Sandall <sandalle@yahoo.com>
+2002-05-28  Eric Sandall <sandalle@yahoo.com>
 
-  * Added BUILD and POST_INSTALL scripts to temporarily create blank /etc/aspell.conf and /root/.aspell.conf files; required for compile (don't know if required for usage)
+		Added BUILD and POST_INSTALL scripts to temporarily create blank /etc/aspell.conf and /root/.aspell.conf files; required for compile (don't know if required for usage)
 
-2002-05-04  03:32 PST  Eric Sandall <sandalle@yahoo.com>
+2002-05-04  Eric Sandall <sandalle@yahoo.com>
 
-  * Modified SOURCE_URLs to use telia.dl and unc.dl for SourceForge
+		Modified SOURCE_URLs to use telia.dl and unc.dl for SourceForge

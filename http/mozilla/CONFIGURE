@@ -1,64 +1,27 @@
-if  !  grep  -q  "MOZILLA_MAIL="  $SPELL_CONFIG;  then
-
-  if    query  "Build Mail/News client?" y
-  then  echo   "MOZILLA_MAIL=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_MAIL=n"  >>  $SPELL_CONFIG
+function configure_set_bool() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    return
   fi
 
-fi
-if  !  grep  -q  "MOZILLA_CHAT="  $SPELL_CONFIG;  then
+  local OPTION=$1
+  local PROMPT="$2"
+  local HINT=${3:-y}
 
-  if    query  "Build Chat client?" y
-  then  echo   "MOZILLA_CHAT=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_CHAT=n"  >>  $SPELL_CONFIG
+  if ! grep -q "$OPTION=" $SPELL_CONFIG; then
+    local VALUE="$OPTION=n"
+    query "$PROMPT" $HINT && VALUE="$OPTION=y"
+    echo "$VALUE" >> $SPELL_CONFIG
   fi
+}
 
-fi
-if  !  grep  -q  "MOZILLA_CRYPTO="  $SPELL_CONFIG;  then
-
-  if    query  "Enable crypto support (Personal Security Manager)?" y
-  then  echo   "MOZILLA_CRYPTO=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_CRYPTO=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-if  !  grep  -q  "MOZILLA_MATHML="  $SPELL_CONFIG;  then
-
-  if    query  "Enable MathML?" y
-  then  echo   "MOZILLA_MATHML=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_MATHML=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-if  !  grep  -q  "MOZILLA_SVG="  $SPELL_CONFIG;  then
-
-  if    query  "Enable SVG?" y
-  then  echo   "MOZILLA_SVG=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_SVG=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-if  !  grep  -q  "MOZILLA_JAVA="  $SPELL_CONFIG;  then
-
-  if    query  "Enable Blackwood Java Code (Not needed for Java Plugin support)?" y
-  then  echo   "MOZILLA_JAVA=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_JAVA=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-if  !  grep  -q  "MOZILLA_LDAP="  $SPELL_CONFIG;  then
-
-  if    query  "Enable LDAP experimental features?" y
-  then  echo   "MOZILLA_LDAP=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_LDAP=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
-if  !  grep  -q  "MOZILLA_XINERAMA="  $SPELL_CONFIG;  then
-
-  if    query  "Enable Xinerama support?" y
-  then  echo   "MOZILLA_XINERAMA=y"  >>  $SPELL_CONFIG
-  else  echo   "MOZILLA_XINERAMA=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
+configure_set_bool MOZILLA_XFT2 'Patch Mozilla to use Xft2/fontconfig (will break MathML display, but gives you very nice antialiasing)?' y
+configure_set_bool MOZILLA_MAIL 'Build Mail/News client?'
+configure_set_bool MOZILLA_CHAT 'Build Chat client?'
+configure_set_bool MOZILLA_CRYPTO 'Enable Personal Security Manager (PSM) for encryption support?'
+configure_set_bool MOZILLA_MATHML 'Enable MathML?' n
+configure_set_bool MOZILLA_SVG 'Enable SVG?'
+configure_set_bool MOZILLA_JAVA 'Enable Blackwood Java Code (not needed for Java Plugin support)?'
+configure_set_bool MOZILLA_LDAP 'Enable LDAP (experimental)?'
+configure_set_bool MOZILLA_XINERAMA 'Enable Xinerama support?'
+configure_set_bool MOZILLA_CALENDAR 'Enable Calendar Support?'
+configure_set_bool MOZILLA_ENIGMAIL 'Enable Enigmail support?'

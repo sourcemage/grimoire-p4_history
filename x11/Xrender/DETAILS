@@ -1,0 +1,15 @@
+           SPELL=Xrender
+         VERSION=2_0
+          SOURCE=fcpackage.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/fcpackage.$VERSION
+   SOURCE_URL[0]=http://fontconfig.org/release/$SOURCE
+        WEB_SITE=http://fontconfig.org/
+      MAINTAINER=v.merkatz@gmx.net
+          MD5[0]=9529a311d9f2a8325bd4418b069a0383
+      LICENSE[0]=X11
+         ENTERED=20020909
+         UPDATED=20020909
+           SHORT="an updated version of Xrender needed for Xft2"
+cat << EOF
+This is a newer version of the Xrender library provided by xfree. It is needed for Xft2 and Xft1 with fontconfig support.
+EOF

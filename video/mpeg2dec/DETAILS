@@ -1,0 +1,18 @@
+	   SPELL=mpeg2dec
+         VERSION=0.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://libmpeg2.sourceforge.net/files/$SOURCE
+        WEB_SITE=http://libmpeg2.sourceforge.net/
+         ENTERED=20021004
+         UPDATED=20021004
+	  MD5[0]=36ab39efb8cbaf783961a96ba03892d7
+      LICENSE[0]=GPL
+           SHORT="libmpeg2 is a free library for decoding mpeg-2 and mpeg-1 video streams."
+cat << EOF
+mpeg2dec is a test program for libmpeg2. It decodes mpeg-1 and mpeg-2 video streams, and also includes a demultiplexer for mpeg-1 and mpeg-2 program streams. It is purposely kept simple : it does not include features like reading files from a DVD, CSS, fullscreen output, navigation, etc... The main purpose of mpeg2dec is to have a simple test bed for libmpeg2.
+
+The libmpeg2 source code is always distributed in the mpeg2dec package, to make it easier for people to test it.
+EOF
+
+	

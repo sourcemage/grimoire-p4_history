@@ -1,7 +1,2 @@
-default_pre_build                         &&
-cd      $SOURCE_DIRECTORY                 &&
-
-if    [  "$PASCAL"  ==  "y"  ]
-then  unpack  $SOURCE2                    &&
-      mv      gpc-20020510/p  gcc
-fi
+default_pre_build  &&
+mk_source_dir  $SOURCE_DIRECTORY.bld
