@@ -1,15 +1,16 @@
            SPELL=webmin
-         VERSION=1.150
+         VERSION=1.160
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/webadmin/$SOURCE
-          MD5[0]=570c050f7eb8fc856003c43fe1aea439
+          MD5[0]=0c8b1ba31acad8798810378f819a6479
         WEB_SITE=http://www.webmin.com/
          ENTERED=20020415
          UPDATED=20030822
          ARCHIVE="off"
       LICENSE[0]=BSD
-           SHORT='A web-based server administration tool'
+       BUILD_API=2
+           SHORT="A web-based server administration tool"
 cat << EOF
 Webmin is a web-based interface for system administration for Unix. Using any
 browser that supports tables and forms (and Java for the File Manager module),
