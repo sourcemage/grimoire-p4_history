@@ -1,7 +1,7 @@
 install_drm()  {
 
   DRM_DIR="programs/Xserver/hw/xfree86/os-support/linux/drm/kernel"
-  DRM_DEST="/lib/modules/`installed_version  linux`/kernel/drivers/char/drm"
+  DRM_DEST="/lib/modules/$(uname -r)/kernel/drivers/char/drm"
   mkdir   -p                $DRM_DEST
   cp          $DRM_DIR/*.o  $DRM_DEST  2>/dev/null
   depmod  -a
