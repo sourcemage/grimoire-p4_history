@@ -50,7 +50,7 @@ chown nobody.nogroup $LOC/doc/httpd-sample-squirrelmail.conf
 
 if [ "$ORDER" == "y" ]; then
   cd $LOC
-  patch  -p0  <  ${SCRIPT_DIRECTORY}/addressbook.diff
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/addressbook.php.patch
 fi
 
 
