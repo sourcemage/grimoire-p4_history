@@ -1,0 +1,23 @@
+Fails with:
+
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/lib/arj\"" -D_UNIX -O -march=pentium3 -mmmx -mfpmath=sse -ms
+se -pipe -z combreloc -s -s gnu/stripgcc.lnk -o linux-gnu/en/rs/arj/arj ./linux-gnu/en/rs/arj/filemode.o ./linux-gnu/en/rs/
+arj/date_sig.o ./linux-gnu/en/rs/arj/fmsg_arj.o ./linux-gnu/en/rs/arj/imsg_arj.o ./linux-gnu/en/rs/arj/nmsg_arj.o ./linux-g
+nu/en/rs/arj/integr.o ./linux-gnu/en/rs/arj/file_reg.o ./linux-gnu/en/rs/arj/decode.o ./linux-gnu/en/rs/arj/encode.o ./linu
+x-gnu/en/rs/arj/arj.o ./linux-gnu/en/rs/arj/enc_gwy.o ./linux-gnu/en/rs/arj/fardata.o ./linux-gnu/en/rs/arj/arj_user.o ./li
+nux-gnu/en/rs/arj/arj_arcv.o ./linux-gnu/en/rs/arj/arj_file.o ./linux-gnu/en/rs/arj/crc32.o ./linux-gnu/en/rs/arj/misc.o ./
+linux-gnu/en/rs/arj/debug.o ./linux-gnu/en/rs/arj/arj_proc.o ./linux-gnu/en/rs/arj/environ.o ./linux-gnu/en/rs/arj/ea_mgr.o
+ ./linux-gnu/en/rs/arj/uxspec.o ./linux-gnu/en/rs/arj/ext_hdr.o ./linux-gnu/en/rs/arj/arjtypes.o ./linux-gnu/en/rs/arj/exe_
+sear.o ./linux-gnu/en/rs/arj/chk_fmsg.o ./linux-gnu/en/rs/arj/filelist.o ./linux-gnu/en/rs/arj/arjsec_h.o ./linux-gnu/en/rs
+/arj/arjsec_l.o ./linux-gnu/en/rs/arj/garble.o ./linux-gnu/en/rs/arj/scrnio.o ./linux-gnu/en/rs/arj/ansi.o ./linux-gnu/en/r
+s/arj/crc16tab.o ./linux-gnu/en/rs/arj/recovery.o ./linux-gnu/en/rs/arj/gost.o ./linux-gnu/en/rs/arj/gost40.o ./linux-gnu/e
+n/rs/arj/gost_t.o ./linux-gnu/en/rs/arj/externs.o  -ldl
+./linux-gnu/en/rs/arj/arj_arcv.o(.text+0x4401): In function `unpack_file':
+: undefined reference to `decode'
+./linux-gnu/en/rs/arj/arj_arcv.o(.text+0x4414): In function `unpack_file':
+: undefined reference to `decode_f'
+./linux-gnu/en/rs/arj/arj_proc.o(.text+0x43f4): In function `unpack_mem':
+: undefined reference to `decode'
+./linux-gnu/en/rs/arj/arj_proc.o(.text+0x440b): In function `unpack_mem':
+: undefined reference to `decode_f'
+collect2: ld returned 1 exit status
