@@ -5,6 +5,7 @@
 
   make             &&
   prepare_install  &&
-  install  -m 500  -o root  -g root  noip2  /usr/sbin/
+  install  -m 500  -o root  -g root  noip2  /usr/sbin/  &&
+  track_manual  /etc/NO-IP*
 
 ) > $C_FIFO 2>&1

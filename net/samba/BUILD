@@ -2,8 +2,17 @@
 
   OPTS="$OPTS --with-smbmount --with-fhs"
 
+  if  [  $WITH_LIBSMBCLIENT = "y"  ]  ;  then
+    OPTS="$OPTS --with-libsmbclient"
+  fi  &&
+
   pushd  source                                 &&
   default_build                                 &&
+  if  [  $WITH_LIBSMBCLIENT = "y"  ]  ;  then
+    install  -m 755  bin/libsmbclient.so  /usr/lib  &&
+    install  -m 644  bin/libsmbclient.a  /usr/lib   &&
+    install  -m 644  include/libsmbclient.h  /usr/include
+  fi                                            &&
   popd                                          &&
 
   mkdir  -p  /usr/share/samba/codepages         &&
