@@ -1,5 +1,5 @@
 depends  libgnomeui  &&
-optional_depends  "lirc"  ""  "for remote control"  &&
+optional_depends  "lirc"  ""  ""  "for remote control"  &&
 if    [  "$GSTREAMER"  =  "y"  ]
 then  depends  gst-plugins  "--enable-gstreamer"
 else  depends  xine-lib
