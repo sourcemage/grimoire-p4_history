@@ -1,1 +1,4 @@
-optional_depends  "xmms"  ""  ""  "to install the XMMS OSD plugin"
+if  [  "$XMMS_XOSD"  ==  "y"  ];  then
+  depends  gdk-pixbuf  &&
+  depends  xmms
+fi
