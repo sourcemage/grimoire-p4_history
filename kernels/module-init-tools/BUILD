@@ -9,4 +9,10 @@
   fi                                              &&
 
   patch -p1 < $SPELL_DIRECTORY/mk.diff            &&
-  default_build
+#  default_build
+    ./configure  --build=$BUILD                   \
+                 --prefix=${INSTALL_ROOT}/        \
+                 --mandir=${INSTALL_ROOT}/usr/share/man \
+                 $OPTS                            &&
+    make
+
