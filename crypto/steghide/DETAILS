@@ -1,11 +1,12 @@
            SPELL=steghide
          VERSION=0.4.6b
           SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=buildwithgcc3.patch
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://steghide.sourceforge.net/download/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]=9947d9b03205734a4956ff3f76db2163
-   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[1]=${MD5[0]}
+  SOURCE2_URL[0]=http://steghide.sourceforge.net/download/$SOURCE2
+          MD5[1]=11111111111111111111111111111111
         WEB_SITE=http://steghide.sourceforge.net
       MAINTAINER=hgr@vabo.cz
          ENTERED=20020209
