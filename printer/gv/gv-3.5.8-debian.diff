@@ -762,7 +762,7 @@
  #define DSCcomment(a)   ((a)[0] == '%' && (a)[1] == '%')
  
  /* list of standard paper sizes from Adobe's PPD. */
-@@ -417,10 +442,15 @@
+@@ -417,6 +417,7 @@
        struct document *retval = NULL;
        FILE *tmpfile = (FILE*)NULL;
        char *filename_unc;
@@ -770,6 +770,10 @@
        char cmd[512];
        char s[512];
        filename_unc=file_getTmpFilename(NULL,filename_raw);
+@@ -430,7 +431,11 @@
+ 	  ENDMESSAGE(psscan)
+ 	  return(NULL);
+ 	}
 -      sprintf(cmd,cmd_uncompress,filename,filename_unc);
 +      quoted_filename = quote_filename(filename);
 +      quoted_filename_unc = quote_filename(filename_unc);
@@ -788,7 +792,7 @@
        /*###jp###*/
        /*doc->epsf = iscomment(text, "EPSF-");*/
        doc->epsf = iscomment(text, "EPSF");
-@@ -488,10 +518,35 @@
+@@ -498,6 +498,9 @@
        struct document *retval = NULL;
        FILE *tmpfile = (FILE*)NULL;
        char *filename_dsc;
@@ -797,29 +801,32 @@
 +      char *dscpos;
        char cmd[512];
        char s[512];
--      filename_dsc=file_getTmpFilename(NULL,filename_raw);
+       filename_dsc=file_getTmpFilename(NULL,filename_raw);
+@@ -511,7 +514,29 @@
+ 	  ENDMESSAGE(psscan)
+ 	  return(NULL);
+ 	}
 -      sprintf(cmd,cmd_scan_pdf,filename,filename_dsc);
-+      filename_dsc=file_getTmpFilename(NULL,filename_raw);      
 +      quoted_filename = quote_filename(filename);
 +      quoted_filename_dsc = quote_filename(filename_dsc);
 +      if ((pdfpos = strstr(cmd_scan_pdf,"%pdf")) &&
-+	  (dscpos = strstr(cmd_scan_pdf,"%dsc"))) {
-+	cmd[0] = '\0';
-+	if (pdfpos < dscpos) {
-+	  strncat(cmd,cmd_scan_pdf,(pdfpos-cmd_scan_pdf));
-+	  strcat(cmd,quoted_filename);
-+	  strncat(cmd,pdfpos+4,(dscpos-pdfpos-4));
-+	  strcat(cmd,quoted_filename_dsc);
-+	  strcat(cmd,dscpos+4);
-+	} else {
-+	  strncat(cmd,cmd_scan_pdf,(dscpos-cmd_scan_pdf));
-+	  strcat(cmd,quoted_filename_dsc);
-+	  strncat(cmd,dscpos+4,(pdfpos-dscpos-4));
-+	  strcat(cmd,quoted_filename);
-+	  strcat(cmd,pdfpos+4);
-+	}
++         (dscpos = strstr(cmd_scan_pdf,"%dsc"))) {
++       cmd[0] = '\0';
++       if (pdfpos < dscpos) {
++         strncat(cmd,cmd_scan_pdf,(pdfpos-cmd_scan_pdf));
++         strcat(cmd,quoted_filename);
++         strncat(cmd,pdfpos+4,(dscpos-pdfpos-4));
++         strcat(cmd,quoted_filename_dsc);
++         strcat(cmd,dscpos+4);
++       } else {
++         strncat(cmd,cmd_scan_pdf,(dscpos-cmd_scan_pdf));
++         strcat(cmd,quoted_filename_dsc);
++         strncat(cmd,dscpos+4,(pdfpos-dscpos-4));
++         strcat(cmd,quoted_filename);
++         strcat(cmd,pdfpos+4);
++       }
 +      } else {
-+	sprintf(cmd,cmd_scan_pdf,quoted_filename,quoted_filename_dsc);
++       sprintf(cmd,cmd_scan_pdf,quoted_filename,quoted_filename_dsc);
 +      }
 +      GV_XtFree(quoted_filename);
 +      GV_XtFree(quoted_filename_dsc);
