@@ -10,6 +10,6 @@ fi
 cp  $XF86CONFIG  ${XF86CONFIG}.old
 
 # The following line of code comes with _many_ thanks to Dufflebunk, slightly modified
-grep -q "type1" $XF86CONFIG || awk '/Module/{ print $0; print "\tLoad \t\"type1\""; } !/Module/{print $0;}' $XF86CONFIG  >  ${XF86CONFIG}.new
+grep -q "type1" $XF86CONFIG || awk '/Section\ \"Module\"/{ print $0; print "\tLoad \t\"type1\""; } !/Module/{print $0;}' $XF86CONFIG  >  ${XF86CONFIG}.new
 
 cp  ${XF86CONFIG}.new  $XF86CONFIG
