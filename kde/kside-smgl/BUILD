@@ -1,12 +1,1 @@
-( 
-
-  cp  -fv  ${INSTALL_ROOT}/usr/share/apps/kicker/pics/kside.png          \
-    ${INSTALL_ROOT}/usr/share/apps/kicker/pics/kside-dist.png            &&
-
-  cp  -fv  $SOURCE_DIRECTORY/kside-smgl-3.0.png            \
-    ${INSTALL_ROOT}/usr/share/apps/kicker/pics/                          &&
-    
-  cp  -fv  ${INSTALL_ROOT}/usr/share/apps/kicker/pics/kside-smgl-3.0.png  \
-    ${INSTALL_ROOT}/usr/share/apps/kicker/pics/kside.png
-
-) > $C_FIFO 2>&1
+true
