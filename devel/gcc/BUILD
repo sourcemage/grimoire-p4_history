@@ -22,6 +22,8 @@
   ln    -sf gcc /usr/bin/cc             &&
   ln    -sf  ../../../../bin/cpp  \
              /usr/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
-  ln    -sf  ../usr/bin/cpp  /lib/cpp
+  ln    -sf  ../usr/bin/cpp  /lib/cpp              &&
+#stupid link needed by stupid apps expecting RedHat compat. libs
+  ln -sf /usr/lib/libstdc++.so /usr/lib/libstdc++-libc6.2-2.so.3 
 
 ) > $C_FIFO 2>&1
