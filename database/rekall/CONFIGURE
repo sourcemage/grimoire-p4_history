@@ -1,0 +1,13 @@
+if  !  grep  -q  "CONFIGURED"    ${SPELL_CONFIG}
+then
+
+  if    query  "enable Xbase (DB4) support?"  y
+  then  echo   'OPTS="${OPTS}  --enable-xbase"'   >>  ${SPELL_CONFIG}
+        depends  xbase
+        depends  xbsql
+  else  echo   'OPTS="${OPTS}  --disable-xbase"'  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+fi
+
