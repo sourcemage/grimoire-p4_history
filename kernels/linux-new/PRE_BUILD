@@ -6,7 +6,8 @@ linux_new_uncompress()
 	elif [ "`file $1 | grep bzip`" != "" ]
 	then
 		bunzip2 $1
-	elif [ "`file $1 | grep diff`" != "" ]
+	elif [ "`file $1 | grep diff`" != "" ] || 
+	     [ "`file $1 | grep ASCII`" != "" ]
 	then
 		message "${MESSAGE_COLOR}$1 doesn't need uncompressing${DEFAULT_COLOR}"
 	else
