@@ -3,17 +3,17 @@ source $DEPENDS_CONFIG/apr.p
 
            SPELL=apr-util
 case "$APR_VERSION" in
-	0.9.6)
+	0.9*)
          VERSION=0.9.6
           MD5[0]=b000af2465752d54c93c6c74cd7775fb 
        REPOS_URI=branches/0.9.x
         ;;
-	1.0.1)
+	1.0*)
 	 VERSION=1.0.1
 	  MD5[0]=fea9cee32c6ed30c9528fcc31d5eb15f 
        REPOS_URI=branches/1.0.x
 	;;
-	1.1.0)
+	1.1*)
          VERSION=1.1.0
           MD5[0]='2f2224a89a8f1959215c63bc820ff011'
        REPOS_URI=trunk
