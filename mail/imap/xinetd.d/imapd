@@ -6,7 +6,7 @@ service imap
 	user			= root
 	#user			= nobody
 	server			= /usr/sbin/imapd
-	server_args		= 
+	#server_args		= 
 	per_source		= 4
 	log_type		= FILE /var/log/xinetd/imapd
 	log_on_success		= PID HOST USERID EXIT DURATION
