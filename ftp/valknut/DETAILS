@@ -1,14 +1,15 @@
-           SPELL=dcgui
-         VERSION=0.2.22
-          SOURCE=$SPELL-qt-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-qt-$VERSION
-   SOURCE_URL[0]=http://download.berlios.de/dcgui/$SOURCE
+           SPELL=valknut
+         VERSION=0.3.3
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.berlios.de/valknut/$SOURCE
         WEB_SITE=http://dcgui.berlios.de
          ENTERED=20020522
          UPDATED=20030217
       LICENSE[0]=GPL
-          MD5[0]=077112b88491784cd4e3494ac67450bf
-           SHORT='direct connect 4 linux - GUI'
+	   BUILD_API=2
+          MD5[0]=edcf1a434d7c1700b7737655de91b65b
+           SHORT='Direct Connect Filesharing Client for Linux.'
 cat << EOF
 Direct Connect offers a community-oriented, open, user-controlled 
 network. Direct Connect's network architecture is built on a 
@@ -17,5 +18,4 @@ network. Users are able to share any type of file. These files
 are easily viewed through a familiar organized windows-explorer 
 interface. To conveniently access the plethora of files, advanced 
 searching capabilities and filters are provided.
-dcgui * the graphical interface
 EOF
