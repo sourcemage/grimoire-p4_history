@@ -2,7 +2,7 @@
 	PHP_EXT=`php-config --extension-dir`       &&
 
 	phpize                                     &&
-	./configure --enable-xdebug                &&
+	./configure --enable-xdebug $OPTS          &&
 	make                                       &&
 
 	prepare_install                            &&

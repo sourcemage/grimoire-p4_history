@@ -4,7 +4,8 @@
   cd     buildit
 
   ../configure  --host=$BUILD  \
-                --prefix=/usr  &&
+                --prefix=/usr  \
+ 		$OPTS	       &&
   make                         &&
   message  "${MESSAGE_COLOR}Preparing to install"    \
            "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"  &&

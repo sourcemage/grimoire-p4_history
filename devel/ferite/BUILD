@@ -1,7 +1,7 @@
 (
 
   unset  LDFLAGS
-  ./configure                       &&
+  ./configure $OPTS                 &&
   make  INSTALLDIR=/usr/bin         \
         INCLUDEDIR=/usr/include     \
         MANDIR=/usr/share/man/man1  &&

@@ -6,7 +6,8 @@
                --host=$BUILD            \
                --prefix=/usr            \
                --enable-threads=posix   \
-               $LANG                    &&
+               $LANG                    \
+	       $OPTS			&&
 
   make  bootstrap                       &&
   prepare_install                       && 

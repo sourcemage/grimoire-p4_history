@@ -1,6 +1,6 @@
 (
     cd src/unix      &&
-    ./configure --prefix=/usr &&
+    ./configure --prefix=/usr $OPTS &&
     cd ..            &&
     make clean       &&
     make             &&

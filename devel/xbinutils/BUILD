@@ -20,7 +20,8 @@
       --host=$BUILD                     \
       --prefix=/usr                     \
       --program-prefix=$PROGRAM_PREFIX  \
-      --target=$TARGET                  &&
+      --target=$TARGET                  \
+      $OPTS				&&
 
     make  tooldir=$TOOLDIR              &&
     cd ..                               

@@ -2,7 +2,7 @@
 
   export  LIBQTMT="-lqt-mt"
   ./configure  --with-kde-version=3  \
-               --prefix=/usr         &&
+               --prefix=/usr  $OPTS  &&
   make                               &&
   make  install
 
