@@ -3,8 +3,6 @@ export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 export    CFLAGS="${CFLAGS/-DPIC -fPIC/}"
 export  CXXFLAGS="${CFLAGS/-DPIC -fPIC/}"
 
-patch  -p0  <  $SCRIPT_DIRECTORY/ffmpeg.patch   &&
-patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
 sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
 sedit  's:-Werror::'  libavformat/Makefile  &&
 ./configure  --prefix=${INSTALL_ROOT}/usr  \
