@@ -1,10 +1,22 @@
+2004-02-24 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 4.6.1;
+	* BUILD: remove GCC 3 patch, compiles fine without it with 3.3.3.
+
+2003-11-09 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: add so STLport headers get refreshed after a gcc update
+	  ( some headers have gcc version hardcoded into them)
+
+2003-10-13 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 4.2-1009 beta, autosense beta/current version
+	  in SOURCE_URL.
+
 2003-07-07 Eric Sandall <eric@sandall.us>
-	* Moved CCACHE, DISTCC_HOSTS, and MAKE_NJOBS from PRE_BUILD
+	* DETAILS,PRE_BUILD:Moved CCACHE, DISTCC_HOSTS, and MAKE_NJOBS from PRE_BUILD
 	  to DETAILS and removed PRE_BUILD
-	* Added Jose's changes to HISTORY
+	* HISTORY: Added Jose's changes to HISTORY
 
 2003-07-06 Jose Bernardo B R Silva <josebernardo1@yahoo.com>
-	* STLport won't cast with multiple make jobs, so I added a
+	* PRE_BUILD: STLport won't cast with multiple make jobs, so I added a
 	  PRE_BUILD file with MAKE_NJOBS=1
 
 2003-02-12 Julian v. Bock <julian@wongr.net>
@@ -13,13 +25,13 @@
 	  manually.
 
 2002-11-27 Jose Bernardo B R Silva <josebernardo1@yahoo.com>
-	* Added another patch to be able to compile OO
+	* patch: Added another patch to be able to compile OO
 
 2002-10-26 Eric Sandall <eric@sandall.us>
-	* Added patch for STLport to compile with gcc 3.2.x with a patch
+	* patch: Added patch for STLport to compile with gcc 3.2.x with a patch
 	  from http://tushar.lfsforum.org/files/OpenOfficeFromScratch/
-	* Added use of our CFLAGS for optimizations
-	* Modified BUILD to have STLports headers included _before_
+	* BUILD: Added use of our CFLAGS for optimizations
+	  Modified BUILD to have STLports headers included _before_
 	  gcc's
 
 2002-10-09 Julian v. Bock <julian@wongr.net>

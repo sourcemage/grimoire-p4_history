@@ -1,17 +1,22 @@
            SPELL=STLport
-         VERSION=4.5.3
+         VERSION=4.6.1
+            BETA=$([ ${VERSION//-/} != $VERSION ] && echo 1)
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.stlport.org/archive/$SOURCE
-          MD5[0]=e1825bbb5d8896ad4e80f6cbd6cc9a7c
+   SOURCE_URL[0]=http://www.stlport.org/archive/${BETA:+../beta/}$SOURCE
+          MD5[0]='4564f949ef64c6434876a96c7481bd6e'
       LICENSE[0]=http://www.stlport.org/doc/license.html
-        WEB_SITE=http://www.stlport.org
+        WEB_SITE=http://www.stlport.org/
          ENTERED=20020302
          UPDATED=20021127
-           SHORT="stlport is a full ANSI C++ standard library"
+           SHORT='STLport is a full ANSI C++ standard library'
           CCACHE=off
     DISTCC_HOSTS=
       MAKE_NJOBS=1
 cat << EOF
-STLport is a full ANSI C++ Standard library.
+STLport is a multiplatform ANSI C++ Standard Library implementation.
+It is free, open-source product, featuring the following:
+* Advanced techniques and optimizations for maximum efficiency;
+* Exception safety and thread safety;
+* Important extensions - hash tables, singly-linked list, rope.
 EOF
