@@ -29,10 +29,10 @@ REAL_PATCHES="" &&
 # Because the exact order matters.
 for PATCH in `grep -v '^#' "${PATCH_DIRECTORY}/PATCH_ORDER"`
 do
-  if [ -x "${PATCH_DIRECTORY}/${PATCH}/DETAILS" ]; then
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/PATCH_DETAILS" ]; then
     PATCH_BRANCHES=""
     PATCH_NEEDS=""
-    . "${PATCH_DIRECTORY}/${PATCH}/DETAILS" &&
+    . "${PATCH_DIRECTORY}/${PATCH}/PATCH_DETAILS" &&
     if ! list_find "${PATCH_BRANCHES}" "${BRANCH}"; then
       continue
     fi &&
@@ -78,8 +78,8 @@ config_query_option MUTT_OPTS "Enable IMAP support?"                 \
                               "--disable-imap"                       &&
 
 for PATCH in ${REAL_PATCHES}; do
-  if [ -x "${PATCH_DIRECTORY}/${PATCH}/CONFIGURE" ]; then
-    . "${PATCH_DIRECTORY}/${PATCH}/CONFIGURE"
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/PATCH_CONFIGURE" ]; then
+    . "${PATCH_DIRECTORY}/${PATCH}/PATCH_CONFIGURE"
   fi
 done
 

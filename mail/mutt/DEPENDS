@@ -84,8 +84,8 @@ if [ ! -z "${REAL_PATCHES}" ] || [ "${BRANCH}" == "cvs" ]; then
 fi &&
 
 for PATCH in ${REAL_PATCHES}; do
-  if [ -x "${PATCH_DIRECTORY}/${PATCH}/DEPENDS" ]; then
-    . "${PATCH_DIRECTORY}/${PATCH}/DEPENDS"
+  if [ -x "${PATCH_DIRECTORY}/${PATCH}/PATCH_DEPENDS" ]; then
+    . "${PATCH_DIRECTORY}/${PATCH}/PATCH_DEPENDS"
   fi
 done
 
