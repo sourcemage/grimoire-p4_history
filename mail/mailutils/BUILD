@@ -1,7 +1,7 @@
 if [ "$PAM" == "y"  ]; 
 then
     MYCONF="--enable-pam "                                           &&
-    message "${MESSAGE_COLOR}Using Linux-PAM${DEFAULT_COLOR}"
+    message "${MESSAGE_COLOR}Using linux-pam${DEFAULT_COLOR}"
 fi                                                                       &&
 if [ "$VDOM" == "y"  ];
 then
