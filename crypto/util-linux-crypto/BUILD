@@ -1,3 +1,8 @@
+if [ "SELINUX" == "y" ]; then
+  sedit  "s/HAVE_SELINUX=no/HAVE_SELINUX=yes/"   MCONFIG &&
+  message "${MESSAGE_COLOR} SELINUX is  enabled ${DEFAULT_COLOR}"
+fi
+
 sedit  "s/HAVE_SLN=no/HAVE_SLN=yes/"   MCONFIG
 sedit  "s/\$(OPT)//"                   MCONFIG
 (
