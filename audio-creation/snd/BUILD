@@ -1,18 +1,10 @@
-(
-
-./configure --prefix=$INSTALL_ROOT/usr \
-	    --with-static-xm \
-	    $OPTS	&&
-
-make && 
-make install &&
-
-mkdir /usr/share/snd 
-cp -Rv dlp/ /usr/share/snd/. &&
-cp *.scm /usr/share/snd/.  &&
-
-echo "You should get the .snd from 
-http://www.notam02.no/arkiv/src/snd/snd_conffile.scm
-and put it as your ~/.snd (and customize it if you wish :)"
-
-) > $C_FIFO 2>&1
+echo  OPTS = $OPTS  &&
+echo  MIDI_OPTS = $MIDI_OPTS  &&
+echo  HOBBIT_OPTS = $HOBBIT_OPTS  &&
+             #--with-static-xm            \
+./configure  --prefix=$INSTALL_ROOT/usr  \
+             $MIDI_OPTS                  \
+             $HOBBIT_OPTS                \
+             $GUI_OPTS                   \
+             $OPTS                       &&
+make
