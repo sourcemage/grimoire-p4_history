@@ -19,5 +19,4 @@ if ! [ -z ${AC_ADAPTER} ]; then
   sedit "s/\/AC\//\/${AC_ADAPTER}\//g" ${SOURCE_DIRECTORY}/src/files.h
 fi                                                              &&
 
-cp ${SOURCE_DIRECTORY}/src/files.h /root/
 default_build
