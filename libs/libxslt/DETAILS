@@ -1,16 +1,16 @@
            SPELL=libxslt
-         VERSION=1.1.8
+         VERSION=1.1.9
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://xmlsoft.org/sources/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/${VERSION%\.*}/$SOURCE
-          MD5[0]='9a0d18a398c4676a41ce418dc95f5af3'
+          MD5[0]='c214d630e123c8384043a1208ed2746b'
       LICENSE[0]=BSD
       MAKE_NJOBS=1
+       BUILD_API=2
         WEB_SITE=http://xmlsoft.org
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20011010
-         UPDATED=20040418
+         UPDATED=20040822
            SHORT="libxslt is an XSLT processing library"
 cat << EOF
 Libxslt is a C library for GNOME which allows developers to work with XSLT. It
