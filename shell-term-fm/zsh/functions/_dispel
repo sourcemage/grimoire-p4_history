@@ -28,21 +28,20 @@ _downgrade () {
 
     # Complete version number of the target. 
     elif (( CURRENT == 4 )); then
-	. /etc/sorcery/config
+        INSTALL_CACHE=$(
+            eval $( sed '/SUBROUTINES/d' /etc/sorcery/config )
+            echo $INSTALL_CACHE
+        )
         local SPELL="${words[3]}"
-	compadd -P '' $( /bin/ls ${INSTALL_CACHE}/${SPELL}*.tar.bz2 \
-	    |sed 's+.*/++' \
-	    |sed -e s/${SPELL}-// \
-	    |sed -e s/-${BUILD}.tar.bz2// )
+        compadd -P '' $( /bin/ls ${INSTALL_CACHE}/${SPELL}*.tar.bz2 | \
+            sed -e 's!.*/!!' -e "s/${SPELL}-//" \
+                -e 's/-[^-]*-[^-]*-[^-]*-.*//' - )
+	unset INSTALL_CACHE
 
     # "downgrade" dosen't need 3rd (or more) argument.
     else
-	false
+        false
     fi
 }
 
 _dispel "$@"
-
-
-
-
