@@ -1,2 +1,6 @@
 depends  MPLAYER  &&
-depends  kdelibs
+depends  kdelibs  &&
+optional_depends "kdemultimedia" "" "" "for Arts Control integration"  &&
+optional_depends "koffice" "" "--disable-koffice-plugin" "for koffice integration"  &&
+optional_depends "LIBAVCODEC" "" "" "for recording using ffmpeg"  &&
+optional_depends "xine-lib" "" "" "for xine backend"
