@@ -1,16 +1,16 @@
            SPELL=razor-agents
-         VERSION=2.36
+         VERSION=2.61
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/razor/$SOURCE
-          MD5[0]="55b832fb30b12e595e7e2c20b79048a2"
+          MD5[0]=ba53662b23484eb45fd0130d6c8640d4
         WEB_SITE=http://razor.sf.net/
          ENTERED=20020313
          UPDATED=20031119
       LICENSE[0]=ART
-           SHORT="Vipul's Razor is a distributed, collaborative, spam detection and filtering network."
+       BUILD_API=2
+           SHORT="Spam detection and filtering network"
 cat << EOF
-
 Vipul's Razor is a distributed, collaborative, spam detection and filtering
 network.  Razor establishes a distributed and constantly updating catalogue of
 spam in propagation. This catalogue is used by clients to filter out known
@@ -23,5 +23,4 @@ Prior to manual processing or transport-level reception, Razor Filtering Agents
 filter out or deny transport in case of a signature match. Catalogued spam,
 once identified and reported by a Reporting Agent, can be blocked out by the
 rest of the Filtering Agents on the network.
-
 EOF
