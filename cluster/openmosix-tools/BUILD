@@ -16,7 +16,4 @@
   if [ -e /etc/init.d/openmosix ]
   then rm -f /etc/init.d/openmosix
   fi
-
-  
-    
 ) > $C_FIFO 2>&1

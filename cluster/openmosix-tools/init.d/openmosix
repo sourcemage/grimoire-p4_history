@@ -1,13 +1,8 @@
-#!/bin/sh -
-#
-# Init file for openMosix
-#
-# config: /etc/openmosix.map
-# config: /etc/openmosix/openmosix.config
-#
+#!/bin/sh
+
 PROGRAM=/usr/bin/true
 RUNLEVEL=3
-NEEDS="+network "
+NEEDS="+remote_fs +network +portmap"
 
 . /etc/init.d/smgl_init
 
@@ -15,6 +10,10 @@ if ! [ -d /var/lock/subsys ]
 then mkdir -p /var/lock/subsys/
 fi
 
+# Init file for openMosix
+#
+# config: /etc/openmosix.map
+# config: /etc/openmosix/openmosix.config
 # Define some variables pointing to openMosix's necessary executables
 # which should be found in the userland-tools
 SETPE="/usr/sbin/setpe"

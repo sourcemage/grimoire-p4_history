@@ -4,7 +4,7 @@ if  !  grep  -q  "NODES="  $SPELL_CONFIG;  then
 ${QUERY_COLOR}Please enter a space-seperated list of participating nodes${DEFAULT_COLOR}"
   read  -e
   NODES=${REPLY:="127.0.0.1"}
-  echo   "NODES='$NODES'"  >  $SPELL_CONFIG
+  echo   "NODES='$NODES'"  >>  $SPELL_CONFIG
 
 fi
 
