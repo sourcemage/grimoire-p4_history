@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 # 
 # Source Mage init.d install information
 # SMGL-script-version=20030606
@@ -16,55 +16,43 @@
 # Version:	@(#)skeleton  1.9.1  08-Apr-2002  miquels@cistron.nl
 #
 
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/bin/cpufreqd
-NAME=cpufreqd
+PROGRAM=/usr/sbin/cpufreqd
 DESC="CPU Frequency daemon"
 RUNLEVEL=3
 
-source /etc/init.d/functions
+. /etc/init.d/smgl_init
 
-test -x $DAEMON || exit 0
+required_executable $PROGRAM
 
-set -e
-
-case "$1" in
-  start)
+start()
+{
 	echo "Starting $DESC: $NAME"
-        loadproc $DAEMON
+        $PROGRAM
 	evaluate_retval
-	;;
-  stop)
+	
+}
+stop()
+{
 	echo "Stopping $DESC: $NAME "
-	killproc $DAEMON
+	killall $NAME
 	evaluate_retval
-	;;
-  reload|force-reload)
-	echo "Reloading $DESC configuration..."
-	reloadproc $DAEMON
-	evaluate_retval
-  ;;
-  status)
+}
+status()
+{
 	statusproc $DAEMON
-  ;;
-  restart)
+}
+restart()
+{
 	#
 	#	If the "reload" option is implemented, move the "force-reload"
 	#	option to the "reload" entry above. If not, "force-reload" is
 	#	just the same as "restart".
 	#
 	echo "Restarting $DESC: $NAME"
-	killproc $DAEMON
+	killproc $PROGRAM
 	sleep 1
-        loadproc $DAEMON
+        loadproc $PROGRAM
 	evaluate_retval
-	;;
-  *)
-	N=/etc/init.d/$NAME
-	# echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
-	echo "Usage: $N {start|stop|status|restart|force-reload}" >&2
-	exit 1
-	;;
-esac
+}
 
-exit 0
+
