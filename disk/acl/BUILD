@@ -12,6 +12,6 @@
 
   # Why doesn't 'make install' copy this library to where it belongs?
 
-  cp      libacl/.libs/libacl.so.1.0.4  /usr/lib
+  cp      libacl/.libs/libacl*  /usr/lib
 
 )  >  ${C_FIFO}  2>&1
