@@ -1,13 +1,4 @@
 mk_source_dir  $SOURCE_DIRECTORY  &&
->>>> ORIGINAL PRE_BUILD#3
-unpack         $SOURCE            &&
-unpack         $SOURCE2           &&
-unpack         $SOURCE3
-==== THEIRS PRE_BUILD#4
-unpack         $SOURCE  ${MD5[0]} &&
-unpack         $SOURCE2 ${MD5[1]} &&
-unpack         $SOURCE3 ${MD5[2]}
-==== YOURS PRE_BUILD
 unpack         $SOURCE  ${MD5[0]} &&
 unpack         $SOURCE2 ${MD5[1]} &&
 unpack         $SOURCE3 ${MD5[2]} &&
@@ -15,4 +6,3 @@ unpack         $SOURCE4 ${MD5[3]} &&
 unpack         $SOURCE5 ${MD5[4]} &&
 unpack         $SOURCE6 ${MD5[5]} &&
 unpack         $SOURCE7 ${MD5[6]}
-<<<<
