@@ -13,7 +13,8 @@
 	  Moved patching from BUILD to PRE_BUILD
 	  Cleaned up formatting
 	  FIREFOX_SVG uses config_query answer
-	  Don't export MOZ_INTERNAL_LIBART_LGPL, MOZ_PHOENIX, CFLAGS, or CXXFLAGS
+	  Export MOZ_INTERNAL_LIBART_LGPL, MOZ_PHOENIX, CFLAGS, or CXXFLAGS (fails
+	  if we don't export)
 	* PRE_BUILD: Cleaned up formatting
 	  Made FIREFOX_TARBALL local
 	  FIREFOX_CVS uses config_query answer
