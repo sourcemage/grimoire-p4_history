@@ -1,19 +1,6 @@
-if  grep  -q  "CERTIFICATE="  $SPELL_CONFIG
-then  CERTIFICATE="n"
-else  CERTIFICATE="y"
-fi
-
-
-if    query  "Generate self signed certificate?" $CERTIFICATE
-then  CERTIFICATE="y"
-else  CERTIFICATE="n"
-fi
+config_query  CERTIFICATE  "Generate self signed certificate?"  n
 
 message  "${MESSAGE_COLOR}If you choose to encrypt the"  \
          "server key with a pass phrase you will be"     \
          "prompted for that pass phrase every time"      \
          "the server is started.${DEFAULT_COLOR}"
-  
-TEMP=`grep  -v  "CERTIFICATE="        $SPELL_CONFIG`
-echo  "$TEMP"                     >   $SPELL_CONFIG
-echo  "CERTIFICATE=$CERTIFICATE"  >>  $SPELL_CONFIG
