@@ -66,9 +66,10 @@ handle_needs()
 
   _SUB_NEEDED=1
   for service in $NEEDS ; do
-    facility=$( expr $service : "+\(.*\)" )
-
-    [ "$facility" ] && service=$( eval builtin echo "\$$facility" )
+    if [ ${service:0:1} == "+" ] ; then
+      facility=${service:1}
+      service=$( eval builtin echo "\$$facility" )
+    fi
 
     if [ -z "$service" ] ; then
       print_error "Provider for facility $facility not configured."
