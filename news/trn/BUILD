@@ -1,6 +1,6 @@
 (
 
-  ./Configure  -Dprefix=/usr -d  $OPTS  &&
+  ./Configure  -D prefix=/usr -D orgname=$ORG -e -d -s  $OPTS  &&
   make                           	&&
   prepare_install                 	&&
   make    install                 	&&
