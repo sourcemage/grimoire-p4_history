@@ -1,3 +1,19 @@
+2003-11-26 Treeve Jelbert <treeve01@pi.be>
+        * BUILD: enable config patch, to improve compiler optimisation
+	now do my own install, it's much shorter
+	use configured options
+	* DETAILS: specify DOCS
+	* patches/ac* : add
+	* scripts/*: remove
+	* install.sh.cp: remove
+	* CONFIGURE init.d/firebird xinetd/firebird: add
+
+	It appears that the xinetd script does not get installed when 
+	building a classic server. install it manually and restart xinetd
+
+2003-11-24 Treeve Jelbert <treeve01@pi.be>
+	* post*, pre*: remove obsolete files
+
 2003-11-23 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version = cvs
 	* BUILD: use a modified version of the latest binary 

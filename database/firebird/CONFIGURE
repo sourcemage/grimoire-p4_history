@@ -1,0 +1,42 @@
+
+chk_cfg()
+{
+  echo checking config for $1 $2
+  REMIND="'remember to choose the $2 option'"
+  echo REMIND=${REMIND}    >>  ${SPELL_CONFIG}
+#  echo $REMIND
+  return `grep  -q  $1  ${SPELL_CONFIG}`
+
+#  if !  grep  -q  $1  ${SPELL_CONFIG}
+#  then
+#    return 1
+#  fi
+#  return 0
+}
+
+if  !  grep  -q  "INST"   ${SPELL_CONFIG}
+then
+  cat <<EOF
+Classic server is recommended when first trying Firebird
+Super Server should be better for production use
+EOF
+
+
+  if    query  "Build a Super Server?"  y
+  then  echo   'OPTS="${OPTS}  --enable-superserver"' \
+	  >>  ${SPELL_CONFIG}
+  	echo   'INST="super"'  >>  ${SPELL_CONFIG}
+	chk_cfg INITDSCRIPTS init.d | exit
+  else  echo   'INST="classic"'  >>  ${SPELL_CONFIG}
+	chk_cfg XINETD xinetd | cat <<EOF
+you should install the xinetd/firebird script manually
+and restart xinetd after installation
+EOF
+  fi
+
+#  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+fi
+. ${SPELL_CONFIG}
+echo $REMIND
+
+
