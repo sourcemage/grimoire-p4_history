@@ -1,14 +1,14 @@
-           SPELL=Y
+           SPELL=y
          VERSION=0.2
-#          SOURCE=Y-${VERSION}.tar.gz
-#SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-#   SOURCE_URL[0]=http://www.y-windows.org/releases/${SOURCE}
-#          MD5[0]=ea33e420a8f2e88b5dc14b53446ddc42
+          SOURCE=Y-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/Y-${VERSION}
+   SOURCE_URL[0]=http://www.y-windows.org/releases/${SOURCE}
+          MD5[0]=ea33e420a8f2e88b5dc14b53446ddc42
         WEB_SITE=http://www.y-windows.org/
          ENTERED=20040219
-         UPDATED=20040621
-      LICENSE[0]=LGPL
-      LICENSE[1]=GPL
+         UPDATED=20040219
+      LICENSE[0]="LGPL GPL"
+       BUILD_API=2
            SHORT="Successor to the X-Windowing System"
 cat << EOF
 I've got tired with the state of desktop GNU/Linux. Most of the problems that I see with it can be traced back to the underlying window system, X. So I decided to write its successor...
