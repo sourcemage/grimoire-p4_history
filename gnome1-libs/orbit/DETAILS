@@ -1,20 +1,20 @@
-           SPELL=ORBit
+           SPELL=orbit
          VERSION=0.5.17
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="994014cd201304008286558afa4fe673"
-      LICENSE[0]=GPL
-      MAINTAINER=jon-sven@frisurf.no
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=ORBit-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ORBit-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/ORBit/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/ORBit/$BRANCH/$SOURCE
+          MD5[0]=994014cd201304008286558afa4fe673
         WEB_SITE=http://orbit-resource.sourceforge.net
          ENTERED=20010922
          UPDATED=20021103
+      LICENSE[0]=GPL
+       BUILD_API=2
     DISTCC_HOSTS=
       MAKE_NJOBS=1
           CCACHE=off
-           SHORT="ORBit is a COBRA 2.2-compliant Object Request Broker."
+           SHORT="COBRA 2.2-compliant Object Request Broker."
 cat << EOF
 ORBit is a CORBA 2.2-compliant Object Request Broker (ORB) featuring
 mature C and Perl bindings. Bindings (in various degrees of
@@ -29,5 +29,4 @@ HP-UX, ...), and Windows. ORBit is developed and released as open source
 software under GPL/LGPL.
 * Note also includes libIDL and will overwrite a pre-existing
 installation of libIDL
-
 EOF

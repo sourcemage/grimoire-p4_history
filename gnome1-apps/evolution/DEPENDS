@@ -1,6 +1,6 @@
 depends  perl         &&
 depends  gnome-libs   &&
-depends  ORBit        &&
+depends  orbit        &&
 depends  bonobo       &&
 depends  bonobo-conf  &&
 depends  oaf          &&
@@ -13,14 +13,17 @@ depends  gal          &&
 depends  soup         &&
 depends  scrollkeeper &&
 
-optional_depends  "gnupg"    ""  ""  "for encrypted mail support"  &&
+optional_depends  gnupg                         \
+                  ""                            \
+                  ""                            \
+                  "for encrypted mail support"  &&
 
-optional_depends  "openssl"               \
+optional_depends  openssl                 \
                   "--enable-openssl=yes"  \
                   "--enable-openssl=no"   \
                   "for OpenSSL support"   &&
 
-optional_depends  "mozilla"                                        \
+optional_depends  mozilla                                          \
                   "--with-nspr-includes=/usr/include/mozilla/nspr  \
                    --with-nspr-libs=/usr/lib/mozilla               \
                    --with-nss-includes=/usr/include/moznss         \
@@ -28,7 +31,8 @@ optional_depends  "mozilla"                                        \
                   ""                                               \
                   "for SSL support"                                &&
 
-optional_depends  "gnome-pilot-conduits"  \
-                  "--enable-pilot-conduits=yes  --with-pisock --enable-pilotlinktest"  \
-                  ""  \
+optional_depends  gnome-pilot-conduits                    \
+                  "--enable-pilot-conduits=yes            \
+                   --with-pisock --enable-pilotlinktest"  \
+                  ""                                      \
                   "for palm pilot support"
