@@ -1,6 +1,6 @@
 if query "Backup $SPELL config ?" y
 then
- CUR_DATE=`date +%s`
+ CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
  cp /etc/openwebmail.conf /etc/openwebmail-backup-$CUR_DATE.conf 1>/dev/null 2>&1
 fi
 
