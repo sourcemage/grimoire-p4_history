@@ -1,6 +1,0 @@
-default_pre_build  &&
-
-cd $SOURCE_DIRECTORY  &&
-
-sedit 's/\/usr\/local/\/usr/g' Makefile.inc &&  # Install to /usr
-sedit 's/ setup / /' programs/Makefile          # Don't install init scripts.

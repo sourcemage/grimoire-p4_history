@@ -1,2 +1,0 @@
-./configure  $OPTS -d	&&
-make

@@ -1,9 +1,0 @@
-if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
-  if query 'Enable Java support (e.g. to allow to compile OpenOffice)?' n; then
-    echo 'OPTS="$OPTS --enable-java"' >> $SPELL_CONFIG
-  fi
-  if query 'Enable tests?' n; then
-    echo 'OPTS="$OPTS --enable-test"' >> $SPELL_CONFIG
-  fi
-  echo 'CONFIGURED=y' >> $SPELL_CONFIG
-fi

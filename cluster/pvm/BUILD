@@ -1,2 +1,0 @@
-make  clean  F77=g77  PVM_ROOT=$SOURCE_DIRECTORY  &&
-make         F77=g77  PVM_ROOT=$SOURCE_DIRECTORY

@@ -1,1 +1,0 @@
-. $SCRIPT_DIRECTORY/../horde/BUILD

@@ -1,1 +1,0 @@
-make CFLAGS="$CFLAGS -Iinclude"

@@ -1,5 +1,0 @@
-default_pre_build &&
-cd $SOURCE_DIRECTORY &&
-
-patch -p1 < $SCRIPT_DIRECTORY/connmon.patch
-spell_installed "gtk+" || sedit 's/all-gconnmon$//' src/Makefile

@@ -1,6 +1,0 @@
-default_pre_build  &&
-
-if  grep  UTS_RELEASE  /usr/include/linux/version.h  |  grep  -q  \"2.6;  then
-  cd  $SOURCE_DIRECTORY                                &&
-  patch  -p1  <  $SCRIPT_DIRECTORY/eventparse.c.patch
-fi

@@ -1,2 +1,0 @@
-cp  $SCRIPT_DIRECTORY/Makefile  $SOURCE_DIRECTORY  &&
-make

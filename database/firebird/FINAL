@@ -1,5 +1,0 @@
-# remove some files from the install logs, as the will be constantly modified in normal use 
-for  FF  in  $INSTALL_LOGS/firebird*;  do
-  sed -i "/firebird\.log/D;/isc_lock1/D;/security\.fdb/D" $FF  
-done  ||  true
-

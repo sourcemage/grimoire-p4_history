@@ -1,6 +1,0 @@
-
-  default_pre_build  &&
-  cd $SOURCE_DIRECTORY && 
-  sedit "s/\/bin\/csh/\/usr\/bin\/csh/" configure  &&
-  sedit "s/\/bin\/csh/\/usr\/bin\/csh/" makedeps  &&
-  cat $SCRIPT_DIRECTORY/answers | ./configure 

@@ -1,6 +1,0 @@
-depends  nautilus-cd-burner &&
-optional_depends  "lirc"  ""  ""  "for remote control"  &&
-if    [  "$GSTREAMER"  =  "y"  ]
-then  depends  gst-plugins "--enable-gstreamer"
-else  depends  xine-lib
-fi

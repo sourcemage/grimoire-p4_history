@@ -1,9 +1,0 @@
-#!/bin/bash
-
-PIDFILE=/var/run/ntpd.pid
-PROGRAM=/usr/bin/ntpd
-ARGS="-p $PIDFILE -u ntp:ntp -i /var/chroot/ntp"
-RUNLEVEL=3
-NEEDS="+network +remote_fs"
-
-. /etc/init.d/smgl_init
