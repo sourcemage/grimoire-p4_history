@@ -2,7 +2,10 @@
 patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
 # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
-sedit  's/-fomit-frame-pointer//'  configure       &&
+# with gcc 3.4 -fomit-frame-pointer works and is needed to compile
+if gcc -dumpversion | grep -q ^3.3; then
+  sedit  's/-fomit-frame-pointer//'  configure
+fi &&
 
 patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
