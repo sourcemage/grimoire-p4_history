@@ -14,7 +14,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=zach@firstwavedesign.com
            SHORT="Ksorcery - a KDE frontend for sorcery"
 cat << EOF
+
 Ksorcery is a KDE frontend for sorcery.  It allows you
 to browse your spells' DETAILS and also you can cast,
 dispel, or summon spells.
+
+Note: sometimes it will not work until you run the command "kbuildsycoca", this 
+		fixes something that it needs within the kde framework.
+
 EOF
