@@ -68,9 +68,9 @@ fi                                                                              
 if [ -f $SOURCE_CACHE/Python-2.3.2.tgz ]; then
 rm -f python/download/Python-2.2.2.tgz                                                                             &&
 cp $SOURCE_CACHE/Python-2.3.2.tgz python/download/                                                                 &&
+cp $SCRIPT_DIRECTORY/Python-2.3.2.patch python/                                                                    &&
 sedit "s/PYMINOR=2/PYMINOR=3/" python/pyversion.mk                                                                 &&
 sedit "s/2.2/2.3/g" python/prj/d.lst                                                                               &&
-sedit "s/PATCH_FILE_NAME/\#PATCH_FILE_NAME/" python/makefile.mk                                                    &&
 export POOPY=$SOURCE_DIRECTORY                                                                                     &&
 sedit "s:..\/python\-inst:$POOPY\/python\/unxlngi4.pro\/misc\/build\/python\-inst:" python/makefile.mk
 sedit "s/libpython,UNXSUFFIX,.2.2.2/libpython,UNXSUFFIX,.2.3.2/" scp/source/python/python.scp                      &&
