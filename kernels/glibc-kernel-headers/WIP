@@ -1,0 +1,8 @@
+util-linux fails with:
+cytune.c:58:86: linux/tqueue.h: No such file or directory
+In file included from cytune.c:61:
+/usr/include/linux/cyclades.h:524: error: variable or field `__iomem' declared void
+/usr/include/linux/cyclades.h:524: error: parse error before '*' token
+/usr/include/linux/cyclades.h:525: error: parse error before '*' token
+/usr/include/linux/cyclades.h:534: error: parse error before '}' token
+make[2]: Leaving directory `/usr/src/util-linux-2.12d/sys-utils'
