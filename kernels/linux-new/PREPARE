@@ -12,6 +12,14 @@ latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
 # debug log duh ;)
 debug="${SCRIPT_DIRECTORY}/debug.log"
 
+# Source info for patch
+source_patch()
+{	
+	local tmp=$(find $patchesdir/*/$1)
+	. $tmp
+	[ -f `dirname $tmp`/.info ] && . `dirname $tmp`/.info
+}
+
 # Create the default KERNEL_ARCH variable
 arch_default()
 {
@@ -444,7 +452,7 @@ patch_list()
 		tmp="LATEST_$patch"
 		if [ "${!tmp}" != "" ]
 		then
-			. $patchesdir/$patch/${!tmp}
+			source_patch ${!tmp}
 			for applied in $appliedkernels
 			do
 				if [ $applied == $argv1 ]
@@ -459,7 +467,7 @@ patch_list()
 		found="false"
 		for patchver in $patchvers
 		do
-			. $patchesdir/$patch/$patchver
+			source_patch $patchver
 			for applied in $appliedkernels
 			do
 				if [ $argv1 == $applied ]
@@ -492,7 +500,7 @@ list_specific_patch_dir()
 	patchvers="`ls -1r $patchesdir/$2`"
 	for patchver in $patchvers
 	do
-		. $patchesdir/$2/$patchver
+		source_patch $patchver
 		for applied in $appliedkernels
 		do
 			if [ $argv1 == $applied ]
@@ -610,11 +618,11 @@ calculate_depends()
 		do
 			case "${patch}" in
 				LATEST*)
-					. ${patchesdir}/*/${!patch}
+					source_patch ${!patch}
 					patch=${!patch}
 				;;
 				*)
-					. ${patchesdir}/*/${patch}
+					source_patch ${patch}
 				;;
 			esac
 			if [ "$post_patch" != "" ]
@@ -643,10 +651,10 @@ rec_dep_make()
 	depends=""
 	case "$1" in
 		LATEST*)
-			. ${patchesdir}/*/${!1}
+			source_patch ${!1}
 			;;
 		*)
-			. ${patchesdir}/*/${1}
+			source_patch ${1}
 			;;
 	esac
 	if [[ "${depends}" == "" ]] 
@@ -680,11 +688,11 @@ create_details()
 			do
 				case "$patch" in
 					LATEST*)
-						. $patchesdir/*/${!patch}
+						source_patch ${!patch}
 						echo "PATCH[${counter}]=\$${patch}"
 						;;
 					*)
-						. $patchesdir/*/${patch}
+						source_patch ${patch}
 						echo "PATCH[${counter}]=${patch}"
 						;;
 				esac
