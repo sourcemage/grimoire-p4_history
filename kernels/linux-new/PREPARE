@@ -84,7 +84,7 @@ dialog="dialog --stdout --cancel-label Save_and_Exit"
 # simply list ${BUILD_DIRECTORY} linux sources 
 list_usr_src()
 {
-        linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux-*`"
+        linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux*`"
         for linuxsrc in $linuxsrcs
         do
                 if [ -d $linuxsrc ] && [ -f $linuxsrc/.spell-config.p ]
