@@ -14,12 +14,12 @@ then
 
 #ask the use for the nice dri drivers
    if [[ $X11_ATI_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for radeon(7000-7500" y "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon(8500-9200" y "r200" ""
-   config_query_option DRI_DRIVER "Support for rage(128)" y "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" y "radeon" ""
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" y "r200" ""
+   config_query_option DRI_DRIVER "Support for rage\(128\)" y "r128" ""
    fi
    if [[ $X11_MGA_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for Matrox(G200,G400,G450,G550)" y "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" y "mga" ""
    fi
    if [[ $X11_I810_DRIVER ]] ; then
    config_query_option DRI_DRIVER "Support for Intel 830" y "i830" ""
@@ -42,9 +42,9 @@ then
    config_query_option X11_ATI_DRIVER_PPC "Do you want support for ATI cards" y "ati" ""
 
    if [[ $X11_ATI_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for radeon(7000-7500" y "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon(8500-9200" y "r200" ""
-   config_query_option DRI_DRIVER "Support for rage(128)" y "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" y "radeon" ""
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" y "r200" ""
+   config_query_option DRI_DRIVER "Support for rage\(128\)" y "r128" ""
    fi
 
 else if [ "find ${ARCH_SPECS} -type f -name ${ARCHITECTURE} | awk -F/ '{print$6;}'" == "amd64" ]
@@ -63,12 +63,12 @@ then
 #ask the use for the nice dri drivers
 
    if [[ $X11_ATI_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for radeon(7000-7500" y "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon(8500-9200" y "r200" ""
-   config_query_option DRI_DRIVER "Support for rage(128)" y "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" y "radeon" ""
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" y "r200" ""
+   config_query_option DRI_DRIVER "Support for rage\(128\)" y "r128" ""
    fi
    if [[ $X11_MGA_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for Matrox(G200,G400,G450,G550)" y "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" y "mga" ""
    fi
 
    if [[ $X11_I810_DRIVER ]] ; then
@@ -96,12 +96,12 @@ else
 #ask the use for the nice dri drivers
 
    if [[ $X11_ATI_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for radeon(7000-7500" y "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon(8500-9200" y "r200" ""
-   config_query_option DRI_DRIVER "Support for rage(128)" y "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" y "radeon" ""
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" y "r200" ""
+   config_query_option DRI_DRIVER "Support for rage\(128\)" y "r128" ""
    fi
    if [[ $X11_MGA_DRIVER ]] ; then
-   config_query_option DRI_DRIVER "Support for Matrox(G200,G400,G450,G550)" y "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" y "mga" ""
    fi
    if [[ $X11_TDFX_DRIVER ]] ; then
    config_query_option DRI_DRIVER "Support for 3DfX" y "tdfx" ""
