@@ -1,12 +1,6 @@
 (
 
-#  if  spell_installed  ppp;  then
-#    sedit  "s:/etc/resolv.conf:/etc/ppp/resolv.conf:"  \
-#           src/dns_internal.c
-#  fi
-
- sedit  "s:\$(localstatedir)/logs/squid\.pid:/var/run/squid\.pid:"  \
-         src/Makefile.in
+  sedit  "s:\$(localstatedir)/logs/squid\.pid:/var/run/squid\.pid:"  src/Makefile.in
 
   ./configure  --prefix=/usr                     \
                --sysconfdir=/etc/squid           \
@@ -20,13 +14,15 @@
   prepare_install                                &&
   make    install                                &&
 
-  cp  $SCRIPT_DIRECTORY/squid.sh  /etc/init.d    &&
+  cp  $SCRIPT_DIRECTORY/squid.sh  /etc/init.d/   &&
   if ! [ -x /var/log/squid ]; then
     mkdir  -p  /var/log/squid                    &&
     touch      /var/log/squid/access.log         &&
     touch      /var/log/squid/cache.log          &&
     touch      /var/log/squid/store.log
-  fi                                             &&
+  fi
+
+) > $C_FIFO 2>&1 && (
 
   case  $SQUID_BOOT  in
     y|Y|j|J)  ln  -sf  ../init.d/squid.sh  /etc/rc0.d/K25squid
@@ -44,4 +40,4 @@
 
   chown  -R  nobody.nogroup  /var/cache/squid
 
-) > $C_FIFO 2>&1
+)
