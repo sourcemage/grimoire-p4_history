@@ -1,0 +1,5 @@
+default_pre_build &&
+
+cd $SOURCE_DIRECTORY &&
+sedit 's|define PORT 8000|define PORT 8080|g'       havp/default.h &&
+sedit 's|/tmp/virus/havp-XXXXXX|/tmp/havp-XXXXXX|g' havp/default.h
