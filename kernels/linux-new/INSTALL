@@ -1,8 +1,10 @@
+cd ${LINUX_SOURCE_DIRECTORY}
+
 case "$VERSION" in
 	2.6*)
 		echo "installing for a 2.6 kernel"
 		make modules_install &&
-		make install
+		INSTALL_PATH="/boot/" make install
 		;;
 	2.4*)
 		echo "installing for a 2.4 kernel"

@@ -2,7 +2,7 @@ if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $SOURCE_DIRECTORY 
 fi
-cd $SOURCE_DIRECTORY &&
+cd ${SOURCE_DIRECTORY} &&
 echo "This is the linux source: $SOURCE" &&
 if [[ "$mode" == "newktree" ]]
 then
@@ -27,12 +27,31 @@ then
 		counter="`expr $counter + 1`"
 		tmppatch="PATCH[${counter}]"
 	done
+
+	if [[ $patchversion == "" ]]
+	then
+		append=$VERSION
+	else
+		append=$patchversion
+	fi
+	[ -d ${BUILD_DIRECTORY}/linux-$append ] && 
+	rm -r ${BUILD_DIRECTORY}/linux-$append
+	mkdir ${BUILD_DIRECTORY}/linux-$append
+	mv ./* ${BUILD_DIRECTORY}/linux-$append/ 
+	LINUX_SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-$append
+	export LINUX_SOURCE_DIRECTORY
+elif [[ "$mode" == "oldktree" ]]
+then
+	LINUX_SOURCE_DIRECTORY=$old_src_tree
+	export LINUX_SOURCE_DIRECTORY
+else
+	echo "I don't know what $mode is"
+	exit 1
 fi
-
-mv ./* ../ &&
-cd ../
-
+cd ${LINUX_SOURCE_DIRECTORY}
 if [[ "$mode" == "newktree" || $RECONFIGURE ]]
 then
+	cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
 	make $MAKEMODE
+	cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
 fi
