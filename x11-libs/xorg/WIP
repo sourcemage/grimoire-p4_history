@@ -1,11 +1,7 @@
 This is a try at getting xorg and nvidia_driver to work fine with each other
 without any conflicting files.
 
-Not having /usr/include/GL might break other spells, needs testing.
+Not having libGL in /usr/lib can break other spells though:
 
 Spells broken by this so far:
 dosbox
-xine-lib
-gst-plugins
-wxGTK
-vlc
