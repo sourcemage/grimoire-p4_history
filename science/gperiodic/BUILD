@@ -1,12 +1,6 @@
 (
-
-  ./configure  --prefix=${INSTALL_ROOT}/usr                    \
-               --sysconfdir=${INSTALL_ROOT}/etc                \
-               --localstatedir=${INSTALL_ROOT}/var             \
-               --datadir=${INSTALL_ROOT}/usr                   \
-               $OPTS                            &&
-
-  sedit "s:prefix = /usr/local:prefix = ${INSTALL_ROOT}/usr:" po/Makefile              &&
+sedit "s/CFLAGS=/CFLAGS=$CFLAGS /g" Makefile     &&
+sedit "s/\/usr\/local\/bin/\/usr\/bin/g" Makefile &&
 
   make                                          &&
   prepare_install                               &&

@@ -2,4 +2,8 @@ depends  gtk+      &&
 depends  gtk+extra &&
 depends  Python    &&
 depends  numpy     &&
-depends  termcap
+depends  termcap   &&
+if spell_installed gnome-libs
+then depends gnome-print
+else optional_depends gnome-print 
+fi 
