@@ -15,3 +15,23 @@ case  $CRON  in
       ;;
 esac
 
+
+# look for a backup file
+backup_file=`ls -t -1 -r /etc/$SPELL-backup* | tail -n 1`
+
+if [ "$backup_file" != "" ]; then
+  message "${MESSAGE_COLOR} "
+  message "Found $backup_file as your latest postfix configuration backup..."
+  message "You should restore backup settings if you went throught a sorcery rebuild."
+  message "If this is a simple cast, or sorcery update, don't use it."
+  message " ${DEFAULT_COLOR}"
+
+  if query "Skip restoring backup settings ?" y
+  then
+    message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file lather yourself)"
+    message " ${DEFAULT_COLOR}"
+  else
+    tar -C / -xyvPf $backup_file
+  fi
+fi
+
