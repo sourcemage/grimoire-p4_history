@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DESCRIPTION="Toshiba ACPI extras"
+SHORT="Toshiba laptops specific ACPI"
+HELP="Provides ACPI access to LCD brightness, video out switching, fan control and function keys. ***REQUIRES*** the ACPI patch"
+VERSIONS="0.13-linux_2.5.26
+0.13-linux_2.4.19-acpi_20020821
+0.13-linux_2.4.18"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=toshiba_acpi_${!PATCH}.patch
+SOURCE${COUNTER}_URL=http://memebeam.org/free-software/toshiba_acpi/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi
