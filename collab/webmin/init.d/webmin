@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# SMGL-script-version=20030224
+# SMGL-START:2 3 4 5:S99
+# SMGL-STOP:0 1 2 6:K08
+
+source /etc/init.d/functions
+
+case "$1" in
+'start')
+	/etc/webmin/start #>/dev/null 2>&1 </dev/null
+	evaluate_retval
+	;;
+'stop')
+	/etc/webmin/stop
+	evaluate_retval
+	;;
+'status')
+	pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
+	if [ -s $pidfile ]; then
+		pid=`cat $pidfile`
+		kill -0 $pid >/dev/null 2>&1
+		if [ "$?" = "0" ]; then
+			echo "webmin (pid $pid) is running"
+			evaluate_retval
+		else
+			echo "webmin is stopped"
+			evaluate_retval
+		fi
+	else
+		echo "webmin is stopped"
+		evaluate_retval
+	fi
+	;;
+'restart')
+	/etc/webmin/stop && /etc/webmin/start
+	evaluate_retval
+	;;
+*)
+	echo "Usage: $0 { start | stop }"
+	exit 1
+	;;
+esac
