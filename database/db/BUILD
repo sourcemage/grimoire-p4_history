@@ -1,11 +1,12 @@
-(
   patch -p1 < $SCRIPT_DIRECTORY/javafix.diff &&
   sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/share/doc/db|' dist/Makefile.in &&
 
-  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
-  patch -p0 < $SOURCE_CACHE/$SOURCE3 &&
+#  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
+#  patch -p0 < $SOURCE_CACHE/$SOURCE3 &&
 
-  if echo "$OPTS" | grep -q 'enable-java'; then
+#  if echo "$OPTS" | grep -q 'enable-java'; then
+  OPTS="$OPTS $JSUP $TESTS"
+  if [ "JSUP" == "enable-java" ]; then
     if [ -z $JAVA_HOME ]; then
       if spell_installed j2sdk; then
         JAVA_HOME=$INSTALL_ROOT/usr/java/j2sdk
@@ -18,9 +19,9 @@
     export JAVA_HOME
   fi &&
 
-  if glibc_is_nptl; then
-    LDFLAGS="$LDFLAGS -lpthread"
-  fi &&
+#  if glibc_is_nptl; then
+#    LDFLAGS="$LDFLAGS -lpthread"
+#  fi &&
 
   cd  build_unix                         &&
   PATH="$PATH:$JAVA_HOME/bin"            &&
@@ -30,15 +31,4 @@
                      --enable-compat185  \
                      --enable-cxx        \
                      $OPTS               &&
-  make                                   &&
-  prepare_install                        &&
-  make    install                        &&
-
-  if echo "$OPTS" | grep -q 'enable-test'; then
-    sedit 's|^set tcllib.*$||' ../test/include.tcl &&
-    echo "set tcllib $INSTALL_ROOT/usr/lib/libdb_tcl-${VERSION%.*}.so" >> ../test/include.tcl &&
-    mkdir -p $INSTALL_ROOT/usr/share/$SPELL &&
-    cp -R ../test $INSTALL_ROOT/usr/share/$SPELL/
-  fi
-
-) >$C_FIFO 2>&1
+  make
