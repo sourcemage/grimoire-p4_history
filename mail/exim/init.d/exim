@@ -2,6 +2,11 @@
 PROGRAM=/usr/sbin/exim
 RUNLEVEL=3
 NEEDS="+network"
-ARGS="-bd"
 
+#
+# /etc/sysconfig/exim needs to be sourced before ARGS
+#
+. /etc/sysconfig/exim
 . /etc/init.d/smgl_init
+
+ARGS="-bd -q${QUEUE_DELAY}"
