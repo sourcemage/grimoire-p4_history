@@ -28,7 +28,18 @@ cat <<__EOF__ >config/cf/host.def
 #define BuildFreetype2Library   NO
 #define HasExpat                YES
 #define XDirectFBServer         YES
-
+#define BuildXF86VidModeLibrary YES
+#define BuildXInputLib          YES
+#define BuildXIE                YES
+#define BuildXvLibrary          YES
+#define BuildXvMCLibrary        YES
+#define BuildXF86DGALibrary     YES
+#define BuildGLXLibrary         YES
+#define BuildXF86MiscLibrary    YES
+#define BuildXextLib            YES
+#define BuildGLULibrary         YES
+#define BuildOSMesaLib          YES
+#define BuildXprint             YES
 __EOF__
   # end 
 
@@ -39,12 +50,24 @@ __EOF__
   ./lndir ../xc/                                                 &&
   ### Fix Bug #3486, which stops the build process
   ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
+  ### Some IMAKE issues from the XDirectFB patches need fixing
+  # we are about to symlink some headers
+  # normally  make World does a make clean too so the symlinks would get removed 
+  #unless we do the following to the Imakefile
+  sedit "s/\$(RM) -r \$(BUILDINCDIR)//" $SOURCE_DIRECTORY/Imakefile                                       &&
+  # now make some dirs and the symlinks
+  mkdir -p $SOURCE_DIRECTORY.bld/exports/include/X11/PM                                                   &&
+  mkdir -p $SOURCE_DIRECTORY.bld/exports/include/X11/extensions                                           &&
+  mkdir -p $SOURCE_DIRECTORY.bld/exports/include/X11/fonts                                                &&
+  ln -sf $SOURCE_DIRECTORY/programs/proxymngr/PM* $SOURCE_DIRECTORY.bld/exports/include/X11/PM/           &&
+  ln -sf $SOURCE_DIRECTORY/lib/font/include/fontenc.h $SOURCE_DIRECTORY.bld/exports/include/X11/fonts/    &&
+  ln -sf $SOURCE_DIRECTORY/programs/xlsfonts/dsimple.h $SOURCE_DIRECTORY.bld/exports/include              &&
+  sedit "s/hw\/i810//" $SOURCE_DIRECTORY.bld/lib/XvMC/Imakefile                                           &&
+  sedit "s/INCLUDES = \$(KRB5_INCLUDE)/& \-I greeter\//" $SOURCE_DIRECTORY.bld/programs/xdm/Imakefile     &&
 
   make World
 
-  ### Some IMAKE issues from the XDirectFB patches need fixing
-  ln -sf $SOURCE_DIRECTORY/include/extensions/Xv.h $SOURCE_DIRECTORY.bld/exports/include/X11/extensions/  &&
-  sedit "s/STD\_INCLUDES =/& \-I greeter\//" $SOURCE_DIRECTORY.bld/programs/xdm/Makefile                  &&
+  ### Some more IMAKE issues from the XDirectFB patches need fixing
   man2html $SOURCE_DIRECTORY.bld/doc/man/Xext/XTransparency._man > $SOURCE_DIRECTORY.bld/doc/man/Xext/XTransparency.3x.html  &&
   ### Start compiling where the prior left off
   make                                                                                               &&
