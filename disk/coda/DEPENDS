@@ -1,6 +1,7 @@
 depends  coda-rpc2			&&
-depends  coda-client                    &&
 
 if  [  "$CODA_SVR"  =  "y"  ];  then
     depends  coda-server
+else
+    depends  coda-client
 fi
