@@ -29,7 +29,7 @@
   if [ "$PROTOCOLS" == "none" ]; then
     message "${MESSAGE_COLOR}Error: dovecot must be configured for at least one protocol."	&&
     message "run cast -r -c dovecot again. ${DEFAULT_COLOR}"					&&
-    exit 1
+    return 1
   else
     message "${MESSAGE_COLOR}Using protocols: $PROTOCOLS ${DEFAULT_COLOR}"
   fi										&&
@@ -70,7 +70,7 @@
   sedit "s:#info_log_path =:info_log_path = /var/log/dovecot/dovecot.info:" /etc/dovecot-example.conf &&
   sedit "s:#client_workarounds =:client_workarounds = oe6-fetch-no-newmail outlook-idle:" /etc/dovecot-example.conf &&
 
-  HOSTNAME=`hostname -a`							&&
+  HOSTNAME=`hostname`							  &&
   
   sedit "s:example.com:$HOSTNAME:" /etc/dovecot-openssl-example.cnf		&&
 
