@@ -1,14 +1,16 @@
            SPELL=uptimed
-         VERSION=0.3.0
+         VERSION=0.3.1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
-        WEB_SITE=http://cx.capsi.com/code-uptimed.html
-          MD5[0]=d29011c38b09816c85ded498108f2ed7
-         LICENSE=GPL
-      MAINTAINER=c_mertes@bigfoot.de
+   SOURCE_URL[0]=http://unixcode.org/downloads/uptimed/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+          MD5[0]=af36036ea8beef78a3b901bef8df06fc
+        WEB_SITE=http://unixcode.org/uptimed/
          ENTERED=20020129
          UPDATED=20030925
+    DISTCC_HOSTS=
+          CCACHE="off"
+      LICENSE[0]=GPL
            SHORT='Keeps record of highest uptimes'
 cat << EOF
 uptimed is an uptime record daemon keeping track of the highest uptimes
