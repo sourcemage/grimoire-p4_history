@@ -13,6 +13,7 @@ optional_depends libmng                           \
                  '--with-system-mng'              \
                  '--without-system-mng'           \
                  'for MNG picture format support' &&
+optional_depends  gnome-vfs2 "" "--disable-gnomevfs" "for smb:// url support (if enabled in gnome-vfs)"  &&
 
 if echo "$OPTS" | grep -q 'enable-svg-renderer-cairo'; then
   depends cairo
