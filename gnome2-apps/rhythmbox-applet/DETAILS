@@ -1,0 +1,24 @@
+           SPELL=rhythmbox-applet
+         VERSION=0.1.4.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://web.ics.purdue.edu/~kuliniew/$SPELL/downloads/$SOURCE
+          MD5[0]=0d550091d50452b645f34176286620b7
+        WEB_SITE=http://web.ics.purdue.edu/~kuliniew/rhythmbox-applet/
+       BUILD_API=2
+         ENTERED=20050204
+         UPDATED=20050204
+      LICENSE[0]=GPL
+      MAINTAINER=d.malcolm@auckland.ac.nz
+           SHORT="Rhythmbox Applet is a small, simple GNOME panel applet that lets you control Rhythmbox's playback from a panel"
+cat << EOF
+Rhythmbox Applet is a small, simple GNOME panel applet that lets you control Rhythmbox's playback from a panel.
+
+Advantages that this applet has over using the icon Rhythmbox puts in the notification area include:
+
+    * One-click access to the main operations needed during playback, without needing to use a context menu.
+    * Display of the current playing time without requiring a mouse-over.
+    * Display of the current song's album in the song information.
+    * More in the spirit of the GNOME Human Interface Guidelines. The notification area is intended primarily for notifying the user of events, not as a secondary means of control.
+
+EOF
