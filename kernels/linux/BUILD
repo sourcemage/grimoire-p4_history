@@ -35,7 +35,10 @@ backup_modules()  {
   yes  n  |  make  oldconfig
   cp  .config  $CONFIG_CACHE/kernel.config
   make  dep               &&
-  make  bzImage           &&
+  case  ${BUILD}  in
+    sparc*-linux-gnu)  make  vmlinux  ;;
+                   *)  make  bzImage  ;;
+  esac
 
   # Only install modules if module support is wanted
   if  grep  -q "CONFIG_MODULES=y"  .config;  then
@@ -48,8 +51,9 @@ backup_modules()  {
   fi
 
   case  $BUILD  in
-    powerpc-linux-gnu)  cp                 vmlinux  /boot/vmlinubz-$VERSION  ;;
-                    *)  cp  arch/i386/boot/bzImage  /boot/vmlinubz-$VERSION  ;;
+   powerpc-linux-gnu)  cp                 vmlinux  /boot/vmlinubz-$VERSION  ;;
+    sparc*-linux-gnu)  gzip  -c9       vmlinux  >  /boot/vmlinuz-$VERSION   ;;
+                   *)  cp  arch/i386/boot/bzImage  /boot/vmlinubz-$VERSION  ;;
   esac
 
 ) > $C_FIFO 2>&1

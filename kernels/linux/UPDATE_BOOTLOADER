@@ -71,6 +71,51 @@ update_lilo()  {
 }
 
 
+update_silo()  {
+
+  if  !  grep  -q  "${VERSION}$"  /etc/silo.conf;  then
+
+    IFS_OLD=$IFS
+    export  IFS="
+"
+
+    rm  -rf  /etc/silo.conf.new
+    cp  /etc/silo.conf  /etc/silo.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/silo.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`silo_image_entry`"  >>  /etc/silo.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+    
+      echo  $LINE  >>  /etc/silo.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`silo_image_entry`"  >>  /etc/silo.conf.new
+    fi
+
+    cp  /etc/silo.conf.new  /etc/silo.conf
+
+    export  IFS=$IFS_OLD
+
+  fi
+
+  echo  "Updated /etc/silo.conf"
+
+}
+
 update_yaboot()  {
 
   if  !  grep  -q  "$VERSION"  /etc/yaboot.conf;  then
@@ -117,7 +162,9 @@ update_yaboot()  {
 }
 
 
-case  $BUILD  in
-  powerpc-linux-gnu)  update_yaboot  ;;
-                  *)  update_lilo    ;;
+# Changed from 'case $BUILD  in' as $BUILD is not defined yet
+case  `uname -m`  in
+  powerpc)  update_yaboot  ;;
+   sparc*)  update_silo    ;;
+        *)  update_lilo    ;;
 esac
