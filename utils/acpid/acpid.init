@@ -1,15 +1,11 @@
 #!/bin/bash
 #
-#	/etc/rc.d/init.d/acpid
-#
 # Starts the acpi daemon
-#
-# chkconfig: 345 44 56
 # description: Listen and dispatch ACPI events from the kernel
 # processname: acpid
 
 # Source function library.
-. /etc/rc.d/init.d/functions
+. /etc/rc.d/functions
 
 DAEMON=acpi
 PROGNAME=${DAEMON}d
@@ -17,30 +13,22 @@ test -x /usr/sbin/$PROGNAME || exit 0
 
 RETVAL=0
 
-#
-# See how we were called.
-#
-
 start() {
 	# Check if it is already running
 	if [ ! -f /var/lock/subsys/$PROGNAME ]; then
-#	    echo -n "Starting $DAEMON daemon: "
 	    echo "Starting $DAEMON daemon: "
 	    loadproc /usr/sbin/$PROGNAME
 	    RETVAL=$?
-	    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/$PROGNAME
-#	    echo
+	    [ $RETVAL -eq 0 ] && touch /var/lock/$PROGNAME
 	fi
 	return $RETVAL
 }
 
 stop() {
-#	echo -n "Stopping $DAEMON daemon: "
 	echo "Stopping $DAEMON daemon: "
 	killproc /usr/sbin/$PROGNAME
 	RETVAL=$?
-	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/$PROGNAME
-#	echo
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/$PROGNAME
         return $RETVAL
 }
 
@@ -69,7 +57,7 @@ restart)
 	restart
 	;;
 condrestart)
-	if [ -f /var/lock/subsys/$PROGNAME ]; then
+	if [ -f /var/lock/$PROGNAME ]; then
 	    restart
 	fi
 	;;
