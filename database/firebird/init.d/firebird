@@ -7,11 +7,11 @@
 # Firebird  database Super server daemon 
 
 
-FIREBIRD=/usr/firebird
 ISC_USER=SYSDBA
 ISC_PASSWORD=masterkey
 FBRunUser=firebird
-export FIREBIRD 
+FB=/usr/firebird/bin/fbmgr.bin
+#export FB
 export ISC_USER
 export ISC_PASSWORD
 # WARNING: in a real-world installation, you should not put the 
@@ -23,19 +23,14 @@ export ISC_PASSWORD
 source /etc/init.d/smgl_functions
 
 PROGRAM=/bin/false
-FB=$FIREBIRD/bin/fbmgr.bin
-# still a problem with threaded version
-#ARGS="-start -forever -d  -s -u"
-ARGS="-start -forever"
 RUNLEVEL=3
 NEEDS="+network  +remote_fs"
 
 case $1 in
 	start)
 		echo "Starting Firebird Super Server"
-#		$FB $ARGS | su $FBRunUser
-
-		$FB $ARGS &	# start as a daemon
+#	        /bin/echo '$FB -start -forever' | su $FBRunUser
+                su $FBRunUser -c "$FB -start -forever"
 		evaluate_retval
 		;;
 	stop)

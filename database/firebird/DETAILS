@@ -1,33 +1,31 @@
            SPELL=firebird
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
 if [ "$USECVS" == "yes" ];then
-         VERSION=cvs
-             CVS=HEAD
-          SOURCE=${SPELL}-$VERSION.tar.bz2
-   SOURCE_URL[0]=$SFCVS/firebird:firebird2:$CVS
-          MD5[0]=IGNORE
-#  FORCE_DOWNLOAD=on
-else
-# using cvs, as there is no official tarball yet
-         VERSION=T1_5_0_RC8_4201
+         VERSION=HEAD
           SOURCE=${SPELL}-$VERSION.tar.bz2
    SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
           MD5[0]=IGNORE
   FORCE_DOWNLOAD=on
-#	 VERSION="not available"
-#	 VERSION=1.5-rc7
-# this is a temporary url and unofficial tarball, but it is bad
-#          SOURCE=${SPELL}-1.5.tar.bz
-#   SOURCE_URL[0]=http://mapopa.tripod.com/firebird/$SOURCE
-##$SOURCEFORGE_URL/firebird/$SOURCE
-#          MD5[0]=18cf28729ab9138b11376790a9458b2f
-fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
+else
+         VERSION=15-rc8
+          SOURCE=${SPELL}${VERSION}.tar.bz2
+   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
+          MD5[0]=b697b83b1b51df6f8116ac857f6c1a69
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}15
+# using cvs, as there is no official tarball yet
+#	 VERSION=T1_5_0_RC8_4201
+#          SOURCE=${SPELL}-$VERSION.tar.bz2
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+#   SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
+#          MD5[0]=IGNORE
+#  FORCE_DOWNLOAD=on
+fi
         WEB_SITE=http://www.firebirdsql.org
          LICENCE=MPL
          ENTERED=20031111
          UPDATED=
- 	    DOCS="ChangeLog doc/*"
+ 	    DOCS="ChangeLog doc/WhatsNew doc/*.txt"
            SHORT="a very powerful relational dbms"
 cat << EOF
 Firebird is a relational database offering many ANSI SQL-92 features
