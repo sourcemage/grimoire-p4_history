@@ -8,6 +8,7 @@
   cp $SCRIPT_DIRECTORY/lha.n man/lha.n &&
   cd src/ &&
   patch -p0 < $SCRIPT_DIRECTORY/lha.patch &&
+  patch -p0 < $SCRIPT_DIRECTORY/lha.obscure_buf_oflow.patch &&
   cd - &&
   make                           &&
   prepare_install                &&
