@@ -2,6 +2,12 @@ depends  freetype2  &&
 depends  autoconf   &&
 depends  libxml2    &&
 
-optional_depends  ncurses      ""                  "--disable-curses --disable-panel"  "for ncurses UI"  &&
-optional_depends  ImageMagick  ""                  ""                    "imaging support"
+optional_depends  ncurses                             \
+                  ""                                  \
+                  "--disable-curses --disable-panel"  \
+                  "for ncurses UI"                    &&
 
+optional_depends  imagemagick            \
+                  ""                     \
+                  ""                     \
+                  "for imaging support"

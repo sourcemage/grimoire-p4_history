@@ -1,76 +1,94 @@
-optional_depends  "nasm"                         \
-                  ""                             \
-                  ""                             \
+optional_depends  nasm                                     \
+                  ""                                       \
+                  ""                                       \
                   "for mpeg encoding with bbmpeg support"  &&
-optional_depends  "avifile"                      \
-                  "--with-avifile-mods"          \
-                  "--without-avifile-mods"       \
+
+optional_depends  avifile                                   \
+                  "--with-avifile-mods"                     \
+                  "--without-avifile-mods"                  \
                   "for AVI decoding support using avifile"  &&
-optional_depends  "a52dec"                       \
-                  "--with-a52"                   \
-                  "--without-a52"                \
-                  "for ATSC A/52 support"        &&
-optional_depends  "libdvdread"                   \
-                  "--with-dvdread"               \
-                  "--without-dvdread"            \
-                  "for DVD support"              &&
-optional_depends  "SDL"                          \
-                  ""                             \
-                  ""                             \
-                  "for SDL preview plugin (also needs libdv support)" &&
-optional_depends  "gtk+"                         \
-                  ""                             \
-                  ""                             \
-                  "for GTK preview plugin (also needs libdv support)" &&
-optional_depends  "libdv"                        \
-                  "--with-dv"                    \
-                  "--without-dv"                 \
-                  "for Quasar DV code support"   &&
-optional_depends  "lame"                         \
-                  "--with-lame"                  \
-                  "--without-lame"               \
-                  "for LAME support"             &&
-optional_depends  "X11-LIBS"                      \
-                  "--with-x"                     \
-                  "--without-x"                  \
-                  "for XFree86 support"          &&
-optional_depends  "libogg"                       \
-                  "--with-ogg"                   \
-                  "--without-ogg"                \
-                  "for OGG file support"         &&
-optional_depends  "libvorbis"                    \
-                  "--with-vorbis"                \
-                  "--without-vorbis"             \
-                  "for vorbis tools support"     &&
-optional_depends  "lzo"                          \
+
+optional_depends  a52dec                   \
+                  "--with-a52"             \
+                  "--without-a52"          \
+                  "for ATSC A/52 support"  &&
+
+optional_depends  libdvdread           \
+                  "--with-dvdread"     \
+                  "--without-dvdread"  \
+                  "for DVD support"    &&
+
+optional_depends  SDL                                                  \
+                  ""                                                   \
+                  ""                                                   \
+                  "for SDL preview plugin (also needs libdv support)"  &&
+
+optional_depends  gtk+                                                 \
+                  ""                                                   \
+                  ""                                                   \
+                  "for GTK preview plugin (also needs libdv support)"  &&
+
+optional_depends  libdv                         \
+                  "--with-dv"                   \
+                  "--without-dv"                \
+                  "for Quasar DV code support"  &&
+
+optional_depends  lame                \
+                  "--with-lame"       \
+                  "--without-lame"    \
+                  "for LAME support"  &&
+
+optional_depends  X11-LIBS               \
+                  "--with-x"             \
+                  "--without-x"          \
+                  "for XFree86 support"  &&
+
+optional_depends  libogg                  \
+                  "--with-ogg"            \
+                  "--without-ogg"         \
+                  "for OGG file support"  &&
+
+optional_depends  libvorbis                   \
+                  "--with-vorbis"             \
+                  "--without-vorbis"          \
+                  "for vorbis tools support"  &&
+
+optional_depends  lzo                            \
                   "--with-lzo"                   \
                   "--without-lzo"                \
                   "for LZO compression support"  &&
-optional_depends  "ImageMagick"                  \
-                  "--with-magick-mods"           \
-                  "--without-magick-mods"        \
-                  "image editing tools"          &&
-optional_depends  "libxml2"                      \
-                  ""                             \
-                  ""                             \
-                  "for XML format support"       &&
-optional_depends  "freetype2"                    \
-                  "--enable-text"                \
-                  "--disable-text"               \
-                  "for freetype font support"    &&
-optional_depends  "jpeg"                         \
-                  "--with-libjpeg-mods"          \
-                  "--without-libjpeg-mods"       \
-                  "for JPEG image support"       &&
-optional_depends  "xvid"                         \
-                  "--with-default-xvid=xvid4"    \
-                  ""                             \
-                  "for xvid de-/encoding support" &&
-optional_depends  "libmpeg3"                     \
-                  "--with-libmpeg3"              \
-                  "--without-libmpeg3"           \
+
+optional_depends  imagemagick              \
+                  "--with-magick-mods"     \
+                  "--without-magick-mods"  \
+                  "image editing tools"    &&
+
+optional_depends  libxml2                   \
+                  ""                        \
+                  ""                        \
+                  "for XML format support"  &&
+
+optional_depends  freetype2                    \
+                  "--enable-text"              \
+                  "--disable-text"             \
+                  "for freetype font support"  &&
+
+optional_depends  jpeg                      \
+                  "--with-libjpeg-mods"     \
+                  "--without-libjpeg-mods"  \
+                  "for JPEG image support"  &&
+
+optional_depends  xvid                             \
+                  "--with-default-xvid=xvid4"      \
+                  ""                               \
+                  "for xvid de-/encoding support"  &&
+
+optional_depends  libmpeg3                                    \
+                  "--with-libmpeg3"                           \
+                  "--without-libmpeg3"                        \
                   "for decoding of MPEG files with libmpeg3"  &&
-optional_depends  "mjpegtools"                   \
-                  ""                             \
-                  ""                             \
+
+optional_depends  mjpegtools                            \
+                  ""                                    \
+                  ""                                    \
                   "for mpeg2 encoding with mjpegtools"
