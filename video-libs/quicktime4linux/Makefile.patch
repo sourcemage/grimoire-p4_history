@@ -1,6 +1,6 @@
---- Makefile-old	2003-09-02 12:49:02.000000000 +0200
-+++ Makefile	2003-09-02 12:54:02.000000000 +0200
-@@ -54,11 +54,7 @@
+--- Makefile-old	2003-10-28 04:43:23.000000000 +0100
++++ Makefile	2003-11-13 13:21:23.000000000 +0100
+@@ -50,11 +50,7 @@
  
  
  
@@ -12,32 +12,35 @@
  include Makefile.encore50
  
  
-@@ -73,6 +69,8 @@
+@@ -68,7 +64,9 @@
+ CFLAGS += -I. \
  	-I$(JPEG_DIR) \
  	-I$(MPEG3_DIR) \
- 	-I$(LAME_DIR)/include \
+-	-I$(LAME_DIR)/include
++	-I$(LAME_DIR)/include \
 +	-I/usr/include/libmpeg3 \
-+	-I/usr/include/lame \
- 	$(shell glib-config --cflags)
++	-I/usr/include/lame
  
  
-@@ -227,7 +225,7 @@
+ #	$(OBJDIR)/div3.o \
+@@ -222,7 +220,7 @@
  	$(OBJDIR)/$(ENCORE_DIR)/mbtransquant/intel_mmx
  
  
--LIBS := $(OUTPUT) $(MPEG3_DIR)/$(OBJDIR)/libmpeg3.a -lpng -lz -lpthread -lglib -ldl -lm
-+LIBS := $(OUTPUT) -lmpeg3 -lraw1394 -lmp3lame -logg -lvorbis -lvorbisenc -ldv -ljpeg -lpng -lz -lpthread -lglib -ldl -lm
+-LIBS := $(OUTPUT) $(MPEG3_DIR)/$(OBJDIR)/libmpeg3.a -lpng -lz -lpthread -ldl -lm
++LIBS := $(OUTPUT) -lmpeg3 -lraw1394 -lmp3lame -logg -lvorbis -lvorbisenc -ldv -ljpeg -lpng -lz -lpthread -ldl -lm
  
  
  $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(DIRS) \; fi )
-@@ -236,11 +234,13 @@
- $(shell echo  $(LAME_CFLAGS) > $(OBJDIR)/lame_flags)
- $(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
+@@ -232,12 +230,14 @@
+ $(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
+ #$(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
  
 -all: $(OBJDIR) $(OUTPUT)
 +all: $(OBJDIR) $(OUTPUT) $(SHAREDOUTPUT) $(UTILS)
  
- $(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
+ #$(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
+ $(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
  	ar rcs $(OUTPUT) `cat $(OBJDIR)/objs`
  
 +$(SHAREDOUTPUT): $(OUTPUT)
@@ -45,7 +48,7 @@
  
  $(OBJDIR)/qtdump: $(OBJDIR)/dump.o $(OUTPUT)
  	$(CC) -o $(OBJDIR)/qtdump $(OBJDIR)/dump.o $(LIBS)
-@@ -277,7 +277,11 @@
+@@ -274,7 +274,11 @@
  	cd .. && \
  	tar zcvf quicktime.tar.gz quicktime
  

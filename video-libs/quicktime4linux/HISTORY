@@ -1,16 +1,17 @@
-2003-09-02  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-11-13 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS, Makefile.patch: updated to 2.0.1
+	* BUILD: replace -msse by $CFLAGS in Makefile.ffmpeg
+	add #undef HAVE_BUILTIN_VECTOR unless CFLAGS contains -msse
 
-		updated to 2.0.0
+2003-09-02 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 2.0.0
 
-2003-08-20  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-20 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: add -O2 if no -O flag is present in CFLAGS, needed so
+	compiling xmovie works
 
-		add -O2 if no -O flag is present in CFLAGS, needed so compiling
-		xmovie works
+2003-05-13 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS, Makefile.patch: updated to 1.6.2
 
-2003-05-13  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 1.6.2
-
-2003-04-25  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		created this spell
+2003-04-25 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, DEPENDS, DETAILS, HISTORY, Makefile.patch: created this spell

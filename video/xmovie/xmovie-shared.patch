@@ -1,0 +1,28 @@
+diff -Nur xmovie-1.9.11/build/Makefile.xmovie xmovie-1.9.11-shared/build/Makefile.xmovie
+--- xmovie-1.9.11/build/Makefile.xmovie	2003-11-11 07:43:15.000000000 +0100
++++ xmovie-1.9.11-shared/build/Makefile.xmovie	2003-11-13 13:41:18.000000000 +0100
+@@ -7,8 +7,6 @@
+ 
+ 
+ DIRS := \
+-	libmpeg3 \
+-	quicktime \
+ 	guicast \
+ 	xmovie \
+ 
+diff -Nur xmovie-1.9.11/xmovie/Makefile xmovie-1.9.11-shared/xmovie/Makefile
+--- xmovie-1.9.11/xmovie/Makefile	2003-10-14 09:54:41.000000000 +0200
++++ xmovie-1.9.11-shared/xmovie/Makefile	2003-11-13 13:41:56.000000000 +0100
+@@ -37,11 +37,9 @@
+ 	-I$(SNDFILE_DIR)/src
+ 
+ LIBS += -L/usr/X11R6/lib \
+-	../libmpeg3/$(OBJDIR)/libmpeg3.a \
+-	../quicktime/$(OBJDIR)/libquicktime.a \
+ 	../guicast/$(OBJDIR)/libguicast.a \
+ 	$(SNDFILE_DIR)/$(OBJDIR)/libsndfile.a \
+- 	$(GLLIBS) -lX11 -lXext -lXv -lpthread -lglib -lm -lpng -lz -ldl $(XXF86VM)
++ 	$(GLLIBS) -lX11 -lXext -lXv -lpthread -lglib -lm -lpng -lz -ldl $(XXF86VM) -lquicktime -lmpeg3
+ 
+ # Static libraries for distribution
+ ifeq ($(USE_STATIC),y)
