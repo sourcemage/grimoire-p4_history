@@ -1,1 +1,3 @@
-/etc/init.d/cups  start
+if  [  -x  /etc/init.d/cups  ];  then
+  /etc/init.d/cups  start
+fi

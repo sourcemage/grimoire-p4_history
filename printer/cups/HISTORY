@@ -1,42 +1,44 @@
-2002-06-24  Jason Flatt  <jasonflatt@wizard.com>
+2002-08-15  Jason Flatt  <jasonflatt@wizard.com>
+	Many things.  I hope I remember them all.
+	Modified the conflict checking to hopefully work a little better.
+	Added a suggestion from Eric Sandall to hopefully kill bug # 237.
+	Revamped how the init scripts are installed and setup.
+	Modified how CUPS is installed w/Samba to eliminate a (unreported) bug in the original code.
 
-		Forgot to add ARCHIVE="off" to DETAILS for previous bug fix.
+2002-08-02  Jason Flatt  <jasonflatt@wizard.com>
+	Updated MD5 to be based on .tar rather than .tar.xxx.
+	Changed LICENSE= and MD5= to LICENSE[x]= and MD5[x]=.
+	Reformatted this HISTORY file.
+
+2002-06-24  Jason Flatt  <jasonflatt@wizard.com>
+	Forgot to add ARCHIVE="off" to DETAILS for previous bug fix.
 
 2002-06-23  Jason Flatt  <jasonflatt@wizard.com>
-
-		Removed CONFLICTS and added PRE_BUILD to modify the way cups and gnulpr handle conflicts with each other (fixes bug # 207).
+	Removed CONFLICTS and added PRE_BUILD to modify the way cups and gnulpr handle conflicts with each other (fixes bug # 207).
 
 2002-06-22  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added LICENSE and MD5 to DETAILS.
-
-2002-06-10  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated VERSION to 1.1.15 (and source to include -1 on version).
+	Added LICENSE and MD5 to DETAILS.
 
 2002-06-10  Jason Flatt  <jasonflatt@wizard.com>
+	Updated VERSION to 1.1.15 (and source to include -1 on version).
 
-		Removed USEGCC2 as it compiles w/gcc 3.1 and executes.
+2002-06-10  Jason Flatt  <jasonflatt@wizard.com>
+	Removed USEGCC2 as it compiles w/gcc 3.1 and executes.
 
 2002-05-29  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added USEGCC2 file in preparation for gcc3 upgrade.
+	Added USEGCC2 file in preparation for gcc3 upgrade.
 
 2002-05-08  Jason Flatt  <jasonflatt@wizard.com>
-
-		Reformatted HISTORY file to conform to new template.
+	Reformatted HISTORY file to conform to new template.
 
 2002-04-21  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added CONFLICTS file.
-		Corrected this HISTORY file.
-		Updated long description for improved readability.
+	Added CONFLICTS file.
+	Corrected this HISTORY file.
+	Updated long description for improved readability.
 
 2002-04-16  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added support for SAMBA printers as per Giovanni Lopedote.
+	Added support for SAMBA printers as per Giovanni Lopedote.
 
 2002-03-24  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added this History file.
-		Added MAINTAINER=jasonflatt@wizard.com to DETAILS file.
+	Added this History file.
+	Added MAINTAINER=jasonflatt@wizard.com to DETAILS file.
