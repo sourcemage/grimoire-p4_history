@@ -6,6 +6,11 @@
 # 2. added function file
 # 3. split start / restart cases
 # 4. added status case
+#
+# Source Mage init.d information
+# SMGL-START:S:S90
+# SMGL-STOP:0 6:K10
+#
 
 source /etc/init.d/functions
 
