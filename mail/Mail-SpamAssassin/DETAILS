@@ -1,9 +1,9 @@
            SPELL=Mail-SpamAssassin
-         VERSION=2.42
+         VERSION=2.43
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://us.spamassassin.org/released/$SOURCE
-          MD5[0]=ea42ee07f869b48aad4517edb4227b06
+          MD5[0]=0e3ee4b18763a60372102646d93b7cf1
    SOURCE_URL[1]=http://spamassassin.taint.org/released/$SOURCE
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=http://au.spamassassin.org/released/$SOURCE
@@ -28,6 +28,6 @@ Once identified, the mail can then be optionally tagged as spam for later
 filtering using the user's own mail user-agent application.
 
 In its most recent test, SpamAssassin differentiated between spam and
-non-spam mail correctly in 99.94% of cases.  Since then, it's just been
+non-spam mail correctly in 99.94% of cases. Since then, it's just been
 getting better and better!
 EOF
