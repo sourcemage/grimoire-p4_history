@@ -1,14 +1,15 @@
            SPELL=ripmime
-         VERSION=1.3.1.2
+         VERSION=1.3.2.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-          MD5[0]=dfdfba44e1dc9cf8570ca39ed71735ea
+          MD5[0]=62d0b406e3467b34770bd93d647157e6
         WEB_SITE=http://www.pldaniels.com/ripmime/
    SOURCE_URL[0]=$WEB_SITE/$SOURCE
          ENTERED=20040116
          UPDATED=20040405
       LICENSE[0]=BSD
-           SHORT="ripMIME extracts files out of a MIME-encoded email"
+       BUILD_API=2
+           SHORT="extracts files out of a MIME-encoded email"
 cat << EOF
 ripMIME extracts attachment files out of a MIME-encoded email pack.
 EOF
