@@ -98,8 +98,8 @@ sedit "s/^dbmopen_ext.*$/dbmopen_ext %dbm_ext%/" $LOC/cgi-bin/openwebmail/etc/op
 sedit "s/^dbmopen_haslock.*$/dbmopen_haslock yes/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf &&
 sedit "s/^spellcheck.*$/spellcheck \/usr\/bin\/ispell/" $LOC/cgi-bin/openwebmail/etc/openwebmail.conf		
 message "${MESSAGE_COLOR}Passwd files in OWM auth_unix.pl file... ${DEFAULT_COLOR}"             &&
-sedit "s/\/etc\/master.passwd/\/etc\/shadow/"  $LOC/cgi-bin/openwebmail/etc/auth_unix.conf.default            &&
-sedit "s/\/usr\/sbin\/pwd_mkdb/none/"  $LOC/cgi-bin/openwebmail/etc/auth_unix.conf.default                    &&
+sedit "s/\/etc\/master.passwd/\/etc\/shadow/"  $LOC/cgi-bin/openwebmail/etc/defaults/auth_unix.conf
+sedit "s/\/usr\/sbin\/pwd_mkdb/none/"  $LOC/cgi-bin/openwebmail/etc/defaults/auth_unix.conf
 
 # Initialize openwebmail
 if [ "$MAIL_STATS" == "n" ]; then
@@ -108,7 +108,7 @@ else
   MAIL_OPT="--yes"
 fi                                                                                              &&
 # Overwrite dbm.conf file 
-cp -f $SCRIPT_DIRECTORY/dbm.conf $LOC/cgi-bin/openwebmail/etc/ 1>/dev/null 2>&1 &&
+cp -f $SCRIPT_DIRECTORY/dbm.conf $LOC/cgi-bin/openwebmail/etc/defaults/ 1>/dev/null 2>&1 &&
 
 message "${MESSAGE_COLOR}Initializing OpenWebmail... ${DEFAULT_COLOR}"                          &&
 $LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init $MAIL_OPT                                   &&
