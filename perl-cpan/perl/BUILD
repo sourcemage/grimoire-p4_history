@@ -5,8 +5,6 @@ unset LANG
 CURRENT_VERSION="`installed_version perl`"  &&
 CONFIG="$DEPENDS_CONFIG/perl_config.sh"     &&
 
-patch -p1 < $SCRIPT_DIRECTORY/installperl.patch  &&
-
 if  [  "$OLD_CUSTOM"  ==  "y"  ];  then
   cp $CONFIG ./config.sh  &&
   ./Configure -S          &&
