@@ -1,3 +1,12 @@
+2005-01-03 Eric Sandall <eric@sandall.us>
+	* Renamed to spamassassin
+	* DETAILS: Removed SOURCE information
+	  Updated UPDATED
+	* DEPENDS: Depend only on spamassassin
+	* PRE_BUILD,BUILD,INSTALL: Run only `true`
+	* POST_REMOVE,FINAL,CONFIGURE,postfixfilter,spamd.sh,TRIGGERS,
+	  init.d/assassin: Removed
+
 2005-01-02 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: Updated to 3.0.2
 	* FINAL: don't stop/start spamd
