@@ -12,7 +12,7 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   fi
 
   if    query  "Do you require mail support?"  n
-  then  requires  mail-transport-agent
+  then  depends  MAIL-TRANSPORT-AGENT
   fi
   
   echo  'CONFIGURED=y'  >>  $SPELL_CONFIG
