@@ -77,4 +77,16 @@ done
 # clean up old mount.sh files
 cleanup_old
 
+#
+# Finally install runlevel editing tool: runlvedit
+#
+echo  "Installing your Source Mage runlevel editor..."
+
+if [ -e /usr/sbin/runlvedit ]; then
+  rm -vf /usr/sbin/runlvedit
+  cp -ruv $SCRIPT_DIRECTORY/runlvedit /usr/sbin/
+else
+  cp -ruv $SCRIPT_DIRECTORY/runlvedit /usr/sbin/
+fi
+
 ) > $C_FIFO 2>&1
