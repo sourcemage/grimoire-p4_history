@@ -1,5 +1,5 @@
           SPELL=gaim-encryption
-        VERSION=${VERSION:=2.30}
+        VERSION=${VERSION:=2.31}
 if  [  "$CVS"  ==  "y"  ];  then
         VERSION=cvs
          SOURCE=$SPELL-$VERSION.tar.gz
@@ -9,7 +9,7 @@ if  [  "$CVS"  ==  "y"  ];  then
 else
          SOURCE=$SPELL-$VERSION.tar.gz
   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-         MD5[0]='52ca204beae99d9fd879bd4cf6368aeb'
+         MD5[0]='4030304caa0acb299e744027f5d09845'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        WEB_SITE=http://gaim-encryption.sourceforge.net/
