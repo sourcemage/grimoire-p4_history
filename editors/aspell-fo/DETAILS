@@ -1,9 +1,10 @@
            SPELL=aspell-fo
-         VERSION=0.50-2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNU_URL/aspell/dict/fo/$SOURCE
-          MD5[0]=5b7398ad44dd97bc68233d5ea7d8c6c5
+       BUILD_API=2
+         VERSION=0.2.14
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://fo.speling.org/filer/${SOURCE}
+          MD5[0]=3b13ee5a65ae0cdeb6d1301adb43ac4c
         WEB_SITE=http://fo.speling.org/
       LICENSE[0]=GPL
          ENTERED=20011028
