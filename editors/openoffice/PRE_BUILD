@@ -6,7 +6,7 @@ mk_source_dir	$SOURCE_DIRECTORY  4g	&&
 cd		$BUILD_DIRECTORY	&&
 unpack		$SOURCE	${MD5[0]}	&&
 
-if ! spell_installed "Linux-PAM"; then
+if ! spell_ok "linux-pam"; then
 	mk_source_dir $SOURCE_DIRECTORY2 &&
 	cd $BUILD_DIRECTORY		 &&
 	unpack $SOURCE2 ${MD5[1]}	 &&
