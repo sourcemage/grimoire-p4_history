@@ -1,13 +1,17 @@
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
+
+OPTS=" --prefix=${INSTALL_ROOT}/usr  \
+   --sysconfdir=${INSTALL_ROOT}/etc  \
+--localstatedir=${INSTALL_ROOT}/var  \
+      --mandir=${INSTALL_ROOT}/usr/share/man   \
+     --infodir=${INSTALL_ROOT}/usr/share/info  \
+     $OPTS"
+
+
 case  $CERTIFICATE  in
 
   y|Y|j|J)
-    rm  -f  /etc/ssl/certs/stunnel.pem          &&
-    ./configure  --build=$BUILD                 \
-                 --prefix=/usr                  \
-                 --sysconfdir=/etc              \
-                 --localstatedir=/var           \
-                 --with-pem-dir=/etc/ssl/certs  \
-                 $OPTS                          &&
+    ./configure  $OPTS                          &&
     make  cert  <<EOF                           &&
 $COUNTRY_NAME
 $PROVINCE_NAME
@@ -17,6 +21,7 @@ $ORG_UNIT_NAME
 $COMMON_NAME
 EOF
     (  make  all                                &&
+       rm  -f  /etc/stunnel/stunnel.pem         &&
        prepare_install                          &&
        make    install
     ) > $C_FIFO 2>&1
@@ -24,16 +29,11 @@ EOF
 
   *)
     (
-      cp  /etc/ssl/certs/stunnel.pem  .            &&
-      ./configure  --build=$BUILD                  \
-                    --prefix=/usr                  \
-                    --sysconfdir=/etc              \
-                    --localstatedir=/var           \
-                    --with-pem-dir=/etc/ssl/certs  \
-                    $OPTS                          &&
-       make  all                                   &&
-       prepare_install                             &&
-       make    install
+      cp  /etc/stunnel/stunnel.pem  tools/      &&
+      ./configure  $OPTS                        &&
+      make  all                                 &&
+      prepare_install                           &&
+      make    install
     ) > $C_FIFO 2>&1
   ;;
 
