@@ -30,6 +30,8 @@ then
   sedit  "s:\-O2:${CFLAGS}:"  configure
 fi				    &&
 
+sedit "s/#!\/usr\/bin\/awk -f/#!\/bin\/awk -f" utils/convert_isapnp_ids &&
+
   modprobe  soundcore		    &&
   ./configure  --prefix=/usr         \
 	       --with-kernel=/usr/src/linux \
