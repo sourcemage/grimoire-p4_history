@@ -4,10 +4,17 @@
 	  Removed MAINTAINER
 	  Added BUILD_API=2
 	  Changed LICENSE to LICENSE[0]
+	  Use DOCS for documents
+	* DEPENDS: Formatted to Guru Handbook
 	* CONFLICTS: Auto-conflicts with IlohaMail
 	* BUILD: Run only `true`
 	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
+	  Removed TABs
+	  Use spell_ok instead of spell_installed
+	  Removed explicit copy of documents, now use DOCS in DETAILS
 	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* FINAL: Use spell_ok instead of spell_installed
 
 2004-12-21 Adam Clark <adamsgl@dhbit.ca>
 	* DETAILS: Updated to a recent stable version
