@@ -1,24 +1,16 @@
            SPELL=star
-         VERSION=1.5a47
+         VERSION=1.5a55
            ALPHA=$([ "${VERSION//a/}" != "$VERSION" ] && echo 1)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%a*}
    SOURCE_URL[0]=ftp://ftp.berlios.de/pub/$SPELL/${ALPHA:+alpha/}$SOURCE
-          MD5[0]='08de3937aa5d5b071c254720f47c3147'
+          MD5[0]='d7f37c7ceb1f5e80b9fa48ea0cd6edca'
         WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/star.html
          ENTERED=20040718
          UPDATED=20040718
       LICENSE[0]=GPL
        BUILD_API=2
            SHORT='Unique standard tape archiver'
-
-#
-# selinux patch
-#
-SOURCE2=star-selinux.patch.gz
-SOURCE2_URL[0]=http://www.nsa.gov/selinux/patches/$SOURCE2
-MD5[1]=4f84f81c213d503d4d87f781f6a7fe3c
-
 cat << EOF
 Star is a very fast tar-like tape archiver with improved functionality.
 Star archives and extracts multiple files to and from a single file
