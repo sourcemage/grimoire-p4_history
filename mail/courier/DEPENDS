@@ -74,12 +74,12 @@ if  [  "${SEND_FAXES}"  ==  "y"  ];  then
                     ""             \
                     "to send e-mail messages via fax - GIF, JPEG and PNG support"
 
-  if  spell_installed  espgs;  then
+  if  spell_ok  espgs;  then
     optional_depends  "espgs"        \
                       ""             \
                       ""             \
                       "to send e-mail via fax - Postscript and PDF support"
-  elif  spell_installed  ghostscript;  then
+  elif  spell_ok  ghostscript;  then
     optional_depends  "ghostscript"  \
                       ""             \
                       ""             \
