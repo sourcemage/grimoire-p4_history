@@ -33,9 +33,6 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
   sedit  "s: install-scripts : :"    Makefile  &&
   sedit  "s:root.root:root.audio:"   snddevices &&
 
-#patch for kernel 2.4.23
-  patch -p0 include/adriver.h < $SPELL_DIRECTORY/k2.4.23.diff	&&
-
   ./configure  --prefix=/usr         \
 	       --with-kernel=/usr/src/linux \
                --with-isapnp=yes     \
