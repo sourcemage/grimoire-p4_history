@@ -2,6 +2,7 @@
   ### bug#5570 ccache sometimes has trouble correctly recognising minor differences 
   ### in configurations and doesn't force recompile when it should. This stops it from using the old cache entries.
   export CCACHE_RECACHE=true                  &&
+  patch -p0 < $SCRIPT_DIRECTORY/glibcshared.patch		&&
 
   ### remove these from this spells log then
   ### in case glibc had provided these headers before
