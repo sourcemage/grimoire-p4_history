@@ -39,7 +39,7 @@ do_bootstrap()
     cd $SOLARVER/$UPD/$INPATH/inc                &&
     cat $SOLARENV/inc/minor.mk > ${UPD}minor.mk  &&
     cd ${SRC_ROOT}
-  if                                             &&
+  fi                                             &&
 
   #make sure build.pl is executable
 
@@ -50,13 +50,17 @@ do_bootstrap()
   # My own cleanup
   sedit  's:target.mk:solenv/inc/target.mk:'  ../makefile.mk  &&
   for i in `grep .mk ../solenv/inc/target.mk | grep INCLUDE | \
-            grep -v IGNORE | awk '{print $3}'`
+            grep -v IGNORE | awk '{print $3}' | grep -v ^\_ | \
+            uniq`
   do
-    sedit  "s:$i:solenv/inc/$i:'  ../solenv/inc/target.mk
+    sedit  "s:$i:solenv/inc/$i:g"  ../solenv/inc/target.mk
   done
+
   #
   # End environ setup
   #
+
+  cd  ..
 }
 
 (
@@ -79,6 +83,6 @@ do_bootstrap()
   cd  ..                                    &&
   sh  LinuxIntelEnv.Set.sh                  &&
   do_bootstrap                              &&
-  dmake/dmake
+  ./dmake/dmake
 
 )  >  ${C_FIFO}  2>&1
