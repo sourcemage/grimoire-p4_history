@@ -111,7 +111,7 @@ cd  ${INSTALL_ROOT}/usr/src  &&
 
 if  [  "$REUSE_SOURCE"  ==  "y"  ];  then
   message  "${MESSAGE_COLOR}Reusing existing Linux source tree (/usr/src/linux-${VERSION}).${DEFAULT_COLOR}"  &&
-  ln  -sf  linux-${VERSION}  linux  &&
+  ln  -sfn  linux-${VERSION}  linux  &&
   cd  linux-${VERSION}
 else
   if  [  -d  linux-${VERSION}  ];  then
