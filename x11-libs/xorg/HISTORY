@@ -2,6 +2,8 @@
 	* DEPENDS: Optionally depend on a POSTSCRIPT-INTERPRETER now. :)
 	* PRE_BUILD: Modify config/cf/site.cf to not need ghostscript if one
 	  isn't installed
+	  Commenting out Arwed's /usr/lib/libGL work as we should be able to use
+	  volatiles for this (though that may not be the correct approach either)
 
 2005-02-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD: don't let X install /usr/lib/libGL, should make X and

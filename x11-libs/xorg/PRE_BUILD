@@ -45,7 +45,7 @@ sedit  's:DefaultLinuxDistribution:LinuxSourceMage:'  \
 # don't create symlinks for libGL /usr, should fix the
 # conflicting files with nvidia_driver
 
-echo "#define LinkGLToUsrLib     NO" >> $SOURCE_DIRECTORY/config/cf/site.def  &&
+#echo "#define LinkGLToUsrLib     NO" >> $SOURCE_DIRECTORY/config/cf/site.def  &&
 
 #
 # Now to define some of our user-specified settings
