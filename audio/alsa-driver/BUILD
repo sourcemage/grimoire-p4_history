@@ -29,7 +29,7 @@ if ! echo ${CFLAGS} | grep -q "mcpu=pentium4" ;
 then 
   export  CFLAGS=${CFLAGS/pentium4/i686}      &&
   export  CXXFLAGS=${CXXFLAGS/pentium4/i686}  &&
-  sedit  's:pentium4:i686:' Makefile.conf     &&
+  sedit  's:pentium4:i686:' Makefile.conf
 fi				    &&
 
 ln -sf /bin/awk /usr/bin/awk        &&
