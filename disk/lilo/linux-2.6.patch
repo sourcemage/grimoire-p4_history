@@ -1,0 +1,23 @@
+diff -Nur lilo-22.5.8.orig/common.h lilo-22.5.8/common.h
+--- lilo-22.5.8.orig/common.h	2004-02-11 22:50:39.000000000 +0100
++++ lilo-22.5.8/common.h	2004-02-11 22:50:58.000000000 +0100
+@@ -18,6 +18,7 @@
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include <asm/types.h>
++#include <linux/a.out.h>
+ /*#include <linux/genhd.h>*/
+ 
+ 
+diff -Nur lilo-22.5.8.orig/Makefile lilo-22.5.8/Makefile
+--- lilo-22.5.8.orig/Makefile	2004-02-11 22:50:39.000000000 +0100
++++ lilo-22.5.8/Makefile	2004-02-11 22:50:47.000000000 +0100
+@@ -52,7 +52,7 @@
+ #		  requested by VMware users (new, experimental)
+ #   XL_SECS=n	  Support for extra large (non-standard) floppies.
+ 
+-CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DONE_SHOT -DPASS160 \
++CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DONE_SHOT -DPASS160 \
+    -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL
+ 
+ # set the compiler optimization level

@@ -1,4 +1,7 @@
 2004-02-11 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, linux-2.6.patch: added patch to compile with 2.6 headers,
+	this disables booting from LVM devices, the relevant kernel header
+	doesn't exist on 2.6
 	* BUILD, DEPENDS, cast.diff, SOLO, WIP: removed the 2.4 kernel headers
 	workaround
 

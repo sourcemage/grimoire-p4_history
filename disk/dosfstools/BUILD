@@ -1,6 +1,6 @@
 (
 
-  patch  dosfsck/boot.c  $SCRIPT_DIRECTORY/boot.patch  &&
+  patch -p1 < $SCRIPT_DIRECTORY/linux-2.6.patch &&
   make             &&
   prepare_install  &&
   make    install
