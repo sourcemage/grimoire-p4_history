@@ -5,6 +5,6 @@
 
   make  RES_LIB=-lresolv  COPTIM="$CFLAGS"  DEBUGDEFS=""  CDEBUG=""  &&
   prepare_install  &&
-  make install
+  make  BINGRP=root  install
 
 ) > $C_FIFO 2>&1
