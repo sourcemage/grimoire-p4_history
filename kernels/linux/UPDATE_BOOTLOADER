@@ -180,10 +180,13 @@ local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
 
 local KEXTRA=$(grep "^kernel" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
 
+local KINITRD=$(grep "^initrd" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+
 cat << EOF
 title Source Mage GNU/Linux Kernel $VERSION
 root $GROOT
 kernel $KERNEL/vmlinubz-$VERSION root=$KROOT $KEXTRA
+initrd $KINITRD
 EOF
 
 }
