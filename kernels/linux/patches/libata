@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DESCRIPTION="libata kernel patch"
+SHORT="This patch enables sata/pata support"
+HELP="This patch enables sata/pata support for via chipsets.
+It allows usage of sata drives in new motherboards
+(and hopefully on athlon-64 systems)."
+VERSIONS="2.4.26-rc1-libata3"
+
+MD5S[0]=d674653725f8cc7ed9a6ea5a28eba970
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=\${KERNEL_URL}/pub/linux/kernel/people/jgarzik/libata/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi
