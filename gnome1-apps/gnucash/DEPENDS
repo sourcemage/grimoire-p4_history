@@ -1,14 +1,29 @@
-depends  libtool     &&
-depends  gnome-libs  &&
-depends  glade       &&
-depends  guppi       &&
-depends  slib        &&
-depends  g-wrap      &&
-depends  gtkhtml     &&
-depends  libghttp    &&
-depends  libxml2     &&
+if  [  "$CVS"  ==  "y"  ];  then
+  depends  libgnome  &&
 
-optional_depends  doxygen                                \
-                  "--enable-doxygen --enable-html-docs"  \
-                  ""                                     \
-                  "enable documentation generation"
+  optional_depends  SQL                \
+                    "--with-sql"       \
+                    "--without-sql"    \
+                    "for SQL support"  &&
+
+  optional_depends  doxygen                                \
+                    ""                                     \
+                    ""                                     \
+                    "enable documentation generation"
+else
+  depends  gnome-libs  &&
+  depends  glade       &&
+  depends  guppi       &&
+  depends  slib        &&
+  depends  gtkhtml     &&
+  depends  libghttp    &&
+
+  optional_depends  doxygen                                \
+                    "--enable-doxygen --enable-html-docs"  \
+                    ""                                     \
+                    "enable documentation generation"
+fi  &&
+
+depends  libtool  &&
+depends  libxml2  &&
+depends  g-wrap
