@@ -1,0 +1,15 @@
+--- dhcpd.h.old	2005-03-01 21:13:14.877846744 -0800
++++ dhcpd.h	2005-03-01 21:12:39.856170848 -0800
+@@ -306,9 +306,9 @@
+ #	define EPHEMERAL_FLAGS		(MS_NULL_TERMINATION | \
+ 					 UNICAST_BROADCAST_HACK)
+ 
+-	binding_state_t __attribute__ ((mode (__byte__))) binding_state;
+-	binding_state_t __attribute__ ((mode (__byte__))) next_binding_state;
+-	binding_state_t __attribute__ ((mode (__byte__))) desired_binding_state;
++	binding_state_t binding_state;
++	binding_state_t next_binding_state;
++	binding_state_t desired_binding_state;
+ 	
+ 	struct lease_state *state;
+ 
