@@ -19,14 +19,10 @@
 
 #some problems with everything in /bin
 for i in \
-    install env true ptx sha1sum split sum tac tr tsort unexpand wc basename dirname expr factor cut \
-    uptime sort md5sum hostid id logname nice nohup pathchk pinky printenv printf seq sleep tee test \
+    install env ptx sha1sum split sum tac tr tsort unexpand dirname expr factor cut \
+    sort md5sum hostid id logname nice nohup pathchk pinky printenv printf seq tee \
     tty users who whoami yes ;
 do  ln -sfn ${INSTALL_ROOT}/bin/$i ${INSTALL_ROOT}/usr/bin/$i
-done                                           &&
+done                                          
 
-#provided by other packages
-rm -f ${INSTALL_ROOT}/bin/readlink             &&
-rm -f ${INSTALL_ROOT}/bin/uptime               &&
-rm -f ${INSTALL_ROOT}/usr/man/man1/uptime.1
 ) >$C_FIFO 2>&1
