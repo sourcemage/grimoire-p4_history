@@ -1,8 +1,16 @@
 # Check if Manual config required
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+then
 
- if  !  grep  -q  "BB_CONFIG"  $SPELL_CONFIG;  then
-     if  query  "Do you want manualy configure $SPELL ? [For adv. user - Yes 'u want:)]" n
-	then  echo  "BB_CONFIG=y"  >>  $SPELL_CONFIG
-	else  echo  "BB_CONFIG=n"  >>  $SPELL_CONFIG
-    fi
- fi		      
+  if    query  "Do you want manualy configure $SPELL ? [For adv. user - Yes 'u want:)]" n
+    then  echo  "BB_CONFIG=y"  >>  $SPELL_CONFIG
+    else  echo  "BB_CONFIG=n"  >>  $SPELL_CONFIG
+  fi		      
+
+  if    query  "Do you want to reset the config file?"  n
+    then  rm  -f  ${CONFIG_CACHE}/${SPELL}.config
+  fi
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+
+fi
