@@ -1,3 +1,10 @@
+2003-09-19  Seth Woolley <seth@tautology.org>
+
+		fixed a bug in the init script
+		if +local_fs is not loaded first, /proc will mount here
+		and mount (if it comes after) will partially fail with a 
+		warning that /proc was already mounted.
+
 2003-09-18  Arwed v. Merkatz <v.merkatz@gmx.net>
 
 		fixed a bug in the init script
