@@ -1,2 +1,5 @@
 depends psmisc &&
-depends libcap
+depends libcap &&
+
+optional_depends openssl    "--with-crypto" "--without-crypto" "Enable Crypto" &&
+optional_depends w3c-libwww "" "" "Enable MD5"
