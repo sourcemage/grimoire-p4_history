@@ -15,6 +15,7 @@
     --disable-debug \
     --enable-shared \
     --with-opengl \
+    --with-libiconv-prefix=/usr \
     --enable-geometry \
     --with-x \
     $OPTS &&

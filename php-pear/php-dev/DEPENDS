@@ -61,10 +61,6 @@ optional_depends openldap           \
                  '--with-ldap=/usr' \
                  '--without-ldap'   \
                  'for LDAP support' &&
-optional_depends libiconv                               \
-                 '--with-iconv-dir=/usr --with-xmlrpc'  \
-                 '--without-iconv'                      \
-                 'for iconv() support'                  &&
 optional_depends expat                                \
                  '--enable-xml --with-expat-dir=/usr' \
                  '--disable-xml'                      \

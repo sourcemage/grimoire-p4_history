@@ -9,6 +9,8 @@
     OPTS="$OPTS --with-apxs"
   fi &&
 
+#    --with-iconv=/usr                  \
+#    --with-xmlrpc                      \
   ./configure                          \
     --prefix=${INSTALL_ROOT}/usr                      \
     --sysconfdir=${INSTALL_ROOT}/etc                  \
