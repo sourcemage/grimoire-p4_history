@@ -40,19 +40,8 @@ function mk_mailman_dir() {
   fi &&
   ln -fns $CONF/mm_cfg.py $PREFIX/Mailman/ &&
 
-  cp -df $PREFIX/scripts/mailman /etc/init.d/
-
 ) > $C_FIFO 2>&1 && (
+ 
+       $PREFIX/bin/check_perms -f
 
-	$PREFIX/bin/check_perms -f
-
-	if grep -iq "MAILMAN_BOOT=y" $SPELL_CONFIG; then
-		ln -fns ../init.d/mailman /etc/rc0.d/K12mailman
-		ln -fns ../init.d/mailman /etc/rc1.d/K12mailman
-		ln -fns ../init.d/mailman /etc/rc2.d/S98mailman
-		ln -fns ../init.d/mailman /etc/rc3.d/S98mailman
-		ln -fns ../init.d/mailman /etc/rc4.d/S98mailman
-		ln -fns ../init.d/mailman /etc/rc5.d/S98mailman
-		ln -fns ../init.d/mailman /etc/rc6.d/K12mailman
-	fi
 )

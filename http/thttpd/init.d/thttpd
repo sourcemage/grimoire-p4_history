@@ -22,7 +22,6 @@ start() {
   if [ -n "$HTARGS"         ] ; then $HTARGLIST="$HTARGLIST    '$HTARGS'"; fi
   thttpd $HTARGLIST
   evaluate_retval
-  ;;
 }
 
 stop() {
@@ -36,5 +35,4 @@ stop() {
     false
     evaluate_retval
   fi
-  ;;
 }

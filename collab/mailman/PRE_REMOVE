@@ -1,4 +1,4 @@
 crontab -u mailman -r                    2>/dev/null
-[ -x /etc/init.d/mailman ] && /etc/init.d/mailman stop
+telinit mailman stop 2> /dev/null
 
 true

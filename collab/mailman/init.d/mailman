@@ -1,0 +1,24 @@
+#!/bin/bash
+
+RUNLEVEL=3
+NEEDS="+remote_fs +network"
+
+. /etc/init.d/smgl_init
+
+PYTHON=/usr/bin/python
+MAILMANHOME=/usr/share/mailman
+MAILMANCTL=$MAILMANHOME/bin/mailmanctl
+
+start() {
+    $PYTHON $MAILMANCTL -s -q start
+    evaluate_retvale
+}
+
+stop() {
+    $PYTHON $MAILMANCTL -q stop
+    evaluate_retvale
+
+restart() {
+    $PYTHON $MAILMANCTL -q restart
+    evaluate_retvale
+}
