@@ -1,8 +1,0 @@
-# Stop scanlogd service
- if  [  -x  /etc/init.d/scanlogd.sh  ];  then
-     /etc/init.d/scanlogd.sh  stop
- else
-     if  [  -x  /etc/init.d/scanlogd  ];  then
-         /etc/init.d/scanlogd  stop
-     fi
- fi
