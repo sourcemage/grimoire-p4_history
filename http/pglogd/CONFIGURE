@@ -1,0 +1,8 @@
+if  !  grep  -q  "PGLOGD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke pglogd during boot?" y
+  then  echo   "PGLOGD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "PGLOGD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
