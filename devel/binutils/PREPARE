@@ -1,0 +1,9 @@
+if ! grep -q /usr/bin/as $PROTECTED
+then echo "/usr/bin/as" >> $PROTECTED
+fi &&
+if ! grep -q /usr/bin/ld $PROTECTED
+then echo "/usr/bin/ld" >> $PROTECTED
+fi &&
+if ! grep -q $SPELL $SOLO
+then echo "$SPELL" >> $SOLO
+fi

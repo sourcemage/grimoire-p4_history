@@ -1,42 +1,36 @@
-2003-06-19  hgg <hgreig@bigpond.net.au>
+2003-11-17 hgg <hgreig@bigpond.net.au>
+	* BUILD,PREPARE,DETAILS: hack to add as and ld to $PROTECTED so it can use prepare_install
+	and add SPELL to solo if it doesn't exist
 
-		Update to 2.14
+2003-06-19 hgg <hgreig@bigpond.net.au>
+	* DTEAILS: Update to 2.14
 
-2003-04-08  M.L. <mlubrano@sourcemage.org>
+2003-04-08 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Added $OPTS 
 
-                Added $OPTS in BUILD.
+2003-01-07 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.13.2.1.
 
-2003-01-07  Julian v. Bock  <julian@wongr.net>
+2002-11-10 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.13.1.
 
-		* DETAILS: set VERSION to 2.13.2.1.
+2002-10-03 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-2002-11-10  Julian v. Bock  <julian@wongr.net>
+2002-08-06 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.13.
 
-		* DETAILS: set VERSION to 2.13.1.
+2002-05-24 Julian v. Bock <julian@wongr.net>
+	* BUILD: remove tooldir options; execute only make install
+	to install the software.
 
-2002-10-03  Julian v. Bock  <julian@wongr.net>
+2002-05-17 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set version to 2.12.1; change SOURCE to .tar.bz2;
+	add ftp://sources.redhat.com as second download URL.
 
-		* DETAILS: add LICENSE and MD5 fields.
+2002-04-08 Julian v. Bock <julian@wongr.net>
+	* BUILD: don't build in srcdir (thanks to Jason Flatt).
 
-2002-08-06  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 2.13.
-
-2002-05-24  Julian v. Bock  <julian@wongr.net>
-
-		* BUILD: remove tooldir options; execute only make install
-		to install the software.
-
-2002-05-17  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set version to 2.12.1; change SOURCE to .tar.bz2;
-		add ftp://sources.redhat.com as second download URL.
-
-2002-04-08  Julian v. Bock  <julian@wongr.net>
-
-		* BUILD: don't build in srcdir (thanks to Jason Flatt).
-
-2002-03-19  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.12.
-		* BUILD: don't use prepare_install.
+2002-03-19 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.12.
+	* BUILD: don't use prepare_install.
