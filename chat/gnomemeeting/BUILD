@@ -26,8 +26,9 @@
                --with-openh323-includes=$OPENH323DIR/include   \
                --with-openh323-libs=$OPENH323DIR/lib           \
                --with-ptlib-includes=$PWLIBDIR/include/ptlib   \
-               --with-ptlib-libs=$PWLIBDIR/lib                 &&
-  make                                         &&
+               --with-ptlib-libs=$PWLIBDIR/lib                 \
+	       $OPTS					       &&
+  make                                                         &&
   make install
 
 ) > $C_FIFO 2>&1
