@@ -1,7 +1,9 @@
-depends Python &&
-depends PIL &&
-depends pycrypto &&
-depends MOZILLA-BROWSER &&
+depends Python         &&
+depends PIL            &&
+depends pycrypto       &&
+depends  docutils      &&
+optional_depends clamav '' '' 'for antivirus support'
+#depends MOZILLA-BROWSER &&
 
-optional_depends fox  '' '' 'for GUI' &&
-optional_depends FXPy '' '' 'for GUI'
+#optional_depends fox  '' '' 'for GUI' &&
+#optional_depends FXPy '' '' 'for GUI'
