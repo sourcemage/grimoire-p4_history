@@ -1,0 +1,26 @@
+requires          webserver &&
+
+depends           zlib          "--with-zlib --with-zlib-dir=/usr"  &&
+depends           bzip2         "--with-bz2"                        &&
+depends           mhash         "--with-mhash"                      &&
+depends           mcrypt        "--with-mcrypt"                     &&
+depends           curl          "--with-curl"                       &&
+depends           openssl       "--with-openssl"                    &&
+depends           gettext       "--with-gettext"                    &&
+
+optional_depends  "pspell"      "--with-pspell"      ""  "for spelling functions"                         &&
+optional_depends  "gmp"         "--with-gmp"         ""  "GNU multi precision library support"            &&
+optional_depends  "postgresql"  "--with-pgsql=/usr"  ""  "for native Postgresql support"                  &&
+optional_depends  "mysql"       "--with-mysql=/usr"  ""  "for native MySQL support"                       &&
+optional_depends  "gdbm"        "--with-gdbm"        ""  "database routines that use extensible hashing"  &&
+optional_depends  "mm"          "--with-mm"          ""  "for sharing memory between related processes"   &&
+optional_depends  "imap"        "--with-imap"        ""  "for IMAP/POP3 support"                          &&
+optional_depends  "openldap"    "--with-ldap"        ""  "for LDAP support"                               &&
+
+optional_depends  "expat"       "--with-xml --with-expat-dir=/usr"  ""  "expat is a XML parsing library"  &&
+optional_depends  "t1lib"       "--with-t1lib=/usr/share/t1lib"  ""  "for t1lib support"  &&
+
+optional_depends  "gd"  \
+   "--with-gd --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr  \
+    --with-freetype-dir=/usr/lib "     \
+    "" "for on the fly graphics creation"
