@@ -1,12 +1,13 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/vnc.patch
-  xmkmf            &&
-  make  World      &&
-  cd    Xvnc       &&
-  make  World      &&
+  ./configure      &&
+  make             &&
+  if spell_installed xfree86; then
+    cd Xvnc
+    make World
+    cd ..
+  fi
   prepare_install  &&
-  cd    ..         &&
   ./vncinstall   /usr/bin              &&
   mkdir  -p      /usr/bin/vnc.classes  &&
   cp  classes/*  /usr/bin/vnc.classes
