@@ -5,3 +5,11 @@ if  !  grep  -q  "JOYSTICK"  $SPELL_CONFIG; then
   fi
   echo "JOYSTICK=$JOYSTICK"  >>  $SPELL_CONFIG
 fi
+
+if  !  grep  -q  "V4L"  $SPELL_CONFIG; then
+  if    query  "Enable Video4Linux input support?" y
+  then  V4L=y
+  else  V4L=n
+  fi
+  echo "V4L=$V4L"  >>  $SPELL_CONFIG
+fi
