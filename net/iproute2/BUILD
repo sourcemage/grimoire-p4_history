@@ -1,6 +1,9 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/htb3.6_tc.diff  &&
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/htb3.6_tc.diff  &&
+  sedit  's!-I\.\./include-glibc!!'  Makefile        &&
+  sedit  's/-O2//'  Makefile                         &&
+  sedit  's/<db\.h>/<db_185.h>/'  misc/arpd.c        &&
 
   make  &&
   if spell_installed teTeX    &&
