@@ -6,10 +6,6 @@
   export    CFLAGS="$CFLAGS -O3"
   export  CXXFLAGS="$CXXFLAGS -O3"
 
-  if    [  "$MMX"  ==  "n"  ]
-  then  OPTS="$OPTS  --disable-mmx"
-  fi
-
   ./configure  --prefix=/usr  \
                $OPTS          &&
   make                        &&
