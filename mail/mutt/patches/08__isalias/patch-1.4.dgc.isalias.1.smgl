@@ -1,0 +1,180 @@
+diff -Pur mutt-1.4-base/PATCHES mutt-1.4/PATCHES
+--- mutt-1.4-base/PATCHES	Mon May  6 06:26:44 2002
++++ mutt-1.4/PATCHES	Fri Jun 14 11:28:06 2002
+@@ -1,0 +1 @@
++patch-1.4.dgc.isalias.1
+diff -Pur mutt-1.4-base/doc/manual.sgml.head mutt-1.4/doc/manual.sgml.head
+--- mutt-1.4-base/doc/manual.sgml.head	Mon May  6 06:26:44 2002
++++ mutt-1.4/doc/manual.sgml.head	Fri Jun 14 11:28:06 2002
+@@ -1735,10 +1735,25 @@
+ match if there is at least one match in the whole list. If you want to
+ make sure that all elements of that list match, you need to prefix your
+ pattern with ^.
+-This example matches all mails which only has recipients from Germany.
++This example matches all messages which only have recipients from Germany.
+ 
+ <tscreen><verb>
+ ^~C \.de$
++</verb></tscreen>
++
++You can restrict address pattern matching to aliases that you have
++defined with the "@" modifier.
++This example matches messages whose recipients are all from Germany,
++and who are known to your alias list.
++<tscreen><verb>
++^@~C \.de$
++</verb></tscreen>
++
++To match any defined alias, use a regular expression that matches any
++string.
++This example matches messages whose senders are known aliases.
++<tscreen><verb>
++@~f .
+ </verb></tscreen>
+ 
+ <sect2>Complex Patterns
+diff -Pur mutt-1.4-base/mutt.h mutt-1.4/mutt.h
+--- mutt-1.4-base/mutt.h	Thu Feb 28 02:24:13 2002
++++ mutt-1.4/mutt.h	Fri Jun 14 11:28:06 2002
+@@ -716,6 +716,7 @@
+   short op;
+   short not;
+   short alladdr;
++  short isalias;
+   int min;
+   int max;
+   struct pattern_t *next;
+diff -Pur mutt-1.4-base/pattern.c mutt-1.4/pattern.c
+--- mutt-1.4-base/pattern.c	Sat May 18 00:39:18 2002
++++ mutt-1.4/pattern.c	Fri Jun 14 11:28:53 2002
+@@ -252,6 +252,7 @@
+     snprintf (err->data, err->dsize, _("Error in expression: %s"), s->dptr);
+     return (-1);
+   }
++
+   pat->rx = safe_malloc (sizeof (regex_t));
+   r = REGCOMP (pat->rx, buf.data, REG_NEWLINE | REG_NOSUB | mutt_which_case (buf.data));
+   FREE (&buf.data);
+@@ -716,6 +717,7 @@
+   pattern_t *last = NULL;
+   int not = 0;
+   int alladdr = 0;
++  int isalias = 0;
+   int or = 0;
+   int implicit = 1;	/* used to detect logical AND operator */
+   struct pattern_flags *entry;
+@@ -740,6 +742,10 @@
+ 	ps.dptr++;
+ 	not = !not;
+ 	break;
++      case '@':
++	ps.dptr++;
++	isalias = !isalias;
++	break;
+       case '|':
+ 	if (!or)
+ 	{
+@@ -765,6 +771,7 @@
+ 	implicit = 0;
+ 	not = 0;
+ 	alladdr = 0;
++	isalias = 0;
+ 	break;
+       case '~':
+ 	if (implicit && or)
+@@ -781,8 +788,10 @@
+ 	tmp = new_pattern ();
+ 	tmp->not = not;
+ 	tmp->alladdr = alladdr;
++	tmp->isalias = isalias;
+ 	not = 0;
+ 	alladdr=0;
++	isalias=0;
+ 
+ 	if (last)
+ 	  last->next = tmp;
+@@ -848,8 +857,10 @@
+ 	last = tmp;
+ 	tmp->not ^= not;
+ 	tmp->alladdr |= alladdr;
++	tmp->isalias |= isalias;
+ 	not = 0;
+ 	alladdr = 0;
++	isalias = 0;
+ 	ps.dptr = p + 1; /* restore location */
+ 	break;
+       default:
+@@ -891,21 +902,25 @@
+   return 0;
+ }
+ 
+-static int match_adrlist (regex_t *rx, int match_personal, int alladdr,
+-			  int n, ...)
++static int match_adrlist (pattern_t *pat, int match_personal, int n, ...)
+ {
+   va_list ap;
+   ADDRESS *a;
++  int alladdr; /* don't change pat */
++  regex_t *rx; /* optimize on derefs */
+ 
++  alladdr = pat->alladdr;
++  rx = pat->rx;
+   va_start (ap, n);
+   for ( ; n ; n --)
+   {
+     for (a = va_arg (ap, ADDRESS *) ; a ; a = a->next)
+     {
+       if (alladdr^
+-	  ((a->mailbox && regexec (rx, a->mailbox, 0, NULL, 0) == 0) ||
+-	   (match_personal && a->personal &&
+-	    regexec (rx, a->personal, 0, NULL, 0) == 0)))
++	  ((!pat->isalias || alias_reverse_lookup(a) != NULL) &&
++	   ((a->mailbox && regexec (rx, a->mailbox, 0, NULL, 0) == 0) ||
++	    (match_personal && a->personal &&
++	     regexec (rx, a->personal, 0, NULL, 0) == 0))))
+       {
+ 	va_end (ap);
+ 	return (! alladdr); /* Found match, or non-match if alladdr */
+@@ -1004,17 +1019,17 @@
+     case M_WHOLE_MSG:
+       return (pat->not ^ msg_search (ctx, pat->rx, buf, sizeof (buf), pat->op, h->msgno));
+     case M_SENDER:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 1, h->env->sender));
++      return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					1, h->env->sender));
+     case M_FROM:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 1, h->env->from));
++      return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					1, h->env->from));
+     case M_TO:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 1, h->env->to));
++      return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					1, h->env->to));
+     case M_CC:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 1, h->env->cc));
++      return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					1, h->env->cc));
+     case M_SUBJECT:
+       return (pat->not ^ (h->env->subject && regexec (pat->rx, h->env->subject, 0, NULL, 0) == 0));
+     case M_ID:
+@@ -1027,12 +1042,12 @@
+     case M_REFERENCE:
+       return (pat->not ^ match_reference (pat->rx, h->env->references));
+     case M_ADDRESS:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 4, h->env->from,
++      return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					4, h->env->from,
+ 					h->env->sender, h->env->to, h->env->cc));
+     case M_RECIPIENT:
+-      return (pat->not ^ match_adrlist (pat->rx, flags & M_MATCH_FULL_ADDRESS,
+-					pat->alladdr, 2, h->env->to, h->env->cc));
++           return (pat->not ^ match_adrlist (pat, flags & M_MATCH_FULL_ADDRESS,
++					2, h->env->to, h->env->cc));
+     case M_LIST:
+       return (pat->not ^ mutt_is_list_recipient (pat->alladdr, h->env->to, h->env->cc));
+     case M_PERSONAL_RECIP:

@@ -1,0 +1,13 @@
+case "${BRANCH}" in
+  stable)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.0.cd.purge_message.3.smgl"
+  ;;
+  devel|cvs)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.5.1.cd.purge_message.3.4.smgl"
+  ;;
+esac &&
+
+# do this here instead of in the patch to play nicely with other patches
+cat << EOF >> OPS
+OP_PURGE_MESSAGE "really delete the current entry, bypassing the trash folder"
+EOF

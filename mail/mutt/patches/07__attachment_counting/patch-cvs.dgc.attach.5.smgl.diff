@@ -1,0 +1,47 @@
+--- patch-1.5.8.dgc.attach.5	2005-03-19 21:20:22.000000000 -0600
++++ patch-cvs.dgc.attach.5.smgl	2005-03-20 21:56:54.278842576 -0600
+@@ -93,17 +93,6 @@ diff -Pur mutt-1.5.8-base/Muttrc.head.in
+  ## More settings
+  ##
+  
+-diff -Pur mutt-1.5.8-base/doc/manual-6.html mutt-1.5.8/doc/manual-6.html
+---- mutt-1.5.8-base/doc/manual-6.html	Sat Feb 12 14:57:52 2005
+-+++ mutt-1.5.8/doc/manual-6.html	Tue Feb 22 15:49:08 2005
+-@@ -1319,6 +1319,7 @@
+- <A HREF="#to_chars">$to_chars</A> string</P>
+- <DT><B>%u </B><DD><P>user (login) name of the author</P>
+- <DT><B>%v </B><DD><P>first name of the author, or the recipient if the message is from you</P>
+-+<DT><B>%X </B><DD><P>number of attachments (%-X: number of top-level attachments)
+- <DT><B>%y </B><DD><P>`x-label:' field, if present</P>
+- <DT><B>%Y </B><DD><P>`x-label' field, if present, and (1) not at part of a thread tree,
+- (2) at the top of a thread, or (3) `x-label' is different from
+ diff -Pur mutt-1.5.8-base/doc/manual.sgml.head mutt-1.5.8/doc/manual.sgml.head
+ --- mutt-1.5.8-base/doc/manual.sgml.head	Sat Feb 12 13:41:36 2005
+ +++ mutt-1.5.8/doc/manual.sgml.head	Tue Feb 22 15:49:08 2005
+@@ -115,26 +104,6 @@ diff -Pur mutt-1.5.8-base/doc/manual.sgm
+  ~y EXPR         messages which contain EXPR in the `X-Label' field
+  ~z [MIN]-[MAX]  messages with a size in the range MIN to MAX *)
+  ~=		duplicated messages (see $duplicate_threads)
+-diff -Pur mutt-1.5.8-base/doc/manual.txt mutt-1.5.8/doc/manual.txt
+---- mutt-1.5.8-base/doc/manual.txt	Sat Feb 12 14:57:49 2005
+-+++ mutt-1.5.8/doc/manual.txt	Wed Feb 23 19:42:21 2005
+-@@ -2235,6 +2235,7 @@
+-        ~v              message is part of a collapsed thread.
+-        ~V              cryptographically verified messages
+-        ~x EXPR         messages which contain EXPR in the `References' field
+-+       ~X [MIN]-[MAX]  messages with MIN - MAX attachments *)
+-        ~y EXPR         messages which contain EXPR in the `X-Label' field
+-        ~z [MIN]-[MAX]  messages with a size in the range MIN to MAX *)
+-        ~=              duplicated messages (see $duplicate_threads)
+-@@ -4543,6 +4544,8 @@
+- 
+-      [1m%v [22mfirst name of the author, or the recipient if the message is
+-         from you
+-+
+-+     %%XX number of attachments (%-X: number of top-level attachments)
+- 
+-      [1m%y [22m`x-label:' field, if present
+- 
+ diff -Pur mutt-1.5.8-base/doc/muttrc.man.head mutt-1.5.8/doc/muttrc.man.head
+ --- mutt-1.5.8-base/doc/muttrc.man.head	Sat Jan 15 03:42:45 2005
+ +++ mutt-1.5.8/doc/muttrc.man.head	Wed Feb 23 19:43:38 2005

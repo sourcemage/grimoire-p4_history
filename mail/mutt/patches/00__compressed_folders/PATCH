@@ -1,0 +1,11 @@
+case "${BRANCH}" in
+  stable)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.2.1.rr.compressed.1.smgl"
+  ;;
+  devel)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.9.rr.compressed.1.smgl"
+  ;;
+  cvs)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-cvs.rr.compressed.1.smgl"
+  ;;
+esac

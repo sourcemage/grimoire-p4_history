@@ -1,0 +1,8 @@
+case "${BRANCH}" in
+  stable)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.sde.libesmtp.3.smgl"
+  ;;
+  devel|cvs)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.3.sde.libesmtp.3.smgl"
+  ;;
+esac

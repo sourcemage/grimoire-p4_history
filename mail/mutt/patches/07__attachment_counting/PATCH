@@ -1,0 +1,11 @@
+case "${BRANCH}" in
+  stable)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.4.dgc.attach.5.smgl"
+  ;;
+  devel)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-1.5.8.dgc.attach.5.smgl"
+  ;;
+  cvs)
+    patch -p1 < "${PATCH_DIRECTORY}/${PATCH}/patch-cvs.dgc.attach.5.smgl"
+  ;;
+esac

@@ -1,0 +1,792 @@
+--- patch-1.5.9.rr.compressed.1	2005-03-20 23:41:19.255421368 -0600
++++ patch-cvs.rr.compressed.1.smgl	2005-03-20 21:45:09.544978408 -0600
+@@ -520,49 +520,6 @@ diff -urN mutt-1.5.9/compress.h mutt-1.5
+ +int mutt_test_compress_command (const char *);
+ +int mutt_check_mailbox_compressed (CONTEXT *);
+ +void mutt_fast_close_compressed (CONTEXT *);
+-diff -urN mutt-1.5.9/config.h.in mutt-1.5.9-ro/config.h.in
+---- mutt-1.5.9/config.h.in	2005-03-13 17:37:09.000000000 +0100
+-+++ mutt-1.5.9-ro/config.h.in	2005-03-20 14:06:20.000000000 +0100
+-@@ -498,6 +498,9 @@
+- /* Define to enable Sun mailtool attachments support. */
+- #undef SUN_ATTACHMENT
+- 
+-+/* Define to enable compressed mailboxes support */
+-+#undef USE_COMPRESSED
+-+
+- /* Define to use dotlocking for mailboxes. */
+- #undef USE_DOTLOCK
+- 
+-diff -urN mutt-1.5.9/configure mutt-1.5.9-ro/configure
+---- mutt-1.5.9/configure	2005-03-13 17:36:32.000000000 +0100
+-+++ mutt-1.5.9-ro/configure	2005-03-20 14:12:43.000000000 +0100
+-@@ -872,6 +872,7 @@
+-   --enable-hcache         Enable header caching
+-   --disable-iconv         Disable iconv support
+-   --disable-nls           Do not use Native Language Support
+-+  --enable-compressed     Enable compressed folders support
+- 
+- Optional Packages:
+-   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+-@@ -13982,6 +13983,18 @@
+- fi;
+- 
+- 
+-+# Check whether --enable-compressed or --disable-compressed was given.
+-+if test "${enable_compressed+set}" = set; then
+-+  enableval="$enable_compressed"
+-+  if test x$enableval = xyes; then
+-+                cat >> confdefs.h <<\EOF
+-+#define USE_COMPRESSED 1
+-+EOF
+-+
+-+        fi
+-+fi
+-+
+-+
+- # Check whether --with-exec-shell or --without-exec-shell was given.
+- if test "${with_exec_shell+set}" = set; then
+-   withval="$with_exec_shell"
+ diff -urN mutt-1.5.9/configure.in mutt-1.5.9-ro/configure.in
+ --- mutt-1.5.9/configure.in	2005-03-13 17:36:01.000000000 +0100
+ +++ mutt-1.5.9-ro/configure.in	2005-03-20 14:11:05.000000000 +0100
+@@ -593,450 +550,6 @@ diff -urN mutt-1.5.9/curs_main.c mutt-1.
+  	  mutt_str_replace (&LastFolder, Context->path);
+  	  oldcount = Context ? Context->msgcount : 0;
+  
+-diff -urN mutt-1.5.9/doc/manual-4.html mutt-1.5.9-ro/doc/manual-4.html
+---- mutt-1.5.9/doc/manual-4.html	2005-03-13 17:37:22.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/manual-4.html	2005-03-20 14:06:20.000000000 +0100
+-@@ -848,6 +848,174 @@
+- </CODE></BLOCKQUOTE>
+- </P>
+- 
+-+<H2><A NAME="ss4.14">4.14</A> <A HREF="manual.html#toc4.14">Compressed folders Support (OPTIONAL)</A>
+-+</H2>
+-+
+-+
+-+<P>If Mutt was compiled with compressed folders support (by running the
+-+<EM>configure</EM> script with the <EM>--enable-compressed</EM> flag), Mutt
+-+can open folders stored in an arbitrary format, provided that the user
+-+has a script to convert from/to this format to one of the accepted.</P>
+-+<P>The most common use is to open compressed archived folders e.g. with
+-+gzip.</P>
+-+<P>In addition, the user can provide a script that gets a folder in an
+-+accepted format and appends its context to the folder in the
+-+user-defined format, which may be faster than converting the entire
+-+folder to the accepted format, appending to it and converting back to
+-+the user-defined format.</P>
+-+<P>There are three hooks defined (
+-+<A HREF="#open-hook">open-hook</A>,
+-+<A HREF="#close-hook">close-hook</A> and 
+-+<A HREF="#append-hook">append-hook</A>) which define commands to uncompress and compress
+-+a folder and to append messages to an existing compressed folder 
+-+respectively.</P>
+-+<P>For example:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+open-hook \\.gz$ "gzip -cd %f &gt; %t" 
+-+close-hook \\.gz$ "gzip -c %t &gt; %f"
+-+append-hook \\.gz$ "gzip -c %t &gt;&gt; %f" 
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P>You do not have to specify all of the commands. If you omit 
+-+<A HREF="#append-hook">append-hook</A>, the folder will be open and
+-+closed again each time you will add to it. If you omit 
+-+<A HREF="#close-hook">close-hook</A> (or give empty command) , the
+-+folder will be open in the  mode. If you specify 
+-+<A HREF="#append-hook">append-hook</A> though you'll be able to append
+-+to the folder.</P>
+-+<P>Note that Mutt will only try to use hooks if the file is not in one of
+-+the accepted formats. In particular, if the file is empty, mutt
+-+supposes it is not compressed. This is important because it allows the
+-+use of programs that do not have well defined extensions. Just use
+-+&quot;.&quot; as a regexp. But this may be surprising if your
+-+compressing script produces empty files. In this situation, unset 
+-+<A HREF="manual-6.html#save_empty">$save_empty</A>, so that the compressed file
+-+will be removed if you delete all of the messages.</P>
+-+
+-+<H3><A NAME="open-hook"></A> Open a compressed mailbox for reading</H3>
+-+
+-+<P>Usage: <CODE>open-hook</CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</P>
+-+<P>The <EM>command</EM> is the command that can be used for opening the
+-+folders whose names match <EM>regexp</EM>.</P>
+-+<P>The <EM>command</EM> string is the printf-like format string, and it
+-+should accept two parameters: %f, which is replaced with the
+-+(compressed) folder name, and %t which is replaced with the
+-+name of the temporary folder to which to write.</P>
+-+<P>%f and %t can be repeated any number of times in the
+-+command string, and all of the entries are replaced with the
+-+appropriate folder name. In addition, %% is replaced by
+-+%, as in printf, and any other %anything is left as is.</P>
+-+<P>The <EM>command</EM> should <B>not</B> remove the original compressed file.
+-+The <EM>command</EM> should return non-zero exit status if it fails, so
+-+mutt knows something's wrong.</P>
+-+<P>Example:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+open-hook \\.gz$ "gzip -cd %f &gt; %t" 
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P>If the <EM>command</EM> is empty, this operation is disabled for this file
+-+type.</P>
+-+
+-+<H3><A NAME="close-hook"></A> Write a compressed mailbox</H3>
+-+
+-+<P>Usage: <CODE>close-hook</CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</P>
+-+<P>This is used to close the folder that was open with the 
+-+<A HREF="#open-hook">open-hook</A> command after some changes were made to it.</P>
+-+<P>The <EM>command</EM> string is the command that can be used for closing the
+-+folders whose names match <EM>regexp</EM>. It has the same format as in 
+-+the 
+-+<A HREF="#open-hook">open-hook</A> command. Temporary folder
+-+in this case is the folder previously produced by the 
+-+<A HREF="#open-hook">open-hook</A> command.</P>
+-+<P>The <EM>command</EM> should <B>not</B> remove the decompressed file. The
+-+<EM>command</EM> should return non-zero exit status if it fails, so mutt
+-+knows something's wrong.</P>
+-+<P>Example:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+close-hook \\.gz$ "gzip -c %t &gt; %f"
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P>If the <EM>command</EM> is empty, this operation is disabled for this file
+-+type, and the file can only be open in the read-only mode.</P>
+-+<P>
+-+<A HREF="#close-hook">close-hook</A> is not called when you exit
+-+from the folder if the folder was not changed.</P>
+-+
+-+<H3><A NAME="append-hook"></A> Append a message to a compressed mailbox</H3>
+-+
+-+<P>Usage: <CODE>append-hook</CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</P>
+-+<P>This command is used for saving to an existing compressed folder.
+-+The <EM>command</EM> is the command that can be used for appending to the
+-+folders whose names match <EM>regexp</EM>. It has the same format as in 
+-+the 
+-+<A HREF="#open-hook">open-hook</A> command.
+-+The temporary folder in this case contains the messages that are being
+-+appended. </P>
+-+<P>The <EM>command</EM> should <B>not</B> remove the decompressed file. The
+-+<EM>command</EM> should return non-zero exit status if it fails, so mutt
+-+knows something's wrong.</P>
+-+<P>Example:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+append-hook \\.gz$ "gzip -c %t &gt;&gt; %f" 
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P>When 
+-+<A HREF="#append-hook">append-hook</A> is used, the folder is
+-+not opened, which saves time, but this means that we can not find out
+-+what the folder type is. Thus the default (
+-+<A HREF="manual-6.html#mbox_type">$mbox_type</A>) type is always supposed (i.e.
+-+this is the format used for the temporary folder).</P>
+-+<P>If the file does not exist when you save to it, 
+-+<A HREF="#close-hook">close-hook</A> is called, and not 
+-+<A HREF="#append-hook">append-hook</A>. 
+-+<A HREF="#append-hook">append-hook</A> is only
+-+for appending to existing folders.</P>
+-+<P>If the <EM>command</EM> is empty, this operation is disabled for this file
+-+type. In this case, the folder will be open and closed again (using
+-+<A HREF="#open-hook">open-hook</A> and 
+-+<A HREF="#close-hook">close-hook</A>respectively) each time you will add to it.</P>
+-+
+-+<H3>Encrypted folders</H3>
+-+
+-+<P>The compressed folders support can also be used to handle encrypted
+-+folders. If you want to encrypt a folder with PGP, you may want to use
+-+the following hooks:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+open-hook  \\.pgp$ "pgp -f &lt; %f &gt; %t"
+-+close-hook \\.pgp$ "pgp -fe YourPgpUserIdOrKeyId &lt; %t &gt; %f"
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P>Please note, that PGP does not support appending to an encrypted
+-+folder, so there is no append-hook defined.</P>
+-+<P>If you are using GnuPG instead of PGP, you may use the following hooks
+-+instead:</P>
+-+<P>
+-+<BLOCKQUOTE><CODE>
+-+<PRE>
+-+open-hook  \\.gpg$ "gpg --decrypt &lt; %f &gt; %t"
+-+close-hook \\.gpg$ "gpg --encrypt --recipient YourGpgUserIdOrKeyId &lt; %t &gt; %f"
+-+</PRE>
+-+</CODE></BLOCKQUOTE>
+-+</P>
+-+<P><B>Note:</B> the folder is temporary stored decrypted in the /tmp
+-+directory, where it can be read by your system administrator. So think
+-+about the security aspects of this.</P>
+-+
+- <HR>
+- <A HREF="manual-5.html">Next</A>
+- <A HREF="manual-3.html">Previous</A>
+-diff -urN mutt-1.5.9/doc/manual-6.html mutt-1.5.9-ro/doc/manual-6.html
+---- mutt-1.5.9/doc/manual-6.html	2005-03-13 17:37:24.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/manual-6.html	2005-03-20 14:06:20.000000000 +0100
+-@@ -80,6 +80,8 @@
+- <LI><CODE>
+- <A HREF="manual-5.html#alternative_order">unalternative_order</A></CODE> <EM>mimetype</EM> [ <EM>mimetype</EM> ... ]</LI>
+- <LI><CODE>
+-+<A HREF="manual-4.html#append-hook">append-hook</A></CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</LI>
+-+<LI><CODE>
+- <A HREF="manual-5.html#auto_view">auto_view</A></CODE> <EM>mimetype</EM> [ <EM>mimetype</EM> ... ]</LI>
+- <LI><CODE>
+- <A HREF="manual-5.html#auto_view">unauto_view</A></CODE> <EM>mimetype</EM> [ <EM>mimetype</EM> ... ]</LI>
+-@@ -88,6 +90,8 @@
+- <LI><CODE>
+- <A HREF="manual-3.html#charset-hook">charset-hook</A></CODE> <EM>alias</EM> <EM>charset</EM></LI>
+- <LI><CODE>
+-+<A HREF="manual-4.html#close-hook">close-hook</A></CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</LI>
+-+<LI><CODE>
+- <A HREF="manual-3.html#color">color</A></CODE> <EM>object</EM> <EM>foreground</EM> <EM>background</EM> [ <EM>regexp</EM> ]</LI>
+- <LI><CODE>
+- <A HREF="manual-3.html#color">uncolor</A></CODE> <EM>index</EM> <EM>pattern</EM> [ <EM>pattern</EM> ... ]</LI>
+-@@ -134,6 +138,8 @@
+- <LI><CODE>
+- <A HREF="manual-3.html#my_hdr">unmy_hdr</A></CODE> <EM>field</EM> [ <EM>field</EM> ... ]</LI>
+- <LI><CODE>
+-+<A HREF="manual-4.html#open-hook">open-hook</A></CODE> <EM>regexp</EM> &quot;<EM>command</EM>&quot;</LI>
+-+<LI><CODE>
+- <A HREF="manual-3.html#crypt-hook">crypt-hook</A></CODE> <EM>pattern</EM> <EM>key-id</EM></LI>
+- <LI><CODE>
+- <A HREF="manual-3.html#push">push</A></CODE> <EM>string</EM></LI>
+-@@ -668,7 +674,7 @@
+- <H3><A NAME="dotlock_program"></A> dotlock_program</H3>
+- 
+- <P>Type: path<BR>
+--Default: &quot;/usr/local/bin/mutt_dotlock&quot;</P>
+-+Default: &quot;/usr/bin/mutt_dotlock&quot;</P>
+- 
+- <P>Contains the path of the mutt_dotlock (8) binary to be used by
+- mutt.</P>
+-diff -urN mutt-1.5.9/doc/manual.html mutt-1.5.9-ro/doc/manual.html
+---- mutt-1.5.9/doc/manual.html	2005-03-13 17:37:25.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/manual.html	2005-03-20 14:06:20.000000000 +0100
+-@@ -90,6 +90,7 @@
+- <LI><A NAME="toc4.11">4.11</A> <A HREF="manual-4.html#ss4.11">IMAP Support (OPTIONAL)</A>
+- <LI><A NAME="toc4.12">4.12</A> <A HREF="manual-4.html#ss4.12">Managing multiple IMAP/POP accounts (OPTIONAL)</A>
+- <LI><A NAME="toc4.13">4.13</A> <A HREF="manual-4.html#ss4.13">Start a WWW Browser on URLs (EXTERNAL)</A>
+-+<LI><A NAME="toc4.14">4.14</A> <A HREF="manual-4.html#ss4.14">Compressed folders Support (OPTIONAL)</A>
+- </UL>
+- <P>
+- <H2><A NAME="toc5">5.</A> <A HREF="manual-5.html">Mutt's MIME Support</A></H2>
+-diff -urN mutt-1.5.9/doc/manual.sgml mutt-1.5.9-ro/doc/manual.sgml
+---- mutt-1.5.9/doc/manual.sgml	2005-03-13 17:37:11.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/manual.sgml	2005-03-20 14:06:20.000000000 +0100
+-@@ -2539,6 +2539,176 @@
+- macro pager \cb |urlview\n
+- </verb></tscreen>
+- 
+-+<sect1>Compressed folders Support (OPTIONAL)
+-+<p>
+-+
+-+If Mutt was compiled with compressed folders support (by running the
+-+<em/configure/ script with the <em/--enable-compressed/ flag), Mutt
+-+can open folders stored in an arbitrary format, provided that the user
+-+has a script to convert from/to this format to one of the accepted.
+-+
+-+The most common use is to open compressed archived folders e.g. with
+-+gzip.
+-+
+-+In addition, the user can provide a script that gets a folder in an
+-+accepted format and appends its context to the folder in the
+-+user-defined format, which may be faster than converting the entire
+-+folder to the accepted format, appending to it and converting back to
+-+the user-defined format.
+-+
+-+There are three hooks defined (<ref id="open-hook" name="open-hook">,
+-+<ref id="close-hook" name="close-hook"> and <ref id="append-hook"
+-+name="append-hook">) which define commands to uncompress and compress
+-+a folder and to append messages to an existing compressed folder 
+-+respectively.
+-+
+-+For example:
+-+
+-+<tscreen><verb>
+-+open-hook \\.gz$ "gzip -cd %f &gt; %t" 
+-+close-hook \\.gz$ "gzip -c %t &gt; %f"
+-+append-hook \\.gz$ "gzip -c %t &gt;&gt; %f" 
+-+</verb></tscreen>
+-+
+-+You do not have to specify all of the commands. If you omit <ref
+-+id="append-hook" name="append-hook">, the folder will be open and
+-+closed again each time you will add to it. If you omit <ref
+-+id="close-hook" name="close-hook"> (or give empty command) , the
+-+folder will be open in the  mode. If you specify <ref
+-+id="append-hook" name="append-hook"> though you'll be able to append
+-+to the folder.
+-+
+-+Note that Mutt will only try to use hooks if the file is not in one of
+-+the accepted formats. In particular, if the file is empty, mutt
+-+supposes it is not compressed. This is important because it allows the
+-+use of programs that do not have well defined extensions. Just use
+-+&dquot;.&dquot; as a regexp. But this may be surprising if your
+-+compressing script produces empty files. In this situation, unset <ref
+-+id="save_empty" name="&dollar;save&lowbar;empty">, so that the compressed file
+-+will be removed if you delete all of the messages.
+-+
+-+<sect2>Open a compressed mailbox for reading<label id="open-hook">
+-+<p>
+-+Usage: <tt/open-hook/ <em/regexp/ &dquot;<em/command/&dquot;
+-+
+-+The <em/command/ is the command that can be used for opening the
+-+folders whose names match <em/regexp/.
+-+
+-+The <em/command/ string is the printf-like format string, and it
+-+should accept two parameters: &percnt;f, which is replaced with the
+-+(compressed) folder name, and &percnt;t which is replaced with the
+-+name of the temporary folder to which to write.
+-+
+-+&percnt;f and &percnt;t can be repeated any number of times in the
+-+command string, and all of the entries are replaced with the
+-+appropriate folder name. In addition, &percnt;&percnt; is replaced by
+-+&percnt;, as in printf, and any other &percnt;anything is left as is.
+-+
+-+The <em/command/ should <bf/not/ remove the original compressed file.
+-+The <em/command/ should return non-zero exit status if it fails, so
+-+mutt knows something's wrong.
+-+
+-+Example:
+-+
+-+<tscreen><verb>
+-+open-hook \\.gz$ "gzip -cd %f &gt; %t" 
+-+</verb></tscreen>
+-+
+-+If the <em/command/ is empty, this operation is disabled for this file
+-+type.
+-+
+-+<sect2>Write a compressed mailbox<label id="close-hook">
+-+<p>
+-+Usage: <tt/close-hook/ <em/regexp/ &dquot;<em/command/&dquot;
+-+
+-+This is used to close the folder that was open with the <ref id="open-hook" 
+-+name="open-hook"> command after some changes were made to it.
+-+
+-+The <em/command/ string is the command that can be used for closing the
+-+folders whose names match <em/regexp/. It has the same format as in 
+-+the <ref id="open-hook" name="open-hook"> command. Temporary folder
+-+in this case is the folder previously produced by the <ref id="open-hook"
+-+name="open-hook"> command.
+-+
+-+The <em/command/ should <bf/not/ remove the decompressed file. The
+-+<em/command/ should return non-zero exit status if it fails, so mutt
+-+knows something's wrong.
+-+
+-+Example:
+-+
+-+<tscreen><verb>
+-+close-hook \\.gz$ "gzip -c %t &gt; %f"
+-+</verb></tscreen>
+-+
+-+If the <em/command/ is empty, this operation is disabled for this file
+-+type, and the file can only be open in the read-only mode.
+-+
+-+<ref id="close-hook" name ="close-hook"> is not called when you exit
+-+from the folder if the folder was not changed.
+-+
+-+<sect2>Append a message to a compressed mailbox<label id="append-hook">
+-+<p>
+-+Usage: <tt/append-hook/ <em/regexp/ &dquot;<em/command/&dquot;
+-+
+-+This command is used for saving to an existing compressed folder.
+-+The <em/command/ is the command that can be used for appending to the
+-+folders whose names match <em/regexp/. It has the same format as in 
+-+ the <ref id="open-hook" name="open-hook"> command.
+-+The temporary folder in this case contains the messages that are being
+-+appended. 
+-+
+-+The <em/command/ should <bf/not/ remove the decompressed file. The
+-+<em/command/ should return non-zero exit status if it fails, so mutt
+-+knows something's wrong.
+-+
+-+Example:
+-+
+-+<tscreen><verb>
+-+append-hook \\.gz$ "gzip -c %t &gt;&gt; %f" 
+-+</verb></tscreen>
+-+
+-+When <ref id="append-hook" name="append-hook"> is used, the folder is
+-+not opened, which saves time, but this means that we can not find out
+-+what the folder type is. Thus the default (<ref id="mbox_type"
+-+name="&dollar;mbox&lowbar;type">) type is always supposed (i.e.
+-+this is the format used for the temporary folder).
+-+
+-+If the file does not exist when you save to it, <ref id="close-hook"
+-+name="close-hook"> is called, and not <ref id="append-hook"
+-+name="append-hook">. <ref id="append-hook" name="append-hook"> is only
+-+for appending to existing folders.
+-+
+-+If the <em/command/ is empty, this operation is disabled for this file
+-+type. In this case, the folder will be open and closed again (using
+-+<ref id="open-hook" name="open-hook"> and <ref id="close-hook" 
+-+name="close-hook">respectively) each time you will add to it.
+-+
+-+<sect2>Encrypted folders
+-+<p>
+-+The compressed folders support can also be used to handle encrypted
+-+folders. If you want to encrypt a folder with PGP, you may want to use
+-+the following hooks:
+-+
+-+<tscreen><verb>
+-+open-hook  \\.pgp$ "pgp -f &lt; %f &gt; %t"
+-+close-hook \\.pgp$ "pgp -fe YourPgpUserIdOrKeyId &lt; %t &gt; %f"
+-+</verb></tscreen>
+-+
+-+Please note, that PGP does not support appending to an encrypted
+-+folder, so there is no append-hook defined.
+-+
+-+If you are using GnuPG instead of PGP, you may use the following hooks
+-+instead:
+-+
+-+<tscreen><verb>
+-+open-hook  \\.gpg$ "gpg --decrypt &lt; %f &gt; %t"
+-+close-hook \\.gpg$ "gpg --encrypt --recipient YourGpgUserIdOrKeyId &lt; %t &gt; %f"
+-+</verb></tscreen>
+-+
+-+<bf/Note:/ the folder is temporary stored decrypted in the /tmp
+-+directory, where it can be read by your system administrator. So think
+-+about the security aspects of this.
+-+
+- <sect>Mutt's MIME Support
+- <p>
+- Quite a bit of effort has been made to make Mutt the premier text-mode
+-@@ -3118,6 +3288,8 @@
+- <item>
+- <tt><ref id="alternative_order" name="unalternative&lowbar;order"></tt> <em/mimetype/ &lsqb; <em/mimetype/ ... &rsqb;
+- <item>
+-+<tt><ref id="append-hook" name="append-hook"></tt> <em/regexp/ &dquot;<em/command/&dquot;
+-+<item>
+- <tt><ref id="auto_view" name="auto&lowbar;view"></tt> <em/mimetype/ &lsqb; <em/mimetype/ ... &rsqb;
+- <item>
+- <tt><ref id="auto_view" name="unauto&lowbar;view"></tt> <em/mimetype/ &lsqb; <em/mimetype/ ... &rsqb;
+-@@ -3126,6 +3298,8 @@
+- <item>
+- <tt><ref id="charset-hook" name="charset-hook"></tt> <em/alias/ <em/charset/
+- <item>
+-+<tt><ref id="close-hook" name="close-hook"></tt> <em/regexp/ &dquot;<em/command/&dquot;
+-+<item>
+- <tt><ref id="color" name="color"></tt> <em/object/ <em/foreground/ <em/background/ &lsqb; <em/regexp/ &rsqb;
+- <item>
+- <tt><ref id="color" name="uncolor"></tt> <em/index/ <em/pattern/ &lsqb; <em/pattern/ ... &rsqb;
+-@@ -3172,6 +3346,8 @@
+- <item>
+- <tt><ref id="my_hdr" name="unmy&lowbar;hdr"></tt> <em/field/ &lsqb; <em/field/ ... &rsqb;
+- <item>
+-+<tt><ref id="open-hook" name="open-hook"></tt> <em/regexp/ &dquot;<em/command/&dquot;
+-+<item>
+- <tt><ref id="crypt-hook" name="crypt-hook"></tt> <em/pattern/ <em/key-id/
+- <item>
+- <tt><ref id="push" name="push"></tt> <em/string/
+-@@ -3718,7 +3894,7 @@
+- <sect2>dotlock&lowbar;program<label id="dotlock_program">
+- <p>
+- Type: path<newline>
+--Default: &dquot;/usr/local/bin/mutt&lowbar;dotlock&dquot;
+-+Default: &dquot;/usr/bin/mutt&lowbar;dotlock&dquot;
+- 
+- <p>
+- Contains the path of the mutt&lowbar;dotlock (8) binary to be used by
+ diff -urN mutt-1.5.9/doc/manual.sgml.head mutt-1.5.9-ro/doc/manual.sgml.head
+ --- mutt-1.5.9/doc/manual.sgml.head	2005-02-19 14:49:49.000000000 +0100
+ +++ mutt-1.5.9-ro/doc/manual.sgml.head	2005-03-20 14:06:20.000000000 +0100
+@@ -1244,206 +757,6 @@ diff -urN mutt-1.5.9/doc/manual.sgml.hea
+  <tt><ref id="crypt-hook" name="crypt-hook"></tt> <em/pattern/ <em/key-id/
+  <item>
+  <tt><ref id="push" name="push"></tt> <em/string/
+-diff -urN mutt-1.5.9/doc/manual.txt mutt-1.5.9-ro/doc/manual.txt
+---- mutt-1.5.9/doc/manual.txt	2005-03-13 17:37:17.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/manual.txt	2005-03-20 14:09:13.000000000 +0100
+-@@ -80,6 +80,11 @@
+-         4.11.2 Authentication
+-      4.12 Managing multiple IMAP/POP accounts (OPTIONAL)
+-      4.13 Start a WWW Browser on URLs (EXTERNAL)
+-+     4.14 Compressed folders Support (OPTIONAL)
+-+        4.14.1 Open a compressed mailbox for reading
+-+        4.14.2 Write a compressed mailbox
+-+        4.14.3 Append a message to a compressed mailbox
+-+        4.14.4 Encrypted folders
+- 
+-   5. Mutt's MIME Support
+-      5.1 Using MIME in Mutt
+-@@ -2815,6 +2820,156 @@
+-        macro index \cb |urlview\n
+-        macro pager \cb |urlview\n
+- 
+-+  44..1144..  CCoommpprreesssseedd ffoollddeerrss SSuuppppoorrtt ((OOPPTTIIOONNAALL))
+-+
+-+  If Mutt was compiled with compressed folders support (by running the
+-+  _c_o_n_f_i_g_u_r_e script with the _-_-_e_n_a_b_l_e_-_c_o_m_p_r_e_s_s_e_d flag), Mutt can open
+-+  folders stored in an arbitrary format, provided that the user has a
+-+  script to convert from/to this format to one of the accepted.
+-+
+-+  The most common use is to open compressed archived folders e.g. with
+-+  gzip.
+-+
+-+  In addition, the user can provide a script that gets a folder in an
+-+  accepted format and appends its context to the folder in the user-
+-+  defined format, which may be faster than converting the entire folder
+-+  to the accepted format, appending to it and converting back to the
+-+  user-defined format.
+-+
+-+  There are three hooks defined (``open-hook'', ``close-hook'' and
+-+  ``append-hook'') which define commands to uncompress and compress a
+-+  folder and to append messages to an existing compressed folder
+-+  respectively.
+-+
+-+  For example:
+-+
+-+       open-hook \\.gz$ "gzip -cd %f > %t"
+-+       close-hook \\.gz$ "gzip -c %t > %f"
+-+       append-hook \\.gz$ "gzip -c %t >> %f"
+-+
+-+  You do not have to specify all of the commands. If you omit ``append-
+-+  hook'', the folder will be open and closed again each time you will
+-+  add to it. If you omit ``close-hook'' (or give empty command) , the
+-+  folder will be open in the  mode. If you specify ``append-hook''
+-+  though you'll be able to append to the folder.
+-+
+-+  Note that Mutt will only try to use hooks if the file is not in one of
+-+  the accepted formats. In particular, if the file is empty, mutt
+-+  supposes it is not compressed. This is important because it allows the
+-+  use of programs that do not have well defined extensions. Just use "."
+-+  as a regexp. But this may be surprising if your compressing script
+-+  produces empty files. In this situation, unset ``$save_empty'', so
+-+  that the compressed file will be removed if you delete all of the
+-+  messages.
+-+
+-+  44..1144..11..  OOppeenn aa ccoommpprreesssseedd mmaaiillbbooxx ffoorr rreeaaddiinngg
+-+
+-+  Usage: open-hook _r_e_g_e_x_p "_c_o_m_m_a_n_d"
+-+
+-+  The _c_o_m_m_a_n_d is the command that can be used for opening the folders
+-+  whose names match _r_e_g_e_x_p.
+-+
+-+  The _c_o_m_m_a_n_d string is the printf-like format string, and it should
+-+  accept two parameters: %f, which is replaced with the (compressed)
+-+  folder name, and %t which is replaced with the name of the temporary
+-+  folder to which to write.
+-+
+-+  %f and %t can be repeated any number of times in the command string,
+-+  and all of the entries are replaced with the appropriate folder name.
+-+  In addition, %% is replaced by %, as in printf, and any other
+-+  %anything is left as is.
+-+
+-+  The _c_o_m_m_a_n_d should nnoott remove the original compressed file.  The
+-+  _c_o_m_m_a_n_d should return non-zero exit status if it fails, so mutt knows
+-+  something's wrong.
+-+
+-+  Example:
+-+
+-+       open-hook \\.gz$ "gzip -cd %f > %t"
+-+
+-+  If the _c_o_m_m_a_n_d is empty, this operation is disabled for this file
+-+  type.
+-+
+-+  44..1144..22..  WWrriittee aa ccoommpprreesssseedd mmaaiillbbooxx
+-+
+-+  Usage: close-hook _r_e_g_e_x_p "_c_o_m_m_a_n_d"
+-+
+-+  This is used to close the folder that was open with the ``open-hook''
+-+  command after some changes were made to it.
+-+
+-+  The _c_o_m_m_a_n_d string is the command that can be used for closing the
+-+  folders whose names match _r_e_g_e_x_p. It has the same format as in the
+-+  ``open-hook'' command. Temporary folder in this case is the folder
+-+  previously produced by the ``open-hook'' command.
+-+
+-+  The _c_o_m_m_a_n_d should nnoott remove the decompressed file. The _c_o_m_m_a_n_d
+-+  should return non-zero exit status if it fails, so mutt knows
+-+  something's wrong.
+-+
+-+  Example:
+-+
+-+       close-hook \\.gz$ "gzip -c %t > %f"
+-+
+-+  If the _c_o_m_m_a_n_d is empty, this operation is disabled for this file
+-+  type, and the file can only be open in the read-only mode.
+-+
+-+  ``close-hook'' is not called when you exit from the folder if the
+-+  folder was not changed.
+-+
+-+  44..1144..33..  AAppppeenndd aa mmeessssaaggee ttoo aa ccoommpprreesssseedd mmaaiillbbooxx
+-+
+-+  Usage: append-hook _r_e_g_e_x_p "_c_o_m_m_a_n_d"
+-+
+-+  This command is used for saving to an existing compressed folder.  The
+-+  _c_o_m_m_a_n_d is the command that can be used for appending to the folders
+-+  whose names match _r_e_g_e_x_p. It has the same format as in the ``open-
+-+  hook'' command.  The temporary folder in this case contains the
+-+  messages that are being appended.
+-+
+-+  The _c_o_m_m_a_n_d should nnoott remove the decompressed file. The _c_o_m_m_a_n_d
+-+  should return non-zero exit status if it fails, so mutt knows
+-+  something's wrong.
+-+
+-+  Example:
+-+
+-+       append-hook \\.gz$ "gzip -c %t >> %f"
+-+
+-+  When ``append-hook'' is used, the folder is not opened, which saves
+-+  time, but this means that we can not find out what the folder type is.
+-+  Thus the default (``$mbox_type'') type is always supposed (i.e.  this
+-+  is the format used for the temporary folder).
+-+
+-+  If the file does not exist when you save to it, ``close-hook'' is
+-+  called, and not ``append-hook''. ``append-hook'' is only for appending
+-+  to existing folders.
+-+
+-+  If the _c_o_m_m_a_n_d is empty, this operation is disabled for this file
+-+  type. In this case, the folder will be open and closed again (using
+-+  ``open-hook'' and ``close-hook''respectively) each time you will add
+-+  to it.
+-+
+-+  44..1144..44..  EEnnccrryypptteedd ffoollddeerrss
+-+
+-+  The compressed folders support can also be used to handle encrypted
+-+  folders. If you want to encrypt a folder with PGP, you may want to use
+-+  the following hooks:
+-+
+-+       open-hook  \\.pgp$ "pgp -f < %f > %t"
+-+       close-hook \\.pgp$ "pgp -fe YourPgpUserIdOrKeyId < %t > %f"
+-+
+-+  Please note, that PGP does not support appending to an encrypted
+-+  folder, so there is no append-hook defined.
+-+
+-+  If you are using GnuPG instead of PGP, you may use the following hooks
+-+  instead:
+-+
+-+       open-hook  \\.gpg$ "gpg --decrypt < %f > %t"
+-+       close-hook \\.gpg$ "gpg --encrypt --recipient YourGpgUserIdOrKeyId < %t > %f"
+-+
+-+  NNoottee:: the folder is temporary stored decrypted in the /tmp directory,
+-+  where it can be read by your system administrator. So think about the
+-+  security aspects of this.
+-+
+-   55..  MMuutttt''ss MMIIMMEE SSuuppppoorrtt
+- 
+-   Quite a bit of effort has been made to make Mutt the premier text-mode
+-diff -urN mutt-1.5.9/doc/muttrc.man mutt-1.5.9-ro/doc/muttrc.man
+---- mutt-1.5.9/doc/muttrc.man	2005-03-13 17:37:11.000000000 +0100
+-+++ mutt-1.5.9-ro/doc/muttrc.man	2005-03-20 14:06:20.000000000 +0100
+-@@ -316,6 +316,24 @@
+- to a certain recipient.  The meaning of "key ID" is to be taken
+- broadly: This can be a different e-mail address, a numerical key ID,
+- or even just an arbitrary search string.
+-+.PP
+-+.nf
+-+\fBopen-hook\fP \fIregexp\fP "\fIcommand\fP"
+-+\fBclose-hook\fP \fIregexp\fP "\fIcommand\fP"
+-+\fBappend-hook\fP \fIregexp\fP "\fIcommand\fP"
+-+.fi
+-+.IP
+-+These commands provide a way to handle compressed folders. The given
+-+\fBregexp\fP specifies which folders are taken as compressed (e.g.
+-+"\fI\\\\.gz$\fP"). The commands tell Mutt how to uncompress a folder
+-+(\fBopen-hook\fP), compress a folder (\fBclose-hook\fP) or append a
+-+compressed mail to a compressed folder (\fBappend-hook\fP). The
+-+\fIcommand\fP string is the 
+-+.BR printf (3)
+-+like format string, and it should accept two parameters: \fB%f\fP,
+-+which is replaced with the (compressed) folder name, and \fB%t\fP
+-+which is replaced with the name of the temporary folder to which to
+-+write.
+- .TP
+- \fBpush\fP \fIstring\fP
+- This command adds the named \fIstring\fP to the keyboard buffer.
+ diff -urN mutt-1.5.9/doc/muttrc.man.head mutt-1.5.9-ro/doc/muttrc.man.head
+ --- mutt-1.5.9/doc/muttrc.man.head	2005-01-15 10:42:45.000000000 +0100
+ +++ mutt-1.5.9-ro/doc/muttrc.man.head	2005-03-20 14:06:20.000000000 +0100
+@@ -1555,44 +868,6 @@ diff -urN mutt-1.5.9/Makefile.am mutt-1.
+  	attach.h buffy.h charset.h copy.h crypthash.h dotlock.h functions.h gen_defs \
+  	globals.h hash.h history.h init.h keymap.h mutt_crypt.h \
+  	mailbox.h mapping.h md5.h mime.h mutt.h mutt_curses.h mutt_menu.h \
+-diff -urN mutt-1.5.9/Makefile.in mutt-1.5.9-ro/Makefile.in
+---- mutt-1.5.9/Makefile.in	2005-03-13 17:37:46.000000000 +0100
+-+++ mutt-1.5.9-ro/Makefile.in	2005-03-20 14:06:20.000000000 +0100
+-@@ -77,7 +77,7 @@
+- 	attach.$(OBJEXT) base64.$(OBJEXT) browser.$(OBJEXT) \
+- 	buffy.$(OBJEXT) color.$(OBJEXT) crypt.$(OBJEXT) \
+- 	cryptglue.$(OBJEXT) commands.$(OBJEXT) complete.$(OBJEXT) \
+--	compose.$(OBJEXT) copy.$(OBJEXT) curs_lib.$(OBJEXT) \
+-+	compose.$(OBJEXT) compress.$(OBJEXT) copy.$(OBJEXT) curs_lib.$(OBJEXT) \
+- 	curs_main.$(OBJEXT) date.$(OBJEXT) edit.$(OBJEXT) \
+- 	enter.$(OBJEXT) flags.$(OBJEXT) init.$(OBJEXT) \
+- 	filter.$(OBJEXT) from.$(OBJEXT) getdomain.$(OBJEXT) \
+-@@ -294,7 +294,7 @@
+- BUILT_SOURCES = keymap_defs.h patchlist.c
+- mutt_SOURCES = $(BUILT_SOURCES) \
+- 	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c \
+--        crypt.c cryptglue.c \
+-+        compress.c crypt.c cryptglue.c \
+- 	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c \
+- 	edit.c enter.c flags.c init.c filter.c from.c getdomain.c \
+- 	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c \
+-@@ -325,7 +325,7 @@
+- 	crypt-gpgme.c crypt-mod-pgp-gpgme.c crypt-mod-smime-gpgme.c
+- 
+- EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO \
+--	configure account.h \
+-+	configure account.h compress.h \
+- 	attach.h buffy.h charset.h copy.h crypthash.h dotlock.h functions.h gen_defs \
+- 	globals.h hash.h history.h init.h keymap.h mutt_crypt.h \
+- 	mailbox.h mapping.h md5.h mime.h mutt.h mutt_curses.h mutt_menu.h \
+-@@ -487,6 +487,7 @@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/commands.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/complete.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/compose.Po@am__quote@
+-+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/compress.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/copy.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/crypt-gpgme.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/crypt-mod-pgp-classic.Po@am__quote@
+ diff -urN mutt-1.5.9/mbox.c mutt-1.5.9-ro/mbox.c
+ --- mutt-1.5.9/mbox.c	2005-02-03 19:47:53.000000000 +0100
+ +++ mutt-1.5.9-ro/mbox.c	2005-03-20 14:06:20.000000000 +0100
+@@ -1647,36 +922,6 @@ diff -urN mutt-1.5.9/mutt.h mutt-1.5.9-r
+    short magic;			/* mailbox type */
+  
+    unsigned int locked : 1;	/* is the mailbox locked? */
+-diff -urN mutt-1.5.9/Muttrc mutt-1.5.9-ro/Muttrc
+---- mutt-1.5.9/Muttrc	2005-03-13 17:37:11.000000000 +0100
+-+++ mutt-1.5.9-ro/Muttrc	2005-03-20 14:06:20.000000000 +0100
+-@@ -19,6 +19,11 @@
+- macro index   <f1> "!less /usr/local/doc/mutt/manual.txt\n" "Show Mutt documentation"
+- macro pager   <f1> "!less /usr/local/doc/mutt/manual.txt\n" "Show Mutt documentation"
+- 
+-+# Use folders which match on \\.gz$ as gzipped folders:
+-+# open-hook \\.gz$ "gzip -cd %f > %t"
+-+# close-hook \\.gz$ "gzip -c %t > %f"
+-+# append-hook \\.gz$ "gzip -c %t >> %f"
+-+
+- # If Mutt is unable to determine your site's domain name correctly, you can
+- # set the default here.
+- #
+-diff -urN mutt-1.5.9/Muttrc.head mutt-1.5.9-ro/Muttrc.head
+---- mutt-1.5.9/Muttrc.head	2005-03-13 17:37:06.000000000 +0100
+-+++ mutt-1.5.9-ro/Muttrc.head	2005-03-20 14:06:20.000000000 +0100
+-@@ -19,6 +19,11 @@
+- macro index   <f1> "!less /usr/local/doc/mutt/manual.txt\n" "Show Mutt documentation"
+- macro pager   <f1> "!less /usr/local/doc/mutt/manual.txt\n" "Show Mutt documentation"
+- 
+-+# Use folders which match on \\.gz$ as gzipped folders:
+-+# open-hook \\.gz$ "gzip -cd %f > %t"
+-+# close-hook \\.gz$ "gzip -c %t > %f"
+-+# append-hook \\.gz$ "gzip -c %t >> %f"
+-+
+- # If Mutt is unable to determine your site's domain name correctly, you can
+- # set the default here.
+- #
+ diff -urN mutt-1.5.9/Muttrc.head.in mutt-1.5.9-ro/Muttrc.head.in
+ --- mutt-1.5.9/Muttrc.head.in	2002-01-24 13:10:47.000000000 +0100
+ +++ mutt-1.5.9-ro/Muttrc.head.in	2005-03-20 14:06:20.000000000 +0100

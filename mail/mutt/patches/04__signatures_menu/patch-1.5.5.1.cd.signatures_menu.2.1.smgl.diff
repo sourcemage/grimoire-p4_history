@@ -1,0 +1,70 @@
+--- patch-1.5.5.1.cd.signatures_menu.2.1	2003-12-19 19:06:00.000000000 -0600
++++ patch-1.5.5.1.cd.signatures_menu.2.1.smgl	2005-03-20 16:19:26.509971320 -0600
+@@ -10,67 +10,6 @@ diff -pruN mutt-1.5.5.1-orig/Makefile.am
+  	status.c system.c thread.c charset.c history.c lib.c \
+  	muttlib.c editmsg.c utf8.c mbyte.c wcwidth.c \
+  	url.c ascii.c mutt_idna.c
+-diff -pruN mutt-1.5.5.1-orig/Makefile.in mutt-1.5.5.1/Makefile.in
+---- mutt-1.5.5.1-orig/Makefile.in	Wed Nov  5 21:05:21 2003
+-+++ mutt-1.5.5.1/Makefile.in	Tue Nov 11 03:38:49 2003
+-@@ -118,7 +118,7 @@ bin_SCRIPTS = muttbug flea
+- BUILT_SOURCES = keymap_defs.h patchlist.c
+- 
+- bin_PROGRAMS = mutt @DOTLOCK_TARGET@ @PGPAUX_TARGET@ @SMIMEAUX_TARGET@
+--mutt_SOURCES = $(BUILT_SOURCES) 	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c         crypt.c cryptglue.c 	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c 	edit.c enter.c flags.c init.c filter.c from.c getdomain.c 	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c 	main.c mbox.c menu.c mh.c mx.c pager.c parse.c pattern.c 	postpone.c query.c recvattach.c recvcmd.c 	rfc822.c rfc1524.c rfc2047.c rfc2231.c 	score.c send.c sendlib.c signal.c sort.c 	status.c system.c thread.c charset.c history.c lib.c 	muttlib.c editmsg.c utf8.c mbyte.c wcwidth.c 	url.c ascii.c mutt_idna.c
+-+mutt_SOURCES = $(BUILT_SOURCES) 	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c         crypt.c cryptglue.c 	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c 	edit.c enter.c flags.c init.c filter.c from.c getdomain.c 	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c 	main.c mbox.c menu.c mh.c mx.c pager.c parse.c pattern.c 	postpone.c query.c recvattach.c recvcmd.c 	rfc822.c rfc1524.c rfc2047.c rfc2231.c 	score.c send.c sendlib.c signal.c signature.c sort.c 	status.c system.c thread.c charset.c history.c lib.c 	muttlib.c editmsg.c utf8.c mbyte.c wcwidth.c 	url.c ascii.c mutt_idna.c
+- 
+- 
+- mutt_LDADD = @MUTT_LIB_OBJECTS@ @LIBOBJS@ $(LIBIMAP) $(MUTTLIBS) 	$(INTLLIBS) $(LIBICONV)
+-@@ -190,7 +190,7 @@ compose.o copy.o curs_lib.o curs_main.o 
+- init.o filter.o from.o getdomain.o handler.o hash.o hdrline.o headers.o \
+- help.o hook.o keymap.o main.o mbox.o menu.o mh.o mx.o pager.o parse.o \
+- pattern.o postpone.o query.o recvattach.o recvcmd.o rfc822.o rfc1524.o \
+--rfc2047.o rfc2231.o score.o send.o sendlib.o signal.o sort.o status.o \
+-+rfc2047.o rfc2231.o score.o send.o sendlib.o signal.o signature.o sort.o status.o \
+- system.o thread.o charset.o history.o lib.o muttlib.o editmsg.o utf8.o \
+- mbyte.o wcwidth.o url.o ascii.o mutt_idna.o
+- mutt_LDFLAGS = 
+-diff -pruN mutt-1.5.5.1-orig/OPS mutt-1.5.5.1/OPS
+---- mutt-1.5.5.1-orig/OPS	Wed Nov  5 10:41:31 2003
+-+++ mutt-1.5.5.1/OPS	Tue Nov 11 03:38:49 2003
+-@@ -38,6 +38,7 @@ OP_COMPOSE_TOGGLE_RECODE "toggle recodin
+- OP_COMPOSE_POSTPONE_MESSAGE "save this message to send later"
+- OP_COMPOSE_RENAME_FILE "rename/move an attached file"
+- OP_COMPOSE_SEND_MESSAGE "send the message"
+-+OP_COMPOSE_SIG "choose a signature"
+- OP_COMPOSE_TOGGLE_DISPOSITION "toggle disposition between inline/attachment"
+- OP_COMPOSE_TOGGLE_UNLINK "toggle whether to delete file after sending it"
+- OP_COMPOSE_UPDATE_ENCODING "update an attachment's encoding info"
+-@@ -129,6 +130,7 @@ OP_MIDDLE_PAGE "move to the middle of th
+- OP_NEXT_ENTRY "move to the next entry"
+- OP_NEXT_LINE "scroll down one line"
+- OP_NEXT_PAGE "move to the next page"
+-+OP_NEXT_SIG "move to the next signature"
+- OP_PAGER_BOTTOM "jump to the bottom of the message"
+- OP_PAGER_HIDE_QUOTED "toggle display of quoted text"
+- OP_PAGER_SKIP_QUOTED "skip beyond quoted text"
+-@@ -137,10 +139,12 @@ OP_PIPE "pipe message/attachment to a sh
+- OP_PREV_ENTRY "move to the previous entry"
+- OP_PREV_LINE "scroll up one line"
+- OP_PREV_PAGE "move to the previous page"
+-+OP_PREV_SIG "move to the previous signature"
+- OP_PRINT "print the current entry"
+- OP_QUERY "query external program for addresses"
+- OP_QUERY_APPEND "append new query results to current results"
+- OP_QUIT "save changes to mailbox and quit"
+-+OP_RANDOM_SIG "pick a signature at random"
+- OP_RECALL_MESSAGE "recall a postponed message"
+- OP_REDRAW "clear and redraw the screen"
+- OP_REFORMAT_WINCH "{internal}"
+-@@ -153,6 +157,7 @@ OP_SEARCH_NEXT "search for next match"
+- OP_SEARCH_OPPOSITE "search for next match in opposite direction"
+- OP_SEARCH_TOGGLE "toggle search pattern coloring"
+- OP_SHELL_ESCAPE "invoke a command in a subshell"
+-+OP_SIG_SEARCH "search signatures matching a pattern"
+- OP_SORT "sort messages"
+- OP_SORT_REVERSE "sort messages in reverse order"
+- OP_TAG "tag the current entry"
+ diff -pruN mutt-1.5.5.1-orig/compose.c mutt-1.5.5.1/compose.c
+ --- mutt-1.5.5.1-orig/compose.c	Wed Nov  5 10:41:31 2003
+ +++ mutt-1.5.5.1/compose.c	Tue Nov 11 03:38:49 2003

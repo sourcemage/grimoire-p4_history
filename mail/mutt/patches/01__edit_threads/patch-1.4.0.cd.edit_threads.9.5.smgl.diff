@@ -1,0 +1,25 @@
+--- patch-1.4.0.cd.edit_threads.9.5	2003-12-19 19:04:24.000000000 -0600
++++ patch-1.4.0.cd.edit_threads.9.5.smgl	2005-03-19 19:47:27.084432096 -0600
+@@ -1,22 +1,3 @@
+-diff -pruN mutt-1.4.orig/OPS mutt-1.4/OPS
+---- mutt-1.4.orig/OPS	Thu Apr 25 15:26:37 2002
+-+++ mutt-1.4/OPS	Mon Feb 10 21:18:47 2003
+-@@ -94,6 +94,7 @@ OP_LAST_ENTRY "move to the last entry"
+- OP_LIST_REPLY "reply to specified mailing list"
+- OP_MACRO "execute a macro"
+- OP_MAIL "compose a new mail message"
+-+OP_MAIN_BREAK_THREAD "break the thread in two"
+- OP_MAIN_CHANGE_FOLDER "open a different folder"
+- OP_MAIN_CHANGE_FOLDER_READONLY "open a different folder in read only mode"
+- OP_MAIN_CLEAR_FLAG "clear a status flag from a message"
+-@@ -103,6 +104,7 @@ OP_MAIN_FETCH_MAIL "retrieve mail from P
+- OP_MAIN_FIRST_MESSAGE "move to the first message"
+- OP_MAIN_LAST_MESSAGE "move to the last message"
+- OP_MAIN_LIMIT "show only messages matching a pattern"
+-+OP_MAIN_LINK_THREADS "link tagged message to the current one"
+- OP_MAIN_NEXT_NEW "jump to the next new message"
+- OP_MAIN_NEXT_SUBTHREAD "jump to the next subthread"
+- OP_MAIN_NEXT_THREAD "jump to the next thread"
+ diff -pruN mutt-1.4.orig/acconfig.h mutt-1.4/acconfig.h
+ --- mutt-1.4.orig/acconfig.h	Tue Jan 15 23:08:12 2002
+ +++ mutt-1.4/acconfig.h	Mon Feb 10 21:18:47 2003

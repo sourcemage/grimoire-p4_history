@@ -1,0 +1,43 @@
+: Patch by Aaron Schrab <aaron@schrab.com>
+: http://pug.schrab.com/aaron/mutt/
+
+With this patch %?[ and %?( in index_format are treated as conditionals, if
+the relevant time is less than 12 hours in the past or future, the part
+before the next & will be evaluated, otherwise the part between that and the
+next ? is evaluated.  So, I use as my index_format:
+
+set index_format='%4C %Z %?[?%[%H:%M]&%[%m/%d]? %-15.15F (%5l) %s'
+
+This produces entries like:
+
+=<pre>
+1153 rSF 01/10 To Mutt Users L (   50) -->Re: individual index_formats
+1154   F 14:53 To Mutt Users L (   12)   `->
+=</pre>
+
+--- PATCHES~    Tue Nov  6 19:59:33 2001
++++ PATCHES     Tue Nov  6 19:59:42 2001
+@@ -1,0 +1 @@
++patch-1.3.24.ats.date_optional.1
+Index: hdrline.c
+===================================================================
+RCS file: /home/aarons/.cvsroot/mutt/hdrline.c,v
+retrieving revision 1.1.1.5
+diff -p -u -I$\(Author\|Date\|Header\|Id\|Locker\|Log\|Name\|RCSfile\|Revision\|Source\|State\)[:$] -r1.1.1.5 hdrline.c
+--- hdrline.c	1999/09/14 07:08:59	1.1.1.5
++++ hdrline.c	1999/09/14 08:50:54
+@@ -317,6 +317,14 @@ hdr_format_str (char *dest,
+ 
+ 	p = dest;
+ 
++	if (optional && (op == '[' || op == '(')) {
++	  T = time(NULL);
++	  T -= (op == '(') ? hdr->received : hdr->date_sent;
++	  if (T < -12 * 60 * 60 || T > 12 * 60 * 60)
++	    optional = 0;
++	  break;
++	}
++
+ 	cp = (op == 'd' || op == 'D') ? (NONULL (DateFmt)) : src;
+ 	if (*cp == '!')
+ 	{

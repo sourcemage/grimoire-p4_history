@@ -1,0 +1,47 @@
+--- patch-1.5.9.rr.compressed.1	2005-03-20 11:22:47.000000000 -0600
++++ patch-1.5.9.rr.compressed.1.smgl	2005-03-20 17:02:07.807594896 -0600
+@@ -1555,44 +1555,6 @@ diff -urN mutt-1.5.9/Makefile.am mutt-1.
+  	attach.h buffy.h charset.h copy.h crypthash.h dotlock.h functions.h gen_defs \
+  	globals.h hash.h history.h init.h keymap.h mutt_crypt.h \
+  	mailbox.h mapping.h md5.h mime.h mutt.h mutt_curses.h mutt_menu.h \
+-diff -urN mutt-1.5.9/Makefile.in mutt-1.5.9-ro/Makefile.in
+---- mutt-1.5.9/Makefile.in	2005-03-13 17:37:46.000000000 +0100
+-+++ mutt-1.5.9-ro/Makefile.in	2005-03-20 14:06:20.000000000 +0100
+-@@ -77,7 +77,7 @@
+- 	attach.$(OBJEXT) base64.$(OBJEXT) browser.$(OBJEXT) \
+- 	buffy.$(OBJEXT) color.$(OBJEXT) crypt.$(OBJEXT) \
+- 	cryptglue.$(OBJEXT) commands.$(OBJEXT) complete.$(OBJEXT) \
+--	compose.$(OBJEXT) copy.$(OBJEXT) curs_lib.$(OBJEXT) \
+-+	compose.$(OBJEXT) compress.$(OBJEXT) copy.$(OBJEXT) curs_lib.$(OBJEXT) \
+- 	curs_main.$(OBJEXT) date.$(OBJEXT) edit.$(OBJEXT) \
+- 	enter.$(OBJEXT) flags.$(OBJEXT) init.$(OBJEXT) \
+- 	filter.$(OBJEXT) from.$(OBJEXT) getdomain.$(OBJEXT) \
+-@@ -294,7 +294,7 @@
+- BUILT_SOURCES = keymap_defs.h patchlist.c
+- mutt_SOURCES = $(BUILT_SOURCES) \
+- 	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c \
+--        crypt.c cryptglue.c \
+-+        compress.c crypt.c cryptglue.c \
+- 	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c \
+- 	edit.c enter.c flags.c init.c filter.c from.c getdomain.c \
+- 	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c \
+-@@ -325,7 +325,7 @@
+- 	crypt-gpgme.c crypt-mod-pgp-gpgme.c crypt-mod-smime-gpgme.c
+- 
+- EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO \
+--	configure account.h \
+-+	configure account.h compress.h \
+- 	attach.h buffy.h charset.h copy.h crypthash.h dotlock.h functions.h gen_defs \
+- 	globals.h hash.h history.h init.h keymap.h mutt_crypt.h \
+- 	mailbox.h mapping.h md5.h mime.h mutt.h mutt_curses.h mutt_menu.h \
+-@@ -487,6 +487,7 @@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/commands.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/complete.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/compose.Po@am__quote@
+-+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/compress.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/copy.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/crypt-gpgme.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/crypt-mod-pgp-classic.Po@am__quote@
+ diff -urN mutt-1.5.9/mbox.c mutt-1.5.9-ro/mbox.c
+ --- mutt-1.5.9/mbox.c	2005-02-03 19:47:53.000000000 +0100
+ +++ mutt-1.5.9-ro/mbox.c	2005-03-20 14:06:20.000000000 +0100

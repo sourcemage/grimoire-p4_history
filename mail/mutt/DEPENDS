@@ -1,7 +1,87 @@
-optional_depends  "openssl"  "--with-ssl"  ""  "to enable ssl support for pop/imap"
-if [ "$CVS" == "y" ]; then 
-	depends CVS
+if [ "${BRANCH}" == "cvs" ]; then 
+	depends "CVS"
+fi &&
+
+config_query_list TERMINAL_LIBRARY                              \
+                  "Build against which terminal library?"       \
+                  ncurses slang                                 &&
+OPTS="${OPTS} --with-${TERMINAL_LIBRARY}"                       &&
+depends "${TERMINAL_LIBRARY}"                                   &&
+
+if [ "${BRANCH}" != "stable" ]; then
+  if list_find "${MUTT_OPTS}" "--enable-hcache"; then
+    config_query_list HCACHE_BACKEND                            \
+                      "Use which header cache backend?"         \
+                      gdbm db                                   &&
+    if [ "${HCACHE_BACKEND}" == "db" ]; then
+      OPTS="${OPTS} --without-gdbm --with-bdb"
+    fi &&
+    depends "${HCACHE_BACKEND}"
+  fi &&
+
+  optional_depends "libidn"                                     \
+                   "--with-idn"                                 \
+                   ""                                           \
+                   "to use GNU libidn for domain names"         &&
+
+  optional_depends "gpgme"                                      \
+                   "--enable-gpgme"                             \
+                   ""                                           \
+                   "alternate backend for PGP and S/MIME"       &&
+
+  optional_depends "openssl"                                    \
+                   "--with-ssl"                                 \
+                   ""                                           \
+                   "to enable SSL support for S/MIME and POP/IMAP" &&
+
+  optional_depends "cyrus-sasl"                                 \
+                   "--with-sasl2"                               \
+                   ""                                           \
+                   "to enable SASL2 authentication for POP/IMAP"
+fi &&
+
+optional_depends   "gnupg"                                      \
+                   ""                                           \
+                   "--disable-pgp"                              \
+                   "to support PGP signing and encrypting messages" &&
+
+if list_find "${MUTT_OPTS}" "--enable-imap"; then
+  optional_depends "krb5"                                       \
+                   "--with-gss"                                 \
+                   ""                                           \
+                   "to enable GSSAPI authentication for IMAP"
+fi &&
+
+if list_find "${MUTT_OPTS}" "--enable-pop" || list_find "${MUTT_OPTS}" "--enable-imap"; then
+  if [ "${BRANCH}" == "stable" ]; then
+    optional_depends "openssl"                                  \
+                     "--with-ssl"                               \
+                     ""                                         \
+                     "to enable SSL support for POP/IMAP"
+  else
+    optional_depends "gnutls"                                   \
+                     "--with-gnutls"                            \
+                     ""                                         \
+                     "to enable SSL support for POP/IMAP via gnutls"
+  fi &&
+
+  optional_depends "nss"                                        \
+                   "--with-nss"                                 \
+                   ""                                           \
+                   "to enable SSL support for POP/IMAP via NSS"
+fi &&
+
+if [ ! -z "${REAL_PATCHES}" ]; then
+  depends "automake" &&
+  depends "autoconf" &&
+
+  for P in ${REAL_PATCHES}; do
+    if [ -x "${PATCH_DIRECTORY}/${P}/DEPENDS" ]; then
+      . "${PATCH_DIRECTORY}/${P}/DEPENDS"
+    fi
+  done
 fi
-if [ "$PATCH_SMTP" == "y" ]; then 
-	depends libesmtp 
-fi 
+
+if [ "${UPDATE_DOC}" == "y" ]; then
+  depends linuxdoc-tools
+fi

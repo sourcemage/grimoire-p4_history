@@ -1,0 +1,35 @@
+--- mutt-1.5.8/PATCHES~	never
++++ mutt-1.5.8/PATCHES	Tue Feb 22 15:41:50 CST 2005
+@@ -1,0 +1 @@
++patch-1.5.8.dgc.deepif.1
+diff -Pur mutt-1.5.8-base/muttlib.c mutt-1.5.8/muttlib.c
+--- mutt-1.5.8-base/muttlib.c	Sat Feb 12 13:30:16 2005
++++ mutt-1.5.8/muttlib.c	Tue Feb 22 15:41:50 2005
+@@ -990,6 +990,12 @@
+ 	count = 0;
+         while (count < sizeof (ifstring) && *src && *src != '?' && *src != '&')
+ 	{
++	  if (*src == '\\')
++	  {
++	    src++;
++	    if (!*src)
++	      break;
++	  }
+           *cp++ = *src++;
+ 	  count++;
+ 	}
+@@ -1002,7 +1008,13 @@
+ 	count = 0;
+ 	while (count < sizeof (elsestring) && *src && *src != '?')
+ 	{
+-	  *cp++ = *src++;
++	  if (*src == '\\')
++	  {
++	    src++;
++	    if (!*src)
++	      break;
++	  }
++          *cp++ = *src++;
+ 	  count++;
+ 	}
+ 	*cp = 0;

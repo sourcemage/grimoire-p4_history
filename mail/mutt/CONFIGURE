@@ -1,9 +1,88 @@
-config_query PATCH_SMTP "Do you want to apply the libesmtp patch?" n
+# temporary, to migrate old preferences
+persistent_add PATCHES &&
+if [ "${PATCH_SMTP}" == "y" ]; then
+  PATCHES="${PATCHES} libesmtp"
+  persistent_remove PATCH_SMTP
+fi &&
+if [ "${PATCH_SIGNATURE}" == "y" ]; then
+  PATCHES="${PATCHES} signatures_menu"
+  persistent_remove PATCH_SIGNATURE
+fi &&
+if [ "${PATCH_TRASH}" == "y" ]; then
+  PATCHES="${PATCHES} trash_folder"
+  persistent_remove PATCH_TRASH
+fi &&
+if [ "${MAILDIR_CACHE}" == "y" ]; then
+  PATCHES="${PATCHES} maildir_cache"
+  persistent_remove MAILDIR_CACHE
+fi &&
+if [ "${PATCHBAR}" == "y" ]; then
+  PATCHES="${PATCHES} sidebar"
+  persistent_remove PATCHBAR
+fi &&
 
-if [ "$CVS" == "y" ]; then 
-	config_query PATCHBAR "Do you want to apply the side bar patch?" n
-	config_query MAILDIR_CACHE "Do you want to apply the Maildir/IMAP cache patch?" n
-else 
-	config_query PATCH_SIGNATURE "Do you want to apply the multi signature patch?" n
-	config_query PATCH_TRASH "Do you want to apply the trash bin patch?" n
+persistent_add REAL_PATCHES &&
+REAL_PATCHES="" &&
+
+for PATCH in `find "${PATCH_DIRECTORY}" -mindepth 1 -maxdepth 1 -type d | sort`
+do
+  if [ -x "${PATCH}/DETAILS" ]; then
+    . "${PATCH}/DETAILS" &&
+    if ! list_find "${BRANCHES}" "${BRANCH}"; then
+      continue
+    fi &&
+    P=`basename "${PATCH}" | cut -c '5-'` &&
+    if [ "${P}" == "purge_message" ]; then
+      if ! list_find "${PATCHES}" "trash_folder"; then
+        continue
+      fi
+    fi
+    config_query_option PATCHES "Apply the ${P} patch?"                \
+                        "n"                                            \
+                        "${P}"                                         \
+                        "-${P}"                                        &&
+    if list_find "${PATCHES}" "${P}"; then
+      REAL_PATCHES="${REAL_PATCHES} `basename ${PATCH}`"
+    fi
+  fi
+done &&
+
+if spell_ok "linuxdoc-tools"; then
+  UPDATE_DOC_DEFAULT="y"
+else
+  UPDATE_DOC_DEFAULT="n"
+fi &&
+if [ "${BRANCH}" == "cvs" ]; then
+  config_query UPDATE_DOC                                              \
+    "Build documentation? (requires linuxdoc-tools)"                   \
+    "${UPDATE_DOC_DEFAULT}"
+elif [ ! -z "${REAL_PATCHES}" ]; then
+  config_query UPDATE_DOC                                              \
+    "Rebuild documentation affected by patches? (requires linuxdoc-tools)" \
+    "${UPDATE_DOC_DEFAULT}"
+fi &&
+
+config_query_option MUTT_OPTS "Enable POP support?"                  \
+                              "y"                                    \
+                              "--enable-pop"                         \
+                              "--disable-pop"                        &&
+
+config_query_option MUTT_OPTS "Enable IMAP support?"                 \
+                              "y"                                    \
+                              "--enable-imap"                        \
+                              "--disable-imap"                       &&
+
+if [ ! -z "${REAL_PATCHES}" ]; then
+  for P in ${REAL_PATCHES}; do
+    if [ -x "${PATCH_DIRECTORY}/${P}/CONFIGURE" ]; then
+      . "${PATCH_DIRECTORY}/${P}/CONFIGURE"
+    fi
+  done
+fi
+
+if [ "${BRANCH}" != "stable" ]; then 
+  config_query_option MUTT_OPTS "Enable the header cache?"           \
+                                "n"                                  \
+                                "--enable-hcache"                    \
+                                "--disable-hcache"
 fi

@@ -1,0 +1,708 @@
+--- mutt-1.5.8/PATCHES~	never
++++ mutt-1.5.8/PATCHES	Wed Feb 23 19:49:45 CST 2005
+@@ -1,0 +1 @@
++patch-1.5.8.dgc.attach.5
+diff -Pur mutt-1.5.8-base/Muttrc.head.in mutt-1.5.8/Muttrc.head.in
+--- mutt-1.5.8-base/Muttrc.head.in	Thu Jan 24 06:10:47 2002
++++ mutt-1.5.8/Muttrc.head.in	Tue Feb 22 15:49:07 2005
+@@ -29,6 +29,87 @@
+ # set use_8bitmime
+ 
+ ##
++## *** DEFAULT SETTINGS FOR THE ATTACHMENTS PATCH ***
++##
++
++##
++## COMPATIBILITY ISSUES:
++## + dgc.attach.2's $attach_count_inline_ok is supplanted by the inline-allow
++##   and inline-exclude parameters.
++##
++## + The old dgc.attach.2 $attach_count_recurse is now named $attach_recurse.
++##   It has the same function as before: it makes the counter recurse into
++##   message/rfc822 containers.
++##
++## + $attach_count_containers_ok no longer exists. Instead, you should
++##   allow/exclude message/.* and/or multipart/.* types. See the example
++##   below.
++##
++## + dgc.attach.2 always discounted the first MIME part of any message.
++##   Since we're more flexible now about MIME types, that's not necessarily
++##   the right behavior. Setting $attach_ignore_fundamental provides loose
++##   compatibility to the old behavior; it's on by default.
++
++## Recurse through MIME parts that contain other MIME parts.
++set attach_recurse
++
++## Discount fundamental parts that are inlined and are not containers.
++## (E.g., don't count the basic text/plain part that a JPEG of your
++## summer vacation is attached to.)
++set attach_ignore_fundamental
++
++
++## Config parameters for the attachment counter (%X and ~X). Eight
++## parameters are defined:
++## attach-allow:	Allow attachments of these types to be counted...
++## attach-exclude:	... unless they're of these types.
++## inline-allow:	Allow inline parts of these types to be counted...
++## inline-exclude:	... unless they're of these types.
++## unattach-allow:	Remove these types from the attach-allow list.
++## unattach-exclude:	Remove these types from the attach-exclude list.
++## uninline-allow:	Remove these types from the inline-allow list.
++## uninline-exclude:	Remove these types from the inline-exclude list.
++##
++## The "*" wildcard is supported for the major (left) side of the MIME
++## type. The minor (right) side is a regular expression. "*/.*" matches
++## anything.
++##
++## Removing a pattern from a list removes that pattern literally. It
++## does not remove any type matching the pattern. So, for example,
++##	attach-allow */.*
++##	attach-allow image/jpeg
++##	unattach-allow */.*
++## Leaves image/jpeg on the attach-allow list. It does not remove all
++## items.
++
++##
++## Count any MIME part with an "attachment" disposition, EXCEPT for
++## text/x-vcard and application/pgp parts. (PGP parts are already known
++## to mutt, and can be searched for with ~g, ~G, and ~k.)
++##
++## I've added x-pkcs7 to this, since it functions (for S/MIME)
++## analogously to PGP signature attachments. S/MIME isn't supported
++## in a stock mutt build, but we can still treat it specially here.
++attach-allow	*/.*
++attach-exclude	text/x-vcard application/pgp.*
++attach-exclude	application/x-pkcs7-.*
++
++## Discount all MIME parts with an "inline" disposition, unless they're
++## text/plain. (Why inline a text/plain part unless it's external to the
++## message flow?)
++inline-allow	text/plain
++
++## These two lines emulate the old (dgc.attach.2)
++## $attach_count_containers_ok variable. The first line is unnecessary
++## if you already have "attach-allow */.*", of course.
++#attach-allow	message/.* multipart/.*
++#inline-allow	message/.* multipart/.*
++
++## You probably don't really care to know about deleted attachments.
++attach-exclude	message/external-body
++inline-exclude	message/external-body
++
++##
+ ## More settings
+ ##
+ 
+diff -Pur mutt-1.5.8-base/doc/manual-6.html mutt-1.5.8/doc/manual-6.html
+--- mutt-1.5.8-base/doc/manual-6.html	Sat Feb 12 14:57:52 2005
++++ mutt-1.5.8/doc/manual-6.html	Tue Feb 22 15:49:08 2005
+@@ -1319,6 +1319,7 @@
+ <A HREF="#to_chars">$to_chars</A> string</P>
+ <DT><B>%u </B><DD><P>user (login) name of the author</P>
+ <DT><B>%v </B><DD><P>first name of the author, or the recipient if the message is from you</P>
++<DT><B>%X </B><DD><P>number of attachments (%-X: number of top-level attachments)
+ <DT><B>%y </B><DD><P>`x-label:' field, if present</P>
+ <DT><B>%Y </B><DD><P>`x-label' field, if present, and (1) not at part of a thread tree,
+ (2) at the top of a thread, or (3) `x-label' is different from
+diff -Pur mutt-1.5.8-base/doc/manual.sgml.head mutt-1.5.8/doc/manual.sgml.head
+--- mutt-1.5.8-base/doc/manual.sgml.head	Sat Feb 12 13:41:36 2005
++++ mutt-1.5.8/doc/manual.sgml.head	Tue Feb 22 15:49:08 2005
+@@ -1907,6 +1907,7 @@
+ ~v		message is part of a collapsed thread.
+ ~V		cryptographically verified messages
+ ~x EXPR         messages which contain EXPR in the `References' field
++~X [MIN]-[MAX]  messages with MIN to MAX attachments *)
+ ~y EXPR         messages which contain EXPR in the `X-Label' field
+ ~z [MIN]-[MAX]  messages with a size in the range MIN to MAX *)
+ ~=		duplicated messages (see $duplicate_threads)
+diff -Pur mutt-1.5.8-base/doc/manual.txt mutt-1.5.8/doc/manual.txt
+--- mutt-1.5.8-base/doc/manual.txt	Sat Feb 12 14:57:49 2005
++++ mutt-1.5.8/doc/manual.txt	Wed Feb 23 19:42:21 2005
+@@ -2235,6 +2235,7 @@
+        ~v              message is part of a collapsed thread.
+        ~V              cryptographically verified messages
+        ~x EXPR         messages which contain EXPR in the `References' field
++       ~X [MIN]-[MAX]  messages with MIN - MAX attachments *)
+        ~y EXPR         messages which contain EXPR in the `X-Label' field
+        ~z [MIN]-[MAX]  messages with a size in the range MIN to MAX *)
+        ~=              duplicated messages (see $duplicate_threads)
+@@ -4543,6 +4544,8 @@
+ 
+      [1m%v [22mfirst name of the author, or the recipient if the message is
+         from you
++
++     %%XX number of attachments (%-X: number of top-level attachments)
+ 
+      [1m%y [22m`x-label:' field, if present
+ 
+diff -Pur mutt-1.5.8-base/doc/muttrc.man.head mutt-1.5.8/doc/muttrc.man.head
+--- mutt-1.5.8-base/doc/muttrc.man.head	Sat Jan 15 03:42:45 2005
++++ mutt-1.5.8/doc/muttrc.man.head	Wed Feb 23 19:43:38 2005
+@@ -435,6 +435,7 @@
+ ~U	unread messages
+ ~v	message is part of a collapsed thread.
+ ~x \fIEXPR\fP	messages which contain \fIEXPR\fP in the \(lqReferences\(rq field
++~X \fIMIN\fP-\fIMAX\fP  messages with MIN - MAX attachments
+ ~z \fIMIN\fP-\fIMAX\fP	messages with a size in the range \fIMIN\fP to \fIMAX\fP
+ ~=	duplicated messages (see $duplicate_threads)
+ ~$	unreferenced message (requries threaded view)
+@@ -442,7 +443,7 @@
+ .PP
+ In the above, \fIEXPR\fP is a regular expression.
+ .PP
+-With the \fB~m\fP, \fB~n\fP, and \fB~z\fP operators, you can also
++With the \fB~m\fP, \fB~n\fP, \fB~X\fP, and \fB~z\fP operators, you can also
+ specify ranges in the forms \fB<\fP\fIMAX\fP, \fB>\fP\fIMIN\fP,
+ \fIMIN\fP\fB-\fP, and \fB-\fP\fIMAX\fP.
+ .SS Matching dates
+diff -Pur mutt-1.5.8-base/globals.h mutt-1.5.8/globals.h
+--- mutt-1.5.8-base/globals.h	Sat Feb 12 14:01:02 2005
++++ mutt-1.5.8/globals.h	Tue Feb 22 15:49:08 2005
+@@ -133,6 +133,10 @@
+ 
+ WHERE LIST *AutoViewList INITVAL(0);
+ WHERE LIST *AlternativeOrderList INITVAL(0);
++WHERE LIST *AttachAllow INITVAL(0);
++WHERE LIST *AttachExclude INITVAL(0);
++WHERE LIST *InlineAllow INITVAL(0);
++WHERE LIST *InlineExclude INITVAL(0);
+ WHERE LIST *HeaderOrderList INITVAL(0);
+ WHERE LIST *Ignore INITVAL(0);
+ WHERE LIST *MimeLookupList INITVAL(0);
+diff -Pur mutt-1.5.8-base/hdrline.c mutt-1.5.8/hdrline.c
+--- mutt-1.5.8-base/hdrline.c	Sat Feb 12 12:53:35 2005
++++ mutt-1.5.8/hdrline.c	Tue Feb 22 15:49:08 2005
+@@ -218,6 +218,7 @@
+  * %T = $to_chars
+  * %u = user (login) name of author
+  * %v = first name of author, unless from self
++ * %X = number of MIME attachments
+  * %y = `x-label:' field (if present)
+  * %Y = `x-label:' field (if present, tree unfolded, and != parent's x-label)
+  * %Z = status flags	*/
+@@ -652,6 +653,43 @@
+ 		(hdr->flagged ? '!' :
+ 		 (Tochars && ((i = mutt_user_is_recipient (hdr)) < mutt_strlen (Tochars)) ? Tochars[i] : ' ')));
+       mutt_format_s (dest, destlen, prefix, buf2);
++      break;
++
++    case 'X':
++      {
++	int i, flags;
++	struct body *parts;
++
++	flags = 0;
++
++	if (option(OPTATRECURSE))
++	  flags |= M_PARTS_MSGTRANS;
++
++	/* Find whether MIME structure is parsed. */
++	parts = hdr->content->parts;
++
++	/* If not then parse it. */
++	if (parts == NULL)
++	{
++	  mutt_parse_mime_message(ctx, hdr);
++	}
++	
++	/* Count parts. */
++	i = mutt_count_body_parts(hdr->content, flags);
++
++	/* If not pre-parsed, throw out our work. */
++	if (parts == NULL)
++	{
++	  mutt_free_body(&hdr->content->parts);
++	}
++
++	/* The recursion allows messages without depth to return 0. */
++        if (optional)
++          optional = i ? 1 : 0;
++
++        snprintf (fmt, sizeof (fmt), "%%%sd", prefix);
++        snprintf (dest, destlen, fmt, i);
++      }
+       break;
+ 
+      case 'y':
+diff -Pur mutt-1.5.8-base/init.c mutt-1.5.8/init.c
+--- mutt-1.5.8-base/init.c	Sat Feb 12 13:06:16 2005
++++ mutt-1.5.8/init.c	Tue Feb 22 15:49:08 2005
+@@ -774,6 +774,152 @@
+   return 0;
+ }
+ 
++static int parse_attach_list (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
++{
++  ATTACH_MATCH *a;
++  LIST **ldata, *listp, *lastp;
++  char *p;
++  char *tmpminor;
++  int len;
++
++  /* Find the last item in the list that data points to. */
++  lastp = NULL;
++  ldata = (LIST **)data;
++  dprint(30, (debugfile, "parse_attach_list: ldata = %08x, *ldata = %08x\n",
++	      (unsigned int)ldata, (unsigned int)*ldata));
++  for (listp = *ldata; listp; listp = listp->next)
++  {
++    a = (ATTACH_MATCH *)listp->data;
++    dprint(30, (debugfile, "parse_attach_list: skipping %s/%s\n",
++		a->major, a->minor));
++    lastp = listp;
++  }
++
++  do
++  {
++    mutt_extract_token (buf, s, 0);
++
++    if (!buf->data || *buf->data == '\0')
++      continue;
++   
++    a = safe_malloc(sizeof(ATTACH_MATCH));
++
++    /* some cheap hacks that I expect to remove */
++    if (!mutt_strcasecmp(buf->data, "any"))
++      a->major = safe_strdup("*/.*");
++    else if (!mutt_strcasecmp(buf->data, "none"))
++      a->major = safe_strdup("cheap_hack/this_should_never_match");
++    else
++      a->major = safe_strdup(buf->data);
++
++    if ((p = strchr(a->major, '/')))
++    {
++      *p = '\0';
++      ++p;
++      a->minor = p;
++    }
++    else
++    {
++      a->minor = "unknown";
++    }
++
++    len = strlen(a->minor);
++    tmpminor = safe_malloc(len+3);
++    strcpy(&tmpminor[1], a->minor);
++    tmpminor[0] = '^';
++    tmpminor[len+1] = '$';
++    tmpminor[len+2] = '\0';
++
++    a->major_int = mutt_check_mime_type(a->major);
++    regcomp(&a->minor_rx, tmpminor, REG_ICASE|REG_EXTENDED);
++
++    safe_free(&tmpminor);
++
++    dprint(30, (debugfile, "parse_attach_list: added %s/%s [%d]\n",
++		a->major, a->minor, a->major_int));
++
++    listp = safe_malloc(sizeof(LIST));
++    listp->data = (char *)a;
++    listp->next = NULL;
++    if (lastp)
++    {
++      lastp->next = listp;
++    }
++    else
++    {
++      *ldata = listp;
++    }
++    lastp = listp;
++  }
++  while (MoreArgs (s));
++   
++  return 0;
++}
++
++static int parse_unattach_list (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
++{
++  ATTACH_MATCH *a;
++  LIST **ldata, *lp, *lastp;
++  char *tmp;
++  int major;
++  char *minor;
++
++  ldata = (LIST **)data;
++  do
++  {
++    mutt_extract_token (buf, s, 0);
++
++    if (!mutt_strcasecmp(buf->data, "any"))
++      tmp = safe_strdup("*/.*");
++    else if (!mutt_strcasecmp(buf->data, "none"))
++      tmp = safe_strdup("cheap_hack/this_should_never_match");
++    else
++      tmp = safe_strdup(buf->data);
++
++    if ((minor = strchr(tmp, '/')))
++    {
++      *minor = '\0';
++      ++minor;
++    }
++    else
++    {
++      minor = "unknown";
++    }
++    major = mutt_check_mime_type(tmp);
++
++    lastp = NULL;
++    for(lp = *ldata; lp; lp = lastp->next)
++    {
++      a = (ATTACH_MATCH *)lp->data;
++      dprint(30, (debugfile, "parse_unattach_list: check %s/%s [%d] : %s/%s [%d]\n",
++		  a->major, a->minor, a->major_int, tmp, minor, major));
++      if (a->major_int == major && !mutt_strcasecmp(minor, a->minor))
++      {
++	dprint(30, (debugfile, "parse_unattach_list: removed %s/%s [%d]\n",
++		    a->major, a->minor, a->major_int));
++	regfree(&a->minor_rx);
++        free(a->major);
++        if (lastp)
++	{
++          lastp->next = lp->next;
++	}
++	lastp = lp;
++        free (lp->data);	/* same as a */
++        free (lp);
++      }
++
++      lastp = lp;
++      lp = lp->next;
++    }
++
++    remove_from_list ((LIST **) data, buf->data);
++  }
++  while (MoreArgs (s));
++   
++  return 0;
++}
++
++
+ static int parse_unlists (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
+ {
+   do
+diff -Pur mutt-1.5.8-base/init.h mutt-1.5.8/init.h
+--- mutt-1.5.8-base/init.h	Sat Feb 12 14:01:10 2005
++++ mutt-1.5.8/init.h	Wed Feb 23 19:40:10 2005
+@@ -225,6 +225,18 @@
+   ** ``$$attach_sep'' separator is added after each attachment. When set,
+   ** Mutt will operate on the attachments one by one.
+   */
++  { "attach_ignore_fundamental", DT_BOOL, R_INDEX, OPTATIGNORE, 1 },
++  /*
++  ** .pp
++  ** If set, Mutt's attachment counter discounts the fundamental MIME
++  ** part if its disposition is inline.
++  */
++  { "attach_recurse", DT_BOOL, R_INDEX, OPTATRECURSE, 1 },
++  /*
++  ** .pp
++  ** If set, Mutt's attachment counter (%X/~X) will examine message/*
++  ** components for attachments.
++  */
+   { "attribution",	DT_STR,	 R_NONE, UL &Attribution, UL "On %d, %n wrote:" },
+   /*
+   ** .pp
+@@ -960,6 +972,7 @@
+   ** .dt %T .dd the appropriate character from the $$to_chars string
+   ** .dt %u .dd user (login) name of the author
+   ** .dt %v .dd first name of the author, or the recipient if the message is from you
++  ** .dt %X .dd number of attachments
+   ** .dt %y .dd `x-label:' field, if present
+   ** .dt %Y .dd `x-label' field, if present, and (1) not at part of a thread tree,
+   **            (2) at the top of a thread, or (3) `x-label' is different from
+@@ -2895,6 +2908,9 @@
+ static int parse_unmy_hdr (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_subscribe (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_unsubscribe (BUFFER *, BUFFER *, unsigned long, BUFFER *);
++static int parse_attach_list (BUFFER *, BUFFER *, unsigned long, BUFFER *);
++static int parse_unattach_list (BUFFER *, BUFFER *, unsigned long, BUFFER *);
++
+ 
+ static int parse_alternates (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_unalternates (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+@@ -2914,6 +2930,10 @@
+   { "account-hook",     mutt_parse_hook,        M_ACCOUNTHOOK },
+ #endif
+   { "alias",		parse_alias,		0 },
++  { "attach-allow",	parse_attach_list,	UL &AttachAllow },
++  { "attach-exclude",	parse_attach_list,	UL &AttachExclude },
++  { "unattach-allow",	parse_unattach_list,	UL &AttachAllow },
++  { "unattach-exclude",	parse_unattach_list,	UL &AttachExclude },
+   { "auto_view",	parse_list,		UL &AutoViewList },
+   { "alternative_order",	parse_list,	UL &AlternativeOrderList},
+   { "bind",		mutt_parse_bind,	0 },
+@@ -2931,6 +2951,10 @@
+   { "iconv-hook",	mutt_parse_hook,	M_ICONVHOOK }, 
+ #endif
+   { "ignore",		parse_ignore,		0 },
++  { "inline-allow",	parse_attach_list,	UL &InlineAllow },
++  { "inline-exclude",	parse_attach_list,	UL &InlineExclude },
++  { "uninline-allow",	parse_unattach_list,	UL &InlineAllow },
++  { "uninline-exclude",	parse_unattach_list,	UL &InlineExclude },
+   { "lists",		parse_lists,		0 },
+   { "macro",		mutt_parse_macro,	0 },
+   { "mailboxes",	mutt_parse_mailboxes,	M_MAILBOXES },
+diff -Pur mutt-1.5.8-base/mime.h mutt-1.5.8/mime.h
+--- mutt-1.5.8-base/mime.h	Wed Dec 11 05:19:40 2002
++++ mutt-1.5.8/mime.h	Tue Feb 22 15:49:08 2005
+@@ -27,7 +27,8 @@
+   TYPEMODEL,
+   TYPEMULTIPART,
+   TYPETEXT,
+-  TYPEVIDEO
++  TYPEVIDEO,
++  TYPEANY
+ };
+ 
+ /* Content-Transfer-Encoding */
+diff -Pur mutt-1.5.8-base/mutt.h mutt-1.5.8/mutt.h
+--- mutt-1.5.8-base/mutt.h	Sat Feb 12 14:01:20 2005
++++ mutt-1.5.8/mutt.h	Tue Feb 22 15:49:08 2005
+@@ -239,6 +239,7 @@
+   M_CRYPT_ENCRYPT,
+   M_PGP_KEY,
+   M_XLABEL,
++  M_MIMEATTACH,
+   
+   /* Options for Mailcap lookup */
+   M_EDIT,
+@@ -445,6 +446,9 @@
+ 
+   OPTCRYPTUSEGPGME,
+ 
++  OPTATIGNORE,		/* Ignore fundamental inline parts? */
++  OPTATRECURSE,		/* Recurse message/\* types? */
++
+   /* PGP options */
+   
+   OPTCRYPTAUTOSIGN,
+@@ -883,6 +887,19 @@
+ void state_attach_puts (const char *, STATE *);
+ void state_prefix_putc (char, STATE *);
+ int  state_printf(STATE *, const char *, ...);
++
++/* for attachment counter */
++typedef struct
++{
++  char   *major;
++  int     major_int;
++  char   *minor;
++  regex_t minor_rx;
++} ATTACH_MATCH;
++
++/* Flags for mutt_count_body_parts() */
++#define M_PARTS_MSGTRANS	(1<<0)	/* message/rfc822 is transparent */
++#define M_PARTS_TOPLEVEL	(1<<1)	/* is the top-level part */
+ 
+ #include "ascii.h"
+ #include "protos.h"
+diff -Pur mutt-1.5.8-base/parse.c mutt-1.5.8/parse.c
+--- mutt-1.5.8-base/parse.c	Thu Feb  3 12:47:53 2005
++++ mutt-1.5.8/parse.c	Tue Feb 22 15:49:09 2005
+@@ -300,6 +300,10 @@
+     return TYPEVIDEO;
+   else if (ascii_strcasecmp ("model", s) == 0)
+     return TYPEMODEL;
++  else if (ascii_strcasecmp ("*", s) == 0)
++    return TYPEANY;
++  else if (ascii_strcasecmp (".*", s) == 0)
++    return TYPEANY;
+   else
+     return TYPEOTHER;
+ }
+@@ -1455,4 +1459,153 @@
+     p = rfc822_parse_adrlist (p, s);
+   
+   return p;
++}
++
++/* Compares mime types to the ok and except lists */
++int count_body_parts_check(LIST **checklist, BODY *b, int dflt)
++{
++  LIST *type;
++  ATTACH_MATCH *a;
++
++  /* If list is null, use default behavior. */
++  if (! *checklist)
++  {
++    /*return dflt;*/
++    return 0;
++  }
++
++  for (type = *checklist; type; type = type->next)
++  {
++    a = (ATTACH_MATCH *)type->data;
++    dprint(30, (debugfile, "cbpc: %s %d/%s ?? %s/%s [%d]... ",
++		dflt ? "[OK]   " : "[EXCL] ",
++		b->type, b->subtype, a->major, a->minor, a->major_int));
++    if ((a->major_int == TYPEANY || a->major_int == b->type) &&
++	!regexec(&a->minor_rx, b->subtype, 0, NULL, 0))
++    {
++      dprint(30, (debugfile, "yes\n"));
++      return 1;
++    }
++    else
++    {
++      dprint(30, (debugfile, "no\n"));
++    }
++  }
++
++  return 0;
++}
++
++/*
++ * Define CBP_DEBUG to rewrite content-descs indicating why a body part
++ * counts or does not count. This is bad code, but it's only for debugging.
++ */
++#undef CBP_DEBUG
++#ifdef CBP_DEBUG
++# define AT_COUNT(why)   { shallcount = 1; \
++			   bp->description = strdup("yes: " ## why); }
++# define AT_NOCOUNT(why) { shallcount = 0; \
++			   bp->description = strdup(" no: " ## why); }
++#else
++# define AT_COUNT(why)   { shallcount = 1; }
++# define AT_NOCOUNT(why) { shallcount = 0; }
++#endif
++
++int count_body_parts (BODY *body, int flags)
++{
++  int count = 0;
++  int shallcount, shallrecurse;
++  BODY *bp;
++
++  if (body == NULL)
++    return 0;
++
++  for (bp = body; bp != NULL; bp = bp->next)
++  {
++    /* Initial disposition is to count and not to recurse this part. */
++    AT_COUNT("default");
++    shallrecurse = 0;
++
++    dprint(30, (debugfile, "bp: desc=\"%s\"; fn=\"%s\", type=\"%d/%s\"\n",
++	   bp->description ? bp->description : ("none"),
++	   bp->filename ? bp->filename :
++			bp->d_filename ? bp->d_filename : "(none)",
++	   bp->type, bp->subtype ? bp->subtype : "*"));
++
++    if (bp->type == TYPEMESSAGE)
++    {
++      /* If messages are "transparent", recursively examine their parts. */
++      if (flags & M_PARTS_MSGTRANS)
++	shallrecurse = 1;
++
++      /* If it's an external body pointer, don't recurse it. */
++      if (!ascii_strcasecmp (bp->subtype, "external-body"))
++	shallrecurse = 0;
++
++      /* Don't count containers if they're top-level. */
++      if (flags & M_PARTS_TOPLEVEL)
++	AT_NOCOUNT("top-level message/*");
++    }
++    else if (bp->type == TYPEMULTIPART)
++    {
++      /* Always recurse multiparts. */
++      shallrecurse = 1;
++
++      /* Don't count containers if they're top-level. */
++      if (flags & M_PARTS_TOPLEVEL)
++	AT_NOCOUNT("top-level multipart");
++    }
++
++    /* Do not count the fundamental part if it is inlined and
++     * attach_ignore_fundamental is set.
++     */
++    if (option(OPTATIGNORE) && (bp->disposition == DISPINLINE) &&
++        bp->type != TYPEMULTIPART && bp->type != TYPEMESSAGE && bp == body)
++      AT_NOCOUNT("ignore fundamental inlines");
++
++    /* If this body isn't scheduled for enumeration already, don't bother
++     * profiling it further.
++     */
++    if (shallcount)
++    {
++      /* Turn off shallcount if message type is not in ok list,
++       * or if it is in except list. Check is done separately for
++       * inlines vs. attachments.
++       */
++
++      if (bp->disposition == DISPATTACH)
++      {
++        if (!count_body_parts_check(&AttachAllow, bp, 1))
++	  AT_NOCOUNT("attach not allowed");
++        if (count_body_parts_check(&AttachExclude, bp, 0))
++	  AT_NOCOUNT("attach excluded");
++      }
++      else
++      {
++        if (!count_body_parts_check(&InlineAllow, bp, 1))
++	  AT_NOCOUNT("inline not allowed");
++        if (count_body_parts_check(&InlineExclude, bp, 0))
++	  AT_NOCOUNT("excluded");
++      }
++    }
++
++    if (shallcount)
++      count++;
++
++    dprint(30, (debugfile, "cbp: %08x shallcount = %d\n", (unsigned int)bp, shallcount));
++
++    if (shallrecurse)
++    {
++      dprint(30, (debugfile, "cbp: %08x pre count = %d\n", (unsigned int)bp, count));
++      count += count_body_parts(bp->parts, flags & ~M_PARTS_TOPLEVEL);
++      dprint(30, (debugfile, "cbp: %08x post count = %d\n", (unsigned int)bp, count));
++    }
++  }
++
++  dprint(30, (debugfile, "bp: return %d\n", count < 0 ? 0 : count));
++  return count < 0 ? 0 : count;
++}
++
++int mutt_count_body_parts (BODY *body, int flags)
++{
++  return count_body_parts(body, flags | M_PARTS_TOPLEVEL);
+ }
+diff -Pur mutt-1.5.8-base/pattern.c mutt-1.5.8/pattern.c
+--- mutt-1.5.8-base/pattern.c	Wed Feb  9 03:07:45 2005
++++ mutt-1.5.8/pattern.c	Wed Feb 23 19:41:30 2005
+@@ -83,6 +83,7 @@
+   { 'U', M_UNREAD,		0,		NULL },
+   { 'v', M_COLLAPSED,		0,		NULL },
+   { 'V', M_CRYPT_VERIFIED,      0,              NULL },
++  { 'X', M_MIMEATTACH,		0,		eat_range },
+   { 'x', M_REFERENCE,		0,		eat_regexp },
+   { 'y', M_XLABEL,		0,		eat_regexp },
+   { 'z', M_SIZE,		0,		eat_range },
+@@ -1055,6 +1056,19 @@
+       return (pat->not ^ (h->env->spam && h->env->spam->data && regexec (pat->rx, h->env->spam->data, 0, NULL, 0) == 0));
+     case M_DUPLICATED:
+       return (pat->not ^ (h->thread && h->thread->duplicate_thread));
++    case M_MIMEATTACH:
++      {
++      int i, flags = 0;
++
++      if (option(OPTATRECURSE))
++        flags |= M_PARTS_MSGTRANS;
++
++      mutt_parse_mime_message(ctx, h);
++      i = mutt_count_body_parts(h->content->parts, flags);
++      mutt_free_body(&h->content->parts);
++      return (pat->not ^ (i >= pat->min && (pat->max == M_MAXRANGE ||
++                                            i <= pat->max)));
++      }
+     case M_UNREFERENCED:
+       return (pat->not ^ (h->thread && !h->thread->child));
+   }
+diff -Pur mutt-1.5.8-base/protos.h mutt-1.5.8/protos.h
+--- mutt-1.5.8-base/protos.h	Tue Feb  1 02:59:02 2005
++++ mutt-1.5.8/protos.h	Tue Feb 22 15:49:09 2005
+@@ -168,6 +168,7 @@
+ void mutt_buffy (char *, size_t);
+ int  mutt_buffy_list (void);
+ void mutt_canonical_charset (char *, size_t, const char *);
++int mutt_count_body_parts (BODY *body, int flags);
+ void mutt_check_rescore (CONTEXT *);
+ void mutt_clear_error (void);
+ void mutt_create_alias (ENVELOPE *, ADDRESS *);

@@ -1,0 +1,106 @@
+--- patch-1.5.8i.sidebar.20050224.txt	2005-03-11 10:21:08.000000000 -0600
++++ patch-1.5.8i.sidebar.20050224.txt.smgl	2005-03-20 19:59:40.382157408 -0600
+@@ -666,46 +666,7 @@ diff -N -c -r mutt-1.5.8i-orig/Makefile.
+ *** mutt-1.5.8i-orig/Makefile.am	2005-02-12 15:54:39.000000000 -0500
+ --- mutt-1.5.8i-sidebar/Makefile.am	2005-02-23 21:48:31.000000000 -0500
+ ***************
+-*** 64,70 ****
+-  	browser.h mbyte.h remailer.h url.h mutt_ssl_nss.c \
+-  	crypt-mod-pgp-classic.c crypt-mod-smime-classic.c \
+-  	pgppacket.c mutt_idna.h hcache.c mutt_ssl_gnutls.c \
+-! 	crypt-gpgme.c crypt-mod-pgp-gpgme.c crypt-mod-smime-gpgme.c
+-  
+-  EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO \
+-  	configure account.h \
+---- 64,71 ----
+-  	browser.h mbyte.h remailer.h url.h mutt_ssl_nss.c \
+-  	crypt-mod-pgp-classic.c crypt-mod-smime-classic.c \
+-  	pgppacket.c mutt_idna.h hcache.c mutt_ssl_gnutls.c \
+-! 	crypt-gpgme.c crypt-mod-pgp-gpgme.c crypt-mod-smime-gpgme.c \
+-! 	sidebar.c
+-  
+-  EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO \
+-  	configure account.h \
+-diff -N -c -r mutt-1.5.8i-orig/Makefile.in mutt-1.5.8i-sidebar/Makefile.in
+-*** mutt-1.5.8i-orig/Makefile.in	2005-02-12 15:58:25.000000000 -0500
+---- mutt-1.5.8i-sidebar/Makefile.in	2005-02-23 21:48:31.000000000 -0500
+-***************
+-*** 94,100 ****
+-  	history.$(OBJEXT) lib.$(OBJEXT) muttlib.$(OBJEXT) \
+-  	editmsg.$(OBJEXT) utf8.$(OBJEXT) mbyte.$(OBJEXT) \
+-  	wcwidth.$(OBJEXT) url.$(OBJEXT) ascii.$(OBJEXT) \
+-! 	mutt_idna.$(OBJEXT) crypt-mod.$(OBJEXT)
+-  mutt_OBJECTS = $(am_mutt_OBJECTS)
+-  am__DEPENDENCIES_1 =
+-  am_mutt_dotlock_OBJECTS = mutt_dotlock.$(OBJEXT)
+---- 94,101 ----
+-  	history.$(OBJEXT) lib.$(OBJEXT) muttlib.$(OBJEXT) \
+-  	editmsg.$(OBJEXT) utf8.$(OBJEXT) mbyte.$(OBJEXT) \
+-  	wcwidth.$(OBJEXT) url.$(OBJEXT) ascii.$(OBJEXT) \
+-! 	mutt_idna.$(OBJEXT) crypt-mod.$(OBJEXT) \
+-! 	sidebar.$(OBJEXT)
+-  mutt_OBJECTS = $(am_mutt_OBJECTS)
+-  am__DEPENDENCIES_1 =
+-  am_mutt_dotlock_OBJECTS = mutt_dotlock.$(OBJEXT)
+-***************
+-*** 304,310 ****
++*** 28,34 ****
+   	score.c send.c sendlib.c signal.c sort.c \
+   	status.c system.c thread.c charset.c history.c lib.c \
+   	muttlib.c editmsg.c utf8.c mbyte.c wcwidth.c \
+@@ -713,32 +674,14 @@ diff -N -c -r mutt-1.5.8i-orig/Makefile.
+   
+   mutt_LDADD = @MUTT_LIB_OBJECTS@ @LIBOBJS@ $(LIBIMAP) $(MUTTLIBS) \
+   	$(INTLLIBS) $(LIBICONV)  $(LIBGPGME_LIBS)
+---- 305,312 ----
++--- 28,34 ----
+   	score.c send.c sendlib.c signal.c sort.c \
+   	status.c system.c thread.c charset.c history.c lib.c \
+   	muttlib.c editmsg.c utf8.c mbyte.c wcwidth.c \
+-! 	url.c ascii.c mutt_idna.c crypt-mod.c crypt-mod.h \
+-! 	sidebar.c
++! 	url.c ascii.c mutt_idna.c crypt-mod.c crypt-mod.h sidebar.c sidebar.h
+   
+   mutt_LDADD = @MUTT_LIB_OBJECTS@ @LIBOBJS@ $(LIBIMAP) $(MUTTLIBS) \
+   	$(INTLLIBS) $(LIBICONV)  $(LIBGPGME_LIBS)
+-***************
+-*** 337,343 ****
+-  	makedoc.c stamp-doc-rc README.SSL smime.h\
+-  	muttbug pgppacket.h depcomp ascii.h BEWARE PATCHES patchlist.sh	\
+-  	ChangeLog.old mkchangelog.sh cvslog2changelog.pl mutt_idna.h \
+-! 	snprintf.c regex.c
+-  
+-  EXTRA_SCRIPTS = smime_keys
+-  mutt_dotlock_SOURCES = mutt_dotlock.c
+---- 339,345 ----
+-  	makedoc.c stamp-doc-rc README.SSL smime.h\
+-  	muttbug pgppacket.h depcomp ascii.h BEWARE PATCHES patchlist.sh	\
+-  	ChangeLog.old mkchangelog.sh cvslog2changelog.pl mutt_idna.h \
+-! 	snprintf.c regex.c sidebar.h
+-  
+-  EXTRA_SCRIPTS = smime_keys
+-  mutt_dotlock_SOURCES = mutt_dotlock.c
+ diff -N -c -r mutt-1.5.8i-orig/mbox.c mutt-1.5.8i-sidebar/mbox.c
+ *** mutt-1.5.8i-orig/mbox.c	2005-02-03 13:47:53.000000000 -0500
+ --- mutt-1.5.8i-sidebar/mbox.c	2005-02-23 21:48:31.000000000 -0500
+@@ -1106,20 +1049,6 @@ diff -N -c -r mutt-1.5.8i-orig/mx.c mutt
+     
+   #ifdef USE_IMAP
+     if (ctx->magic == M_IMAP)
+-diff -N -c -r mutt-1.5.8i-orig/OPS mutt-1.5.8i-sidebar/OPS
+-*** mutt-1.5.8i-orig/OPS	2003-07-04 13:07:11.000000000 -0400
+---- mutt-1.5.8i-sidebar/OPS	2005-02-23 21:48:31.000000000 -0500
+-***************
+-*** 174,176 ****
+---- 174,181 ----
+-  OP_MAIN_SHOW_LIMIT "show currently active limit pattern"
+-  OP_MAIN_COLLAPSE_THREAD "collapse/uncollapse current thread"
+-  OP_MAIN_COLLAPSE_ALL "collapse/uncollapse all threads"
+-+ OP_SIDEBAR_SCROLL_UP "scroll the mailbox pane up 1 page"
+-+ OP_SIDEBAR_SCROLL_DOWN "scroll the mailbox pane down 1 page"
+-+ OP_SIDEBAR_NEXT "go down to next mailbox"
+-+ OP_SIDEBAR_PREV "go to previous mailbox"
+-+ OP_SIDEBAR_OPEN "open hilighted mailbox"
+ diff -N -c -r mutt-1.5.8i-orig/pager.c mutt-1.5.8i-sidebar/pager.c
+ *** mutt-1.5.8i-orig/pager.c	2005-02-12 14:30:16.000000000 -0500
+ --- mutt-1.5.8i-sidebar/pager.c	2005-02-23 21:48:31.000000000 -0500
