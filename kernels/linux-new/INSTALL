@@ -4,7 +4,7 @@ mkdir -p ${INSTALL_ROOT}/boot &&
 case "$VERSION" in
 	2.[0246]*)
 		message "${MESSAGE_COLOR}installing for a 2.x kernel${DEFAULT_COLOR}" &&
-		ARCH="$kernel_arch" make modules_install &&
+		ARCH="$kernel_arch" make modules_install 
 		;;
 	*)
 		message "${PROBLEM_COLOR}I again don't know what version: $VERSION is${DEFAULT_COLOR}" &&
@@ -36,7 +36,7 @@ message "${MESSAGE_COLOR}Copying and linking System.map${DEFAULT_COLOR}" &&
 cp ${LINUX_SOURCE_DIRECTORY}/System.map ${INSTALL_ROOT}/boot/System.map-${VERSION} &&
 ln -sf ${INSTALL_ROOT}/boot/System.map-${VERSION} \
 	${INSTALL_ROOT}/boot/System.map &&
-message "${MESSAGE_COLOR}Copying and linking .config${DEFAULT_COLOR} &&
+message "${MESSAGE_COLOR}Copying and linking .config${DEFAULT_COLOR}" &&
 cp ${LINUX_SOURCE_DIRECTORY}/.config ${INSTALL_ROOT}/boot/config-${VERSION} &&
 ln -sf ${INSTALL_ROOT}/boot/config-${VERSION} \
 	${INSTALL_ROOT}/boot/config &&
