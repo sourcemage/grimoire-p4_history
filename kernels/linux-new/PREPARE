@@ -690,7 +690,10 @@ create_details()
 					echo "SOURCE_URL=\$source_url"
 					;;
 			esac
-			echo 'PATCHVER=${patchversion}'
+			if [[ ${patchversion} ]]
+			then
+				echo 'PATCHVER=${patchversion}'
+			fi
 			if [[ $patchversion == "" ]]
 			then
 				case "$kver" in
