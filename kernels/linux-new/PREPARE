@@ -100,6 +100,7 @@ main_menu()
 {
 	while true
 	do
+		persistent_load
 		mode=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
@@ -626,7 +627,7 @@ create_details()
 	. $latestdefaults
 	local counter="1"
 	case "$mode" in
-		newktree)
+		*ktree)
 			(
 			. $configfile
 			calculate_depends
@@ -674,8 +675,8 @@ create_details()
 			esac
 			) > $detailsdefaults
 			;;
-		oldktree)
-			;;
+#		oldktree)
+#			;;
 		*)
 			echo "I don't know what the hell is $mode"
 			;;
@@ -692,8 +693,8 @@ create_defaults
 if [[ "$reconf" == "true" || "$kver" == "" ]]
 then
 	main_menu
-	persistent_load
 	. $configfile
+	persistent_load
 	if [ "$kver" == "" ]
 	then
 		echo "You really need to tell the spell what linux kernel you are dealing with."
