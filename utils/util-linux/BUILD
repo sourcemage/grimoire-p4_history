@@ -10,6 +10,11 @@ sedit  "s:/usr:${INSTALL_ROOT}/usr:g"           MCONFIG  &&
 sedit  "s: /bin: ${INSTALL_ROOT}/bin:"          MCONFIG  &&
 sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG  &&
 
+if [ "$SELINUX" == "y" ]; then
+  sedit  "s/HAVE_SELINUX=no/HAVE_SELINUX=yes/" MCONFIG &&
+  message "${MESSAGE_COLOR} SELINUX is  enabled ${DEFAULT_COLOR}"
+fi &&
+
 CFLAGS=${CFLAGS/-DPIC -fPIC/}  &&
 
 default_build                                                   &&

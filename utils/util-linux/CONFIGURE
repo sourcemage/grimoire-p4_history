@@ -6,3 +6,4 @@ if  [  !  -e  ${INSTALL_ROOT}/etc/sysconfig/hwclock  ];  then
   fi
   export UTC
 fi
+config_query  SELINUX   "Do you want to enable selinux support?"  n
