@@ -61,9 +61,11 @@ fi
     sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
     sedit  "s: install-scripts : :"    Makefile  &&
     sedit  "s:root.root:root.audio:"   snddevices &&
+
+	patch -p1 < $SCRIPT_DIRECTORY/alsa.patch &&
+
     
     ./configure  --prefix=/usr         \
-	--with-kernel=/lib/modules/$(uname -r)/build \
 	--with-isapnp=yes     \
 	--with-sequencer=yes  \
 	--with-oss=yes        \
