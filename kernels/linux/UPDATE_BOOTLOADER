@@ -224,11 +224,11 @@ update_grub() {
 case  `uname -m`  in
   powerpc)  update_yaboot  ;;
    sparc*)  update_silo    ;;
-        *)  if  spell_installed  lilo
+        *)  if  [  -x  /sbin/lilo  ]
             then
               update_lilo
             fi
-            if  spell_installed  grub
+            if  [  -x  /sbin/grub  ]
             then
               update_grub
             fi             ;;
