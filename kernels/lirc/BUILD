@@ -4,9 +4,6 @@
   # and to skip menue if config is allready there
   patch -p0 < $SCRIPT_DIRECTORY/setup.diff &&
 
-  # patch a kernel include - hope it works
-  patch -p0 < $SCRIPT_DIRECTORY/malloc.diff &&
-
   if  [  -f   $CONFIG_CACHE/lirc.config  ];  then
     cp $CONFIG_CACHE/lirc.config .setup.config
   else
