@@ -1,9 +1,5 @@
-(
-
-  export CPPFLAGS="-I/usr/include/freetype2" &&
-  ./configure     --prefix=/usr \
-                  $OPTS         &&
-  make                          &&
-  make install
-
-) > $C_FIFO 2>&1
+export CPPFLAGS="-I/usr/include/freetype2" &&
+if [ "${SAWFISH_CVS}"=="y" ] ; then
+  ./autogen.sh
+fi
+default_build
