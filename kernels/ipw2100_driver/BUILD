@@ -1,3 +1,7 @@
+if [ $PATCH24 == 'y' ]; then	
+	patch -p1 <${SCRIPT_DIRECTORY}/patches-2.4/ipw2100-0.56-8.patch
+fi
+
 KERNEL_VER="`grep RELEASE /usr/src/linux/include/linux/version.h | awk '{print $3}'`"
 
 
