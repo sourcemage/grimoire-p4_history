@@ -1,0 +1,16 @@
+           SPELL=cksfv
+         VERSION=1.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.fodder.org/$SPELL/$SOURCE
+        WEB_SITE=http://www.fodder.org/cksfv/
+         ENTERED=20020427
+         UPDATED=20020427
+      MAINTAINER=sorcerer@flamesnyper.com
+           SHORT="cksfv allows you to use sfv files"
+cat << EOF
+Some files that you download will come with a .sfv file. This is used to
+verify that the files that you received are the same as the originals. cksfv
+is a program that can use the .sfv file to verify the downloaded files.
+Also, it can be used to create new .sfv files.
+EOF
