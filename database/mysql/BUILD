@@ -9,8 +9,10 @@ fi                                                        &&
     export CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
   fi  &&
   ./configure  --build=$BUILD                             \
-               --prefix=/usr                              \
-               --sysconfdir=/etc                          \
+               --prefix=$INSTALL_ROOT/usr                 \
+               --sysconfdir=$INSTALL_ROOT/etc             \
+               --mandir=$INSTALL_ROOT/usr/share/man       \
+               --infodir=$INSTALL_ROOT/usr/share/info     \
                --localstatedir=/var/lib/mysql             \
                --with-mysqld-user=mysql                   \
                --without-bench                            \
