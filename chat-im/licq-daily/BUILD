@@ -14,7 +14,7 @@
                --localstatedir=/var               &&
   make                                            &&
 
-  if  spell_installed  qt-x11;  then
+  if  spell_ok  qt-x11;  then
 
     cd  $SOURCE_DIRECTORY/licq-*/plugins/qt-gui &&
     ./configure  --prefix=/usr                    \
@@ -29,7 +29,7 @@
   make    install                                 &&
   cd  $SOURCE_DIRECTORY/licq-*/plugins/console           &&
   make    install                                 &&
-  if  spell_installed  qt-x11;  then
+  if  spell_ok  qt-x11;  then
     cd  $SOURCE_DIRECTORY/licq-*/plugins/qt-gui
     make    install
   fi

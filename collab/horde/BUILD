@@ -67,7 +67,7 @@ PHP_MODULES=$(php -m 2>/dev/null)
   SLAPD_CONF=/etc/openldap/slapd.conf
   SLAPD_SCHEMA=/etc/openldap/schema
 
-  if [ "$SPELL" == 'horde' ] && spell_installed openldap && [ -r "$SLAPD_CONF" ] && [ -d "$SLAPD_SCHEMA" ]; then
+  if [ "$SPELL" == 'horde' ] && spell_ok openldap && [ -r "$SLAPD_CONF" ] && [ -d "$SLAPD_SCHEMA" ]; then
     SUFFIX=$(gawk '/^suffix\W+/ { match($0, /^suffix\W+"?([^"]+)"?\W*$/, a); print a[1]; nextfile; }' "$SLAPD_CONF")
     message "${MESSAGE_COLOR}Found LDAP database suffix:${DEFAULT_COLOR} '$SUFFIX'..."
 

@@ -3,19 +3,21 @@ depends  eawpats   &&
 depends  alsa-lib  &&
 
 AUDIO="--enable-audio=alsa"  &&
-if spell_installed jack || spell_installed jack-cvs ;
+# Still in devel Sorcery only
+#if spell_ok JACK-DRIVER
+if spell_ok jack || spell_ok jack-cvs
 	then AUDIO=$AUDIO,jack ;
 fi  &&
 
-if spell_installed nas ;
+if spell_ok nas ;
 	then AUDIO=$AUDIO,nas ;
 fi  &&
 
-if spell_installed esound ;
+if spell_ok esound ;
 	then AUDIO=$AUDIO,esd ;
 fi  &&
 
-if spell_installed libvorbis ;
+if spell_ok libvorbis ;
 	then AUDIO=$AUDIO,vorbis ;
 fi  &&
 
