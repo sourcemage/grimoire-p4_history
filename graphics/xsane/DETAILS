@@ -1,0 +1,17 @@
+           SPELL=xsane
+         VERSION=0.87
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.${SPELL}.org/download/$SOURCE
+        WEB_SITE=http://www.xsane.org/
+         ENTERED=20020819
+         UPDATED=20020819
+           SHORT="XSane is a graphical scanning frontend for SANE"
+	LICENSE=GPL
+	MAINTAINER=tgarland@email.com
+cat << EOF
+XSane is a graphical scanning frontend for SANE (Scanner Access Now Easy).
+It uses the SANE-library to talk to scanners. This means that XSane does not 
+support any scanners itself. Here you can find out which scanners are supported 
+by the SANE-library.
+EOF
