@@ -1,0 +1,14 @@
+           SPELL=encfs
+         VERSION=1.0.2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=4e2753b02f1999d3ec7e598e264794fe
+        WEB_SITE=http://encfs.sourceforge.net/
+         ENTERED=20040209
+         UPDATED=20040209
+      LICENSE[0]=GPL
+           SHORT="encfs provides an encrypted filesystem in user-space"
+cat << EOF
+EncFS is an encrypted pass-through filesystem which runs in userspace on Linux (using the FUSE kernel module). Similarly to CFS and other pass-through filesystems, all data is encrypted and stored in the underlying filesystem. Unlike loopback filesystems, this does not have any predetermined filesystem size. 
+EOF
