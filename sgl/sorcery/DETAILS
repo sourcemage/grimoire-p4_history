@@ -1,18 +1,12 @@
            SPELL=sorcery
-         VERSION=`date -u +%Y%m%d`
-          SOURCE=$SPELL.tar.bz2
+         VERSION=$SORCERY_VERSION
+          SOURCE=$SPELL-$SORCERY_BRANCH.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=$SORCERY_URL/$SOURCE
-   SOURCE_URL[1]=http://codex.sourcemage.org/devel-grimoire/$SOURCE
-   SOURCE_URL[2]=http://sgl.bccs.net/sorcery/$SOURCE
-   SOURCE_URL[3]=http://infolab.uvt.nl/people/erics/linux/$SOURCE
-   SOURCE_URL[4]=http://www.smee.org/smgl/devel/$SOURCE
+   SOURCE_URL[0]=http://download.sourcemage.org/sorcery/$SOURCE
         WEB_SITE=http://www.sourcemage.org
          ENTERED=20010922
-         UPDATED=20020527
+         UPDATED=20020821
       MAINTAINER=eric@schabell.com
-         LICENSE=GPL
-             MD5=
         NO_CACHE="--cache=off"
         LIFESPAN="10"
             FUZZ="off"
@@ -20,9 +14,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
           SILENT="on"
            SOUND="off"
          ARCHIVE="off"
-           SHORT="Sorcery version 0.1.6: package management tools for Sorcerer GNU Linux."
+           SHORT="Sorcery version $SORCERY_VERSION: package management tools for SourceMage GNU Linux."
 cat << EOF
-Sorcery (v0.1.6)  -  Tools package management by source.
+Sorcery (v$SORCERY_VERSION)  -  Tools package management by source.
 
 sorcery includes the following files:
   /etc/sorcery/*                    configuration files.
@@ -39,6 +33,8 @@ sorcery includes the following files:
   /var/lib/sorcery/grimoire/*       the spell book
   /var/lib/sorcery/protected        list of files that will not be deleted
   /var/lib/sorcery/subroutines      common subroutines
+  /var/lib/sorcery/modules/*        collection of sorcery libraries
+  /var/lib/sorcery/*                other misc. stuff
 
   and man pages.
 

@@ -1,0 +1,18 @@
+until grep  -q  "^[[:blank:]]*SORCERY_BRANCH="  $SPELL_CONFIG;  do
+
+  echo -en "Which release of sorcery do you wish to track, (s)table or (d)evel ?: "
+  read -t $PROMPT_DELAY -n 1 RESPONSE
+  echo
+  case $RESPONSE in
+    s|S) echo "Tracking sorcery-stable."; 
+         echo "SORCERY_BRANCH=stable"  >>  $SPELL_CONFIG;
+         SORCERY_BRANCH="stable"                            ;;
+    d|D) echo "Tracking sorcery-devel."; 
+         echo "SORCERY_BRANCH=devel"   >>  $SPELL_CONFIG; 
+         SORCERY_BRANCH="devel"                            ;;
+      *) echo "Invalid Selection."                         ;;
+  esac
+
+done
+
+sedit 's/^\([[:blank:]]*SOURCE=\).*/\1\${SPELL}-'${SORCERY_BRANCH}'.tar.bz2/' ${SCRIPT_DIRECTORY}/DETAILS
