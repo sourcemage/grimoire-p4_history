@@ -1,10 +1,8 @@
 #!/bin/sh
-#
-# SMGL-script-version=20030224
-# SMGL-START:2 3 4 5:S99
-# SMGL-STOP:0 1 2 6:K08
 
-source /etc/init.d/functions
+RUNLEVEL=2
+
+. /etc/init.d/smgl_init
 
 case "$1" in
 'start')
@@ -37,7 +35,7 @@ case "$1" in
 	evaluate_retval
 	;;
 *)
-	echo "Usage: $0 { start | stop }"
+	echo "Usage: $0 { start | stop | restart | status}"
 	exit 1
 	;;
 esac
