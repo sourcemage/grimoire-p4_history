@@ -1,7 +1,10 @@
 (
 
+  patch  -p0  <  $SCRIPT_DIRECTORY/secfix.patch
+
   ./configure  --prefix=/usr            \
-               --with-libs="-lncurses"  &&
+               --with-CXX               \
+               $OPTS                    &&
   make                                  &&
   prepare_install                       &&
   make    install                       &&

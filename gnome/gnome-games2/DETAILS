@@ -1,9 +1,10 @@
            SPELL=gnome-games2
          VERSION=2.0.4
-          SOURCE=gnome-games-$VERSION.tar.bz2
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+	  SOURCE=gnome-games-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-games-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/gnome-games/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/gnome-games/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/gnome-games/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gnome-games/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

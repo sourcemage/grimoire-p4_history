@@ -1,0 +1,39 @@
+           SPELL=abcde
+         VERSION=2.0.3
+          SOURCE=${SPELL}_${VERSION}.orig.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://lly.org/~rcw/abcde/$SOURCE
+        WEB_SITE=http://lly.org/~rcw/abcde/page/
+      MAINTAINER=afrayedknot@thefrayedknot.armory.com
+         LICENSE=GPL
+             MD5=c503e81d561965d39930bdc866e1c37c
+         ENTERED=20020911
+         UPDATED=20020911
+           SHORT="A Better CD Encoder"
+cat << EOF
+Abcde is a frontend command-line utility (actually, a shell script)
+that grabs tracks off a CD, encodes them to ogg or mp3 format, and tags
+them, all in one go. 
+
+Abcde supports: 
+
+     CDDA using cdparanoia or cdda2wav
+     Ogg Vorbis using oggenc or vorbize
+     MP3 using lame, gogo, bladeenc, mp3enc, xingmp3enc, or l3enc
+     CDDB using cd-discid, wget, and FreeDB
+     Ogg commenting using vorbiscomment
+     Tagging using id3 and id3v2
+     m3u playlists
+     Distributed remote MP3 encoding using distmp3
+     Simultaneous reading and encoding
+     SMP systems
+     Resuming interrupted sessions
+     Noninteractivity
+     Error logging of background processes
+     Various Artists discs of all types
+     Custom filename output and munging
+     Passing arbitrary options to subprocesses
+     Ejecting CD's after reading
+     Encoder nicing
+     Grabbing arbitrary ranges of tracks
+EOF

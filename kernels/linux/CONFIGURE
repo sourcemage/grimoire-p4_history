@@ -110,15 +110,17 @@ DIALOG="dialog
 Sorcery Spell Management Utility
 --stdout"
 
-PATCH_DIR="${GRIMOIRE}/${SECTION}/${SPELL}/patches"
-
+PATCH_DIR="${SCRIPT_DIRECTORY}/patches"
 
 
 if    query  "Configure linux kernel?"  n
 then
   CONFIG_KERNEL=y
 
-  source ${GRIMOIRE}/${SECTION}/${SPELL}/KERNELS
+  source ${SCRIPT_DIRECTORY}/KERNELS
+
+  # if Version is not yet set, default to LATEST_2_4
+  KERNEL_VERSION=${KERNEL_VERSION="LATEST_2_4"}
 
   main_menu
 
@@ -140,6 +142,3 @@ else
   echo  "$TEMP"                         >   $SPELL_CONFIG  &&
   echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG
 fi
-
-# still debugging - don't build
-#exit 1

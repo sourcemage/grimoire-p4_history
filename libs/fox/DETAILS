@@ -1,0 +1,24 @@
+           SPELL=fox
+         VERSION=1.0.22
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.fox-toolkit.org/ftp/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.fox-toolkit.org/pub/$SOURCE
+        WEB_SITE=http://www.fox-toolkit.org
+         LICENCE=http://www.fox-toolkit.org/license.html
+         ENTERED=20020425
+         UPDATED=20020829
+      MAINTAINER=treeve01@pi.be
+SHORT="FOX is a popular C++-based toolkit for GUI development"
+
+cat << EOF
+FOX is a popular C++-based toolkit for GUI development. It includes a
+rich set of widgets and has powerful yet simple layout managers, MDI
+widgets, and mega-widgets. FOX incorporates support for XDND for drag
+and drop, X clipboard and X Selection, watching other I/O channels and
+sockets, timers and idle processing, object serialization and
+deserialization, a registry to save persistent settings, and 3D
+widgets using Mesa or OpenGL. FOX works on Linux, IRIX, Solaris,
+HP/UX, AIX, Tru64 Unix, Windows 9x,NT,2K (VC++, GNUWIN32, Borland,
+VisualAge C++), FreeBSD, and Sequent.
+EOF

@@ -1,9 +1,10 @@
            SPELL=libglade2
          VERSION=2.0.1	
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=libglade-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/libglade-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/libglade/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/libglade/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/libglade/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/libglade/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL

@@ -1,0 +1,40 @@
+echo -e -n ${QUERY_COLOR}
+echo "Abcde works with many different optional software tools."
+echo "Choose any number of tools from the optional lists below"
+echo "If any of the tools are already installed you will not"
+echo "be queried for them again"
+echo ""
+echo "CD rippers: cdda2wav and cdparanoia"
+echo -e -n ${DEFAULT_COLOR}
+echo ""
+
+optional_depends  "cdparanoia" "" "" "for ripping with error correction" &&
+optional_depends  "cdrutils"   "" "" "use cdd2wav" && 
+
+echo ""
+echo -e -n ${QUERY_COLOR}
+echo "choose any of the following ogg/mp3 encoders"
+echo "oggenc, lame, bladenc"  
+#gogo, mp3enc, xingmp3enc and l3enc are also supported 
+#but dont seem to appear within out lisencing scheme 
+echo -e -n ${DEFAULT_COLOR}
+echo ""
+
+optional_depends  "vorbis-tools" "" "" "Ogg Vorbis encoder" &&
+optional_depends  "lame"         "" "" "for mp3s" &&
+optional_depends  "bladeenc"     "" "" "for mp3s" &&
+
+if query "cddb support?" "y" ; then
+  depends cd-discid &&
+  depends wget      
+fi
+
+echo ""
+echo -e -n ${QUERY_COLOR}
+echo "If you installed vorbis tools, you already have a vorbis tagger,"
+echo "however you may still want id3 tagging for mp3 files"
+echo -e -n ${DEFAULT_COLOR}
+echo ""
+
+optional_depends  "id3"     "" "" "for id3 version 1 tagging" &&
+optional_depends  "id3v2"   "" "" "for id3 version 2 tagging" 

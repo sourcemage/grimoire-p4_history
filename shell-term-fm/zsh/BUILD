@@ -8,11 +8,10 @@
     make    install
 
     ## install configuration files. ##
-
     if [ ! -f  /etc/zshenv ];  then
 	cp  $SCRIPT_DIRECTORY/zshenv  /etc
     fi
-    if [  ! -f /etc/zshrc  ];  then
+    if [ ! -f /etc/zshrc  ];  then
 	cp  $SCRIPT_DIRECTORY/zshrc  /etc
     fi
 

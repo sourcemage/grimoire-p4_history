@@ -4,11 +4,17 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.ibiblio.org/pub/Linux/system/boot/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://brun.dyndns.org/pub/linux/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.fee.vutbr.cz/pub/systems/linux/current/system/boot/$SPELL/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.uni-tuebingen.de/pub/mirrors/ftp.metalab.unc.edu/pub/Linux/system/boot/$SPELL/$SOURCE
+   SOURCE_URL[4]=ftp://crydee.sai.msu.ru/zeus/Linux/boot/$SOURCE
+   SOURCE_URL[5]=ftp://ftp.sai.msu.su/pub/Linux/boot/$SOURCE
+   SOURCE_URL[6]=ftp://planetmirror.com/raid/2/ibiblio/system/boot/$SPELL/$SOURCE
           MD5[0]=d9aef434629fc61cba150e7fd2caec68
         WEB_SITE=ftp://brun.dyndns.org/pub/linux/lilo
-      LICENSE[0]=BSD
          ENTERED=20010922
          UPDATED=20020521
+      LICENSE[0]=BSD
+      MAINTAINER=eric@sandall.us
            SHORT="lilo is a boot loader for Linux/x86 and other PC operating systems."
 cat << EOF
 Lilo is a Boot loader for Linux/x86 and other PC operating systems.

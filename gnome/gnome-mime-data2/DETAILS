@@ -1,9 +1,10 @@
            SPELL=gnome-mime-data2
          VERSION=2.0.1
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnome-mime-data-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-mime-data-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/gnome-mime-data/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/gnome-mime-data/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/gnome-mime-data/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gnome-mime-data/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

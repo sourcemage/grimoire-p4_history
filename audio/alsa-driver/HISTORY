@@ -1,20 +1,47 @@
-2002-07-27 Unet	<burududu@hotpop.com>
+2002-09-17  Eric Sandall <eric@sandall.us>
+		Added TRIGGERS now that they're fixed
 
-	Added a dependancy to psmisc (bug #501)
+2002-09-13  Eric Schabell <eschabell@sourcemage.org>
 
-2002-06-20 Unet	<burududu@hotpop.com>
+		Rolled back to version rc2 and fixed bugs #935 and
+		#919. Also updated md5.
+
+2002-09-12  Eric Sandall <eric@sandall.us>
+		Removing TRIGGERS until they work properly
+
+2002-09-08  Eric Sandall <eric@sandall.us>
+		Fixed Bug #912 (re-added provides, it _is_ needed).
+		Fixed Bug #776
+		Added trigger to recast if linux is cast
+
+2002-09-06  Eric Sandall <eric@sandall.us>
+		Updated to 0.9.0rc3 (Bug #873)
+		Fixed BUILD according to Bug #873
+		Added $OPTS to ./configure in BUILD
+		Added MD5
+		Cleaned up DETAILS
+		Removed provides as alsa-drivers no longer is used
+		Changed BUILD to use 'linux-new' as versioning, instead 
+		of linux.  Will change back once 'linux' is replaced 
+		by 'linux-new'
+
+2002-07-27  Unet <burududu@hotpop.com>
+
+		Added a dependancy to psmisc (bug #501)
+
+2002-06-20  Unet <burududu@hotpop.com>
 	
-	Upgraded to 0.9.0rc2
+		Upgraded to 0.9.0rc2
 
-2002-04-26 Unet <burududu@hotpop.com>
+2002-04-26  Unet <burududu@hotpop.com>
 	
-	* Upgraded to 0.9.0rc1
+		Upgraded to 0.9.0rc1
 
 
-2002-03-15 Robin Cook <rcook@wyrms.net>
+2002-03-15  Robin Cook <rcook@wyrms.net>
 
-	* added lines to BUILD to set ownership of sound devices 
-          in /dev to root.audio.  Sill need a way to set ownership
-          of sound devices in /devices when the are created. 
+		added lines to BUILD to set ownership of sound devices 
+          	in /dev to root.audio.  Sill need a way to set ownership
+          	of sound devices in /devices when the are created. 
 
 

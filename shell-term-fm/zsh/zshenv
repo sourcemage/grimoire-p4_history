@@ -5,9 +5,6 @@
 # the shell is attached to a tty.
 
 typeset -U path
-path=($path /bin /usr/bin /usr/local/bin)
-if [[ EUID == 0 ]]; then
-    path=(/sbin /usr/sbin)
-fi
+path=(/sbin /usr/sbin /bin /usr/bin /usr/local/bin)
 
 

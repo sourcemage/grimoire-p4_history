@@ -1,2 +1,5 @@
 depends  zlib  &&
-depends  perl
+depends  perl  &&
+
+optional_depends  db  "--with-berkeley-db"  "--without-berkeley-db"  \
+                      "for Berkeley DB tables type support"

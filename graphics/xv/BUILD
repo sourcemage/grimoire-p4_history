@@ -1,6 +1,6 @@
 (
 
-  gzip   -dc  <  $SOURCE_CACHE/$SOURCE2  |
+  bzip2  -dc  <  $SOURCE_CACHE/$SOURCE2  |
   patch  -p1                             &&
   make   -f  Makefile.std                \
          CCOPTS="$CFLAGS"                &&

@@ -1,9 +1,10 @@
            SPELL=libgnome
-         VERSION=2.0.4
+         VERSION=2.0.5
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/$SPELL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/$SPELL/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
         WEB_SITE=http://developer.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

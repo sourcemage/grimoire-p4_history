@@ -1,20 +1,10 @@
-# $Id: BUILD,v 1.2 2002/09/06 01:03:41 sergeyli Exp $
+# $Id: BUILD,v 1.3 2002/09/17 15:45:41 sergeyli Exp $
 (
-	message "${MESSAGE_COLOR}Phase 1. Checking out the source${DEFAULT_COLOR}" &&
-
-	export CVSROOT=:pserver:anoncvs@cvs.apache.org:/home/cvspublic &&
-	cvs -z 9 ex -f -r HEAD httpd-2.0           &&
-	cd httpd-2.0/                              &&
-	pushd srclib/                              &&
-	cvs -z 9 ex -f -r HEAD apr                 &&
-	cvs -z 9 ex -f -r HEAD apr-util            &&
-	cd ../modules/experimental/                &&
+	pushd modules/experimental                 &&
 	patch -p1 < $SCRIPT_DIRECTORY/LDAPv3.patch &&
 	popd                                       &&
 
-	message "${MESSAGE_COLOR}Phase 2. Building${DEFAULT_COLOR}" &&
-
-	./buildconf &&
+	./buildconf                                &&
 	./configure                                \
 		--prefix=/usr           	           \
 		--sysconfdir=/etc/httpd                \

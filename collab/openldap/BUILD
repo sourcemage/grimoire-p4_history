@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.4 2002/08/10 04:07:47 sergeyli Exp $
+# $Id: BUILD,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
 (
 
 	./configure              \
@@ -6,6 +6,10 @@
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--enable-cleartext   \
+		--enable-crypt       \
+		--enable-rlookups    \
+		--enable-gnu-ld      \
 		$OPTS                &&
 	make    depend           &&
 	make                     &&

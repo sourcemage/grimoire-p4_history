@@ -1,9 +1,10 @@
            SPELL=ggv2
          VERSION=1.99.90
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=ggv-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/ggv-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/ggv/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/ggv/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/ggv/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/ggv/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

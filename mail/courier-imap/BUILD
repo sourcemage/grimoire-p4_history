@@ -1,13 +1,10 @@
 (
   case  $IPV6  in
-    n|N)  OPTS="$OPTS  --without-ipv6"  ;;
+    n|N)  IPV6="--without-ipv6"  ;;
+    *)    IPV6="--with-ipv6" 	 ;;
   esac
 
-  ./configure   --prefix=/usr                     \
-                --localstatedir=/var/lib/${SPELL} \
-                --sysconfdir=/etc/${SPELL}        \
-                --disable-root-check              \
-               $OPTS                  &&
+  ./configure $IPV6 --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-root-check  &&
 
   make                                &&
   prepare_install                     &&

@@ -1,0 +1,21 @@
+           SPELL=Authen-PAM
+         VERSION=0.13
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          MD5[0]="cb6366e84200d0dadf7a3a2ceb2bc007"
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/N/NI/NIKIP/$SOURCE
+	 LICENSE=ART
+        WEB_SITE="http://search.cpan.org?module=Authen::PAM"
+         ENTERED=20020911
+         UPDATED=20020911
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Interface to PAM library"
+cat << EOF
+
+The Authen::PAM module provides a Perl interface to the PAM library.
+The only difference with the standard PAM interface is that instead of
+passing a pam_conv struct which has an additional context parameter
+appdata_ptr, you must only give an address to a conversation function
+written in Perl (see below)
+
+EOF

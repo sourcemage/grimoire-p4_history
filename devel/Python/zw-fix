@@ -1,0 +1,86 @@
+Index: Lib/os.py
+--- Lib/os.py	2 Jul 2002 21:28:04 -0000	1.58
++++ Lib/os.py	2 Aug 2002 18:21:07 -0000
+@@ -319,8 +319,9 @@ def execvpe(file, args, env):
+ 
+ __all__.extend(["execl","execle","execlp","execlpe","execvp","execvpe"])
+ 
+-_notfound = None
+ def _execvpe(file, args, env=None):
++    from errno import ENOENT, ENOTDIR
++
+     if env is not None:
+         func = execve
+         argrest = (args, env)
+@@ -328,7 +329,7 @@ def _execvpe(file, args, env=None):
+         func = execv
+         argrest = (args,)
+         env = environ
+-    global _notfound
++
+     head, tail = path.split(file)
+     if head:
+         apply(func, (file,) + argrest)
+@@ -338,30 +339,14 @@ def _execvpe(file, args, env=None):
+     else:
+         envpath = defpath
+     PATH = envpath.split(pathsep)
+-    if not _notfound:
+-        if sys.platform[:4] == 'beos':
+-            #  Process handling (fork, wait) under BeOS (up to 5.0)
+-            #  doesn't interoperate reliably with the thread interlocking
+-            #  that happens during an import.  The actual error we need
+-            #  is the same on BeOS for posix.open() et al., ENOENT.
+-            try: unlink('/_#.# ## #.#')
+-            except error, _notfound: pass
+-        else:
+-            import tempfile
+-            t = tempfile.mktemp()
+-            # Exec a file that is guaranteed not to exist
+-            try: execv(t, ('blah',))
+-            except error, _notfound: pass
+-    exc, arg = error, _notfound
+     for dir in PATH:
+         fullname = path.join(dir, file)
+         try:
+             apply(func, (fullname,) + argrest)
+         except error, (errno, msg):
+-            if errno != arg[0]:
+-                exc, arg = error, (errno, msg)
+-    raise exc, arg
+-
++            if errno != ENOENT and errno != ENOTDIR:
++                raise
++    raise error, (errno, msg)
+ 
+ # Change environ to automatically call putenv() if it exists
+ try:
+--- Modules/Setup.dist	2001/03/22 22:18:55	1.21
++++ Modules/Setup.dist	2002/08/08 19:56:28	1.21.2.1
+@@ -97,6 +97,7 @@
+ # setup.py script in the root of the Python source tree.
+ 
+ posix posixmodule.c		# posix (UNIX) system calls
++errno errnomodule.c		# posix (UNIX) errno values
+ _sre _sre.c			# Fredrik Lundh's new regular expressions
+ 
+ # The rest of the modules listed in this file are all commented out by
+@@ -162,7 +163,6 @@
+ #fcntl fcntlmodule.c	# fcntl(2) and ioctl(2)
+ #pwd pwdmodule.c		# pwd(3) 
+ #grp grpmodule.c		# grp(3)
+-#errno errnomodule.c	# posix (UNIX) errno values
+ #select selectmodule.c	# select(2); not on ancient System V
+ 
+ # Memory-mapped files (also works on Win32).
+--- setup.py	2001/12/27 21:51:02	1.38.2.3
++++ setup.py	2002/08/08 19:56:28	1.38.2.4
+@@ -215,8 +215,6 @@
+         exts.append( Extension('pwd', ['pwdmodule.c']) )
+         # grp(3)
+         exts.append( Extension('grp', ['grpmodule.c']) )
+-        # posix (UNIX) errno values
+-        exts.append( Extension('errno', ['errnomodule.c']) )
+         # select(2); not on ancient System V
+         exts.append( Extension('select', ['selectmodule.c']) )
+ 

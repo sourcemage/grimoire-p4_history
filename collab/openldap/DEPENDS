@@ -1,7 +1,18 @@
-# $Id: DEPENDS,v 1.4 2002/08/10 04:07:47 sergeyli Exp $
+# $Id: DEPENDS,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
 depends db "--enable-bdb" &&
 
-optional_depends "openssl"    ""                  ""                    "for encryption in passwords etc."      &&
-optional_depends "bash"       "--enable-shell"    "--disable-shell"     "for shell backend"                     &&
-#optional_depends "perl"       "--enable-perl"     "--disable-perl"     "for perl backend"                       &&
-optional_depends "cyrus-sasl" "--with-cyrus-sasl" "--with-cyrus-ssl=no" "for SASL/TLS encrypted authentication"
+optional_depends bash       "--enable-shell"            \
+							"--disable-shell"           \
+							"for shell backend"         &&
+optional_depends readline   "--with-readline"           \
+                            "--without-readline"        \
+							"for readline intergration" &&
+optional_depends openssl    "--with-tls"                \
+                            "--without-tls"             \
+							"for SSL/TLS support"       &&
+#optional_depends perl       "--enable-perl"             \
+#							"--disable-perl"            \
+#							"for perl backend"          &&
+optional_depends cyrus-sasl "--with-cyrus-sasl"         \
+							"--without-cyrus-ssl"       \
+							"for SASL authentication"

@@ -26,9 +26,12 @@ EOF
 
 
 # Clean out the old alsa drivers.
-rm  -f  /lib/modules/`installed_version linux`/misc/snd*
+rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
 (
+
+  rm  include/linux/isapnp.h  &&
+  touch  include/linux/modversions.h  &&
 
   modprobe  soundcore
   ./configure  --prefix=/usr         \

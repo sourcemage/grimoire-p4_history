@@ -1,9 +1,10 @@
            SPELL=gnome-vfs-extras2
          VERSION=0.99.5
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnome-vfs-extras-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-vfs-extras-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/2.0.1/sources/gnome-vfs-extras/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.1/sources/gnome-vfs-extras/$SOURCE
+   SOURCE_URL[0]=$GNOME_URL/sources/gnome-vfs-extras/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gnome-vfs-extras/$BRANCH/$SOURCE
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL

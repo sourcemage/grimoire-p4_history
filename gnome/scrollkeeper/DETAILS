@@ -1,10 +1,11 @@
            SPELL=scrollkeeper
          VERSION=0.3.11
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/pre-gnome2/sources/$SPELL/$SOURCE
-   SOURCE_URL[2]=ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://scrollkeeper.sourceforge.net
       LICENSE[0]=LGPL

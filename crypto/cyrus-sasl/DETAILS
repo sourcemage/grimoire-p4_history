@@ -1,0 +1,26 @@
+           SPELL=cyrus-sasl
+         VERSION=2.1.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/$SOURCE
+      SOURCE_LIC=BSD
+          MD5[0]=babba09f2f4cef29b62012af647bd370
+         LICENSE=$SOURCE_LIC
+        WEB_SITE=http://asg.web.cmu.edu/sasl/
+         ENTERED=20020717
+         UPDATED=20020717
+           SHORT="Cyrus SASL (RFC 2222) Library"
+cat << EOF
+This is the Cyrus SASL API implentation. It can be used on the client or server
+side to provide authentication. See RFC 2222 for more information.
+The following mechanisms are included in this distribution:
+* ANONYMOUS
+* CRAM-MD5
+* KERBEROS_V4
+* PLAIN
+* SCRAM-MD5 (deprecated)
+* GSSAPI (MIT Kerberos 5 or Heimdal Kerberos 5)
+* DIGEST-MD5
+* LOGIN (unsupported)
+* SRP (unsupported, may not work)
+EOF

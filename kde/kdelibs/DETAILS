@@ -1,12 +1,15 @@
            SPELL=kdelibs
          VERSION=3.0.3
           SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=post-3.0.3-kdelibs-khtml.diff
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/3.0.3/src/$SOURCE
-          MD5[0]=f26acfafbd3a00451b6e344a7d75386d
+  SOURCE2_URL[0]=$KDE_URL/security_patches/$SOURCE2
+          MD5[0]=c64877111ec2d02f039fd5a428021336
+          MD5[1]=523b2fb677310792cbb04861f358d08d
         WEB_SITE=http://www.kde.org
          UPDATED=20020528
-         ENTERED=20020322
+         ENTERED=20020912
       LICENSE[0]=GPL
       MAINTAINER=eric@lasvegasdata.com
            SHORT="kdelibs contains the base applications that form the core of KDE."

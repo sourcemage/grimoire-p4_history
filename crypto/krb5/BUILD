@@ -1,5 +1,7 @@
 (
 
+  patch --verbose src/lib/rpc/xdr_array.c < $SCRIPT_DIRECTORY/xdr_array.patch &&
+
   cd  src
   ./configure  --enable-dns-for-kdc    \
                --enable-dns-for-realm  \
