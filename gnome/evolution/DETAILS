@@ -6,8 +6,8 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/stable/sources/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/stable/sources/$SPELL/$SOURCE
- # SOURCE_URL[2]=ftp://ftp.ximian.com/pub/source/$SPELL/$SOURCE
-  SOURCE2_URL[0]=http://ftp.sleepycat.com/update/$DBVERSION/$SOURCE2
+   SOURCE_URL[2]=ftp://ftp.ximian.com/pub/source/$SPELL/${SOURCE/bz2/gz}
+  SOURCE2_URL[0]=http://sleepycat.com/update/snapshot/$SOURCE2
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://www.ximian.com/products/ximian_evolution
          ENTERED=20011109
