@@ -3,6 +3,10 @@ depends  docbook-dtd  &&
 #--disable-debug --enable-final used to be in BUILD 
 depends  arts "--disable-debug --enable-final" &&
 depends  pcre  &&
+optional_depends  "libart_lgpl"	\
+			""	\
+			""	\
+			"to enable SVG rendering "	&&
 optional_depends  "libpng"	\
 			""	\
 			""	\
