@@ -1,0 +1,25 @@
+           SPELL=kdewebdev
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=3.2.90
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
+          MD5[0]=6e8654cf2da971725319f4888f2068cc
+else
+         VERSION=3.2.2
+          SOURCE=quanta-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/quanta-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+          MD5[0]=db065380a15d1570cfbd31c0b447cb09
+fi
+       BUILD_API=2
+        WEB_SITE=http://www.kde.org
+         ENTERED=20040531
+         UPDATED=
+    DISTCC_HOSTS=
+      LICENSE[0]=GPL
+      MAINTAINER=eric@lasvegasdata.com
+           SHORT="various tools, including quanta, for web development"
+cat << EOF
+various tools, including quanta and kommander, for web development
+EOF

@@ -1,4 +1,3 @@
-(
   if ${INSTALL_ROOT}/lib/libc.so.6 | grep -q NPTL; then
      sedit "s/X_CFLAGS -ldb/X_CFLAGS -ldb -lpthread/" configure 
   fi                                         &&
@@ -12,8 +11,4 @@
                --enable-trollproject         \
                --enable-customproject        \
                         ${OPTS}              &&
-  make  -Wno-deprecated                      &&
-  prepare_install                            &&
-  make    install
-
-) > $C_FIFO 2>&1
+  make  -Wno-deprecated                      

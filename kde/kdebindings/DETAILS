@@ -1,9 +1,18 @@
            SPELL=kdebindings
-         VERSION=3.2.0
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=3.2.90
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2/src/$SOURCE
-          MD5[0]=18eb863e0136d49cc83d336a18df83ea
+   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
+          MD5[0]=8b1f0e1a224fedf12d2c46ca48d3fb4d
+else
+         VERSION=3.2.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
+          MD5[0]=63550819ce7b54eb6361fa2db17b318b
+fi
+       BUILD_API=2
         WEB_SITE=http://www.kde.org/
          ENTERED=20010922
          UPDATED=20040116

@@ -1,0 +1,13 @@
+my_install() {
+  cd $BUILD_SUBDIRECTORY             &&
+  make    install                    &&
+  cd -
+}
+
+  for BUILD_SUBDIRECTORY in $SOURCE_DIRECTORY/$SPELL*
+  do
+    if [ -d $BUILD_SUBDIRECTORY ]
+    then
+      my_install
+    fi
+  done

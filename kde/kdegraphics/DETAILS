@@ -1,9 +1,18 @@
            SPELL=kdegraphics
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=3.2.90
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
+          MD5[0]=8380f414fcadce4a552a148e9c9d1588
+else
          VERSION=3.2.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
           MD5[0]=3cbe8ab5dcea25977946cf9f08fa42c3
+fi
+       BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
          UPDATED=20040116

@@ -1,9 +1,18 @@
            SPELL=kdevelop
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=3.0.90
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/unstable/3.2.90/src/$SOURCE
+          MD5[0]=b5af7a0aeef0206bdefd8c82d70c6afd
+else
          VERSION=3.0.3
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${KDE_URL}/stable/3.2.2/src/${SOURCE}
           MD5[0]=cecef1c44da0a77e19dc141453b29cb0
+fi
+       BUILD_API=2
         WEB_SITE=http://www.kdevelop.org/
          ENTERED=20010922
          UPDATED=20031122
