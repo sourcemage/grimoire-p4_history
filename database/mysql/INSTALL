@@ -1,0 +1,10 @@
+  make  pkglibdir=/usr/lib  install                       &&
+  rm    -rf  /usr/mysql-test                              &&
+
+  if ! grep  -q  "\--without-server" $SPELL_CONFIG;  then
+    create_account mysql
+
+    mysql_install_db
+    chown  -R  mysql.mysql  /var/lib/mysql
+  fi
+
