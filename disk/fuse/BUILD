@@ -1,12 +1,8 @@
-(
+if [ "$CVS" = "y" ]; then
 
-  if [ "$CVS" = "yes" ]; then
+  echo "mkdir -p \$1" > ./mkinstalldirs  &&
+  ./makeconf.sh
 
-    echo "mkdir -p \$1" > ./mkinstalldirs  &&
-    ./makeconf.sh
+fi  &&
 
-  fi  &&
-
-  default_build
-
-) > $C_FIFO 2>&1
+default_build
