@@ -1,103 +1,61 @@
 (
 
-# function to generate proper symlinks for runlevels
-linkscript ()
-{
-    truncname=$(echo $init_script | cut -d. -f1)
-    for action in SMGL-START SMGL-STOP
-      do
-      for level in $(grep "# $action" $initdir/$init_script | cut -d: -f2)
-	do
-	pri=$(grep "# $action" $initdir/$init_script | cut -d: -f3)
-	if [ ! -f /etc/rc$level.d/*$truncname ]; then
-	    ln -s $initdir/$init_script /etc/rc$level.d/$pri$truncname
-	else
-	    pri2=$(ls /etc/rc$level.d/*$truncname | sed s/$truncname// | sed s/\.sh// | cut  -d/ -f4)
-	    if [ ! $pri = $pri2 ]; then
-		rm -f /etc/rc$level.d/*$truncname
-		ln -s $initdir/$init_script /etc/rc$level.d/$pri$truncname
-	    fi
-	fi
-      done
-    done
-}
+  pinfo() { echo -e "\n${SPELL_COLOR}${*}${DEFAULT_COLOR}\n" ; }
+  mkdep()
+  {
+    local file="$RD/%$1/runlevel.config"
 
-# Function to backup existing scripts and install updated ones
-installscript ()
-{
-# setup invironmental stuff
-    if [ $init_script = functions ]; then
-	prm=644
+    rm -f $file
+
+    if [ "$2" ] ; then
+      echo "Making runlevel $1 depend on runlevel $2"
+      echo "NEEDS=%$2" > $file
     else
-	prm=755
+      echo "NEEDS=" > $file
     fi
-    if [ -e /etc/init.d/$init_script ]; then
-    
-	mv -f /etc/init.d/$init_script /etc/init.d/$init_script.$savetime
-    fi
-    install  -m  $prm  $SCRIPT_DIRECTORY/scriptdir/$init_script  /etc/init.d
-    if [ ! $init_script = functions ]; then
-	linkscript $init_script
-    fi  
-}
+  }
 
-# this is needed to clean up old links to mount.sh after update
-cleanup_old()
-{
-    for runlvl in 0 1 2 3 4 5 6 S; do
-	mnttst=$(ls /etc/rc$runlvl.d | grep mount.sh$)
-	if [ -n "$mnttst" ]; then
-	    test2=$(ls /etc/rc$runlvl.d | grep mount$)
-	    if [ -n "$test2" ]; then
-		rm -f /etc/rc$runlvl.d/$mnttst
-	    fi
-	fi
-    done
-}
-# prepare_install removes scripts that are not in the install que 
-# but were installed previously by init.d; this is a bad thing (tm)
-# so "just say no" to prepare_install && for now
+  FD=$SCRIPT_DIRECTORY/files    # Files Directory
+  ID=/etc/init.d                # Init Dir
+  RD=/etc/init.d/runlevels      # Runlevels Dir
 
-# Install selected scripts
-# the scriptque gets built in CONFIGURE
-initdir=/etc/init.d
-savetime=$(date +%Y%m%d%H%M)
+  prepare_install                                             &&
 
-# strip out the quotes in previous output so it's usable
-sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
-scriptque=$(cat $SCRIPT_DIRECTORY/scriptque.temp)
-for init_script in $scriptque; do
-    installscript $init_script
-done
-# clean up .temp files
-scratch_list=$(ls $SCRIPT_DIRECTORY | grep .temp)
-for scratch_file in $scratch_list; do
-    rm -f $SCRIPT_DIRECTORY/$scratch_file
-done
-# clean up old mount.sh files
-cleanup_old
+  pinfo "Creating directories..."                             &&
 
-#
-# Installing /etc/inittab
-#
-if  [  !  -f  /etc/inittab  ]
-then
-  echo  "Installing /etc/inittab ..."
-  cp  ${SCRIPT_DIRECTORY}/inittab /etc
-else
-  echo  "/etc/inittab already exists, not installing a new one"
-fi
+  mkdir  -pv  $RD/%S  $RD/%1  $RD/%2  $RD/%3  $RD/%4  $RD/%5  &&
+  mkdir  -pv  /etc/sysconfig                                  &&
 
-#
-# Finally install runlevel editing tool: runlvedit
-#
-echo  "Installing your Source Mage runlevel editor..."
+  pinfo "Installing files..."                                 &&
 
-if [ -e /usr/sbin/runlvedit ]; then
-  rm -vf /usr/sbin/runlvedit
-  cp -ruv $SCRIPT_DIRECTORY/runlvedit /usr/sbin/
-else
-  cp -ruv $SCRIPT_DIRECTORY/runlvedit /usr/sbin/
-fi
+  install  -v  -m 644  $FD/auto_init        $ID/              &&
+  install  -v  -m 754  $FD/rc               $ID/              &&
+  install  -v  -m 644  $FD/smgl_functions   $ID/              &&
+  install  -v  -m 644  $FD/smgl_init        $ID/              &&
+  install  -v  -m 644  $FD/smgl_runlevel    $ID/              &&
+
+  # Some non-directory based runlevels
+  install  -v  -m 754  $FD/%*               $RD/              &&
+
+  pinfo "Installing facility and init configfiles..."         &&
+
+  _init_install_conf_files facilities init                    &&
+
+  pinfo "Creating runlevel dependency files..."               &&
+
+  mkdep S                                                     &&
+  mkdep 1 S                                                   &&
+  mkdep 2 1                                                   &&
+  mkdep 3 2                                                   &&
+  mkdep 4 3                                                   &&
+  mkdep 5 4                                                   &&
+
+  pinfo "Other stuff..."                                      &&
+
+  # Yeah, I know
+  ln  -sfv  /bin/true  $RD/rc                                 &&
+
+  # LILO uses the auto runlevel when it doesn't encounter any user input
+  ln  -sfv  /etc/init.d/runlevels/%default  /etc/init.d/runlevels/%auto
 
 ) > $C_FIFO 2>&1

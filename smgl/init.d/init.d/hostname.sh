@@ -1,0 +1,25 @@
+#!/bin/bash
+
+RUNLEVEL=S
+
+. /etc/init.d/smgl_init
+
+test -x /bin/hostname  || exit 5
+test -x /sbin/ifconfig || exit 5
+
+case $1 in
+  start)  echo "Setting hostname..."
+          /bin/hostname -F /etc/hostname
+          evaluate_retval
+
+          echo "Setting up local network interface..."
+          ifconfig lo 127.0.0.1 broadcast 127.255.255.255 netmask 255.0.0.0
+          evaluate_retval
+          ;;
+
+  stop)   ;;
+
+  *)      echo "Usage: $0 {start|stop}"
+          exit 1
+          ;;
+esac
