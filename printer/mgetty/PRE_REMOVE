@@ -1,5 +1,0 @@
-if  [  "pgrep  mgetty"  ];  then
-  cp   ${INSTALL_ROOT}/etc/inittab  ${INSTALL_ROOT}/etc/inittab.backup
-  sed  ${INSTALL_ROOT}/etc/inittab.backup  -e  /mgetty/d  >  ${INSTALL_ROOT}/etc/inittab
-  telinit  q
-fi
