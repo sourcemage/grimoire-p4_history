@@ -9,7 +9,7 @@ for example, /dev/hda for the MBR of the first IDE drive, /dev/hdb1 for the firs
 /dev/sda for the MBR of the first SCSI drive,...etc" "/dev/hda"
 fi  &&
 # the leading space appears to be critical, hence the escaped quotes:
-message  "GRUB is configured to install on $GRUB_TARGET."
+message  "GRUB is configured to install on ${MESSAGE_COLOR}${GRUB_TARGET}${DEFAULT_COLOR}."
 
 config_query  GRUB_EXT2       "Enable ext2 support in stage 2?"            y  &&
 config_query  GRUB_FAT        "Enable FAT16/32 support in stage 2?"        y  &&

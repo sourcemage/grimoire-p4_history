@@ -99,8 +99,8 @@ fi
 
 #  if, after all this, the user has created a /boot/grub/menu.lst file in
 #  some fashion, allow them to install GRUB onto the GRUB_TARGET
-if  [  -e  /boot/grub/menu.lst  ];  then
-    config_query  RUN_GRUB  "Would you like to install GRUB onto ${GRUB_TARGET} with GRUB_ROOT ${GRUB_ROOT}?" n
+if  [  -e  /boot/grub/menu.lst  ]; then
+    config_query  RUN_GRUB  "Would you like to install GRUB onto ${GRUB_TARGET}?" n
 else
     RUN_GRUB=n
 fi
@@ -114,21 +114,19 @@ case  $RUN_GRUB  in
   message  ""
   message  "IF YOU DO THIS WITHOUT A RESCUE DISKETTE YOU ARE A RECKLESS FOOL!"
   message  ""
-  message  "Furthermore, GRUB cannot read some filesystems types, such as XFS,"
-  message  "so /boot/grub needs to be an ext2fs or ext3fs filesystem.  If you"
-  message  "find grub unable to find files you know exist, or it complains"
-  message  "about being unable to mount a partition (/boot/grub), it is almost"
-  message  "certainly because you are trying to search non-ext2fs filesystems."
-  message  "A prudent practice is to have a small, ext2fs filesystem near the"
-  message  "beginning of the drive mounted as /boot, then whatever filesystem"
-  message  "type you like (XFS, JFS, Reiser, ...) as your system root partition."
+  message  "Furthermore, GRUB cannot read some filesystems types, so be careful,"
+  message  "be sure you have activated filesystem type support for your system"
+  message  "root partition."
   message  ""
-
+  
   config_query  CONFIRM_RUN_GRUB  "Do you have a tested, working rescue diskette and wish to proceed"  n
   if  [  $CONFIRM_RUN_GRUB == "y"  ]; then
-       message  "Preparing to install GRUB on ${GRUB_TARGET}..."
-       grub-install ${GRUB_TARGET} || message "GRUB INSTALL FAILED.  INSTALL MANUALLY!  DANGER: YOUR SYSTEM MAY BE UNBOOTABLE!!!"
-       message  "If all went well, you're system should be ready to boot at this time."
+       message  "${MESSAGE_COLOR}Preparing to install GRUB on ${GRUB_TARGET}...${DEFAULT_COLOR}"
+       if  grub-install ${GRUB_TARGET}; then
+	   message "Your system should be ready to boot at this time.\n"
+       else
+	   message "${PROBLEM_COLOR}GRUB INSTALL FAILED. INSTALL MANUALLY!  DANGER: YOUR SYSTEM MAY BE UNBOOTABLE!!!${DEFAULT_COLOR}"
+       fi
   else
     message  "Run 'mkrescue' to create a 1.44 MB rescue diskette."
     message  "Once you've created the disk, try booting with it once to make"
