@@ -1,0 +1,31 @@
+Index: configure
+===================================================================
+RCS file: /cvsroot/mplayer/main/configure,v
+retrieving revision 1.815
+diff -u -r1.815 configure
+--- configure	18 Nov 2003 20:50:48 -0000	1.815
++++ configure	21 Nov 2003 12:47:08 -0000
+@@ -3898,7 +3898,7 @@
+   cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-sys'
+   cat > $TMPC << EOF
+ #include <alsa/asoundlib.h>
+-int main(void) { return (!(SND_LIB_MAJOR==0 && SND_LIB_MINOR==9)); }
++int main(void) { return (!((SND_LIB_MAJOR==0 && SND_LIB_MINOR==9) || SND_LIB_MAJOR==1)); }
+ EOF
+   cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-alsa'
+ fi
+Index: libao2/ao_alsa9.c
+===================================================================
+RCS file: /cvsroot/mplayer/main/libao2/ao_alsa9.c,v
+retrieving revision 1.40
+diff -u -r1.40 ao_alsa9.c
+--- libao2/ao_alsa9.c	4 Oct 2003 17:28:58 -0000	1.40
++++ libao2/ao_alsa9.c	21 Nov 2003 12:47:13 -0000
+@@ -22,6 +22,7 @@
+ #if HAVE_SYS_ASOUNDLIB_H
+ #include <sys/asoundlib.h>
+ #elif HAVE_ALSA_ASOUNDLIB_H
++#define ALSA_PCM_OLD_HW_PARAMS_API
+ #include <alsa/asoundlib.h>
+ #else
+ #error "asoundlib.h is not in sys/ or alsa/ - please bugreport"

@@ -1,0 +1,10 @@
+--- ADM_deviceALSA.cpp~	2003-09-16 19:57:53.000000000 +0200
++++ ADM_deviceALSA.cpp	2003-11-21 12:01:31.000000000 +0100
+@@ -38,6 +38,7 @@
+ #include  "ADM_audiodevice/ADM_deviceALSA.h"
+ 
+ 
++#define ALSA_PCM_OLD_HW_PARAMS_API
+ #include <alsa/asoundlib.h>
+  /* Handle for the PCM device */
+     snd_pcm_t *pcm_handle;
