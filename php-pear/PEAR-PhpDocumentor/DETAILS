@@ -1,10 +1,20 @@
-         VERSION=1.2.3
-          MD5[0]='8032d4860c6cbd05a824d8d7316f2fc4'
-         UPDATED=20031110
-           SPELL=PEAR-PhpDocumentor
-        WEB_SITE=http://pear.php.net/package/PhpDocumentor/
-      LICENSE[0]=PHP
-           SHORT='PEAR: The phpDocumentor package provides automatic'
+           SPELL=phpdocumentor
+if spell_installed php4
+then
+	 VERSION=1.2.3
+          MD5[0]=8032d4860c6cbd05a824d8d7316f2fc4
+else
+         VERSION=1.3.0rc3
+	  MD5[0]=b37f0de71a41186e8d17a214090d0738 
+fi
+	  SOURCE=$SPELL-$VERSION.tar.gz
+      SOURCE_URL=$SOURCEFORGE_URL/phpdocu/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+	 ENTERED=20050401
+         UPDATED=20050401
+        WEB_SITE=http://www.phpdoc.org/
+      LICENSE[0]=GPL
+           SHORT="PEAR: The phpDocumentor package provides automatic"
 cat << EOF
 The phpDocumentor tool is a standalone
 auto-documentor similar to JavaDoc
@@ -57,4 +67,3 @@ multiple outputs can be
 generated at once
 EOF
 
-source $SCRIPT_DIRECTORY/../PEAR_DETAILS
