@@ -3,6 +3,13 @@
 #
 persistent_remove  FIREFOX_VERSION  FIREFOX_SOURCE  &&
 
+#
+# This should fix Bug #8081
+#
+if  grep  -q  --  "PR"  $INSTALL_ROOT/etc/sorcery/local/depends/firefox;  then
+  rm  -f  $INSTALL_ROOT/etc/sorcery/local/depends/firefox
+fi  &&
+
 config_query       FIREFOX_CVS                                             \
                    "Checkout the CVS version?"                          n  &&
 #
