@@ -1,13 +1,14 @@
            SPELL=strace
-         VERSION=4.5.3
+         VERSION=4.5.6
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/strace/$SOURCE
-          MD5[0]=c01061df39e3dbd9dd4982ebd1f2072e
+          MD5[0]=ce775cf835f403255c91112d2349c780
         WEB_SITE=http://www.wi.leidenuniv.nl/~wichert/strace
          ENTERED=20010922
          UPDATED=20010922
       LICENSE[0]=BSD
+       BUILD_API=2
            SHORT="System call tracing utility (like trace, truss, etc)"
 cat << EOF
 strace is a useful diagnositic, instructional, and debugging tool.

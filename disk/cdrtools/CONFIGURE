@@ -1,15 +1,4 @@
-if  !  grep  -q  "IDE_SCSI"  $SPELL_CONFIG;  then
-  if    query  "Do you want to use ide-scsi to burn cds with an IDE burner?" n
-  then  IDE_SCSI=y
-  else  IDE_SCSI=n
-  fi
-  echo  "IDE_SCSI=$IDE_SCSI"  >>  $SPELL_CONFIG
-fi
-
-if  !  grep  -q  "SUDO"  $SPELL_CONFIG;  then
-  if    query  "Allow any user to write with cdrecord?" n
-  then  SUDO=y
-  else  SUDO=n
-  fi
-  echo  "SUDO=$SUDO"  >>  $SPELL_CONFIG
-fi
+config_query  IDE_SCSI                                                       \
+              "Do you want to use ide-scsi to burn cds with an IDE burner?"  \
+              n                                                              &&
+config_query  SUDO  "Allow any user to write with cdrecord?"  n
