@@ -3,6 +3,7 @@
 PROGRAM=/bin/false
 RUNLEVEL=3
 NEEDS="+network +remote_fs"
+PIDFILE=/var/run/httpsd/httpd.pid
 
 . /etc/init.d/smgl_init
 
@@ -17,7 +18,7 @@ start()
 restart()
 {
   echo "Restarting Apache web server..."
-  if [ -f /var/run/httpsd/httpd.pid ]; then
+  if [ -f $PIDFILE ]; then
     /usr/sbin/apachectl restart
     evaluate_retval
   else
@@ -38,8 +39,8 @@ status()
   if [ -n "$pidlist" ]; then
     echo "Apache is running with Process ID(s) $pidlist"
   else
-    if [ -f  /var/run/httpsd/httpd.pid ]; then
-      echo "Apache is not running but /var/run/httpsd/httpd.pid exists"
+    if [ -f  $PIDFILE ]; then
+      echo "Apache is not running but $PIDFILE exists"
       return 1
     else
       echo "Apache is not running"
