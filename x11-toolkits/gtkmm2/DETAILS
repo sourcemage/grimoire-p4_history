@@ -1,16 +1,16 @@
            SPELL=gtkmm2
-         VERSION=2.4.11
+         VERSION=2.6.1
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gtkmm-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtkmm-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gtkmm/$BRANCH/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/gtkmm/$SOURCE
-          MD5[0]='1bd7199ddf39747b2c75118d35a27065'
+          MD5[0]='3b24df2025ddd42b7f833b8ba4806b84'
       LICENSE[0]="LGPL"
        BUILD_API=2
         WEB_SITE=http://gtkmm.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20050203
+         UPDATED=20050325
             DOCS=${DOCS/doc*/}
            SHORT="C++ wrapper library for GTK+"
 cat << EOF
