@@ -1,7 +1,7 @@
            SPELL=mozilla
-         VERSION=1.5b
+         VERSION=1.5
           SOURCE=$SPELL-source-$VERSION.tar.bz2
-          MD5[0]='f06037eb81d7bc50ccbd5a99d28d7f9b'
+          MD5[0]='4100aca73502a080f3e7a9c80c6d94f2'
       LICENSE[0]=MPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/mozilla
       MAKE_NJOBS=1
@@ -19,17 +19,24 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/mozilla
   SOURCE_URL[10]=http://ftp.uni-erlangen.de/pub/mirrors/$SOURCE_URI
   SOURCE_URL[11]=ftp://ftp.free.fr/pub/Networking/www/Mozilla/$SOURCE_URI
   SOURCE_URL[12]=ftp://ftp.eunet.ie/mirrors/ftp.mozilla.org/pub/$SOURCE_URI
-         SOURCE2=enigmail-0.76.6.tar.gz
-          MD5[1]='93a2c061bca9b036edb62dea71ed059a'
+         SOURCE2=enigmail-0.76.7.tar.gz
+          MD5[1]='8cb73720565efe748821cac16c68af42'
+#         SOURCE2=enigmail-0.81.1.tar.gz
+#          MD5[1]='4879685009198ed7911a386a96ac2a9a'
       LICENSE[1]=MPL
   SOURCE2_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE2
          SOURCE3=ipc-1.0.4.tar.gz
           MD5[2]='154dbfb3e9281dca9999a0cefd1306d4'
       LICENSE[2]=MPL
   SOURCE3_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE3
+         SOURCE4=mozilla-libart.tar.bz2
+  SOURCE4_URL[0]=http://w3studi.informatik.uni-stuttgart.de/~vonmerad/$SOURCE4
+          MD5[3]=c1926f1d2253d01aba596578c11244fb
+      LICENSE[3]=LGPL
         WEB_SITE=http://www.mozilla.org/
          ENTERED=20010922
          UPDATED=20030723
+            DOCS="LICENSE README.txt"
            SHORT='Mozilla is a Web browser and a rich cient application platform'
 cat << EOF
 Mozilla is a Web browser that is being developed by the Free Software

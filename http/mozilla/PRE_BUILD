@@ -14,4 +14,13 @@ if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   unpack $SOURCE3 ${MD5[2]} &&
   # fixes the "usage: ../../../config/nsinstall ..." problem
   patch -p1 < $SCRIPT_DIRECTORY/extensions-enigmail-src.diff
-fi
+fi &&
+
+# remove /root/.mozconfig, it causes too much trouble
+if [ -f /root/.mozconfig ]; then
+  rm -f /root/.mozconfig
+fi &&
+
+# unpack libart sources as they weren't included in the 1.5 tarball
+cd $SOURCE_DIRECTORY/other-licenses &&
+unpack $SOURCE4 ${MD5[3]}
