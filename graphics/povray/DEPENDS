@@ -14,8 +14,8 @@ optional_depends  jpeg
   then 
     if [ test `tar -tzf $SOURCE_CACHE/$SOURCE |
           grep "$CHDIR"'/$'` != "$CHDIR"'/' ] ||
-       [ test  "`md5sum $SOURCE_CACHE/$SOURCE |
-          cut -d' ' -f1`" = "2a7e44295f046157a948bbecbf1aa942" ]
+        test  "`md5sum $SOURCE_CACHE/$SOURCE |
+          cut -d' ' -f1`" = "2a7e44295f046157a948bbecbf1aa942" 
     then 
       rm $SOURCE_CACHE/$SOURCE
     fi
