@@ -1,6 +1,5 @@
 (
 
-  patch < $SCRIPT_DIRECTORY/Makefile.diff  &&
   make  ROOT=                              &&
   prepare_install                          &&
   make  ROOT= install
