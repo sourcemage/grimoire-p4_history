@@ -10,7 +10,7 @@ export CC=gcc   			              &&
              $OPTS                                  &&
 make                                                &&
 
-if spell_installed tetex ; 
+if spell_ok tetex ; 
 then cd gettext-tools/doc &&
    make dvi  &&
    make ps   &&

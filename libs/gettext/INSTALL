@@ -5,7 +5,7 @@ mv ${INSTALL_ROOT}/usr/local/include/gettext-po.h  \
    ${INSTALL_ROOT}/usr/include/                    &&
 mv ${INSTALL_ROOT}/usr/local/include/autosprintf.h \
    ${INSTALL_ROOT}/usr/include/                    &&
-if spell_installed tetex ; 
+if spell_ok tetex ; 
 then cd gettext-tools/doc                          &&  
    make    install-pdf                             &&
    make    install-ps                              &&
