@@ -1,7 +1,9 @@
 (
 
-  sedit "s/DESTDIR = \/usr\/games/DESTDIR = \/usr\/bin/" Makefile
-  sedit "s/DEFAULTFONTDIR = \$(DESTDIR)\/lib\/figlet.dir/DEFAULTFONTDIR = \/usr\/lib\/figlet/" Makefile
+  sedit "s/CFLAGS = .*/CFLAGS = $CFLAGS/" Makefile
+  sedit "s/DESTDIR = .*/DESTDIR = \/usr\/games/" Makefile
+  sedit "s/MANDIR = .*/MANDIR = \/usr\/man\/man6/" Makefile
+  sedit "s/DEFAULTFONTDIR = .*/DEFAULTFONTDIR = \/usr\/share\/figlet/" Makefile
   sedit "s/DEFAULTFONTDIR = fonts//" Makefile
 
   make &&
