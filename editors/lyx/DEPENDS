@@ -21,7 +21,7 @@ optional_depends  "xforms"                  \
                   ""                        \
                   "to use xforms frontend"  &&
 
-optional_depends  "qt-x11"              \
-                  "--with-frontend=qt"  \
-                  ""                    \
-                  "to use QT frontend ${MESSAGE_COLOR}(!!BROKEN!!)${DEFAULT_COLOR}"
+optional_depends  "qt-x11"                                                  \
+                  "--with-frontend=qt  --with-qt-includes=/usr/include/qt"  \
+                  ""                                                        \
+                  "to use QT frontend"
