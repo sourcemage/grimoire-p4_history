@@ -1,0 +1,5 @@
+config_query ZLIB_CHECK "Do you have CONFIG_ZLIB_INFLATE=y in kernel config" n
+if [ "$ZLIB_CHECK" ]
+then
+	return 1
+fi
