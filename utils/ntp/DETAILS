@@ -1,11 +1,12 @@
            SPELL=ntp
-         VERSION=4.1.1
+         VERSION=4.1.1a
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$SOURCE
+   SOURCE_URL[0]=http://uiarchive.uiuc.edu/mirrors/ftp/ftp.udel.edu/pub/ntp/ntp4/$SOURCE
+  SOURCE_URL[1]=ftp://ftp.udel.edu/pub/ntp/ntp4/$SOURCE
         WEB_SITE=http://www.eecis.udel.edu/~ntp
          ENTERED=20011004
-         UPDATED=20020301
+         UPDATED=20020429
            SHORT="ntp syncs your time with an ntp server "
 cat << EOF
 NTP (Network Time Protocol) tries to keep servers in sync

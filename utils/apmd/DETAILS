@@ -1,0 +1,18 @@
+            SPELL=apmd
+         VERSION=3.0.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.worldvisions.ca/~apenwarr/apmd/$SOURCE
+        WEB_SITE=http://www.worldvisions.ca/~apenwarr/apmd/
+         ENTERED=20020404
+         UPDATED=20020429
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="Linux APM Daemon"
+cat << EOF
+The apmd package is a set of user-level programs to control
+the Advanced Power Management system found in all modern
+laptop computers and most modern desktops.
+
+apmd talks to the Linux kernel APM layer, which does all
+the hardware-dependent stuff.
+EOF
