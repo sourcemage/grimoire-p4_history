@@ -1,3 +1,8 @@
+2004-09-05 Eric Sandall <eric@sandall.us>
+	* config.h.patch: Added so that xorg (and others) can compile (2.6)
+	* PRE_BUILD: Apply config.h.patch
+	* DETAILS: Updated UPDATED
+
 2004-09-02 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.6.8.1
 
@@ -72,7 +77,8 @@
 	* PREPARE: shuffle so it only asks about 2.6 if uname -r has 2.6 in it.
 
 2004-02-06 hgg <hgreig@bigpond.net.au>
-	* DETAILS: move SOURCE_URL to download.sourcemage.org, it's got a lot phatter pipe than me
+	* DETAILS: move SOURCE_URL to download.sourcemage.org, it's got a lot
+	  phatter pipe than me
 
 2004-02-01 hgg <hgreig@bigpond.net.au>
 	* DETAILS: remove archive=off, want cache for ISO installs
