@@ -8,6 +8,10 @@ if [ "$XMMS" = "y" ]; then
   depends  id3lib
 fi
 
+if [ "$FAAD_CVS" = "y" ]; then
+  depends  CVS
+fi
+
 #
 # This could optionally depend on g++ with:
 #optional_depends  g++  \

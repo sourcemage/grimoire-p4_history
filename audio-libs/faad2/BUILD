@@ -1,4 +1,4 @@
-if [ ! $CVS = "yes" ]; then
+if [ "$FAAD_CVS" = "n" ]; then
 	patch -p0 < ${SCRIPT_DIRECTORY}/Makefile.am.patch  &&
 	patch -p0 < ${SCRIPT_DIRECTORY}/gcc-3.4.patch
 else
