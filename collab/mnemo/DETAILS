@@ -1,5 +1,5 @@
            SPELL=mnemo
-         VERSION=${VERSION:-1.1}
+         VERSION=${VERSION:-1.1.2}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
@@ -7,11 +7,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
         WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20020718
          UPDATED=20030108
-      MAINTAINER=sergeyli@pisem.net
            SHORT="Mnemo is the Horde note management application"
 
 [ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='2cb7a5c058b9f5bacf2e650f49ebfc39'
+          MD5[0]='25e350720a942b1a46a719599342fb9e'
 
 cat << EOF
 Mnemo is the Horde note management application.

@@ -1,5 +1,5 @@
            SPELL=kronolith
-         VERSION=${VERSION:-1.1}
+         VERSION=${VERSION:-1.1.2}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
@@ -7,11 +7,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
         WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20020427
          UPDATED=20030108
-      MAINTAINER=sergeyli@pisem.net
            SHORT='Kronolith is the Horde calendar application'
 
 [ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='8fbdfdc5d479ca3c21d35eeacf1ee404'
+          MD5[0]='c4538e99dc74e393bb1060911ca455e1'
 
 cat << EOF
 Kronolith is the Horde calendar application. It provides a stable and
