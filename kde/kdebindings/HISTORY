@@ -1,3 +1,13 @@
+2004-02-06 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Added conflicts mono and mcs
+	(which both install /usr/bin/mcs)
+	Everytime I cast this with mono installed, I get this error:
+	Making all in parser
+	make[5]: Entering directory `/usr/src/kdebindings-3.2.0/qtsharp/src/parser'
+	csant -Dmcs=/usr/bin/mcs -C mcs
+	make[5]: csant: Command not found
+	make[5]: *** [all-local] Error 127
+
 2004-02-05 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 3.2.0
 	Removed MAINTAINER
