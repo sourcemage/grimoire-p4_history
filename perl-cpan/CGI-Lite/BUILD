@@ -1,7 +1,7 @@
 (
-
-  perl  Makefile.PL  &&
-  make               &&
+  sedit '/MAN3PODS/d'  Makefile.PL  &&
+  perl                 Makefile.PL  &&
+  make                              &&
   prepare_install    &&
   make    install
 
