@@ -9,9 +9,10 @@ ac_add_options --disable-test
 ac_add_options --disable-debug
 ac_add_options --disable-mailnews
 ac_add_options --disable-composer
-EOF &&
+EOF
 
 mk_source_dir $SOURCE_DIRECTORY &&
-cvs -q -d:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot checkout -d $SOURCE_DIRECTORY mozilla/client.mk &&
+cd $BUILD_DIRECTORY &&
+cvs -q -d:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot checkout -d mozilla mozilla/client.mk &&
 cd $SOURCE_DIRECTORY &&
 make -f client.mk checkout
