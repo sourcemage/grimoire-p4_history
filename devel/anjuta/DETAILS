@@ -6,13 +6,14 @@ then
   FORCE_DOWNLOAD=1
 	  MD5[0]=IGNORE
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:anjuta
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
          VERSION=1.2.2
           MD5[0]=8585a28dcca90acf2e1ec2f50f484be1
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+fi
         WEB_SITE=http://anjuta.sourceforge.net/
          ENTERED=20011124
          UPDATED=20040207
