@@ -1,5 +1,5 @@
 default_pre_build                           &&
 cp $SCRIPT_DIRECTORY/easytag-patch.diff $SOURCE_DIRECTORY &&
 cd $SOURCE_DIRECTORY                        &&
-patch -p0 <easytag-patch.diff		    &&
+patch -p1 <easytag-patch.diff		    &&
 sedit "s/^LIBS =/\0 -lstdc++/" Makefile.in
