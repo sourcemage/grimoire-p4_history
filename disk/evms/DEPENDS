@@ -1,3 +1,6 @@
-depends  device-mapper &&
+depends  device-mapper  &&
 
-optional_depends "gtk+" "" "--disable-gui" "for GTK GUI support"
+optional_depends  gtk+                   \
+                  ""                     \
+                  "--disable-gui"        \
+                  "for GTK GUI support"
