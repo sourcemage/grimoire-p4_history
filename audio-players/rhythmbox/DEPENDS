@@ -4,20 +4,16 @@ if  [  "$XINE_BACKEND"  =  "y"  ];  then
 else
   depends  gst-plugins
 fi  &&
-optional_depends  "libid3tag"           \
-                  "--enable-mp3"        \
-                  "--disable-mp3"       \
-                  "for mp3 support"     &&
 optional_depends  "libvorbis"           \
                   "--enable-vorbis"     \
                   "--disable-vorbis"    \
                   "for vorbis support"  &&
-optional_depends  "flac"                \
-                  "--enable-flac"       \
-                  "--disable-flac"      \
-                  "for flac support"
 # disabled, needs musicbrainz >= 2.0
 #optional_depends  "musicbrainz"            \
 #                  "--enable-musicbrainz"   \
 #                  "--disable-musicbrainz"  \
 #                  "for metadata download support"
+if query "flac support?" "y" ; then 
+	depends flac "--enable-flac" && 
+	depends libid3tag 
+fi
