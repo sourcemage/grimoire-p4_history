@@ -1,13 +1,8 @@
-(
-    cd src/unix      &&
-    ./configure --prefix=/usr $OPTS &&
-    cd ..            &&
-    make clean       &&
-    make             &&
-    prepare_install  &&
-    make install     &&
-#    /usr/bin/hugs /usr/share/hugs/demos/Say
-#    putStr (say "  /Hugs")
-#    :quit
-    make    install
-) > $C_FIFO 2>&1
+  PREFIX=${INSTALL_ROOT}/usr   &&
+  cd src/unix      &&
+  ./configure --prefix=${PREFIX} --mandir=${PREFIX}/share/man \
+     --infodir=${PREFIX}/share/info  \
+     $OPTS &&
+  cd ..            &&
+  make clean       &&
+  make             
