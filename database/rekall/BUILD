@@ -14,7 +14,6 @@ if [ "$DEVEL" == "y" ]; then
 else
   OPTS="--with-gui=$GUI $XBASE $OPTS"                   &&
   patch -p0 < $SPELL_DIRECTORY/conf.diff                &&
-  autoreconf                                            &&
   default_build
 #  ./configure --prefix=${INSTALL_ROOT}/usr $OPTS 	&&
 #  sed -i "s/-pedantic//" libs/extra/Makefile		&&

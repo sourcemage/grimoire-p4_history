@@ -1,6 +1,6 @@
---- configure.in.orig	2004-12-30 11:21:11.863596264 +0100
-+++ configure.in	2004-12-30 11:23:21.792844016 +0100
-@@ -118,7 +118,7 @@
+--- configure.orig	2005-01-11 07:48:11.072871907 +0100
++++ configure	2005-01-11 07:48:17.755020230 +0100
+@@ -32461,7 +32461,7 @@
  
  	if test "$dynamic_python" = "yes"
  	then
@@ -9,14 +9,13 @@
  		PYSTUB="stub"
                  PYRTMAKE="lib-1.5.2_rt lib-2.0.0_rt lib-2.1.1_rt lib-2.2.0_rt lib-2.2.0_rt"
  		PYRTSTUB="stub_rt"
-@@ -146,6 +146,10 @@
+@@ -32489,6 +32489,9 @@
  			     USESYSPY=1
  			     ;;
  
-+                        2.4) SYSPYVER="2.4"
-+                             USESYSPY=1
-+                             ;;
-+
- 			*)   AC_MSG_ERROR([Unrecognised python version: $pyver])
- 			     ;;
- 		esac
++      2.4) SYSPYVER="2.4"
++           USESYSPY=1
++           ;;
+ 			*)   { { echo "$as_me:$LINENO: error: Unrecognised python version: $pyver" >&5
+ echo "$as_me: error: Unrecognised python version: $pyver" >&2;}
+    { (exit 1); exit 1; }; }

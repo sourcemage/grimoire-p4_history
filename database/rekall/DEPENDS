@@ -1,6 +1,7 @@
 depends g++             &&
 if [ "$GUI" == "kde" ]; then
-  depends  kdelibs
+  depends  kdelibs  &&
+  optional_depends  arts  ""  "--without-arts"  "for arts support"
 else
   depends  qt-x11
 fi                      &&
