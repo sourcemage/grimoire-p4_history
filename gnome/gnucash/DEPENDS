@@ -5,4 +5,7 @@ depends  slib        &&
 depends  g-wrap      &&
 depends  gtkhtml     &&
 depends  libghttp    &&
-depends  libxml2
+depends  libxml2     &&
+optional_depends      \
+"doxygen" "--enable-doxygen --enable-html-docs" "" \
+"enable documentation generation"
