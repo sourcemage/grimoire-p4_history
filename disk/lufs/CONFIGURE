@@ -1,0 +1,20 @@
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+  then
+
+  if      query  "Enable cardfs support?"  n
+    then  echo   'OPTS="$OPTS  --enable-cardfs"'   >>  ${SPELL_CONFIG}
+    else  echo   'OPTS="$OPTS  --disable-cardfs"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if      query  "Enable cefs support?"  n
+    then  echo   'OPTS="$OPTS  --enable-cefs"'   >>  ${SPELL_CONFIG}
+    else  echo   'OPTS="$OPTS  --disable-cefs"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if      query  "Enable suid support (allows normal users to mount)?"  y
+    then  echo   'OPTS="$OPTS  --enable-suid"'   >>  ${SPELL_CONFIG}
+    else  echo   'OPTS="$OPTS  --disable-suid"'  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+fi
