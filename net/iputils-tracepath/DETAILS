@@ -1,8 +1,7 @@
            SPELL=iputils-tracepath
-         VERSION=20020927-1
+         VERSION=20020927-2
           SOURCE=iputils_20020927.orig.tar.gz
-         SOURCE2=iputils_20020927-1.diff.gz
-          MD5[1]=97cb776c38a827f0eb7b0b8074d42bac
+         SOURCE2=iputils_20020927-2.diff.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/iputils
    SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/i/iputils/$SOURCE
   SOURCE2_URL[0]=http://ftp.debian.org/debian/pool/main/i/iputils/$SOURCE2
@@ -10,9 +9,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/iputils
          ENTERED=20030515
          UPDATED=20030515
           MD5[0]=32356737499c90a445fdacea2fe7f288
-          MD5[2]=97cb776c38a827f0eb7b0b8074d42bac
+          MD5[1]=ddbc80f72ff12adc09008f54eee0fddb
       LICENSE[0]=GPL
-      MAINTAINER=dossen+sgl@daimi.au.dk
+            DOCS="README"
            SHORT="tracepath, tracepath6, and traceroute6."
 cat << EOF
 Tools to trace the network path to a remote host
