@@ -12,8 +12,6 @@
     export  PATH="$PATH:$SOURCE_DIRECTORY/smgl-gnat/bin"  &&
     export  ADAC=$SOURCE_DIRECTORY/smgl-gnat/bin/gcc
   fi  &&
-  # add our ldflags to Makefile.in
-  sedit "s/LDFLAGS =/& $LDFLAGS/" $SOURCE_DIRECTORY/Makefile.in &&
 
   cd $SOURCE_DIRECTORY.bld                                &&
   $SOURCE_DIRECTORY/configure                             \
