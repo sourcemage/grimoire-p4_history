@@ -1,9 +1,9 @@
 if spell_installed Python 
 then
-   if ! search_depends_status_exact "Python" "expat" "on" "optional" 
+   if ! grep -q  "Python:expat:on:optional:" $DEPENDS_STATUS
    then
       message ${PROBLEM_COLOR} Python is not cast with expat enabled. Please recast Python and enable the expat optional depends. ${DEFAULT_COLOR}
-      exit
+      return 1
    fi
 else
    message ${QUERY_COLOR} Please enable expat during the Python configure or casting will hang. ${DEFAULT_COLOR} &&
