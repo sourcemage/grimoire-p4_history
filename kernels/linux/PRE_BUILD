@@ -197,7 +197,13 @@ do
     fi
     echo "applying ${VARSS}"
 
-    if [[ ${VARSS} == *.bz2 ]] ; then
+    if  echo  ${VARSS}  |  grep  -q  "kgdb";  then
+      tar xjf  ${SOURCE_CACHE}/${VARSS}       &&
+      for i in `ls ${VARSS/\.tar*/}/*.patch`;  do
+        echo "applying $i from ${VARSS/\.tar*/}"   &&
+        patch -s -N -p1  <  $i
+      done
+    elif [[ ${VARSS} == *.bz2 ]] ; then
       bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
     elif [[ ${VARSS} == *.gz ]] ; then
       zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
