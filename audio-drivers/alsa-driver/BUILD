@@ -77,7 +77,6 @@ fi
     make install			     &&
     ./snddevices
     rm  -f   /dev/snd
-    ln  -sf  /devices/snd  /dev/snd
     chown root.audio /dev/adsp
     chmod 777 /dev/adsp
     chown root.audio /dev/amidi
@@ -94,8 +93,6 @@ fi
     chmod 777 /dev/sequencer*
     chown root.audio /dev/snd
     chmod 777 /dev/snd
-    chown root.audio /devices/snd/*
-    chmod 777 /devices/snd/*
     if  [  !  -f   /etc/modules.d/alsa  ];  then
 	mkdir   -p   /etc/modules.d
 	mconf
