@@ -23,10 +23,9 @@ start_devfs()
     /sbin/devfsd /dev
     evaluate_retval
   else
-    ln -sf /proc/self/fd /dev/fd
-    ln -sf /dev/fd/0 /dev/stdin
-    ln -sf /dev/fd/1 /dev/stdin
-    ln -sf /dev/fd/2 /dev/stdin
+    ln -sf /proc/self/fd/0 /dev/stdin
+    ln -sf /proc/self/fd/1 /dev/stdout
+    ln -sf /proc/self/fd/2 /dev/stderr
   fi
 }
 
