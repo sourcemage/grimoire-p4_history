@@ -1,0 +1,49 @@
+diff -purN swish++-5.15.3/config/config.mk swish++/config/config.mk
+--- swish++-5.15.3/config/config.mk	2002-12-24 01:59:08.000000000 -0500
++++ swish++/config/config.mk	2003-11-04 17:18:43.000000000 -0500
+@@ -149,9 +149,9 @@ RM:=		rm -fr
+ #		The command to remove files recursively and ignore errors;
+ #		usually "rm -fr" for Unix or "erase" for Windows.
+ 
+-PERL:=		/usr/local/bin/perl
++PERL:=		/usr/bin/perl
+ #		The full path to the Perl 5 executable; usually "/bin/perl" or
+-#		"/usr/local/bin/perl" for Unix or "\Perl\bin\perl" for
++#		"/usr/bin/perl" for Unix or "\Perl\bin\perl" for
+ #		Windows.  You need this only if you intend on using
+ #		httpindex(1) or searchc(1).
+ 
+diff -purN swish++-5.15.3/config.h swish++/config.h
+--- swish++-5.15.3/config.h	2003-08-18 13:12:10.000000000 -0400
++++ swish++/config.h	2003-11-04 17:18:23.000000000 -0500
+@@ -202,9 +202,6 @@ char const	ShellFilenameEscapeChars[]	= 
+ #ifdef	WIN32
+ char const	TempDirectory_Default[]		= "/temp";
+ #else
+-#error		You have not set TempDirectory_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+ char const	TempDirectory_Default[]		= "/tmp";
+ #endif
+ //		Default directory to use for temporary files during indexing.
+@@ -231,10 +228,7 @@ int const	WordPercentMax_Default		= 100;
+ //		it is discarded as being too frequent; this can be overridden
+ //		either in a config. file or on the command line.
+ 
+-#error		You have not set WordThreshold_Default for your system.
+-#error		Comment out these lines after you have set it.
+-
+-int const	WordThreshold_Default		= 250000;
++int const	WordThreshold_Default		= 524288;
+ //		The word count past which partial indicies are generated and
+ //		merged since all the words are too big to fit into memory at
+ //		the same time.  If you index and your machine begins to swap
+diff -purN swish++-5.15.3/www_example/search.cgi swish++/www_example/search.cgi
+--- swish++-5.15.3/www_example/search.cgi	2002-12-17 12:27:20.000000000 -0500
++++ swish++/www_example/search.cgi	2003-11-04 17:20:30.000000000 -0500
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/perl
++#! /usr/bin/perl
+ ###############################################################################
+ #
+ # NAME
