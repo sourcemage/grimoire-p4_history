@@ -1,8 +1,12 @@
-dispel  archive chat crypto disk devel doc      1>/dev/null  2>&1
-dispel  editors ftp gnome games ham http kde    1>/dev/null  2>&1
-dispel  mail news multimedia net perl-cpan      1>/dev/null  2>&1
-dispel  printer sgl shell-term-fm utils         1>/dev/null  2>&1
-dispel  windowmanagers x11 z-rejected           1>/dev/null  2>&1
+dispel  archive chat cluster collab crypto devel    1>/dev/null  2>&1
+dispel  disk doc editors ftp games gnome ham        1>/dev/null  2>&1
+dispel  http kde kernels libs mail mobile           1>/dev/null  2>&1
+dispel  multimedia net news perl-cpan printer       1>/dev/null  2>&1
+dispel  shell-term-fm utils windowmanagers x11      1>/dev/null  2>&1
+dispel  z-rejected                                  1>/dev/null  2>&1
+
+dispel  ftp-http mail-news archive-disk devel-libs  1>/dev/null  2>&1
+dispel  doc-printer mail-news-chat                  1>/dev/null  2>&1
 
 (
 
