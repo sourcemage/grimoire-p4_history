@@ -4,6 +4,7 @@ if [ -e /etc/postfix/master.cf-rollback.patch ]; then
   then
     patch /etc/postfix/master.cf /etc/postfix/master.cf-rollback.patch
     rm -f /etc/postfix/master.cf-rollback.patch
+    /etc/init.d/postfix.sh restart
   fi
 else
   message "Rollback file missing... unable to remove Mail-SpamAssassin from /etc/postfix/master.cf"
