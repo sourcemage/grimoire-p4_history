@@ -1,4 +1,5 @@
 # Add a lilo/grub/whatever entry for this kernel
+export VERSION
 $SCRIPT_DIRECTORY/UPDATE_BOOTLOADER 
 
 #if [[ "$TREE" == 2.6 ]] && [[ "$(gaze installed module-init-tools | fgrep 'not installed')" != "" ]] ; then cast module-init-tools ; fi
