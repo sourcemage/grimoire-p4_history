@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/Makefile.patch  &&
+  patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch  &&
   
   make             &&
   prepare_install  &&

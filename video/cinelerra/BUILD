@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/cinelerra-1.1.5-shared.patch  &&
+  patch -p1 < $SCRIPT_DIRECTORY/cinelerra-1.1.6-shared.patch  &&
 
   make             &&
   prepare_install  &&
