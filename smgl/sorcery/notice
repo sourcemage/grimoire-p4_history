@@ -3,35 +3,26 @@
     *NOTICE* *NOTICE* *NOTICE* *NOTICE* *NOTICE* *NOTICE* *NOTICE* 
 =======================================================================
  
- Sorcery is not longer a spell. In order to switch to the new sorcery
- please run the following commands as root.
+ It is no longer possible to  use as a spell. This is to let you know 
+ that this spell will be removed in the near future, all references to
+ the following old sorcery spells will be removed from your system:
 
------------------------------------------------------------------------ 
- 
-# cast lockexec
-# dispel sorcery sorcery-stable sorcery-devel
-# cd /tmp
-# wget http://download.sourcemage.org/sorcery/sorcery-stable.tar.bz2
-# tar --use=bzip2 -xvf sorcery-stable.tar.bz2
-# cd sorcery/
-# ./install
-# sorcery update
+grimoire-only-devel
+grimoire-only-test
+grimoire-only-stable
+sorcery-only
+sorcery-devel
+sorcery-test
+sorcery-stable
+sorcery-sound (part of old sorcery code)
 
------------------------------------------------------------------------ 
+ NOTE: A script which performs a sorcery restore has been copied to your
+      /tmp directory, named 'sorcery-rescue.sh'. You can run this by 
+	  hand if you so need.
 
- This will remove all sorcery spells, and re-install sorcery-stable.
- Your sorcery scripts will not be updated until you perform this
- action.
-
- NOTE: A script which performs these commands has been copied to your
-      /tmp directory, named 'sorcery-upgrade.sh'. You can run this 
-      instead of performing the commands by hand.
-
-
- After your upgrade, you will be able to update your sorcery scripts
+ After all this, you will be able to update your sorcery scripts
  with 'sorcery update', and to update you're entire system, you must
  now use 'sorcery system-update'. See sorcery help for more info.
-
 
 - Sorcery Team
 
