@@ -1,0 +1,17 @@
+           SPELL=newt
+         VERSION=0.50.33
+          SOURCE=$SPELL-$VERSION-1.src.rpm
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.redhat.com/pub/redhat/linux/7.2/en/os/i386/SRPMS/$SOURCE
+        WEB_SITE=http://www.redhat.com/
+         ENTERED=20020316
+         UPDATED=20020316
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="A development library for text mode user interfaces."
+cat << EOF
+Newt is a programming library for color text mode,
+widget-based user interfaces. This package also contains
+the shared library needed by programs built with newt, as
+well as a /usr/bin/dialog replacement called whiptail.
+Newt is based on the slang library.
+EOF
