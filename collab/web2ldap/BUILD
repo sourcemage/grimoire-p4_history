@@ -1,4 +1,3 @@
-# $Id: BUILD,v 1.4 2002/12/11 20:01:15 sergeyli Exp $
 (
 	# make fcgi.py located in pylib/ and visible to web2ldap
 	cp $SCRIPT_DIRECTORY/fcgi.py ./pylib/ &&

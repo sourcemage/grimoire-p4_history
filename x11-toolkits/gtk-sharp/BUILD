@@ -1,2 +1,2 @@
-sedit  's/\.@GTKHTML_SOVERSION@//'  gtkhtml/gtkhtml-sharp.dll.config.in  &&
+patch  -p1  <  $SCRIPT_DIRECTORY/makersvg.diff  &&
 default_build
