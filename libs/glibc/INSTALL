@@ -93,14 +93,17 @@ fi  &&
 #
 # Now install sanitised glibc-kernel-headers
 #
-cd  $GLIBC_HEADERS_DIR/include              &&
-echo  "installing glibc linux headers"      &&
-cp  -a  linux  ${INSTALL_ROOT}/usr/include  &&
+cd  $GLIBC_HEADERS_DIR/include               &&
+echo  "installing glibc linux headers"       &&
+cp  -fa  linux  ${INSTALL_ROOT}/usr/include  &&
 
 if [  !  "$GLIBC_NPTL"  =  "y"  ];  then
-  echo  "installing asm-generic headers"            &&
-  cp  -a  asm-generic  ${INSTALL_ROOT}/usr/include
+  echo  "installing asm-generic headers"                &&
+  cp  -fa  ../asm-generic  ${INSTALL_ROOT}/usr/include
 fi  &&
 
 echo  "installing asm-$GLIBC_ARCH headers to /usr/include/asm"  &&
-cp  -a  asm-$GLIBC_ARCH  ${INSTALL_ROOT}/usr/include/asm
+#
+#  asm is a symlink to asm-$GLIBC-ARCH
+#
+cp  -fa  asm  ${INSTALL_ROOT}/usr/include/asm

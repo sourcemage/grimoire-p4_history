@@ -25,8 +25,8 @@ if  !  echo  "$CXXFLAGS"  |  grep  -q  --  "-O";  then
   export  CXXFLAGS="$CFLAGS -Os"
 fi  &&
 
-export  CFLAGS="$(echo $CFLAGS | sed s/-ffast-math// )"  &&
-export  CC=gcc                                           &&
+export  CFLAGS="${CFLAGS/-ffast-math/}"  &&
+export  CC=gcc                           &&
 
 #
 # LD_LIBRARY_PATH includes $PWD bug 
@@ -44,9 +44,41 @@ elif  [[  $(uname  -m)  =  ppc       ]];  then
 elif  [[  $(uname  -m)  =  *86       ]];  then
   GLIBC_ARCH=i386
 elif  [[  $(uname  -m)  =  *sparc64  ]];  then
-  GLIBC_ARCH=sparc64
+  #
+  # If we're not compiling for 64-bit SPARC then we need to use the sparc
+  # headers, not sparc64
+  #
+  if  grep  -q  --  "-m64"  $CFLAGS;  then
+    GLIBC_ARCH=sparc64  &&
+    export  CC=gcc64
+  else
+    GLIBC_ARCH=sparc
+  fi  &&
+
+  #
+  # Fixes from Gentoo's 2.3.3.20040420-r2 ebuild
+  #
+  sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
+  export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export  CXXFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export    CFLAGS="$CFLAGS  -fcall-used-g6"
+  export  CXXFLAGS="$CFLAGS  -fcall-used-g6"
+  export    CFLAGS="${CFLAGS/-mcpu=v9/}"
+  export  CXXFLAGS="${CFLAGS/-mcpu=v9/}"
+  export    CFLAGS="${CFLAGS/-mtune=ultrasparc/}"
+  export  CXXFLAGS="${CFLAGS/-mtune=ultrasparc/}"
+  export    CFLAGS="${CFLAGS/-mvis/}"
+  export  CXXFLAGS="${CFLAGS/-mvis/}"
 elif  [[  $(uname  -m)  =  *sparc    ]];  then
-  GLIBC_ARCH=sparc
+  GLIBC_ARCH=sparc  &&
+  #
+  # Fixes from Gentoo's 2.3.3.20040420-r2 ebuild
+  #
+  sedit  "s:CPPFLAGS += -DHAVE_INITFINI:CPPFLAGS += -DHAVE_INITFINI -fno-pie -fno-PIE:"  csu/Makefile
+  export    CFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export  CXXFLAGS="${CFLAGS/-fcall-used-g7/}"
+  export    CFLAGS="$CFLAGS  -fcall-used-g6"
+  export  CXXFLAGS="$CFLAGS  -fcall-used-g6"
 fi  &&
 
 #

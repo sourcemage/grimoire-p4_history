@@ -1,3 +1,16 @@
+2004-11-29 Eric Sandall <eric@sandall.us>
+	* BUILD: Apply CFLAGS fixes from a Gentoo ebuild for sparc and sparc64.
+	  No longer uses echo to remove -ffast-math from CFLAGS.
+	  Don't try to use sparc64 headers when building for sparc32 on a sparc64.
+	  If building for sparc64, set CC to gcc64, not gcc (untested!).
+	* config.h.patch: Instead of removing the #errors, replace them with
+	  #warnings to match the spirit of the errors.
+	* INSTALL: Force copy in case files/directories exist from a prior, possibly
+	  broken, installation.
+	  Fix installation of 2.4 headers.
+	* CONFIGURE: Don't use config_query, but instead query every time (otherwise
+	  you'll always get the menu if you say 'y' and never use '-r' with cast).
+
 2004-11-24 Eric Sandall <eric@sandall.us>
 	* CONFIGURE: Removed IFS code and set to use config_query instead of query
 	  Removed add_status() and make_locales_checklist()
