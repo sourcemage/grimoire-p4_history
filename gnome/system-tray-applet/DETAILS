@@ -1,0 +1,16 @@
+           SPELL=system-tray-applet
+         VERSION=0.15
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="ddd90e4301483ed9acc6dbd1a14d09fe"
+      LICENSE[0]=LGPL
+        WEB_SITE=http://developer.gnome.org/projects/gap
+      MAINTAINER=jon-sven@frisurf.no
+         ENTERED=20020314
+         UPDATED=20021117
+           SHORT=""
+cat << EOF
+EOF

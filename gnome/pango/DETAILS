@@ -1,11 +1,10 @@
            SPELL=pango
-         VERSION=$PREPARE_VERSION
+         VERSION=1.2.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$PREPARE_URL/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=$PREPARE_MD5
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="860b417cec99db71fbda2d4bfbaaa1a6"
       LICENSE[0]=LGPL
         WEB_SITE=http://www.pango.org
       MAINTAINER=jon-sven@frisurf.no

@@ -1,0 +1,17 @@
+           SPELL=vte
+         VERSION=0.10.7
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="6b5decb6426e4435102ce55947fbe131"
+      LICENSE[0]=LGPL
+        WEB_SITE=http://fixme
+      MAINTAINER=jon-sven@frisurf.no
+         ENTERED=20020314
+         UPDATED=20021212
+           SHORT="vte is a terminal emulator widget for GTK+2"
+cat << EOF
+VTE is a terminal emulator widget for GTK+2 that uses termcap to
+determine how to behave.
+EOF

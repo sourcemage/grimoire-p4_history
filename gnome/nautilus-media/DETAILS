@@ -1,0 +1,18 @@
+           SPELL=nautilus-media
+         VERSION=0.1.0
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="ce77cc1f1e111204f18603d6a6d92d48"
+        WEB_SITE=http://developer.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+         ENTERED=20020509
+         UPDATED=20021212
+           SHORT="fixme"
+cat << EOF
+fixme
+EOF
