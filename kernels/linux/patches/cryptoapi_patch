@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DESCRIPTION="Cryptoapi - International Kernel Patch"
+SHORT="Cryptoapi - International Kernel Patch"
+HELP="Cryptoapi - International Kernel Patch contains the cryptographic kernel API layer, cryptographic ciphers (aes, twofish, mars, rc6, serpent, dfc, blowfish, idea, rc5, 3des, des), digest algorithms (md5, sha1) and cryptographic loop filter module (cryptoloop)"
+
+VERSIONS="2.4.19.2"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=patch-int-${!PATCH}.bz2
+SOURCE${COUNTER}_URL=http://www.kernel.org/pub/linux/kernel/crypto/v2.4/testing/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi
