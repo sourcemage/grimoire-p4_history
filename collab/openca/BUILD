@@ -1,13 +1,11 @@
-local COUNTRY=${LANG##*-}
-
-./configure  --build=$BUILD                     \
-             --prefix=/usr                      \
-             --sysconfdir=/etc                  \
-             --localstatedir=/var               \
-             --with-web-host=`hostname`         \
-             --with-httpd-host=nobody           \
-             --with-httpd-user=nogroup          \
-             --with-ca-organization=`hostname`  \
-             --with-ca-country=${COUNTRY:-US}   \
-             $OPTS                              &&
+./configure  --prefix=${INSTALL_ROOT}/usr              \
+             --sysconfdir=${INSTALL_ROOT}/etc          \
+             --localstatedir=${INSTALL_ROOT}/var       \
+             --mandir=${INSTALL_ROOT}/usr/share/man    \
+             --infodir=${INSTALL_ROOT}/usr/share/info  \
+             --with-hierarchy-level=${OPENCA_HIERARCHY_LEVEL} \
+             --with-web-host=$(hostname)               \
+             --with-ca-organization=${OPENCA_ORGANIZATION}    \
+             --with-ca-country=${OPENCA_COUNTRY}              \
+             $OPTS                                     &&
 make
