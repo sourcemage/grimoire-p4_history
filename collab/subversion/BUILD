@@ -1,12 +1,15 @@
-# $Id: BUILD,v 1.5 2002/07/29 23:53:53 sergeyli Exp $
+# $Id: BUILD,v 1.6 2002/08/08 02:52:42 sergeyli Exp $
 (
 
 	message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}"
 	message "${MESSAGE_COLOR}repository and check out the latest client and Apache 2 module source${DEFAULT_COLOR}"
 	message "${MESSAGE_COLOR}code. Then, these will be built and installed.${DEFAULT_COLOR}"
 
-	message "${MESSAGE_COLOR}Checking if mod_dav has been built for ${SPELL_COLOR}apache2${DEFAULT_COLOR}"
-	gaze compile apache2 | egrep "/libtool .* mod_dav" > /dev/null 2>&1 &&
+	message "${MESSAGE_COLOR}Checking for Apache 2.x${DEFAULT_COLOR}" &&
+	httpd -v | grep -q "Apache/2\."                                   &&
+
+	message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
+	test -f /usr/libexec/mod_dav.so                                                &&
 
 #	Build static client to bootstrap to repository
 	./configure                  \
@@ -41,6 +44,9 @@
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--with-apr=/usr      \
+		--with-apr-util=/usr \
+		--with-apxs=apxs     \
 		$OPTS                &&
 	make                     &&
 
@@ -48,10 +54,13 @@
 #	make -jN external-all
 #	make -jN local-all
 
+	if spell_installed python; then
+		make check
+	fi                       &&
+
 #	Install
 	prepare_install          &&
-	make    install          &&
-	make    check
+	make    install
 
 ) > $C_FIFO 2>&1 && (
 
