@@ -1,15 +1,14 @@
            SPELL=bison
-         VERSION=1.875b
-          SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://download.sourcemage.org/mirror/$SOURCE
-#   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-#   SOURCE_URL[1]=ftp://alpha.gnu.org/pub/gnu/$SPELL/$SOURCE
-          MD5[0]=d0d1ce1724ee5cfbd01bc17f7b7cdc26
-      LICENSE[0]=GPL
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://ftp.gnu.org/gnu/$SPELL/$SOURCE
+          MD5[0]=deebba5e1f49f95dcb7bfb51cda74428
         WEB_SITE=http://www.gnu.org/software/bison/bison.html
          ENTERED=20010922
          UPDATED=20031104
+      LICENSE[0]=GPL
        BUILD_API=2
            SHORT="A replacement for the parser generator yacc"
 cat << EOF
