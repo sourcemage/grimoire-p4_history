@@ -16,7 +16,8 @@
   prepare_install                              &&
 
 #horrible hack, some of my best work ;-)
-  ./src/ginstall src/ginstall /bin/install     &&
+  ./src/ginstall  src/ginstall                 \
+                  ${INSTALL_ROOT}/bin/install  &&
 
   make    install                              &&
 

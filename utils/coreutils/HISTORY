@@ -1,5 +1,12 @@
+2003-12-02 Eric Sandall <eric@sandall.us>
+	* BUILD: Install Hamish' hack to INSTALL_ROOT as well
+	* POST_INSTALL: Use INSTALL_ROOT for package listings and such
+	* HISTORY: Shorten some of the descriptions to fit in a more
+	standard-sized terminal ;)
+
 2003-11-14 hgg <hgreig@bigpond.net.au>
-	* BUILD,coreutils-cp-mv-oMFS-bug.patch: add patch for cp and mv to work correctly in openmosix oMFS
+	* BUILD,coreutils-cp-mv-oMFS-bug.patch: add patch for cp and mv to work
+	correctly in openmosix oMFS
 
 2003-11-07 hgg <hgreig@bigpond.net.au>
 	* BUILD,coreutils-ls-bug.patch: fix bug in ls
@@ -21,7 +28,8 @@
 	* BUILD : Add list of files to be symlinked to /usr/bin
 
 2003-07-29 hgg <hgreig@bigpond.net.au>
-	* BUILD,POST_INSTALL: Add some more symlinks for /bin/* -> /usr/bin/* and update POST_INSTALL
+	* BUILD,POST_INSTALL: Add some more symlinks for /bin/* -> /usr/bin/*
+	and update POST_INSTALL
 
 2003-07-24 hgg <hgreig@bigpond.net.au>
 	* BUILD: Add symlink /bin/install -> /usr/bin/install for static Makefiles
@@ -31,14 +39,16 @@
 
 2003-07-18 hgg <hgreig@bigpond.net.au>
 	* POST_INSTALL: add  to a) remove fileutils,textutils,sh-utils from packages file  
-	b) remove orphans left when fileutils, textutils and sh-utils, are removed from  packages file.
+	b) remove orphans left when fileutils, textutils and sh-utils, are removed from
+	packages file.
 	c) edit sustained and protected files
 	* BUILD:  put everything in /bin (it is "coreutils") and fix bug#3725
 	* Bug#3638 is still open i have not decided how to proceed.
 
 2003-06-14 Sergey Lipnevich <sergey@sourcemage.org>
-	* BUILD: Move a number of binaries from /usr/bin to /bin to satisfy FHS standard requirements 
-	as suggested by Julian v. Bock.
+	* BUILD: Move a number of binaries from /usr/bin to /bin to satisfy FHS standard
+	requirements as suggested by Julian v. Bock.
 
 2003-04-09 Sergey Lipnevich <sergey@sourcemage.org>
 	* Spell: created after announcement of coreutils 5.0 release.
+
