@@ -479,7 +479,7 @@ patch_list()
 		if [ "$found" == "true" ]
 		then
 			echo $patch
-			echo Patch
+			echo PATCH
 			echo Select_Specific_$patch
 		fi
 	done
@@ -528,7 +528,7 @@ patch_menu()
 			menu="No_Patches Available Sorry"
 		fi
 		command=$( $dialog --title "Select Patches" \
-			--item-help --menu \
+			--help-button --menu \
 			"Currently selected patches: $new_patch_list" 0 0 0 ${menu}
 			)
 		retval="$?"
@@ -564,6 +564,19 @@ patch_menu()
 			else
 				new_patch_list="${new_patch_list}${command} "
 			fi
+		elif [[ "$retval" == "2" && "$command" != "No_Patches" ]]
+		then
+			tmp=${command/HELP /}
+			. $latestdefaults 
+			case "${tmp}" in
+				LATEST*)
+					source_patch ${!tmp}
+					;;
+				*)
+					source_patch $tmp
+					;;
+			esac
+			$dialog --msgbox "$help" 0 0
 		else
 			selected_patches=$new_patch_list
 			break
