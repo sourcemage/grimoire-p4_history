@@ -41,6 +41,4 @@
 
 	./setup.sh
 
-	installscript  webmin
-
 ) > $C_FIFO 2>&1
