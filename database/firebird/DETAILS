@@ -1,0 +1,29 @@
+           SPELL=firebird
+# using cvs, as there is no official tarball yet
+         VERSION=1.5-rc7
+             CVS=B1_5_Release
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/firebird:firebird2:$CVS
+
+# this is a temporary url and tarball
+#          SOURCE=${SPELL}-1.5.tar.bz
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
+#SOURCE_URL[0]=http://mapopa.tripod.com/firebird/$SOURCE
+
+#$SOURCEFORGE_URL/firebird/$SOURCE
+        WEB_SITE=http://www.firebirdsql.org
+         LICENCE=MPL
+          MD5[0]=IGNORE
+         ENTERED=20031111
+         UPDATED=
+# this is for default install script
+# 	    DOCS="ChangeLog"	
+ 	    DOCS="ChangeLog doc/*"
+           SHORT="a very powerful relational dbms"
+cat << EOF
+Firebird is a relational database offering many ANSI SQL-92 features
+that runs on Linux, Windows, and a variety of Unix platforms.
+Firebird offers excellent concurrency, high performance, and powerful 
+language support for stored procedures and triggers. 
+EOF
