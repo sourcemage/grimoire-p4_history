@@ -9,14 +9,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
           MD5[2]=${MD5[0]}
         WEB_SITE=http://trn.sourceforge.net
+         BUILD_API=2
          ENTERED=20010922
          UPDATED=20031119
          LICENSE=http://trn.sourceforge.net
            SHORT="trn is a threaded news reader."
             DOCS="HACKERSGUIDE INSTALL LICENSE README HelpFiles/"
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
 cat << EOF
 Trn is Threaded RN, a newsreader that uses an article's references to
 order the discussions in a very natural, reply-ordered sequence called
