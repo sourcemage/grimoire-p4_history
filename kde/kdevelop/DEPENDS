@@ -1,9 +1,9 @@
-depends  autoconf  &&
-depends  automake  &&
-depends  kdebase   &&
-depends  ctags     &&
-depends  gdb       &&
-depends  db        &&
+depends  autoconf  "--enable-autoproject"  &&
+depends  automake                          &&
+depends  kdebase                           &&
+depends  ctags                             &&
+depends  gdb                               &&
+depends  db                                &&
 
 source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
 
@@ -57,6 +57,11 @@ optional_depends  JAVA                \
                   "--disable-java"    \
                   "for Java support"  &&
 
+optional_depends  ant                     \
+                  "--enable-antproject"   \
+                  "--disable-antproject"  \
+                  "for Ant build tools"   &&
+
 optional_depends  ruby                \
                   "--enable-ruby"     \
                   "--disable-ruby"    \
@@ -80,4 +85,9 @@ optional_depends  perforce-client         \
 optional_depends  SVN                       \
                   "--enable-svnsupport"     \
                   "--disable-svnsupport"    \
-                  "for Subversion support"
+                  "for Subversion support"  &&
+
+optional_depends  tcl                \
+                  "--enable-tcl"     \
+                  "--disable-tcl"    \
+                  "for Tcl support"
