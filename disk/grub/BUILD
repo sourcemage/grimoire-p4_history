@@ -1,6 +1,6 @@
 unset  CFLAGS            &&
 unset  CXXFLAGS          &&
-export  CFLAGS="-Os -g"  &&
+export  CFLAGS="-Os"     &&
 
 # Begin setting up OPTS based on responses from CONFIGURE
 
@@ -308,13 +308,13 @@ fi  &&
 
 # Launch automake tools to get the patchs options integrated
 aclocal &&
-automake --foreign --add-missing &&
+automake &&
 autoconf &&
 
-./configure  --build=$BUILD           \
-            --prefix=/usr             \
-           --sbindir=/sbin            \
-            --mandir=/usr/share/man   \
-           --infodir=/usr/share/info  \
+./configure  --build=$BUILD            \
+             --prefix=/usr             \
+             --sbindir=/sbin           \
+             --mandir=/usr/share/man   \
+             --infodir=/usr/share/info \
            $OPTS                      &&
 make
