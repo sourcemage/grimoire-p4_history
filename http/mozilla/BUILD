@@ -1,56 +1,6 @@
+export MOZILLA_FIVE_HOME=/usr/lib/mozilla
+
 (
-    
-  case $MOZILLA_MAIL  in
-  n|N)  OPTS="$OPTS --disable-mailnews"
-    ;;
-  esac &&
-
-  case $MOZILLA_CHAT  in
-  n|N)  OPTS="$OPTS --disable-chat"
-    ;;
-  esac &&
-
-  if [ "$MOZILLA_CALENDAR" == "y" ]; then
-    OPTS="$OPTS --enable-calendar"
-  fi &&
-
-  case $MOZILLA_JAVA  in
-  y|Y|j|J)  OPTS="$OPTS --enable-java-supplement"
-    ;;
-  esac &&
-
-  case $MOZILLA_SVG in
-  y|Y|j|J)
-    OPTS="$OPTS --enable-svg"         &&
-    export MOZ_INTERNAL_LIBART_LGPL=1
-    ;;
-  esac &&
-
-  case $MOZILLA_MATHML  in
-  n|N)  OPTS="$OPTS --disable-mathml"
-    ;;
-  esac &&
-
-  case $MOZILLA_XINERAMA  in
-  y|Y|j|J)  OPTS="$OPTS --enable-xinerama"
-    ;;
-  esac &&
-
-  # PSM is usually needed, so it will compile except when disabled explicitly
-  # This precaution is made for cases where CONFIGURE doesn't run for some reason
-  case $MOZILLA_CRYPTO in
-  n|N)
-    ;;
-  *)
-    OPTS="$OPTS --enable-crypto"
-    ;;
-  esac &&
-
-  case $MOZILLA_LDAP in
-  y|Y|j|J)
-    OPTS="$OPTS --enable-ldap"
-    ;;
-  esac &&
 
   if echo $CFLAGS | grep -q pentium4; then
     export CFLAGS="${CFLAGS/-O3/}"
@@ -61,64 +11,60 @@
     --with-x                    \
     --with-pthreads             \
     --enable-xft                \
+    --enable-freetype2          \
+    --enable-extensions         \
     --enable-reorder            \
     --enable-strip              \
     --enable-optimize="$CFLAGS" \
+    --enable-default-mozilla-five-home=$MOZILLA_FIVE_HOME \
     --disable-debug             \
     --disable-tests             \
     --disable-installer         \
     $OPTS                       &&
   make                          &&
 
-  case $MOZILLA_CRYPTO in
-  y|Y|j|J)
-    pushd security/manager &&
-    make                   &&
-    popd
-    ;;
-  esac &&
+  if echo "$OPTS" | grep -q 'enable-crypto'; then
+    message "Building crypto support (Personal Security Manager)..." &&
+    pushd security/manager && make && popd
+  fi &&
 
-  case $MOZILLA_ENIGMAIL in
-  y|Y|j|J)
+  if [ "$MOZILLA_ENIGMAIL" == y ]; then
+    message "Building IPC and Enigmail extensions..." &&
     pushd extensions/ipc      && make && popd &&
     pushd extensions/enigmail && make && popd
-    ;;
-  esac &&
+  fi &&
 
   prepare_install
 
 ) > $C_FIFO 2>&1 && (
 
-  rm     -f                          /usr/lib/mozilla/component.reg
-  mkdir  -p                          /usr/lib/mozilla
-  cp     -rL  dist/bin/*             /usr/lib/mozilla/
-  mkdir  -p                          /usr/include/mozilla
-  cp     -rL  dist/include/*         /usr/include/mozilla/
-  mkdir  -p                          /usr/include/moznss
-  cp     -L   dist/public/security/* /usr/include/moznss/
+  rm     -f                            $MOZILLA_FIVE_HOME/component.reg
+  mkdir  -p                            $MOZILLA_FIVE_HOME
+  mkdir  -p                            $MOZILLA_FIVE_HOME/plugins
+  cp     -rL dist/bin/*                $MOZILLA_FIVE_HOME/
+  mkdir  -p                            /usr/include/mozilla
+  cp     -rL dist/include/*            /usr/include/mozilla/
+  mkdir  -p                            /usr/include/moznss
+  cp     -L  dist/public/security/*    /usr/include/moznss/
+  cp         $SCRIPT_DIRECTORY/mozilla /usr/bin/
 
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-gtkmozembed.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-js.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-nspr.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-nss.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-xpcom.pc
-  cp build/unix/*.pc /usr/lib/pkgconfig/
-
-  for  library  in  /usr/lib/mozilla/*.so;  do 
-    libname=`basename  $library`
-    ln  -sf  mozilla/$libname /usr/lib/$libname
+  for package in build/unix/*.pc; do
+    message "Processing $package..."
+    sedit "s/mozilla-$VERSION/mozilla/g" $package
+    cp $package /usr/lib/pkgconfig/
   done
 
-  cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin/mozilla
+  for library in $MOZILLA_FIVE_HOME/*.so; do
+    message "Linking $library..."
+    libname=$(basename $library)
+    ln -fns mozilla/$libname /usr/lib/$libname
+  done
 
-  export  MOZILLA_FIVE_HOME=/usr/lib/mozilla
-  export    LD_LIBRARY_PATH=/usr/lib/mozilla:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=$MOZILLA_FIVE_HOME:$LD_LIBRARY_PATH
+  $MOZILLA_FIVE_HOME/regxpcom
+  $MOZILLA_FIVE_HOME/regchrome
 
-         /usr/lib/mozilla/regxpcom
-         /usr/lib/mozilla/regchrome
-  touch  /usr/lib/mozilla/chrome/user-skins.rdf
-  touch  /usr/lib/mozilla/chrome/user-locales.rdf
-
-  mkdir  -p /usr/lib/mozilla/plugins
+  touch  $MOZILLA_FIVE_HOME/chrome/user-skins.rdf
+  touch  $MOZILLA_FIVE_HOME/chrome/user-locales.rdf
 
 )

@@ -1,26 +1,17 @@
-depends zlib   '--with-system-zlib' &&
-depends jpeg   '--with-system-jpeg' &&
-depends libpng '--with-system-png'  &&
-
-depends gtk+2  '--enable-toolkit-gtk2 --enable-default-toolkit=gtk2' &&
-
 depends zip    &&
 depends perl   &&
 
-depends libIDL &&
-depends ORBit2 &&
+depends zlib   '--with-system-zlib' &&
+depends jpeg   '--with-system-jpeg' &&
+depends libpng '--with-system-png'  &&
+depends gtk+2  '--enable-toolkit-gtk2 --enable-default-toolkit=gtk2' &&
+depends libIDL '--with-libIDL-prefix=$INSTALL_ROOT/usr' &&
 
 optional_depends libmng                           \
                  '--with-system-mng'              \
-                 '--without-mng'                  \
+                 '--without-system-mng'           \
                  'for MNG picture format support' &&
-optional_depends freetype2                    \
-                 '--enable-freetype2'         \
-                 '--disable-freetype2'        \
-                 'for TrueType fonts support' &&
 
-case $MOZILLA_ENIGMAIL in
-Y|y|J|j)
+if [ "$MOZILLA_ENIGMAIL" == y ]; then
   depends gnupg
-  ;;
-esac
+fi
