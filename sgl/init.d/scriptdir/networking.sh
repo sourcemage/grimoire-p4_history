@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SGL-script-version=20021016
+# SGL-script-version=20021020
 # this sets the run levels and priority for links
 # SGL-START:3 4 5:S30
 # SGL-STOP:0 1 2 6:K70
@@ -16,6 +16,7 @@
 # BROADCAST=
 # NETMASK=
 # GATEWAY=
+# Leave GATEWAY= blank  if your gateway is set by another program.
 
 . /etc/init.d/functions
 netdevdir=/etc/sysconfig/network
@@ -42,7 +43,7 @@ case "$1" in
 		if [ -z "$MODE" ]; then
 		    echo " There are errors in $netdevdir/$DEVICE"
 		else
-# only load module if necessary
+# only load module if necessary; i.e. not built into kernel.
 		    if [ ! -z "$MODULE" ]; then
 			echo "$1ing $0 with $DEVICE ..."
 			loadproc modprobe  $MODULE
@@ -59,7 +60,10 @@ case "$1" in
 		    elif [ `echo $MODE` = static ]; then
 			echo "Setting up static network on $DEVICE"
 			ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
-			route add default gateway $GATEWAY
+# check if GATEWAY is set; gateway is set by PPP in some cases
+			if [ ! -z "$GATEWAY" ]; then
+			    route add default gateway $GATEWAY
+			fi
 			evaluate_retval
 		    else 
 			echo " There are errors in $netdevdir/$DEVICE"
