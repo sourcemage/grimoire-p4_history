@@ -1,0 +1,105 @@
+#!/bin/bash
+
+PROGRAM=/bin/false    # To get auto_init functionality
+RUNLEVEL=3
+PROVIDES=network
+
+. /etc/init.d/smgl_init
+
+test -x /sbin/ifup     || exit 5
+test -x /sbin/ifdown   || exit 5
+test -x /sbin/ifconfig || exit 5
+test -x /sbin/route    || exit 5
+test -x /sbin/modprobe || exit 5
+
+netdevdir=/etc/sysconfig/network
+
+# this provides you with the ability to start/stop/check status on 
+# one or more cards if you so desire.
+
+if [ $# -le 1 ]; then
+    devices="$(ls $netdevdir | grep dev$ | cut -d. -f1)"
+else
+    devices="$(echo $@ | sed s/$1//)"
+fi
+
+start()
+{
+  for DEVICE in $devices ; do
+    [ "$DEVICE" = "lo" ]            && continue     # handled in hostname.sh
+    [ ! -f $netdevdir/$DEVICE.dev ] && continue
+
+    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+
+    . $netdevdir/$DEVICE.dev
+
+    # We only handle static interfaces
+    [ "$MODE" != "static" ]  &&  continue
+
+    # Only load module if necessary; i.e. not built into kernel.
+    if [ "$MODULE" ] ; then
+      echo "Loading module $MODULE..."
+      modprobe  $MODULE
+      evaluate_retval
+    fi
+
+    echo "Configuring network interface $DEVICE..."
+    ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
+    evaluate_retval
+
+    # Check if GATEWAY is set; gateway is set by PPP or other software in some
+    # cases.
+    if [ "$GATEWAY" ] ; then
+      echo "Setting up gateway for interface $DEVICE..."
+      route add default gateway $GATEWAY dev $DEVICE
+      evaluate_retval
+    fi
+  done
+}
+
+stop()
+{
+  for DEVICE in $devices ; do
+    [ "$DEVICE" = "lo" ]            && continue     # handled in hostname.sh
+    [ ! -f $netdevdir/$DEVICE.dev ] && continue
+
+    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+
+    . $netdevdir/$DEVICE.dev
+    
+    [ "$MODE" != "static" ] && continue
+
+    echo "Shutting down network interface $DEVICE..."
+    ifconfig $DEVICE down
+    evaluate_retval
+
+    # Only do this if network device is a module.
+    if [ "$MODULE" ] ; then
+      echo "Unloading module $MODULE..."
+      modprobe -r $MODULE
+      evaluate_retval
+    fi
+  done
+}
+
+status()
+{
+  for DEVICE in $devices ; do
+    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+
+    . $netdevdir/$DEVICE.dev
+
+    if [ -z "$MODE" ] ; then
+      echo " There are errors in $netdevdir/$DEVICE.dev"
+    else
+      [ "$MODE" = "status" ] && ifconfig $DEVICE
+    fi
+  done
+}
+
+reload() { exit 3; }
+
+usage()
+{
+  echo "Usage: $0 {start|stop|restart|status} [DEVICE]"
+}
