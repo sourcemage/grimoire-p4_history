@@ -1,1 +1,8 @@
-make prefix=${INSTALL_ROOT}/opt/gcc33 install-no-fixedincludes
+make prefix=${INSTALL_ROOT}/opt/gcc33 install-no-fixedincludes &&
+
+# create a symlink to version 5 runtime in regular prefix $INSTALL_ROOT/usr
+RUNTIME=lib/libstdc++.so.5 &&
+if ! [[ -f $INSTALL_ROOT/usr/$RUNTIME ]]; then
+  RUNTIME_TARGET=$(readlink $INSTALL_ROOT/opt/gcc33/$RUNTIME) &&
+  ln -fns ${RUNTIME_TARGET##$INSTALL_ROOT} $INSTALL_ROOT/usr/$RUNTIME
+fi

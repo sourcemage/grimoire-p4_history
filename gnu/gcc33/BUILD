@@ -3,11 +3,11 @@ sedit  's:#!/bin/sh:#!/bin/bash:'  $SOURCE_DIRECTORY/configure  &&
 cd $SOURCE_DIRECTORY.bld                                  &&
 $SOURCE_DIRECTORY/configure                               \
              --host=$HOST                                 \
-           --prefix=/opt/gcc33                            \
+           --prefix=${INSTALL_ROOT}/opt/gcc33             \
           --infodir=${INSTALL_ROOT}/opt/gcc33/share/info  \
            --mandir=${INSTALL_ROOT}/opt/gcc33/share/man   \
    --enable-threads=posix                                 \
- --enable-languages=c,c++
-       $OPTS                                              &&
+ --enable-languages=c,c++                                 \
+       $GCC_MULTILIB $OPTS                                &&
 
 make  bootstrap
