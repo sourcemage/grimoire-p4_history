@@ -8,8 +8,21 @@ unpack  ${SOURCE3}  ${MD5[2]}           &&
 
 sedit "s:\(#define MesaSrcDir\).*:\1 ${SOURCE_DIRECTORY}/Mesa-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
 sedit "s:\(#define DRMSrcDir\).*:\1 ${SOURCE_DIRECTORY}/drm-Trunk:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+#i386
+sedit ":i386Architecture: { n ; n ; s:\(#define XF86CardDrivers\).*:\1 ${X11_DRIVER}:" ; } ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+sedit ":i386Architecture: { n ; n ; n; s:\(#define DriDrivers\).*:\1 ${DRI_DRIVER}:" ; }${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+#ppc
+sedit ":PpcArchitecture: { n ; n ; s:\(#define XF86CardDrivers\).*:\1 ${X11_DRIVER}:" ; } ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+sedit ":PpcArchitecture: { n ; n ; n; s:\(#define DriDrivers\).*:\1 ${DRI_DRIVER}:" ; }${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+#amd64
+sedit ":AMD64Architecture: { n ; n ; s:\(#define XF86CardDrivers\).*:\1 ${X11_DRIVER}:" ; } ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+sedit ":AMD64Architecture: { n ; n ; n; s:\(#define DriDrivers\).*:\1 ${DRI_DRIVER}:" ; }${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+#other
+sedit "s:#define XF86CardDrivers tdfx mga ati glint vga:#define XF86CardDrivers ${X11_DRIVER}:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
+sedit "s:#define DriDrivers r200 tdfx mga r128 radeon gamma ffb:#define DriDrivers ${DRI_DRIVER}:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
 
-if [ "`cat /proc/cpuinfo | grep sse`" != "" ]
+
+if [ "DRI_SSE_OPTIMIZATIONS" == "y" ]
 then
 echo #define MesaUseKatmai YES >> ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def 
 fi
