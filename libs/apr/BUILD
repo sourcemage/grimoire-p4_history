@@ -1,18 +1,13 @@
-# fixes htpasswd breakage
-if [ "$APR_BRANCH" == "0" -a "$APR_CHECKOUT" == "n" ]; then
-  patch  -p1  <  $SCRIPT_DIRECTORY/apr-0.9.4-tempdir.patch
-fi  &&
-
-./configure                      \
-  --host=$HOST                   \
-  --build=$BUILD                 \
-  --prefix=/usr                  \
-  --includedir=/usr/include/apr  \
-  --sysconfdir=/etc              \
-  --localstatedir=/var           \
-  --enable-layout=GNU            \
-  --enable-threads               \
-  $OPTS                          &&
+./configure                                   \
+  --host=$HOST                                \
+  --build=$BUILD                              \
+  --prefix=$INSTALL_ROOT/usr                  \
+  --includedir=$INSTALL_ROOT/usr/include/apr  \
+  --sysconfdir=$INSTALL_ROOT/etc              \
+  --localstatedir=$INSTALL_ROOT/var           \
+  --enable-layout=GNU                         \
+  --enable-threads                            \
+  $OPTS                                       &&
 
 sedit  's|[^_]off64_t| __off64_t|'  include/apr.h  &&
 

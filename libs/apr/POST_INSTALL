@@ -1,4 +1,6 @@
-FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
-sedit $FIX_PATH_REGEX /usr/bin/apr-config  &&
-sedit $FIX_PATH_REGEX /usr/share/apache2/build/apr_rules.mk &&
+if [ "$APR_BRANCH_0_9" == 'y' ]; then
+  FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
+  sedit $FIX_PATH_REGEX /usr/bin/apr-config &&
+  sedit $FIX_PATH_REGEX /usr/share/apache2/build/apr_rules.mk
+fi &&
 default_post_install

@@ -1,21 +1,7 @@
-diff -purN apr-util-0.9.4/configure.in apr-util/configure.in
---- apr-util-0.9.4/configure.in	2003-07-09 23:26:51.000000000 -0400
-+++ apr-util/configure.in	2003-07-17 21:54:13.000000000 -0400
-@@ -88,6 +88,10 @@ APR_SETIFNULL(CPP, `$apr_config --cpp`)
- APR_ADDTO(CFLAGS, `$apr_config --cflags`)
- APR_ADDTO(CPPFLAGS, `$apr_config --cppflags`)
- 
-+AC_ARG_WITH(installbuilddir, [  --with-installbuilddir=DIR location to store APR build files (defaults to '${datadir}/build')],
-+  [ installbuilddir=$withval ], [ installbuilddir="${datadir}/build" ] )
-+AC_SUBST(installbuilddir)
-+
- dnl Find LDAP library
- dnl Determine what DBM backend type to use.
- dnl Find Expat
-diff -purN apr-util-0.9.4/Makefile.in apr-util/Makefile.in
---- apr-util-0.9.4/Makefile.in	2003-02-16 19:16:43.000000000 -0500
-+++ apr-util/Makefile.in	2003-07-17 21:58:43.000000000 -0400
-@@ -38,6 +38,7 @@ exec_prefix=@exec_prefix@
+diff -purN apr-util-0.9.5/Makefile.in apr-util/Makefile.in
+--- apr-util-0.9.5/Makefile.in	2004-09-01 10:17:39.000000000 +0000
++++ apr-util/Makefile.in	2005-01-23 00:22:51.000000000 +0000
+@@ -37,6 +37,7 @@ exec_prefix=@exec_prefix@
  bindir=@bindir@
  libdir=@libdir@
  includedir=@includedir@
@@ -23,7 +9,7 @@ diff -purN apr-util-0.9.4/Makefile.in apr-util/Makefile.in
  top_srcdir=@abs_srcdir@
  top_blddir=@abs_builddir@
  
-@@ -71,6 +72,16 @@ install: $(TARGET_LIB)
+@@ -73,6 +74,16 @@ install: $(TARGET_LIB)
  	done
  	$(LIBTOOL) --mode=install cp $(TARGET_LIB) $(DESTDIR)$(libdir)
  	$(LIBTOOL) --mode=install cp aprutil.exp $(DESTDIR)$(libdir)
@@ -40,3 +26,17 @@ diff -purN apr-util-0.9.4/Makefile.in apr-util/Makefile.in
  	if [ ! -d $(DESTDIR)$(bindir) ]; then \
  		@APR_SOURCE_DIR@/build/mkdir.sh $(DESTDIR)$(bindir); \
  	fi;
+diff -purN apr-util-0.9.5/configure.in apr-util/configure.in
+--- apr-util-0.9.5/configure.in	2004-09-01 10:17:39.000000000 +0000
++++ apr-util/configure.in	2005-01-23 00:22:51.000000000 +0000
+@@ -94,6 +94,10 @@ APR_SETIFNULL(CPP, `$apr_config --cpp`)
+ APR_ADDTO(CFLAGS, `$apr_config --cflags`)
+ APR_ADDTO(CPPFLAGS, `$apr_config --cppflags`)
+ 
++AC_ARG_WITH(installbuilddir, [  --with-installbuilddir=DIR location to store APR build files (defaults to '${datadir}/build')],
++  [ installbuilddir=$withval ], [ installbuilddir="${datadir}/build" ] )
++AC_SUBST(installbuilddir)
++
+ dnl Find LDAP library
+ dnl Determine what DBM backend type to use.
+ dnl Find Expat

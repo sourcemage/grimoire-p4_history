@@ -1,7 +1,7 @@
-diff -purN apr-0.9.4/Makefile.in apr/Makefile.in
---- apr-0.9.4/Makefile.in	2003-07-04 18:45:37.000000000 -0400
-+++ apr/Makefile.in	2003-07-05 01:08:44.000000000 -0400
-@@ -83,9 +83,11 @@ install: $(TARGET_LIB)
+diff -purN apr-0.9.5/Makefile.in apr/Makefile.in
+--- apr-0.9.5/Makefile.in	2004-09-01 09:53:50.000000000 +0000
++++ apr/Makefile.in	2005-01-22 23:41:54.000000000 +0000
+@@ -87,9 +87,11 @@ install: $(TARGET_LIB) apr-config.out
  	if [ -f shlibtool ]; then \
  		$(LIBTOOL) --mode=install cp shlibtool $(DESTDIR)$(installbuilddir); \
  	fi;

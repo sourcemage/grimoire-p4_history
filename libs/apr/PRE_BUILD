@@ -1,7 +1,7 @@
 default_pre_build &&
 
 cd $SOURCE_DIRECTORY &&
-if [ "$APR_BRANCH" == "0" ]; then
+if [ "$APR_BRANCH_0_9" == 'y' ]; then
   patch -p1 < $SCRIPT_DIRECTORY/build.diff
 fi  &&
 if ! [ -x configure ]; then
