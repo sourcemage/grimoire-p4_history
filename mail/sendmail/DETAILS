@@ -1,5 +1,5 @@
            SPELL=sendmail
-         VERSION=8.12.11
+         VERSION=8.13.0
           SOURCE=$SPELL.$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.sendmail.org/pub/$SPELL/$SOURCE
@@ -22,12 +22,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
   SOURCE_URL[17]=ftp://giswitch.sggw.waw.pl/pub/sendmail/$SOURCE
   SOURCE_URL[18]=http://planetmirror.com/pub/sendmail/$SOURCE
   SOURCE_URL[19]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[0]=d4d1ffad94d8204041a5ebebfff52216
+          MD5[0]=f5dcbb6b86b27f31acea6a897285ade4
         WEB_SITE=http://www.sendmail.org/
       LICENSE[0]=SENDMAIL
+       BUILD_API=2
          ENTERED=20020820
          UPDATED=20030917
-           SHORT="sendmail is a complex MTA."
+           SHORT="Complex mail transport agent"
 cat << EOF
 Sendmail is a complex, yet powerfull Mail-Transport Agent.
 
