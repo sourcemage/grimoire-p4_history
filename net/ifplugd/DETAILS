@@ -1,0 +1,28 @@
+           SPELL=ifplugd
+         VERSION=0.18
+          SOURCE=$SPELL-$VERSION.tar.gz
+          MD5[0]='068a50342a62413745441bd08c5579ad'
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.stud.uni-hamburg.de/~lennart/projects/${SPELL}/${SOURCE}
+        WEB_SITE=http://www.stud.uni-hamburg.de/~lennart/projects/${SPELL}/
+         ENTERED=20031017
+         UPDATED=20031017
+           SHORT='automatically (un)configure network devices when cable is plugged in/out'
+cat << EOF
+ifplugd is a Linux daemon which will automatically configure your ethernet device when a cable is plugged in and automatically unconfigure it if the cable is pulled. This is useful on laptops with onboard network adapters, since it will only configure the interface when a cable is really connected.
+
+ifplugd ifplugd interfaces with your distribution's native network configuration utilities.
+
+Some features:
+
+    * Uses your distribution's native ifup/ifdown programs.
+    * May beep when the cable is unplugged, plugged, the interface configuration succeeded or failed.
+    * Supports the Linux SIOCETHTOOL (newer, aka ethtool API), SIOCGMIIREG (older, aka mii-diag/mii-tool API) and SIOCDEVPRIVATE (oldest, aka mii-tool API) ioctl()s for getting link status.
+    * Syslog support
+    * Small program - the binary is just 19 KB (plus 11 KB for libdaemon).
+    * Multiple ethernet interface support
+    * Can be configured to ignore short "unplugged" periods (-d option) or short "plugged" periods(-u option)
+    * Support for wireless networking. Whenever an AP is detected the network is configured.
+    * Compatibility mode for network devices which do not support cable detection (-F option)
+EOF
