@@ -1,6 +1,6 @@
 (
 
-   ./configure --with-qt-moc=/usr/bin --with-qt-libs=/usr/lib --with-qt-includes=/usr/include/qt --prefix=/usr --localstatedir=/var --sysconfdir=/etc &&
+   ./configure --with-qt-moc=/usr/bin --with-qt-libs=/usr/lib --with-qt-includes=/usr/include/qt --prefix=/usr --localstatedir=/var --sysconfdir=/etc $OPTS &&
    make						&&
 
    prepare_install				&&
