@@ -1,57 +1,12 @@
 #!/bin/sh
 # $1 is the kernel version
 # this is a really simple way to create an initrd
-# if you want to have filesystem modules instead of
-# compiling them directly into the kernel
-# this doesn't deal with RAID LVM IDE/SCSI modules
-# just file system modules
-# modify the count variable to create the proper size
-# (in KB) of the initrd
-
-
-
-#modules="`ls -1 /lib/modules/$1/kernel/fs/*/*.ko`"
-#for module in $modules
-#do
-#	menu="${menu}${module} module Help "
-#done
-#while true
-#do
-#	command=$(dialog --stdout --cancel-label "Save and Exit" \
-#	--title "Select File System Modules" \
-#	--item-help --menu \
-#	"File System Modules Available\nFile System Modules Selected: $selected" 0 0 0 $menu )
-#	retval="$?"
-#	tmp_selected=""
-#	found="false"
-#	if [[ $retval == "0" ]]
-#	then
-#		for module in $selected
-#		do
-#			if [ "$command" != "$module" ]
-#			then
-#				tmp_selected="${tmp_selected}${module} "
-#			else
-#				found="true"
-#			fi
-#			
-#		done
-#		if [ "$found" == "true" ]
-#		then
-#			selected=$tmp_selected
-#		else
-#			selected="${selected}${command} "
-#		fi
-#	else
-#		break
-#	fi
-#done
-
-#modules=""
-#for module in $selected
-#do
-#	modules="${modules}`basename $module` "
-#done
+# if you want to have modules instead of compiling
+# support directly into the kernel
+# this doesn't deal with RAID LVM 
+# This uses cramfs to make the initrd so you need
+# those plus busybox, even though I haven't gotten
+# it to work well
 
 rm /boot/initrd-$1
 
@@ -70,35 +25,51 @@ mkdir bin
 
 # copy config files
 cd /etc
-cp -a udev fstab group passwd /mnt/initrd/etc/
+cp -a init.d udev fstab group passwd /mnt/initrd/etc/
 
-# copy executables
+cd /mnt/initrd/etc/init.d
+ln -s runlevels/%single rcS
+
+# copy busybox
 cd /sbin
-cp -a insmod modprobe udev* pivot_root /mnt/initrd/sbin/
-cd /bin
-cp -a bash sh ls echo mount ln mkdir mknod chown chmod umount /mnt/initrd/bin/
-cd /usr/bin
-cp -a grep /mnt/initrd/usr/bin
+cp -a busybox /mnt/initrd/sbin/
+
+# link everything
+cd /mnt/initrd/sbin/
+for i in insmod modprobe pivot_root reboot halt shutdown
+do
+	ln -s busybox $i
+done
+cd ../bin
+for i in bash sh ls echo mount ln mkdir mknod chown chmod umount
+do
+	ln -s ../sbin/busybox $i
+done
+cd ../usr/bin
+for i in grep
+do
+	ln -s ../../sbin/busybox $i
+done
 
 # copy libs
-cd /lib
-cp -a ld-* /mnt/initrd/lib
-cp -a libc[-.]* /mnt/initrd/lib
-cp -a libreadline.* /mnt/initrd/lib
-cp -a libhistory.* /mnt/initrd/lib
-cp -a libncurses.* /mnt/initrd/lib
-cp -a libdl* /mnt/initrd/lib
-cp -a libpthread* /mnt/initrd/lib
-cp -a librt* /mnt/initrd/lib
-cp -a libblkid* /mnt/initrd/lib
-cp -a libuuid* /mnt/initrd/lib
+#cd /lib
+#cp -a ld-* /mnt/initrd/lib
+#cp -a libc[-.]* /mnt/initrd/lib
+#cp -a libreadline.* /mnt/initrd/lib
+#cp -a libhistory.* /mnt/initrd/lib
+#cp -a libncurses.* /mnt/initrd/lib
+#cp -a libdl* /mnt/initrd/lib
+#cp -a libpthread* /mnt/initrd/lib
+#cp -a librt* /mnt/initrd/lib
+#cp -a libblkid* /mnt/initrd/lib
+#cp -a libuuid* /mnt/initrd/lib
 # don't need these files
-rm /mnt/initrd/lib/*.a
+#rm /mnt/initrd/lib/*.a
 
 # cp relevent modules
 #for module in $selected
 #do
-	cp -a /lib/modules/$1 /mnt/initrd/lib/modules/
+cp -a /lib/modules/$1 /mnt/initrd/lib/modules/
 #done
 
 # cp console null hd's
@@ -170,6 +141,7 @@ echo "0x100" > /proc/sys/kernel/real_root_dev
 mount -n /dev/hda4 /mnt
 umount -n /proc
 umount -n /sys
+killall udevd
 umount -n /dev
 pivot_root /mnt initrd
 
@@ -179,4 +151,3 @@ EOF
 chmod 755 /mnt/initrd/linuxrc
 
 mkfs.cramfs -b 4096 /mnt/initrd /boot/initrd-$1
-rm -rf /mnt/initrd/*

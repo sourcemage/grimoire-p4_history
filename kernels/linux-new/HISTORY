@@ -1,3 +1,12 @@
+2005-01-25 David Brown <dmlb2000@excite.com>
+	* CONFIGURE: updated to check for VOYEUR and make menuconfig 
+	* PRE_BUILD: added while loop around the menuconfig option
+	* PREPARE: starting remove of dependancy on 
+	  ${CONFIG_CACHE}/kernel.config
+	* mk_initrd: added use of busybox and using cramfs as a file system
+	  makes things really small so you can have all the modules in the
+	  initrd, still doesn't quite work right though
+
 2005-01-22 David Brown <dmlb2000@excite.com>
 	* PRE_BUILD: removed functions
 	* functions: deleted not needed
