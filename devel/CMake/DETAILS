@@ -1,9 +1,9 @@
            SPELL=CMake
-         VERSION=1.4.7
-          SOURCE=${SPELL}$VERSION-src-unix.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.cmake.org/$SOURCE
-          MD5[0]=3bd54a7614826d2859c533bf580d3963
+         VERSION=1.6.7
+          SOURCE=cm${SPELL/\CM/}-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/cm${SPELL/\CM/}-$VERSION
+   SOURCE_URL[0]=http://www.cmake.org/files/$SOURCE
+          MD5[0]=f0d34a7a7d548824c00b902965c5024b
       LICENSE[0]=http://www.cmake.org/HTML/Copyright.html
         WEB_SITE=http://www.cmake.org/HTML/Index.html
          ENTERED=20020429
