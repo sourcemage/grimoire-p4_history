@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr          \
-               --doc-prefix=/usr      &&
+               --doc-prefix=/usr      \
+	       $OPTS		      &&
   make                                &&
   prepare_install                     &&
   make  uninstall_dirs  install_dirs  &&
