@@ -6,14 +6,14 @@ DESCRIPTION="i2c 2.8.x Patch"
 SHORT="Compatibility with i2c 2.8.x"
 HELP="I2C/LM_sensors 2.8.0 changed the i2c interface. This patch allows kernel i2c modules to work with the new i2c, instead of hanging the machine."
 VERSIONS="2.4.22
-2.4.21"
-MD5S[0]=90b5ddfc5fdceb0169280f229e888c81
-MD5S[1]=ac6f7bcd8de59abc801c38fd09622209
+2.4.23"
+MD5S[0]=974f5430b1f5c2c86b4af9cf36dc5083
+MD5S[1]=3b26a8664bc6741c0d5e1b71599accbe
 
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=linux-${!PATCH}-i2c-2.8.0.patch
+SOURCE${COUNTER}=linux-${!PATCH}-i2c-2.8.2.patch
 SOURCE${COUNTER}_URL=http://www.ensicaen.ismra.fr/~delvare/devel/i2c/linux-${!PATCH}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 source $SCRIPT_DIRECTORY/MD5PATCH
 fi
