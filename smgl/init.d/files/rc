@@ -122,7 +122,7 @@ case "$1" in
   start)      start $2            ;;
   stop)       true                ;;
   telinit)    shift; telinit "$@" ;;
-  *)          echo "Bad argument: $1" > /dev/stderr
+  *)          echo "Bad argument: $1"
               exit 1
               ;;
 esac
