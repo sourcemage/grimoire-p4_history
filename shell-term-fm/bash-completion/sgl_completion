@@ -11,7 +11,7 @@ eval `. /etc/sorcery/config;
 #
 _spell_list()
 {
-	COMPREPLY=( ${COMPREPLY[@]} $( find $GRIMOIRE -type f -follow -mindepth 3 -maxdepth 3 -regex $GRIMOIRE/.*/$cur[^/]*/DETAILS -printf "%h\n" | \
+	COMPREPLY=( ${COMPREPLY[@]} $( find $GRIMOIRE -type f -follow -mindepth 3 -maxdepth 3 -regex "$GRIMOIRE/.*/$cur[^/]*/DETAILS" -printf "%h\n" | \
 	sed -ne 's/^.*\/\([^\/]*\)/\1/p' ) )
 }
 
