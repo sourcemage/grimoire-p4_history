@@ -1,0 +1,21 @@
+make[3]: Entering directory `/usr/src/mcs-0.29/class/ByteFX.Data'
+touch ../../build/deps/ByteFX.Data.dll.stamp
+MONO_PATH="../../class/lib:$MONO_PATH" mono  ../../mcs/mcs.exe   -d:NET_1_1 -g /noconfig /r:mscorlib.dll /r:System.dll /r:System.Xml.dll /r:System.Data.dll /r:ICSharpCode.SharpZipLib.dll /r:System.Design.dll /r:System.Drawing.dll /r:System.Windows.Forms.dll /res:mysqlclient/Designers/command.bmp /res:mysqlclient/Designers/connection.bmp /res:mysqlclient/Designers/dataadapter.bmp /target:library /out:../../class/lib/ByteFX.Data.dll @ByteFX.Data.dll.sources
+ 
+Unhandled Exception: System.IO.FileNotFoundException: Could not find file "..\..\bytefx.snk"
+in <0x002fa> System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,bool)
+in <0x00086> System.IO.FileStream:.ctor (string,System.IO.FileMode)
+in <0x00065> (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode)
+in <0x00214> System.Reflection.Emit.AssemblyBuilder:SetCustomAttribute (System.Reflection.Emit.CustomAttributeBuilder)
+in <0x00df9> Mono.CSharp.Attribute:ApplyAttributes (Mono.CSharp.EmitContext,object,object,Mono.CSharp.Attributes)
+in <0x001f9> Mono.CSharp.RootContext:EmitCode ()
+in <0x0081f> Mono.CSharp.Driver:MainDriver (string[])
+in <0x0001b> Mono.CSharp.Driver:Main (string[])
+ 
+make[3]: *** [../../class/lib/ByteFX.Data.dll] Error 1
+make[3]: Leaving directory `/usr/src/mcs-0.29/class/ByteFX.Data'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/usr/src/mcs-0.29/class'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/usr/src/mcs-0.29'
+ ! Problem Detected !
