@@ -1,24 +1,17 @@
-(
+patch -p0 < $SCRIPT_DIRECTORY/openal-build-patch0.diff  &&
+patch -p0 < $SCRIPT_DIRECTORY/openal-no-march.patch     &&
 
-patch -p0 < $SCRIPT_DIRECTORY/openal-build-patch0.diff
-patch -p0 < $SCRIPT_DIRECTORY/openal-no-march.patch
+rm -rf `find -type d -name CVS`                         &&
 
-rm -rf `find -type d -name CVS`
-
-cd linux				&&
-sh ./autogen.sh				&&
-./configure	--enable-waveout      \
-		--enable-null         \
-		--enable-capture      \
-		--enable-jlib         \
-		--enable-fft          \
-		--enable-arch-asm     \
-                --disable-alsa        \
-		--enable-optimization \
-		--prefix=/usr         \
-		$OPTS	&&
-make			&&
-prepare_install		&&
-make install
-
-) > $C_FIFO 2>&1
+cd linux                                                &&
+sh ./autogen.sh                                         &&
+./configure --enable-waveout                            \
+            --enable-null                               \
+            --enable-capture                            \
+            --enable-jlib                               \
+            --enable-fft                                \
+            --disable-alsa                              \
+            --enable-optimization                       \
+            --prefix=/usr                               \
+            $OPTS                                       &&
+make
