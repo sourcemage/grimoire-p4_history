@@ -1,6 +1,5 @@
 (
 
-  make  -f  Makefile.cvs             &&
   ./configure  --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
