@@ -1,14 +1,15 @@
-           SPELL=OpenProducer
+           SPELL=openproducer
          VERSION=0.8.4-2
-          SOURCE=${SPELL/Open/}-${VERSION}.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL/Open/}
+          SOURCE=Producer-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/Producer
    SOURCE_URL[0]=http://www.andesengineering.com/Producer/Download/${SOURCE}
+          MD5[0]=6cb5a5c2355c275cf6b074a4d185979a
         WEB_SITE=http://www.andesengineering.com/Producer/index.html
          ENTERED=20030625
          UPDATED=20031208
-          MD5[0]=6cb5a5c2355c275cf6b074a4d185979a
       LICENSE[0]=LGPL
-           SHORT="OpenProducer is a  C++ library for managing OpenGL rendering"
+       BUILD_API=2
+           SHORT="C++ library for managing OpenGL rendering"
 cat << EOF
 Open Producer (or simply Producer) is a cross-platform, C++ library for managing OpenGL rendering 
 contexts in a windowing system independent manner.  Producer provides a simple, yet powerfully 

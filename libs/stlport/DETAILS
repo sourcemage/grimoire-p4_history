@@ -1,15 +1,16 @@
-           SPELL=STLport
+           SPELL=stlport
          VERSION=4.6.2
             BETA=$([ ${VERSION//-/} != $VERSION ] && echo 1)
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=STLport-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/STLport-$VERSION
    SOURCE_URL[0]=http://www.stlport.org/archive/${BETA:+../beta/}$SOURCE
-          MD5[0]='ce5c8b5385989b90fb90e1985cdb3edb'
-      LICENSE[0]=http://www.stlport.org/doc/license.html
+          MD5[0]=ce5c8b5385989b90fb90e1985cdb3edb
         WEB_SITE=http://www.stlport.org/
          ENTERED=20020302
          UPDATED=20021127
-           SHORT='STLport is a full ANSI C++ standard library'
+      LICENSE[0]=http://www.stlport.org/doc/license.html
+       BUILD_API=2
+           SHORT="Full ANSI C++ standard library"
           CCACHE=off
     DISTCC_HOSTS=
       MAKE_NJOBS=1

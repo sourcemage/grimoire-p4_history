@@ -1,14 +1,14 @@
-           SPELL=PyGtkScintilla
+           SPELL=pygtkscintilla
          VERSION=0.8.2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=PyGtkScintilla-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/PyGtkScintilla-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/moleskine/$SOURCE
           MD5[0]=5c55a1afbcf451fe69c05b04aac4b7c3
-      LICENSE[0]=GPL
         WEB_SITE=http://www.micampe.it/software/moleskine/
          ENTERED=20020318
          UPDATED=20020318
-      MAINTAINER=fkb@iago.polito.it
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="Python bindings for the GtkScintilla library"
 cat << EOF
 Python bindings for GtkScintilla, a library wrapper for the

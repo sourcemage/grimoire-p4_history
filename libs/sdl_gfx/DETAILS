@@ -1,14 +1,15 @@
-           SPELL=SDL_gfx
+           SPELL=sdl_gfx
          VERSION=2.0.10
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=SDL_gfx-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/SDL_gfx-$VERSION
    SOURCE_URL[0]=http://www.ferzkopp.net/~aschiffler/Software/SDL_gfx-2.0/$SOURCE
           MD5[0]=a14505475b6f9498a228fa193cf0b4d9
         WEB_SITE=http://www.ferzkopp.net/Software/SDL_gfx-2.0/index.html
          ENTERED=20020112
          UPDATED=20020126
       LICENSE[0]=LGPL
-           SHORT="SDL_gfx is a high quality graphics library"
+       BUILD_API=2
+           SHORT="High quality SDL graphics library"
 cat << EOF
 The SDL_gfx library offers several components: Graphic Primitives,
 Rotozoomer, Framerate control, and MMX image filters. The Primitives

@@ -1,14 +1,15 @@
-           SPELL=ClientCookie
+           SPELL=clientcookie
          VERSION=0.4.2a
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://wwwsearch.sourceforge.net/$SPELL/src/$SOURCE
-        WEB_SITE=http://wwwsearch.sourceforge.net/ClientCookie/
+          SOURCE=ClientCookie-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ClientCookie-$VERSION
+   SOURCE_URL[0]=http://wwwsearch.sourceforge.net/ClientCookie/src/$SOURCE
           MD5[0]=e2e6e40d2a1b5d05dd18875c8e66a6b3
-      LICENSE[0]=MIT
+        WEB_SITE=http://wwwsearch.sourceforge.net/ClientCookie/
          ENTERED=20030419
          UPDATED=20030419
-           SHORT="ClientCookie is a Python library for handling HTTP cookies."
+      LICENSE[0]=MIT
+       BUILD_API=2
+           SHORT="Python library for handling HTTP cookies."
 cat << EOF
 ClientCookie is a Python module for handling HTTP cookies
 on the client side, useful for accessing web sites that

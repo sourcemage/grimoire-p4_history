@@ -1,15 +1,15 @@
-           SPELL=OpenThreads
+           SPELL=openthreads
          VERSION=1.2dev2
-          SOURCE=$SPELL-v$VERSION-osg0.9.5.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=$SOURCEFORGE_URL/openthreads/$SOURCE
+          SOURCE=OpenThreads-v$VERSION-osg0.9.5.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/OpenThreads
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]=94f7e531b8af67682cb0a7656f5058c1
-      LICENSE[0]=LGPL
         WEB_SITE=http://openthreads.sourceforge.net/
          ENTERED=20031208
          UPDATED=20031208
-           SHORT="a minimal & complete Object-Oriented thread interface for C++ programmers."
-
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="Minimal and complete Object-Oriented thread interface for C++ programmers"
 cat << EOF
 This library is intended to provide a minimal & complete Object-Oriented (OO) thread interface for C++ programmers.  It is loosely 
 modeled on the Java thread API, and the POSIX Threads standards.  The architecture of the library is designed around "swappable" 
@@ -26,5 +26,4 @@ structures, but give a uniform interface to the dso.
 It is the intent of the Open Thread Group that the interfaces (header files)  will be used to construct optimized implementations 
 using platform optimized multi-processing constructs such as the sproc methods used on IRIX & Windows (tm) threads on that Seattle 
 based platform.  There are currently concrete implementations using both POSIX and Mircrosoft Windows (tm) Threads in CVS.
- 
 EOF

@@ -1,14 +1,15 @@
-           SPELL=SDL_sound
+           SPELL=sdl_sound
          VERSION=1.0.0
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://icculus.org/$SPELL/downloads/$SOURCE
+          SOURCE=SDL_sound-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/SDL_sound-$VERSION
+   SOURCE_URL[0]=http://icculus.org/SDL_sound/downloads/$SOURCE
           MD5[0]=e89149388ad813aed69a9e4e0d14cbaa
-      LICENSE[0]=LGPL
         WEB_SITE=http://icculus.org/$SPELL
          ENTERED=20020209
          UPDATED=20020213
-           SHORT="SDL_sound is a library for decoding several sound formats."
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="SDL library for decoding several sound formats."
 cat << EOF
 SDL_sound is a library that handles the decoding of several popular
 sound file formats, such as .WAV and .MP3. It is meant to make the
