@@ -17,31 +17,31 @@ config_query  RESTORE  "restore config on rebuild/update?"  y
 message "${MESSAGE_COLOR}You should run newaliases after each aliases file update, and on first $spell cast...${DEFAULT_COLOR}"
 config_query  ALIAS    "run newaliases after cast?"  y
 
-if  spell_installed  mysql;  then
+if  spell_ok  mysql;  then
   config_query  MYSQL  "Add MySQL support?"  y
 else
   config_query  MYSQL  "Add MySQL support?"  n
 fi  &&
 
-if  spell_installed  linux-pam;  then
+if  spell_ok  linux-pam;  then
   config_query  PAM  "Add PAM support?"  y
 else
   config_query  PAM  "Add PAM support?"  n
 fi  &&
 
-if  spell_installed  openssl;  then
+if  spell_ok  openssl;  then
   config_query  SSL  "Add SSL support?"  y
 else
   config_query  SSL  "Add SSL support?"  n
 fi  &&
 
-if  spell_installed  openldap;  then
+if  spell_ok  openldap;  then
   config_query  LDAP  "Add LDAP support?"  y
 else
   config_query  LDAP  "Add LDAP support?"  n
 fi  &&
 
-if  spell_installed  cyrus-sasl;  then
+if  spell_ok  cyrus-sasl;  then
   config_query  SASL  "Add SASL support?"  y
 else
   config_query  SASL  "Add SASL support?"  n
