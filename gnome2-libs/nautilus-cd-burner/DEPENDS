@@ -6,7 +6,7 @@ depends  libglade2       &&
 depends  libgnome        &&
 depends  nautilus2       &&
 
-optional_depends "hal"
+optional_depends hal                           \
                  "--enable-hal"                \
-                 "--disable-hal"               \ 
+                 "--disable-hal"               \
                  "Enable cd detection via hal" 
