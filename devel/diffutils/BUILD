@@ -2,7 +2,7 @@
 
   ./configure  --build=$BUILD                \
                --prefix=${INSTALL_ROOT}/usr  \
-	       $OPTS                             &&
+               $OPTS                         &&
   make                                       &&
   prepare_install                            &&
   make    install
