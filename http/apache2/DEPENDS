@@ -13,7 +13,7 @@ optional_depends  db                                       \
                   '--disable-auth-db'                      \
                   'for DBM-based access databases support' &&
 
-optional_depends  openldap                                                                \
-                  ' --enable-auth-ldap  --enable-ldap    --with-auth-ldap    --with-ldap' \
-                  '--disable-auth-ldap --disable-ldap --without-auth-ldap --without-ldap' \
+optional_depends  openldap                                                        \
+                  '--enable-auth-ldap --enable-ldap --with-auth-ldap --with-ldap' \
+                  ''                                                              \
                   'for LDAP-based authentication'
