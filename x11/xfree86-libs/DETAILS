@@ -1,0 +1,28 @@
+           SPELL=xfree86-libs
+         VERSION=4.3.0
+        XVERSION=${VERSION//./}
+          SOURCE=X${XVERSION}src-1.tgz
+         SOURCE2=X${XVERSION}src-2.tgz
+         SOURCE3=X${XVERSION}src-3.tgz
+            FUZZ="off"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
+   SOURCE_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE
+  SOURCE2_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE2
+  SOURCE3_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE3
+          MD5[0]=90fd1261c1a70510a12fececedadf1a9
+          MD5[1]=b8a1c45dd8c59549e435111115a439d3
+          MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
+        WEB_SITE=http://www.xfree86.org/
+         ENTERED=20030908
+         UPDATED=20030909
+         LICENSE=XCL
+           SHORT="libs only from xfree86 project"
+    
+cat << EOF
+
+Builds (some) libraries only from xfree86 project, that might
+be neccesary to build some applications requiring X support, 
+without need to build whole X server (ie. j2sdk).
+
+EOF
+
