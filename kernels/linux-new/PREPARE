@@ -78,7 +78,7 @@ new_tree_menu()
 		if [ "$retval" == "0" ]
 		then
 			case "$kernelver" in
-				2.[0-9].[0-9]) 
+				2.[0-9].[0-9]*) 
 					echo "kver=\"$kernelver\"" >> $configfile
 					patch_menu $kernelver
 					;;
@@ -105,45 +105,41 @@ patch_list()
 			argv1=$1
 			;;
 	esac
-	. "$kernelsdir/$argv1"
-	if [ "$patches" != "" ]
-	then
-		for patch in $patches
-		do
-			tmp="LATEST_$patch"
-			if [ "${!tmp}" != "" ]
-			then
-				. $patchesdir/$patch/${!tmp}
-				for applied in $appliedkernels
-				do
-					if [ $applied == $argv1 ]
-					then
-						echo LATEST_$patch
-						echo $patchversion
-						echo $patch
-					fi
-				done
-			fi
-			patchvers="`ls -1 $patchesdir/${patch}`"
-			for patchver in $patchvers
+	patches="`ls -1 $patchesdir/`"
+	echo "Patch_Version"
+	echo "Info"
+	echo "List"
+	for patch in $patches
+	do
+		tmp="LATEST_$patch"
+		if [ "${!tmp}" != "" ]
+		then
+			. $patchesdir/$patch/${!tmp}
+			for applied in $appliedkernels
 			do
-				. $patchesdir/$patch/$patchver
-				for applied in $appliedkernels
-				do
-					if [ $applied == $argv1 ]
-					then
-						echo $patchver
-						echo Patch
-						echo $patch
-					fi
-				done
+				if [ $applied == $argv1 ]
+				then
+					echo LATEST_$patch
+					echo $patchversion
+					echo $patch
+				fi
+			done
+		fi
+		patchvers="`ls -1 $patchesdir/${patch}`"
+		for patchver in $patchvers
+		do
+			. $patchesdir/$patch/$patchver
+			for applied in $appliedkernels
+			do
+				if [ $applied == $argv1 ]
+				then
+					echo $patchver
+					echo Patch
+					echo $patch
+				fi
 			done
 		done
-	else
-		echo "No"
-		echo "Patches"
-		echo "Available"
-	fi
+	done
 }
 
 patch_menu() 
