@@ -1,0 +1,17 @@
+            SPELL=ax25-tools
+          VERSION=0.0.8
+           SOURCE=${SPELL}-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+    SOURCE_URL[0]=${SOURCEFORGE_URL}/ax25/${SOURCE}
+         WEB_SITE=http://ax25.sourceforge.net/
+          ENTERED=
+          UPDATED=
+          LICENSE=GPL
+              MD5=70172b979b38a9434f21d2e8152f0d5e
+            SHORT="Configuration tools for AX.25"
+       MAINTAINER="Andrew Stitt <afrayedknot@thefrayedknot.armory.com>"
+cat << EOF
+The tools are used to configure an ax.25 enabled computer. They will
+configure interfaces and assign callsigns to ports as well as Net/ROM
+and ROSE configuration.
+EOF
