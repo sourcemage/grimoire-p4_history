@@ -2,7 +2,7 @@ depends automake &&
 depends autoconf &&
 depends libmcrypt &&
 
-optional_depends Linux-PAM '--with-pam'      '--without-pam'     'support for PAM authentication' &&
+optional_depends linux-pam '--with-pam'      '--without-pam'     'support for PAM authentication' &&
 optional_depends openssl   '--with-openssl'  '--without-openssl' 'support for NTLM and OTP'       &&
 optional_depends krb5      '--enable-gssapi' '--disable-gssapi'  'support for Kerberos 5 GSSAPI'  &&
 
