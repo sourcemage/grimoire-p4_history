@@ -1,9 +1,9 @@
 function  make_menuconfig()  {
-  if  [  -r  $CONFIG_CACHE/kconfig-2.6.9-$1  ];  then
-    cp  $CONFIG_CACHE/kconfig-2.6.9-$1  linux-2.6.9-$1/.config
+  if  [  -r  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1  ];  then
+    cp  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1  linux-${XEN_KVER}-$1/.config
   fi  &&
-  make  -C  linux-2.6.9-$1/  menuconfig  ARCH=xen  &&
-  cp  linux-2.6.9-$1/.config  $CONFIG_CACHE/kconfig-2.6.9-$1 
+  make  -C  linux-${XEN_KVER}-$1/  menuconfig  ARCH=xen  &&
+  cp  linux-${XEN_KVER}-$1/.config  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1 
 }
 
 
@@ -13,8 +13,8 @@ patch  -p0  <  $SCRIPT_DIRECTORY/patch.make   &&
 patch  -p0  <  $SCRIPT_DIRECTORY/patch.make0  &&
 patch  -p0  <  $SCRIPT_DIRECTORY/patch.makeU  &&
  
-if  [  -r  $SOURCE_CACHE/linux-2.6.9.tar.bz2  ];  then
-  cp  $SOURCE_CACHE/linux-2.6.9.tar.bz2  .
+if  [  -r  $SOURCE_CACHE/linux-${XEN_KVER}.tar.bz2  ];  then
+  cp  $SOURCE_CACHE/linux-${XEN_KVER}.tar.bz2  .
 fi  &&
 
 make  patchkrn  &&

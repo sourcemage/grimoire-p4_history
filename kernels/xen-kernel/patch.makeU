@@ -1,6 +1,6 @@
---- buildconfigs/mk.linux-2.6-xenU~	2005-01-12 04:22:29.000000000 -0800
-+++ buildconfigs/mk.linux-2.6-xenU	2005-03-19 12:15:12.433348472 -0800
-@@ -9,16 +9,20 @@
+--- buildconfigs/mk.linux-2.6-xenU~	2005-03-10 11:52:16.000000000 -0800
++++ buildconfigs/mk.linux-2.6-xenU	2005-03-19 13:00:37.693046024 -0800
+@@ -9,16 +9,21 @@
  
  include buildconfigs/Rules.mk
  
@@ -14,11 +14,12 @@
 +$(INSTALL_DIR)/boot/vmlinuz-$(FULLVERSION):
  	if grep "^CONFIG_MODULES=" $(LINUX_DIR)/.config ; then \
  	    $(MAKE) -C $(LINUX_DIR) ARCH=xen modules ; \
- 	    $(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_MOD_PATH=$(INSTALL_DIR) modules_install ; \
+ 	    $(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_MOD_PATH=$(DESTDIR) modules_install ; \
  	fi
- 	$(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_PATH=$(INSTALL_DIR) install
+ 	$(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_PATH=$(DESTDIR) install
  
 +xenify: $(LINUX_DIR)/include/linux/autoconf.h
++
 +
  $(LINUX_DIR)/include/linux/autoconf.h: pristine-linux-$(LINUX_VER)
  	rm -rf $(LINUX_DIR)
