@@ -38,6 +38,11 @@ cd  $SOURCE_DIRECTORY                               &&
 patch  -p0  <  $SCRIPT_DIRECTORY/glibcshared.patch  &&
 patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.patch     &&
 
+# disabled libgd detection/building memusagestat for now until a better
+# fix has been found, bug #8277
+
+sedit  's/LIBGD=yes/LIBGD=no/'  $SOURCE_DIRECTORY/configure  &&
+
 #
 # Create the build directory
 #
