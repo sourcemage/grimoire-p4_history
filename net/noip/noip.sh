@@ -2,11 +2,11 @@
        case "$1" in
            start)
                echo "Starting noip."
-               /usr/bin/noip -c /etc/no-ip.conf
+               /usr/bin/noip2 -c /etc/no-ip2.conf
            ;;
            stop)
-               echo -n "Shutting down noip."
-               killall -TERM noip
+               echo "Shutting down noip."
+               killall -TERM noip2
            ;;
 	   restart)
 	       $0 stop
