@@ -2,7 +2,7 @@
 
 DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
-HELP="See http://kernel.kolivas.net
+HELP="See http://www.plumlocosoft.com/kernel/
 
 Contains:
  batch O(1) scheduler, preemptible, low latency
@@ -12,37 +12,45 @@ Contains:
  Supermount-NG
  XFS file system, Bootsplash, Grsec"
 
-VERSIONS="2.4.23-ck1"
+VERSIONS="2.4.24-ck1"
 
-MD5S[0]=ddc0d6fc327a6d12afb2c4c837070b51
+MD5S[0]=IGNORE
 
 CUSTOM=ck_custom
 CMENU=(\
-    "2.4.23-ckbase-0312022106"     "Base ck patch"          "Base ck contains the batch O(1) scheduler, preemptible, low latency and my interactivity patch" \
-    "2.4.23-ckbase-rl2-0312021358" "Read Latency 2"         "Read Latency 2" \
-    "2.4.23-rl2-rl2dt-0312022027"  "RL2 Desktop Tuning"     "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
-    "2.4.23-rl2dt-vhzj64-0312022318" "Variable HZ setting with 64bit jiffies"         "If you change the Hz, use a multiple of 100. There really is no point going above 1000 Hz." \
-    "2.4.23-vhzj64-sm1.2.10-0312022322" "Supermount-NG v1.2.10" "Supermount-NG v1.2.10" \
-    "2.4.23-sm1.2.10-bs3.0.7-0312022344" "Bootsplash"   "See http://www.bootsplash.org" \
-    "2.4.23-bs3.0.7-xfs1.3.1-0312030031" "XFS file system"   "This is possibly safer with preempt disabled. It may have unimportant patch reject with aavm but works ok." \
+    "010-ckbase"     "Base ck patch"          "Base ck contains the batch O(1) scheduler, preemptible, low latency and my interactivity patch" \
+    "011-readlatency2" "Read Latency 2"         "Read Latency 2" \
+    "012-rl2dt"  "RL2 Desktop Tuning"     "Changes to the default settings for I/O, Hz and scheduler tunables for optimum responsiveness & interactivity." \
+    "013-j64" "64bit jiffies"         "64bit jiffies" \
+    "014-vhz" "Variable HZ setting"         "If you change the Hz, use a multiple of 100. There really is no point going above 1000 Hz." \
+    "020-supermount-1.2.11" "Supermount-NG v1.2.11" "Supermount-NG v1.2.11" \
+    "021-bootsplash-3.0.7" "Bootsplash v3.0.7"   "See http://www.bootsplash.org" \
+    "030-xattr-0.8.65" "Filesystem extended attributes v0.8.65" "Support ACLs on ext2+" \
+    "031-acl-0.8.65" "POSIX ACLs v0.8.65" "Support POSIX-style ACLs" \
+    "032-nfsacl-0.8.65" "NFS ACL v0.8.65" "Support ACLs on NFS filesystems" \
+    "033-xfs-1.3.1" "XFS v1.3.1 file system"   "This is possibly safer with preempt disabled. It may have unimportant patch reject with aavm but works ok." \
    )
 
 CMD5=(\
-    "4976155c568264afc0b5b3739400dc41" \
-    "8018f69b3dbc1e17978e4d9368013020" \
-    "2895f109afa4847af70b3b1f8dfe477e" \
-    "df82eb06a58755a61cf15e724cc33b92" \
-    "521e75840ec2729b71b4108edd4dd626" \
-    "5db4cc3f8a8ed12bf9c6c8c425c9f424" \
-    "281e2031abe178fa8c3e3efbbfcb2578" \
+    "ce2d3d60ab16a679392fdac29237905e" \
+    "f86c2b4dc75a4ea43393f994ee9648f9" \
+    "d6b4fce1e865c3b45dad9fa0ffc2e137" \
+    "76a91cab53359635ef701adb7fcffbce" \
+    "b3cbffa9e437735a1381fbeb45cdd61c" \
+    "20d4156636e6159b657865481d15620c" \
+    "e4c80a79688aea8e9a0ea0fa7aac7f2b" \
+    "42d32c9c64d88df5e3a70f2d5e3d61a2" \
+    "aafe78c80b185b5bd805f32ece7e7c7f" \
+    "c60d524b13c817687b9b4caac737ed04" \
+    "1d685183d767481108b35b6fc0ee5e6f" \
    )
 
 if [[ "$1" == "CONFIG" ]]; then
   if [[ "${!PATCH}" == "custom" ]]; then
     for CPATCH in $CK_PATCH; do
       echo "
-SOURCE${COUNTER}=patch-${CPATCH}.bz2
-SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/2.4.23/2.4.23-ck1/split-out/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}=${CPATCH}.diff.bz2
+SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/${VERSIONS/-*/}/${VERSIONS}/components/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
     (ck_md5_custom $(( $COUNTER - 1 )) $CPATCH) >> ${SPELL_CONFIG}.DETAILS
     COUNTER=$(( $COUNTER + 1 ))
     done
@@ -50,7 +58,7 @@ SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/2.4.23/2.
   else
     echo "
 SOURCE${COUNTER}=patch-${!PATCH}.bz2
-SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/2.4.23/2.4.23-ck1/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}_URL[0]=http://www.plumlocosoft.com/kernel/patches/2.4/${VERSIONS/-*/}/${VERSIONS}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
     source $SCRIPT_DIRECTORY/MD5PATCH
   fi
 fi
