@@ -2,20 +2,6 @@
 
 [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
-# for config file install
-# where wine should create the windows directories
-# Should somehow allow the end user to set (in CONFIGURE perhaps?)
-CROOT=/usr/share/wine # C Drive
-AROOT=/mnt/floppy # Floppy Drive
-DROOT=/mnt/cdrom # CD-Rom Drive
-PREFIX=${INSTALL_ROOT}/usr
-SYSCONFDIR=${INSTALL_ROOT}/etc/wine
-LIBDIR=$PREFIX/lib
-BINDIR=$PREFIX/bin
-EXDIR=$SOURCE_DIRECTORY/documentation/samples
-WININI=/dev/null
-SYSTEMINI=$EXDIR/system.ini
-
 # fix config file
 # changes the Drive C to from /c to $CROOT 
 cd $EXDIR &&
@@ -23,11 +9,12 @@ cp config config.org
 sed -e "s:\"/c\":\"$CROOT\":g" \
 config.org > config &&
 cp config config.org
-sed -e "s:/mnt/fd0:$AROOT:g" \
+sed -e "s:\"/mnt/fd0\":\"$AROOT\":g" \
 config.org > config &&
 cp config config.org
-sed -e "s:/cdrom:$DROOT:g" \
+sed -e "s:\"/cdrom\":\"$DROOT\":g" \
 config.org > config &&
+
 
 cd $SOURCE_DIRECTORY &&
 # Actual compiling of source
@@ -53,7 +40,7 @@ cd $SOURCE_DIRECTORY &&
 # create directories
 function create_windows_directories {
     echo "creating windows directories"
-    for tdir in "$CROOT/windows" "$CROOT/windows/system" \
+    for tdir in "$CROOT" "$CROOT/windows" "$CROOT/windows/system" \
 	"$CROOT/windows/command" \
 	"$CROOT/windows/Start Menu" "$CROOT/windows/Start Menu/Programs" \
 	"$CROOT/Program Files" "$CROOT/Program Files/Common Files" \
@@ -89,20 +76,9 @@ function configure_wine_applications {
     link_app winhelp      "$CROOT/windows/winhlp32.exe"
 }
 
-
 create_windows_directories &&
 configure_wine_applications &&
 chgrp -R users $CROOT &&
-chmod -R g+w $CROOT &&
+chmod -R g+w $CROOT
 
-#for all normal users
-echo installing config files and registries
-for i in `grep home /etc/passwd|cut -d: -f1` "root"
-do
-if [ "$i" != "nobody" ] && [ "$i" != "ftp" ]
-then
-su -c "if ! [ -f ~/.wine/config ]; then echo creating $i config file; [ -d ~/.wine ] || mkdir ~/.wine;	cp $EXDIR/config ~/.wine/config; fi" $i
-su -c "if ! [ -f ~/.wine/system.reg ]; then echo creating $i registry; regedit $SOURCE_DIRECTORY/winedefault.reg; fi" $i
-fi
-done
 ) > $C_FIFO 2>&1

@@ -1,14 +1,14 @@
-           SPELL=wine
-         VERSION=20040213
-          SOURCE=Wine-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+           SPELL=Wine
+         VERSION=20040309
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/wine-$VERSION
    SOURCE_URL[0]=http://www.ibiblio.org/pub/Linux/ALPHA/wine/development/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/wine/$SOURCE
-          MD5[0]=77ee2cb313d7504e93f16dfb98fadace
-        WEB_SITE=http://www.winehq.com
+          MD5[0]=7f238290b8e80c6b015c457ce51c342a
+        WEB_SITE=http://www.winehq.com/
          ENTERED=20010925
          UPDATED=20020319
-         LICENSE=LGPL
+      LICENSE[0]=LGPL
            SHORT="wine runs some Windows 3.x and Windows 9x programs."
 cat << EOF
 Wine Is Not an Emulator. It is an alternative

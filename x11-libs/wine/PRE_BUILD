@@ -1,0 +1,19 @@
+# for config file install
+# where wine should create the windows directories
+# Should somehow allow the end user to set (in CONFIGURE perhaps?)
+#
+# for some reason if set in BUILD these do not carry over to POST_BUILD
+#
+CROOT=${INSTALL_ROOT}${CROOT} # C Drive
+AROOT=${INSTALL_ROOT}${AROOT} # Floppy Drive
+DROOT=${INSTALL_ROOT}${DROOT} # CD-Rom Drive
+PREFIX=${INSTALL_ROOT}/usr
+SYSCONFDIR=${INSTALL_ROOT}/etc/wine
+LIBDIR=$PREFIX/lib
+BINDIR=$PREFIX/bin
+EXDIR=$SOURCE_DIRECTORY/documentation/samples
+WININI=/dev/null
+SYSTEMINI=$EXDIR/system.ini
+
+mk_source_dir $SOURCE_DIRECTORY &&
+unpack $SOURCE ${MD5[0]}
