@@ -1,9 +1,9 @@
 my_build() {
   cd $BUILD_SUBDIRECTORY             &&
   ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
+               --prefix=${INSTALL_ROOT}/usr         \
+               --sysconfdir=${INSTALL_ROOT}/etc     \
+               --localstatedir=${INSTALL_ROOT}/var  \
                $OPTS                 &&
   make                               &&
   cd -

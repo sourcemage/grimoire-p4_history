@@ -24,12 +24,12 @@ export QTDIR=$SOURCE_DIRECTORY  &&
 #  fi  &&
 
   echo  "yes"  |  ./configure                      \
-                               -prefix /usr/lib/qt \
-                               -bindir /usr/bin    \
-                               -libdir /usr/lib    \
-                               -docdir /usr/doc/qt-x11 \
-                               -headerdir /usr/include/qt \
-                               -datadir /usr/share/qt \
+                               -prefix ${INSTALL_ROOT}/usr/lib/qt \
+                               -bindir ${INSTALL_ROOT}/usr/bin    \
+                               -libdir ${INSTALL_ROOT}/usr/lib    \
+                               -docdir ${INSTALL_ROOT}/usr/doc/qt-x11 \
+                               -headerdir ${INSTALL_ROOT}/usr/include/qt \
+                               -datadir ${INSTALL_ROOT}/usr/share/qt \
                                -thread             \
                                -qt-gif             \
                                -xft                \
@@ -39,7 +39,7 @@ export QTDIR=$SOURCE_DIRECTORY  &&
   prepare_install                                  &&
   make install                                     &&
 
-  ln -sf /usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
-  ln  -s  /usr/lib/libqt-mt.so  /usr/lib/libqt.so
+  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
+  ln  -s ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so
 
 ) > $C_FIFO 2>&1
