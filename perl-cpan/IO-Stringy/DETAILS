@@ -1,13 +1,14 @@
            SPELL=IO-Stringy
-         VERSION=2.108
+         VERSION=2.109
           SOURCE=IO-stringy-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/IO-stringy-$VERSION
    SOURCE_URL[0]=http://www.cpan.org/authors/id/ERYQ/$SOURCE
-          MD5[0]="141c8fb456f84013a920e329a768ad3f"
+          MD5[0]=4717eabe4b4aaa22aa00de9476577704
          LICENSE=ART
         WEB_SITE="http://search.cpan.org/search?dist=IO-stringy"
          ENTERED=20020428
          UPDATED=20020428
+       BUILD_API=2
       MAINTAINER=djcomputer@gmx.net
            SHORT="I/O on in-core objects like strings and arrays"
 cat << EOF
@@ -27,5 +28,4 @@ anything that's not a blessed object in an IO::Handle-like
 wrapper... so you can just use OO syntax and stop worrying
 about whether your function's caller handed you a string, a
 globref, or a FileHandle.
-
 EOF
