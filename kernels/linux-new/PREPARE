@@ -43,34 +43,33 @@ arch_default()
 # do this with every -r command
 create_defaults()
 {
+	arch_default
+	kernel_arch=$KERNEL_ARCH
+	persistent_add kernel_arch
+	persistent_add mode
+	persistent_add reconf
+	persistent_add kver
+	persistent_add patches
 	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
-		persistent_load
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
-		persistent_load
 	else
-		arch_default
-		kernel_arch=$KERNEL_ARCH
-		persistent_add kernel_arch
 		mode="newktree"
-		persistent_add mode
-		if [[ $RECONFIGURE ]]
-		then
-			reconf="true"
-		else
-			reconf="false"
-		fi
-		persistent_add reconf
+		reconf="true"
 		kver="LATEST_2_6"
-		persistent_add kver
 		patches=""
-		persistent_add patches
-		persistent_save
-		persistent_load
 	fi
+	if [[ $RECONFIGURE ]]
+	then
+		reconf="true"
+	else
+		reconf="false"
+	fi
+	persistent_save
+	persistent_load
 }
 
 # dialog command works even if you add --nocancel as part of the arguments
