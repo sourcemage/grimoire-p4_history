@@ -38,10 +38,10 @@ make  CFLAGS="${CFLAGS} -I../gl -I../include" demoprogs                \
 cd  kernel/svgalib_helper                                              &&
 if  [  `uname  -r  |  cut  -d.  -f1,2`  ==  "2.6"  ]
 then
-  message  "${MESSAGE_COLOR}Building 2.6 module...${DEFAULT_COLOR}"    &&
+  message  "${MESSAGE_COLOR}Building for 2.6...${DEFAULT_COLOR}"       &&
   make  clean  all
 else
-  message  "${MESSAGE_COLOR}Building 2.4 module...${DEFAULT_COLOR}"    &&
+  message  "${MESSAGE_COLOR}Building for 2.4...${DEFAULT_COLOR}"       &&
   env  -u  ARCH                                                        \
   make  -f  Makefile.alt INCLUDEDIR="/usr/src/linux/include"           \
   clean  all
