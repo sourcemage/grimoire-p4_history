@@ -9,12 +9,12 @@ if [ "$USECVS" == "yes" ];then
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
 else
-         VERSION=1.5.1.4481
+         VERSION=1.5.1.4500
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-#   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
 #   SOURCE_URL[0]=http://www.firebirdsql.org/download/prerelease/1.5.1/$SOURCE
-   SOURCE_URL[0]=http://firebird.sourceforge.net/download/prerelease/1.5.1/$SOURCE
-          MD5[0]=608d140afb5fbaca6549148e6c729de1
+#   SOURCE_URL[0]=http://firebird.sourceforge.net/download/prerelease/1.5.1/$SOURCE
+          MD5[0]=004a4acbe5d5bf92df70dcb595a420ca
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
 fi
         WEB_SITE=http://www.firebirdsql.org
