@@ -10,6 +10,7 @@
 
     cp  -r  musixflx  /usr/bin                              &&
     cp  -r  $SCRIPT_DIRECTORY/musixtex    /usr/bin          &&
+    cp  -r  $SCRIPT_DIRECTORY/musixtexrc  /etc              &&
     cp      $SCRIPT_DIRECTORY/musixtex.1.gz  /usr/man/man1  &&
     cp  -r  mf        $TEXMF/fonts/source/musixtex          &&
     cp  -r  tfm       $TEXMF/fonts/tfm/musixtex             &&

@@ -30,36 +30,22 @@
 #   2002-08-15:  
 #   Run TeX in batchmode
 #
-#
+#   2002-08-16:
+#   seperated display() into convert() & display()
+#   added support for external config file
+#   updated man page
 #
 ############################################################
-#
-#  You may need to customize the following
-#  
-############################################################
 
-# Program you use to convert dvi files 
-# leave this blank to view the dvi
-CONVERTER="/usr/bin/dvips"
-
-# Options to pass to your converter
-# if you use dvips put -o here
-CONVERTER_OPTIONS="-o"
-
-# Format your program converts to
-FORMAT="ps"
-
-# Program used to view the final output
-VIEWER="/usr/bin/gv"
-
-############################################################
-#
-#  Anything below here shouldn't need changing
-#  
-############################################################
-
-DEFAULT_COLOUR="\e[0m" 
-HEADER_COLOUR="\e[32m"
+if [ -e ${HOME}/.musixtexrc ]
+then
+    source ${HOME}/.musixtexrc
+    echo "using $HOME rc"    >>  $DEBUG   2>&1
+elif [ -e /etc/musixtexrc ]
+then
+    source /etc/musixtexrc
+    echo "using global rc"    >>  $DEBUG   2>&1
+fi
 
 VIEW="no"
 KEEP="no"
@@ -169,7 +155,10 @@ clean_up()
     then 
         echo "Cleaning"                       >>  $DEBUG   2>&1
         rm  -fv  $FILE.mx?                    >>  $DEBUG   2>&1
-        rm  -fv  $FILE.dvi                    >>  $DEBUG   2>&1
+        if [ "$CONVERTER" != "" ]
+        then
+            rm  -fv  $FILE.dvi                >>  $DEBUG   2>&1
+        fi
         rm  -fv  $FILE.log                    >>  $DEBUG   2>&1
         header "Cleaning slur files"          >>  $DEBUG   2>&1
         rm  -fv  $FILE.mp                     >>  $DEBUG   2>&1
@@ -223,19 +212,23 @@ third_pass()
     tex --interaction=batchmode $FILE         >>  $DEBUG   2>&1
 }
 
+convert() {
+    header "running convert()"
+    if [ "$CONVERTER" != "" ] 
+    then 
+        echo "converting file"                      >>  $DEBUG   2>&1
+        $CONVERTER $FILE.dvi $CONVERTER_OPTIONS     >>  $DEBUG   2>&1
+    else
+        echo "not converting file"                  >>  $DEBUG   2>&1
+    fi
+}
+
 display() { 
     header "running display()"                      >>  $DEBUG   2>&1
     echo "do you want to view the output?" $VIEW    >>  $DEBUG   2>&1
 
     if [ $VIEW = "yes" ]
     then
-        if [ -n $CONVERTER ] 
-        then 
-            echo "converting file"                      >>  $DEBUG   2>&1
-            $CONVERTER $FILE.dvi $CONVERTER_OPTIONS     >>  $DEBUG   2>&1
-        else
-            echo "not converting file"                  >>  $DEBUG   2>&1
-        fi
         if [ -n $VIEWER ]
         then
             echo "displaying file"                      >>  $DEBUG   2>&1
@@ -254,6 +247,7 @@ clean_up
 first_pass
 second_pass
 third_pass
+convert
 display
 clean_up
 
