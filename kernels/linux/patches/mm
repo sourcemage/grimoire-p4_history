@@ -2,16 +2,18 @@
 
 DESCRIPTION="Andrew Morton Patchset"
 SHORT="A comprehensive patchset that is usually more stable than the mainline 2.6.0-test kernel itself"
-HELP="See ${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/2.6/2.6.0-test5"
+HELP="See ${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/2.6/${!PATCH/-mm*/}"
 
-VERSIONS="2.6.0-test5-mm4"
+VERSIONS="2.6.0-test6-mm1
+2.6.0-test5-mm4"
 
-MD5S[0]="430db06e2d1560e7900fc753f6f91fcd"
+MD5S[0]="c74c729cf91d08ac1fc76d70059ec725"
+MD5S[1]="430db06e2d1560e7900fc753f6f91fcd"
 
 if [[ "$1" == "CONFIG" ]]; then
     echo "
 SOURCE${COUNTER}=${!PATCH}.bz2
-SOURCE${COUNTER}_URL[0]=\${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/2.6/2.6.0-test5/$VERSIONS/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+SOURCE${COUNTER}_URL[0]=\${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/2.6/${!PATCH/-mm*/}/${!PATCH}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
     source $SCRIPT_DIRECTORY/MD5PATCH
 fi
