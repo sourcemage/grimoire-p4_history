@@ -1,9 +1,9 @@
-depends  autoconf   &&
-depends  automake &&
+depends  autoconf  &&
+depends  automake  &&
 depends  kdebase   &&
-depends  ctags        &&
-depends  gdb          &&
-depends  db            &&
+depends  ctags     &&
+depends  gdb       &&
+depends  db        &&
 
 optional_depends  linuxdoc-tools     \
                   ""     \
@@ -65,7 +65,7 @@ optional_depends  bash                \
                   "--disable-bash"    \
                   "for bash support"  &&
 
-optional_depends  cvs                \
+optional_depends  CVS                \
                   "--enable-cvs"     \
                   "--disable-cvs"    \
                   "for CVS support"  &&
