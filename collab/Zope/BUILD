@@ -8,6 +8,9 @@
   python setup.py install \
     --home=$ZOPE_HOME \
     --install-platlib=$ZOPE_HOME \
-    --install-purelib=$ZOPE_HOME
+    --install-purelib=$ZOPE_HOME  &&
+
+  mkdir /usr/lib/zope/var  &&
+  chmod o+t /usr/lib/zope/var
 
 ) >$C_FIFO 2>&1
