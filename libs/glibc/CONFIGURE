@@ -1,3 +1,10 @@
+[ -z $HEADERS ] &&
+if query "The kernel headers glibc is built against should be \n\tcopied to /usr/include after a successful cast ?" y
+   then HEADERS=yes
+   else HEADERS=no
+fi &&
+echo HEADERS=$HEADERS >> $SPELL_CONFIG ;
+
 echo
 echo config: $SPELL_CONFIG
 echo

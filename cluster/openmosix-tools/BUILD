@@ -3,7 +3,7 @@
 	         --prefix=${INSTALL_ROOT}/usr         		\
                  --sysconfdir=${INSTALL_ROOT}/etc     		\
                  --localstatedir=${INSTALL_ROOT}/var  		\
-                 --with-kerneldir=${INSTALL_ROOT}/usr/src/linux \
+                 --with-kerneldir=/lib/modules/$(uname -r)/build/ \
                  $OPTS                 				&&
   make             						&&
   prepare_install  						&&
@@ -15,5 +15,5 @@
   done                                                          &&
   if [ -e /etc/init.d/openmosix ]
   then rm -f /etc/init.d/openmosix
-  fi
+  fi 
 ) > $C_FIFO 2>&1

@@ -1,3 +1,14 @@
+2003-12-14 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PRE_BUILD,BUILD,PREPARE,CONFIGURE: Optional nptl (if running 2.6 kernel)
+	* DETAILS: nptl build seems to need distcc turned off, in this case better safe than sorry 
+	* BUILD: glibc is happiest installing from a few symlinks to the new libraries. BUILD now makes symlinks after 
+	prepare_install (while the old libs are still preloaded by sorcery) then reruns ldconfig 
+	so only the new version and symbols are used. "make install" then adjusts all symlinks to point to the correct version.
+	Version updates, or even architecture updates  should never fail tests or segfault now, 
+	"make install" is using the newset libs already, 
+	* glibc-nptl-fix-asserts.patch: A patch so /lib/libc.so.6 will report version strings and compile stats 
+	correctly if nptl is built
+
 2003-12-01 Eric Sandall <eric@sandall.us>
 	* BUILD: Use INSTALL_ROOT
 

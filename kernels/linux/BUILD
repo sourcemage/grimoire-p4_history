@@ -1,4 +1,4 @@
-cd  ${INSTALL_ROOT}/usr/src/linux
+cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
 
 
 if  [[ -z $HOST ]]; then

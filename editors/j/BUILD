@@ -1,5 +1,5 @@
 ( 
-
+  . /etc/profile.d/java.sh              &&
   chmod +x configure mkinstalldirs      &&
 
   ./configure  --build=${BUILD}         \

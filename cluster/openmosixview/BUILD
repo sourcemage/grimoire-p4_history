@@ -3,7 +3,7 @@ for i in $(grep -rl CFLAGS= .);
 do sedit "s/CFLAGS\=-O2 -O0/& $CFLAGS /g" $i
 done
     prepare_install                          	&&
-ln -sfn /usr/src/linux/include/hpc /usr/include &&
+ln -sfn /lib/modules/$(uname -r)/build/include/hpc /usr/include &&
 export QTDIR=/usr                               &&
     ./setup					&&
     cd 3dmon					&&
