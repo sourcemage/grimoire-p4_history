@@ -1,0 +1,19 @@
+           SPELL=cherokee
+         VERSION=0.4.6
+          SOURCE=$SPELL-$VERSION-031013.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://alobbs.com/cherokee/$VERSION/$SOURCE
+   SOURCE_URL[1]=ftp://laurel.datsi.fi.upm.es/pub/linux/cherokee/$VERSION/$SOURCE
+          MD5[0]=91c96372c5a5b4d70318c8b931f15f56
+        WEB_SITE=http://www.0x50.org/
+      MAINTAINER=rycee@home.se
+      LICENSE[0]=GPL
+         ENTERED=20031027
+         UPDATED=20031027
+           SHORT="An ultrafast, lightweight Web server."
+cat << EOF
+Cherokee is a tiny, ultrafast, lightweight Web server. It is implemented
+entirely in C, and has no dependencies beyond a standard C library. It is
+embeddable, extensible with plug-ins, and supports on-the-fly configuration by
+reading files or strings.
+EOF
