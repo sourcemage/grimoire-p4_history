@@ -13,6 +13,8 @@
     export  ADAC=$SOURCE_DIRECTORY/smgl-gnat/bin/gcc
   fi  &&
 
+  # fix bug #7205
+  sedit  's:#!/bin/sh:#!/bin/bash:'  $SOURCE_DIRECTORY/configure  &&
   cd $SOURCE_DIRECTORY.bld                                &&
   $SOURCE_DIRECTORY/configure                             \
                --host=$HOST                               \
