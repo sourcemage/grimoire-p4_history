@@ -1,5 +1,5 @@
            SPELL=kde-i18n
-         VERSION=3.0.99
+         VERSION=3.1rc5
 get_kdelanguages()  {
   if ! [ -f $CONFIG_CACHE/kde.languages ]
   then
@@ -22,7 +22,7 @@ get_kdelanguages()  {
         then
           echo SOURCE=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages
           echo 
-SOURCE_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc3/src/\$SPELL/\$SOURCE >> 
+SOURCE_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc5/src/\$SPELL/\$SOURCE >> 
 $CONFIG_CACHE/kde.languages
         else
           echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages >> $CONFIG_CACHE/kde.languages
