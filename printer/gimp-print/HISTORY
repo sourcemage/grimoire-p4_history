@@ -1,129 +1,102 @@
-2003-10-04  Jason Flatt <jason@flattfamily.com>
+2003-10-20 Jason Flatt <jason@flattfamily.com>
+	* HISTORY: Reformatted this file based on new standard.
 
+2003-10-04 Jason Flatt <jason@flattfamily.com>
 	* POST_INSTALL: removed for no starting and stopping of services.
 
-2003-09-19  Jason Flatt <jason@flattfamily.com>
+2003-09-19 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated to version 4.2.6-pre2.
 
-		Updated to version 4.2.6-pre2.
+2003-05-19 Jason Flatt <jason@flattfamily.com>
+	* BUILD: Update for ${INSTALL_ROOT}.
 
-2003-05-19  Jason Flatt <jason@flattfamily.com>
+2003-05-04 Jason Flatt <jason@flattfamliy.com>
+	* DETAILS: Updated MAINTAINER e-mail address.
+	* HISTORY: Corrected HISTORY date for previous entry.
 
-		Update for ${INSTALL_ROOT}.
+2003-05-04 Jason Flatt <jason@flattfamliy.com>
+	* DEPENDS: Removed linuxdoc-tools from dependency list (bug #3040).
+	* DETAILS: Updated to version 4.2.6-pre1.
 
-2003-05-04  Jason Flatt <jason@flattfamliy.com>
+2003-04-04 Jason Flatt <jason@flattfamliy.com>
+	* DEPENDS: Removed dependency on gimp (bug #3006).
 
-		Updated MAINTAINER e-mail address.
-		Corrected HISTORY date for previous entry.
+2003-01-25 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump from 4.2.4 to 4.2.5 (w/MD5 correction).
 
-2003-05-04  Jason Flatt <jason@flattfamliy.com>
+2002-11-26 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump from 4.2.3 to 4.2.4 (w/MD5 correction).
 
-		Updated to version 4.2.6-pre1.
-		Removed linuxdoc-tools from dependency list (bug # 3040).
+2002-11-06 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump from 4.2.2 to 4.2.3 (w/MD5 correction).
 
-2003-04-04  Jason Flatt <jason@flattfamliy.com>
+2002-11-01 Jason Flatt <jasonflatt@wizard.com>
+	* POST_INSTALL: Modified to account for cups init script name change.
 
-		Removed dependency on gimp (bug # 3006).
+2002-10-14 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Modified to address bug # 1180.
 
-2003-01-25  Jason Flatt <jasonflatt@wizard.com>
+2002-10-07 Jason Flatt <jasonflatt@wizard.com>
+	* DEPENDS: Removed optional_depends for postscript-intperpreter for bug
+		#1180.
 
-		Version bump from 4.2.4 to 4.2.5 (w/MD5 correction).
+2002-09-16 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated version and MD5 to 4.2.2.
 
-2002-11-26  Jason Flatt <jasonflatt@wizard.com>
+2002-08-27 Jason Flatt <jasonflatt@wizard.com>
+	* DEPENDS: Changed to use postscript-interpreter.
+	* DETAILS: Changed SOURCE from .bz2 to .gz.
 
-		Version bump from 4.2.3 to 4.2.4 (w/MD5 correction).
+2002-08-21 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated MD5.
+	* HISTORY: Reformatted this file (again and for the last time).
 
-2002-11-06  Jason Flatt <jasonflatt@wizard.com>
+2002-08-15 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated MD5 to reflect new version.
 
-		Version bump from 4.2.2 to 4.2.3 (w/MD5 correction).
+2002-08-15 Jason Flatt <jasonflatt@wizard.com>
+	* Oops!  Clean up from testing.  (I must have left something in, but I
+		don't remember what.)
 
-2002-11-01  Jason Flatt <jasonflatt@wizard.com>
+2002-08-15 Jason Flatt <jasonflatt@wizard.com>
+	* Thanks to Tom Gardner for the heads up.  (Another poorly worded update
+		message.  I gotta stop doing that.)
 
-		Modified POST_INSTALL to account for cups init script name change.
+2002-08-02 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Changed LICENSE= and MD5= to LICENSE[x]= and MD5[x]=.
+	* HISTORY: Reformatted this file.
 
-2002-10-14  Jason Flatt <jasonflatt@wizard.com>
+2002-07-17 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated MD5 from previous version update.
 
-		Modified DETAILS to address bug # 1180.
-
-2002-10-07  Jason Flatt <jasonflatt@wizard.com>
-
-		Removed optional_depends for postscript-intperpreter for bug # 1180.
-
-2002-09-16  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated version and MD5 to 4.2.2.
-
-2002-08-27  Jason Flatt <jasonflatt@wizard.com>
-
-		Changed DEPENDS to use postscript-interpreter.
-		Changed SOURCE from .bz2 to .gz.
-
-2002-08-21  Jason Flatt <jasonflatt@wizard.com>
-
-		Reverted back to stable version 4.2.1 (my bad, 4.3.3 was devel version).
-		Reformatted this file (again and for the last time).
-		Updated MD5.
-
-2002-08-15  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated MD5 to reflect new version.
-
-2002-08-15  Jason Flatt <jasonflatt@wizard.com>
-
-		Oops!  Clean up from the test.
-
-2002-08-15  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated from version 4.2.2 to version 4.3.3.
-		Thanks to Tom Gardner for the heads up.
-
-2002-08-02  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated MD5 to be based on .tar rather than .tar.xxx.
-		Changed LICENSE= and MD5= to LICENSE[x]= and MD5[x]=.
-		Reformatted this HISTORY file.
-
-2002-07-17  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated MD5 from previous version update.
-
-2002-07-04  Jason Flatt <jasonflatt@wizard.com>
-
-		Modified SOURCE_URL[0] to use $SOURCEFORGE_URL variable.
+2002-07-04 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Modified SOURCE_URL[0] to use $SOURCEFORGE_URL variable.
 		Removed SOURCE_URL[1] and SOURCE_URL[2].
 
-2002-06-28  Jason Flatt <jasonflatt@wizard.com>
+2002-06-28 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump to 4.2.2-pre2.
 
-		Version bump to 4.2.2-pre2.
+2002-06-22 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Added LICENSE and MD5 to DETAILS.
 
-2002-06-22  Jason Flatt <jasonflatt@wizard.com>
+2002-06-10 Jason Flatt <jasonflatt@wizard.com>
+	* USEGCC2: Removed as it compiles w/gcc 3.1 and executes.
 
-		Added LICENSE and MD5 to DETAILS.
+2002-05-29 Jason Flatt <jasonflatt@wizard.com>
+	* USEGCC2: Added in preparation for gcc3 upgrade.
 
-2002-06-10  Jason Flatt <jasonflatt@wizard.com>
+2002-05-08 Jason Flatt <jasonflatt@wizard.com>
+	* HISTORY: Reformatted to conform to new template.
 
-		Removed USEGCC2 as it compiles w/gcc 3.1 and executes.
+2002-05-07 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated SOURCE_URLs to reflect SourceForge mirror change.
 
-2002-05-29  Jason Flatt <jasonflatt@wizard.com>
+2002-05-01 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Changed version from 4.2.0 to 4.2.1.  Updated long description
+		for improved readability.
+	* HISTORY: Corrected this file.
+	* POST_INSTALL: Changed spell-installed to spell_installed.
 
-		Added USEGCC2 file in preparation for gcc3 upgrade.
-
-2002-05-08  Jason Flatt <jasonflatt@wizard.com>
-
-		Reformatted HISTORY file to conform to new template.
-
-2002-05-07  Jason Flatt <jasonflatt@wizard.com>
-
-		Updated SOURCE_URLs to reflect SourceForge mirror change.
-
-2002-05-01  Jason Flatt <jasonflatt@wizard.com>
-
-		Changed version from 4.2.0 to 4.2.1.
-		Changed spell-installed to spell_installed in POST_INSTALL.
-		Corrected this HISTORY file.
-		Updated long description for improved readability.
-
-2002-03-24  Jason Flatt <jasonflatt@wizard.com>
-
-		Added this History file.
-		Added MAINTAINER=jasonflatt@wizard.com to DETAILS file.
-		Changed gimp from optional_dependency to required.
+2002-03-24 Jason Flatt <jasonflatt@wizard.com>
+	* DEPENDS: Changed gimp from optional_dependency to required.
+	* HISTORY: Added this file.
