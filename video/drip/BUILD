@@ -1,5 +1,6 @@
 (
 
+  sedit 's/`Magick-config --libs`/`Magick-config --ldflags` `Magick-config --libs`/' configure  &&
   cd  mpeg2dec-0.3.1  &&
   ./configure --without-x --disable-sdl --prefix=$SOURCE_DIRECTORY/libmpeg2  &&
   make  &&
