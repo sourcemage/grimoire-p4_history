@@ -1,37 +1,38 @@
-#!/bin/sh
-#
-# SMGL-script-version=20030527
-# SMGL-START:S 3 4 5:S40
-# SMGL-STOP:0 1 2 6:K60
-
-source /etc/init.d/functions
-
-case $1 in
-  start)
-    echo 'Starting Jabber Daemon...'
-    /usr/bin/jabberd -D &
-    evaluate_retval
-    ;;
-  stop)
-    echo 'Stopping Jabber Daemon - C2S...'      && killproc c2s
-    echo 'Stopping Jabber Daemon - SM...'       && killproc sm
-    echo 'Stopping Jabber Daemon - Resolver...' && killproc resolver
-    echo 'Stopping Jabber Daemon - Router...'   && killproc router
-    ;;
-  restart)
-    $0 stop
-    /usr/bin/sleep 1
-    $0 start
-    ;;
-  status)
-    statusproc router
-    statusproc resolver
-    statusproc sm
-    statusproc c2s
-    ;;
-  *)
-    echo 'Jabber Daemon control script $Revision$'
-    echo "Usage: $0 {start|stop|restart|status}"
-    exit 1
-    ;;
-esac
+#!/bin/bash
+ 
+. /etc/sysconfig/apache
+ 
+PROGRAM=/bin/false
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
+PIDFILE=/dev/null
+ 
+. /etc/init.d/smgl_init
+ 
+start()
+{
+  echo 'Starting Jabber Daemon...'
+  /usr/bin/jabberd -D &
+  evaluate_retval
+}
+ 
+stop()
+{
+  echo 'Stopping Jabber Daemon - C2S...'      && killproc c2s     ; evaluate_retval
+  echo 'Stopping Jabber Daemon - SM...'       && killproc sm      ; evaluate_retval
+  echo 'Stopping Jabber Daemon - Resolver...' && killproc resolver; evaluate_retval
+  echo 'Stopping Jabber Daemon - Router...'   && killproc router  ; evaluate_retval
+}
+ 
+status()
+{
+  getpids router  ; [ -n "$pidlist" ] && echo 'Jabber C2S process ID(s): $pidlist'
+  getpids resolver; [ -n "$pidlist" ] && echo 'Jabber SM  process ID(s): $pidlist'
+  getpids sm      ; [ -n "$pidlist" ] && echo 'Jabber Res process ID(s): $pidlist'
+  getpids c2s     ; [ -n "$pidlist" ] && echo 'Jabber Rtr process ID(s): $pidlist'
+}
+ 
+reload()
+{
+  run_func restart
+}
