@@ -12,9 +12,8 @@
   chmod 755 showfigfonts  &&
 
   prepare_install         &&
-  mkdir  -p  /usr/games   &&
-  make install            &&
-  chown  -R  root.games   \
-             /usr/games
+  install  -d  -o  games  \
+   -m  775  /usr/games    &&
+  make install
 
 ) > $C_FIFO 2>&1
