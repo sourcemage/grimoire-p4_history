@@ -27,10 +27,11 @@ fake_redhat()  {
   make    install                    &&
 
 
-  if  [  !  -e  /usr/share/cups/model/cupsomatic  ];  then
-    cp  /var/spool/sorcery/cupsomatic  /usr/share/cups/model/
+  if  [  !  -e  /usr/lib/cups/filter/cupsomatic  ];  then
+    cp  /var/spool/sorcery/cupsomatic  /usr/lib/cups/filter/
   fi
 
+  chmod  755  /usr/lib/cups/filter/cupsomatic
 
   if  [  "`gaze  installed  |  grep  samba  |  cut  -d:  -f1`"  =  "samba"  ];  then
     if  !  [  -L  /usr/lib/cups/backend/smb  ];  then
