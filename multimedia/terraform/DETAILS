@@ -2,10 +2,12 @@
          VERSION=0.9.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/terraform/$SOURCE
+SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
         WEB_SITE=http://terraform.sourceforge.net/
          ENTERED=20020429
-         UPDATED=20020429
+         UPDATED=20020510
            SHORT="Interactive digital terrain (height field) editor/viewer."
 cat << EOF
 Terraform allows you to create fractal terrain (also called a 
