@@ -3,7 +3,7 @@
    cd  $SOURCE_DIRECTORY/include  &&
    chmod -R +r *                  &&
    find . -type d -exec chmod +x '{}' ';'  &&
-   patch  linux/config.h  $SCRIPT_DIRECTORY/error-warning.patch
+   patch  -p2  <  $SCRIPT_DIRECTORY/header-fixes.patch
  fi
  if [[ $(uname -m) == *86_64 ]]; then
  ARCH=x86_64
