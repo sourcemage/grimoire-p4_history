@@ -1,5 +1,7 @@
 2004-12-14 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Depends on g++
+	* PRE_BUILD: Apply g++ removal patch:
+	* g++.patch.bz2: Remove g++ checks from configure, otherwise
+	  this fails without g++ installed (stupid packagers!)
 
 2004-11-16 Unet <audio@sourcemage.org>
 	* DETAILS: 1.0.7 bump
