@@ -1,14 +1,36 @@
            SPELL=licq
+if [ "$CVS" = "yes" ]; then
+		 VERSION=$(date +%Y%m%d)
+		  SOURCE=$SPELL-cvs.tar.bz2
+		 SOURCE2=$SPELL-data-cvs.tar.bz2
+		 SOURCE3=$SPELL-plugins-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq
+  SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq-data
+  SOURCE3_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq-plugins
+          MD5[0]=IGNORE
+          MD5[1]=IGNORE
+          MD5[2]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
          VERSION=1.2.7
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.sourceforge.net/licq/$SOURCE
+          MD5[0]=55141499ea1feda48330718434448362
+fi
+if [ "$XOSD" = "yes" ]; then
+		 SOURCE4_NAME=osd
+		 SOURCE4_VERSION=1.2.7.5
+		 SOURCE4=$SOURCE4_NAME-$SOURCE4_VERSION.tgz
+          MD5[3]=365463c0482093e0ab171dd7baff62c5
+  SOURCE4_URL[0]=${SOURCEFORGE_URL}/licq-osd/${SOURCE4}
+fi
         WEB_SITE=http://www.licq.org
       MAINTAINER=adamsgl@dhbit.ca
          ENTERED=20011031
-         UPDATED=20020211
+         UPDATED=20040622
       LICENSE[0]=GPL
-          MD5[0]=55141499ea1feda48330718434448362
            SHORT="Licq is a featured icq client for Unix systems"
 cat << EOF
 Licq includes all the basic features of ICQ, like sending/receiving
