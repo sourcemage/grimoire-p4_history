@@ -4,6 +4,8 @@ export CC=gcc   			              &&
                --host=$BUILD                          \
                --prefix=${INSTALL_ROOT}/usr           \
                --sysconfdir=${INSTALL_ROOT}/etc       \
+               --infodir=${INSTALL_ROOT}/usr/share/info \
+               --mandir=${INSTALL_ROOT}/usr/share/man   \
                --with-included-gettext                \
                --includedir=${INSTALL_ROOT}/usr/local/include \
                $OPTS                                  &&
