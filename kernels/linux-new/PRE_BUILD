@@ -1,11 +1,10 @@
 
 if [[ "$mode" == "newktree" ]]
 then
-	mk_source_dir $SOURCE_DIRECTORY 
-
-	cd ${SOURCE_DIRECTORY}
-	unpack $SOURCE ${MD5[0]}
-	cd linux-${KERNEL_VERSION}
+	mk_source_dir $SOURCE_DIRECTORY &&
+	cd $SOURCE_DIRECTORY &&
+	unpack $SOURCE ${MD5[0]} &&
+	mv ./*/* ./
 	
 	. ${SCRIPT_DIRECTORY}/functions
 	. ${SCRIPT_DIRECTORY}/latest.defaults
@@ -20,32 +19,30 @@ then
 		esac
 		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
-		cp ${INSTALL_ROOT}/${SOURCE_CACHE}/${source} ./
+		cp ${SOURCE_CACHE}/${source} ./
 		linux_new_uncompress ./${source}
 		echo "Patching ${patch}"
 		sleep 3
 		patch -p${pval} <${patch}
 	done
 	make mrproper
-	mk_source_dir ${LINUX_SOURCE_DIRECTORY}
-	mv ./* ${LINUX_SOURCE_DIRECTORY}/
 elif [[ "$mode" == "oldktree" ]]
 then
-	LINUX_SOURCE_DIRECTORY=$old_src_tree
-	export LINUX_SOURCE_DIRECTORY
+	echo "mode is oldktree"
 else
 	echo "I don't know what $mode is"
 	return 1
 fi
-cd ${LINUX_SOURCE_DIRECTORY}
+cd ${SOURCE_DIRECTORY}
 
-if [[ "$reconf" == "true" || ! -f ./.config ]]
+if [[ $COMPILE ]]
 then
-	if [[ $COMPILE ]]
-	then
-		make mrproper
-	fi
-	cp ${CONFIG_CACHE}/kernel.config ./.config
+	make mrproper
+fi
+cp ${CONFIG_CACHE}/kernel.config ./.config
+
+if [[ "$reconf" == "true" ]]
+then
 	ARCH=${kernel_arch} make $MAKEMODE
 	cp ./.config ${CONFIG_CACHE}/kernel.config
 

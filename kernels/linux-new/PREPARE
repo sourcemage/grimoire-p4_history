@@ -594,6 +594,7 @@ calculate_depends()
 {
 	# really this should be done with a make file
 	new_patch_list=""
+	rnew_patch_list=""
 	for patch in $patches
 	do
 		case "$patch" in
@@ -601,6 +602,7 @@ calculate_depends()
 				. $patchesdir/*/${!patch}
 				if [ "$depends" != "" ]
 				then
+					rnew_patch_list="${depends} ${rnew_patch_list}"
 					new_patch_list="${new_patch_list}${depends} "
 				fi
 				;;
@@ -608,10 +610,12 @@ calculate_depends()
 				. $patchesdir/*/${patch}
 				if [ "$depends" != "" ]
 				then
+					rnew_patch_list="${depends} ${rnew_patch_list}"
 					new_patch_list="${new_patch_list}${depends} "
 				fi
 				;;
 		esac
+		rpatches="${patch} ${rnew_patch_list}"
 		patches="${new_patch_list}${patch} "
 	done
 }
@@ -626,9 +630,14 @@ create_details()
 		*ktree)
 			(
 			#this might be cool if it didn't take more than what's up there.
-			#calculate_depends
-			for patch in $patches
+			calculate_depends
+			depends=""
+			for patch in $rpatches
 			do
+				if [ "$depends" != "" ]
+				then
+					patch=$depends
+				fi
 				case "$patch" in
 					LATEST*)
 						. $patchesdir/*/${!patch}
@@ -642,30 +651,37 @@ create_details()
 						;;
 					*)
 						. $patchesdir/*/${patch}
-						echo "PATCH[${counter}]=${patchversion}"
-						echo "SOURCE${counter}=$source"
-						echo "MD5[${counter}]=$md5sum"
-						echo "SOURCE${counter}_URL=$source_url"
+						echo "PATCH[${counter}]=${patch}"
+						echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
+						echo -n $counter
+						echo ']}'
+						echo "SOURCE${counter}=\$source"
+						echo "MD5[${counter}]=\$md5sum"
+						echo "SOURCE${counter}_URL=\$source_url"
 						;;
 				esac
 				counter="`expr $counter + 1`"
 			done
-
+			if [[ $appliedkernels ]]
+			then
+				kver="appliedkernels"
+			fi
                         case "$kver" in
-				LATEST*)
-					. $kernelsdir/${!kver}
-					echo "KERNEL_VERSION=\$$kver"
+				2.[0-9]*)
+					. $kernelsdir/${kver}
+					echo "KERNEL_VERSION=$kver"
 					echo '. ${SCRIPT_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
 					;;
 				*)
-					. $kernelsdir/${kver}
-					echo "KERNEL_VERSION=$kver"
-					echo "SOURCE=$source"
-					echo "MD5[0]=$md5sum"
-					echo "SOURCE_URL=$source_url"
+					. $kernelsdir/${!kver}
+					echo "KERNEL_VERSION=\$$kver"
+					echo '. ${SCRIPT_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo "SOURCE=\$source"
+					echo "MD5[0]=\$md5sum"
+					echo "SOURCE_URL=\$source_url"
 					;;
 			esac
 			if [[ $patchversion == "" ]]
@@ -681,7 +697,16 @@ create_details()
 			else
 				append=$patchversion
 			fi
-			echo "SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
+			if [[ "$mode" == "newktree" ]]
+			then
+				echo "SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
+			elif [[ "$mode" == "oldktree" ]]
+			then
+				echo "SOURCE_DIRECTORY=$old_src_tree"
+			else
+				echo "AHHH what the hell is $mode"
+				return 1
+			fi
 			) > $detailsdefaults
 			;;
 #		oldktree)

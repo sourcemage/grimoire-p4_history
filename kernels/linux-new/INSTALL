@@ -1,8 +1,8 @@
 
-cd ${LINUX_SOURCE_DIRECTORY}
+cd ${SOURCE_DIRECTORY}
 
 # make the append
-append="`echo ${LINUX_SOURCE_DIRECTORY} | awk -F'/' '{ print $NF }'`"
+append="`echo ${SOURCE_DIRECTORY} | awk -F'/' '{ print $NF }'`"
 append="`echo $append | awk -F'-' '{ for(i=2; i <= NF; i++)
 					{
 						printf("%s", $i);
@@ -67,4 +67,5 @@ ln -sf ${INSTALL_ROOT}/boot/config-${append} \
 	${INSTALL_ROOT}/boot/config
 
 cd ${BUILD_DIRECTORY}
-ln -sfn ${LINUX_SOURCE_DIRECTORY} linux
+rm linux
+ln -sfn `basename ${SOURCE_DIRECTORY}` linux
