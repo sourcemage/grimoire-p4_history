@@ -26,59 +26,16 @@ fi
 start()
 {
   for DEVICE in $devices ; do
-    [ "$DEVICE" = "lo" ]            && continue     # handled in hostname.sh
-    [ ! -f $netdevdir/$DEVICE.dev ] && continue
-
-    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
-
-    . $netdevdir/$DEVICE.dev
-
-    # We only handle static interfaces
-    [ "$MODE" != "static" ]  &&  continue
-
-    # Only load module if necessary; i.e. not built into kernel.
-    if [ "$MODULE" ] ; then
-      echo "Loading module $MODULE..."
-      modprobe  $MODULE
-      evaluate_retval
-    fi
-
-    echo "Configuring network interface $DEVICE..."
-    ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
+    /sbin/ifup $DEVICE
     evaluate_retval
-
-    # Check if GATEWAY is set; gateway is set by PPP or other software in some
-    # cases.
-    if [ "$GATEWAY" ] ; then
-      echo "Setting up gateway for interface $DEVICE..."
-      route add default gateway $GATEWAY dev $DEVICE
-      evaluate_retval
-    fi
   done
 }
 
 stop()
 {
   for DEVICE in $devices ; do
-    [ "$DEVICE" = "lo" ]            && continue     # handled in hostname.sh
-    [ ! -f $netdevdir/$DEVICE.dev ] && continue
-
-    unset MODE MODULE IP BROADCAST NETMASK GATEWAY
-
-    . $netdevdir/$DEVICE.dev
-    
-    [ "$MODE" != "static" ] && continue
-
-    echo "Shutting down network interface $DEVICE..."
-    ifconfig $DEVICE down
+    /sbin/ifdown $DEVICE
     evaluate_retval
-
-    # Only do this if network device is a module.
-    if [ "$MODULE" ] ; then
-      echo "Unloading module $MODULE..."
-      modprobe -r $MODULE
-      evaluate_retval
-    fi
   done
 }
 
@@ -92,9 +49,19 @@ status()
     if [ -z "$MODE" ] ; then
       echo " There are errors in $netdevdir/$DEVICE.dev"
     else
-      [ "$MODE" = "status" ] && ifconfig $DEVICE
+      if [ "$MODE" = dynamic ]; then
+        statusproc dhcpcd
+      fi
+      ifconfig $DEVICE
     fi
   done
+}
+
+restart()
+{
+  $0 stop
+  sleep 1
+  $0 start
 }
 
 reload() { exit 3; }
