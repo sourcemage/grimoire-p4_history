@@ -1,6 +1,6 @@
-UNTOUCHABLES=/var/lib/sorcery/sustained
-PACKAGELOG=/var/state/sorcery/packages
-ON_GOING_WORK=/var/lib/sorcery/protected
+UNTOUCHABLES=${INSTALL_ROOT}/var/lib/sorcery/sustained
+PACKAGELOG=${INSTALL_ROOT}/var/state/sorcery/packages
+ON_GOING_WORK=${INSTALL_ROOT}/var/lib/sorcery/protected
 KIT_KABOODLE=$INSTALL_LOGS
 message "${QUERY_COLOR}cleaning conflicting files from fileutils, textutils and sh-utils${DEFAULT_COLOR}"
 for i in fileutils textutils sh-utils;
