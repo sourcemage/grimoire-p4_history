@@ -4,7 +4,7 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/$SPELL/$SOURCE
-   SOURCE_URL[2]=ftp://ftp.gtk.org/pub/gtk-doc/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.gtk.org/pub/gtk-doc/${SOURCE/bz2/gz}
         WEB_SITE=http://www.gtk.org/rdp
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
