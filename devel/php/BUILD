@@ -9,15 +9,11 @@
     OPTS="$OPTS --with-apxs"
   fi &&
 
-  if [ "$php_SAFEMODE" == "y" ]; then
-    OPTS="$OPTS --enable-safe-mode"
-  fi &&
-
   ./configure                          \
-    --prefix=/usr                      \
-    --sysconfdir=/etc                  \
-    --with-exec-dir=/usr/bin           \
-    --with-config-file-path=/etc       \
+    --prefix=${INSTALL_ROOT}/usr                      \
+    --sysconfdir=${INSTALL_ROOT}/etc                  \
+    --with-exec-dir=${INSTALL_ROOT}/usr/bin           \
+    --with-config-file-path=${INSTALL_ROOT}/etc       \
     --enable-cli                       \
     --disable-static                   \
     --disable-debug                    \
@@ -29,7 +25,6 @@
     --enable-sysvsem                   \
     --enable-sysvshm                   \
     --enable-force-cgi-redirect        \
-    --enable-yp                        \
     --enable-ftp                       \
     --enable-wddx                      \
     --enable-filepro                   \
@@ -44,8 +39,8 @@
   make                                 &&
   prepare_install                      &&
   make    install                      &&
-  if         ! [ -e /etc/php.ini ]; then
-    cp php.ini-dist /etc/php.ini
+  if         ! [ -e ${INSTALL_ROOT}/etc/php.ini ]; then
+    cp php.ini-dist ${INSTALL_ROOT}/etc/php.ini
   fi
 
 ) >$C_FIFO 2>&1
