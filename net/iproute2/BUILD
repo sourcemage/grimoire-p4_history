@@ -1,12 +1,18 @@
 ./configure  &&
 
-if gcc -include linux/in.h -E - < /dev/null | grep -q IPPROTO_SCTP ; then
+if gcc -include netinet/in.h -E - < /dev/null | grep -q IPPROTO_SCTP ; then
   echo "" > sctpfix.h
 else
-  echo "enum { IPPROTO_SCTP = 132 };" > sctpfix.h
+  cat << EOF > sctpfix.h
+enum { IPPROTO_SCTP = 132 };
+#define IPPROTO_SCTP               IPPROTO_SCTP
+EOF
 fi &&
 
 sedit "s!^CFLAGS =!& -include ${PWD}/sctpfix.h !" Makefile &&
+
+# this fixes the makefile to not strip shell scripts *sigh*
+patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch &&
 
 make         &&
 
