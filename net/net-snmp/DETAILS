@@ -2,14 +2,11 @@
          VERSION=5.0.5
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[3]=ftp://ftp.freesnmp.org/mirrors/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://www.net-snmp.org
          ENTERED=20011108
          UPDATED=20021007
-             MD5=c608f01107b5922a7bca1cb05240870a
+             MD5=77e428bcca46d0870cd6f723da4e9744
 		 LICENSE=UNKNOWN
            SHORT="Net-SNMP SNMP agent, libraries and utilities"
 cat << EOF
