@@ -1,5 +1,5 @@
 (
-  bunzip2 -dc $SCRIPT_DIRECTORY/kdemultimedia-kernelheaders.patch.bz2 | patch -p1 
+#  bunzip2 -dc $SCRIPT_DIRECTORY/kdemultimedia-kernelheaders.patch.bz2 | patch -p1 
 
   ./configure  --prefix=${INSTALL_ROOT}/usr        \
                --sysconfdir=${INSTALL_ROOT}/etc    \
