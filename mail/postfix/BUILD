@@ -2,10 +2,10 @@ create_account  postfix   &&
 create_account  postdrop  &&
 create_account  mail      &&
  
-mkdir  -p         ${INSTALL_ROOT}/var/spool/mail    &&
-chmod  1777       ${INSTALL_ROOT}/var/spool/mail    &&
-chown  mail:mail  ${INSTALL_ROOT}/var/spool/mail    &&
-chgrp  mail       ${INSTALL_ROOT}/var/spool/mail/*  &&
+mkdir  -p         ${INSTALL_ROOT}/var/spool/mail  &&
+chmod  1777       ${INSTALL_ROOT}/var/spool/mail  &&
+chown  mail:mail  ${INSTALL_ROOT}/var/spool/mail  &&
+chgrp  -R  mail   ${INSTALL_ROOT}/var/spool/mail  &&
 
 if  [  "$LDAP"  ==  "y"  ];  then
   AUXLIBS="-lldap -llber"  &&
