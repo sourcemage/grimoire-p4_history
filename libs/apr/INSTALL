@@ -1,0 +1,19 @@
+NEEDED_BUILD_FILES="apr_common.m4 config.guess config.sub find_apr.m4 install.sh make_exports.awk make_var_export.awk mkdir.sh PrintPath"
+default_install &&
+case "$APR_VERSION" in
+	1.*)
+		for file in $NEEDED_BUILD_FILES
+		do
+			cp -v ./build/$file /usr/local/apr/build-1/
+		done
+		[ -d /usr/share/apache2/build ] && rm -rvf /usr/share/apache2/build
+		ln -fns build-1 /usr/share/apache2/build &&
+		ln -fns apr-1-config /usr/bin/apr-config
+	;;
+	*)
+		for file in $NEEDED_BUILD_FILES
+		do
+			cp -v ./build/$file /usr/share/apache2/build/
+		done
+	;;
+esac
