@@ -1,6 +1,6 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/tar-1.13.bzip2.patch
+  patch  -p1  <  $SCRIPT_DIRECTORY/dotdotpatch.diff
 
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
