@@ -1,5 +1,5 @@
 if  spell_ok  gconf2;  then
-   if  !  grep  -q  "python:expat:on:optional:"  $DEPENDS_STATUS;  then
+   if  !  grep  -q  "gconf2:gtk+2:on:optional:"  $DEPENDS_STATUS;  then
       message  "${PROBLEM_COLOR}gconf2 is not cast with gtk+2 enabled."  \
                "Please recast gconf2 and enable the gtk+2 optional"      \
                "depends.${DEFAULT_COLOR}"
