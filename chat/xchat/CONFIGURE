@@ -1,0 +1,8 @@
+if  !  grep  -q  "IPV6="  $SPELL_CONFIG;  then
+
+  if    query  "Enable IPV6 for xchat?" n
+  then  echo   "IPV6=y"  >>  $SPELL_CONFIG
+  else  echo   "IPV6=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

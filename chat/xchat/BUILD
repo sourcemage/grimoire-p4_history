@@ -1,5 +1,10 @@
 (
 
+  case $IPV6 in
+    y|Y) OPTS="$OPTS --enable-ipv6"
+         ;;
+  esac
+
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \
