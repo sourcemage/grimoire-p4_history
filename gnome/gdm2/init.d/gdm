@@ -15,13 +15,13 @@ PROVIDES=display_manager
 . /etc/init.d/smgl_init
 
 case  $1  in
-          start)  echo "$1ing gdm"
+          start)  echo "Starting gdm ..."
                   gdm
                   evaluate_retval
                   ;;
 
-           stop)  echo "$1ping gdm"
-                  pkill  "^gdm*"
+           stop)  echo "Stopping gdm ..."
+                  kill `cat /var/run/gdm.pid`
                   evaluate_retval
                   ;;
 
