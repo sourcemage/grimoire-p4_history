@@ -1,0 +1,23 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+  if      query  "Support NLS?" y
+    then  echo   'OPTS="$OPTS  --enable-nls"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-nls"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "multibyte editing support?" y
+    then  echo   'OPTS="$OPTS  --enable-multibyte"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-multibyte"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Sun Visual Workshop support?" n
+    then  echo   'OPTS="$OPTS  --enable-workshop"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-workshop"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Hangul input support?" n
+    then  echo   'OPTS="$OPTS  --enable-hangulinput"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-hangulinput"'  >>  $SPELL_CONFIG
+  fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+fi

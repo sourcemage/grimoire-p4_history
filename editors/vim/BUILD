@@ -1,5 +1,6 @@
 (
 
+  patch -p1 < $SCRIPT_DIRECTORY/vim-6.1.patch &&
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \

@@ -1,7 +1,0 @@
-if [ ! -d /usr/lib/news/active ]; then
-  if query "$SPELL needs /usr/lib/news/active directory, do you want to create one ?" y
-  then
-  mkdir /usr/lib/news 1>/dev/null 2>&1
-  mkdir /usr/lib/news/active 1>/dev/null 2>&1
-  fi
-fi
