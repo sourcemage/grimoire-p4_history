@@ -16,7 +16,7 @@ NAME="ntop (using following interfaces: ${IFACES}"
 ARGS="-d -u nobody -w $HTTP_PORT -W $HTTPS_PORT \
           --use-syslog=daemon -i ${IFACES} -M"
 RUNLEVEL=3
-NEEDS="+network"
+NEEDS="+network +remote_fs"
 
 . /etc/init.d/smgl_init
 

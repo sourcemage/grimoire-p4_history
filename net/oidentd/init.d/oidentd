@@ -4,5 +4,6 @@ PROGRAM=/usr/sbin/oidentd
 ARGS="-u daemon -g daemon"
 RUNLEVEL=3
 PROVIDES=identd
+NEEDS="+remote_fs"
 
 . /etc/init.d/smgl_init
