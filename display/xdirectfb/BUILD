@@ -28,20 +28,34 @@ cat <<__EOF__ >config/cf/host.def
 #define BuildFreetype2Library   NO
 #define HasExpat                YES
 #define XDirectFBServer         YES
+#define BuildScanpci            YES
 #define BuildXF86VidModeLibrary YES
 #define BuildXInputLib          YES
 #define BuildXIE                YES
 #define BuildXvLibrary          YES
+#define BuildXvExt              YES
 #define BuildXvMCLibrary        YES
+#define BuildXvMCExt            YES
 #define BuildXF86DGALibrary     YES
 #define BuildGLXLibrary         YES
+#define BuildGlxExt             YES
 #define BuildXF86MiscLibrary    YES
 #define BuildXextLib            YES
 #define BuildGLULibrary         YES
 #define BuildOSMesaLib          YES
 #define BuildXprint             YES
 __EOF__
-  # end 
+  # end
+ 
+  if echo $CFLAGS| grep -q "mmmx" 
+  then echo "#define HasMMXSupport YES" >> config/cf/host.def
+  fi      &&
+  if echo $CFLAGS| grep -q "msse" 
+  then echo "#define HasSSESupport YES" >> config/cf/host.def
+  fi      &&
+  if echo $CFLAGS| grep -q "m3dnow" 
+  then echo "#define Has3DNowSupport YES" >> config/cf/host.def
+  fi      &&
 
   cd config/util                                                 &&
   make -f Makefile.ini lndir                                     &&
@@ -113,4 +127,5 @@ __EOF__
   fi
 
 )
+
 
