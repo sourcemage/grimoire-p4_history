@@ -1,5 +1,22 @@
-default_pre_build &&
-cd $SOURCE_DIRECTORY &&
-unpack $SOURCE2 ${MD5[1]} &&
-patch  -p1  <  $SOURCE_CACHE/$SOURCE2 &&
-sedit  "s/\/\$(PACKAGE)-\$(VERSION)/\/\$(PACKAGE)/"  Makefile.in
+default_pre_build                                                 &&
+cd $SOURCE_DIRECTORY                                              &&
+unpack $SOURCE2 ${MD5[1]}                                         &&
+patch  -p1  <  $SOURCE_CACHE/$SOURCE2                             &&
+sedit  "s/\/\$(PACKAGE)-\$(VERSION)/\/\$(PACKAGE)/"  Makefile.in  &&
+
+#gcc3.3 hack  Bug #4032, thanks to Hamish
+if [[ $(gcc -dumpversion)   == 3.3* ]]
+then
+  sedit '31a\
+\#include \<cassert\>\' src/binaryio.cc
+  sedit '25a\
+\#include \<cassert\>\' src/jpegfile.cc
+  sedit '35a\
+\#include \<cassert\>\' src/jpegscan.cc
+  sedit '31a\
+\#include \<cassert\>\' src/arguments.cc
+  sedit '33a\
+\#include \<cassert\>\' src/jpegframe.cc
+  sedit '22a\
+\#include \<cassert\>\' src/jpegscanhdr.cc
+fi
