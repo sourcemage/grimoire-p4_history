@@ -1,6 +1,7 @@
 (
 
-  patch --verbose src/lib/rpc/xdr_array.c < $SCRIPT_DIRECTORY/xdr_array.patch &&
+  patch  --verbose  src/kadmin/v4server/kadm_ser_wrap.c  <  \
+         $SCRIPT_DIRECTORY/2002-002-kadm4.patch             &&
 
   cd  src
   ./configure  --enable-dns-for-kdc    \
