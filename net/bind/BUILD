@@ -24,6 +24,8 @@
     done
   done
 
+  devoke_installwatch && # nothing past here should be in the install log unless it's tracked manually.
+
   [  -d  /etc/bind             ]  ||  mkdir     /etc/bind
 
   # backup old named.root and named.conf files before copying them
@@ -70,7 +72,7 @@
   [  -d  /etc/bind/s             ]  ||  mkdir     /etc/bind/s
 
   # where localhost reverse name is stored, properly regenerated from the real hostname.
-  [  -e  /etc/bind/m/localhost.rev  ]  ||  sed -e 's/hostname/'`hostname`'/' $SCRIPT_DIRECTORY/localhost.rev > /etc/bind/m/localhost.rev
+  [  -e  /etc/bind/m/localhost.rev  ]  ||  sed -e 's/hostname/'`hostname`'/g' $SCRIPT_DIRECTORY/localhost.rev > /etc/bind/m/localhost.rev
 
   # make bind unable to modify own files ... much safer than bind being able to write to its own config files and masters
   chmod  640 /etc/bind/*
@@ -103,5 +105,10 @@
     [ ! -h /etc/bind ]  &&  rm -rf /etc/bind &&
     ln -s /var/chroot/bind /etc/bind
   fi
+
+  invoke_installwatch
+
+  track_manual /etc/bind/dev/random /etc/bind/dev /etc/bind/m/localhost/rev /etc/bind/delegation-only.conf /etc/bind/named.root /etc/bind/named.conf \
+               /etc/bind/localhost.conf /etc/bind/mkzones.sh
 
 )
