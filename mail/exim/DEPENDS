@@ -19,7 +19,12 @@ else
 fi  &&
 
 # The spell only mentioned xfree86, haven't tested with others
-if  spell_installed  xfree86
+if  spell_installed  xfree86        ||
+    spell_installed  xfree86-4.3    ||
+    spell_installed  xfree86-devel  ||
+    spell_installed  xdirectfb      ||
+    spell_installed  xfree86-libs   ||
+    spell_installed  xorg
 then
   config_query  XFREE86  "Use XFree86 for exim monitor?"  y
 else
@@ -33,12 +38,15 @@ else
   config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" n
 fi  &&
 
-if  spell_installed  mysql
-then
-  config_query  MYSQL        "Use mysql for mysql lookup tables?"  y
-else
-  config_query  MYSQL        "Use mysql for mysql lookup tables?"  n
-fi  &&
+#if  spell_installed  mysql
+#then
+#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  y
+#else
+#  config_query  MYSQL        "Use mysql for mysql lookup tables?"  n
+#fi  &&
+message  "${MESSAGE_COLOR}MySQL support is currently broken${DEFAULT_COLOR}"  &&
+persistent_add  MYSQL  &&
+MYSQL="n"  &&
 
 if  spell_installed  Linux-PAM
 then
@@ -66,7 +74,7 @@ fi  &&
 
 if  [  "$XFREE86"  ==  "y"  ]
 then
-  depends  xfree86
+  depends  X11-LIBS
 fi  &&
 
 if  [  "$TCPWRAPPERS"  ==  "y"  ]
