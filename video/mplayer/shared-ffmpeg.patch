@@ -26,3 +26,16 @@ diff -Nur MPlayer-1.0pre3/libmpcodecs/vf_pp.c MPlayer-1.0pre3-ffpp/libmpcodecs/v
  #endif
  
  struct vf_priv_s {
+--- mplayer-cvs/libaf/af_lavcresample.c~	2004-10-21 23:15:21.000000000 +0200
++++ mplayer-cvs/libaf/af_lavcresample.c	2004-10-24 13:23:05.606795368 +0200
+@@ -11,8 +11,8 @@
+ 
+ #ifdef USE_LIBAVCODEC
+ 
+-#include "../libavcodec/avcodec.h"
+-#include "../libavcodec/rational.h"
++#include "ffmpeg/avcodec.h"
++#include "ffmpeg/rational.h"
+ 
+ #define CHANS 6
+ 
