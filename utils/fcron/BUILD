@@ -1,7 +1,7 @@
 create_account  fcron
 
 # Removed according to Bug #385
-# if    spell_installed  linux-pam
+# if    spell_ok  linux-pam
 # then  WITH_PAM="--with-pam=yes"
 # else  WITH_PAM="--with-pam=no"
 # fi
