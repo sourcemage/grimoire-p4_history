@@ -5,6 +5,7 @@ config_query LATEST_FILTERSIMPLE "Install latest version for Filter-Simple" y
 config_query LATEST_LIBNET "Install latest version for libnet" y
 config_query LATEST_NETPING "Install latest version for Net-Ping " y
 config_query LATEST_TEXTBALANCED "Install latest version for Text-Balanced" y
+config_query LATEST_MIMEBASE64 "Install latest version for MIME-Base64" y
 
 #Emptying DEPENDS
 echo "" > $SCRIPT_DIRECTORY/DEPENDS
@@ -51,4 +52,9 @@ else
    spell_installed Text-Balanced && dispel Text-Balanced
 fi
 
+if [ $LATEST_MIMEBASE64 = "y" ]; then
+   echo "depends MIME-Base64 &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed MIME-Base64 && dispel MIME-Base64
+fi
 echo "true" >> $SCRIPT_DIRECTORY/DEPENDS
