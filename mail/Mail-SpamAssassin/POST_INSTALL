@@ -1,11 +1,6 @@
-if spell_installed postfix; then
-  message "You have the oportunity here to setup Mail-SpamAssassin"
-  message "as  a global default spam filter (directly  inserted to"
-  message "postfix's master.cf file)."
-  message "These modifications should be reverted when you dispell"
-  message "the  Mail-SpamAssassin  spell  (under most conditions)."
-
-  if query "Setup Mail-SpamAssassin as default global spam filter ?" n
+if spell_installed postfix; 
+  then
+  if  [  "$POSTFIX_GLOBAL"  ==  "y"  ];
   then
     OUTPUT_FILE="/etc/postfix/master.cf"
     grep "postfixfilter" /etc/passwd
