@@ -16,11 +16,6 @@
   make &&
   prepare_install &&
   make install &&
-  ln -fns ./build/libtool /usr/share/apache2/libtool  &&
-
-  if [ "$APR_CHECKOUT" == 'y' ]; then
-    cp  $SOURCE_DIRECTORY/build/gen-build.py  \
-        /usr/share/apache2/build
-  fi
+  ln -fns ./build/libtool /usr/share/apache2/libtool 
 
 ) >$C_FIFO 2>&1 
