@@ -1,5 +1,6 @@
 (
 
+  unpack  $SOURCE2  ${MD5[1]}                             &&
   gunzip  -c  $SOURCE_CACHE/$SOURCE2  |  patch  -p1       &&
   make  TARGETS="tracepath tracepath6 traceroute6"        &&
   prepare_install                                         &&

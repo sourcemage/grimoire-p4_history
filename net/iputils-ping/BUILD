@@ -1,5 +1,6 @@
 (
 
+  unpack  $SOURCE2  ${MD5[1]}                         &&
   gunzip  -c  $SOURCE_CACHE/$SOURCE2  |  patch  -p1   &&
   make  TARGETS="ping ping6"                          &&
   prepare_install                                     &&
