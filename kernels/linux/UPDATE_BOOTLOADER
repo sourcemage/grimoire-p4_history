@@ -181,7 +181,7 @@ update_grub() {
 
   local MENU=/boot/grub/menu.lst
 
-  if  !  grep  -q  "vmlinubz-${VERSION}"  $MENU;  then
+  if  !  grep  -q  "vmlinubz-${VERSION} "  $MENU;  then
 
     rm  -rf  $MENU.old
     rm  -rf  $MENU.new
