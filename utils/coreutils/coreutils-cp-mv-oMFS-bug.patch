@@ -1,7 +1,7 @@
-diff -ruN coreutils-5.0.orig/src/copy.c coreutils-5.0/src/copy.c
---- coreutils-5.0.orig/src/copy.c	2003-03-12 05:02:23.000000000 +1100
-+++ coreutils-5.0/src/copy.c	2003-11-14 19:00:06.000000000 +1100
-@@ -236,7 +236,7 @@
+diff -Naur coreutils-5.2.0/src/copy.c coreutils/src/copy.c
+--- coreutils-5.2.0/src/copy.c	2004-02-08 02:42:04.000000000 +1100
++++ coreutils/src/copy.c	2004-02-25 02:21:10.000000000 +1100
+@@ -232,7 +232,7 @@
  
    /* Compare the source dev/ino from the open file to the incoming,
       saved ones obtained via a previous call to stat.  */
@@ -10,10 +10,10 @@ diff -ruN coreutils-5.0.orig/src/copy.c coreutils-5.0/src/copy.c
      {
        error (0, 0,
  	     _("skipping file %s, as it was replaced while being copied"),
-diff -ruN coreutils-5.0.orig/src/sys2.h coreutils-5.0/src/sys2.h
---- coreutils-5.0.orig/src/sys2.h	2003-03-10 21:41:07.000000000 +1100
-+++ coreutils-5.0/src/sys2.h	2003-11-14 18:52:50.000000000 +1100
-@@ -455,6 +455,9 @@
+diff -Naur coreutils-5.2.0/src/system.h coreutils/src/system.h
+--- coreutils-5.2.0/src/system.h	2004-02-05 20:23:23.000000000 +1100
++++ coreutils/src/system.h	2004-02-25 02:21:10.000000000 +1100
+@@ -750,6 +750,9 @@
    ((Stat_buf_1).st_ino == (Stat_buf_2).st_ino \
     && (Stat_buf_1).st_dev == (Stat_buf_2).st_dev)
  

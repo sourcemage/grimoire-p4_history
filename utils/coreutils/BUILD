@@ -1,6 +1,4 @@
 (
-  ### patch for ls memory bug
-  patch -p1 < $SCRIPT_DIRECTORY/coreutils-ls-bug.patch         &&
   patch -p1 < $SCRIPT_DIRECTORY/coreutils-cp-mv-oMFS-bug.patch &&
   ### patch for pam support in su
   if echo $OPTS | grep -q enable-pam; then
