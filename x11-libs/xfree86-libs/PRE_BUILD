@@ -3,6 +3,6 @@ unpack         $SOURCE  ${MD5[0]}      &&
 unpack         $SOURCE2  ${MD5[1]}     &&
 unpack         $SOURCE3  ${MD5[2]}     &&
 unpack         $SOURCE4  ${MD5[3]}     &&
-patch xc/lib/font/fontfile/dirfile.c < $SOURCE_CACHE/$SOURCE4 &&
+patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE4 &&
 #recommended by xfree86.org
 mk_source_dir  $SOURCE_DIRECTORY.bld 
