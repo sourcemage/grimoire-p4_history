@@ -1,16 +1,18 @@
            SPELL=cdrdao
-         VERSION=${VERSION:=1.1.8}
+         VERSION=${VERSION:=1.1.9rc1}
+       BUILD_API=2
 if [ "$CVS" = "yes" ] ; then
-         VERSION=cvs 
-  FORCE_DOWNLOAD=1 
+         VERSION=cvs
+     FORCE_DOWNLOAD=1 
           SOURCE=$SPELL.tar.bz2 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL 
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/cdrdao:cdrdao 
           MD5[0]=IGNORE 
-else      SOURCE=$SPELL-$VERSION.tar.gz 
+else      
+          SOURCE=$SPELL-$VERSION.tar.gz 
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
-          MD5[0]=207273334c7510ac79b117590b928aa1
+          MD5[0]=329dc51b300d4d6483ff0d6b37f73a9e
 fi
         WEB_SITE=http://cdrdao.sourceforge.net/index.html
       LICENSE[0]=GPL
