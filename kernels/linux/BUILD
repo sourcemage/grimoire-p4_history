@@ -101,6 +101,7 @@ backup_modules()  {
   run_make  dep               &&
   case  ${ARCH}  in
     sparc*)  run_make  vmlinux ||  exit  1 ;;
+       ppc)  run_make  vmlinux ||  exit  1 ;;
         sh)  run_make   zImage ||  exit  1 ;;
          *)  run_make  bzImage ||  exit  1 ;;
   esac
