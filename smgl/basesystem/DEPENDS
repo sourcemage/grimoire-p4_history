@@ -1,3 +1,8 @@
+depends  gawk          &&
+depends  shadow        &&
+depends  init.d        &&
+depends  perl          &&
+depends  util-linux    &&
 depends  bash          &&
 depends  bzip2         &&
 depends  cpio          &&
@@ -12,13 +17,16 @@ depends  less          &&
 depends  lockexec      &&
 depends  nano          &&
 depends  patch         &&
+depends  procps        &&
 depends  rpmunpack     &&
 depends  sed           &&
 depends  tar           &&
+depends  texinfo       &&
 depends  textutils     &&
 depends  unzip         &&
 depends  wget          &&
-depends  xdelta        &&
+
+optional_depends  "xdelta" "" "" "For tar and binary patching"
 
 optional_depends  "sorcery-sound-simpsons"                     \
                    ""                                          \
