@@ -1,11 +1,8 @@
 (
 
-  OPTS="$OPTS --enable-mtime"
-
-  # Disables bundled pcre and adds install target to makefile
-  patch  -p1  <  $SCRIPT_DIRECTORY/mman.patch  &&
+  sedit '/config\.xml/d' Makefile.in &&
+  sedit 's/pcreposix_regcomp/pcre_compile/' configure &&
   default_build &&
-
   if ! [  -f /etc/mman.conf  ]; then
     install  -m 640  config.xml  /etc/mman.conf
   fi
