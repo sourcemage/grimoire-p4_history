@@ -22,8 +22,9 @@
     y|Y)  OPTS="$OPTS  --enable-menu"  ;;
   esac  &&
   
-  CFLAGS= ./configure  --prefix=/usr  \
-               --confdir=/etc/mplayer \
+  CFLAGS= ./configure  --prefix=/usr    \
+               --confdir=/etc/mplayer   \
+               --mandir=/usr/share/man  \
                $OPTS          &&
 
   make                        &&
