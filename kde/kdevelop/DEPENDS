@@ -1,11 +1,62 @@
 depends  autoconf  &&
 depends  automake  &&
+depends  kdebase   &&
 depends  ctags     &&
 depends  gdb       &&
-depends  kdebase   &&
 
-optional_depends graphviz                                 &&
-optional_depends linuxdoc-tools                           &&
-optional_depends  "kdesdk" "" "" "for KDE documentation"  &&
-optional_depends  "a2ps" "" "" "for printing"             &&
-optional_depends  "kdbg" "" "" "KDbg is a graphical user interface to gdb, the GNU debugger."
+optional_depends  linuxdoc-tools  ""  ""  "for DTD SGML documentation support"  &&
+optional_depends  graphviz        ""  ""  "for graph support"                   &&
+optional_depends  kdesdk          ""  ""  "for KDE development support"         &&
+optional_depends  a2ps            ""  ""  "for postscript printing support"     &&
+optional_depends  kdbg            ""  ""  "for KDE-based GNU Debugger"          &&
+
+optional_depends  Python                                  \
+                  "--enable-python --enable-scripting"    \
+                  "--disable-python --disable-scripting"  \
+                  "for Python support"                    &&
+
+optional_depends  perl                \
+                  "--enable-perl"     \
+                  "--disable-perl"    \
+                  "for Perl support"  &&
+
+optional_depends  php                \
+                  "--enable-php"     \
+                  "--disable-php"    \
+                  "for PHP support"  &&
+
+optional_depends  SQL                \
+                  "--enable-sql"     \
+                  "--disable-sql"    \
+                  "for SQL support"  &&
+
+optional_depends  JAVA                \
+                  "--enable-java"     \
+                  "--disable-java"    \
+                  "for Java support"  &&
+
+optional_depends  ruby                \
+                  "--enable-ruby"     \
+                  "--disable-java"    \
+                  "for Ruby support"  &&
+
+optional_depends  bash                \
+                  "--enable-bash"     \
+                  "--disable-bash"    \
+                  "for bash support"  &&
+
+optional_depends  cvs                \
+                  "--enable-cvs"     \
+                  "--disable-cvs"    \
+                  "for CVS support"  &&
+
+optional_depends  perforce-client         \
+                  "--enable-perforce"     \
+                  "--disable-perforce"    \
+                  "for Perforce support"  &&
+
+optional_depends  subversion-client         \
+                  "--enable-svnsupport"     \
+                  "--disable-svnsupport"    \
+                  "for Subversion support"
+
