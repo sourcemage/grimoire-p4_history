@@ -1,21 +1,39 @@
 #!/bin/bash
 
+. /etc/sysconfig/mountnetwork
+
 PROGRAM=/bin/mount
 RUNLEVEL=3
-NEEDS="+remote_fs +network +portmap"
+NEEDS="+network"
+PROVIDES="remote_fs"
+
+file_system_list=""
+
+for fs in ${FILESYSTEMS} ; do
+  if [[ $fs == "nfs" ]] ; then
+    NEEDS="$NEEDS +portmap"
+  fi
+  file_system_list="$file_system_list,$fs"
+done
+file_system_list=${file_system_list:1}
 
 . /etc/init.d/smgl_init
 
 start()
 {
+  required_executable /bin/mount
+
   echo  "Mounting remote filesystems..."
-  mount  -a  -F  -t  nfs,ncpfs,smbfs
+  mount  -a  -F  -t  $file_system_list
   evaluate_retval
 }
 
 stop()
 {
+  required_executable /bin/umount
+
   echo  "Unmounting remote filesystems..."
-  umount  -a  -r  -t  nfs,ncpfs,smbfs
+  umount  -a  -r  -t  $file_system_list
   evaluate_retval
 }
+
