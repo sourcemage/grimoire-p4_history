@@ -1,27 +1,24 @@
            SPELL=gs-afpl
-         VERSION=8.13
+         VERSION=8.14
           SOURCE=ghostscript-$VERSION.tar.bz2
          SOURCE2=jpegsrc.v6b.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/ghostscript-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/ghostscript/$SOURCE
   SOURCE2_URL[0]=ftp://ftp.uu.net/graphics/jpeg/$SOURCE2
+          MD5[0]=d43135fcf4616d00b8d6aef771aa6047
+          MD5[1]=928001a20e3b9a45066a9d48312e39e2
         WEB_SITE=http://www.ghostscript.com
       LICENSE[0]=AFPL
       LICENSE[1]=FREE
-          MD5[0]='cf42427dbf748db98c9d34774c33d74f'
-          MD5[1]=928001a20e3b9a45066a9d48312e39e2
          ENTERED=20010922
          UPDATED=20021019
       MAKE_NJOBS=1
-      MAINTAINER=jason@flattfamily.com
            SHORT="ghostcript is a an interpreter for the PostScript langauge."
 cat << EOF
-
 Ghostscript is the name of a set of software that provides:
     * An interpreter for the PostScript language and the PDF file format,
     * A set of C procedures (the Ghostscript library) that implement the
       graphics capabilities that appear as primitive operations in the
       PostScript language, and
     * A wide variety of output drivers for various file formats and printers.
-
 EOF
