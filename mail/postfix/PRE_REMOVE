@@ -1,4 +1,4 @@
-source /etc/sorcery/local/depends/postfix  &&
+persistent_load &&
 
 if  [  "$BACKUP"  ==  "y"  ];  then
   CUR_DATE=`date +%y.%m.%d-%H.%M.%S`

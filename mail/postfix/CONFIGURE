@@ -1,7 +1,7 @@
 # check if postfix was installed before
 message "${MESSAGE_COLOR}Probing for previously casted $SPELL...${DEFAULT_COLOR}"  &&
 
-if  [  -f  /etc/postfix/main.cf  ];  then
+if  [ ! -f  /etc/postfix/main.cf  ];  then
   message "${MESSAGE_COLOR}Previous install not detected.${DEFAULT_COLOR}"
 else
   message "${MESSAGE_COLOR}Previous install detected.${DEFAULT_COLOR}"
