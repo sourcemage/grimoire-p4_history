@@ -1,5 +1,7 @@
 # $Id$
 (
+        # man page isn't installed correctly - fix that:
+        sedit  "s/\/man8/\/man\/man8/" doc/Makefile.in
 
 	./configure              \
 		--build=$BUILD       \
