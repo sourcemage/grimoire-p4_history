@@ -1,4 +1,4 @@
-OPTS="--with-gdk-pixbuf --enable-platform-gnome-2"
+OPTS="--with-gdk-pixbuf"
 
 case $VERSION in
   2002-05-02) sedit "s/(eval-when-compile (require 'sawfish.wm.commands.xterm))/(require 'sawfish.wm.commands.xterm)/" \

@@ -1,2 +1,2 @@
-OPTS="$OPTS --disable-gtk-doc --enable-platform-gnome-2"
+OPTS="$OPTS --disable-gtk-doc"
 default_build
