@@ -1,29 +1,7 @@
-if  !  grep  -q  "CONFIGURED"  $SPELL_CONFIG;  then
+config_query_string USERNAME "Enter your changeip.com account username: "
+config_query_string DDNS_INT \
+    "Enter your dynamic dns interface (ppp0, eth0...): "
 
-  if  query  "Configure ${SPELL_COLOR}$SPELL${DEFAULT_COLOR}?" n;  then
-
-    message "${MESSAGE_COLOR}Enter your changeip.com account username: ${DEFAULT_COLOR}"
-    read USERNAME
-    echo "USERNAME=$USERNAME" >> $SPELL_CONFIG
-
-    message "${MESSAGE_COLOR}Enter your dynamic dns interface (ppp0, eth0...): ${DEFAULT_COLOR}"
-    read DDNS_INT
-    echo "DDNS_INT=$DDNS_INT" >> $SPELL_CONFIG
-
-    message "${MESSAGE_COLOR}Enter your changeip.com account password: ${DEFAULT_COLOR}"
-    read CHANGEIP_PASS
-    echo "PASS=hidden" >> $SPELL_CONFIG
-
-    message  "${MESSAGE_COLOR}changeip.sh should be run periodically (via cron) ${DEFAULT_COLOR}"
-
-    if    query  "Add a changeip entry to root cron job ?"  y
-    then  CRON="y"
-    else  CRON="n"
-    fi
-
-    "CRON=${CRON}"  >>  $SPELL_CONFIG
-  fi
-
-  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
-
-fi
+message "Remember to add your password to /etc/changeip.conf"
+message "changeip.sh should be run periodically (via cron)"
+config_query CRON "Add a changeip entry to root cron job ?" y
