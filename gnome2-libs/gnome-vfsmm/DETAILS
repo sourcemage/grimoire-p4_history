@@ -1,0 +1,16 @@
+           SPELL=gnome-vfsmm
+         VERSION=2.5.3
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='5e41a7f38509b4b835af178784b3fd70'
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020508
+         UPDATED=20040409
+           SHORT="C++ wrapper library for gnome-vfs"
+cat << EOF
+C++ wrapper library for gnome-vfs
+EOF

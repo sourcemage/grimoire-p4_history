@@ -1,0 +1,30 @@
+--- Makefile.in.orig	2004-04-08 20:56:57.830842760 -0500
++++ Makefile.in	2004-04-08 20:58:34.664121864 -0500
+@@ -223,8 +223,7 @@
+ 	$(LIBGLADE_DIRECTORY) \
+ 	$(GNOME_DIRECTORY) \
+ 	testing \
+-	data \
+-	doc
++	data 
+ 
+ 
+ EXTRA_DIST = \
+@@ -257,7 +256,7 @@
+ 	Makefile.in NEWS acconfig.h aclocal.m4 config.guess config.sub \
+ 	configure configure.in depcomp install-sh libgnomedb.pc.in \
+ 	libgnomedb.spec.in ltmain.sh missing mkinstalldirs stamp.h.in
+-DIST_SUBDIRS = po libgnomedb glade control-center testing data doc
++DIST_SUBDIRS = po libgnomedb glade control-center testing data
+ all: all-recursive
+ 
+ .SUFFIXES:
+@@ -470,7 +469,7 @@
+ distdir: $(DISTFILES)
+ 	$(am__remove_distdir)
+ 	mkdir $(distdir)
+-	$(mkinstalldirs) $(distdir)/. $(distdir)/doc $(distdir)/po
++	$(mkinstalldirs) $(distdir)/. $(distdir)/po
+ 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
+ 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
+ 	list='$(DISTFILES)'; for file in $$list; do \
