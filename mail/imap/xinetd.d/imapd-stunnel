@@ -3,8 +3,8 @@ service imaps
 	socket_type		= stream
 	protocol		= tcp
 	wait			= no
-	#user			= root
-	user			= nobody
+	user			= root
+	#user			= nobody
 	server			= /usr/sbin/stunnel
 	server_args		= -l /usr/sbin/imapd
 	# imaps will work without stunnel if you have /etc/ssl/certs/imapd.pem

@@ -3,8 +3,8 @@ service imap
 	socket_type		= stream
 	protocol		= tcp
 	wait			= no
-	#user			= root
-	user			= nobody
+	user			= root
+	#user			= nobody
 	server			= /usr/sbin/imapd
 	server_args		= 
 	per_source		= 4
