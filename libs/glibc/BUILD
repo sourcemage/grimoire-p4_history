@@ -13,11 +13,9 @@
   ###
 
 
-  if [ "$NPTL" = "yes" ] ;then
-   OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=current" &&
-  # cosmetic patch so /lib/libc.so.6 will give out its version 
-   patch -p1 < $SCRIPT_DIRECTORY/glibc-nptl-fix-asserts.patch 
-  else  OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel=2.4" &&
+  if [ "$NPTL" = "yes" ] 
+  then OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=current" 
+  else OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel=2.4" &&
   ### Apply gcc 3.3 patch
    bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1 
   fi                                          &&

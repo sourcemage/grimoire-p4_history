@@ -1,5 +1,7 @@
-default_pre_build                     &&
-cd      $SOURCE_DIRECTORY             &&
-unpack  $SOURCE2  ${MD5[1]}           &&
-[ "$NPTL" = "no" ] && unpack  $SOURCE3  ${MD5[2]} ;
+default_pre_build                      &&
+if [ "$NPTL" = "no" ] 
+then cd      $SOURCE_DIRECTORY         &&
+     unpack  $SOURCE2  ${MD5[1]}       &&
+     unpack  $SOURCE3  ${MD5[2]}
+fi                                     &&
 mk_source_dir  $SOURCE_DIRECTORY.bld
