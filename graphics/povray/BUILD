@@ -1,30 +1,14 @@
 (
 
-  cd $SOURCE_DIRECTORY/source/unix                &&
-  cp $SCRIPT_DIRECTORY/makefile .                 &&
-  cp $SCRIPT_DIRECTORY/povrayrc .
-  if spell_installed  xfree86; then
-    echo  "Making x-povray..."
-    make  newxwin
-  fi
-  if  spell_installed svgalib; then
-    echo  "Making s-povray..."
-    make  newsvga
-  fi
-
-  echo "Making povray..."
-  make  newunix                                   &&
-  prepare_install                                 &&
-  make  install                                   &&
-  cp $SOURCE_DIRECTORY/source/unix/povrayrc /etc  &&
-
-  if  query  "Copy /etc/povrayrc to $HOME/.povrayrc for all users? " y
-  then
-    for USERS in `ls /home/`; do
-      cp /etc/povrayrc /home/$USERS/.povrayrc
-    done
-  else
-    echo 'You will need to put /etc/povrayrc into $HOME/.povrayrc for users'
-  fi
+  cp $SPELL_DIRECTORY/povray.ini $SOURCE_DIRECTORY && # because we change PREFIX to /usr
+  sedit "s/DEFAULT_OUTPUT_FORMAT  't'/DEFAULT_OUTPUT_FORMAT  'n'/g"                                               src/config.h &&
+  sedit "s/#error.*//g"                                                                                             src/optout.h &&
+  sedit "s/FILL IN NAME HERE........................./Source Mage GNU\/Linux, email seth@tautology.org with bugs/g" src/optout.h &&
+  ./configure --prefix=/usr  &&
+  make                       &&
+  make check                 &&
+  prepare_install            &&
+  make  install
 
 ) > $C_FIFO 2>&1
+
