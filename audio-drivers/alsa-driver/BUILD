@@ -3,25 +3,45 @@
 # Clean out the old alsa drivers.
 rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
+mconf()
+{
+    # arbitrary, but I can't imagine a system with more 
+    # than 6 *different* audio cards !
+    for i in `seq 6` ;   
+      do C=`echo snd-$CARDS | sed s/\,/\,snd-/g | cut -d, -f${i}` ;
+      if [ -n "$C" ] ;
+	  then
+	  echo  "alias snd-card-`expr $i - 1` $C">>/etc/modules.d/alsa 
+	  echo  "alias snd-slot-`expr $i - 1` snd-card-`expr $i - 1`">>/etc/modules.d/alsa
+      fi ;
+    done
+    
+    cat >> /etc/modules.d/alsa <<EOF
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+alias /dev/midi snd-seq-oss
+EOF
+    
+}
+
 (
-
-  modprobe  -q  soundcore
-  sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
-  sedit  "s: install-scripts : :"    Makefile  &&
-  sedit  "s:root.root:root.audio:"   snddevices &&
-  
-  ./configure  --prefix=/usr         \
-	       --with-kernel=/lib/modules/$(uname -r)/build \
-               --with-isapnp=yes     \
-               --with-sequencer=yes  \
-               --with-oss=yes        \
-               --with-debug=none     \
-               --with-cards=$CARDS   \
-               $OPTS                 &&
-  make                               &&
-  prepare_install		     &&
-  make install			     &&
-
+    
+    modprobe  -q  soundcore
+    sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
+    sedit  "s: install-scripts : :"    Makefile  &&
+    sedit  "s:root.root:root.audio:"   snddevices &&
+    
+    ./configure  --prefix=/usr         \
+	--with-kernel=/lib/modules/$(uname -r)/build \
+	--with-isapnp=yes     \
+	--with-sequencer=yes  \
+	--with-oss=yes        \
+	--with-debug=none     \
+	--with-cards=$CARDS   \
+	$OPTS                 &&
+    make                               &&
+    prepare_install		     &&
+    make install			     &&
     ./snddevices
     rm  -f   /dev/snd
     ln  -sf  /devices/snd  /dev/snd
@@ -44,16 +64,16 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
     chown root.audio /devices/snd/*
     chmod 777 /devices/snd/*
     if  [  !  -f   /etc/modules.d/alsa  ];  then
-      mkdir   -p   /etc/modules.d
-#      mconf   >    /etc/modules.d/alsa
-      touch        /etc/modules.d/alsa
+	mkdir   -p   /etc/modules.d
+	mconf    
+	touch        /etc/modules.d/alsa
     fi
     MOD="/etc/modules.conf"
     INC="include  /etc/modules.d/alsa"
-
+    
     grep    -q  "$INC"      $MOD  ||
     echo        "$INC"  >>  $MOD
     depmod  -a
     true
-
+    
 ) > $C_FIFO 2>&1  
