@@ -1,0 +1,5 @@
+depends openssl 			&&
+optional_depends  tcp_wrappers          \
+                  "--with-tcp-wrappers" \
+                  ""                    \
+                  " to allow netatalk to check hosts.allow/deny"

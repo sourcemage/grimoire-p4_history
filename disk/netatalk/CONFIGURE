@@ -1,0 +1,12 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if  query  "Enable timelord? (time server) " n;  then
+    echo  'OPTS="$OPTS --enable-timelord"'  >>  $SPELL_CONFIG
+  fi
+  if  query  "Disable valid shell check?" n; then
+    echo  'OPTS="$OPTS --disable-shell-check"' >> $SPELL_CONFIG
+  fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi
