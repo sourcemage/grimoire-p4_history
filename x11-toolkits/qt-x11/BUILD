@@ -16,11 +16,12 @@ sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 export QTDIR=$SOURCE_DIRECTORY  &&
 export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 
-if [ -x /usr/bin/uic ]
-then for i in $(< $SCRIPT_DIRECTORY/install.log)
-     do rm -f $i
-     done
-fi                                                  &&
+#if [ -x /usr/bin/uic ]
+#then for i in $(< $SCRIPT_DIRECTORY/install.log)
+#     do rm -f $i
+#     done
+#fi                                                  &&
+
 #  if  spell_installed  postgresql;  then
 #    cd  $SOURCE_DIRECTORY  &&
 #   tar  -zxpf  /var/spool/sorcery/postgresql-`installed_version postgresql`.tar.gz  &&
@@ -28,12 +29,6 @@ fi                                                  &&
 #    ./configure  &&
 #    cd  $SOURCE_DIRECTORY
 #  fi  &&
-
-# determine the type of Firebird installed
-  if  spell_installed firebird; then
-    FB=`ls /usr/firebird/lib/libfb*.so|cut -d/ -f5|cut -d. -f1|cut -c4-`
-    OPTS="${OPTS} -l${FB}"
-  fi						&&
 
   echo  "yes"  |  ./configure                      \
                                -prefix ${INSTALL_ROOT}/usr/lib/qt \
