@@ -1,0 +1,24 @@
+           SPELL=muttprint
+         VERSION=0.64
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+        WEB_SITE=http://muttprint.sourceforge.net
+      MAINTAINER=largon@seznam.cz
+          MD5[0]=6aa59680f6d91317ac463a9529c90db6
+      LICENSE[0]=GPL
+         ENTERED=20030401
+         UPDATED=20030401
+           SHORT="Muttprint formats the output of mail clients to a good-looking printing"
+cat << EOF
+
+Muttprint formats the output of mail clients to a good-looking printing.  It
+uses the typesetting system LaTeX, which is normally part of every Linux
+distribution.
+
+With what mail clients does Muttprint work together?
+
+Mutt, XFMail, Pine, Sylpheed, Gnus, exmh, all other, if they provide plain
+text as output which contains the header information.
+
+EOF
