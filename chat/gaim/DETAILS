@@ -1,21 +1,21 @@
            SPELL=gaim
-#          SPELL2=gaim-e
+          SPELL2=gaim-encryption
          VERSION=0.63
-#        VERSION2=0.9.7
+        VERSION2=1.20
           SOURCE=$SPELL-$VERSION.tar.bz2
-#         SOURCE2=$SPELL2-$VERSION2.tgz
+         SOURCE2=encrypt-$VERSION2.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-#  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
         WEB_SITE=http://gaim.sourceforge.net
-#       WEB_SITE2=http://gaim-e.sourceforge.net
+       WEB_SITE2=http://gaim-encryption.sourceforge.net
       MAINTAINER=adamsgl@dhbit.ca
          ENTERED=20011024
          UPDATED=20020314
           MD5[0]='6339e395529e441e44fbf137b7821a9f'
-#          MD5[1]=faf71b4e72a69bc7ae0922a7a3a8a012
+          MD5[1]='592765c609a62d4a03d75007a0affc6d'
       LICENSE[0]=GPL
-#      LICENSE[1]=GPL
+      LICENSE[1]=GPL
            SHORT="gaim is an instant messanger client for several protocols"
 cat << EOF
 gaim is an instant messanger client used primarly for the AIM protocol
