@@ -1,11 +1,18 @@
-           SPELL=TeXmacs
+           SPELL=texmacs
          VERSION=1.0.3.3
+          SOURCE=TeXmacs-${VERSION}-src.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/TeXmacs-${VERSION}-src
+   SOURCE_URL[0]=ftp://ftp.texmacs.org/pub/TeXmacs/targz/${SOURCE}
+          MD5[0]=5c970358bdf60c36d1cddab143df75eb
         WEB_SITE=http://www.texmacs.org
          ENTERED=20010922
-         UPDATED=20040718
+         UPDATED=20020305
       LICENSE[0]=GPL
-      MAINTAINER=eric@sandall.us
-           SHORT="GNU TeXmacs is a free WYSIWYG scientific text editor."
+       BUILD_API=2
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="texmacs"
+    MENU_DESC[0]=${SHORT}
+           SHORT="WYSIWYG scientific text editor."
 cat << EOF
 GNU TeXmacs is a free WYSIWYG scientific text editor which was inspired
 by both TeX and GNU Emacs. It is also possible to use TeXmacs as an
