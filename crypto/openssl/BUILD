@@ -5,6 +5,6 @@
             shared                 &&
   make                             &&
   prepare_install              
-  make  MANDIR=/usr/man  install
+  make  MANDIR=/usr/share/man  install
 
 ) > $C_FIFO 2>&1

@@ -1,3 +1,5 @@
-default_pre_build          &&
-cd      $SOURCE_DIRECTORY  &&
-unpack  $SOURCE2
+default_pre_build             &&
+cd      $SOURCE_DIRECTORY     &&
+zcat  $SOURCE_CACHE/$SOURCE2 | patch -p1 
+#cp  $SOURCE_CACHE/$SOURCE2 .  &&
+#gzip -d $SOURCE2 
