@@ -1,21 +1,16 @@
            SPELL=eclipse
           PREFIX=R
-         VERSION=3.0
-          TSTAMP=200406251208
+         VERSION=3.0.1
+          TSTAMP=200409161125
           SOURCE=$SPELL-sourceBuild-srcIncluded-$VERSION.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
       SOURCE_URI=$PREFIX-$VERSION-$TSTAMP/$SOURCE
    SOURCE_URL[0]=http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/$SOURCE_URI
    SOURCE_URL[1]=http://eclipse.mirrors.tds.net/downloads/drops/$SOURCE_URI
    SOURCE_URL[2]=ftp://download.eclipse.org/$SOURCE_URI
-          MD5[0]='962a41fe062f0ddc809ca956687c7e01'
+          MD5[0]='c95561df899a47fc05261531ed0b9221'
      GATHER_DOCS=off
         WEB_SITE=http://www.eclipse.org/
- if [ "$SSH2" = "y" ] ; then
-         SOURCE2=org.eclipse.team.cvs.ssh2_0.1.2-src.zip
-  SOURCE2_URL[0]=http://www.jcraft.com/eclipse-cvsssh2/${SOURCE2}
-          MD5[1]=658d956d4f74506510ce9def920c29e6
- fi
          ENTERED=20031211
          UPDATED=20040620
       LICENSE[0]=CPL
