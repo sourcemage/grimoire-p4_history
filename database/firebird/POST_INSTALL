@@ -1,12 +1,8 @@
-if [ ! -f /etc/firebird.conf ];then
-  cp $PREFIX/firebird.conf /etc
-fi
-#  /etc/init.d/xinetd.sh restart
 cat << EOF
 remember to create a "firebird.conf" file in /etc
 see the examples directory for more information
 
 Also change the default passwords 
-EOF
-$SOURCE_DIRECTORY/postinstall.sh
 
+EOF
+  

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# description: Start/Stop firebird database server
+#
+# This file belongs in /etc/init.d where it will be run
+# on system startup and shutdown to start the background
+# Firebird/interbase database server daemon 
+
+
+export FIREBIRD=/usr/firebird
+export ISC_USER=SYSDBA
+export ISC_PASSWORD=masterkey
+export FBRunUser=firebird
+#export FIREBIRD 
+#export ISC_USER
+#export ISC_PASSWORD
+# WARNING: in a real-world installation, you should not put the 
+# SYSDBA password in a publicly-readable file. 
+# Eventually this file should not need to contain any passwords.
+# as root user alone should be sufficient privledge to stop/start 
+# the server. 
+
+source /etc/init.d/smgl_functions
+
+PROGRAM=/bin/false
+FB=$FIREBIRD/bin/fbmgr
+# still a problem with threaded version
+ARGS="-start -forever -d -s -u"
+RUNLEVEL=3
+NEEDS="+network  +remote_fs"
+
+case $1 in
+	start)
+		echo "Starting Firebird server"
+#		$FB $ARGS | su $FBRunUser
+		$FB $ARGS &
+		evaluate_retval
+		;;
+	stop)
+                echo "Stopping Firebird server"
+		$FB -shut
+		evaluate_retval
+                ;;
+
+        restart|reload)
+                echo "Restarting Firebird server"
+	        $0 stop
+        	$0 start
+		evaluate_retval
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart}"
+                exit 1
+		;;
+esac
+
+
