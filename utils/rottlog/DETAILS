@@ -1,14 +1,16 @@
            SPELL=rottlog
-         VERSION=0.51alpha
+         VERSION=0.63alpha
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$SPELL-$VERSION
    SOURCE_URL[0]=http://savannah.nongnu.org/download/rottlog/$SOURCE
-          MD5[0]=a711e5bb2cb5325d2a2d25dd9b61c7b3
+          MD5[0]=f627a0e60dd08b03efc3a8d281935d60
         WEB_SITE=http://www.nongnu.org/rottlog/
          ENTERED=20020925
          UPDATED=20020925
       MAINTAINER=mlubrano@sourcemage.org
          LICENSE=GPL
+         ARCHIVE=OFF
+            DOCS="NEWS README* ChangeLog"
            SHORT="Rot[t]Log rotates your system's logs"
 cat << EOF
 This is a powerful BASH script to archive/rotate system logs. 
@@ -16,5 +18,5 @@ This is a powerful BASH script to archive/rotate system logs.
 It have almost all features of RedHat's logrotate, adding some other.
 It's very easy to use and understand.
 
-Please read /usr/doc/rottlog/README.SOURCEMAGE before running.
+Please read /usr/share/doc/rottlog/README.SOURCEMAGE before running.
 EOF
