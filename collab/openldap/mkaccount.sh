@@ -1,15 +1,16 @@
 #!/bin/sh
-# $Id: mkaccount.sh,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
+# $Id: mkaccount.sh,v 1.4 2002/09/23 21:43:00 sergeyli Exp $
 
 if [ "$UID" != 0 ]; then
+	echo "Switching to root..."
 	su - -c "$PWD/$0 $*"
 	exit
 fi
 
 echo "#"
-echo "# Usage: $0 <login> <id> <password>"
+echo "# Usage: $0 <login> <id> <password> <last name>"
 
-echo "# `grep '${1:nobody}' /etc/passwd`"
+echo "# `grep '${1:-nobody}' /etc/passwd`"
 
 SUFFIX=`gawk '/^suffix\W+/ { match($0, /suffix\W+"?([^"]*)"?/, a); print a[1]; nextfile; }' /etc/openldap/slapd.conf`
 
@@ -30,13 +31,17 @@ gidNumber:    $ID
 memberuid:    $1
 
 dn:               cn=$1,ou=Users,$SUFFIX
-objectClass:      account
+objectClass:      inetOrgPerson
 objectClass:      posixAccount
 objectClass:      shadowAccount
 cn:               $1
+sn:               ${4:-lastname}
+givenName:        $1
+mail:             $1@`hostname`
+description:      Entry for \`$1($ID)' created `date +%c`
 uid:              $1
 userPassword:     `slappasswd -s "$3"`
-shadowLastChange: 11763
+shadowLastChange: $((`date +%s` / 60 / 60 / 24))
 shadowMax:        99999
 shadowWarning:    7
 loginShell:       /bin/sh
