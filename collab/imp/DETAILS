@@ -1,5 +1,5 @@
            SPELL=imp
-         VERSION=${VERSION:-3.2.4}
+         VERSION=${VERSION:-3.2.5}
           SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
@@ -10,7 +10,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
            SHORT='IMP provides webmail access to IMAP and POP3 accounts'
 
 [ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='c2472718f79940008adb877aea4f8cae'
+          MD5[0]=0d60c5d4edb5f14f41e0d5c38fadf342
 
 cat << EOF
 IMP (Internet Messaging Program) provides webmail access to any IMAP or POP3
