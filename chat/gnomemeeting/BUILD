@@ -1,8 +1,12 @@
 (
   export PWLIBDIR=$SOURCE_DIRECTORY/pwlib             &&
   cd pwlib                                            &&
-#  sedit "s:GETDATE_SOURCE:#GETDATE_SOURCE:" src/ptlib/unix/Makefile &&
-  sedit "s/GETDATE_SOURCE = \$(COMMON_SRC_DIR)\//GETDATE_SOURCE = /" src/ptlib/unix/Makefile &&
+  (
+   # workaround a bug in bison 1.875
+   cd tools/asnparser  &&
+   make asn_grammar.cxx &&
+   sedit "s:\(__attribute__ ((__unused__))\):\1;:"  asn_grammar.cxx
+  )
   make optnoshared                                    &&
   cd lib                                              &&
   ln -s libpt_linux_x86_r_s.a libpt.a                 &&
@@ -13,8 +17,9 @@
   cd lib                                              &&
   ln -s libh323_linux_x86_r_s.a libopenh323.a         &&
   cd ../..                                            &&
-  sedit 's/LIBPT_FILE=\"libpt.so\"/LIBPT_FILE=\"\"/' configure                    &&
+  sedit 's/LIBPT_FILE=\"libpt.so\"/LIBPT_FILE=\"\"/' configure   &&
   sedit 's/LIBOPENH323_FILE=\"libopenh323.so\"/LIBOPENH323_FILE=\"\"/' configure  &&
+  sedit 's/\(H323_CFLAGS=\"-DSPEEX_CODEC\)/\1 -DSTATIC_LIBS_USED/'  configure &&
   ./configure  --prefix=/usr                                   \
                --datadir=/usr/share/gnomemeeting               \
                --sysconfdir=/etc/gnomemeeting                  \
