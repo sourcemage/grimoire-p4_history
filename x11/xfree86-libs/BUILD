@@ -82,6 +82,7 @@ __EOF__
   make  World                                      &&
   prepare_install                                  &&
   make  install                                    &&
+  sedit 's/die/print/' ./config/util/mkhtmlindex.pl &&
   make  install.man
 
 
