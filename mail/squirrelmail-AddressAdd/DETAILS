@@ -1,0 +1,16 @@
+           SPELL=squirrelmail-AddressAdd
+            NAME=address_add
+         VERSION=1.2-1.2.0
+          SOURCE=${NAME}.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$NAME-$VERSION
+   SOURCE_URL[0]=http://www.squirrelmail.org/plugins/$SOURCE
+          MD5[0]=f2d44a9bd6a53489166d4f79f5ddd512
+        WEB_SITE=http://www.squirrelmail.org/plugin_view.php?id=101
+         LICENSE=GPL
+         ENTERED=20020717
+         UPDATED=20020717
+      MAINTAINER=sandalle@yahoo.com
+           SHORT="From address adder plugin for SquirrelMail"
+cat << EOF
+ This plugin allows you to easily add the sender of an email to your address book via a small link placed next to the From address of an email. If the first and last name are sent along with the email address, it will input them also, so you don't have to. If the address is already in your address book, the link is not shown.
+EOF
