@@ -1,2 +1,4 @@
 gaze installed zlib > /tmp/zlib_installed_version
-default_pre_build
+default_pre_build &&
+cd $SOURCE_DIRECTORY &&
+patch -p1 < $SPELL_DIRECTORY/zlib-1.1.4-3-vsnprintf.patch
