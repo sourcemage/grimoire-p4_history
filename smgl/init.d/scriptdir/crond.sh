@@ -13,7 +13,7 @@ case $1 in
 			;;
 			
       stop)
-	  		echo "Stoping crond periodic scheduler."
+	  		echo "Stopping crond periodic scheduler."
 			killproc crond
 			;;
 			
