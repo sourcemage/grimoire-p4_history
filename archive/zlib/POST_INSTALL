@@ -61,15 +61,15 @@ find_libs() {
 main() {
    echo "zlib will now recompile software that is statically linked against it."
    echo "This may take some time. If you stopped it, disturbed it, your machine "
-   echo "hangs or whatever, you can issue a /var/lib/sorcery/grimoire/archive/zlib/POST_INSTALL "
+    echo "hangs or whatever, you can issue a /var/lib/sorcery/codex/{devel | testing | stable}/archive/zlib/POST_INSTALL " 
    echo "at any time to recompile the affected spells." 
-   echo
-   if query "Do you want to recompile affected spells now ?" y; then
-      find_libs;
-      rm $TMPFILE
-   else echo "Not recompiling affected spells - your system will be insecure until you "
-        echo "issue a /var/lib/sorcery/grimoire/archive/zlib/POST_INSTALL"
-   fi
+   echo 
+   if query "Do you want to recompile affected spells now ?" y; then 
+      find_libs; 
+      rm $TMPFILE 
+   else echo "Not recompiling affected spells - your system will be insecure until you " 
+        echo "issue a /var/lib/sorcery/codex/{devel | testing | stable}/archive/zlib/POST_INSTALL" 
+   fi 
 }
 
 . /etc/sorcery/config
