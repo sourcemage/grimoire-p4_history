@@ -1,11 +1,11 @@
-if [ "$CVS" == "yes" ]; then
+if [ "$CVS" == "y" ]; then
 	depends CVS      &&
 	depends automake
 fi &&
-if [ "$XOSD" == "yes" ]; then
+if [ "$XOSD" == "y" ]; then
     depends xosd
 fi &&
-if [ "$CDK" == "yes" ]; then
+if [ "$CDK" == "y" ]; then
     depends cdk
 fi &&
 depends	autoconf	&&
