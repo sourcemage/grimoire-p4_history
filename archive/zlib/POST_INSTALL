@@ -52,7 +52,7 @@ find_libs() {
       for INSTALLED_SPELL in $INSTALLED_SPELLS;
       do
          if [ `show_from $SPELL | cut -d ":" -f 1-1 | grep $INSTALLED_SPELL` ]; then
-             cast $INSTALLED_SPELL; 
+             cast -c $INSTALLED_SPELL; 
          fi
       done
    done
