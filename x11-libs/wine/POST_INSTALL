@@ -11,7 +11,7 @@ function install_root_config {
 
 function install_root_registry {
     echo "Creating Root Registry"
-    [ -f /root/.wine/system.reg ] || [ -h /root/.wine/system.reg ] || $RUNDLL32 setupapi.dll,InstallHinfSection DefaultInstall 128 $INFSCRIPT > /dev/null || exit 1
+    [ -f /root/.wine/system.reg ] || [ -h /root/.wine/system.reg ] || $RUNDLL32 setupapi.dll,InstallHinfSection DefaultInstall 128 $INFSCRIPT > /dev/null || return 1
 }
 
 function global_registry {
