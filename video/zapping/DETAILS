@@ -1,16 +1,14 @@
            SPELL=zapping
-         VERSION=0.6.4
+         VERSION=0.6.5
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://zapping.sourceforge.net
          ENTERED=20011124
-        UPDATED=20020508
-	MD5[0]=86843cb35808fc8322ea4c9b382f315b
-	LICENSE[0]=GPL
-	MAINTAINER=burududu@hotpop.com
+         UPDATED=20021215
+          MD5[0]=a034493c29d14896d004b101c6a76446
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="zapping, a tv viewer app"
 cat << EOF
 Zapping is a TV viewer for GNOME that supports Video4Linux,
