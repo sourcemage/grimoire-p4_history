@@ -1,52 +1,24 @@
 (
+  ./configure                                  \
+     --build=$BUILD                            \
+     --bindir=${INSTALL_ROOT}/bin              \
+     --prefix=${INSTALL_ROOT}/usr              \
+     $OPTS                                     &&
+  make                                         &&
 
-  ./configure \
-     --build=$BUILD       \
-     --prefix=/usr        \
-     --sysconfdir=/etc    \
-     --localstatedir=/var \
-     $OPTS                &&
-  make                    &&
-
-# We need this directory in the path for the following utilities:
+# We need this directory in the path for the following utilities
 # cut, dirname, tail, and uniq
-  export PATH="$PATH:$SOURCE_DIRECTORY/src" &&
+  export PATH="$SOURCE_DIRECTORY/src:$PATH"    && 
 
-  prepare_install &&
-  make    install
+  prepare_install                              &&
 
-# Move files as required by FHS
-  mkdir -p /bin &&
-  pushd /usr/bin &&
-  ./mv \
-    chgrp \
-    chmod \
-    chown \
-    cp \
-    dd \
-    df \
-    ln \
-    ls \
-    mkdir \
-    mknod \
-    mv \
-    rm \
-    rmdir \
-    sync \
-    date \
-    echo \
-    false \
-    groups \
-    pwd \
-    stty \
-    true \
-    uname \
-    hostname \
-    su \
-    cat \
-    head \
-    tail \
-    /bin/ &&
-  popd
+#horrible hack, some of my best work ;-)
+  ./src/ginstall src/ginstall /bin/install     &&
 
+  make    install                              &&
+  
+#provided by other packages
+rm -f ${INSTALL_ROOT}/bin/readlink             &&
+rm -f ${INSTALL_ROOT}/bin/uptime               &&
+rm -f ${INSTALL_ROOT}/usr/man/man1/uptime.1
 ) >$C_FIFO 2>&1
