@@ -58,12 +58,12 @@ _gaze()
 	COMPREPLY=( $( compgen -W 'alien from search service provides what \
                 where website install installed compile sources history sum \
                 md5sum export import section maintainer grimoire html newer \
-                older prune voyeur pam orphans depends spider \
+                older prune voyeur pam orphans depends spider version \
 		DETAILS CONFIGURE DEPENDS CONFLICTS PRE_BUILD BUILD POST_BUILD \
-		POST_INSTALL POST_REMOVE' $cur ))
+		POST_INSTALL POST_REMOVE HISTORY' $cur ))
     elif [ $COMP_CWORD = 2 ]; then
 	case "$prev" in
-	    @(what|where|website|sources|maintainer|depends|history))
+	    @(what|where|website|sources|maintainer|depends|history|version))
                 _spell_list
 		return 0
 		;;
@@ -87,7 +87,7 @@ _gaze()
 		_spell_list
 		return 0
 		;;
-	    @(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE))
+	    @(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE|HISTORY))
 		_spell_list
 		return 0
 		;;
