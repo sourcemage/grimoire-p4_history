@@ -128,9 +128,18 @@ function update_checksums() {
 }
 
 function main() {
-  update_packages &&
-  scribe reindex &&
-  update_checksums
+  if [ $# == 2 ]; then # two options
+    update_spell_for_package "$1" "$2" &&
+    scribe reindex &&
+    update_details_checksum "$MY_DIRECTORY/PEAR-$1/DETAILS"
+  elif [ $# == 0 ]; then # no options
+    say 'Updating ALL packages...' &&
+    update_packages &&
+    scribe reindex &&
+    update_checksums
+  else
+    say 'ERROR: Invalid number of options, must be no options or <package> <version>'
+  fi
 }
 
 say 'PEAR to SMGL (Package to Spell) Translation Script'
@@ -142,7 +151,7 @@ say 'PEAR to SMGL (Package to Spell) Translation Script'
 say "Base directory is '$MY_DIRECTORY'..."
 
 if [ "$UID" == 0 ]; then
-  main "$*"
+  main $*
 else
   say 'Enter the root password, please'
   su - -c "DISPLAY=$DISPLAY PATH=$PATH $0 $*"
