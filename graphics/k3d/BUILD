@@ -1,6 +1,5 @@
 (
 
-  echo "If you're upgrading, please dispel sdp-libs before !!!!" &&
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
                --datadir=/usr/share/k3d              \

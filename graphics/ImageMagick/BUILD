@@ -1,6 +1,7 @@
 (
 
-  ./configure  --prefix=/usr  &&
+  ./configure  --prefix=/usr  \
+		--enable-shared &&
   make                        &&
   prepare_install             &&
   make    install
