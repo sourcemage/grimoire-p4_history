@@ -1,16 +1,14 @@
            SPELL=gqview
-         VERSION=1.1.4
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+         VERSION=1.2.0
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_ULR}/${SPELL}/${SOURCE}
         WEB_SITE=http://gqview.sourceforge.net
          ENTERED=20010924
          UPDATED=20020514
-	MD5[0]=bba140648b871aae4c9c79235127fb4b
-	LICENSE[0]=GPL
-	MAINTAINER=burududu@hotpop.com
+          MD5[0]=81747747b8bf748c5c9bdca5ae830526
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="gqview: an image browser for X."
 cat << EOF
 Gqview implements a single-click interface to view images and traverse
