@@ -1,1 +1,4 @@
-/etc/init.d/syslog-ng.sh  start
+if  [  -x  /etc/init.d/syslog-ng.sh  ]
+then
+  /etc/init.d/syslog-ng.sh  start
+fi

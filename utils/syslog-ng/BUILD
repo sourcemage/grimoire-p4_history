@@ -35,11 +35,4 @@
     
   fi
 
-
-  [ -x /etc/init.d/syslog-ng.sh ] || cp  $SCRIPT_DIRECTORY/syslog-ng.sh  /etc/init.d/
- 
-  ln      -sf ../init.d/syslog-ng.sh  /etc/rcS.d/S20syslog-ng
-  ln      -sf ../init.d/syslog-ng.sh  /etc/rc0.d/K70syslog-ng
-  ln      -sf ../init.d/syslog-ng.sh  /etc/rc6.d/K70syslog-ng
-
 )
