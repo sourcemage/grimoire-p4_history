@@ -1,0 +1,18 @@
+           SPELL=wmessage
+         VERSION=0.11
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://members.ozemail.com.au/~crn/wmessage/$SOURCE
+        WEB_SITE=http://members.ozemail.com.au/~crn/wmessage/
+         ENTERED=20020614
+         UPDATED=20020722
+          MD5[0]=4d5113815e318c0176a3698ed2a5e3d8
+      LICENSE[0]=GPL
+      MAINTAINER=charkins@pobox.com
+           SHORT="WINGs based message viewer similar to xmessage"
+cat << EOF
+A message viewer similar to xmessage allowing users to create simple
+dialogs with buttons and text. By monitoring the return value, shell
+scripts can use the program to query input from users. It is based
+on the WINGs toolkit which is part of the WindowMaker window manager.
+EOF
