@@ -132,6 +132,7 @@ fi
 # If auto_init is wanted then source it when the parent script exists
 if [  "$PROGRAM"  ] ; then
   trap '. /etc/init.d/auto_init' EXIT
+  trap 'ret=$? ; [ $ret -eq 0 ] && . /etc/init.d/auto_init || exit $ret' EXIT
 fi
 
 
