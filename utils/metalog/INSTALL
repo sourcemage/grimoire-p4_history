@@ -1,11 +1,5 @@
-OPTS="$OPTS --sbindir=/sbin"  &&
+make  install  &&
 
-default_build  &&
-
-(
-
-  if  [  !  -f  /etc/metalog.conf  ];  then
-    cp  metalog.conf  /etc
-  fi
-
-)
+if  [  !  -f  /etc/metalog.conf  ];  then
+  cp  metalog.conf  /etc
+fi
