@@ -1,17 +1,15 @@
            SPELL=pvm
-          SPELL3=pvm3
-         VERSION=3.4.4
+         VERSION=3.4.5
           SOURCE=$SPELL$VERSION.tgz
-          MD5[0]=135527e0add3485ca4b381ca686aa316
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL3
-   SOURCE_URL[0]=http://www.netlib.org/$SPELL3/$SOURCE
-#  SOURCE_URL[1]=http://online-no.linux.tucows.com/files/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
+   SOURCE_URL[0]=http://www.netlib.org/${SPELL}3/$SOURCE
+          MD5[0]=3d842f1e5592108427270be78c3f817a
         WEB_SITE=http://www.epm.ornl.gov/pvm/
          ENTERED=20020122
          UPDATED=20020509
-      MAINTAINER=zoran@idi.ntnu.no
-         LICENSE=FREE
-           SHORT="network-hooked computers used as a large parallel computer."
+      LICENSE[0]=FREE
+       BUILD_API=2
+           SHORT="network-hooked computers used as a large parallel computer"
 cat << EOF
 PVM (Parallel Virtual Machine) is a software package that permits a heterogeneous
 collection of Unix and/or NT computers hooked together by a network to be used as 
