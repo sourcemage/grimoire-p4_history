@@ -5,26 +5,9 @@ if  [[ -z $HOST ]]; then
   HOST=$BUILD
 fi
 
-  case  `uname -m`  in
-       alpha) ARCH=alpha   ;;
-         arm) ARCH=arm     ;;
-        cris) ARCH=cris    ;; 
-        ia64) ARCH=ia64    ;;
-        i*86) ARCH=i386    ;;
-        m68k) ARCH=m68k    ;;
-        mips) ARCH=mips    ;;
-      mips64) ARCH=mips64  ;;
-      parisc) ARCH=parisc  ;;
-     powerpc) ARCH=ppc     ;;
-         ppc) ARCH=ppc     ;;
-   powerpc64) ARCH=ppc64   ;;
-        s390) ARCH=s390    ;;
-       s390x) ARCH=s390x   ;;
-         sh*) ARCH=sh      ;;
-       sparc) ARCH=sparc   ;;
-     sparc64) ARCH=sparc64 ;;
-      x86_64) ARCH=x86_64  ;;
-esac
+if  [[ -z $ARCH ]]; then
+  ARCH=$KERNEL_ARCH
+fi
 
 if  [[ $HOST != $BUILD ]]; then
   CROSS_COMPILE="${HOST}-"
