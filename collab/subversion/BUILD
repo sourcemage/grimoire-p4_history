@@ -97,6 +97,8 @@ function make_if_swig() {
 
 ) >$C_FIFO 2>&1 && (
 
-  cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/
+  if  [ -d /etc/httpd ]; then
+    cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/
+  fi
 
 )
