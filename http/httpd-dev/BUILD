@@ -8,7 +8,5 @@ HTTPD_MODULES=$(cat $SCRIPT_DIRECTORY/enable-modules | while read m; do echo -n 
   --with-mpm=${HTTPD_MPM:=prefork}     \
   --enable-layout=GNU                  \
   --enable-so=static                   \
-  --enable-mods-shared=all             \
-  $HTTPD_MODULES                       \
   $OPTS                                &&
 make
