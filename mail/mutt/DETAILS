@@ -1,3 +1,16 @@
+if [ "$CVS" == "y" ]; then
+        SPELL=mutt
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anonymous:anonymous@cvs.mutt.org:/home/roessler/cvs:mutt
+          MD5[0]=IGNORE
+       WEB_SITE=http://www.mutt.org
+         ENTERED=20010922
+         UPDATED=20020530
+         LICENSE=GPL
+       BUILD_API=2
+else
            SPELL=mutt
          VERSION=1.4.2i
           SOURCE=$SPELL-$VERSION.tar.gz
@@ -19,6 +32,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.4.2
          UPDATED=20020530
          LICENSE=GPL
        BUILD_API=2
+fi
            SHORT="mutt is a text-based MIME Email client."
 cat << EOF
 
