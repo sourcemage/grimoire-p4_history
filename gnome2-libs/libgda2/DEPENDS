@@ -9,12 +9,12 @@ optional_depends  unixodbc                    \
 
 optional_depends  mysql                      \
                   "--with-mysql"             \
-                  ""                         \
+                  "--without-mysql"          \
                   "Enable MySQL DB Support"  &&
 
 optional_depends  postgresql                      \
                   "--with-postgresql"             \
-                  ""                              \
+                  "--without-postgresql"          \
                   "Enable Postgresql DB Support"  &&
 
 optional_depends  xbase                      \
