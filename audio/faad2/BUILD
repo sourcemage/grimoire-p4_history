@@ -1,10 +1,7 @@
 (
 	patch -p0 < $SCRIPT_DIRECTORY/patch.faad2	&&
 	./bootstrap					&&
-	./configure					&&
-	make						&&
-	prepare_install					&&
-	make install
+	default_build
 
 ) > $C_FIFO 2>&1
 
