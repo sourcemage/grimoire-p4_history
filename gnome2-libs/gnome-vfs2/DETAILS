@@ -1,15 +1,16 @@
            SPELL=gnome-vfs2
-         VERSION=2.6.1.1
+         VERSION=2.8.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnome-vfs-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-vfs-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gnome-vfs/$BRANCH/$SOURCE
-          MD5[0]='b52f7a93ddae3cc1a2c6bf9787e30928'
+          MD5[0]=27d5d75586cb8ae5f3c0f65834ec3b0a
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
         WEB_SITE=http://www.gnome.org
          ENTERED=20020508
          UPDATED=20040420
+       BUILD_API=2
            SHORT="gnome-vfs is a file system abstraction library for GNOME"
 cat << EOF
 gnome-vfs is a file system abstraction library for GNOME

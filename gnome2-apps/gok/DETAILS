@@ -1,14 +1,15 @@
            SPELL=gok
-         VERSION=0.10.2
+         VERSION=0.11.8
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='2d9c42e87e2f016bc31e2d03406a35e2'
+          MD5[0]='a696a687fe4939a684b7290cc1316e7f'
       LICENSE[0]=GPL
+       BUILD_API=2
         WEB_SITE=http://www.gnome.org
          ENTERED=20020909
-         UPDATED=20040419
+         UPDATED=20040913
            SHORT="GNOME On-screen Keyboard (GOK)"
 cat << EOF
 The GNOME On-screen Keyboard (GOK) is a dynamic on-screen keyboard for

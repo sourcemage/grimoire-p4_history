@@ -5,6 +5,8 @@ depends metacity        &&
 depends xfree86_xkb_xml &&
 depends libxklavier     &&
 depends xscreensaver    &&
-optional_depends  "nautilus2"  ""  "--disable-vfs-methods"  "for fonts:// and themes:// methods"  &&
-optional_depends  "gst-plugins"  ""  ""  "for gstreamer volume control support"
+
+optional_depends "nautilus2" "--enable-vfs-methods" "--disable-vfs-methods" "Enable nautilus support"
+optional_depends "alsa-lib" "--enable-alsa" "--disable-alsa" "Enable alsa support"  &&
+optional_depends "gst-plugins"  "--enable-gstreamer"  "--disable-gstreamer"  "for gstreamer volume control support"
 

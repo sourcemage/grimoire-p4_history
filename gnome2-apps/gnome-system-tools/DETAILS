@@ -1,14 +1,15 @@
            SPELL=gnome-system-tools
-         VERSION=0.26.1
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/${VERSION%.*}/$SOURCE
-          MD5[0]='bb76cb538bf905911d4c9b03ff0a4386'
+         VERSION=1.0.0
+          BRANCH=`echo ${VERSION}|cut -d . -f 1,2`
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
+          MD5[0]='cb02e7837ae6ee5cb043ed4271ca34e3'
       LICENSE[0]=GPL
+       BUILD_API=2
         WEB_SITE=http://www.gnome.org/projects/gst/
          ENTERED=20030520
-         UPDATED=20030520
-      MAINTAINER=sergey@sourcemage.org
+         UPDATED=20040913
            SHORT='GST are an integrated set of tools for the computer administration'
 cat << EOF
 Formerly known as the Ximian Setup Tools, the GST are a fully integrated set of tools
