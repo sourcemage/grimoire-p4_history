@@ -5,6 +5,7 @@
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
+               --enable-gui=$GUI     \
                $OPTS                 &&
   sedit '/shUntil\|link shRepeat/{
        /shUntil/N
