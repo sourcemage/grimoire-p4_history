@@ -1,6 +1,4 @@
 (
-dispel calc
-
 if [ ! -f Makefile.orig ]
 then
 	cp Makefile Makefile.orig
