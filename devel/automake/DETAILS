@@ -1,15 +1,16 @@
            SPELL=automake
-         VERSION=1.8.5
+         VERSION=1.9
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
-          MD5[0]=05abfc25d1797382041fbd29d361677e
+          MD5[0]=1d46c3784344b20d7ba04e2043f75e35
         WEB_SITE=http://www.gnu.org/software/automake/
          ENTERED=20010922
          UPDATED=20040512
       LICENSE[0]=GPL
-           SHORT="automake generates make files that are compliant with the GNU coding standards."
+       BUILD_API=2
+           SHORT="Generate make files that are compliant with the GNU coding standards."
 cat << EOF
 automake - Generates Makefile.in files
 'Automake' automatically generates make files compliant with the GNU
