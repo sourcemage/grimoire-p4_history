@@ -1,6 +1,3 @@
-(
-  sedit  "s/PREFIX=\/usr\/local/PREFIX=\/usr/"  config.mk
-  make
-  make install
-
-) > $C_FIFO 2>&1
+patch -p1 < $SCRIPT_DIRECTORY/xzgv-0.8-integer-overflow-fix.diff &&
+sedit  "s/PREFIX=\/usr\/local/PREFIX=\/usr/"  config.mk &&
+make
