@@ -7,7 +7,7 @@ rm -rf `find -type d -name CVS`
 
 cd linux				&&
 sh ./autogen.sh				&&
-configure	--enable-waveout      \
+./configure	--enable-waveout      \
 		--enable-null         \
 		--enable-capture      \
 		--enable-jlib         \
