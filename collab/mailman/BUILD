@@ -5,6 +5,11 @@
   sedit  's: -f $(PACKAGEDIR)/mm_cfg.py: -e $(PACKAGEDIR)/mm_cfg.py:'  \
 	 Mailman/Makefile.in
 
+#	This has to happen before 'configure' otherwise it fails
+	mkdir -p              /var/spool/mailman &&
+	chown mailman.mailman /var/spool/mailman &&
+	chmod a+rx,g+ws       /var/spool/mailman &&
+
   ./configure  --build=$BUILD                        \
                --prefix=/usr/share/mailman           \
                --with-var-prefix=/var/spool/mailman  \
@@ -12,10 +17,6 @@
                $OPTS                                 &&
 	make                                             &&
 	prepare_install                                  &&
-
-	mkdir -p              /var/spool/mailman &&
-	chown mailman.mailman /var/spool/mailman &&
-	chmod a+rx,g+ws       /var/spool/mailman &&
 
 	mkdir -p              /etc/mailman &&
 	chown mailman.mailman /etc/mailman &&
