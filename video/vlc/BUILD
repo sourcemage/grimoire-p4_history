@@ -1,6 +1,6 @@
 (
 
-  patch modules/codec/ffmpeg/ffmpeg.c $SCRIPT_DIRECTORY/ffmpeg.patch  &&
+  patch -p1 < $SCRIPT_DIRECTORY/ffmpeg.patch  &&
 
   cd  mpeg2dec-$LIBMPEG2_VERSION          &&
   ./configure  --disable-sdl --without-x  &&
