@@ -1,0 +1,21 @@
+           SPELL=balsa2
+         VERSION=2.0.3
+          SOURCE=balsa-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/balsa-$VERSION
+   SOURCE_URL[0]=http://balsa.gnome.org/$SOURCE
+          MD5[0]="73dc2ce42e92afc42558cb64f524926d"
+      LICENSE[0]=GPL
+        WEB_SITE=http://balsa.gnome.org
+         ENTERED=20020509
+         UPDATED=20021103
+      MAINTAINER=jon-sven@frisurf.no
+           SHORT="Balsa is a GNOME email client."
+cat << EOF
+Balsa is a GNOME email client. It supports mbox, maildir, and mh local 
+mailboxes, and IMAP4 and POP3 remote mailboxes. You can send mail via 
+sendmail or SMTP. Optional multithreading support allows for non-instrusive 
+retrieval and sending of mail. A finished GUI similar to that of Eudora 
+lets you view images inline, save message parts, view headers, add 
+attachments, move messages, print messages, and just about anything you 
+would expect in a robust mail client.
+EOF
