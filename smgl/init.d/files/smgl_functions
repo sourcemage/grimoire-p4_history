@@ -25,10 +25,11 @@ NORMAL="builtin echo -en \\033[0;39m"
 SUCCESS="builtin echo -en \\033[1;32m"
 WARNING="builtin echo -en \\033[1;33m"
 FAILURE="builtin echo -en \\033[1;31m"
+SCRIPTC="builtin echo -en \\033[1;37m"
 
 # log the messages hack
 echo() { 
-  builtin echo "$@"
+  # builtin echo "$@" # PARALLEL
   INITSTORE="$INITSTORE$(builtin echo "$@")"
 
   # correct for bash's insane strip trailing newline mumbo jumbo on command substitutions
@@ -38,6 +39,11 @@ echo() {
     INITSTORE="$INITSTORE
 "
   done
+
+  # if it's more than one line, dump the line out and save the last line that doesn't have a newline at the end yet.
+  if [ "`builtin echo "$INITSTORE" | wc -l`" -gt 1 ]; then
+    print_status message
+  fi
 }
 export -f echo
 export INITSTORE
@@ -73,61 +79,52 @@ evaluate_retval()
   return $exit_value
 }
 
+logger_func()
+{
+  [ -e /bin/logger ] && /bin/logger $* ||
+  [ -e /usr/bin/logger ] && /usr/bin/logger $*
+}
+
 print_status()
 {
   if [ $# = 0 ] ; then
-    echo "Usage: $0 {success|warning|failure}"
+    echo "Usage: $0 {success|warning|failure|message}"
     return 1
   fi
 
-  local SCRIPT="$(builtin echo $0 | sed -e 's!/.*/!!')"
+  case "$1" in
+    success) COLORCODE="$SUCCESS" ;;
+    warning) COLORCODE="$WARNING" ;;
+    failure) COLORCODE="$FAILURE" ;;
+    message) ;; # null
+  esac
+
+  local SCRIPT="$($SCRIPTC)$(builtin echo $0 | sed -e 's!/.*/!!')$($NORMAL)"
 
   local line
   builtin echo "$INITSTORE" | while read line; do
-    [ -n "$line" ] && logger -p user.info -t init.d "$@: $SCRIPT: $line"
+    [ -n "$line" -o "$1" != "message" ] &&
+    logger_func -p user.info -t init.d "$SCRIPT: $@: $line" &&
+    builtin echo -n  "init.d: $SCRIPT"                 &&
+    if [ ! "$1" = "message" ]; then
+      builtin echo -n ": "   &&
+      $COLORCODE             &&
+      builtin echo -n "$@"   &&
+      $NORMAL
+    fi                                                 &&
+    if [ -n "$line" ]; then
+      builtin echo -n  ": $line"
+    fi
+    if [ -n "$line" -o "$1" != "message" ]; then
+      builtin echo -ne "\eE" # PARALLEL
+     fi
   done
-  INITSTORE=
+  if [ "$1" = "message" ]; then
+    INITSTORE="$line"
+  else
+    INITSTORE=
+  fi
 
-  $CURS_UP
-
-  case "$1" in
-    success)
-      $SET_COL
-      builtin echo -n "[  "
-      $SUCCESS
-      builtin echo -n "OK"
-      $NORMAL
-      builtin echo "  ]"
-      ;;
-    warning)
-      case "$2" in
-        running)
-          $SET_WCOL
-          builtin echo "Already running"
-          $CURS_UP
-          ;;
-        not_running)
-          $SET_WCOL
-          builtin echo "Not running"
-          $CURS_UP
-          ;;
-      esac
-      $SET_COL
-      builtin echo -n "[ "
-      $WARNING
-      builtin echo -n "ATTN"
-      $NORMAL
-      builtin echo " ]"
-      ;;
-    failure)
-      $SET_COL
-      builtin echo -n "["
-      $FAILURE
-      builtin echo -n "FAILED"
-      $NORMAL
-      builtin echo "]"
-      ;;
-  esac
 }
 
 getpids()
