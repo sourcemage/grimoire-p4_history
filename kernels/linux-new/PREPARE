@@ -100,7 +100,6 @@ main_menu()
 {
 	while true
 	do
-		. $detailsdefaults
 		tmp=${patchversion=${KERNEL_VERSION=${LATEST_2_6}}}
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
@@ -630,9 +629,9 @@ create_details()
 	local counter="1"
 	case "$mode" in
 		*ktree)
+			calculate_depends
 			(
 			#this might be cool if it didn't take more than what's up there.
-			calculate_depends
 			depends=""
 			for patch in $rpatches
 			do
