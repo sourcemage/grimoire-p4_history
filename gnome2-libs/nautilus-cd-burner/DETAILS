@@ -1,17 +1,16 @@
            SPELL=nautilus-cd-burner
-         VERSION=0.4.3
+         VERSION=0.5.2
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=18e5d3ddce780644b13225771fe7244c
+          MD5[0]='8e545c672351077b3655b9cf28ea901d'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
         WEB_SITE=http://developer.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030527
+         UPDATED=20030907
            SHORT="nautilus-cd-burner is an extension to Nautilus"
 cat << EOF
 Nautilus-cd-burner is an extension to Nautilus that makes it easy to

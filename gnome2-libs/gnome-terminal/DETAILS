@@ -1,16 +1,15 @@
            SPELL=gnome-terminal
-         VERSION=2.2.2
+         VERSION=2.3.2
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=462194a8b9148221527105ecd6c69eb5
-        WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]='784017daf1ab43a7937c8dfaf5438167'
       LICENSE[0]=GPL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030609
+         UPDATED=20030907
            SHORT="GNOME Terminal for the GNOME 2.0 Desktop"
 cat << EOF
 GNOME Terminal for the GNOME 2.0 Desktop

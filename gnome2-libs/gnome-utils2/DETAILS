@@ -1,16 +1,15 @@
            SPELL=gnome-utils2
-         VERSION=2.2.3
+         VERSION=2.3.90
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnome-utils-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-utils-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gnome-utils/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gnome-utils/$BRANCH/$SOURCE
-          MD5[0]="62316b9de5fa311e999295ca96d3ae8b"
+          MD5[0]='dcc21cceec6e6de50a26c1b197c29bdd'
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020507
-         UPDATED=20030524
+         UPDATED=20030907
            SHORT="GNOME Utilities for the GNOME 2.0 desktop"
 cat << EOF
 GNOME Utilities for the GNOME 2.0 desktop contains the following -

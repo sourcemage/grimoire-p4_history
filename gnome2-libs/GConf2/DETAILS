@@ -1,16 +1,15 @@
            SPELL=GConf2
-         VERSION=2.2.1
+         VERSION=2.3.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=GConf-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/GConf-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/GConf/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/GConf/$BRANCH/$SOURCE
-          MD5[0]=6a813807be6d40cf0337426c0613bce7
+          MD5[0]='9c06d1a9f40940686350013fbe3908ee'
       LICENSE[0]=LGPL
         WEB_SITE=http://www.gnome.org/projects/gconf/
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020505
-         UPDATED=20030609
+         UPDATED=20030907
            SHORT="GConf is a system for storing configuration information"
 cat << EOF
 GConf is a system for storing configuration information, that is,
