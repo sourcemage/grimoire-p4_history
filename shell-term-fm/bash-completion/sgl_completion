@@ -52,14 +52,15 @@ _gaze()
 	prev=${COMP_WORDS[COMP_CWORD-1]}
 
 	if [ $COMP_CWORD = 1 ]; then
-		COMPREPLY=( $( compgen -W 'alien prune pam what where website \
-		sources maintainer compile install sum md5sum export import \
-		grimoire html search newer older from installed section voyeur \
+		COMPREPLY=( $( compgen -W 'alien from search service what \
+                where website install installed compile sources history sum \
+                md5sum export import section maintainer grimoire html newer \
+                older prune voyeur pam orphans depends \
 		DETAILS CONFIGURE DEPENDS CONFLICTS PRE_BUILD BUILD POST_BUILD \
 		POST_INSTALL POST_REMOVE' $cur ))
 	else
 		case "$prev" in
-		@(what|where|website|sources|maintainer))
+		@(what|where|website|sources|maintainer|depends|history))
 			_spell_list
 			return 0
 			;;
