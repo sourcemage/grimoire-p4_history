@@ -1,0 +1,6 @@
+Fails with in test grimoire @ 2005-03-17:
+
+gcc  -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -DPIC -fPIC -Os   -I/usr/src/bind-9.3.1 -I./include -I/usr/src/bind-9.3.1/lib/dns/include -I../../lib/dns/include -I/usr/src/bind-9.3.1/lib/bind9/include -I../../lib/bind9/include -I/usr/src/bind-9.3.1/lib/isc/include -I../../lib/isc -I../../lib/isc/include -I../../lib/isc/unix/include -I../../lib/isc/nothreads/include -I/usr/src/bind-9.3.1/lib/lwres/include -I../../lib/lwres/unix/include -I../../lib/lwres/include   -DVERSION=\"9.3.1\"   -W -Wall -Wmissing-prototypes -Wcast-qual -Wwrite-strings -Wformat  -c dighost.c
+make[1]: *** No rule to make target `../../lib/bind9/libbind9.a', needed by `dig'.  Stop.
+make[1]: *** Waiting for unfinished jobs....
+make[1]: Leaving directory `/usr/src/bind-9.3.1/bin/dig'
