@@ -1,10 +1,20 @@
            SPELL=tetex
          VERSION=2.0.2
        BUILD_API=2
-          SOURCE=$SPELL-src-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-${VERSION}
+          SOURCE=$SPELL-src-$VERSION.tar.gz
    SOURCE_URL[0]=$CTAN_URL/systems/unix/teTeX/current/distrib/$SOURCE
-          MD5[0]=4671772820b1e2ce01293ec127679ab2
+          MD5[0]='4671772820b1e2ce01293ec127679ab2'
+          
+         SOURCE2=" "
+
+if [ "$CSTEX" = "y" ]; then
+         SOURCE2=enctex.tar.gz
+  SOURCE2_URL[0]=ftp://math.feld.cvut.cz/pub/olsak/enctex/$SOURCE2
+          MD5[1]='399afa5c2309e0270b9b4f5ea0fecc2e'
+      LICENSE[1]=GPL
+fi
+         
         WEB_SITE=http://www.tug.org/tetex/
          ENTERED=20010922
          UPDATED=20040526
