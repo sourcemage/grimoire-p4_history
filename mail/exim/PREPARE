@@ -5,13 +5,13 @@ then
  
   if    query  "Would you like to use exiscan mail content scanner (http://duncanthrax.net/exiscan-acl)?" n
   then   EXISCAN=yes
-         echo   "SOURCE2=exiscan-acl-4.32-18.patch.bz2"                          >>  ${SPELL_CONFIG}
+         echo   "SOURCE2=exiscan-acl-4.33-20.patch.bz2"                          >>  ${SPELL_CONFIG}
          echo   "SOURCE3=exiscan-acl-spec.txt"                                   >>  ${SPELL_CONFIG}
          echo   "SOURCE4=exiscan-acl-examples.txt"                               >>  ${SPELL_CONFIG}
          echo   "SOURCE2_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE2}"  >>  ${SPELL_CONFIG}
          echo   "SOURCE3_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE3}"  >>  ${SPELL_CONFIG}
          echo   "SOURCE4_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE4}"  >>  ${SPELL_CONFIG}
-         echo   "MD5[1]=8c49a4a25abe85ed69523a479567e24a"                        >>  ${SPELL_CONFIG}
+         echo   "MD5[1]=5e9d3be31121ea5ece12d872a368717c"                        >>  ${SPELL_CONFIG}
          echo   "MD5[2]=7aa0324454d107ae22328ab491a7ff0f"                        >>  ${SPELL_CONFIG}
          echo   "MD5[3]=c9defaaf61bf1fdfe7f7b23ba5e986bf"                        >>  ${SPELL_CONFIG}
   fi  &&
