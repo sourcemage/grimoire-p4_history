@@ -2,7 +2,7 @@
 
   if  [  -d  /usr/share/mplayer/font  ]
   then
-    rmdir    /usr/share/mplayer/font
+    rm  -rf  /usr/share/mplayer/font
   fi                                   &&
   prepare_install                      &&
   mkdir  -p  /usr/share/mplayer/fonts  &&
