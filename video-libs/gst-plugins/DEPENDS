@@ -19,6 +19,7 @@ optional_depends  "Hermes"  ""  ""  "for colorspace conversion support (needed f
 optional_depends  "aalib"   ""  ""  "for ascii-art video output"  &&
 
 # audio codecs
+optional_depends  "audiofile" "" "" "for AIFF/.snd/.au decoder"  &&
 optional_depends  "mad"  ""  ""  "for mad mp3 decoder"  &&
 optional_depends  "lame"  ""  ""  "for mp3 encoder"  &&
 optional_depends  "libvorbis"  ""  ""  "for ogg-vorbis decoder/encoder"  &&
@@ -32,7 +33,8 @@ optional_depends  "libpng"  ""  ""  "for png encoder"  &&
 
 #video codecs
 optional_depends  "avifile"  ""  ""  "for avifile video decoder"  &&
-optional_depends  "mpeg2dec"  ""  ""  "for mpeg1/2 video decoder"  &&
+# needs >= 0.3.1, other spells fail with that, disabling for now
+#optional_depends  "mpeg2dec"  ""  ""  "for mpeg1/2 video decoder"  &&
 optional_depends  "libdv" ""  ""  "for dv video decoder"  &&
 optional_depends  "libraw1394"  ""  ""  "for RAW1394 dv video decoder"
 
