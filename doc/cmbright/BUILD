@@ -14,10 +14,12 @@
     cd ..
 
     prepare_install                                     &&
+    mkdir -p $TEXMF/fonts/source/public/$SPELL \
+        $TEXMF/fonts/tfm/public/$SPELL $TEXMF/tex/latex/$SPELL \
+        /usr/doc/$SPELL                                 &&
     
     cp  -r  mf/  $TEXMF/fonts/source/public/$SPELL      &&
     cp  -r  tfm/ $TEXMF/fonts/tfm/public/$SPELL         &&
-    cp      latex/*.fd $TEXMF/tex/latex/$SPELL          &&
-    cp      latex/*.dvi /usr/doc/$SPELL
+    cp      latex/*.fd $TEXMF/tex/latex/$SPELL
 
 ) > $C_FIFO 2>&1
