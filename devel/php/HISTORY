@@ -1,3 +1,47 @@
+2002-04-05	David D. Huff Jr.	<David.Huff@computer-critters.com>
+
+	*	Zend is activated by "--enable-online-optimization"
+		Added/changed additional parameters and depends as listed
+		Removed Changelog
+		Replaced maintainer name cromwell@kublai.com with my own
+		Changed UPDATED=20020405
+		Added AddType application/x-httpd-php .php .html to httpd.conf
+		Corrected stop/start/startssl/restart logic
+		Cleaned up POST_INSTALL & POST_REMOVE logic
+
+	*	Added the following compile parameters:
+	--disable-static 		\
+	--disable-debug 		\
+	--disable-rpath 		\
+	--enable-inline-optimization 	\
+	--enable-pic			\
+	--enable-bcmath 		\
+	--enable-magic-quotes 		\
+	--enable-track-vars 		\
+	--enable-safe-mode 		\
+	--enable-sysvsem 		\
+	--enable-sysvshm 		\
+	--enable-force-cgi-redirect 	\
+	--enable-trans-sid 		\
+	--enable-yp 			\
+	--enable-ftp 			\
+	--enable-wddx 			\
+	--enable-filepro		\
+	--enable-dbase			\
+	--with-regex=system 		\
+	--with-versioning 		\
+	--with-mod_charset 		\
+	--with-layout=GNU		\
+
+	*	Made zlib a depends instead of an optional depends
+
+	*	Added the following optional depends
+optional_depends  "curl"      	"--with-curl"        	""  "for transferring files using URL syntax"        		&&
+optional_depends  "gdbm"       	"--with-gdbm"  		""  "database routines that use extensible hashing"      	&&
+optional_depends  "mm"       	"--with-mm"  		""  "for sharing memory between related processes"      	&&
+optional_depends  "expat"      	"--with-xml --with-expat-dir=/usr"  		""  "expat is a XML parsing library"   	&&
+
+
 20011219, php-4.1.0, kongar
 
 - added mod_ssl support to POST_INSTALL
