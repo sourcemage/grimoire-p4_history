@@ -20,6 +20,10 @@ fi
 # Flexible responce
 if  !  grep  -q  "CF_FLEXR"  $SPELL_CONFIG;  then
   message  "Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next option working."
+  if  spell_installed  libnet
+  then  message  "You have libnet v`gaze version libnet|grep libnet|awk '{print $4}'` installed"
+  else  message  "You do not have libnet installed, but v`gaze version libnet|grep libnet|awk '{print $4}'` would be used"
+  fi &&
   if  query  'Do you want enable "Flexible response" code ?' n
   then  echo  "CF_FLEXR=y"  >>  $SPELL_CONFIG
   else  echo  "CF_FLEXR=n"  >>  $SPELL_CONFIG
