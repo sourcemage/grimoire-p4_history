@@ -4,7 +4,7 @@ RCS file: /cvsroot/mplayer/main/configure,v
 retrieving revision 1.815
 diff -u -r1.815 configure
 --- configure	18 Nov 2003 20:50:48 -0000	1.815
-+++ configure	21 Nov 2003 12:47:08 -0000
++++ configure	30 Nov 2003 16:55:07 -0000
 @@ -3898,7 +3898,7 @@
    cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-sys'
    cat > $TMPC << EOF
@@ -20,7 +20,7 @@ RCS file: /cvsroot/mplayer/main/libao2/ao_alsa9.c,v
 retrieving revision 1.40
 diff -u -r1.40 ao_alsa9.c
 --- libao2/ao_alsa9.c	4 Oct 2003 17:28:58 -0000	1.40
-+++ libao2/ao_alsa9.c	21 Nov 2003 12:47:13 -0000
++++ libao2/ao_alsa9.c	30 Nov 2003 16:55:12 -0000
 @@ -22,6 +22,7 @@
  #if HAVE_SYS_ASOUNDLIB_H
  #include <sys/asoundlib.h>
@@ -29,3 +29,18 @@ diff -u -r1.40 ao_alsa9.c
  #include <alsa/asoundlib.h>
  #else
  #error "asoundlib.h is not in sys/ or alsa/ - please bugreport"
+Index: libmpdemux/ai_alsa.c
+===================================================================
+RCS file: /cvsroot/mplayer/main/libmpdemux/ai_alsa.c,v
+retrieving revision 1.5
+diff -u -r1.5 ai_alsa.c
+--- libmpdemux/ai_alsa.c	7 Aug 2003 12:24:35 -0000	1.5
++++ libmpdemux/ai_alsa.c	30 Nov 2003 16:55:14 -0000
+@@ -6,6 +6,7 @@
+ 
+ #if defined(USE_TV) && (defined(HAVE_TV_V4L) || defined(HAVE_TV_V4L2)) && defined(HAVE_ALSA9)
+ 
++#define ALSA_PCM_OLD_HW_PARAMS_API
+ #include <alsa/asoundlib.h>
+ #include "audio_in.h"
+ #include "mp_msg.h"
