@@ -1,0 +1,25 @@
+           SPELL=wxgtk
+           SPELLX=wxGTK
+        BUILD_API=2
+if [ "$DEVEL" = "n" ];then
+         VERSION=2.4.2
+          MD5[0]=996810364b64a267c0fcb0d473e0271c
+else
+         VERSION=2.5.3
+          MD5[0]=f0585cbe0cf2716e42cb3ec80d64a3a0
+fi
+          SOURCE=$SPELLX-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
+      LICENSE[0]=http://www.wxwidgets.org/licence3.txt
+        WEB_SITE=http://www.wxwidgets.org/
+         ENTERED=20011217
+         UPDATED=20040329
+           SHORT="GTK+ verion of wxWidgets API"
+cat << EOF
+wxGTK - GTK+ implementation of wxWidgets API for GUI's.
+wxWindows provides online help, network programming, streams, clipboard
+and drag and drop, multithreading, image loading and saving in a variety
+of formats, database support, HTML viewing and printing.  Quite good for
+a GUI API.
+EOF

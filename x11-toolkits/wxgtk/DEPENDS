@@ -1,0 +1,9 @@
+depends X11-LIBS "--with-x --x-libraries=${INSTALL_ROOT}/usr/X11R6/lib" &&
+depends zlib '--with-zlib' &&
+depends jpeg '--with-libjpeg' &&
+depends libpng '--with-libpng' &&
+depends tiff '--with-libtiff' &&
+#depends expat '--with-expat' &&
+depends gtk+2 '--with-gtk --enable-gtk2'
+
+#optional_depends SDL '--with-sdl' '--without-sdl' 'for sound system support'
