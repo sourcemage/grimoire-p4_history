@@ -1,3 +1,9 @@
+2004-02-10 Eric Sandall <eric@sandall.us>
+	* BUILD: kdebindings 3.2.0 installs  syntactically
+	invalid /usr/lib/python2.3/pydcop.py, which then causes
+	Python to fail to build. So we just move it out of the
+	way during a Python build and put it back, if it exists.
+
 2004-01-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: added OPT="$CFLAGS", fixes bug #5545
 
