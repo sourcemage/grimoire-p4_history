@@ -1,0 +1,19 @@
+           SPELL=gotmail
+         VERSION=0.7.3
+          SOURCE=${SPELL}_${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ssl.usu.edu/paul/gotmail/$SOURCE
+          MD5[0]=f63f57c014ac4601f8cee5e5a5453914
+        WEB_SITE=http://ssl.usu.edu/paul/gotmail/
+         ENTERED=20020716
+         UPDATED=20020716
+         LICENSE=http://ssl.usu.edu/paul/gotmail/
+      MAINTAINER=dufflebunk@dufflebunk.homeip.net
+           SHORT="Utility to download mail from Hotmail accounts"
+cat << EOF
+Gotmail is a utility to non-interactively download email from a Hotmail
+account. It can download messages from all folders, messages from
+certain folders, or new messages only. There are options to delete
+downloaded messages or mark them as read. Gotmail can forward messages
+to other email addresses or save them as local mbox-style mailboxes. 
+EOF
