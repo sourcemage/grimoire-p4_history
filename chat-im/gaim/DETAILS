@@ -1,31 +1,36 @@
            SPELL=gaim
           SPELL2=gaim-encryption
-#	  SPELL3=gaim-e
-         VERSION=0.74
-        VERSION2=2.18
-#	VERSION3=0.9.8
-          SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=gaim-encryption-$VERSION2.tar.gz
-#	 SOURCE3=$SPELL3-$VERSION3.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+         VERSION=${VERSION:=0.75}
+        VERSION2=${VERSION2:=2.20}
+if [ "$CVS" = "no" ]; then
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
-#  SOURCE3_URL[0]=$SOURCEFORGE_URL/$SPELL3/$SOURCE3
+          MD5[0]=9c18760474ea8976803e0786502966c5
+          MD5[1]=ac59b386b6924e00cb1169c2d986a914
+else     VERSION=cvs
+        VERSION2=cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim:gaim
+  SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
+  FORCE_DOWNLOAD=1
+          MD5[0]="IGNORE"
+          MD5[1]="IGNORE"
+fi
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim.sourceforge.net/
        WEB_SITE2=http://gaim-encryption.sourceforge.net/
-#       WEB_SITE3=http://gaim-e.sourceforge.net/
-      MAINTAINER=jrocha@sourcemage.org
-         ENTERED=20011024
-         UPDATED=20031104
-          MD5[0]=05eb661e8d4c69f080a36c48c3b757ab
-          MD5[1]=983acd49ac87b020c8977334b220b87f
-#          MD5[2]=a3cafbed125d2360be22d023aae1bf89
       LICENSE[0]=GPL
+      LICENSE[1]=GPL
       MAKE_NJOBS=1
     DISTCC_HOSTS=
+          CCACHE=off
+         ENTERED=20011024
+         UPDATED=20040113
            SHORT="gaim is an instant messanger client for several protocols"
 cat << EOF
 gaim is an instant messanger client used primarly for the AIM protocol
 but has plugin support for icq, irc, yahoo, and jabber all at once
 in one interface.
 EOF
+
