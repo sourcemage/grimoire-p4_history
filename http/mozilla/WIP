@@ -20,3 +20,14 @@ make[2]: Leaving directory `/usr/src/mozilla'
 make[1]: *** [default] Error 2
 make[1]: Leaving directory `/usr/src/mozilla'
  ! Problem Detected !
+
+without SVG:
+c++ -o nsAppRunner.o -c -DXPCOM_GLUE -DOSTYPE=\"Linux2.4\" -DOSARCH=\"Linux\" -DSPLASH_XPM=\"./splash.xpm\" -I. -I. -I../../dist/sdk -I../../dist/include/xpcom -I../../dist/include/string -I../../dist/include/webbrwsr -I../../dist/include/widget -I../../dist/include/dom -I../../dist/include/necko -I../../dist/include/content -I../../dist/include/pref -I../../dist/include/appshell -I../../dist/include/gfx -I../../dist/include/xpinstall -I../../dist/include/uriloader -I../../dist/include/windowwatcher -I../../dist/include/embed_base -I../../dist/include/embedcomponents -I../../dist/include/docshell -I../../dist/include/locale -I../../dist/include/profile -I../../dist/include/jprof -I../../dist/include/xremoteservice -I../../dist/include/apprunner -I../../dist/include -I/usr/src/mozilla/dist/include/nspr     -I/usr/X11R6/include   -fPIC  -I/usr/X11R6/include -frtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O2 -fshort-wchar -pthread -pipe  -DNDEBUG -DTRIMMED -ffunction-sections -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O2 -DWIDGET_DLL=\"libwidget_gtk2.so\" -DGFXWIN_DLL=\"libgfx_gtk2.so\" -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 -I/usr/X11R6/include -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include    -I/usr/X11R6/include -DMOZILLA_CLIENT -include ../../mozilla-config.h -Wp,-MD,.deps/nsAppRunner.pp nsAppRunner.cpp
+nsAppRunner.cpp:84:23: nsBuildID.h: No such file or directory
+nsAppRunner.cpp: In function `nsresult DumpVersion(char*)':
+nsAppRunner.cpp:1405: error: `NS_BUILD_ID' undeclared (first use this function)
+nsAppRunner.cpp:1405: error: (Each undeclared identifier is reported only once for each function it appears in.)
+make[3]: *** [nsAppRunner.o] Error 1
+make[3]: Leaving directory `/usr/src/mozilla/xpfe/bootstrap'
+make[2]: *** [tier_99] Error 2
+make[2]: Leaving directory `/usr/src/mozilla'
