@@ -15,4 +15,8 @@ optional_depends  "libpng"                  \
 optional_depends  "tiff"                    \
                   "--with-tiff"             \
                   ""                        \
-                  "to enable TIFF support"
+                  "to enable TIFF support"  &&
+optional_depends  "pango"                   \
+                  "--with-pango"            \
+                  "--without-pango"         \
+                  "to enable pango font rendering"
