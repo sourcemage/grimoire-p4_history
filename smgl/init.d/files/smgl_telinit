@@ -229,7 +229,7 @@ run_services()
 
 run_runlevel_display()
 {
-  display-services | grep '^%' | head -1 | cut -c2-
+  display-services | grep '^%' | head -n 1 | cut -c2-
 }
 
 smgl_telinit()
