@@ -13,6 +13,7 @@ elif  spell_installed  "apache2";  then
   SLOC="\/usr\/share\/apache2"
 fi
 
+prepare_install
 
 # move docs
 mkdir /usr/doc/openwebmail 1>/dev/null 2>&1
