@@ -1,8 +1,8 @@
            SPELL=Archive-Tar
-         VERSION=0.22
+         VERSION=0.23
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/S/SR/SRZ/$SOURCE
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/K/KA/KANE/$SOURCE
           MD5[0]="a9d7d99cbbcd1d0e7a3156700b1c9977"
          LICENSE=ART
         WEB_SITE="http://search.cpan.org?module=Archive::Tar"
@@ -11,10 +11,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER="redlemon@knoware.nl"
            SHORT="Read, write and manipulate tar files"
 cat << EOF
+
 Archive::Tar provides an object oriented mechanism for
 handling tar files.  It provides class methods for quick
 and easy files handling while also allowing for the cre­
 ation of tar file objects for custom manipulation.  If you
 have the Compress::Zlib module installed, Archive::Tar
 will also support compressed or gzipped tar files.
+
 EOF
