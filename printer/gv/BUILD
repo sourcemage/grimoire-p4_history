@@ -7,6 +7,7 @@
 #  perl  -i  -pe  's/ComplexProgramTarget/ComplexProgramTargetNoMan/'  source/Imakefile  &&
 
   patch  -p1  <  $SCRIPT_DIRECTORY/asa-0000.gv-3.5.8.patch  &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/gv-3.5.8-debian.diff     &&
   xmkmf                                                     &&
   cd  source                                                &&
   ./inc_2lit                                                &&
