@@ -1,9 +1,12 @@
 (
+  sed -i "s/-Werror//" configure.in            &&
+  autoconf                                     &&
 if spell_installed Python;then
   OPTS="--with-pythonver=`installed_version Python|cut -c-3` $OPTS"
 fi						&&
 #if spell_installed perl;then
-#  OPTS="--use-perl-lib=/usr/lib/perl5/`installed_version perl` $OPTS"
+#  PP=`installed_version perl`
+#  OPTS="--with-perl-module=/usr/lib/perl5/$PP $OPTS"
 #fi                                              &&
 
 echo opts=$OPTS					&&
