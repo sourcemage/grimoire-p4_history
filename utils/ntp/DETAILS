@@ -1,14 +1,14 @@
            SPELL=ntp
-         VERSION=4.1.1c-rc1
+         VERSION=4.1.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.udel.edu/pub/ntp/ntp4/$SOURCE
-   SOURCE_URL[1]=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$SOURCE
-          MD5[0]="d41d8cd98f00b204e9800998ecf8427e"
+   SOURCE_URL[0]=http://www.ntp.org/ntp_spool/ntp4/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.udel.edu/pub/ntp/ntp4/$SOURCE
+          MD5[0]="f5886054dc5e4c1988414a4a30a73895"
           MD5[1]=${MD5[0]}
         WEB_SITE=http://www.eecis.udel.edu/~ntp/
          ENTERED=20011004
-         UPDATED=20030129
+         UPDATED=20030206
       LICENSE[0]=PD
            SHORT="ntp syncs your time with an ntp server"
 cat << EOF
