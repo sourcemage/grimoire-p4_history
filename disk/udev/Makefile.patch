@@ -1,5 +1,5 @@
---- Makefile	2004-04-03 12:20:04.000000000 +0200
-+++ Makefile.cp	2004-04-03 12:26:20.000000000 +0200
+--- Makefile~	2004-09-14 07:55:34.000000000 +0200
++++ Makefile	2004-09-17 21:07:33.398520228 +0200
 @@ -109,7 +109,6 @@
  	OPTIMIZATION+=-fstrict-aliasing
  endif
@@ -8,7 +8,7 @@
  	OPTIMIZATION += ${shell if $(CC) -mpreferred-stack-boundary=2 -S -o /dev/null -xc \
  		/dev/null >/dev/null 2>&1; then echo "-mpreferred-stack-boundary=2"; fi}
  	OPTIMIZATION += ${shell if $(CC) -malign-functions=0 -malign-jumps=0 -S -o /dev/null -xc \
-@@ -384,7 +383,7 @@
+@@ -380,7 +379,7 @@
  	- rm $(mandir)/man8/udevd.8
  	- rm $(mandir)/man8/udevsend.8
  
@@ -17,10 +17,10 @@
  	$(INSTALL) -d $(DESTDIR)$(udevdir)
  	$(INSTALL) -d $(DESTDIR)$(hotplugdir)
  	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
-@@ -394,10 +393,6 @@
+@@ -390,10 +389,6 @@
  	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
- 	$(INSTALL_PROGRAM) -D $(STARTER) $(DESTDIR)$(sbindir)/$(STARTER)
- 	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/$(ROOT).hotplug
+ 	ln -sf $(sbindir)/udev $(DESTDIR)$(sbindir)/$(STARTER)
+ 	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
 -ifndef DESTDIR
 -	- killall udevd
 -	- rm -f $(udevdir)/.udev.tdb
