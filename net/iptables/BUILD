@@ -1,6 +1,6 @@
 (
 
-  sedit  "s/-O2/$CFLAGS/"  Makefile  &&
+# sedit  "s/-O2/$CFLAGS/"  Makefile  &&
   make  LIBDIR=/usr/lib              &&
   prepare_install                    &&
   make  LIBDIR=/usr/lib              \
