@@ -1,0 +1,16 @@
+           SPELL=ncc
+         VERSION=2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://students.ceid.upatras.gr/~sxanth/ncc/$SOURCE
+          MD5[0]=2ca95a28e32764cef5cd33fcbb67d934
+        WEB_SITE=http://students.ceid.upatras.gr/~sxanth/ncc/
+         ENTERED=20041127
+      LICENSE[0]=Freeware
+       BUILD_API=2
+           SHORT="C source code analyzer"
+cat << EOF
+ncc is a C source code analyzer which generates program flow and variable
+usage information. Using it should be as easy as changing CC=gcc to CC=ncc
+in makefiles, and effort has been made to support most common gcc extensions.
+EOF
