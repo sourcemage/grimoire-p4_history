@@ -1,14 +1,5 @@
 (
-
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-							 --enable-grace-home=/usr/share/grace  \
-               $OPTS                 && 
-  make                               &&
-  prepare_install                    &&
-  make    install                    &&
-  cp  /usr/share/grace/bin/*  /usr/bin
+  export OPTS="$OPTS --enable-grace-home=${INSTALL_ROOT}/usr/bin/grace" &&
+  default_build
 
 ) > $C_FIFO 2>&1
