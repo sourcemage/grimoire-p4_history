@@ -1,4 +1,6 @@
 (
+  xhost +localhost
+  export DISPLAY=:0.0
 
   ./configure  --prefix=${INSTALL_ROOT}/usr  \
                --disable-gnomedb             \
