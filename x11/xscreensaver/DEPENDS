@@ -1,7 +1,62 @@
-depends  glut  &&
 depends  bc    &&
 depends  zlib  &&
 
-optional_depends  audiofile   ""  ""  "for audio support"  &&
-optional_depends  esound      ""  ""  "for enlightenment sound daemon support"  &&
-optional_depends  control-center "" "" "for gnome support"
+optional_depends  Linux-PAM                                     \
+                  "--with-pam"                                  \
+                  "--without-pam"                               \
+                  "for Pluggable Authentication Modules (PAM)"  &&
+
+optional_depends  krb5                                   \
+                  "--with-kerberos"                      \
+                  "--without-kerberos"                   \
+                  "for Kerberos authentication support"  &&
+
+optional_depends  shadow                                        \
+                  "--with-shadow"                               \
+                  "--without-shadow"                            \
+                  "for shadow password authentication support"  &&
+
+optional_depends  gtk+                       \
+                  "--with-gtk"               \
+                  "--without-gtk"            \
+                  "for Gtk toolkit support"  &&
+
+optional_depends  libxml                                          \
+                  "--with-xml"                                    \
+                  "--without-xml"                                 \
+                  "for some parts of the Gtk interface use this"  &&
+
+optional_depends  control-center                          \
+                  "--with-gnome"                          \
+                  "--without-gnome"                       \
+                  "for Gnome 1.x Control Center support"  &&
+
+optional_depends  glut                           \
+                  "--with-gl  --with-gle"        \
+                  "--without-gl  --without-gle"  \
+                  "for OpenGL and GLE demos"     &&
+
+optional_depends  gdk-pixbuf                    \
+                  "--with-pixbuf"               \
+                  "--without-pixbuf"            \
+                  "for demos which use pixbuf"  &&
+
+optional_depends  fortune                      \
+                  "--with-fortune"             \
+                  "--without-fortune"          \
+                  "for fortune text messages"  &&
+
+optional_depends  audiofile            \
+                  ""                   \
+                  ""                   \
+                  "for audio support"  &&
+
+optional_depends  esound                                    \
+                  ""                                        \
+                  ""                                        \
+                  "for enlightenment sound daemon support"  &&
+
+optional_depends  jpeg                      \
+                  "--with-jpeg"             \
+                  "--without-jpeg"          \
+                  "for JPEG image support"

@@ -1,6 +1,7 @@
 (
 
-  cp  $CONFIG_CACHE/net-tools.config.h  config.h               &&
+  cp  $CONFIG_CACHE/net-tools.config.h     config.h            &&
+  cp  $CONFIG_CACHE/net-tools.config.make  config.make         &&
 
   make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"  &&
   prepare_install                                              &&

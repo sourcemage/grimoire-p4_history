@@ -1,11 +1,9 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/ElectricFence-2.1.patch  &&
-
   if [[ $CC ]]; then
-	  sedit  "s:CC= cc:CC= $CC:"  $SOURCE_DIRECTORY/Makefile
+	  sedit "s:CC= cc:CC= $CC:" $SOURCE_DIRECTORY/Makefile
   fi
-  sedit  "s:CFLAGS= -g:CFLAGS= -g $CFLAGS:"  $SOURCE_DIRECTORY/Makefile  &&
+  sedit "s:CFLAGS= -g -DUSE_SEMAPHORE \$(PIC):CFLAGS= -g $CFLAGS -DUSE_SEMAPHORE \$(PIC):" $SOURCE_DIRECTORY/Makefile &&
   
   make 	           &&
   prepare_install

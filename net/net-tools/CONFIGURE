@@ -2,13 +2,15 @@
 
 pushd $SCRIPT_DIRECTORY > /dev/null
 DO_CONFIG=yes
-if  [  -f  $CONFIG_CACHE/net-tools.config.h  ]  ;  then
+if  [  -f  $CONFIG_CACHE/net-tools.config.h  -a  \
+      -f  $CONFIG_CACHE/net-tools.config.make  ]  ;  then
   query  "Reconfigure net-tools?"  n  ||  DO_CONFIG=no
 fi
 
 if  [  "$DO_CONFIG" = "yes"  ]  ;  then
   ./configure.sh  config.in
-  cp  config.h  $CONFIG_CACHE/net-tools.config.h
+  cp  config.h     $CONFIG_CACHE/net-tools.config.h
+  cp  config.make  $CONFIG_CACHE/net-tools.config.make
   rm  -f  config.h  config.make  config.log  config.status
 fi
 popd > /dev/null

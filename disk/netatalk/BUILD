@@ -1,13 +1,10 @@
 (
 
-  if  spell_installed  Linux-PAM;  then
-    WITH_PAM="--with-pam"
-  fi
-
   ./configure  --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               $WITH_PAM             \
+               --enable-redhat       \
+               --enable-fhs          \
                $OPTS                 &&
   make                               &&
   prepare_install                    &&

@@ -1,5 +1,16 @@
-depends openssl 			&&
-optional_depends  tcp_wrappers          \
-                  "--with-tcp-wrappers" \
-                  ""                    \
-                  " to allow netatalk to check hosts.allow/deny"
+depends  openssl  &&
+
+optional_depends  tcp_wrappers                                    \
+                  "--with-tcp-wrappers"                           \
+                  "--without-tcp-wrappers"                        \
+                  " to allow netatalk to check hosts.allow/deny"  &&
+
+optional_depends  Linux-PAM                         \
+                  "--with-pam"                      \
+                  "--without-pam"                   \
+                  "for PAM authentication support"  &&
+
+optional_depends  shadow                         \
+                  "--with-shadow"                \
+                  "--without-shadow"             \
+                  "for shadow password support"
