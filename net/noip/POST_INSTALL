@@ -1,11 +1,15 @@
 {
-if query "Do you want to configure noip now ?" y
-then
- /usr/sbin/noip-configure.sh
+
+if [ ! -e /etc/no-ip2.conf ]; then
+  if query "Do you want to configure noip now ?" y
+  then
+   /usr/bin/noip2 -Y -C -d -c /etc/no-ip2.conf
+  fi
 fi
 
 case  $NOIP_BOOT  in
   y|Y)  /etc/init.d/noip.sh  start  ;;
   *)    true                        ;;
 esac
+
 }
