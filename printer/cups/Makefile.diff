@@ -1,0 +1,17 @@
+--- Makefile	2002-04-23 10:49:34.000000000 -0700
++++ Makefile	2002-07-30 18:29:51.000000000 -0700
+@@ -93,14 +93,6 @@
+ 	if test "x$(INITDIR)" != "x"; then \
+ 		$(INSTALL_DIR) $(BUILDROOT)$(INITDIR)/init.d; \
+ 		$(INSTALL_SCRIPT) cups.sh $(BUILDROOT)$(INITDIR)/init.d/cups; \
+-		$(INSTALL_DIR) $(BUILDROOT)$(INITDIR)/rc0.d; \
+-		$(INSTALL_SCRIPT) cups.sh  $(BUILDROOT)$(INITDIR)/rc0.d/K00cups; \
+-		$(INSTALL_DIR) $(BUILDROOT)$(INITDIR)/rc2.d; \
+-		$(INSTALL_SCRIPT) cups.sh $(BUILDROOT)$(INITDIR)/rc2.d/S99cups; \
+-		$(INSTALL_DIR) $(BUILDROOT)$(INITDIR)/rc3.d; \
+-		$(INSTALL_SCRIPT) cups.sh $(BUILDROOT)$(INITDIR)/rc3.d/S99cups; \
+-		$(INSTALL_DIR) $(BUILDROOT)$(INITDIR)/rc5.d; \
+-		$(INSTALL_SCRIPT) cups.sh $(BUILDROOT)$(INITDIR)/rc5.d/S99cups; \
+ 	fi
+ 	if test "x$(INITDIR)" = "x" -a "x$(INITDDIR)" != "x"; then \
+ 		$(INSTALL_DIR) $(BUILDROOT)$(INITDDIR); \
