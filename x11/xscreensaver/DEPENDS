@@ -36,4 +36,9 @@ optional_depends  fortune                      \
 optional_depends  jpeg                      \
                   "--with-jpeg"             \
                   "--without-jpeg"          \
-                  "for JPEG image support"
+                  "for JPEG image support"  &&
+
+optional_depends  gdk-pixbuf                      \
+                  "--with-pixbuf"                 \
+                 "--without-pixbuf"               \
+                  "for GDK-Pixbuf image support"
