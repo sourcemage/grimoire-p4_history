@@ -1,7 +1,3 @@
-(
-
-  ./autogen.sh  &&
-
-  default_build
-
-) > $C_FIFO 2>&1
+automake  --gnu  --add-missing  --force-missing  ||
+./autogen.sh                                     &&
+default_build
