@@ -1,13 +1,22 @@
             SPELL=gnomemeeting
+if [ "$CVS" == "y" ]; then
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:gnomemeeting
+  FORCE_DOWNLOAD=1
+          MD5[0]="IGNORE"
+else
           VERSION=1.0.2
            SOURCE=$SPELL-$VERSION.tar.gz
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/$SOURCE
-           MD5[0]=339cf188d95d4271567a851eb77bd5a7
+           MD5[0]='339cf188d95d4271567a851eb77bd5a7'
+fi
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          LICENSE=GPL
+        BUILD_API=2
          WEB_SITE=http://www.gnomemeeting.org
           ENTERED=20020508
-          UPDATED=20040812
-          LICENSE=GPL
+          UPDATED=20040905
             SHORT="H323 videoconference tool"
 cat << EOF
 GnomeMeeting is the first Linux H.323 compatible client designed for the Gnome desktop. 

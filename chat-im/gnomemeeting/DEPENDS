@@ -1,4 +1,17 @@
-depends libgnomeui      &&
-depends gtk+2           &&
-depends glib2           &&
-depends  openh323
+depends  openh323                        &&
+depends  libgnomeui                      &&
+
+if [ "$CVS" == "y" ]; then
+   depends automake-1.7
+fi                                       &&
+
+optional_depends "sdl"                   \
+                 ""                      \
+                 "--disable-sdl"         \
+                 "For full screen video" &&
+
+optional_depends "arts"                  \
+                 ""                      \
+                 ""                      \
+                 "For ARTS support"
+
