@@ -1,5 +1,6 @@
 (
 
+  sedit  '382,391s/$/\\n\\/'  mii-tool.c                           &&
   cp  $CONFIG_CACHE/net-tools.config.h     config.h                &&
   cp  $CONFIG_CACHE/net-tools.config.make  config.make             &&
   patch -p1 < $SCRIPT_DIRECTORY/x25_address-fix.patch              &&
