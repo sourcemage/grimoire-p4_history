@@ -1,0 +1,9 @@
+2005-04-04 Seth Woolley <seth@tautology.org>
+	* DETAILS,BUILD,INSTALL: spell created
+	  On that note, why the hell don't people use autotools?
+	  Used these commands while in the directory to gen the gpg stuff:
+	  gpg --export --armor '2005 Personal Key' |
+	    gpg --no-default-keyring --keyring ./swoolley.gpg --import
+	  gpg  --armor  --detach-sign --keyring swoolley.gpg \
+	    -o hashsum-1.6.tar.gz.asc /var/spool/sorcery/hashsum-1.6.tar.gz
+	  Spell supports GPG signature now.
