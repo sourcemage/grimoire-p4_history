@@ -39,8 +39,8 @@ fi  &&
 # Fix for starting firefox without running as root first
 # from Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
-       -C  ${MOZILLA_HOME}                               &&
+#tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
+#       -C  ${MOZILLA_HOME}                               &&
 
 #
 # Create a /usr/lib/firefox symlink for easy module installation
@@ -50,13 +50,13 @@ ln  -sf  ${MOZILLA_HOME}  /usr/lib/firefox  &&
 #
 # Securityfix for firefox.
 #
-mkdir -p $SOURCE_DIRECTORY/patch &&
-cd $SOURCE_DIRECTORY/patch &&
-unzip $SOURCE_CACHE/$SOURCE2 -d ./ &&
-mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref &&
-cp -vaLf bug259708.js ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref/ &&
-mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
-cp -vaLf nsHelperAppDlg.js ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
+#mkdir -p $SOURCE_DIRECTORY/patch &&
+#cd $SOURCE_DIRECTORY/patch &&
+#unzip $SOURCE_CACHE/$SOURCE2 -d ./ &&
+#mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref &&
+#cp -vaLf bug259708.js ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref/ &&
+#mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
+#cp -vaLf nsHelperAppDlg.js ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
 
 #
 # Script to set MOZILLA_FIVE_HOME
