@@ -1,3 +1,18 @@
+2004-07-20 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.7.0
+	  BUILD_API=2
+	  Removed MAINTAINER
+	  Shortened SHORT
+	* BUILD: Converted to BUILD_API 2
+	  Removed TABs
+	  Formatted to Guru Handbook
+	  Enable optimizations
+	* DEPENDS: Formatted to Guru Handbook
+	  Needs "--disable-fluidsynth" if fluidsynth is not to be used
+	  Except their configure doesn't recognize "--disable-fluidsynth", so
+	  fluidsynth is now a regular dependency (fails without fluidsynth
+	  installed)
+
 2004-06-02 Seth Woolley <seth@tautology.org>
 	* DETAILS: FUZZ fix .gz to .bz2	
 
