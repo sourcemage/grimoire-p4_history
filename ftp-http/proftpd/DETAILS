@@ -1,7 +1,4 @@
            SPELL=proftpd
-       # VERSION=1.2.4
-       # Is version 1.2.5rc1 stable or not, uncertain...
-       # Updating to 1.2.5rc1 due to a security vulnerability in 1.2.4
          VERSION=1.2.5rc1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -9,6 +6,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.proftpd.org
          ENTERED=20011112
          UPDATED=20020122
+      MAINTAINER=eric@schabell.com
            SHORT="proftpd is a ftp server"
 cat << EOF
 ProFTPD is a proven, high-performance, scalable FTP server written
