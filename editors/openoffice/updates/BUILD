@@ -44,6 +44,10 @@ function want_parallel() {
 ### drmoriarty's "house of bad hacks" brings updates, distcc, ccache and "some" parallel builds
 want_parallel                                                                                                      &&
 cd $SOURCE_DIRECTORY                                                                                               &&
+if echo $OPTS| grep -q stlport ;
+ then mkdir -p solver/645/unxlngi4.pro/inc  &&
+      ln -sf /usr/include/stlport solver/645/unxlngi4.pro/inc/stl
+fi                                                                                                                 &&
 ### freetype update 
 if [ -f $SOURCE_CACHE/freetype-2.1.5.tar.bz2 ]; then
 rm -f freetype/download/freetype-2.1.4.tar.gz                                                                      &&
