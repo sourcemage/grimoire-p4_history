@@ -104,8 +104,18 @@ run_enable()
   for i in $*; do
     local FILE="$(ls $RUNLEVELS_DIR/*/"$i")"
     if [ ! -x "$FILE" ]; then
-      chmod ug+x "$FILE" && echo "Service $i successfully enabled." && run_script "$i" "$i" start ||
-      ( echo "an error occurred enabling service $i" > /dev/stderr && exit 1 )
+      chmod ug+x "$FILE" && echo "Service $i successfully enabled." &&
+      (
+        local RL="$(echo $FILE | sed -e 's!^.*/%\(.*\)/.*$!\1!')"
+        if display-services | grep -q "^%$RL" ; then
+          echo "Starting script $i because it was enabled within a running runlevel."
+          need "$i" || exit 1
+          #run_script "$i" "$i" start || exit 1
+        else
+          echo "Not starting script $i because it was enabled within a non-running runlevel."
+        fi
+      ) ||
+        ( echo "an error occurred enabling service $i" > /dev/stderr && exit 1 ) || INIT_FAIL_LOG=yes
     else
       echo "Service $i already enabled." > /dev/stderr
       INIT_FAIL_LOG=yes
@@ -123,8 +133,17 @@ run_disable()
       . /etc/sorcery/config
       if grep -Fq 'ESSENTIAL=yes' "$FILE" ; then query "Are you sure you want to disable this ESSENTIAL script?" n || SKIP=yes; fi
       if [ -z "$SKIP" ] ; then
-        run_script "$i" "$i" stop  && chmod ug-x "$FILE" && echo "Service $i successfully disabled." ||
-          ( echo "an error occurred disabling service $i" > /dev/stderr && exit 1 )
+      (
+        local RL="$(echo $FILE | sed -e 's!^.*/%\(.*\)/.*$!\1!')"
+        if display-services | grep -q "^%$RL" ; then
+          echo "Stopping script $i because it was disabled within a running runlevel."
+          run_script "$i" "$i" stop && initctl -c "$i" || exit 1
+        else
+          echo "Not stopping script $i because it was disabled within a non-running runlevel."
+        fi
+      ) && 
+        chmod ug-x "$FILE" && echo "Service $i successfully disabled." ||
+          ( echo "an error occurred disabling service $i" > /dev/stderr && exit 1 ) || INIT_FAIL_LOG=yes
       else
         echo "ESSENTIAL service $i skipped."
       fi
@@ -150,7 +169,7 @@ run_delete()
       fi
       if [ -z "$SKIP" ] ; then
         rm "$FILE" && echo "Service $i successfully deleted." ||
-          ( echo "an error occurred deleting service $i" > /dev/stderr && exit 1 )
+          ( echo "an error occurred deleting service $i" > /dev/stderr && exit 1 ) || INIT_FAIL_LOG=yes
       else
         echo "Delete of service $i skipped."
       fi
@@ -168,7 +187,7 @@ run_bootenable()
     local FILE="$(ls $RUNLEVELS_DIR/*/"$i")"
     if [ ! -x "$FILE" ]; then
       chmod ug+x "$FILE" && echo "Service $i successfully enabled." ||
-      ( echo "an error occurred enabling service $i" > /dev/stderr && exit 1 )
+      ( echo "an error occurred enabling service $i" > /dev/stderr && exit 1 ) || INIT_FAIL_LOG=yes
     else
       echo "Service $i already enabled." > /dev/stderr
       INIT_FAIL_LOG=yes
@@ -187,7 +206,7 @@ run_bootdisable()
       if grep -Fq 'ESSENTIAL=yes' "$FILE" ; then query "Are you sure you want to disable this ESSENTIAL script?" n || SKIP=yes; fi
       if [ -z "$SKIP" ] ; then
         chmod ug-x "$FILE" && echo "Service $i successfully disabled." ||
-          ( echo "an error occurred disabling service $i" > /dev/stderr && exit 1 )
+          ( echo "an error occurred disabling service $i" > /dev/stderr && exit 1 ) || INIT_FAIL_LOG=yes
       else
         echo "ESSENTIAL service $i skipped."
       fi
@@ -223,6 +242,23 @@ run_move()
       if [ "$OLD_RUNLEVEL" != "$2" ] ; then
         mv "$FILE" "$RUNLEVELS_DIR/%$2" &&
         echo "Script $1 moved from runlevel $OLD_RUNLEVEL to runlevel $2." || exit 1
+        if display-services | grep -q "^%$2" && ! display-services | grep -q "^%$OLD_RUNLEVEL"; then 
+          if [ -x "$RUNLEVELS_DIR/%$2/$1" ] ; then
+            echo "Starting script $1 because it moved from a non-running to a running runlevel"
+            run_script "$1" "$1" start
+          else
+            echo "Script $1 would have been started if it were enabled."
+          fi
+        elif ! display-services | grep -q "^%$2" && display-services | grep -q "^%$OLD_RUNLEVEL"; then
+          if [ -x "$RUNLEVELS_DIR/%$2/$1" ] ; then
+            echo "Stopping script $1 because it moved from a running to a non-running runlevel"
+            run_script "$1" "$1" stop
+          else
+            echo "Script $1 would have been stopped if it were enabled."
+          fi
+        else
+          echo "Script $1 not started or stopped because it stayed either in a non-running or running runlevel."
+        fi
       else
         echo "Script $1 already in runlevel $2." && exit 1
       fi
@@ -262,6 +298,21 @@ run_install()
   fi
 }
 
+run_rmservice()
+{
+  if run_services | grep -qF "$1" ; then initctl -c "$1" ; else exit 1; fi
+}
+
+run_services()
+{
+  display-services | sed -n '/^AVAILABLE SERVICES:/,/^STARTING SERVICES:/ p' | grep -v '\(AVAILABLE\|STARTING\) SERVICES:'
+}
+
+run_runlevel_display()
+{
+  display-services | grep '^%' | head -1 | cut -c2-
+}
+
 telinit()
 {
   local FAIL=no
@@ -279,8 +330,12 @@ telinit()
     disabled)      shift; run_disabled               ;;
     list)          shift; run_list                   ;;
     runlevels)     shift; run_runlevels              ;;
+    runlevel)      shift; run_runlevel_display       ;;
     move)          shift; run_move         "$1" "$2" ;;
     install)       shift; run_install      "$1" "$2" ;;
+    services)      shift; run_services               ;;
+    rmservice)     shift; run_rmservice    "$1"      ;;
+    insservice)    shift; run_insservice   "$1" "$2" ;;
     *)             cat > /dev/stderr << EOF
 usage:
 telinit run <script> [<args>]        run init <script> with arguments <args>
@@ -294,6 +349,7 @@ telinit enabled                      list enabled startup scripts
 telinit disabled                     list disabled startup scripts
 telinit list                         list startup scripts and their runlevels
 telinit runlevels                    list all runlevels
+telinit runlevel                     print the highest completed runlevel
 telinit move <script> <rlvl>         move <script> to runlevel <rlvl>
 telinit install <file> <rlvl>        install <file> into runlevel <rlvl>
 EOF
@@ -304,7 +360,7 @@ EOF
   true
   ) || FAIL=yes
   case "$1" in
-    run|switch|enabled|disabled|list|runlevels) exit 0 ;;
+    run|switch|enabled|disabled|list|runlevels|runlevel) exit 0 ;;
   esac
   [ "$FAIL" == "no" ]  ;  evaluate_retval
   [ "$FAIL" == "yes" ] && exit 1
