@@ -35,11 +35,12 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
   modprobe  soundcore
   ./configure  --prefix=/usr         \
 	       --with-kernel=/usr/src/linux \
-               --with-isapnp=yes    \
+               --with-isapnp=yes     \
                --with-sequencer=yes  \
                --with-oss=yes        \
                --with-debug=none     \
-               --with-cards=$CARD,virmidi    &&
+               --with-cards=$CARD,virmidi   \
+               $OPTS                 &&
   make                               &&
   prepare_install
 
