@@ -1,7 +1,3 @@
-(
-  sedit "s#/local##" Makefile  &&
-  make                   &&
-  prepare_install        &&
-  make  prefix=/usr   install        
-
-) > $C_FIFO 2>&1
+sedit  's:/local::'                                 Makefile  &&
+sedit  's:^MANDIR =.*:MANDIR=$(PREFIX)/share/man:'  Makefile  &&
+make
