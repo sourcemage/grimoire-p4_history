@@ -1,0 +1,17 @@
+           SPELL=hexedit
+         VERSION=1.2.4
+          SOURCE=$SPELL-$VERSION.src.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://merd.net/pixel/$SOURCE
+          MD5[0]=a8a206b9c01231c3bea8ff00ba47eadf
+        WEB_SITE=http://merd.net/pixel/hexedit.html
+      MAINTAINER=petr@dkf.ics.muni.cz
+         ENTERED=20030429
+         UPDATED=20030429
+      LICENSE[0]=GPL
+           SHORT="Hexadecimal editor"
+cat << EOF
+hexedit  shows a file both in ASCII and in hexadecimal. The file can be
+a device as the file is read a piece at a time. You can modify the file
+and search through it.
+EOF
