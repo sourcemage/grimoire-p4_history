@@ -7,15 +7,21 @@
 
 source /etc/init.d/functions
 
+if [ ! -d /var/run/samba ]; then
+  mkdir /var/run/samba
+fi
+
 case $1 in
         start)
                 echo "Starting Samba Server..."
                 loadproc /usr/sbin/smbd -D
+                loadproc /usr/sbin/nmbd -D
                 ;;
 
         stop)
                 echo "Stopping Samba Server..."
                 killproc /usr/sbin/smbd
+                killproc /usr/sbin/nmbd
                 ;;
 
         restart)
