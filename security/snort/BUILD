@@ -1,5 +1,7 @@
 (
 
+  create_account  snort  &&
+
   [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
   OPTS="--prefix=${INSTALL_ROOT}/usr  \

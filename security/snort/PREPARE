@@ -1,8 +1,0 @@
-if  !  exists_account  snort;  then
-  echo "snort:120:120" >> /etc/sorcery/accounts
-  echo "snort:120:" >> /etc/sorcery/groups
-fi
-
-if  !  grep  -q  snort  /etc/passwd  ;  then
-  create_account  snort
-fi
