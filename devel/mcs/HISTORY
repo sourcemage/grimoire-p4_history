@@ -1,3 +1,20 @@
-2003-09-10  Eric Sandall <eric@sandall.us>
+2004-02-26 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PRE_BUILD, DEPENDS, WIP: removed
+	* CONFLICTS: added conflict on itself
+	* BUILD, DETAILS: deprecated spell, it's a pain to get working and
+	doesn't buy as anything, as mono already includes everything mcs
+	would install, and all that stuff is CLI bytecode anyway, so recompiling
+	it is useless
 
-		Created spell
+2004-01-10 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added SOURCE2 for binary bootstrap
+	* PRE_BUILD: Added to uncompress SOURCE2
+	* BUILD: Copy necessary libraries/binaries from SOURCE2
+
+2004-01-09 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.29
+	* WIP: Added, doesn't compile
+
+2003-09-10  Eric Sandall <eric@sandall.us>
+	* Created spell
+

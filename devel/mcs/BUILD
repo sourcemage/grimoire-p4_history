@@ -1,10 +1,5 @@
 (
 
-  echo  "prefix=${INSTALL_ROOT}/usr"  >>  build/config.make  &&
-  echo  "CFLAGS=${CFLAGS}"            >>  build/config.make  &&
-
-  make             &&
-  prepare_install  &&
-  make  install
+  message "This spell is deprecated, use mono."
 
 )  >  ${C_FIFO}  2>&1
