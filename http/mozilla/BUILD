@@ -10,6 +10,10 @@ function make_crypto() {
 
   MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla &&
 
+  # No fast optimization for Mozilla, bit us so many times...
+  CFLAGS="${CFLAGS//-O3/-O2}" &&
+  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
+
   ./configure \
     --prefix=$INSTALL_ROOT/usr \
     --with-x \
