@@ -1,12 +1,14 @@
            SPELL=kbd
-         VERSION=1.06
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=1.08
+          SOURCE=${SPELL}-${VERSION}.tar.gz
           MD5[0]='6d28c6b74163cc34c3d593af56b3a1a9'
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.win.tue.nl/pub/linux-local/utils/$SPELL/$SOURCE
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.win.tue.nl/pub/linux-local/utils/${SPELL}/${SOURCE}
+          MD5[0]=ad1e273a6b8d7c7fb8c73fe3b64b61ae
         WEB_SITE=http://
          ENTERED=20011113
          UPDATED=20020508
+      LICENSE[0]=GPL
            SHORT="Keytable files and keyboard utilities."
 cat << EOF
 The kbd package contains keytable files and keyboard utilities compatible with kernel version 1.1.54 and later. Setfont requires 1.1.92 or later.
