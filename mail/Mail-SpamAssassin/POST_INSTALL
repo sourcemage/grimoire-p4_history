@@ -10,7 +10,7 @@ if spell_installed postfix; then
     OUTPUT_FILE="/etc/postfix/master.cf"
     grep "postfixfilter" /etc/passwd
     if [ $? -ne 0 ]; then
-      useradd -s /bin/false postfixfilter
+      useradd -g nogroup -m -s /bin/false postfixfilter
     fi
   else
     message "Skipping... (output to /etc/postfix/master.cf-Mail-SpamAssassin-sample instead)."
@@ -62,5 +62,8 @@ if spell_installed postfix; then
       diff /etc/postfix/master.cf /etc/postfix/master.cf.backup-Mail-SpamAssassin-$CUR_DATE > /etc/postfix/master.cf-rollback.patch
       rm -f /etc/postfix/master.cf.backup-Mail-SpamAssassin-$CUR_DATE
     fi
+
+  /etc/init.d/postfix.sh restart
+
   fi
 fi
