@@ -1,14 +1,14 @@
            SPELL=gtk+2
-         VERSION=2.4.9
+         VERSION=2.4.10
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=gtk+-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk+-$VERSION
    SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v${BRANCH}/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/gtk+/$BRANCH/$SOURCE
-          MD5[0]=6748c510ec2cd800bfeae2e2b82c539b
+          MD5[0]='89c200f840a817034a043d79b3babb16'
         WEB_SITE=http://www.gtk.org
          ENTERED=20020314
-         UPDATED=20040813
+         UPDATED=20040919
       LICENSE[0]=LGPL
        BUILD_API=2
            DOCS="ChangeLog COPYING NEW README* docs/*.txt docs/faq docs/tutorial"
