@@ -1,31 +1,34 @@
 (
 
   if [ $OLD_TOO == y ] ; then
-    cd $SOURCE_DIRECTORY2                      &&
-    ./configure  --build=$BUILD  $OPTS         &&
-    make                                       &&
+    cd $SOURCE_DIRECTORY2                         &&
+    ./configure  --build=$BUILD                   \
+                 --prefix=${INSTALL_ROOT}/        \
+		 $OPTS                            &&
+    make                                          &&
     cd $SOURCE_DIRECTORY
-  fi                                           &&
+  fi                                              &&
 
-  patch -p0 < $SCRIPT_DIRECTORY/module-man.patch  &&
-  ./configure  --prefix=/ $OPTS                &&
-  make                                         &&
-  prepare_install                              &&
+  patch -p0 < $SPELL_DIRECTORY/mk.diff            &&
+  ./configure  --prefix=${INSTALL_ROOT}/          \
+               $OPTS                              &&
+  make                                            &&
+  prepare_install                                 &&
 
   if [ $OLD_TOO == y ] ; then
-    cd $SOURCE_DIRECTORY2                      &&
-    make install                               &&
-    mkdir  -p  /etc/modules.d                  &&
-    touch      /etc/modules                    &&
-    touch      /etc/modules.conf               &&
-    cd $SOURCE_DIRECTORY                       &&
-    rm_source_dir $SOURCE_DIRECTORY2
-  fi                                           &&
-  make moveold             
-  make install                                 &&
-  ./generate-modprobe.conf /etc/modprobe.conf  
-  cp modprobe.devfs /etc                       &&
+    cd $SOURCE_DIRECTORY2                                     &&
+    make install                                              &&
+    mkdir  -p  ${INSTALL_ROOT}/etc/modules.d                  &&
+    touch      ${INSTALL_ROOT}/etc/modules                    &&
+    touch      ${INSTALL_ROOT}/etc/modules.conf               &&
+    cd $SOURCE_DIRECTORY                                      &&
+    rm_source_dir $SOURCE_DIRECTORY2                          
+  fi                                                          &&
+  make moveold                                                &&
+  make install                                                &&
+  ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf  &&
+  cp modprobe.devfs ${INSTALL_ROOT}/etc                       &&
   #run depmod on all current kernel trees
-  for i in `ls /lib/modules/`; do depmod $i; done > /dev/null 
+  for i in `ls ${INSTALL_ROOT}/lib/modules/`; do depmod $i; done > /dev/null 
   
 ) > $C_FIFO 2>&1
