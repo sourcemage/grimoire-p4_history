@@ -8,10 +8,10 @@ optional_depends  "openssl"              \
                   ""                     \
                   "for pop3s and imaps"  &&
 
-optional_depends  "gpgme"                \
-                  "--enable-gpgme"       \
-                  ""                     \
-                  "for encrypted email"  &&
+optional_depends  "gpgme"                         \
+                  "--enable-gpgme"                \
+                  "--disable-pgpmime-plugin"      \
+                  "for encrypted email"           &&
 
 optional_depends  "spamassassin"                  \
                   "--enable-spamassassin-plugin"  \
