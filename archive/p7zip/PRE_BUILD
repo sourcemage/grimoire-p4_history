@@ -1,0 +1,7 @@
+default_pre_build &&
+cd $SOURCE_DIRECTORY &&
+
+# TODO sense Linux on PPC or AMD64 and copy appropriate file
+cp makefile.linux_x86 makefile.machine &&
+
+sedit "s|/usr/local|$INSTALL_ROOT/usr|g" makefile
