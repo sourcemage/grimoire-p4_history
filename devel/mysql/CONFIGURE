@@ -7,6 +7,10 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
   else  echo   "MYSQL_BOOT=n"  >>  $SPELL_CONFIG
   fi
 
+  if    query  "Install Innodb Support? "  y
+  then  echo   'OPTS="$OPTS --with-innodb"'  >>  $SPELL_CONFIG
+  fi
+
   echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
 
 fi
