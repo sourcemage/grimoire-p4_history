@@ -1,3 +1,8 @@
+mk_source_dir $SOURCE_DIRECTORY &&
+unpack $SOURCE ${MD5[0]} &&
+cd $SOURCE_DIRECTORY
+
+
 if [ $PATCH24 == 'y' ]; then
 	if [ -f ${SCRIPT_DIRECTORY}/patches-2.4/$PATCHFILE ]; then 
 		patch -p1 <${SCRIPT_DIRECTORY}/patches-2.4/$PATCHFILE
