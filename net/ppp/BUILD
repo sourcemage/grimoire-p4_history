@@ -1,5 +1,5 @@
 default_build  &&
-( 
+(
 
   mkdir  -p  /etc/ppp/peers
   mkdir  -p  /etc/ppp/chat

@@ -1,0 +1,14 @@
+diff -urN python-ldap-2.0.0pre04/setup.cfg python-ldap/setup.cfg
+--- python-ldap-2.0.0pre04/setup.cfg	2002-02-08 18:18:14.000000000 -0500
++++ python-ldap/setup.cfg	2002-04-16 19:38:36.000000000 -0400
+@@ -3,8 +3,8 @@
+ 
+ [_ldap]
+ class = OpenLDAP2
+-library_dirs = /usr/local/openldap2/lib
+-include_dirs = /usr/local/openldap2/include
++library_dirs = /usr/lib
++include_dirs = /usr/include
+ libs = lber ldap resolv
+ 
+ # Installation options
