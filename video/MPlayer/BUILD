@@ -1,5 +1,8 @@
 (
 
+  # fixes bug #6833
+  patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
+
   # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
