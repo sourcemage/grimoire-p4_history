@@ -1,0 +1,197 @@
+main_options  ()  {
+
+  LP_HELP="Apply login prompt and login timeout patch?"
+  NP_HELP="Apply patch to execute the new_fax script for every new faxed received?"
+  MB_HELP="Setup mgetty to automatically start at boot?"
+
+  MGETTY_OPTIONS=`dialog  --backtitle        "Select the options you wish to enable for mgetty."  \
+                          --title            "Feature Menu"                                       \
+                          --stdout                                                                \
+                          --separate-output                                                       \
+                          --no-cancel                                                             \
+                          --item-help                                                             \
+                          --checklist                                                             \
+                          ""                                                                      \
+                          0  0  0                                                                 \
+                          "Login_Patch"     "Toggle"  "off"  "$LP_HELP"                           \
+                          "New_Fax_Patch"   "Toggle"  "on"   "$NP_HELP"                           \
+                          "Launch_At_Boot"  "Toggle"  "on"   "$MB_HELP"`
+
+  for  ITEM  in  $MGETTY_OPTIONS;
+  do
+    case  $ITEM  in
+      Login_Patch)
+        LOGIN_PATCH="y"
+        ;;
+      New_Fax_Patch)
+        NEWFAX_PATCH="y"
+        ;;
+      Launch_At_Boot)
+        MGETTY_BOOT="y"
+        ;;
+    esac
+  done
+
+  echo   "LOGIN_PATCH=$LOGIN_PATCH"   >>  $SPELL_CONFIG
+  echo  "NEWFAX_PATCH=$NEWFAX_PATCH"  >>  $SPELL_CONFIG
+  echo   "MGETTY_BOOT=$MGETTY_BOOT"   >>  $SPELL_CONFIG
+
+#  SPELL_CONFIG=$SPELL_CONFIG" LOGIN_PATCH=$LOGIN_PATCH"
+#  SPELL_CONFIG=$SPELL_CONFIG" NEWFAX_PATCH=$NEWFAX_PATCH"
+#  SPELL_CONFIG=$SPELL_CONFIG" MGETTY_BOOT=$MGETTY_BOOT"
+
+}
+
+
+
+pick_run_level  ()  {
+
+  O_HELP="Single-user mode"
+  T_HELP="Multi-user mode, without networking"
+  H_HELP="Multi-user mode, with networking"
+  F_HELP="Reserved for customization, otherwise does the same as 3"
+  V_HELP="Same as 4, it is usually used for GUI login (xdm, gdm, kdm)"
+
+  GET_RUN_LEVEL=`dialog  --backtitle        "Select the run levels you wish mgetty to start on."  \
+                         --title            "Run Level Menu"                                      \
+                         --stdout                                                                 \
+                         --separate-output                                                        \
+                         --no-cancel                                                              \
+                         --item-help                                                              \
+                         --checklist                                                              \
+                         ""                                                                       \
+                         0  0  0                                                                  \
+                         "1"  "Toggle"  "on"  "$O_HELP"                                           \
+                         "2"  "Toggle"  "on"  "$T_HELP"                                           \
+                         "3"  "Toggle"  "on"  "$H_HELP"                                           \
+                         "4"  "Toggle"  "on"  "$F_HELP"                                           \
+                         "5"  "Toggle"  "on"  "$V_HELP"`
+
+  for  ITEM  in  $GET_RUN_LEVEL;
+  do
+    case  $ITEM  in
+      1)
+        RUN_LEVEL=$RUN_LEVEL$ITEM
+        ;;
+      2)
+        RUN_LEVEL=$RUN_LEVEL$ITEM
+        ;;
+      3)
+        RUN_LEVEL=$RUN_LEVEL$ITEM
+        ;;
+      4)
+        RUN_LEVEL=$RUN_LEVEL$ITEM
+        ;;
+      5)
+        RUN_LEVEL=$RUN_LEVEL$ITEM
+        ;;
+    esac
+  done
+
+}
+
+
+
+pick_num_rings  ()  {
+
+  NUM_RINGS=`dialog  --backtitle  "Type in the number of rings to answer on."  \
+                     --stdout                                                  \
+                     --title      "Answer Rings Number"                        \
+                     --no-cancel                                               \
+                     --inputbox                                                \
+                     ""                                                        \
+                     0  0                                                      \
+                     "2"`
+
+}
+
+
+
+pick_device  ()  {
+
+  DEVICE=`dialog  --backtitle   "Select the TTY device to be used for mgetty, then press the space bar."  \
+                  --stdout                                                                                \
+                  --title       "TTY Device"                                                              \
+                  --no-cancel                                                                             \
+                  --fselect                                                                               \
+                  "/dev/ttyS*"                                                                            \
+                  0  0`
+
+}
+
+
+
+# Variable initialization
+DEVICE="/dev/ttyS*"
+NUM_RINGS="2"
+GET_RUN_LEVEL=""
+RUN_LEVEL=""
+MGETTY_OPTIONS=""
+LOGIN_PATCH="n"
+NEWFAX_PATCH="n"
+MGETTY_BOOT="n"
+INITTAB_STRING=""
+
+
+
+# Main Menu
+main_options
+
+
+
+# Check to open boot options menu
+if  [  "$MGETTY_BOOT"  ==  "y"  ];
+then
+  pick_run_level
+  while  [  "$GET_RUN_LEVEL"  ==  ""  ];
+  do
+    dialog  --msgbox                                                         \
+            "You need to select the run levels you want mgetty started on."  \
+            0 0
+    pick_run_level
+  done
+
+  pick_num_rings
+  while  [  "$NUM_RINGS"  ==  ""  ];
+  do
+    dialog  --msgbox                                                                             \
+            "You need to enter the number of rings to wait before answering the incoming call."  \
+            0 0
+    pick_num_rings
+  done
+
+  pick_device
+  while  [  "$DEVICE"  ==  "/dev/ttyS*"  ];
+  do
+    dialog  --msgbox  \
+            "You need to select a TTY device to be used to receive faxes from.  Select the device from the list on the right-hand side, then press the space bar to activate your selection."  \
+            0 0
+    pick_device
+  done
+
+  while  [  "$DEVICE"  ==  ""  ];
+  do
+    dialog  --msgbox  \
+            "You need to select a TTY device to be used to receive faxes from.  Select the device from the list on the right-hand side, then press the space bar to activate your selection."  \
+            0 0
+    pick_device
+  done
+
+  TTY_DEVICE=${DEVICE:8}
+
+  INITTAB_STRING="'$TTY_DEVICE:$RUN_LEVEL:respawn:/usr/sbin/mgetty -n $NUM_RINGS $DEVICE'"
+  echo  "INITTAB_STRING=$INITTAB_STRING"  >>  $SPELL_CONFIG
+fi
+
+
+
+# Information for debugging
+echo  "DEVICE          = $DEVICE"          >>  $DEBUG
+echo  "NUM_RINGS       = $NUM_RINGS"       >>  $DEBUG
+echo  "RUN_LEVEL       = $RUN_LEVEL"       >>  $DEBUG
+echo  "LOGIN_PATCH     = $LOGIN_PATCH"     >>  $DEBUG
+echo  "NEWFAX_PATCH    = $NEWFAX_PATCH"    >>  $DEBUG
+echo  "MGETTY_BOOT     = $MGETTY_BOOT"     >>  $DEBUG
+echo  "SPELL_CONFIG    = $SPELL_CONFIG"    >>  $DEBUG
+echo  "TTY_DEVICE      = $TTY_DEVICE"      >>  $DEBUG
+echo  "INITTAB_STRING  = $INITTAB_STRING"  >>  $DEBUG

@@ -1,0 +1,26 @@
+           SPELL=mgetty
+         VERSION=1.1.28
+          SOURCE=$SPELL$VERSION-Jan10.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://alpha.greenie.net/pub/$SPELL/source/1.1/$SOURCE
+        WEB_SITE=http://alpha.greenie.net/$SPELL
+         ARCHIVE="off"
+         ENTERED=20020927
+         UPDATED=20020927
+      LICENSE[0]=GPL
+          MD5[0]=dc5de3eb1cf75f37e60fb94e321cdcd7
+      MAINTAINER=shdwdrgn@sourpuss.net
+           SHORT="mgetty+sendfax is a fax send and receive solution for unix and linux."
+cat << EOF
+
+mgetty allows you to make optimum use of your modem or fax modem in a unix
+environment.  mgetty handles incoming calls without interfering with outgoing
+calls.  If the modem can do fax class 2 or 2.0, mgetty can also receive faxes.
+
+sendfax is a standalone backend program to send fax files.
+
+Note:  mgetty will not resurrect correctly, and the ARCHIVE="off" function is
+       not currently working.  In order to get mgetty to re-install after an
+       initial install, you must run 'cast -r -c mgetty'.
+
+EOF

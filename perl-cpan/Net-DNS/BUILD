@@ -1,4 +1,5 @@
 (
+  sedit 's/^if (\$s)/if (0)/' Makefile.PL 
 
   perl  Makefile.PL  &&
   make               &&

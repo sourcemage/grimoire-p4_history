@@ -1,0 +1,108 @@
+# Ask which runlevels to start in with a default of 1,2,3,5
+echo  ""
+echo  "We now want to determine which runlevels you want CUPS started in."
+echo  "The defaults are 1, 2, 3 and 5."
+
+if  query  "Start CUPS in runlevl 0? "  n;
+then
+  echo  "START_CUPS_0=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_0=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 1? "  y;
+then
+  echo  "START_CUPS_1=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_1=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 2? "  y;
+then
+  echo  "START_CUPS_2=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_2=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 3? "  y;
+then
+  echo  "START_CUPS_3=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_3=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 4? "  n;
+then
+  echo  "START_CUPS_4=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_4=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 5? "  y;
+then
+  echo  "START_CUPS_5=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_5=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "Start CUPS in runlevl 6? "  n;
+then
+  echo  "START_CUPS_6=y"  >>  $SPELL_CONFIG
+else
+  echo  "START_CUPS_6=n"  >>  $SPELL_CONFIG
+fi
+
+
+# Ask which runlevels to stop on with a default of 0,6.
+echo  ""
+echo  "We now want to determine which runlevels you want CUPS to end in."
+echo  "The defaults are 0 and 6."
+
+if  query  "End CUPS in runlevl 0? "  y;
+then
+  echo  "END_CUPS_0=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_0=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 1? "  n;
+then
+  echo  "END_CUPS_1=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_1=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 2? "  n;
+then
+  echo  "END_CUPS_2=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_2=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 3? "  n;
+then
+  echo  "END_CUPS_3=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_3=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 4? "  n;
+then
+  echo  "END_CUPS_4=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_4=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 5? "  n;
+then
+  echo  "END_CUPS_5=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_5=n"  >>  $SPELL_CONFIG
+fi
+
+if  query  "End CUPS in runlevl 6? "  y;
+then
+  echo  "END_CUPS_6=y"  >>  $SPELL_CONFIG
+else
+  echo  "END_CUPS_6=n"  >>  $SPELL_CONFIG
+fi

@@ -7,6 +7,6 @@ VERSIONS="1.9.7-2.4.19"
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=grsecurity-${!PATCH}.patch.gz
+SOURCE${COUNTER}=grsecurity-${!PATCH}.patch
 SOURCE${COUNTER}_URL=http://www.grsecurity.net/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
 fi
