@@ -208,9 +208,9 @@ initialize()  {
          LIBRARIES="$YES_LIBRARIES  $NO_LIBRARIES"
 
   YES_MISC_OPTIONS="HasShm BuildXF86DRI BuildXF86OldDRMCompat UseRgbTxt
-                    InstallXinitConfig InstallXdmConfig"
-   NO_MISC_OPTIONS="BuildServersOnly  XnestServer
-                    LinuxFBDevSupport XVirtualFramebufferServer"
+                    InstallXinitConfig InstallXdmConfig XnestServer"
+   NO_MISC_OPTIONS="BuildServersOnly LinuxFBDevSupport
+                    XVirtualFramebufferServer"
       MISC_OPTIONS="$YES_MISC_OPTIONS  $NO_MISC_OPTIONS"
 
 }

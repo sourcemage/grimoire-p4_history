@@ -70,11 +70,11 @@ if  spell_installed  libusb;  then
 fi  &&
 
 if  [  "$DEBUG"  == "n"  ]         ||
-    grep  -q  --  "-Os"  $CFLAGS;  then
+    (echo $CFLAGS | grep -q -- "-Os");  then
   echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  grep  -q  --  "-Os"  $CFLAGS;  then
+if  (echo $CFLAGS | grep -q -- "-Os");  then
   echo  "#define  StripInstalledPrograms  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
