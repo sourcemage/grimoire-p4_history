@@ -3,13 +3,11 @@
   bunzip2  -cd  $SCRIPT_DIRECTORY/gcc-2.95.3-2.patch.bz2  |
   patch  -p 1
   sedit  "s/read junk//"  gcc/p/config-lang.in
-  LANGUAGES="c,c++,objc,pascal,fortran,java"
-
+  sedit  's/for f in `cd p/for f in `cd $(srcdir)\/p/'  gcc/p/Make-lang.in
 
   ./configure  --host=$BUILD     \
                --prefix=/usr     \
-               --enable-shared   \
-               --enable-languages="$LANGUAGES"
+               --enable-shared   &&
   make  bootstrap                &&
   prepare_install                && 
 
