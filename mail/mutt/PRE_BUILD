@@ -1,5 +1,5 @@
 function mutt_default_patch() {
-  . "${PATCH_DIRECTORY}/${PATCH}/DETAILS" &&
+  . "${PATCH_DIRECTORY}/${PATCH}/PATCH_DETAILS" &&
   bzcat "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}.bz2" > "${PATCH_SOURCE}" &&
   if [ -f "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}.${BRANCH}.smgl.diff.bz2" ]; then
     bzcat "${PATCH_DIRECTORY}/${PATCH}/${PATCH_SOURCE}.${BRANCH}.smgl.diff.bz2" > "${PATCH_SOURCE}.smgl.diff"
