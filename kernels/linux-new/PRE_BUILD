@@ -1,3 +1,21 @@
+linux_new_uncompress()
+{
+	if [ "`file $1 | grep gzip`" != "" ]
+	then
+		gunzip $1
+	elif [ "`file $1 | grep bzip`" != "" ]
+	then
+		bunzip2 $1
+	elif [ "`file $1 | grep diff`" != "" ]
+	then
+		echo "$1 doesn't need uncompressing"
+	else
+		echo "$1 has some unknown/unimplemented compression type"
+		return 1
+	fi
+}
+
+
 if [[ "$mode" == "oldktree" ]]
 then
 	if [ -d ${LINUX_SOURCE_DIRECTORY} ]
@@ -30,7 +48,7 @@ then
 		esac
 		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
-		cp ${SOURCE_CACHE}/${source} ./
+		unpack ${source}
 		linux_new_uncompress ./${source}
 		echo "Patching ${patch}"
 		sleep 3
