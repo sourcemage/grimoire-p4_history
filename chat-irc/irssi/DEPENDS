@@ -2,6 +2,6 @@ depends  glib2    &&
 depends  ncurses  &&
 optional_depends "openssl" "" "--disable-ssl" "for SSL support"  &&
 optional_depends "perl" "--with-perl=module" "--with-perl=no" "for perl support" &&
-if [ "$CVS" = "y" ]; then
-depends  CVS
+if [ "$IRSSI_SVN" = "y" ]; then
+depends  SVN
 fi
