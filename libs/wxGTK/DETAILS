@@ -1,17 +1,14 @@
            SPELL=wxGTK
-       # VERSION=2.2.9
-       # Version 2.2.9 is broken.
-         VERSION=2.2.7
+         VERSION=2.3.3
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://www.remstar.com/pub/wxwin/$VERSION/$SOURCE
    SOURCE_URL[1]=http://belnet.dl.sourceforge.net/wxwindows/$SOURCE
-          MD5[0]=4aeda3ffdf131df082f557279fa725f9
+          MD5[0]='03d95638eef50df75d2aafe92f834427'
       LICENSE[0]=http://www.wxwindows.org/licence3.txt
         WEB_SITE=http://www.wxwindows.org/
          ENTERED=20011217
          UPDATED=20020126
-      MAINTAINER=scarecrow.143@attbi.com
             FUZZ="off"
            SHORT="wxGTK is a GTK+ verion of wxWindows API."
 cat << EOF
