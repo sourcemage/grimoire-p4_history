@@ -123,20 +123,10 @@ else
 
   check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
 
-  #mkdir linux-${VERSION}                       &&
-  #cd linux-${VERSION}  &&
-
   message "extracting ${SOURCE}"                                          &&
   unpack_override  $SOURCE '' #we will ignore MD5 because of above check  &&
-  #EXTRACT_PATH=$(ls)                                                      &&
-  pwd  &&
-  #mv  linux-${VERSION}/${EXTRACT_PATH}/*          \
-  #    linux-${VERSION}/                           &&
-  #rmdir  linux-${VERSION}/${EXTRACT_PATH}/        &&
-  #cd  ${INSTALL_ROOT}/usr/src                                             &&
 
   chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
-
 
   mkdir  -p  ../include  &&
 
