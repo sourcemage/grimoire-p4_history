@@ -1,28 +1,22 @@
-2003-09-24  Eric Sandall <eric@sandall.us>
+2003-11-21 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added sedit so it detects alsa 1.0pre1 correctly
+	* BUILD, DEPENDS: readded nas (needs -I/usr/X11R6/include to compile)
 
-		Applied gcc-3.3 patches (yeah)
+2003-09-24 Eric Sandall <eric@sandall.us>
+	* BUILD, gcc-3.3.patch: Applied gcc-3.3 patches (yeah)
+	* DEPENDS, BUILD: Doesn't work with NAS
+	* DEPENDS: Added more optional depends:
+	flac, mad, id3lib, jack, cdda, sndfile, doxygen
+	* BUILD: Doesn't need AlsaNode patch
 
-		Doesn't work with NAS
+2003-03-29 Unet <unet@sourcemage.org>
+	* DETAILS: Bump to 0.99.74
 
-		Added more optional depends:
-		flac, mad, id3lib, jack, cdda, sndfile, doxygen
+2002-10-06 Unet <burududu@hotpop.com>
+	* DETAILS: Version bump to 0.99.72
 
-		Updated to 0.99.75  (still needs gcc-3.3 patches anymore)
-		Doesn't need AlsaNode patch
+2002-07-21 Unet <burududu@hotpop.com>
+	* DETAILS: Version bump to 0.99.71 (solves bug #461)
 
-2003-03-29  Unet <unet@sourcemage.org>
-
-		Bump to 0.99.74
-
-2002-10-06  Unet <burududu@hotpop.com>
-	
-		Version bump to 0.99.72
-
-
-2002-07-21  Unet <burududu@hotpop.com>
-	
-		Version bump to 0.99.71 (solves bug #461)
-
-2002-06-12  Unet <burududu@hotpop.com>
-	
-		Created this.
+2002-06-12 Unet <burududu@hotpop.com>
+	* BUILD, DEPENDS, DETAILS, HISTORY: Created this.
