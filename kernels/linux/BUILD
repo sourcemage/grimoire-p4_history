@@ -34,9 +34,7 @@ echo "ARCH is '${ARCH}', CROSS_COMPILE is '${CROSS_COMPILE}'"
 run_make() {
   make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} INSTALL_MOD_PATH=${INSTALL_ROOT} "$@"
 }
-  
-run_make  mrproper
-
+ 
 #
 # If the architecture-dependent assembly hasn't been linked
 # to the generic 'asm' directory, do so.
@@ -63,10 +61,34 @@ if  query  "make oldconfig? "  n
   then  run_make oldconfig
 fi
 
+# use a more modern config tool if possible
+CFGTYPE=menuconfig
+if [[ ! -z $DISPLAY ]]; then
+  VV=`/bin/echo $VERSION|cut -d. -f-2`
+  case $VV in
+    2.6)
+	if spell_installed qt-x11;then
+	  CFGTYPE=xconfig
+	else
+	  if spell_installed gtk+2; then
+	    CFGTYPE=gconfig
+	  fi
+	fi
+  	;;
+    2.4)
+        if spell_installed tk;then
+          CFGTYPE=xconfig
+        fi
+	;;
+  esac
+fi
+
+
+
 while
   case  $CONFIG_KERNEL in
-    y|Y)  run_make  menuconfig
-          if  query  "Repeat menuconfig?  "  n
+    y|Y)  run_make  $CFGTYPE || run_make menuconfig
+          if  query  "Repeat $CFGTYPE?  "  n
           then  CONFIG_KERNEL=y
           else  CONFIG_KERNEL=n
           fi     ;;
@@ -95,8 +117,6 @@ backup_modules()  {
 
   unset LANG
   
-
-  yes  n  |  run_make   oldconfig
   cp  .config  $CONFIG_CACHE/kernel.config
   run_make  dep               &&
   case  ${ARCH}  in
