@@ -1,22 +1,26 @@
-export CC=gcc   			              &&
-./configure  --build=$BUILD                         \
-             --host=$HOST                           \
-             --prefix=${INSTALL_ROOT}/usr           \
-             --sysconfdir=${INSTALL_ROOT}/etc       \
-             --infodir=${INSTALL_ROOT}/usr/share/info \
-             --mandir=${INSTALL_ROOT}/usr/share/man   \
-             --with-included-gettext                \
-             --includedir=${INSTALL_ROOT}/usr/local/include \
-             $OPTS                                  &&
-make                                                &&
+export CC=gcc                                           &&
 
-if spell_installed tetex ; 
-then cd gettext-tools/doc &&
-   make dvi  &&
-   make ps   &&
-   make pdf  &&
-   cd -     
+./configure  --build=$BUILD                             \
+              --host=$HOST                              \
+            --prefix=${INSTALL_ROOT}/usr                \
+        --sysconfdir=${INSTALL_ROOT}/etc                \
+           --infodir=${INSTALL_ROOT}/usr/share/info     \
+            --mandir=${INSTALL_ROOT}/usr/share/man      \
+             --with-included-gettext                    \
+        --includedir=${INSTALL_ROOT}/usr/local/include  \
+             $OPTS                                      &&
+make                                                    &&
+
+if  spell_ok  tetex;  then
+  cd  gettext-tools/doc  &&
+  make  dvi              &&
+  make  ps               &&
+  make  pdf              &&
+  cd  -
 fi  &&
-#Remove libintl.h from old log files
-(sedit '/libintl.h/d' $INSTALL_LOGS/gettext* || true) &&
-(sedit '/libintl.h/d' /var/log/sorcery/md5sum/gettext*  || true)
+
+#
+# Remove libintl.h from old log files
+#
+(  sedit  '/libintl.h/d'  $INSTALL_LOGS/gettext*            ||  true  )  &&
+(  sedit  '/libintl.h/d'  /var/log/sorcery/md5sum/gettext*  ||  true  )
