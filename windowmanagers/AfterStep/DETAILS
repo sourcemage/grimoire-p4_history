@@ -1,21 +1,16 @@
            SPELL=AfterStep
-         VERSION=1.8.11
+         VERSION=2.00.beta4b
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.afterstep.org/stable/$SOURCE
-   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/afterstep/$SOURCE
         WEB_SITE=http://www.afterstep.org
          ENTERED=20011101
-         UPDATED=20020302
-          MD5[0]=f450a861fe960cc94ef8be723b5332d0
-          MD5[1]=f450a861fe960cc94ef8be723b5332d0
+         UPDATED=20040408
+          MD5[0]=585488abce7132ffda4f0c0bccb351d5
       LICENSE[0]=GPL
-      LICENSE[1]=LGPL
-      LICENSE[2]=LDPL
-      LICENSE[3]=MIT
-      LICENSE[4]=PD
-      MAINTAINER=T.Stewart@student.umist.ac.uk
+      MAINTAINER=hnaz@we-are-root.org
            SHORT="AfterStep an X11 windows manager."
+
 cat << EOF
 AfterStep is a Window Manager for X which started by emulating the
 NeXTSTEP look and feel, but which has been significantly altered

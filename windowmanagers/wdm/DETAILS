@@ -1,15 +1,16 @@
            SPELL=wdm
-         VERSION=1.26
-          SOURCE=${SPELL}-${VERSION}.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=http://voins.program.ru/wdm/${SOURCE}
-          MD5[0]=ab4f159708018e25e25044603f6a1f93
+         VERSION=1.27
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://voins.program.ru/$SPELL/$SOURCE
+          MD5[0]=04242176cf7c14b883ca0fde8aff3142
         WEB_SITE=http://voins.program.ru/wdm/
       LICENSE[0]=GPL
          ENTERED=20020820
-         UPDATED=20030822
-      MAINTAINER=eric@sandall.us
+         UPDATED=20040409
+      MAINTAINER=hnaz@we-are-root.org
            SHORT="WDM is a modified xdm package"
+
 cat << EOF
 WDM is a modification of the X11 XDM package for graphically handling authentication and system login. Most of xdm has been preserved with the login interface based on a WINGs implementation using Tom Rothamel's "external greet" interface.
 EOF
