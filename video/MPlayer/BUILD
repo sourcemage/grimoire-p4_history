@@ -1,9 +1,13 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/alsa-1.0.patch  &&
+  # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
+  sedit  's/-fomit-frame-pointer//'  configure       &&
+
+  patch -p1 < $SCRIPT_DIRECTORY/alsa-1.0.patch       &&
+  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
 
   if  [  "$FONTCONFIG"  =  "y"  ];  then
-    patch -p1 < $SCRIPT_DIRECTORY/MPlayer-0.90-fontconfig.patch
+    patch -p1 < $SCRIPT_DIRECTORY/MPlayer-fontconfig.patch
   fi  &&
 
   case  $GUI  in
@@ -27,9 +31,6 @@
   make    install             &&
 
   (
-
-    mkdir -p           /usr/doc/MPlayer
-    cp -r etc/*        /usr/doc/MPlayer
 
     if (ldd /usr/bin/mplayer | grep freetype) > /dev/null; then
       if ! (ldd /usr/bin/mplayer | grep fontconfig) > /dev/null; then

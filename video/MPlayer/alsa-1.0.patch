@@ -1,7 +1,7 @@
-diff -Nur MPlayer-0.92/configure MPlayer-0.92-alsa-1.0/configure
---- MPlayer-0.92/configure	2003-08-09 16:12:30.000000000 +0200
-+++ MPlayer-0.92-alsa-1.0/configure	2003-11-21 13:16:13.000000000 +0100
-@@ -3425,7 +3425,7 @@
+diff -Nur MPlayer-1.0pre2/configure MPlayer-1.0pre2-alsa/configure
+--- MPlayer-1.0pre2/configure	2003-10-05 17:34:40.000000000 +0200
++++ MPlayer-1.0pre2-alsa/configure	2003-11-28 14:15:30.000000000 +0100
+@@ -3804,7 +3804,7 @@
    cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-sys'
    cat > $TMPC << EOF
  #include <alsa/asoundlib.h>
@@ -10,9 +10,9 @@ diff -Nur MPlayer-0.92/configure MPlayer-0.92-alsa-1.0/configure
  EOF
    cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-alsa'
  fi
-diff -Nur MPlayer-0.92/libao2/ao_alsa9.c MPlayer-0.92-alsa-1.0/libao2/ao_alsa9.c
---- MPlayer-0.92/libao2/ao_alsa9.c	2003-08-09 16:12:34.000000000 +0200
-+++ MPlayer-0.92-alsa-1.0/libao2/ao_alsa9.c	2003-11-21 13:22:29.000000000 +0100
+diff -Nur MPlayer-1.0pre2/libao2/ao_alsa9.c MPlayer-1.0pre2-alsa/libao2/ao_alsa9.c
+--- MPlayer-1.0pre2/libao2/ao_alsa9.c	2003-10-04 19:28:58.000000000 +0200
++++ MPlayer-1.0pre2-alsa/libao2/ao_alsa9.c	2003-11-28 14:15:30.000000000 +0100
 @@ -22,6 +22,7 @@
  #if HAVE_SYS_ASOUNDLIB_H
  #include <sys/asoundlib.h>
