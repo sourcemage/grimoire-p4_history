@@ -1,18 +1,7 @@
-#simple hack to remove old cache before it becomes a problem
-#PREPARE doesn't know version, atleast old version is covered by "prune"
-NUMBER="$(grep VERSION= $SCRIPT_DIRECTORY/DETAILS | cut -d= -f2)"
-OLDCACHE="$INSTALL_CACHE/$SPELL-$NUMBER-$BUILD.tar.bz2"
-if [ -f $OLDCACHE ] ;
-then rm -rf $OLDCACHE
-fi &&
-message "${SPELL_COLOR} ${SPELL} won't ARCHIVE installed files${DEFAULT_COLOR}"
-#end of my hack
 SPELL=MPlayer-codecs
 hash_put "codecMD5Table" "qt6dlls" "5ae1ccb43d90f7053761cb9d2c12815c"
 hash_put "codecMD5Table" "rp9codecs" "b9eaf74e1d3bafb640131de8e4823e62"
 hash_put "codecMD5Table" "xanimdlls" "1e14862ef2fe2f701cf3fd7afd4f6f1e"
-hash_put "codecMD5Table" "mjpeg2kdlls" "a2d5cad99dfaffae087cdd9c3177745f"
-hash_put "codecMD5Table" "dmocodecs" "732df4f75a4170f44697ffd61da2a40b"
 if  !  grep  -q  "SOURCE="  $SPELL_CONFIG; then
   CODECS=`dialog  --backtitle  "MPlayer additional codecs configuration"  \
                   --stdout                                                \
@@ -22,9 +11,7 @@ if  !  grep  -q  "SOURCE="  $SPELL_CONFIG; then
                   0 50 10                                                 \
                   qt6dlls      "QuickTime DLLs"  on                       \
                   rp9codecs    "RealPlayer codecs"  on                    \
-                  xanimdlls    "XAnim DLLs"  on                           \
-                  mjpeg2kdlls  "MJPEG2000 DLLs"  on                       \
-                  dmocodecs    "Win32/DMO codecs (WMA9/WMV9)"  on`
+                  xanimdlls    "XAnim DLLs"  on
 
   TMP_CODECS=$CODECS
   CODECS=${CODECS//\"/}
