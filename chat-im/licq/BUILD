@@ -60,7 +60,7 @@
   fi                                                              &&
   if [ "$XOSD" = "yes" ]; then
 	  cd $SOURCE_DIRECTORY/plugins/$SOURCE4_NAME-$SOURCE4_VERSION &&
-	  sedit 's/-1.7/-1.8/g' build								  &&
+	  sedit 's/-1.7//g' build									  &&
 	  ./build                                                     &&
 	  ./configure --prefix=/usr			\
 				 --sysconfdir=/etc		\
