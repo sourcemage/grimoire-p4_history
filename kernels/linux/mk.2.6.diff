@@ -1,0 +1,20 @@
+--- Makefile	2004-03-12 10:30:43.000000000 +0100
++++ Makefile.cp	2004-03-12 10:28:37.000000000 +0100
+@@ -96,7 +96,7 @@
+ HOSTCFLAGS_zconf.tab.o	:= -I$(src)
+ 
+ HOSTLOADLIBES_qconf	= -L$(QTDIR)/lib -L$(QTDIR)/lib64 -Wl,-rpath,$(QTDIR)/lib -l$(QTLIB) -ldl
+-HOSTCXXFLAGS_qconf.o	= -I$(QTDIR)/include 
++HOSTCXXFLAGS_qconf.o	= -I$(QTDIR)/include/qt
+ 
+ HOSTLOADLIBES_gconf	= `pkg-config gtk+-2.0 gmodule-2.0 libglade-2.0 --libs`
+ HOSTCFLAGS_gconf.o	= `pkg-config gtk+-2.0 gmodule-2.0 libglade-2.0 --cflags`
+@@ -112,7 +112,7 @@
+ # QT needs some extra effort...
+ $(obj)/.tmp_qtcheck:
+ 	@set -e; for d in $$QTDIR /usr/share/qt* /usr/lib/qt*; do \
+-	  if [ -f $$d/include/qconfig.h ]; then DIR=$$d; break; fi; \
++	  if [ -f $$d/include/qt/qconfig.h ]; then DIR=$$d; break; fi; \
+ 	done; \
+ 	if [ -z "$$DIR" ]; then \
+ 	  echo "*"; \
