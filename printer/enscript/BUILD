@@ -1,0 +1,13 @@
+(
+
+  ./configure  --build=$BUILD        \
+               --prefix=/usr         \
+               --sysconfdir=/etc     \
+               --localstatedir=/var  \
+               --with-media=Letter   \
+               $OPTS                 &&
+  make                               &&
+  prepare_install                    &&
+  make    install
+
+) > $C_FIFO 2>&1

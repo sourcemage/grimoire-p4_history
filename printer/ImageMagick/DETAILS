@@ -1,14 +1,16 @@
            SPELL=ImageMagick
-         VERSION=5.4.3
-          SOURCE=$SPELL-${VERSION}-10.tar.bz2
+         VERSION=5.4.4
+          SOURCE=$SPELL-${VERSION}-5.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://imagemagick.sourceforge.net/http/$SOURCE
  # SOURCE_URL[1]=ftp://ftp.imagemagick.org/pub/graphics/ImageMagick/$SOURCE
         WEB_SITE=http://www.imagemagick.org
          ENTERED=20010922
          UPDATED=20020306
+      MAINTAINER=jasonflatt@wizard.com
            SHORT="ImageMagick does automated and interactive maniupation of images."
 cat << EOF
+
 ImageMagick (TM) is a package for the automated and interative
 manipulation of images. It supports the display and interactive
 manipulation of images when used with the X Window System. Although the
@@ -20,4 +22,5 @@ VMS. Binary packages are available for most operating systems.
 Application programming interfaces (APIs) are provided to support
 development of image processing applications in the C, C++, and Perl
 languages.
+
 EOF
