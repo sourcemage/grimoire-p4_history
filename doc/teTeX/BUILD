@@ -1,8 +1,5 @@
 (
 
-  if  !  spell_installed  xfree86;  then
-    OMIT_X11="--without-x11"
-  fi                                    &&
   rm -rf utils/dialog                   &&
   rm -rf utils/texinfo                  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr \
