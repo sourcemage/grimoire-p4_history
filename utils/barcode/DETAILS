@@ -2,12 +2,14 @@
          VERSION=0.98
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gnu.org/pub/gnu/barcode/$SOURCE
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
           MD5[0]=b8c3cd5b56a8b1e8f14874de89e3d811
         WEB_SITE=http://ar.linux.it/software/#barcode
          ENTERED=20040425
-         LICENSE=GPL
-           SHORT="GNU Barcode creator."
+         UPDATED=20050209
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="GNU Barcode creator"
 cat << EOF
 GNU-barcode is meant to solve most needs in barcode
 creation with a conventional printer. It can create
