@@ -1,6 +1,6 @@
            SPELL=kde-i18n
-         VERSION=3.1.4
-            SITE=\$KDE_URL/stable/3.1.4/src
+         VERSION=3.1.5
+            SITE=\$KDE_URL/stable/\${VERSION}/src
 
 # delete existing kde.languages, it has wrong URLs and format
 if [ ! -s $SPELL_CONFIG ]
@@ -19,8 +19,8 @@ get_kdelanguages()  {
                       ""                                         \
                       0 50 10                                     \
                       $LANGUAGES`
-    echo SITE=$SITE >> $SPELL_CONFIG
     echo VERSION=$VERSION >> $SPELL_CONFIG
+    echo SITE=$SITE >> $SPELL_CONFIG
     echo MD5[0]=ignore >>$SPELL_CONFIG
     if [[ $LANGUAGES == ${LANGUAGES/ALL/} ]]
     then
