@@ -1,13 +1,24 @@
-#!/bin/sh
+#!/bin/bash
+# SGL-script-version=20021117
+# SGL-START:S:S80
+# SGL-STOP:0 6:K20
+
+source /etc/init.d/functions
 
 case $1 in
-  start|restart)  echo   "$1ing atd periodic scheduler."
-                  pkill  "^atd$"
-                  atd
+        start)    echo "Starting atd periodic scheduler."
+                  loadproc atd
                   ;;
-           stop)  echo   "$1ping atd."
-                  pkill  "^atd$"
+        restart)  echo "Restarting atd periodic scheduler."
+	          reloadproc atd
+		  ;;
+
+        stop)     echo "stopping atd."
+                  killproc atd
                   ;;
-              *)  echo   "Usage: $0 {start|stop|restart}"
+        status)   statusproc atd
+                  ;;
+        *)        echo   "Usage: $0 {start|stop|restart|status}"
+	          exit 1
                   ;;
 esac

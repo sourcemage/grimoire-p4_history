@@ -1,0 +1,15 @@
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+  then
+
+  if      query  "Do you wish to make memtest86 bootable from floppy?"  y
+    then  echo   'FLOPPY="y"'  >>  ${SPELL_CONFIG}
+    else  echo   'FLOPPY="n"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if      query  "Do you wish to save a copy of the bootable image?"  y
+    then  echo   'IMAGE="y"'  >>  ${SPELL_CONFIG}
+    else  echo   'IMAGE="n"'  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+fi

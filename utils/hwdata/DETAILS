@@ -1,15 +1,15 @@
            SPELL=hwdata
-         VERSION=0.47
+         VERSION=0.61
           SOURCE=$SPELL-$VERSION-1.src.rpm
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/$SOURCE
+   SOURCE_URL[0]=ftp://rawhide.redhat.com/pub/redhat/linux/rawhide/SRPMS/SRPMS/$SOURCE
    SOURCE_URL[0]=ftp://ftp.nl.uu.net/pub/linux/redhat/linux/rawhide/SRPMS/SRPMS/$SOURCE
+          MD5[0]="813e903323a8c37c8a01724eef8a3d9d"
          ENTERED=20020707
-         UPDATED=20020707
+         UPDATED=20021125
       MAINTAINER="abrice2@cox.net"
       LICENSE[0]="GPL"
       LICENSE[1]="XCL"
-          MD5[0]="2d9cd20597873c624a052c5cc762a844"
            SHORT="hwdata contains specifications needed for hardware detection"
 cat << EOF
 hwdata contains various hardware identification and configuration data,

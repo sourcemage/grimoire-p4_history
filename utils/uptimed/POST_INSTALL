@@ -1,1 +1,6 @@
-uptimed  -b
+if [ ! -x /etc/init.d/uptimed.sh ]; then
+	/etc/init.d/uptimed.sh start
+else
+	cp $SCRIPT_DIRECTORY/uptimed.sh /etc/init.d/
+	/etc/init.d/uptimed.sh start
+fi
