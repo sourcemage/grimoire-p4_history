@@ -1,16 +1,16 @@
            SPELL=gnome-desktop
-         VERSION=2.6.0
+         VERSION=2.6.0.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='01fd67fe43e0521bb1786b6e7d33d208'
+          MD5[0]='c42649e92ca0731fc1d016708451abab'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
         WEB_SITE=http://www.gnome.org
          ENTERED=20020505
-         UPDATED=20040322
+         UPDATED=20040331
            SHORT="Common files and APIs for the GNOME 2.0 desktop"
 cat << EOF
 The package contains the libgnome-desktop library
