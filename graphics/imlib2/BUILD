@@ -3,6 +3,7 @@
   ./configure  --prefix=/usr             \
                --sysconfdir=/etc/imlib2  \
 	       --includedir=""		 &&
+  sedit 's/-lImlib2//' loaders/Makefile  &&
   make                                   &&
   prepare_install                        &&
   make    install			 &&
