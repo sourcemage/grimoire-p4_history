@@ -1,9 +1,9 @@
            SPELL=leafnode
-	 VERSION=1.9.27
+	 VERSION=1.9.29
           SOURCE=$SPELL-$VERSION.rel.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION.rel
    SOURCE_URL[0]=http://www-dt.e-technik.uni-dortmund.de/~ma/leafnode/$SOURCE
-          MD5[0]=e1c0e833cfd91db7718b19b1c80ec84a
+          MD5[0]=8c38d7ebb6c163280127e97f99fc3a05
    SOURCE_URL[1]=ftp://wpxx02.toxi.uni-wuerzburg.de/pub/$SOURCE
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://ftp.karlsruhe.org/pub/news/servers/leafnode/$SOURCE
@@ -18,6 +18,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION.rel
          UPDATED=20020606
          LICENSE=LGPL
            SHORT="Leafnode is a NNTP sever for small site"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Leafnode is a USENET software package designed for small sites running any
 flavour of Unix, with a few tens of readers and only a slow link to the net. It

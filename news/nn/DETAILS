@@ -24,6 +24,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=bluebird@optushome.com.au
          LICENSE=http://www.nndev.org
            SHORT="A powerful news reader"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 
 A powerful menu based news reader.

@@ -42,6 +42,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=kongar@tsrsb.org.tr
          LICENSE=http://www.tin.org
            SHORT="tin is a powerful text mode news reader."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Tin is a powerful text mode news reader. It features threaded news
 reading, regex driven killfiles/message selections, pgp encryption,
