@@ -18,6 +18,9 @@
     y|Y)  OPTS="$OPTS  --enable-menu"  ;;
   esac
   
+  # temporary work around a configure bug for faad
+  touch config.h
+
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
                $OPTS          &&
