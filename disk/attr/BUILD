@@ -1,17 +1,12 @@
 (
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               $OPTS                 &&
-  make                        &&
-  prepare_install             &&
-  make    install             &&
-  make    install-dev         &&
-
-  # Why doesn't version 2.0.1 copy this library to where it belongs?
-
-  cp      libattr/.libs/libattr* /usr/lib
+  ./configure  --build=$BUILD                       \
+               --prefix=${INSTALL_ROOT}/usr         \
+               --sysconfdir=${INSTALL_ROOT}/etc     \
+               --localstatedir=${INSTALL_ROOT}/var  \
+               $OPTS                                &&
+  make                                              &&
+  prepare_install                                   &&
+  make    install install-lib install-dev           
 
 )  >  $C_FIFO  2>&1
