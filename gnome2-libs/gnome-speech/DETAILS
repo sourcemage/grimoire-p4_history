@@ -1,15 +1,15 @@
            SPELL=gnome-speech
-         VERSION=0.2.7
+         VERSION=0.3.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='5b0c523428e99a8ccab113c406b18541'
+          MD5[0]='1b262fe73e8cd680fd9014d62134027e'
       LICENSE[0]=LGPL
         WEB_SITE=http://www.gnome.org
       MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030909
+         UPDATED=20040119
            SHORT="text-to-speech API for gnome"
 cat << EOF
 This is GNOME Speech version 0.2.  It's purpose is to provide a
