@@ -1,5 +1,3 @@
-(
-
   HC="$CFLAGS"
 
   if    [ "$I586"   == "on" ];  then  TP="i586" HC="$HC -DHAVE_MMX"
@@ -26,18 +24,4 @@
   sedit  "s/USE_MOUSE=n/USE_MOUSE=$UM/"                 makefile  &&
   sedit  "s/\/usr\/local/\/usr/"  biewlib/sysdep/generic/unix/os_dep.c  &&
 
-
-  make                                          &&
-  prepare_install                               &&
-  gzip       doc/biew.1                         &&
-  cp         doc/biew.1.gz     /usr/man/man1    &&
-  cp         biew              /usr/bin         &&
-  mkdir  -p                    /usr/share/biew  &&
-  cp         bin_rc/skn/*.skn  /usr/share/biew  &&
-  cp     -R  bin_rc/xlt        /usr/share/biew  &&
-  cp         bin_rc/biew.hlp   /usr/share/biew  &&
-  cp     -R  hlp/*             /usr/share/biew 
-
-
-) > $C_FIFO 2>&1  
-
+  make
