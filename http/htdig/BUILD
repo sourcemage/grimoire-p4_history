@@ -1,7 +1,7 @@
 (
 
-  HTDIGDIR=/usr/apache/htdocs/htdig
-  CGIBINDIR=/usr/apache/cgi-bin
+  HTDIGDIR=/usr/share/htdig/htdocs
+  CGIBINDIR=/usr/share/htdig/cgi-bin
   SEARCHFORM=search.html
   WEBPREFIX=/htdig
 
