@@ -1,3 +1,3 @@
-sedit  's/libgtkhtml-3.0/libgtkhtml-3.1/'  configure                &&
-sedit  's/gtkhtml-3.0/gtkhtml-3.1/'        gtkhtml/gtkhtml-api.raw  &&
+# this one is for gtkhtml2 3.1.16, may need to be adjusted for newer versions
+sedit  's/GTKHTML_SOVERSION=7/GTKHTML_SOVERSION=10/'  configure  &&
 default_build
