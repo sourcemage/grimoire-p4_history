@@ -1,15 +1,15 @@
 (
 
+  if  [  "$FONTCONFIG"  =  "y"  ];  then
+    patch -p1 < $SCRIPT_DIRECTORY/MPlayer-0.90-fontconfig.patch
+  fi
+
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
   esac
 
   case  $JOYSTICK  in
     y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
-  esac
-
-  case  $FREETYPE2  in
-    y|Y)  OPTS="$OPTS  --enable-freetype"  ;;
   esac
 
   case  $OSD_MENU  in
@@ -29,11 +29,12 @@
     mkdir -p           /usr/doc/MPlayer
     cp -r etc/*        /usr/doc/MPlayer
 
-    case  $FREETYPE2  in
-      y|Y)  cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
-                /usr/share/mplayer/subfont.ttf
-            ;;
-    esac
+    if (ldd /usr/bin/mplayer | grep freetype) > /dev/null; then
+      if ! (ldd /usr/bin/mplayer | grep fontconfig) > /dev/null; then
+        cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
+            /usr/share/mplayer/subfont.ttf
+      fi
+    fi
   
   )
 

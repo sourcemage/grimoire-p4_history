@@ -20,17 +20,6 @@ if  !  grep  -q  "JOYSTICK"  $SPELL_CONFIG;  then
 
 fi
 
-if  !  grep  -q  "FREETYPE2"  $SPELL_CONFIG;  then
-
-  if    query  "Use Freetype2 for on-the-fly rendering of OSD/Subtitle fonts?" y
-  then  FREETYPE2=y
-  else  FREETYPE2=n
-  fi
-
-  echo  "FREETYPE2=$FREETYPE2"  >>  $SPELL_CONFIG
-
-fi
-
 if  !  grep  -q  "OSD_MENU"  $SPELL_CONFIG;  then
 
   if    query  "Enable OSD Menu (experimental)?" y
@@ -39,5 +28,16 @@ if  !  grep  -q  "OSD_MENU"  $SPELL_CONFIG;  then
   fi
 
   echo  "OSD_MENU=$OSD_MENU"  >>  $SPELL_CONFIG
+
+fi
+
+if  !  grep  -q  "FONTCONFIG"  $SPELL_CONFIG;  then
+
+  if    query  "Add patch for fontconfig support (experimental, written by your favorite video grimoire guru)?" n
+  then  FONTCONFIG=y
+  else  FONTCONFIG=n
+  fi
+
+  echo  "FONTCONFIG=$FONTCONFIG" >>  $SPELL_CONFIG
 
 fi
