@@ -12,8 +12,16 @@ SYSCONFDIR=${INSTALL_ROOT}/etc/wine
 LIBDIR=$PREFIX/lib
 BINDIR=$PREFIX/bin
 EXDIR=$SOURCE_DIRECTORY/documentation/samples
-WININI=/dev/null
-SYSTEMINI=$EXDIR/system.ini
+INFSCRIPT=tools/wine.inf
+RUNDLL32=$SOURCE_DIRECTORY/programs/rundll32/rundll32
+
+if [ "$CROOT" == "/root/.wine/fake_C" ]; then
+    CONFIG_CROOT=%HOME%/.wine/fake_C
+    GLOBAL_CROOT=/var/wine
+else
+    GLOBAL_CROOT=$CROOT
+    CONFIG_CROOT=$CROOT
+fi
 
 mk_source_dir $SOURCE_DIRECTORY &&
 unpack $SOURCE ${MD5[0]}
