@@ -1,3 +1,13 @@
+2004-10-19 Robin Cook <rcook@wyrms.net>
+	* PREPARE: added to ask config_query on development build
+	* DETAILS: select source by GETDEVEL setting
+	  removed MAINTAINER
+	  cleaned up long discription
+	  added BUILD_API=2
+	* BUILD: added to apply patch if GETDEVEL == y to fix
+	  gedit pkg-config test
+	* DEPENDS: added optional_depends on gedit if GETDEVEL == y
+
 2003-07-24 Ladislav Hagara <hgr@vabo.cz>
 	* updated to 0.6.3
 
