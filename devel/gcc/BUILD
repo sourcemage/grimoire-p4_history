@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.2.patch  &&
-
   cd $SOURCE_DIRECTORY.bld              &&
 
   $SOURCE_DIRECTORY/configure           \
