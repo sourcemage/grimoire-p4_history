@@ -67,8 +67,10 @@ optional_depends  "xvid"                         \
 optional_depends  "libmpeg3"                     \
                   ""                             \
                   ""                             \
-                  "for decoding of MPEG files with libmpeg3" &&
-optional_depends  "quicktime4linux"              \
-                  "--with-qt"                    \
-                  ""                             \
-                  "for MOV (quicktime) file support"
+                  "for decoding of MPEG files with libmpeg3"
+
+# disabled until it works (relocation error)
+#optional_depends  "quicktime4linux"              \
+#                  "--with-qt"                    \
+#                  ""                             \
+#                  "for MOV (quicktime) file support"
