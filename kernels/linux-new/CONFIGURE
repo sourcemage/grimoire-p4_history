@@ -22,3 +22,8 @@ case ${KERNEL_VERSION} in
 					"xconfig"
 		;;
 esac
+
+if [[ $MAKEMODE == "menuconfig" || $MAKEMODE == "oldconfig" ]]
+then
+	VOYEUR="on"
+fi

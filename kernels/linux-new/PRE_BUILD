@@ -68,15 +68,33 @@ then
         message $TXTMESSAGE
         sleep 5
 fi
-		
 
-cp ${CONFIG_CACHE}/kernel.config ./.config
+# somehow this breaks the PRE_BUILD script
+#if [[ ! -f ${LINUX_SOURCE_DIRECTORY}/.config && -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.config ]]
+#then
+#	cp /boot/config-$(installed_version linux-new) \
+#	${LINUX_SOURCE_DIRECTORY}/.config
+#if
 
 if [[ "$reconf" == "true" ]]
 then
-	ARCH=${kernel_arch} make $MAKEMODE
-	cp ./.config ${CONFIG_CACHE}/kernel.config
-
+	if [[ "$MAKEMODE" == "menuconfig" ]]
+	then
+		MENUCONFIG_EXIT="n"
+		while [[ "$MENUCONFIG_EXIT" == "n" ]]
+		do
+			ARCH=${kernel_arch} make $MAKEMODE
+			if query "Do you really want to exit menuconfig?" y 
+			then
+				MENUCONFIG_EXIT="y"
+			else
+				MENUCONFIG_EXIT="n"
+			fi
+		done
+	else
+		ARCH=${kernel_arch} make $MAKEMODE
+	fi
+fi
 # this doesn't work can't quite get it so I'm not going to use it, think its a bug in the kernel
 #	if [[ ${OPTIONAL_BUILD_DIR} ]]
 #	then
@@ -89,4 +107,4 @@ then
 #		ARCH="${kernel_arch}" make $MAKEMODE
 #		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
 #	fi
-fi
+#fi

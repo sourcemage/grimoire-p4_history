@@ -51,10 +51,12 @@ create_defaults()
 	persistent_add reconf
 	persistent_add kver
 	persistent_add patches
+	persistent_add selected_patches
 	VERSION="`gaze version linux-new | awk 'NR == 3 {print $4}'`"
 	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
-		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
+		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p \
+		   ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
 		persistent_save
@@ -512,7 +514,7 @@ list_specific_patch_dir()
 # that apply to the kernel version $1
 patch_menu() 
 {
-#	new_patch_list=$patches
+#	new_patch_list=$selected_patches
 	new_patch_list=""
 	while true
 	do
@@ -559,7 +561,7 @@ patch_menu()
 				new_patch_list="${new_patch_list}${command} "
 			fi
 		else
-			patches=$new_patch_list
+			selected_patches=$new_patch_list
 			break
 		fi
 	done
@@ -604,12 +606,12 @@ calculate_depends()
 {
 	# create Makefile
 	dependslist=""
-	if [[ "$patches" != "" ]]
+	if [[ "$selected_patches" != "" ]]
 	then
 		(
-		echo "all: $patches"
+		echo "all: $selected_patches"
 		echo ""
-		for patch in $patches
+		for patch in $selected_patches
 		do
 			depends=""
 			case "$patch" in
