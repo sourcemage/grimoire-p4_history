@@ -18,8 +18,8 @@ ACE_ROOT=/home/erics/myace
 include	$(ACE_ROOT)/include/makeinclude/wrapper_macros.GNU
 
 ifeq ($(CROSS-COMPILE),)
- # DIRS = src tests
- # DIRS = src 
+ # DIRS = src tests     /* removed tests dir as fails on SMGL */
+ DIRS = src 
 else
   DIRS=
 endif # ! CROSS-COMPILE
