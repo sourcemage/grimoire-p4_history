@@ -9,9 +9,11 @@ ${DEFAULT_COLOR}${MESSAGE_COLOR} for ${SPELL_COLOR}$SPELL"     &&
 	tar jxf $SOURCE_CACHE/$FOO 
 else unpack  ${SOURCE}   ${MD5[0]}                             &&
      unpack  ${SOURCE2}  ${MD5[1]}                             &&
+   if  [ "$HEADCODE" = "no" ]; then 
      cd  ${SOURCE_DIRECTORY}                                   &&
      patch  -p0  <  ${SOURCE_CACHE}/${SOURCE2}                 &&
      cd  -
+   fi
 fi                                                             &&
 
 #cvs updates anyone?
