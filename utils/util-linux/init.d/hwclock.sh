@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RUNLEVEL=S
+NEEDS="+local_fs"
 
 . /etc/init.d/smgl_init
 . /etc/sysconfig/hwclock
