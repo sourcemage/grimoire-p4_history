@@ -31,9 +31,6 @@
 
   (
 
-    mkdir -p           /usr/doc/MPlayer
-    cp -r etc/*        /usr/doc/MPlayer
-
     if (ldd /usr/bin/mplayer | grep freetype) > /dev/null; then
       if ! (ldd /usr/bin/mplayer | grep fontconfig) > /dev/null; then
         cp  /usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf  \
