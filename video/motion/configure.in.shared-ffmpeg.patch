@@ -1,0 +1,17 @@
+--- configure.in	2002-07-16 19:21:07.000000000 +0200
++++ configure.ffmpeg.in	2003-02-20 10:13:51.000000000 +0100
+@@ -41,7 +41,13 @@
+ )
+ if test "${LIBAVCODEC}" = "yes"; then
+   dnl AUTODETECT ??? SHARED LIB ?????
+-  AC_MSG_RESULT(not specified)
++  if test -f /usr/include/ffmpeg/avcodec.h; then
++          AC_MSG_RESULT(found)
++          CFLAGS="${CFLAGS} -DHAVE_FFMPEG -I/usr/include/ffmpeg"
++          LIBS="$LIBS -lavcodec -lm"
++  else
++        AC_MSG_RESULT(not found)
++  fi
+ else
+   if test -f ${LIBAVCODEC}/libavcodec.a; then
+     AC_MSG_RESULT(found)
