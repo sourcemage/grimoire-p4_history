@@ -3,6 +3,8 @@ export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 export    CFLAGS="${CFLAGS/-DPIC -fPIC/}"
 export  CXXFLAGS="${CFLAGS/-DPIC -fPIC/}"
 
+patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
+
 sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
 ./configure  --prefix=${INSTALL_ROOT}/usr  \
              --enable-shared               \
