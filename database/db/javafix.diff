@@ -1,7 +1,7 @@
-diff -purN db-4.2.50/dist/configure db/dist/configure
---- db-4.2.50/dist/configure	2003-11-20 22:05:57.000000000 -0500
-+++ db/dist/configure	2003-11-26 15:38:43.000000000 -0500
-@@ -20729,7 +20729,6 @@ public static void main (String args[]) 
+diff -Naur db-4.3.27.orig/dist/configure db-4.3.27/dist/configure
+--- db-4.3.27.orig/dist/configure	2005-02-24 22:46:57.845051456 -0800
++++ db-4.3.27/dist/configure	2005-02-24 22:47:09.964209064 -0800
+@@ -21468,7 +21468,6 @@
          System.exit (0);
  } }
  EOF
@@ -9,7 +9,7 @@ diff -purN db-4.2.50/dist/configure db/dist/configure
          if { ac_try='$JAVAC $JAVACFLAGS $JAVA_TEST'
    { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
    (eval $ac_try) 2>&5
-@@ -20744,7 +20743,6 @@ if test x$ac_cv_prog_uudecode_base64 != 
+@@ -21483,7 +21482,6 @@
  echo "$as_me: error: The Java compiler $JAVAC failed (see config.log, check the CLASSPATH?)" >&2;}
     { (exit 1); exit 1; }; }
          fi

@@ -7,11 +7,14 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=GPL
         WEB_SITE=http://m-arriaga.net/software/libtrash/
          ENTERED=20020525
-         UPDATED=20040127
+         UPDATED=20030815
            SHORT="A linux trashcan"
 cat << EOF
 a shared library which, when preloaded, implements a trash can under GNU/Linux.
 This way, your mistakes (at least those of the "rm -rf dir /" class :-)) will
 no longer cause the loss of a week's work or your system's binaries.
 
+WARNING
+
+This program will crash mutt
 EOF

@@ -2,16 +2,21 @@
 
   sedit  "s/-O/$CFLAGS/"  Makefile.in
 
-  ./configure  --prefix=${INSTALL_ROOT}/usr              \
-               --infodir=${INSTALL_ROOT}/usr/share/info  \
-               --mandir=${INSTALL_ROOT}/usr/share/man    \
+
+  # Looks like gdbm uses INSTALL_ROOT in its scripts, so we end up 
+  # with a concatenation of INSTALL_ROOT, not very nice...
+  ./configure  --prefix=/usr              \
+               --infodir=/usr/share/info  \
+               --mandir=/usr/share/man    \
                $OPTS                &&
   make                              &&
   prepare_install                   &&
-  make  prefix=${INSTALL_ROOT}/usr install         &&
-  make  prefix=${INSTALL_ROOT}/usr install-compat  &&
-  ln    -sf  libgdbm.so.3.0.0     ${INSTALL_ROOT}/usr/lib/libndbm.so  &&
-  ln    -sf  ${INSTALL_ROOT}/usr/lib/libgdbm.la  ${INSTALL_ROOT}/usr/lib/libndbm.la  &&
-  ln    -sf  ${INSTALL_ROOT}/usr/lib/libgdbm.a   ${INSTALL_ROOT}/usr/lib/libndbm.a
+  make  install         &&
+  make  install-compat  &&
+  # Preserve the links in chroot
+  cd $INSTALL_ROOT/usr/lib &&
+  ln    -sf  libgdbm.so.3.0.0     libndbm.so  &&
+  ln    -sf  libgdbm.la  libndbm.la  &&
+  ln    -sf  libgdbm.a   libndbm.a
 
 ) > $C_FIFO 2>&1
