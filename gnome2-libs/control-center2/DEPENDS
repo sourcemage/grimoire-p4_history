@@ -1,9 +1,10 @@
 depends gnome-desktop   &&
 depends libgnomeui      &&
-depends nautilus2       &&
 depends esound          &&
 depends metacity        &&
 depends xfree86_xkb_xml &&
 depends libxklavier     &&
-depends xscreensaver
+depends xscreensaver    &&
+optional_depends  "nautilus2"  ""  "--disable-vfs-methods"  "for fonts:// and themes:// methods"  &&
+optional_depends  "gst-plugins"  ""  ""  "for gstreamer volume control support"
 
