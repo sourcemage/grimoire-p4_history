@@ -1,0 +1,11 @@
+--- configure~	2003-09-10 03:59:17.000000000 +0200
++++ configure	2003-11-27 07:29:31.000000000 +0100
+@@ -39692,7 +39692,7 @@
+ main ()
+ {
+ 
+-      #if (SND_LIB_MAJOR == 0) && (SND_LIB_MINOR == 9)
++      #if (SND_LIB_MAJOR == 0) && (SND_LIB_MINOR == 9) || (SND_LIB_MAJOR == 1)
+         /* we have ALSA 0.9.x */
+       #else
+         #error not ALSA 0.9.x
