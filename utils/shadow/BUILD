@@ -12,6 +12,10 @@
   sedit  "s/ln -s/ln -sf/g"  configure
   sedit  "s/ln -s/ln -sf/g"  aclocal.m4
 
+  # Do not compile/install su, coreutils provides that
+  # Bug #4008
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/su.patch  &&
+
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \
