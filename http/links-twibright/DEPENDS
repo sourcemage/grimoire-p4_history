@@ -7,6 +7,10 @@ optional_depends flex              \
                  '--with-libfl'    \
                  '--without-libfl' \
                  'for parser support' &&
+optional_depends directfb            \
+                 '--with-directfb'    \
+                 '--without-directfb' \
+                 'DirectFB support, non-X text and graphics modes' &&
 optional_depends svgalib             \
                  '--with-svgalib'    \
                  '--without-svgalib' \
