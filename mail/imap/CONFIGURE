@@ -1,0 +1,7 @@
+if ! grep -q "IMAP_MAILSUBDIR=" $SPELL_CONFIG; then
+	if query "Apply patch to use ~/.imap/ as a mail sub-directory?" y; then
+		echo "IMAP_MAILSUBDIR=y" >> $SPELL_CONFIG
+	else
+		echo "IMAP_MAILSUBDIR=n" >> $SPELL_CONFIG
+	fi
+fi

@@ -6,7 +6,6 @@ unset  CXXFLAGS
   ./configure  --prefix=/usr               \
                --sysconfdir=/etc           \
                --localstatedir=/var        \
-               --with-dvdcss=local-static  \
                $OPTS                       &&
   make                                     &&
   prepare_install                          &&

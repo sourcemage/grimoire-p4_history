@@ -87,4 +87,7 @@ echo  "EXIM_GROUP=mail"                  >>  Local/Makefile
   sedit  "s/\# group = mail/  group = mail/"  /etc/exim.conf
   sedit  "s/\# mode = 0660/  mode = 0660/"    /etc/exim.conf
 
+# install man page
+  cp $SOURCE_DIRECTORY/doc/exim.8 /usr/man/man8/exim.8
+
 )

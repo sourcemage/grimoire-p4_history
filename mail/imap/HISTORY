@@ -1,0 +1,41 @@
+2002-05-08 M.L. <m.l@compaqnet.fr>
+
+	Added courier-imap to CONFLICTS file. Added Sergey as
+	MAINTAINER in DETAILS file. Thanks to him for this spell.
+	
+2002-05-08 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Make option NOSSL corrected to SSLTYPE, added patch to use ~/.imap/
+	instead of ~, improved the structure of BUILD script by combining four
+	separate 'make' into one parameterized. UPDATED changed because SSL was
+	effectively not enabled.
+
+2002-04-16 sergeyli@pisem.net
+
+	Added copying of mtest binary to /usr/bin, changed all 'cp'
+	to 'cp -f' for binaries. No UPDATED change. Added CONFLICTS
+	to indicate conflict with current pine spell.
+
+2002-04-12 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Separated IMAPd into a separate spell, imap. Fixed 'services' according to
+	http://www.iana.org/assignments/port-numbers. 'services' and xinet.d/*
+	changed to be non-executable. All services run under 'nobody'. Removed
+	copying of manpages because they don't come with this archive. Removed
+	copying of client binaries: only imapd, ipop2d and ipop3d are copied.
+
+2002-09-15  M.L.
+
+    	    mv Changelog HISTORY
+
+2002-01-15  Kyle Sallee	
+
+	    fixed pam authentication & imaps/pop3s
+
+2001-01-06  Kyle Sallee	
+
+	    Added support launching imapd from xinetd
+
+2002-01-14  Kyle Sallee	
+
+	    Added imaps support to spell.

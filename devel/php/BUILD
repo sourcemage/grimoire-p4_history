@@ -33,7 +33,8 @@
 	--with-regex=system 		\
 	--with-versioning 		\
 	--with-mod_charset 		\
-	--with-layout=GNU                   \
+	--with-layout=GNU		\
+	--with-zlib				\
     --with-x-includes=/usr/X11/include  \
     --with-x-libraries=/usr/X11/lib     \
 	$WITH_APACHE                  	    \

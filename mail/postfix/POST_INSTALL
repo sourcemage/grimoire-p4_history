@@ -1,1 +1,11 @@
+message "If this is the first cast of postfix,"
+message "you may want to run newaliases to make it work right now."
+
+if query "Skip newaliases (you can run it later) ?" y
+then
+  message "Don't forget to run newaliases to apply your changes on the alias file".
+else
+  newaliases
+fi
+
 /etc/init.d/postfix.sh  start

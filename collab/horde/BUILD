@@ -6,50 +6,6 @@
 HORDE_DEST=/usr/share/horde
 [ $SPELL != horde ] && HORDE_DEST=$HORDE_DEST/$SPELL
 
-function update_openldap() {
-	HORDE_MARK="#### Horde Application Framework ####"
-
-	grep "$HORDE_MARK" /etc/openldap/slapd.conf > /dev/null 2>&1                                              && return
-	query "${MESSAGE_COLOR}Would you like to add IMP information to OpenLDAP's slapd.conf${DEFAULT_COLOR}?" y || return
-
-	/etc/init.d/slapd.sh stop
-
-	cat >> /etc/openldap/slapd.conf << __EOF__
-
-$HORDE_MARK
-
-include		/etc/openldap/schema/gollem.schema
-include		/etc/openldap/schema/horde.schema
-include		/etc/openldap/schema/imp.schema
-include		/etc/openldap/schema/kronolith.schema
-include		/etc/openldap/schema/nag.schema
-include		/etc/openldap/schema/turba.schema
-
-access to filter=(objectclass=gollemPrefs)
-	by self write
-	by *    none
-access to filter=(objectclass=hordePrefs)
-	by self write
-	by *    none
-access to filter=(objectclass=impPrefs)
-	by self write
-	by *    none
-access to filter=(objectclass=kronolithPrefs)
-	by self write
-	by *    none
-access to filter=(objectclass=nagPrefs)
-	by self write
-	by *    none
-access to filter=(objectclass=turbaPrefs)
-	by self write
-	by *    none
-
-$HORDE_MARK
-__EOF__
-
-	/etc/init.d/slapd.sh start
-}
-
 (
 
 	message "${MESSAGE_COLOR}Checking modules compiled into ${SPELL_COLOR}php${DEFAULT_COLOR}"
@@ -72,11 +28,30 @@ __EOF__
 	cp    -fR ./ $HORDE_DEST/
 	cd           $HORDE_DEST/
 
-	if [ $SPELL == horde ] && spell_installed openldap; then
-		message "${MESSAGE_COLOR}Adjusting Horde configuration for LDAP support${DEFAULT_COLOR}"
-		[ -d /etc/openldap/schema/ ] && cp -f ./scripts/ldap/*.schema /etc/openldap/schema/
-		patch -p1 < $SCRIPT_DIRECTORY/ldap.patch > /dev/null
-		update_openldap
+	SLAPD_CONF=/etc/openldap/slapd.conf
+	SLAPD_SCHEMA=/etc/openldap/schema
+
+	if [ $SPELL == horde ] && spell_installed openldap && [ -r $SLAPD_CONF ] && [ -d $SLAPD_SCHEMA ]; then
+		SUFFIX=`gawk '/^suffix\W+/ { match($2, /"?([^"]*)"?/, a); print a[1]; nextfile; }' $SLAPD_CONF`
+		message "${MESSAGE_COLOR}Found LDAP database suffix:${DEFAULT_COLOR} $SUFFIX"
+
+		cat $SCRIPT_DIRECTORY/ldap.patch | sed "s/o=Org/$SUFFIX/" | patch -p1 > /dev/null
+		message "${MESSAGE_COLOR}Horde configuration adjusted for LDAP${DEFAULT_COLOR}"
+
+		cp -f ./scripts/ldap/*.schema $SLAPD_SCHEMA/
+
+		if ! grep "horde.schema" $SLAPD_CONF > /dev/null 2>&1; then
+			T=/tmp/${SLAPD_CONF//\//_}.$$
+			gawk -f $SCRIPT_DIRECTORY/addschema.gawk $SLAPD_CONF > $T
+			#
+			# I don't want to lose permissions so I'm doing cat+rm instead of mv
+			#
+			cat $T > $SLAPD_CONF
+			rm  $T
+			message "${MESSAGE_COLOR}Horde schemas added to ${SLAPD_CONF}${DEFAULT_COLOR}"
+
+			[ -x /etc/init.d/slapd.sh ] && /etc/init.d/slapd.sh restart
+		fi
 	fi
 
 	cd $HORDE_DEST/config/

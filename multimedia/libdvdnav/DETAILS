@@ -1,11 +1,13 @@
            SPELL=libdvdnav
-         VERSION=0.0.1cvs-snapshot-1
+         VERSION=0.1.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prdownloads.sourceforge.net/dvd/$SOURCE
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/dvd/$SOURCE
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/dvd/$SOURCE
+SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/dvd/$SOURCE
         WEB_SITE=http://dvd.sourceforge.net/
          ENTERED=20020428
-         UPDATED=20020428
+         UPDATED=20020509
            SHORT="Library for xine-dvdnav"
 cat << EOF
 plugin for xine to give DVD support
