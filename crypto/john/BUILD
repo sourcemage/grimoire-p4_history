@@ -5,7 +5,13 @@
   sedit  "s/-c -Wall -O2 -fomit-frame-pointer/-c -Wall $CFLAGS/"  Makefile
   sedit  "s/ -m486//"  Makefile
 
-  make  generic  &&
+  if grep mmx /proc/cpuinfo > /dev/null
+  then
+    make linux-x86-mmx-elf
+  else
+    make linux-x86-any-elf
+  fi &&
+
   prepare_install
 
 ) > $C_FIFO 2>&1  &&  (
