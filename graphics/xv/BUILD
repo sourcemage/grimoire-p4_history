@@ -1,6 +1,6 @@
 (
 
-  bzip2  -dc  <  $SOURCE_CACHE/$SOURCE2  |
+  cat $SOURCE_DIRECTORY/${SOURCE2/.bz2}  |
   patch  -p1                             &&
   make   -f  Makefile.std                \
          CCOPTS="$CFLAGS"                &&
