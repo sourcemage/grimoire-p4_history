@@ -1,6 +1,5 @@
 (
 
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/resParser.cpp.patch      &&
   export TMAKEPATH=/usr/share/tmake/lib/linux-g++             &&
   cd src                                                      &&
   tmake xxdiff.pro > Makefile                                 &&
@@ -11,6 +10,6 @@
   sedit  's/$(QTDIR)\/bin\/uic/\/usr\/bin\/uic/'  Makefile    &&
   make                                                        &&
   prepare_install		                              &&
-  install xxdiff /usr/X11R6/bin     
+  install  -m  755  ../bin/xxdiff  /usr/X11R6/bin     
 
 ) > $C_FIFO 2>&1
