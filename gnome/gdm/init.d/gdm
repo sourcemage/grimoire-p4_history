@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #  gdm.sh  Load the GDM login manager at boot
 #
@@ -9,13 +9,20 @@
 #    Now properly kills all instances of gdm (since they are not just named gdm)
 #
 
+RUNLEVEL=5
+PROVIDES=display_manager
+
+. /etc/init.d/smgl_init
+
 case  $1  in
           start)  echo "$1ing gdm"
                   gdm
+                  evaluate_retval
                   ;;
 
            stop)  echo "$1ping gdm"
                   pkill  "^gdm*"
+                  evaluate_retval
                   ;;
 
         restart)  stop   $0  &&
