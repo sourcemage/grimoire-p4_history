@@ -30,6 +30,8 @@ function make_if_swig() {
         --sysconfdir=/etc        \
         --localstatedir=/var     \
         --disable-shared         \
+        --disable-dso            \
+        --without-apxs           \
         --enable-maintainer-mode &&
       make                       &&
 
@@ -73,10 +75,6 @@ function make_if_swig() {
 # Use this instead of just 'make' for -jN option:
 # make -jN external-all
 # make -jN local-all
-
-  if spell_installed Python; then
-    make check
-  fi &&
 
 # Install
   prepare_install &&
@@ -136,5 +134,16 @@ function make_if_swig() {
 	</Limit>
 </Location>
 __EOF__
+
+  if spell_installed Python; then
+#    # set library paths
+#    WD=$(pwd)
+#    for d in $(find subversion/ -maxdepth 1 -name 'lib*' -a -type d); do
+#      LD_LIBRARY_PATH="$LD_LIBRARY_PATH${LD_LIBRARY_PATH:+:}$WD/$d/.libs/"
+#    done &&
+#    export LD_LIBRARY_PATH &&
+#    # run tests
+    make check
+  fi
 
 )
