@@ -17,7 +17,12 @@ optional_depends  gnupg                         \
 optional_depends  gpgme                \
                   ""                   \
                   ""                   \
-                  "for GPGME support"  &&
+                  "for GPGME support in KMail"  &&
+
+optional_depends  pinentry                \
+                  ""                   \
+                  ""                   \
+                  "for PGP/MIME support in KMail"  &&
 
 optional_depends  libmal                 \
                   "--with-mal"           \
