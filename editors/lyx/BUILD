@@ -1,6 +1,6 @@
 (
 
-  CFLAGS=`echo $CFLAGS | sed "s/-funroll-loops//"` &&
+  CFLAGS=`echo $CFLAGS | sed "s/-O3/-O2/"` &&
   CXXFLAGS="$CFLAGS"                               &&
   export  CFLAGS                                   &&
   export  CXXFLAGS                                 &&

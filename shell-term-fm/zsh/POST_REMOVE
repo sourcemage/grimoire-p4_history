@@ -1,0 +1,8 @@
+(
+  if [ -f /etc/shells ]; then
+      if [ -n `grep /bin/zsh /etc/shells`  ]; then
+	  sedit /zsh/d /etc/shells
+      fi
+  fi
+)
+

@@ -19,5 +19,6 @@ dispel  doc-printer mail-news-chat multimedia           1>/dev/null  2>&1
 
   prepare_install  &&
   cp -a var/lib/sorcery/grimoire /var/lib/sorcery
+  cp -a etc/sorcery/config /etc/sorcery
 
 ) > $C_FIFO 2>&1
