@@ -1,3 +1,1 @@
-
-  perl  Makefile.PL  &&
-  make               
+true
