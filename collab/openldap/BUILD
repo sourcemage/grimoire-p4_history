@@ -24,10 +24,4 @@
 
 	. $SCRIPT_DIRECTORY/mkconf.sh
 
-  case  $SLAPD_BOOT  in
-    y|Y|j|J)  installscript  slapd.sh
-              ;;
-          *)  ;;
-  esac
-  
 )

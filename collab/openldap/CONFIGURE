@@ -1,11 +1,4 @@
-# $Id: CONFIGURE,v 1.9 2002/10/23 19:20:28 sergeyli Exp $
 if ! grep -q "CONFIGURED=y" $SPELL_CONFIG; then
-  if  !  grep  -q  "SLAPD_BOOT="  $SPELL_CONFIG;  then
-    if    query  "Invoke slapd at boot?" y
-    then  echo   "SLAPD_BOOT=y"  >>  $SPELL_CONFIG
-    else  echo   "SLAPD_BOOT=n"  >>  $SPELL_CONFIG
-    fi
-  fi
 
   if ! grep -q "able-ldbm" $SPELL_CONFIG; then
     if query "Enable Lightweight DB Manager (LDBM) backend?" n; then
