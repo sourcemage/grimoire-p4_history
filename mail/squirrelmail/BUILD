@@ -17,8 +17,10 @@ prepare_install
 
 mkdir -p $LOC 
 cp    -a $SPELL-$VERSION/* $LOC
-chown -R nobody  $LOC
-chgrp -R nogroup $LOC
+chown -R www-data  $LOC
+chgrp -R www-data  $LOC
+chown -R www-data  $LOC/*
+chgrp -R www-data  $LOC/*
 
 # move the doc dir to /usr/doc
 mkdir /usr/doc/squirrelmail 1>/dev/null 2>&1
