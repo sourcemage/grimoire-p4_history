@@ -1,12 +1,7 @@
            SPELL=kdepim
-         VERSION=$(grep "KDE_VERSION=" $GRIMOIRE/kde/KDE_DETAILS | awk -F '=' '{print $2;}')
-          SOURCE=$SPELL-$VERSION
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-        WEB_SITE=$(grep "KDE_WEB_SITE=" $GRIMOIRE/kde/KDE_DETAILS | awk -F '=' '{print $2;}')
          ENTERED=20010922
-         UPDATED=$(grep "KDE_UPDATED=" $GRIMOIRE/kde/KDE_DETAILS | awk -F '=' '{print $2;}')
-           SHORT="kdepim personal information management for kde."
+  . $GRIMOIRE/$SECTION/KDE_DETAILS         
+	   SHORT="kdepim personal information management for kde."
 cat << EOF
 * kab2: another design for the KDE addressbook
 There is also quite an amount of infrastructure in this package:
