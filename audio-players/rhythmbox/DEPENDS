@@ -2,7 +2,7 @@ depends  libgnomeui   &&
 if  [  "$XINE_BACKEND"  =  "y"  ];  then
   depends  xine-lib '--enable-xine'
 else
-  depends  gst-plugins
+  depends  gst-plugins-0.6
 fi  &&
 optional_depends  "libvorbis"           \
                   "--enable-vorbis"     \

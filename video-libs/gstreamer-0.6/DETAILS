@@ -1,10 +1,10 @@
-            SPELL=gstreamer
-          VERSION=0.7.6
+            SPELL=gstreamer-0.6
+          VERSION=0.6.5
            BRANCH=$(echo $VERSION|cut -d . -f 1,2)
-           SOURCE=$SPELL-$VERSION.tar.bz2
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+           SOURCE=gstreamer-$VERSION.tar.bz2
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/gstreamer-$VERSION
     SOURCE_URL[0]=http://gstreamer.freedesktop.org/src/gstreamer/$SOURCE
-           MD5[0]=ddfc905ccc5e449db0c1ccaa89b5f30b
+           MD5[0]=3c5204dee3c4ad9a71c8f5021d00c0dd
        LICENSE[0]=LGPL
          WEB_SITE=http://gstreamer.freedesktop.org
           ENTERED=20020507

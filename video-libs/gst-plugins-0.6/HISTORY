@@ -1,12 +1,10 @@
 2004-03-12 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* DETAILS: updated to 0.7.6
+	* DETAILS: renamed to gst-plugins-0.6
 	changed SOURCE_URL and WEB_SITE to freedesktop.org
-	* POST_INSTALL: call versioned gst-register-0.8 instead of unversioned
+	updated to 0.6.5
+	* POST_INSTALL: call versioned gst-register-0.6 instead of unversioned
 	one
-	* DEPENDS: added optional_depends on alsa, nas, libcaca, faad2, jack,
-	libmusicbrainz, libsndfile, gtk+2, X11-LIBS and pango
-	removed optional_depends on mjpegtools, avifile, libghttp
-	* BUILD: reenabled alsa
+	* DEPENDS: changed depends gstreamer to gstreamer-0.6
 
 2004-02-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, linux-2.6.patch: removed
