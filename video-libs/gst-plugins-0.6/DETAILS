@@ -1,12 +1,13 @@
            SPELL=gst-plugins
-         VERSION=0.7.6
+         VERSION=0.6.4
           BRANCH=$(echo $VERSION|cut -d . -f 1,2)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://freedesktop.org/~gstreamer/src/gst-plugins/$SOURCE
-          MD5[0]=1b6b2eadb0209d86a4e88d2bc91cd21d
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=$SOURCEFORGE_URL/gstreamer/$SOURCE
+          MD5[0]=d567d187d70ca30f1b7bd56e55d14f14
       LICENSE[0]=LGPL
-        WEB_SITE=http://gstreamer.freedesktop.org
+        WEB_SITE=http://www.gstreamer.net
          ENTERED=20020507
          UPDATED=20020922
            SHORT="Plugins for GStreamer"
