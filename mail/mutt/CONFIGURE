@@ -1,2 +1,6 @@
+if [ "$CVS" == "y" ];then
+echo .
+else
 config_query PATCH_SIGNATURE "Do you want to apply the multi signature patch?" n
 config_query PATCH_TRASH "Do you want to apply the trash bin patch?" n
+fi

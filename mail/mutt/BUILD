@@ -1,3 +1,16 @@
+if [ "$CVS" == "y" ];then
+./prepare  --build=$BUILD                       \
+             --prefix=${INSTALL_ROOT}/usr         \
+             --sysconfdir=${INSTALL_ROOT}/etc     \
+             --localstatedir=${INSTALL_ROOT}/var  \
+             --enable-pop                         \
+             --enable-imap                        \
+             --with-mailpath=/var/spool/mail      \
+             --mandir=${INSTALL_ROOT}/usr/share/man  \
+             --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt  \
+             $OPTS                                &&
+make
+else
 #
 # patch for multiple signatures and allows selection.
 #
@@ -34,3 +47,4 @@ fi &&
              --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt  \
              $OPTS                                &&
 make
+fi
