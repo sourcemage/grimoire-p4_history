@@ -17,3 +17,14 @@ function glibc_is_nptl ()
   fi
   return 1
 }
+
+#---------------------------------------------------------------------
+# Runs update-desktop-database if it is installed
+#---------------------------------------------------------------------
+function update_desktop_database ()
+{
+  if test -x /usr/bin/update-desktop-database; then
+    message "${MESSAGE_COLOR}Updating application mime type database.${DEFAULT_COLOR}"
+    /usr/bin/update-desktop-database
+  fi
+}
