@@ -1,6 +1,7 @@
 (
 
-  ./configure.sh  --prefix=/usr  &&
+  ./configure.sh  --prefix=/usr  \
+                  $OPTS          &&
   make                           &&
   prepare_install                &&
   make    install                
