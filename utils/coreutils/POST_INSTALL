@@ -28,7 +28,4 @@ done   &&
    sedit '/sh-utils/d' $UNTOUCHABLES   &&
    sedit '/fileutils/d' $PACKAGELOG    &&
    sedit '/textutils/d' $PACKAGELOG    &&
-   sedit '/sh-utils/d' $PACKAGELOG     &&
-   if ! grep -q "net-tools:coreutils:on_cast:cast_self" /var/state/sorcery/triggers ;
-       then echo "net-tools:coreutils:on_cast:cast_self" >> /var/state/sorcery/triggers
-   fi
+   sedit '/sh-utils/d' $PACKAGELOG     
