@@ -1,6 +1,6 @@
 (
 
-  sedit  "s:Attachements:Attachments:"  modules/demux/mkv.cpp  &&
+  patch modules/codec/ffmpeg/ffmpeg.c $SCRIPT_DIRECTORY/ffmpeg.patch  &&
 
   cd  mpeg2dec-$LIBMPEG2_VERSION          &&
   ./configure  --disable-sdl --without-x  &&
@@ -8,17 +8,15 @@
   export OPTS="$OPTS --enable-libmpeg2 --with-libmpeg2-tree=./mpeg2dec-$LIBMPEG2_VERSION"  &&
   cd  $SOURCE_DIRECTORY  &&
 
-  if  [  "$FFMPEG"  =  "y"  ];  then
-    export OPTS="$OPTS --enable-ffmpeg"
-  fi  &&
   if  [  "$JOYSTICK"  =  "y"  ];  then
     export OPTS="$OPTS --enable-joystick"
   fi  &&
-  if  [  "$MOZILLA"  =  "y"  ];  then
-    export OPTS="$OPTS --enable-mozilla"
-  fi  &&
 
-  export OPTS="$OPTS --disable-dependency-tracking --enable-release"
+  export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
+
+  # needed for xvid detection
+  export LDFLAGS="$LDFLAGS -lm"  &&
+
   default_build
 
 ) > $C_FIFO 2>&1

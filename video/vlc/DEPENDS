@@ -34,9 +34,10 @@ optional_depends  "xosd"                  \
                   "--disable-xosd"        \
                   "for xosd interface"    &&
 
-if  [  "$MOZILLA"  =  "y"  ];  then
-  requires mozilla-browser
-fi  &&
+optional_depends  "mozilla-browser"       \
+                  "--enable-mozilla"      \
+                  "--disable-mozilla"     \
+                  "for a mozilla plugin"  &&
 
 # control plugins
 optional_depends  "lirc"                  \
@@ -113,9 +114,10 @@ optional_depends  "flac"                   \
                   "for flac audio decoder" &&
 
 # video codec options
-if  [  "$FFMPEG"  =  "y"  ];  then
-  requires libavcodec
-fi  &&
+optional_depends  "libavcodec"             \
+                  "--enable-ffmpeg"        \
+                  "--disable-ffmpeg"       \
+                  "for lots of video codecs"  &&
 
 optional_depends  "xvid"                   \
                   "--enable-xvid"          \
