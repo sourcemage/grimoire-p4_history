@@ -1,10 +1,21 @@
 requires  x11-libs  &&
-optional_depends        "tk"              \
-                        ""                \
-			"--without-tk"    \
-			"for tk support"  &&
-							
-optional_depends        "Xaw3d"           \
-                        ""                \
-                        "--without-xaw3d" \
-                        "to use 3D version of Athena Widgets"															
+
+optional_depends  pvm                        \
+                  ""                         \
+                  "--without-pvm"            \
+                  "for PVM library support"  &&
+
+optional_depends  atlas                               \
+                  ""                                  \
+                  "--without-atlas"                   \
+                  "for optimized BLAS (using ATLAS)"  &&
+
+optional_depends  "tk"              \
+                  ""                \
+                  "--without-tk"    \
+                  "for tk support"  &&
+
+optional_depends  "Xaw3d"           \
+                  ""                \
+                  "--without-xaw3d" \
+                  "to use 3D version of Athena Widgets"															

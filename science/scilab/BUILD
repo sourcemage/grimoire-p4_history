@@ -1,6 +1,13 @@
 (
 
   message "${MESSAGE_COLOR}Scilab (c)INRIA-ENPC ${DEFAULT_COLOR}"	&&
-  default_build
+
+  ./configure --prefix=${INSTALL_ROOT}/usr   \
+          --sysconfdir=${INSTALL_ROOT}/etc   \
+       --localstatedir=${INSTALL_ROOT}/var   \
+                       $OPTS                 &&
+  make    all                                &&
+  prepare_install                            &&
+  make    install
 
 ) > ${C_FIFO} 2>&1
