@@ -1,24 +1,28 @@
-2002-04-07      Jeff Schmidt            <jschmidt@fnal.gov>
+2002-10-17  Eric Schabell <eschabell@sourcemage.org>
 
-                moved config file to /etc/ and the variable output
-                to /var/portsentry/
+		removed gcc2 file.
 
-                added David as MAINTAINER (he did all the *real* work  ;^)
+2002-04-07  Jeff Schmidt <jschmidt@fnal.gov>
 
-                incremented UPDATED
+		moved config file to /etc/ and the variable output
+        to /var/portsentry/
 
-                corrected spelling in portsentry.modes
+        added David as MAINTAINER (he did all the *real* work  ;^)
 
-                changed ":" to "." and Start|Stop to start|stop in init, and
-                renamed it. (picky bastard, ain't I?)
+        incremented UPDATED
+
+        corrected spelling in portsentry.modes
+
+        changed ":" to "." and Start|Stop to start|stop in init, and
+        renamed it. (picky bastard, ain't I?)
 
 2002-04-05	David D. Huff Jr.	<David.Huff@computer-critters.com>
 
 
-	*	Patch to portsentry.conf to enable iptables support for kernel 2.4.x
+		*	Patch to portsentry.conf to enable iptables support for kernel 2.4.x
 
 		Added init file and symlinks with CONFIGURE so program
-	        actually does something upon install
+	    actually does something upon install
 
 		Added portsentry.modes file to enable very easy changes to
 		usage mode without recompilation. (Default: Advanced Stealth)
@@ -26,7 +30,7 @@
 		Renamed Changelog to HISTORY
 		
 
-20011213, portsentry 1.1, Kongar
+2001-12-13  Kongar
 
-- hacked BUILD file to add optimizations to the Makefile
+		- hacked BUILD file to add optimizations to the Makefile
 
