@@ -4,7 +4,7 @@
 
     mkdir  -p  /usr/doc/$SPELL                &&
 
-    cp  cleanscore       /usr/bin/            &&
+    cp  cleanscore       /usr/sbin/           &&
     
     cp  COPYING          /usr/doc/$SPELL      &&
     cp  COPYRIGHT        /usr/doc/$SPELL      &&
