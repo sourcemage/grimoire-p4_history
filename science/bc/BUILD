@@ -5,7 +5,7 @@
   cp /tmp/scan.l ./bc/scan.l      &&
   sed -e 's/char \*readline, (char \*)/char \*readline, (const char \*)/g' bc/scan.c > /tmp/scan.c &&
   cp /tmp/scan.c ./bc/scan.c      &&
-  ./configure --with-readline   && 
+  ./configure --prefix=${INSTALL_ROOT}/usr --with-readline   && 
   make                         && 
   prepare_install              && 
   make install 
