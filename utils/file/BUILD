@@ -4,5 +4,6 @@ patch  -p1  <  ${SCRIPT_DIRECTORY}/zisofs.patch        &&
              --build=$BUILD                            \
              --prefix=/usr                             \
              --datadir=/usr/share/misc                 \
+             --mandir=/usr/share/man                   \
              $OPTS                                     &&
 make

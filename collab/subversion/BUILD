@@ -70,6 +70,7 @@ if ! [ -x configure ]; then ./autogen.sh; fi &&
   --prefix=/usr \
   --sysconfdir=/etc \
   --localstatedir=/var \
+  --mandir=/usr/share/man \
   --disable-debug \
   --disable-static \
   --enable-dso \

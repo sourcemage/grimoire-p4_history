@@ -30,5 +30,7 @@ fi &&
              --enable-pop                         \
              --enable-imap                        \
              --with-mailpath=/var/spool/mail      \
+             --mandir=${INSTALL_ROOT}/usr/share/man  \
+             --with-docdir=${INSTALL_ROOT}/usr/share/doc/mutt  \
              $OPTS                                &&
 make

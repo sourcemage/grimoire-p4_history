@@ -1,32 +1,4 @@
-function ask_enable() {
-
-	if  !  grep  -q  "CFG_$1="  $SPELL_CONFIG;  then
-
-	  if    query "Enable $2 ?" $3
-	  then  cfg="--enable-$1"
-	  else  cfg="--disable-$1"
-	  fi
-	  echo  "CFG_$1=\"$cfg\""  >> $SPELL_CONFIG
-
-	fi
-}
-function ask() {
-
-	if ! grep -q "CFG_$1=" $SPELL_CONFIG; then
-		
-		if query "Build sox with $2?" $3
-			then cfg="--with-$1"
-			else cfg="--without-$1"
-		fi
-
-	echo "CFG_$1=\"$cfg\"" >> $SPELL_CONFIG
-
-	fi
-}
-
-ask_enable  oldrate  "old rate code" "n"
-ask_enable  fastulaw "fast ulaw compression (-32K memory)" "y"
-ask_enable  fastalaw "fast alaw compression (-32K memory)" "y"
-ask_enable  gsm       "internal GSM support" "y"
-ask         ossdsp   "support for /dev/dsp (OSS)" "y"
-ask         sunaudio "support for /dev/audio (SUN, etc)" "n"
+config_query_option CONF_OPTS "Enable old rate code?" n "--enable-oldrate" "--disable-oldrate"
+config_query_option CONF_OPTS "Enable fast ulaw compression (-32K memory)?" y "--enable-fastulaw" "--disable-fastulaw"
+config_query_option CONF_OPTS "Enable fast alaw compression (-32K memory)?" y "--enable-fastalaw" "--disable-fastalaw"
+config_query_option CONF_OPTS "Enable internal GSM support?" y "--enable-gsm" "--disable-gsm"

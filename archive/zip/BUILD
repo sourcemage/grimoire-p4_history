@@ -1,7 +1,5 @@
-(
-  sedit "s/-O2/$CFLAGS/" unix/Makefile &&
-  make  -f unix/Makefile generic  &&
-  prepare_install                 &&
-  make  prefix=${INSTALL_ROOT}/usr -f unix/Makefile install
-
-) > $C_FIFO 2>&1
+cp  unix/Makefile  .  &&
+sedit  "s/-O2/$CFLAGS/"        Makefile  &&
+sedit  "s:/usr/local:/usr:"    Makefile  &&
+sedit  "s:/man/:/share/man/:"  Makefile  &&
+make  generic

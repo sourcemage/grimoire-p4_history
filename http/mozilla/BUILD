@@ -6,6 +6,7 @@ CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
 ./configure \
   --prefix=$INSTALL_ROOT/usr \
+  --mandir=$INSTALL_ROOT/usr/share/man \
   --with-x \
   --with-pthreads \
   --enable-xft \

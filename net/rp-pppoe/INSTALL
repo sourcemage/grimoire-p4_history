@@ -1,4 +1,7 @@
-default_install  &&
+cd  $SOURCE_DIRECTORY/src  &&
+make  install              &&
+cd  ../gui                 &&
+make  install
 
 mkdir  -p  /usr/share/applnk/Internet      &&
 mkdir  -p  /usr/share/gnome/apps/Internet  &&
