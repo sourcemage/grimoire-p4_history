@@ -1,3 +1,4 @@
+sedit "s/VERSION\=0.6.1/VERSION\=0.7/g" $SPELL_CONFIG &&
 if ! grep -q CONFIGURED $SPELL_CONFIG; then
 
 if query "This spell will download the latest offical release of MozillaFirebird.\n
