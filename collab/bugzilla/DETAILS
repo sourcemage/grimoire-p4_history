@@ -1,12 +1,13 @@
-# $Id: DETAILS,v 1.7 2002/12/22 21:53:40 sergeyli Exp $
+# $Id: DETAILS,v 1.8 2003/01/06 18:37:33 sergeyli Exp $
            SPELL=bugzilla
-         VERSION=2.17.2
+         VERSION=2.17.3
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-          SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]='2023ac23d5fb1ae34f8a8f7810bb2a43'
+          SOURCE=$SPELL-$VERSION.tar.gz
+#         SOURCE=$SPELL-$VERSION.tar.bz2
+          MD5[0]='90ff0fe2ae1adc8afb5def761c025350'
       LICENSE[0]=MPL
-#  SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/webtools/$SOURCE
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot:Bugzilla:BUGZILLA-${VERSION//\./_}
+   SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/webtools/$SOURCE
+#  SOURCE_URL[0]=cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot:Bugzilla:BUGZILLA-${VERSION//\./_}
         WEB_SITE=http://www.mozilla.org/projects/bugzilla/
          ENTERED=20020430
          UPDATED=20020430
