@@ -1,1 +1,6 @@
-echo  >  $C_FIFO
+(
+
+  touch  /var/log/sorcery/install/${SPELL}-${VERSION}  &&
+  touch  /var/log/sorcery/md5sum/${SPELL}-${VERSION}
+
+)  >  $C_FIFO
