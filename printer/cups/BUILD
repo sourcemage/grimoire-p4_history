@@ -12,7 +12,6 @@ fake_redhat()  {
 (
 
   patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.diff
-  patch  -p1  <  $SCRIPT_DIRECTORY/cups-1.1.18-str75.patchv2
 
   ./configure  --bindir=${INSTALL_ROOT}/usr/bin     \
                --sbindir=${INSTALL_ROOT}/usr/sbin   \
