@@ -1,3 +1,27 @@
+2004-10-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.0.1
+	  SOURCE_URL changed to use APACHE_URL
+	  WEB_SITE moved to apache.org
+	  LICENSE[0] is now APACHE
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* BUILD: Converted to build_api 2
+	  Add -DSPAMC_SSL to CFLAGS if MAILSPAM_SSL is "y"
+	  Removed the RAZOR_TESTS (they're no longer used)
+	* INSTALL: Added
+	  There is no more ninjabutton.png to install. :(
+	  Removed TABs
+	  Use local DOC_DIR to install docs to /usr/share/doc
+	  Cleaned up documentation installation
+	* DEPENDS: Formatted to Guru Handbook
+	  Added dependency on openssl if MAILSPAM_SSL is "y" (but it's broken, so
+	  I've commented it out for now)
+	  Added optional dependency on Storable
+	* CONFIGURE: Added to query for SSL-enabled spamc
+	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* FINAL: Added warning about SpamAssasin databases before 3.0 as not valid
+	* TRIGGERS: Clean up formatting
+
 2004-08-05 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.64
 	  SOURCE_URL changed
