@@ -1,0 +1,2 @@
+qmake  mythvideo.pro  &&
+make
