@@ -1,11 +1,11 @@
            SPELL=abiword
        BUILD_API=2
-if [ "$DEVEL" == "yes" ] ;then
+if [ "$DEVEL" == "y" ] ;then
          VERSION=2.1.3
           MD5[0]=cf791d4695a9f37aa9ddf1551bc353ac
 else
-         VERSION=2.0.7
-          MD5[0]=2cf081f93f872482632d4a7eb7625609
+         VERSION=2.0.8
+          MD5[0]=134e1e0aa4c344ab71bed3c02113960d
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -15,6 +15,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20040308
       LICENSE[0]=GPL
       MAKE_NJOBS=1
+       BUILD_API=2
            SHORT="abiword is a word processor"
 cat << EOF
 Abiword is a free word processing program similar to Microsoft Word.
