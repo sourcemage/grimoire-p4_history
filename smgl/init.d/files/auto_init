@@ -69,7 +69,11 @@ _usage() {
 # Handles function "overloading"
 run_func() {
   # If for example start exists then run it, otherwise run _start
-  type -t $1 > /dev/null && $1 || _$1
+  if type -t $1 > /dev/null; then
+    $1
+  else
+    _$1
+  fi
 }
 
 
