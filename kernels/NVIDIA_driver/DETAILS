@@ -1,7 +1,7 @@
            SPELL=NVIDIA_driver
          VERSION=1.0-5328-pkg1
           SOURCE=NVIDIA-Linux-x86-$VERSION.run
-         SOURCE2=NVIDIA_kernel-${VERSION/-pkg1/}-2.6.diff
+         SOURCE2=NVIDIA_kernel-${VERSION/-pkg1/}-2.6.diff.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.nvidia.com/XFree86/Linux-x86/${VERSION/-pkg1/}/$SOURCE
   SOURCE2_URL[0]=http://www.minion.de/files/$SOURCE2
