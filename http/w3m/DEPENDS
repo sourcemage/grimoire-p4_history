@@ -1,5 +1,6 @@
 depends  ncurses                    &&
+depends  libgc                      &&
 optional_depends  "openssl"         \
-                  "-model=monster"  \
-                  "-model=cookie"   \
+                  "--with-ssl"      \
+                  "--without-ssl"   \
                   "for https, secure socket layer, encryption"
