@@ -1,16 +1,15 @@
            SPELL=gnome-python2
-         VERSION=2.6.2
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=gnome-python-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-python-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/gnome-python/$BRANCH/$SOURCE
-          MD5[0]='fb44fc015a391bac62e2796bcbe6f847'
+         VERSION=2.9.4
+	  BRANCH=`echo ${VERSION}|cut -d . -f 1,2`
+          SOURCE=gnome-python-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-python-${VERSION}
+   SOURCE_URL[0]=$GNOME_URL/sources/gnome-python/${BRANCH}/${SOURCE}
+          MD5[0]='135b27470bf6f70af1d7323f3592edc9'
       LICENSE[0]=GPL
-       BUILD_API=2
         WEB_SITE=http://www.gnome.org
          ENTERED=20010922
-         UPDATED=20050103
-           SHORT="gnome-python -- Python bindings for GNOME"
+         UPDATED=20050211
+           SHORT="Python bindings for GNOME"
 cat << EOF
 This is a set of bindings for the GNOME libraries for use with python.
 EOF

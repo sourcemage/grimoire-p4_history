@@ -1,15 +1,14 @@
            SPELL=gconfmm
-         VERSION=2.8.1
+         VERSION=2.9.2
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='58d2d0c292c864ae12253cb036143654'
+          MD5[0]='67eacb3fb07684b8a04c99dd5db67cbf'
       LICENSE[0]="LGPL"
-       BUILD_API=2
         WEB_SITE=http://gtkmm.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20041129
+         UPDATED=20050211
            SHORT="C++ wrapper library for GConf"
 cat << EOF
 C++ wrapper library for GConf2
