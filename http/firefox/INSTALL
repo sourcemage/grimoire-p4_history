@@ -43,6 +43,11 @@ tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
        -C  ${MOZILLA_HOME}                               &&
 
 #
+# Create a /usr/lib/firefox symlink for easy module installation
+#
+ln  -sf  ${MOZILLA_HOME}  /usr/lib/firefox  &&
+
+#
 # Securityfix for firefox.
 #
 mkdir -p $SOURCE_DIRECTORY/patch &&
