@@ -1,0 +1,33 @@
+diff -Nur mjpegtools-1.6.1-orig/mplex/multplex.cc mjpegtools-1.6.1/mplex/multplex.cc
+--- mjpegtools-1.6.1-orig/mplex/multplex.cc	2002-04-29 16:36:00.000000000 +0200
++++ mjpegtools-1.6.1/mplex/multplex.cc	2003-06-19 10:47:51.000000000 +0200
+@@ -12,6 +12,7 @@
+ #include "videostrm.hh"
+ #include "outputstream.hh"
+ 
++#include <cassert>
+ 
+ /******************************************************************* 
+ 	Find the timecode corresponding to given position in the system stream
+diff -Nur mjpegtools-1.6.1-orig/mplex/stillsstream.cc mjpegtools-1.6.1/mplex/stillsstream.cc
+--- mjpegtools-1.6.1-orig/mplex/stillsstream.cc	2002-04-18 06:32:02.000000000 +0200
++++ mjpegtools-1.6.1/mplex/stillsstream.cc	2003-06-19 10:48:41.000000000 +0200
+@@ -26,6 +26,7 @@
+ #include "stillsstream.hh"
+ #include "interact.hh"
+ #include "outputstream.hh"
++#include <cassert>
+ 
+ void StillsStream::Init ( )
+ {
+diff -Nur mjpegtools-1.6.1-orig/mplex/systems.cc mjpegtools-1.6.1/mplex/systems.cc
+--- mjpegtools-1.6.1-orig/mplex/systems.cc	2002-04-29 16:36:01.000000000 +0200
++++ mjpegtools-1.6.1/mplex/systems.cc	2003-06-19 10:48:16.000000000 +0200
+@@ -6,6 +6,7 @@
+ #include <sys/stat.h>
+ #include "systems.hh"
+ #include "mplexconsts.hh"
++#include <cassert>
+ 
+ uint8_t dummy_buf[8000];
+ void
