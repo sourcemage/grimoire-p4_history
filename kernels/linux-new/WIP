@@ -1,0 +1,24 @@
+Okay this is the first release of the new linux spell.
+Check it out if you want to add files that would be helpful.
+
+Notes on making the files for patches:
+FILE NAME: should reflect the uncompressed filename
+patchversion: should also reflect the uncompressed filename
+source: should reflect the full name of the file being downloaded
+md5sum: is the md5sum of the uncompressed patch
+source_url: is the web/ftp site you download the source from
+appliedkernels: this is a space separated list of kernels the patch can apply to
+pval: is the -p# number passed to patch
+
+finally put them in an appropriate folder under the ${SCRIPT_DIRECTORY}/info/patches/ dir
+
+Notes on making the files for kernels:
+FILE NAME: should reflect the kernel version being downloaded
+version: should also reflect the kernel version being downloaded
+source: should reflect the file being downloaded
+source_url: should reflect the web/ftp site you download the source from
+md5sum: should be the md5sum of the uncompressed source
+patches: a space separated list of patches that can be applied to that kernel
+
+IF YOU WANT TO SEE WHAT WORKS:
+Try the LATEST_2_6 with any of the patches

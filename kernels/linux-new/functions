@@ -1,0 +1,18 @@
+linux_new_uncompress()
+{
+	if [ "`file $1 | grep gzip`" != "" ]
+	then
+		gunzip $1
+	elif [ "`file $1 | grep bzip`" != "" ]
+	then
+		bunzip2 $1
+	elif [ "`file $1 | grep diff`" != "" ]
+	then
+		echo "$1 doesn't need uncompressing"
+	else
+		echo "$1 has some unknown/unimplemented compression type"
+		exit 1
+	fi
+}
+
+

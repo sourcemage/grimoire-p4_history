@@ -1,0 +1,38 @@
+if [[ "$mode" == "newktree" ]]
+then
+	mk_source_dir $SOURCE_DIRECTORY 
+fi
+cd $SOURCE_DIRECTORY &&
+echo "This is the linux source: $SOURCE" &&
+if [[ "$mode" == "newktree" ]]
+then
+	unpack $SOURCE ${MD5[0]} 
+fi
+cd linux-$VERSION 
+if [[ "$mode" == "newktree" ]]
+then
+	counter="1"
+	tmppatch="PATCH[${counter}]"
+	. ${SCRIPT_DIRECTORY}/functions
+	while [[ ${!tmppatch} ]]
+	do
+		tmpsrc="SOURCE${counter}"
+		tmpmd5="MD5[${counter}]"
+		tmppatch="PATCH[${counter}]"
+		. ${SCRIPT_DIRECTORY}/info/patches/*/${!tmppatch}
+		cp ${INSTALL_ROOT}/var/spool/sorcery/${!tmpsrc} ./
+		unpack ${!tmpsrc} ${tmpmd5}
+		linux_new_uncompress ./${!tmpsrc}
+		patch -p${pval} <${!tmppatch}
+		counter="`expr $counter + 1`"
+		tmppatch="PATCH[${counter}]"
+	done
+fi
+
+mv ./* ../ &&
+cd ../
+
+if [[ "$mode" == "newktree" || $RECONFIGURE ]]
+then
+	make $MAKEMODE
+fi

@@ -1,0 +1,271 @@
+
+
+# remove these
+
+####
+
+configfile="${SCRIPT_DIRECTORY}/details.conf"
+kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
+patchesdir="${SCRIPT_DIRECTORY}/info/patches"
+detailsdefaults="${SCRIPT_DIRECTORY}/details.defaults"
+latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
+debug="${SCRIPT_DIRECTORY}/debug.log"
+# globals that get dumped to $configfile
+# if we are making a new src tree or not
+# mode two values are 'newktree' or 'oldktree'
+new_tree=""
+# version of kernel we are dealing with
+kernelver=""
+# old source tree location for rebuilding old kernel
+old_src_tree=""
+# patches we are applying to kernel
+new_patch_list=""
+
+#old defaults
+if [ -f $configfile ]
+then
+	source $configfile
+fi
+
+dialog="dialog --stdout"
+
+main_menu()
+{
+	while true
+	do
+		mode=$( $dialog --title "New or Used Kernel Tree" \
+		--item-help --default-item "$mode" \
+		--cancel-label "Exit and Save"\
+		--menu \
+		"Would you like to use a new kernel tree or an existing one?" 0 0 0 \
+		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
+		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
+		)
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			case "$mode" in
+				"newktree") 
+					echo "mode=\"$mode\"" > $configfile
+					new_tree_menu 
+					;;
+				"oldktree")
+					echo "mode=\"$mode\"" >> $configfile
+					list_usr_src 
+					;;
+				*) break ;;
+			esac
+		else
+			break
+		fi
+	done
+}
+
+new_tree_menu() 
+{
+	local menu=""
+	versions="`ls -r1 $kernelsdir`"
+	for version in $versions
+	do
+		menu="${menu}${version} Linux_Kernel Select_one "
+	done
+	menu="$( awk -F= '{ print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
+	while true
+	do
+		kernelver=$( $dialog --title "Select Kernel Version" \
+		--item-help --default-item "$kver" \
+		--cancel-label "Exit and Save" \
+		--menu \
+		"Select a kernel version to use" 0 0 0 \
+		$menu )
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			case "$kernelver" in
+				2.[0-9].[0-9]) 
+					echo "kver=\"$kernelver\"" >> $configfile
+					patch_menu $kernelver
+					;;
+				LATEST*)
+					echo "kver=\"$kernelver\"" >> $configfile
+					patch_menu $kernelver
+					;;
+				*) break ;;
+			esac
+		else
+			break
+		fi
+	done
+}
+
+patch_list()
+{
+	. $latestdefaults
+	case "$1" in
+		LATEST*)
+			argv1=${!1}
+			;;
+		*)
+			argv1=$1
+			;;
+	esac
+	
+	patches="`ls -1 $patchesdir/`"
+	for patch in $patches
+	do
+		tmp="LATEST_$patch"
+		if [ "${!tmp}" != "" ]
+		then
+			. $patchesdir/$patch/${!tmp}
+			for applied in $appliedkernels
+			do
+				if [ $applied == $argv1 ]
+				then
+					echo LATEST_$patch
+					echo $patchversion
+					echo $patch
+				fi
+			done
+		fi
+		patchvers="`ls -1 $patchesdir/${patch}`"
+		for patchver in $patchvers
+		do
+			. $patchesdir/$patch/$patchver
+			for applied in $appliedkernels
+			do
+				if [ $applied == $argv1 ]
+				then
+					echo $patchver
+					echo Patch
+					echo $patch
+				fi
+			done
+		done
+	done
+}
+
+patch_menu() 
+{
+	while true
+	do
+		command=$( $dialog --title "Select Patches" \
+			--item-help --cancel-label "Exit and Save"\
+			--menu \
+			"Currently selected patches: $new_patch_list" 0 0 0 $(patch_list $1)
+			)
+		retval="$?"
+		if [[ "$retval" == "0" ]]
+		then
+			new_patch_list="${new_patch_list}${command} "
+		else
+			echo "patches=\"$new_patch_list\"" >> $configfile
+			break
+		fi
+	done
+}
+
+list_usr_src()
+{
+	local menu=""
+	linuxsrcs="`ls -1d $BUILD_DIRECTORY/linux-*`"
+	for linuxsrc in $linuxsrcs
+	do
+		menu="${menu}${linuxsrc} "Source_Tree" "Use_this_src_tree" "
+	done
+	while true
+	do
+		old_src_tree=$( $dialog --title "Select Old Source Tree" \
+				--item-help \
+				--default-item "$BUILD_DIRECTORY/$old_src_tree"\
+				--cancel-label "Exit and Save" --menu \
+				"Select Old Source Tree" 0 0 0 ${menu} )
+		retval="$?"
+		if [ "$retval" == "0" ]
+		then
+			echo -n "old-src_tree=\"$old_src_tree\"" >> $configfile
+			break
+		else
+			break
+		fi
+	done
+}
+
+create_details()
+{
+	. $configfile
+	. $latestdefaults
+	local counter="1"
+	case "$mode" in
+		newktree)
+			(
+			case "$kver" in
+				LATEST*)
+					. $kernelsdir/${!kver}
+					echo "VERSION=\$$kver"
+					echo "SOURCE=$source"
+					echo "MD5[0]=$md5sum"
+					echo "SOURCE_URL=$source_url"
+					;;
+				*)
+					. $kernelsdir/${kver}
+					echo "VERSION=$kver"
+					echo "SOURCE=$source"
+					echo "MD5[0]=$md5sum"
+					echo "SOURCE_URL=$source_url"
+					;;
+				
+			esac
+			. $configfile
+			for patch in $patches
+			do
+				case "$patch" in
+					LATEST*)
+						. $patchesdir/*/${!patch}
+						echo "PATCH[${counter}]=\$${patch}"
+						echo "SOURCE${counter}=$source"
+						echo "MD5[${counter}]=$md5sum"
+						echo "SOURCE${counter}_URL=${source_url}"
+						;;
+					*)
+						. $patchesdir/*/${patch}
+						echo "PATCH[${counter}]=${patch}"
+						echo "SOURCE${counter}=$source"
+						echo "MD5[${counter}]=$md5sum"
+						echo "SOURCE${counter}_URL=$source_url"
+						;;
+				esac
+				counter="`expr $counter + 1`"
+			done
+			) > $detailsdefaults
+			;;
+		oldktree)
+			;;
+		*)
+			echo "I don't know what the hell is $mode"
+			;;
+	esac
+}
+
+if [[ $RECONFIGURE ]]
+then
+	rm $configfile
+	while [ ! -f $configfile ]
+	do
+		main_menu
+	done
+	create_details
+elif [ ! -f $configfile ]
+then
+	while [ ! -f $configfile ]
+	do
+		main_menu
+		if [ ! -f $configfile ]
+		then
+			echo "You really need to tell the spell what linux kernel you are dealing with."
+			sleep 5
+		fi
+	done
+	create_details
+else
+	echo "No Reconfigure, using $configfile for defaults"
+fi

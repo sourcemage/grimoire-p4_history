@@ -1,0 +1,26 @@
+case "$VERSION" in
+	2.6*)
+		echo "installing for a 2.6 kernel"
+		make modules_install &&
+		make install
+		;;
+	2.4*)
+		echo "installing for a 2.4 kernel"
+		echo "This part isn't implemented yet"
+		exit 1
+		;;
+	2.2*)
+		echo "installing for a 2.2 kernel"
+		echo "This part isn't implemented yet"
+		exit 1
+		;;
+	2.0*)
+		echo "installing for a 2.0 kernel"
+		echo "This part isn't implemented yet"
+		exit 1
+		;;
+	*)
+		echo "I again don't know what version: $VERSION is"
+		exit 1
+		;;
+esac 

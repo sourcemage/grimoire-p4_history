@@ -1,0 +1,26 @@
+
+SPELL=linux-new
+BUILD_API=2
+. ${SCRIPT_DIRECTORY}/details.conf
+
+. ${SCRIPT_DIRECTORY}/latest.defaults
+. ${SCRIPT_DIRECTORY}/details.defaults
+# $files is from details.defaults
+
+SOURCE_DIRECTORY="${BUILD_DIRECTORY}/linux-new-${VERSION}"
+
+WEB_SITE=http://www.kernel.org
+ENTERED=20020819
+ARCHIVE="off"
+SHORT="linux is the kernel - the core of the GNU/Linux operating system."
+LICENSE[0]=GPL
+cat << EOF
+Linux is a clone of the Unix kernel, written from scratch by Linus
+Torvalds with assistance from a loosely-knit team of hackers across the
+Net. It aims towards POSIX and Single UNIX Specification compliance. It
+has all the features you would expect in a modern fully-fledged Unix
+kernel, including true multitasking, virtual memory, shared libraries,
+demand loading, shared copy-on-write executables, proper memory
+management, and TCP/IP networking.
+EOF
+
