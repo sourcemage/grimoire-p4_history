@@ -39,6 +39,23 @@ start() {
   mount    -n -o remount,rw /
   echo     > /etc/mtab
   mount    -f -o remount,rw /
+
+  #WARNING: raidstart need to have access to /etc/raidtab
+  #so should have access to /etc first (it's assumed
+  #that it has not to be mount i.e. already mount).
+  #If not you have to mount it manually
+
+  #check if softraid is in kernel and configured
+  if [ -f /proc/mdstat -a -f /etc/raidtab ]
+  then
+    if [ -x /sbin/raidstart ] 
+    then
+      echo "Starting RAID..."
+      /sbin/raidstart --all
+      evaluate_retval
+    fi
+  fi
+
   echo "Mounting local filesystems..."
 # Fixed so as to not mount networked filesystems yet (no networking)
 # mountnfs.sh will take care of this.
@@ -64,6 +81,32 @@ stop() {
   while read DEVICE MOUNT REST; do
     mount  -n -o  remount,ro  $MOUNT
   done
+
+  # check if softraid is in kernel and configured
+  if [ -f /proc/mdstat -a -f /etc/raidtab ]
+  then
+    if [ -x /sbin/raidstop ] 
+    then
+      mddevices=$(mount | awk '{print $1}' | grep md -)
+      for mddevice in $mddevices ; do
+        echo "Unmounting RAID $mddevices..."
+	umount $mddevice
+	evaluate_retval
+      done
+      mddevices=$(mount | awk '{print $1}' | grep md -)
+      for mddevice in $mddevice ; do
+        echo "Unmounting RAID $mddevice..."
+	umount $mddevice
+	evaluate_retval
+        echo "Stoping RAID... $mddevice"
+        /sbin/raidstop $mddevice
+        evaluate_retval
+      done
+      echo "Stoping other RAID..."
+      /sbin/raidstop --all
+      evaluate_retval
+    fi
+  fi
 
   if  !  mount  -n -o remount,ro  /
   then
