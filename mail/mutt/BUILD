@@ -12,6 +12,17 @@ if [ "$PATCH_TRASH" == "y" ]; then
   patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.0.cd.trash_folder.3.1
 fi  &&
 
+#
+# patch for libesmtp support
+#
+if [ "$PATCH_SMTP" == "y" ]; then 
+  patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.sde.libesmtp.3
+  aclocal -I m4 && autoheader && (cd m4 && make -f Makefile.am.in) &&
+  automake ; autoconf ;
+  cd ${SOURCE_DIRECTORY} &&
+  OPTS="${OPTS} --with-libesmtp"
+fi &&
+
 ./configure  --build=$BUILD                       \
              --prefix=${INSTALL_ROOT}/usr         \
              --sysconfdir=${INSTALL_ROOT}/etc     \
