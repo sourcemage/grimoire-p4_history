@@ -1,17 +1,16 @@
            SPELL=bonobo-activation
-         VERSION=2.2.3
+         VERSION=2.2.4
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='0f3f261887413b5e79cd1c3520b08b72'
+          MD5[0]='59ba3d9a66ee3f85d8a4b657b027e443'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
         WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020505
-         UPDATED=20030711
+         UPDATED=20030812
            SHORT="bonobo-activation is responsible for the activation of CORBA objects"
 cat << EOF
 bonobo-activation is the new name for OAF under GNOME 2.0
