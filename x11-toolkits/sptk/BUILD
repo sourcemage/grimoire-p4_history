@@ -1,3 +1,3 @@
-sed -i "s/NULL/0/" sptk/CThread.h &&
+cd sptk2                 &&
 default_build
 
