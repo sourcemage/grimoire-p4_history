@@ -6,12 +6,15 @@
   sedit "s/DEFAULTFONTDIR = .*/DEFAULTFONTDIR = \/usr\/share\/figlet/" Makefile
   sedit "s/DEFAULTFONTDIR = fonts//" Makefile
 
-  make &&
+  make                    &&
 
-  chmod 755 figlist &&
-  chmod 755 showfigfonts &&
+  chmod 755 figlist       &&
+  chmod 755 showfigfonts  &&
 
-  prepare_install &&
-  make install
+  prepare_install         &&
+  mkdir  -p  /usr/games   &&
+  make install            &&
+  chown  -R  root.games   \
+             /usr/games
 
 ) > $C_FIFO 2>&1
