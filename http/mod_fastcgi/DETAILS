@@ -1,10 +1,13 @@
            SPELL=mod_fastcgi
-         VERSION=2.4.1-SNAP-0306232149
+         VERSION=SNAP-0310292013
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='7141541f1e53589d0d27028114648d1d'
-      LICENSE[0]=
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION#*-}
+          MD5[0]='8ad233473a7f794b93782d1ab816614f'
+         SOURCE2=apr_compat.h
+          MD5[1]='0fd4b94bebafe812046e7f0179d0fd77'
+      LICENSE[0]=UNKNOWN,APACHE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.fastcgi.com/dist/$SOURCE
+  SOURCE2_URL[0]=http://cvs.apache.org/viewcvs.cgi/*checkout*/apr/include/Attic/$SOURCE2
         WEB_SITE=http://www.fastcgi.com/
          ENTERED=20021017
          UPDATED=20021017

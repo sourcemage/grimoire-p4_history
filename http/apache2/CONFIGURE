@@ -114,26 +114,24 @@ output_module_config() {
 
 
 # Perform the configuration
-if grep -q CONFIGURED $SPELL_CONFIG; then exit; fi
-
-
-local oldIFS=$IFS
-export IFS="
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+  local oldIFS=$IFS
+  export IFS="
 "
 
-TITLE="Apache2 Configuration"
-MODULEDIR="$SCRIPT_DIRECTORY/modules"
-MODULELIST=`ls $MODULEDIR`
-DIALOG="dialog
+  TITLE="Apache2 Configuration"
+  MODULEDIR="$SCRIPT_DIRECTORY/modules"
+  MODULELIST=`ls $MODULEDIR`
+  DIALOG="dialog
 --backtitle
 Apache2 Configuration
 --stdout"
 
+  basic_config
+  module_config
 
-basic_config
-module_config
+  echo 'CONFIGURED=y' >> $SPELL_CONFIG
 
-echo 'CONFIGURED="y"' >> $SPELL_CONFIG
+  IFS=$oldIFS
 
-IFS=$oldIFS
-
+fi

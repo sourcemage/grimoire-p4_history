@@ -2,8 +2,9 @@
 
   if httpd -v | grep -q "Apache/2\."; then
     message "${MESSAGE_COLOR}Compiling for Apache 2${DEFAULT_COLOR}" &&
-    patch -p1 < $SCRIPT_DIRECTORY/Makefile.patch &&
+    patch -p1 < $SCRIPT_DIRECTORY/$SPELL.diff &&
     mv Makefile.AP2 Makefile &&
+    cp $SOURCE_CACHE/$SOURCE2 . &&
     make &&
     INSTALL_CMD='make install'
   else
