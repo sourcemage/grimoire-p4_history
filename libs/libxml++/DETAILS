@@ -1,13 +1,14 @@
            SPELL=libxml++
-         VERSION=2.5.1
+         VERSION=2.6.0
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/2.5/$SOURCE
-          MD5[0]=937bf0e28a3a89e1b46e842341af3deb
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='247f77d28ee06c35c34f0cb983fe52d4'
       LICENSE[0]=LGPL
         WEB_SITE=http://sourceforge.net/projects/libxmlplusplus
          ENTERED=20010922
-         UPDATED=20020129
+         UPDATED=20040413
            SHORT="libxml++ is a C++ interface for working with XML files"
 cat << EOF
 libxml++ is a C++ interface for working with XML files, using libxml
