@@ -7,15 +7,15 @@ if [ "$CVS" = "y" ]; then
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
-         VERSION=6.8.1
+         VERSION=6.8.2
         XVERSION=X11R${VERSION}
           SOURCE=${XVERSION}-src.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
-   SOURCE_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/single/$SOURCE
-   SOURCE_URL[0]=ftp://ftp.x.org/pub/${XVERSION}/src-single/$SOURCE
-          MD5[0]=015cf4ebfd0a7c8f67923545e4fcbed5
+   SOURCE_URL[0]=http://xorg.freedesktop.org/${XVERSION}/src-single/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.x.org/pub/${XVERSION}/src-single/$SOURCE
+          MD5[0]=207d5f0d3bf72cfb4fe2ad5b2b9d3322
 fi
-        WEB_SITE=http://freedesktop.org/~xorg/
+        WEB_SITE=http://xorg.freedesktop.org/
          ENTERED=20040407
          UPDATED=20040617
       LICENSE[0]=XCL
