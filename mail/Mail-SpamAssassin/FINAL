@@ -66,3 +66,7 @@ if [ "$SPAMD" == "y" ]; then
   sleep 1
   /etc/init.d/spamd.sh start
 fi
+
+message  "${MESSAGE_COLOR}SpamAssassin databases from <3.0 will not work."     \
+         "Please remove ~/.spamassassin and re-teach SpamAssassin about your"  \
+         "spam and ham e-mail${DEFAULT_COLOR}"
