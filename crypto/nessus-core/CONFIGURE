@@ -1,0 +1,8 @@
+if  !  grep  -q  "NESSUSD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke nessusd during boot?" y
+  then  echo   "NESSUSD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "NESSUSD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
