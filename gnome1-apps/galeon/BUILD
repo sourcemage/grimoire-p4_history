@@ -1,9 +1,9 @@
 (
-
+  FOO=$(gaze installed mozilla | cut -d. -s -f1-3 | cut -c-3)
   ./configure  --prefix=${INSTALL_ROOT}/usr     \
-               --sysconfdir=${INSTALL_ROOT}/et  \
+               --sysconfdir=${INSTALL_ROOT}/etc  \
                --disable-werror                 \
-               --with-mozilla-snapshot=1.3      \
+               --with-mozilla-snapshot=$FOO     \
                $OPTS                       &&
   make                                     &&
   prepare_install                          &&
