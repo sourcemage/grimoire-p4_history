@@ -1,11 +1,9 @@
 (
 
-  groupadd  mail                  2>/dev/null
-  groupadd  postdrop              2>/dev/null
-  groupadd  postfix               2>/dev/null
-  useradd   mail     -g  mail     2>/dev/null
-  useradd   postfix  -g  postfix  2>/dev/null
-
+  create_account postfix
+  create_account postdrop
+  create_account mail
+ 
   mkdir  -p         /var/spool/mail
   chmod  1777       /var/spool/mail
   chown  mail:mail  /var/spool/mail
