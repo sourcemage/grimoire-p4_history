@@ -16,15 +16,15 @@
   }
 
   FD=$SCRIPT_DIRECTORY/files    # Files Directory
-  ID=/etc/init.d                # Init Dir
-  RD=/etc/init.d/runlevels      # Runlevels Dir
+  ID=${INSTALL_ROOT}/etc/init.d                # Init Dir
+  RD=${INSTALL_ROOT}/etc/init.d/runlevels      # Runlevels Dir
 
   prepare_install                                             &&
 
   pinfo "Creating directories..."                             &&
 
   mkdir  -pv  $RD/%S  $RD/%1  $RD/%2  $RD/%3  $RD/%4  $RD/%5  &&
-  mkdir  -pv  /etc/sysconfig                                  &&
+  mkdir  -pv  ${INSTALL_ROOT}/etc/sysconfig                                  &&
 
   pinfo "Installing files..."                                 &&
 
@@ -58,12 +58,12 @@
   pinfo "Other stuff..."                                      &&
 
   # Proper shutdown procedure
-  ln -fsv /etc/sysconfig/shutdown /etc/shutdown.conf          &&
+  ln -fsv ${INSTALL_ROOT}/etc/sysconfig/shutdown ${INSTALL_ROOT}/etc/shutdown.conf          &&
 
   # Yeah, I know
-  ln  -sfv  /bin/true  $RD/rc                                 &&
+  ln  -sfv  ${INSTALL_ROOT}/bin/true  $RD/rc                                 &&
 
   # LILO uses the auto runlevel when it doesn't encounter any user input
-  ln  -sfv  /etc/init.d/runlevels/%default  /etc/init.d/runlevels/%auto
+  ln  -sfv  ${INSTALL_ROOT}/etc/init.d/runlevels/%default  ${INSTALL_ROOT}/etc/init.d/runlevels/%auto
 
 ) > $C_FIFO 2>&1
