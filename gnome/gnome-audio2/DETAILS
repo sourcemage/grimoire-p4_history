@@ -1,17 +1,17 @@
-           SPELL=gnome-network
-         VERSION=1.99.0
+           SPELL=gnome-audio
+         VERSION=2.0.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]=7cc92c3d6365b8d1fcf4939ecdf7be3c
+          MD5[0]='39c7fdc62b357f987f4aaf1e5c3ad726'
+      LICENSE[0]=PD
       MAINTAINER=rcook@wyrms.net
         WEB_SITE=http://www.gnome.org
-      LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20030623
-           SHORT="gnome-network provides a set of network utilities"
+         UPDATED=20030710
+           SHORT="This package contains a collection of sounds for use with Gnome."
 cat << EOF
-gnome-network provides a set of network utilities
+This package contains a collection of sounds for use with Gnome.
 EOF

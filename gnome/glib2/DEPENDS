@@ -1,2 +1,7 @@
 depends pkgconfig &&
-depends perl
+depends perl &&
+
+optional_depends libiconv \
+                 '--with-libiconv=gnu' \
+                 '--with-libiconv=native' \
+                 'for character encoding conversions'
