@@ -1,0 +1,70 @@
+#! /bin/bash
+#
+# random	init script to setup /udev
+#
+# chkconfig: 2345 20 80
+# description: manage user-space device nodes in /udev
+#
+# 2003-12-09 Eric Sandall <eric@sandall.us>
+#  Modified for Source Mage GNU/Linux and the Simpleinit-MSB init system
+#
+
+RUNLEVEL=S
+DEPENDS="+local_fs hotplug"
+PROGRAM=/sbin/udev
+UDEV=/udev
+SYSFS=/sys
+
+. /etc/init.d/smgl_init
+
+start()
+{
+  if [ ! -d ${UDEV} ]; then
+    mkdir $${UDEV}
+  fi
+  if [ ! -d ${SYSFS} ]; then
+    exit 1
+  fi
+  # propogate /udev from /sys - we only need this while we do not
+  # have initramfs and an early user-space with which to do early
+  # device bring up
+  echo "Creating initial udev device nodes: " || /bin/false
+  export ACTION=add
+  # add tty devices
+  for i in ${SYSFS}/class/tty/*; do
+    export DEVPATH="/"`echo $i | cut --delimiter='/' --fields=3-`
+    ${PROGRAM} tty
+  done
+  # add block devices and their partitions
+  for i in ${SYSFS}/block/*; do
+    export DEVPATH="/"`echo $i | cut --delimiter='/' --fields=3-`
+    ${PROGRAM} block
+    for j in $i/*; do
+      if [ -f $j/dev ]; then
+        export DEVPATH="/"`echo $j |  \
+        cut --delimiter='/' --fields=3-`
+        ${PROGRAM} block
+      fi
+    done
+  done
+  # TODO: add other device classes
+}
+
+stop()
+{
+  # be careful
+  if [ ${UDEV} -a "${UDEV}" != "/" ]; then
+    # clear out /udev
+    rm -rf ${UDEV}/*
+  fi
+}
+
+status()
+{
+  if [ -d ${UDEV} ]; then
+    echo "the udev device node directory exists"
+  else
+    echo "the udev device node directory does not exist"
+  fi
+}
+

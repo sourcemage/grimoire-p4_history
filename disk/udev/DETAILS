@@ -10,6 +10,7 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
             DOCS="ChangeLog COPYING FAQ README"
       LICENSE[0]=GPL
       MAINTAINER=eric@sandall.us
+      MAKE_NJOBS=1
            SHORT="Devfs in userspace using sysfs and hotplug"
 cat << EOF
 udev is a implementation of devfs in userspace using sysfs and
