@@ -1,18 +1,27 @@
-# $Id: DEPENDS,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
+# $Id: DEPENDS,v 1.7 2002/10/16 18:32:47 sergeyli Exp $
 depends db "--enable-bdb" &&
 
-optional_depends bash       "--enable-shell"            \
-							"--disable-shell"           \
-							"for shell backend"         &&
-optional_depends readline   "--with-readline"           \
-                            "--without-readline"        \
-							"for readline intergration" &&
-optional_depends openssl    "--with-tls"                \
-                            "--without-tls"             \
-							"for SSL/TLS support"       &&
-#optional_depends perl       "--enable-perl"             \
-#							"--disable-perl"            \
-#							"for perl backend"          &&
-optional_depends cyrus-sasl "--with-cyrus-sasl"         \
-							"--without-cyrus-ssl"       \
-							"for SASL authentication"
+optional_depends bash                \
+                 "--enable-shell"    \
+                 "--disable-shell"   \
+                 "for shell backend" &&
+optional_depends unixODBC          \
+                 "--enable-sql"    \
+                 "--disable-sql"   \
+                 "for SQL backend" &&
+optional_depends readline                    \
+                 "--with-readline"           \
+                 "--without-readline"        \
+                 "for readline intergration" &&
+optional_depends openssl               \
+                 "--with-tls"          \
+                 "--without-tls"       \
+                 "for SSL/TLS support" &&
+#optional_depends perl               \
+#                 "--enable-perl"    \
+#                 "--disable-perl"   \
+#                 "for perl backend" &&
+optional_depends cyrus-sasl                \
+                 "--with-cyrus-sasl"       \
+                 "--without-cyrus-ssl"     \
+                 "for SASL authentication"
