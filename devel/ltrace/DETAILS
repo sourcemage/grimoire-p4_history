@@ -1,12 +1,12 @@
            SPELL=ltrace
-         VERSION=0.3.31
-          SOURCE="${SPELL}_${VERSION}.tar.gz"
+         VERSION=0.3.36
+       BUILD_API=2
+          SOURCE=${SPELL}_$VERSION.orig.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/l/ltrace/$SOURCE
-          MD5[0]=ef1d9526a404191deb43413d72aed006
+          MD5[0]=ba5c52398c85e8ec411a0b6d5c8f2e49
       LICENSE[0]=GPL
         WEB_SITE=http://packages.debian.org/unstable/utils/ltrace.html
-      MAINTAINER=vydra@fria.fri.utc.sk
          ENTERED=20020413
          UPDATED=20020413
            SHORT="ltrace is a debugging program which runs a specified command until it exits."
