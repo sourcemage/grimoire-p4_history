@@ -14,11 +14,11 @@ function configure_set_bool() {
   fi
 }
 
-configure_set_bool MOZILLA_XFT2 'Patch Mozilla to use Xft2/fontconfig (will break MathML display, but gives you very nice antialiasing)?'
+configure_set_bool MOZILLA_XFT2 'Patch Mozilla to use Xft2/fontconfig (will break MathML display, but gives you very nice antialiasing)?' y
 configure_set_bool MOZILLA_MAIL 'Build Mail/News client?'
 configure_set_bool MOZILLA_CHAT 'Build Chat client?'
 configure_set_bool MOZILLA_CRYPTO 'Enable Personal Security Manager (PSM) for encryption support?'
-configure_set_bool MOZILLA_MATHML 'Enable MathML?'
+configure_set_bool MOZILLA_MATHML 'Enable MathML?' n
 configure_set_bool MOZILLA_SVG 'Enable SVG?'
 configure_set_bool MOZILLA_JAVA 'Enable Blackwood Java Code (not needed for Java Plugin support)?'
 configure_set_bool MOZILLA_LDAP 'Enable LDAP (experimental)?'

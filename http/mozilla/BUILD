@@ -3,83 +3,81 @@
         y|Y|j|J) patch  -p0  <  $SCRIPT_DIRECTORY/mozilla.2002-08-02.diff
             ;;
         *)       ;;
-    esac &&
-
-    patch  -p0  < $SCRIPT_DIRECTORY/mozilla_12b_patch
+    esac
     
     case $MOZILLA_MAIL  in
 	n|N)	OPTS="$OPTS --disable-mailnews"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_CHAT  in
 	n|N)	OPTS="$OPTS --disable-chat"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_JAVA  in
 	y|Y|j|J)	OPTS="$OPTS --enable-java-supplement"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_SVG  in
 	y|Y|j|J)	OPTS="$OPTS --enable-svg"
 	    export MOZ_INTERNAL_LIBART_LGPL=1
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_MATHML  in
 	n|N)	OPTS="$OPTS --disable-mathml"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_LDAP  in
 	y|Y|j|J)	OPTS="$OPTS --enable-ldap-experimental"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_XINERAMA  in
 	y|Y|j|J)	OPTS="$OPTS --enable-xinerama"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
     case $MOZILLA_CRYPTO  in
 	y|Y|j|J)	OPTS="$OPTS --enable-crypto"
 	    ;;
 	*)	;;
-    esac &&
+    esac
 
-    export	CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )" &&
-    export	CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )" &&
+    export	CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )"
+    export	CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )"
 
-    ./configure	--prefix=/usr		\
+    ./configure	--prefix=/usr			\
 	--disable-tests			\
 	--disable-debug			\
 	--enable-optimize="$CFLAGS"	\
 	--without-jpeg			\
 	--without-zlib			\
 	--without-png                   \
-	$OPTS                           &&
-    make                                &&
+	$OPTS                        &&
+    make                                      &&
 
     case $MOZILLA_ENIGMAIL in
 	y|Y|j|J)
-	    cd $SOURCE_DIRECTORY/extensions/ipc &&
-	    make &&
+	    cd $SOURCE_DIRECTORY/extensions/ipc
+	    make
 
-	    cd $SOURCE_DIRECTORY/extensions/enigmail &&
+	    cd $SOURCE_DIRECTORY/extensions/enigmail
 	    make
 
 	    ;;
 	*) ;;
-    esac &&
+    esac
 
 
     prepare_install
@@ -93,13 +91,6 @@
   cp	 -rL  dist/include/*         /usr/include/mozilla
   mkdir  -p                          /usr/include/moznss
   cp     -L   dist/public/security/* /usr/include/moznss
-
-  sedit "s/mozilla-1.2b/mozilla/g" build/unix/mozilla-gtkmozembed.pc
-  sedit "s/mozilla-1.2b/mozilla/g" build/unix/mozilla-js.pc
-  sedit "s/mozilla-1.2b/mozilla/g" build/unix/mozilla-nspr.pc
-  sedit "s/mozilla-1.2b/mozilla/g" build/unix/mozilla-nss.pc
-  sedit "s/mozilla-1.2b/mozilla/g" build/unix/mozilla-xpcom.pc
-  cp build/unix/*.pc /usr/lib/pkgconfig
 
   for  library  in  /usr/lib/mozilla/*.so;  do 
     libname=`basename  $library`
