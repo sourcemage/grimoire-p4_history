@@ -149,6 +149,7 @@ generate_host_def()  {
   echo  "#define LibraryCDebugFlags    $CFLAGS"
   echo  "#define DefaultCDebugFlags    $CFLAGS"
   echo  "#define OptimizedCDebugFlags  $CFLAGS"
+  echo  "#define InstallFontconfigLibrary NO"
 
   if  [  -z  "$XF86CardDrivers"  ];  then
     XF86CardDrivers="$ON_CARD_DRIVERS"
