@@ -34,19 +34,22 @@ chgrp      exim       /var/spool/mail/*
 
 mkdir  -p  Local
 
-if  spell_installed  xfree86;  then
+if  [  "$XFREE86"  ==  "y"  ]
+then
   cp  src/EDITME           Local/Makefile
   cp  exim_monitor/EDITME  Local/eximon.conf
 else
    grep  -v  "EXIM_MONITOR="  src/EDITME  >  Local/Makefile
 fi  &&
 
-if  spell_installed  tcp_wrappers;  then
+if  [  "$TCPWRAPPERS"  ==  "y"  ]
+then
   echo  "USE_TCP_WRAPPERS=yes"  >> Local/Makefile
   echo  "EXTRALIBS=-lwrap"      >> Local/Makefile
 fi  &&
 
-if  spell_installed  Linux-PAM;  then
+if  [  "$LINUXPAM"  ==  "y"  ]
+then
   echo  "SUPPORT_PAM=yes"  >>  Local/Makefile
   if  spell_installed  tcp_wrappers
   then  echo  "EXTRALIBS=-lpam -ldl -lwrap"  >>  Local/Makefile  
@@ -54,13 +57,15 @@ if  spell_installed  Linux-PAM;  then
   fi
 fi  &&
 
-if  spell_installed  mysql;  then
+if  [  "$MYSQL"  ==  "y"  ]
+then
   echo  "LOOKUP_MYSQL=yes"                     >>  Local/Makefile
   echo  "LOOKUP_INCLUDE=-I /usr/include/mysql" >>  Local/Makefile
   echo  "LOOKUP_LIBS=-lmysqlclient"            >>  Local/Makefile
 fi  &&
 
-if  spell_installed  openldap; then
+if  [  "$OPENLDAP"  ==  "y"  ]
+then
   echo  "LOOKUP_LDAP=yes"           >>  Local/Makefile
   echo  "LOOKUP_LIBS=-lldap -llber" >>  Local/Makefile
   echo  "LDAP_LIB_TYPE=OPENLDAP2"   >>  Local/Makefile
