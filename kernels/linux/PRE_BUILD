@@ -139,15 +139,15 @@ else
 
   mkdir  -p  ../include  &&
 
-  if [[ ! -d ../include/asm-generic ]]; then
+  if [[ ! -d ../include/asm-generic ]];  then
     ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -sf
   fi  &&
 
-  if [[ ! -d ../include/asm ]]; then
+  if [[ ! -d ../include/asm ]];  then
     ln ../src/linux-${VERSION}/include/asm        ..//include/ -sf
   fi  &&
 
-  if [[ ! -d ../include/linux ]]; then
+  if [[ ! -d ../include/linux ]];  then
     ln ../src/linux-${VERSION}/include/linux      ..//include/ -sf
   fi  &&
 
@@ -156,12 +156,12 @@ else
   cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}            &&
 
   # patch 2.6 make file, to allow use of xconfig
-  if [ -d scripts/kconfig ];then
+  if [ -d scripts/kconfig ];  then
     patch -p0 < ${SPELL_DIRECTORY}/mk.2.6.diff scripts/kconfig/Makefile
   fi  &&
 
   if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
-    cp $CONFIG_CACHE/kernel.config .config
+    cp  $CONFIG_CACHE/kernel.config  .config
   fi  &&
 
   local COUNTER  &&
@@ -235,7 +235,7 @@ fi  &&
 # Run graphical *config outside of BUILD so the output redirection
 # doesn't break it  (Bug #7256)
 #
-if  [  "$OLD_CONFIG"  ==  "n"  ]
+if  [  "$OLD_CONFIG"  ==  "n"  ];  then
   # use a more modern config tool if possible
   CFGTYPE=menuconfig
   if [[ ! -z $DISPLAY ]]; then
@@ -263,7 +263,7 @@ if  [  "$OLD_CONFIG"  ==  "n"  ]
   echo  CONFIG_KERNEL in BUILD = $CONFIG_KERNEL
   while
     if  [  "$CONFIG_KERNEL"  ==  "y"  ];  then
-      run_make  $CFGTYPE || run_make menuconfig
+      make  $CFGTYPE || make menuconfig
       if  query  "Repeat $CFGTYPE?  "  n
         then  CONFIG_KERNEL="y"
         else  CONFIG_KERNEL="n"
