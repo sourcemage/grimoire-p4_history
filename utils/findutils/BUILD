@@ -1,3 +1,6 @@
-export OPTS="$OPTS --libexecdir=${INSTALL_ROOT}/usr/bin"
-export OPTS="$OPTS --localstatedir=${INSTALL_ROOT}/var/cache"
+OPTS="$FINDUTILS_OPTS                            \
+      --libexecdir=${INSTALL_ROOT}/usr/bin       \
+      --localstatedir=${INSTALL_ROOT}/var/cache  \
+      $OPTS"                                     &&
+
 default_build
