@@ -16,6 +16,8 @@ fi  &&
   make                               &&
   prepare_install                    &&
   make    install                    &&
+  # put loadkeys in /bin so the init script can use it
+  mv  /usr/bin/loadkeys  /bin        &&
 
 
   # Install man pages.
