@@ -1,11 +1,11 @@
-depends  apr  '--with-apr=/usr'  &&
-depends  expat  &&
+depends  apr    '--with-apr=/usr'    &&
+depends  expat  '--with-expat=/usr'  &&
 
 optional_depends  db  \
                   '--with-berkeley-db'  \
                   '--without-berkeley-db'  \
                   'for Berkeley DB support'  &&
-optional_depends  gdbm      ""  ""  "Enable gdbm support"         &&
+optional_depends  gdbm      ''  ''  'Enable gdbm support'         &&
 optional_depends  openldap  \
                   '--enable-ldap --with-ldap'  \
                   ''  \
