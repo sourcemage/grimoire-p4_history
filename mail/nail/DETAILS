@@ -1,0 +1,21 @@
+           SPELL=nail
+         VERSION=9.31
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://omnibus.ruf.uni-freiburg.de/~gritter/archive/nail/$SOURCE
+        WEB_SITE=http://omnibus.ruf.uni-freiburg.de/~gritter/
+         ENTERED=20020625
+         UPDATED=20020625
+             MD5=d274d7bcd408d10fb0e31345e071bc6d
+         LICENSE=BSD
+      MAINTAINER=bluebird@optushome.com.au
+           SHORT="A simple command line MTA"
+cat << EOF
+
+Nail is a mail user agent derived from Berkeley Mail 8.1 and contains builtin
+support for MIME messages. This means it can handle international character
+sets as well as attachments. In recent system environments, nail is
+Unicode/UTF-8 capable. It further contains some minor enhancements like the
+ability to set a From: address
+
+EOF
