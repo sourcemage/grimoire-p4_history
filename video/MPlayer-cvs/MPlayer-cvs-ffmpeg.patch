@@ -29,22 +29,6 @@ diff -u -r1.802 configure
    _ld_libavcodec='-lavcodec'
    _codecmodules="libavcodec.so $_codecmodules"
  else
-Index: mencoder.c
-===================================================================
-RCS file: /cvsroot/mplayer/main/mencoder.c,v
-retrieving revision 1.220
-diff -u -r1.220 mencoder.c
---- mencoder.c	3 Nov 2003 16:35:17 -0000	1.220
-+++ mencoder.c	3 Nov 2003 18:01:01 -0000
-@@ -74,7 +74,7 @@
- 
- #ifdef USE_LIBAVCODEC
- // for lavc audio encoding
--#include "libavcodec/avcodec.h"
-+#include "avcodec.h"
- static AVCodec        *lavc_acodec;
- static AVCodecContext *lavc_actx = NULL;
- extern char    *lavc_param_acodec;
 Index: libmpcodecs/Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/libmpcodecs/Makefile,v
