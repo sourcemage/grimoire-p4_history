@@ -6,38 +6,24 @@ function make_if_swig() {
   fi
 }
 
-(
+if echo $OPTS | grep -q 'without-berkeley-db'; then
+  patch -p1 < $SCRIPT_DIRECTORY/swigpyext.patch
+fi &&
 
-  if echo $OPTS | grep -q 'without-berkeley-db'; then
-    patch -p1 < $SCRIPT_DIRECTORY/swigpyext.patch
-  fi &&
+# strange APR bug exhibiting itself in static builds only
+if echo "$OPTS" | grep -q 'enable-all-static'; then
+  export LDFLAGS="$LDFLAGS -lpthread"
+fi &&
 
-  # strange APR bug exhibiting itself in static builds only
-  if echo "$OPTS" | grep -q 'enable-all-static'; then
-    export LDFLAGS="$LDFLAGS -lpthread"
-  fi &&
-
-  ./configure \
-    --build=$BUILD \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-debug \
-    --disable-mod-activation \
-    --without-apxs \
-    --without-berkeley-db \
-    $OPTS &&
-  make &&
-  make_if_swig swig-py &&
-
-  prepare_install &&
-  make install &&
-  make_if_swig install-swig-py
-
-) >$C_FIFO 2>&1 && (
-
-  if spell_installed Python; then
-    make check
-  fi
-
-)
+./configure \
+  --build=$BUILD \
+  --prefix=/usr \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --disable-debug \
+  --disable-mod-activation \
+  --without-apxs \
+  --without-berkeley-db \
+  $OPTS &&
+make  &&
+make_if_swig  swig-py
