@@ -1,38 +1,27 @@
 #!/bin/sh
 #
-#  kdm.sh  Load the KDM login manager at boot
+#  kdm.sh  Load the GDM login manager at boot
 #
 #               Written for Source Mage GNU/Linux
 #
 #  Version:  @(#)kdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
+#  Version:  @(#)kdm.sh  1.0.1  2003-03-28  Eric Sandall <eric@sandall.us>
+#    Now properly kills all instances of kdm (since they are not just named kdm)
 #
-# SMGL-script-version=20030224
-# no symlinks are made for this one, must do it by hand!
-
-source /etc/init.d/functions
 
 case  $1  in
-          start)
-		  		echo "$1ing kdm"
-                loadproc  kdm
-				;;
+          start)  echo "$1ing kdm"
+                  kdm
+                  ;;
 
-           stop)
-		   		echo "$1ping kdm"
-                killproc  kdm
-                ;;
+           stop)  echo "$1ping kdm"
+                  pkill  "^kdm*"
+                  ;;
 
-        restart)
-				echo "Reloading kdm"
-				reloadproc  kdm
-                ;;
+        restart)  stop   $0  &&
+                  start  $0
+                  ;;
 
-		status)
-				statusproc  kdm
-				;;
-				
-              *)
-			  	echo "Usage: $0 {start|stop|restart}"
-				exit 1
-                ;;
+              *)  echo "Usage: $0 {start|stop|restart}"
+                  ;;
 esac
