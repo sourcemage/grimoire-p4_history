@@ -6,7 +6,9 @@ if [ "$APR_BRANCH" == '1' ]; then
 else
          VERSION=0.9.5
              TAG=APU_0_9_BRANCH
-          MD5[0]=''
+#         MD5[0]=''
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:APACHE_2_0_48
+          MD5[0]=IGNORE
 fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -15,7 +17,7 @@ if [ "$APR_CHECKOUT" == 'y' ]; then
    SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
           MD5[0]=IGNORE
 else
-   SOURCE_URL[0]=http://www.apache.org/dist/apr/$SOURCE
+#  SOURCE_URL[0]=http://www.apache.org/dist/apr/$SOURCE
 fi
         WEB_SITE=http://apr.apache.org/
       LICENSE[0]=APACHE
