@@ -2,13 +2,12 @@
          VERSION=0.4.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://volnorm.sourceforge.net
          ENTERED=20020303
          UPDATED=20020510
-	LICENSE=GPL
+	MD5[0]=8f4d19b8e45d5f51c303303858f9905a
+	LICENSE[0]=GPL
 	MAINTAINER=burududu@hotpop.com
            SHORT="volnorm is a xmms plugin to play all songs at the same volume"
 cat << EOF
