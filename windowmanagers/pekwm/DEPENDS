@@ -2,3 +2,8 @@ depends  X11-LIBS  &&
 
 optional_depends  pcre  "--enable-pcre"  "--disable-pcre"  \
         "Enables support for Perl compatible regular expressions."
+
+if [ "$CVS" = "yes" ]
+then depends cvs
+fi
+

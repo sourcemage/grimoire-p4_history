@@ -1,0 +1,7 @@
+if ! grep -q CVS $SPELL_CONFIG
+then CVS=no &&
+if query "Build $SPELL cvs version ?" n
+	then CVS=yes
+fi
+echo CVS=$CVS >> $SPELL_CONFIG
+fi
