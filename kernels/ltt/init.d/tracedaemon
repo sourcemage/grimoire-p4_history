@@ -1,0 +1,18 @@
+#!/bin/sh
+
+PROGRAM=/usr/bin/tracedaemon
+RUNLEVEL=S
+NEEDS="+local_fs"
+
+. /etc/init.d/smgl_init
+. /etc/sysconfig/tracedaemon
+
+start()
+{
+	for procinfo in ${PROC_INFO_FILES}
+	do
+		echo "Starting TraceDaemon for ${procinfo}"
+		$PROGRAM ${LOG_DIR}/${procinfo} /proc/${procinfo}
+		evaluate_retval
+	done
+}
