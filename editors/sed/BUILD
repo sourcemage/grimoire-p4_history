@@ -9,7 +9,9 @@
   ### /bin/sed is "protected" but it is from an "old" install
   ### just incase it has been removed I copy it first 
   ### so the cast will complete.
-  cp ${INSTALL_ROOT}/usr/bin/sed /bin/sed               &&
+  if  [ -f ${INSTALL_ROOT}/usr/bin/sed ] ; then
+  cp -a ${INSTALL_ROOT}/usr/bin/sed /bin/sed
+  fi                                                    &&
   prepare_install                                       &&
   make install
 
