@@ -1,16 +1,16 @@
            SPELL=libbonoboui
-         VERSION=2.2.2
+         VERSION=2.2.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="8d510b60f6e72b6333528b87c6cab1f6"
+          MD5[0]='2dd6108ae6b9809ebda054348be6c452'
         WEB_SITE=http://www.ximian.com/devzone/tech/bonobo.html
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
       LICENSE[0]=GPL
          ENTERED=20020509
-         UPDATED=20030524
+         UPDATED=20030802
            SHORT="libbonoboui is a part of the GNOME 2.0 bonobo implementation"
 cat << EOF
 Bonobo is the GNOME architecture for creating reusable software

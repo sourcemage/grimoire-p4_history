@@ -1,16 +1,16 @@
            SPELL=gtkmm2
-         VERSION=2.2.3
+         VERSION=2.2.5
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gtkmm-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtkmm-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/sources/gtkmm/$BRANCH/$SOURCE
-          MD5[0]="bb69fbf4dcad444d925d5bfe25098060"
+   SOURCE_URL[0]=$GNOME_URL/sources/gtkmm/$BRANCH/$SOURCE
+   SOURCE_URL[1]=$SOURCEFORGE_URL/gtkmm/$SOURCE
+          MD5[0]='ae5e050fe0097f6c5a4564151f62f489'
       LICENSE[0]="LGPL"
         WEB_SITE=http://gtkmm.sourceforge.net/
-         ENTERED=20020523
-         UPDATED=20030524
       MAINTAINER=rcook@wyrms.net
+         ENTERED=20020523
+         UPDATED=20030802
            SHORT="C++ wrapper library for GTK+"
 cat << EOF
 C++ wrapper library for GTK+2 and GLIB2
