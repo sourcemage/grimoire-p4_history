@@ -1,13 +1,15 @@
            SPELL=abc2mtex
          VERSION=1.6.1
+       BUILD_API=2
           SOURCE=${SPELL}${VERSION}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.gre.ac.uk/~c.walshaw/abc2mtex/$SOURCE
-          MD5[0]=71bae06b3747b74aae446317482ab016
+          MD5[0]='71bae06b3747b74aae446317482ab016'
         WEB_SITE=http://www.gre.ac.uk/~c.walshaw/abc2mtex/INTRO.html
          ENTERED=20020730
          UPDATED=20020730
          LICENSE=GPL
+            DOCS="usrguide.* *.abc *.tex *.txt $DOCS"
            SHORT="Processes abc files to Musi[x|c]TeX"
 cat << EOF
 
