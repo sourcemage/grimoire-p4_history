@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.4 2002/06/07 03:52:22 sergeyli Exp $
+# $Id: BUILD,v 1.5 2002/09/21 05:17:07 sergeyli Exp $
 # Attempt is made here to lock in Webmin configuration,
 # making it more predictable and secure.
 # Port and password are generated using week random
@@ -32,7 +32,7 @@
 		os_type os_version real_os_type real_os_version \
 		atboot ssl login password
 
-	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
+	echo "Default password: $password"
 
 	prepare_install                &&
 	mkdir -p     /usr/share/webmin &&
