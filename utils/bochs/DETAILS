@@ -1,12 +1,9 @@
            SPELL=bochs
-         VERSION=1.4.1
+         VERSION=2.0.2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://belnet.dl.sourceforge.net/sourceforge/bochs/$SOURCE
-   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/bochs/$SOURCE
-   SOURCE_URL[2]=http://telia.dl.sourceforge.net/sourceforge/bochs/$SOURCE
-   SOURCE_URL[3]=http://bochs.sourceforge.net/cvs-snapshot/$SOURCE
-          MD5[0]=93f17f6a9ca9ec8894d6c395c2ff8620
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=8ee884db3814e357f6c76e0839407547
         WEB_SITE=http://bochs.sourceforge.net
          ENTERED=20020531
          UPDATED=20020731
