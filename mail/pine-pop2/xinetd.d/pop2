@@ -5,7 +5,7 @@ service pop2
 	wait			= no
 	user			= root
 	server			= /usr/sbin/ipop2d
-	server_args		= 
+#	server_args		= 
 	per_source		= 4
 	log_type		= FILE /var/log/xinetd/pop2
 	log_on_success		= PID HOST USERID EXIT DURATION

@@ -1,0 +1,6 @@
+if ! grep -q "CREATE_DIR=" $SPELL_CONFIG; then
+  if query "$SPELL needs /usr/lib/news/active directory, do you want to create one ?" y
+    then echo "CREATE_DIR=y" > $SPELL_CONFIG  
+    else echo "CREATE_DIR=n" > $SPELL_CONFIG
+  fi
+fi

@@ -1,0 +1,31 @@
+--- /usr/share/apache2/cgi-bin/openwebmail/openwebmail-tool.pl.org	2002-11-22 12:13:19.000000000 +0100
++++ /usr/share/apache2/cgi-bin/openwebmail/openwebmail-tool.pl	2002-11-22 12:22:24.000000000 +0100
+@@ -328,17 +328,17 @@
+    my $content=qq|OS: $os\n|.
+                qq|Perl: $]\n|.
+                qq|WebMail: $config{'name'} $config{'version'} $config{'releasedate'}\n|;
+-   print qq|\nWelcome to the Open WebMail!\n\n|.
+-         qq|This program is going to send a short message back to the developer,\n|.
+-         qq|so we could have the idea that who is installing and how many sites are\n|.
+-         qq|using this software, the content to be sent is:\n\n|.
+-         qq|$content\n|.
+-         qq|Please hit 'Enter' to continue or Ctrl-C to break.\n|;
+-   if (!$opt_yes) {
+-      $_=<STDIN>;
+-   }
+-   send_mail("$id\@$hostname", $realname, $to, $subject, "$content \n");
+-   print qq|Thank you.\n|;
++#   print qq|\nWelcome to the Open WebMail!\n\n|.
++#         qq|This program is going to send a short message back to the developer,\n|.
++#         qq|so we could have the idea that who is installing and how many sites are\n|.
++#         qq|using this software, the content to be sent is:\n\n|.
++#         qq|$content\n|.
++#         qq|Please hit 'Enter' to continue or Ctrl-C to break.\n|;
++#   if (!$opt_yes) {
++#      $_=<STDIN>;
++#   }
++#   send_mail("$id\@$hostname", $realname, $to, $subject, "$content \n");
++#   print qq|Thank you.\n|;
+    return 0;
+ }
+ 

@@ -1,11 +1,5 @@
 VOYEUR=on
 
-if query "Backup package config ?" y
-then
- CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
- tar -cyvf "/usr/share/httpd/squirrelmail-config-backup-$CUR_DATE.tar.bz2" /usr/share/httpd/htdocs/squirrelmail/config 1>/dev/null 2>&1
-fi
-
 # apache/apache2 auto setup
 if  spell_installed    "apache";   then
   LOC="/usr/share/httpd"
@@ -15,8 +9,11 @@ elif  spell_installed  "apache2";  then
   LOC="/usr/share/apache2"
 fi
 
-if query "Remove squirrelmail directory ?" y
-then
- rm -fr $LOC/htdocs/squirrelmail
- rm -fr /usr/doc/squirrelmail
+
+if grep -q "BACKUP=y" /etc/sorcery/local/depends/$SPELL ; then
+ message "${MESSAGE_COLOR}$SPELL configuration backup in progress...${DEFAULT_COLOR}"
+ CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
+ tar -cyvf "$LOC/squirrelmail-config-backup-$CUR_DATE.tar.bz2" $LOC/htdocs/squirrelmail/config 1>/dev/null 2>&1
+else
+ message "${MESSAGE_COLOR}$SPELL configuration backup skiped.${DEFAULT_COLOR}"
 fi
