@@ -1,4 +1,4 @@
 (
 	prepare_install &&
-	./install       &&
+	./install       
 ) > $C_FIFO 2>&1
