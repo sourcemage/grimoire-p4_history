@@ -1,16 +1,16 @@
-           SPELL=cdrutils
+           SPELL=cdrtools
          VERSION=2.01a02
-          SOURCE=cdrtools-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/cdrtools-${VERSION/a*/}
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION/a*/}
    SOURCE_URL[0]=ftp://ftp.berlios.de/pub/cdrecord/alpha/${SOURCE}
           MD5[0]=60b1e461421c8ab8485b772629d6bae3
         WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
       LICENSE[0]=GPL
          ENTERED=20010922
          UPDATED=20020330
-           SHORT="cdrutils creates home-burned CDs with a CD-R/CD-RW recorder."
+           SHORT="cdrtools creates home-burned CDs with a CD-R/CD-RW recorder."
 cat << EOF
-cdrutils, formerly Cdrecord creates home-burned CDs with a CD-R/CD-RW
+cdrtools, formerly Cdrecord creates home-burned CDs with a CD-R/CD-RW
 recorder. It works as a burn engine for several applications. Cdrecord
 supports CD recorders from many different vendors; all SCSI-3/mmc and
 ATAPI/mmc compliant drives should also work. Supported features include
