@@ -2,7 +2,7 @@
   cd  doc  &&
   make  install-man	&&
 
-  if spell_installed hotplug; then
+  if spell_ok hotplug; then
 # create list of cameras
     DEST=${INSTALL_ROOT}/etc/hotplug/usb                                    &&
     mkdir -p $DEST                                                          &&
