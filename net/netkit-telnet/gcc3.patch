@@ -1,0 +1,75 @@
+diff -urp netkit-telnet-0.17.orig/telnet/main.cc netkit-telnet-0.17/telnet/main.cc
+--- netkit-telnet-0.17.orig/telnet/main.cc	2003-02-25 21:29:11.000000000 +0100
++++ netkit-telnet-0.17/telnet/main.cc	2003-02-25 21:29:57.000000000 +0100
+@@ -46,6 +46,7 @@ char main_rcsid[] = 
+ #include <sys/types.h>
+ #include <getopt.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "ring.h"
+ #include "externs.h"
+diff -urp netkit-telnet-0.17.orig/telnet/netlink.cc netkit-telnet-0.17/telnet/netlink.cc
+--- netkit-telnet-0.17.orig/telnet/netlink.cc	2003-02-25 21:29:11.000000000 +0100
++++ netkit-telnet-0.17/telnet/netlink.cc	2003-02-25 21:32:21.000000000 +0100
+@@ -2,6 +2,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+diff -urp netkit-telnet-0.17.orig/telnet/network.cc netkit-telnet-0.17/telnet/network.cc
+--- netkit-telnet-0.17.orig/telnet/network.cc	2003-02-25 21:29:11.000000000 +0100
++++ netkit-telnet-0.17/telnet/network.cc	2003-02-25 21:30:22.000000000 +0100
+@@ -42,6 +42,7 @@ char net_rcsid[] = 
+ #include <sys/time.h>
+ #include <errno.h>
+ #include <arpa/telnet.h>
++#include <stdlib.h>
+ 
+ #include "ring.h"
+ #include "defines.h"
+diff -urp netkit-telnet-0.17.orig/telnet/terminal.cc netkit-telnet-0.17/telnet/terminal.cc
+--- netkit-telnet-0.17.orig/telnet/terminal.cc	2003-02-25 21:29:11.000000000 +0100
++++ netkit-telnet-0.17/telnet/terminal.cc	2003-02-25 21:31:36.000000000 +0100
+@@ -45,6 +45,8 @@ char terminal_rcsid[] = 
+ #include <signal.h>
+ #include <errno.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "ring.h"
+ #include "defines.h"
+@@ -468,7 +470,7 @@ void TerminalNewMode(int f)
+ 
+ #ifdef	SIGINFO
+ 	signal(SIGINFO, ayt);
+-#endif	SIGINFO
++#endif	/* SIGINFO */
+ 
+ #if defined(NOKERNINFO)
+ 	tmp_tc.c_lflag |= NOKERNINFO;
+@@ -504,7 +506,7 @@ void TerminalNewMode(int f)
+ 
+ #ifdef	SIGINFO
+ 	signal(SIGINFO, ayt_status);
+-#endif	SIGINFO
++#endif	/* SIGINFO */
+ 
+ #ifdef	SIGTSTP
+ 	signal(SIGTSTP, SIG_DFL);
+diff -urp netkit-telnet-0.17.orig/telnet/utilities.cc netkit-telnet-0.17/telnet/utilities.cc
+--- netkit-telnet-0.17.orig/telnet/utilities.cc	2003-02-25 21:29:11.000000000 +0100
++++ netkit-telnet-0.17/telnet/utilities.cc	2003-02-25 21:31:56.000000000 +0100
+@@ -47,6 +47,8 @@ char util_rcsid[] = 
+ #include <sys/socket.h>
+ #include <unistd.h>
+ #include <ctype.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "ring.h"
+ #include "defines.h"

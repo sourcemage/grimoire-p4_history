@@ -4,6 +4,9 @@
 # Written by Jeremy Kolb
 # Start or stop the samba server based upon the first argument to the script.
 #
+# SMGL-script-version=20030225
+# SMGL-START:3 4 5:S50
+# SMGL-STOP:0 1 2 6:K50
 
 source /etc/init.d/functions
 

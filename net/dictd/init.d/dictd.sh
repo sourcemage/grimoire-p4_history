@@ -1,6 +1,11 @@
 #!/bin/sh
 # Example script courtesy of Jeff Blain <jblaine@linus.mitre.org>
 # Set up for source mage by Robin Sheat <robin@kallisti.2y.net>
+#
+# SMGL-script-version=20030225
+# SMGL-START:3 4 5:S90
+# SMGL-STOP:0 1 2 6:K10
+
 
 DICTD=/usr/sbin/dictd
 
