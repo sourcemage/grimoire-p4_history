@@ -595,7 +595,7 @@ create_details()
 	. $latestdefaults
 	local counter="1"
 	case "$mode" in
-		newktree)
+		*ktree)
 			(
 			case "$kver" in
 				LATEST*)
@@ -641,8 +641,6 @@ create_details()
 				counter="`expr $counter + 1`"
 			done
 			) > $detailsdefaults
-			;;
-		oldktree)
 			;;
 		*)
 			echo "I don't know what the hell is $mode"
