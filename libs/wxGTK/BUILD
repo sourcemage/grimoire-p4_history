@@ -3,6 +3,8 @@
   # this is necessary for wxPython to compile
   patch -p0 < $SCRIPT_DIRECTORY/setmenu.diff &&
 
+  # --x-libraries doesn't work :-(
+  export LIBS="$LIBS -L/usr/X11R6/lib" &&
   ./configure \
     --host=$HOST \
     --build=$BUILD \
