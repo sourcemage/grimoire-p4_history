@@ -1,32 +1,11 @@
-(
-
-  if  spell_ok  openssl;  then
-
+if  spell_ok  openssl;  then
     if    spell_ok  linux-pam
     then  ./build  DEBUG="${CFLAGS}"  NOSSL=unix  SSLCERTS=/etc/ssl/certs  SSLINCLUDE=/usr/include/openssl  SSLLIB=/usr/lib  lnp
     else  ./build  DEBUG="${CFLAGS}"  NOSSL=unix  SSLCERTS=/etc/ssl/certs  SSLINCLUDE=/usr/include/openssl  SSLLIB=/usr/lib  slx
-    fi  &&
-    prepare_install
-
-  else
-
+    fi
+else
     if    spell_ok  linux-pam
     then  ./build  DEBUG="${CFLAGS}"  lnp
     else  ./build  DEBUG="${CFLAGS}"  slx
-    fi  &&
-    prepare_install
-
-  fi
-
-) > ${C_FIFO} 2>&1  &&  (
-
-  cd  bin
-  cp  pico    /usr/bin
-  cd  ../doc
-
-  for  MANPAGE  in  `ls  pico*.1`;  do
-    gzip  -9  ${MANPAGE}
-    cp  ${MANPAGE}.gz  /usr/man/man1
-  done
-
-)
+    fi
+fi
