@@ -1,4 +1,4 @@
-# $Id: CONFIGURE,v 1.1 2002/08/20 14:20:14 sergeyli Exp $
+# $Id: CONFIGURE,v 1.2 2002/09/17 15:45:41 sergeyli Exp $
 if  !  grep  -q  "APACHE_BOOT="  $SPELL_CONFIG;  then
 
 	if    query  "Invoke apache during boot?" y
@@ -32,4 +32,9 @@ if ! grep -q "APACHE_MPM=" $SPELL_CONFIG; then
 		;;
 	esac
 	echo "APACHE_MPM=$APACHE_MPM" >> $SPELL_CONFIG
+fi
+
+# The following question is asked no matter what
+if query "Would you like to export the most recent source?" n; then
+	export FORCE_DOWNLOAD=on
 fi
