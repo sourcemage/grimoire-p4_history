@@ -1,10 +1,10 @@
 
 SPELL=linux-new
 BUILD_API=2
-. ${SCRIPT_DIRECTORY}/details.conf
+. ${CONFIG_CACHE}/details.conf
 
 . ${SCRIPT_DIRECTORY}/latest.defaults
-. ${SCRIPT_DIRECTORY}/details.defaults
+. ${CONFIG_CACHE}/details.defaults
 # $files is from details.defaults
 VERSION=${patchversion=${KERNEL_VERSION}}
 SOURCE_DIRECTORY="${BUILD_DIRECTORY}/linux-new-${VERSION}"
