@@ -3,3 +3,7 @@ optional_depends  "Python"            \
                   "--with-python"     \
                   "--without-python"  \
                   "to build python bindings for libxslt"
+optional_depends libgcrypt \
+                 '--with-libgcrypt' \
+                 '--without-libgcrypt' \
+                 'for exslt:crypto extension'
