@@ -1,40 +1,19 @@
 (
 
-  ./configure  --prefix=/usr $OPTS	\
-  --sysconfdir=/etc          		\
-  --localstatedir=/var	     		\
-  --enable-fpu               		\
-  --with-x11                 		\
-  --enable-ne2000			\
-  --enable-cdrom=yes 			\
-  --enable-icache			\
-  $RFB					\
-  $SB16 				\
-  $SMP 					\
-  $TERM					\
-  $SVGA					\
-  $WX					\
-  $SDL					\
-  $APIC					\
-  --enable-all-optimizations		&&
+  OPTS="$OPTS --enable-all-optimizations    \
+              --enable-fpu                  \
+              --with-x11                    \
+              --enable-ne2000               \
+              --enable-cdrom=yes            \
+              --enable-icache               \
+              --enable-repeat-speedups      \
+              --enable-config-interface     \
+              $RFB $SB16 $SMP $TERM $APIC"
 
-  if [ "$IPS" == "y" ]; then
-    message "Editing config.h"		&&
-    sedit "s/#define BX_SHOW_IPS         0/#define BX_SHOW_IPS         1/" ./config.h 
-    cat ./config.h
-  fi					&&
+  if  [  "$IPS"  =  "y"  ]  ;  then
+    sedit  's/\(#define BX_SHOW_IPS\)  *0/\1 1/'  config.h.in
+  fi  &&
 
-  make                       		&&
-
-  prepare_install            		&&
-
-  make    install            		&&
-
-  gzip font/vga.pcf                     &&
-  cp   font/vga.pcf.gz                  \
-       /usr/lib/X11/fonts/misc/		&&
-
-  mkdir -p /usr/doc/$SPELL   		&&
-  cp -r docs-html/* /usr/doc/$SPELL
+  default_build
 
 ) > $C_FIFO 2>&1
