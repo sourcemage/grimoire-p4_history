@@ -5,11 +5,15 @@
 #               Written for Source Mage GNU/Linux
 #
 #  Version:  @(#)mountnfs.sh  1.0.0  2003-06-29  Eric Sandall <eric@sandall.us>
+#    * Initial creation
+#  Version:  @(#)mountnfs.sh  1.0.1  2003-07-11  Eric Sandall <eric@sandall.us>
+#    * Now checks for a directory (-d) instead of a file (-f)
+#    * Changes "SGL" tags to "SMGL"...what was I thinking?
 #
-# SGL-script-version=20030711
+# SMGL-script-version=20030711
 # Need to start after proc is mounted (mount) and modutils is loaded
-# SGL-START:3 4 5:S20
-# SGL-STOP:0 1 2 6:K70
+# SMGL-START:3 4 5:S20
+# SMGL-STOP:0 1 2 6:K70
 
 . /etc/init.d/functions
 
