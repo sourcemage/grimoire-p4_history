@@ -20,7 +20,7 @@
   # Missing in some cases ...
   ln  -s  libvga.so.${VERSION}  sharedlib/libvga.so                      &&
   # Build lrmi and tools ...
-  make  LDFLAGS="-L../sharedlib"  textutils  lrmi  utils                 &&
+  make  LDFLAGS="${LDFLAGS} -L../sharedlib"  textutils  lrmi  utils      &&
   # Build the gl stuff too
   make  -C  gl                                                           &&
   make  -C  gl  libvgagl.so.${VERSION}                                   &&
@@ -30,9 +30,7 @@
   make  -C  src  libvga.so.${VERSION}                                    &&
   cp  -a  src/libvga.so.${VERSION}  sharedlib/                           &&
   # Build threeDKit ...
-  make  LDFLAGS='-L../sharedlib'  -C  threeDKit  lib3dkit.a              &&
-  # Build demo's ...
-  make  CFLAGS="${CFLAGS} -I../gl" demoprogs  LDFLAGS='-L../sharedlib'   &&
+  make  LDFLAGS="${LDFLAGS} -L../sharedlib"  -C  threeDKit  lib3dkit.a   &&
 
   cd  kernel/svgalib_helper                                              &&
   env  -u  ARCH                                                          \
