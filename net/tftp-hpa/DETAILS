@@ -1,15 +1,14 @@
            SPELL=tftp-hpa
-         VERSION=0.36
+         VERSION=0.39
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KERNEL_URL/pub/software/network/tftp/$SOURCE
-          MD5[0]=2beeb4fe94233f4739be0519b98c5957
+          MD5[0]=8212369b5c0ce21eb0359771f0f62ea7
         WEB_SITE=http://www.kernel.org/pub/software/network/tftp
          ENTERED=20020903
          UPDATED=20020903
-      MAINTAINER=zoran@idi.ntnu.no
            SHORT="tftp server"
-
 cat << EOF
 This is tftp-hpa, a conglomerate of a number of versions of the BSD
 TFTP code, changed around to port to a whole collection of operating
