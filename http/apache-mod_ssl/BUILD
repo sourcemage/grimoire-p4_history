@@ -1,4 +1,4 @@
-patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.24_db4.patch
+#patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.24_db4.patch
 
 export  SSL_BASE=SYSTEM
 export  EAPI_MM=SYSTEM
