@@ -22,11 +22,4 @@
 
   mkdir -p /var/run/httpd
 
-  case  $APACHE_BOOT  in
-    y|Y|j|J)
-            installscript apache.sh
-      ;;
-          *)  true  ;;
-  esac
-
 )

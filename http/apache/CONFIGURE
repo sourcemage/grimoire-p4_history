@@ -1,8 +1,0 @@
-if  !  grep  -q  "APACHE_BOOT="  $SPELL_CONFIG;  then
-
-  if    query  "Invoke apache during boot?" y
-  then  echo   "APACHE_BOOT=y"  >>  $SPELL_CONFIG
-  else  echo   "APACHE_BOOT=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
