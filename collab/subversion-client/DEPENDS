@@ -1,26 +1,15 @@
-APRCONFIG=$(which apr-config 2>/dev/null)
-
 depends autoconf &&
 depends libtool  &&
 depends bison    &&
-
-# We need to use the APR which is installed,
-# otherwise Subversion's install will overwrite it
-if [ -n "$APRCONFIG" ] && $($APRCONFIG --version >/dev/null 2>&1); then
-  APRFROM=$(gaze from $APRCONFIG | head -1) &&
-  APRSPELL=${APRFROM%-*:*}                  &&
-  if ! [ "$APRSPELL" == "$SPELL" ]; then
-    message "${MESSAGE_COLOR}Using APR $($APRCONFIG --version) from spell $APRSPELL...${DEFAULT_COLOR}" &&
-    depends $APRSPELL "--with-apr=$APRCONFIG --with-apr-util=$INSTALL_ROOT/usr"
-  fi
-fi &&
+depends apr '--with-apr=/usr' &&
+depends apr-util '--with-apr-util=/usr' &&
 
 # If there's no Neon, people will have a choice to install it or use bundled version
 # If there's Neon already installed, it's going to be consumed automatically
-optional_depends neon                            \
-                 "--with-neon=$INSTALL_ROOT/usr" \
-                 ''                              \
-                 'install neon separately ("n" installs Subversion-bundled neon library)' &&
+optional_depends neon               \
+                 '--with-neon=/usr' \
+                 ''                 \
+                 'install neon separately, "n" installs Subversion-bundled neon library' &&
 optional_depends openssl         \
                  '--with-ssl'    \
                  '--without-ssl' \
@@ -28,4 +17,4 @@ optional_depends openssl         \
 optional_depends swig             \
                  '--with-swig'    \
                  '--without-swig' \
-                 'for generation of Python bindings with SWIG'
+                 'for generation of Python bindings with SWIG, "n" is recommended'

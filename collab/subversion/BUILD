@@ -57,16 +57,14 @@ function make_if_swig() {
   if ! [ -x configure ]; then ./autogen.sh; fi &&
   ./configure \
     --build=$BUILD \
-    --prefix=$INSTALL_ROOT/usr \
-    --sysconfdir=$INSTALL_ROOT/etc \
-    --localstatedir=$INSTALL_ROOT/var \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
     --disable-debug \
     --disable-static \
     --enable-dso \
     --disable-mod-activation \
     --enable-shared \
-    --with-apr=$(which apr-config) \
-    --with-apr-util=$INSTALL_ROOT/usr \
     --with-apxs \
     $OPTS &&
   make &&

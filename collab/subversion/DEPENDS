@@ -3,7 +3,9 @@ requires webserver &&
 depends autoconf &&
 depends libtool &&
 depends bison &&
-depends neon "--with-neon=$INSTALL_ROOT/usr" &&
+depends apr '--with-apr=/usr'      &&
+depends apr-util '--with-apr-util=/usr' &&
+depends neon '--with-neon=/usr' &&
 depends db '--with-berkeley-db' &&
 optional_depends swig             \
                  '--with-swig'    \
