@@ -23,8 +23,8 @@ fi
 case $1 in
   start)    for IF in $INTERFACES; do
               echo "Starting ifplugd on interface $IF..."
-              A="`eval echo \$\{ARGS_${IF}\}`"
-              [ -z $A ] && A="$ARGS"
+              A="`eval builtin echo \$\{ARGS_${IF}\}`"
+              [ -z "$A" ] && A="$ARGS"
               /usr/sbin/ifplugd -i $IF $A
               evaluate_retval
             done
