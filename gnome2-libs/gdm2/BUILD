@@ -9,7 +9,7 @@ OPTS="$OPTS --enable-authentication-scheme=$SCHEME"                     &&
 
 LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"                                     &&
 
-patch  -p 1  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch  &&
+patch  -p0  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch   &&
 
 ./configure   --build=$BUILD                                            \
               --prefix=${INSTALL_ROOT}/usr                              \

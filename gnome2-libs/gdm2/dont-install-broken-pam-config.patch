@@ -1,10 +1,10 @@
-diff -ru gdm-2.4.0.4.orig/config/Makefile.in gdm-2.4.0.4/config/Makefile.in
---- gdm-2.4.0.4.orig/config/Makefile.in	2002-07-24 21:56:22.000000000 +0200
-+++ gdm-2.4.0.4/config/Makefile.in	2002-08-03 15:28:46.000000000 +0200
-@@ -353,23 +353,6 @@
- 		chmod 750 $(DESTDIR)$(authdir); \
+--- config/Makefile.in.orig	2005-02-03 20:08:51.278437392 -0600
++++ config/Makefile.in	2005-02-03 20:09:53.304008072 -0600
+@@ -586,23 +586,6 @@
+ 		chown root:gdm $(DESTDIR)$(authdir); \
+ 		chmod 1770 $(DESTDIR)$(authdir); \
  	fi
- 
+-
 -	system=`uname`; \
 -	if test -f /usr/include/security/pam_appl.h; then \
 -	  if test '!' -d $(DESTDIR)$(PAM_PREFIX)/pam.d; then \
@@ -21,7 +21,6 @@ diff -ru gdm-2.4.0.4.orig/config/Makefile.in gdm-2.4.0.4/config/Makefile.in
 -		echo "Please add PAM authentication for gdm and gdm-autologin in $(PAM_PREFIX)/pam.conf!"; \
 -	   fi; \
 -	fi
--
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
  .NOEXPORT:
