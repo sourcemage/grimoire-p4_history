@@ -1,18 +1,17 @@
-         VERSION=1.0.7
-          MD5[0]='19c9b334f6267125af14f246b6c1419f'
-         UPDATED=20030729
+         VERSION=2.0
+          MD5[0]='bfcff1892bcb8202095ca7d54f3f652f'
+         UPDATED=20030910
            SPELL=PEAR-Pager
       LICENSE[0]=PHP
-           SHORT='PEAR: Generic data paging class'
+           SHORT='PEAR: Data paging class'
 cat << EOF
-If you have data that needs paging (ie 1-10 on
-page one, 11-20 on page two) this class can
-help. Pass it an array of data or a number of
-items and it will sort it into pages, picking up
-the current page id from the url. It can also
-give you back/next and page number links taking
-the current url and adding the correct page id
-to it.
+It takes an array of data as input and page it
+according to various parameters. It also builds
+links within a specified range, and allows
+complete customization of the output (it even
+works with mod_rewrite).
+Two modes available: "Jumping" and "Sliding"
+window style.
 EOF
 
 source $SCRIPT_DIRECTORY/../PEAR_DETAILS
