@@ -4,7 +4,6 @@
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2
          SOURCE3=glibc-${VERSION}-sscanf-decl-fix.patch.bz2
          SOURCE4=initgroups.c.diff\?r1\=1.28\&r2\=1.29\&cvsroot\=glibc
-         SOURCE5=glibc-kernheaders-2.4-8.36.src.rpm
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
@@ -12,11 +11,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
   SOURCE2_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE2
   SOURCE3_URL[0]=http://evanidus.ath.cx:8080/l14h/patches/needed-with-gcc-3.3/${SOURCE3}
   SOURCE4_URL[0]='http://sources.redhat.com/cgi-bin/cvsweb.cgi/libc/grp/initgroups.c.diff\?r1=1.28\&r2=1.29\&cvsroot=glibc'
-  SOURCE5_URL[0]=http://download.fedora.redhat.com/pub/fedora/linux/core/development/SRPMS/$SOURCE5
           MD5[0]=3d5d27ea7774a5f358b6fa8b56bd8ab3
           MD5[1]=8120b2efd845b49e3a17d79df8239d4c
           MD5[2]=fafc1d90f99dfaed9beae9f28a720e06
-          MD5[4]=ffe115e7bdc695480f0752aa34865c25
       LICENSE[0]=LGPL
       LICENSE[1]=LGPL
       LICENSE[2]=LGPL

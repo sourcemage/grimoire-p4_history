@@ -68,15 +68,6 @@ fi                                            &&
             localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
     done
     true
-  fi  &&
-
-  # install sanitized kernel headers
-  # doesn't check for architecture yet
-  # where do those links come from?
-  rm  -rf  /usr/include/asm    &&
-  rm  -rf  /usr/include/linux  &&
-  cd  $SOURCE_DIRECTORY/kernel_headers/usr/include  &&
-  cp  -R  asm-i386  /usr/include/asm  &&
-  cp  -R  linux     /usr/include
+  fi
 
 ) > $C_FIFO 2>&1
