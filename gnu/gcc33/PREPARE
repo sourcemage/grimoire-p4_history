@@ -1,0 +1,32 @@
+SPELL=gcc
+if  [  !  -x  ${INSTALL_ROOT}/usr/bin/gnatbind  ]; then
+  if  !  grep  -q  "SOURCE2="  $SPELL_CONFIG; then
+    if  !  grep  -q  "ADA=no"  $SPELL_CONFIG; then
+      if  query  "Download an ADA95 compiler, so you can build gcc with ada support?"  n; then
+        SOURCE2=gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz
+        SOURCE2_URL[0]=http://libre.act-europe.fr/GNAT/3.15p/gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz
+        SOURCE2_URL[1]=ftp://ftp.cs.kuleuven.ac.be/pub/Ada-Belgium/mirrors/gnu-ada/3.15p/$SOURCE2
+        MD5[1]=f077ee1b544b7dc7f0120cb3b9271567
+        S2_DIR=gnat-3.15p-i686-pc-linux-gnu-bin
+
+        echo SOURCE2=$SOURCE2 >> $SPELL_CONFIG
+        echo SOURCE2_URL[0]=${SOURCE2_URL[0]} >> $SPELL_CONFIG
+        echo SOURCE2_URL[1]=${SOURCE2_URL[1]} >> $SPELL_CONFIG
+        echo MD5[1]=${MD5[1]} >> $SPELL_CONFIG
+        echo S2_DIR=$S2_DIR >> $SPELL_CONFIG
+      else
+        echo ADA=no >> $SPELL_CONFIG
+      fi
+    fi
+  fi
+else
+  if  grep  -q  "SOURCE2="  $SPELL_CONFIG; then
+    . $SPELL_CONFIG  &&  rm $SPELL_CONFIG
+    if  [  -n  "$FIXEDINCLS"  ];  then
+      echo "FIXEDINCLS=$FIXEDINCLS"  >>  $SPELL_CONFIG
+    fi
+    echo "FRONTENDS=$FRONTENDS"     >>  $SPELL_CONFIG
+    echo "CONFIGURED=$CONFIGURED"  >>  $SPELL_CONFIG
+  fi
+fi
+. $SPELL_CONFIG
