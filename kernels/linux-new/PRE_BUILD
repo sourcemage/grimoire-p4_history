@@ -48,7 +48,9 @@ then
 		esac &&
 		pval=1 &&
 		md5sum=""
-		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch} &&
+		tmp=$(find ${SCRIPT_DIRECTORY}/info/patches/*/${patch})
+		. $tmp
+		. `dirname $tmp`/.info
 		if [ "$md5sum" != "" ]
 		then
 			unpack ${source} ${md5sum}
