@@ -1,0 +1,18 @@
+#
+# Thanks to neal birch for this addition to take car of the 
+# missing /var/run/samba dir on reboots, bug #243.
+#
+samba_test=$(grep "mkdir /var/run/samba" /etc/init.d/bootmisc.sh)
+
+if [ ! -n "$samba_test" ]; then
+
+	cat >> /etc/init.d/bootmisc.sh <<EOF
+
+	# added for samba
+   	mkdir /var/run/samba
+   
+   # if needed add the following with correct values
+   # chmod <whatever> /var/run/samba
+   # chown <whomever> /var/run/samba
+   EOF
+fi
