@@ -1,14 +1,3 @@
-# make a shell script to start the server
-#mkfbmgr()
-#{
-#  cat <<EOF
-##!/bin/sh
-#FIREBIRD=$PREFIX
-#export FIREBIRD
-#exec \$FIREBIRD/bin/fbmgr.bin \$@
-#EOF
-#}
-
 (
 # Classic Server install needs services or xinet.d
 # Super Server install needs init.d
@@ -41,8 +30,7 @@
 # new install script from here on
   cd gen					&&
   ./install/makeInstallImage.sh			&&
-#  cd ..						&&
-#  cd $PWD/gen/buildroot/${INSTALL_ROOT}		&&
+
   cd buildroot/${INSTALL_ROOT}/$PREFIX		&&
 # preserve some existing files
   for FF in `ls security.fdb firebird.conf aliases.conf bin/*.sh`; do
@@ -63,8 +51,6 @@
   chmod -R uga-w $PREFIX			&&
   
   cd bin					&&
-# Create the fbmgr shell script
-#  mkfbmgr > fbmgr				&&
 
 # Everyone may execute clients
   chmod 0555 *					&&
