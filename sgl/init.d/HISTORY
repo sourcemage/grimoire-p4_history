@@ -1,7 +1,15 @@
-2002-10-02  Eric Sandall <eric@sandall.us>
-		Modified mount.new.sh to not mount networked filesystems, as networking hasn't been started at this stage in the boot process.
-		Added mountnfs.sh which mounts the networked filesystems, since networking should have been started by now.  :)  This and mount.new should replace the current mount.sh, once they've been tested a little more.  :)  I use them on all of my machines, and they got rid of those "Failed" errors for mount and the "RPC not found" for trying to mount my networked filesystems.
-		Added and xdm.sh, gdm.sh and kdm.sh to start those login managers, should create one for wdm as well (when is my wdm spell going to go in?).
+2002-10-2   Neal Birch <nealbirch@attbi.com>
+	    Fixed typo in libinit.d. Thanks nkj!
+2002-9-30   Neal Birch <nealbirch@attbi.com>
+	    Modified BUILD to take care of lack of check for existing script file bug (Thanks, Treeve!); changed scripts directory name to scriptdir to prevent possible naming conflicts, changed name of script.que to scriptque.temp to ease removal of temp files.
+2002-9-29   Neal Birch <nealbirch@attbi.com>
+	    Added CONFIGURE and modified BUILD to match. Now uses dialog to make life a little easier. 
+2002-9-24   Neal Birch <nealbirch@attbi.com>
+	    Modified networking.sh further. Added change to save scripts that uses current date and time as extension for backup purposes. Cleaned up and reordered the BUILD code a little.
+2002-9-23   Neal Birch <nealbirch@attbi.com>
+	    Modified Build to correct error due to quotes around a variable causing build failure. Changed SGL-script-version to reflect date script was modified (yearmonthday: 20020923) vs sequential numbering system for ease of tracking updates per M.L.'s suggestion. 
+2002-09-22  Neal Birch <nealbirch@attbi.com>
+	    Modified BUILD to install new networking schema. It should copy existing information from the current networking.sh and setup the links for the runlevels properly.
 
 2002-09-16  Eric Sandall <eric@sandall.us>
 		Added Nealbirch's init.d scripts, but just so they're here, ready to be used.  Nothing is done with them as of yet.  :)

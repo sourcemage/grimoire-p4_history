@@ -27,8 +27,8 @@ make_nicfile ()
 # Do I need to add help explaining what each is? This would work:
 # dialog --backtitle "$sgl_logo" --textbox $SCRIPT_DIRECTORY/helpdir/$info.txt 0 0	
 	dialog --backtitle "$sgl_logo" --nocancel --inputbox\
-	    "What does ethernet card $nicfile use for $info?" 0 0 2>$SCRIPT_DIRECTORY/infodata.ans
-	infodata=$(cat $SCRIPT_DIRECTORY/infodata.ans)
+	    "What does ethernet card $nicfile use for $info?" 0 0 2>$SCRIPT_DIRECTORY/infodata.temp
+	infodata=$(cat $SCRIPT_DIRECTORY/infodata.temp)
 	echo $info=$infodata >>$netdir/$nicfile
     done
 }
@@ -42,8 +42,8 @@ setup_nicfile ()
     ans=$?
     while [ "$ans" = "0" ]; do
 	dialog --backtitle "$sgl_logo"  --inputbox\
-	    "What does your ethernet card use for device designation?" 0 0 2>infodata.ans
-	nicfile=$(cat infodata.ans)
+	    "What does your ethernet card use for device designation?" 0 0 2>infodata.temp
+	nicfile=$(cat infodata.temp)
 	if [! -f $netdir/$nicfile ]; then 
 	    make_nicfile
 	else
@@ -174,7 +174,7 @@ install_networking ()
 	    else
 		dialog --backtitle "$sgl_logo" --msgbox\
 		    "We need to get some information on your network to setup a ethernet card." 0 0
-		setup_nic
+		setup_nicfile
 	    fi
 	else
 	    dialog --backtitle "$sgl_logo" --msgbox\

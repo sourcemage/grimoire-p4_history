@@ -1,14 +1,10 @@
            SPELL=init.d
-         VERSION=1.0.0
+         VERSION=1.03
          ENTERED=20020719
-         UPDATED=20020719
-      MAINTAINER=eric@sandall.us
-           SHORT='Basic declarations and functions for init scripts'
+         UPDATED=20021002
+      MAINTAINER=nealbirch@attbi.com
+           SHORT='Install functions and selected system scripts then sets runlevels and  priorities.'
 cat << EOF
-Begin $rc_base/init.d/functions - Run Level Control Functions
-Based on functions script from LFS-3.1 and earlier.
-Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
-With code based on Matthias Benkmann's simpleinit-msb @
-http://winterdrache.de/linux/newboot/index.html
-Modified slightly for SourceMage GNU linux
+Installs and sets runlevel priority on system init scripts.
+It includes functions script modified from LFS-3.1. Originally rewritten by Gerard Beekmans - gerard@linuxfromscratch.org, with code based on Matthias Benkmanns simpleinit-msb http://winterdrache.de/linux/newboot/index.html. Modified for SourceMage GNU linux.
 EOF
