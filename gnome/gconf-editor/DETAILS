@@ -1,16 +1,16 @@
            SPELL=gconf-editor
-         VERSION=0.3.1
+         VERSION=0.4.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='9768e22562094b05a08c0fbde1b7d9d3'
+          MD5[0]="fc4180b5c7ab03f650806c2ffc64cafd"
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020505
-         UPDATED=20020520
+         UPDATED=20021215
            SHORT="Tool for manipulating GConf settings"
 cat << EOF
 Tool for manipulating GConf settings

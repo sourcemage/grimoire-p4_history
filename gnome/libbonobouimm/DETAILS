@@ -1,0 +1,17 @@
+           SPELL=libbonobouimm
+         VERSION=1.3.3
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]="40b99ffd61a2e77b0d40c1ef89cb117e"
+      LICENSE[0]="LGPL"
+        WEB_SITE=http://gtkmm.sourceforge.net/
+         ENTERED=20020523
+         UPDATED=20021207
+      MAINTAINER=rcook@wyrms.net
+           SHORT="C++ wrapper library for libbonoboui"
+cat << EOF
+C++ wrapper library for libbonoboui
+EOF

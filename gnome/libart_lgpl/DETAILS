@@ -1,16 +1,16 @@
            SPELL=libart_lgpl
-         VERSION=2.3.10
+         VERSION=2.3.11
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='5d6f79f2aa4001314252dfa26e14dbb5'
+          MD5[0]="ccbdfe5e9cafd9d02016f9f3f5673a82"
         WEB_SITE=http://www.levien.com/libart
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020509
-         UPDATED=20020509
+         UPDATED=20021204
            SHORT="Libart is a library of functions for 2D graphics"
 cat << EOF
 Libart is a library of functions for 2D graphics supporting a

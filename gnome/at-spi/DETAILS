@@ -1,16 +1,16 @@
            SPELL=at-spi
-         VERSION=1.0.2
+         VERSION=1.1.8
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='f9eb8bc0abd3725b8c5b0c7b72f19e09'
+          MD5[0]="6ff6397a125b562a6b86f389bee9796d"
         WEB_SITE=http://developer.gnome.org/projects/gap/
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020505
-         UPDATED=20020505
+         UPDATED=20021230
            SHORT="GNOME Assistive Technology Service Provider Interface."
 cat << EOF
 This is the Gnome Accessibility Project's Assistive Technology Service

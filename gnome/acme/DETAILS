@@ -1,0 +1,40 @@
+           SPELL=acme
+         VERSION=2.0
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="38a00548e2cf2b8e6c67b171f90244fa"
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+         ENTERED=20020314
+         UPDATED=20030110
+           SHORT="Laptop Multimedia button activator."
+cat << EOF
+A small tool for your laptops. It makes the small multimedia buttons
+on these things actually do something. It currently only fully supports
+Apple laptops (iBooks and PowerBooks) and should work on other systems
+as well.
+
+Supported is:
+- Volume keys (Mute, Volume Down, Volume Up)
+- Brightness keys (kernel 2.4.18-rc2-benh minimum)
+- Eject (just launches "eject")
+- Power (asks to exit the current Gnome session)
+- My Home (opens a file manager window in your home dir)
+- Search (launches gnome-search tool)
+- E-Mail (launches evolution or balsa)
+- Sleep (uses apm to put to sleep)
+- Screensaver (launches gnome's screensaver)
+- Finance (launches gnucash)
+- Help (launches yelp)
+- Record (launches gnome-sound-recorder)
+- WWW (launches an empty new browser)
+- Calculator (launches gnome-calculator)
+
+Eject and Power need to be pressed for a longer time to take effect.
+The automatic dimming of the screen when inactive was removed, as this
+functionality is available in a less broken way in XFree 4.2.
+EOF

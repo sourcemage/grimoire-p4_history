@@ -1,3 +1,4 @@
+(
 if ! spell_installed gnome-core; then
 
      cp Makefile.in Makefile.in.orig
@@ -10,4 +11,7 @@ if ! spell_installed gnome-core; then
 
 fi
 
+patch -p1 < $SCRIPT_DIRECTORY/kinetix-patch &&
+
 default_build
+) > $C_FIFO 2>&1

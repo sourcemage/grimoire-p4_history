@@ -1,14 +1,16 @@
            SPELL=atk
-         VERSION=1.0.3
+         VERSION=1.2.1
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v2.0/$SOURCE
-          MD5[0]='15832495192274ef352fae0c766de7b5'
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="9fb3cfb076ca76b7bbd8a9cf42889392"
         WEB_SITE=http://developer.gnome.org/projects/gap
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020314
-         UPDATED=20020330
+         UPDATED=20030103
            SHORT="The ATK library provides a set of interfaces for accessibility."
 cat << EOF
 The ATK library provides a set of interfaces for accessibility.
