@@ -3,9 +3,11 @@
   unpack  $SOURCE2  ${MD5[1]}            &&
   patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
   sedit  's/fam_LDADD =/fam_LDADD = -lrt -lpthread/'  fam/Makefile.am  &&
-  aclocal   &&
-  autoconf  &&
-  automake  &&
+  aclocal                   &&
+  libtoolize --copy --force &&
+  autoheader                &&
+  autoconf                  &&
+  automake                  &&
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \
