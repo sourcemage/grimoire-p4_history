@@ -6,7 +6,7 @@ if  !  grep  -q  "IPV6"  $SPELL_CONFIG;  then
 fi
 
 ##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
-if  spell_installed  Linux-PAM;  then
+if  spell_installed  linux-pam;  then
   if  query  "Use the PAM library for authentication? "  y;  then
     AUTHPAM=y
     AUTHPWD=n
