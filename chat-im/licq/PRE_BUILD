@@ -1,6 +1,6 @@
 mk_source_dir $SOURCE_DIRECTORY  &&
 unpack		  $SOURCE ${MD5[0]} &&
-if [ "$CVS" = "yes" ]; then
+if [ "$CVS" == "y" ]; then
 	cd $SOURCE_DIRECTORY			 &&
 	unpack		  $SOURCE2 ${MD5[1]} &&
 	cd $SOURCE_DIRECTORY			 &&

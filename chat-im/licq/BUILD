@@ -1,4 +1,4 @@
-  if [ "$CVS" == "yes" ]; then
+  if [ "$CVS" == "y" ]; then
 	make -f Makefile.cvs
   fi &&
   ./configure  --prefix=/usr		\
@@ -7,9 +7,9 @@
 	       $OPTS			 &&
   make	 &&
 
-  if [ "$CDK" == "yes" ]; then
+  if [ "$CDK" == "y" ]; then
   cd  $SOURCE_DIRECTORY/plugins/console     &&
-  if [ "$CVS" == "yes" ]; then
+  if [ "$CVS" == "y" ]; then
 	  make -f Makefile.cvs
   fi        &&
   ./configure  --prefix=/usr		\
@@ -20,7 +20,7 @@
 
   if  spell_installed  qt-x11;  then
 	cd  $SOURCE_DIRECTORY/plugins/qt-gui	                      &&
-	if [ "$CVS" == "yes" ]; then
+	if [ "$CVS" == "y" ]; then
 		make -f Makefile.cvs
 	fi                                                            &&
 	./configure  --prefix=/usr		\
@@ -31,7 +31,7 @@
    fi                                 &&
 
 	  cd $SOURCE_DIRECTORY/plugins/email                          &&
-       if [ "$CVS" == "yes" ]; then
+       if [ "$CVS" == "y" ]; then
 	  make -f Makefile.cvs 
        fi                                                            &&
 	  ./configure --prefix=/usr \
@@ -41,7 +41,7 @@
 	  make                                                        &&
 
           cd $SOURCE_DIRECTORY/plugins/msn           &&
-       if [ "$CVS" == "yes" ]; then
+       if [ "$CVS" == "y" ]; then
 	  make -f Makefile.cvs 
        fi                                            &&   
 	  ./configure --prefix=/usr \
@@ -52,7 +52,7 @@
 
 
 	  cd $SOURCE_DIRECTORY/plugins/auto-reply                     &&
-       if [ "$CVS" == "yes" ]; then
+       if [ "$CVS" == "y" ]; then
 	  make -f Makefile.cvs
        fi                                                             &&
 	  ./configure --prefix=/usr \
@@ -62,7 +62,7 @@
 	  make                                                        &&
 
 	  cd $SOURCE_DIRECTORY/plugins/rms                            &&
-       if [ "$CVS" == "yes" ]; then
+       if [ "$CVS" == "y" ]; then
 	  make -f Makefile.cvs
        fi
 	  ./configure --prefix=/usr \
@@ -71,7 +71,7 @@
 			  $OPTS &&
 	  make            &&
 
-  if [ "$XOSD" == "yes" ] && [ "$CVS" != "yes" ]; then
+  if [ "$XOSD" == "y" ] && [ "$CVS" != "y" ]; then
 	  cd $SOURCE_DIRECTORY/plugins/osd &&
 #	  ./build                                               &&
 	  ./configure --prefix=/usr			\
