@@ -1,4 +1,13 @@
 2005-01-28 Flavien Bridault <disk@sourcemage.org>
+	* DEPENDS: Removed glib dependency since gtk+ depends on it
+	  Removed imlib and libpng depends since gdk-pixbuf depends on them
+	  Removed libungif dependency since imlib depends on it
+	  Added gtk+2 and gdk-pixbuf2 dependencies is user selected it
+	* new_configure.tar.gz: Added, contains good configure scripts
+	  for compiling with gtk+2 (Bug #8137)
+	* PRE_BUILD: Added, untar previous file if necessary, set --enable-gtk2
+
+2005-01-28 Flavien Bridault <disk@sourcemage.org>
         * DETAILS: Converted to BUILD_API 2
           Removed MAINTAINER
 
