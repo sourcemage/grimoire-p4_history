@@ -1,4 +1,6 @@
+if ! [ "CROSS_INSTALL" = "on" ]; then 
 mkdir  /sbin/old
 mv  /sbin/init  /sbin/old/init
 mv  /sbin/halt  /sbin/old/reboot
+fi
 conflicts  sysvinit
