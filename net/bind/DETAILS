@@ -1,18 +1,14 @@
            SPELL=bind
-         VERSION=9.2.2-P1
-          SOURCE=$SPELL-${VERSION%%-*}.tar.gz
-         SOURCE2=patch.$VERSION
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%%-*}
-      MAKE_NJOBS=1
-   SOURCE_URL[0]=ftp://ftp.isc.org/isc/bind${VERSION%%\.*}/${VERSION%%-*}/$SOURCE
-  SOURCE2_URL[0]=ftp://ftp.isc.org/isc/bind${VERSION%%\.*}/${VERSION%%-*}/$SOURCE2
+         VERSION=9.2.2-P3
+          SOURCE=$SPELL-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.isc.org/isc/bind${VERSION}/${VERSION}/$SOURCE
         WEB_SITE=http://www.isc.org/products/BIND/
-          MD5[0]=41645f9ab91ebfb7f75af39524a9f8fc
-          MD5[1]=063edc41c756ffc6a1051d5f1937fa2c
+          MD5[0]=9e4683dade85caac9f0cc439fcf764c9
          ENTERED=20010922
          UPDATED=20030918
       LICENSE[0]=ISC
-      LICENSE[1]=ISC
+      MAKE_NJOBS=1
            SHORT='BIND contains a DNS server and dig utility'
 cat << EOF
 ISC BIND
