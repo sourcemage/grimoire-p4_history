@@ -1,12 +1,13 @@
 (
-
+  echo  "OPTS=$OPTS"
   ./configure  --prefix=/usr                                   		\
                --sysconfdir=/etc/httpd                         		\
                --localstatedir=/var                         \
-               --enable-modules=most,max,auth_db,php   			\
+               --enable-modules=most,max \
                --enable-info                     			\
                --enable-cgi                      			\
-               --enable-layout=GNU               			&&
+               --enable-layout=GNU               			\
+               $OPTS                                     &&
   make                                           			&&
   prepare_install                                			&&
   make    install
@@ -17,6 +18,7 @@
 
   ln -s /usr/sbin/envvars /usr/bin/envvars
   ln -s /usr/sbin/httpd /usr/bin/httpd
+  mkdir /var/lib/httpd/run
 
   cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d
 

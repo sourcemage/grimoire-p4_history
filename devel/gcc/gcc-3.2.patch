@@ -1,0 +1,237 @@
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/c_locale.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/c_locale.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/c_locale.cc	2002-04-19 09:59:03.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/c_locale.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -39,6 +39,17 @@
+ 
+ namespace std 
+ {
++  extern "C" __typeof (strtol_l) __strtol_l;
++  extern "C" __typeof (strtoul_l) __strtoul_l;
++  extern "C" __typeof (strtoll_l) __strtoll_l;
++  extern "C" __typeof (strtoull_l) __strtoull_l;
++  extern "C" __typeof (strtof_l) __strtof_l;
++  extern "C" __typeof (strtod_l) __strtod_l;
++  extern "C" __typeof (strtold_l) __strtold_l;
++  extern "C" __typeof (newlocale) __newlocale;
++  extern "C" __typeof (freelocale) __freelocale;
++  extern "C" __typeof (duplocale) __duplocale;
++
+   template<>
+     void
+     __convert_to_v(const char* __s, long& __v, ios_base::iostate& __err, 
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/collate_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/collate_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/collate_members.cc	2002-04-19 09:59:03.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/collate_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -37,6 +37,11 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (strcoll_l) __strcoll_l;
++  extern "C" __typeof (strxfrm_l) __strxfrm_l;
++  extern "C" __typeof (wcscoll_l) __wcscoll_l;
++  extern "C" __typeof (wcsxfrm_l) __wcsxfrm_l;
++
+   // These are basically extensions to char_traits, and perhaps should
+   // be put there instead of here.
+   template<>
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/ctype_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/ctype_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/ctype_members.cc	2002-05-24 18:15:25.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/ctype_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -37,6 +37,11 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (wctype_l) __wctype_l;
++  extern "C" __typeof (towupper_l) __towupper_l;
++  extern "C" __typeof (towlower_l) __towlower_l;
++  extern "C" __typeof (iswctype_l) __iswctype_l;
++
+   // NB: The other ctype<char> specializations are in src/locale.cc and
+   // various /config/os/* files.
+   template<>
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/messages_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/messages_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/messages_members.cc	2002-05-19 00:00:14.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/messages_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -37,6 +37,7 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (uselocale) __uselocale;
+   // Specializations.
+   template<>
+     string
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/messages_members.h gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/messages_members.h
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/messages_members.h	2002-05-19 00:00:14.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/messages_members.h	2002-10-14 04:30:58.000000000 +0200
+@@ -33,6 +33,8 @@
+ 
+ // Written by Benjamin Kosnik <bkoz@redhat.com>
+ 
++  extern "C" __typeof (uselocale) __uselocale;
++
+   // Non-virtual member functions.
+   template<typename _CharT>
+     typename messages<_CharT>::catalog 
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/monetary_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/monetary_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/monetary_members.cc	2002-07-27 01:23:42.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/monetary_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -37,6 +37,8 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (nl_langinfo_l) __nl_langinfo_l;
++
+   // Construct and return valid pattern consisting of some combination of:
+   // space none symbol sign value
+   money_base::pattern
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/numeric_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/numeric_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/numeric_members.cc	2002-04-19 09:59:03.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/numeric_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -37,6 +37,8 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (nl_langinfo_l) __nl_langinfo_l;
++
+   template<> 
+     void
+     numpunct<char>::_M_initialize_numpunct(__c_locale __cloc)
+diff -ruN gcc-3.2/libstdc++-v3/config/locale/gnu/time_members.cc gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/time_members.cc
+--- gcc-3.2/libstdc++-v3/config/locale/gnu/time_members.cc	2002-05-19 00:00:14.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/locale/gnu/time_members.cc	2002-10-14 04:30:58.000000000 +0200
+@@ -38,6 +38,10 @@
+ 
+ namespace std
+ {
++  extern "C" __typeof (strftime_l) __strftime_l;
++  extern "C" __typeof (wcsftime_l) __wcsftime_l;
++  extern "C" __typeof (nl_langinfo_l) __nl_langinfo_l;
++
+   template<>
+     __timepunct<char>::~__timepunct()
+     {
+@@ -52,7 +56,7 @@
+ 	   const tm* __tm) const
+     {
+ #if __GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ > 2)
+-      __strftime_l(__s, __maxlen, _M_c_locale_timepunct, __format, __tm);
++      __strftime_l(__s, __maxlen, __format, __tm, _M_c_locale_timepunct);
+ #else
+       char* __old = strdup(setlocale(LC_ALL, NULL));
+       setlocale(LC_ALL, _M_name_timepunct);
+@@ -202,7 +206,7 @@
+ 	   const tm* __tm) const
+     {
+ #if __GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ > 2)
+-      __wcsftime_l(__s, __maxlen, _M_c_locale_timepunct, __format, __tm);
++      __wcsftime_l(__s, __maxlen, __format, __tm, _M_c_locale_timepunct);
+ #else
+       char* __old = strdup(setlocale(LC_ALL, NULL));
+       setlocale(LC_ALL, _M_name_timepunct);
+diff -ruN gcc-3.2/libstdc++-v3/config/os/gnu-linux/bits/ctype_noninline.h gcc-3.2.fixed/libstdc++-v3/config/os/gnu-linux/bits/ctype_noninline.h
+--- gcc-3.2/libstdc++-v3/config/os/gnu-linux/bits/ctype_noninline.h	2002-04-19 09:59:07.000000000 +0200
++++ gcc-3.2.fixed/libstdc++-v3/config/os/gnu-linux/bits/ctype_noninline.h	2002-10-14 04:30:48.000000000 +0200
+@@ -34,16 +34,32 @@
+   
+ // Information as gleaned from /usr/include/ctype.h
+ 
+-#if _GLIBCPP_USE_SHADOW_HEADERS
+-  using _C_legacy::__ctype_toupper;
+-  using _C_legacy::__ctype_tolower;
+-  using _C_legacy::__ctype_b;
+-#endif
+-
++#if _GLIBCPP_C_LOCALE_GNU
+   const ctype_base::mask*
+   ctype<char>::classic_table() throw()
+-  { return __ctype_b; }  
+-  
++  {
++    if (!_S_c_locale)
++      _S_create_c_locale(_S_c_locale, "C");
++    return _S_c_locale->__ctype_b;
++  }
++#else
++  const ctype_base::mask*
++  ctype<char>::classic_table() throw()
++  {
++    const ctype_base::mask* __ret;
++    char* __old = strdup(setlocale(LC_CTYPE, NULL));
++    setlocale(LC_CTYPE, "C");
++#if __GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ > 2)
++    __ret = *__ctype_b_loc();
++#else
++    __ret = __ctype_b;
++#endif
++    setlocale(LC_CTYPE, __old);
++    free(__old);
++    return __ret;
++  }
++#endif
++
+ #if _GLIBCPP_C_LOCALE_GNU
+   ctype<char>::ctype(__c_locale __cloc, const mask* __table, bool __del, 
+ 		     size_t __refs) 
+@@ -57,17 +73,54 @@
+ #else
+   ctype<char>::ctype(__c_locale, const mask* __table, bool __del, 
+ 		     size_t __refs) 
+-  : __ctype_abstract_base<char>(__refs), _M_del(__table != 0 && __del), 
+-  _M_toupper(__ctype_toupper), _M_tolower(__ctype_tolower),
+-  _M_table(__table ? __table : classic_table())
+-  { _M_c_locale_ctype = _S_c_locale; }
++  : __ctype_abstract_base<char>(__refs), _M_del(__table != 0 && __del)
++  {
++    char* __old=strdup(setlocale(LC_CTYPE, NULL));
++    setlocale(LC_CTYPE, "C");
++#if __GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ > 2)
++    _M_toupper = *__ctype_toupper_loc();
++    _M_tolower = *__ctype_tolower_loc();
++    _M_table = __table ? __table : *__ctype_b_loc();
++#else
++    _M_toupper = __ctype_toupper;
++    _M_tolower = __ctype_tolower;
++    _M_table = __table ? __table : __ctype_b;
++#endif
++    setlocale(LC_CTYPE, __old);
++    free(__old);
++    _M_c_locale_ctype = _S_c_locale;
++  }
+ #endif
+ 
++#if _GLIBCPP_C_LOCALE_GNU
++  ctype<char>::ctype(const mask* __table, bool __del, size_t __refs) : 
++  __ctype_abstract_base<char>(__refs), _M_del(__table != 0 && __del)
++  {
++    _M_c_locale_ctype = _S_c_locale;
++    _M_toupper = _M_c_locale_ctype->__ctype_toupper;
++    _M_tolower = _M_c_locale_ctype->__ctype_tolower;
++    _M_table = __table ? __table : _M_c_locale_ctype->__ctype_b;
++  }
++#else
+   ctype<char>::ctype(const mask* __table, bool __del, size_t __refs) : 
+-  __ctype_abstract_base<char>(__refs), _M_del(__table != 0 && __del), 
+-  _M_toupper(__ctype_toupper), _M_tolower(__ctype_tolower),
+-  _M_table(__table ? __table : classic_table())
+-  { _M_c_locale_ctype = _S_c_locale; }
++  __ctype_abstract_base<char>(__refs), _M_del(__table != 0 && __del)
++  {
++    char* __old=strdup(setlocale(LC_CTYPE, NULL));
++    setlocale(LC_CTYPE, "C");
++#if __GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ > 2)
++    _M_toupper = *__ctype_toupper_loc();
++    _M_tolower = *__ctype_tolower_loc();
++    _M_table = __table ? __table : *__ctype_b_loc();
++#else
++    _M_toupper = __ctype_toupper;
++    _M_tolower = __ctype_tolower;
++    _M_table = __table ? __table : __ctype_b;
++#endif
++    setlocale(LC_CTYPE, __old);
++    free(__old);
++    _M_c_locale_ctype = _S_c_locale;
++  }
++#endif
+ 
+   char
+   ctype<char>::do_toupper(char __c) const

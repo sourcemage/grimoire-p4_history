@@ -1,2 +1,7 @@
 default_build  &&
-ln  -s  /usr/share/automake-1.6  /usr/share/automake
+
+if  [  -h  /usr/share/automake  ] ;  then
+  rm  -f  /usr/share/automake
+fi
+
+ln  -s  /usr/share/automake-${VERSION}  /usr/share/automake

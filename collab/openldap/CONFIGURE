@@ -1,4 +1,4 @@
-# $Id: CONFIGURE,v 1.7 2002/09/18 17:27:19 sergeyli Exp $
+# $Id: CONFIGURE,v 1.8 2002/10/16 18:32:47 sergeyli Exp $
 if grep -q "CONFIGURED=y" $SPELL_CONFIG; then
 	true
 	exit
@@ -16,12 +16,6 @@ fi
 if ! grep -q "able-ldbm" $SPELL_CONFIG; then
 	if query "Enable Lightweight DB Manager (LDBM) backend?" n; then
 		echo 'OPTS="$OPTS --enable-ldbm"' >> $SPELL_CONFIG
-	fi
-fi
-
-if ! grep -q "able-sql" $SPELL_CONFIG; then
-	if query "Enable SQL backend?" n; then
-		echo 'OPTS="$OPTS --enable-sql"' >> $SPELL_CONFIG
 	fi
 fi
 
