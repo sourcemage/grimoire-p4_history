@@ -1,0 +1,18 @@
+AUDIO="--enable-audio=alsa" &&
+optional_depends "X11-LIBS" "" "--without-x" "for X support" &&
+depends eawpats  &&
+depends alsa-lib &&
+if spell_installed jack || spell_instaled jack-cvs ;
+	then AUDIO=$AUDIO,jack ;
+fi
+if spell_installed nas ;
+	then AUDIO=$AUDIO,nas ;
+fi
+if spell_installed esound ;
+	then AUDIO=$AUDIO,esd ;
+fi
+if spell_installed libvorbis ;
+	then AUDIO=$AUDIO,vorbis ;
+fi
+
+export AUDIO
