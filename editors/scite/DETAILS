@@ -1,15 +1,15 @@
            SPELL=scite
-         VERSION=153
-          SOURCE=${SPELL}${VERSION}.tgz
+         VERSION=1.56
+          SOURCE=${SPELL}${VERSION/\./}.tgz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
-   SOURCE_URL[0]=http://scintilla.sourceforge.net/${SOURCE}
-          MD5[0]=872b071b819b493dc9639d4d27daaf32
-        WEB_SITE=http://www.scintilla.org/SciTE.html
+   SOURCE_URL[0]=$SOURCEFORGE_URL/scintilla/${SOURCE}
+          MD5[0]='1a1538db35781444cbfe3113c14633a7'
+        WEB_SITE=http://www.scintilla.org/
          ENTERED=20030220
-         UPDATED=20030220
+         UPDATED=20031121
       LICENSE[0]=BSD
       MAINTAINER=vydra@fria.fri.utc.sk
-           SHORT="Scintilla is a free source code editing component."
+           SHORT='Scintilla - source code editing component, SciTE - text editor'
 
 cat << EOF
 As well as features found in standard text editing components, Scintilla includes 
