@@ -1,5 +1,4 @@
-depends xfree86  &&
-optional_depends  "glut"                                \
-                  "--with-glut"                         \
-                  "--without-glut"                      \
-                  "for OpenGL Utility Toolkit support"
+optional_depends  "libggi" "--with-ggi=/usr" "" "GGI is installed "                &&
+optional_depends  "svgalib" "--with-svga=/usr" "" "SVGALib is installed"           &&
+optional_depends  "xfree86"  "--with-x" "--with-x=no" "To use the X Window System" &&
+optional_depends  "glut" "--with-glut" "--without-glut" "for OpenGL Utility Toolkit support"
