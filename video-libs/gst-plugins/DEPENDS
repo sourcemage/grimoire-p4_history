@@ -5,7 +5,6 @@ optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs source support"  &&
 optional_depends  "libdvdread"  ""  ""  "for DVD source support"  &&
 optional_depends  "libdvdnav"  ""  ""  "for extended DVD source support"  &&
 optional_depends  "cdparanoia"  ""  ""  "for cd ripping support"  &&
-optional_depends  "kdelibs"  ""  ""  "for kio source support"  &&
 
 # audio output
 optional_depends  "alsa-lib"  ""  ""  "for ALSA audio input/output"  &&
@@ -23,6 +22,7 @@ optional_depends  "libhermes"  ""  ""  "for limited colorspace conversion"  &&
 optional_depends  "aalib"   ""  ""  "for ascii-art video output"  &&
 optional_depends  "libcaca"  ""  ""  "for color ascii art video output"  &&
 optional_depends  "pango"  ""  ""  "for text overlay support"  &&
+optional_depends  "cairo"  ""  ""  "for cairo text renderer"  &&
 
 # audio codecs
 optional_depends  "audiofile" "" "" "for AIFF/.snd/.au decoder"  &&
@@ -38,6 +38,7 @@ optional_depends  "faad2"  ""  ""  "for AAC audio decoder"  &&
 optional_depends  "libmikmod"  ""  ""  "for various module (mod/s3m/xm/...) decoders"  &&
 optional_depends  "libsndfile"  ""  ""  "for WAV/AIFF file support"  &&
 optional_depends  "libmusepack"  ""  ""  "for musepack (mpc) support"  &&
+optional_depends  "libdts"  ""  ""  "for dts audio decoder"  &&
 
 # image codecs
 optional_depends  "jpeg"  ""  ""  "for jpeg decoder/encoder"  &&
@@ -51,10 +52,13 @@ optional_depends  "libdv" ""  ""  "for dv video decoder"  &&
 optional_depends  "libraw1394"  ""  ""  "for RAW1394 dv video decoder"  &&
 optional_depends  "mjpegtools"  ""  ""  "for mpeg2 video encoder/muxer"  &&
 optional_depends  "libtheora"  ""  ""  "for Theora video encoder/decoder"  &&
+optional_depends  "dirac"  ""  ""  "for Dirac video codec"  &&
+optional_depends  "swfdec"  ""  ""  "for flash support"  &&
 
 # stuff
 optional_depends  "libmusicbrainz"  ""  ""  "for music metadata lookup"  &&
 optional_depends  "gtk+2"  ""  ""  "for gdkpixbuf support"  &&
 optional_depends  "gconf2"  ""  ""  "for gconf support"  &&
 optional_depends  "gtk-doc"  ""  ""  "to build documentation"  &&
-optional_depends  "libvisual" "" "" "for more visualization plugins"
+optional_depends  "libvisual" "" "" "for more visualization plugins"  &&
+optional_depends  "liboil"  ""  ""  "for some additional optimizations"
