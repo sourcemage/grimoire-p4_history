@@ -32,4 +32,5 @@ if ! make export; then
   make export
 fi &&
 
+make_single  &&
 make

@@ -1,3 +1,9 @@
+2005-03-25 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 1.7.6
+	  Updated Enigmail to 0.90.1
+	  Removed MAKE_NJOBS=1
+	* BUILD,INSTALL: Use new make_single/make_normal
+
 2005-03-03 Arjan Bouter <abouter@sourcemage.org>
 	* desktop/mozilla.desktop: added
 
@@ -175,36 +181,36 @@
 2003-03-27 Gareth Clay <garethclay@ntlworld.com>
 	* Removed dependency on Xft2 (now uses XFree86's Xft2)
 
-2003-03-13 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 1.3 release.
 
-2003-02-20 Sergey Lipnevich <sergeyli@pisem.net>
+2003-02-20 Sergey Lipnevich <sergey@sourcemage.org>
 	* Added Calendar support as suggested by Jimmy Yen.
 	* Tests show that libical is not required.
 
-2003-02-18 Sergey Lipnevich <sergeyli@pisem.net>
+2003-02-18 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to Enigmail 0.73.1 and IPC 1.0.2, required for Mozilla 1.3b.
 	* Updated URLs of these two source tarballs.
 
-2003-02-17 Sergey Lipnevich <sergeyli@pisem.net>
+2003-02-17 Sergey Lipnevich <sergey@sourcemage.org>
 	* Added `--disable-installer' to ./configure.
 	* Upgraded to 1.3b, but no Enigmail 0.73.0 source tarball is available ATM.
 	* Choosing Enigmail plugin is not recommended.
 
-2003-01-16 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* Added `web-browser' and `graphical-web-browser' to
 	  the `provides' file.
 
-2002-12-16 Sergey Lipnevich <sergeyli@pisem.net>
+2002-12-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* Updated to 1.3a + a fix for mail performance regression.
 	* Made Xinerama support disabled by default because GTK+2
 	  doesn't have it by default as well.
 
-2002-12-15 Sergey Lipnevich <sergeyli@pisem.net>
+2002-12-15 Sergey Lipnevich <sergey@sourcemage.org>
 	* Question about LDAP schema will be asked.
 	* Patch for Galeon is back.
 
-2002-12-04 Sergey Lipnevich <sergeyli@pisem.net>
+2002-12-04 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 1.2.1 and Enigmail to 0.71.0.
 	* Made PSM (and hence Enigmail) to compile and function.
 	* Reorganized support for Xft2 and freetype2 into optional
@@ -216,7 +222,7 @@
 	* TODO: fix the above mentioned fix.
 	* Added libIDL as required dependency.
 
-2002-11-10 Sergey Lipnevich <sergeyli@pisem.net>
+2002-11-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to version 1.2.
 	* Removed patching for Xft2 and GTK+2.
 	* Added optional depends for openldap instead
@@ -224,7 +230,7 @@
 	* Calendar question removed because the calendar itself is not
 	  included in the standard source.
 
-2002-11-10 Sergey Lipnevich <sergeyli@pisem.net>
+2002-11-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded Enigmail plugin to 0.70.0.
 	* "No questions asked" Galeon 2 support. Default toolkit is GTK 2 now.
 
@@ -235,13 +241,13 @@
 2002-10-09 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* Added fontconfig/Xft2 support
 
-2002-10-02 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-02 Sergey Lipnevich <sergey@sourcemage.org>
 	* Introduced a function configure_set_bool in CONFIGURE.
 
 2002-09-30 Geoffrey Derber <gderber@sourcemage.org>
 	* Added the Enigmail plugin.
 
-2002-09-01 Sergey Lipnevich <sergeyli@pisem.net>
+2002-09-01 Sergey Lipnevich <sergey@sourcemage.org>
 	* Updated to 1.1, added checksum and license information.
 	* Created a SOURCE_URI variable to use in SOURCE_URL[n] array.
 	* Added `provides' information according to bug 805.
