@@ -102,7 +102,7 @@ if device_is_up $DEV ; then
   exit 0
 fi
 
-unset MODE MODULE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU UP_ON_BOOT
+unset MODE MODULE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU WIFI UP_ON_BOOT
 unset do_device_up do_route_up on_up
 
 . $netdevdir/$DEV.dev
@@ -119,6 +119,12 @@ fi
 if [ "$MODULE" ] && ! /sbin/lsmod | exists_in_text "$MODULE" ; then
   echo "Loading module $MODULE for $DEV ..."
   modprobe  $MODULE
+fi &&
+
+if [ "$WIFI" ]; then
+  echo "Configuring wifi for $DEV ..."
+  sleep 1 # to give the card time to start, needed on some cards.
+  iwconfig $DEV ${WIFI}
 fi &&
 
 run_func do_device_up 
