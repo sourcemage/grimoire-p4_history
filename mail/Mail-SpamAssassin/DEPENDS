@@ -1,4 +1,6 @@
-depends  perl &&
-depends  HTML-Parser &&
-optional_depends "Net-DNS"      "" ""  "Extra spam tests" &&
-optional_depends "razor-agents" "" ""  "Allow RBL spam tests"
+depends  perl         &&
+depends  HTML-Parser  &&
+
+optional_depends  DB_File       ""  ""  "For Bayesian logic database"      &&
+optional_depends  Net-DNS       ""  ""  "Extra spam tests"                 &&
+optional_depends  razor-agents  ""  ""  "Allow RBL spam tests"
