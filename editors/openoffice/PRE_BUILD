@@ -1,16 +1,7 @@
-if ! [[ "$(installed_version bison)" = "1.875a" ]] ; then
-        mk_source_dir $SOURCE_DIRECTORY3 &&
-        cd $BUILD_DIRECTORY 		 &&
-        unpack $SOURCE3 ${MD5[2]} 	 &&
-	cd $SOURCE_DIRECTORY3		 &&
-        ./configure --prefix=/opt/bison/ &&
-        make                             &&
-        make install
-fi
-
-PATH=/opt/bison/bin:$PATH &&
-
-
+if [ "$UPDATED" = "yes" ];
+ then echo "Summoning updates if not already in spool" &&
+      summon freetype2 openssl Python
+fi                                       &&
 mk_source_dir	$SOURCE_DIRECTORY  4g	&&
 cd		$BUILD_DIRECTORY	&&
 unpack		$SOURCE	${MD5[0]}	&&
@@ -19,11 +10,9 @@ if ! spell_installed "Linux-PAM"; then
 	mk_source_dir $SOURCE_DIRECTORY2 &&
 	cd $BUILD_DIRECTORY		 &&
 	unpack $SOURCE2 ${MD5[1]}	 &&
-	if [ -d /usr/include/security ]; then
-		mv -f security/* /usr/include/security/
-	else
-		mv security/  /usr/include/
-	fi
+        mkdir -p /usr/include/security   &&
+        mv -f security/*  /usr/include/security/ &&
+        rm_source_dir $SOURCE_DIRECTORY2
 fi
 	
 	

@@ -1,5 +1,14 @@
+2003-11-04 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PRE_BUILD: removed special version of bison as grimoire version has been updated
+	* CONFIGURE: made updates and parallel jobs an optional part of the regular build
+	* BUILD,fix-j2sdk+kernel.patch: add patch for j2sdk 1.4.2 and kernel 2.6.0*
+	general clean up also
+	* PRE_BUILD: add rm_source_dir for PAM and need to mkdir -p /usr/include/security
+	* patches: add patches for the version updates rather that wordy sedits(much cleaner like this)
+	* DEPENDS: remove db as bundled version is used
+
 2003-10-29 Eric Sandall <eric@sandall.us>
-    * DEPENDS:  Depends on JAVA
+	* DEPENDS:  Depends on JAVA
 
 2003-10-27 hgg <hgreig@bigpond.net.au>
 	* BUILD: set JAVA_HOME if not already set
