@@ -14,7 +14,7 @@
  	    done
 -	for F in etc/hotplug/{blacklist,usb.{user,hand,dist}map} ; do \
 +	cd etc/hotplug ; \
-+	for F in {blacklist,usb.{user,hand,dist}map} ; do \
++	for F in {blacklist,usb.{user,hand,dist}map,pnp.{user,hand,dist}map} ; do \
 +	    if [ ! -f $(etcdir)/hotplug/$$F ];then \
  	    ${INSTALL_DATA} $$F $(etcdir)/hotplug ; \
 -	    done
