@@ -1,13 +1,5 @@
-if  !  grep  -q  "CONFIGURED"    ${SPELL_CONFIG}
-then
-
-  if    query  "enable Xbase (DB4) support?"  y
-  then  echo   'OPTS="${OPTS}  --enable-xbase"'   >>  ${SPELL_CONFIG}
-        depends  xbase
-        depends  xbsql
-  else  echo   'OPTS="${OPTS}  --disable-xbase"'  >>  ${SPELL_CONFIG}
-  fi
-
-  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
-fi
+config_query DEVEL "build DEVEL (UNSTABLE) version" n 
+config_query_list GUI "which gui?" kde qt3
+#config_query XBASE "build xBase support?" n
+config_query_option OPTS  "build xBase support?" n "--enable-xbase" "--disable-xbase"
 
