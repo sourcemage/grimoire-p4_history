@@ -27,6 +27,7 @@ default_install  &&
   chown  root:ppp     /usr/sbin/pppd
   chmod  4750         /usr/sbin/pppd
   chown  -R root:ppp  /etc/ppp
+  touch /etc/ppp/pap-secrets /etc/ppp/chap-secrets &&
   chmod  600          /etc/ppp/*-secrets
 
 )
