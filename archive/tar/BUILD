@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/dotdotpatch.diff
-
   ./configure  --build=$BUILD     \
                --prefix=${INSTALL_ROOT}/usr      \
                --libexecdir=${INSTALL_ROOT}/bin  \
