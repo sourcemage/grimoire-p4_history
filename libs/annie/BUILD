@@ -4,7 +4,7 @@
  cp -a lib/* /usr/lib                        &&
  mkdir -p /usr/include/annie                 &&
  cp -a include/* /usr/include/annie          &&
- if spell_installed doxygen 
+ if spell_ok doxygen 
   then 
   make docs                                          &&
   mkdir -p /usr/doc/annie                            &&
