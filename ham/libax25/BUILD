@@ -8,9 +8,9 @@
   prepare_install                    &&
   make    install-strip              &&
 
-if    query  "Do you want the example config files?"  n
-  then  make installconf
-fi
+  case  $CONFIGS  in
+    y|Y) make installconf ;;
+  esac
 
 ) > $C_FIFO 2>&1
 
