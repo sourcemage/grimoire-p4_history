@@ -16,5 +16,5 @@ fi
 if query "Backup $SPELL config ?" y
 then
  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
- tar -cyvf /etc/$SPELL-backup-$CUR_DATE.tar.bz2 /etc/exim.conf 1>/dev/null 2>&1
+ tar -cjvf /etc/$SPELL-backup-$CUR_DATE.tar.bz2 /etc/exim.conf 1>/dev/null 2>&1
 fi
