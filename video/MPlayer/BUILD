@@ -12,7 +12,7 @@
     y|Y)  OPTS="$OPTS  --enable-freetype"  ;;
   esac
 
-  ./configure  --prefix=/usr  \
+  CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \
                $OPTS          &&
   # workaround for a glitch in the Makefile
