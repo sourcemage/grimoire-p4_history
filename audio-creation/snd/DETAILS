@@ -1,5 +1,5 @@
            SPELL=snd
-         VERSION=6.12
+         VERSION=7.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/snd-6
 SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
@@ -8,9 +8,11 @@ SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
          UPDATED=20031117
 	LICENSE[0]=ART
       MAINTAINER=audio@sourcemage.org
-	MD5[0]=8ccaebd91c8604234da23f8f43db66bf
+	MD5[0]=3878f203abdaba190788e63c4ef79b4e
            SHORT="Snd is a the ultimate sound editor."
 cat << EOF
 Snd is the emacs of sound editor. Scriptable either with guile or ruby,
-integrated in motif or gtk environment, it is widely used in international computer music centers.
-EOF
+integrated in motif or gtk2 environment, it is widely used in 
+international computer music centers, and an incredible tool for sound 
+analysis/processing!
+ EOF
