@@ -1,9 +1,4 @@
-(
+sedit "s/root//" autogen.sh  &&
+./autogen.sh                 &&
 
-  sedit "s/root//" autogen.sh
-
-  ./autogen.sh  &&
-
-  default_build
-
-) > $C_FIFO 2>&1
+default_build
