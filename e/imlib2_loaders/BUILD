@@ -1,4 +1,4 @@
-if [ "$CVS" = "y" ]; then
+if [ "$IMLIB2_LOADERS_CVS" = "y" ]; then
     ./autogen.sh
 fi  &&
 
