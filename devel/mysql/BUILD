@@ -9,6 +9,7 @@
                --with-mysqld-user=mysql                   \
                --without-bench                            \
                --enable-assembler                         \
+               --enable-thread-safe-client                \
                $OPTS                                      &&
   export  LD_PRELOAD="$LD_PRELOAD_OLD"                    &&
   make  pkglibdir=/usr/lib                                &&
