@@ -1,11 +1,8 @@
 (
-  patch -p0 < $SCRIPT_DIRECTORY/procps.patch                  &&
-  patch -p1 < $SCRIPT_DIRECTORY/01-01-procps-2.0.7-intl.patch &&
 
   make                                &&
   prepare_install                     &&
-  make  -e XSCPT='' DESTDIR= install  &&
-  mv  /usr/bin/kill /bin
+  make  -e XSCPT='' DESTDIR= install
 
 ) > $C_FIFO 2>&1  &&  (
 
