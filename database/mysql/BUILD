@@ -1,3 +1,4 @@
+OPTS="$SERVER $INNODB $OPTS"                              &&
 if [ "$DEVEL" == "y" ];then
   sed -i "42s|/usr||" cmd-line-utils/libedit/makelist     
 fi                                                        &&
