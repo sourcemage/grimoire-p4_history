@@ -1,9 +1,10 @@
 (
 
-  ./configure  --host=$BUILD        \
+  ./configure  --host=${BUILD}      \
                --prefix=/usr        \
                --with-root-prefix=  \
-               --enable-elf-shlibs  &&
+               --enable-elf-shlibs  \
+               ${OPTS}              &&
   make                              &&
   prepare_install                   &&
   make    install                   &&
@@ -14,4 +15,4 @@
   install  -m  644  lib/uuid/libuuid.a  /usr/lib
   install  -m  644  lib/uuid/uuid.h     /usr/include/uuid
 
-)  >  $C_FIFO  2>&1
+)  >  ${C_FIFO}  2>&1
