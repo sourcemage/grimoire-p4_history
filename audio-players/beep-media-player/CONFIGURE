@@ -1,10 +1,6 @@
-if  !  grep  -q  "SKINS"  $SPELL_CONFIG;  then
+config_query ONEPLUGINDIR "Enable one plugin directory?" n   &&
+config_query USERPLUGINDIR "Enable user plugin directory?" y &&
+config_query SIMD "Enable 3DNow-MMX?" n                      &&
+config_query OSS "Enable OSS output plugin" y                &&
+config_query SKINS "Download some skins?" y
 
-  if    query  "Download some skins?" y
-  then  SKINS=y
-  else  SKINS=n
-  fi
-
-  echo  "SKINS=$SKINS"  >>  $SPELL_CONFIG
-
-fi
