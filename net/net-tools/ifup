@@ -62,7 +62,7 @@ _do_route_up()
   # check if GATEWAY is set; gateway is set by PPP or other software in some
   # cases
   if [ "$GATEWAY" ]; then
-    route add default gateway $GATEWAY dev $DEV
+    route add default gw $GATEWAY dev $DEV
   fi 
 }
 
