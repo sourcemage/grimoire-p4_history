@@ -1,7 +1,4 @@
 (
-  cd $BUILD_DIRECTORY				&&
-  cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/slicker co slicker	&&
-  cd $SOURCE_DIRECTORY				&&
   make -f Makefile.cvs				&&
   ./configure  --prefix=${INSTALL_ROOT}/usr            \
                --sysconfdir=${INSTALL_ROOT}/etc/ssh    \
