@@ -1,0 +1,21 @@
+# check if postfix was installed before
+
+message "Probing for previously casted $SPELL..."
+
+unset alreadyThere
+
+if [ -e /etc/postfix/main.cf ]; then
+  alreadyThere=1
+fi
+
+if spell_installed $SPELL
+then
+  alreadyThere=1
+fi
+
+if [ -z "$alreadyThere" ]; then
+  message "Previous $SPELL install not detected."
+else
+  message "Previous $SPELL install detected."
+fi
+
