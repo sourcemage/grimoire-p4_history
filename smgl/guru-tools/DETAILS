@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.8
+         VERSION=0.9
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.acid-crash.org/~schabell/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20040203
-          MD5[0]=659f2eb93f5b879841f32e62b995dcd7
+         UPDATED=20040413
+          MD5[0]='f1774ece67e34e8de63006e6114fd1d8'
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -52,16 +52,6 @@ update_spell            - Typical parameters are "DETAILS -s -m -v 1.2.3",
 
 rebuildPackages.sh      - package rebuilding tool, helps with package file 
                           rescue. (by Paul)
-
-bashdoc.sh              - a script to convert javadoc-like commented script to 
-                          nicely formated html. (by Paul)
-
-src2html.sh             - creates an HTML version of the source and links instances 
-                          of functions with the functions in the bashdoc generated 
-                          HTML. It also modifies the bashdoc generated documentation 
-                          to link to the HTML'ised source. There is undefined 
-                          behaviour when a function is defined in more that one 
-                          source file. (by Paul)
 
 findLibDepends.sh       - Find missing dependancies of spells with ldd.(by Paul)
 
