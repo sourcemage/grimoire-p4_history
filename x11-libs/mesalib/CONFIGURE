@@ -1,25 +1,11 @@
-if  !  grep  -q  "CONFIGURE"  ${SPELL_CONFIG}
-  then
+config_query_option  MESALIB_DEBUG     "Enable full Mesa debugging?"  n  \
+                     "--enable-debug"  "--disable-debug"                 &&
 
-  if      query  "Enable full Mesa debugging?"  n
-    then  echo   'OPTS="${OPTS}  --enable-debug"'    >>  ${SPELL_CONFIG}
-    else  echo   'OPTS="${OPTS}  --disable-debug"'   >>  ${SPELL_CONFIG}
-  fi
+config_query_option  MESALIB_TRACE     "Enable Mesa trace toolkit?"   n  \
+                     "--enable-trace"  "--disable-trace"                 &&
 
-  if      query  "Enable Mesa trace toolkit?"  n
-    then  echo   'OPTS="${OPTS}  --enable-trace"'    >>  ${SPELL_CONFIG}
-    else  echo   'OPTS="${OPTS}  --disable-trace"'   >>  ${SPELL_CONFIG}
-  fi
+config_query_option  MESALIB_PROFILE   "Enable profiling?"            n  \
+                     "--enable-profile"  "--disable-profile"             &&
 
-  if      query  "Enable profiling?"  n
-    then  echo   'OPTS="${OPTS}  --enable-profile"'    >>  ${SPELL_CONFIG}
-    else  echo   'OPTS="${OPTS}  --disable-profile"'   >>  ${SPELL_CONFIG}
-  fi
-
-  if      query  "Enable extra optimizations?"  y
-    then  echo   'OPTS="${OPTS}  --enable-optimize"'   >>  ${SPELL_CONFIG}
-    else  echo   'OPTS="${OPTS}  --disable-optimize"'  >>  ${SPELL_CONFIG}
-  fi
-
-  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
-fi
+config_query_option  MESALIB_OPTIMIZE  "Enable extra optimizations?"  y  \
+                     "--enable-optimize"  "--disable-optimize"

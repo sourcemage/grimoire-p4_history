@@ -1,17 +1,18 @@
-           SPELL=MesaLib
+           SPELL=mesalib
          VERSION=5.0.2
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE=MesaLib-$VERSION.tar.bz2
          SOURCE2=libGLw.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL/Lib/}-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Mesa-$VERSION
    SOURCE_URL[0]=${SOURCEFORGE_URL}/mesa3d/${SOURCE}
   SOURCE2_URL[0]=${SOURCEFORGE_URL}/mesa3d/${SOURCE2}
           MD5[0]=1b68e16bffb3e95f79bc7617e6ac4f09
           MD5[1]=48e1ad0feab8512b9676497f7fdbb578
         WEB_SITE=http://mesa3d.sourceforge.net/
-      LICENSE[0]=GPL
-      LICENSE[1]=http://oss.sgi.com/projects/FreeB/
          ENTERED=20021120
          UPDATED=20030913
+      LICENSE[0]=GPL
+      LICENSE[1]=http://oss.sgi.com/projects/FreeB/
+       BUILD_API=2
            SHORT="Mesa implementation of the OpenGL(TM) API"
 cat << EOF
 Mesa is a 3-D graphics library with an API which is very similar to
