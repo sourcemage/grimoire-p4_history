@@ -2,6 +2,8 @@
 
 RUNLEVEL=S
 
+. /etc/init.d/smgl_init
+
 case $1 in
   start)    if [ -f /etc/sysctl.conf ] ; then
               echo "Running sysctl..."
