@@ -1,17 +1,12 @@
 (
 
-  ./configure  --build=${BUILD}      \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               ${OPTS}               &&
-  make                               &&
-  prepare_install                    &&
-  make    install                    &&
-  make    install-dev                &&
-
-  # Why doesn't 'make install' copy this library to where it belongs?
-
-  cp      libacl/.libs/libacl*  /usr/lib
+  ./configure  --build=${BUILD}                       \
+               --prefix=${INSTALL_ROOT}/usr           \
+               --sysconfdir=${INSTALL_ROOT}/etc       \
+               --localstatedir=${INSTALL_ROOT}/var    \
+               ${OPTS}                                &&
+  make                                                &&
+  prepare_install                                     &&
+  make    install install-dev install-lib
 
 )  >  ${C_FIFO}  2>&1
