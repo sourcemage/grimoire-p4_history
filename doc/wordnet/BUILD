@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/wordnet-1.7.1.config  &&
+  patch -p1 < $SCRIPT_DIRECTORY/wordnet-1.7.config  &&
 
   prepare_install                                   &&
 
