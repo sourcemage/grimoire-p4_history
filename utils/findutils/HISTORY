@@ -1,3 +1,12 @@
+2005-02-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.2.15
+	  No longer needs to use alpha.gnu.org; uses GNU_URL now
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* CONFIGURE: Query for readdir() optimizations (default off)
+	* DEPENDS: Optionally depends on gettext for Native Language Support
+	* BUILD: Cleanup OPTS and add flag from CONFIGURE
+
 2004-05-17 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: use default_build
 	* POST_REMOVE: infodir is /usr/share/info, not /usr/info
