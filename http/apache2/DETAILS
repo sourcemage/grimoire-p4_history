@@ -4,8 +4,9 @@
           MD5[0]='380694f7bb5643d65d9c30a48fc6d0ce'
       LICENSE[0]=APACHE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/httpd-$VERSION
-   SOURCE_URL[0]=http://www.apache.org/dist/httpd/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.knowledge.com/pub/mirrors/apache/dist/httpd/$SOURCE
+  SOURCE_URL[0]=$APACHE_URL/$SOURCE
+   SOURCE_URL[1]=http://www.apache.org/dist/httpd/$SOURCE
+#   SOURCE_URL[1]=ftp://ftp.knowledge.com/pub/mirrors/apache/dist/httpd/$SOURCE
         WEB_SITE=http://www.apache.org/
          ENTERED=20020422
          UPDATED=20030822
