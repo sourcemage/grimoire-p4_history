@@ -1,7 +1,7 @@
 depends nessus-libraries &&
 depends libnasl          &&
 
-optional_depends  "gtk+"  \
-                  ""      \
-                  ""      \
-                  "to built nessus client"
+optional_depends  "gtk+"                            \
+                  ""                                \
+                  "--disable-gtk"                   \
+                  "to build graphic nessus client"
