@@ -1,0 +1,3 @@
+if [[ $(uname -m) = x86_64 ]] && test  -f /lib64/ld-linux-x86-64.so.2 && [[ $HOST = "x86_64-unknown-linux-gnu" ]]; then
+  config_query_option MULTILIB "Disable multilib (say yes for pure 64-bit amd64 environment)?" y "--disable-multilib" ""
+fi

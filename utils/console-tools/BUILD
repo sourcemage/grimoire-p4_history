@@ -5,6 +5,8 @@ sedit "s/doc//"       Makefile.in  &&
 sedit "s/examples//"  Makefile.am  &&
 sedit "s/examples//"  Makefile.in  &&
 
+cp $SCRIPT_DIRECTORY/config.sub .
+
 export CFLAGS="-O1 $CFLAGS"           &&
 #for gcc3.3
 if [[ $(gcc -dumpversion)   == 3.3* ]] ; then
