@@ -2,6 +2,10 @@
 
 PROGRAM=/usr/sbin/cupsd
 RUNLEVEL=3
-NEEDS="+network +remote_fs"
+if [ -x /usr/sbin/ptal-init ]; then
+  NEEDS="hpoj +network +remote_fs"
+else
+  NEEDS="+network +remote_fs"
+fi
 
 . /etc/init.d/smgl_init

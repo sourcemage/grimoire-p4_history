@@ -1,3 +1,16 @@
+2003-10-08  Jason Flatt <jasonflatt@wizard.com>
+	* CONFIGURE: added to allow for disabling the parallel and/or USB ports
+	* BUILD: added to eliminate duplicate documentation install and
+	sysvinit script install
+	* DEPENDS: modified greatly to reflect reality and fill-in optional
+	components
+	* DETAILS: added MAKE_NJOBS=1 (doesn't compile when >1), updated
+	UPDATED due to all the changes
+	* TRIGGER: commented out trigger for zlib, and added one for cups
+	* init.d/hpoj: added for simpleinit compliance
+	* Makefile.patch: added to eliminate the sysvinit script install
+	* POST_INSTALL: added for comments at the end of cast
+
 2002-10-19  Jason Flatt <jasonflatt@wizard.com>
 
 		Forgot to update the UPDATED tag.
