@@ -1,7 +1,7 @@
            SPELL=qt-x11
          VERSION=3.3.3
-          SOURCE=qt-x11-free-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-x11-free-$VERSION
+          SOURCE=$SPELL-free-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-free-$VERSION
    SOURCE_URL[0]=ftp://ftp.trolltech.com/qt/source/$SOURCE
    SOURCE_URL[1]=ftp://ftp.silug.org/pub/qt/source/$SOURCE
    SOURCE_URL[2]=ftp://ftp.planetmirror.com.au/pub/trolltech/qt/source/$SOURCE
@@ -9,10 +9,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-x11-free-$VERSION
         WEB_SITE=http://www.trolltech.com/qt/x11.html
          ENTERED=20020410
          UPDATED=20040914
-      LICENSE[0]=QPL
+      LICENSE[0]=GPL
        BUILD_API=2
             DOCS="FAQ README README-QT.TXT"
-           SHORT="Qt simplifies writing and maintaining GUI applications."
+           SHORT="Qt simplifies writing and maintaining GUI applications"
 cat << EOF
 Qt is a toolkit for software developers. Qt simplifies the task of
 writing and maintaining GUI (graphical user interface) applications. Qt
