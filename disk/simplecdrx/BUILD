@@ -1,19 +1,2 @@
-( 
-
-  AMAKEV=`installed_version  automake  |  cut  -f  1,2  -d  .`
-
-  rm  -f  install-sh  missing  mkinstalldirs           &&
-  ln  -s  /usr/share/automake-${AMAKEV}/install-sh     &&
-  ln  -s  /usr/share/automake-${AMAKEV}/missing        &&
-  ln  -s  /usr/share/automake-${AMAKEV}/mkinstalldirs  &&
-
-  ./configure  --build=${BUILD}      \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               ${OPTS}               &&
-  make                               && 
-  prepare_install                    &&
-  make    install
-
-) > $C_FIFO 2>&1
+sedit  's:--copyright-holder:--from-code="UTF-8" --copyright-holder:'  po/Makefile.in.in  &&
+default_build
