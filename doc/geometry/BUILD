@@ -13,8 +13,8 @@
     mkdir  -p  $TEXMF/tex/latex/$SPELL                  &&
     mkdir  -p  /usr/doc/$SPELL                          &&
 
-    cp  $SPELL.sty  $TEXMF/tex/latex/$SPELL             &&
-    cp  $SPELL.cfg  $TEXMF/tex/latex/config/            &&
+    cp  $SPELL.sty  $TEXMF/tex/latex/$SPELL/            &&
+    cp  $SPELL.cfg  $TEXMF/tex/latex/$SPELL/            &&
 
     cp  *.dvi       /usr/doc/$SPELL
 
