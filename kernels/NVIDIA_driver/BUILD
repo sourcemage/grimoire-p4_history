@@ -12,8 +12,8 @@
   if [[ $AGPFW == "y" ]]; then sedit "s/NVreg_EnableAGPFW = 0;/NVreg_EnableAGPFW = 1;/" usr/src/nv/os-registry.c; fi &&
 
   cd usr/src/nv                 &&
-  if [[ $(uname -r|cut -d. -f1,2) == 2.5 ]]  ||
-     [[ $(uname -r|cut -d. -f1,2) == 2.6 ]]
+  if [[ $(installed_version linux|cut -d. -f1,2) == 2.5 ]]  ||
+     [[ $(installed_version linux|cut -d. -f1,2) == 2.6 ]]
   then
     patch  -p1  <  $SOURCE_CACHE/$SOURCE2  &&
     patch  -p0  <  $SOURCE_CACHE/$SOURCE3  &&
