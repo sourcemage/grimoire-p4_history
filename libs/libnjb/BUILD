@@ -1,16 +1,13 @@
 (
-  cd $SOURCE_DIRECTORY/src                   &&
-  patch <$SPELL_DIRECTORY/patch              &&
-  cd ..                                      &&
   ./configure   --host=${HOST}              \
                --build=${BUILD}             \
               --prefix=${INSTALL_ROOT}/usr  \
           --sysconfdir=${INSTALL_ROOT}/etc  \
        --localstatedir=${INSTALL_ROOT}/var  \
-                       $OPTS                 &&
-  make                                       &&
-  prepare_install                            &&
-  make    install
-
+                       $OPTS                &&
+  make                                      &&
+  prepare_install                           &&
+  make    install                           &&
+  ./hotplug.sh
 ) > $C_FIFO 2>&1
 
