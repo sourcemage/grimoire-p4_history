@@ -1,16 +1,17 @@
            SPELL=libdaemon
-         VERSION=0.6
+         VERSION=0.7
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.stud.uni-hamburg.de/~lennart/projects/${SPELL}/${SOURCE}
-          MD5[0]=2c6743fce06bba681deeb4592127b87e
-        WEB_SITE=http://www.stud.uni-hamburg.de/~lennart/projects/${SPELL}/
+          MD5[0]=aa1232c3e6d7a626dc993cb29007573a
+        WEB_SITE=http://0pointer.de/lennart/projects/libdaemon/
+   SOURCE_URL[0]=$WEB_SITE/${SOURCE}
       LICENSE[0]=GPL
          ENTERED=20031017
          UPDATED=20031017
            SHORT='a lightweight C library for writing UNIX daemons'
 cat << EOF
-libdaemon is a leightweight C library which eases the writing of UNIX daemons.
+libdaemon is a lightweight C library which eases the writing of UNIX daemons.
 It consists of the following parts:
 
 * A wrapper around fork() which does the correct daemonization procedure of a
