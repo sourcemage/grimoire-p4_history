@@ -38,4 +38,9 @@ optional_depends  Python                                 \
 optional_depends  SYSTEM-LOGGER                             \
                   "--with-syslog"                           \
                   "--without-syslog"                        \
-                  "enables logging though a syslog daemon"
+                  "enables logging though a syslog daemon"  &&
+
+optional_depends  tdb                             \
+                  ""                              \
+                  ""                              \
+                  "for Trivial DataBase support"
