@@ -1,8 +1,8 @@
-           SPELL=Producer
+           SPELL=OpenProducer
          VERSION=0.8.2-2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.andesengineering.com/Producer/Download/$SOURCE
+          SOURCE=${SPELL/Open/}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL/Open}-${VERSION}
+   SOURCE_URL[0]=http://www.andesengineering.com/Producer/Download/${SOURCE}
         WEB_SITE=http://www.andesengineering.com/Producer/index.html
          ENTERED=20030625
          UPDATED=20030625
