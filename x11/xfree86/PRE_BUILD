@@ -6,6 +6,8 @@ unpack         $SOURCE4  ${MD5[3]}  &&
 unpack         $SOURCE5  ${MD5[4]}  &&
 unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
+#recommended by xfree86.org
+mk_source_dir  $SOURCE_DIRECTORY.bld
 
 if [ -n "$XFREE86_APPLY_PATCH" ]; then
   cd $SOURCE_DIRECTORY &&

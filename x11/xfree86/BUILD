@@ -16,26 +16,32 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
+  #removing -Os from copied host.def bug#3694
+  #leaving the original file untouched 
+  #for when this gcc bug gets fixed (hgg09/08/03)
+  #
+  sedit s"/-Os//g" config/cf/host.def &&
 
   if  spell_installed  Linux-PAM
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                               &&
 
   #
-  # 'make  World' substitutes for the following
-  # 'make  Makefile'
-  # 'make  Makefiles'
-  # 'make  includes'
-  # 'make  depend'
-  # 'make'
+  #xfree86.org recommends building in a shadow tree [ it appears to fix a breakage 
+  #with gcc not setting up the include paths properly, previously include files weren't found if 
+  #xfree86 wasn't already installed (mentioned in bug#3694) (hgg09/08/03)]
   #
-  # If you want 'make  World' to stop on the first error
-  # encountered, use 'make  WORLDOPTS= World'
-  #
+  cd config/util &&
+  make -f Makefile.ini lndir &&
+  cp lndir $SOURCE_DIRECTORY.bld/  &&
+  cd $SOURCE_DIRECTORY.bld &&
+  lndir ../xc/ &&
 
-  make  World
-
+  make World
+  
   # Fix Bug #3486, which stops the build process
+  #[now appears to be evident on only one of my test machines, 
+  #the one with xfree86 already installed (hgg09/08/03)]
   #
 
   mkdir  lib/font/builtins/unshared                              &&
@@ -44,7 +50,6 @@ message  "Building XFree86 takes a very long time."
   #
   # Start compiling where the prior left off
   #
-
   make                                                           &&
   prepare_install                                                &&
   # the following is needed for pkgconfig to find the .pc files

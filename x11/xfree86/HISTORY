@@ -1,3 +1,10 @@
+2003-08-09  hgg <hgreig@bigpond.net.au>
+
+		Add shadow structure to BUILD as per xfree86.org's recommendations.Fixes bug where 
+		include paths aren't setup properly and make fails when it doesn't find the includes.
+
+		Sedit out -Os from /usr/src/xc/config/cf/host.def for bug#3694
+
 2003-08-08  hgg <hgreig@bigpond.net.au>
 
 		Change libpng to depends as xc/config/cf/linux.cf tells the build it is already there.
