@@ -26,19 +26,4 @@
   then  cp  $SCRIPT_DIRECTORY/pure-ftpd.conf /etc/pure-ftpd.conf
   fi
 
-  case  $FTPD_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/pure-ftpd.sh  /etc/init.d
-
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc0.d/K10pure-ftpd
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc1.d/K10pure-ftpd
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc2.d/K10pure-ftpd
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc6.d/K10pure-ftpd
-
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc3.d/S90pure-ftpd
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc4.d/S90pure-ftpd
-              ln  -sf  ../init.d/pure-ftpd.sh  /etc/rc5.d/S90pure-ftpd
-              ;;
-          *)  true  ;;
-  esac
-
 )
