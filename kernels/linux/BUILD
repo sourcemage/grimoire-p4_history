@@ -53,8 +53,8 @@ fi  &&
 # End fix
 #
 
-if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
-  cp $CONFIG_CACHE/kernel.config .config
+if  [  -f  $INSTALL_ROOT$CONFIG_CACHE/kernel.config  ]; then
+  cp $INSTALL_ROOT$CONFIG_CACHE/kernel.config .config
 fi
 
 if  query  "make oldconfig? "  n
@@ -117,7 +117,7 @@ backup_modules()  {
 
   unset LANG
   
-  cp  .config  $CONFIG_CACHE/kernel.config
+  cp  .config  $INSTALL_ROOT$CONFIG_CACHE/kernel.config
   run_make  dep               &&
   case  ${ARCH}  in
     sparc*)  run_make  vmlinux ||  exit  1 ;;
