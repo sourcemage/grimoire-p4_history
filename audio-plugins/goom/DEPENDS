@@ -1,2 +1,4 @@
-depends  xmms  &&
-depends  sdl
+if [ "$GOOM_XMMS" = "y" ]; then
+depends xmms &&
+depends sdl
+fi
