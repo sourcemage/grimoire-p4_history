@@ -1,0 +1,14 @@
+--- xine_check.c~	2003-12-19 12:52:03.000000000 +0100
++++ xine_check.c	2003-12-19 12:53:46.000000000 +0100
+@@ -276,6 +276,11 @@
+     return hc;
+   }
+ 
++#define SCSI_BLK_MAJOR(m) \
++  (((m) == SCSI_DISK0_MAJOR || \
++   ((m) >= SCSI_DISK1_MAJOR && (m) <= SCSI_DISK7_MAJOR)) || \
++   ((m) == SCSI_CDROM_MAJOR))
++
+   if (SCSI_BLK_MAJOR(major(st.st_rdev))) {
+     is_scsi_dev = 1;
+     set_hc_result(hc, XINE_HEALTH_CHECK_OK, "SKIPPED - Operation not supported on SCSI drives or drives that use the ide-scsi module.");
