@@ -27,7 +27,7 @@ echo  "yes"  |  ./configure                                             \
                              -prefix ${INSTALL_ROOT}/usr/lib/qt         \
                              -bindir ${INSTALL_ROOT}/usr/bin            \
                              -libdir ${INSTALL_ROOT}/usr/lib            \
-                             -docdir ${INSTALL_ROOT}/usr/doc/qt-x11     \
+                             -docdir ${INSTALL_ROOT}/usr/share/doc/qt-x11 \
                              -headerdir ${INSTALL_ROOT}/usr/include/qt  \
                              -datadir ${INSTALL_ROOT}/usr/share/qt      \
                              -thread                                    \
