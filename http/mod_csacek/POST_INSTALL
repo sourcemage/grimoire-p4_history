@@ -26,7 +26,3 @@ fi
 echo -en "<IfModule mod_csacek.c>\n    csacekEngine on\n" \
          "    csacekDefaultCharset iso-8859-2\n" \
    "</IfModule>\n" >> $DIR/httpd.conf
-
-if [ -x /etc/init.d/apache.sh ]; then
-  /etc/init.d/apache.sh restart
-fi

@@ -16,7 +16,3 @@ grep -v "LoadModule csacek_module" $DIR/httpd.conf  > $DIR/httpd.conf.tmp
 mv $DIR/httpd.conf.tmp $DIR/httpd.conf
 grep -v "AddModule mod_csacek.c" $DIR/httpd.conf > $DIR/httpd.conf.tmp
 mv $DIR/httpd.conf.tmp $DIR/httpd.conf
-
-if [ -x /etc/init.d/apache.sh ]; then
-  /etc/init.d/apache.sh restart
-fi
