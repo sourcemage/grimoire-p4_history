@@ -9,4 +9,8 @@ optional_depends  "lame"              \
 optional_depends  "libvorbis"        \
                   "--enable-vorbis"  \
                   ""                 \
-                  "for ogg/vorbis support"
+                  "for ogg/vorbis support"  &&
+optional_depends  "faad2"          \
+                  "--enable-faad"  \
+                  ""               \
+                  "for AAC audio support"
