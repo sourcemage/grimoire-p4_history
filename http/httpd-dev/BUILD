@@ -1,5 +1,7 @@
-# $Id: BUILD,v 1.5 2003/01/08 19:22:54 sergeyli Exp $
 (
+
+  # these modules are not enabled by default and not part of any dependency
+  ENABLE_MODULES=$(cat enable-modules | while read m; do echo -n " --enable-$m"; done) &&
 
   ./buildconf                         &&
   ./configure                         \
@@ -10,17 +12,7 @@
     --enable-layout=GNU               \
     --enable-so                       \
     --enable-mods-shared=all          \
-    --enable-cache                    \
-    --enable-case-filter              \
-    --enable-cgi                      \
-    --enable-charset-lite             \
-    --enable-deflate                  \
-    --enable-disk-cache               \
-    --enable-ext-filter               \
-    --enable-file-cache               \
-    --enable-isapi                    \
-    --enable-mem-cache                \
-    --enable-proxy                    \
+    $ENABLE_MODULES                   \
     $OPTS                             &&
   make                                &&
   prepare_install                     &&
