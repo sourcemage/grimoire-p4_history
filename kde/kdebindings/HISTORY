@@ -1,8 +1,14 @@
+2004-07-29 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Conflicts with pnet (not mono)
+	  /usr/bin/csant is what makes kdebindings fail
+	  Removed conflicts mcs as mcs is deprecated (and soon to be removed)
+	* HISTORY: Cleanup some formatting
+
 2004-07-02 Eric Sandall <eric@sandall.us>
 	* DETAILS: BUILD_API=2
 	* BUILD: Removed extra spaces
 	* DEPENDS: Removed dependency on kdebase (kdenetwork depends on it)
-	Removed dependency on pnet (not really needed, verified by Schabell)
+	  Removed dependency on pnet (not really needed, verified by Schabell)
 
 2004-07-01 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Removed "--with-java" as finally took the time to
@@ -16,13 +22,13 @@
 
 2004-06-09 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 3.2.3
-	SOURCE_URL now uses $VERSION instead of hard-coded
-	Make SHORT shorter
+	  SOURCE_URL now uses $VERSION instead of hard-coded
+	  Make SHORT shorter
 
 2004-05-28 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: versions 3.2.90 /  3.2.2
-	allow use of devel or stable version
-	BUILD_API=2
+	  allow use of devel or stable version
+	  BUILD_API=2
 	* BUILD: simplify
 	* CONFIGURE: add
 	* DEPENDS: add optional JAVA
