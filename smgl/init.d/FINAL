@@ -35,5 +35,25 @@ do if [ -f $i ] ; then
   sedit  "/\/etc\/inittab/D"  $i
   fi
 done
+
+#
+# The next 3 sedits are to fix my (sandalle) update of init.d to 2.1.4
+# where casting from a queue (or not using -r) will not reassign
+# these. Should be removed in about a month (~20040924)
+#
+if  [  grep  -q  "mountall\.sh"  /etc/sysconfig/facilities  ];  then
+  sedit  's:mountall.sh:mountall:'  /etc/sysconfig/facilities
+fi  &&
  
+if  [  grep  -q  "keymap\.sh"  /etc/sysconfig/facilities  ];  then
+  sedit  's:keymap.sh:keymap:'  /etc/sysconfig/facilities
+fi  &&
+
+if  [  grep  -q  "hostname\.sh"  /etc/sysconfig/facilities  ];  then
+  sedit  's:hostname.sh:hostname:'  /etc/sysconfig/facilities
+fi  &&
+#
+# End rename fix
+#
+
 true
