@@ -6,7 +6,7 @@
 
 2004-03-15 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: use --enable-kernel=2.6 instead of current for nptl, otherwise
-	prevents you from going back to earlier 2.6 kernels
+	  prevents you from going back to earlier 2.6 kernels
 	* DETAILS: changed UPDATED
 
 2004-03-10 hgg <hgreig@bigpond.net.au>
@@ -20,8 +20,8 @@
 
 2004-02-03 hgg <hgreig@bigpond.net.au>
 	* BUILD: modify behaviour for CROSS_INSTALL. uses regular paths to compile (or it hardcodes invalid paths)
-	but then installs to INSTALL_ROOT. Works for a x86 -> x86 crossinstall (iso procduction), will work for other 
-	"non-cross-compile" crossinstalls. true cross-compiling might need more work.
+	  but then installs to INSTALL_ROOT. Works for a x86 -> x86 crossinstall (iso procduction), will work for other 
+	  "non-cross-compile" crossinstalls. true cross-compiling might need more work.
 
 2004-01-31 hgg <hgreig@bigpond.net.au>
 	* DETAILS: update UPDATED, this needs testing by more than sandalle before it can be integrated into test.
@@ -34,58 +34,57 @@
 	* BUILD: check for saved libraries (from prepare_install) as an empty install log ruins the whole plan
 	* BUILD,CONFIGURE,DEPENDS: remove the headers copying, now depends on a glibc-kernel-headers spell
 	* locales-2.3.2,locales-2.3.3: needs seperate locales for each version
-	
+
 2004-01-13 hgg <hgreig@bigpond.net.au>
 	* DETAILS: change to use if ... else ... fi
 	* BUILD: provide 2nd locale file for 2.3.2 version, move links after prepare_install to a function outside 
-	the FIFO and just call the function (much cleaner/ more readable)
-	
+	  the FIFO and just call the function (much cleaner/ more readable)
+
 2004-01-11 hgg <hgreig@bigpond.net.au>
 	* BUILD: ldconfig will relink any alien glibc files in /lib or /usr/lib
-	ldconfig -X stops it relinking them.
+	  ldconfig -X stops it relinking them.
 
 2004-01-09 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* linux-2.6-header-fix.patch: add another fix, not redefining 'inline'
-	in compiler-gcc3.h
+	  in compiler-gcc3.h
 
 2004-01-04 hgg <hgreig@bigpond.net.au>
 	* locales: regenerated from the actual locale files and now using the proper native charset.
-	Now if you want to use UTF-8 for a locale that has it's own native charset, just change LANG to $LANG.UTF-8 in your profile
+	  Now if you want to use UTF-8 for a locale that has it's own native charset, just change LANG to $LANG.UTF-8 in your profile
 	* PREPARE,BUILD: ask if user wants UTF-8 locales (to fix bug with gtk+ apps) and
-	shuffle the localedef stuff for nicer output, add optional UTF-8 usage , fixes bug #5444
+	  shuffle the localedef stuff for nicer output, add optional UTF-8 usage , fixes bug #5444
 	* BUILD: more symlinks so normal system is maintained during the make install stage
-	
+
 2003-12-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: copy the headers immediately after prepare_install
 	* BUILD: use the headers from currently running kernel
 	* BUILD, linux-2.6-headers-fix.patch: add a few more fixes, appears to be a good fix for fb.h 
-	I have tested with MPlayer SDL(needs an extra flag) directfb , libggi 
+	  I have tested with MPlayer SDL(needs an extra flag) directfb , libggi 
 	* DETAILS: add sourcemage mirror for the glibc 2.3.2 sscanf patch
 
 2003-12-16 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: moved --enable-kernel=current to nptl options (breaks
-	compilation for linuxthreads on linux-2.6.0-test11)
+	  compilation for linuxthreads on linux-2.6.0-test11)
 	* BUILD, linux-2.6-headers-fix.patch: added patch to fix some kernel
-	headers so they can be included by apps (only videodev.h and videodev2.h
-	so far)
+	  headers so they can be included by apps (only videodev.h and videodev2.h
+	  so far)
 	* locales: added UTF-8 locales
 
 2003-12-15 hgg <hgreig@bigpond.net.au>
 	* BUILD: change to use "if ... ; then ... ; fi" after prepare_install 
-	or make install is run even when make has failed. (more of same)
-	I should have thought that through before I tried to make it so lean and clean :(
-	
+	  or make install is run even when make has failed. (more of same)
+	  I should have thought that through before I tried to make it so lean and clean :(
 
 2003-12-14 hgg <hgreig@bigpond.net.au>
 	* DETAILS,PRE_BUILD,BUILD,PREPARE,CONFIGURE: Optional nptl (if running 2.6 kernel)
 	* DETAILS: nptl build seems to need distcc turned off, in this case better safe than sorry 
 	* BUILD: glibc is happiest installing from a few symlinks to the new libraries. BUILD now makes symlinks after 
-	prepare_install (while the old libs are still preloaded by sorcery) then reruns ldconfig 
-	so only the new version and symbols are used. "make install" then adjusts all symlinks to point to the correct version.
-	Version updates, or even architecture updates  should never fail tests or segfault now, 
-	"make install" is using the newset libs already, 
+	  prepare_install (while the old libs are still preloaded by sorcery) then reruns ldconfig 
+	  so only the new version and symbols are used. "make install" then adjusts all symlinks to point to the correct version.
+	  Version updates, or even architecture updates should never fail tests or segfault now, 
+	  "make install" is using the newset libs already, 
 	* glibc-nptl-fix-asserts.patch: A patch so /lib/libc.so.6 will report version strings and compile stats 
-	correctly if nptl is built
+	  correctly if nptl is built
 
 2003-12-01 Eric Sandall <eric@sandall.us>
 	* BUILD: Use INSTALL_ROOT
@@ -96,25 +95,25 @@
 
 2003-09-29 hgg <hgreig@bigpond.net.au>
 	* BUILD: Remove that hack, and edit BUILD to remove the files 
-	during prepare_install, re-add the export CC=gcc line 
-	needed for new install
+	  during prepare_install, re-add the export CC=gcc line 
+	  needed for new install
 
 2003-09-22 Eric D. Schabell <eschabell@sourcemage.org>
 	* BUILD: Patch for Build file, allows for tracking of two files
-	that were alien in glibc. (fix for iso team).
+	  that were alien in glibc. (fix for iso team).
 
 2003-08-31 hgg <hgreig@bigpond.net.au>
-	* TRIGGERS: Remove trigger "on_cast  gettext cast_self"
+	* TRIGGERS: Remove trigger "on_cast gettext cast_self"
 
 2003-07-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: Comment "unset LD_PRELOAD" so locale stuff is tracked
-	(Major version updates might require it later)
+	  (Major version updates might require it later)
 	* TRIGGERS: Add to TRIGGERS and update UPDATED in case libiconv
-	is installed then dispelled removing some of glibc's files.
+	  is installed then dispelled removing some of glibc's files.
 
 2003-07-08 Eric Sandall <eric@sandall.us>
-        * BUILD: Fixes a 'gcc not found' error during configure on some
-	systems
+	* BUILD: Fixes a 'gcc not found' error during configure on some
+	  systems
 
 2003-06-15 Eric Sandall <eric@sandall.us>
 	* BUILD/DETAILS: gcc 3.3 patch from LFS, thanks to Wolfgang
@@ -122,7 +121,7 @@
 2003-03-30 Julian v. Bock <julian@wongr.net>
 	* locales: fix some spelling errors.
 	* BUILD: remove unset LD_PRELOAD; remove -ffast-math from 
-	CFLAGS.
+	  CFLAGS.
 
 2003-04-08 M.L. <mlubrano@sourcemage.org>
 	* BUILD: Added $OPTS in BUILD.
@@ -141,7 +140,7 @@
 
 2002-12-10 Julian v. Bock <julian@wongr.net>
 	* CONFIGURE: source $SPELL_CONFIG if the user does not
-	reconfigure locales.
+	  reconfigure locales.
 
 2002-11-16 Julian v. Bock <julian@wongr.net>
 	* DEPENDS: add gettext dependency.
@@ -161,7 +160,7 @@
 
 2002-10-02 Julian v. Bock <julian@wongr.net>
 	* CONFIGURE: replace newlines locale list with spaces
-	(thanks to Robert Helgesson).
+	  (thanks to Robert Helgesson).
 
 2002-08-21 Julian v. Bock <julian@wongr.net>
 	* glibc-2.2.5-weak-alias.patch: add.
@@ -173,9 +172,10 @@
 
 2002-01-22 Kyle Sallee <cromwell@metalab.unc.edu>
 	* BUILD: Create patch for compiling and installing 
-	glibc 2.2.5. Also happy birthday to me.
+	  glibc 2.2.5. Also happy birthday to me.
 
 2002-01-11 Kyle Sallee <cromwell@metalab.unc.edu>
 	* BUILD: Added the saving old libs into a directory and 
-	exporting LD_LIBRARY_PATH with that directory. 
-	This should keep the make install from breaking.
+	  exporting LD_LIBRARY_PATH with that directory. 
+	  This should keep the make install from breaking.
+

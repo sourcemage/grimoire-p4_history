@@ -1,25 +1,25 @@
 2004-03-15 Laurent Wandrebeck <lwandrebeck@sourcemage.org>
-    * DETAILS: updated to 7.4.2
+	* DETAILS: updated to 7.4.2
 
 2004-02-27 Treeve Jelbert <treeve01@pi.be>
 	* PRE_BUILD: create postgres account
-	fixes bug #5786
+	  fixes bug #5786
 	* BUILD: use ${INSTALL_ROOT}
-	install docs and man to /usr/share/...
-	fixes bug #5553
-	change permissions on data directory
-	uses /var/lib/postgres/data
-	change message to reflect new location
-	remove 'unable to start message', as it is not true
-	fixes bugs #3698
+	  install docs and man to /usr/share/...
+	  fixes bug #5553
+	  change permissions on data directory
+	  uses /var/lib/postgres/data
+	  change message to reflect new location
+	  remove 'unable to start message', as it is not true
+	  fixes bugs #3698
 	* DETAILS: add DOCS=""
-	prevents duplicate documentation
+	  prevents duplicate documentation
 
 2004-01-10 Eric Sandall <eric@sandall.us>
 	* DETAILS: Looks like I got the wrong md5sum on that last update (thanks Jason!)...
 
 2003-12-30 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 7.4.1  (Bug #5447)
+	* DETAILS: Updated to 7.4.1 (Bug #5447)
 
 2003-11-17 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 7.4
@@ -29,19 +29,19 @@
 
 2003-10-15 Eric Sandall <eric@sandall.us>
 	* DETAILS: Removed first two SOURCE_URLs,
-	no longer valid
+	  no longer valid
 	* HISTORY: Cleaned to follow Guru Handbook
 
 2003-09-16 Eric D. Schabell <eschabell@sourcemage.org>
 	* init.d/postgresql.conf: Needs to point deeper to
-	data dir for startup.
+	  data dir for startup.
 
 2003-08-22 hgg <hgreig@bigpond.net.au>
 	* DETAILS: Update UPDATED purely for test grimoire integration.
 
 2003-08-10 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work
-	the way it is documented)
+	  the way it is documented)
 
 2003-08-01 Sergey Lipnevich <sergey@sourcemage.org>
 	* TRIGGERS: Add a trigger to cast after Python.
@@ -50,7 +50,7 @@
 	* init.d/postgresql: Fixed the init.d script
 
 2003-07-31 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 7.3.4  (Bug #3870)
+	* DETAILS: Updated to 7.3.4 (Bug #3870)
 
 2003-07-30 Seth Woolley <seth@tautology.org>
 	* DETAILS: init.d/postgresql: Updated to new init.d
@@ -63,7 +63,7 @@
 
 2003-05-01 Rob Verkuylen <rob@verkuylen.net>
 	* init.d/postgresql: Copied /init.d/prostgres.sh to /init.d/postgresql
-	Step 1/3 in bug#: 3115
+	  Step 1/3 in bug#: 3115
 
 2003-03-31 Eric Sandall <eric@sandall.us>
 	* BUILD: Updated to use sorcery's init.d install
@@ -78,15 +78,15 @@
 
 2002-12-01 Sergey Lipnevich <sergeyli@pisem.net>
 	* DEPENDS: Added Linux-PAM, unixODBC, openssl, krb5 to dependencies.
-	Added --enable-syslog to BUILD (syslog-type logging is
-	disabled by default, but this option makes it available).
+	  Added --enable-syslog to BUILD (syslog-type logging is
+	  disabled by default, but this option makes it available).
 
 2002-11-30 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 7.3.
 
 2002-10-13 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Cleaned up DEPENDS to match standards (also needed
-	so I could compile without tcl/tk support ;))
+	  so I could compile without tcl/tk support ;))
 
 2002-10-08 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 7.2.3.
@@ -97,7 +97,7 @@
 2002-09-22 Julian v. Bock <julian@wongr.net>
 	* secfix.patch: add. Thanks to Steven Pinkham.
 	* BUILD: apply patch; build always C++ interface; remove
-	bogus --with-libs option.
+	  bogus --with-libs option.
 	* DEPENDS: add.
 
 2002-08-27 Julian v. Bock <julian@wongr.net>
@@ -111,10 +111,10 @@
 
 2002-04-16 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 7.2.1; use $VERSION in SOURCE_URL.
-	changes submitted by Wandrebeck Laurent <low@mren2.univ-littoral.fr>.
+	  changes submitted by Wandrebeck Laurent <low@mren2.univ-littoral.fr>.
 
-2002-01-28 kongar
-	- added "make install-all-headers" line to BUILD script,
-	in order to install server side development headers, ie:
-	postgresql.h
+2002-01-28 kongar <anonymous@sourcemage.org>
+	* added "make install-all-headers" line to BUILD script,
+	  in order to install server side development headers, ie:
+	  postgresql.h
 

@@ -1,13 +1,13 @@
 2004-03-30 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: build with --enable-shared
-	export OPT so optimizations actually get used
+	  export OPT so optimizations actually get used
 	* DETAILS: updated UPDATED
 
 2004-02-10 Eric Sandall <eric@sandall.us>
-	* BUILD: kdebindings 3.2.0 installs  syntactically
-	invalid /usr/lib/python2.3/pydcop.py, which then causes
-	Python to fail to build. So we just move it out of the
-	way during a Python build and put it back, if it exists.
+	* BUILD: kdebindings 3.2.0 installs syntactically
+	  invalid /usr/lib/python2.3/pydcop.py, which then causes
+	  Python to fail to build. So we just move it out of the
+	  way during a Python build and put it back, if it exists.
 
 2004-01-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: added OPT="$CFLAGS", fixes bug #5545
@@ -31,15 +31,15 @@
 	* IDLE has been integrated back into the package.
 	* BUILD: Removed; no longer needed.
 	* More spells need triggers to cast after Python upgrade
-	when the version changes, because files in old
-	/usr/lib/pythonX.Y/site-packages/ become useless.
+	  when the version changes, because files in old
+	  /usr/lib/pythonX.Y/site-packages/ become useless.
 
 2003-07-25 hgg <hgreig@bigpond.net.au>
 	* BUILD: Add IDLE IDE to default Build
 
 2002-12-11 Sergey Lipnevich <sergeyli@pisem.net>
 	* BUILD: change to use default_build and take advantage
-	of all optimizations.
+	  of all optimizations.
 
 2002-10-28 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 2.2.2.
@@ -57,12 +57,12 @@
 	* CONFIGURE: remove.
 	* Python-tk.patch: remove.
 	* DEPENDS: make tk a simple optional dependency; remove CONFIGURE
-	related code.
+	  related code.
 	* BUILD: don't apply tk patch; remove CONFIGURE related code.
 
 2002-05-14 Julian v. Bock <julian@wongr.net>
 	* BUILD: add libpython2.2.1.a symlink as temporary fix for
-	some other configure files.
+	  some other configure files.
 
 2002-05-07 Julian v. Bock <julian@wongr.net>
 	* DEPENDS: change tcl-tk dependency to tk.
@@ -72,7 +72,7 @@
 
 2002-03-23 Julian v. Bock <julian@wongr.net>
 	* DETAILS: downgrade version to 2.2 since there are problems with
-	various other software packages.
+	  various other software packages.
 
 2002-03-19 Julian v. Bock <julian@wongr.net>
 	* DETAILS: update version to 2.2.1c1.

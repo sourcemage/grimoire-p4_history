@@ -1,35 +1,27 @@
-2003-07-07  Eric Sandall <eric@sandall.us>
+2003-07-07 Eric Sandall <eric@sandall.us>
+	* Moved CCACHE, DISTCC_HOSTS, and MAKE_NJOBS from PRE_BUILD
+	  to DETAILS and removed PRE_BUILD
+	* Added Jose's changes to HISTORY
 
-        Moved CCACHE, DISTCC_HOSTS, and MAKE_NJOBS from PRE_BUILD
-        to DETAILS and removed PRE_BUILD
+2003-07-06 Jose Bernardo B R Silva <josebernardo1@yahoo.com>
+	* STLport won't cast with multiple make jobs, so I added a
+	  PRE_BUILD file with MAKE_NJOBS=1
 
-        Added Jose's changes to HISTORY
+2003-02-12 Julian v. Bock <julian@wongr.net>
+	* STLport-4.5.3-gcc3.2.patch: remove.
+	* BUILD: don't apply patch; edit stlport/config/stl_gcc.h
+	  manually.
 
-2003-07-06  Jose Bernardo B R Silva <josebernardo1@yahoo.com>
+2002-11-27 Jose Bernardo B R Silva <josebernardo1@yahoo.com>
+	* Added another patch to be able to compile OO
 
-        STLport won't cast with multiple make jobs, so I added a
-        PRE_BUILD file with MAKE_NJOBS=1
+2002-10-26 Eric Sandall <eric@sandall.us>
+	* Added patch for STLport to compile with gcc 3.2.x with a patch
+	  from http://tushar.lfsforum.org/files/OpenOfficeFromScratch/
+	* Added use of our CFLAGS for optimizations
+	* Modified BUILD to have STLports headers included _before_
+	  gcc's
 
-2003-02-12  Julian v. Bock  <julian@wongr.net>
+2002-10-09 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-		* STLport-4.5.3-gcc3.2.patch: remove.
-		* BUILD: don't apply patch; edit stlport/config/stl_gcc.h
-		manually.
-
-2002-11-27  Jose Bernardo B R Silva <josebernardo1@yahoo.com>
-
-		Added another patch to be able to compile OO
-
-2002-10-26  Eric Sandall  <eric@sandall.us>
-
-		Added patch for STLport to compile with gcc 3.2.x with a patch
-		from http://tushar.lfsforum.org/files/OpenOfficeFromScratch/
-
-		Added use of our CFLAGS for optimizations
-
-		Modified BUILD to have STLports headers included _before_
-		gcc's
-
-2002-10-09  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE and MD5 fields.

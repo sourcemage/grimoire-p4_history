@@ -1,7 +1,7 @@
 2004-04-09 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 20040408
 	* BUILD: disable documentation patch
-	ensure that all commands have a &&
+	  ensure that all commands have a &&
 	* patches: rename
 
 2004-04-04 Geoffrey Derber <gderber@sourcemage.org>
@@ -10,42 +10,42 @@
 2004-03-30 Geoffrey Derber <gderber@sourcemage.org>
 	* BUILD: various fixes and updates
 	* CONFIGURE: fixes so that the options are
-	only stored to the $SPELL_CONFIG once, and not
-	each cast.
+	  only stored to the $SPELL_CONFIG once, and not
+	  each cast.
 	* CONFLICTS: added NVIDIA_headers (cheap fix
-	for bug #6271)
+	  for bug #6271)
 	* PRE_BUILD: added more variables to be set before BUILD
 
 2004-03-29 Geoffrey Derber <gderber@sourcemage.org>
 	* wine-20040309-defaultcfg.patch, wine-20040309-documentation.patch, 
-	wine-20040309-initial.patch, wine-20040309-winelauncher.patch: added,
-	should make it easier to generate a config / registry for users who don't
-	have one already by copying the default to their own .wine directory.
+	  wine-20040309-initial.patch, wine-20040309-winelauncher.patch: added,
+	  should make it easier to generate a config / registry for users who don't
+	  have one already by copying the default to their own .wine directory.
 
 2004-03-28 Geoffrey Derber <gderber@sourcemage.org>
 	* CONFIGURE: set default fake_C to '/var/wine' since
-	wine installs stuff to '/usr/share/wine' now.
-	Added global (root) only install option.
-	Added a potential local (~/.wine/fake_C) install.
-	Uncomment code to in CONFIGURE to use.
+	  wine installs stuff to '/usr/share/wine' now.
+	  Added global (root) only install option.
+	  Added a potential local (~/.wine/fake_C) install.
+	  Uncomment code to in CONFIGURE to use.
 	* POST_BUILD: renamed POST_INSTALL
 	* POST_INSTALL: fixed registry creation problem.
-	regedit no longer used.
+	  regedit no longer used.
 
 2004-03-24 Treeve Jelbert <treeve01@pi.be>
 	* BUILD: fix wine build problem regarding LDFLAGS
 
 2004-03-24 Geoffrey Derber <gderber@sourcemage.org>
 	* BUILD: added "$CROOT" to the beginning of the list of directories to create
-			fixes bug 6341
+	  fixes bug 6341
 	* PRE_BUILD: added to set variables that will last through POST_BUILD
 	* POST_BUILD: added to fix problem of all files in the fake_C being tracked
-				fixes bug 6257
-		     now has a global registry through symlinks
-				fixes bug 6258
+	  fixes bug 6257
+	  now has a global registry through symlinks
+	  fixes bug 6258
 	* CONFIGURE: added global / local config options,
-		     more options for configuring the location
-		     of various drives (fake_C, floppy, CD-ROM)
+	  more options for configuring the location
+	  of various drives (fake_C, floppy, CD-ROM)
 
 2004-03-13 Geoffrey Derber <gderber@sourcemage.org>
 	* DETAILS: version=20040309
@@ -60,8 +60,8 @@
 	* CONFIGURE: Created to allow configure switches
 
 2004-02-14 Treeve Jelbert <treeve01@pi.be>
-        * DETAILS: version=20040213
-        * DETAILS: add Sourceforge as an alternative url
+	* DETAILS: version=20040213
+	* DETAILS: add Sourceforge as an alternative url
 
 2004-01-22 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 20040121
@@ -87,7 +87,7 @@
 	* DETAILS: Updated to 20030408
 
 2003-03-29 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 20030318  (Bug #2849)
+	* DETAILS: Updated to 20030318 (Bug #2849)
 
 2003-03-03 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Fixed error is DETAILS file
@@ -98,7 +98,7 @@
 	* HISTORY: Reformated this file
 
 2003-01-05 Eric Sandall <eric@sandall.us>
-	* DETAILS: Updated to 20021219  (Bug #2009)
+	* DETAILS: Updated to 20021219 (Bug #2009)
 
 2002-11-26 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021125
@@ -106,12 +106,10 @@
 2002-11-08 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021031
 
-2002-10-24  Eric Schabell <eschabell@sourcemage.org>
+2002-10-24 Eric Schabell <eschabell@sourcemage.org>
 	* BUILD: rm patch from top of build, was failing, have been two version 
-	bumps since patch introduced so am assuming it has no longer the desired affect.
-	Included here so that it can be easilly replaced should I be wrong:
-
-*********************************************************
+	  bumps since patch introduced so am assuming it has no longer the desired affect.
+	  Included here so that it can be easilly replaced should I be wrong:
 
 patch -p0 << EOF
 
@@ -124,17 +122,18 @@ patch -p0 << EOF
 static void xs_init(void)
 
 {
-	* <files(s)>: extern void boot_wine(CV *cv);
-
-+    extern my_perl;
-	* <files(s)>: newXS("wine::bootstrap", boot_wine,__FILE__);
+ * <files(s)>: extern void boot_wine(CV *cv);
+ 
+ extern my_perl;
+ * <files(s)>: newXS("wine::bootstrap", boot_wine,__FILE__);
 
 }
 
 EOF
 
-*********************************************************
-	 this fixes bug #1464.
+ 
+ this fixes bug #1464.
+
 
 2002-09-04 Joel Mayes <bluebird@optushome.com.au>
 	* DETAILS: Version bumped to 20021007

@@ -26,7 +26,7 @@
 
 2004-01-22 Unet <audio@sourcemage.org>
 	* BUILD: Enhanced version with modules.d and devfsd.conf 
-	configuration!
+	  configuration!
 
 2004-01-11 Unet <audio@sourcemage.org>
 	* DETAILS: Corrected md5, seems the tarball has changed
@@ -42,7 +42,7 @@
 
 2003-12-11 Unet <audio@sourcemage.org>
 	* sound.cards: fixed bug #5184, thans to Duane Malcolm for 
-	pointing it out
+	  pointing it out
 
 2003-12-07 Unet <audio@sourcemage.org>
 	* CONFIGURE: Fixed typo and dialog size
@@ -51,9 +51,9 @@
 
 2003-12-06 Unet <audio@sourcemage.org>
 	* CONFIGURE: Changed the file to allow multiple sound card
-	selection
+	  selection
 	* BUILD: Modified accordingly, plus changed to run ./snddevices
-	(was causing errors for MIDI)
+	  (was causing errors for MIDI)
 	* sound.cards: reformat -- WIP, but should work!
 
 2003-12-05 Unet <audio@sourcemage.org>
@@ -86,7 +86,7 @@
 2003-10-10 Treeve Jelbert <treeve01@pi.be>
 	* BUILD: Update to apply patch
 	* k2.4.23.diff: Add for linux-2.4.23-pre7 kernels
-	fixes bug #4451
+	  fixes bug #4451
 
 2003-10-03 Unet <audio@sourcemage.org>
 	* DETAILS: Bump to 0.9.7a!!!
@@ -95,10 +95,10 @@
 	* DETAILS: Bump to 0.9.7
 
 2003-09-21 Eric Sandall <eric@sandall.us>
-	* BUILD: Made to not depend on soundcore  (Bug #3480)
+	* BUILD: Made to not depend on soundcore (Bug #3480)
 
 2003-09-20 Eric Sandall <eric@sandall.us>
-	* BUILD: Remove unneeded sedit  (Bug #4382)
+	* BUILD: Remove unneeded sedit (Bug #4382)
 
 2003-09-17 Unet <audio@sourcemage.org>
 	* BUILD: Updated BUILD to correct bug #4275, Thanks to Robin Cook
@@ -108,24 +108,24 @@
 
 2003-07-30 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: don't install the init script provided by alsa-driver
-	only create the sound devices and modules.d/alsa if devfs isn't mounted
-	on /dev (still need a good modules.d/alsa for devfs)
-	removed POST_INSTALL, the message to compile the kernel with soundcore
-	module is not needed, since BUILD will fail without soundcore
-	added init script for the new init system
+	  only create the sound devices and modules.d/alsa if devfs isn't mounted
+	  on /dev (still need a good modules.d/alsa for devfs)
+	  removed POST_INSTALL, the message to compile the kernel with soundcore
+	  module is not needed, since BUILD will fail without soundcore
+	  added init script for the new init system
 
 2003-07-30 Eric Sandall <eric@sandall.us>
 	* DETAILS: Bump to 0.9.6
 
 2003-07-10 Eric Sandall <eric@sandall.us>
-	* DETAILS: Bump to 0.9.5  (Bug #3715)
+	* DETAILS: Bump to 0.9.5 (Bug #3715)
 
 2003-07-01 Eric Sandall <eric@sandall.us>
 	* BUILD: Removed pentium4 fix (Bug #2867) as gcc 3.3 fixes it
 
 2003-06-23 hgg <hgreig@bigpond.net.au>
 	* DETAILS: ARCHIVE="off" fix in bugzilla bug #1068, reverting change
-	13315, keeping 13321
+	  13315, keeping 13321
 	* PREPARE: Added to remove cache after fixing bug #1068
 
 2003-06-15 Eric Sandall <eric@sandall.us>
@@ -135,7 +135,7 @@
 	* BUILD: True fix for Pentium4 machines
 
 2003-06-04 Unet <unet@sourcemage.org>
-	* DETAILS: Bump to 0.9.4 
+	* DETAILS: Bump to 0.9.4
 
 2003-05-29 M.L. <mlubrano@sourcemage.org>
 	* BUILD: Fixed (bug #3237)
@@ -160,7 +160,7 @@
 
 2003-03-12 Unet <unet@sourcemage.org>
 	* DETAILS: Bumped to 0.9.1 first 0.9 final release - UPDATED is an 
-	obligation!
+	  obligation!
 
 2003-03-03 Unet <unet@sourcemage.org>
 	* DETAILS: Bumped to rc8
@@ -173,22 +173,22 @@
 
 2002-19-11 Unet <unet@sourcemage.org>
 	* BUILD: Fixed it - now should work with rc6... :) Also added
- 	sandalle(tm) optimization trick.
+	  sandalle(tm) optimization trick.
 
 2002-10-23 Unet <unet@sourcemage.org>
 	* BUILD: Added some chown and chmod so that
-	sound may be used "right out of the box" !	
+	  sound may be used "right out of the box" !
 
 2002-10-09 Andrew Stitt <afrayedknot@t.armory.com>
 	* POST_INSTALL: Added a brief message telling the
-	user to make sure they have soundcore
+	  user to make sure they have soundcore
 
 2002-09-17 Eric Sandall <eric@sandall.us>
 	* TRIGGERS: Added now that they're fixed
 
 2002-09-13 Eric Schabell <eschabell@sourcemage.org>
 	* DETAILS: Rolled back to version rc2 and fixed bugs #935 and
-	#919. Also updated md5.
+	  #919. Also updated md5.
 
 2002-09-12 Eric Sandall <eric@sandall.us>
 	* TRIGGERS: Removing until they work properly
@@ -196,15 +196,15 @@
 2002-09-08 Eric Sandall <eric@sandall.us>
 	* PROVIDES: Fixed Bug #912 (re-added provides, it _is_ needed).
 	* TRIGGERS: Added trigger to recast if linux is cast
-	Fixed Bug #776
+	  Fixed Bug #776
 
 2002-09-06 Eric Sandall <eric@sandall.us>
 	* DETAILS: Cleaned, added MD5, updated to 0.9.0rc3 (Bug #873)
 	* PROVIDES: Removed PROVIDES as alsa-drivers is no longer used
 	* BUILD: Use 'linux-new' as versioning, instead 
-	of linux.  Will change back once 'linux' is replaced 
-	by 'linux-new', added $OPTS to ./configure,
-	Fixed BUILD according to Bug #873
+	  of linux. Will change back once 'linux' is replaced 
+	  by 'linux-new', added $OPTS to ./configure,
+	  Fixed BUILD according to Bug #873
 
 2002-07-27 Unet <unet@sourcemage.org>
 	* DEPENDS: Added a dependancy to psmisc (bug #501)
@@ -217,6 +217,6 @@
 
 2002-03-15 Robin Cook <rcook@wyrms.net>
 	* BUILD: Added lines to set ownership of sound devices 
-	in /dev to root.audio.  Sill need a way to set ownership
-	of sound devices in /devices when the are created. 
+	  in /dev to root.audio. Sill need a way to set ownership
+	  of sound devices in /devices when the are created.
 

@@ -3,19 +3,19 @@
 	* xinetd: change location of binary
 	* BUILD: patch the makefile, add compilation flags
 	* mk.diff: add
-	fixes bugs #4807 and #4271
+	  fixes bugs #4807 and #4271
 	* HISTORY: reformatted
 
 2003-09-20 Eric Sandall <eric@sandall.us>
-	* init.d/vsftpd: Changed location of binary  (Bug #4271)
+	* init.d/vsftpd: Changed location of binary (Bug #4271)
 
 2003-08-10 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Revert on_dispel Linux-PAM cast_self 
-	(doesn't work the way it is documented)
+	  (doesn't work the way it is documented)
 
 2003-08-01 Seth Woolley <seth@tautology.org>
 	* xinetd: It's still installing to /usr/local/sbin, 
-	changed xinetd to match until we get it back to /usr/sbin
+	  changed xinetd to match until we get it back to /usr/sbin
 
 2003-07-26 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Update TRIGGERS for Linux-PAM
@@ -27,8 +27,9 @@
 	* DETAILS: fix md5 for SOURCE[0].
 
 2004-04-02 Eric Sandall <eric@sandall.us>
-	Fixes from Bearcat M. Sandor:
-	The VSFTP (very secure ftp daemon) had a few errors in the spell.  The first was that the source location was outdated and would not retrieve.  Also, the xinetd misrepresented the location of the executable as /usr/sbin, when it is really intalled in /usr/local/sbin
+	* Fixes from Bearcat M. Sandor:
+	  The VSFTP (very secure ftp daemon) had a few errors in the spell. The first was that the source location was outdated and would not retrieve. Also, the xinetd misrepresented the location of the executable as /usr/sbin, when it is really intalled in /usr/local/sbin
 
 2003-01-07 Eric Sesterhenn <snakebyte@gmx.de>
-	Spell created
+	* Spell created
+

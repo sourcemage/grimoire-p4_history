@@ -3,12 +3,12 @@
 
 2003-11-26 Eric Sandall <eric@sandall.us>
 	* BUILD: Quick fix for gaim to work (and anything
-	else which may need the mozilla libs as such) by adding
-	/usr/lib/mozilla to /etc/ld.so.conf
+	  else which may need the mozilla libs as such) by adding
+	  /usr/lib/mozilla to /etc/ld.so.conf
 
 2003-11-21 hgg <hgreig@bigpond.net.au>
 	* PREPARE,PRE_BUILD,BUILD,DEPENDS: modify and cleanup for more automatic version updates
-	(and close bug #4576)
+	  (and close bug #4576)
 	* BUILD: add --enable-extensions and iconv
 	* PROVIDES: add MOZILLA-BROWSER
 
@@ -17,16 +17,16 @@
 
 2003-11-04 hgg <hgreig@bigpond.net.au>
 	* PREPARE: sedit version string to current version incase of cast -c not cast -r or fresh install 
-	(damn I had this lying around for days)
+	  (damn I had this lying around for days)
 
 2003-10-28 Eric Sandall <eric@sandall.us>
-        * PROVIDES: Uppercase provides
+	* PROVIDES: Uppercase provides
 
 2003-10-21 hgg <hgreig@bigpond.net.au>
 	* BUILD,PROVIDES: remove /root/.mozconfig if found, 
-	manually copy nss headers so this spell can also provide MOZILLA-NSS for gaim
+	  manually copy nss headers so this spell can also provide MOZILLA-NSS for gaim
 	* PREPARE: touch $SOURCE_CACHE/$SOURCE if you already have a cvs bundle 
-	so you don't have to download 37MB of new sources
+	  so you don't have to download 37MB of new sources
 
 2003-10-18 Eric Sandall <eric@sandall.us>
 	* DETAILS, PREPARE: Updated to 0.7
@@ -40,16 +40,16 @@
 
 2003-08-18 hgg <hgreig@bigpond.net.au>
 	* DEPENDS, PREPARE: Added toolkit choosing to PREPARE
-	and modified DEPENDS accordingly
+	  and modified DEPENDS accordingly
 
 2003-08-14 hgg <hgreig@bigpond.net.au>
 	* BUILD: Added MozillaFirebird -> mozilla symlink for evolution2
-	And giving credit where credit is due "THANKS DEMONLORD"
+	  And giving credit where credit is due "THANKS DEMONLORD"
 
 2003-08-13 hgg <hgreig@bigpond.net.au>
 	* BUILD: First Woops-a-daisy didn't change the mozilla links.
-	This spell uses gtk+2 /xft and caches the cvs updates and 
-	doesn't install that annoying /root/.mozconfig file!
+	  This spell uses gtk+2 /xft and caches the cvs updates and 
+	  doesn't install that annoying /root/.mozconfig file!
 	* a new version of an old spell!
-	(Merged other peoples work)
+	  (Merged other peoples work)
 

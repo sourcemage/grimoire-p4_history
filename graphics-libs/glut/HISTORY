@@ -7,24 +7,25 @@
 	* DEPENDS: use X11-LIBS
 	* BUILD: remove libXi from linking phase, it breaks xfree86-libs
 
-2003-10-03  hgg <hgreig@bigpond.net.au>
+2003-10-03 hgg <hgreig@bigpond.net.au>
 	* DEPENDS: Change requires x11-libs to depends x11-libs
 
-2003-09-22  Eric Sandall <eric@sandall.us>
+2003-09-22 Eric Sandall <eric@sandall.us>
 	* PROVIDES: Provides GLUT
 	* CONFLICTS: Conflicts with freeglut
 
-2003-09-17  hgg <hgreig@bigpond.net.au>
+2003-09-17 hgg <hgreig@bigpond.net.au>
 	* DEPENDS: Change depends xfree86 to requires x11-libs
 
 2003-08-21 David Braaten <xiticix47@hotmail.com>
 	* DEPENDS: added DEPENDS (xfree86) bug 4019
 
-2003-06-17  12:13 PST  David Braaten <xiticix47@hotmail.com>
+2003-06-17 12:13 PST David Braaten <xiticix47@hotmail.com>
 	* TRIGGERS: added TRIGGERS per bug 3461
 
-2002-05-03  20:18 PST  Eric Sandall <sandalle@yahoo.com>
+2002-05-03 20:18 PST Eric Sandall <sandalle@yahoo.com>
 	* BUILD: Modified BUILD so that /usr/X11R6/bin is in your path, if it's not
-        already.  Required for imake and xmkmf
-        Copies all of /usr/X11R6/lib/X11/config to $SOURCE_DIRECTORY since
-        -I/usr/X11R6/lib/X11/config doesn't work properly.
+	  already. Required for imake and xmkmf
+	  Copies all of /usr/X11R6/lib/X11/config to $SOURCE_DIRECTORY since
+	  *I/usr/X11R6/lib/X11/config doesn't work properly.
+

@@ -1,10 +1,10 @@
 2004-02-25 Treeve Jelbert <treeve01@pi.be>
 	* BUILD: use create_account
-	fixes bug #5547
+	  fixes bug #5547
 
 2004-02-13 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 4.0.18
-	Removed MAINTAINER
+	  Removed MAINTAINER
 
 2004-01-16 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: fix compilation with NPTL glibc
@@ -19,7 +19,7 @@
 	* DETAILS: Updated to 4.0.16
 	* HISTORY: Formatted to Guru Handbook
 	* POST_INSTALL,PRE_REMOVE: Removed, we do not
-	automatically start/stop services anymore
+	  automatically start/stop services anymore
 
 2003-10-02 hgg <hgreig@bigpond.net.au>
 	* BUILD: add -DUSE_OLD_FUNCTIONS for older API compatibility
@@ -29,8 +29,8 @@
 
 2003-09-20 Seth Woolley <seth@tautology.org>
 	* BUILD: For some reason 4.0.15 didn't compile and
-	requires some change to add --enable-thread-safe-client
-	init script also fixed so that it works safely now.
+	  requires some change to add --enable-thread-safe-client
+	  init script also fixed so that it works safely now.
 
 2003-09-13 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: updated to 4.0.15
@@ -43,14 +43,14 @@
 
 2003-07-23 Eric Sandall <eric@sandall.us>
 	* ChangeLog: Removed (already integrated into HISTORY)
-	* DETAILS: Updated to 4.0.14  (Bug #3716)
+	* DETAILS: Updated to 4.0.14 (Bug #3716)
 
-2003-06-20 Sergey Lipnevich  <sergey@sourcemage.org>
+2003-06-20 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 3.23.57.
 
 2003-05-01 Rob Verkuylen <rob@verkuylen.net>
 	* init.d/mysql*: Copied /init.d/mysql.sh to /init.d/mysql
-	Step 1/3 in bug#: 3115
+	  Step 1/3 in bug#: 3115
 
 2003-03-26 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 3.23.56.
@@ -83,10 +83,9 @@
 2002-09-22 Julian v. Bock <julian@wongr.net>
 	* DEPENDS: add optional db dependency.
 	* BUILD: don't configure with --with-mysqld-ldflags=-all-static;
-	add explicit configure options for user name and config dirs;
-	add mysql user / group only if the server is built.
-
-	Thanks to Sergey Lipnevich.
+	  add explicit configure options for user name and config dirs;
+	  add mysql user / group only if the server is built.
+	* Thanks to Sergey Lipnevich.
 
 2002-08-16 Jayce^ <jason@infogenix.com>
 	* DETAILS: Version update to 3.23.52
@@ -95,28 +94,28 @@
 2002-06-18 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set VERSION to 3.23.51.
 
-2002-04-23 <dezmond@bardicgrove.org>
+2002-04-23 Anonymous <dezmond@bardicgrove.org>
 	* DETAILS: added two alternate URLs for download, as the one
-	mirror site that was listed was not responding; removed
-	outdated maintainter information; added workaround to mysql
-	sites using mixed-case instead of all-lower and major.minor
-	instead of major.minor.rev (FTP_NAME & FTP_VERSION), and
-	included them in the script (no more icky hardcodes!)
+	  mirror site that was listed was not responding; removed
+	  outdated maintainter information; added workaround to mysql
+	  sites using mixed-case instead of all-lower and major.minor
+	  instead of major.minor.rev (FTP_NAME & FTP_VERSION), and
+	  included them in the script (no more icky hardcodes!)
 
-20020114, mysql 3.23.47, Kongar
+2002-01-14 mysql 3.23.47 Kongar <anonymous@sourcemage.org>
 	* POST_INSTALL: Added script to start mysql daemon
 	* PRE_REMOVE: Added script to stop mysqld before dispel
 	* BUILD: Make the execution of server progs conditional
-	Added $OPTS to configure script in BUILD
-	Added an option whether to install ONLY the client
-	Added an option whether to start mysqld at boot, if ok,
-	create symlinks in rc*.d
+	  Added $OPTS to configure script in BUILD
+	  Added an option whether to install ONLY the client
+	  Added an option whether to start mysqld at boot, if ok,
+	  create symlinks in rc*.d
 	* CONFIGURE: The "mysqld boot" query is dependent on the answer of
-	"install client only" query
+	  "install client only" query
 
-2001-12-18, mysql 3.23.46, Kongar
+2001-12-18 mysql 3.23.46 Kongar <anonymous@sourcemage.org>
 	* BUILD: Added --enable-assembler flag to configure, enabling asm string functions
-	added --with-mysqld-ldflags=-all-static to configure, in order
-	to build mysql statically. Performance gain is approx 13%
-	chown -R mysql.mysql /var/lib/mysql for correct ownership
+	  added --with-mysqld-ldflags=-all-static to configure, in order
+	  to build mysql statically. Performance gain is approx 13%
+	  chown -R mysql.mysql /var/lib/mysql for correct ownership
 
