@@ -44,10 +44,9 @@ if  !  grep  -q  "GRUB_TARGET"  $SPELL_CONFIG;  then
   message  "GRUB is configured to install on $GRUB_TARGET."
 fi
 
-if  !  query  "Configure filesystems?"  n
+if  query  "Configure filesystems?"  n
 then
-  echo  OPTS="${OPTS}  --enable-ext2fs  --enable-fat  --enable-ffs  --enable-minix --enable-reiserfs  --enable-vstafs  --enable-jfs  --enable-xfs"  >>  ${SPELL_CONFIG}
-else
+  #echo  OPTS="${OPTS}  --enable-ext2fs  --enable-fat  --enable-ffs  --enable-minix --enable-reiserfs  --enable-vstafs  --enable-jfs  --enable-xfs"  >>  ${SPELL_CONFIG}
   configure_optional	'ext2fs'		'--enable-ext2fs'			'--disable-ext2fs'			'Enable ext2fs support in Stage 2?' y
   configure_optional	'fat'			'--enable-fat'				'--disable-fat'				'Enable FAT support in Stage 2?' y
   configure_optional	'ffs'			'--enable-ffs'				'--disable-ffs'				'Enable FFS support in Stage 2?' y
@@ -59,10 +58,9 @@ else
 fi
 configure_optional	'gunzip'		'--enable-gunzip'			'--disable-gunzip'			'Enable decompression in Stage 2?' y
 configure_optional	'md5-password'		'--enable-md5-password'			'--disable-md5-password'			'Enable MD5 password support in Stage 2?' y
-if  !  query  "Configure network support?" n
+if  query  "Configure network support?" n
 then
-  echo  OPTS="${OPTS}  --disable-packet-retransm --disable-pci-direct --disable-3c509 --disable-3c529 --disable-3c595 --disable-3c90x --disable-cs89x0 --disable-davicom --disable-depca --disable-eepro --disable-eepro100 --disable-epic100 --disable-3c507 --disable-exos205 --disable-ni5210 --disable-lance --disable-ne2100 --disable-ni6510 --disable-natsemi --disable-ni5010 --disable-3c503 --disable-ne --disable-ns8390 --disable-wd --disable-otulip --disable-rtl8139 --disable-sis900 --disable-sk-g16 --disable-smc9000 --disable-tiara --disable-tulip --disable-via-rhine --disable-w89c840 --disable-3c503-shmem --disable-3c503-aui --disable-compex-rl2000-fix --disable-diskless"  >>  ${SPELL_CONFIG}
-else
+  #echo  OPTS="${OPTS}  --disable-packet-retransm --disable-pci-direct --disable-3c509 --disable-3c529 --disable-3c595 --disable-3c90x --disable-cs89x0 --disable-davicom --disable-depca --disable-eepro --disable-eepro100 --disable-epic100 --disable-3c507 --disable-exos205 --disable-ni5210 --disable-lance --disable-ne2100 --disable-ni6510 --disable-natsemi --disable-ni5010 --disable-3c503 --disable-ne --disable-ns8390 --disable-wd --disable-otulip --disable-rtl8139 --disable-sis900 --disable-sk-g16 --disable-smc9000 --disable-tiara --disable-tulip --disable-via-rhine --disable-w89c840 --disable-3c503-shmem --disable-3c503-aui --disable-compex-rl2000-fix --disable-diskless"  >>  ${SPELL_CONFIG}
   configure_optional	'packet-retransmission'	'--enable-packet-retransmission'	'--disable-packet-retransmission'	'Enable packet retransission?' y
   configure_optional	'pci-direct'		'--enable-pci-direct'			'--disable-pci-direct'			'Access PCI directrly instead of using BIOS?' n
   configure_optional	'3c509'			'--enable-3c509'			'--disable-3c509'			'Enable 3Com509 driver?' n
@@ -101,10 +99,9 @@ else
   configure_optional	'compex-rl2000-fix'	'--enable-compex-rl2000-fix'		'--disable-compex-rl2000-fix'		'Specify this if you have a Compex RL2000 PCI?' n
   configure_optional	'diskless'		'--enable-diskless'			'--disable-diskless'			'Enable diskless?' n
 fi
-if  !  query  "Configure terminal support?" n
+if  query  "Configure terminal support?" n
 then
-  echo  OPTS="${OPTS} --disable-hercules --disable-serial"  >>  ${SPELL_CONFIG}
-else
+  #echo  OPTS="${OPTS} --disable-hercules --disable-serial"  >>  ${SPELL_CONFIG}
   configure_optional	'hercules'		'--enable-hercules'			'--disable-hercules'			'Enable hercules terminal support?' y
   configure_optional	'serial'		'--enable-serial'			'--disable-serial'			'Enable serial terminal support?' y
 configure_optional	'auto-linux-mem-opt'	'--enable-auto-linux-mem-opt'		'--disable-auto-linux-mem-opt'		'Pass Linux mem= option automatically?' n
