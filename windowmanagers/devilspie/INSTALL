@@ -8,7 +8,4 @@ if [ "$COPY" = "y" ] ; then
     echo "Installing config to $homedir..." &&
     chmod 0666 /$homedir/.devilspie.xml
   done
-fi &&
-mkdir -p ${INSTALL_ROOT}/usr/share/xsessions &&
-install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
-    ${INSTALL_ROOT}/usr/share/xsessions
+fi
