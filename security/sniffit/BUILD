@@ -1,5 +1,7 @@
 (
-  
+  #fix for bug 4138
+  sedit 's/_32_bit short/_32_bit/' sn_structs.h
+
   ./configure  --build=${BUILD}				\
  	       --prefix=${INSTALL_ROOT}/usr		\
 	       --sysconfdir=${INSTALL_ROOT}/etc		\
