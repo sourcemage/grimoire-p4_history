@@ -76,6 +76,11 @@
       chmod u+w $FileName
     done					&&
 
+# make a symlink for use by old programs
+  cd lib					&&
+  ln -sf libfbclient.so libgds.so		&&
+  cd ..						&&
+
 # log file
   mkdir -p /var/log/				&&
   touch  /var/log/firebird.log			&&

@@ -16,7 +16,7 @@ then
 else
   echo Assuming that Firebird server is not running
 #  create_group firebird
-  create_account firebird	&&
+  grep -q firebird /etc/passwd || create_account firebird &&
   default_pre_build	
 fi
 
