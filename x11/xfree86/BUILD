@@ -11,7 +11,7 @@ gzip -d < $SCRIPT_DIRECTORY/4.2.1-mit-shm-security.patch.gz | patch -p1 -E
 # xftgram patch. Thanks to Andrew Stitt
 
 message "${MESSAGE_COLOR} Aplying xftgram patch Thanks to Andrew Stitt ${DEFAULT_COLOR}"
-gzip -d < $SCRIPT_DIRECTORY/xftgram.patch.gz | patch -p1 -E
+gzip -d < $SCRIPT_DIRECTORY/xftgram.patch.gz | patch -p0 -E
 
 install_drm()  {
 
