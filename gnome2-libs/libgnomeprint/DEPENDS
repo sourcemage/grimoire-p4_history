@@ -1,6 +1,4 @@
 depends pango       &&
 depends libart_lgpl &&
 depends libbonobo   &&
-depends intltool    &&
-depends glib2       &&
-depends gnome-common2
+optional_depends  "cups"  "--with-cups"  "--without-cups"  "for direct cups printing support"

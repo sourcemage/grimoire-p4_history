@@ -1,14 +1,18 @@
            SPELL=docbook-dtd
-         VERSION=4.2.0
-	  SOURCE=docbook-xml-4.2.zip
+         VERSION=4.2
+          SOURCE=docbook-xml-4.2.zip
+         SOURCE2=docbkx412.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=http://www.docbook.org/xml/4.2/$SOURCE
    SOURCE_URL[1]=http://www.oasis-open.org/docbook/xml/4.2/$SOURCE
+  SOURCE2_URL[0]=http://www.docbook.org/xml/4.1.2/$SOURCE2
           MD5[0]=73fe50dfe74ca631c1602f558ed8961f
+          MD5[1]=900d7609fb7e6d78901b357e4acfbc17
         WEB_SITE=http://www.oasis-open.org
          LICENSE=http://www.oasis-open.org/who/intellectualproperty.shtml
          ENTERED=20020118
-         UPDATED=20030913
+         UPDATED=20040205
+     GATHER_DOCS=off
            SHORT="docbook-dtd"
 cat << EOF
 DocBook is an XML/SGML vocabulary particularly well suited to books

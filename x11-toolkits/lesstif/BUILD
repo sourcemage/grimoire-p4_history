@@ -1,4 +1,6 @@
 (
+  sedit 's:/LessTif/doc:/doc:'  doc/Makefile.in  &&
+
   ./configure  --prefix=/usr       \
                --sysconfdir=/etc   \
                --enable-production \
@@ -10,10 +12,6 @@
                $OPTS               &&
   make                             &&
   prepare_install                  &&
-  make    install                  &&
-### sorcery has trouble tracking mv-ed files ?
-  rm  -rf  /usr/doc/LessTif/        &&
-  cp  -af /usr/LessTif/  /usr/doc/LessTif/ &&
-  rm  -rf  /usr/LessTif/
+  make    install
   
 ) > $C_FIFO 2>&1

@@ -1,7 +1,14 @@
+install_docbook() {(
+  VER=$1            &&
+  cd  docbook-$VER  &&
+  mkdir  -p     ${INSTALL_ROOT}/usr/share/xml/docbook/xml-dtd-$VER  &&
+  cp     -r  *  ${INSTALL_ROOT}/usr/share/xml/docbook/xml-dtd-$VER
+)}
+
 (
 
   prepare_install  &&
-  mkdir  -p             /usr/share/sgml/docbook/xml-dtd-4.2  &&  
-  cp     -r  *          /usr/share/sgml/docbook/xml-dtd-4.2
+  install_docbook  $VERSION  &&
+  install_docbook  4.1.2
 
 ) > $C_FIFO 2>&1
