@@ -1,5 +1,1 @@
-if  !  grep  -q  'CONFIGURED=\"y\"'  ${DEPENDS_CONFIG}/samba;  then
-  config_query  AD  "Enable Active Directory Support ?\n(Requires OpenLDAP and krb5)"  n
-  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
-fi
-
+config_query  AD  "Enable Active Directory Support ?\n(Requires OpenLDAP and krb5)"  n
