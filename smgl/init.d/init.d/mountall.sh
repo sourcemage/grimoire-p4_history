@@ -54,6 +54,10 @@ start()
     ln -s /proc/self/fd/2 /dev/stderr
   fi
 
+  if [ -f /etc/raidtab ] ; then
+    raidstart  --all
+  fi
+
   echo "Mounting root file system read only..."
   mount   -n  -o  remount,ro  /
   evaluate_retval || exit 1
