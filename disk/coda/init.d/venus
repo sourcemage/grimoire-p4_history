@@ -1,77 +1,35 @@
-#!/bin/sh
+#!/bin/bash
 #
-# skeleton      Example file to build /etc/init.d scripts.
+# SMGL init script for venus
 #
-# Version:      @(#) /etc/init.d/skeleton 1.01 26-Oct-1993
-#
-# Author:       Miquel van Smoorenburg, <miquels@drinkel.nl.mugnet.org>
-#
+PROGRAM=/bin/false
+RUNLEVEL=3
+NEEDS="+remote_fs +network"
+MOUNTPOINT=/coda
 
-# chkconfig: 345 97 01
-# description: The Coda cache manager.
+. /etc/init.d/smgl_init
 
-prefix=/usr
-exec_prefix=${prefix}
-
-PATH=/sbin:/usr/sbin:/usr/local/sbin:$PATH
-export PATH
-
-# defaults
-pid_file=/usr/coda/venus.cache/pid
-mountpoint=/coda
-
-# overridden from the venus.conf
-[ -f ${exec_prefix}/sbin/codaconfedit ] && . `${exec_prefix}/sbin/codaconfedit venus.conf`
 
 [ -f ${exec_prefix}/sbin/venus ] || exit 0
 
-echon() {
-    if [ "`echo -n`" ] ; then
-        echo "$@"\c
-    else
-        echo -n "$@"
-    fi
+start()
+{
+    required_executable /usr/sbin/codaconfedit
+    required_executable /usr/sbin/coda-client-logrotate
+    required_executable /usr/sbin/venus
+    
+    # overridden from the venus.conf
+    [ -f ${exec_prefix}/sbin/codaconfedit ] && . `${exec_prefix}/sbin/codaconfedit venus.conf`
+
+    echo   "Starting Venus"
+    loadproc /usr/sbin/coda-client-logrotate
+    loadproc /usr/sbin/updatesrv
+    loadproc /usr/sbin/venus
 }
 
-
-# See how we were called.
-case "$1" in
-  start)
-	echon "Starting venus: "
-	if [ -f $pid_file ]; then
-		echo "$pid_file exists, venus already running?."
-	fi
-	[ -d /var/lock/subsys ] && touch /var/lock/subsys/venus.init
-	${exec_prefix}/sbin/coda-client-logrotate
-	${exec_prefix}/sbin/venus > /dev/null 2>&1
-	echo "done."
-    ;;
-  stop)
-	echon "Shutting down venus: "
-	if [ -f $pid_file ]; then
-		kill -TERM `cat $pid_file`
-		umount $mountpoint
-	fi
-	rm -f $pid_file
-	[ -d /var/lock/subsys ] && rm -f /var/lock/subsys/venus.init
-	echo "done."
-    ;;
-  hardstop)
-	echon "Killing venus: "
-	if [ -f $pid_file ]; then
-		kill -9 `cat $pid_file`
-		umount $mountpoint
-	fi
-	rm -f $pid_file
-	echo "done."
-    ;;
-    restart|force-reload)
-	echo "$1 not available"
-    ;;
-    *)
-	echo "Usage: $0 {start|stop|hardstop}"
-	exit 1
-    ;;
-esac
-
-exit 0
+stop()
+{
+    echo   "Stopping Venus"
+    killproc /usr/bin/venus
+    umount $MOUNTPOINT
+}
