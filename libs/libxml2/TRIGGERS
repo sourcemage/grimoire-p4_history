@@ -1,1 +1,3 @@
-on_cast Python cast_self
+if  grep -q libxml2:Python:on  /var/state/sorcery/depends;  then
+  on_cast  Python  cast_self
+fi
