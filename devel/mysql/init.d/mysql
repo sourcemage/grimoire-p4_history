@@ -21,7 +21,11 @@
 # SMGL-START:3 4 5:S90
 # SMGL-STOP:0 1 2 6:K10
 
-source /etc/init.d/functions
+PROGRAM=
+RUNLEVEL=3
+NEEDS="+remote_fs"
+
+. /etc/init.d/smgl_init
 
 basedir=
 
@@ -115,7 +119,12 @@ case "$mode" in
     then
       # Give extra arguments to mysqld with the my.cnf file. This script may
       # be overwritten at next upgrade.
-      $bindir/mysqld_safe --datadir=$datadir --pid-file=$pid_file &
+      echo "Starting mysqld_safe..."
+      iter=0
+      $bindir/mysqld_safe --datadir=$datadir --pid-file=$pid_file 2>&1 > /dev/null &
+      while [ ! -e $pid_file ] && [ $((iter++)) -lt 10 ] ; do sleep 1; echo -n . ; done
+      [ $((iter++)) -lt 11 ]
+      evaluate_retval
       # Make lock for RedHat / SuSE
       if test -w /var/lock/subsys
       then
@@ -124,7 +133,7 @@ case "$mode" in
     else
       echo "Can't execute $bindir/mysqld_safe from dir $basedir"
     fi
-	evaluate_retval
+    evaluate_retval
     ;;
 
   'stop')
@@ -140,7 +149,7 @@ case "$mode" in
       sleep 1
       while [ -s $pid_file -a "$flags" != aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ]
       do
-        [ -z "$flags" ] && echo "Wait for mysqld to exit\c" || echo ".\c"
+        [ -z "$flags" ] && echo -n "Wait for mysqld to exit" || echo -n "."
         flags=a$flags
         sleep 1
       done
@@ -157,7 +166,7 @@ case "$mode" in
     else
       echo "No mysqld pid file found. Looked for $pid_file."
     fi
-	evaluate_retval
+    evaluate_retval
     ;;
   *)
     # usage
