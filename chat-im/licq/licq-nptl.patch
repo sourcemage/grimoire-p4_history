@@ -1,0 +1,15 @@
+diff -Naur licq-1.2.7.orig/src/sighandler.c licq-1.2.7/src/sighandler.c
+--- licq-1.2.7.orig/src/sighandler.c	2004-06-22 20:48:22.014211181 +0200
++++ licq-1.2.7/src/sighandler.c	2004-06-22 20:50:03.260470913 +0200
+@@ -83,7 +83,11 @@
+     fprintf(stderr, "%s\n", res[0]);*/
+   }
+   fprintf(stderr, "Attempting to generate core file.\n");
++
++  #ifdef HAVE_PTHREAD_KILL_OTHER_THREADS_NP
++	// only available in LinuxThreads, not in NPTL
+   pthread_kill_other_threads_np();
++  #endif
+ #endif
+ 
+   abort();
