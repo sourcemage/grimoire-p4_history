@@ -1,15 +1,15 @@
-           SPELL=libgnomecups
-         VERSION=0.1.8
+           SPELL=gnome-cups-manager
+         VERSION=0.18
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='c79af9b092e561f0ca68d0118875eeda'
+          MD5[0]='ccaf1c64d9d3de0c7c03ec7183f85f3d'
       LICENSE[0]=LGPL
        BUILD_API=2
-         ENTERED=20020505
-         UPDATED=20040604
-           SHORT="Gnome library to CUPS system"
+         ENTERED=20031030
+         UPDATED=20040605
+           SHORT="Gnome cups printer manager"
 cat << EOF
-Gnome Library interface to CUPS system
+Gnome cups printer manager
 EOF
