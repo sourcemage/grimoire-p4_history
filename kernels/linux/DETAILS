@@ -32,6 +32,8 @@ do
   elif [[ $PATCH == pre* ]] || [[ $PATCH == rc* ]]; then
     RELEASE=${TREE}.$((${PRERELEASE#${TREE}.*}-1))  # Reduce Version number by one
     PREPATCH=$PATCH
+  elif [[ $PATCH == test* ]]; then
+    PREPATCH=$PATCH
   else
     echo "Failed parsing patches"
     exit 1
@@ -51,10 +53,17 @@ SOURCE6=" "
 SOURCE7=" "
 
 if [[ "${PREPATCH}" != "" ]]; then
-  SOURCE4="patch-${PRERELEASE}-${PREPATCH}.bz2"
-  SOURCE4_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/testing/patch-${PRERELEASE}-${PREPATCH}.bz2"
-  SOURCE5="${SOURCE4}.sign"
-  SOURCE5_URL="${SOURCE4_URL}.sign"
+  if [[ "$PREPATCH" == test* ]]; then 
+    SOURCE="linux-${PRERELEASE}-${PREPATCH}.tar.bz2"
+    SOURCE_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/linux-${PRERELEASE}-${PREPATCH}.tar.bz2"
+    SOURCE2="${SOURCE}.sign"
+    SOURCE2_URL="${SOURCE_URL}.sign"
+  else
+    SOURCE4="patch-${PRERELEASE}-${PREPATCH}.bz2"
+    SOURCE4_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/testing/patch-${PRERELEASE}-${PREPATCH}.bz2"
+    SOURCE5="${SOURCE4}.sign"
+    SOURCE5_URL="${SOURCE4_URL}.sign"
+  fi
 fi
 
 if [[ "${AC_PATCH}" != "" ]]; then
