@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.6
+         VERSION=0.7
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20031214
-          MD5[0]=a5f42110ec181716a2b96efe300506b6
+         UPDATED=20040203
+          MD5[0]="2586371c9076fdbb6f16d0178f3be68a"
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -15,40 +15,66 @@ There are various useful tools that have been written by Source Mage
 developers over the years. Here we have bundled them together for your
 Guru experience:
 
-  findSharedFiles        - A tool for finding files shared between spells.
-                            (by Rasmus Ory Nielsen) 
+findSharedFiles        - A tool for finding files shared between spells.
+                         (by Rasmus Ory Nielsen) 
 
-  gazeSpider [<item ...] - Validates urls for entire grimoire or if item
-                           give, for one or more items. Items may be
-                           either spells or sections.
+gazeSpider [<item ...] - Validates urls for entire grimoire or if item
+                         give, for one or more items. Items may be
+                         either spells or sections.
 
-  md5unpack <tarball>     - provides md5sum info from source tarball. 
+md5unpack <tarball>     - provides md5sum info from source tarball. 
 
-  urlwatch                - This script check a list of urls for changes inside 
-                            html page. Make a cronjob with this and you'll
-                            automaticaly receive notifications for changed
-                            urls by email... 
-                                 See urlwatch --help for help. (by M.L.).
-  spellify                -  takes some software-version.tar.{gz|bz2}, makes a
-                             #{MYSPELLS}/software and DETAILS in your local 
-														 spell dir ${MYSPELLS} and cp the tarball to spool 
-														 then scribe reindex ${MYGRIMOIRE}. Uses 
-														 /etc/sorcery/local/guruinfo for guru info.
+urlwatch                - This script check a list of urls for changes inside 
+                          html page. Make a cronjob with this and you'll
+                          automaticaly receive notifications for changed
+                          urls by email... 
+                          See urlwatch --help for help. (by M.L.).
 
-  summonsection           - This script is usefull for lazy section
-                            maintainters who get bored first deleting cached
-                            files, then summon'em one by one, by hand.
-                            Summonsection kills cached files, and summons
-                            new files automaticaly.
-                            (by M.L.).
+spellify                - takes some software-version.tar.{gz|bz2}, makes a
+                          #{MYSPELLS}/software and DETAILS in your local 
+                          spell dir ${MYSPELLS} and cp the tarball to spool 
+                          then scribe reindex ${MYGRIMOIRE}. Uses 
+                          /etc/sorcery/local/guruinfo for guru info.
 
-  upspell                 - This script updates a spell DETAILS and HISTORY.
-                            Just goes to the spell's directory and run it...
-														Uses /etc/sorcery/local/guruinfo for guru info.
+summonsection           - This script is usefull for lazy section
+                          maintainters who get bored first deleting cached
+                          files, then summon'em one by one, by hand.
+                          Summonsection kills cached files, and summons
+                          new files automaticaly. (by M.L.).
 
-  update_spell            - Typical parameters are "DETAILS -s -m -v 1.2.3",
-                            it only works on the first SOURCE for now.
-                              (from our old CVS repository)
+upspell                 - This script updates a spell DETAILS and HISTORY.
+                          Just goes to the spell's directory and run it...
+                          Uses /etc/sorcery/local/guruinfo for guru info.
+
+update_spell            - Typical parameters are "DETAILS -s -m -v 1.2.3",
+                          it only works on the first SOURCE for now.
+                          (from our old CVS repository)
+
+rebuildPackages.sh      - package rebuilding tool, helps with package file 
+                          rescue. (by Paul)
+
+bashdoc.sh              - a script to convert javadoc-like commented script to 
+                          nicely formated html. (by Paul)
+
+src2html.sh             - creates an HTML version of the source and links instances 
+                          of functions with the functions in the bashdoc generated 
+                          HTML. It also modifies the bashdoc generated documentation 
+                          to link to the HTML'ised source. There is undefined 
+                          behaviour when a function is defined in more that one 
+                          source file. (by Paul)
+
+findLibDepends.sh       - Find missing dependancies of spells with ldd.(by Paul)
+
+grimoireCircCheck.sh    - Check grimoires for circular dependancies and incidentaly, 
+                          missing spells. (by Paul)
+
+check_my_depends.sh     - Checks for dependancies that have been dispelled.(by Paul)
+
+dependsSquish.sh        - takes a list of spells and outputs the order in which to 
+                          cast them so dependancies are taken care of. (by Paul)
+
+checkGrimoire.sh        - checks the grimoire (or sections of it) for broken links. 
+                          (by Paul)
 
 If you have more to contribute, mail to maintainer.
 
