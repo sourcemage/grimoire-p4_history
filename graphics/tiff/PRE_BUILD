@@ -2,6 +2,7 @@ default_pre_build
 
 cd  $SOURCE_DIRECTORY
 
-if  unpack  $SOURCE2;  then
+# Fixes Bug #921
+if  [[ $SOURCE2 ]]  &&  unpack  $SOURCE2;  then
   cp  libtiff-lzw-compression-kit-1.3/tif_lzw.c  libtiff
 fi
