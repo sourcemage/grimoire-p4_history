@@ -1,0 +1,21 @@
+           SPELL=barcode
+         VERSION=0.98
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnu.org/pub/gnu/barcode/$SOURCE
+          MD5[0]=9fc4a2fe5c48052253bcf7a14ebe939f
+        WEB_SITE=http://ar.linux.it/software/#barcode
+         ENTERED=20040425
+         LICENSE=GPL
+           SHORT="GNU Barcode creator."
+cat << EOF
+GNU-barcode is meant to solve most needs in barcode
+creation with a conventional printer. It can create
+printouts for the conventional product-tagging
+standards: UPC-A, UPC-E, EAN-13, EAN-8, ISBN, and
+several others. Output is generated as either Postscript,
+Encapsulated Postscript, or PCL (other back-ends may be
+added if needed). The package is released as both a library
+and a command-line frontend, so that you can include
+barcode-generation into your application..
+EOF
