@@ -23,6 +23,10 @@ optional_depends mcrypt               \
                  '--with-mcrypt=/usr' \
                  '--without-mcrypt'   \
                  'for crypto library' &&
+optional_depends mcal               \
+                 '--with-mcal=/usr' \
+                 '--without-mcal'   \
+                 'for MCAL calendaring library' &&
 optional_depends curl                                      \
                  '--with-curl=/usr'                        \
                  '--without-curl'                          \
