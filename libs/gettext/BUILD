@@ -16,8 +16,8 @@ then cd gettext-tools/doc &&
      cd -     
 fi  &&
  #Remove libintl.h from old log files
-  sedit '/libintl.h/d' /var/log/sorcery/install/gettext* &&
-  sedit '/libintl.h/d' /var/log/sorcery/md5sum/gettext*  &&
+  (sedit '/libintl.h/d' /var/log/sorcery/install/gettext* || true) &&
+  (sedit '/libintl.h/d' /var/log/sorcery/md5sum/gettext*  || true) &&
   prepare_install                       &&
   make    install                       &&
  #install headers so libintl.h doesn't get overwritten
