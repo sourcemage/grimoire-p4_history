@@ -1,14 +1,16 @@
            SPELL=monodoc
-         VERSION=1.0.2
+         VERSION=1.0.4
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.go-mono.com/archive/$VERSION/$SOURCE
-          MD5[0]=a07ff5234241d893000340f1ea71d8ec
+          MD5[0]=
         WEB_SITE=http://www.go-mono.com/
          ENTERED=20040226
          UPDATED=20040226
       LICENSE[0]=GPL
-           SHORT="monodoc is the mono documentation browser"
+      MAKE_NJOBS=1
+       BUILD_API=2
+           SHORT="Mono documentation browser"
 cat << EOF
 monodoc is the mono documentation browser.
 It contains the documentation for the Mono class libraries, tools to produce
