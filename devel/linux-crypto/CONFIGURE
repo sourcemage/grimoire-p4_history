@@ -1,0 +1,8 @@
+if    query  "Configure linux kernel?"  n
+then  CONFIG_KERNEL=y
+else  CONFIG_KERNEL=n
+fi
+
+TEMP=`grep  -v  "CONFIG_KERNEL="          $SPELL_CONFIG`
+echo  "$TEMP"                         >   $SPELL_CONFIG
+echo  "CONFIG_KERNEL=$CONFIG_KERNEL"  >>  $SPELL_CONFIG

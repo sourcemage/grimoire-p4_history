@@ -1,0 +1,23 @@
+           SPELL=linux-crypto
+         VERSION=2.4.18-crypto-1
+          SOURCE=linux-2.4.18.tar.bz2
+         SOURCE2=patch-int-2.4.18.1.bz2
+         SOURCE3=loop-hvr-2.4.18.1.patch
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/$SOURCE
+   SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.4/$SOURCE
+  SOURCE2_URL[0]=http://prdownloads.sourceforge.net/cryptoapi/$SOURCE2
+  SOURCE3_URL[0]=http://prdownloads.sourceforge.net/cryptoapi/$SOURCE3
+        WEB_SITE=http://www.kerneli.org
+         ENTERED=20020421
+         UPDATED=20020421
+         ARCHIVE="off"
+           SHORT="linux with cryptoapi patches applied."
+cat << EOF
+Linux is a clone of the Unix kernel, written from scratch by Linus
+Torvalds with assistance from a loosely-knit team of hackers across the
+Net. It aims towards POSIX and Single UNIX Specification compliance. It
+has all the features you would expect in a modern fully-fledged Unix
+kernel, including true multitasking, virtual memory, shared libraries,
+demand loading, shared copy-on-write executables, proper memory
+management, and TCP/IP networking.
+EOF
