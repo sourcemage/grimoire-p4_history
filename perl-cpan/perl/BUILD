@@ -3,6 +3,8 @@
 
     CONFIG="$DEPENDS_CONFIG/perl_config.sh"
 
+    patch -p1 < $SCRIPT_DIRECTORY/installperl.patch  &&
+
     case  $OLD_CUSTOM  in
 
 	y|Y) cp $CONFIG ./config.sh  &&
@@ -20,10 +22,10 @@
 			    -Dusethreads -Ulocincpth -Dlibperl=libperl.so
 			;;
 	      esac
-    esac             &&
+    esac                                             &&
 
-    make             &&
-    prepare_install  &&
+    make                                             &&
+    prepare_install                                  &&
     make    install
 
 ) > $C_FIFO 2>&1
