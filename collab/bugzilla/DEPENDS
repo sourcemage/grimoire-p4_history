@@ -12,10 +12,13 @@ depends Template-Toolkit &&
 depends Data-ShowTable   &&
 depends Date-Parse       &&
 
+optional_depends patchutils '' '' 'for interdiff, patch differencing utility' &&
+
 optional_depends GD               '' '' 'for charting'                       &&
 optional_depends GD-Graph         '' '' 'for charting'                       &&
 optional_depends GD-Text          '' '' 'for charting'                       &&
 optional_depends Chart            '' '' 'for bug charting'                   &&
 optional_depends MIME-Tools       '' '' 'for contrib/bug_email.pl interface' &&
 optional_depends XML-Parser-Expat '' '' 'for bug data interchange'           &&
-optional_depends Net-LDAP         '' '' 'for LDAP authentication'
+optional_depends Net-LDAP         '' '' 'for LDAP authentication'            &&
+optional_depends PatchReader      '' '' 'for convenient patch presentation'

@@ -1,4 +1,11 @@
-depends  subversion-client                      &&
-depends  apr      '--with-apr=/usr'             &&
-depends  apr-util '--with-apr-util=/usr'        &&
-depends  wxGTK    '--with-wx-config=wx-config'
+depends apr      &&
+depends apr-util &&
+depends neon     &&
+depends SVN      &&
+depends wxGTK    &&
+depends libxslt  &&
+depends graphviz &&
+
+depends doxygen  '--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets-1.61' &&
+
+optional_depends cppunit '' '' 'for RapidSVN regression test execution'
