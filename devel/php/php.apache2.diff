@@ -1,24 +1,11 @@
---- sapi/apache2filter/php_functions.c.old	2002-07-14 19:17:52.000000000 -0700
-+++ sapi/apache2filter/php_functions.c	2002-07-14 19:17:28.000000000 -0700
-@@ -90,7 +90,7 @@
+--- sapi/apache2filter/php_functions.c.old	2002-10-08 18:15:39.000000000 -0700
++++ sapi/apache2filter/php_functions.c	2002-10-08 18:15:52.000000000 -0700
+@@ -93,7 +93,7 @@
  		ADD_STRING(method);
- 		ADD_LONG(mtime);
+ 		ADD_TIME(mtime);
  		ADD_LONG(clength);
--#if !MODULE_MAGIC_AT_LEAST(20020506,0)
-+#if !AP_MODULE_MAGIC_AT_LEAST(20020506,0)
+-#if MODULE_MAGIC_NUMBER < 20020506
++#if MODULE_MAGIC_NUMBER < 20020903
  		ADD_STRING(boundary);
  #endif
  		ADD_STRING(range);
---- sapi/apache2filter/sapi_apache2.c	2002-05-06 17:42:23.000000000 +0200
-+++ sapi/apache2filter/sapi_apache2.c.new	2002-08-17 19:21:59.000000000 +0200
-@@ -531,8 +531,8 @@
- 	ap_hook_post_config(php_apache_server_startup, NULL, NULL, APR_HOOK_MIDDLE);
- 	ap_hook_insert_filter(php_insert_filter, NULL, NULL, APR_HOOK_MIDDLE);
-     ap_hook_post_read_request(php_post_read_request, NULL, NULL, APR_HOOK_MIDDLE);
--	ap_register_output_filter("PHP", php_output_filter, AP_FTYPE_RESOURCE);
--	ap_register_input_filter("PHP", php_input_filter, AP_FTYPE_RESOURCE);
-+	ap_register_output_filter("PHP", php_output_filter, NULL, AP_FTYPE_RESOURCE);
-+	ap_register_input_filter("PHP", php_input_filter, NULL, AP_FTYPE_RESOURCE);
- }
- 
- AP_MODULE_DECLARE_DATA module php4_module = {
