@@ -1,14 +1,9 @@
 depends clibpdf		&&
 depends libxml2		&&
-optional_depends JAVA "" "-with-java=no" "Java front end"	&&
-optional_depends perl "" \
-		"--with-perl-lib=`ls /usr/lib/perl5`" \
-		 "Perl front end"				&&
-optional_depends Python	\
-		"--with-pythonver=`installed_version Python`" \
-		"--disable-python" \
-		"Python frontend"				&&
-optional_depends "PHP" "" "--disable-php" "php frontend"	&&
+optional_depends JAVA   "" "--with-java=no" "Java front end"	&&
+optional_depends perl   "" "" "Perl front end"			&&
+optional_depends Python	"" "--disable-python" "Python frontend"	&&
+optional_depends "PHP"  "" "--disable-php" "php frontend"	&&
 optional_depends "ODBC-MGR" "" "--disable-odbc" "ODBC database access"	&&
 optional_depends "mysql" "" "--disable-mysql" "mysql database support"	&&
 optional_depends "postgresql" "" "--disable-postgre" "postgresql database support"
