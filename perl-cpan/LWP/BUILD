@@ -1,3 +1,3 @@
-  echo 'y'               |
-  perl  Makefile.PL  -n &&
-  make                  &&
+echo 'y'               |
+perl  Makefile.PL  -n &&
+make
