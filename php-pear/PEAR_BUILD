@@ -4,9 +4,6 @@
   PEAR_CMD=$(which pear 2>/dev/null) &&
   [ -n "$PEAR_CMD" ] &&
   prepare_install &&
-  if pear list | egrep -q "\<$PEAR_PACKAGE\>"; then
-    pear uninstall "$PEAR_PACKAGE"
-  fi &&
-  pear install $SOURCE_CACHE/$SOURCE
+  pear install --force --nodeps $SOURCE_CACHE/$SOURCE
 
 ) >$C_FIFO 2>&1
