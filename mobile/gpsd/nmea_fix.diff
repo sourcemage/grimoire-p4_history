@@ -1,0 +1,14 @@
+--- nmea_parse.c.orig	2003-08-27 15:22:55.000000000 +0100
++++ nmea_parse.c	2004-03-01 22:46:23.608573208 +0000
+@@ -277,9 +277,10 @@
+ {
+     static char result[100];
+     char *p = sentence;
++    int ilen = strlen(sentence);
+ 
+     while (n-- > 0)
+-	while (*p++ != ',');
++	while (*p++ != ',' && ilen-- > 0);
+     strcpy(result, p);
+     p = result;
+     while (*p && *p != ',' && *p != '*' && *p != '\r')
