@@ -13,19 +13,19 @@ if [[ $(gcc -dumpversion)   == 3.3* ]] ; then
   sedit "s/hack\!\\\n/hack\!\\\n \\\ /g" contrib/codepage.c 
 fi  &&
   ./configure  --host=$BUILD         \
-               --prefix=/usr         \
+               --prefix=$INSTALL_ROOT/usr         \
 	       $OPTS		     &&
   make                               &&
   prepare_install                    &&
   make    install                    &&
   # put loadkeys in /bin so the init script can use it
-  mv  /usr/bin/loadkeys  /bin        &&
+  mv  $INSTALL_ROOT/usr/bin/loadkeys  $INSTALL_ROOT/bin        &&
 
 
   # Install man pages.
 
     for  (( COUNT=1 ; COUNT < 9 ; COUNT++ ));  do
-      cp  doc/man/*.$COUNT  /usr/man/man$COUNT  2> /dev/null
+      cp  doc/man/*.$COUNT  $INSTALL_ROOT/usr/man/man$COUNT  2> /dev/null
       true
     done
 
