@@ -153,22 +153,28 @@ update_yaboot()  {
 
 grub_image_entry() {
 
-local KERNEL=$(grep "^kernel" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+local KERNEL=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
 KERNEL=${KERNEL%\/vm*}
 
 local GROOT=$(grep "^root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
-
+if [[ $GROOT != "" ]]
+then
+	GROOT="root $GROOT"
+fi
 local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
 
-local KEXTRA=$(grep "^kernel" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
+local KEXTRA=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
 
-local KINITRD=$(grep "^initrd" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
-
+local KINITRD=$(grep "^initrd\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+if [[ $KINITRD != "" ]]
+then
+	KINITRD="initrd $KINITRD"
+fi
 cat << EOF
 title Source Mage GNU/Linux Kernel $VERSION
-root $GROOT
+$GROOT
 kernel $KERNEL/vmlinubz-$VERSION root=$KROOT $KEXTRA
-initrd $KINITRD
+$KINITRD
 EOF
 
 }

@@ -4,3 +4,5 @@ $SCRIPT_DIRECTORY/UPDATE_BOOTLOADER
 
 #if [[ "$TREE" == 2.6 ]] && [[ "$(gaze installed module-init-tools | fgrep 'not installed')" != "" ]] ; then cast module-init-tools ; fi
 # doesn't like the above line...
+
+cp ${SPELL_CONFIG}.p ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p

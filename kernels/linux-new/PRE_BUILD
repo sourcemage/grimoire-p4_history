@@ -27,19 +27,8 @@ then
 		patch -p${pval} <${patch}
 	done
 	make mrproper
-	if [[ $patchversion == "" ]]
-	then
-		append=$VERSION
-	else
-		append=$patchversion
-	fi
-	. ${CONFIG_CACHE}/details.defaults
-	[ -d ${BUILD_DIRECTORY}/linux-$append ] && 
-	rm -r ${BUILD_DIRECTORY}/linux-$append
-	mkdir ${BUILD_DIRECTORY}/linux-$append
-	mv ./* ${BUILD_DIRECTORY}/linux-$append/ 
-	LINUX_SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-$append
-	export LINUX_SOURCE_DIRECTORY
+	mk_source_dir ${LINUX_SOURCE_DIRECTORY}
+	mv ./* ${LINUX_SOURCE_DIRECTORY}/
 elif [[ "$mode" == "oldktree" ]]
 then
 	LINUX_SOURCE_DIRECTORY=$old_src_tree

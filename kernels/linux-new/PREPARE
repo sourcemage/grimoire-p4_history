@@ -43,24 +43,30 @@ arch_default()
 # do this with every -r command
 create_defaults()
 {
-	arch_default
-	kernel_arch=$KERNEL_ARCH
-	persistent_add kernel_arch
-	mode="newktree"
-	persistent_add mode
-	if [[ $RECONFIGURE ]]
+	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
-		reconf="true"
+		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
+		persistent_load
 	else
-		reconf="false"
+		arch_default
+		kernel_arch=$KERNEL_ARCH
+		persistent_add kernel_arch
+		mode="newktree"
+		persistent_add mode
+		if [[ $RECONFIGURE ]]
+		then
+			reconf="true"
+		else
+			reconf="false"
+		fi
+		persistent_add reconf
+		kver="LATEST_2_6"
+		persistent_add kver
+		patches=""
+		persistent_add patches
+		persistent_save
+		persistent_load
 	fi
-	persistent_add reconf
-	kver="LATEST_2_6"
-	persistent_add kver
-	patches=""
-	persistent_add patches
-	persistent_save
-	persistent_load
 }
 
 # dialog command works even if you add --nocancel as part of the arguments
@@ -568,7 +574,14 @@ old_src_menu()
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
+			[ -f ${old_src_tree}/.spell-config.p ] &&
+			cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p &&
+			persistent_load
 			persistent_add old_src_tree
+			mode="oldktree"
+			persistent_remove MAKEMODE
+			persistent_save
+			persistent_load
 			break
 		else
 			break
@@ -659,6 +672,20 @@ create_details()
 					echo "SOURCE_URL=$source_url"
 					;;
 			esac
+			if [[ $patchversion == "" ]]
+			then
+				case "$kver" in
+					LATEST*)
+						append=${!kver}
+						;;
+					*)
+						append=$kver
+						;;
+				esac
+			else
+				append=$patchversion
+			fi
+			echo "LINUX_SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
 			) > $detailsdefaults
 			;;
 #		oldktree)
