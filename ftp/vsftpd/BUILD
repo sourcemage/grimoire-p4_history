@@ -1,19 +1,28 @@
-(
-  patch -p0 <$SPELL_DIRECTORY/mk.diff 	&&
+#
+# We don't want to install into /usr/local, so
+# we'll just copy the files correctly
+#
+patch  -p0  <  ${SCRIPT_DIRECTORY}/mk.diff  &&
 
-  make                               &&
-  prepare_install                    &&
-  make    install 
-  
+#
+# Should be made to allow someone to say "n" even if
+# the package is installed, but this is the easy way
+# I'm doing it for now. :)
+#
+if  spell_installed  tcp_wrappers;  then
+  sedit  "s:undef VSF_BUILD_TCPWRAPPERS:define VSF_BUILD_TCPWRAPPERS:"  builddefs.h
+fi  &&
 
-) > $C_FIFO 2>&1 && (
+if  spell_installed  openssl;  then
+  sedit  "s:undef VSF_BUILD_SSL:define VSF_BUILD_SSL:"  builddefs.h
+fi  &&
 
-  if  [ ! -e /etc/vsftpd.conf ]
-  then  cp $SPELL_DIRECTORY/vsftpd.conf /etc
-  /bin/echo "secure_chroot_dir=/var/empty" >> /etc/vsftpd.conf
-  fi
+#
+# builddefs.h defaults to using Linux-PAM
+#
+if  !  spell_installed  Linux-PAM;  then
+  sedit  "s:define VSF_BUILD_PAM:undef VSF_BUILD_PAM:"  builddefs.h
+fi  &&
 
-  if [ ! -d /var/empty ]
-  then mkdir /var/empty
-  fi
-)
+make
+
