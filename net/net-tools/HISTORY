@@ -1,3 +1,15 @@
+2004-06-27 Eric Sandall <eric@sandall.us>
+	* DETAILS: BUILD_API=2
+	Made SHORT shorter
+	* BUILD: Convert to BUILD_API 2
+	Pass variables from CONFIGURE to ./configure.sh
+	No longer remove .temp files (not created anymore)
+	Do not copy $CONFIG_CACHE/config* files
+	* INSTALL: Add
+	* CONFIGURE: Convert to use Sorcery's config_query and remove
+	the old config hacks
+	* configure.sh,config.in: Remove
+
 2004-05-30 Robert Helgesson <rhelgesson@sourcemage.org>
 	* init.d/mountnetwork: Fixed bug #6883.
 	* init.d/mountnetwork.conf: Added. Allows configuration of which
