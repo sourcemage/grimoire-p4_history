@@ -1,0 +1,28 @@
+              SPELL=hotplug
+            VERSION=2002\_08\_26
+             SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+      SOURCE_URL[0]=$SOURCEFORGE_URL/linux-hotplug/$SOURCE
+            WEB_SITE=http://linux-hotplug.sourceforge.net/
+             LICENCE=GPL
+              MD5[0]="fa260642ca03b96ae9e7990dc331b380"
+             ENTERED=20020801
+             UPDATED=
+               SHORT="linux hotplug support tools"
+cat << EOF
+ Starting with kernel 2.4, hotplugging is a standard
+feature of GNU/Linux. Its goal is letting you plug in new devices and
+use them immediately. That means that users won't need to learn so much
+system administration; systems will at least partially autoconfigure
+themselves. Initially, hotplug included support for USB and PCI
+(Cardbus) devices, and could automatically configure some common network
+interfaces. Updated versions include IEEE 1394 (Firewire/i.Link) support
+and can download firmware to USB devices that need it. On mainframes,
+S/390 channel devices uses hotplugging to report device attach and other
+state change events. For laptops, newer kernels also include support for
+reporting docking station activity. 
+
+
+With this script, there is no need to mention any usb devices in
+/etc/modules
+EOF
