@@ -23,7 +23,7 @@ EOF
 
  find . -type f -name 'Makefile' -print | while read i ; do
    echo "Patching $i"
-   sedit "s:^CFLAGS    = -g -O2 -Wall -mpreferred-stack-boundary=2
+   sedit "s:^CFLAGS    = -g -O2 -Wall -mpreferred-stack-boundary=2 \
 \$(EXTRACFLAGS):CFLAGS    = -g -Wall $CF \$(EXTRACFLAGS):" $i
  done
 
