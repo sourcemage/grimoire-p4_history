@@ -1,4 +1,4 @@
-if [ "$CVS" = "y" ]; then
+if [ "$EVAS_CVS" = "y" ]; then
   ./autogen.sh   &&
   default_build
 else
