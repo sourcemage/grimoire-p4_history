@@ -1,6 +1,5 @@
 depends  bash               &&
 depends  binutils           &&
-depends  BOOTLOADER         &&
 depends  bzip2              &&
 depends  coreutils          &&
 depends  cpio               &&
@@ -58,6 +57,8 @@ optional_depends  "ccache"                                 \
                   ""                                       \
                   ""                                       \
                   "to accelerate compilation of upgrades"
+
+optional_depends  BOOTLOADER  ""  ""  "For a system boot loader"  &&
 
 optional_depends "nfs-utils" "" "" "NFS is the network file system , this spell provides client or server software"
 
