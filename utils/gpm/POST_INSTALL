@@ -1,5 +1,6 @@
-CONF=/etc/sysconfig/gpm
+CONF=${INSTALL_ROOT}/etc/sysconfig/gpm
 if [ -e $CONF ]; then
   grep  -q  MOUSE=MTYPE  $CONF  &&  sedit  "s:MTYPE:$MOUSE:"  $CONF
   grep  -q  DEV=MDEV     $CONF  &&  sedit  "s:MDEV:$DEV:"     $CONF
 fi
+true
