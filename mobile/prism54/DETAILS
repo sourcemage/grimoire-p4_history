@@ -1,14 +1,13 @@
            SPELL=prism54
-            DATE=$(date -d `date +%H`GMT +%Y%m%d) && [ $( date -d `date +%H`GMT +%H ) -le 12 ]
-# && (( DATE-- ))
-         VERSION=cvs$DATE
+         VERSION=1.2
           SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=isl3890
+         SOURCE2=1.0.4.3.arm
+       BUILD_API=2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prism54.org/pub/linux/snapshot/tars/${DATE::4}-${DATE:4:2}/${SOURCE}
-#  SOURCE2_URL[0]=http://prism54.org/firmware/${SOURCE2}
-  SOURCE2_URL[0]=
-          MD5[0]=IGNORE
+   SOURCE_URL[0]=http://prism54.org/pub/linux/testing/tars/2004-06/${SOURCE}
+  SOURCE2_URL[0]=http://prism54.org/~mcgrof/firmware/${SOURCE2}
+          MD5[0]=
+	  MD5[1]=
         WEB_SITE=http://prism54.org
          ENTERED=20031112
          UPDATED=20040220
