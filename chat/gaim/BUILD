@@ -12,6 +12,14 @@
                $OPTS                 &&
   make                               &&
   prepare_install                    &&
-  make    install
+  make    install                    &&
+
+  case $GAIM_E in
+   y|Y) cd plugins/gaim-e/           &&
+        make                         &&
+        make install                 &&
+        cd ../..
+        ;;
+  esac 
 
 ) > $C_FIFO 2>&1
