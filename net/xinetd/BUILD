@@ -1,16 +1,7 @@
-(
+export  LIBS=$LDFLAGS          # Makes stripping work
+OPTS="$OPTS --with-loadavg"
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               --with-loadavg        \
-               $OPTS                 &&
-  make                               &&
-  prepare_install                    &&
-  make    install
-
-)  >  $C_FIFO 2>&1  &&  (
+default_build  &&  (
 
   mkdir  -p  /var/log/xinetd
 
