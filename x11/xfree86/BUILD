@@ -36,6 +36,9 @@ message  "Building XFree86 takes a very long time."
   ### Apply 4.3.0.1 patch
   zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
 
+  ### Apply Xinput locking patch
+  patch  -p2  <  $SCRIPT_DIRECTORY/Xi-locking.patch  &&
+
   ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
