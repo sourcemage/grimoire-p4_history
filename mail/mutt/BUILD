@@ -16,10 +16,6 @@
     ( patch -p1 < $SCRIPT_DIRECTORY/patch-1.4.0.cd.trash_folder.3.1 || die )		
   fi					 						&&
 
-  patch Makefile.in  $SCRIPT_DIRECTORY/autotools-fix.patch  &&
-
-  chmod  a+x  missing                               &&
-  touch  README.UPGRADE                             &&
   ./configure  --build=$BUILD                       \
                --prefix=${INSTALL_ROOT}/usr         \
                --sysconfdir=${INSTALL_ROOT}/etc     \
