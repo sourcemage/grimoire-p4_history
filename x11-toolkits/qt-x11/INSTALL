@@ -8,4 +8,8 @@ install -m 0644 $SCRIPT_DIRECTORY/qt.sh   \
 
 # fixing the include dir problem
 sed -e 's/QTDIR)\/include/QTDIR)\/include\/qt/'                 \
-    -i ${INSTALL_ROOT}/usr/share/qt/mkspecs/default/qmake.conf 
+    -i ${INSTALL_ROOT}/usr/share/qt/mkspecs/default/qmake.conf  &&
+
+# The qmake program is installed incorrectly by make install.
+rm /usr/bin/qmake  &&
+install -m 0755 qmake/qmake /usr/bin
