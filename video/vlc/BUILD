@@ -2,12 +2,6 @@
 
   patch -p1 < $SCRIPT_DIRECTORY/ffmpeg.patch  &&
 
-  cd  mpeg2dec-$LIBMPEG2_VERSION          &&
-  ./configure  --disable-sdl --without-x  &&
-  make                                    &&
-  export OPTS="$OPTS --enable-libmpeg2 --with-libmpeg2-tree=./mpeg2dec-$LIBMPEG2_VERSION"  &&
-  cd  $SOURCE_DIRECTORY  &&
-
   if  [  "$JOYSTICK"  =  "y"  ];  then
     export OPTS="$OPTS --enable-joystick"
   fi  &&

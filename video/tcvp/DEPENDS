@@ -54,9 +54,12 @@ optional_depends  "X11-LIBS"         \
 optional_depends  "faad2"              \
                   "--enable-aac_dec"   \
                   "--disable-aac_dec"  \
-                  "for AAC audio support"
+                  "for AAC audio support"  &&
+optional_depends  "mpeg2dec"         \
+                  "--enable-mpeg2"   \
+                  "--disable-mpeg2"  \
+                  "for mpeg(1/2) video support"
 
 #those are also optional but can't be provided currently
 #vidix
-#mpeg2dec CVS (0.3.x?)
 #faac

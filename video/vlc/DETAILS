@@ -1,18 +1,13 @@
            SPELL=vlc
          VERSION=0.6.2
           SOURCE=$SPELL-$VERSION.tar.gz
-LIBMPEG2_VERSION=20030612
-         SOURCE2=mpeg2dec-$LIBMPEG2_VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.videolan.org/pub/videolan/$SPELL/$VERSION/$SOURCE
-  SOURCE2_URL[0]=http://www.videolan.org/pub/videolan/vlc/0.6.0/contrib/$SOURCE2
         WEB_SITE=http://www.videolan.org
           MD5[0]=f8532b0edc760a8cf71ff7b7261bf405
-          MD5[1]=31114ef0965a1f3ef8a941973d806958
       LICENSE[0]=GPL
          ENTERED=20011113
          UPDATED=20021220
-      MAINTAINER=v.merkatz@gmx.net
       MAKE_NJOBS=1
            SHORT="vlc is the videolan client multimedia player"
 cat << EOF
