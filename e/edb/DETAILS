@@ -1,13 +1,18 @@
            SPELL=edb
+if [ "$CVS" = "y" ]; then
          VERSION=cvs
-#        VERSION=1.0.3
           SOURCE=$SPELL-$VERSION.tar.bz2
-#         SOURCE=$SPELL-$VERSION.tar.gz
+  FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/edb
-#  SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
           MD5[0]=IGNORE
-#         MD5[0]=f2305d27a0a9cd666120ee3ad624b189
+else
+		 VERSION=1.0.3
+		  SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+		  MD5[0]=f2305d27a0a9cd666120ee3ad624b189 
+fi
       LICENSE[0]=BSD
         WEB_SITE=http://www.enlightenment.org
          ENTERED=20010922
