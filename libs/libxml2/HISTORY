@@ -1,127 +1,100 @@
-2003-09-09  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-10-21 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: Upgrade to 2.6.0
+	* HISTORY: reformatted
 
-		Upgrade to 2.5.11.
+2003-09-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 2.5.11.
 
-2003-08-16  Robin Cook <rcook@wyrms.net>
+2003-08-16 Robin Cook <rcook@wyrms.net>
+	* DETAILS: set VERSION to 2.5.10
 
-		* DETAILS: set VERSION to 2.5.10
+2003-08-10 Robin Cook <rcook@wyrms.net>
+	* DETAILS: set VERSION to 2.5.9
 
-2003-08-10  Robin Cook <rcook@wyrms.net>
+2003-08-02 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added optional_depends on Python
+	* TRIGGERS: made trigger conditional, only register if compiled with 
+Python support
 
-		* Details: set VERSION to 2.5.9
+2003-08-01 Sergey Lipnevich <sergey@sourcemage.org>
+	* TRIGGERS: Add a trigger to cast after Python.
 
-2003-08-02  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 2.5.8.
+	 Remove xmlsoft.org's mirror because it doesn't carry bz2.
 
-		added optional_depends on Python
-		made trigger conditional, only register if compiled with Python
-		support
+2003-05-18 Seth Woolley <seth@tautology.org>
+	* DETAILS: Fixed GNOME_URL mirror
 
-2003-08-01  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-04-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.7.
 
-		Add a trigger to cast after Python.
+2003-04-02 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.6.
 
-2003-07-09  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-03-26 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.5.
 
-		Upgrade to 2.5.8.
-		Remove xmlsoft.org's mirror because it doesn't carry bz2.
+2003-02-26 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.4.
 
-2003-05-18  Seth Woolley <seth@tautology.org>
+2003-02-12 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.3.
 
-		Fixed GNOME_URL mirror
+2003-02-05 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.2.
 
-2003-04-30  Julian v. Bock  <julian@wongr.net>
+2003-01-13 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.1; change SOURCE_URLs because of corrupted tarball on sourceforge.
 
-		* DETAILS: set VERSION to 2.5.7.
+2003-01-07 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 2.5.0.
 
-2003-04-02  Julian v. Bock  <julian@wongr.net>
+2002-12-14 Sergey Lipnevich <sergeyli@pisem.net>
+	* libxml2.patch: remove.
 
-		* DETAILS: set VERSION to 2.5.6.
+2002-12-12 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.4.30.
+	* BUILD: Removed since the patch is part of the source now.
 
-2003-03-26  Julian v. Bock  <julian@wongr.net>
+2002-12-06 Julian v. Bock <julian@wongr.net>
+!	* <files(s)>:  libxml2.patch: add.
+	* BUILD: add; apply patch.
+	* DETAILS: update UPDATED.
 
-		* DETAILS: set VERSION to 2.5.5.
+2002-11-28 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.28.
 
-2003-02-26  Julian v. Bock  <julian@wongr.net>
+2002-11-21 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.27.
 
-		* DETAILS: set VERSION to 2.5.4.
+2002-10-27 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: upgrade to 2.4.26 and checksum update.
 
-2003-02-12  Julian v. Bock  <julian@wongr.net>
+2002-10-14 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-		* DETAILS: set VERSION to 2.5.3.
+2002-10-03 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.25.
 
-2003-02-05  Julian v. Bock  <julian@wongr.net>
+2002-07-09 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.24.
 
-		* DETAILS: set VERSION to 2.5.2.
+2002-07-09 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.23.
 
-2003-01-13  Julian v. Bock  <julian@wongr.net>
+2002-05-28 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.22.
 
-		* DETAILS: set VERSION to 2.5.1; change SOURCE_URLs because
-		of corrupted tarball on sourceforge.
+2002-05-04 Rasmus Ory Nielsen <ron@ron.dk>
+	* DETAILS: update version to 2.4.21.
+	* DETAILS: added a mirror.
 
-2003-01-07  Julian v. Bock  <julian@wongr.net>
+2002-04-16 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.20.
 
-		* DETAILS: set VERSION to 2.5.0.
+2002-03-26 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.19.
 
-2002-12-14  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		* libxml2.patch: remove.
-
-2002-12-12  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		* DETAILS: Upgraded to 2.4.30.
-		* BUILD: Removed since the patch is part of the source now.
-
-2002-12-06  Julian v. Bock  <julian@wongr.net>
-
-		* libxml2.patch: add.
-		* BUILD: add; apply patch.
-		* DETAILS: update UPDATED.
-
-2002-11-28  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.28.
-
-2002-11-21  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.27.
-
-2002-10-27  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		* DETAILS: upgrade to 2.4.26 and checksum update.
-
-2002-10-14  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE and MD5 fields.
-
-2002-10-03  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.25.
-
-2002-07-09  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.24.
-
-2002-07-09  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.23.
-
-2002-05-28  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.22.
-
-2002-05-04  Rasmus Ory Nielsen  <ron@ron.dk>
-
-		* DETAILS: update version to 2.4.21.
-		* DETAILS: added a mirror.
-
-2002-04-16  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.20.
-
-2002-03-26  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.19.
-
-2002-03-19  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update version to 2.4.18.
+2002-03-19 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update version to 2.4.18.
