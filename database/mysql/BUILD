@@ -1,12 +1,12 @@
 OPTS="$MSQL_SERVER $MSQL_INNODB $OPTS"             &&
 
-if  [  "$MSQL_SERVER"  =  "--without-server"  ];  then
-  create_account mysql
-fi                                                 &&
+#if  [  "$MSQL_SERVER"  !=  "--without-server"  ];  then
+  create_account mysql                             &&
+#fi                                                 &&
 
-if [ "$DEVEL" == "y" ];then
-  sed -i "42s|/usr||" cmd-line-utils/libedit/makelist     
-fi                                                 &&
+#if [ "$DEVEL" == "y" ];then
+#  sed -i "42s|/usr||" cmd-line-utils/libedit/makelist     
+#fi                                                 &&
 
 LD_PRELOAD_OLD="$LD_PRELOAD"                       &&
 unset  LD_PRELOAD                                  &&
