@@ -1,37 +1,34 @@
-2003-08-30  Jason Flatt <jason@flattfamily.com>
+2003-10-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added sedit fix to add -lrt -lpthread to the fam daemon
+	linking (as described in
+	http://oss.sgi.com/projects/fam/mail_archive/200301/msg00011.html)
+	* DETAILS: changed UPDATED
 
-		Removed xinetd check from DEPENDS,  since fam always needs
-		portmap.
-		Changed init script name to smgl-fam.
+2003-08-30 Jason Flatt <jason@flattfamily.com>
+	* DEPENDS: Removed xinetd check from DEPENDS,  since fam always
+	needs portmap.
+	* init.d/: Changed init script name to smgl-fam.
 
-2003-08-30  Jason Flatt <jason@flattfamily.com>
+2003-08-30 Jason Flatt <jason@flattfamily.com>
+	* BUILD: Made /etc/rpc mod manditory (per Arwed).
+	* DEPENDS: Corrected DEPENDS to use the correct variable to check
+	xinetd status.
 
-		Made /etc/rpc mod manditory (per Arwed).
-		Corrected DEPENDS to use the correct variable to check xinetd
-		status.
+2003-08-30 Jason Flatt <jason@flattfamily.com>
+	* init.d/, xinetd.d/, CONFIGURE: Updated to new simpleinit-msb and
+	current way of handling xinetd.
 
-2003-08-30  Jason Flatt <jason@flattfamily.com>
+2003-07-17 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 2.6.10
 
-		Updated to new simpleinit-msb and current way of handling
-		xinetd.
+2003-05-14 Seth Woolley <seth@tautology.org>
+	* BUILD: Added unpack to BUILD for SOURCE2
 
-2003-07-17  hgg <hgreig@bigpond.net.au>
+2003-01-26 Eric Sandall <eric@sandall.us>
+	Added to devel/utils
+	* DEPENDS: Added libtool as dependency
+	* CONFIGURE: Changed CONFIGURE to say "by inetd" if
+	xinetd is not chosen
 
-		Update to 2.6.10
-
-2003-05-14  Seth Woolley <seth@tautology.org>
-
-		Added unpack to BUILD or SOURCE2
-
-2003-01-26  Eric Sandall <eric@sandall.us>
-
-		Added to devel/utils
-
-		Added libtool as dependency
-
-		Changed CONFIGURE to say "by inetd" if
-		xinetd is not chosen
-
-2003-01-26  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		created this spell
+2003-01-26 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, CONFIGURE, DEPENDS, DETAILS, HISTORY: created this spell
