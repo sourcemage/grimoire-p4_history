@@ -2,6 +2,9 @@
   patch -p1 < $SCRIPT_DIRECTORY/javafix.diff &&
   sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/share/doc/db|' dist/Makefile.in &&
 
+  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
+  patch -p0 < $SOURCE_CACHE/$SOURCE3 &&
+
   if echo "$OPTS" | grep -q 'enable-java'; then
     if [ -z $JAVA_HOME ]; then
       if spell_installed j2sdk; then
