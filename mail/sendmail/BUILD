@@ -5,6 +5,8 @@
   mkdir -p          /var/spool/mqueue
   chmod 1777        /var/spool/mqueue
   chown smmsp:smmsp /var/spool/mqueue
+  mkdir         /usr/doc/sendmail                               
+  mkdir         /usr/doc/sendmail/cf                            
   ln -s /var/spool/mqueue /var/spool/mail
 
   cd cf/cf
@@ -15,8 +17,6 @@
   sh Build 	                     				&&
   prepare_install                    				&&
   sh Build install                   				&&
-  mkdir         /usr/doc/sendmail    				&&
-  mkdir         /usr/doc/sendmail/cf 				&&
   cp -r cf/cf*  /usr/doc/sendmail    				&&
   cp -r contrib /usr/doc/sendmail    				
 
