@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S90
+# SMGL-STOP:0 1 2 6:K10
+#
 
 if [ ! -e /etc/pure-ftpd.conf ]; then
   echo "Warning: /etc/pure-ftpd.conf missing..."
