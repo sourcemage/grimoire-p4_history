@@ -3,12 +3,12 @@ fileprefix    = /etc/init.d/
 PATH          = /sbin:/bin:/usr/sbin:/usr/bin
 INIT_PATH     = runlevels:runlevels/%S:runlevels/%0:runlevels/%1:runlevels/%2:runlevels/%3:runlevels/%4:runlevels/%5:runlevels/%6
 
-tty1:linux:/sbin/agetty /devices/vc/1 9600
-tty2:linux:/sbin/agetty /devices/vc/2 9600
-tty3:linux:/sbin/agetty /devices/vc/3 9600
-tty4:linux:/sbin/agetty /devices/vc/4 9600
-tty5:linux:/sbin/agetty /devices/vc/5 9600
-tty6:linux:/sbin/agetty /devices/vc/6 9600
+tty1:linux:/sbin/agetty /dev/vc/1 9600
+tty2:linux:/sbin/agetty /dev/vc/2 9600
+tty3:linux:/sbin/agetty /dev/vc/3 9600
+tty4:linux:/sbin/agetty /dev/vc/4 9600
+tty5:linux:/sbin/agetty /dev/vc/5 9600
+tty6:linux:/sbin/agetty /dev/vc/6 9600
                                          		         
 finalprog     =
 quietrollback = yes
