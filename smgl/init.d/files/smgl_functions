@@ -17,14 +17,30 @@ COLUMNS=$(stty size)
 COLUMNS=${COLUMNS##* }
 COL=$[ $COLUMNS - 10 ]
 WCOL=$[ $COLUMNS - 30 ]
-SET_COL="echo -en \\033[${COL}G"
-SET_WCOL="echo -en \\033[${WCOL}G"
-CURS_UP="echo -en \\033[A"
+SET_COL="builtin echo -en \\033[${COL}G"
+SET_WCOL="builtin echo -en \\033[${WCOL}G"
+CURS_UP="builtin echo -en \\033[A"
 
-NORMAL="echo -en \\033[0;39m"
-SUCCESS="echo -en \\033[1;32m"
-WARNING="echo -en \\033[1;33m"
-FAILURE="echo -en \\033[1;31m"
+NORMAL="builtin echo -en \\033[0;39m"
+SUCCESS="builtin echo -en \\033[1;32m"
+WARNING="builtin echo -en \\033[1;33m"
+FAILURE="builtin echo -en \\033[1;31m"
+
+# log the messages hack
+echo() { 
+  builtin echo "$@"
+  INITSTORE="$INITSTORE$(builtin echo "$@")"
+
+  # correct for bash's insane strip trailing newline mumbo jumbo on command substitutions
+  TRAILINGNL=$(( $(builtin echo "$@" | wc -l) - $(builtin echo "$(builtin echo "$@")" | wc -l) ))
+  local i
+  for ((i=0; i <= $TRAILINGNL; i++)); do
+    INITSTORE="$INITSTORE
+"
+  done
+}
+export -f echo
+export INITSTORE
 
 print_error_msg()
 {
@@ -64,44 +80,52 @@ print_status()
     return 1
   fi
 
+  local SCRIPT="$(builtin echo $0 | sed -e 's!/.*/!!')"
+
+  local line
+  builtin echo "$INITSTORE" | while read line; do
+    [ -n "$line" ] && logger -p user.info -t init.d "$@: $SCRIPT: $line"
+  done
+  INITSTORE=
+
   $CURS_UP
 
   case "$1" in
     success)
       $SET_COL
-      echo -n "[  "
+      builtin echo -n "[  "
       $SUCCESS
-      echo -n "OK"
+      builtin echo -n "OK"
       $NORMAL
-      echo "  ]"
+      builtin echo "  ]"
       ;;
     warning)
       case "$2" in
         running)
           $SET_WCOL
-          echo "Already running"
+          builtin echo "Already running"
           $CURS_UP
           ;;
         not_running)
           $SET_WCOL
-          echo "Not running"
+          builtin echo "Not running"
           $CURS_UP
           ;;
       esac
       $SET_COL
-      echo -n "[ "
+      builtin echo -n "[ "
       $WARNING
-      echo -n "ATTN"
+      builtin echo -n "ATTN"
       $NORMAL
-      echo " ]"
+      builtin echo " ]"
       ;;
     failure)
       $SET_COL
-      echo -n "["
+      builtin echo -n "["
       $FAILURE
-      echo -n "FAILED"
+      builtin echo -n "FAILED"
       $NORMAL
-      echo "]"
+      builtin echo "]"
       ;;
   esac
 }

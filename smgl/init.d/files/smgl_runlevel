@@ -39,7 +39,7 @@ current_runlevels()
       # Runlevels start with %
       [ "${LINE:0:1}" = "%" ] && levels="$LINE $levels"
     done
-    echo $levels
+    builtin echo $levels
   }
 }
 
@@ -62,7 +62,7 @@ self_runlevels()
         . $n
       fi
     done
-    echo $levels
+    builtin echo $levels
   )
 }
 
@@ -102,7 +102,7 @@ get_var_from_file()
 
     # If the variable name matches then print the line and return
     if [ "${LINE:0:${#var}}" = "$var" ] ; then
-      echo "$LINE"
+      builtin echo "$LINE"
       return
     fi
   done < $file

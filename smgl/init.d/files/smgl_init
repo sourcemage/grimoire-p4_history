@@ -34,7 +34,7 @@ basename()
 
   # Strip trailing '/' chars
   while [ -z "${path##*/}" ] ; do
-    [ "$path" = "/" ] && { echo "/"; return; }
+    [ "$path" = "/" ] && { builtin echo "/"; return; }
     path="${path%/}"
   done
 
@@ -42,7 +42,7 @@ basename()
   path=${path##*/}
 
   # Print the result
-  echo $path
+  builtin echo $path
 }
 
 # Some variables used in this script
@@ -68,7 +68,7 @@ handle_needs()
   for service in $NEEDS ; do
     facility=$( expr $service : "+\(.*\)" )
 
-    [ "$facility" ] && service=$( eval echo "\$$facility" )
+    [ "$facility" ] && service=$( eval builtin echo "\$$facility" )
 
     if [ -z "$service" ] ; then
       print_error "Provider for facility $facility not configured."
@@ -91,7 +91,7 @@ handle_provides()
   # Find out if this is the script configured by the user to run when the
   # facility is requested.
 
-  parent_provides=$( eval "echo \$$PROVIDES" )
+  parent_provides=$( eval "builtin echo \$$PROVIDES" )
 
   if [ -z "$parent_provides" ] ; then
     # If some other script already managed to start then exit silently
