@@ -1,0 +1,7 @@
+if ! grep -q "MAILMAN_BOOT=" $SPELL_CONFIG; then
+
+	MAILMAN_BOOT=n
+	query "Invoke $SPELL during boot?" "y" && MAILMAN_BOOT=y
+	echo "MAILMAN_BOOT=${MAILMAN_BOOT}" >> $SPELL_CONFIG
+
+fi

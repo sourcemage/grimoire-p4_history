@@ -1,0 +1,5 @@
+crontab -u mailman -l >/tmp/mailman.cron 2>/dev/null
+crontab -u mailman -r                    2>/dev/null
+[ -x /etc/init.d/mailman ] && /etc/init.d/mailman stop
+
+true

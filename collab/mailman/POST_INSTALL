@@ -13,3 +13,5 @@ else
   message "\$prefix='/usr/share/mailman'"
   message "\$varprefix='/var/spool/mailman'"
 fi
+
+[ -x /etc/init.d/mailman ] && /etc/init.d/mailman start
