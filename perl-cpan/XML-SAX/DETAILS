@@ -3,15 +3,13 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.cpan.org/authors/id/M/MS/MSERGEANT/$SOURCE
+      MAKE_NJOBS=1
           MD5[0]="48bae3a1e80df83dd6b476d4ab8c5b88"
-      SOURCE_MD5=48bae3a1e80df83dd6b476d4ab8c5b88
-      SOURCE_LIC=
              MD5=$SOURCE_MD5
          LICENSE=$SOURCE_LIC
         WEB_SITE=http://search.cpan.org/search?dist=XML-SAX
          ENTERED=20020722
          UPDATED=20020722
-      MAINTAINER=sergeyli@pisem.net
            SHORT="Perl SAX2 XML Parser Framework"
 cat << EOF
 XML::SAX consists of several framework classes for using and building Perl SAX2
