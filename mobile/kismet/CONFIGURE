@@ -1,0 +1,16 @@
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+then
+
+#  if    query    "Use system libpcap (not recommended)?" n
+#  then  depends  libpcap  &&
+#        echo     SYS_PCAP=yes  >>  ${SPELL_CONFIG}
+#  else  echo     SYS_PCAP=no   >>  ${SPELL_CONFIG}
+#  fi  &&
+
+  if    query  "Install with suid so any user can run it?" n
+  then  echo   SUID=yes  >>  ${SPELL_CONFIG}
+  else  echo   SUID=no   >>  ${SPELL_CONFIG}
+  fi  &&
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+fi

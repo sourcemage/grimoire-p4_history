@@ -1,6 +1,17 @@
-2003-09-18  Jose Bernardo Silva <jbernardo@sourcemage.com>
-		Updated to 3.0.1 and added BUILD to get around
-		autoconf problems
+2004-02-26 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added dependency on autoconf  (Bug #6073)
+	Added dependencies on libxml2 and freetype2
+	Added optional dependencies on ncurses and ImageMagick
+	* CONFIGURE: Added (commented out) query to use system libpcap,
+	but it has problems (probably why it's not recommended ;)).
+	Added a query to install suid so any user can run it
+	* BUILD: Check for libpcap and suid options
+	* HISTORY: Formatted to Guru Handbook
 
-2003-05-04  Eric Womack <eric@sourcemage.com>
-		Spell Created
+2003-09-18 Jose Bernardo Silva <jbernardo@sourcemage.com>
+	* DETAILS: Updated to 3.0.1
+	* BUILD: Added to get around autoconf problems
+
+2003-05-04 Eric Womack <eric@sourcemage.com>
+	* Spell Created
+
