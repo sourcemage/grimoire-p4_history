@@ -3,10 +3,11 @@ requires webserver &&
 depends autoconf &&
 depends libtool &&
 depends bison &&
-depends apr '--with-apr=/usr'      &&
+depends apr '--with-apr=/usr' &&
 depends apr-util '--with-apr-util=/usr' &&
 depends neon '--with-neon=/usr' &&
 depends db '--with-berkeley-db' &&
+
 optional_depends swig             \
                  '--with-swig'    \
                  '--without-swig' \
