@@ -66,8 +66,5 @@ cp ${root}/.config ${INSTALL_ROOT}/boot/config-${append}
 ln -sf ${INSTALL_ROOT}/boot/config-${append} \
 	${INSTALL_ROOT}/boot/config
 
-tmpdir="`pwd`"
 cd ${BUILD_DIRECTORY}
-rm linux
-ln -s linux-$VERSION linux
-cd $tmpdir
+ln -sf linux-$VERSION linux
