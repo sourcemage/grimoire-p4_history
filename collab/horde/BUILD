@@ -32,11 +32,8 @@ HORDE_DEST=/usr/share/horde
 	SLAPD_SCHEMA=/etc/openldap/schema
 
 	if [ $SPELL == horde ] && spell_installed openldap && [ -r $SLAPD_CONF ] && [ -d $SLAPD_SCHEMA ]; then
-		SUFFIX=`gawk '/^suffix\W+/ { match($2, /"?([^"]*)"?/, a); print a[1]; nextfile; }' $SLAPD_CONF`
+		SUFFIX=`gawk '/^suffix\W+/ { match($0, /^suffix\W+"?([^"]+)"?\W*$/, a); print a[1]; nextfile; }' $SLAPD_CONF`
 		message "${MESSAGE_COLOR}Found LDAP database suffix:${DEFAULT_COLOR} $SUFFIX"
-
-		cat $SCRIPT_DIRECTORY/ldap.patch | sed "s/o=Org/$SUFFIX/" | patch -p1 > /dev/null
-		message "${MESSAGE_COLOR}Horde configuration adjusted for LDAP${DEFAULT_COLOR}"
 
 		cp -f ./scripts/ldap/*.schema $SLAPD_SCHEMA/
 
@@ -48,7 +45,7 @@ HORDE_DEST=/usr/share/horde
 			#
 			cat $T > $SLAPD_CONF
 			rm  $T
-			message "${MESSAGE_COLOR}Horde schemas added to ${SLAPD_CONF}${DEFAULT_COLOR}"
+			message "${MESSAGE_COLOR}Horde schema added to ${SLAPD_CONF}${DEFAULT_COLOR}"
 
 			[ -x /etc/init.d/slapd.sh ] && /etc/init.d/slapd.sh restart
 		fi
