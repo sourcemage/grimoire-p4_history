@@ -1,0 +1,33 @@
+           SPELL=siag
+         VERSION=3.5.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://siag.nu/pub/siag/$SOURCE
+          MD5[0]=d4de1910f97fe1c3b5d3995a54f19ee4
+        WEB_SITE=http://siag.nu/
+         ENTERED=20021025
+         UPDATED=20021025
+      LICENSE[0]=GPL
+      MAINTAINER=mlubrano@sourcemage.org
+    MENU_ITEM[0]="Pathetic Writer"
+    MENU_EXEC[0]="pw"
+    MENU_DESC[0]="A word processor for X"
+    MENU_ITEM[1]="Siag Spreadsheet"
+    MENU_EXEC[1]=${SPELL}
+    MENU_DESC[1]="A spreadsheet program for X"
+    MENU_ITEM[2]="Xed+"
+    MENU_EXEC[2]="xedplus"
+    MENU_DESC[2]="Interactive text editor for X"
+    MENU_ITEM[3]="Egon Animator"
+    MENU_EXEC[3]="egon"
+    MENU_DESC[3]="An animation program for X"
+    MENU_ITEM[4]="GVU PostScript viewer"
+    MENU_EXEC[4]="gvu"
+    MENU_DESC[4]="A PostScript viewer for X"
+    MENU_ITEM[5]="XFiler file manager"
+    MENU_EXEC[5]="xfiler"
+    MENU_DESC[5]="A file manager for X"
+           SHORT="Siag Office - A Free Office Package for Unix "
+cat << EOF
+Siag Office is a tightly integrated, free office package. It consists of the spreadsheet Siag, the word processor PW, the animation program Egon, the text editor XedPlus, the file manager Xfiler and the previewer Gvu.
+EOF
