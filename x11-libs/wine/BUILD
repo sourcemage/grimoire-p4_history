@@ -5,7 +5,7 @@
 # for config file install
 # where wine should create the windows directories
 # Should somehow allow the end user to set (in CONFIGURE perhaps?)
-CROOT=/mnt/wine # C Drive
+CROOT=/usr/share/wine # C Drive
 AROOT=/mnt/floppy # Floppy Drive
 DROOT=/mnt/cdrom # CD-Rom Drive
 PREFIX=${INSTALL_ROOT}/usr
