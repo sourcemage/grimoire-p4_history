@@ -1,0 +1,21 @@
+           SPELL=postnuke
+         VERSION=0.713
+  SOURCE_VERSION=${VERSION#0.}
+          SOURCE=Rogue_$SOURCE_VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/pn_$SOURCE_VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/post-nuke/$SOURCE
+        WEB_SITE=http://www.postnuke.com/
+         ENTERED=20020319
+         UPDATED=20020430
+      MAINTAINER=sergeyli@pisem.net
+           SHORT="PostNuke Content Management System, fork of phpNuke 5.0"
+cat << EOF
+PostNuke is a content management system based on PHP-Nuke.
+Well, here it is in a nutshell of where we want to get to. We want a division
+of Core to Plugin files ( I'll get to this in a minute ). We want a system
+that installs without a hitch, that allows you to choose what you want to
+install to make your website run better and faster. That is what is on our
+mind. We also want to maintain some semblance to PHP-Nuke in terms of adding
+abstraction layers to allow you to be able to use all of its add-ons and
+themes if you so desire.
+EOF
