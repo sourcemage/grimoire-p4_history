@@ -1,0 +1,18 @@
+           SPELL=gksu
+         VERSION=1.0.7
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://people.debian.org/~kov/gksu/${SOURCE}
+          MD5[0]='df2c1874ac3936160cf9090ec9fa44ea'
+        WEB_SITE=http://www.nongnu.org/gksu/
+         ENTERED=20040327
+         UPDATED=20040628
+      LICENSE[0]=GPL
+           SHORT="GKSu is a library that provides a Gtk+ frontend to su and sudo"
+cat << EOF
+GKSu is a library that provides a Gtk+ frontend to su and sudo. It supports
+login shells and preserving environment when acting as a su frontend. It is
+useful to menu items or other graphical programs that need to ask a user's
+password to run another program as another user. 
+EOF
+
