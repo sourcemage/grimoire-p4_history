@@ -1,3 +1,4 @@
+  sed -i "42s|/usr||" cmd-line-utils/libedit/makelist     &&
   LD_PRELOAD_OLD="$LD_PRELOAD"                            &&
   unset  LD_PRELOAD                                       &&
   export CFLAGS="$CFLAGS -DUSE_OLD_FUNCTIONS"             &&
