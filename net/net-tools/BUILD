@@ -5,7 +5,9 @@
 
   make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"  &&
   prepare_install                                              &&
-  make  BASEDIR=/  install
+  make  BASEDIR=/  install                                     &&
+  install  -m 755  $SCRIPT_DIRECTORY/ifup    /sbin             &&
+  install  -m 755  $SCRIPT_DIRECTORY/ifdown  /sbin
 
 ) > $C_FIFO 2>&1  &&  (
 

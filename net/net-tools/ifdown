@@ -1,0 +1,41 @@
+#!/bin/bash
+
+netdevdir=/etc/sysconfig/network
+
+#change this if your .pid file hides somewhere else
+DHCPCD_PATH="/etc/dhcpc/dhcpcd-"
+DEV=$1
+
+if [ -z $DEV ]; then
+  echo "Usage: ifdown <device>"
+  exit 2
+fi
+
+if [ ! -f $netdevdir/$DEV.dev ]; then
+  echo "$DEV: no such network device"
+  exit 1
+fi
+
+unset MODE MODULE IP BROADCAST NETMASK GATEWAY
+
+. $netdevdir/$DEV.dev
+
+if [ -z "$MODE" ]; then
+  echo "There are errors in $netdevdir/$DEV.dev"
+  exit 1
+fi
+
+if [ "$MODE" = dynamic ]; then
+  echo "Stopping dhcpcd on $DEV ..."
+  dhcpcd -k $DEV &&
+  sleep 2
+else
+  echo "Shutting down network inteface $DEV ..."
+  ifconfig $DEV down
+fi
+
+# only do this if network device is a module
+if [ "$MODULE" ] && [ ! $(/sbin/lsmod | grep -Eo "$MODULE") ] ; then
+  echo "Unloading module $MODULE for $DEV ..."
+  modprobe -r $MODULE
+fi
