@@ -9,7 +9,9 @@
   sedit "s/xmlSAXHandler/xmlSAXHandlerV1/" lib/xdap/xdap.c  && 
 #pwlib
   cd $PWLIBDIR                                              &&
-  ./configure --disable-shared                              &&
+  ./configure --disable-shared                              \
+              --prefix=/usr                                 \
+              --enable-plugins                              \
   make -j 1 optnoshared                                     &&
   cd lib                                                    &&
   ln -s libpt_linux_x86_r_s.a libpt.a                       &&
