@@ -17,6 +17,7 @@ fi  &&
 
 ./configure                                       \
   --prefix=${INSTALL_ROOT}/usr                    \
+  --with-user-appdir=.firefox                     \
   --with-x                                        \
   --with-pthreads                                 \
   --enable-reorder                                \
