@@ -8,10 +8,10 @@ gzip -d < $SCRIPT_DIRECTORY/4.2.0-4.2.1.diff.gz | patch -p1 -E
 message "${MESSAGE_COLOR} Aplying mit-shm security patch ${DEFAULT_COLOR}"
 gzip -d < $SCRIPT_DIRECTORY/4.2.1-mit-shm-security.patch.gz | patch -p1 -E
 
-# New i810 drivers
+# xftgram patch. Thanks to Andrew Stitt
 
-message "${MESSAGE_COLOR} Copying new i810 drivers ${DEFAULT_COLOR}"
-cp $SCRIPT_DIRECTORY/i810* /usr/src/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel/
+message "${MESSAGE_COLOR} Aplying xftgram patch Thanks to Andrew Stitt ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/xftgram.patch.gz | patch -p1 -E
 
 install_drm()  {
 
