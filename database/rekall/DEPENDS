@@ -1,0 +1,5 @@
+depends  qt-x11  "--with-gui=qt3"  &&
+
+optional_depends "postgresql" "--enable-pgsql" "--disable-pgsql" "PostgreSQL database support"  &&
+optional_depends "mysql"      "--enable-mysql" "--disable-mysql" "MySQL database support"	
+

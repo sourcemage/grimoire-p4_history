@@ -1,0 +1,38 @@
+#------------------------------------------------------------------------
+#  stop super server if it is running
+#  Also will only stop firebird, since that has the init script
+
+
+#stopServerIfRunning() {
+
+#    checkString=`ps -efww| egrep "(fbserver|fbguard|ibserver|ibguard)" |grep -v grep`
+
+#    if [ ! -z "$checkString" ]
+#      then
+#        if [ -f /etc/init.d/firebird ]
+#          then
+#            /etc/init.d/firebird stop
+#        elif [ -f /etc/rc.d/init.d/firebird ]
+#          then
+#            /etc/rc.d/init.d/firebird stop
+#        fi
+#    fi
+#}
+
+#------------------------------------------------------------------------
+#  stop server if it is running
+
+if  [ `pgrep fb` ]
+then
+  cat << EOF
+  	Please stop the Firebird server first,
+	using 'telinit disable firebird'
+EOF
+  exit 1
+else
+  echo Assuming that Firebird server is not running
+#cd $SOURCE_DIRECTORY
+#exit 0
+  default_pre_build	
+fi
+

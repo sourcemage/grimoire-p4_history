@@ -1,0 +1,15 @@
+           SPELL=rekall
+         VERSION=2.2.0-beta0
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.rekallrevealed.org/packages/${SOURCE}
+          MD5[0]=cfd21d03d96d91a69b1d1c28e68ba0fb
+        WEB_SITE=http://www.rekallrevealed.org/
+         LICENCE=GPL
+         ENTERED=20031117
+         UPDATED=20031117
+           SHORT="Database front-end"
+cat << EOF
+Rekall is a database front-end. It is not itself a database -- data is stored somewhere else, in an SQL server, and Rekall is fundamentally just a tool to extract, display and update that data (of course, it does lots more than that, it does forms and reports and scripting and so on). It is database agnostic, and does not have any preferred database in the sense that Access® uses the Jet® database engine.
+Rekall can do all the things that you would expect of a database front-end (or if it can't, let us know!). You can design and use forms and reports, construct database queries, and import and export data in several different formats (actually, you can copy data -- import is just copy file to table, and export is just copy table to file).
+EOF

@@ -1,0 +1,33 @@
+diff -purN mod_python-3.1.2b/src/hlistobject.c mod_python/src/hlistobject.c
+--- mod_python-3.1.2b/src/hlistobject.c	2002-11-07 19:15:11.000000000 -0500
++++ mod_python/src/hlistobject.c	2003-11-12 15:20:02.000000000 -0500
+@@ -83,7 +83,7 @@ PyObject *MpHList_FromHLEntry(hl_entry *
+         PyErr_NoMemory();
+ 
+     /* XXX need second arg abort function to report mem error */
+-    apr_pool_sub_make(&p, NULL, NULL);
++    apr_pool_create_ex(&p, NULL, NULL, NULL);
+ 
+     result->pool = p;
+     result->head = hlist_copy(p, hle);
+diff -purN mod_python-3.1.2b/src/tableobject.c mod_python/src/tableobject.c
+--- mod_python-3.1.2b/src/tableobject.c	2003-07-14 16:51:32.000000000 -0400
++++ mod_python/src/tableobject.c	2003-11-12 15:19:47.000000000 -0500
+@@ -120,7 +120,7 @@ PyObject * MpTable_New()
+     apr_pool_t *p;
+ 
+     /* XXX need second arg abort function to report mem error */
+-    apr_pool_sub_make(&p, NULL, NULL);
++    apr_pool_create_ex(&p, NULL, NULL, NULL);
+     
+     /* two is a wild guess */
+     t = (tableobject *)MpTable_FromTable(apr_table_make(p, 2));
+@@ -1006,7 +1006,7 @@ static PyObject *table_new(PyTypeObject 
+     if (self != NULL) {
+         apr_pool_t *p;
+         tableobject *t = (tableobject *)self;
+-        apr_pool_sub_make(&p, NULL, NULL);
++        apr_pool_create_ex(&p, NULL, NULL, NULL);
+         t->pool = p;
+         t->table = apr_table_make(p, 2);
+     }

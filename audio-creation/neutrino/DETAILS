@@ -1,0 +1,19 @@
+	   SPELL=neutrino
+         VERSION=0.7.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://neutrino.sf.net
+         ENTERED=20030228
+         UPDATED=20031118
+	  MD5[0]=973deb2c3d58e66b07fa5dcf4e33abc4
+      LICENSE[0]=GPL
+      MAINTAINER=
+           SHORT="Neutrino"
+cat << EOF
+Neutrino (formerly GnomeDAP) is a GNOME 2 (and hence GTK 2) based 
+application. The actually 
+jukebox communication code was derived from that of GNOMAD but wrapped up into a GObject so I don't have nasty global variables around. Due to this GnomeDAP can theoretically support multiple jukeboxes at once, something which I don't think GNOMAD is capable of due to the way it is written. (but then who has 2 jukeboxes plugged into a machine at once).
+EOF
+
+	
