@@ -50,12 +50,10 @@ create_defaults()
 	persistent_add reconf
 	persistent_add kver
 	persistent_add patches
-	tmp="`gaze version linux-new | awk 'NR == 3 {print $4}'`"
-	echo $tmp
-	echo $(installed_version linux-new)
-	if [ -f ${BUILD_DIRECTORY}/linux-${tmp}/.spell-config.p ]
+	VERSION="`gaze version linux-new | awk 'NR == 3 {print $4}'`"
+	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
-		cp ${BUILD_DIRECTORY}/linux-${tmp}/.spell-config.p ${SPELL_CONFIG}.p
+		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
 		mode="oldktree"
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
@@ -102,7 +100,8 @@ main_menu()
 {
 	while true
 	do
-		tmp=$(installed_version linux-new)
+		. $detailsdefaults
+		tmp=${patchversion=${KERNEL_VERSION=${LATEST_2_6}}}
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
