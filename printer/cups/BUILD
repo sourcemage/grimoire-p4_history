@@ -27,7 +27,7 @@ fake_redhat()  {
 
 
   if  [  !  -e  /usr/share/cups/model/cupsomatic  ];  then
-    cp  -a  $SCRIPT_DIRECTORY/cupsomatic  /usr/share/cups/model/
+    tar  xyf  $SCRIPT_DIRECTORY/cupsomatic.tar.bz2  -C  /usr/share/cups/model/
   fi
 
 
