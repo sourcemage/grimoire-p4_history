@@ -154,7 +154,6 @@ main_menu() {
 local DEFAULT
 while true
 do
-  arch_default
   unset CUSTOM
   COMMAND=$( $DIALOG --title "Main Kernel Menu"                  \
            --item-help --cancel-label "Exit and Save" --ok-label "Select" \
@@ -195,6 +194,8 @@ PATCH_DIR="${SCRIPT_DIRECTORY}/patches"
 config_query  CONFIG_KERNEL  "Configure the Linux kernel?"  n
 
 persistent_add KERNEL_ARCH
+
+arch_default # set the default arch here just in case it wasn't set before
 
 if  [  "$CONFIG_KERNEL"  ==  "y"  ]
 then
