@@ -121,6 +121,6 @@ if [ "$MODULE" ] && ! /sbin/lsmod | exists_in_text "$MODULE" ; then
   modprobe  $MODULE
 fi &&
 
-run_func do_device_up &&
-run_func do_route_up &&
+run_func do_device_up 
+run_func do_route_up 
 run_func on_up
