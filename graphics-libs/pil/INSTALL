@@ -1,5 +1,5 @@
 cd  libImaging                                                      &&
-cp  ImConfig.h  ImPlatform.h  Imaging.h                             \
+cp  *.h                                                             \
     /usr/include/python$(installed_version Python|cut -d . -f 1,2)  &&
 cd  ..                                                              &&
 python  setup.py  install

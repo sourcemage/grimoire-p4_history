@@ -56,7 +56,7 @@ run_disable()
         local RL="$(echo $FILE | sed -e 's!^.*/%\(.*\)/.*$!\1!')"
         if display-services | grep -q "^%$RL" ; then
           echo "Stopping script $i because it was disabled within a running runlevel."
-          run_script "$i" "$i" stop && initctl -c "$i" || exit 1
+          run_script "$i" "$i" stop && { initctl -c "$i" || true ; } || exit 1
         else
           echo "Not stopping script $i because it was disabled within a non-running runlevel."
         fi
