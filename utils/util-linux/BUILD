@@ -27,6 +27,6 @@ fi &&
 CFLAGS=${CFLAGS/-DPIC -fPIC/}  &&
 
 default_build                                                   &&
-if    spell_installed      util-linux-crypto
+if    spell_ok      util-linux-crypto
   then  dispel  --nosustain  util-linux-crypto
 fi
