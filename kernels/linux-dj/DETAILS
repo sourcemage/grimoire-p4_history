@@ -1,21 +1,18 @@
            SPELL=linux-dj
-         VERSION=2.5.24-dj2
-          SOURCE=linux-2.5.24.tar.bz2
-         SOURCE2=patch-2.5.24-dj2.diff.bz2
-
-          MD5[0]=7b3c8a8369afecbc605545d334d66497
-          MD5[1]=00b9efc0683bf213bccfa8317bf2369d
-
+         VERSION=2.5.20-dj3
+          SOURCE=linux-2.5.20.tar.bz2
+         SOURCE2=patch-2.5.20-dj3.diff.bz2
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.5/$SOURCE
    SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.5/$SOURCE
 
-  SOURCE2_URL[0]=$KERNEL_URL/pub/linux/kernel/people/davej/patches/2.5/2.5.24/$SOURCE2
-  SOURCE2_URL[1]=http://www.kernel.org/pub/linux/kernel/people/davej/patches/2.5/2.5.24/$SOURCE2
+  SOURCE2_URL[0]=$KERNEL_URL/pub/linux/kernel/people/davej/patches/2.5/2.5.20/$SOURCE2
+  SOURCE2_URL[1]=http://www.kernel.org/pub/linux/kernel/people/davej/patches/2.5/2.5.20/$SOURCE2
         WEB_SITE=http://www.kernel.org
          ENTERED=20020227
          UPDATED=20020510
          ARCHIVE="off"
            SHORT="linux 2.5.x devel kernel with David Jones' patches applied."
+      LICENSE[0]=GPL
 cat << EOF
 The Linux development kernel with David Jones's patches.
 EOF

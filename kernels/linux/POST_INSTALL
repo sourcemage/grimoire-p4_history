@@ -117,19 +117,19 @@ update_yaboot()  {
 }
 
 
-case  $BUILD  in
-  powerpc-linux-gnu)  update_yaboot  ;;
-                  *)  update_lilo    ;;
-esac
+$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER
 
 #  Reinstall packages that add their own kernel modules
+#  but only if modules are supported
+if  grep  -q  "CONFIG_MODULES=y"  $CONFIG_CACHE/kernel.config;
+then
+  rm  -f  $BOOST_LOCK
 
-rm  -f  $BOOST_LOCK
-if  spell_installed  cvsfs;          then  cast  cvsfs;          fi
-if  spell_installed  NVIDIA_kernel;  then  cast  NVIDIA_kernel;  fi
-if  spell_installed  alsa-driver;    then  cast  alsa-driver;    fi
-if  spell_installed  cryptoapi;      then  cast  cryptoapi;      fi
-if  spell_installed  pcmcia-cs;      then  cast  pcmcia-cs;      fi
-if  spell_installed  linux-wlan-ng;  then  cast  linux-wlan-ng;  fi
-if  spell_installed  mwavem;         then  cast  mwavem;         fi
-if  spell_installed  ftpfs;          then  cast  ftpfs;          fi
+  KERNEL_MODULES=`cat  $SCRIPT_DIRECTORY/MODULES`
+
+  for  KERNEL_MODULE  in  $KERNEL_MODULES;  do
+    if  spell_installed  $KERNEL_MODULE;  then
+      cast  $KERNEL_MODULE;
+    fi
+  done
+fi

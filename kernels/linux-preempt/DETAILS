@@ -1,11 +1,7 @@
            SPELL=linux-preempt
          VERSION=2.4.18
           SOURCE=linux-$VERSION.tar.bz2
-         SOURCE2=preempt-kernel-rml-$VERSION-4.patch
-
-          MD5[0]=ad92859baaa837847b34d842b9f39d38
-          MD5[1]=52b8aa89a932d5e596ec25edcf9a63e3
-
+         SOURCE2=preempt-kernel-rml-${VERSION}-5.patch
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/$SOURCE
    SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.4/$SOURCE
   SOURCE2_URL[0]=$KERNEL_URL/pub/linux/kernel/people/rml/preempt-kernel/v2.4/$SOURCE2
@@ -15,6 +11,7 @@
          UPDATED=20020403
          ARCHIVE="off"
            SHORT="linux with preempt patch applied."
+      LICENSE[0]=GPL
 cat << EOF
 The preemptible Linux kernel can stop itself in the middle of what are normally blocking operations such as disk io, in order to go do something else. The result is that programs can continue running while the kernel would normally be busy, which means a faster system.
 EOF
