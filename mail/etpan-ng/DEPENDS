@@ -3,3 +3,6 @@ depends  "perl"
 depends  "automake"
 depends  "autoconf"
 depends  "libtool"
+if [ "$CVS" = "y" ]; then
+  depends "CVS"
+fi
