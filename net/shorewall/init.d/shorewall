@@ -8,6 +8,11 @@ NEEDS="+network +remote_fs"
 
 start()
 {
+  # Shorewall needs /var/log/messages to exist
+  if  [  !  -f  /var/log/messages  ]
+  then
+    touch  /var/log/messages
+  fi  &&
   ( unset -f echo; ${PROGRAM} start ; )
 }
 
