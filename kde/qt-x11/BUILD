@@ -2,7 +2,7 @@
 # speed up up build process by removing unnecessary examples
 rm -r examples
 rm -r extensions/nsplugin/examples
-rm -r extensions/xt/examples
+#rm -r extensions/xt/examples
 rm -r tools/designer/examples
 #rm -r tools/designer/tutorials
 #rm -r tools/linguist/tutorial
@@ -15,13 +15,13 @@ sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 
 export QTDIR=$SOURCE_DIRECTORY  &&
 
-  if  spell_installed  postgresql;  then
-    cd  $SOURCE_DIRECTORY  &&
-    tar  -zxpf  /var/spool/sorcery/postgresql-`installed_version postgresql`.tar.gz  &&
-    cd  postgresql-`installed_version postgresql`  &&
-    ./configure  &&
-    cd  $SOURCE_DIRECTORY
-  fi  &&
+#  if  spell_installed  postgresql;  then
+#    cd  $SOURCE_DIRECTORY  &&
+#   tar  -zxpf  /var/spool/sorcery/postgresql-`installed_version postgresql`.tar.gz  &&
+#    cd  postgresql-`installed_version postgresql`  &&
+#    ./configure  &&
+#    cd  $SOURCE_DIRECTORY
+#  fi  &&
 
   echo  "yes"  |  ./configure                      \
                                -prefix /usr/lib/qt \
@@ -38,6 +38,8 @@ export QTDIR=$SOURCE_DIRECTORY  &&
   make symlinks sub-src sub-tools                  &&
   prepare_install                                  &&
   make install                                     &&
+
   ln -sf /usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
+  ln  -s  /usr/lib/libqt-mt.so  /usr/lib/libqt.so
 
 ) > $C_FIFO 2>&1
