@@ -1,100 +1,81 @@
-2003-10-17  Ladislav Hagara <hgr@vabo.cz>
+2003-11-15 Eric Sandall <eric@sandall.us>
+	* POST_INSTALL: Fixed Bug #4681
+	Was setting hostname to 's', thanks to miguillo
+	* HISTORY: Formatted to Guru Handbook
 
-		PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
+2003-10-17 Ladislav Hagara <hgr@vabo.cz>
+	* PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
 
-2003-09-17  Seth Woolley <seth@tautology.org>
+2003-09-17 Seth Woolley <seth@tautology.org>
+	* DETAILS: Sendmail vulnerability update! 8.12.10
 
-		Sendmail vulnerability update! 8.12.10
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update UPDATED purely for test grimoire integration.
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-08-20 hgg <hgrieg@bigpond.net.au>
+	* PRE_REMOVE,POST_INSTALL: Stop autostarting /stopping of scripts
 
-		Update UPDATED purely for test grimoire integration.
+2003-08-04 Seth Woolley <seth@tautology.org>
+	* PRE_REMOVE,POST_INSTALL: Modified for new telinit syntax
 
-2003-08-20  hgg <hgrieg@bigpond.net.au>
+2003-07-30 Seth Woolley <seth@tautology.org>
+	* init.d/*: Updated to new init.d setup
 
-		Stop autostarting /stopping of scripts in PRE_REMOVE & POST_INSTALL
+2003-05-24 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug #3422, thanks to eric@sandall.us (Eric Sandall)
 
-2003-08-04  Seth Woolley <seth@tautology.org>
+2003-05-01 Rob Verkuylen <rob@verkuylen.net>
+	* Copied /sendmail.sh to /sendmail
+	Copied /init.d/sendmail.sh to /init.d/sendmail
+	Step 1/3 in bug#: 3115
 
-		Modified PRE_REMOVE for new telinit syntax
-		Modified POST_INSTALL for new telinit syntax
+2003-04-16 M.L. <mlubrano@sourcemage.org>
+	* SECURITY: Pacified (was last meeting request).
 
-2003-07-30  Seth Woolley <seth@tautology.org>
-
-		Updated to new init.d setup
-
-2003-05-24  M.L. <mlubrano@sourcemage.org>
-
-                Fixed bug #3422, thanks to eric@sandall.us (Eric Sandall)
-
-2003-05-01  Rob Verkuylen <rob@verkuylen.net>
-
-		Copied /sendmail.sh to /sendmail
-		Copied /init.d/sendmail.sh to /init.d/sendmail
-		Step 1/3 in bug#: 3115
-
-2003-04-16  M.L. <mlubrano@sourcemage.org>
-
-                Pacified SECURITY file (was last meeting request).
-
-2003-03-29  M.L. <mlubrano@sourcemage.org>
+2003-03-29 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (8.12.9).
  
-		Version++ (8.12.9).
+2003-03-26 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Now using sorcery init.d.
+	Patched BUILD file.
+
+2003-03-15 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug 2820 thanks to johan@warlander.com (Johan Wärlander)
+
+2003-03-02 Seth Woolley <seth@tautology>
+	* DETAILS: Upgraded sendmail as part of a cert advisory.
+	This compiles fine for me.
+
+2003-02-24 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug 2649, added SECURITY file.
+
+2003-01-02 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (8.12.7).
  
-2003-03-26  M.L. <mlubrano@sourcemage.org>
+2002-11-23 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug#1831.
 
-		Now using sorcery init.d.
-		Patched BUILD file.
+2002-11-23 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Fixed typo (thanks to miguillo on the forums).
 
-2003-03-15  M.L. <mlubrano@sourcemage.org>
+2002-11-10 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Fixed (fail if sendmail was already casted).
 
-                Fixed bug 2820 thanks to johan@warlander.com (Johan Wärlander)
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-2003-03-02  Seth Woolley <seth@tautology>
+2002-10-25 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Updated spell to use sorcery uid/gid features.
 
-		Upgraded sendmail as part of a cert advisory.
-		This compiles fine for me.
+2002-10-09 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed DETAILS.
 
-2003-02-24  M.L. <mlubrano@sourcemage.org>
+2002-08-30 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Version++ (8.12.6), fixed typo in DETAILS.
 
-                Fixed bug 2649, added SECURITY file.
+2002-08-21 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
-2003-01-02  M.L. <mlubrano@sourcemage.org>
- 
-		Version++ (8.12.7).
- 
-2002-11-23  M.L. <mlubrano@sourcemage.org>
+2002-08-20 M.L. <m.l@compaqnet.fr>
+	* Created spell.
 
-		Fixed bug#1831.
-
-2002-11-23  M.L. <mlubrano@sourcemage.org>
-
-		Fixed typo in BUILD (thanks to miguillo on the forums).
-
-2002-11-10  M.L. <mlubrano@sourcemage.org>
-
-		Fixed BUILD file (fail if sendmail was already casted).
-
-2002-11-05  M.L. <mlubrano@sourcemage.org>
-
-                Added MENU_* entries to DETAILS file.
-
-2002-10-25  M.L. <mlubrano@sourcemage.org>
-
-                Updated spell to use sorcery uid/gid features.
-
-2002-10-09  M.L. <mlubrano@sourcemage.org>
-
-		Fixed DETAILS.
-
-2002-08-30  M.L. <m.l@compaqnet.fr>
-
-		Version++ (8.12.6), fixed typo in DETAILS.
-
-2002-08-21  M.L. <m.l@compaqnet.fr>
-
-		MD5[0] field updated, built from the ".tar" archive.
-
-2002-08-20  M.L. <m.l@compaqnet.fr>
-
-		Created spell.
