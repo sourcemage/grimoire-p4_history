@@ -1,3 +1,3 @@
 #!/bin/sh
-export PATH=$PATH:/usr/lib/unixtree
-/usr/lib/unixtree/xt
+XT_HOME=/usr/lib/unixtree
+PATH=$XT_HOME:$PATH $XT_HOME/xt
