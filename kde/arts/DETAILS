@@ -1,15 +1,14 @@
            SPELL=arts
-	      VERSION=1.0.2
+. $GRIMOIRE/$SECTION/KDE_DETAILS
+	VERSION=$ARTS_VERSION
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.0.2/src/$SOURCE
-          MD5[0]=ede77b629aa05547f68b36c6682493dc
-        WEB_SITE=http://www.kde.org
+   SOURCE_URL[0]=$KDE_URL/stable/$KDE_VERSION/src/$SOURCE
          ENTERED=20020322
-         UPDATED=20020322
-      LICENSE[0]=GPL
       MAINTAINER=eric@lasvegasdata.com
-           SHORT="arts is the sound system used by KDE"
+             MD5=arts_MD5SUM
+         LICENSE=GPL
+	   SHORT="arts is the sound system used by KDE"
 cat << EOF
 Arts provides a network and device independent sound library.
 EOF
