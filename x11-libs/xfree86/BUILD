@@ -1,7 +1,7 @@
 install_drm()  {
 
   DRM_DIR="programs/Xserver/hw/xfree86/os-support/linux/drm/kernel"
-  DRM_DEST="/lib/modules/`installed_version  linux`/kernel/drivers/char/drm"
+  DRM_DEST="/lib/modules/$(uname -r)/kernel/drivers/char/drm"
   mkdir   -p                $DRM_DEST
   cp          $DRM_DIR/*.o  $DRM_DEST  2>/dev/null
   depmod  -a
@@ -38,6 +38,8 @@ message  "Building XFree86 takes a very long time."
 
   ### Apply Xinput locking patch
   patch  -p2  <  $SCRIPT_DIRECTORY/Xi-locking.patch  &&
+  ### Apply linux version patch to support 2.6.X
+  patch  -p1  <  $SCRIPT_DIRECTORY/XFree86-4.3.0-linux-2.6.0.patch  &&
 
   ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
@@ -57,7 +59,7 @@ message  "Building XFree86 takes a very long time."
   cd $SOURCE_DIRECTORY.bld                         &&
   ./lndir ../xc/                                   &&
   ### differnet approach to old bug
-  ### Fix Bug #3486, which stops the build process
+  ### Fix Bug #3486, which stops the build process if builtinfonts is selected
   ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
 
   make World
