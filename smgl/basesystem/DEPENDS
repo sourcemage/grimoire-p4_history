@@ -17,12 +17,12 @@ depends  gzip               &&
 depends  init.d             &&
 depends  installwatch       &&
 depends  less               &&
+depends  make               &&
 depends  module-init-tools  &&
 depends  nano               &&
 depends  net-tools          &&
 depends  ncurses            &&
 depends  patch              &&
-depends  perl               &&
 depends  procps             &&
 depends  readline           &&
 depends  rpmunpack          &&
@@ -57,4 +57,6 @@ optional_depends  "ccache"                                 \
                   ""                                       \
                   ""                                       \
                   "to accelerate compilation of upgrades"
+
+optional_depends "nfs-utils" "" "" "NFS is the network file system , this spell provides client or server software"
 
