@@ -1,18 +1,20 @@
            SPELL=newfile
-         VERSION=NA
-          SOURCE=$SPELL.tar.gz
+         VERSION=1
+          SOURCE=$SPELL.ins
+         SOURCE2=$SPELL.dtx
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=$CTAN_URL/macros/latex/contrib/supported/newfile
-   SOURCE_URL[1]=ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/$SOURCE
-          MD5[0]=e34be0b4d46633130ebeefa037c77b26
-        WEB_SITE=NA
+   SOURCE_URL[0]=${CTAN_URL}/macros/latex/contrib/supported/newfile/${SOURCE}
+   SOURCE_URL[1]=ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/newfile/${SOURCE}
+  SOURCE2_URL[0]=${CTAN_URL}/macros/latex/contrib/supported/newfile/${SOURCE2}
+  SOURCE2_URL[1]=ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/newfile/${SOURCE2}
+          MD5[0]=95fdd47c12f7d02c910bc527b1335bc3
+          MD5[1]=03f1ecbf79557878955f65ea2629b4b0
+        WEB_SITE=${CTAN_URL}/macros/latex/contrib/supported/newfile/README
          ENTERED=20020629
          UPDATED=20020813
          LICENSE=LPPL
            SHORT="Simple commands for file access under LaTeX"
 cat << EOF
-
 The newfile package provides convenient user level commands for reading and
 writing new files during a LaTeX run.
-
 EOF
