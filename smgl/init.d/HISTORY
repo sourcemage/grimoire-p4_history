@@ -1,3 +1,16 @@
+2003-08-19  Arwed v. Merkatz <v.merkatz@gmx.net>
+
+		Changed the check for new init in PREPARE to match the one
+		in PRE_BUILD.
+		Added two checks to PREPARE:
+		- check for current devel sorcery (i.e. check for libinitd)
+		- check for current coreutils (i.e. check for /bin/false)
+		If either of these checks fails, PREPARE exits with an exit
+		code of 1 which makes sorcery abort the cast.
+		These checks were added to make sure that the preparations for
+		the transition to simpleinit are only made if the installed
+		sorcery can actually handle it.
+
 2003-08-17  Seth Woolley <seth@tautology.org>
 
 		Added some stuff from old bootmisc script to mountall.sh
