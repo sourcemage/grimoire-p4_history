@@ -1,15 +1,8 @@
-(
+message  "${MESSAGE_COLOR}If this spell complains that e2fsprogs"
+message  "is not installed simply: cast e2fsprogs dump${DEFAULT_COLOR}"
 
-  message  "${MESSAGE_COLOR}If this spell complains that e2fsprogs"
-  message  "is not installed simply: cast e2fsprogs dump${DEFAULT_COLOR}"
-
-  ./configure  --prefix=/usr       \
-               --enable-largefile  \
-               --enable-rmt        \
-               ${OPTS}             &&
-  make                             &&
-  prepare_install                  &&
-  make    install                  &&
-  message  "`cat  ${SCRIPT_DIRECTORY}/message.txt`"  
-
-) > ${C_FIFO} 2>&1
+./configure  --prefix=/usr       \
+             --enable-largefile  \
+             --enable-rmt        \
+             ${OPTS}             &&
+make
