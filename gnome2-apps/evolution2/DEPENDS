@@ -11,17 +11,17 @@ optional_depends  "gnupg" \
                     "" \
                     "To encrypted mail support" &&
 
-optional_depends  "openssl" \
-                    "--enable-openssl=yes" \
-                    "--enable-openssl=no" \
-                    "Enable OpenSSL support" &&
+#optional_depends  "openssl" \                     Seems to have been removed as an option...
+#                    "--enable-openssl=yes" \
+#                    "--enable-openssl=no" \
+#                    "Enable OpenSSL support" &&
 
-#optional_depends  "MOZILLA-BROWSER" \
-#                    "--enable-nss=yes \
-#                     --enable-smime=no" \
-#                    "--enable-nss=no \
-#                     --enable-smime=no" \
-#                    "Enable Mozilla SSL support?" &&
+optional_depends  "MOZILLA-NSS" \
+                    "--enable-nss=yes \
+                     --enable-smime=no" \
+                    "--enable-nss=no \
+                     --enable-smime=no" \
+                    "Enable Mozilla SSL support?" &&
 
 optional_depends  "gnome-pilot-conduits" \
                     "--enable-pilot-conduits=yes \
