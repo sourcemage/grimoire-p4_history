@@ -8,14 +8,18 @@ export CC=gcc   			&&
                $OPTS                    &&
   make                                  &&
 if spell_installed teTeX || spell_installed linuxdoc-tools ; 
-then make pdf-recursive &&
-     make ps-recursive
-fi
+then cd gettext-tools/doc &&
+     make dvi  &&
+     make ps   &&
+     make pdf  &&
+     cd -     
+fi  &&
   prepare_install                       &&
   make    install                       &&
 if spell_installed teTeX || spell_installed linuxdoc-tools ; 
 then cd gettext-tools/doc &&  
   make    install-pdf     &&
-  make    install-ps
+  make    install-ps      &&
+  make    install-dvi
 fi
 ) > $C_FIFO 2>&1
