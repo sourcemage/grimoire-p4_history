@@ -1,0 +1,5 @@
+depends alsa-driver &&
+depends qt-x11 &&
+depends libsndfile &&
+optional_depends "JACK-DRIVER" "" "" "for JACK output" 
+optional_depends "fluidsynth" "" "" "for sf2 support"
