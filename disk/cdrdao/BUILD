@@ -1,15 +1,6 @@
 (
 
-  export CFLAGS="${CFLAGS/-O?/}"              &&
-  export GTK_MM_CONFIG=/usr/bin/gtkmm-config  &&
-  rm  -f  config.cache                        &&
-  ./configure  --build=${BUILD}               \
-               --prefix=/usr                  \
-               --sysconfdir=/etc              \
-               --localstatedir=/var           \
-               ${OPTS}                        &&
-  make                                        &&
-  prepare_install                             &&
-  make    install
+  sedit  's/xdao=xdao/xdao=no/'  configure    &&
+  default_build
 
 ) > ${C_FIFO} 2>&1
