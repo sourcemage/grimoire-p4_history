@@ -9,6 +9,7 @@ install_docbook() {(
 
   prepare_install  &&
   install_docbook  $VERSION  &&
-  install_docbook  4.1.2
+  install_docbook  4.1.2     &&
+  install_docbook  4.2
 
 ) > $C_FIFO 2>&1
