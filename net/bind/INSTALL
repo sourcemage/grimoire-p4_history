@@ -84,10 +84,6 @@ chmod  660        /etc/bind/s/*  2>  /dev/null  &&
 # allow bind to write to its own directory
 chmod  775  /etc/bind  &&
 
-# make random device for chrooting:
-[  -d  /etc/bind/dev         ]  ||  mkdir /etc/bind/dev
-[  -e  /etc/bind/dev/random  ]  ||  mknod /etc/bind/dev/random c 1 8
-
 if [ ! -d /var/chroot/bind  ]; then
   [  -d /var/chroot  ]  ||  mkdir /var/chroot
   cp -a /etc/bind /var/chroot/bind
