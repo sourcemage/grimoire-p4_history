@@ -1,11 +1,7 @@
-# according to http://gcc.gnu.org/bugzilla/show_bug.cgi?id=10077 this should be
-# fixed in gcc 3.3.x, but it isn't,
-# see http://bugs.sourcemage.org/show_bug.cgi?id=6403
-# compiles fine with those settings with gcc 3.4.2, so only disable it for 3.3
-if gcc -dumpversion | grep -q ^3.3; then
-  CFLAGS=${CFLAGS/-mfpmath=sse -msse -msse2/}
-  CFLAGS=${CFLAGS/pentium4/i686}
-fi
+# fix bug #6403
+sedit  's/ARCHFLAGS="-mcpu=i786 -march=$arch"/ARCHFLAGS=""/'  configure  &&
+sedit  's/ARCHFLAGS="-mcpu=i686 -march=$arch"/ARCHFLAGS=""/'  configure  &&
+sedit  's/ARCHFLAGS="-mcpu=i586 -march=$arch"/ARCHFLAGS=""/'  configure  &&
 
 # fails to compile with -DPIC and -fPIC
 CFLAGS=${CFLAGS/-DPIC/}
