@@ -1,16 +1,14 @@
            SPELL=sketch
-         VERSION=0.6.13
+         VERSION=0.6.14
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/sketch/$SOURCE
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/sketch/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/sketch/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=d2c3771ea729ba93d73e0315d6cc1db0
         WEB_SITE=http://sketch.sourceforge.net
          ENTERED=20020531
          UPDATED=20020531
-	MD5=c9cb61c8dd4116f4466ba60887631b26
-	LICENSE=GPL
-	MAINTAINER=burududu@hotpop.com
+      LICENSE[0]=LGPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="sketch - a vector drawing program implemented in Python"
 cat << EOF
 Sketch is a vector drawing program similar to 
