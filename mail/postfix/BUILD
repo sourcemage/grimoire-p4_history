@@ -43,7 +43,7 @@ if  [  "$SSL_TLS"  ==  "y"  ];  then
     if [ "$PATCH_FAILED" == "true" ]; then
       message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"  &&
       message "and answer no to the TLS/SSL patch question.${DEFAULT_COLOR}"  &&
-      exit 1
+      return 1
     fi
 fi  &&
 
@@ -56,7 +56,7 @@ fi  &&
 #  if [ "$PATCH_FAILED" == "true" ]; then
 #      message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"  &&
 #      message "and answer no to the Postgresql patch question.${DEFAULT_COLOR}"  &&
-#      exit 1
+#      return 1
 #    fi  &&
 
 #    AUXLIBS="$AUXLIBS /usr/lib/libpq.a -lcrypt"  &&
@@ -72,7 +72,7 @@ if  [  "$VDA"  ==  "y"  ];  then
     if [ "$PATCH_FAILED" == "true" ]; then
       message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"  &&
       message "and answer no to the VDA patch question.${DEFAULT_COLOR}"  &&
-      exit 1
+      return 1
     fi
 fi   &&
 

@@ -65,10 +65,10 @@ backup_modules()  {
   cp  .config  $INSTALL_ROOT$CONFIG_CACHE/kernel.config
   run_make  dep               &&
   case  ${ARCH}  in
-    sparc*)  run_make  vmlinux ||  exit  1 ;;
-       ppc)  run_make  vmlinux ||  exit  1 ;;
-        sh)  run_make   zImage ||  exit  1 ;;
-         *)  run_make  bzImage ||  exit  1 ;;
+    sparc*)  run_make  vmlinux ||  return  1 ;;
+       ppc)  run_make  vmlinux ||  return  1 ;;
+        sh)  run_make   zImage ||  return  1 ;;
+         *)  run_make  bzImage ||  return  1 ;;
   esac
 
   # Only install modules if module support is wanted
@@ -76,9 +76,9 @@ backup_modules()  {
     run_make   modules       &&
     backup_modules           &&
     prepare_install                      &&
-    run_make   modules_install  ||  exit  1;
+    run_make   modules_install  ||  return  1;
   else
-    prepare_install         ||  exit  1;
+    prepare_install         ||  return  1;
   fi
 
   mkdir  -p  ${INSTALL_ROOT}/boot

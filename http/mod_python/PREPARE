@@ -4,6 +4,6 @@ elif httpd -v | grep -q "Apache/1\."; then
   MOD_PYTHON_BRANCH=2
 else
   message "${PROBLEM_COLOR}Could not determine Apache version!${DEFAULT_COLOR}"
-  exit
+  return 1
 fi
 echo "MOD_PYTHON_BRANCH=$MOD_PYTHON_BRANCH" >> $SPELL_CONFIG

@@ -14,7 +14,7 @@ if  [  "`gaze  installed  |  grep  cups  |  cut  -d:  -f1`"  =  "cups"  ];  then
 
       dispel  cups
     else
-      exit
+      return 1
     fi
   else
     if  query  "Would you like to continue casting?  "  y;  then
@@ -26,7 +26,7 @@ if  [  "`gaze  installed  |  grep  cups  |  cut  -d:  -f1`"  =  "cups"  ];  then
 
       dispel  cups
     else
-      exit
+      return 1
     fi
   fi
 fi

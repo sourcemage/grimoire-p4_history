@@ -4,11 +4,11 @@ elif [ -d /etc/httpsd ]; then
   DIR="/etc/httpsd"
 else
   echo "Expected that config dir is /etc/httpd or /etc/httpds"
-  exit 1
+  return 1
 fi
 if ! [ -f $DIR/httpd.conf ]; then
   echo "Expected that config file is $DIR/httpd.conf";
-  exit 1
+  return 1
 fi
 
 cp $DIR/httpd.conf $DIR/httpd.conf.old

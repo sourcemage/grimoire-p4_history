@@ -8,7 +8,7 @@ if ! grep -q 'CONFIGURED=\"y\"' ${DEPENDS_CONFIG}/mgetty; then
     ##  Set the TTY device to be used for mgetty.
     if ! [ -e /dev/ttyS0 ]; then
       message "${PROBLEM_COLOR}You have selected to start mgetty on system boot, but you do not have any serial ports setup on this system.  Please enable at least one serial port in BIOS and your kernel and then recast this spell.${DEFAULT_COLOR}"
-      exit 1
+      return 1
     fi
 
     COUNTER=0

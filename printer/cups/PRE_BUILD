@@ -14,7 +14,7 @@ if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  
 
       dispel  gnulpr
     else
-      exit
+      return 1
     fi
   else
     if  query  "Would you like to continue casting?  "  y;  then
@@ -26,7 +26,7 @@ if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  
 
       dispel  gnulpr
     else
-      exit
+      return 1
     fi
   fi
 fi
