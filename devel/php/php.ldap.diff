@@ -1,0 +1,10 @@
+--- ext/ldap/ldap.c	2002-07-14 18:33:56.000000000 -0700
++++ ext/ldap/ldap.c.new	2002-07-14 18:33:51.000000000 -0700
+@@ -2027,6 +2027,7 @@
+ 	zval *cb_retval;
+ 	zval *cb_link = (zval *) params;
+ 
++void ***tsrm_ls; /* Added by smilic@EUnet.yu */
+ 	ld = (ldap_linkdata *) zend_fetch_resource(&cb_link TSRMLS_CC, -1, "ldap link", NULL, 1, le_link);
+ 
+ 	/* link exists and callback set? */

@@ -1,5 +1,6 @@
-# $Id: mkconf.sh,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
 #!/bin/sh
+# $Id: mkconf.sh,v 1.5 2002/07/15 04:41:45 sergeyli Exp $
+
 HOST=`hostname`
 ORG=${HOST#*.}
 SUFFIX="o=$ORG"
@@ -64,11 +65,12 @@ lastmod on
 # ldbm database definitions
 #######################################################################
 
-database	ldbm
+# Berkeley DB (DBD) will serve as a backend
+database	bdb
 
 # The database directory MUST exist prior to running slapd AND 
 # should only be accessible by the slapd/tools. Mode 700 recommended.
-directory	/var/openldap-ldbm
+directory	/var/openldap-bdb
 
 # Indices to maintain
 index	objectclass	eq

@@ -1,13 +1,11 @@
-# $Id: DETAILS,v 1.2 2002/07/07 08:19:28 sergeyli Exp $
+# $Id: DETAILS,v 1.4 2002/07/15 00:54:40 sergeyli Exp $
            SPELL=OpenCA
          VERSION=0.8.1
           SOURCE=$SPELL-$VERSION.tar.gz
-      SOURCE_URI=sourceforge/openca/$SOURCE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SOURCE_URI
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/$SOURCE_URI
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SOURCE_URI
-             MD5=526f5e3de062c035d14d06299b0c7c0a
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openca/$SOURCE
+      SOURCE_MD5=526f5e3de062c035d14d06299b0c7c0a
+             MD5=$SOURCE_MD5
          LICENSE=BSD
         WEB_SITE=http://openca.sf.net/
          ENTERED=20020509

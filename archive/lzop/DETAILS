@@ -1,0 +1,18 @@
+           SPELL=lzop
+         VERSION=1.00
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.oberhumer.com/opensource/$SPELL/download/$SOURCE
+        WEB_SITE=http://www.oberhumer.com/opensource/lzop
+         ENTERED=20020531
+         UPDATED=
+         LICENCE=GPL
+	     MD5=ef267ac5ea24ccf4ae779f4afb0ab48e
+           SHORT="file compressor using the lzo library"
+cat << EOF
+lzop is a file compressor which is very similar to gzip. 
+It uses the LZO data compression library for compression 
+services and its main advantages over gzip are much higher 
+compression and decompression speed (at the cost of some 
+compression ratio).
+EOF
