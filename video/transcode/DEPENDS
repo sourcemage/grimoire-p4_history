@@ -1,3 +1,7 @@
+depends autoconf  &&
+depends automake  &&
+depends nasm      &&
+
 optional_depends  "avifile"                      \
                   "--enable-avifile6"            \
                   "--with-avifile-mode"          \
@@ -37,4 +41,28 @@ optional_depends  "libvorbis"                    \
 optional_depends  "lzo"                          \
                   ""                             \
                   ""                             \
-                  "for LZO compression support"
+                  "for LZO compression support"  &&
+optional_depends  "ImageMagick"                  \
+                  ""                             \
+                  ""                             \
+                  "image editing tools"          &&
+optional_depends  "libxml2"                      \
+                  ""                             \
+                  ""                             \
+                  "for XML format support"       &&
+optional_depends  "freetype2"                    \
+                  ""                             \
+                  ""                             \
+                  "for freetype font support"    &&
+optional_depends  "jpeg"                         \
+                  ""                             \
+                  ""                             \
+                  "for JPEG image support"       &&
+optional_depends  "SDL"                          \
+                  ""                             \
+                  ""                             \
+                  "for SDL graphics rendering"   &&
+optional_depends  "gtk+2"                        \
+                  ""                             \
+                  ""                             \
+                  "for GTK+ GUI support"
