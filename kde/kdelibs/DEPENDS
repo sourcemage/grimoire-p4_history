@@ -2,7 +2,6 @@ depends  qt-x11       &&
 depends  docbook-dtd  &&
 #--disable-debug --enable-final used to be in BUILD 
 depends  arts "--disable-debug --enable-final" &&
-depends  pcre  &&
 optional_depends  "libart_lgpl"	\
 			""	\
 			""	\
@@ -47,7 +46,7 @@ optional_depends  "libxslt"	\
 			""	\
 			""	\
 			"for io-slave support & kde help"  &&
-optional_depends  "fam"		\
+optional_depends  "FAM"		\
                         ""      \
                         ""      \
-                        "The KDE subsytem relies on monitoring changes in the filesystem so that the GUI provides an up-to-date view. FAM makes this process greatly more efficient." 
+                        "for more efficient filesystem monitoring"
