@@ -1,15 +1,22 @@
+2004-02-05 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.2.0
+	Removed MAINTAINER
+
 2004-01-016 hgg <hgreig@bigpond.net.au>
-        * DETAILS: update to 3.1.5
+	* DETAILS: update to 3.1.5
 
 2003-11-25 hgg <hgreig@bigpond.net.au>
-        * DETAILS: turn off distcc, --enable-final means files upto 250 MB are transferred over the network
-        which seriously slows down KDE compilation.
+	* DETAILS: turn off distcc, --enable-final means files upto 250 MB
+	are transferred over the network which seriously slows down KDE
+	compilation.
 
 2003-11-22 hgg <hgreig@bigpond.net.au>
 	* DETAILS: update UPDATED as it finally builds
-	* BUILD: add patch for smoke and kdec, regenerate everything like it was cvs checkout
-	* BUILD: remove java support as it only builds one of three modules and fails on the other two still, this is also true of CVS 
-	snapshot if --with-java=$JAVA_HOME is used
+	* BUILD: add patch for smoke and kdec, regenerate everything like it
+	was cvs checkout
+	* BUILD: remove java support as it only builds one of three modules
+	and fails on the other two still, this is also true of CVS snapshot
+	if --with-java=$JAVA_HOME is used
 
 2003-10-27 Treeve Jelbert <treeve@pi.be>
 	* HISTORY: reformatted
@@ -71,4 +78,5 @@
 2002-02-21 Jim Phillips <jphillips@ergonet-ent.com>
 	* DEPENDS: Added optional depends for gtkmozilla binding
 	*BUILD: necessary patch so it can find gtkmozembed.h in 
-/usr/include/mozilla/gtkembedmoz/) 
+	/usr/include/mozilla/gtkembedmoz/) 
+
