@@ -6,29 +6,29 @@ if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
     echo  'OPTS="$OPTS  --disable-admin-group"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Enable timelord? (time server)" n;  then
+  if  query  "Enable timelord? (time server)" y;  then
     echo  'OPTS="$OPTS  --enable-timelord"'  >>  ${SPELL_CONFIG}
   else
     echo  'OPTS="$OPTS  --disable-timelord"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Enable valid shell check?" n;  then
+  if  query  "Enable valid shell check?" y;  then
     echo  'OPTS="$OPTS  --enable-shell-check"'   >> ${SPELL_CONFIG}
   else
     echo  'OPTS="$OPTS  --disable-shell-check"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Enable filename mangling?" n;  then
+  if  query  "Enable filename mangling?" y;  then
     echo  'OPTS="$OPTS  --with-mangling"'     >>  ${SPELL_CONFIG}
   else
     echo  'OPTS="$OPTS  --without-mangling"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Enable CNID with Concurrent Data Store?" n;  then
-    echo  'OPTS="$OPTS  --with-cdb"'     >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --without-cdb"'  >>  ${SPELL_CONFIG}
-  fi
+#  if  query  "Enable CNID with Concurrent Data Store?" n;  then
+#    echo  'OPTS="$OPTS  --with-cdb"'     >>  ${SPELL_CONFIG}
+#  else
+#    echo  'OPTS="$OPTS  --without-cdb"'  >>  ${SPELL_CONFIG}
+#  fi
 
 #  if  query  "Enable flock locks support?" n;  then
 #    echo  'OPTS="$OPTS  --with-flock-locks"'     >>  ${SPELL_CONFIG}
@@ -36,11 +36,11 @@ if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
 #    echo  'OPTS="$OPTS  --without-flock-locks"'  >>  ${SPELL_CONFIG}
 #  fi
 
-  if  query  "Enable AFS support?" n;  then
-    echo  'OPTS="$OPTS  --enable-afs"'   >>  ${SPELL_CONFIG}
-  else
-    echo  'OPTS="$OPTS  --disable-afs"'  >>  ${SPELL_CONFIG}
-  fi
+#  if  query  "Enable AFS support?" n;  then
+#    echo  'OPTS="$OPTS  --enable-afs"'   >>  ${SPELL_CONFIG}
+#  else
+#    echo  'OPTS="$OPTS  --disable-afs"'  >>  ${SPELL_CONFIG}
+#  fi
 
   if  query  "Enable ddp?" y;  then
     echo  'OPTS="$OPTS  --enable-ddp"'   >>  ${SPELL_CONFIG}
