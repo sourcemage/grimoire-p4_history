@@ -13,6 +13,7 @@
   make  bootstrap                       &&
   prepare_install                       && 
 
+  unset  LD_PRELOAD                     &&
   make  install                         &&
   ln    -sf gcc /usr/bin/cc             &&
 
