@@ -7,12 +7,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/edje
           MD5[0]=IGNORE
 else
-		 VERSION=0.5.0
+         VERSION=0.5.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-		  MD5[0]=407755b05dd8af807f8bd5d066e870ff
+          MD5[0]=407755b05dd8af807f8bd5d066e870ff
 fi
+       BUILD_API=2
       LICENSE[0]=BSD
         WEB_SITE=http://enlightenment.org/pages/edje.html
          ENTERED=20040311
