@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Sorcerer GNU/Linux config vars are exported to current environment
+# Source Mage GNU/Linux config vars are exported to current environment
 [ -f /etc/sorcery/config ] &&
 eval `. /etc/sorcery/config; 
       echo "export GRIMOIRE_LIST=$GRIMOIRE_LIST";
       echo "export SPELL_STATUS=$SPELL_STATUS"`
 
-# Sorcerer GNU/Linux utility functions used by actual completion functions
+# Source Mage GNU/Linux utility functions used by actual completion functions
 # by Lunar_fr (lunar@l-a-p.org)
 #
 _spell_list()
@@ -42,7 +42,7 @@ _add_section_list()
     done
 }
 
-# Sorcerer GNU/Linux gaze(1) completion
+# Source Mage GNU/Linux gaze(1) completion
 # by Lunar_fr (lunar@l-a-p.org)
 #
 have gaze &&
@@ -116,7 +116,7 @@ _gaze()
 }
 [ "$have" ] && complete -F _gaze -o default gaze
 
-# Sorcerer GNU/Linux cast(8) completion
+# Source Mage GNU/Linux cast(8) completion
 # by Lunar_fr (lunar@l-a-p.org)
 #
 have cast &&
@@ -157,7 +157,7 @@ _cast()
 }
 [ "$have" ] && complete -F _cast -o default cast
 
-# Sorcerer GNU/Linux summon(8) completion
+# Source Mage GNU/Linux summon(8) completion
 # by Mads Laursen (dossen+sgl@daimi.au.dk)
 #
 have summon &&
@@ -198,7 +198,7 @@ _summon()
 }
 [ "$have" ] && complete -F _summon -o default summon
 
-# Sorcerer GNU/Linux dispel(8) completion
+# Source Mage GNU/Linux dispel(8) completion
 # by Mads Laursen (dossen+sgl@daimi.au.dk)
 #
 have dispel &&
