@@ -7,7 +7,7 @@ $SOURCE_DIRECTORY/configure                                \
              --enable-threads=posix                        \
              --with-system-zlib                            \
              --enable-languages=c++                        \
-             $OPTS                                         &&
+             $MULTILIB $OPTS                              &&
 
 make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
      profiledbootstrap
