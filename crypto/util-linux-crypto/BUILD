@@ -15,7 +15,7 @@ sedit  "s/\$(OPT)//"                   MCONFIG
 
   make                                 &&
   (
-  if    spell_installed      util-linux
+  if    spell_ok      util-linux
   then  dispel  --nosustain  util-linux
   fi                                   &&
   prepare_install

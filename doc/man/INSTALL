@@ -10,7 +10,7 @@ if [ ! -h ${INSTALL_ROOT}/usr/share/man/whatis ]; then
             ${INSTALL_ROOT}/usr/share/man/whatis
 fi                                                              &&
 
-if spell_installed less; then
+if spell_ok less; then
     sedit "s/PAGER		\/bin\/less -is/PAGER		\/bin\/less -isR/" \
           ${INSTALL_ROOT}/usr/share/misc/man.conf
 fi                                                              &&
