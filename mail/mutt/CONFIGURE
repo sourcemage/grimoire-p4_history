@@ -1,6 +1,8 @@
-if [ "$CVS" == "y" ];then
-echo .
-else
-config_query PATCH_SIGNATURE "Do you want to apply the multi signature patch?" n
-config_query PATCH_TRASH "Do you want to apply the trash bin patch?" n
+config_query PATCH_SMTP "Do you want to apply the libesmtp patch?" n
+
+if [ "$CVS" == "y" ]; then 
+	config_query PATCHBAR "Do you want to apply the side bar patch?" n
+else 
+	config_query PATCH_SIGNATURE "Do you want to apply the multi signature patch?" n
+	config_query PATCH_TRASH "Do you want to apply the trash bin patch?" n
 fi

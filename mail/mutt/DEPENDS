@@ -1,4 +1,7 @@
-if [ "$CVS" == "y" ]; then
-  depends  cvs
-fi  &&
 optional_depends  "openssl"  "--with-ssl"  ""  "to enable ssl support for pop/imap"
+if [ "$CVS" == "y" ]; then 
+	depends CVS
+fi
+if [ "$PATCH_SMTP" == "y" ]; then 
+	depends libesmtp 
+fi 
