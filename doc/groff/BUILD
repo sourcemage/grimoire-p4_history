@@ -1,18 +1,11 @@
-(
+./configure  --build=$BUILD        \
+             --prefix=$INSTALL_ROOT/usr         \
+             --sysconfdir=$INSTALL_ROOT/etc     \
+             --localstatedir=$INSTALL_ROOT/var  \
+             $OPTS                                  &&
 
-    ./configure  --build=$BUILD        \
-                 --prefix=$INSTALL_ROOT/usr         \
-                 --sysconfdir=$INSTALL_ROOT/etc     \
-                 --localstatedir=$INSTALL_ROOT/var  \
-                 $OPTS                 &&
+if  ! spell_installed netpbm; then
+    patch  < $SCRIPT_DIRECTORY/groff.patch
+fi                                                  &&
 
-    if  ! spell_installed netpbm; then
-        patch  < $SCRIPT_DIRECTORY/groff.patch
-    fi                                 &&
-
-    make                               &&
-    prepare_install                    &&
-    make    install
-
-
-) > $C_FIFO 2>&1
+make
