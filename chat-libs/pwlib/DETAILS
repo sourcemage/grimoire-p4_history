@@ -2,16 +2,16 @@
 if [ "$CVS" == "y" ]; then
          VERSION=cvs
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/openh323:ptlib_unix
-  FORCE_DOWNLOAD=1
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/openh323:ptlib_unix  
+FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
  SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 else
-          VERSION=1_6_5
-           SOURCE=${SPELL}-v${VERSION}-src.tar.gz
+          VERSION=1_8_3
+           SOURCE=${SPELL}-v${VERSION}-src-tar.gz
     SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${SOURCE}
     SOURCE_URL[1]=${SOURCEFORGE_URL}/openh323/${SOURCE}
-           MD5[0]='1819a2176bf4d7efb92e0f0b1c252d23'
+           MD5[0]='03012ff58c1ddd0686f062e673c20bff'
  SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
 fi
        LICENSE[0]=GPL
