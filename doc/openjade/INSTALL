@@ -1,0 +1,6 @@
+make install &&
+
+install -m 644 dsssl/catalog /usr/share/sgml/OpenJade         &&
+install -m 644 dsssl/*.{dtd,dsl,sgm} /usr/share/sgml/OpenJade &&
+
+ln -sfn /usr/bin/openjade /usr/bin/jade
