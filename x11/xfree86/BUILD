@@ -17,10 +17,7 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
-  #removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
-  #leaving the original file untouched 
-  #for when this gcc bug gets fixed (hgg09/08/03)
-  #
+ ###removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
   fi                                               &&
@@ -32,11 +29,7 @@ message  "Building XFree86 takes a very long time."
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                               &&
 
-  #
-  #xfree86.org recommends building in a shadow tree [ it appears to fix a breakage 
-  #with gcc not setting up the include paths properly, previously include files weren't found if 
-  #xfree86 wasn't already installed (mentioned in bug#3694) (hgg09/08/03)]
-  #
+  ###xfree86.org recommends building in a shadow tree 
   cd config/util                                   &&
   make -f Makefile.ini lndir                       &&
   cp lndir $SOURCE_DIRECTORY.bld/                  &&
@@ -45,20 +38,16 @@ message  "Building XFree86 takes a very long time."
 
   make World
   
-  # Fix Bug #3486, which stops the build process
-  #[now appears to be evident on only one of my test machines, 
-  #the one with xfree86 already installed (hgg09/08/03)]
-  #
+  ### Fix Bug #3486, which stops the build process
 
   mkdir  lib/font/builtins/unshared                              &&
   cp  lib/font/builtins/*.*  lib/font/builtins/unshared          &&
-
-  #
-  # Start compiling where the prior left off
-  #
+  ###will this fix the mysterious error ?
+  ln -sf $SOURCE_DIRECTORY/lib/xtrans/Xtrans.h  $SOURCE_DIRECTORY.bld/exports/include/X11/Xtrans.h &&
+  ### Start compiling where the prior left off
   make                                                           &&
   prepare_install                                                &&
-  # the following is needed for pkgconfig to find the .pc files
+  #### the following is needed for pkgconfig to find the .pc files
   mkdir  -p  /usr/X11R6/lib                                      &&
   ln -sf  /usr/lib/pkgconfig  /usr/X11R6/lib                     &&
   make  install                                                  &&
