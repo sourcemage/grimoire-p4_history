@@ -1,8 +1,3 @@
-(
-
   perl  Makefile.PL  &&
-  make               &&
-  prepare_install    &&
-  make    install
+  make               
 
-) > $C_FIFO 2>&1
