@@ -1,18 +1,13 @@
-(
+export CPPFLAGS=-I/usr/include/freetype2  &&
 
-    export CPPFLAGS=-I/usr/include/freetype2	&&
-
-if [ "$CVS" = "yes" ]; then
-    ./autogen.sh
+if  [  "$CVS"  ==  "y"  ];  then
+  ./autogen.sh
 else
     patch  -p0  <  $SCRIPT_DIRECTORY/fluxbox-0.9.9-gcc3.4.patch
-fi &&
+fi  &&
 
-if [ "$NLS" = "no" ]; then
-    OPTS="$OPTS --disable-nls"
+if  [  "$NLS"  ==  "n"  ];  then
+  OPTS="$OPTS --disable-nls"
+fi   &&
 
-fi &&
-
-    default_build
-
-) > $C_FIFO 2>&1
+default_build
