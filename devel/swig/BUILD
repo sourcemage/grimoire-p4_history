@@ -1,3 +1,3 @@
   patch  configure  $SCRIPT_DIRECTORY/configure.patch  &&
-  default_build                                        &&
-  make runtime
+  default_build
+#  make runtime
