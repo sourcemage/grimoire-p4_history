@@ -2,7 +2,7 @@ config_query  DEFAULT_GRUB_TARGET "Would You like GRUB installed onto the MBR of
 
 if  [  $DEFAULT_GRUB_TARGET  ==  "y"  ]; then
   persistent_add GRUB_TARGET
-  GRUB_TARGET=`df /boot | grep dev | cut -d' ' -f1`
+  GRUB_TARGET=`df /boot | grep dev | cut -d' ' -f1 | cut -b 1-8`
 else
   config_query_string GRUB_TARGET "IMPORTANT: Do NOT specify GRUB format any longer !!! Use instead the usual device file :\
 for example, /dev/hda for the MBR of the first IDE drive, /dev/hdb1 for the first primary partition of the second IDE drive,\
@@ -16,6 +16,8 @@ config_query  GRUB_FAT        "Enable FAT16/32 support in stage 2?"        y  &&
 config_query  GRUB_FFS        "Enable FFS support in stage 2?"             y  &&
 config_query  GRUB_MINIX      "Enable MinixFS support in stage 2?"         y  &&
 config_query  GRUB_REISER     "Enable ReiserFS support in stage 2?"        y  &&
+config_query  GRUB_REISER4    "Enable Reiser4 support in stage 2? \
+(Will disable diskless support and splash image to get it compiling)"	   y  &&
 config_query  GRUB_JFS        "Enable IBM's JFS support in stage 2?"       y  &&
 config_query  GRUB_XFS        "Enable SGI's XFS support in stage 2?"       y  &&
 config_query  GRUB_VSTA       "Enable VSTAFS support in stage 2?"          y  &&
@@ -56,7 +58,8 @@ config_query  GRUB_TIARA      "Enable Tiara driver?"                       n  &&
 config_query  GRUB_VIARHINE   "Enable Via/Rhine-I/II driver?"              y  &&
 config_query  GRUB_W89C840    "Enable Winbond W89c840, Compex RL100-ATX?"  n  &&
 config_query  GRUB_COMP_FIX   "Enable fix for Compex RL2000 PCI card?"     n  &&
-config_query  GRUB_DISKLESS   "Enable diskless operation?"                 y  &&
+[ "$GRUB_REISER4" = "y" ] || config_query  GRUB_DISKLESS   "Enable diskless operation?"                 y  &&
+#config_query  GRUB_DISKLESS   "Enable diskless operation?"                 y  &&
 config_query  GRUB_HERCULES   "Enable Hercules terminal support?"          n  &&
 config_query  GRUB_SERIAL     "Enable serial terminal support?"            y  &&
 config_query  GRUB_LINUX_MEM  "Pass mem= option automatically?"            n

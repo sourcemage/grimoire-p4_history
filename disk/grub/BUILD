@@ -34,6 +34,12 @@ else
   OPTS="$OPTS  --disable-reiserfs"
 fi  &&
 
+if  [  "$GRUB_REISER4"  =  "y"  ];  then
+  OPTS="$OPTS  --enable-reiser4"
+else
+  OPTS="$OPTS  --disable-reiser4"
+fi  &&
+
 if  [  "$GRUB_JFS"  =  "y"  ];  then
   OPTS="$OPTS  --enable-jfs"
 else
