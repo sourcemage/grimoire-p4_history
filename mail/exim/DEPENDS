@@ -6,7 +6,63 @@ case  $CRON  in
   *)  depends  hc-cron  ;;
 esac  &&
 
-optional_depends  tcp_wrappers  ""  ""  "for controlling remote access" &&
-optional_depends  mysql         ""  ""  "for mysql lookup tables"       &&
-optional_depends  Linux-PAM     ""  ""  "For PAM authentication"        &&
-optional_depends  openldap      ""  ""  "for ldap lookup tables"
+# The spell only mentioned xfree86, haven't tested with others
+if  spell_installed  xfree86
+then
+  config_query  XFREE86  "Use XFree86 for exim monitor?"  y
+else
+  config_query  XFREE86  "Use XFree86 for exim monitor?"  n
+fi  &&
+
+if  spell_installed  tcp_wrappers
+then
+  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" y
+else
+  config_query  TCPWRAPPERS  "Use tcp_wrappers for controlling remote access?" n
+fi  &&
+
+if  spell_installed  mysql
+then
+  config_query  MYSQL        "Use mysql for mysql lookup tables?"  y
+else
+  config_query  MYSQL        "Use mysql for mysql lookup tables?"  n
+fi  &&
+
+if  spell_installed  Linux-PAM
+then
+  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  y
+else
+  config_query  LINUXPAM     "Use Linux-PAM For PAM authentication?"  n
+fi  &&
+
+if  spell_installed  openldap
+then
+  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  y
+else
+  config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  n
+fi
+
+if  [  "$XFREE86"  ==  "y"  ]
+then
+  depends  xfree86
+fi  &&
+
+if  [  "$TCPWRAPPERS"  ==  "y"  ]
+then
+  depends  tcp_wrappers
+fi  &&
+
+if  [  "$MYSQL"  ==  "y"  ]
+then
+  depends  mysql
+fi  &&
+
+if  [ "$LINUXPAM"  ==  "y"  ]
+then
+  depends  Linux-PAM
+fi  &&
+
+if  [ "$OPENLDAP"  ==  "y"  ]
+then
+  depends  openldap
+fi
