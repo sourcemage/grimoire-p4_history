@@ -1,0 +1,18 @@
+           SPELL=planner
+         VERSION=0.11
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='91b0e19b990f9d441386ed1fd3379a84'
+      LICENSE[0]=GPL
+      MAKE_NJOBS=1
+        WEB_SITE=http://planner.imendio.org
+      MAINTAINER=rcook@wyrms.net
+         ENTERED=20020509
+         UPDATED=20031221
+           SHORT="A Project Management Application for GNOME"
+cat << EOF
+Plannner is a project management program that can help build project 
+plans, and track the progress of a project. 
+EOF
