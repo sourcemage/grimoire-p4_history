@@ -13,4 +13,6 @@ if  [  "$FFMPEG"  =  "y"  ];  then
   export OPTS="$OPTS --enable-ffmpeg"
 fi  &&
 
+export CPPFLAGS="$CPPFLAGS -I/usr/include/ebml"  &&
+
 default_build
