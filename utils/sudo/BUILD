@@ -3,7 +3,7 @@ EDITOR=`which  nano`                  &&
 
 (
 
-  ./configure  --prefix=/usr          \
+  ./configure  --prefix=$INSTALL_ROOT/usr          \
                --with-editor=$EDITOR  \
                $OPTS		      &&
   make                                &&
