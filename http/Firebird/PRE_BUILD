@@ -16,14 +16,14 @@ fi                                                             &&
 if [ "$HEADCODE" = "yes" ];
 then message "\tIt can take some considerable time to regenerate the cvs tags,
 \tyou will not see much progress for a time but do not despair 
-\t\tGOOD THINGS are happening in the background." &&
+\t\tGOOD THINGS are happening in the background.${DEFAULT_COLOR}" &&
 cvs -z9 -q -d:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot checkout -PA -d mozilla mozilla/client.mk && 
 cd $SOURCE_DIRECTORY                                           &&
 make -j 1 -f client.mk checkout MOZ_CO_FLAGS=-PA MOZ_PHOENIX=1 &&
 cd ../                                                         &&
 message "${MESSAGE_COLOR}Generating tarball for next cast"     &&
 tar jcf $FOO mozilla/                                          &&
-message "${MESSAGE_COLOR}Moving $FOO to/var/spool/sorcery"     &&
+message "${MESSAGE_COLOR}Moving $FOO to/var/spool/sorcery.${DEFAULT_COLOR}"     &&
 mv -v $FOO $SOURCE_CACHE/                                      &&
 echo -e "HEADCODE=yes\nSOURCE=$FOO\nCONFIGURED=yes" >> $SPELL_CONFIG
 fi
