@@ -1,45 +1,11 @@
-cd  /usr/src/linux
-
-patch -p0 < $SCRIPT_DIRECTORY/linux-2.4.18-elf-fix.patch
-
-while  
-  case  $CONFIG_KERNEL in
-    y|Y)  make  menuconfig
-          if  query  "Repeat menuconfig?  "  n
-          then  CONFIG_KERNEL=y
-          else  CONFIG_KERNEL=n
-          fi     ;;
-      *)  false  ;;
-  esac
-do
-  true
-done
-
-
-backup_modules()  {
-
-  if    [  -d  /lib/modules/$VERSION      ];  then
-    rm   -rf   /lib/modules/$VERSION.old
-    mv         /lib/modules/$VERSION      \
-               /lib/modules/$VERSION.old
-  fi
-
-}
-
-
 (
 
-  yes  n  |  make  oldconfig
-  cp  .config  $CONFIG_CACHE
-  make  dep               &&
-  make  bzImage           &&
-  make  modules           &&
-  prepare_install         &&
-  backup_modules          &&
-  make   modules_install  &&
-  case  $BUILD  in
-    powerpc-linux-gnu)  cp  arch/ppc/boot/bzImage   /boot/vmlinubz-$VERSION  ;;
-                    *)  cp  arch/i386/boot/bzImage  /boot/vmlinubz-$VERSION  ;;
-  esac
+  cd  /usr/src/linux  &&
+  if [  -f  /tmp/sorcery.patching  ]; then
+    echo "Applying $SPELL patch";
+    cat  $SOURCE_CACHE/$SOURCE  |  patch  -p1
+  else
+    echo "$SPELL patch will be applied next time you cast linux"
+  fi
 
 ) > $C_FIFO 2>&1
