@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.9 2002/10/24 22:49:28 sergeyli Exp $
+# $Id: BUILD,v 1.10 2002/10/30 19:39:23 sergeyli Exp $
 (
 
 	SVN_CLIENT=`which svn 2>/dev/null`
@@ -9,7 +9,7 @@
 	message "${MESSAGE_COLOR}Checking for mod_dav.so Apache module${DEFAULT_COLOR}" &&
 	[ -e /usr/libexec/mod_dav.so ]                                                  &&
 
-	if [ -z "$SVN_CLIENT" ] || ! $CLIENT -version >/dev/null 2>&1; then
+	if [ -z "$SVN_CLIENT" ] || ! $SVN_CLIENT --version >/dev/null 2>&1; then
 		message "${MESSAGE_COLOR}Subversion will build a client to bootstrap to the Subversion project${DEFAULT_COLOR}" &&
 		message "${MESSAGE_COLOR}repository and check out the latest client and Apache 2 module source${DEFAULT_COLOR}" &&
 		message "${MESSAGE_COLOR}code. Then, these will be built and installed.${DEFAULT_COLOR}"                        &&
@@ -29,7 +29,8 @@
 
 #	Download HEAD revision
 	message "${MESSAGE_COLOR}Using client: ${SVN_CLIENT}${DEFAULT_COLOR}" &&
-	$SVN_CLIENT checkout http://svn.collab.net:80/repos/svn/trunk current &&
+	$SVN_CLIENT --version | head -2 &&
+	$SVN_CLIENT --non-interactive --no-auth-cache export http://svn.collab.net/repos/svn/trunk current &&
 
 #
 # -=* ACTUAL BUILD *=-

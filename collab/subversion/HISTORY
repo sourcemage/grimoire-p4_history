@@ -1,4 +1,12 @@
-# $Id: HISTORY,v 1.4 2002/10/24 22:49:28 sergeyli Exp $
+# $Id: HISTORY,v 1.6 2002/10/30 19:39:23 sergeyli Exp $
+2002-10-30 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Upgraded to 0.14.5 (Alpha 5). Source URI has to change because of the way
+	files are posted on tigris.org site.
+	Make Apache restart in POST_INSTALL instead of stop/starting it separately.
+	POST_INSTALL will also check configurtion and only restart if it's good.
+	Fixed a bug where existing client would not be used for checkout.
+
 2002-10-24 Sergey Lipnevich <sergeyli@pisem.net>
 
 	Disable SVN module activation in httpd.conf.
