@@ -1,22 +1,25 @@
            SPELL=gnucash-docs
-         VERSION=1.8.2
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+         VERSION=1.8.4
+       BUILD_API=2
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.gnucash.org/pub/gnucash/sources/stable/${SOURCE/bz2/gz}
+   SOURCE_URL[0]=http://www.gnucash.org/pub/gnucash/sources/stable/${SOURCE}
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[2]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://www.gnucash.org
       LICENSE[0]=GPL
-          MD5[0]=0017c069080c8741b84fd9a6f8588ad4
+          MD5[0]=93640bd14bd429f43ddf1a1fa5d5dbf6
          ENTERED=20030203
          UPDATED=20030203
-           SHORT="GNUCash a open source personal finance suite"
+           SHORT="Documentation for GNUCash - personal finance suite"
 cat << EOF
 GnuCash allows you to track bank accounts, stocks, income, and expenses.
 As quick and intuitive to use as a checkbook register, it is based on
 professional accounting principles to ensure balanced books and accurate
 reports. It is backed by an active development community and is
 blossoming into a full-fledged accounting system.
+
+This spell contains documentation.
 EOF
