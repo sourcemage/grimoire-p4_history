@@ -6,8 +6,9 @@
  
   mkdir  -p         /var/spool/mail
   chmod  1777       /var/spool/mail
-  chown  mail:mail  /var/spool/mail
 
+  chown  mail:mail  /var/spool/mail
+  chgrp      exim       /var/spool/mail/*
 
   if  spell_installed  openldap
   then  AUXLIBS="-lldap -llber"
