@@ -1,9 +1,16 @@
 #!/bin/bash
 
 DESCRIPTION="low latency patch"
-SHORT=" "
-HELP=""
-VERSIONS="2.4.19
+SHORT="The lowish-latency patches for kernel 2.4"
+HELP="low latency patch for 2.4 kernels
+
+Pay special attention - this patch does not mix well with other patches.
+You might want to try Con Kovalis patchset, if this fails for you.
+
+http://www.zip.com.au/~akpm/linux/schedlat.html
+Low-latency is enabled via the "Processor Type and Features" menu"
+VERSIONS="2.4.20
+2.4.19
 2.4.18-rc1"
 
 if [[ "$1" == "CONFIG" ]]; then
