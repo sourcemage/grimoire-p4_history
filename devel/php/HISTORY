@@ -1,3 +1,7 @@
+2003-07-08  Sergey Lipnevich  <sergey@sourcemage.org>
+
+		Fix the regex compilation failure for 4.3.2 with Apache 2.
+
 2003-06-23  hgg <hgreig@bigpond.net.au>
 	
 		update to 4.3.2
@@ -29,6 +33,21 @@
 2002-12-14  Julian v. Bock  <julian@wongr.net>
 
 		* CONFIGURE: imap build fix (thanks to Eric Sandall).
+
+2002-11-11  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		"Variable tracking" and "transparent session id" removed because
+		these options are not supported by ./configure anymore.
+		"Socket support" option integrated into BUILD.
+		Enabled calendar functions.
+		Safe mode disabled by default because otherwise PEAR might have
+		problems installing itself at the end of installation routine.
+
+2002-10-10  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Introduced optional dependency on Sablotron for XSLT support,
+		adjusted IMAP support option to account for situation where
+		IMAP client library is compiled with SSL support.
 
 2002-10-09  Julian v. Bock  <julian@wongr.net>
 

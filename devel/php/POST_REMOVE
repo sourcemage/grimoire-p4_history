@@ -5,7 +5,7 @@
   grep  -v  "AddType application/x-httpd-php .php .html"   	/tmp/conf.tmp1 > /tmp/conf.tmp2	
   grep  -v  "AddModule mod_php4.c"   /tmp/conf.tmp2 >  /etc/httpd/httpd.conf
   rm    -f  /tmp/httpd.conf /tmp/conf.tmp*
-  /usr/sbin/apachectl  restart
+  httpd -t && /usr/sbin/apachectl  restart
   fi
 
   if    [  -e         /etc/httpsd/httpd.conf  ]
@@ -15,6 +15,6 @@
   grep  -v  "AddType application/x-httpd-php .php .html"   	/tmp/conf.tmp1 > /tmp/conf.tmp2	
   grep  -v  "AddModule mod_php4.c"   /tmp/conf.tmp2 >  /etc/httpsd/httpd.conf
   rm    -f  /tmp/httpd.conf /tmp/conf.tmp*
-  /usr/sbin/apachectl  restart
+  httpd -t && /usr/sbin/apachectl  restart
   fi
 

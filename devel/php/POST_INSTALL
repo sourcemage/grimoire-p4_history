@@ -8,7 +8,7 @@ then  MOD="/etc/httpd/httpd.conf"
 LoadModule php4_module libexec/libphp4.so"
 
       grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      /usr/sbin/apachectl  start
+      httpd -t && /usr/sbin/apachectl  start
 fi
 
 if    [  -e  /etc/httpsd/httpd.conf  ]
@@ -17,5 +17,5 @@ then  MOD="/etc/httpsd/httpd.conf"
 LoadModule php4_module libexec/libphp4.so"
 
       grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
-      /usr/sbin/apachectl  startssl
+      httpd -t && /usr/sbin/apachectl  startssl
 fi
