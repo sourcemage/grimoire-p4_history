@@ -27,7 +27,8 @@
     echo 'CERTIFICATE=done' >> $SPELL_CONFIG
   else
     make certificate TYPE='existing' CRT=/etc/httpsd/ssl.crt/server.crt
-  fi &&
+  fi && # need the following to fix the error at http://forum.sun.com/thread.jsp?forum=151&thread=18986&tstart=0&trange=15
+  cp ../mod_ssl-$VERSION/pkg.sslmod/ssl_expr_scan.c src/modules/ssl/ssl_expr_scan.c &&
   make &&
 
   prepare_install &&
