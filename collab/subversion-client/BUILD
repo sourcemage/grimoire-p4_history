@@ -10,7 +10,7 @@
     --disable-maintainer-mode \
     --disable-mod-activation  \
     --disable-shared          \
-    --enable-all-static       \
+    --enable-static           \
     --without-berkeley-db     &&
   make                        &&
 
