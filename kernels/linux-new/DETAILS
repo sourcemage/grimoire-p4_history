@@ -1,10 +1,14 @@
 
                  SPELL=linux-new
              BUILD_API=2
-
+	     
+	       # needed for web scripts
+               VERSION=2.6.11.6
+	         TMPFS=0
+	       # variables we set
 . ${SCRIPT_DIRECTORY}/latest.defaults
+               # variables set by prepare script
 . ${CONFIG_CACHE}/details.defaults
-# $files is from details.defaults
                VERSION=${PATCHVER=${KERNEL_VERSION=${LATEST_2_6}}}
       SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-cache-${VERSION}
 LINUX_SOURCE_DIRECTORY=${BUILD_DIRECTORY}/linux-${VERSION}
