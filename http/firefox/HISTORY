@@ -1,3 +1,51 @@
+2004-07-11 Eric Sandall <eric@sandall.us>
+	* PREPARE: Missing update and md5sum
+
+2004-07-11 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* PREPARE,DETAILS: updated to 0.9.2
+	* BUILD: --enable-single-profile added to the configure options,
+	  so that make install won't fail
+	* INSTALL: changed so it will install in /usr/lib/mozilla
+	  (the link was being created between mozila-xx and mozila,
+	  not firefox-xx and mozilla)
+
+2004-07-04 Sergey Lipnevich <sergey@sourcemage.org>
+	* BUILD, INSTALL: use API 2.
+
+2004-07-01 Eric Sandall <eric@sandall.us>
+	* PREPARE: Forgot to update the md5sum...
+
+2004-06-29 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.9.1
+	* PREPARE: Updated to 0.9.1
+	Changed SOURCE_URLs
+	SOURCE now uses $SPELL-$VERSION-source.tar.bz2
+	* WIP: Compiles, but doesn't run
+	* 0.9.1 (at least) needs freetype > 2.1.5 (2.1.9 worked fine here)
+
+2004-06-28 Unet <audio@sourcemage.org>
+	* BUILD: Added --enable-single-profile :p Corrected freetype.patch
+	* WIP: Removed, should work now
+
+2004-06-24 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* BUILD: Close, but no cigar. Since "make install" fails, I tried a
+	  "cp", but that also fails...
+
+2004-06-24 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* PREPARE: REALLY update to 0.9.0
+
+2004-06-16 Jose Bernardo Silva <jbernardo@sourcemage.org>
+	* DETAILS,PREPARE: update to 0.9.0
+	* freetype.patch: updated
+	* nsRegion.patch: removed
+	* BUILD: removed nsRegion.patch, no longer applies
+	* WIP: added, as it still won't cast
+
+2004-05-24 Unet <audio@sourcemage.org>
+	* freetype.patch: patch to allow build with freetype 2.1.8
+	* nsRegion.patch: patch nsRegion.h (build is broken w/ gcc3.4)
+	* BUILD: Changed accordingly	
+
 2004-05-23 Seth Woolley <seth@tautology.org>
 	* BUILD: --enable-native-uconv removed for being broken.
 

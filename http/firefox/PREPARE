@@ -1,4 +1,4 @@
-VERSION=0.8.0
+VERSION=0.9.2
 ### have moved this to the beginning so the rest can stay untouched for each new update.
 ### this deletes everything below line 5 and replaces it with the current version data
 ### if any new options, variables are added to the file they must be put at the top 
@@ -6,12 +6,12 @@ VERSION=0.8.0
 version_update() {
 sedit '5,25D' $SPELL_CONFIG &&
 echo -e  "VERSION=$VERSION
-        SOURCE=\$SPELL-source-\${VERSION/.0/}.tar.bz2
- SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla.org/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
- SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
- SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
+        SOURCE=\$SPELL-\${VERSION}-source.tar.bz2
+ SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla.org/\$SPELL/releases/\${VERSION}/\$SOURCE
+ SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/\$SPELL/releases/\${VERSION}/\$SOURCE
+ SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/\$SPELL/releases/\${VERSION}/\$SOURCE
  SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
-        MD5[0]=729cc357055debeebf8b9fe15a37bda2"  >>  ${SPELL_CONFIG}  
+        MD5[0]=71cfdddc8d90cb6ad05cedd84b9cb0e5"  >>  ${SPELL_CONFIG}  
 }
 
 if ! grep -q VERSION=$VERSION $SPELL_CONFIG ;

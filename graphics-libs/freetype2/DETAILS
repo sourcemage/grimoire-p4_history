@@ -1,15 +1,16 @@
            SPELL=freetype2
-         VERSION=2.1.5
+         VERSION=2.1.9
           SOURCE=freetype-$VERSION.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/freetype-${VERSION}
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/freetype/${SOURCE}
-          MD5[0]=feb29d7095e7308d5ebac59336a859ff
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/freetype/${SOURCE}   
+   SOURCE_URL[1]=ftp://ftp.freetype.org/freetype/freetype2/${SOURCE}
+          MD5[0]=8593e3f9f72ca73f13e94ff57a8043d7
         WEB_SITE=http://www.freetype.org
          ENTERED=20010922
          UPDATED=20021125
       LICENSE[0]=GPL
-      MAINTAINER=unet@sourcemage.org
-           SHORT="freetype is a free, quality, portable font engine."
+       BUILD_API=2
+           SHORT="Free, quality, portable font engine."
 cat << EOF
 A Free, Quality, and Portable Font Engine
 EOF
