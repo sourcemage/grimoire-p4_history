@@ -14,7 +14,7 @@ mkdir -p ${INSTALL_ROOT}/var/amavis/var                                  &&
 mkdir -p ${INSTALL_ROOT}/var/amavis/db                                   &&
 mkdir -p ${INSTALL_ROOT}/var/amavis/tmp                                  &&
 chmod -R 750 ${INSTALL_ROOT}/var/amavis                                  &&
-chown amavis.amavis ${INSTALL_ROOT}/var/amavis                           &&
+chown -R amavis.amavis ${INSTALL_ROOT}/var/amavis                        &&
 mkdir -p ${INSTALL_ROOT}/var/virusmails                                  &&
 chmod 750 ${INSTALL_ROOT}/var/virusmails                                 &&
 chown amavis.amavis ${INSTALL_ROOT}/var/virusmails
