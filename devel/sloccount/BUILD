@@ -1,7 +1,1 @@
-(
-
-  make  PREFIX=/usr  CC="gcc -Wall $CFLAGS"  &&
-  prepare_install  &&
-  make  PREFIX=/usr  install
-
-) > $C_FIFO 2>&1
+make  PREFIX=${INSTALL_ROOT}/usr  CC="gcc $CFLAGS"
