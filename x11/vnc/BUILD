@@ -1,7 +1,11 @@
 (
 
-  ./configure      &&
-  make             &&
+  ./configure  --build=$BUILD        \
+               --prefix=/usr         \
+               --sysconfdir=/etc     \
+               --localstatedir=/var  \
+               $OPTS                 &&
+  make                               &&
   if spell_installed xfree86; then
     cd Xvnc
     make World
