@@ -6,6 +6,7 @@ optional_depends  "esound"  ""  ""  "for esd audio output"  &&
 optional_depends  "arts"  ""  ""  "for arts audio output"  &&
 optional_depends  "aalib"  ""  ""  "for ascii art video output"  &&
 optional_depends  "sdl"  ""  ""  "for SDL video output"  &&
+optional_depends  "libcaca" "" "" "for colored ascii art video output"  &&
 # unused in the source
 #optional_depends  "GLUT"  ""  ""  "for (experimental) OpenGL video output"  &&
 
@@ -17,6 +18,8 @@ optional_depends  "libmng"  ""  ""  "for MNG file support"  &&
 optional_depends  "win32codecs"  ""  ""  "to use win32 dlls for video/audio decoding"  &&
 optional_depends  "quicktime-codecs" "" "" "for addtional video/audio codecs used in quicktime files"  &&
 optional_depends  "real-codecs" "" "" "for RealMedia decoding"  &&
+optional_depends  "ffmpeg-cvs" "--with-external-ffmpeg=/usr" "" "to use external libavcodec"  &&
+optional_depends  "libtheora" "" "" "for OGG/Theora video support"  &&
 
 # input plugins
 optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs input support"  &&
