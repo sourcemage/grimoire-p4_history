@@ -1,7 +1,6 @@
 if  ! grep -q  GAIM_ENCRYPTION  $SPELL_CONFIG; then
 
-  sedit '1,5D' $SPELL_CONFIG                     &&
-	if query		"Enable gaim-encryption plugin? (makes nss or Firebird  spell a depends, this or gnutls is needed for MSN's newest protocol)" n
+	if query		"Enable gaim-encryption plugin? (you must also say yes to a MOZILLA_NSS spell)" n
  		then		GAIM_ENCRYPTION=y
 		else            GAIM_ENCRYPTION=n
 	fi
