@@ -1,59 +1,61 @@
-2003-12-28  Vladimir Vydra <vydra@fria.fri.utc.sk>
-
-		Spell uptadet to 2.1.0 .
-		Another rewrite of init.d script.
-		Modified BUILD,PREPARE,PRE_REMOVE,POST_INSTALL script.
+2004-02-19 Robert Helgesson <rhelgesson@sourcemage.org>
+	* DETAILS: Updated to version 2.1.0.
+	* DETAILS: Appended / to WEBSITE and removed MAINTAINER.
+	* PREPARE: Cleaned up the way the snort account is handled, also
+		Sorcery has been altered to add this user but the change
+		hasn't reched stable yet, temporary solution exists for now
+		(bug #4056).
+	* CONFIGURE: Modified formatting somewhat to better fit the "normal"
+		smgl style. Removed CF_OPTS variable. This is now handled in
+		BUILD.
+	* CONFIGURE: Added perfmonitor option.
+	* PRE_REMOVE: Removed.
+	* init.d/snort: Woah, this hasn't been updated for the new init
+		system. Fixed now.
+	* init.d/snort.sh: Removed.
+	* init.d/snort.conf: Added basic config.
+	* DEPENDS: Cleanup.
+	* BUILD: Cleanup. Updated configure call. Install unicode.map.
+	* HISTORY: Converted to new format.
 
 2003-07-25  Vladimir Vydra <vydra@fria.fri.utc.sk>
-
-		Updated version to 2.0.1 .
-		Added missing LICENSE field to DETAILS.
-		Added myself as MAINTAINER :).
-		Changed ruleset from stable to current branch.
-		Changed sysconfig dir from /etc to /etc/snort.
-		Completly changed init.d script.
-		Added PRE_REMOVE to stop snort.
-
-		Created PREPARE, CONFIGURE, DEPENDS and modified BUILD
-		- added support for RDBMS and other configure options.
-		- added snort user,group.		
-		ToDO: fish acid dep. spell.
+	* DETAILS: Updated version to 2.0.1 .
+	* DETAILS: Added missing LICENSE field to DETAILS.
+	* DETAILS: Added myself as MAINTAINER :).
+	* DETAILS: Changed ruleset from stable to current branch.
+	* BUILD: Changed sysconfig dir from /etc to /etc/snort.
+	* init.d/snort.sh: Completly changed init.d script.
+	* PRE_REMOVE: Added PRE_REMOVE to stop snort.
+	* CONFIGURE, DEPENDS: added support for RDBMS and other configure
+		options.
+	* PREPARE: added snort user,group.
 		
 2003-05-01  Rob Verkuylen <rob@verkuylen.net>
-
-		Copied /init.d/snort.sh to /init.d/snort
-		Step 1/3 in bug#: 3115
-
-2003-04-17  Seth Woolley <seth@tautology.org>
-
-		MD5[1] changes every 30 minutes, so set to IGNORE
+	* init.d/snort: Copied /init.d/snort.sh to /init.d/snort. Step 1/3 in
+		bug#: 3115
 
 2003-04-17  Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5[1] changes every 30 minutes, so set to IGNORE
 
-		Security update bug 3154
+2003-04-17  Seth Woolley <seth@tautology.org>
+	* DETAILS: Security update bug 3154
 
 2003-03-31  Eric Sandall <eric@sandall.us>
-
-		Updated to use sorcery init.d
+	* BUILD: Updated to use sorcery init.d
 
 2003-03-06  Seth Woolley <seth@tautology.org>
-
-		Should not overwrite /etc/*conf* files when installing.
+	* BUILD: Should not overwrite /etc/*conf* files when installing.
 
 2003-03-05  Seth Woolley <seth@tautology.org>
-
-		1.9.1, security update
-		two source downloads now, added a PRE_BUILD, rewrote BUILD to be more sane.
+	* DETAILS: 1.9.1, security update
+	* PRE_BUILD, BUILD: Two source downloads now, requiring some editing.
 
 2002-11-13  Jeff Schmidt <jschmidt@fnal.gov>
-
-		vers. inc. to 1.9.0
+	* DETAILS: vers. inc. to 1.9.0
 
 2002-07-18  Jeff Schmidt <jschmidt@fnal.gov>
-
-		vers. inc. to 1.8.7
+	* DETAILS: vers. inc. to 1.8.7
 
 2002-04-08  Jeff Schmidt <jschmidt@fnal.gov>
-
-                Added this History file.
-		incremented version to 1.8.4
+	* HISTORY: Added this History file.
+	* DETAILS: incremented version to 1.8.4

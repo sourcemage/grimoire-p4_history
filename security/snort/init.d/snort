@@ -1,72 +1,10 @@
-#!/bin/sh
-####
-## Name	:	Snort telinit script
-## By	: 	otek < otek@sourcemage.sk>
-###
+#!/bin/bash
 
-PROGRAM=/usr/bin/snort
-RUNLEVEL=3
-NEEDS="+network"
-
-. /etc/init.d/smgl_init
 . /etc/sysconfig/snort
 
-start() {
-  echo "Starting snort ..."
-  OK=0
-  INST_CNT=0
-  
-  for IFACE in ${IFACES}; do 
-    if [ ! -e ${CFG_DIR}/snort-${IFACE}.conf ]; then
-	echo "ERROR: missing configuration file:  ${CFG_DIR}/snort-${IFACE}.conf"
-    fi
-    ${PROGRAM} -c ${CFG_DIR}/snort-${IFACE}.conf -i ${IFACE} -u snort -g snort ${OPTIONS} -l ${LOG_DIR}/${IFACE}
-    #-R ${IFACE}
-    if [ "$?" == "0" ]; then
-        OK=$(( $OK + 1 ))
-    fi
-    INST_CNT=$(( $INST_CNT + 1 ))
-  done
+PROGRAM=/usr/bin/snort
+ARGS="-D -u snort -g snort -c /etc/snort/snort.conf -i ${IFACE} ${OPTIONS}"
+RUNLEVEL=3
+NEEDS="+remote_fs +network"
 
-  if [ "$OK" == "0" ]; then
-        print_status failure
-   else
-    if [ "$OK" == "$INST_CNT" ]; then
-        print_status success
-    else
-        print_status failure
-    fi
-  fi
-  unset OK IFACE
-}
-
-stop() {
-    echo "Stoping snort ..."
-    KILL=0
-    INST_CNT=0
-    
-    for PID in `/bin/ls /var/run/snort_*.pid 2>/dev/null`; do
-        if [ -s ${PID} ]; then
-            kill `cat ${PID}` > /dev/null 2>&1
-            KILL=$(( $KILL + 1 ))
-        fi
-        rm -f ${PID}
-	INST_CNT=$(( $INST_CNT + 1 ))
-    done
-
-    if [ "$KILL" == "0" ]; then
-        print_status warning not_running
-    else
-     if [ "$KILL" == "$INST_CNT" ]; then
-        print_status success
-     else
-        print_status failure
-     fi
-    fi
-}
-
-reload() {
-    stop
-    sleep 1
-    start
-}
+. /etc/init.d/smgl_init

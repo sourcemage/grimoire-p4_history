@@ -1,86 +1,86 @@
-message "${MESSAGE_COLOR}If you don't know what you are doing just press ENTER.${DEFAULT_COLOR}"
-message "${MESSAGE_COLOR}(You will end up with basic snort installation)${DEFAULT_COLOR}"
-
-unset CF_OPTS
+#message "${MESSAGE_COLOR}If you don't know what you are doing just press ENTER.${DEFAULT_COLOR}"
+#message "${MESSAGE_COLOR}(You will end up with basic snort installation)${DEFAULT_COLOR}"
 
 # SNMP support
- if  !  grep  -q  "CF_SNMP"  $SPELL_CONFIG;  then
-     if  query  "Do you want enable SNMP alerting code ?" n
-	then  echo  "CF_SNMP=y"  >>  $SPELL_CONFIG; CF_OPTS="--with-snmp"
-	else  echo  "CF_SNMP=n"  >>  $SPELL_CONFIG
-    fi
- fi
+if  !  grep  -q  "CF_SNMP"  $SPELL_CONFIG;  then
+  if  query  "Do you want enable SNMP alerting code ?" n
+  then  echo  "CF_SNMP=y"  >>  $SPELL_CONFIG
+  else  echo  "CF_SNMP=n"  >>  $SPELL_CONFIG
+  fi
+fi
 
 # Samba alerts
- if  !  grep  -q  "CF_SMB"  $SPELL_CONFIG;  then
-     if  query  "Do you want enable SMB alerting code ? [UNSAFE => n]" n
-	then  echo  "CF_SMB=y"  >>  $SPELL_CONFIG; CF_OPTS="${CF_OPTS}  --enable-smbalerts"
-	else  echo  "CF_SMB=n"  >>  $SPELL_CONFIG
-    fi
- fi
+if  !  grep  -q  "CF_SMB"  $SPELL_CONFIG;  then
+  if  query  "Do you want enable SMB alerting code ? [UNSAFE => n]" n
+  then  echo  "CF_SMB=y"  >>  $SPELL_CONFIG
+  else  echo  "CF_SMB=n"  >>  $SPELL_CONFIG
+  fi
+fi
  
 # Flexible responce
- if  !  grep  -q  "CF_FLEXR"  $SPELL_CONFIG;  then
-     message  "Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next.option working"
-     if  query  "Do you want enable ""Flexible responce"" code ?" n
-	then  echo  "CF_FLEXR=y"  >>  $SPELL_CONFIG; CF_FLEXR=y; CF_OPTS="${CF_OPTS}  --enable-flexresp"
-	else  echo  "CF_FLEXR=n"  >>  $SPELL_CONFIG
-    fi
- fi
+if  !  grep  -q  "CF_FLEXR"  $SPELL_CONFIG;  then
+  message  "Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next option working."
+  if  query  'Do you want enable "Flexible response" code ?' n
+  then  echo  "CF_FLEXR=y"  >>  $SPELL_CONFIG
+  else  echo  "CF_FLEXR=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if  !  grep  -q  "CF_PERFMON"  $SPELL_CONFIG;  then
+  if  query  "Do you wish to enable the Snort perfmonitor preprocessor?" n
+  then  echo  "CF_PERFMON=y"  >>  $SPELL_CONFIG
+  else  echo  "CF_PERFMON=n"  >>  $SPELL_CONFIG
+  fi
+fi
 
 # *** Output support
-message "${MESSAGE_COLOR}Next option is to give snort the ability to log data in RDBMS.${DEFAULT_COLOR}"
-message "${MESSAGE_COLOR}(By default snort is logging to flat files).${DEFAULT_COLOR}"
+if  !  grep  -q  "CF_DB"  $SPELL_CONFIG;  then
+  message "${MESSAGE_COLOR}Next option is to give snort the ability to log data in RDBMS.${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}(By default snort is logging to flat files).${DEFAULT_COLOR}"
+  if  query  "Do you want enable RDBMS support ?" n
+  then  echo  "CF_DB=y"  >>  $SPELL_CONFIG; CF_DB=y
+  else  echo  "CF_DB=n"  >>  $SPELL_CONFIG
+  fi
+fi
+ 
+# Choose the right DB
+if  [  "${CF_DB}"  ==  "y"  ]; then
 
- if  !  grep  -q  "CF_DB"  $SPELL_CONFIG;  then
-     if  query  "Do you want enable RDBMS support ?" n
-	then  echo  "CF_DB=y"  >>  $SPELL_CONFIG; CF_DB=y
-	else  echo  "CF_DB=n"  >>  $SPELL_CONFIG
+  message "${MESSAGE_COLOR}In the next conf. choose the backend db for $SPELL.${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}(U can choose all of them :).${DEFAULT_COLOR}"
+ 
+  # MySQL
+  if  !  grep  -q  "CF_MYSQL"  $SPELL_CONFIG;  then
+    if  query  "Do you want use $SPELL with MySQL ?" n
+    then  echo  "CF_MYSQL=y"  >>  $SPELL_CONFIG
+    else  echo  "CF_MYSQL=n"  >>  $SPELL_CONFIG
     fi
- fi
- 
- # Choose the right DB
- if  [  "${CF_DB}"  ==  "y"  ]; then
-     
-     message "${MESSAGE_COLOR}In the next conf. choose the backend db for $SPELL.${DEFAULT_COLOR}"
-     message "${MESSAGE_COLOR}(U can choose all of them :).${DEFAULT_COLOR}"
- 
-     # MySQL
-     if  !  grep  -q  "CF_MYSQL"  $SPELL_CONFIG;  then
-         if  query  "Do you want use $SPELL with MySQL ?" n
-	     then  echo  "CF_MYSQL=y"  >>  $SPELL_CONFIG; CF_OPTS="${CF_OPTS}  --with-mysql"
-	     else  echo  "CF_MYSQL=n"  >>  $SPELL_CONFIG
-         fi
-     fi
+  fi
 
-     # PostgreSQL
-     if  !  grep  -q  "CF_PSQL"  $SPELL_CONFIG;  then
-         if  query  "Do you want use $SPELL with PostgreSQL ?" n
-	     then  echo  "CF_PSQL=y"  >>  $SPELL_CONFIG; CF_OPTS="${CF_OPTS}  --with-postgresql"
-	     else  echo  "CF_PSQL=n"  >>  $SPELL_CONFIG
-         fi
-     fi
+  # PostgreSQL
+  if  !  grep  -q  "CF_PSQL"  $SPELL_CONFIG;  then
+    if  query  "Do you want use $SPELL with PostgreSQL ?" n
+    then  echo  "CF_PSQL=y"  >>  $SPELL_CONFIG
+    else  echo  "CF_PSQL=n"  >>  $SPELL_CONFIG
+    fi
+  fi
      
-     # Oracle
-     if  !  grep  -q  "CF_ORA"  $SPELL_CONFIG;  then
-         
-         message "${MESSAGE_COLOR}Warning: Install Oracle support only if you know what you want :).${DEFAULT_COLOR}"
+  # Oracle
+  if  !  grep  -q  "CF_ORA"  $SPELL_CONFIG;  then
+    message "${MESSAGE_COLOR}Warning: Install Oracle support only if you know what you want :).${DEFAULT_COLOR}"
 
-         if  query  "Do you want use $SPELL with Oracle ?" n
-	     then  echo  "CF_ORA=y"  >>  $SPELL_CONFIG; CF_OPTS="${CF_OPTS}  --with-oracle"
-	     else  echo  "CF_ORA=n"  >>  $SPELL_CONFIG
-         fi
-     fi
+    if  query  "Do you want use $SPELL with Oracle ?" n
+    then  echo  "CF_ORA=y"  >>  $SPELL_CONFIG
+    else  echo  "CF_ORA=n"  >>  $SPELL_CONFIG
+    fi
+  fi
      
-     # ODBC - ok not an RDBMS, but I/m too lazy to make some extra 'option' :)
-     if  !  grep  -q  "CF_ODBC"  $SPELL_CONFIG;  then
-         if  query  "Do you want use $SPELL with ODBC support ?" n
-	     then  echo  "CF_ODBC=y"  >>  $SPELL_CONFIG; CF_OPTS="${CF_OPTS}  --with-odbc"
-	     else  echo  "CF_ODBC=n"  >>  $SPELL_CONFIG
-         fi
-     fi
-     
- fi
+  # ODBC - ok not an RDBMS, but I/m too lazy to make some extra 'option' :)
+  if  !  grep  -q  "CF_ODBC"  $SPELL_CONFIG;  then
+    if  query  "Do you want use $SPELL with ODBC support ?" n
+    then  echo  "CF_ODBC=y"  >>  $SPELL_CONFIG
+    else  echo  "CF_ODBC=n"  >>  $SPELL_CONFIG
+    fi
+  fi
 
-# save custom conf
- echo  "CF_OPTS='${CF_OPTS}'" >> ${SPELL_CONFIG}
+fi

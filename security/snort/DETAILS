@@ -1,18 +1,17 @@
            SPELL=snort
          VERSION=2.1.0
           SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=${SPELL}rules-current.tar.gz
+         SOURCE2=snortrules-snapshot-2_1.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.snort.org/dl/$SOURCE
   SOURCE2_URL[0]=http://www.snort.org/dl/rules/$SOURCE2
-        WEB_SITE=http://www.snort.org
           MD5[0]=cef9b6e1b9daa59e71b27d6fd190cf13
           MD5[1]=IGNORE
-      LICENSE[0]=GPL2
-      LICENSE[1]=GPL2
-      MAINTAINER=vydra@fria.fri.utc.sk
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+        WEB_SITE=http://www.snort.org/
          ENTERED=20011022
-         UPDATED=20031228
+         UPDATED=20030725
            SHORT="snort is a lightweight network intrustion detection program."
 cat << EOF
 Snort is a lightweight network intrusion detection system, capable of 

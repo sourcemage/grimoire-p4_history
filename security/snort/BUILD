@@ -1,81 +1,65 @@
 (
-  
- ./configure  --build=${BUILD}				\
-	      --prefix=${INSTALL_ROOT}/usr		\
-	      --sysconfdir=${INSTALL_ROOT}/etc/snort	\
-	      ${CF_OPTS}				\
-	      ${OPTS}					&&
- 
- make					&&
- make  check				&&
 
- prepare_install			&&
+  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
- make  install
+  OPTS="--prefix=${INSTALL_ROOT}/usr  \
+    --sysconfdir=${INSTALL_ROOT}/etc/snort  \
+ --localstatedir=${INSTALL_ROOT}/var  \
+        --mandir=${INSTALL_ROOT}/usr/share/man   \
+       --infodir=${INSTALL_ROOT}/usr/share/info  \
+                 ${OPTS}"
 
-) >  $C_FIFO  2>&1  &&  (
+  [     "$CF_SNMP" = y  ]  &&  OPTS="$OPTS --with-snmp"
+  [      "$CF_SMB" = y  ]  &&  OPTS="$OPTS --enable-smbalerts"
+  [    "$CF_FLEXR" = y  ]  &&  OPTS="$OPTS --enable-flexresp"
+  [  "$CF_PERFMON" = y  ]  &&  OPTS="$OPTS --enable-perfmonitor"
+  [    "$CF_MYSQL" = y  ]  &&  OPTS="$OPTS --with-mysql"
+  [     "$CF_PSQL" = y  ]  &&  OPTS="$OPTS --with-postgresql"
+  [      "$CF_ORA" = y  ]  &&  OPTS="$OPTS --with-oracle"
+  [     "$CF_ODBC" = y  ]  &&  OPTS="$OPTS --with-odbc"
+
+  ./configure  $OPTS  &&
+  make  &&
+  make  check  &&
+  prepare_install  &&
+  make  install
+
+) > $C_FIFO 2>&1 && (
 
   # Create the dirs
-  echo "making directory /etc/snort" 	&&
-  mkdir  -p  /etc/snort/rules		&&
+  echo "Making directory /etc/snort..."  &&
+  mkdir  -p  /etc/snort/rules &&
 
-  # if there is already an install - use it
-  if [ -f /etc/sysconfig/snort ]; then
-    . /etc/sysconfig/snort
-  else
-    LOG_DIR="/var/log/snort"
-    IFACES="eth0"
-  fi					&&
-  			
-  echo "making directory ${LOG_DIR}"	&&
-  for IFC in ${IFACES}; do
-    mkdir  -p  ${LOG_DIR}/${IFC}
-  done					&&
+  echo "Making directory /var/log/snort..."  &&
+  mkdir  -p  /var/log/snort  &&
 
-  chmod o-rwx ${LOG_DIR} /etc/snort 	&&
+  chmod o-rwx /var/log/snort /etc/snort &&
 
-  cd etc 				&&
+  cd  etc  &&
   
   # copy config files
-  for  FILE  in  `ls  *conf*`;  do
-    if  [  !  -f  /etc/$FILE  ];  then
-      echo "installing etc/$FILE to /etc/snort"			&&
-      /usr/bin/install -c -m 640  $FILE  /etc/snort
+  for  FILE  in  *conf* unicode.map  ;  do
+    if  [  !  -f  /etc/$FILE  ]  ;  then
+      echo "Installing etc/$FILE to /etc/snort..."  &&
+      install  -m 640  $FILE  /etc/snort
     fi
-  done 								&&
+  done  &&
 
-  # copy map files
-  for  FILE  in  `ls  *.map`;  do
-    if  [  !  -f  /etc/$FILE  ];  then
-      echo "installing etc/$FILE to /etc/snort"			&&
-      /usr/bin/install -c -m 640  $FILE  /etc/snort
+  cd  ../rules  &&
+
+  for  FILE  in  *.rules  ;  do
+    if  [  !  -f  /etc/snort/$FILE  ]  ;  then
+      echo "Installing rules/$FILE to /etc/snort/rules..."  &&
+      install  -m 640  $FILE   /etc/snort/rules
     fi
-  done 								&&
-
-  cd ../rules 							&&
-
-  for  FILE  in  `ls  *.rules`;  do
-    if  [  !  -f  /etc/snort/$FILE  ];  then
-      echo "installing rules/$FILE to /etc/snort/rules"		&&
-      /usr/bin/install -c -m 640  $FILE   /etc/snort/rules
-    fi
-  done								&&
+  done  &&
 
  # Modify the conf file
- sedit "s:../rules:/etc/snort/rules:" /etc/snort/snort.conf	&&
-
+ sedit  "s:../rules:/etc/snort/rules:"  /etc/snort/snort.conf  &&
 
  # change owner and group
- chown snort.snort /etc/snort ${LOG_DIR} -R			&&
+ chown  -R  snort.snort  /etc/snort  /var/log/snort  &&
  # to be sure ..
- chmod 640 /etc/snort/snort.conf				&&
-
- # create conf for ifaces if any
- for IFC in ${IFACES}; do
-    if [ ! -f /etc/snort/snort-${IFC}.conf ]; then
-	echo "Creating default /etc/snort/snort-${IFC}.conf"	&&
-	cp /etc/snort/snort.conf /etc/snort/snort-${IFC}.conf
-    fi
- done
+ chmod  640  /etc/snort/snort.conf
  
 )
