@@ -1,17 +1,15 @@
            SPELL=ucspi-tcp
          VERSION=0.88
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION/
-   SOURCE_URL[0]=http://cr.yp.to/$SPELL/$SPELL-$VERSION.tar.gz
-        WEB_SITE=http://cr.yp.to/ucspi-tcp.html
+   SOURCE_URL[0]=http://cr.yp.to/$SPELL/$SOURCE
           MD5[0]=c04e1ea96313742fbf0860e95da74557
-         ENTERED=20030519
-         UPDATED=20030519
-      MAINTAINER=martin@lddd.org
-           SHORT="ucspi-tcp tools, by D. J. Bernstein tcpserver, tcpclient.."
+        WEB_SITE=http://cr.yp.to/$SPELL/
+         ENTERED=20041110
+      LICENSE[0]=GPL
+           SHORT="cored asked me to write this spell"
+
 cat << EOF
-tcpserver and tcpclient conform to UCSPI, 
-the UNIX Client-Server Program Interface, 
-using the TCP protocol. 
-UCSPI tools are available for several different networks.
+erm, no idea what it does
 EOF
