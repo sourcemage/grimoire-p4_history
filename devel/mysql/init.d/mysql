@@ -17,7 +17,7 @@
 # If you want to affect other MySQL variables, you should make your changes
 # in the /etc/my.cnf, ~/.my.cnf or other MySQL configuration files.
 #
-# SMGL-script-version=20030224
+# SMGL-script-version=20030723
 # SMGL-START:3 4 5:S90
 # SMGL-STOP:0 1 2 6:K10
 
@@ -111,18 +111,18 @@ case "$mode" in
   'start')
     # Start daemon
 
-    if test -x $bindir/safe_mysqld
+    if test -x $bindir/mysqld_safe
     then
       # Give extra arguments to mysqld with the my.cnf file. This script may
       # be overwritten at next upgrade.
-      $bindir/safe_mysqld --datadir=$datadir --pid-file=$pid_file &
+      $bindir/mysqld_safe --datadir=$datadir --pid-file=$pid_file &
       # Make lock for RedHat / SuSE
       if test -w /var/lock/subsys
       then
         touch /var/lock/subsys/mysql
       fi
     else
-      echo "Can't execute $bindir/safe_mysqld from dir $basedir"
+      echo "Can't execute $bindir/mysqld_safe from dir $basedir"
     fi
 	evaluate_retval
     ;;
