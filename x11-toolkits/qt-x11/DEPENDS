@@ -5,8 +5,12 @@ optional_depends  "zlib" "-system-zlib" "-qt-zlib" "to use the system zlib libra
 optional_depends  "libmng" "-system-libmng" "-qt-libmng" "to use the system mng library"      &&
 optional_depends  "libpng" "-system-libpng" "-qt-libpng" "to use the system png library"      &&
 optional_depends  "STLport" "" "" "for stlport support "                                   &&
-optional_depends  "mysql" "-plugin-sql-mysql  -I/usr/include/mysql  -L/usr/lib  -lmysqlclient" \
+optional_depends  "firebird" "-plugin-sql-ibase  -I/usr/firebird/include  -L/usr/firebird/lib " \
+                  "" "for firebird database support"         &&
+optional_depends  "mysql" "-plugin-sql-mysql  -I/usr/include/mysql  -L/usr/lib  -lmysqlclient " \
                   "" "for mysql database support"         &&
+optional_depends  "sqlite" "-plugin-sql-sqlite  -I/usr/include  -L/usr/lib  -lsqlite" \
+                  "" "for sqlite database support"         &&
 #optional_depends  "postgresql"                         \
 #                  "-plugin-sql-psql  -I$SOURCE_DIRECTORY/postgresql-`installed_version postgresql`/src/include  -I$SOURCE_DIRECTORY/postgresql-`installed_version postgresql`/src/interfaces/libpq  -L/usr/lib  -lpq" \
 #                  "" "for postgresql database support"    &&
