@@ -46,7 +46,8 @@ historyfix.pl           - outputs an sh script for editing and patching all the 
 image.sh <grimoire-path> - print a grimoire image. This script is used to
                           create images for the report.pl tool listed below.
                           Try piping output as follows: '| tee <file.image>'
-                          and then pass the files to report.pl below.
+                          and then pass the files to report.pl below. (by
+                          Andrew Stitt)
 
 md5unpack <tarball>     - provides md5sum info from source tarball. 
 
@@ -56,6 +57,7 @@ rebuildPackages         - In case you delete your /var/state/sorcery/packages
 report.pl <image1> <image2> - this tool take two different images created by
                           the image.sh tool and report the differences,
                           amazing amount of information! (see image.sh above)
+                          (by Andrew Stitt)
 
 spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           #{MYSPELLS}/software and DETAILS in your local 
