@@ -1,6 +1,6 @@
 diff -urN viewcvs-0.9.2/cgi/viewcvs.conf.dist viewcvs/cgi/viewcvs.conf.dist
 --- viewcvs-0.9.2/cgi/viewcvs.conf.dist	2001-12-22 23:13:34.000000000 -0500
-+++ viewcvs/cgi/viewcvs.conf.dist	2002-04-11 19:55:56.000000000 -0400
++++ viewcvs/cgi/viewcvs.conf.dist	2002-05-13 11:56:32.000000000 -0400
 @@ -67,7 +67,6 @@
  # roots should be separated by commas.
  #
@@ -47,7 +47,7 @@ diff -urN viewcvs-0.9.2/cgi/viewcvs.conf.dist viewcvs/cgi/viewcvs.conf.dist
  # Set to enable regular expression search of all files in a directory
 diff -urN viewcvs-0.9.2/lib/cvsdb.py viewcvs/lib/cvsdb.py
 --- viewcvs-0.9.2/lib/cvsdb.py	2001-11-18 05:29:31.000000000 -0500
-+++ viewcvs/lib/cvsdb.py	2002-04-11 20:46:08.000000000 -0400
++++ viewcvs/lib/cvsdb.py	2002-05-13 11:56:32.000000000 -0400
 @@ -412,11 +412,8 @@
              ## is broken, dateobject.ticks() returns somthing like
              ## GMT ticks, except it forgets about daylight savings
@@ -62,9 +62,48 @@ diff -urN viewcvs-0.9.2/lib/cvsdb.py viewcvs/lib/cvsdb.py
              commit.SetTime(gmt_time)
              
              commit.SetFile(self.GetFile(dbFileID))
+diff -urN viewcvs-0.9.2/lib/viewcvs.py viewcvs/lib/viewcvs.py
+--- viewcvs-0.9.2/lib/viewcvs.py	2002-01-15 04:35:55.000000000 -0500
++++ viewcvs/lib/viewcvs.py	2002-05-16 22:29:57.000000000 -0400
+@@ -478,7 +478,7 @@
+ def markup_stream_enscript(lang, fp):
+   sys.stdout.flush()
+   enscript = popen.pipe_cmds([(os.path.normpath(os.path.join(cfg.options.enscript_path,'enscript')),
+-                               '--color', '-W', 'html', '-E' + lang, '-o',
++                               '--color', '--language=html', '-E' + lang, '-o',
+                                '-', '-'),
+                               ('sed', '-n', '/^<PRE>$/,/<\\/PRE>$/p')])
+ 
+@@ -1416,7 +1416,7 @@
+     tar_basename = os.path.basename(where) 
+     if not tar_basename:
+       tar_basename = "cvs_root"
+-    url = tar_basename + '.tar.gz?tarball=1' + request.amp_query
++    url = tar_basename + '.tar.bz2?tarball=1' + request.amp_query
+     data['tarball_href'] = url
+ 
+   http_header()
+@@ -2512,7 +2512,7 @@
+   tag = query_dict.get('only_with_tag')
+ 
+   http_header('application/octet-stream')
+-  fp = popen.pipe_cmds([('gzip', '-c', '-n')])
++  fp = popen.pipe_cmds([('bzip2', '-c', '-q')])
+   generate_tarball(fp, os.path.basename(directory), directory, tag)
+   fp.write('\0' * 1024)
+   fp.close()
+@@ -2602,7 +2602,7 @@
+        and query_dict.has_key('r1') and query_dict.has_key('r2'):
+     view_diff(request, full_name[:-5])
+   elif cfg.options.allow_tar \
+-       and full_name[-7:] == '.tar.gz' and query_dict.has_key('tarball'):
++       and full_name[-8:] == '.tar.bz2' and query_dict.has_key('tarball'):
+     download_tarball(request)
+   elif request.has_docroot_magic:
+     view_doc(request)
 diff -urN viewcvs-0.9.2/viewcvs-install viewcvs/viewcvs-install
 --- viewcvs-0.9.2/viewcvs-install	2001-12-21 06:59:45.000000000 -0500
-+++ viewcvs/viewcvs-install	2002-04-11 19:55:56.000000000 -0400
++++ viewcvs/viewcvs-install	2002-05-13 11:56:32.000000000 -0400
 @@ -51,7 +51,7 @@
  """ % version
  

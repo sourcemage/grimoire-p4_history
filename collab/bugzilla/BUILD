@@ -5,6 +5,11 @@
 	rm -fr `find ./ -type d -and -name CVS`        &&
 	rm -fr `find ./ -type f -and -name .cvsignore` &&
 
+	# change perl invocation path
+	for F in `find -maxdepth 1 -type f`; do
+		perl -pi -e "s@/usr/bonsaitools/bin/perl@`which perl`@" $F
+	done                                           &&
+
 	prepare_install                                &&
 
     mkdir -p    /usr/share/$SPELL                  &&
