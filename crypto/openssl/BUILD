@@ -6,6 +6,7 @@
 
   sedit  "s/-O3//"                    Makefile    &&
   sedit  "s/^CFLAG=/CFLAG=$CFLAGS /"  Makefile    &&
+  sedit  "s/chmod 644\(.*pkgconfig\)/chmod 755\1/"  Makefile  &&
 
   make                                            &&
   prepare_install                                 && 
