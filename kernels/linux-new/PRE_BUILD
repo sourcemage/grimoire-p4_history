@@ -1,9 +1,8 @@
-. ${SCRIPT_DIRECTORY}/details.conf
+. ${CONFIG_CACHE}/details.conf
 if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $SOURCE_DIRECTORY 
 
-	echo "This is the linux source: $SOURCE" &&
 	cd ${SOURCE_DIRECTORY}
 	unpack $SOURCE ${MD5[0]}
 	cd linux-${KERNEL_VERSION}
@@ -22,7 +21,7 @@ then
 		esac
 		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
-		cp ${INSTALL_ROOT}/var/spool/sorcery/${source} ./
+		cp ${INSTALL_ROOT}/${SOURCE_CACHE}/${source} ./
 		linux_new_uncompress ./${source}
 		patch -p${pval} <${patch}
 	done
@@ -33,7 +32,7 @@ then
 	else
 		append=$patchversion
 	fi
-	. ${SCRIPT_DIRECTORY}/details.defaults
+	. ${CONFIG_CACHE}/details.defaults
 	[ -d ${BUILD_DIRECTORY}/linux-$append ] && 
 	rm -r ${BUILD_DIRECTORY}/linux-$append
 	mkdir ${BUILD_DIRECTORY}/linux-$append
@@ -50,7 +49,7 @@ else
 fi
 cd ${LINUX_SOURCE_DIRECTORY}
 
-. ${SCRIPT_DIRECTORY}/details.conf
+. ${CONFIG_CACHE}/details.conf
 if [[ "$RECONFIGURE" == "true" || ! -f ./.config ]]
 then
 	if [[ $COMPILE ]]
@@ -59,9 +58,9 @@ then
 	fi
 	if [ "${output_dir}" == "" ]
 	then
-		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config-${VERSION} ./.config
+		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
 		ARCH="${kernel_arch}" make $MAKEMODE
-		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config-${VERSION}
+		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
 	else
 		mkdir -p ${output_dir}
 		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config "${output_dir}"
