@@ -1,0 +1,26 @@
+           SPELL=prometheus
+         VERSION=0.1
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://t.armory.com/${SOURCE}
+      MAINTAINER=astitt@sourcemage.org
+         LICENSE=GPL
+          MD5[0]=
+         ENTERED=20030730
+         UPDATED=20030730
+           SHORT="Prometheus is a tinderbox for sourcemage"
+cat << EOF
+
+Prometheus is the bringer of fire.
+
+With prometheus one can repeatedly cast and dispel spells, all the way
+through the grimoire, over and over again; relentlessly and mercilously
+to no end, making the system beg for mercy.
+
+This is a brute-force way of testing our grimoire's for bugs, and thus
+providing a more stable system. Eventually it will automatically make
+bug reports in bugzilla and everything, for now it just casts and dispels.
+
+From the chaos we will achieve stability.
+
+EOF
