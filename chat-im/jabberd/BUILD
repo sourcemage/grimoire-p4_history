@@ -1,5 +1,3 @@
-(
-
 # create_account jabberd &&
 
   for f in $(find . -name "*" -type f); do
@@ -27,14 +25,4 @@
     --enable-debug \
     --with-libiconv-prefix=${INSTALL_ROOT}/usr \
     $OPTS &&
-  make &&
-  prepare_install &&
-  make    install
-
-) >$C_FIFO 2>&1 && (
-
-  mkdir -p --mode=700 ${INSTALL_ROOT}/var/jabberd/db
-  mkdir -p --mode=700 ${INSTALL_ROOT}/var/log/jabberd
-# chown -R jabberd:jabberd /var/jabberd /var/log/jabberd
-
-)
+  make
