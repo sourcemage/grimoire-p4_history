@@ -1,22 +1,2 @@
-(
-
-  xmkmf                            &&
-  make                             &&
-  prepare_install                  &&
-  make install                     &&
-  make install.doc                 &&
-  make install.man                 &&
-  cd  /etc/X11/app-defaults        &&
-
-  # Changes netscape to mozilla and acroread to xpdf as defaults,
-  # if they're installed
-  if  spell_ok  mozilla
-  then
-    patch  -p0  <  ${SCRIPT_DIRECTORY}/Fig.mozilla.diff
-  fi
-  if  spell_ok xpdf
-  then
-    patch  -p0  <  ${SCRIPT_DIRECTORY}/Fig.xpdf.diff
-  fi
-
-) > $C_FIFO 2>&1
+xmkmf                            &&
+make
