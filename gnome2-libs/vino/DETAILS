@@ -1,17 +1,16 @@
            SPELL=vino
-         VERSION=2.7.92
+         VERSION=2.8.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
-          MD5[0]='4acb319a6a7722d7be8a4ee2cb946cfa'
+          MD5[0]='18ec138fbcc809916b7a408108216639'
       LICENSE[0]=LGPL
-      MAKE_NJOBS=1
        BUILD_API=2
-        WEB_SITE=http://fixme
+        WEB_SITE=http://www.gnome.org
          ENTERED=20040904
-         UPDATED=20040904
-           SHORT=""
+         UPDATED=20040914
+           SHORT="Integrated VNC server for GNOME"
 cat << EOF
-
+Integrated VNC server for GNOME
 EOF
