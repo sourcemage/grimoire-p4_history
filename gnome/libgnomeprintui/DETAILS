@@ -1,17 +1,16 @@
            SPELL=libgnomeprintui
-         VERSION=2.2.1.2
+         VERSION=2.2.1.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="f140c8c0e2d4d1c913be8fac6f4780a4"
-        WEB_SITE=http://www.gnome.org/projects/gnome-print
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]=47a45394084d838b61b1abd5d0f61890
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
+        WEB_SITE=http://www.gnome.org/projects/gnome-print
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030311
+         UPDATED=20030623
            SHORT="gnome-print is an API that implements the Postscript imaging model"
 cat << EOF
 gnome-print is a C-based API that implements the Postscript imaging
