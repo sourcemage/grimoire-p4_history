@@ -1,0 +1,17 @@
+           SPELL=lineakconfig
+         VERSION=0.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://prdownloads.sourceforge.net/lineak/$SOURCE
+        WEB_SITE=http://lineak.sourceforge.net/
+         ENTERED=
+         UPDATED=
+      MAINTAINER=fkb@iago.polito.it
+           SHORT="Linux support for Easy Access and Internet Keyboards - configuration GUI"
+cat << EOF
+LinEAK is a utility designed to enable the use and configuration of the
+special keys on Internet, Easy Access and Multimedia keyboards in Linux.
+It consists of two programs:
+* lineakd: daemon that configures the X keyboard map and listens for events.
+* lineakconfig: the GTK+ GUI, which provides easier configuration
+EOF

@@ -1,5 +1,7 @@
 (
 
+  sedit  "s/@ENLIGHTENMENT_BIN@/\/usr\/bin/"  scripts/enlightenment.install.in
+
   ./configure  --prefix=/usr      \
                --sysconfdir=/etc  \
                --enable-fsstd     &&

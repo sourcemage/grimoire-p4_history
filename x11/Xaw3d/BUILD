@@ -1,0 +1,15 @@
+(
+  cd lib/Xaw3d                      &&
+  ln -s .. X11			    &&
+  perl -i -pe 's/#  (EXTRA_INCLUDES = -I.)/$1/' Imakefile &&
+  perl -i -pe 's/#include <widec.h>//' XawI18n.h &&
+  xmkmf                             &&
+  make Makefiles                    &&
+  make				    &&
+  prepare_install                   &&
+  make  INSTALLDIR=/usr/bin         \
+        INCLUDEDIR=/usr/include     \
+        MANDIR=/usr/share/man/man1  \
+        install
+) > $C_FIFO 2>&1
+
