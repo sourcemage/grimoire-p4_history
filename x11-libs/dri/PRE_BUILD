@@ -22,7 +22,7 @@ sedit "s:#define XF86CardDrivers tdfx mga ati glint vga:#define XF86CardDrivers 
 sedit "s:#define DriDrivers r200 tdfx mga r128 radeon gamma ffb:#define DriDrivers ${DRI_DRIVER}:" ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def  &&
 
 
-if [ "DRI_SSE_OPTIMIZATIONS" == "y" ]
+if [ "${DRI_SSE_OPTIMIZATIONS}" == "y" ]
 then
 echo "#define MesaUseKatmai YES" >> ${SOURCE_DIRECTORY}/xc-Trunk/xc/config/cf/host.def 
 fi
