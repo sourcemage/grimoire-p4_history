@@ -1,5 +1,5 @@
            SPELL=gaim
-         VERSION=${VERSION:=1.1.1}
+         VERSION=${VERSION:=1.1.2}
 if  [  "$CVS"  ==  "y"  ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -9,7 +9,7 @@ if  [  "$CVS"  ==  "y"  ]; then
 else
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]='ea3648d9c4a7ec8f4e15adec9fdc0399'
+          MD5[0]='be293507d86639c228a0627d469d4c7d'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim.sourceforge.net/
