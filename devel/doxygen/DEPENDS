@@ -1,6 +1,7 @@
 depends  bison  &&
 depends  flex   &&
 depends  perl   &&
+depends  g++    &&
 
 optional_depends  graphviz                \
                   ""                      \
@@ -16,26 +17,7 @@ optional_depends  qt-x11                \
                   "--with-doxywizard"   \
                   ""                    \
                   "for DoxyWizard GUI"  &&
-
-if  spell_installed  espgs;  then
-  optional_depends  espgs                                       \
-                    ""                                          \
-                    ""                                          \
-                    "for generating Postscript and PDF output"
-elif  spell_installed  ghostscript;  then
-  optional_depends  ghostscript                                 \
-                    ""                                          \
-                    ""                                          \
-                    "for generating Postscript and PDF output"
-else
-  message  "If you are going to install cups, choose espgs instead of ghostscript:"
-  optional_depends  espgs                                        \
-                    ""                                           \
-                    ""                                           \
-                    "for generating Postscript and PDF output"   &&
-
-  optional_depends  ghostscript                                 \
-                    ""                                          \
-                    ""                                          \
-                    "for generating Postscript and PDF output"
-fi
+optional_depends  POSTSCRIPT-INTERPRETER \
+                  ""                                          \
+                  ""                                          \
+                  "for generating Postscript and PDF output"
