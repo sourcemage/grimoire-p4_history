@@ -5,7 +5,7 @@
 
   # Bring mod_proxy_http to the 2.0.47's version because the one in HEAD
   # produces weird errors for me in reverse proxy mode
-  patch -p1 -R < $SCRIPT_DIRECTORY/mod_proxy_http.diff &&
+# patch -p1 -R < $SCRIPT_DIRECTORY/mod_proxy_http.diff &&
 
   patch -p1 < $SCRIPT_DIRECTORY/../apache2/build.diff &&
   ./buildconf --with-apr=/usr/share/apache2 --with-apr-util=/usr/share/apache2 &&
