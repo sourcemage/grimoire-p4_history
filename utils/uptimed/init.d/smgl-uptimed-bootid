@@ -1,11 +1,13 @@
 #!/bin/bash
 
+PROGRAM=/bin/false
 RUNLEVEL=S
 NEEDS="+local_fs"
 
+. /etc/init.d/smgl_init
+
 start()
 {
-  rm -f /var/spool/uptimed/bootid
   /sbin/uptimed  -b
 }
 
