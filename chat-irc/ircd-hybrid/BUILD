@@ -1,6 +1,5 @@
 # $Id$
-(
-        # man page isn't installed correctly - fix that:
+# man page isn't installed correctly - fix that:
         sedit  "s/\/man8/\/man\/man8/" doc/Makefile.in
 
 	./configure              \
@@ -11,8 +10,4 @@
 		--enable-rtsigio     \
 		--disable-assert     \
 		$OPTS                &&
-	make                     &&
-	prepare_install          &&
-	make    install
-
-) > $C_FIFO 2>&1
+	make
