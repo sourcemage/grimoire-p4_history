@@ -13,15 +13,6 @@ rm -r tutorial
 sedit "s#-O2#$CFLAGS#" mkspecs/linux-g++/qmake.conf &&
 sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 
-
-#sedit "s#\$(QTDIR)/lib#/usr/lib/qt#" \
-#               tools/designer/designer/designer.pro &&
-#sedit "s#../../../lib#/usr/lib/qt#" \
-#               tools/designer/uilib/uilib.pro &&
-#sedit "s#../../../lib#/usr/lib/qt#" \
-#               tools/designer/editor/editor.pro &&
-
-
 export QTDIR=$SOURCE_DIRECTORY  &&
 
   if  spell_installed  postgresql;  then
@@ -41,7 +32,6 @@ export QTDIR=$SOURCE_DIRECTORY  &&
                                -datadir /usr/share/qt \
                                -thread             \
                                -qt-gif             \
-                               -xft                \
                                $OPTS               &&
 
   make symlinks sub-src sub-tools                  &&
