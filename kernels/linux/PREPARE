@@ -16,6 +16,10 @@ patch_versions(){
     echo $VERSION
     echo "Version"
   done
+  if [[ "${CUSTOM}" != "" ]]; then
+    echo "custom"
+    echo "Custom configuration"
+  fi
 }
 
 patch_menu() {
@@ -29,7 +33,10 @@ patch_menu() {
     )
     retval=$?
     if [[ "$retval" == "0" ]]; then
-      if [[ ${COMMAND} != "off" ]]; then
+      if [[ ${COMMAND} == "custom" ]]; then
+        $CUSTOM
+        eval "${PATCH}=custom"
+      elif [[ ${COMMAND} != "off" ]]; then
         eval "${PATCH}=${COMMAND}"
       else
         eval "unset ${PATCH}"
@@ -80,6 +87,7 @@ main_menu() {
 local DEFAULT
 while true
 do
+  unset CUSTOM
   COMMAND=$( $DIALOG --title "Main Kernel Menu"                  \
            --item-help --cancel-label "Exit and Save" --ok-label "Select" \
            --default-item "$DEFAULT" --menu                      \
