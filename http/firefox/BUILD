@@ -14,6 +14,10 @@ if  [  "$FIREFOX_SVG"  =  "y"  ];  then
   export  MOZ_INTERNAL_LIBART_LGPL=1
 fi  &&
 
+if [ "$FIREFOX_CVS" == "y" ]; then
+  OPTS="$OPTS --enable-application=browser"
+fi &&
+
 ./configure                                       \
   --prefix=${INSTALL_ROOT}/usr                    \
   --with-user-appdir=.firefox                     \
