@@ -23,8 +23,9 @@
   rm    -rf  /usr/mysql-test                              &&
 
   if ! grep  -q  "\--without-server" $SPELL_CONFIG;  then
-    groupadd  mysql             2>/dev/null
-    useradd   mysql  -g  mysql  2>/dev/null
+    create_account mysql
+#    groupadd  mysql             2>/dev/null
+#    useradd   mysql  -g  mysql  2>/dev/null
 
     mysql_install_db
     chown  -R  mysql.mysql  /var/lib/mysql
