@@ -1,12 +1,12 @@
            SPELL=gaim
-         VERSION=${VERSION:=1.1.2}
-if  [  "$CVS"  ==  "y"  ]; then
+if  [  "$GAIM_CVS"  ==  "y"  ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim:gaim
   FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
 else
+          VERSION=1.1.2
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]='be293507d86639c228a0627d469d4c7d'
