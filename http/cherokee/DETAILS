@@ -2,8 +2,9 @@
          VERSION=0.4.10
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://alobbs.com/cherokee/${VERSION%\.*}/$VERSION/$SOURCE
-   SOURCE_URL[1]=ftp://laurel.datsi.fi.upm.es/pub/linux/cherokee/$VERSION/$SOURCE
+         SRCDIR=cherokee/${VERSION%\.*}/$VERSION/$SOURCE
+   SOURCE_URL[0]=ftp://laurel.datsi.fi.upm.es/pub/linux/$SRCDIR
+   SOURCE_URL[1]=ftp://alobbs.com/$SRCDIR
           MD5[0]=f3fe38e87a8c4e9744d0d5a1455c2bb1
         WEB_SITE=http://www.0x50.org/
       LICENSE[0]=GPL
