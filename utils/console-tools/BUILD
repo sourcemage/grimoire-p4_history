@@ -1,5 +1,7 @@
 (
  
+  patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
+
   sedit "s/doc//"       Makefile.am  &&
   sedit "s/doc//"       Makefile.in  &&
   sedit "s/examples//"  Makefile.am  &&
