@@ -1,0 +1,17 @@
+           SPELL=freeglut
+         VERSION=2.0.0.rc6
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION/.rc6/}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+          MD5[0]=e1724f3c351577f060fe43e1fab2529c
+        WEB_SITE=http://freeglut.sourceforge.net/
+         ENTERED=20030127
+         UPDATED=20030127
+      LICENSE[0]=XCL
+      MAINTAINER=eric@sandall.us
+           SHORT="Open Source alternative to GLUT"
+cat << EOF
+freeglut is a completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library. GLUT was originally written by Mark Kilgard to support the sample programs in the second edition OpenGL 'RedBook'. Since then, GLUT has been used in a wide variety of practical applications because it is simple, universally available and highly portable.
+
+GLUT (and hence freeglut) allows the user to create and manage windows containing OpenGL contexts on a wide range of platforms and also read the mouse, keyboard and joystick functions.
+EOF
