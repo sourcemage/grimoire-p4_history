@@ -1,5 +1,5 @@
 (
-  ./bootstrap                           &&
+  ./SConstruct                          &&
   ./configure  --disable-blenderplugin  \
                --without-gameblender    \
                --enable-shared          \
