@@ -1,6 +1,6 @@
          VERSION=0.10.1
           MD5[0]='6e0da59dfcad0e408e49ce335a1f7a46'
-         UPDATED=20031205
+         UPDATED=20040328
            SPELL=PEAR-Net_NNTP
         WEB_SITE=http://pear.php.net/package/Net_NNTP/
       LICENSE[0]=W3C
@@ -11,8 +11,7 @@ servers. Includes features like post, view,
 list, authentication, overview, etc.
 
 <hr>
-There are currently 2 maintained versions of
-Net_NNTP:<ul>
+Maintained versions of Net_NNTP:<ul>
 <li><b>0.10.x</b> (alpha) - <i>(merges v0.3.3
 and v0.9.4 into one package)</i><br>
 Backward compatible drop in replacement for
@@ -32,13 +31,15 @@ be fixed)</i><br>
 Rather outdated, but widely used.<br></li>
 </ul>
 <hr>
-There are currently 3 unmaintained versions of
-Net_NNTP:<ul>
+Unmaintained versions of Net_NNTP:<ul>
 <li><b><s>0.1</s></b> (stable) - <i>(<u>no
 further development</u> - use v0.2.x
 instead)</i><br>
-Rather outdated, but widely used.<br></li>
+Rather outdated, but widely used.<br>NOT
+binary-safe<br></li></ul>
 
+<hr>
+Deprecated versions of Net_NNTP:<ul>
 <li><b><s>0.9.x</s></b> (alpha) - <i>(<u>no
 further development</u> - use v0.10.x
 instead)</i><br>
@@ -90,7 +91,7 @@ error handling is a lot better than in v0.2, but
 is still a little weak, since the error
 codes/messages is not done yet (PEAR_Error
 objects IS returned, but often without messages)
-- most errors are caught though...
+- most kinds of errors are caught though...
 
 <hr>
 <b>People who've put work into Net_NNTP</b> (in
