@@ -1,15 +1,17 @@
            SPELL=icecast
-    	VERSION=2.1.0
+         VERSION=2.2.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://downloads.us.xiph.org/releases/$SPELL/$SOURCE
-        WEB_SITE=http://www.icecast.org
-	LICENSE[0]=GPL
-      MAINTAINER=mark@orbislumen.net
+          MD5[0]=31ef423baab52fc3713da6bd7bfb011d
+        WEB_SITE=http://www.icecast.org/
          ENTERED=20020209
          UPDATED=20040519
-	MD5[0]=b62f92139ba9df678d85e198d8e27d87
-           SHORT="Icecast 2 is the DEVELOPMENT version of Icecast - an streaming audio server supporting Ogg Vorbis."
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A streaming audio server supporting Ogg Vorbis"
 cat << EOF
-Icecast is an internet audio broadcasting system based on Ogg Vorbis audio technology. It allows almost anyone to broadcast an audio stream to as many people as their bandwidth can support.
+This is the development version of IceCast.
+
+Icecast is an internet audio broadcasting system based on Ogg Vorbis audiotechnology. It allows almost anyone to broadcast an audio stream to as many people as their bandwidth can support.
 EOF
