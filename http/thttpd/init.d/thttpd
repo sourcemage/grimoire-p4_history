@@ -29,9 +29,9 @@ stop() {
   echo   "Stopping thttpd..."
   if [ -e $HTPIDF ]; then
     kill `cat $HTPIDF`
+    true
     evaluate_retval
     rm -f $HTPIDF
-    sleep 1
   else
     false
     evaluate_retval
