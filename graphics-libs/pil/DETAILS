@@ -1,10 +1,14 @@
-           SPELL=PIL
+           SPELL=pil
          VERSION=1.1.4
+          SOURCE=Imaging-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Imaging-$VERSION
+   SOURCE_URL[0]=http://effbot.org/downloads/$SOURCE
+          MD5[0]=ac9e30b0b41e2c5efc59e5ad860a118e
         WEB_SITE=http://www.pythonware.com/products/pil/index.htm
          ENTERED=20020531
-         UPDATED=20040720
+         UPDATED=20020531
       LICENSE[0]=GPL
-      MAINTAINER=unet@sourcemage.org
+       BUILD_API=2
            SHORT="Python Imaging Library"
 cat << EOF
 The Python Imaging Library (PIL) adds 
