@@ -1,14 +1,14 @@
            SPELL=gnome-keyring
-         VERSION=0.4.0
+         VERSION=0.4.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='d799610897512f1292c4fece6f8ff31b'
+          MD5[0]='6eebcb04e7268f64d98ae3d1c1656598'
       LICENSE[0]=LGPL
        BUILD_API=2
          ENTERED=20020505
-         UPDATED=20040913
+         UPDATED=20050208
            SHORT="GNOME password keeper"
 cat << EOF
 gnome-keyring is a program that keep password and other secrets for
