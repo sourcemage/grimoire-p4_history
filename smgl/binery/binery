@@ -681,7 +681,7 @@ add_spell_to_grimoire() {
 	local failed_spells
 	local spell_where
 	local spell_version
-	local spell_installed
+	local spell_ok
 	local sd
 	local first_line
 	local i
@@ -725,12 +725,12 @@ add_spell_to_grimoire() {
 	debugging "Version number for spell '$1': $spell_version"
 
 	# get install date of spell (used as ENTERED)
-	spell_installed=`grep ^${1}: $EXT_SORCERY_PACKAGES | cut -f2 -d:`
-	if [ -z $spell_installed ]; then
+	spell_ok=`grep ^${1}: $EXT_SORCERY_PACKAGES | cut -f2 -d:`
+	if [ -z $spell_ok ]; then
 		echo "	$1: could not determine install date" >> $failed_spells
 		return 1
 	fi
-	debugging "Install date for spell '$1': $spell_installed"
+	debugging "Install date for spell '$1': $spell_ok"
 
 	# create spell directory
 	debugging "Creating spell directory: $sd"
@@ -748,7 +748,7 @@ add_spell_to_grimoire() {
 	cat > ${sd}/DETAILS << EOF
            SPELL=$1
          VERSION=$spell_version
-         ENTERED=$spell_installed
+         ENTERED=$spell_ok
          UPDATED=never
           SOURCE=\$SPELL-\$UPDATED.bin.tar.bz2
    SOURCE_URL[0]=${BINERY_BASE_URL}/${2}/\${SOURCE}
@@ -1186,7 +1186,7 @@ update_spell() {
 	local spell_where
 	local spell_directory
 	local spell_version
-	local spell_installed
+	local spell_ok
 	local spell_md5
 	local i
 
@@ -1225,8 +1225,8 @@ update_spell() {
 	fi
 
 	# get install date of spell (used as ENTERED)
-	spell_installed=`grep ^${2}: $EXT_SORCERY_PACKAGES | cut -f2 -d:`
-	if [ -z $spell_installed ]; then
+	spell_ok=`grep ^${2}: $EXT_SORCERY_PACKAGES | cut -f2 -d:`
+	if [ -z $spell_ok ]; then
 		verbosing "$2: not installed...skipping it."
 		return
 	fi
@@ -1240,9 +1240,9 @@ update_spell() {
 	fi
 
 	# check if spell has been updated
-	if [ $spell_installed = $UPDATED ]; then
-		if [ -e ${BINERY_SPOOL}/${1}/${2}-${spell_installed}.bin.tar.bz2 ]; then
-			debugging "Spell '$2' is up to date in grimoire '$1' ($spell_installed)"
+	if [ $spell_ok = $UPDATED ]; then
+		if [ -e ${BINERY_SPOOL}/${1}/${2}-${spell_ok}.bin.tar.bz2 ]; then
+			debugging "Spell '$2' is up to date in grimoire '$1' ($spell_ok)"
 			rm ${BINERY_TMP}.${2}.desc
 			return
 		else
@@ -1353,17 +1353,17 @@ update_spell() {
 		# create binary package
 		local tflgs
 		tflgs="--ignore-failed-read -cPpsjf"
-		tar ${tflgs} ${BINERY_SPOOL}/${1}/${2}-${spell_installed}.bin.tar.bz2 -T ${BINERY_TMP}.${2}.install
+		tar ${tflgs} ${BINERY_SPOOL}/${1}/${2}-${spell_ok}.bin.tar.bz2 -T ${BINERY_TMP}.${2}.install
 
 		# get md5
-		spell_md5=`bzcat ${BINERY_SPOOL}/${1}/${2}-${spell_installed}.bin.tar.bz2 | md5sum | cut -f1 -d\ `
+		spell_md5=`bzcat ${BINERY_SPOOL}/${1}/${2}-${spell_ok}.bin.tar.bz2 | md5sum | cut -f1 -d\ `
 
 		# create new DETAILS
 		cat > ${spell_directory}/DETAILS << EOF
            SPELL=$SPELL
          VERSION=$spell_version
          ENTERED=$ENTERED
-         UPDATED=$spell_installed
+         UPDATED=$spell_ok
           SOURCE=\$SPELL-\$UPDATED.bin.tar.bz2
    SOURCE_URL[0]=${BINERY_BASE_URL}/${1}/\${SOURCE}
           MD5[0]=$spell_md5
@@ -1384,7 +1384,7 @@ EOF
            SPELL=$SPELL
          VERSION=$spell_version
          ENTERED=$ENTERED
-         UPDATED=$spell_installed
+         UPDATED=$spell_ok
            SHORT="$spell_short"
 EOF
 
@@ -1409,7 +1409,7 @@ update_ref_spell() {
 
 	# declare local vars
 	local spell_directory
-	local spell_installed
+	local spell_ok
 
 	# check for grimoire argument
 	if [ -z $1 ]; then
@@ -1421,15 +1421,15 @@ update_ref_spell() {
 	spell_directory="${BINERY_LIB}/codex/${1}/binery/ref"
 
 	# get install date of spell
-	spell_installed=$BINERY_REF_UPDATED
+	spell_ok=$BINERY_REF_UPDATED
 
 	# load the spell DETAILS
 	if [ ! -e ${spell_directory}/DETAILS ]; then
 		debugging "Reference spell is missing DETAILS in grimoire '$1'"
 	else
 		. ${spell_directory}/DETAILS > /dev/null
-		if [ $spell_installed = $UPDATED ]; then
-			debugging "Reference spell is up to date ($spell_installed)"
+		if [ $spell_ok = $UPDATED ]; then
+			debugging "Reference spell is up to date ($spell_ok)"
 			return
 		fi
 	fi
