@@ -1,4 +1,5 @@
 (
+	patch -p1 < $SCRIPT_DIRECTORY/patch.diff &&
 	perl Makefile.PL &&
 	make             &&
 	make test        &&
