@@ -56,4 +56,6 @@ export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
   install -m 0644 $SCRIPT_DIRECTORY/qt.sh   \
            ${INSTALL_ROOT}/etc/profile.d/
 
+# fixing the include dir problem
+sed -e 's/QTDIR)\/include/QTDIR)\/include\/qt' -i /usr/share/qt/mkspecs/default/qmake.conf 
 ) > $C_FIFO 2>&1
