@@ -42,8 +42,9 @@
 
   # safety precaution against earlier PHP installations removing httpd.conf
   # we can remove this sedit after a couple of ISOs (today's 2003-11-05)
-  sedit 's|.*/httpd\.conf.*||g' $INSTALL_LOGS/$SPELL-* &&
-
+  if [ -f $INSTALL_LOGS/$SPELL-* ]
+     then  sedit 's|.*/httpd\.conf.*||g' $INSTALL_LOGS/$SPELL-* 
+  fi              &&
   prepare_install &&
   make    install &&
   if         ! [ -e ${INSTALL_ROOT}/etc/php.ini ]; then
