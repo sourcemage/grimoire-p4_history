@@ -52,6 +52,10 @@
     ;;
   esac &&
 
+  if echo $CFLAGS | grep -q pentium4; then
+    export CFLAGS="${CFLAGS/-O3/}"
+  fi &&
+
   ./configure                   \
     --prefix=/usr		\
     --with-x                    \
