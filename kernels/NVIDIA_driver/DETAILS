@@ -2,7 +2,9 @@
          VERSION=1.0-4496-pkg2
           SOURCE=NVIDIA-Linux-x86-$VERSION.run
          SOURCE2=NVIDIA_kernel-${VERSION/-pkg2/}-2.5.diff
+          MD5[1]=47a817ba3331401205bf3e2b884540e4
          SOURCE3=nv-linux.diff
+          MD5[2]=487809e00954adefad6c11500d2230a3
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.nvidia.com/XFree86/Linux-x86/${VERSION/-pkg2/}/$SOURCE
   SOURCE2_URL[0]=http://www.minion.de/files/$SOURCE2
