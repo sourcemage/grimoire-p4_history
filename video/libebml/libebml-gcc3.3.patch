@@ -1,0 +1,48 @@
+diff -Nur libebml-0.4.2/make/linux/Makefile libebml-0.4.2-gcc3.3/make/linux/Makefile
+--- libebml-0.4.2/make/linux/Makefile	2003-05-11 15:12:18.000000000 +0200
++++ libebml-0.4.2-gcc3.3/make/linux/Makefile	2003-05-20 19:06:42.000000000 +0200
+@@ -10,7 +10,7 @@
+ #
+ 
+ # Paths
+-prefix=/usr/local
++prefix=$(INSTALL_ROOT)/usr
+ libdir=$(prefix)/lib
+ includedir=$(prefix)/include/ebml
+ 
+diff -Nur libebml-0.4.2/src/EbmlSInteger.cpp libebml-0.4.2-gcc3.3/src/EbmlSInteger.cpp
+--- libebml-0.4.2/src/EbmlSInteger.cpp	2003-04-28 23:55:19.000000000 +0200
++++ libebml-0.4.2-gcc3.3/src/EbmlSInteger.cpp	2003-05-20 18:35:12.000000000 +0200
+@@ -107,11 +107,11 @@
+ 	} else if (Value <= 0x7FFFFFFFFFFFFFll && Value >= (-0x80000000000000ll)) {
+ 		Size = 7;
+ #else // LIBEBML_GCC2
+-	} else if (Value <= 0x7FFFFFFFFF && Value >= (-0x8000000000)) {
++	} else if (Value <= 0x7FFFFFFFFFll && Value >= (-0x8000000000ll)) {
+ 		Size = 5;
+-	} else if (Value <= 0x7FFFFFFFFFFF && Value >= (-0x800000000000)) {
++	} else if (Value <= 0x7FFFFFFFFFFFll && Value >= (-0x800000000000ll)) {
+ 		Size = 6;
+-	} else if (Value <= 0x7FFFFFFFFFFFFF && Value >= (-0x80000000000000)) {
++	} else if (Value <= 0x7FFFFFFFFFFFFFll && Value >= (-0x80000000000000ll)) {
+ 		Size = 7;
+ #endif // LIBEBML_GCC2
+ 	} else {
+diff -Nur libebml-0.4.2/src/EbmlUInteger.cpp libebml-0.4.2-gcc3.3/src/EbmlUInteger.cpp
+--- libebml-0.4.2/src/EbmlUInteger.cpp	2003-04-28 23:55:19.000000000 +0200
++++ libebml-0.4.2-gcc3.3/src/EbmlUInteger.cpp	2003-05-20 18:34:49.000000000 +0200
+@@ -108,11 +108,11 @@
+ 	} else if (Value <= 0xFFFFFFFFFFFFFFll) {
+ 		Size = 7;
+ #else // LIBEBML_GCC2
+-	} else if (Value <= 0xFFFFFFFFFF) {
++	} else if (Value <= 0xFFFFFFFFFFll) {
+ 		Size = 5;
+-	} else if (Value <= 0xFFFFFFFFFFFF) {
++	} else if (Value <= 0xFFFFFFFFFFFFll) {
+ 		Size = 6;
+-	} else if (Value <= 0xFFFFFFFFFFFFFF) {
++	} else if (Value <= 0xFFFFFFFFFFFFFFll) {
+ 		Size = 7;
+ #endif // LIBEBML_GCC2
+ 	} else {
