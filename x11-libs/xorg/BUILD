@@ -1,4 +1,4 @@
-message  "${MESSAGE_COLOR}Building X.org takes a very long time${DEFAULT_COLOR}"
+message  "${MESSAGE_COLOR}Building X.org takes a very long time${DEFAULT_COLOR}"  &&
 
 #
 # Remove explicit PIC as well as that breaks the symbol logic in
