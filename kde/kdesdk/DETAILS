@@ -6,16 +6,16 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
    SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
           MD5[0]=e53e25b291571242dfcdd41f62f72920
 else
-         VERSION=3.2.3
+         VERSION=3.3.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/${VERSION}/src/$SOURCE
-          MD5[0]=3a2fca4197c8625beae6a8e0de3aa8e0
+   SOURCE_URL[0]=$KDE_URL/stable/3.3/src/$SOURCE
+          MD5[0]='5bc9baeffa6ab3aba817d7f0c0920bf8'
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
-         UPDATED=20040116
+         UPDATED=20040820
     DISTCC_HOSTS=
       LICENSE[0]=GPL
            SHORT="Collection of tools used by KDE developers."
