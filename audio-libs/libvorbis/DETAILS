@@ -1,15 +1,14 @@
            SPELL=libvorbis
-         VERSION=1.0
+         VERSION=1.0.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.vorbis.com/files/1.0/unix/$SOURCE
-        WEB_SITE=http://www.xiph.org/ogg/vorbis
+   SOURCE_URL[0]=http://www.vorbis.com/files/${VERSION}/unix/$SOURCE
+          MD5[0]=f62213252fca6f51fbc2919b956ad416
+        WEB_SITE=http://www.xiph.org/ogg/vorbis/
          ENTERED=20010922
          UPDATED=20030403
-	LICENSE[0]=LGPL
-	MAINTAINER=burududu@hotpop.com
-	MD5[0]=50fe8c87ebeeee96b32928dabfe52588
-           SHORT="libvorbis is a free high-quality lossy audio codec library."
+      LICENSE[0]=LGPL
+           SHORT="Free high-quality lossy audio codec library."
 cat << EOF
 Ogg Vorbis is a high-quality lossy audio codec that is free of
 intellectual property restrictions. libvorbis is the main vorbis codec
