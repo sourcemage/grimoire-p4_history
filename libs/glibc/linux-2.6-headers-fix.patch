@@ -31,3 +31,148 @@ diff -Nur linux/videodev.h /usr/include/linux/videodev.h
  #include <linux/poll.h>
  #include <linux/mm.h>
  
+--- linux/spinlock.h	2003-12-18 13:58:49.000000000 +1100
++++ linux/spinlock.h	2003-12-22 11:37:52.858212685 +1100
+@@ -395,74 +395,5 @@
+ extern int atomic_dec_and_lock(atomic_t *atomic, spinlock_t *lock);
+ #endif
+ 
+-/*
+- *  bit-based spin_lock()
+- *
+- * Don't use this unless you really need to: spin_lock() and spin_unlock()
+- * are significantly faster.
+- */
+-static inline void bit_spin_lock(int bitnum, unsigned long *addr)
+-{
+-	/*
+-	 * Assuming the lock is uncontended, this never enters
+-	 * the body of the outer loop. If it is contended, then
+-	 * within the inner loop a non-atomic test is used to
+-	 * busywait with less bus contention for a good time to
+-	 * attempt to acquire the lock bit.
+-	 */
+-	preempt_disable();
+-#if defined(CONFIG_SMP) || defined(CONFIG_DEBUG_SPINLOCK)
+-	while (test_and_set_bit(bitnum, addr)) {
+-		while (test_bit(bitnum, addr))
+-			cpu_relax();
+-	}
+-#endif
+-}
+-
+-/*
+- * Return true if it was acquired
+- */
+-static inline int bit_spin_trylock(int bitnum, unsigned long *addr)
+-{
+-#if defined(CONFIG_SMP) || defined(CONFIG_DEBUG_SPINLOCK)
+-	int ret;
+-
+-	preempt_disable();
+-	ret = !test_and_set_bit(bitnum, addr);
+-	if (!ret)
+-		preempt_enable();
+-	return ret;
+-#else
+-	preempt_disable();
+-	return 1;
+-#endif
+-}
+-
+-/*
+- *  bit-based spin_unlock()
+- */
+-static inline void bit_spin_unlock(int bitnum, unsigned long *addr)
+-{
+-#if defined(CONFIG_SMP) || defined(CONFIG_DEBUG_SPINLOCK)
+-	BUG_ON(!test_bit(bitnum, addr));
+-	smp_mb__before_clear_bit();
+-	clear_bit(bitnum, addr);
+-#endif
+-	preempt_enable();
+-}
+-
+-/*
+- * Return true if the lock is held.
+- */
+-static inline int bit_spin_is_locked(int bitnum, unsigned long *addr)
+-{
+-#if defined(CONFIG_SMP) || defined(CONFIG_DEBUG_SPINLOCK)
+-	return test_bit(bitnum, addr);
+-#elif defined CONFIG_PREEMPT
+-	return preempt_count();
+-#else
+-	return 1;
+-#endif
+-}
+ 
+ #endif /* __LINUX_SPINLOCK_H */
+--- linux/list.h	2003-12-18 13:58:57.000000000 +1100
++++ linux/list.h	2003-12-21 23:43:18.000000000 +1100
+@@ -1,7 +1,6 @@
+ #ifndef _LINUX_LIST_H
+ #define _LINUX_LIST_H
+ 
+-#ifdef __KERNEL__
+ 
+ #include <linux/stddef.h>
+ #include <linux/prefetch.h>
+@@ -584,7 +583,4 @@
+ 	     pos && ({ n = pos->next; 1; }) && 				 \
+ 		({ tpos = hlist_entry(pos, typeof(*tpos), member); 1;}); \
+ 	     pos = n)
+-#else
+-#warning "don't include kernel headers in userspace"
+-#endif /* __KERNEL__ */
+ #endif
+--- linux/fb.h	2003-12-22 00:01:31.000000000 +1100
++++ linux/fb.h	2003-12-22 00:51:16.000000000 +1100
+@@ -4,7 +4,6 @@
+ #include <linux/tty.h>
+ #include <linux/workqueue.h>
+ #include <asm/types.h>
+-#include <asm/io.h>
+ 
+ /* Definitions of frame buffers						*/
+ 
+@@ -331,6 +330,8 @@
+ #define FB_PIXMAP_IO      4     /* memory is iomapped       */
+ #define FB_PIXMAP_SYNC    256   /* set if GPU can DMA       */
+ 
++#ifdef __KERNEL__
++
+ struct fb_pixmap {
+         __u8  *addr;                      /* pointer to memory             */  
+ 	__u32 size;                       /* size of buffer in bytes       */
+@@ -344,7 +345,6 @@
+ 	spinlock_t lock;                  /* spinlock                      */
+ 	atomic_t count;
+ };
+-#ifdef __KERNEL__
+ 
+ #include <linux/fs.h>
+ #include <linux/init.h>
+--- linux/config.h	2003-12-18 13:59:43.000000000 +1100
++++ linux/config.h	2003-12-22 13:35:16.000000000 +1100
+@@ -1,6 +1,20 @@
+ #ifndef _LINUX_CONFIG_H
+ #define _LINUX_CONFIG_H
+ 
++#ifdef __KERNEL__
++#error Invalid kernel header included in userspace
++#error Modules should never use kernel-headers system headers,
++#error but rather headers from an appropriate kernel-source package.
++#error Change -I/usr/src/linux/include (or similar) to
++#error -I/lib/modules/$(uname -r)/build/include
++#error to build against the currently-running kernel.
++
++#else
+ #include <linux/autoconf.h>
++#endif
+ 
+ #endif
++
++
++
++

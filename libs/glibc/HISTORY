@@ -1,3 +1,9 @@
+2003-12-23 hgg <hgreig@bigpond.net.au>
+	* BUILD: copy the headers immediately after prepare_install
+	* BUILD: use the headers from currently running kernel
+	* BUILD, linux-2.6-headers-fix.patch: add a few more fixes, appears to be a good fix for fb.h 
+	I have tested with MPlayer SDL(needs an extra flag) directfb , libggi 
+
 2003-12-16 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: moved --enable-kernel=current to nptl options (breaks
 	compilation for linuxthreads on linux-2.6.0-test11)

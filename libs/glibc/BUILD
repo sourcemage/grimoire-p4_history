@@ -8,7 +8,6 @@
  bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
  tail +5 ${SOURCE_CACHE}/${SOURCE4}  |  patch  -p1  ;
 
-
   if    !  echo  "$CFLAGS"  |  grep  -q -- "-O"
   then  export     CFLAGS="$CFLAGS -Os"
   fi                                          &&
@@ -17,7 +16,7 @@
   fi                                          &&
   export  CFLAGS="$(  echo  $CFLAGS  |  sed  s/-ffast-math//  )"  &&
   export  CC=gcc                              &&
-
+  
   cd $SOURCE_DIRECTORY.bld                    &&
   ### LD_LIBRARY_PATH includes $PWD bug 
   unset  LD_LIBRARY_PATH                      &&
@@ -28,12 +27,26 @@
                --with-elf                     \
                --enable-shared                \
                --disable-profile              \
+               --with-headers="/lib/modules/$(uname -r)/build/include/" \
                $OPTS			      &&
   make                                        &&
 
  ### so many problems with glibc installs ! 
  ### these symlinks and unsetting the (sorcery) preload of old libs should finally fix them
  prepare_install                                                            &&
+ ### copy the headers if wanted
+ if [ "$HEADERS" = "yes" ]
+    then  rm -rf ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux} && 
+          for i in asm asm-generic linux
+              do cp -aL  ${INSTALL_ROOT}/lib/modules/$(uname -r)/build/include/$i ${INSTALL_ROOT}/usr/include 
+          done  &&
+          if  [[  $(uname -r) == 2.6.* ]];  then
+            patch -d ${INSTALL_ROOT}/usr/include -p0  <  $SCRIPT_DIRECTORY/linux-2.6-headers-fix.patch  || (
+              message "${PROBLEM_COLOR}Patching the kernel headers failed."
+              message "${MESSAGE_COLOR}Please check the headers in /usr/include/{asm,asm-generic,linux}.${DEFAULT_COLOR}"
+            )
+          fi
+ fi                                                                         &&
  ln -sf $SOURCE_DIRECTORY.bld/libc.so ${INSTALL_ROOT}/lib/libc.so.6         &&
  ln -sf $SOURCE_DIRECTORY.bld/rt/librt.so ${INSTALL_ROOT}/lib/librt.so.1    &&
  ln -sf $SOURCE_DIRECTORY.bld/math/libm.so ${INSTALL_ROOT}/lib/libm.so.6    &&
@@ -51,9 +64,9 @@
  unset  LD_LIBRARY_PATH                                                     &&
  (  ldconfig  ||  true  )                                                   &&
 
- ### glibc only installs these if the file differs (or is removed :) )
+ ### glibc only installs these if the file differs
   for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
-     do if [ -f $i ] ; then rm -vf $i ; fi
+     do if [ -f $i ] ; then  rm -vf $i ; fi
   done                                        &&
  ### old systems have left over files in /usr/lib/locale/* 
  if [ -d ${INSTALL_ROOT}/usr/lib/locale ] 
@@ -83,19 +96,6 @@
             localedef  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE
     done
     true
-  fi &&
- ### copy the headers if wanted
- if [ "$HEADERS" = "yes" ] 
-    then  rm -rf ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux} && 
-          for i in asm asm-generic linux
-              do cp -aL  ${INSTALL_ROOT}/lib/modules/$(uname -r)/build/include/$i ${INSTALL_ROOT}/usr/include 
-          done  &&
-          if  [[  $(uname -r) == 2.6.* ]];  then
-            patch -d ${INSTALL_ROOT}/usr/include -p0  <  $SCRIPT_DIRECTORY/linux-2.6-headers-fix.patch  || (
-              message "${PROBLEM_COLOR}Patching the kernel headers failed."
-              message "${MESSAGE_COLOR}Please check the headers in /usr/include/{asm,asm-generic,linux}.${DEFAULT_COLOR}"
-            )
-          fi
- fi
+  fi 
 ) > $C_FIFO 2>&1
 
