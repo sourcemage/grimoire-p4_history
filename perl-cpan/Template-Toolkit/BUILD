@@ -2,7 +2,7 @@
   # skip gd test. It checks a gif image and GIF is not
   # supported in the current versions of gd.
   #
-  patch -p0 < $SCRIPT_DIRECTORY/gd.t.patch &&
+  # patch -p0 < $SCRIPT_DIRECTORY/gd.t.patch &&
 
   perl Makefile.PL                     \
     TT_ACCEPT="y"                      \
