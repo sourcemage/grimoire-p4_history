@@ -5,10 +5,14 @@
 if [ "$CVS" = "no" ]; then
           SOURCE=$SPELL-$VERSION.tar.bz2
          SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
+         SOURCE3=${SPELL}-${VERSION}-fix.diff
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
+  SOURCE3_URL[0]=http://security.e-matters.de/patches/${SOURCE3}
           MD5[0]=9c18760474ea8976803e0786502966c5
           MD5[1]=ac59b386b6924e00cb1169c2d986a914
+          MD5[2]=543906ea5ac082931e0b92f90ad0e00f
+      LICENSE[2]=GPL
 else     VERSION=cvs
         VERSION2=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -28,7 +32,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     DISTCC_HOSTS=
           CCACHE=off
          ENTERED=20011024
-         UPDATED=20040113
+         UPDATED=20040127
            SHORT="gaim is an instant messanger client for several protocols"
 cat << EOF
 gaim is an instant messanger client used primarly for the AIM protocol
