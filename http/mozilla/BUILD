@@ -29,6 +29,7 @@ function make_crypto() {
     --disable-debug \
     --disable-tests \
     --disable-installer \
+    --disable-pedantic  \
     $OPTS &&
 
 # fix a problem of enigmail not compiling
