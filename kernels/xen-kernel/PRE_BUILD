@@ -1,6 +1,6 @@
 function  make_menuconfig()  {
   if  [  -r  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1  ];  then
-    cp  $CONFIG_CACHE/kconfig-2.6.9-$1  linux-${XEN_KVER}-$1/.config
+    cp  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1  linux-${XEN_KVER}-$1/.config
   fi  &&
   make  -C  linux-${XEN_KVER}-$1/  menuconfig  ARCH=xen  &&
   cp  linux-${XEN_KVER}-$1/.config  $CONFIG_CACHE/kconfig-${XEN_KVER}-$1 
