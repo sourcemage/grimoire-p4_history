@@ -22,6 +22,11 @@
 
 # Check that networking is up.
 # [ ${NETWORKING} = "no" ] && exit 0
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S98
+# SMGL-STOP:0 1 2 6:K05
+#
 
 RETVAL=$?
 
