@@ -1,17 +1,12 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/ffmpeg.patch  &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/mkv-fix.patch  &&
 
   if  [  "$JOYSTICK"  =  "y"  ];  then
     export OPTS="$OPTS --enable-joystick"
   fi  &&
 
   export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
-  # mozilla broke the api again :(
-  export OPTS="$OPTS --disable-mozilla"  &&
-
-  # needed for xvid detection
-  export LDFLAGS="$LDFLAGS -lm"  &&
 
   default_build
 

@@ -34,11 +34,10 @@ optional_depends  "xosd"                  \
                   "--disable-xosd"        \
                   "for xosd interface"    &&
 
-# doesn't compile with any of our mozilla versions
-#optional_depends  "MOZILLA-BROWSER"       \
-#                  "--enable-mozilla"      \
-#                  "--disable-mozilla"     \
-#                  "for a mozilla plugin"  &&
+optional_depends  "MOZILLA-BROWSER"       \
+                  "--enable-mozilla"      \
+                  "--disable-mozilla"     \
+                  "for a mozilla plugin"  &&
 
 # control plugins
 optional_depends  "lirc"                  \
@@ -99,6 +98,8 @@ optional_depends  "libmad"                 \
                   "--disable-mad"          \
                   "for fixed point mp3 decoder"  &&
 
+optional_depends  "libid3tag" "" "" "for id3 tag reading support"  &&
+
 optional_depends  "libvorbis"              \
                   "--enable-vorbis"        \
                   "--disable-vorbis"       \
@@ -121,16 +122,6 @@ optional_depends  LIBAVCODEC               \
                   "--disable-ffmpeg"       \
                   "for lots of video codecs"  &&
 
-optional_depends  "xvid"                   \
-                  "--enable-xvid"          \
-                  "--disable-xvid"         \
-                  "for xvid video decoder" &&
-
-optional_depends  "libdv"                  \
-                  "--enable-dv"            \
-                  "--disable-dv"           \
-                  "for DV video decoder"   &&
-
 optional_depends  "libmatroska"            \
                   "--enable-mkv"           \
                   "--disable-mkv"          \
@@ -150,4 +141,25 @@ optional_depends  "libdvdcss"              \
 optional_depends  "libdvdplay"             \
                   "--enable-dvdplay"       \
                   "--disable-dvdplay"      \
-                  "for DVD navigation support"
+                  "for DVD navigation support"  &&
+
+# misc
+optional_depends  "live"                  \
+                  "--enable-livedotcom --with-livedotcom-tree=/usr/lib/live"  \
+                  "--disable-livedotcom"  \
+                  "for rtsp:// protocol support"  &&
+
+optional_depends  "libcdio"            \
+                  "--enable-libcdio"   \
+                  "--disable-libcdio"  \
+                  "for enhanced audio cd support"  &&
+
+optional_depends  "libcddb"            \
+                  "--enable-libcddb"   \
+                  "--disable-libcddb"  \
+                  "for CDDB lookup support for audio cds"  &&
+
+optional_depends  "vcdimager-cdio"  \
+                  "--enable-vcdx"   \
+                  "--disable-vcdx"  \
+                  "for VCD navigation support"
