@@ -1,0 +1,35 @@
+diff -urpN cinelerra-1.2.1.orig/cinelerra/device1394input.h cinelerra-1.2.1/cinelerra/device1394input.h
+--- cinelerra-1.2.1.orig/cinelerra/device1394input.h	2004-08-21 01:55:42.264246184 -0700
++++ cinelerra-1.2.1/cinelerra/device1394input.h	2004-08-21 02:02:05.533980328 -0700
+@@ -58,7 +58,7 @@ public:
+ 	int current_inbuffer;
+ 
+ // For extracting audio
+-	dv_t *decoder;
++	dv_audio_t *decoder;
+ 
+ // Storage of audio data
+ 	char *audio_buffer;
+diff -urpN cinelerra-1.2.1.orig/cinelerra/device1394output.h cinelerra-1.2.1/cinelerra/device1394output.h
+--- cinelerra-1.2.1.orig/cinelerra/device1394output.h	2004-08-21 01:55:41.397377968 -0700
++++ cinelerra-1.2.1/cinelerra/device1394output.h	2004-08-21 02:02:41.689483856 -0700
+@@ -79,7 +79,7 @@ public:
+ 	char *audio_buffer;
+ 	int audio_samples;
+ // Encoder for audio frames
+-	dv_t *encoder;
++	dv_audio_t *encoder;
+ 
+ 	Mutex *buffer_lock;
+ // Block while waiting for the first buffer to be allocated
+@@ -101,8 +101,8 @@ public:
+ //	raw1394handle_t avc_handle;
+ 	VFrame *temp_frame, *temp_frame2;
+ // Encoder for making DV frames
+-	dv_t *audio_encoder;
+-	dv_t *video_encoder;
++	dv_audio_t *audio_encoder;
++	dv_video_t *video_encoder;
+ 	unsigned int cip_n, cip_d;
+     unsigned int cip_counter;
+ 	unsigned char f50_60;

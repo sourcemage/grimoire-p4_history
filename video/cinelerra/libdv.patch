@@ -1,0 +1,76 @@
+diff -urpN cinelerra-1.2.1.orig/cinelerra/audio1394.h cinelerra-1.2.1/cinelerra/audio1394.h
+--- cinelerra-1.2.1.orig/cinelerra/audio1394.h	2004-08-21 01:08:44.490612888 -0700
++++ cinelerra-1.2.1/cinelerra/audio1394.h	2004-08-21 01:42:17.485591136 -0700
+@@ -8,7 +8,7 @@
+ 
+ #ifdef HAVE_FIREWIRE
+ 
+-#include "libdv.h"
++#include "dv.h"
+ 
+ class Audio1394 : public AudioLowLevel
+ {
+diff -urpN cinelerra-1.2.1.orig/cinelerra/device1394input.h cinelerra-1.2.1/cinelerra/device1394input.h
+--- cinelerra-1.2.1.orig/cinelerra/device1394input.h	2004-08-21 01:08:44.467616384 -0700
++++ cinelerra-1.2.1/cinelerra/device1394input.h	2004-08-21 01:42:06.067326976 -0700
+@@ -6,8 +6,8 @@
+ #ifdef HAVE_FIREWIRE
+ 
+ #include "condition.inc"
+-#include "libdv.h"
+-#include "libdv/dv1394.h"
++#include "dv.h"
++#include "dv1394.h"
+ #include "mutex.inc"
+ #include "libraw1394/raw1394.h"
+ #include "thread.h"
+diff -urpN cinelerra-1.2.1.orig/cinelerra/device1394output.h cinelerra-1.2.1/cinelerra/device1394output.h
+--- cinelerra-1.2.1.orig/cinelerra/device1394output.h	2004-08-21 01:08:44.427622464 -0700
++++ cinelerra-1.2.1/cinelerra/device1394output.h	2004-08-21 01:41:49.041915232 -0700
+@@ -7,8 +7,8 @@
+ 
+ #include "audiodevice.inc"
+ #include "condition.inc"
+-#include "libdv.h"
+-#include "libdv/dv1394.h"
++#include "dv.h"
++#include "dv1394.h"
+ #include "ieee1394-ioctl.h"
+ #include "mutex.inc"
+ #include "thread.h"
+diff -urpN cinelerra-1.2.1.orig/cinelerra/recordmonitor.C cinelerra-1.2.1/cinelerra/recordmonitor.C
+--- cinelerra-1.2.1.orig/cinelerra/recordmonitor.C	2004-08-21 01:08:44.486613496 -0700
++++ cinelerra-1.2.1/cinelerra/recordmonitor.C	2004-08-21 01:42:13.140251728 -0700
+@@ -2,7 +2,7 @@
+ #include "channelpicker.h"
+ #include "condition.h"
+ #include "cursors.h"
+-#include "libdv.h"
++#include "dv.h"
+ #include "edl.h"
+ #include "edlsession.h"
+ #include "keys.h"
+diff -urpN cinelerra-1.2.1.orig/cinelerra/vdevice1394.h cinelerra-1.2.1/cinelerra/vdevice1394.h
+--- cinelerra-1.2.1.orig/cinelerra/vdevice1394.h	2004-08-21 01:08:44.457617904 -0700
++++ cinelerra-1.2.1/cinelerra/vdevice1394.h	2004-08-21 01:41:57.279662904 -0700
+@@ -4,7 +4,7 @@
+ #include "device1394input.inc"
+ #include "device1394output.inc"
+ #include "guicast.h"
+-#include "libdv.h"
++#include "dv.h"
+ #include "quicktime.h"
+ #include "sema.h"
+ #include "vdevicebase.h"
+diff -urpN cinelerra-1.2.1.orig/quicktime/libdv.c cinelerra-1.2.1/quicktime/libdv.c
+--- cinelerra-1.2.1.orig/quicktime/libdv.c	2004-08-21 01:08:43.000000000 -0700
++++ cinelerra-1.2.1/quicktime/libdv.c	2004-08-21 01:42:21.916917472 -0700
+@@ -3,7 +3,7 @@
+  */
+ 
+ #include "colormodels.h"
+-#include "libdv.h"
++#include "dv.h"
+ 
+ #include <pthread.h>
+ #include <stdio.h>

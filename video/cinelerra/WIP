@@ -1,0 +1,20 @@
+I get this error now:
+C++ i686/awindow.o
+In file included from avc1394transport.C:4:
+recordmonitor.h:9:22: libmjpeg.h: No such file or directory
+In file included from avc1394transport.C:4:
+recordmonitor.h:234: error: syntax error before `*' token
+make[3]: *** [i686/avc1394transport.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+make[3]: Leaving directory `/usr/src/cinelerra-1.2.1/cinelerra'
+
+Which leads to this:
+make[1]: Entering directory `/usr/src/cinelerra-1.2.1'
+/usr/bin/make -f build/Makefile.cinelerra install
+make[2]: Entering directory `/usr/src/cinelerra-1.2.1'
+/usr/bin/make -C cinelerra install
+make[3]: Entering directory `/usr/src/cinelerra-1.2.1/cinelerra'
+rm -f /usr/bin/cinelerra
+cp i686/cinelerra /usr/bin
+cp: cannot stat `i686/cinelerra': No such file or directory
+make[3]: *** [install] Error 1
