@@ -1,20 +1,22 @@
            SPELL=valgrind
-if [ "$CVS" != "yes" ]; then
-         VERSION=2.0.0
+if [ "$CVS" != "y" ]; then
+         VERSION=2.2.0
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=http://developer.kde.org/~sewardj/$SOURCE
-          MD5[0]='8c4a1b4ebcd1387046d6075714e878b7'
+          MD5[0]=b126a4498e83d8ccb0e526501183f293
 else
-         VERSION=cvs
-          SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.kde.org:/home/kde:valgrind
           MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=GPL
-        WEB_SITE=http://developer.kde.org/~sewardj/
+        WEB_SITE=http://valgrind.kde.org
          ENTERED=20020731
          UPDATED=20020731
+       BUILD_API=2
            SHORT="Valgrind, an open-source memory debugger for x86-GNU/Linux"
 cat << EOF
 Valgrind is a GPL'd tool to help you find memory-management problems in your
