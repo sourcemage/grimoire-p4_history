@@ -1,0 +1,12 @@
+gather_docs
+install -m 644 --owner root --group root ${SOURCE_DIRECTORY}/whatsnew  ${DOCUMENT_DIRECTORY}/${SPELL}/whatsnew
+install -m 644 --owner root --group root ${SOURCE_DIRECTORY}/readme ${DOCUMENT_DIRECTORY}/${SPELL}/readme
+install -m 644 --owner root --group root ${SOURCE_DIRECTORY}/sample.config ${DOCUMENT_DIRECTORY}/${SPELL}/sample.config
+install -m 755 --owner root --group root ${SOURCE_DIRECTORY}/iroffer.cron ${DOCUMENT_DIRECTORY}/${SPELL}/iroffer.cron
+echo "few important files copied to ${INSTALL_ROOT}/usr/share/doc/iroffer/"
+devoke_installwatch
+init_post_install
+ldconfig
+# release_saved_libraries
+cd  /
+boost		    
