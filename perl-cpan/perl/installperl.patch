@@ -1,21 +1,21 @@
-diff -Naur perl-5.8.0.ori/installperl perl-5.8.0/installperl
---- perl-5.8.0.ori/installperl	2002-07-16 20:57:32.000000000 +0200
-+++ perl-5.8.0/installperl	2003-09-24 09:19:15.000000000 +0200
-@@ -783,7 +783,7 @@
- 	    unlink("$installarchlib/$name");
- 	}
-         $packlist->{"$installlib/$name"} = { type => 'file' };
--	if (compare($_, "$installlib/$name") || $nonono) {
+diff -uprN perl-5.8.1.old/installperl perl-5.8.1/installperl
+--- perl-5.8.1.old/installperl	2003-10-02 17:44:52.000000000 -0700
++++ perl-5.8.1/installperl	2003-10-02 17:46:53.000000000 -0700
+@@ -836,7 +836,7 @@ sub installlib {
+ 	my $xname = "$installlib/$name";
+ 	$xname =~ s/^\Q$destdir\E// if $destdir;
+ 	$packlist->{$xname} = { type => 'file' };
+-	if ($force || compare($_, "$installlib/$name") || $nonono) {
 +	if (true) {
  	    unlink("$installlib/$name");
  	    mkpath("$installlib/$dir", $verbose, 0777);
  	    # HP-UX (at least) needs to maintain execute permissions
-@@ -840,7 +840,7 @@
+@@ -895,7 +895,7 @@ sub copy_if_diff {
      }
      -f $from || $perlpodbadsymlink || warn "$0: $from not found";
-     $packlist->{$to} = { type => 'file' };
--    if (compare($from, $to) || $nonono) {
+     $packlist->{$xto} = { type => 'file' };
+-    if ($force || compare($from, $to) || $nonono) {
 +    if (true) {
  	safe_unlink($to);   # In case we don't have write permissions.
-         if ($nonono) {
-             $from = $depth . "/" . $from if $depth;
+ 	if ($nonono) {
+ 	    $from = $depth . "/" . $from if $depth;
