@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d installer information
+# SMGL-START:S:S80
+# SMGL-STOP:0 6:K20
+#
 
 case $1 in
      start|restart)  echo   "$1ing crond periodic scheduler."
