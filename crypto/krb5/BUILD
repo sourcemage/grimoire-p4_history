@@ -1,4 +1,4 @@
-if [ "$KRB4" = "y" ]; then
+if [ "$KRB4" == "y" ]; then
     OPTS="$OPTS --with-krb4"
 else
     OPTS="$OPTS --without-krb4"
@@ -7,6 +7,7 @@ fi
 cd  $SPELL-$VERSION/src
 ./configure  --enable-dns-for-kdc    \
              --enable-dns-for-realm  \
+             --enable-shared         \
              --prefix=/usr           \
              --localstatedir=/var    \
              $OPTS                   &&
