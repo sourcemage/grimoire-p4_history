@@ -1,11 +1,23 @@
 (
 
-  LDFLAGS="${LDFLAGS} -lpng -lz -lm"  &&
+  # Setup our environment
+  sedit  's:use_openal = \'false\':use_openal = \'true\':'  SConstruct          &&
+  sedit  's:build_blender_player = \'false\':build_blender_player = \'true\':'  \
+                                                            SConstruct          &&
+  sedit  "s:cxxflags = []:cxxflags = [$CXXFLAGS]:"          SConstruct          &&
 
-  scons &&
+  # Configure SCons...I'm not sure I like this sytem...
+  if    grep  -q  "enable-gameblender"  ${OPTS}
+  then  sedit  's:use_ode = \'false\':use_ode = \'true\':'  SConstruct
+  else  sedit  's:use_gameengine = \'true\':use_gameengine = \'false\':'  SConstruct
+  fi  &&
+
+  if    grep  -q  "enable-blenderplugin"  ${OPTS}
+  then  sedit  's:build_blender_plugin = \'false\':build_blender_plugin = \'true\':'  SConstruct
+  fi  &&
+
+  scons            &&
+  prepare_install  &&
   false
-  #make                                &&
-  #prepare_install                     &&
-  #make install
 
 ) > $C_FIFO 2>&1
