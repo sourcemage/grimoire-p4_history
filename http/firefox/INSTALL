@@ -6,11 +6,6 @@ if spell_installed Firebird; then
   dispel Firebird
 fi                                               &&
 
-#
-# Clean out old Mozilla/Firefox libraries
-#
-rm  -rf  $INSTALL_ROOT/usr/lib/{mozilla,firefox}*  &&
-
 # everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
 # must actually go to /usr/lib/mozilla/
 
