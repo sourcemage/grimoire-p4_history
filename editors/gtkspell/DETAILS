@@ -1,19 +1,22 @@
            SPELL=gtkspell
-         VERSION=2.0.4
+         VERSION=2.0.5
           SOURCE=gtkspell-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtkspell-$VERSION
    SOURCE_URL[0]=http://gtkspell.sourceforge.net/download/$SOURCE
-          MD5[0]=869712a68cf020cf2320d485eaf50548
+          MD5[0]=c97a9d7ffd0a02e6769010b60efc957b
         WEB_SITE=http://gtkspell.sourceforge.net
       MAINTAINER=george@beernabeer.com
       LICENSE[0]=GPL
          ENTERED=20020922
          UPDATED=20020922
          NO_FUZZ="on"
+            DOCS="COPYING NEWS README"
            SHORT="Gtkspell is a library that provides a graphic fontend to pspell"
 cat << EOF
-GtkSpell provides MSWord/MacOSX-style highlighting of misspelled words in a GtkTextView 
-widget as you type. Right-clicking a misspelled word pops up a menu of suggested replacements.
+GtkSpell provides MSWord/MacOSX-style highlighting of misspelled words in a
+GtkTextView widget as you type. Right-clicking a misspelled word pops up a menu
+of suggested replacements.
 
-Note: this is a library for developers working with pspell, placed here to be near pspell.
+Note: this is a library for developers working with pspell, placed here to be
+near pspell.
 EOF
