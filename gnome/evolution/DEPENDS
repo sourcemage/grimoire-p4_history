@@ -11,16 +11,15 @@ depends  gnome-vfs    &&
 depends  libxml       &&
 depends  gal          &&
 
-optional_depends  "openssl"  ""  ""  "for SSL support"             &&
 optional_depends  "gnupg"    ""  ""  "for encrypted mail support"  &&
 
 optional_depends  "mozilla"                                        \
                   "--with-nspr-includes=/usr/include/mozilla/nspr  \
                    --with-nspr-libs=/usr/lib/mozilla               \
-                   --with-nss-includes=/usr/include/mozilla        \
+                   --with-nss-includes=/usr/include/moznss         \
                    --with-nss-libs=/usr/lib/mozilla"               \
                   ""                                               \
-                  "for mozilla support"                            &&
+                  "for SSL support"                                &&
 
 optional_depends  "openldap"             \
                   "--with-openldap=yes"  \

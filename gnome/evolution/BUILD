@@ -9,14 +9,12 @@
    make  install                                                &&
 
    cd  $SOURCE_DIRECTORY                                        &&
-   ./configure  --prefix=/usr                                   \
-                --sysconfdir=/etc                               \
-                --localstatedir=/var                            \
-                --with-db3=$SOURCE_DIRECTORY/evolution-db3      \
-                $OPTS                                           &&
-    
-   make                                                         &&
-   prepare_install                                              &&
-   make    install
+
+   sedit s/"nsslibs=\"-lssl3 -lsmime3 -lnss3\""/"nsslibs=\"-lssl3 -lsmime3 -lnss3 -lsoftokn3\""/ \
+	configure                                               &&
+
+   OPTS="$OPTS --with-db3=$SOURCE_DIRECTORY/evolution-db3"      &&
+
+   default_build
 
 ) > $C_FIFO 2>&1
