@@ -1,0 +1,40 @@
+           SPELL=sorcery-only
+         VERSION=`date -u +%Y%m%d`
+          SOURCE=sorcery.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
+   SOURCE_URL[0]=$SORCERY_URL/$SOURCE
+   SOURCE_URL[1]=http://sgl.bccs.net/sorcery/$SOURCE
+   SOURCE_URL[2]=http://www.cs.vu.nl/~edschabe/erics/linux/$SOURCE
+        WEB_SITE=http://sgl.bccs.net
+         ENTERED=20010922
+         UPDATED=20020329
+        NO_CACHE="--cache=off"
+        LIFESPAN="10"
+            FUZZ="off"
+    VIEW_REPORTS="off"
+           SOUND="off"
+         ARCHIVE="off"
+           SHORT="Updates only Sorcery package management tools v0.1.4."
+cat << EOF
+Sorcery (v0.1.4)  -  Tools package management by source.
+
+sorcery includes the following files:
+  /etc/sorcery/*                    configuration files.
+  /usr/doc/sorcery/*                documentation, please read
+  /usr/sbin/sorcery                 menu driven interface
+  /usr/sbin/leach                   downloads spells' sources (depreciated)
+  /usr/sbin/summon		    replacement for leach
+  /usr/sbin/cast                    installs  spells
+  /usr/sbin/vcast                   installs  spells  verbosely
+  /usr/sbin/dispel                  removes   spells
+  /usr/sbin/gaze                    provides information about the box
+  /var/lib/sorcery/apprentice       spell:/location/binary for launchers
+  /var/lib/sorcery/excluded         list of files that are ignored
+  /var/lib/sorcery/protected        list of files that will not be deleted
+  /var/lib/sorcery/subroutines      common subroutines
+
+  and man pages.
+
+  Updates ONLY the sorcery tools.
+
+EOF
