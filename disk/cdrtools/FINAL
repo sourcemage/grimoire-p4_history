@@ -1,3 +1,5 @@
+. /etc/sysconfig/devices
+
 mod_ide_scsi()  {
 
   if  [  !  -f                      /etc/modules.d/ide-scsi  ];  then
@@ -14,7 +16,45 @@ mod_ide_scsi()  {
 
 }
 
+change_cdr_perms()  {
+  CDR_DEVICES=$(cdr_detect)
+  if [ $? == 0 ]; then
+    case ${DEVICES} in
+	static) for DEV in $CDR_DEVICES; do
+			chmod 0660 "/dev/${DEV}"
+			chown root:burning "/dev/${DEVS}"
+		done;;
+        devfs) "Devfsd permissions change not yet implemented, please adjust permissions manually";;
+	udev) UDEV_PERM_FILE=/etc/udev/udev.permissions
+	      for DEV in $CDR_DEVICES; do
+		STRING="${DEV}:root:burning:0660"
+		if grep "^${STRING}" ${UDEV_PERM_FILE}; then
+		  message "Permissions for devices ${DEV} are OK"
+		else
+		  message "Changing permissions for devices ${DEV}"
+		  echo ${STRING} >> ${UDEV_PERM_FILE}
+		fi
+	      done;;
+    esac
+  else
+    message "No CD recorder device found, please adjust permissions manually"
+}
+
 case  $IDE_SCSI  in 
   y|Y|j|J)  mod_ide_scsi  ;;
         *)  true          ;;
+esac
+
+case ${PERM} in
+  burning_group_users_with_suid_bit) 	create_group burning
+					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
+				        chmod  4710 ${INSTALL_ROOT}/usr/bin/cdrecord
+					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
+  burning_group_users) 			create_group burning
+					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
+					chmod  0750 ${INSTALL_ROOT}/usr/bin/cdrecord
+					change_cdr_perms()
+					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
+  root_only) 				chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
+					chmod  0700 ${INSTALL_ROOT}/usr/bin/cdrecord;;
 esac
