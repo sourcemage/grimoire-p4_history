@@ -4,6 +4,7 @@
                --sysconfdir=/etc   \
                --enable-production \
                --disable-debug     \
+               --enable-static     \
                $OPTS               &&
   make                             &&
   prepare_install                  &&
