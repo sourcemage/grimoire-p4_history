@@ -1,4 +1,4 @@
-patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.23_db4.patch
+patch  -p0  <  $SCRIPT_DIRECTORY/apache_1.3.24_db4.patch
 
 export  SSL_BASE=SYSTEM
 export  EAPI_MM=SYSTEM
@@ -18,6 +18,7 @@ APACHE_CONFIGURE=\
               --enable-module=auth_db
               --enable-module=mmap_static
               --disable-module=auth_dbm
+	      --enable-rule=EAPI
               --with-layout=GNU"
 
 
@@ -26,8 +27,8 @@ case  $CERTIFICATE  in
   y|Y|j|J)
 
     cd  mod_ssl-$VERSION                         &&
-    ./configure  --with-apache=../apache_1.3.23  &&
-    cd  ../apache_1.3.23                         &&
+    ./configure  --with-apache=../apache_1.3.24  &&
+    cd  ../apache_1.3.24                         &&
     $APACHE_CONFIGURE                            &&
     make  certificate  TYPE="custom"             &&
     echo  "CERTIFICATE=done"  >>  $SPELL_CONFIG  &&
@@ -40,8 +41,8 @@ case  $CERTIFICATE  in
   *)
 
     (  cd  mod_ssl-$VERSION                         &&
-       ./configure  --with-apache=../apache_1.3.23  &&
-       cd  ../apache_1.3.23                         &&
+       ./configure  --with-apache=../apache_1.3.24  &&
+       cd  ../apache_1.3.24                         &&
        $APACHE_CONFIGURE                            &&
        make  certificate  TYPE="existing"           \
              CRT=/etc/httpsd/ssl.crt/server.crt     &&
