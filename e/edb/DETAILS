@@ -1,9 +1,9 @@
            SPELL=edb
 if [ "$EDB_CVS" = "y" ]; then
-         VERSION=cvs
-          SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/edb
           MD5[0]=IGNORE
 else
@@ -18,7 +18,7 @@ fi
         WEB_SITE=http://www.enlightenment.org
          ENTERED=20010922
          UPDATED=20011101
-           SHORT="Edb provides a stable API and file format for configs, themes."
+           SHORT="Stable API and file format for configs, themes"
 cat << EOF
 Edb provides a stable API and file format for archiving configuration,
 theme, and other data available all the time for fast random access. It
