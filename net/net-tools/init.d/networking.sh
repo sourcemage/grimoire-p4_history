@@ -1,11 +1,11 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SGL-script-version=20030216
+# SMGL-script-version=20030216
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
-# SGL-START:3 4 5:S30
-# SGL-STOP:0 1 2 6:K70
+# SMGL-START:3 4 5:S30
+# SMGL-STOP:0 1 2 6:K70
 # this script requires a file in /etc/sysconfig/network
 # for each network device named <device>.dev
 # with the following variables set as needed:
