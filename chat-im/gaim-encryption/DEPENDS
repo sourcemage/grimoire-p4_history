@@ -1,7 +1,6 @@
-depends   gaim  &&
-depends "MOZILLA-NSS" &&
-if [ "$CVS" = "yes" ]
+depends  gaim         &&
+depends  MOZILLA-NSS  &&
+
+if  [  "$CVS"  ==  "y"  ]
 then  depends  CVS
 fi
-
-
