@@ -1,18 +1,24 @@
            SPELL=jonah
-         VERSION=${VERSION:-0.0.2}
-          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-      LICENSE[0]=GPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=0.0.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=
+fi
         WEB_SITE=http://www.horde.org/$SPELL/
-         ENTERED=20030804
-         UPDATED=20030804
-      MAINTAINER=eric@sandall.us
-           SHORT='RSS Content management and display'
-
-[ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='2a55b6ebe258db2027cd64b1a90527f1'
-
+         ENTERED=20050228
+         UPDATED=20050228
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde RSS Content management and display"
 cat << EOF
 Welcome to the Jonah homepage. Jonah is a set of scripts, written in PHP and using the Horde framework, to manage content and display for a portal-like site.
 
