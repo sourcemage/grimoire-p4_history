@@ -3,7 +3,7 @@
 #moved these to the top so if versions change 
 #then it is easier to update
 #
-  export PWLIBDIR=$SOURCE_DIRECTORY/pwlib-1.5.0             &&
+  export PWLIBDIR=$SOURCE_DIRECTORY/pwlib                   &&
   export OPENH323DIR=$SOURCE_DIRECTORY/openh323             && 
 # xml bug
   sedit "s/xmlSAXHandler/xmlSAXHandlerV1/" lib/xdap/xdap.c  && 

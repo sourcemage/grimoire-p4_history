@@ -1,20 +1,21 @@
             SPELL=gnomemeeting
-          VERSION=0.98.5
+          VERSION=1.0.2
            SOURCE=$SPELL-$VERSION.tar.gz
-          SOURCE2=pwlib-1.5.0.tar.gz
-          SOURCE3=openh323_1.12.2.tar.gz
+          SOURCE2=pwlib-v1_6_5-src.tar.gz
+          SOURCE3=openh323-v1_13_4-src.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-    SOURCE_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE
-   SOURCE2_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE2
-   SOURCE3_URL[0]=http://www.gnomemeeting.org/downloads/latest/sources/$SOURCE3
-           MD5[0]=0f71caea5941180de9da4e05900d0a64
-           MD5[1]=b2bd7c0fa65f3c2952b3c2f8faac7837
-           MD5[2]=17ffdad389eb348ac31b27628ee43dfa
+    SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/$SOURCE
+   SOURCE2_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/$SOURCE2
+   SOURCE3_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/$SOURCE3
+           MD5[0]=339cf188d95d4271567a851eb77bd5a7
+           MD5[1]=1819a2176bf4d7efb92e0f0b1c252d23
+           MD5[2]=87b102cb316d5ed5350786f69fa587bb
          WEB_SITE=http://www.gnomemeeting.org
           ENTERED=20020508
-          UPDATED=20031127
+          UPDATED=20040408
           LICENSE=GPL
             SHORT="H323 videoconference tool"
+
 cat << EOF
 GnomeMeeting is the first Linux H.323 compatible client designed for the Gnome desktop. 
 It is compatible with Netmeeting and other H.323 products. It is the first free H323 
