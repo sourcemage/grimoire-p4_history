@@ -3,6 +3,10 @@
 message "${MESSAGE_COLOR} Aplying 4.2.0 -> 4.2.1 version patch ${DEFAULT_COLOR}"
 gzip -d < $SCRIPT_DIRECTORY/4.2.0-4.2.1.diff.gz | patch -p1 -E
 
+# mit-shm security patch
+
+message "${MESSAGE_COLOR} Aplying mit-shm security patch ${DEFAULT_COLOR}"
+gzip -d < $SCRIPT_DIRECTORY/4.2.1-mit-shm-security.patch.gz | patch -p1 -E
 
 install_drm()  {
 
