@@ -1,6 +1,6 @@
 (
 
-  . $SCRIPT_DIRECTORY/../java-functions
+  . $SECTION_DIRECTORY/java-functions
 
   set_ant_env		&&
 

@@ -6,7 +6,7 @@ do
   then
     message  "${MESSAGE_COLOR}Building $BUILD_SUBDIRECTORY${DEFAULT_COLOR}"  &&
     cd $BUILD_SUBDIRECTORY                                                   &&
-    source  $SCRIPT_DIRECTORY/../KDE_BUILD                                   &&
+    source  $SECTION_DIRECTORY/KDE_BUILD                                   &&
     cd ..
   fi
 done
