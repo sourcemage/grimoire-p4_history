@@ -1,3 +1,31 @@
+2004-03-30 Geoffrey Derber <gderber@sourcemage.org>
+	* BUILD:
+	* CONFIGURE: fixes so that the options are
+	only stored to the $SPELL_CONFIG once, and not
+	each cast.
+	* CONFLICTS: added NVIDIA_headers (cheap fix
+	for bug #6271)
+	* PRE_BUILD: added more variables to be set before BUILD
+
+2004-03-29 Geoffrey Derber <gderber@sourcemage.org>
+	* wine-20040309-defaultcfg.patch, wine-20040309-documentation.patch, 
+	wine-20040309-initial.patch, wine-20040309-winelauncher.patch: added,
+	should make it easier to generate a config / registry for users who don't
+	have one already by copying the default to their own .wine directory.
+
+2004-03-28 Geoffrey Derber <gderber@sourcemage.org>
+	* CONFIGURE: set default fake_C to '/var/wine' since
+	wine installs stuff to '/usr/share/wine' now.
+	Added global (root) only install option.
+	Added a potential local (~/.wine/fake_C) install.
+	Uncomment code to in CONFIGURE to use.
+	* POST_BUILD: renamed POST_INSTALL
+	* POST_INSTALL: fixed registry creation problem.
+	regedit no longer used.
+
+2004-03-24 Treeve Jelbert <treeve01@pi.be>
+	* BUILD: fix wine build problem regarding LDFLAGS
+
 2004-03-24 Geoffrey Derber <gderber@sourcemage.org>
 	* BUILD: added "$CROOT" to the beginning of the list of directories to create
 			fixes bug 6341
