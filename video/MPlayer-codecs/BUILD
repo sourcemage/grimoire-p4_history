@@ -1,5 +1,7 @@
 (
 
+  prepare_install  &&
+
   if [ -d dmocodecs ]; then
     mkdir  -p  /usr/lib/win32
     install dmocodecs/* /usr/lib/win32
