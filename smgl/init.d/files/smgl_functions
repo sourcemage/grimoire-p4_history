@@ -41,7 +41,7 @@ echo() {
   done
 
   # if it's more than one line, dump the line out and save the last line that doesn't have a newline at the end yet.
-  if [ "`builtin echo "$INITSTORE" | wc -l`" -gt 1 ]; then
+  if [ "`builtin echo "$INITSTORE" | ( i=0; while read LINE; do i=$((++i)); done; builtin echo $i)`" -gt 1 ]; then
     print_status message
   fi
 }
