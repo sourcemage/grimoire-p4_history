@@ -5,7 +5,7 @@ ROOTCATALOG=/etc/xml/catalog
 CATALOG=/etc/xml/docbook
 
 xsldir=""
-dir=/usr/share/sgml/docbook/xsl-stylesheets-`echo $VERSION|cut -d . -f 1,2`
+dir=/usr/share/xml/docbook/xsl-stylesheets-`echo $VERSION|cut -d . -f 1,2`
 if [ -r $dir/html/docbook.xsl -a -r $dir/common/l10n.xml ]; then
    xsldir=$dir
 fi

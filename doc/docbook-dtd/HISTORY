@@ -1,28 +1,26 @@
-2003-09-13  Arwed v. Merkatz <v.merkatz@gmx.net>
+2004-02-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, DETAILS, POST_INSTALL, PRE_BUILD, PRE_REMOVE:
+	install and register both the 4.2 and the 4.1.2 dtds, some stuff
+	explicitly needs 4.1.2 and 4.2 isn't 100% backwards compatible;
+	install to /usr/share/xml instead of /usr/share/sgml (fhs compliance)
 
-		added backwards compatibility options to PRE_REMOVE and
-		POST_INSTALL, should fix the long delays in scrollkeeper
+2003-09-13 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* POST_INSTALL: added backwards compatibility fix, should fix the
+	long delays in scrollkeeper
 
-2003-04-04  M.L. <mlubrano@sourcemage.org>
+2003-04-04 M.L. <mlubrano@sourcemage.org>
+	* PRE_BUILD: Added missing MD5 on PRE_BUILD file.
 
-                Added missing MD5 on PRE_BUILD file.
+2002-06-17 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Version bump to 4.2
+	removed www.gwdg.de & www.linet.gr.jp SOURCE_URLs
 
-2002-06-17  Joel Mayes <bluebird@optushome.com.au>
+2002-06-17 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: MD5 field to DETAILS
 
-	        Version bump to 4.2
-		removed www.gwdg.de & www.linet.gr.jp SOURCE_URLs
-
-2002-06-17  Joel Mayes <bluebird@optushome.com.au>
-
-	        MD5 field to DETAILS
-
-2002-06-11  Joel Mayes <bluebird@optushome.com.au>
-
-	        Added LICENSE field to DETAILS 
+2002-06-11 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added LICENSE field to DETAILS 
 
 2002-04-07 Jon Svendsen <jon-sven@frisurf.no>
-
-		* Added this HISTORY file
-		* removed wox.org url
-		* Added PRE_REMOVE and POST_INSTALL for updating xml catalogs 
-		  (Added dependancy for libxml2 because of this)
+	* HISTORY:  Added this HISTORY file
+	removed wox.org url

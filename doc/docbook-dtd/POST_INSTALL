@@ -3,8 +3,44 @@
 # 2003-09-13: added backwards compatibility options, fixes the eons long
 #             scrollkeeper delays (Arwed v. Merkatz)
 
-ROOTCATALOG=/etc/xml/catalog
-CATALOG=/etc/xml/docbook
+register_docbook() {(
+  VER=$1
+  docbookdir=${INSTALL_ROOT}/usr/share/xml/docbook/xml-dtd-$VER
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//ELEMENTS DocBook XML Information Pool V$VER//EN" \
+      "file://$docbookdir/dbpoolx.mod" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//DTD DocBook XML V$VER//EN" \
+      "file://$docbookdir/docbookx.dtd" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//ENTITIES DocBook XML Character Entities V$VER//EN" \
+      "file://$docbookdir/dbcentx.mod" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//ENTITIES DocBook XML Notations V$VER//EN" \
+      "file://$docbookdir/dbnotnx.mod" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//ENTITIES DocBook XML Additional General Entities V$VER//EN" \
+      "file://$docbookdir/dbgenent.mod" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V$VER//EN" \
+      "file://$docbookdir/dbhierx.mod" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
+      "file://$docbookdir/soextblx.dtd" $CATALOG
+  xmlcatalog --noout --add "public" \
+      "-//OASIS//DTD DocBook XML CALS Table Model V$VER//EN" \
+      "file://$docbookdir/calstblx.dtd" $CATALOG
+  xmlcatalog --noout --add "rewriteSystem" \
+      "http://www.oasis-open.org/docbook/xml/$VER" \
+      "file://$docbookdir" $CATALOG
+  xmlcatalog --noout --add "rewriteURI" \
+      "http://www.oasis-open.org/docbook/xml/$VER" \
+      "file://$docbookdir" $CATALOG
+
+)}
+
+ROOTCATALOG=${INSTALL_ROOT}/etc/xml/catalog
+CATALOG=${INSTALL_ROOT}/etc/xml/docbook
 
 mkdir  -p   /etc/xml
 chmod  755  /etc/xml
@@ -31,66 +67,8 @@ if [ ! -r $CATALOG ] ; then
    exit 1
 fi
 
-#
-# find the prefix for DocBook DTD
-#
-found=`find /usr/share/sgml -name docbookx.dtd`
-if [ "$found" = "" ] ; then
-    echo could not locate docbookx.dtd for DocBook XML
-    exit 1
-fi
-
-dtd42=""
-for dtd in $found; do
-    check=`grep '//OASIS//DTD DocBook XML V4.2//EN' $dtd`
-    if [ "$check" != "" ] ; then
-        dtd42=$dtd
-        break
-    fi
-done
-
-if [ "$dtd42" = "" ] ; then
-    echo could not locate version 4.2 of DocBook XML
-    exit 1
-fi
-
-docbookdir=`dirname $dtd42`
-echo Found DocBook XML 4.2 DTD in $docbookdir
-if [ ! -w $docbookdir ] ; then
-    echo Cannot write to $docbookdir
-    exit 2
-fi
-
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.2//EN" \
-    "file://$docbookdir/dbpoolx.mod" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML V4.2//EN" \
-    "file://$docbookdir/docbookx.dtd" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Character Entities V4.2//EN" \
-    "file://$docbookdir/dbcentx.mod" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Notations V4.2//EN" \
-    "file://$docbookdir/dbnotnx.mod" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.2//EN" \
-    "file://$docbookdir/dbgenent.mod" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.2//EN" \
-    "file://$docbookdir/dbhierx.mod" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
-    "file://$docbookdir/soextblx.dtd" $CATALOG
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML CALS Table Model V4.2//EN" \
-    "file://$docbookdir/calstblx.dtd" $CATALOG
-xmlcatalog --noout --add "rewriteSystem" \
-    "http://www.oasis-open.org/docbook/xml/4.2" \
-    "file://$docbookdir" $CATALOG
-xmlcatalog --noout --add "rewriteURI" \
-    "http://www.oasis-open.org/docbook/xml/4.2" \
-    "file://$docbookdir" $CATALOG
+register_docbook 4.1.2
+register_docbook $VERSION
 
 xmlcatalog --noout --add "delegatePublic" \
     "-//OASIS//ENTITIES DocBook XML" \
@@ -105,35 +83,10 @@ xmlcatalog --noout --add "delegateURI" \
     "http://www.oasis-open.org/docbook/" \
     "file://$CATALOG" $ROOTCATALOG
 
-#
-# find the prefix for ISO DocBook entities
-#
-top=`dirname $docbookdir`
-found=`find $top -name iso-amsb.ent`
-if [ "$found" = "" ] ; then
-    found=`find /usr/share/sgml -name iso-amsb.ent`
-fi
-if [ "$found" = "" ] ; then
-    echo could not locate iso-amsb.ent of ISO DocBook entities
-    exit 1
-fi
 
-entxml=""
-for tst in $found; do
-    check=`grep '<!ENTITY ominus."\&#x2296;">' $tst`
-    if [ "$check" != "" ] ; then
-        entxml=$tst
-        break
-    fi
-done
-
-if [ "$entxml" = "" ] ; then
-    echo could not locate ISO DocBook entities
-    exit 1
-fi
-isodir=`dirname $entxml`
-echo Found ISO DocBook entities in $isodir
-
+# we use the entities of the latest docbook version, entities themselves
+# aren't versioned
+isodir=/usr/share/xml/docbook/xml-dtd-$VERSION/ent
 xmlcatalog --noout --add "public" \
     "ISO 8879:1986//ENTITIES Publishing//EN" \
     "file://$isodir/iso-pub.ent" $CATALOG
@@ -195,11 +148,3 @@ xmlcatalog --noout --add "public" \
 xmlcatalog --noout --add "delegatePublic" \
     "ISO 8879:1986" \
     "file://$CATALOG" $ROOTCATALOG
-
-# add backwards compatiblity options
-xmlcatalog --noout --add "rewriteSystem" \
-    "http://www.oasis-open.org/docbook/xml/4.1.2" \
-    "file://$docbookdir" $CATALOG
-xmlcatalog --noout --add "rewriteURI" \
-    "http://www.oasis-open.org/docbook/xml/4.1.2" \
-    "file://$docbookdir" $CATALOG

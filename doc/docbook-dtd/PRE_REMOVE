@@ -1,40 +1,46 @@
 # This is an adaptation of a script i found on xmlsoft.org
 #                                Jon Svendsen
 # 2003-09-13: remove the backwards compat options (Arwed v. Merkatz)
+unregister_docbook() {(
+  VER=$1
+  xmlcatalog --noout --del \
+      "-//OASIS//ELEMENTS DocBook XML Information Pool V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//DTD DocBook XML V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//ENTITIES DocBook XML Character Entities V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//ENTITIES DocBook XML Notations V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//ENTITIES DocBook XML Additional General Entities V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "-//OASIS//DTD DocBook XML CALS Table Model V$VER//EN" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "http://www.oasis-open.org/docbook/xml/$VER" \
+      $CATALOG
+  xmlcatalog --noout --del \
+      "http://www.oasis-open.org/docbook/xml/$VER" \
+      $CATALOG
 
-ROOTCATALOG=/etc/xml/catalog
-CATALOG=/etc/xml/docbook
+)}
 
-xmlcatalog --noout --del \
-    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//DTD DocBook XML V4.1.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//ENTITIES DocBook XML Character Entities V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//ENTITIES DocBook XML Notations V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "-//OASIS//DTD DocBook XML CALS Table Model V4.2//EN" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "http://www.oasis-open.org/docbook/xml/4.2" \
-    $CATALOG
-xmlcatalog --noout --del \
-    "http://www.oasis-open.org/docbook/xml/4.2" \
-    $CATALOG
+ROOTCATALOG=${INSTALL_ROOT}/etc/xml/catalog
+CATALOG=${INSTALL_ROOT}/etc/xml/docbook
+
+unregister_docbook $VERSION
+unregister_docbook 4.1.2
 
 xmlcatalog --noout --del \
     "-//OASIS//ENTITIES DocBook XML" \
@@ -49,9 +55,7 @@ xmlcatalog --noout --del \
     "http://www.oasis-open.org/docbook/" \
     $ROOTCATALOG
 
-#
-# find the prefix for ISO DocBook entities
-#
+# unregister entities
 xmlcatalog --noout --del \
     "ISO 8879:1986//ENTITIES Publishing//EN" \
     $CATALOG
@@ -113,8 +117,3 @@ xmlcatalog --noout --del \
 xmlcatalog --noout --del \
     "ISO 8879:1986" \
     $ROOTCATALOG
-
-# remove backwards compatibility
-xmlcatalog --noout --del \
-    "http://www.oasis-open.org/docbook/xml/4.1.2" \
-    $CATALOG
