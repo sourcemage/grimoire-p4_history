@@ -1,5 +1,10 @@
-#Patch for X version of bad version of zlib
-patch  -p1  <  $SCRIPT_DIRECTORY/4.2.0-zlib-security.patch
+# Patch for X version of bad version of zlib & xlib
+
+for PATCH in $SCRIPT_DIRECTORY/*.patch
+do
+	message "${MESSAGE_COLOR} Aplying ${PATCH} patch"
+	patch  -p1  <  $PATCH
+done
      
 
 install_drm()  {
