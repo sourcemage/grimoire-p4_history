@@ -13,14 +13,12 @@ start()
 {
   echo "Starting watchdog..."
   . /etc/sysconfig/devices
-  if [ $DEVICES=/dev ]; then
-    if ! ([ -e /dev/misc/watchdog] && [ -e /dev/misc/temperature ] ); then
-      echo "No watchdog support in the kernel!"
-      exit 5
-    fi
+  if ! ([ -e $DEVICES/misc/watchdog ] && [ -e $DEVICES/misc/temperature ]); then
+    echo "No watchdog support in the kernel!"
+    exit 5
   else
-    [ -e /dev/watchdog ]    || mknod /dev/watchdog    c 10 130
-    [ -e /dev/temperature ] || mknod /dev/temperature c 10 131
+    [ -e /dev/watchdog ]    || ln -s $DEVICES/misc/watchdog    /dev/watchdog
+    [ -e /dev/temperature ] || ln -s $DEVICES/misc/temperature /dev/temperature
   fi
   loadproc $PROGRAM $ARGS
 }
