@@ -1,10 +1,10 @@
            SPELL=gnumeric2
 if [ "$DEVEL" == "y" ] ;then
-         VERSION=1.3.92
-          MD5[0]='c919499e362cd1d07531c204d1111a22'
+         VERSION=1.4.0
+          MD5[0]='9acf52e739c65d108a9d37023bb37c04'
 else
-         VERSION=1.2.13
-          MD5[0]='bd80b34c16c2cefd7fcfa7b4b5781f34'
+         VERSION=1.4.0
+          MD5[0]='9acf52e739c65d108a9d37023bb37c04'
 fi
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnumeric-$VERSION.tar.bz2
@@ -14,7 +14,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnumeric-$VERSION
       MAKE_NJOBS=1
         WEB_SITE=http://www.gnome.org/projects/gnumeric
          ENTERED=20020513
-         UPDATED=20040720
+         UPDATED=20041129
            SHORT="Gnumeric is a GNOME spreadsheet"
 cat << EOF
 Gnumeric is intended to be a drop in replacement for commercial
