@@ -1,14 +1,18 @@
            SPELL=thc-amap
-         VERSION=2.1
+       BUILD_API=2
+         VERSION=4.7
           SOURCE=amap-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/amap-$VERSION
-        WEB_SITE=http://www.thc.org/
    SOURCE_URL[0]=http://www.thc.org/releases/$SOURCE
-          MD5[0]=fbdc8f5e772664052686a92603d60bb4
+        WEB_SITE=http://www.thc.org
+         ENTERED=20041208
+         UPDATED=20041208
+          MD5[0]=f09acb3cbddc44d3f373347dedece4c2
       LICENSE[0]=GPL
-         ENTERED=20030519
-         UPDATED=20030519
-           SHORT="Amap is a scanning tool"
+           SHORT="A next-generation scanning tool, identifies applications and services."
+
 cat << EOF
-Amap is a next-generation scanning tool, it identifies applications and services even if they are not listening on the default port by creating a bogus-communication.
+Amap is a next-generation scanning tool, which identifies applications and
+services even if they are not listening on the default port by creating a
+bogus-communication and analyzing the responses.
 EOF

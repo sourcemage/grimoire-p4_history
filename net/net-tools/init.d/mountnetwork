@@ -2,7 +2,7 @@
 
 . /etc/sysconfig/mountnetwork
 
-PROGRAM=/bin/mount
+PROGRAM=/bin/false
 RUNLEVEL=3
 NEEDS="+network"
 PROVIDES="remote_fs"
@@ -21,19 +21,23 @@ file_system_list=${file_system_list:1}
 
 start()
 {
-  required_executable /bin/mount
+  if [ "$file_system_list" != "" ] ; then
+    required_executable /bin/mount
 
-  echo  "Mounting remote filesystems..."
-  mount  -a  -F  -t  $file_system_list
-  evaluate_retval
+    echo  "Mounting remote filesystems..."
+    mount  -a  -F  -t  $file_system_list
+    evaluate_retval
+  fi
 }
 
 stop()
 {
-  required_executable /bin/umount
+  if [ "$file_system_list" != "" ] ; then
+    required_executable /bin/umount
 
-  echo  "Unmounting remote filesystems..."
-  umount  -a  -r  -t  $file_system_list
-  evaluate_retval
+    echo  "Unmounting remote filesystems..."
+    umount  -a  -r  -t  $file_system_list
+    evaluate_retval
+  fi
 }
 

@@ -1,6 +1,3 @@
-(
-
-  create_account  quagga
-  default_build
-
-) > $C_FIFO 2>&1
+create_account quagga &&
+autoconf &&
+default_build
