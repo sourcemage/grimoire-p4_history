@@ -1,0 +1,25 @@
+           SPELL=kmymoney2
+         VERSION=0.6rc2
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://$SPELL.SourceForge.net
+#        WEB_SITE=
+#   SOURCE_URL[0]=http://.../$SOURCE
+          LICENCE=GPL
+           MD5[0]=9bfc267d124dc24128222f425c5faba3
+          ENTERED=20040207
+          UPDATED=
+SHORT="personal finance manager for KDE"
+cat << EOF
+KMyMoney2 is specifically aimed at the typical home user at present.
+Each account belongs to an institution and can be reconciled to balance your 
+transactions.
+QIF import and export is supported within accounts so KMyMoney2 can read files 
+exported from other programs and when downloaded from online banking institutions.
+A search dialog is also provided to let the user find transactions that match specific 
+criteria.
+Support for Categories and Payees are also provided allowing the user to input 
+meaningful information, when entering transactions, and to provide a means for future 
+incarnations of KMyMoney2 to provide reporting and budgeting features.
+EOF
