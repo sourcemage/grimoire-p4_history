@@ -6,13 +6,18 @@
 	* POST_INSTALL: Renamed to FINAL for BUILD_API 2
 	* FINAL: Use config_query responses
 	  Add some &&'s
+	  Move config file backup query to CONFIGURE
 	* BUILD: Converted to BUILD_API 2
 	  Use config_query responses
 	* INSTALL: Added
 	  Use config_query responses
 	  Cleaned up formatting a bit (extra &&'s and such)
 	* PRE_BUILD: Use config_query responses
-	* CONFIGURE: Moved dependency code into DEPENDS
+	* PRE_REMOVE: Move query to CONFIGURE
+	  Add missing &&'s
+	* CONFIGURE: Query for config file backup
+	  Add "backup_file" to persistant variables
+	  Query for backing up config file
 	* DEPENDS: Use config_query responses
 	  Missing "&&" after openldap's fi
 	  Add queries and checks for fcron/hc-cron
