@@ -29,6 +29,12 @@ fi                                                  &&
 #    cd  $SOURCE_DIRECTORY
 #  fi  &&
 
+# determine the type of Firebird installed
+  if  spell_installed firebird; then
+    FB=`ls /usr/firebird/lib/libfb*.so|cut -d/ -f5|cut -d. -f1|cut -c4-`
+    OPTS="${OPTS} -l${FB}"
+  fi						&&
+
   echo  "yes"  |  ./configure                      \
                                -prefix ${INSTALL_ROOT}/usr/lib/qt \
                                -bindir ${INSTALL_ROOT}/usr/bin    \
@@ -39,7 +45,7 @@ fi                                                  &&
                                -thread             \
                                -qt-gif             \
                                -xft                \
-                               $OPTS               &&
+                               $OPTS            &&
 
   make  symlinks  sub-src sub-tools                &&
   prepare_install                                  &&
