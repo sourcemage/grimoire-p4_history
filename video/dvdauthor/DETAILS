@@ -1,20 +1,14 @@
            SPELL=dvdauthor
-if [ "$GETDEVEL" == "y" ]; then
-         VERSION=2437
-          MD5[0]='fe4055cbdc4f562d0e833ed0d17eb112'
-          SOURCE=$SPELL-$VERSION.tar.gz
-   SOURCE_URL[0]=http://dvdauthor.sourceforge.net/alpha/$SOURCE
-else
-         VERSION=0.6.10
-          MD5[0]='8ed678683888310c00e62c921bf6c6f6'
+         VERSION=0.6.11
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-      LICENSE[0]=GPL
+          MD5[0]=3c5cdcbfceb3d50218ab2b43df08cf9
         WEB_SITE=http://dvdauthor.sourceforge.net/
          ENTERED=20030921
          UPDATED=20040501
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="Program to generate a DVD movie from MPEG2 stream"
 cat << EOF
 dvdauthor is a program that will generate a DVD movie from a valid
