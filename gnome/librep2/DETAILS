@@ -1,16 +1,14 @@
            SPELL=librep2
-         VERSION=0.16
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=librep-$VERSION.tar.bz2
+         VERSION=0.16.2
+          SOURCE=librep-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/librep-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/librep/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/librep/$BRANCH/$SOURCE
-          MD5[0]='d998d5223fb5071895a3fcf9b3608733'
-        WEB_SITE=http://www.dcs.warwick.ac.uk/~john/sw/librep.html
+   SOURCE_URL[0]=$SOURCEFORGE_URL/librep/$SOURCE
+          MD5[0]="059e312d9162db15bf7497b3450ab8fc"
+        WEB_SITE=http://librep.sourceforge.net
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020510
-         UPDATED=20020510
+         UPDATED=20030226
            SHORT="librep is a shared library implementing a Lisp dialect."
 cat << EOF
 librep is a shared library implementing a Lisp dialect that is lightweight, 
