@@ -1,18 +1,18 @@
            SPELL=nautilus2
-         VERSION=2.2.3.1
+         VERSION=2.2.4
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=nautilus-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/nautilus-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/nautilus/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/nautilus/$BRANCH/$SOURCE
-          MD5[0]="471f958375f122bd7e12088349afba8b"
-        WEB_SITE=http://www.gnome.org/projects/nautilus
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]=0e85da3a5b53576220a21c965675bf23
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
+        WEB_SITE=http://www.gnome.org/projects/nautilus
+      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020510
-         UPDATED=20030401
+         UPDATED=20030510
            SHORT="Nautilus is the official file manager for the GNOME desktop"
 cat << EOF
 Nautilus is the official file manager for the GNOME desktop. It is
