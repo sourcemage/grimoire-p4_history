@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.4.1
+         VERSION=0.5
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20030604
-          MD5[0]=84ff5b8e1084eb1eebc4638cbaf8c5ab
+         UPDATED=20031018
+          MD5[0]=3ce4c6e7757ed16c86e68388235a37f8
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -29,6 +29,10 @@ Guru experience:
                             automaticaly receive notifications for changed
                             urls by email... 
                                  See urlwatch --help for help. (by M.L.).
+  spellify                -  takes some software-version.tar.{gz|bz2}, makes a
+                             #{MYSPELLS}/software and DETAILS in your local 
+														 spell dir ${MYSPELLS} and cp the tarball to spool 
+														 then scribe reindex ${MYGRIMOIRE}.
 
   summonsection           - This script is usefull for lazy section
                             maintainters who get bored first deleting cached
