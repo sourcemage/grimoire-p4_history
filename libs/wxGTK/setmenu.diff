@@ -1,0 +1,10 @@
+--- include/wx/menuitem.h	2003-06-08 04:13:11.000000000 -0400
++++ include/wx/menuitem.h	2003-06-10 19:48:45.000000000 -0400
+@@ -49,6 +49,7 @@ public:
+ 
+     // the menu we're in
+     wxMenu *GetMenu() const { return m_parentMenu; }
++    void SetMenu(wxMenu* menu) { m_parentMenu = menu; }
+ 
+     // get/set id
+     void SetId(int id) { m_id = id; }
