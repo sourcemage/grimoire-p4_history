@@ -1,6 +1,4 @@
-# $Id: DEPENDS,v 1.5 2002/09/17 11:59:59 sergeyli Exp $
-echo "$SPELL:DEPENDS: Start" >> $DEBUG
-
+# $Id: DEPENDS,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
 depends db "--enable-bdb" &&
 
 optional_depends bash       "--enable-shell"            \
@@ -9,8 +7,8 @@ optional_depends bash       "--enable-shell"            \
 optional_depends readline   "--with-readline"           \
                             "--without-readline"        \
 							"for readline intergration" &&
-optional_depends openssl    "--with-ssl"                \
-                            "--without-ssl"             \
+optional_depends openssl    "--with-tls"                \
+                            "--without-tls"             \
 							"for SSL/TLS support"       &&
 #optional_depends perl       "--enable-perl"             \
 #							"--disable-perl"            \

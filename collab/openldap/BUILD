@@ -1,5 +1,4 @@
-# $Id: BUILD,v 1.5 2002/09/17 11:59:59 sergeyli Exp $
-echo "$SPELL:BUILD: Start" >> $DEBUG
+# $Id: BUILD,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
 (
 
 	./configure              \
@@ -7,6 +6,9 @@ echo "$SPELL:BUILD: Start" >> $DEBUG
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--enable-cleartext   \
+		--enable-crypt       \
+		--enable-rlookups    \
 		--enable-gnu-ld      \
 		$OPTS                &&
 	make    depend           &&
