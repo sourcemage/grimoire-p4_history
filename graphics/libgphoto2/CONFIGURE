@@ -13,7 +13,7 @@ if  !  grep  -q  "^DRIVER="  $SPELL_CONFIG  ;  then
 
     if  [  -z  "$DRIVER"  ]  ;  then
       message  "No driver selected, defaulting to all."
-      DRIVER='"all"'
+#      DRIVER='"all"'
     fi
 
     DRIVER=${DRIVER//\"/}     # Remove all " characters.
