@@ -9,8 +9,11 @@
 	  Add -DSPAMC_SSL to CFLAGS if MAILSPAM_SSL is "y"
 	* INSTALL: Added
 	  Removed TABs
+	  Use local DOC_DIR to install docs to /usr/share/doc
+	  Cleaned up documentation installation
 	* DEPENDS: Formatted to Guru Handbook
 	  Added dependency on openssl if MAILSPAM_SSL is "y"
+	  Added optional dependency on Storable
 	* CONFIGURE: Added to query for SSL-enabled spamc
 	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
 	* TRIGGERS: Clean up formatting

@@ -1,17 +1,22 @@
-MAKE_NJOBS_OLD=$MAKE_NJOBS						&&
-MAKE_NJOBS=1								&&
-make    install							&&
-MAKE_NJOBS=$MAKE_NJOBS_OLD						&&
+make  install  &&
 
-mkdir -p 	/usr/doc/$SPELL						&&
-cp ninjabutton.png /usr/doc/$SPELL           				&&
-cp *.txt	/usr/doc/$SPELL                 			&&
-cp TRADEMARK	/usr/doc/$SPELL                 			&&
-cp README	/usr/doc/$SPELL                 			&&
-cp procmailrc.example /usr/doc/$SPELL         			&&
-cp Changes    /usr/doc/$SPELL                 			&&
-cp -r contrib /usr/doc/$SPELL                 			&&
-cp -r masses  /usr/doc/$SPELL                 			&&
-cp -r rules   /usr/doc/$SPELL                 			&&
-cp -r sql     /usr/doc/$SPELL                 			&&
-cp -r tools	/usr/doc/$SPELL	
+local DOC_DIR=/usr/share/doc/$SPELL  &&
+
+mkdir  -p               $DOC_DIR  &&
+
+cp  -r  ninjabutton.png     \
+        *.txt               \
+        TRADEMARK           \
+        README              \
+        UPGRADE             \
+        USAGE               \
+        BUGS                \
+        INSTALL             \
+        procmailrc.example  \
+        Changes             \ 
+        contrib             \
+        masses              \
+        rules               \
+        sql                 \
+        tools               \
+        $DOC_DIR
