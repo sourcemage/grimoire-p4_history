@@ -1,7 +1,6 @@
 (
 
-    TEXMF=`kpsetool -v '$TEXMF'`                        &&
-    TEXMF=`echo $TEXMF | sed -e "s/\!*//"`              &&
+    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                   &&
     
     mkdir  -p  /usr/doc/$SPELL                          &&
 

@@ -1,7 +1,6 @@
 (
 
-    TEXMF=`kpsetool -v '$TEXMF'`                        &&
-    TEXMF=`echo $TEXMF | sed -e "s/\!*//"`              &&
+    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                   &&
 
     yes "" | latex $SPELL.ins                           &&
     yes "" | latex $SPELL.ins                           &&
