@@ -1,7 +1,7 @@
 (
 
 # Berkeley DB 4.1 requires an extra parameter in `open'
-  patch -p1 < $SCRIPT_DIRECTORY/db-4.1.diff &&
+  #patch -p1 < $SCRIPT_DIRECTORY/db-4.1.diff &&
 
   ./configure  --prefix=/usr                     \
                --sysconfdir=/etc/httpd           \
