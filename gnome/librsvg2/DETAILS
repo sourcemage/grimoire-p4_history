@@ -1,16 +1,16 @@
            SPELL=librsvg2
-         VERSION=2.1.5
+         VERSION=2.2.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=librsvg-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/librsvg-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/librsvg/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/librsvg/$BRANCH/$SOURCE
-          MD5[0]="912f7f0a14a08182d6faaf6080cbd06a"
+          MD5[0]="3109ea545971e3cd36ff87c6e408779b"
         WEB_SITE=http://www.gnome.org/projects/nautilus
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020509
-         UPDATED=20030114
+         UPDATED=20030120
            SHORT="librsvg is a library for operating on files in SVG format"
 cat << EOF
 The librsvg library is a lightweight library for parsing and
