@@ -1,41 +1,32 @@
 #!/bin/sh
 
-RUNLEVEL=2
+PROGRAM=/usr/share/webmin/miniserv.pl
+CONF=/etc/webmin/miniserv.conf
+RUNLEVEL=3
+NEEDS="+remote_fs"
 
 . /etc/init.d/smgl_init
 
-case "$1" in
-'start')
-	/etc/webmin/start #>/dev/null 2>&1 </dev/null
-	evaluate_retval
-	;;
-'stop')
-	/etc/webmin/stop
-	evaluate_retval
-	;;
-'status')
-	pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
-	if [ -s $pidfile ]; then
-		pid=`cat $pidfile`
-		kill -0 $pid >/dev/null 2>&1
-		if [ "$?" = "0" ]; then
-			echo "webmin (pid $pid) is running"
-			evaluate_retval
-		else
-			echo "webmin is stopped"
-			evaluate_retval
-		fi
-	else
-		echo "webmin is stopped"
-		evaluate_retval
-	fi
-	;;
-'restart')
-	/etc/webmin/stop && /etc/webmin/start
-	evaluate_retval
-	;;
-*)
-	echo "Usage: $0 { start | stop | restart | status}"
-	exit 1
-	;;
-esac
+start()
+{
+  echo  "Starting webmin..."
+  ${PROGRAM}  ${CONF}
+  evaluate_retval
+}
+
+stop()
+{
+  killproc  miniserv.pl
+}
+
+status()
+{
+  statusproc  miniserv.pl
+}
+
+restart()
+{
+  stop      &&
+  sleep  1  &&
+  start
+}
