@@ -11,7 +11,7 @@ export  PATH  PS1
 umask   022
 
 
-#recursion
+#iteration
 for i in /etc/profile.d/*.sh ; do
     if [ -r "$i" ]; then
         . $i
