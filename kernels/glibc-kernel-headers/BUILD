@@ -20,11 +20,11 @@
     done
   ###
  echo "installing linux headers"                         &&
- mv linux ${INSTALL_ROOT}/usr/include                    &&
+ cp -a linux ${INSTALL_ROOT}/usr/include                    &&
  echo "installing asm-generic headers"                   &&
- mv asm-generic ${INSTALL_ROOT}/usr/include              &&
+ cp -a asm-generic ${INSTALL_ROOT}/usr/include              &&
  echo "installing asm-$ARCH headers to /usr/include/asm" &&
- mv asm-$ARCH ${INSTALL_ROOT}/usr/include/asm
+ cp -a asm-$ARCH ${INSTALL_ROOT}/usr/include/asm
  if [ "$KERN" = "2.6" ] &&  [[ $(uname -m) == *86 ]]; then
   if [ -f ${INSTALL_ROOT}/etc/sorcery/local/kernel.config ]; then
    PROCESSOR="#define CONFIG_X86_L1_CACHE_SHIFT $(grep CONFIG_X86_L1_CACHE_SHIFT \
