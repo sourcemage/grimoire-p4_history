@@ -1,0 +1,18 @@
+support ()
+{
+ if query "do you need $1 support for $2" y;
+  then
+    echo "$2=y" >> ${SPELL_CONFIG}
+  else
+    echo "$2=n" >> ${SPELL_CONFIG}
+  fi
+
+}
+if  !  grep  -q  "CONFIGURED"   ${SPELL_CONFIG}
+then
+  support CS PCMCIA 
+  support PCI/PCMCIA PLX9052
+  support PCI ISL3874 
+  support USB ISL3873 
+  echo "CONFIGURED=yes" >>  ${SPELL_CONFIG}
+fi
