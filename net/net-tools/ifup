@@ -102,7 +102,7 @@ if [ -z "$MODE" ]; then
   exit 1
 fi
 
-if [ "${_OBEY_UP_ON_BOOT}" = 1 -a "$UP_ON_BOOT" != yes ] ; then
+if [ "${_OBEY_UP_ON_BOOT}" = 1 -a "$UP_ON_BOOT" = no ] ; then
   exit 0
 fi
 
