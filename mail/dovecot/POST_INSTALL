@@ -9,5 +9,5 @@ message "Then you may need to regenerate ssl key and certificate (rm /etc/ssl/ce
 message " "
 
 if [ ! -e /etc/dovecot.conf ]; then
-  message "${MESSAGE_COLOR}Edit and rename /etc/dovecot-example.conf to /etc/dovecot.conf and run 'telinit smgl-dovecot start' to start dovecot. ${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}Edit and rename /etc/dovecot-example.conf to /etc/dovecot.conf and run 'telinit run smgl-dovecot start' to start dovecot. ${DEFAULT_COLOR}"
 fi

@@ -5,7 +5,7 @@ if [ -e /etc/metalog.conf ]; then
     echo "Watchdog messages :" 			>> /etc/metalog.conf
     echo "program  = \"watchdog\""		>> /etc/metalog.conf
     echo "logdir   = \"/var/log/watchdog\""	>> /etc/metalog.conf
-    telinit metalog restart
+    telinit run metalog restart
   fi
 fi
 
