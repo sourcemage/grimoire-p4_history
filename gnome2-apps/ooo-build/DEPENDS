@@ -7,7 +7,11 @@ depends libgnomeui            &&
 depends libgnomecups          &&
 depends ttf-bitstream-vera    &&
 depends startup-notification  &&
-depends evolution-data-server 
+depends evolution-data-server &&
+depends sane-backends         &&
+depends curl                  &&
+depends Python                &&
+depends unixodbc              
 
 #optional_depends "libbonobo" "--enable-bonobo" "--disable-bonobo" "Enable bonbobo support"   &&
 #optional_depends "JAVA" "--enable-java --with-jdk-home=$JAVA_HOME" "" "Enable Java support" &&
