@@ -20,14 +20,12 @@ EOF`
   if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
   then  
 	KERNEL_LOCATION=${CR_KERNEL}
-	KERNEL_LINK=/boot/vmlinubz
-	SPLASH_IMAGE_LINK=/boot/grub/images/smgl-splash.xpm.gz
+	BOOT_LOC=/boot
   else  
 	KERNEL_LOCATION=${CR_KERNEL_FILE}
-	KERNEL_LINK=/vmlinubz
-	SPLASH_IMAGE_LINK=/grub/images/smgl-splash.xpm.gz
+	BOOT_LOC=""
   fi
-
+  
   cat << EOF > /boot/grub/menu.lst.skel
 # The grub spell attempts to create a sensible skeletin file which you
 # can edit to create a working menu.lst file.  Use this as a guide, but
@@ -49,7 +47,7 @@ timeout 10
 lba32
 
 # Splashimage, provides a nice image for the background
-splashimage ${LIKELY_KERNEL_PARTITION}${SPLASH_IMAGE_LINK}
+splashimage ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/grub/images/smgl-splash.xpm.gz
 
 # defines menu foreground/background, highlight foreground/background
 color  black/light-gray white/red
@@ -60,7 +58,7 @@ color  black/light-gray white/red
 # such as ide-scsi= if you're using an IDE CDROM burner.
 
 title  Source Mage GNU/Linux
-kernel ${LIKELY_KERNEL_PARTITION}${KERNEL_LINK} root=${LIKELY_ROOT} devfs=mount
+kernel ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/vmlinubz root=${LIKELY_ROOT} devfs=mount
 
 title  Source Mage GNU/Linux $UNAME_R
 kernel ${LIKELY_KERNEL_PARTITION}${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=mount
@@ -108,7 +106,7 @@ configure_grub_root
 # across
 
 # the stagefile should update with new versions
-cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
+cp -f /usr/share/grub/i386-pc/*stage*  /boot/grub
 
 if  [  -h  /etc/grub.conf  ]
 then
