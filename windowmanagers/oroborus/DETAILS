@@ -1,7 +1,8 @@
            SPELL=oroborus
          VERSION=2.0.13-1
+       BUILD_API=2
           SOURCE=${SPELL}_${VERSION}.tar.gz
-	  BRANCH=`echo  ${VERSION}|cut -d - -f1`
+          BRANCH=`echo  ${VERSION}|cut -d - -f1`
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${BRANCH}
    SOURCE_URL[0]=http://www.oroborus.org/debian/dists/sid/main/source/x11/${SOURCE}
           MD5[0]=a93a583d01fc843129cba31d979db649
