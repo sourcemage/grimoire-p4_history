@@ -623,11 +623,11 @@ calculate_depends()
 			if [[ "${depends}" == "" ]] 
 			then
 				echo "${patch}:"
-				echo "	echo \"${patch}\""
+				echo "	echo -n \"${patch} \""
 				echo ""
 			else
 				echo "${patch}: ${depends}"
-				echo "	echo \"${patch}\""
+				echo "	echo -n \"${patch} \""
 				echo ""
 				dependslist="${dependslist}${depends} "
 			fi
@@ -635,47 +635,16 @@ calculate_depends()
 		for depends in $dependslist
 		do
 			echo "$depends:"
-			echo "	echo \"$depends\""
+			echo "	echo -n \"$depends \""
 			echo ""
 		done
 		) > $dependsmakefile
 		# this doesn't work with persistent vars don't know why?
-		#patches=$(make -sf $dependsmakefile all)
+		patches=$(make -sf $dependsmakefile all)
 		echo $patches
 	fi
 }
-calculate_depends_old()
-{
-	# really this should be done with a make file
-	new_patch_list=""
-	rnew_patch_list=""
-	for patch in $patches
-	do
-		depends=""
-		case "$patch" in
-			LATEST*)
-				. $patchesdir/*/${!patch}
-				if [ "$depends" != "" ]
-				then
-					rnew_patch_list="${depends} ${rnew_patch_list}"
-					new_patch_list="${new_patch_list}${depends} "
-				fi
-				;;
-			*)
-				. $patchesdir/*/${patch}
-				if [ "$depends" != "" ]
-				then
-					rnew_patch_list="${depends} ${rnew_patch_list}"
-					new_patch_list="${new_patch_list}${depends} "
-				fi
-				;;
-		esac
-		rnew_patch_list="${patch} ${rnew_patch_list}"
-		new_patch_list="${new_patch_list}${patch} "
-	done
-	rpatches="${rnew_patch_list}"
-	patches="${new_patch_list}"
-}
+
 
 # created details.defaults file to be sourced by DETAILS file for VERSION SOURCE_URL SOURCE
 # stuff like that
@@ -685,7 +654,7 @@ create_details()
 	local counter="1"
 	case "$mode" in
 		*ktree)
-			calculate_depends_old
+			calculate_depends
 			(
 			#this might be cool if it didn't take more than what's up there.
 			depends=""
