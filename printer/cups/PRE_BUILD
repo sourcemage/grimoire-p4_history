@@ -1,8 +1,3 @@
-if  [  -f  /etc/init.d/cups  ];  then
-  mv  /etc/init.d/cups  /etc/init.d/cups.backup
-fi
-
-
 if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  then
   echo  "This spell conflicts with gnulpr and will cause it and any dependants to be dispelled."
 
@@ -35,6 +30,5 @@ if  [  "`gaze  installed  |  grep  gnulpr  |  cut  -d:  -f1`"  =  "gnulpr"  ];  
     fi
   fi
 fi
-
 
 default_pre_build
