@@ -1,13 +1,14 @@
            SPELL=ndiswrapper
-         VERSION=1.1rc2
+         VERSION=1.1rc3
        BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+#   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[0]=switch.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
         WEB_SITE=http://$SPELL.sf.net/
          ENTERED=20040417
          UPDATED=20040417
-          MD5[0]=5724befd9386a2f7d9afa5c14a16c325
+          MD5[0]=f4c633e42e406d80d766b911a59bd9a8
            SHORT='Kernel module to load NDIS (W%nd&ws network driver API) drivers'
 cat << EOF
 Some vendors refuse to release specs or even a binary linux-driver for their
