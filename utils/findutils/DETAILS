@@ -1,10 +1,11 @@
            SPELL=findutils
-        VERSION=4.1
+         VERSION=4.1
           SOURCE=$SPELL-$VERSION.tar.gz
           MD5[0]='ef1084f6534dee4214b31ef96034a61a'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+      LICENSE[0]=GPL
         WEB_SITE=http://www.gnu.org/software/findutils
          ENTERED=20010922
          UPDATED=20010922
@@ -12,9 +13,15 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 cat << EOF
 findutils - Finds and then operates on files
 The program includes:
-find		-	finds files that match certain criteria performs 
-			arbitrary operations on them interactively and
-			in shell scripts
-locate		-	scans a database for file names that match a pattern 
-xargs		-	applies a command to a list of files
+bigram    -  used together with code to produce older-style locate databases
+code      -  the ancestor of frcode. It was used in older-style locate databases
+find      -  finds files that match certain criteria performs 
+             arbitrary operations on them interactively and
+             in shell scripts
+frcode    -  called by updatedb to compress the list of file names using
+             front-compression, which reduces the database size by a factor
+             of 4 to 5
+locate    -  scans a database for file names that match a pattern 
+updatedb  -  update a file name database
+xargs     -  applies a command to a list of files
 EOF
