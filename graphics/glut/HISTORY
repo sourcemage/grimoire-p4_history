@@ -1,6 +1,12 @@
+2003-09-22  Eric Sandall <eric@sandall.us>
+
+        Provides GLUT
+
+        Conflicts with freeglut
+
 2003-09-17  hgg <hgreig@bigpond.net.au>
 
-                Change depends xfree86 to requires x11-libs
+        Change depends xfree86 to requires x11-libs
 
 2003-08-21 David Braaten <xiticix47@hotmail.com>
 
@@ -12,6 +18,8 @@
 
 2002-05-03  20:18 PST  Eric Sandall <sandalle@yahoo.com>
 
-  * Modified BUILD so that /usr/X11R6/bin is in your path, if it's not already.  Required for imake and xmkmf
+        Modified BUILD so that /usr/X11R6/bin is in your path, if it's not
+        already.  Required for imake and xmkmf
 
-  * Copies all of /usr/X11R6/lib/X11/config to $SOURCE_DIRECTORY since -I/usr/X11R6/lib/X11/config doesn't work properly.
+        Copies all of /usr/X11R6/lib/X11/config to $SOURCE_DIRECTORY since
+        -I/usr/X11R6/lib/X11/config doesn't work properly.
