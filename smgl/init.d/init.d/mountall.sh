@@ -8,6 +8,7 @@ ESSENTIAL=yes
 
 . /etc/init.d/smgl_init
 . /etc/sysconfig/devices
+. /etc/sysconfig/init
 
 checkfs()
 {
