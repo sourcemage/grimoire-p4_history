@@ -1,0 +1,6 @@
+if  !  grep  -q  "^WITH_LIBSMBCLIENT="  $SPELL_CONFIG  ;  then
+  if    query  "Build and install Samba client library?"  y
+  then  echo   "WITH_LIBSMBCLIENT=y"  >>  $SPELL_CONFIG
+  else  echo   "WITH_LIBSMBCLIENT=n"  >>  $SPELL_CONFIG
+  fi
+fi
