@@ -10,11 +10,11 @@
 
   # Changes netscape to mozilla and acroread to xpdf as defaults,
   # if they're installed
-  if  spell_installed  mozilla
+  if  spell_ok  mozilla
   then
     patch  -p0  <  ${SCRIPT_DIRECTORY}/Fig.mozilla.diff
   fi
-  if  spell_installed  xpdf
+  if  spell_ok xpdf
   then
     patch  -p0  <  ${SCRIPT_DIRECTORY}/Fig.xpdf.diff
   fi

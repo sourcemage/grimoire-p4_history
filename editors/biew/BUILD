@@ -7,7 +7,7 @@
   fi
 
 
-  if spell_installed gpm ; then
+  if spell_ok gpm ; then
     UM="y"
   else
     UM="n"

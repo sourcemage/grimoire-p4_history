@@ -9,11 +9,11 @@ patch  -p0  <  ${SCRIPT_DIRECTORY}/mk.diff  &&
 # the package is installed, but this is the easy way
 # I'm doing it for now. :)
 #
-if  spell_installed  tcp_wrappers;  then
+if  spell_ok  tcp_wrappers;  then
   sedit  "s:undef VSF_BUILD_TCPWRAPPERS:define VSF_BUILD_TCPWRAPPERS:"  builddefs.h
 fi  &&
 
-if  spell_installed  openssl;  then
+if  spell_ok  openssl;  then
   sedit  "s:undef VSF_BUILD_SSL:define VSF_BUILD_SSL:"  builddefs.h
 fi  &&
 
