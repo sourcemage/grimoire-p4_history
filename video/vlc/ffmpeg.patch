@@ -1,0 +1,28 @@
+--- transcode.c.orgi	2004-04-25 18:52:31.000000000 +0200
++++ transcode.c	2004-04-25 18:55:19.000000000 +0200
+@@ -1507,6 +1507,17 @@
+                                 id->i_inter_pixfmt,
+                                 id->f_dst.video.i_width, id->f_dst.video.i_height );
+ 
++#if LIBAVCODEC_BUILD >= 4708
++                id->p_vresample =
++                    img_resample_full_init( id->f_dst.video.i_width,
++                                            id->f_dst.video.i_height,
++                                            id->ff_dec_c->width, id->ff_dec_c->height,
++                                            p_stream->p_sys->i_crop_top,
++                                            p_stream->p_sys->i_crop_bottom,
++                                            p_stream->p_sys->i_crop_left,
++                                            p_stream->p_sys->i_crop_right,
++                                            0,0,0,0 );
++#else
+                 id->p_vresample =
+                     img_resample_full_init( id->f_dst.video.i_width,
+                                             id->f_dst.video.i_height,
+@@ -1515,6 +1526,7 @@
+                                             p_stream->p_sys->i_crop_bottom,
+                                             p_stream->p_sys->i_crop_left,
+                                             p_stream->p_sys->i_crop_right );
++#endif
+             }
+ 
+             img_resample( id->p_vresample, (AVPicture*)id->p_ff_pic_tmp2,
