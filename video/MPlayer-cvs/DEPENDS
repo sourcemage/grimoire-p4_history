@@ -4,7 +4,7 @@ optional_depends  "libdvdnav"  ""  ""  "for additional dvd navigation"  &&
 optional_depends  "live"  "--enable-live"  ""  "for live.com Streaming Media (sdp/rtsp) support"  &&
 
 # input codecs
-depends  ffmpeg-cvs  &&
+requires  libavcodec  &&
 optional_depends  "zlib"  ""  ""  "to play movies using losless compression algorithms" &&
 optional_depends  "w32codec"  ""  ""  "to use windows codec DLLs for video decoding" &&
 optional_depends  "libvorbis"  ""  ""  "to play ogg/vorbis audio" &&
