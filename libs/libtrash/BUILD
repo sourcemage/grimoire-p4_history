@@ -1,13 +1,10 @@
 (
-    mv src/Makefile src/Makefile.old    &&
+    sedit "s/local\///g" src/Makefile         &&
 
-    sed  -e 's/local\///g'              \
-         -e 's/ginstall/install/g'      \
-         < src/Makefile.old             \
-         > src/Makefile
-
-    prepare_install
-    make
-    make install
-
+    prepare_install                           &&
+    make                                      &&
+    make install                              &&
+    if  ! grep -q libtrash.so ${INSTALL_ROOT}/etc/profile && [ "$LOGDEFS" = "yes" ] ; then
+    echo -e "export LD_PRELOAD=${INSTALL_ROOT}/usr/lib/libtrash.so" >> ${INSTALL_ROOT}/etc/profile 
+    fi
 ) > $C_FIFO 2>&1
