@@ -42,6 +42,6 @@ ln -sf ${INSTALL_ROOT}/boot/config-${VERSION} \
 	${INSTALL_ROOT}/boot/config &&
 
 cd ${BUILD_DIRECTORY} &&
-rm linux &&
+rm  -f  linux  &&
 ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` linux 
 
