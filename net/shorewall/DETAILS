@@ -1,15 +1,16 @@
            SPELL=shorewall
-         VERSION=1.4.10c
+         VERSION=2.0.3
           SOURCE=$SPELL-$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/$SPELL-$VERSION/$SOURCE
-          MD5[0]=18720c455e48bfe430ba2a28937a5995
+          MD5[0]=c722149307a68166f7cb6f033b059e0e
         WEB_SITE=http://www.shorewall.net/
          ENTERED=20020513
          UPDATED=20021119
       LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="Shorewall is an iptable based firewall"
 cat << EOF
 Shorewall is an [2]iptables based firewall that can be used on a dedicated
