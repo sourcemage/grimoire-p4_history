@@ -1,29 +1,29 @@
 Index: Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/Makefile,v
-retrieving revision 1.273
-diff -u -r1.273 Makefile
---- Makefile	17 Aug 2003 20:56:10 -0000	1.273
-+++ Makefile	19 Aug 2003 21:51:06 -0000
+retrieving revision 1.274
+diff -u -r1.274 Makefile
+--- Makefile	30 Aug 2003 22:31:41 -0000	1.274
++++ Makefile	3 Sep 2003 13:21:36 -0000
 @@ -36,9 +36,9 @@
  VO_LIBS = $(AA_LIB) $(X_LIB) $(SDL_LIB) $(GGI_LIB) $(MP1E_LIB) $(MLIB_LIB) $(SVGA_LIB) $(DIRECTFB_LIB) 
  AO_LIBS = $(ARTS_LIB) $(ESD_LIB) $(NAS_LIB) $(SGIAUDIO_LIB)
  CODEC_LIBS = $(AV_LIB) $(FAME_LIB) $(MAD_LIB) $(VORBIS_LIB) $(THEORA_LIB) $(FAAD_LIB) $(LIBLZO_LIB) $(DECORE_LIB) $(XVID_LIB) $(PNG_LIB) $(Z_LIB) $(JPEG_LIB) $(ALSA_LIB) $(XMMS_LIB) $(MATROSKA_LIB) 
--COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB)
-+COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(FONTCONFIG_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB)
+-COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libfaad2/libfaad2.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB)
++COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libfaad2/libfaad2.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(FONTCONFIG_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB)
  
 -CFLAGS = $(OPTFLAGS) -Ilibmpdemux -Iloader -Ilibvo $(FREETYPE_INC) $(EXTRA_INC) $(CDPARANOIA_INC) $(SDL_INC) $(X11_INC) $(FRIBIDI_INC) $(DVB_INC) # -Wall
 +CFLAGS = $(OPTFLAGS) -Ilibmpdemux -Iloader -Ilibvo $(FREETYPE_INC) $(FONTCONFIG_INC) $(EXTRA_INC) $(CDPARANOIA_INC) $(SDL_INC) $(X11_INC) $(FRIBIDI_INC) $(DVB_INC) # -Wall
  
- PARTS = libmpdemux libmpcodecs mp3lib liba52 libmpeg2 libavcodec libao2 drivers osdep postproc input libvo libaf
+ PARTS = libmpdemux libmpcodecs mp3lib liba52 libmpeg2 libavcodec libao2 drivers osdep postproc input libvo libaf libfaad2
  ifeq ($(VIDIX),yes)
 Index: configure
 ===================================================================
 RCS file: /cvsroot/mplayer/main/configure,v
-retrieving revision 1.754
-diff -u -r1.754 configure
---- configure	18 Aug 2003 14:24:29 -0000	1.754
-+++ configure	19 Aug 2003 21:51:24 -0000
+retrieving revision 1.760
+diff -u -r1.760 configure
+--- configure	2 Sep 2003 14:36:26 -0000	1.760
++++ configure	3 Sep 2003 13:21:49 -0000
 @@ -164,6 +164,7 @@
    --disable-css          Disable old-style libcss DVD support [autodetect]
    --disable-cdparanoia   Disable cdparanoia support [autodetect]
@@ -32,7 +32,7 @@ diff -u -r1.754 configure
    --disable-unrarlib     Disable Unique RAR File Library [enabled]
    --enable-menu          Enable OSD menu support (NOT DVD MENU) [disabled]
    --disable-sortsub      Disable subtitles sorting [enabled]
-@@ -1135,6 +1136,7 @@
+@@ -1137,6 +1138,7 @@
  _cdparanoia=auto
  _big_endian=auto
  _freetype=auto
@@ -40,7 +40,7 @@ diff -u -r1.754 configure
  _shared_pp=no
  _menu=no
  _qtx=auto
-@@ -1341,6 +1343,8 @@
+@@ -1345,6 +1347,8 @@
    --disable-big-endian) _big_endian=no  ;;
    --enable-freetype)    _freetype=yes   ;;
    --disable-freetype)   _freetype=no    ;;
@@ -49,7 +49,7 @@ diff -u -r1.754 configure
    --enable-unrarlib)	_unrarlib=yes	;;
    --disable-unrarlib)	_unrarlib=no	;;
    --enable-ftp)         _ftp=yes        ;;
-@@ -4031,6 +4035,40 @@
+@@ -4055,6 +4059,40 @@
  fi
  echores "$_freetype"
  
@@ -90,7 +90,7 @@ diff -u -r1.754 configure
  
  echocheck "fribidi with charsets"
  if test "$_fribidi" = yes ; then
-@@ -5511,6 +5549,8 @@
+@@ -5537,6 +5575,8 @@
  CDPARANOIA_LIB = $_ld_cdparanoia
  FREETYPE_INC = $_inc_freetype
  FREETYPE_LIB = $_ld_freetype
@@ -99,7 +99,7 @@ diff -u -r1.754 configure
  FRIBIDI_INC = $_inc_fribidi
  FRIBIDI_LIB = $_ld_fribidi
  LIBLZO_LIB= $_ld_liblzo
-@@ -5941,6 +5981,9 @@
+@@ -5967,6 +6007,9 @@
  
  /* enable FreeType support */
  $_def_freetype
@@ -115,7 +115,7 @@ RCS file: /cvsroot/mplayer/main/mencoder.c,v
 retrieving revision 1.218
 diff -u -r1.218 mencoder.c
 --- mencoder.c	13 Aug 2003 16:29:00 -0000	1.218
-+++ mencoder.c	19 Aug 2003 21:51:30 -0000
++++ mencoder.c	3 Sep 2003 13:21:53 -0000
 @@ -418,6 +418,10 @@
  #ifdef USE_OSD
  #ifdef HAVE_FREETYPE
@@ -130,11 +130,11 @@ diff -u -r1.218 mencoder.c
 Index: mplayer.c
 ===================================================================
 RCS file: /cvsroot/mplayer/main/mplayer.c,v
-retrieving revision 1.721
-diff -u -r1.721 mplayer.c
---- mplayer.c	18 Aug 2003 14:05:30 -0000	1.721
-+++ mplayer.c	19 Aug 2003 21:51:54 -0000
-@@ -1051,8 +1051,15 @@
+retrieving revision 1.725
+diff -u -r1.725 mplayer.c
+--- mplayer.c	29 Aug 2003 21:41:03 -0000	1.725
++++ mplayer.c	3 Sep 2003 13:22:03 -0000
+@@ -1052,8 +1052,15 @@
  
  //------ load global data first ------
  
@@ -151,7 +151,7 @@ diff -u -r1.721 mplayer.c
    if(font_name){
         vo_font=read_font_desc(font_name,font_factor,verbose>1);
         if(!vo_font) mp_msg(MSGT_CPLAYER,MSGL_ERR,MSGTR_CantLoadFont,font_name);
-@@ -1062,9 +1069,6 @@
+@@ -1063,9 +1070,6 @@
         if(!vo_font)
         vo_font=read_font_desc(MPLAYER_DATADIR "/font/font.desc",font_factor,verbose>1);
    }
@@ -167,7 +167,7 @@ RCS file: /cvsroot/mplayer/main/DOCS/de/documentation.html,v
 retrieving revision 1.72
 diff -u -r1.72 documentation.html
 --- DOCS/de/documentation.html	9 Jul 2003 20:10:34 -0000	1.72
-+++ DOCS/de/documentation.html	19 Aug 2003 21:52:11 -0000
++++ DOCS/de/documentation.html	3 Sep 2003 13:22:13 -0000
 @@ -1108,6 +1108,11 @@
          ~/.mplayer/subfont.ttf</CODE></LI>
      </UL>
@@ -183,11 +183,11 @@ diff -u -r1.72 documentation.html
 Index: DOCS/de/mplayer.1
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/de/mplayer.1,v
-retrieving revision 1.28
-diff -u -r1.28 mplayer.1
---- DOCS/de/mplayer.1	9 Jul 2003 20:10:34 -0000	1.28
-+++ DOCS/de/mplayer.1	19 Aug 2003 21:52:27 -0000
-@@ -909,6 +909,8 @@
+retrieving revision 1.30
+diff -u -r1.30 mplayer.1
+--- DOCS/de/mplayer.1	31 Aug 2003 22:02:22 -0000	1.30
++++ DOCS/de/mplayer.1	3 Sep 2003 13:22:23 -0000
+@@ -912,6 +912,8 @@
  Die \-subfont-*-Optionen sind nur verfügbar, wenn FreeType eincompieliert
  wurde. Wenn die FreeType-Unterstützung aktiviert wurde, dann kann die
  alte Schriftunterstützung nicht mehr benutzt werden.
@@ -196,7 +196,7 @@ diff -u -r1.28 mplayer.1
  
  .I BEISPIELE:
  .PD 0
-@@ -916,6 +918,8 @@
+@@ -919,6 +921,8 @@
  \-font ~/\:.mplayer/\:arial\-14/\:font.desc
  .br
  \-font ~/\:.mplayer/\:arialuni.ttf
@@ -208,11 +208,11 @@ diff -u -r1.28 mplayer.1
 Index: DOCS/en/documentation.html
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/en/documentation.html,v
-retrieving revision 1.423
-diff -u -r1.423 documentation.html
---- DOCS/en/documentation.html	17 Aug 2003 20:48:20 -0000	1.423
-+++ DOCS/en/documentation.html	19 Aug 2003 21:52:40 -0000
-@@ -1032,6 +1032,20 @@
+retrieving revision 1.427
+diff -u -r1.427 documentation.html
+--- DOCS/en/documentation.html	2 Sep 2003 20:23:55 -0000	1.427
++++ DOCS/en/documentation.html	3 Sep 2003 13:22:32 -0000
+@@ -1040,6 +1040,20 @@
      (read TOOLS/subfont-c/README for details)</LI>
    <LI>use the font generator GIMP plugin at TOOLS/subfont-GIMP
      (note: you must have HSI RAW plugin too, see URL below)</LI>
@@ -236,11 +236,11 @@ diff -u -r1.423 documentation.html
 Index: DOCS/en/mplayer.1
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/en/mplayer.1,v
-retrieving revision 1.416
-diff -u -r1.416 mplayer.1
---- DOCS/en/mplayer.1	19 Aug 2003 18:50:33 -0000	1.416
-+++ DOCS/en/mplayer.1	19 Aug 2003 21:52:56 -0000
-@@ -1094,6 +1094,8 @@
+retrieving revision 1.433
+diff -u -r1.433 mplayer.1
+--- DOCS/en/mplayer.1	1 Sep 2003 17:44:12 -0000	1.433
++++ DOCS/en/mplayer.1	3 Sep 2003 13:22:44 -0000
+@@ -1110,6 +1110,8 @@
  With FreeType, this option determines path to the text font file.
  .br
  The \-subfont-* options are available only with FreeType support compiled in.
@@ -249,7 +249,7 @@ diff -u -r1.416 mplayer.1
  
  .I EXAMPLE:
  .PD 0
-@@ -1101,6 +1103,8 @@
+@@ -1117,6 +1119,8 @@
  \-font ~/\:.mplayer/\:arial\-14/\:font.desc
  .br
  \-font ~/\:.mplayer/\:arialuni.ttf
@@ -264,7 +264,7 @@ RCS file: /cvsroot/mplayer/main/DOCS/xml/en/install.xml,v
 retrieving revision 1.10
 diff -u -r1.10 install.xml
 --- DOCS/xml/en/install.xml	9 Jul 2003 17:35:34 -0000	1.10
-+++ DOCS/xml/en/install.xml	19 Aug 2003 21:53:03 -0000
++++ DOCS/xml/en/install.xml	3 Sep 2003 13:22:48 -0000
 @@ -765,6 +765,22 @@
    RAW plugin too, see URL below)
    <!-- FIXME: where's that URL? -->
@@ -294,7 +294,7 @@ RCS file: /cvsroot/mplayer/main/libvo/font_load_ft.c,v
 retrieving revision 1.10
 diff -u -r1.10 font_load_ft.c
 --- libvo/font_load_ft.c	9 Jun 2003 12:15:47 -0000	1.10
-+++ libvo/font_load_ft.c	19 Aug 2003 21:53:15 -0000
++++ libvo/font_load_ft.c	3 Sep 2003 13:22:58 -0000
 @@ -23,6 +23,10 @@
  #include <freetype/freetype.h>
  #include <freetype/ftglyph.h>
