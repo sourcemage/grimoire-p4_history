@@ -1,18 +1,18 @@
            SPELL=gnome-session
-         VERSION=2.1.90
+         VERSION=2.2.0.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="4e3bec83a6dd0974ebdb62fa12f4f341"
+          MD5[0]="7dab2179c0134efbbed68c5772f6b55c"
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020505
-         UPDATED=20030106
+         UPDATED=20030121
            SHORT="The GNOME 2.0 Session manager"
 cat << EOF
 The GNOME 2.0 Session manager
