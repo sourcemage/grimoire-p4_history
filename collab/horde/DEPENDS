@@ -1,2 +1,7 @@
-# $Id: DEPENDS,v 1.4 2002/11/14 21:30:35 sergeyli Exp $
-requires php
+requires php &&
+
+depends PEAR-Log &&
+depends PEAR-Mail_Mime &&
+# PEAR-Net_Socket is bundled with PHP 4.3.2 (and up?)
+
+optional_depends openldap '' '' 'for LDAP-based Preferences container'
