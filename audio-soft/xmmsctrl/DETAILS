@@ -1,0 +1,23 @@
+           SPELL=xmmsctrl
+         VERSION=1.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.docs.uu.se/~adavid/utils/$SOURCE
+          MD5[0]=00c18ad2d41fdf89824926c4c34eb6b3
+        WEB_SITE=http://user.it.uu.se/~adavid/utils/
+         ENTERED=20040228
+         UPDATED=20040228
+      LICENSE[0]=GPL
+      MAINTAINER=ruskie@email.si
+    MENU_ITEM[0]="xmmsctrl"
+    MENU_EXEC[0]="xmmsctrl"
+    MENU_DESC[0]=" xmmsctrl is a small utility to control xmms from the command line."
+           SHORT=' xmmsctrl is a small utility to control xmms from the command line.'
+cat << EOF
+
+xmmsctrl is a small utility to control xmms from the command line. Its goal is to be used coupled 
+with sh to test xmms state and perform an appropriate action, e.g. if playing then pause else play. 
+The interest of this is to bind keys in a window manager to have control over xmms with keys that do 
+play/next/pause, prev, control sound...
+
+EOF
