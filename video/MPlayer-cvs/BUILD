@@ -4,7 +4,7 @@
   sedit  's/-fomit-frame-pointer//'  configure  &&
 
   if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
-    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch  &&
+    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch
   fi  &&
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch       &&
   patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch  &&
