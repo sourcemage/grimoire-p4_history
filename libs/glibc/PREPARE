@@ -1,0 +1,19 @@
+if query "Kernel $(uname -r) is running, is that the kernel you wish to build glibc against ?" y
+   then echo -e "\n"
+   else echo "Reboot the system with the correct kernel then " && exit 1
+fi &&
+
+if ! grep -q /sbin/ldconfig $PROTECTED
+then echo "/sbin/ldconfig" >> $PROTECTED
+fi 
+
+if ! grep -q NPTL $SPELL_CONFIG 
+   then NPTL=no && 
+   if [[ $(uname -r) == 2.6.* ]] 
+      then if query "As you are running a 2.6 kernel, would you like to use the new nptl 
+           (Native Posix Thread Library)" y
+              then NPTL=yes
+           fi
+   fi  
+echo NPTL=$NPTL >> $SPELL_CONFIG 
+fi

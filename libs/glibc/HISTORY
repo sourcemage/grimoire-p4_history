@@ -1,3 +1,35 @@
+2003-12-23 hgg <hgreig@bigpond.net.au>
+	* BUILD: copy the headers immediately after prepare_install
+	* BUILD: use the headers from currently running kernel
+	* BUILD, linux-2.6-headers-fix.patch: add a few more fixes, appears to be a good fix for fb.h 
+	I have tested with MPlayer SDL(needs an extra flag) directfb , libggi 
+	* DETAILS: add sourcemage mirror for the glibc 2.3.2 sscanf patch
+
+2003-12-16 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: moved --enable-kernel=current to nptl options (breaks
+	compilation for linuxthreads on linux-2.6.0-test11)
+	* BUILD, linux-2.6-headers-fix.patch: added patch to fix some kernel
+	headers so they can be included by apps (only videodev.h and videodev2.h
+	so far)
+	* locales: added UTF-8 locales
+
+2003-12-15 hgg <hgreig@bigpond.net.au>
+	* BUILD: change to use "if ... ; then ... ; fi" after prepare_install 
+	or make install is run even when make has failed. (more of same)
+	I should have thought that through before I tried to make it so lean and clean :(
+	
+
+2003-12-14 hgg <hgreig@bigpond.net.au>
+	* DETAILS,PRE_BUILD,BUILD,PREPARE,CONFIGURE: Optional nptl (if running 2.6 kernel)
+	* DETAILS: nptl build seems to need distcc turned off, in this case better safe than sorry 
+	* BUILD: glibc is happiest installing from a few symlinks to the new libraries. BUILD now makes symlinks after 
+	prepare_install (while the old libs are still preloaded by sorcery) then reruns ldconfig 
+	so only the new version and symbols are used. "make install" then adjusts all symlinks to point to the correct version.
+	Version updates, or even architecture updates  should never fail tests or segfault now, 
+	"make install" is using the newset libs already, 
+	* glibc-nptl-fix-asserts.patch: A patch so /lib/libc.so.6 will report version strings and compile stats 
+	correctly if nptl is built
+
 2003-12-01 Eric Sandall <eric@sandall.us>
 	* BUILD: Use INSTALL_ROOT
 
