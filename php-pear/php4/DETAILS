@@ -1,7 +1,7 @@
-           SPELL=php
+           SPELL=php4
          VERSION=4.3.8
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=php-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/php-$VERSION
 if [ "${VERSION//RC/}" == "$VERSION" ]; then
    SOURCE_URL[0]=http://static.php.net/www.php.net/distributions/$SOURCE
 else
