@@ -1,0 +1,22 @@
+diff -urN directory_administrator-1.1.9/src/profile.c directory_administrator/src/profile.c
+--- directory_administrator-1.1.9/src/profile.c	2002-04-04 02:29:21.000000000 -0500
++++ directory_administrator/src/profile.c	2002-07-16 20:39:34.000000000 -0400
+@@ -247,6 +247,18 @@
+   connectionhandler =
+     ldap_init (connection_profile_get_server (conn), LDAP_PORT);
+ 
++#if LDAP_VENDOR_VERSION >= 20000
++
++  {
++    /* Localize changes inside curly braces */
++    int version = LDAP_VERSION3;
++    int isLDAPv3 = (LDAP_OPT_SUCCESS == ldap_set_option(connectionhandler
++      , LDAP_OPT_PROTOCOL_VERSION, &version));
++    /* LDAVv2 or v3 are being used, as of OpenLDAP 2.x client library */
++  }
++
++#endif
++
+   ldap_errors = ldap_simple_bind_s (connectionhandler,
+ 				    connection_profile_get_dn (conn),
+ 				    connection_profile_get_password (conn));
