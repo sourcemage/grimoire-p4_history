@@ -22,8 +22,7 @@
     if ! grep -q KERNEL_2_6 nv-linux.h; then
       patch  -p0  <  $SOURCE_CACHE/$SOURCE3   # Workaround for stupid stupid stupid people who dont update versions.                        &&
     fi                                                      &&
-    ln  -s  Makefile.kbuild Makefile                        &&
-    patch  -p4 < ${SCRIPT_DIRECTORY}/2.6.0-test5.patch
+    ln  -s  Makefile.kbuild Makefile
   fi                                                        &&
   ### please no-one remove this
   cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION            &&

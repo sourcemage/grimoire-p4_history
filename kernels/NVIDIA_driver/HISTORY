@@ -1,73 +1,62 @@
-2003-09-20  Eric Sandall <eric@sandall.us>
+2003-12-03 Eric Sandall <eric@sandall.us>
+	* 2.6.0-test5.patch: Removed, no longer needed as of -test11
+	* BUILD: Removed application of 2.6.0-test5.patch
+	* HISTORY: Formatted to Guru Handbook
 
-		Patch to compile on linux 2.6.0-test5  (Bug #4317)
+2003-09-20 Eric Sandall <eric@sandall.us>
+	* 2.6.0-test5.patch: Patch to compile on linux 2.6.0-test5  (Bug #4317)
 
-2003-09-19  hgg <hgreig@bigpond.net.au>
+2003-09-19 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update triggers to include xfree86-devel 
+	( not really sure if xfree86-libs warrants a trigger ??)
 
-		Update triggers to include xfree86-devel 
-		( not really sure if xfree86-libs warrants a trigger ??)
+2003-09-16 hgg <hgreig@bigpond.net.au>
+	* BUILD: Bug: whitespace after = and needed whitespace removed with sed
 
-2003-09-16  hgg <hgreig@bigpond.net.au>
+2003-09-01 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Change SOURCE2 and MD5 to *2.6* version
 
-		Bug in BUILD whitespace after = and needed whitespace removed with  sed
+2003-08-17 Seth Woolley <seth@tautology.org>
+	* DETAILS: Modified to insert md5 for SOURCE3.
+	Modified to insert md5 for SOURCE2.
 
-2003-09-01  hgg <hgreig@bigpond.net.au>
+2003-08-17 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* Fixed 2.5 / 2.6 patches. Look at the kernel source for the
+	Version number now.
+	Only tested with 2.4.x kernels yet - Please inform about 2.6
 
-		Change  SOURCE2 and MD5 to *2.6* version
+2003-08-15 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* DETAILS: Updated to 1.0-4496
 
-2003-08-17  Seth Woolley <seth@tautology.org>
+2003-08-03 Chris Brien <cbrien@sourcemage.org>
+	* Stop asking the same damn question!
+	* And fix it because of stupid people who don't make
+	new source files when they change them! Ffs, it only
+	takes a minute to release a new version!
 
-		Modified DETAILS to insert md5 for SOURCE3.
-		Modified DETAILS to insert md5 for SOURCE2.
+2003-07-29 hgg <hgreig@bigpond.net.au>
+	* fix bug #3777 AGAIN!!!
 
-2003-08-17  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+2003-07-26 Eric Sandall <eric@sandall.us>
+	* BUILD: Now tests for kernel with uname
+	Reverted to testing against 'linux' spell version
 
-		Fixed 2.5 / 2.6 patches. Look at the kernel source for the
-		Version number now.
-		Only tested with 2.4.x kernels yet - Please inform about 2.6
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* fix bug #3777
 
-2003-08-15  Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+2003-07-24 Eric Sandall <eric@sandall.us>
+	* CONFLICTS: Removed as they no longer exist  (Bug #3839)
 
-		Updated to 1.0-4496
+2003-07-17 Eric Sandall <eric@sandall.us>
+	* Patch doesn't work, but also it's only needed
+	for linux >= 2.5.0, so I've fixed that part
 
-2003-08-03  Chris Brien <cbrien@sourcemage.org>
+2003-07-14 Chris Brien <cbrien@sourcemage.org>
+	* BUILD: Minor fix to compile against linux kernel 2.6
 
-		Stop asking the same damn question!
-		And fix it because of stupid people who don't make
-		new source files when they change them! Ffs, it only
-		takes a minute to release a new version!
+2003-04-02 Gareth Clay <garethclay@ntlworld.com>
+	* Updated to work with sorcery with Bourne script unpack support
 
-2003-07-29  hgg <hgreig@bigpond.net.au>
+2003-04-01 Gareth Clay <garethclay@ntlworld.com>
+	* Created this spell
 
-		fix bug #3777 AGAIN!!!
-
-2003-07-26  Eric Sandall <eric@sandall.us>
-
-		Now tests for kernel with uname
-
-		Reverted to testing against 'linux' spell version
-
-2003-07-26  hgg <hgreig@bigpond.net.au>
-
-		fix bug #3777
-
-2003-07-24  Eric Sandall <eric@sandall.us>
-
-		Removed CONFLICTS as they no longer exist  (Bug #3839)
-
-2003-07-17  Eric Sandall <eric@sandall.us>
-
-	        Patch doesn't work, but also it's only needed
-        	for linux >= 2.5.0, so I've fixed that part
-
-2003-07-14  Chris Brien <cbrien@sourcemage.org>
-
-	        Minor fix to compile against linux kernel 2.6
-
-2003-04-02  Gareth Clay <garethclay@ntlworld.com>
-
-        	Updated to work with sorcery with Bourne script unpack support
-
-2003-04-01  Gareth Clay <garethclay@ntlworld.com>
-
-	        Created this spell
