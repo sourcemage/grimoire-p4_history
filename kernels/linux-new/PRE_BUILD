@@ -59,3 +59,9 @@ then
 #		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
 #	fi
 fi
+
+if [[ "$TXTMESSAGE" != "" ]]
+then
+	message $TXTMESSAGE
+	sleep 5
+fi

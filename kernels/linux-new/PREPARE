@@ -665,6 +665,7 @@ create_details()
 				then
 					echo 'PATCHVER=${patchversion}'
 				fi
+				echo 'TXTMESSAGE="${TXTMESSAGE}${txtmessage} "'
 				counter="`expr $counter + 1`"
 			done
 			if [[ $appliedkernels ]]
