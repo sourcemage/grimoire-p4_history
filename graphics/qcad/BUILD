@@ -3,7 +3,7 @@
   export  CFLAGS="-Wall -W -fno-strength-reduce  $CFLAGS"  &&
 
   Q_DIR="/usr/share/qcad"                      &&
-  bzcat $SCRIPT_DIRECTORY/Makefile > Makefile  &&
+  cp  $SCRIPT_DIRECTORY/Makefile  Makefile     &&
   make                                         &&
   prepare_install                              &&
   install  -d  $Q_DIR  &&
