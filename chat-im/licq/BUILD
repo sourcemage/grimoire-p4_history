@@ -8,14 +8,16 @@
 	       $OPTS			                                      &&
   make					                                          &&
 
-#  cd  $SOURCE_DIRECTORY/plugins/console               &&
-#  if [ "$CVS" == "yes" ]; then
-#	  make -f Makefile.cvs
-#  fi                                                              &&
-#  ./configure  --prefix=/usr		\
-#               --sysconfdir=/etc	\
-#               --localstatedir=/var	               &&
-#  make					                &&
+  if [ "$CDK" == "yes" ]; then
+  cd  $SOURCE_DIRECTORY/plugins/console               &&
+  if [ "$CVS" == "yes" ]; then
+	  make -f Makefile.cvs
+  fi                                                              &&
+  ./configure  --prefix=/usr		\
+               --sysconfdir=/etc	\
+               --localstatedir=/var	               &&
+  make
+  fi					                &&
 
   if  spell_installed  qt-x11;  then
 	cd  $SOURCE_DIRECTORY/plugins/qt-gui	                      &&
@@ -99,8 +101,10 @@
   cd  $SOURCE_DIRECTORY                                           &&
   make    install                                                 &&
   
-#  cd  $SOURCE_DIRECTORY/plugins/console                           &&
-#  make    install                                                 &&
+  if [ "$CDK" == "yes" ]; then
+  cd  $SOURCE_DIRECTORY/plugins/console                           &&
+  make    install
+  fi &&
 
   if  spell_installed  qt-x11;  then
     cd  $SOURCE_DIRECTORY/plugins/qt-gui                          &&
