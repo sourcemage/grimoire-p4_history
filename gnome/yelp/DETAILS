@@ -1,16 +1,16 @@
            SPELL=yelp
-         VERSION=2.1.3
+         VERSION=2.1.4
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE    
-          MD5[0]="25ff05d6063bad1e7dc2fbc30a02a854"
+          MD5[0]="699aab287dee9b2db8ddf59c833150a9"
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020509
-         UPDATED=20021230
+         UPDATED=20030106
            SHORT="Yelp is the new help browser for GNOME 2.0"
 cat << EOF
 Help browser for GNOME 2.0 which supports docbook documents, info and
