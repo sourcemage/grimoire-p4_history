@@ -12,5 +12,6 @@ if  [  "$LOC"  ==  ""  ];  then
   return 1
 fi  &&
 
-cd  ..                 &&
+cd  ..                                  &&
+chown  -R  nobody.nogroup  address_add  &&
 mv  address_add  $LOC

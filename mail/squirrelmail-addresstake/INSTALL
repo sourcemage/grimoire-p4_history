@@ -13,5 +13,6 @@ if [ "$LOC" == "" ]; then
 fi  &&
 
 
-cd  ..                &&
+cd  ..                                 &&
+chown  -R  nobody.nogroup  abook_take  &&
 mv  abook_take  $LOC
