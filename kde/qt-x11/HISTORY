@@ -1,68 +1,91 @@
+2002-11-02  Eric Womack <eric@lasvegasdata.com>
+		Added "suspend" of Xft1 & Xft2
+
 2002-09-02  Eric Sandall <eric@sandall.us>
+
 		Added to KDE section for Eric
 
 2002-08-29  Treeve Jelbert <treeve01@pi.be>
+
 		improve optimisations
+
 		speed up build process by removing some examples
+
 		update md5sum
 
 2002-08-01  Gareth Clay <g.clay@warwick.ac.uk>
+
 		Updated to version 3.0.5
+
 		Implemented workarounds for bugs in qt's install scripts
+
 		Made spell fully work with KDE_DETAILS file
 
+2002-07-10  George Mochrie <geo@drasil.uklinux.net>
+
+		changed spell name to qt-x11
+
+		made zlib and the graphics librarys optional depends
+
+		removed libungif from DEPENDS
+
+2002-07-08  George Mochrie <geo@drasil.uklinux.net>
+
+		fixed sql plugins
+
+		switched to using qt-copy from the KDE website
+
+		changed spell name from qt-x11-free to qt-copy
+		mirrors updated
+
 2002-05-30  Eric Womack <eric@lasvegasdata.com>
+
 		Moved source to TrollTech site.
 
-2002-05-30  Eric Womack <eric@lasvegasdata.com>
 		Adjusted to new versioning system
 
-2002-03-31  George Mochrie <geo@drasil.uklinux.net>
+2002-04-09  Eric Womack <eric@lasvegasdata.com>
 
-		created this changelog
-		updated version to 3.0.3
-		spell now downloads .tar.bz2 rather than .tar.gz
-		changed BUILD to install qt to /usr
-
-2002-04-03  George Mochrie <geo@drasil.uklinux.net>
-
-		added the -thread flag which is required by KDE 3.0
-		
-2002-04-06  George Mochrie <geo@drasil.uklinux.net>
-
-		added support for sql plugins
-		enabled qt's internal jpeg engine rather than using the 
-                  system libjpeg
-
-
-2002-04-06  ???
-
-		removed the -plugindir switch from BUILD
-		enabled graphics modules to build as plugins again
+		Beta Release
 
 2002-04-07  George Mochrie <geo@drasil.uklinux.net>
 
 		changed -prefix in BUILD to /usr/lib/qt
+
 		changed BUILD to copy the contents of /usr/lib/qt/bin to
-		  /usr/bin then delete bin
+		/usr/bin then delete bin
+
 		changed BUILD to skip building examples and tutorial
-		  (thanx unet)
+		(thanx unet)
 
 2002-04-07  Insomniac <insomniac@japh.nl>
 
 		Mirrors added
 
-2002-07-08  George Mochrie <geo@drasil.uklinux.net>
+2002-04-06  George Mochrie <geo@drasil.uklinux.net>
 
-		fixed sql plugins
-		switched to using qt-copy from the KDE website
-		changed spell name from qt-x11-free to qt-copy
-                mirrors updated
+		added support for sql plugins
 
-2002-04-09  Eric Womack <eric@lasvegasdata.com>
-		Beta Release
+		enabled qt's internal jpeg engine rather than using the 
 
-2002-07-10  George Mochrie <geo@drasil.uklinux.net>
-		changed spell name to qt-x11
-                made zlib and the graphics librarys optional depends
-		removed libungif from DEPENDS
+		system libjpeg
+
+2002-04-06  ???
+
+		removed the -plugindir switch from BUILD
+
+		enabled graphics modules to build as plugins again
+
+2002-04-03  George Mochrie <geo@drasil.uklinux.net>
+
+		added the -thread flag which is required by KDE 3.0
+
+2002-03-31  George Mochrie <geo@drasil.uklinux.net>
+
+		created this changelog
+
+		updated version to 3.0.3
+
+		spell now downloads .tar.bz2 rather than .tar.gz
+
+		changed BUILD to install qt to /usr
