@@ -1,0 +1,12 @@
+*** audio.c.old	2003-12-04 16:51:14.000000000 +0100
+--- audio.c	2003-12-04 16:51:31.000000000 +0100
+***************
+*** 43,46 ****
+--- 43,49 ----
+   */
+  
++ #define ALSA_PCM_OLD_HW_PARAMS_API
++ #define ALSA_PCM_OLD_SW_PARAMS_API
++ 
+  #if defined(HAVE_CONFIG_H)
+    #include <config.h>
