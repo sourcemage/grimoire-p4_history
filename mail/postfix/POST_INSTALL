@@ -15,7 +15,7 @@ if [ "$backup_file" != "" ]; then
     message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file lather yourself)${DEFAULT_COLOR}"
   else
     message "${MESSAGE_COLOR}Restoring config files... ${DEFAULT_COLOR}"
-    tar -C / -xyvPf $backup_file
+    tar -C / -xjvPf $backup_file
   fi
 else
   message "${MESSAGE_COLOR}No backup for config files found. ${DEFAULT_COLOR}"

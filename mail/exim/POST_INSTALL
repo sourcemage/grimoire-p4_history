@@ -31,7 +31,7 @@ if [ "$backup_file" != "" ]; then
     message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file later yourself)"
     message " ${DEFAULT_COLOR}"
   else
-    tar -C / -xyvPf $backup_file
+    tar -C / -xjvPf $backup_file
   fi
 fi
 
