@@ -1,1 +1,6 @@
-depends  perl
+depends  perl  &&
+depends  libpng  '--enable-local-libpng'  &&
+depends  zlib  '--enable-local-zlib'  &&
+
+optional_depends  tcl  '' ''  \
+        'Enable interface for the TCL programming language?'
