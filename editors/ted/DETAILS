@@ -1,13 +1,14 @@
            SPELL=ted
-         VERSION=2.16
-          SOURCE=$SPELL-$VERSION.src.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/Ted-$VERSION
+       BUILD_API=2
+	 VERSION=2.16
+          SOURCE=${SPELL}-${VERSION}.src.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/Ted-${VERSION}
         WEB_SITE=http://www.nllgg.nl/Ted
-   SOURCE_URL[0]=ftp://ftp.nluug.nl/pub/editors/ted/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.nluug.nl/pub/editors/ted/${SOURCE}
           LICENSE=GPL
            MD5[0]=1619d0b2cd07a7fd49ca09b27ad51785
           ENTERED=20040418
-          UPDATED=
+          UPDATED=20040623
 SHORT="Ted is a text processor running under X Windows"
 cat << EOF
 Ted is an easy rich text processor. It can edit RTF files in a wysiwyg manner.
