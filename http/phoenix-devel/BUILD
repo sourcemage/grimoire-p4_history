@@ -1,8 +1,7 @@
 (
-	cd /usr/src/mozilla &
-	make -f client.mk build &&
-	prepare_install
-	make install
-#	rm -R /usr/src/mozilla
-	rm $HOME/.mozconfig
-) > $C_FIFO 2>&1
+  make -f client.mk build &&
+  prepare_install &&
+  make install
+) > $C_FIFO 2>&1 && (
+  rm $HOME/.mozconfig
+)

@@ -1,11 +1,14 @@
-depends  cvs     && 
-depends  zip     &&
-depends  ORBit   &&
-depends  gtk+    &&
-depends  jpeg    &&
-depends  libpng  &&
-depends  zlib    &&
-depends  zip     &&
-depends  perl    &&
+depends cvs    &&
+depends zip    &&
+depends ORBit  &&
+depends gtk+   &&
+depends jpeg   &&
+depends libpng &&
+depends zlib   &&
+depends zip    &&
+depends perl   &&
 
-optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+optional_depends "freetype2"                                  \
+                 "--with-ft-exec-prefix=/usr/bin"             \
+                 "--disable-freetype2 --disable-freetypetest" \
+                 "for TrueType font support"
