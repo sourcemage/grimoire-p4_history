@@ -1,4 +1,3 @@
-(
  if [ "$IPV6" == "y" ]
       then OPTS="$OPTS --enable-ipv6"
  fi
@@ -11,8 +10,4 @@
 	       --with-docdir=/usr/doc/silc-client/doc \
 	       --with-helpdir=/usr/share/silc/help \
 	       $OPTS		      &&	
-  make                                &&
-  prepare_install                     &&
-  make    install
-
-) > $C_FIFO 2>&1
+  make 
