@@ -1,0 +1,19 @@
+           SPELL=Net-Jabber
+         VERSION=1.0024
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/R/RE/REATMON/$SOURCE
+        WEB_SITE="http://search.cpan.org/search?module=Net::Jabber"
+         ENTERED=20020403
+         UPDATED=20020403
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Access to the Jabber protocol"
+cat << EOF
+
+Net::Jabber is a convenient tool to use for any perl script
+that would like to utilize the Jabber Instant Messaging
+protocol.  While not a client in and of itself, it provides
+all of the necessary back-end functions to make a CGI client
+or command-line perl client feasible and easy to use.
+
+EOF
