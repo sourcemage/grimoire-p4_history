@@ -1,2 +1,6 @@
 cd $SOURCE_DIRECTORY &&
-cp libgmail.py mkconstants.py /usr/lib/python2.3/site-packages
+if [ "$CVS" != "y" ]; then
+   cp libgmail.py mkconstants.py /usr/lib/python2.3/site-packages
+else 
+   cp constants.py libgmail.py mkconstants.py /usr/lib/python2.3/site-packages
+fi  
