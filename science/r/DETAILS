@@ -1,15 +1,15 @@
            SPELL=r
          VERSION=2.0.0
-          SOURCE=R-$VERSION.tgz
+          SOURCE=R-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/R-$VERSION
    SOURCE_URL[0]=http://cran.r-project.org/src/base/R-2/$SOURCE
           MD5[0]=3c1b85911c114f4ac658cdfaba319ca6
       LICENSE[0]=GPL
-      MAINTAINER=sergeyli@pisem.net
+       BUILD_API=2
         WEB_SITE=http://www.r-project.org/
          ENTERED=20020803
          UPDATED=20030708
-           SHORT='R is "GNU S", a freely available language and environment for statistical computing and graphics'
+           SHORT='R is "GNU S", a freely available language'
 cat << EOF
 R is "GNU S" - A language and environment for statistical computing and
 graphics. R is similar to the award-winning S system, which was developed at
