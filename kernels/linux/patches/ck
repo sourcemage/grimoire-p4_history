@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DESCRIPTION="Con Kolivas Patch"
+SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
+HELP="Which one do I use???
+ Average desktop machine - use ck9 with all options enabled
+ Desktop with so much memory you cant recall last time swap was used - ck9 with cc disabled
+ Desktop with heaps of memory and dont need alsa or xfs - ck7
+ SMP machine that needs xfs - ck9 with cc disabled
+ SMP machine that needs no xfs/alsa - ck7"
+
+VERSIONS="ck9_2.4.19
+ck7_2.4.19"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://members.optusnet.com.au/con.man/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+
+if [[ "${!PATCH}" == "ck7_2.4.19" ]]; then
+COUNTER=$((${COUNTER}+1))
+echo "
+SOURCE${COUNTER}=pe2_pe1.diff
+SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/pe2_pe1.diff" >> $SPELL_CONFIG
+fi
+
+fi
