@@ -43,3 +43,11 @@ if  !  grep  -q  GUI=  $SPELL_CONFIG;  then
   fi
   echo  "GUI=$GUI"  >>  $SPELL_CONFIG
 fi
+config_query MAKE_SYMLINK "Would you like to have /usr/bin/vi as a symlink to /usr/bin/vim?" n
+if [ "${MAKE_SYMLINK}" == "y" ] ; then
+    if [ -e ${INSTALL_ROOT}/bin/vi ] ; then
+        echo "VI is already provided by elvis." &&
+        echo "To have vim as provider of vi, recast elvis with the vi symlink option disabled, then recast vim." &&
+        MAKE_SYMLINK="n"
+    fi
+fi
