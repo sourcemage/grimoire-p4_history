@@ -1,15 +1,15 @@
-           SPELL=phpMyAdmin
+           SPELL=phpmyadmin
          VERSION=2.6.0-pl2
-          SOURCE=${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/phpmyadmin/${SOURCE}
+          SOURCE=phpMyAdmin-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/phpMyAdmin-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]=e0d89a85d2d9157532d7219066416693
         WEB_SITE=http://www.phpmyadmin.net/
          ENTERED=20030120
-         UPDATED=20040209
+         UPDATED=20041215
       LICENSE[0]=GPL
        BUILD_API=2
-           SHORT="PHP/Web-based MySQL server/database management tool."
+           SHORT="PHP/Web-based MySQL server/database management tool"
 cat << EOF
 phpMyAdmin can manage a whole MySQL-server (needs a super-user) but also a
 single database.  To accomplish the latter you'll need a properly set up
