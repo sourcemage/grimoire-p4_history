@@ -1,16 +1,20 @@
-depends  WEBSERVER  &&
-depends  autoconf   &&
-depends  libtool    &&
-depends  bison      &&
-depends  apr       '--with-apr=/usr'       &&
-depends  apr-util  '--with-apr-util=/usr'  &&
-depends  neon      '--with-neon=/usr'      &&
-depends  db        '--with-berkeley-db'    &&
+depends autoconf &&
+depends libtool  &&
+depends bison    &&
+
+depends apr      '--with-apr=/usr'      &&
+depends apr-util '--with-apr-util=/usr' &&
+depends neon     '--with-neon=/usr'     &&
+depends db       '--with-berkeley-db'   &&
 
 if [ "$SVN_EXPORT_HEAD" == 'y' ]; then
   depends Python
 fi &&
 
+optional_depends WEBSERVER \
+                 '--with-apxs' \
+                 '--without-apxs' \
+                 'to create Apache 2 modules' &&
 optional_depends swig             \
                  '--with-swig'    \
                  '--without-swig' \
