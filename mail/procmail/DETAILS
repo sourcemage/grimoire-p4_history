@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=nhudson@hiwaay.net
          LICENSE=GPL
            SHORT="Procmail is a mail sorter."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 The procmail and formail mail processing package can be used to
 create mail-servers, mailing lists, sort your incoming mail into

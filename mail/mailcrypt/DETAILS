@@ -11,6 +11,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20010923
  	 LICENSE=GPL
            SHORT="Mailcrypt: integrates strong crypto into your mail and news."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Mailcrypt provides Emacs users a simple interface to public key
 cryptography using GnuPG or PGP.  All messages can be encrypted,

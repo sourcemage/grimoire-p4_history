@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=jbooks@roundthestarts.net
          LICENSE=http://www.fiction.net/blong/programs/gbuffy
            SHORT="GBuffy is a GTK+ multiple mailbox "biff" program."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 GBuffy will poll multiple mailboxes for new mail. It will list the
 number of new messages in each mailbox you configure. It will also

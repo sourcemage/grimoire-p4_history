@@ -1,9 +1,9 @@
            SPELL=pine-client
-         VERSION=4.44
-          SOURCE=pine$VERSION.tar.gz
+         VERSION=4.50
+          SOURCE=pine$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pine$VERSION
    SOURCE_URL[0]=http://mirror.sit.wisc.edu/pub/net/mail/pine/$SOURCE
-          MD5[0]=4e6641c86c726f3393a7e0236859a5dd
+          MD5[0]=fac54fa5837fd505c213a94f884e5bac
    SOURCE_URL[1]=ftp://ftp.univ-lyon1.fr/pub/mirrors/unix/pine/$SOURCE
           MD5[1]=${MD5[0]}
           MD5[1]=${MD5[0]}
@@ -42,6 +42,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/pine$VERSION
          UPDATED=20020115
          LICENSE=UW-PINE
            SHORT="pine is a text-based MIME Email client."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]="pine"
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Pine is a tool for reading, sending, and managing electronic messages.
 Pine was designed by the Office of Computing & Communications at the

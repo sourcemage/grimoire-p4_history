@@ -14,6 +14,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       MAINTAINER=mmarion@miguelito.org
          LICENSE=http://www.tkrat.org
            SHORT="tkrat is a GUI mailer."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Tkrat (aka Ratatosk) is a GUI mailer built using tcl/tk.
 It supports mbox and mbx files as well as POP, IMAP (including disconnected), etc.

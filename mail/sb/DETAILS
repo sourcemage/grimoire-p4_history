@@ -12,6 +12,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
       MAINTAINER=bluebird@optushome.com.au
          LICENSE=GPL
            SHORT="A procmail based spam filter and auto LART"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 
 What Does the SpamBouncer Do?

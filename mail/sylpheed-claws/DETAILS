@@ -10,6 +10,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/sylpheed-${VERSION}claws
       MAINTAINER=tmarx@digitalprojects.com
          LICENSE=GPL
            SHORT="Sylpheed-Claws is the bleeding edge version of Sylpheed, an e-mail client (& news reader) based on GTK+."
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Sylpheed is a GTK+ based, lightweight, and fast email client. Almost
 all commands are accessible with the keyboard. It also has many
