@@ -17,9 +17,9 @@
   patch  -p1  <  ${SCRIPT_DIRECTORY}/su.patch  &&
 
   ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
+               --prefix=${INSTALL_ROOT}/usr         \
+               --sysconfdir=${INSTALL_ROOT}/etc     \
+               --localstatedir=${INSTALL_ROOT}/var  \
                $OPTS                 &&
   make                               &&
   prepare_install                    &&
@@ -29,13 +29,18 @@
 
   cd  etc
 
-  [  -e  /etc/limits           ]  ||  cp  limits            /etc
-  [  -e  /etc/login.access     ]  ||  cp  login.access      /etc
-  [  -e  /etc/login.defs.linux ]  ||  cp  login.defs.linux  /etc
-  [  -e  /etc/login.defs       ]  ||  cp  login.defs.linux  /etc/login.defs
-  [  -e  /etc/defaults         ]  ||  mkdir                 /etc/defaults
+  [  -e  ${INSTALL_ROOT}/etc/limits           ]  \
+  ||  cp  limits            ${INSTALL_ROOT}/etc
+  [  -e  ${INSTALL_ROOT}/etc/login.access     ]  \
+  ||  cp  login.access      ${INSTALL_ROOT}/etc
+  [  -e  ${INSTALL_ROOT}/etc/login.defs.linux ]  \
+  ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc
+  [  -e  ${INSTALL_ROOT}/etc/login.defs       ]  \
+  ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc/login.defs
+  [  -e  ${INSTALL_ROOT}/etc/defaults         ]  \
+  ||  mkdir                 ${INSTALL_ROOT}/etc/defaults
 
-  cp  $SCRIPT_DIRECTORY/adduser  /usr/sbin
-  cp  $SCRIPT_DIRECTORY/deluser  /usr/sbin
+  cp  $SCRIPT_DIRECTORY/adduser  ${INSTALL_ROOT}/usr/sbin  &&
+  cp  $SCRIPT_DIRECTORY/deluser  ${INSTALL_ROOT}/usr/sbin
 
 )
