@@ -1,23 +1,21 @@
            SPELL=lsof
-         VERSION=4.64
+         VERSION=4.65
           SOURCE=${SPELL}_${VERSION}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_$VERSION
-   SOURCE_URL[0]=ftp://ftp.cerias.purdue.edu/pub/tools/unix/sysutils/lsof/$SOURCE
+   SOURCE_URL[0]=ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/$SOURCE
    SOURCE_URL[1]=ftp://ftp.cert.dfn.de/pub/tools/admin/lsof/$SOURCE
    SOURCE_URL[2]=ftp://ftp.cetis.hvu.nl/pub/lsof/$SOURCE
    SOURCE_URL[3]=ftp://ftp.crc.doc.ca/packages/lsof/$SOURCE
    SOURCE_URL[4]=ftp://ftp.tux.org/pub/sites/vic.cc.purdue.edu/tools/unix/lsof/$SOURCE
-   SOURCE_URL[5]=ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/$SOURCE
-          MD5[0]=cdedf6c82c6a677e0abe7c65a24229c3
-        WEB_SITE=unknown
+   SOURCE_URL[5]=ftp://ftp.cerias.purdue.edu/pub/tools/unix/lsof/$SOURCE
+          MD5[0]='de8e003d3cb9e29c73913ad955d2e92f'
+        WEB_SITE=http://freshmeat.net/projects/lsof/
          ENTERED=20011005
          UPDATED=20020807
-           SHORT="lsof lists open files."
+           SHORT="lsof lists open files"
 cat << EOF
-
 Lsof is a Unix-specific diagnostic tool. Its name stands for LiSt Open
 Files, and it does just that. It lists information about any files that
 are open by processes currently running on the system. It can also list
 communications open by each process.
-
 EOF
