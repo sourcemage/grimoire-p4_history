@@ -1,5 +1,6 @@
 (
 
+  export 	LC_ALL=en_US	     &&
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
                --sysconfdir=/etc     \
