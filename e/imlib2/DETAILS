@@ -1,9 +1,9 @@
            SPELL=imlib2
-if [ "$CVS" != "yes" ]; then
-         VERSION=1.1.1-pre1
+if [ "$CVS" != "y" ]; then
+         VERSION=1.1.1
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-          MD5[0]='8a1efdb5524156bfd8185a6a4603c36c'
+          MD5[0]=762de1d30437794e582201cfccf7bf52
 else
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -16,7 +16,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
          ENTERED=20010922
          UPDATED=20021025
       LICENSE[0]=BSD
-      MAINTAINER=unet@sourcemage.org
            SHORT="imlib2 is the successor to imlib graphics library."
 cat << EOF
 Imlib2 is the successor to Imlib. It is NOT a newer version -- it is a
