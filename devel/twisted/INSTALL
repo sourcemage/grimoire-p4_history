@@ -1,1 +1,6 @@
-python setup.py install --root $INSTALL_ROOT
+if [[ $INSTALL_ROOT ]]
+then
+	python setup.py install --root $INSTALL_ROOT
+else
+	python setup.py install
+fi
