@@ -39,12 +39,12 @@ if  spell_installed  xfree86;  then
   cp  exim_monitor/EDITME  Local/eximon.conf
 else
    grep  -v  "EXIM_MONITOR="  src/EDITME  >  Local/Makefile
-fi
+fi  &&
 
 if  spell_installed  tcp_wrappers;  then
   echo  "USE_TCP_WRAPPERS=yes"  >> Local/Makefile
   echo  "EXTRALIBS=-lwrap"      >> Local/Makefile
-fi
+fi  &&
 
 if  spell_installed  Linux-PAM;  then
   echo  "SUPPORT_PAM=yes"  >>  Local/Makefile
@@ -52,14 +52,19 @@ if  spell_installed  Linux-PAM;  then
   then  echo  "EXTRALIBS=-lpam -ldl -lwrap"  >>  Local/Makefile  
   else  echo  "EXTRALIBS=-lpam -ldl"         >>  Local/Makefile  
   fi
-fi
+fi  &&
 
 if  spell_installed  mysql;  then
   echo  "LOOKUP_MYSQL=yes"                     >>  Local/Makefile
   echo  "LOOKUP_INCLUDE=-I /usr/include/mysql" >>  Local/Makefile
   echo  "LOOKUP_LIBS=-lmysqlclient"            >>  Local/Makefile
-fi
+fi  &&
 
+if  spell_installed  openldap; then
+  echo  "LOOKUP_LDAP=yes"           >>  Local/Makefile
+  echo  "LOOKUP_LIBS=-lldap -llber" >>  Local/Makefile
+  echo  "LDAP_LIB_TYPE=OPENLDAP2"   >>  Local/Makefile
+fi  &&
 
 echo  "BIN_DIRECTORY=/usr/sbin"          >>  Local/Makefile
 echo  "CONFIGURE_FILE=/etc/exim.conf"    >>  Local/Makefile
@@ -70,7 +75,6 @@ echo  "EXIM_UID=`id -u exim`"            >>  Local/Makefile
 echo  "EXIM_GID=`id -g exim`"            >>  Local/Makefile
 echo  "EXIM_USER=exim"                   >>  Local/Makefile
 echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
-
 
 (
 
