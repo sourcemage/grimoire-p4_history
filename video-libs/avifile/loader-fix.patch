@@ -1,0 +1,45 @@
+diff -Nur avifile-0.7-0.7.38/plugins/libwin32/loader/ldt_keeper.c avifile-0.7-0.7.38-fixed/plugins/libwin32/loader/ldt_keeper.c
+--- avifile-0.7-0.7.38/plugins/libwin32/loader/ldt_keeper.c	2002-08-08 11:05:51.000000000 +0200
++++ avifile-0.7-0.7.38-fixed/plugins/libwin32/loader/ldt_keeper.c	2004-01-15 16:57:02.000000000 +0100
+@@ -60,18 +60,6 @@
+ 
+ #define LDT_ENTRIES     8192
+ #define LDT_ENTRY_SIZE  8
+-#pragma pack(4)
+-struct modify_ldt_ldt_s {
+-        unsigned int  entry_number;
+-        unsigned long base_addr;
+-        unsigned int  limit;
+-        unsigned int  seg_32bit:1;
+-        unsigned int  contents:2;
+-        unsigned int  read_exec_only:1;
+-        unsigned int  limit_in_pages:1;
+-        unsigned int  seg_not_present:1;
+-        unsigned int  useable:1;
+-};
+ 
+ #define MODIFY_LDT_CONTENTS_DATA        0
+ #define MODIFY_LDT_CONTENTS_STACK       1
+diff -Nur avifile-0.7-0.7.38/plugins/libwin32/loader/ldt_keeper.h avifile-0.7-0.7.38-fixed/plugins/libwin32/loader/ldt_keeper.h
+--- avifile-0.7-0.7.38/plugins/libwin32/loader/ldt_keeper.h	2002-03-20 12:07:31.000000000 +0100
++++ avifile-0.7-0.7.38-fixed/plugins/libwin32/loader/ldt_keeper.h	2004-01-15 16:57:01.000000000 +0100
+@@ -6,6 +6,19 @@
+ {
+ #endif
+ 
++#pragma pack(4)
++struct modify_ldt_ldt_s {
++        unsigned int  entry_number;
++        unsigned long base_addr;
++        unsigned int  limit;
++        unsigned int  seg_32bit:1;
++        unsigned int  contents:2;
++        unsigned int  read_exec_only:1;
++        unsigned int  limit_in_pages:1;
++        unsigned int  seg_not_present:1;
++        unsigned int  useable:1;
++};
++
+ typedef struct {
+   void* fs_seg;
+   char* prev_struct;
