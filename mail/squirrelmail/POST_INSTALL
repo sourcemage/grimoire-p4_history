@@ -1,11 +1,12 @@
 {
 # apache/apache2 auto setup
-if  spell_installed  "apache";     then
-  LOC="/usr/share/httpd"
-elif  spell_installed  "apache2";  then
-  LOC="/usr/share/apache2"
+if  spell_installed    "apache";   then 
+  LOC="/usr/share/httpd" 
+elif  spell_installed  "apache-mod_ssl";  then 
+  LOC="/usr/share/httpsd" 
+elif  spell_installed  "apache2";  then 
+  LOC="/usr/share/apache2" 
 fi
-
 
 # move the doc dir to /usr/doc
 mkdir /usr/doc/squirrelmail 1>/dev/null 2>&1
