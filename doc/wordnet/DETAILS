@@ -1,0 +1,19 @@
+            SPELL=wordnet
+          VERSION=1.7
+           SOURCE=wn17.unix.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/wordnet
+    SOURCE_URL[0]=ftp://ftp.cogsci.princeton.edu/pub/$SPELL/$VERSION/$SOURCE
+    SOURCE_URL[1]=ftp://ftp.ims.uni-stuttgart.de/pub/WordNet/$VERSION/$SOURCE
+         WEB_SITE=http://www.cogsci.princeton.edu/~wn
+          ENTERED=20020611
+          UPDATED=20020611
+       MAINTAINER=zoran@idi.ntnu.no
+          LICENSE=ftp://ftp.cogsci.princeton.edu/pub/wordnet/1.7/LICENSE
+            SHORT="a lexical database for the English language"
+cat << EOF
+WordNet® is an online lexical reference system whose design is inspired 
+by current psycholinguistic theories of human lexical memory. English 
+nouns, verbs, adjectives and adverbs are organized into synonym sets, 
+each representing one underlying lexical concept. Different relations 
+link the synonym sets. 
+EOF
