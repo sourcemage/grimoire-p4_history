@@ -1,14 +1,15 @@
            SPELL=sharutils
-         VERSION=4.2.1
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=4.3.75
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
-        WEB_SITE=http://www.gnu.org/software/sharutils/sharutils.html
+#   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[0]=http://www.iro.umontreal.ca/~eichwalk/$SPELL/$SOURCE
+#        WEB_SITE=http://www.gnu.org/software/sharutils/sharutils.html
+        WEB_SITE=http://www.iro.umontreal.ca/~eichwalk/sharutils/
          ENTERED=20020127
          UPDATED=20020127
       MAINTAINER=hvisage@is.co.za
-          MD5[0]=aa184cd2e57abded281d4804eba30427
+          MD5[0]=25d95d97fce97b97ccbb236221b10dec
       LICENSE[0]=GPL
            SHORT="For making shell archives for transmission by email"
 cat << EOF
