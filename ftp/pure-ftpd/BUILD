@@ -22,6 +22,10 @@
   then  cp  pam/ftplockout  /etc
   fi
 
+  if    [  !  -e  /etc/pure-ftpd.conf  ]
+  then  cp  $SCRIPT_DIRECTORY/pure-ftpd.conf /etc/pure-ftpd.conf
+  fi
+
   case  $FTPD_BOOT  in
     y|Y|j|J)  cp  $SCRIPT_DIRECTORY/pure-ftpd.sh  /etc/init.d
 
