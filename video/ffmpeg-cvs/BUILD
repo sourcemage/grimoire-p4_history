@@ -7,7 +7,9 @@
   sedit  's:-Werror::'  libavformat/Makefile  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr  \
                --enable-shared               \
+               --enable-pp                   \
                --enable-shared-pp            \
+               --enable-a52                  \
                $OPTS                         &&
   cd  libavcodec/libpostproc  &&
   make                        &&
