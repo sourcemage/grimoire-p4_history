@@ -1,15 +1,15 @@
-           SPELL=ElectricFence
+           SPELL=electricfence
          VERSION=2.2.2
-          SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]=97bab3016950f208b0fe8097c7ffafae
-      LICENSE[0]=GPL2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=ElectricFence-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ElectricFence-$VERSION
    SOURCE_URL[0]=ftp://ftp.perens.com/pub/ElectricFence/Beta/$SOURCE
+          MD5[0]=97bab3016950f208b0fe8097c7ffafae
         WEB_SITE=http://perens.com/FreeSoftware/
          ENTERED=20030415
-         UPDATED=20030415
-      MAINTAINER=petr@dkf.ics.muni.cz
-           SHORT='Electric Fence is a different kind of malloc() debugger.'
+         UPDATED=20041215
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Different kind of malloc() debugger"
 cat << EOF
 Electric Fence is a different kind of malloc() debugger. It uses the virtual
 memory hardware of your system to detect when software overruns the boundaries
