@@ -8,6 +8,6 @@ unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
 unpack         $SOURCE8  ${MD5[7]}  &&
 unpack         $SOURCE9  ${MD5[8]}  &&
-patch xc/lib/font/fontfile/dirfile.c < $SOURCE_CACHE/$SOURCE9 &&
+patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE9 &&
 #recommended by xfree86.org
 mk_source_dir  $SOURCE_DIRECTORY.bld 
