@@ -13,7 +13,7 @@ start()
   evaluate_retval
   ps  -C  portmap  >  /dev/null  ||
   evaluate_retval
-  /usr/sbin/portmap
+  /sbin/portmap
   evaluate_retval
   /usr/sbin/rpc.statd
   evaluate_retval

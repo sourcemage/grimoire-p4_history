@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# vi: ts=4
+# vi: ts=4 sw=4 noet
 #--------------------------- bashdoc ---------------------------------#
 ## @Synposis   SourceMage network configuration tool
 ## @Copyright  Copyright 2003-2004 SourceMage Team
@@ -46,6 +46,10 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2004-10-08  Robert Helgesson <net@sourcemage.org>
+#     - added sw=4 noet to vi settings
+#     - fixed handling when the $NETDEVDIR directory is empty (bug #7459)
+#
 # 2004-04-29  charkins <charkins@pobox.com>
 #     - finished adding bashdoc comments and code cleanups
 #     - removed sedit function, now use 'sed -i' to edit in-place
@@ -338,6 +342,9 @@ function getnetdevs() {
 	unset NETDEVSMENU NETDEVS
 	id=0
 	for i in $NETDEVDIR/*.dev; do
+		if [ "$i" = "$NETDEVDIR/*.dev" ] ; then
+			break
+		fi
 		NETDEVSMENU[$id]="${id} `get_basename $i .dev`"
 		NETDEVS[$id]="${i}"
 		id=$((id+1))
