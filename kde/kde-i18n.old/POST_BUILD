@@ -1,0 +1,12 @@
+for  LOCALE  in  $KDE_I18N_LOCALES;  do
+  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$LOCALE
+  gather_docs
+
+done
+  
+devoke_installwatch
+ldconfig
+# release_saved_libraries
+cd  /
+boost
+

@@ -1,0 +1,24 @@
+           SPELL=kopete
+         VERSION=0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.kdedevelopers.net/$SPELL/files/$SOURCE
+        WEB_SITE=http://www.kdedevelopers.net/kopete
+         ENTERED=20020406
+         UPDATED=20020406
+           SHORT="a multiple protocol IM client for KDE 3"
+      MAINTAINER="geo@drasil.uklinux.net"
+cat << EOF
+Kopete is a flexible and extendable multiple protocol instant messaging
+system designed as a plugin-based system. All protocols are plugins and
+allow modular installment, configuration, and usage without the main
+application knowing anything about the plugin being loaded. The goal of
+Kopete is to provide users with a standard and easy to use interface
+between all of their instant messaging systems, but at the same time
+also providing developers with the ease of writing plugins to support a
+new protocol. The core Kopete development team provides a handful of
+plugins that most users can use, in addition to templates for new
+developers to base a plugin off of.
+
+Currently there is support for ICQ, AIM and MSN.
+EOF
