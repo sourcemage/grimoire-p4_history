@@ -21,19 +21,19 @@ depends  tcsh                                      &&
 #		  "--with-use-shell=/bin/bash"     \
 #                  "Use tcsh shell for compiling (safer)" &&
 
-
-#
-# Saying "No" here seems to compile, yes fails in berkleydb
-#
 optional_depends  "JAVA"                                       \
                   "--enable-java --with-jdk-home=${JAVA_HOME}" \
                   "--disable-java"                             \
                   "Build with Java support."                   &&
 
-optional_depends  stlport                            \
-                  "--with-stlport4-home=/usr"        \
-                  ""                                 \
-                  "to use system installed STLport"  &&
+#
+# We now have stlport 5 in the grimoire
+# This will no longer work
+#
+#optional_depends  stlport                            \
+#                  "--with-stlport4-home=/usr"        \
+#                  ""                                 \
+#                  "to use system installed STLport"  &&
 
 optional_depends  startup-notification        \
                   "--enable-libsn"            \
