@@ -13,9 +13,10 @@
     SSLOPTS="SSLTYPE=unix           \
     SSLCERTS=/etc/ssl/certs         \
     SSLINCLUDE=/usr/include/openssl \
-    SSLLIB=/usr/lib"
+    SSLLIB=/usr/lib		    \
+    SSLTYPE=unix.nopwd"
   else
-    SSLOPTS=""
+    SSLOPTS="SSLTYPE=unix.nopwd"
   fi                                                                     &&
 
   if spell_installed Linux-PAM; then
