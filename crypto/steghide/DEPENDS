@@ -1,2 +1,7 @@
 depends  libmcrypt  &&
-depends  mhash
+depends  mhash      &&
+
+optional_depends  "jpeg"                                    \
+                  ""                                        \
+                  ""                                        \
+                  "to be able to read or write jpeg files"
