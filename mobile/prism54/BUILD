@@ -3,9 +3,9 @@
 #  patch -p0 < $SCRIPT_DIRECTORY/islpci.patch				&&
 #  patch -p0 < $SCRIPT_DIRECTORY/isl_ioctl.diff				&&
 
-  make modules		&&
+  make KVER=$(installed_version linux) modules		&&
   prepare_install	&&
-  make install		&&
+  make KVER=$(installed_version linux) install		&&
 
   mkdir -p /usr/lib/hotplug/firmware				&&
   cp ${SOURCE_CACHE}/${SOURCE2} /usr/lib/hotplug/firmware	&&
