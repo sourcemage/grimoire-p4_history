@@ -1,25 +1,5 @@
 --- src/Makefile.old	2003-12-03 17:54:49.000000000 -0800
 +++ src/Makefile	2003-12-03 17:57:50.000000000 -0800
-@@ -18,16 +18,16 @@
- srcdir = .
- top_srcdir = ..
- 
--prefix = /usr
-+prefix = /usr/local
- exec_prefix = ${prefix}
- 
- bindir = ${exec_prefix}/bin
- sbindir = ${exec_prefix}/sbin
- libexecdir = ${exec_prefix}/libexec
- datadir = ${prefix}/share
--sysconfdir = /etc
-+sysconfdir = ${prefix}/etc
- sharedstatedir = ${prefix}/com
--localstatedir = /var
-+localstatedir = ${prefix}/var
- libdir = ${exec_prefix}/lib
- infodir = ${prefix}/info
- mandir = ${prefix}/man
 @@ -96,9 +96,7 @@
  
  sbin_PROGRAMS = prelink
