@@ -1,5 +1,7 @@
 (
 
+  sedit  "s:Attachements:Attachments:"  modules/demux/mkv.cpp  &&
+
   cd  mpeg2dec-$LIBMPEG2_VERSION          &&
   ./configure  --disable-sdl --without-x  &&
   make                                    &&
