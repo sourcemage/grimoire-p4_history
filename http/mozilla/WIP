@@ -1,0 +1,19 @@
+c++ -o nsSVGRendererLibart.o -c -DOSTYPE=\"Linux2.4\" -DOSARCH=\"Linux\" -DMOZ_ENABLE_FREETYPE2 -I/usr/include/freetype2 -I../../../../../gfx -I../../../../../gfx/src/freetype  -I../../../../../dist/include/xpcom -I../../../../../dist/include/widget -I../../../../../dist/include/pref -I../../../../../dist/include/gfx -I../../../../../dist/include/imglib2 -I../../../../../dist/include/string -I../../../../../dist/include/dom -I../../../../../dist/include/content -I../../../../../dist/include/necko -I../../../../../dist/include/libart_lgpl -I../../../../../dist/include/util -I../../../../../dist/include/uconv -I../../../../../dist/include/windowwatcher -I../../../../../dist/include/layout -I../../../../../dist/include -I/usr/src/mozilla/dist/include/nspr     -I/usr/X11R6/include   -fPIC  -I/usr/X11R6/include -frtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O2 -fshort-wchar -pthread -pipe  -DNDEBUG -DTRIMMED -ffunction-sections -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O2  -I/usr/X11R6/include -DMOZILLA_CLIENT -include ../../../../../mozilla-config.h -Wp,-MD,.deps/nsSVGRendererLibart.pp nsSVGRendererLibart.cpp
+In file included from nsSVGLibartRegion.h:42,
+                 from nsSVGRendererLibart.cpp:43:
+libart-incs.h:62:29: art_render_mask.h: No such file or directory
+libart-incs.h:75:31: art_vpath_filters.h: No such file or directory
+make[7]: *** [nsSVGRendererLibart.o] Error 1
+make[7]: Leaving directory `/usr/src/mozilla/layout/svg/renderer/src/libart'
+make[6]: *** [libs] Error 2
+make[6]: Leaving directory `/usr/src/mozilla/layout/svg/renderer/src'
+make[5]: *** [libs] Error 2
+make[5]: Leaving directory `/usr/src/mozilla/layout/svg/renderer'
+make[4]: *** [libs] Error 2
+make[4]: Leaving directory `/usr/src/mozilla/layout/svg'
+make[3]: *** [libs] Error 2
+make[3]: Leaving directory `/usr/src/mozilla/layout'
+make[2]: *** [tier_9] Error 2
+make[2]: Leaving directory `/usr/src/mozilla'
+make[1]: *** [default] Error 2
+make[1]: Leaving directory `/usr/src/mozilla'
