@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.4 2002/10/10 03:22:10 sergeyli Exp $
+# $Id: BUILD,v 1.5 2002/12/22 21:53:40 sergeyli Exp $
 (
 
 	# kill remnants of CVS, but make sure we're in the proper directory
@@ -21,7 +21,6 @@
 	if [ -d /usr/doc/$SPELL ]; then
 		rm -fr /usr/doc/$SPELL/
 	fi                                             &&
-	ln -fns /usr/share/$SPELL/docs /usr/doc/$SPELL &&
-	chmod -R 755 /usr/doc/$SPELL
+	ln -fns /usr/share/$SPELL/docs /usr/doc/$SPELL
     
 ) > $C_FIFO 2>&1

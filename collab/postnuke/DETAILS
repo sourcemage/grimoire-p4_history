@@ -1,16 +1,16 @@
-# $Id: DETAILS,v 1.6 2002/10/23 18:55:17 sergeyli Exp $
+# $Id: DETAILS,v 1.7 2002/12/22 21:53:40 sergeyli Exp $
            SPELL=postnuke
-         VERSION=0.7.2.1_phoenix
-          SOURCE=pn-$VERSION.tgz
-          MD5[0]='3a03dc920f13867ef9f2e26e90a764fc'
+         VERSION=phoenix-0.7.2.3
+          SOURCE=$SPELL-$VERSION.tgz
+          MD5[0]='39e6a1997d5cc27cf994d394a2f5b7a9'
       LICENSE[0]=GPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/pn-${VERSION/p/P}
-   SOURCE_URL[0]=http://www.postnuke.com/downloads/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/post-nuke/$SOURCE
         WEB_SITE=http://www.postnuke.com/
          ENTERED=20020319
          UPDATED=20020918
       MAINTAINER=sergeyli@pisem.net
-           SHORT="PostNuke Content Management System, fork of phpNuke 5.0"
+           SHORT="PostNuke Content Management System"
 cat << EOF
 PostNuke is a content management system based on PHP-Nuke.
 Well, here it is in a nutshell of where we want to get to. We want a division
