@@ -1,7 +1,6 @@
 (
 
-  # Fix nasty overflow bug
-  sedit  's/long ds_taken/long &/'  login-utils/simpleinit.c  &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/simpleinit.c.patch  &&
 
   ./configure                             &&
   make  OPT="$CFLAGS"                     &&
