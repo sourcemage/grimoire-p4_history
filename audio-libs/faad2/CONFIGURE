@@ -1,0 +1,6 @@
+local xmms_default=n
+if spell_installed xmms ||
+   spell_held      xmms
+then xmms_default=y
+fi  &&
+config_query XMMS "Build XMMS AAC decoder plugin?" $xmms_default
