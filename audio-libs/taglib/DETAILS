@@ -1,0 +1,27 @@
+           SPELL=taglib
+         VERSION=0.96
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://ktown.kde.org/~wheeler/taglib
+   SOURCE_URL[0]=$WEB_SITE/$SOURCE
+          LICENCE=GPL
+           MD5[0]=ab01cd759c2ac6e3bef54aa5eaa60cf2
+          ENTERED=20040120
+          UPDATED=
+SHORT="a library for reading and editing audio meta data"
+cat << EOF
+TagLib, is well, a library for reading and editing audio meta data, commonly know as 
+tags.
+
+ Some goals of TagLib:
+
+ 
+A clean, high level, C++ API to handling audio meta data.
+Support for at least ID3v1, ID3v2 and Ogg Vorbis comments.
+A generic, simple API for the most common tagging related functions.
+Binary compatibility between minor releases using the standard KDE/Qt techniques for 
+C++ binary compatibility.
+Make the tagging framework extensible by library users; i.e. it will be possible for 
+libarary users to implement additional ID3v2 frames, without modifying the TagLib 
+source (through the use of Abstract Factories and such.
+EOF
