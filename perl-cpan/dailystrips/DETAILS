@@ -3,15 +3,14 @@
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/dailystrips/$SOURCE
-          MD5[0]="d41d8cd98f00b204e9800998ecf8427e"
-         LICENSE=GPL
+          MD5[0]=1951a1bdca70d8cef27d10f25ba88d1f
         WEB_SITE=http://dailystrips.sourceforge.net/
          ENTERED=20020226
          UPDATED=20020424
       MAINTAINER=nealbirch@attbi.net
+      LICENSE[0]=GPL
            SHORT="Downloads comics from the web."
 cat << EOF
-
 This Perl script downloads the URL for the current comic of various 
 strips that are available online, and outputs these URLs to an HTML 
 file. This enables you to view all of your favorite strips at once, 
@@ -26,5 +25,4 @@ is run from a cron script.
 
 Further documentation is on the website 
 http://dailystrips.sourceforge.net/index.html
-
 EOF
