@@ -1,3 +1,15 @@
+2002-04-21  ^GiuAnZ^ <djcomputer@gmx.net>
+
+		Bug fix for building dctc:
+		The source is named dctc-0.79.0.tar.gz, but the tarball contains the
+		directory dctc-0.79.1. So the spell fails to compile as it unpacks in the
+		wrong path. A temporary fix (at least until the author releases a new
+		version) is setting this in the DETAILS file:
+
+         	VERSION=0.79.1
+          	SOURCE=$SPELL-0.79.0.tar.gz
+
+		
 2002-04-12  Eric Schabell <eric@schabell.com>
 
 		Updated version to 0.79.0:
