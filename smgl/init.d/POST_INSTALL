@@ -17,9 +17,11 @@ if  [  -e  /tmp/devices2dev  ]  ;  then
     fi
   done
 
-  sedit  's!/devices$!/dev!'  /etc/sysconfig/devices
-
   rm  /tmp/devices2dev
+fi
+
+if  [  "$DEVFS_ON_DEV" = "n"  ];  then
+  sedit  's!/dev$!/devices!'  /etc/sysconfig/devices
 fi
 
 true
