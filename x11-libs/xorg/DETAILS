@@ -9,10 +9,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
          VERSION=6.8.1
         XVERSION=X11R${VERSION}
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE=${XVERSION}-src.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
    SOURCE_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/single/$SOURCE
-          MD5[0]=08bbd5e9a294301d402f1568db067257
+   SOURCE_URL[0]=ftp://ftp.x.org/pub/${XVERSION}/src-single/$SOURCE
+          MD5[0]=015cf4ebfd0a7c8f67923545e4fcbed5
 fi
         WEB_SITE=http://freedesktop.org/~xorg/
          ENTERED=20040407
