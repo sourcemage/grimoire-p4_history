@@ -1,14 +1,15 @@
            SPELL=oinkmaster
-         VERSION=0.7
+         VERSION=0.9
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.snort.org/dl/contrib/rule_management/${SPELL}/${SOURCE}
-   SOURCE_URL[1]=ftp://ftp.it.su.se/pub/users/andreas/${SPELL}/${SOURCE}
-          MD5[0]=67147259c1610e206aee35be8dad8b9d
+     SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+#   SOURCE_URL[0]=http://www.snort.org/dl/contrib/rule_management/${SPELL}/${SOURCE}
+#SOURCE_URL[1]=ftp://ftp.it.su.se/pub/users/andreas/${SPELL}/${SOURCE}
+          MD5[0]=76b36be44cf28f89a2aa20bb78e4eae3
       LICENSE[0]=BSD
          ENTERED=20030726
          UPDATED=20030726
-        WEB_SITE=http://www.algonet.se/~nitzer/oinkmaster/
+        WEB_SITE=http://oinkmaster.sourceforge.net
       MAINTAINER=vydra@fria.fri.utc.sk
            SHORT="oinkmaster is a perl script to automate proces of downloading and merging Snort rules."
 cat << EOF
