@@ -10,9 +10,10 @@
                        $OPTS                &&
   make                                      &&
   prepare_install                           &&
-  OLD_LD_PRELOAD="$LD_PRELOAD"              &&
-  unset LD_PRELOAD                          &&
-  LD_PRELOAD="$OLD_LD_PRELOAD"              &&
+  # What is this mummery?
+  #OLD_LD_PRELOAD="$LD_PRELOAD"              &&
+  #unset LD_PRELOAD                          &&
+  #LD_PRELOAD="$OLD_LD_PRELOAD"              &&
   make    install                            
 
 ) > $C_FIFO 2>&1
