@@ -1,11 +1,10 @@
---- Makefile	2003-05-13 09:11:41.000000000 +0200
-+++ Makefile.new	2003-05-13 09:15:33.000000000 +0200
-@@ -39,12 +39,7 @@
+--- Makefile-old	2003-09-02 12:49:02.000000000 +0200
++++ Makefile	2003-09-02 12:54:02.000000000 +0200
+@@ -54,11 +54,7 @@
  
  
  
 -include Makefile.jpeg
--include Makefile.libraw
 -include Makefile.vorbis
  include Makefile.ffmpeg
 -include Makefile.lame
@@ -13,7 +12,7 @@
  include Makefile.encore50
  
  
-@@ -59,6 +54,8 @@
+@@ -73,6 +69,8 @@
  	-I$(JPEG_DIR) \
  	-I$(MPEG3_DIR) \
  	-I$(LAME_DIR)/include \
@@ -22,40 +21,38 @@
  	$(shell glib-config --cflags)
  
  
-@@ -207,13 +204,13 @@
+@@ -227,7 +225,7 @@
  	$(OBJDIR)/$(ENCORE_DIR)/mbtransquant/intel_mmx
  
  
 -LIBS := $(OUTPUT) $(MPEG3_DIR)/$(OBJDIR)/libmpeg3.a -lpng -lz -lpthread -lglib -ldl -lm
 +LIBS := $(OUTPUT) -lmpeg3 -lraw1394 -lmp3lame -logg -lvorbis -lvorbisenc -ldv -ljpeg -lpng -lz -lpthread -lglib -ldl -lm
  
- $(shell echo  $(CFLAGS) > $(OBJDIR)/c_flags)
- $(shell echo  $(LIBRAW_CFLAGS) > $(OBJDIR)/libraw_cflags)
- $(shell echo  $(OBJS) $(LIBRAW_OBJS) $(DV_OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
  
--all: $(DIRS) $(OUTPUT)
-+all: $(DIRS) $(OUTPUT) $(SHAREDOUTPUT) $(UTILS)
+ $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(DIRS) \; fi )
+@@ -236,11 +234,13 @@
+ $(shell echo  $(LAME_CFLAGS) > $(OBJDIR)/lame_flags)
+ $(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
  
- $(DIRS):
- 	if ! test -d $@ ; then mkdir -p $@ ; fi
-@@ -221,6 +218,9 @@
- $(OUTPUT): $(LIBRAW_OBJS) $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
+-all: $(OBJDIR) $(OUTPUT)
++all: $(OBJDIR) $(OUTPUT) $(SHAREDOUTPUT) $(UTILS)
+ 
+ $(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
  	ar rcs $(OUTPUT) `cat $(OBJDIR)/objs`
  
 +$(SHAREDOUTPUT): $(OUTPUT)
 +	ld -shared -o $(SHAREDOUTPUT) `cat $(OBJDIR)/objs` $(LIBS)
-+
+ 
  $(OBJDIR)/qtdump: $(OBJDIR)/dump.o $(OUTPUT)
  	$(CC) -o $(OBJDIR)/qtdump $(OBJDIR)/dump.o $(LIBS)
- 
-@@ -256,7 +256,11 @@
+@@ -277,7 +277,11 @@
  	cd .. && \
  	tar zcvf quicktime.tar.gz quicktime
  
 -install:
 +install: $(OUTPUT) $(SHAREDOUTPUT) $(UTILS)
 +	mkdir -p /usr/include/quicktime
-+	cp quicktime.h qtprivate.h /usr/include/quicktime
++	cp quicktime.h qtprivate.h colormodels.h /usr/include/quicktime
 +	cp i686/libquicktime.* /usr/lib
 +	ldconfig
  	cp $(UTILS) /usr/bin

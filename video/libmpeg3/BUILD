@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/libmpeg3-1.5.0.patch  &&
+  patch -p0 < $SCRIPT_DIRECTORY/Makefile-shared.patch  &&
 
   ( echo $CFLAGS | grep -q -- "-O." ) || CFLAGS="$CFLAGS -O2"
   make             &&

@@ -1,8 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/cinelerra-1.1.6-shared.patch  &&
-  sedit 's:ESD_UNIX_SOCKET_DIR ## "/" ## "socket":"/tmp/.esd/socket":'  \
-    esound/esd.h
+  patch -p1 < $SCRIPT_DIRECTORY/cinelerra-1.1.7-shared.patch  &&
 
   make             &&
   prepare_install  &&
