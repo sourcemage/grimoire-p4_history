@@ -25,6 +25,7 @@ fi
 #
 # Set OO to use our optimizations
 #
+cd $SOURCE_DIRECTORY
 sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi3.mk  &&
 sedit  "s:\-mcpu-pentiumpro::"                solenv/inc/unxlngi4.mk  &&
 sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi4.mk  &&
