@@ -1,4 +1,14 @@
 (
+ if  [  -z  $JAVA_HOME  ]
+   then
+     if  spell_installed  j2sdk
+     then
+      export  JAVA_HOME=/usr/java/j2sdk
+     elif  spell_installed  j2sdk-bin
+     then
+      export  JAVA_HOME=/usr/lib/j2sdk1.4.1
+     fi
+ fi                                     &&
 	#fix optimizations
 	cd $SOURCE_DIRECTORY/solenv/inc &&
 	cp unxlngi3.mk unxlngi3.mk.orig &&
