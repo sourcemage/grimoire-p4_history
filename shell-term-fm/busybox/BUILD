@@ -1,16 +1,29 @@
+
+  if  [  -f  $CONFIG_CACHE/busybox.config  ]; then
+      cp  ${CONFIG_CACHE}/busybox.config  .config
+  else
+      cp  ${SCRIPT_DIRECTORY}/busybox.config  .config  
+  fi
+
+  if  [  "$BB_CONFIG"  ==  "y"  ];  then
+      make  "menuconfig"
+  fi
+  
+  cp  .config  ${CONFIG_CACHE}/busybox.config
+
 (
+ 
+  sedit  "s:OPTIMIZATION=\${call check_gcc,-Os,-O2}:OPTIMIZATION=${CFLAGS}:" Rules.mak	&&
+  sedit  "s:OPTIMIZATION+=-march=i386::" Rules.mak					&&
+  make  dep						&&
+  make							&&
 
-  mv    Config.h  Config.h.original
-  echo  "#define BB_PIVOT_ROOT"                     >>  Config.h
-  echo  "#define BB_INSMOD"                         >>  Config.h
-  echo  "#define BB_LSMOD"                          >>  Config.h
-  echo  "#define BB_RMMOD"                          >>  Config.h
-  echo  "#define BB_FEATURE_SH_STANDALONE_SHELL"    >>  Config.h
-  echo  "#define BB_FEATURE_SH_APPLETS_ALWAYS_WIN"  >>  Config.h
-  cat   Config.h.original                           >>  Config.h
+  prepare_install  					&&
 
-  make             &&
-  prepare_install  &&
-  cp      busybox  /sbin
+  cp  busybox  /sbin
+
+#  This one is needed only when symlinks needed ...
+#  make  PREFIX=/  install
+
 
 ) > $C_FIFO 2>&1

@@ -1,13 +1,14 @@
            SPELL=busybox
-         VERSION=0.60.5
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.busybox.net/downloads/$SOURCE
-        WEB_SITE=http://busybox.lineo.com
+         VERSION=1.0.0-pre1
+     PKG_VERSION=1.00-pre1
+          SOURCE=${SPELL}-${PKG_VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${PKG_VERSION}
+   SOURCE_URL[0]=http://www.busybox.net/downloads/${SOURCE}
+        WEB_SITE=http://www.busybox.net
       MAINTAINER=vydra@fria.fri.utc.sk
          ENTERED=20011020
-         UPDATED=20021028
-          MD5[0]=0d65083154c0a49ebe0032b0d2c126d4
+         UPDATED=20030725
+          MD5[0]=490b8710451f70bcd173556fb4206294
       LICENSE[0]=GPL2
            SHORT="busybox is a time statically linked rescue shell."
 cat << EOF
