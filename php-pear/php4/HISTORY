@@ -1,3 +1,25 @@
+2004-12-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.3.10  SECURITY UPDATE
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* CONFIGURE: Converted to config_query
+	  Removed query for imap and MAIL-TRANSPORT-AGENT
+	  Added queries for pcre, calendar and ftp support
+	* DEPENDS: Removed pcre dependency, now a config_query to use internal
+	  or none
+	  Added optional dependencies on imap and MAIL-TRANSPORT-AGENT
+	  Removed dependencies on pcre (can only use internal or none)
+	  Formatted to Guru Handbook
+	* BUILD: Converted to build_api 2
+	  Removed explicity support for: calendar, ftp
+	  Append options from CONFIGURE to OPTS
+	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
+	* POST_INSTALL: Renamed to FINAL
+	* FINAL,POST_REMOVE: Removed `httpd -t`: don't fail if apache hasn't been
+	  configured correctly yet
+	  Cleaned up formatting
+
 2004-11-04 Rafael George <rgeorge@yatusabes.com>
 	* DETAILS: Update to 4.3.9
 
