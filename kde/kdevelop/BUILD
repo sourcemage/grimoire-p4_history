@@ -6,7 +6,7 @@
                --disable-debug      \
 	       --enable-final       \
 	       $OPTS                &&
-  make                              &&
+  make  -Wno-deprecated             &&
   prepare_install                   &&
   make    install
 
