@@ -1,39 +1,34 @@
+2004-03-29 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, gtk-2.4-fix.patch: fix usage of private gtk functions that
+	aren't exported by gtk 2.4 anymore
+	* DETAILS: changed LICENSE and WEB_SITE to use www.wxwidgets.org
+
 2003-10-25 Jose Bernardo Silva <jbernardo@sourcemage.org>
-	* BUILD: added ${INSTALL_ROOT} support; removed the patch (already
-	in 2.4.2)
+	* BUILD: added ${INSTALL_ROOT} support; removed the patch (already in 2.4.2)
 	* DETAILS: Updated to 2.4.2
-	* HISTORY: Haven't had the time to convert the whole file
-	to the new format yet.
+	* HISTORY: Haven't had the time to convert the whole file to the new format yet.
 
 2003-10-11 Sergey Lipnevich <sergey@sourcemage.org>
-	* Remove libiconv dependency.
+	* DEPENDS:  Remove libiconv dependency.
 
-2003-06-20  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-06-20 Sergey Lipnevich <sergey@sourcemage.org>
+	* Make wxWindows use GTK+2 toolkit (experimental).
+	* DEPENDS: Added libiconv dependency and instructions for other dependencies.
+	* Add a patch for wxPython to compile (they forgot to merge it from wxPython-related branch I guess).
 
-		Make wxWindows use GTK+2 toolkit (experimental).
-		Added libiconv dependency and instructions for other dependencies.
-		Add a patch for wxPython to compile (they forgot to merge it from
-		wxPython-related branch I guess).
+2003-06-17 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Upgrade to 2.4.1.
 
-2003-06-17  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-01-08 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.4.0.
 
-		Upgrade to 2.4.1.
+2002-11-27 Sergey Lipnevich <sergeyli@pisem.net>
+	* DEPENS: Added some dependencies.
 
-2003-01-08  Sergey Lipnevich  <sergeyli@pisem.net>
+2002-10-24 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS:  "Unbreak" the spell ;-) by correcting $SOURCE_DIRECTORY.
+	Upgrade to 2.3.3 with checksum change.
+	* BUILD:  Removed obsolete BUILD file.
 
-		Upgraded to 2.4.0.
-
-2002-11-27  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		Upgrade to 2.3.4 and change URL to SOURCEFORGE_URL.
-		Added some dependencies.
-
-2002-10-24  Sergey Lipnevich  <sergeyli@pisem.net>
-
-		* "Unbreak" the spell ;-) by correcting $SOURCE_DIRECTORY.
-		* Upgrade to 2.3.3 with checksum change.
-		* Removed obsolete BUILD file.
-
-2002-10-14  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE and MD5 fields.
+2002-10-14 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
