@@ -1,0 +1,12 @@
+diff -urpN bootsplash-3.0.7.old/Utilities/ttf.c bootsplash-3.0.7/Utilities/ttf.c
+--- bootsplash-3.0.7.old/Utilities/ttf.c	2004-07-17 20:34:56.621783856 -0700
++++ bootsplash-3.0.7/Utilities/ttf.c	2004-07-17 20:36:55.703680656 -0700
+@@ -10,6 +10,8 @@
+ #include <string.h>
+ #include <assert.h>
+ 
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ #include <freetype/freetype.h>
+ #include <freetype/ftoutln.h>
+ #include <freetype/ttnameid.h>
