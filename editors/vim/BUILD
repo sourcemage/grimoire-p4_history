@@ -1,5 +1,6 @@
 (
    patch -p1 < $SCRIPT_DIRECTORY/vim-6.2.patch &&
+   patch src/netbeans.c $SCRIPT_DIRECTORY/netbeans-workshop.patch &&
 
   ./configure  --build=$BUILD        \
                --prefix=/usr         \

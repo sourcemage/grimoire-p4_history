@@ -1,0 +1,11 @@
+--- netbeans.c~	2003-06-01 16:03:39.000000000 +0200
++++ netbeans.c	2004-01-28 14:17:04.000000000 +0100
+@@ -2936,7 +2936,7 @@
+ }
+ 
+ 
+-#if defined(FEAT_GUI_MOTIF) || defined(PROTO)
++#if !defined(FEAT_SUN_WORKSHOP) && ( defined(FEAT_GUI_MOTIF) || defined(PROTO))
+ /*
+  *	This function fills in the XRectangle object with the current
+  *	x,y coordinates and height, width so that an XtVaSetValues to
