@@ -1,0 +1,68 @@
+VERSION=0.8.0
+### have moved this to the beginning so the rest can stay untouched for each new update.
+### this deletes everything below line 5 and replaces it with the current version data
+### if any new options, variables are added to the file they must be put at the top 
+### and this function adjusted to start deleting from a lower line.
+version_update() {
+sedit '5,25D' $SPELL_CONFIG &&
+echo -e  "VERSION=$VERSION
+        SOURCE=\$SPELL-source-\${VERSION/.0/}.tar.bz2
+ SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla.org/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
+ SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
+ SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/\$SPELL/releases/\${VERSION/.0/}/\$SOURCE
+ SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
+        MD5[0]=729cc357055debeebf8b9fe15a37bda2"  >>  ${SPELL_CONFIG}  
+}
+
+if ! grep -q VERSION=$VERSION $SPELL_CONFIG ;
+then version_update
+fi &&
+if  grep -q HEADCODE=yes $SPELL_CONFIG; then
+sedit "s/^VERSION=.*$/VERSION=$VERSION/g" $SPELL_CONFIG 
+fi &&
+if ! grep -q CONFIGURED $SPELL_CONFIG; then
+
+ if query "This spell will download the latest offical release of Mozilla FIREFOX .\n
+    \tIt is then possible to UPDATE the firefox code
+    \tvia  cvs and get ALL the nice changes since the last release.
+    \tWould you like to update to cvs HEAD ?" n 
+         then HEADCODE=yes
+#choose SVG
+             if ! grep -q SVG $SPELL_CONFIG ;
+                  then if query "\nWould you like native SVG support (scalable vector graphics) " n
+                          then SVG=yes 
+                       fi 
+             fi 
+         else HEADCODE=no &&
+              SVG=no
+ fi 
+
+#choose toolkit
+
+ if ! grep -q GTK $SPELL_CONFIG ;
+     then if query "\nWould you like to use GTK+2 toolkit with in-built anti-aliasing (DEFAULT)?\n
+                    Nicer looking but slower than the original gtk+ " y
+              then GTK=2 
+              elif query "\nWould you like to use original GTK+ toolkit ?
+                          \t http://wiki.sourcemage.org/index.php?page=FaqUsage#mozfonts\n
+                               Is a brief HOWTO for font anti-aliasing with gtk+ toolkit" y
+                 then  GTK=1
+                 else  GTK=2
+          fi 
+ fi && 
+
+echo -e "HEADCODE=$HEADCODE
+SVG=$SVG
+GTK=$GTK
+CONFIGURED=yes" >> $SPELL_CONFIG 
+fi &&
+
+# touch the SOURCE tarball if you update via cvs and already have a cvs tarball
+# otherwise you have to download 40 MB of crap
+if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/Firebird_cvs.tar.bz2 ] ;
+then mv -v $SOURCE_CACHE/Firebird_cvs.tar.bz2 $SOURCE_CACHE/firefox_cvs.tar.bz2
+fi &&
+if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/firefox_cvs.tar.bz2 ] ;
+then touch $SOURCE_CACHE/$SOURCE
+fi
+
