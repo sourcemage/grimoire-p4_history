@@ -1,6 +1,6 @@
 #!/bin/bash
 # /etc/init.d/networking.sh
-# SMGL-script-version=20030722
+# SMGL-script-version=20030723
 # set the above to custom instead of date format if you use
 # a custom networking script
 # this sets the run levels and priority for links
