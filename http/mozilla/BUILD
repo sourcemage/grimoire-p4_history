@@ -54,7 +54,7 @@
 
   ./configure  --disable-tests              \
                --disable-debug              \
-               --enable-optimize="$CFLAGS"  \
+               --enable-optimize=""         \
                --without-jpeg               \
                --without-zlib               \
                --without-png                \
