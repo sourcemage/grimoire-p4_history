@@ -47,6 +47,10 @@ create_defaults()
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
+	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
+	then
+		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ${SPELL_CONFIG}.p
+		persistent_load
 	else
 		arch_default
 		kernel_arch=$KERNEL_ARCH
@@ -574,12 +578,14 @@ old_src_menu()
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			[ -f ${old_src_tree}/.spell-config.p ] &&
-			cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p &&
-			persistent_load
-			persistent_add old_src_tree
-			mode="oldktree"
-			persistent_remove MAKEMODE
+			if [ -f ${old_src_tree}/.spell-config.p ]
+			then
+				cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
+				persistent_load
+				persistent_add old_src_tree
+				mode="oldktree"
+				persistent_remove MAKEMODE
+			fi
 			persistent_save
 			persistent_load
 			break
@@ -720,9 +726,8 @@ then
 			sleep 5
 		fi	
 	done
-	create_details
 else
 	echo "No Reconfigure, using ${SPELL_CONFIG}.p for defaults"
 fi
-
+create_details
 persistent_load
