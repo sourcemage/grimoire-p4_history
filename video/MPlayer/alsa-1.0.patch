@@ -1,6 +1,6 @@
 diff -Nur MPlayer-1.0pre2/configure MPlayer-1.0pre2-alsa/configure
 --- MPlayer-1.0pre2/configure	2003-10-05 17:34:40.000000000 +0200
-+++ MPlayer-1.0pre2-alsa/configure	2003-11-28 14:15:30.000000000 +0100
++++ MPlayer-1.0pre2-alsa/configure	2003-11-30 17:49:02.000000000 +0100
 @@ -3804,7 +3804,7 @@
    cc_check -lasound $_ld_dl $_ld_pthread && $TMPO && _alsaver='0.9.x-sys'
    cat > $TMPC << EOF
@@ -12,7 +12,7 @@ diff -Nur MPlayer-1.0pre2/configure MPlayer-1.0pre2-alsa/configure
  fi
 diff -Nur MPlayer-1.0pre2/libao2/ao_alsa9.c MPlayer-1.0pre2-alsa/libao2/ao_alsa9.c
 --- MPlayer-1.0pre2/libao2/ao_alsa9.c	2003-10-04 19:28:58.000000000 +0200
-+++ MPlayer-1.0pre2-alsa/libao2/ao_alsa9.c	2003-11-28 14:15:30.000000000 +0100
++++ MPlayer-1.0pre2-alsa/libao2/ao_alsa9.c	2003-11-30 17:49:02.000000000 +0100
 @@ -22,6 +22,7 @@
  #if HAVE_SYS_ASOUNDLIB_H
  #include <sys/asoundlib.h>
@@ -21,3 +21,14 @@ diff -Nur MPlayer-1.0pre2/libao2/ao_alsa9.c MPlayer-1.0pre2-alsa/libao2/ao_alsa9
  #include <alsa/asoundlib.h>
  #else
  #error "asoundlib.h is not in sys/ or alsa/ - please bugreport"
+diff -Nur MPlayer-1.0pre2/libmpdemux/ai_alsa.c MPlayer-1.0pre2-alsa/libmpdemux/ai_alsa.c
+--- MPlayer-1.0pre2/libmpdemux/ai_alsa.c	2003-08-07 14:24:35.000000000 +0200
++++ MPlayer-1.0pre2-alsa/libmpdemux/ai_alsa.c	2003-11-30 17:49:28.000000000 +0100
+@@ -6,6 +6,7 @@
+ 
+ #if defined(USE_TV) && (defined(HAVE_TV_V4L) || defined(HAVE_TV_V4L2)) && defined(HAVE_ALSA9)
+ 
++#define ALSA_PCM_OLD_HW_PARAMS_API
+ #include <alsa/asoundlib.h>
+ #include "audio_in.h"
+ #include "mp_msg.h"
