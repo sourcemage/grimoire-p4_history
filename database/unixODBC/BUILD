@@ -1,5 +1,5 @@
 (
-#  patch -p1 < $SPELL_DIRECTORY/SQLMoreResults.patch &&
+  patch -p1 < $SPELL_DIRECTORY/ltdl.diff libltdl/ltdl.c	&&
   default_build				&&
 #  ./configure  --prefix=${INSTALL_ROOT}/usr        \
 #               --sysconfdir=${INSTALL_ROOT}/etc    \
