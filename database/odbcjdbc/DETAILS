@@ -3,9 +3,8 @@ local SPELLX SFCVS
           SPELLX=OdbcJdbc
        BUILD_API=2
         WEB_SITE=http://www.ibphoenix.com
-case $WHICH
-  when cvs)
-# 	 VERSION=v1-1-release
+case $WHICH in
+  cvs)
  	 VERSION=v1-3-0
           SOURCE=${SPELLX}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
@@ -13,14 +12,14 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
    SOURCE_URL[0]=$SFCVS/firebird:$SPELLX:$VERSION
           MD5[0]=IGNORE
 ;;
-  when stable)
+  stable)
          VERSION=1-2-1
           SOURCE=${SPELLX}\_Source-${VERSION}.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
    SOURCE_URL[0]=$WEB_SITE/downloads/$SOURCE
-          MD5[0]=
+          MD5[0]=0f4c37a716af8c7cba6ff07ac453eec8
 ;;
-  when devel)
+  devel)
          VERSION=01.03.00.0073
           SOURCE=${SPELLX}\_Source\_Beta_1-3.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}

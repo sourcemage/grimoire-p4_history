@@ -1,13 +1,7 @@
 if [[ "$WHICH" != "cvs" ]]; then
-echo v1=$WHICH
-echo s=$SOURCE
-echo sd =$SOURCE_DIRECTORY
   mk_source_dir $SOURCE_DIRECTORY	                         &&
   cd $SOURCE_DIRECTORY 			                         &&
   unpack $SOURCE ${MD5[0]}
 else
-echo v2=$WHICH
-
  default_pre_build
 fi
-echo vv3
