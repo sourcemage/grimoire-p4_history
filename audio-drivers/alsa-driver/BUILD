@@ -21,7 +21,38 @@ alias /dev/mixer snd-mixer-oss
 alias /dev/dsp snd-pcm-oss
 alias /dev/midi snd-seq-oss
 EOF
-    
+}
+
+dconf()
+{
+if [ -z `grep alsa /etc/devfsd.conf` ] ; then
+    cat >> /etc/devfsd.conf <<EOF
+
+# some MODLOAD
+LOOKUP		midi		MODLOAD
+
+# setup permissions for oss audio/alsa oss emulation
+REGISTER        ^sound/         PERMISSIONS -1.audio 0660
+
+# setup some symlinks for oss audio/alsa oss emulation
+REGISTER        ^sound/mixer$   CFUNCTION GLOBAL mksymlink $devname mixer
+REGISTER        ^sound/mixer$   CFUNCTION GLOBAL mksymlink $devname mixer0
+UNREGISTER      ^sound/mixer$   CFUNCTION GLOBAL unlink mixer
+UNREGISTER      ^sound/mixer$   CFUNCTION GLOBAL unlink mixer0
+REGISTER        ^sound/dsp$     CFUNCTION GLOBAL mksymlink $devname dsp
+UNREGISTER      ^sound/dsp$     CFUNCTION GLOBAL unlink dsp
+REGISTER        ^sound/adsp$    CFUNCTION GLOBAL mksymlink $devname dsp1
+UNREGISTER      ^sound/adsp$    CFUNCTION GLOBAL unlink dsp1
+REGISTER	^sound/midi$    CFUNCTION GLOBAL mksymlink $devname midi
+UNREGISTER	^sound/midi$	CFUNCTION GLOBAL unlink midi
+REGISTER	^sound/amidi$	CFUNCTION GLOBAL mksymlink $devname amidi
+UNREGISTER	^sound/amidi$	CFUNCTION GLOBAL unlink	amidi
+EOF
+    else 
+    echo "devfsd.conf already configured, skipping"
+fi
+
+
 }
 
 (
@@ -65,9 +96,10 @@ EOF
     chmod 777 /devices/snd/*
     if  [  !  -f   /etc/modules.d/alsa  ];  then
 	mkdir   -p   /etc/modules.d
-	mconf    
-	touch        /etc/modules.d/alsa
+	mconf
     fi
+    dconf
+
     MOD="/etc/modules.conf"
     INC="include  /etc/modules.d/alsa"
     
