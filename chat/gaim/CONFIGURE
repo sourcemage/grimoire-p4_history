@@ -1,0 +1,8 @@
+if  !  grep  -q  "PANEL="  $SPELL_CONFIG;  then
+
+  if    query  "Enable gnome panel support for gaim?" n
+  then  echo   "PANEL=y"  >>  $SPELL_CONFIG
+  else  echo   "PANEL=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
