@@ -22,6 +22,10 @@
 # Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2004-03-16  charkins <charkins@pobox.com>
+#     - fix parsing of module names in getnetmods() courtesy
+#	    of rycee (bug #6373)
+#
 # 2004-02-11  charkins <charkins@pobox.com>
 #     - removed special handling of loopback device, lo.dev file will
 #       be removed automatically if it exists (bug #5776)
@@ -171,7 +175,7 @@
 #        HOSTSFN: name of file containing hosts
 #       RESOLVFN: name of file containing nameservers
 #
-NETCONFVERSION='1.2'
+NETCONFVERSION='1.3'
 ROOTCHECK=1
 NETDEVDIR=/etc/sysconfig/network
 HOSTNAMEFN=/etc/hostname
@@ -228,7 +232,8 @@ getnetmods() {
 	unset NETMODSMENU NETMODS
 	id=0
 	for i in `modprobe -l |grep net`; do
-		modname=`basename $i .o`
+		i=${i##*/}
+		modname=${i%.*}
 		NETMODSMENU[$id]="${id} ${modname}"
 		NETMODS[$id]="${modname}"
 		id=$((id+1))
