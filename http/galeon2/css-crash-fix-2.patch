@@ -1,0 +1,175 @@
+embed/galeon-embed.c      |   10 --------
+ mozilla/GaleonWrapper.cpp |    2 -
+ mozilla/mozilla-embed.cpp |   57 +++++++++++++++++++++++++++++++++++-----------
+ 3 files changed, 46 insertions(+), 23 deletions(-)
+
+--- embed/galeon-embed.c
++++ embed/galeon-embed.c
+@@ -761,15 +761,7 @@
+ 	return klass->remove_user_stylesheet(embed, sheet);
+ }
+ 
+-void
+-galeon_embed_stylesheet_free (EmbedStyleSheet *ess)
+-{
+-	if (ess)
+-	{
+-		g_free (ess->name);
+-		g_free (ess);
+-	}
+-}
++/* galeon_embed_stylesheet_free defined in mozilla-embed.cpp */
+ 
+ void
+ galeon_embed_stylesheet_list_free (GList *l)
+--- mozilla/GaleonWrapper.cpp
++++ mozilla/GaleonWrapper.cpp
+@@ -1059,7 +1059,7 @@
+ 	doc->SetStyleSheetDisabledState(styleSheet, PR_FALSE);
+ 	*/
+ 
+-	*return_sheet = (nsIStyleSheet*)styleSheet;
++	NS_ADDREF(*return_sheet = styleSheet);
+ 	
+ 	return NS_OK;
+ }
+--- mozilla/mozilla-embed.cpp
++++ mozilla/mozilla-embed.cpp
+@@ -1893,6 +1893,22 @@
+ 	return G_OK;
+ }
+ 
++struct MozillaEmbedStyleSheet : public EmbedStyleSheet
++{
++	MozillaEmbedStyleSheet() // : name(0), sheet(0), type(STYLESHEET_NONE)
++	{ 
++		LOG ("MozillaEmbedStyleSheet ctor (%p)", this);
++		name = NULL; sheet = NULL; type = STYLESHEET_NONE;
++	}
++	~MozillaEmbedStyleSheet()
++	{
++		LOG ("MozillaEmbedStyleSheet dtor (%p)", this);
++	}
++
++	nsCOMPtr<nsIDOMStyleSheet> domStyle;
++	nsCOMPtr<nsIStyleSheet>    style;
++};
++
+ static gresult
+ impl_get_stylesheets(GaleonEmbed *embed,
+ 		     GList **retSheets)
+@@ -1942,10 +1958,11 @@
+ 			found_named++;
+ 		}
+ 
+-		EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
++		MozillaEmbedStyleSheet *sheet = new MozillaEmbedStyleSheet();
+ 		sheet->name  = name;
+ 		sheet->sheet = item;
+ 		sheet->type  = STYLESHEET_NAMED;
++		sheet->domStyle = item;
+ 
+ 		csslist = g_list_append(csslist, sheet);
+ 	}
+@@ -1954,7 +1971,7 @@
+ 	{
+ 		/* Add in the "Default" style if we found stylesheets but
+ 		 * we didn't find any (non-alternate) named ones) */
+-		EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
++		MozillaEmbedStyleSheet *sheet = new MozillaEmbedStyleSheet();
+ 		sheet->name  = g_strdup(_("Default"));
+ 		sheet->sheet = NULL;
+ 		sheet->type  = STYLESHEET_BASIC;
+@@ -1965,7 +1982,7 @@
+ 	if (found > 0)
+ 	{
+ 		/* prepend None item if any sheets were found */
+-		EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
++		MozillaEmbedStyleSheet *sheet = new MozillaEmbedStyleSheet();
+ 		sheet->name = g_strdup(_("None"));
+ 		sheet->sheet = NULL;
+ 		sheet->type = STYLESHEET_NONE;
+@@ -2019,12 +2036,13 @@
+ 		
+ 		if (disabled == PR_FALSE)
+ 		{
+-			EmbedStyleSheet *sheet =
+-				g_new0(EmbedStyleSheet, 1);
++			MozillaEmbedStyleSheet *sheet =
++				new MozillaEmbedStyleSheet();
+ 			sheet->name =
+ 				g_strdup(NS_ConvertUCS2toUTF8(string).get());
+ 			sheet->sheet = item;
+ 			sheet->type = STYLESHEET_NAMED;
++			sheet->domStyle = item;
+ 
+ 			(*retSheet) = sheet;
+ 			return G_OK;
+@@ -2033,7 +2051,7 @@
+ 
+ 	if (found)
+ 	{
+-		EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
++		MozillaEmbedStyleSheet *sheet = new MozillaEmbedStyleSheet();
+ 		sheet->type = STYLESHEET_BASIC;
+ 		(*retSheet) = sheet;
+ 		return G_OK;
+@@ -2106,20 +2124,20 @@
+ {
+         GaleonWrapper *wrapper = MOZILLA_EMBED(embed)->priv->wrapper;
+ 
+-	nsIStyleSheet *item = nsnull;
+-
+ 	gchar *path = galeon_embed_utils_get_user_sheet_path(sheetfile);
+ 
+ 	gchar *tmp = g_strconcat("file://", path, NULL);
+ 	g_free(path);
+ 
+-	wrapper->LoadOverrideStyleSheet(tmp, &item);
++	nsCOMPtr<nsIStyleSheet> item;
++	wrapper->LoadOverrideStyleSheet(tmp, getter_AddRefs(item));
+ 	g_free (tmp);
+ 
+-	EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
++	MozillaEmbedStyleSheet *sheet = new MozillaEmbedStyleSheet();
+ 	sheet->name = g_strdup(sheetfile);
+ 	sheet->sheet = item;
+ 	sheet->type = STYLESHEET_NAMED;
++	sheet->style = item;
+ 
+ 	(*retSheet) = sheet;
+ 	return G_OK;
+@@ -2131,16 +2149,29 @@
+ {
+ 	if (!sheet) return G_OK;
+ 
+-        GaleonWrapper *wrapper = MOZILLA_EMBED(embed)->priv->wrapper;
++	MozillaEmbedStyleSheet *mess = NS_STATIC_CAST(MozillaEmbedStyleSheet*, sheet);
++	g_return_val_if_fail(mess != NULL, G_FAILED);
+ 
+-	nsIStyleSheet *item = NS_STATIC_CAST(nsIStyleSheet*, sheet->sheet);
++        GaleonWrapper *wrapper = MOZILLA_EMBED(embed)->priv->wrapper;
+ 
+ 	nsresult rv = NS_OK;
+-	rv = wrapper->RemoveOverrideStyleSheet(item);
++	rv = wrapper->RemoveOverrideStyleSheet(mess->style);
+ 
+ 	return NS_SUCCEEDED(rv) ? G_OK : G_FAILED;
+ }
+ 
++void
++galeon_embed_stylesheet_free (EmbedStyleSheet *sheet)
++{
++	MozillaEmbedStyleSheet *mess = NS_STATIC_CAST(MozillaEmbedStyleSheet*, sheet);
++
++	if (mess)
++	{
++		g_free (mess->name);
++		delete mess;
++	}
++}
++
+ static gboolean
+ stylesheet_is_alternate(nsIDOMStyleSheet *item)
+ {
+

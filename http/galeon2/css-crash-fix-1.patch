@@ -1,0 +1,23 @@
+--- mozilla/mozilla-embed.cpp.orig	2004-06-20 02:33:52.000000000 +0400
++++ mozilla/mozilla-embed.cpp	2004-07-14 15:58:23.714841149 +0400
+@@ -1929,10 +1929,11 @@
+ 
+ 		if (string.IsEmpty()) continue;
+ 
+-		const char * name = NS_ConvertUCS2toUTF8(string).get();
++		gchar * name = g_strdup(NS_ConvertUCS2toUTF8(string).get());
+ 
+ 		if (g_list_find_custom (csslist, name, stylesheet_find_func))
+ 		{
++			g_free(name);
+ 			continue;
+ 		}
+ 
+@@ -1942,7 +1943,7 @@
+ 		}
+ 
+ 		EmbedStyleSheet *sheet = g_new0(EmbedStyleSheet, 1);
+-		sheet->name  = g_strdup(name);
++		sheet->name  = name;
+ 		sheet->sheet = item;
+ 		sheet->type  = STYLESHEET_NAMED;
