@@ -1,0 +1,44 @@
+           SPELL=bashdoc
+         VERSION=0.1.3
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://maximus.uvt.nl/~erics/linux/mirror/$SOURCE
+          MD5[0]=151cbbef70842ca055ac643089aa13df
+       WEB_SITE=http://www.schabell.com/linux/mirror/bashdoc/index.html
+         ENTERED=20040223
+         UPDATED=20040223
+         LICENSE=GPL
+           SHORT="A tool for generating Bash documentation from our libraries."
+	
+cat << EOF
+This spell installs bashdoc tooling for generationg Bash documentation from
+code. It also runs a script generate and install all Source Mage GNU/Linux
+documentation that is available in our code. Enjoy!
+
+bashdoc.sh:
+==========
+Parses comments between lines of '#---' Lines to be parsed start with ##. All 
+tags start with @. Lines without a tag are considered simple description of 
+the section. If the line following the comment block doesn't start with 'function' 
+the it's assumed that the comment is for the whole file. Only the first non-function 
+comment block will be used, the other will be ignored. 
+
+Multiple identical tags are allowed, the contents are appended and separated with a 
+space. @param tags are treated specials and are assumed to be in order. 
+
+There is an additional <@function FUNCTION_NAME> tag that can be embeded in any b
+ashdoc comment. It will be transformed into a link to that function. Note, this will 
+only work for functions that are defined in the same script. 
+
+
+Usage: [-p project] [-o directory] [-e tag] [--] script [ script ...]
+'-p project' Name of the project
+'-o directory' Specifies the directory you want the
+resulting html to go into
+'-e tag' Only output if the block has this tag
+'-q' Quiet things down
+'--' No more arguments, only scripts
+'script' The script you want documented
+
+Brought to you by Paul Mahon!
+EOF
