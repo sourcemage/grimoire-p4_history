@@ -1,0 +1,11 @@
+optional_depends "sqlite" "--with-sqlite" "" \
+			"sqlite database support"	&&
+optional_depends "mysql" "--with-mysql" "" \
+			"database support"		&&
+optional_depends "postgresql" "--with-pgsql" "" \
+			"database support"		&&
+optional_depends "firebird" "--with-fbird=/usr/firebird" "" \
+			"database support"		&&
+optional_depends "ODBC-MGR" "--with-odbc" "" \
+			"database support"
+
