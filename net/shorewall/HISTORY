@@ -1,6 +1,11 @@
+2004-02-20 Robert Helgesson <rhelgesson@sourcemage.org>
+	* HISTORY: Finished format conversion.
+	* BUILD: Don't install the shorewall init script.
+	* BUILD: Use prepare_install.
+
 2004-01-27 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 1.4.9
-	Removed MAINTAINER
+	* DETAILS: Removed MAINTAINER
 
 2003-11-03 Robert Helgesson <rycee@home.se>
 	* DETAILS: Updated to version 1.4.6c
@@ -14,35 +19,35 @@
 	* HISTORY: Converted to new format.
 
 2003-08-17 Seth Woolley <seth@tautology.org>
-	  Modified DETAILS to fix md5 for SOURCE.
-	  Depends on iptables
+	* DETAILS: Modified DETAILS to fix md5 for SOURCE.
+	* DEPENDS: Depends on iptables
 
 2003-07-27 Robert Helgesson <rycee@home.se>
-	  vers. inc. to 1.4.6a which appears to be the latest version
+	* DETAILS: vers. inc. to 1.4.6a which appears to be the latest version
 
 2003-07-25 Robert Helgesson <rycee@home.se>
-	  vers. inc. to 1.4.6 (bug #3830)
+	* DETAILS: vers. inc. to 1.4.6 (bug #3830)
 
 2003-06-14 Robert Helgesson <rycee@home.se>
-	  vers. inc. to 1.4.4b (bug #3504)
-	  added some download mirrors
+	* DETAILS: vers. inc. to 1.4.4b (bug #3504)
+	* DETAILS: added some download mirrors
 
 2003-04-04 Robert Helgesson <rycee@home.se>
-	  vers. inc. to 1.4.1a
-	  added a require on system-logger
-	  added services file to define ftp-data
-	  use http server instead of ftp for download
+	* DETAILS: vers. inc. to 1.4.1a
+	* DEPENDS: added a require on system-logger
+	* services: added services file to define ftp-data
+	* DETAILS: use http server instead of ftp for download
 
 2002-11-19 Jeff Schmidt <jschmidt@fnal.gov>
-	  added iproute2 as DEPENDS
+	* DEPENDS: added iproute2 as DEPENDS
 
-2002-08-08 12:51 PST Eric Sandall <sandalle@hellhound.homeip.net>
-	  Apparently my version update didn't go through last time...
+2002-08-08 Eric Sandall <sandalle@hellhound.homeip.net>
+	* DETAILS: Apparently my version update didn't go through last time...
 
-2002-08-07 15:28 PST Eric Sandall <sandalle@hellhound.homeip.net>
-	  Updated VERSION to 1.3.5b
-	  Works fine with gcc3 (doesn't compile anything :)).
-	  Added MD5 and LICENSE
+2002-08-07 Eric Sandall <sandalle@hellhound.homeip.net>
+	* DETAILS: Updated VERSION to 1.3.5b
+	* USEGCC2: Works fine with gcc3 (doesn't compile anything :)).
+	* DETAILS: Added MD5 and LICENSE
 
 2002-04-21 Joel Mayes <bluebird@optushome.com.au>
 	  Initial spell creation
