@@ -1,0 +1,23 @@
+diff -Nur arts-1.1.4/configure arts-1.1.4-alsa/configure
+--- arts-1.1.4/configure	2003-09-10 03:54:12.000000000 +0200
++++ arts-1.1.4-alsa/configure	2003-11-23 19:07:22.000000000 +0100
+@@ -30109,7 +30109,7 @@
+ main ()
+ {
+ 
+-      #if (SND_LIB_MAJOR == 0) && (SND_LIB_MINOR == 9)
++      #if (SND_LIB_MAJOR == 0) && (SND_LIB_MINOR == 9) || (SND_LIB_MAJOR == 1)
+         /* we have ALSA 0.9.x */
+       #else
+         #error not ALSA 0.9.x
+diff -Nur arts-1.1.4/flow/audioioalsa9.cc arts-1.1.4-alsa/flow/audioioalsa9.cc
+--- arts-1.1.4/flow/audioioalsa9.cc	2003-09-02 13:49:22.000000000 +0200
++++ arts-1.1.4-alsa/flow/audioioalsa9.cc	2003-11-23 19:44:00.000000000 +0100
+@@ -35,6 +35,7 @@
+ #ifdef HAVE_LIBASOUND2
+ 
+ #ifdef HAVE_ALSA_ASOUNDLIB_H
++#define ALSA_PCM_OLD_HW_PARAMS_API
+ #include <alsa/asoundlib.h>
+ #elif defined(HAVE_SYS_ASOUNDLIB_H)
+ #include <sys/asoundlib.h>

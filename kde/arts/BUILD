@@ -1,5 +1,6 @@
 (
 
+  patch  -p1  <  $SCRIPT_DIRECTORY/alsa-1.0.patch  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr        \
                --sysconfdir=${INSTALL_ROOT}/etc    \
                --localstatedir=${INSTALL_ROOT}/var \
