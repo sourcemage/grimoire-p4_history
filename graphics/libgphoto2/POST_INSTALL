@@ -1,23 +1,10 @@
 if [[ -d /etc/hotplug ]] ; then
-  if [[ -f /etc/hotplug/usb.usermap ]] ; then
-    echo  "removing old camera definitions"
-    sed "/^#\[ libgphoto2:/,/^#\] libgphoto2:/d;/^usbcam/d" \
-	< /etc/hotplug/usb.usermap \
-	> /etc/hotplug/usb.usermap.bak
-    rm /etc/hotplug/usb.usermap
-    mv /etc/hotplug/usb.usermap.bak /etc/hotplug/usb.usermap
-  fi
-  echo "updating usbmap"
-  echo "#[ libgphoto2: inserted lines" \
-	>> /etc/hotplug/usb.usermap
-  /usr/lib/libgphoto2/print-usb-usermap \
-	>> /etc/hotplug/usb.usermap
-  echo "#] libgphoto2: inserted lines" \
-	>> /etc/hotplug/usb.usermap
   cat <<-EOF
+	if your kernel contains any usb camera modules,
 	you may want to blacklist the usb module for your camera,
 	so that it can be controlled by libgphoto2.
 	add the appropriate module name to /etc/hotplug/blacklist
   	check the documentation
+	check the script /etc/hotplug/usb/usbcam for correctness
 	EOF
 fi
