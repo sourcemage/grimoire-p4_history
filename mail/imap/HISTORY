@@ -131,18 +131,18 @@
 	* CONFLICTS: Added courier-imap to CONFLICTS file
 	* DETAILS: Added Sergey as MAINTAINER. Thanks to him for this spell.
 
-2002-05-08 Sergey Lipnevich <sergeyli@pisem.net>
+2002-05-08 Sergey Lipnevich <sergey@sourcemage.org>
 	* Make option NOSSL corrected to SSLTYPE, added patch to use ~/.imap/
 	  instead of ~, improved the structure of BUILD script by combining four
 	  separate 'make' into one parameterized. UPDATED changed because SSL was
 	  effectively not enabled.
 
-2002-04-16 Anonymous <sergeyli@pisem.net>
+2002-04-16 Anonymous <sergey@sourcemage.org>
 	* Added copying of mtest binary to /usr/bin, changed all 'cp'
 	  to 'cp -f' for binaries. No UPDATED change. Added CONFLICTS
 	  to indicate conflict with current pine spell.
 
-2002-04-12 Sergey Lipnevich <sergeyli@pisem.net>
+2002-04-12 Sergey Lipnevich <sergey@sourcemage.org>
 	* Separated IMAPd into a separate spell, imap. Fixed 'services' according to
 	  http://www.iana.org/assignments/port-numbers. 'services' and xinet.d/*
 	  changed to be non-executable. All services run under 'nobody'. Removed

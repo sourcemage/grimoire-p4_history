@@ -1,3 +1,6 @@
+2005-03-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* services: remove, no longer used.
+
 2005-01-22 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 1.1.3; include documentation thanks to Neuron.
 
@@ -162,47 +165,47 @@
 2003-04-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.21.0.
 
-2003-03-27 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-27 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.20.1.
 
-2003-03-21 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-21 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.20.
 	  Make downloading latest source an option.
 	* BUILD: Run tests if Python is present but don't require it.
 
-2003-03-12 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-12 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.19.
 	  Tarball signature changed from revision to version number.
 	  Make DETAILS similar to that of subversion-client spell to
 	  be able to apply patches easily.
 	  Upgrade to 0.19.1 due to bug in svnserve shortly after.
 
-2003-02-26 Sergey Lipnevich <sergeyli@pisem.net>
+2003-02-26 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.18.1.
 
-2003-02-20 Sergey Lipnevich <sergeyli@pisem.net>
+2003-02-20 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.18.0 (revision 4973).
 	  Removed diffutils and patch from dependencies.
 	* BUILD: Run `make check' before installing.
 	* CONFIGURE: Prompt to restart Apache.
 
-2003-01-25 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-25 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.17.1 (revision 4503).
 
-2003-01-13 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* services: Added with newly assigned port number.
 
-2003-01-07 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-07 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgraded to 0.16.1.
 
-2002-12-04 Sergey Lipnevich <sergeyli@pisem.net>
+2002-12-04 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgraded to 0.16.
 
-2002-11-07 Sergey Lipnevich <sergeyli@pisem.net>
+2002-11-07 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgraded to 0.15
 	* BUILD, DEPENDS: added SWIG bindings for Python.
 
-2002-10-30 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-30 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgraded to 0.14.5 (Alpha 5). Source URI has to change because of
 	  the way files are posted on tigris.org site.
 	* POST_INSTALL: Make Apache restart in POST_INSTALL instead of stop/starting
@@ -210,23 +213,23 @@
 	  POST_INSTALL will also check configurtion and only restart if it's good.
 	  Fixed a bug where existing client would not be used for checkout.
 
-2002-10-24 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-24 Sergey Lipnevich <sergey@sourcemage.org>
 	* Disable SVN module activation in httpd.conf.
 	  Enable checking for proper neon version.
 	  Sample config file now uses SVNParentPath as a recommended option.
 
-2002-08-20 Sergey Lipnevich <sergeyli@pisem.net>
+2002-08-20 Sergey Lipnevich <sergey@sourcemage.org>
 	* Added an instruction to ignore neon version.
 	  Build process now checks if the client is available in PATH and invokes it
 	  to check out the latest source. If there is no client, it is built first from
 	  the SOURCE package.
 
-2002-08-10 Sergey Lipnevich <sergeyli@pisem.net>
+2002-08-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* DEPENDS: Converted Python optional dependency into a firm one.
 
-2002-08-02 Sergey Lipnevich <sergeyli@pisem.net>
+2002-08-02 Sergey Lipnevich <sergey@sourcemage.org>
 	* DEPENDS: Updated to "requires webserver" in DEPENDS.
 
-2002-05-28 Sergey Lipnevich <sergeyli@pisem.net>
+2002-05-28 Sergey Lipnevich <sergey@sourcemage.org>
 	* Spell created.
 

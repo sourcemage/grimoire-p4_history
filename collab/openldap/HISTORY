@@ -1,3 +1,6 @@
+2005-03-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* services: remove, no longer used.
+
 2005-02-01 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.2.23
 
@@ -120,10 +123,10 @@
 	* Upgrade to 2.1.17.
 	  Sort out more dependency issues.
 
-2003-03-31 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-31 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 2.1.16.
 
-2003-03-03 Sergey Lipnevich <sergeyli@pisem.net>
+2003-03-03 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 2.1.14.
 	  Cosmetic improvements to BUILD.
 	  POST_INSTALL now uses "restart" instead of "start" and checks
@@ -148,40 +151,40 @@
 2003-02-24 Eric Schabell <eschabell@sourcemage.org>
 	* Updated to use librunlevel for init.d script.
 
-2003-01-07 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-07 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 2.1.12, the "stable release" from now on.
 	  See http://www.openldap.org/software/download/.
 	  For definition of the "stable", see http://www.openldap.org/faq/?file=225.
 
-2003-01-04 Sergey Lipnevich <sergeyli@pisem.net>
+2003-01-04 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 2.1.11.
 	  Disabled Cyrus-SASL until better way to configure is available.
 	  Update default configuration files.
 
-2002-10-23 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-23 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgraded to 2.1.8.
 	  Fixed minor bug in CONFIGURE which introduced major consequences.
 
-2002-10-16 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* SQL backend now compiles, thanks to suggestion by Eric Sandall (bug 1364).
 	  Made generation of SQL backend implicit in unixODBC depends instruction.
 	  Cleaned up CONFIGURE.
 
-2002-10-14 Sergey Lipnevich <sergeyli@pisem.net>
+2002-10-14 Sergey Lipnevich <sergey@sourcemage.org>
 	* Upgrade to 2.1.6 with checksum.
 
-2002-08-09 Sergey Lipnevich <sergeyli@pisem.net>
+2002-08-09 Sergey Lipnevich <sergey@sourcemage.org>
 	* Added dependency on Cyrus-SASL library for encrypted communication.
 	  Added dependencies to allow for perl and shell backends to be compiled.
 	  Perl dependency is commented out because of compilation problems,
 	  supposedly due to perl 5.8.0.
 
-2002-07-24 Sergey Lipnevich <sergeyli@pisem.net>
+2002-07-24 Sergey Lipnevich <sergey@sourcemage.org>
 	* Scripts for generating default configuration have been changed to use new
 	  structure: ou=<Users|Groups>,dc=<company>,dc=<TLD>. They will try to guess
 	  the <company> and <TLD> parts from the host name.
 
-2002-07-10 Sergey Lipnevich <sergeyli@pisem.net>
+2002-07-10 Sergey Lipnevich <sergey@sourcemage.org>
 	* Updated to 2.1.x tree (2.1.2) and added extra CONFIGURE options.
 	  Default backend will from now on be Berkeley DB (bdb). Main
 	  advantage of this backend is that it is transactional.
@@ -198,16 +201,16 @@
 	  skipped.ldif if you use the command above), if classes it belongs
 	  to or attributes it has, are not described by any schema.
 
-2002-05-08 Sergey Lipnevich <sergeyli@pisem.net>
+2002-05-08 Sergey Lipnevich <sergey@sourcemage.org>
 	* Corrected default ldap.conf to have only one pam_password attribute,
 	  with value "exop", which is best for OpenLDAP.
 
-2002-04-28 Anonymous <sergeyli@pisem.net>
+2002-04-28 Anonymous <sergey@sourcemage.org>
 	* Added code creating valid slapd.conf and ldap.conf, using files provided by
 	  Eric Sandall <sandalle@yahoo.com> as a guide.
 	  Added to slapd.conf "misc.schema" which contains some useful attributes.
 
-2002-04-16 Anonymous <sergeyli@pisem.net>
+2002-04-16 Anonymous <sergey@sourcemage.org>
 	* Added slapd.sh, services, and BUILD files. slapd.sh for init, services for
 	  reference (slapd doesn't need these entries), BUILD just uses
 	  default_build and then installs slapd.sh along the lines of the same
