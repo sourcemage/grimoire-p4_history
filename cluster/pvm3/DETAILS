@@ -1,0 +1,13 @@
+           SPELL=pvm3
+         VERSION=4.4
+          SOURCE=${SPELL}.${VERSION}.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}
+   SOURCE_URL[0]=ftp://ftp.netlib.org/$SPELL/$SOURCE
+        WEB_SITE=http://www.csm.ornl.gov/pvm/
+         ENTERED=20020504
+         UPDATED=20020504
+      MAINTAINER=sandalle@yahoo.com
+           SHORT="Parallel Virtual Machine is a message-passing library"
+cat << EOF
+PVM (Parallel Virtual Machine) is a portable message-passing programming system, designed to link separate host machines to form a ``virtual machine'' which is a single, manageable computing resource. The virtual machine can be composed of hosts of varying types, in physically remote locations. PVM applications can be composed of any number of separate processes, or components, written in a mixture of C, C++ and Fortran. The system is portable to a wide variety of architectures, including workstations, multiprocessors, supercomputers and PCs.
+EOF
