@@ -5,7 +5,7 @@ service kshd
 	wait		= no
 	user		= root
 	server		= /usr/sbin/kshd
-	server_args	=
+#	server_args	=
 	per_source	= 8
 	log_type	= FILE /var/log/xinetd/kshd
 	log_on_success	= PID HOST USERID EXIT DURATION

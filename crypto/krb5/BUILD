@@ -1,7 +1,6 @@
 (
 
-  patch  --verbose  src/kadmin/v4server/kadm_ser_wrap.c  <  \
-         $SCRIPT_DIRECTORY/2002-002-kadm4.patch             &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/krb5-1.2.8.patch &&
 
   cd  src
   ./configure  --enable-dns-for-kdc    \

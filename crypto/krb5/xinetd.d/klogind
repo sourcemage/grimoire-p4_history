@@ -5,7 +5,7 @@ service klogin
 	wait		= no
 	user		= root
 	server		= /usr/sbin/klogind
-	server_args	=
+#	server_args	=
 	per_source	= 8
 	log_type	= FILE /var/log/xinetd/rlogind
 	log_on_success	= PID HOST USERID EXIT DURATION
