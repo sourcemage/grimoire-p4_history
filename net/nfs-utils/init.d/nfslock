@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-PROGRAM=/usr/sbin/exportfs
+PROGRAM=/bin/false
 RUNLEVEL=3
 NEEDS="+remote_fs +network +portmap nfs"
 
@@ -8,21 +8,14 @@ NEEDS="+remote_fs +network +portmap nfs"
 
 start()
 {
+  required_executable /usr/sbin/rpc.statd
+  
   echo   "Starting NFS file locking services, rpc.statd"
-  pkill  "^rpc.statd$"  &&  sleep  5
-  evaluate_retval
-  ps  -C  portmap  >  /dev/null  ||
-  evaluate_retval
-  /sbin/portmap
-  evaluate_retval
-  /usr/sbin/rpc.statd
-  evaluate_retval
+  loadproc /usr/sbin/rpc.statd
 }
 
 stop()
 {
   echo "Stopping NFS file locking services"
-  pkill  "^rpc.statd$"
-  evaluate_retval
+  killproc /usr/sbin/rpc.statd
 }
-
