@@ -6,12 +6,10 @@
 MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
 MOZI_VERS=1.5b                               &&
 export MOZ_PHOENIX=1                         &&
-
     ./configure \
     --prefix=${INSTALL_ROOT}/usr    \
     --with-x            \
     --with-pthreads     \
-    --enable-xft        \
     --enable-freetype2  \
     --enable-reorder    \
     --enable-cpp-rtti   \

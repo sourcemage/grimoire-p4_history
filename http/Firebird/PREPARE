@@ -16,4 +16,13 @@ SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/firebird/releases/\$VERSION/\$SOURC
 SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
 MD5[0]=a7f2c4663356dfd4d1f426b220e3fab9" >> $SPELL_CONFIG &&
 echo CONFIGURED=yes >> $SPELL_CONFIG
-fi
+fi &&
+if ! grep -q GTK $SPELL_CONFIG ;
+then if query "Would you like to use original GTK+ toolkit?\n(Alternative is GTK+2 with anti-aliasing\
+ support) " n
+            then echo GTK=yes >> $SPELL_CONFIG
+            elif query "Use current GTK+2 toolkit ?" y
+                 then  echo GTK2=yes >> $SPELL_CONFIG
+    fi 
+fi  
+
