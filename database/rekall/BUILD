@@ -6,6 +6,15 @@
   ./configure --prefix=${INSTALL_ROOT}/usr $OPTS 	&&
   sed -i "s/-pedantic//" libs/extra/Makefile		&&
   sed -i "s/-pedantic//" libs/kdeplugins/Makefile	&&
+  sed -i "s/-pedantic//" script/python/stub/Makefile    &&
+  sed -i "s/-pedantic//" parts/table2/Makefile          &&
+  sed -i "s/-pedantic//" parts/form/Makefile            &&
+  sed -i "s/-pedantic//" parts/report/Makefile          &&
+  sed -i "s/-pedantic//" parts/query/Makefile           &&
+  sed -i "s/-pedantic//" parts/copier/Makefile          &&
+  sed -i "s/-pedantic//" parts/component/Makefile       &&
+  sed -i "s/-pedantic//" parts/editor/Makefile          &&
+  sed -i "s/-pedantic//" parts/macro/Makefile           &&
   make                   &&
   prepare_install        &&
   make    install
