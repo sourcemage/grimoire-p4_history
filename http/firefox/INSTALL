@@ -8,21 +8,15 @@ fi  &&
 #
 # Firefox now installs to /usr/lib/firefox and leaves /usr/lib/mozilla alone
 
-mkdir  -p  $FIREFOX_HOME                                    &&
-ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION            &&
-#mkdir  -p  ${INSTALL_ROOT}/usr/share/idl/mozilla           &&
-#ln  -fns   ${INSTALL_ROOT}/usr/share/idl/mozilla           \
-#           ${INSTALL_ROOT}/usr/share/idl/mozilla-$VERSION  &&
-#mkdir  -p  ${INSTALL_ROOT}/usr/include/mozilla             &&
-#ln  -fns   ${INSTALL_ROOT}/usr/include/mozilla             \
-#           ${INSTALL_ROOT}/usr/include/mozilla-$VERSION    &&
+mkdir  -p   $FIREFOX_HOME                                   &&
+ln  -fns    $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
 ln  -fns    ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
             ${INSTALL_ROOT}/usr/share/idl/firefox           &&
 ln  -fns    ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
             ${INSTALL_ROOT}/usr/include/firefox             &&
 make  install                                               &&
 cp  -vaL  dist/public/nss                                   \
-          ${INSTALL_ROOT}/usr/include/firefox-$VERSION/     &&
+          ${INSTALL_ROOT}/usr/include/firefox/              &&
 ln  -fns  ${FIREFOX_HOME}/firefox  /usr/bin/                &&
 
 if  !  grep  -q  firefox  /etc/ld.so.conf;  then
@@ -43,7 +37,7 @@ fi  &&
 # Fix for starting firefox without running as root first
 # Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-patch  -d  $FIREFOX_HOME-$VERSION  -p1  -N      \
+patch  -d  $FIREFOX_HOME           -p1  -N      \
        <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
 
 #
