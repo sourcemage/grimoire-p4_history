@@ -1,15 +1,16 @@
            SPELL=clisp
-         VERSION=2.30
+         VERSION=2.31
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/release/$VERSION/$SOURCE
    SOURCE_URL[1]=ftp://sunsite.unc.edu/pub/Linux/devel/lang/lisp/$SOURCE
-          MD5[0]=4ce7164af42c08fefbfed0b321c99ae6
-      LICENSE[0]=GPL
+          MD5[0]=
         WEB_SITE=http://clisp.sourceforge.net
          ENTERED=20020730
          UPDATED=20020730
+      LICENSE[0]=GPL
       MAINTAINER=wrunt@hotmail.com
+      MAKE_NJOBS=1
            SHORT="clisp is a common lisp implementation written in C."
 cat << EOF
 GNU CLISP is an ANSI compliant implementation of Common Lisp. It provides:
