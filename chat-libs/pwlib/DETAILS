@@ -7,12 +7,12 @@ FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
  SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 else
-          VERSION=1_8_3
-           SOURCE=${SPELL}-v${VERSION}-src-tar.gz
+          VERSION=1.8.4
+           SOURCE=${SPELL}-${VERSION}.tar.gz
     SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${SOURCE}
     SOURCE_URL[1]=${SOURCEFORGE_URL}/openh323/${SOURCE}
-           MD5[0]='03012ff58c1ddd0686f062e673c20bff'
- SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+           MD5[0]='d31920d753e88a9b009a1160d5a1c5cb'
+ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 fi
        LICENSE[0]=GPL
        MAKE_NJOBS=1   

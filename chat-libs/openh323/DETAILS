@@ -7,12 +7,12 @@ if [ "$CVS" == "y" ]; then
   FORCE_DOWNLOAD=1
  SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 else
-          VERSION=1_15_2
-           SOURCE=${SPELL}-v${VERSION}-src-tar.gz
+          VERSION=1.15.3
+           SOURCE=${SPELL}-${VERSION}.tar.gz
     SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${SOURCE}
     SOURCE_URL[1]=${SOURCEFORGE_URL}/openh323/${SOURCE}
-           MD5[0]='6ee14db2bde43cd6565396ddbec82513'
- SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+           MD5[0]='3c167e20de71b616cdb47fd8df5e0637'
+ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 fi
        LICENSE[0]=GPL
        MAKE_NJOBS=1   
