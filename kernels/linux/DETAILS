@@ -48,7 +48,8 @@ do
   elif [[ $PATCH == mm* ]]; then
     MM_PATCH=$PATCH
   else
-    echo "Failed parsing patches"
+    echo "Failed parsing patches"  &&
+    return  1
   fi
 done
 
