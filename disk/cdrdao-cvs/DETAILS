@@ -1,0 +1,25 @@
+           SPELL=cdrdao-cvs
+         VERSION=cvs
+          SOURCE=$SPELL.tar.bz2
+#          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/cdrdao:cdrdao
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=1
+        WEB_SITE=http://cdrdao.sourceforge.net/index.html
+      LICENSE[0]=GPL
+         ENTERED=20031225
+         UPDATED=20031225
+           SHORT="cdrdao is a program to burn DAO audio or data cdrs"
+cat << EOF
+Cdrdao-cvs is the cvs version of cdrdao, with support for IDE cdrw.
+Cdrdao records audio/data CD-Rs in disk-at-once (DAO) mode based on a 
+textual description of the CD contents (toc-file). Features include
+full control over length and contents of pre-gaps (pause areas
+between tracks). Pre-gaps may be completely omitted, e.g. for
+dividing live recordings into tracks. Control over sub-channel data
+like catalog numbers, copy, pre-emphasis, 2-/4-channel flags, ISRC
+code, and index marks are provided as well. Cdrdao also has support
+for exact audio CD copying. Tracks may be composed of different audio 
+files supporting non-destructive cuts.
+EOF
