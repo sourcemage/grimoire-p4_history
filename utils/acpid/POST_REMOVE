@@ -1,0 +1,9 @@
+if [ -a /etc/init.d/acpid.init ] ; then
+	rm -f /etc/inid.d/acpid.init
+fi
+
+for runlev in 2 3 4 5; do
+  cd /etc/rc${runlev}.d
+  rm -f S44acpid
+  rm -f K66acpid
+done

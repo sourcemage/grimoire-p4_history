@@ -70,9 +70,4 @@ sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $
 #echo "account    required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 #echo "password   required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 
-# Tune DBMTEST to SMGL style 
-message "${MESSAGE_COLOR}This patch turns DBM test off (see HISTORY file)${DEFAULT_COLOR}"
-patch $LOC/cgi-bin/openwebmail/openwebmail-shared.pl <$SCRIPT_DIRECTORY/openwebmail-shared.pl.patch
-message " "
-
 ) > $C_FIFO 2>&1  
