@@ -14,9 +14,6 @@
 
 ( 
 
-  mkdir  -p                   /usr/doc/bind
-  cp  $SOURCE_CACHE/$SOURCE2  /usr/doc/bind
-
   # Install man pages.
 
   for  DIRECTORY in doc/man/*;  do
