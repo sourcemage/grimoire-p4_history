@@ -101,10 +101,11 @@ main_menu()
 {
 	while true
 	do
+		tmp=$(installed_version linux-new)
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
-		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $kver" 0 0 0 \
+		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $tmp" 0 0 0 \
 		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
 		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
 		"Options" "Menu" "Kernel Arch, Build Dir, Cleaning"  \
