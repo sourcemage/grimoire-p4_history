@@ -5,13 +5,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCEFORGE_URL}/mjpeg/$SOURCE
           MD5[0]=c76f4a56b20302a1a55a04ea8f2bf11b
         WEB_SITE=http://mjpeg.sourceforge.net
-      LICENSE[0]=GPL
          ENTERED=20030113
          UPDATED=20030113
             DOCS="CHANGES COPYING NEWS README*"
+      MAKE_NJOBS=1
+      LICENSE[0]=GPL
            SHORT="The mjpeg programs are a set of tools that can do recording of videos and playback."
 cat << EOF
-
 The mjpeg programs are a set of tools that can do recording of videos 
 and playback, simple cut-and-paste editing and the MPEG compression 
 of audio and video under Linux. 
@@ -23,5 +23,4 @@ The recorded videos can be converted to MPEG streams. The software playback
 of MPEG streams works with almost every player and every OS. 
 You can produce special forms of MPEG streams like VCD (Video CD) and SVCD for 
 hardware playback. 
-
 EOF
