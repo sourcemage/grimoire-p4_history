@@ -2,7 +2,8 @@
 
   patch  -p0  <  $SCRIPT_DIRECTORY/db.patch   &&
 
-  cd  build_unix &&
+  cd  build_unix                         &&
+  PATH=/opt/java/j2sdk/bin:$PATH         &&
   ../dist/configure  --prefix=/usr       \
                      --build=$BUILD      \
                      --enable-dynamic    \
