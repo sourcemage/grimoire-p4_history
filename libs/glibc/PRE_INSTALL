@@ -17,4 +17,7 @@ if [ -z $INSTALL_ROOT ]; then
     ln -sf $SOURCE_DIRECTORY.bld/old.libs/$LD /lib/ld-linux.so.2
   fi
 fi  &&
-dispel  --notriggers --nosustain glibc
+
+if  spell_ok  glibc;  then
+  dispel  --notriggers  --nosustain  glibc
+fi
