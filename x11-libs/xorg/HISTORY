@@ -1,3 +1,20 @@
+2004-09-09 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 6.8.0
+	  Shortened SHORT
+	  Changed long description to that from X.Org
+	  Added BUILD_API=2
+	* DEPENDS: Depends on ncurses and expat
+	* PRE_BUILD: Copy config/cf/xorgsite.def to config/cf/host.def
+	* PRE_BUILD,POST_INSTALL,BUILD: Let's not use the shadow .bld directory
+	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* PRE_BUILD,BUILD: Move modification of host.def to PRE_BUILD
+	  Move source code modification to PRE_BUILD
+	* CONFIGURE,DEPENDS,PRE_BUILD: Only use PAM if the user wants, not just
+	  if it's installed
+	* BUILD: Redo driver makefiles so that it only uses what we defined
+	  Message should set the color
+	  General cleanup
+
 2004-09-05 Eric Sandall <eric@sandall.us>
 	* BUILD: Fails if explicitly set to use PIC
 	* HISTORY: Formatted to Guru Handbook

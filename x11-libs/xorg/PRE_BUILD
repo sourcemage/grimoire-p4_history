@@ -7,11 +7,39 @@ if [ "$CVS" == "n" ] ; then
   unpack         $SOURCE5  ${MD5[4]}  &&
   unpack         $SOURCE6  ${MD5[5]}  &&
   unpack         $SOURCE7  ${MD5[6]}
-  #unpack         $SOURCE8  ${MD5[7]}  &&
-  #unpack         $SOURCE9  ${MD5[8]}  &&
-  #patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE9 &&
-  #recommended by xfree86.org
 else
   unpack  $SOURCE  ${MD5[0]}
 fi  &&
-mk_source_dir  $SOURCE_DIRECTORY.bld  1G
+cp  $SOURCE_DIRECTORY/config/cf/xorgsite.def  \
+    $SOURCE_DIRECTORY/config/cf/host.def      &&
+
+if    [  -f  $CONFIG_CACHE/host.def  ]
+then  cp     $CONFIG_CACHE/host.def                \
+             $SOURCE_DIRECTORY/config/cf/host.def
+fi  &&
+
+if  !  grep  -q  InstallFontconfigLibrary  $SOURCE_DIRECTORY/config/cf/host.def
+  then echo  "#define InstallFontconfigLibrary NO"     \
+             >>  $SOURCE_DIRECTORY/config/cf/host.def
+fi  &&
+
+echo  "#define HasMotif NO"   >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+echo  "#define HasMotif2 NO"  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+
+### fix the broken xcursor.pc file
+#sedit  '/Requires/d'  $SOURCE_DIRECTORY/lib/Xcursor/xcursor.pc.in  &&
+
+### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
+if  [  -f  $SOURCE_DIRECTORY/config/cf/host.def  ];  then
+  sedit  s"/-Os//g"  $SOURCE_DIRECTORY/config/cf/host.def  &&
+
+  #
+  # Remove explicit PIC as well as that breaks the symbol logic in
+  # /usr/X11R6/lib/modules/fonts/libbitmap.a:bitmapmod.o
+  #
+  sedit  s"/-DPIC -fPIC//g"  $SOURCE_DIRECTORY/config/cf/host.def
+fi  &&
+
+if  [  "$PAM"  ==  "y"  ];  then
+  echo  "#define  HasPam  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
+fi

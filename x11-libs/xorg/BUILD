@@ -1,100 +1,24 @@
-install_drm()  {
+message  "${MESSAGE_COLOR}Building X.org takes a very long time${DEFAULT_COLOR}"
 
-  DRM_DIR="programs/Xserver/hw/xfree86/os-support/linux/drm/kernel"
-  DRM_DEST="/lib/modules/$(uname -r)/kernel/drivers/char/drm"
-  mkdir   -p                $DRM_DEST
-  cp          $DRM_DIR/*.o  $DRM_DEST  2>/dev/null
-  depmod  -a
-  true
+#
+# Remove explicit PIC as well as that breaks the symbol logic in
+# /usr/X11R6/lib/modules/fonts/libbitmap.a:bitmapmod.o
+#
+export  CFLAGS="${CFLAGS/-DPIC -fPIC/}"  &&
 
-}
-
-
-if    [  -f  $CONFIG_CACHE/host.def  ]
-then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
-fi                                                      &&
-if ! grep -q InstallFontconfigLibrary config/cf/host.def
-  then echo  "#define InstallFontconfigLibrary NO" >> config/cf/host.def
+if  (echo $CFLAGS | grep -q -- "-Os"); then
+  export CFLAGS="-O2 ${CFLAGS//-Os/}"
 fi  &&
 
-if [ "$CVS" == "y" ] 
-  then echo "#define HasMotif NO" >>config/cf/host.def 
-       echo "#define HasMotif2 NO" >>config/cf/host.def
-fi &&
-	
-message  "Building X.org takes a very long time."
+#
+# Reconfigure the drivers to what we've defined
+#
+cd  programs/Xserver   &&
+make  Makefile         &&
+make  Makefiles        &&
+make  includes         &&
+make  depend           &&
+make                   &&
+cd  $SOURCE_DIRECTORY  &&
 
-( 
-
-  ### fix the broken xcursor.pc file
-  sedit  '/Requires/d'  lib/Xcursor/xcursor.pc.in  &&
-  ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
-  if  [  -f  config/cf/host.def  ];  then
-    sedit  s"/-Os//g"  config/cf/host.def  &&
-    #
-    # Remove explicit PIC as well as that breaks the symbol logic in
-    # /usr/X11R6/lib/modules/fonts/libbitmap.a:bitmapmod.o
-    #
-    sedit  s"/-DPIC -fPIC//g"  config/cf/host.def
-  fi                                               &&
-  #
-  # Remove explicit PIC as well as that breaks the symbol logic in
-  # /usr/X11R6/lib/modules/fonts/libbitmap.a:bitmapmod.o
-  #
-  export  CFLAGS="${CFLAGS/-DPIC -fPIC/}"          &&
-
-  if  (echo $CFLAGS | grep -q -- "-Os"); then
-    export CFLAGS="-O2 ${CFLAGS//-Os/}"
-  fi                                               &&
-
-  if  spell_installed  Linux-PAM
-  then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
-  fi                                               &&
-  ### xfree86.org recommends building in a shadow tree 
-  cd config/util                                   &&
-  make -f Makefile.ini lndir                       &&
-  cp lndir $SOURCE_DIRECTORY.bld/                  &&
-  cd $SOURCE_DIRECTORY.bld                         &&
-  ./lndir ../$(basename $SOURCE_DIRECTORY)         &&
-  ### differnet approach to old bug
-  ### Fix Bug #3486, which stops the build process if builtinfonts is selected
-#  ln -sf $SOURCE_DIRECTORY.bld/lib/font/builtins $SOURCE_DIRECTORY.bld/lib/font/builtins/unshared &&
-
-  make World
-  
-  ### will this fix the mysterious error ?
-  ln -sf $SOURCE_DIRECTORY/lib/xtrans/Xtrans.h  $SOURCE_DIRECTORY.bld/exports/include/X11/Xtrans.h &&
-  ### Start compiling where the prior left off
-  make                                                           &&
-  prepare_install                                                &&
-  #### the following is needed for pkgconfig to find the .pc files
-  mkdir  -p  /usr/X11R6/lib                                      &&
-  ln -sf  /usr/lib/pkgconfig  /usr/X11R6/lib                     &&
-  make  install                                                  &&
-  make  install.man                                              &&
-        install_drm                                              &&
-  mkdir  -p  /usr/X11R6/include/GL
-
-) > $C_FIFO 2>&1  &&  (
-
-  if  [  !  -e                      /etc/skel/.xsession  ];  then
-    cp  $SCRIPT_DIRECTORY/xsession  /etc/skel/.xsession
-  fi
-
-  if  [  !  -e                    /usr/bin/X11  ];  then
-    ln      -sf   /usr/X11R6/bin  /usr/bin/X11
-  fi
-
-  if  [  !  -e          /usr/X11  ];  then
-    ln      -sf  X11R6  /usr/X11
-  fi
-
-  if  [  !  -e                         /usr/include/X11  ];  then
-    ln      -sf  ../X11R6/include/X11  /usr/include/X11
-  fi
-
-  if  [  !  -e                     /usr/lib/X11  ];  then
-    ln      -sf  ../X11R6/lib/X11  /usr/lib/X11
-  fi
-
-)
+make  World

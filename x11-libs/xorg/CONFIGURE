@@ -307,8 +307,14 @@ configure_host_def()  {
 
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  message  "Reconfiguration is optional."
-fi
+fi  &&
 
 if    query  "Configure host.def?"  n
-then  configure_host_def
+  then  configure_host_def
+fi  &&
+
+if  spell_installed  Linux-PAM;  then
+  config_query  PAM  "Use Linux-PAM for authentication?"  y
+else
+  config_query  PAM  "Use Linux-PAM for authentication?"  n
 fi
