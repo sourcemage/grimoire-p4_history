@@ -1,17 +1,16 @@
            SPELL=util-linux
          VERSION=2.12a
-       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.win.tue.nl/pub/linux-local/utils/$SPELL/$SOURCE
-#   SOURCE_URL[0]=http://ftp.cwi.nl/aeb/$SPELL/$SOURCE
    SOURCE_URL[1]=$KERNEL_URL/pub/linux/utils/$SPELL/$SOURCE
           MD5[0]=110bd135be0c208b97490a98acc6800a
-         ENTERED=20010922
-         UPDATED=20030822
-      LICENSE[0]=GPL
         WEB_SITE=http://ftp.cwi.nl/aeb/util-linux/
-           SHORT="util-linux contains essential utilities for any Linux box."
+         ENTERED=20010922
+         UPDATED=20040824
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Essential utilities for any Linux box."
 cat << EOF
 Util-linux is a suite of essential utilities for any Linux system. Its
 primary audience is system integrators and DIY Linux hackers. Util-linux
