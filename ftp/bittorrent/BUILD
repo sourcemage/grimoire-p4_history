@@ -1,1 +1,5 @@
+if echo $OPTS | grep -q -- "--disable-gui"; then
+  sedit  's/"btdownloadgui.py",//'     setup.py  &&
+  sedit  's/"btcompletedirgui.py",//'  setup.py
+fi  &&
 true
