@@ -1,15 +1,9 @@
            SPELL=xemacs
-         VERSION=21.4.8
+         VERSION=21.4.11
           SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=$SPELL-$VERSION-elc.tar.gz
-         SOURCE3=$SPELL-$VERSION-info.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://ftp.xemacs.org/xemacs-21.4/$SOURCE
-  SOURCE2_URL[0]=http://ftp.xemacs.org/xemacs-21.4/$SOURCE2
-  SOURCE3_URL[0]=http://ftp.xemacs.org/xemacs-21.4/$SOURCE3
-          MD5[0]=1979ece017bc4782a3836a7a558725e0
-          MD5[1]=1ae8d7ec2230011eb61298aa28878b9e
-          MD5[2]=280b64351d6e8f338847b1b66f814536
+          MD5[0]=7b3a4296439fe42cd24c4e847d7c7db6
         WEB_SITE=http://www.xemacs.org/
       LICENSE[0]=GPL
          ENTERED=20011112
@@ -18,6 +12,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     MENU_ITEM[0]="XEmacs text editor"
     MENU_EXEC[0]=${SPELL}
     MENU_DESC[0]=${SHORT}
+      MAKE_NJOBS=1
            SHORT="XEmacs is a highly customizable open source text editor and application development system."
 cat << EOF
 XEmacs is a highly customizable open source text editor and application
