@@ -18,4 +18,6 @@ else
                     "for generating Postscript and PDF output"  &&
   optional_depends  "ghostscript"  ""  ""  \
                     "for generating Postscript and PDF output"
-fi
+fi &&
+
+optional_depends qt-x11 '--with-doxywizard' '' 'for DoxyWizard GUI'
