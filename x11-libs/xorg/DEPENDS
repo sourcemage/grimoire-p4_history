@@ -1,11 +1,27 @@
 if  [  "$CVS"  ==  "y"  ]; then
   depends CVS
 fi  &&
+
+if  [  "$PAM"  ==  "y"  ];  then
+  depends  Linux-PAM
+fi  &&
+
 depends  bison       &&
 depends  flex        &&
 depends  perl        &&
 depends  fontconfig  &&
 depends  zlib        &&
-#xc/config/cf/linux.cf defines this so unless we want to rewrite the spell we need it as full depends
-depends  libpng      &&
-optional_depends  "Linux-PAM" "" "" "for PAM authentication" 
+depends  ncurses     &&
+depends  expat       &&
+#xc/config/cf/linux.cf defines having GhostScript by default
+depends  POSTSCRIPT-INTERPRETER  &&
+
+optional_depends  groff                          \
+                  ""                             \
+                  ""                             \
+                  "for formatted documentation"  &&
+
+optional_depends  libpng                   \
+                  ""                       \
+                  ""                       \
+                  "for PNG image support"

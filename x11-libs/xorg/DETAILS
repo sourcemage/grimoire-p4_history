@@ -7,7 +7,7 @@ if [ "$CVS" == "y" ]; then
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
-         VERSION=6.7.0
+         VERSION=6.8.0
         XVERSION=X11R${VERSION}
           SOURCE=${XVERSION}-src1.tar.gz
          SOURCE2=${XVERSION}-src2.tar.gz
@@ -25,25 +25,24 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
   SOURCE5_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE5
   SOURCE6_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE6
   SOURCE7_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE7
-          MD5[0]=8a3e65fd1cbf3d39f23c1518d957eab2
-          MD5[1]=12cd515374cb034ffde8c41832d24c09
-          MD5[2]=26c661d33a1c58fa06302b9783c54866
-          MD5[3]=e3e092044ff6581b5769288038c636d0
-          MD5[4]=17fdb62325cbe45df92ab883554ba8a8
-          MD5[5]=967c51cc9d631502e11abe3febe81a8e
-          MD5[6]=57d2df6d7b301ba4121710158f2889ab
+          MD5[0]=d47a877a7b74079c51a39011cdac331c
+          MD5[1]=09e47ecde617db52322d9cf2ec54ddb4
+          MD5[2]=35c374e02f98f8e3e4aa08b56aae1453
+          MD5[3]=291b89e8157fe20bdcad8f9cec45bd1d
+          MD5[4]=abd96b7801b4aba729767cfffcb519cd
+          MD5[5]=3ba55017c18447c308d509818090efd2
+          MD5[6]=550fca5166310578e100fa1eb59fc52f
 fi
         WEB_SITE=http://freedesktop.org/~xorg/
          ENTERED=20040407
          UPDATED=20040617
       LICENSE[0]=XCL
-           SHORT="X11R6.7.0 is an Open Source version of the X Window System"
+       BUILD_API=2
+           SHORT="X.Org is an Open Source version of the X Window System"
 cat << EOF
-X11R6.7.0 is the seventh full release in the X11R6.7 series.
+The XOrg Foundation, (a.k.a. X.org) has changed to an Open Source model to maintain the official Public Implementation of X11.
 
-X11R6.7 is the current X.Org Foundation release series, based on the XFree86
-4.x code base. The first release in the XFree86 4.x series was in early 2000.
-The core of X11R6.7 is a modular X server. 
-Most modern PC video hardware is supported in X11R6.7.0, and most PC video
-hardware that isn't supported explicitly can be used with the "vesa" driver.
+The XOrg Foundation invites anyone who has an interest to join in. Anyone may create and work on a branch in the repository. See XOrgRepository for more information about the XOrg Foundation repository.
+
+The repository consists of an imported XFree86 tree that is very close to their 4.4 release. Just before its 4.4 release, XFree86 adopted a new licensing scheme incompatible with the GPL. For this reason, we have recreated its tree as closely as possible without importing files affected by the new license. Our tree is being referred to as simply "XOrg", and a public release will be made shortly.
 EOF
