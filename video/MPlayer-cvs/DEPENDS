@@ -3,7 +3,7 @@ optional_depends  "cdparanoia"  ""  ""  "to play audio cds"             &&
 optional_depends  "live"  "--enable-live"  ""  "for live.com Streaming Media (sdp/rtsp) support"  &&
 
 # input codecs
-requires  libavcodec  &&
+depends  ffmpeg-cvs  &&
 optional_depends  "zlib"  ""  ""  "to play movies using losless compression algorithms" &&
 optional_depends  "w32codec"  ""  ""  "to use windows codec DLLs for video decoding" &&
 optional_depends  "libvorbis"  ""  ""  "to play ogg/vorbis audio" &&

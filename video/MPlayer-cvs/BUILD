@@ -1,25 +1,28 @@
 (
 
-  patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch
+  # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
+  sedit  's/-fomit-frame-pointer//'  configure  &&
+
+  patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch  &&
 
   if  [  "$FONTCONFIG"  =  "y"  ];  then
     patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-fontconfig.patch
-  fi
+  fi  &&
 
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
-  esac
+  esac  &&
 
   case  $JOYSTICK  in
     y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
-  esac
+  esac  &&
 
   case  $OSD_MENU  in
     y|Y)  OPTS="$OPTS  --enable-menu"  ;;
-  esac
+  esac  &&
   
   # temporary work around a configure bug for faad
-  touch config.h
+  touch config.h  &&
 
   CFLAGS= ./configure  --prefix=/usr  \
                --confdir=/etc/mplayer \

@@ -1,11 +1,11 @@
 Index: configure
 ===================================================================
 RCS file: /cvsroot/mplayer/main/configure,v
-retrieving revision 1.792
-diff -u -r1.792 configure
---- configure	22 Oct 2003 18:24:57 -0000	1.792
-+++ configure	22 Oct 2003 23:47:01 -0000
-@@ -4829,6 +4829,8 @@
+retrieving revision 1.797
+diff -u -r1.797 configure
+--- configure	27 Oct 2003 01:06:35 -0000	1.797
++++ configure	27 Oct 2003 11:39:11 -0000
+@@ -4832,6 +4832,8 @@
  elif test "$_libavcodecso" = yes ; then
    _def_libavcodec='#define USE_LIBAVCODEC 1'
    _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
@@ -17,10 +17,10 @@ diff -u -r1.792 configure
 Index: libmpcodecs/Makefile
 ===================================================================
 RCS file: /cvsroot/mplayer/main/libmpcodecs/Makefile,v
-retrieving revision 1.110
-diff -u -r1.110 Makefile
---- libmpcodecs/Makefile	22 Oct 2003 21:21:52 -0000	1.110
-+++ libmpcodecs/Makefile	22 Oct 2003 23:47:05 -0000
+retrieving revision 1.112
+diff -u -r1.112 Makefile
+--- libmpcodecs/Makefile	26 Oct 2003 23:07:21 -0000	1.112
++++ libmpcodecs/Makefile	27 Oct 2003 11:39:15 -0000
 @@ -41,7 +41,7 @@
  SRCS2=$(ENCODER_SRCS)
  OBJS2=$(SRCS2:.c=.o)
@@ -36,7 +36,7 @@ RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_pp.c,v
 retrieving revision 1.30
 diff -u -r1.30 vf_pp.c
 --- libmpcodecs/vf_pp.c	31 Aug 2003 22:18:27 -0000	1.30
-+++ libmpcodecs/vf_pp.c	22 Oct 2003 23:47:06 -0000
++++ libmpcodecs/vf_pp.c	27 Oct 2003 11:39:16 -0000
 @@ -20,10 +20,10 @@
  
  #define EMU_OLD
@@ -50,3 +50,21 @@ diff -u -r1.30 vf_pp.c
  #endif
  
  struct vf_priv_s {
+Index: libmpcodecs/vf_spp.c
+===================================================================
+RCS file: /cvsroot/mplayer/main/libmpcodecs/vf_spp.c,v
+retrieving revision 1.3
+diff -u -r1.3 vf_spp.c
+--- libmpcodecs/vf_spp.c	27 Oct 2003 00:14:33 -0000	1.3
++++ libmpcodecs/vf_spp.c	27 Oct 2003 11:39:16 -0000
+@@ -32,8 +32,8 @@
+ #include "../config.h"
+ #include "../mp_msg.h"
+ #include "../cpudetect.h"
+-#include "../libavcodec/avcodec.h"
+-#include "../libavcodec/dsputil.h"
++#include "avcodec.h"
++#include "dsputil.h"
+ 
+ #ifdef HAVE_MALLOC_H
+ #include <malloc.h>
