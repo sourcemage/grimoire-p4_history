@@ -21,7 +21,10 @@ optional_depends  "aalib"   ""  ""  "for ascii-art video output"  &&
 
 # audio codecs
 optional_depends  "audiofile" "" "" "for AIFF/.snd/.au decoder"  &&
-optional_depends  "libmad"  ""  ""  "for mad mp3 decoder"  &&
+if  [  "$MP3" = "y"  ];  then
+  depends  libmad  &&
+  depends  libid3tag
+fi  &&
 optional_depends  "lame"  ""  ""  "for mp3 encoder"  &&
 optional_depends  "libvorbis"  ""  ""  "for ogg-vorbis decoder/encoder"  &&
 optional_depends  "flac"  ""  ""  "for FLAC decoder/encoder"  &&

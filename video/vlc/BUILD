@@ -13,6 +13,8 @@
   fi  &&
 
   export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
+  # mozilla broke the api again :(
+  export OPTS="$OPTS --disable-mozilla"  &&
 
   # needed for xvid detection
   export LDFLAGS="$LDFLAGS -lm"  &&

@@ -1,53 +1,59 @@
+2003-12-11 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: removed libmad dependency (broken build system builds its own
+	libmad anyway)
+	added optional_depends faad2
+
 2003-12-11 Unet <audio@sourcemage.org>
 	* DEPENDS: mad -> libmad
 	* HISTORY: Formatted
 
 2003-08-21 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* updated to 0.7.38
+	* DETAILS: updated to 0.7.38
+	* BUILD: removed gcc-3.3 fixes
 
 2003-06-19 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* make mad dependency mandatory (broken build system)
+	* DEPENDS: make mad dependency mandatory (broken build system)
 
 2003-05-19 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* gcc-3.3 fixes
-	* use default_build, so $INSTALL_ROOT is used
+	* BUILD: gcc-3.3 fixes
+	use default_build, so $INSTALL_ROOT is used
 
 2003-04-04 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* changed SOURCE_URL to use SOURCEFORGE_URL
-	* added some optional_depends
-	* updated to 0.7.34
+	* DETAILS: changed SOURCE_URL to use SOURCEFORGE_URL
+	updated to 0.7.34
+	* DEPENDS: added some optional_depends
 
 2003-01-21 Seth Woolley <seth@tautology.org>
-	* Fixed issue with qt detection
+	* DETAILS: Fixed issue with qt detection
 
 2003-01-19 Seth Woolley <seth@tautology.org>
-	* Cleaned up DETAILS to fix a minor bug
+	* DETAILS: Cleaned up DETAILS to fix a minor bug
 
 2003-01-17 Seth Woolley <seth@tautology.org>
-	* Updated to 0.7.26-20030117
-	* Added BUILD that unsets some *FLAGS
+	* DETAILS: Updated to 0.7.26-20030117
+	* BUILD: Added BUILD that unsets some *FLAGS
 
 2003-01-12 Seth Woolley <seth@tautology.org>
-	* Updated to 0.7.22-20021129
-	* Cleaned HISTORY
+	* DETAILS: Updated to 0.7.22-20021129
+	* HISTORY: Cleaned HISTORY
 
 2002-09-07 Eric Sandall <eric@sandall.us>
-	* Updated version to 0.7.15-20020816 (Bug #905)
-	* Cleaned up DETAILS (no more tabs)
-	* Removed BUILD as default_build is more appropriate
+	* DETAILS: Updated version to 0.7.15-20020816 (Bug #905)
+	Cleaned up DETAILS (no more tabs)
+	* BUILD: Removed BUILD as default_build is more appropriate
 
 2002-06-08 Unet <burududu@hotpop.com>
-	* Fixed a bug for the $SOURCE_DIRECTORY
+	* DETAILS: Fixed a bug for the $SOURCE_DIRECTORY
 
 2002-05-26 Unet <burududu@hotpop.com>
-	* Updated to 0.7.7-20020523.
+	* DETAILS: Updated to 0.7.7-20020523.
 
 2002-05-11 Unet <burududu@hotpop.com>
-	* Updated to 0.7.6-20020508. This seems to fix the bug #70,
-	* at least it works here. [later] updated DEPENDS file to please
-	* Alley_Cat...
+	* DETAILS: Updated to 0.7.6-20020508. This seems to fix the bug #70,
+	at least it works here.
+	* DEPENDS: [later] updated DEPENDS file to please Alley_Cat...
 
 2002-05-01 Unet <burududu@hotpop.com>
 	* Created this file.
-	* Thanks to Julian v. Bock, DEPENDS is modified to have w32codec
-	* as an optional dependency.
+	* DEPENDS: Thanks to Julian v. Bock, DEPENDS is modified to have
+	w32codec as an optional dependency.
