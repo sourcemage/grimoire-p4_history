@@ -1,15 +1,5 @@
-(
-
-  ./configure --datadir=/share  \
-              --mandir=/man     \
-	      $OPTS		&&
-
-  make                          &&
-  prepare_install               &&
-  make install                  &&
- 
-  cp $SCRIPT_DIRECTORY/logcolorise.pl /usr/bin/
-
-  cp $SCRIPT_DIRECTORY/tailfmessages  /usr/bin/
-	
-) > $C_FIFO 2>&1
+./configure --prefix=/usr                \
+            --datadir=/usr/share/$SPELL  \
+            --mandir=/usr/man            \
+            $OPTS                        &&
+make
