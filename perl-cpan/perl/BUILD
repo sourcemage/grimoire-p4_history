@@ -2,7 +2,8 @@ unset LANG
 
 # save current version so we can do a FINAL
 #
-CURRENT_VERSION="`installed_version perl`"  &&
+persistent_add PREVIOUS_VERSION	&&
+PREVIOUS_VERSION="`installed_version perl`"  &&
 CONFIG="$DEPENDS_CONFIG/perl_config.sh"     &&
 
 if  [  "$OLD_CUSTOM"  ==  "y"  ];  then

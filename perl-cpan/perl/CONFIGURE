@@ -6,6 +6,9 @@ if  [  -f  $CONFIG_FILE  ];  then
    if [ "$OLD_CUSTOM" == "n" ]; then
       config_query RM_OLD_CUSTOM "Remove old custom configuration file ?" n
    fi
+else
+   OLD_CUSTOM="n"
+   RM_OLD_CUSTOM="n"
 fi  &&
 
 if [ "$RM_OLD_CUSTOM" == "y" ]; then 
@@ -18,3 +21,29 @@ fi  &&
 
 config_query  THREADED  "Compile threaded perl?"  n
 
+PREVIOUS_VERSION="`installed_version perl`"
+CURRENT_VERSION=$VERSION
+REBUILD_ALL="n"
+
+if  [ -n "$PREVIOUS_VERSION"  -a  "$PREVIOUS_VERSION" != "$CURRENT_VERSION" ]; then
+    cat  <<- ____EOM
+
+	I see you've got a $PREVIOUS_VERSION perl library. This probably
+	means that you're upgrading perl.
+
+	If this is not the case you can skip the next paragraph
+	and just answer no to the question...
+
+	   Perl 5.8 is binary incompatible with previous versions
+	   this means that you'll have to rebuild all installed 
+	   perl spell's. I can do that for you.
+
+	   After all spells have successfully been build you'll have to
+	   remember to _MANUALLY_ remove the following directories:
+	   
+	      rm -rf ${INSTALL_ROOT}/usr/lib/perl5/$PREVIOUS_VERSION
+	      rm -rf ${INSTALL_ROOT}/usr/lib/perl5/site_perl/$PREVIOUS_VERSION
+
+____EOM
+	config_query REBUILD_ALL "Do you want me to rebuild all perl spells?" n
+fi
