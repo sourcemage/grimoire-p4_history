@@ -8,7 +8,7 @@ if [ "$CVS" == "y" ]; then
     make -j 1 optshared
 else
    ./configure --prefix=/usr $OPTS 		&&
-   patch -p0 < $SCRIPT_DIRECTORY/patch_openh323 &&
+#   patch -p0 < $SCRIPT_DIRECTORY/patch_openh323 &&
    LD_PRELOAD_OLD="$LD_PRELOAD"                 &&
    unset LD_PRELOAD                             &&
    make	-j 1					&&

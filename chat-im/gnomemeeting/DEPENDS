@@ -1,5 +1,6 @@
 depends  openh323                        &&
 depends  libgnomeui                      &&
+depends  evolution-data-server           &&
 
 if [ "$CVS" == "y" ]; then
    depends automake-1.7
@@ -13,5 +14,8 @@ optional_depends "sdl"                   \
 optional_depends "arts"                  \
                  ""                      \
                  ""                      \
-                 "For ARTS support"
-
+                 "For ARTS support"      &&
+optional_depends "howl"                  \
+                 ""                      \
+                 "--disable-howl"        \
+                 "Required to build HOWL component"
