@@ -6,7 +6,6 @@
                        $OPTS                &&
   make                                      &&
   prepare_install                           &&
-  make    install                           &&
   cp  -p  mplayerplug-in.so                 \
   ${INSTALL_ROOT}/usr/lib/mozilla/plugins/
 
