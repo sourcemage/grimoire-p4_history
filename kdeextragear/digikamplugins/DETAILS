@@ -2,16 +2,13 @@
 if [ "$DEVEL" == "y" ];then
          VERSION=0.7.0beta1
              MD5=a321a2356b3e94297f241cbf5e4cd351
+else
+         VERSION=0.7.0-rc1
+             MD5=69cd9009a259268c41bec66a8598575f
+fi
          SPELLX=digikamimageplugins
           SOURCE=$SPELLX-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
-
-else
-         VERSION=0.6.2
-             MD5=3a42deb9b99e5e2b92cd65f5c231f05d
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-fi
        BUILD_API=2
    SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
         WEB_SITE=http://extragear.kde.org/apps/digikamimageplugins.php
