@@ -1,20 +1,19 @@
            SPELL=squirrelmail
-         VERSION=1.4.3-RC1
+         VERSION=1.4.3a
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp.dk.freebsd.org/pub/FreeBSD/ports/distfiles/$SOURCE
    SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[0]=e6b92640bc3bd82ad3c99aebf7d87894
+          MD5[0]=8f0b0166e43f752b7f1241f183035d2e
         WEB_SITE=http://www.squirrelmail.org
          ENTERED=20020309
          UPDATED=20020510
-      MAINTAINER=xavier@dospins.com
       LICENSE[0]=GPL
-           SHORT="Webmail package written in PHP4."
     MENU_ITEM[0]=${SPELL}
     MENU_EXEC[0]=${SPELL}
     MENU_DESC[0]=${SHORT}
+           SHORT="Webmail package written in PHP4."
 cat << EOF
 SquirrelMail is a standards-based webmail package written in PHP4.
 It includes built-in pure PHP support for the IMAP and SMTP protocols,
