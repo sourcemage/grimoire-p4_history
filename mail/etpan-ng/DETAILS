@@ -1,11 +1,11 @@
            SPELL=etpan-ng
 if [ "$CVS" = "y" ]; then
          VERSION=cvs
-          SOURCE=$SPELL-cvs.tar.bz2
+          SOURCE=etpan-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/libetpan:etpan-ng
           MD5[0]=IGNORE
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/etpan-cvs
 else
          VERSION=0.4
           SOURCE=$SPELL-$VERSION.tar.gz
