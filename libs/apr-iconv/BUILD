@@ -1,7 +1,6 @@
 (
 
   patch -p1 < $SCRIPT_DIRECTORY/Makefile.diff &&
-  patch -p1 < $SCRIPT_DIRECTORY/util.diff && # remove with Apache 2.0.47
 
   ./buildconf --with-apr=/usr/share/apache2 &&
 
