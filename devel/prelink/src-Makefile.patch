@@ -46,15 +46,6 @@
  	./$(DEPDIR)/conflict.Po ./$(DEPDIR)/crc32.Po \
  	./$(DEPDIR)/cxx.Po ./$(DEPDIR)/data.Po \
  	./$(DEPDIR)/doit.Po ./$(DEPDIR)/dso.Po \
-@@ -165,7 +153,7 @@
- CCLD = $(CC)
- LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
- 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
--CFLAGS = -march=athlon-xp -mmmx -mfpmath=sse -msse -m3dnow -O3
-+CFLAGS = -g -O2
- DIST_SOURCES = $(prelink_SOURCES)
- DIST_COMMON = Makefile.am Makefile.in
- SOURCES = $(prelink_SOURCES)
 @@ -218,18 +206,7 @@
  distclean-compile:
  	-rm -f *.tab.c
