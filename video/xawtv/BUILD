@@ -1,10 +1,8 @@
 (
 
-  cp  Makefile.in  Makefile.in.original
-  sed  "s/gzip/gzip -f/"  < Makefile.in.original > Makefile.in
+  sedit  "s/gzip/gzip -f/"  Makefile.in
 
- ./configure  --disable-alsa     \
-              --prefix=/usr      \
+ ./configure  --prefix=${INSTALL_ROOT}/usr  \
               ${OPTS}            &&
   make                           &&
   # Compile fonts
@@ -17,6 +15,6 @@
   # Install fonts
   cd  ${SOURCE2/.tar.bz2/}       &&
   install  -m  644  *.pcf.gz     \
-  /usr/X11R6/lib/X11/fonts/misc
+  ${INSTALL_ROOT}/usr/X11R6/lib/X11/fonts/misc
 
 ) > $C_FIFO 2>&1

@@ -1,12 +1,6 @@
 (
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               --with-libxml2        \
-               $OPTS                 && 
-  make                               &&
-  prepare_install                    &&
-  make    install                    &&
+  export OPTS="$OPTS --with-libxml2" &&
+  default_build
+  
 ) > $C_FIFO 2>&1

@@ -1,17 +1,16 @@
 (
 
-  echo  "Locating your Web server..."
+  if    [  -e  /etc/httpd/httpd.conf   ];  then
+    SPELL_ROOT=`grep  '^DocumentRoot'  /etc/httpd/httpd.conf   |  cut  -d\"  -f2`
+  elif  [  -e  /etc/httpsd/httpd.conf  ];  then
+    SPELL_ROOT=`grep  '^DocumentRoot'  /etc/httpsd/httpd.conf  |  cut  -d\"  -f2`
+  else
+    SPELL_ROOT=/usr/share
+  fi
 
-  for  SPELL_TEST  in  `find_providers  webserver`;  do
-    if  spell_installed  ${SPELL_TEST};  then
-      HTTPD_CONF_LOC=`gaze  install  ${SPELL_TEST}  |  grep  'httpd.conf$'`
-      DOC_ROOT=`grep  '^DocumentRoot'  ${HTTPD_CONF_LOC}  |  cut  -d\"  -f2`
-    fi
-  done
-
-  cd  ${SOURCE_DIRECTORY}             &&
-  prepare_install                     &&
-  mkdir  -p  ${DOC_ROOT}/phpMyAdmin   &&
-  cp  -r  *  ${DOC_ROOT}/phpMyAdmin/
+  cd  ${SOURCE_DIRECTORY}                            &&
+  prepare_install                                    &&
+  mkdir  -p  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}   &&
+  cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/
 
 ) > $C_FIFO 2>&1

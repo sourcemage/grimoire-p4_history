@@ -1,25 +1,24 @@
-# $Id: BUILD,v 1.1 2002/10/25 18:57:12 sergeyli Exp $
 (
 
 #  message "${MESSAGE_COLOR}Downloading the up-to-date source...${DEFAULT_COLOR}"
 #  svn export http://svn.collab.net/repos/svn/clients/rapidsvn/trunk . &&
 
-  patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
-
   ./autogen.sh &&
-  ./configure                       \
-    --build=$BUILD                  \
-    --prefix=/usr                   \
-    --sysconfdir=/etc               \
-    --localstatedir=/var            \
-    --with-svn-config=$(which svn-config) \
-    --with-svn-include=/usr/include \
+  ./configure \
+    --build=$BUILD \
+    --prefix=$INSTALL_ROOT/usr \
+    --sysconfdir=$INSTALL_ROOT/etc \
+    --localstatedir=$INSTALL_ROOT/var \
+    --with-apr-config=$(which apr-config) \
+    --with-apu-config=$(which apu-config) \
+    --with-svn-include=$INSTALL_ROOT/usr/include \
+    --with-svn-lib=$INSTALL_ROOT/usr/lib \
     --with-wx-config=$(which wx-config) \
-    $OPTS                           &&
-  make       &&
+    $OPTS &&
+  make &&
   make check &&
 
   prepare_install &&
-  cp -f rapidsvn /usr/bin
+  make install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

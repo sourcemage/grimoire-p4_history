@@ -1,12 +1,12 @@
 (
 
-  ./configure  --prefix=/usr                    \
-               --sysconfdir=/etc                \
-               --localstatedir=/var             \
-               --datadir=/usr                   \
+  ./configure  --prefix=${INSTALL_ROOT}/usr                    \
+               --sysconfdir=${INSTALL_ROOT}/etc                \
+               --localstatedir=${INSTALL_ROOT}/var             \
+               --datadir=${INSTALL_ROOT}/usr                   \
                $OPTS                            &&
 
-  sedit "s:prefix = /usr/local:prefix = /usr:" po/Makefile              &&
+  sedit "s:prefix = /usr/local:prefix = ${INSTALL_ROOT}/usr:" po/Makefile              &&
 
   make                                          &&
   prepare_install                               &&

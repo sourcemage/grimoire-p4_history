@@ -1,4 +1,3 @@
-# $Id: DETAILS,v 1.4 2002/10/23 18:55:15 sergeyli Exp $
            SPELL=MigrationTools
          VERSION=44
           SOURCE=$SPELL-$VERSION.tar.gz
@@ -6,11 +5,12 @@
       LICENSE[0]=
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.padl.com/pub/$SOURCE
+   SOURCE_URL[1]=http://www.padl.com/download/$SOURCE
         WEB_SITE=http://www.padl.com/OSS/MigrationTools.html
          ENTERED=20020421
          UPDATED=20020421
       MAINTAINER=sergeyli@pisem.net
-           SHORT="Scripts to migrate plain-text naming info into LDAP database"
+           SHORT='Scripts to migrate plain-text naming info into LDAP database'
 cat << EOF
 The MigrationTools are a freely distributed set of Perl scripts for
 migrating UNIX and NIS nameservice information to LDAP directories.

@@ -1,5 +1,5 @@
 if  !  grep  -q  "FORTRAN="  ${SPELL_CONFIG};  then
-  if  [  !  -x  /usr/bin/g77  ]
+  if  [  !  -x  ${INSTALL_ROOT}/usr/bin/g77  ]
   then
     message  "${PROBLEM_COLOR}You do _not_ have a Fortran 77 enabled compiler,"
     message  "please recompile gcc to support f77 and try again.${DEFAULT_COLOR}"

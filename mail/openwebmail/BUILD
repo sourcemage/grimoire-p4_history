@@ -78,7 +78,7 @@ chmod 660            /var/log/openwebmail.log							&&
 #
 # apply a patch to avoid DB error
 #
-patch $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl-DB.patch &&
+#patch $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl-DB.patch &&
 
 # Tune OWM defaults to SMGL style
 message "${MESSAGE_COLOR}Tuning OpenWebMail defaults to SMGL style... ${DEFAULTS_COLOR}"	&&
@@ -104,8 +104,8 @@ fi                                                                              
 message "${MESSAGE_COLOR}Initializing OpenWebmail... ${DEFAULT_COLOR}"                          &&
 $LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init $MAIL_OPT                                   &&
 
-mv "$LOC/htdocs/openwebmail/help/en/templates_and_data/version notes.txt" \
-    $LOC/htdocs/openwebmail/help/en/templates_and_data/version_notes.txt                        &&
+mv "$LOC/htdocs/openwebmail/help/fr/templates_and_data/version notes.txt" \
+    $LOC/htdocs/openwebmail/help/fr/templates_and_data/version_notes.txt                        &&
 
 # link index.html to the redirect page
 ln -sf redirect.html $LOC/htdocs/openwebmail/index.html

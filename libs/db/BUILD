@@ -1,4 +1,7 @@
 (
+  unpack $SOURCE2 ${MD5[1]}          &&
+  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
+
   sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/doc/db|' dist/Makefile.in &&
 
   if  [  -z  $JAVA_HOME  ]

@@ -1,7 +1,7 @@
 mconf()  {
 
   cat  <<  EOF
-options	snd	device_gid=29 device_mode=0660 cards_limit=2
+options	snd	device_mode=0777 cards_limit=2
 
 alias	char-major-116		snd
 alias	char-major-14		soundcore
@@ -30,10 +30,7 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
 (
 
-if  ! "cat  ${CFLAGS}|grep -q -mcpu"  = "-mcpu=pentium4"
-then
-  sedit  "s:\-O2:${CFLAGS}:"  configure
-fi
+ln -sf /bin/awk /usr/bin/awk &&
 
   modprobe  soundcore
   ./configure  --prefix=/usr         \
@@ -44,6 +41,14 @@ fi
                --with-debug=none     \
                --with-cards=$CARD,virmidi   \
                $OPTS                 &&
+
+  if  !  echo  ${CFLAGS}  |  grep -q "mcpu=pentium4" ;
+  then
+    export  CFLAGS=${CFLAGS/pentium4/i686}      &&
+    export  CXXFLAGS=${CXXFLAGS/pentium4/i686}  &&
+    sedit  's:pentium4:i686:' Makefile.conf
+  fi                                 &&
+
   make                               &&
   prepare_install
 
@@ -54,13 +59,21 @@ fi
   rm  -f   /dev/snd
   ln  -sf  /devices/snd  /dev/snd
   chown root.audio /dev/adsp
+  chmod  0777  /dev/adsp
   chown root.audio /dev/amidi
+  chmod  0777  /dev/amidi
   chown root.audio /dev/audio
+  chmod  0777  /dev/audio
   chown root.audio /dev/dsp
+  chmod  0777  /dev/dsp
   chown root.audio /dev/midi
+  chmod  0777  /dev/midi
   chown root.audio /dev/mixer
+  chmod  0777  /dev/mixer
   chown root.audio /dev/sequencer2
+  chmod  0777  /dev/sequencer2
   chown root.audio /dev/snd
+  chmod  0777  /dev/snd
   ln  -sf  ../init.d/alsasound  /etc/rcS.d/S99alsasound
  
   if  [  !  -f   /etc/modules.d/alsa  ];  then

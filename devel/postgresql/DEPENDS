@@ -16,4 +16,24 @@ optional_depends  "perl"              \
 optional_depends  "Python"              \
                   "--with-python"       \
                   "--without-python"    \
-                  "for python support"
+                  "for python support"  &&
+
+optional_depends  "Linux-PAM"      \
+                  "--with-pam"     \
+                  "--without-pam"  \
+                  "for PAM auth"   &&
+
+optional_depends  "krb5"                  \
+                  "--with-krb5"           \
+                  "--without-krb5"        \
+                  "for Kerberos support"  &&
+
+optional_depends  "unixODBC"                       \
+                  "--enable-odbc --with-unixodbc"  \
+                  "--without-unixodbc"             \
+                  "for unixODBC support"           &&
+
+optional_depends  "openssl"              \
+                  "--with-openssl"       \
+                  "--without-openssl"    \
+                  "for OpenSSL support"

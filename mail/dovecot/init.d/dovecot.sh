@@ -12,7 +12,7 @@ case $1 in
            loadproc dovecot -c /etc/dovecot.conf
            ;;
 
-    stop)  echo     "Stoping dovecot..."
+    stop)  echo     "Stopping dovecot..."
            killproc dovecot
            ;;
 

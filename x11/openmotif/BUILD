@@ -1,6 +1,6 @@
 (
 
-#  bzcat  $SCRIPT_DIRECTORY/Makefile.diff.bz2  |  patch  -p0  &&
+  bzcat  $SCRIPT_DIRECTORY/Makefile.diff.bz2  |  patch  -p0  &&
 
   ./configure  --build=$BUILD        \
                --prefix=/usr/X11R6   \

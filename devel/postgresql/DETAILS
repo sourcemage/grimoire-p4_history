@@ -1,17 +1,41 @@
            SPELL=postgresql
-         VERSION=7.3.2
+         VERSION=7.3.3
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.postgresql.org/ftpsite/v$VERSION/$SOURCE
-          MD5[0]=399333dff84fad5f880f28a72c9d1778
+      SOURCE_URI=v$VERSION/$SOURCE
+   SOURCE_URL[0]=http://www.postgresql.org/ftpsite/pub/$SOURCE_URI
+   SOURCE_URL[1]=ftp://ftp3.us.postgresql.org/pub/postgresql/$SOURCE_URI
+   SOURCE_URL[2]=ftp://ftp5.us.postgresql.org/pub/PostgreSQL/$SOURCE_URI
+   SOURCE_URL[3]=ftp://ftp8.us.postgresql.org/pub/pgsql/$SOURCE_URI
+   SOURCE_URL[4]=ftp://ftp9.us.postgresql.org/pub/mirrors/postgresql/$SOURCE_URI
+   SOURCE_URL[5]=ftp://ftp10.us.postgresql.org/pub/postgresql/$SOURCE_URI
+   SOURCE_URL[6]=ftp://ftp13.us.postgresql.org/mirror/postgresql/$SOURCE_URI
+   SOURCE_URL[7]=ftp://ftp15.us.postgresql.org/$SOURCE_URI
+          MD5[0]=29004ecf1d297a31963d6c44c183967f
       LICENSE[0]=BSD
-        WEB_SITE=http://www.postgresql.org
+        WEB_SITE=http://www.postgresql.org/
          ENTERED=20011113
-         UPDATED=20020922
-      MAINTAINER=nhudson@hiwaay.net
-           SHORT="postgresql is a sophisticated Object-Relational DBMS"
+         UPDATED=20030603
+           SHORT='PostgreSQL is a sophisticated Object-Relational DBMS'
 cat << EOF
 PostgreSQL is a sophisticated Object-Relational DBMS, supporting almost
 all SQL constructs, including subselects, transactions and user defined
 types and functions.
+A point list for some technical features that PostgreSQL offers:
+* Fully ACID compliant
+* ANSI SQL compliant
+* Referential Integrity
+* Replication (non-commercial and commercial solutions)
+* Native interfaces for ODBC, JDBC, C, C++, PHP, Perl, TCL, ECPG, Python, and Ruby
+* Rules, Views, Triggers, Outer Joins, Sub-selects, Sequences, Stored Procedures
+* Support for UNION, UNION ALL and EXCEPT queries
+* Unicode
+* Inheritance
+* An open API
+* Native SSL support, Native Kerberos authentication
+* Better than row-level locking, Functional and Partial indexes
+* Loadable extensions offering SHA1, MD5, XML, and other functionality
+* Tools for generating portable SQL to share with other SQL-compliant systems
+* Extensible data type system
+* Cross-database compatibility functions
 EOF

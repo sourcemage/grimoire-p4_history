@@ -1,13 +1,12 @@
 (
+  ./configure  --build=$BUILD        		    \
+               --prefix=${INSTALL_ROOT}/usr         \
+               --sysconfdir=${INSTALL_ROOT}/etc     \
+               --localstatedir=${INSTALL_ROOT}/var  \
+               $OPTS                 		    &&
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               $OPTS                 &&
-
-sedit "s/"cx"/"dx"/g" src/engine/i386.c
-sedit "s/penium/pentium/" src/engine/i386.c
+sedit "s/"cx"/"dx"/g" src/engine/i386.c	    &&
+sedit "s/penium/pentium/" src/engine/i386.c &&
 
 make  all                                   &&
 prepare_install                             &&

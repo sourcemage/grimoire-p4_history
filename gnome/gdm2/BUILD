@@ -12,20 +12,20 @@
 
   patch  -p 1  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch  &&
 
-  #default_build                      &&
+  #default_build                                     &&
 
   ./configure   --build=$BUILD       \
-                --prefix=/usr        \
-                --sysconfdir=/etc    \
-                --localstatedir=/var \
-                $OPTS                &&
+                --prefix=${INSTALL_ROOT}/usr        \
+                --sysconfdir=${INSTALL_ROOT}/etc    \
+                --localstatedir=${INSTALL_ROOT}/var \
+                $OPTS                               &&
 
   sedit 's#$(LINK)#$(LINK) $(LIBS)#' daemon/Makefile   &&
   make            &&
   prepare_install &&
   make install    &&
 
-  mkdir  -p           /var/gdm       &&
-  chown  -R  gdm:gdm  /var/gdm       &&
-  chmod  750          /var/gdm
+  mkdir  -p           ${INSTALL_ROOT}/var/gdm       &&
+  chown  -R  gdm:gdm  ${INSTALL_ROOT}/var/gdm       &&
+  chmod  750          ${INSTALL_ROOT}/var/gdm
 )  > $C_FIFO  2>&1

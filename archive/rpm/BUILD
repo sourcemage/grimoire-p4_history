@@ -1,6 +1,6 @@
 (
   export CFLAGS=${CFLAGS/\-z combreloc/} &&
-  configure --prefix=/usr &&
+  configure --prefix=${INSTALL_ROOT}/usr &&
   make             &&
   prepare_install  &&
   make    install

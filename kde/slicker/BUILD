@@ -3,10 +3,10 @@
   cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/slicker co slicker	&&
   cd $SOURCE_DIRECTORY				&&
   make -f Makefile.cvs				&&
-  ./configure  --prefix=/usr            \
-               --sysconfdir=/etc/ssh    \
+  ./configure  --prefix=${INSTALL_ROOT}/usr            \
+               --sysconfdir=${INSTALL_ROOT}/etc/ssh    \
                --with-md5-passwords     \
-               --mandir=/usr/share/man  \
+               --mandir=${INSTALL_ROOT}/usr/share/man  \
                $OPTS                    	&&
   make						&& 
   prepare_install				&&

@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # SMGL-script-version=20030224
-# SMGL-START:S 3 4 5:S90
+# SMGL-START:3 4 5:S90
 # SMGL-STOP:0 1 2 6:K10
 
 source /etc/init.d/functions

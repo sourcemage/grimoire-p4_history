@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.3
+         VERSION=0.4
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20030603
-	      MD5[0]=2b8b6d0910870ad536d95895ffd03ab8
+         UPDATED=20030604
+	      MD5[0]=6298a2af671b8e720639ad8f971fbde6
 	     LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -36,6 +36,9 @@ Guru experience:
 
   upspell					- This script updates a spell DETAILS and HISTORY. Just goes to 
   							  the spell's directory and run it... (by M.L.).
+
+  update_spell				- Typical parameters are "DETAILS -s -m -v 1.2.3", it only works 
+  							  on the first SOURCE for now. (from our old CVS repository)
 
 If you have more to contribute, mail to maintainer.
 

@@ -1,0 +1,5 @@
+#simple hack to remove old cache before it becomes a problem version will need to be updated as PREPARE doesn't know 
+#version
+if [ -f $INSTALL_CACHE/NVIDIA_headers-1.0-4363-$BUILD.tar.bz2 ] ;
+then rm -rf $INSTALL_CACHE/NVIDIA_headers-1.0-4363-$BUILD.tar.bz2
+fi

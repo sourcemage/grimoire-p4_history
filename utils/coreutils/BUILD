@@ -15,4 +15,38 @@
   prepare_install &&
   make    install
 
+# Move files as required by FHS
+  mkdir -p /bin &&
+  pushd /usr/bin &&
+  ./mv \
+    chgrp \
+    chmod \
+    chown \
+    cp \
+    dd \
+    df \
+    ln \
+    ls \
+    mkdir \
+    mknod \
+    mv \
+    rm \
+    rmdir \
+    sync \
+    date \
+    echo \
+    false \
+    groups \
+    pwd \
+    stty \
+    true \
+    uname \
+    hostname \
+    su \
+    cat \
+    head \
+    tail \
+    /bin/ &&
+  popd
+
 ) >$C_FIFO 2>&1

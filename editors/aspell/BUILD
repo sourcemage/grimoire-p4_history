@@ -1,4 +1,6 @@
 (
+  # Apply gcc 3.3 patch
+  bzcat  ${SOURCE_CACHE}/${SOURCE2}  |  patch -p1  &&
 
   # aspell cannot be compiled with "speedy"
   CFLAGS=`echo $CFLAGS | sed "s/-O3/-O2/"`  &&

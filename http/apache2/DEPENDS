@@ -1,7 +1,5 @@
-# Created 2002-10-05  by Eric Sandall <eric@sandall.us>
-#
-# No ./configure instructions in connection with PHP exist
-# in Apache 2, so optional dependency on PHP has been removed [SL].
+depends  apr       '--with-apr=/usr'       &&
+depends  apr-util  '--with-apr-util=/usr'  &&
 
 optional_depends  openssl               \
                   ' --enable-ssl'       \
@@ -13,7 +11,7 @@ optional_depends  db                                       \
                   '--disable-auth-db'                      \
                   'for DBM-based access databases support' &&
 
-optional_depends  openldap                                                                \
-                  ' --enable-auth-ldap  --enable-ldap    --with-auth-ldap    --with-ldap' \
-                  '--disable-auth-ldap --disable-ldap --without-auth-ldap --without-ldap' \
+optional_depends  openldap                                                        \
+                  '--enable-auth-ldap --enable-ldap --with-auth-ldap --with-ldap' \
+                  ''                                                              \
                   'for LDAP-based authentication'

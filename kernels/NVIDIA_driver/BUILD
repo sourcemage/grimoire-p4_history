@@ -12,6 +12,7 @@
   if [[ $AGPFW == "y" ]]; then sedit "s/NVreg_EnableAGPFW = 0;/NVreg_EnableAGPFW = 1;/" usr/src/nv/os-registry.c; fi &&
 
   prepare_install
+  export IGNORE_CC_MISMATCH=1
   make install
 
 ) > $C_FIFO 2>&1

@@ -1,76 +1,82 @@
-############################################################
-##  Select the options to enable.
-if  query  "Apply login prompt and login timeout patch? "  n;  then
-  LOGIN_PATCH="y"
-else
-  LOGIN_PATCH="n"
-fi
-echo  "LOGIN_PATCH=${LOGIN_PATCH}"  >>  ${SPELL_CONFIG}
-
-if  query  "Apply patch to execute the new_fax script for every new faxed received? "  y;  then
-  NEWFAX_PATCH="y"
-else
-  NEWFAX_PATCH="n"
-fi
-echo  "NEWFAX_PATCH=${NEWFAX_PATCH}"  >>  ${SPELL_CONFIG}
-
-if  query  "Setup mgetty to automatically start at boot? "  y;  then
-  MGETTY_BOOT="y"
-else
-  MGETTY_BOOT="n"
-fi
-echo  "MGETTY_BOOT=${MGETTY_BOOT}"  >>  ${SPELL_CONFIG}
-
-
-
-############################################################
-##  Select the run levels to start mgetty on.
-message  "${MESSAGE_COLOR}The following questions will setup the runlevel to start ${SPELL_COLOR}mgetty:${DEFAULT_COLOR}"
-if  query  "Start mgetty in runlevel 1? "  y;  then
-  RUN_LEVEL=1
-fi
-
-if  query  "Start mgetty in runlevel 2? "  y;  then
-  RUN_LEVEL=${RUN_LEVEL}2
-fi
-
-if  query  "Start mgetty in runlevel 3? "  y;  then
-  RUN_LEVEL=${RUN_LEVEL}3
-fi
-
-if  query  "Start mgetty in runlevel 4? "  y;  then
-  RUN_LEVEL=${RUN_LEVEL}4
-fi
-
-if  query  "Start mgetty in runlevel 5? "  y;  then
-  RUN_LEVEL=${RUN_LEVEL}5
-fi
-echo  "RUN_LEVEL=${RUN_LEVEL}"  >>  ${SPELL_CONFIG}
-
-
-
-############################################################
-##  Set the number of rings to answer on.
-message  "${MESSAGE_COLOR}Type in the number of rings to answer on (the default is 2):${DEFAULT_COLOR}"
-read  -t  ${PROMPT_DELAY}  -e
-NUM_RINGS=${REPLY:=2}
-echo  "NUM_RINGS=${NUM_RINGS}"  >>  ${SPELL_CONFIG}
-
-
-
-############################################################
-##  Set the TTY device to be used for mgetty.
-message  "${MESSAGE_COLOR}The following questions will setup the device to use ${SPELL_COLOR}mgetty${MESSAGE_COLOR} on:${DEFAULT_COLOR}"
-for  TTY_DEVICE  in  `ls  ${INSTALL_ROOT}/dev/ttyS*`;  do
-  if  query  "Use ${TTY_DEVICE} for the mgetty device? " n;  then
-    echo  "TTY_DEVICE=${TTY_DEVICE}"  >>  ${SPELL_CONFIG}
-    break
+if  !  grep  -q  'CONFIGURED=\"y\"'  ${DEPENDS_CONFIG}/mgetty;  then
+  ############################################################
+  ##  Select the options to enable.
+  if  query  "Apply login prompt and login timeout patch? "  n;  then
+    LOGIN_PATCH="y"
+  else
+    LOGIN_PATCH="n"
   fi
-done
+  echo  "LOGIN_PATCH=${LOGIN_PATCH}"  >>  ${SPELL_CONFIG}
+
+  if  query  "Apply patch to execute the new_fax script for every new faxed received? "  y;  then
+    NEWFAX_PATCH="y"
+  else
+    NEWFAX_PATCH="n"
+  fi
+  echo  "NEWFAX_PATCH=${NEWFAX_PATCH}"  >>  ${SPELL_CONFIG}
+
+  if  query  "Setup mgetty to automatically start at boot? "  y;  then
+    MGETTY_BOOT="y"
+  else
+    MGETTY_BOOT="n"
+  fi
+  echo  "MGETTY_BOOT=${MGETTY_BOOT}"  >>  ${SPELL_CONFIG}
 
 
 
-############################################################
-# Setup final /etc/inittab string
-INITTAB_STRING="'${TTY_DEVICE:8}:${RUN_LEVEL}:respawn:${INSTALL_ROOT}/usr/sbin/mgetty -n ${NUM_RINGS} ${TTY_DEVICE}'"
-echo  "INITTAB_STRING=${INITTAB_STRING}"  >>  ${SPELL_CONFIG}
+  ############################################################
+  ##  Select the run levels to start mgetty on.
+  message  "${MESSAGE_COLOR}The following questions will setup the runlevel to start ${SPELL_COLOR}mgetty:${DEFAULT_COLOR}"
+  if  query  "Start mgetty in runlevel 1? "  y;  then
+    RUN_LEVEL=1
+  fi
+
+  if  query  "Start mgetty in runlevel 2? "  y;  then
+    RUN_LEVEL=${RUN_LEVEL}2
+  fi
+
+  if  query  "Start mgetty in runlevel 3? "  y;  then
+    RUN_LEVEL=${RUN_LEVEL}3
+  fi
+
+  if  query  "Start mgetty in runlevel 4? "  y;  then
+    RUN_LEVEL=${RUN_LEVEL}4
+  fi
+
+  if  query  "Start mgetty in runlevel 5? "  y;  then
+    RUN_LEVEL=${RUN_LEVEL}5
+  fi
+  echo  "RUN_LEVEL=${RUN_LEVEL}"  >>  ${SPELL_CONFIG}
+
+
+
+  ############################################################
+  ##  Set the number of rings to answer on.
+  message  "${MESSAGE_COLOR}Type in the number of rings to answer on (the default is 2):${DEFAULT_COLOR}"
+  read  -t  ${PROMPT_DELAY}  -e
+  NUM_RINGS=${REPLY:=2}
+  echo  "NUM_RINGS=${NUM_RINGS}"  >>  ${SPELL_CONFIG}
+
+
+
+  ############################################################
+  ##  Set the TTY device to be used for mgetty.
+  message  "${MESSAGE_COLOR}The following questions will setup the device to use ${SPELL_COLOR}mgetty${MESSAGE_COLOR} on:${DEFAULT_COLOR}"
+  for  TTY_DEVICE  in  `ls  ${INSTALL_ROOT}/dev/ttyS*`;  do
+    if  query  "Use ${TTY_DEVICE} for the mgetty device? " n;  then
+      echo  "TTY_DEVICE=${TTY_DEVICE}"  >>  ${SPELL_CONFIG}
+      break
+    fi
+  done
+
+
+
+  ############################################################
+  # Setup final /etc/inittab string
+  INITTAB_STRING="'${TTY_DEVICE:8}:${RUN_LEVEL}:respawn:${INSTALL_ROOT}/usr/sbin/mgetty -n ${NUM_RINGS} ${TTY_DEVICE}'"
+  echo  "INITTAB_STRING=${INITTAB_STRING}"  >>  ${SPELL_CONFIG}
+
+
+
+  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+fi

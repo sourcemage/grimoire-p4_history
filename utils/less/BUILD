@@ -1,25 +1,24 @@
 (
 
-  ./configure  --build=$BUILD        \
-               --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
-               $OPTS                 &&
-  make                               &&
-  prepare_install
+  ./configure  --build=$BUILD        	\
+               --prefix=/usr         	\
+               --sysconfdir=/etc     	\
+               --localstatedir=/var 	\
+               $OPTS                 	&&
+  make                               	&&
 
-) > $C_FIFO 2>&1  &&  (
+  prepare_install			&&
 
-  cp        less          /bin
-  cp        lessecho      /usr/bin
-  cp        lesskey       /usr/bin
+  cp        less          /bin		&&	
+  cp        lessecho      /usr/bin	&&
+  cp        lesskey       /usr/bin	&&
 
-  mv        less.nro      less.1
-  gzip  -9  less.1
-  cp        less.1.gz     /usr/man/man1
+  mv        less.nro      less.1	&&
+  gzip  -9  less.1			&&
+  cp        less.1.gz     /usr/man/man1	&&
 
-  mv        lesskey.nro   lesskey.1
-  gzip  -9  lesskey.nro   lesskey.1
-  cp        lesskey.1.gz  /usr/man/man1
+  mv        lesskey.nro   lesskey.1	&&
+  gzip  -9  lesskey.1			&&
+  cp        lesskey.1.gz  /usr/man/man1	
 
-)
+) > $C_FIFO 2>&1

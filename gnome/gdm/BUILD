@@ -14,15 +14,15 @@
 
   patch  -p 0  <  $SCRIPT_DIRECTORY/gdm.patch  &&
 
-  ./configure  --prefix=/usr         \
-               --localstatedir=/var  \
-               --sysconfdir=/etc     \
-               $AUTH_SCHEME $OPTS    &&
-  make                               &&
-  prepare_install                    &&
-  make    install                    &&
-  mkdir  -p           /var/gdm       &&
-  chown  -R  gdm:gdm  /var/gdm       &&
-  chmod  750          /var/gdm
+  ./configure  --prefix=${INSTALL_ROOT}/usr         \
+               --localstatedir=${INSTALL_ROOT}/var  \
+               --sysconfdir=${INSTALL_ROOT}/etc     \
+               $AUTH_SCHEME $OPTS                   &&
+  make                                              &&
+  prepare_install                                   &&
+  make    install                                   &&
+  mkdir  -p           ${INSTALL_ROOT}/var/gdm       &&
+  chown  -R  gdm:gdm  ${INSTALL_ROOT}/var/gdm       &&
+  chmod  750          ${INSTALL_ROOT}/var/gdm
 
 ) > $C_FIFO 2>&1

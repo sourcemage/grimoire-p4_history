@@ -4,5 +4,4 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   else echo 'DB_OSO_DIRECT=y' >> $SPELL_CONFIG
   fi
   echo 'CONFIGURED=y' >> $SPELL_CONFIG
-  echo $SPELL_CONFIG
 fi

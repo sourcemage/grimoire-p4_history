@@ -1,3 +1,22 @@
+2003-06-14  Sergey Lipnevich  <sergey@sourcemage.org>
+
+		Incorporate portions of a patch by Robert Helgesson.
+		Now Apache 2 depends on APR and APU (apr-util), and
+		init scripts are improved.
+		Some formatting changes to the spell were also made.
+		Spell will check Apache configuration before stopping
+		and re/starting it.
+
+2003-06-13  Sergey Lipnevich  <sergey@sourcemage.org>
+
+		Remove erroneous LDAP-disablement instructions for `configure'.
+		Because LDAP is not a default module, this would produce correct results
+		in all cases. 
+
+2003-05-28  Sergey Lipnevich  <sergey@sourcemage.org>
+
+		Upgraded to 2.0.46.
+
 2003-05-01  Rob Verkuylen <rob@verkuylen.net>
 
 		Copied /init.d/apache.sh to /init.d/apache

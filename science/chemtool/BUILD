@@ -1,10 +1,10 @@
 (
 
-  mkdir /usr/share/mime-types
+  mkdir ${INSTALL_ROOT}/usr/share/mime-types
   
-  ./configure --prefix=/usr  $OPTS		&&
-  make             				&&
-  prepare_install  				&&
+  ./configure --prefix=${INSTALL_ROOT}/usr  $OPTS		&&
+  make             						&&
+  prepare_install  						&&
   make  install
 
 ) > $C_FIFO 2>&1

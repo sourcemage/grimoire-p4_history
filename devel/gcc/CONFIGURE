@@ -1,24 +1,24 @@
 if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
-  LANG="--enable-languages=c,c++"
+  FRONTENDS="--enable-languages=c,c++"
 
   if    query  "Enable Fortran 77 support?"  y
-  then  LANG="$LANG,f77"
+  then  FRONTENDS="$FRONTENDS,f77"
   fi
 
   if    query  "Enable Java support?"  y
-  then  LANG="$LANG,java"
+  then  FRONTENDS="$FRONTENDS,java"
   fi
 
   if    query  "Enable Objective C support?"  y
-  then  LANG="$LANG,objc"
+  then  FRONTENDS="$FRONTENDS,objc"
   fi
 
   if    query  "Install fixed includes (might cause problems)?"  n
   then  echo  'FIXEDINCLS="yes"'  >>  $SPELL_CONFIG
   fi
 
-  echo  LANG="$LANG"  >>  $SPELL_CONFIG
+  echo  FRONTENDS="$FRONTENDS"  >>  $SPELL_CONFIG
   echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
 
 fi

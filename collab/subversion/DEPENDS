@@ -1,11 +1,11 @@
-# $Id: DEPENDS,v 1.6 2002/12/11 16:57:15 sergeyli Exp $
-# Dependencies according to http://svn.collab.net/repos/svn/trunk/INSTALL
-
 requires webserver &&
 
 depends autoconf &&
 depends libtool &&
 depends bison &&
-depends neon '--with-neon=/usr' &&
+depends neon "--with-neon=$INSTALL_ROOT/usr" &&
 depends db '--with-berkeley-db' &&
-depends swig '--with-swig'
+optional_depends swig             \
+                 '--with-swig'    \
+                 '--without-swig' \
+                 'for generation of Python bindings with SWIG'

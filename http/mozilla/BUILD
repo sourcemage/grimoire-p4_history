@@ -1,124 +1,60 @@
+## @usage: make_crypto <1:target>
+function make_crypto() {
+  if echo "$OPTS" | grep -q 'enable-crypto'; then
+    message "Building crypto support, target: ${1:-default}..." &&
+    pushd security/manager && make $1 && popd
+  fi
+}
+
 (
-    
-  case $MOZILLA_MAIL  in
-  n|N)  OPTS="$OPTS --disable-mailnews"
-    ;;
-  esac &&
 
-  case $MOZILLA_CHAT  in
-  n|N)  OPTS="$OPTS --disable-chat"
-    ;;
-  esac &&
-
-  if [ "$MOZILLA_CALENDAR" == "y" ]; then
-    OPTS="$OPTS --enable-calendar"
-  fi &&
-
-  case $MOZILLA_JAVA  in
-  y|Y|j|J)  OPTS="$OPTS --enable-java-supplement"
-    ;;
-  esac &&
-
-  case $MOZILLA_SVG in
-  y|Y|j|J)
-    OPTS="$OPTS --enable-svg"         &&
-    export MOZ_INTERNAL_LIBART_LGPL=1
-    ;;
-  esac &&
-
-  case $MOZILLA_MATHML  in
-  n|N)  OPTS="$OPTS --disable-mathml"
-    ;;
-  esac &&
-
-  case $MOZILLA_XINERAMA  in
-  y|Y|j|J)  OPTS="$OPTS --enable-xinerama"
-    ;;
-  esac &&
-
-  # PSM is usually needed, so it will compile except when disabled explicitly
-  # This precaution is made for cases where CONFIGURE doesn't run for some reason
-  case $MOZILLA_CRYPTO in
-  n|N)
-    ;;
-  *)
-    OPTS="$OPTS --enable-crypto"
-    ;;
-  esac &&
-
-  case $MOZILLA_LDAP in
-  y|Y|j|J)
-    OPTS="$OPTS --enable-ldap"
-    ;;
-  esac &&
+  MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla &&
 
   if echo $CFLAGS | grep -q pentium4; then
     export CFLAGS="${CFLAGS/-O3/}"
   fi &&
 
-  ./configure                   \
-    --prefix=/usr               \
-    --with-x                    \
-    --with-pthreads             \
-    --enable-xft                \
-    --enable-reorder            \
-    --enable-strip              \
+  ./configure \
+    --prefix=$INSTALL_ROOT/usr \
+    --with-x \
+    --with-pthreads \
+    --enable-xft \
+    --enable-freetype2 \
+    --enable-reorder \
+    --enable-cpp-rtti \
+    --enable-strip \
     --enable-optimize="$CFLAGS" \
-    --disable-debug             \
-    --disable-tests             \
-    --disable-installer         \
-    $OPTS                       &&
-  make                          &&
+    --with-default-mozilla-five-home=$MOZILLA_HOME \
+    --enable-extensions=all${MOZILLA_EXT} \
+    --disable-debug \
+    --disable-tests \
+    --disable-installer \
+    $OPTS &&
 
-  case $MOZILLA_CRYPTO in
-  y|Y|j|J)
-    pushd security/manager &&
-    make                   &&
-    popd
-    ;;
-  esac &&
+# fix a problem of enigmail not compiling
+# because S/MIME IDL files are not exported
+  if ! make export; then
+    pushd mailnews/extensions/smime/public &&
+    make export &&
+    popd &&
+    make export
+  fi &&
 
-  case $MOZILLA_ENIGMAIL in
-  y|Y|j|J)
-    pushd extensions/ipc      && make && popd &&
-    pushd extensions/enigmail && make && popd
-    ;;
-  esac &&
+  make &&
+  make_crypto &&
 
-  prepare_install
+  prepare_install &&
 
-) > $C_FIFO 2>&1 && (
+# everything coming into /usr/lib/mozilla-$VERSION/
+# must actually go to /usr/lib/mozilla/
+  mkdir -p $MOZILLA_HOME &&
+  ln -fns $MOZILLA_HOME $MOZILLA_HOME-$VERSION &&
+  mkdir -p /usr/share/idl/mozilla &&
+  ln -fns /usr/share/idl/mozilla /usr/share/idl/mozilla-$VERSION &&
+  mkdir -p /usr/include/mozilla &&
+  ln -fns /usr/include/mozilla /usr/include/mozilla-$VERSION &&
 
-  rm     -f                          /usr/lib/mozilla/component.reg
-  mkdir  -p                          /usr/lib/mozilla
-  cp     -rL  dist/bin/*             /usr/lib/mozilla/
-  mkdir  -p                          /usr/include/mozilla
-  cp     -rL  dist/include/*         /usr/include/mozilla/
-  mkdir  -p                          /usr/include/moznss
-  cp     -L   dist/public/security/* /usr/include/moznss/
+  make install &&
+  make_crypto install
 
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-gtkmozembed.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-js.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-nspr.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-nss.pc
-  sedit "s/mozilla-$VERSION/mozilla/g" build/unix/mozilla-xpcom.pc
-  cp build/unix/*.pc /usr/lib/pkgconfig/
-
-  for  library  in  /usr/lib/mozilla/*.so;  do 
-    libname=`basename  $library`
-    ln  -sf  mozilla/$libname /usr/lib/$libname
-  done
-
-  cp  $SCRIPT_DIRECTORY/mozilla  /usr/bin/mozilla
-
-  export  MOZILLA_FIVE_HOME=/usr/lib/mozilla
-  export    LD_LIBRARY_PATH=/usr/lib/mozilla:$LD_LIBRARY_PATH
-
-         /usr/lib/mozilla/regxpcom
-         /usr/lib/mozilla/regchrome
-  touch  /usr/lib/mozilla/chrome/user-skins.rdf
-  touch  /usr/lib/mozilla/chrome/user-locales.rdf
-
-  mkdir  -p /usr/lib/mozilla/plugins
-
-)
+) >$C_FIFO 2>&1

@@ -6,14 +6,16 @@
                --host=$BUILD            \
                --prefix=/usr            \
                --enable-threads=posix   \
-               $LANG                    \
-	       $OPTS                        &&
+	       --enable-__cxa_atexit    \
+               $FRONTENDS               \
+	       $OPTS                    &&
 
   make  bootstrap                       &&
   prepare_install                       && 
 
   if  [  -z  "$FIXEDINCLS"  ]
-  then  make  install-no-fixedincludes
+  then  make  install-no-fixedincludes  &&
+        cp  -a  $SOURCE_DIRECTORY/libobjc/objc  /usr/lib/gcc-lib/$BUILD/$VERSION/include
   else  make  install
   fi                                    &&
 

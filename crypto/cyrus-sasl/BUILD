@@ -1,7 +1,7 @@
 (
 
   if [ "$SASLAUTHD" == "y" ]; then
-    OPTS="$OPTS --with-saslauthd=/var/state/saslauthd"
+    OPTS="$OPTS --with-saslauthd=/var/run/saslauthd"
   elif [ "$SASLDB" == "y" ]; then
     OPTS="$OPTS --with-dbpath=/etc/sasldb"
   fi &&
@@ -35,7 +35,7 @@
 ) > $C_FIFO 2>&1 && (
 
   if [ "$SASLAUTHD" == "y" ]; then
-    mkdir -p --mode=700 /var/state/saslauthd
+    mkdir -p --mode=700 /var/run/saslauthd
   elif [ "$SASLDB" == "y" ]; then
     mkdir -p --mode=700 /etc/sasldb
   fi

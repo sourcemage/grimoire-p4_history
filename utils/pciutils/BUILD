@@ -1,12 +1,14 @@
 (
 
+  cd  lib                                &&
+  ./configure /usr/share                 &&
+  cd  ..                                 &&
   make                                   &&
   prepare_install                        &&
 
   make  PREFIX=/usr  ROOT=/usr  install  &&
 
   cd  lib                                &&
-  ./configure                            &&
   make                                   &&
 
   mkdir  -p        /usr/include/pci      &&

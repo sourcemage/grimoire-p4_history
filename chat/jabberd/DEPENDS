@@ -1,0 +1,15 @@
+depends db "--with-berkeley-db=$INSTALL_ROOT/usr" &&
+depends cyrus-sasl "--with-cyrus-sasl=$INSTALL_ROOT/usr" &&
+
+optional_depends libiconv \
+                 "--with-libiconv-prefix=$INSTALL_ROOT/usr" \
+                 '--without-libiconv-prefix' \
+                 'for i18n support' &&
+optional_depends openssl \
+                 "--with-openssl=$INSTALL_ROOT/usr" \
+                 '--without-openssl' \
+                 'for encrypted communication support' &&
+optional_depends openldap \
+                 "--with-openldap=$INSTALL_ROOT/usr" \
+                 '--without-openldap' \
+                 'for LDAP-based user directory support'

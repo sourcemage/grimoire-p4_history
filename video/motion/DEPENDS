@@ -1,4 +1,6 @@
 depends  autoconf  &&
+depends  jpeg      &&
 if  [  "$FFMPEG"  =  "y"  ];  then
   requires libavcodec
-fi
+fi  &&
+optional_depends  "curl"  ""  ""  "to access Axis network cameras"

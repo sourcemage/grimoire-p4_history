@@ -1,17 +1,17 @@
            SPELL=libgnomecanvas
-         VERSION=2.2.0.2
+         VERSION=2.2.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="5710485a63e39fd9427f8d2faaedf76f"
+          MD5[0]="2920c5baead1f73818e99b3b7a80c169"
         WEB_SITE=http://www.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
          ENTERED=20020509
-         UPDATED=20030227
+         UPDATED=20030524
            SHORT="This is the GNOME Canvas library"
 cat << EOF
 This is the GNOME Canvas, a widget for advanced drawing and rendering.
