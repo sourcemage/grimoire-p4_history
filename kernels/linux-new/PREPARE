@@ -686,7 +686,7 @@ create_details()
 				echo 'TXTMESSAGE="${TXTMESSAGE}${txtmessage} "'
 				counter="`expr $counter + 1`"
 			done
-			if [[ $appliedkernels ]]
+			if [[ "$appliedkernels" != "" && "$patchversion" != "" ]]
 			then
 				kver="appliedkernels"
 			fi
