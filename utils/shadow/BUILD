@@ -16,6 +16,9 @@
   # Bug #4008
   patch  -p1  <  ${SCRIPT_DIRECTORY}/su.patch  &&
 
+  # change MD5_CRYPT_ENAB  to yes
+  sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" etc/login.defs.linux &&
+
   ./configure  --build=$BUILD        \
                --prefix=${INSTALL_ROOT}/usr         \
                --sysconfdir=${INSTALL_ROOT}/etc     \
