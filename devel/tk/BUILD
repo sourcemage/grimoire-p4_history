@@ -7,6 +7,8 @@
   prepare_install                    &&
   make    install                    &&
 
+  ln  -sf  wish8.4  /usr/bin/wish    &&
+
   cd  /                              &&
   rm_source_dir  $SOURCE2_DIRECTORY
 

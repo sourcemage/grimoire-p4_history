@@ -7,7 +7,7 @@
                --prefix=/usr            \
                --enable-threads=posix   \
                $LANG                    \
-	       $OPTS			&&
+	       $OPTS                        &&
 
   make  bootstrap                       &&
   prepare_install                       && 
