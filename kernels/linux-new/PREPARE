@@ -627,34 +627,9 @@ calculate_depends()
 		(
 		echo "all: $new_patches_list"
 		echo ""
-		for patch in $new_patches_list
+		for i in $new_patches_list
 		do
-			depends=""
-			case "$patch" in
-				LATEST*)
-					. ${patchesdir}/*/${!patch}
-					;;
-				*)
-					. ${patchesdir}/*/${patch}
-					;;
-			esac
-			if [[ "${depends}" == "" ]] 
-			then
-				echo "${patch}:"
-				echo "	echo -n \"${patch} \""
-				echo ""
-			else
-				echo "${patch}: ${depends}"
-				echo "	echo -n \"${patch} \""
-				echo ""
-				dependslist="${dependslist}${depends} "
-			fi
-		done
-		for depends in $dependslist
-		do
-			echo "$depends:"
-			echo "	echo -n \"$depends \""
-			echo ""
+			rec_dep_make $i
 		done
 		) > $dependsmakefile
 		# this doesn't work with persistent vars don't know why?
@@ -663,6 +638,29 @@ calculate_depends()
 	fi
 }
 
+rec_dep_make()
+{
+	depends=""
+	case "$1" in
+		LATEST*)
+			. ${patchesdir}/*/${!1}
+			;;
+		*)
+			. ${patchesdir}/*/${1}
+			;;
+	esac
+	if [[ "${depends}" == "" ]] 
+	then
+		echo "${1}:"
+		echo "	echo -n \"${1} \""
+		echo ""
+	else
+		echo "${1}: ${depends}"
+		echo "	echo -n \"${1} \""
+		echo ""
+		rec_dep_make ${depends}
+	fi
+}
 
 # created details.defaults file to be sourced by DETAILS file for VERSION SOURCE_URL SOURCE
 # stuff like that
@@ -680,10 +678,6 @@ create_details()
 			echo 'TXTMESSAGE=""'
 			for patch in $patches
 			do
-				if [ "$depends" != "" ]
-				then
-					patch=$depends
-				fi
 				case "$patch" in
 					LATEST*)
 						. $patchesdir/*/${!patch}
