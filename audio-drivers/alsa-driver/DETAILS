@@ -3,13 +3,14 @@
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.alsa-project.org/pub/driver/$SOURCE
-          MD5[0]=33f1f449e4d267c8ffabac37d3951344
+          MD5[0]=397ec3917e1049688516593672ef355b
         WEB_SITE=http://www.alsa-project.org/
          ENTERED=20010922
          UPDATED=20040108
          ARCHIVE="off"
       LICENSE[0]=GPL
       MAINTAINER=unet@sourcemage.org
+      MAKE_NJOBS=1
            SHORT="ALSA drivers are sound drivers from the Advanced Linux Sound Architecture project."
 cat << EOF
 From http://www.alsa-project.org/intro.php3
