@@ -1,3 +1,13 @@
+2004-08-26 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 1.1.9  (Bug #7226)
+	  Added BUILD_API=2
+	  Shortened SHORT
+	  Use config_query response
+	* PREPARE: Converted to config_query
+	* BUILD: Use config_query response
+	* DEPENDS: Use config_query response
+	  Formatted to Guru Handbook
+
 2004-06-04 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: 1.1.9rc1
 	  BUILD_API=2
@@ -16,7 +26,8 @@
 	  so it compiles on kernel 2.6
 
 2004-01-13 hgg <hgreig@bigpond.net.au>
-	* DETAILS,DEPENDS: change from conditional [ "$CVS" = "*" ] to if ... else ... fi. Devel sorcery broke on
+	* DETAILS,DEPENDS: change from conditional [ "$CVS" = "*" ] to if ...
+	  else ... fi. Devel sorcery broke on
 	  DEPENDS using conditionals bug 5466
 
 2004-01-11 Arwed v. Merkatz <v.merkatz@gmx.net>
@@ -24,9 +35,10 @@
 	  compilation on 2.6
 
 2004-01-08 hgg <hgreig@bigpond.net.au>
-	* ALL: unfortunately HISTORY has no entry for this, but CONFLICTS and PROVIDES were added 
-	  when Jose copied this spell into a -cvs version. I am now merging this -cvs spell 
-	  into the regular to reduce unneccessary overheads.
+	* ALL: unfortunately HISTORY has no entry for this, but CONFLICTS and
+	  PROVIDES were added when Jose copied this spell into a -cvs version.
+	  I am now merging this -cvs spell into the regular to reduce
+	  unneccessary overheads.
 
 2003-11-11 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: added sedit to disable gtkmm/gnomemm frontends as they don't
@@ -72,6 +84,6 @@
 2002-03-15 Gabriel Devenyi <ace118@hotmail.com>
 	* DEPENDS: Submitted modification to DEPENDS making gnome an optional
 	  dependency.
-	  Now non-gnome users can use cdrdao without installing gnome (however in
-	  that case GnomeCD won't be built).
+	  Now non-gnome users can use cdrdao without installing gnome (however
+	  in that case GnomeCD won't be built).
 
