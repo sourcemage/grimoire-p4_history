@@ -1,23 +1,53 @@
-  cp  $SCRIPT_DIRECTORY/FILES/jed.rc lib  &&
+cp  ${SCRIPT_DIRECTORY}/FILES/jed.rc lib  &&
 
-  # enable antialiasing support
-  sedit  's:#XRENDERFONTLIBS:XRENDERFONTLIBS:'  src/Makefile.in
+# src/gpmmouse.c contains an error: function jed_insert_chars was
+# replace by jed_insert_nbytes for UTF-8 reasons
+sed -i 's/jed_insert_chars/jed_insert_nbytes/g' ${SOURCE_DIRECTORY}/src/gpmmouse.c &&
 
-  # Fix slang location ( Bug # 1533)
-  sedit  's:@SLANG_INC@:-I/usr/include:'  \
-    src/Makefile.in                       &&
-  sedit  's:@SLANG_LIB@:-L/usr/lib:'      \
-    src/Makefile.in                       &&
+#check optional depends: optional dependencies do not use the
+#$OPTS in configure-script, but require edit of Makefile
 
-  JED_ROOT=/var/lib/jed                   &&
+#gpm section
+if echo "${OPTS}" | grep -q "useGPM"
+then
+        OPTS=`echo ${OPTS} | sed -e 's/useGPM//g'`                                    &&
+        USE_GPM="true"
+fi      &&
 
-  ./configure  --build=$BUILD             \
-               --prefix=/usr              \
-               --sysconfdir=/etc          \
-               --localstatedir=/var       \
-               $OPTS                      &&
-  make                                    &&
-  make  getmail		                     &&
-  if    spell_installed xfree86  ;  then
-    make xjed
-  fi
+#xjed section
+if echo "${OPTS}" | grep -q "useX"
+then
+        OPTS=`echo ${OPTS} | sed -e 's/useX//g'`                &&
+        USE_X="true"
+fi
+
+./configure  --build=$BUILD             \
+       --prefix=/usr                    \
+       --sysconfdir=/etc                \
+       --localstatedir=/var             \
+       $OPTS                            &&
+
+#set jed_root to /usr/share/jed
+sed -i 's/JED_ROOT\ =\ \/usr\/jed/JED_ROOT\ =\ \/usr\/share\/jed/g' ${SOURCE_DIRECTORY}/src/Makefile &&
+       
+if USE_GPM==true
+then
+        sed -i 's/#MOUSEFLAGS/MOUSEFLAGS/g' ${SOURCE_DIRECTORY}/src/Makefile       &&
+        sed -i 's/#MOUSELIB/MOUSELIB/g' ${SOURCE_DIRECTORY}/src/Makefile           &&
+        sed -i 's/#GPMMOUSEO/GPMMOUSEO/g' ${SOURCE_DIRECTORY}/src/Makefile         &&
+        sed -i 's/#OBJGPM/OBJGPM/g' ${SOURCE_DIRECTORY}/src/Makefile
+fi                                      &&
+if USE_X==true
+then
+        # enable antialiasing support                                                   &&
+        sed -i 's/#XRENDERFONTLIBS/XRENDERFONTLIBS/g' ${SOURCE_DIRECTORY}/src/Makefile
+fi                                      &&
+make clean                              &&
+make                                    &&
+make  getmail		                &&
+
+#build xjed
+if USE_X==true
+then
+        make xjed
+fi
