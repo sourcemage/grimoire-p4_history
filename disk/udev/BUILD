@@ -2,13 +2,15 @@ patch  -p1  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 
 sedit "s:prefix =:prefix = ${INSTALL_ROOT}:" Makefile   &&
 IR=`echo $INSTALL_ROOT | sed 's/\\//\\\\\\//g'`         &&
-sed "s/^exec_prefix.*$/exec_prefix = $IR/" -i Makefile  &&
+sedit "s/^exec_prefix.*$/exec_prefix = $IR/" Makefile   &&
+sedit "s/^V=false$/V=true/" Makefile                    &&
 
-if [ "${UDEV_SELINUX}" == "y" ]; then
-sed "s/^USE_SELINUX = false/USE_SELINUX = true/" -i Makefile
-fi
-if [ "${UDEV_LOG}" == "n" ]; then
-sed "s/^USE_LOG = true/USE_LOG = false/" -i Makefile
+if ( echo ${OPTS} |grep -q UDEV_SELINUX ); then
+sedit "s/^USE_SELINUX = false/USE_SELINUX = true/" Makefile
+fi &&
+
+if ( echo ${OPTS} |grep -q UDEV_SYSLOG ); then
+sedit "s/^USE_LOG = true/USE_LOG = false/" Makefile
 fi
 
 make

@@ -11,9 +11,6 @@
   if [ ! -f ${UDEV_CFG}/udev.conf ]; then
     cp $SCRIPT_DIRECTORY/udev.conf  ${UDEV_CFG}
   fi  &&
-  if [ ! -f ${UDEV_CFG}/udev.permissions ]; then
-    cp $SCRIPT_DIRECTORY/udev.permissions  ${UDEV_CFG}
-  fi  &&
   if [ ! -f ${UDEV_CFG}/udev.rules ]; then
     cp $SCRIPT_DIRECTORY/udev.rules  ${UDEV_CFG}
   fi  &&
