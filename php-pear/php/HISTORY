@@ -1,3 +1,34 @@
+2004-08-24 Eric Sandall <eric@sandall.us>
+	* BUILD: Use config_query responses
+	  Removed httpd.conf fix, doesn't work anymore
+	* DEPENDS: Use config_query responses
+	  Formatted to Guru Handbook
+	* CONFIGURE: Converted to config_query
+	* INSTALL: Cleanup
+	* FINAL, POST_REMOVE: called php5 not php4 now
+	* FINAL: Remove references to php4 from http{,s}d.conf
+	  INSTALL_LOG logic to fix httpd.conf is broken, removed
+	  Comment out AddModule php5.c as it breaks apache2
+	* PRE_REMOVE, POST_REMOVE: installwatch is not run in either of these
+	  Backup and restore httpd.conf
+
+2004-08-16 Jason Flatt <jflatt@sourcemage.org>
+	* BUILD: Removed extra "&&" on the last line.
+
+2004-08-03 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Sablot renamed to sablot
+
+2004-07-23 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 5.0.0
+	  Shortened SHORT
+	  BUILD_API=2
+	* BUILD: Converted to BUILD_API 2
+	* INSTALL: Added
+	* POST_INSTALL: Renamed to FINAL
+	  Removed
+	* PROVIDES: "provides  PHP"
+	* WIP: Still needs work/testing
+
 2004-07-13 Seth Woolley <seth@tautology.org>
 	* DETAILS: Updated to 4.3.8
 
