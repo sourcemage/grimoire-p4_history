@@ -12,6 +12,10 @@ PROVIDES=mta
 
 .  /etc/init.d/smgl_functions
 
+# Used to get around some problems this script has w/simpleinit-msb:
+# (See http://bugs.sourcemage.org/show_bug.cgi?id=4535 for details.)
+unset  -f  echo
+
 prefix="/usr"
 exec_prefix="/usr/bin"
 sbindir="/usr/sbin"
@@ -27,11 +31,10 @@ case  "$1"  in
 #		touch  /var/lock/subsys/courier
 		touch  /var/lock/courier
 
-		builtin  echo  -n  "Starting Courier mail server:"
+		echo  -n  "Starting Courier mail server:"
 
 		# First time after install create aliases.dat and makesmtpaccess.dat
 
-## This line errors during execution
 		test  -f  ${sysconfdir}/aliases.dat  ||  ${sbindir}/makealiases
 
 		esmtpdcert=0
@@ -44,7 +47,6 @@ case  "$1"  in
 				;;
 		esac
 
-## This line errors during execution
 		test  -f  ${sysconfdir}/${ACCESSFILE}.dat  ||  ${sbindir}/makesmtpaccess
 
 		.  ${sysconfdir}/esmtpd-msa
@@ -55,20 +57,19 @@ case  "$1"  in
 				;;
 		esac
 
-## This line errors during execution
 		test  -f  ${sysconfdir}/${ACCESSFILE}.dat  ||  ${sbindir}/makesmtpaccess-msa
 
 		${sbindir}/courierfilter  start
-		builtin  echo  -n  " courierfilter"
+		echo  -n  " courierfilter"
 
 		if  test  -x  ${libexecdir}/authlib/authdaemond;  then
 			${libexecdir}/authlib/authdaemond  start
-			builtin  echo  -n  " authdaemond"
+			echo  -n  " authdaemond"
 		fi
 
 		if  test  -x  ${sbindir}/courierldapaliasd;  then
 			${sbindir}/courierldapaliasd  start
-			builtin  echo  -n  " courierldapaliasd"
+			echo  -n  " courierldapaliasd"
 		fi
 
 		case  "`cat  ${sysconfdir}/calendarmode  2>/dev/null`"  in
@@ -77,20 +78,20 @@ case  "$1"  in
 					${libexecdir}/courier/pcpd  start
 				fi
 
-				builtin  echo  -n  " pcpd"
+				echo  -n  " pcpd"
 				;;
 			*)
 				;;
 		esac
 
 		${sbindir}/courier  start
-		builtin  echo  -n  " courierd"
+		echo  -n  " courierd"
 
 		if  test  "$esmtpdcert"  =  1;  then
 			# If we do not have a certificate, make one up.
 			if  test  !  -f  ${datadir}/esmtpd.pem;  then
 				if  test  -x  $COURIERTLS;  then
-					builtin  echo  -n  " generating-ESMTP-SSL-certificate..."
+					echo  -n  " generating-ESMTP-SSL-certificate..."
 					${sbindir}/mkesmtpdcert  >/dev/null  2>&1
 				fi
 			fi
@@ -100,7 +101,7 @@ case  "$1"  in
 		case  x$ESMTPDSTART  in
 			x[yY]*)
 				${sbindir}/esmtpd  start
-				builtin  echo  -n  " esmtpd"
+				echo  -n  " esmtpd"
 				;;
 		esac
 
@@ -109,7 +110,7 @@ case  "$1"  in
 		case  x$ESMTPDSTART  in
 			x[yY]*)
 				${sbindir}/esmtpd-msa  start
-				builtin  echo  -n  " esmtpd-msa"
+				echo  -n  " esmtpd-msa"
 				;;
 		esac
 
@@ -124,7 +125,7 @@ case  "$1"  in
 			case  x$POP3DSTART  in
 				x[yY]*)
 					${sbindir}/pop3d  start
-					builtin  echo  -n  " pop3d"
+					echo  -n  " pop3d"
 					;;
 			esac
 
@@ -137,12 +138,12 @@ case  "$1"  in
 					if  test  -x  $COURIERTLS;  then
 						# If we do not have a certificate, make one up.
 						if  test  !  -f  ${datadir}/pop3d.pem;  then
-							builtin  echo  -n  " generating-POP3-SSL-certificate..."
+							echo  -n  " generating-POP3-SSL-certificate..."
 							${sbindir}/mkpop3dcert  >/dev/null  2>&1
 						fi
 
 						${sbindir}/pop3d-ssl  start  &&  \
-						builtin  echo  -n  " pop3d-ssl"
+						echo  -n  " pop3d-ssl"
 					fi
 					;;
 			esac
@@ -154,7 +155,7 @@ case  "$1"  in
 			case  x$IMAPDSTART  in
 				x[yY]*)
 					${sbindir}/imapd  start
-					builtin  echo  -n  " imapd"
+					echo  -n  " imapd"
 					;;
 			esac
 
@@ -165,12 +166,12 @@ case  "$1"  in
 					if  test  -x  $COURIERTLS;  then
 						# If we do not have a certificate, make one up.
 						if  test  !  -f  ${datadir}/imapd.pem;  then
-							builtin  echo  -n  " generating-IMAP-SSL-certificate..."
+							echo  -n  " generating-IMAP-SSL-certificate..."
 							${sbindir}/mkimapdcert >/dev/null 2>&1
 						fi
 
 						${sbindir}/imapd-ssl  start  &&  \
-						builtin  echo  -n  " imapd-ssl"
+						echo  -n  " imapd-ssl"
 					fi
 					;;
 			esac
@@ -185,51 +186,50 @@ case  "$1"  in
 
 		if  test  -x  ${sbindir}/imapd;  then
 			${sbindir}/imapd  stop
-			builtin  echo  -n  " imapd"
+			echo  -n  " imapd"
 		fi
 
 		if  test  -x  ${sbindir}/imapd-ssl;  then
 			${sbindir}/imapd-ssl  stop
-			builtin  echo  -n  " imapd-ssl"
+			echo  -n  " imapd-ssl"
 		fi
 
 		${sbindir}/esmtpd-msa  stop
-		builtin  echo  -n  " esmtpd-msa"
+		echo  -n  " esmtpd-msa"
 
 		${sbindir}/esmtpd  stop
-		builtin  echo  -n  " esmtpd"
+		echo  -n  " esmtpd"
 
 		if  test  -x  ${sbindir}/pop3d;  then
 			${sbindir}/pop3d  stop
-			builtin  echo  -n  " pop3d"
+			echo  -n  " pop3d"
 		fi
 
 		if  test  -x  ${sbindir}/pop3d-ssl;  then
 			${sbindir}/pop3d-ssl  stop
-			builtin  echo  -n  " pop3d-ssl"
+			echo  -n  " pop3d-ssl"
 		fi
 
 		${sbindir}/courier  stop
-		builtin  echo  -n  " courierd"
+		echo  -n  " courierd"
 
 		if  test  -x  ${sbindir}/courierldapaliasd;  then
 			${sbindir}/courierldapaliasd  stop
-			builtin  echo  -n  " courierldapaliasd"
+			echo  -n  " courierldapaliasd"
 		fi
 
-## These lines error during execution
-		if  test  -x  ${libexecdir}/courier/pcpd  stop;  then
+		if  test  -x  ${libexecdir}/courier/pcpd;  then
 			${libexecdir}/courier/pcpd  stop
-			builtin  echo  -n  " pcpd"
+			echo  -n  " pcpd"
 		fi
 
 		if  test  -x  ${libexecdir}/authlib/authdaemond;  then
 			${libexecdir}/authlib/authdaemond  stop
-			builtin  echo  -n  " authdaemond"
+			echo  -n  " authdaemond"
 		fi
 
 		${sbindir}/courierfilter  stop
-		builtin  echo " courierfilter"
+		echo " courierfilter"
 
 		exit  0
 		;;
