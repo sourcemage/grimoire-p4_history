@@ -3,12 +3,23 @@
   export    CFLAGS="${CFLAGS/-funroll-loops//} -O3"
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops//} -O3"
 
+  sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
   ./configure  --prefix=${INSTALL_ROOT}/usr  \
                --enable-shared               \
+               --enable-shared-pp            \
                $OPTS                         &&
+  cd  libavcodec/libpostproc  &&
+  make                        &&
+  cd  $SOURCE_DIRECTORY       &&
   make                        &&
   prepare_install             &&
   make    install             &&
+  (
+    cd  libavcodec/libpostproc  &&
+    make  install               &&
+    install  -m  644 postprocess_internal.h  \
+                 ${INSTALL_ROOT}/usr/include/postproc
+  )  &&
   
   if    [  !  -f               ${INSTALL_ROOT}/etc/ffserver.conf  ]
   then  cp  doc/ffserver.conf  ${INSTALL_ROOT}/etc/ffserver.conf

@@ -10,7 +10,11 @@ optional_depends  "libvorbis"        \
                   "--enable-vorbis"  \
                   ""                 \
                   "for ogg/vorbis support"  &&
-optional_depends  "imlib2"           \
-                  ""                 \
-                  ""                 \
+optional_depends  "faad2"          \
+                  "--enable-faad"  \
+                  ""               \
+                  "for AAC audio support"  &&
+optional_depends  "imlib2"         \
+                  ""               \
+                  ""               \
                   "for imlib2 support"
