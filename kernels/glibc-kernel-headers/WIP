@@ -1,0 +1,10 @@
+2004-01-29 hgg 
+	* headers from 2.4.24 or 2.6.1 ,both vanilla ,both with autoconf.h config.h guts removed.
+	 both with "#error blablabla: added to autoconf.h and modversions.h so kernel modules will positively fail 
+	if they incorrectly use them instead of headers from the source tree.
+	* 2.6.1 patched with arwed's and my patch from glibc spell. That patch actually removes an ifdef __KERNEL__ ... #endif
+	from list.h so some of the common stuff is available for other headers to use. THis is not perfect but does 
+	solve the fb.h problems. other problems wtill need solving.
+	* I would appreciate someone with actual coding skills looking at the last part of BUILD and the 
+	corresponding define in config.h, 2.4 kernels didn't have a reliance on a value for this but I don't know 
+	enough to fix this any other way.

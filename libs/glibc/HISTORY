@@ -1,3 +1,13 @@
+2004-01-20 hgg <hgreig@bigpond.net.au>
+	* BUILD: check for saved libraries (from prepare_install) as an empty install log ruins the whole plan
+	* BUILD,CONFIGURE,DEPENDS: remove the headers copying, now depends on a glibc-kernel-headers spell
+	* locales-2.3.2,locales-2.3.3: needs seperate locales for each version
+	
+2004-01-13 hgg <hgreig@bigpond.net.au>
+	* DETAILS: change to use if ... else ... fi
+	* BUILD: provide 2nd locale file for 2.3.2 version, move links after prepare_install to a function outside 
+	the FIFO and just call the function (much cleaner/ more readable)
+	
 2004-01-11 hgg <hgreig@bigpond.net.au>
 	* BUILD: ldconfig will relink any alien glibc files in /lib or /usr/lib
 	ldconfig -X stops it relinking them.
