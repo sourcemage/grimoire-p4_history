@@ -1,67 +1,19 @@
-Eric Sandall:
-It now compiles and runs fine if we use --enable-xft and --disable-freetype2 on three of my machines. Can we get some more testers?
+Firefox currently installs everything to a <stuff>/firefox directory and does not touch <stuff>/mozilla directories, however, /etc/profile.d/firefox.sh and /etc/profile.d/mozilla.sh both set MOZILLA_FIVE_HOME. This is the last hurdle to have both mozilla* and firefox installed concurrently.
 
-Seth Woolley:
+I am also currently having the following problem loading firefox after this last splurge of cleanup:
+/usr/lib/firefox/firefox-bin: symbol lookup error: /usr/lib/firefox/components/libnecko.so: undefined symbol: PR_GetAddrInfoByName
 
-needs testing to make sure it works, I'm building it now.
-
-0.9 init tarball needs recreation for 1.0
-
-I set --disable-xft instead of --enable-xft because it complained you 
-can't have both xft and freetype2 enabled. investigate options here.
-
-SVG messed up:
-
-../../../../../dist/include/layout/nsISVGRendererGlyphMetrics.h:64: warning: `virtual nsresult nsISVGRendererGlyphMetrics::GetBoundingBox(nsIDOMSVGRect**)' was hidden
-nsISVGLibartGlyphMetricsFT.h:64: warning:   by `virtual const FT_BBox* nsISVGLibartGlyphMetricsFT::GetBoundingBox()'
-nsSVGLibartGlyphMetricsFT.cpp: In constructor `nsSVGLibartGlyphMetricsFT::nsSVGLibartGlyphMetricsFT(nsISVGGlyphMetricsSource*)':
-nsSVGLibartGlyphMetricsFT.cpp:112: warning: `nsSVGLibartGlyphMetricsFT::mSource' will be initialized after
-nsSVGLibartGlyphMetricsFT.cpp:99: warning:   `FT_FaceRec_*nsSVGLibartGlyphMetricsFT::mFace'
-nsSVGLibartGlyphMetricsFT.cpp:129: warning:   when initialized here
-nsSVGLibartGlyphMetricsFT.cpp: In member function `void nsSVGLibartGlyphMetricsFT::InitializeFace()':
-nsSVGLibartGlyphMetricsFT.cpp:443: error: `FTC_Image_Desc' undeclared (first use this function)
-nsSVGLibartGlyphMetricsFT.cpp:443: error: (Each undeclared identifier is reported only once for each function it appears in.)
-nsSVGLibartGlyphMetricsFT.cpp:443: error: expected `;' before "imageDesc"
-nsSVGLibartGlyphMetricsFT.cpp:444: error: `imageDesc' undeclared (first use this function)
-nsSVGLibartGlyphMetricsFT.cpp:449: error: `ftc_image_grays' undeclared (first use this function)
-nsSVGLibartGlyphMetricsFT.cpp:455: error: 'class nsDerivedSafe<nsIFreeType2>' has no member named 'ManagerLookupSize'
-make[7]: *** [nsSVGLibartGlyphMetricsFT.o] Error 1
-
-
-turning that off for next test.
-
-reversing to --enable-xft and --disable-freetype2 because I guess that's 
-the one that antialiases.
-
-c++ -o nsDeviceContextPS.o -c -DOSTYPE=\"Linux2.6\" -DOSARCH=\"Linux\" 
--DHAVE_DEPENDENT_LIBS -I../.. -I./..  -I./../shared 
--I../../../dist/include/xpcom -I../../../dist/include/string 
--I../../../dist/include/widget -I../../../dist/include/pref 
--I../../../dist/include/caps -I../../../dist/include/locale 
--I../../../dist/include/uconv -I../../../dist/include/view 
--I../../../dist/include/necko -I../../../dist/include/imglib2 
--I../../../dist/include/unicharutil -I../../../dist/include/gfx 
--I../../../dist/include -I/usr/src/mozilla/dist/include/nspr -I. 
--I/usr/X11R6/include -I/usr/include/freetype2 
--I/usr/include/freetype2/config -I/usr/X11R6/include -fPIC 
--I/usr/X11R6/include -frtti -fno-exceptions -Wall -Wconversion 
--Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth 
--Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -O -march=k8 
--mmmx -mfpmath=sse -msse -msse2 -m3dnow -m32 -pipe -O2 -fshort-wchar 
--pthread -pipe -DNDEBUG -DTRIMMED -ffunction-sections -O -march=k8 -mmmx 
--mfpmath=sse -msse -msse2 -m3dnow -m32 -pipe -O2 -DXTHREADS -D_REENTRANT 
--DXUSE_MTSAFE_API -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include 
--I/usr/X11R6/include -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 
--I/usr/include/freetype2 -I/usr/include/freetype2/config 
--I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/X11R6/include 
--DMOZILLA_CLIENT -include ../../../mozilla-config.h 
--Wp,-MD,.deps/nsDeviceContextPS.pp nsDeviceContextPS.cpp
-
-In file included from nsDeviceContextPS.h:50,
-                 from nsDeviceContextPS.cpp:55:
-nsFontMetricsPS.h:344: error: `FTC_Image_Desc' does not name a type
-nsFontMetricsPS.h:347: error: `FTC_Image_Cache' does not name a type
-nsFontMetricsPS.h:481: error: `FTC_Image_Desc' does not name a type
-make[5]: *** [nsDeviceContextPS.o] Error 1
-                 
-moving back to --disable-xft and --enable-freetype2 until the above can be worked out.
+$ ldd /usr/lib/firefox/components/libnecko.so 
+        linux-gate.so.1 =>  (0xffffe000)
+        libxpcom.so => /usr/lib/firefox/libxpcom.so (0xb7e8f000)
+        libplds4.so => /usr/lib/libplds4.so (0xb7e8c000)
+        libplc4.so => /usr/lib/libplc4.so (0xb7e87000)
+        libnspr4.so => /usr/lib/libnspr4.so (0xb7e52000)
+        libpthread.so.0 => /lib/libpthread.so.0 (0xb7e42000)
+        libdl.so.2 => /lib/libdl.so.2 (0xb7e3f000)
+        libz.so.1 => /usr/lib/libz.so.1 (0xb7e30000)
+        libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0xb7d7a000)
+        libm.so.6 => /lib/libm.so.6 (0xb7d5a000)
+        libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0xb7d50000)
+        libc.so.6 => /lib/libc.so.6 (0xb7c69000)
+        /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x80000000)

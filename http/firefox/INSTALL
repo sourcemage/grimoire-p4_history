@@ -17,7 +17,7 @@ ln  -fns    ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
 make  install                                               &&
 cp  -vaL  dist/public/nss                                   \
           ${INSTALL_ROOT}/usr/include/firefox/              &&
-ln  -fns  ${FIREFOX_HOME}/firefox  /usr/bin/                &&
+ln  -fns  ${FIREFOX_HOME}/firefox-bin  /usr/bin/firefox     &&
 
 if  !  grep  -q  firefox  /etc/ld.so.conf;  then
   echo  '/usr/lib/firefox'  >>  /etc/ld.so.conf
