@@ -5,29 +5,31 @@ depends  ctags     &&
 depends  gdb       &&
 depends  db        &&
 
-optional_depends  linuxdoc-tools     \
-                  ""     \
-                  ""     \
+source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
+
+optional_depends  linuxdoc-tools                        \
+                  ""                                    \
+                  ""                                    \
                   "for DTD SGML documentation support"  &&
 
-optional_depends  graphviz     \
-                  ""     \
-                  ""     \
+optional_depends  graphviz             \
+                  ""                   \
+                  ""                   \
                   "for graph support"  &&
 
-optional_depends  kdesdk     \
-                  ""     \
-                  ""     \
+optional_depends  kdesdk                         \
+                  ""                             \
+                  ""                             \
                   "for KDE development support"  &&
 
-optional_depends  a2ps     \
-                  ""     \
-                  ""     \
+optional_depends  a2ps                               \
+                  ""                                 \
+                  ""                                 \
                   "for postscript printing support"  &&
 
-optional_depends  kdbg     \
-                  ""     \
-                  ""     \
+optional_depends  kdbg                          \
+                  ""                            \
+                  ""                            \
                   "for KDE-based GNU Debugger"  &&
 
 optional_depends  Python                                  \
@@ -79,4 +81,3 @@ optional_depends  SVN                       \
                   "--enable-svnsupport"     \
                   "--disable-svnsupport"    \
                   "for Subversion support"
-
