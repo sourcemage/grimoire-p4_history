@@ -1,3 +1,3 @@
-  OPTS="--disable-debug --enable-final ${OPTS}"  &&
-  default_build
+OPTS="--disable-debug --enable-final ${OPTS}"  &&
+default_build
 
