@@ -1,2 +1,7 @@
 depends  mythtv  &&
-depends  tiff
+depends  tiff    &&
+
+optional_depends  OPENGL                  \
+                  "--enable-opengl"       \
+                  ""                      \
+                  "for OpenGL rendering"
