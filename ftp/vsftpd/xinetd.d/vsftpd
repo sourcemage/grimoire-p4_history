@@ -5,7 +5,8 @@ service ftp
         socket_type             = stream
         wait                    = no
         user                    = root
-        server                  = /usr/local/bin/vsftpd
+#        server                  = /usr/local/bin/vsftpd
+        server                  = /usr/sbin/vsftpd
         per_source              = 5
         instances               = 200
         log_on_success          += PID HOST DURATION

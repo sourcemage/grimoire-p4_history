@@ -1,38 +1,32 @@
-2003-09-20  Eric Sandall <eric@sandall.us>
+2003-12-14 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version bump to 1.2.1
+	* xinetd: change location of binary
+	fixes bugs #4807 and #4271
+	* HISTORY: reformatted
 
-		Changed location of binary for init.d/vsftpd  (Bug #4271)
+2003-09-20 Eric Sandall <eric@sandall.us>
+	* init.d/vsftpd: Changed location of binary  (Bug #4271)
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self 
+	(doesn't work the way it is documented)
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-08-01 Seth Woolley <seth@tautology.org>
+	* xinetd: It's still installing to /usr/local/sbin, 
+	changed xinetd to match until we get it back to /usr/sbin
 
-2003-08-01  Seth Woolley <seth@tautology.org>
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update TRIGGERS for Linux-PAM
 
-		It's still installing to /usr/local/sbin, changed xinetd to
-		match until we get it back to /usr/sbin
+2003-05-31 Justin Rocha <jrocha@sourcemage.org>
+	* DETAILS: Version bump to 1.2.0 and bugfix # 3472
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
+2003-04-18 Seth Woolley <seth@tautology.org>
+	* DETAILS: fix md5 for SOURCE[0].
 
-		Update TRIGGERS for Linux-PAM
+2004-04-02 Eric Sandall <eric@sandall.us>
+	Fixes from Bearcat M. Sandor:
+	The VSFTP (very secure ftp daemon) had a few errors in the spell.  The first was that the source location was outdated and would not retrieve.  Also, the xinetd misrepresented the location of the executable as /usr/sbin, when it is really intalled in /usr/local/sbin
 
-2003-05-31  Justin Rocha <jrocha@sourcemage.org>
-
-		Version bump to 1.2.0 and bugfix # 3472
-
-2003-04-18  Seth Woolley <seth@tautology.org>
-
-		Modified DETAILS to fix md5 for SOURCE[0].
-
-2004-04-02  Eric Sandall <eric@sandall.us>
-
-		Fixes from Bearcat M. Sandor:
-
-		The VSFTP (very secure ftp daemon) had a few errors
-		in the spell.  The first was that the source location
-		was outdated and would not retrieve.  Also, the xinetd
-		misrepresented the location of the executable as /usr/sbin,
-		when it is really intalled in /usr/local/sbin
-
-2003-01-07  Eric Sesterhenn <snakebyte@gmx.de>
-
-		Spell created
+2003-01-07 Eric Sesterhenn <snakebyte@gmx.de>
+	Spell created
