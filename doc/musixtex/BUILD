@@ -7,6 +7,8 @@
     prepare_install                                         &&
 
     mkdir -p $TEXMF/fonts/tfm/musixtex                      &&
+    mkdir -p $TEXMF/fonts/source/musixtex                   &&
+    mkdir -p $TEXMF/tex/musixtex	  		    &&
 
     cp  -r  musixflx  /usr/bin                              &&
     cp  -r  $SCRIPT_DIRECTORY/musixtex    /usr/bin          &&
