@@ -1,100 +1,86 @@
-2003-09-19  Eric Sandall <eric@sandall.us>
+2003-10-21 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE: removed questions for ffmpeg and mozilla
+	* DEPENDS: changed requires mozilla-browser/libavcodec to
+	optional_depends
+	* BUILD: removed $OPTS changes for mozilla/ffmpeg (now handled by the
+	optional_depends)
+	removed the matroska sedit fix
+	added LDFLAGS="-lm" so xvid works
+	* BUILD, ffmpeg.patch: added patch to compile with recent ffmpeg
 
-		Changed mozilla to mozilla-browser  (Bug #4278)
+2003-09-19 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Changed mozilla to mozilla-browser  (Bug #4278)
 
-2003-08-26  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-26 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE: added option to build the mozilla plugin
 
-		added option to build the mozilla plugin
+2003-08-25 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: changed 'depends ffmpeg-cvs' to 'requires libavcodec'
 
-2003-08-25  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-17 Seth Woolley <seth@tautology.org>
+	* DETAILS: Modified DETAILS to fix md5 for SOURCE2.
 
-		changed 'depends ffmpeg-cvs' to 'requires libavcodec'
+2003-08-15 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.6.2
 
-2003-08-17  Seth Woolley <seth@tautology.org>
+2003-08-08 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added sedit to make it compile with libmatroska 0.5.0
 
-		Modified DETAILS to fix md5 for SOURCE2.
+2003-08-01 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.6.1
+	* DEPENDS: added optional_depends on faad2 and libogg
+	* CONFIGURE: added config option for joystick support
 
-2003-08-15  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-20 Arwed v. Merkatz <v.merktaz@gmx.net>
+	* DEPENDS: added optional_depends on libmatroska
 
-		updated to 0.6.2
+2003-06-29 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.6.0
+	added SOURCE2 for libmpeg2 snapshot
+	* BUILD: build libmpeg2.a
+	* DEPENDS: now depends on ffmpeg-cvs
 
-2003-08-08  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-05-19 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: use $INSTALL_ROOT when setting ffmpeg include path
 
-		added sedit to make it compile with libmatroska 0.5.0
+2003-05-14 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE: added CONFIGURE option for ffmpeg, so i can use
+	requires libavcodec
 
-2003-08-01  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-04-10 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS added MAKE_NJOBS=1 to DETAILS
 
-		updated to 0.6.1
-		added optional_depends on faad2
-		added optional_depends on libogg
-		added config option for joystick support
+2003-04-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.5.3
+	* DEPENDS: added some optional_depends
 
-2003-07-20  Arwed v. Merkatz <v.merktaz@gmx.net>
+2003-03-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added pentium4 compile fix to BUILD (fixes bug #2972)
 
-		added optional_depends on libmatroska
+2003-02-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to version 0.5.1
+	* DEPENDS: re-added optional_depends on kdelibs
 
-2003-06-29  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-02-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to version 0.5.0
+	* CONFIGURE: removed option to statically link ffmpeg (now
+	linked dynamically)
+	* DEPENDS: some more optional_depends
 
-		updated to 0.6.0
-		added SOURCE2 for libmpeg2 snapshot and the required changes
-		to build libmpeg2.a
-		now depends on ffmpeg-cvs
+2002-10-23 Seth Woolley <seth@tautology.org>
+	* BUILD: added -O3 hack
+	* HISTORY: cleaned history
 
-2003-05-19  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-07-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: added MD5 and LICENSE fields
+	updated to version 0.4.2
 
-		use $INSTALL_ROOT when setting ffmpeg include path
-
-2003-05-14  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		added CONFIGURE option for ffmpeg, so i can use
-		requires libavcodec
-
-2003-04-10  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		added MAKE_NJOBS=1 to DETAILS
-
-2003-04-09  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 0.5.3
-		added some optional_depends
-
-2003-03-31  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		added pentium4 compile fix to BUILD (fixes bug #2972)
-
-2003-02-18  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to version 0.5.1
-		re-added optional_depends on kdelibs
-
-2003-02-05  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to version 0.5.0
-		removed option to statically link ffmpeg (now
-		linked dynamically)
-		some more optional_depends
-
-2002-10-23  Seth Woolley <seth@tautology.org>
-
-		added -O3 hack
-		cleaned history
-
-2002-07-18  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		added MD5 and LICENSE fields
-		updated to version 0.4.2
-
-2002-06-05  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		Basically rewrote the spell:
-
-		- updated version to 0.4.1
-		- added lots of optional_depends
-		- added option to link statically with ffmpeg
-		  for divx video support
-		- rewrote BUILD file to reflect the ffmpeg option
-		- changed the long description in DETAILS to reflect the
-		  changes to the spell
-		- added this HISTORY file
- 		- added myself as MAINTAINER for this spell
-		  (there was no MAINTAINER in the DETAILS file)
+2002-06-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated version to 0.4.1
+	changed the long description in DETAILS to reflect the changes
+	to the spell
+	* DEPENDS: added lots of optional_depends
+	* CONFIGURE: added option to link statically with ffmpeg for divx
+        video support
+	* BUILD: rewrote BUILD file to reflect the ffmpeg option
+	* HISTORY:  added this HISTORY file

@@ -1,0 +1,11 @@
+--- ffmpeg.c~	2003-08-08 19:08:32.000000000 +0200
++++ ffmpeg.c	2003-10-21 19:59:35.000000000 +0200
+@@ -297,7 +297,7 @@
+         b_ffmpeginit = 1;
+ 
+         msg_Dbg( p_decoder->p_fifo, "libavcodec initialized (interface "
+-                                    LIBAVCODEC_BUILD_STR ")" );
++                                    LIBAVCODEC_IDENT ")" );
+     }
+     else
+     {
