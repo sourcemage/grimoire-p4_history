@@ -115,6 +115,11 @@ optional_depends  "flac"                   \
                   "--disable-flac"         \
                   "for flac audio decoder" &&
 
+optional_depends  "libdts"                 \
+                  "--enable-dts"           \
+                  "--disable-dts"          \
+                  "for DTS audio decoder"  &&
+
 # video codec options
 depends  mpeg2dec  &&
 optional_depends  LIBAVCODEC               \
@@ -141,13 +146,23 @@ optional_depends  "libdvdcss"              \
 optional_depends  "libdvdplay"             \
                   "--enable-dvdplay"       \
                   "--disable-dvdplay"      \
-                  "for DVD navigation support"  &&
+                  "for old DVD navigation support"  &&
+
+optional_depends  "libdvdnav"              \
+                  "--enable-dvdnav"        \
+                  "--disable-dvdnav"       \
+                  "for new DVD navigation support"  &&
 
 # misc
 optional_depends  "live"                  \
                   "--enable-livedotcom --with-livedotcom-tree=/usr/lib/live"  \
                   "--disable-livedotcom"  \
                   "for rtsp:// protocol support"  &&
+
+optional_depends  "libdvbpsi"          \
+                  "--enable-dvbpsi"    \
+                  "--disable-dvbpsi"   \
+                  "for DVB program information support"  &&
 
 optional_depends  "libcdio"            \
                   "--enable-libcdio"   \
