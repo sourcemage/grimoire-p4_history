@@ -1,17 +1,5 @@
 (
 
- patch -p0 << EOF
---- programs/winetest/winetest.c        2002-06-27 17:14:08.000000000 +0200
-+++ programs/winetest/winetest.c        2002-06-27 17:15:23.000000000 +0200
-@@ -155,6 +155,7 @@
-static void xs_init(void)
-{
-    extern void boot_wine(CV *cv);
-+    extern my_perl;
-    newXS("wine::bootstrap", boot_wine,__FILE__);
-}
-EOF
-
  CF=$CFLAGS &&
  unset CFLAGS CXXFLAGS &&
 
