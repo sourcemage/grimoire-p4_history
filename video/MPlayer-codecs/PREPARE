@@ -11,7 +11,7 @@ if  !  grep  -q  "SOURCE="  $SPELL_CONFIG; then
                   0 50 10                                                 \
                   qt6dlls      "QuickTime DLLs"  on                       \
                   rp9codecs    "RealPlayer codecs"  on                    \
-                  xanimdlls    "XAnim DLLs"  on
+                  xanimdlls    "XAnim DLLs"  on `
 
   TMP_CODECS=$CODECS
   CODECS=${CODECS//\"/}
