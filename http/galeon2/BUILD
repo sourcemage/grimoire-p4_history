@@ -1,13 +1,8 @@
 (
 
-  sedit  "s/GtkToolbarChildType/EggToolbarChildType/"  libegg/eggtoolbar.c  &&
-  ./configure  --prefix=/usr      \
-               --sysconfdir=/etc  \
-               --localstatedir=/var \
-               $OPTS              &&
-  make                            &&
-  prepare_install                 &&
-  make    install                 &&
+  patch  -p0  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
+
+  default_build  &&
   echo  "YES"                     |
   galeon-config-tool  --install-schemas --fix-gconf-permissions
 #  &&
