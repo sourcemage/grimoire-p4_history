@@ -1,0 +1,20 @@
+--- Makefile.inc.orig	2003-11-23 19:23:25.000000000 +0000
++++ Makefile.inc	2003-11-23 19:23:42.000000000 +0000
+@@ -62,7 +62,7 @@
+ DESTDIR?=
+ 
+ # "local" part of tree, used in building other pathnames
+-INC_USRLOCAL=/usr/local
++INC_USRLOCAL=/usr
+ 
+ # PUBDIR is where the "ipsec" command goes; beware, many things define PATH
+ # settings which are assumed to include it (or at least, to include *some*
+@@ -239,7 +239,7 @@
+ # installed one in RH 7.2, won't work - you wind up depending upon
+ # openssl.
+ 
+-BIND9STATICLIBDIR?=/usr/local/lib
++BIND9STATICLIBDIR?=/usr/lib
+ 
+ # FreeSWAN 3.x will require bind9. 
+ USE_LWRES?=false
