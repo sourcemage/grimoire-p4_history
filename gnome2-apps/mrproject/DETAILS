@@ -1,14 +1,15 @@
            SPELL=mrproject
-         VERSION=0.9.1
+         VERSION=0.10
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.codefactory.se/pub/$SPELL/source/$SOURCE
-          MD5[0]="b3719cba15476f04518bc472b4eeb711"
-        WEB_SITE=http://mrproject.codefactory.se
-      MAINTAINER=jon-sven@frisurf.no
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='c5ac8d11b6b5668f98b2b674f5c01c2e'
       LICENSE[0]=GPL
+        WEB_SITE=http://mrproject.codefactory.se
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030224
+         UPDATED=20030912
            SHORT="A Project Management Application for GNOME"
 cat << EOF
 MrProject is a project management program that can help build project 

@@ -1,18 +1,17 @@
            SPELL=ORBit2
-         VERSION=2.6.3
+         VERSION=2.8.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE	
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE	
-          MD5[0]='3e130444a44530e945f5c68e95445650'
+          MD5[0]='9d2c9dc7fd846883cf08ef03af1429c5'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       MAKE_NJOBS=1
         WEB_SITE=http://orbit-resource.sourceforge.net
       MAINTAINER=rcook@wyrms.net
          ENTERED=20020505
-         UPDATED=20030802
+         UPDATED=20030909
            SHORT="High-performance CORBA Object Request Broker."
 cat << EOF
 ORBit is a high-performance CORBA (Common Object Request Broker 

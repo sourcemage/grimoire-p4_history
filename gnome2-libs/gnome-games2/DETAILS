@@ -1,17 +1,16 @@
            SPELL=gnome-games2
-         VERSION=2.2.1
+         VERSION=2.4.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
 	  SOURCE=gnome-games-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-games-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gnome-games/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gnome-games/$BRANCH/$SOURCE
-          MD5[0]="a33cb8bbd32f50af35ec64d56eec0a8e"
-        WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]='003d4fe3862132c276a4cb51e02e324e'
       LICENSE[0]=GPL
       LICENSE[1]=FDL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020508
-         UPDATED=20030311
+         UPDATED=20030909
            SHORT="Games for the GNOME 2.0 Desktop"
 cat << EOF
 Games for the GNOME 2.0 Desktop

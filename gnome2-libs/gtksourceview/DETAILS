@@ -1,0 +1,15 @@
+           SPELL=gtksourceview
+         VERSION=0.6.0
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='b0ee8becf2ff2434064917da83a32a4f'
+      LICENSE[0]=LGPL
+      MAINTAINER=rcook@wyrms.net
+         ENTERED=20020505
+         UPDATED=20030901
+           SHORT="Library needed by gedit2"
+cat << EOF
+Library needed by gedit2
+EOF

@@ -1,11 +1,10 @@
            SPELL=gnome-panel
-         VERSION=2.2.2.2
+         VERSION=2.4.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='3feed895139cabefd96da389fe70dbcd'
+          MD5[0]='e4193eb94f1f7be48896c20254dd5da9'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
@@ -13,7 +12,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.gnome.org
       MAINTAINER=rcook@wyrms.net
          ENTERED=20020505
-         UPDATED=20030710
+         UPDATED=20030909
            SHORT="The GNOME 2.0 panel"
 cat << EOF
 The GNOME 2.0 panel
