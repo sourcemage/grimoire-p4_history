@@ -7,9 +7,14 @@ VERSIONS="2.4.20
 2.4.20-rc3
 2.4.19
 2.4.18"
+MD5S[0]=0cf5bb02df129a98c30b387463fd1095
+MD5S[1]=5116d2ceebe73ce66d029c4c9de247ef
+MD5S[2]=c284b57e76d8cc862e6b63706dc68ac0
+MD5S[3]=f154a5ad3376cf54095cb158e5f54338
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=xfs-${!PATCH}-all-i386.bz2
-SOURCE${COUNTER}_URL=ftp://oss.sgi.com/projects/xfs/download/patches/${!PATCH}/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=ftp://oss.sgi.com/projects/xfs/download/patches/${!PATCH}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
 fi

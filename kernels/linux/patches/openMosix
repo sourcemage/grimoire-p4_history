@@ -6,9 +6,12 @@ HELP="Adds single-image clustering capability to the kernel
 http://openmosix.sourceforge.net/"
 VERSIONS="2.4.20-1
 2.4.19-7"
+MD5S[0]=c14a0745adfec96fb3b06ab010ecfc1c
+MD5S[1]=775c4c3123db4b9c56927a2de35af0f4
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=openMosix-${!PATCH}.gz
-SOURCE${COUNTER}_URL=${SOURCEFORGE_URL}/openmosix/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=${SOURCEFORGE_URL}/openmosix/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
 fi

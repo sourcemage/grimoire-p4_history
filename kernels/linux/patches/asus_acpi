@@ -8,9 +8,15 @@ VERSIONS="2.4.20-acpi-20021126
 2.4.19-acpi-20020918
 2.4.19
 2.4.18"
+MD5S[0]=04dcead6b227bee78b9e193a4f79a5b2
+MD5S[1]=2d760eecb947f1aeca7dbb0d5c6a7454
+MD5S[2]=7e4a916b51d087ab02e6719c200e5d6f
+MD5S[3]=f516c1b8f10bb06f4bc40508123dc1d9
+MD5S[4]=fba397ddc511e9bc67991af4d1efa5d3
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=asus_acpi-${!PATCH}.diff.bz2
-SOURCE${COUNTER}_URL=http://julien.lerouge.free.fr/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=http://julien.lerouge.free.fr/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
 fi

@@ -6,9 +6,11 @@ HELP="Cryptoapi - International Kernel Patch contains the cryptographic kernel A
 
 VERSIONS="2.4.20.1
 2.4.19.2"
+PUBRINGFILE=kernel.gpg
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=patch-int-${!PATCH}.bz2
-SOURCE${COUNTER}_URL=http://www.kernel.org/pub/linux/kernel/crypto/v2.4/testing/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=\${KERNEL_URL}/pub/linux/kernel/crypto/v2.4/testing/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/GPGPATCH
 fi

@@ -10,17 +10,12 @@ DO NOT ENABLE Compressed Caching with preempt if you are using ext2/3 or vfat fi
 http://kernel.kolivas.net"
 
 VERSIONS="ck2_2.4.20"
+MD5S[0]=11557f7235ae8d533da3a01045037098
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
 SOURCE${COUNTER}=${!PATCH}.patch.bz2
-SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 
-if [[ "${!PATCH}" == "ck2_2.4.20" ]]; then
-COUNTER=$((${COUNTER}+1))
-echo "
-SOURCE${COUNTER}=extras_ck2_2.4.20.patch.bz2
-SOURCE${COUNTER}_URL=http://members.optusnet.com.au/ckolivas/kernel/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
-fi
-
+source $SCRIPT_DIRECTORY/MD5PATCH
 fi

@@ -1,14 +1,125 @@
 
+# how do I make those .gpg files that have the public keys?
+# like this:
+# gpg --no-default-keyring --keyring ./grsecurity.gpg --import
+# (paste in public key) (hit ctrl-d to finish importing keys)
+
+##### subs
+
+unpack_override() {  
+
+  FILENAME=`guess_filename $SOURCE_CACHE/$1` &&
+  COMPRESSOR=`guess_compressor $FILENAME`
+  uncompress $FILENAME $COMPRESSOR '' | \
+  {
+
+    # This section takes the uncompressed stream and turns it into the
+    # fully unarchived form.
+    case  $COMPRESSOR  in
+            bzip2|gzip|compress*|tar)
+                    tar   --owner=root  --group=root  -xf  /dev/stdin  ;;
+              Zip)  cat /dev/stdin >/dev/null   #get rid of unused output
+                    unzip  -q  $FILENAME                               ;;
+              RPM)  cpio  -idm < /dev/stdin                            ;;
+                *)  false                                              ;;
+    esac  
+
+  }
+  rm /tmp/libgrimoire.uncompress.$$
+
+}
+gpgcheck() { # $1 sig $2 file $3 pubring
+
+  # always trust and supply our own keyring.
+  # We provide our own trust for the pubkey validity.
+
+  GPGPROG="`which gpg 2> /dev/null`"
+  if test -z "$GPGPROG" ; then
+
+    message "It appears you do not have gpg (gnupg) in your PATH."
+    message "${SPELL_COLOR}${SPELL}: ${QUERY_COLOR}For full kernel.org source verification, it is highly suggested that you abort and cast gnupg as soon as possible."
+    if [ $MD5SUM_DL != "off" ] ; then
+      message "Note: If you do not have any kernel headers installed, cast gnupg will fail, in which case you shouldn't abort now."
+    fi
+
+    case $MD5SUM_DL in
+             off)  ;;
+       ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
+      ask_ignore)  query "Abort?" "n"           && exit 1   || echo -n ;;
+            on|*)  message "To continue you need to lower your Download Integrity Checking security  ${RED}Aborting.${DEFAULT_COLOR}" ; exit 1  ;;
+    esac
+
+  else
+    gpg --no-default-keyring                    \
+        --always-trust                          \
+        --keyring $SCRIPT_DIRECTORY/$3           \
+        --batch           \
+        --verify          \
+        $SOURCE_CACHE/$1  \
+        $SOURCE_CACHE/$2 2> /dev/null ||
+        return 1        # error out if verification fails.
+  fi
+  message "check passed.";  
+  return 0
+}
+
+md5check() { # $1 md5 $2 file
+  mMD5=$1
+  mFILE=$SOURCE_CACHE/$2
+  #message " testing $mMD5 == md5sum of uncompressed $mFILE"
+  if [[ ${mFILE} == *.bz2 ]] ; then
+    test "$mMD5" == "`bzcat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+  elif [[ ${mFILE} == *.gz ]] ; then
+    test "$mMD5" == "`zcat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+  else
+    test "$mMD5" == "`cat "$mFILE" | md5sum | cut -d ' ' -f 1`" || return 1
+  fi
+  message "check passed.";  
+  return 0
+}
+
+check() {
+  local  MTYPE=$1
+  local TOCHCK=$2
+  local WTHCHCK=$3
+  local PUBKEYCHCK=$4  # for MTYPE=gpg
+  message "$MTYPE checking $TOCHCK with $WTHCHCK."
+  case $MTYPE in
+    md5)  md5check $WTHCHCK $TOCHCK             && return 0 ;;
+    gpg)  message "using public key ring file $PUBKEYCHCK."
+          gpgcheck $WTHCHCK $TOCHCK $PUBKEYCHCK && return 0 ;;
+  esac
+  if [ -z "$PASSCH" ] ; then
+    case $MTYPE in
+      md5)  CTYPE="MD5 sum is different for uncompressed" ;;
+      gpg)  CTYPE="GPG signature validation failed for" ;;
+    esac
+    message "${SPELL_COLOR}${SPELL}: ${QUERY_COLOR}${CTYPE} ${TOCHCK}."
+    case $MD5SUM_DL in
+             off)  message "${RED}Continuing!"               ; echo -n ;;
+       ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
+      ask_ignore)  query "Abort?" "n"           && exit 1   || echo -n ;;
+            on|*)  message "${RED}Aborting.${DEFAULT_COLOR}" ; exit 1  ;;
+    esac
+  fi
+  message "check passed.";  
+  return 0
+}
+
+#####
+
 cd       /usr/src
-rm  -rf  linux
 if  [  -d  linux-${VERSION}  ];  then
   rm   -r  linux-${VERSION}
 fi
 
 mkdir linux-${VERSION}
 cd /usr/src/linux-${VERSION}
-echo "extract ${SOURCE}"
-unpack  $SOURCE
+
+check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
+
+message "extracting ${SOURCE}"
+unpack_override  $SOURCE '' #we will ignore MD5 because of above check
 EXTRACT_PATH=$(ls)
 mv /usr/src/linux-${VERSION}/${EXTRACT_PATH}/* /usr/src/linux-${VERSION}/
 rmdir /usr/src/linux-${VERSION}/${EXTRACT_PATH}/
@@ -16,7 +127,8 @@ cd /usr/src
 
 chown  -R  root:root  /usr/src/linux-${VERSION}
 
-ln  -s     linux-${VERSION}  linux
+rm  -rf  linux
+ln  -s   linux-${VERSION}  linux
 
 if [[ ! -L /usr/include/asm-generic ]]; then
   ln ../src/linux/include/asm-generic /usr/include/ -s
@@ -26,31 +138,60 @@ if  [  -f  $CONFIG_CACHE/.config  ]; then
   mv $CONFIG_CACHE/.config $CONFIG_CACHE/kernel.config
 fi
 
-if  [  -f  $CONFIG_CACHE/kernel.config  ];  then
-  cp     $CONFIG_CACHE/kernel.config  /usr/src/linux/.config
-fi
-
-#Get our logo on the framebuffer
-cd  linux/include/linux
-unpack $SOURCE2
-mv  -f  raven_linux_logo.h linux_logo.h
-
-
 cd  /usr/src/linux
 
 local COUNTER
-local VAR
-for ((COUNTER=3; COUNTER <= 15 ; COUNTER++))
+local VARS
+local VARSS
+for ((COUNTER=4; COUNTER <= 7 ; COUNTER++))
 do
-  VAR=SOURCE${COUNTER}
-  if [[ "${!VAR}" != "" ]]; then
-    echo "apply ${!VAR}"
-    if [[ ${!VAR} == *.bz2 ]] ; then
-      bzcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+  VARS=SOURCE${COUNTER}
+  COUNTER="$((( $COUNTER + 1)))"
+  VARG=SOURCE${COUNTER}
+  VARSS=${!VARS}
+  VARGS=${!VARG}
+  if [[ "${VARSS}" != " " ]]; then
+
+    check gpg $VARSS $VARGS kernel.gpg || exit 1
+    echo "applying ${VARSS}"
+
+    if [[ ${VARSS} == *.bz2 ]] ; then
+      bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
     elif [[ ${!VAR} == *.gz ]] ; then
-      zcat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+      zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
     else
-      cat $SOURCE_CACHE/${!VAR} | patch -s -N -p1
+      cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+    fi
+  fi
+done
+
+local COUNTER
+local VARS
+local VARSS
+local MD5V
+for ((COUNTER=8; COUNTER <= 15 ; COUNTER++))
+do
+  VARS=SOURCE${COUNTER}
+  VARSS="${!VARS}"
+  if [[ "${VARSS}" != "" ]]; then
+
+    MD5V=${MD5[$((( ${COUNTER} - 1)))]}
+    if test ${MD5V} = "gpg" ; then
+      COUNTER="$((( $COUNTER + 1)))"
+      VARS2=SOURCE${COUNTER}
+      VARSS2="${!VARS2}"
+      check gpg ${VARSS} ${VARSS2} ${MD5[$(((${COUNTER} - 1)))]} || exit 1
+    else
+      check md5 ${VARSS} ${MD5V} || exit 1
+    fi
+    echo "applying ${VARSS}"
+
+    if [[ ${VARSS} == *.bz2 ]] ; then
+      bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+    elif [[ ${VARSS} == *.gz ]] ; then
+      zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+    else
+      cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
     fi
   fi
 done
