@@ -1,6 +1,5 @@
 (
 
-./autogen.sh &&
 ./configure --prefix=/usr \
 	    $OPTS	&&
 

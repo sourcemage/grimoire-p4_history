@@ -1,15 +1,14 @@
            SPELL=ardour
-         VERSION=head
+         VERSION=0.9beta11.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/ardour:ardour
-       WEB_SITE=http://ardour.sf.net
+SOURCE_URL[0]=http://ardour.org/releases/$SOURCE
+       WEB_SITE=http://ardour.org
          ENTERED=20031207
-         UPDATED=20031207
+         UPDATED=20040302
 	LICENSE[0]=GPL
       MAINTAINER=audio@sourcemage.org
-	MD5[0]=IGNORE
-	FORCE_DOWNLOAD=on
+	MD5[0]=b99eb4bdefc4358761a10ee299bb00fc
 	SHORT="Ardour is a multichannel hard disk recorder (HDR) and 
 digital audio workstation (DAW)."
 cat << EOF
