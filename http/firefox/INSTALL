@@ -58,8 +58,8 @@ fi  &&
 # already a symlink
 #
 if  [  "$FIREFOX_MOZLINK"  =  "y"  ];  then
-  if  [  !  -f   $INSTALL_ROOT/usr/bin/mozilla  ||
-            -h   $INSTALL_ROOT/usr/bin/mozilla  ];  then
+  if  !  test  -f   $INSTALL_ROOT/usr/bin/mozilla  ||
+         test  -h   $INSTALL_ROOT/usr/bin/mozilla  ;  then
     ln  -sf  /usr/bin/firefox  /usr/bin/mozilla
   fi
 fi  &&
