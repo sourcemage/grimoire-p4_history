@@ -1,0 +1,17 @@
+           SPELL=libmad
+         VERSION=0.15.1b
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/mad/$SOURCE
+        WEB_SITE=http://www.underbit.com/products/mad/
+          MD5[0]='12af3433511bda2960a289d2d62f0b00'
+      LICENSE[0]=GPL
+         ENTERED=20031122
+         UPDATED=20040411
+           SHORT="MPEG audio decoder library"
+cat << EOF
+MAD (libmad) is a high-quality MPEG audio decoder. It currently supports
+MPEG-1 and the MPEG-2 extension to Lower Sampling Frequencies, as well as
+the so-called MPEG 2.5 format. All three audio layers (Layer I, Layer II,
+and Layer III a.k.a. MP3) are fully implemented.
+EOF

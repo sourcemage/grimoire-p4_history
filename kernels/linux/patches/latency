@@ -1,0 +1,24 @@
+#!/bin/bash
+
+DESCRIPTION="low latency patch"
+SHORT="The lowish-latency patches for kernel 2.4"
+HELP="low latency patch for 2.4 kernels
+
+Pay special attention - this patch does not mix well with some other patches.
+You might want to try Con Kovalis patchset, if this fails for you.
+
+http://www.zip.com.au/~akpm/linux/schedlat.html
+Low-latency is enabled via the \"Processor Type and Features\" menu"
+VERSIONS="2.4.20
+2.4.19
+2.4.18-rc1"
+MD5S[0]=5c71ad68743e70d12cf441fbe3a69297
+MD5S[1]=daadbaeeb75e0bde1f29adfc9ce1d717
+MD5S[2]=25517a96fac6237ef2028f9863860bf9
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}-low-latency.patch.gz
+SOURCE${COUNTER}_URL=http://www.zip.com.au/~akpm/linux/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

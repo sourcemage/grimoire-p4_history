@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DESCRIPTION="security fix for netfilter tcp options"
+SHORT="security fix for netfilter tcp options"
+HELP="Vulnerability Remote DoS in netfilter's tcp options chacking code
+
+This affects linux versions equal to and prior to 2.6.8-rc1
+"
+VERSIONS="2.6.7"
+
+MD5S[0]=3272d1b9ced88815cd6fbdf0af9dc592
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}='linux-${!PATCH}-netfilter-tcp-opts.patch'
+SOURCE${COUNTER}_URL='http://smgl.positivism.org/linux-${!PATCH}-netfilter-tcp-opts.patch'" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

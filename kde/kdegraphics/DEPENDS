@@ -1,0 +1,11 @@
+depends  kdelibs  &&
+depends  tiff     &&
+depends  libexif  &&
+
+source  $SCRIPT_DIRECTORY/../KDE_DEPENDS  &&
+
+optional_depends  xpdf                                                      \
+                  ""                                                        \
+                  ""                                                        \
+                  "to enable KDE to find extra information from PDF files" 
+

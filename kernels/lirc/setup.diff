@@ -1,0 +1,22 @@
+--- setup.sh~	2002-08-10 22:21:48.000000000 +0200
++++ setup.sh	2002-08-10 22:21:48.000000000 +0200
+@@ -521,7 +521,7 @@
+     {
+     echo "Loading saved configuration from $CONFIG"
+     . $CONFIG
+-    sleep 1
++    SaveConfig && exit 0
+     }
+ fi
+ EXIT="no"
+@@ -534,9 +534,7 @@
+            --menu "$MAIN_MENU_TEXT" 14 74 5 \
+              1 "Driver configuration ($SELECTED_DRIVER)" \
+              2 "Software configuration" \
+-             3 "Save configuration & run configure" \
+-             4 "Save configuration & exit" \
+-             5 "Exit WITHOUT doing anything" 2>$TEMP
++             4 "Save configuration" 2>$TEMP
+ 
+     if test "$?" != "0"; then
+         {

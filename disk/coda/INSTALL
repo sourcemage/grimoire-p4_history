@@ -1,0 +1,11 @@
+if  [  "$CODA_SVR"  =  "y"  ];  then
+  message  "${MESSAGE_COLOR}Building coda server${DEFAULT_COLOR}"  &&
+  make  server-install                                             &&
+  rm  -f  /etc/init.d/auth2.init                                   \
+          /etc/init.d/codasrv.init                                 \
+          /etc/init.d/update.init
+else
+  message  "${MESSAGE_COLOR}Building coda client${DEFAULT_COLOR}"  &&
+  make  client-install                                             &&
+  rm  -f  /etc/init.d/venus.init
+fi

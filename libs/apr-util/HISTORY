@@ -1,0 +1,60 @@
+2004-07-31 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, apr-util-0.9.4-gcc34.patch: patch to fix apache2 segfaulting
+	  if compiled with gcc 3.4
+
+2004-05-22 Robin Cook <rcook@wyrms.net>
+	* PRE_BUILD: moved the buildconf lines from BUILD to PRE_BUILD
+	  so that configure exists when BUILD runs to allow the adding
+	  of user desired OPTS
+	* BUILD: removed the buildconf lines moved to PRE_BUILD
+
+2004-04-14 David Braaten <xiticix47@hotmail.com>
+	* BUILD: remove POST_BUILD type lines and put them in
+	* POST_BUILD: created.
+
+2004-03-14 Sergey Lipnevich <sergey@sourcemage.org>
+	* DEPENDS: add options for GDBM; add INSTALL_ROOT.
+
+2004-01-23 Sergey Lipnevich <sergey@sourcemage.org>
+	* TRIGGERS: add to rebuild after Berkeley DB upgrade.
+
+2003-11-18 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: take APU 0.9.5 from the CVS, I can't wait anymore.
+
+2003-10-28 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS, BUILD, (new) CONFIGURE: make it configurable what branch of APR
+	  is being used, 0.9 (stable for httpd 2.0) or 1.0 (development for httpd 2.1),
+	  and whether to check out latest source from ASF source repository.
+
+2003-10-25 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Set tag to HEAD.
+	* build.diff: remove dummy hunk from patch.
+
+2003-10-11 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 1.0 tree (current tag STRIKER_2_1_0_PRE3).
+
+2003-07-19 Sergey Lipnevich <sergey@sourcemage.org>
+	* Make APR include files install in their own directory instead
+	  of /usr/include/apache2, so that this directory is not used
+	  as an origin of include files during compilation.
+
+2003-07-17 Sergey Lipnevich <sergey@sourcemage.org>
+	* Added a patch to adjust the build system for subsequent httpd build.
+	  Added code to replace paths in `apu-config' similar to apr/BUILD.
+
+2003-07-09 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.9.4 from Apache 2.0.47.
+
+2003-07-04 Sergey Lipnevich <sergey@sourcemage.org>
+	* Upgrade to 0.9.4 taken from CVS (no published tarball).
+	  Improve DEPENDS settings passed into OPTS.
+
+2003-05-08 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 0.9.3; add mirrors.
+
+2003-03-26 Julian v. Bock <julian@wongr.net>
+	* add spell.
+
+2003-03-02 Robert Helgesson <rycee@home.se>
+	* Created spell
+

@@ -1,0 +1,11 @@
+--- linux/src/arch/alsa/alsa.c	2004-09-18 16:20:27.946413432 -0700
++++ linux/src/arch/alsa/alsa.c	2004-09-18 16:21:50.193909912 -0700
+@@ -22,6 +22,8 @@
+ #define _GNU_SOURCE
+ #endif /* _GNU_SOURCE */
+ 
++#include <string.h> /*memset*/
++
+ #include "arch/interface/interface_sound.h"
+ #include "arch/alsa/alsa.h"
+ 

@@ -1,0 +1,18 @@
+if [ "$UPDATED" = "yes" ];
+ then echo "Summoning updates if not already in spool" &&
+      summon freetype2 openssl Python
+fi                                       &&
+mk_source_dir	$SOURCE_DIRECTORY  4g	&&
+cd		$BUILD_DIRECTORY	&&
+unpack		$SOURCE	${MD5[0]}	&&
+
+if ! spell_ok "linux-pam"; then
+	mk_source_dir $SOURCE_DIRECTORY2 &&
+	cd $BUILD_DIRECTORY		 &&
+	unpack $SOURCE2 ${MD5[1]}	 &&
+        mkdir -p /usr/include/security   &&
+        mv -f security/*  /usr/include/security/ &&
+        rm_source_dir $SOURCE_DIRECTORY2
+fi
+	
+	

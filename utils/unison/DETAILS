@@ -1,0 +1,18 @@
+           SPELL=unison
+         VERSION=2.9.1
+          SOURCE=src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cis.upenn.edu/~bcpierce/unison/download/stable/unison-$VERSION/$SOURCE
+          MD5[0]=2e9b523b749e794944ed5e5a2b63341d
+        WEB_SITE=http://www.cis.upenn.edu/~bcpierce/unison/
+         ENTERED=20040521
+         UPDATED=20040521
+      LICENSE[0]=GPL
+           SHORT="Unison is a file-synchronization tool"
+cat << EOF
+Unison is a file-synchronization tool. It allows two replicas of a
+collection of files and directories to be stored on different hosts (or
+different disks on the same host), modified separately, and then brought up
+to date by propagating the changes in each replica to the other.
+
+EOF

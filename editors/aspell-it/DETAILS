@@ -1,0 +1,18 @@
+           SPELL=aspell-it
+       BUILD_API=2
+         VERSION=0.53-0
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+          MD5[0]=0cd700bee022144b0c3b8448dfdb1892
+        WEB_SITE=http://aspell.sourceforge.net
+         ENTERED=20011028
+         UPDATED=20011028
+      LICENSE[0]=UNKNOWN
+       BUILD_API=2
+           SHORT="Italian aspell dictionary"
+cat << EOF
+Italian aspell dictionary
+EOF

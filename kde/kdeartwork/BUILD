@@ -1,0 +1,4 @@
+#
+#OPTS="$OPTS  $KDEARTWORK_GL"  &&
+#
+source  $SCRIPT_DIRECTORY/../KDE_BUILD

@@ -1,0 +1,17 @@
+           SPELL=bluez-utils
+         VERSION=2.13
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://bluez.sourceforge.net/download/$SOURCE
+        WEB_SITE=http://bluez.sourceforge.net
+          MD5[0]=92f37fe85590ccab0251f33f624b5d3d 
+         ENTERED=20030714
+         UPDATED=20041219
+      LICENSE[0]=GPL
+           SHORT="Utility software for the bluez Bluetooth stack"
+cat << EOF
+Utility software for the bluez Bluetooth stack. Remember to check the howto in 
+http://bluez.sourceforge.net/howto/, specially the part on modules.conf, 
+at http://bluez.sourceforge.net/howto/node6.html.
+EOF

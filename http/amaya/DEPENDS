@@ -1,0 +1,9 @@
+depends  jpeg    &&
+depends  libpng  &&
+depends  tiff    &&
+depends  g++     &&
+
+optional_depends  gtk+                         \
+                  "--with-gtk"                 \
+                  "--without-gtk"              \
+                  "for GTK+ graphics library"

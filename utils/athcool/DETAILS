@@ -1,0 +1,18 @@
+           SPELL=athcool
+         VERSION=0.3.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
+   SOURCE_URL[0]=http://members.jcom.home.ne.jp/jacobi/linux/files/$SOURCE
+          MD5[0]=bd60fea693d7b28a44b5649d47660edd
+        WEB_SITE=http://members.jcom.home.ne.jp/jacobi/linux/softwares.html
+         ENTERED=20040818
+         UPDATED=20040818
+      LICENSE[0]="GPL"
+           SHORT='athcool is a small utility, enabling/disabling Powersaving mode for AMD Athlon/Duron processors.'
+cat << EOF
+Since enabling Powersaving mode, you can save power consumption, lower CPU temperature when CPU is idle.
+
+Powersaving works if your kernel support ACPI (APM not work), because athcool only set/unset "Disconnect enable when STPGNT detected" bits in the Northbridge of 
+Chipset. To really save power, someone has to send the STPGNT signal when idle. This is done by the ACPI subsystem when C2 state enterd. 
+EOF

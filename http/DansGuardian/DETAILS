@@ -1,0 +1,41 @@
+           SPELL=DansGuardian
+         VERSION=2.8.0
+      RELEASEVER=0
+          SOURCE=DansGuardian-$VERSION.$RELEASEVER.source.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/DansGuardian-$VERSION-$RELEASEVER
+          MD5[0]=cffa97cf0406c087d49842fc150af279
+         LICENSE=http://dansguardian.org/?page=copyright2
+   SOURCE_URL[0]=http://mirror.dansguardian.org/downloads/2/Stable/$SOURCE
+   SOURCE_URL[1]=http://dansguardian.niesc.com/downloads/2/Stable/$SOURCE
+   SOURCE_URL[2]=http://sun.dansguardian.org/downloads/2/Stable/$SOURCE
+   SOURCE_URL[3]=http://dansguardian.org/downloads/2/Stable/$SOURCE
+   SOURCE_URL[4]=http://brazilmirror.dansguardian.org:8000/downloads/2/Stable/$SOURCE
+   SOURCE_URL[5]=http://mirror2.dansguardian.org/downloads/2/Stable/$SOURCE
+   SOURCE_URL[6]=http://dansguardian.turvamines.org/downloads/2/Stable/$SOURCE
+   SOURCE_URL[7]=ftp://ftp.parrswood.manchester.sch.uk/pub/mirrors/dansguardian/Stable/$SOURCE
+   SOURCE_URL[8]=http://mirrors.parrswood.manchester.sch.uk/pub/mirrors/dansguardian/Stable/$SOURCE
+   SOURCE_URL[9]=http://parent.dansguardian.org/downloads/2/$SOURCE
+        WEB_SITE=http://dansguardian.org
+         ENTERED=20030828
+         UPDATED=20040513
+       BUILD_API=2
+      MAINTAINER=FreakMN@juno.com
+           SHORT='A true web content filter'
+cat << EOF
+DansGuardian is a web content filter which currently runs on Linux, 
+FreeBSD, OpenBSD, NetBSD, Mac OS X, HP-UX, and Solaris.  It filters the 
+actual content of pages based on many methods including phrase matching, 
+PICS filtering, and URL filtering.  It does not purely filter based on a 
+banned list of sites like lesser totally commercial filters.
+
+DansGuardian is designed to be completely flexible and allows you to 
+tailor the filtering to your exact needs.  It can be as draconian or as 
+unobstructive as you want.  The default settings are geared towards what 
+a primary school might want byt DansGuardian puts you in control of what 
+you want to block
+
+DansGuardian is a true web content filter
+
+This is not a full-blown proxy.  It must connect to an actual proxy, 
+such as squid.  Squid is strongly recommended in addition to this spell.
+EOF

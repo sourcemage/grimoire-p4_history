@@ -1,0 +1,19 @@
+           SPELL=entrance
+       BUILD_API=2
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/entrance
+          MD5[0]=IGNORE
+      LICENSE[0]=BSD
+        WEB_SITE=http://xcomputerman.com/pages/entrance.html
+         ENTERED=20040311
+         UPDATED=20040311
+           SHORT="entrance is a login/display manager for Linux XFree86"
+cat << EOF
+Entrance is the next generation of Elogin, a login/display manager for
+Linux XFree86 systems. It is designed to be extremely customizable and
+aesthetically attractive -- a refreshing relief from the traditional
+dull and boring interfaces of XDM and its descendants.
+EOF

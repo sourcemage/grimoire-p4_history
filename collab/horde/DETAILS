@@ -1,0 +1,37 @@
+           SPELL=horde
+         VERSION=${VERSION:-2.2.5}
+          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
+      LICENSE[0]=LGPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
+        WEB_SITE=http://www.horde.org/horde/
+         ENTERED=20020428
+         UPDATED=20030108
+           SHORT="Horde Application Framework is a general-purpose web application framework in PHP"
+
+[ -z $FORCE_DOWNLOAD ] &&
+          MD5[0]='5abb2e4f27bb04b5d2bb342c9e22efc7'
+
+cat << EOF
+The Horde Framework is the glue that all Horde applications have in common.
+It is many things, including some coding standards, common code, and
+inter-application communication. The shared code provides common ways of
+handling things like preferences, permissions, browser detection, user help,
+and more.
+
+Required PHP compilation options (BUILD fails if they were off):
+--with-gettext for internationalization support
+--with-xml     for XML support
+--with-imap    for IMAP and POP3 support
+Recommended PHP compilation options:
+--with-mysql  to store preferences in MySQL
+--with-pgsql  to store preferences in PostgreSQL
+--with-oracle to store preferences in Oracle
+--with-ldap   to store preferences in LDAP
+--with-mcrypt to provide cryptographics beyond PHP built-in
+--enable-ftp  for Gollem support
+Also recommended:
+* sendmail(8) API and a local sendmail interface (included with sendmail,
+* postfix, qmail, exim, and others) as specified by dependency on
+  MAIL-TRANSPORT-AGENT in DEPENDS
+EOF

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# 
+# 
+
+DESCRIPTION="grml Patchset"
+SHORT="Patchset of the grml linux distribution"
+HELP="http://grml.org/kernel/
+Patchset with lots of interesting stuff"
+
+VERSIONS="2.6.9-grml1"
+
+MD5S[0]=f800edc9664e9ef5cfcd6761ba79c236
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=patch-${!PATCH}.bz2
+SOURCE${COUNTER}_URL=http://grml.org/kernel/patches_info/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

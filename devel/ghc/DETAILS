@@ -1,0 +1,23 @@
+           SPELL=ghc
+         VERSION=6.2.2
+          SOURCE=$SPELL-$VERSION-src.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.haskell.org/ghc/dist/$VERSION/$SOURCE
+          MD5[0]=cfe7bd09fcbceaf3be31b414eab525be
+
+if [[ ! -x /usr/bin/ghc ]] ; then
+         SOURCE2=$SPELL-$VERSION-i386-unknown-linux.tar.bz2
+  SOURCE2_URL[0]=http://www.haskell.org/ghc/dist/$VERSION/$SOURCE2
+          MD5[1]=13dfc47bc0020912b9d8831a76d481a3
+fi
+
+      LICENSE[0]=BSD
+        WEB_SITE=http://www.haskell.org/ghc/
+         ENTERED=20041221
+         UPDATED=20041221
+      MAKE_NJOBS=1
+           SHORT="The Glasgow Haskell compiler"
+cat << EOF
+GHC is a state-of-the-art, open source, compiler and interactive 
+environment for the functional language Haskell.
+EOF

@@ -1,0 +1,7 @@
+# -*- mode: shell-script; -*-
+default_install               &&
+make_if_swig install-swig-py  &&
+
+if  [ -d /etc/httpd ]; then
+  cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/
+fi

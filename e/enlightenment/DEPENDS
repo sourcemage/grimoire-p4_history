@@ -1,0 +1,6 @@
+if [ "$DR17" = "y"  ] ; then
+        depends  edje
+fi
+
+optional_depends  esound  ""  ""  "for sound support"  &&
+depends  imlib2

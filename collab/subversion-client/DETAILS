@@ -1,0 +1,25 @@
+           SPELL=subversion-client
+         VERSION=1.1.3
+          SOURCE=${SPELL%-*}-$VERSION.tar.bz2
+          MD5[0]='b950d3daa972e3da61046e1f6d035836'
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
+   SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
+        WEB_SITE=http://subversion.tigris.org/
+         ENTERED=20030218
+         UPDATED=20050122
+      MAKE_NJOBS=1
+            DOCS='doc/*'
+      LICENSE[0]=APACHE
+       BUILD_API=2
+           SHORT="Client for Subversion - a compelling replacement for CVS"
+cat << EOF
+The goal of the Subversion project is write a version control system that takes
+over CVS's current and future user base 1. The first release has all the major
+features of CVS, plus certain new features that CVS users often wish they had.
+In general, Subversion works like CVS, except where there's a compelling reason
+to be different.
+This will create a Subversion client binary to access repository located
+elsewhere on a different host. APR (Apache Portable Runtime) and Neon libraries
+will be used if they're installed, otherwise Subversion will compile and install
+APR and Neon bundled with its source tarball.
+EOF

@@ -1,0 +1,11 @@
+if  !  grep  -q  "OLD_TOO"  $SPELL_CONFIG;  then
+
+  if    query  "Build old modutils for older than linux 2.6 kernels?" y
+  then  OLD_TOO=y
+  else  OLD_TOO=n
+  fi
+
+  echo  "OLD_TOO=$OLD_TOO"  >>  $SPELL_CONFIG
+
+fi
+. $SPELL_CONFIG

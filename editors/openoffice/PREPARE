@@ -1,0 +1,4 @@
+if ! [ "$(installed_version bison)" = "1.875b" ] ; then
+        dispel --nosustain bison &&
+	depends bison 
+fi                                       

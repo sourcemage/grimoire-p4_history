@@ -1,0 +1,49 @@
+function configure_set_bool() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    return
+  fi
+
+  if ! grep -q "$1=" $SPELL_CONFIG; then
+    local VALUE="$1=n"
+    query "$2" "${3:-y}" && VALUE="$1=y"
+    echo "$VALUE" >> $SPELL_CONFIG
+  fi
+}
+
+# @usage configure_optional <1:test> <2:enable-option> <3:disable-option> <4:prompt> <5:hint>
+# works right if <test> is part of both <enable-option> and <disable-option>
+# @return 0 if disabled
+function configure_optional() {
+  if ! grep -q "${1#-}" $SPELL_CONFIG; then
+    local OPTION="$2"
+    query "$4" "$5" || OPTION="$3"
+    echo "OPTS=\"\$OPTS $OPTION\"" >> $SPELL_CONFIG
+  fi
+  # return the `enabled' flag for the option
+  grep -q "${2#--}" $SPELL_CONFIG
+}
+
+configure_optional 'crypto' '--enable-crypto' '--disable-crypto' 'Build crypto support for HTTPS, IMAPS, and POP3S (recommended)?' y
+if configure_optional 'mailnews' '--enable-mailnews' '--disable-mailnews' 'Build Mail/News client?' y && ! grep -q enigmail $SPELL_CONFIG; then
+  if query 'Enable Enigmail extension?' y; then
+    echo 'MOZILLA_EXT=$MOZILLA_EXT,ipc,enigmail' >> $SPELL_CONFIG
+  fi
+fi
+configure_optional 'chat' '--enable-chat' '--disable-chat' 'Build Chat component?' y
+configure_optional 'calendar' '--enable-calendar' '--disable-calendar' 'Build Calendar component?' y
+configure_optional 'composer' '--enable-composer' '--disable-composer' 'Build Composer component?' y
+#if query 'Enable Spellcheck extension?' y; then
+#  echo 'MOZILLA_EXT=$MOZILLA_EXT,spellcheck' >> $SPELL_CONFIG
+#  message "${MESSAGE_COLOR}Type in the word 'guest' below...${DEFAULT_COLOR}"
+#  cvs -d :pserver:guest@mozdev.org:/cvs login
+#fi
+configure_optional 'mathml' '--enable-mathml' '--disable-mathml' 'Enable MathML?' y
+if configure_optional 'libart' '--enable-svg --enable-svg-renderer-libart' '' 'Use LibArt SVG?' y; then
+  echo 'export MOZ_INTERNAL_LIBART_LGPL=1' >> $SPELL_CONFIG
+else
+  configure_optional 'cairo' '--enable-svg --enable-svg-renderer-cairo' '' 'Use Cairo SVG?' y
+fi
+configure_optional 'ldap' '--enable-ldap --enable-ldap-experimental' '--disable-ldap' 'Enable LDAP:// schema support?' y
+configure_optional 'xpctools' '--enable-xpctools' '--disable-xpctools' 'Build JavaScript profiling tool?' n
+configure_optional 'xinerama' '--enable-xinerama' '--disable-xinerama' 'Enable Xinerama support?' n
+true

@@ -1,0 +1,3 @@
+FIX_PATH_REGEX='s|/usr/src/apr-util-[^/"]*|/usr/share/apache2|' &&
+sedit $FIX_PATH_REGEX /usr/bin/apu-config &&
+default_post_build

@@ -1,0 +1,35 @@
+*** Makefile
+--- Makefile
+***************
+*** 438,453 ****
+    contrib/pic2graph \
+    contrib/eqn2graph \
+    contrib/groffer \
+!   contrib/mom \
+!   doc
+  ALLDIRS=$(INCDIRS) $(LIBDIRS) $(PROGDIRS) \
+    $(DEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS) $(OTHERDIRS)
+  EXTRADIRS=\
+    font/devps/generate \
+    font/devdvi/generate \
+    font/devlj4/generate \
+!   src/xditview \
+!   doc
+  NOMAKEDIRS=\
+    arch/djgpp \
+    contrib/mm/examples \
+--- 438,451 ----
+    contrib/pic2graph \
+    contrib/eqn2graph \
+    contrib/groffer \
+!   contrib/mom
+  ALLDIRS=$(INCDIRS) $(LIBDIRS) $(PROGDIRS) \
+    $(DEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS) $(OTHERDIRS)
+  EXTRADIRS=\
+    font/devps/generate \
+    font/devdvi/generate \
+    font/devlj4/generate \
+!   src/xditview
+  NOMAKEDIRS=\
+    arch/djgpp \
+    contrib/mm/examples \

@@ -1,0 +1,38 @@
+           SPELL=odbcjdbc
+local SPELLX SFCVS
+          SPELLX=OdbcJdbc
+       BUILD_API=2
+        WEB_SITE=http://www.ibphoenix.com
+case $WHICH in
+  cvs)
+ 	 VERSION=v1-3-0
+          SOURCE=${SPELLX}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
+           SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot  
+   SOURCE_URL[0]=$SFCVS/firebird:$SPELLX:$VERSION
+          MD5[0]=IGNORE
+;;
+  stable)
+         VERSION=1-2-1
+          SOURCE=${SPELLX}\_Source-${VERSION}.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
+   SOURCE_URL[0]=$WEB_SITE/downloads/$SOURCE
+          MD5[0]=0f4c37a716af8c7cba6ff07ac453eec8
+;;
+  devel)
+         VERSION=beta-1.3.0079
+          SOURCE=${SPELLX}-$VERSION-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ODBC_V1-3-BETA/${SPELLX}
+   SOURCE_URL[0]=http://www.praktik.km.ua/downloads/$SOURCE
+          MD5[0]=545a2803605ca80d1a93b64375d40231
+#  FORCE_DOWNLOAD=on
+;;
+esac
+         LICENSE=IDPL
+         ENTERED=20031205
+         UPDATED=20040302
+            DOCS="ChangeLog  Install/HtmlHelp/*"
+           SHORT="OBDC/JDBC driver for Firebird database"
+cat << EOF
+OBDC/JDBC driver for Firebird database
+EOF

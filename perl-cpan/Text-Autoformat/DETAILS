@@ -1,0 +1,23 @@
+           SPELL=Text-Autoformat
+         VERSION=1.12
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/D/DC/DCONWAY/$SOURCE
+          MD5[0]="f22a93f6bd75364f18c38274ba9e1a38"
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=Text::Autoformat"
+         ENTERED=20020313
+         UPDATED=20020313
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Text::Autoformat"
+cat << EOF
+The fundamental task of the "autoformat" subroutine is to
+identify and rearrange independent paragraphs in a text.
+Paragraphs typically consist of a series of lines contain­
+ing at least one non-whitespace character, followed by one
+or more lines containing only optional whitespace.  This
+is a more liberal definition than many other formatters
+use: most require an empty line to terminate a paragraph.
+Paragraphs may also be denoted by bulleting, numbering, or
+quoting (see the following sections).
+EOF

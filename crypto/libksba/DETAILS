@@ -1,0 +1,16 @@
+           SPELL=libksba
+         VERSION=0.9.10
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/libksba/$SOURCE
+          MD5[0]=5309b7e8c46fa953eaffcca2bdbc48b0
+        WEB_SITE=http://www.gnupg.org/aegypten/development.en.html
+         ENTERED=20030326
+         UPDATED=20030326
+      MAKE_NJOBS=1
+      LICENSE[0]=GPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="libksba is a general purpose crypto library"
+cat << EOF
+libksba is a general purpose crypto library based on the code used in GnuPG
+EOF

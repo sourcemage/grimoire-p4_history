@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DESCRIPTION="Fatal compile/runtime bug fixes and security updates"
+SHORT="Can be used in production environments for those who wish to run 2.4.23, and require patches which add to the stability of the current release kernel version"
+HELP="See http://www.hardrock.org/kernel/current-updates/00README"
+VERSIONS="2.4.23-uv3
+2.4.23-uv2
+2.4.23-uv1
+2.4.23-uv0"
+MD5S[0]=a4a02133fe79f5ffb17ae85dea605996
+MD5S[1]=d6f123f177329c3c85dce9c660b4d99e
+MD5S[2]=58ebdcf774a1936cd52cec40e0012aa6
+MD5S[3]=1bb2077e85fa45e9d530d2eb483121bb
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}-updates.patch
+SOURCE${COUNTER}_URL=http://www.hardrock.org/kernel/current-updates/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

@@ -1,0 +1,28 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  FRONTENDS="--enable-languages=c,c++"
+
+  if    query  "Enable Fortran 77 support?"  y
+  then  FRONTENDS="$FRONTENDS,f77"
+  fi
+
+  if    query  "Enable Java support?"  y
+  then  FRONTENDS="$FRONTENDS,java"
+  fi
+
+  if    query  "Enable Objective C support?"  y
+  then  FRONTENDS="$FRONTENDS,objc"
+  fi
+
+  if    query  "Enable Ada95 support?"  n
+  then  FRONTENDS="$FRONTENDS,ada"
+  fi
+
+  if    query  "Installing fixed includes breaks more than it fixes (hit <enter> NOT to install)?"  n
+  then  echo  'FIXEDINCLS="yes"'  >>  $SPELL_CONFIG
+  fi
+
+  echo  FRONTENDS="$FRONTENDS"  >>  $SPELL_CONFIG
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi

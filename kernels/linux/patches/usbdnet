@@ -1,0 +1,22 @@
+#!/bin/bash
+# by Seth Woolley <seth@tautology.org>
+#
+
+DESCRIPTION="usbdnet"
+SHORT="Provides ethernet over USB for PDA-like things"
+HELP="Used to establish ethernet to the Sharp Zaurus, see http://www.ruault.com/Zaurus/ethernet-over-usb-howto.html"
+VERSIONS="2.4.20-
+2.4.19-
+2.4.18.
+2.4.17."
+MD5S[0]=4316111d4ee80f487f3aa08ad59f07e9
+MD5S[1]=00a492256df981e317f824dcb5520031
+MD5S[2]=cb82bd5f055220d848765c890e6ba03f
+MD5S[3]=7fe50de00029ced9092400b3f1b843d9
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=usbdnet-${!PATCH}patch.gz
+SOURCE${COUNTER}_URL=http://www.ruault.com/Zaurus/patches/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

@@ -1,0 +1,10 @@
+(
+
+  prepare_install                                           &&
+  mkdir  -p  ${INSTALL_ROOT}/etc/cups                       &&
+  cp     -r  var/cups/conf/*  ${INSTALL_ROOT}/etc/cups      &&
+  cp     -r  usr/*            ${INSTALL_ROOT}/usr           &&
+  cp     -r  var/cups/filter  ${INSTALL_ROOT}/usr/lib/cups  &&
+  cp     -r  var/cups/utils   ${INSTALL_ROOT}/usr/lib/cups
+
+) > $C_FIFO 2>&1

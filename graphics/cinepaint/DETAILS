@@ -1,0 +1,18 @@
+           SPELL=cinepaint
+         VERSION=0.19-0
+       BUILD_API=2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+          MD5[0]=276db421830c7d9917c3ad28fa23c101
+        WEB_SITE=http://cinepaint.sourceforge.net/
+         ENTERED=20021031
+         UPDATED=20021201
+      LICENSE[0]=GPL
+    MENU_ITEM[0]="CinePaint"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+           SHORT="Motion picture editing tool based on GIMP"
+cat << EOF
+Cinepaint is a motion picture editing tool primarily used for painting and retouching of movies. Its application to feature movie productions includes the movies Scooby-Doo, Harry Potter, and Stuart Little. Cinepaint is the most successful open source tool in feature motion picture work today. Cinepaint runs on Linux and SGI Irix. A Windows version is planned for release in December 2002, and Macintosh native in 2003. Formerly known as filmgimp.
+EOF

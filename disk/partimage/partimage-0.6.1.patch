@@ -1,0 +1,32 @@
+diff -U2 partimage-0.6.1/Makefile.am partimage-0.6.1/Makefile.am
+--- partimage-0.6.1/Makefile.am	2001-09-10 22:42:03.000000000 +0200
++++ partimage-0.6.1/Makefile.am	2002-06-05 13:34:49.000000000 +0200
+@@ -24,6 +24,4 @@
+ 	chmod 600 ${sysconfdir}/partimaged/partimaged.key ;\
+ 	chmod 600 ${sysconfdir}/partimaged/partimaged.cert ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimaged.key ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimaged.cert ;\
+ 	else \
+ 	echo "SSL disabled, no certificate will be generated." ;\
+@@ -47,5 +45,4 @@
+            ${sysconfdir}/partimaged/partimagedusers ;\
+ 	chmod 600 ${sysconfdir}/partimaged/partimagedusers ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimagedusers ;\
+ 	fi 
+ 
+diff -U2 partimage-0.6.1/Makefile.in partimage-0.6.1/Makefile.in
+--- partimage-0.6.1/Makefile.in	2001-11-21 21:45:31.000000000 +0100
++++ partimage-0.6.1/Makefile.in	2002-06-05 13:35:17.000000000 +0200
+@@ -418,6 +418,4 @@
+ 	chmod 600 ${sysconfdir}/partimaged/partimaged.key ;\
+ 	chmod 600 ${sysconfdir}/partimaged/partimaged.cert ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimaged.key ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimaged.cert ;\
+ 	else \
+ 	echo "SSL disabled, no certificate will be generated." ;\
+@@ -440,5 +438,4 @@
+            ${sysconfdir}/partimaged/partimagedusers ;\
+ 	chmod 600 ${sysconfdir}/partimaged/partimagedusers ;\
+-	chown partimag.root ${sysconfdir}/partimaged/partimagedusers ;\
+ 	fi 
+ 

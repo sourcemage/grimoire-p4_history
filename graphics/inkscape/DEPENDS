@@ -1,0 +1,9 @@
+depends g++ &&
+depends gtkmm2     &&
+depends libxml2    &&
+depends libart_lgpl &&
+depends libsigc++3 &&
+depends libgc &&
+
+optional_depends libgnomeprintui "--with-gnome-print" "" &&
+optional_depends  "popt"       ""  ""  "for parsing command line options"

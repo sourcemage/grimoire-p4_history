@@ -1,0 +1,12 @@
+diff -urpN httpd-2.0.52.orig/server/mpm/prefork/prefork.c httpd-2.0.52/server/mpm/prefork/prefork.c
+--- httpd-2.0.52.orig/server/mpm/prefork/prefork.c	2004-11-30 17:16:06.945340568 -0800
++++ httpd-2.0.52/server/mpm/prefork/prefork.c	2004-11-30 17:16:21.793083368 -0800
+@@ -381,7 +381,7 @@ static void set_signals(void)
+ 	ap_log_error(APLOG_MARK, APLOG_WARNING, errno, ap_server_conf, "sigaction(SIGXCPU)");
+ #endif
+ #ifdef SIGXFSZ
+-    sa.sa_handler = SIG_DFL;
++    sa.sa_handler = SIG_IGN;
+     if (sigaction(SIGXFSZ, &sa, NULL) < 0)
+ 	ap_log_error(APLOG_MARK, APLOG_WARNING, errno, ap_server_conf, "sigaction(SIGXFSZ)");
+ #endif
