@@ -1,5 +1,4 @@
 (
-  cd  epplets                        &&
   ./autogen.sh --prefix=/usr         \
                --enable-fsstd        \
                --sysconfdir=/etc     \
