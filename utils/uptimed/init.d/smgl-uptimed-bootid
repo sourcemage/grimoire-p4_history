@@ -5,6 +5,7 @@ NEEDS="+local_fs"
 
 start()
 {
+  rm -f /var/spool/uptimed/bootid
   /sbin/uptimed  -b
 }
 
