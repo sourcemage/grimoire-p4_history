@@ -1,0 +1,15 @@
+           SPELL=linux-pre
+         VERSION=1
+          SOURCE=patch-2.4.20-pre${VERSION}.bz2
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/testing/$SOURCE
+   SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.4/testing/$SOURCE
+        WEB_SITE=http://www.kernel.org
+         ENTERED=20020227
+         UPDATED=20020510
+      MAINTAINER=christopher_brien@hotmail.com
+         ARCHIVE="off"
+           SHORT="The latest prepatch to the stable Linux kernel"
+      LICENSE[0]=GPL
+cat << EOF
+A set of updates to the linux kernel.
+EOF
