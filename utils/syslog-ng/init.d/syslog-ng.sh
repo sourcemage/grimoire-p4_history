@@ -5,8 +5,6 @@
 # SMGL-START:S:S20
 # SMGL-STOP:0 6:K70
 #
-# Just testing...
-#
 
 source /etc/init.d/functions
 
