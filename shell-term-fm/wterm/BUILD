@@ -3,9 +3,9 @@
                --sysconfdir=/etc           \
                --localstatedir=/var/run    \
 	       --with-logsdir=/var/log	   \
- 	       --enable-transparency \
-	       --enable-next-scroll \
-               --enable-xpm-background \
+ 	       --enable-transparency 	   \
+	       --enable-next-scroll 	   \
+               --enable-xpm-background 	   \
 	       $OPTS		      &&	
   make                                &&
   prepare_install                     &&

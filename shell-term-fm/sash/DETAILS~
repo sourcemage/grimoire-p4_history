@@ -1,0 +1,14 @@
+           SPELL=(name of program)
+         VERSION=(current stable version)
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://(download address)/$SOURCE
+        WEB_SITE=http://(website address)
+         ENTERED=20020328
+         UPDATED=20020328
+      MAINTAINER=sgl-spell-$SPELL@tange.dk
+           SHORT="(a short description of the program)"
+cat << EOF
+(a longer description of the program)
+EOF
+

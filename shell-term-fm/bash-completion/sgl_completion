@@ -1,0 +1,199 @@
+#!/bin/bash
+
+# Sorcerer GNU/Linux config vars are exported to current environment
+[ -f /etc/sorcery/config ] &&
+eval `. /etc/sorcery/config; 
+      echo "export GRIMOIRE=$GRIMOIRE";
+      echo "export SPELL_STATUS=$SPELL_STATUS"`
+
+# Sorcerer GNU/Linux utility functions used by actual completion functions
+# by Lunar_fr (lunar@l-a-p.org)
+#
+_spell_list()
+{
+	COMPREPLY=( ${COMPREPLY[@]} $( find $GRIMOIRE -type f -name DETAILS -follow -mindepth 3 -maxdepth 3 | \
+       sed -ne 's/^.*\/\('$cur'[^\/]*\)\/DETAILS$/\1/p' ) )
+}
+
+_dashify()
+{
+	local i
+		for (( i=0; i < ${#COMPREPLY[@]}; i++ )); do
+		if [ ${#COMPREPLY[i]} -le 2 ]; then
+			COMPREPLY[i]=-${COMPREPLY[i]}
+		else
+			COMPREPLY[i]=--${COMPREPLY[i]}
+		fi
+	done
+}
+
+_add_installed_spell_list()
+{
+	COMPREPLY=( ${COMPREPLY[@]}
+	$( sed -ne 's/^\('$cur'.*\):[0-9]*:installed:[0-9a-z.]*$/\1/p' $SPELL_STATUS ) )
+}
+
+_add_section_list()
+{
+	COMPREPLY=( ${COMPREPLY[@]} $( ls $GRIMOIRE | \
+               sed -ne 's/^\('$cur'.*\)/\1/p' ) )
+}
+
+# Sorcerer GNU/Linux gaze(1) completion
+# by Lunar_fr (lunar@l-a-p.org)
+#
+have gaze &&
+_gaze()
+{
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	if [ $COMP_CWORD = 1 ]; then
+		COMPREPLY=( $( compgen -W 'alien prune pam what where website \
+		sources maintainer compile install sum md5sum export import \
+		grimoire html search newer older from installed section voyeur \
+		DETAILS CONFIGURE DEPENDS CONFLICTS PRE_BUILD BUILD POST_BUILD \
+		POST_INSTALL POST_REMOVE' $cur ))
+	else
+		case "$prev" in
+		@(what|where|website|sources|maintainer))
+			_spell_list
+			return 0
+			;;
+		@(compile|install|sum|md5sum))
+			_spell_list
+			return 0
+			;;
+		installed)
+			_add_installed_spell_list
+			return 0
+			;;
+		section)
+			_add_section_list
+			return 0
+			;;
+		voyeur)
+			_spell_list
+			return 0
+			;;
+		@(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE))
+			_spell_list
+			return 0
+			;;
+		*)
+			return 0
+			;;
+		esac
+	fi
+
+	return 0
+	
+}
+[ "$have" ] && complete -F _gaze -o default gaze
+
+# Sorcerer GNU/Linux cast(8) completion
+# by Lunar_fr (lunar@l-a-p.org)
+#
+have cast &&
+_cast()
+{        
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+		case "$cur" in
+		--*)
+			COMPREPLY=( $( compgen -W 'fix nofix deps compile reconfigure from url pam' ${cur#--} ) )
+			_dashify
+			return 0
+			;;
+		-*)
+			COMPREPLY=( $( compgen -W 'f n s c r' ${cur#-} ) )
+			_dashify
+			return 0
+			;;
+		esac
+	fi
+	case "$prev" in
+		--from)
+			COMPREPLY=( $( compgen -d $cur ) )
+			return 0
+			;;
+		*)
+			_spell_list
+			return 0
+			;;
+	esac
+
+	return 0
+}
+[ "$have" ] && complete -F _cast -o default cast
+
+# Sorcerer GNU/Linux summon(8) completion
+# by Mads Laursen (dossen+sgl@daimi.au.dk)
+#
+have summon &&
+_summon()
+{
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+		case "$cur" in
+		--*)
+			COMPREPLY=( $( compgen -W 'from url' ${cur#--} ) )
+			_dashify
+			return 0
+			;;
+		esac
+	fi
+	case "$prev" in
+		--from)
+			COMPREPLY=( $( compgen -d $cur ) )
+			return 0
+			;;
+		*)
+			_spell_list
+			return 0
+			;;
+	esac
+
+	return 0
+}
+[ "$have" ] && complete -F _summon -o default summon
+
+# Sorcerer GNU/Linux dispel(8) completion
+# by Mads Laursen (dossen+sgl@daimi.au.dk)
+#
+have dispel &&
+_dispel()
+{
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+		case "$cur" in
+		--*)
+			COMPREPLY=( $( compgen -W 'exile downgrade' ${cur#--} ) )
+			_dashify
+			return 0
+			;;
+		esac
+	fi
+	_add_installed_spell_list
+
+	return 0
+}
+[ "$have" ] && complete -F _dispel -o default dispel
