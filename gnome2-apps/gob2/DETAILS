@@ -1,17 +1,17 @@
            SPELL=gob2
-         VERSION=2.0.6
+         VERSION=2.0.7
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gob2/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gob2/$BRANCH/$SOURCE
-          MD5[0]="5a3ebc2b7419b69421751c6d6fb4c1bb"
+          MD5[0]='7d47a54e1af8b42f03e355206b590148'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
         WEB_SITE=http://www.5z.com/jirka/gob.html
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020620
-         UPDATED=20030524
+         UPDATED=20040409
            SHORT="GOB is a preprocessor for making GObjects with inline C code"
 cat << EOF
 GOB (GOB2 anyway) is a preprocessor for making GObjects with inline C code so

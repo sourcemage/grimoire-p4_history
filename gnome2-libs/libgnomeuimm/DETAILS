@@ -1,15 +1,14 @@
            SPELL=libgnomeuimm
-         VERSION=2.5.1
+         VERSION=2.5.4
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
-   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='62cf98e24fed66a7362e94621a1473d9'
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='0881a226b4699adb6152fa4e879bae6a'
       LICENSE[0]="LGPL"
         WEB_SITE=http://gtkmm.sourceforge.net/
          ENTERED=20020523
-         UPDATED=20040311
+         UPDATED=20040409
            SHORT="C++ wrapper library for libgnomeui"
 cat << EOF
 C++ wrapper library for libgnomeui
