@@ -1,17 +1,2 @@
-depends  apr       '--with-apr=/usr'       &&
-depends  apr-util  '--with-apr-util=/usr'  &&
-
-optional_depends  openssl               \
-                  ' --enable-ssl'       \
-                  '--disable-ssl'       \
-                  'for OpenSSL support' &&
-
-optional_depends  db                                       \
-                  ' --enable-auth_db'                      \
-                  '--disable-auth-db'                      \
-                  'for DBM-based access databases support' &&
-
-optional_depends  openldap                                                        \
-                  '--enable-auth-ldap --enable-ldap --with-auth-ldap --with-ldap' \
-                  ''                                                              \
-                  'for LDAP-based authentication. You must say yes if you want mod_ldap'
+depends apr "--with-apr=$INSTALL_ROOT/usr" &&
+depends apr-util "--with-apr-util=$INSTALL_ROOT/usr"
