@@ -1,0 +1,17 @@
+           SPELL=linux-pam
+         VERSION=0.77
+          SOURCE=Linux-PAM-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Linux-PAM-$VERSION
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/libs/pam/pre/library/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.kernel.org/pub/linux/libs/pam/pre/library/$SOURCE
+          MD5[0]='9852a01a35d3b335d2d54ce79ad0c53c'
+        WEB_SITE=http://www.us.kernel.org/pub/linux/libs/pam
+         ENTERED=20010922
+         UPDATED=20020812
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Linux-PAM provides a flexibile authentication mechanism."
+cat << EOF
+Linux-PAM provides a flexible mechanism for authenticating users. PAM
+was invented by SUN Microsystems.
+EOF

@@ -1,5 +1,9 @@
 2005-01-23 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* ALL: deprecated spell, renamed to linux-pam
+	* DETAILS: renamed to linux-pam
+	* CONFLICTS: added conflict to Linux-PAM
+	* BUILD, INSTALL: converted to BUILD_API 2
+	* BUILD: use spell_ok instead of spell_installed
+	* INSTALL: chain the commands with &&, fixes bug #7542
 
 2004-07-18 Eric Sandall <eric@sandall.us>
 	* BUILD: teTeX renamed to tetex
