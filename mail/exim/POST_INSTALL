@@ -1,4 +1,4 @@
-chgrp  -R  mail   /var/spool/mail
+chgrp  -R  exim   /var/spool/mail
 chmod  -R  g+rw   /var/spool/mail
 
 EXIM_SCHEDULE="0 * * * * /usr/sbin/exim  -q"
