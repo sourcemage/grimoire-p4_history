@@ -1,5 +1,5 @@
 ./configure  $OPTS  &&
 make  xvattr        &&
-if  spell_installed  gtk+ || spell_held  gtk+;  then
+if  spell_ok  gtk+ || spell_held  gtk+;  then
   make gxvattr
 fi
