@@ -13,8 +13,14 @@
   prepare_install                              &&
   make    install
 
-  if [ ! -f /etc/securetty ]; then
-    cp $SCRIPT_DIRECTORY/securetty /etc/
+  if  [  !  -f  /etc/securetty  ]
+  then
+    if  grep  -q  "devfs"  /etc/sysconfig/devices
+    then
+      cp  $SCRIPT_DIRECTORY/securetty.devfs  /etc/securetty
+    else
+      cp  $SCRIPT_DIRECTORY/securetty.udev   /etc/securetty
+    fi
   fi
 
 ) > $C_FIFO 2>&1  && (
