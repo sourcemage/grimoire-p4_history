@@ -1,16 +1,14 @@
            SPELL=gtklookat
-         VERSION=0.9.1
+         VERSION=0.12.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/openvrml/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/openvrml/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/openvrml/$SOURCE
-        WEB_SITE=http://openvrml.sourceforge.net
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openvrml/$SOURCE
+        WEB_SITE=http://openvrml.sourceforge.net/
          ENTERED=20011021
-         UPDATED=20020510
-	MD5[0]=f029c9bdfc787950feceb2a3254d8a85
-	LICENSE[0]=GPL
-	MAINTAINER=burududu@hotpop.com
+         UPDATED=20030125
+          MD5[0]=ce75489f6615c7940d9948e0793a9a2c
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="gtklookat: a GTK+ VRML viewer."
 cat << EOF
 Gtklookat provides a viewer with a little more functionality than the basic
