@@ -1,7 +1,0 @@
-default_pre_build                                            &&
-mkdir -p ${INSTALL_ROOT}/usr/share/cracklib                  &&
-mkdir -p ${INSTALL_ROOT}/usr/share/doc/cracklib              &&
-mkdir -p ${INSTALL_ROOT}/usr/share/dict                      &&
-cd $SOURCE_DIRECTORY                                         &&
-sedit "s#usr/local/lib#usr/share/dict#g" Makefile            &&
-sedit "s#/usr/dict/words#\"usr/share/cracklib/*\"#g" Makefile
