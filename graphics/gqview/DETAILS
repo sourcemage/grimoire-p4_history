@@ -1,9 +1,14 @@
            SPELL=gqview
+if [ "$RELEASE" = "stable" ]; then
          VERSION=1.4.5
+          MD5[0]=e2ee391deb99b536a53b1d3024dfbf51
+elif [ "$RELEASE" = "unstable" ]; then
+         VERSION=1.5.7
+          MD5[0]=da70b67fb7b07b88c28518dddfef1465
+fi
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-          MD5[0]=e2ee391deb99b536a53b1d3024dfbf51
         WEB_SITE=http://gqview.sourceforge.net
          ENTERED=20010924
          UPDATED=20031215
