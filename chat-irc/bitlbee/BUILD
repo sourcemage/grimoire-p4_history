@@ -2,5 +2,9 @@
 # no --sysconfdir is recognized by the bitlbee Makefile
 
 export OPTS="$OPTS --etcdir=/etc/bitlbee" &&
+./configure --build=$BUILD \
+            --prefix=/usr  \
+            --etcdir=/etc/bitlbee \
+            $BITLBEE_OPTS $OPTS
 
-default_build
+make
