@@ -1,0 +1,27 @@
+depends perl &&
+depends LWP &&
+depends URI &&
+depends HTML-Parser &&
+depends HTML-Tagset &&
+depends MIME-Types &&
+
+optional_depends zlib \
+                 '--with-zlib' \
+                 '--without-zlib' \
+                 'for compression algorithms' &&
+optional_depends libxml2 \
+                 "--with-libxml2=$INSTALL_ROOT/usr" \
+                 '--without-libxml2' \
+                 'for XML indexing support (highly recommended)' &&
+optional_depends pcre \
+                 "--with-pcre=$INSTALL_ROOT/usr" \
+                 '--without-pcre' \
+                 'for regular expression support' &&
+optional_depends MIME-Types '' '' 'to use MIME types in indexing' &&
+optional_depends HTML-Template '' '' 'to use with swish.cgi to generate output (instead of Template-Toolkit' &&
+optional_depends Template-Toolkit '' '' 'to use with swish.cgi to generate output (instead of HTML::Template)' &&
+optional_depends MP3-Tag '' '' 'to index MP3 files' &&
+optional_depends xpdf '' '' 'to index PDF documents' &&
+optional_depends catdoc '' '' 'to index Word documents'
+
+# need HTML-Entities and Spreadsheet-ParseExcel for Excel documents indexing
