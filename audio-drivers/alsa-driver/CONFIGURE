@@ -9,11 +9,11 @@ if  !  grep  -q  "CARDS="  $SPELL_CONFIG;  then
   CARDS=`dialog  --backtitle  "ALSA Configuration Menu"   \
 	  --stdout				   \
           --checklist "Select sound cards"         \
-          0 0 30                                   \
+          0 0 0                                   \
           $CARDLIST`
 	
   CARDS=`echo $CARDS | sed s/\"//g | sed s/" "/,/g` &&
 
-  echo "CARD=$CARDS" >> $SPELL_CONFIG
+  echo "CARDS=$CARDS" >> $SPELL_CONFIG
 
 fi

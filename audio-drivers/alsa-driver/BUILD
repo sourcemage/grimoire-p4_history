@@ -16,7 +16,7 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
                --with-sequencer=yes  \
                --with-oss=yes        \
                --with-debug=none     \
-               --with-cards=$CARD    \
+               --with-cards=$CARDS   \
                $OPTS                 &&
   make                               &&
   prepare_install		     &&
