@@ -3,7 +3,7 @@ depends  gtk+      &&
 optional_depends  "nas"            \
                   "--enable-nas"   \
                   "--disable-nas"  \
-                  ""               &&
+                  "for Network Audio System Driver"               &&
 
 optional_depends  "doxygen"                       \
                   ""                              \
@@ -31,8 +31,8 @@ optional_depends  "xosd"                \
                   "for XOSD interface"  &&
 
 optional_depends  "jack"                               \
-                  ""                                 \
-                  ""                                   \
+                  "--enable-jack"                      \
+                  "--disable-jack"                     \
                   "for JACK low-latency audio server"  &&
 
 optional_depends  "libsndfile"           \
