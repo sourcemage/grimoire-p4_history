@@ -6,14 +6,15 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
    SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
              MD5=IGNORE
 else
-         VERSION=0.6
-          SOURCE=${SPELL}-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
-             MD5=20db4cb81ec3aa2b01fef59667311aae
+         VERSION=0.6.1
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/digikam3
+#   SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
+   SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
+             MD5=624a8e44c3a51cb57230242cb063ae4e
 fi
         WEB_SITE=http://digikam.sourceforge.net
-         LICENCE=GPL
+         LICENSE=GPL
          ENTERED=20020305
          UPDATED=20040114
       MAINTAINER=treeve01@pi.be
