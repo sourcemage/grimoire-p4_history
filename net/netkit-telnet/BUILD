@@ -2,7 +2,7 @@
 
   patch  -p1  <  $SCRIPT_DIRECTORY/gcc3.patch  &&
 
-  ./configure  --prefix=/usr  --with-c++-compiler=g++  $OPTS  &&
+  ./configure  --prefix=${INSTALL_ROOT}/usr  --with-c++-compiler=g++  $OPTS  &&
   make  &&
   prepare_install  &&
   make    install
