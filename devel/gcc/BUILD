@@ -11,8 +11,6 @@
   make  bootstrap                       &&
   prepare_install                       && 
 
-  unset  LD_PRELOAD                     &&
-
   if  [  -z  "$FIXEDINCLS"  ]
   then  make  install-no-fixedincludes
   else  make  install

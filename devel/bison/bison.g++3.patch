@@ -1,0 +1,15 @@
+diff -ur bison-1.875.old/data/yacc.c bison-1.875/data/yacc.c
+--- bison-1.875.old/data/yacc.c	2003-02-25 14:52:42.000000000 +0100
++++ bison-1.875/data/yacc.c	2003-02-25 14:54:14.000000000 +0100
+@@ -1114,8 +1114,11 @@
+   /* Suppress GCC warning that yyerrlab1 is unused when no action
+      invokes YYERROR.  */
+ #if defined (__GNUC_MINOR__) && 2093 <= (__GNUC__ * 1000 + __GNUC_MINOR__)
++  /* GNU C++ (as of version 3.2.1) does not allow attributes on labels.  */
++#ifndef __cplusplus
+   __attribute__ ((__unused__))
+ #endif
++#endif
+ 
+ ]b4_location_if([  yylerrsp = yylsp;
+   *++yylerrsp = yyloc;])[
