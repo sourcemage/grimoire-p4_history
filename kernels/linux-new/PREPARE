@@ -627,7 +627,7 @@ calculate_depends()
 		(
 		echo "all: $new_patches_list"
 		echo ""
-		for i in "$new_patches_list"
+		for i in $new_patches_list
 		do
 			rec_dep_make $i
 		done
