@@ -20,6 +20,7 @@ then
 			*)
 				;;
 		esac
+		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
 		cp ${INSTALL_ROOT}/var/spool/sorcery/${source} ./
 		unpack ${source} ${md5sum}
