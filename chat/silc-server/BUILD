@@ -21,6 +21,7 @@
 
   case  $SILCD_BOOT  in
     y|Y|j|J)  installscript  silcd.sh
+	          ;;
           *)  ;;
   esac
 
