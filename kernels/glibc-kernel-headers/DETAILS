@@ -1,0 +1,20 @@
+           SPELL=glibc-kernel-headers
+         VERSION=${VERSION:=2.4.24}
+if [ "$KERN" = "2.4" ]; then
+         VERSION=2.4.24
+          MD5[0]=e39bbcb45b828deaef298266a44825e7
+else     VERSION=2.6.1
+          MD5[0]=6cc513ec3e715b86c3715b43e51c7e08
+fi
+          SOURCE=$VERSION-kernel-headers.tar.bz2  
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+      SOURCE_URL=http://kaosguru.homelinux.org/SMGL/$SOURCE
+      LICENSE[0]=GPL
+         ARCHIVE=off
+         ENTERED=20040129
+         UPDATED=20040129
+           SHORT="sanitised glibc-kernel-headers are a fact of life for 2.6.X kernels"
+cat << EOF
+A set of headers (partly-sanitised 2.6.X WIP if wanted) to install so userspace gets same tree as glibc was built 
+against, but without linking the 2.6.X broken headers directly.
+EOF
