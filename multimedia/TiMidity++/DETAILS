@@ -1,0 +1,18 @@
+SPELL=TiMidity++
+VERSION=2.11.2
+SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://www.goice.co.jp/member/mo/timidity/dist/$SOURCE
+SOURCE2=timidity-$VERSION-alsa9.dif.gz
+#SOURCE2_URL=http://www.alsa-project.org/~iwai/$SOURCE2
+WEB_SITE=http://www.goice.co.jp/member/mo/timidity
+ENTERED=20020515
+UPDATED=20020515
+MAINTAINER="burududu@hotpop.com"
+SHORT="TiMidity is a MIDI to WAVE converter"
+cat << EOF
+TiMidity is a MIDI to WAVE converter and player that uses Gravis Ultrasound(*)-compatible patch files to generate digital audio data from
+general MIDI files. The audio data can be played through any sound device or stored on disk. On a fast machine, music can be played in real
+time. TiMidity runs under Linux, FreeBSD, HP-UX, SunOS, and Win32, and porting to other systems with gcc should be easy.
+EOF
+
