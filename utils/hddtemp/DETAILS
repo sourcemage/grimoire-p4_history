@@ -1,18 +1,23 @@
            SPELL=hddtemp
-         VERSION=0.2
-         SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=hddtemp.db
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://coredump.free.fr/linux/$SOURCE
-   SOURCE2_URL[0]=http://coredump.free.fr/linux/$SOURCE2
+         VERSION=0.3-beta6
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+         SOURCE2=${SPELL}.db
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://coredump.free.fr/linux/${SOURCE}
+  SOURCE2_URL[0]=http://coredump.free.fr/linux/${SOURCE2}
         WEB_SITE=http://coredump.free.fr/linux/harddrive.html#hddtemp
          ENTERED=20020721
          UPDATED=20020721
-	MD5[0]=e36bfaf9862ca0f16091adfafb93f950
-	MD5[1]=0b1f56989234654afdc26b865dcef69b
-	LICENSE=GPL
-	MAINTAINER=josebernardo1@yahoo.com
+          MD5[0]=6ea904da6f5023b78abc351df8f54bb9
+          MD5[1]=fd2bb276b256ab6217acc470b832a19d
+         LICENSE=GPL
+      MAINTAINER=josebernardo1@yahoo.com
            SHORT="HDDtemp is tool that give you the temperature of your IDE hard drive by reading S.M.A.R.T. informations."
 cat << EOF
-HDDtemp is tool that give you the temperature of your IDE hard drive by reading S.M.A.R.T. informations  (that support this feature). Only moderns hard drives have a temperature sensor. SCSI doesn't allow reading S.M.A.R.T. informations.
+
+HDDtemp is tool that give you the temperature of your IDE hard drive by
+reading S.M.A.R.T. informations (that support this feature). Only moderns hard
+drives have a temperature sensor. SCSI doesn't allow reading S.M.A.R.T.
+informations.
+
 EOF
