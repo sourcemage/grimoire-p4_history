@@ -1,5 +1,5 @@
 (
-
+  LDFLAGS="$LDFLAGS -lm"                             &&
   ./configure  --prefix=/usr  $OPTS                  &&
   sedit  "s/src doc contrib/src contrib/"  Makefile  &&
   make                                               &&
