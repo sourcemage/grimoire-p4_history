@@ -1,0 +1,5 @@
+if query "Backup package config ?" y
+then
+ CUR_DATE=`date +%s`
+ tar -c --use-compress-program=bzip2 -f "/etc/minimalist-backup-$CUR_DATE.tar.bz2" /etc/minimalist /var/spool/minimalist 1>/dev/null 2>&1
+fi

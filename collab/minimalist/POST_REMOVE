@@ -1,0 +1,7 @@
+{
+# Clean /etc
+rm -f /etc/aliases.minimalist-sample
+# Clean work dir
+rm -r -f /var/spool/minimalist/list-sample
+rmdir --ignore-fail-on-non-empty /var/spool/minimalist
+}
