@@ -1,5 +1,5 @@
 default_pre_build                      &&
-if [ "$NPTL" = "no" ] 
+if [ "$NPTL" == "n" ] 
 then cd      $SOURCE_DIRECTORY         &&
      unpack  $SOURCE2  ${MD5[1]}       &&
      unpack  $SOURCE3  ${MD5[2]}

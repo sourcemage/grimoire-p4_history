@@ -4,7 +4,7 @@ fi                                                        &&
   LD_PRELOAD_OLD="$LD_PRELOAD"                            &&
   unset  LD_PRELOAD                                       &&
   export CFLAGS="$CFLAGS -DUSE_OLD_FUNCTIONS"             &&
-  if /lib/libc.so.6 | grep -q NPTL; then
+  if grep -q 'NPTL="y"' /etc/sorcery/local/depends/glibc.p; then
     OPTS="$OPTS --with-named-thread-libs=-lpthread"         &&
     export CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
   fi  &&

@@ -19,7 +19,7 @@ function make_install_links(){
  ln -sf $SOURCE_DIRECTORY.bld/resolv/libnss_dns.so ${INSTALL_ROOT}/lib/libnss_dns.so.2            &&
  ln -sf $SOURCE_DIRECTORY.bld/locale/libBrokenLocale.so ${INSTALL_ROOT}/lib/libBrokenLocale.so.1  &&
  ln -sf $SOURCE_DIRECTORY.bld/hesiod/libnss_hesiod.so ${INSTALL_ROOT}/lib/libnss_hesiod.so.2      &&
- if [ "$NPTL" = "yes" ]
+ if [ "$NPTL" = "y" ]
     then ln -sf $SOURCE_DIRECTORY.bld/nptl/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
  else ln -sf $SOURCE_DIRECTORY.bld/linuxthreads/libpthread.so ${INSTALL_ROOT}/lib/libpthread.so.0 
  fi                                                                                               &&

@@ -1,3 +1,15 @@
+2004-10-29 Robin Cook <rcook@wyrms.net>
+	* BUILD: changed all "$NPTL" = "yes" to $NPTL = "y"
+	  changed "$CROSS_INSTALL" = "on" to "$CROSS_INSTALL" == "on"
+	  removed section belonging in INSTALL
+	* DETAILS: changed all "$NPTL" = "yes" to $NPTL = "y"
+	  added BUILD_API=2
+	* INSTALL: added with parts from BUILD that belong here
+	* makelinks: changed all "$NPTL" = "yes" to $NPTL = "y"
+	* PRE_BUILD: changed all "$NPTL" = "no" to $NPTL = "n"
+	* PREPARE: changed to using config_query
+	* POST_INSTALL: moved to FINAL
+
 2004-10-12 Eric Sandall <eric@sandall.us>
 	* DETAILS: Move prerelease comment out of VERSION flag
 	  Shortened SHORT
