@@ -1,25 +1,14 @@
-(
+# turn off docmfp support (broken atm)
+sedit   '/\\usepackage{docmfp}/d'                       $SPELL.dtx  &&
+sedit   's/%%%%% \\providecommand/\\providecommand/'    $SPELL.dtx  &&
 
-    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                   &&
+# turn off checksum (also seems to be broken)
+sedit   '/% \\Finale/d'                                 $SPELL.dtx  &&
 
-    latex $SPELL.ins                                    &&
+latex $SPELL.ins                                                    &&
 
-    latex  --interaction batchmode   $SPELL.dtx         
-    makeindex -s gind.ist $SPELL                        &&
-    latex  --interaction batchmode   $SPELL.dtx         
-
-    prepare_install                                     &&
-    
-    mkdir  -p  $TEXMF/fonts/source/public/$SPELL        &&
-    mkdir  -p  $TEXMF/tex/latex/$SPELL                  &&
-    mkdir  -p  /usr/doc/$SPELL                          &&
-
-    cp  *.fd          $TEXMF/tex/latex/$SPELL           &&
-    cp  $SPELL.sty  $TEXMF/tex/latex/$SPELL             &&
-
-    cp  *.mf  $TEXMF/fonts/source/public/$SPELL         &&
-
-    cp  *.dvi      /usr/doc/$SPELL                      &&
-    cp  tryfont.*  /usr/doc/$SPELL
-
-) > $C_FIFO 2>&1
+latex  --interaction batchmode   $SPELL.dtx                         &&
+latex  --interaction batchmode   $SPELL.dtx                         &&
+makeindex -s gind.ist $SPELL                                        &&
+latex  --interaction batchmode   $SPELL.dtx                         &&
+latex  --interaction batchmode   $SPELL.dtx
