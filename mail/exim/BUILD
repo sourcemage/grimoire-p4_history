@@ -5,8 +5,8 @@ then  if    [  -e  /etc/exim.conf  ]
       fi
 fi
 
-groupadd  mail            2>/dev/null
-useradd   mail  -g  mail  2>/dev/null
+create_account exim
+create_account mail
 
 mkdir  -p             /var/spool/mail
 chmod  1777           /var/spool/mail
@@ -53,27 +53,12 @@ echo  "BIN_DIRECTORY=/usr/sbin"          >>  Local/Makefile
 echo  "CONFIGURE_FILE=/etc/exim.conf"    >>  Local/Makefile
 echo  "SPOOL_DIRECTORY=/var/spool/mail"  >>  Local/Makefile
 echo  "CFLAGS=$CFLAGS"                   >>  Local/Makefile
-echo  "EXIM_UID=`id -u mail`"            >>  Local/Makefile
-echo  "EXIM_GID=`id -g mail`"            >>  Local/Makefile
-echo  "EXIM_USER=mail"                   >>  Local/Makefile
-echo  "EXIM_GROUP=mail"                  >>  Local/Makefile
+echo  "EXIM_UID=`id -u exim`"            >>  Local/Makefile
+echo  "EXIM_GID=`id -g exim`"            >>  Local/Makefile
+echo  "EXIM_USER=exim"                   >>  Local/Makefile
+echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
 
 
-(
-  db_ver=`gaze version db | grep db | cut -b35-37`
-
-  if [ "$db_ver" == "4.1" ]; then
-    message "${MESSAGE_COLOR}It seems you're running 4.1.x db series..."
-    message "exim should not compile with db 4.1.x without being patched.${DEFAULT_COLOR}"
-  
-    if query "Apply unofficial patch to make exim db 4.1.x compliant ?" y
-    then
-      cd src           
-      patch < $SCRIPT_DIRECTORY/db-4.1.patch
-      cd ..
-    fi
-  fi
-)                  &&
 (
 
   make             &&
@@ -100,7 +85,7 @@ echo  "EXIM_GROUP=mail"                  >>  Local/Makefile
   fi
 
   sedit  "s:var/mail:var/spool/mail:"         /etc/exim.conf
-  sedit  "s/\# group = mail/  group = mail/"  /etc/exim.conf
+  sedit  "s/\# group = exim/  group = exim/"  /etc/exim.conf
   sedit  "s/\# mode = 0660/  mode = 0660/"    /etc/exim.conf
 
 # install man page
