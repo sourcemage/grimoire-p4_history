@@ -38,8 +38,4 @@ PATCH
   leave_config                       &&
   make    install
 
-) > $C_FIFO 2>&1  &&
-
-(
-  installscript  apmd.sh
-)
+) > $C_FIFO 2>&1  

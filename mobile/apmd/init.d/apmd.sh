@@ -8,16 +8,17 @@ source /etc/init.d/functions
 
 
 case  $1  in
-          start)  echo "$1ing apmd"
+          start)  echo  "$1ing APM Daemon..."
                   loadproc apmd -P /etc/apmd_proxy
                   ;;
-        restart)  echo "retstarting apmd"
-				  reloadproc apmd
-				  ;;
-           stop)  echo "$1ping apmd"
+           stop)  echo  "$1ping APM Daemon..."
                   killproc  apmd
                   ;;
-
+        restart)  echo  "retstarting APM Daemon..."
+				  reloadproc apmd
+				  ;;
+		 status)  statusproc apmd
+				  ;;
               *)  echo "Usage: $0 {start|stop|restart}"
 			      exit 1
                   ;;
