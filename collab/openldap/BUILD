@@ -1,15 +1,15 @@
-# $Id: BUILD,v 1.6 2002/09/18 17:27:19 sergeyli Exp $
+# $Id: BUILD,v 1.7 2003/01/04 05:41:22 sergeyli Exp $
 (
 
-	./configure              \
+	./configure                  \
 		--build=$BUILD       \
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
+		--without-cyrus-sasl \
 		--enable-cleartext   \
 		--enable-crypt       \
 		--enable-rlookups    \
-		--enable-gnu-ld      \
 		$OPTS                &&
 	make    depend           &&
 	make                     &&
@@ -21,8 +21,6 @@
 (
 
 	cp    -f   /usr/libexec/slapd /usr/sbin/
-	mkdir -p   /var/openldap-bdb
-	chmod 0700 /var/openldap-bdb
 
 	. $SCRIPT_DIRECTORY/mkconf.sh
 

@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.10 2002/10/30 19:39:23 sergeyli Exp $
+# $Id: BUILD,v 1.11 2002/12/11 16:57:15 sergeyli Exp $
 (
 
 	SVN_CLIENT=`which svn 2>/dev/null`
@@ -50,9 +50,9 @@
 		--with-apr=/usr      \
 		--with-apr-util=/usr \
 		--with-apxs=apxs     \
-		--disable-mod-activation \
 		$OPTS                &&
-	make                     &&
+	make             &&
+	make swig-py-lib &&
 
 #	Use this instead of just 'make' for -jN option:
 #	make -jN external-all
@@ -60,8 +60,9 @@
 
 
 #	Install
-	prepare_install          &&
-	make    install          &&
+	prepare_install &&
+	make    install &&
+	make    install-swig-py-lib &&
 	make    check
 
 ) > $C_FIFO 2>&1 && (

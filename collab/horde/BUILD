@@ -1,13 +1,17 @@
-# $Id: BUILD,v 1.6 2002/11/14 21:30:35 sergeyli Exp $
+# $Id: BUILD,v 1.7 2003/01/08 18:35:55 sergeyli Exp $
 #
 # this BUILD is also used for Horde applications
 # like IMP and Turba
 #
 	
-HORDE_DEST=/usr/share/horde
-[ $SPELL != horde ] && HORDE_DEST=$HORDE_DEST/$SPELL
+HORDE_DIR=/usr/share/horde
+HORDE_CONFIG_DIR=/etc/horde
+if [ "$SPELL" != "horde" ]; then
+  HORDE_DIR=$HORDE_DIR/$SPELL
+  HORDE_CONFIG_DIR=$HORDE_CONFIG_DIR/$SPELL
+fi
 
-PHP_MODULES=`php -m`
+PHP_MODULES=$(php -m)
 
 (
 
@@ -21,12 +25,22 @@ PHP_MODULES=`php -m`
   # force copy everything because no configuration files are overwritten
   # all Horde packages come with config/*.conf.dist files, which better
   # be updated by force copy anyway
-  mkdir -p     $HORDE_DEST &&
-  cp    -fR ./ $HORDE_DEST/
+  mkdir -p     $HORDE_DIR  &&
+  cp    -fR ./ $HORDE_DIR/ &&
+
+  # deal with configuration files and directory
+  if [ -d $HORDE_DIR/config ]; then
+    echo "Updating configuration in $HORDE_CONFIG_DIR..."                        &&
+    mkdir -p --mode=755 $HORDE_CONFIG_DIR                                        &&
+    echo "Moving configuration to $HORDE_CONFIG_DIR from $HORDE_DIR/config..."   &&
+    mv $HORDE_DIR/config/* $HORDE_CONFIG_DIR/                                    &&
+    echo "Making a symbolic link to $HORDE_CONFIG_DIR from $HORDE_DIR/config..." &&
+    ln -fns $HORDE_CONFIG_DIR $HORDE_DIR/config
+  fi
 
 ) > $C_FIFO 2>&1 && (
 
-  cd $HORDE_DEST/
+  cd $HORDE_DIR/
 
   SLAPD_CONF=/etc/openldap/slapd.conf
   SLAPD_SCHEMA=/etc/openldap/schema
@@ -45,12 +59,14 @@ PHP_MODULES=`php -m`
       echo "$CONTENTS" > $SLAPD_CONF
       message "${MESSAGE_COLOR}Horde schema added to ${SLAPD_CONF}${DEFAULT_COLOR}"
 
-      [ -x /etc/init.d/slapd.sh ] && /etc/init.d/slapd.sh restart
+      # only restart if the configuration is correct
+      [ -x /etc/init.d/slapd.sh ] && slapd -t && /etc/init.d/slapd.sh restart
     fi
   fi
 
-  cd $HORDE_DEST/config/
-  for f in `ls -1 *.dist`; do
+  # this will be a symlink to HORDE_CONFIG_DIR
+  cd $HORDE_DIR/config
+  for f in $(ls -1 *.dist); do
     [ -e ${f%.dist} ] || cp $f ${f%.dist}
   done
   chmod -w *.dist

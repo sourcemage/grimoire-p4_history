@@ -1,0 +1,21 @@
+diff -urN web2ldap-0.11.8/fcgi/web2ldap.py web2ldap/fcgi/web2ldap.py
+--- web2ldap-0.11.8/fcgi/web2ldap.py	2002-09-23 19:10:40.000000000 -0400
++++ web2ldap/fcgi/web2ldap.py	2002-12-11 14:15:30.000000000 -0500
+@@ -13,7 +13,7 @@
+ $Id: web2ldap.py,v 1.24 2002/09/23 23:10:40 michael Exp $
+ """
+ 
+-import sys,os,time,fcgi,threading
++import sys,os,time,threading
+ 
+ 
+ exec_startdir = os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[0])))
+@@ -24,7 +24,7 @@
+   # For finding web2ldapcnf.py in /etc/web2ldap on Unix systems
+   sys.path.append('/etc/web2ldap')
+ 
+-import web2ldapcnf.misc,web2ldapcnf.fastcgi
++import fcgi,web2ldapcnf.misc,web2ldapcnf.fastcgi
+ 
+ open(web2ldapcnf.fastcgi.pid_file,'w').write(str(os.getpid()))
+ 

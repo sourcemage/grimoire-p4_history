@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: mkconf.sh,v 1.4 2002/07/29 23:53:53 sergeyli Exp $
+# $Id: mkconf.sh,v 1.5 2003/01/04 05:41:22 sergeyli Exp $
 
 # full host name
 HOST=`hostname`
@@ -60,15 +60,18 @@ defaultsearchbase	"$SUFFIX"
 lastmod on
 
 #######################################################################
-# ldbm database definitions
+# Berkeley DB backend database definitions
 #######################################################################
+
+# Backend name
+backend bdb
 
 # Berkeley DB (DBD) will serve as a backend
 database	bdb
 
 # The database directory MUST exist prior to running slapd AND 
 # should only be accessible by the slapd/tools. Mode 700 recommended.
-directory	/var/openldap-bdb
+directory	/var/openldap-data
 
 # Indices to maintain
 index	objectclass	eq
@@ -117,6 +120,9 @@ pam_filter	objectclass=posixAccount
 # Use the OpenLDAP password change
 # extended operation to update the password.
 pam_password exop
+
+# LDAP protocol version
+ldap_version 3
 __EOF__
 
 [ -e /etc/ldap.conf ] || cp /etc/ldap.conf.default /etc/ldap.conf
