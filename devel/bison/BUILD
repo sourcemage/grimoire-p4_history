@@ -2,7 +2,8 @@
 
   ./configure  --build=$BUILD              \
                --prefix=/usr               \
-               --datadir=/usr/share/bison  &&
+               --datadir=/usr/share/bison  \
+               $OPTS                       &&
   make                                     &&
   prepare_install                          &&
   make    install                          &&

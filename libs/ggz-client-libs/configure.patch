@@ -1,0 +1,13 @@
+--- configure	2002-11-05 09:35:19.000000000 +0100
++++ configure.new	2002-11-05 09:35:25.000000000 +0100
+@@ -985,10 +985,8 @@
+ 
+ 
+ if test "x${prefix}" = "xNONE"; then
+-   CPPFLAGS="$CPPFLAGS -I${ac_default_prefix}/include"
+    LDFLAGS="$LDFLAGS -L${ac_default_prefix}/lib"
+ else
+-   CPPFLAGS="$CPPFLAGS -I${prefix}/include"
+    LDFLAGS="$LDFLAGS -L${prefix}/lib"
+ fi
+ 
