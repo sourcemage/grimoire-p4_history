@@ -1,5 +1,5 @@
            SPELL=lostirc
-         VERSION=${VERSION:=0.4.1}
+         VERSION=${VERSION:=0.4.2}
 if [ "$CVS" = "yes" ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -10,7 +10,7 @@ SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/lostirc:lost
 else
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]='fcbca4774892b78225ef503d42ba040d'
+          MD5[0]='f89920d60d69a802d5da0a53c8aa06e2'
       LICENSE[1]=GPL
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
