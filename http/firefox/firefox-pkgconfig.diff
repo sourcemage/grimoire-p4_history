@@ -1,0 +1,54 @@
+diff -u -a -b -B -r mozilla-orig/build/unix/mozilla-gtkmozembed.pc.in mozilla/build/unix/mozilla-gtkmozembed.pc.in
+--- mozilla-orig/build/unix/mozilla-gtkmozembed.pc.in	2004-09-29 02:08:26.481657456 +0000
++++ mozilla/build/unix/mozilla-gtkmozembed.pc.in	2004-09-29 02:09:22.869085264 +0000
+@@ -6,6 +6,6 @@
+ Name: Mozilla Gtk Embedding Widget
+ Description: Mozilla Embedding Widget for Gtk+
+ Version: %MOZILLA_VERSION%
+-Requires: mozilla-xpcom = %MOZILLA_VERSION%
++Requires: firefox-xpcom = %MOZILLA_VERSION%
+ Libs: -L${libdir} -lgtkembedmoz %SUPERWIN_LIBS%
+ Cflags: -I${includedir}/gtkembedmoz
+diff -u -a -b -B -r mozilla-orig/build/unix/mozilla-js.pc.in mozilla/build/unix/mozilla-js.pc.in
+--- mozilla-orig/build/unix/mozilla-js.pc.in	2004-09-29 02:08:26.644632680 +0000
++++ mozilla/build/unix/mozilla-js.pc.in	2004-09-29 02:09:36.697982952 +0000
+@@ -6,6 +6,6 @@
+ Name: JavaScript
+ Description: The Mozilla JavaScript Library
+ Version: %MOZILLA_VERSION%
+-Requires: mozilla-nspr = %MOZILLA_VERSION%
++Requires: firefox-nspr = %MOZILLA_VERSION%
+ Libs: -L${libdir} -lmozjs
+ Cflags: -I${includedir}/js -DXP_UNIX
+diff -u -a -b -B -r mozilla-orig/build/unix/mozilla-nss.pc.in mozilla/build/unix/mozilla-nss.pc.in
+--- mozilla-orig/build/unix/mozilla-nss.pc.in	2004-09-29 02:08:26.640633288 +0000
++++ mozilla/build/unix/mozilla-nss.pc.in	2004-09-29 02:10:04.749718440 +0000
+@@ -6,6 +6,6 @@
+ Name: NSS
+ Description: Mozilla Network Security Services
+ Version: %MOZILLA_VERSION%
+-Requires: mozilla-nspr = %MOZILLA_VERSION%
++Requires: firefox-nspr = %MOZILLA_VERSION%
+ Libs: -L${libdir} -lnss3 -lsmime3 -lssl3 -lsoftokn3
+ Cflags: -I${includedir}/nss
+diff -u -a -b -B -r mozilla-orig/build/unix/mozilla-plugin.pc.in mozilla/build/unix/mozilla-plugin.pc.in
+--- mozilla-orig/build/unix/mozilla-plugin.pc.in	2004-09-29 02:08:26.639633440 +0000
++++ mozilla/build/unix/mozilla-plugin.pc.in	2004-09-29 02:10:23.674841384 +0000
+@@ -6,5 +6,5 @@
+ Name: Mozilla Plug-In API
+ Description: Mozilla Plug-In API
+ Version: %MOZILLA_VERSION%
+-Requires: mozilla-xpcom = %MOZILLA_VERSION%
++Requires: firefox-xpcom = %MOZILLA_VERSION%
+ Cflags: -I${includedir}/java -I${includedir}/plugin
+diff -u -a -b -B -r mozilla-orig/build/unix/mozilla-xpcom.pc.in mozilla/build/unix/mozilla-xpcom.pc.in
+--- mozilla-orig/build/unix/mozilla-xpcom.pc.in	2004-09-29 02:08:26.482657304 +0000
++++ mozilla/build/unix/mozilla-xpcom.pc.in	2004-09-29 02:10:36.472895784 +0000
+@@ -6,6 +6,6 @@
+ Name: XPCOM
+ Description: The Mozilla Cross Platform Component Library
+ Version: %MOZILLA_VERSION%
+-Requires: mozilla-nspr = %MOZILLA_VERSION%
++Requires: firefox-nspr = %MOZILLA_VERSION%
+ Libs: -L${libdir} -lxpcom
+ Cflags: -I${includedir}/xpcom -I${includedir}/string
