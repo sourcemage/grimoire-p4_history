@@ -30,30 +30,38 @@
   sedit "s/BUILD_SHARED_LIBS\:BOOL=OFF/BUILD_SHARED_LIBS\:BOOL=ON/" CMakeCache.txt          &&
   sedit "s/CMAKE_BUILD_TYPE:STRING=/&Release/" CMakeCache.txt                               &&
   sedit "s/BUILD_EXAMPLES\:BOOL=OFF/BUILD_EXAMPLES\:BOOL=ON/" CMakeCache.txt                &&
+  sedit "s/VTK_USE_HYBRID\:BOOL=OFF/VTK_USE_HYBRID\:BOOL=ON/" CMakeCache.txt                &&
   sedit "s/CMAKE_CXX_FLAGS_RELEASE\:STRING=-O3/CMAKE_CXX_FLAGS_RELEASE\:STRING=$CFLAGS/" CMakeCache.txt &&
+
   if echo $OPTS| grep -q "with-doxygen" ; then
   sedit "s/BUILD_DOCUMENTATION\:BOOL=OFF/BUILD_DOCUMENTATION\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   #Use the system's expat library.
   if echo $OPTS| grep -q "with-expat" ; then
   sedit "s/VTK_USE_SYSTEM_EXPAT\:BOOL=OFF/VTK_USE_SYSTEM_EXPAT\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   #Use the system's jpeg library.
   if echo $OPTS| grep -q "with-jpeg" ; then
   sedit "s/VTK_USE_SYSTEM_JPEG\:BOOL=OFF/VTK_USE_SYSTEM_JPEG\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   #Use the system's png library.
   if echo $OPTS| grep -q "with-libpng" ; then
   sedit "s/VTK_USE_SYSTEM_PNG\:BOOL=OFF/VTK_USE_SYSTEM_PNG\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   #Use the system's tiff library.
   if echo $OPTS| grep -q "with-tiff" ; then
   sedit "s/VTK_USE_SYSTEM_TIFF\:BOOL=OFF/VTK_USE_SYSTEM_TIFF\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   #Use the system's zlib library.
   if echo $OPTS| grep -q "with-zlib" ; then 
   sedit "s/VTK_USE_SYSTEM_ZLIB\:BOOL=OFF/VTK_USE_SYSTEM_ZLIB\:BOOL=ON/" CMakeCache.txt
   fi              &&
+
   make            &&
   prepare_install &&
   make install    &&
