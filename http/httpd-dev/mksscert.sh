@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: mksscert.sh,v 1.2 2002/10/08 22:14:06 sergeyli Exp $
+# $Id: mksscert.sh,v 1.3 2002/11/04 18:48:15 sergeyli Exp $
 
 function generate_self_signed_certificate() {
     local -r CONF_DIR=/etc/httpd
@@ -19,11 +19,12 @@ function generate_self_signed_certificate() {
     local -r CA_CRR=$CRR_DIR/ca-revokereq.pem
 
 #
-# HTTPD attributes
-    local -r HTTPD_KEY=$KEY_DIR/httpd-key.pem
-    local -r HTTPD_CSR=$CSR_DIR/httpd-signreq.pem
-    local -r HTTPD_CRT=$CRT_DIR/httpd-certificate.pem
-    local -r HTTPD_CLR=$CRR_DIR/httpd-revokereq.pem
+# SERVICE attributes
+    local -r SERVICE=${1:-httpd}
+    local -r SERVICE_KEY=$KEY_DIR/$SERVICE-key.pem
+    local -r SERVICE_CSR=$CSR_DIR/$SERVICE-signreq.pem
+    local -r SERVICE_CRT=$CRT_DIR/$SERVICE-certificate.pem
+    local -r SERVICE_CLR=$CRR_DIR/$SERVICE-revokereq.pem
 
 #
 # Custom attributes
@@ -64,47 +65,49 @@ function generate_self_signed_certificate() {
 #
 # Step 1d. CA certificate revocation request (CRR), just in case
 
+# TODO: do it
+
 #
 # Step 2a. Server keys
-    if [ -e $HTTPD_KEY ]; then
-	echo "-=* Server key: $HTTPD_KEY *=-"
+    if [ -e $SERVICE_KEY ]; then
+	echo "-=* Server key: $SERVICE_KEY *=-"
     else
-	echo "-=* Generating server key: $HTTPD_KEY *=-"
-	openssl genrsa $RANDOMIZE -out $HTTPD_KEY $RSA_BITS || exit
+	echo "-=* Generating server key: $SERVICE_KEY *=-"
+	openssl genrsa $RANDOMIZE -out $SERVICE_KEY $RSA_BITS || exit
 
   #
   # New key means new certificate
-	if [ -e $HTTPD_CSR ]; then mv -fv $HTTPD_CSR $HTTPD_CSR.$TIMESTAMP; fi
-	if [ -e $HTTPD_CRT ]; then mv -fv $HTTPD_CRT $HTTPD_CRT.$TIMESTAMP; fi
-	if [ -e $HTTPD_CRR ]; then mv -fv $HTTPD_CRR $HTTPD_CRR.$TIMESTAMP; fi
+	if [ -e $SERVICE_CSR ]; then mv -fv $SERVICE_CSR $SERVICE_CSR.$TIMESTAMP; fi
+	if [ -e $SERVICE_CRT ]; then mv -fv $SERVICE_CRT $SERVICE_CRT.$TIMESTAMP; fi
+	if [ -e $SERVICE_CRR ]; then mv -fv $SERVICE_CRR $SERVICE_CRR.$TIMESTAMP; fi
     fi
 
 #
 # Step 2b. Server certificate signing request
-    if [ -e $HTTPD_CSR ]; then
-	echo "-=* Server certificate signing request: $HTTPD_CSR *=-"
-    elif ! [ -e $HTTPD_CRT ]; then
-	echo "-=* Generating server certificate signing request: $HTTPD_CSR *=-"
+    if [ -e $SERVICE_CSR ]; then
+	echo "-=* Server certificate signing request: $SERVICE_CSR *=-"
+    elif ! [ -e $SERVICE_CRT ]; then
+	echo "-=* Generating server certificate signing request: $SERVICE_CSR *=-"
 	echo "Specify server's FQDN as Common Name (CN)"
-	openssl req -new -key $HTTPD_KEY -out $HTTPD_CSR || exit
+	openssl req -new -key $SERVICE_KEY -out $SERVICE_CSR || exit
     fi
 
 #
 # Step 2c. Server certificate, signed by CA
-    if [ -s $HTTPD_CRT ]; then
-	echo "-=* Server certificate: $HTTPD_CRT *=-"
+    if [ -s $SERVICE_CRT ]; then
+	echo "-=* Server certificate: $SERVICE_CRT *=-"
     else
-	if [ -e $HTTPD_CRT ]; then
-	    echo "-=* Deleting zero-length server certificate: $HTTPD_CRT *=-"
-	    rm -f $HTTPD_CRT
+	if [ -e $SERVICE_CRT ]; then
+	    echo "-=* Deleting zero-length server certificate: $SERVICE_CRT *=-"
+	    rm -f $SERVICE_CRT
 	fi
 
-	echo "-=* Generating server certificate: $HTTPD_CRT *=-"
+	echo "-=* Generating server certificate: $SERVICE_CRT *=-"
 	if ! [ -w $CA_SRL ]; then
 	    if ! [ -s $CA_SRL ]; then echo "01" > $CA_SRL; fi
 	    chmod u+rw $CA_SRL
 	fi
-	openssl x509 -days 1024 -CA $CA_CRT -CAkey $CA_KEY -CAserial $CA_SRL -in $HTTPD_CSR -req -out $HTTPD_CRT || exit
+	openssl x509 -days 1024 -CA $CA_CRT -CAkey $CA_KEY -CAserial $CA_SRL -in $SERVICE_CSR -req -out $SERVICE_CRT || exit
 	echo "-=* Done! *=-"
     fi
 }
@@ -112,10 +115,16 @@ function generate_self_signed_certificate() {
 #
 # Step 2d. Server certificate revocation request (CRR), just in case
 
+# TODO: do it
+
+#
+# Switch context to root if we're not the one
 if [ "$UID" != 0 ]; then
     echo "Switching to root..."
     su - -c "$PWD/$0 $*"
     exit
 fi
 
-generate_self_signed_certificate
+#
+# Main function
+generate_self_signed_certificate "$@"
