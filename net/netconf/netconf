@@ -22,6 +22,10 @@
 # Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2004-02-11  charkins <charkins@pobox.com>
+#     - removed special handling of loopback device, lo.dev file will
+#       be removed automatically if it exists (bug #5776)
+# 
 # 2004-01-20  charkins <charkins@pobox.com>
 #     - small fix in cfg_mtu() where dialog was defaulting to GATEWAY
 #       rather than MTU
@@ -167,7 +171,7 @@
 #        HOSTSFN: name of file containing hosts
 #       RESOLVFN: name of file containing nameservers
 #
-NETCONFVERSION='1.1'
+NETCONFVERSION='1.2'
 ROOTCHECK=1
 NETDEVDIR=/etc/sysconfig/network
 HOSTNAMEFN=/etc/hostname
@@ -245,6 +249,11 @@ getnetdevs() {
 	# only run if necessary (on start, add or remove)
 	if [ -n "$GOTNETDEVS" ]; then
 		return 0;
+	fi
+
+	# remove the unused lo.dev file if it exists
+	if [ -e ${NETDEVDIR}/lo.dev ]; then
+		rm -f ${NETDEVDIR}/lo.dev >> /dev/null
 	fi
 
 	local id
@@ -512,32 +521,6 @@ check_devdir() {
 
 }
 
-# check_lo()
-#
-# Checks to see if the loopback device exists and prompts
-# the user to create it if it does not exist.
-#
-check_lo() {
-
-	# check if lo.dev exists
-	if [ ! -f "$NETDEVDIR/lo.dev" ]; then
-		COMMAND=`$DIALOG --backtitle "$BACKTITLE"                              \
-	                 --stdout                                                  \
-	                 --title "Create Loopback Device"                          \
-	                 --yesno                                                   \
-	                 "The loopback network device is not configured, do you want to create it now?"  \
-	                 0 0`
-
-		if [ $? -eq 0 ]; then
-			loadnetdev "$NETDEVDIR/lo.dev"
-			devname="lo.dev"
-			save_new "$NETDEVDIR/lo.dev"
-			unset devname
-		fi
-	fi
-
-}
-
 # loadnetdev()
 #
 # Unsets network device variables then loads the
@@ -571,19 +554,8 @@ loadnetdev() {
 	if [ -e $1 ]; then
 		# file exists, load it
 		source $1
-	elif [ "$devname" == "lo" ]; then
-		# new loopback device, set defaults
-		MODULE=''
-		MODE='static'
-		IP='127.0.0.1'
-		BROADCAST='127.255.255.255'
-		NETMASK='255.0.0.0'
-		GATEWAY=''
-		POINTOPOINT=''
-		MTU=''
-		UP_ON_BOOT='yes'
 	else
-		# new non-loopback device, set defaults
+		# new device, set defaults
 		MODE='dynamic'
 		POINTOPOINT=''
 		MTU=''
@@ -902,23 +874,13 @@ remove_device() {
 
 	devname=`basename $1 .dev`
 
-	if [ "$devname" == "lo" ]; then
-		# give special warning about removing loopback device
-		COMMAND=`$DIALOG --backtitle "$BACKTITLE"                              \
-		                 --stdout                                              \
-		                 --title "Confirm loopback device removal"             \
-		                 --yesno                                               \
-		                 "The loopback network device is necessary to make local connections to your machine. Removing this device may break some software! Are you absolutely sure you want to remove the loopback device: ${devname}?" \
-		                 0 0`
-	else
-		# confirm removal of network device
-		COMMAND=`$DIALOG --backtitle "$BACKTITLE"                              \
-		                 --stdout                                              \
-		                 --title "Confirm device removal"                      \
-		                 --yesno                                               \
-		                 "Are you sure you want to remove device file: ${devname}?" \
-		                 0 0`
-	fi
+	# confirm removal of network device
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                              \
+	                 --stdout                                              \
+	                 --title "Confirm device removal"                      \
+	                 --yesno                                               \
+	                 "Are you sure you want to remove device file: ${devname}?" \
+	                 0 0`
 
 	if [ $? -eq 0 ]; then
 		rm -f $1
@@ -1232,7 +1194,6 @@ cfg_device() {
 #
 #	--check_hostname : calls check_hostname
 #	--check_devdir   : calls check_devdir
-#	--check_lo       : calls check_lo
 #
 parse_args() {
 
@@ -1250,8 +1211,6 @@ parse_args() {
 		                    exit 0            ;;
 		'--check_devdir')   check_devdir
 		                    exit 0            ;;
-		'--check_lo')       check_lo
-		                    exit 0            ;;
 		*) echo "Error: Invalid argument: $1"
 		   exit 1                             ;;
 	esac
@@ -1267,7 +1226,6 @@ main() {
 	parse_args $*
 	check_hostname
 	check_devdir
-	check_lo
 
 	local curhostname
 	unset GOTNETMODS GOTNETDEVS
