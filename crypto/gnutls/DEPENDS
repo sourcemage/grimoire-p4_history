@@ -1,4 +1,5 @@
 depends  libgcrypt  &&
+depends  opencdk    &&
 
 optional_depends  "zlib"                          \
                   ""                              \
@@ -13,9 +14,4 @@ optional_depends  "libtasn1"                      \
 optional_depends  "lzo"                           \
                   ""                              \
                   "--with-included-lzo"           \
-                  "to use external liblzo"        &&
-
-optional_depends  "opencdk"                       \
-                  ""                              \
-                  ""                              \
-                  "to use OpenPGP keys with gnutls"
+                  "to use external liblzo"
