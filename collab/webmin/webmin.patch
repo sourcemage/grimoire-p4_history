@@ -1,0 +1,75 @@
+diff -urN webmin-0.970/setup.sh webmin/setup.sh
+--- webmin-0.970/setup.sh	2002-05-07 01:08:45.000000000 -0400
++++ webmin/setup.sh	2002-05-27 19:29:53.000000000 -0400
+@@ -46,7 +46,7 @@
+ echo "Unless you want to run multiple versions of Webmin at the same time"
+ echo "you can just accept the defaults."
+ echo ""
+-printf "Config file directory [/etc/webmin]: "
++printf "Config file directory [${config_dir:-/etc/webmin}]: "
+ if [ "$config_dir" = "" ]; then
+ 	read config_dir
+ fi
+@@ -133,7 +133,7 @@
+ 	fi
+ 
+ 	# Ask for log directory
+-	printf "Log file directory [/var/webmin]: "
++	printf "Log file directory [${var_dir:-/var/webmin}]: "
+ 	if [ "$var_dir" = "" ]; then
+ 		read var_dir
+ 	fi
+@@ -183,7 +183,7 @@
+ 				exit 4
+ 			fi
+ 		else
+-			printf "Full path to perl (default $perldef): "
++			printf "Full path to perl (default ${perl:-$perldef}): "
+ 			read perl
+ 			if [ "$perl" = "" ]; then
+ 				perl=$perldef
+@@ -256,7 +256,7 @@
+ 	echo " - If the webserver should use SSL (if your system supports it)."
+ 	echo " - Whether to start webmin at boot time."
+ 	echo ""
+-	printf "Web server port (default 10000): "
++	printf "Web server port (default ${port:-10000}): "
+ 	if [ "$port" = "" ]; then
+ 		read port
+ 		if [ "$port" = "" ]; then
+@@ -280,7 +280,7 @@
+ 		echo ""
+ 		exit 13
+ 	fi
+-	printf "Login name (default admin): "
++	printf "Login name (default ${login:-admin}): "
+ 	if [ "$login" = "" ]; then
+ 		read login
+ 		if [ "$login" = "" ]; then
+@@ -293,7 +293,7 @@
+ 		echo ""
+ 		exit 14
+ 	fi
+-	printf "Login password: "
++	printf "Login password [$password]: "
+ 	if [ "$password" = "" -a "$crypt" = "" ]; then
+ 		stty -echo
+ 		read password
+@@ -317,7 +317,7 @@
+ 		fi
+ 	fi
+ 	defhost=`hostname`
+-	printf "Web server host name (default $defhost): "
++	printf "Web server host name (default ${host:-$defhost}): "
+ 	if [ "$host" = "" ]; then
+ 		read host
+ 		if [ "$host" = "" ]; then
+@@ -368,7 +368,7 @@
+ 	echo "addtype_cgi=internal/cgi" >> $cfile
+ 	echo "realm=Webmin Server" >> $cfile
+ 	echo "logfile=$var_dir/miniserv.log" >> $cfile
+-	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
++	echo "pidfile=/var/run/miniserv.pid" >> $cfile
+ 	echo "logtime=168" >> $cfile
+ 	echo "ppath=$ppath" >> $cfile
+ 	echo "ssl=$ssl" >> $cfile
