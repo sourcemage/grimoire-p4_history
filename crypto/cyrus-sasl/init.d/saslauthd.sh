@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:1 2 3 4 5:S40
+# SMGL-STOP:0 6:K45
+#
 
 source /etc/init.d/functions
 
