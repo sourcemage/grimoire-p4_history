@@ -1,20 +1,13 @@
            SPELL=tiff
-         VERSION=v3.6.1
-      KITVERSION=1.5
+         VERSION=3.7.1
           SOURCE=$SPELL-$VERSION.tar.gz
-# You must have a written license from Unisys in order to use LZW compression
-# This patent has expired in most countries, and will expire by 04/06/30 in all
-         SOURCE2=libtiff-lzw-compression-kit-$KITVERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.remotesensing.org/libtiff/$SOURCE
-  SOURCE2_URL[0]=ftp://ftp.remotesensing.org/libtiff/$SOURCE2
-          MD5[0]=136293eedc756d014236746643ef6a87
-          MD5[1]=b7d9b053fa4934948cb989a53b19fffc
+          MD5[0]=3ff43ded2e979385532cd227a1f2d8e5
         WEB_SITE=http://www.libtiff.org
          ENTERED=20010922
          UPDATED=20010929
       LICENSE[0]=LGPL
-      LICENSE[1]=UNKOWN
        BUILD_API=2
            SHORT="tiff provides support for the Tag Image File Format."
 cat << EOF
@@ -38,4 +31,5 @@ for day to day maintenance.
 Questions should be sent to the TIFF mailing list: tiff@olympiakos.com.
 The persons responsible for putting up this site and putting together
 versions >= 3.5.1 are Frank Warmerdam and Mike Welles.
+Contains LZW algorithm, set to expire in 2003-04-06 in all countries.
 EOF
