@@ -23,7 +23,7 @@ fi
 (
 # make the driver
 
-if spell_installed linux; then
+if spell_ok linux; then
   VERSION=`installed_version linux`
 fi
 
