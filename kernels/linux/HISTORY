@@ -1,3 +1,20 @@
+2004-02-17 Eric Sandall <eric@sandall.us>
+	* KERNELS: Updated to 2.6.3-rc4
+
+2004-02-16 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
+	* KERNELS: Updated to 2.4.25-rc2, 2.6.3-rc3 and 2.6.3-rc3-mm1
+
+2004-02-10 Eric Sandall <eric@sandall.us>
+	* BUILD: Testing for wrong flag ($HOST) to determine
+	$ARCH; it now uses `uname -m` so that it will catch
+	what machine it's compiling /on/ instead of what
+	the user selected (which may break cross-compiling the kernel).
+	The old way, the kernel would not compile correctly for a sparc64
+	(since userland is compiled as 32-bit, the kernel would detect
+	only "sparc" in HOST, not "sparc64", and the kernel has to be
+	compiled as 64-bit).
+	Tested on my sparc64 and athlon-mp (i686), got further than before. ;)
+
 2004-02-09 Eric Sandall <eric@sandall.us>
 	* KERNELS: Updated latest 2_6_PRE to .3-rc2
 
