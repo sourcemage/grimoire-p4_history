@@ -1,0 +1,20 @@
+           SPELL=ruby-gtk2
+         VERSION=0.4.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/ruby-gnome2/$SOURCE
+          MD5[0]=e48e0bf90af003cc5888a9174d5690df
+      LICENSE[0]=GPL
+        WEB_SITE=http://ruby-gnome2.sourceforge.net
+      MAINTAINER=v.merkatz@gmx.net
+         ENTERED=20030327
+         UPDATED=20030327
+           SHORT="ruby-gtk2 is a set of ruby bindings for gtk+2"
+cat << EOF
+ruby-gtk2 is a set of ruby bindings for gtk+2
+it includes:
+- Ruby/Glib2
+- Ruby/GdkPixbuf2
+- Ruby/GTK2
+- Ruby/Pango
+EOF
