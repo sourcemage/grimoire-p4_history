@@ -3,9 +3,7 @@ depends libgnomeui  &&
 optional_depends net-tools   "" "" "Enable netstat and ifconfig functionality" &&
 optional_depends netkit-ping "" "" "Enable ping functionality"                 &&
 optional_depends traceroute  "" "" "Enable traceroute fuctionality"            &&
-optional_depends dig         "" "" "Enable dig functionality"                  &&
-optional_depends whois       "" "" "Enable whois functionality"                
-
-# need an optional depends for the scan but I don't know what tool it is using.
-# need an optional depends for finger but I don't know what spell provides that.
+optional_depends bind-tools  "" "" "Enable dig functionality"                  &&
+optional_depends whois       "" "" "Enable whois functionality"                &&
+optional_depends bsd-finger  "" "" "Enable finger functionality"               
  
