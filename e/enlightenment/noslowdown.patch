@@ -1,0 +1,18 @@
+diff -Naur enlightenment-0.17-cvs.orig/src/bin/e_main.c enlightenment-0.17-cvs/src/bin/e_main.c
+--- enlightenment-0.17-cvs.orig/src/bin/e_main.c	2005-03-09 21:02:02.701284120 -0800
++++ enlightenment-0.17-cvs/src/bin/e_main.c	2005-03-09 21:03:11.984751432 -0800
+@@ -323,10 +323,10 @@
+      }
+    else
+      {
+-	ecore_timer_add( 3.0, _e_main_cb_startup_fake_status, "Artificially slowing startup so you can see it all.");
+-	ecore_timer_add( 7.5, _e_main_cb_startup_fake_status, "This is development code, so be warned.");
+-	ecore_timer_add(12.0, _e_main_cb_startup_fake_status, "Most features do not work yet, and those that do are buggy.");
+-	ecore_timer_add(16.0, _e_main_cb_startup_fake_end, NULL);
++	ecore_timer_add( 0.0, _e_main_cb_startup_fake_status, "Artificially slowing startup so you can see it all.");
++	ecore_timer_add( 0.0, _e_main_cb_startup_fake_status, "This is development code, so be warned.");
++	ecore_timer_add( 0.0, _e_main_cb_startup_fake_status, "Most features do not work yet, and those that do are buggy.");
++	ecore_timer_add( 0.0, _e_main_cb_startup_fake_end, NULL);
+      }
+    
+    /* start our main loop */
