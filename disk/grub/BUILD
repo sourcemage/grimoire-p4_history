@@ -306,6 +306,11 @@ fi  &&
 
 # End setting up OPTS
 
+# Launch automake tools to get the patchs options integrated
+aclocal &&
+automake --foreign --add-missing &&
+autoconf &&
+
 ./configure  --build=$BUILD           \
             --prefix=/usr             \
            --sbindir=/sbin            \
