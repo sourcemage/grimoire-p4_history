@@ -1,0 +1,13 @@
+if ! grep -q CVS $SPELL_CONFIG; then
+  if	query "Build the CVS?" n
+  then	CVS=yes
+  else	CVS=no
+  fi
+  if	query "Build with NLS?" n
+  then	NLS=yes
+  else	NLS=no
+  fi
+  echo "NLS=$NLS" >> $SPELL_CONFIG
+  echo "CVS=$CVS" >> $SPELL_CONFIG
+fi
+. $SPELL_CONFIG

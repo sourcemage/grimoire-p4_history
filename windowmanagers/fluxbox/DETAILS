@@ -1,27 +1,28 @@
            SPELL=fluxbox
+if [ "$CVS" = "yes" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.fluxbox.sourceforge.net:/cvsroot/fluxbox:fluxbox
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
          VERSION=0.9.8
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
    SOURCE_URL[1]=http://fluxbox.org/download/$SOURCE
           MD5[0]=de0b6d7876c6d720b9410f46e6071ed4
-        WEB_SITE=http://$SPELL.sourceforge.net/
+fi
+        WEB_SITE=http://www.fluxbox.org
          ENTERED=20011210
-         UPDATED=20030904
+         UPDATED=20040405
       LICENSE[0]=MIT
            SHORT="Fluxbox is yet another windowmanager!"
 cat << EOF
-Fluxbox is yet another windowmanager!
+Fluxbox is yet another windowmanager for X.
 
-It is based on the Blackbox 0.61.1 code. Fluxbox looks like blackbox
-and handles styles, colors, window placement and similar thing exactly
-like blackbox.
+It's based on the Blackbox 0.61.1 code. Fluxbox looks like blackbox and handles styles, colors, window 
+placement and similar thing exactly like blackbox (100% theme/style compability).
 
-FEATURES:
-Here are the major features of fluxbox:
-* Our custom keygrabber (support for emacs-styled kkeychains)
-* Iconbar (the toolbar shows minimized windows, one click and they pop back up)
-* Configurable titlebar (placement of buttons, new buttons etc)
-* Window tabs (see this page for more info and screenshot)
-In addition to all this many small fixes and minor features have been added
 EOF
