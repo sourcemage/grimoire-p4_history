@@ -1,5 +1,7 @@
 (
 
+  rm -f /usr/share/httpd/htdocs/squirrelmail/doc 
+  rm -fr /usr/doc/squirrelmail
   prepare_install   
   mkdir -p /usr/share/httpd/htdocs/$SPELL
   cp    -a $SPELL-$VERSION/* /usr/share/httpd/htdocs/$SPELL
