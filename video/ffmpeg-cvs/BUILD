@@ -3,7 +3,6 @@
   export    CFLAGS="${CFLAGS/-funroll-loops/} -O3"
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/faad2.patch   &&
   patch  -p0  <  $SCRIPT_DIRECTORY/ffmpeg.patch  &&
   sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
   sedit  's:-Werror::'  libavformat/Makefile  &&
@@ -12,6 +11,7 @@
                --enable-pp                   \
                --enable-shared-pp            \
                --enable-a52                  \
+               --enable-gpl                  \
                $OPTS                         &&
   cd  libavcodec/libpostproc  &&
   make                        &&
