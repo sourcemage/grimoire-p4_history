@@ -1,15 +1,15 @@
-SPELL=noteedit
-VERSION=2.6.3
-SOURCE=$SPELL-$VERSION.tgz
+           SPELL=noteedit
+         VERSION=2.7.4
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://rnvs.informatik.tu-chemnitz.de/cgi-bin/nph-sendbin.cgi/~jan/noteedit/$SOURCE
-WEB_SITE=http://rnvs.informatik.tu-chemnitz.de/%7Ejan/noteedit/noteedit.html
-ENTERED=20031118
-UPDATED=20031118
-MD5[0]=1f75c9f80985a5cf020ee0989b45ad03
-LICENSE[0]=GPL
-MAINTAINER=g.o.d@zefix.tv
-SHORT="KDE Musical Score Editor"
+   SOURCE_URL[0]=http://download.berlios.de/noteedit/$SOURCE
+          MD5[0]=61ae8911c6402b172066460f9b61007b
+        WEB_SITE=http://developer.berlios.de/projects/noteedit/
+         ENTERED=20031118
+         UPDATED=20031118
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="KDE Musical Score Editor"
 cat << EOF
 A musical score editor for KDE with support for
 MIDI (via tse3) and support for various music
