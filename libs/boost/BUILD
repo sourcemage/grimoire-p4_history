@@ -9,6 +9,7 @@
   export CXXFLAGS="$CFLAGS"                 &&
 
   cd  libs/config                           &&
+  chmod u+x configure                       &&
   ./configure --prefix=${INSTALL_ROOT}/usr  \
           --sysconfdir=${INSTALL_ROOT}/etc  \
        --localstatedir=${INSTALL_ROOT}/var  \
