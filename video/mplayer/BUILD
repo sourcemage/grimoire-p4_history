@@ -1,6 +1,3 @@
-if [ "$(uname -m)" = "ppc" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/mplayer-1.0_pre5-yuv2rbg_kludge.patch
-fi  &&
 # fixes bug #6833
 patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
@@ -11,21 +8,13 @@ patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
 else
-  patch -p0 < $SCRIPT_DIRECTORY/live-api-change.patch  &&
   OPTS="$OPTS --enable-libavcodec"
 fi  &&
 
-case  $GUI  in
-  y|Y)  OPTS="$OPTS  --enable-gui"  ;;
-esac  &&
-
-case  $JOYSTICK  in
-  y|Y)  OPTS="$OPTS  --enable-joystick"  ;;
-esac  &&
-
-case  $OSD_MENU  in
-  y|Y)  OPTS="$OPTS  --enable-menu"  ;;
-esac  &&
+if [ "$GUI" = "y" ]; then OPTS="$OPTS --enable-gui"; fi             &&
+if [ "$JOYSTICK" = "y" ]; then OPTS="$OPTS --enable-joystick"; fi   &&
+if [ "$OSD_MENU" = "y" ]; then OPTS="$OPTS --enable-menu"; fi       &&
+if [ "$MENCODER" = "n" ]; then OPTS="$OPTS --disable-mencoder"; fi  &&
 
 CFLAGS= ./configure  --prefix=/usr    \
              --confdir=/etc/mplayer   \
