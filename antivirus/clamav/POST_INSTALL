@@ -1,0 +1,22 @@
+
+CONF=/usr/etc/clamav.conf
+LOG=/var/log/clamav.log
+if [ ! -f $CONF ]; then
+  cp /usr/doc/clamav/clamav.conf $CONF
+  echo LogFile $LOG >> $CONF
+  chown clamav.clamav $CONF
+fi
+  touch $LOG
+  chown clamav $LOG
+  chmod 600 $LOG
+#  touch /etc/clamad.conf
+
+echo this is a test of the virus scanner
+clamscan -r -i $SOURCE_DIRECTORY
+echo test complete
+
+cat <<EOF
+####
+remember to set up a cron job to run /usr/bin/freshclam at frequent intervals,
+so as to have the very latest virus signatures
+EOF

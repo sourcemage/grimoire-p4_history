@@ -1,0 +1,42 @@
+2004-02-24 Treeve Jelbert <treeve01@pi.be>
+	* PRE_BUILD: create_account
+
+2004-02-16 Treeve Jelbert <treeve01@pi.be>
+        * DETAILS: version 0.67
+	add SOURCE2 to fetch .sig file
+	clamdmail-0.15
+	* clam.gpg: added, contains local copy of public key
+	* DEPENDS: add gnupg, 
+	remove dazuko, as it only works on linux-2.4.x
+	remove tnef, add ripmime as clamdmail has changed
+	* PRE_BUILD: gpg check source against .sig 
+	reenable clamdmail
+	* BUILD: reenable clamdmail
+
+2004-02-11 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 0.66
+	add an alternative URL for use when Sourceforge is down
+
+2004-02-06 Treeve Jelbert <treeve01@pi.be>
+	* DEPENDS: add gmp and dazuko
+	* PROVIDES: add VIRUS-SCANNER
+	* init.d/clamd: fix
+
+2003-11-13 Treeve Jelbert <treeve01@pi.be>
+        * DETAILS: version 0.65
+	new website
+	* BUILD disable clamdmail
+
+2003-09-09 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 0.60
+	change URL's to Sourceforge
+	* init.d: add script
+	* BUILD: add clamdmail suppport - version 0.12
+	* BUILD DEPENDS: add tnef support
+
+2002-11-02 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 0.53
+
+2002-10-24 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 0.51
+	spell created
