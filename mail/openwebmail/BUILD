@@ -13,6 +13,11 @@ elif  spell_installed  "apache2";  then
   SLOC="\/usr\/share\/apache2"
 fi
 
+#Security fix
+patch -p1 <$SCRIPT_DIRECTORY/1.90
+
+sleep 15
+
 prepare_install
 
 # move docs
@@ -75,15 +80,16 @@ sedit "s/\/usr\/local\/www\/cgi-bin\/openwebmail/$SLOC\/cgi-bin\/openwebmail/" $
 #echo "password   required     /lib/security/pam_unix.so">> /etc/pam.d/openwebmail
 
 
-patch --verbose $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl-DB.patch
+patch $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl-DB.patch
 
 # Initialize openwebmail
 if [ "$MAIL_STATS" == "n" ]; then
   message "${MESSAGE_COLOR}Patching OpenWebmail init file to skip email report...${DEFAULT_COLOR}"
-  patch --verbose $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl.patch
+  patch $LOC/cgi-bin/openwebmail/openwebmail-tool.pl < $SCRIPT_DIRECTORY/openwebmail-tool.pl.patch
 fi
 
 message "${MESSAGE_COLOR}Initializing OpenWebmail${DEFAULT_COLOR}"
 $LOC/cgi-bin/openwebmail/openwebmail-tool.pl --init
+cp $SCRIPT_DIRECTORY/fr $LOC/cgi-bin/openwebmail/etc/lang
 
 ) > $C_FIFO 2>&1  
