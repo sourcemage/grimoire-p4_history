@@ -7,17 +7,27 @@
 	  Updated VDA patch to 2.1.4 and now maintained by
 	  http://web.onda.com.br/nadal/, so SOURCE_URL moved to
 	  http://web.onda.com.br/nadal/postfix/VDA/
+	  Commented out PostgreSQL patch (hasn't been updated to new postfix)
 	* CONFIGURE: Converted to config_query
+	  Commented out PostgreSQL patch (hasn't been updated to new postfix)
 	  Set default responses for spell status (ugly)
 	* BUILD: Converted to BUILD_API 2
+	  Commented out PostgreSQL patch (hasn't been updated to new postfix)
 	  Don't check for spell_installed since the CONFIGURE script and
 	  DEPENDS takes care of that
 	  Cleaned up spacing
 	  Converted case statements to ifs using config_query responses
 	* INSTALL: Added
+	  Just use `make upgrade` as `make install` is interactive only and
+	  complains if we try to pipe information to it :(
 	* DEPENDS: Formatted to Guru Handbook
+	  Commented out PostgreSQL patch (hasn't been updated to new postfix)
 	* POST_INSTALL, FINAL: POST_INSTALL renamed to FINAL
 	* PRE_REMOVE: Cleanup
+	* PRE_BUILD:  Commented out PostgreSQL patch (hasn't been updated to
+	  new postfix)
+	* FINAL: Prepended local variables with "local"
+	  Commented out PostgreSQL patch (hasn't been updated to new postfix)
 	* HISTORY: Formatted to Guru Handbook
 
 2004-05-03 Seth Woolley <seth@tautology.org>

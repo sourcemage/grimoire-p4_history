@@ -50,6 +50,9 @@ fi  &&
 #
 # Don't default to 'y' even if postgresql is installed
 #
-config_query  PGSQL    "Apply Postgresql patch (EXPERIMENTAL)?"  n
+#
+#  The PostgreSQL patch is outdated
+#
+#config_query  PGSQL    "Apply Postgresql patch (EXPERIMENTAL)?"  n
 config_query  SSL_TLS  "Apply SSL/TLS patch (EXPERIMENTAL)?"  n
 config_query  VDA      "Apply Virtual Delivery Agent (VDA) patch (EXPERIMENTAL?)"  n

@@ -1,8 +1,4 @@
-if  [  -d  ${INSTALL_ROOT}/etc/postfix  ];  then
-  make  upgrade
-else
-  make  install
-fi  &&
+make  upgrade  &&
 
 ln  -sf  ../sbin/sendmail   ${INSTALL_ROOT}/usr/lib/sendmail  &&
 ln  -sf  postfix/aliases    ${INSTALL_ROOT}/etc/aliases       &&
@@ -14,7 +10,7 @@ if  [  "$BENCH"  ==  "y"  ];  then
 
   cp src/smtpstone/qmqp-source ${INSTALL_ROOT}/usr/sbin  &&
   cp src/smtpstone/smtp-sink   ${INSTALL_ROOT}/usr/sbin  &&
-  cp src/smtpstone/smtp-source ${INSTALL_ROOT}/usr/sbin  &&
+  cp src/smtpstone/smtp-source ${INSTALL_ROOT}/usr/sbin
 fi  &&
 
 mkdir  -p               ${INSTALL_ROOT}/usr/doc/$SPELL               &&

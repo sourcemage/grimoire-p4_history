@@ -5,9 +5,12 @@ if  [  "$MYSQL"  ==  "y"  ];  then
   depends  mysql
 fi  &&
 
-if  [  "$PGSQL"  ==  "y"  ];  then
-  depends  postgresql
-fi  &&
+#
+#  The PostgreSQL patch is outdated
+#
+#if  [  "$PGSQL"  ==  "y"  ];  then
+#  depends  postgresql
+#fi  &&
 
 if  [  "$PAM"  ==  "y"  ];  then
   depends  Linux-PAM
