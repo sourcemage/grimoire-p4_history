@@ -1,7 +1,3 @@
-(
-
-  ./autogen.sh  &&
-
-  default_build
-
-) > $C_FIFO 2>&1
+touch  ChangeLog  &&
+./autogen.sh      &&
+default_build
