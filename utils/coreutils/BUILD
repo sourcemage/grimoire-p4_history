@@ -27,6 +27,8 @@ for i in \
     sort md5sum hostid id logname nice nohup pathchk pinky printenv printf seq tee \
     tty users who whoami yes ;
 do  ln -sfn ${INSTALL_ROOT}/bin/$i ${INSTALL_ROOT}/usr/bin/$i
-done                                          
+done &&
 
+  mkdir -p ${INSTALL_ROOT}/etc/profile.d/ &&
+  install -m 0644 $SCRIPT_DIRECTORY/coreutils.sh ${INSTALL_ROOT}/etc/profile.d/
 ) >$C_FIFO 2>&1
