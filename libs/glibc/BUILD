@@ -19,7 +19,7 @@
   make                                        &&
   prepare_install                             &&
   make    install                             &&
-  ldconfig                                    &&
+  (  ldconfig  ||  true  )                    &&
   unset   LD_PRELOAD                          &&
   if  [  -z  "$GLIBC_LOCALES"  ];  then
     cat  $SCRIPT_DIRECTORY/locales  |
