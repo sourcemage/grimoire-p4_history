@@ -5,7 +5,7 @@
           SOURCE=$SPELL-$VERSION.tar.bz2
          SOURCE2=isl3890
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://prism54.org/pub/linux/snapshot/tars/${SOURCE}
+   SOURCE_URL[0]=http://prism54.org/pub/linux/snapshot/tars/${DATE::4}-${DATE:4:2}/${SOURCE}
   SOURCE2_URL[0]=http://prism54.org/firmware/${SOURCE2}
           MD5[0]=IGNORE
         WEB_SITE=http://prism54.org
