@@ -1,0 +1,17 @@
+           SPELL=pnetC
+         VERSION=0.6.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${GNU_URL}/dotgnu/pnet/$SOURCE
+        WEB_SITE=http://www.gnu.org/projects/dotgnu/
+          MD5[0]=02db6437467e3a3bf758c65010616e81
+      LICENSE[0]=LGPL
+         ENTERED=20031105
+         UPDATED=20031105
+      MAINTAINER=v.merkatz@gmx.net
+           SHORT="an ANSI-compatible C library for Portable.NET"
+cat << EOF
+This is the "pnetC" project.  The goal of the project is to create
+an ANSI-compatible C library, that can be compiled down to IL using
+Portable.NET's "cscc" compiler.
+EOF
