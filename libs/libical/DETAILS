@@ -1,16 +1,14 @@
 	   SPELL=libical
-         VERSION=0.23
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://softwarestudio.org/download/$SOURCE
-          MD5[0]=d8e22973fc621d7ddbc2ff36a4ae5e7f
-      LICENSE[0]=GPL
-        WEB_SITE=http://softwarestudio.org/libical/
+         VERSION=0.24.RC4
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION/.RC4/}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/freeassociation/${SOURCE}
+          MD5[0]=1b33344288dad035da837c6e6fa60d01
+        WEB_SITE=http://sourceforge.net/projects/freeassociation/
          ENTERED=20020927
          UPDATED=20020927
-      MAINTAINER=ashaman@flyingtemple.com
+      LICENSE[0]=LGPL
            SHORT="OSS implementation of IETF iCalendar"
-      MAKE_NJOBS=1
 cat << EOF
 Libical is an Open Source implementation of the IETF's iCalendar
 Calendaring and Scheduling protocols. (RFC 2445, 2446, and 2447). It
