@@ -1,17 +1,18 @@
            SPELL=rxvt-unicode
-         VERSION=2.8
+         VERSION=3.0
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://rxvt-unicode-dist.plan9.de/$SOURCE
-        WEB_SITE=http://sourceforge.net/projects/rxvt-unicode
+   SOURCE_URL[0]=http://dist.schmorp.de/rxvt-unicode/$SOURCE
+        WEB_SITE=http://software.schmorp.de/#rxvt-unicode
          ENTERED=20040206
          UPDATED=20040206
-          MD5[0]=3c17810709aa0ddb19856b302b97df8e
+          MD5[0]=d55171758097fb6370da85b13fa9ca3a
       LICENSE[0]=GPL
             DOCS="README.unicode Changes doc/FAQ doc/xterm.seq"
            SHORT="rxvt-unicode is a unicode capable terminal emulator"
 cat << EOF
-rxvt, version 2.6.4, is a colour vt102 terminal emulator intended as an 
+rxvt is a colour vt102 terminal emulator intended as an 
 xterm(1) replacement for users who do not require features such as 
 Tektronix 4014 emulation and toolkit-style configurability. As a result, 
 rxvt uses much less swap space -- a significant advantage on a machine 
