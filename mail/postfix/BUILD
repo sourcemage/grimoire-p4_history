@@ -54,4 +54,7 @@
   sedit  "s:#mail_spool_directory = /var/spool/mail:mail_spool_directory = /var/spool/mail:"  \
          /etc/postfix/main.cf
 
+  sedit  "s|#alias_maps = hash:/etc/aliases$|alias_maps = hash:/etc/aliases|"  \
+         /etc/postfix/main.cf
+
 )

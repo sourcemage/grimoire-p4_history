@@ -2,10 +2,11 @@
 
   bunzip2  -cd  $SCRIPT_DIRECTORY/gcc-2.95.3-2.patch.bz2  |
   patch  -p 1
-  sedit  "s/read junk//"  gcc/p/config-lang.in
-  LANGUAGES="c,c++,objective-c,pascal,fortran,chill,java"
-#               --enable-languages=$LANGAUGES  \
 
+  if    [  "$PASCAL"  ==  "y"  ]
+  then   sedit  "s/read junk//"  gcc/p/config-lang.in  &&
+         sedit  's/for f in `cd p/for f in `cd $(srcdir)\/p/'  gcc/p/Make-lang.in
+  fi
 
   ./configure  --host=$BUILD     \
                --prefix=/usr     \
@@ -13,7 +14,7 @@
   make  bootstrap                &&
   prepare_install                && 
 
-  make	prefix=/usr install      &&
+  make  install                  &&
   ln    -sf gcc /usr/bin/cc      &&
 
   # symlinks to make work  

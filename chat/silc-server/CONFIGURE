@@ -6,3 +6,11 @@ if  !  grep  -q  "SILCD_BOOT="  $SPELL_CONFIG;  then
   fi
 
 fi
+
+if ! grep -q "IPV6" $SPELL_CONFIG; then
+    if query "Build with ipv6 support ?" n
+       then echo "IPV6=y" >> $SPELL_CONFIG
+       else echo "IPV6=n" >> $SPELL_CONFIG
+    fi
+fi
+

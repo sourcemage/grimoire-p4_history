@@ -1,0 +1,173 @@
+if query "create new slapd.conf and ldap.conf (preserving current)?" "n"; then
+	SLAPDCONF=/etc/$SPELL/slapd.conf
+	LDAPCONF=/etc/ldap.conf
+	TOP=/tmp/$SPELL-top.$$.ldif
+	LDBM=/var/$SPELL-ldbm
+	NOW=`date +%Y%m%d`
+
+	HOST=`hostname`
+	SUFFIX="dc=${HOST//./,dc=}"
+	echo -e -n "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}Enter suffix [$SUFFIX]?${DEFAULT_COLOR} "
+	read SUFFIX_NEW
+	SUFFIX=${SUFFIX_NEW:-${SUFFIX}}
+
+	ROOTDN="cn=root,${SUFFIX}"
+	echo -e -n "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}Root DN \"$ROOTDN\" password?${DEFAULT_COLOR} "
+	read ROOTPW
+
+	echo -e -n "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}Organization name?${DEFAULT_COLOR} "
+	read ORG
+	ORG=${ORG:-${HOST}}
+
+	[ -f $SLAPDCONF ] && mv $SLAPDCONF ${SLAPDCONF%.conf}-$NOW.conf
+	cat > $SLAPDCONF << __EOF__
+# See slapd.conf(5) for details on configuration options.
+# This file should NOT be world readable.
+#
+# Auto-generated $NOW
+#
+schemacheck	on
+include		/etc/openldap/schema/core.schema
+include		/etc/openldap/schema/cosine.schema
+include		/etc/openldap/schema/nis.schema
+include		/etc/openldap/schema/misc.schema
+include		/etc/openldap/schema/inetorgperson.schema
+include		/etc/openldap/schema/openldap.schema
+include		/etc/openldap/schema/java.schema
+
+pidfile		/var/slapd.pid
+argsfile	/var/slapd.args
+
+#
+# slapd provides ample logging, so enable this for debugging only
+# consult slapd.conf(8) manpage for values
+#
+#loglevel	968
+
+# Load dynamic backend modules:
+# modulepath	/usr/libexec/openldap
+# moduleload	back_ldap.la
+# moduleload	back_ldbm.la
+# moduleload	back_passwd.la
+# moduleload	back_shell.la
+
+# The userPassword by default can be changed
+# by the entry owning it if they are authenticated.
+# Others should not be able to see it
+#
+# rootdn always has write access, just bind using its DN
+#
+access to attribute=userPassword
+	by anonymous auth
+	by self write
+	by * none
+access to *
+	by * read
+
+defaultsearchbase	"$SUFFIX"
+
+#
+# Save the time that the entry gets modified
+#
+lastmod on
+
+#######################################################################
+# ldbm database definitions
+#######################################################################
+
+database	ldbm
+suffix		"$SUFFIX"
+rootdn		"$ROOTDN"
+
+# Cleartext passwords, especially for the rootdn, should
+# be avoided.  See slappasswd(8) and slapd.conf(5) for details.
+# Use of strong authentication encouraged.
+rootpw		`slappasswd -s "$ROOTPW"`
+
+# The database directory MUST exist prior to running slapd AND 
+# should only be accessible by the slapd/tools. Mode 700 recommended.
+directory	$LDBM
+
+# Indices to maintain
+index	objectclass	eq
+__EOF__
+
+	[ -f $LDAPCONF ] && mv $LDAPCONF ${LDAPCONF%.conf}-$NOW.conf
+	cat > $LDAPCONF << __EOF__
+# This is the configuration file for the LDAP nameservice
+# switch library and the LDAP PAM module.
+#
+# PADL Software
+# http://www.padl.com
+#
+# See ldap.conf from pam_ldap package for more options
+#
+
+# The distinguished name of the search base.
+base	$SUFFIX
+
+# Another way to specify your LDAP server is to provide an
+# uri with the server name. This allows to use
+# Unix Domain Sockets to connect to a local LDAP Server.
+uri	ldap://127.0.0.1/
+#uri ldaps://127.0.0.1/   
+#uri ldapi://%2fvar%2frun%2fldapi_sock/
+# Note: %2f encodes the '/' used as directory separator
+
+# Filter to AND with uid=%s
+# May speed up searches
+pam_filter	objectclass=posixAccount
+
+# Hash password locally; required for University of
+# Michigan LDAP server, and works with Netscape
+# Directory Server if you're using the UNIX-Crypt
+# hash mechanism and not using the NT Synchronization
+# service. 
+pam_password crypt
+
+# Update Active Directory password, by
+# creating Unicode password and updating
+# unicodePwd attribute.
+pam_password ad
+
+# Use the OpenLDAP password change
+# extended operation to update the password.
+pam_password exop
+__EOF__
+
+	cat > $TOP << __EOF__
+dn: $SUFFIX
+objectclass: top
+
+dn: o=$ORG,$SUFFIX
+objectclass: top
+objectclass: organization
+o: $ORG
+
+dn: ou=Users,$SUFFIX
+objectclass: top
+objectclass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,$SUFFIX
+objectclass: top
+objectclass: organizationalUnit
+ou: Groups
+__EOF__
+fi
+
+if [ -x /etc/init.d/slapd.sh ]
+then    /etc/init.d/slapd.sh start
+fi
+
+# gotta wait a little
+sleep 2
+
+if [ -r "$TOP" ]; then
+	echo -e "${MESSAGE_COLOR}Creating hierarchy top and containers:${DEFAULT_COLOR}"
+	echo -e "${MESSAGE_COLOR}	o=$ORG,$SUFFIX${DEFAULT_COLOR}"
+	echo -e "${MESSAGE_COLOR}	ou=Users,$SUFFIX${DEFAULT_COLOR}"
+	echo -e "${MESSAGE_COLOR}	ou=Groups,$SUFFIX${DEFAULT_COLOR}"
+	ldapadd -F -D "$ROOTDN" -w $ROOTPW -h localhost -v -f $TOP
+	rm $TOP
+fi

@@ -1,0 +1,15 @@
+SPELL HISTORY: openldap
+
+2002-04-28 sergeyli@pisem.net
+
+	Added code creating valid slapd.conf and ldap.conf, using files provided by
+	Eric Sandall <sandalle@yahoo.com> as a guide.
+	Added to slapd.conf "misc.schema" which contains some useful attributes.
+
+2002-04-16 sergeyli@pisem.net
+
+	Added slapd.sh, services, and BUILD files. slapd.sh for init, services for
+	reference (slapd doesn't need these entries), BUILD just uses
+	default_build and then installs slapd.sh along the lines of the same
+	process in net/bind spell. Also added PRE_REMOVE and POST_INSTALL to take
+	care of running instance of slapd when casting/dispelling.

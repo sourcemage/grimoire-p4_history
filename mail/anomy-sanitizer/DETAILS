@@ -1,0 +1,21 @@
+           SPELL=anomy-sanitizer
+         VERSION=1.49
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://mailtools.anomy.net/dist/$SOURCE
+        WEB_SITE=http://mailtools.anomy.net/
+         ENTERED=20020427
+         UPDATED=20020427
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="An efficient filter for sanitizing email messages."
+cat << EOF
+The Anomy mail sanitizer is a filter designed to block
+email-based security risks, such as trojans and viruses. It
+can scan an arbitrarily complex RFC822 or MIME message and
+remove or rename attachments, truncate unusually long MIME
+header fields and sanitize HTML by disabling Javascript,
+etc. It uses a single-pass pure Perl MIME parser, which can
+make it both more efficient and more precise than other
+similar programs. The sanitizer has built-in support for
+third-party virus scanners.
+EOF

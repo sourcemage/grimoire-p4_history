@@ -1,0 +1,15 @@
+if [ -d /usr/lib/povray31 ]; then
+  rm -r /usr/lib/povray31
+fi
+
+if [ -f /usr/bin/s-povray ]; then
+  rm /usr/bin/s-povray
+fi
+
+if [ -f /usr/bin/x-povray]; then
+  rm /usr/bin/x-povray
+fi
+
+if [ -f /usr/bin/povray ]; then
+  rm /usr/bin/povray
+fi

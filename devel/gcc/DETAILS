@@ -1,17 +1,16 @@
            SPELL=gcc
          VERSION=2.95.3
-  PASCAL_VERSION=20011222
+  PASCAL_VERSION=20020426
           SOURCE=$SPELL-$VERSION.tar.gz
          SOURCE2=gpc-$PASCAL_VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
-  SOURCE2_URL[0]=http://sorcerer.wox.org/download/mirror/$SOURCE2
-  SOURCE2_URL[1]=ftp://agnes.dida.physik.uni-essen.de/gnu-pascal/current/$SOURCE2
+  SOURCE2_URL[0]=http://www.gnu-pascal.de/current/$SOURCE2
         WEB_SITE=http://gcc.gnu.org
          ENTERED=20010922
-         UPDATED=20011018
-      MAINTAINER=cromwell@kublai.com
+         UPDATED=20020423
+      MAINTAINER=julian@wongr.net
            SHORT="gcc is the GNU compiler collection."
 
 cat << EOF

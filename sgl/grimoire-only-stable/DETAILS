@@ -1,0 +1,26 @@
+           SPELL=grimoire-only-stable
+         VERSION=`date -u +%Y%m%d`
+          SOURCE=sorcery.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
+   SOURCE_URL[0]=$SORCERY_URL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.smee.org/pub/sgl/stable/$SOURCE
+        WEB_SITE=http://www.sourcemage.org
+         ENTERED=20020429
+         UPDATED=20020429
+      MAINTAINER=eric@schabell.com
+        NO_CACHE="--cache=off"
+        LIFESPAN="10"
+            FUZZ="off"
+    VIEW_REPORTS="off"
+           SOUND="off"
+         ARCHIVE="off"
+           SHORT="Grimoire Stable spell book only: the most stable and tested Grimoire."
+
+cat << EOF
+
+Grimoire stable updated only  -  
+	This is the most stable grimoire,  
+	maintained by Tony Smith.
+	Installed into /var/lib/sorcery/grimoire
+
+EOF

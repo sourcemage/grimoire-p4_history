@@ -1,0 +1,8 @@
+if  !  grep  -q  "SLAPD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke slapd at boot?" n
+  then  echo   "SLAPD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "SLAPD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

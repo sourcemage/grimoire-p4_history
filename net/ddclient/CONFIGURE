@@ -1,0 +1,8 @@
+if  !  grep  -q  "DDCLIENT_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Invoke ddclient at boot?" n
+  then  echo   "DDCLIENT_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "DDCLIENT_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
