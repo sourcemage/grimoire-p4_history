@@ -1,7 +1,7 @@
 if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
   then
 
-  if      query  "Do you wish to make memtest86 bootable from floppy?"  y
+  if      query  "Do you wish to make memtest86 bootable from floppy?"  n
     then  echo   'FLOPPY="y"'  >>  ${SPELL_CONFIG}
     else  echo   'FLOPPY="n"'  >>  ${SPELL_CONFIG}
   fi
