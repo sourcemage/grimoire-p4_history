@@ -1,21 +1,21 @@
            SPELL=libpcapnav
-         VERSION=0.4
+         VERSION=0.5
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/netdude/$SOURCE
-          MD5[0]=feee518eb2b759cc3b8c422c7eed6791
+          MD5[0]=77fcc9a4da1333ee3d5fb6c944e8ac70
         WEB_SITE=http://netdude.sourceforge.net/
       LICENSE[0]=BSD
          ENTERED=20030923
          UPDATED=20030923
-           SHORT="Libpcapnav is a libpcap wrapper library."
+           SHORT="A libpcap wrapper library."
 cat << EOF
-libpcapnav is a libpcap wrapper library that allows navigation to arbitrary
-locations in a tcpdump trace file between reads. The API is intentionally much
-like that of the pcap library. You can navigate in trace files both in time and
-space: you can jump to a packet which is at appr. 2/3 of the trace, or you can
-jump as closely as possible to a packet with a given timestamp, and then read
-packets from there. In addition, the API provides convenience functions for
+A libpcap wrapper library that allows navigation to arbitrary locations in a
+tcpdump trace file between reads. The API is intentionally much like that of
+the pcap library. You can navigate in trace files both in time and space: you
+can jump to a packet which is at appr. 2/3 of the trace, or you can jump as
+closely as possible to a packet with a given timestamp, and then read packets
+from there. In addition, the API provides convenience functions for
 manipulating timeval structures.
 
 Source: http://netdude.sourceforge.net/doco/libpcapnav/0.1/c16.html#AEN20
