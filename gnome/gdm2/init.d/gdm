@@ -1,34 +1,25 @@
 #!/bin/bash
-#
-#  gdm.sh  Load the GDM login manager at boot
-#
-#               Written for Source Mage GNU/Linux
-#
-#  Version:  @(#)gdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
-#  Version:  @(#)gdm.sh  1.0.1  2003-03-28  Eric Sandall <eric@sandall.us>
-#    Now properly kills all instances of gdm (since they are not just named gdm)
-#
 
+PROGRAM=/usr/bin/gdm
 RUNLEVEL=5
 PROVIDES=display_manager
 
 . /etc/init.d/smgl_init
 
-case  $1  in
-          start)  echo "Starting gdm ..."
-                  gdm
-                  evaluate_retval
-                  ;;
+stop() {
+  kill `cat /var/run/gdm.pid`
+  evaluate_retval
+}
 
-           stop)  echo "Stopping gdm ..."
-                  kill `cat /var/run/gdm.pid`
-                  evaluate_retval
-                  ;;
-
-        restart)  stop   $0  &&
-                  start  $0
-                  ;;
-
-              *)  echo "Usage: $0 {start|stop|restart}"
-                  ;;
-esac
+status() {
+  if [ -f /var/run/gdm.pid ]; then
+    if ps -p `cat /var/run/gdm.pid` > /dev/null; then
+      echo "gdm is running with Process ID $(cat /var/run/gdm.pid)"
+    else
+      echo "gdm is not running but /var/run/gdm.pid exists"
+      return 1
+    fi
+  else
+    echo "gdm is not running"
+  fi
+}
