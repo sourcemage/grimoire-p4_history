@@ -1,7 +1,8 @@
 (
+   PREFIX=/usr/qhacc				&&
    ./configure  --with-qt-moc=/usr/bin --with-qt-libs=/usr/lib \
 		--with-qt-includes=/usr/include/qt \
-		--prefix=/usr/qhacc \
+		--prefix=$PREFIX \
 		--localstatedir=/var \
 		--sysconfdir=/etc $OPTS 	&&
    make						&&
@@ -10,6 +11,6 @@
    prepare_install				&&
 
    make install					&&
-   ln -sf /usr/qhacc/bin/qhacc /usr/bin
-
+   ln -sf $PREFIX/bin/qhacc /usr/bin		&&
+   cp -r contrib/easysetup $PREFIX/share
 ) > $C_FIFO 2>&1  
