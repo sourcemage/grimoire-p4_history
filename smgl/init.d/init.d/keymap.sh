@@ -7,9 +7,9 @@ NEEDS="+local_fs"
 . /etc/sysconfig/keymap
 
 case $1 in
-  start)    required_executable /usr/bin/loadkeys
+  start)    required_executable /bin/loadkeys
 
-            /usr/bin/loadkeys $KEYMAP
+            /bin/loadkeys $KEYMAP
             evaluate_retval
             ;;
 
