@@ -1,0 +1,15 @@
+diff -Nurp file-4.09.orig/magic/magic.mime file-4.09/magic/magic.mime
+--- file-4.09.orig/magic/magic.mime	2004-05-19 22:26:25.000000000 +0200
++++ file-4.09/magic/magic.mime	2004-05-19 22:35:13.000000000 +0200
+@@ -788,3 +788,11 @@
+ # From: stephane.loeuillet@tiscali.f
+ # http://www.djvuzone.org/
+ 0	string		AT&TFORM	image/x.djvu
++
++#------------------------------------------------------------------------------
++# zisofs: file(1) magic for zisofs/RockRidge compressed files
++#
++# from H. Peter Anvin <hpa@zytor.com> May 4, 2001
++#
++0	string	\x37\xE4\x53\x96\xC9\xDB\xD6\x07	zisofs/Rockridge compressed file
++>8	lelong		x		- %d bytes
