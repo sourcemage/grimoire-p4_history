@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DESCRIPTION="openMosix is a GNU/Linux kernel extension for single-image clustering"
+SHORT="Kernel extension for single-image clustering"
+HELP="Adds single-image clustering capability to the kernel"
+VERSIONS="2.4.19-6"
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=openMosix-${!PATCH}.gz
+SOURCE${COUNTER}_URL=${SOURCEFORGE_URL}/openmosix/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi
