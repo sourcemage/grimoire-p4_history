@@ -59,9 +59,9 @@ then
 	fi
 	if [ "${output_dir}" == "" ]
 	then
-		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
+		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config-${VERSION} ./.config
 		ARCH="${kernel_arch}" make $MAKEMODE
-		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config-${VERSION}
 	else
 		mkdir -p ${output_dir}
 		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config "${output_dir}"
