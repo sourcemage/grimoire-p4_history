@@ -1,8 +1,3 @@
-(
-  perl Makefile.PL PREFIX=$INSTALL_ROOT	&&
-  make					&&
-  make test				&&
-  prepare_install			&&
-  make install
-
-) > $C_FIFO 2>&1
+  perl Makefile.PL PREFIX=$INSTALL_ROOT/usr &&
+  make                                  &&
+  make test
