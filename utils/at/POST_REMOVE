@@ -1,0 +1,7 @@
+if  [  -e   /etc/init.d/atd.sh  ];  then
+  rm -f /etc/init.d/atd.sh
+  rm -f /etc/rcS.d/S80atd
+  for runlev in 0 6; do
+    rm -f /etc/rc${runlev}.d/K20atd
+  done
+fi
