@@ -2,13 +2,13 @@ config_query  EXISCAN  "Would you like to use exiscan mail content scanner (http
 
 if  [  "$EXISCAN"  ==  "y"  ]
 then
-  echo   "SOURCE2=exiscan-acl-4.41-24.patch.bz2"                          >>  ${SPELL_CONFIG}
+  echo   "SOURCE2=exiscan-acl-4.42-27.patch.bz2"                          >>  ${SPELL_CONFIG}
   echo   "SOURCE3=exiscan-acl-spec.txt"                                   >>  ${SPELL_CONFIG}
   echo   "SOURCE4=exiscan-acl-examples.txt"                               >>  ${SPELL_CONFIG}
   echo   "SOURCE2_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE2}"  >>  ${SPELL_CONFIG}
   echo   "SOURCE3_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE3}"  >>  ${SPELL_CONFIG}
   echo   "SOURCE4_URL[0]=http://duncanthrax.net/exiscan-acl/\${SOURCE4}"  >>  ${SPELL_CONFIG}
-  echo   "MD5[1]=6cdc86a7700d6b83a2bfb227e51805e1"                        >>  ${SPELL_CONFIG}
-  echo   "MD5[2]=3c8e226a80d89890f06e4d44dd825817"                        >>  ${SPELL_CONFIG}
+  echo   "MD5[1]=3dc7322b6852eb05f7acc3a1108810d6"                        >>  ${SPELL_CONFIG}
+  echo   "MD5[2]=1c295ec24dafbeabcf683db0f2bc6a0d"                        >>  ${SPELL_CONFIG}
   echo   "MD5[3]=c9defaaf61bf1fdfe7f7b23ba5e986bf"                        >>  ${SPELL_CONFIG}
 fi
