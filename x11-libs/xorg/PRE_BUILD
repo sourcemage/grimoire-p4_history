@@ -31,7 +31,9 @@ echo  "#define HasMotif2 NO"  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
 
 ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
 if  [  -f  $SOURCE_DIRECTORY/config/cf/host.def  ];  then
-  sedit  s"/-Os//g"  $SOURCE_DIRECTORY/config/cf/host.def  &&
+  # removing the -Os doesn't seem to be needed anymore on gcc 3.4.2,
+  # please check on 3.3.x
+  #sedit  s"/-Os//g"  $SOURCE_DIRECTORY/config/cf/host.def  &&
 
   #
   # Remove explicit PIC as well as that breaks the symbol logic in
