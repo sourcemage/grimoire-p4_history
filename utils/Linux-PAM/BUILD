@@ -14,7 +14,7 @@
   make    install
 
   if [ ! -f /etc/securetty ]; then
-    cp $SOURCE_DIRECTORY/securetty /etc/
+    cp $SCRIPT_DIRECTORY/securetty /etc/
   fi
 
 ) > $C_FIFO 2>&1  && (
