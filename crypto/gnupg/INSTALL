@@ -1,0 +1,7 @@
+echo DEVEL=$DEVEL
+read
+if [ "$DEVEL" == "n" ];then
+  make install mkinstalldirs=`pwd`/scripts/mkinstalldirs
+else
+  default_install
+fi
