@@ -1,3 +1,32 @@
+2005-01-22 Geoffrey Derber <gderber@sourcemage.org>
+	* BUILD: commented out hgg's code
+		moved the patching to PRE_BUILD,
+	        moved the install to INSTALL
+	* CONFIGURE: commented out hgg's code
+	* DETAILS: updated to 1.1.4,
+		   modified source_urls,
+		   removed DISTCC_HOST variable
+	* DEPENDS: added optional depends on:
+		startup-notification,
+		GRAPHICAL-WEB-BROWSER,
+		curl,
+		freetype2,
+		nas,
+		added configure switches to:
+		X11-SERVER,
+		ant,
+		libart_lgpl,
+		zlib
+	* FINAL: Added
+	* INSTALL: Added, inserted install code from
+		BUILD
+	* PRE_BUILD: comment out hgg's code,
+		moved the patching from BUILD
+	* PREPARE: commented out bison code
+	* POST_INSTALL: renamed FINAL
+	* all: integrated some of Sandall's devel spell into
+		the test version
+
 2005-01-13 Pieter Lenaerts <e-type@cwazy.co.uk>
 	* BUILD: bug#7539 : changed DISTCC_HOST= to DISTCC_HOST=""
 

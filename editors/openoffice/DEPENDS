@@ -1,18 +1,32 @@
-depends  X11-SERVER   "--with-x"            &&
-depends  zip                                &&
-depends  unzip                              &&
-depends  which                              &&
-depends  mktemp                             &&
-depends  ant                                &&
-depends  tcsh                               &&
-depends  libart_lgpl  "--enable-libart"     &&
-depends  zlib         "--with-system-zlib"  &&
-depends  Linux-PAM                          &&
-depends  libgpc                             &&
+depends  X11-SERVER   "--with-x"                   &&
+depends  zip                                       &&
+depends  unzip                                     &&
+depends  which                                     &&
+depends  mktemp                                    &&
+depends  ant         "--with-ant-home=${ANT_HOME}" &&
+depends  libart_lgpl  "--enable-libart"            &&
+depends  zlib         "--with-system-zlib"         &&
+
 
 if  [  "$OO_CRASHDUMP"  =  "y"  ];  then
   depends  gtk+2
 fi  &&
+
+# is this the key to using bash?
+depends  tcsh                                      &&
+#optional_depends  "tcsh"                           \
+#                  "--with-use-shell=/usr/bin/tcsh" \
+#		  "--with-use-shell=/bin/bash"     \
+#                  "Use tcsh shell for compiling (safer)" &&
+
+
+#
+# Saying "No" here seems to compile, yes fails in berkleydb
+#
+optional_depends  "JAVA"                                       \
+                  "--enable-java --with-jdk-home=${JAVA_HOME}" \
+                  "--disable-java"                             \
+                  "Build with Java support."                   &&
 
 optional_depends  stlport                            \
                   "--with-stlport4-home=/usr"        \
@@ -62,4 +76,11 @@ optional_depends  freetype2                                  \
 optional_depends  nas                                    \
                   "--with-system-nas"                    \
                   ""                                     \
-                  "for up-to-date Network Audio System"
+                  "for up-to-date Network Audio System" &&
+
+#I honestly do not know what this next spell is used for, but
+#some of the Linux-PAM source files are needed to compile.
+optional_depends  Linux-PAM          \
+                  ""                 \
+                  ""                 \
+                  "for PAM headers"

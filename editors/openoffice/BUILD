@@ -1,122 +1,75 @@
-#
-# Setup ANT_HOME and JAVA_HOME in case they were just installed
-#
-if  [  -f  /etc/profile.d/java.sh  ];  then
-  source  /etc/profile.d/java.sh
-fi  &&
-
-if  [  -f  /etc/profile.d/ant.sh  ];  then
-  source  /etc/profile.d/ant.sh
-fi  &&
-
-#
-# Tell OO where Java and Ant are located
-# Only supports US English right now. :(
-#
-OPTS="$OPTS                         \
-      --with-jdk-home=${JAVA_HOME}  \
-      --with-ant-home=${ANT_HOME}   \
-          --with-lang=ENUS          \
-          --with-dict=ENUS"         &&
-
-#
-# Included library updates: openssl and Python
-#
-if  [  "$OO_UPDATED"  =  "y"  ];  then
-  local  OO_OPENSSL  OO_PYTHON  OO_DB  &&
-  OO_OPENSSL=openssl-0.9.7e.tar.gz     &&
-   OO_PYTHON=Python-2.4.tgz            &&
-       OO_DB=db-4.3.21.tar.gz          &&
-
-  #
-  #  OpenSSL update
-  #
-  if  [  -f  $SOURCE_CACHE/$OO_OPENSSL  ];  then
-    rm  -f  openssl/download/openssl-0.9.5a.tar.gz   &&
-    cp  $SOURCE_CACHE/$OO_OPENSSL  openssl/download  &&
-    patch  -p1  <  $SCRIPT_DIRECTORY/openssl.patch
-  fi  &&
-
-  #
-  #  Python update
-  #
-  if  [  -f  $SOURCE_CACHE/$OO_PYTHON  ];  then
-    rm  -f  python/download/Python-2.2.2.tgz       &&
-    cp  $SOURCE_CACHE/$OO_PYTHON  python/download  &&
-    patch  -p1  <  $SCRIPT_DIRECTORY/python.patch
-  fi
-
-  #
-  #  DB update  (untested)
-  #
-  #if  [  -f  $SOURCE_CACHE/$OO_DB  ];  then
-  #  rm  -f  berkeleydb/download/db-3.2.9.tar.gz    &&
-  #  cp  $SOURCE_CACHE/$OO_DB  berkeleydb/download  &&
-  #  patch  -p1  <  $SCRIPT_DIRECTORY/db.patch
-  #fi
-
-fi  &&
-#
-#  End OO_UPDATED
-#
-
-#
-# Parallel build "fixes"
-#
-source  /etc/sorcery/compile_config  &&
-
-local  OO_PARALLEL                                   &&
-OO_PARALLEL="$MAKE_NJOBS CC=\"ccache  distcc  gcc\"  \
-             DISTCC_HOSTS=\"$DISTCC_HOSTS\""         &&
-
-sedit  "s:BUILD_ACTION=\$(GNUMAKE):& -j $OO_PARALLEL:"  freetype/makefile.mk  &&
-
-for  oo_lib  in  curl  openssl  nas;  do
-  sedit  "s:BUILD_ACTION=make:& -j $OO_PARALLEL:"  $oo_lib/makefile.mk
-done  &&
-
-sedit  "s: make : make -j $OO_PARALLEL:"  python/makefile.mk   &&
-
-for  oo_lib  in  stlport  nas;  do
-  sedit  "s:\$(MAXPROCESS):  $OO_PARALLEL:"  $oo_lib/makefile.mk
-done  &&
-
-for  oo_lib  in  jpeg  neon  np_sdk  expat  sablot  zlib;  do
-  sedit  "s:BUILD_ACTION=dmake:& MAXPROCESS=$OO_PARALLEL:"  $oo_lib/makefile.mk
-done  &&
-
-#
-# Set DISTCC_HOSTS and MAKE_NJOBS back
-#
-DISTCC_HOSTS="" &&
-  MAKE_NJOBS=1  &&
-
-#
-# End Parallel build "fixes"
-#
-
-#
-# Set OO to use our optimizations
-#
-sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi3.mk  &&
-sedit  "s:\-mcpu-pentiumpro::"                solenv/inc/unxlngi4.mk  &&
-sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi4.mk  &&
-
-cd  config_office                                    &&
-./configure --prefix=${INSTALL_ROOT}/usr             \
-        --sysconfdir=${INSTALL_ROOT}/etc             \
-     --localstatedir=${INSTALL_ROOT}/var             \
+### configure
+	cd $SOURCE_DIRECTORY/config_office/     &&
+	./configure 				\
+		--with-lang=ENUS		\
+		--prefix=/usr			\
+		--sysconfdir=/etc		\
+		--localstatedir=/var		\
             --mandir=${INSTALL_ROOT}/usr/share/man   \
            --infodir=${INSTALL_ROOT}/usr/share/info  \
-                     $OPTS                           &&
-cd  ..                                               &&
+		$OPTS				&&
+
+	cd $SOURCE_DIRECTORY                                                                    &&
+### drmoriarty's "house of bad hacks" brings updates, distcc, ccache and "some" parallel builds
+# if [ "$UPDATED" = "yes" ]; then
+# . /etc/sorcery/compile_config                                                                  &&
+# if [ -x /usr/bin/distcc ]
+# then DIST=distcc
+# fi                                                                                             &&
+# if [ -x /usr/bin/ccache ]
+# then CACHE=ccache
+# fi                                                                                             &&
+### openssl update
+# if [ -f $SOURCE_CACHE/openssl-0.9.7c.tar.gz ]; then
+# rm -f openssl/download/openssl-0.9.5a.tar.gz                                                   &&
+# cp $SOURCE_CACHE/openssl-0.9.7c.tar.gz openssl/download/                                       &&
+# patch -p1 < $SCRIPT_DIRECTORY/openssl.patch
+# fi                                                                                             &&
+### python update
+# if [ -f $SOURCE_CACHE/Python-2.3.2.tgz ]; then
+# rm -f python/download/Python-2.2.2.tgz                                                         &&
+# cp $SOURCE_CACHE/Python-2.3.2.tgz python/download/                                             &&
+# patch -p1 < $SCRIPT_DIRECTORY/python.patch
+# fi                                                                                             &&
+### db update not working yet, FIXME
+#if [ -f $SOURCE_CACHE/db-4.1.25.tar.gz ]; then
+#rm -f berkeleydb/download/db-3.2.9.tar.gz                                                      &&
+#cp $SOURCE_CACHE/db-4.1.25.tar.gz berkeleydb/download/                                         &&
+#patch -p1 < $SCRIPT_DIRECTORY/db.patch
+#fi                                                                                             &&
+### lets get some parallel building happening 
+# export POOPY="$MAKE_NJOBS CC=\"$CACHE $DIST gcc\" DISTCC_HOSTS=\"$DISTCC_HOSTS\""                 &&
+# sedit "s:BUILD_ACTION=\$(GNUMAKE):& -j $POOPY:" $SOURCE_DIRECTORY/freetype/makefile.mk         &&
+# for i in curl openssl nas 
+# do sedit "s:BUILD_ACTION=make:& -j $POOPY:" $SOURCE_DIRECTORY/$i/makefile.mk
+# done                                                                                           &&
+# sedit "s: make : make -j $POOPY:" $SOURCE_DIRECTORY/python/makefile.mk                         &&
+# for i in stlport nas 
+# do sedit "s:\$(MAXPROCESS): $POOPY:" $i/makefile.mk
+# done                                                                                           &&
+# for i in jpeg neon np_sdk expat sablot zlib
+# do sedit "s:BUILD_ACTION=dmake:& MAXPROCESS=$POOPY:" $i/makefile.mk
+# done                                                                                           &&
+# export DISTCC_HOSTS=$(hostname)                                                                &&
+# export MAKE_NJOBS=1                                                                                            
+# fi                                                                                             &&
+### end drmoriarty's ugly hacking spree
+
+  if echo $OPTS| grep -q stlport ;
+     then mkdir -p solver/645/unxlngi4.pro/inc                                      &&
+          ln -sf /usr/include/stlport solver/645/unxlngi4.pro/inc/stl
+  fi                                                                                &&
+
 #
 #  Yes, they ignored some of our choices for optimization...
 #
 sedit  "s:setenv LINK \"gcc\":&\nsetenv CFLAGS \"$CFLAGS\"       \
           \nsetenv CXXFLAGS \"$CXXFLAGS\":"   LinuxIntelEnv.Set  &&
 
-tcsh  -c  "source  LinuxIntelEnv.Set  &&  \
-           ./bootstrap                &&  \
-           dmake                      &&  \
-           rehash"
+  ./bootstrap                                                                       &&
+  tcsh -c "source LinuxIntelEnv.Set && \
+           env && \
+           dmake" &&
+  cd $SOURCE_DIRECTORY/instsetoo/unxlngi4.pro/01/normal	                            &&
+  sedit "s:oo_home=OpenOffice.org1.1.0:oo_home=openoffice:" install                 &&
+  chmod +x install
