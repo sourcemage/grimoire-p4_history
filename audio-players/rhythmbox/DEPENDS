@@ -1,6 +1,10 @@
 depends  libgnomeui   &&
-depends  gst-plugins  &&
-optional_depends  "mad"                 \
+if  [  "$XINE_BACKEND"  =  "y"  ];  then
+  depends  xine-lib '--enable-xine'
+else
+  depends  gst-plugins
+fi  &&
+optional_depends  "libid3tag"           \
                   "--enable-mp3"        \
                   "--disable-mp3"       \
                   "for mp3 support"     &&
