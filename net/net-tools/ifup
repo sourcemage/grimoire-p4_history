@@ -87,7 +87,7 @@ if [ ! -f $netdevdir/$DEV.dev ]; then
   exit 1
 fi
 
-if /sbin/ifconfig $DEV 2>&1 | exists_in_text UP ; then
+if /sbin/ifconfig 2>&1 | exists_in_text $DEV ; then
   echo "$DEV already up"
   exit 0
 fi
