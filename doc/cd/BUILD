@@ -9,6 +9,7 @@
     prepare_install                                 &&
     
     mkdir -p  $INSTALLDIR                           &&
+    mkdir -p  /usr/doc/$SPELL                       &&
   
     cp  cd.cls       $INSTALLDIR                    &&
     cp  cd.pdf       /usr/doc/$SPELL                &&
