@@ -1,40 +1,56 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
-(
+./viewcvs-install  &&
 
-	readonly -a LABELS=([0]="Main" [1]="Extra")
+for  CONF  in  `ls -1 /usr/share/$SPELL/*.conf.default`;  do
+if ! [ -e ${CONF%.default} ]; then
+  cp     -v  $CONF  ${CONF%.default}  &&
+  chmod  +r         ${CONF%.default}
+  fi
+done  &&
 
-#	target directory is embedded in this patch along with options
-#	to use cvsgraph and enscript and other changes (see HISTORY)
-#	this patch also makes sure configuration is not overwritten
-	patch -p1 < $SCRIPT_DIRECTORY/$SPELL.patch &&
-	
-	(
-		message "Looking for existing CVS repositories (this may take some time)"
-		CVS_CONFIG=/CVSROOT/config,v
-		REPOSITORY_LIST=""
-		COUNT=0
-		for REPOSITORY_PATH in `find / -mount -path *$CVS_CONFIG`; do
-			[ -n "$REPOSITORY_LIST" ] && REPOSITORY_LIST="$REPOSITORY_LIST,"
-			REPOSITORY_LIST="$REPOSITORY_LIST ${LABELS[$COUNT]:-CVS$COUNT} : ${REPOSITORY_PATH%${CVS_CONFIG}}"
-			COUNT=$(($COUNT + 1))
-		done
-		if [ -n "$REPOSITORY_LIST" ]; then
-			pushd cgi > /dev/null
+# default answer has to be 'no' here because 'y' would
+# require further manual input
+message  "${PROBLEM_COLOR}The following procedure may destroy your existing ViewCVS database${DEFAULT_COLOR}"
+if query "configure MySQL for query facility?${DEFAULT_COLOR}" "n"; then
+  message  "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}MySQL database name?${DEFAULT_COLOR}\n"
+  read MY_DB
+  message  "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}MySQL master user?${DEFAULT_COLOR}\n"
+  read MY_USER
+  message  "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}MySQL user $MY_USER password?${DEFAULT_COLOR}\n"
+  read MY_USER_PASS
+  message  "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}MySQL read-only user?${DEFAULT_COLOR}\n"
+  read MY_USER_RO
+  message  "${SPELL_COLOR}${SPELL}:  ${QUERY_COLOR}MySQL user $MY_USER_RO password?${DEFAULT_COLOR}\n"
+  read MY_USER_RO_PASS
 
-			sed "s/cvs_roots\W*=.*$/cvs_roots =${REPOSITORY_LIST//\//\\/}/" \
-				< viewcvs.conf.dist                                         \
-				> viewcvs.conf.dist.1
-			sed "s/default_root\W*=.*$/default_root = ${LABELS[0]}/"        \
-				< viewcvs.conf.dist.1                                       \
-				> viewcvs.conf.dist
-			rm -f viewcvs.conf.dist.1
+  SQL=/tmp/$SPELL.$$.sql
+  CONF=/tmp/$SPELL.$$.conf
+  if touch $SQL $SED $CONF && chmod 600 /tmp/$SPELL.$$.*; then
+    cat > $SQL << __EOF__
+GRANT USAGE  ON *.* TO ${MY_USER}@localhost IDENTIFIED BY '$MY_USER_PASS';
+GRANT USAGE  ON *.* TO ${MY_USER_RO}@localhost IDENTIFIED BY '$MY_USER_RO_PASS';
+GRANT ALL    ON ${MY_DB}.* TO ${MY_USER}@localhost WITH GRANT OPTION;
+GRANT SELECT ON ${MY_DB}.* TO ${MY_USER_RO}@localhost;
+__EOF__
 
-			popd      > /dev/null
-		fi
-		true
-	)                 &&
+    cat $SQL
+    if query "would you like to go ahead with the SQL above?" "y"; then
+        mysql -p < $SQL                                               &&
+        echo -e "${MESSAGE_COLOR}Please enter same database name below, ${PROBLEM_COLOR}$MY_DB${DEFAULT_COLOR}" &&
+        /usr/share/$SPELL/make-database                                     &&
+        cat /usr/share/$SPELL/$SPELL.conf > $CONF                           &&
+        cat $CONF                                                         | \
+        sed "s/\\W*\(host\)\\W*=.*/\1 = localhost/"                   | \
+        sed "s/\\W*\(database_name\)\\W*=.*/\1 = $MY_DB/"             | \
+        sed "s/\\W*\(user\)\\W*=.*/\1 = $MY_USER/"                    | \
+        sed "s/\\W*\(passwd\)\\W*=.*/\1 = $MY_USER_PASS/"             | \
+        sed "s/\\W*\(readonly_user\)\\W*=.*/\1 = $MY_USER_RO/"        | \
+        sed "s/\\W*\(readonly_passwd\)\\W*=.*/\1 = $MY_USER_RO_PASS/" > \
+        /usr/share/$SPELL/$SPELL.conf
+    fi
+  fi
 
-	prepare_install   &&
-	./viewcvs-install
+  rm -f /tmp/$SPELL.$$.*
 
-) > $C_FIFO 2>&1
+  message  "${MESSAGE_COLOR}By default, ViewCVS configuration files are readable by 'world'.${DEFAULT_COLOR}"
+  message  "${MESSAGE_COLOR}So will be your just entered MySQL master and read-only users' passwords.${DEFAULT_COLOR}"
+fi
