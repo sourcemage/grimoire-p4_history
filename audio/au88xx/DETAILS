@@ -2,14 +2,12 @@
          VERSION=1.1.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/aureal/$SOURCE
-SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/aureal/$SOURCE
-SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/aureal/$SOURCE
+SOURCE_URL[0]=$SOURCEFORGE_URL/aureal/$SOURCE
         WEB_SITE=http://sourceforge.net/projects/aureal
          ENTERED=20011030
          UPDATED=20020509
-	MD5=b1aeaa4bb56ac015d90ca5f69261ab84
-	LICENSE=GPL
+	MD5[0]=b1aeaa4bb56ac015d90ca5f69261ab84
+	LICENSE[0]=GPL
 	MAINTAINER=burududu@hotpop.com
            SHORT="Driver for the Aureal Vortex 2"
 cat << EOF
