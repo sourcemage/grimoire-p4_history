@@ -1,17 +1,17 @@
            SPELL=mutt
-if [ "$CVS" == "y" ]; then
-         VERSION=$(date +%Y%m%d)
-          SOURCE=$SPELL-cvs.tar.bz2
+         VERSION=1.4.2i
+   if [ "$CVS" == "y" ]; then 
+         VERSION=cvs
+ 	  SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous:anonymous@cvs.mutt.org:/home/roessler/cvs:mutt
-          MD5[0]=IGNORE
-  FORCE_DOWNLOAD=on
-else
-         VERSION=1.4.2i
+  FORCE_DOWNLOAD=on 
+	  MD5[0]="IGNORE"
+   else
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.4.2
-   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/$SOURCE
+   
           MD5[0]=07e7daa837c57456a4fde22d9ca2cca5
+   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/$SOURCE
    SOURCE_URL[1]=ftp://uiarchive.cso.uiuc.edu/mirrors/ftp/ftp.mutt.org/mutt/$SOURCE
    SOURCE_URL[2]=ftp://ftp.linux.it/pub/mirrors/mutt/$SOURCE
    SOURCE_URL[3]=ftp://ftp.franken.de/pub/linux/mutt/$SOURCE
@@ -22,8 +22,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.4.2
    SOURCE_URL[8]=ftp://ftp.arch.pwr.wroc.pl/pub/mutt/$SOURCE
    SOURCE_URL[9]=ftp://sunsite.dk/mirrors/mutt/$SOURCE
    SOURCE_URL[10]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.4.2
 fi
-        WEB_SITE=http://www.mutt.org
+ 
+       WEB_SITE=http://www.mutt.org
          ENTERED=20010922
          UPDATED=20020530
          LICENSE=GPL
