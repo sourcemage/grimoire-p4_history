@@ -1,0 +1,19 @@
+           SPELL=gridloc
+         VERSION=0.4
+          SOURCE=${SPELL}-04.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-04
+   SOURCE_URL[0]=http://leonardo.spidernet.net/Copernicus/22420/gridloc/$SOURCE
+        WEB_SITE=http://leonardo.spidernet.net/Copernicus/22420/
+      MAINTAINER=afrayedknot@thefrayedknot.armory.com
+         LICENSE=GPL
+             MD5=312f1f1775ffc807913753b98b5f4e22
+         ENTERED=20020803
+         UPDATED=20020803
+           SHORT="converts longitude/latitude to a Maidenhead grid locator"
+cat << EOF
+gridloc is a ncurses application that converts a position in
+longitude/latitude to a Maidenhead grid locator or vice-versa.
+
+It can also calculate the bearing and distance to a second 'remote'
+location given its position or grid locator.
+EOF
