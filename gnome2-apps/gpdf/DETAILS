@@ -1,15 +1,15 @@
            SPELL=gpdf
-         VERSION=0.111
+         VERSION=0.120
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='8bb1ffea912eaeb5d2345a15f0f5d898'
+          MD5[0]='d83d271cc232d1e87e21ccaf89360565'
       LICENSE[0]=GPL
         WEB_SITE=http://www.gnome.org
       MAINTAINER=rcook@wyrms.net
          ENTERED=20030423
-         UPDATED=20031014
+         UPDATED=20031221
            SHORT="gpdf is a PDF viewer for GNOME"
 cat << EOF
 gpdf is a viewer for the Portable Document Format (PDF), based on xpdf using the gnome 2 libraries.
