@@ -10,8 +10,9 @@ sysdba
 masterkey
 EOF
 }
+#"298,304d;s#path = ''#path = '/usr/firebird/bin'#;s#=> ''#=> '$CFLAGS'#" \
   sedit \
-"298,304d;s#path = ''#path = '/usr/firebird/bin'#;s#=> ''#=> '$CFLAGS'#" \
+"298,304d;s#/opt/fire#/usr/fire#;s#=> ''#=> '$CFLAGS'#" \
 	Makefile.PL				&&
   answer | perl  Makefile.PL  			&&
   make               				&&
