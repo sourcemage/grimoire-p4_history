@@ -1,6 +1,6 @@
 (
 
-  sedit  "s!./qiv -o white -f ./intro.jpg!:!"  Makefile
+  sedit "130,134D" Makefile  #Prevent launch of qiv on install.
   make  PREFIX=/usr &&
   prepare_install   &&
   make  PREFIX=/usr  install
