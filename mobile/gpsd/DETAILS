@@ -1,0 +1,14 @@
+           SPELL=gpsd
+         VERSION=1.10
+          SOURCE=$SPELL-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://pygps.org/gpsd/downloads/$SOURCE
+          MD5[0]=dbe0f4c4046375098e3a15a4e4352db4
+        WEB_SITE=http://pygps.org/gpsd/gpsd.html
+         ENTERED=20040217
+         UPDATED=20040217
+	LICENSE=GPL
+          SHORT="GPSD is a gps translator."
+cat << EOF
+Gpsd is a translator. It takes input from a device capable of generating positional data (like a GPS or a Loran receiver) and translates it into another, very simple format. Gpsd re-publishes the data on a networking port via ip. Clients can connect to this port and request data at their leisure. 
+EOF
