@@ -1,13 +1,23 @@
-optional_depends  "openssl"    ""  ""  "for encryption support"
-optional_depends  "gnutls"    ""  ""  "for encryption support"
-optional_depends  "cyrus-sasl" ""  ""  "for Cyrus-sasl authentification support"
-optional_depends  "openldap"           \
-                   "--with-ldap"       \
-                   "--without-dap"     \
-                   "Enable LDAP support"
+optional_depends  "openssl"                                 \
+                  ""                                        \
+                  ""                                        \
+                  "for encryption support"                  &&
+
+optional_depends  "gnutls"                                  \
+                  ""                                        \
+                  ""                                        \
+                  "for encryption support" &&
+
+optional_depends  "cyrus-sasl"                              \
+                  ""                                        \
+                  ""                                        \
+                  "for Cyrus-sasl authentification support" &&
+
+optional_depends  "openldap"                                \
+                   "--with-ldap"                            \
+                   "--without-dap"                          \
+                   "Enable LDAP support"                    &&
+
 if [ "$PAM" == "y" ]; then
-  depends                 "linux-pam"              \
-                          "--with-pam"             \
-                          "--without-pam"          \
-                          "Enable PAM support"
+  depends "linux-pam" "--with-pam"
 fi
