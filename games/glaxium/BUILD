@@ -1,6 +1,5 @@
 (
 
-  CPPFLAGS='-I/usr/include/libpng'	\
   ./configure  --prefix=/usr        	\
                --bindir=/usr/games	\
                --mandir=/usr/share/man	&&

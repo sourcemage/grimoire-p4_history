@@ -101,9 +101,10 @@ configure_grub_root
 # if either the stage1 file or the menu.lst file is missing, we assume
 # we do not have a working grub install and copy all needed stage files
 # across
-if  [ \( ! -e /boot/grub/stage1 \) -o \( ! -e /boot/grub/menu.lst \) ];  then
-  cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
-fi
+
+# the stagefile should update with new versions
+cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
+
 
 if  [  -e  /boot/grub/menu.lst  ];  then
     message  "You appear to have a /boot/grub/menu.lst file.  If this"
