@@ -26,4 +26,19 @@ fi  &&
 
 depends  libtool  &&
 depends  libxml2  &&
-depends  g-wrap
+depends  g-wrap   &&
+
+optional_depends  Finance-Quote                                         \
+                  ""                                                    \
+                  ""                                                    \
+                  "for stock price quotes and currency exchange rates"  &&
+
+optional_depends  libofx                                     \
+                  ""                                         \
+                  ""                                         \
+                  "to support Open Financial Exchange data"  &&
+
+optional_depends  gnome-print                        \
+                  ""                                 \
+                  ""                                 \
+                  "for GNOME printing architecture"
