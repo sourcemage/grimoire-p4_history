@@ -1,28 +1,19 @@
-show_soundcards()  {
-
-  for CARD  in  `cat  $SCRIPT_DIRECTORY/sound.cards`;  do
-    echo  $CARD
-    echo  "Card"
-  done
-
-}
-
-
-if  !  grep  -q  "CARD="  $SPELL_CONFIG;  then
+if  !  grep  -q  "CARDS="  $SPELL_CONFIG;  then
 
   rm  -f  /etc/modules.d/alsa
   cp  /etc/modules.conf /tmp/modules.conf
   grep  -v  "alsa"   <  /tmp/modules.conf  >  /etc/modules.conf
 
-  CARDS=`show_soundcards`                                &&
-  CARD=`dialog  --backtitle  "ALSA Configuration Menu"   \
-                --stdout                                 \
-                --title      "Select sound card please"  \
-                --menu                                   \
-                ""                                       \
-                0 0 10                                   \
-                $CARDS`                                  &&
+  CARDLIST=`cat $SCRIPT_DIRECTORY/sound.cards` &&
 
-  echo  "CARD=$CARD"  >>  $SPELL_CONFIG
+  CARDS=`dialog  --backtitle  "ALSA Configuration Menu"   \
+	  --stdout				   \
+          --checklist "Select sound cards"         \
+          0 0 30                                   \
+          $CARDLIST`
+	
+  CARDS=`echo $CARDS | sed s/\"//g | sed s/" "/,/g` &&
+
+  echo "CARD=$CARDS" >> $SPELL_CONFIG
 
 fi

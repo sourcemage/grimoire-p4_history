@@ -1,28 +1,5 @@
 . /etc/sysconfig/devices
 
-mconf()  {
-
-  cat  <<  EOF
-options	snd	device_mode=0777 cards_limit=1
-
-alias	char-major-116		snd
-alias	char-major-14		soundcore
-
-alias	snd-card-0		snd-$CARD
-alias	sound-slot-0		snd-card-0
-
-alias	sound-service-0-0	snd-mixer-oss
-alias	sound-service-0-1	snd-seq-oss
-alias	sound-service-0-3	snd-pcm-oss
-alias	sound-service-0-8	snd-seq-oss
-alias	sound-service-0-12	snd-pcm-oss
-
-# post-install	snd-card-0	/usr/sbin/alsactl  restore
-EOF
-
-}
-
-
 # Clean out the old alsa drivers.
 rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
@@ -32,7 +9,7 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
   sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
   sedit  "s: install-scripts : :"    Makefile  &&
   sedit  "s:root.root:root.audio:"   snddevices &&
-
+  
   ./configure  --prefix=/usr         \
 	       --with-kernel=/usr/src/linux \
                --with-isapnp=yes     \
@@ -42,12 +19,9 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
                --with-cards=$CARD    \
                $OPTS                 &&
   make                               &&
-  prepare_install
+  prepare_install		     &&
+  make install			     &&
 
-) > $C_FIFO 2>&1  &&  (
-
-  make    install
-  if [ $DEVICES == /devices ]; then
     ./snddevices
     rm  -f   /dev/snd
     ln  -sf  /devices/snd  /dev/snd
@@ -71,7 +45,7 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
     chmod 777 /devices/snd/*
     if  [  !  -f   /etc/modules.d/alsa  ];  then
       mkdir   -p   /etc/modules.d
-      mconf   >    /etc/modules.d/alsa
+#      mconf   >    /etc/modules.d/alsa
       touch        /etc/modules.d/alsa
     fi
     MOD="/etc/modules.conf"
@@ -81,5 +55,5 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
     echo        "$INC"  >>  $MOD
     depmod  -a
     true
-  fi
-)
+
+) > $C_FIFO 2>&1  
