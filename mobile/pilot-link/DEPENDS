@@ -1,12 +1,11 @@
-depends  tk  &&
-
+optional_depends g++  "" "" "for a c++ library"  &&
 optional_depends libpng "--with-png" \
                         "" \
                         "Enable PNG Support" &&
 optional_depends perl   "--with-perl" \
                         "" \
                         "Enable Perl Support" &&
-optional_depends JAVA   "--with-java=$JAVA_HOME" \
+optional_depends JAVA   "--with-java" \
                         "" \
                         "Enable Java Support" &&
 optional_depends Python "--with-python" \
