@@ -1,3 +1,7 @@
+2003-09-20  Eric Sandall <eric@sandall.us>
+
+		Remove unneeded sedit  (Bug #4382)
+
 2003-09-17  Unet <audio@sourcemage.org>
 
 		Updated BUILD to correct bug #4275, Thanks to Robin Cook
@@ -8,12 +12,12 @@
 
 2003-07-30  Arwed v. Merkatz <v.merkatz@gmx.net>
 
-	don't install the init script provided by alsa-driver
-	only create the sound devices and modules.d/alsa if devfs isn't mounted
-	on /dev (still need a good modules.d/alsa for devfs)
-	removed POST_INSTALL, the message to compile the kernel with soundcore
-	module is not needed, since BUILD will fail without soundcore
-	added init script for the new init system
+		don't install the init script provided by alsa-driver
+		only create the sound devices and modules.d/alsa if devfs isn't mounted
+		on /dev (still need a good modules.d/alsa for devfs)
+		removed POST_INSTALL, the message to compile the kernel with soundcore
+		module is not needed, since BUILD will fail without soundcore
+		added init script for the new init system
 
 2003-07-30  Eric Sandall <eric@sandall.us>
 

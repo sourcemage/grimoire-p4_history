@@ -30,7 +30,6 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
   sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
   sedit  "s: install-scripts : :"    Makefile  &&
-  sedit  "s/typedef void irqreturn_t;/\/\/typedef void irqreturn_t;/" include/adriver.h &&
 
   modprobe  soundcore		    &&
   ./configure  --prefix=/usr         \
