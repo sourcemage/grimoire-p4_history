@@ -1,6 +1,6 @@
 (
 
-  OVERRIDE1="prefix=/usr"
+  OVERRIDE1="prefix=${INSTALL_ROOT}/usr"
   OVERRIDE2="JSRCDIR=$SOURCE_DIRECTORY/jpeg-6b"
 
   cp   src/all-arch.mak  src/all-arch.mak.original
@@ -13,11 +13,11 @@
 
   echo   "#include <time.h>"  >>  src/time_.h
 
-  ln   -s  src/unix-gcc.mak  makefile 
+  ln   -s  src/unix-gcc.mak  makefile
 
   make  $OVERRIDE1  $OVERRIDE2  so         &&
   prepare_install                          &&
   make  $OVERRIDE1  $OVERRIDE2  soinstall  &&
-  ln    -sf  gsc  /usr/bin/gs
+  ln    -sf  gsc  ${INSTALL_ROOT}/usr/bin/gs
 
 ) > $C_FIFO 2>&1

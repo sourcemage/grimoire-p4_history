@@ -31,8 +31,7 @@
 
   case  $MGETTY_BOOT  in
     y|Y|j|J)
-      echo  >>  /etc/inittab
-      echo  $INITTAB_STRING  >>  /etc/inittab
+      echo  $INITTAB_STRING  >>  ${INSTALL_ROOT}/etc/inittab
       ;;
     *)
       true
