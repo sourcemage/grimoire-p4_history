@@ -18,4 +18,13 @@ case $MOZILLA_ENIGMAIL in
     ;;
 esac &&
 
-optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+case $MOZILLA_XFT2 in
+  Y|y|J|j)
+    depends freetype2   &&
+    depends fontconfig  &&
+    depends Xft2
+    ;;
+  *)
+    optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
+    ;;
+esac
