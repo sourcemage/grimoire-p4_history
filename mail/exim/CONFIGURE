@@ -4,8 +4,10 @@ if  !  grep  -q  "CRON="  $SPELL_CONFIG;  then
            "to periodically attempt to resend undelivered mail."
 
   if    query  "Attempt to resend undelivered via hc-cron?"  y
-  then  echo   "CRON=h"  >>  $SPELL_CONFIG
-  else  echo   "CRON=f"  >>  $SPELL_CONFIG
+  then  CRON=h
+  else  CRON=f
   fi
+
+  echo  "CRON=$CRON"  >>  $SPELL_CONFIG
 
 fi
