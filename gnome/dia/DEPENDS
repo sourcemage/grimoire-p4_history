@@ -1,4 +1,9 @@
-depends  libxml      &&
-depends  gdk-pixbuf  &&
+depends  libxml2     &&
+depends  gtk+2       &&
 depends  libart_lgpl &&
-depends  libunicode
+depends  popt        &&
+depends  freetype2   &&
+depends  pango       &&
+
+optional_depends libgnomeui "--enable-gnome" "" "Enable gnome code" &&
+optional_depends Python "--with-python" "" "Enable python plugin"
