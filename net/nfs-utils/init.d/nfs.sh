@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# SMGL-script-version=20030225
+# SMGL-START:3 4 5:S40
+# SMGL-STOP:0 1 2 6:K60
+
 [  -e /etc/exports  ]  ||  exit 0
 
 NUMSERVERS=8
