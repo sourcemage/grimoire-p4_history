@@ -2,24 +2,29 @@
           SPELLX=OdbcJdbc
        BUILD_API=2
         WEB_SITE=http://www.ibphoenix.com
-if [ "$USECVS" == "y" ];then
- 	 VERSION=v1-1-release
+cast $WHICH
+  when cvs
+# 	 VERSION=v1-1-release
+ 	 VERSION=v1-2-1
              CVS=OdbcJdbc
           SOURCE=${SPELLX}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot  
    SOURCE_URL[0]=$SFCVS/firebird:$CVS:$VERSION
           MD5[0]=IGNORE
-#  FORCE_DOWNLOAD=on
-
-else
+  when stable
          VERSION=1.2.0.69
           SOURCE=${SPELLX}\_${VERSION}.src.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
    SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
-#   SOURCE_URL[0]=http://www.praktik.km.ua/downloads/$SOURCE
           MD5[0]=e72dd9f6667b97fc3c84cce9ad232271
-fi
+  when devel
+         VERSION=1.2.1.70
+          SOURCE=${SPELLX}\_Source\_Beta_1-2-1.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}
+   SOURCE_URL[0]=http://www.praktik.km.ua/downloads/$SOURCE
+          MD5[0]=0f4c37a716af8c7cba6ff07ac453eec8
+esac
          LICENSE=IDPL
          ENTERED=20031205
          UPDATED=20040302
