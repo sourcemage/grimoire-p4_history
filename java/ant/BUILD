@@ -1,5 +1,8 @@
 (
-  . /etc/profile.d/java.sh                &&
+
+  if [ -f /etc/profile.d/java.sh ]; then
+    . /etc/profile.d/java.sh
+  fi                                      &&
   . $SCRIPT_DIRECTORY/../java-functions   &&
   
   set_java_env				  &&
@@ -17,4 +20,5 @@
   cp -R antbuild/* /opt/ant               &&
   mkdir -p ${INSTALL_ROOT}/etc/profile.d/ &&
   install -m 0644 $SCRIPT_DIRECTORY/ant.sh ${INSTALL_ROOT}/etc/profile.d/  
-)  >  $C_FIFO  2>&1
+
+) >$C_FIFO  2>&1
