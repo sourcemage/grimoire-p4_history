@@ -3,10 +3,6 @@ unpack $SOURCE ${MD5[0]} &&
 
 cd $SOURCE_DIRECTORY &&
 
-# fixes the "nsBuildID.h: No such file or directory" problem
-patch -p0 < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff &&
-patch -p0 < $SCRIPT_DIRECTORY/libreg-standalone.diff &&
-
 # Enigmail extensions
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   cd $SOURCE_DIRECTORY/extensions &&
@@ -17,8 +13,4 @@ fi &&
 # remove /root/.mozconfig, it causes too much trouble
 if [ -f /root/.mozconfig ]; then
   rm -f /root/.mozconfig
-fi &&
-
-# unpack libart sources as they weren't included in the 1.5 tarball
-cd $SOURCE_DIRECTORY/other-licenses &&
-unpack $SOURCE4 ${MD5[3]}
+fi

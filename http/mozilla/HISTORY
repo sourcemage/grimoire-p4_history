@@ -1,3 +1,14 @@
+2004-06-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1.7
+	  removed SOURCE4, the extra mozilla-libart tarball isn't needed anymore
+	  BUILD_API=2
+	* PRE_BUILD: removed SOURCE4 stuff
+	* BUILD, INSTALL: split for BUILD_API=2
+	* CONFIGURE: added option to use cairo svg backend
+	* DEPENDS: removed dependency on libart_lgpl, added dependency on cairo
+	* PRE_BUILD, libreg-standalone.diff, xpfe-bootstrap.diff: removed these
+	  patches, don't seem to be needed anymore
+
 2004-05-03 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 1.7rc1 (SOURCE changed), Enigmail 0.83.6;
 	  added VERSION[2,3] variables for Enigmail and IPC.

@@ -38,8 +38,10 @@ configure_optional 'composer' '--enable-composer' '--disable-composer' 'Build Co
 #  cvs -d :pserver:guest@mozdev.org:/cvs login
 #fi
 configure_optional 'mathml' '--enable-mathml' '--disable-mathml' 'Enable MathML?' y
-if configure_optional 'svg' '--enable-svg' '--disable-svg' 'Enable SVG?' y; then
+if configure_optional 'libart' '--enable-svg --enable-svg-renderer-libart' '' 'Use LibArt SVG?' y; then
   echo 'export MOZ_INTERNAL_LIBART_LGPL=1' >> $SPELL_CONFIG
+else
+  configure_optional 'cairo' '--enable-svg --enable-svg-renderer-cairo' '' 'Use Cairo SVG?' y
 fi
 configure_optional 'ldap' '--enable-ldap --enable-ldap-experimental' '--disable-ldap' 'Enable LDAP:// schema support?' y
 configure_optional 'xpctools' '--enable-xpctools' '--disable-xpctools' 'Build JavaScript profiling tool?' n

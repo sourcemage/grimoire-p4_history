@@ -1,7 +1,7 @@
            SPELL=mozilla
-         VERSION=1.8a1
+         VERSION=1.7
           SOURCE=$SPELL-source-$VERSION.tar.bz2
-          MD5[0]='72d553eba3eb78858e905d9b54dbb461'
+          MD5[0]=c0d3be878a3857120c1863d8555caf02
       LICENSE[0]=MPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
       MAKE_NJOBS=1
@@ -33,13 +33,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
   SOURCE3_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE3
   SOURCE3_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE3
   SOURCE3_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURCE3
-         SOURCE4=mozilla-libart.tar.bz2
-  SOURCE4_URL[0]=http://w3studi.informatik.uni-stuttgart.de/~vonmerad/$SOURCE4
           MD5[3]='c1926f1d2253d01aba596578c11244fb'
       LICENSE[3]=LGPL
         WEB_SITE=http://www.mozilla.org/
          ENTERED=20010922
          UPDATED=20030723
+       BUILD_API=2
             DOCS='LICENSE README.txt'
            SHORT='Mozilla is a Web browser and a rich cient application platform'
 cat << EOF

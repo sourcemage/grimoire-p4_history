@@ -1,3 +1,5 @@
+# this is so OPTS and MOZILLA_EXT get picked up correctly
+. $SPELL_CONFIG
 depends zip &&
 depends perl &&
 
@@ -12,8 +14,8 @@ optional_depends libmng                           \
                  '--without-system-mng'           \
                  'for MNG picture format support' &&
 
-if echo "$OPTS" | grep -q 'enable-svg'; then
-  depends libart_lgpl '--enable-svg-renderer-libart'
+if echo "$OPTS" | grep -q 'enable-svg-renderer-cairo'; then
+  depends cairo
 fi &&
 
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
