@@ -1,8 +1,11 @@
-2003-09-18  hgg <hgreig@bigpond.net.au>
+2003-09-19  hgg <hgreig@bigpond.net.au>
 
+		Update to 4.3.99.12 for all the band-aid brigade
 		Branch into xfree86-devel
 		Remove all options for patches
 		Add some fallback defaults to BUILD
+		Move a bugfix in BUILD to before "make World" so it won't fail
+                (when it does fail it calls "make World" again which actually involves a "make clean")
 
 2003-09-18  hgg <hgreig@bigpond.net.au>
 

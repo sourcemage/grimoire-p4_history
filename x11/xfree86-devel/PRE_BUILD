@@ -21,9 +21,8 @@ for p in ${PATCH_SOURCES[*]}
       ### may occur during their application, that do not preclude us from proceeding.
       true
     fi
-  done                                                                                    &&
+ done                                                                                    &&
   rm -fr lib/zlib   # moved in CVS, patch doesn't apply cleanly
-fi                                                                                        &&
 #recommended by xfree86.org
 mk_source_dir  $SOURCE_DIRECTORY.bld 
 
