@@ -1,5 +1,5 @@
 (
-
+  patch -p0 <$SPELL_DIRECTORY/font.diff                            &&
   cd  libImaging                                                   &&
   #  Ignores  $OPTS
   ./configure                                                      &&
