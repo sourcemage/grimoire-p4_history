@@ -1,7 +1,2 @@
-(
-
-  python  setup.py  build    &&
-  prepare_install            &&
-  python  setup.py  install
-
-) > $C_FIFO 2>&1
+  sedit 's/build_togl=1/build_togl=0/' config/linux.cfg
+  python  setup.py  build
