@@ -1,0 +1,6 @@
+if  !  grep  -q  "POSTFIX_GLOBAL="  $SPELL_CONFIG;  then
+  if    query  "Use SpammAssassin as a global spamfilter for postfix ?" n
+    then  echo   "POSTFIX_GLOBAL=y"  >>  $SPELL_CONFIG
+    else  echo   "POSTFIX_GLOBAL=n"  >>  $SPELL_CONFIG
+  fi
+fi
