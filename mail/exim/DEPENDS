@@ -1,10 +1,22 @@
 depends  db    &&
 depends  gawk  &&
 
-case  $CRON  in
-  f)  depends  fcron    ;;
-  *)  depends  hc-cron  ;;
-esac  &&
+message  "Exim can use either hc-cron or or fcron"  \
+         "to periodically attempt to resend undelivered mail."  &&
+
+if  spell_installed  hc-cron
+then
+  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  y
+else
+  config_query  HCCRON  "Attempt to resend undelivered via hc-cron?"  n
+fi  &&
+
+if  spell_installed  fcron
+then
+  config_query  FCRON   "Attempt to resend undelivered via fcron?"  y
+else
+  config_query  FCRON   "Attempt to resend undelivered via fcron?"  n
+fi  &&
 
 # The spell only mentioned xfree86, haven't tested with others
 if  spell_installed  xfree86
@@ -40,7 +52,17 @@ then
   config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  y
 else
   config_query  OPENLDAP     "Use openldap for LDAP lookup tables?"  n
-fi
+fi  &&
+
+if  [  "$HCCRON"  ==  "y"  ]
+then
+  depends  hc-cron
+fi  &&
+
+if  [  "$FCRON"  ==  "y"  ]
+then
+  depends  fcron
+fi  &&
 
 if  [  "$XFREE86"  ==  "y"  ]
 then

@@ -1,0 +1,27 @@
+chgrp  -R  mail   /var/spool/mail  &&
+chmod  -R  g+rw   /var/spool/mail  &&
+
+EXIM_SCHEDULE="0 * * * * /usr/sbin/exim  -q"  &&
+
+if  [  "$FCRON"  ==  "y"  ]
+then
+  echo  -e  "`fcrontab  -l  2>/dev/null  |
+  grep  -v  exim`\n$EXIM_SCHEDULE"       |
+  fcrontab -                2>/dev/null
+fi  &&
+
+if  [  "$HCCRON"  ==  "y"  ]
+then
+ echo  -e  "`crontab  -l           |
+ sed   -n  4~1p                    |
+ grep  -v  exim`\n$EXIM_SCHEDULE"  |
+ crontab -
+fi  &&
+
+if  [  "$SKIPRESTORE"  ==  "y"  ]
+then
+  message "${MESSAGE_COLOR}Restore skipped. (you can still use $backup_file later yourself)"  &&
+  message " ${DEFAULT_COLOR}"
+else
+  tar -C / -xjvPf $backup_file
+fi

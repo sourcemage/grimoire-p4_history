@@ -1,3 +1,33 @@
+2004-07-23 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.41
+	* PREPARE: Updated exiscan to 4.41-24
+	* WIP: Removed
+
+2004-07-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.40
+	  BUILD_API=2
+	* PREPARE: Updated exiscan to 4.40-23
+	  Converted to config_query
+	* POST_INSTALL: Renamed to FINAL for BUILD_API 2
+	* FINAL: Use config_query responses
+	  Add some &&'s
+	  Move config file backup query to CONFIGURE
+	* BUILD: Converted to BUILD_API 2
+	  Use config_query responses
+	* INSTALL: Added
+	  Use config_query responses
+	  Cleaned up formatting a bit (extra &&'s and such)
+	* PRE_BUILD: Use config_query responses
+	* PRE_REMOVE: Move query to CONFIGURE
+	  Add missing &&'s
+	* CONFIGURE: Query for config file backup
+	  Add "backup_file" to persistant variables
+	  Query for backing up config file
+	* DEPENDS: Use config_query responses
+	  Missing "&&" after openldap's fi
+	  Add queries and checks for fcron/hc-cron
+	* WIP: Needs testing. ;)
+
 2004-07-11 Eric Sandall <eric@sandall.us>
 	* BUILD: Only apply spell-dependent changes if the user wants it (Bug #7085)
 	  Create the log files, otherwise exim rejects all e-mail
