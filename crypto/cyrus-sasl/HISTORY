@@ -1,3 +1,15 @@
+2002-12-30  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Upgraded to 2.1.10.
+		Added PREPARE options to better align the configuration.
+		Cyrus-SASL presence can (sometimes dramatically) alter the
+		behavior of the programs that depends on it, so it has to
+		be configured carefully.
+		Added startup script for SASL authentication daemon.
+		Made BUILD also build a test module for saslauthd (very
+		handy tool).
+		Removed sedit patches because they're no longer needed.
+
 2002-10-16  Ladislav Hagara <hgr@vabo.cz>
 
 		Updated to 2.1.9
