@@ -1,5 +1,8 @@
 (
 
+  # Fix nasty overflow bug
+  sedit  's/long ds_taken/long &/'  login-utils/simpleinit.c  &&
+
   ./configure                             &&
   make  OPT="$CFLAGS"                     &&
   prepare_install                         &&
