@@ -13,4 +13,7 @@ if [ "$backup_file" != "" ]; then
   message " ${DEFAULT_COLOR}"                                                           &&
 
   config_query  SKIPRESTORE  "Skip restoring backup settings ?"  y
+else
+  persistent_add  SKIPRESTORE  &&
+  SKIPRESTORE="y"
 fi
