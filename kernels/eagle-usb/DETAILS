@@ -1,13 +1,14 @@
            SPELL=eagle-usb
-         VERSION=1.9.6
+         VERSION=1.9.8
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
-   SOURCE_URL[0]=http://baud123.free.fr/eagle/$SOURCE
-   SOURCE_URL[1]=http://tbasic.free.fr/eagle/$SOURCE
-        WEB_SITE=http://eagle-usb.ath.cx/pub/sommaire.php3
+   SOURCE_URL[0]=$SOURCEFORGE_URL/eagle-usb/$SOURCE
+   SOURCE_URL[1]=http://baud123.free.fr/eagle/$SOURCE
+   SOURCE_URL[2]=http://tbasic.free.fr/eagle/$VERSION/$SOURCE
+        WEB_SITE=http://www.eagle-usb.org/
          ENTERED=20040407
-         UPDATED=20030311
-          MD5[0]=183537e528f2ea003161a1755f9300ad
+         UPDATED=20040611
+          MD5[0]=4ff10beb0c2f744aeb4b938eaa1cf46f
       MAINTAINER=mlubrano@sourcemage.org
            SHORT="eagle based usb adsl modem driver (sagem, usrobotics)"
 cat << EOF
