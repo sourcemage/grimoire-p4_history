@@ -3,9 +3,9 @@
   cd  source  &&
   chmod  u+x  runConfigureICU  configure  install-sh  &&
   
-  runConfigureICU  LinuxRedHat  \
-            --prefix=/usr       \
-            $OPTS               &&
+  ./runConfigureICU  LinuxRedHat  \
+            --prefix=/usr         \
+            $OPTS                 &&
 
   make             &&
   prepare_install  &&
