@@ -1,5 +1,6 @@
 (
-OPT="$CFLAGS"
+export OPT="$CFLAGS"
+export OPTS="$OPTS --enable-shared"
 sedit "s/\['ndbm'\]/\['ndbm', 'gdbm_compat'\]/g" setup.py &&
 
 # The following file from kdebindings has a syntax error that
