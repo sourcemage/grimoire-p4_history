@@ -1,19 +1,15 @@
-              SPELL=ipw2200_firmware
-            VERSION=1.2
-             SOURCE=ipw2200-fw-1.2.tgz
-   SOURCE_DIRECTORY=$BUILD_DIRECTORY/ipw2200-fw-$VERSION
-      SOURCE_URL[0]=ftp://24.55.157.71/pub/sourcemage/extras/$SOURCE
-             MD5[0]=d3c8bed595789df26f27069e4ea6d9d9
-           WEB_SITE=http://ipw2200.sf.net/
-            ENTERED=20041015
-            UPDATED=20041015
-         LICENCE[0]=GPL
-            ARCHIVE="off"
-              SHORT="Intel ProWireless 2200 kernel drivers"
+           SPELL=ipw2200_firmware  
+         VERSION=1.2
+          SOURCE=ipw2200-fw-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ipw2200-fw-$VERSION
+   SOURCE_URL[0]=http://bughost.org/firmware/$SOURCE 
+          MD5[0]=d3c8bed595789df26f27069e4ea6d9d9
+        WEB_SITE=http://ipw2200.sf.net/
+         ENTERED=20041015
+         UPDATED=20041015
+      LICENCE[0]=GPL
+         ARCHIVE="off"
+           SHORT="Intel ProWireless 2200 kernel drivers"
 cat << EOF
-
-This is the Intel Pro Wireless 2200 driver found on the website
-ipw2200.sf.net
-if you want more info than that check out the web site
-
+This is the Intel Pro Wireless 2200 driver found on the website ipw2200.sf.net if you want more info than that check out the web site
 EOF
