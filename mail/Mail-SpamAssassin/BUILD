@@ -1,36 +1,36 @@
 (
 
-  perl  Makefile.PL  				&&
-  make               				&&
-  prepare_install    				&&
-  MAKE_NJOBS_OLD=$MAKE_NJOBS			&&
-  MAKE_NJOBS=1					&&
-  make    install				&&
-  MAKE_NJOBS=$MAKE_NJOBS_OLD			&&
+  perl  Makefile.PL  RUN_RAZOR2_TESTS=y RUN_RAZOR1_TESTS=y  		&&
+  make               							&&
+  prepare_install    							&&
+  MAKE_NJOBS_OLD=$MAKE_NJOBS						&&
+  MAKE_NJOBS=1								&&
+  make    install							&&
+  MAKE_NJOBS=$MAKE_NJOBS_OLD						&&
 
-  mkdir -p 	/usr/doc/$SPELL			&&
-  cp ninjabutton.png /usr/doc/$SPELL            &&
-  cp *.txt	/usr/doc/$SPELL                 &&
-  cp TRADEMARK	/usr/doc/$SPELL                 &&
-  cp README	/usr/doc/$SPELL                 &&
-  cp procmailrc.example /usr/doc/$SPELL         &&
-  cp Changes    /usr/doc/$SPELL                 &&
-  cp -r contrib /usr/doc/$SPELL                 &&
-  cp -r masses  /usr/doc/$SPELL                 &&
-  cp -r rules   /usr/doc/$SPELL                 &&
-  cp -r sql     /usr/doc/$SPELL                 &&
+  mkdir -p 	/usr/doc/$SPELL						&&
+  cp ninjabutton.png /usr/doc/$SPELL           				&&
+  cp *.txt	/usr/doc/$SPELL                 			&&
+  cp TRADEMARK	/usr/doc/$SPELL                 			&&
+  cp README	/usr/doc/$SPELL                 			&&
+  cp procmailrc.example /usr/doc/$SPELL         			&&
+  cp Changes    /usr/doc/$SPELL                 			&&
+  cp -r contrib /usr/doc/$SPELL                 			&&
+  cp -r masses  /usr/doc/$SPELL                 			&&
+  cp -r rules   /usr/doc/$SPELL                 			&&
+  cp -r sql     /usr/doc/$SPELL                 			&&
   cp -r tools	/usr/doc/$SPELL	
 
 ) > $C_FIFO 2>&1 &&  (
 
   if [ "$SPAMD" == "y" ]; then
 
-    cp $SCRIPT_DIRECTORY/spamd.sh  /etc/init.d    &&
-    ln  -sf  ../init.d/spamd.sh     /etc/rc3.d/S90spamd
-    ln  -sf  ../init.d/spamd.sh     /etc/rc4.d/S90spamd
-    ln  -sf  ../init.d/spamd.sh     /etc/rc5.d/S90spamd
+    cp $SCRIPT_DIRECTORY/spamd.sh  /etc/init.d    			&&
+    ln  -sf  ../init.d/spamd.sh     /etc/rc3.d/S90spamd			&&
+    ln  -sf  ../init.d/spamd.sh     /etc/rc4.d/S90spamd			&&
+    ln  -sf  ../init.d/spamd.sh     /etc/rc5.d/S90spamd			&&
 
-    ln  -sf  ../init.d/spamd.sh     /etc/rc0.d/K10spamd
+    ln  -sf  ../init.d/spamd.sh     /etc/rc0.d/K10spamd			&&
     ln  -sf  ../init.d/spamd.sh     /etc/rc6.d/K10spamd
 
   else
