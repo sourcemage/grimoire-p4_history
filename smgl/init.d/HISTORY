@@ -1,4 +1,14 @@
-2003-09-20  Seth Woolley <seth@tautolog.org>
+2003-10-08  Seth Woolley <seth@tautology.org>
+
+		* files/smgl_functions: Fixed issue with exporting the 
+		  echo override but not its child functions, removed 
+		  init.d: prefix, made syslogging optional.
+		* files/smgl_telinit: added telinit-specific rc stuff
+		* files/rc: removed telinit-specific stuff for smgl_telinit
+		* BUILD: added smgl_telinit on install
+		* init.d/init.conf: edited for syslog option.
+
+2003-09-20  Seth Woolley <seth@tautology.org>
 
 		Fixed syslog logger sometimes not there bug (I hope).
 		DEVICES=/dev now, by default (otherwise recasting sucks).
@@ -8,7 +18,7 @@
 		Updated to version 2.1.
 
 		Really fixed my logger fix.
-		Make sure colors don't to to logger, only screen
+		Make sure colors don't go to logger, only screen
 
 2003-08-25  Eric Schabell <eschabell@sourcemage.org>
 
@@ -20,7 +30,8 @@
 
 2003-08-21  hgg <hgreig@bigpond.net.au>
 
-		Fix Typo in CONFIGURE and POST_INSTALL to correctly edit /etc/securetty
+		Fix Typo in CONFIGURE and POST_INSTALL to correctly edit 
+		/etc/securetty
 
 2003-08-19  Arwed v. Merkatz <v.merkatz@gmx.net>
 

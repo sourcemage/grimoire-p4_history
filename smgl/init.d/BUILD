@@ -32,6 +32,7 @@
   install  -v  -m 754  $FD/rc               $ID/              &&
   install  -v  -m 644  $FD/smgl_functions   $ID/              &&
   install  -v  -m 644  $FD/smgl_init        $ID/              &&
+  install  -v  -m 644  $FD/smgl_telinit     $ID/              &&
   install  -v  -m 644  $FD/smgl_runlevel    $ID/              &&
 
   # Some non-directory based runlevels
