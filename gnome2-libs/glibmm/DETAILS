@@ -1,16 +1,15 @@
            SPELL=glibmm
-         VERSION=2.3.1
+         VERSION=2.3.6
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/gtkmm/$SOURCE
-          MD5[0]='c3c0bae7686f7717dbf3188e03363d98'
+          MD5[0]='281cefaed96623930dbb622fad3f5d5d'
       LICENSE[0]="LGPL"
         WEB_SITE=http://www.gtkmm.org/
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20031005
-         UPDATED=20031207
+         UPDATED=20040310
            SHORT="C++ wrapper library for glib"
 cat << EOF
 glibmm provides a C++ interface to glib. glibmm was previously 

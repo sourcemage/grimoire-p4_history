@@ -1,0 +1,20 @@
+           SPELL=gnome-keyring
+         VERSION=0.1.90
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='9408ba462373c62f4f1c1dfe9b80eb5c'
+      LICENSE[0]=LGPL
+         ENTERED=20020505
+         UPDATED=20040313
+           SHORT="GNOME password keeper"
+cat << EOF
+gnome-keyring is a program that keep password and other secrets for
+users. It is run as a damon in the session, similar to ssh-agent, and
+other applications can locate it by an environment variable.
+ 
+The program can manage several keyrings, each with its own master
+password, and there is also a session keyring which is never stored to
+disk, but forgotten when the session ends.
+EOF

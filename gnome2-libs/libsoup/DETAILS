@@ -1,21 +1,20 @@
            SPELL=libsoup
-         VERSION=1.99.26
+         VERSION=2.1.8
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
-       DBVERSION=3.1.17
+#       DBVERSION=3.1.17
           SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=db-$DBVERSION.tar.gz
+#         SOURCE2=db-$DBVERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.ximian.com/pub/source/evolution/$SOURCE  
-  SOURCE2_URL[0]=http://sleepycat.com/update/snapshot/$SOURCE2
-          MD5[0]='d6cee6b5eaef0425cdb066ea15ad2965'
-          MD5[1]=234b7d8d2baa43fec54a0adb1ec0cb15
+#  SOURCE2_URL[0]=http://sleepycat.com/update/snapshot/$SOURCE2
+          MD5[0]='e5cae8a69a0d39a4453ddc05945731db'
+#          MD5[1]=234b7d8d2baa43fec54a0adb1ec0cb15
       LICENSE[0]=LGPL
-      LICENSE[1]=FDL
+#      LICENSE[1]=FDL
         WEB_SITE=http://developer.ximian.com/articles/whitepapers/soap_soup/
          ENTERED=20030312
-         UPDATED=20030925
-      MAINTAINER=eric@sandall.us
+         UPDATED=20040311
            SHORT="Soup is a SOAP (Simple Object Access Protocol) implemented in C"
 cat << EOF
 Soup is a SOAP (Simple Object Access Protocol) implementation for the

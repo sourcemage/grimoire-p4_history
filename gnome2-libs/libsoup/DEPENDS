@@ -5,16 +5,5 @@ depends  libxml2  &&
 depends  glib2    &&
 depends  gtk+2    &&
 depends  popt     &&
-
-optional_depends  "openssl"                                  \
-                  "--enable-ssl"                             \
-                  "--disable-ssl"                            \
-                  "to turn on Secure Sockets Layer support"  &&
-
-optional_depends  "MOZILLA-BROWSER"                                \
-                  "--with-nspr-includes=/usr/include/mozilla/nspr  \
-                   --with-nspr-libs=/usr/lib/mozilla               \
-                   --with-nss-includes=/usr/include/moznss         \
-                   --with-nss-libs=/usr/lib/mozilla"               \
-                  ""                                               \
-                  "for Netscape Secure Sockets support"
+depends  gnutls   &&
+depends  libgpg-error

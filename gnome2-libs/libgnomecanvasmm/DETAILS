@@ -1,16 +1,15 @@
            SPELL=libgnomecanvasmm
-         VERSION=2.0.1
+         VERSION=2.5.1
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='1c2a8de467953fe6db67e630d5c14614'
+          MD5[0]='e3e585d427a81be1c9cf433b621544d0'
       LICENSE[0]="LGPL"
         WEB_SITE=http://gtkmm.sourceforge.net/
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20020523
-         UPDATED=20030828
+         UPDATED=20040311
            SHORT="C++ wrapper library for libgnomecanvas"
 cat << EOF
 C++ wrapper library for libgnomecanvas
