@@ -1,15 +1,17 @@
            SPELL=bootsplash
-         VERSION=3.0.7
+         VERSION=3.1
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/bootsplash-$VERSION
    SOURCE_URL[0]=ftp://ftp.suse.com/pub/people/stepan/bootsplash/rpm-sources/${SPELL}/${SOURCE}
-          MD5[0]=5646f403dffb3328c8877ad17daf23be
+   SOURCE_URL[1]=http://www.bootsplash.de/files/splashutils/${SOURCE}
+          MD5[0]=fac134364cda53cba1d56bf20393682d
         WEB_SITE=http://www.bootsplash.org/
          ENTERED=20030801
-         UPDATED=20040604
+         UPDATED=20040717
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="splash is used to attach a picture to an initrd."
 cat << EOF
-
 splash is used to attach a picture to an initrd or change the picture while
 the system is running.  splash can also be used to trigger command execution
 when a specified runlevel script is reached.  This can for example be used to
@@ -33,6 +35,4 @@ that row only.
   15 bits    32 K  784 (0x310)  787 (0x313)  790 (0x316)  793 (0x319)
   16 bits    65 K  785 (0x311)  788 (0x314)  791 (0x317)  794 (0x31A)
   24 bits  16.7 M  786 (0x312)  789 (0x315)  792 (0x318)  795 (0x31B)
-
 EOF
-
