@@ -1,4 +1,5 @@
 depends  Python      &&
 depends  gnome-libs  &&
-depends  gnome-core  &&
-depends  control-center
+depends  pygtk       &&
+optional_depends  "control-center"  "" "" "to write control-center capplets"  &&
+optional_depends  "gnome-core"  "" "" "to write gnome applets with gnome-python"
