@@ -1,16 +1,17 @@
-           SPELL=ORBit2
+           SPELL=orbit2
          VERSION=2.10.3
-	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE	
-          MD5[0]='1d4fed3068ce41afce6688105feb66c1'
-      LICENSE[0]=GPL
-      LICENSE[1]=LGPL
-      MAKE_NJOBS=1
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=ORBit2-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ORBit2-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/ORBit2/$BRANCH/$SOURCE	
+          MD5[0]=1d4fed3068ce41afce6688105feb66c1
         WEB_SITE=http://orbit-resource.sourceforge.net
          ENTERED=20020505
          UPDATED=20040623
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+       BUILD_API=2
+      MAKE_NJOBS=1
            SHORT="High-performance CORBA Object Request Broker."
 cat << EOF
 ORBit is a high-performance CORBA (Common Object Request Broker 
