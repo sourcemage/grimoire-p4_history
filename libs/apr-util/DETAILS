@@ -29,11 +29,6 @@ if [ "$APR_CVS" == 'y' ]; then
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-if [ "$APR_CHECKOUT" == 'y' ]; then
-  FORCE_DOWNLOAD=on
-   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:$SPELL:$TAG
-          MD5[0]=IGNORE
-fi
    SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
         WEB_SITE=http://apr.apache.org/
       LICENSE[0]=APACHE
