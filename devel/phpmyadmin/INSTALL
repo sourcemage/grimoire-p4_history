@@ -11,5 +11,9 @@ fi                                                                       &&
 cd  ${SOURCE_DIRECTORY}                                                  &&
 mkdir  -p  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}                         &&
 cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/                        &&
+if [ -e /tmp/config.inc.php ]; then            
+	cp  -v  /tmp/config.inc.php  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/    
+	echo "A previous config.inc.php copied from /tmp back into new installation."
+fi   &&
 
 echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
