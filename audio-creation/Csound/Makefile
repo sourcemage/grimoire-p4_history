@@ -84,7 +84,7 @@ CFLAGS = $(FLAGS) -z $(OPTS) -falign-loops=4 -ffast-math -fomit-frame-pointer -f
 #	-I/usr/openwin/include		Solaris openwin interface
 #	-I/usr/demo/SOUND/include	Solaris sound interface
 #       -I/usr/X11R6/include            non-RedHat distributions of Linux
-LIBS =	-L /usr/X11R6/lib -lX11 -ltcl8.3 -ltk8.3 -lm -ldl
+LIBS =	-L /usr/X11R6/lib -lX11 -ltcl8.4 -ltk8.4 -lm -ldl
 #	-lefence
 #	-lm		    		required
 #	-lX11				for X window calls
