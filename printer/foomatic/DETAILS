@@ -1,0 +1,17 @@
+           SPELL=foomatic
+         VERSION=current
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.linuxprinting.org/download/foomatic/$SOURCE
+        WEB_SITE=http://www.linuxprinting.org/foomatic.html
+         ENTERED=20020405
+         UPDATED=20020405
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="Foomatic printing system"
+cat << EOF
+Foomatic is a system for using free software printer
+drivers with common spoolers on Unix. It supports LPD,
+PDQ, CUPS, the VA Linux LPD, LPRng, PPR, and direct
+spooler-less printing and any free software driver for
+which execution data has been entered in the database.
+EOF

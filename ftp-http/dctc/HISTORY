@@ -1,3 +1,59 @@
+2002-04-21  Eric Schabell <eric@schabell.com>
+
+		Updated version to 0.80.0:
+		* In this version, the upload slots are now shared by all running
+		  clients. A corruption and crash problem occurring in UADDR with
+		  Berkeley DB was fixed. When a remote user retrieves the share list,
+		  DCTC now waits up to 15 minutes before closing the transfer
+		  connection. In the GUI, a preference reload problem was fixed and the
+		  done tab now sorts numerically. The Content search tab has been
+		  removed.
+
+2002-04-21  ^GiuAnZ^ <djcomputer@gmx.net>
+
+		Bug fix for building dctc:
+		The source is named dctc-0.79.0.tar.gz, but the tarball contains the
+		directory dctc-0.79.1. So the spell fails to compile as it unpacks in the
+		wrong path. A temporary fix (at least until the author releases a new
+		version) is setting this in the DETAILS file:
+
+         	VERSION=0.79.1
+          	SOURCE=$SPELL-0.79.0.tar.gz
+
+		
+2002-04-12  Eric Schabell <eric@schabell.com>
+
+		Updated version to 0.79.0:
+		* In this version, UADDR now uses BerkeleyDB, "normal" download function
+		  is replaced by a wrapper to GDL functions. Speed computation is more
+		  accurate. DCTC can wake up waiting tasks when a user having a
+		  "searched" nickname comes into the hub or has a free download slot. A
+		  man page was added, along with a command to find out which hub a user
+		  is on, and a virtual share.
+
+2002-04-07  Eric Schabell <eric@schabell.com>
+
+		Updated version to 0.78.0:
+		* In this release, the BerkeleyDB detection was improved. The transfer
+ 		  key of broken clients can now be accepted. When a transfer with an
+ 		  user ends, other waiting transfers with him are now woken up. Minor
+ 		  bugs were fixed in download and search. It is now possible to link
+ 		  DCTCs of different computers to allow them to share the user IP
+ 		  address database (UADDR) and to perform searchs on hub where you are
+ 		  not directly connected to. With the GUI, users can now be flagged from
+ 		  GDL list, the seen hub list is saved faster on leaving, each GDL has a
+ 		  time to complete its task, and the user share list is displayed as a
+ 		  tree and is now buffered to improve display speed.
+		
+2002-04-02  Eric Schabell <eric@schabell.com>
+
+		Updated version to 0.77.0:
+		* Support for Berkeley Database 4.0, ability to limit the download
+		  bandwidth and GDL gathering speed, a fix for a GUI bug preventing new
+		  users from starting, ability to attach all unused GDLs to the client
+		  in one click, and running clients can be terminated (or killed)
+		  without being connected to.
+
 2002-03-25  Eric Schabell <eric@schabell.com>
 
 		Updated version to 0.76.0:

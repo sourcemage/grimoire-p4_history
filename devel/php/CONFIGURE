@@ -1,13 +1,9 @@
 if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
-  if  query  "Install ftp support?" y;  then
-    echo  'OPTS="$OPTS --enable-ftp"'  >>  $SPELL_CONFIG
+  if  query  "Is MySQL already intalled? If yes, answer y now and n when asked again" y;  then
+    echo  'OPTS="$OPTS --with-mysql=/usr"'  >>  $SPELL_CONFIG
   fi
 
-  if  query  "Enable transparant session id?" y;  then
-    echo  'OPTS="$OPTS --enable-trans-sid"'  >>  $SPELL_CONFIG
-  fi
-  
   if  query  "Enable sockets support (experimental)?" y;  then
     echo  'OPTS="$OPTS --enable-sockets"'  >>  $SPELL_CONFIG
   fi

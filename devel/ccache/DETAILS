@@ -1,0 +1,20 @@
+           SPELL=ccache
+         VERSION=1.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ccache.samba.org/ftp/ccache/$SOURCE
+        WEB_SITE=http://ccache.samba.org
+           SHORT="ccache is a cache for C/C++ compilers"
+         ENTERED=20020416
+         UPDATED=20020416
+      MAINTAINER=julian@wongr.net
+cat << EOF
+ccache is a compiler cache. It acts as a caching pre-processor to
+C/C++ compilers, using the -E compiler switch and a hash to detect
+when a compilation can be satisfied from cache. This often results in
+a 5 to 10 times speedup in common compilations.
+
+The idea came from Erik Thiele wrote the original compilercache
+program as a bourne shell script. ccache is a re-implementation of
+Erik's idea in C with more features and better performance.
+EOF

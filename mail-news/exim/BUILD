@@ -66,6 +66,10 @@ echo  "EXIM_GROUP=mail"                  >>  Local/Makefile
 
 ) > $C_FIFO 2>&1  &&  (
 
+# copy usefull convert tool
+  message "Look @ /usr/doc/exim/doc for convert tools..."
+  cp -v src/convert*.src doc/
+
   ln     -sf  ../sbin/exim   /usr/lib/sendmail
   ln     -sf  exim          /usr/sbin/sendmail
   ln     -sf  exim          /usr/sbin/mailq

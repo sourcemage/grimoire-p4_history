@@ -14,5 +14,5 @@ fi
 if query "Backup package config ?" y
 then
  CUR_DATE=`date +%s`
- cp /etc/exim.conf /etc/exim-backup-$CUR_DATE.conf
+ cp /etc/exim.conf /etc/exim-backup-$CUR_DATE.conf 1>/dev/null 2>&1
 fi
