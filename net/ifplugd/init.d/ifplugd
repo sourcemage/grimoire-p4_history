@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUNLEVEL=3
-NEEDS="+network"
+NEEDS="+network +remote_fs"
 
 ifplugdconf=/etc/ifplugd/ifplugd.conf
 if [ -e $ifplugdconf ]; then
