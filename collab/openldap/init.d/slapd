@@ -7,7 +7,7 @@
 . /etc/sysconfig/ldap
 
 PROGRAM=/usr/sbin/slapd
-ARGS="-h '$SLAPD_URL'"
+ARGS="'-h $SLAPD_URL'"
 RUNLEVEL=3
 NEEDS="+remote_fs"
 
