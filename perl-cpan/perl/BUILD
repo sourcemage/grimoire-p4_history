@@ -11,16 +11,16 @@ if  [  "$OLD_CUSTOM"  ==  "y"  ];  then
   make depend
 else
   if  [  "$NEW_CUSTOM"  ==  "y"  ];  then
-    ./Configure -Ui_db -Dprefix=/usr  \
+    ./Configure -Ui_db -Dprefix=/usr -Dvendorprefix=/usr  \
                 -Dlibperl=libperl.so  &&
     cp config.sh $CONFIG
   else
     if  [  "$THREADED"  ==  "y"  ];  then
       ./Configure  -Dprefix=/usr -d -e                                   \
-                   -Ui_db -Dusethreads -Ulocincpth -Dlibperl=libperl.so
+                   -Ui_db -Dvendorprefix=/usr -Dusethreads -Ulocincpth -Dlibperl=libperl.so
     else
       ./Configure  -Dprefix=/usr -d -e                      \
-                   -Ui_db -Ulocincpth -Dlibperl=libperl.so
+                   -Ui_db -Dvendorprefix=/usr -Ulocincpth -Dlibperl=libperl.so
     fi
   fi
 fi  &&

@@ -1,0 +1,16 @@
+config_query LATEST_MD5 "Install latest version for Digest-MD5" y
+config_query LATEST_FILESPEC "Install latest version for File-Spec" y
+config_query LATEST_CGI "Install latest version for CGI" y
+config_query LATEST_FILTERSIMPLE "Install latest version for Filter-Simple" y
+config_query LATEST_LIBNET "Install latest version for libnet" y
+config_query LATEST_NETPING "Install latest version for Net-Ping " y
+config_query LATEST_TEXTBALANCED "Install latest version for Text-Balanced" y
+
+[ $LATEST_MD5 = "y" ] && echo "depends digest-md5 &&" > $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_FILESPEC = "y" ] && echo "depends File-Spec &&" >> $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_CGI = "y" ] && echo "depends perl-cgi &&" >> $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_FILTERSIMPLE = "y" ] && echo "depends Filter-Simple &&" >> $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_LIBNET = "y" ] && echo "depends perl-libnet &&" >> $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_NETPING = "y" ] && echo "depends Net-Ping &&" >> $SCRIPT_DIRECTORY/DEPENDS
+[ $LATEST_TEXTBALANCED = "y" ] && echo "depends Text-Balanced &&" >> $SCRIPT_DIRECTORY/DEPENDS
+echo "true" >> $SCRIPT_DIRECTORY/DEPENDS
