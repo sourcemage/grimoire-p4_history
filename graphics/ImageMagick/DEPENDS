@@ -1,22 +1,23 @@
 depends  freetype2  &&
-optional_depends libexif        \
-					'--with-exif'\
-					'--without-exif'\
-					'for EXIF jpeg tag support' &&
-optional_depends X11-LIBS        \
-					''\
-					''\
-					'To support X display and auto some other dependecies' &&
+
+optional_depends  libexif                      \
+                  "--with-exif"                \
+                  "--without-exif"             \
+                  "for EXIF jpeg tag support"  &&
+
+optional_depends  X11-LIBS                                                \
+                  ""                                                      \
+                  ""                                                      \
+                  "To support X display and auto some other dependecies"  &&
+
 if  spell_installed  espgs;  then
-  optional_depends  "espgs"  ""  ""             \
-                    "for generating Postscript and PDF output"
+  depends  "espgs"  ""  ""                             \
+           "for generating Postscript and PDF output"
 elif  spell_installed  ghostscript;  then
-  optional_depends  "ghostscript"  ""  ""  \
-                    "for generating Postscript and PDF output"
+  depends  "ghostscript"  ""  ""                       \
+           "for generating Postscript and PDF output"
 else
   message  "If you are going to install cups, choose espgs instead of ghostscript:"
-  optional_depends  "espgs"  ""  ""             \
+  optional_depends  POSTSCRIPT-INTERPRETER  ""  ""              \
                     "for generating Postscript and PDF output"  &&
-  optional_depends  "ghostscript"  ""  ""  \
-                    "for generating Postscript and PDF output"
 fi
