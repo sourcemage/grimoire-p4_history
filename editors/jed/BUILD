@@ -1,5 +1,3 @@
-(
-
   cp  $SCRIPT_DIRECTORY/FILES/jed.rc lib  &&
 
   # enable antialiasing support
@@ -22,8 +20,4 @@
   make  getmail		                     &&
   if    spell_installed xfree86  ;  then
     make xjed
-  fi                                      &&
-  prepare_install                         &&
-  make    install
-
-)  >  $C_FIFO  2>&1
+  fi
