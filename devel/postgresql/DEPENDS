@@ -1,4 +1,19 @@
-optional_depends  tcl      "--with-tcl"  ""  "for tcl support"        &&
-optional_depends  tk       ""  "--without-tk"  "for tk support"       &&
-optional_depends  perl     "--with-perl"  ""  "for perl support"      &&
-optional_depends  Python   "--with-python"  ""  "for python support"
+optional_depends  "tcl"              \
+                  "--with-tcl"       \
+                  "--without-tcl"    \
+                  "for tcl support"  &&
+
+optional_depends  "tk"              \
+                  "--with-tk"       \
+                  "--without-tk"    \
+                  "for tk support"  &&
+
+optional_depends  "perl"              \
+                  "--with-perl"       \
+                  "--without-perl"    \
+                  "for perl support"  &&
+
+optional_depends  "Python"              \
+                  "--with-python"       \
+                  "--without-python"    \
+                  "for python support"
