@@ -459,7 +459,7 @@ patch_list()
 				then
 					echo LATEST_$patch
 					echo ${!tmp}
-					echo $patch
+#					echo $patch
 				fi
 			done
 		fi
@@ -479,8 +479,7 @@ patch_list()
 		if [ "$found" == "true" ]
 		then
 			echo $patch
-			echo Patch
-			echo Select_Specific_$patch
+			echo Patch_Sub_Menu
 		fi
 	done
 }
@@ -528,7 +527,7 @@ patch_menu()
 			menu="No_Patches Available Sorry"
 		fi
 		command=$( $dialog --title "Select Patches" \
-			--item-help --menu \
+			--help-button --menu \
 			"Currently selected patches: $new_patch_list" 0 0 0 ${menu}
 			)
 		retval="$?"
@@ -538,11 +537,10 @@ patch_menu()
 				LATEST*)
 					;;
 				*)
-					echo $1
-					echo $command	
+					. $patchesdir/$command/.info	
 					command=$( $dialog --title "Select Patches" \
 						--item-help --menu \
-						"Currently selected patches: $new_patch_list" 0 0 0 \
+						"$help\n\nCurrently selected patches: $new_patch_list" 0 0 0 \
 						$(list_specific_patch_dir $1 $command) )
 					;;
 			esac
@@ -563,6 +561,26 @@ patch_menu()
 				new_patch_list=$tmp_patch_list
 			else
 				new_patch_list="${new_patch_list}${command} "
+			fi
+		elif [[ "$retval" == "2" && "${command}" != "No_Patches" ]]
+		then
+			if [[ "LATEST_${command/HELP LATEST_/}" == "${command/HELP /}" ]]
+			then
+				tmp=${command/HELP /}
+				. $latestdefaults 
+				case "${tmp}" in
+					LATEST*)
+						source_patch ${!tmp}
+						;;
+					*)
+						source_patch $tmp
+						;;
+				esac
+				$dialog --msgbox "Selecting this will keep the kernel tree updated.\n$help" 0 0
+			else
+				tmp=${command/HELP /}
+				. $patchesdir/${command/HELP /}/.info
+				$dialog --msgbox "$help" 0 0
 			fi
 		else
 			selected_patches=$new_patch_list
