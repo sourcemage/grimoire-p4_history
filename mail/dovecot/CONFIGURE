@@ -1,6 +1,6 @@
 if  !  grep  -q  "IMAP_BOOT"  $SPELL_CONFIG
 then
-  if    query  "Invoke imapd during boot? "  n
+  if    query  "Support imap protocol? "  n
   then  echo   "IMAP_BOOT=y"  >>  $SPELL_CONFIG
   else  echo   "IMAP_BOOT=n"  >>  $SPELL_CONFIG
   fi
@@ -8,7 +8,7 @@ fi
 
 if  !  grep  -q  "POP3_BOOT"  $SPELL_CONFIG
 then
-  if    query  "Invoke pop3d during boot? "  n
+  if    query  "Support pop3 protocol? "  n
   then  echo   "POP3_BOOT=y"  >>  $SPELL_CONFIG
   else  echo   "POP3_BOOT=n"  >>  $SPELL_CONFIG
   fi
@@ -16,7 +16,7 @@ fi
 
 if  !  grep  -q  "IMAPS_BOOT"  $SPELL_CONFIG
 then
-  if    query  "Invoke secure imapd during boot? "  n
+  if    query  "Support imaps protocol? "  y
   then  echo   "IMAPS_BOOT=y"  >>  $SPELL_CONFIG
   else  echo   "IMAPS_BOOT=n"  >>  $SPELL_CONFIG
   fi
@@ -24,7 +24,7 @@ fi
 
 if  !  grep  -q  "POP3S_BOOT"  $SPELL_CONFIG
 then
-  if    query  "Invoke secure pop3d during boot? "  n
+  if    query  "Support pop3s protocol? "  y
   then  echo   "POP3S_BOOT=y"  >>  $SPELL_CONFIG
   else  echo   "POP3S_BOOT=n"  >>  $SPELL_CONFIG
   fi
