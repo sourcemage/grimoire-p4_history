@@ -1,6 +1,10 @@
 2005-01-09 Eric Sandall <eric@sandall.us>
 	* CONFIGURE,DEPENDS,BUILD: Removed MOZJS, it's deprecated
 	  See the lookat bug below
+	  Enable lookat
+	* 1098805.patch: Added to fix --disable-script-node-javascript until 0.15.5
+	  comes out
+	* PRE_BUILD: Apply 1098805.patch
 
 2005-01-08 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 0.15.4
