@@ -10,7 +10,7 @@ rm -r tools/designer/examples
 rm -r tutorial
 
 # fixes a font issue in qt 3.3.1
-patch src/kernel/qfontdatabase_x11.cpp < $SCRIPT_DIRECTORY/qfontdatabase_x11.diff &&
+#patch src/kernel/qfontdatabase_x11.cpp < $SCRIPT_DIRECTORY/qfontdatabase_x11.diff &&
 
 # add better optimisation flags
 sedit "s#-O2#$CFLAGS#" mkspecs/linux-g++/qmake.conf &&
