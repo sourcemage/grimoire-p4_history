@@ -1,7 +1,7 @@
-if [ `gaze installed | grep Python` -a `gaze installed | grep tcl-tk` ]
+if [ `gaze installed | grep Python` -a `gaze installed | grep tk` ]
 then
    pythonVer=`gaze installed Python`
-   tclVer=`gaze installed tcl-tk | cut -c -3`
+   tclVer=`gaze installed tk | cut -c -3`
 
    export LIBPYTHON="-lpython$pythonVer -ltk$tclVer -ltcl$tclVer"
 fi	&&
