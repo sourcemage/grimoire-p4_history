@@ -3,6 +3,11 @@
 # Starts the acpi daemon
 # description: Listen and dispatch ACPI events from the kernel
 # processname: acpid
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S44
+# SMGL-STOP:0 1 2 6:K66
+#
 
 # Source function library.
 . /etc/rc.d/functions
