@@ -19,11 +19,10 @@ optional_depends  "qt-x11"                \
                   ""                      \
                   "for qt interface"      &&
 
-#optional_depends  "kdelibs"               \
-#                  "--enable-kde"          \
-#                  ""                      \
-#                  "for kde interface"     &&
-# Only works for kde 2 for now... :(
+optional_depends  "kdelibs"               \
+                  "--enable-kde"          \
+                  ""                      \
+                  "for kde interface"     &&
 
 optional_depends  "ncurses"               \
                   "--enable-ncurses"      \
