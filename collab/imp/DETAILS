@@ -1,12 +1,12 @@
-# $Id: DETAILS,v 1.6 2002/10/23 18:55:16 sergeyli Exp $
+# $Id: DETAILS,v 1.7 2002/11/14 21:30:35 sergeyli Exp $
            SPELL=imp
-         VERSION=3.1
+         VERSION=${VERSION:-3.1}
           SOURCE=$SPELL-$VERSION.tar.gz
           MD5[0]='7e4fe9ebaa01be1f990fbcb1e1a80c2b'
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
       SOURCE_URI=$SPELL/tarballs/$SOURCE
-   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SOURCE_URI
+   SOURCE_URL[0]=${SOURCE_URL:-ftp://ftp.horde.org/pub/$SOURCE_URI}
         WEB_SITE=http://www.horde.org/imp/
          ENTERED=20020428
          UPDATED=20020428
