@@ -1,7 +1,5 @@
 (
 
-  patch  -p0  <  $SCRIPT_DIRECTORY/secfix.patch
-
   ./configure  --prefix=/usr            \
                --with-CXX               \
                $OPTS                    &&
