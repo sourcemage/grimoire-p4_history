@@ -1,16 +1,18 @@
-depends nasm      &&
-
+optional_depends  "nasm"                         \
+                  ""                             \
+                  ""                             \
+                  "for mpeg encoding with bbmpeg support"  &&
 optional_depends  "avifile"                      \
-                  "--enable-avifile6"            \
-                  "--with-avifile-mode"          \
+                  "--with-avifile-mods"          \
+                  "--without-avifile-mods"       \
                   "for AVI decoding support using avifile"  &&
 optional_depends  "a52dec"                       \
                   "--with-a52"                   \
                   "--without-a52"                \
                   "for ATSC A/52 support"        &&
 optional_depends  "libdvdread"                   \
-                  "--enable-dvdread"             \
-                  "--disable-dvdread"            \
+                  "--with-dvdread"               \
+                  "--without-dvdread"            \
                   "for DVD support"              &&
 optional_depends  "SDL"                          \
                   ""                             \
@@ -41,39 +43,34 @@ optional_depends  "libvorbis"                    \
                   "--without-vorbis"             \
                   "for vorbis tools support"     &&
 optional_depends  "lzo"                          \
-                  ""                             \
-                  ""                             \
+                  "--with-lzo"                   \
+                  "--without-lzo"                \
                   "for LZO compression support"  &&
 optional_depends  "ImageMagick"                  \
-                  ""                             \
-                  ""                             \
+                  "--with-magick-mods"           \
+                  "--without-magick-mods"        \
                   "image editing tools"          &&
 optional_depends  "libxml2"                      \
                   ""                             \
                   ""                             \
                   "for XML format support"       &&
 optional_depends  "freetype2"                    \
-                  ""                             \
-                  ""                             \
+                  "--enable-text"                \
+                  "--disable-text"               \
                   "for freetype font support"    &&
 optional_depends  "jpeg"                         \
-                  ""                             \
-                  ""                             \
+                  "--with-libjpeg-mods"          \
+                  "--without-libjpeg-mods"       \
                   "for JPEG image support"       &&
 optional_depends  "xvid"                         \
                   ""                             \
                   ""                             \
                   "for xvid de-/encoding support" &&
 optional_depends  "libmpeg3"                     \
-                  ""                             \
-                  ""                             \
+                  "--with-libmpeg3"              \
+                  "--without-libmpeg3"           \
                   "for decoding of MPEG files with libmpeg3"  &&
 optional_depends  "mjpegtools"                   \
                   ""                             \
                   ""                             \
-                  "for mpeg2 encoding with libmpeg2"
-# disabled until it works (relocation error)
-#optional_depends  "quicktime4linux"              \
-#                  "--with-qt"                    \
-#                  ""                             \
-#                  "for MOV (quicktime) file support"
+                  "for mpeg2 encoding with mjpegtools"
