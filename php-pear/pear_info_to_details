@@ -20,7 +20,7 @@ function trim(line,     trimmed_line) {
 /^Summary/ {
   line = $0
   sub(/^Summary/, "", line)
-  print "           SHORT='" trim(line) "'"
+  print "           SHORT='PEAR: " trim(line) "'"
 }
 /^Description/ {
   in_description = 1
