@@ -6,10 +6,3 @@ $SCRIPT_DIRECTORY/UPDATE_BOOTLOADER
 # doesn't like the above line...
 
 cp  ${SPELL_CONFIG}.p ${LINUX_SOURCE_DIRECTORY}/.spell-config.p
-
-if [[ "$ARCHIVE" == "on" ]]
-then
-	message "${MESSAGE_COLOR}Copying everything from ${LINUX_SOURCE_DIRECTORY} to ${SOURCE_DIRECTORY} for archiving${DEFAULT_COLOR}"
-	mk_source_dir ${SOURCE_DIRECTORY} &&
-	cp -a ${LINUX_SOURCE_DIRECTORY}/* ${SOURCE_DIRECTORY}/
-fi

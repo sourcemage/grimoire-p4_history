@@ -61,3 +61,12 @@ ln -sf ${INSTALL_ROOT}/boot/config-${VERSION} \
 cd ${BUILD_DIRECTORY}
 rm linux
 ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` linux
+
+if [[ "$ARCHIVE" == "on" ]]
+then
+#	message "${MESSAGE_COLOR}Copying everything from ${LINUX_SOURCE_DIRECTORY} to ${SOURCE_DIRECTORY} for archiving${DEFAULT_COLOR}"
+	mk_source_dir ${SOURCE_DIRECTORY} 
+# apparently /usr/src/isn't tracked so this doesn't quite work
+#	cp -a ${LINUX_SOURCE_DIRECTORY}/* ${SOURCE_DIRECTORY}/
+fi
+
