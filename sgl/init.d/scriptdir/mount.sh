@@ -1,6 +1,6 @@
 #!/bin/sh
 # /etc/init.d/mount.sh
-# SGL-script-version=20020923
+# SGL-script-version=20021024
 # this sets the run levels and priority for links
 # SGL-START:S:S10
 # SGL-STOP:0 6:K90
@@ -40,7 +40,9 @@ start() {
   echo     > /etc/mtab
   mount    -f -o remount,rw /
   echo "Mounting local filesystems..."
-  mount    -a
+# Fixed so as to not mount networked filesystems yet (no networking)
+# mountnfs.sh will take care of this.
+  mount    -a  -t  nosmbfs,nonfs,noncpfs
   evaluate_retval
   rm       -f /fastboot /forcefsck
 
@@ -54,7 +56,8 @@ stop() {
   evaluate_retval
 
   echo      "Unmounting local filesystems... "
-  umount   -t nodevfs,noproc -f -a -r
+# Do not unmount networked filesystems, mountnfs.sh does that.
+  umount   -t nodevfs,noproc,nosmbfs,nonfs,noncpfs -f -a -r
   evaluate_retval
 
   cat  /etc/mtab  |

@@ -14,23 +14,14 @@ fi
 
 ) > $C_FIFO 2>&1  &&  (
 
-  if  !  [  -e  /etc/init.d/networking.sh  ]
-  then   cp  $SCRIPT_DIRECTORY/networking.sh  /etc/init.d
-  fi
+. $SCRIPT_DIRECTORY/lib_runlevel
 
-  if  !  [  -e  /etc/init.d/hostname.sh    ]
-  then  cp  $SCRIPT_DIRECTORY/hostname.sh    /etc/init.d
-  fi
-
-  ln     -sf  ../init.d/networking.sh  /etc/rc0.d/K70networking
-  ln     -sf  ../init.d/networking.sh  /etc/rc1.d/K70networking
-  ln     -sf  ../init.d/networking.sh  /etc/rc2.d/K70networking
-  ln     -sf  ../init.d/networking.sh  /etc/rc6.d/K70networking
-
-  ln     -sf  ../init.d/networking.sh  /etc/rc3.d/S30networking
-  ln     -sf  ../init.d/networking.sh  /etc/rc4.d/S30networking
-  ln     -sf  ../init.d/networking.sh  /etc/rc5.d/S30networking
-
-  ln     -sf    ../init.d/hostname.sh  /etc/rcS.d/S20hostname
+installscript hostname.sh
+installscript networking.sh
+# clean up .temp files
+scratch_list=$(ls $SCRIPT_DIRECTORY | grep .temp)
+for scratch_file in $scratch_list; do
+    rm -f $SCRIPT_DIRECTORY/$scratch_file
+done
 
 )
