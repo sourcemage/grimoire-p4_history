@@ -6,13 +6,10 @@
  cp -a include/* /usr/include/annie          &&
  if spell_installed doxygen 
   then 
-  if grep  -q  "doc"  ${SPELL_CONFIG}
-   then 
-   make doc                                          &&
-   mkdir -p /usr/doc/annie                           &&
-   cp -a doc/* /usr/doc/annie              
-  fi 
- fi                                           &&
+  make docs                                          &&
+  mkdir -p /usr/doc/annie                            &&
+  cp -a doc/* /usr/doc/annie               
+ fi                                          &&
  if grep -q "utils"  ${SPELL_CONFIG}
   then 
   make utils
@@ -21,7 +18,7 @@
   cp -a bin/* /usr/share/annie/bin/utils             &&
   ln -s /usr/share/annie/bin/utils/* /usr/bin        &&
   rm bin/*
- fi                                            &&
+ fi                                          &&
  if grep -q "examples"  ${SPELL_CONFIG}
   then
   make examples                                      &&
