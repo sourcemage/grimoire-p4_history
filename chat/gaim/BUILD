@@ -14,12 +14,12 @@
   prepare_install                    &&
   make    install                    &&
 
-  case $GAIM_E in
-   y|Y) cd plugins/gaim-e/           &&
-        make                         &&
-        make install                 &&
-        cd ../..
-        ;;
-  esac 
+  if  spell_installed  gpgme ;  then
+    cd plugins/gaim-e/           &&
+    sedit  "s:INSTALL_PATH=:INSTALL_PATH=/usr/lib/gaim:"  Makefile  &&
+    make                         &&
+    make install                 &&
+    cd ../..
+  fi
 
 ) > $C_FIFO 2>&1

@@ -1,10 +1,9 @@
-case $GAIM_E in
-  y|Y) mk_source_dir $SOURCE_DIRECTORY &&
-       unpack $SOURCE ${MD5[0]} &&
-       cd $SOURCE_DIRECTORY/plugins/ &&
-       unpack $SOURCE2 ${MD5[1]}
-       ;;
-  *) mk_source_dir $SOURCE_DIRECTORY &&
-     unpack $SOURCE ${MD5[0]}
-     ;;
-esac
+if  spell_installed  gpgme;  then
+  mk_source_dir $SOURCE_DIRECTORY &&
+  unpack $SOURCE ${MD5[0]} &&
+  cd $SOURCE_DIRECTORY/plugins/ &&
+  unpack $SOURCE2 ${MD5[1]}
+else
+  mk_source_dir $SOURCE_DIRECTORY &&
+  unpack $SOURCE ${MD5[0]}
+fi
