@@ -1,11 +1,11 @@
            SPELL=sorcery
          VERSION=`date -u +%Y%m%d`
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE=$SPELL-devel.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=http://download.sourcemage.org/sorcery/$SOURCE
         WEB_SITE=http://www.sourcemage.org
          ENTERED=20010922
-         UPDATED=20020908
+         UPDATED=20020910
       MAINTAINER=nkj@namodn.com
         NO_CACHE="--cache=off"
         LIFESPAN="6000"
@@ -14,16 +14,18 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
           SILENT="on"
            SOUND="off"
          ARCHIVE="off"
-           SHORT="Sorcery: package management tools for SourceMage GNU Linux."
+           SHORT="Sorcery: package management tools for SourceMage GNU Linux. (CVS snapshot)"
 cat << EOF
 Sorcery  -  Tools package management by source.
+
+This spell is for tracking the latest CVS snapshot of sorcery.
 
 sorcery includes the following files:
   /etc/sorcery/*                    configuration files.
   /usr/doc/sorcery/*                documentation, please read
   /usr/sbin/sorcery                 menu driven interface
   /usr/sbin/leach                   downloads spells' sources (depreciated)
-  /usr/sbin/summon		    replacement for leach
+  /usr/sbin/summon		            replacement for leach
   /usr/sbin/cast                    installs  spells
   /usr/sbin/vcast                   installs  spells  verbosely
   /usr/sbin/dispel                  removes   spells
