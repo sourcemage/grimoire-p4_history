@@ -4,7 +4,7 @@
 
   ./configure  --prefix=/usr                     \
                --sysconfdir=/etc/httpd           \
-               --localstatedir=/var/lib/httpd    \
+               --localstatedir=/var              \
                --logfiledir=/var/log/httpd       \
                --proxycachedir=/var/cache/httpd  \
                --runtimedir=/var/run/httpd       \
