@@ -1,32 +1,32 @@
 depends  scons    && #for building it.
-depends  SDL      &&
+depends  sdl      &&
 depends  GLUT     &&
 depends  zlib     &&
 depends  Python   &&
 depends  openal   &&
 depends  jpeg     &&
 
-optional_depends  "libpng"                \
+optional_depends  libpng                  \
                   ""                      \
                   ""                      \
                   "for PNG file support"  &&
 
-optional_depends  "MOZILLA-BROWSER"             \
+optional_depends  MOZILLA-BROWSER               \
                   "--enable-blenderplugin"      \
                   "--disable-blenderplugin"     \
                   "for Mozilla plugin support"  &&
 
-optional_depends  "libogg"                \
+optional_depends  libogg                  \
                   ""                      \
                   ""                      \
                   "for OGG file support"  &&
 
-optional_depends  "libvorbis"                \
+optional_depends  libvorbis                  \
                   ""                         \
                   ""                         \
                   "for Vorbis file support"
 
-optional_depends  "ode"                         \
+optional_depends  ode                           \
                   "--enable-gameblender"        \
                   "--disable-gameblender"       \
                   "for the GameBlender engine"

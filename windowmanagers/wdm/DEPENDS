@@ -1,33 +1,33 @@
 depends  gtk+         &&
 depends  windowmaker  &&
-depends  libPropList  &&
+depends  libproplist  &&
 
-optional_depends  "Linux-PAM"                       \
+optional_depends  Linux-PAM                         \
                   ""                                \
                   ""                                \
                   "for PAM authentication support"  &&
 
-optional_depends  "shadow"                \
+optional_depends  shadow                  \
                   "--enable-shadow"       \
                   "--disable-shadow"      \
                   "for shadow passwords"  &&
 
-optional_depends  "libpng"                    \
+optional_depends  libpng                      \
                   "--enable-png"              \
                   "--disable-png"             \
                   "for PNG graphics support"  &&
 
-optional_depends  "jpeg"                       \
+optional_depends  jpeg                         \
                   "--enable-jpeg"              \
                   "--disable-jpeg"             \
                   "for JPEG graphics support"  &&
 
-optional_depends  "libungif"                  \
+optional_depends  libungif                    \
                   "--enable-gif"              \
                   "--disable-gif"             \
                   "for GIF graphics support"  &&
 
-optional_depends  "tiff"                       \
+optional_depends  tiff                         \
                   "--enable-tiff"              \
                   "--disable-tiff"             \
                   "for TIFF graphics support"

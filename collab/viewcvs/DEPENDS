@@ -1,4 +1,3 @@
-# $Id: DEPENDS,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 depends  rcs        &&
 depends  diffutils  &&
 depends  Python     &&
@@ -7,4 +6,7 @@ depends  cvsgraph   &&
 depends  gzip       &&
 depends  bzip2      &&
 
-optional_depends  "MySQL-python" ""  ""  "for query functionality support"
+optional_depends  mysql-python                       \
+                  ""                                 \
+                  ""                                 \
+                  "for query functionality support"
