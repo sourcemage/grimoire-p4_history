@@ -1,27 +1,26 @@
-2002-06-14  14:31 PST  Eric Sandall <sandalle@yahoo.com>
+2002-10-12  Eric Sandall <eric@sandall.us>
 
-  * Added MD5 entry to DETAILS
+		Fixed Bug #1242
+		Cleaned up HISTORY to match Guru's Handbook
+		Added MAINTAINER
 
-2002-05-29  11:12 PST  Eric Sandall <sandalle@yahoo.com>
+2002-06-14  Eric Sandall <sandalle@yahoo.com>
 
-  * Moved the sedit line below configure, so that Makefile will
-		exist.
-  * Tested and works with gcc3
+		Added MD5 entry to DETAILS
 
-20020201, gradm-1.1.c, hvisage
+2002-05-29  Eric Sandall <sandalle@yahoo.com>
 
-- Moved make instaal back into "FIFO"
-- Fixed Makefile to NOT do the password thingy
-- Added POST_INSTAL which does the checking for the password existance, and 
-  then create it or not.
+		Moved the sedit line below configure, so that Makefile will exist.
+		Tested and works with gcc3
 
-20020201, gradm-1.1.c, kongar
+2002-02-01, gradm-1.1.c, hvisage
 
-- hacked BUILD script to fix the bug if VOYEUR is off. The spell is 
-  asking a password and if fifo enabled, no user intervention. I took
-  the make install part out of the fifo.
+		Moved make instaal back into "FIFO"
+		Fixed Makefile to NOT do the password thingy
+		Added POST_INSTAL which does the checking for the password existance, and then create it or not.
 
-- added ACL documentation to the spell, hacked DETAILS and PRE_BUILD
-  scripts. The doc is now installed via the standard install mechanism
+2002-02-01, gradm-1.1.c, kongar
 
+		Hacked BUILD script to fix the bug if VOYEUR is off. The spell is asking a password and if fifo enabled, no user intervention. I took the make install part out of the fifo.
 
+		Added ACL documentation to the spell, hacked DETAILS and PRE_BUILD scripts. The doc is now installed via the standard install mechanism 
