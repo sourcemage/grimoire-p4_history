@@ -1,0 +1,38 @@
+--- tar-1.13/src/tar.c	Wed Jan 23 12:51:25 2002
++++ tar-1.13/src/tar.c	Wed Jan 23 12:51:25 2002
+@@ -17,4 +17,6 @@
+    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
+ 
++/* Patched to integrate bzip2 as compression filter (option -y)  */
++
+ #include "system.h"
+ 
+@@ -165,4 +167,6 @@
+   {"block-size", required_argument, NULL, OBSOLETE_BLOCKING_FACTOR},
+   {"blocking-factor", required_argument, NULL, 'b'},
++  {"bunzip2", required_argument, NULL, 'y'},
++  {"bzip2", required_argument, NULL, 'y'},
+   {"catenate", no_argument, NULL, 'A'},
+   {"checkpoint", no_argument, &checkpoint_option, 1},
+@@ -341,4 +345,5 @@
+   -o, --old-archive, --portability   write a V7 format archive\n\
+       --posix                        write a POSIX conformant archive\n\
++  -y, --bzip2, --bunzip2             filter the archive through bzip2\n\
+   -z, --gzip, --ungzip               filter the archive through gzip\n\
+   -Z, --compress, --uncompress       filter the archive through compress\n\
+@@ -417,5 +422,5 @@
+ 
+ #define OPTION_STRING \
+-  "-01234567ABC:F:GK:L:MN:OPRST:UV:WX:Zb:cdf:g:hiklmoprstuvwxz"
++  "-01234567ABC:F:GK:L:MN:OPRST:UV:WX:Zb:cdf:g:hiklmoprstuvwxyz"
+ 
+ static void
+@@ -787,4 +792,8 @@
+ 	if (add_exclude_file (excluded, optarg, '\n') != 0)
+ 	  FATAL_ERROR ((0, errno, "%s", optarg));
++	break;
++
++      case 'y':
++	set_use_compress_program_option ("bzip2");
+ 	break;
+ 
