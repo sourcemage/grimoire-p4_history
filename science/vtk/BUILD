@@ -17,7 +17,7 @@
      fi &&
   sedit "s/Java language.\" OFF/Java language.\" ON/" CMakeLists.txt  &&
 #  stupid thing fails first time on purpose ! so don't use && OK !
-  cmake 
+  cmake .
   sedit "s:^JAVA_AWT_INCLUDE_PATH\:PATH=.*$:JAVA_AWT_INCLUDE_PATH\:PATH=$JAVA_HOME\/include:" CMakeCache.txt  &&
   sedit "s:^JAVA_AWT_LIBRARY\:FILEPATH=.*$:JAVA_AWT_LIBRARY\:FILEPATH=$JAVA_HOME\/jre\/lib\/i386\/libawt.so:" CMakeCache.txt  &&
   sedit "s:^JAVA_INCLUDE_PATH\:PATH=.*$:JAVA_INCLUDE_PATH\:PATH=$JAVA_HOME\/include:" CMakeCache.txt  &&
@@ -25,7 +25,7 @@
   fi              &&
 
 #back to real program
-  cmake           &&
+  cmake .           &&
   sedit "s/^CMAKE_INSTALL_PREFIX:PATH=.*$/CMAKE_INSTALL_PREFIX:PATH=\/usr/" CMakeCache.txt  &&
   sedit "s/BUILD_SHARED_LIBS\:BOOL=OFF/BUILD_SHARED_LIBS\:BOOL=ON/" CMakeCache.txt          &&
   sedit "s/CMAKE_BUILD_TYPE:STRING=/&Release/" CMakeCache.txt                               &&
