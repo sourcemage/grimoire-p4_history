@@ -1,0 +1,12 @@
+if grep -q 'triangle="y"'  ${SPELL_CONFIG}
+then
+  mkdir -p $SOURCE_DIRECTORY/tmp &&
+  cd $SOURCE_DIRECTORY/tmp &&
+  unpack ${SOURCE[1]} ${MD5[1]}
+  cp triangle.c ../Triangle &&
+  cp triangle.h ../Triangle
+fi
+
+cd $SOURCE_DIRECTORY &&
+./configure&&
+make
