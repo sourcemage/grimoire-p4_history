@@ -1,57 +1,40 @@
-           SPELL=xfree86
-         VERSION=4.4.0
-         OLD_VERSION=4.4.0
-#        XVERSION=${OLD_VERSION//./}
-         XVERSION=XFree86-${OLD_VERSION}
-           SOURCE=${XVERSION}-src-1.tgz
-          SOURCE2=${XVERSION}-src-2.tgz
-          SOURCE3=${XVERSION}-src-3.tgz
-          SOURCE4=${XVERSION}-src-4.tgz
-          SOURCE5=${XVERSION}-src-5.tgz
-          SOURCE6=${XVERSION}-src-6.tgz
-          SOURCE7=${XVERSION}-src-7.tgz
+           SPELL=xorg
+         VERSION=6.7.0
+         XVERSION=X11R${VERSION}
+           SOURCE=${XVERSION}-src1.tar.gz
+          SOURCE2=${XVERSION}-src2.tar.gz
+          SOURCE3=${XVERSION}-src3.tar.gz
+          SOURCE4=${XVERSION}-src4.tar.gz
+          SOURCE5=${XVERSION}-src5.tar.gz
+          SOURCE6=${XVERSION}-src6.tar.gz
+          SOURCE7=${XVERSION}-src7.tar.gz
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
-   SOURCE_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE
-  SOURCE2_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE2
-  SOURCE3_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE3
-  SOURCE4_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE4
-  SOURCE5_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE5
-  SOURCE6_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE6
-  SOURCE7_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE7
-          MD5[0]=21794f8151ad07f5f3d2118e73ad7423  
-          MD5[1]=7e9e3b18141546e936ea6a05fc7368c7
-          MD5[2]=075aa77765c946c2c7e8cc22d954f47e
-          MD5[3]=c3589de4317dbbe222128e7d09f3ec8e
-          MD5[4]=279e62aad7049f914bdff33e7ed13bf3
-          MD5[5]=a9107283c3d5c0ee46df57f1ab0d3c43
-          MD5[6]=35b886360668a188871f555cf0c0a241
-        WEB_SITE=http://www.xfree86.org/
-         ENTERED=20010922
-         UPDATED=20040211
+   SOURCE_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE
+  SOURCE2_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE2
+  SOURCE3_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE3
+  SOURCE4_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE4
+  SOURCE5_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE5
+  SOURCE6_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE6
+  SOURCE7_URL[0]=http://freedesktop.org/~xorg/${XVERSION}/src/$SOURCE7
+          MD5[0]=8a3e65fd1cbf3d39f23c1518d957eab2
+          MD5[1]=12cd515374cb034ffde8c41832d24c09
+          MD5[2]=26c661d33a1c58fa06302b9783c54866
+          MD5[3]=e3e092044ff6581b5769288038c636d0
+          MD5[4]=17fdb62325cbe45df92ab883554ba8a8
+          MD5[5]=967c51cc9d631502e11abe3febe81a8e
+          MD5[6]=57d2df6d7b301ba4121710158f2889ab
+        WEB_SITE=http://freedesktop.org/~xorg/
+         ENTERED=20040407
+         UPDATED=20040407
       LICENSE[0]=XCL
-           SHORT="xfree86 is the stable free implementation of the X Window System."
+           SHORT="X11R6.7.0 is an Open Source version of the X Window System"
 cat << EOF
-What is XFree86?
+X11R6.7.0 is the seventh full release in the X11R6.7 series.
 
-The XFree86 Project, Inc is an organisation which produces
-XFree86, a freely redistributable open-source
-implementation of the X Window System that runs on UNIX(R)
-and UNIX-like (like Linux, the BSDs, Mac OS X (aka Darwin)
-and Solaris x86 series) operating systems and OS/2.
-
-XFree86 is the underlying software that is between the
-hardware and graphical user interface (aka gui) that
-people see and use. If you are using KDE, GNOME,
-Enlightenment, Blackbox, AfterStep, twm or fvwm then you
-are already using and running XFree86 as these run as our
-clients.  Traditionally, The XFree86 Project has focused
-on Intel x86-based platforms, which is where the 86 in our
-name comes from, but our current release supports other
-platforms like the Alpha, PowerPC, Sparc and in-the-works
-MIPS CPU families.
-
-Our goal at XFree86 is to have X run on every platform
-available, including those we do not currently support, as
-the best windowing system available on that platform.
+X11R6.7 is the current X.Org Foundation release series, based on the XFree86
+4.x code base. The first release in the XFree86 4.x series was in early 2000.
+The core of X11R6.7 is a modular X server. 
+Most modern PC video hardware is supported in X11R6.7.0, and most PC video
+hardware that isn't supported explicitly can be used with the "vesa" driver.
 EOF

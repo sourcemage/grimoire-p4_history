@@ -13,22 +13,6 @@ install_drm()  {
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
 fi                                                      &&
-### but if it can't be copied then use system defaults for these
-if ! grep -q HasFreetype2 config/cf/host.def
-    then echo "#define HasFreetype2   YES" >> config/cf/host.def
-fi                                                      &&
-if ! grep -q BuildFreetype2Library  config/cf/host.def
-   then echo "#define BuildFreetype2Library     NO" >> config/cf/host.def
-fi                                                      &&
-if ! grep -q HasZlib config/cf/host.def
-   then echo "#define HasZlib   YES" >> config/cf/host.def
-fi                                                      &&
-if ! grep -q HasFontconfig config/cf/host.def
-   then echo "#define HasFontconfig  YES" >> config/cf/host.def
-fi                                                      &&
-if ! grep -q HasExpat config/cf/host.def
-   then echo "#define HasExpat  YES" >> config/cf/host.def
-fi                                                      &&
 message  "Building XFree86 takes a very long time."
 
 ( 
@@ -78,9 +62,6 @@ message  "Building XFree86 takes a very long time."
   mkdir  -p  /usr/X11R6/include/GL
 
 ) > $C_FIFO 2>&1  &&  (
-
-  rm     -f  /usr/X11R6/include/zlib.h
-  rm     -f  /usr/X11R6/lib/libz.a
 
   if  [  !  -e                      /etc/skel/.xsession  ];  then
     cp  $SCRIPT_DIRECTORY/xsession  /etc/skel/.xsession
