@@ -1,0 +1,17 @@
+           SPELL=gpart
+         VERSION=0.1h
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.stud.uni-hannover.de/user/76201/gpart/$SOURCE
+        WEB_SITE=http://www.stud.uni-hannover.de/user/76201/gpart/
+         ENTERED=20020527
+         UPDATED=20020527
+           SHORT="gpart guess partition types"
+cat << EOF
+Gpart is a tool which tries to guess the 
+rimary partition table of a PC-type hard 
+disk in case the primary partition table 
+in sector 0 is damaged, incorrect, or 
+deleted. The guessed table can be written 
+to a file or device. 
+EOF
