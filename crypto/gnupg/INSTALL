@@ -1,5 +1,3 @@
-echo DEVEL=$DEVEL
-read
 if [ "$DEVEL" == "n" ];then
   make install mkinstalldirs=`pwd`/scripts/mkinstalldirs
 else
