@@ -4,7 +4,7 @@ case "$APR_VERSION" in
 	1.*)
 		for file in $NEEDED_BUILD_FILES
 		do
-			cp -v ./build/$file /usr/local/apr/build-1/
+			cp -v ./build/$file /usr/share/apache2/build-1/
 		done
 		[ -d /usr/share/apache2/build ] && rm -rvf /usr/share/apache2/build
 		ln -fns build-1 /usr/share/apache2/build &&
