@@ -13,3 +13,11 @@ if  !  grep  -q  "JOYSTICK"  $SPELL_CONFIG; then
   fi
   echo "JOYSTICK=$JOYSTICK"  >>  $SPELL_CONFIG
 fi
+
+if  !  grep  -q  "MOZILLA"  $SPELL_CONFIG;  then
+  if    query  "Build mozilla plugin?" y
+  then  MOZILLA=y
+  else  MOZILLA=n
+  fi
+  echo  "MOZILLA=$MOZILLA"  >>  $SPELL_CONFIG
+fi

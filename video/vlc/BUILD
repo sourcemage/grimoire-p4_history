@@ -14,6 +14,9 @@
   if  [  "$JOYSTICK"  =  "y"  ];  then
     export OPTS="$OPTS --enable-joystick"
   fi  &&
+  if  [  "$MOZILLA"  =  "y"  ];  then
+    export OPTS="$OPTS --enable-mozilla"
+  fi  &&
 
   export OPTS="$OPTS --disable-dependency-tracking --enable-release"
   default_build
