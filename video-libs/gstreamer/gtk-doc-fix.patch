@@ -1,0 +1,216 @@
+diff -Nur gstreamer-0.8.0/docs/gst/Makefile.in gstreamer-0.8.0-fix-doc/docs/gst/Makefile.in
+--- gstreamer-0.8.0/docs/gst/Makefile.in	2004-03-16 12:31:57.000000000 +0100
++++ gstreamer-0.8.0-fix-doc/docs/gst/Makefile.in	2004-04-02 19:07:11.000000000 +0200
+@@ -677,55 +677,55 @@
+ 	rm -rf *.o
+ 
+ # thomas: make docs parallel installable; devhelp requires majorminor too
+-@DOC_HTML_TRUE@install-data-local:
+-@DOC_HTML_TRUE@	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR) 
+-@DOC_HTML_TRUE@	(installfiles=`echo ./html/*.html`; \
+-@DOC_HTML_TRUE@	if test "$$installfiles" = './html/*.html'; \
+-@DOC_HTML_TRUE@	then echo '-- Nothing to install' ; \
+-@DOC_HTML_TRUE@	else \
+-@DOC_HTML_TRUE@	  for i in $$installfiles; do \
+-@DOC_HTML_TRUE@	    echo '-- Installing '$$i ; \
+-@DOC_HTML_TRUE@	    $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	  done; \
+-@DOC_HTML_TRUE@	  pngfiles=`echo ./html/*.png`; \
+-@DOC_HTML_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
+-@DOC_HTML_TRUE@	    for i in $$pngfiles; do \
+-@DOC_HTML_TRUE@	      echo '-- Installing '$$i ; \
+-@DOC_HTML_TRUE@	      $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	    done; \
+-@DOC_HTML_TRUE@	  fi; \
+-@DOC_HTML_TRUE@	  echo '-- Installing $(srcdir)/html/$(DOC_MODULE).devhelp' ; \
+-@DOC_HTML_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/$(DOC_MODULE).devhelp \
+-@DOC_HTML_TRUE@	    $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
+-@DOC_HTML_TRUE@	  echo '-- Installing $(srcdir)/html/index.sgml' ; \
+-@DOC_HTML_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/index.sgml $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	fi) 
+-@DOC_HTML_TRUE@uninstall-local:
+-@DOC_HTML_TRUE@	(installfiles=`echo ./html/*.html`; \
+-@DOC_HTML_TRUE@	if test "$$installfiles" = './html/*.html'; \
+-@DOC_HTML_TRUE@	then echo '-- Nothing to uninstall' ; \
+-@DOC_HTML_TRUE@	else \
+-@DOC_HTML_TRUE@	  for i in $$installfiles; do \
+-@DOC_HTML_TRUE@	    rmfile=`basename $$i` ; \
+-@DOC_HTML_TRUE@	    echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
+-@DOC_HTML_TRUE@	    rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
+-@DOC_HTML_TRUE@	  done; \
+-@DOC_HTML_TRUE@	  pngfiles=`echo ./html/*.png`; \
+-@DOC_HTML_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
+-@DOC_HTML_TRUE@	    for i in $$pngfiles; do \
+-@DOC_HTML_TRUE@	      rmfile=`basename $$i` ; \
+-@DOC_HTML_TRUE@	      echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
+-@DOC_HTML_TRUE@	      rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
+-@DOC_HTML_TRUE@	    done; \
+-@DOC_HTML_TRUE@	  fi; \
+-@DOC_HTML_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE).devhelp' ; \
+-@DOC_HTML_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
+-@DOC_HTML_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/index.sgml' ; \
+-@DOC_HTML_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/index.sgml; \
+-@DOC_HTML_TRUE@	fi) 
+-@DOC_HTML_TRUE@	if test -d $(DESTDIR)$(TARGET_DIR); then rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(TARGET_DIR); fi
+-@DOC_HTML_FALSE@install-data-local:
+-@DOC_HTML_FALSE@uninstall-local:
++@HAVE_GTK_DOC_TRUE@install-data-local:
++@HAVE_GTK_DOC_TRUE@	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR) 
++@HAVE_GTK_DOC_TRUE@	(installfiles=`echo ./html/*.html`; \
++@HAVE_GTK_DOC_TRUE@	if test "$$installfiles" = './html/*.html'; \
++@HAVE_GTK_DOC_TRUE@	then echo '-- Nothing to install' ; \
++@HAVE_GTK_DOC_TRUE@	else \
++@HAVE_GTK_DOC_TRUE@	  for i in $$installfiles; do \
++@HAVE_GTK_DOC_TRUE@	    echo '-- Installing '$$i ; \
++@HAVE_GTK_DOC_TRUE@	    $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	  done; \
++@HAVE_GTK_DOC_TRUE@	  pngfiles=`echo ./html/*.png`; \
++@HAVE_GTK_DOC_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
++@HAVE_GTK_DOC_TRUE@	    for i in $$pngfiles; do \
++@HAVE_GTK_DOC_TRUE@	      echo '-- Installing '$$i ; \
++@HAVE_GTK_DOC_TRUE@	      $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	    done; \
++@HAVE_GTK_DOC_TRUE@	  fi; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Installing $(srcdir)/html/$(DOC_MODULE).devhelp' ; \
++@HAVE_GTK_DOC_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/$(DOC_MODULE).devhelp \
++@HAVE_GTK_DOC_TRUE@	    $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Installing $(srcdir)/html/index.sgml' ; \
++@HAVE_GTK_DOC_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/index.sgml $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	fi) 
++@HAVE_GTK_DOC_TRUE@uninstall-local:
++@HAVE_GTK_DOC_TRUE@	(installfiles=`echo ./html/*.html`; \
++@HAVE_GTK_DOC_TRUE@	if test "$$installfiles" = './html/*.html'; \
++@HAVE_GTK_DOC_TRUE@	then echo '-- Nothing to uninstall' ; \
++@HAVE_GTK_DOC_TRUE@	else \
++@HAVE_GTK_DOC_TRUE@	  for i in $$installfiles; do \
++@HAVE_GTK_DOC_TRUE@	    rmfile=`basename $$i` ; \
++@HAVE_GTK_DOC_TRUE@	    echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
++@HAVE_GTK_DOC_TRUE@	    rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
++@HAVE_GTK_DOC_TRUE@	  done; \
++@HAVE_GTK_DOC_TRUE@	  pngfiles=`echo ./html/*.png`; \
++@HAVE_GTK_DOC_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
++@HAVE_GTK_DOC_TRUE@	    for i in $$pngfiles; do \
++@HAVE_GTK_DOC_TRUE@	      rmfile=`basename $$i` ; \
++@HAVE_GTK_DOC_TRUE@	      echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
++@HAVE_GTK_DOC_TRUE@	      rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
++@HAVE_GTK_DOC_TRUE@	    done; \
++@HAVE_GTK_DOC_TRUE@	  fi; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE).devhelp' ; \
++@HAVE_GTK_DOC_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/index.sgml' ; \
++@HAVE_GTK_DOC_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/index.sgml; \
++@HAVE_GTK_DOC_TRUE@	fi) 
++@HAVE_GTK_DOC_TRUE@	if test -d $(DESTDIR)$(TARGET_DIR); then rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(TARGET_DIR); fi
++@HAVE_GTK_DOC_FALSE@install-data-local:
++@HAVE_GTK_DOC_FALSE@uninstall-local:
+ 
+ #
+ # Require gtk-doc when making dist
+diff -Nur gstreamer-0.8.0/docs/libs/Makefile.in gstreamer-0.8.0-fix-doc/docs/libs/Makefile.in
+--- gstreamer-0.8.0/docs/libs/Makefile.in	2004-03-16 12:31:57.000000000 +0100
++++ gstreamer-0.8.0-fix-doc/docs/libs/Makefile.in	2004-04-02 19:07:44.000000000 +0200
+@@ -674,55 +674,55 @@
+ 	fi
+ 	rm -f *.o
+ 
+-@DOC_HTML_TRUE@install-data-local:
+-@DOC_HTML_TRUE@	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR) 
+-@DOC_HTML_TRUE@	(installfiles=`echo ./html/*.html`; \
+-@DOC_HTML_TRUE@	if test "$$installfiles" = './html/*.html'; \
+-@DOC_HTML_TRUE@	then echo '-- Nothing to install' ; \
+-@DOC_HTML_TRUE@	else \
+-@DOC_HTML_TRUE@	  for i in $$installfiles; do \
+-@DOC_HTML_TRUE@	    echo '-- Installing '$$i ; \
+-@DOC_HTML_TRUE@	    $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	  done; \
+-@DOC_HTML_TRUE@	  pngfiles=`echo ./html/*.png`; \
+-@DOC_HTML_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
+-@DOC_HTML_TRUE@	    for i in $$pngfiles; do \
+-@DOC_HTML_TRUE@	      echo '-- Installing '$$i ; \
+-@DOC_HTML_TRUE@	      $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	    done; \
+-@DOC_HTML_TRUE@	  fi; \
+-@DOC_HTML_TRUE@	  echo '-- Installing $(srcdir)/html/$(DOC_MODULE).devhelp' ; \
+-@DOC_HTML_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/$(DOC_MODULE).devhelp \
+-@DOC_HTML_TRUE@	    $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
+-@DOC_HTML_TRUE@	  echo '-- Installing $(srcdir)/html/index.sgml' ; \
+-@DOC_HTML_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/index.sgml $(DESTDIR)$(TARGET_DIR); \
+-@DOC_HTML_TRUE@	fi) 
+-@DOC_HTML_TRUE@uninstall-local:
+-@DOC_HTML_TRUE@	(installfiles=`echo ./html/*.html`; \
+-@DOC_HTML_TRUE@	if test "$$installfiles" = './html/*.html'; \
+-@DOC_HTML_TRUE@	then echo '-- Nothing to uninstall' ; \
+-@DOC_HTML_TRUE@	else \
+-@DOC_HTML_TRUE@	  for i in $$installfiles; do \
+-@DOC_HTML_TRUE@	    rmfile=`basename $$i` ; \
+-@DOC_HTML_TRUE@	    echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
+-@DOC_HTML_TRUE@	    rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
+-@DOC_HTML_TRUE@	  done; \
+-@DOC_HTML_TRUE@	  pngfiles=`echo ./html/*.png`; \
+-@DOC_HTML_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
+-@DOC_HTML_TRUE@	    for i in $$pngfiles; do \
+-@DOC_HTML_TRUE@	      rmfile=`basename $$i` ; \
+-@DOC_HTML_TRUE@	      echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
+-@DOC_HTML_TRUE@	      rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
+-@DOC_HTML_TRUE@	    done; \
+-@DOC_HTML_TRUE@	  fi; \
+-@DOC_HTML_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE).devhelp' ; \
+-@DOC_HTML_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
+-@DOC_HTML_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/index.sgml' ; \
+-@DOC_HTML_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/index.sgml; \
+-@DOC_HTML_TRUE@	fi) 
+-@DOC_HTML_TRUE@	if test -d $(DESTDIR)$(TARGET_DIR); then rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(TARGET_DIR); fi
+-@DOC_HTML_FALSE@install-data-local:
+-@DOC_HTML_FALSE@uninstall-local:
++@HAVE_GTK_DOC_TRUE@install-data-local:
++@HAVE_GTK_DOC_TRUE@	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR) 
++@HAVE_GTK_DOC_TRUE@	(installfiles=`echo ./html/*.html`; \
++@HAVE_GTK_DOC_TRUE@	if test "$$installfiles" = './html/*.html'; \
++@HAVE_GTK_DOC_TRUE@	then echo '-- Nothing to install' ; \
++@HAVE_GTK_DOC_TRUE@	else \
++@HAVE_GTK_DOC_TRUE@	  for i in $$installfiles; do \
++@HAVE_GTK_DOC_TRUE@	    echo '-- Installing '$$i ; \
++@HAVE_GTK_DOC_TRUE@	    $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	  done; \
++@HAVE_GTK_DOC_TRUE@	  pngfiles=`echo ./html/*.png`; \
++@HAVE_GTK_DOC_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
++@HAVE_GTK_DOC_TRUE@	    for i in $$pngfiles; do \
++@HAVE_GTK_DOC_TRUE@	      echo '-- Installing '$$i ; \
++@HAVE_GTK_DOC_TRUE@	      $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	    done; \
++@HAVE_GTK_DOC_TRUE@	  fi; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Installing $(srcdir)/html/$(DOC_MODULE).devhelp' ; \
++@HAVE_GTK_DOC_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/$(DOC_MODULE).devhelp \
++@HAVE_GTK_DOC_TRUE@	    $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Installing $(srcdir)/html/index.sgml' ; \
++@HAVE_GTK_DOC_TRUE@	  $(INSTALL_DATA) $(srcdir)/html/index.sgml $(DESTDIR)$(TARGET_DIR); \
++@HAVE_GTK_DOC_TRUE@	fi) 
++@HAVE_GTK_DOC_TRUE@uninstall-local:
++@HAVE_GTK_DOC_TRUE@	(installfiles=`echo ./html/*.html`; \
++@HAVE_GTK_DOC_TRUE@	if test "$$installfiles" = './html/*.html'; \
++@HAVE_GTK_DOC_TRUE@	then echo '-- Nothing to uninstall' ; \
++@HAVE_GTK_DOC_TRUE@	else \
++@HAVE_GTK_DOC_TRUE@	  for i in $$installfiles; do \
++@HAVE_GTK_DOC_TRUE@	    rmfile=`basename $$i` ; \
++@HAVE_GTK_DOC_TRUE@	    echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
++@HAVE_GTK_DOC_TRUE@	    rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
++@HAVE_GTK_DOC_TRUE@	  done; \
++@HAVE_GTK_DOC_TRUE@	  pngfiles=`echo ./html/*.png`; \
++@HAVE_GTK_DOC_TRUE@	  if test "$$pngfiles" != './html/*.png'; then \
++@HAVE_GTK_DOC_TRUE@	    for i in $$pngfiles; do \
++@HAVE_GTK_DOC_TRUE@	      rmfile=`basename $$i` ; \
++@HAVE_GTK_DOC_TRUE@	      echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/'$$rmfile ; \
++@HAVE_GTK_DOC_TRUE@	      rm -f $(DESTDIR)$(TARGET_DIR)/$$rmfile; \
++@HAVE_GTK_DOC_TRUE@	    done; \
++@HAVE_GTK_DOC_TRUE@	  fi; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE).devhelp' ; \
++@HAVE_GTK_DOC_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/$(DOC_MODULE)-@GST_MAJORMINOR@.devhelp; \
++@HAVE_GTK_DOC_TRUE@	  echo '-- Uninstalling $(DESTDIR)$(TARGET_DIR)/index.sgml' ; \
++@HAVE_GTK_DOC_TRUE@	  rm -f $(DESTDIR)$(TARGET_DIR)/index.sgml; \
++@HAVE_GTK_DOC_TRUE@	fi) 
++@HAVE_GTK_DOC_TRUE@	if test -d $(DESTDIR)$(TARGET_DIR); then rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(TARGET_DIR); fi
++@HAVE_GTK_DOC_FALSE@install-data-local:
++@HAVE_GTK_DOC_FALSE@uninstall-local:
+ 
+ #
+ # Require gtk-doc when making dist
