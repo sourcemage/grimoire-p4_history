@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=1.2
+         VERSION=1.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.ataraxy.net/~schabell/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
          UPDATED=20040714
-          MD5[0]='a81dab8fbb7f4912a3751005bfc165e1'
+          MD5[0]='6ce0f656683723aa9b76186634dcfe92'
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -58,6 +58,10 @@ report.pl <image1> <image2> - this tool take two different images created by
                           the image.sh tool and report the differences,
                           amazing amount of information! (see image.sh above)
                           (by Andrew Stitt)
+
+searchdups.sh <path-grimoire> [<section> | <spell> ] - finds duplicate
+                          dependencies for a spell, section, grimoire that is
+                          satisfied by child a dependency. (by Seth Woolley)
 
 spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           #{MYSPELLS}/software and DETAILS in your local 
