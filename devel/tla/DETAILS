@@ -1,0 +1,22 @@
+           SPELL=tla
+         VERSION=1.1pre5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://regexps.srparish.net/src/tla/$SOURCE
+        WEB_SITE=http://regexps.srparish.net/www/
+          MD5[0]=46bd1127e6020fca7b4b5d81f79ef12c
+      LICENSE[0]=GPL
+         ENTERED=20030617
+         UPDATED=20030617
+      MAINTAINER=v.merkatz@gmx.net
+           SHORT="tla is a C implementation of the Arch revision control system"
+cat << EOF
+Arch is a really nifty revision control system. It's "whole-tree changeset
+based" which means, roughly, that it can handle file and directory adds,
+deletes, and renames cleanly, and that it does branching simply and easily.
+Arch is also "distributed" which means, for example that you can make arch
+branches of your own from remote projects, even if you don't have write access
+to the revision control archives for those projects.
+
+tla is a C implementation of Arch.
+EOF
