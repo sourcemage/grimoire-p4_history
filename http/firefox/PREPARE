@@ -1,16 +1,7 @@
 #
-# have moved this to the beginning so the rest can stay untouched for each new update.
+# Remove persistent variables for SOURCE and VERSION  (Bug #8081)
 #
-persistent_add  FIREFOX_VERSION  FIREFOX_SOURCE  &&
-FIREFOX_VERSION=1.0                              &&
-SOURCE=$SPELL-${VERSION}-source.tar.bz2          &&
-
-#
-# I'm not sure what this was supposed to do...
-#
-#if  [  "$FIREFOX_CVS"  =  "y"  ];  then
-#sedit "s/^VERSION=.*$/VERSION=$VERSION/g" $SPELL_CONFIG 
-#fi &&
+persistent_remove  FIREFOX_VERSION  FIREFOX_SOURCE  &&
 
 config_query       FIREFOX_CVS                                             \
                    "Checkout the CVS version?"                          n  &&
