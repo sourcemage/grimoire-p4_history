@@ -1,6 +1,7 @@
---- grub-0.90/stage2/stage2.c.append	Thu Dec 20 08:20:48 2001
-+++ grub-0.90/stage2/stage2.c	Thu Dec 20 17:01:20 2001
-@@ -500,7 +500,8 @@
+diff -urpN grub-0.95.orig/stage2/stage2.c grub-0.95/stage2/stage2.c
+--- grub-0.95.orig/stage2/stage2.c	2004-11-09 13:25:38.189277608 -0800
++++ grub-0.95/stage2/stage2.c	2004-11-09 13:25:56.418506344 -0800
+@@ -319,7 +319,8 @@ restart:
  	  if (config_entries)
  	    printf ("\
        Press enter to boot the selected OS, \'e\' to edit the\n\
@@ -10,7 +11,7 @@
  	  else
  	    printf ("\
        Press \'b\' to boot, \'e\' to edit the selected command in the\n\
-@@ -787,6 +788,98 @@
+@@ -697,6 +698,98 @@ restart:
  		  enter_cmdline (heap, 0);
  		  goto restart;
  		}

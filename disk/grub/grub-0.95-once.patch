@@ -1,7 +1,7 @@
-diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
---- grub-0.93/stage2/builtins.c	2002-12-04 04:41:57.000000000 +0000
-+++ grub-0.93-corvil/stage2/builtins.c	2003-11-18 16:54:32.000000000 +0000
-@@ -760,6 +760,18 @@
+diff -urpN grub-0.95.orig/stage2/builtins.c grub-0.95/stage2/builtins.c
+--- grub-0.95.orig/stage2/builtins.c	2004-11-09 13:25:38.195276696 -0800
++++ grub-0.95/stage2/builtins.c	2004-11-09 13:51:28.607578200 -0800
+@@ -760,6 +760,18 @@ static int
  default_func (char *arg, int flags)
  {
  #ifndef SUPPORT_DISKLESS
@@ -20,7 +20,7 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
    if (grub_strcmp (arg, "saved") == 0)
      {
        default_entry = saved_entryno;
-@@ -3174,22 +3186,15 @@
+@@ -3180,22 +3192,15 @@ static struct builtin builtin_rootnoveri
  };
  
  
@@ -48,7 +48,7 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
    /* Get the geometry of the boot drive (i.e. the disk which contains
       this stage2).  */
    if (get_diskinfo (boot_drive, &buf_geom))
-@@ -3215,10 +3220,10 @@
+@@ -3221,10 +3226,10 @@ savedefault_func (char *arg, int flags)
    entryno_ptr = (int *) (buffer + STAGE2_SAVED_ENTRYNO);
  
    /* Check if the saved entry number differs from current entry number.  */
@@ -61,7 +61,7 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
        
        /* Save the image in the disk.  */
        if (! rawwrite (boot_drive, install_second_sector, buffer))
-@@ -3229,6 +3234,127 @@
+@@ -3235,6 +3240,127 @@ savedefault_func (char *arg, int flags)
      }
  
    return 0;
@@ -189,7 +189,7 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
  #else /* ! SUPPORT_DISKLESS && ! GRUB_UTIL */
    errnum = ERR_UNRECOGNIZED;
    return 1;
-@@ -3240,8 +3366,14 @@
+@@ -3246,8 +3372,14 @@ static struct builtin builtin_savedefaul
    "savedefault",
    savedefault_func,
    BUILTIN_CMDLINE,
@@ -204,7 +204,7 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
  };
  
  
-@@ -4458,6 +4590,15 @@
+@@ -4471,6 +4603,15 @@ static struct builtin builtin_tftpserver
  static int
  timeout_func (char *arg, int flags)
  {
@@ -220,10 +220,10 @@ diff -Naru grub-0.93/stage2/builtins.c grub-0.93-corvil/stage2/builtins.c
    if (! safe_parse_maxint (&arg, &grub_timeout))
      return 1;
  
-diff -Naru grub-0.93/stage2/shared.h grub-0.93-corvil/stage2/shared.h
---- grub-0.93/stage2/shared.h	2002-12-02 23:15:12.000000000 +0000
-+++ grub-0.93-corvil/stage2/shared.h	2003-11-18 16:08:33.000000000 +0000
-@@ -195,6 +195,8 @@
+diff -urpN grub-0.95.orig/stage2/shared.h grub-0.95/stage2/shared.h
+--- grub-0.95.orig/stage2/shared.h	2004-11-09 13:25:38.188277760 -0800
++++ grub-0.95/stage2/shared.h	2004-11-09 13:51:28.621576072 -0800
+@@ -196,6 +196,8 @@ extern char *grub_scratch_mem;
  #define STAGE2_FORCE_LBA	0x11
  #define STAGE2_VER_STR_OFFS	0x12
  

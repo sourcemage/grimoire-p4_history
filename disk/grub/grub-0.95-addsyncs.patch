@@ -1,29 +1,7 @@
-I just found another semi-critical bug, whose fix should really get
-into 0.91.
-
-It turns out that "grub-install" doesn't have any "sync" calls to make
-sure any filesystem caches are coherent with the raw devices they are
-on top of...  so if your filesystem waits to write out any data from the
-copy command in the script to put the "stage1" and "stage2" in their
-final location, you're hosed.
-
-I found this because it just bit me on one of my systems running stock
-RedHat 7.2 with a large "stage2".
-
-The only script that is patched here is "grub-install".  The others
-don't appear to need it as they either unmount things first or don't
-refer to devices.
-
-Hmm.  Maybe the right fix is to make the "sync" system call when
-starting the GRUB shell with a device map that refers to any real disks
-or something like that.
-
-    Erich Stefan Boleyn     <erich@uruk.org>     http://www.uruk.org/
-"Reality is truly stranger than fiction; Probably why fiction is so popular"
-
---- grub-0.94/util/grub-install.in.addsync	2004-02-02 17:22:26.672520324 -0500
-+++ grub-0.94/util/grub-install.in	2004-02-02 17:23:16.147712327 -0500
-@@ -351,6 +351,10 @@
+diff -urpN grub-0.95.orig/util/grub-install.in grub-0.95/util/grub-install.in
+--- grub-0.95.orig/util/grub-install.in	2004-11-09 13:25:38.159282168 -0800
++++ grub-0.95/util/grub-install.in	2004-11-09 13:53:29.027271624 -0800
+@@ -331,6 +331,10 @@ else
      # Create a safe temporary file.
      test -n "$mklog" && log_file=`$mklog`
  
@@ -34,7 +12,7 @@ or something like that.
      $grub_shell --batch $no_floppy --device-map=$device_map <<EOF >$log_file
  quit
  EOF
-@@ -457,6 +461,10 @@
+@@ -442,6 +446,10 @@ rm -f $log_file
  # Create a safe temporary file.
  test -n "$mklog" && log_file=`$mklog`
  

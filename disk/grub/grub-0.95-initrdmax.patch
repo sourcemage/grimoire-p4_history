@@ -1,6 +1,7 @@
---- grub-0.94/stage2/boot.c.initrdmax	2004-02-25 13:49:00.801945416 -0500
-+++ grub-0.94/stage2/boot.c	2004-02-25 13:49:25.267226128 -0500
-@@ -810,8 +810,12 @@
+diff -urpN grub-0.95.orig/stage2/boot.c grub-0.95/stage2/boot.c
+--- grub-0.95.orig/stage2/boot.c	2004-11-09 13:25:38.191277304 -0800
++++ grub-0.95/stage2/boot.c	2004-11-09 13:55:49.518913648 -0800
+@@ -824,8 +824,12 @@ load_initrd (char *initrd)
      moveto = (mbi.mem_upper + 0x400) << 10;
    
    moveto = (moveto - len) & 0xfffff000;

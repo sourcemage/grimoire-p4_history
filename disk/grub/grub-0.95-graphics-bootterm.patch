@@ -1,6 +1,7 @@
---- grub-0.93/stage2/builtins.c.bootterm	2002-12-29 02:01:50.000000000 -0500
-+++ grub-0.93/stage2/builtins.c	2002-12-29 02:01:07.000000000 -0500
-@@ -233,12 +233,22 @@
+diff -urpN grub-0.95.orig/stage2/builtins.c grub-0.95/stage2/builtins.c
+--- grub-0.95.orig/stage2/builtins.c	2004-11-09 13:25:38.195276696 -0800
++++ grub-0.95/stage2/builtins.c	2004-11-09 13:49:44.483407480 -0800
+@@ -233,12 +233,22 @@ static struct builtin builtin_blocklist 
  static int
  boot_func (char *arg, int flags)
  {
@@ -23,7 +24,7 @@
  #ifdef SUPPORT_NETBOOT
    /* Shut down the networking.  */
    cleanup_net ();
-@@ -302,6 +312,13 @@
+@@ -302,6 +312,13 @@ boot_func (char *arg, int flags)
        return 1;
      }
  

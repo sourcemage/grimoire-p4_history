@@ -1,6 +1,7 @@
---- grub-0.94/lib/device.c.26geom	2004-04-14 14:05:24.786938853 -0400
-+++ grub-0.94/lib/device.c	2004-04-14 14:32:50.768600176 -0400
-@@ -88,6 +88,122 @@
+diff -urpN grub-0.95.orig/lib/device.c grub-0.95/lib/device.c
+--- grub-0.95.orig/lib/device.c	2004-11-09 13:25:38.157282472 -0800
++++ grub-0.95/lib/device.c	2004-11-09 13:54:31.483776792 -0800
+@@ -131,6 +131,122 @@ get_kfreebsd_version ()
  #include <shared.h>
  #include <device.h>
  
@@ -123,7 +124,7 @@
  /* Get the geometry of a drive DRIVE.  */
  void
  get_drive_geometry (struct geometry *geom, char **map, int drive)
-@@ -100,20 +216,16 @@
+@@ -151,20 +267,16 @@ get_drive_geometry (struct geometry *geo
  #if defined(__linux__)
    /* Linux */
    {
@@ -147,5 +148,5 @@
 +    if (!geom->heads && !geom->cylinders && !geom->sectors)
 +        goto fail;
      
-     close (fd);
-     return;
+     goto success;
+   }

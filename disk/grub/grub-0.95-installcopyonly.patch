@@ -1,6 +1,7 @@
---- grub-0.94/util/grub-install.in.copyonly	2004-02-02 16:33:29.172127985 -0500
-+++ grub-0.94/util/grub-install.in	2004-02-02 16:34:26.027454320 -0500
-@@ -40,6 +40,7 @@
+diff -urpN grub-0.95.orig/util/grub-install.in grub-0.95/util/grub-install.in
+--- grub-0.95.orig/util/grub-install.in	2004-11-09 13:25:38.159282168 -0800
++++ grub-0.95/util/grub-install.in	2004-11-09 13:56:53.385204496 -0800
+@@ -40,6 +40,7 @@ no_floppy=
  force_lba=
  recheck=no
  debug=no
@@ -8,7 +9,7 @@
  
  # look for secure tempfile creation wrappers on this platform
  if test -x /bin/tempfile; then
-@@ -221,6 +222,17 @@
+@@ -223,6 +224,17 @@ find_device () {
      echo "$tmp_fname"
  }
  
@@ -26,7 +27,7 @@
  # Check the arguments.
  for option in "$@"; do
      case "$option" in
-@@ -240,6 +252,8 @@
+@@ -242,6 +254,8 @@ for option in "$@"; do
  	force_lba="--force-lba" ;;
      --recheck)
  	recheck=yes ;;
@@ -35,7 +36,7 @@
      # This is an undocumented feature...
      --debug)
  	debug=yes ;;
-@@ -258,12 +272,6 @@
+@@ -260,12 +274,6 @@ for option in "$@"; do
      esac
  done
  
@@ -48,7 +49,7 @@
  # If the debugging feature is enabled, print commands.
  if test $debug = yes; then
      set -x
-@@ -286,6 +294,18 @@
+@@ -288,6 +296,18 @@ esac
  grubdir=${bootdir}/grub
  device_map=${grubdir}/device.map
  
@@ -67,9 +68,9 @@
  # Check if GRUB is installed.
  # This is necessary, because the user can specify "grub --read-only".
  set $grub_shell dummy
-@@ -317,14 +337,7 @@
- test -d "$bootdir" || mkdir "$bootdir" || exit 1
- test -d "$grubdir" || mkdir "$grubdir" || exit 1
+@@ -401,14 +421,7 @@ EOF
+     exit 1
+ fi
  
 -# Copy the GRUB images to the GRUB directory.
 -for file in ${grubdir}/stage1 ${grubdir}/stage2 ${grubdir}/*stage1_5; do
@@ -81,5 +82,5 @@
 -done
 +copy_images
  
- # If --recheck is specified, remove the device map, if present.
- if test $recheck = yes; then
+ # Make sure that GRUB reads the same images as the host OS.
+ test -n "$mkimg" && img_file=`$mkimg`
