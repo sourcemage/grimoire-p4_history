@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S90
+# SMGL-STOP:0 6:K10
+#
 
 CTL=/usr/bin/pg_ctl
 USER=postgres
