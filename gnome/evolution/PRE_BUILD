@@ -1,3 +1,10 @@
 default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
-unpack  $SOURCE2
+unpack  $SOURCE2       &&
+
+case $WITH_LDAP in
+  y|Y|j|J) unpack $SOURCE3
+           ;;
+	*) true
+	   ;;
+esac

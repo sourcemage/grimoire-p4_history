@@ -1,0 +1,20 @@
+# $Id: DETAILS,v 1.1 2002/07/29 23:53:53 sergeyli Exp $
+           SPELL=mnemo
+         VERSION=1.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+      SOURCE_URI=$SPELL/tarballs/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SOURCE_URI
+   SOURCE_URL[1]=ftp://ftp.br.horde.org/pub/mirrors/ftp.horde.org/pub/$SOURCE_URI
+      SOURCE_MD5=4fb4be095eea041fa7503b14dd03e435
+      SOURCE_LIC=GPL
+             MD5=$SOURCE_MD5
+         LICENSE=$SOURCE_LIC
+        WEB_SITE=http://www.horde.org/mnemo/
+         ENTERED=20020718
+         UPDATED=20020718
+      MAINTAINER=sergeyli@pisem.net
+           SHORT="Mnemo is the Horde note management application"
+cat << EOF
+Mnemo is the Horde note management application.
+EOF

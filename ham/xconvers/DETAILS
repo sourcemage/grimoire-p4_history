@@ -1,0 +1,18 @@
+           SPELL=xconvers
+         VERSION=0.8.1
+          SOURCE=${SPELL}-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://people.debian.org/~pa3aba/download/$SOURCE
+        WEB_SITE=http://people.debian.org/~pa3aba/xconvers.html
+         LICENSE=GPL
+             MD5=46085788cae6b4d9f433f3b9ffbef8c6
+         ENTERED=20020731
+         UPDATED=20020731
+      MAINTAINER=afrayedknot@thefrayedknot.armory.com
+          SHORT="Xconvers, a TCP/IP client for Amateur radio convers."
+cat << EOF
+Convers is a TCP/IP based service for Amateur radio operators which uses
+a command subset of IRC. It is optimized for generating less traffic
+than IRC, because part of the convers server network is connected over
+a radio network with slow (1200-9600 baud) links. Convers uses port 3600.
+EOF

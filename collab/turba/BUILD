@@ -1,2 +1,2 @@
-# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
-. $GRIMOIRE/collab/horde/BUILD
+# $Id: BUILD,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
+. $SCRIPT_DIRECTORY/../horde/BUILD

@@ -1,11 +1,12 @@
-# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
 (
+	cp ./html/config.php ./html/config.php.default   &&
 
-	prepare_install                                &&
+	prepare_install                                  &&
 
-    mkdir -p    /usr/share/$SPELL                  &&
-    cp    -fr . /usr/share/$SPELL/                 &&
-    chmod 0666  /usr/share/$SPELL/html/config*.php &&
+    mkdir -p      /usr/share/$SPELL                  &&
+    cp    -r .    /usr/share/$SPELL/                 &&
+    chmod    0666 /usr/share/$SPELL/html/config*.php &&
 
     echo "Please point your apache at /usr/share/$SPELL/html and request install.php"
     

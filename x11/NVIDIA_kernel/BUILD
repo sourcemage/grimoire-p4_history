@@ -7,11 +7,18 @@
               ;;
   esac
 
-  if  spell_installed  linux;  then
-    VERSION=`installed_version  linux`
-    cp   Makefile  Makefile.old
-    sed  "s/\$(shell uname -r)/$VERSION/"  Makefile.old  >  Makefile
-  fi
+  # A surprising number of module makefiles attempt to figure out the kernel
+  # version in every way but the correct one - which is to check the kernel
+  # makefile
+       KVERSION=` head -1 /usr/src/linux/Makefile |           sed 's/.*=//'`
+    KPATCHLEVEL=` head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'`
+      KSUBLEVEL=` head -3 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'`
+  KEXTRAVERSION=` head -4 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//'`
+
+  KERNEL=`echo "${KVERSION}.${KPATCHLEVEL}.${KSUBLEVEL}${KEXTRAVERSION}" |
+          sed 's/ //g'`
+  
+  sedit  "s/\$(shell uname -r)/$KERNEL/"  Makefile
 
   sedit  "s/: gcc-check/:/"  Makefile
 

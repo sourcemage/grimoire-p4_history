@@ -1,0 +1,19 @@
+           SPELL=gob2
+         VERSION=2.0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/gob2/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/gob2/$SOURCE
+        WEB_SITE=http://www.5z.com/jirka/gob.html
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+         ENTERED=20020620
+         UPDATED=20020620
+           SHORT="GOB is a preprocessor for making GObjects with inline C code"
+cat << EOF
+GOB (GOB2 anyway) is a preprocessor for making GObjects with inline C code so
+that generated files are not edited. Syntax is inspired by Java and Yacc or
+Lex. The implementation is intentionally kept simple, and no C actual code
+parsing is done. 
+EOF

@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.1 2002/07/16 23:26:12 sergeyli Exp $
+# $Id: BUILD,v 1.1 2002/07/29 23:53:53 sergeyli Exp $
 (
 
 	patch -p1 < $SCRIPT_DIRECTORY/LDAPv3.patch &&
