@@ -1,15 +1,15 @@
-           SPELL=Twisted
+           SPELL=twisted
          VERSION=1.3.0
-       BUILD_API=2
-          SOURCE=${SPELL}_NoDocs-$VERSION.tar.bz2
-          MD5[0]=7d3540974224beffd24b71b3ff18f476
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=Twisted_NoDocs-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Twisted-$VERSION
    SOURCE_URL[0]=http://twisted.sourceforge.net/$SOURCE
+          MD5[0]=7d3540974224beffd24b71b3ff18f476
         WEB_SITE=http://twistedmatrix.com
          ENTERED=20040222
-         UPDATED=20040222
-         LICENSE=LGPL
-           SHORT="an event-driven networking framework written in Python"
+         UPDATED=20041216
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="Event-driven networking framework written in Python"
 cat << EOF
 -A Development Tool
 
