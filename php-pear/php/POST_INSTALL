@@ -1,17 +1,14 @@
-if    [  -e  /etc/httpd/httpd.conf  ]
-then  MOD="/etc/httpd/httpd.conf"
-      INC="AddType application/x-httpd-php .php .phtml
+INC="AddType application/x-httpd-php .php .phtml
 LoadModule php4_module libexec/libphp4.so"
 
-      grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
+if    [  -e  /etc/httpd/httpd.conf  ] && 
+then  MOD="/etc/httpd/httpd.conf"
+      grep  -q  php4_module  $MOD  ||  echo  "$INC"  >>  $MOD
       httpd -t
 fi
 
 if    [  -e  /etc/httpsd/httpd.conf  ]
 then  MOD="/etc/httpsd/httpd.conf"
-      INC="AddType application/x-httpd-php .php .phtml
-LoadModule php4_module libexec/libphp4.so"
-
-      grep  -q  "$INC"  $MOD  ||  echo  "$INC"  >>  $MOD
+      grep  -q  php4_module  $MOD  ||  echo  "$INC"  >>  $MOD
       httpd -t
 fi

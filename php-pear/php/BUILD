@@ -9,8 +9,6 @@
     OPTS="$OPTS --with-apxs"
   fi &&
 
-#    --with-iconv=/usr                  \
-#    --with-xmlrpc                      \
   ./configure                          \
     --prefix=${INSTALL_ROOT}/usr                      \
     --sysconfdir=${INSTALL_ROOT}/etc                  \
@@ -33,6 +31,8 @@
     --enable-dbase                     \
     --enable-sockets                   \
     --enable-calendar                  \
+    --with-iconv                       \
+    --with-xmlrpc                      \
     --with-versioning                  \
     --with-mod_charset                 \
     --with-pear                        \
