@@ -1,0 +1,10 @@
+--- coda-src/asr/Makefile.in.old	2003-03-10 15:37:10.000000000 -0800
++++ coda-src/asr/Makefile.in	2003-03-10 15:40:35.000000000 -0800
+@@ -54,6 +54,7 @@
+ 
+ # YYuck!  I don't know how to tell yyac to deliver a .cc extension  GRRR..(pjb)
+ resolver_parser.o: resolver_parser.c
++	patch  -p2  <  resolver_parser.c.patch
+ 	$(CXX) -x c++ $(CFLAGS) -c $<
+         
+ TESTS= resolver_lexer.c resolver_parser.c y.tab.h
