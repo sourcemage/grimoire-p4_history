@@ -1,7 +1,8 @@
-for i in $(grep $SPELL $DEPENDS_STATUS);
-do if [ $(echo $i | cut -d: -f1) = "$SPELL" ] && [ $(echo $i | cut -d: -f2) == "Linux-PAM" ] && [ $(echo $i | cut -d: -f3 ) = "on" ] ;
-   then on_cast Linux-PAM cast_self
+for i in $(grep $SPELL $DEPENDS_STATUS); do
+  if [ $(echo $i | cut -d: -f1) = "$SPELL" ] &&
+       [ $(echo $i | cut -d: -f2) == "Linux-PAM" ] &&
+       [ $(echo $i | cut -d: -f3 ) = "on" ]; then
+     on_cast Linux-PAM cast_self
    fi
 done
-
-
+on_cast openldap cast_self
