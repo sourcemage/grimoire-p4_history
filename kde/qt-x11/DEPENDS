@@ -1,5 +1,6 @@
 depends  xfree86                                       &&
 depends  uudeview                                      &&
+depends  jpeg  "-system-libjpeg"                       &&
 
 optional_depends  "zlib"                               \
                   "-system-zlib"                       \
@@ -13,10 +14,6 @@ optional_depends  "libpng"                             \
                   "-system-libpng"                     \
                   "-qt-libpng"                         \
                   "to use the system png library"      &&
-optional_depends  "jpeg"                               \
-                  "-system-libjpeg"                    \
-                  "-qt-libjpeg"                        \
-                  "to use the system jpeg library"     &&
 #optional_depends  "mysql"                              \
 #                  "-plugin-sql-mysql  -I/usr/include/mysql  -L/usr/lib  -lmysqlclient" \
 #                  ""                                   \
