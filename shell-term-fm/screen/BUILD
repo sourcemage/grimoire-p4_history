@@ -1,7 +1,5 @@
 export OPTS="$OPTS --with-sys-screenrc=/etc/screenrc"  &&
 default_build  &&
-(
-
   if  [  -f  /etc/screenrc  ]; then
       if  [  "$REPLACE_RC" == "y"  ]; then
           cp  ${SCRIPT_DIRECTORY}/screenrc  /etc/screenrc
@@ -11,5 +9,3 @@ default_build  &&
   else
       cp  ${SCRIPT_DIRECTORY}/screenrc  /etc/screenrc
   fi
-
-)
