@@ -1,5 +1,4 @@
-depends bonobo
-if [ "$CVS_CHECKOUT" ]
-then
-	depends automake-1.4
-fi
+depends bonobo &&
+depends libgnomeui &&
+depends libbonoboui &&
+depends automake-1.4
