@@ -5,11 +5,15 @@ NEEDS="+local_fs"
 
 . /etc/init.d/smgl_init
 
-# delete self
-rm  /etc/init.d/runlevels/%S/smgl-cleanup
-
-[ -f /sbin/tshutdown ]  &&  rm  -f  /sbin/tshutdown
-
-[ -d /sbin/old ]  && rm  -rf  /sbin/old
-
-[ -L /etc/init.d/functions ]  &&  rm  -f  /etc/init.d/functions
+case $1 in
+  start)
+    [ -f /sbin/tshutdown ]  &&  rm  -f  /sbin/tshutdown
+    [ -d /sbin/old ]  && rm  -rf  /sbin/old
+    [ -L /etc/init.d/functions ]  &&  rm  -f  /etc/init.d/functions
+    exit 0
+    ;;
+  stop)
+    # delete self
+    rm  /etc/init.d/runlevels/%S/smgl-cleanup
+    ;;
+esac

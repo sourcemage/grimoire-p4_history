@@ -74,10 +74,7 @@ run_func() {
 
 
 # First check to see if the program actually can be run
-test -x $PROGRAM || {
-  echo "Program $PROGRAM doesn't appear to be installed"
-  exit 5
-}
+required_executable $PROGRAM
 
 [ -z "$NAME" ] && NAME=$( basename $PROGRAM )
 

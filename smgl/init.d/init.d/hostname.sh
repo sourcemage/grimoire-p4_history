@@ -4,11 +4,11 @@ RUNLEVEL=S
 
 . /etc/init.d/smgl_init
 
-test -x /bin/hostname  || exit 5
-test -x /sbin/ifconfig || exit 5
-
 case $1 in
-  start)  echo "Setting hostname..."
+  start)  required_executable /bin/hostname
+          required_executable /sbin/ifconfig
+
+          echo "Setting hostname..."
           /bin/hostname -F /etc/hostname
           evaluate_retval
 

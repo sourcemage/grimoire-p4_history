@@ -28,234 +28,227 @@ FAILURE="echo -en \\033[1;31m"
 
 print_error_msg()
 {
-	echo
-	$FAILURE
-	echo "You should not be reading this error message. It means"
-	echo "that an unforseen error took place in $i,"
-	echo "which exited with a return value of $error_value"
-	echo
-	echo "If you're able to track this error down to a bug in one"
-	echo "of the files provided by SourceMage GNU Linux, please"
-	echo "be so kind to inform us at http://www.sourcemage.org"
-	$NORMAL
-	echo
-	echo
-	echo "Press Enter to continue..."
-	read
-}
-
-check_script_status()
-{
-	if [ ! -f $i ]
-	then
-		echo "$i is not a valid symlink"
-		continue
-	fi
-
-	if [ ! -x $i ]
-	then
-		echo "$i is not executable, skipping"
-		continue
-	fi
+  echo
+  $FAILURE
+  echo "You should not be reading this error message. It means"
+  echo "that an unforseen error took place in $i,"
+  echo "which exited with a return value of $error_value"
+  echo
+  echo "If you're able to track this error down to a bug in one"
+  echo "of the files provided by SourceMage GNU Linux, please"
+  echo "be so kind to inform us at http://www.sourcemage.org"
+  $NORMAL
+  echo
+  echo
+  echo "Press Enter to continue..."
+  read
 }
 
 evaluate_retval()
 {
-	error_value=$?
+  local exit_value=$?
 
-	if [ $error_value = 0 ]
-	then
-		print_status success
-	else
-		print_status failure
-	fi
+  if [ $exit_value = 0 ] ; then
+    print_status success
+  else
+    print_status failure
+  fi
 
-	return $error_value
+  return $exit_value
 }
 
 print_status()
 {
-	if [ $# = 0 ]
-	then
-		echo "Usage: $0 {success|warning|failure}"
-		return 1
-	fi
+  if [ $# = 0 ] ; then
+    echo "Usage: $0 {success|warning|failure}"
+    return 1
+  fi
 
-	$CURS_UP
+  $CURS_UP
 
-	case "$1" in
-		success)
-			$SET_COL
-			echo -n "[  "
-			$SUCCESS
-			echo -n "OK"
-			$NORMAL
-			echo "  ]"
-			;;
-		warning)
-			case "$2" in
-				running)
-					$SET_WCOL
-					echo "Already running"
-					$CURS_UP
-					;;
-				not_running)
-					$SET_WCOL
-					echo "Not running"
-					$CURS_UP
-					;;
-			esac
-			$SET_COL
-			echo -n "[ "
-			$WARNING
-			echo -n "ATTN"
-			$NORMAL
-			echo " ]"
-			;;
-		failure)
-			$SET_COL
-			echo -n "["
-			$FAILURE
-			echo -n "FAILED"
-			$NORMAL
-			echo "]"
-			;;
-	esac
+  case "$1" in
+    success)
+      $SET_COL
+      echo -n "[  "
+      $SUCCESS
+      echo -n "OK"
+      $NORMAL
+      echo "  ]"
+      ;;
+    warning)
+      case "$2" in
+        running)
+          $SET_WCOL
+          echo "Already running"
+          $CURS_UP
+          ;;
+        not_running)
+          $SET_WCOL
+          echo "Not running"
+          $CURS_UP
+          ;;
+      esac
+      $SET_COL
+      echo -n "[ "
+      $WARNING
+      echo -n "ATTN"
+      $NORMAL
+      echo " ]"
+      ;;
+    failure)
+      $SET_COL
+      echo -n "["
+      $FAILURE
+      echo -n "FAILED"
+      $NORMAL
+      echo "]"
+      ;;
+  esac
 }
 
 getpids()
 {
-	base=${1##*/}
-	pidlist="$(pidof -o $$ -o $PPID -o '%PPID' -x $base)"
+  local base=${1##*/}
+  pidlist="$(pidof -o $$ -o $PPID -o '%PPID' -x $base)"
 }
 
 loadproc()
 {
-	if [ $# = 0 ]
-	then
-		echo "Usage: loadproc {program}"
-		exit 1
-	fi
+  if [ $# = 0 ] ; then
+    echo "Usage: loadproc {program}"
+    exit 1
+  fi
 
-	getpids $1
+  getpids $1
 
-	if [ -z "$pidlist" ]
-	then
-		"$@"
-		evaluate_retval
-	else
-		$SET_WCOL
-		print_status warning running
-	fi
+  if [ -z "$pidlist" ] ; then
+    "$@"
+    evaluate_retval
+  else
+    $SET_WCOL
+    print_status warning running
+  fi
 }
 
 killproc()
 {
-	if [ $# = 0 ]
-	then
-		echo "Usage: killproc {program} [signal]"
-		exit 1
-	fi
+  if [ $# = 0 ] ; then
+    echo "Usage: killproc {program} [signal]"
+    exit 1
+  fi
 
-	if [ -z "$2" ]; then
-		signal=TERM
-		fallback=KILL
-	else
-		signal=${2##-}
-		signal=${signal##SIG}
-		fallback=""
-	fi
+  if [ -z "$2" ] ; then
+    signal=TERM
+    fallback=KILL
+  else
+    signal=${2##-}
+    signal=${signal##SIG}
+    fallback=""
+  fi
 
-	getpids $1
+  getpids $1
 
-	if [ -n "$pidlist" ]; then
-		failure=0
-		for pid in $pidlist
-		do
-			kill -$signal $pid 2>/dev/null
+  if [ -n "$pidlist" ] ; then
+    failure=0
+    for pid in $pidlist ; do
+      kill -$signal $pid 2>/dev/null
 
-			for ((i=0; $i<5000; i=$i+1)); do :; done
+      for ((i=0; $i<5000; i=$i+1)) ; do : ; done
 
-			for ((i=0; $i<$KILLDELAY; i=$i+1)); do
-				kill -0 $pid 2>/dev/null || break
-				sleep 1
-			done
+      for ((i=0; $i<$KILLDELAY; i=$i+1)) ; do
+        kill -0 $pid 2>/dev/null || break
+        sleep 1
+      done
 
-			if [ -n "$fallback" ]; then kill -$fallback $pid 2>/dev/null; fi
+      if [ -n "$fallback" ] ; then kill -$fallback $pid 2>/dev/null ; fi
 
-			kill -0 $pid 2>/dev/null && failure=1
-		done
+      kill -0 $pid 2>/dev/null && failure=1
+    done
 
-		base=${1##*/}
-		if [ $failure = 0 ]; then rm -f /var/run/$base.pid; fi
+    base=${1##*/}
+    if [ $failure = 0 ] ; then rm -f /var/run/$base.pid ; fi
 
-		(exit $failure)
-		evaluate_retval
-	else
-		$SET_WCOL
-		print_status warning not_running
-		exit 0
-	fi
+    (exit $failure)
+    evaluate_retval
+  else
+    $SET_WCOL
+    print_status warning not_running
+    exit 0
+  fi
 }
 
 reloadproc()
 {
-	if [ $# = 0 ]
-	then
-		echo "Usage: reloadproc {program} [signal]"
-		exit 1
-	fi
+  if [ $# = 0 ] ; then
+    echo "Usage: reloadproc {program} [signal]"
+    exit 1
+  fi
 
-	if [ -z "$2" ]; then
-		signal=HUP
-	else
-		signal=${2##-}
-		signal=${signal##SIG}
+  if [ -z "$2" ] ; then
+    signal=HUP
+  else
+    signal=${2##-}
+    signal=${signal##SIG}
 
-	fi
+  fi
 
-	getpids $1
+  getpids $1
 
-	if [ -n "$pidlist" ]
-	then
-		failure=0
+  if [ -n "$pidlist" ] ; then
+    failure=0
 
-		for pid in $pidlist
-		do
-			kill -$signal $pid || failure=1
-		done
+    for pid in $pidlist ; do
+      kill -$signal $pid || failure=1
+    done
 
-		(exit $failure)
-		evaluate_retval
-	else
-		$SET_WCOL
-		print_status warning not_running
-	fi
+    (exit $failure)
+    evaluate_retval
+  else
+    $SET_WCOL
+    print_status warning not_running
+  fi
 }
 
 statusproc()
 {
-	if [ $# = 0 ]
-	then
-		echo "Usage: statusproc {program}"
-		exit 1
-	fi
+  if [ $# = 0 ] ; then
+    echo "Usage: statusproc {program}"
+    exit 1
+  fi
 
-	base=${1##*/}
-	getpids $base
+  getpids $1
 
-	if [ -n "$pidlist" ]
-	then
-		echo "$base is running with Process ID(s) $pidlist"
-	else
-		if [ -s /var/run/$base.pid ]
-		then
-			echo "$1 is not running but /var/run/$base.pid exists"
-			return 1
-		else
-			echo "$1 is not running"
-	 	fi
-	fi
+  if [ -n "$pidlist" ] ; then
+    echo "$base is running with Process ID(s) $pidlist"
+  else
+    if [ -s /var/run/$base.pid ] ; then
+      echo "$1 is not running but /var/run/$base.pid exists"
+      return 1
+    else
+      echo "$1 is not running"
+    fi
+  fi
+}
+
+required_executable()
+{
+  test -x $1 || {
+    $FAILURE
+    echo "Required program $1 doesn't appear to be installed"
+    $NORMAL
+    exit 5
+  }
+}
+
+optional_executable()
+{
+  test -x $1 || {
+    $WARNING
+    echo "Optional program $1 doesn't appear to be installed"
+    $NORMAL
+    return 1
+  }
+  return 0
 }
 
 # End $rc_base/init.d/functions

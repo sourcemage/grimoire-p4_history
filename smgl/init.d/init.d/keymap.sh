@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 RUNLEVEL=S
 NEEDS="+local_fs"
@@ -6,10 +6,10 @@ NEEDS="+local_fs"
 . /etc/init.d/smgl_init
 . /etc/sysconfig/keymap
 
-test -x /usr/bin/loadkeys || exit 5
-
 case $1 in
-  start)    /usr/bin/loadkeys $KEYMAP
+  start)    required_executable /usr/bin/loadkeys
+
+            /usr/bin/loadkeys $KEYMAP
             evaluate_retval
             ;;
 

@@ -9,11 +9,6 @@ ESSENTIAL=yes
 . /etc/init.d/smgl_init
 . /etc/sysconfig/devices
 
-test -x /bin/mount    || exit 5
-test -x /sbin/fsck    || exit 5
-test -x /sbin/swapon  || exit 5
-test -x /sbin/swapoff || exit 5
-
 checkfs()
 {
   [ -e /fastboot     ]  &&  return
@@ -40,6 +35,9 @@ checkfs()
 
 start()
 {
+  required_executable /bin/mount
+  required_executable /bin/fsck
+
   if [ "$DEVICES" != "/dev" ] ; then
     echo "Mounting /devices..."
     mount -n  -t  devfs devfs $DEVICES
@@ -64,9 +62,11 @@ start()
   echo     > /etc/mtab
   mount    -f -o remount,rw /
 
-  echo    -n "Activating swap... "
-  swapon  -a 2> /dev/null
-  evaluate_retval
+  if optional_executable /sbin/swapon ; then
+    echo -n "Activating swap... "
+    swapon -a 2> /dev/null
+    evaluate_retval
+  fi
 
   if [[ $DEVICES_COMPAT == "y" && $DEVICES != "/devices" ]] ; then
     [ -e /devices ] && rm -rf /devices
