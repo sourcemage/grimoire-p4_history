@@ -14,9 +14,4 @@
     cp                   syslog.conf  /etc
   fi
 
-  cp  $SCRIPT_DIRECTORY/sysklogd.sh  /etc/init.d
-  ln      -sf ../init.d/sysklogd.sh  /etc/rcS.d/S20sysklogd
-  ln      -sf ../init.d/sysklogd.sh  /etc/rc0.d/K70sysklogd
-  ln      -sf ../init.d/sysklogd.sh  /etc/rc6.d/K70sysklogd
-
 )
