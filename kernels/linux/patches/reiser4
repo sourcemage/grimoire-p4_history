@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DESCRIPTION="Patch for the reiserfs 4 support"
+SHORT="Patch for the reiserfs 4 support"
+HELP="From namesys website :  
+    * Reiser4 is the fastest filesystem, and here are the benchmarks.
+    * Reiser4 is an atomic filesystem, which means that your filesystem operations either entirely occur, or they entirely don't, and they don't corrupt due to half occuring.
+    * Reiser4 uses dancing trees, which obsolete the balanced tree algorithms used in databases (see farther down). This makes Reiser4 more space efficient than other filesystems. It also means that Reiser4 scales better than any other filesystem.
+    * Reiser4 is based on plugins, you'll be able to upgrade to their innovations without reformatting your disk.
+    * Reiser4 is architected for military grade security. You'll find it is easy to audit the code, and that assertions guard the entrance to every function."
+VERSIONS="2.6.9-4
+2.6.10-1"
+
+MD5S[0]=b1516aa76de096e08ff345a002cc9554
+MD5S[1]=e34f62ba70b69e16afc35fbb97e00791
+
+if [[ "$1" == "CONFIG" ]]; then
+    if [[ "${!PATCH}" == "2.6.9-4" ]]; then
+echo "
+SOURCE${COUNTER}='reiser4-for-${!PATCH}.gz'
+SOURCE${COUNTER}_URL='ftp://ftp.namesys.com/pub/reiser4-for-2.6/2.6.9/reiser4-for-${!PATCH}.gz'" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+    else
+	if [[ "${!PATCH}" == "2.6.10-1" ]]; then
+echo "
+SOURCE${COUNTER}='reiser4-for-${!PATCH}.gz'
+SOURCE${COUNTER}_URL='ftp://ftp.namesys.com/pub/reiser4-for-2.6/2.6.10/reiser4-for-${!PATCH}.gz'" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+	fi
+    fi
+fi
