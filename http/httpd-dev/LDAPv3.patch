@@ -1,0 +1,42 @@
+Index: ldap-cache/util_ldap.c
+===================================================================
+RCS file: /home/cvspublic/httpd-ldap/ldap-cache/util_ldap.c,v
+retrieving revision 1.5
+diff -u -r1.5 util_ldap.c
+--- ldap-cache/util_ldap.c	30 Jul 2002 19:38:11 -0000	1.5
++++ ldap-cache/util_ldap.c	3 Aug 2002 01:36:15 -0000
+@@ -265,6 +265,18 @@
+                                   util_ldap_connection_destroy,
+                                   apr_pool_cleanup_null);
+ 
++#if LDAP_VENDOR_VERSION >= 20000
++    /* set protocol version 3 on this connection */
++        {
++            int version = LDAP_VERSION3;
++
++            if ((result = ldap_set_option(ldc->ldap, LDAP_OPT_PROTOCOL_VERSION,
++                                         &version)) != LDAP_SUCCESS) {
++                /* setting LDAP version failed - ignore error */
++            }
++        }
++#endif
++
+         /* Set the alias dereferencing option */
+ #if LDAP_VERSION_MAX == 2
+         ldc->ldap->ld_deref = ldc->deref;
+@@ -301,14 +313,7 @@
+ 
+ #ifdef APU_HAS_LDAP_STARTTLS
+         if (ldc->starttls) {
+-            int version = LDAP_VERSION3;
+-
+-            /* Also we have to set the connection to use protocol version 3,
+-             * since we're using TLS. */
+-            if ((result = ldap_set_option(ldc->ldap, LDAP_OPT_PROTOCOL_VERSION,
+-                                         &version)) != LDAP_SUCCESS) {
+-		/* setting LDAP version failed - ignore error */
+-            }
++            /* LDAP protocol version 3 is required for TLS */
+ 
+             /* 
+              * In util_ldap_connection_find, we compare ldc->withtls to

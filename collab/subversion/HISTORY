@@ -1,3 +1,15 @@
+# $Id: HISTORY,v 1.3 2002/08/20 14:57:07 sergeyli Exp $
+2002-08-20 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Added an instruction to ignore neon version.
+	Build process now checks if the client is available in PATH and invokes it
+	to check out the latest source. If there is no client, it is built first from
+	the SOURCE package.
+
+2002-08-10 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Converted Python optional dependency into a firm one.
+
 2002-08-02 Sergey Lipnevich <sergeyli@pisem.net>
 
 	Updated to "requires webserver" in DEPENDS.
