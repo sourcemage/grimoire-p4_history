@@ -1,10 +1,10 @@
            SPELL=cdrdao
-         VERSION=${VERSION:=1.1.7}
+         VERSION=${VERSION:=1.1.8}
 if [ "$CVS" = "no" ] ; then
-          SOURCE=$SPELL-$VERSION.src.tar.gz 
+          SOURCE=$SPELL-$VERSION.tar.gz 
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
-          MD5[0]=b3f82390d13572fbf5a30aa7a739ddac 
+          MD5[0]=ac3fd7f595db7632ca640ecb8479ea91
 else [ "$CVS" = "yes" ] 
          VERSION=cvs 
   FORCE_DOWNLOAD=1 
