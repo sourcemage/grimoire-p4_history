@@ -20,7 +20,6 @@ function make_if_swig() {
     --disable-debug \
     --disable-mod-activation \
     --disable-static \
-    --enable-dso \
     --enable-shared \
     --without-apxs \
     --without-berkeley-db \
