@@ -1,18 +1,12 @@
-my_build() {
-  cd $BUILD_SUBDIRECTORY             &&
-  ./configure  --build=$BUILD        \
-               --prefix=${INSTALL_ROOT}/usr         \
-               --sysconfdir=${INSTALL_ROOT}/etc     \
-               --localstatedir=${INSTALL_ROOT}/var  \
-               $OPTS                 &&
-  make                               &&
-  cd -
-}
+local  BUILD_SUBDIRECTORY  &&
 
-  for BUILD_SUBDIRECTORY in $SOURCE_DIRECTORY/$SPELL*
-  do
-    if [ -d $BUILD_SUBDIRECTORY ]
-    then
-      my_build
-    fi
-  done
+for  BUILD_SUBDIRECTORY  in  $SOURCE_DIRECTORY/$SPELL*
+do
+  if  [  -d  $BUILD_SUBDIRECTORY  ]
+  then
+    message  "${MESSAGE_COLOR}Building $BUILD_SUBDIRECTORY${DEFAULT_COLOR}"  &&
+    cd      $BUILD_SUBDIRECTORY             &&
+    source  $SCRIPT_DIRECTORY/../KDE_BUILD  &&
+    cd  -
+  fi
+done

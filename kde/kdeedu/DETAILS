@@ -1,5 +1,7 @@
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
+
            SPELL=kdeedu
-if [ "$DEVEL" == "yes" ] ;then
+if  [  "$KDE_DEVEL"  ==  "y"  ];  then
          VERSION=3.2.92
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -16,7 +18,6 @@ fi
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
          UPDATED=20040820
-    DISTCC_HOSTS=
       LICENSE[0]=GPL
            SHORT="Educational games and programs for KDE."
 cat << EOF

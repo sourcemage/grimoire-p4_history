@@ -1,11 +1,11 @@
-# the remaining details of this spell are provided by PREPARE,
-# and stored in $CONFIG_CACHE/kde.languages
+# the remaining details of this spell are provided by CONFIGURE
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
            SPELL=kde-i18n
-if [ "$DEVEL" == "yes" ] ;then
+if  [  "$KDE_DEVEL"  ==  "y"  ];  then
          VERSION=3.2.92
             SITE=$KDE_URL/unstable/$VERSION/src/$SPELL
 else
-         VERSION=3.3.0
+         VERSION=3.3.1
             SITE=$KDE_URL/stable/${VERSION/\.0/}/src/$SPELL
 fi
        BUILD_API=2
