@@ -31,12 +31,13 @@ _do_device_up()
   [ ! -z "$WIFI_NWID" ] && iwconfig $DEV nwid ${WIFI_NWID}
   [ ! -z "$WIFI_ESSID" ] && iwconfig $DEV essid ${WIFI_ESSID}
   [ ! -z "$WIFI_RATE" ] && iwconfig $DEV rate ${WIFI_RATE}
+  [ ! -z "$WIFI_MODE" ] && iwconfig $DEV mode ${WIFI_MODE}
   [ ! -z "$WIFI_SECMODE" ] && iwconfig $DEV enc ${WIFI_SECMODE}
   [ ! -z "$WIFI_ENCKEY" ] && iwconfig $DEV key ${WIFI_ENCKEY}
 
   # some wifi cards need some time to setup the card before bringing it up
   if [ ! -z "$WIFI_NWID" ] || [ ! -z "$WIFI_ESSID" ] || [ ! -z "$WIFI_RATE" ] \
-     || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_ENCKEY" ]; then
+     || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_ENCKEY" ] || [ ! -z "$WIFI_MODE ]; then
        sleep 2
   fi
 
@@ -116,7 +117,7 @@ if device_is_up $DEV ; then
 fi
 
 unset MODE MODULE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU UP_ON_BOOT
-unset WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_SECMODE WIFI_ENCKEY
+unset WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_MODE WIFI_SECMODE WIFI_ENCKEY
 unset do_device_up do_route_up on_up
 
 . $netdevdir/$DEV.dev
