@@ -1,0 +1,43 @@
+if  [ -d  /usr/lib/perl5/5.6.1 ]
+then
+    cat  <<- ____EOM
+
+	I see you've got a 5.6.1 perl library. This probably
+	means that you're upgrading perl.
+
+	If this is not the case you can skip the next paragraph
+	and just answer no to the question...
+
+	   Perl 5.8 is binary incompatible with previous versions
+	   this means that you'll have to rebuild all installed 
+	   perl spell's. I can do that for you.
+
+	   After all spells have successfully been build you'll have to
+	   remember to _MANUALLY_ remove the following directories:
+	   
+	      rm -rf /usr/lib/perl5/5.6.1
+	      rm -rf /usr/lib/perl5/site_perl/5.6.1
+
+____EOM
+
+    if  query  "Do you want me to rebuild all perl spells?"  n
+    then
+	for  spell  in  $(gaze  section  perl-cpan)
+	do
+	    if [ $spell != perl ]
+	    then 
+		gaze  installed  $spell  &&  cast  $spell
+	    fi
+	done
+
+	cat  <<- ________EOM
+
+	if all spells have successfully been build, you can now
+	remove the 5.6.1 libraries, unless you've been installing
+	perl modules without using spells. It is a good idea to update
+	those too and remove the 5.6.1 libs.
+
+________EOM
+
+    fi
+fi
