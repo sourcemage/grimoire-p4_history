@@ -1,12 +1,12 @@
-depends nessus-libraries &&
-depends libnasl          &&
+depends  nessus-libraries  &&
+depends  libnasl           &&
 
-optional_depends  "nessus-plugins"                  \
-                  ""                                \
-                  ""                                \
-                  "for doing scans, you'll want some plugins"  &&
-optional_depends  "gtk+"                            \
-                  ""                                \
-                  "--disable-gtk"                   \
-                  "to build graphic nessus client"
+if  [  "$GTK2"  ==  "y"  ]
+then
+  depends  gtk+2
+fi  &&
 
+if  [  "$GTK"  ==  "y"  ]
+then
+  depends  gtk
+fi

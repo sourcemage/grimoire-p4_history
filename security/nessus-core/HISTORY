@@ -1,39 +1,55 @@
+2004-07-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.0.11
+	  BUILD_API=2
+	  Removed MAINTAINER
+	* BUILD: Converted to BUILD_API 2
+	  Muck with OPTS so that, once disabled, gtk+|gtk+2 can
+	  be re-enabled on a subsequent cast
+	* POST_INSTALL: Renamed to FINAL
+	  Removed
+	* CONFIGURE: Query for use of gtk+2 or gtk+
+	* DEPENDS: Can use either gtk+2 or gtk+
+	  Formatted to Guru Handbook
+	  Can't depend on nessus-plugins, nessus-plugins needs nessus-core
+	* HISTORY: Formatted to Guru Handbook
+
 2004-05-22 Seth Woolley <seth@tautology.org>
 	* DETAILS: Updated to 2.0.10a
 
 2003-08-22 hgg <hgreig@bigpond.net.au>
-	* Update UPDATED purely for test grimoire integration.
+	* DETAILS: Update UPDATED purely for test grimoire integration.
 
 2003-08-20 hgg <hgreig@bigpond.net.au>
-	* Remove PRE_REMOVE, no automatic script stuff anymore.
+	* PRE_REMOVE: Remove, no automatic script stuff anymore.
 
 2003-08-04 Seth Woolley <seth@tautology.org>
-	* Modified PRE_REMOVE for new telinit syntax
+	* PRE_REMOVE: Modified for new telinit syntax
 
 2003-08-01 Eric Laberge <demon_lord@myrealbox.com>
-	* Updated to new simpleinit system
+	* init.d/smgl-nessusd: Updated to new simpleinit system
 
 2003-07-28 Vladimir Vydra <vydra@fria.fri.utc.sk>
-	* Version updated to 2.0.7 .
-	  Modified init.d script, PRE_REMOVE .
+	* DETAILS: Version updated to 2.0.7 .
+	* smgl-nessusd: Modified init.d script
+	* PRE_REMOVE: Updated for init script
 
 2003-05-23 Ladislav Hagara <hgr@vabo.cz>
-	* updated to 2.0.6a
+	* DETAILS: updated to 2.0.6a
 
 2003-05-14 Seth Woolley <seth@tautology.org>
-	* Modified DETAILS to fix md5 for SOURCE.
+	* DETAILS: Modified to fix md5 for SOURCE.
 
 2003-05-08 Ladislav Hagara <hgr@vabo.cz>
-	* updated to 2.0.5
+	* DETAILS: updated to 2.0.5
 
 2003-02-25 Ladislav Hagara <hgr@vabo.cz>
-	* updated to 2.0.0
+	* DETAILS: updated to 2.0.0
 
 2002-12-18 Ladislav Hagara <hgr@vabo.cz>
-	* Updated to 1.2.7
+	* DETAILS: Updated to 1.2.7
 
 2002-11-25 Ladislav Hagara <hgr@vabo.cz>
-	* Updated to 1.2.6
+	* DETAILS: Updated to 1.2.6
 
 2002-10-01 Ladislav Hagara <hgr@vabo.cz>
 	* Added this spell
