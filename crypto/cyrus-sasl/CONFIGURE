@@ -1,0 +1,72 @@
+message "Cyrus-SASL supports lots of authentication mechanisms, devided into 3 main categories:" &&
+message "plaintext (LOGIN, PLAIN), shared secret (DIGEST-MD5, CRAM-MD5) and Kerberos (KERBEROS_V4, GSSAPI)" &&
+message "To avoid getting lost in configuring SASL, please choose *only* the mechanisms" &&
+message "you are actually planning to use." &&
+config_query CS_PLAINTEXT "Enable plaintext mechanisms?" n &&
+config_query CS_SHARED "Enable shared secret mechanisms?" n &&
+config_query CS_KERBEROS "Enable kerberos mechanisms?" n &&
+
+# A lonely option, doesn't fit with anything else
+config_query_option CS_ANON "Enable ANONYMOUS authentication? (you really don't want this)" n "--enable-anon" "--disable-anon" &&
+
+if [ "$CS_PLAINTEXT" == "n" ] && [ "$CS_SHARED" == "n" ] && [ "$CS_KERBEROS" == "n" ]; then
+  message "You didn't select any authentication mechanism!" &&
+  return 1
+fi &&
+
+if [ "$CS_PLAINTEXT" == "y" ] && [ "$CS_SHARED" == "y" ] && [ "$CS_KERBEROS" == "y" ]; then
+  persistent_add CS_MECH &&
+  CS_MECH="saslauthd auxprop kerberos" &&
+  message "You /had/ to select all of them, didn't you?" &&
+  message "Ok. The user is always right *sigh*" &&
+  message "But remember, YOU'RE ON YOUR OWN HERE!" ;
+elif [ "$CS_PLAINTEXT" == "y" ] && [ "$CS_SHARED" == "n" ] && [ "$CS_KERBEROS" == "n" ]; then
+  message "Plaintext can use either the saslauthd authentication daemon *or*" &&
+  message "a libsasl auxprop backend (SQL, LDAP, DB)" &&
+  config_query_list CS_MECH "Pick one:" saslauthd auxprop ;
+elif [ "$CS_PLAINTEXT" == "n" ] && [ "$CS_SHARED" == "y" ] && [ "$CS_KERBEROS" == "n" ]; then
+  persistent_add CS_MECH &&
+  CS_MECH="auxprop" ;
+elif [ "$CS_PLAINTEXT" == "y" ] && [ "$CS_SHARED" == "n" ] && [ "$CS_KERBEROS" == "y" ]; then
+  persistent_add CS_MECH &&
+  CS_MECH="saslauthd" ;
+elif [ "$CS_PLAINTEXT" == "y" ] && [ "$CS_SHARED" == "y" ] && [ "$CS_KERBEROS" == "n" ]; then
+  persistent_add CS_MECH &&
+  CS_MECH="auxprop" ;
+fi
+
+if [ "$CS_PLAINTEXT" == "y" ]; then
+  message "Plaintext by itself is not secure for obvious reasons," &&
+  message " but it can be usefull in combination with something like TLS" &&
+  config_query_option CS_PLAIN "Enable PLAIN authentication?" y "--enable-plain" "--disable-plain" &&
+  config_query_option CS_LOGIN "Enable LOGIN authentication? (unsupported)" n "--enable-login" "--disable-login" ;
+elif [ "$CS_SHARED" == "y" ]; then
+  config_query_option CS_CRAM "Enable CRAM-MD5 authentication?" n "--enable-cram" "--disable-cram" &&
+  config_query_option CS_DIGEST "Enable DIGEST-MD5 authentication?" n "--enable-digest" "--disable-digest" ;
+  config_query_option CS_OTP "Enable One-Time-Password authentication?" y "--enable-otp" "--disable-otp" &&
+  config_query_option CS_SRP "Enable SRP authentication?" y "--enable-srp" "--disable-srp" ;
+elif [ "$CS_KERBEROS" == "y" ]; then
+  config_query_option CS_GSSAPI "Enable GSSAPI authentication?" y "--enable-gssapi=/usr" "--disable-gssapi" &&
+  config_query_option CS_KRB4 "Enable KRB4 authentication?" n "--enable-krb4" "--disable-krb4" ;
+fi  &&
+
+if [ "$CS_MECH" == "saslauthd" ]; then
+  message "saslauthd can use either shadow, PAM, LDAP or KERBEROS as a backend." &&
+  config_query_list CS_SASLD "Pick one:" shadow PAM LDAP KERBEROS;
+elif [ "$CS_MECH" == "auxprop" ]; then
+  message "Choose the auxprop modules you wish to be available" &&
+  config_query_option CS_DB "Use db as a backend for authentication? (recommended)" y "--with-dblib=berkely" &&
+  config_query_option CS_GDBM "Use gdbm as a backend for authentication?" n "--with-dblib=gdbm" &&
+  config_query_option CS_SQL "Enable SQL auxprop backends?" n "--enable-sql" "--disable-sql" &&
+  if [ "$CS_SQL" == "y" ]; then
+    config_query_option CS_SQLITE "Use sqlite as a backend for authentication?" y "--with-sqlite=/usr" "--without-sqlite" &&
+    config_query_option CS_MYSQL "Use mysql as a backend for authentication?" n "--with-mysql=/usr" "--without-mysql" &&
+    config_query_option CS_PSQL "Use postgresql as a backend for authentication?" n "--with-pgsql=/usr" "--without-pgsql"
+  fi ;
+fi
+
+## does this even work with the linux build? and if so, where does it go?
+#  config_query_option CS_NTLM "Enable NTLM authentication? (unsupported)" n "--enable-ntlm" "--disable-ntlm" &&
+
+# no idea where this belongs
+#  config_query_option CS_APOP "Enable APOP authentication?" n "--enable-checkapop" "--disable-checkapop" &&
