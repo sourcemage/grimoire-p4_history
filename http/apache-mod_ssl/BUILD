@@ -3,11 +3,10 @@
   export SSL_BASE=SYSTEM &&
   export EAPI_MM=SYSTEM &&
 
-  patch -p1 < $SCRIPT_DIRECTORY/../apache/db-4.1.diff &&
-
   cd mod_ssl-$VERSION &&
   ./configure --with-apache=../$SOURCE2_BASE $OPTS &&
   cd  ../$SOURCE2_BASE &&
+  patch -p1 < $SCRIPT_DIRECTORY/../apache/db-4.1.diff &&
   ./configure --prefix=/usr \
               --sysconfdir=/etc/httpsd \
               --localstatedir=/var/lib/httpsd \
