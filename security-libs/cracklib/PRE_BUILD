@@ -1,4 +1,7 @@
 default_pre_build                                            &&
+wget --referer=http://www.cotse.com/tools/wordlists.htm      \
+     --output-document=${SOURCE_CACHE}/allwords              \
+       http://www.cotse.com/wordlists/allwords               &&
 mkdir -p ${INSTALL_ROOT}/usr/share/cracklib                  &&
 mkdir -p ${INSTALL_ROOT}/usr/share/doc/cracklib              &&
 mkdir -p ${INSTALL_ROOT}/usr/share/dict                      &&
