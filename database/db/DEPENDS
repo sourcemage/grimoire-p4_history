@@ -1,3 +1,8 @@
+optional_depends  g++             \
+                  "--enable-cxx"  \
+                  ""              \
+                  "for C++ API"   &&
+
 if grep -q 'enable-java' $SPELL_CONFIG; then
   depends JAVA '--enable-java' &&
   depends uudeview &&
