@@ -1,0 +1,16 @@
+           SPELL=gnome-icon-theme
+         VERSION=0.1.5
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="f0c92c81eb43727c798c5caeb5596fe8"
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=LGPL
+         ENTERED=20020314
+         UPDATED=20021217
+           SHORT="Default GNOME 2 Icons"
+cat << EOF
+Default GNOME 2 Icons
+EOF

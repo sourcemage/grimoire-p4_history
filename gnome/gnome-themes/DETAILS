@@ -1,0 +1,16 @@
+           SPELL=gnome-themes
+         VERSION=0.7
+          BRANCH=`echo $VERSION|cut -d . -f 1,2` 
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="e310bda53715156120ac5aa31fd41ec6"
+      LICENSE[0]=LGPL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+         ENTERED=20020314
+         UPDATED=20030106
+           SHORT="GNOME 2 Themes for the visually impaired"
+cat << EOF
+GNOME 2 Themes for the visually impaired.
+EOF
