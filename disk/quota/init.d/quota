@@ -9,11 +9,11 @@ start() {
 
   # Check quota and then turn quota on. 
   echo "Checking quotas. This may take some time." 
-  /sbin/quotacheck -avug 
+  /usr/sbin/quotacheck -avug 
   evaluate_retval
 
   echo "Turning on quota..." 
-  /sbin/quotaon -avug 
+  /usr/sbin/quotaon -avug 
   evaluate_retval
 
 }
@@ -22,7 +22,7 @@ start() {
 stop() {
 
   echo "Turning off quota..." 
-  /sbin/quotaoff -avug 
+  /usr/sbin/quotaoff -avug 
   evaluate_retval
 
 }
