@@ -1,4 +1,3 @@
-(
   sed -i "s/-Werror//" configure.in            &&
   autoconf                                     &&
 if spell_installed Python;then
@@ -9,7 +8,4 @@ fi						&&
 #  OPTS="--with-perl-module=/usr/lib/perl5/$PP $OPTS"
 #fi                                              &&
 
-echo opts=$OPTS					&&
   default_build
-
-) > $C_FIFO 2>&1
