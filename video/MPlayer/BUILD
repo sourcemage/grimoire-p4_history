@@ -41,6 +41,18 @@
       fi
     fi
   
+    if  [  !  -f  /etc/mplayer/mplayer.conf  ];  then
+      sedit  "s/include =/# include =/"         etc/example.conf
+      sedit  "s/# vo=/vo=/"                     etc/example.conf
+      sedit  "s/# ao=/ao=/"                     etc/example.conf
+      sedit  "s/# skin = default/skin = Blue/"  etc/example.conf
+      cp  etc/example.conf                      /etc/mplayer/mplayer.conf
+    fi
+
+    if  [  !  -f  /etc/mplayer/input.conf  ];  then
+      cp  etc/input.conf                 /etc/mplayer/input.conf
+    fi
+
   )
 
 ) > $C_FIFO 2>&1
