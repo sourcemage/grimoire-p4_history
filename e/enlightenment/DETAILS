@@ -1,11 +1,22 @@
            SPELL=enlightenment
-       BUILD_API=2
+
+if [ "$DR17" = "y" ]; then
+         VERSION=0.17-cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/e
+          MD5[0]=IGNORE
+else
          VERSION=0.16.7.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-        WEB_SITE=http://www.enlightenment.org/
           MD5[0]=5b51fa27cb0c00cfc90cb4962d08b9b6
+fi
+
+       BUILD_API=2
+        WEB_SITE=http://www.enlightenment.org/
       LICENSE[0]=BSD
          ENTERED=20010922
          UPDATED=20040517
