@@ -1,6 +1,2 @@
-(
-  make PREFIX=/usr	     &&
-  prepare_install            &&
-  make PREFIX=/usr install
-
-) > $C_FIFO 2>&1
+sed -i "s/\usr\/local/${INSTALL_ROOT}\/usr/g" Makefile &&
+make

@@ -1,9 +1,3 @@
-(
-
-  cp $SCRIPT_DIRECTORY/Makefile $SOURCE_DIRECTORY/src     &&
-  cd $SOURCE_DIRECTORY/src                                &&                                   
-  make                                                    &&
-  prepare_install                                         &&
-  make install
-
-) > $C_FIFO 2>&1
+cp $SCRIPT_DIRECTORY/Makefile $SOURCE_DIRECTORY/src     &&
+cd $SOURCE_DIRECTORY/src                                &&
+make
