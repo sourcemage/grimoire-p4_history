@@ -1,1 +1,4 @@
-if [ "$CVS" = "y" ]; then ./autogen; fi &&
+if [ "$CVS" == "y" ]; then 
+	cd ${SOURCE_DIRECTORY}
+	./autogen.sh; 
+fi 
