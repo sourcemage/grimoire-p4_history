@@ -1,6 +1,6 @@
 if ! grep -q CONFIGURED ${SPELL_CONFIG}
 then
-  if    query  "Do you want the documentation?" y
+  if    query  "Do you want the documentation (v 3.5.2)?" y
   then  echo   'doc="y"' >> ${SPELL_CONFIG}
   fi
 
