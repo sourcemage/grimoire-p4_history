@@ -39,6 +39,14 @@ if [[ $COMPILE ]]
 then
 	make mrproper
 fi
+
+if [[ "$TXTMESSAGE" != "" ]]
+then
+        message $TXTMESSAGE
+        sleep 5
+fi
+		
+
 cp ${CONFIG_CACHE}/kernel.config ./.config
 
 if [[ "$reconf" == "true" ]]
@@ -58,10 +66,4 @@ then
 #		ARCH="${kernel_arch}" make $MAKEMODE
 #		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
 #	fi
-fi
-
-if [[ "$TXTMESSAGE" != "" ]]
-then
-	message $TXTMESSAGE
-	sleep 5
 fi
