@@ -68,8 +68,8 @@ fi  &&
 # Fix for starting firefox without running as root first
 # Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-# patch  -d  $FIREFOX_HOME           -p1  -N      \
-#        <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
+patch  -d  $FIREFOX_HOME           -p1  -N      \
+       <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
 
 #
 # Script to set MOZILLA_FIVE_HOME
