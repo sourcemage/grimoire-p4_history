@@ -1,9 +1,1 @@
-if  !  grep  -q  "USECVS"   ${SPELL_CONFIG}
-then
-  if query "Fetch sources from CVS?" n 
-  then echo 'USECVS=yes' >>  ${SPELL_CONFIG}
-  else echo 'USECVS=no' >>  ${SPELL_CONFIG}
-  fi
-fi
-. ${SPELL_CONFIG}
-
+config_query  CVS  "Fetch sources from CVS?"  n

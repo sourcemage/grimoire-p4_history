@@ -1,7 +1,16 @@
+2004-08-19 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Removed kdebase (kdesdk depends on it)
+	  Formatted to Guru Handbook
+	  Added dependency on CVS if using cvs version
+	* BUILD, CONFIGURE, DETAILS: Converted to config_query for CVS
+	* DETAILS: Removed MAINTAINER
+	  Changed MD5 to MD5[0]
+	  Changed LICENSE to LICENSE[0]
+
 2004-06-18 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 0.6.2
-	BUILD_API=2
-	revert to sourceforge
+	  BUILD_API=2
+	  revert to sourceforge
 	* BUILD: strip
 	* gcc.diff: delete
 	  requires libexif-0.5.12
