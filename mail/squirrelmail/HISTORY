@@ -7,7 +7,12 @@
 	  Prepended BACKUP and ORDER with SQUIRRELMAIL_
 	* BUILD: Run only `true`
 	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
+	  General formatting cleanup (lots of missing "&&"s)
+	  addressbook.php.patch is -p1 now
 	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* FINAL: Removed query to run ./setup right then
+	* addressbook.php.patch: Updated to 1.4.4
 
 2005-01-29 Arjan Bouter <abouter@sourcemage.org>
 	* BUILD, PRE_REMOVE, POST_INSTALL: 

@@ -14,12 +14,5 @@ message " "
 
 if [ ! -e $LOC/config/config.php ]; then
   message "${MESSAGE_COLOR}$SPELL configuration file not found."
-  if query "Do you want to setup $SPELL now ?" n
-  then
-    cd $LOC
-    ./configure
-  else
-    message "${MESSAGE_COLOR}Remember to run $LOC/config/configure to setup squirrelmail. ${DEFAULT_COLOR}"
-  fi
+  message "${MESSAGE_COLOR}Remember to run $LOC/config/configure to setup squirrelmail. ${DEFAULT_COLOR}"
 fi
-
