@@ -10,8 +10,8 @@
   prepare_install             &&
   make    install             &&
   
-  if    [  !  -f               /etc/ffserver.conf  ]
-  then  cp  doc/ffserver.conf  /etc/ffserver.conf
+  if    [  !  -f               ${INSTALL_ROOT}/etc/ffserver.conf  ]
+  then  cp  doc/ffserver.conf  ${INSTALL_ROOT}/etc/ffserver.conf
   fi
 
 ) > $C_FIFO 2>&1
