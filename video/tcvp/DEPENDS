@@ -39,6 +39,10 @@ optional_depends  "libdvdread"     \
                   "--enable-dvd"   \
                   "--disable-dvd"  \
                   "for DVD support"  &&
+optional_depends  "libdvdnav"         \
+                  "--enable-dvdnav"   \
+                  "--disable-dvdnav"  \
+                  "for DVD navigation support"  &&
 optional_depends  "openssl"           \
                   "--enable-remote"   \
                   "--disable-remote"  \
