@@ -1,6 +1,6 @@
 # /etc/zshrc is sourced in interactive shells.
 # It contain the basic configuration for keys
-# umask PROMPT and other basic variable
+# umask PROMPT and other basic variables
 
 if [[ $(id -gn) = $USERNAME && $EUID -gt 14 ]]; then
         umask 002
@@ -59,8 +59,3 @@ compctl -f -x \
 
 ## Autoloading functions defined in $prefix/share/$version/functions 
 autoload -U compinit; compinit
-
-## SourceMage GNU/Linux ##
-## configuration file   ##
-. /etc/sorcery/config
-
