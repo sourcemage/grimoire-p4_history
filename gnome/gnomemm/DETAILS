@@ -1,16 +1,17 @@
            SPELL=gnomemm
-         VERSION=1.2.2
+         VERSION=1.2.3
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='7b6c1bab68415c86aca21103baca0ea4'
+   SOURCE_URL[0]=$SOURCEFORGE_URL/gtkmm/$SOURCE
+   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="619e5365f1353411a9b826fe04705f1a"
+      LICENSE[0]=GPL
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://gtkmm.sourceforge.net
-      LICENSE[0]=GPL
          ENTERED=20011011
-         UPDATED=20020215
+         UPDATED=20021103
            SHORT="Gnome-- (gnomemm) is a powerful C++ binding for the GNOME libraries."
 cat << EOF
 Gnome-- (gnomemm) is a powerful C++ binding for the GNOME libraries. Gnome--
