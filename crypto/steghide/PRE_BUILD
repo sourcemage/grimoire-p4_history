@@ -1,0 +1,5 @@
+default_pre_build &&
+cd $SOURCE_DIRECTORY &&
+unpack $SOURCE2 ${MD5[1]} &&
+patch  -p1  <  $SOURCE_CACHE/$SOURCE2 &&
+sedit  "s/\/\$(PACKAGE)-\$(VERSION)/\/\$(PACKAGE)/"  Makefile.in
