@@ -7,22 +7,24 @@ CONFIG="$DEPENDS_CONFIG/perl_config.sh"     &&
 
 patch -p1 < $SCRIPT_DIRECTORY/installperl.patch  &&
 
-case  $OLD_CUSTOM  in
-  y|Y) cp $CONFIG ./config.sh  &&
-       ./Configure -S          &&
-       make depend
-       ;;
-  *) case $NEW_CUSTOM  in
-     y|Y)  ./Configure -Ui_db -Dprefix=/usr                     \
-                       -Dlibperl=libperl.so                     &&
-           cp config.sh $CONFIG                                 &&
-           echo "OLD_CUSTOM=y" | cat > $DEPENDS_CONFIG/perl     &&
-           echo "NEW_CUSTOM=n" | cat > $DEPENDS_CONFIG/perl
-         ;;
-     *)  ./Configure  -Dprefix=/usr -d -e      \
-         -Ui_db -Dusethreads -Ulocincpth -Dlibperl=libperl.so
-         ;;
-   esac
-esac  &&
+if  [  "$OLD_CUSTOM"  ==  "y"  ];  then
+  cp $CONFIG ./config.sh  &&
+  ./Configure -S          &&
+  make depend
+else
+  if  [  "$NEW_CUSTOM"  ==  "y"  ];  then
+    ./Configure -Ui_db -Dprefix=/usr  \
+                -Dlibperl=libperl.so  &&
+    cp config.sh $CONFIG
+  else
+    if  [  "$THREADED"  ==  "y"  ];  then
+      ./Configure  -Dprefix=/usr -d -e                                   \
+                   -Ui_db -Dusethreads -Ulocincpth -Dlibperl=libperl.so
+    else
+      ./Configure  -Dprefix=/usr -d -e                      \
+                   -Ui_db -Ulocincpth -Dlibperl=libperl.so
+    fi
+  fi
+fi  &&
 
 make

@@ -1,25 +1,15 @@
-CONFIG_FILE="$DEPENDS_CONFIG/perl_config.sh"
+CONFIG_FILE="$DEPENDS_CONFIG/perl_config.sh"  &&
 
-if  !  grep  -q  "OLD_CUSTOM="  $SPELL_CONFIG;  then
+if  [  -f  $CONFIG_FILE  ];  then
+  config_query  OLD_CUSTOM  "Use old custom configuration for Perl?"  y
+else
+  config_query  OLD_CUSTOM  "Use old custom configuration for Perl?"  n
+fi  &&
 
-  if [ -f $CONFIG_FILE ]; then
-    if    query  "Use old custom configuration for Perl?"  y
-    then  echo   "OLD_CUSTOM=y"  >>  $SPELL_CONFIG
-    else  echo   "OLD_CUSTOM=n"  >>  $SPELL_CONFIG && OLD_CUSTOM=n
-    fi
-  else  echo   "OLD_CUSTOM=n"  >>  $SPELL_CONFIG && OLD_CUSTOM=n
-  fi
+if  [  "$OLD_CUSTOM"  ==  "n"  ];  then
+  config_query  NEW_CUSTOM  "New custom configuration for Perl?"  n
+else
+  config_query  NEW_CUSTOM  "New custom configuration for Perl?"  y
+fi  &&
 
-fi
-
-if  !  grep  -q  "NEW_CUSTOM="  $SPELL_CONFIG;  then
-
-  case  $OLD_CUSTOM  in
-      n|N)  if    query  "New custom configuration for Perl?"  n
-            then  echo   "NEW_CUSTOM=y"  >>  $SPELL_CONFIG
-            else  echo   "NEW_CUSTOM=n"  >>  $SPELL_CONFIG
-            fi ;;
-        *)  echo   "NEW_CUSTOM=n"  >>  $SPELL_CONFIG ;;
-  esac
-
-fi
+config_query  THREADED  "Compile threaded perl?"  n
