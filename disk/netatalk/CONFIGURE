@@ -1,7 +1,7 @@
 if  !  grep  -q  CONFIGURED  ${SPELL_CONFIG};  then
 
   if  query  "Enable admin group"? y;  then
-    echo  'OPTS="$OPTS  --enable-admin-grou"'    >>  ${SPELL_CONFIG}
+    echo  'OPTS="$OPTS  --enable-admin-group"'    >>  ${SPELL_CONFIG}
   else
     echo  'OPTS="$OPTS  --disable-admin-group"'  >>  ${SPELL_CONFIG}
   fi
