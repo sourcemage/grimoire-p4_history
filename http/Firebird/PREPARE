@@ -1,4 +1,4 @@
-sedit "s/VERSION\=0.6.1/VERSION\=0.7/g" $SPELL_CONFIG &&
+sedit "s/VERSION\=0.6.1/VERSION\=0.7.1/g" $SPELL_CONFIG &&
 if ! grep -q CONFIGURED $SPELL_CONFIG; then
 
 if query "This spell will download the latest offical release of MozillaFirebird.\n
@@ -17,13 +17,19 @@ fi
 
 fi &&
 
-echo -e  "VERSION=0.7
-SOURCE=MozillaFirebird-source-\$VERSION.tar.gz
-SOURCE_URL[0]=http://ftp.mozilla.org/pub/firebird/releases/\$VERSION/\$SOURCE
-SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/firebird/releases/\$VERSION/\$SOURCE
-SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/firebird/releases/\$VERSION/\$SOURCE
-SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
-MD5[0]=1cf245568f170f17021b205e205d4676" >> $SPELL_CONFIG &&
+echo -e  "VERSION=0.7.1
+        SOURCE=MozillaFirebird-source-\${VERSION/.1/}.tar.gz
+       SOURCE2=firebird-0.7-\${VERSION}.patch
+ SOURCE_URL[0]=http://ftp.mozilla.org/pub/firebird/releases/\${VERSION/.1/}/\$SOURCE
+ SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/firebird/releases/\${VERSION/.1/}/\$SOURCE
+ SOURCE_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/firebird/releases/\${VERSION/.1/}/\$SOURCE
+ SOURCE_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE
+SOURCE2_URL[0]=http://ftp.mozilla.org/pub/firebird/releases/\$VERSION/\$SOURCE2
+SOURCE2_URL[1]=ftp://ftp.access.ch/mirror/mozilla/firebird/releases/\$VERSION/\$SOURCE2
+SOURCE2_URL[2]=ftp://ftp.in2p3.fr/pub/mozilla/firebird/releases/\$VERSION/\$SOURCE2
+SOURCE2_URL[3]=ftp://ftp.sai.msu.su/pub/unix/WWW/browsers/\$SOURCE2
+        MD5[0]=1cf245568f170f17021b205e205d4676
+        MD5[1]=856e9d91ad80f9ee18ef9517086c15ab"  >>  ${SPELL_CONFIG}  &&
 echo CONFIGURED=yes >> $SPELL_CONFIG
 fi &&
 
