@@ -1,9 +1,10 @@
            SPELL=aspell-da
-         VERSION=0.50-2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNU_URL/aspell/dict/da/$SOURCE
-          MD5[0]=78cccab58341bbb52e21066c2ff27a6c
+       BUILD_API=2
+         VERSION=1.4.42
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://da.speling.org/filer/${SOURCE}
+          MD5[0]=e398afef12f115d509fa2b66695aa109
         WEB_SITE=http://da.speling.org/
       LICENSE[0]=GPL
          ENTERED=20011028
