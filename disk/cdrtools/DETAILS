@@ -20,4 +20,23 @@ IDE/ATAPI, parallel-port, and SCSI drives, audio CDs, data CDs, and
 mixed CDs, full multi-session support, CD-RWs (rewritable), TAO, DAO and
 human-readable error messages. Cdrecord includes remote SCSI support and
 can access local or remote CD-writers.
+
+Giving the permission to burn a CD-R/CD-RW can be risky. Since CD-R/CD-RW
+recorder is an IDE or SCSI device, it is possible to use cdrecord command 
+with a hard disk, which would cause damage. So it is recommended to allow
+only root or specific users to burn.
+The spell will prompt you three choices to do this :
+ [0] : Allow users from the burning group to burn (default)
+ [1] : Only allow root to burn
+ [2] : Allow users from the burning group to burn, with the suid-bit set.
+	This way cdrecord process will have a higher priority as if it 
+	run as root. This can be useful with some old CD-R/CD-RW recorders
+	which don't have burnfree/buffer underrun protection.
+If you choose [0] or [2], you will have then to add users in the burning 
+group that the spell creates. You must also give write permission for the
+burning group on the CD-R/CD-RW recorder. You can do this in three 
+differents ways, according do the device management system you use :
+ - For static /dev, just do a chown and chmod
+ - For devfs, look at /etc/devfsd.conf
+ - For udev, look at /etc/udev/udev.permissions
 EOF

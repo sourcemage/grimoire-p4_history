@@ -1,14 +1,13 @@
 make  INS_BASE=${INSTALL_ROOT}/usr install  &&
-case ${ALLOW} in
+case ${PERM} in
   burning_group_users_with_suid_bit) 	create_group burning
 					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
 				        chmod  4710 ${INSTALL_ROOT}/usr/bin/cdrecord
-					message "\nDon't forget to add the users you want in the burning group\n";;
+					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
   burning_group_users) 			create_group burning
 					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
 					chmod  750 ${INSTALL_ROOT}/usr/bin/cdrecord
-					message "\nDon't forget to add the users you want in the burning group\n";;
-  root_only) 				create_group burning
-					chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
+					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
+  root_only) 				chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
 					chmod  700 ${INSTALL_ROOT}/usr/bin/cdrecord
 esac

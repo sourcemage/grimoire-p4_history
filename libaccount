@@ -96,6 +96,14 @@ function create_account() {
   fi
 }
 
+#---------------------------------------------------------------------
+## @param system group
+##
+## Creates group (if group has been defined).
+## @return 0 if success (or group already exists).
+## @return 1 if failed (or group has not been defined).
+##
+#---------------------------------------------------------------------
 function create_group() {
 
 #  sanity_checks
@@ -112,14 +120,14 @@ function create_group() {
   groupadd -g $GROUP_GID $1
 
   local GROUPADD_RETURN=$?
-  debug "libgrimoire.create_group()" "groupadd return code was: $USERADD_RETURN"
+  debug "libgrimoire.create_group()" "groupadd return code was: $GROUPADD_RETURN"
 
   if    [  $GROUPADD_RETURN  ==  0  ] ; then
-    message "${MESSAGE_COLOR}The group name $1 with id $ACCOUNT_UID has been created!${DEFAULT_COLOR}"
+    message "${MESSAGE_COLOR}The group name $1 with id $GROUP_GID has been created!${DEFAULT_COLOR}"
   elif  [  $GROUPADD_RETURN  ==  4  ] ; then
-    message "${MESSAGE_COLOR}The group id $ACCOUNT_UID already exists, stopping here...${DEFAULT_COLOR}"
+    message "${MESSAGE_COLOR}The group id $GROUP_GID already exists, stopping here...${DEFAULT_COLOR}"
     return 1
-  elif  [  $USERADD_RETURN  ==  9  ] ; then
+  elif  [  $GROUPADD_RETURN  ==  9  ] ; then
     message "${MESSAGE_COLOR}The group name $1 already exists, so continuing...${DEFAULT_COLOR}"
     return 0
   else
