@@ -1,4 +1,28 @@
+$Id: HISTORY,v 1.2 2002/07/11 01:22:52 sergeyli Exp $
 SPELL HISTORY: openldap
+
+2002-07-10 Sergey Lipnevich <sergeyli@pisem.net>
+
+	Updated to 2.1.x tree (2.1.2) and added extra CONFIGURE options.
+	Default backend will from now on be Berkeley DB (bdb). Main
+	advantage of this backend is that it is transactional.
+	
+	Please note that there are compatibility issues between Lightweight
+	DB Manager 	(LDBM) backend in 2.0.x and 2.1.x. You can backup your
+	existing 2.0.x directory by exporting it entirely into LDIF format
+	using ldapsearch like this:
+	
+	ldapsearch -D "<Root DN>" -W "(objectClass=*)" > wholedir.ldif
+
+	You will have to enter a Root DN's password. Then, when new version
+	of slapd is running, use ldapadd like this:
+
+	ldapadd -D "<Root DN>" -W -f wholedir.ldif -c -S skipped.ldif
+
+	Make sure slapd.conf has references to all schemas that are needed
+	for your objects. E.g., an object will be skipped (and added to the
+	skipped.ldif if you use the command above), if classes it belongs
+	to or attributes it has, are not described by any schema.
 
 2002-05-08 Sergey Lipnevich <sergeyli@pisem.net>
 

@@ -1,11 +1,27 @@
-# $Id: BUILD,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
-default_build  &&
+# $Id: BUILD,v 1.3 2002/07/11 01:22:52 sergeyli Exp $
+(
+
+	./configure              \
+		--build=$BUILD       \
+		--prefix=/usr        \
+		--sysconfdir=/etc    \
+		--localstatedir=/var \
+		--enable-bdb         \
+		$OPTS                &&
+	make    depend           &&
+	make                     &&
+	prepare_install          &&
+	make    install
+
+) > $C_FIFO 2>&1  &&
 
 (
 
-  cp  -f  /usr/libexec/slapd  /usr/sbin/
+	cp    -f   /usr/libexec/slapd /usr/sbin/
+	mkdir -p   /var/openldap-bdb
+	chmod 0700 /var/openldap-bdb
 
-  . $SCRIPT_DIRECTORY/mkconf.sh
+	. $SCRIPT_DIRECTORY/mkconf.sh
 
   case  $SLAPD_BOOT  in
     y|Y|j|J)  cp  $SCRIPT_DIRECTORY/slapd.sh  /etc/init.d/

@@ -1,5 +1,5 @@
-# $Id: slapd.sh,v 1.2 2002/06/03 03:42:23 sergeyli Exp $
 #!/bin/sh
+# $Id: slapd.sh,v 1.3 2002/07/15 04:41:45 sergeyli Exp $
 
 # remove ldaps part if you don't want to slapd to listen
 # on ldaps port, i.e. if ssl/tls support is not compiled in

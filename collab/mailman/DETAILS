@@ -1,13 +1,11 @@
-# $Id: DETAILS,v 1.4 2002/07/07 08:19:28 sergeyli Exp $
+# $Id: DETAILS,v 1.5 2002/07/14 22:37:54 sergeyli Exp $
            SPELL=mailman
          VERSION=2.1b2
           SOURCE=$SPELL-$VERSION.tgz
-      SOURCE_URI=sourceforge/$SPELL/$SOURCE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SOURCE_URI
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/$SOURCE_URI
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SOURCE_URI
-             MD5=cd9be7663244b9034543a3f344ff0dd6
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      SOURCE_MD5=cd9be7663244b9034543a3f344ff0dd6
+             MD5=$SOURCE_MD5
          LICENSE=GPL
         WEB_SITE=http://www.list.org/
          ENTERED=20020430
