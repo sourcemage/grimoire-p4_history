@@ -4,11 +4,13 @@ DESCRIPTION="Andrew Morton Patchset"
 SHORT="A comprehensive patchset that is usually more stable than the mainline 2.6.0-test kernel itself"
 HELP="See ${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/2.6/${!PATCH/-mm*/}"
 
-VERSIONS="2.6.0-test6-mm1
+VERSIONS="2.6.0-test6-mm2
+2.6.0-test6-mm1
 2.6.0-test5-mm4"
 
-MD5S[0]="c74c729cf91d08ac1fc76d70059ec725"
-MD5S[1]="430db06e2d1560e7900fc753f6f91fcd"
+MD5S[0]="265e338a4f8a25e49d3f799ffff38e68"
+MD5S[1]="c74c729cf91d08ac1fc76d70059ec725"
+MD5S[2]="430db06e2d1560e7900fc753f6f91fcd"
 
 if [[ "$1" == "CONFIG" ]]; then
     echo "
