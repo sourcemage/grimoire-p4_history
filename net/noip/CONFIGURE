@@ -1,0 +1,6 @@
+if    query  "Invoke noip at boot?" y
+then  
+      echo   "NOIP_BOOT=y"  >>  $SPELL_CONFIG
+else  
+      echo   "NOIP_BOOT=n"  >>  $SPELL_CONFIG
+fi

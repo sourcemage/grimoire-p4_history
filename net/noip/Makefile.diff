@@ -1,0 +1,12 @@
+14c14
+< 	${CC} -O2 -g -D${ARCH} noip.c -o noip ${LIBS}
+---
+> 	${CC} -O3 -D${ARCH} noip.c -o noip ${LIBS}
+20,22c20,22
+< 	cp ${TGT} /usr/local/bin/${TGT}
+< 	cp no-ip.conf /usr/local/lib/no-ip.conf
+< 	chmod 600 /usr/local/lib/no-ip.conf
+---
+> 	cp ${TGT} /usr/bin/${TGT}
+> 	cp no-ip.conf /etc/no-ip.conf
+> 	chmod 600 /etc/no-ip.conf
