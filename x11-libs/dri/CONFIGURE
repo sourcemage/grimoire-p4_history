@@ -24,7 +24,7 @@ then
    config_query_option DRI_DRIVER_MGA "Support for Matrox\(G200,G400,G450,G550\)" n "mga" ""
    fi
    if [ "${X11_I810_DRIVER_IA32}" == "i810" ] ; then
-   config_query_option DRI_DRIVER_I830 "Support for Intel 830" n "i830" ""
+   config_query_option DRI_DRIVER_I830 "Support for Intel 915" n "i915" ""
    fi
    if [ "${X11_SIS_DRIVER_IA32}" == "sis" ] ; then
    config_query_option DRI_DRIVER_SIS "Support for SIS" n "sis" ""
@@ -75,7 +75,7 @@ then
    config_query_option DRI_DRIVER_MGA "Support for Matrox\(G200,G400,G450,G550\)" n "mga" ""
    fi
    if [ "${X11_I810_DRIVER_AMD64}" == "i810" ] ; then
-   config_query_option DRI_DRIVER_I830 "Support for Intel 830" n "i830" ""
+   config_query_option DRI_DRIVER_I830 "Support for Intel 915" n "i915" ""
    fi
    if [ "${X11_SIS_DRIVER_AMD64}" == "sis" ] ; then
    config_query_option DRI_DRIVER_SIS "Support for SIS" n "sis" ""
