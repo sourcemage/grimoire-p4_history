@@ -15,8 +15,10 @@
   # used wrongly because of the save_libraries LD_LIBRARY_PATH magic
   # prepare_install                    &&
   message  "${MESSAGE_COLOR}Preparing to install" \
-           "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"
-  dispel --notriggers --nosustain $SPELL  &&
+           "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"  &&
+  if  spell_installed valgrind; then
+    dispel --notriggers --nosustain $SPELL
+  fi  &&
   make    install
 
 ) > $C_FIFO 2>&1
