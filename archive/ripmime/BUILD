@@ -3,4 +3,3 @@ sedit "s/^CFLAGS =/CFLAGS+=/" tnef/Makefile                    &&
 sedit "/^CFLAGS/d" ripOLE/Makefile                             &&
 make                                                           &&
 make  libripmime
-

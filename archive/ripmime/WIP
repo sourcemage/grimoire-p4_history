@@ -1,0 +1,6 @@
+Fails to build with this error:
+cc -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O3 -DRIPOLE -c ripmime-api.c
+In file included from ripmime-api.c:25:
+MIME_headers.h:101: error: field `ss_filenames' has incomplete type
+MIME_headers.h:103: error: field `ss_names' has incomplete type
+make[1]: *** [ripmime-api.o] Error 1
