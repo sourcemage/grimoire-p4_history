@@ -1,8 +1,6 @@
 (
 
   cd $SOURCE_DIRECTORY.bld              &&
-#issue with this spell's configure not setting CC variable properly?
-  export CC="gcc"			&&
   $SOURCE_DIRECTORY/configure           \
                --host=$BUILD            \
                --prefix=/usr            \
