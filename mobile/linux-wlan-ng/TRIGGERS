@@ -1,5 +1,5 @@
 . ${SPELL_CONFIG}
-#if spell_installed pcmcia-cs 
+#if spell_ok pcmcia-cs 
 if [ "$PCMCIA" == "y" ]
 then
   on_cast  pcmcia-cs  cast_self	
