@@ -9,7 +9,7 @@
   make             &&
   prepare_install  &&
   cd    ..         &&
-  ./vncinstall   /usr/bin              &&
+  ./vncinstall   /usr/bin /usr/man     &&
   mkdir  -p      /usr/bin/vnc.classes  &&
   cp  classes/*  /usr/bin/vnc.classes
 
