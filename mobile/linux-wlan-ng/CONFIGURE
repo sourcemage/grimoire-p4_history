@@ -1,6 +1,6 @@
 support ()
 {
- if query "do you need $1 support for $2" y;
+ if query "do you need $1 support for $2 type devices?" y;
   then
     echo "$2=y" >> ${SPELL_CONFIG}
   else
@@ -10,7 +10,7 @@ support ()
 }
 if  !  grep  -q  "CONFIGURED"   ${SPELL_CONFIG}
 then
-  support CS PCMCIA 
+  support "Card Services" PCMCIA 
   support PCI/PCMCIA PLX9052
   support PCI ISL3874 
   support USB ISL3873 
