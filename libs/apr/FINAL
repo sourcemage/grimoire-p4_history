@@ -1,7 +1,12 @@
-ln -fns build/libtool /usr/share/apache2/libtool &&
-ln -fns apr-1-config /usr/bin/apr-config &&
-if [ "$APR_BRANCH_0_9" == 'y' ]; then
-  FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
-  sedit $FIX_PATH_REGEX /usr/bin/apr-config &&
-  sedit $FIX_PATH_REGEX /usr/share/apache2/build/apr_rules.mk
-fi
+case "$APR_VERSION" in
+	1.*)
+		ln -fns build/libtool /usr/share/apache2/libtool &&
+		ln -fns apr-1-config /usr/bin/apr-config 
+	;;
+	0.9.5)
+		FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
+		sedit $FIX_PATH_REGEX /usr/bin/apr-config &&
+		sedit $FIX_PATH_REGEX /usr/share/apache2/build/apr_rules.mk
+	;;
+esac
+

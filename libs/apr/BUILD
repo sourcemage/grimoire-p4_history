@@ -1,3 +1,7 @@
+if [[ "$APR_CVS" == "y" ]]
+then
+	./buildconf
+fi
 ./configure                                   \
   --host=$HOST                                \
   --build=$BUILD                              \
