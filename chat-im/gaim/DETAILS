@@ -3,20 +3,22 @@
          VERSION=${VERSION:=0.75}
         VERSION2=${VERSION2:=2.20}
 if [ "$CVS" = "no" ]; then
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
           MD5[0]=9c18760474ea8976803e0786502966c5
           MD5[1]=ac59b386b6924e00cb1169c2d986a914
 else     VERSION=cvs
         VERSION2=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim:gaim
   SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
   FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
           MD5[1]="IGNORE"
 fi
-          SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim.sourceforge.net/
        WEB_SITE2=http://gaim-encryption.sourceforge.net/
