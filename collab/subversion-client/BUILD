@@ -1,6 +1,8 @@
 # $Id: BUILD,v 1.11 2002/12/11 16:57:15 sergeyli Exp $
 (
 
+  patch -p1 < $SCRIPT_DIRECTORY/svnfspy.patch &&
+
   ./configure                \
     --build=$BUILD           \
     --prefix=/usr            \
