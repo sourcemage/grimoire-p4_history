@@ -6,6 +6,7 @@
                --host=$BUILD            \
                --prefix=/usr            \
                --enable-threads=posix   \
+	       --enable-__cxa_atexit    \
                $FRONTENDS               \
 	       $OPTS                    &&
 
