@@ -1,7 +1,3 @@
 default_install                                         &&
 chmod +r ${INSTALL_ROOT}/etc/X11/windowlab/menurc       &&
-if ! [ -d ${INSTALL_ROOT}/usr/share/xsessions ] ; then
-  mkdir ${INSTALL_ROOT}/usr/share/xsessions
-fi                                                      &&
-install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
-                  ${INSTALL_ROOT}/usr/share/xsessions
+install_wmfiles

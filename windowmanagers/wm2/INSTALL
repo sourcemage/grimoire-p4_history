@@ -1,6 +1,2 @@
 cp ${SOURCE_DIRECTORY}/wm2 ${INSTALL_ROOT}/usr/bin      &&
-if ! [ -d /usr/share/xsessions ] ; then
-  mkdir /usr/share/xsessions
-fi                                                      &&
-install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
-                  /usr/share/xsessions
+install_wmfiles

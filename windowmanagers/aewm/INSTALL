@@ -1,9 +1,3 @@
 mkdir  -p  /usr/X11R6/man/man1                          &&
 default_install                                         &&
-install  -m  755  ${SCRIPT_DIRECTORY}/start${SPELL}     \
-                  /usr/bin                              &&
-if ! [ -d /usr/share/xsessions ] ; then
-  mkdir /usr/share/xsessions
-fi &&
-install  -m  755  ${SCRIPT_DIRECTORY}/${SPELL}.desktop  \
-                  /usr/share/xsessions
+install_wmfiles
