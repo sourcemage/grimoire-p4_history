@@ -1,0 +1,17 @@
+           SPELL=cd-discid
+         VERSION=0.7
+          SOURCE=${SPELL}_${VERSION}.orig.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://lly.org/~rcw/cd-discid/$SOURCE
+        WEB_SITE=http://lly.org/~rcw/abcde/page/
+      MAINTAINER=
+         LICENSE=GPL
+             MD5=677bf237de663d71a78a7a0611fd4469
+         ENTERED=
+         UPDATED=
+           SHORT="A backend utility for cddb"
+cat << EOF
+cd-discid is a backend utility to get CDDB discid information from a
+CD-ROM disc. It was originally designed for cdgrab (now abcde), but can
+be used for any purpose requiring CDDB data.
+EOF

@@ -1,0 +1,17 @@
+           SPELL=id3v2
+         VERSION=0.1.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+        WEB_SITE=http://id3v2.sourceforge.net/
+      MAINTAINER=
+         LICENSE=GPL
+             MD5=825cf4baf60e2951b7826b947a8f52fa
+         ENTERED=
+         UPDATED=
+           SHORT="A command line editor for id3v2 tags"
+cat << EOF
+id3v2 is a command line tool to edit id3 version 2 tags, it works
+in aproximatly the same way as id3, it also seems to require id3lib
+v3.8.0pre3 tocompile
+EOF
