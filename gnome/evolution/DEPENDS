@@ -10,8 +10,14 @@ depends  gtkhtml      &&
 depends  gnome-vfs    &&
 depends  libxml       &&
 depends  gal          &&
+depends  soup         &&
 
 optional_depends  "gnupg"    ""  ""  "for encrypted mail support"  &&
+
+optional_depends  "openssl"               \
+                  "--enable-openssl=yes"  \
+                  "--enable-openssl=no"   \
+                  "for OpenSSL support"   &&
 
 optional_depends  "mozilla"                                        \
                   "--with-nspr-includes=/usr/include/mozilla/nspr  \
