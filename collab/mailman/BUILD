@@ -23,6 +23,7 @@ function mk_mailman_dir() {
   # This has to happen before 'configure' otherwise it fails
   mk_mailman_dir $SPOOL 'spool' &&
 
+  patch -p2 < $SPELL_DIRECTORY/mailman.driver.security.patch
   ./configure  --build=$BUILD \
                --prefix=$PREFIX \
                --with-var-prefix=$SPOOL \
