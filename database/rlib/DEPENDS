@@ -1,0 +1,11 @@
+depends clibpdf		&&
+depends libxml2		&&
+optional_depends Python	\
+		"--with-pythonver=`ls /usr/lib |grep python|cut -c7-`" \
+		"--disable-python" \
+		"Python frontend"				&&
+optional_depends "PHP" "" "--disable-php" "php frontend"	&&
+optional_depends "ODBC-MGR" "" "--disable-odbc" "ODBC database access"	&&
+optional_depends "mysql" "" "--disable-mysql" "mysql database support"	&&
+optional_depends "postgresql" "" "--disable-postgre" "postgresql database support"
+
