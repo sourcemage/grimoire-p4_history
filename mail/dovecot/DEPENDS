@@ -5,7 +5,7 @@ optional_depends  "openldap"           \
                    "--without-dap"     \
                    "Enable LDAP support" &&
 if [ "$PAM" == "y" ]; then
-  optional_depends        "Linux-PAM"              \
+  depends                 "Linux-PAM"              \
                           "--with-pam"             \
                           "--without-pam"          \
                           "Enable PAM support"

@@ -33,17 +33,22 @@ fi
 if  !  grep  -q  "IPV6"  $SPELL_CONFIG
 then
   if    query  "Add IPV6 protocol support ? "  n
-  then  echo   "IPV6=--enable-ipv6"  >>  $SPELL_CONFIG
+  then  echo   "IPV6=--enable-ipv6"    >>  $SPELL_CONFIG
   else  echo   "IPV6=--disable-ipv6"   >>  $SPELL_CONFIG
   fi
 fi
 
 if  !  grep  -q  "PAM"  $SPELL_CONFIG
 then
-  if    query  "Use pam authentication? "  n
+  if    query  "Use PAM authentication? "  n
   then  echo   "PAM=y"  >>  $SPELL_CONFIG ; PAM=y
   else  echo   "PAM=n"  >>  $SPELL_CONFIG
   fi
+
+  if [ "$PAM" == "y" ]; then
+    message "${MESSAGE_COLOR} PAM enabled. You should look at dovecot.conf comments about auth-mecanisms (cannont have digest-md5 with PAM) ${DEFAULT_COLOR}"
+  fi
+
 fi
 
 

@@ -1,4 +1,2 @@
-default_build  &&
-if  !  [  -f   /etc/dillorc  ];  then
-  cp  dillorc  /etc/dillorc
-fi
+sedit 's:$PNG_CONFIG --I_opts:$PNG_CONFIG --cflags:' configure &&
+default_build

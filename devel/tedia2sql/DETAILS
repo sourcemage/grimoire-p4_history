@@ -1,14 +1,14 @@
            SPELL=tedia2sql
-         VERSION=1.2.7
-          SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]=8514e02bf167bc1d8e80c91f1cfcb775
+         VERSION=1.2.8
+          SOURCE=$SPELL-${VERSION//\./}.tar.gz
+          MD5[0]=a6291964f8ada32379b653ca909f77a3
       LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
-   SOURCE_URL[0]=http://$SPELL.tigris.org/files/documents/282/1050/$SOURCE
-        WEB_SITE=http://$SPELL.tigris.org/
+   SOURCE_URL[0]=http://tedia2sql.tigris.org/files/documents/282/2144/$SOURCE
+        WEB_SITE=http://tedia2sql.tigris.org/
          ENTERED=20021120
          UPDATED=20021120
-           SHORT='tedia2sql converts a Dia UML diagram into an SQL code'
+           SHORT='tedia2sql converts a Dia UML diagram into SQL code'
 cat << EOF
 This is a tool that allows you to create a database ERD in Dia (using
 the UML shape toolset), then to convert that ERD into a SQL DDL script

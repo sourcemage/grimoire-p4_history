@@ -1,15 +1,12 @@
 (
 
-  sedit  "s:-O3:$CFLAGS:"  src/configure
-  cd     src
-  ./configure  --prefix=/usr   \
-               --etcdir=/etc   \
-               --dynamic       \
-               --nouseuid      \
-               --pthread       \
-               $OPTS           &&
-  make                         &&
-  prepare_install              &&
+  sedit "s|-O3|$CFLAGS|" configure &&
+
+  ./configure     \
+    --prefix=/usr \
+    $OPTS         &&
+  make            &&
+  prepare_install &&
   make    install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

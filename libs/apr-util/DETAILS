@@ -1,9 +1,11 @@
            SPELL=apr-util
-         VERSION=0.9.2
-          SOURCE=$SPELL-$VERSION-alpha.tar.gz
+         VERSION=0.9.3
+          SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.apache.org/dist/apr/$SOURCE
-          MD5[0]=c179c9450dd597f50dedb3ccc8c67600
+   SOURCE_URL[0]=http://www.apache.org/dist/apr/testing/$SOURCE
+   SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+   SOURCE_URL[2]=http://www.apache.org/dist/apr/old/$SOURCE
+          MD5[0]=a88bc5c5d73fc43ffe650cddb3621589
         WEB_SITE=http://apr.apache.org/
       MAINTAINER=rycee@home.se
       LICENSE[0]=APACHE

@@ -1,0 +1,15 @@
+           SPELL=rssh
+         VERSION=2.0.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.pizzashack.org/rssh/src/$SOURCE
+          MD5[0]=74b75e36d0505889c7ff5a458b8c0c90
+        WEB_SITE=http://www.pizzashack.org/rssh/
+      MAINTAINER=hgr@vabo.cz
+         ENTERED=20030508
+         UPDATED=20030508
+      LICENSE[0]=BSD
+           SHORT="rssh is a restricted shell allowing only scp and/or sftp"
+cat << EOF
+rssh is a restricted shell for use with OpenSSH, allowing only scp and/or sftp. For example, if you have a server which you only want to allow users to copy files off of via scp, without providing shell access, you can use rssh to do that.
+EOF

@@ -1,5 +1,7 @@
-
 (
+
+  # [SL] future patch
+  #patch -p1 < $SCRIPT_DIRECTORY/conformance.patch &&
 
   prepare_install &&
 

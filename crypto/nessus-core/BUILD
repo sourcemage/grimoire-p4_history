@@ -6,14 +6,3 @@
   default_build
 
 ) > $C_FIFO 2>&1
-
-(
-
-  case $NESSUSD_BOOT in
-          y|Y|j|J) installscript nessusd.sh
-                   ;;
-                *) true
-                   ;;
-  esac
-
-)
