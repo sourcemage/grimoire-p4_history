@@ -41,7 +41,7 @@ timeout 10
 lba32
 
 # defines menu foreground/background, highlight foreground/background
-color  white/blue white/cyan
+color  black/light-gray white/red
 
 # be sure and check the kernel entry below, particulary the ${LIKELY_KERNEL_PARTITION} entry.  Possible partitions detected were ${POSSIBLE_KERNEL_PARTITIONS}, of
 # which the first was assumed arbitrarilly.
@@ -49,9 +49,7 @@ color  white/blue white/cyan
 # such as ide-scsi= if you're using an IDE CDROM burner.
 
 title  Source Mage GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION}
-root=${LIKELY_ROOT}
-devfs=nomount
+kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT}
 
 EOF
 }
@@ -115,6 +113,10 @@ if  [  -e  /boot/grub/menu.lst  ];  then
     message  "touch anything and you'll want to install GRUB yourself once you"
     message  "your /boot/grub/menu.lst file is to your liking."
 
+    if [ ! -e /boot/grub/grub.conf ]
+     then ln -sf /boot/grub/menu.lst /boot/grub/grub.conf
+    fi
+
     if  query  "Would you like to edit your /boot/grub/menu.lst file?" n
       then  ${EDITOR:-nano} /boot/grub/menu.lst
     fi
@@ -125,7 +127,10 @@ else
     fi
 
     if query  "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
-    then  cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
+    then
+	cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
+	ln -sf /boot/grub/menu.lst /etc/grub.conf
+	ln -sf /boot/grub/menu.lst /boot/grub/grub.conf	
     fi
 
 fi

@@ -1,0 +1,37 @@
+Index: grub/stage2/Makefile.am
+diff -u grub/stage2/Makefile.am:1.37 grub/stage2/Makefile.am:1.38
+--- grub/stage2/Makefile.am:1.37	Sat Oct 27 12:04:24 2001
++++ grub/stage2/Makefile.am	Sun Feb  3 23:55:48 2002
+@@ -20,7 +20,7 @@
+ 	fsys_xfs.c stage2.c md5.c
+ libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
+ 	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_FFS=1 \
+-	-DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 -DFSYS_VSTAFS=1
++	-DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 -DFSYS_VSTAFS=1 \
+ 	-DFSYS_XFS=1 -DUSE_MD5_PASSWORDS=1 \
+ 	-DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1 -fwritable-strings
+ 
+Index: grub/stage2/Makefile.in
+diff -u grub/stage2/Makefile.in:1.54 grub/stage2/Makefile.in:1.55
+--- grub/stage2/Makefile.in:1.54	Sat Oct 27 12:04:24 2001
++++ grub/stage2/Makefile.in	Sun Feb  3 23:55:48 2002
+@@ -113,7 +113,9 @@
+ 
+ libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
+ 	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_FFS=1 \
+-	-DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 -DFSYS_VSTAFS=1
++	-DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 -DFSYS_VSTAFS=1 \
++	-DFSYS_XFS=1 -DUSE_MD5_PASSWORDS=1 \
++	-DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1 -fwritable-strings
+ 
+ 
+ EXTRA_PROGRAMS = nbloader.exec pxeloader.exec diskless.exec
+@@ -2572,8 +2574,6 @@
+ 	mostlyclean mostlyclean-compile mostlyclean-generic tags \
+ 	uninstall uninstall-am uninstall-info-am uninstall-pkgdataDATA
+ 
+-	-DFSYS_XFS=1 -DUSE_MD5_PASSWORDS=1 \
+-	-DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1 -fwritable-strings
+ 
+ stage2_size.h: pre_stage2
+ 	-rm -f stage2_size.h
