@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:S:S20
+# SMGL-STOP:0 6:K70
+#
 
 case $1 in
   start|restart)  echo     "$1ing metalog daemons."
