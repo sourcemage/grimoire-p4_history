@@ -6,11 +6,49 @@ config_query LATEST_LIBNET "Install latest version for libnet" y
 config_query LATEST_NETPING "Install latest version for Net-Ping " y
 config_query LATEST_TEXTBALANCED "Install latest version for Text-Balanced" y
 
-[ $LATEST_MD5 = "y" ] && echo "depends digest-md5 &&" > $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_FILESPEC = "y" ] && echo "depends File-Spec &&" >> $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_CGI = "y" ] && echo "depends perl-cgi &&" >> $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_FILTERSIMPLE = "y" ] && echo "depends Filter-Simple &&" >> $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_LIBNET = "y" ] && echo "depends perl-libnet &&" >> $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_NETPING = "y" ] && echo "depends Net-Ping &&" >> $SCRIPT_DIRECTORY/DEPENDS
-[ $LATEST_TEXTBALANCED = "y" ] && echo "depends Text-Balanced &&" >> $SCRIPT_DIRECTORY/DEPENDS
+#Emptying DEPENDS
+echo "" > $SCRIPT_DIRECTORY/DEPENDS
+
+if [ $LATEST_MD5 = "y" ]; then
+   echo "depends digest-md5 &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed digest-md5 && dispel digest-md5
+fi
+
+if [ $LATEST_FILESPEC = "y" ]; then
+   echo "depends File-Spec &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed File-Spec && dispel File-Spec
+fi
+
+if [ $LATEST_CGI = "y" ]; then
+   echo "depends perl-cgi &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed perl-cgi && dispel perl-cgi
+fi
+
+if [ $LATEST_FILTERSIMPLE = "y" ]; then
+   echo "depends Filter-Simple &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed Filter-Simple && dispel Filter-Simple
+fi
+
+if [ $LATEST_LIBNET = "y" ]; then
+   echo "depends perl-libnet &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed perl-libnet && dispel perl-libnet
+fi
+
+if [ $LATEST_NETPING = "y" ]; then
+   echo "depends Net-Ping &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed Net-Ping && dispel Net-Ping
+fi
+
+if [ $LATEST_TEXTBALANCED = "y" ]; then
+   echo "depends Text-Balanced &&" >> $SCRIPT_DIRECTORY/DEPENDS
+else
+   spell_installed Text-Balanced && dispel Text-Balanced
+fi
+
 echo "true" >> $SCRIPT_DIRECTORY/DEPENDS
