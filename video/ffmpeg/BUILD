@@ -1,10 +1,7 @@
 (
 
-  export    CFLAGS="$( echo  $CFLAGS    |  sed  s/-funroll-loops// )"
-  export  CXXFLAGS="$( echo  $CXXFLAGS  |  sed  s/-funroll-loops// )"
-
-  export    CFLAGS="$CFLAGS -O3"
-  export  CXXFLAGS="$CXXFLAGS -O3"
+  export    CFLAGS="${CFLAGS/-funroll-loops//} -O3"
+  export  CXXFLAGS="${CXXFLAGS/-funroll-loops//} -O3"
 
   ./configure  --prefix=/usr    \
                --enable-shared  \
