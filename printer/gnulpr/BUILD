@@ -1,10 +1,10 @@
 (
 
   ./configure  --host=$BUILD                             \
-	       --prefix=/usr                             \
+               --prefix=/usr                             \
                --sysconfdir=/etc                         \
                --localstatedir=/var                      \
-	       $OPTS
+	       $OPTS                                     &&
   sedit  "s% -L/usr/lib % %g"  printerconf/src/Makefile  &&
   make                                                   &&
   prepare_install                                        &&
