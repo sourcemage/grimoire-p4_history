@@ -6,19 +6,20 @@ if  [  "$CVS"  ==  "y"  ];  then
           MD5[0]=IGNORE
   FORCE_DOWNLOAD="on"
 else
-         VERSION=0.6.2
+         VERSION=0.6.3
           SOURCE=${SPELL}-${VERSION}.tar.bz2
          SOURCE2=${SPELL}-${VERSION}-doc.tar.bz2
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE2
-          MD5[0]=237dc007f35035bc08dbe5dd2de9f221
-          MD5[1]=ac74543772bce6f0735a2a0d2f20d10d
+          MD5[0]=fb7eb68b1c8e6d2ee19fcb5b889f56ff
+          MD5[1]=6134c4bf44a44d1452ccfb7f626c6dfa
 fi
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
         WEB_SITE=http://openglut.sourceforge.net/
          ENTERED=20040322
          UPDATED=20040322
       LICENSE[0]=XCL
+       BUILD_API=2
            SHORT="Open Source alternative to GLUT"
 cat << EOF
 Introduction
