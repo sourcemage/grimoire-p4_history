@@ -6,4 +6,17 @@ unpack         $SOURCE4  ${MD5[3]}  &&
 unpack         $SOURCE5  ${MD5[4]}  &&
 unpack         $SOURCE6  ${MD5[5]}  &&
 unpack         $SOURCE7  ${MD5[6]}  &&
-unpack         $SOURCE8  ${MD5[7]}
+
+if [ -n "$XFREE86_APPLY_PATCH" ]; then
+  cd $SOURCE_DIRECTORY &&
+  for p in ${PATCH_SOURCES[*]}; do
+    #
+    # xfree86 patches may not be maintained properly, and some minor errors
+    # may occur during their application, that do not preclude us from proceeding.
+    #
+    message "Applying patch $p..." &&
+    bzip2 -cd $SOURCE_CACHE/$p | patch -N -p1 -s &&
+    true
+  done &&
+  rm -fr lib/zlib  # moved in CVS, patch doesn't apply cleanly
+fi
