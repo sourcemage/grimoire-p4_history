@@ -1,30 +1,20 @@
-depends  gtk+    &&
-depends  jpeg    &&
-depends  libpng  &&
-depends  zlib    &&
-depends  zip     &&
-depends  ORBit   &&
-depends  perl    &&
+depends zlib   '--with-system-zlib' &&
+depends jpeg   '--with-system-jpeg' &&
+depends libpng '--with-system-png'  &&
 
-case $MOZILLA_CALENDAR in
-  Y|y|J|j)
-    depends libical '--enable-calendar'
-    ;;
-esac &&
+depends zip    &&
+depends perl   &&
+
+depends libIDL '' &&
+depends ORBit2 '' &&
+depends gtk+2  '--enable-toolkit-gtk2 --enable-default-toolkit=gtk2' &&
+
+optional_depends libmng    '--with-system-mng'  '--without-mng'       'for MNG picture format support'     &&
+optional_depends freetype2 '--enable-freetype2' '--disable-freetype2' 'for TrueType fonts support'         &&
+optional_depends Xft2      '--enable-xft'       '--disable-xft'       'for Xft2 antialiased fonts support' &&
 
 case $MOZILLA_ENIGMAIL in
-  Y|y|J|j)
-    depends gnupg
-    ;;
-esac &&
-
-case $MOZILLA_XFT2 in
-  Y|y|J|j)
-    depends freetype2   &&
-    depends fontconfig  &&
-    depends Xft2
-    ;;
-  *)
-    optional_depends "freetype2" "--with-ft-exec-prefix=/usr/bin" "--disable-freetype2 --disable-freetypetest" "for TrueType font support"
-    ;;
+Y|y|J|j)
+  depends gnupg
+  ;;
 esac

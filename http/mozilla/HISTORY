@@ -1,3 +1,51 @@
+2003-01-16  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Added `web-browser' and `graphical-web-browser' to
+		the `provides' file.
+
+2002-12-16  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Updated to 1.3a + a fix for mail performance regression.
+		Made Xinerama support disabled by default because GTK+2
+		doesn't have it by default as well.
+
+2002-12-15  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Question about LDAP schema will be asked.
+		Patch for Galeon is back.
+
+2002-12-04  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Upgraded to 1.2.1 and Enigmail to 0.71.0.
+		Made PSM (and hence Enigmail) to compile and function.
+		Reorganized support for Xft2 and freetype2 into optional
+		dependencies, no questions asked in CONFIGURE.
+		Changed to depend on ORBit2.
+		Made a temporary fix where answer for MOZILLA_EMAIL is
+		the fefault for MOZILLA_ENIGMAIL, so that there is a chance
+		that people will not ask for Enigmail without Mail client.
+		TODO: fix the above mentioned fix.
+		Added libIDL as required dependency.
+
+2002-11-10  Sergey Lipnevich  <sergeyli@pisem.net>
+
+		Upgraded to version 1.2.
+		Removed patching for Xft2 and GTK+2.
+		Added optional depends for openldap instead
+		of asking for them in CONFIGURE. Let the sorcery rule this.
+		Calendar question removed because the calendar itself is not
+		included in the standard source.
+
+2002-11-10  Sergey Lipnevich <sergeyli@pisem.net>
+
+		Upgraded Enigmail plugin to 0.70.0.
+		"No questions asked" Galeon 2 support. Default toolkit is GTK 2 now.
+
+2002-11-03  Robin Cook <rcook@wyrms.net>
+
+                Added galeon2 support
+                Added installing of mozilla-gtkmozembed.pc
+
 2002-10-09  Arwed v. Merkatz <v.merkatz@gmx.net>
 
 		Added fontconfig/Xft2 support
