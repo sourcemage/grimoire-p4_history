@@ -1,14 +1,15 @@
            SPELL=whois
-         VERSION=4.6.14
+         VERSION=4.6.20
           SOURCE=${SPELL}_${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=http://www.linux.it/~md/software/${SOURCE}
+   SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/w/whois/$SOURCE
+          MD5[0]=a89fa240166f30bee6990bb0099c8869
         WEB_SITE=http://www.linux.it/~md/software/
-          MD5[0]=2ca3a6763ac569ca3c598cb06818cac3
          ENTERED=20011228
          UPDATED=20021212
       LICENSE[0]=GPL
-           SHORT="whois is the whois client by Marco d'Itri"
+       BUILD_API=2
+           SHORT="whois client by Marco d'Itri"
 cat << EOF
 whois is the whois client by Marco d'Itri
 EOF
