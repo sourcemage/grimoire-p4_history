@@ -21,6 +21,8 @@
   fi                                          &&
 
   export  CFLAGS="$(  echo  $CFLAGS  |  sed  s/-ffast-math//  )"  &&
+  ### Fix the "gcc" problem for some machines
+  export  CC=gcc                              &&
 
   $SOURCE_DIRECTORY/configure                 \
                --host=$BUILD                  \
