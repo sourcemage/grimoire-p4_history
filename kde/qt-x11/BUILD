@@ -17,7 +17,7 @@ export QTDIR=$SOURCE_DIRECTORY  &&
 export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 
 if [ -x /usr/bin/uic ]
-then for i in $(< SCRIPT_DIRECTORY/install.log)
+then for i in $(< $SCRIPT_DIRECTORY/install.log)
      do rm -f $i
      done
 fi                                                  &&
