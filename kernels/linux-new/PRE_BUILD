@@ -57,6 +57,16 @@ then
 			linux_new_uncompress ./${source} &&
 			message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
 			patch -p${pval} <${patch} || return 1
+			if [ "`echo $patch | grep 'kernel-source'`" != "" ]
+			then
+				override_version="$VERSION"
+				home="$LINUX_SOURCE_DIRECTORY/debian/patches"
+				export override_version &&
+				export home &&
+				sh debian/apply &&
+				unset home &&
+				unset override_version
+			fi
 		fi
 	done &&
 	make mrproper 
