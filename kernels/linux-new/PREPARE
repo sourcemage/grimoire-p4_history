@@ -681,7 +681,7 @@ create_details()
 			else
 				append=$patchversion
 			fi
-			echo "LINUX_SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
+			echo "SOURCE_DIRECTORY=\${BUILD_DIRECTORY}/linux-$append"
 			) > $detailsdefaults
 			;;
 #		oldktree)
