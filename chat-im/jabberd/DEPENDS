@@ -1,9 +1,7 @@
 depends cyrus-sasl "--with-cyrus-sasl=$INSTALL_ROOT/usr" &&
+depends openssl &&
+depends daemon xs&&
 
-optional_depends openssl \
-                 '--with-openssl' \
-                 '--without-openssl' \
-                 'for encrypted communications support' &&
 optional_depends db \
                  '--with-berkeley-db' \
                  '--without-berkeley-db' \

@@ -2,7 +2,7 @@
 
 # create_account jabberd &&
 
-  for f in $(find . -name "*"); do
+  for f in $(find . -name "*" -type f); do
     sedit 's|/jabberd/log|/log/jabberd|' $f
   done &&
 
@@ -24,7 +24,7 @@
     --enable-storage="$STORAGE" \
     --enable-authreg="$AUTHREG" \
     --enable-debug \
-    --with-libiconv-prefix=/usr \
+    --with-libiconv-prefix=${INSTALL_ROOT}/usr \
     $OPTS &&
   make &&
   prepare_install &&
@@ -32,8 +32,8 @@
 
 ) >$C_FIFO 2>&1 && (
 
-  mkdir -p --mode=700 /var/jabberd/db
-  mkdir -p --mode=700 /var/log/jabberd
+  mkdir -p --mode=700 ${INSTALL_ROOT}/var/jabberd/db
+  mkdir -p --mode=700 ${INSTALL_ROOT}/var/log/jabberd
 # chown -R jabberd:jabberd /var/jabberd /var/log/jabberd
 
 )
