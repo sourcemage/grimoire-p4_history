@@ -1,5 +1,6 @@
 (
+prepare_install &&
 
-  install.tcl
+echo -e "y \n" |  installer.tcl
 
 ) > $C_FIFO 2>&1
