@@ -1,20 +1,19 @@
-if ! grep -q CONFIGURED $SPELL_CONFIG || ! grep -q TOOLKIT $SPELL_CONFIG
-then  sedit '1,5D' $SPELL_CONFIG &&
-      if query "Would you like to add GNOME support to the Xscreensaver package?" n
-       then if query "Use older gnome-libs/gtk+/gdk-pixbuf combination" n
-            then TOOLKIT=GTK &&
-                OPTS="\$OPTS --without-motif --with-gtk --with-xml --with-pixbuf --with-gnome"
-            elif query "Use current GNOME2/gtk+2 combination" y
-                 then  TOOLKIT=GTK2 &&
-                       OPTS="\$OPTS --without-motif --without-pixbuf --with-gtk --with-xml"
-            else OPTS="\$OPTS --with-motif --without-pixbuf --without-gtk --without-xml" &&
-                 TOOLKIT=MOTIF 
-             fi 
-      else
-         OPTS="\$OPTS --with-motif --without-pixbuf --without-gtk --without-xml" &&
-         TOOLKIT=MOTIF 
-      fi
-     echo CONFIGURED=yes >> $SPELL_CONFIG &&
-     echo TOOLKIT=$TOOLKIT >> $SPELL_CONFIG &&
-     echo OPTS=\"$OPTS\"     >> $SPELL_CONFIG
+# Force reconfig if the old config format is found.
+if  grep  -q  CONFIGURED  $SPELL_CONFIG  ;  then
+  : > $SPELL_CONFIG
+fi
+
+if  !  grep  -q  TOOLKIT  $SPELL_CONFIG  ;  then
+  message  "The xscreensaver demo program allows you to browse among the"
+  message  "different effects available in xscreensaver. Enabling this adds"
+  message  "dependencies on gtk+2 and libglade2."
+  if  query  "Do you wish to enable xscreensaver-demo?"  y  ;  then
+    TOOLKIT=GTK2
+    OPTS="--with-gtk --with-xml"
+  else
+    TOOLKIT=NONE
+    OPTS="--without-gtk --without-xml"
+  fi
+  echo  "TOOLKIT=$TOOLKIT"  >>  $SPELL_CONFIG
+  echo  "OPTS=\"\$OPTS $OPTS\""  >>  $SPELL_CONFIG
 fi
