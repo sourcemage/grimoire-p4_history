@@ -9,9 +9,9 @@
 
     if [ "$2" ] ; then
       echo "Making runlevel $1 depend on runlevel $2"
-      echo "NEEDS=%$2" > $file
+      echo "NEEDS=%$2" | cp /dev/stdin $file
     else
-      echo "NEEDS=" > $file
+      echo "NEEDS=" | cp /dev/stdin $file
     fi
   }
 
