@@ -1,9 +1,9 @@
             SPELL=postfix
-         VERSION=2.0.13
+         VERSION=2.0.16
            SOURCE=$SPELL-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
-          MD5[0]=0a81b081c1fd4ed21652f9d8bba80e27
+          MD5[0]='ce01a10c9ed85644a430bc94c14d05ce'
     SOURCE_URL[1]=ftp://ftp.oav.net/postfix/official/$SOURCE
     SOURCE_URL[2]=ftp://ftp.doc.cs.univ-paris8.fr/mirrors/ftp.porcupine.org/postfix-release/official/$SOURCE
     SOURCE_URL[3]=ftp://mirror.widexs.nl/pub/postfix/official/$SOURCE
@@ -26,7 +26,7 @@
 #
 # TLS/SSL patch
 #
-         VERSION2=0.8.15a-2.0.14-20030715-0.9.7b
+         VERSION2=0.8.17-2.0.16-20031231-0.9.7c
             NAME2=pfixtls
           SOURCE2=$NAME2-$VERSION2.tar.gz
 SOURCE2_DIRECTORY=$SOURCE_DIRECTORY/$NAME2-$VERSION2
@@ -34,7 +34,7 @@ SOURCE2_DIRECTORY=$SOURCE_DIRECTORY/$NAME2-$VERSION2
    SOURCE2_URL[1]=ftp://ftp.ksc.net/software/Linux-Software/postfix/$SOURCE2
    SOURCE2_URL[2]=http://www.filesearching.com/cgi-bin/s?t=n&l=en&q=woland.it.nsc.ru/pub/mirrors/FreeBSD/ports-current/distfiles/postfix/$SOURCE2
    SOURCE2_URL[3]=http://www.filesearching.com/cgi-bin/s?t=n&l=en&q=ftp.ksc.net/software/Linux-Software/postfix/$SOURCE2
-           MD5[1]=18d89043e3652385fd817b827b314708
+           MD5[1]='fa0578a3425015ccc170489bf3e0970b'
 #
 # PostgresSQL patch
 #
@@ -55,21 +55,21 @@ SOURCE4_DIRECTORY=$SOURCE_DIRECTORY
 #
 # VDA patch
 #
-         VERSION5=2.0.11
+         VERSION5=2.0.16
             NAME5=$SPELL-$VERSION5.patch
           SOURCE5=$NAME5.gz
 SOURCE5_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE5_URL[0]=ftp://ftp.oav.net/others/postfix/VDA/$SOURCE5
    SOURCE5_URL[1]=http://ftp.oav.net/others/postfix/VDA/$SOURCE5
-           MD5[4]=2e8bb5e5a73f603f8d334d2ecadb988c
+           MD5[4]='82fe2df8c0687bbc8ce0295288662839'
 #
 # Postfix main site
 #
-         WEB_SITE=http://www.postfix.org
+         WEB_SITE=http://www.postfix.org/
           ENTERED=20020125
-         UPDATED=20030822
+          UPDATED=20030822
           LICENSE=IBMPL
-            SHORT="Postfix is a MTA."
+            SHORT='Postfix is a MTA'
      MENU_ITEM[0]=${SPELL}
      MENU_EXEC[0]="sendmail"
      MENU_DESC[0]=${SHORT}
@@ -78,7 +78,6 @@ Postfix is an attempt to provide an alternative to the widely-used
 Sendmail program. Postfix attempts to be fast, easy to administer,
 and hopefully secure, while at the same time being sendmail
 compatible enough to not upset your users.
-
 
 (TLS/SSL patch URL: http://www.aet.tu-cottbus.de/personen/jaenicke/pfixtls)
 (VDA patch URL: http://www.oav.net/~kiwi/postfix)
