@@ -6,14 +6,14 @@ if [ "$CRON" == "y" ]; then
 
   SCHEDULE="15,45 * * * * /usr/sbin/changeip.sh"
 
-  if spell_installed fcron;
+  if spell_ok fcron;
   then
     echo  -e  "`fcrontab  -l  2>/dev/null    |
     grep  -v  changeip.sh`\n$SCHEDULE"       |
     fcrontab -                2>/dev/null
   fi
 
-  if spell_installed hc-cron;
+  if spell_ok hc-cron;
   then
     echo  -e  "`crontab  -l                  |
     sed   -n  4~1p                           |
