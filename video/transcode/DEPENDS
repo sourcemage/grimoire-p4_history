@@ -1,0 +1,68 @@
+depends autoconf  &&
+depends automake  &&
+depends nasm      &&
+
+optional_depends  "avifile"                      \
+                  "--enable-avifile6"            \
+                  "--with-avifile-mode"          \
+                  "for AVI support"              &&
+optional_depends  "a52dec"                       \
+                  "--with-a52"                   \
+                  "--without-a52"                \
+                  "for ATSC A/52 support"        &&
+optional_depends  "libdvdread"                   \
+                  "--enable-dvdread"             \
+                  "--disable-dvdread"            \
+                  "for DVD support"              &&
+optional_depends  "libdv"                        \
+                  "--with-dv"                    \
+                  "--without-dv"                 \
+                  "for Quasar DV code support"   &&
+optional_depends  "lame"                         \
+                  "--with-lame"                  \
+                  "--without-lame"               \
+                  "for LAME support"             &&
+optional_depends  "qt-x11"                       \
+                  "--with-qt"                    \
+                  "--without-qt"                 \
+                  "for QT support"               &&
+optional_depends  "xfree86"                      \
+                  "--with-x"                     \
+                  "--without-x"                  \
+                  "for XFree86 support"          &&
+optional_depends  "libogg"                       \
+                  "--with-ogg"                   \
+                  "--without-ogg"                \
+                  "for OGG file support"         &&
+optional_depends  "libvorbis"                    \
+                  "--with-vorbis"                \
+                  "--without-vorbis"             \
+                  "for vorbis tools support"     &&
+optional_depends  "lzo"                          \
+                  ""                             \
+                  ""                             \
+                  "for LZO compression support"  &&
+optional_depends  "ImageMagick"                  \
+                  ""                             \
+                  ""                             \
+                  "image editing tools"          &&
+optional_depends  "libxml2"                      \
+                  ""                             \
+                  ""                             \
+                  "for XML format support"       &&
+optional_depends  "freetype2"                    \
+                  ""                             \
+                  ""                             \
+                  "for freetype font support"    &&
+optional_depends  "jpeg"                         \
+                  ""                             \
+                  ""                             \
+                  "for JPEG image support"       &&
+optional_depends  "SDL"                          \
+                  ""                             \
+                  ""                             \
+                  "for SDL graphics rendering"   &&
+optional_depends  "gtk+2"                        \
+                  ""                             \
+                  ""                             \
+                  "for GTK+ GUI support"
