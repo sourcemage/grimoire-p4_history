@@ -116,8 +116,10 @@ if  [  "$REUSE_SOURCE"  ==  "y"  ];  then
   cd linux-${VERSION}
   return 0
 else
-  message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"
-  rm   -r  linux-${VERSION}
+  if  [  -d  /usr/src/linux-${VERSION}  ];  then
+    message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"
+    rm   -r  linux-${VERSION}
+  fi
 fi
 message "${MESSAGE_COLOR}Building a new tree.${DEFAULT_COLOR}";
 

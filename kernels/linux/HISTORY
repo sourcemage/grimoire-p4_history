@@ -1,3 +1,9 @@
+2004-07-02 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Set REUSE_SOURCE to "n" if we're to build a new tree (even
+	if the old source doesn't exist)
+	* PRE_BUILD: Check for the old source directory before removing it when
+	REUSE_SOURCE is "n"
+
 2004-06-23 Eric Sandall <eric@sandall.us>
 	* patches/grsecurity: Added 2.0-2.6.5 and 2.0-2.4.26
 	* patches/bootsplash: Added 3.1.7-2.6.7-rc3, 3.0.7-2.4.26-debian,
