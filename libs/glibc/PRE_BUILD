@@ -26,8 +26,8 @@ else
   #
   # Unpack glibc-kernel-headers
   #
-  mkdir  $GLIBC_HEADERS_DIR                         &&
-  cd  $GLIBC_HEADERS_DIR                            &&
+  mkdir  -p  $GLIBC_HEADERS_DIR/include             &&
+  cd  $GLIBC_HEADERS_DIR/include                    &&
   unpack  $SOURCE3  ${MD5[2]}
 fi  &&
 

@@ -77,19 +77,10 @@ elif  [[  $(uname  -m)  =  *sparc    ]];  then
   export    CFLAGS="$CFLAGS  -fcall-used-g6"
 fi  &&
 
-#
-# 2.4 glibc-kernel-headers doesn't have a default "include" dir
-#
-if  [  "$GLIBC_NPTL"  =  "y"  ];  then
-  cd  $GLIBC_HEADERS_DIR/include  &&
-  ln  -sf  asm-$GLIBC_ARCH  asm
-else
-  cd  $GLIBC_HEADERS_DIR              &&
-  ln  -sf  asm-generic  include       &&
-  cd  include                         &&
-  ln  -sf  ../asm-$GLIBC_ARCH  asm    &&
-  ln  -sf  ../linux            linux
-fi  &&
+# set the asm headers to point to the correct architecture
+cd  $GLIBC_HEADERS_DIR/include  &&
+ln  -sf  asm-$GLIBC_ARCH  asm   &&
+
 # CPPFLAGS setting is needed so the check for cpp works on boxes that don't
 # have any kernel headers in /usr/include yet
 export CPPFLAGS="$CPPFLAGS -I$GLIBC_HEADERS_DIR/include"  &&
