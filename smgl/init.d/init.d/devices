@@ -9,9 +9,11 @@ ESSENTIAL=yes
 
 start_devfs()
 {
-  echo "Mounting devfs on /dev"
-  mount -n -t devfs devfs /dev
-  evaluate_retval
+  if ! [ -e /dev/.devfsd ]
+  then echo "Mounting devfs on /dev"
+       mount -n -t devfs devfs /dev
+       evaluate_retval
+  fi
 
   echo "Telling init to reopen file descriptors"
   kill -USR1 1
@@ -21,10 +23,10 @@ start_devfs()
     /sbin/devfsd /dev
     evaluate_retval
   else
-    ln -s /proc/self/fd /dev/fd
-    ln -s /dev/fd/0 /dev/stdin
-    ln -s /dev/fd/1 /dev/stdin
-    ln -s /dev/fd/2 /dev/stdin
+    ln -sf /proc/self/fd /dev/fd
+    ln -sf /dev/fd/0 /dev/stdin
+    ln -sf /dev/fd/1 /dev/stdin
+    ln -sf /dev/fd/2 /dev/stdin
   fi
 }
 
