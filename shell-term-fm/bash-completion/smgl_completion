@@ -42,6 +42,14 @@ _add_section_list()
     done
 }
 
+# grimoire functions by Arjan Bouter (abouter@sourcemage.org)
+_add_grimoire_list()
+{
+    for GRIMOIRE in `. $GRIMOIRE_LIST; echo ${GRIMOIRE_DIR[*]}`; do
+	COMPREPLY=( ${COMPREPLY[@]} $( basename $GRIMOIRE | sed -ne 's/^\('$cur'.*\)/\1/p' ) )
+    done
+}
+
 # Source Mage GNU/Linux gaze(1) completion
 # by Lunar_fr (lunar@l-a-p.org)
 #
@@ -58,12 +66,12 @@ _gaze()
 	COMPREPLY=( $( compgen -W 'alien from search service provides what \
                 where website install installed compile sources history sum \
                 md5sum export import section maintainer grimoire html newer \
-                older prune voyeur pam orphans depends spider version \
+                older prune voyeur pam orphans depends spider version versions \
 		DETAILS CONFIGURE DEPENDS CONFLICTS PRE_BUILD BUILD POST_BUILD \
-		POST_INSTALL POST_REMOVE HISTORY' $cur ))
+		POST_INSTALL POST_REMOVE HISTORY INSTALL FINAL' $cur ))
     elif [ $COMP_CWORD = 2 ]; then
 	case "$prev" in
-	    @(what|where|website|sources|maintainer|depends|history|version))
+	    @(what|where|website|sources|maintainer|depends|history|version*))
                 _spell_list
 		return 0
 		;;
@@ -87,7 +95,7 @@ _gaze()
 		_spell_list
 		return 0
 		;;
-	    @(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE|HISTORY))
+	    @(DETAILS|CONFIGURE|DEPENDS|CONFLICTS|PRE_BUILD|BUILD|POST_BUILD|POST_INSTALL|POST_REMOVE|HISTORY|INSTALL|FINAL))
 		_spell_list
 		return 0
 		;;
@@ -229,3 +237,70 @@ _dispel()
     return 0
 }
 [ "$have" ] && complete -F _dispel -o default dispel
+
+# Source Mage GNU/Linux scribe(8) completion
+# by Arjan Bouter (abouter@sourcemage.org)
+#
+have scribe &&
+_scribe()
+{
+    local cur prev
+    
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+    first=${COMP_WORDS[1]}
+    second=${COMP_WORDS[2]}
+
+    if [ $COMP_CWORD = 1 ]; then
+	COMPREPLY=( $( compgen -W 'update add remove fix index reindex set \
+		swap localize unlocalize' $cur ))
+    elif [ $COMP_CWORD = 2 ]; then
+	case "$prev" in
+	    @(update|remove|fix|reindex|set|swap|localize|unlocalize))
+                _add_grimoire_list
+		return 0
+		;;
+	    add)
+		COMPREPLY=( $( compgen -W 'stable games z-rejected test' $cur ) )
+		return 0
+		;;
+	    *)
+		return 0
+		;;
+	esac
+    elif [ $COMP_CWORD = 3 ]; then
+	case "$first" in
+	    @(swap|set))
+                _add_grimoire_list
+		return 0
+		;;
+	    add|update)
+		COMPREPLY=( $( compgen -W 'from' $cur ) )
+		return 0
+		;;
+	    *)
+		return 0
+		;;
+	esac
+    elif [ $COMP_CWORD = 4 ]; then
+	case "$prev" in
+	    from)
+		case "$second" in
+		  stable|test|z-rejected|games)
+			COMPREPLY=( $( compgen -W 'http://codex.sourcemage.org/$second.tar.bz2 rsync://sourcemage.org::$second' $cur))
+			return 0
+			;;
+		  *)	COMPREPLY=( $( compgen -W 'http:// rsync://' $cur))
+			return 0
+			;;
+		esac
+		;;
+	    *)
+		return 0
+		;;
+	esac
+    fi
+    return 0
+}
+[ "$have" ] && complete -F _scribe -o default scribe
