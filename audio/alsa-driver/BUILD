@@ -25,7 +25,10 @@ EOF
 rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
 (
-  sedit  "s:\-O2:${CFLAGS}:"  configure  &&
+if  ! "cat  ${CFLAGS}|grep -q -mcpu"  = "-mcpu=pentium4" 
+then 
+  sedit  "s:\-O2:${CFLAGS}:"  configure  && 
+fi
 
   modprobe  soundcore
   ./configure  --prefix=/usr         \
