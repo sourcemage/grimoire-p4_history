@@ -1,19 +1,22 @@
-         SPELL=easytag
-         VERSION=0.30.2
+           SPELL=easytag
+if [ "$GETDEVEL" == "y" ]; then
+         VERSION=0.31_gtk2.4_pre3
+          MD5[0]='c0529f3203bfadf055d593104ad3d6d9'
+else
+         VERSION=0.31
+          MD5[0]='56bd1c16a2d2b7f1c500bcf32f3482ce'
+fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      LICENSE[0]=GPL
         WEB_SITE=http://easytag.sourceforge.net/
          ENTERED=20020115
-         UPDATED=20021010
-	MD5[0]=cb9f30cad6e3f396ba19a790522fac17
-	LICENSE[0]=GPL
-	MAINTAINER=unet@sourcemage.org	
-           SHORT="Maintaining id3 tags"
+         UPDATED=20041002
+           SHORT="Utility for maintaining audio file Tags"
 cat << EOF
-EasyTAG is an utility for viewing, editing and writing easily and
-quickly the ID3 tags of your MP3 files, using a nice GTK+ interface
-under linux.
-It manages the ID3v1.x and ID3v2 tags (using id3lib) and offers a lot of
-functions to manipulate them.
+EasyTAG is an utility for viewing and editing tags for 
+MP3, MP2, FLAC, Ogg Vorbis, MusePack and Monkey's Audio 
+files. Its simple and nice GTK+ interface makes tagging 
+easier under GNU/Linux
 EOF
