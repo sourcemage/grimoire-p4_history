@@ -1,4 +1,11 @@
-# $Id: BUILD,v 1.11 2002/12/11 16:57:15 sergeyli Exp $
+## conditionally run `make' if SWIG dependency is on
+## @usage <1:make target>
+function make_if_swig() {
+  if echo "$OPTS" | grep -q 'with-swig'; then
+    make $1
+  fi
+}
+
 (
 
   SVN_CLIENT=$(which svn 2>/dev/null)
@@ -50,33 +57,35 @@
   if ! [ -x configure ]; then ./autogen.sh; fi &&
   ./configure \
     --build=$BUILD \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
+    --prefix=$INSTALL_ROOT/usr \
+    --sysconfdir=$INSTALL_ROOT/etc \
+    --localstatedir=$INSTALL_ROOT/var \
     --disable-debug \
     --disable-static \
     --enable-dso \
     --disable-mod-activation \
     --enable-shared \
     --with-apr=$(which apr-config) \
-    --with-apr-util=/usr \
+    --with-apr-util=$INSTALL_ROOT/usr \
     --with-apxs \
     $OPTS &&
-  make             &&
-  make swig-py-lib &&
+  make &&
+  make_if_swig swig-py &&
 
-#  Use this instead of just 'make' for -jN option:
-#  make -jN external-all
-#  make -jN local-all
+# Use this instead of just 'make' for -jN option:
+# make -jN external-all
+# make -jN local-all
 
-#  Install
+  if spell_installed Python; then
+    make check
+  fi &&
+
+# Install
   prepare_install &&
-  make    install &&
-  make    install-swig-py-lib
+  make install &&
+  make_if_swig install-swig-py
 
-) > $C_FIFO 2>&1 && (
-
-  if spell_installed Python; then make check; fi
+) >$C_FIFO 2>&1 && (
 
   cat > /etc/httpd/svn.conf.default << __EOF__
 #
@@ -107,6 +116,7 @@
 
 	#
 	# b) For a write restricted repository:
+	#    NOTE: prop{get|set} operations are not protected by this
 	#
 
 	<LimitExcept GET PROPFIND OPTIONS REPORT>
@@ -115,6 +125,7 @@
 
 	#
 	# c) For seperate restricted read and write access:
+	#    NOTE: prop{get|set} operations are not protected by this
 	#
 
 	AuthGroupFile /path/to/group
