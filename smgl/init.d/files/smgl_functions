@@ -133,7 +133,7 @@ print_status()
 getpids()
 {
   local base=${1##*/}
-  pidlist="$(pidof -o $$ -o $PPID -o '%PPID' -x $base)"
+  pidlist="$(for i in $(pidof -o $$ -o $PPID -o '%PPID' -x $base); do grep -vq '/etc/init[.]d' /proc/$i/cmdline && builtin echo $i; done)"
 }
 
 loadproc()
