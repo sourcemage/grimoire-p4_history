@@ -17,7 +17,7 @@ fi  &&
 if [ "$FIREFOX_CVS" == "y" ]; then
   OPTS="$OPTS --enable-application=browser"
 fi &&
-
+cp browser/config/mozconfig .mozconfig &&
 ./configure                                       \
   --prefix=${INSTALL_ROOT}/usr                    \
   --with-user-appdir=.firefox                     \
@@ -35,7 +35,6 @@ fi &&
   --disable-mailnews                              \
   --disable-composer                              \
   --enable-crypto                                 \
-  --enable-extensions                             \
   --enable-single-profile                         \
   $OPTS                                           &&
 make
