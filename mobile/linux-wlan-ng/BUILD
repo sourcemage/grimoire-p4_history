@@ -1,6 +1,17 @@
+cfg()
+{
+  cat <<EOF
+  $PCMCIA
+  $PCI9052
+  $ISL3874
+  $ISL3873
+EOF
+}
+
 (
-  make auto_config              &&
-  make all &&
+  cfg |  make config		&&
+#  make auto_config         	&&
+  make all 			&&
   prepare_install               &&
   make   install     
 
