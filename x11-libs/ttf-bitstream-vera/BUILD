@@ -1,12 +1,1 @@
-(
-
-  prepare_install                       &&
-  mkdir  -p  /usr/share/fonts/truetype  &&
-  cp  *.ttf  /usr/share/fonts/truetype  &&
-  if  [  -d  /etc/fonts/  ];  then
-    if  !  [  -e  /etc/fonts/local.conf  ];  then
-      cp  local.conf  /etc/fonts
-    fi
-  fi
-
-) > $C_FIFO 2>&1
+true
