@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.2
+         VERSION=0.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
          UPDATED=20030603
-	      MD5[0]=a5100fe677f3bdd8fe0777b29ac6b600
+	      MD5[0]=2b8b6d0910870ad536d95895ffd03ab8
 	     LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -23,6 +23,19 @@ Guru experience:
 							  spells or sections.
 
   md5unpack <tarball>		- provides md5sum info from source tarball. 
+
+  urlwatch					- This script check a list of urls for changes inside 
+  							  html page. Make a cronjob with this and you'll automaticaly 
+							  receive notifications for changed urls by email... 
+							  See urlwatch --help for help. (by M.L.).
+
+  summonsection				- This script is usefull for lazy section maintainters who 
+							  get bored first deleting cached files, then summon'em one 
+							  by one, by hand. Summonsection kills cached files, and summons 
+							  new files automaticaly. (by M.L.).
+
+  upspell					- This script updates a spell DETAILS and HISTORY. Just goes to 
+  							  the spell's directory and run it... (by M.L.).
 
 If you have more to contribute, mail to maintainer.
 
