@@ -1,12 +1,21 @@
            SPELL=objc
-         VERSION=0
+         VERSION=3.4.3
+          SOURCE=gcc-core-$VERSION.tar.bz2
+         SOURCE2=gcc-$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
+   SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
+   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+  SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
+  SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
+          MD5[0]=58e07da3cf68f06976d82ac1baf3d1bd
+          MD5[1]=23ab0f14b930a76ac5dc4905cb724eed
       LICENSE[0]=GPL
+      LICENSE[1]=GPL
         WEB_SITE=http://gcc.gnu.org/
-         ENTERED=20040708
-         UPDATED=20040708
-     GATHER_DOCS=off
-           SHORT="a dummy spell"
+         ENTERED=20040704
+         UPDATED=20040704
+            DOCS="$DOCS INSTALL"
+           SHORT="the GNU Objective-C compiler"
 cat << EOF
-This spell exists so others can depend on objc while the real objc spell isn't
-in test/stable grimoires yet.
+The GNU Objective-C compiler and runtime library.
 EOF

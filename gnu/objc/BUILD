@@ -1,8 +1,13 @@
-(
-  echo "This is a dummy spell."
-  prepare_install
-  mkdir -p  ${INSTALL_ROOT}/usr/share/doc/$SPELL
-  touch     ${INSTALL_ROOT}/usr/share/doc/$SPELL/README
-  echo "Dummy spell until the real $SPELL spell makes it into test/stable."  \
-       >>  ${INSTALL_ROOT}/usr/share/doc/$SPELL/README
-) > $C_FIFO 2>&1
+cd $SOURCE_DIRECTORY.bld                                  &&
+$SOURCE_DIRECTORY/configure                                \
+             --host=$HOST                                  \
+             --prefix=${INSTALL_ROOT}/usr                  \
+             --infodir=${INSTALL_ROOT}/usr/share/info      \
+             --mandir=${INSTALL_ROOT}/usr/share/man        \
+             --enable-threads=posix                        \
+             --with-system-zlib                            \
+             --enable-languages=objc                       \
+             $OPTS                                         &&
+
+make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
+     profiledbootstrap
