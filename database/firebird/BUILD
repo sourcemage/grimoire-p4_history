@@ -1,18 +1,13 @@
 (
 # Classic Server install needs services or xinet.d
 # Super Server install needs init.d
-# at present the build only works for /opt/firebird
+# at present the build only works for everything in one directory 
+# tree /usr/firebird
 
-  PREFIX=${INSTALL_ROOT}/opt/firebird
+  PREFIX=${INSTALL_ROOT}/usr/firebird		&&
 
 # apply Erik LaBianca's patches for a more logical install
 patch -u -p0 < $SPELL_DIRECTORY/patches/ac_cxxflags.patch	&&
-# not yet
-#sed -e "s:@abs_builddir@:$SOURCE_DIRECTORY/gen/firebird:" 	\
-#	$SPELL_DIRECTORY/patches/install.patch 			\
-#	| patch -u -p0						&&
-#patch -u -p0 < $SPELL_DIRECTORY/patches/install.patch		&&
-#patch -u -p0 < $SPELL_DIRECTORY/patches/xinetd.patch		&&
 
 echo install=$INST				&&
 
@@ -32,7 +27,7 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   
   prepare_install				&&
 
-# new install script from hereon
+# new install script from here on
   SRC=$PWD/gen/firebird				&&
 
   VV=`$SRC/bin/gpre_static -z 2>/dev/null | grep Fire |cut -c 14-` &&
@@ -43,7 +38,7 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   mkdir -p bin examples				&&
 
 # config, msg and security
-  touch aliases.conf firebird.log		&&
+  touch aliases.conf 				&&
   cp $SRC/*.msg $SRC/isc* ./			&&
 
   FF=security.fdb				&&
@@ -69,6 +64,9 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   FL="fb* gds* gfix gpre gsec gstat gbak isql"	&&
   if [ "$INST" == "classic" ]; then
     FL="$FL gdef qli"
+    GDS=libembed
+  else
+    GDS=libclient
   fi						&&
   for FF in $FL
   {
@@ -107,9 +105,11 @@ NOCONFIGURE=1 . ./autogen.sh			&&
   {
     ln -sf $PWD/$FF /usr/lib/$FF
   }						&&
+# for use by existing applications
+  ln -sf $PWD/$GDS.so /usr/lib/libgds.so	&&
   cd ..						&&
 
-# symlnk for includes
+# symlink for includes
   ln -sf $PWD/include /usr/include/firebird
 
 # fix permissions
@@ -117,18 +117,24 @@ NOCONFIGURE=1 . ./autogen.sh			&&
 
   chmod -R o-rw,ug+rx $PREFIX/*			&&
   chmod ug=r *.msg				&&
-  chmod ug=rw isc* *.conf firebird.log security.fdb	&&
+  chmod ug=rw isc* *.conf security.fdb		&&
 
   chmod ug=x bin/*				&&
-  chmod a=x bin/isql bin/gpre			&&
-  chmod u=rw bin/changeDBAPassword.sh		&&
+  chmod a=x bin/isql bin/gpre include		&&
+  chmod u=rw,og-wx bin/changeDBAPassword.sh	&&
+  chmod a=rx include				&&
 
   chmod a=r help/* include/* intl/* lib/* UDF/*	&&
 
 
   chmod a=r examples/*				&&
-  chmod ug+w examples/*.fdb		
+  chmod ug+w examples/*.fdb			&&
 
-
+# log file
+  mkdir -p /var/log/				&&
+  touch  /var/log/firebird.log			&&
+  chown firebird:firebird /var/log/firebird.log	&&
+  chmod o=,ug=rw /var/log/firebird.log		&&
+  ln -sf /var/log/firebird.log ./
   
 ) > $C_FIFO 2>&1

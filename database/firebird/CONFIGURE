@@ -4,14 +4,7 @@ chk_cfg()
   echo checking config for $1 $2
   REMIND="'remember to choose the $2 option'"
   echo REMIND=${REMIND}    >>  ${SPELL_CONFIG}
-#  echo $REMIND
   return `grep  -q  $1  ${SPELL_CONFIG}`
-
-#  if !  grep  -q  $1  ${SPELL_CONFIG}
-#  then
-#    return 1
-#  fi
-#  return 0
 }
 
 if  !  grep  -q  "INST"   ${SPELL_CONFIG}
