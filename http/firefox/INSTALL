@@ -1,0 +1,23 @@
+MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
+
+if spell_installed Firebird; then
+  dispel Firebird
+fi                                               &&
+
+# everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
+# must actually go to /usr/lib/mozilla/
+
+MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
+mkdir -p $MOZILLA_HOME                           &&
+ln -fns $MOZILLA_HOME $MOZILLA_HOME-$MOZILLA_VERSION   &&
+mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
+ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZILLA_VERSION &&
+mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
+ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZILLA_VERSION     &&
+make install                                                   &&
+cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
+ln -fns ${MOZILLA_HOME}firefox /usr/bin/                &&
+
+if ! grep -q mozilla /etc/ld.so.conf; then
+  echo  '/usr/lib/mozilla'  >>  /etc/ld.so.conf
+fi
