@@ -1,17 +1,17 @@
            SPELL=digikam
-if  [  "$CVS"  ==  "y"  ];  then
-         VERSION=`date -u +%Y%m%d`
-          SOURCE=${SPELL}3-cvs-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
-   SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
-          MD5[0]=IGNORE
-else
+#if  [  "$CVS"  ==  "y"  ];  then
+#         VERSION=`date -u +%Y%m%d`
+#          SOURCE=${SPELL}3-cvs-$VERSION.tar.bz2
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}3
+#   SOURCE_URL[0]=http://digikam.free.fr/Tarballs/$SOURCE
+#          MD5[0]=IGNORE
+#else
          VERSION=0.6.2
           SOURCE=${SPELL}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/digikam
    SOURCE_URL[0]=$SOURCEFORGE_URL/digikam/$SOURCE
           MD5[0]=2a977d397afbcdf24ea2206092f0c301
-fi
+#fi
         WEB_SITE=http://digikam.sourceforge.net
          ENTERED=20020305
          UPDATED=20040114
