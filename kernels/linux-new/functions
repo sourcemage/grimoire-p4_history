@@ -11,7 +11,7 @@ linux_new_uncompress()
 		echo "$1 doesn't need uncompressing"
 	else
 		echo "$1 has some unknown/unimplemented compression type"
-		exit 1
+		return 1
 	fi
 }
 

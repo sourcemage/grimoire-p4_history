@@ -28,7 +28,7 @@ case "$VERSION" in
 		;;
 	*)
 		echo "I again don't know what version: $VERSION is"
-		exit 1
+		return 1
 		;;
 esac
 if [ "${output_dir}" == "" ]

@@ -19,6 +19,6 @@ case "$VERSION" in
 		;;
 	*)
 		echo "There is no kernel version: $VERSION"
-		exit 1
+		return 1
 		;;
 esac

@@ -46,7 +46,7 @@ then
 	export LINUX_SOURCE_DIRECTORY
 else
 	echo "I don't know what $mode is"
-	exit 1
+	return 1
 fi
 cd ${LINUX_SOURCE_DIRECTORY}
 
