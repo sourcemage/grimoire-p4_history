@@ -7,7 +7,7 @@ export CC=gcc   			&&
                --with-included-gettext  \
                $OPTS                    &&
   make                                  &&
-if spell_installed teTeX || spell_installed linuxdoc-tools ; 
+if spell_installed teTeX ; 
 then cd gettext-tools/doc &&
      make dvi  &&
      make ps   &&
@@ -16,7 +16,7 @@ then cd gettext-tools/doc &&
 fi  &&
   prepare_install                       &&
   make    install                       &&
-if spell_installed teTeX || spell_installed linuxdoc-tools ; 
+if spell_installed teTeX ; 
 then cd gettext-tools/doc &&  
   make    install-pdf     &&
   make    install-ps      &&
