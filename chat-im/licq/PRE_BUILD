@@ -1,5 +1,5 @@
 mk_source_dir $SOURCE_DIRECTORY  &&
-unpack		  $SOURCE ${MD5[0]}  &&
+unpack		  $SOURCE ${MD5[0]} &&
 if [ "$CVS" = "yes" ]; then
 	cd $SOURCE_DIRECTORY			 &&
 	unpack		  $SOURCE2 ${MD5[1]} &&
@@ -7,8 +7,8 @@ if [ "$CVS" = "yes" ]; then
 	unpack		  $SOURCE3 ${MD5[2]} &&
 	rm -rf $SOURCE_DIRECTORY/plugins &&
 	mv $SOURCE_DIRECTORY/$SPELL-plugins-cvs $SOURCE_DIRECTORY/plugins
-fi &&
-if [ "$XOSD" = "yes" ]; then
-	cd $SOURCE_DIRECTORY/plugins	 &&
-	unpack		  $SOURCE4 ${MD5[3]}
 fi
+#if [ "$XOSD" = "yes" ]; then
+#	cd $SOURCE_DIRECTORY/plugins	 &&
+#	unpack		  $SOURCE4 ${MD5[3]}
+#fi
