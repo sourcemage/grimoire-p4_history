@@ -1,0 +1,176 @@
+===================================================================
+RCS file: /home/kde/kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv16.cpp,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -r1.3 -r1.4
+--- kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv16.cpp	2001/02/06 15:23:56	1.3
++++ kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv16.cpp	2002/06/04 07:20:09	1.4
+@@ -175,7 +175,7 @@
+ 	// 60%5 = TEMPV
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2yuv16_422:\n"
++		"1:\n"
+ 
+ 		// unpack hicolor ( pixel 1 - 4)
+ 		"movq      (%0),    %%mm0\n"
+@@ -478,7 +478,7 @@
+ 		"add       $4,       %3\n"
+ 		
+ 		"sub       $8,       %4\n"
+-  		"jnz       rgb2yuv16_422\n"
++  		"jnz       1b\n"
+ 
+ 		"emms\n"
+ 
+@@ -494,7 +494,7 @@
+ 				  unsigned char* cb, int pixel)
+ {
+ 	__asm__ __volatile__ (
+-		"rgb2yuv16_422_fast:\n"
++		"1:\n"
+ 
+ 		// unpack hicolor ( pixel 0 - 3)
+ 		"movq      (%0),    %%mm0\n"
+@@ -615,7 +615,7 @@
+ 		"add       $16,     %0\n"
+ 		
+ 		"sub       $8,      %4\n"
+-		"jnz       rgb2yuv16_422_fast\n"
++		"jnz       1b\n"
+ 
+ 		"emms\n"
+ 
+@@ -634,7 +634,7 @@
+ 	// 44%3 = TEMPY
+ 	
+ 	__asm__ __volatile__ (
+-		"rgb2y_16:\n"
++		"1:\n"
+ 
+ 		// unpack hicolor ( pixel 1 - 4)
+ 		"movq      (%0),    %%mm0\n"
+@@ -849,7 +849,7 @@
+ 		"add       $8,     %1\n"
+ 		
+ 		"sub       $8,     %2\n"
+-  		"jnz       rgb2y_16\n"
++  		"jnz       1b\n"
+ 		"emms\n"
+ 
+ 		:
+@@ -861,7 +861,7 @@
+ void rgb2y16bit_mmx_row_fast(unsigned char* rgb, unsigned char* lum, int pixel)
+ {
+ 	__asm__ __volatile__ (
+-        "rgb2y32_fast:\n"
++        "1:\n"
+ 		
+ 		// unpack hicolor ( pixel 1 - 4)
+ 		"movq      (%0),    %%mm0\n"
+@@ -899,7 +899,7 @@
+ 		"add       $8,      %0\n"
+ 		
+ 		"sub       $4,      %2\n"
+-		"jnz       rgb2y32_fast\n"
++		"jnz       1b\n"
+ 		
+ 		"emms\n"
+ 		
+===================================================================
+RCS file: /home/kde/kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv32.cpp,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -r1.1 -r1.2
+--- kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv32.cpp	2000/12/06 18:42:07	1.1
++++ kdemultimedia/mpeglib/lib/util/render/dither2YUV/rgb2yuv32.cpp	2002/06/04 07:20:09	1.2
+@@ -173,7 +173,7 @@
+ 	// 24%5 = TEMPV
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2yuv24_444:\n"
++		"1:\n"
+ 
+ 		"movq      (%0), %%mm1\n"  // load G2R2B1G1R1B0G0R0
+ 		"pxor      %%mm6,   %%mm6\n"  // 0 -> mm6
+@@ -356,7 +356,7 @@
+ 		"movq      %%mm5,   (%3)\n"    // store V
+ 
+ 		"sub       $8,       %4\n"
+-  		"jnz       rgb2yuv24_444\n"
++  		"jnz       1b\n"
+ 		"emms\n"
+ 
+ 		:
+@@ -375,7 +375,7 @@
+ 	// 24%5 = TEMPV
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2yuv24_422:\n"
++		"1:\n"
+ 
+ 		"movq      (%0), %%mm1\n"  // load G2R2B1G1R1B0G0R0
+ 		"pxor      %%mm6,   %%mm6\n"  // 0 -> mm6
+@@ -572,7 +572,7 @@
+ 		"add       $4,       %3\n"
+ 		
+ 		"sub       $8,       %4\n"
+-  		"jnz       rgb2yuv24_422\n"
++  		"jnz       1b\n"
+ 		"emms\n"
+ 
+ 		:
+@@ -591,7 +591,7 @@
+ 	// 24%5 = TEMPV
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2yuv32_422:\n"
++		"1:\n"
+ 
+ 		// pack rgb
+ 		// was:	"movq      (%0), %%mm1\n"  // load G2R2B1G1R1B0G0R0
+@@ -830,7 +830,7 @@
+ 		"add       $4,       %3\n"
+ 		
+ 		"sub       $8,       %4\n"
+-  		"jnz       rgb2yuv32_422\n"
++  		"jnz       1b\n"
+ 
+ 		"emms\n"
+ 
+@@ -848,7 +848,7 @@
+ 	// 8%3 = TEMPY
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2y_24:\n"
++		"1:\n"
+ 
+ 		"movq      (%0), %%mm1\n"  // load G2R2B1G1R1B0G0R0
+ 		"pxor      %%mm6,   %%mm6\n"  // 0 -> mm6
+@@ -960,7 +960,7 @@
+ 		"add       $8,     %1\n"
+ 		
+ 		"sub       $8,     %2\n"
+-  		"jnz       rgb2y_24\n"
++  		"jnz       1b\n"
+ 		"emms\n"
+ 
+ 		:
+@@ -977,7 +977,7 @@
+ 	// 8%3 = TEMPY
+ 
+ 	__asm__ __volatile__ (
+-		"rgb2y_32:\n"
++		"1:\n"
+ 
+ 		// pack rgb
+ 		// was:	"movq      (%0), %%mm1\n"  // load G2R2B1G1R1B0G0R0
+@@ -1128,7 +1128,7 @@
+ 		"add       $8,     %1\n"
+ 		
+ 		"sub       $8,     %2\n"
+-  		"jnz       rgb2y_32\n"
++  		"jnz       1b\n"
+ 		"emms\n"
+ 
+ 		:
