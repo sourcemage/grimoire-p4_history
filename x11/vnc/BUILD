@@ -14,7 +14,7 @@
   prepare_install  &&
   ./vncinstall   /usr/bin              &&
   mkdir  -p      /usr/bin/vnc.classes  &&
-  cp  classes/*  /usr/bin/vnc.classes
+  cp  java/*  /usr/bin/vnc.classes
 
 ) > $C_FIFO 2>&1
 
