@@ -1,15 +1,17 @@
+persistent_load
 cd ${LINUX_SOURCE_DIRECTORY}
 echo "This is the version: $VERSION"
 . ${CONFIG_CACHE}/details.conf
 case "$VERSION" in
 	2.6*)
 		echo "making for a 2.6 kernel"
-		if [ "${output_dir}" == "" ]
-		then
+#		if [[ ! ${OPTIONAL_BUILD_DIR} ]]
+#		then
 			ARCH="$kernel_arch" make
-		else
-			ARCH="$kernel_arch" make O="${output_dir}"
-		fi
+#		else
+#			mkdir -p ${OPTIONAL_BUILD_DIR}
+#			ARCH="$kernel_arch" make O="${OPTIONAL_BUILD_DIR}"
+#		fi
 		;;
 	2.[024]*)
 		echo "making for a 2.4 kernel"

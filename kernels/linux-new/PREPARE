@@ -60,7 +60,12 @@ arch_default()
 create_defaults()
 {
 	arch_default
-	replace_config_var kernel_arch "$KERNEL_ARCH"
+	kernel_arch=$KERNEL_ARCH
+	persistent_add kernel_arch
+	mode="newktree"
+	persistent_add mode
+	persistent_save
+	persistent_load
 }
 
 # dialog command works even if you add --nocancel as part of the arguments
@@ -100,11 +105,13 @@ main_menu()
 		then
 			case "$mode" in
 				"newktree") 
-					replace_config_var mode $mode
+					persistent_save
+					persistent_load
 					new_tree_menu 
 					;;
 				"oldktree")
-					replace_config_var mode $mode
+					persistent_save
+					persistent_load
 					old_src_menu
 					;;
 				"Options")
@@ -244,8 +251,9 @@ arch_menu()
 			then
 				COMMAND="$DEFAULT"
 			fi
-			KERNEL_ARCH=$COMMAND
-			replace_config_var kernel_arch $COMMAND
+			kernel_arch=$COMMAND
+			persistent_save
+			persistent_load
 			break
 		else
 			break
@@ -261,13 +269,22 @@ build_dir_menu()
 	Leave it blank for no output dir\n" 0 0 ${output_dir} )
 	retval="$?"
 	echo $retval
-	if [[ "$retval" == "0" || "$output_dir" != "" ]]
+	if [[ "$retval" == "0" && "$output_dir" != "" ]]
 	then
-		echo "Having problems with a straight sed replacement of a dir"
+		OPTIONAL_BUILD_DIR=$output_dir
+		persistent_add OPTIONAL_BUILD_DIR
+		persistent_save
+		persistent_load
+		echo "first ifstatment"
+	elif [[ "$retval" == "0" && "$output_dir" == "" ]]
+	then
+		persistent_remove OPTIONAL_BUILD_DIR
+		persistent_save
+		persistent_load
+		echo "second ifstatment"
 	else
-		echo "Having problems with a straight sed replacement of a dir"
+		echo "Do nothing"
 	fi
-	sleep 5
 }
 
 # restore a config file from a different location
@@ -592,10 +609,11 @@ calculate_depends()
 create_details()
 {
 	. $configfile
+	persistent_load
 	. $latestdefaults
 	local counter="1"
 	case "$mode" in
-		*ktree)
+		newktree)
 			(
 			. $configfile
 			calculate_depends
@@ -643,6 +661,8 @@ create_details()
 			esac
 			) > $detailsdefaults
 			;;
+		oldktree)
+			;;
 		*)
 			echo "I don't know what the hell is $mode"
 			;;
@@ -652,10 +672,7 @@ create_details()
 # Start of the execution
 
 # if it's not there create it
-if [ ! -f $configfile ]
-then
-        create_defaults
-fi
+create_defaults
 
 # for some reason I couldn't get it to show up in
 # PRE_BUILD so I put it in the config file
@@ -692,3 +709,5 @@ then
 else
 	echo "No Reconfigure, using $configfile for defaults"
 fi
+
+persistent_load

@@ -1,3 +1,4 @@
+persistent_load
 cd ${LINUX_SOURCE_DIRECTORY}
 
 . ${CONFIG_CACHE}/details.conf
@@ -15,12 +16,12 @@ mkdir -p ${INSTALL_ROOT}/boot
 case "$VERSION" in
 	2.6*)
 		echo "installing for a 2.x kernel"
-		if [ "${output_dir}" == "" ]
-		then
+#		if [[ ! ${OPTIONAL_BUILD_DIR} ]]
+#		then
 			ARCH="$kernel_arch" make modules_install
-		else
-			ARCH="$kernel_arch" make O="${output_dir}" modules_install
-		fi
+#		else
+#			ARCH="$kernel_arch" make O="${OPTIONAL_BUILD_DIR}" modules_install
+#		fi
 		;;
 	2.[024]*)
 		echo "installing for a $VERSION kernel"
@@ -31,37 +32,39 @@ case "$VERSION" in
 		return 1
 		;;
 esac
-if [ "${output_dir}" == "" ]
-then
-	root="${INSTALL_ROOT}"
-else
-	root="${output_dir}"
-fi
+
+#if [[ $OPTIONAL_BUILD_DIR ]]
+#then
+#	root=$OPTIONAL_BUILD_DIR
+#else
+	root="."
+#fi
+
 case  ${kernel_arch}  in
 	ppc)
-		cp vmlinux \
-		${root}/boot/vmlinux-$append &&
-		ln -sf ${root}/boot/vmlinux-${append} \
-		${root}/boot/vmlinux
+		cp ${root}/vmlinux \
+		${INSTALL_ROOT}/boot/vmlinux-$append &&
+		ln -sf ${INSTALL_ROOT}/boot/vmlinux-${append} \
+		${INSTALL_ROOT}/boot/vmlinux
 		;;
 	sparc*)
-		gzip -c9 vmlinux > \
-		${root}/boot/vmlinuz-$append &&
-		ln -sf ${root}/boot/vmlinuz-${append} \
-		${root}/boot/vmlinuz
+		gzip -c9 ${root}/vmlinux > \
+		${INSTALL_ROOT}/boot/vmlinuz-$append &&
+		ln -sf ${INSTALL_ROOT}/boot/vmlinuz-${append} \
+		${INSTALL_ROOT}/boot/vmlinuz
 		;;
 	*)
-		cp arch/${kernel_arch}/boot/bzImage \
-		${root}/boot/vmlinubz-$append &&
-		ln -sf ${root}/boot/vmlinubz-${append} \
-		${root}/boot/vmlinubz
+		cp ${root}arch/${kernel_arch}/boot/bzImage \
+		${INSTALL_ROOT}/boot/vmlinubz-$append &&
+		ln -sf ${INSTALL_ROOT}/boot/vmlinubz-${append} \
+		${INSTALL_ROOT}/boot/vmlinubz
 	;;
 esac
 
-cp System.map ${INSTALL_ROOT}/boot/System.map-${append}
+cp ${root}/System.map ${INSTALL_ROOT}/boot/System.map-${append}
 ln -sf ${INSTALL_ROOT}/boot/System.map-${append} \
 	${INSTALL_ROOT}/boot/System.map
-cp ./.config ${INSTALL_ROOT}/boot/config-${append}
+cp ${root}/.config ${INSTALL_ROOT}/boot/config-${append}
 ln -sf ${INSTALL_ROOT}/boot/config-${append} \
 	${INSTALL_ROOT}/boot/config
 

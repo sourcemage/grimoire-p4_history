@@ -1,4 +1,5 @@
 . ${CONFIG_CACHE}/details.conf
+persistent_load
 if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $SOURCE_DIRECTORY 
@@ -25,7 +26,7 @@ then
 		linux_new_uncompress ./${source}
 		patch -p${pval} <${patch}
 	done
-
+	make mrproper
 	if [[ $patchversion == "" ]]
 	then
 		append=$VERSION
@@ -56,15 +57,20 @@ then
 	then
 		make mrproper
 	fi
-	if [ "${output_dir}" == "" ]
-	then
-		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./.config
-		ARCH="${kernel_arch}" make $MAKEMODE
-		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
-	else
-		mkdir -p ${output_dir}
-		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config "${output_dir}"
-		ARCH="${kernel_arch}" make O="${output_dir}" $MAKEMODE
-		cp ${output_dir}/.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
-	fi
+	cp ${CONFIG_CACHE}/kernel.config ./.config
+	ARCH=${kernel_arch} make $MAKEMODE
+	cp ./.config ${CONFIG_CACHE}/kernel.config
+
+# this doesn't work can't quite get it so I'm not going to use it, think its a bug in the kernel
+#	if [[ ${OPTIONAL_BUILD_DIR} ]]
+#	then
+#		mkdir -p ${OPTIONAL_BUILD_DIR}
+#		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ${OPTIONAL_BUILD_DIR}/.config
+#		ARCH="${kernel_arch}" make O=${OPTIONAL_BUILD_DIR} $MAKEMODE
+#		cp ${OPTIONAL_BUILD_DIR}/.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+#	else
+#		cp ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config ./
+#		ARCH="${kernel_arch}" make $MAKEMODE
+#		cp ./.config ${INSTALL_ROOT}/${CONFIG_CACHE}/kernel.config
+#	fi
 fi
