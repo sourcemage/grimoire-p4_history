@@ -23,4 +23,8 @@ chmod 755 /usr/bin/scfront &&
 
 echo "Done!"
 
+echo -e "\nAdding SC_LIB_DIR to /etc/profile..." &&
+echo "export SC_LIB_DIR=/usr/share/SuperCollider/SCClassLibrary">>/etc/profile &&
+echo "Done!"
+
 ) > $C_FIFO 2>&1  
