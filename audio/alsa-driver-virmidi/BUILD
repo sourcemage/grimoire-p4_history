@@ -1,7 +1,7 @@
 mconf()  {
 
   cat  <<  EOF
-options	snd	snd_device_gid=29 snd_device_mode=0660 snd_cards_limit=2
+options	snd	device_gid=29 device_mode=0660 cards_limit=2
 
 alias	char-major-116		snd
 alias	char-major-14		soundcore
@@ -30,11 +30,11 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
 (
 
-  rm  include/linux/isapnp.h  &&
-  touch  include/linux/modversions.h  &&
+  sedit  "s:\-O2:${CFLAGS}:"  configure  &&
 
   modprobe  soundcore
   ./configure  --prefix=/usr         \
+	       --with-kernel=/usr/src/linux \
                --with-isapnp=yes    \
                --with-sequencer=yes  \
                --with-oss=yes        \
