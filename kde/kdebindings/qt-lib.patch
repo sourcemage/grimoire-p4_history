@@ -1,0 +1,33 @@
+--- Makefile.am	2004-08-06 00:58:06.000000000 +0600
++++ Makefile.am	2004-10-26 16:38:32.000000000 +0600
+@@ -21,7 +21,7 @@
+ 	@(cd pykde && $(MAKE))
+ 
+ sipdone:
+-	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -v ${sip_dir}
++	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -l qt-mt -v ${sip_dir}
+ 	@(cd sip && $(MAKE))
+ 	echo "" > sipdone
+ 
+--- Makefile.in	2004-10-08 19:24:13.000000000 +0600
++++ Makefile.in	2004-10-26 16:38:45.000000000 +0600
+@@ -548,7 +548,7 @@
+ 	@(cd pykde && $(MAKE))
+ 
+ sipdone:
+-	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -v ${sip_dir}
++	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -l qt-mt -v ${sip_dir}
+ 	@(cd sip && $(MAKE))
+ 	echo "" > sipdone
+ 
+@@ -669,8 +669,9 @@
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+ 
++
+ #>+ 2
+-KDE_DIST=README.copy mungepyqtconfig.sed mungesipconfig.sed Makefile.am Makefile.in configure.in.in 
++KDE_DIST=mungepyqtconfig.sed README.copy configure.in.in mungesipconfig.sed Makefile.am Makefile.in 
+ 
+ #>+ 2
+ docs-am:

@@ -1,3 +1,11 @@
+2004-11-10 Eric Sandall <eric@sandall.us>
+	* BUILD: Set proper TMAKEPATH  (Bug #7316, still not working though)
+	* qt-lib.patch:  Added patch from http://bugs.kde.org/show_bug.cgi?id=91573
+	* PRE_BUILD: Apply qt-lib.patch
+
+2004-11-09 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added optional dependencies on Python and mono
+
 2004-10-18 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 3.3.1  (Still fails as in Bug #7316)
 
@@ -25,7 +33,7 @@
 
 2004-07-01 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Removed "--with-java" as finally took the time to
-	figure out that is why kdebindings couldn't find JAVA
+	  figure out that is why kdebindings couldn't find JAVA
 
 2004-06-25 Eric Schabell <libs@sourcemage.org>
 	* DEPENDS: added pnet, must have.
