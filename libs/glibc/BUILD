@@ -44,6 +44,11 @@
                --with-headers="${INSTALL_ROOT}/usr/src/linux/include/" \
                $OPTS			      &&
   make                                        &&
+  if [ -z $INSTALL_ROOT ]; then
+    [[ $(uname -m) = ppc* ]]  &&
+    ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld.so.1  ||
+    ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so /lib/ld-linux.so.2
+  fi  &&
   prepare_install                             &&
   if [ "$CROSS_INSTALL" = "on" ] ; then
   echo "prefix = ${INSTALL_ROOT}/usr" > configparms                                                &&
