@@ -2,6 +2,8 @@ sedit  "s/HAVE_SLN=no/HAVE_SLN=yes/"   MCONFIG
 sedit  "s/\$(OPT)//"                   MCONFIG
 (
 
+ patch  mount/pivot_root.c  <  $SCRIPT_DIRECTORY/pivot_root.c.diff  &&
+
  ./configure  --build=$BUILD           \
               --prefix=/usr            \
               $OPTS                    &&
