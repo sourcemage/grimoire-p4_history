@@ -6,18 +6,18 @@ if [ "$CVS" = "y" ]; then
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
   FORCE_DOWNLOAD=on
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/beepmp:bmp
-          MD5[0]='IGNORE'
+          MD5[0]=IGNORE
 else
-         VERSION=0.9.6.1
+         VERSION=0.9.7rc2
           SOURCE=bmp-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/bmp-$VERSION
 	SOURCE_URL[0]=$SOURCEFORGE_URL/beepmp/$SOURCE
          WEB_SITE=http://beepmp.sourceforge.net/
-           MD5[0]='5f0453c24ce295e34417317bebccf860'
+           MD5[0]='59e73638856f9972c8ee01aa9132706f'
 fi
        LICENSE[0]=GPL
           ENTERED=20031207
-          UPDATED=20031208
+          UPDATED=20040824
        MAINTAINER=little_rock@users.sourceforge.net
             SHORT="Beep Media Player is a multimedia player based on the look of WinAmp."
 cat << EOF

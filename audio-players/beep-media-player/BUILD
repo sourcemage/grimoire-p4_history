@@ -1,4 +1,17 @@
 if [ "$CVS" = "y" ]; then
-  ./scripts/gen-auto-scripts.sh -n $OPTS
+   ./scripts/gen-auto-scripts.sh -n $OPTS
 fi &&
+
+if [ "$ONEPLUGINDIR" = "y" ]; then
+   OPTS="$OPTS --enable-one-plugin-dir"
+fi &&
+
+if [ "$USERPLUGINDIR" = "n" ]; then
+   OPTS="$OPTS --disable-user-plugin-dir"
+fi &&
+
+if [ "$SIMD" = "y" ]; then
+   OPTS="$OPTS --enable-simd"
+fi &&
+
 default_build
