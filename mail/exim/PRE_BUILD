@@ -5,7 +5,4 @@ then
   unpack  ${SOURCE2}  ${MD5[1]}  &&
   unpack  ${SOURCE3}  ${MD5[2]}  &&
   unpack  ${SOURCE4}  ${MD5[3]}
-fi  &&
-
-cd  $SOURCE_DIRECTORY                            &&
-patch  -p1  <  $SCRIPT_DIRECTORY/security.patch
+fi
