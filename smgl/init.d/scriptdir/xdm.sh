@@ -6,6 +6,9 @@
 #
 #  Version:  @(#)xdm.sh  1.0.0  2002-10-02  Eric Sandall <eric@sandall.us>
 #
+# SMGL-script-version=20030224
+# no symlinks are made for this one, must do it by hand!
+
 source /etc/init.d/functions
 
 case  $1  in
