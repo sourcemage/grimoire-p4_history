@@ -1,10 +1,3 @@
-(
-  cd src             &&
-  make               &&
-  prepare_install
-
-) > $C_FIFO 2>&1  &&  (
-
-  cd src            &&
-  make    install
-)
+cd src                                                                     &&
+sed -i "s/DESTDIR=\ \/usr\/X11R6/DESTDIR=\ ${INSTALL_ROOT}\/usr/g" Makefile &&
+make
