@@ -1,58 +1,25 @@
-depends  bc       &&
-depends  zlib     &&
-depends  X11-LIBS  &&
-
-if [ "$GNOME1" = "yes" ]
+depends  bc                  &&
+depends  zlib                &&
+depends  X11-LIBS            &&
+if [ "$TOOLKIT" = "GTK" ]
 then depends  gtk+           &&
      depends  gdk-pixbuf     &&
      depends  libxml         &&
      depends  control-center 
 fi                           &&
-if [ "$GNOME2" = "yes" ]
+if [ "$TOOLKIT" = "GTK2" ]
 then depends  gtk+2          &&
-     depends  libxml2        
+     depends  libxml2        &&       
+     depends  libglade2
 fi                           &&
-if [ "$MOTIF" = "yes" ]
+if [ "$TOOLKIT" = "MOTIF" ]
 then depends  MOTIF
 fi                           &&
-
-optional_depends  Linux-PAM                                     \
-                  "--with-pam"                                  \
-                  "--without-pam"                               \
-                  "for Pluggable Authentication Modules (PAM)"  &&
-
-optional_depends  krb5                                   \
-                  "--with-kerberos"                      \
-                  "--without-kerberos"                   \
-                  "for Kerberos authentication support"  &&
-
-optional_depends  shadow                                        \
-                  "--with-shadow"                               \
-                  "--without-shadow"                            \
-                  "for shadow password authentication support"  &&
-
-
-optional_depends  GLUT                           \
-                  "--with-gl  --with-gle"        \
-                  "--without-gl  --without-gle"  \
-                  "for OpenGL and GLE demos"     &&
-
-optional_depends  fortune                      \
-                  "--with-fortune"             \
-                  "--without-fortune"          \
-                  "for fortune text messages"  &&
-
-optional_depends  audiofile            \
-                  ""                   \
-                  ""                   \
-                  "for audio support"  &&
-
-optional_depends  esound                                    \
-                  ""                                        \
-                  ""                                        \
-                  "for enlightenment sound daemon support"  &&
-
-optional_depends  jpeg                      \
-                  "--with-jpeg"             \
-                  "--without-jpeg"          \
-                  "for JPEG image support"  
+optional_depends  Linux-PAM "--with-pam" "--without-pam" "for Pluggable Authentication Modules (PAM)"       &&
+optional_depends  krb5 "--with-kerberos" "--without-kerberos" "for Kerberos authentication support"         &&
+optional_depends  shadow "--with-shadow" "--without-shadow" "for shadow password authentication support"    &&
+optional_depends  GLUT "--with-gl  --with-gle" "--without-gl  --without-gle" "for OpenGL and GLE demos"     &&
+optional_depends  fortune "--with-fortune" "--without-fortune" "for fortune text messages"                  &&
+optional_depends  audiofile "" "" "for audio support"                                                       &&
+optional_depends  esound "" "" "for enlightenment sound daemon support"                                     &&
+optional_depends  jpeg "--with-jpeg" "--without-jpeg" "for JPEG image support"  
