@@ -1,6 +1,5 @@
 depends zip &&
 depends perl &&
-depends libart_lgpl &&
 
 depends zlib   '--with-system-zlib' &&
 depends jpeg   '--with-system-jpeg' &&
@@ -12,6 +11,10 @@ optional_depends libmng                           \
                  '--with-system-mng'              \
                  '--without-system-mng'           \
                  'for MNG picture format support' &&
+
+if echo "$OPTS" | grep -q 'enable-svg'; then
+  depends libart_lgpl '--enable-svg-renderer-libart'
+fi &&
 
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   depends gnupg
