@@ -7,7 +7,7 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION%a*}
           MD5[0]=5bd4f42c725bbc96f19c77f770ef625a
         WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
          ENTERED=20010922
-         UPDATED=20030104
+         UPDATED=20041127
       LICENSE[0]=GPL
        BUILD_API=2
            SHORT="Create home-burned CDs with a CD-R/CD-RW recorder"
@@ -31,12 +31,11 @@ The spell will prompt you three choices to do this :
  [2] : Allow users from the burning group to burn, with the suid-bit set.
 	This way cdrecord process will have a higher priority as if it 
 	run as root. This can be useful with some old CD-R/CD-RW recorders
-	which don't have burnfree/buffer underrun protection.
+	which don't have burnfree/buffer underrun protection. Cdrecord will
+	be patched to pass through kernel security limitations.
 If you choose [0] or [2], you will have then to add users in the burning 
-group that the spell creates. You must also give write permission for the
-burning group on the CD-R/CD-RW recorder. You can do this in three 
-differents ways, according do the device management system you use :
- - For static /dev, just do a chown and chmod
- - For devfs, look at /etc/devfsd.conf
- - For udev, look at /etc/udev/udev.permissions
+group that the spell creates. Write permission for the burning group on the
+CD-R/CD-RW recorder must be gived. This is done automatically by the spell 
+scripts in three differents ways, according do the device management system 
+you use. Please NOTE that you have to do this manually with DEVFSD at this time.
 EOF

@@ -16,28 +16,74 @@ mod_ide_scsi()  {
 
 }
 
-change_cdr_perms()  {
-  CDR_DEVICES=$(cdr_detect)
-  if [ $? == 0 ]; then
-    case ${DEVICES} in
-	static) for DEV in $CDR_DEVICES; do
-			chmod 0660 "/dev/${DEV}"
-			chown root:burning "/dev/${DEVS}"
-		done;;
-        devfs) "Devfsd permissions change not yet implemented, please adjust permissions manually";;
-	udev) UDEV_PERM_FILE=/etc/udev/udev.permissions
-	      for DEV in $CDR_DEVICES; do
-		STRING="${DEV}:root:burning:0660"
-		if grep "^${STRING}" ${UDEV_PERM_FILE}; then
-		  message "Permissions for devices ${DEV} are OK"
-		else
-		  message "Changing permissions for devices ${DEV}"
-		  echo ${STRING} >> ${UDEV_PERM_FILE}
-		fi
-	      done;;
-    esac
-  else
-    message "No CD recorder device found, please adjust permissions manually"
+#---------------------------------------------------------------------
+## @param permissions string
+## @param udev permission file
+##
+## Try to add udev permissions string just after #cdroms comment, 
+## otherwise append it to the end of the udev permission file
+##
+#---------------------------------------------------------------------
+add_udev_cdr_perms()  {
+    if grep -q "^#cdroms" $2; then
+	sed -i "/#cdroms/a$1" $2
+    else
+	echo -e "\n$1" >> $2
+    fi
+}
+
+#---------------------------------------------------------------------
+## @param group name allowed to burn
+##
+## Check permission for cdrom recorders
+##
+#---------------------------------------------------------------------
+check_cdr_perms()  {
+    
+    CDR_DEVICES=$("${SCRIPT_DIRECTORY}/cdr_detect")
+    
+    if [ $? == 0 ]; then
+	
+	case ${DEVICES} in
+	    static) for DEV in $CDR_DEVICES; do
+			message "Changing permissions for cdrom recorder device /dev/${DEV}"
+			if [ $1 == "burning" ]; then
+			    chmod 0660 "/dev/${DEV}"
+			    chown root:burning "/dev/${DEV}"
+			else
+			    chmod 0600 "/dev/${DEV}"
+			    chown root:root "/dev/${DEV}"
+			fi
+		    done
+		    ;;
+	    devfs)  message "Devfsd permissions changes for cdrom recorders not yet implemented, please do it manually"
+		    ;;
+	    udev)   UDEV_PERM_FILE="/etc/udev/udev.permissions"
+		    for DEV in $CDR_DEVICES; do
+			if [ $1 == "burning" ]; then
+			    UDEV_STRING="${DEV}:root:burning:0660"
+			else
+			    UDEV_STRING="${DEV}:root:root:0600"
+	 		fi
+			
+			if grep -q "^${UDEV_STRING}" ${UDEV_PERM_FILE}; then
+			    message "Permissions for cdrom recorder device /dev/${DEV} are OK, continuing"
+			elif grep -q "^${DEV}" ${UDEV_PERM_FILE}; then
+			    message "Changing permissions for cdrom recorder device /dev/${DEV}"
+			    sed -i.cdrtools "/${DEV}/d" ${UDEV_PERM_FILE}
+			    add_udev_cdr_perms ${UDEV_STRING} ${UDEV_PERM_FILE}
+			else
+			    message "Adding permissions for cdrom recorder device /dev/${DEV}"
+			    cp ${UDEV_PERM_FILE} "${UDEV_PERM_FILE}.cdrtools"
+			    add_udev_cdr_perms ${UDEV_STRING} ${UDEV_PERM_FILE}
+			fi
+		    done
+		    message "Permissions will be updated on next boot"
+		    ;;
+	esac
+    else
+	message "No CD recorder device found, please adjust its permissions manually"
+    fi   
 }
 
 case  $IDE_SCSI  in 
@@ -49,12 +95,14 @@ case ${PERM} in
   burning_group_users_with_suid_bit) 	create_group burning
 					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
 				        chmod  4710 ${INSTALL_ROOT}/usr/bin/cdrecord
+					check_cdr_perms burning
 					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
   burning_group_users) 			create_group burning
 					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
 					chmod  0750 ${INSTALL_ROOT}/usr/bin/cdrecord
-					change_cdr_perms()
+					check_cdr_perms burning
 					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
   root_only) 				chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
-					chmod  0700 ${INSTALL_ROOT}/usr/bin/cdrecord;;
+					chmod  0700 ${INSTALL_ROOT}/usr/bin/cdrecord
+					check_cdr_perms root;;
 esac
