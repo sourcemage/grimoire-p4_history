@@ -1,16 +1,16 @@
            SPELL=glade2
-         VERSION=2.0.0
+         VERSION=2.0.1
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=glade-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/glade-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/glade/$BRANCH/$SOURCE
-SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/glade/$BRANCH/$SOURCE
-          MD5[0]="cd3e49abf1bb593e8a3514cc4628e4e1"
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/glade/$BRANCH/$SOURCE
+          MD5[0]='e2cc247b77eeb66692a501b341464060'
       LICENSE[0]="GPL"
         WEB_SITE=http://glade.gnome.org
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020518
-         UPDATED=20030412
+         UPDATED=20031109
            SHORT="Glade is the GTK+2 user interface builder"
 cat << EOF
 Glade is a GTK+2 user interface builder
