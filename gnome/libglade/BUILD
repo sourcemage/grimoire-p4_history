@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr      \
-               --disable-gnomedb  &&
+               --disable-gnomedb  \
+	       $OPTS		  &&
   make                            &&
   prepare_install                 &&
   make    install

@@ -17,7 +17,7 @@
   ./configure  --prefix=/usr         \
                --localstatedir=/var  \
                --sysconfdir=/etc     \
-               $AUTH_SCHEME          &&
+               $AUTH_SCHEME $OPTS    &&
   make                               &&
   prepare_install                    &&
   make    install                    &&

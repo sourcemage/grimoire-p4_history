@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr        \
                --bindir=/usr/games  \
-               --sysconfdir=/etc    &&
+               --sysconfdir=/etc    \
+	       $OPTS		    &&
   make                              &&
   prepare_install                   &&
   make    install
