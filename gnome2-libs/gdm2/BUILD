@@ -1,32 +1,22 @@
-(
-  create_account gdm
+create_account gdm                                                      &&
 
-  if    spell_installed  Linux-PAM;  then  SCHEME="pam"
-  elif  spell_installed  shadow;     then  SCHEME="shadow"
-                                   else  SCHEME="auto"
-  fi
+if    spell_installed  Linux-PAM;  then  SCHEME="pam"
+elif  spell_installed  shadow;     then  SCHEME="shadow"
+else  SCHEME="auto"
+fi                                                                      &&
 
-  OPTS="$OPTS --enable-authentication-scheme=$SCHEME"
+OPTS="$OPTS --enable-authentication-scheme=$SCHEME"                     &&
 
-  LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"
+LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"                                     &&
 
-  patch  -p 1  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch  &&
+patch  -p 1  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch  &&
 
-  #default_build                                     &&
+./configure   --build=$BUILD                                            \
+              --prefix=${INSTALL_ROOT}/usr                              \
+              --sysconfdir=${INSTALL_ROOT}/etc                          \
+              --localstatedir=${INSTALL_ROOT}/var                       \
+              $OPTS                                                     &&
 
-  ./configure   --build=$BUILD       \
-                --prefix=${INSTALL_ROOT}/usr        \
-                --sysconfdir=${INSTALL_ROOT}/etc    \
-                --localstatedir=${INSTALL_ROOT}/var \
-                $OPTS                               &&
+sedit 's#$(LINK)#$(LINK) $(LIBS)#' daemon/Makefile                      &&
+make
 
-  sedit 's#$(LINK)#$(LINK) $(LIBS)#' daemon/Makefile   &&
-  make            &&
-  prepare_install &&
-  make install    &&
-
-  mkdir  -p           ${INSTALL_ROOT}/var/gdm       &&
-  chown  -R  gdm:gdm  ${INSTALL_ROOT}/var/gdm       &&
-  chmod  750          ${INSTALL_ROOT}/var/gdm
-
-)  > $C_FIFO  2>&1
