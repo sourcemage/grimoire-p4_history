@@ -1,0 +1,9 @@
+default_pre_build &&
+
+if [ "$GETDEVEL" == "y" ]; then
+   cd $SOURCE_DIRECTORY &&
+   patch -p0 < $SCRIPT_DIRECTORY/configure.diff &&
+   autoconf
+fi 
+ 
+
