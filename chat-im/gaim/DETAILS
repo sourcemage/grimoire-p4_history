@@ -1,31 +1,31 @@
            SPELL=gaim
-          SPELL2=gaim-encryption
-         VERSION=${VERSION:=0.79}
-        VERSION2=${VERSION2:=2.27}
+#          SPELL2=gaim-encryption
+         VERSION=${VERSION:=0.80}
+#        VERSION2=${VERSION2:=2.27}
 if [ "$CVS" = "yes" ]; then
          VERSION=cvs
-        VERSION2=cvs
+#        VERSION2=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
+#         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim:gaim
-  SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
+#  SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
   FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
-          MD5[1]="IGNORE"
+#          MD5[1]="IGNORE"
 else
           SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
+#         SOURCE2=$SPELL-encryption-$VERSION2.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
-          MD5[0]='7a629f9c7970280120a4b78d5105b946'
-          MD5[1]=0895c7a0aa8183e6a6696d29b0a78eeb
-      LICENSE[2]=GPL
+#  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL2/$SOURCE2
+          MD5[0]='bd3c66a100006e7b62e8bb12dda57977'
+#          MD5[1]=0895c7a0aa8183e6a6696d29b0a78eeb
+#      LICENSE[2]=GPL
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim.sourceforge.net/
-       WEB_SITE2=http://gaim-encryption.sourceforge.net/
+#       WEB_SITE2=http://gaim-encryption.sourceforge.net/
       LICENSE[0]=GPL
-      LICENSE[1]=GPL
+#      LICENSE[1]=GPL
       MAKE_NJOBS=1
     DISTCC_HOSTS=
           CCACHE=off
