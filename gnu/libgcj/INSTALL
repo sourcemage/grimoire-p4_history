@@ -1,0 +1,6 @@
+  for DD in fastjar boehm-gc libffi libjava ; do
+    cd  $DD                                       &&
+
+    make gcc_version="$VERSION" install           &&
+    cd ..
+  done 

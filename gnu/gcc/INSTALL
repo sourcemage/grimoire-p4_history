@@ -1,0 +1,10 @@
+# install the compilers
+  make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" install  &&
+
+# make some extra symlinks
+#cd ${INSTALL_ROOT}/usr/bin                    &&
+ln -sf ${INSTALL_ROOT}/usr/bin/gcc ${INSTALL_ROOT}/usr/bin/cc     &&
+ln -sf ${INSTALL_ROOT}/usr/bin/cpp ${INSTALL_ROOT}/lib            
+
+#if [ "$WANTOBJC" == "y' ]; then
+#fi
