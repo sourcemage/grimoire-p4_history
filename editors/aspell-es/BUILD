@@ -3,7 +3,6 @@
   ./configure      &&
   make             &&
   prepare_install  &&
-  make    install  &&
-  chmod  -R  a+rx  /usr/doc/${SPELL}
+  make    install
 
 ) > ${C_FIFO} 2>&1
