@@ -2,7 +2,7 @@
 
     TEXMF=`kpsetool -v '$TEXMFLOCAL'`                       &&
 
-    gcc $OPTS -o musixflx systems/c-source/musixflx.c       &&
+    gcc $OPTS -o musixflx system/c-source/musixflx.c        &&
 
     prepare_install                                         &&
 

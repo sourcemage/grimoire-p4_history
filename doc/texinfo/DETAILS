@@ -1,18 +1,17 @@
            SPELL=texinfo
-         VERSION=4.5
+         VERSION=4.6
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[2]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
-          MD5[0]=98882601b2641da8b9d87498c4001846
+          MD5[0]=085f1b6f0a07fee079a29e7c363bf30d
         WEB_SITE=http://www.gnu.org/software/texinfo
          ENTERED=20010922
          UPDATED=20020409
-         LICENSE=GPL
+      LICENSE[0]=GPL
       MAINTAINER=richard.brauer@physik.rwth-aachen.de
            SHORT="texinfo contain utilities to work with and produce manuals."
 cat << EOF
-
 texinfo - Utilities to work with and produce manuals, 
 ASCII text, and on-line documentation from a single 
 source file.
@@ -26,5 +25,4 @@ you need have only one document.
 Texinfo can produce output in plain ASCII, HTML, its 
 own hypertext format called Info, and (using TeX) DVI 
 format.
-
 EOF
