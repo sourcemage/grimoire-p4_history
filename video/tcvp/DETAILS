@@ -1,0 +1,19 @@
+           SPELL=tcvp
+         VERSION=0.1.6
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+        WEB_SITE=http://tcvp.sourceforge.net
+          MD5[0]=5d942e14bc1ab0dba3a68c3048b0c61a
+      LICENSE[0]=OSL
+         ENTERED=20031107
+         UPDATED=20031107
+           SHORT="TCVP is a video and music player, transcoder and streaming server"
+cat << EOF
+TCVP is a video and music player, transcoder and streaming server for Unix-like
+operating systems.
+A key feature of TCVP is its modular design. The whole functionality is broken
+down into a set of modules, each with a clean, well-defined interface. This
+allows for easy extensibility, as well as possibility to reuse parts of TCVP in
+other applications.
+EOF

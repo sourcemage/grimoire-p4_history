@@ -1,0 +1,23 @@
+           SPELL=libtc
+         VERSION=1.0.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+        WEB_SITE=http://libtc.sourceforge.net
+          MD5[0]=c22fea1a1dc578b1d78fde0d08a6b737
+      LICENSE[0]=OSL
+         ENTERED=20031107
+         UPDATED=20031107
+            DOCS="COPYING NEWS README"
+           SHORT="Libtc is a collection of useful functions for C programming."
+cat << EOF
+Libtc is a collection of useful functions for C programming. Features include:
+* Linked list
+* Hash table
+* Red-black tree
+* Priority queue
+* Configuration file parser
+* Reference counting helpers
+* Some other useful stuff
+Everything is thread safe and reentrant.
+EOF
