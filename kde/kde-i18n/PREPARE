@@ -3,7 +3,9 @@
             SITE=\$KDE_URL/stable/3.1.1/src
 
 # delete existing kde.languages, it has wrong URLs and format
-rm $SPELL_CONFIG
+if [ ! -s $SPELL_CONFIG ] 
+then rm $SPELL_CONFIG
+fi
 
 get_kdelanguages()  {
   if ! [ -f $SPELL_CONFIG ]
@@ -45,3 +47,4 @@ get_kdelanguages()  {
   . $SPELL_CONFIG
 }
 get_kdelanguages
+
