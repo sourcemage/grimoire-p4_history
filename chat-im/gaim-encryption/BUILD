@@ -2,4 +2,6 @@
 if spell_ok nss ; then
   export PKG_CONFIG_PATH="/usr/include/nss:/usr/include/nspr" 
 fi                                              &&
-default_build
+make_single    &&
+default_build  &&
+make_normal

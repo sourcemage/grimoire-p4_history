@@ -12,4 +12,5 @@ sedit  "s/-m486//"                  Makefile                &&
 sedit  "s/^CFLAG=/CFLAG=$CFLAGS /"  Makefile                &&
 sedit  "s/chmod 644\(.*pkgconfig\)/chmod 755\1/"  Makefile  &&
 
+make_single  &&
 make

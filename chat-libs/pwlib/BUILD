@@ -1,4 +1,5 @@
 export PWLIBDIR=$SOURCE_DIRECTORY   &&
 OPTS="$OPTS --enable-plugins"       &&
-default_build
-
+make_single                         &&
+default_build                       &&
+make_normal

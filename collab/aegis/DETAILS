@@ -1,16 +1,16 @@
            SPELL=aegis
          VERSION=4.19
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='5db6ab7103dcc7d3d82046a94faf57e0'
-      LICENSE[0]=GPL
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-      MAKE_NJOBS=1
    SOURCE_URL[0]=$SOUREFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://aegis.sourceforge.net/$SOURCE
+          MD5[0]=5db6ab7103dcc7d3d82046a94faf57e0
         WEB_SITE=http://aegis.sourceforge.net/
          ENTERED=20021010
          UPDATED=20030407
-           SHORT='Aegis is a transaction-based software configuration management system'
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Transaction-based software configuration management system"
 cat << EOF
 Aegis is a transaction-based software configuration management system. It
 provides a framework within which a team of developers may work on many

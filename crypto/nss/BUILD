@@ -12,4 +12,5 @@ NSS_LINUX_VERSION=`uname  -r  |  cut  -d. -f-2`    &&
 cd  security/nss                                   &&
 cp  ../coreconf/Linux2.5.mk                        \
     ../coreconf/Linux${NSS_LINUX_VERSION}.mk       &&
+make_single          &&
 make  nss_build_all

@@ -1,17 +1,6 @@
-(
-
-  make < $SCRIPT_DIRECTORY/atlas-${VERSION}.config     &&
-  ARCH=`ls -1 Make.Linux* | sed -e 's/Make.//'`        &&
-  make  install  arch=$ARCH                            &&
-  SOURCE_LIB=$SOURCE_DIRECTORY/lib/$ARCH               &&
-  prepare_install                                      &&
-  install -m 0644 $SOURCE_LIB/libatlas.a    /usr/lib   &&
-  install -m 0644 $SOURCE_LIB/libcblas.a    /usr/lib   &&
-  install -m 0644 $SOURCE_LIB/libf77blas.a  /usr/lib   &&
-  install -m 0644 $SOURCE_LIB/liblapack.a   /usr/lib   &&
-  install -m 0644 $SOURCE_DIRECTORY/include/cblas.h    \
-    /usr/include                                       &&
-  install -m 0644 $SOURCE_DIRECTORY/include/clapack.h  \
-    /usr/include
-
-) > $C_FIFO 2>&1
+persistent_add  SOURCE_LIB                           &&
+make_single                                          &&
+make < $SCRIPT_DIRECTORY/atlas-${VERSION}.config     &&
+ARCH=`ls -1 Make.Linux* | sed -e 's/Make.//'`        &&
+make  install  arch=$ARCH                            &&
+SOURCE_LIB=$SOURCE_DIRECTORY/lib/$ARCH

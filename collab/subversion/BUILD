@@ -1,5 +1,3 @@
-# -*- mode: shell-script; -*-
-
 ## conditionally run `make' if SWIG dependency is on
 ## @usage <1:make target>
 function make_if_swig() {
@@ -7,6 +5,8 @@ function make_if_swig() {
     make $1
   fi
 }
+
+make_single  &&
 
 SVN_CLIENT=$(which svn 2>/dev/null)
 
