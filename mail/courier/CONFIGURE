@@ -1,233 +1,237 @@
-if  query  "Do you want to install and configure the webmail portion of Courier? "  y;  then
-  INSTALL_WEBMAIL=y
-else
-  INSTALL_WEBMAIL=n
-fi
-
-if  query  "Do you want to install and configure the IMAP portion of Courier? "  y;  then
-  INSTALL_IMAP=y
-  echo  'OPTS="${OPTS}  --enable-workarounds-for-imap-client-bugs"'  >>  ${SPELL_CONFIG}
-else
-  INSTALL_IMAP=n
-  echo  'OPTS="${OPTS}  --disable-utf7-folder-encoding"'             >>  ${SPELL_CONFIG}
-fi
-
-##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
-if  spell_installed  Linux-PAM;  then
-  if  query  "Use the PAM library for authentication? "  y;  then
-    AUTHPAM=y
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+if ! grep -q 'CONFIGURED=\"y\"' ${DEPENDS_CONFIG}/courier; then
+  if  query  "Do you want to install and configure the webmail portion of Courier? "  y;  then
+    INSTALL_WEBMAIL=y
   else
-    AUTHPAM=n
-    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    INSTALL_WEBMAIL=n
   fi
-else
-  if  query  "Use the PAM library for authentication? "  n;  then
-    AUTHPAM=y
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-  else
-    AUTHPAM=n
-    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
 
-    ##  Use authshadow instead of authpwd on systems that use the shadow password file.
-    if  [  -e  /etc/shadow  ];  then
-      if  query  "Use shadow passwords for authentication? "  y;  then
-        AUTHSHADOW=y
-        AUTHPWD=n
-        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+  if  query  "Do you want to install and configure the IMAP portion of Courier? "  y;  then
+    INSTALL_IMAP=y
+    echo  'OPTS="${OPTS}  --enable-workarounds-for-imap-client-bugs"'  >>  ${SPELL_CONFIG}
+  else
+    INSTALL_IMAP=n
+    echo  'OPTS="${OPTS}  --disable-utf7-folder-encoding"'             >>  ${SPELL_CONFIG}
+  fi
+
+  ##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
+  if  spell_installed  Linux-PAM;  then
+    if  query  "Use the PAM library for authentication? "  y;  then
+      AUTHPAM=y
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    else
+      AUTHPAM=n
+      echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Use the PAM library for authentication? "  n;  then
+      AUTHPAM=y
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    else
+      AUTHPAM=n
+      echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+
+      ##  Use authshadow instead of authpwd on systems that use the shadow password file.
+      if  [  -e  /etc/shadow  ];  then
+        if  query  "Use shadow passwords for authentication? "  y;  then
+          AUTHSHADOW=y
+          AUTHPWD=n
+          echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+        else
+          AUTHSHADOW=n
+          echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+          AUTHPWD=n
+          echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+        fi
       else
         AUTHSHADOW=n
         echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-        AUTHPWD=n
-        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-      fi
-    else
-      AUTHSHADOW=n
-      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
 
-      if  [  -e  /etc/passwd  ];  then
-        if  query  "Authenticate against the system passwd file? "  y;  then
-          AUTHPWD=y
-        else
-          AUTHPWD=n
-          echo  'OPTS="${OPTS}  --without-authpwd"'  >>  ${SPELL_CONFIG}
+        if  [  -e  /etc/passwd  ];  then
+          if  query  "Authenticate against the system passwd file? "  y;  then
+            AUTHPWD=y
+          else
+            AUTHPWD=n
+            echo  'OPTS="${OPTS}  --without-authpwd"'  >>  ${SPELL_CONFIG}
+          fi
         fi
       fi
     fi
   fi
-fi
 
-if  spell_installed  db  ||  spell_installed  gdbm;  then
-  if  query  "Authenticate from a GDBM/DB database? "  y;  then
-    AUTHUSERDB=y
+  if  spell_installed  db  ||  spell_installed  gdbm;  then
+    if  query  "Authenticate from a GDBM/DB database? "  y;  then
+      AUTHUSERDB=y
+    else
+      AUTHUSERDB=n
+      echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  y;  then
+      AUTHCRAM=y
+    else
+      AUTHCRAM=n
+      echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+    fi
   else
-    AUTHUSERDB=n
-    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    if  query  "Authenticate from a GDBM/DB database? "  n;  then
+      AUTHUSERDB=y
+    else
+      AUTHUSERDB=n
+      echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  n;  then
+      AUTHCRAM=y
+    else
+      AUTHCRAM=n
+      echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+    fi
   fi
 
-  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  y;  then
-    AUTHCRAM=y
+  if  spell_installed  openldap;  then
+    if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
+      AUTHLDAP=y
+    else
+      AUTHLDAP=n
+      echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    fi
   else
-    AUTHCRAM=n
-    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from a GDBM/DB database? "  n;  then
-    AUTHUSERDB=y
-  else
-    AUTHUSERDB=n
-    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    if  query  "Authenticate from an account file stored in an LDAP directory? "  n;  then
+      AUTHLDAP=y
+    else
+      AUTHLDAP=n
+      echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    fi
   fi
 
-  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  n;  then
-    AUTHCRAM=y
+  if  spell_installed  mysql;  then
+    if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
+      AUTHMYSQL=y
+    else
+      AUTHMYSQL=n
+      echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+    fi
   else
-    AUTHCRAM=n
-    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+    if  query  "Authenticate from an account file stored in a MySQL database? "  n;  then
+      AUTHMYSQL=y
+    else
+      AUTHMYSQL=n
+      echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+    fi
   fi
-fi
 
-if  spell_installed  openldap;  then
-  if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
-    AUTHLDAP=y
+  if  spell_installed  postgresql;  then
+    if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
+      AUTHPGSQL=y
+    else
+      AUTHPGSQL=n
+      echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+    fi
   else
-    AUTHLDAP=n
-    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    if  query  "Authenticate from an account file stored in a PostgreSQL database? "  n;  then
+      AUTHPGSQL=y
+    else
+      AUTHPGSQL=n
+      echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+    fi
   fi
-else
-  if  query  "Authenticate from an account file stored in an LDAP directory? "  n;  then
-    AUTHLDAP=y
+
+  if  query  "Use the authdaemond authentication proxy process? "  y;  then
+    AUTHDAEMOND=y
   else
-    AUTHLDAP=n
-    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    AUTHDAEMOND=n
+    echo  'OPTS="${OPTS}  --without-authdaemond"'  >>  ${SPELL_CONFIG}
   fi
-fi
 
-if  spell_installed  mysql;  then
-  if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
-    AUTHMYSQL=y
-  else
-    AUTHMYSQL=n
-    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from an account file stored in a MySQL database? "  n;  then
-    AUTHMYSQL=y
-  else
-    AUTHMYSQL=n
-    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
-  fi
-fi
+  AUTHVCHKPW=n
+  echo  'OPTS="${OPTS}  --without-authvchkpw"'  >>  ${SPELL_CONFIG}
 
-if  spell_installed  postgresql;  then
-  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
-    AUTHPGSQL=y
-  else
-    AUTHPGSQL=n
-    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  n;  then
-    AUTHPGSQL=y
-  else
-    AUTHPGSQL=n
-    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
-  fi
-fi
+  if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
+    if  query  "Do you want to enable spell checking in Courier's webmail? "  y;  then
+      SPELL_CHECK=y
 
-if  query  "Use the authdaemond authentication proxy process? "  y;  then
-  AUTHDAEMOND=y
-else
-  AUTHDAEMOND=n
-  echo  'OPTS="${OPTS}  --without-authdaemond"'  >>  ${SPELL_CONFIG}
-fi
-
-AUTHVCHKPW=n
-echo  'OPTS="${OPTS}  --without-authvchkpw"'  >>  ${SPELL_CONFIG}
-
-if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
-  if  query  "Do you want to enable spell checking in Courier's webmail? "  y;  then
-    SPELL_CHECK=y
-
-    if  !  spell_installed  aspell;  then
-      if  !  spell_installed  ispell;  then
-        if  query  "Do you want to install aspell?  If yes, press 'y'.  If not, press 'n' and ispell will be installed. "  n;  then
-          SPELL_CHECKER=aspell
-        else
-          SPELL_CHECKER=ispell
+      if  !  spell_installed  aspell;  then
+        if  !  spell_installed  ispell;  then
+          if  query  "Do you want to install aspell?  If yes, press 'y'.  If not, press 'n' and ispell will be installed. "  n;  then
+            SPELL_CHECKER=aspell
+          else
+            SPELL_CHECKER=ispell
+          fi
         fi
       fi
+    else
+      SPELL_CHECK=n
+      echo  'OPTS="${OPTS}  --without-ispell"'  >>  ${SPELL_CONFIG}
     fi
   else
     SPELL_CHECK=n
     echo  'OPTS="${OPTS}  --without-ispell"'  >>  ${SPELL_CONFIG}
   fi
-else
-  SPELL_CHECK=n
-  echo  'OPTS="${OPTS}  --without-ispell"'  >>  ${SPELL_CONFIG}
-fi
 
-if  query  "Do you want to be able to send e-mails by fax? "  n;  then
-  SEND_FAXES=y
-fi
-
-
-
-if  query  "Attempt to install support for IPv6?  (If IPv6 is not detected, Courier will not install support for it.) "  n;  then
-  echo  'OPTS="${OPTS}  --with-ipv6"'     >>  ${SPELL_CONFIG}
-else
-  echo  'OPTS="${OPTS}  --without-ipv6"'  >>  ${SPELL_CONFIG}
-fi
-
-if  query  "Are you running a network without access to a DNS server? "  n;  then
-  echo  'OPTS="${OPTS}  --without-tcpddns"'  >>  ${SPELL_CONFIG}
-fi
-
-if  query  "Do you wish to disable the automatic syncing of the mail queue?  This may increase performance, but will reduce reliability unless the queue is installed on a reliable disk array or a network file server. "  n;  then
-  echo  'OPTS="${OPTS}  --without-explicitsync"'  >>  ${SPELL_CONFIG}
-else
-  if  query  "Do you also wish to sync the mail queue's parent directory? "  n;  then
-    echo  'OPTS="${OPTS}  --with-dirsync"'  >>  ${SPELL_CONFIG}
-  fi
-fi
-
-if  query  "Normally, in addition to accepting mail that's addressed to <user@domain.com>, Courier can accept mail that's addressed to <user-xxx@domain.com>, for arbitrary values of xxx.  Do you wish to disable this feature? "  n;  then
-  echo  'OPTS="${OPTS}  --disable-local-extensions"'  >>  ${SPELL_CONFIG}
-fi
-
-if  query  "Do you wish for Courier to be paranoid when negotiating specific ESMTP extensions with remote servers? "  n;  then
-  echo  'OPTS="${OPTS}  --with-paranoid-smtpext"'  >>  ${SPELL_CONFIG}
-fi
-
-if  [  "${INSTALL_IMAP}"  ==  "y"  ];  then
-  if  query  "Do you to disable the automatic renaming of the IMAP Sent folder every month? "  n;  then
-    echo  'OPTS="${OPTS}  --disable-autorenamesent"'  >>  ${SPELL_CONFIG}
+  if  query  "Do you want to be able to send e-mails by fax? "  n;  then
+    SEND_FAXES=y
   fi
 
-  if  query  "Do you wish to include the Trash folder in the IMAP quota usage? "  n;  then
-    echo  'OPTS="${OPTS}  --with-trashquota"'  >>  ${SPELL_CONFIG}
-  fi
-fi
 
-if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
-  if  query  "Do you wish to disable the ability of the end-user to change their password within Webmail? "  n;  then
-    echo  'OPTS="${OPTS}  --disable-changepass"'  >>  ${SPELL_CONFIG}
-    #  W   - disable the ability to change login passwords in the webmail server. Use this if you don't want to install the authdaemon.passwd utility (which is installed suid root) that is used to change login passwords.
+
+  if  query  "Attempt to install support for IPv6?  (If IPv6 is not detected, Courier will not install support for it.) "  n;  then
+    echo  'OPTS="${OPTS}  --with-ipv6"'     >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="${OPTS}  --without-ipv6"'  >>  ${SPELL_CONFIG}
   fi
 
-  if  query  "Would you like to enable SSL for the Webmail server? "  y;  then
-    echo  'OPTS="${OPTS}  --enable-https=auto"'  >>  ${SPELL_CONFIG}
+  if  query  "Are you running a network without access to a DNS server? "  n;  then
+    echo  'OPTS="${OPTS}  --without-tcpddns"'  >>  ${SPELL_CONFIG}
   fi
+
+  if  query  "Do you wish to disable the automatic syncing of the mail queue?  This may increase performance, but will reduce reliability unless the queue is installed on a reliable disk array or a network file server. "  n;  then
+    echo  'OPTS="${OPTS}  --without-explicitsync"'  >>  ${SPELL_CONFIG}
+  else
+    if  query  "Do you also wish to sync the mail queue's parent directory? "  n;  then
+      echo  'OPTS="${OPTS}  --with-dirsync"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  query  "Normally, in addition to accepting mail that's addressed to <user@domain.com>, Courier can accept mail that's addressed to <user-xxx@domain.com>, for arbitrary values of xxx.  Do you wish to disable this feature? "  n;  then
+    echo  'OPTS="${OPTS}  --disable-local-extensions"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Do you wish for Courier to be paranoid when negotiating specific ESMTP extensions with remote servers? "  n;  then
+    echo  'OPTS="${OPTS}  --with-paranoid-smtpext"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  [  "${INSTALL_IMAP}"  ==  "y"  ];  then
+    if  query  "Do you to disable the automatic renaming of the IMAP Sent folder every month? "  n;  then
+      echo  'OPTS="${OPTS}  --disable-autorenamesent"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Do you wish to include the Trash folder in the IMAP quota usage? "  n;  then
+      echo  'OPTS="${OPTS}  --with-trashquota"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
+    if  query  "Do you wish to disable the ability of the end-user to change their password within Webmail? "  n;  then
+      echo  'OPTS="${OPTS}  --disable-changepass"'  >>  ${SPELL_CONFIG}
+      #  W   - disable the ability to change login passwords in the webmail server. Use this if you don't want to install the authdaemon.passwd utility (which is installed suid root) that is used to change login passwords.
+    fi
+
+    if  query  "Would you like to enable SSL for the Webmail server? "  y;  then
+      echo  'OPTS="${OPTS}  --enable-https=auto"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  echo 'CONFIGURED="y"' >> ${SPELL_CONFIG}
 fi
 
 #  --enable-mimecharset=charset - specifies the default character set Courier uses when adding MIME headers to a message. If not specified, us-ascii will be used.

@@ -2,7 +2,7 @@ depends  perl  &&
 
 if  spell_installed  db;  then
   if  spell_installed  gdbm;  then
-    if  query  "You have both GDBM and Berkeley DB libraries installed.  Do you want to use GDBM with Courier?  (Courier will automatically choose GDBM over Berkely DB.  Answer 'n' to use Berkely DB instead.) "  n;  then
+    if  query  "You have both GDBM and Berkeley DB libraries installed.  Do you want to use GDBM with Courier?  (Courier will automatically choose GDBM over Berkely DB.  Answer 'n' to use Berkely DB instead.) "  y;  then
       echo  'OPTS="${OPTS}  --with-db=gdbm"'  >>  ${SPELL_CONFIG}
     else
       echo  'OPTS="${OPTS}  --with-db=db"'    >>  ${SPELL_CONFIG}

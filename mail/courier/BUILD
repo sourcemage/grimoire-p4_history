@@ -1,8 +1,8 @@
 (
 
-  LDFLAGS=${LDFLAGS//-z combreloc/}                                      &&
+  create_account  courier                                                &&
 
-#  patch  -p0  <  ${SCRIPT_DIRECTORY}/disable-root-check.patch            &&
+  LDFLAGS=${LDFLAGS//-z combreloc/}                                      &&
 
   ./configure                                                            \
                --prefix=${INSTALL_ROOT}/usr                              \
