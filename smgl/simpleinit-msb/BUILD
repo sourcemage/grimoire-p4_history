@@ -9,6 +9,8 @@
   prepare_install                         &&
   make  DESTDIR=${INSTALL_ROOT}           \
            ROOT=${INSTALL_ROOT}           \
-        install
+        install                           &&
+  cp $SCRIPT_DIRECTORY/telinit /sbin/telinit
+
 
 ) > $C_FIFO 2>&1
