@@ -1,5 +1,7 @@
 2004-01-11 Jose Bernardo <jbernardo@sourcemage.org>
-	* BUILD: depmod also fixed to use the installed version of linux
+	* PREPARE: Added query for which version of the kernel to target
+	* BUILD: Changed to support casting for the running or the installed
+	kernel, depmod also fixed to use the specified version of linux
 	
 2004-01-10 Jose Bernardo <jbernardo@sourcemage.org>
 	* BUILD: KVER=$(installed_version linux) to make sure modules
