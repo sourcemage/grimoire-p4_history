@@ -4,40 +4,17 @@ COPY_MENULST_SKEL=/tmp/COPY_MENU.LST.SKEL
 
 function generate_menu_lst_skel()  {
   # find current running kernel
-  # this isn't perfect, but it will give a reasonable starting place
-  # for someone to edit and create their own menu.lst file.
   UNAME_R=`uname -r`
-  CR_KERNEL=`ls /boot/*${UNAME_R}*`
-
-  CR_KERNEL_FILE=`echo $CR_KERNEL | cut -d'/' -f3`
-  POSSIBLE_KERNEL_PARTITIONS=`grub --batch << EOF | grep hd
-find ${CR_KERNEL}
-EOF`
-  LIKELY_KERNEL_PARTITION=`echo ${POSSIBLE_KERNEL_PARTITIONS} | cut -d' ' -f1`
-
-  LIKELY_ROOT=`df / | grep dev | cut -d' ' -f1`
-  LIKELY_BOOT=`df /boot | grep dev | cut -d' ' -f1`
-
-  # determine if kernel is (hd#,#)/kernel or (hd#,#)/boot/kernel
-  if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
-  then
-	KERNEL_LOCATION=${CR_KERNEL}
-	BOOT_LOC=/boot
-  else
-	KERNEL_LOCATION=${CR_KERNEL_FILE}
-	BOOT_LOC=""
-  fi
   
   cat << EOF > ${TMP_MENU_LST}
-# The grub spell attempts to create a sensible skeletin file which you
+# The grub spell creates a smal skeletin file which you
 # can edit to create a working menu.lst file.  Use this as a guide, but
-# be sure to look over any drive/partition specifications [ things that
-# look like (hd0,0) for example ] and root= entries, as the autodetection
-# mechannism isn't perfect.  In cases where there is more than one 
-# partition containing the files grub searches for, the first match is
-# assumed.  If you multi-boot linux from multiple, different partitions
-# there is a chance it detected the wrong partition, so you need to 
-# manually check and edit this accordingly.
+# be sure to change any drive/partition specifications [ things that
+# look like (hd0,0) for example ] and root= entries, as this skeletin assume
+# that grub is installed on the first partition of the first disk.
+# It also assumes that grub is installed on the root partition, so the path
+# to the kernel looks like (hd0,0)/boot/vmlinubz
+# If you have a seperate /boot partition, this should rather look like (hd0,0)/vmlinubz
 
 # defaults to the first menu entry
 default 0
@@ -54,16 +31,21 @@ splashimage ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/grub/images/smgl-splash.xpm.gz
 # defines menu foreground/background, highlight foreground/background
 color  black/light-gray white/red
 
-# be sure and check the kernel entry below, particulary the ${LIKELY_KERNEL_PARTITION} entry.  Possible partitions detected were ${POSSIBLE_KERNEL_PARTITIONS}, of
-# which the first was assumed arbitrarilly.
-# as well as the root= entry.  You may also wish to add additional arguments,
-# such as ide-scsi= if you're using an IDE CDROM burner.
+# Be sure and check the kernel entry below, particulary the kernel entry
+# as well as the root= entry. YOU CERTAINLY WANT TO EDIT THEM !!!
+# You may also wish to add additional arguments,
+# such as ide-scsi= if you're using an IDE CDROM burner, or vga=mode if you
+# plan to use console frame-buffer. Finally you might want to add an initrd,
+# in order to have a beautiful SMGL frame buffer image for instance, please refer to
+# http://wiki.sourcemage.org/index.php?page=HOWTO-Bootsplash in this case.
 
 title  Source Mage GNU/Linux
-kernel ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/vmlinubz root=${LIKELY_ROOT} devfs=nomount
+kernel (hd0,0)/boot/vmlinubz root=/dev/hda1 devfs=nomount
+#initrd /boot/initrd.splash
 
 title  Source Mage GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=nomount
+kernel (hd0,0)/boot/vmlinubz-${UNAME_R} root=/dev/hda1 devfs=nomount
+#initrd /boot/initrd.splash
 
 EOF
 }

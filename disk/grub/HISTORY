@@ -1,3 +1,15 @@
+2005-04-03 Flavien Bridault <disk@sourcemage.org>
+    * CONFIGURE, FINAL: Moved all queries from FINAL to CONFIGURE
+      FINAL now didn't prompt for anything (bug #8404). menu.lst.skel 
+      generation has been simplified has it can't yet call grub in CONFIGURE.
+    * PRE_BUILD: Apply new patches
+    * grub-0.96-bounced-checks.patch:  disable testing of FFS and UFS2 
+      images that always fail 
+    * grub-0.96-i2o-raid.patch: i2o RAID support
+    * grub-0.96-nxstack.patch:	should fix NX segfaulting on amd64 and
+      x86_64 by Peter Jones. See 
+      http://lists.gnu.org/archive/html/bug-grub/2005-03/msg00011.html
+
 2005-03-12 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS: Updated to 0.96
 	* grub-0.95-endedit.patch,
