@@ -27,9 +27,6 @@
 
   mkdir  -p           ${INSTALL_ROOT}/var/gdm       &&
   chown  -R  gdm:gdm  ${INSTALL_ROOT}/var/gdm       &&
-  chmod  750          ${INSTALL_ROOT}/var/gdm       &&
-
-  mv  /etc/dm/Sessions/gnome.desktop.orig           \
-      /etc/dm/Sessions/gnome.desktop
+  chmod  750          ${INSTALL_ROOT}/var/gdm
 
 )  > $C_FIFO  2>&1
