@@ -8,4 +8,9 @@ optional_depends  "openssh"                             \
 optional_depends  "gnome-vfs"                                     \
                   ""                                              \
                   ""                                              \
-                  "for remote GNOME virtual file system support"
+                  "for remote GNOME virtual file system support"  &&
+
+optional_depends  "autofs"                               \
+                  "--enable-autofs-install"              \
+                  ""                                     \
+                  "for autofs config file installation"
