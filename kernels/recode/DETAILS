@@ -1,0 +1,16 @@
+           SPELL=recode
+         VERSION=3.6
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/directory/recode.html
+         ENTERED=20020208
+         UPDATED=20020208
+      MAINTAINER="jacksonje@health.missouri.edu"
+           SHORT="recode can convert almost any character set to almost any other."
+cat << EOF
+This recode program has the purpose of converting files between various 
+character sets and usages. When exact transliterations are not possible, as 
+it is often the case, the program may get rid of the offending characters or 
+fall back on approximations.
+EOF

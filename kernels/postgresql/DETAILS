@@ -1,0 +1,15 @@
+           SPELL=postgresql
+         VERSION=7.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp6.us.postgresql.org/pub/mirrors/postgresql/source/v$VERSION/$SOURCE
+        WEB_SITE=http://www.postgresql.org
+         ENTERED=20011113
+         UPDATED=20020411
+      MAINTAINER=nhudson@hiwaay.net
+           SHORT="postgresql is a sophisticated Object-Relational DBMS"
+cat << EOF
+PostgreSQL is a sophsticated Object-Relational DBMS, supporting almost
+all SQL constructs, including subselects, trasactions and user defined
+types and functions.
+EOF

@@ -1,0 +1,18 @@
+           SPELL=libtool
+         VERSION=1.4.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/libtool
+         ARCHIVE="off"
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="libtool is a generic library support script."
+cat << EOF
+libtool - Generic library support script
+A generic library support script. The program has a consistent, portable
+interface to make using shared libraries simpler. Libtool supports
+building static libraries on all platforms. It also includes GNU
+libltdl, the libtool dynamic loader library.
+EOF

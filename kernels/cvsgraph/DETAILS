@@ -1,0 +1,16 @@
+           SPELL=cvsgraph
+         VERSION=1.2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.akhphd.au.dk/~bertho/$SPELL/release/$SOURCE
+        WEB_SITE=http://www.akhphd.au.dk/~bertho/$SPELL/
+         ENTERED=20020407
+         UPDATED=20020407
+      MAINTAINER=sergeyli@pisem.net
+           SHORT="A CVS/RCS repository grapher"
+
+cat << EOF
+CvsGraph is a utility to make a graphical representation of all revisions
+and branches of a file in a CVS/RCS repository. It has been inspired by
+the 'graph' option in WinCVS (http://www.wincvs.org/).
+EOF

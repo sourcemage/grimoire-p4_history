@@ -1,0 +1,16 @@
+           SPELL=pkgconfig
+         VERSION=0.11.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.freedesktop.org/software/$SPELL/releases/$SOURCE
+        WEB_SITE=http://www.freedesktop.org
+         ENTERED=20010922
+         UPDATED=20020227
+           SHORT="pkg-config is a system for managing library compile/link flags that works with automake and autoconf."
+cat << EOF
+pkg-config is a system for managing library compile/link flags that
+works with automake and autoconf. It replaces the ubiquitous *-config
+scripts you may have seen with a single tool. There's nothing
+desktop-specific or desktop-related about pkg-config, despite it being
+on freedesktop.org.
+EOF
