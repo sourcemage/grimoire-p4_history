@@ -45,7 +45,9 @@
   if [ -f $INSTALL_LOGS/$SPELL-* ]
      then  sedit 's|.*/httpd\.conf.*||g' $INSTALL_LOGS/$SPELL-* 
   fi              &&
+
   prepare_install &&
+
   make    install &&
   if         ! [ -e ${INSTALL_ROOT}/etc/php.ini ]; then
     cp php.ini-dist ${INSTALL_ROOT}/etc/php.ini

@@ -1,15 +1,14 @@
            SPELL=xalan-j
-         VERSION=2_5_D1
-          SOURCE=${SPELL}_${VERSION}-src.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_${VERSION}
-   SOURCE_URL[0]=http://xml.apache.org/dist/${SPELL}/${SOURCE}
-          MD5[0]=06b247de6ad92f7c0eba2a88eecf2a81
+         VERSION=2_6_0
+          SOURCE=${SPELL}_$VERSION-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_$VERSION
+   SOURCE_URL[0]=http://www.apache.org/dist/xml/$SPELL/source/$SOURCE
+          MD5[0]='f1dcb5be7733055db4ad5e141f855f0b'
       LICENSE[0]=APACHE
         WEB_SITE=http://xml.apache.org/xalan-j/index.html
          ENTERED=20030326
          UPDATED=20030326
-      MAINTAINER=vydra@fria.fri.utc.sk
-           SHORT="Xalan-Java is an XSLT processor for transforming XML documents."
+           SHORT='Xalan-J is an XSLT processor for transforming XML documents'
 cat << EOF
 Xalan-Java is an XSLT processor for transforming XML documents into HTML, 
 text, or other XML document types. It implements XSL Transformations 

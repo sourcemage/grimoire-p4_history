@@ -1,21 +1,20 @@
            SPELL=xerces-j
        PKG_SPELL=Xerces-J
-         VERSION=2.5.0
+         VERSION=2.6.2
      PKG_VERSION=${VERSION//\./_}
-          SOURCE=${PKG_SPELL}-src.${VERSION}.tar.gz
-	 SOURCE2=${PKG_SPELL}-tools.${VERSION}.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/xerces-${PKG_VERSION}
-   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/$SOURCE
-          MD5[0]='63c4e4a391d9de389db16a97864ea4dc'
+          SOURCE=$PKG_SPELL-src.$VERSION.tar.gz
+         SOURCE2=$PKG_SPELL-tools.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/xerces-$PKG_VERSION
+   SOURCE_URL[0]=http://www.apache.org/dist/xml/$SPELL/source/$SOURCE
+          MD5[0]='54cdd67c4f511f99c1f7b55b1394ffb2'
       LICENSE[0]=APACHE
-  SOURCE2_URL[0]=http://xml.apache.org/dist/$SPELL/$SOURCE2
-          MD5[1]='166062926f38d78bee2f11bbecee6588'
+  SOURCE2_URL[0]=http://www.apache.org/dist/xml/$SPELL/source/$SOURCE2
+          MD5[1]='6d801103e3a88fbd701992828ba20d63'
       LICENSE[1]=APACHE
         WEB_SITE=http://xml.apache.org/xerces2-j/index.html
          ENTERED=20030326
-         UPDATED=20030801
-      MAINTAINER=vydra@fria.fri.utc.sk
-           SHORT="Xerces2 is the next generation of fully compliant XML parsers."
+         UPDATED=20040328
+           SHORT='Xerces2 - implementation of the next generation fully compliant XML parsers'
 cat << EOF
 The Apache Xerces2 parser is the reference implementation of XNI but other parser
 components, configurations, and parsers can be written using the Xerces Native 

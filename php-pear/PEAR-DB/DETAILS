@@ -1,6 +1,6 @@
-         VERSION=1.6.0RC5
-          MD5[0]='ff3dc66e504d0b0c70d64c7746d15205'
-         UPDATED=20040208
+         VERSION=1.6.1
+          MD5[0]='5304ec521c730c66f3b1bc47dbfe6cfb'
+         UPDATED=20040328
            SPELL=PEAR-DB
         WEB_SITE=http://pear.php.net/package/DB/
       LICENSE[0]=PHP
@@ -8,6 +8,9 @@
 cat << EOF
 DB is a database abstraction layer providing:
 * an OO-style query API
+* portability features that make programs
+written
+   for one DBMS work with other DBMS's
 * a DSN (data source name) format for specifying
    database servers
 * prepare/execute (bind) emulation for databases
@@ -16,27 +19,22 @@ DB is a database abstraction layer providing:
 * portable error codes
 * sequence emulation
 * sequential and non-sequential row fetching as
-well
-   as bulk fetching
-* ordered array, associative array and object
-   formats supported for the fetched rows
+   well as bulk fetching
+* formats fetched rows as associative arrays,
+   ordered arrays or objects
 * row limit support
 * transactions support
 * table information interface
 * DocBook and PHPDoc API documentation
-* Compatible with PHP 4 and PHP 5
 
 DB layers itself on top of PHP's existing
-database
-extensions.  The currently supported extensions
-are:
-dbase, fbsql, interbase, informix, msql, mssql,
-mysql,
-mysqli, oci8, odbc, pgsql, sqlite and sybase (DB
-style
-interfaces to LDAP servers and MS ADO (using
-COM)
-are also avaible from a separate package).
+database extensions.  The currently supported
+extensions are:
+dbase, fbsql, interbase, informix,
+msql, mssql, mysql, mysqli,
+oci8, odbc, pgsql, sqlite and sybase.
+
+DB is compatible with both PHP 4 and PHP 5.
 EOF
 
 source $SCRIPT_DIRECTORY/../PEAR_DETAILS
