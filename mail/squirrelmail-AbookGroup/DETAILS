@@ -1,5 +1,5 @@
            SPELL=squirrelmail-AbookGroup
-           NAME=abook_group
+            NAME=abook_group
          VERSION=0.1
           SOURCE=$NAME.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -11,6 +11,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          LICENSE=GPL
       MAINTAINER=sandalle@yahoo.com
            SHORT="Address book groups plugin for SquirrelMail"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
 cat << EOF
 Plugin to add address book group capability to SquirrelMail.
 EOF

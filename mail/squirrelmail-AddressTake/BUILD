@@ -1,6 +1,9 @@
 (
-  if  spell_installed  "apache";  then
+  
+  if  spell_installed    "apache";   then
     LOC="/usr/share/httpd/htdocs/squirrelmail/plugins/"
+  elif  spell_installed  "apache-mod_ssl";  then
+    LOC="/usr/share/httpsd/htdocs/squirrelmail/plugins/"
   elif  spell_installed  "apache2";  then
     LOC="/usr/share/apache2/htdocs/squirrelmail/plugins/"
   fi
