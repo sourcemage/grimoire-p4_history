@@ -1,6 +1,4 @@
 default_pre_build &&
 
-if [ $KDE_DEVEL != "y" ]; then 
-  cat $SPELL_DIRECTORY/post-3.3.2-kdelibs-*.patch | patch -p0 -d $SOURCE_DIRECTORY
-fi
+cat $SPELL_DIRECTORY/post-3.3.2-kdelibs-*.patch | patch -p0 -d $SOURCE_DIRECTORY
 

@@ -1,19 +1,11 @@
 source  $SCRIPT_DIRECTORY/../KDE_DETAILS
 
            SPELL=kdesdk
-if  [  "$KDE_DEVEL"  ==  "y"  ];  then
-         VERSION=3.3.92
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
-          MD5[0]=25c476b811d87f23b3e7eb57e90cd556
-else
          VERSION=3.3.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
           MD5[0]=aa2fd93ba00701189d86cbfab799591d
-fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
