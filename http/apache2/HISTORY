@@ -1,3 +1,8 @@
+2002-10-05  Eric Sandall <eric@sandall.us>
+		Created DEPENDS so apache2 can use it's dependencies (such as OpenSSL)
+		Created CONFIGURE to allow for a more configurable Apache server (which is part of the point of SMGL.  :))
+		Modified BUILD to use $OPTS so that DEPENDS and CONFIGURE work
+
 2002-09-01  Sergey Lipnevich <sergeyli@pisem.net>
 
 		Updated BUILD to have --localstatedir=/var, fixing bug 701.
@@ -15,7 +20,7 @@
 								Security fix version upgrade, also changed UPDATE field
 								as this should be applied to your box.
 
-2002-05-09  Justin Rocha <xenithsgl@xenith.org>
+2002-05-09  Justin Rocha <jrocha@sourcemage.org>
 
                 Bumped version to 2.0.36
 

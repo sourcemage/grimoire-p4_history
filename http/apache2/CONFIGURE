@@ -1,8 +1,284 @@
-if  !  grep  -q  "APACHE_BOOT="  $SPELL_CONFIG;  then
+# Created 2002-10-05  by Eric Sandall <eric@sandall.us>
 
-  if    query  "Invoke apache during boot?" y
-  then  echo   "APACHE_BOOT=y"  >>  $SPELL_CONFIG
-  else  echo   "APACHE_BOOT=n"  >>  $SPELL_CONFIG
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if      query  "Turn on debugging and compile-time warnings?"  n
+    then  echo   'OPTS="$OPTS  --enable-maintainer-mode"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-maintainer-mode"'  >>  $SPELL_CONFIG
   fi
 
+  if      query  "Host-based access control?"  n
+    then  echo   'OPTS="$OPTS  --enable-access"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-access"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "User-based access control?"  n
+    then  echo   'OPTS="$OPTS  --enable-auth"'   >>  $SPELL_CONFIG
+      if      query  "Anonymous user access?"  y
+        then  echo   'OPTS="$OPTS  --enable-auth-anon"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "RFC2617 Digest authentication?"  n
+        then  echo   'OPTS="$OPTS  --enable-auth-digest"'   >>  $SPELL_CONFIG
+      fi
+  else    echo   'OPTS="$OPTS  --disable-auth"'         >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-auth-anon"'    >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-auth-digest"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "ISAPI extension support?"  n
+    then  echo   'OPTS="$OPTS  --enable-isapi"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-isapi"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "File cache support?"  n
+    then  echo   'OPTS="$OPTS  --enable-file-cache"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-file-cache"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "ECHO server?"  n
+    then  echo   'OPTS="$OPTS  --enable-echo"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-echo"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Character set translation?"  n
+    then  echo   'OPTS="$OPTS  --enable-charset-lite"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-charset-lite"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Dynamic file caching?"  n
+    then  echo   'OPTS="$OPTS  --enable-cache"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-cache"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Disk caching?"  n
+    then  echo   'OPTS="$OPTS  --enable-disk-cache"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-disk-cache"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Memory caching?"  n
+    then  echo   'OPTS="$OPTS  --enable-mem-cache"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-mem-cache"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Example and demo?"  n
+    then  echo   'OPTS="$OPTS  --enable-example"'   >>  $SPELL_CONFIG
+      if      query  "Example uppercase conversion filter?"  n
+        then  echo   'OPTS="$OPTS  --enable-case-filter"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "Example uppercase conversion input filter?"  n
+        then  echo   'OPTS="$OPTS  --enable-case-filter-in"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "Example optional hook exporter?"  n
+        then  echo   'OPTS="$OPTS  --enable-optional-hook-export"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "Example optional hook importer?"  n
+        then  echo   'OPTS="$OPTS  --enable-optional-hook-import"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "Example optional function exporter?"  n
+        then  echo   'OPTS="$OPTS  --enable-optional-fn-export"'   >>  $SPELL_CONFIG
+      fi
+
+      if      query  "Example optional function importer?"  n
+        then  echo   'OPTS="$OPTS  --enable-optional-fn-import"'   >>  $SPELL_CONFIG
+      fi
+  else    echo   'OPTS="$OPTS  --disable-example"'               >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-optional-hook-export"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-case-filter-in"'        >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-case-filter"'           >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-optional-hook-import"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-optional-fn-export"'    >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-optional-fn-import"'    >>  $SPELL_CONFIG
+  fi
+
+  if      query  "External filter?"  n
+    then  echo   'OPTS="$OPTS  --enable-ext-filter"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-ext-filter"'  >>  $SPELL_CONFIG
+  fi
+
+
+  if      query  "Server Side Includes?"  n
+    then  echo   'OPTS="$OPTS  --enable-include"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-include"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Deflate transfer encoding?"  n
+    then  echo   'OPTS="$OPTS  --enable-deflate"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-deflate"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Logging configuration?"  n
+    then  echo   'OPTS="$OPTS  --enable-log-config"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-log-config"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Clearing/setting of ENV vars?"  n
+    then  echo   'OPTS="$OPTS  --enable-env"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-env"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Map file-extension to MIME?"  n
+    then  echo   'OPTS="$OPTS  --enable-mime"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-mime"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Automagically determine MIME type?"  n
+    then  echo   'OPTS="$OPTS  --enable-mime-magic"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-mime-magic"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "CERN-type meta files?"  n
+    then  echo   'OPTS="$OPTS  --enable-cern-meta"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-cern-meta"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Expires header control?"  n
+    then  echo   'OPTS="$OPTS  --enable-expires"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-expires"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "HTTP header control?"  n
+    then  echo   'OPTS="$OPTS  --enable-headers"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-headers"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "User-session tracking?"  n
+    then  echo   'OPTS="$OPTS  --enable-usertrack"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-usertrack"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Per-request unique IDs?"  n
+    then  echo   'OPTS="$OPTS  --enable-unique-id"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-unique-id"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Base ENV vars on headers?"  n
+    then  echo   'OPTS="$OPTS  --enable-setenvif"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-setenvif"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Apache proxy?"  n
+    then  echo   'OPTS="$OPTS  --enable-proxy"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-proxy"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Apache proxy CONNECT?"  n
+    then  echo   'OPTS="$OPTS  --enable-proxy-connect"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-proxy-connect"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Apache proxy FTP?"  n
+    then  echo   'OPTS="$OPTS  --enable-proxy-ftp"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-proxy-ftp"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Apache proxy HTTP?"  n
+    then  echo   'OPTS="$OPTS  --enable-proxy-http"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-proxy-http"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Buckets manipulation?"  n
+    then  echo   'OPTS="$OPTS  --enable-bucketeer"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-bucketeer"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "HTTP protocol handling?"  y
+    then  echo   'OPTS="$OPTS  --enable-http"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-http"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "WebDAV protocol handling?"  n
+    then  echo   'OPTS="$OPTS  --enable-dav"'   >>  $SPELL_CONFIG
+      if      query  "DAV provider for the filesystem?" n
+        then  echo   'OPTS="$OPTS  --enable-dav-fs"'   >>  $SPELL_CONFIG
+     fi
+  else    echo   'OPTS="$OPTS  --disable-dav"'  >>  $SPELL_CONFIG
+          echo   'OPTS="$OPTS  --disable-dav-fs"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Process/thread monitoring?"  y
+    then  echo   'OPTS="$OPTS  --enable-status"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-status"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Directory listing?"  y
+    then  echo   'OPTS="$OPTS  --enable-autoindex"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-autoindex"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "As-is filetypes?"  y
+    then  echo   'OPTS="$OPTS  --enable-asis"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-asis"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Server information?"  y
+    then  echo   'OPTS="$OPTS  --enable-info"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-info"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Set uid/gid for spawned processes?"  y
+    then  echo   'OPTS="$OPTS  --enable-suexec"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-suexec"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Enable CGI script support?"  y
+    then  echo   'OPTS="$OPTS  --enable-cgi  --enable-cgid"'     >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-cgi  --disable-cgid"'   >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Mass hosting?"  n
+    then  echo   'OPTS="$OPTS  --enable-vhost-alias"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-vhost-alias"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Content negotiation?"  n
+    then  echo   'OPTS="$OPTS  --enable-negotiation"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-negotiation"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Directory request handling?"  n
+    then  echo   'OPTS="$OPTS  --enable-dir"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-dir"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Internal imagemaps?"  n
+    then  echo   'OPTS="$OPTS  --enable-imap"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-imap"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Action triggering on requests?"  n
+    then  echo   'OPTS="$OPTS  --enable-actions"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-actions"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Correct common URL misspellings?"  n
+    then  echo   'OPTS="$OPTS  --enable-speling"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-speling"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Map user requests?"  n
+    then  echo   'OPTS="$OPTS  --enable-userdir"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-userdir"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Translate requests (aliases)?"  n
+    then  echo   'OPTS="$OPTS  --enable-alias"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-alias"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "Regex URL translation?"  n
+    then  echo   'OPTS="$OPTS  --enable-rewrite"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-rewrite"'  >>  $SPELL_CONFIG
+  fi
+
+  if      query  "DSO capability?"  n
+    then  echo   'OPTS="$OPTS  --enable-so"'   >>  $SPELL_CONFIG
+  else    echo   'OPTS="$OPTS  --disable-so"'  >>  $SPELL_CONFIG
+  fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
 fi
