@@ -1,3 +1,5 @@
+message  "${MESSAGE_COLOR}If this fails, disable kernel module versioning{$DEFAULT_COLOR}"  &&
+
 # Some other fixes I needed to do
 sedit  's:<config.h>:\"config.h\":'  threeDKit/3dinit.c     &&
 sedit  's:<config.h>:\"config.h\":'  threeDKit/3dkit.c      &&
@@ -34,9 +36,16 @@ make  CFLAGS="${CFLAGS} -I../gl -I../include" demoprogs                \
       LDFLAGS='-L../sharedlib'                                         &&
 
 cd  kernel/svgalib_helper                                              &&
-env  -u  ARCH                                                          \
-make  -f  Makefile.alt INCLUDEDIR="/usr/src/linux/include"             \
-clean  all                                                             &&
+if  [  `uname  -r  |  cut  -d.  -f1,2`  ==  "2.6"  ]
+then
+  message  "${MESSAGE_COLOR}Building 2.6 module...${DEFAULT_COLOR}"    &&
+  make  clean  all
+else
+  message  "${MESSAGE_COLOR}Building 2.4 module...${DEFAULT_COLOR}"    &&
+  env  -u  ARCH                                                        \
+  make  -f  Makefile.alt INCLUDEDIR="/usr/src/linux/include"           \
+  clean  all
+fi  &&
 cd  -                                                                  &&
 
 sedit 's/\(install: $(INSTALLAOUTLIB) \)installheaders \(.*\)/\1\2/g'  \
