@@ -7,7 +7,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
           MD5[0]=2c3f53665a1bc15c3a714258cb8cca17
 else
-         VERSION=1.2.5
+         VERSION=1.2.6
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/$SPELL/$SOURCE
@@ -15,14 +15,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[2]=ftp://sunsite.dk/pub/security/gcrypt/$SPELL/$SOURCE
    SOURCE_URL[3]=ftp://ftp.franken.de/pub/crypt/mirror/ftp.gnupg.org/gcrypt/$SPELL/$SOURCE
    SOURCE_URL[4]=ftp://ftp.linux.it/pub/mirrors/gnupg/$SPELL/$SOURCE
-          MD5[0]=c4ec760e43e5f3352f4139a88c67dedb
+          MD5[0]=e3fb4519ae7896b928719dcab33bbf0c
 fi
         WEB_SITE=http://www.gnupg.org
          ENTERED=20010922
          UPDATED=20010922
       LICENSE[0]=GPL
-      MAINTAINER=hgr@vabo.cz
-           SHORT="gnupg is a tool for secure secure communication and data storage."
+           SHORT="Tool for secure secure communication and data storage."
 cat << EOF
 GnuPG (the GNU Privacy Guard) is GNU's tool for secure communication and
 data storage. It can be used to encrypt data and to create digital
