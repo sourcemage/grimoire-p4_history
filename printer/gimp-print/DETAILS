@@ -22,4 +22,14 @@ maintenance utilities are included. Many users report that the quality of
 Gimp-Print on high end Epson Stylus printers matches or exceeds the quality
 of the drivers supplied for Windows and Macintosh.
 
+NOTE:  the three spells cups, espgs and gimp-print represent a circular
+  dependency relationship.  If you want all three spells installed, cast
+  espgs first, answering n to gimp-print.  Then cast cups.  Then cast espgs
+  again with the -r -c options and answer y to gimp-print and y to
+  gimp-prints optional_depends of cups.  Like so:
+  
+  cast espgs        # No to gimp-print
+  cast cups
+  cast -r -c espgs  # Yes to gimp-print and yes to cups
+
 EOF

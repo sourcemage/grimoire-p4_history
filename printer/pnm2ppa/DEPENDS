@@ -1,4 +1,8 @@
-optional_depends  "postscript-interpreter"  \
-                  ""                        \
-                  ""                        \
-                  ""
+optional_depends  "espgs"                                                                                                                    \
+                  ""                                                                                                                         \
+                  ""                                                                                                                         \
+                  "for a postscript interpreter (or ghostscript, next) - choose this one if you have installed or are installing cups"       &&
+optional_depends  "ghostscript"                                                                                                              \
+                  ""                                                                                                                         \
+                  ""                                                                                                                         \
+                  "for a postscript interpreter (or espgs, previous) - do NOT choose this one if you have installed or are installing cups"
