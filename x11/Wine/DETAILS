@@ -1,16 +1,15 @@
            SPELL=Wine
-         VERSION=20030408
+         VERSION=20030618
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/wine-$VERSION
    SOURCE_URL[0]=http://www.ibiblio.org/pub/Linux/ALPHA/wine/development/$SOURCE
-          MD5[0]=a520836e3d34b4e5cfcd9c233264b8cc
+          MD5[0]=f1eb53b3122e5e244caa0257281d7a84
         WEB_SITE=http://www.winehq.com
          ENTERED=20010925
          UPDATED=20020319
          LICENSE=LGPL
            SHORT="wine runs some Windows 3.x and Windows 9x programs."
 cat << EOF
-
 Wine Is Not an Emulator. It is an alternative
 implementation of the Windows 3.x and Win32 APIs. Wine
 provides both a development toolkit (Winelib) for porting
@@ -20,5 +19,4 @@ under Intel Unixes. Wine does not require Microsoft
 Windows, as it is a completely alternative implementation
 consisting of 100% Microsoft-Free code, but it can
 optionally use native system DLLs if they are available.
-
 EOF
