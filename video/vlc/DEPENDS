@@ -182,4 +182,9 @@ optional_depends  "libcddb"            \
 optional_depends  "vcdimager-unstable"  \
                   "--enable-vcdx"       \
                   "--disable-vcdx"      \
-                  "for VCD navigation support"
+                  "for VCD navigation support"  &&
+
+optional_depends  "gnutls"            \
+                  "--enable-gnutls"   \
+                  "--disable-gnutls"  \
+                  "for TLS/SSL support"
