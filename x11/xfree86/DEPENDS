@@ -1,6 +1,6 @@
 depends  perl        &&
-depends  freetype2   &&
 depends  fontconfig  &&
 depends  zlib        &&
-
-optional_depends  "libpng"  ""  ""  "for xcursorgen"
+#xc/config/cf/linux.cf defines this so unless we want to rewrite the spell we need it as full depends
+depends  libpng      &&
+optional_depends  "Linux-PAM" "" "" "for PAM authentication" &&
