@@ -1,0 +1,24 @@
+           SPELL=qt-x11
+# Version 2.3.2 is not recommended.
+# Version 3.0.1 is latestest, version 2.3.1 is used for kde.
+         VERSION=2.3.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/qt-$VERSION
+   SOURCE_URL[0]=ftp://ftp.trolltech.com/qt/source/$SOURCE
+        WEB_SITE=http://www.trolltech.com/qt
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="Qt simplifies the task of writing and maintaining GUI applications."
+
+# qt-x11 is primarily needed by kde apps.  
+# When KDE 3.0 is released which requires qt-x11 3, 
+# then the version on this spell will be increased.
+
+cat << EOF
+Qt is a toolkit for software developers. Qt simplifies the task of
+writing and maintaining GUI (graphical user interface) applications. Qt
+is written in C++ and is fully object-oriented. Qt is a multi-platform
+toolkit. When you implement a program with Qt, you can run it on the X
+Window System (Unix/X11) or Microsoft Windows NT/95/98/2000. Simply
+compile the source code for the platform you want.
+EOF
