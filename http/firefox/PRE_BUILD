@@ -4,10 +4,10 @@ fi                                                                          &&
 
 mk_source_dir  $SOURCE_DIRECTORY                                            &&
 
-if  [  "$FIREFOX_CVS"  =  "y"   ];  then
-  FIREFOX_TARBALL=firefox_cvs.tar.bz2  &&
+FIREFOX_TARBALL=firefox_cvs.tar.bz2  &&
 
-  if  [  -f  $SOURCE_CACHE/$FIREFOX_TARBALL  ];  then
+if  [  "$FIREFOX_CVS"  =  "y"   ]              &&
+    [  -f  $SOURCE_CACHE/$FIREFOX_TARBALL  ];  then
     message  "${MESSAGE_COLOR}Unpacking source file $FIREFOX_TARBALL"       \
              "$for ${SPELL_COLOR}$SPELL${DEFAULT_COLOR}"                    &&
     tar  jxf  $SOURCE_CACHE/$FIREFOX_TARBALL
