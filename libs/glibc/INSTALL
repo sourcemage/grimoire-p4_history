@@ -1,3 +1,4 @@
+cd $SOURCE_DIRECTORY.bld  &&
 if  [  "$CROSS_INSTALL"  =  "on"  ];  then
   echo "prefix = ${INSTALL_ROOT}/usr" > configparms                               &&
   echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                             &&
@@ -15,24 +16,6 @@ if  [  "$CROSS_INSTALL"  =  "on"  ];  then
     sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
   fi
 fi  &&
-
-#
-# making these symlinks and unsetting the (sorcery) preload of old libs should 
-# finally fix the glibc install problems. 
-# Had to add a check for saved libraries, as an empty log means none can be saved
-#
-if  [  -f  $SOURCE_DIRECTORY/old.libraries/ld-*.so  ];  then
-  .  /$SCRIPT_DIRECTORY/makelinks  &&
-  make_install_links               &&
-  unset  LD_LIBRARY_PATH           &&
-  #
-  # must use -X or ldconfig will relink to any alien files found in /lib or /usr/lib
-  #
-  (  ldconfig  -X  ||  true  )                  
-fi  &&
-#
-# End preload fix
-#
 
 #
 # glibc only installs these if the file differs
@@ -82,7 +65,7 @@ else
     mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                           &&
     echo  "localedef  -f  $CHARMAP  -i  $INPUTFILE $INPUTFILE"                     &&
     localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE  &&
-    if  [  "$UTF"      =  "y"     ]   &&
+    if  [  "$GLIBC_UTF"      =  "y"     ]   &&
     !   [  "$CHARMAP"  =  "UTF-8" ];  then
       echo  "localedef  -f  UTF-8  -i  $INPUTFILE  $INPUTFILE.UTF-8"               &&
       localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  UTF-8  $INPUTFILE.UTF-8
