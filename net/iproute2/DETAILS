@@ -1,15 +1,15 @@
            SPELL=iproute2
-         VERSION=2.6.9-041019
+         VERSION=2.6.10-ss050124
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-2.6.9
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/*-ss/}
    SOURCE_URL[0]=http://developer.osdl.org/dev/iproute2/download/$SOURCE
-          MD5[0]=808c97317e83aeb88c664ba68e912940
+          MD5[0]=14e82ec215195cca6428a0e6df1c91bc
         WEB_SITE=http://developer.osdl.org/dev/iproute2/
          ENTERED=20020528
          UPDATED=20040704
       LICENSE[0]=GPL
        BUILD_API=2
-           SHORT="Userland tools for the kernel network traffic control code."
+           SHORT="Userland tools for the kernel network traffic control code"
 cat << EOF
 iproute2 contains the programs ip, rtmon, and tc. These programs
 allow you to specify rules for policy routing and traffic shaping

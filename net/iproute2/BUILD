@@ -7,23 +7,17 @@ else
 enum { IPPROTO_SCTP = 132 };
 #define IPPROTO_SCTP               IPPROTO_SCTP
 EOF
-fi &&
+fi  &&
 
-sedit "s!^CFLAGS =!& -include ${PWD}/sctpfix.h !" Makefile &&
-
-# this fixes the makefile to not strip shell scripts *sigh*
-patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch &&
-
-make         &&
+make  &&
 
 # Verify that ip built ok.
 if ! test -e ip/ip ; then
   message "${PROBLEM_COLOR}The ip program failed to build.${DEFAULT_COLOR}"
   return 1
-fi &&
+fi  &&
 
 if  [  "$BUILD_DOCS"  =  y  ];  then
-  patch  -p1  <  $SCRIPT_DIRECTORY/doc.patch  &&
   cd $SOURCE_DIRECTORY/doc                    &&
   make                                        &&
   mkdir -p /usr/share/doc/iproute2            &&
