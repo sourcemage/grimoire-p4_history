@@ -67,7 +67,7 @@ if  spell_installed  libpng;  then
   echo  "#define  HasLibpng  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$DEBUG"  == "n"  ]         ||
+if  [  "$XDEBUG"  == "n"  ]         ||
     (echo $LDFLAGS | grep -q -- "-s");  then
   echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
