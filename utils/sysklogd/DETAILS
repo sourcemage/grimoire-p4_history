@@ -1,14 +1,15 @@
            SPELL=sysklogd
          VERSION=1.4.1
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='ac2380043df736aad3f511cd8bbda7c8'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.ibiblio.org/pub/Linux/system/daemons/$SOURCE
+          MD5[0]=ac2380043df736aad3f511cd8bbda7c8
         WEB_SITE=http://www.ibiblio.org/pub/Linux/system/daemons
          ENTERED=20010922
          UPDATED=20030822
+      LICENSE[0]=GPL
        BUILD_API=2
-           SHORT="sysklogd contains the system and kernel logging daemons."
+           SHORT="System and kernel logging daemons"
 cat << EOF
 sysklogd
 The sysklogd package implements two system log daemons. The syslogd
