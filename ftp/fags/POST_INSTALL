@@ -1,0 +1,7 @@
+if  [  -f /etc/fags.conf  ]  && ! grep -q -E '^user\W+username$'  /etc/fags.conf;  then
+  if  [  -x  /etc/init.d/fags.sh  ]; then
+    /etc/init.d/fags.sh start
+  fi
+else
+  message "Edit ${MESSAGE_COLOR}/etc/fags.conf${DEFAULT_COLOR} before starting FAGS."
+fi
