@@ -1,4 +1,8 @@
 2004-02-06 hgg <hgreig@bigpond.net.au>
+	* mountall.sh: only mount tmpfs mounts after the physical partitions are mounted.
+	(bug 3597)
+
+2004-02-06 hgg <hgreig@bigpond.net.au>
 	* BUILD: install_root fixes
 	* PRE_BUILD: only if CROSS_INSTALL is off
 	* rc: add "bash" before executing an initscript so it will still start even if bootdisabled (bug #5595)
