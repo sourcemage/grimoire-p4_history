@@ -9,8 +9,6 @@
     OPTS="$OPTS --with-apxs"
   fi &&
 
-  patch -p1 < $SCRIPT_DIRECTORY/curl.diff &&
-
   ./configure                          \
     --prefix=${INSTALL_ROOT}/usr                      \
     --sysconfdir=${INSTALL_ROOT}/etc                  \
