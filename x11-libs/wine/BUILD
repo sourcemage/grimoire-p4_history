@@ -1,62 +1,4 @@
 (
-# fix wine build problem
-LDFLAGS=${LDFLAGS//-z combreloc/}
-
-
-[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
-
-# Apply Red Hat patches
-#
-# Hopefully the next 3 patches will allow better global config
-# global registry usage.
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-initial.patch &&
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-winelauncher.patch &&
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-defaultcfg.patch &&
-# minor fix to wine/documentation/configuring.sgml
-patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-documentation.patch &&
-
-# fix config file
-# changes the Drive C from /c to $CROOT 
-cd $EXDIR &&
-cp config config.org &&
-sed -e "s:\"/c\":\"$CONFIG_CROOT\":g" config.org > config &&
-# changes the Drive A from /mnt/fd0 to $AROOT 
-cp config config.org &&
-sed -e "s:\"/mnt/fd0\":\"$AROOT\":g" config.org > config &&
-# changes the Drive D from /cdrom to $DROOT 
-cp config config.org &&
-sed -e "s:\"/cdrom\":\"$DROOT\":g" config.org > config &&
-# changes the global registry location from /etc to $SYSCONFDIR
-cp config config.org &&
-sed -e "s:;\"GlobalRegistryDir\" = \"/etc\";:;\"GlobalRegistryDir\" = \"$SYSCONFDIR\";:g" config.org > config &&
-
-cd $SOURCE_DIRECTORY &&
-
-# Actual compiling of source
-
-   ./configure  --prefix=$PREFIX		\
-		--sysconfdir=$SYSCONFDIR	\
-		--bindir=$BINDIR		\
-		--libdir=$LIBDIR		\
-		--localstatedir=/var		\
-		--mandir=$PREFIX/share/man	\
-		--infodir=$PREFIX/share/info	\
-                --with-x                        \
-		$OPTS			&&
-
-  make depend				&&
-  make					&&
-#
-# needs added dependencies to work
-# according to the fedora src.rpm
-# we need 'docbook-utils' and 'docbook-utils-pdf'
-#
-#  make  -C documentation doc            &&
-
-# Installation
-  prepare_install			&&
-  make install
-
 # create directories
 function create_windows_directories {
     echo "creating windows directories"
@@ -100,12 +42,70 @@ function configure_wine_applications {
     link_app winhelp      "$GLOBAL_CROOT/windows/winhlp32.exe"
 }
 
-create_windows_directories &&
-configure_wine_applications &&
+# fix wine build problem
+LDFLAGS=${LDFLAGS//-z combreloc/}
+
+
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
+
+# Apply Red Hat patches
+#
+# Hopefully the next 3 patches will allow better global config
+# global registry usage.
+patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-initial.patch &&
+patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-winelauncher.patch &&
+patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-defaultcfg.patch &&
+# minor fix to wine/documentation/configuring.sgml
+#patch -p1 < $SCRIPT_DIRECTORY/wine-$VERSION-documentation.patch &&
+
+# fix config file
+# changes the Drive C from /c to $CROOT 
+cd $EXDIR &&
+cp config config.org &&
+sed -e "s:\"/c\":\"$CONFIG_CROOT\":g" config.org > config &&
+# changes the Drive A from /mnt/fd0 to $AROOT 
+cp config config.org &&
+sed -e "s:\"/mnt/fd0\":\"$AROOT\":g" config.org > config &&
+# changes the Drive D from /cdrom to $DROOT 
+cp config config.org &&
+sed -e "s:\"/cdrom\":\"$DROOT\":g" config.org > config &&
+# changes the global registry location from /etc to $SYSCONFDIR
+cp config config.org &&
+sed -e "s:;\"GlobalRegistryDir\" = \"/etc\";:;\"GlobalRegistryDir\" = \"$SYSCONFDIR\";:g" config.org > config &&
+
+cd $SOURCE_DIRECTORY &&
+
+# Actual compiling of source
+
+   ./configure  --prefix=$PREFIX		\
+		--sysconfdir=$SYSCONFDIR	\
+		--bindir=$BINDIR		\
+		--libdir=$LIBDIR		\
+		--localstatedir=/var		\
+		--mandir=$PREFIX/share/man	\
+		--infodir=$PREFIX/share/info	\
+                --with-x                        \
+		$OPTS			&&
+
+  make depend				&&
+  make					&&
+#
+# needs added dependencies to work
+# according to the fedora src.rpm
+# we need 'docbook-utils' and 'docbook-utils-pdf'
+#
+#  make  -C documentation doc            &&
+
+# Installation
+  prepare_install			&&
+  make install				&&
+
+  create_windows_directories 		&&
+  configure_wine_applications 		&&
 if [ "$GLOBAL_C" == "y" ]; then
-    chgrp -R users $GLOBAL_CROOT &&
+    chgrp -R users $GLOBAL_CROOT 	&&
     chmod -R g+w $GLOBAL_CROOT
-fi
+fi					&&
 
 install -m0644 programs/winemenubuilder/wine.xpm ${INSTALL_ROOT}/usr/share/pixmaps/
 
