@@ -1,3 +1,2 @@
-depends  pccts
-
-#optional_depends "gnomemm" "" "" "for GnomeCDMaster GUI"
+depends  pccts  "--with-pcctsbin=/usr/bin --with-pcctsinc=/usr/include/pccts" &&
+optional_depends  "lame"  "--with-lame"  "--without-lame"  "for toc2mp3 tool"
