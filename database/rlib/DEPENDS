@@ -1,5 +1,5 @@
-depends clibpdf		&&
-depends libxml2		&&
+depends libxml2	 &&
+optional_depends clibpdf "" "--disable-cpdf" "to create PDF files"	&&
 optional_depends JAVA   "" "--with-java=no" "Java front end"	&&
 optional_depends perl   "" "" "Perl front end"			&&
 optional_depends Python	"" "--disable-python" "Python frontend"	&&
