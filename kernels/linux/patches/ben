@@ -1,0 +1,17 @@
+#!/bin/bash
+# by Unet <unet@sourcemage.org>
+#
+
+DESCRIPTION="ben patch for ppc"
+SHORT="Kernels for PowerMac machines"
+HELP="Kernels are tuned for PowerMac machines but should work on other PPC machines as well."
+
+VERSIONS="2.4.23-ben1"
+MD5S[0]=8192e239360176a2cf59c42306ecbee2
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://download.sourcemage.org/distro/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi
