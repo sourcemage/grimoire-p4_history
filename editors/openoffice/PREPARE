@@ -1,4 +1,16 @@
-if ! [ "$(installed_version bison)" = "1.875b" ] ; then
-        dispel --nosustain bison &&
-	depends bison 
-fi                                       
+#
+# Setup ANT_HOME and JAVA_HOME in case they were just installed
+#
+if  [  -f  /etc/profile.d/java.sh  ];  then
+  source  /etc/profile.d/java.sh
+fi  &&
+
+if  [  -f  /etc/profile.d/ant.sh  ];  then
+  source  /etc/profile.d/ant.sh
+fi
+
+#
+# Uncomment if you really want to try to debug the devel 2.0 version
+#
+#
+# config_query  OPENOFFICE_DEVEL  "Build the devel version? (Say no unless you want to actively help get this working)"  n
