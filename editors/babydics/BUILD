@@ -11,7 +11,7 @@
   gunzip -c $SOURCE_CACHE/dictionary.gz | sed s/usr[/]local/usr/ > dict   &&
   cp dict /usr/share/babytrans/dictionary                                 &&
 
-  unpack $SOURCE ${MD5[0]}                                                &&
+  unpack $SOURCE2 ${MD5[1]}                                               &&
   gunzip -c $SOURCE_CACHE/english.dic.gz > english.dic                    &&
   cp english.dic /usr/lib/babytrans/                                      &&
 
