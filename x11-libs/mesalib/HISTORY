@@ -1,11 +1,14 @@
 2005-02-28 Eric Sandall <eric@sandall.us>
-	* Renamed to mesalib
-	* DETAILS: Removed SOURCE information
+	* Renamed from MesaLib
+	* DETAILS: Renamed to mesalib
 	  Updated UPDATED
-	* DEPENDS: Depend only on mesalib
-	* PRE_BUILD,BUILD: Run only `true`
-	* CONFIGURE,PROVIDES: Removed
-	* TRIGGERS: On cast MesaLib, dispel self
+	  Added BUILD_API=2
+	* CONFIGURE: Converted to config_query
+	* CONFLICTS: Auto-conflicts with MesaLib
+	* BUILD: Converted to build_api 2
+	  Apply CONFIGURE flags to OPTS
+	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
 
 2003-11-06 hgg <hgreig@bigpond.net.au>
 	* DETAILS: correct md5 (they released an updated tarball)
@@ -20,7 +23,7 @@
 	* DEPENDS: uppercase for providers
 
 2003-10-03 hgg <hgreig@bigpond.net.au>
-	* DEPENDS: Change optional_depends xfree86 to x11-libs, needs devel sorcery
+	* DEPENDS: Change optional_depends xfree86 to x11-libs, needs devel sorcery now
 
 2003-09-27 hgg <hgreig@bigpond.net.au>
 	* DETAILS: Fix my faulty update by adding a correct MD5[0]
