@@ -6,7 +6,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
           MD5[0]=151cbbef70842ca055ac643089aa13df
        WEB_SITE=http://www.schabell.com/linux/mirror/bashdoc/index.html
          ENTERED=20040223
-         UPDATED=20040223
+         UPDATED=20040227
          LICENSE=GPL
            SHORT="A tool for generating Bash documentation from our libraries."
 	
@@ -16,30 +16,28 @@ code. It also runs a script generate and install all Source Mage GNU/Linux
 documentation that is available in our code. Documentation is viewable at 
 /usr/doc/sourcemage-docs/index.html. Enjoy!
 
-bashdoc.sh:
-==========
-Parses comments between lines of '#---' Lines to be parsed start with ##. All 
-tags start with @. Lines without a tag are considered simple description of 
-the section. If the line following the comment block doesn't start with 'function' 
-the it's assumed that the comment is for the whole file. Only the first non-function 
-comment block will be used, the other will be ignored. 
+Quick reference for docing Source Mage project code (each lib/function):
+========================================================================
+@param: when order is important
+@Arguments: when order is unimportant
+@Stdout: what is dumped to stdout by this function
+@Stderr: whe is dumped to stderr
+@Stdin: what is expected from stdin
+@return: what the return values mean
+@Globals: global variables used
 
-Multiple identical tags are allowed, the contents are appended and separated with a 
-space. @param tags are treated specials and are assumed to be in order. 
+Some others are that are used:
+@Type API: if it's an API function
+@Synopsis
+@Copyright
+@License
 
-There is an additional <@function FUNCTION_NAME> tag that can be embeded in any b
-ashdoc comment. It will be transformed into a link to that function. Note, this will 
-only work for functions that are defined in the same script. 
+Keep in mind that
+<@function some_function> will make a link to the function in the docs.
+The function is limited to being in the same file. 
 
-
-Usage: [-p project] [-o directory] [-e tag] [--] script [ script ...]
-'-p project' Name of the project
-'-o directory' Specifies the directory you want the
-resulting html to go into
-'-e tag' Only output if the block has this tag
-'-q' Quiet things down
-'--' No more arguments, only scripts
-'script' The script you want documented
+Any funny symbols will not be translated for you, so putting <something>
+in the comments would be a no-no.
 
 Brought to you by Paul Mahon!
 EOF
