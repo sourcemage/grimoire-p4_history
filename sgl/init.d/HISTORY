@@ -1,3 +1,9 @@
+2002-10-02  Eric Sandall <eric@sandall.us>
+		Modified mount.new.sh to not mount networked filesystems, as networking hasn't been started at this stage in the boot process.
+		Added mountnfs.sh which mounts the networked filesystems, since networking should have been started by now.  :)  This and mount.new should replace the current mount.sh, once they've been tested a little more.  :)  I use them on all of my machines, and they got rid of those "Failed" errors for mount and the "RPC not found" for trying to mount my networked filesystems.
+		Added and xdm.sh, gdm.sh and kdm.sh to start those login managers, should create
+one for wdm as well (when is my wdm spell going to go in?).
+
 2002-10-2   Neal Birch <nealbirch@attbi.com>
 	    Fixed typo in libinit.d. Thanks nkj!
 2002-9-30   Neal Birch <nealbirch@attbi.com>
