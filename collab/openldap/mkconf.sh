@@ -2,18 +2,18 @@
 # $Id: mkconf.sh,v 1.5 2003/01/04 05:41:22 sergeyli Exp $
 
 # full host name
-HOST=`hostname`
+HOST=$(hostname) &&
 # domain name part
-DOMAIN=${HOST#*\.}
+DOMAIN=${HOST#*\.} &&
 # supposedly a company name
-ORG=${DOMAIN%\.*}
+ORG=${DOMAIN%\.*} &&
 # common LDAP tree suffix
-SUFFIX="dc=${DOMAIN//\./,dc=}"
-PASS=123456
+SUFFIX="dc=${DOMAIN//\./,dc=}" &&
+PASS=123456 &&
 
-message "${MESSAGE_COLOR}Creating default slapd.conf${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Creating default slapd.conf${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/slapd.conf.default << __EOF__
+cat > /etc/openldap/slapd.conf.default << __EOF__ &&
 # See slapd.conf(5) for details on configuration options.
 # This file should NOT be world readable.
 #
@@ -84,14 +84,16 @@ rootdn		"cn=root,$SUFFIX"
 # be avoided.  See slappasswd(8) and slapd.conf(5) for details.
 # Use of strong authentication encouraged.
 # Default password (please change!): $PASS
-rootpw		"`slappasswd -s "$PASS"`"
+rootpw		"$(slappasswd -s "$PASS")"
 __EOF__
 
-[ -e /etc/openldap/slapd.conf ] || cp /etc/openldap/slapd.conf.default /etc/openldap/slapd.conf
+if ! [ -e /etc/openldap/slapd.conf ]; then
+  cp /etc/openldap/slapd.conf.default /etc/openldap/slapd.conf
+fi &&
 
-message "${MESSAGE_COLOR}Creating default ldap.conf${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Creating default ldap.conf${DEFAULT_COLOR}" &&
 
-cat > /etc/ldap.conf.default << __EOF__
+cat > /etc/ldap.conf.default << __EOF__ &&
 # This is the configuration file for the LDAP nameservice
 # switch library and the LDAP PAM module.
 #
@@ -125,11 +127,13 @@ pam_password exop
 ldap_version 3
 __EOF__
 
-[ -e /etc/ldap.conf ] || cp /etc/ldap.conf.default /etc/ldap.conf
+if ! [ -e /etc/ldap.conf ]; then
+  cp /etc/ldap.conf.default /etc/ldap.conf
+fi &&
 
-message "${MESSAGE_COLOR}Creating sample LDIF for top hierarchy${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Creating sample LDIF for top hierarchy${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/top.ldif << __EOF__
+cat > /etc/openldap/top.ldif << __EOF__ &&
 #
 # Replace $SUFFIX with suffix from slapd.conf
 # Use the following command to create th hierarchy:
@@ -151,9 +155,9 @@ objectclass: organizationalUnit
 ou: Groups
 __EOF__
 
-message "${MESSAGE_COLOR}Creating sample LDIF for user and group creation${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Creating sample LDIF for user and group creation${DEFAULT_COLOR}" &&
 
-cat > /etc/openldap/usergroup.ldif << __EOF__
+cat > /etc/openldap/usergroup.ldif << __EOF__ &&
 #
 # Sample user and group LDIF file
 # Replace $SUFFIX with suffix from slapd.conf
@@ -183,5 +187,5 @@ gidNumber: 1001
 homeDirectory: /home/john
 __EOF__
 
-message "${MESSAGE_COLOR}Use $SCRIPT_DIRECTORY/mkaccount.sh${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}Use $SCRIPT_DIRECTORY/mkaccount.sh${DEFAULT_COLOR}" &&
 message "${MESSAGE_COLOR}to create LDIF for new account${DEFAULT_COLOR}"
