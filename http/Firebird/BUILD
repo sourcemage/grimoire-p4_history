@@ -28,6 +28,8 @@ export MOZ_PHOENIX=1                         &&
     --disable-mailnews  \
     --disable-composer  \
     --enable-crypto     \
+    --enable-native-uconv \
+    --enable-extensions    \
     $OPTS               &&
 
     make                &&
