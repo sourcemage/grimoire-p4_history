@@ -3,7 +3,7 @@ optional_depends  "cdparanoia"  ""  ""  "to play audio cds"             &&
 optional_depends  "live"  "--enable-live"  ""  "for live.com Streaming Media (sdp/rtsp) support"  &&
 
 # input codecs
-optional_depends  "LIBAVCODEC"  ""  ""  "for lots of audio/video codecs (you really want this)" &&
+optional_depends  "LIBAVCODEC"  "--disable-libavcodec"  ""  "to use external libavcodec for audio/video decoding" &&
 optional_depends  "zlib"  ""  ""  "to play movies using losless compression algorithms" &&
 optional_depends  "w32codec"  ""  ""  "to use windows codec DLLs for video decoding" &&
 optional_depends  "libvorbis"  ""  ""  "to play ogg/vorbis audio" &&
@@ -13,7 +13,7 @@ optional_depends  "MPlayer-codecs"  ""  ""  "for additional audio/video codecs" 
 optional_depends  "xvid" "" "" "for encoding with the xvid codec (distribution in USA and Japan is forbidden)" &&
 optional_depends  "xmms" "--enable-xmms" "" "for xmms input plugin support" &&
 optional_depends  "libmatroska" "" "" "for matroska media support (.mkv, .mka)" &&
-optional_depends  "faad2" "--enable-externalfaad" "" "to use shared faad for AAC decoding"  &&
+optional_depends  "faad2" "--enable-external-faad" "" "to use shared faad for AAC decoding"  &&
 
 # output devices
 optional_depends  "svgalib"  ""  ""  "for svgalib video output" &&
@@ -36,9 +36,7 @@ optional_depends  "lame"  ""  ""  "to encode files with mp3 audio (mencoder)" &&
 optional_depends  "lirc"  ""  ""  "for remote-control" &&
 
 optional_depends  "freetype2"  ""  ""  "for truetype subtitle font support" &&
-if  [  "$FONTCONFIG"  =  "y"  ]; then
- optional_depends  "fontconfig"  ""  ""  "for fontconfig font lookup support"
-fi &&
+optional_depends  "fontconfig"  ""  ""  "for fontconfig font lookup support" &&
 optional_depends  "MPlayer-fonts"  ""  ""  "for OSD/subtitle fonts (not needed if compiled with freetype2 support" &&
 
 if    [  "$GUI"  =  "y"  ]
