@@ -1,6 +1,7 @@
 (
 
-  export TMAKEPATH=/usr/share/tmake/lib/linux-g++
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/resParser.cpp.patch      &&
+  export TMAKEPATH=/usr/share/tmake/lib/linux-g++             &&
   cd src                                                      &&
   tmake xxdiff.pro > Makefile                                 &&
   sedit  "s/-O2/$CFLAGS/" Makefile                            &&

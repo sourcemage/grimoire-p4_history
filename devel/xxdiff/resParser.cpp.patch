@@ -1,0 +1,13 @@
+diff -urpN xxdiff-2.9.2.old/src/resParser.cpp xxdiff-2.9.2/src/resParser.cpp
+--- xxdiff-2.9.2.old/src/resParser.cpp	2003-11-05 19:58:36.000000000 -0800
++++ xxdiff-2.9.2/src/resParser.cpp	2003-11-05 19:58:51.000000000 -0800
+@@ -821,9 +821,6 @@ char lexerBuffer[ LEX_BUFFER_MAX ];
+ #pragma reset woff 1506
+ #endif
+ 
+-// Prevent warning under IRIX and Linux.
+-char* dummy_full_match = yy_full_match;
+-
+ //------------------------------------------------------------------------------
+ //
+ void yyerror( const char* msg )
