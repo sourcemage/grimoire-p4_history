@@ -1,0 +1,26 @@
+diff -uprN alsaplayer-0.99.74.old/app/AlsaNode.cpp alsaplayer-0.99.74/app/AlsaNode.cpp
+--- alsaplayer-0.99.74.old/app/AlsaNode.cpp	2003-09-24 15:34:57.000000000 -0700
++++ alsaplayer-0.99.74/app/AlsaNode.cpp	2003-09-24 15:36:31.000000000 -0700
+@@ -39,14 +39,14 @@
+ #include "alsaplayer_error.h"
+ 
+ static const char *default_output_addons[] = {
+-	{"alsa"},
+-	{"jack"},
+-	{"oss"},
+-	{"nas"},
+-	{"sparc"},
+-	{"sgi"},
+-	{"esound"},
+-	{"null"},
++	"alsa",
++	"jack",
++	"oss",
++	"nas",
++	"sparc",
++	"sgi",
++	"esound",
++	"null",
+ 	NULL
+ };
+ 
