@@ -107,127 +107,171 @@ ask_risky|ask_abort)  query "Abort?" "y"           && exit 1   || echo -n ;;
 
 #####
 
-
-cd       ${INSTALL_ROOT}/usr/src
+cd  ${INSTALL_ROOT}/usr/src  &&
 
 if  [  "$REUSE_SOURCE"  ==  "y"  ];  then
-  message  "${MESSAGE_COLOR}Reusing existing Linux source tree (/usr/src/linux-${VERSION}).${DEFAULT_COLOR}"
-  ln -sf ${INSTALL_ROOT}/usr/src/linux-${VERSION} linux
-  cd linux-${VERSION}
-  return 0
+  message  "${MESSAGE_COLOR}Reusing existing Linux source tree (/usr/src/linux-${VERSION}).${DEFAULT_COLOR}"  &&
+  ln  -sf  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  linux  &&
+  cd  linux-${VERSION}
 else
   if  [  -d  /usr/src/linux-${VERSION}  ];  then
-    message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"
-    rm   -r  linux-${VERSION}
+    message  "${MESSAGE_COLOR}Deleting existing Linux source tree (/usr/src/linux-${VERSION})...${DEFAULT_COLOR}"  &&
+    rm   -rf  linux-${VERSION}
   fi
-fi
-message "${MESSAGE_COLOR}Building a new tree.${DEFAULT_COLOR}";
+
+  message "${MESSAGE_COLOR}Building a new tree.${DEFAULT_COLOR}"  &&
+
+  check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
+
+  mkdir linux-${VERSION}                       &&
+  cd ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
+
+  message "extracting ${SOURCE}"                                          &&
+  unpack_override  $SOURCE '' #we will ignore MD5 because of above check  &&
+  EXTRACT_PATH=$(ls)                                                      &&
+  mv  ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/*          \
+      ${INSTALL_ROOT}/usr/src/linux-${VERSION}/                           &&
+  rmdir  ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/        &&
+  cd  ${INSTALL_ROOT}/usr/src                                             &&
+
+  chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}  &&
 
 
-check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
+  mkdir  -p  ../include  &&
 
-mkdir linux-${VERSION}
-cd ${INSTALL_ROOT}/usr/src/linux-${VERSION}
+  if [[ ! -d ../include/asm-generic ]];  then
+    ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -sf
+  fi  &&
 
-message "extracting ${SOURCE}"
-unpack_override  $SOURCE '' #we will ignore MD5 because of above check
-EXTRACT_PATH=$(ls)
-mv ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/* ${INSTALL_ROOT}/usr/src/linux-${VERSION}/
-rmdir ${INSTALL_ROOT}/usr/src/linux-${VERSION}/${EXTRACT_PATH}/
-cd ${INSTALL_ROOT}/usr/src
+  if [[ ! -d ../include/asm ]];  then
+    ln ../src/linux-${VERSION}/include/asm        ..//include/ -sf
+  fi  &&
 
-chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
+  if [[ ! -d ../include/linux ]];  then
+    ln ../src/linux-${VERSION}/include/linux      ..//include/ -sf
+  fi  &&
 
+  #reinstated so module-less kernels have an identifiable header tree
+  ln -sfn linux-${VERSION} ${INSTALL_ROOT}/usr/src/linux  &&
+  cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}            &&
 
-mkdir  -p  ../include
+  # patch 2.6 make file, to allow use of xconfig
+  if [ -d scripts/kconfig ];  then
+    patch -p0 < ${SPELL_DIRECTORY}/mk.2.6.diff scripts/kconfig/Makefile
+  fi  &&
 
-if [[ ! -d ../include/asm-generic ]]; then
-  ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -sf
-fi
+  if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
+    cp  $CONFIG_CACHE/kernel.config  .config
+  fi  &&
 
-if [[ ! -d ../include/asm ]]; then
-  ln ../src/linux-${VERSION}/include/asm        ..//include/ -sf
-fi
+  local COUNTER  &&
+  local VARS     &&
+  local VARSS    &&
+  for ((COUNTER=4; COUNTER <= 7 ; COUNTER++))
+  do
+    VARS=SOURCE${COUNTER}           &&
+    COUNTER="$((( $COUNTER + 1)))"  &&
+    VARG=SOURCE${COUNTER}           &&
+    VARSS=${!VARS}                  &&
+    VARGS=${!VARG}                  &&
+    if [[ "${VARSS}" != " " ]]; then
 
-if [[ ! -d ../include/linux ]]; then
-  ln ../src/linux-${VERSION}/include/linux      ..//include/ -sf
-fi
+      check gpg $VARSS $VARGS kernel.gpg || exit 1
+      echo "applying ${VARSS}"  &&
 
-#reinstated so module-less kernels have an identifiable header tree
-ln -sfn linux-${VERSION} ${INSTALL_ROOT}/usr/src/linux
-cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
-
-# patch 2.6 make file, to allow use of xconfig
-if [ -d scripts/kconfig ];then
-  patch -p0 < ${SPELL_DIRECTORY}/mk.2.6.diff scripts/kconfig/Makefile
-fi
-
-
-if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
-  cp $CONFIG_CACHE/kernel.config .config
-fi
-
-
-local COUNTER
-local VARS
-local VARSS
-for ((COUNTER=4; COUNTER <= 7 ; COUNTER++))
-do
-  VARS=SOURCE${COUNTER}
-  COUNTER="$((( $COUNTER + 1)))"
-  VARG=SOURCE${COUNTER}
-  VARSS=${!VARS}
-  VARGS=${!VARG}
-  if [[ "${VARSS}" != " " ]]; then
-
-    check gpg $VARSS $VARGS kernel.gpg || exit 1
-    echo "applying ${VARSS}"
-
-    if [[ ${VARSS} == *.bz2 ]] ; then
-      bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
-    elif [[ ${!VAR} == *.gz ]] ; then
-      zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
-    else
-      cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      if [[ ${VARSS} == *.bz2 ]] ; then
+        bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      elif [[ ${!VAR} == *.gz ]] ; then
+        zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      else
+        cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      fi
     fi
+  done  &&
+
+  local COUNTER  &&
+  local VARS     &&
+  local VARSS    &&
+  local MD5V     &&
+  for ((COUNTER=8; COUNTER <= 40 ; COUNTER++))
+  do
+    VARS=SOURCE${COUNTER}  &&
+    VARSS="${!VARS}"       &&
+    if [[ "${VARSS}" != "" ]]; then
+
+      MD5V=${MD5[$((( ${COUNTER} - 1)))]}
+      if test ${MD5V} = "gpg" ; then
+        COUNTER="$((( $COUNTER + 1)))"  &&
+        VARS2=SOURCE${COUNTER}          &&
+        VARSS2="${!VARS2}"              &&
+        check gpg ${VARSS} ${VARSS2} ${MD5[$(((${COUNTER} - 1)))]} || exit 1
+      else
+        check md5 ${VARSS} ${MD5V} || exit 1
+      fi  &&
+      echo "applying ${VARSS}"  &&
+
+      if  echo  ${VARSS}  |  grep  -q  "kgdb";  then
+        tar  xjf  ${SOURCE_CACHE}/${VARSS}  &&
+        for i in `ls ${VARSS/\.tar*/}/*.patch`;  do
+          echo "applying $i from ${VARSS/\.tar*/}"  &&
+          patch -s -N -p1  <  $i
+        done
+      elif [[ ${VARSS} == *.bz2 ]] ; then
+        bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      elif [[ ${VARSS} == *.gz ]] ; then
+        zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      else
+        cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      fi
+    fi
+  done  &&
+
+  if  [  -f  $INSTALL_ROOT$CONFIG_CACHE/kernel.config  ];  then
+    cp  $INSTALL_ROOT$CONFIG_CACHE/kernel.config  .config
   fi
-done
+fi  &&
 
-local COUNTER
-local VARS
-local VARSS
-local MD5V
-for ((COUNTER=8; COUNTER <= 40 ; COUNTER++))
-do
-  VARS=SOURCE${COUNTER}
-  VARSS="${!VARS}"
-  if [[ "${VARSS}" != "" ]]; then
-
-    MD5V=${MD5[$((( ${COUNTER} - 1)))]}
-    if test ${MD5V} = "gpg" ; then
-      COUNTER="$((( $COUNTER + 1)))"
-      VARS2=SOURCE${COUNTER}
-      VARSS2="${!VARS2}"
-      check gpg ${VARSS} ${VARSS2} ${MD5[$(((${COUNTER} - 1)))]} || exit 1
-    else
-      check md5 ${VARSS} ${MD5V} || exit 1
+#
+# Run graphical *config outside of BUILD so the output redirection
+# doesn't break it  (Bug #7256)
+#
+if  [  "$OLD_CONFIG"  ==  "n"  ];  then
+  # use a more modern config tool if possible
+  CFGTYPE=menuconfig
+  if [[ ! -z $DISPLAY ]]; then
+    if  [  "$USE_GUI"  ==  "y"  ];  then
+      VV=`/bin/echo $VERSION|cut -d. -f-2`
+      case $VV in
+        2.6)
+          if spell_installed qt-x11;then
+            CFGTYPE=xconfig
+          else
+            if spell_installed gtk+2; then
+              CFGTYPE=gconfig
+            fi
+          fi
+          ;;
+        2.4)
+          if spell_installed tk;then
+            CFGTYPE=xconfig
+          fi
+          ;;
+      esac
     fi
-    echo "applying ${VARSS}"
+  fi  &&
 
-    if  echo  ${VARSS}  |  grep  -q  "kgdb";  then
-      tar xjf  ${SOURCE_CACHE}/${VARSS}       &&
-      for i in `ls ${VARSS/\.tar*/}/*.patch`;  do
-        echo "applying $i from ${VARSS/\.tar*/}"   &&
-        patch -s -N -p1  <  $i
-      done
-    elif [[ ${VARSS} == *.bz2 ]] ; then
-      bzcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
-    elif [[ ${VARSS} == *.gz ]] ; then
-      zcat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+  echo  CONFIG_KERNEL in BUILD = $CONFIG_KERNEL
+  while
+    if  [  "$CONFIG_KERNEL"  ==  "y"  ];  then
+      make  $CFGTYPE || make menuconfig
+      if  query  "Repeat $CFGTYPE?  "  n
+        then  CONFIG_KERNEL="y"
+        else  CONFIG_KERNEL="n"
+      fi
     else
-      cat $SOURCE_CACHE/${VARSS} | patch -s -N -p1
+      false
     fi
-  fi
-done
-
-
+  do
+    true
+  done
+fi

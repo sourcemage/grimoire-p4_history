@@ -20,6 +20,13 @@ run_make() {
 }
  
 #
+# Still run `make oldconfig` in BUILD if specified  (Bug #7256)
+#
+if  [  "$OLD_CONFIG"  ==  "y"  ];  then
+  run_make  oldconfig
+fi  &&
+
+#
 # If the architecture-dependent assembly hasn't been linked
 # to the generic 'asm' directory, do so.
 #
@@ -36,55 +43,6 @@ fi  &&
 #
 # End fix
 #
-
-
-if  [  -f  $INSTALL_ROOT$CONFIG_CACHE/kernel.config  ]; then
-  cp $INSTALL_ROOT$CONFIG_CACHE/kernel.config .config
-fi  &&
-
-
-if  [  "$OLD_CONFIG"  ==  "y"  ]
-  then  run_make oldconfig
-else
-  # use a more modern config tool if possible
-  CFGTYPE=menuconfig
-  if [[ ! -z $DISPLAY ]]; then
-    if  [  "$USE_GUI"  ==  "y"  ];  then
-      VV=`/bin/echo $VERSION|cut -d. -f-2`
-      case $VV in
-        2.6)
-          if spell_installed qt-x11;then
-            CFGTYPE=xconfig
-          else
-            if spell_installed gtk+2; then
-              CFGTYPE=gconfig
-            fi
-          fi
-          ;;
-        2.4)
-          if spell_installed tk;then
-            CFGTYPE=xconfig
-          fi
-          ;;
-      esac
-    fi
-  fi  &&
-
-  echo  CONFIG_KERNEL in BUILD = $CONFIG_KERNEL
-  while
-    case  $CONFIG_KERNEL in
-      y|Y)  run_make  $CFGTYPE || run_make menuconfig
-            if  query  "Repeat $CFGTYPE?  "  n
-            then  CONFIG_KERNEL=y
-            else  CONFIG_KERNEL=n
-            fi     ;;
-        *)  false  ;;
-    esac
-  do
-    true
-  done
-fi  &&
-
 
 backup_modules()  {
 
