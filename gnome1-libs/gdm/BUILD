@@ -1,8 +1,8 @@
 (
 
-  if    spell_installed  linux-pam;  then  SCHEME="pam"
-  elif  spell_installed  shadow;     then  SCHEME="shadow"
-                                     else  SCHEME="auto"
+  if    spell_ok  linux-pam;  then  SCHEME="pam"
+  elif  spell_ok  shadow;     then  SCHEME="shadow"
+                              else  SCHEME="auto"
   fi
 
   AUTH_SCHEME="--enable-authentication-scheme=$SCHEME"
