@@ -12,18 +12,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/rpc2-$VERSION
          ENTERED=20020731
          UPDATED=20020731
       MAINTAINER=eric@sandall.us
-           SHORT="Coda is an advanced networked filesystem."
+           SHORT="Remote Procedure Call v2 library for Coda"
 cat << EOF
-Coda is a distributed filesystem with its origin in AFS2. It has many features that are very desir
-able for network filesystems. Currently, Coda has several features not found elsewhere.
-
-  * disconnected operation for mobile computing
-  * is freely available under a liberal license
-  * high performance through client side persistent caching
-  * server replication
-  * security model for authentication, encryption and access control
-  * continued operation during partial network failures in server network
-  * network bandwith adaptation
-  * good scalability
-  * well defined semantics of sharing, even in the presence of network failures
+RPC2, a highly portable and extensible remote procedure call package for Unix. RPC2 runs on top of the IP/UDP protocol, and provides support for streaming file transfer, parallel RPC calls, and IP-level multicast. The manual also describes two other packages used by RPC2: RP2Gen, a stub generator, and LWP, a coroutine-based lightweight process package. All the software described in this manual runs at user-level on the Unix 4.3BSD interface; no kernel modifications are necessary.
 EOF

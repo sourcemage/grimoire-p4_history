@@ -12,18 +12,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/rvm-$VERSION
          ENTERED=20020731
          UPDATED=20020731
       MAINTAINER=eric@sandall.us
-           SHORT="Coda is an advanced networked filesystem."
+           SHORT="Recoverable Virtual Memory library for Coda"
 cat << EOF
-Coda is a distributed filesystem with its origin in AFS2. It has many features that are very desir
-able for network filesystems. Currently, Coda has several features not found elsewhere.
-
-  * disconnected operation for mobile computing
-  * is freely available under a liberal license
-  * high performance through client side persistent caching
-  * server replication
-  * security model for authentication, encryption and access control
-  * continued operation during partial network failures in server network
-  * network bandwith adaptation
-  * good scalability
-  * well defined semantics of sharing, even in the presence of network failures
+RVM provides an unstructured recoverable virtual memory. The recoverable storage is represented by Unix files or disk partitions that applications can map at page granularity into the address space of a process. Simple, non-nested atomic transactions guarantee permanence of changes to recoverable storage across system crashes. Applications can schedule transaction logging actions to enhance performance. The design stresses simplicity, ease of use, and high performance. Unix compatibility is standard, while optional Mach-specific extensions are supported for additional flexibility and performance. RVM has been extensively used in the clients and servers of the Coda File System, and in the Venari system.
 EOF
