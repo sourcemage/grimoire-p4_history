@@ -1,0 +1,25 @@
+           SPELL=sodipodi-cvs
+         VERSION=`date +%Y%m%d`
+          SOURCE=$SPELL-src.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:sodipodi
+          MD5[0]='IGNORE'
+        WEB_SITE=http://sodipodi.sourceforge.net/
+         ENTERED=20031108
+         UPDATED=20031108
+      LICENSE[0]=GPL
+      MAINTAINER=xiticix47@hotmail.com
+           SHORT="sodipodi - a general purpose vector drawing application"
+cat << EOF
+Sodipodi is a vector based drawing program, like CorelDraw or Adobe 
+Illustrator from the proprietary software world, and Sketch or 
+KIllustrator from the free software world. It is free software, 
+distributed under the terms of Gnu General Public License, Version 2. 
+
+Sodipodi uses W3C SVG as native file format, being thus very useful tool 
+for web designers. 
+
+It has relatively modern display engine, giving you fine antialiased 
+display, alpha transparencies, vector fonts and so on. Sodipodi is 
+written in C, using Gtk+ toolkit and some Gnome libraries. 
+EOF
