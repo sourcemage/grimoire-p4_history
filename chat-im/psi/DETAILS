@@ -1,13 +1,13 @@
            SPELL=psi
-         VERSION=0.9
+         VERSION=0.9.1
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
         WEB_SITE=http://psi.sourceforge.net/
-		  MD5[0]=a821277c9c83b28fd47c96ea2a00673c
+		  MD5[0]=5a1f0f3998054d65da532dc42837c723
 	     LICENSE=GPL
          ENTERED=20020806
-         UPDATED=20030727
+         UPDATED=20040420
            SHORT="Psi is a client for the Jabber system."
 cat << EOF
 Psi is a client for the Jabber system. Written in C++ and based on the 
@@ -16,37 +16,5 @@ unix/X11), Microsoft Windows, and Apple MacOS X.
 
 Psi is released under the GNU General Public License, so you know 
 that it's truly free, and will remain so.
-
-(requires Qt 3.x to compile) 
-
-0.9 Updates:
- Jabber Browsing
- OpenPGP integration (via GnuPG) for end-to-end personal security
- Groupchat: invites, private messaging, nick coloring, word highlighting
- Fixed OS-shutdown problem
- Support for GNOME2 trayicon (freedesktop standard)
- Invisibility
- Option to block popups from unlisted contacts
- VCards are now cached locally
- Fixed build issues on Solaris
- Fixed double-transport item bug
- Version checks are now optional
- Gadu-gadu icons
- Lockdown (undocumented, see profiles.cpp source code for details)
- Default chats to no-resource, as per XMPP recommendation SSL Certificate dialog
- Improved SSL Certificate verification and certs format (see certs/README)
- Set WM_CLASS's on X11
- Account Registration allows specifying separate host from JID
- New Proxy Profiles system, to share proxy configuration between accounts
- Fixed bug where outgoing messages were logged when history was disabled
- Chat dialog no longer logs redundant presence updates
- Fixed chat dialog scrolling annoyance
- Swap yes/no buttons on some dialogs back to normal
- Fixed clipboard URL-grabbing
- win32: Pasting text into Notepad should have proper linebreaks
- win32: fixed idle bugs
- JIDs that have < or > characters are now escaped in the event dialog
- Chat dialog should now wrap long URLs
- Unhiding a chat dialog should bring it to the current virtual desktop
 
 EOF
