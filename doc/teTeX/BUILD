@@ -1,20 +1,8 @@
 (
 
+  OPTS="$OPTS --disable-multiplatform"  
   rm -rf utils/dialog                   &&
   rm -rf utils/texinfo                  &&
-  ./configure  --prefix=${INSTALL_ROOT}/usr \
-               --with-system-zlib       \
-               --with-system-pnglib     \
-               --with-system-ncurses    \
-               --with-system-libwww     \
-               --with-system-ncurses    \
-               --without-texinfo        \
-               --without-dialog         \
-               --disable-multiplatform  \
-	       $OPTS			\
-               $OMIT_X11                &&
-  make  all                             &&
-  prepare_install                       &&
-  make    install
+  default_build
 
 ) > $C_FIFO 2>&1
