@@ -39,7 +39,7 @@
   fi										&&
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var 		\
-              $IPV6 $SSL $POP3D		 					&&
+              $IPV6 $SSL $POP3D $OPTS	 					&&
   make										&&
 
   prepare_install								&&
@@ -77,14 +77,6 @@
   if [ -e /etc/init.d/dovecot.sh ]; then
     CUR_DATE=`date +%y.%m.%d-%H.%M.%S`						&&
     mv /etc/init.d/dovecot.sh /etc/init.d/dovecot.sh-$CUR_DATE
-  fi										&&
-
-  cp  $SCRIPT_DIRECTORY/dovecot.sh  /etc/init.d/				&&
-  ln  -sf  ../init.d/dovecot.sh     /etc/rc3.d/S90dovecot			&&
-  ln  -sf  ../init.d/dovecot.sh     /etc/rc4.d/S90dovecot			&&
-  ln  -sf  ../init.d/dovecot.sh     /etc/rc5.d/S90dovecot			&&
-
-  ln  -sf  ../init.d/dovecot.sh     /etc/rc0.d/K10dovecot			&&
-  ln  -sf  ../init.d/dovecot.sh     /etc/rc6.d/K10dovecot
+  fi										
 
 ) > $C_FIFO 2>&1 

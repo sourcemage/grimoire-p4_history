@@ -32,6 +32,7 @@ export QTDIR=$SOURCE_DIRECTORY  &&
                                -datadir /usr/share/qt \
                                -thread             \
                                -qt-gif             \
+                               -xft                \
                                $OPTS               &&
 
   make symlinks sub-src sub-tools                  &&

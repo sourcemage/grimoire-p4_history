@@ -14,7 +14,8 @@
                --host=$BUILD            \
                --prefix=/opt/gcc2       \
                --enable-shared          \
-               $LANG                    &&
+               $LANG                    \
+	       $OPTS			&&
   make  bootstrap                       &&
   prepare_install                       && 
 

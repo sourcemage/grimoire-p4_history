@@ -1,23 +1,23 @@
 (
     
-    case $MOZILLA_MAIL  in
-	n|N)	OPTS="$OPTS --disable-mailnews"
-	    ;;
-    esac &&
+  case $MOZILLA_MAIL  in
+  n|N)  OPTS="$OPTS --disable-mailnews"
+    ;;
+  esac &&
 
-    case $MOZILLA_CHAT  in
-	n|N)	OPTS="$OPTS --disable-chat"
-	    ;;
-    esac &&
+  case $MOZILLA_CHAT  in
+  n|N)  OPTS="$OPTS --disable-chat"
+    ;;
+  esac &&
 
   if [ "$MOZILLA_CALENDAR" == "y" ]; then
     OPTS="$OPTS --enable-calendar"
   fi &&
 
-    case $MOZILLA_JAVA  in
-	y|Y|j|J)	OPTS="$OPTS --enable-java-supplement"
-	    ;;
-    esac &&
+  case $MOZILLA_JAVA  in
+  y|Y|j|J)  OPTS="$OPTS --enable-java-supplement"
+    ;;
+  esac &&
 
   case $MOZILLA_SVG in
   y|Y|j|J)
@@ -26,15 +26,15 @@
     ;;
   esac &&
 
-    case $MOZILLA_MATHML  in
-	n|N)	OPTS="$OPTS --disable-mathml"
-	    ;;
-    esac &&
+  case $MOZILLA_MATHML  in
+  n|N)  OPTS="$OPTS --disable-mathml"
+    ;;
+  esac &&
 
-    case $MOZILLA_XINERAMA  in
-	y|Y|j|J)	OPTS="$OPTS --enable-xinerama"
-	    ;;
-    esac &&
+  case $MOZILLA_XINERAMA  in
+  y|Y|j|J)  OPTS="$OPTS --enable-xinerama"
+    ;;
+  esac &&
 
   # PSM is usually needed, so it will compile except when disabled explicitly
   # This precaution is made for cases where CONFIGURE doesn't run for some reason
@@ -52,13 +52,18 @@
     ;;
   esac &&
 
+  if echo $CFLAGS | grep -q pentium4; then
+    export CFLAGS="${CFLAGS/-O3/}"
+  fi &&
+
   ./configure                   \
-    --prefix=/usr		\
+    --prefix=/usr               \
     --with-x                    \
     --with-pthreads             \
+    --enable-xft                \
     --enable-reorder            \
     --enable-strip              \
-    --enable-optimize="$CFLAGS"	\
+    --enable-optimize="$CFLAGS" \
     --disable-debug             \
     --disable-tests             \
     --disable-installer         \
@@ -88,7 +93,7 @@
   mkdir  -p                          /usr/lib/mozilla
   cp     -rL  dist/bin/*             /usr/lib/mozilla/
   mkdir  -p                          /usr/include/mozilla
-  cp	 -rL  dist/include/*         /usr/include/mozilla/
+  cp     -rL  dist/include/*         /usr/include/mozilla/
   mkdir  -p                          /usr/include/moznss
   cp     -L   dist/public/security/* /usr/include/moznss/
 

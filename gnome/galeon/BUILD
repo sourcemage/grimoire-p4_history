@@ -1,13 +1,14 @@
 (
 
-  ./configure  --prefix=/usr      \
-               --sysconfdir=/etc  \
-               --disable-werror   
-               $OPTS              &&
-  make                            &&
-  prepare_install                 &&
-  make    install                 &&
-  echo  "YES"                     |
+  ./configure  --prefix=/usr               \
+               --sysconfdir=/etc           \
+               --disable-werror            \
+               --with-mozilla-snapshot=1.3 \
+               $OPTS                       &&
+  make                                     &&
+  prepare_install                          &&
+  make    install                          &&
+  echo  "YES"                              |
   galeon-config-tool  --install-schemas --fix-gconf-permissions
 #  &&
 #   echo  "YES"                     |

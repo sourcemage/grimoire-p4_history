@@ -1,0 +1,15 @@
+           SPELL=lshw
+         VERSION=T.00.07
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ezix.sourceforge.net/software/files/$SOURCE
+        WEB_SITE=http://ezix.sourceforge.net/software/lshw.html
+          MD5[0]=7a34c8d12fed0b425a0de2870117c16f
+         ENTERED=20030402
+         UPDATED=20030402
+      LICENSE[0]=GPL
+      MAINTAINER=jbernardo@sourcemage.org
+           SHORT="lshw - list hardware"
+cat << EOF
+lshw (Hardware Lister) is a small tool to provide detailed informaton on the hardware configuration of the machine. It can report exact memory configuration, firmware version, mainboard configuration, CPU version and speed, cache configuration, bus speed, etc. on DMI-capable x86 systems and on some PowerPC machines (PowerMac G4 is known to work).
+EOF

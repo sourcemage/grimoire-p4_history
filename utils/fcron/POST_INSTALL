@@ -1,1 +1,3 @@
-/etc/init.d/fcron.sh  start
+if  [  -x  /etc/init.d/fcron.sh  ];  then
+  /etc/init.d/fcron.sh  start
+fi

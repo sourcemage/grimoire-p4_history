@@ -12,16 +12,6 @@ mkdir  -p  /var/log
 mkdir  -p  /devices
 
 [  -e  /etc/inittab            ]  ||  cp  $SCRIPT_DIRECTORY/inittab     /etc
-[  -e  /etc/init.d/rc          ]  ||  cp  $SCRIPT_DIRECTORY/rc          /etc/init.d
-[  -e  /etc/init.d/rcS         ]  ||  cp  $SCRIPT_DIRECTORY/rcS         /etc/init.d
-[  -e  /etc/init.d/halt.sh     ]  ||  cp  $SCRIPT_DIRECTORY/halt.sh     /etc/init.d
-[  -e  /etc/init.d/reboot.sh   ]  ||  cp  $SCRIPT_DIRECTORY/reboot.sh   /etc/init.d
-[  -e  /etc/init.d/signals.sh  ]  ||  cp  $SCRIPT_DIRECTORY/signals.sh  /etc/init.d
-
-ln     -sf ../init.d/halt.sh     /etc/rc0.d/S90halt
-ln     -sf ../init.d/reboot.sh   /etc/rc6.d/S90reboot
-ln     -sf ../init.d/signals.sh  /etc/rc0.d/K80signals
-ln     -sf ../init.d/signals.sh  /etc/rc6.d/K80signals
 
 touch  /var/run/utmp
 touch  /var/log/wtmp

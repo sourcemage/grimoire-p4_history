@@ -8,8 +8,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[2]=http://www.ibiblio.org/pub/Linux/hardware/$SOURCE
         WEB_SITE=http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html
          ENTERED=20020125
-         UPDATED=20030116
-           SHORT="setpci and lspci utilities"
+         UPDATED=20030312
+           SHORT="setpci and lspci utilities with development headers and library"
 cat << EOF
 
 The PCI Utilities package contains a library for portable access to PCI
@@ -26,6 +26,9 @@ lspci:		displays detailed information about all PCI busses and
 setpci:		allows to read from and write to PCI device
 		configuration registers.  For example, you can adjust
 		the latency timers with it.
+
+
+Included development headers and libpci.a library installation.
 
 See also http://pciids.sourceforge.net/.
 EOF

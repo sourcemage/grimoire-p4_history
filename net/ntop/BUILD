@@ -24,21 +24,4 @@
   make    install                          &&
   mkdir  -p  /var/cache/ntop
 
-) > $C_FIFO 2>&1  && (
-
-  if  [  "$NTOP_BOOT"  ==  "y"  ];  then
-
-    cp  $SCRIPT_DIRECTORY/ntop.sh  /etc/init.d
-
-    ln  -sf  ../init.d/ntop.sh  /etc/rc0.d/K10ntop
-    ln  -sf  ../init.d/ntop.sh  /etc/rc1.d/K10ntop
-    ln  -sf  ../init.d/ntop.sh  /etc/rc2.d/K10ntop
-    ln  -sf  ../init.d/ntop.sh  /etc/rc6.d/K10ntop
-
-    ln  -sf  ../init.d/ntop.sh  /etc/rc3.d/S90ntop
-    ln  -sf  ../init.d/ntop.sh  /etc/rc4.d/S90ntop
-    ln  -sf  ../init.d/ntop.sh  /etc/rc5.d/S90ntop
-
-  fi
-
-)
+) > $C_FIFO 2>&1

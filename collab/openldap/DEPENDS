@@ -1,6 +1,10 @@
-# $Id: DEPENDS,v 1.8 2003/01/04 05:41:22 sergeyli Exp $
-depends db '--enable-bdb' &&
-
+optional_depends db              \
+                 '--enable-bdb'  \
+                 '--disable-bdb' &&
+optional_depends readline                    \
+                 '--with-readline'           \
+                 '--without-readline'        \
+                 'for readline intergration' &&
 optional_depends bash                \
                  '--enable-shell'    \
                  '--disable-shell'   \
@@ -9,19 +13,15 @@ optional_depends unixODBC          \
                  '--enable-sql'    \
                  '--disable-sql'   \
                  'for SQL backend' &&
-optional_depends readline                    \
-                 '--with-readline'           \
-                 '--without-readline'        \
-                 'for readline intergration' &&
 optional_depends openssl               \
                  '--with-tls'          \
                  '--without-tls'       \
-                 'for SSL/TLS support'
+                 'for SSL/TLS support' &&
 #optional_depends perl               \
 #                 '--enable-perl'    \
 #                 '--disable-perl'   \
-#                 'for perl backend'
-#optional_depends cyrus-sasl                \
-#                 '--with-cyrus-sasl'       \
-#                 '--without-cyrus-sasl'    \
-#                 'for SASL authentication'
+#                 'for perl backend' &&
+optional_depends cyrus-sasl                \
+                 '--with-cyrus-sasl'       \
+                 '--without-cyrus-sasl'    \
+                 'for SASL authentication'

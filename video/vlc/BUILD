@@ -1,5 +1,6 @@
-export CPPFLAGS="$CPPFLAGS -I/usr/include/ffmpeg"  &&
+export   CFLAGS="${CFLAGS/pentium4/i686}"          &&
+export   CFLAGS="${CFLAGS/\-msse2/}"               &&
 
-patch -p1 < ${SCRIPT_DIRECTORY}/vlc.diff	   &&
+export CPPFLAGS="$CPPFLAGS -I/usr/include/ffmpeg"  &&
 
 default_build

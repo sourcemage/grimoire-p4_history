@@ -9,6 +9,11 @@ elif  spell_installed  "apache2";  then
   LOC="/usr/share/apache2/htdocs/squirrelmail" 
 fi
 
+if [ "$LOC" == "" ]; then
+  message "${MESSAGE_COLOR}Unable to find apache or apache2 installed version..."
+  message "$SPELL cast aborded. ${DEFAULT_COLOR}"
+  exit 1
+fi
 
 rm -fr $LOC/doc 
 rm -fr /usr/doc/squirrelmail/*
@@ -50,7 +55,7 @@ chown nobody.nogroup $LOC/doc/httpd-sample-squirrelmail.conf
 
 if [ "$ORDER" == "y" ]; then
   cd $LOC
-  patch  -p0  <  ${SCRIPT_DIRECTORY}/addressbook.diff
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/addressbook.php.patch
 fi
 
 

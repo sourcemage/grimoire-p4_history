@@ -4,7 +4,8 @@
                --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               --libdir=/lib         &&
+               --libdir=/lib         \
+	       $OPTS		     &&
   make                               &&
   prepare_install                    &&
   make    install

@@ -1,0 +1,15 @@
+depends autoconf
+depends qt-x11
+depends kdelibs
+depends kdebase
+depends cdrtools
+depends cdrdao
+
+if 	[ "$MP3" = "y" ]
+then 	depends mpg123
+fi &&
+
+if	[ "$OGG" = "y" ]
+then	depends vorbis-tools
+fi
+

@@ -73,6 +73,6 @@
   install  -m  644  libraries/templates/fr/*.dxf  $Q_DIR/libraries/templates/fr  &&
   install  -m  644  libraries/templates/pt/*.dxf  $Q_DIR/libraries/templates/pt  &&
   install  -m  755  qcad  $Q_DIR  &&
-  ln  -s  $Q_DIR/qcad  /usr/bin/qcad
+  ln  -sf  $Q_DIR/qcad  /usr/bin/qcad
 
 ) > $C_FIFO 2>&1

@@ -1,7 +1,8 @@
 (
 
   ./configure  --with-emacs                                    \
-               --with-lispdir=/usr/share/emacs/site-lisp/gnus  &&
+               --with-lispdir=/usr/share/emacs/site-lisp/gnus  \
+	       $OPTS					       &&
   make                                                         &&
   prepare_install                                              &&
   make    install

@@ -1,21 +1,16 @@
-depends   gdk-pixbuf  &&
+depends   gtk+2  &&
 
 optional_depends  "audiofile"            \
-                  "--enable-audiofile"   \
-                  "--disable-audiofile"  \
+                  "--enable-audio"   \
+                  "--disable-audio"  \
                   "to play aiff, snd, wave, and au files"  &&
 
-optional_depends  "esound"             \
-                  "--enable-esd"       \
-                  "--disable-esdtest"  \
-                  "to enable enlightenment sound daemon for output"
+optional_depends  "system-tray-applet"   \
+		  ""			 \
+		  ""			 \
+		  "for gnome panel support"
 
-optional_depends  "gnome-libs"         \
-                  ""                   \
-                  ""                   \
-                  "for gnome support"  &&
-
-optional_depends  "gpgme"                      \
-                  ""                           \
-                  ""                           \
-                  "for gaim-e gpg encryption"
+# optional_depends  "gpgme"                      \
+#                   ""                           \
+#                   ""                           \
+#                   "for gaim-e gpg encryption"

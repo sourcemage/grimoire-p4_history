@@ -1,0 +1,18 @@
+           SPELL=omniORB
+         VERSION=4.0.0
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/omniorb/$SOURCE
+        WEB_SITE=http://omniorb.sourceforge.net/
+      MAINTAINER=c_mertes@bigfoot.de
+      LICENSE[0]=LGPL
+          MD5[0]=74bbfa77efe83046224d18b917f25de0
+         ENTERED=20030304
+         UPDATED=20030304
+           SHORT="omniORB is a robust high performance CORBA ORB for C++ and Python."
+cat << EOF
+omniORB is a robust, high-performance, multi-threaded CORBA 2 ORB,
+developed by AT&T Laboratories Cambridge. The native transport is
+IIOP, and it comes complete with a COS Naming Service. It supports C++
+language bindings.
+EOF

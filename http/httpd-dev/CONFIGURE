@@ -1,40 +1,17 @@
 # $Id: CONFIGURE,v 1.2 2002/09/17 15:45:41 sergeyli Exp $
-if  !  grep  -q  "APACHE_BOOT="  $SPELL_CONFIG;  then
-
-	if    query  "Invoke apache during boot?" y
-	then  echo   "APACHE_BOOT=y"  >>  $SPELL_CONFIG
-	else  echo   "APACHE_BOOT=n"  >>  $SPELL_CONFIG
-	fi
-
-	if ! grep -q "APACHE_SSL=" $SPELL_CONFIG; then
-		if query "Start Apache with SSL support?" n; then
-			echo "APACHE_SSL=y" >> $SPELL_CONFIG
-		else
-			echo "APACHE_SSL=n" >> $SPELL_CONFIG
-		fi
-	fi
-
-fi
-
 if ! grep -q "APACHE_MPM=" $SPELL_CONFIG; then
-	echo -e -n "${SPELL_COLOR}$SPELL:${DEFAULT_COLOR}${QUERY_COLOR} Choose MPM: f) prefork, w) worker, or c) prechild [f]?${DEFAULT_COLOR} "
-	read -t $PROMPT_DELAY -n 1 RESPONSE
-	echo
-	case ${RESPONSE:-f} in
-	W|w)
-		APACHE_MPM=worker
-		;;
-	C|c)
-		APACHE_MPM=perchild
-		;;
-	F|f|*)
-		APACHE_MPM=prefork
-		;;
-	esac
-	echo "APACHE_MPM=$APACHE_MPM" >> $SPELL_CONFIG
+  message "${MESSAGE_COLOR}Apache 2 can use prefork (default), worker, or perchild (risky) MPM${DEFAULT_COLOR}"
+  if query 'Apache 2 will use prefork MPM (default, Apache 1.3 legacy)?' y; then
+    echo 'APACHE_MPM=prefork'  >> $SPELL_CONFIG
+  elif query 'Apache 2 will use worker MPM (optimal performance)?' y; then
+    echo 'APACHE_MPM=worker'   >> $SPELL_CONFIG
+  else
+    message "${MESSAGE_COLOR}Apache 2 will use perchild MPM . Be careful!${DEFAULT_COLOR}"
+    echo 'APACHE_MPM=perchild' >> $SPELL_CONFIG
+  fi
 fi
 
 # The following question is asked no matter what
 if query "Would you like to export the most recent source?" n; then
-	export FORCE_DOWNLOAD=on
+  export FORCE_DOWNLOAD=on
 fi

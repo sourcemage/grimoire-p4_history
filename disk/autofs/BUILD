@@ -33,11 +33,4 @@
   do  [  -f  /etc/$FILE ]  ||  cp  $SCRIPT_DIRECTORY/$FILE  /etc
   done
 
-  cp  $SCRIPT_DIRECTORY/autofs.sh  /etc/init.d/autofs
- 
-  ln     -sf  ../init.d/autofs     /etc/rcS.d/S80autofs
-
-  ln     -sf  ../init.d/autofs     /etc/rc0.d/K20autofs
-  ln     -sf  ../init.d/autofs     /etc/rc6.d/K20autofs
-
 )

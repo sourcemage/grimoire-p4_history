@@ -6,7 +6,6 @@
     --prefix=/usr        \
     --sysconfdir=/etc    \
     --localstatedir=/var \
-    --without-cyrus-sasl \
     --enable-cleartext   \
     --enable-crypt       \
     --enable-rlookups    \

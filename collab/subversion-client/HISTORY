@@ -1,4 +1,25 @@
-# $Id: HISTORY,v 1.9 2003/01/13 21:44:24 sergeyli Exp $
+2003-04-16  Sergey Lipnevich  <sergey@sourcemage.org>
+	Upgrade to 0.21.0.
+
+2003-03-27  Sergey Lipnevich  <sergeyli@pisem.net>
+	Upgrade to 0.20.1.
+
+2003-03-21  Sergey Lipnevich  <sergeyli@pisem.net>
+	Upgrade to 0.20.
+
+2003-03-12  Sergey Lipnevich  <sergeyli@pisem.net>
+	Upgrade to 0.19.
+	Tarball signature changed from revision to version number.
+	Upgrade to 0.19.1 due to bug in svnserve shortly after.
+
+2003-02-28  Sergey Lipnevich  <sergeyli@pisem.net>
+	Berkeley DB is not required for the client to operate or even
+	compile, but is required for the Python bindings to function.
+	Therefore, DEPENDS now will use (or ask to install) the Berkeley
+	DB spell, or not use the Berkeley DB at all if it's not installed.
+	In the absence of Berkeley DB, Python bindings will not work.
+	TODO: replace this insane order of things with the right one.
+
 2003-02-26  Sergey Lipnevich  <sergeyli@pisem.net>
 	Upgrade to 0.18.1.
 

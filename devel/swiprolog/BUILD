@@ -1,10 +1,10 @@
 (
 
-    ./configure --prefix=/usr &&
+    ./configure --prefix=/usr $OPTS &&
     make &&
     make install &&
     cd packages &&
-    ./configure --prefix=/usr &&
+    ./configure --prefix=/usr $OPTS &&
     make && 
     make install
 

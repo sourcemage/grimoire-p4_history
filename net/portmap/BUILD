@@ -4,6 +4,7 @@
 #  mv  portmap.c~  portmap.c  &&
 
   sedit  "s/const char \*what/__const char \*what/"  portmap.c  &&
+  patch  -p1  <  $SCRIPT_DIRECTORY/errno_fix.patch              &&
 
   make  WRAP_DIR=/usr/lib   &&
   prepare_install           &&

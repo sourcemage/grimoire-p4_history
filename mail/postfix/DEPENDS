@@ -1,6 +1,20 @@
-depends  db    							&&
-depends  pcre  							&&
-optional_depends  "Linux-PAM"  ""  ""  "for PAM support"        &&
-optional_depends  "openssl"    ""  ""  "for encryption support" &&
-optional_depends  "openldap"   ""  ""  "for ldap support"       &&
-optional_depends  "cyrus-sasl" ""  ""  "for Cyrus-sasl authentification support"
+depends  db                                                             &&
+depends  pcre                                                           &&
+if [ "$MYSQL" == "y" ]; then
+  depends  "mysql"      ""  ""  "for MySQL database support"     
+fi			
+if [ "$PGSQL" == "y" ]; then
+  depends  "postgresql" ""  ""  "for PostgresSQL database support"     
+fi									&&
+if [ "$PAM" == "y" ]; then
+  depends  "Linux-PAM"  ""  ""  "for PAM support"                
+fi									&&
+if [ "$SSL" == "y" ]; then
+  depends  "openssl"    ""  ""  "for encryption support"         
+fi									&&
+if [ "$LDAP" == "y" ]; then
+  depends  "openldap"   ""  ""  "for ldap support"               
+fi									&&
+if [ "$SASL" == "y" ]; then
+  depends  "cyrus-sasl" ""  ""  "for Cyrus-sasl authentification support"
+fi

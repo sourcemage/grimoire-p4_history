@@ -3,7 +3,8 @@
   ./configure  --prefix=/usr                      \
                --sysconfdir=/etc                  \
                --localstatedir=/var               \
-               --with-messages=/var/log/messages  &&
+               --with-messages=/var/log/messages  \
+	       $OPTS				  &&
   make                                            &&
   prepare_install                                 &&
   make    install

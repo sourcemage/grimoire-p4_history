@@ -56,3 +56,62 @@ if ! grep -q "ALIAS" $SPELL_CONFIG; then
     else  echo   "ALIAS=n"  >>  $SPELL_CONFIG
   fi
 fi
+
+
+if ! grep -q "MYSQL" $SPELL_CONFIG; then
+  if query "Add MySQL support in postfix ?"  y
+    then  echo   "MYSQL=y"  >>  $SPELL_CONFIG ; MYSQL=y
+    else  echo   "MYSQL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+
+
+if ! grep -q "PAM" $SPELL_CONFIG; then
+  if query "Add PAM support in postfix ?"  y
+    then  echo   "PAM=y"  >>  $SPELL_CONFIG ; PAM=y
+    else  echo   "PAM=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "SSL" $SPELL_CONFIG; then
+  if query "Add SSL support in postfix ?"  y
+    then  echo   "SSL=y"  >>  $SPELL_CONFIG ; SSL=y
+    else  echo   "SSL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "LDAP" $SPELL_CONFIG; then
+  if query "Add LDAP support in postfix ?"  y
+    then  echo   "LDAP=y"  >>  $SPELL_CONFIG ; LDAP=y
+    else  echo   "LDAP=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "SASL" $SPELL_CONFIG; then
+  if query "Add SASL support in postfix ?"  y
+    then  echo   "SASL=y"  >>  $SPELL_CONFIG ; SASL=y
+    else  echo   "SASL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "PGSQL" $SPELL_CONFIG; then
+  if query "Apply Postgresql patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
+    then  echo   "PGSQL=y"  >>  $SPELL_CONFIG ; PGSQL=y
+    else  echo   "PGSQL=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "SSL_TLS" $SPELL_CONFIG; then
+  if query  "Apply SSL/TLS patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
+    then  echo "SSL_TLS=y" >>  $SPELL_CONFIG ; TLS=y
+    else  echo "SSL_TLS=n" >>  $SPELL_CONFIG
+  fi
+fi
+
+if ! grep -q "VDA" $SPELL_CONFIG; then
+  if query  "Apply Virtual Delivery Agent (VDA) patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
+    then  echo "VDA=y" >>  $SPELL_CONFIG ; VDA=y
+    else  echo "VDA=n" >>  $SPELL_CONFIG
+  fi
+fi

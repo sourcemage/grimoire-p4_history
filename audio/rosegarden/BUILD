@@ -1,6 +1,6 @@
 (
 
-./configure --prefix=/usr --with-alsa=yes &&
+./configure --prefix=/usr --with-alsa=yes $OPTS &&
 make  &&
 make  install
 

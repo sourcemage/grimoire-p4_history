@@ -23,6 +23,8 @@
       ;;
   esac             &&
 
+  sedit  "s:FAX_OUT_USER=fax:FAX_OUT_USER=phone:g"  Makefile
+
   make             &&
   prepare_install  &&
   make    install  &&

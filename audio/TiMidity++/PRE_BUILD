@@ -1,8 +1,8 @@
-unpack  $SOURCE			&&
+unpack  $SOURCE  ${MD5[0]}			&&
 
-cp $SPELL_DIRECTORY/patch.gz /usr/src &&
+cp $SPELL_DIRECTORY/patch.gz /usr/src 		&&
 
-zcat patch.gz | patch -p0	&&
+zcat patch.gz | patch -p0			&&
 
 rm -rf /usr/src/patch.gz
 

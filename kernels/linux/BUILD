@@ -36,8 +36,8 @@ backup_modules()  {
   cp  .config  $CONFIG_CACHE/kernel.config
   make  dep               &&
   case  ${BUILD}  in
-    sparc*-linux-gnu)  make  vmlinux  ;;
-                   *)  make  bzImage  ;;
+    sparc*-linux-gnu)  make  vmlinux ||  exit  1 ;;
+                   *)  make  bzImage ||  exit  1 ;;
   esac
 
   # Only install modules if module support is wanted

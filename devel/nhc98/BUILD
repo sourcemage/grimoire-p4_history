@@ -1,5 +1,5 @@
 (
-  ./configure --prefix=/usr         &&
+  ./configure --prefix=/usr $OPTS   &&
   make				    &&
   prepare_install                   &&
   make install

@@ -1,0 +1,8 @@
+if  !  grep  -q  "KMail="  $SPELL_CONFIG;  then
+
+  if    query  "Do you want pinentry due to KMail?" n
+  then  echo   "KMail=y"  >>  $SPELL_CONFIG
+  else  echo   "KMail=n"  >>  $SPELL_CONFIG
+  fi
+
+fi

@@ -23,4 +23,8 @@ optional_depends neon               \
                  '--with-neon=/usr' \
                  ''                 \
                  'install neon separately ("n" installs Subversion-bundled neon library)' &&
+optional_depends db                        \
+                 '--with-berkeley-db=/usr' \
+                 '--without-berkeley-db'   \
+                 'install/use Berkeley DB' &&
 optional_depends openssl '--with-ssl' '--without-ssl' 'for SSL/TLS support (recommended)'

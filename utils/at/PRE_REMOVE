@@ -1,1 +1,4 @@
-/etc/init.d/atd.sh  stop
+if  [  -x  /etc/init.d/atd.sh  ]
+then
+  /etc/init.d/atd.sh  stop
+fi

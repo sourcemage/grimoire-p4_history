@@ -5,7 +5,8 @@ sedit  "s/\$(OPT)//"                   MCONFIG
 (
 
  ./configure  --build=$BUILD                  \
-              --prefix=/usr                   &&
+              --prefix=/usr                   \
+	      $OPTS			      &&
   make                                        &&
   if    spell_installed      util-linux-crypto
   then  dispel  --nosustain  util-linux-crypto
@@ -13,8 +14,4 @@ sedit  "s/\$(OPT)//"                   MCONFIG
   prepare_install                             &&
   make    install
 
-) > $C_FIFO 2>&1  &&
-
-if  !  [  -x  /etc/init.d/bootmisc.sh  ];  then
-  cp  $SCRIPT_DIRECTORY/bootmisc.sh  /etc/init.d
-fi
+) > $C_FIFO 2>&1

@@ -32,22 +32,4 @@
     cp  $SCRIPT_DIRECTORY/portsentry.modes  /etc/portsentry/portsentry.modes
   fi
 
-
-  case  $PORTSENTRY_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/portsentry.init  /etc/init.d/portsentry.sh
-
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc0.d/K05portsentry
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc1.d/K05portsentry
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc2.d/K05portsentry
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc6.d/K05portsentry
-
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc3.d/S98portsentry
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc4.d/S98portsentry
-              ln  -sf  ../init.d/portsentry.sh  /etc/rc5.d/S98portsentry
-              ;;
-          *)  true
-              ;;
-  esac
-
-
 ) > $C_FIFO 2>&1

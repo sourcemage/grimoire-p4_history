@@ -3,7 +3,7 @@
   zcat $SCRIPT_DIRECTORY/$SPELL-$VERSION.SGL-patch.gz |
   patch -p 1
 
- ./configure  --build=$BUILD  --prefix=/usr       &&
+ ./configure  --build=$BUILD  --prefix=/usr $OPTS &&
   make  sysconfdir=/etc localstatedir=/var/cache  &&
   prepare_install                                 &&
   make  sysconfdir=/etc localstatedir=/var/cache libexecdir=/usr/bin install

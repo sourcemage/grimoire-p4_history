@@ -1,0 +1,26 @@
+	SPELL=juk		
+	VERSION=1.0-1
+ 	SOURCE=$SPELL-$VERSION.tar.gz
+	SOURCE_DIRECTORY=$BUILD_DIRECTORY/juk-1.0/
+	SOURCE_URL[0]=http://www.slackorama.net/oss/juk/$SOURCE
+        LICENSE[0]=GPL
+	MD5[0]='52373efb9db08946437ee2c5ec54a95a'
+	WEB_SITE=http://www.slackorama.net/cgi-bin/content.pl?juk
+	MAINTAINER=htikkala@nietos.tokem.fi
+	ENTERED=20030315
+	UPDATED=20030315
+	SHORT="mp3 jukebox for KDE 3.1"
+cat << EOF
+JuK s a jukebox and music manager for the KDE desktop similar to 
+jukebox software on other platforms such as iTunes ® or RealOne ®.
+Support for Ogg Vorbis and MP3 formats
+Tag editing support for both formats, including ID3v2 for MP3 files. 
+Multitagging or editing a selection of multiple files at once is also 
+supported
+Managing of your "collection" and multiple playlists
+Import and export to m3u playlists
+Binary caching of audio meta-data and playlist information for 
+faster load times (starting with the second time you run JuK)
+Integration into KDE that allows drag-and-drop and clipboard usage 
+with other KDE and X apps 
+EOF

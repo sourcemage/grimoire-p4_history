@@ -20,4 +20,11 @@ optional_depends        "db"                     \
 optional_depends        "openldap"               \
                         "--with-authldap"        \
                         "--without-authldap"     \
-                        "Enable LDAP support for Courier IMAP"
+                        "Enable LDAP support for Courier IMAP" &&
+
+optional_depends        "expect"  		 \
+			""  			 \
+			""  			 \
+			"to enable changing passwords via webmail"
+
+

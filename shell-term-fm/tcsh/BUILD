@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr      \
-               --mandir=/usr/man  &&
+               --mandir=/usr/man  \
+	       $OPTS		  &&
   make                            &&
   prepare_install                 &&
   make    install                 &&

@@ -1,8 +1,27 @@
 depends  perl    &&
 depends  teTeX   &&
-depends  xforms  &&
+
+optional_depends  "Python"                                    \
+                  "--with-python"                             \
+                  ""                                          \
+                  "for importing old LyX files with lyx2lyx"  &&
 
 optional_depends  "ispell"                                    \
+                  "--with-ispell"                             \
                   ""                                          \
+                  "for spell checker support through ispell"  &&
+
+optional_depends  "aspell"                                    \
+                  "--with-pspell"                             \
                   ""                                          \
-                  "for spell checker support through ispell"
+                  "for spell checker support through aspell"  &&
+
+optional_depends  "xforms"                  \
+                  "--with-frontend=xforms"  \
+                  ""                        \
+                  "to use xforms frontend"  &&
+
+optional_depends  "qt-x11"              \
+                  "--with-frontend=qt"  \
+                  ""                    \
+                  "to use QT frontend ${MESSAGE_COLOR}(!!BROKEN!!)${DEFAULT_COLOR}"

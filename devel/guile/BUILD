@@ -3,7 +3,8 @@
   sedit  "s/extern int inet_aton/\/\/ extern int inet_aton/"  \
          libguile/net_db.c        &&
   ./configure  --prefix=/usr      \
-               --sysconfdir=/etc  &&
+               --sysconfdir=/etc  \
+	       $OPTS		  &&
   make                            &&
   prepare_install                 &&
   make    install

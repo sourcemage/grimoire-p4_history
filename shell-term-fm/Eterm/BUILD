@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr           \
                --enable-multi-charset  \
-               --with-theme-update     &&
+               --with-theme-update     \
+	       $OPTS		       &&
   make                                 &&
   prepare_install                      &&
 #  tic   doc/Eterm.ti                  &&

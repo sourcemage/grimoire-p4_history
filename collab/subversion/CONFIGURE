@@ -1,0 +1,9 @@
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+
+  if query 'Download Subversion source code HEAD revision?' n
+  then echo 'SVN_EXPORT_HEAD=y' >> $SPELL_CONFIG
+  else echo 'SVN_EXPORT_HEAD=n' >> $SPELL_CONFIG
+  fi
+
+  echo 'CONFIGURED=y' >> $SPELL_CONFIG
+fi

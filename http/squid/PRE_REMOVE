@@ -1,1 +1,4 @@
-/etc/init.d/squid.sh  stop
+if  [  -x  /etc/init.d/squid.sh  ]
+then
+  /etc/init.d/squid.sh  stop
+fi

@@ -2,11 +2,8 @@
 
   cp  $SCRIPT_DIRECTORY/FILES/jed.rc lib  &&
 
-  # Check for Anti-Aliased support
-  if  spell_installed  Xrender  ;  then
-    sedit  's:#XRENDERFONTLIBS:XRENDERFONTLIBS:'  \
-    src/Makefile.in
-  fi
+  # enable antialiasing support
+  sedit  's:#XRENDERFONTLIBS:XRENDERFONTLIBS:'  src/Makefile.in
 
   # Fix slang location ( Bug # 1533)
   sedit  's:@SLANG_INC@:-I/usr/include:'  \

@@ -3,7 +3,8 @@
   export CPPFLAGS="$CPPFLAGS -w -I/usr/include/libpng12"
 
   ./configure  --prefix=/usr            \
-               --sysconfdir=/etc/imlib  &&
+               --sysconfdir=/etc/imlib  \
+               $OPTS			&&
   make                                  &&
   prepare_install                       &&
   make    install

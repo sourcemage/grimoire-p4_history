@@ -7,7 +7,7 @@
     GDBM="--without-gdbm"
   fi
 
-  ./configure $GDBM --prefix=/usr --with-httpddir=/usr/doc/hypermail/docs --sysconfdir=/etc &&
+  ./configure $GDBM --prefix=/usr --with-httpddir=/usr/doc/hypermail/docs --sysconfdir=/etc $OPTS &&
 
   make                          &&
 

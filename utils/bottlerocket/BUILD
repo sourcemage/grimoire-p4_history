@@ -1,7 +1,8 @@
 (
 
   ./configure  --with-x10port=/dev/firecracker  \
-               --prefix=/usr                    &&
+               --prefix=/usr                    \
+	       $OPTS				&&
   ln  -sf /dev/$SERIAL /dev/firecracker         &&
   make                                          &&
   prepare_install                               &&

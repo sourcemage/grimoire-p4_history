@@ -1,5 +1,24 @@
-optional_depends  "openssl"  ""  ""  "encryption for HTTPS"
-optional_depends  "libpng"   ""  ""  "PNG support in optional GUI"
-optional_depends  "jpeg"   ""  ""  "JPEG support in optional GUI"
-optional_depends  "tiff"     ""  ""  "TIFF support in optional GUI"
-optional_depends  "svgalib" ""  ""  "SVGA support"
+if grep -q 'enable-graphics' $SPELL_CONFIG; then
+  depends libpng
+fi &&
+
+optional_depends flex              \
+                 '--with-libfl'    \
+                 '--without-libfl' \
+                 'for parser support' &&
+optional_depends svgalib             \
+                 '--with-svgalib'    \
+                 '--without-svgalib' \
+                 'SVGA support, non-X-Window text and graphics modes' &&
+optional_depends openssl           \
+                 '--with-ssl=/usr' \
+                 '--without-ssl'   \
+                 'support for secure HTTP (https://)' &&
+optional_depends jpeg                \
+                 '--with-libjpeg'    \
+                 '--without-libjpeg' \
+                 'JPEG support in optional GUI' &&
+optional_depends tiff                \
+                 '--with-libtiff'    \
+                 '--without-libtiff' \
+                 'TIFF support in optional GUI'

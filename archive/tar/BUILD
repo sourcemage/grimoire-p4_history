@@ -5,7 +5,8 @@
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
                --libexecdir=/bin  \
-               --bindir=/bin      &&
+               --bindir=/bin      \
+	       $OPTS		  &&
   make                            &&
   prepare_install                 &&
   cp  src/tar        /bin         &&

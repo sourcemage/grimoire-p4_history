@@ -3,7 +3,8 @@
     ./configure --bindir=/bin			\
 		--prefix=/usr			\
 		--disable-lfs			\
-		--enable-function-subdirs	&&
+		--enable-function-subdirs	\
+		$OPTS				&&
     make					&&
     make    install
 

@@ -6,10 +6,10 @@
 
 (
 
-  chown   -R  bin:bin  .                   &&
-  su bin  -c  "./configure --prefix=/usr"  && 
-  su bin  -c  make                         &&
-  prepare_install                          &&
+  chown   -R  bin:bin  .                    	 &&
+  su bin  -c  "./configure --prefix=/usr $OPTS"  && 
+  su bin  -c  make                         	 &&
+  prepare_install                          	 &&
   make    install
 
 ) > $C_FIFO 2>&1

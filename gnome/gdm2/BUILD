@@ -1,7 +1,5 @@
 (
-  groupadd  gdm           2>/dev/null
-  useradd   gdm  -g  gdm  2>/dev/null
-
+  create_account gdm
 
   if    spell_installed  Linux-PAM;  then  SCHEME="pam"
   elif  spell_installed  shadow;     then  SCHEME="shadow"

@@ -1,4 +1,4 @@
-case  $SQUID_BOOT  in
-  y|Y|j|J)  /etc/init.d/squid.sh  start  ;;
-        *)  true                         ;;
-esac
+if  [  -x  /etc/init.d/squid.sh  ]
+then
+  /etc/init.d/squid.sh  start
+fi

@@ -13,7 +13,7 @@
   cd ../..                                            &&
   export OPENH323DIR=$SOURCE_DIRECTORY/openh323       &&
   cd openh323                                         &&
-  make optnoshared                                    &&
+  MAKE_NJOBS=1 make optnoshared                       &&
   cd lib                                              &&
   ln -s libh323_linux_x86_r_s.a libopenh323.a         &&
   cd ../..                                            &&
@@ -26,8 +26,9 @@
                --with-openh323-includes=$OPENH323DIR/include   \
                --with-openh323-libs=$OPENH323DIR/lib           \
                --with-ptlib-includes=$PWLIBDIR/include/ptlib   \
-               --with-ptlib-libs=$PWLIBDIR/lib                 &&
-  make                                         &&
+               --with-ptlib-libs=$PWLIBDIR/lib                 \
+	       $OPTS					       &&
+  make                                                         &&
   make install
 
 ) > $C_FIFO 2>&1

@@ -1,7 +1,7 @@
 mk_source_dir       $SOURCE_DIRECTORY         &&
 cd                  $SOURCE_DIRECTORY         &&
 cp                  $SOURCE_CACHE/$SOURCE  .  &&
-unpack              $SOURCE2                  &&
+unpack              $SOURCE2 ${MD5[1]}        &&
 chown -R root.root  ALP-listings              &&
 (
   for  CURR_DIR  in  `find  ALP-listings  -type d`;  do

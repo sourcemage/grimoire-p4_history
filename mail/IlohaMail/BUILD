@@ -9,6 +9,12 @@
     LOC="/usr/share/apache2/htdocs/$SPELL"
   fi								&&
 
+  if [ "$LOC" == "" ]; then
+    message "${MESSAGE_COLOR}Unable to find apache or apache2 installed version..."	&&
+    message "$SPELL cast aborded. ${DEFAULT_COLOR}"					&&
+    exit 1
+  fi								&&
+
 
   prepare_install 						&&
 

@@ -6,7 +6,8 @@
   fi
 
   ./configure  --prefix=/usr    \
-               $LIBWMF          &&
+               $LIBWMF          \
+	       $OPTS            &&
   make                          &&
   prepare_install               &&
   make    install

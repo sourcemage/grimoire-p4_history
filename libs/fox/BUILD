@@ -1,6 +1,7 @@
 (
   ./configure  --with-opengl=opengl  \
-               --prefix=/usr         &&
+               --prefix=/usr         \
+	       $OPTS		     &&
 
   make             &&
   prepare_install  &&

@@ -4,7 +4,8 @@
 
   autoconf					&&
   ./configure 	--prefix=/usr 			\
-		--localstatedir=/var		&&
+		--localstatedir=/var		\
+		$OPTS				&&
 		
   cd ..						&&
   make -f GNUmakefile prepare			&&

@@ -1,7 +1,7 @@
 (
 
   cd $SOURCE_DIRECTORY            &&
-  ./configure --prefix=/usr       &&
+  ./configure --prefix=/usr $OPTS &&
   make                            &&
 
   prepare_install                 &&

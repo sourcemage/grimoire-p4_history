@@ -3,7 +3,8 @@
   ./configure  --with-xawm=Xaw3d     \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
-               --prefix=/usr 	       &&
+               --prefix=/usr 	     \
+	       $OPTS	             &&
   make                               &&
   prepare_install                    &&
   make install

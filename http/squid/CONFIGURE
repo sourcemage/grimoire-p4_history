@@ -1,8 +1,0 @@
-if  !  grep  -q  "SQUID_BOOT="  $SPELL_CONFIG  &&
-    !  spell_installed  ppp
-then
-  if    query  "Invoke squid at boot?" n
-  then  echo   "SQUID_BOOT=y"  >>  $SPELL_CONFIG
-  else  echo   "SQUID_BOOT=n"  >>  $SPELL_CONFIG
-  fi
-fi

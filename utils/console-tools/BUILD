@@ -6,7 +6,8 @@
   sedit "s/examples//"  Makefile.in  &&
 
   ./configure  --host=$BUILD         \
-               --prefix=/usr         &&
+               --prefix=/usr         \
+	       $OPTS		     &&
   make                               &&
   prepare_install                    &&
   make    install                    &&

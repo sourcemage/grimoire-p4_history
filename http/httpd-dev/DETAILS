@@ -1,13 +1,14 @@
 # $Id: DETAILS,v 1.8 2003/01/18 21:23:47 sergeyli Exp $
            SPELL=httpd-dev
-         VERSION=2.0.44
-             TAG=APACHE_${VERSION//\./_}
+         VERSION=2.1
+#            TAG=APACHE_${VERSION//\./_}
+             TAG=HEAD
           SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]=d08a42575a337cedf984059fbf8eac6a
+          MD5[0]=IGNORE
          SOURCE2=$SPELL-apr-$VERSION.tar.bz2
-          MD5[1]=093ce9446e2080753ec57e5f5a33a024
+          MD5[1]=IGNORE
          SOURCE3=$SPELL-apr-util-$VERSION.tar.bz2
-          MD5[2]=71dad2970f9bac69c9839ba15be507c1
+          MD5[2]=IGNORE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:httpd-2.0:$TAG
   SOURCE2_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:$TAG
@@ -15,7 +16,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://httpd.apache.org/
          ENTERED=20020802
          UPDATED=20020916
-           SHORT="Apache 2.0 HTTP server development snapshot"
+           SHORT='Apache 2.0 HTTP server development snapshot'
 cat << EOF
 This is the development snapshot of Apache 2 HTTP server taken directly from
 the CVS repository. It is also guaranteed to build all available modules, so

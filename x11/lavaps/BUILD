@@ -1,6 +1,6 @@
 (
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr $OPTS
 
   patch -p0 << EOF
 --- Makefile    Thu Nov 22 10:21:45 2001
