@@ -1,10 +1,8 @@
 #!/bin/sh
 #
-# Updated xinetd script
-# Changes:
-# 1. added function file
-# 2. split start / restart cases
-# 3. added status case
+# SMGL-script-version=20030224
+# SMGL-START:3 4 5:S40
+# SMGL-STOP:0 1 2 6:K60
 
 source /etc/init.d/functions
 
