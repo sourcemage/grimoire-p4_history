@@ -13,4 +13,4 @@
              --disable-module=auth_dbm         \
              --with-layout=GNU                 \
              $OPTS                             &&
-make                                           &&
+make
