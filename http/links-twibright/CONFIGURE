@@ -1,14 +1,3 @@
-if ! grep -q 'able-javascript' $SPELL_CONFIG; then
-  if  query 'Enable Javascript support?' y
-    then echo 'OPTS="$OPTS --enable-javascript"'  >> $SPELL_CONFIG
-    else echo 'OPTS="$OPTS --disable-javascript"' >> $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q 'able-graphics' $SPELL_CONFIG; then
-  if  query 'Enable graphical user interface (GUI)?' y
-    then echo 'OPTS="$OPTS --enable-graphics"'  >> $SPELL_CONFIG
-    else echo 'OPTS="$OPTS --disable-graphics"'          >> $SPELL_CONFIG
-  fi
-fi
-
+config_query_option  LINKSTW_OPTS  "Enable JavaScript support?"  y  \
+                     "--enable-javascript"                          \
+                     "--disable-javascript"
