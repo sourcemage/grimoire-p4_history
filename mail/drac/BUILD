@@ -1,5 +1,11 @@
 (
 
+  if  spell_installed  sendmail;  then
+    patch  -p0  <  ${SCRIPT_DIRECTORY}/Makefile.sendmail.patch
+  else
+    patch  -p0  <  ${SCRIPT_DIRECTORY}/Makefile.other.patch
+  fi                                                            &&
+
   make                                    &&
   prepare_install                         &&
   make    install                         &&
@@ -12,5 +18,4 @@
     cp  $SCRIPT_DIRECTORY/dracd.allow  /etc/mail
   fi
 
-) > $C_FIFO 2>&1  
- 
+) > $C_FIFO 2>&1
