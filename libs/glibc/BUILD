@@ -17,10 +17,9 @@
    OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=current" &&
   # cosmetic patch so /lib/libc.so.6 will give out its version 
    patch -p1 < $SCRIPT_DIRECTORY/glibc-nptl-fix-asserts.patch 
-  else  OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel-2.4" &&
+  else  OPTS="$OPTS --enable-add-ons=linuxthreads --enable-kernel=2.4" &&
   ### Apply gcc 3.3 patch
-   bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
-   tail +5 ${SOURCE_CACHE}/${SOURCE4}  |  patch  -p1  
+   bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1 
   fi                                          &&
   if ! echo "$CFLAGS" | grep -q -- "-O"
   then export CFLAGS="$CFLAGS -Os"
@@ -57,11 +56,11 @@
   sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                &&
   sedit "s/\$(slibdir)/\lib/g" $SOURCE_DIRECTORY/Makerules                                         &&
   sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                
-  fi
+  fi                                                                                               &&
 
- ### making these symlinks and unsetting the (sorcery) preload of old 
- ### libs should finally fix the glibc install problems. Had to add a 
- ### check for saved libraries, as an empty log means none can be saved
+ ### making these symlinks and unsetting the (sorcery) preload of old libs should 
+ ### finally fix the glibc install problems. 
+ ### Had to add a check for saved libraries, as an empty log means none can be saved
  if [ -f $SOURCE_DIRECTORY/old.libraries/ld-*.so ] ; then
   . /$SCRIPT_DIRECTORY/makelinks              &&
   make_install_links                          &&
@@ -74,10 +73,6 @@
   for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
      do if [ -f $i ] ; then  rm -vf $i ; fi
   done                                        &&
- ### old systems have left over files in /usr/lib/locale/* 
-  if [ -d ${INSTALL_ROOT}/usr/lib/locale ] 
-     then  rm -rf ${INSTALL_ROOT}/usr/lib/locale/ && echo "REMOVING OLD LOCALE FILES" 
-  fi &&
  ### INSTALL 
   make  install                               &&
   (  ldconfig  ||  true  )                    &&

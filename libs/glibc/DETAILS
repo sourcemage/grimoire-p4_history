@@ -5,7 +5,7 @@ if [ "$NPTL" = "yes" ] ; then
           SOURCE=$SPELL-2003-12-03.tar.bz2 
          SOURCE2=nptl-0.60.tar.bz2 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-2003-12-03 
-   SOURCE_URL[0]=http://kaosguru.homelinux.org/SMGL/$SOURCE 
+   SOURCE_URL[0]=http://download.sourcemage.org/mirror/$SOURCE 
   SOURCE2_URL[0]=http://people.redhat.com/drepper/nptl/$SOURCE2 
           MD5[0]=a14c3e0f543c15b3e34698d9e8baaca8 
           MD5[1]=031375ad854a7772ad2d097a99b1ffd6 
@@ -13,25 +13,23 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-2003-12-03
 else     VERSION=2.3.2
           SOURCE=$SPELL-$VERSION.tar.bz2 
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2 
-         SOURCE3=glibc-${VERSION}-sscanf-decl-fix.patch.bz2 
-         SOURCE4=initgroups.c.diff\?r1\=1.28\&r2\=1.29\&cvsroot\=glibc 
+         SOURCE3=${SPELL}-${VERSION}.patch.bz2 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE 
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE 
   SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2 
   SOURCE2_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE2 
   SOURCE3_URL[0]=http://download.sourcemage.org/mirror/${SOURCE3} 
-  SOURCE4_URL[0]='http://sources.redhat.com/cgi-bin/cvsweb.cgi/libc/grp/initgroups.c.diff\?r1=1.28\&r2=1.29\&cvsroot=glibc' 
           MD5[0]=3d5d27ea7774a5f358b6fa8b56bd8ab3 
           MD5[1]=8120b2efd845b49e3a17d79df8239d4c 
-          MD5[2]=fafc1d90f99dfaed9beae9f28a720e06 
+          MD5[2]=767ad0e00360cf13d68f74e05f62e3af
 fi
         WEB_SITE=http://www.gnu.org/software/libc
       LICENSE[0]=LGPL 
       LICENSE[1]=LGPL 
       LICENSE[2]=LGPL 
          ENTERED=20010922
-         UPDATED=20040131
+         UPDATED=20040206
            SHORT="glibc is a C library for use with GNU/Hurd and GNU/Linux."
 cat << EOF
 glibc - Library for use with GNU/Hurd and GNU/Linux.
