@@ -1,5 +1,12 @@
 default_pre_build &&
 
-cd $SOURCE_DIRECTORY &&
-sedit 's|define PORT 8000|define PORT 8080|g'       havp/default.h &&
-sedit 's|/tmp/virus/havp-XXXXXX|/tmp/havp-XXXXXX|g' havp/default.h
+# make sure there's no trailing slash(es)
+declare -r HAVP_TMP2=${HAVP_TMP%/} &&
+if [[ -z "$HAVP_PORT" ]] || [[ -z "$HAVP_TMP2" ]]; then
+  message "Port number and partition for temporary files must not be empty" &&
+  false
+else
+  cd $SOURCE_DIRECTORY &&
+  sedit "s|define PORT [0-9]\+|define PORT $HAVP_PORT|g" havp/default.h &&
+  sedit "s|/tmp/virus/havp-XXXXXX|$HAVP_TMP2/scan-XXXXXX|g" havp/default.h
+fi
