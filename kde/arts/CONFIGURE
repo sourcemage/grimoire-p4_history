@@ -1,0 +1,11 @@
+if  !  grep  -q  "DEVEL"   ${SPELL_CONFIG}
+then
+  if query "Use DEVEL (unstable) version?" n 
+  then echo 'DEVEL=yes' >>  ${SPELL_CONFIG}
+  else echo 'DEVEL=no' >>  ${SPELL_CONFIG}
+  fi
+fi
+#. ${SPELL_CONFIG}
+#echo $REMIND
+
+

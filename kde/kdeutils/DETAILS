@@ -1,12 +1,22 @@
            SPELL=kdeutils
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=3.2.90
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
+          MD5[0]=d46de3c1265b3e27d18eedc90ac22a65
+else
          VERSION=3.2.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
          MD5[0]=fef8be8d7ab2b6f33a4c1e07747b6039
+fi
+       BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
          UPDATED=20040116
+       BUILD_API=2
     DISTCC_HOSTS=
       LICENSE[0]=GPL
       MAINTAINER=eric@lasvegasdata.com
