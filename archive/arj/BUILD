@@ -3,8 +3,8 @@
   cd gnu					&&
 
   autoconf					&&
-  ./configure 	--prefix=/usr 			\
-		--localstatedir=/var		\
+  ./configure 	--prefix=${INSTALL_ROOT}/usr 			\
+		--localstatedir=${INSTALL_ROOT}/var		\
 		$OPTS				&&
 		
   cd ..						&&

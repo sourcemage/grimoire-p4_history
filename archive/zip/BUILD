@@ -2,6 +2,6 @@
   sedit "s/-O2/$CFLAGS/" unix/Makefile &&
   make  -f unix/Makefile generic  &&
   prepare_install                 &&
-  make  prefix=/usr -f unix/Makefile install
+  make  prefix=${INSTALL_ROOT}/usr -f unix/Makefile install
 
 ) > $C_FIFO 2>&1

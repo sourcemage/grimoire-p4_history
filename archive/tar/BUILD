@@ -3,9 +3,9 @@
   patch  -p1  <  $SCRIPT_DIRECTORY/dotdotpatch.diff
 
   ./configure  --build=$BUILD     \
-               --prefix=/usr      \
-               --libexecdir=/bin  \
-               --bindir=/bin      \
+               --prefix=${INSTALL_ROOT}/usr      \
+               --libexecdir=${INSTALL_ROOT}/bin  \
+               --bindir=${INSTALL_ROOT}/bin      \
 	       $OPTS		  &&
   make                            &&
   prepare_install                 &&

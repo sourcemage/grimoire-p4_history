@@ -2,6 +2,6 @@
 
   sedit "s/-O2/$CFLAGS/" Makefile  &&
   make                            &&
-  make HOME=/usr install
+  make HOME=${INSTALL_ROOT}/usr install
 
 ) > $C_FIFO 2>&1
