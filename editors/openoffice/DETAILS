@@ -1,0 +1,34 @@
+            SPELL=openoffice
+          VERSION=1.1rc4
+	 BVERSION=1.875a
+           SOURCE=OOo_${VERSION}_source.tar.bz2
+	  SOURCE2=Linux-PAM-0.76-headers.tar.bz2
+	  SOURCE3=bison-$BVERSION.tar.bz2
+  	   MD5[0]=87378d177d550c189eaa8b2f9aae61d4
+	   MD5[1]=791cc25e0b22eeb822d48932b313e034
+	   MD5[2]=7a5e425232e65eb001b264ff58fec494
+       LICENSE[0]=GPL
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/oo_${VERSION}_src
+SOURCE_DIRECTORY2=$BUILD_DIRECTORY/security
+SOURCE_DIRECTORY3=$BUILD_DIRECTORY/bison-$BVERSION
+    SOURCE_URL[0]=http://www.binarycode.org/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[1]=http://www.ibiblio.org/pub/packages/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[2]=ftp://ftp.ussg.iu.edu/pub/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[3]=http://openoffice.mirrors.pair.com/stable/$VERSION/$SOURCE
+    SOURCE_URL[4]=ftp://openofficeorg.secsup.org/pub/software/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[5]=ftp://mirror.telentente.com/pub/OpenOffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[6]=ftp://mirrors.umbc.edu/pub/editors/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[7]=http://ny1.mirror.OpenOffice.org/stable/$VERSION/$SOURCE
+    SOURCE_URL[8]=http://sf1.mirror.OpenOffice.org/stable/$VERSION/$SOURCE
+   SOURCE2_URL[0]=http://www.linuxfromscratch.org/~tushar/hints/files/OpenOfficeFromScratch/$SOURCE2
+   SOURCE3_URL[0]=http://download.sourcemage.org/mirror/$SOURCE3
+         WEB_SITE=http://www.openoffice.org/
+          ENTERED=20021127
+          UPDATED=20030311
+            SHORT="OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology for the popular StarOffice productivity suite."
+
+cat << EOF
+OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology for the popular StarOffice productivity suite.
+EOF
+
+#[ -f $CONFIG_CACHE/oo.languages ] && . $CONFIG_CACHE/oo.languages || true
