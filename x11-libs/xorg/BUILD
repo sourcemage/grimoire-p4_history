@@ -17,7 +17,7 @@ if ! grep -q InstallFontconfigLibrary config/cf/host.def
   then echo  "#define InstallFontconfigLibrary NO" >> config/cf/host.def
 fi  &&
 
-if [ "$CVS" = "yes" ] 
+if [ "$CVS" == "y" ] 
   then echo "#define HasMotif NO" >>config/cf/host.def 
        echo "#define HasMotif2 NO" >>config/cf/host.def
 fi &&
