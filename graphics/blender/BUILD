@@ -16,8 +16,8 @@
   then  sedit  's:build_blender_plugin = \'false\':build_blender_plugin = \'true\':'  SConstruct
   fi  &&
 
-  scons            &&
-  prepare_install  &&
+  scons  -j  ${MAKE_NJOBS}  &&
+  prepare_install           &&
   false
 
 ) > $C_FIFO 2>&1
