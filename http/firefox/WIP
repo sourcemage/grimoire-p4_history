@@ -6,3 +6,23 @@ needs testing to make sure it works, I'm building it now.
 
 I set --disable-xft instead of --enable-xft because it complained you 
 can't have both xft and freetype2 enabled. investigate options here.
+
+SVG messed up:
+
+../../../../../dist/include/layout/nsISVGRendererGlyphMetrics.h:64: warning: `virtual nsresult nsISVGRendererGlyphMetrics::GetBoundingBox(nsIDOMSVGRect**)' was hidden
+nsISVGLibartGlyphMetricsFT.h:64: warning:   by `virtual const FT_BBox* nsISVGLibartGlyphMetricsFT::GetBoundingBox()'
+nsSVGLibartGlyphMetricsFT.cpp: In constructor `nsSVGLibartGlyphMetricsFT::nsSVGLibartGlyphMetricsFT(nsISVGGlyphMetricsSource*)':
+nsSVGLibartGlyphMetricsFT.cpp:112: warning: `nsSVGLibartGlyphMetricsFT::mSource' will be initialized after
+nsSVGLibartGlyphMetricsFT.cpp:99: warning:   `FT_FaceRec_*nsSVGLibartGlyphMetricsFT::mFace'
+nsSVGLibartGlyphMetricsFT.cpp:129: warning:   when initialized here
+nsSVGLibartGlyphMetricsFT.cpp: In member function `void nsSVGLibartGlyphMetricsFT::InitializeFace()':
+nsSVGLibartGlyphMetricsFT.cpp:443: error: `FTC_Image_Desc' undeclared (first use this function)
+nsSVGLibartGlyphMetricsFT.cpp:443: error: (Each undeclared identifier is reported only once for each function it appears in.)
+nsSVGLibartGlyphMetricsFT.cpp:443: error: expected `;' before "imageDesc"
+nsSVGLibartGlyphMetricsFT.cpp:444: error: `imageDesc' undeclared (first use this function)
+nsSVGLibartGlyphMetricsFT.cpp:449: error: `ftc_image_grays' undeclared (first use this function)
+nsSVGLibartGlyphMetricsFT.cpp:455: error: 'class nsDerivedSafe<nsIFreeType2>' has no member named 'ManagerLookupSize'
+make[7]: *** [nsSVGLibartGlyphMetricsFT.o] Error 1
+
+
+turning that off for next test.
