@@ -1,5 +1,8 @@
 (
 
+  patch  -p0  -d  lib/Razor2  \
+  <  ${SCRIPT_DIRECTORY}/Razor2.patch  &&
+
   perl  Makefile.PL  &&
   make               &&
   prepare_install    &&
