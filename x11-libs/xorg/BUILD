@@ -27,6 +27,8 @@ message  "Building X.org takes a very long time."
 #  patch  -p2  <  $SCRIPT_DIRECTORY/Xi-locking.patch  &&
   ### Apply linux version patch to support 2.6.X
 #  patch  -p1  <  $SCRIPT_DIRECTORY/XFree86-4.3.0-linux-2.6.0.patch  &&
+### Apply glibc-kernel-headers compatibility patch
+patch -p2 < $SCRIPT_DIRECTORY/XFree86-kernel_headers.patch  &&
 
   ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
