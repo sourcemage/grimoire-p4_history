@@ -56,6 +56,7 @@
     --prefix=/usr		\
     --with-x                    \
     --with-pthreads             \
+    --with-xft                  \
     --enable-reorder            \
     --enable-strip              \
     --enable-optimize="$CFLAGS"	\
