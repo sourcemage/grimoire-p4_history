@@ -13,8 +13,8 @@ start()
     echo -n " kernel module"
     /sbin/modprobe cvsfs
   fi
-  echo -n " cvsfsd"
+  echo " cvsfsd"
   $PROGRAM &
-  ps -C cvfsd > /dev/null
+  pidof -x cvsfsd > /dev/null
   evaluate_retval
 }
