@@ -20,6 +20,5 @@
 
   ln -s /usr/sbin/envvars /usr/bin/envvars
   ln -s /usr/sbin/httpd /usr/bin/httpd
-  mkdir -p /var/run/httpd
 
 )
