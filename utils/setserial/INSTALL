@@ -1,0 +1,4 @@
+default_install  &&
+if [ ! -f /etc/serial.conf ]; then
+  cp  serial.conf  /etc/serial.conf
+fi
