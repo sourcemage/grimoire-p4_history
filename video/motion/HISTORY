@@ -1,31 +1,29 @@
-2003-05-28  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * DEPENDS: Changed requires to depends
+    * HISTORY: Formatted to Guru Handbook
 
-		updated to 3.0.6
+2003-05-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 3.0.6
 
-2003-05-21  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-05-21 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: use $INSTALL_ROOT
 
-		use $INSTALL_ROOT
+2003-05-20 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added depends on jpeg, optional_depends on curl
+	(fixes bug 3366)
 
-2003-05-20  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-05-14 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE: added CONFIGURE option for ffmpeg, to be able to use requires
+	libavcodec
+	* added ffmpeg-cvs patch
 
-		added depends on jpeg, optional_depends on curl
-		(fixes bug 3366)
+2003-03-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 3.0.5
+	changed SOURCE_URL and WEB_SITE to sourceforge
 
-2003-05-14  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-02-20 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: made ffmpeg an optional_depends, added patch for shared ffmpeg
 
-		added CONFIGURE option for ffmpeg, to be able to use requires
-		libavcodec
-		added ffmpeg-cvs patch
+2002-09-21 David Pradier <pradierdavid@yahoo.fr>
+	* created the spell
 
-2003-03-09  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 3.0.5
-		changed SOURCE_URL and WEB_SITE to sourceforge
-
-2003-02-20  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		made ffmpeg an optional_depends, added patch for shared ffmpeg
-
-2002-09-21  David Pradier <pradierdavid@yahoo.fr>
-
-		created the spell

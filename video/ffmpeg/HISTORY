@@ -1,52 +1,45 @@
-2003-10-05  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-11-02 Eric Sandall <eric@sandall.us>
+    * PROVIDES: Uppercase provides
+	* HISTORY: Formatted to Guru Handbook
 
-		BUILD: install libavcodec/bswap.h and libavformat/os_support.h
+2003-10-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	BUILD: install libavcodec/bswap.h and libavformat/os_support.h
 
-2003-09-28  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-09-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.4.8
 
-		updated to 0.4.8
+2003-08-30 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added optional_depends on freetype2
 
-2003-08-30  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-08-25 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.4.7
+	* BUILD: build shared libpostproc
+	* DEPENDS: added optional_depends on faad2
 
-		added optional_depends on freetype2
+2003-08-06 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added optional_depends on imlib2 (fixes bug #3891)
 
-2003-08-25  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-05-19 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: use $INSTALL_ROOT
 
-		updated to 0.4.7
-		build shared libpostproc
-		added optional_depends on faad2
+2003-05-14 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PROVIDeS: added provides libavcodec and conflicts ffmpeg-cvs
 
-2003-08-06  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-02-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* enabled building of shared libavcodec
+	* DEPENDS: added lame and libvorbis as optional_depends
 
-		added optional_depends on imlib2 (fixes bug #3891)
+2003-02-03 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.4.6
 
-2003-05-19  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-10-30 Seth Woolley <seth@tautology.org>
+	* BUILD,CONFIGURE: Fixed issue with MMX
+	deleted CONFIGURE bug 1525
 
-		use $INSTALL_ROOT in BUILD
+2002-10-23 Seth Woolley <seth@tautology.org>
+	* BUILD: added -O3 hack
+	* HISTORY: Cleaned
 
-2003-05-14  Arwed v. Merkatz <v.merkatz@gmx.net>
+2002-06-12 Unet <burududu@hotpop.com>
+	* Created this.
 
-		added provides libavcodec and conflicts ffmpeg-cvs
-
-2003-02-05  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		enabled building of shared libavcodec
-		added lame and libvorbis as optional_depends
-
-2003-02-03  Arwed v. Merkatz <v.merkatz@gmx.net>
-
-		updated to 0.4.6
-
-2002-10-30  Seth Woolley <seth@tautology.org>
-
-		fixed BUILD/CONFIGURE issue with MMX
-		deleted CONFIGURE bug 1525
-
-2002-10-23  Seth Woolley <seth@tautology.org>
-
-		added -O3 hack
-		cleaned history
-
-2002-06-12  Unet <burududu@hotpop.com>
-	
-		Created this.
