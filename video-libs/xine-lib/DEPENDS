@@ -18,4 +18,8 @@ optional_depends  "w32codec"  ""  ""  "to use win32 dlls for video/audio decodin
 optional_depends  "MPlayer-codecs"  ""  ""  "for additional video codec support (Quicktime/RealMedia)"  &&
 
 # input plugins
-optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs input support"
+optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs input support"  &&
+optional_depends  "vcdimager-cdio"          \
+                  "--with-external-vcdnav"  \
+                  ""                        \
+                  "for dynamically linked vcd plugin"
