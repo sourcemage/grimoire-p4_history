@@ -1,0 +1,25 @@
+	    SPELL=directfb
+	  VERSION=0.9.19
+ 	   SOURCE=DirectFB-$VERSION.tar.gz
+          SOURCE2=DirectFB-extra-0.9.16.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/DirectFB-$VERSION
+    SOURCE_URL[0]=http://www.directfb.org/download/DirectFB/$SOURCE
+   SOURCE2_URL[0]=http://www.directfb.org/download/DirectFB-extra/$SOURCE2
+ 	 WEB_SITE=http://www.directfb.org/
+	  ENTERED=20030916
+	  UPDATED=20030916
+	   MD5[0]=ffb632854a1dd678afac4722f9232bbd
+	   MD5[1]=bbe1471e67d8f5f944492c2fb9dc6340
+       LICENSE[0]=LGPL
+       LICENSE[1]=LGPL
+ 	    SHORT="DirectFB provides graphics acceleration on Framebuffer Device"
+ cat << EOF
+DirectFB is a thin library that provides hardware graphics acceleration, 
+input device handling and abstraction, integrated windowing 
+system with support for translucent windows and multiple display 
+layers on top of the Linux Framebuffer Device. It is a complete 
+hardware abstraction layer with software fallbacks for every graphics 
+operation that is not supported by the underlying hardware. 
+DirectFB adds graphical power to embedded systems and 
+sets a new standard for graphics under Linux
+EOF
