@@ -1,8 +1,8 @@
 depends zlib		&&
-depends bzip2		&&
+optional_depends bzip2 "" "" "for bzip2 support"		&&
 #depends dazuko		&&
-depends gmp		&&
-depends gnupg		&&
-depends ripmime		&&
+optional_depends gmp "" "" "for digital signature support"		&&
+#depends gnupg		&&
+#optional_depends ripmime	"" "" "necessary if you are installing clamdmail"	&&
 optional_depends SYSTEM-LOGGER "" "" "to log activity"		
 
