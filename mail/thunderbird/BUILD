@@ -8,12 +8,6 @@ export  MOZ_THUNDERBIRD="1"   &&
 export  CFLAGS="${CFLAGS//-O3/-O2}"      &&
 export  CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
-#if  [  "$CRYPTO"  =  "y"  ];  then
-#  OPTS="${OPTS}  --enable-crypto"
-#else
-  OPTS="${OPTS}  --disable-crypto" &&
-#fi  &&
-
 if  [  "$THUNDERBIRD_MATHML"  =  "y"  ];  then
   OPTS="${OPTS}  --enable-mathml"
 else
@@ -28,7 +22,22 @@ fi  &&
 cp mail/config/mozconfig .mozconfig &&
 
 # Note: --enable-extensions and --enable-necko-protocols are inherited from
-# mozconfig.  Don't set them in ./configure.
+# mozconfig.  Don't set them in ./configure unless you *really* know what
+# you're doing.
+# Also already in mozconfig:
+#            export MOZ_THUNDERBIRD=1
+#            mk_add_options MOZ_THUNDERBIRD=1
+#
+#            --enable-crypto                              \
+#            --enable-single-profile                      \
+#            --disable-tests                              \
+#            --disable-oji                                \
+#            --disable-necko-disk-cache                   \
+#            --disable-profilesharing                     \
+#            --disable-activex                            \
+#            --disable-activex-scripting                  \
+#            --disable-plugins                            \
+#            --enable-image-decoders=default,-xbm         \
 ./configure  --prefix=${INSTALL_ROOT}/usr                 \
              --with-user-appdir=.thunderbird              \
              --with-pthreads                              \
@@ -44,10 +53,3 @@ cp mail/config/mozconfig .mozconfig &&
              --enable-optimize="$CFLAGS"                  \
              $OPTS                                        &&
 make  MOZ_THUNDERBIRD=1
-
-# Also already in mozconfig:
-#             --enable-single-profile                      \
-#             --disable-tests                              \
-#             --disable-oji                                \
-#             --disable-necko-disk-cache                   \
-#             --disable-profilesharing                     \
