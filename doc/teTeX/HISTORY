@@ -1,60 +1,46 @@
-2003-08-19  Eric Sandall <eric@sandall.us>
+2003-11-28 hgg <hgreig@bigpond.net.au>
+	* BUILD: remove dialog and texinfo dirs (configure still wrongly turns on texinfo
+	and move MAKE_NJOBS to DETAILS
+	
+2003-08-19 Eric Sandall <eric@sandall.us>
+	* DETAILS: CTAN_URL contains tex-archive
+	Fixed LICENSE
 
-		CTAN_URL contains tex-archive
+2003-07-10 Eric Sandall <eric@sandall.us>
+	* DETAILS: Bug #3029
 
-		Fixed LICENSE
+2003-04-08 M.L. <mlubrano@sourcemage.org>
+	* BUILD: Added $OPTS in BUILD.
 
-2003-07-10  Eric Sandall <eric@sandall.us>
+2003-03-18 Eric Sandall <eric@sandall.us>
+	* DETAILS: Fixed Bug #2601  (updated to 2.0.2)
+	Removed unnecessary patches, now compiles with multiple jobs
 
-		Bug #3029
+2002-11-15 Joel Mayes <bluebird@optushome.com.au>
+	* DEPENDS: removed extra quote in DEPENDS (bug 1686)
+	* added patch for bison 1.57 (thanks to Eric Sandall)
+	* BUILD: added MAKE_NJOBS=1 to build, teTeX will fail to compile 
+	if you attempt to do more than one thing at once (also thanks
+	to Eric Sandall)
 
-2003-04-08  M.L. <mlubrano@sourcemage.org>
+2002-11-12 Joel Mayes <bluebird@optushome.com.au>
+	* DEPENDS: added optional_depends on xdvi
+	* HISTORY: reformated HISTORY file
 
-		Added $OPTS in BUILD.
+2002-10-24 Eric Schabell <eschabell@sourcemage.org>
+	* DEPENDS: added dep bison, bug #1455.
 
-2003-03-18  Eric Sandall <eric@sandall.us>
+2002-08-10 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
 
-		Fixed Bug #2601  (updated to 2.0.2)
+2002-06-17 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: add MD5 field
 
-		Removed unnecessary patches, now compiles with multiple jobs
+2002-06-11 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: Added LICENSE field
 
-2002-11-15  Joel Mayes <bluebird@optushome.com.au>
+2002-06-01 Joel Mayes <bluebird@optushome.com.au>
+	* DETAILS: SOURCE_URL to $CTAN_URL
 
-		removed extra quote in DEPENDS (bug 1686)
-
-		added patch for bison 1.57 (thanks to Eric Sandall)
-
-		added MAKE_NJOBS=1 to build, teTeX will fail to compile 
-
-		if you attempt to do more than one thing at once (also thanks
-		to Eric Sandall)
-
-2002-11-12  Joel Mayes <bluebird@optushome.com.au>
-
-		added optional_depends on xdvi
-
-		reformated HISTORY file
-
-2002-10-24  Eric Schabell <eschabell@sourcemage.org>
-
-		added dep bison, bug #1455.
-
-2002-08-10  Joel Mayes <bluebird@optushome.com.au>
-
-		updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
-
-2002-06-17  Joel Mayes <bluebird@optushome.com.au>
-
-		MD5 field to DETAILS
-
-2002-06-11  Joel Mayes <bluebird@optushome.com.au>
-
-		Added LICENSE field to DETAILS 
-
-2002-06-01  Joel Mayes <bluebird@optushome.com.au>
-
-		SOURCE_URL to $CTAN_URL
-
-2002-04-18  Eric Schabell <eschabell@sourcemage.org>
-
-		Added this file and added new url.
+2002-04-18 Eric Schabell <eschabell@sourcemage.org>
+	* Added this file and added new url.
