@@ -8,10 +8,11 @@
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
                --datadir=/usr/share/k3d              \
-               $OPTS                                 &&
+               --without-docbook                     \
+               ${OPTS}                               &&
   make                                               &&
   prepare_install                                    &&
   make  install                                      &&
-  install  -m  755  $SCRIPT_DIRECTORY/k3d  /usr/bin
+  install  -m  755  ${SCRIPT_DIRECTORY}/k3d  /usr/bin
 
-)  >  $C_FIFO  2>&1
+)  >  ${C_FIFO}  2>&1
