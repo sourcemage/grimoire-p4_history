@@ -1,5 +1,3 @@
-(
-  FFMPEG_CXXFLAGS=/usr/include/ffmpeg
-  patch -p1 <$SPELL_DIRECTORY/gcc.diff   &&
-  default_build
-) > $C_FIFO 2>&1
+FFMPEG_CXXFLAGS=/usr/include/ffmpeg
+patch  -p1  <  $SPELL_DIRECTORY/gcc.diff  &&
+default_build

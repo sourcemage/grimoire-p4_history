@@ -1,6 +1,6 @@
---- Makefile.orig	2004-02-13 13:30:22.000000000 +0100
-+++ Makefile	2004-02-13 13:30:06.000000000 +0100
-@@ -50,11 +50,7 @@
+--- Makefile.orig	2004-08-08 19:24:44.000000000 +0200
++++ Makefile	2004-08-31 17:56:40.290982013 +0200
+@@ -52,11 +52,7 @@
  
  
  
@@ -10,9 +10,9 @@
 -include Makefile.lame
 -include Makefile.dv
  include Makefile.encore50
- 
- 
-@@ -68,7 +64,9 @@
+ include Makefile.faad
+ include Makefile.faac
+@@ -71,7 +67,9 @@
  CFLAGS += -I. \
  	-I$(JPEG_DIR) \
  	-I$(MPEG3_DIR) \
@@ -23,7 +23,7 @@
  
  
  #	$(OBJDIR)/div3.o \
-@@ -104,7 +102,6 @@
+@@ -109,7 +107,6 @@
  	$(OBJDIR)/hdlr.o \
  	$(OBJDIR)/ima4.o \
  	$(OBJDIR)/jpeg.o \
@@ -31,7 +31,7 @@
  	$(OBJDIR)/libdv.o \
  	$(OBJDIR)/libmjpeg.o \
  	$(OBJDIR)/matrix.o \
-@@ -223,7 +220,7 @@
+@@ -230,7 +227,7 @@
  	$(OBJDIR)/$(ENCORE_DIR)/mbtransquant/intel_mmx
  
  
@@ -40,15 +40,15 @@
  
  
  $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(DIRS) \; fi )
-@@ -233,12 +230,14 @@
- $(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
+@@ -242,12 +239,14 @@
+ $(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(FAAD_OBJS) $(FAAC_OBJS) > $(OBJDIR)/objs)
  #$(shell echo  $(OBJS) $(DV_OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(JPEG_FAIL) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) > $(OBJDIR)/objs)
  
 -all: $(OBJDIR) $(OUTPUT)
 +all: $(OBJDIR) $(OUTPUT) $(SHAREDOUTPUT) $(UTILS)
  
  #$(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(DECOREMMX_OBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
- $(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(JPEG_FAIL) 
+ $(OUTPUT): $(DV_OBJS) $(DVMMXOBJ) $(OBJS) $(DVMMXOBJS) $(ENCOREMMX_OBJS) $(JPEG_NASM) $(FFMPEG_OBJS) $(FFMPEGIA32_OBJS) $(LAME_OBJS) $(FAAD_OBJS) $(FAAC_OBJS) $(JPEG_FAIL) 
  	ar rcs $(OUTPUT) `cat $(OBJDIR)/objs`
  
 +$(SHAREDOUTPUT): $(OUTPUT)
@@ -56,7 +56,7 @@
  
  $(OBJDIR)/qtdump: $(OBJDIR)/dump.o $(OUTPUT)
  	$(CC) -o $(OBJDIR)/qtdump $(OBJDIR)/dump.o $(LIBS)
-@@ -275,7 +274,11 @@
+@@ -284,7 +283,11 @@
  	cd .. && \
  	tar zcvf quicktime.tar.gz quicktime
  
@@ -69,3 +69,13 @@
  	cp $(UTILS) /usr/bin
  
  $(OBJDIR)/dump.o \
+--- Makefile.ffmpeg.orig	2004-08-31 17:57:03.090076144 +0200
++++ Makefile.ffmpeg	2004-08-31 17:57:13.039807996 +0200
+@@ -102,6 +102,7 @@
+ 	-I$(VORBIS_DIR)/include \
+ 	-DHAVE_AV_CONFIG_H \
+ 	-D_GNU_SOURCE \
++	-DHAVE_MMX \
+ 	-I$(VORBIS_DIR)/include
+ 
+ FFMPEG_DIRS := \
