@@ -1,5 +1,6 @@
 (
 
+  sedit  's:/usr/src/linux/include::'  DEFAULTS/Defaults.linux
   make             &&
   prepare_install  &&
   make  INS_BASE=${INSTALL_ROOT}/usr install  &&
