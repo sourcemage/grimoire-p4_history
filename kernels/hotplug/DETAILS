@@ -1,15 +1,16 @@
               SPELL=hotplug
-            VERSION=2004\_04\_01
+            VERSION=2004\_09\_20
              SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 #      SOURCE_URL[0]=$SOURCEFORGE_URL/linux-hotplug/$SOURCE
       SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/kernel/hotplug/$SOURCE
-             MD5[0]=3795b79a72504e6476bdd7d73744939e
+             MD5[0]=b505bf4ba2573d96f9088d12f412034d
            WEB_SITE=http://linux-hotplug.sourceforge.net/
             ENTERED=20020801
             UPDATED=20040616
          LICENSE[0]=GPL
-              SHORT="linux hotplug support tools"
+          BUILD_API=2
+              SHORT="Linux hotplug support tools"
 cat << EOF
  Starting with kernel 2.4, hotplugging is a standard
 feature of GNU/Linux. Its goal is letting you plug in new devices and
