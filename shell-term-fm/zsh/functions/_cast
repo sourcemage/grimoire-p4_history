@@ -1,0 +1,56 @@
+#compdef cast
+
+_cast () {
+  local state='' lstate
+  local ret=1
+ 
+  # Do simple completions or get the first state.
+  _arguments -C -s \
+    '(--fix)-f+[Discover and fix broken spells]:*:fix:->fix' \
+    '(-f)--fix:*:fix:->fix' \
+    '(--nofix)-n+[Discover, but do not fix broken spells]' \
+    '(-n)--nofix:*:fix:->fix' \
+    '-s+[Download 1st, cast 2nd]' \
+    '(--compile)-c+[Ignore /var/cache/sorcery and compiles]' \
+    '(-c)--compile' \
+    '(--reconfigure)-r+[Select new dependencies for spells]' \
+    '(-r)--reconfigure' \
+    '--deps+[Only configure spells and determine dependencies]' \
+    '--from+[Specify an alternate for /var/spool/sorcery]:*:from:_summon_from' \
+    '--url+[Specify an alternate download URL]:*:url:_summon_url' \
+    '--pam+[re-casts all installed spells that can use Linux-PAM]' \
+    '*:install:->install' && ret=0
+
+  ## If mode is defined. ##
+  while [[ -n "$state" ]]; do
+
+    # Copy the state and reset `state', to simplify the test below.
+    lstate="$state"
+    state=''
+
+
+    # Dispatch...
+    case "$lstate" in
+    fix)
+      _installed_spells
+      ;;
+    install)
+      _spells
+      ;;
+    dir)
+      _directories && ret=0
+      ;;
+    url)
+      if [[ -prefix 1 (f|ht)tp:// ]]; then
+	  _urls -f && ret=0
+      else
+        compadd -S '' ftp:// http:// && ret=0
+      fi
+      ;;
+    esac
+
+  done
+
+}
+
+_cast "$@"

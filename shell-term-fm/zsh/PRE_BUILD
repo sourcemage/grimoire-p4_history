@@ -1,6 +1,7 @@
-default_pre_build                             &&
-cd      $SOURCE_DIRECTORY                     &&
-mkdir -p Completion/SourceMage/Command        &&
-bzcat   $SCRIPT_DIRECTORY/functions.tar.bz2|  \
-tar xf - -C Completion/SourceMage/Command     &&
-bzcat   $SCRIPT_DIRECTORY/add_sourcemage_dir.patch.bz2| patch -p1
+default_pre_build  &&
+
+cd  $SOURCE_DIRECTORY  &&
+mkdir  -p  Completion/SourceMage/Command  &&
+cp  $SCRIPT_DIRECTORY/functions/*  Completion/SourceMage/Command  &&
+
+sedit  "s!\*'\$!* Completion/SourceMage/*/*'!"  Src/Zle/complete.mdd

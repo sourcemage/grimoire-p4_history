@@ -1,0 +1,10 @@
+#compdef sorcery
+
+_sorcery () {
+
+  compadd -S '' update system-update queue review-queue upgrade show-held \
+                hold unhold rebuild
+
+}
+
+_sorcery "$@"
