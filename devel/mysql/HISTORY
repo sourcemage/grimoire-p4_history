@@ -1,3 +1,12 @@
+2002-09-22  Julian v. Bock  <julian@wongr.net>
+
+		* DEPENDS: add optional db dependency.
+		* BUILD: don't configure with --with-mysqld-ldflags=-all-static;
+		add explicit configure options for user name and config dirs;
+		add mysql user / group only if the server is built.
+
+		Thanks to Sergey Lipnevich.
+
 2002-08-16  Jayce^  <jason@infogenix.com>
 
 		* DETAILS: Version update to 3.23.52
