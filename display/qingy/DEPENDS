@@ -1,5 +1,15 @@
 depends  directfb  &&
 
+optional_depends X11-SERVER         \
+                  ""                 \
+                  ""                 \
+                  "For X sessions"   &&
+
+optional_depends gpm                 \
+                  ""                 \
+                  ""                 \
+                  "Gpm mouse support" &&
+
 optional_depends  linux-pam          \
                   "--enable-pam"     \
                   "--disable-pam"    \
