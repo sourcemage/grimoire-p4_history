@@ -1,6 +1,6 @@
 (
 
-  echo "SOUND_THEME=startrek" >> /etc/sorcery/local/config
+  modify_local_config "SOUND_THEME" "startrek"
 
   prepare_install  &&
   ./install

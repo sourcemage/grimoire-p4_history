@@ -1,6 +1,6 @@
 (
 
-  echo "SOUND_THEME=misc" >> /etc/sorcery/local/config
+  modify_local_config "SOUND_THEME" "misc"
 
   prepare_install  &&
   ./install

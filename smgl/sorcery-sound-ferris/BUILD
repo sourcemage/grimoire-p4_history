@@ -1,6 +1,6 @@
 (
 
-  echo "SOUND_THEME=ferris" >> /etc/sorcery/local/config
+  modify_local_config "SOUND_THEME" "ferris"
 
   prepare_install  &&
   ./install
