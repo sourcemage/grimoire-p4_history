@@ -17,22 +17,6 @@ fi
 message  "Building XFree86 takes a very long time."
 
 ( 
-  #hgg's "house of bad hacks" brings you
-  #"hack for devel kernels"
-sedit '/#define NEED_EVENTS/a\
-\#include \<linux\/version.h\>\' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_io.c &&
-sedit '/#define NEED_EVENTS/a\
-\#include \<linux\/version.h\>\' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_kbd.c &&
-sedit '102a\
-\/* Deal with spurious kernel header change */\
-\#if defined(LINUX_VERSION_CODE) && defined(KERNEL_VERSION)\
-\# if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,42)\
-\#  define rate period\
-\# endif\
-\#endif\
-\ \' $SOURCE_DIRECTORY/programs/Xserver/hw/xfree86/os-support/linux/lnx_kbd.c &&
-  #end devel hack
-
   #removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   #leaving the original file untouched 
   #for when this gcc bug gets fixed (hgg09/08/03)
