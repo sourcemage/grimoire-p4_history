@@ -29,6 +29,7 @@ then
 elif [[ "$mode" == "oldktree" ]]
 then
 	echo "mode is oldktree"
+	cd $LINUX_SOURCE_DIRECTORY
 else
 	echo "I don't know what $mode is"
 	return 1
