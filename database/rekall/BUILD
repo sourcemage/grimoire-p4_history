@@ -1,4 +1,3 @@
-OPTS="--with-gui=$GUI $OPTS"                            &&
 #  sed -i "/^GETVALUE/s/;//" libs/kbase/kb_options.cpp	&&
 #  sed -i "/Q_OBJECT/s/;//" libs/kbase/kb_draglist.h	&&
 #  sed -i "/Q_OBJECT/s/;//" libs/kbase/kb_optionsdlg.h	&&
@@ -13,6 +12,7 @@ if [ "$DEVEL" == "y" ]; then
   KDEDIR=/usr make config                               &&
   make
 else
+  OPTS="--with-gui=$GUI $XBASE $OPTS"                   &&
   patch -p0 < $SPELL_DIRECTORY/conf.diff                &&
   autoreconf                                            &&
   default_build
