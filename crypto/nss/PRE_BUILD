@@ -1,10 +1,10 @@
 mk_source_dir                   &&
 unpack  ${SOURCE}    ${MD5[0]}  &&
-cd $SOURCEDIRECTORY             &&
+cd $SOURCE_DIRECTORY            &&
 unpack  ${SOURCE2}   ${MD5[0]}  &&
 unpack  ${SOURCE3}   ${MD5[0]}  &&
-mv nsprpub-cvs/.* .             &&
-rmdir nsprpub-cvs/              &&
-mv dbm-cvs/.* .                 &&
-rmdir dbm-cvs  
+cp -a  nsprpub-cvs/*  .         &&
+rm -rf nsprpub-cvs/             &&
+cp -a  dbm-cvs/* .              &&
+rm -rf dbm-cvs  
 
