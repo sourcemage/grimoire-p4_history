@@ -2,8 +2,8 @@
 
 case $1 in
    start)  echo     "$1ing dovecot."
-           /usr/sbin/imap-master -c /etc/dovecot.conf
-           pid=`pidof imap-master`
+           /usr/sbin/dovecot -c /etc/dovecot.conf
+           pid=`pidof dovecot`
            if [ -n "$pid" ]; then
              echo "$pid" > /var/run/dovecot.pid
            else
@@ -12,9 +12,9 @@ case $1 in
            ;;
 
     stop)  echo     "$1ing dovecot."
-           pid=`pidof imap-master`
+           pid=`pidof dovecot`
            if [ -n "$pid" ]; then
-             kill -15 `pidof imap-master` 
+             kill -15 `pidof dovecot` 
            else
              echo "dovecot is not running."
            fi
