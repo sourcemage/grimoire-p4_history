@@ -1,5 +1,16 @@
+>>>> ORIGINAL DEPENDS#2
+depends  cvs        &&
+depends  automake   &&
+==== THEIRS DEPENDS#4
+if [ "$CVS" = "yes"  ] ; then
+	depends  CVS        &&
+	depends  automake   &&	
+	depends  libtool     &&
+fi
+==== YOURS DEPENDS
 depends  CVS        &&
 depends  automake   &&
+<<<<
 depends  tiff       &&
 depends  libpng     &&
 depends  zlib       &&
