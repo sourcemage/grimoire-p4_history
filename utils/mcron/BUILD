@@ -1,15 +1,14 @@
-(
-    ./configure  --build=$BUILD              \
-        --prefix=${INSTALL_ROOT}/usr         \
-        --sysconfdir=${INSTALL_ROOT}/etc     \
-        --localstatedir=${INSTALL_ROOT}/var  \
-        $OPTS                                &&
-  
-    make &&
-    prepare_install &&
-    make install &&
-    mkdir -p /var/cron/tabs &&
-    echo "root" > /var/cron/allow &&
-    touch /var/cron/deny &&
+if [ "$DEBUG" == y ];
+then
+    MYCONF="$MYCONF --enable-debug"                              &&
+    message "${MESSAGE_COLOR}Debug code enabled${DEFAULT_COLOR}"
+fi                                                               &&
 
-) > $C_FIFO 2>&1
+./configure                                                      \
+    --prefix=${INSTALL_ROOT}/usr                                 \
+    --sysconfdir=${INSTALL_ROOT}/etc                             \
+    --localstatedir=${INSTALL_ROOT}/var                          \
+    $OPTS                                                        \
+    $MYCONF                                                      &&
+  
+make
