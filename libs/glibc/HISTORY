@@ -1,3 +1,11 @@
+2003-12-16 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: moved --enable-kernel=current to nptl options (breaks
+	compilation for linuxthreads on linux-2.6.0-test11)
+	* BUILD, linux-2.6-headers-fix.patch: added patch to fix some kernel
+	headers so they can be included by apps (only videodev.h and videodev2.h
+	so far)
+	* locales: added UTF-8 locales
+
 2003-12-15 hgg <hgreig@bigpond.net.au>
 	* BUILD: change to use "if ... ; then ... ; fi" after prepare_install 
 	or make install is run even when make has failed. (more of same)

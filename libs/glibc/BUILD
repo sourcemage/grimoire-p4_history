@@ -1,5 +1,5 @@
 (
- [ "$NPTL" = "yes" ] && OPTS="$OPTS --enable-add-ons=nptl  --with-tls" &&
+ [ "$NPTL" = "yes" ] && OPTS="$OPTS --enable-add-ons=nptl  --with-tls --enable-kernel=current" &&
  # cosmetic patch so /lib/libc.so.6 will give out its version \
  patch -p1 < $SCRIPT_DIRECTORY/glibc-nptl-fix-asserts.patch ;
 
@@ -27,7 +27,6 @@
                --prefix=${INSTALL_ROOT}/usr   \
                --with-elf                     \
                --enable-shared                \
-               --enable-kernel=current        \
                --disable-profile              \
                $OPTS			      &&
   make                                        &&
@@ -90,7 +89,13 @@
     then  rm -rf ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux} && 
           for i in asm asm-generic linux
               do cp -aL  ${INSTALL_ROOT}/lib/modules/$(uname -r)/build/include/$i ${INSTALL_ROOT}/usr/include 
-          done
+          done  &&
+          if  [[  $(uname -r) == 2.6.* ]];  then
+            patch -d ${INSTALL_ROOT}/usr/include -p0  <  $SCRIPT_DIRECTORY/linux-2.6-headers-fix.patch  || (
+              message "${PROBLEM_COLOR}Patching the kernel headers failed."
+              message "${MESSAGE_COLOR}Please check the headers in /usr/include/{asm,asm-generic,linux}.${DEFAULT_COLOR}"
+            )
+          fi
  fi
 ) > $C_FIFO 2>&1
 
