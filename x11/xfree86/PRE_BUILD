@@ -15,7 +15,7 @@ if [ -n "$XFREE86_APPLY_PATCH" ]; then
     # may occur during their application, that do not preclude us from proceeding.
     #
     message "Applying patch $p..." &&
-    bzip2 -cd $SOURCE_CACHE/$p | patch -N -p1 -s &&
+    bzip2 -cd $SOURCE_CACHE/$p | patch -N -p1 -s
     true
   done &&
   rm -fr lib/zlib  # moved in CVS, patch doesn't apply cleanly
