@@ -13,7 +13,7 @@ fi
 if grep -q "BACKUP=y" /etc/sorcery/local/depends/$SPELL ; then
  message "${MESSAGE_COLOR}$SPELL configuration backup in progress...${DEFAULT_COLOR}"
  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`
- tar -cyvf "$LOC/squirrelmail-config-backup-$CUR_DATE.tar.bz2" $LOC/htdocs/squirrelmail/config 1>/dev/null 2>&1
+ tar -cjvf "$LOC/squirrelmail-config-backup-$CUR_DATE.tar.bz2" $LOC/htdocs/squirrelmail/config 1>/dev/null 2>&1
 else
  message "${MESSAGE_COLOR}$SPELL configuration backup skiped.${DEFAULT_COLOR}"
 fi
