@@ -1,2 +1,4 @@
-depends  gcc2    &&
-optional_depends  "gmp"  ""  ""  "for large number support"
+optional_depends  "gmp"                       \
+                  ""                          \
+                  "--enable-pure-java-math"   \
+                  "for large number support"
