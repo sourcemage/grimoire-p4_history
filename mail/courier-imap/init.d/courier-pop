@@ -19,8 +19,8 @@ libexecdir=/usr/libexec/courier-imap
 case $1 in
 start)
 	LIBAUTHMODULES=""
-	for f in `echo $AUTHMODULES`; do
-		LIBAUTHMODULES="$LIBAUTHMODULES /usr/libexec/courier-imap/authlib/$f"
+	for f in `builtin echo $AUTHMODULES`; do
+		LIBAUTHMODULES="$LIBAUTHMODULES ${libexecdir}/authlib/$f"
 	done
 
 	if test -x ${libexecdir}/authlib/authdaemond; then
@@ -31,13 +31,13 @@ start)
 			prefix=/usr ;
 			exec_prefix=/usr ;
 			bindir=${exec_prefix}/bin ;
-			libexecdir=/usr/libexec/courier-imap ;
+			libexecdir=${libexecdir} ;
 			. /etc/courier-imap/pop3d ; \
 			. /etc/courier-imap/pop3d-ssl ; \
 			TLS_PROTOCOL=$TLS_STARTTLS_PROTOCOL ; \
 			export TLS_PROTOCOL ;
-			/usr/libexec/courier-imap/couriertcpd -address=$ADDRESS \
-			-stderrlogger=/usr/libexec/courier-imap/courierlogger \
+			${libexecdir}/couriertcpd -address=$ADDRESS \
+			-stderrlogger=${libexecdir}/courierlogger \
 			-stderrloggername=pop3d \
 			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
 			-pid=$PIDFILE $TCPDOPTS \
@@ -45,7 +45,7 @@ start)
 			${exec_prefix}/bin/pop3d Maildir"
 	;;
 stop)
-	/usr/libexec/courier-imap/couriertcpd -pid=$PIDFILE -stop
+	${libexecdir}/couriertcpd -pid=$PIDFILE -stop
 	if test -x ${libexecdir}/authlib/authdaemond; then
 		${libexecdir}/authlib/authdaemond stop
 	fi
