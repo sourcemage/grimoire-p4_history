@@ -1,3 +1,7 @@
-mk_source_dir         &&
-cd $SOURCE_DIRECTORY  &&
-unpack $SOURCE ${MD5[0]}
+if [ "$KERN" = "2.4" ]; then
+  mk_source_dir         &&
+  cd $SOURCE_DIRECTORY  &&
+  unpack $SOURCE ${MD5[0]}
+else
+  default_pre_build
+fi

@@ -1,7 +1,4 @@
 (
-if ! grep -q SCSI_DISK_MAJOR ${INSTALL_ROOT}/usr/include/linux/major.h 
- then patch -p1 < $SCRIPT_DIRECTORY/e2fsprogs-2.6-kernel.patch
-fi &&
   ./configure  --host=${BUILD}                     \
                --prefix=${INSTALL_ROOT}/usr        \
                --with-root-prefix=${INSTALL_ROOT}  \

@@ -1,4 +1,7 @@
 (
+ if [ "$KERN" != "2.4" ]; then
+   cd  $SOURCE_DIRECTORY/include
+ fi
  if [[ $(uname -m) == *86_64 ]]; then
  ARCH=x86_64
  elif  [[ $(uname -m) == ppc ]]; then
@@ -20,18 +23,11 @@
     done
   ###
  echo "installing linux headers"                         &&
- cp -a linux ${INSTALL_ROOT}/usr/include                    &&
- echo "installing asm-generic headers"                   &&
- cp -a asm-generic ${INSTALL_ROOT}/usr/include              &&
+ cp -R linux ${INSTALL_ROOT}/usr/include                    &&
+ if [ "$KERN" = "2.4" ]; then
+   echo "installing asm-generic headers"                   &&
+   cp -R asm-generic ${INSTALL_ROOT}/usr/include
+ fi  &&
  echo "installing asm-$ARCH headers to /usr/include/asm" &&
- cp -a asm-$ARCH ${INSTALL_ROOT}/usr/include/asm
- if [ "$KERN" = "2.6" ] &&  [[ $(uname -m) == *86 ]]; then
-  if [ -f ${INSTALL_ROOT}/etc/sorcery/local/kernel.config ]; then
-   PROCESSOR="#define CONFIG_X86_L1_CACHE_SHIFT $(grep CONFIG_X86_L1_CACHE_SHIFT \
-${INSTALL_ROOT}/etc/sorcery/local/kernel.config | cut -d= -f2)" &&
-  sedit "s:\#endif:$PROCESSOR\n\n\#endif:" ${INSTALL_ROOT}/usr/include/linux/config.h
-  else PROCESSOR="#define CONFIG_X86_L1_CACHE_SHIFT 3" &&
-  sedit "s:\#endif:$PROCESSOR\n\n\#endif:" ${INSTALL_ROOT}/usr/include/linux/config.h
-  fi
- fi
+ cp -R asm-$ARCH ${INSTALL_ROOT}/usr/include/asm
 )  >  $C_FIFO

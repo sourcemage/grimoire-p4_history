@@ -3,9 +3,6 @@
   export    CFLAGS="${CFLAGS/-funroll-loops/} -O3"
   export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 
-  if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
-    patch  -p1  <  $SCRIPT_DIRECTORY/linux-2.6.patch
-  fi
   patch  -p1  <  $SCRIPT_DIRECTORY/faad2.patch   &&
   patch  -p0  <  $SCRIPT_DIRECTORY/ffmpeg.patch  &&
   sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
