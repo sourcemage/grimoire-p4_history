@@ -3,7 +3,7 @@
   groupadd  firewire      2>/dev/null
   rm  -f    /dev/raw1394
 
-  if [[ $(installed_version gcc) == 3.3 ]]; then
+  if [[ $(installed_version gcc | cut -d. -f1,2) == 3.3 ]]; then
     cd $SOURCE_DIRECTORY/src
     patch -p0 < $SCRIPT_DIRECTORY/test.diff
     cd $SOURCE_DIRECTORY
