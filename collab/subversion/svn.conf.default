@@ -2,6 +2,9 @@
 # See INSTALL and Apache security manuals for more details
 # ATTN: needs to be updated with mod_svn_authz information.
 #
+
+LoadModule  dav_svn_module  libexec/mod_dav_svn.so
+
 <Location /svn>
 	#
 	# This will give anyone unrestricted access to the repositories
