@@ -1,7 +1,16 @@
+2004-09-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added BUILD_API=2
+	* BUILD: Converted to BUILD_API 2
+	  Set NSS_LINUX_VERSION depending on running kernel and make persistent
+	  Add .mk for longer version names of the linux kernel (e.g. 2.6.8.1)
+	* INSTALL: Added
+	  Use NSS_LINUX_VERSION for version-specific references
+	* HISTORY: Formatted to Guru Handbook
+
 2004-05-21 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated nspr to NSPR_4_4_1_RTM  (Bug #6724)
-	Removed TABs
-	Should have an MD5 for each SOURCE
+	  Removed TABs
+	  Should have an MD5 for each SOURCE
 
 2004-05-14 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on any provider of CVS (Bug #6396)
@@ -13,10 +22,12 @@
 	* mozilla-nss.pc: Changed version and required to 1.6
 
 2004-01-05 hgg <hgreig@bigpond.net.au>
-	* BUILD: copy a linux2.5 file to linux2.6 and use uname -r to determine name of generated files
+	* BUILD: copy a linux2.5 file to linux2.6 and use uname -r to determine
+	  name of generated files
 
 2003-10-20 hgg <hgreoig@bigpond.net.au>
-	* PROVIDES: add as MOZILLA-NSS so Firebird and mozilla can be modified to provide this too
+	* PROVIDES: add as MOZILLA-NSS so Firebird and mozilla can be modified to
+	  provide this too
 
 2003-10-01 hgg <hgreig@bigpond.net.au>
 	* PRE_BUILD: Oops I forget to submit one file :( (PRE_BUILD changed)
@@ -34,8 +45,10 @@
 2003-09-19 hgg <hgreig@bigpond.net.au>
 	* Start working on this spell. 
 	  It now actually unpacks and builds...
-	  It doesn't install though have to manually cp files even after make install is run
+	  It doesn't install though have to manually cp files even after make
+	  install is run
 	  Can only run 1 make job though
 	  We have to turn off debugging though (done)
-	  Oh and i have dispelled Firebird to make sure it is truly independent of mozilla
+	  Oh and i have dispelled Firebird to make sure it is truly independent of
+	  mozilla
 
