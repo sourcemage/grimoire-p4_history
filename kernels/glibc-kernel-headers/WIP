@@ -6,3 +6,14 @@ In file included from cytune.c:61:
 /usr/include/linux/cyclades.h:525: error: parse error before '*' token
 /usr/include/linux/cyclades.h:534: error: parse error before '}' token
 make[2]: Leaving directory `/usr/src/util-linux-2.12d/sys-utils'
+
+kdeutils fails with:
+In file included from smapidev.c:41:
+/usr/include/linux/types.h:143: error: parse error before "__le64"
+/usr/include/linux/types.h:144: error: parse error before "__be64"
+In file included from thinkpad_common.h:33,
+                 from smapidev.c:54:
+../config.h:319: warning: `struct statfs' declared inside parameter list
+../config.h:319: warning: its scope is only this definition or declaration, which
+h is probably not what you want
+make[4]: *** [smapidev.lo] Error 1
