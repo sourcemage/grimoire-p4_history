@@ -16,7 +16,12 @@
   ./src/ginstall src/ginstall /bin/install     &&
 
   make    install                              &&
-  ln -sf ${INSTALL_ROOT}/bin/install ${INSTALL_ROOT}/usr/bin/install &&
+
+#some problems with everything in /bin
+for i in install env true ;
+do  ln -sfn ${INSTALL_ROOT}/bin/$i ${INSTALL_ROOT}/usr/bin/$i
+done                                           &&
+
 #provided by other packages
 rm -f ${INSTALL_ROOT}/bin/readlink             &&
 rm -f ${INSTALL_ROOT}/bin/uptime               &&
