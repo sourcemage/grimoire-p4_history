@@ -1,0 +1,26 @@
+           SPELL=grimoire-only
+         VERSION=`date -u +%Y%m%d`
+          SOURCE=sorcery.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/sorcery
+   SOURCE_URL[0]=$SORCERY_URL/$SOURCE
+   SOURCE_URL[1]=http://sgl.bccs.net/sorcery/$SOURCE
+   SOURCE_URL[2]=http://www.cs.vu.nl/~edschabe/erics/linux/$SOURCE
+        WEB_SITE=http://sgl.bccs.net
+         ENTERED=20020328
+         UPDATED=20020328
+      MAINTAINER=eric@schabell.com
+        NO_CACHE="--cache=off"
+        LIFESPAN="10"
+            FUZZ="off"
+    VIEW_REPORTS="off"
+           SOUND="off"
+         ARCHIVE="off"
+           SHORT="Grimoire spell book only: the most up to date Grimoire."
+
+cat << EOF
+
+Grimoire updated only  -  
+	Most up to date spell book, maintained by Eric Schabell.
+	Installed into /var/lib/sorcery/grimoire
+
+EOF

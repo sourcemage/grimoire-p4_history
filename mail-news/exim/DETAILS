@@ -1,11 +1,13 @@
            SPELL=exim
-         VERSION=4.01
+         VERSION=4.02
           SOURCE=exim-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/exim4/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.tin.org/pub/mail/exim/exim4/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.demon.co.uk/pub/mirrors/exim/exim4/$SOURCE
         WEB_SITE=http://www.exim.org
          ENTERED=20020227
-         UPDATED=20020309
+         UPDATED=20020328
            SHORT="exim is an Email server."
 cat << EOF
 Exim is a message transfer agent (MTA) developed at the University of

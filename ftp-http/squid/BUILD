@@ -13,6 +13,7 @@
                --localstatedir=/var/cache/squid  \
                --enable-async-io                 \
                --enable-snmp                     \
+ 	       --enable-removal-policies	 \
                --enable-linux-netfilter          \
                $OPTS                             &&
   make                                           &&
