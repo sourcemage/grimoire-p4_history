@@ -18,7 +18,7 @@
   make
   fi          &&
 
-  if  spell_installed  qt-x11;  then
+  if  [ "$QTGUI" == "y" ];  then
 	cd  $SOURCE_DIRECTORY/plugins/qt-gui	                      &&
 	if [ "$CVS" == "y" ]; then
 		make -f Makefile.cvs

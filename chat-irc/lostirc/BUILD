@@ -1,4 +1,4 @@
-  if [ "$CVS" = "yes" ] ; then ./autogen.sh; fi   &&
+  if [ "$CVS" == "y" ] ; then ./autogen.sh; fi   &&
 
   ./configure  --build=$BUILD                     \
                --prefix=/usr                      \

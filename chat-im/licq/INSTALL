@@ -19,7 +19,7 @@
   make install
   fi &&
 
-  if  spell_installed  qt-x11;  then
+  if  [ $QTGUI == "y" ];  then
     cd  $SOURCE_DIRECTORY/plugins/qt-gui                          &&
     make install
   fi                                                              &&
