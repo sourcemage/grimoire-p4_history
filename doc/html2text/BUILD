@@ -1,13 +1,9 @@
-(
+sedit "s!BINDIR    = /usr/local/bin!BINDIR = ${INSTALL_ROOT}/usr/bin!" \
+      Makefile.in &&
+sedit "s!MANDIR    = /usr/local/man!MANDIR = ${INSTALL_ROOT}/usr/share/man!" \
+      Makefile.in &&
+sedit "s!DOCDOR    = /usr/share/doc/$SPELL!DOCDIR = ${INSTALL_ROOT}/usr/share/doc/$SPELL!" \
+      Makefile.in &&
+sedit "s!DEBUG=-O2 -g!DEBUG=$CFLAGS!" Makefile.in &&
 
-  ./configure $OPTS                                     &&
-  make                                                  &&
-  prepare_install                                       &&
-  install  -m755  html2text \
-                  ${INSTALL_ROOT}/usr/bin               &&
-  install  -m644  html2text.1.gz            \
-                  ${INSTALL_ROOT}/usr/share/man/man1    &&
-  install  -m644  html2textrc.5.gz          \
-                  ${INSTALL_ROOT}/usr/share/man/man5
-
-) > $C_FIFO 2>&1
+default_build
