@@ -1,6 +1,6 @@
 (
   prepare_install                                                   &&
-  mkdir  /usr/lib/X11/icewm/themes/xp/                              &&
-  cp  -r  $BUILD_DIRECTORY/$SPELL/*  /usr/lib/X11/icewm/themes/xp/
+  mkdir -p ${INSTALL_ROOT}/usr/share/icewm/themes/                    &&
+  cp  -r  $BUILD_DIRECTORY/$SPELL/  ${INSTALL_ROOT}/usr/share/icewm/themes/
 
 ) > $C_FIFO 2>&1
