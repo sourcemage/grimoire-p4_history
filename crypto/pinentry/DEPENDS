@@ -1,9 +1,6 @@
-if [ "$KMail" = "y" -o "$Qt" = "y" ]
-  then
-    depends qt-x11    
-fi                                    &&
+optional_depends "gtk+" "" "--disable-pinentry-gtk" "to build GTK+ pinentry"  &&
 
-if [ "$GTK" = "y" ]
-  then
-    depends gtk+
-fi
+optional_depends "qt-x11"                                                   \
+                 "--with-qt-includes=/usr/include/qt --enable-pinentry-qt"  \
+                 "--disable-pinentry-qt"                                    \
+                 "to build Qt pinentry"
