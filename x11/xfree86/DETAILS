@@ -1,40 +1,64 @@
            SPELL=xfree86
-         VERSION=4.2.1
-          SOURCE=X420src-1.tgz
-         SOURCE2=X420src-2.tgz
-         SOURCE3=X420src-3.tgz
+         VERSION=4.3.0
+        XVERSION=${VERSION//./}
+          SOURCE=X${XVERSION}src-1.tgz
+         SOURCE2=X${XVERSION}src-2.tgz
+         SOURCE3=X${XVERSION}src-3.tgz
+         SOURCE4=X${XVERSION}src-4.tgz
+         SOURCE5=X${XVERSION}src-5.tgz
+         SOURCE6=X${XVERSION}src-6.tgz
+         SOURCE7=X${XVERSION}src-7.tgz
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
-   SOURCE_URL[0]=$XFREE86_URL/4.2.0/source/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.xfree86.org/pub/XFree86/4.2.0/source/$SOURCE
-  SOURCE2_URL[0]=$XFREE86_URL/4.2.0/source/$SOURCE2
-  SOURCE2_URL[1]=ftp://ftp.xfree86.org/pub/XFree86/4.2.0/source/$SOURCE2
-  SOURCE3_URL[0]=$XFREE86_URL/4.2.0/source/$SOURCE3
-  SOURCE3_URL[1]=ftp://ftp.xfree86.org/pub/XFree86/4.2.0/source/$SOURCE3
-          MD5[0]=84d236f1b4d6fa666a5398e16fd79c65
-          MD5[1]=648270a25b0e55cfe5cf751a7f294018
-          MD5[2]=b80f8acb6a1b0576453099291ac8d083
-        WEB_SITE=http://www.xfree86.org
+   SOURCE_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE
+  SOURCE2_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE2
+  SOURCE3_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE3
+  SOURCE4_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE4
+  SOURCE5_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE5
+  SOURCE6_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE6
+  SOURCE7_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE7
+          MD5[0]=90fd1261c1a70510a12fececedadf1a9
+          MD5[1]=b8a1c45dd8c59549e435111115a439d3
+          MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
+          MD5[3]=d40bfdcc2ed4e496c1ad7a71f2e3fc64
+          MD5[4]=3b8d6ded289c64af6055c915f05326e8
+          MD5[5]=fb8a4e286d9691a13bc2df84e5149a0e
+          MD5[6]=f689e23a1bf1c15a91c998be971e5660
+        WEB_SITE=http://www.xfree86.org/
          ENTERED=20010922
          UPDATED=20021202
          LICENSE=XCL
            SHORT="xfree86 is a free implementation of the X Window System."
     
 cat << EOF
+
 What is XFree86?
-The XFree86 Project, Inc is an organisation which produces XFree86, a
-freely redistributable open-source implementation of the X Window System
-that runs on UNIX(R) and UNIX-like (like Linux, the BSDs, Mac OS X (aka
-Darwin) and Solaris x86 series) operating systems and OS/2.
-XFree86 is the underlying software that is between the hardware and
-graphical user interface (aka gui) that people see and use. If you are
-using KDE, GNOME, Enlightenment, Blackbox, AfterStep, twm or fvwm then
-you are already using and running XFree86 as these run as our clients.
-Traditionally, The XFree86 Project has focused on Intel x86-based
-platforms, which is where the 86 in our name comes from, but our
-current release supports other platforms like the Alpha, PowerPC, Sparc
-and in-the-works MIPS CPU families.
-Our goal at XFree86 is to have X run on every platform available,
-including those we do not currently support, as the best windowing
-system available on that platform.
+
+The XFree86 Project, Inc is an organisation which produces
+XFree86, a freely redistributable open-source
+implementation of the X Window System that runs on UNIX(R)
+and UNIX-like (like Linux, the BSDs, Mac OS X (aka Darwin)
+and Solaris x86 series) operating systems and OS/2.
+
+XFree86 is the underlying software that is between the
+hardware and graphical user interface (aka gui) that
+people see and use. If you are using KDE, GNOME,
+Enlightenment, Blackbox, AfterStep, twm or fvwm then you
+are already using and running XFree86 as these run as our
+clients.  Traditionally, The XFree86 Project has focused
+on Intel x86-based platforms, which is where the 86 in our
+name comes from, but our current release supports other
+platforms like the Alpha, PowerPC, Sparc and in-the-works
+MIPS CPU families.
+
+Our goal at XFree86 is to have X run on every platform
+available, including those we do not currently support, as
+the best windowing system available on that platform.
+
 EOF
+
+
+
+
+
+
