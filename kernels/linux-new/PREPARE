@@ -1,6 +1,6 @@
 
 # used to figure out which mode, kernel version, patches to apply
-configfile="${SCRIPT_DIRECTORY}/details.conf"
+configfile="${CONFIG_CACHE}/details.conf"
 # kernel information directory
 kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
 # patches information directory
@@ -9,7 +9,7 @@ patchesdir="${SCRIPT_DIRECTORY}/info/patches"
 # KERNEL_VERSION environmental vars
 detailsdefaults="${CONFIG_CACHE}/details.defaults"
 # Latest versions of your favorite kernel sources and patches
-latestdefaults="${CONFIG_CACHE}/latest.defaults"
+latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
 # debug log duh ;)
 debug="${SCRIPT_DIRECTORY}/debug.log"
 
