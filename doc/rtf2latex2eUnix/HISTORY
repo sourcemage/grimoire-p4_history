@@ -1,3 +1,10 @@
+2004-07-27 PhoboX <doc@sourcemage.org>
+	* DETAILS, BUILD: converted to build api2
+	* DETAILS: added GATHER_DOCS="off" because docs are installed in
+	  /usr/share/rtf2latex2e dir
+	* INSTALL: creates symlink to docs in /usr/share/rtf2latex2e/doc dir
+	* POST_REMOVE: deletes symlink /usr/share/doc/$SPELL
+
 2004-07-20 Eric Sandall <eric@sandall.us>
 	* DEPENDS: ImageMagick renamed to imagemagick
 
