@@ -303,6 +303,10 @@ generate_host_def()  {
 if  !  spell_ok  g++;  then
   echo  "#define  BuildGLXLibrary  NO"  &&
   echo  "#define  BuildGlxExt      NO"
+fi  &&
+
+if  [[  "${HOST%%-*}"  ==  x86_64  ]];  then
+  echo '#define  HaveLib64  NO'
 fi
 
 }
