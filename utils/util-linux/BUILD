@@ -12,7 +12,7 @@ sedit  "s:/var:${INSTALL_ROOT}/var:g"           MCONFIG
 
 (
 
- patch -p1 < $SCRIPT_DIRECTORY/linux-headers-2.6.0-fix.patch &&
+# patch -p1 < $SCRIPT_DIRECTORY/linux-headers-2.6.0-fix.patch &&
  ./configure  --build=$BUILD                  \
               --prefix=${INSTALL_ROOT}/usr    \
 	      $OPTS			      &&

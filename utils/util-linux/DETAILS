@@ -1,10 +1,11 @@
            SPELL=util-linux
-         VERSION=2.12
+         VERSION=2.12a
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://ftp.cwi.nl/aeb/$SPELL/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.win.tue.nl/pub/linux-local/utils/$SPELL/$SOURCE
+#   SOURCE_URL[0]=http://ftp.cwi.nl/aeb/$SPELL/$SOURCE
    SOURCE_URL[1]=$KERNEL_URL/pub/linux/utils/$SPELL/$SOURCE
-          MD5[0]=313fb54630925bfecea87983938b91f8
+          MD5[0]=110bd135be0c208b97490a98acc6800a
          ENTERED=20010922
          UPDATED=20030822
       LICENSE[0]=GPL
