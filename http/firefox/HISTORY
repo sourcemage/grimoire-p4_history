@@ -1,18 +1,30 @@
 2004-12-08 Eric Sandall <eric@sandall.us>
+	* firefox no longer uses /usr/lib/mozilla for future compatibility
+	  with mozilla and firefox peacefully coexisting
+	* BUILD: Use FIREFOX_HOME set to /usr/lib/firefox
 	* INSTALL: Removed `rm -rf` as some plugins (e.g. j2sdk) take a while to
 	  rebuild.
+	  Use FIREFOX_HOME set to /usr/lib/firefox instead of MOZILLA_HOME set
+	  to /usr/lib/mozilla
+	  Use spell_ok instead of spell_installed
+	  Use VERSION instead of MOZILLA_VERSION
+	  Removed duplicate /usr/lib/firefox-1.0 -> /usr/lib/firefox creation
+	* firefox.sh: Set MOZILLA_FIVE_HOME to /usr/lib/firefox, not
+	  /usr/lib/mozilla
+	  Removed TAB
+	* HISTORY: Formatted to Guru Handbook
 
 2004-12-07 Eric Sandall <eric@sandall.us>
-	* INSTALL: Removed INSTALL_ROOT/usr/lib/{mozilla,firefox}*, thanks Paul and
-	  Seth
+	* INSTALL: Removed INSTALL_ROOT/usr/lib/{mozilla,firefox}*, thanks Paul
+	  and Seth
 
 2004-12-03 Eric Sandall <eric@sandall.us>
 	* DETAILS: Added MAKE_NJOBS=1.
 
 2004-11-30 Eric Sandall <eric@sandall.us>
 	* firefox-init.patch: This is a diff of what my /usr/lib/firefox-1.0
-	  tree looked like before and after running firefox as root, so it should
-	  be all we need.
+	  tree looked like before and after running firefox as root, so it
+	  should be all we need.
 	* firefox-init-0.9.tar.bz2: Removed.
 	* INSTALL: Apply firefox-init.patch to MOZILLA_HOME.
 	  I meant for /usr/lib/firefox to point to /usr/lib/firefox-$VERSION, so
@@ -24,20 +36,22 @@
 2004-11-29 Eric Sandall <eric@sandall.us>
 	* Prefixed SVG with FIREFOX_
 	  Renamed FOO to FIREFOX_TARBALL and HEADCODE to FIREFOX_CVS
-	* DETAILS: Set VERSION and SOURCE to use defaults and FIREFOX_VERSION and
-	  FIREFOX_SOURCE when they're defined
+	* DETAILS: Set VERSION and SOURCE to use defaults and FIREFOX_VERSION
+	  and FIREFOX_SOURCE when they're defined
 	  SOURCE_URL now uses $VERSION
 	  Updated MD5 for 1.0
 	* PREPARE: SOURCE is now in subdirectory source/
-	  Add FIREFOX_VERSION and FIREFOX_SOURCE as persistent and use in place of
-	  VERSION and SOURCE
-	  Moved SOURCE_URLs and MD5 to DETAILS, left SOURCE definition as it's used
-	* BUILD: Made MOZILLA_HOME, MOZ_PHOENIX, and MOZ_INTERNAL_LIBART_LGPL local
+	  Add FIREFOX_VERSION and FIREFOX_SOURCE as persistent and use in place
+	  of VERSION and SOURCE
+	  Moved SOURCE_URLs and MD5 to DETAILS, left SOURCE definition as it's
+	  used
+	* BUILD: Made MOZILLA_HOME, MOZ_PHOENIX, and MOZ_INTERNAL_LIBART_LGPL
+	  local
 	  Moved patching from BUILD to PRE_BUILD
 	  Cleaned up formatting
 	  FIREFOX_SVG uses config_query answer
-	  Export MOZ_INTERNAL_LIBART_LGPL, MOZ_PHOENIX, CFLAGS, or CXXFLAGS (fails
-	  if we don't export)
+	  Export MOZ_INTERNAL_LIBART_LGPL, MOZ_PHOENIX, CFLAGS, or CXXFLAGS
+	  (fails if we don't export)
 	* PRE_BUILD: Cleaned up formatting
 	  Made FIREFOX_TARBALL local
 	  FIREFOX_CVS uses config_query answer
@@ -78,8 +92,8 @@
 	* PROVIDES: don't provide MOZILLA-BROWSER since it doesn't
 
 2004-09-18 Eric Sandall <eric@sandall.us>
-	* INSTALL: Add root init system (no longer needs to be run as root first)
-	  Bug #7114
+	* INSTALL: Add root init system (no longer needs to be run as root
+	  first)  Bug #7114
 	* firefox-0.9.init.tar.bz2: Added  (Bug #7114)
 
 2004-09-17 Eric Sandall <eric@sandall.us>
@@ -122,8 +136,8 @@
 2004-06-29 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 0.9.1
 	* PREPARE: Updated to 0.9.1
-	Changed SOURCE_URLs
-	SOURCE now uses $SPELL-$VERSION-source.tar.bz2
+	  Changed SOURCE_URLs
+	  SOURCE now uses $SPELL-$VERSION-source.tar.bz2
 	* WIP: Compiles, but doesn't run
 	* 0.9.1 (at least) needs freetype > 2.1.5 (2.1.9 worked fine here)
 
@@ -165,8 +179,8 @@
 	  /usr/lib/mozilla to /etc/ld.so.conf
 
 2003-11-21 hgg <hgreig@bigpond.net.au>
-	* PREPARE,PRE_BUILD,BUILD,DEPENDS: modify and cleanup for more automatic version updates
-	  (and close bug #4576)
+	* PREPARE,PRE_BUILD,BUILD,DEPENDS: modify and cleanup for more automatic
+	  version updates  (and close bug #4576)
 	* BUILD: add --enable-extensions and iconv
 	* PROVIDES: add MOZILLA-BROWSER
 
@@ -174,15 +188,16 @@
 	* DETAILS,PRE_BUILD,PREPARE: Added SOURCE2 to patch to 0.7.1
 
 2003-11-04 hgg <hgreig@bigpond.net.au>
-	* PREPARE: sedit version string to current version incase of cast -c not cast -r or fresh install 
-	  (damn I had this lying around for days)
+	* PREPARE: sedit version string to current version incase of cast -c not
+	  cast -r or fresh install (damn I had this lying around for days)
 
 2003-10-28 Eric Sandall <eric@sandall.us>
 	* PROVIDES: Uppercase provides
 
 2003-10-21 hgg <hgreig@bigpond.net.au>
 	* BUILD,PROVIDES: remove /root/.mozconfig if found, 
-	  manually copy nss headers so this spell can also provide MOZILLA-NSS for gaim
+	  manually copy nss headers so this spell can also provide MOZILLA-NSS
+	  for gaim
 	* PREPARE: touch $SOURCE_CACHE/$SOURCE if you already have a cvs bundle 
 	  so you don't have to download 37MB of new sources
 
@@ -210,3 +225,4 @@
 	  doesn't install that annoying /root/.mozconfig file!
 	* a new version of an old spell!
 	  (Merged other peoples work)
+

@@ -1,28 +1,31 @@
-local  MOZILLA_HOME  MOZILLA_VERSION  FIREFOX_HOME  &&
-MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla        &&
-FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox        &&
+local  FIREFOX_HOME                           &&
+FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox  &&
 
-if spell_installed Firebird; then
+if  spell_ok  Firebird;  then
   dispel Firebird
-fi                                               &&
+fi  &&
 
-# everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
-# must actually go to /usr/lib/mozilla/
+#
+# Firefox now installs to /usr/lib/firefox and leaves /usr/lib/mozilla alone
 
-MOZILLA_VERSION=$VERSION  &&
-#mozilla-config has the "mozilla" codebase version, not the firefox version
-#MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
-mkdir -p $MOZILLA_HOME                           &&
-ln -fns $MOZILLA_HOME $FIREFOX_HOME-$MOZILLA_VERSION   &&
-mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
-ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZILLA_VERSION &&
-mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
-ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZILLA_VERSION     &&
-make install                                                   &&
-cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-ln -fns ${MOZILLA_HOME}firefox /usr/bin/                &&
+mkdir  -p  $FIREFOX_HOME                                    &&
+ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION            &&
+#mkdir  -p  ${INSTALL_ROOT}/usr/share/idl/mozilla           &&
+#ln  -fns   ${INSTALL_ROOT}/usr/share/idl/mozilla           \
+#           ${INSTALL_ROOT}/usr/share/idl/mozilla-$VERSION  &&
+#mkdir  -p  ${INSTALL_ROOT}/usr/include/mozilla             &&
+#ln  -fns   ${INSTALL_ROOT}/usr/include/mozilla             \
+#           ${INSTALL_ROOT}/usr/include/mozilla-$VERSION    &&
+ln  -fns    ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
+            ${INSTALL_ROOT}/usr/share/idl/firefox           &&
+ln  -fns    ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
+            ${INSTALL_ROOT}/usr/include/firefox             &&
+make  install                                               &&
+cp  -vaL  dist/public/nss                                   \
+          ${INSTALL_ROOT}/usr/include/firefox-$VERSION/     &&
+ln  -fns  ${FIREFOX_HOME}/firefox  /usr/bin/                &&
 
-if ! grep -q mozilla /etc/ld.so.conf; then
+if  !  grep  -q  mozilla  /etc/ld.so.conf;  then
   echo  '/usr/lib/mozilla'  >>  /etc/ld.so.conf
 fi  &&
 
@@ -40,13 +43,8 @@ fi  &&
 # Fix for starting firefox without running as root first
 # Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-patch  -d  $FIREFOX_HOME-$VERSION  -p1       \
+patch  -d  $FIREFOX_HOME-$VERSION  -p1  -N      \
        <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
-
-#
-# Create a /usr/lib/firefox symlink for easy module installation
-#
-ln  -sf  $FIREFOX_HOME-$VERSION  /usr/lib/firefox  &&
 
 #
 # Script to set MOZILLA_FIVE_HOME

@@ -6,7 +6,8 @@
 # the mozilla libs (e.g. monodevelop)
 #
 
-if  [ -z "$MOZILLA_FIVE_HOME" ] ; then 
-	MOZILLA_FIVE_HOME=/usr/lib/mozilla
-fi 
+if  [  -z  "$MOZILLA_FIVE_HOME"  ];  then 
+  MOZILLA_FIVE_HOME=/usr/lib/firefox
+fi  &&
+
 export  MOZILLA_FIVE_HOME
