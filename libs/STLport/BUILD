@@ -1,9 +1,6 @@
 (
 
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/STLport-4.5.3-gcc3.patch  &&
-
   #  Set compile to use STLport's headers before gcc's...
-
   PATH_HOLD=${PATH}                    &&
   export  PATH=${PWD}/stlport:${PATH}  &&
   echo  PATH = ${PATH}                 &&
