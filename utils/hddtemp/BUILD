@@ -1,10 +1,6 @@
 (
+default_build &&
 
-  sedit  "s:/usr/local/:/usr/:g"  Makefile     &&
-  make                                         &&
-  prepare_install                              &&
-  make    install                              &&
-  chmod   +s  /usr/sbin/hddtemp                &&
-  ln  -s  /usr/sbin/hddtemp  /usr/bin/hddtemp
+install -m0660 hddtemp.db ${INSTALL_ROOT}/etc/
 
 ) > $C_FIFO 2>&1

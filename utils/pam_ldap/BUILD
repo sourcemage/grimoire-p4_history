@@ -1,4 +1,9 @@
 (
+  aclocal                            &&
+  autoheader                         &&
+  libtoolize  --copy  --force        &&
+  automake  --add-missing            &&
+  autoconf                           &&
 
   ./configure  --build=$BUILD        \
                --prefix=/usr         \
@@ -6,6 +11,7 @@
                --localstatedir=/var  \
                --libdir=/lib         \
 	       $OPTS		     &&
+
   make                               &&
   prepare_install                    &&
   make    install

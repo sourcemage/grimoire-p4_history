@@ -6,7 +6,7 @@
 #
 #  Version:  @(#)gpm.sh  1
 #
-# SMGL-script-version=20030424
+# SMGL-script-version=20030709
 # SMGL-START:1 2 3 4 5:S45
 # SMGL-STOP:0 6:K40
 #
@@ -15,31 +15,31 @@ source /etc/init.d/functions
 
 MOUSECFG=/etc/sysconfig/mouse
 
-. $MOUSECFG
+. "$MOUSECFG"
 
 case  $1  in
-          start)
-		  		echo "$1ing gpm"
-                loadproc  gpm -t $MOUSE -m $DEV
-				;;
+  start)
+    echo "$1ing gpm"
+    loadproc  gpm -m "$DEV" -t "$MOUSE"
+    ;;
 
-           stop)
-		   		echo "$1ping gpm"
-                killproc  gpm
-                ;;
+  stop)
+    echo "$1ping gpm"
+    killproc  gpm
+    ;;
 
-        restart)
-				echo "Reloading gpm"
-		killproc  gpm 
-                loadproc  gpm -t $MOUSE -m $DEV
-                ;;
+  restart)
+    echo "Reloading gpm"
+    killproc  gpm 
+    loadproc  gpm -m "$DEV" -t "$MOUSE"
+    ;;
 
-		status)
-				statusproc  gpm
-				;;
-				
-              *)
-			  	echo "Usage: $0 {start|stop|restart}"
-				exit 1
-                ;;
+  status)
+    statusproc  gpm
+    ;;
+        
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
 esac

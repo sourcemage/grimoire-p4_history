@@ -5,13 +5,13 @@
 # processname: acpid
 #
 # Source Mage init.d install information
-# SMGL-script-version=20030331
+# SMGL-script-version=20030711
 # SMGL-START:3 4 5:S44
 # SMGL-STOP:0 1 2 6:K66
 #
 
 # Source function library.
-. /etc/rc.d/functions
+. /etc/init.d/functions
 
 DAEMON=acpi
 PROGNAME=${DAEMON}d

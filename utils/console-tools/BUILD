@@ -1,10 +1,13 @@
 (
-
+ 
   sedit "s/doc//"       Makefile.am  &&
   sedit "s/doc//"       Makefile.in  &&
   sedit "s/examples//"  Makefile.am  &&
   sedit "s/examples//"  Makefile.in  &&
-
+#for gcc3.3
+if gcc -dumpversion > /dev/null ==3.3 ; then
+  sedit "s/hack\!\\\n/hack\!\\\n \\\ /g" contrib/codepage.c 
+fi
   ./configure  --host=$BUILD         \
                --prefix=/usr         \
 	       $OPTS		     &&
