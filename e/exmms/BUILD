@@ -6,4 +6,5 @@ sedit  "s:/usr/local/lib/libepplet.la:/usr/lib/libepplet.la:"  \
          --sysconfdir=/etc    \
       --localstatedir=/var    \
               $OPTS           &&
+patch  src/Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 make
