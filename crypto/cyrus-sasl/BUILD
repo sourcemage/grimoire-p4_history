@@ -1,7 +1,5 @@
 (
 
-  sedit  "s/sasl\/sasl.h/sasl.h/"  saslauthd/lak.c  &&
-
   if [ "$SASLAUTHD" == "y" ]; then
     OPTS="$OPTS --with-saslauthd=/var/run/saslauthd"
   elif [ "$SASLDB" == "y" ]; then
