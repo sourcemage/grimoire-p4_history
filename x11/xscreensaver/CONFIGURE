@@ -2,11 +2,14 @@ if ! grep -q CONFIGURED $SPELL_CONFIG
 then  if query "Would you like to add GNOME support to the Xscreensaver package?" n
        then if query "Use older gnome-libs/gtk+/gdk-pixbuf combination" n
             then echo GNOME1=yes >> $SPELL_CONFIG &&
-                 echo 'OPTS="$OPTS --with-gtk --with-xml --with-pixbuf --with-gnome"' >> $SPELL_CONFIG
+                 echo 'OPTS="$OPTS --without-motif --with-gtk --with-xml --with-pixbuf --with-gnome"' >> $SPELL_CONFIG
             elif query "Use current GNOME2/gtk+2 combination" n
                  then  echo GNOME2=yes >> $SPELL_CONFIG &&
-                       echo 'OPTS="$OPTS --with-gtk --with-xml"' >> $SPELL_CONFIG
+                       echo 'OPTS="$OPTS --without-motif --without-pixbuf --with-gtk --with-xml"' >> $SPELL_CONFIG
             fi 
+      else
+         echo 'OPTS="$OPTS --with-motif --without-pixbuf --without-gtk --without-xml"' >> $SPELL_CONFIG &&
+         echo MOTIF=yes >> $SPELL_CONFIG
       fi
      echo CONFIGURED=yes >> $SPELL_CONFIG
 fi
