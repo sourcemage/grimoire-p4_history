@@ -1,25 +1,16 @@
            SPELL=cdrtools
-         VERSION=1.10
-       # VERSION=1.11a16
-          SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=zisofs-tools-1.0.3.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.10
-   SOURCE_URL[0]=ftp://ftp.fokus.gmd.de/pub/unix/cdrecord/$SOURCE
- # SOURCE_URL[0]=ftp://ftp.fokus.gmd.de/pub/unix/cdrecord/alpha/$SOURCE
-  SOURCE2_URL[0]=$KERNEL_URL/pub/linux/utils/fs/zisofs/$SOURCE2
-  SOURCE2_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/fs/zisofs/$SOURCE2
-        WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
-      LICENSE[0]=http://www.gnu.org/copyleft/gpl.html
-         ENTERED=20010922
-         UPDATED=20020127
-           SHORT="cdrtools creates home-burned CDs with a CD-R/CD-RW recorder."
+         VERSION=0.1
+          MD5[0]=0
+        WEB_SITE=http://sorcerylinux.org/
+         ENTERED=20020330
+         UPDATED=20020330
+      MAINTAINER=jean@kcco.com
+      LICENSE[0]=GPL
+           SHORT="cast a spell which provides cdrtools"
 cat << EOF
-cdrtools, formerly Cdrecord creates home-burned CDs with a CD-R/CD-RW
-recorder. It works as a burn engine for several applications. Cdrecord
-supports CD recorders from many different vendors; all SCSI-3/mmc and
-ATAPI/mmc compliant drives should also work. Supported features include
-IDE/ATAPI, parallel-port, and SCSI drives, audio CDs, data CDs, and
-mixed CDs, full multi-session support, CD-RWs (rewritable), TAO, DAO and
-human-readable error messages. Cdrecord includes remote SCSI support and
-can access local or remote CD-writers.
+cast a spell which provides cdrtools
+
+choices include
+* dvdrtools
+* cdrutils
 EOF

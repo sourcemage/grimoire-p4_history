@@ -1,0 +1,21 @@
+           SPELL=musixps
+         VERSION=1.11
+          SOURCE=$SPELL-unix.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-unix
+   SOURCE_URL[0]=$CTAN_URL/fonts/musixtex/ps-type1/$SOURCE
+          MD5[0]=2831d51089fb23ba23b90774f778b6c8
+        WEB_SITE=NA
+         ENTERED=20020615
+         UPDATED=20020615
+         LICENSE=PD
+           SHORT="Provides PS fonts for musixtex"
+cat << EOF
+
+This package provides PostScript (type 1) fonts (PFB format), and dvips and
+dvipdfm map files for MusiXTeX. The fonts are based on the original METAFONT
+sources, such as musix20.mf, which are distributed with MusiXTeX. The fonts
+provided here may be used to produce printer-independent Postscript files. PDF
+files generated using type 1 fonts are well displayed by the Acrobat Reader and
+xpdf.
+
+EOF

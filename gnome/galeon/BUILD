@@ -1,7 +1,8 @@
 (
 
   ./configure  --prefix=/usr      \
-               --sysconfdir=/etc  &&
+               --sysconfdir=/etc  \
+               --disable-werror   &&
   make                            &&
   prepare_install                 &&
   make    install                 &&

@@ -1,0 +1,8 @@
+# updmap needs to be run from the dvips config dir
+cd /usr/share/texmf/dvips/config
+./updmap
+
+echo "f musix.map" \
+>> /usr/share/texmf/dvipdfm/config/config
+
+texhash

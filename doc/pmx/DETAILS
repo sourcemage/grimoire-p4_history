@@ -1,0 +1,23 @@
+           SPELL=pmx
+         VERSION=230
+          SOURCE=$SPELL-unix-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://icking-music-archive.sunsite.dk/software/$SPELL/$SOURCE
+          MD5[0]=a918cc522cf8d9c0d0b1af4a3f9e6e7b
+        WEB_SITE=http://icking-music-archive.sunsite.dk/
+         ENTERED=20020616
+         UPDATED=20020616
+         LICENSE=
+           SHORT="A preprocessor for musixtex"
+cat << EOF
+
+PMX is a preprocessor for MusiXTeX. 
+
+It builds the TeX input file based on a PMX input file in a much simpler
+language, making most of the layout decisions by itself. All data are entered
+into a single file for the full score, up to 12 parts. An auxilliary program
+makes parts from a score. PMX has most of MusiXTeX's functionality, but it also
+permits in-line TeX to give access to virtually all of MusiXTeX. For
+proof-listening, PMX can make a MIDI file of your score.
+
+EOF

@@ -1,0 +1,37 @@
+           SPELL=dvipdfm
+         VERSION=0.13.2c
+          SOURCE=$SPELL.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=ftp://ftp.kettering.edu/pub/outgoing/mwicks/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://gaspra.kettering.edu/$SPELL/$SOURCE
+          MD5[0]=905f8765f207f406112ec27d9cd42759
+        WEB_SITE=http://gaspra.kettering.edu/dvipdfm/
+         ENTERED=20020616
+         UPDATED=20020616
+         LICENSE=GPL
+           SHORT="Converts DVI to PDF"
+cat << EOF
+
+Dvipdfm is a DVI to PDF translator. Its features include:
+
+    * TeX \special's that approximate the functionality of the PostScript
+      pdfmarks used by Adobe Acrobat Distiller. Links, outlines, articles, and
+      named destinations are supported, for example.
+    * Support for standard DVI specials such as the HyperTeX specials and the
+      TPIC specials.
+    * Support for thumbnails (with help from GhostScript).
+    * Ability to include PDF, PNG, and JPEG files as embedded images. For PDF
+      files, only the first page is included. Resources will be embedded from
+      the original file as necessary. File inclusion does not work for PDF
+      files that store the page contents in several segments in an array.
+    * Virtual font support
+    * Support for both Type1 and PK fonts.
+    * Support for arbitrary linear graphics transformations. Any material on
+      the page can be scaled and rotated.
+    * A color stack accessible via \special's.
+    * Partial font embedding and stream compression for reduced output file
+      size
+    * Balanced page and destination trees for improved reader access on very
+    * large document files. 
+
+EOF

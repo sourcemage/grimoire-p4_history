@@ -1,0 +1,6 @@
+cp  /usr/share/texmf/dvipdfm/config/config  /tmp/dvipdfm.conf   &&
+
+sed -e 's/f musix\.map//g'\
+< /tmp/dvipdfm.conf > /usr/share/texmf/dvipdfm/config/config          &&
+
+texhash
