@@ -1,9 +1,0 @@
-# 2003-07-13
-# this is needed because openjade versions < 1.3.2 conflict with OpenSP, so
-# dispelling them will break OpenSP and the compile of openjade fails
-#
-# should be removed after some time
-if  spell_installed  openjade;  then
-  conflicts  openjade  &&
-  cast  --fix  OpenSP
-fi
