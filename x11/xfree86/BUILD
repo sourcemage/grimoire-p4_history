@@ -12,12 +12,31 @@ install_drm()  {
 
 if    [  -f  $CONFIG_CACHE/host.def  ]
 then  cp     $CONFIG_CACHE/host.def  config/cf/host.def
-fi
-
+fi                                                      &&
+### but if it can't be copied then use system defaults for these
+if ! grep -q HasFreetype2 config/cf/host.def
+    then echo "#define HasFreetype2   Yes" >> config/cf/host.def
+fi                                                      &&
+if ! grep -q BuildFreetype2Library  config/cf/host.def
+   then echo "#define BuildFreetype2Library     NO" >> config/cf/host.def
+fi                                                      &&
+if ! grep -q HasZlib config/cf/host.def
+   then echo "#define HasZlib   Yes" >> config/cf/host.def
+fi                                                      &&
+if ! grep -q HasFontconfig config/cf/host.def
+   then echo "#define HasFontconfig  Yes" >> config/cf/host.def
+fi                                                      &&
+if ! grep -q HasExpat config/cf/host.def
+   then echo "#define HasExpat  Yes" >> config/cf/host.def
+fi                                                      &&
 message  "Building XFree86 takes a very long time."
 
 ( 
- ###removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
+  
+  ### Apply 4.3.0.1 patch
+  zcat  ${SOURCE_CACHE}/${SOURCE8}  |  patch  -p1  &&
+
+  ### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
   fi                                               &&
@@ -29,7 +48,7 @@ message  "Building XFree86 takes a very long time."
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                               &&
 
-  ###xfree86.org recommends building in a shadow tree 
+  ### xfree86.org recommends building in a shadow tree 
   cd config/util                                   &&
   make -f Makefile.ini lndir                       &&
   cp lndir $SOURCE_DIRECTORY.bld/                  &&
@@ -39,10 +58,9 @@ message  "Building XFree86 takes a very long time."
   make World
   
   ### Fix Bug #3486, which stops the build process
-
   mkdir  lib/font/builtins/unshared                              &&
   cp  lib/font/builtins/*.*  lib/font/builtins/unshared          &&
-  ###will this fix the mysterious error ?
+  ### will this fix the mysterious error ?
   ln -sf $SOURCE_DIRECTORY/lib/xtrans/Xtrans.h  $SOURCE_DIRECTORY.bld/exports/include/X11/Xtrans.h &&
   ### Start compiling where the prior left off
   make                                                           &&

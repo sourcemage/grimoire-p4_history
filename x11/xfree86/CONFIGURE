@@ -17,7 +17,7 @@ select_card_drivers()  {
   HELP="Key:  [X] = on, [ ] = off"
 
   CHECKLIST="`build_checklist ON   Graphics   $ON_CARD_DRIVERS`
-             `build_checklist OFF  Grahpics  $OFF_CARD_DRIVERS`"
+             `build_checklist OFF  Graphics  $OFF_CARD_DRIVERS`"
 
   if  XF86CardDrivers=`dialog  --backtitle  "$BACKTITLE"  \
                                --title      "$TITLE"      \
