@@ -2,7 +2,7 @@
 # fixed in gcc 3.3.x, but it isn't,
 # see http://bugs.sourcemage.org/show_bug.cgi?id=6403
 # compiles fine with those settings with gcc 3.4.2, so only disable it for 3.3
-if gcc -dumpversion ! grep -q ^3.3; then
+if gcc -dumpversion | grep -q ^3.3; then
   CFLAGS=${CFLAGS/-mfpmath=sse -msse -msse2/}
   CFLAGS=${CFLAGS/pentium4/i686}
 fi
