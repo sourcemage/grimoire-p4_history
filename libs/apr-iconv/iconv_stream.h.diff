@@ -1,0 +1,30 @@
+===================================================================
+RCS file: /home/cvspublic/apr-iconv/util/iconv_stream.h,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -r1.3 -r1.4
+--- apr-iconv/util/iconv_stream.h	2001/06/28 05:54:24	1.3
++++ apr-iconv/util/iconv_stream.h	2003/05/28 14:08:13	1.4
+@@ -7,7 +7,7 @@
+ typedef apr_ssize_t (*iconv_stream_func)(void *d, void *buf, apr_size_t nbytes);
+ 
+ typedef struct {
+-	iconv_t		cd;
++	apr_iconv_t	cd;
+ 	apr_size_t	chars;
+ 	apr_size_t	in_bytes;
+ 	apr_size_t	out_bytes;
+@@ -17,11 +17,11 @@
+ 	iconv_stream_func method;
+ } iconv_stream;
+ 
+-iconv_stream *iconv_stream_open(iconv_t cd, void *handle,
++iconv_stream *iconv_stream_open(apr_iconv_t cd, void *handle,
+                                 iconv_stream_func method);
+ void iconv_stream_close(iconv_stream *stream);
+ 
+-iconv_stream *iconv_ostream_fopen(iconv_t cd, FILE *handle);
++iconv_stream *iconv_ostream_fopen(apr_iconv_t cd, FILE *handle);
+ 
+ apr_ssize_t iconv_write(void *stream, const void *buf, apr_size_t nbytes);
+ apr_ssize_t iconv_bwrite(void *stream, const void *buf, apr_size_t nbytes);
