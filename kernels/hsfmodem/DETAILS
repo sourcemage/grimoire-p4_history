@@ -1,0 +1,21 @@
+           SPELL=hsfmodem
+        WEB_SITE=http://www.linuxant.com/drivers
+         VERSION=6.03.00lnxt03122800
+          MD5[0]=2f63a0888a67af510c263e0b4392d09d
+            VER1=$SPELL-${VERSION}full
+	     URL=$WEB_SITE/hsf/full/archive
+          SOURCE=$VER1.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$VER1
+   SOURCE_URL[0]=$URL/$VER1/$SOURCE
+         ENTERED=20020513
+         UPDATED=20030924
+         LICENCE=$WEB_SITE/license.html
+           SHORT="Driver for HSF Winmodems"
+cat << EOF
+These modules allows the use of  HSF (mostly Rockwell and 
+Conexant chips) WinModems in linux.
+Free version without FAX support
+EOF
+
+	
+
