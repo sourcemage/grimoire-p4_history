@@ -117,7 +117,7 @@ function create_group() {
 
   debug "libgrimoire" "create_group() - $1, GID=$GROUP_UID "
 
-  groupadd -g $GROUP_GID $1
+  groupadd -g $GROUP_GID $1  > /dev/null 2>&1
 
   local GROUPADD_RETURN=$?
   debug "libgrimoire.create_group()" "groupadd return code was: $GROUPADD_RETURN"
