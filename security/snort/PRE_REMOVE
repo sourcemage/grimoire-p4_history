@@ -1,8 +1,0 @@
-# Stop snort service
- if  [  -x  /etc/init.d/snort.sh  ];  then
-     /etc/init.d/snort.sh  stop
- else
-     if  [  -x  /etc/init.d/snort  ];  then
-         /etc/init.d/snort  stop
-     fi
- fi

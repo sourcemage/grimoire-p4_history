@@ -1,9 +1,10 @@
-depends  libpcap							&&
+depends  libpcap  &&
+depends  pcre  &&
 
 # Flexible Responce code
 if  [  "${CF_FLEXR}"  ==  "y"  ];  then
   depends  libnet
-fi									&&
+fi  &&
 
 # Configure RDBMS deps. if needed
 if  [  "${CF_DB}"  ==  "y"  ]; then
@@ -18,14 +19,12 @@ if  [  "${CF_DB}"  ==  "y"  ]; then
       depends unixODBC
   fi
   
-fi									&&
+fi  &&
 
 #depends swatch
 #depends acid
 #depends snortsnarf
 #
 
-optional_depends  openssl		\
-		  "--with-openssl"	\
-		  "--without-openssl"	\
-		  "for OpenSSL support (used by XML output plugin)"
+optional_depends  openssl  "--with-openssl"  "--without-openssl"  \
+      "for OpenSSL support (used by XML output plugin)"
