@@ -1,5 +1,6 @@
            SPELL=cookbook
          VERSION=1.2
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.ibiblio.org/obp/$SPELL/$SOURCE
@@ -10,7 +11,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          LICENSE=DESSCI
            SHORT="Tips and Techniques for everyday linux use"
 cat << EOF
-
 A book of ``recipes'' for various command tasks and problems in linux
-
+by Michael Stutz.
 EOF
