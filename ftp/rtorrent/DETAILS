@@ -11,7 +11,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
           MD5[0]='106679bdb19b5c9364d0758d3ab92737'
            SHORT='Rtorrent is a bittorrent client using libTorrent.'
 cat << EOF
-LibTorrent is a BitTorrent library written in C++ for *nix. It is
-designed to avoid redundant copying and storing of data that other
-clients and libraries suffer from.
+Rtorrent is a bittorrent client using libTorrent. It should support
+these features:
+* Download and start torrents during runtime.
+* Stop/resume/queue torrents.
+* Manual snubbing of peers.
+* View peer chunk bitfields and seen pieces.
+* Peer's download speed calculated from incoming HAVE messages.
+* Peer download progress.
 EOF
