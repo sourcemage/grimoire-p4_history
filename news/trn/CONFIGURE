@@ -1,6 +1,15 @@
 if ! grep -q "CREATE_DIR=" $SPELL_CONFIG; then
   if query "$SPELL needs /usr/lib/news/active directory, do you want to create one ?" y
-    then echo "CREATE_DIR=y" > $SPELL_CONFIG  
-    else echo "CREATE_DIR=n" > $SPELL_CONFIG
+    then  CREATE_DIR=y
+    else  CREATE_DIR=n 
   fi
+    echo CREATE_DIR=$CREATE_DIR >> $SPELL_CONFIG
 fi
+if ! grep -q "ORG=" $SPELL_CONFIG; then
+  if query "$SPELL needs an organization field, do you want to create one ?" y
+    then echo "Enter name" && read   -t  $PROMPT_DELAY -e && ORG=$REPLY
+    else  ORG="DEFAULT"
+  fi
+    echo ORG="$ORG" >> $SPELL_CONFIG
+fi
+
