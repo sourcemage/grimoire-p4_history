@@ -1,13 +1,15 @@
 (
 
-  sh $SOURCE_CACHE/$SOURCE --extract-only &&
-  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION/usr/src/nv                 &&
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/NVIDIA_glx-1.0.6106-defines.patch   &&
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/NVIDIA_glx-1.0.6106-glheader.patch  &&
+
+  cd usr/src/nv  &&
 
   ### We look at the Makefile in the kernel sources for the Version Number!
   KPATCHLEVEL=$(head -n 2 /lib/modules/$(uname -r)/build/Makefile | tail -n 1 | sed 's/.*= //')
 
   ### please no-one remove this
-  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION            &&
+  cd $SOURCE_DIRECTORY  &&
   
   if [[ $VIA4X == "y" ]]; then sedit "s/NVreg_EnableVia4x =0;/NVreg_EnableVia4x = 1;/" usr/src/nv/os-registry.c; fi &&
 

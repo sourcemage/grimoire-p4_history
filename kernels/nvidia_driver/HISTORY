@@ -4,7 +4,15 @@
 	  Removed TAB
 	  Shortened SHORT
 	  Renamed to nvidia_driver
+	  Updated UPDATED
+	  Fix SOURCE_DIRECTORY since PRE_BUILD has been added
 	* CONFLICTS:  Conflicts with NVIDIA_driver
+	* CONFIGURE: Convert to config_query
+	* BUILD: Apply patches from Gentoo to fix GL headers
+	  Remove SOURCE extraction and change relevant `cd`s
+	* PRE_BUILD: Extract the SOURCE properly
+	* NVIDIA_glx-1.0.6106-defines.patch, NVIDIA_glx-1.0.6106-glheader.patch:
+	  Added GL header fixes from Gentoo
 
 2004-06-30 Wolfgang Scheicher <worf@sbox.tu-graz.ac.at>
 	* DETAILS: Updated to 1.0-6106
