@@ -4,6 +4,6 @@
   make                                              &&
   prepare_install                                   &&
   cp  marc arc  ${INSTALL_ROOT}/usr/bin             &&
-  cp arc.1 %{INSTALL_ROOT}/usr/man
+  cp arc.1 ${INSTALL_ROOT}/usr/man
 
 ) > $C_FIFO 2>&1
