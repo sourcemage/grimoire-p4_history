@@ -1,5 +1,4 @@
-OPTS="$OPTS  --enable-autoproject     \
-             --enable-scriptproject   \
+OPTS="$OPTS  --enable-scriptproject   \
              --enable-trollproject    \
              --enable-customproject"  &&
 
