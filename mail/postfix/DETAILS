@@ -1,9 +1,9 @@
             SPELL=postfix
-         VERSION=2.0.10
+         VERSION=2.0.11
            SOURCE=$SPELL-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
-          MD5[0]=e49ddad8ba4e3b3ce3e672ed1a40b790
+          MD5[0]=c1ecdb9c9984073d5f7a881eb4aac0a9
     SOURCE_URL[1]=ftp://ftp.oav.net/postfix/official/$SOURCE
     SOURCE_URL[2]=ftp://ftp.doc.cs.univ-paris8.fr/mirrors/ftp.porcupine.org/postfix-release/official/$SOURCE
     SOURCE_URL[3]=ftp://mirror.widexs.nl/pub/postfix/official/$SOURCE
@@ -26,13 +26,13 @@
 #
 # TLS/SSL patch
 #
-         VERSION2=0.8.13-2.0.9-0.9.7b
+         VERSION2=0.8.13-2.0.10-0.9.7b
             NAME2=pfixtls
           SOURCE2=$NAME2-$VERSION2.tar.gz
 SOURCE2_DIRECTORY=$SOURCE_DIRECTORY/$NAME2-$VERSION2
    SOURCE2_URL[0]=ftp://ftp.aet.tu-cottbus.de/pub/postfix_tls/$SOURCE2
    SOURCE2_URL[1]=ftp://ftp.ksc.net/software/Linux-Software/postfix/$SOURCE2
-           MD5[1]=b7e704b7d423bd8d3abf6b23b221d90e
+           MD5[1]=aca33c0117ede02ebcdba3a3b61d14a9
 #
 # PostgresSQL patch
 #
@@ -53,13 +53,13 @@ SOURCE4_DIRECTORY=$SOURCE_DIRECTORY
 #
 # VDA patch
 #
-         VERSION5=2.0.6
+         VERSION5=2.0.11
             NAME5=$SPELL-$VERSION5.patch
           SOURCE5=$NAME5.gz
 SOURCE5_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE5_URL[0]=ftp://ftp.oav.net/others/postfix/VDA/$SOURCE5
    SOURCE5_URL[1]=http://ftp.oav.net/others/postfix/VDA/$SOURCE5
-           MD5[4]=e5ed464c3625eb8546bede648236f845
+           MD5[4]=2e8bb5e5a73f603f8d334d2ecadb988c
 #
 # Postfix main site
 #
