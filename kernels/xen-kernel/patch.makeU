@@ -1,6 +1,6 @@
---- buildconfigs/mk.linux-2.6-xenU.orig	2004-11-14 09:41:29.000000000 +1300
-+++ buildconfigs/mk.linux-2.6-xenU	2004-11-14 11:59:15.665822199 +1300
-@@ -9,14 +9,17 @@
+--- buildconfigs/mk.linux-2.6-xenU~	2005-01-12 04:22:29.000000000 -0800
++++ buildconfigs/mk.linux-2.6-xenU	2005-03-19 12:15:12.433348472 -0800
+@@ -9,16 +9,20 @@
  
  include buildconfigs/Rules.mk
  
@@ -9,14 +9,17 @@
  
  # The real action starts here!
 -build: $(LINUX_DIR)/include/linux/autoconf.h
-+build: 	$(LINUX_DIR)/include/linux/autoconf.h $(INSTALL_DIR)/boot/vmlinuz-$(FULLVERSION)
++build: $(LINUX_DIR)/include/linux/autoconf.h $(INSTALL_DIR)/boot/vmlinuz-$(FULLVERSION)
 +
 +$(INSTALL_DIR)/boot/vmlinuz-$(FULLVERSION):
- 	$(MAKE) -C $(LINUX_DIR) ARCH=xen modules
- 	$(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_MOD_PATH=$(INSTALL_DIR) modules_install
+ 	if grep "^CONFIG_MODULES=" $(LINUX_DIR)/.config ; then \
+ 	    $(MAKE) -C $(LINUX_DIR) ARCH=xen modules ; \
+ 	    $(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_MOD_PATH=$(INSTALL_DIR) modules_install ; \
+ 	fi
  	$(MAKE) -C $(LINUX_DIR) ARCH=xen INSTALL_PATH=$(INSTALL_DIR) install
  
 +xenify: $(LINUX_DIR)/include/linux/autoconf.h
- 
++
  $(LINUX_DIR)/include/linux/autoconf.h: pristine-linux-$(LINUX_VER)
  	rm -rf $(LINUX_DIR)
+ 	cp -al $< $(LINUX_DIR)
