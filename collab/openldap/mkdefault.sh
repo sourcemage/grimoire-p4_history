@@ -1,0 +1,194 @@
+HOST=`hostname`
+ORG=${HOST#*.}
+SUFFIX="o=$ORG"
+PASS=123456
+
+message "${MESSAGE_COLOR}Creating default slapd.conf${DEFAULT_COLOR}"
+
+cat > /etc/openldap/slapd.conf.default << __EOF__
+# See slapd.conf(5) for details on configuration options.
+# This file should NOT be world readable.
+#
+# Auto-generated $NOW
+# Change $SUFFIX to o=<your-org-short-name>
+#
+pidfile		/var/run/slapd.pid
+argsfile	/var/run/slapd.args
+
+schemacheck	on
+
+include		/etc/openldap/schema/core.schema
+include		/etc/openldap/schema/cosine.schema
+include		/etc/openldap/schema/nis.schema
+include		/etc/openldap/schema/misc.schema
+include		/etc/openldap/schema/inetorgperson.schema
+include		/etc/openldap/schema/openldap.schema
+include		/etc/openldap/schema/java.schema
+
+#
+# slapd provides ample logging, so enable this for debugging only
+# consult slapd.conf(8) manpage for values
+#
+#loglevel	968
+
+# Load dynamic backend modules:
+# modulepath	/usr/libexec/openldap
+# moduleload	back_ldap.la
+# moduleload	back_ldbm.la
+# moduleload	back_passwd.la
+# moduleload	back_shell.la
+
+# The userPassword by default can be changed
+# by the entry owning it if they are authenticated.
+# Others should not be able to see it
+#
+# rootdn always has write access, just bind using its DN
+#
+access to attribute=userPassword
+	by anonymous auth
+	by self write
+	by * none
+access to *
+	by * read
+
+defaultsearchbase	"$SUFFIX"
+
+#
+# Save the time that the entry gets modified
+#
+lastmod on
+
+#######################################################################
+# ldbm database definitions
+#######################################################################
+
+database	ldbm
+
+# The database directory MUST exist prior to running slapd AND 
+# should only be accessible by the slapd/tools. Mode 700 recommended.
+directory	/var/openldap-ldbm
+
+# Indices to maintain
+index	objectclass	eq
+index	uid eq
+
+suffix		"$SUFFIX"
+rootdn		"cn=root,$SUFFIX"
+
+# Cleartext passwords, especially for the rootdn, should
+# be avoided.  See slappasswd(8) and slapd.conf(5) for details.
+# Use of strong authentication encouraged.
+# Default password (please change!): $PASS
+rootpw		"`slappasswd -s "$PASS"`"
+__EOF__
+
+[ -e /etc/openldap/slapd.conf ] || cp /etc/openldap/slapd.conf.default /etc/openldap/slapd.conf
+
+message "${MESSAGE_COLOR}Creating default ldap.conf${DEFAULT_COLOR}"
+
+cat > /etc/ldap.conf.default << __EOF__
+# This is the configuration file for the LDAP nameservice
+# switch library and the LDAP PAM module.
+#
+# PADL Software
+# http://www.padl.com
+#
+# See ldap.conf from pam_ldap package for more options
+#
+
+# The distinguished name of the search base.
+# Replace with suffix from slapd.conf
+base	$SUFFIX
+
+# Another way to specify your LDAP server is to provide an
+# uri with the server name. This allows to use
+# Unix Domain Sockets to connect to a local LDAP Server.
+uri	ldap://127.0.0.1/
+#uri ldaps://127.0.0.1/   
+#uri ldapi://%2fvar%2frun%2fldapi_sock/
+# Note: %2f encodes the '/' used as directory separator
+
+# Filter to AND with uid=%s
+# May speed up searches
+pam_filter	objectclass=posixAccount
+
+# Hash password locally; required for University of
+# Michigan LDAP server, and works with Netscape
+# Directory Server if you're using the UNIX-Crypt
+# hash mechanism and not using the NT Synchronization
+# service. 
+pam_password crypt
+
+# Update Active Directory password, by
+# creating Unicode password and updating
+# unicodePwd attribute.
+pam_password ad
+
+# Use the OpenLDAP password change
+# extended operation to update the password.
+pam_password exop
+__EOF__
+
+[ -e /etc/ldap.conf ] || cp /etc/ldap.conf.default /etc/ldap.conf
+
+message "${MESSAGE_COLOR}Creating sample LDIF for top hierarchy${DEFAULT_COLOR}"
+
+cat > /etc/openldap/top.ldif << __EOF__
+#
+# Replace $SUFFIX with suffix from slapd.conf
+# Use the following command to create th hierarchy:
+# 	ldapadd -D "$SUFFIX" -W -f /etc/openldap/top.ldif
+#
+
+dn: $SUFFIX
+objectclass: top
+objectclass: organization
+o: $ORG
+
+dn: ou=Users,$SUFFIX
+objectclass: top
+objectclass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,$SUFFIX
+objectclass: top
+objectclass: organizationalUnit
+ou: Groups
+__EOF__
+
+message "${MESSAGE_COLOR}Creating sample LDIF for user and group creation${DEFAULT_COLOR}"
+
+cat > /etc/openldap/usergroup.ldif << __EOF__
+#
+# Sample user and group LDIF file
+# Replace $SUFFIX with suffix from slapd.conf
+#
+
+dn: cn=john,ou=Groups,$SUFFIX
+objectClass: top
+objectClass: posixGroup
+cn: john
+userPassword: {CRYPT}x
+gidNumber: 1001
+memberuid: john
+
+dn: cn=john,ou=Users,$SUFFIX
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: john
+uid: john
+# Sample password: $PASS
+userPassword: `slappasswd -s "$PASS"`
+shadowLastChange: 11763
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/sh
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/john
+__EOF__
+
+message "${MESSAGE_COLOR}Use /var/lib/sorcery/grimoire/`gaze where openldap`/openldap/mkaccount.sh${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}to create LDIF for new account${DEFAULT_COLOR}"
