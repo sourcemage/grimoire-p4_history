@@ -1,2 +1,4 @@
-echo /usr/lib/gst >> /etc/ld.so.conf
+if ! grep /usr/lib/gst /etc/ld.so.conf > /dev/null; then
+  echo /usr/lib/gst >> /etc/ld.so.conf
+fi
 ldconfig

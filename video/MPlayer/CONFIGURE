@@ -30,3 +30,14 @@ if  !  grep  -q  "FREETYPE2"  $SPELL_CONFIG;  then
   echo  "FREETYPE2=$FREETYPE2"  >>  $SPELL_CONFIG
 
 fi
+
+if  !  grep  -q  "OSD_MENU"  $SPELL_CONFIG;  then
+
+  if    query  "Enable OSD Menu (experimental)?" y
+  then  OSD_MENU=y
+  else  OSD_MENU=n
+  fi
+
+  echo  "OSD_MENU=$OSD_MENU"  >>  $SPELL_CONFIG
+
+fi

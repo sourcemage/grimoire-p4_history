@@ -1,0 +1,9 @@
+mk_source_dir  $SOURCE_DIRECTORY
+cd             $SOURCE_DIRECTORY
+i=1
+current_source=SOURCE
+while [[ ${!current_source} ]]; do
+  unpack  ${!current_source}  ${MD5[$[$i-1]]}
+  i=$[$i+1]
+  current_source=SOURCE$i
+done

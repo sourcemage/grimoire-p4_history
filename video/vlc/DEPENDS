@@ -14,15 +14,21 @@ optional_depends  "qt-x11"                \
                   ""                      \
                   "for qt interface"      &&
 
-optional_depends  "kdelibs"               \
-                  "--enable-kde"          \
-                  ""                      \
-                  "for kde interface"     &&
+#optional_depends  "kdelibs"               \
+#                  "--enable-kde"          \
+#                  ""                      \
+#                  "for kde interface"     &&
+# Only works for kde 2 for now... :(
 
 optional_depends  "ncurses"               \
                   "--enable-ncurses"      \
                   ""                      \
                   "for ncurses support"   &&
+
+optional_depends  "lirc"                  \
+                  "--enable-lirc"         \
+                  ""                      \
+                  "for lirc support"      &&
 
 # video output options
 optional_depends  "SDL"                   \
@@ -69,6 +75,6 @@ optional_depends  "libdvdcss"              \
                    "to play encrypted DVDs (you can also use libdvdread for this, see next option)" &&
 
 optional_depends  "libdvdread"             \
-                  ""                       \
+                  "--enable-dvdread"       \
                   ""                       \
                   "to play encrypted DVDs"
