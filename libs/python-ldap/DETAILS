@@ -1,0 +1,17 @@
+           SPELL=python-ldap
+         VERSION=2.0.0pre04
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://unc.dl.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://telia.dl.sourceforge.net/$SPELL/$SOURCE
+   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
+        WEB_SITE=http://python-ldap.sf.net/
+         ENTERED=20020416
+         UPDATED=20020416
+           SHORT="Python interface to LDAP"
+      MAINTAINER=sergeyli@pisem.net
+cat << EOF
+Python-LDAP provides a module for accessing LDAP servers from Python.
+It wraps an underlying LDAP C library that provides an RFC 1823 API,
+such as OpenLDAP.
+EOF
