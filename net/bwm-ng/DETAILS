@@ -1,0 +1,17 @@
+           SPELL=bwm-ng
+         VERSION=0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.volker-gropp.de/$SOURCE
+          MD5[0]=1bde8e217ab8238ee2beb202301030cd
+        WEB_SITE=http://www.volker-gropp.de/
+         ENTERED=20040907
+         UPDATED=20040907
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A small and simple curses bandwidth monitor."
+cat << EOF
+Bandwidth Monitor NG is a small and simple curses-based bandwidth monitor for
+Linux or other systems with /proc/net/dev or net-tools netstat. You can choose
+whether to show all interfaces or only those interfaces that are up.
+EOF
