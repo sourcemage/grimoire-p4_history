@@ -4,14 +4,10 @@
 # Copyright 1998 - 2000 Double Precision, Inc.
 # See COPYING for distribution information.
 
-
-
 RUNLEVEL=3
 NEEDS="+network +remotefs"
 
 .  /etc/init.d/smgl_functions
-
-
 
 prefix=/usr
 exec_prefix=/usr
@@ -25,7 +21,7 @@ bindir="/usr/bin"
 case  $1  in
 	start)
 		LIBAUTHMODULES=""
-		for  f  in  `echo  $AUTHMODULES`;  do
+		for  f  in  `builtin  echo  $AUTHMODULES`;  do
 			LIBAUTHMODULES="$LIBAUTHMODULES  $libexecdir/authlib/$f"
 		done
 		exec  /usr/bin/env  -  PATH="$PATH"  SHELL="$SHELL"      \

@@ -2,6 +2,8 @@
 
   LDFLAGS=${LDFLAGS//-z combreloc/}                                      &&
 
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/disable-root-check.patch            &&
+
   ./configure                                                            \
                --prefix=${INSTALL_ROOT}/usr                              \
                --datadir=${INSTALL_ROOT}/usr/share/courier               \
