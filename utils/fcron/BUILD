@@ -17,7 +17,8 @@
   ./configure  --prefix=/usr          \
                --with-answer-all=no   \
                $WITH_PAM              \
-               --with-editor=$EDITOR  &&
+               --with-editor=$EDITOR  \
+               $OPTS                  &&
   make                                &&
   prepare_install                     &&
   make    install
