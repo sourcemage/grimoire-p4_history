@@ -93,7 +93,10 @@ echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
     mkdir  -p  /usr/doc/${SPELL}/exiscan-acl                         &&
     cp  ${SOURCE_CACHE}/${SOURCE3}  /usr/doc/${SPELL}/exiscan-acl    &&
     cp  ${SOURCE_CACHE}/${SOURCE4}  /usr/doc/${SPELL}/exiscan-acl
-  fi
+  fi  &&
+
+  touch  /var/log/exim_main /var/log/exim_panic /var/log/exim_reject  &&
+  chown  exim.exim /var/log/exim_main /var/log/exim_panic /var/log/exim_reject
 
 ) > $C_FIFO 2>&1  &&  (
 
