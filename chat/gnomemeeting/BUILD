@@ -1,6 +1,8 @@
 (
   export PWLIBDIR=$SOURCE_DIRECTORY/pwlib             &&
   cd pwlib                                            &&
+#  sedit "s:GETDATE_SOURCE:#GETDATE_SOURCE:" src/ptlib/unix/Makefile &&
+  sedit "s/GETDATE_SOURCE = \$(COMMON_SRC_DIR)\//GETDATE_SOURCE = /" src/ptlib/unix/Makefile &&
   make optnoshared                                    &&
   cd lib                                              &&
   ln -s libpt_linux_x86_r_s.a libpt.a                 &&
