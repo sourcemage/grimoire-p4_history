@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# pseudo configure for patching the makefile
+
+cp Makefile.orig Makefile.work
+
+cat Makefile.work | sed -e "s?^SCRIPTDIR\=.*\$?SCRIPTDIR= \${CALC_SHAREDIR}/cscript?" >Makefile.tmpwork
+mv Makefile.tmpwork Makefile.work
+
+while [ "$1" ]
+do
+	case $1 in
+		--enable-readline)
+			cat Makefile.work | sed -e "s/^USE_READLINE\=.*$/USE_READLINE= -DUSE_READLINE/" | sed -e "s/^READLINE_LIB\=.*$/READLINE_LIB= -lreadline -lhistory -lncurses/" > Makefile.tmpwork
+			mv Makefile.tmpwork Makefile.work
+			;;
+		--disable-readline)
+			cat Makefile.work | sed -e "s/^USE_READLINE\=.*$/USE_READLINE=/" >Makefile.tmpwork
+			mv Makefile.tmpwork Makefile.work
+			;;
+		--enable-less)
+			cat Makefile.work | sed -e "s/^CALCPAGER\=.*$/CALCPAGER= less/" >Makefile.tmpwork
+			mv Makefile.tmpwork Makefile.work
+			;;
+		--disable-less)
+			cat Makefile.work | sed -e "s/^CALCPAGER\=.*$/CALCPAGER= more/" >Makefile.tmpwork
+			mv Makefile.tmpwork Makefile.work
+			;;
+	esac
+	shift
+done
+
+if [ "$CFLAGS" != "" ]
+then
+	cat Makefile.work | sed -e "s?^CCMISC\=.*\$?CCMISC= $CFLAGS?" >Makefile
+else
+	cp Makefile.work Makefile
+fi
