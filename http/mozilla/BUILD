@@ -52,6 +52,10 @@
   export    CFLAGS="$(  echo  $CFLAGS    |  sed  s/-ffast-math//  )"
   export  CXXFLAGS="$(  echo  $CXXFLAGS  |  sed  s/-ffast-math//  )"
 
+# Remove these lines and add $CFLAGS back into ./configure once bug is fixed
+  unset CFLAGS
+  unset CXXFLAGS
+
   ./configure  --disable-tests              \
                --disable-debug              \
                --enable-optimize=""         \
