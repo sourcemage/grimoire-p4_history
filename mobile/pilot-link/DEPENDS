@@ -1,2 +1,17 @@
-depends  perl  &&
-depends  tk
+depends  tk  &&
+
+optional_depends libpng "--with-png" \
+                        "" \
+                        "Enable PNG Support" &&
+optional_depends perl   "--with-perl" \
+                        "" \
+                        "Enable Perl Support" &&
+optional_depends JAVA   "--with-java=$JAVA_HOME" \
+                        "" \
+                        "Enable Java Support" &&
+optional_depends Python "--with-python" \
+                        "" \
+                        "Enable Python Support" &&
+optional_depends tcl    "--with-tcl=/usr/lib" \
+                        "" \
+                        "Enable TCL Support" 
