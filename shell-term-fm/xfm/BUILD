@@ -1,5 +1,3 @@
-(
-
 patch -p0 << EOF
 --- Imake.options       Thu Nov 22 10:55:09 2001
 +++ Imake.options       Thu Nov 22 10:55:32 2001
@@ -15,8 +13,4 @@ patch -p0 << EOF
 EOF
 
 xmkmf  -a
-make             &&
-prepare_install  &&
-make    install
-
-) > $C_FIFO 2>&1
+make 
