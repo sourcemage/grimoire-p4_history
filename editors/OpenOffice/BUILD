@@ -3,20 +3,21 @@ do_bootstrap()
   #
   # Just in case...
   #
-  sh  LinuxIntelEnv.Set.sh                    &&
+  sh  LinuxIntelEnv.Set.sh  &&
 
   #
   # Begin dmake creation
   #
-  cd  dmake                                                      &&
-  ./configure                                                    &&
-  sedit  's:$(OS):dmake/unix/$(OS):'  makefile.mk                &&
-  sedit  's:/usr/local/share:dmake:'  dmakeroot.h               &&
+  cd  dmake                                                &&
+  ./configure                                              &&
+  sedit  's:$(OS):dmake/unix/$(OS):'  makefile.mk          &&
+  sedit  's:/usr/local/share:dmake:'  dmakeroot.h          &&
   sedit  's:sysintf.h:unix/sysintf.h:'  dmake.c            &&
   sedit  's:sysintf.h:unix/sysintf.h:'  make.c             &&
   sedit  's:public.h:unix/linux/gnu/public.h:'  extern.h   &&
   sedit  's:sysintf.h:unix/sysintf.h:'  makefile.mk        &&
-  make                                                           &&
+  make                                                     &&
+  cd  ..                                                   &&
   #
   # End dmake creation
   #
@@ -47,20 +48,22 @@ do_bootstrap()
   chmod +x solenv/bin/zipdep.pl      &&
   chmod +x solenv/bin/gccinstlib.pl
 
-  # My own cleanup
-  sedit  's:target.mk:solenv/inc/target.mk:'  ../makefile.mk  &&
-  for i in `grep .mk ../solenv/inc/target.mk | grep INCLUDE | \
+  # Some fun cleanup...
+  sedit  's:target.mk:solenv/inc/target.mk:'  makefile.mk  &&
+  for i in `grep .mk solenv/inc/target.mk | grep INCLUDE | \
             grep -v IGNORE | awk '{print $3}' | grep -v ^\_ | \
             uniq`
   do
-    sedit  "s:$i:solenv/inc/$i:g"  ../solenv/inc/target.mk
+    sedit  "s:$i:solenv/inc/$i:g"  solenv/inc/target.mk
   done
+
+  #sedit  's:/bin/build.pl:solenv/bin/build.pl:'  LinuxIntelEnv.Set  &&
+  #sedit  's:/bin$/build.pl:solenv/bin/build.pl:g'  makefile.mk
 
   #
   # End environ setup
   #
 
-  cd  ..
 }
 
 (
@@ -83,6 +86,14 @@ do_bootstrap()
   cd  ..                                    &&
   sh  LinuxIntelEnv.Set.sh                  &&
   do_bootstrap                              &&
+  #
+  # Keep getting this error:
+  # cp: cannot stat `/dmake/dmake': No such file or directory
+  # dmake:  solenv/inc/target.mk:  line 2933:  Error -- Expecting
+  # macro or rule defn, found neither
+  # I think those lines need TABs instead of SPACEs
+  #
+  patch  -p0  <  ${SCRIPT_DIRECTORY}/target.mk.patch  &&
   ./dmake/dmake
 
 )  >  ${C_FIFO}  2>&1

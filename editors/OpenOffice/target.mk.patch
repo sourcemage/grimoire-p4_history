@@ -1,0 +1,18 @@
+--- solenv/inc/target.mk.old	2003-08-25 22:55:26.438578320 -0700
++++ solenv/inc/target.mk	2003-08-25 22:55:45.581668128 -0700
+@@ -2930,11 +2930,11 @@
+ 	@echo ---------------
+ 	@+if exist $@ del $@
+ 	@$(TOUCH) $@
+-    @+if exist $(SRS)\*.hid dir $(SRS)\*.hid
+-    @+if exist $(SRS)\*.hid type $(SRS)\*.hid >> $@
++	@+if exist $(SRS)\*.hid dir $(SRS)\*.hid
++	@+if exist $(SRS)\*.hid type $(SRS)\*.hid >> $@
+ #   @+if exist $(MISC)\*.lst $(ENV_TOOLS)$/slothid.bat $(MISC)\*.lst $@ $(INPATH)
+-    @+if exist $(MISC)\*.* $(ENV_TOOLS)$/slothid.bat $(MISC)\*.lst $@ $(INPATH)
+-    @echo done Making $@
++	@+if exist $(MISC)\*.* $(ENV_TOOLS)$/slothid.bat $(MISC)\*.lst $@ $(INPATH)
++	@echo done Making $@
+ 
+ .IF "$(SOLAR_JAVA)"!=""
+ .INCLUDE : solenv/inc/tg_java.mk
