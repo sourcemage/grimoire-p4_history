@@ -1,5 +1,10 @@
 #!/bin/sh
-# $Id: slapd.sh,v 1.3 2002/07/29 23:53:53 sergeyli Exp $
+#
+# SMGL-script-version=20030224
+# SMGL-START:1 2 3 4 5:S35
+# SMGL-STOP:0 6:K50
+
+. /etc/init.d/functions
 
 # remove ldaps part if you don't want to slapd to listen
 # on ldaps port, i.e. if ssl/tls support is not compiled in
@@ -14,12 +19,14 @@ case $1 in
 	start)
 		echo   "$1ing slapd OpenLDAP deamon."
 		slapd  -h  "$SLAPD_URL"
+		evaluate_retval
 		;;
 	stop)
 		echo   "$1ping slapd."
-		pkill  "^slapd$"
+		killproc  slapd
 		;;
 	*)
 		echo   "Usage: $0 {start|stop|restart}"
+		exit 1
 		;;
 esac
