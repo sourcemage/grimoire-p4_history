@@ -3,12 +3,13 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.fpx.de/fp/Software/UUDeview/download/$SOURCE
+          MD5[0]=0fe097e30a32b110fbae770790702141
         WEB_SITE=http://www.fpx.de/fp/Software/UUDeview
          ENTERED=20010922
          UPDATED=20031212
-      MAINTAINER=heffer@mailberlin.net
-          MD5[0]=0fe097e30a32b110fbae770790702141
       LICENSE[0]=GPL
+          CCACHE="off"
+    DISTCC_HOSTS=
            SHORT="uudeview is a smart multi-file multi-part encoder and decoder."
 cat << EOF
 uudeview is a smart multi-file multi-part encoder and decoder for
