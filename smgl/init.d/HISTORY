@@ -4,6 +4,13 @@
 	* init.d/hostname.sh: Renamed to init.d/hostname
 	  Formatted to simpleinit-msb
 	* init.d/mountall.sh: Renamed to init.d/mountall
+	* DETAILS: Added BUILD_API=2
+	  Updated UPDATED to fix init.d rename (problem pointed out by p3pilot)
+	  Removed MAINTAINER
+	* BUILD: Converted to BUILD_API 2  (run only `true`)
+	* INSTALL: Added
+	  Cleaned up formatting
+	* POST_INSTALL, FINAL: POST_INSTALL renamed to FINAL
 
 2004-07-31 Seth Woolley <seth@tautology.org>
 	* files/smgl_telinit: changed head -1 to head -n 1 for POSIX
