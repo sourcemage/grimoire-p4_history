@@ -19,21 +19,17 @@ NEEDS="+network"
 case $1 in
 	start)
 		echo "Starting webcleaner"
-#		cd /usr/share/webcleaner/
-#		loadproc ./webcleaner.pl &
 		loadproc $PROGRAM &
 		evaluate_retval
-#	 	cp /usr/share/webcleaner/webcleaner.pid /var/run 1>/dev/null 2>&1
 		echo " "
 		;;
 
  	stop)
                 echo "Stopping webcleaner"
-		webcleaner -stop
-#		killproc /usr/share/webcleaner/webcleaner.pl
+##		killproc $PROGRAM
+		pkill -f $PROGRAM
 		evaluate_retval
 		echo " "
-#		rm -f /usr/share/webcleaner/webcleaner.pid
                 ;;
 
         restart|reload)
