@@ -72,6 +72,7 @@
  fi &&
  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2   &&
  unset  LD_LIBRARY_PATH                                                     &&
+ ### must use -X next or ldconfig will relink to any alien files found in /lib or /usr/lib 
  (  ldconfig -X ||  true  )                                                   &&
 
  ### glibc only installs these if the file differs
