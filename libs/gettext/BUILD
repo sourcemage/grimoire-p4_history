@@ -24,7 +24,7 @@ fi  &&
   make    install                       &&
  #install headers so libintl.h doesn't get overwritten
   rm ${INSTALL_ROOT}/usr/local/include/libintl.h &&
-  mv ${INSTALL_ROOT}/usr/local/include/{autosprintf.h,gettext-po.h} \
+  mv ${INSTALL_ROOT}/usr/local/include/gettext-po.h \
      ${INSTALL_ROOT}/usr/include/       &&
 if spell_installed tetex ; 
 then cd gettext-tools/doc &&  
