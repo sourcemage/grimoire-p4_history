@@ -9,14 +9,24 @@ NEEDS="+remote_fs"
 
 start()
 {
-    echo "Starting postmaster..."
+  echo "Starting postmaster..."
+  if  [  -z  "$PORT"  ];  then
     su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start"
-    evaluate_retval
+  else
+    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start -o \"-i -p $PORT\""
+  fi
+  evaluate_retval
 }
 
 stop()
 {
-    echo "Stopping postmaster..."
-    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE -m fast stop"
-    evaluate_retval
+  echo "Stopping postmaster..."
+  su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE -m fast stop"
+  evaluate_retval
+}
+
+restart()
+{
+  stop   &&
+  start
 }
