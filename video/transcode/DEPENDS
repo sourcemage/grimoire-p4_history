@@ -1,94 +1,106 @@
+depends  zlib
+depends  LIBAVCODEC  &&
 optional_depends  nasm                                     \
                   ""                                       \
                   ""                                       \
                   "for mpeg encoding with bbmpeg support"  &&
 
 optional_depends  avifile                                   \
-                  "--with-avifile-mods"                     \
-                  "--without-avifile-mods"                  \
+                  "--enable-avifile"                        \
+                  "--disable-avifile"                       \
                   "for AVI decoding support using avifile"  &&
 
 optional_depends  a52dec                   \
-                  "--with-a52"             \
-                  "--without-a52"          \
+                  "--enable-a52"           \
+                  "--disable-a52"          \
                   "for ATSC A/52 support"  &&
 
 optional_depends  libdvdread           \
-                  "--with-dvdread"     \
-                  "--without-dvdread"  \
+                  "--enable-dvdread"   \
+                  "--disable-dvdread"  \
                   "for DVD support"    &&
 
-optional_depends  sdl                                                  \
-                  ""                                                   \
-                  ""                                                   \
-                  "for SDL preview plugin (also needs libdv support)"  &&
+optional_depends  sdl                       \
+                  "--enable-sdl"            \
+                  "--disable-sdl"           \
+                  "for SDL preview plugin"  &&
 
-optional_depends  gtk+                                                 \
-                  ""                                                   \
-                  ""                                                   \
-                  "for GTK preview plugin (also needs libdv support)"  &&
+optional_depends  gtk+                      \
+                  "--enable-gtk"            \
+                  "--disable-gtk"           \
+                  "for GTK preview plugin"  &&
 
 optional_depends  libdv                         \
-                  "--with-dv"                   \
-                  "--without-dv"                \
+                  "--enable-dv"                 \
+                  "--disable-dv"                \
                   "for Quasar DV code support"  &&
 
 optional_depends  lame                \
-                  "--with-lame"       \
-                  "--without-lame"    \
+                  "--enable-lame"     \
+                  "--disable-lame"    \
                   "for LAME support"  &&
 
 optional_depends  X11-LIBS               \
                   "--with-x"             \
                   "--without-x"          \
-                  "for XFree86 support"  &&
+                  "X11 support"          &&
 
 optional_depends  libogg                  \
-                  "--with-ogg"            \
-                  "--without-ogg"         \
+                  "--enable-ogg"          \
+                  "--disable-ogg"         \
                   "for OGG file support"  &&
 
 optional_depends  libvorbis                   \
-                  "--with-vorbis"             \
-                  "--without-vorbis"          \
-                  "for vorbis tools support"  &&
+                  "--enable-vorbis"           \
+                  "--disable-vorbis"          \
+                  "for vorbis audio support"  &&
+
+optional_depends  libtheora                   \
+                  "--enable-theora"           \
+                  "--disable-theora"          \
+                  "for theora video support"  &&
+
+optional_depends  libquicktime                        \
+                  "--enable-libquicktime"             \
+                  "--disable-libquicktime"            \
+                  "for quicktime (mov) file support"  &&
 
 optional_depends  lzo                            \
-                  "--with-lzo"                   \
-                  "--without-lzo"                \
+                  "--enable-lzo"                 \
+                  "--disable-lzo"                \
                   "for LZO compression support"  &&
 
-optional_depends  imagemagick              \
-                  "--with-magick-mods"     \
-                  "--without-magick-mods"  \
-                  "image editing tools"    &&
+optional_depends  imagemagick                \
+                  "--enable-imagemagick"     \
+                  "--disable-imagemagick"    \
+                  "for imagemagick filters"  &&
 
 optional_depends  libxml2                   \
-                  ""                        \
-                  ""                        \
+                  "--enable-libxml2"        \
+                  "--disable-libxml2"       \
                   "for XML format support"  &&
 
 optional_depends  freetype2                    \
-                  "--enable-text"              \
-                  "--disable-text"             \
+                  "--enable-freetype2"         \
+                  "--disable-freetype2"        \
                   "for freetype font support"  &&
 
 optional_depends  jpeg                      \
-                  "--with-libjpeg-mods"     \
-                  "--without-libjpeg-mods"  \
+                  "--enable-libjpeg"        \
+                  "--disable-libjpeg"       \
                   "for JPEG image support"  &&
 
 optional_depends  xvid                             \
-                  "--with-default-xvid=xvid4"      \
+                  ""                               \
                   ""                               \
                   "for xvid de-/encoding support"  &&
 
 optional_depends  libmpeg3                                    \
-                  "--with-libmpeg3"                           \
-                  "--without-libmpeg3"                        \
+                  "--enable-libmpeg3"                         \
+                  "--disable-libmpeg3"                        \
                   "for decoding of MPEG files with libmpeg3"  &&
 
 optional_depends  mjpegtools                            \
-                  ""                                    \
-                  ""                                    \
+                  "--enable-mjpegtools"                 \
+                  "--disable-mjpegtools"                \
                   "for mpeg2 encoding with mjpegtools"
