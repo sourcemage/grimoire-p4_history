@@ -1,0 +1,150 @@
+diff -urpN etherape-0.9.0.old/acinclude.m4 etherape-0.9.0/acinclude.m4
+--- etherape-0.9.0.old/acinclude.m4	2004-05-21 09:46:13.860228840 -0700
++++ etherape-0.9.0/acinclude.m4	2004-05-21 09:56:02.030813320 -0700
+@@ -131,8 +131,8 @@ AC_DEFUN(AC_ETHEREAL_PCAP_CHECK,
+ 	fi
+ 
+ 	# Pcap header checks
+-	AC_CHECK_HEADER(net/bpf.h,,
+-	    AC_MSG_ERROR([[Header file net/bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?]]))
++	AC_CHECK_HEADER(pcap-bpf.h,,
++	    AC_MSG_ERROR([[Header file pcap-bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?]]))
+ 	AC_CHECK_HEADER(pcap.h,, AC_MSG_ERROR(Header file pcap.h not found.))
+ 
+ 	#
+diff -urpN etherape-0.9.0.old/aclocal.m4 etherape-0.9.0/aclocal.m4
+--- etherape-0.9.0.old/aclocal.m4	2004-05-21 09:46:13.833232944 -0700
++++ etherape-0.9.0/aclocal.m4	2004-05-21 09:56:13.148123232 -0700
+@@ -144,8 +144,8 @@ AC_DEFUN(AC_ETHEREAL_PCAP_CHECK,
+ 	fi
+ 
+ 	# Pcap header checks
+-	AC_CHECK_HEADER(net/bpf.h,,
+-	    AC_MSG_ERROR([[Header file net/bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?]]))
++	AC_CHECK_HEADER(pcap-bpf.h,,
++	    AC_MSG_ERROR([[Header file pcap-bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?]]))
+ 	AC_CHECK_HEADER(pcap.h,, AC_MSG_ERROR(Header file pcap.h not found.))
+ 
+ 	#
+diff -urpN etherape-0.9.0.old/configure etherape-0.9.0/configure
+--- etherape-0.9.0.old/configure	2004-05-21 09:46:13.845231120 -0700
++++ etherape-0.9.0/configure	2004-05-21 09:57:55.211607224 -0700
+@@ -5316,8 +5316,8 @@ echo "${ECHO_T}not found" >&6
+ 
+ 	# Pcap header checks
+ 	if test "${ac_cv_header_net_bpf_h+set}" = set; then
+-  echo "$as_me:$LINENO: checking for net/bpf.h" >&5
+-echo $ECHO_N "checking for net/bpf.h... $ECHO_C" >&6
++  echo "$as_me:$LINENO: checking for pcap-bpf.h" >&5
++echo $ECHO_N "checking for pcap-bpf.h... $ECHO_C" >&6
+ if test "${ac_cv_header_net_bpf_h+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ fi
+@@ -5325,8 +5325,8 @@ echo "$as_me:$LINENO: result: $ac_cv_hea
+ echo "${ECHO_T}$ac_cv_header_net_bpf_h" >&6
+ else
+   # Is the header compilable?
+-echo "$as_me:$LINENO: checking net/bpf.h usability" >&5
+-echo $ECHO_N "checking net/bpf.h usability... $ECHO_C" >&6
++echo "$as_me:$LINENO: checking pcap-bpf.h usability" >&5
++echo $ECHO_N "checking pcap-bpf.h usability... $ECHO_C" >&6
+ cat >conftest.$ac_ext <<_ACEOF
+ #line $LINENO "configure"
+ /* confdefs.h.  */
+@@ -5335,7 +5335,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_includes_default
+-#include <net/bpf.h>
++#include <pcap-bpf.h>
+ _ACEOF
+ rm -f conftest.$ac_objext
+ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+@@ -5361,8 +5361,8 @@ echo "$as_me:$LINENO: result: $ac_header
+ echo "${ECHO_T}$ac_header_compiler" >&6
+ 
+ # Is the header present?
+-echo "$as_me:$LINENO: checking net/bpf.h presence" >&5
+-echo $ECHO_N "checking net/bpf.h presence... $ECHO_C" >&6
++echo "$as_me:$LINENO: checking pcap-bpf.h presence" >&5
++echo $ECHO_N "checking pcap-bpf.h presence... $ECHO_C" >&6
+ cat >conftest.$ac_ext <<_ACEOF
+ #line $LINENO "configure"
+ /* confdefs.h.  */
+@@ -5370,7 +5370,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <net/bpf.h>
++#include <pcap-bpf.h>
+ _ACEOF
+ if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+   (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
+@@ -5403,10 +5403,10 @@ echo "${ECHO_T}$ac_header_preproc" >&6
+ # So?  What about this header?
+ case $ac_header_compiler:$ac_header_preproc in
+   yes:no )
+-    { echo "$as_me:$LINENO: WARNING: net/bpf.h: accepted by the compiler, rejected by the preprocessor!" >&5
+-echo "$as_me: WARNING: net/bpf.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: net/bpf.h: proceeding with the preprocessor's result" >&5
+-echo "$as_me: WARNING: net/bpf.h: proceeding with the preprocessor's result" >&2;}
++    { echo "$as_me:$LINENO: WARNING: pcap-bpf.h: accepted by the compiler, rejected by the preprocessor!" >&5
++echo "$as_me: WARNING: pcap-bpf.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
++    { echo "$as_me:$LINENO: WARNING: pcap-bpf.h: proceeding with the preprocessor's result" >&5
++echo "$as_me: WARNING: pcap-bpf.h: proceeding with the preprocessor's result" >&2;}
+     (
+       cat <<\_ASBOX
+ ## ------------------------------------ ##
+@@ -5417,12 +5417,12 @@ _ASBOX
+       sed "s/^/$as_me: WARNING:     /" >&2
+     ;;
+   no:yes )
+-    { echo "$as_me:$LINENO: WARNING: net/bpf.h: present but cannot be compiled" >&5
+-echo "$as_me: WARNING: net/bpf.h: present but cannot be compiled" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: net/bpf.h: check for missing prerequisite headers?" >&5
+-echo "$as_me: WARNING: net/bpf.h: check for missing prerequisite headers?" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: net/bpf.h: proceeding with the preprocessor's result" >&5
+-echo "$as_me: WARNING: net/bpf.h: proceeding with the preprocessor's result" >&2;}
++    { echo "$as_me:$LINENO: WARNING: pcap-bpf.h: present but cannot be compiled" >&5
++echo "$as_me: WARNING: pcap-bpf.h: present but cannot be compiled" >&2;}
++    { echo "$as_me:$LINENO: WARNING: pcap-bpf.h: check for missing prerequisite headers?" >&5
++echo "$as_me: WARNING: pcap-bpf.h: check for missing prerequisite headers?" >&2;}
++    { echo "$as_me:$LINENO: WARNING: pcap-bpf.h: proceeding with the preprocessor's result" >&5
++echo "$as_me: WARNING: pcap-bpf.h: proceeding with the preprocessor's result" >&2;}
+     (
+       cat <<\_ASBOX
+ ## ------------------------------------ ##
+@@ -5433,8 +5433,8 @@ _ASBOX
+       sed "s/^/$as_me: WARNING:     /" >&2
+     ;;
+ esac
+-echo "$as_me:$LINENO: checking for net/bpf.h" >&5
+-echo $ECHO_N "checking for net/bpf.h... $ECHO_C" >&6
++echo "$as_me:$LINENO: checking for pcap-bpf.h" >&5
++echo $ECHO_N "checking for pcap-bpf.h... $ECHO_C" >&6
+ if test "${ac_cv_header_net_bpf_h+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+@@ -5447,8 +5447,8 @@ fi
+ if test $ac_cv_header_net_bpf_h = yes; then
+   :
+ else
+-  { { echo "$as_me:$LINENO: error: Header file net/bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?" >&5
+-echo "$as_me: error: Header file net/bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?" >&2;}
++  { { echo "$as_me:$LINENO: error: Header file pcap-bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?" >&5
++echo "$as_me: error: Header file pcap-bpf.h not found; if you installed libpcap from source, did you also do \"make install-incl\"?" >&2;}
+    { (exit 1); exit 1; }; }
+ fi
+ 
+diff -urpN etherape-0.9.0.old/src/globals.h etherape-0.9.0/src/globals.h
+--- etherape-0.9.0.old/src/globals.h	2004-05-21 09:46:13.826234008 -0700
++++ etherape-0.9.0/src/globals.h	2004-05-21 09:58:06.392907408 -0700
+@@ -38,7 +38,7 @@
+ /* Since gdb does understand enums and not defines, and as 
+  * way to make an easier transition to a non-pcap etherape,
+  * I define my own enum for link type codes */
+-/* See /usr/include/net/bpf.h for a longer description of
++/* See /usr/include/pcap-bpf.h for a longer description of
+  * some of the options */
+ typedef enum
+ {
