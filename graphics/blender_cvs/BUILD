@@ -1,5 +1,6 @@
 (
   ./bootstrap                           &&
+source /etc/profile
   ./configure  --disable-blenderplugin  \
                --without-gameblender    \
                --enable-shared          \
