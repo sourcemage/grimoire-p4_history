@@ -1,14 +1,15 @@
            SPELL=lvm
-         VERSION=2.00.08
+         VERSION=2.00.21
           SOURCE=LVM2.$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/LVM2.$VERSION
-   SOURCE_URL[0]=ftp://ftp.sistina.com/pub/LVM2/tools/$SOURCE
-          MD5[0]=26f64d1de1fc3addfbb939502965a5c2
+   SOURCE_URL[0]=ftp://sources.redhat.com/pub/lvm2/$SOURCE
+          MD5[0]=0ee49b3ed82c4869eb4af6109939abc4
         WEB_SITE=http://www.sistina.com/products_lvm.htm
-      LICENSE[0]=GPL
          ENTERED=20010922
          UPDATED=20031219
-           SHORT="lvm is the logical volume manager"
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Logical volume manager"
 cat << EOF
 The Logical Volume Manager (LVM) is a subsystem for
 online disk storage management which has become a de
