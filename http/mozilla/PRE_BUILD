@@ -8,6 +8,6 @@ cd $SOURCE_DIRECTORY &&
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   cd $SOURCE_DIRECTORY/extensions &&
   unpack $SOURCE2 ${MD5[1]} &&
-  unpack $SOURCE3 ${MD5[2]} &&
+  unpack $SOURCE3 ${MD5[2]}
 #  patch -p1 < $SCRIPT_DIRECTORY/extensions-enigmail-src.diff
 fi
