@@ -51,6 +51,12 @@ ln -s /etc/openwebmail.conf $LOC/cgi-bin/openwebmail/etc/openwebmail.conf 1>/dev
 message "${MESSAGE_COLOR}Setting up rights... ${DEFAULT_COLOR}"					&&
 chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail.pl 	 					&&
 chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-main.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-abook.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-advsearch.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-cal.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-folder.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-vdomain.pl  					&&
+chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-webdisk.pl  					&&
 chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-prefs.pl  					&&
 chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-read.pl						&&
 chmod 4555 $LOC/cgi-bin/openwebmail/openwebmail-viewatt.pl					&&
