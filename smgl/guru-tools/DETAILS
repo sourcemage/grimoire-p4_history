@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=1.0
+         VERSION=1.1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.ataraxy.net/~schabell/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20040521
-          MD5[0]='011ebc6672620e24f1ab24be0951c9e0'
+         UPDATED=20040625
+          MD5[0]='243451b95cfbc734e5004edb2a345c0b'
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -19,6 +19,9 @@ checkGrimoire.sh        - checks the grimoire (or sections of it) for broken lin
                           (by Paul)
 
 check_my_depends.sh     - checks for dependancies that have been dispelled.(by Paul)
+
+dependsSquish.sh        -  takes a list of spells and outputs the order in which to 
+                           cast them so dependancies are taken care of.
 
 findLibDepends.sh       - find missing dependancies of spells with ldd.(by Paul)
 
@@ -41,6 +44,9 @@ historyfix.pl           - outputs an sh script for editing and patching all the 
                           supplied in the args. (by Seth Woolley)
                           
 md5unpack <tarball>     - provides md5sum info from source tarball. 
+
+rebuildPackages         - In case you delete your /var/state/sorcery/packages
+                          file ;)
 
 spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           #{MYSPELLS}/software and DETAILS in your local 
