@@ -78,8 +78,10 @@ mkdep 3 2                                                   &&
 mkdep 4 3                                                   &&
 mkdep 5 4                                                   &&
 
-pinfo "Installing /etc/inittab..."                          &&
-install -v -m 644 $FD/inittab ${INSTALL_ROOT}/etc/inittab   &&
+if ! grep -sq runlevels /etc/inittab ; then
+    pinfo "Installing /etc/inittab..."                      &&
+    install -v -m 644 $FD/inittab ${INSTALL_ROOT}/etc/inittab
+fi                                                          &&
 
 pinfo "Other stuff..."                                      &&
 
