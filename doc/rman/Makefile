@@ -16,14 +16,14 @@
 # MANDIR holds the man page.
 
 BINDIR = /usr/bin
-MANDIR = /usr/man/man1
+MANDIR = /usr/share/man/man1
 
 
 ### if you have GNU gcc v2.x, use these definitions
 
 CC = gcc
 # if you don't have gcc v2.x, try -O for CFLAGS
-CFLAGS = -O2 -finline-functions
+#CFLAGS = -O2 -finline-functions
 
 ### if you just have a standard UNIX, use these instead of GNU.
 ### CC must be an ANSI C compiler
