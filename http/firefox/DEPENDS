@@ -1,20 +1,22 @@
+depends  g++                           &&
 depends  zlib    '--with-system-zlib'  &&
 depends  jpeg    '--with-system-jpeg'  &&
 depends  libpng  '--with-system-png'   &&
 depends  zip                           &&
 depends  perl                          &&
 
-if [ "$GTK" = "1" ]
-then
+if  [  "$FIREFOX_GTK"  =  "2.x"  ];  then
+  depends  gtk+2 '--enable-default-toolkit=gtk2 --enable-xft --disable-freetype2' &&    # doesn't work
+#  depends  gtk+2 '--enable-default-toolkit=gtk2 --disable-xft --enable-freetype2' &&     # works for now but looks crappy :(
+  depends libidl
+else
+#
+#  Else  FIREFOX_GTK="1.x"
+#
   depends  gtk+  '--enable-default-toolkit=gtk'  &&
   depends  orbit
-fi                                  &&
-if [ "$GTK" = "2" ]
-then
-  depends  gtk+2 '--enable-default-toolkit=gtk2 --enable-xft --enable-freetype2' &&
-  depends libidl
-fi                                  &&
-if  [ "$HEADCODE"  ==  "yes"  ] 
-then
+fi  &&
+
+if  [  "$FIREFOX_CVS"  =  "y"  ];  then
   depends  CVS
 fi

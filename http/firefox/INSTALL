@@ -1,28 +1,55 @@
-MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
-FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox &&
+FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox  &&
 
-if spell_installed Firebird; then
+if  spell_ok  Firebird;  then
   dispel Firebird
-fi                                               &&
+fi  &&
 
-# everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
-# must actually go to /usr/lib/mozilla/
+#
+# Firefox now installs to /usr/lib/firefox and leaves /usr/lib/mozilla alone
 
-MOZILLA_VERSION=0.10		&&
-#mozilla-config has the "mozilla" codebase version, not the firefox version
-#MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
-mkdir -p $MOZILLA_HOME                           &&
-ln -fns $MOZILLA_HOME $FIREFOX_HOME-$MOZILLA_VERSION   &&
-mkdir -p ${INSTALL_ROOT}/usr/share/idl/mozilla   &&
-ln -fns ${INSTALL_ROOT}/usr/share/idl/mozilla ${INSTALL_ROOT}/usr/share/idl/mozilla-$MOZILLA_VERSION &&
-mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
-ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZILLA_VERSION     &&
-make install                                                   &&
-cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-ln -fns ${MOZILLA_HOME}firefox /usr/bin/                &&
+#
+# Make sure these directories exist, symlink them, and /then/ install
+# This fixes both Wolfgang's problems and johnny17's problems. :)
+#
+if  [  !  -d  $FIREFOX_HOME  ];  then
+  mkdir  -p  $FIREFOX_HOME
+fi  &&
 
-if ! grep -q mozilla /etc/ld.so.conf; then
-  echo  '/usr/lib/mozilla'  >>  /etc/ld.so.conf
+if  [  !  -d  ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION
+fi  &&
+
+if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox-$VERSION  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox-$VERSION
+fi  &&
+
+if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox/nss  ];  then
+  mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox/nss
+fi  &&
+
+ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
+ln  -fns   ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
+           ${INSTALL_ROOT}/usr/share/idl/firefox           &&
+ln  -fns   ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
+           ${INSTALL_ROOT}/usr/include/firefox             &&
+make  install                                              &&
+cp  -vfL   dist/public/nss/*.h                             \
+           ${INSTALL_ROOT}/usr/include/firefox/nss         &&
+
+#
+# Don't do this!
+# http://lists.freebsd.org/pipermail/freebsd-gnome/2004-October/008443.html
+#
+#if  !  grep  -q  firefox  /etc/ld.so.conf;  then
+#  echo  '/usr/lib/firefox'  >>  /etc/ld.so.conf
+#fi  &&
+
+#
+# Make sure $INSTALL_ROOT/usr/lib/firefox is not in $INSTALL_ROOT/etc/ld.so.conf
+#
+if  grep  -q  firefox  $INSTALL_ROOT/etc/ld.so.conf;  then
+  sedit  "s:/usr/lib/firefox::"  $INSTALL_ROOT/etc/ld.so.conf  &&
+  /sbin/ldconfig
 fi  &&
 
 #
@@ -30,35 +57,27 @@ fi  &&
 # Only create if /usr/bin/mozilla does not exist or is
 # already a symlink
 #
-if  [  !  -f  /usr/bin/mozilla  -o  -h  /usr/bin/mozilla  ]
-then
-  ln  -sf  /usr/bin/firefox  /usr/bin/mozilla
+if  [  "$FIREFOX_MOZLINK"  =  "y"  ];  then
+  if  [  !  -f   $INSTALL_ROOT/usr/bin/mozilla  ||
+            -h   $INSTALL_ROOT/usr/bin/mozilla  ];  then
+    ln  -sf  /usr/bin/firefox  /usr/bin/mozilla
+  fi
 fi  &&
 
 #
 # Fix for starting firefox without running as root first
-# from Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
+# Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
-       -C  ${MOZILLA_HOME}                               &&
-
-#
-# Create a /usr/lib/firefox symlink for easy module installation
-#
-ln  -sf  ${MOZILLA_HOME}  /usr/lib/firefox  &&
-
-#
-# Securityfix for firefox.
-#
-mkdir -p $SOURCE_DIRECTORY/patch &&
-cd $SOURCE_DIRECTORY/patch &&
-unzip $SOURCE_CACHE/$SOURCE2 -d ./ &&
-mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref &&
-cp -vaLf bug259708.js ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref/ &&
-mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
-cp -vaLf nsHelperAppDlg.js ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
+patch  -d  $FIREFOX_HOME           -p1  -N      \
+       <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
 
 #
 # Script to set MOZILLA_FIVE_HOME
 #
-cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
+cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  $INSTALL_ROOT/etc/profile.d  &&
+
+#
+# Install firefox script so it loads properly
+#
+install  -m  755  -o  root  -g  root  $SCRIPT_DIRECTORY/firefox  \
+         $INSTALL_ROOT/usr/bin
