@@ -1,1 +1,5 @@
 ldconfig
+
+if query "Do you want to download the current snapshot of the pci.ids file?" y
+   then update-pciids
+fi

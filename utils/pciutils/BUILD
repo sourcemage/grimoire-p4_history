@@ -1,12 +1,14 @@
 (
 
+  sedit "s:/local::" Makefile            &&
+
   cd  lib                                &&
   ./configure /usr/share                 &&
   cd  ..                                 &&
   make                                   &&
   prepare_install                        &&
 
-  make  PREFIX=/usr  ROOT=/usr  install  &&
+  make  install                          &&
 
   cd  lib                                &&
   make                                   &&
