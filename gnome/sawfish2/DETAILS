@@ -1,0 +1,26 @@
+           SPELL=sawfish2
+         VERSION=2.0
+          SOURCE=sawfish-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/sawfish-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/sawfish/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/sawfish/$SOURCE
+        WEB_SITE=http://sawmill.sourceforge.net
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+         ENTERED=20020510
+         UPDATED=20020510
+           SHORT="Sawfish is an extensible window manager."
+cat << EOF
+Sawfish is an extensible window manager using a Lisp-based scripting 
+language --all window decorations are configurable and all user-interface 
+policy is controlled through the extension language. This is no layer 
+on top of twm, but a wholly new architecture.
+
+Despite this extensibility its policy is very minimal compared to most 
+window managers. Its aim is simply to manage windows in the most
+flexible and attractive manner possible. As such it does not implement
+desktop backgrounds, applications docks, or other things that may be achieved 
+through separate applications.
+
+This is the GTK+/GNOME 2.0 version of sawfish
+EOF

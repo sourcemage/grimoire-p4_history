@@ -1,0 +1,22 @@
+           SPELL=libart_lgpl
+         VERSION=2.3.9
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.levien.com/libart
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=LGPL
+         ENTERED=20020509
+         UPDATED=20020509
+           SHORT="Libart is a library of functions for 2D graphics"
+cat << EOF
+Libart is a library of functions for 2D graphics supporting a
+superset of the PostScript imaging model, designed to be integrated
+with graphics, artwork, and illustration programs. It is written in
+optimized C, and is fully compatible with C++. With a small
+footprint of 10,000 lines of code, it is especially suitable for
+embedded applications. Libart is currently being used in several free
+software applications, including Gill (the Gnome SVG editor),
+the Gnome Canvas, and several others under development.
+EOF

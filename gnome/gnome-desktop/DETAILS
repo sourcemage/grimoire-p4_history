@@ -1,0 +1,25 @@
+           SPELL=gnome-desktop
+         VERSION=2.0.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/2.0.0/sources/$SPELL/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.gnome.org/pub/GNOME/2.0.0/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+      LICENSE[2]=FDL
+         ENTERED=20020505
+         UPDATED=20020520
+           SHORT="Common files and APIs for the GNOME 2.0 desktop"
+cat << EOF
+The package contains the libgnome-desktop library
+which contains APIs that really belong in libgnome[ui] but
+have not seen enough testing or development to be considered
+stable. Use at your own risk.
+
+Also contained here are documents installed as part
+of the core GNOME distribution, e.g. the GPL, GNOME's
+.desktop files, the gnome-about program, some manpages and
+GNOME's core graphics files and icons. 
+EOF
