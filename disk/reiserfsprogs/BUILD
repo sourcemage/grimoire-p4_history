@@ -9,6 +9,8 @@
                $OPTS                 &&
   make                               &&
   prepare_install                    &&
-  make    install
+  make    install                    &&
+  ln  -sf  /sbin/reiserfsck          \
+           /sbin/fsck.reiserfs
 
 ) > $C_FIFO 2>&1
