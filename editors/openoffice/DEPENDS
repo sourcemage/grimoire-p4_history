@@ -1,12 +1,20 @@
-depends  X11-SERVER &&
-depends  zip      &&
-depends  which    &&
-depends  mktemp   &&
-depends  ant      &&
-depends  tcsh	  &&
-depends  JAVA     &&
-depends  libart_lgpl &&
-optional_depends "STLport" "--with-stlport4-home=/usr" "" "To use system installed STLport" &&
+depends  X11-SERVER   &&
+depends  zip          &&
+depends  which        &&
+depends  mktemp       &&
+depends  ant          &&
+depends  tcsh    	  &&
+depends  JAVA         &&
+depends  libart_lgpl  &&
+
+optional_depends  stlport                            \
+                  "--with-stlport4-home=/usr"        \
+                  ""                                 \
+                  "to use system installed STLport"  &&
+
 #I honestly do not know what this next spell is used for, but
 #some of the Linux-PAM source files are needed to compile.
-optional_depends "Linux-PAM" "" "" ""
+optional_depends  Linux-PAM          \
+                  ""                 \
+                  ""                 \
+                  "for PAM headers"

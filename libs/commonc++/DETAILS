@@ -1,0 +1,16 @@
+           SPELL=commonc++
+         VERSION=1.0.1
+          SOURCE=commoncpp2-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SOURCE/\.tar.gz/}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/cplusplus/$SOURCE
+          MD5[0]=db0b846515efa53d199325b64c78c128
+        WEB_SITE=http://sourceforge.net/projects/cplusplus
+         ENTERED=20020309
+         UPDATED=20020310
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Common C++ libraries"
+cat << EOF
+Common C++ offers a highly portable application framework for threading,
+sockets, realtime network streaming, persistance, and file access.
+EOF

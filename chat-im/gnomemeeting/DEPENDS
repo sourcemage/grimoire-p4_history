@@ -2,5 +2,12 @@ depends  openssl      &&
 depends  openldap     &&
 depends  libgnomeui   &&
 
-optional_depends "SDL" "" "" "For full-screen video" &&
-optional_depends "arts" "" "" "For ARTS support"
+optional_depends  sdl                      \
+                  ""                       \
+                  ""                       \
+                  "For full-screen video"  &&
+
+optional_depends  arts                \
+                  ""                  \
+                  ""                  \
+                  "For ARTS support"

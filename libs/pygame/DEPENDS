@@ -1,7 +1,27 @@
-depends  Python
-depends  SDL
-optional_depends  SDL_image
-optional_depends  SDL_mixer
-optional_depends  SDL_ttf
-optional_depends  smpeg
-optional_depends  numpy
+depends  Python  &&
+depends  sdl     &&
+
+optional_depends  sdl_image                   \
+                  ""                          \
+                  ""                          \
+                  "for faster image support"  &&
+
+optional_depends  sdl_mixer               \
+                  ""                      \
+                  ""                      \
+                  "for SDL sound mixing"  &&
+
+optional_depends  sdl_ttf          \
+                  ""               \
+                  ""               \
+                  "for SDL fonts"  &&
+
+optional_depends  smpeg                           \
+                  ""                              \
+                  ""                              \
+                  "for MPEG video/audio support"  &&
+
+optional_depends  numpy                               \
+                  ""                                  \
+                  ""                                  \
+                  "for fast multideminsional arrays"

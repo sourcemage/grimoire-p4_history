@@ -1,0 +1,11 @@
+--- src/miracle/miracle_local.c.orig	2004-08-01 17:54:26.225232416 -0500
++++ src/miracle/miracle_local.c	2004-08-01 17:55:06.971038112 -0500
+@@ -504,7 +504,7 @@
+ {
+ 	miracle_delete_all_units();
+ #ifdef linux
+-	pthread_kill_other_threads_np();
++/*	pthread_kill_other_threads_np(); */
+ 	miracle_log( LOG_DEBUG, "Clean shutdown." );
+ 	free( local );
+ 	mlt_factory_close( );
