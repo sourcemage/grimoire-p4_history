@@ -1,0 +1,5 @@
+local CATALOG=$INSTALL_ROOT/etc/sgml/catalog                            &&
+
+if ! grep -qs 'CATALOG "/etc/sgml/docbook-sgml-dtd.cat"' $CATALOG; then
+    echo 'CATALOG "/etc/sgml/docbook-sgml-dtd.cat"' >> $CATALOG
+fi

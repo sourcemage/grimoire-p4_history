@@ -1,0 +1,18 @@
+function install_docbook_sgml_dtd()
+{
+    echo "Installing DocBook version $1"                            &&
+    mkdir   --parents                                               \
+            $INSTALL_ROOT/usr/share/sgml/definitions/docbook/dtd/$1 &&
+    cd                  $SOURCE_DIRECTORY/$1                        &&
+    install -m 644  *                                               \
+            $INSTALL_ROOT/usr/share/sgml/definitions/docbook/dtd/$1
+}
+
+install_docbook_sgml_dtd 4.3                                        &&
+install_docbook_sgml_dtd 4.2                                        &&
+install_docbook_sgml_dtd 4.1                                        &&
+install_docbook_sgml_dtd 3.1                                        &&
+
+install --directory $INSTALL_ROOT/etc/sgml                          &&
+install -m 644      $SCRIPT_DIRECTORY/docbook-sgml-dtd.cat          \
+                    $INSTALL_ROOT/etc/sgml/
