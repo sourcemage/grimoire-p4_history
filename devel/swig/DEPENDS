@@ -1,5 +1,7 @@
-depends  tcl  &&
-
+optional_depends tcl \
+                 '--with-tcl' \
+                 '--without-tcl' \
+                 'to include Tcl/Tk support' &&
 optional_depends Python \
                  "--with-python=$INSTALL_ROOT/usr/bin/python" \
                  '--without-python' \

@@ -1,5 +1,7 @@
 (
 
+  patch  configure  $SCRIPT_DIRECTORY/configure.patch  &&
+
   ./configure \
     --build=$BUILD \
     --prefix=$INSTALL_ROOT/usr \
