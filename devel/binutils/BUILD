@@ -7,8 +7,7 @@
                 --prefix=/usr  \
  		$OPTS	       &&
   make                         &&
-  message  "${MESSAGE_COLOR}Preparing to install"    \
-           "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}"  &&
+  prepare_install              &&
   make  install
 
 ) > $C_FIFO 2>&1
