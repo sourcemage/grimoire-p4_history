@@ -1,7 +1,7 @@
-depends  perl				&&
-depends  nmap				&&
+depends  perl        &&
+depends  nmap        &&
+depends  libwhisker  &&
 
 if  [  "${CF_SSL}"  ==  "y"  ]; then
-    depends  openssl			&&
     depends  Net-SSLeay
 fi						       
