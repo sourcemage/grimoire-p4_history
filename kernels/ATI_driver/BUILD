@@ -2,6 +2,8 @@
   cd $SOURCE_DIRECTORY                             &&
   cp -dPR lib/* $INSTALL_ROOT/lib                  &&
   cd $INSTALL_ROOT/lib/modules/fglrx/build_mod     &&
+#  patch -p1 <$SCRIPT_DIRECTORY/fglrx-3.7.6-regparm.patch &&
+#  patch -p0 <$SCRIPT_DIRECTORY/amd.patch &&
   sh ./make.sh                                        &&
   cd $INSTALL_ROOT/lib/modules/fglrx/              &&
   sh ./make_install.sh                                &&
