@@ -1,2 +1,3 @@
 default_install             &&
-cp  -r  timidity  /usr/lib
+mkdir  -p  ${INSTALL_ROOT}/usr/share/timidity/sdl  &&
+cp  timidity/instruments/*  ${INSTALL_ROOT}/usr/share/timidity/sdl
