@@ -1,3 +1,14 @@
+if [[ "$mode" == "oldktree" ]]
+then
+	if [ -d ${LINUX_SOURCE_DIRECTORY} ]
+	then
+		echo "Okay dir does exist"
+	else
+		echo "Ah, ${LINUX_SOURCE_DIRECTORY} doesn't exist"
+		echo "Going to newktree mode"
+		mode="newktree"
+	fi
+fi
 
 if [[ "$mode" == "newktree" ]]
 then
@@ -33,11 +44,6 @@ then
 else
 	echo "I don't know what $mode is"
 	return 1
-fi
-
-if [[ $COMPILE ]]
-then
-	make mrproper
 fi
 
 if [[ "$TXTMESSAGE" != "" ]]
