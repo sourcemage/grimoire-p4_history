@@ -3,7 +3,7 @@
 	then OPTS="$OPTS --enable-install-termcap"
   fi  &&
   cd $SOURCE_DIRECTORY            &&
-  ./configure --prefix=/usr $OPTS &&
+  ./configure --prefix=${INSTALL_ROOT}/usr $OPTS &&
   make                            &&
 
   prepare_install                 &&
