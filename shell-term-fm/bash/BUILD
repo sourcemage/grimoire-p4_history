@@ -10,6 +10,9 @@
 	rm  -f  ${INSTALL_ROOT}/bin/bash.dynamic
   fi                                         &&
 
+  # the following is for gcc 3.4 with bash 2.05b
+  OPTS="$OPTS --without-bash-malloc"  &&
+
   ./configure  --build=$BUILD                \
                --prefix=${INSTALL_ROOT}/usr  \
                --bindir=${INSTALL_ROOT}/bin  \
@@ -27,11 +30,11 @@
 
   for  MANPAGE  in  `ls  *.1`;  do
     gzip  -9  $MANPAGE
-    cp  $MANPAGE.gz  ${INSTALL_ROOT}/usr/man/man1
+    cp  $MANPAGE.gz  ${INSTALL_ROOT}/usr/share/man/man1
   done
 
-  cp  bashref.info  ${INSTALL_ROOT}/usr/info/bash.info
-  install-info  --info-dir=${INSTALL_ROOT}/usr/info  \
-                 ${INSTALL_ROOT}/usr/info/bash.info
+  cp  bashref.info  ${INSTALL_ROOT}/usr/share/info/bash.info
+  install-info  --info-dir=${INSTALL_ROOT}/usr/share/info  \
+                 ${INSTALL_ROOT}/usr/share/info/bash.info
 
 )

@@ -1,13 +1,6 @@
+export OPTS="$OPTS --with-sys-screenrc=/etc/screenrc"  &&
+default_build  &&
 (
-
-  ./configure  --with-sys-screenrc=/etc/screenrc  \
-               --prefix=/usr                      \
-               $OPTS			          &&
-  make                                            &&
-  prepare_install                                 &&
-  make    install
-
-) > $C_FIFO 2>&1  &&  (
 
   if  [  -f  /etc/screenrc  ]; then
       if  [  "$REPLACE_RC" == "y"  ]; then
