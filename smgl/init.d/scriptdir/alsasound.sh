@@ -23,11 +23,10 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
-# chkconfig: 2345 87 14
-# description: ALSA driver
-#
-# further improvements by Bernd Kaindl, Olaf Hering and Takashi Iwai.
 # modified for SourceMage GNU Linux
+#
+# SMGL-script-version=20030224
+# no symlinks are made for this one, must do it by hand!
 
 source /etc/init.d/functions
 
@@ -127,37 +126,40 @@ function stop() {
 
 # See how we were called.
 case "$1" in
-  start)
-        # Start driver if it isn't already up.
-	if [ ! -d /proc/asound ]; then
-	  start
-	else
-	  echo "ALSA driver is already running."
-	fi
-        ;;
+  	start)
+        	# Start driver if it isn't already up.
+			if [ ! -d /proc/asound ]; then
+	  			start
+			else
+	  			echo "ALSA driver is already running."
+			fi
+        	;;
+			
   stop)
-        # Stop daemons.
-	if [ -d /proc/asound ]; then
-#          echo -n "Shutting down sound driver."
-	  terminate
-	  stop
-	fi
-        ;;
+        	# Stop daemons.
+			if [ -d /proc/asound ]; then
+	  			terminate
+	  			stop
+			fi
+        	;;
+			
   restart|reload)
-	$0 stop
-	$0 start
-	;;
+			$0 stop
+			$0 start
+			;;
+			
   status)
-        if [ -d /proc/asound ]; then
-          echo -n "ALSA sound driver loaded."
-        else
-          echo -n "ALSA sound driver not loaded."
-        fi
-        echo
-        ;;
+        	if [ -d /proc/asound ]; then
+          		echo -n "ALSA sound driver loaded."
+        	else
+          		echo -n "ALSA sound driver not loaded."
+        	fi
+        	echo
+        	;;
+			
   *)
-        echo "Usage: alsasound {start|stop|restart|status}"
-        exit 1
+        	echo "Usage: alsasound {start|stop|restart|status}"
+        	exit 1
 esac
 
 exit 0

@@ -5,6 +5,9 @@
 # This uses /etc/sysconfig/sensors that contains the modules to
 # be loaded/unloaded. /etc/sysconfig/sensors is written by sensors-detect.
 # /etc/modules.conf also needs to be updated before using this script.
+#
+# SMGL-script-version=20030224
+# no symlinks are made for this one, must do it by hand!
 
 source /etc/init.d/functions
 
