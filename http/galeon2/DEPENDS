@@ -4,5 +4,11 @@ depends gnome-vfs2      &&
 depends GConf2          &&
 depends libxml2         &&
 depends intltool        &&
-depends MOZILLA-BROWSER &&
-depends scrollkeeper
+depends scrollkeeper    &&
+
+depends MOZILLA-BROWSER '--with-mozilla-snapshot=trunk' &&
+
+optional_depends nautilus2                   \
+                 '--enable-nautilus-view'    \
+                 '--disable-nautilus-view'   \
+                 'for HTML view in Nautilus'
