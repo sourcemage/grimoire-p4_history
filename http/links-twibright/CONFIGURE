@@ -7,7 +7,7 @@ fi
 
 if ! grep -q 'able-graphics' $SPELL_CONFIG; then
   if  query 'Enable graphical user interface (GUI)?' y
-    then echo 'OPTS="$OPTS --enable-graphics --with-x"'  >> $SPELL_CONFIG
+    then echo 'OPTS="$OPTS --enable-graphics"'  >> $SPELL_CONFIG
     else echo 'OPTS="$OPTS --disable-graphics"'          >> $SPELL_CONFIG
   fi
 fi

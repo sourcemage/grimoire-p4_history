@@ -1,28 +1,27 @@
 (
 
-  HTDIGDIR=/usr/apache/htdocs/htdig
-  CGIBINDIR=/usr/apache/cgi-bin
+  CONFIG=/etc/htdig
+  HTDIGDIR=/usr/share/htdig/htdocs
+  CGIBINDIR=/usr/share/htdig/cgi-bin
   SEARCHFORM=search.html
   WEBPREFIX=/htdig
+  DATABASE=/var/lib/htdig
 
-  export CPPFLAGS="-Wno-deprecated $CPPFLAGS"
-  export CFLAGS="-Wno-deprecated $CFLAGS"
-  export CXXFLAGS="-Wno-deprecated $CXXFLAGS"
-
-  ./configure  --prefix=/usr                      \
-               --sysconfdir=/etc                  \
-               --with-config-dir=$HTDIGDIR/conf   \
-               --with-common-dir=$HTDIGDIR/common \
-               --with-database-dir=$HTDIGDIR/db   \
-               --with-default-config-file=$HTDIGDIR/conf/htdig.conf \
-               --with-cgi-bin-dir=$CGIBINDIR      \
-               --with-image-dir=$HTDIGDIR         \
-               --with-search-dir=$HTDIGDIR        \
-               --with-image-url-prefix=$WEBPREFIX \
-               --with-search-form=$SEARCHFORM     \
-               $OPTS              &&
-  make                            &&
-  prepare_install                 &&
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-config-dir=$CONFIG \
+    --with-default-config-file=$CONFIG/htdig.conf \
+    --with-database-dir=$DATABASE \
+    --with-common-dir=$HTDIGDIR/common \
+    --with-cgi-bin-dir=$CGIBINDIR \
+    --with-image-dir=$HTDIGDIR \
+    --with-search-dir=$HTDIGDIR \
+    --with-image-url-prefix=$WEBPREFIX \
+    --with-search-form=$SEARCHFORM \
+    $OPTS &&
+  make &&
+  prepare_install &&
   make    install                 
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

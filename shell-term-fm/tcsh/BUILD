@@ -6,6 +6,7 @@
   make                            &&
   prepare_install                 &&
   make    install                 &&
-  make    install.man
+  make    install.man             &&
+  ln -s /usr/bin/tcsh /usr/bin/csh
 
 ) > $C_FIFO 2>&1
