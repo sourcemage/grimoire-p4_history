@@ -1,5 +1,6 @@
 (
 
+  patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch                   &&
   sedit  '382,391s/$/\\n\\/'  mii-tool.c                           &&
   cp  $CONFIG_CACHE/net-tools.config.h     config.h                &&
   cp  $CONFIG_CACHE/net-tools.config.make  config.make             &&
