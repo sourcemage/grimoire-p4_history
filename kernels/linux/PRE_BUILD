@@ -108,6 +108,8 @@ check() {
 
 #####
 
+check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
+
 cd       /usr/src
 if  [  -d  linux-${VERSION}  ];  then
   rm   -r  linux-${VERSION}
@@ -115,8 +117,6 @@ fi
 
 mkdir linux-${VERSION}
 cd /usr/src/linux-${VERSION}
-
-check  gpg  $SOURCE  $SOURCE2  kernel.gpg ||  exit 1
 
 message "extracting ${SOURCE}"
 unpack_override  $SOURCE '' #we will ignore MD5 because of above check
