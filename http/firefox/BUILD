@@ -50,9 +50,9 @@ export MOZ_PHOENIX=1                         &&
   mkdir -p ${INSTALL_ROOT}/usr/include/mozilla     &&
   ln -fns ${INSTALL_ROOT}/usr/include/mozilla ${INSTALL_ROOT}/usr/include/mozilla-$MOZI_VERS     &&
 
-  make install                                      &&
+  make install                                                   &&
   cp -vaL dist/public/nss  ${INSTALL_ROOT}/usr/include/mozilla/  &&
-#  ln -fns ${INSTALL_ROOT}/usr/bin/MozillaFirebird ${INSTALL_ROOT}/usr/bin/mozilla  &&
+  ln -fns firefox ${INSTALL_ROOT}/usr/bin/mozilla                &&
 
 
   if  !  grep  -q  "mozilla"  /etc/ld.so.conf
