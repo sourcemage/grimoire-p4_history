@@ -1,8 +1,0 @@
-if  !  grep  -q  "IDE_SCSI="  $SPELL_CONFIG;  then
-
-  if    query  "Will you be using an IDE burner?"  n
-  then  echo  "IDE_SCSI=y"  >>  $SPELL_CONFIG
-  else  echo  "IDE_SCSI=n"  >>  $SPELL_CONFIG
-  fi
-
-fi

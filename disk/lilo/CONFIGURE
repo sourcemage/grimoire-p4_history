@@ -1,8 +1,0 @@
-if  !  grep  -q  "RUN_LILO"  $SPELL_CONFIG;  then
-
-  if    query  "Run LILO automatically upon LILO upgrades?" n
-  then  echo   "RUN_LILO=y"  >>  $SPELL_CONFIG
-  else  echo   "RUN_LILO=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
