@@ -1,0 +1,6 @@
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+
+if  !  spell_ok  g++;  then
+  bzcat  $SCRIPT_DIRECTORY/g++.patch.bz2  |  patch  -p1
+fi

@@ -1,5 +1,15 @@
-2005-01-30 Arjan Bouter <abouter@sourcemage.org>
-        * BUILD,INSTALL: spell_installed -> spell_ok conversion
+2004-12-13 Eric Sandall <eric@sandall.us>
+	* DETAILS: Shortened SHORT
+	* DEPENDS: Optionally depend on CSHARP and g++
+	* BUILD: Use spell_ok instead of spell_installed
+	  Cleaned up formatting
+	* INSTALL: Use spell_ok instead of spell_installed
+	  Cleaned up formatting
+	  Don't move autosprintf if g++ isn't installed (it won't exist)
+	* PRE_BUILD: Apply g++.patch if g++ isn't ok (via spell_ok)
+	* g++.patch: Remove c++/g++/CXX so that gettext doesn't need it. What
+	  a mess, if anyone has a better method, please feel free to clean
+	  up my shenanigans.
 
 2004-11-05 Robin Cook <rcook@wyrms.net>
 	* DETAILS: added BUILD_API=2
