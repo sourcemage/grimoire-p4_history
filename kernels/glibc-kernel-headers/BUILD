@@ -2,7 +2,8 @@
  if [ "$KERN" != "2.4" ]; then
    cd  $SOURCE_DIRECTORY/include  &&
    chmod -R +r *                  &&
-   find . -type d -exec chmod +x '{}' ';'
+   find . -type d -exec chmod +x '{}' ';'  &&
+   patch  linux/config.h  $SCRIPT_DIRECTORY/error-warning.patch
  fi
  if [[ $(uname -m) == *86_64 ]]; then
  ARCH=x86_64
