@@ -1,11 +1,10 @@
 (
 
-    MUSIXDIR=`kpsewhich musixtex`                               &&
-    MUSIXDIR=`echo $MUSIXDIR | sed -e "s/musixtex\.tex//g"`     &&
+    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                           &&
 
     prepare_install                                             &&
     
-    cp  musixlyr.tex  $MUSIXDIR                                 &&
+    cp  musixlyr.tex  $TEXMF/tex/musixtex                       &&
     cp  mxlyrdoc.tex  /usr/doc/$SPELL                           &&
     cp  README        /usr/doc/$SPELL
 

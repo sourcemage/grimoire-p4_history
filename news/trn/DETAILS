@@ -3,14 +3,19 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://unc.dl.sourceforge.net/trn/$SOURCE
+          MD5[0]=4dad2f34ed8b22a8985f9054386dfe0f
    SOURCE_URL[1]=http://telia.dl.sourceforge.net/trn/$SOURCE
+          MD5[1]=${MD5[0]}
    SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/trn/$SOURCE
+          MD5[2]=${MD5[0]}
    SOURCE_URL[3]=http://trn.sourceforge.net/$SOURCE
+          MD5[3]=${MD5[0]}
+   SOURCE_URL[4]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[4]=${MD5[0]}
         WEB_SITE=http://trn.sourceforge.net
          ENTERED=20010922
          UPDATED=20010922
          LICENSE=http://trn.sourceforge.net
-             MD5=4dad2f34ed8b22a8985f9054386dfe0f
            SHORT="trn is a threaded news reader."
 cat << EOF
 Trn is Threaded RN, a newsreader that uses an article's references to

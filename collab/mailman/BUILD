@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/08/08 02:53:35 sergeyli Exp $
 (
   groupadd  mailman             2>/dev/null
   useradd  -g mailman  mailman  2>/dev/null
@@ -25,8 +25,8 @@
 
 	make install
 
-) > $C_FIFO 2>&1  &&
-(
+) > $C_FIFO 2>&1 && (
+
 	chown -R mailman.mailman /usr/share/mailman
 	chmod -R a+rx,g+ws       /usr/share/mailman
 	/usr/share/mailman/bin/check_perms -f

@@ -3,15 +3,16 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.tkrat.org/downloads/stable/$SOURCE
-      LICENSE[0]=http://www.tkrat.org
           MD5[0]=484f46b21af62705cb8948c821c8bfdb
    SOURCE_URL[1]=ftp://ftp.tkrat.org/pub/tkrat/$SOURCE
-      LICENSE[1]=$LICENSE[0]
-          MD5[1]=$MD5[0]
+          MD5[1]={$MD5[0]}
+   SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[2]=${MD5[0]}
         WEB_SITE=http://www.tkrat.org
          ENTERED=20020309
          UPDATED=20020309
       MAINTAINER=mmarion@miguelito.org
+      LICENSE=http://www.tkrat.org
            SHORT="tkrat is a GUI mailer."
 cat << EOF
 Tkrat (aka Ratatosk) is a GUI mailer built using tcl/tk.

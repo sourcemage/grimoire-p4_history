@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/07/11 01:22:52 sergeyli Exp $
+# $Id: BUILD,v 1.4 2002/08/10 04:07:47 sergeyli Exp $
 (
 
 	./configure              \
@@ -6,7 +6,6 @@
 		--prefix=/usr        \
 		--sysconfdir=/etc    \
 		--localstatedir=/var \
-		--enable-bdb         \
 		$OPTS                &&
 	make    depend           &&
 	make                     &&

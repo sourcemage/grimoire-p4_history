@@ -3,11 +3,14 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://tuxedo.org/~esr/fetchmail/$SPELL-$VERSION.tar.gz
+          MD5[0]=da6fbd034bf9af1e2ec078fa3141f06c
    SOURCE_URL[1]=http://www.ibiblio.org/pub/Linux/system/mail/pop/$SPELL-$VERSION.tar.gz
+          MD5[1]=${MD5[0]}
+   SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[2]=${MD5[0]}
         WEB_SITE=http://tuxedo.org/~esr/fetchmail
          ENTERED=20010922
          UPDATED=20020624
-             MD5=da6fbd034bf9af1e2ec078fa3141f06c
       MAINTAINER=eru@subdimension.com
          LICENSE=http://www.tuxedo.org/~esr/fetchmail
            SHORT="Fetchmail is a powerful MTA that's easy to configure."

@@ -3,16 +3,23 @@
           SOURCE=gnus.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.gnus.org/dist/$SOURCE
+          MD5[0]=eb3c7db29f1bc84996f11784f408a80c
    SOURCE_URL[1]=ftp://ftp.funet.fi/pub/unix/news/gnus/$SOURCE
+          MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://ftp.unicamp.br/pub/news.software/gnus/$SOURCE
+          MD5[2]=${MD5[0]}
    SOURCE_URL[3]=ftp://ftp.monash.edu.au/pub/gnus/$SOURCE
+          MD5[3]=${MD5[0]}
    SOURCE_URL[4]=ftp://ftp.kreonet.re.kr/pub/tools/emacs/gnus/$SOURCE
+          MD5[4]=${MD5[0]}
    SOURCE_URL[5]=ftp://ftp.task.gda.pl/mirror/ftp.gnus.org/pub/gnus/$SOURCE
+          MD5[5]=${MD5[0]}
+   SOURCE_URL[6]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[6]=${MD5[0]}
         WEB_SITE=http://www.gnus.org
          ENTERED=20010922
          UPDATED=20011005
          LICENSE=GPL
-             MD5=eb3c7db29f1bc84996f11784f408a80c
            SHORT="Gnus is the Emacs newsreader.  It can also handle mail."
 cat << EOF
 Gnus is a newsreader written in Emacs Lisp.  It has powerful scoring and

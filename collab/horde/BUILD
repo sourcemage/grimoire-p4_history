@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/06/03 03:42:23 sergeyli Exp $
+# $Id: BUILD,v 1.5 2002/08/08 02:53:35 sergeyli Exp $
 #
 # this BUILD is also used for Horde applications
 # like IMP and Turba
@@ -10,24 +10,21 @@ HORDE_DEST=/usr/share/horde
 (
 
 	message "${MESSAGE_COLOR}Checking modules compiled into ${SPELL_COLOR}php${DEFAULT_COLOR}"
-	gaze compile php | egrep "/libtool .*/ext/gettext/" > /dev/null 2>&1 &&
-	gaze compile php | egrep "/libtool .*/ext/imap/"    > /dev/null 2>&1 &&
-	gaze compile php | egrep "/libtool .*/ext/xml/"     > /dev/null 2>&1 &&
+	gaze compile php | egrep -q "/libtool .*/ext/gettext/" &&
+	gaze compile php | egrep -q "/libtool .*/ext/imap/"    &&
+	gaze compile php | egrep -q "/libtool .*/ext/xml/"     &&
 
-	prepare_install
-
-) > $C_FIFO 2>&1 && (
-
-	gather_docs
-	rm -fr ./README* ./docs/
+	prepare_install                                        &&
 
 	# force copy everything because no configuration files are overwritten
 	# all Horde packages come with config/*.conf.dist files, which better
 	# be updated by force copy anyway
+	mkdir -p    $HORDE_DEST                                &&
+	cp    -R ./ $HORDE_DEST/
 
-	mkdir -p     $HORDE_DEST
-	cp    -fR ./ $HORDE_DEST/
-	cd           $HORDE_DEST/
+) > $C_FIFO 2>&1 && (
+
+	cd $HORDE_DEST/
 
 	SLAPD_CONF=/etc/openldap/slapd.conf
 	SLAPD_SCHEMA=/etc/openldap/schema
@@ -38,7 +35,7 @@ HORDE_DEST=/usr/share/horde
 
 		cp -f ./scripts/ldap/*.schema $SLAPD_SCHEMA/
 
-		if ! grep "horde.schema" $SLAPD_CONF > /dev/null 2>&1; then
+		if ! grep -q "horde.schema" $SLAPD_CONF; then
 			T=/tmp/${SLAPD_CONF//\//_}.$$
 			gawk -f $SCRIPT_DIRECTORY/addschema.gawk $SLAPD_CONF > $T
 			#

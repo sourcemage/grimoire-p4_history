@@ -1,7 +1,6 @@
 (
 
-    TEXMF=`kpsetool -v '$TEXMF'`                        &&
-    TEXMF=`echo $TEXMF | sed -e "s/\!*//"`              &&
+    TEXMF=`kpsetool -v '$TEXMFLOCAL'`                   &&
 
     sedit "s/\/usr\/local/\/usr/g" Makefile             &&
 

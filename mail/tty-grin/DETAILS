@@ -3,12 +3,14 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://m-net.arbornet.org/~dlbeer/tty-grin/$SOURCE
-        WEB_SITE=http://m-net.arbornet.org/~dlbeer/tty-grin/
+          MD5[0]=8edaed9407448e3b2943079c363f8c78
+   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[1]=${MD5[0]}
+        WEB_SITE=http://m-net.arbornet.org/~dlbeer/tty-grin
          ENTERED=20020128
          UPDATED=20020508
-             MD5=8edaed9407448e3b2943079c363f8c78
       MAINTAINER=paul@moway.co.uk
-         LICENSE=http://m-net.arbornet.org/~dlbeer/tty-grin/
+         LICENSE=http://m-net.arbornet.org/~dlbeer/tty-grin
            SHORT="TTY-Grin is a screen-orientated interactive news and email client"
 cat << EOF
 TTY-Grin is a screen-orientated interactive news and email client with
