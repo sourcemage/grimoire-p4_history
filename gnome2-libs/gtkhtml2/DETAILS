@@ -1,18 +1,17 @@
            SPELL=gtkhtml2
-         VERSION=3.2.5
+         VERSION=3.6.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gtkhtml-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtkhtml-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gtkhtml/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.ximian.com/pub/source/evolution/$SOURCE
-          MD5[0]='ede68771af1d2cb453d09b8b1e414fe1'
+          MD5[0]='9ed2e0773092c53ebcdfa9b4eee3846d'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       MAKE_NJOBS=1
-       BUILD_API=2
         WEB_SITE=unknown
          ENTERED=20030312
-         UPDATED=20050224
+         UPDATED=20050318
            SHORT="gtkhtml is a html rendering/editing library."
 cat  <<  EOF
 GtkHTML is a HTML rendering/editing library.  It is not designed to be

@@ -1,19 +1,17 @@
            SPELL=gal2
-         VERSION=2.2.5
+         VERSION=2.4.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gal-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gal-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gal/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.ximian.com/pub/source/evolution/$SOURCE
-          MD5[0]='3f039ba4b690396c4c11f76575e1da79'
+          MD5[0]='81a7d4bd523340055e24275f7258b6de'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       MAKE_NJOBS=1
-       BUILD_API=2
         WEB_SITE=http://www.gnome.org
-      MAINTAINER=rcook@wyrms.net
          ENTERED=20011009
-         UPDATED=20050224
+         UPDATED=20050318
            SHORT="GAL are the Gnome Application Libraries"
 cat << EOF
 GAL are the Gnome Application Libraries"

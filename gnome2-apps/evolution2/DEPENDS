@@ -36,6 +36,16 @@ optional_depends  "openldap" \
                     "Enable OpenLDAP support" &&
 
 optional_depends  "krb5" \
-                    "--with-krb5" \
+                    "--with-krb5=/usr" \
                     "--without-krb5" \
-                    "Enable Kerberos 5 support"
+                    "Enable Kerberos 5 support" &&
+
+optional_depends  "mono" \
+                  "--enable-mono=yes" \
+                  "--enable-mono=no" \
+                  "Add Mono embedded hooks" &&
+
+optional_depends  "gtk-doc" \
+                  "--enable-gtk-doc" \
+                  "--disable-gtk-doc" \
+                  "Enable gtk-doc documenation building" 

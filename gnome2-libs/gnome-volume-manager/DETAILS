@@ -1,16 +1,15 @@
            SPELL=gnome-volume-manager
-         VERSION=1.0.3
+         VERSION=1.2.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='78765abbf2fb6bda2f29058a8a396bca'
+          MD5[0]='6474ab45129c6c3c7ba3d2d3170658ff'
       LICENSE[0]=GPL
       MAKE_NJOBS=1
-       BUILD_API=2
         WEB_SITE=http://www.gnome.org
          ENTERED=20020507
-         UPDATED=20050203
+         UPDATED=20050318
            SHORT="Volume Manager for GNOME"
 cat << EOF
 gnome-volume-manager is a desktop-level daemon that enforces volume-related

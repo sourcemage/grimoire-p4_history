@@ -1,18 +1,17 @@
            SPELL=gnome-panel
-         VERSION=2.8.3
+         VERSION=2.10.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='d15d8341342222df782ed22e34f1de15'
+          MD5[0]='8d3976785c0fed0fbc85a01e0f0c02bb'
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
       LICENSE[2]=FDL
       MAKE_NJOBS=1
-       BUILD_API=2
         WEB_SITE=http://www.gnome.org
          ENTERED=20020505
-         UPDATED=20050224
+         UPDATED=20050318
             DOCS="COPYING NEWS README"
            SHORT="The GNOME 2.0 panel"
 cat << EOF
