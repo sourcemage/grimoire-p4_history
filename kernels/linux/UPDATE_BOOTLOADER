@@ -171,17 +171,19 @@ update_yaboot()  {
 
 grub_image_entry() {
 
-KERNEL=`grep kernel /boot/grub/menu.lst|cut -d' ' -f2|grep \(|head -1`
-ROOT=`grep root /boot/grub/menu.lst|cut -d' ' -f3|cut -d= -f2|head -1`
-if echo $KERNEL |grep -q boot
-then
-  KERNEL=`echo $KERNEL|cut -d/ -f1,2`
-else
-  KERNEL=`echo $KERNEL|cut -d/ -f1`
-fi
-  cat << EOF
-title Source Mage GNU/Linux Kernel ${VERSION}
-kernel ${KERNEL}/vmlinubz-${VERSION} root=${ROOT} devfs=mount
+local KERNEL=$(grep kernel /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+KERNEL=${KERNEL%\/vm*}
+
+local GROOT=$(grep "root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
+
+local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
+
+local KEXTRA=$(grep "^kernel" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
+
+cat << EOF
+title Source Mage GNU/Linux Kernel $VERSION
+root $GROOT
+kernel $KERNEL/vmlinubz-$VERSION root=$KROOT $KEXTRA
 EOF
 
 }
