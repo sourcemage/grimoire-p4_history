@@ -1,12 +1,11 @@
-if spell_installed GConf2
+if spell_installed gconf2
 then
    if ! grep -q  "Python:expat:on:optional:" $DEPENDS_STATUS
    then
-      message ${PROBLEM_COLOR} GConf2 is not cast with gtk+2 enabled. Please recast GConf2 and enable the gtk+2 optional depends. ${DEFAULT_COLOR}
+      message ${PROBLEM_COLOR} gconf2 is not cast with gtk+2 enabled. Please recast gconf2 and enable the gtk+2 optional depends. ${DEFAULT_COLOR}
       return 1
    fi
 else
-   message ${QUERY_COLOR} Please enable gtk+2 during the GConf2 configure or casting will fail. ${DEFAULT_COLOR} &&
+   message ${QUERY_COLOR} Please enable gtk+2 during the gconf2 configure or casting will fail. ${DEFAULT_COLOR} &&
    sleep 5
 fi
-
