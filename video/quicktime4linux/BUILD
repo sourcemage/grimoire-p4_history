@@ -2,6 +2,7 @@
 
   patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch  &&
   
+  ( echo $CFLAGS | grep -q -- "-O." ) || CFLAGS="$CFLAGS -O2"
   make             &&
   prepare_install  &&
   make    install
