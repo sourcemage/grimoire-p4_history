@@ -1,13 +1,7 @@
 (
 
-  export  CFLAGS="`freetype-config --cflags` $CFLAGS -I/usr/include/libcapplet1"
-  ./configure  --prefix=/usr           \
-               --sysconfdir=/etc       \
-               --localstatedir=/var    \
-               $OPTS                   &&
-  make                                 &&
-  prepare_install                      &&
-  make    install                      &&
+  export  CFLAGS="`freetype-config --cflags` $CFLAGS -I/usr/include/libcapplet1" &&
+  default_build                         &&
   mkdir  -p  /etc/X11/xinit/xinitrc.d  &&
   gdkxft_sysinstall
 
