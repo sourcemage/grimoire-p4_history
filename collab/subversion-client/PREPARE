@@ -1,17 +1,11 @@
 if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   SO_OPTION='--enable-shared --disable-static'
 
-  message "${MESSAGE_COLOR}If you experience problems with Subversion's compilation${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}or you'd like to build APR, APU, and Neon, into Subversion,${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}you can choose to build a 'static' client below.${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}This client will still link dynamically to some of the libraries${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}like GNU LibC, OpenSSL, or iconv() provider.${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}This also preserves Subversion's integrity in case it${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}doesn't work with installed versions of APR, APU, or Neon.${DEFAULT_COLOR}"
-  if query 'Would you like to build a statically linked SVN client' n; then
+  if query 'Build (link) all Subversion libraries into the client' n; then
     SO_OPTION='--disable-shared --enable-static'
 
-    if query 'Would you also like to use bundled APR, APU and Neon (not recommended)' n; then
+    message "${MESSAGE_COLOR}Selecting the following option conflicts with apr, apr-util, and neon${DEFAULT_COLOR}"
+    if query 'Build (link) APR, APU and Neon libraries into the client (not recommended)' n; then
       echo "USE_BUNDLED_LIBS=y" >> $SPELL_CONFIG
     fi
   fi
