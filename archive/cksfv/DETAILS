@@ -1,15 +1,15 @@
            SPELL=cksfv
-         VERSION=1.3.1
+         VERSION=1.3.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=http://www.modeemi.fi/~shd/foss/cksfv/files/$SOURCE
+   SOURCE_URL[0]=http://www.modeemi.fi/~shd/foss/cksfv/files/$SOURCE
+          MD5[0]=13d351e6702ee0993071999b65009c7e
         WEB_SITE=http://www.iki.fi/shd/cksv
-	BUILD_API=2
          ENTERED=20020427
          UPDATED=20020427
-          MD5[0]='208e6585b05b03f1f58bc4f198144435'
       LICENSE[0]=GPL
-           SHORT="cksfv allows you to use sfv files"
+       BUILD_API=2
+           SHORT="Utility to verify sfv files"
 cat << EOF
 Some files that you download will come with a .sfv file. This is used to
 verify that the files that you received are the same as the originals. cksfv
