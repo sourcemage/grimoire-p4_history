@@ -1,0 +1,18 @@
+           SPELL=kitchensync
+         VERSION=0.0.6
+          SOURCE=latest.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
+   SOURCE_URL[0]=http://www.handhelds.org/~zecke/latest.tar.gz
+        WEB_SITE=http://www.handhelds.org/~zecke/kitchensync.html
+      LICENSE[0]=GPL
+          MD5[0]=ff665c93831642f7de8e4a3bf306dce8
+#  FORCE_DOWNLOAD=YES
+      MAKE_NJOBS=1
+    DISTCC_HOSTS=1
+      MAINTAINER=jbernardo@sourcemage.org
+         ENTERED=20030810
+         UPDATED=20030810
+           SHORT="Kitchensync is the KDE synchronization framework."
+cat << EOF
+Kitchensync is the KDE synchronization framework. Use it to sync your address book, or korganizer to a opie running PDA.
+EOF
