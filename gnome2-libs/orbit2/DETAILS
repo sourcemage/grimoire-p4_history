@@ -1,0 +1,23 @@
+           SPELL=ORBit2
+         VERSION=2.10.3
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE	
+          MD5[0]='1d4fed3068ce41afce6688105feb66c1'
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+      MAKE_NJOBS=1
+        WEB_SITE=http://orbit-resource.sourceforge.net
+         ENTERED=20020505
+         UPDATED=20040623
+           SHORT="High-performance CORBA Object Request Broker."
+cat << EOF
+ORBit is a high-performance CORBA (Common Object Request Broker 
+Architecture) ORB (object request broker). It allows programs to 
+send requests and receive replies from other programs, regardless 
+of the locations of the two programs. CORBA is an architecture that 
+enables communication between program objects, regardless of the 
+programming language they're written in or the operating system they
+run on.
+EOF
