@@ -6,11 +6,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/3.2.90/src/$SOURCE
           MD5[0]=ba591debb440cbf735d1351f193ef301
 else
-         VERSION=1.2.2
+         VERSION=1.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.2.2/src/$SOURCE
-          MD5[0]=57d620ce987ee184655f669d377559ef
+   SOURCE_URL[0]=$KDE_URL/stable/3.2.3/src/$SOURCE
+          MD5[0]=39defe5f1234235ada7c4cb5d962f409
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
@@ -18,8 +18,7 @@ fi
          UPDATED=20030805
     DISTCC_HOSTS=
       LICENSE[0]=GPL
-      MAINTAINER=eric@lasvegasdata.com
-           SHORT="arts is the sound system used by KDE"
+           SHORT="Sound system used by KDE"
 cat << EOF
 Arts provides a network and device independent sound library.
 EOF
