@@ -1,0 +1,19 @@
+           SPELL=mysql
+        FTP_NAME=MySQL
+	FTP_VERSION=3.23
+         VERSION=3.23.49
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://mysql.fastmirror.com/Downloads/$FTP_NAME-$FTP_VERSION/$SOURCE
+   SOURCE_URL[1]=http://mysql.he.net/Downloads/$FTP_NAME-$FTP_VERSION/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.mysql.com/$FTP_NAME-$FTP_VERSION/$SOURCE
+        WEB_SITE=http://www.mysql.com
+         ENTERED=20011114
+         UPDATED=20020217
+      MAINTAINER=julian@wongr.net
+           SHORT="MySQL is a widely used and fast SQL database server."
+cat << EOF
+MySQL is a widely used and fast SQL database server. It is a
+client/server implementation that consists of a server daemon (mysqld)
+and many different client programs/libraries.
+EOF

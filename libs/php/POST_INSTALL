@@ -1,0 +1,19 @@
+  /usr/sbin/apachectl  stop
+
+	sleep 5
+  
+  if    [  -e         /etc/httpd/httpd.conf  ]
+  then	MOD="/etc/httpd/httpd.conf" 	INC="AddType application/x-httpd-php .php .html"
+  	grep    -q  "$INC"      $MOD  ||  echo        "$INC"  >>  $MOD
+	  /usr/sbin/apachectl  restart
+  fi
+
+  if    [  -e         /etc/httpsd/httpd.conf  ]
+  then	MOD="/etc/httpsd/httpd.conf"  	INC="AddType application/x-httpd-php .php .html" 
+	grep    -q  "$INC"      $MOD  ||  echo        "$INC"  >>  $MOD
+	  /usr/sbin/apachectl  startssl
+  fi
+
+
+
+			
