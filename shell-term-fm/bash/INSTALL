@@ -1,3 +1,10 @@
+#
+# If bash is installed on a system without /bin then /bin will be just a file
+# instead of a directory
+# Bash is the first package installed by baseystem that writes to /bin
+#
+install  -d  -m  755  -o  root  -g  root  ${INSTALL_ROOT}/bin  &&
+
 cp  -f   bash         ${INSTALL_ROOT}/bin      &&
 cp  -f   bash.static  ${INSTALL_ROOT}/bin      &&
 cp  -f   bashbug      ${INSTALL_ROOT}/bin      &&
