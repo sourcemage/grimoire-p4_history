@@ -1,0 +1,128 @@
+diff -urpN shadow-4.0.3.old/man/ja/Makefile.am shadow-4.0.3/man/ja/Makefile.am
+--- shadow-4.0.3.old/man/ja/Makefile.am	2003-09-20 20:41:23.004840784 -0700
++++ shadow-4.0.3/man/ja/Makefile.am	2003-09-20 21:02:37.453095200 -0700
+@@ -33,7 +33,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/man/ja/Makefile.in shadow-4.0.3/man/ja/Makefile.in
+--- shadow-4.0.3.old/man/ja/Makefile.in	2003-09-20 20:41:23.004840784 -0700
++++ shadow-4.0.3/man/ja/Makefile.in	2003-09-20 21:02:44.532019040 -0700
+@@ -140,7 +140,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/man/Makefile.am shadow-4.0.3/man/Makefile.am
+--- shadow-4.0.3.old/man/Makefile.am	2003-09-20 20:41:23.008840176 -0700
++++ shadow-4.0.3/man/Makefile.am	2003-09-20 21:02:20.416685128 -0700
+@@ -36,7 +36,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/man/Makefile.in shadow-4.0.3/man/Makefile.in
+--- shadow-4.0.3.old/man/Makefile.in	2003-09-20 20:41:23.008840176 -0700
++++ shadow-4.0.3/man/Makefile.in	2003-09-20 21:02:20.417684976 -0700
+@@ -145,7 +145,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/man/pl/Makefile.am shadow-4.0.3/man/pl/Makefile.am
+--- shadow-4.0.3.old/man/pl/Makefile.am	2003-09-20 20:41:22.921853400 -0700
++++ shadow-4.0.3/man/pl/Makefile.am	2003-09-20 21:02:56.788155824 -0700
+@@ -35,7 +35,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/man/pl/Makefile.in shadow-4.0.3/man/pl/Makefile.in
+--- shadow-4.0.3.old/man/pl/Makefile.in	2003-09-20 20:41:22.921853400 -0700
++++ shadow-4.0.3/man/pl/Makefile.in	2003-09-20 21:02:51.084022984 -0700
+@@ -142,7 +142,6 @@ man_MANS = \
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+ 	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+diff -urpN shadow-4.0.3.old/src/Makefile.am shadow-4.0.3/src/Makefile.am
+--- shadow-4.0.3.old/src/Makefile.am	2003-09-20 20:41:22.915854312 -0700
++++ shadow-4.0.3/src/Makefile.am	2003-09-20 21:02:20.417684976 -0700
+@@ -21,17 +21,17 @@ INCLUDES = -I${top_srcdir} \
+ # and installation would be much simpler (just two directories,
+ # $prefix/bin and $prefix/sbin, no install-data hacks...)
+ 
+-bin_PROGRAMS = groups login su
++bin_PROGRAMS = groups login
+ ubin_PROGRAMS = faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
+ usbin_PROGRAMS = chpasswd dpasswd groupadd groupdel groupmod \
+ 	logoutd mkpasswd newusers useradd userdel usermod grpck \
+ 	pwck vipw grpconv grpunconv pwconv pwunconv
+ 
+-noinst_PROGRAMS = id sulogin
++noinst_PROGRAMS = id sulogin su
+ 
+-# id and groups are from gnu, sulogin from sysvinit
++# id and groups are from gnu, sulogin from sysvinit, su from coreutils
+ 
+-suidbins = su
++suidbins = 
+ suidubins = chage chfn chsh expiry gpasswd newgrp passwd
+ 
+ LDADD = $(top_builddir)/libmisc/libmisc.la \
+diff -urpN shadow-4.0.3.old/src/Makefile.in shadow-4.0.3/src/Makefile.in
+--- shadow-4.0.3.old/src/Makefile.in	2003-09-20 20:41:22.915854312 -0700
++++ shadow-4.0.3/src/Makefile.in	2003-09-20 21:02:20.418684824 -0700
+@@ -130,18 +130,18 @@ INCLUDES = -I${top_srcdir} \
+ # also /lib/libshadow.so.x.xx (if any) could be moved to /usr/lib
+ # and installation would be much simpler (just two directories,
+ # $prefix/bin and $prefix/sbin, no install-data hacks...)
+-bin_PROGRAMS = groups login su
++bin_PROGRAMS = groups login
+ ubin_PROGRAMS = faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
+ usbin_PROGRAMS = chpasswd dpasswd groupadd groupdel groupmod \
+ 	logoutd mkpasswd newusers useradd userdel usermod grpck \
+ 	pwck vipw grpconv grpunconv pwconv pwunconv
+ 
+ 
+-noinst_PROGRAMS = id sulogin
++noinst_PROGRAMS = id sulogin su
+ 
+ 
+-# id and groups are from gnu, sulogin from sysvinit
+-suidbins = su
++# id and groups are from gnu, sulogin from sysvinit, su from coreutils
++suidbins = 
+ suidubins = chage chfn chsh expiry gpasswd newgrp passwd
+ 
+ LDADD = $(top_builddir)/libmisc/libmisc.la \
+@@ -167,8 +167,8 @@ subdir = src
+ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+ CONFIG_HEADER = $(top_builddir)/config.h
+ CONFIG_CLEAN_FILES =
+-bin_PROGRAMS = groups$(EXEEXT) login$(EXEEXT) su$(EXEEXT)
+-noinst_PROGRAMS = id$(EXEEXT) sulogin$(EXEEXT)
++bin_PROGRAMS = groups$(EXEEXT) login$(EXEEXT)
++noinst_PROGRAMS = id$(EXEEXT) sulogin$(EXEEXT) su$(EXEEXT)
+ ubin_PROGRAMS = faillog$(EXEEXT) lastlog$(EXEEXT) chage$(EXEEXT) \
+ 	chfn$(EXEEXT) chsh$(EXEEXT) expiry$(EXEEXT) gpasswd$(EXEEXT) \
+ 	newgrp$(EXEEXT) passwd$(EXEEXT)
