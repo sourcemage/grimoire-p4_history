@@ -6,18 +6,19 @@ then  if    [  -e  /etc/exim.conf  ]
 fi
 
 create_account exim
+create_account mail
 
 mkdir  -p             /var/spool/mail
 chmod  1777           /var/spool/mail
-chown      exim:exim  /var/spool/mail
+chown      mail:mail  /var/spool/mail
 [  -e                 /var/spool/mail/db      ]  && 
-chown  -R  exim:exim  /var/spool/mail/db
+chown  -R  mail:mail  /var/spool/mail/db
 [  -e                 /var/spool/mail/input   ]  &&
-chown  -R  exim:exim  /var/spool/mail/input
+chown  -R  mail:mail  /var/spool/mail/input
 [  -e                 /var/spool/mail/log     ]  &&
-chown  -R  exim:exim  /var/spool/mail/log
+chown  -R  mail:mail  /var/spool/mail/log
 [  -e                 /var/spool/mail/msglog  ]  &&
-chown  -R  exim:exim  /var/spool/mail/msglog
+chown  -R  mail:mail  /var/spool/mail/msglog
 
 mkdir  -p  Local
 
