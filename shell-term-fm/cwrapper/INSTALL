@@ -1,2 +1,2 @@
-make install
-message "${RED}remember to  \"export PATH=/usr/lib/cw:\$PATH\" ${DEFAULT}"
+make install &&
+cp -fv ${SCRIPT_DIRECTORY}/cwrapper.sh ${INSTALL_ROOT}/etc/profile.d/cwrapper.sh
