@@ -1,9 +1,4 @@
 (
-
-  cd  khtml                              &&
-  patch  -p0  <  $SOURCE_CACHE/$SOURCE2  &&
-  cd  ..                                 &&
-
   ./configure  --prefix=/usr         \
                --sysconfdir=/etc     \
                --localstatedir=/var  \
