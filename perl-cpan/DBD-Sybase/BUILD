@@ -1,4 +1,5 @@
 (
+  export SYBASE=/opt/sybase
 
   perl  Makefile.PL  &&
   make               &&

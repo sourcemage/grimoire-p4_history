@@ -1,4 +1,6 @@
-if  [  -f /opt/sybase/lib/libsybdb.so  ];  then
+if  [  -f /opt/sybase/lib/libsybdb.so  ]  ||
+    [  -f /opt/sybase/lib/libsybdb.a   ]
+then
   default_pre_build
 else
   sound  FAILURE
