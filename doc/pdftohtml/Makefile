@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 
-prefix = /usr
+prefix = ${INSTALL_ROOT}/usr
 exec_prefix = ${prefix}
 srcdir = .
 
