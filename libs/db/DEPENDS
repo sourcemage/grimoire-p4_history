@@ -1,4 +1,3 @@
-optional_depends  "j2sdk"                           \
-                  "--enable-java"                   \
-                  ""                                \
-                  "choose to allow to compile OpenOffice, needs java support in db"
+if    query  "add java support in db to allow to compile OpenOffice?"  n
+then  requires  java
+fi
