@@ -1,5 +1,6 @@
 ### configure
 	cd $SOURCE_DIRECTORY/config_office/               &&
+        CXXFLAGS="${CXXFLAGS} -I/usr/X11R6/include"       &&
 	./configure 				          \
 		--with-lang=ENUS		          \
 		--prefix=${INSTALL_ROOT}/usr	          \

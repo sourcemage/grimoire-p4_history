@@ -1,4 +1,4 @@
-depends  X11-SERVER   "--with-x"                   &&
+depends  X11-SERVER  "--with-x"                   &&
 depends  zip                                       &&
 depends  unzip                                     &&
 depends  which                                     &&
@@ -76,12 +76,9 @@ optional_depends  curl                     \
 optional_depends  freetype2                                  \
                   "--with-system-freetype  --without-fonts"  \
                   ""                                         \
-                  "for up-to-date freetype2"                 #&&
+                  "for up-to-date freetype2"                 &&
 
-#
-# I need to investigate, it can't find NAS if you say yes
-#
-#optional_depends  nas                                    \
-#                  "--with-system-nas"                    \
-#                  ""                                     \
-#                  "for up-to-date Network Audio System"
+optional_depends  nas                                    \
+                  "--with-system-nas"                    \
+                  ""                                     \
+                  "for up-to-date Network Audio System"
