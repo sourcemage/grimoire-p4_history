@@ -1,16 +1,16 @@
            SPELL=cdrtools
-         VERSION=2.01a35
+         VERSION=2.01a36
            ALPHA=$([ "${VERSION//a/}" != "$VERSION" ] && echo 1)
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION%a*}
    SOURCE_URL[0]=ftp://ftp.berlios.de/pub/cdrecord/${ALPHA:+alpha/}${SOURCE}
-          MD5[0]=f16f2c92f7cf9002a11c677c28190c53
+          MD5[0]=bf1365121a96d85452ba59fb35ba0865
         WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
          ENTERED=20010922
          UPDATED=20030104
       LICENSE[0]=GPL
        BUILD_API=2
-           SHORT='Create home-burned CDs with a CD-R/CD-RW recorder'
+           SHORT="Create home-burned CDs with a CD-R/CD-RW recorder"
 cat << EOF
 cdrtools, formerly Cdrecord creates home-burned CDs with a CD-R/CD-RW
 recorder. It works as a burn engine for several applications. Cdrecord
