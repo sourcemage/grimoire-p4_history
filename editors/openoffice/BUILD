@@ -24,19 +24,22 @@
 		--localstatedir=/var		\
 		$OPTS				&&
 
-	cd $SOURCE_DIRECTORY &&
-	./bootstrap	&&
-	tcsh -c "source LinuxIntelEnv.Set; dmake"	&&
+	cd $SOURCE_DIRECTORY                                                              &&
+        if echo $OPTS| grep -q stlport ;
+           then mkdir -p solver/645/unxlngi4.pro/inc                                      &&
+           ln -sf /usr/include/stlport solver/645/unxlngi4.pro/inc/stl
+        fi                                                                                &&
+	./bootstrap	                                                                  &&
+	tcsh -c "source LinuxIntelEnv.Set; dmake"	                                  &&
 
-	cd $SOURCE_DIRECTORY/instsetoo/unxlngi4.pro/01/normal	&&
-	cp install install.orig
+	cd $SOURCE_DIRECTORY/instsetoo/unxlngi4.pro/01/normal	                          &&
+	cp install install.orig                                                           &&
 	sed -e "s:oo_home=OpenOffice.org1.1.0:oo_home=openoffice:" install.orig > install &&
-	chmod +x install &&
+	chmod +x install                                                                  &&
 
+	prepare_install				                                          &&
 
-	prepare_install				&&
-
-	./install --prefix=/opt	
+	./install --prefix=/opt	                                                          &&
 	for appl in swriter scalc sdraw simpress smath soffice
 	do
 		rm -f /usr/bin/$appl
