@@ -1,3 +1,6 @@
+# touch the man pages so make doesn't try to rebuild them
+  touch *.5 *.8  &&
+
   if [ $OLD_TOO == y ] ; then
     cd $SOURCE_DIRECTORY2                         &&
     ./configure  --build=$BUILD                   \
