@@ -10,7 +10,7 @@ then
 	
 	. ${SCRIPT_DIRECTORY}/functions
 	. ${SCRIPT_DIRECTORY}/latest.defaults
-	. ${SCRIPT_DIRECTORY}/details.conf
+	. ${CONFIG_CACHE}/details.conf
 	for patch in $patches
 	do
 		case "$patch" in

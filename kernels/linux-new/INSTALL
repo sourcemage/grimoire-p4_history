@@ -1,6 +1,6 @@
 cd ${LINUX_SOURCE_DIRECTORY}
 
-. ${SCRIPT_DIRECTORY}/details.conf
+. ${CONFIG_CACHE}/details.conf
 
 # make the append
 append="`echo ${LINUX_SOURCE_DIRECTORY} | awk -F'/' '{ print $NF }'`"
@@ -70,7 +70,3 @@ cd ${BUILD_DIRECTORY}
 rm linux
 ln -s linux-$VERSION linux
 cd $tmpdir
-
-# I don't know why I have to write it this way but VERSION
-# doesn't carry over to UPDATE_BOOTLOADER
-VERSION=$VERSION ${SCRIPT_DIRECTORY}/UPDATE_BOOTLOADER
