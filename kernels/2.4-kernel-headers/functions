@@ -7,9 +7,10 @@ function prebuild_setup_headers()
 {
   if [[ $(grep UTS_RELEASE ${INSTALL_ROOT}/usr/include/linux/version.h | awk '{ print $3 }' | sed -e 's/"//g') == 2.6.* ]]
   then unpack ${HEADERSOURCE} ${HEADERMD5} &&
-     for i in asm asm-generic linux 
-     do mount --bind $SOURCE_DIRECTORY/include/$i ${INSTALL_ROOT}/usr/include/$i 
-     done
+       for i in asm asm-generic linux 
+       do mount --bind $SOURCE_DIRECTORY/include/$i ${INSTALL_ROOT}/usr/include/$i 
+       done &&
+  touch $SOURCE_DIRECTORY/remind_to_unbind
   fi 
 }
 
@@ -17,6 +18,6 @@ function prebuild_setup_headers()
 function postbuild_bind_unmount()
 {
  exitcode=$?
- umount ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux}
+ [ -f $SOURCE_DIRECTORY/remind_to_unbind ] &&  umount -f ${INSTALL_ROOT}/usr/include/{asm,asm-generic,linux}
  return $exitcode 
 }
