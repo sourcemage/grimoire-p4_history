@@ -1,6 +1,7 @@
 (
 ### Apply gcc 3.3 patch
-  bzcat  ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
+  bzcat   ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
+  tail +5 ${SOURCE_CACHE}/${SOURCE4}  |  patch  -p1  &&
 
   cd $SOURCE_DIRECTORY.bld                    &&
 
