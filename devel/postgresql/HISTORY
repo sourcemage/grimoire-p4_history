@@ -1,111 +1,91 @@
-2003-09-16  Eric D. Schabell <eschabell@sourcemage.org>
+2003-10-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed first two SOURCE_URLs,
+	no longer valid
+	* HISTORY: Cleaned to follow Guru Handbook
 
-		Fix to init.d/postgresql.conf file, needs to point 
-		deeper to data dir for startup.
+2003-09-16 Eric D. Schabell <eschabell@sourcemage.org>
+	* init.d/postgresql.conf: Needs to point deeper to
+	data dir for startup.
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update UPDATED purely for test grimoire integration.
 
-		Update UPDATED purely for test grimoire integration.
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self (doesn't work
+	the way it is documented)
 
-2003-08-10  hgg <hgreig@bigpond.net.au>
+2003-08-01 Sergey Lipnevich <sergey@sourcemage.org>
+	* TRIGGERS: Add a trigger to cast after Python.
 
-		Revert on_dispel Linux-PAM cast_self (doesn't work the way it is documented)
+2003-07-31 Seth Woolley <seth@tautology.org>
+	* init.d/postgresql: Fixed the init.d script
 
-2003-08-01  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-07-31 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 7.3.4  (Bug #3870)
 
-		Add a trigger to cast after Python.
+2003-07-30 Seth Woolley <seth@tautology.org>
+	* DETAILS: init.d/postgresql: Updated to new init.d
 
-2003-07-31  Seth Woolley <seth@tautology.org>
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
 
-		Fixed the init.d script
+2003-05-22 Julian v. Bock <julian@wongr.net>
+	* DETAILS: update SOURCE_URL.
 
-2003-07-31  Eric Sandall <eric@sandall.us>
+2003-05-01 Rob Verkuylen <rob@verkuylen.net>
+	* init.d/postgresql: Copied /init.d/prostgres.sh to /init.d/postgresql
+	Step 1/3 in bug#: 3115
 
-		Updated to 7.3.4  (Bug #3870)
+2003-03-31 Eric Sandall <eric@sandall.us>
+	* BUILD: Updated to use sorcery's init.d install
+	* CONFIGURE: Removed, sorcery handles this now
+	* init.d/postgres.sh: Moved to init.d/postgres.sh
 
-2003-07-30  Seth Woolley <seth@tautology.org>
+2003-02-12 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.3.2.
 
-		Updated to new init.d
+2003-01-13 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.3.1.
 
-2003-07-26  hgg <hgreig@bigpond.net.au>
-
-		Update TRIGGERS for Linux-PAM
-
-2003-05-22  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: update SOURCE_URL.
-
-2003-05-01  Rob Verkuylen <rob@verkuylen.net>
-
-		Copied /init.d/prostgres.sh to /init.d/postgresql
-		Step 1/3 in bug#: 3115
-
-2003-03-31  Eric Sandall <eric@sandall.us>
-
-		* BUILD:  Updated to use sorcery's init.d install
-
-		* CONFIGURE: Removed, sorcery handles this now
-
-		* postgres.sh is moved to init.d/postgres.sh
-
-2003-02-12  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 7.3.2.
-
-2003-01-13  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 7.3.1.
-
-2002-12-01  Sergey Lipnevich <sergeyli@pisem.net>
-
-	Added Linux-PAM, unixODBC, openssl, krb5 to dependencies.
+2002-12-01 Sergey Lipnevich <sergeyli@pisem.net>
+	* DEPENDS: Added Linux-PAM, unixODBC, openssl, krb5 to dependencies.
 	Added --enable-syslog to BUILD (syslog-type logging is
 	disabled by default, but this option makes it available).
 
-2002-11-30  Julian v. Bock  <julian@wongr.net>
+2002-11-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.3.
 
-		* DETAILS: set VERSION to 7.3.
+2002-10-13 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Cleaned up DEPENDS to match standards (also needed
+	so I could compile without tcl/tk support ;))
 
-2002-10-13  Eric Sandall <eric@sandall.us>
+2002-10-08 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.2.3.
 
-		Cleaned up DEPENDS to match standards (also needed
-		so I could compile without tcl/tk support ;))
+2002-10-03 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
 
-2002-10-08  Julian v. Bock  <julian@wongr.net>
+2002-09-22 Julian v. Bock <julian@wongr.net>
+	* secfix.patch: add. Thanks to Steven Pinkham.
+	* BUILD: apply patch; build always C++ interface; remove
+	bogus --with-libs option.
+	* DEPENDS: add.
 
-		* DETAILS: set VERSION to 7.2.3.
+2002-08-27 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.2.2.
 
-2002-10-03  Julian v. Bock  <julian@wongr.net>
+2002-07-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: fix typos (thanks to Eric Sandall).
 
-		* DETAILS: add LICENSE and MD5 fields.
+2002-06-11 Julian v. Bock <julian@wongr.net>
+	* DETAILS: SOURCE_URL to official URL.
 
-2002-09-22  Julian v. Bock  <julian@wongr.net>
+2002-04-16 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 7.2.1; use $VERSION in SOURCE_URL.
+	changes submitted by Wandrebeck Laurent <low@mren2.univ-littoral.fr>.
 
-		* secfix.patch: add. Thanks to Steven Pinkham.
-		* BUILD: apply patch; build always C++ interface; remove
-		bogus --with-libs option.
+2002-01-28 kongar
+	- added "make install-all-headers" line to BUILD script,
+	in order to install server side development headers, ie:
+	postgresql.h
 
-		* DEPENDS: add.
-
-2002-08-27  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 7.2.2.
-
-2002-07-30  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: fix typos (thanks to Eric Sandall).
-
-2002-06-11  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: SOURCE_URL to official URL.
-
-2002-04-16  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 7.2.1; use $VERSION in SOURCE_URL.
-		changes submitted by Wandrebeck Laurent <low@mren2.univ-littoral.fr>.
-
-20020128, postgresql-7.1.3, kongar
-
-   - added "make install-all-headers" line to BUILD script,
-   in order to install server side development headers, ie:
-   postgresql.h
