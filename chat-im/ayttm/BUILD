@@ -1,5 +1,3 @@
-(
-
   if [ "$CVS" = "yes" ] 
   then 
 	export MAKE_NJOBS=1
@@ -11,8 +9,4 @@
                --localstatedir=${INSTALL_ROOT}/var \
                --enable-xft      \
 	       $OPTS                &&
-  make                              &&
-  prepare_install                   &&
-  make    install
-
-) > $C_FIFO 2>&1
+  make
