@@ -7,9 +7,6 @@
 
 )  > $C_FIFO 2>&1  &&  (
 
-  cp  $SCRIPT_DIRECTORY/modutils.sh  /etc/init.d
-  ln  -sf  ../init.d/modutils.sh  /etc/rcS.d/S20modutils
-
   mkdir  -p  /etc/modules.d
   touch      /etc/modules
   touch      /etc/modules.conf
