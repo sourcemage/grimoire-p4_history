@@ -5,7 +5,6 @@ message  "${MESSAGE_COLOR}Preparing to install" \
 
 lock_resources "libgrimoire" "install"
 
-if  spell_installed  valgrind  ||
-    spell_held       valgrind; then
+if  spell_ok  valgrind;  then 
   dispel --notriggers --nosustain $SPELL
 fi  

@@ -7,7 +7,7 @@
              --mandir=$INSTALL_ROOT/usr/share/man   \
              $OPTS                                  &&
 
-if  ! spell_installed netpbm; then
+if  ! spell_ok netpbm; then
     patch  < $SCRIPT_DIRECTORY/groff.patch
 fi                                                  &&
 
