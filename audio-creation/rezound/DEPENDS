@@ -1,9 +1,15 @@
-depends fox &&
-depends libvorbis &&
-depends audiofile &&
-depends flac &&
-depends fftw2 &&
+depends  fox        &&
+depends  libvorbis  &&
+depends  audiofile  &&
+depends  flac       &&
+depends  fftw2      &&
 
-optional_depends "ladspa" "--enable-ladspa" "--disable-ladspa" "for LADSPA plugin support" &&
-optional_depends "JACK-DRIVER" "--enable-jack" "--disable-jack" "for 
-jack support"
+optional_depends  ladspa                       \
+                  "--enable-ladspa"            \
+                  "--disable-ladspa"           \
+                  "for LADSPA plugin support"  &&
+
+optional_depends  JACK-DRIVER         \
+                  "--enable-jack"     \
+                  "--disable-jack"    \
+                  "for jack support"
