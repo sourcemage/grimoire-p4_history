@@ -1,7 +1,13 @@
+if [ "${PAM_SELINUX}" == "y" ]; then
+  depends libselinux
+fi                                             &&
+
+depends cracklib                               &&
+
 optional_depends  tetex                     \
                   ""                        \
                   ""                        \
-                  "to build documentation"  &&
+                  "to build documentation"     &&
 
 optional_depends  linuxdoc-tools            \
                   ""                        \
