@@ -4,8 +4,10 @@ depends  pcre             &&
 depends  vte              &&
 if [ "$CVS_CHECKOUT" == "y" ]
 then
-	depends gdl
-fi
+	depends gdl &&
+	depends devhelp &&
+	depends gnome-build
+fi &&
 
 optional_depends  "gdb"  ""  ""  "for the GNU Debugger"  &&
 optional_depends  "indent"  ""  ""  "for source code formatting"
