@@ -1,17 +1,12 @@
---- adriver.h	2003-09-30 10:54:47.000000000 +0200
-+++ adriver.h.copy	2003-10-10 11:37:21.000000000 +0200
-@@ -128,12 +128,14 @@
+--- adriver.h	2003-10-11 10:43:03.000000000 +0200
++++ adriver.h.copy	2003-10-11 11:04:29.000000000 +0200
+@@ -127,6 +127,9 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 5, 3) && !defined(need_resched)
  #define need_resched() (current->need_resched)
  #endif
- #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 5, 4) && !defined(WE_ARE_WOLK)
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 4, 23)
++#if LINUX_VERSION_CODE == KERNEL_VERSION(2, 4, 23)
++#define CONFIG_HAVE_PDE
++#endif
+ #ifndef CONFIG_HAVE_PDE
  #include <linux/fs.h>
  static inline struct proc_dir_entry *PDE(const struct inode *inode)
- {
- 	return (struct proc_dir_entry *) inode->u.generic_ip;
- }
- #endif
-+#endif
- #ifndef cond_resched
- #define cond_resched() \
- 	do { \
