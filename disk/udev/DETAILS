@@ -1,15 +1,16 @@
            SPELL=udev
-         VERSION=015
+         VERSION=016
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${KERNEL_URL}/pub/linux/utils/kernel/hotplug/${SOURCE}
-          MD5[0]=2f266c6157a81b495710f758b23bbfb5
+          MD5[0]=6b9e08f48c4abc34334e9f0522cc4afe
         WEB_SITE=${KERNEL_URL}/pub/linux/utils/kernel/hotplug/udev-FAQ
          ENTERED=20030725
          UPDATED=20030725
             DOCS="ChangeLog COPYING FAQ README"
       LICENSE[0]=GPL
       MAINTAINER=eric@sandall.us
+      MAKE_NJOBS=1
            SHORT="Devfs in userspace using sysfs and hotplug"
 cat << EOF
 udev is a implementation of devfs in userspace using sysfs and
