@@ -1,0 +1,16 @@
+2002-03-22  Eric Schabell <eric@schabell.com>
+
+		The patch for STABLE5 was insufficently tested and 
+		introduced a bug that causes frequent assertions
+		when handling DNS PTR answers.
+
+2002-03-18  Eric Schabell <eric@schabell.com>
+
+		Squid version update 2.4-STABLE5 provides
+		bug fixes to an array bounds bug in lib/rfc1035.c
+		which allowed a malicious DNS server to send bogus
+		replies and thus currupt the memory heap.
+
+2002-03-13  Eric Schabell <eric@schabell.com>
+
+		Added this History file.
