@@ -1,0 +1,12 @@
+diff -uprN imp-3.2/config/prefs.php.dist imp/config/prefs.php.dist
+--- imp-3.2/config/prefs.php.dist	2002-10-29 16:04:33.000000000 -0500
++++ imp/config/prefs.php.dist	2003-02-17 10:19:13.000000000 -0500
+@@ -2,7 +2,7 @@
+ // $Horde: imp/config/prefs.php.dist,v 1.49.2.22 2002/10/29 21:04:33 chuck Exp $
+ 
+ // Make sure that constants are defined.
+-require_once dirname(__FILE__) . '/../lib/constants.php';
++require_once IMP_BASE . '/lib/constants.php';
+ 
+ // Changes you make to this file will not be reflected until the user
+ // logs out and logs in again.

@@ -20,6 +20,11 @@ PHP_MODULES=$(php -m)
   echo "$PHP_MODULES" | grep -q imap &&
   echo "$PHP_MODULES" | grep -q xml &&
 
+  if [ -r $SPELL-config.patch ]; then
+    echo "Applying a patch necessary to relocate $HORDE_DIR/config directory to $HORDE_CONFIG_DIR" &&
+    patch -p1 < $SPELL-config.patch
+  fi &&
+
   prepare_install &&
 
   # force copy everything because no configuration files are overwritten
@@ -33,7 +38,8 @@ PHP_MODULES=$(php -m)
     echo "Updating configuration in $HORDE_CONFIG_DIR..."                        &&
     mkdir -p --mode=755 $HORDE_CONFIG_DIR                                        &&
     echo "Moving configuration to $HORDE_CONFIG_DIR from $HORDE_DIR/config..."   &&
-    mv $HORDE_DIR/config/* $HORDE_CONFIG_DIR/                                    &&
+    mv     $HORDE_DIR/config/* $HORDE_CONFIG_DIR/                                &&
+    rm -fr $HORDE_DIR/config/                                                    &&
     echo "Making a symbolic link to $HORDE_CONFIG_DIR from $HORDE_DIR/config..." &&
     ln -fns $HORDE_CONFIG_DIR $HORDE_DIR/config
   fi

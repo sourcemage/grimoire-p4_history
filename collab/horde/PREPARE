@@ -3,7 +3,7 @@ if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   if query "Would you like to use the \`$SPELL' source code from development repository?" n; then
     # don't use dashes '-' in the DEFAULT_VERSION value, they'll mangle
     # the SOURCE_DIRECTORY definition in the DETAILS
-    DEFAULT_VERSION="HEAD_`date +%Y%m%d`"
+    DEFAULT_VERSION="HEAD_$(date +%Y%m%d)"
 
     # REPOSITORY_TAG can be used by the individual spells
     # to provide "recommended" version to use for source code
