@@ -1,0 +1,10 @@
+default_pre_build  &&
+
+cd  $SOURCE_DIRECTORY  &&
+
+sedit  's/ \$(PMP.*//'  doc/Makefile.in  &&
+sedit  's/ install-data-am/ install-imanDATA/'  doc/Makefile.in  &&
+sedit  's/ install-data-am//'  examples/Makefile.in  &&
+sedit  's/ install-data-am//'  contrib/Makefile.in  &&
+sedit  's/ install-data-am//'  contrib/trytime/Makefile.in  &&
+sedit  's/ install-data-am//'  Makefile.in

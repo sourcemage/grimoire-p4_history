@@ -1,14 +1,15 @@
            SPELL=iproute2
-         VERSION=2.4.7-now-ss020116-try
+         VERSION=2.6.X-ss040702
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/iproute2
-   SOURCE_URL[0]=ftp://ftp.inr.ac.ru/ip-routing/$SOURCE
-          MD5[0]=4c6e6593504f9086132b521a83c08853
-        WEB_SITE=http://lartc.org
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-2.6.8
+   SOURCE_URL[0]=http://developer.osdl.org/dev/iproute2/download/$SOURCE
+          MD5[0]=f2953f23f7699a2327e1d6a5fc114c2d
+        WEB_SITE=http://developer.osdl.org/dev/iproute2/
          ENTERED=20020528
-         UPDATED=20020528
-      LICENSE[0]=UNKNOWN
-           SHORT="iproute is the userland tools for the kernel network traffic control code."
+         UPDATED=20040704
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Userland tools for the kernel network traffic control code."
 cat << EOF
 iproute2 contains the programs ip, rtmon, and tc. These programs
 allow you to specify rules for policy routing and traffic shaping
