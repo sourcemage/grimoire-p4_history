@@ -1,36 +1,53 @@
-#!/bin/sh
-#
-# SMGL-script-version=20030224
-# SMGL-START:3 4 5:S90
-# SMGL-STOP:0 1 2 6:K10
+#!/bin/bash
 
-source /etc/init.d/functions
+PROGRAM=/bin/false
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
 
-case $1 in
-	  start)
-			echo "$1ing Apache web server"
-			apachectl startssl
-			evaluate_retval
-			;;
-			
-  	restart)
-			echo "$1ing Apache web server."
-			if [ -f /var/run/httpd.pid ]; then
-				apachectl $1
-				evaluate_retval
-			else
-				$0 start
-			fi
-			;;
-			
-	   stop)
-			echo "$1ping Apache web server."
-			apachectl $1
-			evaluate_retval
-			;;
-			
-	      *)
-			echo "Usage: $0 {start|stop|restart}"
-			exit 1
-			;;
-esac
+. /etc/init.d/smgl_init
+
+start()
+{
+  [ ! -d /var/run/httpsd ]  &&  mkdir  /var/run/httpsd
+  echo "Starting Apache web server..."
+  /usr/sbin/apachectl startssl
+  evaluate_retval
+}
+
+restart()
+{
+  echo "Restarting Apache web server..."
+  if [ -f /var/run/httpsd/httpd.pid ]; then
+    /usr/sbin/apachectl restart
+    evaluate_retval
+  else
+    run_func start
+  fi
+}
+
+stop()
+{
+  echo "Stopping Apache web server..."
+  /usr/sbin/apachectl stop
+  evaluate_retval
+}
+
+status()
+{
+  getpids httpd
+  if [ -n "$pidlist" ]; then
+    echo "Apache is running with Process ID(s) $pidlist"
+  else
+    if [ -f  /var/run/httpsd/httpd.pid ]; then
+      echo "Apache is not running but /var/run/httpsd/httpd.pid exists"
+      return 1
+    else
+      echo "Apache is not running"
+    fi
+  fi
+}
+
+reload()
+{
+  run_func restart
+}
