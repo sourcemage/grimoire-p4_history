@@ -1,0 +1,21 @@
+           SPELL=vobcopy
+         VERSION=0.5.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/lin-prog-newbie/$SOURCE
+        WEB_SITE=http://www.linux-programming-newbie.org/
+      LICENCE[0]=GPL
+          MD5[0]=54432471a9201c3314d20c50a183878d
+         ENTERED=20020327
+         UPDATED=20020921
+      MAINTAINER=treeve01@pi.be
+SHORT="copy VOB files from DVD's"
+cat << EOF
+vobcopy copies DVD .vob files to harddisk, decrypting (if you have
+libdvdcss installed)
+them on the way (thanks to libdvdread and libdvdcss) and merges them into file(s) with
+the name extracted from the DVD. It checks for enough free space on the destination
+drive and compares the copied size to the size on DVD (in case something went wrong
+during the copying). vobcopy without any options will copy the first title into files
+of 2GB size into the current working directory. 
+EOF
