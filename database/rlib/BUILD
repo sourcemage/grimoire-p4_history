@@ -1,11 +1,11 @@
 (
+echo opts=$OPTS
 # to fix Python error
-  sedit "s/-Werror//" configure.in		 &&
-  autoconf					 &&
+#  sedit "s/-Werror//" configure.in		 &&
+  sedit "s/-Werror//" configure			 &&
+#autoupdate &&
+#  autoconf					 &&
+#  patch -p0 < $SPELL_DIRECTORY/xml.diff libsrc/parsexml.c	&&
   default_build
-#  ./configure --prefix=${INSTALL_ROOT}/usr $OPTS &&
-#  make                   &&
-#  prepare_install        &&
-#  make    install        
 
 ) > $C_FIFO 2>&1

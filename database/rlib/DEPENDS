@@ -1,7 +1,11 @@
 depends clibpdf		&&
 depends libxml2		&&
+optional_depends JAVA "" "-with-java=no" "Java front end"	&&
+optional_depends perl "" \
+		"--with-perl-lib=`ls /usr/lib/perl5`" \
+		 "Perl front end"				&&
 optional_depends Python	\
-		"--with-pythonver=`ls /usr/lib |grep python|cut -c7-`" \
+		"--with-pythonver=`installed_version Python`" \
 		"--disable-python" \
 		"Python frontend"				&&
 optional_depends "PHP" "" "--disable-php" "php frontend"	&&
