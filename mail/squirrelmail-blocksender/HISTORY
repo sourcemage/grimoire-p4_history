@@ -1,33 +1,48 @@
+2005-01-03 Eric Sandall <eric@sandall.us>
+	* Renamed to squirrelmail-blocksender
+	* DETAILS: Renamed to squirrelmail-blocksender
+	  Removed NAME, MAINTAINER and SMGL mirror
+	  Added BUILD_API=2
+	  Updated UPDATED
+	  Changed LICENSE to LICENSE[0]
+	* CONFLICTS: Auto-conflicts with squirrelmail-BlockSender
+	* BUILD: Run only `true`
+	* INSTALL: Branched from BUILD
+	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL
+	* PRE_REMOVE: Use spell_ok instead of spell_installed
+	  Removed NAME
+	* HISTORY: Formatted to Guru Handbook
+
 2004-11-22 Eric Sandall <eric@sandall.us>
 	* BUILD: Changed `exit 1` to `return 1`  (Bug #7649)
 
 2003-05-18 M.L. <mlubrano@sourcemage.org>
-	* Version++ (2.02-1.4.0).
+	* DETAILS: Version++ (2.02-1.4.0).
 
 2003-04-10 M.L. <mlubrano@sourcemage.org>
 	* Fixed bug like #3070 (critical).
 	  Thanks to doubletwist@spack.nu (Doubletwist).
 
 2003-04-06 M.L. <mlubrano@sourcemage.org>
-	* Added procmail dependency.
+	* DEPENDS: Added procmail dependency.
 
 2002-11-18 M.L. <mlubrano@sourcemage.org>
-	* Version++ (bug #1730 thanks to eric@sandall.us (Eric Sandall).
+	* DETAILS: Version++ (bug #1730 thanks to eric@sandall.us (Eric Sandall).
 
 2002-11-08 M.L. <mlubrano@sourcemage.org>
 	* Fixed bug #1616-like.
 
 2002-11-05 M.L. <mlubrano@sourcemage.org>
-	* Added MENU_* entries to DETAILS file.
+	* DETAILS: Added MENU_* entries
 
 2002-08-21 M.L. <m.l@compaqnet.fr>
-	* MD5[0] field updated, built from the ".tar" archive.
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
 2002-08-16 M.L. <m.l@compaqnet.fr>
-	* Version++ (0.3).
+	* DETAILS: Version++ (0.3).
 
 2002-08-15 M.L. <m.l@compaqnet.fr>
-	* MD5[x] field format conforming to grimoire-gurus handbook.
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
 	  Added source url of last ressort (sourcemage mirror).
 
 2002-07-17 Eric Sandall <sandalle@yahoo.com>

@@ -1,16 +1,14 @@
-           SPELL=squirrelmail-BlockSender
-            NAME=block_sender
+           SPELL=squirrelmail-blocksender
          VERSION=2.02-1.4.0
-          SOURCE=${NAME}.$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$NAME-$VERSION
+          SOURCE=block_sender.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/block_sender-$VERSION
    SOURCE_URL[0]=http://www.squirrelmail.org/plugins/$SOURCE
           MD5[0]=27d69b2c4e70df157c59f62c12458591
-   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
         WEB_SITE=http://www.squirrelmail.org/plugin_view.php?id=76
-         LICENSE=GPL
          ENTERED=20020717
-         UPDATED=20020717
-      MAINTAINER=sandalle@yahoo.com
+         UPDATED=20050103
+      LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="Block sender's address plugin for SquirrelMail"
     MENU_ITEM[0]=${SPELL}
     MENU_EXEC[0]=${SPELL}
