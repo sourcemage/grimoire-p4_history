@@ -12,8 +12,9 @@
 
 	prepare_install                                &&
 
-    mkdir -p    /usr/share/$SPELL                  &&
-    cp    -r ./ /usr/share/$SPELL/                 &&
+	mkdir -p                /usr/share/$SPELL      &&
+	cp    -r ./             /usr/share/$SPELL/     &&
+	chown -R nobody:nogroup /usr/share/$SPELL      &&
 
 	# now we delete all files so that nothing is picked for documentation
 	# and duplicated in /usr/doc/$SPELL
