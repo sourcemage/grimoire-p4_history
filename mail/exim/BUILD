@@ -78,6 +78,7 @@ echo  "EXIM_GROUP=exim"                  >>  Local/Makefile
 
 (
 
+  sedit  's:tail \-1:tail \-n 1:'  scripts/Configure-config.h  &&
   make             &&
   prepare_install  &&
   make    install  &&
