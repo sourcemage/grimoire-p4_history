@@ -13,7 +13,7 @@ MD5S[1]=3b26a8664bc6741c0d5e1b71599accbe
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
-SOURCE${COUNTER}=linux-${!PATCH}-i2c-2.8.2.patch
+SOURCE${COUNTER}=linux-${!PATCH}-i2c-2.8.2.patch.gz
 SOURCE${COUNTER}_URL=http://www.ensicaen.ismra.fr/~delvare/devel/i2c/linux-${!PATCH}/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
 source $SCRIPT_DIRECTORY/MD5PATCH
 fi
