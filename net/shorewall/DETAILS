@@ -1,11 +1,22 @@
            SPELL=shorewall
-         VERSION=2.0.10
+
+if [[ $USEVER == "2.0.x" ]] ; then
+         VERSION=2.0.16
           SOURCE=$SPELL-$VERSION.tgz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
-          MD5[0]=f877468b35b86aba4494875c463e458c
+          MD5[0]=078eba4d5094d4af61ba9a2a23d12beb
+else
+         VERSION=2.2.0
+          SOURCE=$SPELL-$VERSION.tgz
+   SOURCE_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/2.2/$SPELL-$VERSION/$SOURCE
+   SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/2.2/$SPELL-$VERSION/$SOURCE
+   SOURCE_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/2.2/$SPELL-$VERSION/$SOURCE
+          MD5[0]=3ce788e762f19b28f54c7a0fd9214c6a
+fi
+
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.shorewall.net/
          ENTERED=20020513
          UPDATED=20041129
