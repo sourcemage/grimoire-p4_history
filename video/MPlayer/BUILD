@@ -3,6 +3,8 @@
   # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
+  patch -p1 < $SCRIPT_DIRECTORY/matroska-C-demux.patch  &&
+
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
 
