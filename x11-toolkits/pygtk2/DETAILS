@@ -1,16 +1,18 @@
            SPELL=pygtk2
-         VERSION=2.4.1
+#         VERSION=2.4.1
+         VERSION=2.5.3
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=pygtk-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pygtk-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/pygtk/$BRANCH/$SOURCE
-          MD5[0]='5b26aeac5259097a8288076f5193afa5'
+#          MD5[0]='5b26aeac5259097a8288076f5193afa5'
+          MD5[0]=b5c9f37dd03866f63f4e74530d518ac1
       LICENSE[0]=LGPL
        BUILD_API=2
         WEB_SITE=http://www.daa.com.au/~james/software/pygtk/
          ENTERED=20020523
          UPDATED=20041106
-           SHORT="pygtk is a set of perl bindings for GTK."
+           SHORT="pygtk is a set of python bindings for GTK."
 cat << EOF
 PyGTK is a set of bindings for the GTK widget set.  It provides an
 object oriented interface that is slightly higher level than the C one.
