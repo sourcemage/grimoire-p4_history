@@ -1,8 +1,10 @@
 (
 
-  bzcat  $SCRIPT_DIRECTORY/Makefile.diff.bz2  |  patch -p0  &&
-  make             &&
-  prepare_install  &&
+  mkdir /usr/share/mime-types
+  
+  ./configure --prefix=/usr 	&&
+  make             				&&
+  prepare_install  				&&
   make  install
 
 ) > $C_FIFO 2>&1
