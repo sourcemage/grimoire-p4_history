@@ -1,13 +1,19 @@
 (
-sedit '8,13D' setup				&&
 for i in $(grep -rl CFLAGS= .);
-do sedit "s/CFLAGS\=/CFLAGS\=$CFLAGS/g" $i
+do sedit "s/CFLAGS\=-O2 -O0/& $CFLAGS /g" $i
 done
     prepare_install                          	&&
-ln -s /usr/src/linux/include/hpc /usr/include   &&
+ln -sfn /usr/src/linux/include/hpc /usr/include &&
+export QTDIR=/usr                               &&
     ./setup					&&
     cd 3dmon					&&
-    ./setup.standalone
+    ./setup.standalone                          &&  
+if [ -e /etc/init.d/mosstatd.sh ]
+then rm -f /etc/init.d/mosstatd.sh
+fi                                              &&
+if [ -e /etc/init.d/openmosixcollector ]
+then rm -f /etc/init.d/openmosixcollector
+fi                                              &&
 
 echo "now type openmosixview <ENTER> and have fun!"
 echo "(do not forget to copy the openmosixprocs binary to /usr/bin of each"
