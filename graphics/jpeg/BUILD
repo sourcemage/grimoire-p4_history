@@ -2,7 +2,8 @@
 
   ./configure  --prefix=/usr    \
                --enable-shared  \
-               --enable-static  &&
+               --enable-static  \
+               $OPTS            &&
   make                          &&
   prepare_install               &&
   make    install
