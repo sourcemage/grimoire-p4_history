@@ -1,0 +1,18 @@
+           SPELL=cleanscore
+         VERSION=0.9.8.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://slrn.sourceforge.net/cleanscore/$SOURCE
+        WEB_SITE=http://slrn.sourceforge.net/cleanscore/index.html
+         ENTERED=20020602
+         UPDATED=20020602
+           SHORT="A perl script to clean slrn score files"
+cat << EOF
+
+If you heavily use slrn's scoring capabilities, your scorefile will soon become
+large and confusing, so you will want to remove expired entries on a regular
+basis. This perl script can be used to purge expired entries automatically,
+e.g. by calling it from cron.daily.
+	     
+
+EOF
