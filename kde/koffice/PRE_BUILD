@@ -1,9 +1,11 @@
 if spell_installed Python && spell_installed tk &&
 spell_installed tcl; then
 
-   LIBPYTHON="-lpython`gaze installed Python | cut -d: -f3 | cut -c -3`"
-   LIBPYTHON="$LIBPYTHON -ltcl`gaze installed tcl | cut -d: -f3 | cut -c -3`"
-   LIBPYTHON="$LIBPYTHON -ltk`gaze installed tk | cut -d: -f3 | cut -c -3`"
+   LIBPYTHON="-lpython`gaze installed Python | cut -d. -s -f1-3 | cut -c -3`" 
+   LIBPYTHON="$LIBPYTHON -ltcl`gaze installed tcl | cut -d. -s -f1-3 | cut -c -3`" 
+   LIBPYTHON="$LIBPYTHON -ltk`gaze installed tk | cut -d. -s -f1-3 | cut -c -3`" 
 
    export LIBPYTHON
-fi  &&
+fi &&
+default_pre_build
+
