@@ -1,1 +1,1 @@
-. $SCRIPT_DIRECTORY/../horde/BUILD
+touch  config/conf.php.dist

@@ -1,17 +1,25 @@
            SPELL=chora
-         VERSION=${VERSION:-1.2.2}
-          SOURCE=$SPELL-${VERSION}${SUFFIX:-.tar.gz}
-      LICENSE[0]=GPL
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=2.0
+          SOURCE=$SPELL-h3-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-h3-$VERSION
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=aca9b5514f08264b8dbf120cfb377d74
+fi
    SOURCE_URL[0]=${SOURCE_URL[0]:-ftp://ftp.horde.org/pub/$SPELL/$SOURCE}
         WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20030804
          UPDATED=20030804
-           SHORT='CVS source code web viewer'
-
-[ -z $FORCE_DOWNLOAD ] &&
-          MD5[0]='eb2c57b764ed1f1e7413c09e3859da2a'
-
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde CVS source code web viewer"
 cat << EOF
 Chora is our tool for viewing code repositories that are managed using the CVS source control system. It aims to provide a high degree of integration with CVS and the other Horde web-based tools.
 

@@ -1,3 +1,17 @@
+2005-02-28 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added SOURCE for CVS version
+	* DEPENDS: Depend on CVS if using HORDE_DEVEL
+
+2005-02-26 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.0.2
+	  Added BUILD_API=2
+	  SOURCE now uses -h3
+	  Split into if/fi for DEVEL or stable
+	  Shortened SHORT
+	* BUILD: Run only `true`
+	* INSTALL: Source SECTION_DIRECTORY/HORDE_INSTALL
+	* PREPARE: Source SECTION_DIRECTORY/HORDE_PREPARE
+
 2004-08-25 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 3.2.5  Security release
 
@@ -5,7 +19,7 @@
 	* DETAILS: upgrade to 3.2.4
 
 2003-09-10 Sergey Lipnevich <sergeyli@pisem.net>
-	* Upgrade to 3.2.2.
+	* DETAILS: Upgrade to 3.2.2.
 
 2003-07-29 Sergey Lipnevich <sergey@sourcemage.org>
 	* Redo the patch without using IMP_BASE, because
@@ -13,7 +27,7 @@
 	  IMP_BASE is not yet defined within login script.
 
 2003-03-12 Sergey Lipnevich <sergeyli@pisem.net>
-	* Upgrade to 3.2.1.
+	* DETAILS: Upgrade to 3.2.1.
 
 2003-03-11 Eric Sandall <eric@sandall.us>
 	* Fixed Bug #2709, updated to 3.2
