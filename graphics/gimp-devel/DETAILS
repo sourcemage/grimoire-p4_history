@@ -1,15 +1,13 @@
            SPELL=gimp-devel
-         VERSION=1.3.23
+         VERSION=2.0pre1
           SOURCE=${SPELL%-devel}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-devel}-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/v${VERSION}/$SOURCE
-          MD5[0]=dc03ac078101dad0b422d364aa2ec80b
+   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION/pre*/}/testing/$SOURCE
+          MD5[0]=a3537306497b5f7a1879682d325fd34d
         WEB_SITE=http://www.gimp.org/
          ENTERED=20010922
          UPDATED=20030610
       LICENSE[0]=GPL
-      MAINTAINER=unet@sourcemage.org
-      MAKE_NJOBS=1
            SHORT="GIMP is the GNU Image Manipulation Program (Development Version)"
 cat << EOF
 The GIMP is the GNU Image Manipulation Program. It is a freely
