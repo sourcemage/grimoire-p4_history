@@ -16,7 +16,6 @@ my_install() {
 }
 
 (
-
   for BUILD_SUBDIRECTORY in $SOURCE_DIRECTORY/$SPELL*
   do
     if [ -d $BUILD_SUBDIRECTORY ]
