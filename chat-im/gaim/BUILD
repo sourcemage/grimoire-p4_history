@@ -11,4 +11,4 @@ if  [  "$CVS"  ==  "y"  ] ; then ./autogen.sh; fi   &&
              --localstatedir=/var               \
              $OPTS                              &&
 make                                            &&
-cd $SOURCE_DIRECTORY                            &&
+cd $SOURCE_DIRECTORY                            
