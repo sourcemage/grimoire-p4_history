@@ -13,6 +13,11 @@ then
   OPTS="$OPTS  --enable-safe-mode"
 fi  &&
 
+if  [  "$PCRE"  ==  "y"  ]
+then
+  OPTS="$OPTS  --with-pcre-regex"
+fi  &&
+
 if  [  "$IMAP"  ==  "y"  ]
 then
   OPTS="$OPTS  --with-imap"  &&
