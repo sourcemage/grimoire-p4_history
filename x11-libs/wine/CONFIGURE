@@ -1,8 +1,1 @@
-if  !  grep  -q  "OPENGL"  $SPELL_CONFIG;  then
-
-  if    query  "Enable OpenGL support?"  y
-  then  echo  "OPENGL=y"  >>  $SPELL_CONFIG
-  else  echo  "OPENGL=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
+config_query  WINE_OPENGL  "Enable OpenGL support?"  y
