@@ -9,4 +9,6 @@ fi  &&
 if ! echo $CFLAGS | grep -q -- "-O."; then
   CFLAGS="$CFLAGS -O2"
 fi  &&
+sedit  "s:quicktime/ffmpeg:ffmpeg:"  configure  &&
+./configure &&
 make
