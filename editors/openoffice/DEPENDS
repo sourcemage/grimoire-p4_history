@@ -23,7 +23,12 @@ depends  tcsh                                      &&
 #		  "--with-use-shell=/bin/bash"     \
 #                  "Use tcsh shell for compiling (safer)" &&
 
-optional_depends  "JAVA"                                       \
+#
+# Java 1.5 does not work with openoffice
+# If someone can figure out how to get it to work I'll add
+# support
+#
+optional_depends  "JAVA-1.4"                                   \
                   "--enable-java --with-jdk-home=${JAVA_HOME}" \
                   "--disable-java"                             \
                   "Build with Java support."                   &&
