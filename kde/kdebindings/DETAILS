@@ -8,17 +8,18 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
           MD5[0]=8b1f0e1a224fedf12d2c46ca48d3fb4d
 else
-         VERSION=3.3.1
+         VERSION=3.3.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-          MD5[0]=4aef6bf792872cbed25274d86675312d
+          MD5[0]=e560422c8bf2ba62f97e41168e45ff1d
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
          ENTERED=20010922
          UPDATED=20040820
       LICENSE[0]=GPL
+      MAKE_NJOBS=1
        BUILD_API=2
            SHORT="DCOP bindings and kdejava bindings for KDE."
 cat << EOF
