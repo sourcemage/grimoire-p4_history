@@ -1,0 +1,20 @@
+           SPELL=wmifinfo
+         VERSION=0.07
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.zevv.nl/wmifinfo/$SOURCE
+        WEB_SITE=http://www.zevv.nl/wmifinfo/
+          MD5[0]=f29ab4e1227003e9117d7903c74920cd
+    MENU_ITEM[0]="wmifinfo"
+    MENU_EXEC[0]="wmifinfo"
+    MENU_DESC[0]="Dockapp network info for all interfaces"
+         ENTERED=20031110
+         UPDATED=20031110
+      LICENSE[0]=GPL
+      MAINTAINER=charkins@pobox.com
+           SHORT="wmifinfo is a simple applet showing basic network info for all available interfaces"
+cat << EOF
+wmifinfo is a simple applet showing basic network info for all available interfaces. It shows IP address, netmask, gateway and MAC address.
+
+Left-button click moves to the next interface, right-button click calls ifup/ifdown scripts. 
+EOF
