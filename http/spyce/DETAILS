@@ -3,11 +3,12 @@
           SOURCE=$SPELL-$VERSION.tgz
           MD5[0]='14166364890b7892ea9574682be8a5ed'
       LICENSE[0]=Apache
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/-*/}
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
         WEB_SITE=http://spyce.sourceforge.net/
          ENTERED=20021125
          UPDATED=20030726
+       BUILD_API=2
            SHORT='Spyce is about embedding Python in HTML to create dynamic web pages'
 cat << EOF
 SPYCE is a server-side engine that supports simple and efficient
