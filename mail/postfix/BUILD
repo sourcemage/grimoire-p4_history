@@ -117,9 +117,9 @@
 ) > $C_FIFO 2>&1  &&  (
 
   sedit  "s:#mail_spool_directory = /var/spool/mail:mail_spool_directory = ${INSTALL_ROOT}/var/spool/mail:"  \
-         /etc/postfix/main.cf
+         ${INSTALL_ROOT}/etc/postfix/main.cf
 
-  sedit  "s|#alias_maps = hash:/etc/aliases$|alias_maps = hash:/etc/aliases|"  \
-         /etc/postfix/main.cf
+  sedit  "s|#alias_maps = hash:/etc/aliases$|alias_maps = hash:${INSTALL_ROOT}/etc/aliases|"  \
+         ${INSTALL_ROOT}/etc/postfix/main.cf
 
 )
