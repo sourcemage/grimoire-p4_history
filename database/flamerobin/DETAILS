@@ -1,0 +1,20 @@
+           SPELL=flamerobin
+         VERSION=0.1
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://fbmanager.SourceForge.net
+   SOURCE_URL[0]=$WEB_SITE/$SOURCE
+          LICENSE=GPL
+           MD5[0]=05e70af8de49ba8bea07d5d7c9036672
+          ENTERED=20040723
+          UPDATED=20040723
+SHORT="database administration tool for Firebird DBMS"
+cat << EOF
+FlameRobin is a database administration tool for Firebird DBMS.
+ To goal is to build the tool that is:
+ - lightweight (small footprint, fast execution)
+ - cross-platform (Linux, Windows for start, others planned too)
+ - dependant only on other open source software
+EOF
