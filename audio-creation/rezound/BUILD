@@ -1,4 +1,2 @@
-patch -p1 <$SCRIPT_DIRECTORY/sourcemage.patch &&
-./configure  --prefix=/usr  \
-             $OPTS          &&
-make
+patch  -p1  <  $SCRIPT_DIRECTORY/flex.patch  &&
+default_build
