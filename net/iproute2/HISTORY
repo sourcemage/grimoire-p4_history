@@ -1,3 +1,11 @@
+2005-01-25 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.6.10-ss050124
+	  SOURCE_DIRECTORY uses the last part of VERSION
+	* ip.patch: Added to fix compile problems (found from Lunar)
+	  http://lunar-linux.org/pipermail/lunar-bugs/2004-May/002350.html
+	* BUILD,PRE_BUILD: Moved patches and sedits to PRE_BUILD
+	  Added ip.patch to PRE_BUILD
+
 2005-01-13 Andrew Stitt <astitt@sourcemage.org>
 	* BUILD: refix bug 7868, the fix wasnt quite right
 	* Makefile.patch: add to fix another bug in a makefile that caused
