@@ -111,7 +111,7 @@ output_module_config() {
   done
 }
 
-
+config_query HTTPD_CHECKOUT "Would you like to get the most current svn head?" n
 
 # Perform the configuration
 if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
