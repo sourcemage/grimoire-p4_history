@@ -1,20 +1,5 @@
-(
+# fix for gcc-3.4
+  sed -i "/^extern/d" scaffold.c                        &&
+  patch  -p 1  <  $SCRIPT_DIRECTORY/tcp_wrappers.patch  &&
 
-  patch  -p 1  <  $SCRIPT_DIRECTORY/tcp_wrappers.patch
-
-  make  REAL_DAEMON_DIR=${INSTALL_ROOT}/usr/sbin linux  &&
-  prepare_install                        &&
-  for  EXECUTABLE in *; do
-    if  [  -x  $EXECUTABLE ];  then
-      cp       $EXECUTABLE  ${INSTALL_ROOT}/usr/sbin
-    fi
-  done                                   &&
-  cp  tcpd.h     ${INSTALL_ROOT}/usr/include            &&
-  cp  libwrap.a  ${INSTALL_ROOT}/usr/lib                &&
-
-  # Copy man pages
-  for i in $( seq 1 8 ) ; do
-    install -m 644 *.$i ${INSTALL_ROOT}/usr/man/man$i > /dev/null 2>&1
-  done
-
-) > $C_FIFO 2>&1
+  make  REAL_DAEMON_DIR=${INSTALL_ROOT}/usr/sbin linux  
