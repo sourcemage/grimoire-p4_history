@@ -7,7 +7,7 @@ mk_source_dir  $SOURCE_DIRECTORY.bld          &&
 cd $SOURCE_DIRECTORY.bld                      &&
 
 # reconstruct previous congfigure environment
-tar -xjf $SOURCE_CACHE/$SOURCE2               &&
+unpack $SOURCE2                               &&
 
 cp  -a save/* $SOURCE_DIRECTORY               &&
 rm -r save
