@@ -1,8 +1,6 @@
-dispel  archive chat crypto devel disk doc          1>/dev/null  2>&1
-dispel  editors ftp http games gnome ham kde        1>/dev/null  2>&1
-dispel  maili news multimedia net perl-cpan         1>/dev/null  2>&1
-dispel  printer shell-term-fm utils windowmanagers  1>/dev/null  2>&1
-dispel  x11                                         1>/dev/null  2>&1
+for section in $GRIMOIRE/*; do
+  dispel  $section 1>/dev/null  2>&1
+done
 
 (
 
