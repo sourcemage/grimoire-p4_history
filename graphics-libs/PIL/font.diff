@@ -1,0 +1,12 @@
+--- _imagingft.c	2004-05-09 11:00:43.000000000 +0200
++++ _imagingft.c.cp	2004-05-09 11:08:17.000000000 +0200
+@@ -15,7 +15,8 @@
+ #include "Python.h"
+ #include "Imaging.h"
+ 
+-#include <freetype/freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ 
+ #if PY_VERSION_HEX < 0x01060000
+ #define PyObject_DEL(op) PyMem_DEL((op))
