@@ -1,4 +1,3 @@
-(
 patch -p1 < $SCRIPT_DIRECTORY/xloadimage.4.1-linux.patch 	&&
 patch -p1 < $SCRIPT_DIRECTORY/xloadimage.4.1-nobr.patch 	&&
 patch -p1 < $SCRIPT_DIRECTORY/xloadimage-unaligned.patch 	&&
@@ -9,8 +8,7 @@ for i in $(grep -rl varargs.h .)
 	do sedit "s/varargs.h/stdarg.h/g" $i
 done                                                            &&
 #glibc stopped exporting this from libc
-sedit '16a\
-\#include \<errno.h\>\' img.c                                   &&
+sedit '16i#include <errno.h>' img.c                             &&
 
 cd jpeg 							&&
 mv Makefile Makefile.orig 					&&
@@ -20,10 +18,4 @@ xmkmf 								&&
 cd jpeg 							&&
 make libjpeg.a 							&&
 cd .. 								&&
-make 								&&
-
-prepare_install 						&&
-
-make    DESTDIR=/ install install.man				
-
-) > $C_FIFO 2>&1
+make
