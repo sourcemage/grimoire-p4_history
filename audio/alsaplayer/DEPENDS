@@ -1,5 +1,8 @@
 depends  gtk+      &&
-depends  alsa-lib  &&
+optional_depends  "alsa-lib"		 \
+		  ""			 \
+		  ""			 \
+		  "for ALSA support"      &&
 
 optional_depends  "audiofile"            \
                   "--enable-audiofile"   \
