@@ -14,6 +14,7 @@ cat << EOF
 LUFS is a hybrid userspace filesystem framework supporting an indefinite number of filesystems transparently for any application. It consists of a kernel module and an userspace daemon. Basically it delegates most of the VFS calls to a specialized daemon which handles them.
 
 Currently supported filesystems are:
+*  autofs
 *  cardfs
 *  cefs
 *  ftpfs (including Novel Netware FTP)
@@ -21,5 +22,6 @@ Currently supported filesystems are:
 *  localfs
 *  locasefs
 *  nfs
+*  own_fs
 *  sshfs
 EOF
