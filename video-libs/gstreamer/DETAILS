@@ -1,14 +1,13 @@
             SPELL=gstreamer
-          VERSION=0.6.3
+          VERSION=0.6.4
            BRANCH=$(echo $VERSION|cut -d . -f 1,2)
            SOURCE=$SPELL-$VERSION.tar.bz2
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
     SOURCE_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-           MD5[0]=1ee3e80ff11c6a8a202b1cc0978c0528
+           MD5[0]=171a2aa158b4bd2c9bb5889f5546aefa
        LICENSE[0]=LGPL
          WEB_SITE=http://www.gstreamer.net
-       MAINTAINER=jon-sven@frisurf.no
           ENTERED=20020507
           UPDATED=20030125
             SHORT="This is GStreamer, a framework for streaming media."
