@@ -1,3 +1,15 @@
+2004-08-26 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED
+	  Shortened SHORT
+	* init.d/keymap: Renamed to keymap.sh
+	* init.d/hostname: Renamed to hostname.sh
+	* init.d/mountall: Renamed to mountall.sh
+	* Follow LANANA (http://www.lanana.org/lsbreg/init/init.txt)
+	* FINAL: Rename the above appropriatly in case `cast -r` wasn't used
+	  keymap and hostname are not listed in /etc/sysconfig/facilities
+	  Used the wrong test (didn't need [...] around the grep)
+	  Print out message informing the user of the repair
+
 2004-08-24 Eric Sandall <eric@sandall.us>
 	* init.d/keymap.sh: Renamed to init.d/keymap
 	  Formatted to simpleinit-msb
