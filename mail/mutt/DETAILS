@@ -32,10 +32,19 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     MENU_ITEM[0]=${SPELL}
     MENU_EXEC[0]=${SPELL}
     MENU_DESC[0]=${SHORT}
+	
 cat << EOF
+
 Mutt is a small but very powerful text-based MIME mail client. It is
 highly configurable, and is well-suited to the mail power user with
 advanced features like key bindings, keyboard macros, mail threading,
 regular expression searches, and a powerful pattern matching language
 for selecting groups of messages.
+
+For details about the multi-signatures patch:
+http://cedricduval.free.fr/mutt/index.php3#sig
+
+For details about the trash patch:
+http://cedricduval.free.fr/mutt/index.php3#trash
+
 EOF

@@ -1,0 +1,18 @@
+if  !  grep  -q  "PATCH_SIGNATURE="  $SPELL_CONFIG;  then
+
+  if query "Do you want to apply the multi signature patch ?" n
+    then  echo "PATCH_SIGNATURE=y" >> $SPELL_CONFIG
+    else  echo "PATCH_SIGNATURE=n" >> $SPELL_CONFIG
+  fi
+
+fi
+
+if  !  grep  -q  "PATCH_TRASH="  $SPELL_CONFIG;  then
+
+  if query "Do you want to apply the trash bin patch ?" n
+    then  echo "PATCH_TRASH=y" >> $SPELL_CONFIG
+    else  echo "PATCH_TRASH=n" >> $SPELL_CONFIG
+  fi
+
+fi
+
