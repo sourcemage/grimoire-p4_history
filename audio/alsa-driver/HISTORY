@@ -1,3 +1,12 @@
+2003-07-30  Arwed v. Merkatz <v.merkatz@gmx.net>
+
+	don't install the init script provided by alsa-driver
+	only create the sound devices and modules.d/alsa if devfs isn't mounted
+	on /dev (still need a good modules.d/alsa for devfs)
+	removed POST_INSTALL, the message to compile the kernel with soundcore
+	module is not needed, since BUILD will fail without soundcore
+	added init script for the new init system
+
 2003-07-30  Eric Sandall <eric@sandall.us>
 
         Bump to 0.9.6

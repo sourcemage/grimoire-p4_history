@@ -1,3 +1,5 @@
+. /etc/sysconfig/devices
+
 mconf()  {
 
   cat  <<  EOF
@@ -26,7 +28,8 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
 
 (
 
-ln -sf /bin/awk /usr/bin/awk        &&
+  sedit  "s:/usr/bin/awk:/bin/awk:"  utils/convert_isapnp_ids  &&
+  sedit  "s: install-scripts : :"    Makefile  &&
 
   modprobe  soundcore		    &&
   ./configure  --prefix=/usr         \
@@ -43,41 +46,39 @@ ln -sf /bin/awk /usr/bin/awk        &&
 ) > $C_FIFO 2>&1  &&  (
 
   make    install
-  ./snddevices
-  rm  -f   /dev/snd
-  ln  -sf  /devices/snd  /dev/snd
-  chown root.audio /dev/adsp
-  chmod 777 /dev/adsp
-  chown root.audio /dev/amidi
-  chmod 777 /dev/amidi
-  chown root.audio /dev/audio
-  chmod 777 /dev/audio
-  chown root.audio /dev/dsp
-  chmod 777 /dev/dsp
-  chown root.audio /dev/midi*
-  chmod 777 /dev/midi*
-  chown root.audio /dev/mixer
-  chmod 777 /dev/mixer
-  chown root.audio /dev/sequencer*
-  chmod 777 /dev/sequencer*
-  chown root.audio /dev/snd
-  chmod 777 /dev/snd
-  chown root.audio /devices/snd/*
-  chmod 777 /devices/snd/*
-  ln  -sf  ../init.d/alsasound  /etc/rcS.d/S99alsasound
- 
-  if  [  !  -f   /etc/modules.d/alsa  ];  then
-    mkdir   -p   /etc/modules.d
-    mconf   >    /etc/modules.d/alsa
-    touch        /etc/modules.d/alsa
+  if [ $DEVICES == /devices ]; then
+    ./snddevices
+    rm  -f   /dev/snd
+    ln  -sf  /devices/snd  /dev/snd
+    chown root.audio /dev/adsp
+    chmod 777 /dev/adsp
+    chown root.audio /dev/amidi
+    chmod 777 /dev/amidi
+    chown root.audio /dev/audio
+    chmod 777 /dev/audio
+    chown root.audio /dev/dsp
+    chmod 777 /dev/dsp
+    chown root.audio /dev/midi*
+    chmod 777 /dev/midi*
+    chown root.audio /dev/mixer
+    chmod 777 /dev/mixer
+    chown root.audio /dev/sequencer*
+    chmod 777 /dev/sequencer*
+    chown root.audio /dev/snd
+    chmod 777 /dev/snd
+    chown root.audio /devices/snd/*
+    chmod 777 /devices/snd/*
+    if  [  !  -f   /etc/modules.d/alsa  ];  then
+      mkdir   -p   /etc/modules.d
+      mconf   >    /etc/modules.d/alsa
+      touch        /etc/modules.d/alsa
+    fi
+    MOD="/etc/modules.conf"
+    INC="include  /etc/modules.d/alsa"
+
+    grep    -q  "$INC"      $MOD  ||
+    echo        "$INC"  >>  $MOD
+    depmod  -a
+    true
   fi
-
-  MOD="/etc/modules.conf"
-  INC="include  /etc/modules.d/alsa"
-
-  grep    -q  "$INC"      $MOD  ||
-  echo        "$INC"  >>  $MOD
-  depmod  -a
-  true
-
 )
