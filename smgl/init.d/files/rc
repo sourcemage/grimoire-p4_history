@@ -86,7 +86,7 @@ run_runlevel()
       . $lvl_file
     else
       echo "not a runlevel: $lvl"
-      exit 5
+      exit 0
     fi
   ) || essential_script_failure
 }
