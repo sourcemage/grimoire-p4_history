@@ -8,7 +8,6 @@
         sedit  's/for f in `cd p/for f in `cd $(srcdir)\/p/'  gcc/p/Make-lang.in
   fi
 
-  mk_source_dir  $SOURCE_DIRECTORY.bld  &&
   cd $SOURCE_DIRECTORY.bld              &&
 
   $SOURCE_DIRECTORY/configure           \
@@ -24,8 +23,6 @@
 
   ln    -sf  ../../../../bin/cpp  \
              /opt/gcc2/lib/gcc-lib/$BUILD/$VERSION/cpp  &&
-  ln    -sf  ../opt/gcc2/bin/cpp  /lib/cpp              &&
-
-  rm_source_dir  $SOURCE_DIRECTORY.bld
+  ln    -sf  ../opt/gcc2/bin/cpp  /lib/cpp
 
 ) > $C_FIFO 2>&1

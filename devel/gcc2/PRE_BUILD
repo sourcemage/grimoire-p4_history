@@ -1,5 +1,6 @@
-default_pre_build         &&
-cd     $SOURCE_DIRECTORY  &&
+default_pre_build                     &&
+mk_source_dir  $SOURCE_DIRECTORY.bld  &&
+cd             $SOURCE_DIRECTORY      &&
 
 if    [  "$PASCAL"  ]
 then  unpack  $SOURCE2             &&
