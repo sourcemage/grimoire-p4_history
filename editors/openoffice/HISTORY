@@ -1,3 +1,23 @@
+2003-09-11  Geoffrey Derber <gderber@sourcemage.org>
+
+		Updated to 1.1rc4
+		somewhat re-wrote BUILD
+			removing lots of excess code
+			not needed for 1.1
+			--enable-libart option removes
+			dependency on libgpc
+		re-wrote PRE_BUILD
+			removed 1.0 patching
+			added a bison build
+			added PAM header files needed
+			for compile
+
+		TODO:
+			figure out the language (--with-lang)
+			and the dictionary (--with-dict) options
+			possible values (incompletely?) listed in:
+			oo_1.1rc4_src/config_office/set_soenv
+
 2003-09-05  Sergey Lipnevich  <sergey@sourcemage.org>
 
 		Add US mirrors.
