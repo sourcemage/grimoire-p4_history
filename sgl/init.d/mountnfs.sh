@@ -15,7 +15,7 @@
 
 start() {
 
-  echo  -n  "Mounting remote filesystems..."
+  echo  "Mounting remote filesystems..."
   mount    -a -F -t nfs,ncpfs,smbfs
   evaluate_retval
 
@@ -24,7 +24,7 @@ start() {
 
 stop() {
 
-  echo     -n "Unmounting remote filesystems... "
+  echo  "Unmounting remote filesystems... "
   umount   -a -f -r -t smbfs,nfs,ncpfs
   evaluate_retval
 
