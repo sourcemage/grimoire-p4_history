@@ -38,7 +38,7 @@ default 0
 timeout 10
 
 # uncomment the next line if you wish to use LBA (usual for large IDE drives)
-# lba32
+lba32
 
 # defines menu foreground/background, highlight foreground/background
 color  white/blue white/cyan
@@ -48,8 +48,10 @@ color  white/blue white/cyan
 # as well as the root= entry.  You may also wish to add additional arguments,
 # such as ide-scsi= if you're using an IDE CDROM burner.
 
-title  Sorcerer GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=nomount
+title  Source Mage GNU/Linux $UNAME_R
+kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION}
+root=${LIKELY_ROOT}
+devfs=nomount
 
 EOF
 }
