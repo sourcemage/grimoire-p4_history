@@ -1,14 +1,17 @@
            SPELL=xawtv
-         VERSION=3.79
-          SOURCE=${SPELL}_$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
-   SOURCE_URL[0]=http://bytesex.org/$SPELL/$SOURCE
+         VERSION=3.82
+          SOURCE=${SPELL}_${VERSION}.tar.gz
+         SOURCE2=tv-fonts-1.0.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://bytesex.org/${SPELL}/${SOURCE}
+  SOURCE2_URL[0]=http://bytesex.org/${SPELL}/${SOURCE2}
+          MD5[0]=4b3800dabe22856ba84cf2e2ba67c234
+          MD5[1]=0c491786471f6ed54b2fb0ec525c5d9a
         WEB_SITE=http://bytesex.org/xawtv
          ENTERED=20010922
          UPDATED=20021125
-          MD5[0]=6075f892cc6a3a65b03ea5ece7290590
-	     LICENSE[0]=GPL
-	  MAINTAINER=burududu@hotpop.com
+      LICENSE[0]=GPL
+      MAINTAINER=burududu@hotpop.com
            SHORT="xawtv is a tv program for use with bttv drivers or video4linux."
 cat << EOF
 XawTV is a simple Xaw-based TV program which uses the bttv driver or
