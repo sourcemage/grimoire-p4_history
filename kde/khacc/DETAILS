@@ -1,13 +1,15 @@
+source  $SCRIPT_DIRECTORY/../KDE_DETAILS
            SPELL=khacc
-         VERSION=3.2.2
+         VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/qhacc/$SOURCE
+          MD5[0]=813f027ef02989423b58c69d9751c691
         WEB_SITE=http://qhacc.sourceforge.net
          ENTERED=20030518
          UPDATED=20030808
-          MD5[0]=3dbda3814fdb456bfe2e59a41fed9679
-         LICENSE=GPL
+      LICENSE[0]=GPL
+       BUILD_API=2
 	    DOCS="README UPGRADING"
            SHORT="KDE bank account manager."
 cat << EOF
