@@ -1,26 +1,43 @@
-if query "Do you want to use ALSA " y ; then
-	depends alsa-lib 
-fi
-
-if query "Do you want to use Jack " y ; then
-	depends JACK-DRIVER
-fi
-
-if query "Do you want to use the GTK interface " y ; then
-	depends gtk+2 &&
-	depends gtkglext
+if  [  "$GTK"  ==  "y"  ]
+then
+  depends gtkglext
 else
-	depends openmotif
-fi
+  depends  openmotif
+fi  &&
 
-if query "Do you want to use ruby as scripting language " y ; then
-	depends ruby
+if  [  "$RUBY"  ==  "y"  ]
+then
+  depends  ruby
 else
-	depends guile
-fi
+  depends  guile
+fi  &&
 
-optional_depends  "GLUT" "--with-gl" "--without-gl" "for openGL display (rocks!)" &&
-optional_depends  "ladspa" "--with-ladspa" "--without-ladspa" "for LADSPA plugin support"
-optional_depends  "gsl" "--with-gsl" "--without-gsl" "better numerical support"
-optional_depends  "fftw2" "--with-fftw" "--without-fftw" "better FFT support" 
+optional_depends  alsa-lib                       \
+                  ""                             \
+                  ""                             \
+                  "for ALSA sound card support"  &&
 
+optional_depends  JACK-DRIVER              \
+                  ""                       \
+                  ""                       \
+                  "for JACK audio server"  &&
+
+optional_depends  OPENGL                         \
+                  "--with-gl"                    \
+                  "--without-gl"                 \
+                  "for openGL display (rocks!)"  &&
+
+optional_depends  ladspa                       \
+                  "--with-ladspa"              \
+                  "--without-ladspa"           \
+                  "for LADSPA plugin support"  &&
+
+optional_depends  gsl                         \
+                  "--with-gsl"                \
+                  "--without-gsl"             \
+                  "better numerical support"  &&
+
+optional_depends  fftw2                 \
+                  "--with-fftw"         \
+                  "--without-fftw"      \
+                  "better FFT support" 
