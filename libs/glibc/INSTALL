@@ -59,7 +59,7 @@ make  install             &&
 local  GLIBC_INPUTFILE  GLIBC_CHARMAP  GLIBC_LOCALE  &&
 if  [  -z  "$GLIBC_LOCALES"  ];  then
   local  GLIBC_DESCRIPTION                                                         &&
-  cat  $SCRIPT_DIRECTORY/locales-$VERSION  |
+  cat  $SCRIPT_DIRECTORY/locales                 |
   while  read  GLIBC_LOCALE  GLIBC_DESCRIPTION;  do
     GLIBC_INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`                             &&
       GLIBC_CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`                             &&

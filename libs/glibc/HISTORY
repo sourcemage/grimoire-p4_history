@@ -1,3 +1,17 @@
+2004-12-11 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated NPTL version to 2.3.4
+	  Updated non-NPTL version to 2.3.3
+	  SOURCE3 removed, SOURCE4 renamed
+	  Use CVS_VERSION for the NPTL release
+	* PRE_BUILD: SOURCE3 removed, renamed SOURCE4 to SOURCE3
+	  Removed application of 2.3.2 gcc 3.3 patch
+	* CONFIGURE,INSTALL: Use locales instead of locales-$VERSION
+	* locales: Branched from locales-2.3.3 as both versions of glibc now use
+	  the locales from 2.3.3+
+	* locales-2.3.2,locales-2.3.3: Removed
+	* WIP: This new "setup" for glibc fixes some problems on my SPARC and
+	  needs to be tested again, sorry about that.
+
 2004-12-10 Eric Sandall <eric@sandall.us>
 	* BUILD: More fixes for sparc64 from Gentoo's 2.3.3 ebuild
 

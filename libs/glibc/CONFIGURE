@@ -6,14 +6,14 @@
 # the selected locales and you'd need to reconfigure them again...
 #
 if  query  "Would you like to select locales?"  n;  then
-  local  GLIBC_LOCALES_LIST                                     &&
-  persistent_add  GLIBC_LOCALES                                 &&
-  GLIBC_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales-$VERSION`  &&
-  BACKTITLE="Glibc Configuration"                               &&
-      TITLE="Locale Selection"                                  &&
+  local  GLIBC_LOCALES_LIST                            &&
+  persistent_add  GLIBC_LOCALES                        &&
+  GLIBC_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales`  &&
+  BACKTITLE="Glibc Configuration"                      &&
+      TITLE="Locale Selection"                         &&
        HELP="Translated messages are automatically installed, but the locale database that controls other behavior is not.  
 Please select desired locale or locales.
-If none are selected then all will be installed."               &&
+If none are selected then all will be installed."      &&
 
   GLIBC_LOCALES=`dialog  --backtitle  "$BACKTITLE"  \
                          --title      "$TITLE"      \

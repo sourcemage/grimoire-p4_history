@@ -28,17 +28,12 @@ else
   # Now unpack the rest of glibc fixes in the normal location
   #
   unpack  $SOURCE2  ${MD5[1]}                       &&
-  unpack  $SOURCE3  ${MD5[2]}                       &&
-  #
-  # Apply gcc 3.3 patch
-  #
-  bzcat  ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
   #
   # Unpack glibc-kernel-headers
   #
   mkdir  $GLIBC_HEADERS_DIR                         &&
   cd  $GLIBC_HEADERS_DIR                            &&
-  unpack  $SOURCE4  ${MD5[3]}
+  unpack  $SOURCE3  ${MD5[2]}
 fi  &&
 
 #
