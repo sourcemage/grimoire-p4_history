@@ -1,16 +1,16 @@
            SPELL=libgtkhtml
-         VERSION=2.1.8
+         VERSION=2.2.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]="0c1828bcc1aec27ddad37346961b6414"
+          MD5[0]="fad4361b134fec24127491c800f2a0c5"
         WEB_SITE=http://gtkhtml2.codefactory.se
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=LGPL
          ENTERED=20020509
-         UPDATED=20030106
+         UPDATED=20030120
            SHORT="Gtkhtml2 is a library for displaying htmlpages"
 cat << EOF
 Gtkhtml2 (sometimes called libgtkhtml2) is a small and standards
