@@ -1,0 +1,14 @@
+# @usage configure_optional <1:test> <2:enable-option> <3:disable-option> <4:prompt> <5:hint>
+# works right if <test> is part of both <enable-option> and <disable-option>
+# @return 0 if disabled
+function configure_optional() {
+  if ! grep -q "${1#-}" $SPELL_CONFIG; then
+    local OPTION="$2"
+    query "$4" "$5" || OPTION="$3"
+    echo "OPTS=\"\$OPTS $OPTION\"" >> $SPELL_CONFIG
+  fi
+  # return the `enabled' flag for the option
+  grep -q "${2#--}" $SPELL_CONFIG
+}
+
+configure_optional 'root-filter' '--enable-root-filter' '--disable-root-filter' 'Strictly forbid access to the root user?' y
