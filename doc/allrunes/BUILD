@@ -23,6 +23,6 @@
 
     cp  *.dvi       /usr/doc/$SPELL                     &&
     cp  ar_demo.*   /usr/doc/$SPELL                     &&
-    cp  README.txt  /usr/doc/$SPELL
+    cp  README.TXT  /usr/doc/$SPELL
 
 ) > $C_FIFO 2>&1
