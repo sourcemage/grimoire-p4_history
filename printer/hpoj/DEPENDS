@@ -12,7 +12,7 @@ optional_depends  "net-snmp"  \
                   "--without-snmp"  \
                   "for JetDirect (network printing) support"  &&
 
-optional_depends  "postscript-interpreter"  \
+optional_depends  POSTSCRIPT-INTERPRETER  \
                   ""  \
                   ""  \
                   "for improved quality printing on non-PostScript models (if you are using CUPS, choose espgs)"  &&
@@ -35,3 +35,4 @@ optional_depends  "qt-x11"  \
                   "--with-qt"  \
                   "--without-qt"  \
                   "for installation and use of the GUI xojpanel program"
+
