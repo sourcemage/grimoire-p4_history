@@ -1,7 +1,7 @@
 (
 
-  message "${MESSAGE_COLOR}Downloading recent source...${DEFAULT_COLOR}" &&
-  svn export --force http://svn.collab.net/repos/rapidsvn/trunk/ . &&
+# message "${MESSAGE_COLOR}Downloading recent source...${DEFAULT_COLOR}" &&
+# svn export --force http://svn.collab.net/repos/rapidsvn/trunk/ . &&
 
   if ! [ -x ./configure ]; then
     ./autogen.sh | true
