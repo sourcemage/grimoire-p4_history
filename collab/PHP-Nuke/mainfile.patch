@@ -1,0 +1,113 @@
+--- old/html/mainfile.php	2003-03-27 22:26:32.000000000 -0800
++++ new/html/mainfile.php	2003-04-24 16:13:17.000000000 -0700
+@@ -29,39 +29,17 @@
+     }
+ }
+ 
+-$phpver = explode(".", $phpver);
+-$phpver = "$phpver[0]$phpver[1]";
+-if ($phpver >= 41) {
+-    $PHP_SELF = $_SERVER['PHP_SELF'];
+-}
+-
+ if (!ini_get("register_globals")) {
+-    import_request_variables('GPC');
+-}
+-
+-foreach ($_GET as $secvalue) {
+-    if ((eregi("<[^>]*script*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*object*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*iframe*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*applet*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*meta*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*style*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*form*\"?[^>]*>", $secvalue)) ||
+-	(eregi("<[^>]*img*\"?[^>]*>", $secvalue)) ||
+-	(eregi("\([^>]*\"?[^)]*\)", $secvalue)) ||
+-	(eregi("\"", $secvalue))) {
+-	die ("I don't like you...");
+-    }
+-}
+-
+-foreach ($_POST as $secvalue) {
+-    if (eregi("<[^>]*script*\"?[^>]*>", $secvalue)) {
+-        Header("Location: index.php");
+-        die();
++    $php_ver = phpversion();
++    $php_ver = explode(".", $php_ver);
++    $phpver = "$php_ver[0]$php_ver[1]";
++    if ($phpver >= 41) {
++	$_SERVER['PHP_SELF'] = $_SERVER['PHP_SELF'];
++	import_request_variables('GPC');
+     }
+ }
+ 
+-if (eregi("mainfile.php",$PHP_SELF)) {
++if (eregi("mainfile.php",$_SERVER['PHP_SELF'])) {
+     Header("Location: index.php");
+     die();
+ }
+@@ -81,6 +59,63 @@
+     $dbi = sql_connect($dbhost, $dbuname, $dbpass, $dbname);
+ }
+ 
++// Security By phpSecure.info
++$user=base64_decode($user);
++if (eregi("\'",$user) || eregi("<",$user) || eregi(">",$user) || eregi('\"',$user)) {
++    $user=base64_encode(htmlspecialchars($user,ENT_QUOTES));
++    $_COOKIE["user"] = $user;
++    $HTTP_COOKIE_VARS["user"] = $user;
++}else{
++    $user=base64_encode($user);
++    $_COOKIE["user"] = $user;
++    $HTTP_COOKIE_VARS["user"] = $user;
++}
++
++
++$admin=base64_decode($admin);
++if (eregi("\'",$admin) || eregi("<",$admin) || eregi(">",$admin) || eregi('\"',$admin)) {
++    $admin=base64_encode(htmlspecialchars($admin,ENT_QUOTES));
++    $_COOKIE["admin"] = $admin;
++    $HTTP_COOKIE_VARS["admin"] = $admin;
++}else{
++    $admin=base64_encode($admin);
++    $_COOKIE["admin"] = $admin;
++    $HTTP_COOKIE_VARS["admin"] = $admin;
++}
++
++
++
++foreach ($_REQUEST as $key=>$value) {
++
++    if (is_admin(array($admin)) != 1){
++
++	$value = str_replace(array('script','<object','<iframe','<applet','<meta','<style','<form','<img','<body','<link'),array('s&#99;ript','&#60;object','&#60;iframe','&#60;applet','&#60;meta','&#60;style','&#60;form','&#60;img','&#60;body','&#60;link'),$value);
++
++	$value = str_replace(array(')','|'),array('&#41;','&#124;'),$value);
++
++	$value = str_replace(array('url(','expression(','onclick','ondblclick','onhelp','onmousedown','onmousemove','onmouseout','onmouseover','onmouseup','onblur','onafterupdate','onbeforeupdate','onkeydown','onkeypress','onkeyup','onfocus','onerror','onload','onunload'),array('url*(','noexpression(','on*click','on*dblclick','on*help','on*mousedown','on*mousemove','on*mouseout','on*mouseover','on*mouseup','on*blur','on*afterupdate','on*beforeupdate','on*keydown','on*keypress','on*keyup','on*focus','on*error','on*load','on*unload'),$value);
++
++    }
++
++
++    if (get_magic_quotes_gpc()==0) {
++        $value = addslashes($value); // This will reproduce the option magic_quotes_gpc=1
++    }
++
++    ${$key} = $value;
++    $_REQUEST[$key] = $value;
++    if (isset($_POST[$key])) { $_POST[$key] = $value; }
++    if (isset($_COOKIE[$key])) { $_COOKIE[$key] = $value; }
++    if (isset($_FILE[$key])) { $_FILE[$key] = $value; }
++    if (isset($_GET[$key])) { $_GET[$key] = $value; }
++    if (isset($HTTP_POST_VARS[$key])) { $HTTP_POST_VARS[$key] = $value; }
++    if (isset($HTTP_COOKIE_VARS[$key])) { $HTTP_COOKIE_VARS[$key] = $value; }
++    if (isset($HTTP_FILE_VARS[$key])) { $HTTP_FILE_VARS[$key] = $value; }
++    if (isset($HTTP_GET_VARS[$key])) { $HTTP_GET_VARS[$key] = $value; }
++
++}
++// End Security
++
+ $mainfile = 1;
+ $sql = "SELECT sitename, nukeurl, site_logo, slogan, startdate, adminmail, anonpost, Default_Theme, foot1, foot2, foot3, commentlimit, anonymous, minpass, pollcomm, articlecomm, broadcast_msg, my_headlines, top, storyhome, user_news, oldnum, ultramode, banners, backend_title, backend_language, language, locale, multilingual, useflags, notify, notify_email, notify_subject, notify_message, notify_from, footermsgtxt, email_send, attachmentdir, attachments, attachments_view, download_dir, defaultpopserver, singleaccount, singleaccountname, numaccounts, imgpath, filter_forward, moderate, admingraphic, httpref, httprefmax, CensorMode, CensorReplace, copyright, Version_Num FROM ".$prefix."_config";
+ $result = $db->sql_query($sql);
