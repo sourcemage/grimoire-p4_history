@@ -5,5 +5,5 @@ depends  popt        &&
 depends  freetype2   &&
 depends  pango       &&
 
-optional_depends libgnomeui "--enable-gnome" "" "Enable gnome code" &&
-optional_depends pygtk2 "--with-python" "" "Enable python plugin"
+optional_depends libgnomeui "--enable-gnome" "--disable-gnome" "Enable gnome code" &&
+optional_depends pygtk2 "--with-python" "--without-python" "Enable python plugin"
