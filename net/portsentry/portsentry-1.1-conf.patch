@@ -21,7 +21,7 @@
  #KILL_ROUTE="/sbin/ipchains -I input -s $TARGET$ -j DENY -l"
 +#
 +# New iptables support for Linux kernel 2.4.x
-+KILL_ROUTE="/sbin/iptables -A INPUT -s $TARGET$ -j DROP"
++KILL_ROUTE="/usr/sbin/iptables -A INPUT -s $TARGET$ -j DROP"
  #
  # ipchain support for Linux (no logging of denied packets)
  #KILL_ROUTE="/sbin/ipchains -I input -s $TARGET$ -j DENY"
