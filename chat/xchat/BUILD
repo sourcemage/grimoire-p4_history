@@ -1,5 +1,5 @@
 (
-  patch -p1 < $SCRIPT_DIRECTORY/xc1810fixme3.diff
+#  patch -p1 < $SCRIPT_DIRECTORY/xc1810fixme3.diff
 
   case $IPV6 in
     y|Y) OPTS="$OPTS --enable-ipv6"
