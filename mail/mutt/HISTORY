@@ -1,93 +1,73 @@
-2003-08-24  Eric Sandall <eric@sandall.us>
+2003-10-28 Eric Sandall <eric@sandall.us>
+        * PROVIDES: Uppercase provides
+        * HISTORY: Formatted to Guru Handbook
 
-		Added dependency on automake  (Bug #3990)
+2003-08-24 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added dependency on automake  (Bug #3990)
 
-2003-04-08  M.L. <mlubrano@sourcemage.org>
+2003-04-08 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Version++ (1.4.1i).
  
-		Version++ (1.4.1i).
- 
-2003-03-02  M.L. <mlubrano@sourcemage.org>
+2003-03-02 M.L. <mlubrano@sourcemage.org>
+	* TRIGGERS: Added file.
 
-		Added TRIGGER file.
+2003-01-31 M.L. <mlubrano@sourcemage.org>
+	* CONFIGURE: Added (queries about patching).
 
-2003-01-31  M.L. <mlubrano@sourcemage.org>
+2003-01-31 Eric Schabell <eschabell@sourcemage.org>
+	* DETAILS,BUILD: Modified spell for two patches; one for signature
+	file selection and one for trash bin.
 
-		Added CONFIGURE (queries about patching).
+2003-01-03 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug #2072 thanks to eric_s@gmx.de (Eric Sesterhenn / snakebyte)
 
-2003-01-31  Eric Schabell <eschabell@sourcemage.org>
+2002-12-22 M.L. <mlubrano@sourcemage.org>
+	* Fixed bug #2023 thanks to jschmidt@fnal.gov (Jeff Schmidt)
 
-		Modified spell for two patches; one for signature
-		file selection and one for trash bin.
+2002-11-05 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Added MENU_* entries to DETAILS file.
 
-2003-01-03  M.L. <mlubrano@sourcemage.org>
+2002-10-14 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed bug #1350 (urls).
 
-		Fixed bug #2072 thanks to eric_s@gmx.de (Eric Sesterhenn / snakebyte)
+2002-10-13 M.L. <mlubrano@sourcemage.org>
+	* DETAILS: Fixed bug #1285 (MD5).	
 
-2002-12-22  M.L. <mlubrano@sourcemage.org>
+2002-08-21 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[0] field updated, built from the ".tar" archive.
 
-		Fixed bug #2023 thanks to jschmidt@fnal.gov (Jeff Schmidt)
+2002-08-15 M.L. <m.l@compaqnet.fr>
+	* DETAILS: MD5[x] field format conforming to grimoire-gurus handbook.
+	Added source url of last ressort (sourcemage mirror).
 
-2002-11-05  M.L. <mlubrano@sourcemage.org>
+2002-07-14 M.L. <m.l@compaqnet.fr>.
+	* USEGCC2: Removed
+	Gcc3 compile & trial run ok.
 
-		Added MENU_* entries to DETAILS file.
+2002-06-11 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added MD5.
 
-2002-10-14  M.L. <mlubrano@sourcemage.org>
+2002-06-10 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Added LICENSE.
 
-		Fixed bug #1350 (urls).
+2002-06-02 M.L. <m.l@compaqnet.fr>
+	* POST_INSTALL: Added to create /var/spool/mail dir and /var/spool/mail/root file
+	to help freshly installed boxes to get mail as soon as possible.
 
-2002-10-13  M.L. <mlubrano@sourcemage.org>
-	
-		Fixed bug #1285 (MD5).	
+2002-05-30 M.L. <m.l@compaqnet.fr>
+	* DETAILS: Jump to 1.4 series. Thanks to Bob Cottingham" <bobcottingham@hotmail.com>.
+	* PRE_BUILD: Added to handle new source tarball decompressing path.
 
-2002-08-21  M.L. <m.l@compaqnet.fr>
+2002-04-17 M.L.
+	* DETAILS: Added mirrors
 
-		MD5[0] field updated, built from the ".tar" archive.
+2002-09-15 M.L.	
+	* Changelog,HISTORY: mv Changelog HISTORY
 
-2002-08-15  M.L. <m.l@compaqnet.fr>
-
-		MD5[x] field format conforming to grimoire-gurus handbook.
-
-		Added source url of last ressort (sourcemage mirror).
-
-2002-07-14  M.L. <m.l@compaqnet.fr>.
-
-		Gcc3 compile & trial run ok.
-
-		Removed USEGCC2.
-
-2002-06-11  M.L. <m.l@compaqnet.fr>
-
-		Added MD5.
-
-2002-06-10  M.L. <m.l@compaqnet.fr>
-
-		Added LICENSE.
-
-2002-06-02  M.L. <m.l@compaqnet.fr>
-
-		Added POST_INSTALL to create /var/spool/mail dir and /var/spool/mail/root file
-		to help freshly installed boxes to get mail as soon as possible.
-
-2002-05-30  M.L. <m.l@compaqnet.fr>
-
-		Jump to 1.4 series. Thanks to Bob Cottingham" <bobcottingham@hotmail.com>.
-
-		Added PRE_BUILD to handle new source tarball decompressing path.
-
-2002-04-17  M.L.
-
-		Added mirrors
-
-2002-09-15  M.L.	
-
-		mv Changelog HISTORY
-
-2001-12-28  Kongar
-
-		mutt-1.3.24, kongar
-	
-		- added --enable-pop option to default build.
-		- added --enable-imap option to default build.
-		- added DEPENDS file to enable "--enable-ssl" option
-		  via optional depends mechanism.
+2001-12-28 Kongar
+	* DETAILS: mutt-1.3.24, kongar
+	* BUILD: Added --enable-pop option to default build.
+	added --enable-imap option to default build.
+	* DEPENDS: added DEPENDS file to enable "--enable-ssl" option
+	via optional depends mechanism.
 
