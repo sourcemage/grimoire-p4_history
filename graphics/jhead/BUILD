@@ -1,6 +1,2 @@
-(
-  make                               &&
-  prepare_install                    &&
-  cp jhead /usr/bin/
-
-)  >  $C_FIFO  2>&1
+  sed -i "s/-O3/$CFLAGS/" makefile &&
+  make
