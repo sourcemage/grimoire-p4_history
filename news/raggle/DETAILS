@@ -1,17 +1,15 @@
            SPELL=raggle
-         VERSION=0.3.1
+         VERSION=0.3.2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.raggle.org/files/$SOURCE
-          MD5[0]=35d3404fd7184a4a1179022e48bdc4c8
+          MD5[0]='076b7a16ec1439ae72286bf8ef8432e3'
         WEB_SITE=http://www.raggle.org/
+         BUILD_API=2
          ENTERED=20040904
          UPDATED=20040904
          LICENSE=GPL
            SHORT="Raggle is an RSS aggretator for the console"
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
 cat << EOF
 Raggle is a console RSS aggregator, written in Ruby. Features include
 customizable keybindings, basic HTML rendering, HTTP proxy support, OPML

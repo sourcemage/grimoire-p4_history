@@ -1,2 +1,1 @@
-sedit 's/usr\/local/usr\//' Makefile &&
-make install
+sedit 's/usr\/local/usr\//' Makefile
