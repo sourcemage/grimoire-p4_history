@@ -1,0 +1,24 @@
+version 3.10 has build problems against qt-x11-3.3.0
+
+make[2]: Entering directory `/usr/src/PyQt-x11-gpl-3.10/qttable'
+g++ -c -pipe -w -march=athlon-tbird -mmmx -m3dnow -pipe -O3 -D_REENTRANT -fPIC  
+-DSIP_MAKE_MODULE_DLL -DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DQT_SHARED 
+-I/usr/share/qt/mkspecs/default -I. -I. -I../../../include/python2.3 
+-I../../../include/qt -I/usr/include -o qttablepart0.o qttablepart0.cpp
+sipqttableQTable.cpp: In member function `QString
+   sipQCheckTableItem::sipProtect_content()':
+sipqttableQTable.cpp:10357: error: 'class QTableItem' has no member named '
+   content'
+sipqttableQTable.cpp: In member function `QString
+   sipQComboTableItem::sipProtect_content()':
+sipqttableQTable.cpp:11061: error: 'class QTableItem' has no member named '
+   content'
+sipqttableQTable.cpp: In member function `QString
+   sipQTableItem::sipProtect_content()':
+sipqttableQTable.cpp:12171: error: 'class QTableItem' has no member named '
+   content'
+make[2]: *** [qttablepart0.o] Error 1
+make[2]: Leaving directory `/usr/src/PyQt-x11-gpl-3.10/qttable'
+make[1]: *** [sub-qttable] Error 2
+make[1]: Leaving directory `/usr/src/PyQt-x11-gpl-3.10'
+
