@@ -1,13 +1,15 @@
            SPELL=kmplayer
-         VERSION=0.8.3rc2
+         VERSION=0.8.3rc4
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.xs4all.nl/~jjvrieze/$SOURCE
-          MD5[0]=d9de7af1d949d4c339d9cc787f05dc55
+          MD5[0]=1805e6b186d92ed5f0053b0992ca9dd2
         WEB_SITE=http://www.xs4all.nl/~jjvrieze/kmplayer.html
          ENTERED=20030202
-         UPDATED=
-           SHORT="KMplayer is a KDE gui for MPlayer"
+         UPDATED=20040826
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="KDE gui for MPlayer"
 cat << EOF
 kmplayer is a KDE GUI plugin for MPlayer. It also allows you to watch MPlayer video in Konqueror.
 EOF
