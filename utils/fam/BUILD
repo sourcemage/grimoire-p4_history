@@ -19,15 +19,9 @@
   make  -C  man      install  &&
 
   (
-    if  [  "$XINETD" = "y"  ];  then
-      install  -m  755  $SCRIPT_DIRECTORY/fam  /etc/xinetd.d
-      if  !  grep  -q  "^sgi_fam"  /etc/rpc;  then
-        echo  "sgi_fam  391002  fam" >> /etc/rpc
-      fi
-    else
-      source $SCRIPT_DIRECTORY/lib_runlevel
-      installscript  fam.sh
-    fi
+     if  !  grep  -q  "^sgi_fam"  /etc/rpc;  then
+       echo  "sgi_fam  391002  fam"  >>  /etc/rpc
+     fi
   )
 
 ) > $C_FIFO 2>&1
