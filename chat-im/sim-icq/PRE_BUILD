@@ -1,4 +1,5 @@
 default_pre_build         &&
-cd        $SOURCE_DIRECTORY  &&
-patch -p0 < $SCRIPT_DIRECTORY/patch
-
+cd        $SOURCE_DIRECTORY &&
+find . -name *.ll -exec sed -i -e "s/option nostack/option stack/" '{}' ';' #&&
+#sed -i -e "s/automake-1.7/automake/" Makefile.am &&
+#sed -i -e "s/aclocal-1.7/aclocal/" Makefile.am
