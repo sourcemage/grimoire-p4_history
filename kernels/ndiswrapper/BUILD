@@ -1,6 +1,6 @@
 (
 
-  make &&
+  CC=gcc make &&
   prepare_install &&
   make install
 
