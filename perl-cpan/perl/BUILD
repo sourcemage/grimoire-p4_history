@@ -16,13 +16,13 @@
 	      ;;
 
 	   *) case $NEW_CUSTOM  in
-		 y|Y)  ./Configure -Ui_db -Dprefix=${INSTALL_ROOT}/usr       \
+		 y|Y)  ./Configure -Ui_db -Dprefix=/usr       \
 		                          -Dlibperl=libperl.so               &&
 			cp config.sh $CONFIG                                 &&
 			echo "OLD_CUSTOM=y" | cat > $DEPENDS_CONFIG/perl     &&
 			echo "NEW_CUSTOM=n" | cat > $DEPENDS_CONFIG/perl
 			;;
-		    *)  ./Configure  -Dprefix=${INSTALL_ROOT}/usr -d -e      \
+		    *)  ./Configure  -Dprefix=/usr -d -e      \
 		        -Ui_db -Dusethreads -Ulocincpth -Dlibperl=libperl.so
 			;;
 	      esac
@@ -30,6 +30,6 @@
 
     make                                             &&
     prepare_install                                  &&
-    make    install
+    make  install DESTDIR=${INSTALL_ROOT} 
 
 ) > $C_FIFO 2>&1
