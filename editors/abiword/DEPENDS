@@ -6,6 +6,11 @@ depends  ImageMagick  &&
 depends  psiconv      &&
 depends  zlib         &&
 depends  gtk+         &&
+depends  bonobo       &&
+depends  gnome-libs   &&
+depends  gnome-print  &&
+depends  gnome-vfs    &&
+depends  gdk-pixbuf   &&
 
 #  This is naughty but effective in removing the old problematic depends
 grep  -v  "ABI_OPT"         $DEPENDS_STATUS  >  $DEPENDS_STATUS_BACKUP  &&
