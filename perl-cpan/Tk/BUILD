@@ -1,2 +1,2 @@
-  perl  Makefile.PL  &&
-  make               &&
+perl  Makefile.PL  &&
+make

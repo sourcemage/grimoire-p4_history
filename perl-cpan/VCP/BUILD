@@ -1,5 +1,2 @@
-#	unset CVSROOT    &&
-
-	perl Makefile.PL &&
-	make             &&
-#	make test        &&
+perl Makefile.PL &&
+make
