@@ -1,0 +1,9 @@
+Seems to begin compiling fine without the headers.patch and linux-2.6.patch, but it doesn't like LVM:
+
+cc -c -O2 -Wall -g -DLILO=0x810b760f `( if [ -r $ROOT/etc/lilo.defines ]; then cat $ROOT/etc/lilo.defines; else echo -DBDAT
+A -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DONE_SHOT -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL -DAT
+ARAID; fi ) | sed 's/-D/-DLCF_/g'` geometry.c
+geometry.c: In function `lvm_bmap':
+geometry.c:438: error: subscripted value is neither array nor pointer
+geometry.c:450: error: subscripted value is neither array nor pointer
+make[1]: *** [geometry.o] Error 1
