@@ -1,0 +1,24 @@
+           SPELL=seahorse2
+         VERSION=0.3.7
+          SOURCE=${SPELL}-${VERSION}-1.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/seahorse/${SOURCE}
+          MD5[0]=737632915b8ae6983aaf8043a585fbc2
+        WEB_SITE=http://seahorse.sourceforge.net/
+         ENTERED=20011123
+         UPDATED=20021127
+      LICENSE[0]=GPL
+      MAINTAINER=kahlage@chromebob.com
+    MENU_ITEM[0]="seahorse2"
+    MENU_EXEC[0]="seahorse"
+    MENU_DESC[0]="A gnome interface for gnupg"
+           SHORT="seahorse2 is a gnome interface for gnupg"
+cat << EOF
+Seahorse is a gnome interface for gnupg.  It's main function is to be a PGP/GPG Key Manager, though it has other components including a text editor and file manager.
+
+Key Manager Features:  Generating a key, deleting a key, importing key(s) from text or a file, exporting a key to text or a file.
+
+Text Editor Features:  Encrypting text, decrypting text, signing and clear singing text, verifying signed text, importing key(s) from text, and exporting a key to text.
+
+File Manager Features:  Not Yet Implemented.
+EOF
