@@ -16,7 +16,6 @@
 RUNLEVEL=S
 DEPENDS="+local_fs hotplug"
 PROGRAM=/sbin/udev
-UDEV=/udev
 SYSFS=/sys
 
 . /etc/init.d/smgl_init
@@ -41,13 +40,13 @@ start()
   for i in ${SYSFS}/block/*; do
     # add each drive
     export DEVPATH=${i#${SYSFS}}
-    $PROGRAM block
+    $PROGRAM block &
 
     # add each partition, on each device
     for j in $i/*; do
       if [ -f $j/dev ]; then
         export DEVPATH=${j#${SYSFS}}
-        $PROGRAM block
+        $PROGRAM block &
       fi
     done
   done
@@ -57,7 +56,7 @@ start()
       if [ -f $j/dev ]; then
         export DEVPATH=${j#${SYSFS}}
         CLASS=${i#${SYSFS}/class/}
-        $PROGRAM $CLASS
+        $PROGRAM $CLASS &
       fi
     done
   done
