@@ -45,6 +45,7 @@ then
 				;;
 		esac &&
 		pval=1 &&
+		md5sum=""
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch} &&
 		if [ "$md5sum" != "" ]
 		then
