@@ -1,15 +1,15 @@
            SPELL=libnids
-         VERSION=1.18
+         VERSION=1.19
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-          MD5[0]=5be2756b6495cd383d7ada0e4913c998
-      LICENSE[0]=GPL2
+          MD5[0]=6b6e767b3c0239cf00192f3738e44827
          ENTERED=20030404
          UPDATED=20030404
         WEB_SITE=http://libnids.sourceforge.net/
-      MAINTAINER=vydra@fria.fri.utc.sk
-           SHORT="Libnids is an implementation of an E-component of NIDS."
+      LICENSE[0]=GPL2
+       BUILD_API=2
+           SHORT="Implementation of an E-component of NIDS."
 cat << EOF
 Libnids is a library that provides the functionality of one of the NIDS 
 (Network Intrusion Detection System) components, namely E-component. 
