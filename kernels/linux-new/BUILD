@@ -26,6 +26,11 @@ backup_modules()  {
 
 
 (
+  # there is a problematic line in the Makefile:
+  # kbuild_2_4_nostdinc := -nostdinc $(shell $(CC) -print-search-dirs | sed -ne 's/install: \(.*\)/-I \1include/gp')
+  # That leads to troubles on a localized system (if "install:" is translated)
+
+  unset LANG
 
   yes  n  |  make  oldconfig
   cp  .config  $CONFIG_CACHE/kernel.config
