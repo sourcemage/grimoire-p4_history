@@ -11,7 +11,7 @@ if [ "$SVN_EXPORT_HEAD" == 'y' ]; then
   depends Python
 fi &&
 
-optional_depends WEBSERVER \
+optional_depends APACHE    \
                  '--with-apxs' \
                  '--without-apxs' \
                  'to create Apache 2 modules' &&
