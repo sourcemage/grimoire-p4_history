@@ -1,3 +1,12 @@
+2004-11-30 Eric Sandall <eric@sandall.us>
+	* firefox-init.patch: This is a diff of what my /usr/lib/firefox-1.0
+	  tree looked like before and after running firefox as root, so it should
+	  be all we need.
+	* firefox-init-0.9.tar.bz2: Removed.
+	* INSTALL: Apply firefox-init.patch to MOZILLA_HOME.
+	  I meant for /usr/lib/firefox to point to /usr/lib/firefox-$VERSION, so
+	  that's now fixed.
+
 2004-11-29 Eric Sandall <eric@sandall.us>
 	* Prefixed SVG with FIREFOX_
 	  Renamed FOO to FIREFOX_TARBALL and HEADCODE to FIREFOX_CVS
