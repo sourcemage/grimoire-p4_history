@@ -3,6 +3,7 @@ if    [  "$SKINS"  =  "y"  ]
 then  depends  beep-media-player-gui
 fi                                                    &&
 
+optional_depends "id3lib" "" "" "for id3v2 tag editing support"  &&
 optional_depends "gconf2"                             \
                  "--enable-gconf"                     \
                  "--disable-gconf"                    \
@@ -15,10 +16,6 @@ optional_depends "libvorbis"                          \
                  "--enable-vorbis"                    \
                  "--disable-vorbis"                   \
                  "Enable playing of Ogg Vorbis files" &&
-optional_depends "MPG123"                             \
-                 "--enable-mp3"                       \
-                 "--disable-mp3"                      \
-                 "Enable playing of MP3 files"        &&
 optional_depends "esound"                             \
                  "--enable-esd"                       \
                  "--disable-esd"                      \
