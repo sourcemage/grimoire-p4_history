@@ -1,133 +1,111 @@
-2003-09-26  Eric Sandall <eric@sandall.us>
+2004-02-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.94
+	Removed MAINTAINER
+	Reorganized SOURCE_URLs
+	Removed SOURCE2
+	* grub-0.93-debian.patch.bz2: Debian Patches removed
+	* grub.patch.bz2: RedHat patches Removed
+	* PRE_BUILD: Removed
+	* BUILD: Remove patches
+	Remove "malign" sedits
+	Remove TABs
+	* WIP: I need to test a little more (haven't rebooted yet)
+	* HISTORY: Formatted to Guru Handbook
 
-		Now it doesn't fail on OPTS
+2003-09-26 Eric Sandall <eric@sandall.us>
+	* BUILD: Now it doesn't fail on OPTS
 
-2003-09-22  Eric Sandall <eric@sandall.us>
+2003-09-22 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Now less verbose if you don't want all the network drivers
 
-        Now less verbose if you don't want all the network drivers
+2003-09-12 Eric Sandall <eric@sandall.us>
+	* Modified a little more, including some patches
+	with the spell
+	* smgl-splash.xpm.gz: Added SMGL splash image (made by me ;))
+	* Applied Geoffrey's patches and changes  (Bug #4221)
 
-2003-09-12  Eric Sandall <eric@sandall.us>
+2003-09-01 Geoffrey Derber <gderber@sourcemag.org>
+	* grub-0.93-debian.patch.bz2: Thanks to a huge patch from Debian
+	we finally have the grub splashimage working.
 
-		Modified a little more, including some patches
-		with the spell
+2003-08-30 Geoffrey Derber <gderber@sourcemage.org>
+	* POST_BUILD: Updated to make it easier for
+	the kernel spell to update the grub.conf file.
+	* CONFIGURE: Added tons of options (too many?)
+	* BUILD: modified to chmod 750 /sbin/grub* so
+	normal users can not run the apps
 
-		Added SMGL splash image (made by me ;))
+2003-06-16 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added gcc 3.3 patch as SOURCE2 (grub-0.93-type-fix.patch.bz2)
+	(thanks to Wolfgang)
 
-		Applied Geoffrey's patches and changes  (Bug #4221)
+2003-01-16 Geoffrey Derber <gderber@sourcemage.org>
+	* Updated patches
 
-2003-09-01  Geoffrey Derber <gderber@sourcemag.org>
+2002-12-08 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to v0.93 (all thanks to Geoffrey Derber
+	(ashaman@flyingtemple.com), along with all the
+	patches
+	* HISTORY: Formatted to follow SMGL Standards
 
-		Thanks to a huge patch from Debian
-		we finally have the grub splashimage
-		working.
+2002-08-06 Eric Sandall <sandalle@hellhound.homeip.net>
+	* BUILD: Edited ./configure to use -falign-* instead of -malign (obsoleted in gcc3)
 
-2003-08-30  Geoffrey Derber <gderber@sourcemage.org>
+2002-07-24 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added another mirror for alpha.gnu.org thanks to the guys on #hurd
 
-		Updated POST_BUILD to add make it easier for
-		the kernel spell to update the grub.conf file.
+2002-07-14 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added another mirror (thanks to ShdwDrgn) since alpha.gnu.org is down
 
-		Added tons of options to CONFIGURE (too many?)
+2002-06-16 Eric Sandall <sandalle@yahoo.com>
+	* POST_INSTALL: Changed "Sorcerer" to "Source Mage" in POST_INSTALL
+	Made "lba32" default on
+	Moved the entries on the default kernel to new lines
 
-		modified BUILD to chmod 750 /sbin/grub* so
-		normal users can not run the apps
+2002-06-14 Eric Sandall <sandalle@yahoo.com>
+	* DETAILS: Added MD5 entry to DETAILS
 
-2003-06-16  Eric Sandall <eric@sandall.us>
- 
-		Added gcc 3.3 patch (thanks to Wolfgang)
+2002-05-29 Eric Sandall <sandalle@yahoo.com>
+	* USEGCC2: Removed
 
-2003-01-16  Geoffrey Derber <gderber@sourcemage.org>
+2002-05-20 Eric Sandall <sandalle@yahoo.com>
+	* CONFLICTS: Added conflict for LILO
 
-		Updated patches
+2002-04-30 Geoffrey Derber <ashaman@flyingtemple.com>
+	* DETAILS: Version updated to 0.92.  md5crypt now works.
 
-2002-12-08  Eric Sandall <eric@sandall.us>
-
-		Updated to v0.93 (all thanks to Geoffrey Derber
-		(ashaman@flyingtemple.com), along with all the
-		patches
-
-		Formatted HISTORY to follow SMGL Standards
-
-2002-08-06  Eric Sandall <sandalle@hellhound.homeip.net>
-
-		Edited ./configure to use -falign-* instead of -malign (obsoleted in gcc3)
-
-2002-07-24  Eric Sandall <sandalle@yahoo.com>
-
-		Added another mirror for alpha.gnu.org thanks to the guys on #hurd
-
-2002-07-14  Eric Sandall <sandalle@yahoo.com>
-
-		Added another mirror (thanks to ShdwDrgn) since alpha.gnu.org is down
-
-2002-06-16  Eric Sandall <sandalle@yahoo.com>
-
-		Changed "Sorcerer" to "Source Mage" in POST_INSTALL
-
-		Made "lba32" default on
-
-		Moved the entries on the default kernel to new lines
-
-2002-06-14  Eric Sandall <sandalle@yahoo.com>
-
-		Added MD5 entry to DETAILS
-
-2002-05-29  Eric Sandall <sandalle@yahoo.com>
-
-		Tested and works with gcc3
-
-2002-05-20  Eric Sandall <sandalle@yahoo.com>
-
-		Added conflict for LILO
-
-2002-04-30  Geoffrey Derber <ashaman@flyingtemple.com>
-
-		Version updated to 0.92.  md5crypt now works.
-
-2002-04-25  Eric Schabell <eric@schabell.com>
-
-		Changed maintainer to Goeffrey Derber, due to leaving of Jean-Michel.
+2002-04-25 Eric Schabell <eric@schabell.com>
+	* DETAILS: Changed maintainer to Goeffrey Derber, due to leaving of Jean-Michel.
 		
-2002-03-26  Jean-Michel Smith <jean@kcco.com>
+2002-03-26 Jean-Michel Smith <jean@kcco.com>
+	* added all kinds of warnings to users to have a working rescue diskette
+	handy before attempting to install grub.  If and when grub becomes a
+	standard part of the install I'll tone down the messages some.
+	moved cp of /usr/share/grub/i386-pc/*stage* from BUILD to POST_INSTALL
+	* This corrects a serious bug during upgrades which causes stage1_5 and
+	stage2 files to get dispelled, making the system unbootable until the
+	next time grub is run and setup again.
+	* POST_INSTALL: added some intelligence to to facilitate 
+	easier installation and recovery from the above, corrected bug.
+	* CONFIGURE: Added to facilitate configuration of some parameters.
+	* Note that GRUB_ROOT is configured during POST_INSTALL, as the 
+	autodetection scheme requires grub already be installed.
 
-		added all kinds of warnings to users to have a working rescue diskette
-		handy before attempting to install grub.  If and when grub becomes a
-		standard part of the install I'll tone down the messages some.
+2002-03-25 Jean-Michel Smith <jean@kcco.com>
+	* initial review and testing of grub spell for inclusion in grimoire
+	* DETAILS: added LICENSE[0] information
+	* fixed installation procedure to include copying needed files from
+	/usr/share/grub/i386-pc/*stage* to /boot/grub.
+	* fixed installation procedure to put grub in /sbin, not /usr/sbin,
+	to insure it works on those systems that mount /usr separately
+	* Work is still needed to make a sensible default menu.lst entry
+	based on the system's own hardware, in a POSTINSTALL script.
+	Work is still needed to make a sensible interface to lilo and grub
+	to allow installation and kernel spells to install/update grub
+	appropriately
+	* HISTORY: Added
 
-		moved cp of /usr/share/grub/i386-pc/*stage* from BUILD to POST_INSTALL
-		This corrects a serious bug during upgrades which causes stage1_5 and
-		stage2 files to get dispelled, making the system unbootable until the
-		next time grub is run and setup again.
+2002-03-24 Geoffrey Derber <Geoffrey.Derber@Trinity.edu>
+	* Initial submission of grub spell to SGL-Spell-Submit
+	* DETAILS: Listed MAINTAINER as ashaman@flyingtemple.com ... not sure why this is.
 
-		added some intelligence to the POST_INSTALL script to facilitate 
-		easier installation and recovery from the above, corrected bug.
-
-		added CONFIGURE file to facilitate configuration of some parameters.
-		Note that GRUB_ROOT is configured during POST_INSTALL, as the 
-		autodetection scheme requires grub already be installed.
-
-2002-03-25  Jean-Michel Smith <jean@kcco.com>
-
-		initial review and testing of grub spell for inclusion in grimoire
-
-		added	 LICENSE[0] information to DETAILS file
-
-		fixed installation procedure to include copying needed files from
-		/usr/share/grub/i386-pc/*stage* to /boot/grub.
-
-		fixed installation procedure to put grub in /sbin, not /usr/sbin,
-		to insure it works on those systems that mount /usr separately
-
-		Work is still needed to make a sensible default menu.lst entry
-		based on the system's own hardware, in a POSTINSTALL script.
-
-		Work is still needed to make a sensible interface to lilo and grub
-		to allow installation and kernel spells to install/update grub
-		appropriately
-
-		added HISTORY file
-
-2002-03-24  Geoffrey Derber <Geoffrey.Derber@Trinity.edu>
-
-		Initial submission of grub spell to SGL-Spell-Submit
-
-		Listed MAINTAINER as ashaman@flyingtemple.com ... not sure why this is.
