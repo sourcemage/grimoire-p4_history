@@ -1,5 +1,8 @@
 (
 
+  # fixes bug in pinentry-qt build files.
+        sedit  "s/pinentry.h/..\/pinentry\/pinentry.h/g"  "qt/main.cpp"
+
   if [ "$Curses" = "n" ]
 
     then
