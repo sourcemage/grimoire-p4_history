@@ -20,17 +20,7 @@
 (
 
   case  $SILCD_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/silcd.sh  /etc/init.d
-
-              ln  -sf  ../init.d/silcd.sh  /etc/rc0.d/K50silcd
-              ln  -sf  ../init.d/silcd.sh  /etc/rc6.d/K50silcd
-
-              ln  -sf  ../init.d/silcd.sh  /etc/rc1.d/S90silcd
-              ln  -sf  ../init.d/silcd.sh  /etc/rc2.d/S90silcd
-              ln  -sf  ../init.d/silcd.sh  /etc/rc3.d/S90silcd
-              ln  -sf  ../init.d/silcd.sh  /etc/rc4.d/S90silcd
-              ln  -sf  ../init.d/silcd.sh  /etc/rc5.d/S90silcd
-              ;;
+    y|Y|j|J)  installscript  silcd.sh
           *)  ;;
   esac
 
