@@ -1,0 +1,18 @@
+#!/bin/bash
+# by Jose Bernardo Silva <josebernardo1@yahoo.com>
+#
+
+DESCRIPTION="bluez"
+SHORT="Latest bluez stack updates"
+HELP="Bluez is the official bluetooth stack for linux. These patches bring the kernel up to the latest bluez releases."
+VERSIONS="2.4.20-mh4
+2.4.20-mh3
+2.4.20-mh2
+2.4.20-mh1
+2.4.19-mh2
+2.4.19-mh1"
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=patch-${!PATCH}.gz
+SOURCE${COUNTER}_URL=http://www.holtmann.org/linux/kernel/\$SOURCE${COUNTER}" >> $SPELL_CONFIG
+fi
