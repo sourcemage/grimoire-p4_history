@@ -1,3 +1,16 @@
+2004-04-05 Jason Flatt <jflatt@sourcemage.org>
+	* DETAILS: Version bump to 0.45.4. Removed MAINTAINER.
+	* BUILD, PREPARE: Removed PREPARE and put create_account in BUILD
+	where it belongs.
+	Removed disable-root-check.patch command.
+	* CONFIGURE: Added a check for a previous configuration, so it
+	doesn't ask every time w/o the -r in cast.
+	* DEPENDS: Changed the default answer to installing GDBM over Berkley
+	DB.
+	* disable-root-check.patch: Removed as it is no longer needed.
+	* init.d/courier-authdaemon: Corrected a bug in the stopping of the
+	script.
+
 2004-03-30 Seth Woolley <seth@tautology.org>
 	* DETAILS: Version bump to 0.45.1
 	* BUILD: commented out disable-root-check.patch
