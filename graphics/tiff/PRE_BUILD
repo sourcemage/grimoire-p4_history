@@ -1,8 +1,0 @@
-default_pre_build
-
-cd  $SOURCE_DIRECTORY
-
-# Fixes Bug #921
-if  [[ $SOURCE2 ]]  &&  unpack  $SOURCE2 ${MD5[1]};  then
-  cp  libtiff-lzw-compression-kit-$KITVERSION/tif_lzw.c  libtiff
-fi
