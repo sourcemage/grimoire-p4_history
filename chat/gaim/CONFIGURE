@@ -1,9 +1,10 @@
-#if  !  grep -q  CONFIGURED  $SPELL_CONFIG; then
-#
-#	if query		"Enable gaim-encryption plugin? (requires download and compile of nspr/nss)"  n
-#		then		echo   'GAIM_ENCRYPTION="y"'	>>  $SPELL_CONFIG
-#		else		echo   'GAIM_ENCRYPTION="n"'	>>  $SPELL_CONFIG
-#	fi
-#
-#	echo 'CONFIGURED="y"'  >>  $SPELL_CONFIG
-#fi
+if  ! grep -q  NSS_ENCRYPTION  $SPELL_CONFIG; then
+
+  sedit '1,5D' $SPELL_CONFIG                     &&
+	if query		"Enable gaim-encryption plugin? (makes 'nss' spell a depends)"  n
+		then		NSS_ENCRYPTION=y
+		else            NSS_ENCRYPTION=n
+	fi
+  echo "NSS_ENCRYPTION=$NSS_ENCRYPTION" >> $SPELL_CONFIG
+
+fi
