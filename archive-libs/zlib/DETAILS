@@ -1,15 +1,15 @@
            SPELL=zlib
-   SOURCEVERSION=1.1.4
-      PATCHLEVEL=-3
+   SOURCEVERSION=1.2.1
+      PATCHLEVEL=
          VERSION=$SOURCEVERSION$PATCHLEVEL
-          SOURCE=$SPELL-$SOURCEVERSION.tar.gz
+          SOURCE=$SPELL-$SOURCEVERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$SOURCEVERSION
-   SOURCE_URL[0]=http://www.gzip.org/$SOURCE
-        WEB_SITE=http://www.gzip.org
+   SOURCE_URL[0]=http://www.gzip.org/zlib/$SOURCE
+        WEB_SITE=http://www.gzip.org/zlib/
          ENTERED=20010922
          UPDATED=20030319
       MAINTAINER=heffer@mailberlin.net
-          MD5[0]=9bdd5f5dfa8c46e1128636bb1022fd08
+          MD5[0]=1d12a541c9a921d1f953dfb5e109d660
       LICENSE[0]=ZLIB
            SHORT="zlib is a legally unencumbered lossless data compression library."
 cat << EOF
