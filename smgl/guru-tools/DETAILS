@@ -1,12 +1,12 @@
            SPELL=guru-tools
-         VERSION=0.9
+         VERSION=1.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.ataraxy.net/~schabell/linux/mirror/$SOURCE
         WEB_SITE=http://www.schabell.com
          ENTERED=20030602
-         UPDATED=20040413
-          MD5[0]='f1774ece67e34e8de63006e6114fd1d8'
+         UPDATED=20040521
+          MD5[0]='011ebc6672620e24f1ab24be0951c9e0'
          LICENSE=GPL
       MAINTAINER=eschabell@sourcemage.org
            SHORT="Collection of useful Guru Tools."
@@ -15,20 +15,38 @@ There are various useful tools that have been written by Source Mage
 developers over the years. Here we have bundled them together for your
 Guru experience:
 
-findSharedFiles        - A tool for finding files shared between spells.
-                         (by Rasmus Ory Nielsen) 
+checkGrimoire.sh        - checks the grimoire (or sections of it) for broken links. 
+                          (by Paul)
 
-gazeSpider [<item ...] - Validates urls for entire grimoire or if item
-                         give, for one or more items. Items may be
-                         either spells or sections.
+check_my_depends.sh     - checks for dependancies that have been dispelled.(by Paul)
 
+dependsSquish.sh        - takes a list of spells and outputs the order in which to 
+                          cast them so dependancies are taken care of. (by Paul)
+
+findLibDepends.sh       - find missing dependancies of spells with ldd.(by Paul)
+
+findSharedFiles         - tool for finding files shared between spells.
+                          (by Rasmus Ory Nielsen) 
+
+gazeSpider [<item ...]  - validates urls for entire grimoire or if item give, for 
+                          one or more items. Items may be either spells or sections.
+
+grimoireCircCheck.sh    - check grimoires for circular dependancies and incidentaly, 
+                          missing spells. (by Paul)
+
+historyfix.pl           - outputs an sh script for editing and patching all the history
+                          problems in a grimoire, section, spell. When you've tried it 
+                          once and checked its output, just pipe it into sh and then p4 
+                          submit. 
+                          historyfix.pl with no arguments does the current directory 
+                          recursively. 
+                          historyfix.pl with arguments does only the files
+                          supplied in the args. (by Seth Woolley)
+                          
 md5unpack <tarball>     - provides md5sum info from source tarball. 
 
-urlwatch                - This script check a list of urls for changes inside 
-                          html page. Make a cronjob with this and you'll
-                          automaticaly receive notifications for changed
-                          urls by email... 
-                          See urlwatch --help for help. (by M.L.).
+rebuildPackages.sh      - package rebuilding tool, helps with package file 
+                          rescue. (by Paul)
 
 spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           #{MYSPELLS}/software and DETAILS in your local 
@@ -36,35 +54,23 @@ spellify                - takes some software-version.tar.{gz|bz2}, makes a
                           then scribe reindex ${MYGRIMOIRE}. Uses 
                           /etc/sorcery/local/guruinfo for guru info.
 
-summonsection           - This script is usefull for lazy section
-                          maintainters who get bored first deleting cached
-                          files, then summon'em one by one, by hand.
-                          Summonsection kills cached files, and summons
-                          new files automaticaly. (by M.L.).
+summonsection           - usefull for lazy section maintainters who get bored
+                          first deleting cached files, then summon'em one by
+                          one, by hand. Summonsection kills cached files, and
+                          summons new files automaticaly. (by M.L.).
 
-upspell                 - This script updates a spell DETAILS and HISTORY.
-                          Just goes to the spell's directory and run it...
-                          Uses /etc/sorcery/local/guruinfo for guru info.
-
-update_spell            - Typical parameters are "DETAILS -s -m -v 1.2.3",
+update_spell            - typical parameters are "DETAILS -s -m -v 1.2.3",
                           it only works on the first SOURCE for now.
                           (from our old CVS repository)
 
-rebuildPackages.sh      - package rebuilding tool, helps with package file 
-                          rescue. (by Paul)
+upspell                 - updates a spell DETAILS and HISTORY.
+                          Just goes to the spell's directory and run it...
+                          Uses /etc/sorcery/local/guruinfo for guru info.
 
-findLibDepends.sh       - Find missing dependancies of spells with ldd.(by Paul)
-
-grimoireCircCheck.sh    - Check grimoires for circular dependancies and incidentaly, 
-                          missing spells. (by Paul)
-
-check_my_depends.sh     - Checks for dependancies that have been dispelled.(by Paul)
-
-dependsSquish.sh        - takes a list of spells and outputs the order in which to 
-                          cast them so dependancies are taken care of. (by Paul)
-
-checkGrimoire.sh        - checks the grimoire (or sections of it) for broken links. 
-                          (by Paul)
+urlwatch                - checks a list of urls for changes inside html page.
+                          Make a cronjob with this and you'll automaticaly
+                          receive notifications for changed urls by email... 
+                          See urlwatch --help for help. (by M.L.).
 
 If you have more to contribute, mail to maintainer.
 
