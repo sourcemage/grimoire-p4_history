@@ -1,6 +1,6 @@
 sedit  "s/gzip/gzip -f/"  Makefile.in     &&
 
-/configure  --prefix=${INSTALL_ROOT}/usr  \
+./configure  --prefix=${INSTALL_ROOT}/usr  \
             ${OPTS}                       &&
 make                                      &&
 # Compile fonts
