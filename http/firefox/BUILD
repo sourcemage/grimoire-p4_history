@@ -1,4 +1,9 @@
 (
+
+ # Patches for freetype 2.1.8 and gcc 3.4
+ patch -p0<$SCRIPT_DIRECTORY/freetype.patch
+ patch -p0<$SCRIPT_DIRECTORY/nsRegion.patch
+
  # No fast optimization for Mozilla, bit us so many times...
  export  CFLAGS="${CFLAGS//-O3/-O2}"     &&
  export  CXXFLAGS="${CXXFLAGS//-O3/-O2}" &&
