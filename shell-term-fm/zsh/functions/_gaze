@@ -1,34 +1,52 @@
 #compdef gaze
 
-_gaze () {
-    
-  # Define global values
-  # _gaze_cmds, _gaze_cmds_needs_spells, _gaze_cmds_need_installed_spells, 
-  if (( ! $+_gaze_cmds )); then
-    typeset -g _gaze_cmds
-    _gaze_cmds=(
-	alien from search service what where website compile sources \
-	history sum md5sum export import section maintainer grimoire \
-	html newer older prune voyeur pam orphans depends install installed
-	)
-  fi
-
-  if (( ! $+_gaze_cmds_needs_spell )); then
+# Define global values
+# _gaze_cmds_needs_spells
+if (( ! $+_gaze_cmds_needs_spell )); then
     typeset -g _gaze_cmds_needs_spell
     _gaze_cmds_needs_spell=(
-	what where website compile sources history sum md5sum section \
-	maintainer prune voyeur depends 
-	)
-  fi
+        service provides what short where website version license
+	sources history sum export import section mainteinar
+	grimoire grimoires html voyeur depends dependencies
+	DETAILS PREPARE CONFLICTS CONFIGURE DEPENDS HISTORY TRIGGERS PROVIDES
+	PRE_BUILD BUILD POST_BUILD PRE_INSTALL POST_INSTALL
+	RE_REMOVE POST_REMOVE
+    )
+fi
 
-  if (( ! $+_gaze_cmds_needs_installed_spell )); then
+# _gaze_cmds_need_installed_spells
+if (( ! $+_gaze_cmds_needs_installed_spell )); then
     typeset -g _gaze_cmds_needs_installed_spell
-    _gaze_cmds_needs_installed_spell=(sum md5sum install installed)
-  fi
+    _gaze_cmds_needs_installed_spell=(install installed compile md5sum)
+fi
 
-    _arguments -s \
-    '*::gaze command:_gaze_command'
+# _gaze_cmds
+if (( ! $+_gaze_cmds )); then
+    typeset -g _gaze_cmds
+    _gaze_cmds=(
+	$_gaze_cmds_needs_installed_spell $_gaze_cmds_needs_spell
+	alien from search newer older prune pam orphans
+	install-queue remove-queue
+    )
+fi
 
+# main completion function
+_gaze () {
+    _arguments -s '*::gaze command:_gaze_command'
+}
+
+# @param 1 search string
+# @param 2 strings array
+# @return exit code 0 (true) or 1 (false)
+_gaze_is_in_array() {
+  local SEARCHING_STRING=$1
+  local TARGET_ARRAY=$2
+  for i in $TARGET_ARRAY ; do
+      if [[ ${i} == ${SEARCHING_STRING} ]]; then
+	  exit 0
+      fi
+  done;
+  exit 1
 }
 
 # Define gaze command dispatch function.
@@ -37,29 +55,19 @@ _gaze_command () {
     	    
   # complete command
   if (( CURRENT == 1 )); then
-    _tags comands && {compadd ${_gaze_cmds} }
+    compadd ${_gaze_cmds}
 
   # complete commands argument
   elif (( CURRENT == 2 )); then
-    local curcontext="$curcontext"
-    local cmd="${words[1]}"
+
+    local cmd=${words[1]}
 
     # start argument completion
     if [[ $cmd == "from" ]]; then
 	_files
-    elif ( for i in $_gaze_cmds_needs_spell ; do
-	     if [[ $cmd == $i ]]; then
-		exit 0
-	     fi
-	   done; exit 1
-	) ; then
+    elif ( _gaze_is_in_array ${cmd} ${_gaze_cmds_needs_spell} ) ; then
 	_spells
-    elif ( for i in $_gaze_cmds_needs_installed_spell ; do
-	     if [[ $cmd == $i ]]; then
-		exit 0
-	     fi
-	   done; exit 1
-	) ; then
+    elif ( _gaze_is_in_array ${cmd} ${_gaze_cmds_needs_installed_spell} ) ; then
 	_installed_spells
     else
       false
@@ -72,9 +80,3 @@ _gaze_command () {
 }
 
 _gaze "$@"
-
-
-
-
-
-

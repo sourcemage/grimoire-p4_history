@@ -2,7 +2,7 @@
 
 #Define global values
 if (( ! $+GRIMOIRE_DIR )); then
-    typeset `cat /etc/sorcery/config|grep " GRIMOIRE_LIST="`
+    typeset `grep "GRIMOIRE_LIST=" /etc/sorcery/config`
     typeset -gA GRIMOIRE_DIR
     . $GRIMOIRE_LIST
 fi
@@ -12,7 +12,7 @@ typeset _spells_list
 for i in $GRIMOIRE_DIR
 _spells_list=(
     $_spells_list
-    $( /bin/ls -d $GRIMOIRE_DIR/*/*(-/)|sed 's+.*/++' )
+    $(cut --delimiter=" " -f 1 $i/codex.index)
 )
 
 # Check are there spells, or not.
