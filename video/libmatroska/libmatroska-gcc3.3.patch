@@ -1,0 +1,44 @@
+diff -Nur libmatroska-0.4.2/make/linux/Makefile libmatroska-0.4.2-gcc3.3/make/linux/Makefile
+--- libmatroska-0.4.2/make/linux/Makefile	2003-05-11 15:03:40.000000000 +0200
++++ libmatroska-0.4.2-gcc3.3/make/linux/Makefile	2003-05-20 18:52:09.000000000 +0200
+@@ -10,7 +10,7 @@
+ #
+ 
+ # Paths
+-prefix=/usr/local
++prefix=$(INSTALL_ROOT)/usr
+ libdir=$(prefix)/lib
+ includedir=$(prefix)/include/matroska
+ 
+@@ -29,8 +29,8 @@
+ CWD=$(shell pwd)
+ 
+ # Options
+-LIBEBML_INCLUDE_DIR=$(CWD)/../../../libebml/src
+-LIBEBML_LIB_DIR=$(CWD)/../../../libebml/make/linux
++LIBEBML_INCLUDE_DIR=$(prefix)/include/ebml
++LIBEBML_LIB_DIR=$(prefix)/lib
+ EXTENSION=.cpp
+ GCCVERSION := $(shell $(CXX) -dumpversion | cut -b 1)
+ ifeq (2,$(GCCVERSION))
+diff -Nur libmatroska-0.4.2/src/KaxCues.cpp libmatroska-0.4.2-gcc3.3/src/KaxCues.cpp
+--- libmatroska-0.4.2/src/KaxCues.cpp	2003-05-10 19:26:41.000000000 +0200
++++ libmatroska-0.4.2-gcc3.3/src/KaxCues.cpp	2003-05-20 18:47:53.000000000 +0200
+@@ -98,7 +98,7 @@
+ 	const KaxCuePoint * aPointPrev = NULL;
+ 	uint64 aPrevTime = 0;
+ 	const KaxCuePoint * aPointNext = NULL;
+-	uint64 aNextTime = 0xFFFFFFFFFFFF;
++	uint64 aNextTime = 0xFFFFFFFFFFFFll;
+ 
+ 	for (int i=0; i<ListSize(); i++)
+ 	{
+@@ -122,7 +122,7 @@
+ 	}
+ 	if (aPointPrev != NULL)
+ 	{
+-		uint64 aPosition = 0xFFFFFFFFFFFFFFF;
++		uint64 aPosition = 0xFFFFFFFFFFFFFFFll;
+ 		// find the position of the "earlier" Cluster
+ 		const KaxCueTrackPositions *aPoss = static_cast<const KaxCueTrackPositions *>(aPointPrev->FindFirstElt(KaxCueTrackPositions::ClassInfos));
+ 		while (aPoss != NULL)
