@@ -1,26 +1,20 @@
            SPELL=device-mapper
-         VERSION=1.00.07
+         VERSION=1.00.19
           SOURCE=$SPELL.$VERSION.tgz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL.$VERSION
-   SOURCE_URL[0]=ftp://ftp.sistina.com/pub/LVM2/$SPELL/$SOURCE
-        WEB_SITE=http://www.sistina.com/products_lvm.htm
+   SOURCE_URL[0]=ftp://sources.redhat.com/pub/dm/$SOURCE
+        WEB_SITE=http://sources.redhat.com/dm/
          ENTERED=20031210
-         UPDATED=20030720
-          MD5[0]=6edc5b80707adf30faffcedcbdbb8398
-           SHORT="The api needed for LVM2/EVMS support."
+         UPDATED=20040728
+          MD5[0]=5afa56a31b67b352b11d0c099a63f55a
+           SHORT="userspace files of device-mapper"
       LICENSE[0]=GPL
 cat << EOF
-(Remember to patch your 2.4 kernel with the dm patch in the linux spell.)
+The Device-mapper is a new component of the linux kernel that supports logical 
+volume management. It is required by LVM2 and EVMS. The original LVM (included 
+in stock 2.4 kernels) does not use it.
 
-The goal of this driver is to support volume management.  
-The driver enables the definition of new block devices composed of
-ranges of sectors of existing devices.  This can be used to define
-disk partitions - or logical volumes.  This light-weight kernel
-component can support user-space tools for logical volume management.
-
-The driver maps ranges of sectors for the new logical device onto
-'mapping targets' according to a mapping table.  Currently the mapping 
-table must be supplied to the driver through an ioctl interface.
-Earlier versions of the driver also had a custom file system interface 
-(dmfs), but we stopped work on this because of pressure of time.
+If you intend to use Device-mapper, as well as adding it to your kernel, you 
+should install the userspace configuration tool (dmsetup) and library 
+(libdevmapper), you should install this spell.
 EOF
