@@ -1,117 +1,58 @@
 # check if postfix was installed before
+message "${MESSAGE_COLOR}Probing for previously casted $SPELL...${DEFAULT_COLOR}"  &&
 
-message "${MESSAGE_COLOR}Probing for previously casted $SPELL...${DEFAULT_COLOR}"
-
-unset alreadyThere
-
-if [ -e /etc/postfix/main.cf ]; then
-  alreadyThere=1
-fi
-
-if spell_installed $SPELL
-then
-  alreadyThere=1
-fi
-
-if [ -z "$alreadyThere" ]; then
-  message "${MESSAGE_COLOR}Previous $SPELL install not detected.${DEFAULT_COLOR}"
+if  [  -f  /etc/postfix/main.cf  ];  then
+  message "${MESSAGE_COLOR}Previous install not detected.${DEFAULT_COLOR}"
 else
-  message "${MESSAGE_COLOR}Previous $SPELL install detected.${DEFAULT_COLOR}"
-fi
+  message "${MESSAGE_COLOR}Previous install detected.${DEFAULT_COLOR}"
+fi  &&
 
+config_query  BENCH   "install smtpstone benckmarking tools?"  n
 
-if ! grep  -q  "BENCH="  $SPELL_CONFIG;  then
- if query "Also install smtpstone benckmarking tools ?"  n
-  then  echo   "BENCH=y"  >>  $SPELL_CONFIG
-  else  echo   "BENCH=n"  >>  $SPELL_CONFIG
- fi
-fi
+message "${MESSAGE_COLOR}smtp configuration files loss may expose your system to SPAM relaying. You should backup and restore configuration files and reply y to the next two questions...${DEFAULT_COLOR}"
 
+config_query  BACKUP   "backup config on dispel?"  y
+config_query  RESTORE  "restore config on rebuild/update?"  y
 
-if ! grep -q "BACKUP" $SPELL_CONFIG; then
+message "${MESSAGE_COLOR}You should run newaliases after each aliases file update, and on first $spell cast...${DEFAULT_COLOR}"
+config_query  ALIAS    "run newaliases after cast?"  y
 
-  message "${MESSAGE_COLOR}smtp configuration files loss may expose your system to SPAM relaying. You should backup and restore configuration files and reply y to the next two questions...${DEFAULT_COLOR}"
+if  spell_installed  mysql;  then
+  config_query  MYSQL  "Add MySQL support?"  y
+else
+  config_query  MYSQL  "Add MySQL support?"  n
+fi  &&
 
-  if query "Backup $SPELL config on dispel ?"  y
-    then  echo   "BACKUP=y"  >>  $SPELL_CONFIG
-    else  echo   "BACKUP=n"  >>  $SPELL_CONFIG
-  fi
-fi
+if  spell_installed  Linux-PAM;  then
+  config_query  PAM  "Add PAM support?"  y
+else
+  config_query  PAM  "Add PAM support?"  n
+fi  &&
 
+if  spell_installed  openssl;  then
+  config_query  SSL  "Add SSL support?"  y
+else
+  config_query  SSL  "Add SSL support?"  n
+fi  &&
 
-if ! grep -q "RESTORE" $SPELL_CONFIG; then
-  if query "Restore $SPELL config on rebuild/update ?"  y
-    then  echo   "RESTORE=y"  >>  $SPELL_CONFIG
-    else  echo   "RESTORE=n"  >>  $SPELL_CONFIG
-  fi
-fi
+if  spell_installed  openldap;  then
+  config_query  LDAP  "Add LDAP support?"  y
+else
+  config_query  LDAP  "Add LDAP support?"  n
+fi  &&
 
+if  spell_installed  cyrus-sasl;  then
+  config_query  SASL  "Add SASL support?"  y
+else
+  config_query  SASL  "Add SASL support?"  n
+fi  &&
 
-if ! grep -q "ALIAS" $SPELL_CONFIG; then
- 
-  message "${MESSAGE_COLOR}You should run newaliases after each aliases file update, and on first $spell cast...${DEFAULT_COLOR}"
-
-  if query "Run newaliases after cast ?"  y
-    then  echo   "ALIAS=y"  >>  $SPELL_CONFIG
-    else  echo   "ALIAS=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-
-if ! grep -q "MYSQL" $SPELL_CONFIG; then
-  if query "Add MySQL support in postfix ?"  y
-    then  echo   "MYSQL=y"  >>  $SPELL_CONFIG ; MYSQL=y
-    else  echo   "MYSQL=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-
-
-if ! grep -q "PAM" $SPELL_CONFIG; then
-  if query "Add PAM support in postfix ?"  y
-    then  echo   "PAM=y"  >>  $SPELL_CONFIG ; PAM=y
-    else  echo   "PAM=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "SSL" $SPELL_CONFIG; then
-  if query "Add SSL support in postfix ?"  y
-    then  echo   "SSL=y"  >>  $SPELL_CONFIG ; SSL=y
-    else  echo   "SSL=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "LDAP" $SPELL_CONFIG; then
-  if query "Add LDAP support in postfix ?"  y
-    then  echo   "LDAP=y"  >>  $SPELL_CONFIG ; LDAP=y
-    else  echo   "LDAP=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "SASL" $SPELL_CONFIG; then
-  if query "Add SASL support in postfix ?"  y
-    then  echo   "SASL=y"  >>  $SPELL_CONFIG ; SASL=y
-    else  echo   "SASL=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "PGSQL" $SPELL_CONFIG; then
-  if query "Apply Postgresql patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
-    then  echo   "PGSQL=y"  >>  $SPELL_CONFIG ; PGSQL=y
-    else  echo   "PGSQL=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "SSL_TLS" $SPELL_CONFIG; then
-  if query  "Apply SSL/TLS patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
-    then  echo "SSL_TLS=y" >>  $SPELL_CONFIG ; TLS=y
-    else  echo "SSL_TLS=n" >>  $SPELL_CONFIG
-  fi
-fi
-
-if ! grep -q "VDA" $SPELL_CONFIG; then
-  if query  "Apply Virtual Delivery Agent (VDA) patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
-    then  echo "VDA=y" >>  $SPELL_CONFIG ; VDA=y
-    else  echo "VDA=n" >>  $SPELL_CONFIG
-  fi
-fi
+#
+# Don't default to 'y' even if postgresql is installed
+#
+#
+#  The PostgreSQL patch is outdated
+#
+#config_query  PGSQL    "Apply Postgresql patch (EXPERIMENTAL)?"  n
+config_query  SSL_TLS  "Apply SSL/TLS patch (EXPERIMENTAL)?"  n
+config_query  VDA      "Apply Virtual Delivery Agent (VDA) patch (EXPERIMENTAL?)"  n
