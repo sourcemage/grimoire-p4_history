@@ -31,6 +31,8 @@
     --enable-dbase                     \
     --enable-sockets                   \
     --enable-calendar                  \
+    --with-iconv                       \
+    --with-xmlrpc                      \
     --with-versioning                  \
     --with-mod_charset                 \
     --with-pear                        \
