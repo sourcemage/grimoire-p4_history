@@ -2,7 +2,7 @@
 (
 	# make fcgi.py located in pylib/ and visible to web2ldap
 	cp $SCRIPT_DIRECTORY/fcgi.py ./pylib/ &&
-	patch -p1 < $SCRIPT_DIRECTORY/import.patch &&
+	#patch -p1 < $SCRIPT_DIRECTORY/import.patch &&
 
 	# change defaults
 	sedit 's|web2ldaprun|nobody|' \
