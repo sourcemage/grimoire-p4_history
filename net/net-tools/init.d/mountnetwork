@@ -8,14 +8,14 @@ NEEDS="+remote_fs +network +portmap"
 
 start()
 {
-  echo  -n  "Mounting remote filesystems..."
+  echo  "Mounting remote filesystems..."
   mount  -a  -F  -t  nfs,ncpfs,smbfs
   evaluate_retval
 }
 
 stop()
 {
-  echo  -n  "Unmounting remote filesystems..."
+  echo  "Unmounting remote filesystems..."
   umount  -a  -r  -t  nfs,ncpfs,smbfs
   evaluate_retval
 }
