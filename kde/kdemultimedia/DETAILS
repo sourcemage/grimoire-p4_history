@@ -1,10 +1,10 @@
            SPELL=kdemultimedia
 if [ "$DEVEL" == "yes" ] ;then
-         VERSION=3.2.92
+         VERSION=3.3.0-rc2
           SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/unstable/$VERSION/src/$SOURCE
-          MD5[0]=625a4cf958229b5aaa0fda9c8bc9a4ee
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
+   SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
+          MD5[0]=4a16e5c41b017462b978f26c4d39ae89
 else
          VERSION=3.2.3
           SOURCE=$SPELL-$VERSION.tar.bz2
