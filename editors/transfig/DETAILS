@@ -1,9 +1,18 @@
            SPELL=transfig
+        BUILD_API=2
+. ${SPELL_CONFIG}.p
+if [ "$DEVEL" == "y" ];then
+         VERSION=3.2.5-alpha5
+          SOURCE=${SPELL}.${VERSION}.tar.gz
+   SOURCE_URL[0]=ftp://epb.lbl.gov/xfig/alpha/${SOURCE}
+          MD5[0]=edbca0601bfd9fef520cfa751e39a5e4
+else
          VERSION=3.2.4
           SOURCE=${SPELL}.${VERSION}.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}.${VERSION}
    SOURCE_URL[0]=ftp://www-epb.lbl.gov/xfig/${SOURCE}
           MD5[0]=319d8cb0846eaa93acad8d7e2f5b83cc
+fi
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}.${VERSION}
         WEB_SITE=http://epb.lbl.gov/xfig/
       LICENSE[0]=PD
          ENTERED=20020210
