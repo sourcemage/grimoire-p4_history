@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-script-version=20030331
+# SMGL-START:2 3 4 5:S80
+# SMGL-STOP:0 1 6:K75
+#
 
 # Edit and uncomment the appropriate lines
 
