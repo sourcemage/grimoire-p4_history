@@ -1,5 +1,6 @@
-MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla &&
-FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox &&
+local  MOZILLA_HOME  MOZILLA_VERSION  FIREFOX_HOME  &&
+MOZILLA_HOME=${INSTALL_ROOT}/usr/lib/mozilla        &&
+FIREFOX_HOME=${INSTALL_ROOT}/usr/lib/firefox        &&
 
 if spell_installed Firebird; then
   dispel Firebird
@@ -8,7 +9,7 @@ fi                                               &&
 # everything coming into /usr/lib/mozilla-$MOZILLA_VERSION/
 # must actually go to /usr/lib/mozilla/
 
-MOZILLA_VERSION=0.10		&&
+MOZILLA_VERSION=$VERSION  &&
 #mozilla-config has the "mozilla" codebase version, not the firefox version
 #MOZILLA_VERSION=$(grep MOZILLA_VERSION mozilla-config.h | cut -d\" -f2) &&
 mkdir -p $MOZILLA_HOME                           &&
@@ -39,13 +40,13 @@ fi  &&
 # Fix for starting firefox without running as root first
 # Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
-patch  -d  /usr/lib/firefox-$VERSION  -p1       \
+patch  -d  $FIREFOX_HOME-$VERSION  -p1       \
        <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
 
 #
 # Create a /usr/lib/firefox symlink for easy module installation
 #
-ln  -sf  /usr/lib/firefox-$VERSION  /usr/lib/firefox  &&
+ln  -sf  $FIREFOX_HOME-$VERSION  /usr/lib/firefox  &&
 
 #
 # Script to set MOZILLA_FIVE_HOME

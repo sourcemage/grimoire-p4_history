@@ -6,6 +6,9 @@
 	* INSTALL: Apply firefox-init.patch to MOZILLA_HOME.
 	  I meant for /usr/lib/firefox to point to /usr/lib/firefox-$VERSION, so
 	  that's now fixed.
+	  Make MOZILLA_HOME, MOZILLA_VERSION, and FIREFOX_HOME local.
+	  Set MOZILLA_VERSION to $VERSION.
+	  Use FIREFOX_HOME instead of hard-coding /usr/lib/firefox.
 
 2004-11-29 Eric Sandall <eric@sandall.us>
 	* Prefixed SVG with FIREFOX_
