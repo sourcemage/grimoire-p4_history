@@ -23,6 +23,10 @@ SM_IBM_DIST_HOME=${SM_JAVA_HOME}/ibm-dist
 SM_SUN_HOME=${SM_JAVA_HOME}/sun
 SM_SUN_DIST_HOME=${SM_JAVA_HOME}/sun-dist
 
+# Other
+SM_OTH_HOME=${SM_JAVA_HOME}/other
+SM_OTH_DIST_HOME=${SM_JAVA_HOME}/other-dist
+
 ##
 # Functions :
 ##
@@ -154,5 +158,29 @@ register_sun_jar() {
 
   mkdir  -p  ${SM_SUN_HOME}/lib 			&&
   ln  -s  ${SM_SUN_DIST_HOME}/$1  ${SM_SUN_HOME}/lib/$2
+
+}
+
+##
+# Functions for java packages from other "companies"
+##
+
+# copy the content of SOURCE_DIR
+# ${name_of_package} ${name_of_package_with_version} ${dir_from_with_copy_the_content}
+extract_oth_src() {
+
+  mkdir  -p  ${SM_OTH_DIST_HOME}/${2}			&&
+  mkdir  -p  ${SM_OTH_HOME}				&&
+  ln  -s  ${SM_OTH_DIST_HOME}/${2} ${SM_OTH_HOME}/${1}	&&
+  cp  -Rv  ${3}/*  ${SM_OTH_DIST_HOME}/${2}/
+  
+}
+
+# create simlink in sun/lib to given jar file - but without version
+# ${jar_file_path_and_file_name} ${name_of_simlink}
+register_oth_jar() {
+
+  mkdir  -p  ${SM_OTH_HOME}/lib 			&&
+  ln  -s  ${SM_OTH_DIST_HOME}/$1  ${SM_OTH_HOME}/lib/$2
 
 }
