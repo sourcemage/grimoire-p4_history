@@ -1,0 +1,21 @@
+#!/bin/sh
+
+RUNLEVEL=3
+NEEDS="+remote_fs +network"
+
+. /etc/init.d/smgl_init
+
+case  $1  in
+    start)  echo   "Starting PGP Public Key Server"
+            /usr/sbin/pksd /etc/pksd.conf & (sleep 5; /usr/bin/pks-queue-run.sh /etc/pksd.conf) &  ;;
+
+  restart)  echo   "Restarting PGP Public Key Server"
+            kill -KILL `ps ax | grep [p]ksd | cut -c 1-5`
+            /usr/sbin/pksd /etc/pksd.conf & (sleep 5; /usr/bin/pks-queue-run.sh /etc/pksd.conf) &  ;;
+
+     stop)  echo   "Stopping PGP Public Key Server"
+            kill -KILL `ps ax | grep [p]ksd | cut -c 1-5`                                          ;;
+
+        *)  echo  "Usage: $0 {start|stop|restart}"                                                 ;;
+
+esac
