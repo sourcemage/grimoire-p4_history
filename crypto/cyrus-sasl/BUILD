@@ -8,9 +8,9 @@
 
   ./configure            \
     --build=$BUILD       \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    --localstatedir=/var \
+    --prefix=$INSTALL_ROOT/usr        \
+    --sysconfdir=$INSTALL_ROOT/etc    \
+    --localstatedir=$INSTALL_ROOT/var \
     --disable-krb4       \
     --disable-plain      \
     --disable-sample     \
@@ -29,15 +29,15 @@
   make install    &&
 
   if [ "$SASLAUTHD" == "y" ]; then
-    cp saslauthd/testsaslauthd /usr/bin
+    cp saslauthd/testsaslauthd $INSTALL_ROOT/usr/bin
   fi
 
 ) > $C_FIFO 2>&1 && (
 
   if [ "$SASLAUTHD" == "y" ]; then
-    mkdir -p --mode=700 /var/run/saslauthd
+    mkdir -p --mode=700 $INSTALL_ROOT/var/run/saslauthd
   elif [ "$SASLDB" == "y" ]; then
-    mkdir -p --mode=700 /etc/sasldb
+    mkdir -p --mode=700 $INSTALL_ROOT/etc/sasldb
   fi
 
 )
