@@ -1,0 +1,9 @@
+mk_source_dir  $SOURCE_DIRECTORY
+unpack         $SOURCE
+cd             $SOURCE_DIRECTORY
+unpack         $SOURCE2
+
+cp $SCRIPT_DIRECTORY/local.h.smgl $SOURCE_DIRECTORY/local.h
+cp $SCRIPT_DIRECTORY/config.h.us $SOURCE_DIRECTORY
+cp $SOURCE_DIRECTORY/$SPELL-english/american.med+  $SOURCE_DIRECTORY/languages/american/american.med
+cp $SOURCE_DIRECTORY/$SPELL-english/british.med+  $SOURCE_DIRECTORY/languages/american/english.med
