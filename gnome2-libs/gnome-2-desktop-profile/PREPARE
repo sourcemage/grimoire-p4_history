@@ -1,0 +1,11 @@
+if spell_installed Python 
+then
+   if ! search_depends_status_exact "Python" "expat" "on" "optional" 
+   then
+      message ${RED} Python is not cast with expat enabled. Please recast Python and enable the expat optional depends. ${DEFAULT_COLOR}
+      exit
+   fi
+else
+   message ${YELLOW} Please enable expat during the Python configure or casting will hang. &&
+   sleep 5 
+fi  
