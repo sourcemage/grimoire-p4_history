@@ -1,3 +1,1 @@
-  perl  Makefile.PL  &&
-  make               
-
+source  $SECTION_DIRECTORY/PERL_BUILD

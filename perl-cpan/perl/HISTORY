@@ -1,3 +1,10 @@
+2005-03-17 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* perl_INC.patch added
+	* BUILD: Added vendorprefix
+	The goal of these changes is to have site_perl, vendor_perl and perl core modules 
+	parsed in that order ; SMGL will install all modules in vendor_perl, and user in 
+	site_perl (which is the default for several modules) : fix bug #8386
+
 2005-02-18 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* CONFIGURE: modified configure file (related to bug #8226)
 
