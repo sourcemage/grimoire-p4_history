@@ -6,6 +6,9 @@ optional_depends  pcre                                                       \
                   "Enable support for Perl compatible regular expressions."  &&
 
 if  [  "$CVS" ==  "y"  ]
-then  depends  cvs
+then  
+	depends  cvs &&
+	depends  automake &&
+	depends  libtool 
 fi
 
