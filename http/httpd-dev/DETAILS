@@ -1,13 +1,13 @@
-# $Id: DETAILS,v 1.7 2003/01/07 19:02:09 sergeyli Exp $
+# $Id: DETAILS,v 1.8 2003/01/18 21:23:47 sergeyli Exp $
            SPELL=httpd-dev
-         VERSION=2.0.44_PRE2
-             TAG=STRIKER_${VERSION//\./_}
+         VERSION=2.0.44
+             TAG=APACHE_${VERSION//\./_}
           SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]='966ae1d6cde0d96a07d85548d78bbb78'
+          MD5[0]='284d96d8701b7e063076de2d6091371b'
          SOURCE2=$SPELL-apr-$VERSION.tar.bz2
-          MD5[1]='d015b90523b9d39b9e57ed909db1c4e7'
+          MD5[1]='e7fa9961f51d3880e9a2436b3cf6fed3'
          SOURCE3=$SPELL-apr-util-$VERSION.tar.bz2
-          MD5[2]='9944b3d316d1537459f18a2b9950b1c8'
+          MD5[2]='2fe2e5810f161f4a6e9b0979c6de48e1'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:httpd-2.0:$TAG
   SOURCE2_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr:$TAG
