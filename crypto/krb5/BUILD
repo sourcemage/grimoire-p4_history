@@ -1,3 +1,7 @@
+# MIT krb5 Security Advisory 2005-001
+# Buffer overflows in telnet client
+patch --verbose krb5-1.4/src/appl/telnet/telnet/telnet.c < $SCRIPT_DIRECTORY/2005-001-patch_1.4.txt  &&
+
 if [ "$KRB4" == "y" ]; then
     OPTS="$OPTS --with-krb4"
 else
@@ -5,11 +9,6 @@ else
 fi
 
 cd  $SPELL-$VERSION/src
-
-# 1.3.6 needs this hack and I'm not sure why
-for i in $(find -name configure | sed -e 's/\/configure$//'); do 
-sedit 's/test "x$ac_old_val" != "x$ac_new_val"/false/' $i/configure
-done
 
 ./configure  --enable-dns-for-kdc       \
              --enable-dns-for-realm     \
