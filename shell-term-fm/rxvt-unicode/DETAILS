@@ -1,18 +1,19 @@
-	   SPELL=rxvt
-         VERSION=2.7.10
+           SPELL=rxvt-unicode
+         VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.rxvt.org/pub/rxvt/$SOURCE
-        WEB_SITE=http://www.rxvt.org
-         ENTERED=20020413
-         UPDATED=20030725
-          MD5[0]=a9a2d18834d3f6857804439afffdbd70
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/rxvt-unicode:rxvt-unicode
+        WEB_SITE=http://sourceforge.net/projects/rxvt-unicode
+         ENTERED=20040206
+         UPDATED=20040206
+          MD5[0]=IGNORE
       LICENSE[0]=GPL
-           SHORT="rxvt (ouR XVT) - a VT102 emulator for the X window system"
+           SHORT="rxvt-unicode is a unicode capable terminal emulator"
 cat << EOF
 rxvt, version 2.6.4, is a colour vt102 terminal emulator intended as an 
 xterm(1) replacement for users who do not require features such as 
 Tektronix 4014 emulation and toolkit-style configurability. As a result, 
 rxvt uses much less swap space -- a significant advantage on a machine 
 serving many X sessions.
+rxvt-unicode is a fork of rxvt that adds unicode support.
 EOF
