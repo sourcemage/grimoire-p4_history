@@ -1,10 +1,12 @@
 (
 
-  ./configure  --prefix=/usr            \
-               --sysconfdir=/etc/mpich  \
-               ${OPTS}                  &&
-  make                                  &&
-  prepare_install                       &&
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/sysconfdir.patch  &&
+
+  ./configure  --prefix=/usr                           \
+               --sysconfdir=/etc/mpich                 \
+               ${OPTS}                                 &&
+  make                                                 &&
+  prepare_install                                      &&
   make   install
  
 ) > ${C_FIFO} 2>&1
