@@ -152,7 +152,9 @@ else
 
   # patch 2.6 make file, to allow use of xconfig
   if [ -d scripts/kconfig ];  then
-    patch -p0 < ${SPELL_DIRECTORY}/mk.2.6.diff scripts/kconfig/Makefile
+    sedit  's:-I$(QTDIR)/include:&/qt:'  scripts/kconfig/Makefile  &&
+    sedit  's:$$d/include/qconfig.h:$$d/include/qt/qconfig.h:'     \
+           scripts/kconfig/Makefile
   fi  &&
 
   if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
