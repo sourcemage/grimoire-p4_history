@@ -1,4 +1,5 @@
 if grep -q 'enable-graphics' $SPELL_CONFIG; then
+  requires x11-libs &&
   depends libpng
 fi &&
 
