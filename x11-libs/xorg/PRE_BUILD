@@ -32,7 +32,7 @@ if  [  -f  $SOURCE_DIRECTORY/config/cf/host.def  ];  then
   sedit  s"/-DPIC -fPIC//g"  $SOURCE_DIRECTORY/config/cf/host.def
 fi  &&
 
-if  [  "$PAM"  ==  "y"  ];  then
+if  [  "$PAM"  =  "y"  ];  then
   echo  "#define  HasPam  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
@@ -45,19 +45,19 @@ sedit  's:DefaultLinuxDistribution:LinuxSourceMage:'  \
 #
 # Now to define some of our user-specified settings
 #
-if  [  "$IPV6"  ==  "y"  ];  then
+if  [  "$IPV6"  =  "y"  ];  then
   echo  "#define  BuildIPv6   YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  spell_installed  groff;  then
+if  spell_ok  groff;  then
   echo  "#define  HasGroff  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  spell_installed  libpng;  then
+if  spell_ok  libpng;  then
   echo  "#define  HasLibpng  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$XDEBUG"  == "n"  ]         ||
+if  [  "$XDEBUG"  = "n"  ]         ||
     (echo $LDFLAGS | grep -q -- "-s");  then
   echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
@@ -67,12 +67,12 @@ if  (echo $LDFLAGS | grep -q -- "-s");  then
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$DEVELDRI"  ==  "y"  ];  then
+if  [  "$DEVELDRI"  =  "y"  ];  then
   echo  "#define  BuildDevelDRIDrivers  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$JAPANESE"  ==  "y"  ];  then
+if  [  "$JAPANESE"  =  "y"  ];  then
   echo  "#define  InstallJapaneseDocs  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi
