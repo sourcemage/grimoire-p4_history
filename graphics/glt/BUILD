@@ -1,8 +1,7 @@
 (
 
-  make             &&
-  prepare_install  &&
-  make  install    &&
+  make                                        &&
+  prepare_install                             &&
 
   # Install binaries...
   install  -m  755  bin/*  /usr/X11R6/bin     &&
