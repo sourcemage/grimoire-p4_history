@@ -1,104 +1,85 @@
-2003-09-19  Jason Flatt <jason@flattfamily.com>
+2003-10-18 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated to 7.07.1.
+	* BUILD: Added, 'cause make install does not copy the main binary.
+	* DEPENDS: Changed jpeg from optional_depends to depends (Bugs #4400 &
+	#4440).
+	* HISTORY: Updated to new format.
 
-		Updated CONFLICTS for ghostscript spell fork.
+2003-09-19 Jason Flatt <jason@flattfamily.com>
+	* CONFLICTS: Updated for ghostscript spell fork.
 
-2003-08-29  Jason Flatt <jason@flattfamily.com>
+2003-08-29 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated to 7.07.1rc2.  Currently for devel only.
 
-		Updated to 7.07.1rc2.  Currently for devel only.
+2003-08-13 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Updated to 7.07.1rc1.  Currently for devel only.
 
-2003-08-13  Jason Flatt <jason@flattfamily.com>
+2003-05-19 Jason Flatt <jason@flattfamily.com>
+	* Minor code reformat.
 
-		Updated to 7.07.1rc1.  Currently for devel only.
+2003-05-18 Jason Flatt <jason@flattfamily.com>
+	* PREPARE: Updated Omni to 0.9.0.
 
-2003-05-19  Jason Flatt <jason@flattfamily.com>
+2003-03-04 Jason Flatt <jason@flattfamily.com>
+	* Reverted back to static build, as the shared build didn't work like I
+	thought it did.
 
-		Minor code reformat.
+2003-02-17 Jason Flatt <jasonflatt@wizard.com>
+	* Converted to build as shared object (so that GSView works w/it).
+	* PREPARE: Upgraded to use Omni 0.7.3.
 
-2003-05-18  Jason Flatt <jason@flattfamily.com>
+2003-02-10 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump to 7.05.6.
 
-		Updated Omni to 0.9.0.
+2003-01-26 Jason Flatt <jasonflatt@wizard.com>
+	* PREPARE: Actually included Omni upgrade info (thanks to Treeve Jelbert
+	for pointing that out).
 
-2003-03-04  Jason Flatt <jason@flattfamily.com>
+2003-01-17 Jason Flatt <jasonflatt@wizard.com>
+	* PRE_BUILD: Added MD5 info to and modified logic.
+	* PREPARE: Upgraded Omni includes to version 0.7.2.
 
-		Reverted back to static build, as the shared
-		build didn't work like I thought it did.
+2002-12-14 Jason Flatt <jasonflatt@wizard.com>
+	* Addresses bugs 1890, 1891 and 1892.
 
-2003-02-17  Jason Flatt <jasonflatt@wizard.com>
+2002-10-23 Jason Flatt <jasonflatt@wizard.com>
+	* TRIGGERS: Added for optional_depends zlib.
 
-		Converted to build as shared object (so that GSView works w/it).
-		(Thanks to Treeve Jelbert for the kick-in-the-pants.)  :^)
-		Upgraded to use Omni 0.7.3.
+2002-10-14 Jason Flatt <jasonflatt@wizard.com>
+	* BUILD, DEPENDS, DETAILS, PRE_BUILD & PREPARE: Modified or added to
+	address bug # 1180 and to better represent the dependencies.
 
-2003-02-10  Jason Flatt <jasonflatt@wizard.com>
+2002-09-16 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated version and MD5 to 7.05.5.
 
-		Version bump to 7.05.6.
+2002-08-27 Jason Flatt <jasonflatt@wizard.com>
+	* DEPENDS: Cleaned up.
+	* PROVIDES: Changed provides to postscript-interpreter.
+	* HISTORY: Reformatted this file.
 
-2003-01-26  Jason Flatt <jasonflatt@wizard.com>
+2002-08-02 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Removed a broken SOURCE_URL; updated MD5; and changed LICENSE=
+	and MD5= to LICENSE[0]= and MD5[0]=.
+	* HISTORY: Reformatted.
 
-		Actually included Omni upgrade info (thanks to Treeve Jelbert for pointing that out).
+2002-07-17 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Updated MD5 from previous version update.
 
-2003-01-17  Jason Flatt <jasonflatt@wizard.com>
+2002-07-13 Jason Flatt <jasonflatt@wizard.com>
+	* DEPENDS: Changed gtk+ to optional_depends.
 
-		Added MD5 info to PRE_BUILD.
-		Modified logic in PRE_BUILD.
-		Upgraded Omni includes to version 0.7.2.
+2002-07-08 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Reordered SOURCE_URLs.
 
-2002-12-14  Jason Flatt <jasonflatt@wizard.com>
+2002-07-08 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Version bump from 7.05.2-1 to 7.05.3.
 
-		Addresses bugs 1890, 1891 and 1892.
+2002-06-22 Jason Flatt <jasonflatt@wizard.com>
+	* PROVIDES: Added for compatibility with other programs that require
+	ghostscript (Thanks to Treeve).
 
-2002-10-23  Jason Flatt <jasonflatt@wizard.com>
+2002-06-22 Jason Flatt <jasonflatt@wizard.com>
+	* DETAILS: Modified LICENSE and MD5.
 
-		Added TRIGGERS for optional_depends zlib.
-
-2002-10-14  Jason Flatt <jasonflatt@wizard.com>
-
-		Modified BUILD, DEPENDS & DETAILS and added PRE_BUILD & PREPARE
-		to address bug # 1180 and to better represent the dependencies.
-
-2002-09-16  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated version and MD5 to 7.05.5.
-
-2002-08-27  Jason Flatt  <jasonflatt@wizard.com>
-
-		Cleaned up DEPENDS.
-		Changed provides to postscript-interpreter.
-		Reformatted this file.
-
-2002-08-02  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated the VERSION from 7.05.3 to 7.05.4.
-		Removed a broken SOURCE_URL.
-		Updated MD5.
-		Changed LICENSE= and MD5= to LICENSE[0]= and MD5[0]=.
-		Reformatted this HISTORY file.
-
-2002-07-17  Jason Flatt  <jasonflatt@wizard.com>
-
-		Updated MD5 from previous version update.
-
-2002-07-13  Jason Flatt  <jasonflatt@wizard.com>
-
-		Changed gtk+ to optional_depends in DEPENDS.
-
-2002-07-08  Jason Flatt  <jasonflatt@wizard.com>
-
-		Reordered SOURCE_URLs.
-
-2002-07-08  Jason Flatt  <jasonflatt@wizard.com>
-
-		Version bump from 7.05.2-1 to 7.05.3.
-
-2002-06-22  Jason Flatt  <jasonflatt@wizard.com>
-
-		Added provides for compatibility with other programs that require ghostscript (Thanks to Treeve).
-
-2002-06-22  Jason Flatt  <jasonflatt@wizard.com>
-
-		Modified LICENSE and MD5 to DETAILS.
-
-2002-06-12  Treeve Jelbert  <treeve01@pi.be>
-
-		Created new spell espgs 7.05.2 from ghostscript 7.05.
-		Removed jpeg source.
+2002-06-12 Treeve Jelbert <treeve01@pi.be>
+	* Removed jpeg source.
