@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   libglade    &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&

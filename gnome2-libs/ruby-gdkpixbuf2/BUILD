@@ -1,6 +1,6 @@
 (
 
-  cd   gnome       &&
+  cd   gdkpixbuf   &&
   ruby extconf.rb  &&
   make             &&
   prepare_install  &&
