@@ -5,8 +5,19 @@
   make &&
   cd $SOURCE_DIRECTORY/xc-Trunk/xc &&
   prepare_install                  &&
-  make    install                  &&
-  
+if installed_spell xorg
+then
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/modules/dri/*.so /usr/X11R6/lib/modules/dri
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/modules/extensions/libglx.a /usr/X11R6/lib/modules/extensions
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/modules/extensions/libGLcore.a /usr/X11R6/lib/modules/extensions
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/modules/extensions/libdri.a /usr/X11R6/lib/modules/extensions
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/modules/drivers/*_drv.o /usr/X11R6/lib/modules/drivers
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/*GL* /usr/X11R6/lib
+  cp $SOURCE_DIRECTORY/xc-Trunk/xc/exports/lib/*Mesa* /usr/X11R6/lib
+else
+  make    install 
+fi &&
+
 #Let's install the proper modules
 
   mkdir -p /lib/modules/`uname -r`/kernel &&
