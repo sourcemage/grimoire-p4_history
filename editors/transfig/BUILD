@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/transfig.3.2.3d.fig2dev.Imakefile.patch &&
+  patch -p0 < $SCRIPT_DIRECTORY/${SPELL}.${VERSION}.fig2dev.Imakefile.patch &&
   xmkmf                            &&
   make Makefiles                   &&
   make                             &&
