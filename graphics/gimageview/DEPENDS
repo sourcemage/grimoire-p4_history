@@ -1,0 +1,25 @@
+optional_depends  gtk+2  \
+			"--with-gtk2"      \
+			""     \
+			"for GTK2 support" &&
+ 
+optional_depends  libmng  \
+			""      \
+			"--without-libmng"  \
+			"for MNG support"   &&
+    
+optional_depends  librsvg2 \
+			"--with-librsvg"       \
+			"--without-librsvg"  \
+			"for SVG support under GTK2"    &&
+
+optional_depends  MPlayer  \
+			"--enable-mplayer"   \
+			""       \
+			"for EXPERIMENTAL MPlayer video support" &&
+ 
+optional_depends  xine-lib \
+			"--with-xine"        \
+			""       \
+			"for EXPERIMENTAL Xine video support" 
+
