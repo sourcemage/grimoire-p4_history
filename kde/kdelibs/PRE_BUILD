@@ -1,7 +1,0 @@
-default_pre_build &&
-cd $SOURCE_DIRECTORY &&
-patch -d kioslave/http < $SPELL_DIRECTORY/post-3.1.2-kdelibs-http.patch   &&
-patch -d khtml         < $SPELL_DIRECTORY/post-3.1.2-kdelibs-khtml1.patch &&
-patch -d khtml         < $SPELL_DIRECTORY/post-3.1.2-kdelibs-khtml2.patch &&
-patch -d khtml/html    < $SPELL_DIRECTORY/post-3.1.2-kdelibs-khtml3.patch
-

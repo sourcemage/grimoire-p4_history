@@ -39,7 +39,7 @@ export QTDIR=$SOURCE_DIRECTORY  &&
   prepare_install                                  &&
   make install                                     &&
 
-  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so  &&
+  ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so.${VERSION} /usr/lib/libqt-mt.so
   ln -sf ${INSTALL_ROOT}/usr/lib/libqt-mt.so  /usr/lib/libqt.so
 
 ) > $C_FIFO 2>&1
