@@ -1,10 +1,12 @@
 patch  -p1  <  ${SCRIPT_DIRECTORY}/NVIDIA_glx-1.0.6106-defines.patch   &&
 patch  -p0  <  ${SCRIPT_DIRECTORY}/NVIDIA_glx-1.0.6106-glheader.patch  &&
-if  [  $(installed_version  linux)  =  "2.6.9"  ];  then
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/linux-2.6.9.patch
-elif  [  $(installed_version  linux)  =  "2.6.8.1"  ];  then
-  patch  -p1  <  ${SCRIPT_DIRECTORY}/linux-2.6.8.1.patch
-fi  &&
+
+#RUNNING_KERNEL=$(uname --release)
+#if  [ ${RUNNING_KERNEL%-*} == "2.6.9" ];  then
+#  patch  -p1  <  ${SCRIPT_DIRECTORY}/linux-2.6.9.patch
+#elif  [  ${RUNNING_KERNEL}  =  "2.6.8.1"  ];  then
+#  patch  -p1  <  ${SCRIPT_DIRECTORY}/linux-2.6.8.1.patch
+#fi  &&
 
 cd usr/src/nv  &&
 
