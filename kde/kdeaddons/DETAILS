@@ -8,11 +8,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-rc2/}
    SOURCE_URL[0]=$KDE_URL/unstable/${VERSION//-/}/src/$SOURCE
           MD5[0]=fbdfd3ba6fe12cb5a5cae0250ba4fc93
 else
-         VERSION=3.3.1
+         VERSION=3.3.2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/3.3.1/src/$SOURCE
-          MD5[0]='37926d11d8b9502d1e00b8da81d59e29'
+   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
+          MD5[0]=29656abfb95beee2dd79c3fafb6deecd
 fi
        BUILD_API=2
         WEB_SITE=http://www.kde.org
