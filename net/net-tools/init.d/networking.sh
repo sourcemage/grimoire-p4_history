@@ -64,7 +64,7 @@ case "$1" in
 			ifconfig  $DEVICE $IP broadcast $BROADCAST netmask $NETMASK
 # check if GATEWAY is set; gateway is set by PPP or other software in some cases
 			if [ ! -z "$GATEWAY" ]; then
-			    route add default gateway $GATEWAY
+			    route add default gateway $GATEWAY dev $DEVICE
 			fi
 			evaluate_retval
 		    else 
