@@ -1,14 +1,13 @@
            SPELL=BitTorrent
-         VERSION=3.4.1a
+         VERSION=3.4.2
           SOURCE=${SPELL}-${VERSION}.zip
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/bittorrent/${SOURCE}
-          MD5[0]=84d8cfedeba539db8b497d63e6ecceed
+          MD5[0]=6ad4e128ddc82f8ebef6fbef59872f0d
         WEB_SITE=http://bitconjurer.org/BitTorrent/
          ENTERED=20030410
          UPDATED=20030410
       LICENSE[0]=MIT
-      MAINTAINER=eric@sandall.us
            SHORT="BitTorrent P2P network"
 cat << EOF
 BitTorrent is a protocol for distributing files. It identifies content by url and is designed to integrate seamlessly with the web. Its advantage over plain http is that when multiple downloads of the same file happen concurrently, the downloaders upload to each other, making it possible for the file source to support very large numbers of downloaders with only a modest increase in its load.
