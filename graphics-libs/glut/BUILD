@@ -5,7 +5,7 @@
   fi
 
      MESA_FIX="s/\$(TOP)\/..\/lib\/libMesa/\/usr\/X11R6\/lib\/lib/"
-  SYMBOL_LIBS="-L/usr/X11R6/lib,-lX11,-lGL,-lGLU,-lXmu"
+  SYMBOL_LIBS="-L/usr/X11R6/lib,-lX11,-lGL,-lGLU,-lXmu,-lXi"
    SYMBOL_FIX="s:,libglut.so.3:,libglut.so.3,$SYMBOL_LIBS:"
    CFLAGS_FIX="s/-O2 -m486/$CFLAGS/"
 
@@ -23,8 +23,8 @@
   prepare_install                                               &&
   ln     -sf libglut.so.3.7  libglut.so.3                       &&
   ln     -sf libglut.so.3.7  libglut.so                         &&
-  cp     -d libglut*        /usr/lib                            &&
+  cp     -d libglut*        ${ISTALL_ROOOT}/usr/lib             &&
   cd     ../..                                                  &&
-  cp     include/GL/glut.h  /usr/include/GL
+  cp     include/GL/glut.h  ${INSTALL_ROOT}/usr/include/GL/glut.h
 
 ) > $C_FIFO 2>&1
