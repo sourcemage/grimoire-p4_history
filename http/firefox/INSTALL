@@ -14,8 +14,9 @@ ln  -fns   ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
            ${INSTALL_ROOT}/usr/share/idl/firefox           &&
 ln  -fns   ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
            ${INSTALL_ROOT}/usr/include/firefox             &&
-cp  -vaL   dist/public/nss                                 \
-           ${INSTALL_ROOT}/usr/include/firefox/            &&
+mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox/nss         &&
+cp  -vfL   dist/public/nss/*.h                             \
+           ${INSTALL_ROOT}/usr/include/firefox/nss         &&
 
 #
 # Don't do this!
