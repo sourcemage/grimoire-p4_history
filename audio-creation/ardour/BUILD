@@ -1,6 +1,7 @@
 (
 
-./configure --prefix=/usr \
+patch -p1 <$SCRIPT_DIRECTORY/ardour.patch &&
+./configure --prefix=$INSTALL_ROOT/usr \
 	    $OPTS	&&
 
 make && 
