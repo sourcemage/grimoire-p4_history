@@ -1,13 +1,15 @@
 (
 
   sedit  "s/-O2/$CFLAGS/"  configure      &&
+
   ./configure  --build=$BUILD             \
                --bindir=/usr/bin          \
                --libs=/lib/libncurses.so  \
-               --datadir=/var/lib/elvis   &&
+               --datadir=/var/lib/elvis   \
+               $OPTS                      &&
   make                                    &&
   prepare_install                         &&
   make    install                         &&
   ln  -sf  elvis  /usr/bin/vi
 
-) > $C_FIFO 2>&1
+)  >  $C_FIFO  2>&1
