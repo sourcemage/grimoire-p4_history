@@ -1,5 +1,5 @@
 depends  libpcap  &&
-depends  pcre  &&
+depends  pcre     &&
 
 # Flexible Responce code
 if  [  "${CF_FLEXR}"  ==  "y"  ];  then
@@ -11,12 +11,12 @@ if  [  "${CF_DB}"  ==  "y"  ]; then
 
   if  [  "${CF_MYSQL}"  ==  "y"  ]; then
       depends mysql
-  fi
+  fi  &&
   if  [  "${CF_PSQL}"  ==  "y"  ]; then
       depends postgresql
-  fi
+  fi  &&
   if  [  "${CF_ODBC}"  ==  "y"  ]; then
-      depends unixODBC
+      depends unixodbc
   fi
   
 fi  &&
@@ -26,5 +26,7 @@ fi  &&
 #depends snortsnarf
 #
 
-optional_depends  openssl  "--with-openssl"  "--without-openssl"  \
-      "for OpenSSL support (used by XML output plugin)"
+optional_depends  openssl                                            \
+                  "--with-openssl"                                   \
+                  "--without-openssl"                                \
+                  "for OpenSSL support (used by XML output plugin)"

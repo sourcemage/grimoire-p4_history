@@ -1,4 +1,4 @@
-  PREFIX=${INSTALL_ROOT}/usr/share/picoSQL	&&
+  PREFIX=${INSTALL_ROOT}/usr/share/picosql	&&
 # insert CFLAGS into all subdir makefiles
   local L                       &&
   for L  in  `ls -d *` ;  do

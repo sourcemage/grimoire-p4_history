@@ -1,14 +1,14 @@
-           SPELL=unixODBC
+           SPELL=unixodbc
          VERSION=2.2.9
-       BUILD_API=2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=unixODBC-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/unixODBC-$VERSION
    SOURCE_URL[0]=http://www.unixodbc.org/$SOURCE
           MD5[0]=f57a1cc10c126ce03de6856d19439795
         WEB_SITE=http://www.unixodbc.org
          ENTERED=20020406
          UPDATED=20020406
       LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="enables ODBC database connectivity in unix."
 cat << EOF
 What is the unixODBC Project? 

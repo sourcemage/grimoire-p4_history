@@ -1,17 +1,16 @@
-           SPELL=picoODBC
+           SPELL=picoodbc
          VERSION=2.0.1a
-       BUILD_API=2
-          SOURCE=$SPELL-$VERSION-src.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-        WEB_SITE=http://www.picosoft.it/picosql/
+          SOURCE=picoODBC-$VERSION-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/picoODBC-$VERSION
    SOURCE_URL[0]=$WEB_SITE/$SOURCE
-          LICENSE=GPL
-	     DOCS="README"
-           MD5[0]=2fcf621dbaa6781774fde9bc6f69c302
-          ENTERED=20030202
-          UPDATED=
-       MAINTAINER=treeve01@pi.be
-SHORT="ODBC driver for picoSQL"
+          MD5[0]=2fcf621dbaa6781774fde9bc6f69c302
+        WEB_SITE=http://www.picosoft.it/picosql/
+         ENTERED=20030202
+         UPDATED=20040718
+      LICENSE[0]=GPL
+       BUILD_API=2
+            DOCS="README"
+           SHORT="ODBC driver for picoSQL"
 cat << EOF
 ODBC driver for picoSQL
 EOF
