@@ -1,8 +1,16 @@
            SPELL="kazehakase"
+if [ "${CVS}" == "y" ]
+then
+         VERSION="cvs"
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.jp:/cvsroot/kazehakase:kazehakase
+          MD5[0]=IGNORE
+else
          VERSION="0.2.4"
           SOURCE="${SPELL}-${VERSION}.tar.gz"
-   SOURCE_URL[1]="http://osdn.dl.sourceforge.jp/kazehakase/13181/kazehakase-0.2.4.tar.gz"
+   SOURCE_URL[0]="http://osdn.dl.sourceforge.jp/kazehakase/13181/kazehakase-0.2.4.tar.gz"
           MD5[0]="789dbaa9b5b809657cdd538ff4867159"
+fi
 SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
         WEB_SITE="http://kazehakase.sourceforge.jp"
          ENTERED="20050123"
