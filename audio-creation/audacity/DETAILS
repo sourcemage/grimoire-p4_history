@@ -1,15 +1,15 @@
            SPELL=audacity
-         VERSION=1.2.1
-          SOURCE=$SPELL-src-$VERSION.tar.bz2
+         VERSION=1.2.2
+          SOURCE=$SPELL-src-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-$VERSION
-SOURCE_URL[0]=http://osdn.dl.sourceforge.net/sourceforge/audacity/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=5206a47972b748d5beb888ab1c2fd500
         WEB_SITE=http://audacity.sourceforge.net/
          ENTERED=20011217
          UPDATED=20030329
-	MD5[0]=bc0f0b743693e8e678b597ea6d4b154a
-	LICENSE[0]=GPL
-	MAINTAINER=unet@sourcemage.org
-        SHORT="audacity is a simple soundfile editor"
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Simple soundfile editor"
 cat << EOF
 Audacity is a program that lets you manipulate digital audio waveforms.
 In addition to letting you record sounds directly from within the
