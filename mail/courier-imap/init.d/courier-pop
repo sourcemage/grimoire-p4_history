@@ -37,7 +37,7 @@ start)
 			TLS_PROTOCOL=$TLS_STARTTLS_PROTOCOL ; \
 			export TLS_PROTOCOL ;
 			${libexecdir}/couriertcpd -address=$ADDRESS \
-			-stderrlogger=${exec_prefix}/courierlogger \
+			-stderrlogger=${exec_prefix}/sbin/courierlogger \
 			-stderrloggername=pop3d \
 			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
 			-pid=$PIDFILE $TCPDOPTS \
