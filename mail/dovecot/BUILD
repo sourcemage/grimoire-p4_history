@@ -1,4 +1,4 @@
-  if spell_installed openssl; then
+  if spell_ok openssl; then
     SSL="--with-ssl=openssl"							&&
     mkdir -p /etc/ssl/certs							&&
     mkdir -p /etc/ssl/private
