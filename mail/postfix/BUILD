@@ -81,7 +81,7 @@ fi   &&
 sedit  "s:/usr/local:${INSTALL_ROOT}/usr:"  src/global/mail_params.h  &&
 
 # NPTL glibc fix
-if  /lib/libc.so.6  |  grep  -q  NPTL;  then
+if  glibc_is_nptl; then
   AUXLIBS="$AUXLIBS  -lpthread"
 fi  &&
 
