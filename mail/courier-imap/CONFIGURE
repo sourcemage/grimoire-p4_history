@@ -6,7 +6,7 @@ if  !  grep  -q  "IPV6"  $SPELL_CONFIG;  then
 fi
 
 ##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
-if  spell_installed  linux-pam;  then
+if  spell_ok  linux-pam;  then
   if  query  "Use the PAM library for authentication? "  y;  then
     AUTHPAM=y
     AUTHPWD=n
@@ -60,7 +60,7 @@ else
   fi
 fi
 
-if  spell_installed  db  ||  spell_installed  gdbm;  then
+if  spell_ok  db  ||  spell_ok  gdbm;  then
   if  query  "Authenticate from a GDBM/DB database? "  y;  then
     AUTHUSERDB=y
   else
@@ -90,7 +90,7 @@ else
   fi
 fi
 
-if  spell_installed  openldap;  then
+if  spell_ok  openldap;  then
   if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
     AUTHLDAP=y
   else
@@ -106,7 +106,7 @@ else
   fi
 fi
 
-if  spell_installed  mysql;  then
+if  spell_ok  mysql;  then
   if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
     AUTHMYSQL=y
   else
@@ -122,7 +122,7 @@ else
   fi
 fi
 
-if  spell_installed  postgresql;  then
+if  spell_ok  postgresql;  then
   if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
     AUTHPGSQL=y
   else
