@@ -2,7 +2,7 @@
 
   cp  $CONFIG_CACHE/net-tools.config.h     config.h                &&
   cp  $CONFIG_CACHE/net-tools.config.make  config.make             &&
-
+  patch -p1 < $SCRIPT_DIRECTORY/x25_address-fix.patch              &&
   make  COPTS="-D_GNU_SOURCE -Wall $CFLAGS"  LOPTS="$LDFLAGS"      &&
   prepare_install                                                  &&
   make  BASEDIR=${INSTALL_ROOT}/  install                          &&
