@@ -22,6 +22,9 @@ if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
 
   if    query  "Do you want imap support?"  n
   then  echo   'OPTS="$OPTS --with-imap"'  >>  $SPELL_CONFIG
+        if  spell_installed  openssl
+        then  echo  'OPTS="$OPTS  --with-imap-ssl"'  >>  $SPELL_CONFIG
+        fi
         requires  imapd
   fi
   

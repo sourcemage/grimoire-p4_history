@@ -1,6 +1,6 @@
 mk_source_dir  $SOURCE_DIRECTORY   &&
-unpack  $SOURCE 		   &&                   
-mk_source_dir  $SOURCE1_DIRECTORY  &&
 mk_source_dir  $SOURCE2_DIRECTORY  &&
-unpack  $SOURCE1                   &&
-unpack  $SOURCE2
+mk_source_dir  $SOURCE3_DIRECTORY  &&
+unpack  $SOURCE  ${MD5[0]}         &&                   
+unpack  $SOURCE2  ${MD5[1]}        &&
+unpack  $SOURCE3  ${MD5[2]}
