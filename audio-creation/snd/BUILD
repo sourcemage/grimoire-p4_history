@@ -1,8 +1,6 @@
 (
 
-patch -p0<$SCRIPT_DIRECTORY/alsa1.patch &&
-
-./configure --prefix=/usr \
+./configure --prefix=$INSTALL_ROOT/usr \
 	    --with-static-xm \
 	    $OPTS	&&
 
