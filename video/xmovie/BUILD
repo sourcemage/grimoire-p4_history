@@ -1,6 +1,6 @@
 (
 
-  patch -p1 < $SCRIPT_DIRECTORY/xmovie-1.9.8-shared.patch  &&
+  patch -p1 < $SCRIPT_DIRECTORY/xmovie-1.9.9-shared.patch  &&
   
   make             &&
   prepare_install  &&
