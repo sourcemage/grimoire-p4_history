@@ -1,0 +1,9 @@
+mk_source_dir  $SOURCE_DIRECTORY                                &&
+unpack         $SOURCE  ${MD5[0]}                               &&
+cd             $SOURCE_DIRECTORY                                &&
+cp $SOURCE_CACHE/$SOURCE2 ./                                    &&
+gunzip $SOURCE2                                                 &&
+testMD5=`md5sum star-selinux.patch|cut -f1 -d ' '`              &&
+if [ "${MD5[1]}" == "$testMD5" ]; then
+  MD5_ok="y"
+fi

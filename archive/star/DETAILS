@@ -11,6 +11,14 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%a*}
       LICENSE[0]=GPL
        BUILD_API=2
            SHORT='Unique standard tape archiver'
+
+#
+# selinux patch
+#
+SOURCE2=star-selinux.patch.gz
+SOURCE2_URL[0]=http://www.nsa.gov/selinux/patches/$SOURCE2
+MD5[1]=4f84f81c213d503d4d87f781f6a7fe3c
+
 cat << EOF
 Star is a very fast tar-like tape archiver with improved functionality.
 Star archives and extracts multiple files to and from a single file
