@@ -23,12 +23,12 @@ case $1 in
            ;;
 
     restart)
-	   $0 stop
-           sleep 1
-	   $0 start
+	   			 $0 stop
+            	sleep 1
+	   			 $0 start
            ;;  
-    reload)
-	   $0 restart
+    reload) echo     "Reloading postfix..."
+					 loadproc  postfix  reload
            ;;    
     status)
            statusproc master
