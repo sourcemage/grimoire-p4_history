@@ -4,6 +4,9 @@ depends  WEBSERVER  &&
 # optional extensions depend on it, and it's omnipresent anyway.
 depends zlib '--with-zlib --with-zlib-dir=/usr' 'for LZ compression support' &&
 
+# PCRE is required to install PEAR
+depends pcre '--with-pcre-regex=/usr' 'for Perl regex support' &&
+
 optional_depends bzip2                     \
                  '--with-bz2=/usr'         \
                  '--without-bz2'           \
@@ -20,6 +23,10 @@ optional_depends mcrypt               \
                  '--with-mcrypt=/usr' \
                  '--without-mcrypt'   \
                  'for crypto library' &&
+optional_depends mcal               \
+                 '--with-mcal=/usr' \
+                 '--without-mcal'   \
+                 'for MCAL calendaring library' &&
 optional_depends curl                                      \
                  '--with-curl=/usr'                        \
                  '--without-curl'                          \
@@ -36,10 +43,6 @@ optional_depends gettext                   \
                  '--with-gettext=/usr'     \
                  '--without-gettext'       \
                  'for GNU gettext support' &&
-optional_depends pcre                     \
-                 '--with-pcre-regex=/usr' \
-                 '--without-pcre-regex'   \
-                 'for Perl regex support' &&
 optional_depends postgresql                      \
                  '--with-pgsql=/usr'             \
                  '--without-pgsql'               \
