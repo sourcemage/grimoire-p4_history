@@ -7,7 +7,9 @@ depends  libxml2      &&
 depends  popt         &&
 depends  fontconfig   &&
 depends  libglade2    &&
+depends wv "--with-sys-wv"  &&
 
+optional_depends ImageMagick "" "" "to manipulte images"                    &&
 optional_depends psiconv "" "" "to import Psion files"                      &&
 optional_depends "curl" "" "" "to enable on the fly dictionary downloading" &&
 optional_depends "jpeg" "" "" "for jpeg image support"  &&
