@@ -1,4 +1,10 @@
 (
+   case $VERSION in 
+     1.0.3)  cd camel
+             patch  -p0  <  $SCRIPT_DIRECTORY/evolution-1.0.3.patch
+             cd $SOURCE_DIRECTORY
+             ;;
+   esac
 
    mkdir  evolution-db3                                         &&
    cd  db-$DBVERSION/build_unix                                 &&
