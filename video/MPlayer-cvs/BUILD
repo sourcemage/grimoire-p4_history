@@ -6,10 +6,6 @@
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch       &&
   patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-ffmpeg.patch  &&
 
-  if  [  "$FONTCONFIG"  =  "y"  ];  then
-    patch -p0 < $SCRIPT_DIRECTORY/MPlayer-cvs-fontconfig.patch
-  fi  &&
-
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
   esac  &&
@@ -44,6 +40,8 @@
           message "Couldn't find a font to install as default subtitle font."
           message "Make sure you copy a font to ~/.mplayer/subfont.ttf"
         fi
+      else
+        echo  "fontconfig=1"  >>  etc/example.conf
       fi
     fi
   

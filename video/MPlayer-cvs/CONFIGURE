@@ -30,14 +30,3 @@ if  !  grep  -q  "OSD_MENU"  $SPELL_CONFIG;  then
   echo  "OSD_MENU=$OSD_MENU"  >>  $SPELL_CONFIG
 
 fi
-
-if  !  grep  -q  "FONTCONFIG"  $SPELL_CONFIG;  then
-
-  if    query  "Add patch for fontconfig support (experimental, written by your favorite video grimoire guru)?" n
-  then  FONTCONFIG=y
-  else  FONTCONFIG=n
-  fi
-
-  echo  "FONTCONFIG=$FONTCONFIG" >>  $SPELL_CONFIG
-
-fi
