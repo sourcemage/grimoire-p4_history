@@ -51,10 +51,13 @@ then
 		then
 			unpack ${source} ${md5sum}
 		fi &&
-		cp -v ${SOURCE_CACHE}/${source} ./ &&
-		linux_new_uncompress ./${source} &&
-		message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
-		patch -p${pval} <${patch} || return 1
+		if [ "${source}" != "" ]
+		then
+			cp -v ${SOURCE_CACHE}/${source} ./ &&
+			linux_new_uncompress ./${source} &&
+			message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
+			patch -p${pval} <${patch} || return 1
+		fi
 	done &&
 	make mrproper 
 elif [[ "$mode" == "oldktree" ]]
