@@ -38,5 +38,9 @@ anti-aliasing with gtk+ toolkit" y
                  then  echo GTK=yes >> $SPELL_CONFIG
             else echo GTK2=yes >> $SPELL_CONFIG
     fi 
-fi 
+fi && 
+
+if [ "$HEADCODE" = "yes" ] && [ -f $SOURCE_CACHE/Firebird_cvs.tar.bz2 ];
+then touch $SOURCE_CACHE/$SOURCE
+fi
 
