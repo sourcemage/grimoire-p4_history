@@ -18,8 +18,8 @@ optional_depends  "openssl"                     \
                   "for SSL encryption support"  &&
 
 optional_depends  "mozilla"                     \
-                  ""                            \
-                  ""                            \
+                  "--enable-blenderplugin"      \
+                  "--disable-blenderplugin"     \
                   "for Mozilla plugin support"  &&
 
 optional_depends  "libogg"                \
@@ -30,4 +30,9 @@ optional_depends  "libogg"                \
 optional_depends  "libvorbis"                \
                   ""                         \
                   ""                         \
-                  "for Vorbis file support"
+                  "for Vorbis file support"  &&
+
+optional_depends  "ode"                         \
+                  "--enable-gameblender"        \
+                  "--disable-gameblender"       \
+                  "for the GameBlender engine"
