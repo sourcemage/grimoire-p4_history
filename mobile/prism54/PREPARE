@@ -1,0 +1,7 @@
+if ! grep -q TARGET_KERNEL $SPELL_CONFIG 
+   then TARGET_KERNEL=$(installed_version linux) && 
+   if query "Would you like to build $SPELL for the running kernel (`uname -r`)?" n
+              then TARGET_KERNEL=`uname -r`
+   fi  
+echo TARGET_KERNEL=$TARGET_KERNEL >> $SPELL_CONFIG 
+fi
