@@ -1,4 +1,20 @@
 depends  zlib    &&
-depends  libpng  &&
-optional_depends  "alsa-lib"  ""  ""  "for ALSA sound support"  &&
-optional_depends  "aalib"     ""  ""  "for ascii art rendering"
+
+# output devices
+optional_depends  "alsa-lib"  ""  ""  "for ALSA audio output"  &&
+optional_depends  "esound"  ""  ""  "for esd audio output"  &&
+optional_depends  "arts"  ""  ""  "for arts audio output"  &&
+optional_depends  "aalib"  ""  ""  "for ascii art video output"  &&
+optional_depends  "SDL"  ""  ""  "for SDL video output"  &&
+optional_depends  "glut"  ""  ""  "for (experimental) OpenGL video output"  &&
+
+# input codecs
+optional_depends  "xvid"  ""  ""  "for video decoding with the xvid codec"  &&
+optional_depends  "flac"  ""  ""  "for FLAC audio decoding"  &&
+optional_depends  "libogg"  ""  ""  "for OGG/OGM file support"  &&
+optional_depends  "libvorbis"  ""  ""  "for OGG/Vorbis audio support"  &&
+optional_depends  "libmng"  ""  ""  "for MNG file support"  &&
+optional_depends  "MPlayer-codecs"  ""  ""  "for additional video codec support (Quicktime/RealMedia)"  &&
+
+# input plugins
+optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs input support"
