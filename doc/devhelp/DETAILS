@@ -1,16 +1,16 @@
            SPELL=devhelp
-         VERSION=0.9.1
+         VERSION=0.9.2
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
    SOURCE_URL[1]=http://afs.codefactory.se/ftp/pub/software/devhelp/source/$SOURCE
    SOURCE_URL[2]=ftp://ftp.codefactory.se/pub/software/devhelp/source/$SOURCE
-          MD5[0]='ec30392b03e42f2d075f930a690b46fb'
+          MD5[0]='bba6485bd99271026ad42605358bb462'
+      LICENSE[0]=GPL
         WEB_SITE=http://www.imendio.com/projects/devhelp/
          ENTERED=20020303
-         UPDATED=20040329
-      LICENSE[0]=GPL
+         UPDATED=20040927
           SHORT="DevHelp is an application to view Books"
 cat << EOF
 The DevHelp & Lidn is an essential tool for developers/hackers using
