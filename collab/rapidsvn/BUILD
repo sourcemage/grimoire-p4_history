@@ -2,8 +2,8 @@
 (
 
   message "${MESSAGE_COLOR}Downloading the up-to-date source...${DEFAULT_COLOR}"
-  svn co http://svn.collab.net/repos/svn/clients/rapidsvn/trunk . &&
-  autoconf &&
+#  svn export http://svn.collab.net/repos/svn/clients/rapidsvn/trunk . &&
+#  autoconf &&
   ./configure \
     --build=$BUILD \
     --prefix=/usr \
