@@ -1,0 +1,184 @@
+function generate_menu_lst_skel()  {
+  # find current running kernel
+  # this isn't perfect, but it will give a reasonable starting place
+  # for someone to edit and create their own menu.lst file.
+  UNAME_R=`uname -r`
+  CR_KERNEL=`ls /boot/*${UNAME_R}*`
+
+  CR_KERNEL_FILE=`echo $CR_KERNEL | cut -d'/' -f3`
+  POSSIBLE_KERNEL_PARTITIONS=`grub --batch << EOF | grep hd
+find ${CR_KERNEL}
+EOF`
+  LIKELY_KERNEL_PARTITION=`echo ${POSSIBLE_KERNEL_PARTITIONS} | cut -d' ' -f1`
+
+  LIKELY_ROOT=`df / | grep dev | cut -d' ' -f1`
+  LIEKLY_BOOT=`df /boot | grep dev | cut -d' ' -f1`
+
+  # determine if kernel is (hd#,#)/kernel or (hd#,#)/boot/kernel
+  if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
+  then  KERNEL_LOCATION=${CR_KERNEL}
+  else  KERNEL_LOCATION=${CR_KERNEL_FILE}
+  fi
+
+  cat << EOF > /boot/grub/menu.lst.skel
+# The grub spell attempts to create a sensible skeletin file which you
+# can edit to create a working menu.lst file.  Use this as a guide, but
+# be sure to look over any drive/partition specifications [ things that
+# look like (hd0,0) for example ] and root= entries, as the autodetection
+# mechannism isn't perfect.  In cases where there is more than one 
+# partition containing the files grub searches for, the first match is
+# assumed.  If you multi-boot linux from multiple, different partitions
+# there is a chance it detected the wrong partition, so you need to 
+# manually check and edit this accordingly.
+
+# defaults to the first menu entry
+default 0
+
+# timeout in 10 seconds in no choice is made
+timeout 10
+
+# uncomment the next line if you wish to use LBA (usual for large IDE drives)
+# lba32
+
+# defines menu foreground/background, highlight foreground/background
+color  white/blue white/cyan
+
+# be sure and check the kernel entry below, particulary the ${LIKELY_KERNEL_PARTITION} entry.  Possible partitions detected were ${POSSIBLE_KERNEL_PARTITIONS}, of
+# which the first was assumed arbitrarilly.
+# as well as the root= entry.  You may also wish to add additional arguments,
+# such as ide-scsi= if you're using an IDE CDROM burner.
+
+title  Sorcerer GNU/Linux $UNAME_R
+kernel ${LIKELY_KERNEL_PARTITION}/${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=nomount
+
+EOF
+}
+
+function configure_grub_root()  {
+
+# This is an ugly hack.
+# We create a temporary file in /boot/grub/, hopefully unique to the
+# currently mounted /boot/grub partition, have grub search for the file,
+# and store the result as our likely candidate for GRUB_ROOT, then 
+# delete the temporary file.
+TMPFILENAME=/boot/grub/tmp-tag-file-remove-me-if-im-still-here
+  touch ${TMPFILENAME}
+  POSSIBLE_GRUB_ROOT=`grub --batch << EOF | grep hd
+find ${TMPFILENAME}
+EOF`
+  rm ${TMPFILENAME}
+  GRUB_ROOT=`echo ${POSSIBLE_GRUB_ROOT} | cut -d' ' -f2`
+
+  if  [  "${POSSIBLE_GRUB_ROOT}" == ""  ]
+  then
+    message  "Automatic identification of GRUB_ROOT failed.  You will have to"
+    message  "enter your GRUB_ROOT partition (generally the same partition as"
+    message  "/boot) by hand.  Use (hd0,0) for the first partition on the first"
+    message  "drive, (hd1,2) for the third partition on the second drive, etc."
+    message  "Note that you NEED to enter the parenthesis, and should have no"
+    message  "spaces within the parenthesis."
+    echo -n  "GRUB_ROOT=(hd#,#): "
+    read GRUB_ROOT
+  else 
+    message  "GRUB_ROOT (where /boot/grub resides) has been identified as $GRUB_ROOT"
+    if  query  "Would you like to override this value with your own?" n
+    then  
+      message  "Enter the grub root partition (probably /boot) in the form of (hdN,N)"
+      message  "For example, the first partition of the first drive would be (hd0,0)"
+      message  "Don't forget to include the parenthesis, and include NO SPACES"
+      message  "within the parenthesis"
+      echo -n  "GRUB_ROOT=(hd#,#): "
+      read GRUB_ROOT
+    fi
+  fi
+
+  echo  "GRUB_ROOT=$GRUB_ROOT"  >>  $SPELL_CONFIG
+}
+
+generate_menu_lst_skel
+configure_grub_root
+
+# if either the stage1 file or the menu.lst file is missing, we assume
+# we do not have a working grub install and copy all needed stage files
+# across
+if  [ \( ! -e /boot/grub/stage1 \) -o \( ! -e /boot/grub/menu.lst \) ];  then
+  cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
+fi
+
+if  [  -e  /boot/grub/menu.lst  ];  then
+    message  "You appear to have a /boot/grub/menu.lst file.  If this"
+    message  "is a working file, I can automatically update GRUB for"
+    message  "you (recommended in that case).  If it is not, then I shouldn't"
+    message  "touch anything and you'll want to install GRUB yourself once you"
+    message  "your /boot/grub/menu.lst file is to your liking."
+
+    if  query  "Would you like to edit your /boot/grub/menu.lst file?" n
+      then  ${EDITOR:-nano} /boot/grub/menu.lst
+    fi
+
+else
+    if  query  "Would you like to edit /boot/grub/menu.lst.skel?" y
+    then  ${EDITOR:-nano} /boot/grub/menu.lst.skel
+    fi
+
+    if query  "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
+    then  cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
+    fi
+
+fi
+
+#  if, after all this, the user has created a /boot/grub/menu.lst file in
+#  some fashion, allow them to install GRUB onto the GRUB_TARGET
+if  [  -e  /boot/grub/menu.lst  ];  then
+    if  query  "Would you like to install GRUB onto ${GRUB_TARGET} with GRUB_ROOT ${GRUB_ROOT}?" n
+    then 
+      RUN_GRUB=Y
+    else 
+      RUN_GRUB=N
+    fi
+else
+    RUN_GRUB=N
+fi
+
+case  $RUN_GRUB  in
+  y|Y|j|J)  
+  message  "WARNING:  If something goes wrong while installing GRUB your system"
+  message  "could become UNBOOTABLE!  Be sure to create a rescue diskette before"
+  message  "proceeding any further.  Press 'N' to abort now if you haven't"
+  message  "created a recue diskette yet, then run 'mkrescue' to make one."
+  message  ""
+  message  "IF YOU DO THIS WITHOUT A RESCUE DISKETTE YOU ARE A RECKLESS FOOL!"
+  message  ""
+  message  "Furthermore, GRUB cannot read some filesystems types, such as XFS,"
+  message  "so /boot/grub needs to be an ext2fs or ext3fs filesystem.  If you"
+  message  "find grub unable to find files you know exist, or it complains"
+  message  "about being unable to mount a partition (/boot/grub), it is almost"
+  message  "certainly because you are trying to search non-ext2fs filesystems."
+  message  "A prudent practice is to have a small, ext2fs filesystem near the"
+  message  "beginning of the drive mounted as /boot, then whatever filesystem"
+  message  "type you like (XFS, JFS, Reiser, ...) as your system root partition."
+  message  ""
+
+  if query  "Do you have a tested, working rescue diskette and wish to proceed"  n
+  then
+       message  "Overwriting /boot/grub/*stage* with new files ..."
+       /usr/share/grub/i386-pc/*stage*  /boot/grub
+       message  "Preparing to install GRUB on ${GRUB_TARGET} (with grubroot ${GRUB_ROOT})..."
+       /sbin/grub --batch << EOF || message "GRUB INSTALL FAILED.  INSTALL MANUALLY!  DANGER: YOUR SYSTEM MAY BE UNBOOTABLE!!!"
+root ${GRUB_ROOT}
+setup ${GRUB_TARGET}
+EOF
+       message  "If all went well, you're system should be ready to boot at this time."
+  else
+    message  "Run 'mkrescue' to create a 1.44 MB rescue diskette."
+    message  "Once you've created the disk, try booting with it once to make"
+    message  "certain it works.  After you have confirmed that it is working"
+    message  "you can either recast grub by typing 'cast -c grub' or install"
+    message  "GRUB into the boot sector of your hard drive manually per the"
+    message  "installation instructions, accessible by typing 'info grub'."
+  fi
+  ;;
+  *)
+    message  "No changes have been made to your MBR or boot block.  Your old"
+    message  "bootloader remains unaltered."
+esac

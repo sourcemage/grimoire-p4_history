@@ -1,0 +1,36 @@
+if  !  grep  -q  "RUN_GRUB"  $SPELL_CONFIG;  then
+
+  if    query  "Run GRUB automatically upon GRUB upgrades?" n
+  then  echo   "RUN_GRUB=y"  >>  $SPELL_CONFIG
+  else  echo   "RUN_GRUB=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
+
+if  !  grep  -q  "GRUB_TARGET"  $SPELL_CONFIG;  then
+
+  message  "Please tell me where you would like grub installed."
+  message  "Choices include the MBR of the first drive (hd0),"
+  message  "the MBR of the second (or later) drive (hd1), (hd2) etc."
+  message  "or a partition on one of the drives, e.g. (hd0,0)."
+  if    query  "Would You like GRUB installed onto the MBR of the first drive?" y
+  then  
+    GRUB_TARGET=\(hd0\)
+  else
+    message  "IMPORTANT: use the following format: drive,partition (no spaces)"
+    message  "to specify a partition, or 'drive' to specify the MBR of a drive."
+    message  "All numbers are 0 based, so the first drive is drive '(hd0)', and"
+    message  "the first partition is partition '(hd0,0)'. I.e. if you want GRUB"
+    message  "installed on /dev/hda1 (or /dev/sda1 if you have a SCSI system)"
+    message  "then you would specify '(hd0,0)' as the target drive,partition."
+    message  "which drive or drive,partition do you want grub installed on."
+    message  "Be sure to include the parenthesis, with NO spaces within the parenthesis."
+    message  "[e.g. (hd0,0), (hd0,1), (hd1), (hd1,0), etc.]?"
+    echo -n  "GRUB_TARGET=(hd#,#):  " 
+    read GRUB_TARGET
+  fi
+  # the leading space appears to be critical, hence the escaped quotes:
+  echo  "GRUB_TARGET=\" $GRUB_TARGET\"" >> $SPELL_CONFIG
+  message  "GRUB is configured to install on $GRUB_TARGET."
+fi
+

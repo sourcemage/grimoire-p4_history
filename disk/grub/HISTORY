@@ -1,0 +1,35 @@
+2002-03-26  Jean-Michel Smitn <jean@kcco.com>
+
+  * added all kinds of warnings to users to have a working rescue diskette
+    handy before attempting to install grub.  If and when grub becomes a
+    standard part of the install I'll tone down the messages some.
+  * moved cp of /usr/share/grub/i386-pc/*stage* from BUILD to POST_INSTALL
+    This corrects a serious bug during upgrades which causes stage1_5 and
+    stage2 files to get dispelled, making the system unbootable until the
+    next time grub is run and setup again.
+  * added some intelligence to the POST_INSTALL script to facilitate 
+    easier installation and recovery from the above, corrected bug.
+  * added CONFIGURE file to facilitate configuration of some parameters.
+    Note that GRUB_ROOT is configured during POST_INSTALL, as the autodetection
+    scheme requires grub already be installed.
+
+2002-03-25  Jean-Michel Smith <jean@kcco.com>
+
+  * initial review and testing of grub spell for inclusion in grimoire
+  * added LICENSE[0] information to DETAILS file
+  * fixed installation procedure to include copying needed files from
+    /usr/share/grub/i386-pc/*stage* to /boot/grub.
+  * fixed installation procedure to put grub in /sbin, not /usr/sbin,
+    to insure it works on those systems that mount /usr separately
+  ! Work is still needed to make a sensible default menu.lst entry
+    based on the system's own hardware, in a POSTINSTALL script.
+  ! Work is still needed to make a sensible interface to lilo and grub
+    to allow installation and kernel spells to install/update grub
+    appropriately
+  * added HISTORY file
+
+2002-03-24  Geoffrey Derber <Geoffrey.Derber@Trinity.edu>
+            ashaman@flyingtemple.com
+
+  * Initial submission of grub spell to SGL-Spell-Submit
+  * Listed MAINTAINER as ashaman@flyingtemple.com ... not sure why this is.
