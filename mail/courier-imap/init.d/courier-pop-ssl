@@ -38,7 +38,7 @@ start)
 			POP3_STARTTLS=NO; export POP3_STARTTLS; \
 			POP3_TLS_REQUIRED=0; export POP3_TLS_REQUIRED; \
 			${libexecdir}/couriertcpd -address=$SSLADDRESS \
-			-stderrlogger=${libexecdir}/courierlogger \
+			-stderrlogger=${exec_prefix}/courierlogger \
 			-stderrloggername=pop3d-ssl \
 			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
 			-pid=$SSLPIDFILE $TCPDOPTS \

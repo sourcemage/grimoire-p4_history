@@ -43,7 +43,7 @@ start)
 			IMAP_STARTTLS=$IMAPDSTARTTLS ; export IMAP_STARTTLS ; \
 			TLS_PROTOCOL=$TLS_STARTTLS_PROTOCOL ; \
 			${libexecdir}/couriertcpd -address=$ADDRESS \
-			-stderrlogger=${libexecdir}/courierlogger \
+			-stderrlogger=${exec_prefix}/courierlogger \
 			-stderrloggername=imapd \
 			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
 			-pid=$PIDFILE $TCPDOPTS \
