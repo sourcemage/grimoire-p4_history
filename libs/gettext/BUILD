@@ -1,21 +1,5 @@
-spell_present()  {
-  spell_installed  $1  ||
-  spell_held       $1
-}
-
-
 (
-
-  if  !  spell_present  teTeX  ||
-      !  spell_present  linuxdoc-tools;  then
-
-    cp   Makefile.am                      Makefile.am.original
-    sed  's/cd doc && $(MAKE) ps//'       Makefile.am.original  |
-    sed  's/cd doc && $(MAKE) pdf//'                            |
-    sed  's/cd doc && $(MAKE) html//'  >  Makefile.am
-
-  fi
-
+export CC=gcc   			&&
   ./configure  --build=$BUILD           \
                --host=$BUILD            \
                --prefix=/usr            \
@@ -23,7 +7,19 @@ spell_present()  {
                --with-included-gettext  \
                $OPTS                    &&
   make                                  &&
+if spell_installed teTeX ; 
+then cd gettext-tools/doc &&
+     make dvi  &&
+     make ps   &&
+     make pdf  &&
+     cd -     
+fi  &&
   prepare_install                       &&
-  make    install
-
+  make    install                       &&
+if spell_installed teTeX ; 
+then cd gettext-tools/doc &&  
+  make    install-pdf     &&
+  make    install-ps      &&
+  make    install-dvi
+fi
 ) > $C_FIFO 2>&1
