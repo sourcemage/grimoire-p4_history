@@ -1,5 +1,12 @@
-default_pre_build         &&
-cd        $SOURCE_DIRECTORY &&
-find . -name *.ll -exec sed -i -e "s/option nostack/option stack/" '{}' ';' #&&
-#sed -i -e "s/automake-1.7/automake/" Makefile.am &&
-#sed -i -e "s/aclocal-1.7/aclocal/" Makefile.am
+default_pre_build     &&
+cd $SOURCE_DIRECTORY  &&
+
+find . -name *.ll -exec sed -i -e "s/option nostack/option stack/" '{}' ';'  &&
+
+# patch for 0.9.2
+rm -r plugins/remote           &&
+sedit '81d' admin/cvs.sh       &&
+make -f admin/Makefile.common  &&
+
+# don't assume a specific automake version
+sedit 's/-${am__api_version}//' configure
