@@ -1,15 +1,14 @@
            SPELL=gradm
-         VERSION=1.5-rc4
+         VERSION=1.5a
           SOURCE=$SPELL-$VERSION.tar.gz
-         SOURCE2=obvdoc.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=http://grsecurity.net/$SOURCE
-  SOURCE2_URL[0]=http://grsecurity.net/$SOURCE2
-          MD5[0]=ec41ffa5c8c1c4e49ca1ef21a0867a7c
+          MD5[0]=db46788e4696a051ca163d82915f49d2
         WEB_SITE=http://www.grsecurity.net
-      LICENSE[0]=GPL
          ENTERED=20020108
          UPDATED=20020905
+      LICENSE[0]=GPL
+      MAINTAINER=eric@sandall.us
            SHORT="gradm is the userspace interface to ACL system in grsecurity."
 cat << EOF
 The userspace interface to the ACL system in grsecurity.
