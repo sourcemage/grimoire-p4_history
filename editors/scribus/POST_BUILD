@@ -1,0 +1,10 @@
+default_post_build           &&
+echo  -e  -n  "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}:  "
+echo  -e  "${QUERY_COLOR}In order for Scribus to use GhostScript for EPS handling, the"
+echo  -e  -n  "${SPELL_COLOR}${SPELL}${DEFAULT_COLOR}:  "
+echo  -e  "${QUERY_COLOR}ghostscript executable, gsc, needs to be linked to gs."
+if   query  "Would you like for me to do this now?" y; then
+    if [ -f /usr/bin/gsc ]; then
+      ln -sf /usr/bin/gsc /usr/bin/gs
+    fi
+fi
