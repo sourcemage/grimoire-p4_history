@@ -4,4 +4,4 @@ unset  CFLAGS
              --sysconfdir=/etc     \
              --localstatedir=/var  \
              $OPTS                 &&
-make                               &&
+make
