@@ -1,0 +1,43 @@
+diff -Nur ffmpeg-0.4.8/libavcodec/faad.c ffmpeg-0.4.8-faad/libavcodec/faad.c
+--- ffmpeg-0.4.8/libavcodec/faad.c	2003-09-28 17:26:39.000000000 +0200
++++ ffmpeg-0.4.8-faad/libavcodec/faad.c	2003-12-07 19:56:46.000000000 +0100
+@@ -53,18 +53,15 @@
+     faacDecConfigurationPtr FAADAPI (*faacDecGetCurrentConfiguration)(faacDecHandle hDecoder);
+     unsigned char FAADAPI (*faacDecSetConfiguration)(faacDecHandle hDecoder,
+                                                      faacDecConfigurationPtr config);
+-    long FAADAPI (*faacDecInit)(faacDecHandle hDecoder,
+-				unsigned char *buffer,
+-				unsigned long *samplerate,
+-				unsigned char *channels);
+     char FAADAPI (*faacDecInit2)(faacDecHandle hDecoder, unsigned char *pBuffer,
+                                  unsigned long SizeOfDecoderSpecificInfo,
+                                  unsigned long *samplerate, unsigned char *channels);
+     void FAADAPI (*faacDecClose)(faacDecHandle hDecoder);
+     void* FAADAPI (*faacDecDecode)(faacDecHandle hDecoder,
+                                    faacDecFrameInfo *hInfo,
+-                                   unsigned char *buffer);
+-    unsigned char* FAADAPI (*faacDecGetErrorMessage)(unsigned char errcode);
++                                   unsigned char *buffer,
++                                   unsigned long buffer_size);
++    char* FAADAPI (*faacDecGetErrorMessage)(unsigned char errcode);
+ } FAACContext;
+ 
+ static const unsigned long faac_srates[] =
+@@ -105,7 +102,7 @@
+ {
+     FAACContext *s = (FAACContext *) avctx->priv_data;
+     faacDecFrameInfo frame_info;
+-    void* out = s->faacDecDecode(s->faac_handle, &frame_info, (unsigned char*)buf);
++    void* out = s->faacDecDecode(s->faac_handle, &frame_info, (unsigned char*)buf, buf_size);
+     //printf("DECODE FRAME %d, %d, %d - %p\n", buf_size, frame_info.samples, frame_info.bytesconsumed, out);
+ 
+     if (frame_info.error > 0) {
+@@ -165,8 +162,6 @@
+ 	dfaac(SetConfiguration, (unsigned char FAADAPI (*)(faacDecHandle,
+ 							   faacDecConfigurationPtr)));
+ 
+-	dfaac(Init, (long FAADAPI (*)(faacDecHandle, unsigned char*,
+-				     unsigned long*, unsigned char*)));
+         dfaac(Init2, (char FAADAPI (*)(faacDecHandle, unsigned char*,
+ 				       unsigned long, unsigned long*,
+ 				       unsigned char*)));

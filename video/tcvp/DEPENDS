@@ -50,10 +50,13 @@ optional_depends  "openssl"           \
 optional_depends  "X11-LIBS"         \
                   "--enable-tcvpx"   \
                   "--disable-tcvpx"  \
-                  "for a X11 gui"
+                  "for a X11 gui"  &&
+optional_depends  "faad2"              \
+                  "--enable-aac_dec"   \
+                  "--disable-aac_dec"  \
+                  "for AAC audio support"
 
 #those are also optional but can't be provided currently
 #vidix
 #mpeg2dec CVS (0.3.x?)
 #faac
-#faad2 >= 2.0

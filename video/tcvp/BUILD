@@ -1,2 +1,2 @@
-OPTS="$OPTS --disable-aac_dec --disable-mpeg2"  &&
+OPTS="$OPTS --disable-mpeg2"  &&
 default_build
