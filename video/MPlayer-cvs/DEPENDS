@@ -38,6 +38,7 @@ if  [  "$FONTCONFIG"  =  "y"  ]; then
  optional_depends  "fontconfig"  ""  ""  "for fontconfig font lookup support"
 fi &&
 optional_depends  "MPlayer-fonts"  ""  ""  "for OSD/subtitle fonts (not needed if compiled with freetype2 support" &&
+optional_depends  "directfb"  ""  ""  "for direct framebuffer support"  &&
 
 if    [  "$GUI"  =  "y"  ]
 then  depends  gtk+ &&
