@@ -6,11 +6,15 @@
 # Start or stop popfile based upon the first argument to the script.
 #
 
-source /etc/init.d/functions
+source /etc/init.d/smgl_functions
 
-# this sets the run levels and priority for links
-# SGL-START:3 5:S99
-# SGL-STOP:0 1 2 6:K00
+#PROGRAM=/usr/sbin/privoxy
+#ARGS="/etc/privoxy/config"
+RUNLEVEL=3
+NEEDS="+network"
+
+#. /etc/init.d/smgl_init
+
 
 case $1 in
 	start)
