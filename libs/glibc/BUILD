@@ -1,5 +1,7 @@
 (
 
+  cd $SOURCE_DIRECTORY.bld                    &&
+
   unset  LDFLAGS
 
   if    !  echo  "$CFLAGS"  |  grep  -q -- "-O"
@@ -10,7 +12,8 @@
   then  export     CXXFLAGS="$CFLAGS -Os"
   fi
 
-  ./configure  --host=$BUILD                  \
+  $SOURCE_DIRECTORY/configure                 \
+               --host=$BUILD                  \
                --build=$BUILD                 \
                --prefix=/usr                  \
                --enable-add-ons=linuxthreads  \
