@@ -8,6 +8,10 @@
 # 2003-12-09 Eric Sandall <eric@sandall.us>
 #  Modified for Source Mage GNU/Linux and the Simpleinit-MSB init system
 #
+# 2003-12-18 Arwed v. Merkatz <v.merkatz@gmx.net>
+#  Removed usage of echo/cut to set DEVPATH
+#  Adds all device classes now, not only block and tty
+
 
 RUNLEVEL=S
 DEPENDS="+local_fs hotplug"
@@ -20,34 +24,43 @@ SYSFS=/sys
 start()
 {
   if [ ! -d ${UDEV} ]; then
-    mkdir $${UDEV}
+    mkdir ${UDEV}
   fi
   if [ ! -d ${SYSFS} ]; then
-    exit 1
+    mkdir ${SYSFS}
   fi
+  # mount sysfs, ignore errors (if it already is mounted)
+  mount -t sysfs none ${SYSFS} > /dev/null 2>&1
+  [ -e ${SYSFS}/devices ] || exit 1
   # propogate /udev from /sys - we only need this while we do not
   # have initramfs and an early user-space with which to do early
   # device bring up
-  echo "Creating initial udev device nodes: " || /bin/false
+  echo "Creating initial udev device nodes: "
   export ACTION=add
-  # add tty devices
-  for i in ${SYSFS}/class/tty/*; do
-    export DEVPATH="/"`echo $i | cut --delimiter='/' --fields=3-`
-    ${PROGRAM} tty
-  done
   # add block devices and their partitions
   for i in ${SYSFS}/block/*; do
-    export DEVPATH="/"`echo $i | cut --delimiter='/' --fields=3-`
-    ${PROGRAM} block
+    # add each drive
+    export DEVPATH=${i#${SYSFS}}
+    $PROGRAM block
+
+    # add each partition, on each device
     for j in $i/*; do
       if [ -f $j/dev ]; then
-        export DEVPATH="/"`echo $j |  \
-        cut --delimiter='/' --fields=3-`
-        ${PROGRAM} block
+        export DEVPATH=${j#${SYSFS}}
+        $PROGRAM block
       fi
     done
   done
-  # TODO: add other device classes
+  # all other device classes
+  for i in ${SYSFS}/class/*; do
+    for j in $i/*; do
+      if [ -f $j/dev ]; then
+        export DEVPATH=${j#${SYSFS}}
+        CLASS=${i#${SYSFS}/class/}
+        $PROGRAM $CLASS
+      fi
+    done
+  done
 }
 
 stop()
@@ -67,4 +80,3 @@ status()
     echo "the udev device node directory does not exist"
   fi
 }
-
