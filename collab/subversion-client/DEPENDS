@@ -2,7 +2,10 @@
 # Dependencies according to http://svn.collab.net/repos/svn/trunk/INSTALL
 
 depends autoconf &&
-depends libtool &&
-depends bison &&
+depends libtool  &&
+depends bison    &&
+depends libxml   &&
+depends Python   &&
 depends swig '--with-swig' &&
-depends Python
+ 
+optional_depends openssl '--with-ssl' '--without-ssl' 'for SSL/TLS support'
