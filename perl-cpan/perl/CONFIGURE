@@ -1,15 +1,20 @@
 CONFIG_FILE="$DEPENDS_CONFIG/perl_config.sh"  &&
 
 if  [  -f  $CONFIG_FILE  ];  then
-  config_query  OLD_CUSTOM  "Use old custom configuration for Perl?"  y
-else
-  config_query  OLD_CUSTOM  "Use old custom configuration for Perl?"  n
+   config_query  OLD_CUSTOM  "Use old custom configuration for Perl?"  y
+
+   if [ "$OLD_CUSTOM" == "n" ]; then
+      config_query RM_OLD_CUSTOM "Remove old custom configuration file ?" n
+   fi
 fi  &&
 
-if  [  "$OLD_CUSTOM"  ==  "n"  ];  then
+if [ "$RM_OLD_CUSTOM" == "y" ]; then 
+   rm "$CONFIG_FILE"
+fi
+
+if  [ ! "$OLD_CUSTOM"  ==  "y"  ];  then
   config_query  NEW_CUSTOM  "New custom configuration for Perl?"  n
-else
-  config_query  NEW_CUSTOM  "New custom configuration for Perl?"  y
 fi  &&
 
 config_query  THREADED  "Compile threaded perl?"  n
+
