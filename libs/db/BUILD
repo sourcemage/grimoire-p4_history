@@ -1,6 +1,6 @@
 (
   patch -p1 < $SCRIPT_DIRECTORY/javafix.diff &&
-  sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/doc/db|' dist/Makefile.in &&
+  sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/share/doc/db|' dist/Makefile.in &&
 
   if echo "$OPTS" | grep -q 'enable-java'; then
     if [ -z $JAVA_HOME ]; then
