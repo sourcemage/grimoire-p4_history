@@ -2,12 +2,12 @@ mk_source_dir $SOURCE_DIRECTORY &&
 unpack $SOURCE ${MD5[0]} &&
 
 cd $SOURCE_DIRECTORY &&
-patch -p0 < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff &&
+#patch -p0 < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff &&
 
 # Enigmail extensions
 if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
   cd $SOURCE_DIRECTORY/extensions &&
   unpack $SOURCE2 ${MD5[1]} &&
   unpack $SOURCE3 ${MD5[2]} &&
-  patch -p1 < $SCRIPT_DIRECTORY/extensions-enigmail-src.diff
+#  patch -p1 < $SCRIPT_DIRECTORY/extensions-enigmail-src.diff
 fi
