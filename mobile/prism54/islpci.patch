@@ -1,0 +1,11 @@
+--- ksrc/islpci_dev.h.orig	2003-11-12 18:24:59.000000000 +0000
++++ ksrc/islpci_dev.h	2003-11-12 17:53:44.000000000 +0000
+@@ -41,6 +41,8 @@
+ #endif
+ 
+ #include "bloboid.h"
++#define free_netdev(x) kfree(x)
++#define pci_name(x) x->slot_name
+ 
+ 
+ typedef struct {
