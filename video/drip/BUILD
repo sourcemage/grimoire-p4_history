@@ -1,6 +1,6 @@
 (
 
-  cd  mpeg2dec-0.2.1  &&
+  cd  mpeg2dec-0.3.1  &&
   ./configure --without-x --disable-sdl --prefix=$SOURCE_DIRECTORY/libmpeg2  &&
   make  &&
   make install  &&
