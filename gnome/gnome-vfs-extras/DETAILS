@@ -1,0 +1,15 @@
+           SPELL=gnome-vfs-extras
+         VERSION=0.2.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/unstable/sources/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/unstable/sources/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020330
+         UPDATED=20020330
+      MAINTAINER=ashaman@flyingtemple.com
+           SHORT="gnome-vfs modules that are not in the main gnome-vfs package"
+cat << EOF
+This is a package containing some gnome-vfs modules that for various reasons are 
+not in the main gnome-vfs package.
+EOF
