@@ -115,6 +115,10 @@ configure_grub_root
 # the stagefile should update with new versions
 cp  /usr/share/grub/i386-pc/*stage*  /boot/grub
 
+if  [  -h  /etc/grub.conf  ]
+then
+  rm  -f  /etc/grub.conf
+fi
 
 if  [  -e  /boot/grub/menu.lst  ];  then
     message  "You appear to have a /boot/grub/menu.lst file.  If this"
@@ -122,10 +126,6 @@ if  [  -e  /boot/grub/menu.lst  ];  then
     message  "you (recommended in that case).  If it is not, then I shouldn't"
     message  "touch anything and you'll want to install GRUB yourself once you"
     message  "your /boot/grub/menu.lst file is to your liking."
-
-    if [ ! -e /boot/grub/grub.conf ]
-     then ln -sf /boot/grub/menu.lst /boot/grub/grub.conf
-    fi
 
     if  query  "Would you like to edit your /boot/grub/menu.lst file?" n
       then  ${EDITOR:-nano} /boot/grub/menu.lst
@@ -139,7 +139,6 @@ else
     if query  "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
     then
 	cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
-	ln -sf /boot/grub/menu.lst /etc/grub.conf
     fi
 
 fi
