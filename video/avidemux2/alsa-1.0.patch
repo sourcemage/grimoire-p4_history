@@ -1,5 +1,6 @@
---- ADM_deviceALSA.cpp~	2003-09-16 19:57:53.000000000 +0200
-+++ ADM_deviceALSA.cpp	2003-11-21 12:01:31.000000000 +0100
+diff -Nur avidemux-2.0.20/avidemux/ADM_audiodevice/ADM_deviceALSA.cpp avidemux-2.0.20-alsa-1.0/avidemux/ADM_audiodevice/ADM_deviceALSA.cpp
+--- avidemux-2.0.20/avidemux/ADM_audiodevice/ADM_deviceALSA.cpp	2003-12-10 22:21:48.000000000 +0100
++++ avidemux-2.0.20-alsa-1.0/avidemux/ADM_audiodevice/ADM_deviceALSA.cpp	2003-12-21 11:18:27.000000000 +0100
 @@ -38,6 +38,7 @@
  #include  "ADM_audiodevice/ADM_deviceALSA.h"
  
@@ -8,3 +9,15 @@
  #include <alsa/asoundlib.h>
   /* Handle for the PCM device */
      snd_pcm_t *pcm_handle;
+diff -Nur avidemux-2.0.20/configure avidemux-2.0.20-alsa-1.0/configure
+--- avidemux-2.0.20/configure	2003-12-20 20:32:24.000000000 +0100
++++ avidemux-2.0.20-alsa-1.0/configure	2003-12-21 11:26:46.000000000 +0100
+@@ -20596,7 +20596,7 @@
+ main ()
+ {
+ 
+-#if SND_LIB_MAJOR!=0 || SND_LIB_MINOR!=9
++#if ! (SND_LIB_MAJOR == 1 || (SND_LIB_MAJOR==0 && SND_LIB_MINOR==9))
+ #error Not alsa 0.9!
+ #endif
+ int arg = 0;
