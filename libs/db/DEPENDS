@@ -1,4 +1,3 @@
-if    query  "add java support in db to allow to compile OpenOffice?"  n 
-then  requires  java  &&
-      echo  "OPTS='--enable-java'"  >>  $SPELL_CONFIG 
+if grep -q "JAVADB='--enable-java'" $SPELL_CONFIG
+then  requires  java 
 fi

@@ -1,15 +1,14 @@
            SPELL=libxml2
-         VERSION=2.5.7
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=2.5.8
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$(echo $VERSION | cut -d . -f 1,2)/$SOURCE
-   SOURCE_URL[1]=ftp://xmlsoft.org/$SOURCE
-          MD5[0]=f5fa8d66e18e78903ea9a12bb257288c
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/${VERSION%\.*}/$SOURCE
+          MD5[0]='1c2d982915a2a2ae0af45f34f9d01814'
       LICENSE[0]=BSD
         WEB_SITE=http://xmlsoft.org
          ENTERED=20010922
-         UPDATED=20021206
-           SHORT="libxml2 is the XML version 2 parser for Gnome."
+         UPDATED=20030709
+           SHORT="libxml2 is the XML version 2 parser for Gnome"
 cat << EOF
 The libXML library allows you to manipulate XML files. It offers SAX or
 DOM tree generation interfaces. It supports XML and HTML (real world

@@ -4,11 +4,26 @@
   DBM="sdbm"        # sdbm is the dbm bundled with apr-util
   if  spell_installed  gdbm  ;  then  DBM=gdbm  ;  fi
   if  spell_installed  db    ;  then  DBM=db    ;  fi
+  OPTS="$OPTS --with-dbm=$DBM"
 
-  # So headers are installed in the right place
-  sedit  's/apache2/apr/'  configure  &&
+  patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
+  ./buildconf --with-apr=/usr/share/apache2 &&
 
-  OPTS="$OPTS --enable-layout=GNU --with-apr=/usr --with-dbm=$DBM"
-  default_build
+  ./configure \
+    --host=$HOST \
+    --build=$BUILD \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-layout=GNU \
+    $OPTS &&
+  make &&
+  prepare_install &&
+  make install
 
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1 && (
+
+  FIX_PATH_REGEX='s|/usr/src/apr-util-[^/"]*|/usr/share/apache2|' &&
+  sedit $FIX_PATH_REGEX /usr/bin/apu-config
+
+)

@@ -1,0 +1,6 @@
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+  if query  "Add Java support in dbxml?" n; then
+    echo "JAVADB='--enable-java'" >> $SPELL_CONFIG
+  fi
+  echo 'CONFIGURED=y' >> $SPELL_CONFIG
+fi

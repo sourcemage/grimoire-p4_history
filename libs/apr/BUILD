@@ -1,15 +1,26 @@
 (
 
-  # So headers are installed in the right place
-  sedit  's/apache2/apr/'  configure  &&
+  patch -p1 < $SCRIPT_DIRECTORY/build.diff &&
+  ./buildconf &&
 
-  OPTS="$OPTS --enable-layout=GNU"
-  default_build  &&
+  ./configure \
+    --host=$HOST \
+    --build=$BUILD \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-layout=GNU \
+    --enable-threads \
+    $OPTS &&
+  make &&
+  prepare_install &&
+  make install &&
+  ln /usr/share/apache2/build/libtool /usr/share/apache2/
 
-  # Need this to be able to compile apr-util
-  install  -m 644  build/make_exports.awk  build/make_var_export.awk  \
-              /usr/share/apr/build                       &&
-  ln  -sf  /usr/bin/apr-config           /usr/share/apr  &&
-  ln  -sf  /usr/share/apr/build/libtool  /usr/share/apr
+) >$C_FIFO 2>&1 && (
 
-) > $C_FIFO 2>&1
+  FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
+  sedit $FIX_PATH_REGEX /usr/bin/apr-config  &&
+  sedit $FIX_PATH_REGEX /usr/share/apache2/build/apr_rules.mk
+
+)

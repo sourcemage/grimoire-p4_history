@@ -1,5 +1,8 @@
 (
 
+  # Fix the "gcc" problem for some machines
+  export  CC="gcc"  &&
+
   # Apply gcc 3.3 patch
   bzcat  ${SOURCE_CACHE}/${SOURCE3}  |  patch  -p1  &&
 

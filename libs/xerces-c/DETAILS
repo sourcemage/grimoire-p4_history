@@ -1,16 +1,16 @@
            SPELL=xerces-c
-         VERSION=2.2.0
-     PKG_VERSION=2_2_0
-          SOURCE=${SPELL}-src${PKG_VERSION}.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-src${PKG_VERSION}
-   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/stable/$SOURCE
-          MD5[0]=f525ed484c164a9fbc286f996c0f94be
+         VERSION=2_3_0
+          SOURCE=$SPELL-src_$VERSION.tar.gz
+          MD5[0]='5261d2eaaf6277ff965a3f8f67833295'
       LICENSE[0]=APACHE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src_$VERSION
+      MAKE_NJOBS=1
+   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/stable/$SOURCE
         WEB_SITE=http://xml.apache.org/xerces-c/index.html
          ENTERED=20030320
-         UPDATED=20030320
+         UPDATED=20030718
       MAINTAINER=vydra@fria.fri.utc.sk
-           SHORT="Xerces-C++ is a validating XML parser."
+           SHORT='Xerces-C++ is a validating XML parser'
 cat << EOF
 Xerces-C++ is a validating XML parser written in a portable subset 
 of C++. Xerces-C++ makes it easy to give your application the ability

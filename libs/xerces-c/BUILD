@@ -17,6 +17,10 @@
   
   make             &&
   prepare_install  &&
-  make  install
+  make  install    &&
+
+  # needed for libpathan
+  mkdir -p          /usr/include/xercesc/dom/impl &&
+  cp dom/impl/*.hpp /usr/include/xercesc/dom/impl/
   
-) > $C_FIFO 2>&1
+) >$C_FIFO 2>&1

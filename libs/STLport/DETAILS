@@ -9,6 +9,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20020302
          UPDATED=20021127
            SHORT="stlport is a full ANSI C++ standard library"
+          CCACHE=off
+    DISTCC_HOSTS=
+      MAKE_NJOBS=1
 cat << EOF
 STLport is a full ANSI C++ Standard library.
 EOF

@@ -1,0 +1,17 @@
+           SPELL=apr-iconv
+         VERSION=0.9.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+  FORCE_DOWNLOAD=on
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.apache.org:/home/cvspublic:apr-iconv:APACHE_2_0_47
+#  SOURCE_URL[1]=http://www.apache.org/dist/apr/$SOURCE
+          MD5[0]=IGNORE
+        WEB_SITE=http://apr.apache.org/
+      LICENSE[0]=APACHE
+         ENTERED=20030705
+         UPDATED=20030709
+           SHORT='Apache Portable Runtime Internationalization Library'
+cat << EOF
+Apache Portable Runtime Internationalization library provides the iconv()
+function on top of APR.
+EOF
