@@ -1,5 +1,5 @@
-  sed -i "s/-O2/${CFLAGS}/;s|)/man|)/share/man|;/^LDFLAGS/d" Makefile &&
-  sed -i "s/-O2/${CFLAGS}/;s|)/man|)/share/man|;/^LDFLAGS/d" Makefile-libbz2_so &&
+  sed -i "s/-O2/-fPIC ${CFLAGS}/;s|)/man|)/share/man|;/^LDFLAGS/d" Makefile &&
+  sed -i "s/-O2/-fPIC ${CFLAGS}/;s|)/man|)/share/man|;/^LDFLAGS/d" Makefile-libbz2_so &&
   rm -vf ${INSTALL_ROOT}/usr/bin/bzgrep  &&
   rm -vf ${INSTALL_ROOT}/usr/bin/bzegrep &&
   rm -vf ${INSTALL_ROOT}/usr/bin/bzfgrep &&
