@@ -4,10 +4,12 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.insecure.org/$SPELL/dist/$SOURCE
           MD5[0]=b327752360c1aae1b1d5e33446c4244f
-      LICENSE[0]=GPL
         WEB_SITE=http://www.insecure.org/nmap/
          ENTERED=20010922
          UPDATED=20020801
+      LICENSE[0]=GPL
+      MAKE_NJOBS=1
+       BUILD_API=2
            SHORT="Utility for network exploration or security auditing."
 cat << EOF
 Nmap is a utility for network exploration or security auditing. It
