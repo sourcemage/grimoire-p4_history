@@ -1,15 +1,16 @@
            SPELL=kopete
-         VERSION=0.4.1
+         VERSION=0.6.1a
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.geiseri.com/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://www.cron.cl/$SPELL/$SOURCE    
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+   SOURCE_URL[1]=http://www.geiseri.com/$SPELL/$SOURCE
+   SOURCE_URL[2]=http://www.cron.cl/$SPELL/$SOURCE    
 	 WEB_SITE=http://kopete.kde.org
          ENTERED=20020406
          UPDATED=20020603
            SHORT="a multiple protocol IM client for KDE 3"
       MAINTAINER="geo@drasil.uklinux.net"
-             MD5=57ec382f273152b18a100c2df228ff43
+             MD5=cd8b9c2530346b8a1297308f2c52551e
          LICENSE=GPL
 cat << EOF
 Kopete is a flexible and extendable multiple protocol instant messaging
