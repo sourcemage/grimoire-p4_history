@@ -1,0 +1,6 @@
+default_pre_build                                                      &&
+patch -p0 < ${SCRIPT_DIRECTORY}/shutdown.patch                         &&
+cd ${SOURCE_DIRECTORY}                                                 &&
+sedit "s/\/etc\/X11\/Sessions/\/etc\/X11\/xinit/g" configure           &&
+cp ${SCRIPT_DIRECTORY}/pam.qingy ${SOURCE_DIRECTORY}/media/pam/default/qingy 
+
