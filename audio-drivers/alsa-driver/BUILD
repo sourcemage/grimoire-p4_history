@@ -11,7 +11,7 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
   sedit  "s:root.root:root.audio:"   snddevices &&
   
   ./configure  --prefix=/usr         \
-	       --with-kernel=/usr/src/linux \
+	       --with-kernel=/lib/modules/$(uname -r)/build \
                --with-isapnp=yes     \
                --with-sequencer=yes  \
                --with-oss=yes        \

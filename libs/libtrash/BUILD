@@ -4,7 +4,6 @@
     prepare_install                           &&
     make                                      &&
     make install                              &&
-    if  ! grep -q libtrash.so ${INSTALL_ROOT}/etc/profile && [ "$LOGDEFS" = "yes" ] ; then
-    echo -e "export LD_PRELOAD=${INSTALL_ROOT}/usr/lib/libtrash.so" >> ${INSTALL_ROOT}/etc/profile 
-    fi
+    mkdir -p ${INSTALL_ROOT}/etc/profile.d/   &&
+    install -m 0644 $SCRIPT_DIRECTORY/libtrash.sh ${INSTALL_ROOT}/etc/profile.d/
 ) > $C_FIFO 2>&1

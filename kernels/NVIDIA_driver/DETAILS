@@ -2,17 +2,14 @@
          VERSION=1.0-4496-pkg2
           SOURCE=NVIDIA-Linux-x86-$VERSION.run
          SOURCE2=NVIDIA_kernel-${VERSION/-pkg2/}-2.6.diff
-          MD5[1]=6d98825a3cf78f4a5ce42d4f4decab89
-         SOURCE3=nv-linux.diff
-          MD5[2]=487809e00954adefad6c11500d2230a3
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.nvidia.com/XFree86/Linux-x86/${VERSION/-pkg2/}/$SOURCE
   SOURCE2_URL[0]=http://www.minion.de/files/$SOURCE2
-  SOURCE3_URL[0]=http://www.negativezero.plus.com/$SOURCE3
           MD5[0]=34543e7bf271ff90e1a536aacd32efbd
+          MD5[1]=6d98825a3cf78f4a5ce42d4f4decab89
         WEB_SITE=http://www.nvidia.com
          ENTERED=20030401
-         UPDATED=20030816
+         UPDATED=20031213
          LICENSE=http://www.nvidia.com/view.asp?IO=nv_swlicense
            SHORT="NVIDIA_driver is the driver provided by NVIDIA for NVIDIA GPUs"
 cat << EOF

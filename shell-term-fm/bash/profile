@@ -10,4 +10,11 @@ alias   ls='ls --color=auto '
 export  PATH  PS1
 umask   022
 
-export  EDITOR=nano
+
+#recursion
+for i in /etc/profile.d/*.sh ; do
+    if [ -r "$i" ]; then
+        . $i
+    fi
+done
+

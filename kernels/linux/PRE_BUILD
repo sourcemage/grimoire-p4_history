@@ -127,24 +127,22 @@ cd ${INSTALL_ROOT}/usr/src
 
 chown  -R  root:root  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
 
-rm  -rf  linux
-ln  -s   linux-${VERSION}  linux
 
 mkdir  -p  ../include
 
-if [[ ! -L ../include/asm-generic ]]; then
-  ln ../src/linux/include/asm-generic ..//include/ -s
+if [[ ! -d ../include/asm-generic ]]; then
+  ln ../src/linux-${VERSION}/include/asm-generic ..//include/ -s
 fi
 
-if [[ ! -L ../include/asm ]]; then
-  ln ../src/linux/include/asm        ..//include/ -s
+if [[ ! -d ../include/asm ]]; then
+  ln ../src/linux-${VERSION}/include/asm        ..//include/ -s
 fi
 
-if [[ ! -L ../include/linux ]]; then
-  ln ../src/linux/include/linux      ..//include/ -s
+if [[ ! -d ../include/linux ]]; then
+  ln ../src/linux-${VERSION}/include/linux      ..//include/ -s
 fi
 
-cd  ${INSTALL_ROOT}/usr/src/linux
+cd  ${INSTALL_ROOT}/usr/src/linux-${VERSION}
 
 if  [  -f  $CONFIG_CACHE/kernel.config  ]; then
   cp $CONFIG_CACHE/kernel.config .config
