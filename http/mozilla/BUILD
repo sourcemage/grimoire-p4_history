@@ -58,6 +58,17 @@ function make_crypto() {
   make install &&
   make_crypto install  &&
 
+# Remove these lines if mozilla starts installing the nss headers properly itself
+# nss headers begin
+  if [ -d /usr/include/mozilla ]
+  then
+    mkdir /usr/include/mozilla/nss 
+  fi
+  cp $SCRIPT_DIRECTORY/mozillanss.txt $SOURCE_DIRECTORY &&
+  sedit "s:\$SOURCE_DIRECTORY:$SOURCE_DIRECTORY:" mozillanss.txt &&
+  cat $SOURCE_DIRECTORY/mozillanss.txt | xargs -n1 -i cp {} /usr/include/mozilla/nss/ 
+# nss headers end
+
   if  !  grep  -q  "mozilla"  /etc/ld.so.conf
   then
     echo  "/usr/lib/mozilla"  >>  /etc/ld.so.conf
