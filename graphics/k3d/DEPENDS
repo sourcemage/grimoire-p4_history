@@ -1,5 +1,9 @@
-depends  sdplibs &&
-optional_depends  "plib"             \
-                  "--with-plib"    \
-                  "--without-plib"  \
+depends  sdplibs   &&
+depends  autoconf  &&
+depends  automake  &&
+depends  libtool   &&
+
+optional_depends  "plib"                    \
+                  "--with-plib"             \
+                  "--without-plib"          \
                   "enable plib extensions"

@@ -1,8 +1,8 @@
 (
-	cd $SOURCE_DIRECTORY &&
-  ln -sf /usr/share/automake-1.6/install-sh install-sh &&
-  ln -sf /usr/share/automake-1.6/mkinstalldirs mkinstalldirs &&
-  ln -sf /usr/share/automake-1.6/missing missing &&
+
+  ln -sf /usr/share/automake-1.7/install-sh install-sh &&
+  ln -sf /usr/share/automake-1.7/mkinstalldirs mkinstalldirs &&
+  ln -sf /usr/share/automake-1.7/missing missing &&
 
   ./configure  --prefix=/usr/share/k3d               \
                --bindir=/usr/share/k3d               \
@@ -11,6 +11,6 @@
   make                                               &&
   prepare_install                                    &&
   make  install                                      &&
-  cp  $SCRIPT_DIRECTORY/k3d  /usr/bin
+  install  -m  755  $SCRIPT_DIRECTORY/k3d  /usr/bin
 
-) > $C_FIFO 2>&1
+)  >  $C_FIFO  2>&1
