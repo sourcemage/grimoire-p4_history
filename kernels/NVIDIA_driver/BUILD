@@ -20,7 +20,7 @@
     ln  -s  Makefile.kbuild Makefile
   fi                            &&
 #please no-one remove this???
-  cd SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION &&
+  cd $SOURCE_DIRECTORY/NVIDIA-Linux-x86-$VERSION &&
 
   prepare_install               &&
   export IGNORE_CC_MISMATCH=1   &&
