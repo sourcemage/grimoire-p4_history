@@ -1,90 +1,57 @@
-#message "${MESSAGE_COLOR}If you don't know what you are doing just press ENTER.${DEFAULT_COLOR}"
-#message "${MESSAGE_COLOR}(You will end up with basic snort installation)${DEFAULT_COLOR}"
+#message "${MESSAGE_COLOR}If you don't know what you are doing just press ENTER.${DEFAULT_COLOR}"  &&
+#message "${MESSAGE_COLOR}(You will end up with basic snort installation)${DEFAULT_COLOR}"  &&
 
-# SNMP support
-if  !  grep  -q  "CF_SNMP"  $SPELL_CONFIG;  then
-  if  query  "Do you want enable SNMP alerting code ?" n
-  then  echo  "CF_SNMP=y"  >>  $SPELL_CONFIG
-  else  echo  "CF_SNMP=n"  >>  $SPELL_CONFIG
-  fi
-fi
+config_query  CF_SNMP      "Do you want enable SNMP alerting code?"  n
+config_query  CF_SMB      "Do you want enable SMB alerting code? [UNSAFE]"  n
+config_query  CF_PERFMON  "Do you wish to enable the Snort perfmonitor preprocessor?"  n
 
-# Samba alerts
-if  !  grep  -q  "CF_SMB"  $SPELL_CONFIG;  then
-  if  query  "Do you want enable SMB alerting code ? [UNSAFE => n]" n
-  then  echo  "CF_SMB=y"  >>  $SPELL_CONFIG
-  else  echo  "CF_SMB=n"  >>  $SPELL_CONFIG
-  fi
-fi
- 
 # Flexible responce
-if  !  grep  -q  "CF_FLEXR"  $SPELL_CONFIG;  then
-  message  "Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next option working."
-  if  spell_installed  libnet
-  then  message  "You have libnet v`gaze version libnet|grep libnet|awk '{print $4}'` installed"
-  else  message  "You do not have libnet installed, but v`gaze version libnet|grep libnet|awk '{print $4}'` would be used"
-  fi &&
-  if  query  'Do you want enable "Flexible response" code ?' n
-  then  echo  "CF_FLEXR=y"  >>  $SPELL_CONFIG
-  else  echo  "CF_FLEXR=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-if  !  grep  -q  "CF_PERFMON"  $SPELL_CONFIG;  then
-  if  query  "Do you wish to enable the Snort perfmonitor preprocessor?" n
-  then  echo  "CF_PERFMON=y"  >>  $SPELL_CONFIG
-  else  echo  "CF_PERFMON=n"  >>  $SPELL_CONFIG
-  fi
-fi
+message  "${MESSAGE_COLOR}Warning: you must have libnet version 1.0.2a (!EXACTLY!) to have next option working."
+if  spell_installed  libnet;  then
+  message  "You have libnet v`installed_version libnet` installed${DEFAULT_COLOR}"
+else
+  message  "You do not have libnet installed, but v`gaze version libnet|grep libnet|awk '{print $4}'` would be used${DEFAULT_COLOR}"
+fi  &&
+config_query  CF_FLEXR  "Do you want enable Flexible response code?"  n
 
 # *** Output support
-if  !  grep  -q  "CF_DB"  $SPELL_CONFIG;  then
-  message "${MESSAGE_COLOR}Next option is to give snort the ability to log data in RDBMS.${DEFAULT_COLOR}"
-  message "${MESSAGE_COLOR}(By default snort is logging to flat files).${DEFAULT_COLOR}"
-  if  query  "Do you want enable RDBMS support ?" n
-  then  echo  "CF_DB=y"  >>  $SPELL_CONFIG; CF_DB=y
-  else  echo  "CF_DB=n"  >>  $SPELL_CONFIG
-  fi
-fi
+message "${MESSAGE_COLOR}Next option is to give snort the ability to log data in RDBMS.${DEFAULT_COLOR}"  &&
+message "${MESSAGE_COLOR}(By default snort is logging to flat files).${DEFAULT_COLOR}"  &&
+config_query  CF_DB  "Do you want enable RDBMS support?"  n
  
 # Choose the right DB
-if  [  "${CF_DB}"  ==  "y"  ]; then
-
+if  [  "$CF_DB"  ==  "y"  ]; then
   message "${MESSAGE_COLOR}In the next conf. choose the backend db for $SPELL.${DEFAULT_COLOR}"
   message "${MESSAGE_COLOR}(U can choose all of them :).${DEFAULT_COLOR}"
  
   # MySQL
-  if  !  grep  -q  "CF_MYSQL"  $SPELL_CONFIG;  then
-    if  query  "Do you want use $SPELL with MySQL ?" n
-    then  echo  "CF_MYSQL=y"  >>  $SPELL_CONFIG
-    else  echo  "CF_MYSQL=n"  >>  $SPELL_CONFIG
-    fi
-  fi
+  if  spell_installed  mysql;  then
+    config_query  CF_MYSQL  "Do you want use $SPELL with MySQL?"  y
+  else
+    config_query  CF_MYSQL  "Do you want use $SPELL with MySQL?"  n
+  fi  &&
 
   # PostgreSQL
-  if  !  grep  -q  "CF_PSQL"  $SPELL_CONFIG;  then
-    if  query  "Do you want use $SPELL with PostgreSQL ?" n
-    then  echo  "CF_PSQL=y"  >>  $SPELL_CONFIG
-    else  echo  "CF_PSQL=n"  >>  $SPELL_CONFIG
-    fi
-  fi
-     
+  if  spell_installed  postgresql;  then
+    config_query  CF_PSQL   "Do you want use $SPELL with PostgreSQL?"  y
+  else
+    config_query  CF_PSQL   "Do you want use $SPELL with PostgreSQL?"  n
+  fi  &&
+
   # Oracle
-  if  !  grep  -q  "CF_ORA"  $SPELL_CONFIG;  then
-    message "${MESSAGE_COLOR}Warning: Install Oracle support only if you know what you want :).${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}Warning: Install Oracle support only if you know what you want :).${DEFAULT_COLOR}"  &&
+  config_query  CF_ORA    "Do you want use $SPELL with Oracle?"  n
 
-    if  query  "Do you want use $SPELL with Oracle ?" n
-    then  echo  "CF_ORA=y"  >>  $SPELL_CONFIG
-    else  echo  "CF_ORA=n"  >>  $SPELL_CONFIG
-    fi
+  # UnixODBC
+  if  spell_installed  unixodbc;  then
+    config_query  CF_ODBC   "Do you want use $SPELL with ODBC support?"  y
+  else
+    config_query  CF_ODBC   "Do you want use $SPELL with ODBC support?"  n
   fi
-     
-  # ODBC - ok not an RDBMS, but I/m too lazy to make some extra 'option' :)
-  if  !  grep  -q  "CF_ODBC"  $SPELL_CONFIG;  then
-    if  query  "Do you want use $SPELL with ODBC support ?" n
-    then  echo  "CF_ODBC=y"  >>  $SPELL_CONFIG
-    else  echo  "CF_ODBC=n"  >>  $SPELL_CONFIG
-    fi
-  fi
-
+else
+  persistent_add  CF_MYSQL  CF_PSQL  CF_ORA  CF_ODBC  &&
+  CF_MYSQL="n"  &&
+   CF_PSQL="n"  &&
+   CF_ODBC="n"  &&
+    CF_ORA="n"
 fi
