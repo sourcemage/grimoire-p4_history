@@ -1,0 +1,7 @@
+depends  libpng     &&
+depends  freetype2  &&
+depends  libxml2    &&
+requires x11-libs   &&
+optional_depends  "SDL"  ""  "--without-sdl"  "for SDL output support"        &&
+optional_depends  "directfb"  ""  "--without-directfb"  "for directfb output" &&
+optional_depends  "lirc"  ""  ""  "for remote control support"
