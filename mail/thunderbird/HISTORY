@@ -1,9 +1,28 @@
+2005-01-12 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 1.0  (Thanks to Paul Beel)
+	  Enigmail updated to 0.90.0  (Thanks to Paul Beel)
+	  IPC updated to 1.1.2  (Thanks to Paul Beel)
+	  Removed MAKE_NJOBS=1
+	* BUILD: Reordered so all --disables are together and all --enables are
+	  together
+	  Added --disable-oji, --disable-jsd, --disable-necko-disk-cache
+	  Changed --enable-single-profile to --disable-profilesharing
+	  Changed --enable-extensions=all to
+	  Added --enable-necko-protocols=$NECKO_PROTOCOLS and set
+	  NECKO_PROTOCOLS="http,file,jar,viewsource,res,data"
+	  --enable-extensions=$THUNDERBIRD_EXTENSIONS and set
+	  THUNDERBIRD_EXTENSIONS to "wallet,spellcheck,xmlextras"
+	  Add options according to http://linuxfromscratch.org/pipermail/blfs-support/2004-July/051082.html  (URL thanks to Paul Beel)
+	* CONFIGURE: Added query for MathML
+	  Add options according to http://linuxfromscratch.org/pipermail/blfs-support/2004-July/051082.html  (URL thanks to Paul Beel)
+
 2004-12-02 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 1.0rc
 
 2004-11-07 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 0.9
-	  SOURCE name changed (again, can't these Mozilla people do anything right?)
+	  SOURCE name changed (again, can't these Mozilla people do anything
+	  right?)
 	  enigmail updated to 0.89.0
 	  SOURCE_URL now uses $VERSION
 	  Added MAKE_NJOBS=1
