@@ -1,5 +1,5 @@
            SPELL=php4
-         VERSION=4.3.9
+         VERSION=4.3.10
           SOURCE=php-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/php-$VERSION
 if [ "${VERSION//RC/}" == "$VERSION" ]; then
@@ -7,12 +7,13 @@ if [ "${VERSION//RC/}" == "$VERSION" ]; then
 else
    SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
 fi
-          MD5[0]=9a4075b814feffabaad78ba1229f48d0
-      LICENSE[0]=http://www.php.net/license/3_0.txt
+          MD5[0]=cbfd7709bc0492794dafa65b0f65dbb5
         WEB_SITE=http://www.php.net/
          ENTERED=20011024
          UPDATED=20040330
-           SHORT='PHP: Hypertext Preprocessor (PHP) scripting language'
+      LICENSE[0]=http://www.php.net/license/3_0.txt
+       BUILD_API=2
+           SHORT="Hypertext Preprocessor (PHP) scripting language"
 cat << EOF
 PHP is a widely-used Open Source general-purpose scripting language
 that is especially suited for Web development and can be embedded
