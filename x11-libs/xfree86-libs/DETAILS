@@ -4,17 +4,20 @@
           SOURCE=X${XVERSION}src-1.tgz
          SOURCE2=X${XVERSION}src-2.tgz
          SOURCE3=X${XVERSION}src-3.tgz
+         SOURCE4=fontfile.diff
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
    SOURCE_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE
   SOURCE2_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE2
   SOURCE3_URL[0]=$XFREE86_URL/$VERSION/source/$SOURCE3
+  SOURCE4_URL[0]=$XFREE86_URL/$VERSION/fixes/$SOURCE4
           MD5[0]=90fd1261c1a70510a12fececedadf1a9
           MD5[1]=b8a1c45dd8c59549e435111115a439d3
           MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
+          MD5[3]=054b777f39bfa372bbe14e25719814db
         WEB_SITE=http://www.xfree86.org/
          ENTERED=20030908
-         UPDATED=20031126
+         UPDATED=20040211
          LICENSE=XCL
            SHORT="libs only from xfree86 project"
     

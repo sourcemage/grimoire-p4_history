@@ -10,6 +10,7 @@
          SOURCE6=X${XVERSION}src-6.tgz
          SOURCE7=X${XVERSION}src-7.tgz
          SOURCE8=${OLD_VERSION}-${VERSION}.diff.gz
+         SOURCE9=fontfile.diff
             FUZZ="off"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
    SOURCE_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE
@@ -20,6 +21,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
   SOURCE6_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE6
   SOURCE7_URL[0]=$XFREE86_URL/${OLD_VERSION}/source/$SOURCE7
   SOURCE8_URL[0]=$XFREE86_URL/${OLD_VERSION}/fixes/$SOURCE8
+  SOURCE9_URL[0]=$XFREE86_URL/${OLD_VERSION}/fixes/$SOURCE9
           MD5[0]=90fd1261c1a70510a12fececedadf1a9
           MD5[1]=b8a1c45dd8c59549e435111115a439d3
           MD5[2]=793531f6c1bdf9d4d2f3f878901192b8
@@ -28,9 +30,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
           MD5[5]=fb8a4e286d9691a13bc2df84e5149a0e
           MD5[6]=f689e23a1bf1c15a91c998be971e5660
           MD5[7]=204b3ba31b6c34442bfa902337a548db
+          MD5[8]=054b777f39bfa372bbe14e25719814db
         WEB_SITE=http://www.xfree86.org/
          ENTERED=20010922
-         UPDATED=20031109
+         UPDATED=20040211
       LICENSE[0]=XCL
            SHORT="xfree86 is the stable free implementation of the X Window System."
 cat << EOF
