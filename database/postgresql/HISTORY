@@ -1,3 +1,17 @@
+2004-02-27 Treeve Jelbert <treeve01@pi.be>
+	* PRE_BUILD: create postgres account
+	fixes bug #5786
+	* BUILD: use ${INSTALL_ROOT}
+	install docs and man to /usr/share/...
+	fixes bug #5553
+	change permissions on data directory
+	uses /var/lib/postgres/data
+	change message to reflect new location
+	remove 'unable to start message', as it is not true
+	fixes bugs #3698
+	* DETAILS: add DOCS=""
+	prevents duplicate documentation
+
 2004-01-10 Eric Sandall <eric@sandall.us>
 	* DETAILS: Looks like I got the wrong md5sum on that last update (thanks Jason!)...
 
