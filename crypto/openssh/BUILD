@@ -1,5 +1,7 @@
 (
 
+  create_account sshd
+
   ./configure  --prefix=/usr            \
                --sysconfdir=/etc/ssh    \
                --with-md5-passwords     \
