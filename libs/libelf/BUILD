@@ -1,8 +1,8 @@
 (
 
-  ./configure  --prefix=/usr         \
-               --sysconfdir=/etc     \
-               --localstatedir=/var  \
+  ./configure  --prefix=$INSTALL_ROOT/usr         \
+               --sysconfdir=$INSTALL_ROOT/etc     \
+               --localstatedir=$INSTALL_ROOT/var  \
                --disable-debug       \
 	       $OPTS                     &&
   make                               &&
