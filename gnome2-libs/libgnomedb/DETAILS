@@ -1,16 +1,16 @@
            SPELL=libgnomedb
-         VERSION=1.1.6
+         VERSION=1.1.99
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome-db.org/pub/gnome-db/sources/v${VERSION}/$SOURCE
-          MD5[0]='a716c46dfd8be831720446c392a4471e'
+          MD5[0]='beb29c3d0c130ce3d104724db7ab70db'
       LICENSE[0]="LGPL"
       LICENSE[1]="GPL"
         WEB_SITE=http://www.gnome-db.org
          ENTERED=20020509
-         UPDATED=20040818
+         UPDATED=20041010
            SHORT="libgnomedb: Database widget library."
 cat << EOF
 libgnomedb: Database widget library. These widgets are integrated
