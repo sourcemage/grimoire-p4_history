@@ -1,16 +1,17 @@
            SPELL=libgnome
-         VERSION=2.0.5
+         VERSION=2.0.6
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="35710cd1409b55cad9e8d682ab0fef92"
         WEB_SITE=http://developer.gnome.org
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
          ENTERED=20020509
-         UPDATED=20020520
+         UPDATED=20021123
            SHORT="The GNOME Library functions"
 cat << EOF
 The GNOME Library functions - these are the calls that handle all

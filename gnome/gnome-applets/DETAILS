@@ -1,16 +1,17 @@
            SPELL=gnome-applets
-         VERSION=1.4.0.5
+         VERSION=1.4.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-      MAINTAINER=jon-sven@frisurf.no
-        WEB_SITE=http://www.gnome.org
+          MD5[0]="dc04fbd8ca225a7fafeaf416046ac447"
       LICENSE[0]=GPL
       LICENSE[1]=FDL
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
          ENTERED=20010922
-         UPDATED=20010928
+         UPDATED=20021103
            SHORT="gnome-applets contains various applets for GNOME panel"
 cat << EOF
 another_clock:

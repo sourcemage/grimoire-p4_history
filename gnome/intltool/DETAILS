@@ -1,15 +1,16 @@
            SPELL=intltool
-         VERSION=0.22
+         VERSION=0.23
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]="b70f855830ad786d85785bb91d13be8f"
+      LICENSE[0]=GPL
       MAINTAINER=jon-sven@frisurf.no
         WEB_SITE=http://www.gnome.org
-      LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20020330
+         UPDATED=20021103
            SHORT="intltool provides xml internationalization tools?"
 cat << EOF
 intltool

@@ -1,16 +1,17 @@
            SPELL=libwnck
-         VERSION=0.17
+         VERSION=0.18
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-        WEB_SITE=http://www.gnome.org
-      MAINTAINER=jon-sven@frisurf.no
+          MD5[0]="660623c7c36bdef41a3e17ac57083ebb"
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
+        WEB_SITE=http://www.gnome.org
+      MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020509
-         UPDATED=20020518
+         UPDATED=20021103
            SHORT="libwnck is Window Navigator Construction Kit"
 cat << EOF
 libwnck is Window Navigator Construction Kit, i.e. a library to use

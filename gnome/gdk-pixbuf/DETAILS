@@ -1,16 +1,17 @@
            SPELL=gdk-pixbuf
-         VERSION=0.18.0
+         VERSION=0.21.0
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
-      MAINTAINER=jon-sven@frisurf.no
-        WEB_SITE=http://www.gnome.org
+          MD5[0]="dc7dcfb996467de5883d8e23fa84e0df"
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
          ENTERED=20010922
-         UPDATED=20020124
+         UPDATED=20021103
            SHORT="gdk-pixbuf is a graphics library."
 cat << EOF
 The GdkPixbuf library provides a number of features:
