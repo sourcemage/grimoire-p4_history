@@ -2,9 +2,9 @@ if  [  "$AD"  ==  "y"  ];  then
   depends  openldap  "--with-ldap"              &&
   depends  krb5      "--with-krb5  --with-ads"
 else
-  optional_depends  openldap            &&
-                    "--with-ldap"       &&
-                    "--without-ldap"    &&
+  optional_depends  openldap            \
+                    "--with-ldap"       \
+                    "--without-ldap"    \
                     "for LDAP support" 
 fi  &&
 
