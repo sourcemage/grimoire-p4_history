@@ -7,9 +7,9 @@
 
   if echo "$OPTS" | grep -q 'enable-java'; then
     if [ -z $JAVA_HOME ]; then
-      if spell_installed j2sdk; then
+      if spell_ok j2sdk; then
         JAVA_HOME=$INSTALL_ROOT/usr/java/j2sdk
-      elif spell_installed j2sdk-bin; then
+      elif spell_ok j2sdk-bin; then
         JAVA_HOME=$INSTALL_ROOT/usr/lib/j2sdk1.4.2
       fi
     fi &&
