@@ -1,5 +1,5 @@
 (
-  cat $SCRIPT_DIRECTORY/*.patch | patch  -p1 &&
+
   ./configure --prefix=/usr           &&
   make                                &&
   prepare_install                     &&

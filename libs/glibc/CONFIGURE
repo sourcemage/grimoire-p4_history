@@ -46,7 +46,7 @@ then
   OLD_IFS=$IFS
   export  IFS="	
 "
-  GLIBC_LOCALES=`select_locales`
+  GLIBC_LOCALES=`select_locales | tr '\n' ' '`
   TEMP=`grep  -v  "GLIBC_LOCALES="             $SPELL_CONFIG`
   echo  "$TEMP"                             >  $SPELL_CONFIG
   echo  "GLIBC_LOCALES=\"$GLIBC_LOCALES\""  >> $SPELL_CONFIG
