@@ -1,15 +1,16 @@
            SPELL=rsync
-         VERSION=2.6.2
+         VERSION=2.6.3pre1
+         PREVIEW=$([ "${VERSION//pre/}" != "$VERSION" ] && echo 1)
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://rsync.samba.org/ftp/rsync/$SOURCE
-   SOURCE_URL[1]=ftp://rsync.samba.org/pub/rsync/$SOURCE
-          MD5[0]=a203fd46d1de3669b8d3a589b3dda2eb
+   SOURCE_URL[0]=http://rsync.samba.org/ftp/rsync/${PREVIEW:+preview/}$SOURCE
+   SOURCE_URL[1]=ftp://rsync.samba.org/pub/rsync/${PREVIEW:+preview/}$SOURCE
+          MD5[0]='9bd4cb155e44e8b1cb90293dcb218f54'
         WEB_SITE=http://rsync.samba.org/
          ENTERED=20010922
          UPDATED=20040217
       LICENSE[0]=GPL
-           SHORT="rsync is a replacement for rcp"
+           SHORT='rsync provides fast incremental file transfer'
 cat << EOF
 rsync is a replacement for rcp (and scp) that has many more features.
 It uses the "rsync algorithm" which provides a very fast method for
