@@ -1,7 +1,8 @@
 (
 
-./configure --prefix=/usr \
-            --sysconfdir=/etc/leafnode \
+./configure --prefix=/usr                                       \
+            --localstatedir=/var                                \
+            --sysconfdir=/etc/leafnode                          \
             $OPTS                                               &&
 
 make all                                                        &&
