@@ -1,10 +1,6 @@
-diff -Nru textproc/p5-XML-LibXML.orig/patches/patch-aa
-textproc/p5-XML-LibXML/patches/patch-aa
---- textproc/p5-XML-LibXML.orig/patches/patch-aa	1969-12-31 
-19:00:00.000000000
--0500
-+++ textproc/p5-XML-LibXML/patches/patch-aa	2003-12-22 
-10:39:03.000000000 -0500
+diff -Nru --exclude=CVS textproc/p5-XML-LibXML.orig/files/patch-LibXML.xs textproc/p5-XML-LibXML/files/patch-LibXML.xs
+--- textproc/p5-XML-LibXML.orig/files/patch-LibXML.xs	Wed Dec 31 19:00:00 1969
++++ textproc/p5-XML-LibXML/files/patch-LibXML.xs	Sat Jan  3 03:27:21 2004
 @@ -0,0 +1,23 @@
 +--- LibXML.xs.orig	2003-12-22 10:38:06.000000000 -0500
 ++++ LibXML.xs	2003-12-22 10:38:12.000000000 -0500
@@ -14,11 +10,9 @@ textproc/p5-XML-LibXML/patches/patch-aa
 + 
 +-#ifdef VMS
 +-extern int xmlDoValidityCheckingDefaultVal;
-+-#define xmlDoValidityCheckingDefaultValue 
-xmlDoValidityCheckingDefaultVal
++-#define xmlDoValidityCheckingDefaultValue xmlDoValidityCheckingDefaultVal
 +-extern int xmlSubstituteEntitiesDefaultVal;
-+-#define xmlSubstituteEntitiesDefaultValue 
-xmlSubstituteEntitiesDefaultVal
++-#define xmlSubstituteEntitiesDefaultValue xmlSubstituteEntitiesDefaultVal
 +-#else
 +-LIBXML_DLL_IMPORT extern int xmlDoValidityCheckingDefaultValue;
 +-LIBXML_DLL_IMPORT extern int xmlSubstituteEntitiesDefaultValue;
