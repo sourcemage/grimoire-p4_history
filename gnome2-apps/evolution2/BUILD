@@ -15,7 +15,11 @@
      sedit s/"nsslibs=\"-lssl3 -lsmime3 -lnss3\""/"nsslibs=\"-lssl3 -lsmime3 -lnss3 -lsoftokn3\""/ configure
    fi &&
 
-   echo $OPTS
+   echo $OPTS &&
+                                                                                
+   if /lib/libc.so.6 | grep -q NPTL; then
+     LDFLAGS="$LDFLAGS -lpthread"
+   fi &&
 
    default_build
  
