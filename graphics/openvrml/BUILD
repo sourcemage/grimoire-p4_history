@@ -39,12 +39,4 @@ fi  &&
 #
 OPTS="$OPTS  --disable-tests"  &&
 
-echo OPTS = $OPTS > /tmp/openvrml.opts
-
-export  OPTS
-
 default_build
-#./configure  --prefix=/usr            \
-#    --disable-script-node-javascript  \
-#             $OPTS                    &&
-#make                                  &&
