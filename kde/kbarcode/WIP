@@ -1,0 +1,26 @@
+build problem with gcc-3.4.3
+
+if g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../src -I/usr/include/qt 
+-I/usr/X11R6/include   -DQT_THREAD_SUPPORT  -D_REENTRANT  -Wnon-virtual-dtor 
+-Wno-long-long -Wundef -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align 
+-Wconversion -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -O2 
+-O -march=athlon-tbird -mmmx -m3dnow -pipe -O3 -Wformat-security 
+-Wmissing-format-attribute -fno-exceptions -fno-check-new -fno-common  -MT 
+gnubarkodeengine.o -MD -MP -MF ".deps/gnubarkodeengine.Tpo" -c -o 
+gnubarkodeengine.o gnubarkodeengine.cpp; \
+then mv -f ".deps/gnubarkodeengine.Tpo" ".deps/gnubarkodeengine.Po"; else rm 
+-f ".deps/gnubarkodeengine.Tpo"; exit 1; fi
+gnubarkodeengine.cpp: In member function `virtual void 
+GnuBarkodeEngine::init()':
+gnubarkodeengine.cpp:29: error: ISO C++ forbids cast to non-reference type 
+used as lvalue
+gnubarkodeengine.cpp:30: error: ISO C++ forbids cast to non-reference type 
+used as lvalue
+gnubarkodeengine.cpp:31: error: ISO C++ forbids cast to non-reference type 
+used as lvalue
+make[3]: *** [gnubarkodeengine.o] Error 1
+make[3]: Leaving directory `/usr/src/kbarcode-1.9.2/kbarcode'
+make[2]: make[2]: Leaving directory `/usr/src/kbarcode-1.9.2'
+*** [all-recursive] Error 1
+make[1]: make[1]: Leaving directory `/usr/src/kbarcode-1.9.2'
+*** [all] Error 2
