@@ -16,8 +16,6 @@ if  [  -e  /tmp/devices2dev  ]  ;  then
   sedit  's!/devices$!/dev!'  /etc/sysconfig/devices
 
   rm  /tmp/devices2dev
-else
-  sedit  's!/dev$!/devices!'  /etc/sysconfig/devices
 fi
 
 true

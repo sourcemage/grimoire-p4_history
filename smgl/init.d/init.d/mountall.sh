@@ -45,8 +45,9 @@ start()
     evaluate_retval
   fi
 
-  if [ -x "$RUNLEVELS_DIR/%S/devfsd" ] ; then
-    need devfsd
+  if [ -x "/sbin/devfsd" ] ; then
+    /sbin/devfsd $DEVICES
+    evaluate_retval
   elif [ "$DEVICES" == "/dev" ] ; then
     ln -s /proc/self/fd/0 /dev/stdin &&
     ln -s /proc/self/fd/1 /dev/stdout &&

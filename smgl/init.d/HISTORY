@@ -1,3 +1,10 @@
+2003-07-31  Robert Helgesson <rycee@home.se>
+
+		Don't mess with /etc/sysconfig/devices unless user is
+		converting to devfs on /dev.
+		Start devfsd in mountall.sh instead of separate devfsd script,
+		avoids deadlock.
+
 2003-07-30  Robert Helgesson <rycee@home.se>
 
 		Cleaned up smgl_functions a bit.
