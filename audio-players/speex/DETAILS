@@ -1,17 +1,17 @@
            SPELL=speex
-         VERSION=1.0.3
+         VERSION=1.0.4
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.speex.org/download/${SOURCE}
-          MD5[0]=33a6d0e6c4438498f822737a4a458fa4
+          MD5[0]=14adc46fb86e1485932bbd55461919b8
         WEB_SITE=http://www.speex.org/
          ENTERED=20030330
          UPDATED=20030330
       LICENSE[0]=BSD
-      MAINTAINER=eric@sandall.us
+       BUILD_API=2
            SHORT="Open Source patent-free audio compression format for speech"
 cat << EOF
- Speex is an Open Source/Free Software  patent-free audio compression format designed for speech. The Speex Project aims to lower the barrier of entry for voice applications by providing a free alternative to expensive proprietary speech codecs. Moreover, Speex is well-adapted to Internet applications and provides useful features that are not present in most other codecs. Finally, Speex is part of the GNU  Project and is available under the Xiph.org variant of the BSD license.
+Speex is an Open Source/Free Software  patent-free audio compression format designed for speech. The Speex Project aims to lower the barrier of entry for voice applications by providing a free alternative to expensive proprietary speech codecs. Moreover, Speex is well-adapted to Internet applications and provides useful features that are not present in most other codecs. Finally, Speex is part of the GNU  Project and is available under the Xiph.org variant of the BSD license.
 The Technology
 
 Speex is based on CELP and is designed to compress voice at bitrates ranging from 2 to 44 kbps. Some of Speexs features include:
