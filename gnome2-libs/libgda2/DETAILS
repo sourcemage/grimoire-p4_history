@@ -1,17 +1,17 @@
            SPELL=libgda2
-         VERSION=0.90.0
+         VERSION=0.91.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=libgda-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/libgda-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/libgda/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome-db.org/pub/gnome-db/sources/v$VERSION/$SOURCE
-          MD5[0]='9bc558e7e37773d43adb6476490a35d3'
+          MD5[0]='99d332a8da4d8e76beee2ba65f55f73a'
       LICENSE[0]="LGPL"
       LICENSE[1]="GPL"
         WEB_SITE=http://www.gnome-db.org
-      MAINTAINER=jon-sven@frisurf.no
+      MAINTAINER=rcook@wyrms.net
          ENTERED=20020509
-         UPDATED=20030710
+         UPDATED=20030808
            SHORT="libgda: Data abstraction layer. It can manage data stored in databases or XML files"
 cat << EOF
 libgda: Data abstraction layer. It can manage data stored it
