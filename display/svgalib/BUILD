@@ -37,7 +37,7 @@
   cd  kernel/svgalib_helper                                              &&
   env  -u  ARCH                                                          \
   make  -f  Makefile.alt INCLUDEDIR="/usr/src/linux/include"             \
-  clean  modules                                                         &&
+  clean  all                                                             &&
   cd  -                                                                  &&
 
   sedit 's/\(install: $(INSTALLAOUTLIB) \)installheaders \(.*\)/\1\2/g'  \
@@ -48,6 +48,6 @@
   cd  kernel/svgalib_helper                                              &&
   env  -u  ARCH                                                          \
   make  -f  Makefile.alt    prefix=${INSTALL_ROOT}                       \
-  INCLUDEDIR="/usr/src/linux/include"  modules_install
+  INCLUDEDIR="/usr/src/linux/include" install
 
 ) > $C_FIFO 2>&1
