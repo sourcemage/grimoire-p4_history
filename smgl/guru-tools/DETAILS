@@ -1,0 +1,22 @@
+           SPELL=guru-tools
+         VERSION=0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://infolab.uvt.nl/people/erics/linux/mirror/$SOURCE
+        WEB_SITE=http://www.schabell.com
+         ENTERED=20030602
+         UPDATED=20030602
+	      MD5[0]=2bb3af15a1c0c24c286f2c466843a928
+	     LICENSE=GPL
+      MAINTAINER=eschabell@sourcemage.org
+           SHORT="Collection of useful Guru Tools."
+cat << EOF
+There are various useful tools that have been written by Source Mage
+developers over the years. Here we have bundled them together for your
+Guru experience:
+
+	findSharedFiles		- A tool for finding files shared between spells.
+						  (by Rasmus Ory Nielsen) 
+
+
+EOF
