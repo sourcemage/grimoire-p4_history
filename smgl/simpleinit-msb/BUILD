@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/simpleinit.c.patch  &&
-
   ./configure                             &&
   make  OPT="$CFLAGS"                     &&
   prepare_install                         &&
