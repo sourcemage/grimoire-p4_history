@@ -25,7 +25,7 @@ function configure_optional() {
 
 configure_optional 'ipv6'	'--enable-ipv6'		'--disable-ipv6'	'enable IPv6 (default: no)' n
 configure_optional 'xft'	'--enable-xft'		'--disable-xft'		'enable use of Xft directly (default: no)' n
-configure_optional 'shm'	'--enable-shm'          'disable-shm'           'enable use of XShm for fast tinting  (default: no)' n
+configure_optional 'shm'	'--enable-shm'          '--disable-shm'         'enable use of XShm for fast tinting  (default: no)' n
 configure_optional 'textfe'	'--enable-textfe'	'--disable-textfe'	'build the text frontend' y
 configure_optional 'xlib'	'--enable-xlib'		'--disable-xlib'	'use of xlib (for X11 systems)' y
 configure_optional 'plugin'	'--enable-plugin'	'--disable-plugin'	'enable plugin support' y
