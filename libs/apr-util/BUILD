@@ -24,9 +24,4 @@
   prepare_install &&
   make install
 
-) >$C_FIFO 2>&1 && (
-
-  FIX_PATH_REGEX='s|/usr/src/apr-util-[^/"]*|/usr/share/apache2|' &&
-  sedit $FIX_PATH_REGEX /usr/bin/apu-config
-
-)
+) >$C_FIFO 2>&1 
