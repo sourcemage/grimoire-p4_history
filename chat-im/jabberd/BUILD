@@ -2,7 +2,7 @@
 
 # create_account jabberd &&
 
-  for f in $(ls -1 etc/*); do
+  for f in $(find . -name "*"); do
     sedit 's|/jabberd/log|/log/jabberd|' $f
   done &&
 
