@@ -1,10 +1,2 @@
-MACHINE=$(uname -m)                 &&
-LINK_SO=/lib64/ld-linux-x86-64.so.2 &&
-
-if [[ "$MACHINE" = "${HOST%%-*}" ]] && [[ "$MACHINE" = x86_64 ]] && [[ -f "$LINK_SO" ]]; then
-  config_query_option MULTILIB                                                              \
-                      "Enable 32-bit libraries (say NO for pure 64-bit AMD64 environment)?" \
-                      n                                                                     \
-                      '--enable-multilib'                                                   \
-                      '--disable-multilib'
-fi
+. $SCRIPT_DIRECTORY/../FUNCTIONS &&
+default_configure_gcc
