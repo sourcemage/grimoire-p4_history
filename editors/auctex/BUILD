@@ -1,7 +1,3 @@
-(
-  make                                  &&
-  make prefix=/usr install              &&
-  prepare_install                       &&
-  make    install
+make                                  &&
+make prefix=/usr install      
 
-) > $C_FIFO 2>&1
