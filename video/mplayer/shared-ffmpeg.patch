@@ -1,0 +1,28 @@
+diff -Nur MPlayer-1.0pre3/configure MPlayer-1.0pre3-ffpp/configure
+--- MPlayer-1.0pre3/configure	2003-12-08 22:33:31.000000000 +0100
++++ MPlayer-1.0pre3-ffpp/configure	2003-12-09 10:26:38.000000000 +0100
+@@ -4935,6 +4935,8 @@
+ elif test "$_libavcodecso" = yes ; then
+   _def_libavcodec='#define USE_LIBAVCODEC 1'
+   _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
++  _def_ffpostprocess='#define FF_POSTPROCESS 1'
++  _def_haveffpostprocess='yes'
+   _ld_libavcodec='-lavcodec'
+   _codecmodules="libavcodec.so $_codecmodules"
+ else
+diff -Nur MPlayer-1.0pre3/libmpcodecs/vf_pp.c MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c
+--- MPlayer-1.0pre3/libmpcodecs/vf_pp.c	2003-09-01 00:18:27.000000000 +0200
++++ MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c	2003-12-09 10:26:38.000000000 +0100
+@@ -20,10 +20,10 @@
+ 
+ #define EMU_OLD
+ 
+-#include "../libavcodec/libpostproc/postprocess.h"
++#include "postproc/postprocess.h"
+ 
+ #ifdef EMU_OLD
+-#include "../libavcodec/libpostproc/postprocess_internal.h"
++#include "postproc/postprocess_internal.h"
+ #endif
+ 
+ struct vf_priv_s {
