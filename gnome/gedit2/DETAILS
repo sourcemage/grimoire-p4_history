@@ -1,16 +1,16 @@
            SPELL=gedit2
-         VERSION=2.0.5
+         VERSION=2.0.6
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gedit-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gedit-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gedit/$BRANCH/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/gedit/$BRANCH/$SOURCE
-          MD5[0]='bfaa0785409c5ab5e62aefdc0b980aee'
+          MD5[0]="1c57ba2fa5e5d46138970832e3852dea"
         WEB_SITE=http://gedit.sourceforge.net
       MAINTAINER=jon-sven@frisurf.no
       LICENSE[0]=GPL
          ENTERED=20020505
-         UPDATED=20020514
+         UPDATED=20021124
            SHORT="gedit is a text editor for the GNOME environment."
 cat << EOF
 This is version 2.0.0 of gedit. gedit is a small and lightweight UTF-8 text 
