@@ -17,22 +17,6 @@ mod_ide_scsi()  {
 }
 
 #---------------------------------------------------------------------
-## @param permissions string
-## @param udev permission file
-##
-## Try to add udev permissions string just after #cdroms comment, 
-## otherwise append it to the end of the udev permission file
-##
-#---------------------------------------------------------------------
-add_udev_cdr_perms()  {
-    if grep -q "^#cdroms" $2; then
-	sed -i "/#cdroms/a$1" $2
-    else
-	echo -e "\n$1" >> $2
-    fi
-}
-
-#---------------------------------------------------------------------
 ## @param group name allowed to burn
 ##
 ## Check permission for cdrom recorders
@@ -40,10 +24,9 @@ add_udev_cdr_perms()  {
 #---------------------------------------------------------------------
 check_cdr_perms()  {
     
-    CDR_DEVICES=$("${SCRIPT_DIRECTORY}/dvdr_detect")
+    local CDR_DEVICES=$("${SCRIPT_DIRECTORY}/dvdr_detect")
     
     if [ $? == 0 ]; then
-	
 	case ${DEVICES} in
 	    static) for DEV in $CDR_DEVICES; do
 			message "Changing permissions for cdrom recorder device /dev/${DEV}"
@@ -69,31 +52,63 @@ check_cdr_perms()  {
 		    message "if you use an IDE cd recorder"
 		    message ""
 		    ;;
-	    udev)   UDEV_PERM_FILE="/etc/udev/udev.permissions"
-		    for DEV in $CDR_DEVICES; do
+	    udev)   local UDEV_PERM_FILE="/etc/udev/udev.rules"
+		    local UDEV_GROUP_STRING
+		    local UDEV_MODE_STRING
+		    local UDEV_RULE_LINE
+		    local UDEV_RULE_LINE_NUMBER
+		    
+		    # Save the configuration file
+		    cp ${UDEV_PERM_FILE} "${UDEV_PERM_FILE}.cdrtools"
+		    
+		    for DEV in ${CDR_DEVICES}; do
+			local UDEV_RULE_FOUND=0
 			if [ $1 == "burning" ]; then
-			    UDEV_STRING="${DEV}:root:burning:0660"
+			    UDEV_GROUP_STRING="GROUP=\"burning\""
+			    UDEV_MODE_STRING="MODE=\"0660\""
 			else
-			    UDEV_STRING="${DEV}:root:root:0600"
+			    UDEV_GROUP_STRING="GROUP=\"root\""
+			    UDEV_MODE_STRING="MODE=\"0600\""
 	 		fi
 			
-			if grep -q "^${UDEV_STRING}" ${UDEV_PERM_FILE}; then
-			    message "Permissions for recorder device /dev/${DEV} are OK, continuing"
-			elif grep -q "^${DEV}" ${UDEV_PERM_FILE}; then
-			    message "Changing permissions for recorder device /dev/${DEV}"
-			    sed -i.cdrtools "/${DEV}/d" ${UDEV_PERM_FILE}
-			    add_udev_cdr_perms ${UDEV_STRING} ${UDEV_PERM_FILE}
-			else
-			    message "Adding permissions for recorder device /dev/${DEV}"
-			    cp ${UDEV_PERM_FILE} "${UDEV_PERM_FILE}.cdrtools"
-			    add_udev_cdr_perms ${UDEV_STRING} ${UDEV_PERM_FILE}
+			# Get the line numbers containing the current device
+			UDEV_RULE_LINE_NUMBER=$(sed -n '/'${DEV}'/ =' ${UDEV_PERM_FILE})
+			
+			for LINE_NUMBER in ${UDEV_RULE_LINE_NUMBER}; do
+			    # Get the current line
+			    UDEV_RULE_LINE=$(tail +${LINE_NUMBER} ${UDEV_PERM_FILE} | head -n 1)
+			    
+			    # Don't process the current line if it is a comment
+			    if  ! echo ${UDEV_RULE_LINE} | grep -q "^#"; then 
+				UDEV_RULE_FOUND=1
+				if [ -n "${UDEV_RULE_LINE}" ]; then
+				    # Watch if the group is already defined
+				    if ! echo ${UDEV_RULE_LINE} | grep -q "${UDEV_GROUP_STRING}"; then
+					sed -i ''${LINE_NUMBER}' s/\, GROUP=[^ ]*"//' ${UDEV_PERM_FILE}
+					sed -i ''${LINE_NUMBER}' s/^.*/&, '${UDEV_GROUP_STRING}'/' ${UDEV_PERM_FILE}
+					message "Changed group for device /dev/${DEV}"
+				    fi
+				    # Watch if the mode is already defined
+				    if ! echo ${UDEV_RULE_LINE} | grep -q "${UDEV_MODE_STRING}"; then
+					sed -i ''${LINE_NUMBER}' s/\, MODE=[^ ]*"//' ${UDEV_PERM_FILE}
+					sed -i ''${LINE_NUMBER}' s/^.*/&, '${UDEV_MODE_STRING}'/' ${UDEV_PERM_FILE}
+					message "Changed permissions for device /dev/${DEV}"
+				    fi
+				fi
+			    fi
+			done
+			# if there was no rule defined for this device
+			if [ ${UDEV_RULE_FOUND} == 0 ]; then
+			    # We add the permissions to the file
+			    echo "BUS=\"ide\", KERNEL=\"${DEV}\",NAME=\"%k\", ${UDEV_GROUP_STRING}, ${UDEV_MODE_STRING}" >> ${UDEV_PERM_FILE}
+			    message "Added permissions for cdrom recorder device /dev/${DEV}"
 			fi
 		    done
 		    udevstart
 		    ;;
 	esac
     else
-	message "No recorder device found, please adjust its permissions manually"
+	message "No CD or DVD recorder device found, please adjust its permissions manually"
     fi   
 }
 
