@@ -1,0 +1,28 @@
+make[1]: Entering directory `/usr/src/gnomeicu-0.99.5'
+/usr/bin/make  all-recursive
+make[2]: Entering directory `/usr/src/gnomeicu-0.99.5'
+Making all in src
+make[3]: Entering directory `/usr/src/gnomeicu-0.99.5/src'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/usr/src/gnomeicu-0.99.5/src'
+Making all in gnomeicu-applet
+make[3]: Entering directory `/usr/src/gnomeicu-0.99.5/gnomeicu-applet'
+source='applet.c' object='applet.o' libtool=no \
+depfile='.deps/applet.Po' tmpdepfile='.deps/applet.TPo' \
+depmode=gcc3 /bin/sh ../depcomp \
+gcc -DHAVE_CONFIG_H -I. -I. -I.. -DORBIT2=1 -pthread -I/usr/include/libgnomeui-2.0 -I/usr/include/libgnome-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/libbonoboui-2.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/libbonobo-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/bonobo-activation-2.0 -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/X11R6/include -I/usr/include/libxml2 -I/usr/include/panel-2.0   -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGNOMEICU_APPLET_DATADIR=\""/usr/share"\" -DGNOMEICU_APPLET_UIDIR=\""/usr/share/gnome-2.0/ui"\" -DGNOMELOCALEDIR=\""/usr/share/locale"\"    -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -c `test -f 'applet.c' || echo './'`applet.c
+In file included from /usr/include/libgnomeui-2.0/libgnomeui/libgnomeui.h:48,
+                 from /usr/include/libgnomeui-2.0/gnome.h:7,
+                 from applet.c:5:
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:63: error: parse error before "GtkCombo"
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:63: warning: no semicolon at end of struct or union
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:67: error: parse error before '}' token
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:70: error: parse error before "GtkComboClass"
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:70: warning: no semicolon at end of struct or union
+/usr/include/libgnomeui-2.0/libgnomeui/gnome-entry.h:78: error: parse error before '}' token
+make[3]: *** [applet.o] Error 1
+make[3]: Leaving directory `/usr/src/gnomeicu-0.99.5/gnomeicu-applet'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/usr/src/gnomeicu-0.99.5'
+make[1]: *** [all] Error 2
+make[1]: Leaving directory `/usr/src/gnomeicu-0.99.5'
