@@ -31,6 +31,5 @@
   make                                   &&
   prepare_install                        &&
   make    install
-  ln -s /usr/lib/libdb.so /usr/lib/libdb-4.0.so
 
 ) >$C_FIFO 2>&1
