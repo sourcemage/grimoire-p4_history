@@ -1,13 +1,4 @@
-depends  openssl      &&
-depends  openldap     &&
-depends  libgnomeui   &&
-
-optional_depends  sdl                      \
-                  ""                       \
-                  ""                       \
-                  "For full-screen video"  &&
-
-optional_depends  arts                \
-                  ""                  \
-                  ""                  \
-                  "For ARTS support"
+depends libgnomeui      &&
+depends gtk+2           &&
+depends glib2           &&
+depends  openh323
