@@ -52,9 +52,9 @@
   echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                                         &&
   echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                                           &&
   echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                                   &&
-  sedit "s/\$(slibdir)/\lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                     &&
+  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                    &&
   sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                &&
-  sedit "s/\$(slibdir)/\lib/g" $SOURCE_DIRECTORY/Makerules                                         &&
+  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                                        &&
   sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                
   fi                                                                                               &&
 
