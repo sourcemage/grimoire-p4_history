@@ -3,3 +3,7 @@ optional_depends  "startup-notification"  \
                   ""                      \
                   ""                      \
                   "for startup notification"
+
+if [ "$COMPOSITOR" = "y" ]; then
+  depends  XDAMAGE "--enable-compositor"
+fi
