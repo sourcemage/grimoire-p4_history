@@ -1,6 +1,3 @@
-default_pre_build &&
-cd $SOURCE_DIRECTORY &&
-
 # Check if we will install the configuration files
 if [ -f "/etc/ivman/IvmConfigActions.xml"  ] ; then
 	sedit 's/IvmConfigActions.xml//' src/IvmConfig/Makefile.in
@@ -12,4 +9,5 @@ fi
 
 if [ -f "/etc/ivman/IvmConfigMappings.xml"  ] ; then
 	sedit 's/IvmConfigMappings.xml//' src/IvmConfig/Makefile.in
-fi
+fi &&
+make install
