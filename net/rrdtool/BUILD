@@ -1,8 +1,7 @@
-make  install  &&
-make  site-perl-install  &&
+default_build  &&
 
 if  [ "$RRDPHP" = "y" ];  then
   pushd  contrib/php4  &&
-  make  install  &&
+  default_build  &&
   popd
 fi
