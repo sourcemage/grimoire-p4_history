@@ -1,4 +1,13 @@
-optional_depends  "Linux-PAM"  "--enable-pam"  ""  "for pluggable authentication"                                                  &&
-optional_depends  "openssl"    "--enable-ssl"  ""  "for encrypted communications"                                                  &&
-optional_depends  "samba"      ""              ""  "for printing to Windows shares via LAN"                                        &&
-optional_depends  "espgs"      ""              ""  "for printing of postscript files (for cups, use this instead of ghostscript)"
+depends  espgs  &&
+optional_depends  "Linux-PAM"                                                                     \
+                  "--enable-pam"                                                                  \
+                  ""                                                                              \
+                  "for pluggable authentication"                                                  &&
+optional_depends  "openssl"                                                                       \
+                  "--enable-ssl"                                                                  \
+                  ""                                                                              \
+                  "for encrypted communications"                                                  &&
+optional_depends  "samba"                                                                         \
+                  ""                                                                              \
+                  ""                                                                              \
+                  "for printing to Windows shares via LAN"                                        
