@@ -1,15 +1,15 @@
            SPELL=xerces-c
-         VERSION=2_4_0
-          SOURCE=$SPELL-src$VERSION.tar.gz
-          MD5[0]='a285f1724fc0824be6f10714fb36241c'
+         VERSION=2_5_0
+          SOURCE=$SPELL-src_$VERSION.tar.gz
+          MD5[0]='474c8f4b04901bcfafd66cab3617ad1c'
       LICENSE[0]=APACHE
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src$VERSION
-      MAKE_NJOBS=1
-   SOURCE_URL[0]=http://xml.apache.org/dist/$SPELL/stable/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src_$VERSION
+   SOURCE_URL[0]=http://www.apache.org/dist/xml/$SPELL/$SOURCE
         WEB_SITE=http://xml.apache.org/xerces-c/index.html
+      MAKE_NJOBS=1
          ENTERED=20030320
          UPDATED=20030718
-      MAINTAINER=vydra@fria.fri.utc.sk
+       BUILD_API=2
            SHORT='Xerces-C++ is a validating XML parser'
 cat << EOF
 Xerces-C++ is a validating XML parser written in a portable subset 
