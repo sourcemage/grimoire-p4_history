@@ -1,13 +1,18 @@
            SPELL=mod_python
+if [ "$MOD_PYTHON_BRANCH" == 2 ]; then
+         VERSION=2.7.8
+          MD5[0]='f47effe05314b697548af61e5e5fecf6'
+else
          VERSION=3.0.3
-          SOURCE=$SPELL-$VERSION.tgz
           MD5[0]='f0b87aa393f154f8e6a514d5f5502445'
+fi
+          SOURCE=$SPELL-$VERSION.tgz
       LICENSE[0]=APACHE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.apache.org/dist/httpd/modpython/$SOURCE
         WEB_SITE=http://www.modpython.org/
          ENTERED=20021129
-         UPDATED=20021129
+         UPDATED=20030614
            SHORT='Mod_python is an Apache module that embeds the Python interpreter within the server'
 cat << EOF
 Mod_python is an Apache module that embeds the Python interpreter within
