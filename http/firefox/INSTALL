@@ -43,6 +43,17 @@ tar  -xjf  ${SCRIPT_DIRECTORY}/firefox-init-0.9.tar.bz2  \
        -C  ${MOZILLA_HOME}                               &&
 
 #
+# Securityfix for firefox.
+#
+mkdir -p $SOURCE_DIRECTORY/patch &&
+cd $SOURCE_DIRECTORY/patch &&
+unzip $SOURCE_CACHE/$SOURCE2 -d ./ &&
+mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref &&
+cp -vaLf bug259708.js ${INSTALL_ROOT}/usr/lib/mozilla/defaults/pref/ &&
+mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
+cp -vaLf nsHelperAppDlg.js ${INSTALL_ROOT}/usr/lib/mozilla/components/ &&
+
+#
 # Script to set MOZILLA_FIVE_HOME
 #
 cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
