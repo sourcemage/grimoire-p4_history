@@ -25,3 +25,6 @@ then
 else
   tar -C / -xjvPf $backup_file
 fi
+
+message  "${MESSAGE_COLOR}Be sure to verify your mail server still relays as"  \
+         "exim updates like to change the relay ACLs${DEFAULT_COLOR}"
