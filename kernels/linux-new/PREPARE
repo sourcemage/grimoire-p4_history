@@ -71,6 +71,7 @@ create_defaults()
 		   ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
+		persistent_remove UPDATE_BL
 		persistent_save
 		persistent_load
 		mode="oldktree"
@@ -79,6 +80,7 @@ create_defaults()
 		cp ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
+		persistent_remove UPDATE_BL
 		persistent_save
 		persistent_load
 		mode="newktree"
