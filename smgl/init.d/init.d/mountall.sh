@@ -91,7 +91,7 @@ start()
   [ -d /var/log ] && dmesg  >  /var/log/dmesg
   evaluate_retval
   echo "Making /tmp/.ICE-unix temporary directory..."
-  [ -d /tmp     ] && mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
+  [ -d /tmp     ] && mkdir -p /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
   evaluate_retval
 
   exit 0
