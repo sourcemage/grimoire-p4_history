@@ -21,7 +21,8 @@ done   &&
    sedit "s/\/usr\/bin\/basename/\/bin\/basename/g"  $ON_GOING_WORK   &&
    sedit "s/\/usr\/bin\/md5sum/\/bin\/md5sum/g"  $ON_GOING_WORK       && 
    sedit "s/\/usr\/bin\/sleep/\/bin\/sleep/g"  $ON_GOING_WORK         &&
-   cat $ON_GOING_WORK | sort > $ON_GOING_WORK                         &&
+   cat $ON_GOING_WORK | sort > /tmp/poopy.$$                          && 
+        mv -f /tmp/poopy.$$  $ON_GOING_WORK                           &&
    sedit '/fileutils/d' $UNTOUCHABLES  &&
    sedit '/textutils/d' $UNTOUCHABLES  &&
    sedit '/sh-utils/d' $UNTOUCHABLES   &&
