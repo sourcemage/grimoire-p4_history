@@ -16,7 +16,7 @@
   make &&
   prepare_install &&
   make install &&
-  ln /usr/share/apache2/build/libtool /usr/share/apache2/
+  ln -fns /usr/share/apache2/build/libtool /usr/share/apache2/
 
 ) >$C_FIFO 2>&1 && (
 

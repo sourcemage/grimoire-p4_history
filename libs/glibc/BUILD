@@ -25,6 +25,7 @@
                $OPTS			      &&
   make                                        &&
   prepare_install                             &&
+  (  ldconfig  ||  true  )                    &&
 
 ### glibc install only installs these if the file differs 
 ### we like tracking files and removing them creates a major difference :)
