@@ -2,8 +2,8 @@ default_pre_build &&
 
 # Determine which DBM should be considered the default
 DBM=sdbm        # sdbm is the dbm bundled with apr-util
-if  spell_installed  gdbm  ;  then  DBM=gdbm  ;  fi
-if  spell_installed  db    ;  then  DBM=db    ;  fi
+if  spell_ok  gdbm  ;  then  DBM=gdbm  ;  fi
+if  spell_ok  db    ;  then  DBM=db    ;  fi
 OPTS="$OPTS --with-dbm=$DBM" &&
 
 cd $SOURCE_DIRECTORY &&
