@@ -1,8 +1,9 @@
 (
-  cd /usr/src/gkrellmms
+
+  sedit "s/\/local//g" Makefile
   make &&
   prepare_install &&
-  mkdir -p /usr/lib/gkrellm/plugins &&
-  make INSTALL_DIR=/usr/lib/gkrellm/plugins install
+  mkdir -p /usr/lib/gkrellm2/plugins &&
+  make INSTALL_DIR=/usr/lib/gkrellm2/plugins install
 
 ) > $C_FIFO 2>&1
