@@ -1,10 +1,14 @@
            SPELL=linux-xfs
          VERSION=2.4.18-xfs
           SOURCE=linux-2.4.18.tar.bz2
-         SOURCE2=xfs-2.4.18-all-i386.bz2
+         SOURCE2=xfs-1.1-2.4.18-all.patch.bz2
+
+          MD5[0]=ad92859baaa837847b34d842b9f39d38
+          MD5[1]=868544f6f024144916680e53766c4f84
+
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/kernel/v2.4/$SOURCE
    SOURCE_URL[1]=http://www.kernel.org/pub/linux/kernel/v2.4/$SOURCE
-  SOURCE2_URL[0]=ftp://oss.sgi.com/projects/xfs/download/patches/2.4.18/$SOURCE2
+  SOURCE2_URL[0]=ftp://oss.sgi.com/projects/xfs/download/Release-1.1/kernel_patches/$SOURCE2
         WEB_SITE=http://www.kernel.org
          ENTERED=20020227
          UPDATED=20020304
