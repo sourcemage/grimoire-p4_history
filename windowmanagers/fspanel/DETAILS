@@ -1,5 +1,6 @@
            SPELL=fspanel
          VERSION=0.7
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.chatjunkies.org/${SPELL}/${SOURCE}
@@ -10,9 +11,9 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=GPL
            SHORT="F***ing Small Panel"
 cat << EOF
-FSPanel is a panel for Linux/Unix that lists all your open windows. It lets you 
+FSPanel is a panel for Linux/Unix that lists all your open windows. It lets you
 iconify and bring windows to front. FSPanel is tiny, less than 10k on i386-linux.
-It does require a gnome compliant window manager though (eg. Enlightenment, 
+It does require a gnome compliant window manager though (eg. Enlightenment,
 SawFish, WindowMaker, IceWM).
-Basically it's a tiny, lame, featureless panel. 
+Basically it's a tiny, lame, featureless panel.
 EOF
