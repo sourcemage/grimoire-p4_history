@@ -1,5 +1,7 @@
 cd  /usr/src/linux
 
+patch -p0 < $SCRIPT_DIRECTORY/linux-2.4.18-elf-fix.patch
+
 while  
   case  $CONFIG_KERNEL in
     y|Y)  make  menuconfig
