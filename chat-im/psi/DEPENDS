@@ -1,10 +1,6 @@
 depends qt-x11	&&
-
-if [ "$DEVEL" == "y" ]; then
-   depends qca
-else
+depends qca     &&
 optional_depends  "qssl"	\
 		  ""		\
 		  ""		\
 		  "for SSL encrypted sessions"
-fi
