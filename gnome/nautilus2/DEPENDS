@@ -1,9 +1,8 @@
 depends gnome-desktop &&
 depends eel2          &&
-depends librsvg2      
-
-#FIXME: fam temporarily disabled until spell is available 
-#optional_depends "fam" "" "" "for filesystem monitoring"
+depends librsvg2      &&
+depends gnome-icon-theme &&
+depends gnome-themes
 
 optional_depends "vorbis-tools"  ""  ""  "for ogg audio playback"
 optional_depends "mpg123"  ""  ""  "for mp3 audio playback"
