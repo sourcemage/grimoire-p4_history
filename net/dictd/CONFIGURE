@@ -1,0 +1,8 @@
+if  !  grep  -q  "DICTD_BOOT="  $SPELL_CONFIG;  then
+
+  if    query  "Include script to start dictd at boot?" n
+  then  echo   "DICTD_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "DICTD_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
