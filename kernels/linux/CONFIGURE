@@ -1,5 +1,12 @@
 config_query  OLD_CONFIG     "Make oldconfig?"                n
-config_query  USE_GUI        "Use a GUI configuration tool?"  n
+
+if  [  "$OLD_CONFIG"  ==  "y"  ];  then
+  persistent_add  USE_GUI  &&
+  USE_GUI="n"
+else
+  config_query  USE_GUI        "Use a GUI configuration tool?"  n
+fi  &&
+
 if  [  -d /usr/src/linux-${VERSION}  ]
 then
   message  "${MESSAGE_COLOR}Existing Linux source tree found (/usr/src/linux-${VERSION})."
