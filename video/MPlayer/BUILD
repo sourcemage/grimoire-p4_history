@@ -6,6 +6,9 @@
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
 
+if  grep UTS_RELEASE  /usr/include/linux/version.h | grep -q \"2.6; then
+    patch  mencoder.c  $SCRIPT_DIRECTORY/linux-2.6.patch
+fi &&
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
   esac  &&
