@@ -1,0 +1,10 @@
+if  !  grep  -q  "SKINS"  $SPELL_CONFIG;  then
+
+  if    query  "Download some skins?" y
+  then  SKINS=y
+  else  SKINS=n
+  fi
+
+  echo  "SKINS=$SKINS"  >>  $SPELL_CONFIG
+
+fi
