@@ -1,3 +1,6 @@
-depends  libusb  &&
-depends  hotplug
-[ "$CVS" = "yes" ]  &&  depends  CVS
+depends  libusb   &&
+depends  hotplug  &&
+
+if  [  "$CVS"  ==  "y"  ];  then
+  depends  CVS
+fi
