@@ -54,6 +54,17 @@
     fi
   fi                                                    				&&
 
+  case $SSL_TLS in
+    y|Y|j|J)	
+      message "${MESSAGE_COLOR}Trying to patch Postfix for SSL/TLS support ${DEFAULT_COLOR}" &&
+      patch -p1 < $SOURCE2_DIRECTORY/pfixtls.diff  || PATCH_FAILED=true		&&
+      if [ "$PATCH_FAILED" == "true" ]; then
+        message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"	&&
+	message "and answer no to the TLS/SSL patch question. ${DEFAULT_COLOR}"
+        exit 1
+      fi
+  esac                                                    				&&
+
   # fix to get man pages to install in /usr/man
 
   sedit  "s:/usr/local:/usr:"  src/global/mail_params.h					&&
@@ -93,18 +104,6 @@
   cp -r html /usr/doc/$SPELL/
 
 ) > $C_FIFO 2>&1  &&  (
-
-# Startup script may have been modified by the administrator
-# So it would survive removal of the previous spell
-# We don't want to overwrite it in this case
-  [ -x /etc/init.d/postfix.sh ] || cp  $SCRIPT_DIRECTORY/postfix.sh  /etc/init.d
-
-  ln  -sf  ../init.d/postfix.sh     /etc/rc3.d/S90postfix
-  ln  -sf  ../init.d/postfix.sh     /etc/rc4.d/S90postfix
-  ln  -sf  ../init.d/postfix.sh     /etc/rc5.d/S90postfix
-
-  ln  -sf  ../init.d/postfix.sh     /etc/rc0.d/K10postfix
-  ln  -sf  ../init.d/postfix.sh     /etc/rc6.d/K10postfix
 
   sedit  "s:#mail_spool_directory = /var/spool/mail:mail_spool_directory = /var/spool/mail:"  \
          /etc/postfix/main.cf

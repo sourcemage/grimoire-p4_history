@@ -92,3 +92,10 @@ if ! grep -q "SASL" $SPELL_CONFIG; then
     else  echo   "SASL=n"  >>  $SPELL_CONFIG
   fi
 fi
+
+if ! grep -q "SSL_TLS" $SPELL_CONFIG; then
+  if query  "Apply SSL/TLS patch to Postfix (this is experimental and may cause postfix to fail to compile) ?"  n
+    then  echo "SSL_TLS=y" >>  $SPELL_CONFIG ; TLS=y
+    else  echo "SSL_TLS=n" >>  $SPELL_CONFIG
+  fi
+fi
