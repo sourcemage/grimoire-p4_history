@@ -1,3 +1,61 @@
+0.17 has this error:
+
+if g++ -DLOCALEDIR=\"/usr/share/locale\" -DHAVE_CONFIG_H -I. -I. -I.      -I./lua -I./sqlite -DNDEBUG -DBOOST_DISABLE_THREADS -Wall  -O -march=pentium4 -mmmx -mfpmath=sse
+ -msse -msse2 -pipe -DPIC -fPIC -O3     -MT cryptopp/lib3rdparty_a-integer.o -MD -MP -MF "cryptopp/.deps/lib3rdparty_a-integer.Tpo" \
+  -c -o cryptopp/lib3rdparty_a-integer.o `test -f 'cryptopp/integer.cpp' || echo './'`cryptopp/integer.cpp; \
+then mv -f "cryptopp/.deps/lib3rdparty_a-integer.Tpo" "cryptopp/.deps/lib3rdparty_a-integer.Po"; \
+else rm -f "cryptopp/.deps/lib3rdparty_a-integer.Tpo"; exit 1; \
+fi
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::PentiumOptimized::Add(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsi
+gned int)':
+cryptopp/integer.cpp:1177: warning: no return statement in function returning non-void
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::PentiumOptimized::Subtract(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*,
+ unsigned int)':
+cryptopp/integer.cpp:1215: warning: no return statement in function returning non-void
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::P4Optimized::Add(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsigned
+int)':
+cryptopp/integer.cpp:1264: warning: no return statement in function returning non-void
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::P4Optimized::Subtract(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsi
+gned int)':
+cryptopp/integer.cpp:1311: warning: no return statement in function returning non-void
+cryptopp/integer.cpp: In function `void CryptoPP::MontgomeryReduce(CryptoPP::word*, CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*,
+unsigned int)':
+cryptopp/integer.cpp:2338: warning: unused variable 'carry'
+cryptopp/integer.cpp: In function `void CryptoPP::CorrectQuotientEstimate(CryptoPP::word*, CryptoPP::word*, CryptoPP::word*, const CryptoPP::word*, unsigned int)':
+cryptopp/integer.cpp:2518: warning: unused variable 'borrow'
+cryptopp/integer.cpp: In member function `CryptoPP::Integer& CryptoPP::Integer::operator++()':
+cryptopp/integer.cpp:3424: warning: unused variable 'borrow'
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::PentiumOptimized::Add(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsi
+gned int)':
+cryptopp/integer.cpp:1177: warning: control reaches end of non-void function
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::PentiumOptimized::Subtract(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*,
+ unsigned int)':
+cryptopp/integer.cpp:1215: warning: control reaches end of non-void function
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::P4Optimized::Add(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsigned
+int)':
+cryptopp/integer.cpp:1264: warning: control reaches end of non-void function
+cryptopp/integer.cpp: In static member function `static CryptoPP::word CryptoPP::P4Optimized::Subtract(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*, unsi
+gned int)':
+cryptopp/integer.cpp:1311: warning: control reaches end of non-void function
+cryptopp/integer.cpp: In static member function `static void CryptoPP::P4Optimized::Multiply4(CryptoPP::word*, const CryptoPP::word*, const CryptoPP::word*)':
+cryptopp/integer.cpp:1704: error: insn does not satisfy its constraints:
+(insn 794 793 651 0 (set (reg/v:V2SI 21 xmm0 [orig:193 <anonymous> ] [193])
+        (mem:V2SI (plus:SI (reg/f:SI 6 bp)
+                (const_int -136 [0xffffff78])) [0 S8 A8])) 499 {movv2si_internal} (nil)
+    (nil))
+cryptopp/integer.cpp:1704: internal compiler error: in reload_cse_simplify_operands, at postreload.c:391
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <URL:http://gcc.gnu.org/bugs.html> for instructions.
+make[3]: *** [cryptopp/lib3rdparty_a-integer.o] Error 1
+make[3]: Leaving directory `/usr/src/monotone-0.17'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/usr/src/monotone-0.17'
+make[1]: *** [all] Error 2
+make[1]: Leaving directory `/usr/src/monotone-0.17'
+
+0.13 has this error:
+
 if g++ -DLOCALEDIR=\"/usr/share/locale\" -DHAVE_CONFIG_H -I. -I. -I.    -I./lua -I./sqlite -DNDEBUG -DBOOST_DISABLE_THREADS -Wal
 l  -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O3 -MT monotone-lua.o -MD -MP -MF ".deps/monotone-lua.Tpo" -c -o monotone-
 lua.o `test -f 'lua.cc' || echo './'`lua.cc; \
@@ -30,3 +88,4 @@ lua.cc:79: error: (Each undeclared identifier is reported only once for each fun
 make[3]: *** [monotone-lua.o] Error 1
 make[3]: *** Waiting for unfinished jobs....
 make[3]: *** [monotone-diff_patch.o] Error 1
+

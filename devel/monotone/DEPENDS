@@ -1,1 +1,17 @@
-depends boost
+depends  boost  &&
+depends  popt   &&
+
+optional_depends  gettext                        \
+                  "--enable-nls"                 \
+                  "--disable-nls"                \
+                  "for Native Language Support"  &&
+
+optional_depends  lua                            \
+                  "--with-bundled-lua=no"        \
+                  "--with-bundled-lua=yes"       \
+                  "to use system installed lua"  &&
+
+optional_depends  sqlite                         \
+                  "--with-bundled-sqlite=no"     \
+                  "--with-bundled-sqlite=yes"    \
+                  "to use system installed lua"
