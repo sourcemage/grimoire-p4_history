@@ -1,0 +1,7 @@
+CFLAGS="$CFLAGS -DPIC -fPIC"               &&
+
+make    install                            &&
+./configure  --prefix=${INSTALL_ROOT}/usr  \
+      $OPTS                                &&
+make                                       &&
+make    install
