@@ -1,0 +1,81 @@
+--- Modules/_bsddb.c.orig	2004-09-04 03:36:59.000000000 +0200
++++ Modules/_bsddb.c	2004-11-23 17:53:32.670299777 +0100
+@@ -466,7 +466,15 @@
+ /* Callback used to save away more information about errors from the DB
+  * library. */
+ static char _db_errmsg[1024];
+-static void _db_errorCallback(const char* prefix, char* msg)
++static void _db_errorCallback(
++#if (DBVER >= 43)
++        const DB_ENV *dbenv,
++#endif
++        const char* prefix, 
++#if (DBVER >= 43)
++        const 
++#endif
++        char* msg)
+ {
+     strcpy(_db_errmsg, msg);
+ }
+@@ -2146,7 +2154,11 @@
+ 
+     MYDB_BEGIN_ALLOW_THREADS;
+ #if (DBVER >= 33)
+-    err = self->db->stat(self->db, &sp, flags);
++    err = self->db->stat(self->db, 
++#if (DBVER >= 43)
++            NULL /*txnid*/,
++#endif
++            &sp, flags);
+ #else
+     err = self->db->stat(self->db, &sp, NULL, flags);
+ #endif
+@@ -2408,7 +2420,11 @@
+ 
+     MYDB_BEGIN_ALLOW_THREADS;
+ #if (DBVER >= 33)
+-    err = self->db->stat(self->db, &sp, flags);
++    err = self->db->stat(self->db, 
++#if (DBVER >= 43)
++            NULL /*txnid*/,
++#endif
++            &sp, flags);
+ #else
+     err = self->db->stat(self->db, &sp, NULL, flags);
+ #endif
+@@ -2536,7 +2552,11 @@
+     err = self->db->get(self->db, txn, &key, &data, 0);
+     MYDB_END_ALLOW_THREADS;
+     FREE_DBT(key);
++#if (DBVER >= 43)
++    return PyInt_FromLong((err == DB_BUFFER_SMALL) || (err == 0));
++#else
+     return PyInt_FromLong((err == ENOMEM) || (err == 0));
++#endif
+ }
+ 
+ 
+@@ -4903,7 +4919,12 @@
+ 
+ #if (DBVER >= 33)
+     ADD_INT(d, DB_LSTAT_ABORTED);
++#if (DBVER < 43)
+     ADD_INT(d, DB_LSTAT_ERR);
++#endif
++#if (DBVER >= 42)
++    ADD_INT(d, DB_LSTAT_EXPIRED);
++#endif
+     ADD_INT(d, DB_LSTAT_FREE);
+     ADD_INT(d, DB_LSTAT_HELD);
+ #if (DBVER == 33)
+--- setup.py.orig	2004-11-23 17:56:53.000000000 +0100
++++ setup.py	2004-11-23 17:58:50.000000000 +0100
+@@ -492,7 +492,7 @@
+         # when sorted in reverse order, keys for this dict must appear in the
+         # order you wish to search - e.g., search for db4 before db3
+         db_try_this = {
+-            'db4': {'libs': ('db-4.2', 'db42', 'db-4.1', 'db41', 'db-4.0', 'db4',),
++            'db4': {'libs': ('db-4.3', 'db43', 'db-4.2', 'db42', 'db-4.1', 'db41', 'db-4.0', 'db4',),
+                     'libdirs': ('/usr/local/BerkeleyDB.4.2/lib',
+                                 '/usr/local/BerkeleyDB.4.1/lib',
+                                 '/usr/local/BerkeleyDB.4.0/lib',
