@@ -1,4 +1,4 @@
-service rsyncd
+service rsync
 {
 	socket_type	= stream
 	protocol	= tcp
@@ -7,7 +7,7 @@ service rsyncd
 	server		= /usr/bin/rsync
 	server_args	= --daemon
 	per_source	= 8
-	log_type	= FILE /var/log/xinetd/rsyncd
+	log_type	= FILE /var/log/xinetd/rsync
 	log_on_success	= PID HOST USERID EXIT DURATION
 	log_on_failure	= USERID ATTEMPT
 }
