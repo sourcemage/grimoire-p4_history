@@ -16,7 +16,7 @@ case $1 in
 	;;
 
   stop) 
-	echo     "Stoping syslog-ng daemon ..."
+	echo     "Stopping syslog-ng daemon ..."
 	killproc syslog-ng
 	;;                 
 		  
