@@ -56,3 +56,11 @@ if ! grep -q "ALIAS" $SPELL_CONFIG; then
     else  echo   "ALIAS=n"  >>  $SPELL_CONFIG
   fi
 fi
+
+
+if ! grep -q "MYSQL" $SPELL_CONFIG; then
+  if query "Add MySQL support in postfix if available ?"  y
+    then  echo   "MYSQL=y"  >>  $SPELL_CONFIG
+    else  echo   "MYSQL=n"  >>  $SPELL_CONFIG
+  fi
+fi

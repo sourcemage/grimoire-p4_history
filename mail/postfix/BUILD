@@ -27,11 +27,20 @@
 	message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
   fi                                                    &&
 
+  if spell_installed mysql
+  then
+    if [ "$MYSQL" == "y" ]; then  
+      message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}" 	&&
+      AUXLIBS="$AUXLIBS -L/usr/lib -lmysqlclient -lz -lm" 			&&
+      CCARGS="$CCARGS -DHAS_MYSQL -I/usr/include/mysql"
+    fi
+  fi                                                    &&
+
   # fix to get man pages to install in /usr/man
 
   sedit  "s:/usr/local:/usr:"  src/global/mail_params.h	&&
 
-  make -f Makefile.init makefiles	   		&&
+  make -f Makefile.init makefiles "CC=gcc"   		&&
 
   make  "CC=gcc"               \
         "OPT=$CFLAGS"          \
