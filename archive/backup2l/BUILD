@@ -1,11 +1,1 @@
-(
-
-  prepare_install  &&
-
-  install  -m 755  backup2l  /usr/bin  &&
-  install  -m 644  backup2l.8  /usr/man/man8 &&
-  if  [  !  -f  /etc/backup2l.conf  ]  ;  then
-    install  -m 644  first-time.conf  /etc/backup2l.conf
-  fi
-
-) > $C_FIFO 2>&1
+true
