@@ -1,6 +1,3 @@
-if [ "$(installed_version freetype2)" == "2.1.8" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/freetype.patch
-fi  &&
 MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla    &&
 
 # No fast optimization for Mozilla, bit us so many times...
