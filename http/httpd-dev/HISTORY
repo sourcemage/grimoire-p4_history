@@ -1,3 +1,7 @@
+2003-11-02 Eric Sandall <eric@sandall.us>
+	* PROVIDES: Upper-case provides
+	* HISTORY: Formatted to Guru Handbook
+
 2003-10-25 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 2.1 HEAD.
 
@@ -6,92 +10,75 @@
 	* BUILD: Disable mod_proxy_http patch.
 	* enable_modules: Add mod_cgi to the list of enabled modules.
 
-2003-08-22  hgg <hgreig@bigpond.net.au>
+2003-08-22 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update UPDATED purely for test grimoire integration.
 
-		Update UPDATED purely for test grimoire integration.
+2003-07-30 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/*: updated to new init system
+	* BUILD: removed the mkdir /var/run/httpd, not used
 
-2003-07-30  Arwed v. Merkatz <v.merkatz@gmx.net>
+2003-07-19 Sergey Lipnevich <sergey@sourcemage.org>
+	* DEPENDS: Make this spell depend on AP{R,U} spells same as apache2.
+	* Remove cgid from module list.
 
-		updated to new init system
-		removed the mkdir /var/run/httpd from BUILD, not used
+2003-07-10 Sergey Lipnevich <sergey@sourcemage.org>
+	* Add a patch to downgrade mod_proxy_http.c from HEAD revision
+	to 2.0.47's revision because of malfunctioning in a reverse
+	proxy mode.
 
-2003-07-19  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-05-04 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: Refresh UPDATED and fix configuration problems.
 
-		Make this spell depend on AP{R,U} spells same as apache2.
-		Remove cgid from module list.
+2003-05-01 Rob Verkuylen <rob@verkuylen.net>
+	* init.d/*: Copied /init.d/apache.sh to /init.d/apache
+	Step 1/3 in bug#: 3115
 
-2003-07-10  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-05-01 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: Improve configure options and enable a zlib dependency.
 
-		Add a patch to downgrade mod_proxy_http.c from HEAD revision
-		to 2.0.47's revision because of malfunctioning in a reverse
-		proxy mode.
+2003-03-12 Sergey Lipnevich <sergeyli@pisem.net>
+	* TRIGGERS: Add a trigger for openssl dependency.
 
-2003-05-04  Sergey Lipnevich  <sergey@sourcemage.org>
+2003-02-09 Seth Woolley <seth@tautology.org>
+	* DETAILS: OK, the md5s did change but only the dates on the 
+	directories changed.  a diff showed no change in actual 
+	content.
 
-		Refresh UPDATED and fix configuration problems.
+2003-01-30 Seth Woolley <seth@tautology.org>
+	* DETAILS: Modified DETAILS to correct MD5
 
-2003-05-01  Rob Verkuylen <rob@verkuylen.net>
+2003-01-18 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.0.44.
 
-		Copied /init.d/apache.sh to /init.d/apache
-		Step 1/3 in bug#: 3115
+2003-01-07 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to 2.0.44 PRE2.
+	* BUILD: doesn't overwrite init script.
+	* DEPENDS: Added Berkeley DB for APR.
 
-2003-05-01  Sergey Lipnevich  <sergey@sourcemage.org>
-
-		Improve configure options and enable a zlib dependency.
-
-2003-03-12  Sergey Lipnevich  <sergeyli@pisem.net>
-
-                Add a trigger for openssl dependency.
-
-2003-02-09  Seth Woolley <seth@tautology.org>
-
-		OK, the md5s did change but only the dates on the 
-		directories changed.  a diff showed no change in actual 
-		content.
-
-2003-01-30  Seth Woolley <seth@tautology.org>
-
-		Modified DETAILS to correct MD5
-
-2003-01-18  Sergey Lipnevich  <sergeyli@pisem.net>
-
-	Upgraded to 2.0.44.
-
-2003-01-07  Sergey Lipnevich  <sergeyli@pisem.net>
-
-	Upgraded to 2.0.44 PRE2.
-	BUILD doesn't overwrite init script.
-	Added Berkeley DB to DEPENDS for APR.
-
-2002-12-07  Sergey Lipnevich  <sergeyli@pisem.net>
-
-	Upgraded to STRIKER_2_0_44_PRE1.
-	Removed instruction to recast php from POST_INSTALL because
+2002-12-07 Sergey Lipnevich <sergeyli@pisem.net>
+	* DETAILS: Upgraded to STRIKER_2_0_44_PRE1.
+	* POST_INSTALL: Removed instruction to recast php because
 	it is not always needed when even when httpd changes version.
-	Removed PRE_REMOVE as stopping httpd is not needed.
+	* PRE_REMOVE: Removed as stopping httpd is not needed.
 
 2002-11-04 Sergey Lipnevich <sergeyli@pisem.net>
-
-	Updated mksscert.sh to generate certificates for multiple
+	* mksscert.sh: Updated to generate certificates for multiple
 	services, signed by the same "self-proclaimed" CA.
 
 2002-10-08 Sergey Lipnevich <sergeyli@pisem.net>
-
-	Rewritten mksscert.sh to generate valid certificates
+	* mksscert.sh: Rewritten to generate valid certificates
 	for CA (self-signed) and for the server (signed by CA).
-	Upgraded to APACHE_2_0_43 with checksums.
+	* DETAILS: Upgraded to APACHE_2_0_43 with checksums.
 
 2002-09-16 Sergey Lipnevich <sergeyli@pisem.net>
-
-	Converted spell to use cvs:// URLs supported by sorcery.
+	* DETAILS: Converted spell to use cvs:// URLs supported by sorcery.
 
 2002-09-05 Sergey Lipnevich <sergeyli@pisem.net>
-
-	No need to check out httpd-ldap separately because it is now
+	* No need to check out httpd-ldap separately because it is now
 	added to modules/experimental. Doesn't apper to generate the
 	module itself now, so more changes are anticipated on LDAP
 	support.
 
 2002-08-02 Sergey Lipnevich <sergeyli@pisem.net>
+	* Spell created.
 
-	Spell created.
