@@ -5,6 +5,9 @@ ln  -sf  ${INSTALL_ROOT}/usr/lib/libqte.so.${VERSION}  \
 ln  -sf  ${INSTALL_ROOT}/usr/lib/libqte.so             \
          $INSTALL_ROOT/usr/lib/libqt.so                &&
 
+ln  -sf  ${INSTALL_ROOT}/usr/lib/libqt.so              \
+         $INSTALL_ROOT/usr/lib/libqte-mt.so            &&
+
 mkdir -p ${INSTALL_ROOT}/etc/profile.d/   &&
 install -m 0644 $SCRIPT_DIRECTORY/qt.sh   \
          ${INSTALL_ROOT}/etc/profile.d/   &&
