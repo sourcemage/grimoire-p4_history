@@ -3,10 +3,9 @@ if spell_installed postfix;
   if  [  "$POSTFIX_GLOBAL"  ==  "y"  ];
   then
     OUTPUT_FILE="/etc/postfix/master.cf"
-    grep "postfixfilter" /etc/passwd
-    if [ $? -ne 0 ]; then
-      useradd -g nogroup -m -s /bin/false postfixfilter
-    fi
+
+    create_account postfixfilter
+
   else
     message "Skipping... (output to /etc/postfix/master.cf-Mail-SpamAssassin-sample instead)."
     OUTPUT_FILE="/etc/postfix/master.cf-Mail-SpamAssassin-sample"
