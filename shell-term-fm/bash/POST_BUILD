@@ -1,10 +1,22 @@
 (
 
-  mkdir  -p  /etc/skel
-  if  !  [  -e  /etc/profile             ];  then  cp  $SCRIPT_DIRECTORY/profile      /etc;                     fi
-  if  !  [  -e  /etc/skel/.bash_profile  ];  then  cp  /etc/profile                   /etc/skel/.bash_profile;  fi
-  if  !  [  -e  /etc/skel/.bash_logout   ];  then  cp  $SCRIPT_DIRECTORY/bash_logout  /etc/skel/.bash_logout;   fi
-  if  !  [  -e  /etc/skel/.bashrc        ];  then  ln  -sf  .bash_profile             /etc/skel/.bashrc;        fi
+  mkdir  -p  ${INSTALL_ROOT}/etc/skel
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/profile  ]
+  then  cp  $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
+  fi
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_profile  ]
+  then  cp  ${INSTALL_ROOT}/etc/profile  ${INSTALL_ROOT}/etc/skel/.bash_profile
+  fi
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_logout   ]
+  then  cp  $SCRIPT_DIRECTORY/bash_logout  ${INSTALL_ROOT}/etc/skel/.bash_logout
+  fi
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bashrc  ]
+  then  ln  -sf  .bash_profile  ${INSTALL_ROOT}/etc/skel/.bashrc
+  fi
 
 )  &&
 

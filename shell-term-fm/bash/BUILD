@@ -31,6 +31,7 @@
   done
 
   cp  bashref.info  ${INSTALL_ROOT}/usr/info/bash.info
-  install-info  --info-dir=/usr/info  ${INSTALL_ROOT}/usr/info/bash.info
+  install-info  --info-dir=${INSTALL_ROOT}/usr/info  \
+                 ${INSTALL_ROOT}/usr/info/bash.info
 
 )
