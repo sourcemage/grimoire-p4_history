@@ -1,5 +1,5 @@
 SPELL=gcc
-if  [  !  -x  /usr/bin/gnatbind  ]; then
+if  [  !  -x  ${INSTALL_ROOT}/usr/bin/gnatbind  ]; then
   if  !  grep  -q  "SOURCE2="  $SPELL_CONFIG; then
     if  !  grep  -q  "ADA=no"  $SPELL_CONFIG; then
       if  query  "Download an ADA95 compiler, so you can build gcc with ada support?"  n; then
