@@ -1,26 +1,21 @@
-SPELL=MPlayer-codecs
-hash_put "codecMD5Table" "qt6dlls" "5ae1ccb43d90f7053761cb9d2c12815c"
-hash_put "codecMD5Table" "rp9codecs" "b9eaf74e1d3bafb640131de8e4823e62"
-hash_put "codecMD5Table" "xanimdlls" "1e14862ef2fe2f701cf3fd7afd4f6f1e"
-if  !  grep  -q  "SOURCE="  $SPELL_CONFIG; then
-  CODECS=`dialog  --backtitle  "MPlayer additional codecs configuration"  \
-                  --stdout                                                \
-                  --title      "Select codec packs"                       \
-                  --checklist                                             \
-                  ""                                                      \
-                  0 50 10                                                 \
-                  qt6dlls      "QuickTime DLLs"  on                       \
-                  rp9codecs    "RealPlayer codecs"  on                    \
-                  xanimdlls    "XAnim DLLs"  on `
-
-  TMP_CODECS=$CODECS
-  CODECS=${CODECS//\"/}
-  i=1
-  for CODEC in $CODECS; do
-    echo SOURCE${i/1/}=$CODEC.tar.bz2  >>  $SPELL_CONFIG
+use_codec() {
+  if    query "Install $1 codecs?" y
+  then
+    echo SOURCE${i/1/}=$2.tar.bz2  >>  $SPELL_CONFIG
     echo SOURCE${i/1/}_URL[0]=http://www.mplayerhq.hu/MPlayer/releases/codecs/\$SOURCE${i/1/}  >>  $SPELL_CONFIG
-    echo MD5[$[$i-1]]=`hash_get "codecMD5Table" "$CODEC"` >> $SPELL_CONFIG
-    i=$[$i+1]
+    echo MD5[$[$i-1]]=$3  >>  $SPELL_CONFIG
+    let i++
+  fi
+}
+
+SPELL=MPlayer-codecs
+. $SCRIPT_DIRECTORY/codecs
+
+if  !  grep  -q  "SOURCE="  $SPELL_CONFIG; then
+  i=1
+  for (( c=0; c < $num_codecs; c++ )); do
+    use_codec ${codecs[$c]}
   done
 fi
+
 . $SPELL_CONFIG
