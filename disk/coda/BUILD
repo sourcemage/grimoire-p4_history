@@ -1,5 +1,7 @@
 (
 
+  patch  -p1  <  ${SCRIPT_DIRECTORY}/resolver_parser.c.patch  &&
+
   echo  CODA_SVR = ${CODA_SVR}       &&
   ./configure  --build=${BUILD}      \
                --prefix=/usr         \
