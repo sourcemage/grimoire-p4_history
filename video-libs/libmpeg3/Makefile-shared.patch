@@ -59,7 +59,7 @@
  
  
 -LIBS = -lm -lpthread
-+LIBS = -lm -lpthread -Li686
++LIBS = -lm -lpthread -L$(shell uname --machine)
  
  $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(OBJDIR) \; fi )
  
