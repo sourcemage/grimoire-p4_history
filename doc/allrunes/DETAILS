@@ -1,8 +1,9 @@
            SPELL=allrunes
          VERSION=1.01
           SOURCE=$SPELL.tar.gz
-SOURCE_DIRECTORY=$SPELL
-   SOURCE_URL[0]=ftp://ftp.dante.de/tex-archive/fonts/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=$CTAN_URL/fonts/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.dante.de/tex-archive/fonts/$SOURCE
         WEB_SITE=http://www.ctan.org/tex-archive/help/Catalogue/entries/allrunes.html
          ENTERED=20020526
          UPDATED=20020526
