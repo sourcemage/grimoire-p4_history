@@ -6,7 +6,7 @@ fi                                      &&
 set_java_env                            &&
   
 if [ "$WITH_ANTLR" == "y" ]; then
-  if spell_installed antlr
+  if spell_ok antlr
   then
     export CLASSPATH="${SM_OTH_HOME}/lib/antlr.jar:$CLASSPATH"
   fi
