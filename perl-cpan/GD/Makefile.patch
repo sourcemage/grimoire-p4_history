@@ -1,0 +1,27 @@
+diff -urN GD-2.05/Makefile.PL GD/Makefile.PL
+--- GD-2.05/Makefile.PL	2002-11-24 20:29:59.000000000 -0500
++++ GD/Makefile.PL	2002-12-20 09:57:21.000000000 -0500
+@@ -33,19 +33,14 @@
+ 
+ # path to libgd
+ warn "\n";
+-my $PREFIX = lc prompt('Where is libgd installed?','/usr/lib');
+-unless ($PREFIX eq '/usr/lib') {
+-  $PREFIX =~ s!/lib$!!;
+-  unshift @INC,"-I$PREFIX/include";
+-  unshift @LIBPATH,"-L$PREFIX/lib";
+-}
++my $PREFIX = '/usr/lib';
+ 
+ # FEATURE FLAGS
+ warn "\nPlease choose the features that match how libgd was built:\n";
+ 
+-my $JPEG    = lc prompt('Build JPEG support?','y') eq 'y';
+-my $FT      = lc prompt('Build FreeType support?','y') eq 'y';
+-my $XPM     = $^O !~ /^freebsd|MSWin32$/ && lc prompt('Build XPM support?','y') eq 'y';
++my $JPEG    = 1;
++my $FT      = 1;
++my $XPM     = 1;
+ 
+ my $FCGI    = 0;   # set to 1 to build compatability with fastCGI
+ 
