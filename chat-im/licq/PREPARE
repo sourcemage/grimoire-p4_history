@@ -12,5 +12,12 @@ if ! grep -q XOSD $SPELL_CONFIG; then
   else XOSD=no
   fi
   echo	"XOSD=$XOSD" >> $SPELL_CONFIG
+fi &&
+if ! grep -q CDK $SPELL_CONFIG; then
+  if    query "Build console plugin (depends on cdk)?" n
+  then CDK=yes
+  else CDK=no
+  fi
+  echo  "CDK=$CDK" >> $SPELL_CONFIG
 fi
 . $SPELL_CONFIG

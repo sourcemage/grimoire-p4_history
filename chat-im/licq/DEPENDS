@@ -1,9 +1,12 @@
-if [ "$CVS" = "yes" ]; then
+if [ "$CVS" == "yes" ]; then
 	depends CVS      &&
 	depends automake
 fi &&
-if [ "$XOSD" = "yes" ]; then
+if [ "$XOSD" == "yes" ]; then
     depends xosd
+fi &&
+if [ "$CDK" == "yes" ]; then
+    depends cdk
 fi &&
 depends	autoconf	&&
 optional_depends  "openssl"  ""  ""  "for secure communication between clients"  &&
