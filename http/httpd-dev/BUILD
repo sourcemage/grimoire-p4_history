@@ -1,4 +1,4 @@
-# $Id: BUILD,v 1.3 2002/09/17 15:45:41 sergeyli Exp $
+# $Id: BUILD,v 1.5 2003/01/08 19:22:54 sergeyli Exp $
 (
 	pushd modules/experimental                 &&
 	patch -p1 < $SCRIPT_DIRECTORY/LDAPv3.patch &&
@@ -34,9 +34,10 @@
 (
 
 	ln -nsf /usr/sbin/envvars /usr/bin/envvars
-	ln -nsf /usr/sbin/httpd /usr/bin/httpd
+	ln -nsf /usr/sbin/httpd   /usr/bin/httpd
+	mkdir -p /var/run/httpd
 
-	cp  $SCRIPT_DIRECTORY/apache.sh     /etc/init.d/
+	[ -x /etc/init.d/apache.sh ] || cp $SCRIPT_DIRECTORY/apache.sh /etc/init.d/
 
 	case  $APACHE_BOOT  in
 	y|Y|j|J)

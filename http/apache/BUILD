@@ -1,7 +1,5 @@
 (
 
-  patch  -p1  <  $SCRIPT_DIRECTORY/apache_1.3.23_db4.patch
-
   ./configure  --prefix=/usr                     \
                --sysconfdir=/etc/httpd           \
                --localstatedir=/var              \
@@ -22,7 +20,9 @@
 
 (
 
-  cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d
+  mkdir -p /var/run/httpd
+
+  [ -x /etc/init.d/apache.sh ] || cp  $SCRIPT_DIRECTORY/apache.sh  /etc/init.d/
 
   case  $APACHE_BOOT  in
     y|Y|j|J)
