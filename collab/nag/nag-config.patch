@@ -6,7 +6,7 @@ diff -uprN nag-1.1/config/prefs.php.dist nag/config/prefs.php.dist
  
  // Make sure that constants are defined.
 -require_once dirname(__FILE__) . '/../lib/constants.php';
-+require_once NAG_BASE . '/lib/constants.php';
++require_once HORDE_BASE . '/nag/lib/constants.php';
  
  $prefGroups['language'] = array(
      'column' => _("Your Information"),
