@@ -45,6 +45,7 @@
     --prefix=/usr		\
     --with-x                    \
     --with-pthreads             \
+    --enable-ldap               \
     --enable-reorder            \
     --enable-strip              \
     --enable-optimize="$CFLAGS"	\

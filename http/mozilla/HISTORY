@@ -1,7 +1,15 @@
-2002-12-03  Sergey Lipnevich  <sergeyli@pisem.net>
+2002-12-04  Sergey Lipnevich  <sergeyli@pisem.net>
 
 		Upgraded to 1.2.1 and Enigmail to 0.71.0.
 		Made PSM (and hence Enigmail) to compile and function.
+		Reorganized support for Xft2 and freetype2 into optional
+		dependencies, no questions asked in CONFIGURE.
+		Changed to depend on ORBit2.
+		Made a temporary fix where answer for MOZILLA_EMAIL is
+		the fefault for MOZILLA_ENIGMAIL, so that there is a chance
+		that people will not ask for Enigmail without Mail client.
+		TODO: fix the above mentioned fix.
+		Added libIDL as required dependency.
 
 2002-11-10  Sergey Lipnevich  <sergeyli@pisem.net>
 

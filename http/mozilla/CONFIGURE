@@ -14,7 +14,6 @@ function configure_set_bool() {
   fi
 }
 
-configure_set_bool MOZILLA_XFT2 'Use Xft2/fontconfig?'
 configure_set_bool MOZILLA_MAIL 'Build Mail/News client?'
 configure_set_bool MOZILLA_CHAT 'Build Chat client?'
 configure_set_bool MOZILLA_CRYPTO 'Enable Personal Security Manager (PSM) for encryption support?'
@@ -22,4 +21,4 @@ configure_set_bool MOZILLA_MATHML 'Enable MathML?'
 configure_set_bool MOZILLA_SVG 'Enable SVG?'
 configure_set_bool MOZILLA_JAVA 'Enable Blackwood Java Code (not needed for Java Plugin support)?'
 configure_set_bool MOZILLA_XINERAMA 'Enable Xinerama support?'
-configure_set_bool MOZILLA_ENIGMAIL 'Enable Enigmail support?'
+configure_set_bool MOZILLA_ENIGMAIL 'Enable Enigmail support?' $MOZILLA_MAIL
