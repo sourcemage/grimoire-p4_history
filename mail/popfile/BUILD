@@ -1,0 +1,13 @@
+(
+  prepare_install                                       &&
+
+  mkdir -p      /usr/share/$SPELL                       &&
+  cp -r ./      /usr/share/$SPELL/                      &&
+
+  message "${MESSAGE_COLOR}Changing $SPELL default port from 8080 to 8181... ${DEFAULT_COLOR}" &&
+  sedit "s:8080:8181:" /usr/share/$SPELL/UI/HTML.pm      &&
+
+  chmod u+x     /usr/share/$SPELL/*.pl
+
+) > $C_FIFO 2>&1
+
