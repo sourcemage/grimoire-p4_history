@@ -95,8 +95,7 @@ main_menu()
 {
 	while true
 	do
-		persistent_load
-		mode=$( $dialog --title "New or Used Kernel Tree" \
+		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
 		"Would you like to use a new kernel tree or an existing one?" 0 0 0 \
@@ -108,15 +107,13 @@ main_menu()
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			case "$mode" in
+			case "$command" in
 				"newktree") 
-					persistent_save
-					persistent_load
+					mode=$command
 					new_tree_menu 
 					;;
 				"oldktree")
-					persistent_save
-					persistent_load
+					mode=$command
 					old_src_menu
 					;;
 				"Options")
@@ -257,8 +254,6 @@ arch_menu()
 				COMMAND="$DEFAULT"
 			fi
 			kernel_arch=$COMMAND
-			persistent_save
-			persistent_load
 			break
 		else
 			break
@@ -278,14 +273,10 @@ build_dir_menu()
 	then
 		OPTIONAL_BUILD_DIR=$output_dir
 		persistent_add OPTIONAL_BUILD_DIR
-		persistent_save
-		persistent_load
 		echo "first ifstatment"
 	elif [[ "$retval" == "0" && "$output_dir" == "" ]]
 	then
 		persistent_remove OPTIONAL_BUILD_DIR
-		persistent_save
-		persistent_load
 		echo "second ifstatment"
 	else
 		echo "Do nothing"
@@ -398,26 +389,23 @@ new_tree_menu()
 			menu="${menu}${version} Linux_Kernel Select_one "
 		done
 		menu="$( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
-		kver=$( $dialog --title "Select Kernel Version" \
+		command=$( $dialog --title "Select Kernel Version" \
 		--item-help --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
 		$menu )
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			case "$kver" in
+			case "$command" in
 				2.[0-9].[0-9]*) 
-					persistent_save
-					persistent_load
+					kver=$command
 					patch_menu $kver
 					;;
 				LATEST*)
-					persistent_save
-					persistent_load
+					kver=$command
 					patch_menu $kver
 					;;
 				*) 
-					persistent_load
 					break 
 					;;
 			esac
@@ -557,8 +545,6 @@ patch_menu()
 			fi
 		else
 			patches=$new_patch_list
-			persistent_save
-			persistent_load
 			break
 		fi
 	done
@@ -585,8 +571,6 @@ old_src_menu()
 				mode="oldktree"
 				persistent_remove MAKEMODE
 			fi
-			persistent_save
-			persistent_load
 			break
 		else
 			break
@@ -619,8 +603,6 @@ calculate_depends()
 				;;
 		esac
 		patches="${new_patch_list}${patch} "
-		persistent_save
-		persistent_load
 	done
 }
 
@@ -628,7 +610,6 @@ calculate_depends()
 # stuff like that
 create_details()
 {
-	persistent_load
 	. $latestdefaults
 	local counter="1"
 	case "$mode" in
@@ -709,7 +690,6 @@ create_defaults
 if [[ "$reconf" == "true" || "$kver" == "" ]]
 then
 	main_menu
-	persistent_load
 	if [ "$kver" == "" ]
 	then
 		echo "You really need to tell the spell what linux kernel you are dealing with."
@@ -718,7 +698,6 @@ then
 	while [ "$kver" == "" ]
 	do
 		main_menu
-		persistent_load
 		if [ "$kver" == "" ]
 		then
 			echo "You really need to tell the spell what linux kernel you are dealing with."
@@ -729,4 +708,3 @@ else
 	echo "No Reconfigure, using ${SPELL_CONFIG}.p for defaults"
 fi
 create_details
-persistent_load
