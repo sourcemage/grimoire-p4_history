@@ -1,7 +1,12 @@
 depends nessus-libraries &&
 depends libnasl          &&
 
+optional_depends  "nessus-plugins"                  \
+                  ""                                \
+                  ""                                \
+                  "for doing scans, you'll want some plugins"  &&
 optional_depends  "gtk+"                            \
                   ""                                \
                   "--disable-gtk"                   \
                   "to build graphic nessus client"
+
