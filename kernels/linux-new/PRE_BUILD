@@ -23,7 +23,6 @@ then
 		pval=1
 		. ${SCRIPT_DIRECTORY}/info/patches/*/${patch}
 		cp ${INSTALL_ROOT}/var/spool/sorcery/${source} ./
-		unpack ${source} ${md5sum}
 		linux_new_uncompress ./${source}
 		patch -p${pval} <${patch}
 	done
