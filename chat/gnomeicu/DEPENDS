@@ -1,9 +1,4 @@
-depends  gnome-libs  &&
-depends  gtk+        &&
-depends  gnet        &&
-depends  libglade    &&
+depends gnet		&&
+depends gnome-panel	&&
 
-optional_depends "gnome-core" 		\
-		 "--enable-applet"	\
-		 "--enable-applet=no"	\
-		 "for panel applet support"
+optional_depends xscreensaver '' '' 'For XScreenSaver support'
