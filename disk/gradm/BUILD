@@ -1,11 +1,11 @@
 (
 
-  sedit  "/gradm -P/d"  Makefile
  ./configure  --build=$BUILD        \
               --prefix=/usr         \
               --sysconfdir=/etc     \
               --localstatedir=/var  \
               $OPTS                 &&
+  sedit  "/gradm -P/d"  Makefile    &&
   make                              &&
   prepare_install                   &&
   make    install
