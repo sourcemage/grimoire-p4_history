@@ -597,23 +597,6 @@ create_details()
 	case "$mode" in
 		*ktree)
 			(
-			case "$kver" in
-				LATEST*)
-					. $kernelsdir/${!kver}
-					echo "KERNEL_VERSION=\$$kver"
-					echo "SOURCE=$source"
-					echo "MD5[0]=$md5sum"
-					echo "SOURCE_URL=$source_url"
-					;;
-				*)
-					. $kernelsdir/${kver}
-					echo "KERNEL_VERSION=$kver"
-					echo "SOURCE=$source"
-					echo "MD5[0]=$md5sum"
-					echo "SOURCE_URL=$source_url"
-					;;
-				
-			esac
 			. $configfile
 			calculate_depends
 			. $configfile
@@ -640,6 +623,24 @@ create_details()
 				esac
 				counter="`expr $counter + 1`"
 			done
+
+                        case "$kver" in
+				LATEST*)
+					. $kernelsdir/${!kver}
+					echo "KERNEL_VERSION=\$$kver"
+					echo '. ${SCRIPT_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo "SOURCE=\$source"
+					echo "MD5[0]=\$md5sum"
+					echo "SOURCE_URL=\$source_url"
+					;;
+				*)
+					. $kernelsdir/${kver}
+					echo "KERNEL_VERSION=$kver"
+					echo "SOURCE=$source"
+					echo "MD5[0]=$md5sum"
+					echo "SOURCE_URL=$source_url"
+					;;
+			esac
 			) > $detailsdefaults
 			;;
 		*)
