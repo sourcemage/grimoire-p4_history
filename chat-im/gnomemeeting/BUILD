@@ -11,7 +11,7 @@
   cd $PWLIBDIR                                              &&
   ./configure --disable-shared                              \
               --prefix=/usr                                 \
-              --enable-plugins                              \
+              --enable-plugins                              &&
   make -j 1 optnoshared                                     &&
   cd lib                                                    &&
   ln -s libpt_linux_x86_r_s.a libpt.a                       &&
