@@ -1,4 +1,4 @@
 #  patch -p0 < $SCRIPT_DIRECTORY/islpci.patch				&&
 #  patch -p0 < $SCRIPT_DIRECTORY/isl_ioctl.diff				&&
 
-make KVER=$TARGET_KERNEL modules		
+make modules		

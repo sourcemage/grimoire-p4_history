@@ -1,7 +1,8 @@
-if ! grep -q TARGET_KERNEL $SPELL_CONFIG 
-   then TARGET_KERNEL="\$(installed_version linux)" && 
-   if query "Would you like to build $SPELL for the running kernel (`uname -r`)?" n
-              then TARGET_KERNEL="\`uname -r\`"
-   fi  
-echo TARGET_KERNEL=$TARGET_KERNEL >> $SPELL_CONFIG 
+config_query ISCVS "Would you like to use latest cvs tar ball?" y
+
+if [[ "$ISCVS" == "y" ]]
+then
+	[ -f ${SOURCE_CACHE}/${SPELL}-svn-latest.tar.bz2 ] &&
+	rm ${SOURCE_CACHE}/${SPELL}-svn-latest.tar.bz2
+	echo ""
 fi
