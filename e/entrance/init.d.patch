@@ -1,12 +1,12 @@
 diff -Naur entrance-cvs.orig/config/Makefile.am entrance-cvs/config/Makefile.am
---- entrance-cvs.orig/config/Makefile.am	2005-01-04 19:30:37.398646640 -0800
-+++ entrance-cvs/config/Makefile.am	2005-01-04 19:30:41.671996992 -0800
+--- entrance-cvs.orig/config/Makefile.am	2005-02-23 20:27:53.624564600 -0800
++++ entrance-cvs/config/Makefile.am	2005-02-23 20:28:09.227192640 -0800
 @@ -1 +1 @@
 -SUBDIRS = init.d pam.d
 +SUBDIRS = pam.d
 diff -Naur entrance-cvs.orig/configure.in entrance-cvs/configure.in
---- entrance-cvs.orig/configure.in	2005-01-04 19:30:37.618613200 -0800
-+++ entrance-cvs/configure.in	2005-01-04 19:30:41.672996840 -0800
+--- entrance-cvs.orig/configure.in	2005-02-23 20:27:53.436593176 -0800
++++ entrance-cvs/configure.in	2005-02-23 20:28:09.228192488 -0800
 @@ -227,8 +227,6 @@
  src/daemon/Makefile
  src/daemon/entrance_wrapper
@@ -17,9 +17,9 @@ diff -Naur entrance-cvs.orig/configure.in entrance-cvs/configure.in
  data/Makefile
  data/config/Makefile
 diff -Naur entrance-cvs.orig/entrance.spec entrance-cvs/entrance.spec
---- entrance-cvs.orig/entrance.spec	2005-01-04 19:30:37.397646792 -0800
-+++ entrance-cvs/entrance.spec	2005-01-04 19:30:41.675996384 -0800
-@@ -38,7 +38,6 @@
+--- entrance-cvs.orig/entrance.spec	2005-02-23 20:27:53.626564296 -0800
++++ entrance-cvs/entrance.spec	2005-02-23 20:28:09.229192336 -0800
+@@ -40,7 +40,6 @@
  %defattr(-, root, root)                          
  %doc AUTHORS COPYING* README
  %{_sysconfdir}/entrance_config.db
