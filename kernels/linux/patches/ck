@@ -1,16 +1,18 @@
 #!/bin/bash
 
-DESCRIPTION="Con Kolivas Patch"
+DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
 HELP="NOTE: This is suitable for ordinary not very stressed desktops.
-Contains: O(1)B,PE,LL,AA,RL2,ALSA,SM,XFS,ACPI,VH
+ck3 Contains: O(1)B,PE,LL,AA,RL2,SM,XFS,ACPI,Tuning
 
-DO NOT ENABLE Compressed Caching with preempt if you are using ext2/3 or vfat filesystems 
+alsa got removed - use the 
+
+*DO NOT USE COMRESSED CACHING WITH PREEMPT - FS UNSAFE*
 
 http://kernel.kolivas.net"
 
-VERSIONS="ck2_2.4.20"
-MD5S[0]=11557f7235ae8d533da3a01045037098
+VERSIONS="ck3_2.4.20"
+MD5S[0]=a288eb4a8ff5909ec31e3fba4079b455
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
