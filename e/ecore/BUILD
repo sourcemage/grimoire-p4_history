@@ -1,7 +1,6 @@
-(
-
-  ./autogen.sh  &&
-
+if [ "$CVS" = "y" ]; then
+  ./autogen.sh   &&
   default_build
-
-) > $C_FIFO 2>&1
+else
+  default_build
+fi
