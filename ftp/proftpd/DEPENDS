@@ -1,4 +1,4 @@
-optional_depends  "Linux-PAM"  "--enable-auth-pam"        "--disable-auth-pam"  "for security"             &&
+optional_depends  "linux-pam"  "--enable-auth-pam"        "--disable-auth-pam"  "for security"             &&
 optional_depends  "openldap"   "--with-modules=mod_ldap"  ""                    "for LDAP authentication"  &&
 
 if  query  "Would you like to compile the modules for SQL authentication? " n;  then
