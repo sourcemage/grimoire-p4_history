@@ -8,16 +8,6 @@ export  MOZ_THUNDERBIRD="1"   &&
 export  CFLAGS="${CFLAGS//-O3/-O2}"      &&
 export  CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
-#
-# Set extensions to use
-#
-THUNDERBIRD_EXTENSIONS="wallet,spellcheck,xmlextras"  &&
-
-#
-# Set protocols to use
-#
-NECKO_PROTOCOLS="http,file,jar,viewsource,res,data"  &&
-
 if  [  "$CRYPTO"  =  "y"  ];  then
   OPTS="${OPTS}  --enable-crypto"
 else
@@ -37,6 +27,8 @@ fi  &&
 
 cp mail/config/mozconfig .mozconfig &&
 
+# Note: --enable-extensions and --enable-necko-protocols are inherited from
+# mozconfig.  Don't set them in ./configure.
 ./configure  --prefix=${INSTALL_ROOT}/usr                 \
              --with-user-appdir=.thunderbird              \
              --with-pthreads                              \
@@ -45,24 +37,17 @@ cp mail/config/mozconfig .mozconfig &&
              --disable-calendar                           \
              --disable-pedantic                           \
              --disable-installer                          \
+             --disable-debug                              \
+             --disable-jsd                                \
+             --enable-reorder                             \
+             --enable-cpp-rtti                            \
+             --enable-optimize="$CFLAGS"                  \
              $OPTS                                        &&
 make  MOZ_THUNDERBIRD=1
 
-# already in mozconfig
-#             --enable-extensions=$THUNDERBIRD_EXTENSIONS  \
-#             --enable-necko-protocols=$NECKO_PROTOCOLS    \
-#             --enable-extensions                          \
+# Also already in mozconfig:
 #             --enable-single-profile                      \
 #             --disable-tests                              \
 #             --disable-oji                                \
 #             --disable-necko-disk-cache                   \
 #             --disable-profilesharing                     \
-
-# I want to see these for now
-#             --disable-debug                              \
-#             --disable-jsd                                \
-
-# try without optimizations first
-#             --enable-reorder                             \
-#             --enable-cpp-rtti                            \
-#             --enable-optimize="$CFLAGS"                  \
