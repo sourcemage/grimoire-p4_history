@@ -19,8 +19,9 @@ else
   message "${MESSAGE_COLOR}Previous $SPELL install detected.${DEFAULT_COLOR}"
 fi
 
+
 if ! grep  -q  "BENCH="  $SPELL_CONFIG;  then
- if query "Also install smtpstone benckmarking tools ?"  y
+ if query "Also install smtpstone benckmarking tools ?"  n
   then  echo   "BENCH=y"  >>  $SPELL_CONFIG
   else  echo   "BENCH=n"  >>  $SPELL_CONFIG
  fi

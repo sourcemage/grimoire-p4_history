@@ -5,6 +5,14 @@ if  !  grep  -q  "IPV6"  $SPELL_CONFIG;  then
   fi
 fi
 
+if  !  grep  -q  "PAM"  $SPELL_CONFIG
+then
+  if    query  "Use pam authentication? "  n
+  then  echo   "PAM=y"  >>  $SPELL_CONFIG ; PAM=y
+  else  echo   "PAM=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
 if  !  grep  -q  "IMAP_BOOT"  $SPELL_CONFIG
 then
   if    query  "Invoke imapd during boot? "  n
@@ -36,4 +44,3 @@ then
   else  echo   "POP3S_BOOT=n"  >>  $SPELL_CONFIG
   fi
 fi
-
