@@ -1,9 +1,6 @@
 (
-make -f Makefile.cvs &&
-#  cd temp/CVS/digikam 	&&
-  ./configure --prefix=/usr $OPTS &&
-  make                   &&
-  prepare_install        &&
-  make    install        
+  patch -p0 < $SPELL_DIRECTORY/sh.diff admin/cvs.sh	&&
+  make -f Makefile.cvs 	&&
+  default_build
 
 ) > $C_FIFO 2>&1
