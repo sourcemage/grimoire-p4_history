@@ -3,7 +3,8 @@ depends  qt-x11  "--with-qt-moc=/usr/bin --with-qt-libs=/usr/lib --with-qt-inclu
 #optional_depends libxml2	"--enable-xml"   "" \
 #				"xml plugin support"		&&
 
-if  query  "Enable SQL database plugin?"  n
+#if  query  "Enable SQL database plugin?"  n
+if  [ "$SQL" == "y"  ]
 then
   depends  sqlite  "--enable-sqlite"  &&
 
