@@ -2,7 +2,7 @@
 	prepare_install &&
 
 	cp bin/* /usr/bin &&
-	cp lib/* /usr/lib/perl5/$(gaze installed perl)/ &&
+	cp lib/* /usr/lib/perl5/$(installed_version perl)/ &&
 	cp utils/Yo* /usr/bin &&
 	
 	[ -d /usr/share/YoSucker ] || mkdir /usr/share/YoSucker
