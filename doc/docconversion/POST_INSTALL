@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#
+# Need to setup postgresql db for docconversion.
+#
+  CREATEDB="/usr/bin/createdb -q -h localhost -U postgres"
+CREATEUSER="/usr/bin/createuser -q -h localhost -U postgres -A -D"
+	
+  DROPUSER="/usr/bin/dropuser -q -h localhost -U postgres"
+	  DROPDB="/usr/bin/dropdb -q -h localhost -U postgres"
+
+	 CONNECT="/usr/bin/psql -d clearinghouse -h localhost -U postgres -q"
+
+if  [  -f  /usr/bin/createdb  ]; then
+
+	${DROPUSER} pronir
+	${DROPDB} clearinghouse
+
+	${CREATEUSER} pronir
+	${CREATEDB} clearinghouse
+
+	cd $SCRIPT_DIRECTORY
+
+	${CONNECT} --file create.psql  
+	message  "${MESSAGE_COLOR}DocConversion database has been setup."
+	message  "${DEFAULT_COLOR}"
+
+else
+	
+	message  "${PROBLEM_COLOR}DocConversion unable to setup database."
+	message  "${PROBLEM_COLOR}Postgresql most likely not installed..."
+	message  "${DEFAULT_COLOR}"
+	return 1
+	
+fi
