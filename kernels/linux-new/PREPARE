@@ -602,12 +602,32 @@ calculate_depends()
 {
 	# create Makefile
 	dependslist=""
+	new_patches_list=""
 	if [[ "$selected_patches" != "" ]]
 	then
-		(
-		echo "all: $selected_patches"
-		echo ""
+		# check for post patches and add those to the new_patches_list
 		for patch in $selected_patches
+		do
+			case "${patch}" in
+				LATEST*)
+					. ${patchesdir}/*/${!patch}
+					patch=${!patch}
+				;;
+				*)
+					. ${patchesdir}/*/${patch}
+				;;
+			esac
+			if [ "$post_patch" != "" ]
+			then
+				new_patches_list="${new_patches_list}${patch} ${post_patch} "
+			else
+				new_patches_list="${new_patches_list}${patch} "
+			fi
+		done
+		(
+		echo "all: $new_patches_list"
+		echo ""
+		for patch in $new_patches_list
 		do
 			depends=""
 			case "$patch" in
@@ -653,25 +673,6 @@ create_details()
 	case "$mode" in
 		*ktree)
 			# add required smgl patches
-			new_patch_list=""
-			for patch in $selected_patches
-			do
-				case "${patch}" in
-					LATEST*)
-						. ${patchesdir}/*/${!patch}
-					;;
-					*)
-						. ${patchesdir}/*/${patch}
-					;;
-				esac
-				if [ "$post_patch" != "" ]
-				then
-					new_patches_list="${new_patches_list}${patch} ${post_patch} "
-				else
-					new_patches_list="${new_patches_list}${patch} "
-				fi
-			done
-			selected_patches="${new_patches_list}"
 			patches=""
 			calculate_depends
 			(
