@@ -3,7 +3,7 @@ then
     MYCONF="$MYCONF --enable-python "                                       &&
     message "${MESSAGE_COLOR}Enable python module building${DEFAULT_COLOR}" 
 fi                                                                          &&
-if [ "$DEBUG" == "y" ];
+if [ "$LDEBUG" == "y" ];
 then
     MYCONF="$MYCONF --enable-debug"                                         &&
     message "${MESSAGE_COLOR}Enable debug code${DEFAULT_COLOR}" 
