@@ -4,12 +4,7 @@
   sedit  's/-fomit-frame-pointer//'  configure       &&
 
   patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
-  patch -p1 < $SCRIPT_DIRECTORY/alsa-1.0.patch       &&
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
-
-  if  [  "$FONTCONFIG"  =  "y"  ];  then
-    patch -p1 < $SCRIPT_DIRECTORY/MPlayer-fontconfig.patch
-  fi  &&
 
   case  $GUI  in
     y|Y)  OPTS="$OPTS  --enable-gui"  ;;
@@ -42,6 +37,8 @@
           message "Couldn't find a font to install as default subtitle font."
           message "Make sure you copy a font to ~/.mplayer/subfont.ttf"
         fi
+      else
+        echo  "fontconfig=1"  >>  etc/example.conf
       fi
     fi
   

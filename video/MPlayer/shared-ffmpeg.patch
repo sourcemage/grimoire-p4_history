@@ -1,86 +1,18 @@
-diff -Nur MPlayer-1.0pre2/configure MPlayer-1.0pre2-ffmpeg/configure
---- MPlayer-1.0pre2/configure	2003-10-05 17:34:40.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/configure	2003-11-28 15:32:03.000000000 +0100
-@@ -1057,7 +1057,7 @@
- # GOTCHA: the variables below defines the default behavior for autodetection
- # and have - unless stated otherwise - at least 2 states : yes no
- # If autodetection is available then the third state is: auto
--_libavcodec=auto
-+_libavcodec=no
- _libavcodecso=auto 
- _fame=auto
- _mp1e=no
-diff -Nur MPlayer-1.0pre2/libmpcodecs/Makefile MPlayer-1.0pre2-ffmpeg/libmpcodecs/Makefile
---- MPlayer-1.0pre2/libmpcodecs/Makefile	2003-10-05 00:00:24.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/libmpcodecs/Makefile	2003-11-28 15:16:58.000000000 +0100
-@@ -37,7 +37,7 @@
- SRCS2=$(ENCODER_SRCS)
- OBJS2=$(SRCS2:.c=.o)
- 
--CFLAGS  = $(OPTFLAGS) -I. -Inative -I.. -I../libmpdemux -I../loader $(EXTRA_INC) -D_GNU_SOURCE
-+CFLAGS  = $(OPTFLAGS) -I. -Inative -I.. -I../libmpdemux -I../loader $(EXTRA_INC) -D_GNU_SOURCE -I/usr/include/ffmpeg
- ifneq ($(MPFLAC),none)
- CFLAGS += -I../libmpflac
- endif
-diff -Nur MPlayer-1.0pre2/libmpcodecs/vd_ffmpeg.c MPlayer-1.0pre2-ffmpeg/libmpcodecs/vd_ffmpeg.c
---- MPlayer-1.0pre2/libmpcodecs/vd_ffmpeg.c	2003-10-04 19:28:59.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/libmpcodecs/vd_ffmpeg.c	2003-11-28 15:17:22.000000000 +0100
-@@ -386,14 +386,19 @@
- static int init_vo(sh_video_t *sh){
-     vd_ffmpeg_ctx *ctx = sh->context;
-     AVCodecContext *avctx = ctx->avctx;
-+#if LIBAVCODEC_BUILD >= 4687
-+    float aspect= av_q2d(avctx->sample_aspect_ratio) * avctx->width / avctx->height;
-+#else
-+    float aspect= avctx->aspect_ratio;
-+#endif
- 
--    if (avctx->aspect_ratio != ctx->last_aspect ||
-+    if (//aspect != ctx->last_aspect ||
- 	avctx->width != sh->disp_w ||
- 	avctx->height != sh->disp_h ||
- 	!ctx->vo_inited)
-     {
--	mp_msg(MSGT_DECVIDEO, MSGL_V, "[ffmpeg] aspect_ratio: %f\n", avctx->aspect_ratio);
--        ctx->last_aspect = avctx->aspect_ratio;
-+	mp_msg(MSGT_DECVIDEO, MSGL_V, "[ffmpeg] aspect_ratio: %f\n", aspect);
-+        ctx->last_aspect = aspect;
- //	if(ctx->last_aspect>=0.01 && ctx->last_aspect<100)
- 	if(sh->aspect==0.0)
- 	    sh->aspect = ctx->last_aspect;
-diff -Nur MPlayer-1.0pre2/libmpcodecs/ve_lavc.c MPlayer-1.0pre2-ffmpeg/libmpcodecs/ve_lavc.c
---- MPlayer-1.0pre2/libmpcodecs/ve_lavc.c	2003-10-04 19:28:59.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/libmpcodecs/ve_lavc.c	2003-11-28 15:23:42.000000000 +0100
-@@ -433,7 +433,14 @@
- 	}
- 
- 	if (e && ratio > 0.1 && ratio < 10.0) {
-+#if LIBAVCODEC_BUILD >= 4687
-+      lavc_venc_context->sample_aspect_ratio= av_d2q(ratio * height / width, 255);
-+      mp_dbg(MSGT_MENCODER, MSGL_DBG2, "sample_aspect_ratio: %d/%d\n",
-+                lavc_venc_context->sample_aspect_ratio.num,
-+                lavc_venc_context->sample_aspect_ratio.den);
-+#else
- 	    lavc_venc_context->aspect_ratio= ratio;
-+#endif
- 	    mp_dbg(MSGT_MENCODER, MSGL_DBG2, "aspect_ratio: %f\n", ratio);
- 	} else {
- 	    mp_dbg(MSGT_MENCODER, MSGL_ERR, "aspect ratio: cannot parse \"%s\"\n", lavc_param_aspect);
-@@ -441,7 +448,11 @@
- 	}
-     }
-     else if (lavc_param_autoaspect)
-+#if LIBAVCODEC_BUILD >= 4687
-+  lavc_venc_context->sample_aspect_ratio = av_d2q((float)d_width/d_height*height / width, 255);
-+#else
- 	lavc_venc_context->aspect_ratio = (float)d_width/d_height;
-+#endif
- 
-     /* keyframe interval */
-     if (lavc_param_keyint >= 0) /* != -1 */
-diff -Nur MPlayer-1.0pre2/libmpcodecs/vf_pp.c MPlayer-1.0pre2-ffmpeg/libmpcodecs/vf_pp.c
---- MPlayer-1.0pre2/libmpcodecs/vf_pp.c	2003-09-01 00:18:27.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/libmpcodecs/vf_pp.c	2003-11-28 15:16:58.000000000 +0100
+diff -Nur MPlayer-1.0pre3/configure MPlayer-1.0pre3-ffpp/configure
+--- MPlayer-1.0pre3/configure	2003-12-08 22:33:31.000000000 +0100
++++ MPlayer-1.0pre3-ffpp/configure	2003-12-09 10:26:38.000000000 +0100
+@@ -4935,6 +4935,8 @@
+ elif test "$_libavcodecso" = yes ; then
+   _def_libavcodec='#define USE_LIBAVCODEC 1'
+   _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
++  _def_ffpostprocess='#define FF_POSTPROCESS 1'
++  _def_haveffpostprocess='yes'
+   _ld_libavcodec='-lavcodec'
+   _codecmodules="libavcodec.so $_codecmodules"
+ else
+diff -Nur MPlayer-1.0pre3/libmpcodecs/vf_pp.c MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c
+--- MPlayer-1.0pre3/libmpcodecs/vf_pp.c	2003-09-01 00:18:27.000000000 +0200
++++ MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c	2003-12-09 10:26:38.000000000 +0100
 @@ -20,10 +20,10 @@
  
  #define EMU_OLD
@@ -94,14 +26,3 @@ diff -Nur MPlayer-1.0pre2/libmpcodecs/vf_pp.c MPlayer-1.0pre2-ffmpeg/libmpcodecs
  #endif
  
  struct vf_priv_s {
-diff -Nur MPlayer-1.0pre2/Makefile MPlayer-1.0pre2-ffmpeg/Makefile
---- MPlayer-1.0pre2/Makefile	2003-10-05 00:00:01.000000000 +0200
-+++ MPlayer-1.0pre2-ffmpeg/Makefile	2003-11-28 15:16:58.000000000 +0100
-@@ -39,6 +39,7 @@
- COMMON_LIBS = libmpcodecs/libmpcodecs.a mp3lib/libMP3.a liba52/liba52.a libmpeg2/libmpeg2.a $(W32_LIB) $(DS_LIB) libaf/libaf.a libmpdemux/libmpdemux.a input/libinput.a postproc/libswscale.a osdep/libosdep.a $(CSS_LIB) $(CODEC_LIBS) $(FREETYPE_LIB) $(TERMCAP_LIB) $(CDPARANOIA_LIB) $(MPLAYER_NETWORK_LIB) $(WIN32_LIB) $(GIF_LIB) $(MACOSX_FRAMEWORKS) $(SMBSUPPORT_LIB) $(FRIBIDI_LIB) $(FLAC_LIB)
- 
- CFLAGS = $(OPTFLAGS) -Ilibmpdemux -Iloader -Ilibvo $(FREETYPE_INC) $(EXTRA_INC) $(CDPARANOIA_INC) $(SDL_INC) $(X11_INC) $(FRIBIDI_INC) $(DVB_INC) # -Wall
-+CFLAGS += -I/usr/include/ffmpeg
- 
- PARTS = libmpdemux libmpcodecs mp3lib liba52 libmpeg2 libavcodec libao2 drivers osdep postproc input libvo libaf
- ifeq ($(INTERNAL_FAAD),yes)
