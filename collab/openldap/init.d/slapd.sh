@@ -17,12 +17,12 @@ case $1 in
 		$0     start
 		;;
 	start)
-		echo   "$1ing slapd OpenLDAP deamon."
+		echo   "$1ing slapd OpenLDAP daemon"
 		slapd  -h  "$SLAPD_URL"
 		evaluate_retval
 		;;
 	stop)
-		echo   "$1ping slapd."
+		echo   "$1ping slapd"
 		killproc  slapd
 		;;
 	*)

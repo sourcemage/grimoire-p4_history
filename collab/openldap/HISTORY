@@ -1,3 +1,22 @@
+2003-03-03  Sergey Lipnevich  <sergeyli@pisem.net>
+
+	Upgrade to 2.1.14.
+	Cosmetic improvements to BUILD.
+	POST_INSTALL now uses "restart" instead of "start" and checks
+	configuration before restarting.
+	PRE_REMOVE has been removed. The rationale here is that we don't
+	need to stop the server if we remove old binaries and installing
+	new ones. Rather, we need to check config and restart the server
+	if the config files are fine. This gives us the benefit of the
+	old server still running if we have a configuration problem. The
+	admin can fix it and then restart the server. But if we stop the
+	server and then see a problem, it's too late because not only the
+	new server will not start, but the old one's binaries are gone.
+	The disadvantage here is that "dispel" operation doesn't stop the
+	server, which is OK, because in real world people don't remove
+	such vital things as directory randomly.
+	Correct spelling in slapd.sh.
+
 2003-02-25  Eric Schabell <eschabell@sourcemage.org>
 
 		Cleaned out CONFIGURE and BUILD of installscript

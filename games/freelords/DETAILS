@@ -1,0 +1,19 @@
+           SPELL=freelords
+         VERSION=0.2.0
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://download.freelords.org/sources/$SOURCE
+          MD5[0]=f6f888a7193a15502382226dcc69d62f
+        WEB_SITE=http://www.freelords.org/
+         ENTERED=20020826
+         UPDATED=20020826
+      LICENSE[0]=GPL
+      MAINTAINER=eric@sandall.us
+    MENU_ITEM[0]="Free Lords"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+           SHORT='A Warlords clone'
+cat << EOF
+A free Warlords(TM) clone for *nix.
+EOF

@@ -1,16 +1,21 @@
            SPELL=cdrtools
-         VERSION=0.1
-          MD5[0]=0
-        WEB_SITE=http://www.sourcemage.org/
-         ENTERED=20020330
-         UPDATED=20020330
-      MAINTAINER=jean@kcco.com
+         VERSION=2.0
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.berlios.de/pub/cdrecord/${SOURCE}
+          MD5[0]=b2d5c29b549e0f2fb30ca2549e7b054c
+        WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
       LICENSE[0]=GPL
-           SHORT="cast a spell which provides cdrtools"
+         ENTERED=20010922
+         UPDATED=20030104
+           SHORT="cdrtools creates home-burned CDs with a CD-R/CD-RW recorder."
 cat << EOF
-cast a spell which provides cdrtools
-
-choices include
-* dvdrtools
-* cdrutils
+cdrtools, formerly Cdrecord creates home-burned CDs with a CD-R/CD-RW
+recorder. It works as a burn engine for several applications. Cdrecord
+supports CD recorders from many different vendors; all SCSI-3/mmc and
+ATAPI/mmc compliant drives should also work. Supported features include
+IDE/ATAPI, parallel-port, and SCSI drives, audio CDs, data CDs, and
+mixed CDs, full multi-session support, CD-RWs (rewritable), TAO, DAO and
+human-readable error messages. Cdrecord includes remote SCSI support and
+can access local or remote CD-writers.
 EOF

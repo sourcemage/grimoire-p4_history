@@ -2,17 +2,19 @@
 
 DESCRIPTION="Con Kolivas Patchset"
 SHORT="These are patches designed to improve system responsiveness, with emphasis on desktop pcs"
-HELP="NOTE: This is suitable for ordinary not very stressed desktops.
-ck3 Contains: O(1)B,PE,LL,AA,RL2,SM,XFS,ACPI,Tuning
+HELP="See http://kernel.kolivas.net
+ 
+batch O(1) scheduler, preemptible, low latency
+Andrea Arcangeli's newest vm addons
+Read Latency2 disk hack by Andrew Morton
+Supermount
+XFS file system v1.2pre5
+ACPI
+Packet writing for CDRW/DVD
+Desktop Tuning"
 
-alsa got removed - use the 
-
-*DO NOT USE COMRESSED CACHING WITH PREEMPT - FS UNSAFE*
-
-http://kernel.kolivas.net"
-
-VERSIONS="ck3_2.4.20"
-MD5S[0]=a288eb4a8ff5909ec31e3fba4079b455
+VERSIONS="ck4_2.4.20"
+MD5S[0]=19793c8cd68f27455994504067bb2096
 
 if [[ "$1" == "CONFIG" ]]; then
 echo "
