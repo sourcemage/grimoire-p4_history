@@ -5,9 +5,8 @@ depends metacity        &&
 depends xfree86_xkb_xml &&
 depends libxklavier     &&
 depends xscreensaver    &&
-if [ "$NAUTILUS" == "n" ]; then
-   depends nautilus2
-fi &&
+
+optional_depends "nautilus2" "--enable-vfs-methods" "--disable-vfs-methods" "Enable nautilus support"
 optional_depends "alsa-lib" "--enable-alsa" "--disable-alsa" "Enable alsa support"  &&
 optional_depends "gst-plugins"  "--enable-gstreamer"  "--disable-gstreamer"  "for gstreamer volume control support"
 
