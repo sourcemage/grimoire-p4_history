@@ -9,7 +9,7 @@ default_pre_build                        &&
 if  [  "${SOURCE4}"  !=  ""  ];  then
   cd      ${SOURCE_DIRECTORY}            &&
   unpack  ${SOURCE4}  ${MD5[3]}
-fi
+fi  &&
 
 rm  -f  ${SOURCE_DIRECTORY}/Makefile.in  &&
 cp  ${SOURCE_DIRECTORY}/src/Makefile.in  ${SOURCE_DIRECTORY}/Makefile.in
