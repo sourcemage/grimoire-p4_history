@@ -6,5 +6,4 @@
              --localstatedir=/var               \
              $OPTS                              &&
 patch -p0 < $SCRIPT_DIRECTORY/gnomeicu.patch    &&
-make                                            &&
-make install
+make                                           
