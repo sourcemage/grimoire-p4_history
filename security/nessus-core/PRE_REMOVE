@@ -1,1 +1,8 @@
-/etc/init.d/nessusd.sh  stop
+# Stop nessusd service
+ if  [  -x  /etc/init.d/nessusd.sh  ];  then
+     /etc/init.d/nessusd.sh  stop
+ else
+     if  [  -x  /etc/init.d/nessusd  ];  then
+         /etc/init.d/nessusd  stop
+     fi
+ fi
