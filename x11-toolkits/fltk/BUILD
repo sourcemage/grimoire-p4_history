@@ -1,10 +1,4 @@
 (
-   ./configure 	--prefix=${INSTALL_ROOT}/usr \
-		--enable-shared  \
-		--enable-xft \
-		$OPTS 	&&
-   make						&&
-   prepare_install				&&
-   make install					
-
+  OPTS="${OPTS} --enable-shared --enable-xft" &&
+  default_build
 ) > $C_FIFO 2>&1  
