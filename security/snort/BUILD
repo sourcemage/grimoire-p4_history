@@ -1,9 +1,10 @@
 (
   
- ./configure  --prefix=/usr		\
-	      --sysconfdir=/etc/snort	\
-	      ${CF_OPTS}		\
-	      ${OPTS}			&&
+ ./configure  --build=${BUILD}				\
+	      --prefix=${INSTALL_ROOT}/usr		\
+	      --sysconfdir=${INSTALL_ROOT}/etc/snort	\
+	      ${CF_OPTS}				\
+	      ${OPTS}					&&
  
  make					&&
  make  check				&&
@@ -15,20 +16,38 @@
 ) >  $C_FIFO  2>&1  &&  (
 
   # Create the dirs
-  echo making directory /etc/snort 	&&
+  echo "making directory /etc/snort" 	&&
   mkdir  -p  /etc/snort/rules		&&
 
-  echo making directory /var/log/snort	&&
-  mkdir  -p  /var/log/snort  		&&	
+  # if there is already an install - use it
+  if [ -f /etc/sysconfig/snort ]; then
+    . /etc/sysconfig/snort
+  else
+    LOG_DIR="/var/log/snort"
+    IFACES="eth0"
+  fi					&&
+  			
+  echo "making directory ${LOG_DIR}"	&&
+  for IFC in ${IFACES}; do
+    mkdir  -p  ${LOG_DIR}/${IFC}
+  done					&&
 
-  chmod o-rwx /var/log/snort /etc/snort &&
+  chmod o-rwx ${LOG_DIR} /etc/snort 	&&
 
   cd etc 				&&
   
   # copy config files
   for  FILE  in  `ls  *conf*`;  do
     if  [  !  -f  /etc/$FILE  ];  then
-      echo installing etc/$FILE to /etc 			&&
+      echo "installing etc/$FILE to /etc/snort"			&&
+      /usr/bin/install -c -m 640  $FILE  /etc/snort
+    fi
+  done 								&&
+
+  # copy map files
+  for  FILE  in  `ls  *.map`;  do
+    if  [  !  -f  /etc/$FILE  ];  then
+      echo "installing etc/$FILE to /etc/snort"			&&
       /usr/bin/install -c -m 640  $FILE  /etc/snort
     fi
   done 								&&
@@ -37,7 +56,7 @@
 
   for  FILE  in  `ls  *.rules`;  do
     if  [  !  -f  /etc/snort/$FILE  ];  then
-      echo installing rules/$FILE to /etc/snort 		&&
+      echo "installing rules/$FILE to /etc/snort/rules"		&&
       /usr/bin/install -c -m 640  $FILE   /etc/snort/rules
     fi
   done								&&
@@ -47,8 +66,16 @@
 
 
  # change owner and group
- chown snort.snort /etc/snort /var/log/snort -R			&&
+ chown snort.snort /etc/snort ${LOG_DIR} -R			&&
  # to be sure ..
- chmod 640 /etc/snort/snort.conf
+ chmod 640 /etc/snort/snort.conf				&&
+
+ # create conf for ifaces if any
+ for IFC in ${IFACES}; do
+    if [ ! -f /etc/snort/snort-${IFC}.conf ]; then
+	echo "Creating default /etc/snort/snort-${IFC}.conf"	&&
+	cp /etc/snort/snort.conf /etc/snort/snort-${IFC}.conf
+    fi
+ done
  
 )

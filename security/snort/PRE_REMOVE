@@ -1,8 +1,13 @@
 # Stop snort service
- if  [  -x  /etc/init.d/snort.sh  ];  then
-     /etc/init.d/snort.sh  stop
+ if  [  "`telinit list|grep snort`" != ""  ];  then
+     telinit run snort  stop
  else
+  # backward init.d compact.
+  if  [  -x  /etc/init.d/snort.sh  ];  then
+     /etc/init.d/snort.sh  stop
+  else
      if  [  -x  /etc/init.d/snort  ];  then
          /etc/init.d/snort  stop
      fi
+  fi
  fi
