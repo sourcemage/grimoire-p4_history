@@ -34,6 +34,10 @@ optional_depends  "xosd"                  \
                   "--disable-xosd"        \
                   "for xosd interface"    &&
 
+if  [  "$MOZILLA"  =  "y"  ];  then
+  requires mozilla
+fi  &&
+
 # control plugins
 optional_depends  "lirc"                  \
                   "--enable-lirc"         \
@@ -98,7 +102,6 @@ optional_depends  "libvorbis"              \
                   "--disable-vorbis"       \
                   "for ogg vorbis decoder" &&
 
-# FIXME: test
 optional_depends  "faad2"                  \
                   "--enable-faad"          \
                   "--disable-faad"         \
