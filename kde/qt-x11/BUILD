@@ -14,6 +14,7 @@ sedit "s#-O2#$CFLAGS#" mkspecs/linux-g++/qmake.conf &&
 sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 
 export QTDIR=$SOURCE_DIRECTORY  &&
+export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 
 #  if  spell_installed  postgresql;  then
 #    cd  $SOURCE_DIRECTORY  &&
