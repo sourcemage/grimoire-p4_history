@@ -52,7 +52,9 @@ DEFINES = -DWINDOWS -DRTAUDIO -DSFIRCAM -DSYS5 -DLINUX -DPIPES -DMACROS -DTCLTK
 # Be sure to include 'LINUXaudio.o' under 'AUDOBJ' below as well.
 #                                  --  Jonathan Mohr  1995 Oct 17
 
-CFLAGS = -O3 -march=i686 -malign-loops=4 -malign-jumps=4 -DWITHx87 $(RPM_OPT_FLAGS) $(DEFINES)
+CFLAGS = -O3 -march=i686 -malign-loops=4 -malign-jumps=4 -ffast-math 
+-fomit-frame-pointer -finline-functions -funroll-loops -DWITHx87 
+$(RPM_OPT_FLAGS) $(DEFINES)
 #	-O		Simple optimisation
 #	-O2		to be more specific about the optimization level
 #	-f		compile single-precision floats (4.3,VAX,DEC-RISC)
