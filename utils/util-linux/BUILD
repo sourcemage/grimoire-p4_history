@@ -13,8 +13,4 @@ sedit  "s/\$(OPT)//"                   MCONFIG
   prepare_install                             &&
   make    install
 
-) > $C_FIFO 2>&1  &&
-
-if  !  [  -x  /etc/init.d/bootmisc.sh  ];  then
-  cp  $SCRIPT_DIRECTORY/bootmisc.sh  /etc/init.d
-fi
+) > $C_FIFO 2>&1
