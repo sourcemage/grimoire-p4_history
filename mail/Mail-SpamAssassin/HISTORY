@@ -12,7 +12,8 @@
 	  Use local DOC_DIR to install docs to /usr/share/doc
 	  Cleaned up documentation installation
 	* DEPENDS: Formatted to Guru Handbook
-	  Added dependency on openssl if MAILSPAM_SSL is "y"
+	  Added dependency on openssl if MAILSPAM_SSL is "y" (but it's broken, so
+	  I've commented it out for now)
 	  Added optional dependency on Storable
 	* CONFIGURE: Added to query for SSL-enabled spamc
 	* POST_INSTALL,FINAL: POST_INSTALL renamed to FINAL

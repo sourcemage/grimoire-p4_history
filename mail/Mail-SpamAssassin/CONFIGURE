@@ -1,6 +1,9 @@
 # FIXME when the new stable Sorcery is out change this to spell_ok
-if  spell_installed  openssl;  then
-  config_query  MAILSPAM_SSL  "Build an SSL-enabled spamc?"  y
-else
-  config_query  MAILSPAM_SSL  "Build an SSL-enabled spamc?"  n
-fi
+#
+# Currently broken. :(
+#
+#if  spell_installed  openssl;  then
+#  config_query  MAILSPAM_SSL  "Build an SSL-enabled spamc?"  y
+#else
+#  config_query  MAILSPAM_SSL  "Build an SSL-enabled spamc?"  n
+#fi
