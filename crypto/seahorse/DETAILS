@@ -1,17 +1,16 @@
            SPELL=seahorse
-         VERSION=0.5.0
+         VERSION=0.6.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=e05f4749c1f44a492ef7a5576f799907
-        WEB_SITE=http://sourceforge.net/projects/seahorse/
+          MD5[0]=2ff4b3b47ab79cc471143ba34b6f80a4
+        WEB_SITE=http://seahorse.sourceforge.net
          ENTERED=20011123
          UPDATED=20011123
       LICENSE[0]=GPL
       MAINTAINER=kahlage@chromebob.com
-           SHORT="seahorse: a GNOME front end for GnuPG."
+           SHORT="seahorse - GNOME interface for GnuPG"
 cat << EOF
-Seahorse is a tool for secure communications and data storage.  Data
-encryption, digital signature creation, and key management can all
-be performed through a GNOME-driven GUI.
+Seahorse is a Gnome interface for GnuPG.
+It's main purpose is to be a PGP/GPG Key Manager, though it has other components including a text editor and file manager.
 EOF
