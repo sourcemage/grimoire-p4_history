@@ -14,7 +14,7 @@
   cd usr/src/nv                 &&
 
   # We look at the Makefile in the kernel sources for the Version Number!
-  KPATCHLEVEL= $(head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*=//')
+  KPATCHLEVEL=$(head -2 /usr/src/linux/Makefile | tail -1 | sed 's/.*= //')
 
   if [[ $KPATCHLEVEL == 5 ]]  || [[ $KPATCHLEVEL == 6 ]]
   then
