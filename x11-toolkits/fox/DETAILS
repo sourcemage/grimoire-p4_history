@@ -1,18 +1,14 @@
            SPELL=fox
-case $REL in
-  old)
+if    [  "$REL"  =  "old"  ];  then
          VERSION=1.0.52
           MD5[0]='9b5e3cbad0e625ac20e67692ef2b9326'
-;;
-  current)
-         VERSION=1.2.9
-          MD5[0]=f9794566c150bb5612c1bf92b6a22a3c
-;;
-  devel)
+elif  [  "$REL"  =  "devel"  ];  then
          VERSION=1.3.14
           MD5[0]=a6c7467c4a345720a78d4b86c973045d
-;;
-esac
+else
+         VERSION=1.2.11
+          MD5[0]=d2424d9224b426cc840fcd907e0b1cb7
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.fox-toolkit.org/ftp/$SOURCE
