@@ -1,5 +1,6 @@
 # old modutils data
 
+if [ "$OLD_TOO" == "y" ]; then
            SPELL2=modutils
          VERSION2=2.4.26
           SOURCE2=${SPELL2}-${VERSION2}.tar.bz2
@@ -9,6 +10,7 @@ SOURCE_DIRECTORY2=${BUILD_DIRECTORY}/${SPELL2}-${VERSION2}
            MD5[1]=417620c96a251bf479372ffa87035310
         WEB_SITE2=http://freshmeat.net/projects/modutils/
        LICENSE[1]=GPL
+fi
 
 # new module-init-tools data
 
