@@ -1,21 +1,32 @@
 (
 
-  if  spell_installed  Linux-PAM;  then
+  if  spell_installed  Linux-PAM  ;  then
     WITH_PAM="--with-pam  --with-pam_smbpass"
-  fi
+  fi                                            &&
 
-  cd  source  &&
+  pushd  source                                 &&
 
   OPTS="$OPTS --with-smbmount --with-fhs $WITH_PAM"
-  default_build  &&
+  default_build                                 &&
 
-  mkdir  -p  /etc/samba/private
-  
-) > $C_FIFO 2>&1  &&  (
+  popd                                          &&
 
-  if  [  -d  /usr/private  ];  then
-    rmdir    /usr/private
-    true
-  fi
+  mkdir  -p  /usr/share/samba/codepages         &&
+  mkdir  -p  /var/{spool,cache,log}/samba       &&
 
-)
+  mkdir  -m 700  -p  /etc/samba/private         &&
+
+  if  [  !  -f  /etc/samba/private/smbpasswd  ]  ;  then
+    touch  /etc/samba/private/smbpasswd
+    chmod  600  /etc/samba/private/smbpasswd
+  fi                                            &&
+
+  cp  -f  examples/smb.conf.default /etc/samba  &&
+
+  mkdir  -p  /usr/doc/samba                     &&
+  cp  -fa  Manifest  Read-Manifest-Now  Roadmap \
+    WHATSNEW.txt  examples  /usr/doc/samba/     &&
+
+  rmdir  --ignore-fail-on-non-empty  /usr/private
+
+) > $C_FIFO 2>&1
