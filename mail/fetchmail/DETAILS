@@ -1,19 +1,19 @@
            SPELL=fetchmail
-         VERSION=6.1.1
+         VERSION=6.1.2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://tuxedo.org/~esr/fetchmail/$SPELL-$VERSION.tar.gz
-          MD5[0]=27d2c2eda70084e29f5a4fda1c264b87
+          MD5[0]=d76e2cdd6238999c9ef71df5d7ad23fd
    SOURCE_URL[1]=http://www.ibiblio.org/pub/Linux/system/mail/pop/$SPELL-$VERSION.tar.gz
           MD5[1]=${MD5[0]}
    SOURCE_URL[2]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
           MD5[2]=${MD5[0]}
-        WEB_SITE=http://tuxedo.org/~esr/fetchmail
-         ENTERED=20010922
-         UPDATED=20020624
-      MAINTAINER=eru@subdimension.com
-         LICENSE=http://www.tuxedo.org/~esr/fetchmail
-           SHORT="Fetchmail is a powerful MTA that's easy to configure."
+         WEB_SITE=http://tuxedo.org/~esr/fetchmail
+          ENTERED=20010922
+          UPDATED=20020624
+       MAINTAINER=eru@subdimension.com
+          LICENSE=http://www.tuxedo.org/~esr/fetchmail
+            SHORT="Fetchmail is a powerful MTA that's easy to configure."
 cat << EOF
 Fetchmail is a remote mail retrieval and forwarding utility intended to
 be used over on-demand TCP/IP links (such as SLIP or PPP connections).
