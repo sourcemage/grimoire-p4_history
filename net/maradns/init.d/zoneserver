@@ -1,22 +1,23 @@
 #!/bin/bash
 
-# SMGL-script-version=20030311
-# SMGL-START:3 4 5:S40
-# SMGL-STOP:0 1 2 6:K60
+PROGRAM=/usr/sbin/zoneserver
+RUNLEVEL=3
+NEEDS="+remote_fs +network"
 
-source /etc/init.d/functions
+. /etc/init.d/smgl_init
 
-function start_zoneserver()
+start()
 {
+  echo "Starting zoneserver..."
 
-  getpids zoneserver
+  getpids $PROGRAM
 
   if [ -z "$pidlist" ] ; then
-    nohup zoneserver > /dev/null &
+    nohup $PROGRAM > /dev/null &
 
     sleep 1
 
-    getpids zoneserver
+    getpids $PROGRAM
     [ -n "$pidlist" ] && true || false
     evaluate_retval
   else
@@ -25,21 +26,3 @@ function start_zoneserver()
   fi
 
 }
-
-case "$1" in
-  start)    echo  "Starting MaraDNS zoneserver..."
-            start_zoneserver
-            ;;
-  restart)  $0 stop
-            sleep 2
-            $0 start
-            ;;
-  stop)     echo  "Stopping MaraDNS zoneserver..."
-            killproc zoneserver
-            ;;
-  status)   statusproc zoneserver
-            ;;
-  *)        echo  "Usage: $0 {start|stop|restart|status}"
-            exit 1
-            ;;
-esac
