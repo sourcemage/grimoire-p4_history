@@ -1,12 +1,14 @@
            SPELL=syslog-ng
-         VERSION=1.4.14
+         VERSION=1.6.0rc1
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='f2bc05fe0f110c982f7175fd03c21617'
+          MD5[0]=51646f62a34bd41c61ea0ad7ddd9e3f2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.balabit.hu/downloads/syslog-ng/1.4/$SOURCE
+   SOURCE_URL[0]=http://www.balabit.hu/downloads/syslog-ng/1.6/src/$SOURCE
         WEB_SITE=http://www.balabit.hu
+      LICENSE[0]=GPL
+      MAINTAINER=vydra@fria.fri.utc.sk
          ENTERED=20020203
-         UPDATED=20020203
+         UPDATED=20030318
            SHORT="sysklog-ng is an enhanced sysklogd replacement"
 cat << EOF
 syslog-ng, as the name shows, is a syslogd replacement, but with new
