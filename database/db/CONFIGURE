@@ -1,4 +1,7 @@
-config_query_option JSUP "Enable Java support (e.g. to allow to compile OpenOffice)?" \
-                         n "--enable-java" "--disable-java"  &&
-config_query_option TESTS "Enable tests?" \
-                         n "--enable-test" "--disable-test"
+config_query_option  DB_JSUP                                                 \
+                     "Enable Java support (e.g. to compile OpenOffice)?"  n  \
+                     "--enable-java"  "--disable-java"                       &&
+
+config_query_option  DB_TESTS                                                \
+                     "Enable tests?"                                      n  \
+                     "--enable-test"  "--disable-test"
