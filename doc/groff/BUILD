@@ -8,7 +8,7 @@
 
     if  ! spell_installed netpbm; then
         patch  < $SCRIPT_DIRECTORY/groff.patch
-    fi
+    fi                                 &&
 
     make                               &&
     prepare_install                    &&

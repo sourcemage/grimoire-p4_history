@@ -1,37 +1,43 @@
+2004-05-14 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 1.19.1
+	Still fails with multiple make jobs
+	* BUILD: Missing && after fi
+	* HISTORY: Formatted to Guru Handbook
+
 2003-07-02 Eric Sandall <eric@sandall.us>
-	* Updated to 1.19
-	* Changed LICENSE to LICENSE[0]
-	* Added MAKE_NJOBS=1
+	* DETAILS: Updated to 1.19
+	Changed LICENSE to LICENSE[0]
+	Added MAKE_NJOBS=1
 
 2002-11-08 Joel Mayes <bluebird@optushome.com.au>
-	* Correct MD5SUM
+	* DETAILS: Correct MD5SUM
 
 2002-10-19 Joel Mayes <bluebird@optushome.com.au>
-	* Version bumped to 1.18.1
+	* DETAILS: Version bumped to 1.18.1
 
 2002-08-10 Joel Mayes <bluebird@optushome.com.au>
-	* updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
+	* DETAILS: updated MD5[0] field to reflect the .tar not .tar.(bz2|gz|Z)
 
 29-07-2002 Joel Mayes <bluebird@optushome.com.au>
-	* :) Spell now seds the man.conf file to do the fixs below
+	* POST_INSTALL: :) Spell now seds the man.conf file to do the fixs below
 	  with half the effort, and no need to relogin to get the man fix.
 	  Why do the compilcated fixes always occour to you first?
 
 29-07-2002 Joel Mayes <bluebird@optushome.com.au>
-	* Back to version 1.18,
-	  added POST_INSTALL POST_REMOVE and BUILD files
+	* DETAILS: Back to version 1.18,
+	* BUILD, POST_INSTALL, POST_REMOVE: Added
 	  spell patches Makefile if netpbm is not installed to avoid netpbm dependancy
 	  POST_* files add/remove export MANPAGER="less -sR" to /etc/profile if the 
 	  less spell is installed, (doesn't have to same problems with this version of groff 
 	  as less does).
 
 26-07-2002 Joel Mayes <bluebird@optushome.com.au>
-	* reverted to 1.17.2 due to problems with man pages
+	* DETAILS: reverted to 1.17.2 due to problems with man pages
 
 24-07-2002 Joel Mayes <bluebird@optushome.com.au>
-	* added DEPENDS to netpbm
+	* DEPENDS: Added dependency netpbm
 
 24-07-2002 Joel Mayes <bluebird@optushome.com.au>
-	* Version bumped to 1.18
-	  added this file
+	* DETAILS: Version bumped to 1.18
+	* HISTORY: Added
 
