@@ -13,7 +13,7 @@
   cd ../..                                            &&
   export OPENH323DIR=$SOURCE_DIRECTORY/openh323       &&
   cd openh323                                         &&
-  make optnoshared                                    &&
+  MAKE_NJOBS=1 make optnoshared                       &&
   cd lib                                              &&
   ln -s libh323_linux_x86_r_s.a libopenh323.a         &&
   cd ../..                                            &&
