@@ -2,7 +2,7 @@
     for i in openmosixcollector openmosixanalyzer openmosixhistory openmosixprocs openmosixmigmon .  
      do
        cd $SOURCE_DIRECTORY/$i               &&
-       ./configure --enable-mt               &&
+       ./configure $OPTS --enable-mt          &&
        make
      done                                    &&
 
