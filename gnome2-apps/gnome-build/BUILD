@@ -1,5 +1,2 @@
-if [ "$CVS_CHECKOUT" == "y" ]
-then
-	./autogen.sh
-fi &&
+./autogen.sh &&
 default_build
