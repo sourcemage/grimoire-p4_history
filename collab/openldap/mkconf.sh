@@ -126,7 +126,7 @@ cat > /etc/openldap/top.ldif << __EOF__
 #
 # Replace $SUFFIX with suffix from slapd.conf
 # Use the following command to create th hierarchy:
-# 	ldapadd -D "$SUFFIX" -W -f /etc/openldap/top.ldif
+# 	ldapadd -D "cn=root,$SUFFIX" -W -f /etc/openldap/top.ldif
 #
 
 dn: $SUFFIX
