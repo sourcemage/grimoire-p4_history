@@ -1,5 +1,7 @@
 cd  /usr/src/linux
 
+make mrproper
+
 while  
   case  $CONFIG_KERNEL in
     y|Y)  make  menuconfig
@@ -16,10 +18,10 @@ done
 
 backup_modules()  {
 
-  if    [  -d  /lib/modules/$VERSION      ];  then
-    rm   -rf   /lib/modules/$VERSION.old
-    mv         /lib/modules/$VERSION      \
-               /lib/modules/$VERSION.old
+  if    [  -d  /lib/modules/$VERSION-$EXTRAVERSION ];  then
+    rm   -rf   /lib/modules/$VERSION-$EXTRAVERSION.old
+    mv         /lib/modules/$VERSION-$EXTRAVERSION      \
+               /lib/modules/$VERSION-$EXTRAVERSION.old
   fi
 
 }
@@ -27,16 +29,26 @@ backup_modules()  {
 
 (
 
-  ln  -sf /usr/src/linux/include/asm-generic  /usr/include/asm-generic
-
   yes  n  |  make  oldconfig
-  cp  .config  $CONFIG_CACHE
-  make  dep               &&
-  make  bzImage           &&
-  make  modules           &&
+  cp  .config  $CONFIG_CACHE/kernel.config
+  make  dep                 &&
+  make  bzImage             &&
+
+  # Only install modules if module support is wanted
+  if  grep  -q "CONFIG_MODULES=y"  .config;  then
+    make   modules          &&
+    backup_modules          ||  exit  1;
+  fi  &&
+  
   prepare_install         &&
-  backup_modules          &&
-  make   modules_install  &&
-  cp    arch/i386/boot/bzImage   /boot/vmlinubz-$VERSION
+  
+  if  grep  -q "CONFIG_MODULES=y"  .config;  then
+    make   modules_install  ||  exit  1;
+  fi  &&
+
+  case  $BUILD  in
+    powerpc-linux-gnu)  cp                 vmlinuz  /boot/vmlinubz-$VERSION  ;;
+                    *)  cp  arch/i386/boot/bzImage  /boot/vmlinubz-$VERSION  ;;
+  esac
 
 ) > $C_FIFO 2>&1

@@ -1,42 +1,11 @@
-cd  /usr/src/linux
-
-while  
-  case  $CONFIG_KERNEL in
-    y|Y)  make  menuconfig
-          if  query  "Repeat menuconfig?  "  n
-          then  CONFIG_KERNEL=y
-          else  CONFIG_KERNEL=n
-          fi     ;;
-      *)  false  ;;
-  esac
-do
-  true
-done
-
-
-backup_modules()  {
-
-  if    [  -d  /lib/modules/$VERSION      ];  then
-    rm   -rf   /lib/modules/$VERSION.old
-    mv         /lib/modules/$VERSION      \
-               /lib/modules/$VERSION.old
-  fi
-
-}
-
-
 (
 
-  ln  -sf /usr/src/linux/include/asm-generic  /usr/include/asm-generic
-
-  yes  n  |  make  oldconfig
-  cp  .config  $CONFIG_CACHE
-  make  dep               &&
-  make  bzImage           &&
-  make  modules           &&
-  prepare_install         &&
-  backup_modules          &&
-  make   modules_install  &&
-  cp    arch/i386/boot/bzImage   /boot/vmlinubz-$VERSION
+  cd  /usr/src/linux  &&
+  if [  -f  /tmp/sorcery.patching  ]; then
+    echo "Applying $SPELL patch";
+    bzcat  $SOURCE_CACHE/$SOURCE  |  patch  -p1
+  else
+    echo "$SPELL patch will be applied next time you cast linux-devel"
+  fi
 
 ) > $C_FIFO 2>&1
