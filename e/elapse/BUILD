@@ -1,3 +1,3 @@
-touch  ChangeLog  &&
-./autogen.sh      &&
+touch  NEWS    &&
+./autogen.sh   &&
 default_build
