@@ -12,6 +12,9 @@
                --enable-shadow             \
                $ENABLE_PAM                 \
                $OPTS                       &&
+  sedit  's:RUN_DIR.*"/var/run/proftpd":RUN_DIR "/var/run":' \
+         config.h                          &&
+  sedit  's:rundir=/var/run/proftpd:rundir=/var/run:'  Make.rules  &&
   make                                     &&
   prepare_install                          &&
   make    install                          &&
