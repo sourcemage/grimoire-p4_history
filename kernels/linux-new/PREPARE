@@ -573,9 +573,12 @@ old_src_menu()
 			if [ -f ${old_src_tree}/.spell-config.p ]
 			then
 				cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
+				tmp=$old_src_tree
 				persistent_load
 				persistent_add old_src_tree
 				mode="oldktree"
+				old_src_tree=$tmp
+				reconf="true"
 				persistent_remove MAKEMODE
 			fi
 			break
