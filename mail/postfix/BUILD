@@ -11,13 +11,21 @@
 
   if  spell_installed  openldap
   then  AUXLIBS="-lldap -llber"				&&
-         CCARGS="-DHAS_LDAP"
+         CCARGS="-DHAS_LDAP"				&&
+	message "${MESSAGE_COLOR}Openldap detected: Using Openldap ${DEFAULT_COLOR}"
   fi							&&
 
   if  spell_installed  Linux-PAM
   then  AUXLIBS="$AUXLIBS -lpam -lpam_misc"		&&
-         CCARGS="$CCARGS  -DHAS_PAM"
+         CCARGS="$CCARGS  -DHAS_PAM"			&&
+	message "${MESSAGE_COLOR}Linux-Pam detected: Using Linux-PAM ${DEFAULT_COLOR}"
   fi							&&
+
+  if  spell_installed  cyrus-sasl
+  then  AUXLIBS="$AUXLIBS -lsasl2"			&&
+         CCARGS="$CCARGS  -DUSE_SASL_AUTH"		&&
+	message "${MESSAGE_COLOR}Cyrus-sasl detected: Using Cyrus-sasl ${DEFAULT_COLOR}"
+  fi                                                    &&
 
   # fix to get man pages to install in /usr/man
 
@@ -53,6 +61,8 @@
  
   mkdir /usr/doc/$SPELL 1>/dev/null 2>&1 || true	&&
   cp -r README_FILES /usr/doc/$SPELL/			&&
+  cp INSTALL /usr/doc/$SPELL/README_FILES		&&
+  cp RELEASE_NOTES /usr/doc/$SPELL/README_FILES		&&
   cp -r html /usr/doc/$SPELL/
 
 ) > $C_FIFO 2>&1  &&  (
