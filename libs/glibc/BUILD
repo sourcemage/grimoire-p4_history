@@ -44,18 +44,21 @@
                $OPTS			      &&
   make                                        &&
   prepare_install                             &&
-  if [ "$CROSS_INSTALL" = "on" ] ; then 
+  if [ "$CROSS_INSTALL" = "on" ] ; then
   echo "prefix = ${INSTALL_ROOT}/usr" > configparms                                                &&
   echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                                              &&
   echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                                         &&
   echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                                           &&
   echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                                   &&
-  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                    &&
-  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile                                &&
   sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                                        &&
-  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                
-  fi                                                                                               &&
-
+  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                                    &&
+   if [ "$NPTL" = "yes" ]
+   then sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile             &&
+        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/nptl/Makefile
+   else sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile     &&
+        sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/linuxthreads/Makefile
+   fi
+  fi                                                                              &&
  ### making these symlinks and unsetting the (sorcery) preload of old libs should 
  ### finally fix the glibc install problems. 
  ### Had to add a check for saved libraries, as an empty log means none can be saved
