@@ -4,7 +4,7 @@ RCS file: /cvsroot/mplayer/main/Makefile,v
 retrieving revision 1.277
 diff -u -r1.277 Makefile
 --- Makefile	19 Oct 2003 20:20:45 -0000	1.277
-+++ Makefile	3 Nov 2003 18:35:30 -0000
++++ Makefile	15 Nov 2003 09:54:04 -0000
 @@ -40,6 +40,8 @@
  
  CFLAGS = $(OPTFLAGS) -Ilibmpdemux -Iloader -Ilibvo $(FREETYPE_INC) $(EXTRA_INC) $(CDPARANOIA_INC) $(SDL_INC) $(X11_INC) $(FRIBIDI_INC) $(DVB_INC) # -Wall
@@ -17,10 +17,10 @@ diff -u -r1.277 Makefile
 Index: configure
 ===================================================================
 RCS file: /cvsroot/mplayer/main/configure,v
-retrieving revision 1.802
-diff -u -r1.802 configure
---- configure	3 Nov 2003 16:35:17 -0000	1.802
-+++ configure	3 Nov 2003 18:35:45 -0000
+retrieving revision 1.811
+diff -u -r1.811 configure
+--- configure	13 Nov 2003 21:03:11 -0000	1.811
++++ configure	15 Nov 2003 09:54:16 -0000
 @@ -172,6 +172,7 @@
    --disable-css          Disable old-style libcss DVD support [autodetect]
    --disable-cdparanoia   Disable cdparanoia support [autodetect]
@@ -29,7 +29,7 @@ diff -u -r1.802 configure
    --disable-unrarlib     Disable Unique RAR File Library [enabled]
    --enable-menu          Enable OSD menu support (NOT DVD MENU) [disabled]
    --disable-sortsub      Disable subtitles sorting [enabled]
-@@ -1180,6 +1181,7 @@
+@@ -1181,6 +1182,7 @@
  _cdparanoia=auto
  _big_endian=auto
  _freetype=auto
@@ -37,7 +37,7 @@ diff -u -r1.802 configure
  _shared_pp=no
  _menu=no
  _qtx=auto
-@@ -1395,6 +1397,8 @@
+@@ -1396,6 +1398,8 @@
    --disable-big-endian) _big_endian=no  ;;
    --enable-freetype)    _freetype=yes   ;;
    --disable-freetype)   _freetype=no    ;;
@@ -46,7 +46,7 @@ diff -u -r1.802 configure
    --enable-unrarlib)	_unrarlib=yes	;;
    --disable-unrarlib)	_unrarlib=no	;;
    --enable-ftp)         _ftp=yes        ;;
-@@ -4214,6 +4218,40 @@
+@@ -4232,6 +4236,40 @@
  fi
  echores "$_freetype"
  
@@ -87,7 +87,7 @@ diff -u -r1.802 configure
  
  echocheck "fribidi with charsets"
  if test "$_fribidi" = yes ; then
-@@ -5812,6 +5850,8 @@
+@@ -5845,6 +5883,8 @@
  CDPARANOIA_LIB = $_ld_cdparanoia
  FREETYPE_INC = $_inc_freetype
  FREETYPE_LIB = $_ld_freetype
@@ -96,7 +96,7 @@ diff -u -r1.802 configure
  FRIBIDI_INC = $_inc_fribidi
  FRIBIDI_LIB = $_ld_fribidi
  LIBLZO_LIB= $_ld_liblzo
-@@ -6259,6 +6299,9 @@
+@@ -6298,6 +6338,9 @@
  
  /* enable FreeType support */
  $_def_freetype
@@ -109,11 +109,11 @@ diff -u -r1.802 configure
 Index: mencoder.c
 ===================================================================
 RCS file: /cvsroot/mplayer/main/mencoder.c,v
-retrieving revision 1.220
-diff -u -r1.220 mencoder.c
---- mencoder.c	3 Nov 2003 16:35:17 -0000	1.220
-+++ mencoder.c	3 Nov 2003 18:35:51 -0000
-@@ -434,6 +434,10 @@
+retrieving revision 1.221
+diff -u -r1.221 mencoder.c
+--- mencoder.c	7 Nov 2003 23:32:38 -0000	1.221
++++ mencoder.c	15 Nov 2003 09:54:21 -0000
+@@ -440,6 +440,10 @@
  #ifdef USE_OSD
  #ifdef HAVE_FREETYPE
    init_freetype();
@@ -130,7 +130,7 @@ RCS file: /cvsroot/mplayer/main/mplayer.c,v
 retrieving revision 1.736
 diff -u -r1.736 mplayer.c
 --- mplayer.c	1 Nov 2003 15:16:19 -0000	1.736
-+++ mplayer.c	3 Nov 2003 18:36:00 -0000
++++ mplayer.c	15 Nov 2003 09:54:29 -0000
 @@ -1057,8 +1057,15 @@
  
  //------ load global data first ------
@@ -161,10 +161,10 @@ diff -u -r1.736 mplayer.c
 Index: DOCS/man/de/mplayer.1
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/man/de/mplayer.1,v
-retrieving revision 1.32
-diff -u -r1.32 mplayer.1
---- DOCS/man/de/mplayer.1	27 Oct 2003 00:23:38 -0000	1.32
-+++ DOCS/man/de/mplayer.1	3 Nov 2003 18:36:10 -0000
+retrieving revision 1.33
+diff -u -r1.33 mplayer.1
+--- DOCS/man/de/mplayer.1	4 Nov 2003 21:51:39 -0000	1.33
++++ DOCS/man/de/mplayer.1	15 Nov 2003 09:54:39 -0000
 @@ -912,6 +912,8 @@
  Die \-subfont-*-Optionen sind nur verfügbar, wenn FreeType eincompieliert
  wurde. Wenn die FreeType-Unterstützung aktiviert wurde, dann kann die
@@ -186,10 +186,10 @@ diff -u -r1.32 mplayer.1
 Index: DOCS/man/en/mplayer.1
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/man/en/mplayer.1,v
-retrieving revision 1.479
-diff -u -r1.479 mplayer.1
---- DOCS/man/en/mplayer.1	3 Nov 2003 16:35:16 -0000	1.479
-+++ DOCS/man/en/mplayer.1	3 Nov 2003 18:36:22 -0000
+retrieving revision 1.489
+diff -u -r1.489 mplayer.1
+--- DOCS/man/en/mplayer.1	13 Nov 2003 13:22:41 -0000	1.489
++++ DOCS/man/en/mplayer.1	15 Nov 2003 09:54:48 -0000
 @@ -1165,6 +1165,8 @@
  With FreeType, this option determines path to the text font file.
  .br
@@ -211,17 +211,18 @@ diff -u -r1.479 mplayer.1
 Index: DOCS/xml/en/install.xml
 ===================================================================
 RCS file: /cvsroot/mplayer/main/DOCS/xml/en/install.xml,v
-retrieving revision 1.14
-diff -u -r1.14 install.xml
---- DOCS/xml/en/install.xml	30 Oct 2003 00:21:31 -0000	1.14
-+++ DOCS/xml/en/install.xml	3 Nov 2003 18:36:26 -0000
-@@ -777,6 +777,22 @@
+retrieving revision 1.16
+diff -u -r1.16 install.xml
+--- DOCS/xml/en/install.xml	15 Nov 2003 00:51:35 -0000	1.16
++++ DOCS/xml/en/install.xml	15 Nov 2003 09:54:51 -0000
+@@ -777,6 +777,27 @@
    RAW plugin too, see URL below)
    <!-- FIXME: where's that URL? -->
    </para></listitem>
 +<listitem><para>
-+  using a TrueType (TTF) font, by the means of the <systemitem class="library">freetype</systemitem>
-+library. Version 2.0.9 or greater is mandatory! Then you have two methods:
++  using a TrueType (TTF) font, by the means of the <systemitem class="library">
++  freetype</systemitem> library. Version 2.0.9 or greater is mandatory! Then
++  you have two methods:
 +  <itemizedlist>
 +    <listitem><para>
 +      use the <option>-font /path/to/arial.ttf</option> option to specify a
@@ -232,8 +233,12 @@ diff -u -r1.14 install.xml
 +      </para></listitem>
 +      </itemizedlist>
 +  <para>
-+          if compiled with <systemitem class="library">fontconfig</systemitem> support, the above methods won't work, instead the <option>-font</option> expects a fontconfig font name and defaults to the sans-serif font. To get a list of fonts known to fontconfig, use <command>fc-list</command>. Example: <option>-font 'Bitstream Vera Sans'</option>
-+  </para>
++    if compiled with <systemitem class="library">fontconfig</systemitem>
++    support, the above methods won't work, instead the <option>-font</option>
++    expects a fontconfig font name and defaults to the sans-serif font. To get
++    a list of fonts known to fontconfig, use <command>fc-list</command>.
++    Example: <option>-font 'Bitstream Vera Sans'</option>
++    </para>
 +  </para></listitem>
  </itemizedlist>
  
@@ -244,7 +249,7 @@ RCS file: /cvsroot/mplayer/main/libvo/font_load_ft.c,v
 retrieving revision 1.10
 diff -u -r1.10 font_load_ft.c
 --- libvo/font_load_ft.c	9 Jun 2003 12:15:47 -0000	1.10
-+++ libvo/font_load_ft.c	3 Nov 2003 18:36:35 -0000
++++ libvo/font_load_ft.c	15 Nov 2003 09:54:58 -0000
 @@ -23,6 +23,10 @@
  #include <freetype/freetype.h>
  #include <freetype/ftglyph.h>
