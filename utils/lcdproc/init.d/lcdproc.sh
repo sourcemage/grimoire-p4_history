@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Source Mage init.d install information
+# SMGL-START:3 4 5:S50
+# SMGL-STOP:0 1 2 6:K50
+#
 
 #  1. select paramiters for:  LCD_TYPE,     LCD_DRIVERS,   LCD_DEVICE,
 #                             LCD_CONTRAST, LCD_BACKLIGHT
