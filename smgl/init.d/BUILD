@@ -4,7 +4,7 @@
 linkscript ()
 {
     truncname=$(echo $init_script | cut -d. -f1)
-    for action in SGL-START SGL-STOP
+    for action in SMGL-START SMGL-STOP
       do
       for level in $(grep "# $action" $initdir/$init_script | cut -d: -f2)
 	do
@@ -61,7 +61,7 @@ cleanup_old()
 # Install selected scripts
 # the scriptque gets built in CONFIGURE
 initdir=/etc/init.d
-savetime=$(date +%Y%m%d%k%M)
+savetime=$(date +%Y%m%d%H%M)
 
 # strip out the quotes in previous output so it's usable
 sedit "s/\"//g" $SCRIPT_DIRECTORY/scriptque.temp    
