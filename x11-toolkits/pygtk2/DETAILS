@@ -1,14 +1,15 @@
            SPELL=pygtk2
-         VERSION=2.3.97
+         VERSION=2.4.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=pygtk-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pygtk-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/pygtk/$BRANCH/$SOURCE
-          MD5[0]='a40dded816792e1c09b2f7d98f32dde9'
+          MD5[0]='b9a8d8622d17530ca3fbaebd179dee05'
       LICENSE[0]=LGPL
+       BUILD_API=2
         WEB_SITE=http://www.daa.com.au/~james/software/pygtk/
          ENTERED=20020523
-         UPDATED=20040928
+         UPDATED=20041003
            SHORT="pygtk is a set of perl bindings for GTK."
 cat << EOF
 PyGTK is a set of bindings for the GTK widget set.  It provides an

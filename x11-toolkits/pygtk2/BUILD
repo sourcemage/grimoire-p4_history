@@ -1,2 +1,2 @@
-OPTS="$OPTS --enable-thread"
+OPTS="$OPTS --enable-thread" &&
 default_build
