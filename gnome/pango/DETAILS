@@ -1,14 +1,16 @@
            SPELL=pango
-         VERSION=1.0.5
+         VERSION=$PREPARE_VERSION
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v2.0/$SOURCE
-          MD5[0]="362576b73f731a359dd12f5fdb8b4c2a"
+   SOURCE_URL[0]=ftp://ftp.gtk.org/pub/gtk/v2.1/$SOURCE
+   SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]=$PREPARE_MD5
       LICENSE[0]=LGPL
         WEB_SITE=http://www.pango.org
       MAINTAINER=jon-sven@frisurf.no
          ENTERED=20020314
-         UPDATED=20021103
+         UPDATED=20021206
            SHORT="Pango is a library for layout and rendering of text"
 cat << EOF
 Pango is a library for layout and rendering of text, with an 
