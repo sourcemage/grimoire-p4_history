@@ -1,3 +1,12 @@
+29-07-2002 Joel Mayes <bluebird@optushome.com.au>
+
+        Back to version 1.18,
+        added POST_INSTALL POST_REMOVE and BUILD files
+        spell patches Makefile if netpbm is not installed to avoid netpbm dependancy
+        POST_* files add/remove export MANPAGER="less -sR" to /etc/profile if the 
+        less spell is installed, (doesn't have to same problems with this version of groff 
+        as less does).    
+
 26-07-2002 Joel Mayes <bluebird@optushome.com.au>
 
         reverted to 1.17.2 due to problems with man pages
