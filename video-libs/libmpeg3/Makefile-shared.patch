@@ -1,6 +1,40 @@
---- Makefile-old	2003-08-10 00:21:59.000000000 +0200
-+++ Makefile	2003-09-02 12:38:28.000000000 +0200
-@@ -66,6 +66,7 @@
+--- Makefile-old	2004-02-09 15:18:25.000000000 +0100
++++ Makefile	2004-02-09 15:20:16.000000000 +0100
+@@ -1,6 +1,5 @@
+ CC = gcc
+ NASM = nasm
+-USE_MMX = 0
+ USE_CSS = 1
+ A52DIR := $(shell expr a52dec* )
+ 
+@@ -16,6 +15,11 @@
+ OBJDIR := $(shell uname --machine)
+ 
+ 
++ifneq ($(OBJDIR), alpha)
++  ifneq ($(OBJDIR), x86_64)
++    CFLAGS += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
++  endif
++endif
+ 
+ 
+ ifeq ($(OBJDIR), alpha)
+@@ -25,14 +29,6 @@
+   endif
+ endif
+ 
+-ifeq ($(OBJDIR), i686)
+-  USE_MMX = 1
+-  ifneq ($(HAVE_CFLAGS), y)
+-    CFLAGS := -O2 -fomit-frame-pointer -falign-loops=2 -falign-jumps=2 -falign-functions=2 -I/usr/local/include
+-  endif
+-  CFLAGS += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+-endif
+-
+ ifeq ($(OBJDIR), x86_64)
+   ifneq ($(HAVE_CFLAGS), y)
+     CFLAGS := -O2 -fomit-frame-pointer -I/usr/local/include
+@@ -61,6 +57,7 @@
  
  CFLAGS += \
  	-I. \
@@ -8,7 +42,7 @@
  	-I$(A52DIR)/include \
  	-I$(A52DIR)/liba52
  
-@@ -132,18 +133,13 @@
+@@ -127,18 +124,13 @@
  	$(OBJDIR)/audio \
  	$(OBJDIR)/video
  
@@ -29,7 +63,7 @@
  
  $(shell if ! test -d $(OBJDIR) \; then mkdir -p $(OBJDIR) \; fi )
  
-@@ -156,18 +152,18 @@
+@@ -151,18 +143,18 @@
  
  
  $(OUTPUT): $(OBJS) $(ASMOBJS) $(NASMOBJS) $(A52OBJS)
@@ -52,7 +86,7 @@
  
  #$(OBJDIR)/mpeg3split: $(OUTPUT)
  #	$(CC) `cat $(OBJDIR)/c_flags` -o $(OBJDIR)/mpeg3split mpeg3split.c $(OUTPUT) $(LIBS)
-@@ -184,7 +180,11 @@
+@@ -179,7 +171,11 @@
  		-ldl
  
  install: 
