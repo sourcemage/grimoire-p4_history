@@ -1,16 +1,3 @@
-(
-
-  patch -p1 < $SCRIPT_DIRECTORY/simpleinit.patch &&
-  patch -p0 < $SCRIPT_DIRECTORY/simpleinit-1000uid.patch &&
-
-  ./configure                             &&
+./configure  &&
 #  sedit  's/CFLAGS.*:=/CFLAGS := -DDEBUG_GETPATH=1 /'  mconfig  &&
-  make  OPT="$CFLAGS"                     &&
-  prepare_install                         &&
-  make  DESTDIR=${INSTALL_ROOT}           \
-           ROOT=${INSTALL_ROOT}           \
-        install                           &&
-  cp $SCRIPT_DIRECTORY/telinit /sbin/telinit
-
-
-) > $C_FIFO 2>&1
+make  OPT="$CFLAGS"
