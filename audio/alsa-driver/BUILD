@@ -46,13 +46,23 @@ rm  -f  /lib/modules/`installed_version linux-new`/misc/snd*
   rm  -f   /dev/snd
   ln  -sf  /devices/snd  /dev/snd
   chown root.audio /dev/adsp
+  chmod 666 /dev/adsp
   chown root.audio /dev/amidi
+  chmod 666 /dev/amidi
   chown root.audio /dev/audio
+  chmod 666 /dev/audio
   chown root.audio /dev/dsp
-  chown root.audio /dev/midi
+  chmod 666 /dev/dsp
+  chown root.audio /dev/midi*
+  chmod 666 /dev/midi*
   chown root.audio /dev/mixer
-  chown root.audio /dev/sequencer2
+  chmod 666 /dev/mixer
+  chown root.audio /dev/sequencer*
+  chmod 666 /dev/sequencer*
   chown root.audio /dev/snd
+  chmod 666 /dev/snd
+  chown root.audio /devices/snd/*
+  chmod 666 /devices/snd/*
   ln  -sf  ../init.d/alsasound  /etc/rcS.d/S99alsasound
  
   if  [  !  -f   /etc/modules.d/alsa  ];  then
