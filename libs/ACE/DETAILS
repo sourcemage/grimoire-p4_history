@@ -1,13 +1,9 @@
            SPELL=ACE
-#          SPELL2=TAO
+       BUILD_API=2
          VERSION=5.4.1
-#        VERSION2=1.4
-#          SOURCE=${SPELL}-${VERSION}+${SPELL2}-${VERSION2}.tar.gz
-#          SOURCE=${SPELL}-${VERSION}.tar.gz
           SOURCE=${SPELL}.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}_wrappers
    SOURCE_URL[0]=http://deuce.doc.wustl.edu/$SOURCE
-#          MD5[0]=e3f258282375ad7e64588bf9d1d4e8fa
           MD5[0]=62c6e079230b58252f9554656fb4e351
       LICENSE[0]=http://www.cs.wustl.edu/~schmidt/ACE-copying.html
         WEB_SITE=http://www.cs.wustl.edu/~schmidt/ACE.html
@@ -35,20 +31,10 @@ concurrency. In addition, ACE automates system configuration and
 reconfiguration by dynamically linking services into applications at 
 run-time and executing these services in one or more processes or threads. 
 
-TAO is a freely available, open-source, and standards-compliant real-time 
-implementation of CORBA that provides efficient, predictable, and scalable 
-quality of service (QoS) end-to-end. Unlike conventional implementations of 
-CORBA, which are inefficient, unpredictable, non-scalable, and often 
-non-portable, TAO applies the best software practices and patterns to 
-automate the delivery of high-performance and real-time QoS to distributed 
-applications. 
-
 Notes:
 	This is a massive communications framework, so be aware that building 
 	this software library does take a considerable amount of time. Install
 	and cache are +/-65M.
-	As of now the TAO build is not activated, see BUILD file to activate it 
-	yourself.
 
 Documentation:
 	http://www.cs.wustl.edu/~schmidt/ACE-documentation.html
