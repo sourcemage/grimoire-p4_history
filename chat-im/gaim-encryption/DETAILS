@@ -1,0 +1,28 @@
+          SPELL=gaim-encryption
+        VERSION=${VERSION:=2.27}
+if [ "$CVS" = "yes" ]; then
+         VERSION=cvs
+         SOURCE=$SPELL-encryption-$VERSION2.tar.gz
+  SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
+  FORCE_DOWNLOAD=1
+          MD5[0]="IGNORE"
+else
+         SOURCE=$SPELL-$VERSION.tar.gz
+  SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]='4f1956e73ae944c6512c4134f0d228db'
+      LICENSE[2]=GPL
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+       WEB_SITE=http://gaim-encryption.sourceforge.net/
+      LICENSE[1]=GPL
+      MAKE_NJOBS=1
+    DISTCC_HOSTS=
+          CCACHE=off
+         ENTERED=20040627
+         UPDATED=20040627
+           SHORT="gaim is an instant messanger client for several protocols"
+cat << EOF
+gaim is an instant messanger client used primarly for the AIM protocol
+but has plugin support for icq, irc, yahoo, and jabber all at once
+in one interface.
+EOF
