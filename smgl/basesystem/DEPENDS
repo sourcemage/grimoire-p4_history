@@ -1,0 +1,46 @@
+depends  bash          &&
+depends  bzip2         &&
+depends  cpio          &&
+depends  dialog        &&
+depends  e2fsprogs     &&
+depends  file          &&
+depends  findutils     &&
+depends  grep          &&
+depends  gzip          &&
+depends  installwatch  &&
+depends  less          &&
+depends  lockexec      &&
+depends  nano          &&
+depends  patch         &&
+depends  rpmunpack     &&
+depends  sed           &&
+depends  tar           &&
+depends  textutils     &&
+depends  unzip         &&
+depends  wget          &&
+depends  xdelta        &&
+
+optional_depends  "sorcery-sound-simpsons"                     \
+                   ""                                          \
+                   ""                                          \
+                   "to have sorcery signal events with simpson sounds"  &&
+
+optional_depends  "openssh"                                       \
+                  ""                                              \
+                  ""                                              \
+                  "to use cabal multi-box system administration"  &&
+
+optional_depends  "mutt"              \
+                  ""                  \
+                  ""                  \
+                  "to send messages"  &&
+
+#optional_depends  "compilercache"                          \
+#                  ""                                       \
+#                  ""                                       \
+#                  "to accelerate compilation of upgrades"  &&
+
+optional_depends  "ccache"                                 \
+                  ""                                       \
+                  ""                                       \
+                  "to accelerate compilation of upgrades"
