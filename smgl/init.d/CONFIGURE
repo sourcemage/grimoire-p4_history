@@ -1,20 +1,28 @@
-if  [  -d  /devices  -a  !  -h  /devices  ]  ;  then
-  message  "It looks like you still have the old /devices devfs setup,"
-  message  "would you like to update to the standard way of doing this?"
-  message  "By saying yes, I will try to make the system mount devfs on"
-  message  "/dev instead of /devices, I will also prompt to update various"
-  message  "system files I know of that use /devices"
+if  !  grep  -q DEVFS_ON_DEV  $SPELL_CONFIG; then
+  if  [  -d  /devices  -a  !  -h  /devices  ]  ;  then
+    message  "It looks like you still have the old /devices devfs setup,"
+    message  "would you like to update to the standard way of doing this?"
+    message  "By saying yes, I will try to make the system mount devfs on"
+    message  "/dev instead of /devices, I will also prompt to update various"
+    message  "system files I know of that use /devices"
 
-  if  query  "update /devices to mount on /dev"  n  ;  then
-    message  "Please note that you may have to modify the 'append' option in"
-    message  "/etc/lilo.conf so that it contains 'devfs=mount'."
-    message  "For example: 'append=\"devfs=mount\""
+    if  query  "update /devices to mount on /dev"  n  ;  then
+      message  "Please note that you may have to modify the 'append' option in"
+      message  "/etc/lilo.conf so that it contains 'devfs=mount'."
+      message  "For example: 'append=\"devfs=mount\""
 
-    FTF=""    # Files To Fix
-    query  "Fix /etc/fstab?"  y  &&  FTF="$FTF /etc/fstab"
-    query  "Fix /etc/inittab?"  y  &&  FTF="$FTF /etc/inittab"
-    query  "Fix /etc/securetty?"  y  &&  FTF="$FTF /etc/securetty"
-    echo  $FTF  >  /tmp/devices2dev
-    message  "Okay thats all for now"
+      FTF=""    # Files To Fix
+      query  "Fix /etc/fstab?"  y  &&  FTF="$FTF /etc/fstab"
+      query  "Fix /etc/inittab?"  y  &&  FTF="$FTF /etc/inittab"
+      query  "Fix /etc/securetty?"  y  &&  FTF="$FTF /etc/securetty"
+      echo  $FTF  >  /tmp/devices2dev
+      message  "Okay thats all for now"
+      DEVFS_ON_DEV=y
+    else
+      DEVFS_ON_DEV=n
+    fi
+  else
+    DEVFS_ON_DEV=y
   fi
+  echo  "DEVFS_ON_DEV=$DEVFS_ON_DEV"  >>  $SPELL_CONFIG
 fi
