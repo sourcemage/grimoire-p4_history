@@ -29,9 +29,9 @@
     chmod  600  /etc/samba/private/smbpasswd
   fi  &&
 
-  cp  -f  examples/smb.conf.default /etc/samba  &&
-  if  [  !  -f  /etc/samba.conf  ];  then
-    cp  /etc/smb.conf.default  /etc/smb.conf
+  cp  -f  examples/smb.conf.default  /etc/samba/  &&
+  if                       [  !  -f  /etc/samba/smb.conf  ];  then
+    cp  /etc/samba/smb.conf.default  /etc/samba/smb.conf
   fi
 
 )
