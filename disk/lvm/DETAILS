@@ -1,15 +1,13 @@
            SPELL=lvm
-         VERSION=1.0.8
-          SOURCE=${SPELL}_$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/LVM
-   SOURCE_URL[0]=ftp://ftp.sistina.com/pub/LVM/1.0/$SOURCE
-   SOURCE_URL[1]=ftp://linux.msede.com/lvm/1.0/$SOURCE
-          MD5[0]=6a8cf094897ee9757b4592a58a9d5e5b
-        WEB_SITE=http://www.sistina.com/lvm
+         VERSION=2.00.08
+          SOURCE=LVM2.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/LVM2.$VERSION
+   SOURCE_URL[0]=ftp://ftp.sistina.com/pub/LVM2/tools/$SOURCE
+          MD5[0]=26f64d1de1fc3addfbb939502965a5c2
+        WEB_SITE=http://www.sistina.com/products_lvm.htm
       LICENSE[0]=GPL
          ENTERED=20010922
-         UPDATED=20020124
-      MAINTAINER=svolli@svolli.de
+         UPDATED=20031219
            SHORT="lvm is the logical volume manager"
 cat << EOF
 The Logical Volume Manager (LVM) is a subsystem for
