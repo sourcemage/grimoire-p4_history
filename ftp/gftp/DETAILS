@@ -1,16 +1,15 @@
            SPELL=gftp
-         VERSION=2.0.13
+         VERSION=2.0.14rc1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.gftp.org/gftp-$VERSION.tar.gz
-          MD5[0]=8368f82aa2ea7696a628fc4b1be31d17
+   SOURCE_URL[0]=http://www.gftp.org/$SOURCE
+          MD5[0]='20dba081916f8a0ee448b5b9fa13a577'
         WEB_SITE=http://www.gftp.org/
          ENTERED=20011031
          UPDATED=20020104
       LICENSE[0]=GPL
       MAINTAINER=eric@schabell.com
            SHORT="gFTP is a graphical ftp client"
-
 cat << EOF
 gFTP is a multithreaded FTP client for X Windows written using GTK+.
 It features simultaneous downloads, resuming of interrupted file

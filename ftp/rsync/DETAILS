@@ -1,23 +1,20 @@
            SPELL=rsync
-       # VERSION=2.4.8  this is the stable branch.
          VERSION=2.5.5
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://rsync.samba.org/ftp/rsync/$SOURCE
    SOURCE_URL[1]=ftp://rsync.samba.org/pub/rsync/$SOURCE
-          MD5[0]=a858411f4e06022eb5cb99679f259f8c
+          MD5[0]='a858411f4e06022eb5cb99679f259f8c'
         WEB_SITE=http://rsync.samba.org
          ENTERED=20010922
          UPDATED=20020807
       LICENSE[0]=GPL
       MAINTAINER=eric@schabell.com
-           SHORT="rsync is a replacement for rcp."
+           SHORT="rsync is a replacement for rcp"
 cat << EOF
 rsync is a replacement for rcp (and scp) that has many more features.
 It uses the "rsync algorithm" which provides a very fast method for
 remote files into sync. It does this by sending just the differences in
 the files across the link, without requiring that both sets of files are
 present at one of the ends of the link beforehand.
-
-
 EOF
