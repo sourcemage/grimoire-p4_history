@@ -25,13 +25,13 @@ get_kdelanguages()  {
 SOURCE_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc5/src/\$SPELL/\$SOURCE >>$CONFIG_CACHE/kde.languages
         else
           echo SOURCE$i=\$SPELL-$LANGUAGE-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages >> $CONFIG_CACHE/kde.languages
-          echo SOURCE${i}_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc3/src/\$SPELL/\$SOURCE$i >> $CONFIG_CACHE/kde.languages
+          echo SOURCE${i}_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc5/src/\$SPELL/\$SOURCE$i >> $CONFIG_CACHE/kde.languages
         fi
         i=$[$i+1]
       done
     else
       echo SOURCE=\$SPELL-\$VERSION.tar.bz2 >> $CONFIG_CACHE/kde.languages
-      echo SOURCE_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc3/src/\$SPELL/\$SOURCE >> $CONFIG_CACHE/kde.languages
+      echo SOURCE_URL[0]=\$KDE_URL/unstable/\kde-3.1-rc5/src/\$SPELL/\$SOURCE >> $CONFIG_CACHE/kde.languages
     fi
   fi
   . $CONFIG_CACHE/kde.languages
