@@ -1,5 +1,7 @@
 depends  db  &&
 
-optional_depends  teTeX       ""  ""  "to build TeX documentation" &&
-optional_depends  psutils     ""  ""  "to build TeX documentation" &&
-optional_depends  linuxdoc-tools "" "" "to build TeX documentation"
+if [ "$BUILD_DOCS" = "y" ] ; then
+  depends  teTeX  &&
+  depends  psutils  &&
+  depends  linuxdoc-tools
+fi
