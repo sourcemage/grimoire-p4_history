@@ -1,18 +1,22 @@
            SPELL=Bundle-Tk
-         VERSION=1.007
-          SOURCE=Tk402.004.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/Tk402.004
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/N/NI/NI-S/Tk402.004.tar.gz
-        WEB_SITE=http://search.cpan.org/search?mode=module&query=Bundle::Tk
+         VERSION=800.024
+          SOURCE=Tk-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Tk$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/N/NI/NI-S/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Tk"
          ENTERED=20020313
-         UPDATED=20020313
+         UPDATED=20020324
       MAINTAINER="redlemon@knoware.nl"
-           SHORT="Perl implementation of the tk script language"
+           SHORT="Perl implementation of the Tk script language"
 cat << EOF
-contains:
-~~~~~~~~~
-Net::NNTP
-Mail::Internet
-LWP
-Tk
+
+This bundle contains everything necessary to use Tk with perl:
+
+    modules
+    ~~~~~~~
+    Net::NNTP
+    Mail::Internet
+    LWP
+    Tk
+
 EOF

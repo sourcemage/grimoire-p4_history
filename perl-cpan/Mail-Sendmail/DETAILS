@@ -1,9 +1,9 @@
            SPELL=Mail-Sendmail
          VERSION=0.78
-          SOURCE=Mail-Sendmail-0.78.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/Mail-Sendmail-0.78
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/M/MI/MIVKOVIC/Mail-Sendmail-0.78.tar.gz
-        WEB_SITE=http://search.cpan.org/search?mode=module&query=Mail-Sendmail
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/M/MI/MIVKOVIC/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Mail::Sendmail"
          ENTERED=20020312
          UPDATED=20020315
       MAINTAINER="hvisage@envisage.co.za"

@@ -1,7 +1,12 @@
-if  [  -f /opt/sybase/lib/libsybdb.so  ];  then
-  default_pre_build
-else
-  sound  FAILURE
-  message  "!!!Problem: no Sybase found, Please instal first"
-  false
+echo ""
+echo "This spell was renamed to Sybase-Sybperl to follow the section's naming "
+echo "convention."
+echo ""
+echo "sybperl will be exiled if you installed it and Sybase-Sybperl will"
+echo "be cast in stead."
+echo ""
+
+if ! query "Do you want to continue?" y
+  then
+    exit 0
 fi

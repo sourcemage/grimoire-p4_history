@@ -1,22 +1,27 @@
            SPELL=Bundle-CPAN
-         VERSION=1.58
-          SOURCE=CPAN-1.59.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/CPAN-1.59
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/A/AN/ANDK/CPAN-1.59.tar.gz
-        WEB_SITE=http://search.cpan.org/search?mode=module&query=Bundle::CPAN
+         VERSION=1.59
+          SOURCE=CPAN-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/CPAN-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/A/AN/ANDK/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Bundle::CPAN"
          ENTERED=20020312
-         UPDATED=20020313
+         UPDATED=20020324
       MAINTAINER="redlemon@knoware.nl"
            SHORT="Tools for the Comprehensive Perl Archive Network (CPAN)"
 cat << EOF
-contains:
-~~~~~~~~~
-File::Spec
-MD5
-Compress::Zlib
-Archive::Tar
-Term::ReadKey
-Term::ReadLine::Perl
-CPAN::WAIT
-CPAN
+
+This bundle contains verything necessary to use the CPAN
+package manager.
+
+    modules
+    ~~~~~~~
+    MD5
+    File::Spec
+    Compress::Zlib
+    Archive::Tar
+    Term::ReadKey
+    Term::ReadLine::Perl
+    CPAN::WAIT
+    CPAN
+
 EOF

@@ -1,14 +1,16 @@
            SPELL=Filter-Util-Call
-         VERSION=1.06
-          SOURCE=Filter-1.28.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/Filter-1.28
-   SOURCE_URL[0]=http://www.cpan.org/authors/id/P/PM/PMQS/Filter-1.28.tar.gz
-        WEB_SITE=http://search.cpan.org/search?mode=module&query=Filter::Util::Call
+         VERSION=1.28
+          SOURCE=Filter-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Filter-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/P/PM/PMQS/$SOURCE
+        WEB_SITE="http://search.cpan.org?module=Filter::Util::Call"
          ENTERED=20020314
-         UPDATED=20020315
+         UPDATED=20020324
       MAINTAINER="redlemon@knoware.nl"
            SHORT="Interface for creation of Perl Filters"
 cat << EOF
+
 This module provides you with the framework to write
 Source Filters in Perl.
+
 EOF
