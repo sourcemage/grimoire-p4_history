@@ -1,0 +1,23 @@
+           SPELL=libevent
+         VERSION=0.7a
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.monkey.org/~provos/$SOURCE
+          MD5[0]=8ce44136a13e45f161eb37c7ad055849
+        WEB_SITE=http://www.monkey.org/~provos/libevent/
+         ENTERED=20030419
+         UPDATED=20030419
+      LICENSE[0]=BSD
+      MAINTAINER=marcg@phreaker.net
+           SHORT="libevent is an event notification library for network servers."
+cat << EOF
+The libevent API provides a mechanism to execute a callback function
+when a specific event occurs on a file descriptor or after a timeout
+has been reached. Furthermore, libevent also support callbacks due to
+signals or regular timeouts.
+ 
+libevent is meant to replace the event loop found in event driven
+network servers. An application just needs to call event_dispatch()
+and then adds or removes events dynamically without having to change
+the event loop.
+EOF
