@@ -1,3 +1,9 @@
+2004-08-24 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added BUILD_API=2
+	* BUILD: Converted to BUILD_API 2
+	* INSTALL: Added
+	* TRIGGERS: Added recast after glibc  (Bug #7192)
+
 2004-07-31 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, apr-0.9.4-tempdir.patch: fix htpasswd breakage
 
@@ -31,9 +37,10 @@
 	* DETAILS: take APR 0.9.5 from the CVS, I can't wait anymore.
 
 2003-10-28 Sergey Lipnevich <sergey@sourcemage.org>
-	* DETAILS, BUILD, (new) CONFIGURE: make it configurable what branch of APR
-	  is being used, 0.9 (stable for httpd 2.0) or 1.0 (development for httpd 2.1),
-	  and whether to check out latest source from ASF source repository.
+	* DETAILS, BUILD, (new) CONFIGURE: make it configurable what branch of
+	  APR is being used, 0.9 (stable for httpd 2.0) or 1.0 (development for
+	  httpd 2.1), and whether to check out latest source from ASF source
+	  repository.
 
 2003-10-25 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Set tag to HEAD.
@@ -54,7 +61,8 @@
 	  as an origin of include files during compilation.
 
 2003-07-17 Sergey Lipnevich <sergey@sourcemage.org>
-	* BUILD: Added `PrintPath' script to those installed into build/, for httpd to build.
+	* BUILD: Added `PrintPath' script to those installed into build/, for
+	  httpd to build.
 
 2003-07-09 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: Upgrade to 0.9.4 from Apache 2.0.47.
