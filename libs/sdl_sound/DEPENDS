@@ -23,4 +23,9 @@ optional_depends  libmikmod                                   \
 optional_depends  libvorbis                        \
                   "--enable-vorbis"                \
                   "--disable-vorbis"               \
-                  "to enable Ogg Vorbis decoding"
+                  "to enable Ogg Vorbis decoding"  &&
+
+optional_depends  physfs                        \
+                  "--enable-physfs"             \
+                  "--disable-physfs"            \
+                  "for PhysicsFS in playsound"
