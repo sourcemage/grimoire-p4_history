@@ -5,9 +5,9 @@
 
   PREFIX=${INSTALL_ROOT}/usr/firebird		&&
 # fix compiler flags
-#"s/-O3 -march=i586 -mcpu=i686/$CFLAGS/;s/-ggdb//;s/-fno-builtin//;s/-fno-omit-frame-pointer//" \
   sed -i -e \
 "s/-O3 -march=i586 -mcpu=i686//;s/-ggdb/$CFLAGS/;s/-shared/-shared $LDFLAGS/" \
+       -e "s/-fno-builtin//;s/-fno-omit-frame-pointer//"      \
 	builds/posix/prefix.linux		&&
 
 # make this compatible with smgl init system
