@@ -72,7 +72,7 @@
  fi &&
  ln -sf $SOURCE_DIRECTORY.bld/elf/ld.so ${INSTALL_ROOT}/lib/ld-linux.so.2   &&
  unset  LD_LIBRARY_PATH                                                     &&
- (  ldconfig  ||  true  )                                                   &&
+ (  ldconfig -X ||  true  )                                                   &&
 
  ### glibc only installs these if the file differs
   for i in ${INSTALL_ROOT}/usr/include/bits/syscall.h ${INSTALL_ROOT}/usr/include/gnu/stubs.h  
