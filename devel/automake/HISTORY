@@ -1,66 +1,56 @@
-2003-10-01  Eric Sandall <eric@sandall.us>
+2003-10-10 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 1.7.8
+	* HISTORY: Updated to follow Guru Handbook (notes that Julian
+	had already been following this standard...wow)
 
-		DETAILS: Update to 1.7.7
+2003-10-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 1.7.7
 
-2003-07-11  Eric Sandall <eric@sandall.us>
+2003-07-11 Eric Sandall <eric@sandall.us>
+	* DETAILS: Update to 1.7.6
 
-        Update to 1.7.6
+2003-06-23 hgg <hgreig@bigpond.net.au>
+	* DETAILS: Update to 1.7.5
 
-2003-06-23  hgg <hgreig@bigpond.net.au>
+2003-06-23 hgg <hgreig@bigpond.net.au>
+	* DETAILS: ARCHIVE="off" fix in bugzilla bug #1068, reverting change
+	13315, keeping 13321
+	* PREPARE: Added to remove cache after fixing bug #1068
 
-		Update to 1.7.5
+2003-04-15 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.7.3.
 
-2003-06-23  hgg <hgreig@bigpond.net.au>
+2002-12-21 Julian v. Bock <julian@wongr.net>
+	* BUILD: make correct symlink.
+	* DETAILS: update UPDATED.
 
-		ARCHIVE="off" fix in bugzilla bug #1068, reverting change
-        13315, keeping 13321
+2002-12-10 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.7.2.
 
-		Added PREPARE to remove cache after fixing bug #1068
+2002-10-31 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.7.1.
 
-2003-04-15  Julian v. Bock  <julian@wongr.net>
+2002-10-13 Eric Sandall <eric@sandall.us>
+	* BUILD: Fixed to remove /usr/share/automake if the
+	symlink exists and update it with the new version
+	(was hard-coded to be 1.6, now uses ${VERSION})
 
-		* DETAILS: set VERSION to 1.7.3.
+2002-10-03 Julian v. Bock <julian@wongr.net>
+	* DETAILS: add LICENSE and MD5 fields.
+	* DETAILS: set VERSION to 1.7.
 
-2002-12-21  Julian v. Bock  <julian@wongr.net>
+2002-07-30 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.6.3.
 
-		* BUILD: make correct symlink.
-		* DETAILS: update UPDATED.
+2002-06-18 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.6.2.
 
-2002-12-10  Julian v. Bock  <julian@wongr.net>
+2002-05-28 Julian v. Bock <julian@wongr.net>
+	* BUILD: add; add /usr/share/automake symlink as temporary fix.
 
-		* DETAILS: set VERSION to 1.7.2.
+2002-05-24 Julian v. Bock <julian@wongr.net>
+	* DEPENDS: add autoconf dependency.
 
-2002-10-31  Julian v. Bock  <julian@wongr.net>
+2002-05-21 Julian v. Bock <julian@wongr.net>
+	* DETAILS: set VERSION to 1.6.1.
 
-		* DETAILS: set VERSION to 1.7.1.
-
-2002-10-13  Eric Sandall <eric@sandall.us>
-
-		Fixed BUILD to remove /usr/share/automake if the
-		symlink exists and update it with the new version
-		(was hard-coded to be 1.6, now uses ${VERSION})
-
-2002-10-03  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: add LICENSE and MD5 fields.
-		* DETAILS: set VERSION to 1.7.
-
-2002-07-30  Julian v. Bock  <julian@wongr.net>
-
-		* DETAILS: set VERSION to 1.6.3.
-
-2002-06-18  Julian v. Bock <julian@wongr.net>
-
-		* DETAILS: set VERSION to 1.6.2.
-
-2002-05-28  Julian v. Bock <julian@wongr.net>
-
-		* BUILD: add; add /usr/share/automake symlink as temporary fix.
-
-2002-05-24  Julian v. Bock <julian@wongr.net>
-
-		* DEPENDS: add autoconf dependency.
-
-2002-05-21  Julian v. Bock <julian@wongr.net>
-
-		* DETAILS: set VERSION to 1.6.1.
