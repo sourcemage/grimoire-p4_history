@@ -1,0 +1,5 @@
+make  prefix=${INSTALL_ROOT}/usr  install                              &&
+cd  kernel/svgalib_helper                                              &&
+env  -u  ARCH                                                          \
+make  -f  Makefile.alt    prefix=${INSTALL_ROOT}                       \
+INCLUDEDIR="/usr/src/linux/include" install
