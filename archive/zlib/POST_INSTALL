@@ -61,7 +61,7 @@ find_libs() {
 main() {
    INSTALLED_ZLIB=`cat /tmp/zlib_installed_version`
    rm -f /tmp/zlib_installed_version
-   if [[ $INSTALLED_ZLIB != '1.1.4' ]]; then
+   if [[ $INSTALLED_ZLIB != '1.1.4-3' ]]; then
       echo "zlib will now recompile software that is statically linked against it."
       echo "This may take some time. If you stopped it, disturbed it, your machine "
       echo "hangs or whatever, you can issue a /var/lib/sorcery/codex/{devel | testing | stable}/archive/zlib/POST_INSTALL " 
