@@ -19,34 +19,35 @@ cat <<__EOF__ >config/cf/site.def
 #define DefaultGcc2i386Opt    $CFLAGS
 #define LibraryCDebugFlags    $CFLAGS
 #define DefaultCDebugFlags    $CFLAGS
+#define HasShm                   YES
 #define HasZlib                  YES
 #define HasFreetype2             YES
 #define BuildFreetype2Library     NO
 
-#define	BuildServer		NO
-#define BuildFontServer		NO
-#define BuildXAServer		NO
-#define BuildLBX		NO
-#define BuildXF86VidModeLibrary	NO
-#define BuildPlugin		NO
-#define BuildCID		NO
-#define BuildDPSClients		NO
-#define BuildServersOnly	YES
-#define	BuildClients		NO
+#define	BuildServer		  NO
+#define BuildFontServer		  NO
+#define BuildXAServer		  NO
+#define BuildLBX		  NO
+#define BuildXF86VidModeLibrary	  NO
+#define BuildPlugin		  NO
+#define BuildCID		  NO
+#define BuildDPSClients		  NO
+#define BuildServersOnly	  YES
+#define	BuildClients		  NO
 
-#define BuildFonts		NO
-#define BuildSpeedoFonts	NO
-#define	BuildType1Fonts		NO
-#define BuildCIDFonts		NO
-#define	BuildTTFonts		NO
-#define	BuildPexExt		NO
+#define BuildFonts                NO
+#define BuildSpeedoFonts          NO
+#define	BuildType1Fonts           NO
+#define BuildCIDFonts             NO
+#define	BuildTTFonts              NO
+#define	BuildPexExt               NO
 
-#define BuildMiscDocs		NO
-#define BuildSpecsDocs		NO
+#define BuildMiscDocs             NO
+#define BuildSpecsDocs            NO
 
-#define BuildXaw6		YES
-#define	BuildXKB		NO
-#define BuildLBX		NO
+#define BuildXaw6                 YES
+#define	BuildXKB                  NO
+#define BuildLBX                  NO
 
 #define BuildXIElib		YES
 #define BuildPexLib		YES
@@ -85,24 +86,23 @@ __EOF__
 
 
 ) > $C_FIFO 2>&1  &&  (
-
   rm     -f  /usr/X11R6/include/zlib.h
   rm     -f  /usr/X11R6/lib/libz.a
+
+  if  [  !  -e                    /usr/bin/X11  ];  then
+    ln      -sf   /usr/X11R6/bin  /usr/bin/X11
+  fi
 
   if  [  !  -e          /usr/X11  ];  then
     ln      -sf  X11R6  /usr/X11
   fi
 
-  if  [  !  -e 				/usr/X11R6/include  ];  then
-    ln      -sf    ../include		/usr/X11R6/include
+  if  [  !  -e                         /usr/include/X11  ];  then
+    ln      -sf  ../X11R6/include/X11  /usr/include/X11
   fi
 
-  if  [  !  -e                     	/usr/X11R6/lib  ];  then
-    ln      -sf    ../lib		/usr/X11R6/lib
-  fi
-
-  if  [  !  -e				/usr/X11R6/man  ];  then
-    ln      -sf    ../man  		/usr/X11R6/man
+  if  [  !  -e                     /usr/lib/X11  ];  then
+    ln      -sf  ../X11R6/lib/X11  /usr/lib/X11
   fi
 
 )
