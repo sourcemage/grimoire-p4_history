@@ -1,0 +1,19 @@
+diff -urpN gradm.old/Makefile gradm/Makefile
+--- gradm.old/Makefile	2003-10-23 15:20:46.000000000 -0700
++++ gradm/Makefile	2003-10-23 15:21:08.000000000 -0700
+@@ -82,15 +82,6 @@ install: $(GRADM_BIN) gradm.8 acl
+ 	fi
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man8
+ 	$(INSTALL) -m 0644 gradm.8 $(DESTDIR)$(MANDIR)/man8/$(GRADM_BIN).8
+-	@if [ -z $(DESTDIR) ] ; then \
+-		if [ -x /sbin/$(GRADM_BIN) ] ; then \
+-			if [ ! -f $(GRSEC_DIR)/pw ] ; then \
+-				/sbin/$(GRADM_BIN) -P ; \
+-			else \
+-				$(FIND) $(GRSEC_DIR) -type f -name pw ! -size 48c -exec /sbin/$(GRADM_BIN) -P \; ; \
+-			fi \
+-		fi \
+-	fi
+ 
+ clean:
+ 	rm -f core *.o $(GRADM_BIN) lex.*.c *.tab.c *.tab.h
