@@ -35,19 +35,4 @@
 
   chown  -R  bind:bind  /etc/bind
 
-  case  $BIND_BOOT  in
-    y|Y|j|J)  cp  $SCRIPT_DIRECTORY/named.sh  /etc/init.d
-
-              ln  -sf  ../init.d/named.sh  /etc/rc0.d/K50named
-              ln  -sf  ../init.d/named.sh  /etc/rc6.d/K50named
-
-              ln  -sf  ../init.d/named.sh  /etc/rc1.d/S35named
-              ln  -sf  ../init.d/named.sh  /etc/rc2.d/S35named
-              ln  -sf  ../init.d/named.sh  /etc/rc3.d/S35named
-              ln  -sf  ../init.d/named.sh  /etc/rc4.d/S35named
-              ln  -sf  ../init.d/named.sh  /etc/rc5.d/S35named
-              ;;
-          *)  ;;
-  esac
-
 )
