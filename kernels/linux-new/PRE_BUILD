@@ -19,7 +19,7 @@ linux_new_uncompress()
 
 if [[ "$mode" == "oldktree" && -d ${LINUX_SOURCE_DIRECTORY} ]]
 then
-	message "${MESSAGE_COLOR}Okay dir does exist${DEFAULT_COLOR}" 
+	message "${MESSAGE_COLOR}Okay ${LINUX_SOURCE_DIRECTORY} does exist${DEFAULT_COLOR}" 
 elif [[ "$mode" == "oldktree" ]]
 then
 	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
