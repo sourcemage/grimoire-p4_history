@@ -22,12 +22,6 @@ else
   OPTS="$OPTS  --disable-script-node-javascript"
 fi  &&
 
-if  [  "$OPENVRML_MOZJS"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-mozjs"
-else
-  OPTS="$OPTS  --disable-mozjs"
-fi  &&
-
 if  [  "$OPENVRML_LOOKAT"  =  "y"  ];  then
   OPTS="$OPTS  --enable-lookat"
 else
