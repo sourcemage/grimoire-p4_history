@@ -101,5 +101,5 @@ optional_depends X11-LIBS                     \
                  ''                          \
                  'for XFree86 support'
                                                                                                                                    
-#imap_ssl=$(spell_installed openssl && echo '--with-imap-ssl')
+#imap_ssl=$(spell_ok openssl && echo '--with-imap-ssl')
 #optional_depends imap "--with-imap $imap_ssl" '--without-imap' 'for IMAP protocol support'
