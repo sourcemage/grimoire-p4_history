@@ -1,10 +1,15 @@
            SPELL=abiword
-         VERSION=2.0.7
        BUILD_API=2
+if [ "$DEVEL" == "yes" ] ;then
+         VERSION=2.1.2
+          MD5[0]=fa0169f2b3a56c6905c52af89f3bbc9e
+else
+         VERSION=2.0.7
+          MD5[0]=2cf081f93f872482632d4a7eb7625609
+fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=2cf081f93f872482632d4a7eb7625609
         WEB_SITE=http://www.abisource.com
          ENTERED=20030429
          UPDATED=20040308
