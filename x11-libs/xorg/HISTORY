@@ -1,6 +1,11 @@
-2004-12-13 Andrew Stitt <astitt@sourcemage.org>
-	* CONFIGURE: Fix bug where xorg is built without keyboard support
-	  unless the user explicitly uses the input menu.
+2004-12-14 Eric Sandall <eric@sandall.us>
+	* DETAILS,INSTALL: Replaced "==" with "="
+	* CONFIGURE: Use spell_ok instead of spell_installed
+	  Disable extensions that need g++ if it's not installed
+	* DEPENDS: Added optional dependency on g++
+	  Replaced "==" with "="
+	* PRE_BUILD: Use spell_ok instead of spell_installed
+	  Replaced "==" with "="
 
 2004-10-13 Arjan Bouter <abouter@sourcemage.org>
 	* added desktop files

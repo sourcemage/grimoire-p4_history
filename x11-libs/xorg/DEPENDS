@@ -1,8 +1,8 @@
-if  [  "$CVS"  ==  "y"  ]; then
+if  [  "$CVS"  =  "y"  ]; then
   depends CVS
 fi  &&
 
-if  [  "$PAM"  ==  "y"  ];  then
+if  [  "$PAM"  =  "y"  ];  then
   depends  Linux-PAM
 fi  &&
 
@@ -24,4 +24,9 @@ optional_depends  groff                          \
 optional_depends  libpng                   \
                   ""                       \
                   ""                       \
-                  "for PNG image support"
+                  "for PNG image support"  &&
+
+optional_depends  g++  \
+                  ""   \
+                  ""   \
+                  "for OpenGL support"
