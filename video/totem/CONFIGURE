@@ -1,6 +1,6 @@
 if  !  grep  -q  "GSTREAMER"  $SPELL_CONFIG;  then
 
-  if    query  "Enable gstreamer backend (currently broken)?" n
+  if    query  "Enable gstreamer backend?" n
   then  GSTREAMER=y
   else  GSTREAMER=n
   fi
