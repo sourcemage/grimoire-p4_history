@@ -7,8 +7,10 @@
 ) > $C_FIFO 2>&1  &&  (
 
   if  !  [  -e  /etc/syslog.conf  ];  then
-    sedit  "s/usr/var/"  syslog.conf
-    sedit  "s/adm/log/"  syslog.conf
+    sedit  "s/usr/var/"		syslog.conf
+    sedit  "s/adm/log/"		syslog.conf
+    sedit  "s/,joey//"		syslog.conf
+    sedit  "s/^.*finlandia$//"	syslog.conf
     cp                   syslog.conf  /etc
   fi
 
