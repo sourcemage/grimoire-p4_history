@@ -1,15 +1,15 @@
 depends autoconf &&
 depends libtool  &&
 depends bison    &&
-depends apr '--with-apr=/usr' &&
-depends apr-util '--with-apr-util=/usr' &&
 
-# If there's no Neon, people will have a choice to install it or use bundled version
-# If there's Neon already installed, it's going to be consumed automatically
-optional_depends neon               \
-                 '--with-neon=/usr' \
-                 ''                 \
-                 'install neon separately, "n" installs Subversion-bundled neon library' &&
+requires iconv &&
+
+if [ "$USE_BUNDLED_LIBS" != 'y' ]; then
+  depends apr '--with-apr=/usr' &&
+  depends apr-util '--with-apr-util=/usr' &&
+  depends neon '--with-neon=/usr'
+fi &&
+
 optional_depends openssl         \
                  '--with-ssl'    \
                  '--without-ssl' \
@@ -17,4 +17,4 @@ optional_depends openssl         \
 optional_depends swig             \
                  '--with-swig'    \
                  '--without-swig' \
-                 'for generation of Python bindings with SWIG, "n" is recommended'
+                 'for generation of Python bindings with SWIG, not recommended'
