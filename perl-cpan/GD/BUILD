@@ -1,9 +1,12 @@
 (
 
-  # silence the beast
-  patch -p1 < $SCRIPT_DIRECTORY/Makefile.patch &&
+  perl Makefile.PL            \
+    -options "JPEG,FT,XPM"    \
+    -lib_gd_path=/usr/lib     \
+    -lib_ft_path=/usr/lib     \
+    -lib_png_path=/usr/lib    \
+    -lib_zlib_path=/usr/lib  &&
 
-  perl Makefile.PL &&
   make             &&
   make test        &&
   prepare_install  &&
