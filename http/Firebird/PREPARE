@@ -29,11 +29,12 @@ fi &&
 #choose toolkit
 
 if ! grep -q GTK $SPELL_CONFIG ;
-then if query "Would you like to use GTK+2 toolkit with anti-aliasing support ?\n(Alternative is \
-original gtk+) " y
+then if query "Would you like to use GTK+2 toolkit with font anti-aliasing support (DEFAULT)?\n\tNice \
+looking but slightly slower \n\tthan the original gtk+ (without anti-aliasing) " y
             then echo GTK2=yes >> $SPELL_CONFIG
             elif query "Would you like to use original GTK+ toolkit ?" y
                  then  echo GTK=yes >> $SPELL_CONFIG
+            else echo GTK2=yes >> $SPELL_CONFIG
     fi 
 fi 
 

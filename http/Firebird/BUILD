@@ -13,7 +13,6 @@ export MOZ_PHOENIX=1                         &&
     --prefix=${INSTALL_ROOT}/usr    \
     --with-x            \
     --with-pthreads     \
-    --enable-freetype2  \
     --enable-reorder    \
     --enable-cpp-rtti   \
     --enable-strip      \
