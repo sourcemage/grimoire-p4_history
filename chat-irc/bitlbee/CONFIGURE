@@ -1,0 +1,26 @@
+# asking user what for im protocols he needs
+
+# msn protocol requires the libsoup library
+# the specific option is set in the DEPENDS file
+
+# jabber
+if query "Enable Jabber protocol? " y; then
+  echo  'OPTS="${OPTS} --jabber=1"'  >>  ${SPELL_CONFIG}
+else
+  echo  'OPTS="${OPTS} --jabber=0"'  >>  ${SPELL_CONFIG}
+fi
+
+# oscar (icq, aim)
+if query "Enable Oscar protocol (for ICQ or AIM)? " y; then
+  echo  'OPTS="${OPTS} --oscar=1"'  >>  ${SPELL_CONFIG}
+else
+  echo  'OPTS="${OPTS} --oscar=0"'  >>  ${SPELL_CONFIG}
+fi
+
+# yahoo
+if query "Enable Yahoo protocol? " y; then
+  echo  'OPTS="${OPTS} --yahoo=1"'  >>  ${SPELL_CONFIG}
+else
+  echo  'OPTS="${OPTS} --yahoo=0"'  >>  ${SPELL_CONFIG}
+fi
+
