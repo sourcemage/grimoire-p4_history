@@ -195,7 +195,7 @@ transfer_data ()
 install_networking ()
 {
     if [ -d $initdir ]; then
-	  rm -rf $initdir
+	  rm -rf $netdir
 	    setup_nicfile
 	else 
 	    setup_nicfile
