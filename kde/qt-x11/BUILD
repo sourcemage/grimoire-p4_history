@@ -1,4 +1,4 @@
-(
+ (
 # speed up up build process by removing unnecessary examples
 rm -r examples
 rm -r extensions/nsplugin/examples
@@ -36,7 +36,7 @@ export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
                                -xft                \
                                $OPTS               &&
 
-  make                                             &&
+  make  symlinks  sub-src sub-tools                &&
   prepare_install                                  &&
   make install                                     &&
 
