@@ -22,7 +22,7 @@ probe_module()
 }
 
 start() {
-  [ $START_ALSA == no ]  &&  exit 5
+  [ $START_ALSA == no ]  &&  exit 0
 
   #
   # insert all sound modules
