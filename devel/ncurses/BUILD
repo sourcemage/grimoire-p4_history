@@ -1,5 +1,8 @@
 (
 
+  sedit  "55s/(_IO_va_list)//"  c++/cursesw.cc
+  sedit  "77s/(_IO_va_list)//"  c++/cursesw.cc
+
   ./configure  --build=$BUILD     \
                --prefix=/usr      \
                --libdir=/lib      \
