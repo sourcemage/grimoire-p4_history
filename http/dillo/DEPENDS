@@ -1,4 +1,4 @@
 depends  gtk+    &&
-depends  jpeg    &&
-depends  libpng  &&
-depends  zlib
+depends  zlib    &&
+optional_depends  "jpeg"  ""  "--disable-jpeg"  "for jpeg image support"  &&
+optional_depends  "libpng"  ""  "--disable-png"  "for png image support"
