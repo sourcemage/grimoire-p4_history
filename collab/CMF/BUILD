@@ -1,8 +1,10 @@
 (
 
   prepare_install &&
-  mv docs/* /usr/doc/$SPELL &&
+  mkdir -p /usr/doc/$SPELL &&
+  mv -f docs/* /usr/doc/$SPELL/ &&
+  mv -f *.txt /usr/doc/$SPELL/ &&
   rm -fr docs/ &&
-  cp -R * /usr/lib/zope/Products/
+  cp -fR * /usr/lib/zope/Products/
 
 ) >$C_FIFO 2>&1
