@@ -1,9 +1,2 @@
-( 
-
-	./configure --prefix=${INSTALL_ROOT}/usr	\
-	 $OPTS &&
-	make	&&
-	prepare_install	&&
-	make install
-
-) > $C_FIFO 2>&1
+patch  -p1  <  $SCRIPT_DIRECTORY/fixes.patch  &&
+default_build
