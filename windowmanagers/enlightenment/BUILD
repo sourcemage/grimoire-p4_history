@@ -4,7 +4,8 @@
 
   ./configure  --prefix=/usr      \
                --sysconfdir=/etc  \
-               --enable-fsstd     &&
+               --enable-fsstd     \
+               $OPTS              &&
   make                            &&
   prepare_install                 &&
   make    install
