@@ -1,9 +1,8 @@
 (
-  if ! [ -f ${INSTALL_ROOT}/etc/termcap ];
-	then OPTS="$OPTS --enable-install-termcap"
-  fi  &&
   cd $SOURCE_DIRECTORY            &&
-  ./configure --prefix=${INSTALL_ROOT}/usr $OPTS &&
+  ./configure --prefix=${INSTALL_ROOT}/usr \ 
+              --enable-install-termcap     \
+	      $OPTS               &&
   make                            &&
 
   prepare_install                 &&
