@@ -24,7 +24,7 @@ message  "Building XFree86 takes a very long time."
   if [ -f config/cf/host.def ] 
   then sedit s"/-Os//g" config/cf/host.def 
   fi                                               &&
-  if  !  (echo $CFLAGS | grep -q -- "-Os"); then
+  if  (echo $CFLAGS | grep -q -- "-Os"); then
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
   fi                                               &&
 
