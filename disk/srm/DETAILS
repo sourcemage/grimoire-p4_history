@@ -2,9 +2,7 @@
          VERSION=1.2.6
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[1]=http://telia.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
-   SOURCE_URL[2]=http://belnet.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]=693e313e73c4b53e2c86f7c7b4f95cda
         WEB_SITE=http://srm.sourceforge.net
          ENTERED=20020611
@@ -12,7 +10,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=PD
       MAINTAINER=hgr@vabo.cz
            SHORT="srm - a secure rm"
-
 cat << EOF
 srm is a secure replacement for rm(1). Unlike the standard rm, it 
 overwrites the data in the target files before unlinking them. This 
