@@ -1,3 +1,14 @@
+2003-11-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1.0pre2
+	* DEPENDS: added optional_depends LIBAVCODEC, libmatroska, removed
+	faad2 (uses internal one for now)
+	* BUILD: add sedit to remove -fomit-frame-pointer, adjust for new
+	patches
+	* alsa-1.0.patch: updated
+	* MPlayer-0.90-fontconfig.patch, MPlayer-fontconfig.patch: updated
+	* BUILD, shared-ffmpeg.patch: added so MPlayer uses the system installed
+	ffmpeg(-cvs)
+
 2003-11-24 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Can optionally use directfb for direct
 	framebuffer access
