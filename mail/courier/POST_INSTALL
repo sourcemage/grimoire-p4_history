@@ -1,31 +1,31 @@
-if  [  -x  /etc/init.d/courierinit.sh  ];  then
-  /etc/init.d/courierinit.sh  start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/courierinit.sh  ];  then
+  ${INSTALL_ROOT}/etc/init.d/courierinit.sh  start
 fi
 
-if  [  -x  /etc/init.d/esmtpd.sh       ];  then
-  /etc/init.d/esmtpd.sh       start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/esmtpd.sh       ];  then
+  ${INSTALL_ROOT}/etc/init.d/esmtpd.sh       start
 fi
 
-if  [  -x  /etc/init.d/esmtpd-ssl.sh   ];  then
-  /etc/init.d/esmtpd-ssl.sh   start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/esmtpd-ssl.sh   ];  then
+  ${INSTALL_ROOT}/etc/init.d/esmtpd-ssl.sh   start
 fi
 
-if  [  -x  /etc/init.d/filterctl.sh    ];  then
-  /etc/init.d/filterctl.sh    start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/filterctl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/filterctl.sh    start
 fi
 
-if  [  -x  /etc/init.d/imapd.sh        ];  then
-  /etc/init.d/imapd.sh        start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/imapd.sh        ];  then
+  ${INSTALL_ROOT}/etc/init.d/imapd.sh        start
 fi
 
-if  [  -x  /etc/init.d/imapd-ssl.sh    ];  then
-  /etc/init.d/imapd-ssl.sh    start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/imapd-ssl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/imapd-ssl.sh    start
 fi
 
-if  [  -x  /etc/init.d/pop3d.sh        ];  then
-  /etc/init.d/pop3d.sh        start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/pop3d.sh        ];  then
+  ${INSTALL_ROOT}/etc/init.d/pop3d.sh        start
 fi
 
-if  [  -x  /etc/init.d/pop3d-ssl.sh    ];  then
-  /etc/init.d/pop3d-ssl.sh    start
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/pop3d-ssl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/pop3d-ssl.sh    start
 fi

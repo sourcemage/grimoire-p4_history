@@ -3,10 +3,10 @@
   LDFLAGS=${LDFLAGS//-z combreloc/}                                      &&
 
   ./configure                                                            \
-               --prefix=/usr                                             \
-               --datadir=/usr/share/courier                              \
-               --sysconfdir=/etc/courier                                 \
-               --localstatedir=/var/courier                              \
+               --prefix=${INSTALL_ROOT}/usr                              \
+               --datadir=${INSTALL_ROOT}/usr/share/courier               \
+               --sysconfdir=${INSTALL_ROOT}/etc/courier                  \
+               --localstatedir=${INSTALL_ROOT}/var/courier               \
                --disable-root-check                                      \
                --with-mailuser=courier                                   \
                --with-mailgroup=courier                                  \
@@ -19,12 +19,12 @@
 
   make                                                                   &&
   prepare_install                                                        &&
-#  mkdir   -p  /usr/share/courier                                         &&
+#  mkdir   -p  ${INSTALL_ROOT}/usr/share/courier                          &&
   make    install                                                        &&
   make    install-configure
 
   if  [  "${AUTHPAM}"  ==  "y"  ];  then
-    cp  $SCRIPT_DIRECTORY/pam.d/*  /etc/pam.d
+    cp  ${SCRIPT_DIRECTORY}/pam.d/*  ${INSTALL_ROOT}/etc/pam.d
   fi
 
 )  >  $C_FIFO  2>&1
