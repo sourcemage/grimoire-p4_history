@@ -1,6 +1,4 @@
 (
-  patch -p1 < $SCRIPT_DIRECTORY/TCPtransmitter.cc-gcc3-gentoo.patch
-
   ./configure  --prefix=/usr      \
                --sysconfdir=/etc  \
                --enable-optimize  &&
