@@ -1,3 +1,6 @@
+if [ "$(uname -m)" = "ppc" ]; then
+  patch -p1 < $SCRIPT_DIRECTORY/mplayer-1.0_pre5-yuv2rbg_kludge.patch
+fi  &&
 # fixes bug #6833
 patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
