@@ -1,0 +1,89 @@
+diff -Nur iproute2/hfs_sysdep.h iproute2-fix/hfs_sysdep.h
+--- iproute2/hfs_sysdep.h	1970-01-01 01:00:00.000000000 +0100
++++ iproute2-fix/hfs_sysdep.h	2004-02-19 14:21:06.000000000 +0100
+@@ -0,0 +1,53 @@
++/*
++ * linux/include/linux/hfs_sysdep.h
++ *
++ * Copyright (C) 1996-1997  Paul H. Hargrove
++ * This file may be distributed under the terms of the GNU General Public License.
++ *
++ * This file contains constants, types and inline
++ * functions for various system dependent things.
++ *
++ * "XXX" in a comment is a note to myself to consider changing something.
++ *
++ * In function preconditions the term "valid" applied to a pointer to
++ * a structure means that the pointer is non-NULL and the structure it
++ * points to has all fields initialized to consistent values.
++ */
++
++#ifndef _HFS_SYSDEP_H
++#define _HFS_SYSDEP_H
++
++/*
++ * bit operations
++ */
++
++#undef BITNR
++#if defined(__BIG_ENDIAN)
++#	define BITNR(X)	((X)^31)
++#	if !defined(__constant_htonl)
++#		define __constant_htonl(x) (x)
++#	endif
++#	if !defined(__constant_htons)
++#		define __constant_htons(x) (x)
++#	endif
++#elif defined(__LITTLE_ENDIAN)
++#	define BITNR(X)	((X)^7)
++#	if !defined(__constant_htonl)
++#		define __constant_htonl(x) \
++        ((unsigned long int)((((unsigned long int)(x) & 0x000000ffU) << 24) | \
++                             (((unsigned long int)(x) & 0x0000ff00U) <<  8) | \
++                             (((unsigned long int)(x) & 0x00ff0000U) >>  8) | \
++                             (((unsigned long int)(x) & 0xff000000U) >> 24)))
++#	endif
++#	if !defined(__constant_htons)
++#		define __constant_htons(x) \
++        ((unsigned short int)((((unsigned short int)(x) & 0x00ff) << 8) | \
++                              (((unsigned short int)(x) & 0xff00) >> 8)))
++#	endif
++#else
++#	error "Don't know if bytes are big- or little-endian!"
++#endif
++
++#undef BITNR
++
++#endif
+diff -Nur iproute2/Makefile iproute2-fix/Makefile
+--- iproute2/Makefile	2002-01-16 00:30:32.000000000 +0100
++++ iproute2-fix/Makefile	2004-02-19 14:19:54.000000000 +0100
+@@ -4,7 +4,7 @@
+ CONFDIR=/etc/iproute2
+ DOCDIR=/usr/doc/iproute2
+ 
+-KERNEL_INCLUDE=/usr/src/linux/include
++KERNEL_INCLUDE=/usr/include
+ LIBC_INCLUDE=/usr/include
+ 
+ DEFINES= -DRESOLVE_HOSTNAMES
+@@ -35,7 +35,7 @@
+ 
+ CC = gcc
+ CCOPTS = -D_GNU_SOURCE -O2 -Wstrict-prototypes -Wall -g
+-CFLAGS = $(CCOPTS) $(GLIBCFIX) -I$(KERNEL_INCLUDE) -I../include $(DEFINES)
++CFLAGS = $(CCOPTS) $(GLIBCFIX) -I$(KERNEL_INCLUDE) -I../include $(DEFINES) -include ../hfs_sysdep.h
+ 
+ LDLIBS += -L../lib -lnetlink -lutil
+ 
+diff -Nur iproute2/misc/arpd.c iproute2-fix/misc/arpd.c
+--- iproute2/misc/arpd.c	2002-01-10 05:02:26.000000000 +0100
++++ iproute2-fix/misc/arpd.c	2004-02-19 14:20:14.000000000 +0100
+@@ -32,6 +32,7 @@
+ #include <arpa/inet.h>
+ #include <linux/if_packet.h>
+ #include <linux/filter.h>
++#include <linux/if_ether.h>
+ 
+ #include "libnetlink.h"
+ #include "utils.h"
