@@ -1,1 +1,13 @@
 Splashimage works, but the BUILD is now ugly...need to clean it up, first.
+If I don't make the messy BUILD the way it is, I get this error:
+
+Making install in stage2
+make[2]: Entering directory `/usr/src/grub-0.94/stage2'
+/usr/bin/make  install-am
+make[3]: Entering directory `/usr/src/grub-0.94/stage2'
+make[4]: Entering directory `/usr/src/grub-0.94/stage2'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: mkdir_p@: Command not found
+make[4]: *** [install-pkgdataDATA] Error 127
+make[4]: Leaving directory `/usr/src/grub-0.94/stage2'
+
