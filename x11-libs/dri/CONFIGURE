@@ -3,50 +3,50 @@ then
 #ask the use for the nice drivers
    echo "First some questions about base drivers... 2D stuff..."
 
-   config_query_option X11_ATI_DRIVER_IA32 "Do you want support for ATI cards" n "ati" ""
-   config_query_option X11_TDFX_DRIVER_IA32 "Do you want support for 3DfX" n "tdfx" ""
-   config_query_option X11_I810_DRIVER_IA32 "Do you want support for Intel 810" n "i810" ""
-   config_query_option X11_MGA_DRIVER_IA32 "Do you want support for Matrox cards" n "mga" ""
-   config_query_option X11_SIS_DRIVER_IA32 "Do you want support for SIS cards" n "sis" ""
-   config_query_option X11_GLINT_DRIVER_IA32 "Do you want support for glint" n "glint" ""
-   config_query_option X11_VGA_DRIVER_IA32 "Do you want basic vga support" n "vga" ""
-   config_query_option X11_SAVAGE_DRIVER_IA32 "Do you want Savage support" n "savage" ""
+   config_query_option X11_ATI_DRIVER_IA32 "Do you want support for ATI cards" n "" "ati"
+   config_query_option X11_TDFX_DRIVER_IA32 "Do you want support for 3DfX" n "" "tdfx"
+   config_query_option X11_I810_DRIVER_IA32 "Do you want support for Intel 810" n "" "i810"
+   config_query_option X11_MGA_DRIVER_IA32 "Do you want support for Matrox cards" n "" "mga"
+   config_query_option X11_SIS_DRIVER_IA32 "Do you want support for SIS cards" n "" "sis"
+   config_query_option X11_GLINT_DRIVER_IA32 "Do you want support for glint" n "" "glint"
+   config_query_option X11_VGA_DRIVER_IA32 "Do you want basic vga support" n "" "vga"
+   config_query_option X11_SAVAGE_DRIVER_IA32 "Do you want Savage support" n "" "savage"
 
 #ask the use for the nice dri drivers
    echo "Now for the 3D stuff"
    if [ "${X11_ATI_DRIVER_IA32}" == "ati" ] ; then
-   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "r200" ""
-   config_query_option DRI_DRIVER "Support for rage\(128\)" n "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "" "radeon"
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "" "r200"
+   config_query_option DRI_DRIVER "Support for rage\(128\)" n "" "r128"
    fi
    if [ "${X11_MGA_DRIVER_IA32}" == "mga" ] ; then
-   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "" "mga"
    fi
    if [ "${X11_I810_DRIVER_IA32}" == "i810" ] ; then
-   config_query_option DRI_DRIVER "Support for Intel 830" n "i830" ""
+   config_query_option DRI_DRIVER "Support for Intel 830" n "" "i830"
    fi
    if [ "${X11_SIS_DRIVER_IA32}" == "sis" ] ; then
-   config_query_option DRI_DRIVER "Support for SIS" n "sis" ""
+   config_query_option DRI_DRIVER "Support for SIS" n "" "sis"
    fi
    if [ "${X11_TDFX_DRIVER_IA32}" == "tdfx" ] ; then
-   config_query_option DRI_DRIVER "Support for 3DfX" n "tdfx" ""
+   config_query_option DRI_DRIVER "Support for 3DfX" n "" "tdfx"
    fi
    if [ "{$X11_SAVAGE_DRIVER_IA32}" == "savage" ] ; then
-   config_query_option DRI_DRIVER "Support for Savage" n "savage" ""
+   config_query_option DRI_DRIVER "Support for Savage" n "" "savage"
    fi
-   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "gamma" ""
-   config_query_option DRI_DRIVER "Support for ffb" n "ffb" ""
+   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "" "gamma"
+   config_query_option DRI_DRIVER "Support for ffb" n "" "ffb"
 
 elif [ "`find ${ARCH_SPECS}  -type f -name ${ARCHITECTURE} | awk -F/ '{print$6;}'`" == "ppc" ]
 then
    echo "First some questions about base drivers... 2D stuff..."
-   config_query_option X11_ATI_DRIVER_PPC "Do you want support for ATI cards" n "ati" ""
+   config_query_option X11_ATI_DRIVER_PPC "Do you want support for ATI cards" n "" "ati"
 
    echo "Now for the 3D stuff"
    if [ "${X11_ATI_DRIVER_PPC}" == "ati" ] ; then
-   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "r200" ""
-   config_query_option DRI_DRIVER "Support for rage\(128\)" n "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "" "radeon"
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "" "r200"
+   config_query_option DRI_DRIVER "Support for rage\(128\)" n "" "r128"
    fi
 
 elif [ "`find ${ARCH_SPECS} -type f -name ${ARCHITECTURE} | awk -F/ '{print$6;}'`" == "amd64" ]
@@ -54,64 +54,64 @@ then
 #ask the use for the nice drivers
    echo "First some questions about base drivers... 2D stuff..."
 
-   config_query_option X11_ATI_DRIVER_AMD64 "Do you want support for ATI cards" n "ati" ""
-   config_query_option X11_TDFX_DRIVER_AMD64 "Do you want support for 3DfX" n "tdfx" ""
-   config_query_option X11_I810_DRIVER_AMD64 "Do you want support for Intel 810" n "i810" ""
-   config_query_option X11_MGA_DRIVER_AMD64 "Do you want support for Matrox cards" n "mga" ""
-   config_query_option X11_SIS_DRIVER_AMD64 "Do you want support for SIS cards" n "sis" ""
-   config_query_option X11_GLINT_DRIVER_AMD64 "Do you want support for glint" n "glint" ""
-   config_query_option X11_VGA_DRIVER_AMD64 "Do you want basic vga support" n "vga" ""
+   config_query_option X11_ATI_DRIVER_AMD64 "Do you want support for ATI cards" n "" "ati"
+   config_query_option X11_TDFX_DRIVER_AMD64 "Do you want support for 3DfX" n "" "tdfx"
+   config_query_option X11_I810_DRIVER_AMD64 "Do you want support for Intel 810" n "" "i810"
+   config_query_option X11_MGA_DRIVER_AMD64 "Do you want support for Matrox cards" n "" "mga"
+   config_query_option X11_SIS_DRIVER_AMD64 "Do you want support for SIS cards" n "" "sis"
+   config_query_option X11_GLINT_DRIVER_AMD64 "Do you want support for glint" n "" "glint"
+   config_query_option X11_VGA_DRIVER_AMD64 "Do you want basic vga support" n "" "vga"
 
 #ask the use for the nice dri drivers
    echo "Now for the 3D stuff"
 
    if [ "{$X11_ATI_DRIVER_AMD64}" == "ati" ] ; then
-   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "r200" ""
-   config_query_option DRI_DRIVER "Support for rage\(128\)" n "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "" "radeon"
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "" "r200"
+   config_query_option DRI_DRIVER "Support for rage\(128\)" n "" "r128"
    fi
    if [ "${X11_MGA_DRIVER_AMD64}" == "mga" ] ; then
-   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "" "mga"
    fi
    if [ "${X11_I810_DRIVER_AMD64}" == "i810" ] ; then
-   config_query_option DRI_DRIVER "Support for Intel 830" n "i830" ""
+   config_query_option DRI_DRIVER "Support for Intel 830" n "" "i830"
    fi
    if [ "${X11_SIS_DRIVER_AMD64}" == "sis" ] ; then
-   config_query_option DRI_DRIVER "Support for SIS" n "sis" ""
+   config_query_option DRI_DRIVER "Support for SIS" n "" "sis"
    fi
    if [ "${X11_TDFX_DRIVER_AMD64}" == "tdfx" ] ; then
-   config_query_option DRI_DRIVER "Support for 3DfX" n "tdfx" ""
+   config_query_option DRI_DRIVER "Support for 3DfX" n "" "tdfx"
    fi
 
-   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "gamma" ""
+   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "" "gamma"
 #OTHER
 else
 
    echo "First some questions about base drivers... 2D stuff..."
 
-   config_query_option X11_ATI_DRIVER_OTHER "Do you want support for ATI cards" n "ati" ""
-   config_query_option X11_TDFX_DRIVER_OTHER "Do you want support for 3DfX" n "tdfx" ""
-   config_query_option X11_MGA_DRIVER_OTHER "Do you want support for Matrox cards" n "mga" ""
-   config_query_option X11_GLINT_DRIVER_OTHER "Do you want support for glint" n "glint" ""
-   config_query_option X11_VGA_DRIVER_OTHER "Do you want basic vga support" n "vga" ""
+   config_query_option X11_ATI_DRIVER_OTHER "Do you want support for ATI cards" n "" "ati"
+   config_query_option X11_TDFX_DRIVER_OTHER "Do you want support for 3DfX" n "" "tdfx"
+   config_query_option X11_MGA_DRIVER_OTHER "Do you want support for Matrox cards" n "" "mga"
+   config_query_option X11_GLINT_DRIVER_OTHER "Do you want support for glint" n "" "glint"
+   config_query_option X11_VGA_DRIVER_OTHER "Do you want basic vga support" n "" "vga"
 
 #ask the use for the nice dri drivers
    echo "Now for the 3D stuff"
 
    if [ "$X11_ATI_DRIVER_OTHER" == "ati" ] ; then
-   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "radeon" ""
-   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "r200" ""
-   config_query_option DRI_DRIVER "Support for rage\(128\)" n "r128" ""
+   config_query_option DRI_DRIVER "Support for radeon\(7000-7500\)" n "" "radeon"
+   config_query_option DRI_DRIVER "Support for radeon\(8500-9200\)" n "" "r200"
+   config_query_option DRI_DRIVER "Support for rage\(128\)" n "" "r128"
    fi
    if [ "$X11_MGA_DRIVER_OTHER" == "mga" ] ; then
-   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "mga" ""
+   config_query_option DRI_DRIVER "Support for Matrox\(G200,G400,G450,G550\)" n "" "mga"
    fi
    if [ "$X11_TDFX_DRIVER_OTHER" == "tdfx" ] ; then
-   config_query_option DRI_DRIVER "Support for 3DfX" n "tdfx" ""
+   config_query_option DRI_DRIVER "Support for 3DfX" n "" "tdfx"
    fi
 
-   config_query_option DRI_DRIVER "Support for ffb" n "ffb" ""
-   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "gamma" ""
+   config_query_option DRI_DRIVER "Support for ffb" n "ffb"
+   config_query_option DRI_DRIVER "Support for 3DLabs Oxygen GMX2000" n "" "gamma"
 
 fi &&
 
