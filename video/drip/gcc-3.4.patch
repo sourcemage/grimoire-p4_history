@@ -1,6 +1,6 @@
-diff -urN tmp/encoder/encoder.cpp drip-0.9.0rc3/encoder/encoder.cpp
---- tmp/encoder/encoder.cpp	2003-12-01 00:04:42.000000000 +0100
-+++ drip-0.9.0rc3/encoder/encoder.cpp	2004-08-27 16:13:56.391305665 +0200
+diff -Nur drip-0.9.0/encoder/encoder.cpp drip-0.9.0-fix/encoder/encoder.cpp
+--- drip-0.9.0/encoder/encoder.cpp	2004-04-20 22:47:32.000000000 +0200
++++ drip-0.9.0-fix/encoder/encoder.cpp	2004-12-17 06:41:33.103817270 +0100
 @@ -762,7 +762,7 @@
      framebuffer = (guchar*)malloc(Config.in_width*Config.in_height*3);
      /* Allocate video buffers */
@@ -10,9 +10,9 @@ diff -urN tmp/encoder/encoder.cpp drip-0.9.0rc3/encoder/encoder.cpp
      for (gint i=0; i<Config.in_height; i++) {
          if(i==Config.in_height-1) {
              rowptr[i]=extrabuffer;
-diff -urN tmp/encoder/external.cpp drip-0.9.0rc3/encoder/external.cpp
---- tmp/encoder/external.cpp	2003-11-29 15:31:04.000000000 +0100
-+++ drip-0.9.0rc3/encoder/external.cpp	2004-08-27 16:11:57.960309913 +0200
+diff -Nur drip-0.9.0/encoder/external.cpp drip-0.9.0-fix/encoder/external.cpp
+--- drip-0.9.0/encoder/external.cpp	2004-04-20 22:47:32.000000000 +0200
++++ drip-0.9.0-fix/encoder/external.cpp	2004-12-17 06:41:33.105817015 +0100
 @@ -222,7 +222,7 @@
                      list[codec_nr]->cdescription = g_string_new(list[codec_nr]->ctype->str);
                      list[codec_nr]->cdescription = g_string_append(list[codec_nr]->cdescription,": ");
@@ -31,9 +31,31 @@ diff -urN tmp/encoder/external.cpp drip-0.9.0rc3/encoder/external.cpp
                      list[codec_nr]->ci = (gpointer)it;
                      codec_nr++;
                      #ifndef STANDALONE
-diff -urN tmp/encoder/fast_memcpy.cpp drip-0.9.0rc3/encoder/fast_memcpy.cpp
---- tmp/encoder/fast_memcpy.cpp	2003-02-14 14:29:47.000000000 +0100
-+++ drip-0.9.0rc3/encoder/fast_memcpy.cpp	2004-08-27 16:13:24.440162977 +0200
+diff -Nur drip-0.9.0/encoder/fast_memcpy.cpp drip-0.9.0-fix/encoder/fast_memcpy.cpp
+--- drip-0.9.0/encoder/fast_memcpy.cpp	2004-04-20 22:47:32.000000000 +0200
++++ drip-0.9.0-fix/encoder/fast_memcpy.cpp	2004-12-17 06:43:19.088308969 +0100
+@@ -138,8 +138,8 @@
+ 		"movntps %%xmm2, 32(%1)\n"
+ 		"movntps %%xmm3, 48(%1)\n"
+ 		: : "r" (from), "r" (to) : "memory");
+-		((const unsigned char *)from)+=64;
+-		((unsigned char *)to)+=64;
++    from = ((const unsigned char *)from) + 64;
++    to = ((unsigned char *)to) + 64;
+ 	}
+ 	else
+ 	/*
+@@ -160,8 +160,8 @@
+ 		"movntps %%xmm2, 32(%1)\n"
+ 		"movntps %%xmm3, 48(%1)\n"
+ 		: : "r" (from), "r" (to) : "memory");
+-		((const unsigned char *)from)+=64;
+-		((unsigned char *)to)+=64;
++    from = ((const unsigned char *)from) + 64;
++    to = ((unsigned char *)to) + 64;
+ 	}
+ #else
+ 	// Align destination at BLOCK_SIZE boundary
 @@ -188,8 +188,8 @@
  		MOVNTQ" %%mm6, 48(%1)\n"
  		MOVNTQ" %%mm7, 56(%1)\n"
