@@ -1,0 +1,10 @@
+if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+
+  if    query  "Invoke postgresql at boot? "  y
+  then  echo   "POSTGRES_BOOT=y"  >>  $SPELL_CONFIG
+  else  echo   "POSTGRES_BOOT=n"  >>  $SPELL_CONFIG
+  fi
+
+  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
+
+fi
