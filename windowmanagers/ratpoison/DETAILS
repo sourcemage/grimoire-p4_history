@@ -1,9 +1,9 @@
            SPELL=ratpoison
-         VERSION=1.3.0-rc1
+         VERSION=1.4.0-beta1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=ce4159c270fb5b669a72fefffe7eba95
+   SOURCE_URL[0]=http://savannah.nongnu.org/download/${SPELL}/${SOURCE}
+          MD5[0]=050fe6b2c312e061207800cfef412656
         WEB_SITE=http://$SPELL.sourceforge.net/
          ENTERED=20020806
          UPDATED=20040409
@@ -11,15 +11,15 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        BUILD_API=2
            SHORT="Simple Window Manager"
 cat << EOF
-Ratpoison is a simple Window Manager with no fat library dependencies, 
-no fancy graphics, no window decorations, and no rodent dependence. It 
-is largely modelled after GNU Screen which has done wonders in virtual 
-terminal market. 
+Ratpoison is a simple Window Manager with no fat library dependencies,
+no fancy graphics, no window decorations, and no rodent dependence. It
+is largely modelled after GNU Screen which has done wonders in virtual
+terminal market.
 
-All windows are maximized and kept maximized to take full advantage of 
-your precious screen real estate. 
+All windows are maximized and kept maximized to take full advantage of
+your precious screen real estate.
 
-All interaction with the window manager is done through keystrokes. 
-ratpoison has a prefix map to minimize the key clobbering that cripples 
+All interaction with the window manager is done through keystrokes.
+ratpoison has a prefix map to minimize the key clobbering that cripples
 Emacs and other quality pieces of software.
 EOF
