@@ -49,7 +49,7 @@ message  "Building XFree86 takes a very long time."
     export CFLAGS="-O2 ${CFLAGS//-Os/}"
   fi                                               &&
 
-  if  spell_installed  Linux-PAM
+  if  spell_installed  linux-pam
   then  echo  "#define  HasPam  YES"  >>  config/cf/site.def
   fi                                               &&
   ### xfree86.org recommends building in a shadow tree 
