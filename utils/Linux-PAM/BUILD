@@ -13,6 +13,10 @@
   prepare_install                              &&
   make    install
 
+  if [ ! -f /etc/securetty ]; then
+    cp $SOURCE_DIRECTORY/securetty /etc/
+  fi
+
 ) > $C_FIFO 2>&1  && (
 
   ln  -sf  libpam.so.$VERSION       /lib/libpam.so
