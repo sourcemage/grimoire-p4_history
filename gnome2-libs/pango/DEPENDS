@@ -1,3 +1,7 @@
-depends  glib2      &&
-depends  X11-LIBS    &&
-depends  fontconfig 
+depends  glib2       &&
+depends  fontconfig  &&
+
+optional_depends  X11-LIBS                 \
+                  "--with-x"               \
+                  "--without-x"            \
+                  "for X library support"
