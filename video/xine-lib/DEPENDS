@@ -1,4 +1,10 @@
 depends  zlib    &&
 depends  libpng  &&
-optional_depends  "alsa-lib"  ""  ""  "for ALSA sound support"  &&
+optional_depends  "alsa-lib"  ""  ""  "for ALSA audio output"  &&
+optional_depends  "esound"  ""  ""  "for esd audio output"  &&
+optional_depends  "arts"  ""  ""  "for arts audio output"  &&
+optional_depends  "libvorbis"  ""  ""  "for ogg/vorbis audio support"  &&
+optional_depends  "flac"  ""  ""  "for flac audio support"  &&
+optional_depends  "xvid"  ""  ""  "for decoding with the xvid codec"  &&
+optional_depends  "MPlayer-codecs"  ""  ""  "for quicktime support"  &&
 optional_depends  "aalib"     ""  ""  "for ascii art rendering"
