@@ -1,13 +1,14 @@
            SPELL=libgnomecups
-         VERSION=0.1.6
+         VERSION=0.1.8
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='4d13b0b79883423e442ab972fb906af0'
+          MD5[0]='c79af9b092e561f0ca68d0118875eeda'
       LICENSE[0]=LGPL
+       BUILD_API=2
          ENTERED=20020505
-         UPDATED=20030808
+         UPDATED=20040604
            SHORT="Gnome library to CUPS system"
 cat << EOF
 Gnome Library interface to CUPS system
