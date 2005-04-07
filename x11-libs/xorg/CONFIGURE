@@ -503,8 +503,7 @@ else
   config_query  PAM  "Use linux-pam for authentication?"  n
 fi  &&
 
-config_query  IPV6      "Build IPv6 support?"           n
-config_query  XDEBUG    "Build X.Org with debug code?"  y
-config_query  DEVELDRI  "Build devel DRI drivers?"      n
+config_query  IPV6      "Build IPv6 support?"           n  &&
+config_query  XDEBUG    "Build X.Org with debug code?"  y  &&
+config_query  DEVELDRI  "Build devel DRI drivers?"      n  &&
 config_query  JAPANESE  "Install Japanese docs?"        n
-config_query  LATEST    'Use latest source from CVS?'   n
