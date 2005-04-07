@@ -1,5 +1,6 @@
            SPELL=steghide
          VERSION=0.5.1
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
@@ -9,7 +10,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20020209
          UPDATED=20020320
       LICENSE[0]=GPL
-           SHORT="steghide is a steganography program"
+           SHORT="A steganography program"
 cat << EOF
 Steghide is a steganography program which embeds a secret message 
 in a cover file by replacing some of the least significant bits 
