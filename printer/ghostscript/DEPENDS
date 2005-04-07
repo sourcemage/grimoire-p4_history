@@ -3,7 +3,7 @@ depends  zlib                   &&
 depends  jpeg                   &&
 depends  ghostscript-fonts-std  &&
 
-if  grep  -q  "LIBGS=y"  $SPELL_CONFIG;  then
+if  [[  "$GS_LIBGS"  ==  y  ]];  then
   depends  gtk+
 fi                                                                     &&
 
