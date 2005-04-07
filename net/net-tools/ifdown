@@ -68,7 +68,7 @@ if ! /sbin/ifconfig 2>&1 | exists_in_text $DEV ; then
   exit 0
 fi
 
-unset MODE MODULE IP BROADCAST NETMASK GATEWAY POINTTOPOINT MTU WIFI
+unset MODE MODULE IP BROADCAST NETMASK GATEWAY POINTTOPOINT MTU
 unset do_device_down do_route_down on_down
 
 . $netdevdir/$DEV.dev

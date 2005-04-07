@@ -47,6 +47,10 @@
 #
 # ------------------------- ChangeLog ------------------------------- #
 # 2005-04-04  Arjan Bouter <abouter@sourcemage.org>
+#    - added cfg_wifi_{enablekey,security_menu,enckeys,setkey}
+#    - removed cfg_wifi_security
+#
+# 2005-04-04  Arjan Bouter <abouter@sourcemage.org>
 #     - added cfg_wifi_mode to select the cards mode
 #
 # 2005-03-31  Arjan Bouter <abouter@sourcemage.org>
@@ -662,7 +666,12 @@ function check_devdir() {
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
 ## @Global    WIFI_MODE: wifi max bitrate.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
-## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @Global    WIFI_KEY: enable key usage switch.<br>
+## @Global    WIFI_KEY: wifi encryption key 1.<br>
+## @Global    WIFI_KEY: wifi encryption key 2.<br>
+## @Global    WIFI_KEY: wifi encryption key 3.<br>
+## @Global    WIFI_KEY: wifi encryption key 4.<br>
+## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 #---
 function loadnetdev() {
@@ -675,7 +684,8 @@ function loadnetdev() {
 
 	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU \
               WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_MODE WIFI_SECMODE \
-              WIFI_ENCKEY UP_ON_BOOT
+              WIFI_KEY WIFI_KEY1 WIFI_KEY2 WIFI_KEY3 WIFI_KEY4 WIFI_DEFAULTKEY \
+              UP_ON_BOOT
 
 	devname=$(get_basename $1 .dev)
 
@@ -1040,7 +1050,7 @@ function cfg_wifi_rate() {
 
 #--- cfg_wifi_mode()
 ##
-## This sets the maximum bitrate
+## This sets the wifi mode
 ##
 ## @Global    WIFI_MODE: wifi card mode.<br>
 ## @External  dialog
@@ -1054,7 +1064,7 @@ function cfg_wifi_mode() {
 	                 --menu                                     \
 	                 "Select if you're using ad-hoc or managed mode" \
 	                 0 0 0                                      \
-                         "1"	"Managed (default)"                    \
+                         "1"	"Managed (default)"                 \
 			 "2"	"Ad-Hoc"`
 
 	if [ $? -eq 0 ]; then
@@ -1075,7 +1085,7 @@ function cfg_wifi_mode() {
 function cfg_wifi_secmode() {
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
 	                 --stdout                                   \
-	                 --title "Configure the bitrate"            \
+	                 --title "Configure the security mode"      \
 	                 --ok-label       "$BTN_ACCEPT"             \
 	                 --cancel-label   "$BTN_BACK"               \
 	                 --menu                                     \
@@ -1092,60 +1102,167 @@ function cfg_wifi_secmode() {
 	fi
 }
 
+#--- cfg_wifi_enablekey()
+##
+## Enable wifi keys
+##
+## @Global    WIFI_KEY: switch to enable keys.<br>
+## @External  dialog
+#---
+function cfg_wifi_enablekey() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure use of keys"            \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_BACK"               \
+	                 --menu                                     \
+	                 "Enable or disable keys"                   \
+	                 0 0 0                                      \
+                         "1"	"On"                                \
+			 "2"	"Off"`
+
+	if [ $? -eq 0 ]; then
+		case $COMMAND in
+			'1') WIFI_KEY="on" ;;
+			'2') WIFI_KEY="off" ;;
+		esac
+	fi
+}
+
+#--- cfg_wifi_defaultkey()
+##
+## This sets the maximum bitrate
+##
+## @Global    WIFI_DEFAULTKEY: wifi default key to use.<br>
+## @External  dialog
+#---
+function cfg_wifi_defaultkey() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Setting the default key"          \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --menu                                     \
+	                 "Select the default key to use"            \
+		                 0 0 0                              \
+		                 "1" "$WIFI_KEY1"                   \
+		                 "2" "$WIFI_KEY2"                   \
+		                 "3" "$WIFI_KEY3"                   \
+		                 "4" "$WIFI_KEY4" `
+
+	if [ $? -eq 0 ]; then
+		WIFI_DEFAULTKEY="${COMMAND}"
+	fi
+}
+
 #--- cfg_wifi_enckey()
 ##
 ## This sets the encryption key
 ##
-## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @Global    WIFI_KEY$n: wifi encryption key.<br>
 ## @External  dialog
 #---
 function cfg_wifi_enckey() {
+	case $1 in
+	  '1') local currentkey="$WIFI_KEY1" ;;
+	  '2') local currentkey="$WIFI_KEY2" ;;
+	  '3') local currentkey="$WIFI_KEY3" ;;
+	  '4') local currentkey="$WIFI_KEY4" ;;
+	esac
+
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
 	                 --stdout                                   \
-	                 --title "Configure the bitrate"            \
+	                 --title "Configure the encryption keys"    \
 	                 --ok-label       "$BTN_ACCEPT"             \
-	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --cancel-label   "$BTN_BACK"               \
 	                 --inputbox                                 \
-	                 "Encryption key (hexadecimal)" \
-	                 0 0 ${WIFI_ENCKEY}`
+	                 "Enter encryption key $1
+(either in s:something or hexadecimal form)"                      \
+	                 0 0 "$currentkey" `
 
 	if [ $? -eq 0 ]; then
-		WIFI_ENCKEY="${COMMAND}"
+		case $1 in
+			'1') WIFI_KEY1="${COMMAND}" ;;
+			'2') WIFI_KEY2="${COMMAND}" ;;
+			'3') WIFI_KEY3="${COMMAND}" ;;
+			'4') WIFI_KEY4="${COMMAND}" ;;
+		esac
 	fi
 }
 
-#--- cfg_wifi_security()
+#--- cfg_wifi_setkeys()
 ##
-## The wifi security submenu
+## Presents user with menu to enter encryption keys Up to
+## four keys may be specified.
+##
+## @Global      WIFI_KEY1: first key<br>
+## @Global      WIFI_KEY2: second key<br>
+## @Global      WIFI_KEY3: third key<br>
+## @Global      WIFI_KEY4: fourth key<br>
+## @Global      WIFI_DEFAULTKEY: default key<br>
+## @External    dialog
+#---
+function cfg_wifi_setkeys() {
+	while [ true ]; do
+		COMMAND=`$DIALOG --backtitle "$BACKTITLE"            \
+		                 --stdout                            \
+		                 --title "Configure encryption keys" \
+		                 --ok-label       "$BTN_SELECT"      \
+		                 --cancel-label   "$BTN_BACK"        \
+		                 --menu                              \
+		                 "Choose a encryption key to modify:"   \
+		                 0 0 0                            \
+		                 "1" "$WIFI_KEY1"                 \
+		                 "2" "$WIFI_KEY2"                 \
+		                 "3" "$WIFI_KEY3"                 \
+		                 "4" "$WIFI_KEY4"                 \
+		                 "5" "Default key" `
+
+	    if [ $? = 0 ]; then
+		case $COMMAND in
+			'1') cfg_wifi_enckey "1" ;;
+			'2') cfg_wifi_enckey "2" ;;
+			'3') cfg_wifi_enckey "3" ;;
+			'4') cfg_wifi_enckey "4" ;;
+			'5') cfg_wifi_defaultkey ;;
+		esac ;
+	    else
+		return 0 ;
+	    fi
+	done
+}
+
+#--- cfg_wifi_security_menu()
+##
+## The wifi security settings submenu
 ##
 ## @External  dialog
 #---
-function cfg_wifi_security() {
-  true
-  while [ $? -eq 0 ]; do
-	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
-	                 --stdout                                   \
-	                 --title "Select the crypto options"            \
-	                 --ok-label       "$BTN_ACCEPT"             \
-	                 --cancel-label   "$BTN_CANCEL"             \
-	                 --menu                                                \
-	                 "The security settings" \
+function cfg_wifi_security_menu() {
+    while [ true ]; do
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                      \
+	                 --stdout                                      \
+	                 --title "Configure security options"          \
+	                 --ok-label       "$BTN_SELECT"                \
+	                 --cancel-label   "$BTN_BACK"                  \
+	                 --menu                                        \
+	                 "WIFI Security submenu" \
 	                 0 0 0 \
 			 "1" "Security mode (enc)" \
-			 "2" "Encryption key (key)" `
+			 "2" "Encryption keys (key)" \
+			 "3" "Enable keys (key on/off)" `
 
-	if [ $? != 0 ]; then
-		# Exit
-		return 0
-	fi
 
 	if [ $? -eq 0 ]; then
 		case $COMMAND in
 			'1') cfg_wifi_secmode ;;
-			'2') cfg_wifi_enckey ;;
-		esac
+			'2') cfg_wifi_setkeys ;;
+			'3') cfg_wifi_enablekey  ;;
+		esac ;
+	else
+		return 0 ;
 	fi
-    done
+  done
 }
 
 #--- cfg_wifi()
@@ -1155,18 +1272,18 @@ function cfg_wifi_security() {
 ## @External  dialog
 #---
 function cfg_wifi() {
-    while [ $? -eq 0 ]; do
+    while [ true ]; do
 	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                      \
 	                 --stdout                                      \
 	                 --title "Configure WIFI"                      \
 	                 --ok-label       "$BTN_SELECT"                \
 	                 --cancel-label   "$BTN_BACK"                  \
 	                 --menu                                        \
-	                 "The settings for the wifi network. These will be passed to iwconfig" \
+	                 "The settings for the wifi network"           \
 	                 0 0 0 \
-			 "1" "Network or Domain ID, nwid" \
-			 "2" "Network name, essid" \
-			 "3" "Bitrate ,rate" \
+			 "1" "Network or Domain ID" \
+			 "2" "Network name" \
+			 "3" "Bitrate" \
 			 "4" "Mode" \
 			 "5" "Security menu" `
 
@@ -1181,7 +1298,7 @@ function cfg_wifi() {
 			'2') cfg_wifi_essid ;;
 			'3') cfg_wifi_rate ;;
 			'4') cfg_wifi_mode ;;
-			'5') cfg_wifi_security ;;
+			'5') cfg_wifi_security_menu ;;
 		esac
 	fi
   done
@@ -1305,7 +1422,12 @@ function confirm_save() {
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
 ## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
-## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @Global    WIFI_KEY: enable key usage switch.<br>
+## @Global    WIFI_KEY1: wifi encryption key 1.<br>
+## @Global    WIFI_KEY2: wifi encryption key 2.<br>
+## @Global    WIFI_KEY3: wifi encryption key 3.<br>
+## @Global    WIFI_KEY4: wifi encryption key 4.<br>
+## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  cat, date
 #---
@@ -1334,24 +1456,38 @@ UP_ON_BOOT=${UP_ON_BOOT}
 EOF
 
 	if [ ! -z ${WIFI_NWID} ]; then
-		echo "WIFI_NWID=\"${WIFI_NWID}\"" >> $1
+		echo "WIFI_NWID='${WIFI_NWID}'" >> $1
 	fi
 	if [ ! -z ${WIFI_ESSID} ]; then
-		echo "WIFI_ESSID=\"${WIFI_ESSID}\"" >> $1
+		echo "WIFI_ESSID='${WIFI_ESSID}'" >> $1
 	fi
 	if [ ! -z ${WIFI_RATE} ]; then
-		echo "WIFI_RATE=\"${WIFI_RATE}\"" >> $1
+		echo "WIFI_RATE=${WIFI_RATE}" >> $1
 	fi
 	if [ ! -z ${WIFI_MODE} ]; then
-		echo "WIFI_MODE=\"${WIFI_MODE}\"" >> $1
+		echo "WIFI_MODE=${WIFI_MODE}" >> $1
 	fi
 	if [ ! -z ${WIFI_SECMODE} ]; then
-		echo "WIFI_SECMODE=\"${WIFI_SECMODE}\"" >> $1
+		echo "WIFI_SECMODE=${WIFI_SECMODE}" >> $1
 	fi
-	if [ ! -z ${WIFI_ENCKEY} ]; then
-		echo "WIFI_ENCKEY=\"${WIFI_ENCKEY}\"" >> $1
+	if [ ! -z $WIFI_KEY ]; then
+		echo "WIFI_KEY=$WIFI_KEY" >> $1
 	fi
-
+	if [ ! -z $WIFI_KEY1 ]; then
+		echo "WIFI_KEY1=${WIFI_KEY1}" >> $1
+	fi
+	if [ ! -z $WIFI_KEY2 ]; then
+		echo "WIFI_KEY2=${WIFI_KEY2}" >> $1
+	fi
+	if [ ! -z $WIFI_KEY3 ]; then
+		echo "WIFI_KEY3=${WIFI_KEY3}" >> $1
+	fi
+	if [ ! -z $WIFI_KEY4 ]; then
+		echo "WIFI_KEY4=${WIFI_KEY4}" >> $1
+	fi
+	if [ ! -z $WIFI_DEFAULTKEY ]; then
+		echo "WIFI_DEFAULTKEY=$WIFI_DEFAULTKEY" >> $1
+	fi
 }
 
 #--- save_update()
@@ -1379,7 +1515,12 @@ EOF
 ## @Global    WIFI_RATE: wifi max bitrate.<br>
 ## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
-## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @Global    WIFI_KEY: enable key usage switch.<br>
+## @Global    WIFI_KEY1: wifi encryption key 1.<br>
+## @Global    WIFI_KEY2: wifi encryption key 2.<br>
+## @Global    WIFI_KEY3: wifi encryption key 3.<br>
+## @Global    WIFI_KEY4: wifi encryption key 4.<br>
+## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  date
 #---
@@ -1405,36 +1546,65 @@ function save_update() {
 	cat_or_sedit "^POINTOPOINT=.*" "POINTOPOINT=${POINTOPOINT}" $1
 	cat_or_sedit "^MTU=.*" "MTU=${MTU}" $1
 	if [ ! -z ${WIFI_NWID} ]; then
-	  cat_or_sedit "^WIFI_NWID=.*" "WIFI_NWID=\"${WIFI_NWID}\"" $1
+	  cat_or_sedit "^WIFI_NWID=.*" "WIFI_NWID='${WIFI_NWID}'" $1
 	else
 	  sed -i '/^WIFI_NWID=.*/d' $1
 	fi
 	if [ ! -z ${WIFI_ESSID} ]; then
-	  cat_or_sedit "^WIFI_ESSID=.*" "WIFI_ESSID=\"${WIFI_ESSID}\"" $1
+	  cat_or_sedit "^WIFI_ESSID=.*" "WIFI_ESSID='${WIFI_ESSID}'" $1
 	else
 	  sed -i '/^WIFI_ESSID=.*/d' $1
 	fi
 	if [ ! -z ${WIFI_RATE} ]; then
-	  cat_or_sedit "^WIFI_RATE=.*" "WIFI_RATE=\"${WIFI_RATE}\"" $1
+	  cat_or_sedit "^WIFI_RATE=.*" "WIFI_RATE=${WIFI_RATE}" $1
 	else
 	  sed -i '/^WIFI_RATE=.*/d' $1
 	fi
 	if [ ! -z ${WIFI_MODE} ]; then
-	  cat_or_sedit "^WIFI_MODE=.*" "WIFI_MODE=\"${WIFI_MODE}\"" $1
+	  cat_or_sedit "^WIFI_MODE=.*" "WIFI_MODE=${WIFI_MODE}" $1
 	else
 	  sed -i '/^WIFI_MODE=.*/d' $1
 	fi
 	if [ ! -z ${WIFI_SECMODE} ]; then
-	  cat_or_sedit "^WIFI_SECMODE=.*" "WIFI_SECMODE=\"${WIFI_SECMODE}\"" $1
+	  cat_or_sedit "^WIFI_SECMODE=.*" "WIFI_SECMODE=${WIFI_SECMODE}" $1
 	else
 	  sed -i '/^WIFI_SECMODE=.*/d' $1
 	fi
-	if [ ! -z ${WIFI_ENCKEY} ]; then
-	  cat_or_sedit "^WIFI_ENCKEY=.*" "WIFI_ENCKEY=\"${WIFI_ENCKEY}\"" $1
+	if [ ! -z ${WIFI_KEY} ]; then
+	  cat_or_sedit "^WIFI_KEY=.*" "WIFI_KEY=${WIFI_KEY}" $1
 	else
-	  sed -i '/^WIFI_ENCKEY=.*/d' $1
+	  sed -i '/^WIFI_KEY=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_KEY1} ]; then
+	  cat_or_sedit "^WIFI_KEY1=.*" "WIFI_KEY1=${WIFI_KEY1}" $1
+	else
+	  sed -i '/^WIFI_KEY1=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_KEY2} ]; then
+	  cat_or_sedit "^WIFI_KEY2=.*" "WIFI_KEY2=${WIFI_KEY2}" $1
+	else
+	  sed -i '/^WIFI_KEY2=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_KEY3} ]; then
+	  cat_or_sedit "^WIFI_KEY3=.*" "WIFI_KEY3=${WIFI_KEY3}" $1
+	else
+	  sed -i '/^WIFI_KEY3=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_KEY4} ]; then
+	  cat_or_sedit "^WIFI_KEY4=.*" "WIFI_KEY4=${WIFI_KEY4}" $1
+	else
+	  sed -i '/^WIFI_KEY4=.*/d' $1
+	fi
+	if [ ! -z ${WIFI_DEFAULTKEY} ]; then
+	  cat_or_sedit "^WIFI_DEFAULTKEY=.*" "WIFI_DEFAULTKEY=${WIFI_DEFAULTKEY}" $1
+	else
+	  sed -i '/^WIFI_DEFAULTKEY=.*/d' $1
 	fi
 	cat_or_sedit "^UP_ON_BOOT=.*" "UP_ON_BOOT=${UP_ON_BOOT}" $1
+
+	# removing leftovers from older netconf versions
+	sed -i '/^WIFI=.*/d' $1
+	sed -i '/^WIFI_ADVANCED=.*/d' $1
 
 }
 
