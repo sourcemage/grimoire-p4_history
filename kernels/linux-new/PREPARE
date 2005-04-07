@@ -106,6 +106,7 @@ dialog="dialog --stdout --cancel-label Save_and_Exit"
 # simply list ${BUILD_DIRECTORY} linux sources 
 list_usr_src()
 {
+	output=$(
         linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux*`"
         for linuxsrc in $linuxsrcs
         do
@@ -116,6 +117,15 @@ list_usr_src()
                         echo "Use_${linuxsrc}_as_the_source_tree"
                 fi
 	done
+	)
+	if [[ $output == "" ]]
+	then
+		echo "No"
+		echo "Available_Source_trees"
+		echo "Maybe_you_need_to_compile_a_new_one?"
+	else
+		echo $output
+	fi
 }
 																			
 # main menu uhhh, what else is there to say?
@@ -188,7 +198,7 @@ clean_menu()
 			--item-help --menu \
 			"Which Kenrel" 0 0 0 $( list_usr_src ) )
 		retval="$?"
-		if [ "$retval" == "0" ]
+		if [[ "$retval" == "0" && "$menu_option" != "No" ]]
 		then
 			clean_src_menu ${menu_option}
 		else
@@ -232,7 +242,7 @@ other_package_menu()
 			--item-help --menu \
 			"Select a Kernel Source" 0 0 0 $( list_usr_src ) )
 		retval="$?"
-		if [ "$retval" == "0" ]
+		if [[ "$retval" == "0" && "$menu_option" != "No" ]]
 		then
 			other_pkg_src_menu ${menu_option}
 		else
@@ -654,22 +664,20 @@ old_src_menu()
 				--menu \
 				"Select Old Source Tree" 0 0 0 $( list_usr_src ) )
 		retval="$?"
-		if [ "$retval" == "0" ]
+		if [[ "$retval" == "0" && "$old_src_tree" != "No" ]]
 		then
-			if [ -f ${old_src_tree}/.spell-config.p ]
-			then
-				cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
-				tmp=$old_src_tree
-				persistent_load
-				persistent_add old_src_tree
-				mode="oldktree"
-				old_src_tree=$tmp
-				reconf="true"
-				persistent_remove MAKEMODE
-				persistent_remove UPDATE_BL
-				persistent_save
-				persistent_load
-			fi
+			cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
+			tmp=$old_src_tree
+			persistent_load
+			persistent_add old_src_tree
+			mode="oldktree"
+			old_src_tree=$tmp
+			reconf="true"
+			persistent_remove MAKEMODE
+			persistent_remove UPDATE_BL
+			persistent_save
+			persistent_load
+
 			break
 		else
 			break
@@ -748,7 +756,7 @@ rec_dep_make()
 create_details()
 {
 	. $latestdefaults
-	local counter="1"
+	local counter="3"
 	case "$mode" in
 		*ktree)
 			# add required smgl patches
@@ -791,6 +799,9 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
+					echo "SOURCE2=\${source}.sign"
+					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}"
+					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 				*)
 					. $kernelsdir/${!kver}
@@ -799,6 +810,9 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
+					echo "SOURCE2=\${source}.sign"
+					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}"
+					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
 			if [[ ${patchversion} ]]
