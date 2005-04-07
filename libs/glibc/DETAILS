@@ -2,10 +2,10 @@
          VERSION=2.3.4
 if  [  "$GLIBC_NPTL"  =  "y"  ];  then
          #snapshot prerelease 
- HEADERS_VERSION=2.6.10.0
+ HEADERS_VERSION=2.6.11.1
          SOURCE2=linux-libc-headers-$HEADERS_VERSION.tar.bz2
   SOURCE2_URL[0]=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE2
-          MD5[1]=870235543dd8f358453e19a90165054b
+          MD5[1]=bf820223f11afcd5a68e6ae4c6601d68
 else
  HEADERS_VERSION=2.4.24
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2 
