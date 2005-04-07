@@ -1,8 +1,1 @@
-if  !  grep  -q  "LIBGS="  $SPELL_CONFIG;  then
-
-  if    query  "Build and install the shared library libgs.so (necessary if using the gv ghostscript viewer)?"  y
-  then  echo   "LIBGS=y"  >>  $SPELL_CONFIG
-  else  echo   "LIBGS=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
+config_query  GS_LIBGS  'Build and install the shared library libgs.so (necessary if using the gv ghostscript viewer)?'  y

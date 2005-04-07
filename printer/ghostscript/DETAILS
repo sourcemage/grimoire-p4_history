@@ -1,22 +1,30 @@
+#
+# Note to maintainers: be careful when updating to a new version. The Web site
+# is convoluted, and SourceForge project lists both AFPL and GPL-licensed files
+# as "ghostscript-x.x.tar.bz2". After retrieving a tarball, PLEASE check that
+# you have a GPL one and not AFPL, using this command:
+#   tar xOjf ghostscript-x.x.tar.bz2 '*LICENSE'
+#
            SPELL=ghostscript
-         VERSION=7.07a
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=8.15
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.atai.org/${SPELL}/${SOURCE}
-        WEB_SITE=http://www.ghostscript.com
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://www.ghostscript.com/
       LICENSE[0]=GPL
-          MD5[0]='2d3fd6cf9b76002da0abb656022dd81f'
+          MD5[0]='ca28c404743c020a5bd69716d0524ee3'
          ENTERED=20010922
-         UPDATED=20040406
-      MAKE_NJOBS=1
-           SHORT="ghostcript is a an interpreter for the PostScript langauge."
+         UPDATED=20050407
+       BUILD_API=2
+#      MAKE_NJOBS=1
+           SHORT='Ghostcript is a an interpreter for the PostScript language'
 cat << EOF
-
 Ghostscript is the name of a set of software that provides:
     * An interpreter for the PostScript language and the PDF file format,
     * A set of C procedures (the Ghostscript library) that implement the
       graphics capabilities that appear as primitive operations in the
       PostScript language, and
     * A wide variety of output drivers for various file formats and printers.
-
+This spell installs GNU GPL-licensed Ghostscript as opposed to AFPL-licensed.
+See also http://ghostscript.sf.net/.
 EOF

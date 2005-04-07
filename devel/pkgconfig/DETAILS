@@ -1,14 +1,15 @@
            SPELL=pkgconfig
-         VERSION=0.15.0
+         VERSION=0.16.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.freedesktop.org/software/$SPELL/releases/$SOURCE
-          MD5[0]=8d262ee1ab7cb5cdade7c784442da84f
+          MD5[0]='6d5516fb7b65608edb83bbebc56b3284'
       LICENSE[0]=GPL
         WEB_SITE=http://www.freedesktop.org
          ENTERED=20010922
-         UPDATED=20020227
-           SHORT="A system for managing library compile/link flags."
+         UPDATED=20050404
+       BUILD_API=2
+           SHORT='A system for managing library compile/link flags'
 cat << EOF
 pkg-config is a system for managing library compile/link flags that
 works with automake and autoconf. It replaces the ubiquitous *-config

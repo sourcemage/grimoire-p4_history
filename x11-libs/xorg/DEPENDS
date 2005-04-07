@@ -1,10 +1,9 @@
-if  [  "$CVS"  =  "y"  ]; then
+if  [[  "$X_LATEST"  =  y  ]]; then
   depends CVS
 fi  &&
 
-if  [  "$PAM"  =  "y"  ];  then
-  depends  linux-pam
-fi  &&
+# the options given here are bogus, they're only used by the spell's own code, not X
+optional_depends  linux-pam  '--with-pam'  '--without-pam'  'PAM framework support'  &&
 
 depends  bison       &&
 depends  flex        &&

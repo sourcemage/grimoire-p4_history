@@ -1,12 +1,19 @@
            SPELL=stlport
-         VERSION=STLPORT_5_0
-          SOURCE=STLport-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/STLport-$VERSION
-   SOURCE_URL[0]=cvs://:pserver:cvs@cvs.stlport.com:/stlport:STLport:$VERSION
+if [[ "$STLPORT_LATEST" == y ]]; then
+         VERSION=5.0
+          SOURCE=STLport.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:cvs@cvs.stlport.com:/stlport:STLport:STLPORT_${VERSION//./_}
           MD5[0]=IGNORE
+else
+         VERSION=5.0RC2
+          SOURCE=STLport-$VERSION.tar.gz
+   SOURCE_URL[0]=http://www.stlport.org/archive/$SOURCE
+          MD5[0]='805cd07e3c6173d272e2e7f0d4d6a144'
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/STLport
         WEB_SITE=http://www.stlport.org/
          ENTERED=20020302
-         UPDATED=20021127
+         UPDATED=20050403
     DISTCC_HOSTS=""
       LICENSE[0]=http://www.stlport.org/doc/license.html
       MAKE_NJOBS=1

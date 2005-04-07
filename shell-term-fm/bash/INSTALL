@@ -10,6 +10,9 @@ cp  -f   bash.static  ${INSTALL_ROOT}/bin      &&
 cp  -f   bashbug      ${INSTALL_ROOT}/bin      &&
 ln  -sf  bash         ${INSTALL_ROOT}/bin/sh   &&
 
+# create restricted shell
+ln  -fns  bash  $INSTALL_ROOT/bin/rbash  &&
+
 cd  doc  &&
 
 for  MANPAGE  in  `ls  *.1`;  do

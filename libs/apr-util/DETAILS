@@ -1,33 +1,26 @@
-# use configuration from the `apr' spell
 source $DEPENDS_CONFIG/apr.p
 
            SPELL=apr-util
-case "$APR_VERSION" in
-	0.9*)
+# APR_BRANCH replaces APR_VERSION; remove APR_VERSION in May, 2005
+case "${APR_BRANCH:-$APR_VERSION}" in
+  0.9*)
          VERSION=0.9.6
           MD5[0]=b000af2465752d54c93c6c74cd7775fb 
        REPOS_URI=branches/0.9.x
-        ;;
-	1.0*)
-	 VERSION=1.0.1
-	  MD5[0]=fea9cee32c6ed30c9528fcc31d5eb15f 
-       REPOS_URI=branches/1.0.x
-	;;
-	1.1*)
-         VERSION=1.1.0
-          MD5[0]='2f2224a89a8f1959215c63bc820ff011'
-       REPOS_URI=trunk
-        ;;
-	*)
-	message "How did this happen APR_VERSION is $APR_VERSION"
-	;;
+    ;;
+  *)
+         VERSION=1.1.2
+          MD5[0]='f38f0f2274970359336527b2d6de13a1'
+       REPOS_URI=branches/1.1.x
+    ;;
 esac
-if [ "$APR_CVS" == 'y' ]; then
+# APR_LATEST replaces APR_CVS; remove APR_CVS in May, 2005
+if [[ "${APR_LATEST:-APR_CVS}" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
           MD5[0]=IGNORE
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/apr/$SPELL/$REPOS_URI:$SPELL-$VERSION
 fi
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCE_URL[0]:-http://www.apache.org/dist/apr/$SOURCE}
         WEB_SITE=http://apr.apache.org/

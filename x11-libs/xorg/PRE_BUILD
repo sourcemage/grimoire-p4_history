@@ -8,6 +8,14 @@ then  cp     $CONFIG_CACHE/host.def                \
              $SOURCE_DIRECTORY/config/cf/host.def
 fi  &&
 
+# Now that we're using PIC-enabled libraries, we need to prevent use of X's loader
+# This option is needed for compatibility with pre-20050406 host.def files
+if  !  grep  -q  MakeDllModules             $SOURCE_DIRECTORY/config/cf/host.def; then
+  echo  '#define MakeDllModules   YES'  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+  echo  '#define DoLoadableServer YES'  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
+  message  "${MESSAGE_COLOR}You may want to update your host.def file...${DEFAULT_COLOR}"
+fi  &&
+
 if  !  grep  -q  InstallFontconfigLibrary  $SOURCE_DIRECTORY/config/cf/host.def
   then echo  "#define InstallFontconfigLibrary NO"     \
              >>  $SOURCE_DIRECTORY/config/cf/host.def
@@ -19,20 +27,10 @@ echo  "#define HasMotif2 NO"  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
 ### fix the broken xcursor.pc file
 #sedit  '/Requires/d'  $SOURCE_DIRECTORY/lib/Xcursor/xcursor.pc.in  &&
 
-### removing -Os from copied host.def bug#3694 and cleaning up $CFLAGS
-if  [  -f  $SOURCE_DIRECTORY/config/cf/host.def  ];  then
-  # removing the -Os doesn't seem to be needed anymore on gcc 3.4.2,
-  # please check on 3.3.x
-  #sedit  s"/-Os//g"  $SOURCE_DIRECTORY/config/cf/host.def  &&
+# Do not remove PIC or optimization switches from compiler flags!
+# The removal code used to be here.
 
-  #
-  # Remove explicit PIC as well as that breaks the symbol logic in
-  # /usr/X11R6/lib/modules/fonts/libbitmap.a:bitmapmod.o
-  #
-  sedit  s"/-DPIC -fPIC//g"  $SOURCE_DIRECTORY/config/cf/host.def
-fi  &&
-
-if  [  "$PAM"  =  "y"  ];  then
+if  echo  $OPTS  |  grep  -q  with-pam;  then
   echo  "#define  HasPam  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
@@ -53,7 +51,7 @@ sedit  's:DefaultLinuxDistribution:LinuxSourceMage:'  \
 #
 # Now to define some of our user-specified settings
 #
-if  [  "$IPV6"  =  "y"  ];  then
+if  [  "$X_IPV6"  =  "y"  ];  then
   echo  "#define  BuildIPv6   YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
@@ -65,7 +63,7 @@ if  spell_ok  libpng;  then
   echo  "#define  HasLibpng  YES"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$XDEBUG"  = "n"  ]         ||
+if  [  "$X_DEBUG"  = "n"  ]         ||
     (echo $LDFLAGS | grep -q -- "-s");  then
   echo  "#define  BuildDebug  NO"  >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
@@ -75,12 +73,12 @@ if  (echo $LDFLAGS | grep -q -- "-s");  then
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$DEVELDRI"  =  "y"  ];  then
+if  [  "$X_DRI_DEVEL"  =  "y"  ];  then
   echo  "#define  BuildDevelDRIDrivers  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&
 
-if  [  "$JAPANESE"  =  "y"  ];  then
+if  [  "$X_DOC_JAPANESE"  =  "y"  ];  then
   echo  "#define  InstallJapaneseDocs  YES"  \
     >>  $SOURCE_DIRECTORY/config/cf/site.def
 fi  &&

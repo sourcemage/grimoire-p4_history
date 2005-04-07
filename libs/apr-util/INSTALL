@@ -1,23 +1,18 @@
-NEEDED_BUILD_FILES="find_apu.m4 apu-conf.m4 apu-hints.m4"
 default_install &&
-case "$APR_VERSION" in
-	1.*)
-		# needed for httpd-dev from svn
-		cp -v ./Makefile.in ${INSTALL_ROOT}/usr/share/apache2/
-		for file in $NEEDED_BUILD_FILES
-		do
-			cp -v ./build/$file ${INSTALL_ROOT}/usr/share/apache2/build-1/
-		done
-		[ -d /usr/share/apache2/build ] && 
-		rm -rvf ${INSTALL_ROOT}/usr/share/apache2/build
-		ln -fns build-1 ${INSTALL_ROOT}/usr/share/apache2/build
-		ln -fns apr-1-config ${INSTALL_ROOT}/usr/bin/apr-config
-	;;
-	*)
-		for file in $NEEDED_BUILD_FILES
-		do
-			cp -v ./build/$file ${INSTALL_ROOT}/usr/share/apache2/build/
-		done
-	;;
-esac
 
+# APR_BRANCH replaces APR_VERSION; remove APR_VERSION in May, 2005
+case "${APR_BRANCH:-$APR_VERSION}" in
+  0.9*)
+    ;;
+  *)
+    # needed for httpd-dev from svn
+    cp -fv ./Makefile.in $INSTALL_ROOT/usr/share/apache2/ &&
+    ln -fns apu-1-config $INSTALL_ROOT/usr/bin/apu-config
+  ;;
+esac &&
+cd build &&
+cp -fv         \
+  find_apu.m4  \
+  apu-conf.m4  \
+  apu-hints.m4 \
+  $INSTALL_ROOT/usr/share/apache2/build/
