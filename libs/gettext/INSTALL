@@ -5,9 +5,12 @@ default_install                                      &&
 rm  ${INSTALL_ROOT}/usr/local/include/libintl.h      &&
 mv  ${INSTALL_ROOT}/usr/local/include/gettext-po.h   \
     ${INSTALL_ROOT}/usr/include/                     &&
-if  spell_ok  g++;  then
+
+if  echo  $OPTS  |  grep  -q  --  "enable-libasprintf";  then
   mv  ${INSTALL_ROOT}/usr/local/include/autosprintf.h  \
       ${INSTALL_ROOT}/usr/include/
+else
+  rm  ${INSTALL_ROOT}/usr/local/include/autosprintf.h
 fi  &&
 
 if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
