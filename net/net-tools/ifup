@@ -32,18 +32,18 @@ _do_device_up()
   [ ! -z "$WIFI_ESSID" ] && iwconfig $DEV essid ${WIFI_ESSID}
   [ ! -z "$WIFI_RATE" ] && iwconfig $DEV rate ${WIFI_RATE}
   [ ! -z "$WIFI_MODE" ] && iwconfig $DEV mode ${WIFI_MODE}
-  [ ! -z "$WIFI_KEY1" ] && iwconfig $DEV key [1] ${WIFI_KEY1}
-  [ ! -z "$WIFI_KEY2" ] && iwconfig $DEV key [2] ${WIFI_KEY2}
-  [ ! -z "$WIFI_KEY3" ] && iwconfig $DEV key [3] ${WIFI_KEY3}
-  [ ! -z "$WIFI_KEY4" ] && iwconfig $DEV key [4] ${WIFI_KEY4}
+  [ ! -z "$WIFI_KEY1" ] && iwconfig $DEV key \[1\] ${WIFI_KEY1}
+  [ ! -z "$WIFI_KEY2" ] && iwconfig $DEV key \[2\] ${WIFI_KEY2}
+  [ ! -z "$WIFI_KEY3" ] && iwconfig $DEV key \[3\] ${WIFI_KEY3}
+  [ ! -z "$WIFI_KEY4" ] && iwconfig $DEV key \[4\] ${WIFI_KEY4}
   [ ! -z "$WIFI_SECMODE" ] && iwconfig $DEV key ${WIFI_SECMODE}
   [ ! -z "$WIFI_DEFAULTKEY" ] && iwconfig $DEV key ${WIFI_DEFAULTKEY}
-  [ ! -z "$WIFI_KEY" ] && iwconfig $DEV key [$WIFI_KEY]
+  [ ! -z "$WIFI_KEY" ] && iwconfig $DEV key \[$WIFI_KEY\]
 
   # some wifi cards need some time to setup the card before bringing it up
   if [ ! -z "$WIFI_NWID" ] || [ ! -z "$WIFI_ESSID" ] || [ ! -z "$WIFI_RATE" ] \
      || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_KEY" ] [ ! -z "$WIFI_KEY1"] \
-     || [ ! -z "$WIFI_MODE ]; then
+     || [ ! -z "$WIFI_MODE" ]; then
        sleep 2
   fi
 
