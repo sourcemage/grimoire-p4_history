@@ -1,16 +1,20 @@
-  if [ $OLD_TOO == y ] ; then
-    cd $SOURCE_DIRECTORY2                                     &&
-    make install                                              &&
-    mkdir  -p  ${INSTALL_ROOT}/etc/modules.d                  &&
-    touch      ${INSTALL_ROOT}/etc/modules                    &&
-    touch      ${INSTALL_ROOT}/etc/modules.conf               &&
-    cd $SOURCE_DIRECTORY                                      &&
-    rm_source_dir $SOURCE_DIRECTORY2                          &&
-    make moveold
-  fi                                                          &&
-  make install                                                &&
-  if [ $OLD_TOO == y ] ; then
-    ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf
-  fi                                                          &&
-  cp modprobe.devfs ${INSTALL_ROOT}/etc                       
+make_normal  &&
 
+if [ $OLD_TOO == y ] ; then
+  cd $SOURCE_DIRECTORY2                        &&
+  make install                                 &&
+  mkdir  -p  ${INSTALL_ROOT}/etc/modules.d     &&
+  touch      ${INSTALL_ROOT}/etc/modules       &&
+  touch      ${INSTALL_ROOT}/etc/modules.conf  &&
+  cd $SOURCE_DIRECTORY                         &&
+  rm_source_dir $SOURCE_DIRECTORY2             &&
+  make moveold
+fi  &&
+
+make  install  &&
+
+if [ $OLD_TOO == y ] ; then
+  ./generate-modprobe.conf ${INSTALL_ROOT}/etc/modprobe.conf
+fi  &&
+
+cp  modprobe.devfs  ${INSTALL_ROOT}/etc
