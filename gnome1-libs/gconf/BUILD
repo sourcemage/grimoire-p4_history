@@ -7,6 +7,8 @@ then
   sedit  "s/3.3/4.0/g"  configure.in
 fi  &&
 
-./configure  --prefix=/usr            \
-             --sysconfdir=/etc        &&
-make
+./configure  --prefix=/usr      \
+             --sysconfdir=/etc  &&
+make_single                     &&
+make                            &&
+make_normal
