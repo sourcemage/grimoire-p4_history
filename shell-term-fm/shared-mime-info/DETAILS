@@ -3,14 +3,13 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.freedesktop.org/software/${SPELL}/${SOURCE}
-        WEB_SITE=http://www.freedesktop.org/software/shared-mime-info/
-      LICENSE[0]=GPL
           MD5[0]='d12090b4fe876f81e80fa53c33d32cef'
-      BUILD_API=2
+        WEB_SITE=http://www.freedesktop.org/software/shared-mime-info/
          ENTERED=20020714
          UPDATED=20031205
-      MAKE_NJOBS=1
-           SHORT="This specification attempts to unify the type-guessing systems currently in use by GNOME, KDE and ROX"
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Unify the type-guessing for GNOME, KDE and ROX"
 cat << EOF
 Many programs and desktops use the MIME system to represent the types of files. Frequently, it is necessary to work out the 
 correct MIME type for a file. This is generally done by examining the file's name or contents, and looking up the correct 
