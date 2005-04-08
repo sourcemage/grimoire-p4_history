@@ -4,6 +4,7 @@ if  glibc_is_nptl; then
   patch  -p0  <  $SCRIPT_DIRECTORY/nptl-fix.patch
 fi           &&
 xmkmf        &&
+make_single  &&
 make  World  &&
 cd    Xvnc   &&
 ./configure  &&
