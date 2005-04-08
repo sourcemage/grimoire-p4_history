@@ -1,3 +1,7 @@
+if [[ "$APR_CVS" == "y" ]]
+then
+	./buildconf
+fi
 ./configure                                   \
   --host=$HOST                                \
   --build=$BUILD                              \
@@ -8,5 +12,7 @@
   --enable-layout=GNU                         \
   --enable-threads                            \
   $OPTS                                       &&
+
+sedit  's|[^_]off64_t| __off64_t|'  include/apr.h  &&
 
 make
