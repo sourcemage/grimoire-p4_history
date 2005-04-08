@@ -43,11 +43,11 @@
 	  BUILD_API=2 ( needs latest build-split sorcery)
 	  this spell now only build the compilers. All libraries are separate spells.
 	* BUILD: remove ( ) > $FIFO
-          only does make
-        * INSTALL: add
+	  only does make
+	* INSTALL: add
 	* CONFIGURE: remove all front end logic
 	* POST_REMOVE: delete
-	
+
 2004-03-13 hgg <hgreig@bigpond.net.au>
 	* BUILD: revert previous, LDFLAGS not honoured, 
 	  pity because stripping debugging at least halves the disk footprint

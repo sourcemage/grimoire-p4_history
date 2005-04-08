@@ -6,20 +6,20 @@
 	* POST_INSTALL, FINAL: branch POST_INSTALL to FINAL, since this is
 	  an api2 spell, this was keeping init scripts from being installed.
 
-2004-12-08 Robert Helgesson <rhelgesson@sourcemage.org> 
+2004-12-08 Robert Helgesson <rhelgesson@sourcemage.org>
 	* init.d/shorewall.conf: Added comments and fixed so that the
-		variables are separated by an empty line.
+	  variables are separated by an empty line.
 	* HISTORY: Formatted to fit 80 column display with 8 space tabs.
 
 2004-11-24 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated UPDATED
 	* init.d/shorewall: Now sends output to a log file (SHOREWALL_LOG) and
-		doesn't clutter the screen with a timestamp at the top. Uses
-		"echo" in start/stop to give information on what's going on.
-		Source /etc/sysconfig/shorewall for SHOREWALL_LOG and
-		DATE_FORMAT
+	  doesn't clutter the screen with a timestamp at the top. Uses
+	  "echo" in start/stop to give information on what's going on.
+	  Source /etc/sysconfig/shorewall for SHOREWALL_LOG and
+	  DATE_FORMAT
 	* init.d/shorewall.conf: Added for SHOREWALL_LOG and DATE_FORMAT
-		variables
+	  variables
 
 2004-11-06 Robert Helgesson <rhelgesson@sourcemage.org>
 	* DETAILS: Updated to version 2.0.10. Fixes bug #7572.

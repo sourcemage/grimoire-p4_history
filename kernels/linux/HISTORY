@@ -28,7 +28,7 @@
 	* DETAILS: 2.6.11
 
 2005-01-29 Arjan Bouter <abouter@sourcemage.org>
-        * PRE_BUILD: spell_installed -> spell_ok conversion
+	* PRE_BUILD: spell_installed -> spell_ok conversion
 
 2005-01-20 Ladislav Hagara <hgr@vabo.cz>
 	* KERNELS: 2.2.27-rc2, 2.4.29, 2.6.10-ac10, 2.6.11-rc1, 2.6.11-rc1-mm2
@@ -37,7 +37,7 @@
 	* patches/grsecurity: Update to 2.1.0 versions
 
 2005-01-13 Flavien Bridault <disk@sourcemage.org>
-	* patches/reiser4: Added  (Bug #7860)
+	* patches/reiser4: Added (Bug #7860)
 
 2005-01-11 Eric Sandall <eric@sandall.us>
 	* KERNELS: Updated 2_6_AC to 2.6.10-ac8
@@ -51,14 +51,14 @@
 	  gentoo, except 2.4.9, which is backported from 2.4.10 by me.
 
 2005-01-05 Eric Sandall <eric@sandall.us>
-	* patches/ska3: Added  (Bug #3751)
+	* patches/ska3: Added (Bug #3751)
 
 2005-01-04 Eric Sandall <eric@sandall.us>
 	* KERNELS: Updated 2_4_PRE to 2.4.29-pre3
 	  Updated 2_6_PRE to 2.6.10
 	  Updated 2_6_AC to 2.6.10-ac2
 	  Updated 2_6_MM to 2.6.10-mm1
-	* mk.2.6.diff: Removed, doesn't work with 2.6.10+  (Bug #7913)
+	* mk.2.6.diff: Removed, doesn't work with 2.6.10+ (Bug #7913)
 	* PRE_BUILD: Removed application of mk.2.6.diff
 	  Use generic sedits to fix Qt config
 	* patches/bootsplash: Removed 3.0.7-2.4.22-vanilla
@@ -87,7 +87,7 @@
 	* KERNELS: Updated latest 2_6_AC to 2.6.9-ac12
 
 2004-11-22 Eric Sandall <eric@sandall.us>
-	* BUILD,PRE_BUILD: Changed `exit 1` to `return 1`  (Bug #7649)
+	* BUILD,PRE_BUILD: Changed `exit 1` to `return 1` (Bug #7649)
 	* DETAILS: Added `return 1` where David removed `exit 1`
 
 2004-11-22 Eric Sandall <eric@sandall.us>
@@ -159,7 +159,7 @@
 	* PRE_BUILD: Use `ln -sfn` so that the symlink is created correctly
 
 2004-09-04 Eric Sandall <eric@sandall.us>
-	* BUILD,PRE_BUILD: Move graphical configs to PRE_BUILD  (Bug #7256)
+	* BUILD,PRE_BUILD: Move graphical configs to PRE_BUILD (Bug #7256)
 	* PRE_BUILD: Use if/fi instead of case/esac for checking CONFIG_KERNEL
 	  Add more "&&"s
 	  Don't use `run_make` for graphical configs
