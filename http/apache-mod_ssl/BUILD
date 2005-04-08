@@ -20,6 +20,8 @@ cd  ../$SOURCE2_BASE                                &&
             --with-layout=GNU                  \
             $OPTS                              &&
 
+make_single  &&
+
 if  [  "$CERTIFICATE"  ==  "y"  ];  then
   make  certificate  TYPE='custom'
 else
@@ -32,4 +34,5 @@ fi &&
 #
 cp  ../mod_ssl-$VERSION/pkg.sslmod/ssl_expr_scan.c  \
                    src/modules/ssl/ssl_expr_scan.c  &&
-make
+make         &&
+make_normal
