@@ -1,10 +1,16 @@
-           SPELL=NetPipe
+           SPELL=netpipe
          VERSION=2.0
-      LICENSE[0]=GPL
-         ENTERED=20050407
-         UPDATED=20050407
+          SOURCE=$SPELL.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://aconole.brad-x.com/programs/latest/$SOURCE
+          MD5[0]=e498e0d84366d812b85c46881b5828db
         WEB_SITE=http://aconole.brad-x.com/programs/netpipe.html
-           SHORT="NetPipe is a socket redirector."
+         ENTERED=20030730
+         UPDATED=20031109
+      LICENSE[0]=GPL
+       BUILD_API=2
+  FORCE_DOWNLOAD="on"
+           SHORT="Socket redirector"
 cat << EOF
 NetPipe is a redirector at it's core. It takes a socket in on one port, and
 reconnects that data out on the second port. It supports Multicast socket, UDP,
