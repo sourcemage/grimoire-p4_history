@@ -10,5 +10,6 @@ else
    OPTS="$OPTS --enable-nntp=no"
 fi &&
 
-default_build
-
+make_single    &&
+default_build  &&
+make_normal

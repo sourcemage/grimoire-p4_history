@@ -1,2 +1,4 @@
-OPTS="$OPTS --enable-flags" &&
-default_build
+OPTS="$OPTS --enable-flags"  &&
+make_single                  &&
+default_build                &&
+make_normal
