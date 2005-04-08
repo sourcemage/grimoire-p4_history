@@ -1,11 +1,17 @@
-depends "mftrace"	&&
-depends "guile"		&&
-depends "flex"		&&
-depends "tetex"		&&
-depends "g++"		&&
-depends "Python"	&&
-depends "bison"		&&
-depends "gettext"	&&
-depends "ec-fonts-mftraced"	&&
+depends mftrace			&&
+depends guile			&&
+depends flex			&&
+depends tetex			&&
+depends texinfo			&&
+depends gcc			&&
+depends python			&&
+depends bison			&&
+depends xdvi			&&
 depends POSTSCRIPT-INTERPRETER	&&
-depends "xdvi"
+
+if [ $HTMLDOC == y ]
+then
+	depends netpbm		&&
+	depends imagemagick
+fi 
+

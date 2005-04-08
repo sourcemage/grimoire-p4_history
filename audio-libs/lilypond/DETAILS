@@ -1,17 +1,19 @@
            SPELL=lilypond
-         VERSION=2.4.2
+         VERSION=2.2.6
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://lilypond.org/download/v2.4/$SOURCE
-        WEB_SITE=http://lilypond.org
-         ENTERED=20041129
-         UPDATED=20041129
-          MD5[0]=5ef62e62706cb597c703bba82178c462
+   SOURCE_URL[0]=http://lilypond.org/download/v2.2/$SOURCE
+        WEB_SITE=http://lilypond.org/web
+         ENTERED=20050210
+         UPDATED=20050210
+          MD5[0]=70737618503064e264ae517377d4ad31
       LICENSE[0]=GPL
-           SHORT="music notation program"
+       BUILD_API=2
+           SHORT="We like to call LilyPond an "automated engraving system." It will format music notation beautifully without requiring typographical expertise of its users."
 cat << EOF
-LilyPond is an automated engraving system.
-It formats music beautifully and automatically, 
-and has a friendly syntax for its input files. 
-It is Free Software (open source).
+ Computer printouts of sheet music usually look dull. LilyPond is different: it can make beautiful sheet music. Use it for your music too!
+ Scores made with computers almost always look bland and uninspiring, but for what reason? Machines may be mechanical, but why should their products be? With that thought in mind we started programming seven years ago. We have tried to capture the rules of good music engraving in a program, and that program is called LilyPond. We built it like we expect software to be: robust, open and flexible. The best is that you can create beautiful sheet music comfortably with LilyPond.
+
+Have fun! 
 EOF
+
