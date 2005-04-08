@@ -49,7 +49,7 @@ _do_device_up()
 
   # change MAC address if needed
   if [ ! -z "$MAC" ]; then
-    ifconfig hw ether ${MAC}
+    ifconfig $DEV hw ether ${MAC}
   fi
 
   if [ "$MODE" = dynamic ]; then
