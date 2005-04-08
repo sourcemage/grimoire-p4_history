@@ -1,4 +1,6 @@
-  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST} --build=${BUILD}"
 
-default_build &&
-make opt
+make_single    &&
+default_build  &&
+make  opt      &&
+make_normal
