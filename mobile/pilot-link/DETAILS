@@ -1,6 +1,5 @@
            SPELL=pilot-link
          VERSION=0.11.8
-       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.pilot-link.org/source/$SOURCE 
@@ -9,7 +8,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20020214
          UPDATED=20040315
       LICENSE[0]=GPL
-      MAKE_NJOBS=1
+       BUILD_API=2
            SHORT="Tools needed to connect your Palm with UNIX machines"
 cat << EOF
 the tools and toys needed to connect your Palm or Palm compatible 
