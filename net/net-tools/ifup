@@ -47,6 +47,11 @@ _do_device_up()
        sleep 2
   fi
 
+  # change MAC address if needed
+  if [ ! -z "$MAC" ]; then
+    ifconfig hw ether ${MAC}
+  fi
+
   if [ "$MODE" = dynamic ]; then
     . /etc/sysconfig/dhcpcd
     ARGS=""
@@ -69,6 +74,12 @@ _do_device_up()
     if [ "$MTU" != "" ] ; then
       ARGS="$ARGS mtu $MTU"
     fi
+
+    # change MAC address if needed
+    if [ ! -z "$CUSTOM" ]; then
+      ifconfig ${CUSTOM}
+    fi
+
 
     ifconfig $DEV $IP broadcast $BROADCAST netmask $NETMASK $ARGS
   else

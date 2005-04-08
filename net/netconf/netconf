@@ -46,8 +46,13 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2005-04-07  Arjan Bouter <abouter@sourcemage.org>
+#    - added cfg_wifi_{defaultkey,enckey,setkeys}
+#    - added cfg_{mac,custom}
+#    - removed cfg_wifi_{enckeys,setkey}
+#
 # 2005-04-04  Arjan Bouter <abouter@sourcemage.org>
-#    - added cfg_wifi_{enablekey,security_menu,enckeys,setkey}
+#    - added cfg_wifi_{enablekey,security_menu,enckeys,setkey,secmode}
 #    - removed cfg_wifi_security
 #
 # 2005-04-04  Arjan Bouter <abouter@sourcemage.org>
@@ -672,6 +677,8 @@ function check_devdir() {
 ## @Global    WIFI_KEY3: wifi encryption key 3.<br>
 ## @Global    WIFI_KEY4: wifi encryption key 4.<br>
 ## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
+## @Global    MAC: MAC address.<br>
+## @Global    CUSTOM: any custom options.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 #---
 function loadnetdev() {
@@ -685,7 +692,7 @@ function loadnetdev() {
 	unset MODULE MODE IP BROADCAST NETMASK GATEWAY POINTOPOINT MTU \
               WIFI_NWID WIFI_ESSID WIFI_RATE WIFI_MODE WIFI_SECMODE \
               WIFI_KEY WIFI_KEY1 WIFI_KEY2 WIFI_KEY3 WIFI_KEY4 WIFI_DEFAULTKEY \
-              UP_ON_BOOT
+              MAC CUSTOM UP_ON_BOOT
 
 	devname=$(get_basename $1 .dev)
 
@@ -1304,6 +1311,56 @@ function cfg_wifi() {
   done
 }
 
+
+#--- cfg_mac()
+##
+## This sets the MAC address for the given device
+##
+## @Global    MAC: new MAC address for the device.<br>
+## @External  dialog
+#---
+function cfg_mac() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure the MAC address"        \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Enter the MAC address you want this device to use
+(usually not required)" \
+	                 0 0 ${MAC}`
+
+	if [ $? -eq 0 ]; then
+		MAC="${COMMAND}"
+	fi
+}
+
+
+#--- cfg_custom()
+##
+## This sets any other custom options
+##
+## @Global    CUSTOM: any custom options.<br>
+## @External  dialog
+#---
+function cfg_custom() {
+	COMMAND=`$DIALOG --backtitle "$BACKTITLE"                   \
+	                 --stdout                                   \
+	                 --title "Configure custom options"         \
+	                 --ok-label       "$BTN_ACCEPT"             \
+	                 --cancel-label   "$BTN_CANCEL"             \
+	                 --inputbox                                 \
+	                 "Enter the custom options you need for this device.
+Everything you enter here is passed straight to ifconfig.
+(please file a bug to get this option added)" \
+	                 0 0 "${CUSTOM}"`
+
+	if [ $? -eq 0 ]; then
+		CUSTOM="${COMMAND}"
+	fi
+}
+
+
 #--- toggle_boot()
 ##
 ## Toggles UP_ON_BOOT state
@@ -1428,6 +1485,8 @@ function confirm_save() {
 ## @Global    WIFI_KEY3: wifi encryption key 3.<br>
 ## @Global    WIFI_KEY4: wifi encryption key 4.<br>
 ## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
+## @Global    MAC: MAC address.<br>
+## @Global    CUSTOM: any custom options.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  cat, date
 #---
@@ -1488,6 +1547,12 @@ EOF
 	if [ ! -z $WIFI_DEFAULTKEY ]; then
 		echo "WIFI_DEFAULTKEY=$WIFI_DEFAULTKEY" >> $1
 	fi
+	if [ ! -z ${MAC} ]; then
+		echo "MAC='${MAC}'" >> $1
+	fi
+	if [ ! -z "${CUSTOM}" ]; then
+		echo "CUSTOM='${CUSTOM}'" >> $1
+	fi
 }
 
 #--- save_update()
@@ -1521,6 +1586,8 @@ EOF
 ## @Global    WIFI_KEY3: wifi encryption key 3.<br>
 ## @Global    WIFI_KEY4: wifi encryption key 4.<br>
 ## @Global    WIFI_DEFAULTKEY: wifi encryption default key.<br>
+## @Global    MAC: MAC address.<br>
+## @Global    CUSTOM: any custom options.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  date
 #---
@@ -1599,6 +1666,16 @@ function save_update() {
 	  cat_or_sedit "^WIFI_DEFAULTKEY=.*" "WIFI_DEFAULTKEY=${WIFI_DEFAULTKEY}" $1
 	else
 	  sed -i '/^WIFI_DEFAULTKEY=.*/d' $1
+	fi
+	if [ ! -z ${MAC} ]; then
+	  cat_or_sedit "^MAC=.*" "MAC='${MAC}'" $1
+	else
+	  sed -i '/^MAC=.*/d' $1
+	fi
+	if [ ! -z "${CUSTOM}" ]; then
+	  cat_or_sedit "^CUSTOM=.*" "CUSTOM='${CUSTOM}'" $1
+	else
+	  sed -i '/^CUSTOM=.*/d' $1
 	fi
 	cat_or_sedit "^UP_ON_BOOT=.*" "UP_ON_BOOT=${UP_ON_BOOT}" $1
 
@@ -1682,6 +1759,8 @@ function add_device() {
 ## @Global    WIFI_MODE: wifi card mode.<br>
 ## @Global    WIFI_SECMODE: wifi security mode.<br>
 ## @Global    WIFI_ENCKEY: wifi encryption key.<br>
+## @Global    MAC: MAC address.<br>
+## @Global    CUSTOM: any custom options.<br>
 ## @Global    UP_ON_BOOT: 'no' if device should not be brought up on boot
 ## @External  dialog
 #---
@@ -1731,13 +1810,15 @@ function cfg_device() {
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
 			                 "WIFI"  "Wifi menu"                               \
+			                 "MAC"  "${MAC}"                                   \
+			                 "CUSTOM"  "Custom options"                        \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
 		else
 			COMMAND=`$DIALOG --backtitle "$BACKTITLE"                          \
 			                 --stdout                                          \
-		                     --title "Modify, Remove Network Device"           \
+		                     --title "Modify, Remove Network Device"               \
 			                 --ok-label       "$BTN_SELECT"                    \
 			                 --cancel-label   "$BTN_BACK"                      \
 			                 --menu                                            \
@@ -1752,6 +1833,8 @@ function cfg_device() {
 			                 "POINTOPOINT" "${dpointopoint}"                   \
 			                 "MTU"  "${dmtu}"                                  \
 			                 "WIFI"  "Wifi submenu"                            \
+			                 "MAC"  "${MAC}"                                     \
+			                 "CUSTOM"  "Custom options"                        \
 			                 "UP_ON_BOOT" "${UP_ON_BOOT}"                      \
 			                 "Remove" "Remove this network device"             \
 			                 "Save" "Save this device file"`
@@ -1772,6 +1855,8 @@ function cfg_device() {
 			'POINTOPOINT') cfg_pointopoint     ;;
 			'MTU')         cfg_mtu             ;;
 			'WIFI')        cfg_wifi            ;;
+			'MAC')         cfg_mac             ;;
+			'CUSTOM')      cfg_custom          ;;
 			'UP_ON_BOOT')  toggle_boot         ;;
 			'Remove')      remove_device "$1"  ;;
 			'Save')        confirm_save "$1"   ;;
