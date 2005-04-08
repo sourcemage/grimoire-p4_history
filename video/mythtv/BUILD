@@ -1,6 +1,7 @@
 sedit  "s:/usr/local:$INSTALL_ROOT/usr:"  configure     &&
 sedit  "s:/usr/local:$INSTALL_ROOT/usr:"  settings.pro  &&
 ./configure                                             &&
+make_single                                             &&
 qmake  mythtv.pro                                       &&
 #
 # Supposedly allows multiple make jobs and distcc, but it fails...

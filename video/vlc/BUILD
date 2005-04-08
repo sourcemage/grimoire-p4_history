@@ -7,4 +7,6 @@ fi  &&
 
 export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal
