@@ -4,4 +4,5 @@
              --localstatedir=/var                \
              --with-appspath=/usr/share/GNUstep  \
              $OPTS                               &&
+make_single                                      &&
 make
