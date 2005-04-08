@@ -8,7 +8,6 @@ else
 fi
           SOURCE=$SPELL-${VERSION}_unixsrc.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/vnc_unixsrc
-      MAKE_NJOBS=1
    SOURCE_URL[0]=$SOURCEFORGE_URL/vnc-tight/$SOURCE
         WEB_SITE=http://www.tightvnc.com
          ENTERED=20020326
@@ -17,12 +16,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/vnc_unixsrc
        BUILD_API=2
            SHORT="tightvnc is a better vnc"
 cat << EOF
-
 TightVNC is an enhanced version of VNC which is optimized 
 to work over slow network connections such as low-speed 
 modem links.  Besides bandwidth optimizations, TightVNC 
 also includes many other improvements, optimizations, and 
 bugfixes over VNC.  TightVNC is fully compatible with
 the standard VNC.
-
 EOF

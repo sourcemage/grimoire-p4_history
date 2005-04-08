@@ -1,5 +1,5 @@
-   PREFIX=/usr/qhacc				&&
-   OPTS="--prefix=$PREFIX $OPTS"                &&
-   default_build                                &&
-   sedit "s:/local::" src/qhacc
-
+PREFIX=/usr/qhacc              &&
+OPTS="--prefix=$PREFIX $OPTS"  &&
+make_single                    &&
+default_build                  &&
+sedit "s:/local::" src/qhacc

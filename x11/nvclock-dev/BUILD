@@ -1,8 +1,6 @@
-(
-	cd /$BUILD_DIRECTORY/nvclock-dev &&
-	./autogen.sh &&
-	./configure --prefix=/usr &&
-	make &&
-	prepare_install &&
-	make install
-) >$C_FIFO 2>&1
+cd /$BUILD_DIRECTORY/nvclock-dev  &&
+./autogen.sh                      &&
+./configure --prefix=/usr         &&
+make_single                       &&
+make                              &&
+make_normal
