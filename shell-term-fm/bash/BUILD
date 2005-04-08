@@ -7,6 +7,7 @@ patch -p1 < $SCRIPT_DIRECTORY/bash-3.0-display_wrap-1.patch &&
              --enable-static-link          \
 	     --with-bash-malloc=no 	   \
              $OPTS                         &&
+make_single                                &&
 make  bash                                 &&
 mv    bash  bash.static                    &&
 ./configure  --build=$BUILD                \
