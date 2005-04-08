@@ -1,7 +1,16 @@
 2005-04-07 Eric Sandall <eric@sandall.us>
-	* INSTALL: Don't use spell_ok since that doesn't take into account optional_depends
-	  Use a grep to check the optional_depends g++ flags and then take action
-	  Also remove ${INSTALL_ROOT}/usr/local/include/autosprintf.h if we don't want g++
+	* DETAILS: Removed MAKE_NJOBS=1
+	* BUILD: Run make_single before make
+	* INSTALL: Run make_normal before installation
+	* HISTORY: Formatted to Guru Handbook
+
+2005-04-07 Eric Sandall <eric@sandall.us>
+	* INSTALL: Don't use spell_ok since that doesn't take into account
+	  optional_depends
+	  Use a grep to check the optional_depends g++ flags and then take
+	  action
+	  Also remove ${INSTALL_ROOT}/usr/local/include/autosprintf.h if we
+	  don't want g++
 	  Bug #8573
 
 2005-02-25 Eric Sandall <eric@sandall.us>
@@ -9,10 +18,11 @@
 	  Removed explicit gnu.org SOURCE_URL[1]
 	  Added MAKE_NJOBS=1 (sad, as it only fails during INSTALL)
 	* CONFIGURE: Query for usage of tetex
-	* DEPENDS: Use config_query and if/fi to use tetex only if they want, not
-	  just if it's installed (so I can test gettext without g++, since tetex
-	  needs g++ [Bug #8319])
-	* PRE_BUILD,g++.patch.bz2: Removed, no longer needed (and doesn't apply ;))
+	* DEPENDS: Use config_query and if/fi to use tetex only if they want,
+	  not just if it's installed (so I can test gettext without g++, since
+	  tetex needs g++ [Bug #8319])
+	* PRE_BUILD,g++.patch.bz2: Removed, no longer needed (and doesn't
+	  apply ;))
 	* BUILD,INSTALL: Only use tetex if the user wants, not if it's installed
 	  Fixes Bug #8045
 
@@ -75,8 +85,8 @@
 	* BUILD: don't assume that install/md5sum logs exist.
 
 2003-08-31 hgg <hgreig@bigpond.net.au>
-	* BUILD: Change so libintl.h isn't truly installed so glibc doesn't have to be rebuilt 
-	  after gettext.
+	* BUILD: Change so libintl.h isn't truly installed so glibc doesn't
+	  have to be rebuilt after gettext.
 
 2003-07-14 hgg <hgreig@bigpond.net.au>
 	* BUILD: Fix for bug#3724 and rewrite as source structure changed 

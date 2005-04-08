@@ -13,5 +13,5 @@ chmod u+x runConfigure configure install-sh
         $OPTS                                \
         -P /usr                              &&
   
+make_single  &&
 make
-  

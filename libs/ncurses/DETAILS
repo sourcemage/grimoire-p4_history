@@ -1,18 +1,17 @@
            SPELL=ncurses
          VERSION=5.4
-       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://invisible-island.net/ncurses/$SOURCE
    SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
    SOURCE_URL[2]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
           MD5[0]=fe04e635fe515328d04105f300592cdf
-      LICENSE[0]=MIT
         WEB_SITE=http://www.gnu.org/software/ncurses/ncurses.html
          ENTERED=20010922
          UPDATED=20040612
-      MAKE_NJOBS=1
-           SHORT="ncurses displays and updates text on text-only terminals."
+      LICENSE[0]=MIT
+       BUILD_API=2
+           SHORT="Displays and updates text on text-only terminals"
 cat << EOF
 ncurses - Displays and updates text on text-only terminals.
 The ncurses (new curses) library is a free software emulation of curses

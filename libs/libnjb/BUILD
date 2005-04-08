@@ -5,4 +5,5 @@
      --localstatedir=${INSTALL_ROOT}/var  \
       --with-hotplug=/etc/hotplug         \
                      $OPTS                &&
+make_single                               &&
 make
