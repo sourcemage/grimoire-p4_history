@@ -1,9 +1,13 @@
 #autoload
 
+
 #Define global values
 if (( !$+SPELL_STATUS )); then
-    typeset -g `cat /etc/sorcery/config|grep 'STATE_DIRECTORY='`
-    eval `cat /etc/sorcery/config|grep 'SPELL_STATUS='`
+    eval `cat /etc/sorcery/roots|grep 'STATE_ROOT='`
+    typeset -g STATE_ROOT=$STATE_ROOT
+    eval `cat /etc/sorcery/state|grep 'STATE_DIRECTORY='`
+    typeset -g STATE_DIRECTORY=$STATE_DIRECTORY
+    eval `cat /etc/sorcery/state|grep 'SPELL_STATUS='`
     typeset -g SPELL_STATUS=$SPELL_STATUS
 fi
 

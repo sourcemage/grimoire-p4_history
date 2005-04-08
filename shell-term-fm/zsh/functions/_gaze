@@ -6,7 +6,7 @@ if (( ! $+_gaze_cmds_needs_spell )); then
     typeset -g _gaze_cmds_needs_spell
     _gaze_cmds_needs_spell=(
         service provides what short where website version license
-	sources history sum export import section mainteinar
+	sources history sum export import section maintainer
 	grimoire grimoires html voyeur depends dependencies
 	DETAILS PREPARE CONFLICTS CONFIGURE DEPENDS HISTORY TRIGGERS PROVIDES
 	PRE_BUILD BUILD POST_BUILD PRE_INSTALL POST_INSTALL
@@ -17,7 +17,10 @@ fi
 # _gaze_cmds_need_installed_spells
 if (( ! $+_gaze_cmds_needs_installed_spell )); then
     typeset -g _gaze_cmds_needs_installed_spell
-    _gaze_cmds_needs_installed_spell=(install installed compile md5sum)
+    _gaze_cmds_needs_installed_spell=(
+	install installed compile md5sum install-full install-spell
+	size checkmd5s
+    )
 fi
 
 # _gaze_cmds
@@ -26,7 +29,7 @@ if (( ! $+_gaze_cmds )); then
     _gaze_cmds=(
 	$_gaze_cmds_needs_installed_spell $_gaze_cmds_needs_spell
 	alien from search newer older prune pam orphans
-	install-queue remove-queue
+	install-queue remove-queue show-held show-exiled activity
     )
 fi
 
