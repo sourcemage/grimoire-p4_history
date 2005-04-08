@@ -4,4 +4,6 @@ else
    OPTS="$OPTS --with-mozilla=mozilla"
 fi &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal

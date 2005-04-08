@@ -17,4 +17,6 @@ if [ "$DEVEL" == "y" ]; then
    OPTS="$OPTS --enable-devel"
 fi                                        &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal
