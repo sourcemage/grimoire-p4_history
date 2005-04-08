@@ -3,4 +3,6 @@ OPTS="$OPTS              \
       --disable-gss      \
       $NFS_UTILS_NFSV3"  &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal
