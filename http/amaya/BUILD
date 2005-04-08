@@ -1,3 +1,5 @@
-cd  Amaya/obj  &&
+cd  Amaya/obj                                   &&
 ../configure  --prefix=/usr  --with-dav  $OPTS  &&
-make
+make_single                                     &&
+make                                            &&
+make_normal

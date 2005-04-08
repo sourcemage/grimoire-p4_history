@@ -1,3 +1,7 @@
+2005-04-07 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed MAKE_NJOBS=1
+	* BUILD: Run make_single before make
+
 2005-03-24 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: 1.0.2
 
@@ -5,8 +9,8 @@
 	* FINAL: Problem is only for find in page
 
 2005-03-18 Eric Sandall <eric@sandall.us>
-	* FINAL: Add warning about firefox possibly not working and that you should
-	  remove ~/.mozilla/firefox/<profile>/compreg.dat to fix it
+	* FINAL: Add warning about firefox possibly not working and that you
+	  should remove ~/.mozilla/firefox/<profile>/compreg.dat to fix it
 
 2005-03-17 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated UPDATED so people get the find in page fix
@@ -20,8 +24,8 @@
 	  find in page would work.
 
 2005-02-28 Jeremy Blosser <jblosser-smgl@firinn.org>
-	* firefox: Added "$@" to the end of the firefox-bin call so 'firefox <args>'
-	  can work.
+	* firefox: Added "$@" to the end of the firefox-bin call so 'firefox
+	  <args>' can work.
 
 2005-02-23 David Brown <dmlb2000@excite.com>
 	* DETAILS: updated 1.0.1
@@ -41,11 +45,12 @@
 	* INSTALL: Fixed the mozilla test argument (thanks Arwed)
 
 2004-12-16 Eric Sandall <eric@sandall.us>
-	* INSTALL: Thanks to johnny17, we need to create these directories before
-	  doing Wolfgang's fix of `make install` before the symlinks, otherwise
-	  `make install` creates both firefox and firefox-$VERSION, which we then
-	  can't symlink to the other and then firefox installs part in firefox and
-	  the rest to firefox-$VERSION, which makes libmozjs.so not found. :)
+	* INSTALL: Thanks to johnny17, we need to create these directories
+	  before doing Wolfgang's fix of `make install` before the symlinks,
+	  otherwise `make install` creates both firefox and firefox-$VERSION,
+	  which we then can't symlink to the other and then firefox installs
+	  part in firefox and the rest to firefox-$VERSION, which makes
+	  libmozjs.so not found. :)
 
 2004-12-15 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on g++
@@ -59,7 +64,8 @@
 	* PRE_BUILD,BUILD: local can only be used in a function
 	* INSTALL: [] doesn't like newlines before -a
 	  local can only be used in a function
-	  Don't even check for /usr/bin/mozilla if we don't want a symlink created
+	  Don't even check for /usr/bin/mozilla if we don't want a symlink
+	  created
 	* firefox.sh: [] doesn't like newlines before -a
 
 2004-12-10 Eric Sandall <eric@sandall.us>

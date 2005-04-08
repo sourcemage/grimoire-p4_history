@@ -37,4 +37,5 @@ cp browser/config/mozconfig .mozconfig &&
   --enable-crypto                                 \
   --enable-single-profile                         \
   $OPTS                                           &&
+make_single                                       &&
 make
