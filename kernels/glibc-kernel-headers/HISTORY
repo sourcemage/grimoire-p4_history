@@ -1,17 +1,17 @@
 2004-11-24 Eric Sandall <eric@sandall.us>
 	* PRE_REMOVE: Remove /usr/include files from glibc-kernel-headers'
 	  INSTALL_LOGS so they're not removed before glibc can compile against
-	  them and then replace them.  (Fix /lib/cpp problem from Bug #7650)
+	  them and then replace them. (Fix /lib/cpp problem from Bug #7650)
 
 2004-11-23 Eric Sandall <eric@sandall.us>
-	* Deprecated. Now merged with glibc spell  (Bug #7650)
+	* Deprecated. Now merged with glibc spell (Bug #7650)
 	* SOLO,config.h.patch,PREPARE: Removed
 	* BUILD,INSTALL,PRE_BUILD: Now only run `true`
 	* DETAILS: Removed SOURCEs and SOURCE_URLs
 	  Changed VERSION to "deprecated" ;)
 	* DEPENDS: Depends on glibc
 	* CONFLICTS: Conflicts with self
- 
+
 2004-10-25 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.6.9.1
 
