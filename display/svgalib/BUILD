@@ -10,6 +10,7 @@ sedit  's:<config.h>:\"config.h\":'  threeDKit/wrapsurf.c   &&
 sedit  's:installmodule ::'  Makefile                                  &&
 
 # First build static
+make_single                                                            &&
 make  static                                                           &&
 
 # Have to remove for shared to build ...
