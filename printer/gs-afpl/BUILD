@@ -10,6 +10,7 @@ sedit  "s:CFLAGS_PROFILE=-pg @OPT_CFLAGS@:CFLAGS_PROFILE=-pg $CFLAGS:g"  Makefil
              --infodir=${INSTALL_ROOT}/usr/share/info                       \
              $OPTS                                                          &&
 
+make_single                                                                 &&
 make                                                                        &&
 
 if  [  "$GS_AFPL_LIBGS"  =  "y"  ];  then
