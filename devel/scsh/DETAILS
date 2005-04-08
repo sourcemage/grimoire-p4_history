@@ -4,12 +4,12 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.scsh.net/pub/scsh/0.6/scsh-$VERSION.tar.gz
           MD5[0]=6bab8f0ba7b306133045a24bcf353dbc
-      LICENSE[0]=BSD
         WEB_SITE=http://www.scsh.net
-           SHORT="Scsh is a Unix shell embedded in Scheme"
-      MAKE_NJOBS=1
          ENTERED=20020310
          UPDATED=20031212
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Unix shell embedded in Scheme"
 cat << EOF
 Scsh is a Unix shell embedded in Scheme. It provides full access to
 POSIX as well as extensions common to most Unix implementations. Scsh

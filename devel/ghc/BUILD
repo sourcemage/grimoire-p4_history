@@ -2,6 +2,8 @@
 
 GHC=ghc
 
+make_single  &&
+
 if [[ $SOURCE2 != "" ]] ; then
   cd ghc-bin &&
   ./configure &&
@@ -12,5 +14,5 @@ fi &&
 
 cd $SPELL-$VERSION &&
 
-OPTS="$OPTS --with-ghc=$GHC --with-hc=$GHC"
+OPTS="$OPTS --with-ghc=$GHC --with-hc=$GHC"  &&
 default_build
