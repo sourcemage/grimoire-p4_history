@@ -3,4 +3,6 @@ depends taglib  &&
 optional_depends kdebase "" "" "for a konqueror sidebar"  &&
 optional_depends kdemultimedia "" "--without-arts" "for arts audio engine"  &&
 optional_depends gstreamer "" "" "for gstreamer audio engine"   &&
-optional_depends xmms "" "" "to use xmms visualization plugins"
+optional_depends xmms "" "" "to use xmms visualization plugins" &&
+optional_depends libvisual  "" "" "to use libvisual plugins" &&
+optional_depends mysql "--enable-mysql" "" "to use mysql as a backend collection engine"
