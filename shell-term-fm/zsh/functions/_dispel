@@ -42,7 +42,7 @@ _dispel () {
 _comp_spell_version() {
 
     local SPELL=$1
-    typeset -g `cat /etc/sorcery/config|grep INSTALL_CACHE`
+    typeset -g `cat /etc/sorcery/roots|grep INSTALL_CACHE`
     compadd -P '' $(
 	/bin/ls ${INSTALL_CACHE}/${SPELL}*.tar.bz2 \
 	    |sed -e 's+.*/++' \
