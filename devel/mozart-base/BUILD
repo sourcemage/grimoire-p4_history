@@ -1,8 +1,7 @@
-(
 #the bison and flex checks were seriously borked, I patch the configure
 export YACC=yacc                                               &&
 patch -p1 < $SCRIPT_DIRECTORY/mozart.patch                     &&
-  ./configure \
+./configure  \
     --host=$HOST \
     --build=$BUILD \
     --prefix=/usr/lib/oz \
@@ -17,8 +16,7 @@ patch -p1 < $SCRIPT_DIRECTORY/mozart.patch                     &&
     --enable-contrib \
     --disable-chm \
     $OPTS &&
-  make &&
-  prepare_install &&
-  make install
 
-) >$C_FIFO 2>&1
+make_single  &&
+make         &&
+make_normal

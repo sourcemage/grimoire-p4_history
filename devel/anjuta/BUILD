@@ -2,4 +2,6 @@ if [ "$CVS_CHECKOUT" == "y" ]
 then
 	./autogen.sh
 fi &&
-default_build
+make_single    &&
+default_build  &&
+make_normal

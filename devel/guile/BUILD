@@ -5,4 +5,6 @@ libtoolize -c -f                &&
 ./configure  --prefix=/usr      \
              --sysconfdir=/etc  \
              $OPTS              &&
-make
+make_single                     &&
+make                            &&
+make_normal

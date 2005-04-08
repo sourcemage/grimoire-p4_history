@@ -1,16 +1,15 @@
            SPELL=swiprolog
-         VERSION=5.4.2
+         VERSION=5.4.7
           SOURCE=pl-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pl-$VERSION
-   SOURCE_URL[0]=http://www.swi.psy.uva.nl/cgi-bin/nph-download/SWI-Prolog/$SOURCE
-          MD5[0]=f3637f8023af2cdaf25d0c1056f5d4ca
-      LICENSE[0]=GPL
+   SOURCE_URL[0]=http://gollem.science.uva.nl/cgi-bin/nph-download/SWI-Prolog/$SOURCE
+          MD5[0]=ec7737a9605a1a337d5a677c2c112d12
         WEB_SITE=http://www.swi-prolog.org	
          ENTERED=20020601
          UPDATED=20020601
-      MAINTAINER=unet@sourcemage.org	
-           SHORT="SWI-Prolog is a free implementation of PROLOG"
-      MAKE_NJOBS=1
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Free implementation of PROLOG"
 cat << EOF
 SWI-Prolog is a Free Software Prolog compiler, licensed under the
 Lesser GNU Public License. Together with its graphics toolkit XPCE,
