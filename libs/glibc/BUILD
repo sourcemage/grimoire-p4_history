@@ -1,3 +1,4 @@
+make_single  &&
 #
 # bug#5570 ccache sometimes has trouble correctly recognising minor differences 
 # in configurations and doesn't force recompile when it should. This stops it from

@@ -2,14 +2,14 @@
          VERSION=1.2-1
           SOURCE=$SPELL-$VERSION-src.tar.gz
           MD5[0]='f9d67b6312bd6fe9e575733ff974da68'
-      LICENSE[0]=http://software.decisionsoft.com/pathanLicence.html
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-      MAKE_NJOBS=1
    SOURCE_URL[0]=http://software.decisionsoft.com/software/pathan-${VERSION%-*}/$SOURCE
         WEB_SITE=http://software.decisionsoft.com/pathanIntro.html
          ENTERED=20030718
          UPDATED=20030718
-           SHORT='Pathan parses and evaluates XPath expressions for XML node selection'
+      LICENSE[0]=http://software.decisionsoft.com/pathanLicence.html
+       BUILD_API=2
+           SHORT="Parse and evaluate XPath expressions for XML node selection"
 cat << EOF
 Pathan is a open source library which allows developers using Xerces-C
 to parse and evaluate XPath expressions for XML node selection.

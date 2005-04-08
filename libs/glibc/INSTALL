@@ -33,7 +33,7 @@ done  &&
 #
 # install
 #
-make  install             &&
+make  install install_root="${INSTALL_ROOT}" &&
 (  ldconfig  ||  true  )  &&
 
 #

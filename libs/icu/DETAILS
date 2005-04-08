@@ -1,6 +1,5 @@
            SPELL=icu
          VERSION=3.0
-       BUILD_API=2
           SOURCE=${SPELL}-$VERSION.tgz
          SOURCE2=${SPELL}-$VERSION-docs.zip
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}
@@ -10,10 +9,10 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}
           MD5[0]=8c70878ec0a8a874c3111b067f594e18
 	  MD5[1]=7287ae07d72630be476acf7b5d63bd28
       LICENSE[0]=http://oss.software.ibm.com/cvs/icu/~checkout~/icu/license.html
+       BUILD_API=2
         WEB_SITE=http://oss.software.ibm.com/icu/
          ENTERED=20030320
          UPDATED=20030320
-      MAINTAINER=vydra@fria.fri.utc.sk
            SHORT="The International Components for Unicode (ICU) libraries."
 cat << EOF
 The International Components for Unicode (ICU) libraries provide robust and 

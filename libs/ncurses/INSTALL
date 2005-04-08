@@ -25,7 +25,8 @@ then
 fi &&
 
 # now make install can succeed
-make install &&
+make_normal    &&
+make  install  &&
 
 # Check for cross install and copy headers if needed.
 if [ "$CROSS_INSTALL" = "on" ]; then

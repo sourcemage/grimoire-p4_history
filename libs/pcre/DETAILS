@@ -2,17 +2,17 @@
          VERSION=5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-      MAKE_NJOBS=1
    SOURCE_URL[0]=ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$SOURCE
    SOURCE_URL[1]=ftp://ftp.fu-berlin.de/unix/misc/pcre/$SOURCE
    SOURCE_URL[2]=ftp://ftp.man.olsztyn.pl/pub/linux/distributions/slackware/slackware-0.9/source/l/pcre/$SOURCE
 #  SOURCE_URL[2]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]='85d7ea22819744cbf7fbb54b08cc12a1'
-      LICENSE[0]=http://www.pcre.org/license.txt
         WEB_SITE=http://www.pcre.org/
          ENTERED=20010922
          UPDATED=20030603
-           SHORT='Perl Compatible Regular Expression library'
+      LICENSE[0]=http://www.pcre.org/license.txt
+       BUILD_API=2
+           SHORT="Perl Compatible Regular Expression library"
 cat << EOF
 The PCRE library is a set of functions that implement regular expression
 pattern matching using the same syntax and semantics as Perl 5, with

@@ -9,6 +9,7 @@ export CC=gcc                                           &&
              --with-included-gettext                    \
         --includedir=${INSTALL_ROOT}/usr/local/include  \
              $OPTS                                      &&
+make_single                                             &&
 make                                                    &&
 
 if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then

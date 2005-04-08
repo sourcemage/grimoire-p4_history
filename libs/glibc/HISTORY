@@ -1,3 +1,11 @@
+2005-04-07 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed MAKE_NJOBS=1
+	* BUILD: Run make_single for the entire process
+
+2005-04-07 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated linux-libc-headers to 2.6.11.1
+	* HISTORY: Formatted to 80 columns
+
 2005-03-13 Seth Woolley <seth@tautology.org>
 	* PRE_INSTALL: support for pure amd64 environment backup
 
@@ -15,7 +23,8 @@
 	* TRIGGERS: removed
 
 2005-02-14 Eric Sandall <eric@sandall.us>
-	* CONFLICTS: Auto-conflict with deprecated glibc-kernel-headers (Bug #8237)
+	* CONFLICTS: Auto-conflict with deprecated glibc-kernel-headers
+	  (Bug #8237)
 
 2005-02-13 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* INSTALL: added a workaround for the broken glibc-kernel-headers
@@ -25,7 +34,7 @@
 	* DETAILS: updated linux-libc-headers to 2.6.10.0
 
 2005-02-09 Eric Sandall <eric@sandall.us>
-	* PRE_INSTALL: Don't fail if glibc isn't installed (such as install_root)
+	* PRE_INSTALL: Don't fail if glibc isn't installed (e.g. install_root)
 
 2005-02-08 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, BUILD: set up the 2.4 kernel headers in the correct way
@@ -59,8 +68,8 @@
 	  removed during dispel
 
 2005-01-08 Eric Sandall <eric@sandall.us>
-	* INSTALL: Don't fail if files are left from a prior (possibly untracked or
-	  broken) install
+	* INSTALL: Don't fail if files are left from a prior (possibly
+	  untracked or broken) install
 
 2005-01-07 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* FINAL: remove $SOURCE_DIRECTORY.bld
@@ -96,18 +105,21 @@
 2004-11-29 Eric Sandall <eric@sandall.us>
 	* BUILD: Apply CFLAGS fixes from a Gentoo ebuild for sparc and sparc64.
 	  No longer uses echo to remove -ffast-math from CFLAGS.
-	  Don't try to use sparc64 headers when building for sparc32 on a sparc64.
+	  Don't try to use sparc64 headers when building for sparc32 on a
+	  sparc64.
 	  If building for sparc64, set CC to gcc64, not gcc (untested!).
 	* config.h.patch: Instead of removing the #errors, replace them with
 	  #warnings to match the spirit of the errors.
-	* INSTALL: Force copy in case files/directories exist from a prior, possibly
-	  broken, installation.
+	* INSTALL: Force copy in case files/directories exist from a prior,
+	  possibly broken, installation.
 	  Fix installation of 2.4 headers.
-	* CONFIGURE: Don't use config_query, but instead query every time (otherwise
-	  you'll always get the menu if you say 'y' and never use '-r' with cast).
+	* CONFIGURE: Don't use config_query, but instead query every time
+	  (otherwise you'll always get the menu if you say 'y' and never use
+	  '-r' with cast).
 
 2004-11-24 Eric Sandall <eric@sandall.us>
-	* CONFIGURE: Removed IFS code and set to use config_query instead of query
+	* CONFIGURE: Removed IFS code and set to use config_query instead of
+	  query
 	  Removed add_status() and make_locales_checklist()
 	* locales-2.3.2,locales-2.3.3: Replaced spaces in all description fields
 	  with "_"
@@ -120,25 +132,26 @@
 	* Merging glibc-kernel-headers with glibc  (Bug #7560)
 	* Removed glibc log cleanup of headers (since it now does install the
 	  headers)
-	* I have simplified glibc-kernel-headers selection to either install the 2.6
-	  headers if you chose NPTL, or 2.4 headers if you didn't choose NPTL,
-	  whereas the prior method allowed you to have 2.6 headers with or without
-	  NPTL.
+	* I have simplified glibc-kernel-headers selection to either install
+	  the 2.6 headers if you chose NPTL, or 2.4 headers if you didn't
+	  choose NPTL, whereas the prior method allowed you to have 2.6 headers
+	  with or without NPTL.
 	* DETAILS: Added glibc-kernel-headers for 2.4 and 2.6 kernels
 	  Moved DISTCC_HOSTS and MAKE_NJOBS=1 to "global" area
 	* BUILD: Use --with-headers= to use included glibc-kernel-headers
 	  (Bug #7560)
-	  Setup glibc-kernel-headers for compilation (2.4 headers need extra setup)
+	  Setup glibc-kernel-headers for compilation (2.4 headers need extra
+	  setup)
 	  Clean up formatting
 	* BUILD,PRE_BUILD: Moved patches from BUILD to PRE_BUILD
 	* PRE_BUILD: Merged permission fix from glibc-kernel-headers
 	* INSTALL: Added ARCH code
 	  Cleaned up formatting
 	  Removed MAKE_NJOBS=1
-	  Renamed UTF, INPUTFILE, CHARMAP, LOCALE, and DESCRIPTION to be prefixed
-	  with GLIBC_
-	  Made GLIBC_INPUTFILE, GLIBC_CHARMAP, GLIBC_LOCALE, and GLIBC_DESCRIPTION
-	  local variables
+	  Renamed UTF, INPUTFILE, CHARMAP, LOCALE, and DESCRIPTION to be
+	  prefixed with GLIBC_
+	  Made GLIBC_INPUTFILE, GLIBC_CHARMAP, GLIBC_LOCALE, and
+	  GLIBC_DESCRIPTION local variables
 	  Install glibc-kernel-headers at the end
 	* PREPARE: Remove ldconfig protected hack (Sorcery takes care of this)
 	  Renamed UTF and NPTL to GLIBC_UTF and GLIBC_NPTL, respectively
@@ -150,7 +163,8 @@
 	  Added "name" field to keep track of who has tested
 	* config.h.patch: Fixes xorg (and others) compilation against 2.6
 	  Integrated from glibc-kernel-headers
-	* makelinks, BUILD, INSTALL, PRE_BUILD, DETAILS: Renamed NPTL to GLIBC_NTPL
+	* makelinks, BUILD, INSTALL, PRE_BUILD, DETAILS: Renamed NPTL to
+	  GLIBC_NTPL
 	* makelinks: Cleaned up formatting
 
 2004-10-29 Robin Cook <rcook@wyrms.net>
@@ -204,20 +218,20 @@
 	* BUILD: fix two typos in my cross_install hack
 
 2004-02-03 hgg <hgreig@bigpond.net.au>
-	* BUILD: modify behaviour for CROSS_INSTALL. uses regular paths to compile
-	  (or it hardcodes invalid paths) but then installs to INSTALL_ROOT. Works
-	  for a x86 -> x86 crossinstall (iso procduction), will work for other 
-	  "non-cross-compile" crossinstalls. true cross-compiling might need more
-	  work.
+	* BUILD: modify behaviour for CROSS_INSTALL. uses regular paths to
+	  compile (or it hardcodes invalid paths) but then installs to
+	  INSTALL_ROOT. Works for a x86 -> x86 crossinstall (iso procduction),
+	  will work for other "non-cross-compile" crossinstalls. true
+	  cross-compiling might need more work.
 
 2004-01-31 hgg <hgreig@bigpond.net.au>
-	* DETAILS: update UPDATED, this needs testing by more than sandalle before
-	  it can be integrated into test.
+	* DETAILS: update UPDATED, this needs testing by more than sandalle
+	  before it can be integrated into test.
 
 2004-01-20 hgg <hgreig@bigponnd.et.au>
 	* DEPENDS: remove autoconf
-	* BUILD: add export CCACHE_RECACHE=true so ccache users can't be bitten by
-	  bug#5570
+	* BUILD: add export CCACHE_RECACHE=true so ccache users can't be bitten
+	  by bug#5570
 
 2004-01-20 hgg <hgreig@bigpond.net.au>
 	* BUILD: check for saved libraries (from prepare_install) as an empty
@@ -229,32 +243,33 @@
 2004-01-13 hgg <hgreig@bigpond.net.au>
 	* DETAILS: change to use if ... else ... fi
 	* BUILD: provide 2nd locale file for 2.3.2 version, move links after
-	  prepare_install to a function outside the FIFO and just call the function
-	  (much cleaner/ more readable)
+	  prepare_install to a function outside the FIFO and just call the
+	  function (much cleaner/ more readable)
 
 2004-01-11 hgg <hgreig@bigpond.net.au>
 	* BUILD: ldconfig will relink any alien glibc files in /lib or /usr/lib
 	  ldconfig -X stops it relinking them.
 
 2004-01-09 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* linux-2.6-header-fix.patch: add another fix, not redefining 'inline' in
-	  compiler-gcc3.h
+	* linux-2.6-header-fix.patch: add another fix, not redefining 'inline'
+	  in compiler-gcc3.h
 
 2004-01-04 hgg <hgreig@bigpond.net.au>
-	* locales: regenerated from the actual locale files and now using the proper
-	  native charset.  Now if you want to use UTF-8 for a locale that has it's
-	  own native charset, just change LANG to $LANG.UTF-8 in your profile
-	* PREPARE,BUILD: ask if user wants UTF-8 locales (to fix bug with gtk+ apps)
-	  and shuffle the localedef stuff for nicer output, add optional UTF-8
-	  usage, fixes bug #5444
+	* locales: regenerated from the actual locale files and now using the
+	  proper native charset. Now if you want to use UTF-8 for a locale that
+	  has it's own native charset, just change LANG to $LANG.UTF-8 in your
+	  profile
+	* PREPARE,BUILD: ask if user wants UTF-8 locales (to fix bug with gtk+
+	  apps) and shuffle the localedef stuff for nicer output, add optional
+	  UTF-8 usage, fixes bug #5444
 	* BUILD: more symlinks so normal system is maintained during the make
 	  install stage
 
 2003-12-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: copy the headers immediately after prepare_install
 	* BUILD: use the headers from currently running kernel
-	* BUILD, linux-2.6-headers-fix.patch: add a few more fixes, appears to be a
-	  good fix for fb.h 
+	* BUILD, linux-2.6-headers-fix.patch: add a few more fixes, appears to
+	  be a good fix for fb.h 
 	  I have tested with MPlayer SDL(needs an extra flag) directfb , libggi 
 	* DETAILS: add sourcemage mirror for the glibc 2.3.2 sscanf patch
 
@@ -262,28 +277,28 @@
 	* BUILD: moved --enable-kernel=current to nptl options (breaks
 	  compilation for linuxthreads on linux-2.6.0-test11)
 	* BUILD, linux-2.6-headers-fix.patch: added patch to fix some kernel
-	  headers so they can be included by apps (only videodev.h and videodev2.h
-	  so far)
+	  headers so they can be included by apps (only videodev.h and
+	  videodev2.h so far)
 	* locales: added UTF-8 locales
 
 2003-12-15 hgg <hgreig@bigpond.net.au>
 	* BUILD: change to use "if ... ; then ... ; fi" after prepare_install 
 	  or make install is run even when make has failed. (more of same)
-	  I should have thought that through before I tried to make it so lean and
-	  clean :(
+	  I should have thought that through before I tried to make it so lean
+	  and clean :(
 
 2003-12-14 hgg <hgreig@bigpond.net.au>
-	* DETAILS,PRE_BUILD,BUILD,PREPARE,CONFIGURE: Optional nptl (if running 2.6
-	  kernel)
-	* DETAILS: nptl build seems to need distcc turned off, in this case better
-	  safe than sorry 
+	* DETAILS,PRE_BUILD,BUILD,PREPARE,CONFIGURE: Optional nptl (if running
+	  2.6 kernel)
+	* DETAILS: nptl build seems to need distcc turned off, in this case
+	  better safe than sorry 
 	* BUILD: glibc is happiest installing from a few symlinks to the new
-	  libraries. BUILD now makes symlinks after prepare_install (while the old
-	  libs are still preloaded by sorcery) then reruns ldconfig so only the new
-	  version and symbols are used. "make install" then adjusts all symlinks to
-	  point to the correct version.
-	  Version updates, or even architecture updates should never fail tests or
-	  segfault now, "make install" is using the newset libs already, 
+	  libraries. BUILD now makes symlinks after prepare_install (while the
+	  old libs are still preloaded by sorcery) then reruns ldconfig so only
+	  the new version and symbols are used. "make install" then adjusts all
+	  symlinks to point to the correct version.
+	  Version updates, or even architecture updates should never fail tests
+	  or segfault now, "make install" is using the newset libs already
 	* glibc-nptl-fix-asserts.patch: A patch so /lib/libc.so.6 will report
 	  version strings and compile stats correctly if nptl is built
 
@@ -299,8 +314,8 @@
 	  prepare_install, re-add the export CC=gcc line needed for new install
 
 2003-09-22 Eric D. Schabell <eschabell@sourcemage.org>
-	* BUILD: Patch for Build file, allows for tracking of two files that were
-	  alien in glibc. (fix for iso team).
+	* BUILD: Patch for Build file, allows for tracking of two files that
+	  were alien in glibc. (fix for iso team).
 
 2003-08-31 hgg <hgreig@bigpond.net.au>
 	* TRIGGERS: Remove trigger "on_cast gettext cast_self"
@@ -308,8 +323,8 @@
 2003-07-23 hgg <hgreig@bigpond.net.au>
 	* BUILD: Comment "unset LD_PRELOAD" so locale stuff is tracked (Major
 	  version updates might require it later)
-	* TRIGGERS: Add to TRIGGERS and update UPDATED in case libiconv is installed
-	  then dispelled removing some of glibc's files.
+	* TRIGGERS: Add to TRIGGERS and update UPDATED in case libiconv is
+	  installed then dispelled removing some of glibc's files.
 
 2003-07-08 Eric Sandall <eric@sandall.us>
 	* BUILD: Fixes a 'gcc not found' error during configure on some
@@ -339,7 +354,8 @@
 	* PRE_BUILD: pass md5 to unpack.
 
 2002-12-10 Julian v. Bock <julian@wongr.net>
-	* CONFIGURE: source $SPELL_CONFIG if the user does not reconfigure locales.
+	* CONFIGURE: source $SPELL_CONFIG if the user does not reconfigure
+	  locales.
 
 2002-11-16 Julian v. Bock <julian@wongr.net>
 	* DEPENDS: add gettext dependency.

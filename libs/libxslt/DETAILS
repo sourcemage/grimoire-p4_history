@@ -5,13 +5,12 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://xmlsoft.org/sources/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/${VERSION%\.*}/$SOURCE
           MD5[0]='03896454eca98974957f5ec448a2ed9e'
-      LICENSE[0]=BSD
-      MAKE_NJOBS=1
-       BUILD_API=2
         WEB_SITE=http://xmlsoft.org
          ENTERED=20011010
          UPDATED=20050403
-           SHORT="libxslt is an XSLT processing library"
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="XSLT processing library"
 cat << EOF
 Libxslt is a C library for GNOME which allows developers to work with XSLT. It
 is based on libxml for XML parsing, tree manipulation, and XPath support. It
