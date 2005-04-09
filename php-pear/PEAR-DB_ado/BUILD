@@ -1,1 +1,1 @@
-source $SCRIPT_DIRECTORY/../PEAR_BUILD
+true

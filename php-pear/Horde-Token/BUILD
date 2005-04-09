@@ -1,12 +1,1 @@
-(
-
-  message "${MESSAGE_COLOR}Checking for PEAR script...${DEFAULT_COLOR}" &&
-  PEAR_CMD=$(which pear 2>/dev/null) &&
-  [ -n "$PEAR_CMD" ] &&
-  prepare_install &&
-  if pear list | egrep -q "\<$HORDE_PACKAGE\>"; then
-    pear uninstall "$HORDE_PACKAGE"
-  fi &&
-  pear install ./package.xml
-
-) >$C_FIFO 2>&1
+true
