@@ -1,13 +1,13 @@
-message "${MESSAGE_COLOR}" 								&&
-message "Please note that since udev 0.51, udev.permissions file is no longer used." 	&&
-message "udev.rules file syntax has changed to include the permissions stuff. If you"	&&
-message "don't update your /etc/udev/udev.rules, your system might be broken. Please"	&&
-message "do it before rebooting, or don't update the spell ${DEFAULT_COLOR}"       	&&
+message "${MESSAGE_COLOR}" 								 &&
+message "This update will move your current udev.rules to /etc/udev/udev.d/alocal.rules" &&
+message "As this is a major change, it won't happen unless\
+ you answer y to the following question. ${DEFAULT_COLOR}"    	                         &&
 
 config_query  UDEV_UPDATE  "Do you still wish to continue?"  n  			&&
 
 if  [  "$UDEV_UPDATE"  ==  "n"  ];  then
   return  1
 else
-  message "A typical udev.rules will be placed in /etc/udev/udev.rules.example"
+  message "A default udev.rules will be placed in /etc/udev/rules.d/udev.rules" &&
+  message "And some examples in /etc/udev/rules.d/rules.examples"
 fi
