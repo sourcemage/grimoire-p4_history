@@ -1,11 +1,11 @@
-message "${MESSAGE_COLOR}" 								 &&
-message "This update will move your current udev.rules to /etc/udev/udev.d/alocal.rules" &&
+message "${MESSAGE_COLOR}"                                                                      &&
+message "This update will move your current udev.rules to /etc/udev/udev.d/alocal.rules"        &&
 message "As this is a major change, it won't happen unless\
- you answer y to the following question. ${DEFAULT_COLOR}"    	                         &&
+ you answer y to the following question. ${DEFAULT_COLOR}"                                      &&
 
-config_query  UDEV_UPDATE  "Do you still wish to continue?"  n  			&&
+config_query  UDEV_UPDATE2  "Do you still wish to continue?"  n                                 &&
 
-if  [  "$UDEV_UPDATE"  ==  "n"  ];  then
+if  [  "$UDEV_UPDATE2"  ==  "n"  ];  then
   return  1
 else
   message "A default udev.rules will be placed in /etc/udev/rules.d/udev.rules" &&
