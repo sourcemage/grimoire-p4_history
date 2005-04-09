@@ -1,5 +1,5 @@
            SPELL=glibc
-         VERSION=2.3.4
+         VERSION=2.3.5
 if  [  "$GLIBC_NPTL"  =  "y"  ];  then
          #snapshot prerelease 
  HEADERS_VERSION=2.6.11.1
@@ -13,14 +13,14 @@ else
   SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2 
   SOURCE2_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE2 
   SOURCE3_URL[0]=http://download.sourcemage.org/mirror/$SOURCE3
-          MD5[1]=f8a65adaf20025d0fdf531ba94d8f022
+          MD5[1]=1b50ef74b54adb6b6e5d929837216e0d
           MD5[2]=e39bbcb45b828deaef298266a44825e7
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
           SOURCE=$SPELL-$VERSION.tar.bz2 
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE 
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE 
-          MD5[0]=fa0b1a43ae3833e7381c791dceed6bd6
+          MD5[0]=7a4d72785558166614fe3ae9910b832e
         WEB_SITE=http://www.gnu.org/software/libc
       LICENSE[0]=LGPL 
       LICENSE[1]=LGPL 
