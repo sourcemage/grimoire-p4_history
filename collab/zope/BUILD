@@ -5,7 +5,8 @@
 # that'd do on systems that don't support >2Gb
 # See: http://www.python.org/doc/current/lib/posix-large-files.html
 #
-./configure  --prefix=${INSTALL_ROOT}/usr/lib/zope  \
-             --ignore-largefile                     &&
+./configure  --prefix=${INSTALL_ROOT}/usr/lib/zope       \
+             --with-python=$INSTALL_ROOT/usr/bin/python  \
+             --ignore-largefile                          &&
 make
 
