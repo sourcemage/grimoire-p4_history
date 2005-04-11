@@ -26,4 +26,10 @@ cp -fv                \
   make_var_export.awk \
   mkdir.sh            \
   PrintPath           \
-  $INSTALL_ROOT/usr/share/apache2/build/
+  $INSTALL_ROOT/usr/share/apache2/build/ &&
+
+# in APR 1.x, gen-build.py is needed to build from latest source
+# in APR 1.0, this file doesn't exist
+if [[ -f gen-build.py ]]; then
+  cp -fv gen-build.py $INSTALL_ROOT/usr/share/apache2/build/
+fi
