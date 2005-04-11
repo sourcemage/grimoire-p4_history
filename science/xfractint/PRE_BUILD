@@ -1,0 +1,4 @@
+unpack ${SOURCE[0]} ${MD5[0]} &&
+cd $SOURCE_DIRECTORY &&
+sedit '/^SRCDIR =/s|=.*$|= /usr/lib/xfractint|' Makefile
+
