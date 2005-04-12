@@ -7,6 +7,7 @@ depends  g++     &&
 case "$AMAYA_TOOLKIT" in
 GTK)
   depends gtk+ '--with-gtk'       &&
+  depends imlib                   &&
   optional_depends OPENGL         \
                    '--with-gl'    \
 				   '--without-gl' \
