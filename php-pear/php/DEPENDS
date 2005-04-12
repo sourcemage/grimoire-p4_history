@@ -5,7 +5,7 @@ depends  flex    &&
 # optional extensions depend on it, and it"s omnipresent anyway.
 depends  zlib  "--with-zlib --with-zlib-dir=/usr"  &&
 
-optional_depends  imap                \
+optional_depends  C-CLIENT            \
                   "--with-imap"       \
                   "--without-imap"    \
                   "for IMAP support"  &&
