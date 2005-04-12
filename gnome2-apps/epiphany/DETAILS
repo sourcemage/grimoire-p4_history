@@ -1,17 +1,16 @@
            SPELL=epiphany
-         VERSION=1.6.1
+         VERSION=1.6.2
           BRANCH=$(echo $VERSION|cut -d . -f 1,2)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='792486761c7612cf0f2604650d905634'
+          MD5[0]='7ff2b67c64e2a75f12215f3892c7a621'
       LICENSE[0]=GPL
-      MAKE_NJOBS=1
        BUILD_API=2
         WEB_SITE=http://epiphany.mozdev.org
          ENTERED=20030909
-         UPDATED=20050403
-           SHORT="Epiphany - The web browser for the GNOME Desktop"
+         UPDATED=20050411
+           SHORT="The web browser for the GNOME Desktop"
 cat << EOF
 Epiphany aims to utilize the simplest interface possible for a browser. Keep in
 mind that simple does not necessarily mean less powerful. We believe the
