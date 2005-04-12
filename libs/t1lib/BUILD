@@ -5,6 +5,7 @@ if [ "$DOCUMENTATION" = "n" ]; then
   --localstatedir=${INSTALL_ROOT}/var       \
   --mandir=${INSTALL_ROOT}/usr/share/man    \
   --infodir=${INSTALL_ROOT}/usr/share/info  \
+  --target=$HOST                            \
   $OPTS                                     &&
   make without_doc
 
