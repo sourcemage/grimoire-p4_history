@@ -18,4 +18,5 @@ fi &&
 # the trick to building c-client only is to remove the target named "bundled"
 # from the dependents list of default target "build"
 sedit 's|^\(build:.*\)bundled|\1|g' Makefile &&
-yes | make DEBUG="$CFLAGS" $SSLOPTS $TARGET
+
+yes | make $SSLOPTS EXTRACFLAGS="$CFLAGS" $TARGET
