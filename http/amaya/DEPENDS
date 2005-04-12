@@ -3,7 +3,18 @@ depends  libpng  &&
 depends  tiff    &&
 depends  g++     &&
 
-optional_depends  gtk+                         \
-                  "--with-gtk"                 \
-                  "--without-gtk"              \
-                  "for GTK+ graphics library"
+# TODO figure out where --with-mesa goes if it improves anything
+case "$AMAYA_TOOLKIT" in
+GTK)
+  depends gtk+ '--with-gtk'       &&
+  optional_depends OPENGL         \
+                   '--with-gl'    \
+				   '--without-gl' \
+				   'OpenGL support (GTK+ must have it too!)'
+  ;;
+*)
+  depends wxGTK '--with-wx' &&
+  # using wxWidgets assumes OpenGL option
+  depends OPENGL '--with-gl'
+ ;;
+esac
