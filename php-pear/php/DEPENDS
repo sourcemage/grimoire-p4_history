@@ -8,7 +8,8 @@ depends  zlib  "--with-zlib --with-zlib-dir=/usr"  &&
 optional_depends  C-CLIENT            \
                   "--with-imap"       \
                   "--without-imap"    \
-                  "for IMAP support"  &&
+                  "for IMAP support"  \
+                  z-rejected          &&
                   
 optional_depends  MAIL-TRANSPORT-AGENT  \
                   ""                    \
