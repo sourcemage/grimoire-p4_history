@@ -11,4 +11,6 @@ if  ! spell_ok netpbm; then
     patch  < $SCRIPT_DIRECTORY/groff.patch
 fi                                                  &&
 
-make
+make_single                                         &&
+make                                                &&
+make_normal

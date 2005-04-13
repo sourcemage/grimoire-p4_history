@@ -1,2 +1,4 @@
 rm      *.o                 &&
-make    CFLAGS="$CFLAGS"
+make_single                 &&
+make    CFLAGS="$CFLAGS"    &&
+make_normal
