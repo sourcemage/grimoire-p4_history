@@ -1,19 +1,18 @@
            SPELL=gsview
-         VERSION=4.6
+         VERSION=4.7
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
    SOURCE_URL[0]=ftp://sunsite.cnlab-switch.ch/mirror/ghost/ghostgum/${SOURCE}
    SOURCE_URL[1]=ftp://ftp.mirror.ac.uk/sites/mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${SOURCE}
    SOURCE_URL[2]=ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${SOURCE}
         WEB_SITE=http://www.cs.wisc.edu/~ghost/gsview
-          MD5[0]='914fe9218413a3567b72a9ca6f1d0cd3'
+          MD5[0]=2321b42e7d6c67355346c4cd0877d683
          ENTERED=20011122
          UPDATED=20030217
       LICENSE[0]=http://www.cs.wisc.edu/~ghost/doc/cvs/Public.htm
        BUILD_API=2
            SHORT="GUI for viewing PDF & PS files via AFPL ghostscript"
 cat << EOF
-
 GSview is a graphical interface for Ghostscript, an interpreter for the
 PostScript page description language used by laser printers.  For documents
 following the Adobe PostScript Document Structuring Conventions, it allows
@@ -21,5 +20,4 @@ selected pages to be viewed or printed.  GSview requires AFPL Ghostscript.
 
 It makes use of GTK+, and the SHARED version of AFPL ghostscript 7.00 or
 later.
-
 EOF
