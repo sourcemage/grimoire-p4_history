@@ -6,10 +6,10 @@ if [ "$CVS" = "y" ]; then
   FORCE_DOWNLOAD=1
           MD5[0]='IGNORE'
 else
-         VERSION=1.3.19
+         VERSION=1.3.20
           SOURCE=galeon-$VERSION.tar.bz2
    SOURCE_URL[0]=$SOURCEFORGE_URL/galeon/$SOURCE
-          MD5[0]='a27ab31692da137c4f3dca6aca03ae49'
+          MD5[0]=e9193f13073a2f39cdd93f13dc5aae75
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/galeon-${VERSION}
         WEB_SITE=http://galeon.sourceforge.net/
@@ -18,7 +18,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/galeon-${VERSION}
        BUILD_API=2
          ENTERED=20010922
          UPDATED=20050127
-           SHORT='Galeon is a GNOME Web browser based on Gecko'
+           SHORT="Galeon is a GNOME Web browser based on Gecko"
 cat << EOF
 Galeon is a GNOME Web browser based on Gecko (the Mozilla rendering
 engine). It is fast, has a light interface, and is fully
