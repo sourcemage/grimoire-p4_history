@@ -13,4 +13,8 @@ for i in info infokey install-info makeinfo texindex;
 do
   sedit  "s/ $i//g" Makefile.in
 done                                                        &&
-default_build
+./configure --prefix=${INSTALL_ROOT}/usr                    \
+            --bindir=${INSTALL_ROOT}/usr/bin                &&
+make_single                                                 &&
+make                                                        &&
+make_normal

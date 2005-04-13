@@ -20,5 +20,5 @@ sedit 's/1:8:2:3:4:5:6:7:9:0p:1p:3p:tcl:n:l:p:o/1:1p:8:0p:2:3:3p:3w:4:5:6:7:n/' 
 
 # compatibility (xman)
 pushd $INSTALL_ROOT/etc                                         &&
-ln -s ../usr/share/misc/man.conf man.conf                       &&
+ln -fs ../usr/share/misc/man.conf man.conf                       &&
 popd
