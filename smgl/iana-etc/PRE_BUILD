@@ -1,0 +1,6 @@
+default_pre_build  &&
+
+if  [  "$IANA_AMANDA"  ==  "y"  ];  then
+  patch  $SOURCE_DIRECTORY/port-numbers.dist  \
+         $SCRIPT_DIRECTORY/amanda.patch
+fi
