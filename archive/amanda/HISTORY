@@ -1,3 +1,17 @@
+2005-04-14 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Added query for client-only and server-only options
+	  Added queries for default database format, buffering, FQDNs, and
+	  host authentication
+	* DEPENDS: Added krb5 as an optional dependency
+	  (both for krb v5 and v4)
+	  Added optional dependencies on gnuplot, perl, and samba
+	  Depend on AMANDA_DB
+	* BUILD: Use default_build and modify OPTS
+	  Make sure the "backup" user and group are created
+	* services: Removed
+	  Patched into iana-etc spell
+	* xinetd.d/{amandaidx,amidxtape}: Added
+
 2004-10-24 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 2.4.4p4
 
