@@ -1,3 +1,9 @@
+#
+# Remake configure so it doesn't "need" cpp
+#
+aclocal   &&
+autoconf  &&
+
 if  [  -f  /usr/include/linux/fusion.h  ];  then
   OPTS="$OPTS --enable-multi"
 fi                                                    &&
