@@ -1,17 +1,23 @@
-make_single                                          &&
-default_install                                      &&
+make_single      &&
+default_install  &&
+
 #
 # Install headers so libintl.h doesn't get overwritten
 #
-rm  ${INSTALL_ROOT}/usr/local/include/libintl.h      &&
-mv  ${INSTALL_ROOT}/usr/local/include/gettext-po.h   \
-    ${INSTALL_ROOT}/usr/include/                     &&
+rm  -f  ${INSTALL_ROOT}/usr/local/include/libintl.h  &&
+
+if  [  -f  ${INSTALL_ROOT}/usr/local/include/gettext-po.h  ];  then
+  mv  ${INSTALL_ROOT}/usr/local/include/gettext-po.h   \
+      ${INSTALL_ROOT}/usr/include/
+fi
 
 if  echo  $OPTS  |  grep  -q  --  "enable-libasprintf";  then
-  mv  ${INSTALL_ROOT}/usr/local/include/autosprintf.h  \
-      ${INSTALL_ROOT}/usr/include/
+  if  [  -f  ${INSTALL_ROOT}/usr/local/include/autosprintf.h  ];  then
+    mv  ${INSTALL_ROOT}/usr/local/include/autosprintf.h  \
+        ${INSTALL_ROOT}/usr/include/
+  fi
 else
-  rm  ${INSTALL_ROOT}/usr/local/include/autosprintf.h
+  rm  -f  ${INSTALL_ROOT}/usr/local/include/autosprintf.h
 fi  &&
 
 if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
