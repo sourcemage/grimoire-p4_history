@@ -1,15 +1,15 @@
            SPELL=arx
-         VERSION=2.2.0
-          SOURCE=ArX-${VERSION}.tar.gz
-   SOURCE_URL[1]=http://superbeast.ucsd.edu/~landry/ArX/ArX-${VERSION}.tar.gz
-          MD5[0]=0aa0bb34c037dd3ee8807f6fa77e46b0
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/ArX-${VERSION}
+         VERSION=2.2.1
+          SOURCE=ArX-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ArX-$VERSION
+   SOURCE_URL[0]=http://superbeast.ucsd.edu/~landry/ArX/ArX-$VERSION.tar.gz
+          MD5[0]=c8f9979cfbed26d7a4356c683a63224c
         WEB_SITE=http://www.nongnu.org/arx/
          ENTERED=20050227
          UPDATED=20050227
       LICENSE[0]=GPL
        BUILD_API=2
-           SHORT="ArX is an easy to use distributed revision control system"
+           SHORT="Easy to use distributed revision control system"
 cat << EOF
 ArX is a Revision Control System (RCS), like CVS, Subversion, or GNU
 arch. It manages "archives" (collections of files), such as source
