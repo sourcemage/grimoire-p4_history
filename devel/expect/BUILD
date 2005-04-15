@@ -7,4 +7,4 @@ cd  $SOURCE_DIRECTORY/             &&
              --with-tcl=/usr/lib \
              $OPTS                 &&
 make_single                        &&
-make                               &&
+make
