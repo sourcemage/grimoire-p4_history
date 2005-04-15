@@ -20,7 +20,7 @@
   # the only reason we don't do that now is to avoid users keeping their old
   # udev.conf while udev.rules is being moved
   if [ ! -f ${UDEV_CFG}/udev.conf ]; then
-    install_config_file "$SCRIPT_DIRECTORY/udev.conf"  ${UDEV_CFG} ;
+    install_config_file "$SCRIPT_DIRECTORY/udev.conf"  ${UDEV_CFG}/udev.conf ;
   else
     if cmp "$SCRIPT_DIRECTORY/udev.conf" "${UDEV_CFG}/udev.conf" &>/dev/null ; then
       #to keep it tracked
