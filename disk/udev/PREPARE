@@ -1,3 +1,12 @@
+# testing if the install_config_file function is available
+# we don't want to spend time building udev if we can't install it properly
+
+if  ! ( grep -q install_config_file /var/lib/sorcery/modules/libapi );  then
+    message  "${PROBLEM_COLOR}You don't have the latest stable Sorcery. Run
+              \`sorcery update\`${DEFAULT_COLOR}"  &&
+    return  1
+fi                                                                                              &&
+
 message "${MESSAGE_COLOR}"                                                                      &&
 message "This update will move your current udev.rules to /etc/udev/udev.d/alocal.rules"        &&
 message "As this is a major change, it won't happen unless\
