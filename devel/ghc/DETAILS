@@ -1,14 +1,14 @@
            SPELL=ghc
-         VERSION=6.2.2
+         VERSION=6.4
           SOURCE=$SPELL-$VERSION-src.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.haskell.org/ghc/dist/$VERSION/$SOURCE
-          MD5[0]=cfe7bd09fcbceaf3be31b414eab525be
+          MD5[0]=7a93001c0967561dc8453a3b609d0c60
 
 if [[ ! -x /usr/bin/ghc ]] ; then
          SOURCE2=$SPELL-$VERSION-i386-unknown-linux.tar.bz2
   SOURCE2_URL[0]=http://www.haskell.org/ghc/dist/$VERSION/$SOURCE2
-          MD5[1]=13dfc47bc0020912b9d8831a76d481a3
+          MD5[1]=d3c755e58fe01c542ef17b385e051781
 fi
 
       LICENSE[0]=BSD
