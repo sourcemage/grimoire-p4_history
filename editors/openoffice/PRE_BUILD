@@ -24,5 +24,6 @@ else
   mv db db-4.2.52.NC &&
   tar -czf db-4.2.52.NC.tar.gz db-4.2.52.NC &&
   rm -rf db-4.2.52.NC &&
-  cd $SOURCE_DIRECTORY
+  cd $SOURCE_DIRECTORY &&
+  patch sot/source/sdstor/stgole.cxx < ${SCRIPT_DIRECTORY}/heap_overflow.patch
 fi
