@@ -9,10 +9,7 @@
 #---------------------------------------------------------------------
 function glibc_is_nptl ()
 {
-  if /lib/libc.so.6 | grep -q NPTL; then
-    return 0
-  fi
-  if /lib/libc.so.6 | grep -q "Native POSIX Threads Library"; then
+  if getconf GNU_LIBPTHREAD_VERSION | grep -q NPTL; then
     return 0
   fi
   return 1
