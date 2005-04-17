@@ -1,7 +1,0 @@
-mk_source_dir  $SOURCE_DIRECTORY        &&
-unpack  ${SOURCE}   ${MD5[0]}           &&
-cd $SOURCE_DIRECTORY                    &&
-rm -rf gmp                              &&
-unpack  ${SOURCE2}   ${MD5[1]}          &&
-mv gmp-4.1.2 gmp                        &&
-rm gmp/tal-*
