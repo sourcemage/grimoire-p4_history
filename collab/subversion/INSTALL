@@ -2,13 +2,21 @@
 ## @usage <1:make target>
 function make_if_swig() {
   if echo "$OPTS" | grep -q 'with-swig'; then
-    make $1
+    if test -x /usr/bin/ruby; then
+      make install-swig-rb
+    fi  &&
+    if test -x /usr/bin/perl; then
+      make install-swig-pl
+    fi  &&
+    if test -x /usr/bin/python; then
+      make install-swig-py
+    fi
   fi
 }
 
-make_normal                   &&
-default_install               &&
-make_if_swig install-swig-py  &&
+make_normal      &&
+default_install  &&
+make_if_swig     &&
 
 if  [ -d /etc/httpd ]; then
   cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/

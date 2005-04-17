@@ -2,7 +2,15 @@
 ## @usage <1:make target>
 function make_if_swig() {
   if echo "$OPTS" | grep -q 'with-swig'; then
-    make $1
+    if test -x /usr/bin/ruby; then
+      make swig-rb
+    fi  &&
+    if test -x /usr/bin/perl; then
+      make swig-pl
+    fi  &&
+    if test -x /usr/bin/python; then
+      make swig-py
+    fi
   fi
 }
 
@@ -73,12 +81,11 @@ if ! [ -x configure ]; then ./autogen.sh; fi &&
   --mandir=/usr/share/man \
   --disable-debug \
   --disable-static \
-  --enable-dso \
   --disable-mod-activation \
   --enable-shared \
   $OPTS &&
 make &&
-make_if_swig swig-py &&
+make_if_swig &&
 
 # Use this instead of just 'make' for -jN option:
 # make -jN external-all

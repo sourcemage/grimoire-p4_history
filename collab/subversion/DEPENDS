@@ -16,10 +16,10 @@ optional_depends  APACHE                        \
                   "--without-apxs"              \
                   "to create Apache 2 modules"  &&
 
-optional_depends  swig                                           \
-                  "--with-swig"                                  \
-                  "--without-swig"                               \
-                  "for generation of Python bindings with SWIG"  &&
+optional_depends  swig                     \
+                  "--with-swig"            \
+                  "--without-swig"         \
+                  "for language bindings"  &&
 
 optional_depends  cyrus-sasl                       \
                   ""                               \
