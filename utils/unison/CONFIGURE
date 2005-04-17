@@ -1,6 +1,5 @@
-if  !  grep  -q  UI  $SPELL_CONFIG  ;  then
-  if  query  "Do you with to enable graphical (gtk+) user interface?"  y
-    then  echo  'UI=gtk'  >>  $SPELL_CONFIG
-    else  echo  'UI=text'  >>  $SPELL_CONFIG
-  fi
+if [ "$BETA" == "y" ]; then
+   config_query_list UI "With ui would you like to use" text gtk gtk2
+else
+   config_query_list UI "With ui would you like to use" text gtk gtk2
 fi
