@@ -110,7 +110,7 @@ print_status()
   builtin echo "$INITSTORE" | while read line; do
     [ -n "$line" -o "$1" != "message" ]         &&
     if [ -n "$SYSLOG_INIT" ]; then
-      logger_func -p user.info -t init.d "$SCRIPT: $@: $line"
+      logger_func -p user.info -t init.d -- "$SCRIPT: $@: $line"
     fi                                          &&
     builtin echo -n  "$SCRIPTW"                 &&
     if [ ! "$1" = "message" ]; then
