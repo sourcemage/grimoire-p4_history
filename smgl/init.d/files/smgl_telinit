@@ -17,6 +17,21 @@
 ##=head1 FUNCTIONS
 #---------------------------------------------------------------------
 
+query()
+{ (
+  while true ; do
+    RESPONSE=""
+    builtin echo  -e  -n  "$1 [$2] "
+    read   -t  10  -n  1  RESPONSE
+    builtin echo
+    RESPONSE=${RESPONSE:=$2}
+    case  $RESPONSE  in
+      n|N)  return 1  ;;
+      y|Y)  return 0  ;;
+    esac
+  done
+) }
+
 run_enable()
 {
   local i
@@ -49,7 +64,6 @@ run_disable()
     local FILE="$(ls $RUNLEVELS_DIR/*/"$i")"
     local SKIP=
     if [ -x "$FILE" ]; then
-      . /etc/sorcery/config
       if grep -Fq 'ESSENTIAL=yes' "$FILE" ; then query "Are you sure you want to disable this ESSENTIAL script?" n || SKIP=yes; fi
       if [ -z "$SKIP" ] ; then
       (
@@ -80,7 +94,6 @@ run_delete()
     local FILE="$(ls $RUNLEVELS_DIR/*/"$i")"
     local SKIP=
     if [ ! -x "$FILE" ]; then
-      . /etc/sorcery/config
       if grep -Fq 'ESSENTIAL=yes' "$FILE" ; then
         query "Are you sure you want to DELETE this ESSENTIAL script?" n || SKIP=yes
       else
@@ -121,7 +134,6 @@ run_bootdisable()
     local FILE="$(ls $RUNLEVELS_DIR/*/"$i")"
     local SKIP=
     if [ -x "$FILE" ]; then
-      . /etc/sorcery/config
       if grep -Fq 'ESSENTIAL=yes' "$FILE" ; then query "Are you sure you want to disable this ESSENTIAL script?" n || SKIP=yes; fi
       if [ -z "$SKIP" ] ; then
         chmod ug-x "$FILE" && echo "Service $i successfully disabled." ||
