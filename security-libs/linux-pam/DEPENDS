@@ -1,3 +1,4 @@
+depends autoconf                               &&
 if [ "${PAM_SELINUX}" == "y" ]; then
   depends libselinux
 fi                                             &&
