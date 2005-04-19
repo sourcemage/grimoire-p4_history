@@ -42,8 +42,8 @@ _do_device_up()
 
   # some wifi cards need some time to setup the card before bringing it up
   if [ ! -z "$WIFI_NWID" ] || [ ! -z "$WIFI_ESSID" ] || [ ! -z "$WIFI_RATE" ] \
-     || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_KEY" ] [ ! -z "$WIFI_KEY1"] \
-     || [ ! -z "$WIFI_MODE" ]; then
+     || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_KEY" ] \
+     || [ ! -z "$WIFI_KEY1"] || [ ! -z "$WIFI_MODE" ]; then
        sleep 2
   fi
 
