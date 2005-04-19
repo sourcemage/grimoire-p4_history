@@ -1,14 +1,14 @@
            SPELL=sylpheed
 if [ "$SYLPHEED_GTK2" == "y" ]; then
-         VERSION=1.9.8
-          MD5[0]=77a920c3118553ae4445761477d563ce
+         VERSION=1.9.9
+          MD5[0]=bfe33aacc9e1aa98d177440bc479bd70
 else
          VERSION=1.0.4
           MD5[0]=541232fa2f0921064a6a0bba0184ce34
 fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://sylpheed.good-day.net/$SPELL/v1.0/$SOURCE
+   SOURCE_URL[0]=http://sylpheed.good-day.net/$SPELL/v${VERSION%.*}/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/sylpheed-claws/$SOURCE
         WEB_SITE=http://sylpheed.good-day.net
          ENTERED=20011031
