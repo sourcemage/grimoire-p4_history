@@ -1,9 +1,22 @@
+2005-04-14 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* BUILD: Rewrote BUILD, added site config, modified vendor config
+	* INSTALL: now installs perl.sh in /etc/profile.d (vendor and site man path)
+
+2005-04-12 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* BUILD: Added vendorman1dir and vendorman3dir
+
+2005-04-05 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* TRIGGERS: Modified after fix on bug 8557
+
+2005-04-05 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* FINAL: Moved rebuilding all perl modules in CONFIGURE (question) and in TRIGGERS
+
 2005-03-17 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* perl_INC.patch added
 	* BUILD: Added vendorprefix
-	The goal of these changes is to have site_perl, vendor_perl and perl core modules 
-	parsed in that order ; SMGL will install all modules in vendor_perl, and user in 
-	site_perl (which is the default for several modules) : fix bug #8386
+	  The goal of these changes is to have site_perl, vendor_perl and perl core modules 
+	  parsed in that order ; SMGL will install all modules in vendor_perl, and user in 
+	  site_perl (which is the default for several modules) : fix bug #8386
 
 2005-02-18 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* CONFIGURE: modified configure file (related to bug #8226)
