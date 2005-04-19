@@ -15,9 +15,6 @@ if spell_ok less; then
           ${INSTALL_ROOT}/usr/share/misc/man.conf
 fi                                                              &&
 
-sedit 's/1:8:2:3:4:5:6:7:9:0p:1p:3p:tcl:n:l:p:o/1:1p:8:0p:2:3:3p:3w:4:5:6:7:n/' \
-      ${INSTALL_ROOT}/usr/share/misc/man.conf                   &&
-
 # compatibility (xman)
 pushd $INSTALL_ROOT/etc                                         &&
 ln -fs ../usr/share/misc/man.conf man.conf                       &&
