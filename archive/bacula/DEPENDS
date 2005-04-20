@@ -2,11 +2,8 @@ depends g++ &&
 
 if [[ -z "$BACULA_CLIENT" ]]; then
   depends mtx-tape &&
+  depends $BACULA_BACKEND "--with-$BACULA_BACKEND=$INSTALL_ROOT/usr" &&
 
-  optional_depends sqlite "--with-sqlite=$INSTALL_ROOT/usr" '--without-sqlite' 'for SQLite database support (recommended minimum)' &&
-  optional_depends mysql "--with-mysql=$INSTALL_ROOT/usr" '--without-mysql' 'for MySQL database support' &&
-  optional_depends postgresql "--with-postgresql=$INSTALL_ROOT/usr" '--without-postgresql' 'for PostgreSQL database support' &&
-  optional_depends TERMCAP '--enable-conio --enable-readline' '--disable-conio --disable-readline' 'for command-line editing support in concole tool' &&
   optional_depends libgnome '--enable-gnome' '--disable-gnome' 'for GNOME console' &&
   optional_depends wxGTK '--enable-wx-console' '--disable-wx-console' 'for wxWidgets console' &&
   optional_depends gtk+2 '--enable-tray-monitor' '--disable-tray-monitor' 'for tray monitor'
