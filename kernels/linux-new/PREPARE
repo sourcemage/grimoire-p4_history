@@ -133,11 +133,10 @@ main_menu()
 {
 	while true
 	do
-		tmp=${patchversion=${kver=${LATEST_2_6}}}
 		command=$( $dialog --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
 		--menu \
-		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $tmp" 0 0 0 \
+		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $VERSION" 0 0 0 \
 		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
 		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
 		"Options" "Menu" "Kernel Arch, Build Dir, Cleaning"  \
@@ -214,7 +213,7 @@ other_pkg_src_menu()
 	do
 		menu_option=$( $dialog --title "Options Menu" \
 			--item-help --menu \
-			"Other Package Creation" 0 0 0 \
+			"Other Package Creation\nThese only work if you have the respective applications installed" 0 0 0 \
 			"rpm" "Make an RPM package" "Requires RPM" \
 			"rpm-pkg" "Make another RPM package" "Requires RPM" \
 			"binrpm-pkg" "Okay more RPM packages" "Requires RPM" \
@@ -301,6 +300,7 @@ arch_menu()
 }
 
 # change the O option for the kernel
+# doesn't work with some patched kernels
 build_dir_menu()
 {
 	output_dir=$( $dialog --nocancel --inputbox \
@@ -330,7 +330,7 @@ restore_config()
 	do
 		menu_option=$( $dialog --title "Config Restore" \
 			--item-help --menu \
-			"Restore Config From:" 0 0 0 \
+			"Restore Config To /usr/src/linux/.config From:" 0 0 0 \
 			"/proc/config.gz" "Restore" "Save /proc/config.gz to ${CONFIG_CACHE}/kernel.config" \
 			"/boot/config-$VERSION" "Restore" "Save /boot/config-$VERSION to ${CONFIG_CACHE}/kernel.config" \
 			"Custom" "Restore" "Save custom config file to ${CONFIG_CACHE}/kernel.config" \
@@ -592,7 +592,7 @@ patch_menu()
 		fi
 		command=$( $dialog --title "Select Patches" \
 			--help-button --menu \
-			"Currently selected patches: $new_patch_list" 0 0 0 ${menu}
+			"Currently selected kernel: $1\nCurrently selected patches: $new_patch_list" 0 0 0 ${menu}
 			)
 		retval="$?"
 		if [[ "$retval" == "0" && "$command" != "No_Patches" ]]
@@ -604,7 +604,7 @@ patch_menu()
 					. $patchesdir/$command/.info	
 					command=$( $dialog --title "Select Patches" \
 						--item-help --menu \
-						"$help\n\nCurrently selected patches: $new_patch_list" 0 0 0 \
+						"$help\n\nCurrently seleted kernel: $1\nCurrently selected patches: $new_patch_list" 0 0 0 \
 						$(list_specific_patch_dir $1 $command) )
 					;;
 			esac
@@ -692,6 +692,7 @@ calculate_depends()
 	# create Makefile
 	dependslist=""
 	new_patches_list=""
+	. $latestdefaults
 	if [[ "$selected_patches" != "" ]]
 	then
 		# check for post patches and add those to the new_patches_list
@@ -713,13 +714,16 @@ calculate_depends()
 				new_patches_list="${new_patches_list}${patch} "
 			fi
 		done
+		rm $dependsmakefile
 		(
+		makefile_targets="all "
 		echo "all: $new_patches_list"
 		echo ""
 		for i in $new_patches_list
 		do
 			rec_dep_make $i
 		done
+		echo ".PHONY : ${makefile_targets}"
 		) > $dependsmakefile
 		# this doesn't work with persistent vars don't know why?
 		patches=$(make -sf $dependsmakefile all)
@@ -740,12 +744,14 @@ rec_dep_make()
 	esac
 	if [[ "${depends}" == "" ]] 
 	then
+		makefile_targets="${makefile_targets} ${1} "
 		echo "${1}:"
-		echo "	echo -n \"${1} \""
+		echo "	@echo -n \"${1} \""
 		echo ""
 	else
+		makefile_targets="${makefile_targets} ${1} ${depends} "
 		echo "${1}: ${depends}"
-		echo "	echo -n \"${1} \""
+		echo "	@echo -n \"${1} \""
 		echo ""
 		rec_dep_make ${depends}
 	fi
@@ -818,19 +824,6 @@ create_details()
 			if [[ ${patchversion} ]]
 			then
 				echo 'PATCHVER=${patchversion}'
-			fi
-			if [[ $patchversion == "" ]]
-			then
-				case "$kver" in
-					LATEST*)
-						append=${!kver}
-						;;
-					*)
-						append=$kver
-						;;
-				esac
-			else
-				append=$patchversion
 			fi
 			) > $detailsdefaults
 			;;

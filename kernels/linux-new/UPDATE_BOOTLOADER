@@ -10,6 +10,15 @@ cut_label()  {
 
 }
 
+root_dev()
+{
+	rootdev=$( cat /proc/mounts | grep ' /boot ' | awk '{print $1}')
+	if [[ $rootdev == "" ]]
+	then
+		rootdev=$( cat /proc/mouts | grep ' / ' | awk '{print $1}')
+	fi
+}
+# deprecated for template_entry
 lilo_image_entry()  {
 
 if  grep  -q  password  /etc/lilo.conf
@@ -33,6 +42,46 @@ fi
 }
 
 
+template_entry() {
+	local template_file=""
+	case "$boot_loader" in
+		grub)	
+			template_file="/boot/grub/menu.lst.tmplt"
+			if [ ! -f ${template_file} ]
+			then
+				template_file="$SCRIPT_DIRECTORY/templates/menu.lst.tmplt"
+			fi
+			;;
+		lilo)
+			template_file="/etc/lilo.conf.tmplt"
+			if [ ! -f ${template_file} ]
+			then
+				template_file="$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt"
+			fi
+			;;
+		silo)
+			template_file="/etc/silo.conf.tmplt"
+			if [ ! -f ${template_file} ]
+			then
+				template_file="$SCRIPT_DIRECTORY/templates/silo.conf.tmplt"
+			fi
+			;;
+		yaboot)
+			template_file="/etc/yaboot.conf.tmplt"
+			if [ ! -f ${template_file} ]
+			then
+				template_file="$SCRIPT_DIRECTORY/templates/yaboot.conf.tmplt"
+			fi
+			;;
+		*)
+			echo "Don't know what $boot_loader is"
+			return 1
+			;;
+	esac
+	eval $template_file
+}
+
+
 update_lilo()  {
 
   if  !  grep  -q  "${VERSION}$"  /etc/lilo.conf;  then
@@ -47,7 +96,7 @@ update_lilo()  {
       if   echo  $LINE  |  grep  -q  "image"  ||
            echo  $LINE  |  grep  -q  "other"  ;  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`lilo_image_entry`"  >>  /etc/lilo.conf.new
+          echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
         fi
         ((  IMAGE_COUNT++  ))
       fi
@@ -61,7 +110,7 @@ update_lilo()  {
     done
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`lilo_image_entry`"  >>  /etc/lilo.conf.new
+      echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
     fi
 
     mv  /etc/lilo.conf.new  /etc/lilo.conf
@@ -87,7 +136,7 @@ update_silo()  {
       if   echo  $LINE  |  grep  -q  "image"  ||
            echo  $LINE  |  grep  -q  "other"  ;  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`lilo_image_entry`"  >>  /etc/silo.conf.new
+          echo  -e  "`template_entry`"  >>  /etc/silo.conf.new
         fi
         ((  IMAGE_COUNT++  ))
       fi
@@ -101,7 +150,7 @@ update_silo()  {
     done
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`lilo_image_entry`"  >>  /etc/silo.conf.new
+      echo  -e  "`template_entry`"  >>  /etc/silo.conf.new
     fi
 
     cp  /etc/silo.conf.new  /etc/silo.conf
@@ -126,7 +175,7 @@ update_yaboot()  {
       if   echo  $LINE  |  grep  -q  "image"  ||
            echo  $LINE  |  grep  -q  "other"  ;  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`lilo_image_entry`"  >>  /etc/yaboot.conf.new
+          echo  -e  "`template_entry`"  >>  /etc/yaboot.conf.new
         fi
         ((  IMAGE_COUNT++  ))
       fi
@@ -140,7 +189,7 @@ update_yaboot()  {
     done
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`lilo_image_entry`"  >>  /etc/yaboot.conf.new
+      echo  -e  "`template_entry`"  >>  /etc/yaboot.conf.new
     fi
 
     mv  /etc/yaboot.conf.new  /etc/yaboot.conf
@@ -151,6 +200,8 @@ update_yaboot()  {
 
 }
 
+
+# deprecated for template_entry
 grub_image_entry() {
 
 local KERNEL=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
@@ -195,7 +246,7 @@ update_grub() {
 
       if   echo  $LINE  |  grep  -q  "^title";  then
         if  (( IMAGE_COUNT  == 0  ));  then
-          echo  "`grub_image_entry`"  >>  $MENU.new
+          echo  "`template_entry`"  >>  $MENU.new
           echo  >>  $MENU.new
         fi
         ((  IMAGE_COUNT++  ))
@@ -206,7 +257,7 @@ update_grub() {
     done < $MENU
 
     if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`grub_image_entry`"  >>  $MENU.new
+      echo  -e  "`template_entry`"  >>  $MENU.new
     fi
 
     mv  $MENU.new  $MENU
@@ -217,14 +268,16 @@ update_grub() {
 
 # Changed from 'case $BUILD  in' as $BUILD is not defined yet
 case  `uname -m`  in
-  powerpc)  update_yaboot  ;;
-   sparc*)  update_silo    ;;
-        *)  if  [  -x  /sbin/lilo  ]
+  powerpc)  boot_loader="yaboot" update_yaboot  ;;
+   sparc*)  boot_loader="silo" update_silo    ;;
+        *)  if  [  -f /etc/lilo.conf  ]
             then
+	      boot_loader="lilo"
               update_lilo
             fi
-            if  [  -x  /sbin/grub  ]
+            if  [  -f  /boot/grub/menu.lst  ]
             then
+	      boot_loader="grub"
               update_grub
             fi             ;;
 esac
