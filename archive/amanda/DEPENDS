@@ -21,13 +21,13 @@ optional_depends  krb5                              \
                   "--without-krb5-security"         \
                   "for Kerberos v5 authentication"  &&
 
-message  "${MESSAGE_COLOR}You will need to compile Kerberos v4 support"  \
-         "into krb5 for this option${DEFAULT_COLOR}"                     &&
+#message  "${MESSAGE_COLOR}You will need to compile Kerberos v4 support"  \
+#         "into krb5 for this option${DEFAULT_COLOR}"                     &&
 
-optional_depends  krb5                              \
-                  "--with-krb4-security"            \
-                  "--without-krb4-security"         \
-                  "for Kerberos v4 authentication"  &&
+#optional_depends  krb5                              \
+#                  "--with-krb4-security"            \
+#                  "--without-krb4-security"         \
+#                  "for Kerberos v4 authentication"  &&
 
 optional_depends  perl                          \
                   ""                            \
