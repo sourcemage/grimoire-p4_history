@@ -1,15 +1,19 @@
            SPELL=httpd-dev
-if [ "$HTTPD_CHECKOUT" == 'y' ]; then
-         VERSION=$(date +%Y%m%d)
+if [[ "$HTTPD_CHECKOUT" == y ]]; then
+  if [[ "$HTTPD_DAILY" == y ]]; then
+         VERSION=2.1-$(date +%Y%m%d)
+  else
+         VERSION=2.1-SVN
+  fi
           MD5[0]=IGNORE
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/httpd/httpd/trunk:${SPELL%-*}-trunk
   FORCE_DOWNLOAD=1
           SOURCE=${SPELL%-*}-trunk.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-trunk
 else
-         VERSION=2.1.2-alpha
-          MD5[0]='819ca2bb3f585bdce4ea51e7ec802f3d'
-          SOURCE=${SPELL%-*}-$VERSION.tar.bz2}
+         VERSION=2.1.4-alpha
+          MD5[0]='b8ed8cb99453336b03920a56c355a55b'
+          SOURCE=${SPELL%-*}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
    SOURCE_URL[0]=http://httpd.apache.org/dev/dist/$SOURCE
 fi

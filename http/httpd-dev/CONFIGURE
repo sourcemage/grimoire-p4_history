@@ -112,6 +112,9 @@ output_module_config() {
 }
 
 config_query HTTPD_CHECKOUT "Would you like to get the most current svn head?" n
+if [[ "$HTTPD_CHECKOUT" == y ]]; then
+  config_query HTTPD_DAILY 'Code updates daily (on invocation of "sorcery system-update")?' n
+fi
 
 # Perform the configuration
 if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
