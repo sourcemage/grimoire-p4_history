@@ -2,6 +2,7 @@
 if [ $UPDATE_BL == "y" ]
 then
 	export VERSION &&
+	export SCRIPT_DIRECTORY &&
 	$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER 
 fi
 
