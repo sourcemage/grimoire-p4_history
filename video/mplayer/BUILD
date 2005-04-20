@@ -19,9 +19,9 @@ if [ "$JOYSTICK" = "y" ]; then OPTS="$OPTS --enable-joystick"; fi   &&
 if [ "$OSD_MENU" = "y" ]; then OPTS="$OPTS --enable-menu"; fi       &&
 if [ "$MENCODER" = "n" ]; then OPTS="$OPTS --disable-mencoder"; fi  &&
 
-CFLAGS= ./configure  --prefix=/usr    \
-             --confdir=/etc/mplayer   \
-             --mandir=/usr/share/man  \
+CFLAGS= ./configure  --prefix=${INSTALL_ROOT}/usr    \
+             --confdir=${INSTALL_ROOT}/etc/mplayer   \
+             --mandir=${INSTALL_ROOT}/usr/share/man  \
              $OPTS          &&
 
 make
