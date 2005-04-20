@@ -4,15 +4,13 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.cpan.org/authors/id/J/JD/JDPORTER/$SOURCE
           MD5[0]="05a956f0366eb2ea07cb7d2234600aec"
-         LICENSE=ART
         WEB_SITE="http://search.cpan.org/search?dist=Lingua-Ispell"
-         ENTERED=
-         UPDATED=
+         ENTERED=20021124
+         UPDATED=20050420
+      LICENSE[0]=ART
+       BUILD_API=2
            SHORT="modules for Ispell handling"
 cat << EOF
-
-DESCRIPTION ^
-
 Lingua::Ispell::spellcheck() takes one argument. It must be a string, and it should contain
 only printable characters. One allowable exception is a terminal newline, which will be
 chomped off anyway. The line is fed to a coprocess running ispell for analysis. ispell
@@ -32,5 +30,4 @@ value is the word which ispell identified in the dictionary as being the likely 
 current term. For the type 'miss', an additional hash entry is present: 'misses'. Its value
 is an ref to an array of words which ispell identified as being "near-misses" of the
 current term, when scanning the dictionary. 
-
 EOF
