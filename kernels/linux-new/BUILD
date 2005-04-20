@@ -13,7 +13,7 @@ esac
 case "$VERSION" in
   2.6*)
     echo "making for a 2.6 kernel"  &&
-    ARCH="$kernel_arch" make CFLAGS="$CFLAGS"  || return 1
+    ARCH="$kernel_arch" make  || return 1
   ;;
   2.[024]*)
     echo "making for a 2.4 kernel"  &&
