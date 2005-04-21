@@ -1,0 +1,13 @@
+--- gzip.c.old	2005-04-18 23:15:05.449840344 +0200
++++ gzip.c	2005-04-18 23:24:30.596924928 +0200
+@@ -933,6 +933,10 @@ local int create_outfile()
+ 	}
+ 	/* Create the output file */
+ 	remove_ofname = 1;
++	char *baseout;
++	baseout = basename(ofname);
++	strncpy(ofname, baseout, sizeof(ofname));
++	ofname[sizeof(ofname) - 1] = '\0';
+ 	ofd = OPEN(ofname, flags, RW_USER);
+ 	if (ofd == -1) {
+ 	    progerror(ofname);
