@@ -6,6 +6,7 @@
                --localstatedir=${INSTALL_ROOT}/var     \
                --enable-syslog          \
                --with-CXX               \
+               --target=$HOST           \
                $OPTS                    &&
   make                                  &&
   cd      contrib/pgcrypto              &&
