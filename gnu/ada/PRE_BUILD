@@ -1,8 +1,6 @@
 default_pre_build                &&
 cd $BUILD_DIRECTORY              &&
 unpack $SOURCE2 ${MD5[1]}        &&
-if [[ $SOURCE3 ]]; then
-  cd $SOURCE_DIRECTORY             &&
-  unpack $SOURCE3 ${MD5[2]}
-fi  &&
+cd $SOURCE_DIRECTORY             &&
+unpack $SOURCE3 ${MD5[2]}
 mk_source_dir  $SOURCE_DIRECTORY.bld

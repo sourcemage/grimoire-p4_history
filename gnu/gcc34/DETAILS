@@ -1,0 +1,19 @@
+           SPELL=gcc34
+         VERSION=3.4.3
+          SOURCE=gcc-core-$VERSION.tar.bz2
+         SOURCE2=gcc-g++-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
+   SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
+  SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
+   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+  SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
+          MD5[0]=58e07da3cf68f06976d82ac1baf3d1bd
+          MD5[1]=ec57f855cfc677fc552c1f683aeb57ad
+      LICENSE[0]=GPL
+        WEB_SITE=http://gcc.gnu.org/
+         ENTERED=20050421
+         UPDATED=20050421
+           SHORT="gcc34 is the 3.4.x release of the GNU Compiler Collection"
+cat << EOF
+gcc33 - The 3.4.x release of the GNU C and C++ compilers.
+EOF

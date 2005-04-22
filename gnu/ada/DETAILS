@@ -1,19 +1,17 @@
            SPELL=ada
-         VERSION=3.4.3
+         VERSION=4.0.0
           SOURCE=gcc-core-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
    SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
    SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
-          MD5[0]=58e07da3cf68f06976d82ac1baf3d1bd
+          MD5[0]=2125831b2f545dc0f84b1ff8f8517cd5
          SOURCE2=gcc-$SPELL-$VERSION.tar.bz2
   SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
   SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
-          MD5[1]=9daab9de00dd6c0c2d06496d93b23063
-if [ ! -x /usr/bin/gnatmake ]; then
+          MD5[1]=bda62374480fa5e6d7e2468f91ec0ee6
          SOURCE3=gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz
   SOURCE3_URL[0]=http://libre.act-europe.fr/GNAT/3.15p/$SOURCE3
           MD5[2]=f077ee1b544b7dc7f0120cb3b9271567
-fi
       LICENSE[0]=GPL
         WEB_SITE=http://gcc.gnu.org/
          ENTERED=20050213
