@@ -12,10 +12,10 @@ cut_label()  {
 
 root_dev()
 {
-	rootdev=$( cat /proc/mounts | grep ' /boot ' | awk '{print $1}')
-	if [[ $rootdev == "" ]]
+	ROOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk '{print $1}')
+	if [[ $ROOT_DEV == "" ]]
 	then
-		rootdev=$( cat /proc/mouts | grep ' / ' | awk '{print $1}')
+		ROOT_DEV=$( cat /proc/mouts | grep ' / ' | awk '{print $1}')
 	fi
 }
 # deprecated for template_entry
@@ -78,6 +78,7 @@ template_entry() {
 			return 1
 			;;
 	esac
+	export ROOT_DEV
 	eval $template_file
 }
 
@@ -267,6 +268,7 @@ update_grub() {
 }
 
 # Changed from 'case $BUILD  in' as $BUILD is not defined yet
+root_dev
 case  `uname -m`  in
   powerpc)  boot_loader="yaboot" update_yaboot  ;;
    sparc*)  boot_loader="silo" update_silo    ;;
