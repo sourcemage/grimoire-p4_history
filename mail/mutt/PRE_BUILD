@@ -29,4 +29,8 @@ done &&
 
 if [ ! -z "${REAL_PATCHES}" ]; then
   ./prepare
+fi  &&
+
+if gcc -dumpversion | grep -q "^4"  &&  test "$BRANCH" = "stable"; then
+  sedit "22i#include <mapping.h>"  keymap.h
 fi
