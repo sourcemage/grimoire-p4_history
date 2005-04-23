@@ -35,7 +35,7 @@
   if [ -f ${UDEV_CFG}/udev.rules ];then
     install_config_file ${UDEV_CFG}/udev.rules ${UDEV_CFG}/rules.d/alocal.rules     &&
     rm -f ${UDEV_CFG}/udev.rules                                                    &&
-    install_config_file $SCRIPT_DIRECTORY/rules/udev.rules ${UDEV_CFG}/rules.d/udev.rules ;
+    install_config_file $SCRIPT_DIRECTORY/rules/50-udev.rules ${UDEV_CFG}/rules.d/50-udev.rules ;
   fi  &&
 
   # i know udev.rules will be checked twice, it adds a nanosecond to the install time. so what ;)

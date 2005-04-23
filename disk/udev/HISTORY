@@ -1,12 +1,17 @@
+2005-04-23 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: updated to 057
+	* rules.d/50-default.rules
+	* INSTALL: uses rules.d/50-default.rules instead of rules.d/udev.rules
+
 2005-04-15 Arjan Bouter <abouter@sourcemage.org>
 	* INSTALL: fixed the install_config_file for udev.conf
 	* PREPARE: test if the install_config_file funtion is available
 	  and error out if it isn't.
 
 2005-04-09 Flavien Bridault <disk@sourcemage.org>
-        * PREPARE: made executable, changed $UDEV_UPDATE to $UDEV_UPDATE2
+    * PREPARE: made executable, changed $UDEV_UPDATE to $UDEV_UPDATE2
           to avoid that last udev config update setting is used
-        * INSTALL: small fix, missing '&&'
+    * INSTALL: small fix, missing '&&'
 
 2005-04-09 Arjan Bouter <abouter@sourcemage.org>
 	* DETAILS,INSTALL,udev.conf: moved rules to rules.d
