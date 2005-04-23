@@ -56,7 +56,8 @@ check_cdr_perms()  {
 			    message "Added permissions for cdrom recorder device /dev/${DEV}"
 		    done
             
-            mv -f $TMP_RULES_FILE $UDEV_RULES_DIR
+            install_config_file $TMP_RULES_FILE $UDEV_RULES_DIR/$(basename $TMP_RULES_FILE)
+            rm -f $TMP_RULES_FILE
 		    udevstart
 		    ;;
 	esac
