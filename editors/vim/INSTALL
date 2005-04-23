@@ -2,6 +2,3 @@ default_install                                 &&
 if [ "${MAKE_SYMLINK}"=="y" ] ; then
         ln -sf ${INSTALL_ROOT}/usr/bin/vim ${INSTALL_ROOT}/usr/bin/vi
 fi
-if [ -e ${INSTALL_ROOT}/usr/bin/gvim ] ; then
-    cp ${SPELL_DIRECTORY}/desktop/gvim.desktop ${INSTALL_ROOT}/usr/share/xsessions/
-fi
