@@ -37,8 +37,8 @@ check_cdr_perms()  {
 		    message ""
 		    ;;
 	    udev)   
-            local UDEV_RULES_DIR="${INSTALL_ROOT}/etc/udev/rules.d/"
-            local TMP_RULES_FILE="/tmp/00-cdrtools.rules"    
+            local UDEV_RULES_DIR="${INSTALL_ROOT}/etc/udev/rules.d"
+            local TMP_RULES_FILE="/tmp/10-cdrtools.rules"    
 		    local UDEV_GROUP_STRING
 		    local UDEV_MODE_STRING
 		    		    
