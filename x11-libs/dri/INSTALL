@@ -1,5 +1,14 @@
+#GENERATE BACKUP
+mv ${INSTALL_ROOT}/usr/X11R6/lib/modules ${INSTALL_ROOT}/usr/X11R6/lib/modules.old &&
+mkdir -p ${INSTALL_ROOT}/usr/X11R6/lib/modules  &&
+
+#INSTALL
 cd  $SOURCE_DIRECTORY/xc-Trunk                        &&
 make  install  PROJECTROOT=${INSTALL_ROOT}/usr/X11R6  &&
+
+cd $SOURCE_DIRECTORY/Mesa-Trunk/lib &&
+mkdir -p ${INSTALL_ROOT}/usr/X11R6/lib/modules/dri/ &&
+cp *_dri.so ${INSTALL_ROOT}/usr/X11R6/lib/modules/dri/ &&
 
 #
 # Let's install the proper modules
