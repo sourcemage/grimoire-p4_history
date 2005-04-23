@@ -1,4 +1,5 @@
 depends  CVS      &&
+depends  gcc34    &&
 optional_depends  "nasm"             \
                   ""                 \
                   "--disable-mmx"    \
@@ -8,7 +9,7 @@ optional_depends  "lame"              \
                   ""                  \
                   "for mp3 encoding via libmp3lame"  &&
 optional_depends  "libvorbis"        \
-                  "--enable-ogg --enable-vorbis"  \
+                  "--enable-libogg --enable-vorbis"  \
                   ""                 \
                   "for ogg/vorbis support"  &&
 optional_depends  "faad2"          \

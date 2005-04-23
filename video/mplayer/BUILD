@@ -1,3 +1,4 @@
+invoke_gcc
 # fixes bug #6833
 patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
