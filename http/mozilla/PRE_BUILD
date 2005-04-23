@@ -10,6 +10,10 @@ if  installed_version  freetype2  |  grep  -q  '2\.1\.[89]';  then
   patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch
 fi  &&
 
+if gcc -dumpversion | grep -q "^4"; then
+  patch  -p0  <  $SCRIPT_DIRECTORY/gcc4.patch
+fi  &&
+
 # Enigmail extensions
 if  echo  "$MOZILLA_EXT"  |  grep  -q  'enigmail';  then
   cd  $SOURCE_DIRECTORY/extensions  &&
