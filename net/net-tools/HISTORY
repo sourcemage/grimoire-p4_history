@@ -1,3 +1,13 @@
+2005-04-23 Sergey Lipnevich <sergey@sourcemage.org>
+	* ifup: several improvements in the script:
+	  1. The key number goes after the key;
+	  2. Use "commit" for iwconfig;
+	  3. Use "-n" instead of "! -z" everywhere;
+	  4. Use conditionals that don't generate a call to "[" executable (internal bash comparisons with double backets "[[...]]");
+	  5. Declare variables as "local;"
+	  6. Don't compare with empty string, use "-z" instead;
+	  7.  Consistently use "&& call" one-liner instead of "if ...; then call; fi".
+
 2005-04-19 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* ifup: fix '||' missing in a line leading to an error message for every
 	  ifup call

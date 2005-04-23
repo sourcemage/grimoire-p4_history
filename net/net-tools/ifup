@@ -3,13 +3,13 @@
 # $1 - needle
 exists_in_text()
 {
-  [ "$1" = "" ] && return 0
+  [[ -z "$1" ]] && return 0
 
   IFS=" 	
 "
 
   for x in $( cat ) ; do
-    [ "$1" = "$x" ] && return 0
+    [[ "$1" = "$x" ]] && return 0
   done
 
   return 1
@@ -18,81 +18,81 @@ exists_in_text()
 # $1 - device name
 device_is_up()
 {
-  if [ -x /usr/bin/grep ]; then
+  if [[ -x /usr/bin/grep ]]; then
     /sbin/ifconfig  | grep -A1 "^${1}\ " | grep 'inet addr' >& /dev/null
   else
     /sbin/ifconfig 2>&1 | exists_in_text $1
   fi
 }
 
+# $* - parameters for iwconfig, except device name
+# to be called from _do_device_up
+_set_wlan()
+{
+  iwconfig $DEV $* &&
+  IWC="$IWC $*"
+}
+
 _do_device_up()
 {
-  # apply the wifi settings
-  [ ! -z "$WIFI_NWID" ] && iwconfig $DEV nwid ${WIFI_NWID}
-  [ ! -z "$WIFI_ESSID" ] && iwconfig $DEV essid ${WIFI_ESSID}
-  [ ! -z "$WIFI_RATE" ] && iwconfig $DEV rate ${WIFI_RATE}
-  [ ! -z "$WIFI_MODE" ] && iwconfig $DEV mode ${WIFI_MODE}
-  [ ! -z "$WIFI_KEY1" ] && iwconfig $DEV key \[1\] ${WIFI_KEY1}
-  [ ! -z "$WIFI_KEY2" ] && iwconfig $DEV key \[2\] ${WIFI_KEY2}
-  [ ! -z "$WIFI_KEY3" ] && iwconfig $DEV key \[3\] ${WIFI_KEY3}
-  [ ! -z "$WIFI_KEY4" ] && iwconfig $DEV key \[4\] ${WIFI_KEY4}
-  [ ! -z "$WIFI_SECMODE" ] && iwconfig $DEV key ${WIFI_SECMODE}
-  [ ! -z "$WIFI_DEFAULTKEY" ] && iwconfig $DEV key ${WIFI_DEFAULTKEY}
-  [ ! -z "$WIFI_KEY" ] && iwconfig $DEV key \[$WIFI_KEY\]
+  # collect settings for iwconfig
+  local IWC=
+  [[ -n "$WIFI_NWID" ]] && _set_wlan nwid $WIFI_NWID
+  [[ -n "$WIFI_ESSID" ]] && _set_wlan essid $WIFI_ESSID
+  [[ -n "$WIFI_RATE" ]] && _set_wlan rate $WIFI_RATE
+  [[ -n "$WIFI_MODE" ]] && _set_wlan mode $WIFI_MODE
+  [[ -n "$WIFI_KEY1" ]] && _set_wlan key $WIFI_KEY1 '[1]'
+  [[ -n "$WIFI_KEY2" ]] && _set_wlan key $WIFI_KEY2 '[2]'
+  [[ -n "$WIFI_KEY3" ]] && _set_wlan key $WIFI_KEY3 '[3]'
+  [[ -n "$WIFI_KEY4" ]] && _set_wlan key $WIFI_KEY4 '[4]'
+  [[ -n "$WIFI_DEFAULTKEY" ]] && _set_wlan key "[$WIFI_DEFAULTKEY]"
+  [[ -n "$WIFI_SECMODE" ]] && _set_wlan key $WIFI_SECMODE
+  [[ -n "$WIFI_KEY" ]] && _set_wlan key $WIFI_KEY
 
-  # some wifi cards need some time to setup the card before bringing it up
-  if [ ! -z "$WIFI_NWID" ] || [ ! -z "$WIFI_ESSID" ] || [ ! -z "$WIFI_RATE" ] \
-     || [ ! -z "$WIFI_SECMODE" ] || [ ! -z "$WIFI_KEY" ] \
-     || [ ! -z "$WIFI_KEY1"] || [ ! -z "$WIFI_MODE" ]; then
-       sleep 2
-  fi
+  # make sure the wifi settings are applied if any of them are present
+  [[ -n "$IWC" ]] && iwconfig $DEV commit && sleep 2
 
   # change MAC address if needed
-  if [ ! -z "$MAC" ]; then
-    ifconfig $DEV hw ether ${MAC}
-  fi
+  [[ -n "$MAC" ]] && ifconfig $DEV hw ether ${MAC}
 
-  if [ "$MODE" = dynamic ]; then
-    . /etc/sysconfig/dhcpcd
-    ARGS=""
-    [ "$USE_SYSLOG" = "yes" ] && ARGS="-d"
+  # set configuration for ifconfig or dhcpcd
+  local ARGS=
+  case "$MODE" in
+  dynamic)
+    source /etc/sysconfig/dhcpcd
+    [[ "$USE_SYSLOG" = "yes" ]] && ARGS="ARGS -d"
 
-    echo "Starting dhcpcd on $DEV ..."
-    if [ -e $DHCPCD_PATH$DEV.pid ]; then
-      dhcpcPid=`cat $DHCPCD_PATH$DEV.pid`
+    echo "Starting dhcpcd on $DEV..."
+    if [[ -e $DHCPCD_PATH$DEV.pid ]]; then
+      local DHCPCD_PID=$(cat $DHCPCD_PATH$DEV.pid) &&
       dhcpcd -k $DEV 1>/dev/null 2>&1 &&
-      renice 10 $dhcpcPid 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEV.pid &&
+      renice 10 $DHCPCD_PID 1>/dev/null 2>&1 || rm -f $DHCPCD_PATH$DEV.pid &&
       sleep 1
     fi &&
     dhcpcd -t $TIMEOUT $ARGS $OPTIONS $DEV
-  elif [ "$MODE" = static ]; then
+    ;;
+  static)
     echo "Setting up static networking on $DEV..."
-    ARGS=""
-    if [ "$POINTOPOINT" != "" ] ; then
-      ARGS="$ARGS pointopoint $POINTOPOINT"
-    fi
-    if [ "$MTU" != "" ] ; then
-      ARGS="$ARGS mtu $MTU"
-    fi
+    [[ -n "$POINTOPOINT" ]] && ARGS="$ARGS pointopoint $POINTOPOINT"
+    [[ -n "$MTU" ]] && ARGS="$ARGS mtu $MTU"
 
-    # change MAC address if needed
-    if [ ! -z "$CUSTOM" ]; then
-      ifconfig ${CUSTOM}
-    fi
-
+    # Apply custom configuration
+    [[ -n "$CUSTOM" ]] && ifconfig $CUSTOM
 
     ifconfig $DEV $IP broadcast $BROADCAST netmask $NETMASK $ARGS
-  else
+    ;;
+  *)
     echo "There are errors in $netdevdir/$DEV.dev"
     exit 1
-  fi
+    ;;
+  esac
 }
 
 _do_route_up()
 {
   # check if GATEWAY is set; gateway is set by PPP or other software in some
   # cases
-  if [ "$GATEWAY" ]; then
+  if [[ -n "$GATEWAY" ]]; then
     route add default gw $GATEWAY dev $DEV
   fi 
 }
@@ -105,7 +105,7 @@ _on_up()
 # Handles function "overloading"
 run_func() {
   # If for example do_route_up exists then run it, otherwise run _do_route_up
-  if [ "$( type -t $1 )" = function ] ; then
+  if [[ "$( type -t $1 )" = function ]]; then
     $1
   else
     _$1
@@ -118,12 +118,12 @@ netdevdir=/etc/sysconfig/network
 DHCPCD_PATH="/etc/dhcpc/dhcpcd-"
 DEV=$1
 
-if [ -z $DEV ]; then
+if [[ -z $DEV ]]; then
   echo "Usage: ifup <device>"
   exit 2
 fi
 
-if [ ! -f $netdevdir/$DEV.dev ]; then
+if ! [[ -f $netdevdir/$DEV.dev ]]; then
   echo "$DEV: no such network device"
   exit 1
 fi
@@ -139,18 +139,18 @@ unset do_device_up do_route_up on_up
 
 . $netdevdir/$DEV.dev
 
-if [ -z "$MODE" ]; then
+if [[ -z "$MODE" ]]; then
   echo "There are errors in $netdevdir/$DEV.dev"
   exit 1
 fi
 
-if [ "${_OBEY_UP_ON_BOOT}" = 1 -a "$UP_ON_BOOT" = no ] ; then
+if [[ "${_OBEY_UP_ON_BOOT}" = 1 ]] && [[ "$UP_ON_BOOT" = no ]]; then
   exit 0
 fi
 
-if [ "$MODULE" ] && ! /sbin/lsmod | exists_in_text "$MODULE" ; then
-  echo "Loading module $MODULE for $DEV ..."
-  modprobe  $MODULE
+if [[ -n "$MODULE" ]] && ! /sbin/lsmod | exists_in_text "$MODULE"; then
+  echo "Loading module $MODULE for $DEV..."
+  modprobe $MODULE
 fi &&
 
 run_func do_device_up 
