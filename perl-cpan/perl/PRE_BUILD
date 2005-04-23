@@ -1,6 +1,6 @@
 default_pre_build                                   &&
 cd  $SOURCE_DIRECTORY                               &&
-patch  -p1  <  $SCRIPT_DIRECTORY/installperl.patch  &&
-patch  perlio.c  <  $SCRIPT_DIRECTORY/CAN-2005-155-156.patch
-patch  perl.c  <  $SCRIPT_DIRECTORY/perl_INC.patch
-
+patch  -p1  <  ${SCRIPT_DIRECTORY}/installperl.patch  &&
+patch  perlio.c  <  ${SCRIPT_DIRECTORY}/CAN-2005-155-156.patch &&
+patch  perl.c  <  ${SCRIPT_DIRECTORY}/perl_INC.patch &&
+patch Configure < ${SCRIPT_DIRECTORY}/perl-Configure-amd64.patch
