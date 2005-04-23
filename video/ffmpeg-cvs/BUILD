@@ -1,3 +1,5 @@
+invoke_gcc
+
 export    CFLAGS="${CFLAGS/-funroll-loops/} -O3"
 export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
 export    CFLAGS="${CFLAGS/-DPIC -fPIC/}"
