@@ -79,7 +79,7 @@ function gcc_add_paths()  {
 #---------------------------------------------------------------------
 function invoke_gcc()  {
 
-  if [[ "$GCC_VERSION" ]]; then
+  if [[ "$GCC_VERSION" ]] && ! use_gcc $GCC_VERSION; then
     gcc_add_paths  /opt/gcc${GCC_VERSION//.}
     echo  "Overriding gcc version: `gcc -dumpversion`"
   fi
