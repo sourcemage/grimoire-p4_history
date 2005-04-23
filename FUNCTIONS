@@ -1,4 +1,5 @@
 . $GRIMOIRE/libaccount
+. $GRIMOIRE/libgcc
 
 #---------------------------------------------------------------------
 ## @return 0 if glibc was compiled with NPTL
@@ -9,10 +10,7 @@
 #---------------------------------------------------------------------
 function glibc_is_nptl ()
 {
-  if /lib/libc.so.6 | grep -q NPTL; then
-    return 0
-  fi
-  if /lib/libc.so.6 | grep -q "Native POSIX Threads Library"; then
+  if getconf GNU_LIBPTHREAD_VERSION | grep -q NPTL; then
     return 0
   fi
   return 1
@@ -153,4 +151,27 @@ function remove_shell ()
     message "removing $1 from $qingy_session_dir"
     rm -f ${qingy_session_dir}/$1
   fi
+}
+
+
+#---------------------------------------------------------------------
+## replacement for config_query_string to work around a short timeout
+## when entering long strings (hostnames, organisation names)
+#---------------------------------------------------------------------
+function config_query_long_string() {
+    local ANSWER
+    local DELAY=5 
+    if config_get_option "$1" ANSWER; then
+        # option allready answered in config
+        echo -e "[[ ${QUERY_COLOR}$2${DEFAULT} -> '${QUERY_COLOR}$ANSWER${DEFAULT}' ]]"
+    else
+        query_string ANSWER "$2" "$3"
+        read -t $DELAY -n 1 ANSWER_first
+        if [[ $ANSWER_first ]] ; then 
+          read ANSWER_rest
+        fi
+        ANSWER="${ANSWER_first}${ANSWER_rest}"
+        config_set_option "$1" "$ANSWER"
+    fi
+    return 0
 }
