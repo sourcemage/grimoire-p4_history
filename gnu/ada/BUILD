@@ -21,5 +21,3 @@ CFLAGS="$OLD_CFLAGS"  &&
 # bootstrapping with gnat-bin needs different CFLAGS for the stage1 compile
 make CFLAGS="" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
      profiledbootstrap
-
-make -C gcc gnatlib gnattools
