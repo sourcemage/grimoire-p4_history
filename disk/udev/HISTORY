@@ -2,6 +2,8 @@
 	* DETAILS: updated to 057
 	* rules.d/50-default.rules
 	* INSTALL: uses rules.d/50-default.rules instead of rules.d/udev.rules
+    * FINAL: added, old udev.rules is now renamed rules.d/00-local.rules
+      That prevents this file to be deleted on the second cast.
 
 2005-04-15 Arjan Bouter <abouter@sourcemage.org>
 	* INSTALL: fixed the install_config_file for udev.conf
