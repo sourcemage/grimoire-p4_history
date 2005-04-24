@@ -1,7 +1,7 @@
 #
 # Rebuild configure so it doensn't "need" cpp
 #
-acloacl   &&
+aclocal   &&
 autoconf  &&
 
 if [ -f /usr/include/linux/fusion.h ]
