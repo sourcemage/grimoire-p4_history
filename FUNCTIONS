@@ -184,3 +184,21 @@ function config_query_long_string() {
     fi
     return 0
 }
+
+#---------------------------------------------------------------------
+## @param files
+## @param relative path to files
+##
+## Installs files to $INSTALL_ROOT/usr/share/www/$SPELL
+#---------------------------------------------------------------------
+function  install_www_files ()
+{
+  local  WWW_DEST="$INSTALL_ROOT/usr/share/www"  &&
+  install  -m 644  -o www-data  -g www-data  -d  \
+           $WWW_DEST                             &&
+  install  -m 644  -o www-data  -g www-data  -d  \
+           $WWW_DEST                             &&
+  install  -m 644  -o www-data  -g www-data  $@  \
+           $WWW_DEST
+}
+
