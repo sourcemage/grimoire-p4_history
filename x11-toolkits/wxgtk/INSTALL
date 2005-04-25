@@ -1,5 +1,5 @@
   make install &&
-  do_subdir contrib/src/stc "make install" &&
-if [ "$DEVEL" = "n" ]; then
-  do_subdir contrib/src/xrc "make install"
-fi
+  do_subdir contrib/src/stc "make install" 
+#if [ "$DEVEL" = "n" ]; then
+#  do_subdir contrib/src/xrc "make install"
+#fi
