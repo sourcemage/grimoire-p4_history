@@ -1,13 +1,13 @@
            SPELL=wxgtk
-           SPELLX=wxGTK
+           SPELLX=wxWidgets
         BUILD_API=2
-if [ "$DEVEL" = "n" ];then
-         VERSION=2.4.2
-          MD5[0]=996810364b64a267c0fcb0d473e0271c
-else
-         VERSION=2.5.5
-          MD5[0]=74658a1ef66b1b0a281e4caf52aa4050
-fi
+#if [ "$DEVEL" = "n" ];then
+         VERSION=2.6.0
+          MD5[0]=5e5f469a59fbcba44dfd294b12e288b4
+#else
+#         VERSION=2.5.5
+#          MD5[0]=74658a1ef66b1b0a281e4caf52aa4050
+#fi
           SOURCE=$SPELLX-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
 #   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
