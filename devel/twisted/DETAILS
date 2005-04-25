@@ -1,13 +1,13 @@
            SPELL=twisted
-         VERSION=1.3.0
-          SOURCE=Twisted_NoDocs-$VERSION.tar.bz2
+         VERSION=2.0.0
+          SOURCE=Twisted-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/Twisted-$VERSION
-   SOURCE_URL[0]=http://twisted.sourceforge.net/$SOURCE
-          MD5[0]=7d3540974224beffd24b71b3ff18f476
-        WEB_SITE=http://twistedmatrix.com
+   SOURCE_URL[0]=http://tmrc.mit.edu/mirror/twisted/Twisted/${VERSION%.*}/$SOURCE
+          MD5[0]='097066fbee244519d7473c0abf4c50ef'
+        WEB_SITE=http://twistedmatrix.com/
          ENTERED=20040222
-         UPDATED=20041216
-      LICENSE[0]=LGPL
+         UPDATED=20050424
+      LICENSE[0]=MIT
        BUILD_API=2
            SHORT="Event-driven networking framework written in Python"
 cat << EOF
