@@ -17,6 +17,7 @@ root_dev()
 	then
 		ROOT_DEV=$( cat /proc/mouts | grep ' / ' | awk '{print $1}')
 	fi
+	ROOT_DEV=${ROOT_DEV/\/dev\//}
 }
 # deprecated for template_entry
 lilo_image_entry()  {
@@ -78,6 +79,7 @@ template_entry() {
 			return 1
 			;;
 	esac
+
 	export ROOT_DEV
 	eval $template_file
 }
