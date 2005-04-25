@@ -197,8 +197,8 @@ function  install_www_files ()
   install  -m 644  -o www-data  -g www-data  -d  \
            $WWW_DEST                             &&
   install  -m 644  -o www-data  -g www-data  -d  \
-           $WWW_DEST                             &&
+           $WWW_DEST/$SPELL                      &&
   install  -m 644  -o www-data  -g www-data  $@  \
-           $WWW_DEST
+           $WWW_DEST/$SPELL
 }
 
