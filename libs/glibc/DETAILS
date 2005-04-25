@@ -2,10 +2,10 @@
          VERSION=2.3.5
 if  [  "$GLIBC_NPTL"  =  "y"  ];  then
          #snapshot prerelease 
- HEADERS_VERSION=2.6.11.1
+ HEADERS_VERSION=2.6.11.2
          SOURCE2=linux-libc-headers-$HEADERS_VERSION.tar.bz2
   SOURCE2_URL[0]=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE2
-          MD5[1]=bf820223f11afcd5a68e6ae4c6601d68
+          MD5[1]=c520f69c88389f4be4ef261bb281e77e
 else
  HEADERS_VERSION=2.4.24
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2 
@@ -28,7 +28,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     DISTCC_HOSTS= 
        BUILD_API=2
          ENTERED=20010922
-         UPDATED=20041123
+         UPDATED=20050425
            SHORT="C library for use with GNU/Hurd and GNU/Linux"
 cat << EOF
 glibc - Library for use with GNU/Hurd and GNU/Linux.
