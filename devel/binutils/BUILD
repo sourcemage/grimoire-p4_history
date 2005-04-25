@@ -1,3 +1,4 @@
+invoke_gcc
 mkdir  buildit
 cd     buildit
 #                --build=$BUILD                \
