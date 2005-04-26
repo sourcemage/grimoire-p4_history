@@ -1,3 +1,40 @@
+2005-04-21 Flavien Bridault <disk@sourcemage.org>
+	* CONFIGURE: Default choices changes
+      Corrected a script error thanks to Benoit.
+
+2005-04-03 Flavien Bridault <disk@sourcemage.org>
+	* CONFIGURE, FINAL: Moved all queries from FINAL to CONFIGURE
+	  FINAL now didn't prompt for anything (bug #8404). menu.lst.skel 
+	  generation has been simplified has it can't yet call grub in CONFIGURE.
+	* PRE_BUILD: Apply new patches
+	* grub-0.96-bounced-checks.patch: disable testing of FFS and UFS2 
+	  images that always fail 
+	* grub-0.96-i2o-raid.patch: i2o RAID support
+	* grub-0.96-nxstack.patch: should fix NX segfaulting on amd64 and
+	  x86_64 by Peter Jones. See 
+	  http://lists.gnu.org/archive/html/bug-grub/2005-03/msg00011.html
+
+2005-03-12 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: Updated to 0.96
+	* grub-0.95-endedit.patch,
+	  grub-0.90-append.patch, grub-0.94-geometry-26kernel.patch,
+	  grub-0.90-symlinkmenulst.patch,grub-0.94-i2o.patch,
+	  grub-0.91-splashimagehelp.patch,grub-0.94-initrdmax.patch,
+	  grub-0.93-endedit.patch,grub-0.94-installcopyonly.patch,
+	  grub-0.93-graphics-bootterm.patch,grub-0.95-graphics.patch,
+	  grub-0.93-once.patch,grub-0.95-hiddenmenu-tweak.patch,
+	  grub-0.93-special-device-names.patch,grub-0.95-staticcurses.patch,
+	  grub-0.94-addsyncs.patch,
+	  grub-0.90-append.patch,grub-0.90-symlinkmenulst.patch,
+	  grub-0.91-splashimagehelp.patch,grub-0.93-endedit.patch,
+	  grub-0.93-graphics-bootterm.patch,grub-0.93-once.patch,
+	  grub-0.93-special-device-names.patch,grub-0.94-addsyncs.patch,
+	  grub-0.94-geometry-26kernel.patch grub-0.94-initrdmax.patch,
+	  grub-0.94-installcopyonly.patch: Removed
+	* grub-0.96-graphics.patch, 
+	  grub-0.96-reiser4-20040130.patch : Added
+	* PRE_BUILD: Apply the new patches and do not apply the old ones ;-p
+
 2005-01-14 Flavien Bridault <disk@sourcemage.org>
 	* CONFIGURE: Corrected a bug that use partition instead of MBR.
 	* CONFIGURE, DEPENDS, PREBUILD, BUILD : included Thomas Houssin changes
@@ -9,7 +46,7 @@
 	* CONFIGURE: Changed GRUB_TARGET format, now use the /dev format, which
 	  should be more convenient.
 	* BUILD: Removed "-g" (debug) CFLAGS
-	
+
 2004-12-10 Flavien Bridault <disk@sourcemage.org>
 	* FINAL: Replaced all 'query' by 'config_query', corrected a bug in the
 	  menu.lst.skel generation.
@@ -19,7 +56,7 @@
 	  image working. (Bug #7587)
 	* CONFIGURE: Remove last 'query' call, and corrected a bug that would 
 	  avoid to let the user specify an another GRUB_TARGET than (hd0)
-	
+
 2004-11-09 Eric Sandall <eric@sandall.us>
 	* DETAILS: Remove SOURCE2 (included in the spell) and SOURCE2_URL
 	* BUILD,INSTALL: Move creation of /boot/grub to INSTALL
@@ -39,7 +76,7 @@
 	  grub-0.93-once.patch,grub-0.95-hiddenmenu-tweak.patch
 	  grub-0.93-special-device-names.patch,grub-0.95-staticcurses.patch
 	  grub-0.94-addsyncs.patch: Added from Bug #7587
-	  Thanks to  Richard Johns <johnsr1@lincoln.ac.nz> for the patches from
+	  Thanks to Richard Johns <johnsr1@lincoln.ac.nz> for the patches from
 	  Fedora's SRPMS.
 	* grub-0.90-append.patch,grub-0.90-symlinkmenulst.patch,
 	  grub-0.91-splashimagehelp.patch,grub-0.93-endedit.patch,

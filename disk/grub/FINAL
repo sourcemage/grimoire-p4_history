@@ -1,142 +1,20 @@
+TMP_MENU_LST=/tmp/MENU.LST.SKEL
+RUN_GRUB_INSTALL=/tmp/RUN_GRUB_INSTALL
+COPY_MENULST_SKEL=/tmp/COPY_MENU.LST.SKEL
 
-function generate_menu_lst_skel()  {
-  # find current running kernel
-  # this isn't perfect, but it will give a reasonable starting place
-  # for someone to edit and create their own menu.lst file.
-  UNAME_R=`uname -r`
-  CR_KERNEL=`ls /boot/*${UNAME_R}*`
+# Copy the menu.lst.skel generated in CONFIGURE on to /boot/grub/menu.lst
+if	[ -e ${COPY_MENULST_SKEL} ];  then
+    cp  ${TMP_MENU_LST}  /boot/grub/menu.lst
+fi  
 
-  CR_KERNEL_FILE=`echo $CR_KERNEL | cut -d'/' -f3`
-  POSSIBLE_KERNEL_PARTITIONS=`grub --batch << EOF | grep hd
-find ${CR_KERNEL}
-EOF`
-  LIKELY_KERNEL_PARTITION=`echo ${POSSIBLE_KERNEL_PARTITIONS} | cut -d' ' -f1`
-
-  LIKELY_ROOT=`df / | grep dev | cut -d' ' -f1`
-  LIKELY_BOOT=`df /boot | grep dev | cut -d' ' -f1`
-
-  # determine if kernel is (hd#,#)/kernel or (hd#,#)/boot/kernel
-  if [ "${LIKELY_ROOT}" == "${LIKELY_BOOT}" ]
-  then  
-	KERNEL_LOCATION=${CR_KERNEL}
-	BOOT_LOC=/boot
-  else  
-	KERNEL_LOCATION=${CR_KERNEL_FILE}
-	BOOT_LOC=""
-  fi
-  
-  cat << EOF > /boot/grub/menu.lst.skel
-# The grub spell attempts to create a sensible skeletin file which you
-# can edit to create a working menu.lst file.  Use this as a guide, but
-# be sure to look over any drive/partition specifications [ things that
-# look like (hd0,0) for example ] and root= entries, as the autodetection
-# mechannism isn't perfect.  In cases where there is more than one 
-# partition containing the files grub searches for, the first match is
-# assumed.  If you multi-boot linux from multiple, different partitions
-# there is a chance it detected the wrong partition, so you need to 
-# manually check and edit this accordingly.
-
-# defaults to the first menu entry
-default 0
-
-# timeout in 10 seconds in no choice is made
-timeout 10
-
-# uncomment the next line if you wish to use LBA (usual for large IDE drives)
-lba32
-
-# Splashimage, provides a nice image for the background
-splashimage ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/grub/images/smgl-splash.xpm.gz
-
-# defines menu foreground/background, highlight foreground/background
-color  black/light-gray white/red
-
-# be sure and check the kernel entry below, particulary the ${LIKELY_KERNEL_PARTITION} entry.  Possible partitions detected were ${POSSIBLE_KERNEL_PARTITIONS}, of
-# which the first was assumed arbitrarilly.
-# as well as the root= entry.  You may also wish to add additional arguments,
-# such as ide-scsi= if you're using an IDE CDROM burner.
-
-title  Source Mage GNU/Linux
-kernel ${LIKELY_KERNEL_PARTITION}${BOOT_LOC}/vmlinubz root=${LIKELY_ROOT} devfs=mount
-
-title  Source Mage GNU/Linux $UNAME_R
-kernel ${LIKELY_KERNEL_PARTITION}${KERNEL_LOCATION} root=${LIKELY_ROOT} devfs=mount
-
-EOF
-}
-
-generate_menu_lst_skel
-
-if  [  -h  /etc/grub.conf  ]
-then
-  rm  -f  /etc/grub.conf
+if  [ -e ${RUN_GRUB_INSTALL} ];  then
+    message  "${MESSAGE_COLOR}Preparing to install GRUB on ${GRUB_TARGET}...${DEFAULT_COLOR}"
+    if  grub-install ${GRUB_TARGET}; then
+        message "Your system should be ready to boot at this time.\n"
+    else
+        message "${PROBLEM_COLOR}GRUB INSTALL HAS FAILED. YOUR SYSTEM MAY BE UNBOOTABLE!!! PLEASE TRY TO INSTALL IT MANUALLY!${DEFAULT_COLOR}"
+    fi
 fi
 
-if  [  -e  /boot/grub/menu.lst  ];  then
-    message  "You appear to have a /boot/grub/menu.lst file.  If this"
-    message  "is a working file, I can automatically update GRUB for"
-    message  "you (recommended in that case).  If it is not, then I shouldn't"
-    message  "touch anything and you'll want to install GRUB yourself once you"
-    message  "your /boot/grub/menu.lst file is to your liking."
-
-    config_query  EDIT_GRUB_CONF "Would you like to edit your /boot/grub/menu.lst file?" n  
-    if  [  $EDIT_GRUB_CONF == "y"  ]; then
-	${EDITOR:-nano} /boot/grub/menu.lst
-    fi
-    
-else
-    config_query  EDIT_GRUB_SKEL_CONF "Would you like to edit /boot/grub/menu.lst.skel?" y
-    if  [  $EDIT_GRUB_SKEL_CONF == "y"  ]; then
-	${EDITOR:-nano} /boot/grub/menu.lst.skel
-    fi
-    
-    config_query  APPLY_GRUB_NEW_CONF "Would you like to use /boot/grub/menu.lst.skel as your menu.lst configuration?" y
-    if  [  $APPLY_GRUB_NEW_CONF == "y"  ]; then
-	cp  /boot/grub/menu.lst.skel  /boot/grub/menu.lst
-    fi
-
-fi
-
-#  if, after all this, the user has created a /boot/grub/menu.lst file in
-#  some fashion, allow them to install GRUB onto the GRUB_TARGET
-if  [  -e  /boot/grub/menu.lst  ]; then
-    config_query  RUN_GRUB  "Would you like to install GRUB onto ${GRUB_TARGET}?" n
-else
-    RUN_GRUB=n
-fi
-
-case  $RUN_GRUB  in
-  y|Y|j|J)  
-  message  "WARNING:  If something goes wrong while installing GRUB your system"
-  message  "could become UNBOOTABLE!  Be sure to create a rescue diskette before"
-  message  "proceeding any further.  Press 'N' to abort now if you haven't"
-  message  "created a recue diskette yet, then run 'mkrescue' to make one."
-  message  ""
-  message  "IF YOU DO THIS WITHOUT A RESCUE DISKETTE YOU ARE A RECKLESS FOOL!"
-  message  ""
-  message  "Furthermore, GRUB cannot read some filesystems types, so be careful,"
-  message  "be sure you have activated filesystem type support for your system"
-  message  "root partition."
-  message  ""
-  
-  config_query  CONFIRM_RUN_GRUB  "Do you have a tested, working rescue diskette and wish to proceed"  n
-  if  [  $CONFIRM_RUN_GRUB == "y"  ]; then
-       message  "${MESSAGE_COLOR}Preparing to install GRUB on ${GRUB_TARGET}...${DEFAULT_COLOR}"
-       if  grub-install ${GRUB_TARGET}; then
-	   message "Your system should be ready to boot at this time.\n"
-       else
-	   message "${PROBLEM_COLOR}GRUB INSTALL FAILED. INSTALL MANUALLY!  DANGER: YOUR SYSTEM MAY BE UNBOOTABLE!!!${DEFAULT_COLOR}"
-       fi
-  else
-    message  "Run 'mkrescue' to create a 1.44 MB rescue diskette."
-    message  "Once you've created the disk, try booting with it once to make"
-    message  "certain it works.  After you have confirmed that it is working"
-    message  "you can either recast grub by typing 'cast -c grub' or install"
-    message  "GRUB into the boot sector of your hard drive manually per the"
-    message  "installation instructions, accessible by typing 'info grub'."
-  fi
-  ;;
-  *)
-    message  "No changes have been made to your MBR or boot block.  Your old"
-    message  "bootloader remains unaltered."
-esac
+# Remove temporary files
+rm -f ${TMP_MENU_LST} ${RUN_GRUB_INSTALL} ${COPY_MENULST_SKEL}
