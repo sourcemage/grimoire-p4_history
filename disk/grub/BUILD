@@ -323,4 +323,4 @@ autoconf &&
              --mandir=/usr/share/man   \
              --infodir=/usr/share/info \
            $OPTS                      &&
-make
+invoke_gcc  make
