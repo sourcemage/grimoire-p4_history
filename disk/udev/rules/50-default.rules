@@ -62,7 +62,7 @@ KERNEL="vbi[0-9]*",     NAME="v4l/vbi%n", SYMLINK="vbi%n", GROUP="video", MODE="
 KERNEL="vtx[0-9]*",     NAME="v4l/vtx%n", GROUP="video", MODE="0660"
 
 #nvidia devices
-KERNEL="nvidia*"	NAME="%k", MODE="0666"
+KERNEL="nvidia*"	NAME="%k", MODE="0660", GROUP="video"
 
 #framebuffer devices
 KERNEL="fb[0-9]",          NAME="%k", MODE="0660", GROUP="video"
