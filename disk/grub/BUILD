@@ -317,10 +317,11 @@ aclocal &&
 automake &&
 autoconf &&
 
-./configure  --build=$BUILD            \
-             --prefix=/usr             \
-             --sbindir=/sbin           \
-             --mandir=/usr/share/man   \
-             --infodir=/usr/share/info \
-           $OPTS                      &&
-invoke_gcc  make
+./configure  --build=$BUILD             \
+             --prefix=/usr              \
+             --sbindir=/sbin            \
+             --mandir=/usr/share/man    \
+             --infodir=/usr/share/info  \
+           $OPTS                        &&
+invoke_gcc                              &&
+make
