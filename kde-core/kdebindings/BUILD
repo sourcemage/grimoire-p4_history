@@ -1,4 +1,4 @@
-patch -p0 < $SCRIPT_DIRECTORY/Makefile.am.patch  &&
+sedit 's/$(dir @qt_includes@)/\/usr/'  python/Makefile.am &&
 aclocal                                          &&
 
 make_single                               &&
