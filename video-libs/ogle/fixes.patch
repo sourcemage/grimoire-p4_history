@@ -28,3 +28,14 @@
    }
    
    return 0;
+--- ac3/ac3dec_wrap.c~	2003-03-02 16:50:03.000000000 +0100
++++ ac3/ac3dec_wrap.c	2005-04-27 12:03:57.000000000 +0200
+@@ -48,7 +48,7 @@
+ static void handle_events(MsgEventQ_t *q, MsgEvent_t *ev);
+ 
+ 
+-static char *program_name;
++char *program_name;
+ 
+ static FILE *outfile;
+ 
