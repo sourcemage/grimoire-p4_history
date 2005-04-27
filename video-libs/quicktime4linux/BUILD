@@ -1,3 +1,4 @@
+invoke_gcc
 patch -p0 < $SCRIPT_DIRECTORY/gcc-3.4.patch   &&
 patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch  &&
 

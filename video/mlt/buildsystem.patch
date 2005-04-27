@@ -37,3 +37,14 @@
  do
  	if [ -x src/$i/configure ]
  	then
+--- src/modules/kino/Makefile~	2005-04-15 16:28:26.000000000 +0200
++++ src/modules/kino/Makefile	2005-04-27 18:11:27.000000000 +0200
+@@ -6,7 +6,7 @@
+ OBJS=factory.o producer_kino.o
+ CPPOBJS=kino_wrapper.o avi.o error.o filehandler.o riff.o
+ CFLAGS+=-I../../
+-LDFLAGS+=-lmlt -lstdc++
++LDFLAGS+=-L../../framework -lmlt -lstdc++
+ CXXFLAGS+=$(CFLAGS) -Wno-deprecated
+ 
+ ifdef HAVE_LIBQUICKTIME
