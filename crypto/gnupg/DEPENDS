@@ -16,4 +16,9 @@ optional_depends  openldap            \
 optional_depends  nasm                     \
                   "--enable-asm"           \
                   "--disable-asm"          \
-                  "for assembler modules"
+                  "for assembler modules"  &&
+
+optional_depends  libusb                                                \
+                  ""                                                    \
+                  "--without-libusb"                                    \
+                  "to use the integrated CCID smartcard reader driver"
