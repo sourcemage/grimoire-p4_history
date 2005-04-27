@@ -2,20 +2,21 @@ depends  kdebase  &&
 
 source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
 
+if  [  "$KDENETWORK_KOPETE"  ==  "y"  ];  then
+  depends  libxslt  &&
+
+  if  [  "$KDENETWORK_LIBIDN"  ==  "y"  ];  then
+    depends  libidn
+    if  [  "$KDENETWORK_QCATLS"  ==  "y"  ];  then
+      depends  qca-tls
+    fi
+  fi
+fi  &&
+
 optional_depends  ppp                   \
                   ""                    \
                   ""                    \
                   "for dialup support"  &&
-
-optional_depends  libidn                                   \
-                  ""                                       \
-                  ""                                       \
-                  "for Jabber protocol support in Kopete"  &&
-
-optional_depends  qca-tls                                            \
-                  ""                                                 \
-                  ""                                                 \
-                  "for SSL support in Kopete Jabber (req's libidn)"  &&
 
 optional_depends  openslp                                                 \
                   "--enable-slp"                                          \
