@@ -1,6 +1,5 @@
            SPELL=inkscape
          VERSION=0.41
-       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
@@ -9,7 +8,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20031207
          UPDATED=20031211
       LICENSE[0]=GPL
-           SHORT="inkscape - a general purpose vector drawing application"
+       BUILD_API=2
+           SHORT="General purpose vector drawing application"
 cat << EOF
 Inkscape is a vector based drawing program, like CorelDraw or Adobe 
 Illustrator from the proprietary software world, and Sketch or 
