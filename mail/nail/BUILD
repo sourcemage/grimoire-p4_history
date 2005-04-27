@@ -1,2 +1,2 @@
 
-make PREFIX=/usr SENDMAIL=/usr/bin/sendmail
+make PREFIX=/usr SENDMAIL=/usr/sbin/sendmail
