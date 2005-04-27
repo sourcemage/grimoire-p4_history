@@ -1,0 +1,4 @@
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+# remove -Werror so it works with gcc 4.0
+sedit  's/$SWF_DEBUG $GLIB_CFLAGS/$GLIB_CFLAGS/'  configure

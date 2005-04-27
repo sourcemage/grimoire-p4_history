@@ -1,6 +1,4 @@
-patch -p0 < $SCRIPT_DIRECTORY/Makefile-shared.patch  &&
-patch -p0 < $SCRIPT_DIRECTORY/libmpeg3-fixes.patch   &&
-
+invoke_gcc
 # fails to compile with -DPIC -fPIC
 CFLAGS=${CFLAGS/-DPIC/}  &&
 CFLAGS=${CFLAGS/-fPIC/}  &&
