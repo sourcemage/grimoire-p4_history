@@ -1,16 +1,9 @@
-OPTS="$OPENLDAP_LDBM  \
-      $OPTS"          &&
+OPTS="$OPTS
+  $OPENLDAP_SLAPD $SLAPD_ACI $SLAPD_DNSSRV $SLAPD_MONITOR
+  $OPENLDAP_SLURPD
+  --with-subdir=$INSTALL_ROOT/usr
+  --disable-static
+  --enable-dynamic
+  --enable-local" &&
 
-./configure  --build=$BUILD                        \
-            --prefix=$INSTALL_ROOT/usr             \
-        --sysconfdir=$INSTALL_ROOT/etc             \
-           --infodir=$INSTALL_ROOT/usr/share/info  \
-            --mandir=$INSTALL_ROOT/usr/share/man   \
-     --localstatedir=$INSTALL_ROOT/var             \
-            --enable-cleartext                     \
-            --enable-crypt                         \
-            --enable-rlookups                      \
-                     $OPTS                         &&
-
-make  depend  &&
-make
+default_build
