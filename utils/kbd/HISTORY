@@ -1,5 +1,14 @@
 2005-04-28 Eric Sandall <eric@sandall.us>
 	* DETAILS: Added WEB_SITE
+	* DEPENDS: Added optional dependency on gettext
+	  Using the flags as tests to modify define.h in BUILD
+	* BUILD: kbd's configure doesn't support normal autoconf, so removing
+	  $OPTS
+	  Modify define.h if we don't want gettext
+	  Apply keymaps.diff
+	* keymaps.diff: Added to fix keymap installtion. kbd now installs
+	  successfully (I'm not sure when/why this broke, but I noticed it
+	  on a recent installation)
 
 2005-01-20 Unet <unet@sourcemage.org>
 	* BUILD: Use INSTALL_ROOT
