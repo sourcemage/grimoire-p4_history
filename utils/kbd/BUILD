@@ -1,5 +1,11 @@
-./configure --prefix=$INSTALL_ROOT/usr                \
+patch  -p1  data/Makefile  $SCRIPT_DIRECTORY/keymaps.diff  &&
+
+./configure  --prefix=$INSTALL_ROOT/usr               \
             --datadir=$INSTALL_ROOT/usr/share/$SPELL  \
-            --mandir=$INSTALL_ROOT/usr/man            \
-            $OPTS                        &&
+             --mandir=$INSTALL_ROOT/usr/man           &&
+
+if  echo  $OPTS  |  grep  -q  --  "--without-nls";  then
+  sedit  's:#define ENABLE_NLS::'  defines.h
+fi  &&
+
 make
