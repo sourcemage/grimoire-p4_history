@@ -1,5 +1,10 @@
-if [[ "$APR_CVS" == "y" ]]
-then
-	./buildconf
-fi 
-default_pre_build
+default_pre_build &&
+
+# this kicks in for non-released source checked out of Subversion repository
+# or if the APR release managers forget to run buildconf themselves :-)
+cd $SOURCE_DIRECTORY &&
+if ! [[ -f configure ]]; then
+  ./buildconf --with-apr=$INSTALL_ROOT/usr/share/apache2
+fi &&
+
+
