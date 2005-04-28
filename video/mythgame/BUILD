@@ -1,5 +1,5 @@
 sedit  "s:/usr/local:$INSTALL_ROOT/usr:"  settings.pro  &&
-make_single                                             &&
-qmake  mythgame.pro                                     &&
-make                                                    &&
-make_normal
+./configure  --disable-all      \
+             --enable-mythgame  &&
+qmake  mythplugins.pro          &&
+make

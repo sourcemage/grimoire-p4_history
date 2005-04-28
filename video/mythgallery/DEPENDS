@@ -4,4 +4,6 @@ depends  tiff    &&
 optional_depends  OPENGL                  \
                   "--enable-opengl"       \
                   ""                      \
-                  "for OpenGL rendering"
+                  "for OpenGL rendering"  &&
+
+optional_depends  libexif "--enable-exif" "" "for exif imgage data support"
