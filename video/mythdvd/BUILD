@@ -1,7 +1,7 @@
-sedit  "s:/usr/local:$INSTALL_ROOT/usr:"  configure     &&
 sedit  "s:/usr/local:$INSTALL_ROOT/usr:"  settings.pro  &&
-./configure  --enable-transcode --enable-vcd            &&
-make_single                                             &&
-qmake  mythdvd.pro                                      &&
-make                                                    &&
-make_normal
+./configure  --disable-all       \
+             --enable-mythdvd    \
+             --enable-transcode  \
+             --enable-vcd        &&
+qmake  mythplugins.pro           &&
+make
