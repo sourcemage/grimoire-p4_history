@@ -1,0 +1,11 @@
+--- archival/gzip.c.old	2005-04-29 14:47:40.000000000 -0700
++++ archival/gzip.c	2005-04-29 14:44:27.000000000 -0700
+@@ -1640,7 +1640,7 @@
+ static void build_tree(tree_desc * desc);
+ static void scan_tree(ct_data * tree, int max_code);
+ static void send_tree(ct_data * tree, int max_code);
+-static int build_bl_tree(void);
++static const int build_bl_tree(void);
+ static void send_all_trees(int lcodes, int dcodes, int blcodes);
+ static void compress_block(ct_data * ltree, ct_data * dtree);
+ static void set_file_type(void);
