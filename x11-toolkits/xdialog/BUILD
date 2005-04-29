@@ -1,3 +1,11 @@
 make_single    &&
-default_build  &&
+  ./configure --prefix=${INSTALL_ROOT}/usr  \
+          --sysconfdir=${INSTALL_ROOT}/etc  \
+       --localstatedir=${INSTALL_ROOT}/var  \
+              --mandir=${INSTALL_ROOT}/usr/share/man   \
+             --infodir=${INSTALL_ROOT}/usr/share/info  \
+                       $OPTS                 &&
+RANLIBBIN = 'which ranlib'
+sedit "s:RANLIB = @RANLIB@:RANLIB = $RANLIBIN:" lib/Makefile
+make
 make_normal
