@@ -1,4 +1,5 @@
-depends  zlib   "--with-zlib"   &&
-depends  expat  "--with-expat"  &&
+depends  zlib     '--with-zlib'     &&
+depends  libxml2  '--with-libxml2'  &&
 
-optional_depends  openssl  "--with-ssl"  "--without-ssl"  "for SSL/TLS support"
+# TODO also supports --with-ssl=gnutls
+optional_depends  openssl  '--with-ssl=openssl'  '--without-ssl'  'for SSL/TLS support'

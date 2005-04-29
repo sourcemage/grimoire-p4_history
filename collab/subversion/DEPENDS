@@ -1,27 +1,30 @@
-depends  autoconf  &&
-depends  libtool   &&
-depends  bison     &&
+depends autoconf &&
+depends libtool &&
+depends bison &&
 
-depends  apr      "--with-apr=/usr"       &&
-depends  apr-util "--with-apr-util=/usr"  &&
-depends  neon     "--with-neon=/usr"      &&
-depends  db       "--with-berkeley-db"    &&
+depends apr '--with-apr=/usr' &&
+depends apr-util '--with-apr-util=/usr' &&
 
-if  [  "$SVN_EXPORT_HEAD"  ==  "y"  ];  then
-  depends  python
-fi  &&
+if [[ "$SVN_HEAD" == y ]]; then
+  depends python
+fi &&
 
-optional_depends  APACHE                        \
-                  "--with-apxs"                 \
-                  "--without-apxs"              \
-                  "to create Apache 2 modules"  &&
+if   [[ "$SVN_PERL"   == y ]] \
+  || [[ "$SVN_PYTHON" == y ]] \
+  || [[ "$SVN_RUBY"   == y ]]
+then
+  depends swig '--with-swig' &&
 
-optional_depends  swig                     \
-                  "--with-swig"            \
-                  "--without-swig"         \
-                  "for language bindings"  &&
+  if [[ "$SVN_PERL"   == y ]]; then depends perl;   fi &&
+  if [[ "$SVN_PYTHON" == y ]]; then depends python; fi &&
+  if [[ "$SVN_RUBY"   == y ]]; then depends ruby;   fi
+fi &&
 
-optional_depends  cyrus-sasl                       \
-                  ""                               \
-                  ""                               \
-                  "for Cyrus SASL authentication"
+optional_depends zlib '--with-zlib' '--without-zlib' 'for stream compression support' &&
+optional_depends gettext '--enable-nls' '--disable-nls' 'for language translations' &&
+optional_depends openssl '--enable-ssl' '--disable-ssl' 'for SSL/TLS support' &&
+optional_depends cyrus-sasl '--with-sasl' '--without-sasl' 'for Cyrus SASL authentication' &&
+optional_depends neon '--with-neon=/usr' '--without-neon' 'for Subversion client to support DAV' &&
+
+optional_depends db '--with-berkeley-db' '--without-berkeley-db' 'for Berkeley DB backend' &&
+optional_depends APACHE '--with-apxs' '--without-apxs' 'to create Apache 2 modules'

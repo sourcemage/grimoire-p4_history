@@ -1,8 +1,4 @@
-config_query  SVN_EXPORT_HEAD  "Download Subversion source code HEAD revision?" n
-if  [  -x  /usr/sbin/httpd  ]
-then
-  config_query  RHTTPD  "Would you like to restart the HTTPD?"  n
-else
-  persistent_add  RHTTPD  &&
-  RHTTPD="n"
-fi
+config_query SVN_HEAD 'Download latest Subversion source code?' n &&
+config_query SVN_PERL 'Install Subversion bindings for Perl?' n &&
+config_query SVN_PYTHON 'Install Subversion bindings for Python?' n &&
+config_query SVN_RUBY 'Install Subversion bindings for Ruby?' n

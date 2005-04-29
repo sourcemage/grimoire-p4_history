@@ -1,12 +1,18 @@
            SPELL=subversion
-         VERSION=1.2.0-rc1
-          SOURCE=${SPELL%-*}-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
+         VERSION=1.2.0-rc2
+if [[ "$SVN_HEAD" == y ]]; then VERSION=${VERSION%.*}-HEAD; fi
+          SOURCE=$SPELL-$VERSION.tar.bz2
+if [[ "$SVN_HEAD" == y ]]; then
+   SOURCE_URL[0]=svn://svn.collab.net/repos/svn/trunk/:$SPELL-$VERSION
+          MD5[0]=IGNORE
+else
    SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
-          MD5[0]='71e203811d5ed84f8ea7cf254671a500'
+          MD5[0]='d9a181e7cfea841bb2e037eb5b8f933f'
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://subversion.tigris.org/
          ENTERED=20020528
-         UPDATED=20050122
+         UPDATED=20050428
       LICENSE[0]=APACHE
        BUILD_API=2
             DOCS='doc/*'

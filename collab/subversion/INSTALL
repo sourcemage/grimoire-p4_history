@@ -1,23 +1,10 @@
-## conditionally run `make' if SWIG dependency is on
-## @usage <1:make target>
-function make_if_swig() {
-  if echo "$OPTS" | grep -q 'with-swig'; then
-    if test -x /usr/bin/ruby; then
-      make install-swig-rb
-    fi  &&
-    if test -x /usr/bin/perl; then
-      make install-swig-pl
-    fi  &&
-    if test -x /usr/bin/python; then
-      make install-swig-py
-    fi
-  fi
-}
-
 make_normal      &&
 default_install  &&
-make_if_swig     &&
 
-if  [ -d /etc/httpd ]; then
-  cp $SCRIPT_DIRECTORY/svn.conf.default /etc/httpd/
+if [[ "$SVN_PERL"   == y ]]; then make install-swig-pl; fi &&
+if [[ "$SVN_PYTHON" == y ]]; then make install-swig-py; fi &&
+if [[ "$SVN_RUBY"   == y ]]; then make install-swig-rb; fi &&
+
+if  [ -d $INSTALL_ROOT/etc/httpd ]; then
+  cp -f $SCRIPT_DIRECTORY/svn.conf.default $INSTALL_ROOT/etc/httpd/
 fi
