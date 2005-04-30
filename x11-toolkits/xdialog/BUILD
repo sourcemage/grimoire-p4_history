@@ -5,7 +5,6 @@ make_single    &&
               --mandir=${INSTALL_ROOT}/usr/share/man   \
              --infodir=${INSTALL_ROOT}/usr/share/info  \
                        $OPTS                 &&
-RANLIBBIN = 'which ranlib'
-sedit "s:RANLIB = @RANLIB@:RANLIB = $RANLIBIN:" lib/Makefile
-make
+sedit "s:RANLIB = @RANLIB@:RANLIB = /usr/bin/ranlib:" lib/Makefile  &&
+make &&
 make_normal
