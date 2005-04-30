@@ -1,9 +1,18 @@
            SPELL=audacity
+if [ "$CVS" = "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]="cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/audacity:audacity"
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
          VERSION=1.2.3
           SOURCE=$SPELL-src-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
           MD5[0]=d7b8133b5275e12ba70653c6d38da4db
+fi
         WEB_SITE=http://audacity.sourceforge.net/
          ENTERED=20011217
          UPDATED=20030329
