@@ -1,17 +1,11 @@
            SPELL=wxgtk
-           SPELLX=wxWidgets
+           SPELLX=wxGTK
         BUILD_API=2
-#if [ "$DEVEL" = "n" ];then
          VERSION=2.6.0
-          MD5[0]=5e5f469a59fbcba44dfd294b12e288b4
-#else
-#         VERSION=2.5.5
-#          MD5[0]=74658a1ef66b1b0a281e4caf52aa4050
-#fi
+          MD5[0]=9c87dfd6f3f23f8459d1b1abe605435c
           SOURCE=$SPELLX-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELLX-$VERSION
-#   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
-   SOURCE_URL[0]=ftp://biolpc22.york.ac.uk/pub/$VERSION/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/wxwindows/$SOURCE
       LICENSE[0]=http://www.wxwidgets.org/licence3.txt
         WEB_SITE=http://www.wxwidgets.org/
          ENTERED=20011217
