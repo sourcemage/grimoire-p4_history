@@ -1,1 +1,4 @@
-cp mksquashfs /usr/sbin
+# we install both binaries in /usr/sbin (like debian)
+
+mkdir -p "${INSTALL_ROOT}/usr/sbin" &&
+cp mksquashfs "${INSTALL_ROOT}/usr/sbin"

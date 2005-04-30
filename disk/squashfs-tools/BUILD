@@ -1,2 +1,4 @@
-cd squashfs-tools
+cd squashfs-tools &&
 make
+
+
