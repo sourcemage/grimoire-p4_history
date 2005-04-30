@@ -1,5 +1,11 @@
 mk_source_dir  $SOURCE_DIRECTORY    &&
 unpack  $SOURCE  ${MD5[0]}          &&
+
+if [[ "$X_LATEST" = n ]]; then
+   cd ${SOURCE_DIRECTORY}/extras/Xpm/lib &&
+   patch -p0 < ${SCRIPT_DIRECTORY}/xpm-sec10.diff
+fi &&
+
 cp  $SOURCE_DIRECTORY/config/cf/xorgsite.def  \
     $SOURCE_DIRECTORY/config/cf/host.def      &&
 
