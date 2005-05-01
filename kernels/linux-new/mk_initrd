@@ -36,17 +36,22 @@ cp -a busybox /mnt/initrd/sbin/
 
 # link everything
 cd /mnt/initrd/sbin/
-for i in insmod modprobe pivot_root reboot halt shutdown
+for i in insmod modprobe pivot_root reboot halt init mesg lsmod rmmod swapon \
+         swapoff makedevs
 do
 	ln -s busybox $i
 done
 cd ../bin
-for i in bash sh ls echo mount ln mkdir mknod chown chmod umount
+for i in ash sh ls echo mount ln mkdir mknod chown chmod umount tar basename \
+         chgrp cat chroot cp cut dd df dirname du env expr false head id \
+	 install md5sum mv printf pwd realpath rm rmdir sleep sort sync tail \
+	 tee touch tr true uname uniq who whoami yes which readlink sed dmesg \
+	 more awk
 do
 	ln -s ../sbin/busybox $i
 done
 cd ../usr/bin
-for i in grep
+for i in grep bunzip2 gzip gunzip unzip patch find xargs
 do
 	ln -s ../../sbin/busybox $i
 done
@@ -79,71 +84,45 @@ cp -a /dev/null /mnt/initrd/dev/
 # create linuxrc
 (
 cat << EOF
-#!/bin/bash
-
-PATH=/bin:/sbin:/usr/bin
-export PATH
-
-modprobe ide-core
-modprobe ide-generic
-modprobe ide-cd
-modprobe ide-disk
-modprobe generic
-modprobe via82cxxx
-modprobe xfs
-
+#!/bin/ash
 
 . /etc/udev/udev.conf
 # mount sysfs
-echo "Mounting sysfs at /sys"
-mount -nt sysfs none /sys
+/bin/echo "Mounting sysfs at /sys"
+/bin/mount -nt sysfs none /sys
 # mount proc
-echo "Mounting /proc"
-mount -nt proc none /proc
-echo "Mounting ramfs at \$udev_root"
-mount -nt ramfs none \$udev_root
+/bin/echo "Mounting /proc"
+/bin/mount -nt proc none /proc
+/bin/echo "Mounting ramfs at \$udev_root"
+/bin/mount -nt ramfs none \$udev_root
 # create some needed stuff
-ln -s /proc/self/fd \$udev_root/fd
-ln -s /dev/fd/0 \$udev_root/stdin
-ln -s /dev/fd/1 \$udev_root/stdout
-ln -s /dev/fd/2 \$udev_root/stderr
-mkdir \$udev_root/shm
-mkdir \$udev_root/pts
+/bin/ln -s /proc/self/fd \$udev_root/fd
+/bin/ln -s /dev/fd/0 \$udev_root/stdin
+/bin/ln -s /dev/fd/1 \$udev_root/stdout
+/bin/ln -s /dev/fd/2 \$udev_root/stderr
+/bin/mkdir \$udev_root/shm
+/bin/mkdir \$udev_root/pts
 # propogate /udev from /sys - we only need this while we do not
 # have initramfs and an early user-space with which to do early
 # device bring up
-echo "Creating initial udev device nodes"
-/sbin/udevstart
-if [ -f /etc/udev/udev.missing ]; then
-echo "Processing /etc/udev/udev.missing"
-cd /dev
-while read line; do
-	if [ "\${line:0:1}" == "#" ]; then continue; fi
-	for ((i=0; i<7; i++)); do
-		val[\$i]=\${line%%:*}
-		line=\${line#*:}
-	done
-	if [ "\${val[1]}" == "d" ]; then
-		mkdir \${val[0]}
-	else
-		mknod \${val[0]} \${val[1]} \${val[2]} \${val[3]}
-	fi
-	#chmod \${val[4]} \${val[0]}
-	#chown \${val[5]}:\${val[6]} \${val[0]}
-done < /etc/udev/udev.missing
-cd /
-fi
-echo "Telling init to reopen file descriptors"
-kill -USR1 1
-echo "Starting udevd"
-/sbin/udevd &
-echo "0x100" > /proc/sys/kernel/real_root_dev
-mount -n /dev/hda4 /mnt
-umount -n /proc
-umount -n /sys
-killall udevd
-umount -n /dev
-pivot_root /mnt initrd
+/bin/echo "Getting real root dev"
+real_root="\`/bin/cat /proc/cmdline | /bin/awk '{ for ( i = 1; i <= NF; i++ )  
+						if ( \$i ~ /real_root=.*/ )
+							print \$i
+					}' | /bin/awk -F= '{ print \$2 }'\`"
+/bin/echo "Real Root is \${real_root}"
+/bin/echo "Creating initial udev device nodes"
+last="\`/bin/echo \$real_root | /bin/sed 's/\/dev\/hd[a-z]//g'\`"
+/bin/echo "last \$last"
+real_dev="\`/bin/echo \$real_root | /bin/sed 's/[0-9]//g'\`"
+/bin/echo "real_dev \$real_dev"
+/sbin/makedevs  \$real_dev b 0 0 0 \$last
+/bin/echo "0x100" > /proc/sys/kernel/real-root-dev
+/bin/mount -n \${real_root} /mnt
+/bin/umount -n /proc
+/bin/umount -n /sys
+/bin/umount -n /dev
+/sbin/pivot_root /mnt initrd
 
 EOF
 ) > /mnt/initrd/linuxrc
