@@ -1,18 +1,20 @@
-diff -Nur MPlayer-1.0pre3/configure MPlayer-1.0pre3-ffpp/configure
---- MPlayer-1.0pre3/configure	2003-12-08 22:33:31.000000000 +0100
-+++ MPlayer-1.0pre3-ffpp/configure	2003-12-09 10:26:38.000000000 +0100
-@@ -4935,6 +4935,8 @@
+diff -Nur mplayer-cvs/configure mplayer-cvs.fixes/configure
+--- mplayer-cvs/configure	2005-05-01 18:33:50.000000000 +0200
++++ mplayer-cvs.fixes/configure	2005-05-01 19:25:31.000000000 +0200
+@@ -5778,7 +5778,10 @@
  elif test "$_libavcodecso" = yes ; then
    _def_libavcodec='#define USE_LIBAVCODEC 1'
    _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
 +  _def_ffpostprocess='#define FF_POSTPROCESS 1'
 +  _def_haveffpostprocess='yes'
    _ld_libavcodec='-lavcodec'
++  _libavcodec='yes'
    _codecmodules="libavcodec.so $_codecmodules"
  else
-diff -Nur MPlayer-1.0pre3/libmpcodecs/vf_pp.c MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c
---- MPlayer-1.0pre3/libmpcodecs/vf_pp.c	2003-09-01 00:18:27.000000000 +0200
-+++ MPlayer-1.0pre3-ffpp/libmpcodecs/vf_pp.c	2003-12-09 10:26:38.000000000 +0100
+   _nocodecmodules="libavcodec $_nocodecmodules"
+diff -Nur mplayer-cvs/libmpcodecs/vf_pp.c mplayer-cvs.fixes/libmpcodecs/vf_pp.c
+--- mplayer-cvs/libmpcodecs/vf_pp.c	2003-09-01 00:18:27.000000000 +0200
++++ mplayer-cvs.fixes/libmpcodecs/vf_pp.c	2005-05-01 19:24:39.000000000 +0200
 @@ -20,10 +20,10 @@
  
  #define EMU_OLD
@@ -26,4 +28,3 @@ diff -Nur MPlayer-1.0pre3/libmpcodecs/vf_pp.c MPlayer-1.0pre3-ffpp/libmpcodecs/v
  #endif
  
  struct vf_priv_s {
-
