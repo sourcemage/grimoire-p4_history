@@ -154,7 +154,7 @@ minor="\`/bin/expr \$minor + \$number\`"
 cd /mnt
 /sbin/pivot_root . initrd
 /bin/echo "args to init \$@"
-exec /bin/chroot . /sbin/init < /dev/console > /dev/console 2>&1
+exec /bin/chroot . /sbin/init \$@ < /dev/console > /dev/console 2>&1
 
 EOF
 ) > /mnt/initrd/linuxrc
