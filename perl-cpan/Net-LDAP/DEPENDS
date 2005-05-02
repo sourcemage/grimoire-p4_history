@@ -1,8 +1,1 @@
-depends openldap &&
-depends perl &&
-depends Convert-ASN1 &&
-
-optional_depends URI '' '' 'for URL parsing' &&
-optional_depends Digest-MD5 '' '' 'for SASL CRAM-MD5 auth' &&
-optional_depends IO-Socket-SSL '' '' 'for Net::LDAPS' &&
-optional_depends xml-parser-expat '' '' 'for Net::LDAP::DSML'
+depends net-ldap
