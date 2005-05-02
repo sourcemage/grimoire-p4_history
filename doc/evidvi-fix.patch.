@@ -1,0 +1,11 @@
+--- shell/Makefile.in~	2005-04-23 02:22:56.000000000 +0200
++++ shell/Makefile.in	2005-05-02 19:49:16.000000000 +0200
+@@ -41,7 +41,7 @@
+ @ENABLE_DJVU_TRUE@	$(NULL)
+ 
+ @ENABLE_DVI_TRUE@am__append_2 = \
+-@ENABLE_DVI_TRUE@	$(top_builddir)/dvi/libgtkdvi.la	\
++@ENABLE_DVI_TRUE@	$(top_builddir)/dvi/libgtkdvi.la $(top_builddir)/dvi/mdvi-lib/libmdvi.la	\
+ @ENABLE_DVI_TRUE@	$(NULL)
+ 
+ @WITH_TYPE1_FONTS_TRUE@am__append_3 = -lt1lib
