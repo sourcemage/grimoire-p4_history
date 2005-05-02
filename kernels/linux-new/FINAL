@@ -1,8 +1,24 @@
 # Add a lilo/grub/whatever entry for this kernel
 if [ $UPDATE_BL == "y" ]
 then
+	case "`uname -m`" in
+		powerpc)
+			install_config_file "$SCRIPT_DIRECTORY/templates/yaboot.conf.tmplt" "/etc/yaboot.conf.tmplt"
+			;;
+		sparc*)
+			install_config_file "$SCRIPT_DIRECTORY/templates/silo.conf.tmplt" "/etc/silo.conf.tmplt"
+			;;
+		*)
+			if [ -x /sbin/lilo ] ; then
+				install_config_file "$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt" "/etc/lilo.conf.tmplt"
+			else
+				install_config_file "$SCRIPT_DIRECTORY/templates/menu.lst.tmplt" "/boot/grub/menu.lst.tmplt"
+			fi
+			;;
+	esac
 	export VERSION &&
 	export SCRIPT_DIRECTORY &&
+	export install_config_file &&
 	$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER 
 fi
 
