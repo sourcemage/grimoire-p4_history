@@ -48,7 +48,7 @@ for i in ash sh ls echo mount ln mkdir mknod chown chmod umount tar basename \
          chgrp cat chroot cp cut dd df dirname du env expr false head id \
 	 install md5sum mv printf pwd realpath rm rmdir sleep sort sync tail \
 	 tee touch tr true uname uniq who whoami yes which readlink sed dmesg \
-	 more awk
+	 more awk test
 do
 	ln -s ../sbin/busybox $i
 done
@@ -122,9 +122,29 @@ real_root="\`/bin/cat /proc/cmdline | /bin/awk '{ for ( i = 1; i <= NF; i++ )
 					}' | /bin/awk -F= '{ print \$2 }'\`"
 /bin/echo "Real Root is \${real_root}"
 /bin/echo "Creating initial udev device nodes"
-last="\`/bin/echo \$real_root | /bin/sed 's/\/dev\/hd[a-z]//g'\`"
+number="\`/bin/echo \$real_root | /bin/sed 's/\/dev\/hd[a-z]//g'\`"
 real_dev="\`/bin/echo \$real_root | /bin/sed 's/[0-9]//g'\`"
-/sbin/makedevs  \$real_dev b 3 0 0 \$last
+letter="\`/bin/echo \$real_dev | /bin/sed 's/\/dev\/hd//g'\`"
+if /bin/test \$letter = a || /bin/test \$letter = b ; then
+	major="3"
+elif /bin/test \$letter = c || /bin/test \$letter = d ; then
+	major="22"
+elif /bin/test \$letter = e || /bin/test \$letter = f ; then
+	major="33"
+elif /bin/test \$letter = g || /bin/test \$letter = h ; then
+	major="34"
+else
+	/bin/echo "Bad real root dev \$real_root"
+	exit 1
+fi
+if /bin/test \$letter = a || /bin/test \$letter = c ||
+   /bin/test \$letter = e || /bin/test \$letter = g ; then
+   	minor="0"
+else
+	minor="64"
+fi
+minor="\`/bin/expr \$minor + \$number\`"
+/bin/mknod  \$real_root b \$major \$minor
 /bin/echo "0x100" > /proc/sys/kernel/real-root-dev
 /bin/mount -n \${real_root} /mnt
 /bin/umount -n /proc
