@@ -1,4 +1,4 @@
-if spell_ok firefox; then
+if test "$(get_spell_provider $SPELL GECKO)" = "firefox"; then
    patch -p1 < $SCRIPT_DIRECTORY/configure-firefox.diff &&
    CFLAGS="$CFLAGS -I/usr/include/firefox"
 else
