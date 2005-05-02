@@ -15,7 +15,7 @@ rm -rf /mnt/initrd/*
 
 # make basic dir structure
 cd /mnt/initrd
-mkdir bin dev etc lib proc sbin var sys usr mnt initrd
+mkdir bin dev etc etc.ro lib proc sbin var sys usr mnt initrd
 cd var
 mkdir lock log
 cd ../lib
@@ -25,10 +25,11 @@ mkdir bin
 
 # copy config files
 cd /etc
+cp -a init.d udev fstab group passwd /mnt/initrd/etc.ro/
 cp -a init.d udev fstab group passwd /mnt/initrd/etc/
 
 cd /mnt/initrd/etc/init.d
-ln -s runlevels/%single rcS
+ln -s ../../linuxrc rcS
 
 # copy busybox
 cd /sbin
@@ -36,22 +37,29 @@ cp -a busybox /mnt/initrd/sbin/
 
 # link everything
 cd /mnt/initrd/sbin/
-for i in insmod modprobe pivot_root reboot halt shutdown
+for i in insmod modprobe pivot_root reboot halt init mesg lsmod rmmod swapon \
+         swapoff makedevs
 do
 	ln -s busybox $i
 done
+
 cd ../bin
-for i in bash sh ls echo mount ln mkdir mknod chown chmod umount
+for i in ash sh ls echo mount ln mkdir mknod chown chmod umount tar basename \
+         chgrp cat chroot cp cut dd df dirname du env expr false head id \
+	 install md5sum mv printf pwd realpath rm rmdir sleep sort sync tail \
+	 tee touch tr true uname uniq who whoami yes which readlink sed dmesg \
+	 more awk
 do
 	ln -s ../sbin/busybox $i
 done
 cd ../usr/bin
-for i in grep
+for i in grep bunzip2 gzip gunzip unzip patch find xargs
 do
 	ln -s ../../sbin/busybox $i
 done
 
 # copy libs
+# don't need this with busybox :DDD
 #cd /lib
 #cp -a ld-* /mnt/initrd/lib
 #cp -a libc[-.]* /mnt/initrd/lib
@@ -79,71 +87,54 @@ cp -a /dev/null /mnt/initrd/dev/
 # create linuxrc
 (
 cat << EOF
-#!/bin/bash
+#!/bin/ash
 
-PATH=/bin:/sbin:/usr/bin
-export PATH
+export PATH="/bin:/usr/bin:/sbin:/usr/sbin"
 
-modprobe ide-core
-modprobe ide-generic
-modprobe ide-cd
-modprobe ide-disk
-modprobe generic
-modprobe via82cxxx
-modprobe xfs
-
-
-. /etc/udev/udev.conf
+udev_root=/dev
 # mount sysfs
-echo "Mounting sysfs at /sys"
-mount -nt sysfs none /sys
+/bin/echo "Mounting sysfs at /sys"
+/bin/mount -nt sysfs none /sys
 # mount proc
-echo "Mounting /proc"
-mount -nt proc none /proc
-echo "Mounting ramfs at \$udev_root"
-mount -nt ramfs none \$udev_root
+/bin/echo "Mounting /proc"
+/bin/mount -nt proc none /proc
+/bin/echo "Mounting tmpfs at /etc/"
+/bin/mount -nt tmpfs none /etc
+/bin/echo "Copying etc.ro to etc"
+/bin/cp -a /etc.ro/* /etc
+/bin/touch /etc/mtab
+/bin/echo "Mounting ramfs at \$udev_root"
+/bin/mount -nt ramfs none \$udev_root
 # create some needed stuff
-ln -s /proc/self/fd \$udev_root/fd
-ln -s /dev/fd/0 \$udev_root/stdin
-ln -s /dev/fd/1 \$udev_root/stdout
-ln -s /dev/fd/2 \$udev_root/stderr
-mkdir \$udev_root/shm
-mkdir \$udev_root/pts
+/bin/ln -s /proc/self/fd \$udev_root/fd
+/bin/ln -s /dev/fd/0 \$udev_root/stdin
+/bin/ln -s /dev/fd/1 \$udev_root/stdout
+/bin/ln -s /dev/fd/2 \$udev_root/stderr
+/bin/mkdir \$udev_root/shm
+/bin/mkdir \$udev_root/pts
 # propogate /udev from /sys - we only need this while we do not
 # have initramfs and an early user-space with which to do early
 # device bring up
-echo "Creating initial udev device nodes"
-/sbin/udevstart
-if [ -f /etc/udev/udev.missing ]; then
-echo "Processing /etc/udev/udev.missing"
-cd /dev
-while read line; do
-	if [ "\${line:0:1}" == "#" ]; then continue; fi
-	for ((i=0; i<7; i++)); do
-		val[\$i]=\${line%%:*}
-		line=\${line#*:}
-	done
-	if [ "\${val[1]}" == "d" ]; then
-		mkdir \${val[0]}
-	else
-		mknod \${val[0]} \${val[1]} \${val[2]} \${val[3]}
-	fi
-	#chmod \${val[4]} \${val[0]}
-	#chown \${val[5]}:\${val[6]} \${val[0]}
-done < /etc/udev/udev.missing
-cd /
-fi
-echo "Telling init to reopen file descriptors"
-kill -USR1 1
-echo "Starting udevd"
-/sbin/udevd &
-echo "0x100" > /proc/sys/kernel/real_root_dev
-mount -n /dev/hda4 /mnt
-umount -n /proc
-umount -n /sys
-killall udevd
-umount -n /dev
-pivot_root /mnt initrd
+/bin/echo "Getting real root dev"
+real_root="\`/bin/cat /proc/cmdline | /bin/awk '{ for ( i = 1; i <= NF; i++ )  
+						if ( \$i ~ /real_root=.*/ )
+							print \$i
+					}' | /bin/awk -F= '{ print \$2 }'\`"
+/bin/echo "Real Root is \${real_root}"
+/bin/echo "Creating initial udev device nodes"
+last="\`/bin/echo \$real_root | /bin/sed 's/\/dev\/hd[a-z]//g'\`"
+real_dev="\`/bin/echo \$real_root | /bin/sed 's/[0-9]//g'\`"
+/sbin/makedevs  \$real_dev b 3 0 0 \$last
+/bin/echo "0x100" > /proc/sys/kernel/real-root-dev
+/bin/mount -n \${real_root} /mnt
+/bin/umount -n /proc
+/bin/umount -n /sys
+/bin/umount -n /dev
+/bin/umount -n /etc
+cd /mnt
+/sbin/pivot_root . initrd
+/bin/echo "args to init \$@"
+exec /bin/chroot . /sbin/init < /dev/console > /dev/console 2>&1
 
 EOF
 ) > /mnt/initrd/linuxrc
