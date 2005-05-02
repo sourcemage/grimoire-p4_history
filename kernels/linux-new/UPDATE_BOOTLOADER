@@ -12,8 +12,8 @@ cut_label()  {
 
 root_dev()
 {
-	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk '{print $1}')
-	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk '{print $1}')
+	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
 	ROOT_DEV=${ROOT_DEV/\/dev\//}
 	BOOT_DEV=${BOOT_DEV/\/dev\//}
 }
@@ -44,33 +44,13 @@ fi
 template_entry() {
 	local template_file=""
 	case "$boot_loader" in
-		grub)	
-			template_file="/boot/grub/menu.lst.tmplt"
-			if [ ! -f ${template_file} ]
-			then
-				template_file="$SCRIPT_DIRECTORY/templates/menu.lst.tmplt"
-			fi
+		grub)	template_file="/boot/grub/menu.lst.tmplt"
 			;;
-		lilo)
-			template_file="/etc/lilo.conf.tmplt"
-			if [ ! -f ${template_file} ]
-			then
-				template_file="$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt"
-			fi
+		lilo)   template_file="/etc/lilo.conf.tmplt"
 			;;
-		silo)
-			template_file="/etc/silo.conf.tmplt"
-			if [ ! -f ${template_file} ]
-			then
-				template_file="$SCRIPT_DIRECTORY/templates/silo.conf.tmplt"
-			fi
+		silo)	template_file="/etc/silo.conf.tmplt"
 			;;
-		yaboot)
-			template_file="/etc/yaboot.conf.tmplt"
-			if [ ! -f ${template_file} ]
-			then
-				template_file="$SCRIPT_DIRECTORY/templates/yaboot.conf.tmplt"
-			fi
+		yaboot)	template_file="/etc/yaboot.conf.tmplt"
 			;;
 		*)
 			echo "Don't know what $boot_loader is"
