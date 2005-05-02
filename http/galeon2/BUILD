@@ -2,10 +2,10 @@
 # but that function isn't in stable sorcery yet
 # default to using mozilla if both mozilla and firefox are installed, building
 # against firefox results in less features
-if spell_ok mozilla; then
-   OPTS="$OPTS --with-mozilla=mozilla"
-else
+if test "$(get_spell_provider $SPELL GECKO)" = firefox; then
    OPTS="$OPTS --with-mozilla=firefox"
+else
+   OPTS="$OPTS --with-mozilla=mozilla"
 fi &&
 
 default_build
