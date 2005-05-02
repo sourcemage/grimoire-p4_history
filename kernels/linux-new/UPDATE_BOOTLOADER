@@ -12,8 +12,8 @@ cut_label()  {
 
 root_dev()
 {
-	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk '{print $1}')
-	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk '{print $1}')
+	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
 	ROOT_DEV=${ROOT_DEV/\/dev\//}
 	BOOT_DEV=${BOOT_DEV/\/dev\//}
 }
