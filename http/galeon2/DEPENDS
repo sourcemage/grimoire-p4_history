@@ -11,9 +11,4 @@ if [ "$CVS" == "y" ]; then
    depends cvs
    depends autoconf
    depends automake-1.7
-fi  &&
-
-optional_depends nautilus2                    \
-                 "--enable-nautilus-view"     \
-                 "--disable-nautilus-view"    \
-                 "for HTML view in Nautilus"
+fi
