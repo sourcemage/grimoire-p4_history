@@ -1,11 +1,34 @@
             SPELL=openoffice
-if [ "$OPENOFFICE_DEVEL" == "y" ]; then
-	  VERSION=2.0bc
+if [ "$OPENOFFICE_VERSION" == "cvs" ]; then
+          VERSION=1.9.100
+         VERSION2=m`echo ${VERSION} | cut -d. -f3`
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/openoffice-cvs
+           SOURCE=openoffice-cvs.tar.bz2
+          SOURCE2=buildfix-arch-flags-for-gcc4.diff
+          SOURCE3=buildfix-filter.diff
+          SOURCE4=buildfix-no-epm.diff
+          SOURCE5=buildfix-pkgconfig-add-modules.diff
+          SOURCE6=buildfix-pkgconfig-gconfbe.diff
+    SOURCE_URL[0]=cvs://:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs:OpenOffice:SRC680_${VERSION2}
+   SOURCE2_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE2
+   SOURCE3_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE3
+   SOURCE4_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE4
+   SOURCE5_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE5
+   SOURCE6_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE6
+           MD5[0]="IGNORE"
+           MD5[1]=7e7683fb83c2717e885b73d0a1f36e6c
+           MD5[2]=587df82b8c17a26d8f334b7ad6230b7f
+           MD5[3]=49119d3fe4045b8f716e9d9ba1028b8f
+           MD5[4]=1394c534e69c1e58a2647e144653845a
+           MD5[5]=c5a53e0bf7c875a2b0f0e148ab5eb2c5
+elif [ "$OPENOFFICE_VERSION" == "devel" ]; then
+	  VERSION=1.9.95
+         VERSION2=m`echo ${VERSION} | cut -d. -f3`
            SOURCE=OOo_${VERSION}_src.tar.gz
-    SOURCE_URL[0]=http://openoffice.mirrors.pair.com/contrib/rc/${VERSION}/$SOURCE
-    SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/rc/${VERSION}/$SOURCE
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/OOo_${VERSION}_src
-           MD5[0]=a0725ac522dc481257d88e9277c646fe
+    SOURCE_URL[0]=http://openoffice.mirrors.tds.net/pub/openoffice/developer/680_${VERSION2}/$SOURCE
+    SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/developer/680_${VERSION2}/$SOURCE
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
+           MD5[0]=6dd9de38f260e507cfd9e420aa3aa645
 else
           VERSION=1.1.4
            SOURCE=OOo_${VERSION}_source.tar.gz
@@ -18,14 +41,24 @@ fi
          WEB_SITE=http://www.openoffice.org/
        LICENSE[0]=GPL
           ENTERED=20021127
-          UPDATED=20050417
+          UPDATED=20050122
            CCACHE=off
        MAKE_NJOBS=1
 	BUILD_API=2
+            TMPFS=off
             SHORT="Popular Open Source office productivity suite."
 cat << EOF
-OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology 
-for the popular StarOffice productivity suite.
-EOF
+OpenOffice.org gives you everything you'd expect in office software. You can create dynamic documents, analyse data, design eye-catching presentations, produce dramatic illustrations, and open up your databases. You can publish your work in Portable Document Format (.pdf), and release your graphics in Flash (.swf) format - without needing any additional software. OpenOffice.org is now available for more users than ever, with support for complex text layout (CTL) languages (such as Thai, Hindi, Arabic, and Hebrew) and vertical writing languages.
 
-#[ -f $CONFIG_CACHE/oo.languages ] && . $CONFIG_CACHE/oo.languages || true
+ What's in the suite?
+
+WRITER Is a powerful tool for creating professional documents, reports, newsletters, and brochures. You can easily integrate images and charts in documents, create everything from business letters to complete books with professional layouts, as well as create and publish Web content.
+
+CALC is a feature-packed spreadsheet which can turn boring numbers into eye-catching information. Calculate, analyse, and visually communicate your data quickly and easily. Use advanced spreadsheet functions and decision-making tools to perform sophisticated data analysis. Use built-in charting tools to generate impressive 2D and 3D charts.
+
+IMPRESS is the fastest, most powerful way to create effective multimedia presentations. Your presentations will truly stand out with special effects, animation and high-impact drawing tools.
+
+DRAW will produce everything from simple diagrams to dynamic 3D illustrations and special effects.
+
+The Database User Tools give you all the tools you need for day to day database work in a simple spreadsheet-like form. They support dBASE databases for simple applications, or any ODBC or JDBC compliant database for industrial strength database work. 
+EOF

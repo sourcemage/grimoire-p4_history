@@ -42,8 +42,10 @@ function gcc33_add_paths()  {
 
 }
 
+if [ "$OPENOFFICE_VERSION" == "stable" ]; then
 gcc33_add_paths  /opt/gcc33
 echo  "Using gcc version: `gcc  -dumpversion`"
+fi
 
 #---------------------------------------------------------------------
 ##
@@ -76,7 +78,7 @@ echo OPTS=$OPTS &&
   tcsh -c "source LinuxIntelEnv.Set && \
            env && \
            dmake" &&
-if [ "$OPENOFFICE_DEVEL" != "y" ]; then
+if [ "$OPENOFFICE_VERSION" == "stable" ]; then
   cd $SOURCE_DIRECTORY/instsetoo/unxlngi4.pro/01/normal	                            &&
   sedit "s:oo_home=OpenOffice.org${VERSION}:oo_home=openoffice:" install                 &&
   chmod +x install

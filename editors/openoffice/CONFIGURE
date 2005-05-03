@@ -1,3 +1,4 @@
+#!/bin/bash
 get_oolanguages()  {
     local  i  LANGUAGE  LANGUAGES DICTIONARY DICTIONARIES &&
     if  [  "$OO_CONFIGURE"  =  "y"  ]
@@ -54,7 +55,7 @@ echo DICTIONARY=$DICTIONARY >> $CFG
 
 }
 
-if [ "$OPENOFFICE_DEVEL" == "y" ]; then
+if [ "$OPENOFFICE_VERSION" != "stable" ]; then
     config_query_option OPENOFFICE_OPTS "OO.o includes self-packaging code, that requires epm, however epm is useless for large scale package building. Disable?" y \
 	"--disable-epm" \
 	"--enable-epm"

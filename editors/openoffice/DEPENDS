@@ -1,6 +1,6 @@
-if [ "$OPENOFFICE_DEVEL" == "y" ]; then
+if [ "$OPENOFFICE_VERSION" != "stable" ]; then
 depends  g++
-depends Archive-Zip
+depends archive-zip
 else
 depends  gcc33
 fi
@@ -11,6 +11,7 @@ depends  which                                     &&
 depends  mktemp                                    &&
 depends  ant         "--with-ant-home=${ANT_HOME}" &&
 depends  libart_lgpl "--enable-libart"             &&
+depends  bison                                     &&
 
 # optional now?
 depends  zlib        "--with-system-zlib"          &&
@@ -23,11 +24,6 @@ depends  tcsh                                      &&
 #		  "--with-use-shell=/bin/bash"     \
 #                  "Use tcsh shell for compiling (safer)" &&
 
-#
-# Java 1.5 does not work with openoffice
-# If someone can figure out how to get it to work I'll add
-# support
-#
 optional_depends  "JAVA-1.4"                                   \
                   "--enable-java --with-jdk-home=${JAVA_HOME}" \
                   "--disable-java"                             \
@@ -54,7 +50,7 @@ optional_depends  startup-notification        \
 #                          binary for your platform, to build without this
 #                          version, use this option.
 #
-if [ "$OPENOFFICE_DEVEL" != "y" ]; then
+if [ "$OPENOFFICE_VERSION" == "stable" ]; then
 # broken for the 2.0 branch
 optional_depends  GRAPHICAL-WEB-BROWSER       \
                   "--disable-mozilla"         \
@@ -87,7 +83,36 @@ optional_depends  nas                                    \
                   ""                                     \
                   "for up-to-date Network Audio System"  &&
 
-if [ "$OPENOFFICE_DEVEL" == "y" ]; then
+if [ "$OPENOFFICE_VERSION" != "stable" ]; then
+
+#
+# For both gtk and kde-base, this spell requires
+# 8gb+ space to compile.
+#
+# Say "NO"
+# "Yes is broken"
+#
+#
+#optional_depends  gtk+2                       \
+#                  "--enable-gtk"              \
+#                  "--disable-gtk"             \
+#                  "Determines whether to use Gtk+ vclplug on platforms where Gtk+ is available." &&
+#
+#optional_depends  gnome-vfs2                  \
+#                  "--enable-gnome-vfs"        \
+#                  "--disable-gnome-vfs"       \
+#                  "Determines whether to use the Gnome Virtual Filing System on platforms where that VFS is available" &&
+#
+# I'm not sure which kde level it really needs
+# kdebase
+# kdelibs
+# qt-x11
+#
+#optional_depends  kdebase                     \
+#                  "--enable-kde"              \
+#                  "--disable-kde"             \
+#                  "Determines whether to use Qt/KDE vclplug on platforms where Qt and KDE are available." &&
+
 optional_depends  openldap                    \
                   "--enable-openldap"         \
                   ""                          \
@@ -108,10 +133,13 @@ optional_depends  expat                         \
                   ""                            \
                   "Use expat already on system" &&
 
-optional_depends  libxml2                        \
-                  "--with-system-libxml"         \
-                  ""                             \
-                  "Use libxml already on system" &&
+#
+# Appears to be broken
+#
+#optional_depends  libxml2                        \
+#                  "--with-system-libxml"         \
+#                  ""                             \
+#                  "Use libxml already on system" &&
 
 optional_depends  python                         \
                   "--with-system-python"         \
