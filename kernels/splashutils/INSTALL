@@ -1,0 +1,18 @@
+default_install &&
+# Okay smgl'ize the gentoo'ized initscripts...
+for file in `ls $SPELL-gentoo-$VERSION2/*`
+do
+	sedit 's/conf\.d/sysconfig/g' $file &&
+	sedit 's/ebegin/echo/g' $file &&
+	sedit 's/eend.*".*"/evaluate_retval/g' $file &&
+	sedit 's/ewarn/echo/g' $file 
+done &&
+echo ". /etc/init.d/splash-functions.sh" >> $SPELL-gentoo-$VERSION2/init-splash
+
+# install initscripts
+cp -v $SPELL-gentoo-$VERSION2/splash.conf ${INSTALL_ROOT}/etc/sysconfig/ &&
+cp -v $SPELL-gentoo-$VERSION2/splash-functions.sh ${INSTALL_ROOT}/etc/init.d/ &&
+cp -v $SPELL-gentoo-$VERSION2/splash ${INSTALL_ROOT}/etc/sysconfig &&
+cp -v $SPELL-gentoo-$VERSION2/init-splash ${INSTALL_ROOT}/etc/init.d/runlevels/%S
+
+
