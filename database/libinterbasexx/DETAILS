@@ -1,5 +1,5 @@
            SPELL=libinterbasexx
-         VERSION=0.0.201
+         VERSION=0.0.202
        BUILD_API=2
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -7,10 +7,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL//xx/}/$SOURCE
           LICENSE=GPL
 #	    DOCS="*.txt tests/*"
-           MD5[0]=2bd6b56988e33ca65cbf5e051a394886
+           MD5[0]=a2d46f7a378db68c37e116f3a507c8c5
           ENTERED=20041211
           UPDATED=20041211
 SHORT="C++ interface to Firebird database"
 cat << EOF
-
+Yet another C++ encapsulation of the Interbase/Firebird API.
+It is a cross-platform library, and it is known to compile and work on (at 
+least) Linux, MS Windows and MacOS-X (aka Darwin), using GNU/Borland/Intel 
+compilers and linking against either Interbase or Firebird client libraries.
 EOF
