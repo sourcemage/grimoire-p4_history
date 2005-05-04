@@ -37,7 +37,7 @@ sedit "s:val:$(grep -o $i=.*$ $OLDPRO| cut -d= -f2):g" $*
 }
   mkdir  -p  ${INSTALL_ROOT}/etc/skel
   mkdir  -p  ${INSTALL_ROOT}/etc/profile.d
-  pop_script > dummy && cp -f dummy ${INSTALL_ROOT}/etc/profile.d/dummy 
+  pop_script > $SOURCE_DIRECTORY/dummy && cp -f $SOURCE_DIRECTORY/dummy ${INSTALL_ROOT}/etc/profile.d/dummy 
 
   if  ! [  -e  ${INSTALL_ROOT}/etc/profile  ] 
   then cp  -f $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
