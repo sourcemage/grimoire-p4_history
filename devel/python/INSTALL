@@ -1,5 +1,6 @@
 default_install  &&
 
-if [ -f /tmp/pydcop.py ];  then
-  mv /tmp/pydcop.py /usr/lib/python2.3
+if [ -f $SOURCE_DIRECTORY/spell-tmp/pydcop.py ];  then
+  mv  $SOURCE_DIRECTORY/spell-tmp/pydcop.py                       \
+      /usr/lib/python`echo $VERSION|cut -d. -f1,2`
 fi
