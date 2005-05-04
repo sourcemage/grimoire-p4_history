@@ -4,8 +4,11 @@ sedit "s/\['ndbm'\]/\['ndbm', 'gdbm_compat'\]/g" setup.py &&
 
 # The following file from kdebindings has a syntax error that
 # makes Python compilation fail
-if [ -f /usr/lib/python2.4/pydcop.py ];  then
-  mv  /usr/lib/python2.4/pydcop.py /tmp
+local  PYTHON_VERSION=`echo $VERSION|cut -d. -f1,2`
+if [ -f  /usr/lib/python${PYTHON_VERSION}/pydcop.py ];  then
+  mkdir  $SOURCE_DIRECTORY/spell-tmp                     &&
+  mv  /usr/lib/${PYTHON_VERSION}/pydcop.py  \
+      $SOURCE_DIRECTORY/spell-tmp
 fi  &&
 
 default_build
