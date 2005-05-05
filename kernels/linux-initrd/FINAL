@@ -1,4 +1,5 @@
-message  "${MESSAGE_COLOR}Remember to add \"initrd=/boot/initrd.splash\" to your bootloader${DEFAULT_COLOR}"
+#message  "${MESSAGE_COLOR}Remember to add \"initrd=/boot/initrd.splash\" to your bootloader${DEFAULT_COLOR}" &&
+rm_source_dir ${BUILD_DIRECTORY}/initrd
 
 ## I'm just putting this back in here temporarily for a place holder.
 ## I will add options for doing it & for not doing it and for grub & lilo later.

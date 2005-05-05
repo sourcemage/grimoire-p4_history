@@ -1,3 +1,12 @@
+2005-05-04 David Brown <dmlb2000@excite.com>
+	* DETAILS: renamed to linux-initrd, switched to build api 2
+	* DEPENDS: added busybox
+	* CONFIGURE: added options to create a filesystem on the front of the 
+	  initrd and other options about the initrd
+	* BUILD: added code to call correct mk_initrd script
+	* PRE_BUILD: added making the initrd root so that we have a filesystem
+	  available to do that.
+
 2005-03-31 Andrew Stitt <astitt@sourcemage.org>
 	* DETAILS: fix syntax error
 

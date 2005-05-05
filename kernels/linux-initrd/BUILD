@@ -1,13 +1,10 @@
-(
-
-  prepare_install                                                       &&
-  mkdir -p /etc/bootsplash/themes                                       &&
-  cp -rv $THEME /etc/bootsplash/themes/$THEME                           &&
-  touch /boot/initrd.splash                                             &&
-
-  for file in $(find /etc/bootsplash/themes/$THEME/config -type f); do
-    splash -s -f $file >> /boot/initrd.splash
-  done
-
-) > $C_FIFO 2>&1
-
+if [ "$FILE_SYSTEM" == "y" ] ; then
+  export BUILD_DIRECTORY
+  export INSTALL_ROOT
+  message "${MESSAGE_COLOR}Entering ${MKINITRD_SCRIPT}${DEFAULT_COLOR}" &&
+  sh ${SCRIPT_DIRECTORY}/${MKINITRD_SCRIPT} ${KVERSION} &&
+  message "${MESSAGE_COLOR}Done with ${MKINITRD_SCRIPT}${DEFAULT_COLOR}" &&
+  if [ "$EDIT_LINUXRC" == "y" ] ; then
+    $EDITOR ${BUILD_DIRECTORY}/initrd/linuxrc
+  fi 
+fi
