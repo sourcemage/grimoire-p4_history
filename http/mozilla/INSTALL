@@ -2,8 +2,10 @@ make_normal  &&
 
 MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla &&
 
+#
 # everything coming into /usr/lib/mozilla-${VERSION/rc*}/
 # must actually go to /usr/lib/mozilla/
+#
 mkdir -p $MOZILLA_HOME &&
 ln -fns $MOZILLA_HOME $MOZILLA_HOME-${VERSION/rc*} &&
 mkdir -p $INSTALL_ROOT/usr/share/idl/mozilla &&
@@ -23,4 +25,4 @@ fi  &&
 #
 # Script to set MOZILLA_FIVE_HOME
 #
-cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  /etc/profile.d
+cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  $INSTALL_ROOT/etc/profile.d

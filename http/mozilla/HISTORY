@@ -1,3 +1,12 @@
+2005-05-05 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Converted to config_query* and removed configure_optional
+	* DEPENDS: Use variables from CONFIGURE
+	  Added dependency (and flag) on freetype2
+	* BUILD: Use variables from CONFIGURE
+	  Only use --enable-strip if the user is using -s in LDFLAGS (strip)
+	* FIXME: This spell is broken with INSTALL_ROOT (check ./configure in
+	  BUILD and the symlink generation in INSTALL)
+
 2005-04-23 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, gcc4.patch: fix compilation with gcc 4.0
 
