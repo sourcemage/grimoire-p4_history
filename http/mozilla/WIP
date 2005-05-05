@@ -26,4 +26,28 @@ make[1]: *** [default] Error 2
 make[1]: Leaving directory `/usr/src/mozilla'
 
 libart_svg fails with this:
-<to be added>
+make[6]: Entering directory `/usr/src/mozilla/directory/c-sdk/ldap/libraries/libldap'
+/usr/src/mozilla/dist/bin/nsinstall -R -m 444 ./libldap50.a /usr/src/mozilla/dist/lib
+/usr/src/mozilla/dist/bin/nsinstall -R -m 444 ./libldap50.so /usr/src/mozilla/dist/lib
+/usr/src/mozilla/dist/bin/nsinstall -R -m 444 ./libldap50.so /usr/src/mozilla/dist/bin
+/usr/src/mozilla/dist/bin/nsinstall -R -m 444 ./ldapfilter.conf ./ldapfriendly ./ldapsearchprefs.conf ./ldaptemplates.conf /usr/src/mozilla/dist/./etc
+make[6]: Leaving directory `/usr/src/mozilla/directory/c-sdk/ldap/libraries/libldap'
+cd libprldap; /usr/bin/make export
+make[6]: Entering directory `/usr/src/mozilla/directory/c-sdk/ldap/libraries/libprldap'
+/usr/src/mozilla/dist/bin/nsinstall -R -m 555 ./libprldap50.so /usr/src/mozilla/dist/lib
+/usr/src/mozilla/dist/bin/nsinstall -R -m 444 ./libprldap50.so /usr/src/mozilla/dist/bin
+make[6]: Leaving directory `/usr/src/mozilla/directory/c-sdk/ldap/libraries/libprldap'
+make[5]: Leaving directory `/usr/src/mozilla/directory/c-sdk/ldap/libraries'
+make[4]: Leaving directory `/usr/src/mozilla/directory/c-sdk/ldap'
+make[3]: Leaving directory `/usr/src/mozilla/directory/c-sdk'
+make[2]: Leaving directory `/usr/src/mozilla'
+make[1]: *** No rule to make target `other-licenses/libart_lgpl/Makefile.in', needed by `other-licenses/libart_lgpl/Makefile'.  Stop.
+make[1]: Leaving directory `/usr/src/mozilla'
+/usr/src/mozilla/mailnews/extensions/smime/public /usr/src/mozilla
+make[1]: Entering directory `/usr/src/mozilla/mailnews/extensions/smime/public'
+Creating ../../../../dist/idl
+make[1]: *** No rule to make target `_xpidlgen/nsIMsgSMIMECompFields.h'.  Stop.
+make[1]: *** Waiting for unfinished jobs....
+Creating ../../../../dist/include/msgsmime
+make[1]: Leaving directory `/usr/src/mozilla/mailnews/extensions/smime/public'
+
