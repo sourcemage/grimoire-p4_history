@@ -2,4 +2,6 @@
 
   patch  -p0  <  ${SCRIPT_DIRECTORY}/parse.patch  &&
 
+  make_single && 
+
   make  all
