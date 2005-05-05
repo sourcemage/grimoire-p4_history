@@ -1,0 +1,62 @@
+--- modules/codec/ffmpeg/video.c.orig	2005-05-05 21:01:31.000000000 +0200
++++ modules/codec/ffmpeg/video.c	2005-05-05 21:01:39.000000000 +0200
+@@ -180,11 +180,19 @@
+         }
+     }
+ 
++#if LIBAVCODEC_BUILD >= 4753
++    if( av_q2d(p_context->time_base) > 0)
++    {
++        p_dec->fmt_out.video.i_frame_rate = p_context->time_base.den;
++        p_dec->fmt_out.video.i_frame_rate_base = p_context->time_base.num;
++    }
++#else
+     if( p_context->frame_rate > 0 && p_context->frame_rate_base > 0 )
+     {
+         p_dec->fmt_out.video.i_frame_rate = p_context->frame_rate;
+         p_dec->fmt_out.video.i_frame_rate_base = p_context->frame_rate_base;
+     }
++#endif
+ 
+     p_pic = p_dec->pf_vout_buffer_new( p_dec );
+ 
+@@ -631,6 +639,15 @@
+             p_pic->date = p_sys->i_pts;
+ 
+             /* interpolate the next PTS */
++#if LIBAVCODEC_BUILD >= 4753
++            if( p_sys->p_context->time_base.den > 0 )
++            {
++                p_sys->i_pts += I64C(1000000) *
++                    (2 + p_sys->p_ff_pic->repeat_pict) *
++                    p_sys->p_context->time_base.num /
++                    (2 * p_sys->p_context->time_base.den);
++            }
++#else
+             if( p_sys->p_context->frame_rate > 0 )
+             {
+                 p_sys->i_pts += I64C(1000000) *
+@@ -638,6 +655,7 @@
+                     p_sys->p_context->frame_rate_base /
+                     (2 * p_sys->p_context->frame_rate);
+             }
++#endif
+ 
+             if( p_sys->b_first_frame )
+             {
+--- modules/codec/ffmpeg/encoder.c.orig	2005-05-05 21:01:45.000000000 +0200
++++ modules/codec/ffmpeg/encoder.c	2005-05-05 21:01:50.000000000 +0200
+@@ -328,8 +328,13 @@
+         p_context->width = p_enc->fmt_in.video.i_width;
+         p_context->height = p_enc->fmt_in.video.i_height;
+ 
++#if LIBAVCODEC_BUILD >= 4753
++        p_context->time_base.den = p_enc->fmt_in.video.i_frame_rate;
++        p_context->time_base.num = p_enc->fmt_in.video.i_frame_rate_base;
++#else
+         p_context->frame_rate = p_enc->fmt_in.video.i_frame_rate;
+         p_context->frame_rate_base= p_enc->fmt_in.video.i_frame_rate_base;
++#endif
+ 
+         /* Defaults from ffmpeg.c */
+         p_context->qblur = 0.5;
