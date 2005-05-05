@@ -2,8 +2,10 @@
 	* CONFIGURE: Converted to config_query* and removed configure_optional
 	* DEPENDS: Use variables from CONFIGURE
 	  Added dependency (and flag) on freetype2
+	* PRE_BUILD: Use variables from CONFIGURE
 	* BUILD: Use variables from CONFIGURE
 	  Only use --enable-strip if the user is using -s in LDFLAGS (strip)
+	* INSTALL: Install profile to INSTALL_ROOT/etc/profile.d
 	* FIXME: This spell is broken with INSTALL_ROOT (check ./configure in
 	  BUILD and the symlink generation in INSTALL)
 
