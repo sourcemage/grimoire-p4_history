@@ -1,18 +1,1 @@
-depends  perl       &&
-depends  AppConfig  &&
-
-# non-Perl module
-optional_depends tetex            "" "" "for teTeX-related functions"  &&
-
-# Perl modules
-optional_depends Text-Autoformat  "" "" "for Text::Autoformat plug-in" &&
-optional_depends DBI              "" "" "for DBI plug-in"              &&
-optional_depends GD               "" "" "for GD plug-in"               &&
-optional_depends GD-Text          "" "" "for GD::Text plug-in"         &&
-optional_depends GD-Graph         "" "" "for GD::Graph plug-in"        &&
-optional_depends Date-Calc        "" "" "for Date functionality"       &&
-optional_depends Pod-POM          "" "" "for Pod plug-in"              &&
-optional_depends xml-parser-expat "" "" "for XML::Parser plug-in"      &&
-optional_depends XML-DOM          "" "" "for XML::DOM plug-in"         &&
-optional_depends XML-RSS          "" "" "for RSS plug-in"              &&
-optional_depends XML-XPath        "" "" "for XPath plug-in"
+depends template-toolkit
