@@ -1,7 +1,6 @@
-if  glibc_is_nptl; then
-  # apply fix, not sure what parts of it are needed because of NPTL glibc,
-  # linux 2.6 or gcc 3.4
-  patch  -p0  <  $SCRIPT_DIRECTORY/nptl-fix.patch
+patch  -p0  <  $SCRIPT_DIRECTORY/malloc-redefine.patch  &&
+if ! use_gcc 3.3; then
+  patch  -p0  <  $SCRIPT_DIRECTORY/gcc34.patch
 fi           &&
 xmkmf        &&
 make_single  &&
