@@ -3,7 +3,9 @@ case  $BYTECODE  in
                    include/freetype/config/ftoption.h  ;;
         *)  true  ;;
 esac
-
-make  setup  CFG="--prefix=/usr"  &&
+cd $SOURCE_DIRECTORY/builds/unix &&
+./configure --prefix="$INSTALL_ROOT/usr" &&
+cd $SOURCE_DIRECTORY &&
+make  setup  &&
 make
 
