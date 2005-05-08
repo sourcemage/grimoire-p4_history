@@ -136,7 +136,7 @@ _cast()
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
 
-    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+    if [ $COMP_CWORD -ge 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
 	case "$cur" in
 	    --*)
 		COMPREPLY=( $( compgen -W 'quiet dot fix nofix download deps compile reconfigure from url pam queue' ${cur#--} ) )
@@ -177,7 +177,7 @@ _summon()
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
     
-    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+    if [ $COMP_CWORD -ge 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
 	case "$cur" in
 	    --*)
 		COMPREPLY=( $( compgen -W 'from url download queue all' ${cur#--} ) )
@@ -218,7 +218,7 @@ _dispel()
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
 
-    if [ $COMP_CWORD = 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
+    if [ $COMP_CWORD -ge 1 -o ${prev} != ${prev#-} -o ${prev} != ${prev#--} ]; then
 	case "$cur" in
 	    --*)
 		COMPREPLY=( $( compgen -W 'exile downgrade' ${cur#--} ) )
