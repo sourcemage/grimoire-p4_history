@@ -12,6 +12,7 @@ depends  fontconfig  &&
 depends  zlib        &&
 depends  ncurses     &&
 depends  expat       &&
+depends  libpng	     &&
 
 optional_depends  POSTSCRIPT-INTERPRETER          \
                   ""                              \
@@ -22,11 +23,6 @@ optional_depends  groff                          \
                   ""                             \
                   ""                             \
                   "for formatted documentation"  &&
-
-optional_depends  libpng                   \
-                  ""                       \
-                  ""                       \
-                  "for PNG image support"  &&
 
 optional_depends  g++                   \
                   ""                    \
