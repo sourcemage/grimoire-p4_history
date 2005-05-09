@@ -1,9 +1,1 @@
-if  ! grep -q  DAEMON_ONLY  $SPELL_CONFIG; then
-
-	if query                "Build gkrellmd (server daemon) only?"  n
-		then            DAEMON_ONLY=y
-		else            DAEMON_ONLY=n
-	fi
-	echo "DAEMON_ONLY=$DAEMON_ONLY" >> $SPELL_CONFIG
-
-fi																 
+config_query  DAEMON_ONLY "Build gkrellmd (server daemon) only?"  n
