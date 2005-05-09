@@ -1,3 +1,9 @@
+2005-05-09 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: don't fiddle with CXXFLAGS, they aren't used anyway,
+	  don't add -O3 to CFLAGS as ffmpeg does that itself,
+	  instead of replacing pentium4 with pentium3 add -O2 as that really
+	  fixes compilation, fixes bug #8841
+
 2005-04-23 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: call invoke_gcc at the beginning
 	* DETAILS: add GCC_VERSION=3.4
