@@ -1,14 +1,13 @@
            SPELL=gzip
-         VERSION=1.2.4b
-          SOURCE=$SPELL-${VERSION/b/a}.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION/b/a}
-   SOURCE_URL[0]=ftp://gatekeeper.dec.com/pub/GNU/$SPELL/$SOURCE
-   SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
+         VERSION=1.3.5
+          SOURCE=$SPELL-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+   SOURCE_URL[0]=ftp://alpha.gnu.org/gnu/gzip/${SOURCE}
         WEB_SITE=http://www.gzip.org
         BUILD_API=2
          ENTERED=20010922
          UPDATED=20050501
-          MD5[0]=c04db2076b9a25af95fae5dbb6e01c65
+          MD5[0]=b215489116451dc3123a0c78394e331c
       LICENSE[0]=GPL
            SHORT="gzip is a compression utility designed to replace compress."
 cat << EOF
