@@ -2,33 +2,18 @@
 if [ "$OPENOFFICE_VERSION" == "cvs" ]; then
           VERSION=1.9.100
          VERSION2=m`echo ${VERSION} | cut -d. -f3`
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/openoffice-cvs
-           SOURCE=openoffice-cvs.tar.bz2
-          SOURCE2=buildfix-arch-flags-for-gcc4.diff
-          SOURCE3=buildfix-filter.diff
-          SOURCE4=buildfix-no-epm.diff
-          SOURCE5=buildfix-pkgconfig-add-modules.diff
-          SOURCE6=buildfix-pkgconfig-gconfbe.diff
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
+           SOURCE=SRC680_${VERSION2}.tar.bz2
     SOURCE_URL[0]=cvs://:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs:OpenOffice:SRC680_${VERSION2}
-   SOURCE2_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE2
-   SOURCE3_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE3
-   SOURCE4_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE4
-   SOURCE5_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE5
-   SOURCE6_URL[0]=http://ooo.ximian.com/patches/src680/$SOURCE6
            MD5[0]="IGNORE"
-           MD5[1]=7e7683fb83c2717e885b73d0a1f36e6c
-           MD5[2]=587df82b8c17a26d8f334b7ad6230b7f
-           MD5[3]=49119d3fe4045b8f716e9d9ba1028b8f
-           MD5[4]=1394c534e69c1e58a2647e144653845a
-           MD5[5]=c5a53e0bf7c875a2b0f0e148ab5eb2c5
 elif [ "$OPENOFFICE_VERSION" == "devel" ]; then
-	  VERSION=1.9.95
+	  VERSION=1.9.100
          VERSION2=m`echo ${VERSION} | cut -d. -f3`
            SOURCE=OOo_${VERSION}_src.tar.gz
     SOURCE_URL[0]=http://openoffice.mirrors.tds.net/pub/openoffice/developer/680_${VERSION2}/$SOURCE
     SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/developer/680_${VERSION2}/$SOURCE
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
-           MD5[0]=6dd9de38f260e507cfd9e420aa3aa645
+           MD5[0]=3d5dca1afe5afb2752b6dbd849aa6eca
 else
           VERSION=1.1.4
            SOURCE=OOo_${VERSION}_source.tar.gz

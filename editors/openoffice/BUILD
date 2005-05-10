@@ -58,6 +58,7 @@ fi
 	cd $SOURCE_DIRECTORY/config_office/               &&
 	export CXXFLAGS="${CXXFLAGS} -I/usr/X11R6/include -I/usr/include/nspr -I/usr/include/nss"       &&
 export CFLAGS="${CFLAGS} -I/usr/include/nspr -I/usr/include/nss" &&
+
 echo OPTS=$OPTS &&
 	./configure                                       \
 		--with-lang=${LANGUAGE}                   \
@@ -67,7 +68,6 @@ echo OPTS=$OPTS &&
 		--localstatedir=${INSTALL_ROOT}/var       \
                 --mandir=${INSTALL_ROOT}/usr/share/man    \
                 --infodir=${INSTALL_ROOT}/usr/share/info  \
-                --with-images="industrial crystal"        \
 		$OPENOFFICE_OPTS $OPTS                    &&
 
 	cd $SOURCE_DIRECTORY &&

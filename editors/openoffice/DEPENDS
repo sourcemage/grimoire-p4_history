@@ -1,3 +1,6 @@
+if [ "$OPENOFFICE_VERSION" == "cvs" ]; then
+depends CVS
+fi
 if [ "$OPENOFFICE_VERSION" != "stable" ]; then
 depends  g++
 depends archive-zip
@@ -24,10 +27,14 @@ depends  tcsh                                      &&
 #		  "--with-use-shell=/bin/bash"     \
 #                  "Use tcsh shell for compiling (safer)" &&
 
-optional_depends  "JAVA-1.4"                                   \
-                  "--enable-java --with-jdk-home=${JAVA_HOME}" \
-                  "--disable-java"                             \
-                  "Build with Java support."                   &&
+if [ $OPENOFFICE_VERSION != "stable" ]; then
+depends  "JAVA" "--enable-java --with-jdk-home=${JAVA_HOME}"
+else
+optional_depends "JAVA-1.4" \
+	"--enable-java --with-jdk-home=${JAVA_HOME}" \
+	"--disable-java" \
+	"To enable java support"
+fi
 #
 # We now have stlport 5 in the grimoire
 # This will no longer work
@@ -165,4 +172,13 @@ optional_depends  neon                     \
                   "--with-system-neon"     \
                   ""                       \
                   "for up-to-date neon"
+
+#
+# What is epm?
+# Where does one get it?#
+#
+optional_depends epm \
+		""   \
+		"--with-epm=internal" \
+		"use epm already on system"
 fi
