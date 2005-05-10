@@ -1,3 +1,10 @@
+2005-05-10 Martin Svehla <doc@sourcemage.org>
+	* POST_INSTALL: deleted, makewhatis moved back to FINAL
+	* volatiles: deleted, is useless as whatis db files are not tracked
+	* man.conf.patch: /usr/lib/*/man and /usr/share/*/man added to
+	  default MANPATH, so man pages from spells that don't install
+	  them in /usr/share/man will be searched
+
 2005-04-28 Martin Svehla <doc@sourcemage.org>
 	* FINAL: deleted, makewhatis moved to POST_INSTALL and POST_RESURRECT
 	* POST_INSTALL, POST_RESURRECT: added, generates whatis db
