@@ -1,0 +1,31 @@
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/courierinit.sh  ];  then
+  ${INSTALL_ROOT}/etc/init.d/courierinit.sh  stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/esmtpd.sh       ];  then
+  ${INSTALL_ROOT}/etc/init.d/esmtpd.sh       stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/esmtpd-ssl.sh   ];  then
+  ${INSTALL_ROOT}/etc/init.d/esmtpd-ssl.sh   stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/filterctl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/filterctl.sh    stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/imapd.sh        ];  then
+  ${INSTALL_ROOT}/etc/init.d/imapd.sh        stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/imapd-ssl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/imapd-ssl.sh    stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/pop3d.sh        ];  then
+  ${INSTALL_ROOT}/etc/init.d/pop3d.sh        stop
+fi
+
+if  [  -x  ${INSTALL_ROOT}/etc/init.d/pop3d-ssl.sh    ];  then
+  ${INSTALL_ROOT}/etc/init.d/pop3d-ssl.sh    stop
+fi

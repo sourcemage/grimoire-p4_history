@@ -1,0 +1,11 @@
+--- gzip.c.old	2005-04-28 01:45:23.405819616 +0200
++++ gzip.c	2005-04-28 02:10:35.386963544 +0200
+@@ -1330,6 +1330,8 @@ local int get_method(in)
+ 			error("corrupted input -- file name too large");
+ 		    }
+ 		}
++		char *base2 = basename (base);
++		strcpy(base, base2);
+                 /* If necessary, adapt the name to local OS conventions: */
+                 if (!list) {
+                    MAKE_LEGAL_NAME(base);

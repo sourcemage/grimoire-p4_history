@@ -1,0 +1,34 @@
+           SPELL=kazehakase
+if [ "${CVS}" == "y" ]
+then
+         VERSION=cvs
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+  FORCE_DOWNLOAD=ON
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.jp:/cvsroot/kazehakase:kazehakase
+          MD5[0]=IGNORE
+else
+         VERSION=0.2.7
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://osdn.dl.sourceforge.jp/kazehakase/14508/${SOURCE}
+          MD5[0]=7fc02c51a42b4d3066fe8cec67a93b77
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://kazehakase.sourceforge.jp
+         ENTERED=20050123
+         UPDATED=20050123
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A different kind of a web browser"
+cat << EOF
+Kazehakase is a browser with gecko engine like Epiphany or Galeon.
+Main features
+
+    * Tabbed browsing
+    * Remote bookmark (e.g. RSS) in menu or sidebar
+          o It is able to update periodically
+          o In Japan, there are other remote bookmarks, for instance, LIRS (In Japanese), hina-di (In Japanese) , 
+Kazehakase can handle these ones.
+    * Variable UI (menus, toolbar etc.) on user level
+    * Customizable mouse gestures
+    * Customizable key accelerator
+EOF

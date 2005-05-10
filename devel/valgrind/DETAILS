@@ -1,0 +1,35 @@
+           SPELL=valgrind
+if [ "$CVS" != "y" ]; then
+         VERSION=2.2.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://developer.kde.org/~sewardj/$SOURCE
+          MD5[0]=b126a4498e83d8ccb0e526501183f293
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+else
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.kde.org:/home/kde:valgrind
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+fi
+      LICENSE[0]=GPL
+        WEB_SITE=http://valgrind.kde.org
+         ENTERED=20020731
+         UPDATED=20020731
+       BUILD_API=2
+           SHORT="Valgrind, an open-source memory debugger for x86-GNU/Linux"
+cat << EOF
+Valgrind is a GPL'd tool to help you find memory-management problems in your
+programs. When a program is run under Valgrind's supervision, all reads and
+writes of memory are checked, and calls to malloc/new/free/delete are
+intercepted. As a result, Valgrind can detect problems such as:
+* Use of uninitialised memory
+* Reading/writing memory after it has been free'd
+* Reading/writing off the end of malloc'd blocks
+* Reading/writing inappropriate areas on the stack
+* Memory leaks -- where pointers to malloc'd blocks are lost forever
+* Passing of uninitialised and/or unaddressible memory to system calls
+* Mismatched use of malloc/new/new [] vs free/delete/delete []
+* Some misuses of the POSIX pthreads API
+EOF

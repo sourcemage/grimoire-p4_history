@@ -1,0 +1,8 @@
+depends  zlib   &&
+depends  g++    &&
+depends  glib2  &&
+
+optional_depends  gettext                        \
+                  "--enable-nls"                 \
+                  "--disable-nls"                \
+                  "for Native Language Support"

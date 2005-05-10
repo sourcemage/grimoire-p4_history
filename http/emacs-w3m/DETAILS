@@ -1,0 +1,17 @@
+           SPELL=emacs-w3m
+         VERSION=1.4
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://emacs-w3m.namazu.org/$SOURCE
+        WEB_SITE=http://emacs-w3m.namazu.org
+          MD5[0]=e5280af9833bf346d3ac6a4157e59594
+      LICENSE[0]=GPL
+       BUILD_API=2
+         ENTERED=20040613
+         UPDATED=20040613
+           SHORT="A w3m emacs based browser"
+cat << EOF
+w3m is a pager with WWW capability, developed by Akinori ITO.
+Although it is a pager, it can be used as a text-mode WWW browser.
+ Emacs-w3m is a simple Emacs interface to w3m
+EOF

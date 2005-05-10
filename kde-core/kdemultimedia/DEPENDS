@@ -1,0 +1,34 @@
+depends  kdebase  &&
+depends  libpng   &&
+
+source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
+
+optional_depends  esound                                    \
+                  ""                                        \
+                  ""                                        \
+                  "for Enlightenment Sound Daemon support"  &&
+
+optional_depends  taglib                              \
+                  ""                                  \
+                  ""                                  \
+                  "for ID3TAGs and JuK music player"  &&
+
+optional_depends  xine-lib                      \
+                  ""                            \
+                  ""                            \
+                  "for XINE video integration"  &&
+
+optional_depends  libmusicbrainz                    \
+                  ""                                \
+                  ""                                \
+                  "for automatic song recognition"  &&
+
+optional_depends  trm                                               \
+                  ""                                                \
+                  ""                                                \
+                  "for relatable TRM acoustic fingerprint support"  &&
+
+optional_depends  vorbis-tools  \
+                  ""            \
+                  ""            \
+                  "for encoding ogg-vorbis files"

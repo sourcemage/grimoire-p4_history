@@ -1,0 +1,9 @@
+depends  JAVA                                          &&
+depends  ant                                           &&
+optional_depends  gtk+2                                \
+                  "-os linux -ws gtk"        \
+                  "-os linux -ws motif"      \
+                  "For building with gtk"              &&
+if echo $OPTS| grep -q "motif" ; then
+  depends MOTIF
+fi

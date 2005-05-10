@@ -1,0 +1,29 @@
+           SPELL=php
+         VERSION=5.0.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+if [ "${VERSION//RC/}" == "$VERSION" ]; then
+   SOURCE_URL[0]=http://static.php.net/www.php.net/distributions/$SOURCE
+else
+   SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
+fi
+          MD5[0]=85bbf50516c50144237fd7d357e50c8c
+       BUILD_API=2
+        WEB_SITE=http://www.php.net/
+         ENTERED=20011024
+         UPDATED=20040330
+      LICENSE[0]=http://www.php.net/license/3_0.txt
+           SHORT="Hypertext Preprocessor (PHP) scripting language"
+cat << EOF
+PHP is a widely-used Open Source general-purpose scripting language
+that is especially suited for Web development and can be embedded
+into HTML. Its syntax draws upon C, Java, and Perl, and is easy to
+learn. PHP runs on many different platforms and can be used as a
+standalone executable or as a module under a variety of Web servers.
+It has excellent support for databases, XML, LDAP, IMAP, Java,
+various Internet protocols, and general data manipulation, and is
+extensible via its powerful API. It is actively developed and
+supported by a talented and energetic international team. Numerous
+Open Source and commercial PHP-based application packages are
+available.
+EOF

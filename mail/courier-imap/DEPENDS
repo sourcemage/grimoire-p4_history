@@ -1,0 +1,41 @@
+depends  openssl                                              &&
+depends  perl                                                 &&
+
+if  spell_ok  db;  then
+  if  spell_ok  gdbm;  then
+    if  query  "You have both GDBM and Berkeley DB libraries installed.  Do you want to use GDBM with Courier?  (Courier will automatically choose GDBM over Berkely DB.  Answer 'n' to use Berkely DB instead.) "  y;  then
+      echo  'OPTS="${OPTS}  --with-db=gdbm"'  >>  ${SPELL_CONFIG}
+    else
+      echo  'OPTS="${OPTS}  --with-db=db"'    >>  ${SPELL_CONFIG}
+    fi
+  fi
+else
+  if  !  spell_ok  gdbm;  then
+    if  query  "Either GDBM or Berkeley DB library must be installed.  Do you want to install GDBM?  (Answer 'n' to install Berkely DB instead.) "  y;  then
+      depends  gdbm
+    else
+      depends  db
+    fi
+  fi
+fi                                                            &&
+
+if  [  "${AUTHPAM}"  ==  "y"  ];  then
+  depends  linux-pam
+fi                                                            &&
+
+if  [  "${AUTHLDAP}"  ==  "y"  ];  then
+  depends  openldap
+fi                                                            &&
+
+if  [  "${AUTHMYSQL}"  ==  "y"  ];  then
+  depends  mysql
+fi                                                            &&
+
+if  [  "${AUTHPGSQL}"  ==  "y"  ];  then
+  depends  postgresql
+fi                                                            &&
+
+optional_depends  "expect"                                    \
+                  ""                                          \
+                  ""                                          \
+                  "to enable changing passwords via webmail"

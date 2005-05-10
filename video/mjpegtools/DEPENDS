@@ -1,0 +1,25 @@
+depends  gcc34     &&
+depends  glib      &&
+depends  jpeg      &&
+depends  X11-LIBS  &&
+depends  nasm      &&
+
+optional_depends  libpng                   \
+                  ""                       \
+                  ""                       \
+                  "for png input support"  &&
+
+optional_depends  libdv                   \
+                  ""                      \
+                  ""                      \
+                  "for dv video support"  &&
+
+optional_depends  gtk+                    \
+                  ""                      \
+                  ""                      \
+                  "for glav gui support"  &&
+
+optional_depends  sdl                      \
+                  ""                       \
+                  ""                       \
+                  "for software playback"

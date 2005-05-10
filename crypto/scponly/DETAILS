@@ -1,0 +1,15 @@
+           SPELL=scponly
+         VERSION=4.1
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.sublimation.org/scponly/$SOURCE
+          MD5[0]=ed1ce787a411da3de85317af7f82bbb9
+        WEB_SITE=http://www.sublimation.org/scponly/
+         ENTERED=20040123
+         UPDATED=20040123
+      LICENSE[0]=BSD
+           SHORT="An alternative shell allowing only scp and/or sftp"
+cat << EOF
+scponly is an alternative "shell" of sorts for system administrators who would like to provide access to remote users to both read and write local files without providing any remote execution priviledges. Functionally, it is a wrapper around the ssh suite of applications. It is typically used by creating a user whose shell is set to scponly. This user can neither login interactively nor execute commands remotely, but it can use scp and sftp to download and upload files to the computer, governed by the usual Unix file permissions.
+EOF

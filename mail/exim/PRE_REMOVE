@@ -1,0 +1,20 @@
+VOYEUR=on
+
+if  spell_ok  fcron;  then
+  fcrontab  -l  2>/dev/null  |
+  grep  -v  exim             |
+  fcrontab -    2>/dev/null
+fi  &&
+
+if  spell_ok  hc-cron;  then
+  crontab   -l    |
+  sed   -n  4~1p  |
+  grep  -v  exim  |
+  crontab -
+fi  &&
+
+if  [  "$BACKUPCONFIG"  ==  "y"  ]
+then
+  CUR_DATE=`date +%y.%m.%d-%H.%M.%S`  &&
+  tar -cjvf /etc/$SPELL-backup-$CUR_DATE.tar.bz2 /etc/exim.conf 1>/dev/null 2>&1
+fi

@@ -1,0 +1,4 @@
+default_pre_build                                      &&
+cd  $SOURCE_DIRECTORY                                  &&
+bzcat  $SCRIPT_DIRECTORY/g++.patch.bz2  |  patch  -p1  &&
+patch  -p1  <  $SCRIPT_DIRECTORY/ft2build.patch

@@ -1,0 +1,31 @@
+           SPELL=kronolith
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=2.0.2
+          SOURCE=$SPELL-h3-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-h3-$VERSION
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=8449d4d7319f996848e099904e4fbd5d
+fi
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20020427
+         UPDATED=20030108
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde calendar application"
+cat << EOF
+Kronolith is the Horde calendar application. It provides a stable and
+featureful individual calendar system for every Horde user, allowing
+repeating events, all-day events, custom fields, keywords, and managing
+multiple users through Horde Authentication. The calendar API that
+Kronolith uses is abstracted such that it could work with any backend, but
+right now we provide SQL (abstracted to support most databases, including
+MySQL, PostgreSQL, Oracle, and MSSQL via PEAR DB) and MCAL backend
+libraries.
+EOF

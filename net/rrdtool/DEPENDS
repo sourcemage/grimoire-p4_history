@@ -1,0 +1,10 @@
+depends  perl  &&
+depends  libpng  '--enable-local-libpng'  &&
+depends  zlib  '--enable-local-zlib'  &&
+
+if [ "$RRDPHP" = "y" ] ; then
+  depends PHP
+fi &&
+
+optional_depends  tcl  '' ''  \
+        'Enable interface for the TCL programming language?'

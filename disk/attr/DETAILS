@@ -1,0 +1,16 @@
+           SPELL=attr
+         VERSION=2.4.19
+          SOURCE=${SPELL}-${VERSION}.src.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://oss.sgi.com/projects/xfs/download/cmd_tars/$SOURCE
+          MD5[0]=dc92904248a4bfa91f39c8e12734cdde
+        WEB_SITE=http://oss.sgi.com/projects/xfs/
+         ENTERED=20020219
+         UPDATED=20031121
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Extended Attribute (EA) support for XFS Filesystems."
+      MAKE_NJOBS=1
+cat << EOF
+Extended Attribute (EA) support for XFS Filesystems.
+EOF

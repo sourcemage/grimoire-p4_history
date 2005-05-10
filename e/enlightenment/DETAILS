@@ -1,0 +1,31 @@
+           SPELL=enlightenment
+
+if [ "$DR17" = "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-0.17-cvs.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-0.17-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/e
+          MD5[0]=IGNORE
+else
+         VERSION=0.16.7.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+          MD5[0]=ec1e616fbe2a1568c6f2b0b9e443d947
+fi
+
+       BUILD_API=2
+        WEB_SITE=http://www.enlightenment.org/
+      LICENSE[0]=BSD
+         ENTERED=20010922
+         UPDATED=20040517
+           SHORT="enlightenment is a themeable, fast, flexible X11 windows Manager."
+cat << EOF
+Enlightenment is a themeable, fast, flexible, and powerful window
+manager that is designed to be as configurable as possible in both look
+and feel. In addition, Enlightenment provides an applet API that
+provides functionality somewhere between the GNOME applet system and
+Dock Apps from Afterstep/WindowMaker. The current design aim is for
+Enlightenment to become a desktop shell.
+EOF

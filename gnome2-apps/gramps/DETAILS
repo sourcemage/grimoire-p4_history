@@ -1,0 +1,25 @@
+           SPELL=gramps
+if [ "${DEVEL}" == "y"  ]; then
+         VERSION=1.1.3
+          MD5[0]='222cd9bc0a046b826d5cbbde2623cdd9'
+else
+         VERSION=1.0.10
+          MD5[0]='f36c0790d96e7225452221ae1c840a56'
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      LICENSE[0]="GPL"
+      MAKE_NJOBS=1
+       BUILD_API=2
+            DOCS="FAQ NEWS README ChangeLog"
+        WEB_SITE=http://gramps.sourceforge.net/
+      MAINTAINER=rcook@wyrms.net
+         ENTERED=20030216
+         UPDATED=20041031
+           SHORT="Gnome2 genealogy program written in Python"
+cat << EOF
+Gramps (Genealogical Research and Analysis Management Programming System) 
+is an open source genealogy program. It is written in Python, using the 
+GTK/GNOME interface.
+EOF

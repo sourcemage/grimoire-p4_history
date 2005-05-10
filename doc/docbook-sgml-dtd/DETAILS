@@ -1,0 +1,23 @@
+           SPELL=docbook-sgml-dtd
+         VERSION=4.4
+          SOURCE=docbook-$VERSION.zip
+         SOURCE2=docbk31.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.docbook.org/sgml/$VERSION/$SOURCE
+  SOURCE2_URL[0]=http://www.docbook.org/sgml/3.1/$SOURCE2
+          MD5[0]='f89e1bd0b2c7a361e3f1f739e16b5d0d'
+          MD5[1]='432749c0c806dbae81c8bcb70da3b5d3'
+      LICENSE[0]=http://www.oasis-open.org/who/intellectualproperty.php
+      LICENSE[1]=http://www.oasis-open.org/who/intellectualproperty.php
+        WEB_SITE=http://www.docbook.org
+         ENTERED=20040809
+         UPDATED=20050405
+     GATHER_DOCS="off"
+           SHORT="DocBook SGML DTDs"
+cat <<EOF
+DocBook is an XML/SGML vocabulary particularly well suited to books
+and papers about computer hardware and software (though it is by no
+means limited to these applications).
+
+This spell contains SGML DTDs.
+EOF

@@ -1,0 +1,10 @@
+mk_source_dir $SOURCE_DIRECTORY &&
+
+cd $SOURCE_DIRECTORY            &&
+mkdir 4.4 3.1                   &&
+
+cd $SOURCE_DIRECTORY/4.4        &&
+unpack $SOURCE ${MD5[0]}        &&
+
+cd $SOURCE_DIRECTORY/3.1        &&
+unpack $SOURCE2 ${MD5[1]}

@@ -1,0 +1,36 @@
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+then
+
+  if    query  "Do you want Ada support?"  n
+  then  echo  'OPTS="${OPTS}  --enable-ada"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-ada"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want C++ support?"  y
+  then  echo  'OPTS="${OPTS}  --enable-cpp"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-cpp"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want fortran support?"  n
+  then  echo  'OPTS="${OPTS}  --enable-fortran"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-fortran"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want pascal support?"  n
+  then  echo  'OPTS="${OPTS}  --enable-pascal"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-pascal"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want clearcase support?"  n
+  then  echo  'OPTS="${OPTS}  --enable-clearcase"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-clearcase"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want visualboy advance support?"  n
+  then  echo  'OPTS="${OPTS}  --enable-vba"'   >>  ${SPELL_CONFIG}
+  else  echo  'OPTS="${OPTS}  --disable-vba"'  >>  ${SPELL_CONFIG}
+  fi
+
+  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
+fi
+source $SECTION_DIRECTORY/KDE_CONFIGURE

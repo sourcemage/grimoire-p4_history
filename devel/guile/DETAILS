@@ -1,0 +1,17 @@
+           SPELL=guile
+         VERSION=1.6.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+          MD5[0]=70b971679eb8b45e447f058741970744
+        WEB_SITE=http://www.gnu.org/software/guile
+         ENTERED=20010922
+         UPDATED=20010922
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Portable, embeddable Scheme implementation"
+cat << EOF
+Guile is a portable, embeddable Scheme implementation written in C.
+Guile provides a machine independent execution platform that can be
+linked in as a library when building extensible programs.
+EOF

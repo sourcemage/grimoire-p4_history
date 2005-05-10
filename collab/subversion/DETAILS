@@ -1,0 +1,20 @@
+           SPELL=subversion
+         VERSION=1.1.4
+          SOURCE=${SPELL%-*}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
+   SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
+          MD5[0]='2bd3b521f7de7b861c54aedcfee15046'
+        WEB_SITE=http://subversion.tigris.org/
+         ENTERED=20020528
+         UPDATED=20050122
+      LICENSE[0]=APACHE
+       BUILD_API=2
+            DOCS='doc/*'
+           SHORT='Compelling replacement for CVS'
+cat << EOF
+The goal of the Subversion project is write a version control system that takes
+over CVS's current and future user base 1. The first release has all the major
+features of CVS, plus certain new features that CVS users often wish they had.
+In general, Subversion works like CVS, except where there's a compelling reason
+to be different.
+EOF

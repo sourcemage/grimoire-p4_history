@@ -1,0 +1,31 @@
+           SPELL=winedoc
+         VERSION=NA
+          SOURCE=wine-user.ps
+         SOURCE2=winelib-user.ps
+         SOURCE3=wine-devel.ps
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL
+   SOURCE_URL[0]=http://www.winehq.org/docs/$SOURCE
+  SOURCE2_URL[0]=http://www.winehq.org/docs/$SOURCE2
+  SOURCE3_URL[0]=http://www.winehq.org/docs/$SOURCE3
+          MD5[0]='d6f9634f946eca9f16f96383c0cdb572'
+          MD5[1]='f029edc9f2b551ddd03663467e13a860'
+          MD5[2]='dc9508e0faa1faaa1ae9a378147275e7'
+        WEB_SITE=http://www.winehq.org/site/documentation
+         ENTERED=20020601
+         UPDATED=20020601
+         ARCHIVE="off"
+      LICENSE[0]=FDL
+           SHORT="Documentation for Wine"
+cat << EOF
+Documentation for Wine in PostScript format.
+
+The package contains:
+Wine User Guide
+ - How to use and configure Wine for running Windows applications.
+
+Winelib User Guide
+ - How to use Wine to port Windows applications to Linux.
+
+Wine Developers Guide
+ - How to hack on Wine.
+EOF

@@ -1,0 +1,30 @@
+if  !  grep  -q  "CONFIGURED"  ${SPELL_CONFIG}
+then
+
+  if    query  "Do you want toolbar support?"  y
+  then  echo   'OPTS="${OPTS}  ----with-toolbars=yes"'     >>  ${SPELL_CONFIG}
+  else  echo   'OPTS="${OPTS}  ----without-toolbars=no"'   >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want generic drag and drop support?"  y
+  then  echo   'OPTS="${OPTS}  --with-dragndrop=yes"'     >>  ${SPELL_CONFIG}
+  else  echo   'OPTS="${OPTS}  --without-dragndrop=no"'   >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Do you want menubars?" y
+  then  echo   'OPTS="${OPTS}  --with-menubars=lucid"'   >>  ${SPELL_CONFIG}
+  else  echo   'OPTS="${OPTS}  --without-menubars=no"'   >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Support TTYs?" y
+  then  echo   'OPTS="${OPTS}  --with-tty=yes"'   >>  ${SPELL_CONFIG}
+  else  echo   'OPTS="${OPTS}  --with-tty=no"'    >>  ${SPELL_CONFIG}
+  fi
+
+  if    query  "Support POP for mail retrieval?" y
+  then  echo   'OPTS="${OPTS}  --with-pop=yes"'   >>  ${SPELL_CONFIG}
+  else  echo   'OPTS="${OPTS}  --with-pop=no"'    >>  ${SPELL_CONFIG}
+  fi
+
+  echo  'CONFIGURED="y"'  >>  ${SPELL_CONFIG}
+fi

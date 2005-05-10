@@ -1,0 +1,23 @@
+           SPELL=samba
+         VERSION=3.0.14a
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://us1.samba.org/samba/ftp/$SOURCE
+   SOURCE_URL[1]=ftp://us2.samba.org/pub/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://www.mirror.ac.uk/sites/ftp.samba.org/$SOURCE
+   SOURCE_URL[3]=ftp://de.samba.org/samba.org/$SOURCE
+   SOURCE_URL[4]=http://us1.samba.org/samba/ftp/old-versions/$SOURCE
+          MD5[0]=fac245812e5de883bb99a8299f8845b8
+        WEB_SITE=http://www.samba.org/
+         ENTERED=20010922
+         UPDATED=20040905
+      LICENSE[0]=GPL
+       BUILD_API=2
+            DOCS="Manifest Read-Manifest-Now Roadmap WHATSNEW.txt examples/"
+           SHORT="File and print services to SMB/CIFS clients"
+cat << EOF
+SMB server to provide Windows NT and LAN manager-style file and print
+services to SMB clients such as Windows. A NetBIOS nameserver which
+can provide browsing support. A ftp-like SMB client for accessing PC
+resources from Unix. 
+EOF

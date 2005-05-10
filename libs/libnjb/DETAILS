@@ -1,0 +1,23 @@
+           SPELL=libnjb
+if  [  "$CVS"  ==  "y"  ];  then
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/libnjb:libnjb
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=c1541e6db3ab72f7ec65cfa0e2be5530
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://libnjb.sourceforge.net/
+         ENTERED=20020917
+         UPDATED=20040108
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Libraries for the Nomad Jukebox"
+cat << EOF
+libnjb is a C library and API for communicating with the Creative Nomad JukeBox digital audio player under BSD and Linux.
+EOF

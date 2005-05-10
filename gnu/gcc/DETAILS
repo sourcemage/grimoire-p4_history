@@ -1,0 +1,17 @@
+           SPELL=gcc
+         VERSION=3.4.3
+          SOURCE=gcc-core-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
+   SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
+   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+          MD5[0]=58e07da3cf68f06976d82ac1baf3d1bd
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://gcc.gnu.org/
+         ENTERED=20040420
+         UPDATED=20040619
+            DOCS="$DOCS INSTALL"
+           SHORT="the GNU C compiler"
+cat << EOF
+The GNU C compiler and the core of the GNU compiler collection.
+EOF

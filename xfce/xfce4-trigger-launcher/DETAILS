@@ -1,0 +1,47 @@
+           SPELL=xfce4-trigger-launcher
+         VERSION=4.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.xfce.org/archive/xfce-$VERSION.1/src/$SOURCE
+        WEB_SITE=http://www.xfce.org
+          MD5[0]=f1c073ed1cbe572d35dff70dca586bba
+      LICENSE[0]=BSD
+         ENTERED=20030608
+         UPDATED=20030608
+           SHORT="This is a launcher with two states. Like a trigger."
+cat << EOF
+This is a launcher with two states. Like a trigger.
+
+You use it like this:
+        First, create a script which accepts these arguments:
+                - none
+                        to check if on or off and output 0 or 1 (to stdout)
+
+                - the value 1
+                        to set the state to on
+
+                - the value 0
+                        to set the state to off
+
+        If it can be used like this, its correct:
+                $ blah/foo
+                0
+                $ blah/foo 1
+                $ blah/foo
+                1
+                $ blah/foo 1
+                $ blah/foo
+                1
+                $ blah/foo 0
+                $ blah/foo
+                0
+                $ blah/foo 1
+                $ blah/foo
+                1
+
+        Give this script to the launcher.
+
+        Also two icons.
+
+        And you are set ;)
+EOF

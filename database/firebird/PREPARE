@@ -1,0 +1,21 @@
+cat <<EOF
+ Classic Server install needs services and xinet.d
+ Super Server install needs init.d
+EOF
+config_query_list WHICH "which version to build?" stable devel cvs
+case $WHICH in
+  stable)
+# temporary error message
+  if [ `g++ -dumpversion | cut -c -3` == 3.4 ]; then
+    message this version of firebird will not compile with gcc-3.4.x
+    return 1
+  fi
+;;
+  devel)
+#    message a devel version is not currently available
+#    return 1
+;;
+  cvs)
+;;
+esac
+true

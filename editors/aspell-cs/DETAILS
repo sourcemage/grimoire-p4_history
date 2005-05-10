@@ -1,0 +1,18 @@
+           SPELL=aspell-cs
+       BUILD_API=2
+   ASPELL_BRANCH=6
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`	   
+         VERSION=20040614-1
+          SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
+   SOURCE_URL[0]=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+          MD5[0]=61485f3803629860cb5b76064156204f
+        WEB_SITE=http://aspell.sourceforge.net
+      LICENSE[0]=UNKNOWN
+         ENTERED=20011028
+         UPDATED=20011028
+           SHORT="Czech aspell dictionary"
+cat << EOF
+Czech aspell dictionary
+EOF

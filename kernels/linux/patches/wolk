@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DESCRIPTION="Working Overloaded Linux Kernel"
+SHORT="Working Overloaded Linux Kernel"
+HELP="The WOLK's are development kernels and for testing purpose only, containing
+many useful patches from many projects. Use it in production at your own
+risk. Goal: Stability, provide many useful patches."
+VERSIONS="2.4.18-wolk3.8
+2.4.18-wolk3.7
+2.4.18-wolk3.6"
+MD5S[0]=b3e0c7cae0e3ed99382ffdc8fb3924e7
+MD5S[1]=59800e46f9809b968984b9c2c1cdb8aa
+MD5S[2]=ebc16599e204fd4d54d836e38ef18a5c
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}-patch.patch.bz2
+SOURCE${COUNTER}_URL=\$SOURCEFORGE_URL/wolk/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

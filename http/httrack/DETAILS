@@ -1,0 +1,22 @@
+           SPELL=httrack
+         VERSION=3.32-2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-3.32.03
+   SOURCE_URL[0]=http://www.httrack.com/$SOURCE
+   SOURCE_URL[1]=http://httrack.free.fr/mirror/$SOURCE
+          MD5[0]=18b5b5239858fc6ddccfa221e1fe8b85
+        WEB_SITE=http://www.httrack.com/
+         ENTERED=20020210
+         UPDATED=20040221
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A multi-thread and feature-rich offline browser"
+cat << EOF
+HTTrack is an easy-to-use offline browser utility. It allows you to download
+a Web site from the Internet to a local directory, building recursively all
+directories, getting HTML, images, and other files from the server to your
+ computer. HTTrack arranges the original site's relative link-structure. 
+Simply open a page of the mirrored Web site in your browser, and you can
+browse the site from link to link, as if you were viewing it online. HTTrack
+can also update an existing mirrored site, and resume interrupted downloads.
+EOF

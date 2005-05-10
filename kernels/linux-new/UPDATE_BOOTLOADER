@@ -1,0 +1,266 @@
+cut_label()  {
+
+  if    ((  $(  echo  $1  |  wc  -c  )  >  15  ));  then
+    echo  "$1"            |
+    sed   "s/linux-//"    |
+    cut   -c1-15
+  else
+    echo  "$1"
+  fi
+
+}
+
+root_dev()
+{
+	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	ROOT_DEV=${ROOT_DEV/\/dev\//}
+	BOOT_DEV=${BOOT_DEV/\/dev\//}
+}
+# deprecated for template_entry
+lilo_image_entry()  {
+
+if  grep  -q  password  /etc/lilo.conf
+then
+  cat  <<  EOF
+
+image			=	/boot/vmlinubz-$VERSION
+	label		=	$(  cut_label linux-$VERSION  )
+	read-only
+	restricted
+EOF
+else
+  cat  <<  EOF
+
+image			=	/boot/vmlinubz-$VERSION
+	label		=	$(  cut_label linux-$VERSION  )
+	read-only
+EOF
+fi
+
+}
+
+
+template_entry() {
+	local template_file=""
+	case "$boot_loader" in
+		grub)	template_file="/boot/grub/menu.lst.tmplt"
+			;;
+		lilo)   template_file="/etc/lilo.conf.tmplt"
+			;;
+		silo)	template_file="/etc/silo.conf.tmplt"
+			;;
+		yaboot)	template_file="/etc/yaboot.conf.tmplt"
+			;;
+		*)
+			echo "Don't know what $boot_loader is"
+			return 1
+			;;
+	esac
+
+	export ROOT_DEV
+	export BOOT_DEV
+	eval $template_file
+}
+
+
+update_lilo()  {
+
+  if  !  grep  -q  "${VERSION}$"  /etc/lilo.conf;  then
+
+    rm  -rf  /etc/lilo.conf.new
+    cp  /etc/lilo.conf  /etc/lilo.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/lilo.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+    
+      echo  $LINE  >>  /etc/lilo.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
+    fi
+
+    mv  /etc/lilo.conf.new  /etc/lilo.conf
+
+  fi
+
+  /sbin/lilo
+
+}
+
+
+update_silo()  {
+
+  if  !  grep  -q  "${VERSION}$"  /etc/silo.conf;  then
+
+    rm  -rf  /etc/silo.conf.new
+    cp  /etc/silo.conf  /etc/silo.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/silo.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`template_entry`"  >>  /etc/silo.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+    
+      echo  $LINE  >>  /etc/silo.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`template_entry`"  >>  /etc/silo.conf.new
+    fi
+
+    cp  /etc/silo.conf.new  /etc/silo.conf
+
+  fi
+
+  echo  "Updated /etc/silo.conf"
+
+}
+
+update_yaboot()  {
+
+  if  !  grep  -q  "$VERSION"  /etc/yaboot.conf;  then
+
+    rm  -rf  /etc/yaboot.conf.new
+    cp  /etc/yaboot.conf  /etc/yaboot.conf.old
+
+    (( IMAGE_COUNT=0  ))
+
+    for  LINE  in  `cat /etc/yaboot.conf`;  do
+
+      if   echo  $LINE  |  grep  -q  "image"  ||
+           echo  $LINE  |  grep  -q  "other"  ;  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  -e  "`template_entry`"  >>  /etc/yaboot.conf.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      if  ((  IMAGE_COUNT == 14  ));  then
+        break
+      fi
+
+      echo  $LINE  >>  /etc/yaboot.conf.new
+
+    done
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`template_entry`"  >>  /etc/yaboot.conf.new
+    fi
+
+    mv  /etc/yaboot.conf.new  /etc/yaboot.conf
+
+  fi
+
+  /usr/sbin/ybin
+
+}
+
+
+# deprecated for template_entry
+grub_image_entry() {
+
+local KERNEL=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+KERNEL=${KERNEL%\/vm*}
+
+local GROOT=$(grep "^root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
+if [[ $GROOT != "" ]]
+then
+	GROOT="root $GROOT"
+fi
+local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
+
+local KEXTRA=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
+
+local KINITRD=$(grep "^initrd\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
+if [[ $KINITRD != "" ]]
+then
+	KINITRD="initrd $KINITRD"
+fi
+cat << EOF
+title Source Mage GNU/Linux Kernel $VERSION
+$GROOT
+kernel $KERNEL/vmlinubz-$VERSION root=$KROOT $KEXTRA
+$KINITRD
+EOF
+
+}
+
+update_grub() {
+
+  local MENU=/boot/grub/menu.lst
+  
+  if  !  grep  -q  "vmlinubz-${VERSION} "  $MENU;  then
+
+    rm  -rf  $MENU.old
+    rm  -rf  $MENU.new
+    cp  $MENU  $MENU.old
+
+    IMAGE_COUNT=0
+
+    while read LINE; do
+
+      if   echo  $LINE  |  grep  -q  "^title";  then
+        if  (( IMAGE_COUNT  == 0  ));  then
+          echo  "`template_entry`"  >>  $MENU.new
+          echo  >>  $MENU.new
+        fi
+        ((  IMAGE_COUNT++  ))
+      fi
+
+      echo  "$LINE"  >>  $MENU.new
+
+    done < $MENU
+
+    if  ((  IMAGE_COUNT ==  0  ));  then
+      echo  -e  "`template_entry`"  >>  $MENU.new
+    fi
+
+    mv  $MENU.new  $MENU
+
+  fi
+
+}
+
+# Changed from 'case $BUILD  in' as $BUILD is not defined yet
+root_dev
+case  `uname -m`  in
+  powerpc)  boot_loader="yaboot" update_yaboot  ;;
+   sparc*)  boot_loader="silo" update_silo    ;;
+        *)  if  [  -f /etc/lilo.conf  ]
+            then
+	      boot_loader="lilo"
+              update_lilo
+            fi
+            if  [  -f  /boot/grub/menu.lst  ]
+            then
+	      boot_loader="grub"
+              update_grub
+            fi             ;;
+esac

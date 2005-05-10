@@ -1,0 +1,24 @@
+diff -uNr udev-048.orig/Makefile udev-048/Makefile
+--- udev-048.orig/Makefile	2004-12-10 00:45:48.224822032 +0100
++++ udev-048/Makefile	2004-12-10 00:45:48.224822000 +0100
+@@ -421,8 +421,7 @@
+ 	- rm $(mandir)/man8/udevd.8
+ 	- rm $(mandir)/man8/udevsend.8
+ 
+-install: install-config install-man install-dev.d all
+-	$(INSTALL) -d $(DESTDIR)$(udevdir)
++install: install-man install-dev.d all
+ 	$(INSTALL) -d $(DESTDIR)$(hotplugdir)
+ 	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
+ 	$(INSTALL_PROGRAM) -D $(DAEMON) $(DESTDIR)$(sbindir)/$(DAEMON)
+@@ -431,10 +430,6 @@
+ 	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
+ 	- ln -f -s $(sbindir)/udev $(DESTDIR)$(sbindir)/$(STARTER)
+ 	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
+-ifndef DESTDIR
+-	- killall $(DAEMON)
+-	- rm -rf $(udevdb)
+-endif
+ 	@extras="$(EXTRAS)" ; for target in $$extras ; do \
+ 		echo $$target ; \
+ 		$(MAKE) prefix=$(prefix) LD="$(LD)" SYSFS="$(SYSFS)" \

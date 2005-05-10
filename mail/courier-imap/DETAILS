@@ -1,0 +1,18 @@
+           SPELL=courier-imap
+         VERSION=3.0.8
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/courier/$SOURCE
+          MD5[0]=862f7bb3a987f24c2dc93d1726e3e955
+   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+        WEB_SITE=http://www.courier-mta.org
+         ENTERED=20020309
+         UPDATED=20041009
+         LICENSE=GPL
+           SHORT="IMAP server"
+cat << EOF
+Courier-IMAP is a server that provides IMAP access to Maildirs. This
+IMAP server does NOT handle traditional mailbox files (/var/spool/mail,
+and derivatives), it was written for the specific purpose of providing
+IMAP access to Maildirs.
+EOF

@@ -1,0 +1,27 @@
+mk_source_dir  $SOURCE_DIRECTORY  &&
+unpack  $SOURCE  ${MD5[0]}        &&
+cd  $SOURCE_DIRECTORY             &&
+
+# fixes the "nsBuildID.h: No such file or directory" problem
+patch  -p1  < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff     &&
+patch  -p0  < $SCRIPT_DIRECTORY/libreg-standalone.diff  &&
+
+if  installed_version  freetype2  |  grep  -q  '2\.1\.[89]';  then
+  patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch
+fi  &&
+
+if gcc -dumpversion | grep -q "^4"; then
+  patch  -p0  <  $SCRIPT_DIRECTORY/gcc4.patch
+fi  &&
+
+# Enigmail extensions
+if  echo  "$MOZILLA_EXT"  |  grep  -q  'enigmail';  then
+  cd  $SOURCE_DIRECTORY/extensions  &&
+  unpack  $SOURCE2  ${MD5[1]}       &&
+  unpack  $SOURCE3  ${MD5[2]}
+fi  &&
+
+# remove /root/.mozconfig, it causes too much trouble
+if  [  -f  /root/.mozconfig  ];  then
+  rm  -f  /root/.mozconfig
+fi

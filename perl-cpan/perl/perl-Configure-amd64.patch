@@ -1,0 +1,14 @@
+--- Configure   2005-05-17 02:50:32.000000000 -0700
++++ Configure2  2005-05-17 02:57:21.000000000 -0700
+@@ -1230,9 +1230,9 @@
+ groupstype=''
+ libnames=''
+ : change the next line if compiling for Xenix/286 on Xenix/386
+-xlibpth='/usr/lib/386 /lib/386'
++xlibpth='/usr/lib/386 /lib/386 /lib64 /usr/lib64'
+ : Possible local library directories to search.
+-loclibpth="/usr/local/lib /opt/local/lib /usr/gnu/lib"
++loclibpth="/usr/local/lib usr/local/lib64 /opt/local/lib /usr/gnu/lib"
+ loclibpth="$loclibpth /opt/gnu/lib /usr/GNU/lib /opt/GNU/lib"
+
+ : general looking path for locating libraries

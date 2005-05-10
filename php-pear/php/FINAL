@@ -1,0 +1,22 @@
+INC="LoadModule php5_module        libexec/libphp5.so
+AddType application/x-httpd-php .php .phtml"           &&
+
+if  [  -e  /etc/httpd/httpd.conf  ];  then
+  MOD="/etc/httpd/httpd.conf"
+  grep  -q  php5_module  $MOD  ||  echo  "$INC"  >>  $MOD
+fi  &&
+
+if  [  -e  /etc/httpsd/httpd.conf  ];  then
+  MOD="/etc/httpsd/httpd.conf"
+  grep  -q  php5_module  $MOD  ||  echo  "$INC"  >>  $MOD
+fi  &&
+
+#
+#  Remove php4
+#
+sedit  "s:LoadModule *php4_module *libexec/libphp4.so::g"  $MOD  &&
+
+#
+#  php does not need AddModule
+#
+sedit  "s:AddModule mod_php5.c:\#AddModule mod_php5.c:"  $MOD

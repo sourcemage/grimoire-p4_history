@@ -1,0 +1,20 @@
+           SPELL=udev
+         VERSION=057
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${KERNEL_URL}/pub/linux/utils/kernel/hotplug/${SOURCE}
+          MD5[0]=7397f024ed63463d1d6d5bed3dd67a98
+        WEB_SITE=http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+         ENTERED=20030725
+         UPDATED=20050423
+            DOCS="ChangeLog COPYING FAQ README docs/*"
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Devfs in userspace using sysfs and hotplug"
+cat << EOF
+udev is a implementation of devfs in userspace using sysfs and
+/sbin/hotplug.  It requires a 2.5/2.6 kernel to run properly.  The major
+changes since the last release is that persistent device naming schemes
+are now implemented.  Yeah, it's pretty rough, but it does prove that
+the concept is sane and will end up working well for users
+EOF

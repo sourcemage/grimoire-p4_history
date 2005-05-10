@@ -1,0 +1,24 @@
+depends autoconf &&
+depends libtool  &&
+depends  bison  &&
+
+if  [  "$USE_BUNDLED_LIBS"  !=  'y'  ];  then
+  depends  apr       '--with-apr=/usr'       &&
+  depends  apr-util  '--with-apr-util=/usr'  &&
+  depends  neon      '--with-neon=/usr'
+fi  &&
+
+optional_depends  openssl                              \
+                  "--with-ssl"                         \
+                  "--without-ssl"                      \
+                  "for SSL/TLS support (recommended)"  &&
+
+optional_depends  swig                                              \
+                  "--with-swig"                                     \
+                  "--without-swig"                                  \
+                  "for Python bindings with SWIG, not recommended"  &&
+
+optional_depends  cyrus-sasl                       \
+                  ""                               \
+                  ""                               \
+                  "for Cyrus SASL authentication"

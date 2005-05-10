@@ -1,0 +1,11 @@
+--- hydrogen-0.9.1/hydrogen_gui/PreferencesDialog.cpp.old	2005-01-03 16:36:14.964818536 +0100
++++ hydrogen-0.9.1/hydrogen_gui/PreferencesDialog.cpp	2005-01-03 16:39:09.457291648 +0100
+@@ -84,7 +84,7 @@
+ 
+ 	// ALSA
+ 	m_pAlsaBufferSizeTxt->setValue( pPreferencesMng->getAlsaBufferSize() );
+-	m_pAlsaDeviceEdit->setText( pPreferencesMng->getAlsaAudioDevice() );
++	m_pAlsaDeviceEdit->setText( QString(pPreferencesMng->getAlsaAudioDevice().c_str() ) ); 
+ 	switch ( pPreferencesMng->getAlsaAudioDeviceSampleRate() ) {
+ 		case 44100:
+ 			m_pAlsaSampleRateComboBox->setCurrentItem( 0 );

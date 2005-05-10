@@ -1,0 +1,20 @@
+           SPELL=amaya
+         VERSION=8.7
+          SOURCE=$SPELL-src-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.w3.org/Amaya/Distribution/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.w3.org/pub/amaya/$SOURCE
+   SOURCE_URL[2]=ftp://mirror.aarnet.edu.au/pub/amaya/$SOURCE
+          MD5[0]=2e1ca1f67f234142f8f12928c8495cde
+        WEB_SITE=http://www.w3.org/Amaya/
+         ENTERED=20011115
+         UPDATED=20020112
+      LICENSE[0]=W3C
+       BUILD_API=2
+           SHORT="Browser and WYSIWYG web authoring tool"
+cat << EOF
+Amaya is a complete web browsing and authoring environment and comes
+equipped with a WYSIWYG style of interface, similar to that of the most
+popular commercial browsers. With such an interface, users do not need
+to know the HTML or CSS languages.
+EOF

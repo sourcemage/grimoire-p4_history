@@ -1,0 +1,42 @@
+make_normal                              &&
+default_install                          &&
+popd                                     &&
+
+mkdir  -p  /usr/share/samba/codepages    &&
+mkdir  -p  /var/{spool,cache,log}/samba  &&
+
+mkdir  -m 700  -p  /etc/samba/private  &&
+if  [  !  -f  /etc/samba/private/smbpasswd  ];  then
+  touch       /etc/samba/private/smbpasswd  &&
+  chmod  600  /etc/samba/private/smbpasswd
+fi  &&
+
+#
+# Install libwinbind if it exists
+#
+if  [  -f  source/nsswitch/libnss_winbind.so  ]
+then
+  echo  "Installing nsswitch/libnss_winbind.so to /lib"                  &&
+  cp  source/nsswitch/libnss_winbind.so  /lib                            &&
+  echo  "Symlinking /lib/libnss_winbind.so.2 to /lib/libnss_winbind.so"  &&
+  ln  -sf  /lib/libnss_winbind.so                                        \
+           /lib/libnss_winbind.so.2
+fi  &&
+
+if  [  -f  source/nsswitch/libnss_wins.so  ]
+then
+  echo  "Installing nsswitch/libnss_wins.so to /lib"               &&
+  cp  source/nsswitch/libnss_wins.so  /lib                         &&
+  echo  "Symlinking /lib/libnss_wins.so.2 to /lib/libnss_wins.so"  &&
+  ln  -sf  /lib/libnss_wins.so                                     \
+           /lib/libnss_wins.so.2
+fi  &&
+
+cp  -f  examples/smb.conf.default  /etc/samba/  &&
+if                       [  !  -f  /etc/samba/smb.conf  ];  then
+  cp  /etc/samba/smb.conf.default  /etc/samba/smb.conf
+fi &&
+
+if [ "$SUID" = "y" ]; then
+  chmod u+s ${INSTALL_ROOT}/usr/bin/smbmnt ${INSTALL_ROOT}/usr/bin/smbumount
+fi

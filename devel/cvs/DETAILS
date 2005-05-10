@@ -1,0 +1,22 @@
+           SPELL=cvs
+         VERSION=1.12.9
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=https://ccvs.cvshome.org/files/documents/19/200/$SOURCE
+          MD5[0]='8063f1ed009e813df82b2c160c182d99'
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.cvshome.org/
+         ENTERED=20010922
+         UPDATED=20040823
+           SHORT='CVS is a Concurrent Versioning System'
+cat << EOF
+CVS is a version control system, which allows you to keep old versions
+of files (usually source code), keep a log of who, when, and why changes
+occurred, etc., like RCS or SCCS. Unlike the simpler systems, CVS does
+not just operate on one file at a time or one directory at a time, but
+operates on hierarchical collections of directories consisting of
+version controlled files. CVS helps to manage releases and to control
+the concurrent editing of source files among multiple authors. CVS
+allows triggers to enable/log/control various operations and works well
+over a wide area network.
+EOF

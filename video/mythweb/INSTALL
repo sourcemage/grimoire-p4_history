@@ -1,0 +1,16 @@
+local  MYTHWEB_ROOT  &&
+
+if  [  -e  ${INSTALL_ROOT}/etc/httpd/httpd.conf  ];  then
+  MYTHWEB_ROOT=`grep  '^DocumentRoot'  ${INSTALL_ROOT}/etc/httpd/httpd.conf   |
+              cut  -d\"  -f2`
+elif  [  -e  ${INSTALL_ROOT}/etc/httpsd/httpd.conf  ];  then
+  MYTHWEB_ROOT=`grep  '^DocumentRoot'  ${INSTALL_ROOT}/etc/httpsd/httpd.conf  |
+              cut  -d\"  -f2`
+fi  &&
+
+if  [  "$MYTHWEB_ROOT"  =  ""  ];  then
+  MYTHWEB_ROOT=/usr/share
+fi  &&
+
+mkdir  -p  ${INSTALL_ROOT}${MYTHWEB_ROOT}/${SPELL}   &&
+cp  -r  mythweb/*  ${INSTALL_ROOT}${MYTHWEB_ROOT}/${SPELL}/

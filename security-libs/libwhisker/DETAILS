@@ -1,0 +1,22 @@
+           SPELL=libwhisker
+         VERSION=1.8
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://download.sourcemage.org/mirror/${SOURCE}
+   SOURCE_URL[1]=http://www.wiretrip.net/rfp/${SPELL}/${SOURCE}
+          MD5[0]='6a4ad10e3127e55b7af8f49f8d96ea8e'
+      LICENSE[0]=GPL2
+         ENTERED=20030727
+         UPDATED=20030727
+        WEB_SITE=http://www.wiretrip.net/rfp/lw.asp
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="Libwhisker is a Perl module geared specificly for HTTP testing."
+cat << EOF
+Libwhisker is a Perl module geared specificly for HTTP testing.
+Libwhisker has a few design principles:
+
+- Portable: runs with 0 changes on Unix, Windows, etc.
+- Flexible: designed with a 'no rules' approach
+- Contained: designed to not require external modules when possible
+- Localized: does not require installation to use
+EOF

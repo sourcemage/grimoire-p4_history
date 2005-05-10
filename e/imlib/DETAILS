@@ -1,0 +1,21 @@
+           SPELL=imlib
+         VERSION=1.9.14
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/imlib/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+          MD5[0]='12861f1a6eff5159e5698d5529eebf99'
+        WEB_SITE=http://enlightenment.org
+         ENTERED=20010922
+         UPDATED=20030721
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+       BUILD_API=2
+           SHORT="An advanced replacement library for libraries like libXpm"
+cat << EOF
+IMLIB
+Imlib is an advanced replacement library for libraries like libXpm that
+provides many more features with much greater flexibility and speed. It
+was originally written for E, now used by the GNOME Project.
+EOF

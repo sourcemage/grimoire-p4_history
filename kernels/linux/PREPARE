@@ -1,0 +1,223 @@
+
+patch_list(){
+  LIST=$(ls ${PATCH_DIR})
+  for  LINE in $LIST;  do
+    source ${PATCH_DIR}/${LINE}
+    echo $LINE
+    echo "[${!LINE= }] ${DESCRIPTION}"
+    echo $SHORT
+  done
+}
+
+patch_versions(){
+  echo "off"
+  echo "Don't apply"
+  for  VERSION in $VERSIONS;  do
+    echo $VERSION
+    echo "Version"
+  done
+  if [[ "${CUSTOM}" != "" ]]; then
+    echo "custom"
+    echo "Custom config"
+  fi
+}
+
+patch_menu() {
+  local DEFAULT=${!PATCH}
+  local COMMAND
+  while true
+  do
+    COMMAND=$( $DIALOG --title "Select Patch Version" \
+           --default-item "$DEFAULT" --menu           \
+           "${HELP}" 0 0 0 $(patch_versions)
+    )
+    retval=$?
+    if [[ "$retval" == "0" ]]; then
+      if [[ ${COMMAND} == "custom" ]]; then
+        $CUSTOM
+        eval "${PATCH}=custom"
+      elif [[ ${COMMAND} != "off" ]]; then
+        eval "${PATCH}=${COMMAND}"
+      else
+        eval "unset ${PATCH}"
+      fi
+      break
+    else
+      break
+    fi
+  done
+}
+
+kernel_menu() {
+  local DEFAULT=${KERNEL_VERSION}
+  local COMMAND
+  while true
+  do
+    COMMAND=$( $DIALOG --title "Select Kernel Version"       \
+           --item-help --default-item "$DEFAULT" --menu      \
+           "Select a kernel version to use" 0 0 0            \
+           "CUSTOM"             "Manually enter some other Version Number"         "You can enter any valid version number" \
+           "LATEST_2_6"         "Latest stable Kernel Release"                     "Currently at version ${LATEST_2_6}" \
+           "LATEST_2_6_PRE"     "prepatched 2.6.x Kernel"                          "Currently at version ${LATEST_2_6_PRE}" \
+           "LATEST_2_4"         "2.4.x Kernel"                                     "Currently at version ${LATEST_2_4}" \
+           "LATEST_2_4_PRE"     "prepatched 2.4.x Kernel"                          "Currently at version ${LATEST_2_4_PRE}" \
+           "LATEST_2_2"         "2.2.x Kernel"                                     "Currently at version ${LATEST_2_2}" \
+           "LATEST_2_2_PRE"     "prepatched 2.2.x Kernel"                          "Currently at version ${LATEST_2_2_PRE}" \
+           "LATEST_2_0"         "2.0.x Kernel for the nostalgic of you"            "Currently at version ${LATEST_2_0}" \
+           "LATEST_2_0_PRE"     "prepatched 2.0.x Kernel"                          "Currently at version ${LATEST_2_0_PRE}" \
+           "LATEST_2_4_AC"      "2.4.x Kernel with Alan Cox Patch"                 "Currently at version ${LATEST_2_4_AC}" \
+           "LATEST_2_6_AC"      "2.6.x Kernel with Alan Cox Patch"                 "Currently at version ${LATEST_2_6_AC}" \
+           "LATEST_2_6_MM"      "2.6.x Kernel with Andrew Mortons Patch"           "Currently at version ${LATEST_2_6_MM}" \
+    )
+    retval=$?
+    if [[ "$retval" == "0" ]]; then
+      if [[ $COMMAND == "CUSTOM" ]]; then
+        COMMAND=$($DIALOG --nocancel --inputbox "Which Kernel do you want to build?\nYou can enter any valid version number.\nExamples:\n${LATEST_2_4_PRE}\n${LATEST_2_4_AC}\n${LATEST_2_6}" 0 0 ${KERNEL_VERSION})
+      fi
+      KERNEL_VERSION=$COMMAND
+      break
+    else
+      break
+    fi
+  done
+}
+
+arch_default() {
+  if [ -z "$KERNEL_ARCH" ]; then
+    case  `uname -m`  in
+         alpha) KERNEL_ARCH=alpha   ;;
+           arm) KERNEL_ARCH=arm     ;;
+          cris) KERNEL_ARCH=cris    ;;
+          ia64) KERNEL_ARCH=ia64    ;;
+          i*86) KERNEL_ARCH=i386    ;;
+          m68k) KERNEL_ARCH=m68k    ;;
+          mips) KERNEL_ARCH=mips    ;;
+        mips64) KERNEL_ARCH=mips64  ;;
+        parisc) KERNEL_ARCH=parisc  ;;
+       powerpc) KERNEL_ARCH=ppc     ;;
+           ppc) KERNEL_ARCH=ppc     ;;
+     powerpc64) KERNEL_ARCH=ppc64   ;;
+          s390) KERNEL_ARCH=s390    ;;
+         s390x) KERNEL_ARCH=s390x   ;;
+           sh*) KERNEL_ARCH=sh      ;;
+         sparc) KERNEL_ARCH=sparc   ;;
+       sparc64) KERNEL_ARCH=sparc64 ;;
+        x86_64) KERNEL_ARCH=x86_64  ;;
+    esac
+  fi
+}
+
+arch_menu() {
+  local DEFAULT=${KERNEL_ARCH}
+  local COMMAND
+  while true
+  do
+    COMMAND=$( $DIALOG --title "Select Kernel Architecture"       \
+           --item-help --default-item "$DEFAULT" --menu      \
+           "Select a kernel architecture to use" 0 0 0            \
+           "CUSTOM"             "Manually enter some other Architecture"           "You can enter any valid architecture" \
+           "DEFAULT"            "Default Kernel Architecture"                      "The detected architecture for your platform, $DEFAULT" \
+           "alpha"              "DEC/Compaq 64-bit Alpha"                          "DEC Alpha" \
+           "arm"                "Embedded Processors using 32-bit ARM processors"  "ARM 32-bit" \
+           "cris"               "Embedded Axis ETRAX CRIS processors 32-bit"       "Axis ETRAX CRIS" \
+           "ia64"               "Intel Architecture 64-bit Itanium"                "Intel IA64 64-bit" \
+           "i386"               "Intel Architecture 32-bit 386 through Pentium 4"  "Intel x86 32-bit" \
+           "m68k"               "Motorola 68000 series 32-bit (older Macintosh)"   "m68k 32-bit" \
+           "mips"               "MIPS Technologies 32-bit compatible processors"   "MIPS32 platforms" \
+           "mips64"             "MIPS Technologies 64-bit compatible processors"   "MIPS64 platforms" \
+           "parisc"             "HP PA-RISC 32 and 64-bit processors"              "PA-RISC 32-bit mode" \
+           "ppc"		"PowerPC 32-bit (IBM and Motorola) G3/G4 Mac"      "PPC32 G3/G4" \
+           "ppc64"              "PowerPC 64-bit (IBM) G5 Mac"                      "PPC64 G5" \
+           "s390"               "IBM s390  31-bit systems"                         "IBM s390 31-bit" \
+           "s390x"              "IBM s390x 64-bit systems"                         "IBM s390 64-bit" \
+           "sh"                 "SuperH processors sh4 is 32-bit, sh5 is 64-bit"   "SH4 and SH5 32-bit mode" \
+           "sparc"              "Sun SPARC 32-bit processors"                      "Sun SPARC 32-bit" \
+           "sparc64"            "Sun SPARC 64-bit processors"                      "Sun SPARC 64-bit" \
+           "x86_64"             "AMD x86-64 64-bit Hammer/Opteron/Athlon64 chips"  "AMD x86-64 Hammer"
+    )
+    retval=$?
+    if [[ "$retval" == "0" ]]; then
+      if [[ $COMMAND == "CUSTOM" ]]; then
+        COMMAND=$($DIALOG --nocancel --inputbox "Which Architecture do you want to build?\nYou can enter any valid architecture.\nExamples:\n$i386\nppc\nx86_64\nsparc\nsparc64" 0 0 ${KERNEL_ARCH})
+      elif [[ $COMMAND == "DEFAULT" ]]; then
+	COMMAND="$DEFAULT"
+      fi
+      KERNEL_ARCH=$COMMAND
+      break
+    else
+      break
+    fi
+  done
+}
+
+main_menu() {
+local DEFAULT
+while true
+do
+  unset CUSTOM
+  COMMAND=$( $DIALOG --title "Main Kernel Menu"                  \
+           --item-help --cancel-label "Exit and Save" --ok-label "Select" \
+           --default-item "$DEFAULT" --menu                      \
+           "Select a Kernel Version and optional Patches.\nIt's up to you which Patch you apply to which Kernel. The more the version number differs, the more likely the patch does not work." \
+           0 0 0 \
+           "kernel" "(${!KERNEL_VERSION=$KERNEL_VERSION}) Kernel Version" "KERNEL_VERSION=${KERNEL_VERSION}" \
+           "arch" "(${KERNEL_ARCH=$KERNEL_ARCH}) Kernel Arch" "KERNEL_ARCH=${KERNEL_ARCH}" \
+           $(patch_list) )
+  retval=$?
+  DEFAULT=$COMMAND
+  if [[ "$retval" == "0" ]]; then
+     case "$COMMAND" in
+       "kernel") kernel_menu ;;
+       "arch") arch_menu ;;
+       *) source ${PATCH_DIR}/${COMMAND}
+          PATCH=${COMMAND}
+          patch_menu
+       ;;
+     esac
+  else
+     break
+  fi
+  done
+}
+
+local oldIFS=$IFS
+export IFS="
+"
+
+DIALOG="dialog
+--backtitle
+Sorcery Spell Management Utility
+--stdout"
+
+PATCH_DIR="${SCRIPT_DIRECTORY}/patches"
+
+config_query  CONFIG_KERNEL  "Configure the Linux kernel?"  n
+
+persistent_add KERNEL_ARCH
+
+arch_default # set the default arch here just in case it wasn't set before
+
+if  [  "$CONFIG_KERNEL"  ==  "y"  ]
+then
+  source ${SCRIPT_DIRECTORY}/KERNELS
+
+  # if Version is not yet set, default to LATEST_2_6
+  KERNEL_VERSION=${KERNEL_VERSION="LATEST_2_6"}
+
+  main_menu
+
+  # Recreate the config
+  echo  "KERNEL_VERSION=$KERNEL_VERSION" >  ${SPELL_CONFIG}  &&
+  LIST=$(ls ${PATCH_DIR})
+  COUNTER=8
+  echo -n "" > ${SPELL_CONFIG}.DETAILS
+  for  PATCH in $LIST;  do
+    if [[ ${!PATCH} != "" ]]; then
+      source ${PATCH_DIR}/${PATCH} CONFIG
+      echo "${PATCH}=${!PATCH}"  >>  ${SPELL_CONFIG}
+      COUNTER=$((${COUNTER}+1))
+    fi
+  done
+fi
+
+IFS=$oldIFS

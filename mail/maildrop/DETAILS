@@ -1,0 +1,29 @@
+           SPELL=maildrop
+         VERSION=1.5.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/courier/$SOURCE
+          MD5[0]=b9e313ee9b407858eec0c6fe40575138
+   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[1]=${MD5[0]}
+        WEB_SITE=http://www.flounder.net/~mrsam/maildrop
+         ENTERED=20020309
+         UPDATED=20050403
+      MAINTAINER=jan.sabbe@student.kuleuven.ac.be
+         LICENSE=GPL
+       BUILD_API=2
+           SHORT="mail delivery agent with filtering"
+cat << EOF
+maildrop is a replacement for your local mail delivery agent. maildrop
+reads a mail message from standard input, then delivers the message to
+your mailbox. maildrop knows how to deliver mail to mbox-style mailboxes,
+and maildirs. "maildir" is a mailbox format used by the Qmail MTA.
+
+maildrop is written in C++, and is significantly larger than procmail in
+compiled form. However, it uses resources much more efficiently. Unlike
+procmail, maildrop will not read a 10 megabyte mail message into
+memory. Large messages are saved in a temporary file, and are filtered
+from the temporary file. Temporary files are saved in the user's home
+directory. If the standard input to maildrop is a file, and not a pipe,
+a temporary file will not be necessary.
+EOF

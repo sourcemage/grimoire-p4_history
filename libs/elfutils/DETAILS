@@ -1,0 +1,20 @@
+           SPELL=elfutils
+         VERSION=0.94
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://linuxfromscratch.mirror.ac.uk/sites/www.ibiblio.org/gentoo/distfiles/${SOURCE}
+          MD5[0]=4b0c50aae0c6f30a82ac3c69d160d387
+        WEB_SITE=http://www.redhat.com/
+         ENTERED=20031203
+         UPDATED=20031210
+      LICENSE[0]=OpenSoftware
+           SHORT="prelink reduces relocation loading time and memory consumption"
+cat << EOF
+prelink is a program which modifies ELF shared libraries and ELF 
+dynamically linked binaries, so that the time which dynamic linker needs 
+for their relocation at startup significantly decreases and also due to 
+fewer relocations the run-time memory consumption decreases too 
+(especially number of unshareable pages). Such prelinking information is 
+only used if all its dependent libraries have not changed since 
+prelinking, otherwise programs are relocated normally.   
+EOF

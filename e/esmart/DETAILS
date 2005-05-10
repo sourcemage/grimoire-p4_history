@@ -1,0 +1,16 @@
+           SPELL=esmart
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/esmart
+          MD5[0]=IGNORE
+        WEB_SITE=http://www.enlightenment.org
+         ENTERED=20040311
+         UPDATED=20040510
+  FORCE_DOWNLOAD=on
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="a collection of evas smart objects"
+cat << EOF
+Esmart is a collection of evas smart objects.
+EOF

@@ -1,0 +1,26 @@
+           SPELL=gdl
+	 VERSION=$(date +%Y%m%d)
+	  MD5[0]=IGNORE
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:gdl
+  FORCE_DOWNLOAD=1
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+      LICENSE[0]="GPL"
+       BUILD_API=2
+        WEB_SITE=http://gdl.gnome.org
+         ENTERED=20020518
+         UPDATED=20050103
+           SHORT="gdl is a symbol browser bonobo component (symbol-browser-control)"
+cat << EOF
+The current pieces of GDL include:
+
+ - A symbol browser bonobo component (symbol-browser-control).
+
+ - A docking widget (gdl).
+
+ - A utility library that also contains the stubs and skels for
+      the symbol browser and text editor components (gdl, idl).
+
+Discussion of GDL development takes place on the gnome-devtools@gnome.org
+mailing list and on #devel-apps at irc.gnome.org.      
+EOF

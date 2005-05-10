@@ -1,0 +1,25 @@
+if  spell_ok  apache          ||
+    spell_ok  apache-mod_ssl
+then
+  I_DIR=/usr/share/apache/htdocs/$SPELL
+elif  spell_ok  apache2
+then
+  I_DIR=/usr/share/apache2/htdocs/$SPELL
+fi  &&
+
+install  -d  -m  755  $I_DIR          &&
+cp  -a  *  $I_DIR                     &&
+chown  -R  www-data.www-data  $I_DIR  &&
+
+if  [  "$ZEN_CART_CREATEDB"  =  "y"  ];  then
+  if  [  "$ZEN_CART_MYSQL"  =  "y"  ];  then
+    message  "${MESSAGE_COLOR}Creating MySQL database...${DEFAULT_COLOR}"
+    mysqladmin  create  zencart  ||  true
+  fi  &&
+
+  if  [  "$ZEN_CART_PGSQL"  =  "y"  ];  then
+    message  "${MESSAGE_COLOR}Creating PostgreSQL database...${DEFAULT_COLOR}"
+    source  /etc/sysconfig/postgresql  &&
+    su  $USER  -c  "createdb  zencart"  ||  true
+  fi
+fi

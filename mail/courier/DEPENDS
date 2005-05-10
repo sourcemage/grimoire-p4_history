@@ -1,0 +1,98 @@
+depends  perl  &&
+
+if  spell_ok  db;  then
+  if  spell_ok  gdbm;  then
+    if  query  "You have both GDBM and Berkeley DB libraries installed.  Do you want to use GDBM with Courier?  (Courier will automatically choose GDBM over Berkely DB.  Answer 'n' to use Berkely DB instead.) "  y;  then
+      echo  'OPTS="${OPTS}  --with-db=gdbm"'  >>  ${SPELL_CONFIG}
+    else
+      echo  'OPTS="${OPTS}  --with-db=db"'    >>  ${SPELL_CONFIG}
+    fi
+  fi
+else
+  if  !  spell_ok  gdbm;  then
+    if  query  "Either GDBM or Berkeley DB library must be installed.  Do you want to install GDBM?  (Answer 'n' to install Berkely DB instead.) "  y;  then
+      depends  gdbm
+    else
+      depends  db
+    fi
+  fi
+fi                                                                                                                                       &&
+
+if  [  "${AUTHPAM}"  ==  "y"  ];  then
+  depends  linux-pam
+fi                                                                                                                                       &&
+
+if  [  "${AUTHLDAP}"  ==  "y"  ];  then
+  depends  openldap
+fi                                                                                                                                       &&
+
+if  [  "${AUTHMYSQL}"  ==  "y"  ];  then
+  depends  mysql
+fi                                                                                                                                       &&
+
+if  [  "${AUTHPGSQL}"  ==  "y"  ];  then
+  depends  postgresql
+fi                                                                                                                                       &&
+
+if  [  "${SPELL_CHECK}"  ==  "y"  ];  then
+  if  !  [  "${SPELL_CHECKER}"  ==  ""  ];  then
+    depends  ${SPELL_CHECKER}
+  fi
+fi                                                                                                                                       &&
+
+if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
+  optional_depends  "expect"       \
+                    ""             \
+                    ""             \
+                    "to be able to change login passwords via the Webmail interface"
+fi                                                                                                                                       &&
+
+if  [  "${INSTALL_IMAP}"  ==  "y"  ];  then
+  optional_depends  "FAM"          \
+                    ""             \
+                    ""             \
+                    "for enhanced IMAP idle implementation"
+fi                                                                                                                                       &&
+
+optional_depends  "openssl"      \
+                  ""             \
+                  ""             \
+                  "for SSL/TLS enrypted mail delivery support"                      &&
+optional_depends  "uucp"         \
+                  ""             \
+                  ""             \
+                  "for using Courier as a gateway to or from another UUCP server"   &&
+
+# SOCKSv5 support. Courier can punch through a SOCKS firewall to send outgoing mail. Receiving mail through a SOCKS firewall is not yet supported, unfortunately. To use SOCKS you need to install NEC's SOCKSv5 library.
+
+if  [  "${SEND_FAXES}"  ==  "y"  ];  then
+  depends  mgetty
+  depends  groff
+
+  optional_depends  "netpbm"       \
+                    ""             \
+                    ""             \
+                    "to send e-mail messages via fax - GIF, JPEG and PNG support"
+
+  if  spell_ok  espgs;  then
+    optional_depends  "espgs"        \
+                      ""             \
+                      ""             \
+                      "to send e-mail via fax - Postscript and PDF support"
+  elif  spell_ok  ghostscript;  then
+    optional_depends  "ghostscript"  \
+                      ""             \
+                      ""             \
+                      "to send e-mail via fax - Postscript and PDF support"
+  else
+    echo  "Either espgs or ghostscript must be installed to include Postscript and PDF support in the e-mail to fax support (espgs is listed first):"
+    optional_depends  "espgs"        \
+                      ""             \
+                      ""             \
+                      "to send e-mail via fax - Postscript and PDF support"
+    optional_depends  "ghostscript"  \
+                      ""             \
+                      ""             \
+                      "to send e-mail via fax - Postscript and PDF support"
+  fi
+fi

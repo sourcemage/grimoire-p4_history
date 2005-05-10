@@ -1,0 +1,4 @@
+default_install  &&
+# symlink those so that bash still works after the update
+ln -sf $INSTALL_ROOT/lib/libreadline.so.5 $INSTALL_ROOT/lib/libreadline.so.4
+ln -sf $INSTALL_ROOT/lib/libhistory.so.5 $INSTALL_ROOT/lib/libhistory.so.4

@@ -1,0 +1,9 @@
+mkdir -p ${INSTALL_ROOT}/usr/lib/mozilla/plugins &&
+cp -p mplayerplug-in.so ${INSTALL_ROOT}/usr/lib/mozilla/plugins/  &&
+cp -p mplayerplug-in.xpt ${INSTALL_ROOT}/usr/lib/mozilla/plugins/  &&
+
+
+if  [  -d  ${INSTALL_ROOT}/usr/lib/firefox  ];  then
+  cp  -p  mplayerplug-in.so  ${INSTALL_ROOT}/usr/lib/firefox/plugins/  &&
+  cp  -p  mplayerplug-in.xpt  ${INSTALL_ROOT}/usr/lib/firefox/plugins/
+fi

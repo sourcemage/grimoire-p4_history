@@ -1,0 +1,21 @@
+invoke_gcc
+CFLAGS="${CFLAGS/-funroll-loops/}"
+CFLAGS="${CFLAGS/-DPIC -fPIC/}"
+if echo $CFLAGS | grep -q pentium4; then
+  CFLAGS="${CFLAGS/-O3/} -O2"
+fi
+
+patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
+
+sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
+./configure  --prefix=${INSTALL_ROOT}/usr  \
+             --enable-shared               \
+             --enable-pp                   \
+             --enable-shared-pp            \
+             --enable-gpl                  \
+             --enable-a52                  \
+             $OPTS                         &&
+cd  libavcodec/libpostproc  &&
+make                        &&
+cd  $SOURCE_DIRECTORY       &&
+make

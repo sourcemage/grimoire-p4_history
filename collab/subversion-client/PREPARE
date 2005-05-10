@@ -1,0 +1,15 @@
+if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
+  SO_OPTION='--enable-shared --disable-static'
+
+  if query 'Build (link) all Subversion libraries into the client' n; then
+    SO_OPTION='--disable-shared --enable-static'
+
+    message "${MESSAGE_COLOR}Selecting the following option conflicts with apr, apr-util, and neon${DEFAULT_COLOR}"
+    if query 'Build (link) APR, APU and Neon libraries into the client (not recommended)' n; then
+      echo "USE_BUNDLED_LIBS=y" >> $SPELL_CONFIG
+    fi
+  fi
+
+  echo "OPTS=\"\$OPTS $SO_OPTION\"" >> $SPELL_CONFIG
+  echo 'CONFIGURED=y' >> $SPELL_CONFIG
+fi

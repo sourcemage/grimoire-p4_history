@@ -1,0 +1,19 @@
+           SPELL=libassuan
+         VERSION=0.6.9
+       BUILD_API=2
+          MD5[0]=977a1d1656c43211caa38540ff5c863b
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/libassuan/$SOURCE
+        WEB_SITE=http://www.gnupg.org/
+         ENTERED=20031126
+         UPDATED=20031126
+      LICENSE[0]=GPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="Libassuan is the IPC library used by GnuPG"
+cat << EOF
+Libassuan is the IPC library used by GnuPG 1.9, gpgme and the old newpg
+package.  It used to be included with the latter packages but we
+decided to make your life not too easy and separated it out to a
+standalone library.
+EOF

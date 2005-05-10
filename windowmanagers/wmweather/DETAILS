@@ -1,0 +1,19 @@
+           SPELL=wmweather
+         VERSION=1.31
+          SOURCE=wmWeather-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/wmWeather-$VERSION
+   SOURCE_URL[0]=http://nis-www.lanl.gov/~mgh/WindowMaker/$SOURCE
+   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
+          MD5[0]=b7982ef0ced0c700d23e152b6ddbd338
+        WEB_SITE=http://nis-www.lanl.gov/~mgh/WindowMaker/DockApps.shtml
+         ENTERED=20020203
+         UPDATED=20020203
+      LICENSE[0]=GPL
+       BUILD_API=2
+    MENU_ITEM[0]="wmWeather"
+    MENU_EXEC[0]="wmWeather"
+    MENU_DESC[0]="Local Weather"
+           SHORT="WindowMaker dockapp that shows local weather conditions"
+cat << EOF
+WindowMaker dockapp that shows local weather conditions
+EOF

@@ -1,0 +1,26 @@
+           SPELL=ecore
+if [ "$ECORE_CVS" = "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/ecore
+          MD5[0]=IGNORE
+else
+         VERSION=1.0.0_pre7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+          MD5[0]=9c43aa72b911a67feea0ca63aeadab1c
+fi
+       BUILD_API=2
+      LICENSE[0]=BSD
+        WEB_SITE=http://enlightenment.org/pages/ecore.html
+         ENTERED=20011101
+         UPDATED=20011101
+           SHORT="Core functions for e17"
+cat << EOF
+What is Ecore? It is the core event abstraction layer and X abstraction layer that makes doing selections, Xdnd, general X stuff, and event loops, timeouts and idle handlers fast, optimized, and convenient. It's a separate library so anyone can make use of the work put into Ecore to make this job easy for applications.
+
+Ecore is completely modular. At its base is the event handlers and timers, and initialization and shutdown functions.
+EOF

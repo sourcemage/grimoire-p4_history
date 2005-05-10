@@ -1,0 +1,49 @@
+depends  CD-BURN-UTILITY  &&
+depends  kdelibs          &&
+depends  id3lib           &&
+depends  cdparanoia       &&
+
+optional_depends  arts                      \
+                  "--with-arts"             \
+                  "--without-arts"          \
+                  "for aRTs sound support"  &&
+
+optional_depends  cdrdao                     \
+                  ""                         \
+                  ""                         \
+                  "to burn cds with cdrdao"  &&
+
+optional_depends  libsamplerate         \
+                  ""                    \
+                  ""                    \
+                  "for video decoding"  &&
+
+optional_depends  dvd+rw-tools      \
+                  ""                \
+                  ""                \
+                  "to burn dvd\'s"  &&
+
+optional_depends  libmad              \
+                  ""                  \
+                  ""                  \
+                  "for MP3 decoding"  &&
+
+optional_depends  libvorbis                 \
+                  ""                        \
+                  ""                        \
+                  "For Ogg Vorbis support"  &&
+
+optional_depends  transcode                                               \
+                  ""                                                      \
+                  ""                                                      \
+                  "For elementary video and audio frame transformations"  &&
+
+optional_depends  emovix                            \
+                  ""                                \
+                  ""                                \
+                  "For bootable CDs that autoplay"  &&
+
+optional_depends  vcdimager-unstable                   \
+                  ""                                   \
+                  ""                                   \
+                  "For (VCD) format from mpeg videos"

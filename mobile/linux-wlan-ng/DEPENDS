@@ -1,0 +1,7 @@
+. ${SPELL_CONFIG}
+if [ "$PCMCIA" == "y" ]
+then
+  depends pcmcia-cs
+fi				&&
+optional_depends hotplug "" "" \
+		"for easier support of pluggable devices"

@@ -1,0 +1,21 @@
+           SPELL=liferea
+         VERSION=0.9.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/liferea/$SOURCE
+          MD5[0]='f45266bbd4fac03ba1a5b19a1d9f57f7'
+        WEB_SITE=http://liferea.sourceforge.net
+        BUILD_API=2
+         ENTERED=20040407
+         UPDATED=20040407
+      LICENSE[0]=GPL
+           SHORT="A simple FeedReader clone for Unix distributions with GTK2"
+cat << EOF
+Liferea is a simple FeedReader clone for Unix distributions with GTK2 (GNOME2
+is optional). It is a news aggregator for RSS/RDF feeds which also supports CDF
+channels, Atom/Echo/PIE feeds and OCS or OPML directories. The problem with
+FeedReader: for now its only available for Windows. There are some projects for
+GNU/Linux, but no solution for GTK/GNOME, which does not require Python or
+Perl. Liferea tries to fill this gap. Liferea is an abbreviation for Linux Feed
+Reader.
+EOF

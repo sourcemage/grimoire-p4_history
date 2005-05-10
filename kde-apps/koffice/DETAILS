@@ -1,0 +1,28 @@
+source  $SECTION_DIRECTORY/KDE_DETAILS
+           SPELL=koffice
+         VERSION=1.3.5
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/$SPELL-$VERSION/src/$SOURCE
+          MD5[0]=372afe62dd0783e43b837f4ca6205b7b
+        WEB_SITE=http://www.koffice.org
+         ENTERED=20020405
+         UPDATED=20040122
+      LICENSE[0]=GPL
+           SHORT="Full office suite"
+cat << EOF
+KOffice is a free, integrated office suite for KDE, the K Desktop Environment.
+
+In the KOffice suite the following parts are being developed:
+ * KWord - A frame-based word processor capable of professional standard
+   documents
+ * KSpread - A powerful spreadsheet application.
+ * KPresenter - A full-featured presentation program.
+ * Kivio - A Visio(R)-style flowcharting application.
+ * Kontour - A vector drawing application.
+ * Krita - A raster-based image manipulation program like The GIMP or Adobe(C)
+   Photoshop(R).
+ * Kugar - A tool for generating business quality reports.
+ * KChart - An integrated graph and chart drawing tool.
+EOF

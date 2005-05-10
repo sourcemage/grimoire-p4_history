@@ -1,0 +1,17 @@
+           SPELL=netkit-rsh
+         VERSION=0.17
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/$SOURCE
+          MD5[0]=0e5ca37d9605872cb69757efda993e84
+        WEB_SITE=http://www.linux.org.uk
+         ENTERED=20020213
+         UPDATED=20020513
+      MAINTAINER=zoran@idi.ntnu.no
+           SHORT="netkit-rsh contains a client and server for remote-SH."
+cat << EOF
+This is netkit-rsh for Linux.
+Contents:
+        rsh             Remote shell client
+        rshd            Remote shell daemon
+EOF

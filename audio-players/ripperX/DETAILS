@@ -1,0 +1,18 @@
+         SPELL=ripperX
+         VERSION=2.6.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/ripperx/$SOURCE
+          MD5[0]=5c1585b203c34c3a53fec71cb4b2db79
+        WEB_SITE=http://sourceforge.net/projects/ripperx/
+         ENTERED=20020116
+         UPDATED=20030330
+      LICENSE[0]=GPL
+      MAINTAINER=unet@sourcemage.org
+           SHORT="RipperX is a program to rip CD audio and encode mp3s"
+cat << EOF
+RipperX is a GTK program to rip CD audio and encode mp3s.
+It can rip and encode in parallel and has plugins for cdparanoia,
+BladeEnc, Lame, GoGo, FHG (l3enc and mp3enc), XingMp3enc, 8hz-mp3, 
+and the ISO encoder.  It also has support for CDDB and ID3 tags.
+EOF

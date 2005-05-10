@@ -1,0 +1,22 @@
+           SPELL=fuse
+if [ "$CVS" != "y" ]; then
+         VERSION=2.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=$SOURCEFORGE_URL/fuse/$SOURCE
+          MD5[0]=a1fe58ed647a1865de372295a8d391eb
+else
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/fuse:fuse
+          MD5[0]=IGNORE
+fi
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://fuse.sourceforge.net/
+         ENTERED=20040209
+         UPDATED=20040209
+      LICENSE[0]=GPL
+           SHORT="fuse is an interface for filesystems implemented in userspace"
+cat << EOF
+FUSE (Filesystem in USErspace) is an interface for filesystems implemented in userspace. 
+EOF

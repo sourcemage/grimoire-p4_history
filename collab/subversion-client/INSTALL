@@ -1,0 +1,11 @@
+## conditionally run `make' if SWIG dependency is on
+## @usage <1:make target>
+function make_if_swig() {
+  if echo "$OPTS" | grep -q 'with-swig'; then
+    make $1
+  fi
+}
+
+make_normal                    &&
+make          install          &&
+make_if_swig  install-swig-py

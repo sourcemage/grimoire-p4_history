@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DESCRIPTION="Linux kernel debugger"
+SHORT="Allows debugging the linux kernels, even through a serial line"
+HELP="Linux kernel debugger
+Enable following config options (in this order).
+
+See http://kgdb.sourceforge.net
+
+Kernel hacking ->
+        KGDB: kernel debugging with remote gdb ->
+                KGDB: Thread analysis
+                KGDB: Console messages through gdb
+Device drivers ->
+        Character devices ->
+                Serial drivers ->
+                        KGDB: On generic serial port (8250)"
+VERSIONS="2.6.1-kgdb-2.1.0"
+MD5S[0]=62d609812f5091f5e2c3724e460afc15
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}.tar.bz2
+SOURCE${COUNTER}_URL=http://kgdb.sourceforge.net/kgdb-2/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

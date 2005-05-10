@@ -1,0 +1,11 @@
+(
+
+  sedit "s/gcc/gcc $CFLAGS/" Makefile   &&
+  make                                  &&
+  prepare_install                       &&
+  cp gtk2-ssh-askpass /usr/bin/         && 
+  if [ ! -e /usr/libexec/ssh-askpass ] ; then 
+    ln -s /usr/bin/gtk2-ssh-askpass /usr/libexec/ssh-askpass 
+  fi
+
+) > $C_FIFO 2>&1

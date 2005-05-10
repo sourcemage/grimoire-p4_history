@@ -1,0 +1,21 @@
+           SPELL=g++
+         VERSION=3.4.3
+          SOURCE=gcc-core-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
+   SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
+   SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+          MD5[0]=58e07da3cf68f06976d82ac1baf3d1bd
+         SOURCE2=gcc-$SPELL-$VERSION.tar.bz2
+  SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
+  SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
+          MD5[1]=ec57f855cfc677fc552c1f683aeb57ad
+      LICENSE[0]=GPL
+        WEB_SITE=http://gcc.gnu.org/
+         ENTERED=20040704
+         UPDATED=20040707
+            DOCS="$DOCS INSTALL"
+           SHORT="the GNU c++ compiler"
+cat << EOF
+The GNU C++ compiler and runtime library.
+EOF
+

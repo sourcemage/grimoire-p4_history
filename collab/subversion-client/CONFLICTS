@@ -1,0 +1,8 @@
+conflicts subversion &&
+
+if [ "$USE_BUNDLED_LIBS" == 'y' ]; then
+  # `make install' will install files for these...
+  conflicts apr &&
+  conflicts apr-util &&
+  conflicts neon
+fi

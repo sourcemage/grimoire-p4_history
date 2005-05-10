@@ -1,0 +1,4 @@
+MD5which=$((($(echo "${VERSIONS}" | grep -Fxn "${!PATCH}" | cut -d: -f1) - 1)))
+MD5num=$(((${COUNTER} - 1)))
+echo "MD5[$MD5num]=${MD5S[${MD5which}]}
+" >> ${SPELL_CONFIG}.DETAILS

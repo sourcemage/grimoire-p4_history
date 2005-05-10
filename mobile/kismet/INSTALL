@@ -1,0 +1,6 @@
+if [ "$SUID" = "no" ]
+then
+  make    install
+else
+  make    suidinstall
+fi

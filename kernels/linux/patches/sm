@@ -1,0 +1,28 @@
+#!/bin/bash
+# 
+#
+
+DESCRIPTION="small fixes put together by SourceMage team"
+SHORT="Some fixes for ext3"
+HELP="This is a quick merge of some patches from
+http://www.zip.com.au/~akpm/linux/ext3/
+which should fix some bugs in 2.4.20
+
+Works fine on vanilla - fails on ck3
+please report other combinations
+
+sync_fs.patch
+sync_fs-fix.patch
+sync_fs-fix-2.patch
+ext3-use-after-free.patch
+ext3-scheduling-storm.patch"
+
+VERSIONS="2.4.20-sm1"
+MD5S[0]=a2fc95e190e250c5c4a249a6ef2398d5
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://download.sourcemage.org/distro/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

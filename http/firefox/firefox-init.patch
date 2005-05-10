@@ -1,0 +1,662 @@
+diff -urpN firefox-1.0/chrome/chrome.rdf /usr/lib/firefox-1.0/chrome/chrome.rdf
+--- firefox-1.0/chrome/chrome.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/chrome.rdf	2004-11-30 13:03:18.832244256 -0800
+@@ -0,0 +1,455 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:cview"
++                   c:baseURL="jar:resource:/chrome/cview.jar!/locale/en-US/cview/">
++    <c:package RDF:resource="urn:mozilla:package:cview"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:inspector"
++                   c:baseURL="jar:resource:/chrome/inspector.jar!/skin/classic/inspector/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:inspector"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:global-platform"
++                   c:baseURL="jar:resource:/chrome/toolkit.jar!/content/global-platform/"
++                   c:locType="install"
++                   c:displayName="Platform Specific"
++                   c:author="mozilla.org"
++                   c:name="global-platform"
++                   c:localeVersion="1.7"
++                   c:platformPackage="true" />
++  <RDF:Description RDF:about="urn:mozilla:package:p3p"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/p3p/"
++                   c:locType="install"
++                   c:displayName="Platform for Privacy Preferences Project"
++                   c:author="Netscape Communications Corporation"
++                   c:name="p3p"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:editor"
++                   c:hasOverlays="true" />
++  <RDF:Description RDF:about="urn:mozilla:package:browser"
++                   c:hasStylesheets="true"
++                   c:hasOverlays="true"
++                   c:baseURL="jar:resource:/chrome/browser.jar!/content/browser/"
++                   c:locType="install"
++                   c:displayName="Browser"
++                   c:author="mozilla.org"
++                   c:name="browser"
++                   c:localeVersion="0.9.9"
++                   c:skinVersion="1.5" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:cookie"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/cookie/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:cookie"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:tasks"
++                   c:baseURL="jar:resource:/chrome/tasks.jar!/content/tasks/"
++                   c:locType="install"
++                   c:displayName="tasks"
++                   c:author="mozilla.org"
++                   c:name="tasks"
++                   c:localeVersion="1.7"
++                   c:skinVersion="1.5" />
++  <RDF:Seq RDF:about="urn:mozilla:package:root">
++    <RDF:li RDF:resource="urn:mozilla:package:necko"/>
++    <RDF:li RDF:resource="urn:mozilla:package:xbl-marquee"/>
++    <RDF:li RDF:resource="urn:mozilla:package:embed"/>
++    <RDF:li RDF:resource="urn:mozilla:package:mozldap"/>
++    <RDF:li RDF:resource="urn:mozilla:package:pipnss"/>
++    <RDF:li RDF:resource="urn:mozilla:package:pippki"/>
++    <RDF:li RDF:resource="urn:mozilla:package:global"/>
++    <RDF:li RDF:resource="urn:mozilla:package:global-platform"/>
++    <RDF:li RDF:resource="urn:mozilla:package:global-region"/>
++    <RDF:li RDF:resource="urn:mozilla:package:help"/>
++    <RDF:li RDF:resource="urn:mozilla:package:passwordmgr"/>
++    <RDF:li RDF:resource="urn:mozilla:package:mozapps"/>
++    <RDF:li RDF:resource="urn:mozilla:package:cookie"/>
++    <RDF:li RDF:resource="urn:mozilla:package:wallet"/>
++    <RDF:li RDF:resource="urn:mozilla:package:content-packs"/>
++    <RDF:li RDF:resource="urn:mozilla:package:p3p"/>
++    <RDF:li RDF:resource="urn:mozilla:package:autoconfig"/>
++    <RDF:li RDF:resource="urn:mozilla:package:inspector"/>
++    <RDF:li RDF:resource="urn:mozilla:package:chatzilla"/>
++    <RDF:li RDF:resource="urn:mozilla:package:cview"/>
++    <RDF:li RDF:resource="urn:mozilla:package:layoutdebug"/>
++    <RDF:li RDF:resource="urn:mozilla:package:tasks"/>
++    <RDF:li RDF:resource="urn:mozilla:package:browser"/>
++    <RDF:li RDF:resource="urn:mozilla:package:browser-region"/>
++    <RDF:li RDF:resource="urn:mozilla:package:communicator"/>
++  </RDF:Seq>
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0"
++                   c:displayName="Modern"
++                   c:author="mozilla.org"
++                   c:name="modern/1.0"
++                   c:locType="install">
++    <c:packages RDF:resource="urn:mozilla:skin:modern/1.0:packages"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:content-packs"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/en-US/content-packs/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:content-packs"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:content-packs"
++                   c:baseURL="jar:resource:/chrome/content-packs.jar!/content/content-packs/"
++                   c:locType="install"
++                   c:displayName="Content Pack Switching"
++                   c:author="mozilla.org"
++                   c:name="content-packs"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:global"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/global/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:global"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:browser-region"
++                   c:baseURL="jar:resource:/chrome/browser.jar!/content/browser-region/"
++                   c:locType="install"
++                   c:name="browser-region"
++                   c:localeVersion="0.9.9" />
++  <RDF:Description RDF:about="urn:mozilla:package:embed"
++                   c:baseURL="jar:resource:/chrome/embed-sample.jar!/content/embed/"
++                   c:locType="install"
++                   c:displayName="Embed"
++                   c:author="mozilla.org"
++                   c:name="embed" />
++  <RDF:Description RDF:about="urn:mozilla:package:layoutdebug"
++                   c:baseURL="jar:resource:/chrome/layoutdebug.jar!/content/layoutdebug/"
++                   c:locType="install"
++                   c:displayName="Layout Debugger"
++                   c:author="mozilla.org"
++                   c:name="layoutdebug" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:pipnss"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/pipnss/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:pipnss"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:browser-region"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/browser-region/"
++                   c:localeVersion="0.9.9">
++    <c:package RDF:resource="urn:mozilla:package:browser-region"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:inspector"
++                   c:hasOverlays="true"
++                   c:baseURL="jar:resource:/chrome/inspector.jar!/content/inspector/"
++                   c:locType="install"
++                   c:displayName="Document Inspector"
++                   c:author="Joe Hewitt"
++                   c:name="inspector"
++                   c:localeVersion="1.7"
++                   c:skinVersion="1.5" />
++  <RDF:Description RDF:about="urn:mozilla:package:global"
++                   c:baseURL="jar:resource:/chrome/toolkit.jar!/content/global/"
++                   c:locType="install"
++                   c:displayName="Toolkit"
++                   c:author="mozilla.org"
++                   c:name="global"
++                   c:localeVersion="1.7"
++                   c:skinVersion="1.5"
++                   c:hasStylesheets="true" />
++  <RDF:Description RDF:about="urn:mozilla:package:cookie"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/cookie/"
++                   c:locType="install"
++                   c:displayName="Cookie Manager"
++                   c:author="mozilla.org"
++                   c:name="cookie"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:necko"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/necko/"
++                   c:locType="install"
++                   c:displayName="Necko"
++                   c:author="mozilla.org"
++                   c:name="necko"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:global-region"
++                   c:baseURL="jar:resource:/chrome/toolkit.jar!/content/global-region/"
++                   c:locType="install"
++                   c:displayName="US Regional Contents"
++                   c:author="mozilla.org"
++                   c:name="global-region"
++                   c:localeVersion="1.7" />
++  <RDF:Seq RDF:about="urn:mozilla:skin:modern/1.0:packages">
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0:embed"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0:inspector"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0:chatzilla"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0:cview"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0:tasks"/>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="urn:mozilla:locale:en-US:packages">
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:embed"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:global"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:global-region"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:global-platform"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:necko"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:mozapps"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:passwordmgr"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:pippki"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:pipnss"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:help"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:content-packs"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:p3p"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:inspector"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:chatzilla"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:cview"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:layoutdebug"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:tasks"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:browser"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:browser-region"/>
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US:cookie"/>
++  </RDF:Seq>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:necko"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/necko/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:necko"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0"
++                   c:name="classic/1.0"
++                   c:locType="install">
++    <c:packages RDF:resource="urn:mozilla:skin:classic/1.0:packages"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:xbl-marquee"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/xbl-marquee/"
++                   c:locType="install"
++                   c:displayName="XBL Marquee Emulation"
++                   c:author="Netscape Communications Corporation"
++                   c:name="xbl-marquee" />
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0:embed"
++                   c:baseURL="jar:resource:/chrome/embed-sample.jar!/skin/classic/embed/"
++                   c:allowScripts="false">
++    <c:package RDF:resource="urn:mozilla:package:embed"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:global-region"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/global-region/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:global-region"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:wallet"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/wallet/"
++                   c:locType="install"
++                   c:displayName="Form Manager"
++                   c:author="mozilla.org"
++                   c:name="wallet"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:navigator"
++                   c:hasOverlays="true" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:global-platform"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/global-platform/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:global-platform"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:passwordmgr"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/passwordmgr/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:passwordmgr"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0:cview"
++                   c:baseURL="jar:resource:/chrome/cview.jar!/skin/modern/cview/"
++                   c:allowScripts="false">
++    <c:package RDF:resource="urn:mozilla:package:cview"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:pippki"
++                   c:baseURL="jar:resource:/chrome/pippki.jar!/content/pippki/"
++                   c:locType="install"
++                   c:displayName="pippki"
++                   c:author="PSM Team"
++                   c:name="pippki"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US"
++                   c:localeVersion="1.7"
++                   c:displayName="English(US)"
++                   c:author="app_author"
++                   c:name="en-US"
++                   c:previewURL="http://www.mozilla.org/locales/en-US.gif"
++                   c:locType="install">
++    <c:packages RDF:resource="urn:mozilla:locale:en-US:packages"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:tasks"
++                   c:baseURL="jar:resource:/chrome/tasks.jar!/skin/classic/tasks/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:tasks"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:browser"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/browser/"
++                   c:localeVersion="0.9.9">
++    <c:package RDF:resource="urn:mozilla:package:browser"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0:tasks"
++                   c:baseURL="jar:resource:/chrome/tasks.jar!/skin/modern/tasks/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:tasks"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:p3p"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/en-US/p3p/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:p3p"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:help"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/en-US/help/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:help"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:passwordmgr"
++                   c:baseURL="jar:resource:/chrome/toolkit.jar!/content/passwordmgr/"
++                   c:locType="install"
++                   c:displayName="Password Manager"
++                   c:author="mozilla.org"
++                   c:name="passwordmgr"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:mozapps"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/mozapps/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:mozapps"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:embed"
++                   c:baseURL="jar:resource:/chrome/embed-sample.jar!/locale/en-US/embed/">
++    <c:package RDF:resource="urn:mozilla:package:embed"/>
++  </RDF:Description>
++  <RDF:Seq RDF:about="urn:mozilla:skin:root">
++    <RDF:li RDF:resource="urn:mozilla:skin:modern/1.0"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0"/>
++  </RDF:Seq>
++  <RDF:Description RDF:about="urn:mozilla:package:pipnss"
++                   c:baseURL="jar:resource:/chrome/pipnss.jar!/content/pipnss/"
++                   c:locType="install"
++                   c:displayName="pipnss"
++                   c:author="PSM Team"
++                   c:name="pipnss"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:mozldap"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/mozldap/"
++                   c:locType="install"
++                   c:displayName="MozLDAP"
++                   c:author="mozilla.org"
++                   c:name="mozldap"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:messenger"
++                   c:hasOverlays="true" />
++  <RDF:Description RDF:about="urn:mozilla:package:autoconfig"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/autoconfig/"
++                   c:locType="install"
++                   c:displayName="AutoConfig"
++                   c:author="mozilla.org"
++                   c:name="autoconfig"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:package:mozapps"
++                   c:baseURL="jar:resource:/chrome/toolkit.jar!/content/mozapps/"
++                   c:locType="install"
++                   c:displayName="Mozilla Application Support"
++                   c:author="mozilla.org"
++                   c:name="mozapps"
++                   c:skinVersion="1.5"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:global"
++                   c:baseURL="jar:resource:/chrome/classic.jar!/skin/classic/global/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:global"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:tasks"
++                   c:baseURL="jar:resource:/chrome/tasks.jar!/locale/en-US/tasks/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:tasks"/>
++  </RDF:Description>
++  <RDF:Seq RDF:about="urn:mozilla:skin:classic/1.0:packages">
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:communicator"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:global"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:mozapps"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:help"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:inspector"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:tasks"/>
++    <RDF:li RDF:resource="urn:mozilla:skin:classic/1.0:browser"/>
++  </RDF:Seq>
++  <RDF:Description RDF:about="urn:mozilla:package:cview"
++                   c:baseURL="jar:resource:/chrome/cview.jar!/content/cview/"
++                   c:locType="install"
++                   c:displayName="Component Viewer (cview)"
++                   c:author="mozilla.org"
++                   c:name="cview" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:pippki"
++                   c:baseURL="jar:resource:/chrome/en-US.jar!/locale/pippki/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:pippki"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0:chatzilla"
++                   c:baseURL="jar:resource:/chrome/chatzilla.jar!/skin/modern/chatzilla/"
++                   c:allowScripts="false">
++    <c:package RDF:resource="urn:mozilla:package:chatzilla"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:chatzilla"
++                   c:baseURL="jar:resource:/chrome/chatzilla.jar!/content/chatzilla/"
++                   c:locType="install"
++                   c:displayName="ChatZilla 0.9.61"
++                   c:author="mozilla.org"
++                   c:authorURL="http://www.mozilla.org/projects/rt-messaging/chatzilla/"
++                   c:description="A simple, straightforward Internet Relay Chat (IRC) client."
++                   c:localeVersion="1.7"
++                   c:extension="true"
++                   c:settingsURL=""
++                   c:name="chatzilla" />
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:inspector"
++                   c:baseURL="jar:resource:/chrome/inspector.jar!/locale/en-US/inspector/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:inspector"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:mozapps"
++                   c:baseURL="jar:resource:/chrome/classic.jar!/skin/classic/mozapps/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:mozapps"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:communicator"
++                   c:hasOverlays="true"
++                   c:baseURL="jar:resource:/chrome/comm.jar!/content/communicator/"
++                   c:locType="install"
++                   c:displayName="Communicator Shared"
++                   c:author="mozilla.org"
++                   c:name="communicator"
++                   c:localeVersion="1.7"
++                   c:skinVersion="1.5" />
++  <RDF:Description RDF:about="urn:mozilla:skin:modern/1.0:inspector"
++                   c:baseURL="jar:resource:/chrome/inspector.jar!/skin/modern/inspector/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:inspector"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:package:help"
++                   c:baseURL="jar:resource:/chrome/help.jar!/content/help/"
++                   c:locType="install"
++                   c:displayName="Mozilla Help Viewer"
++                   c:author="netscape.com"
++                   c:name="help"
++                   c:localeVersion="1.7" />
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:communicator"
++                   c:baseURL="jar:resource:/chrome/classic.jar!/skin/classic/communicator/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:communicator"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:layoutdebug"
++                   c:baseURL="jar:resource:/chrome/layoutdebug.jar!/locale/en-US/layoutdebug/">
++    <c:package RDF:resource="urn:mozilla:package:layoutdebug"/>
++  </RDF:Description>
++  <RDF:Seq RDF:about="urn:mozilla:locale:root">
++    <RDF:li RDF:resource="urn:mozilla:locale:en-US"/>
++  </RDF:Seq>
++  <RDF:Description RDF:about="urn:mozilla:locale:en-US:chatzilla"
++                   c:baseURL="jar:resource:/chrome/chatzilla.jar!/locale/en-US/chatzilla/"
++                   c:localeVersion="1.7">
++    <c:package RDF:resource="urn:mozilla:package:chatzilla"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:browser"
++                   c:baseURL="jar:resource:/chrome/classic.jar!/skin/classic/browser/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:browser"/>
++  </RDF:Description>
++  <RDF:Description RDF:about="urn:mozilla:skin:classic/1.0:help"
++                   c:baseURL="jar:resource:/chrome/help.jar!/skin/classic/help/"
++                   c:allowScripts="false"
++                   c:skinVersion="1.5">
++    <c:package RDF:resource="urn:mozilla:package:help"/>
++  </RDF:Description>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/browser/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/browser/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/browser/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/browser/content/overlays.rdf	2004-11-30 13:03:18.796249728 -0800
+@@ -0,0 +1,13 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://browser/content/browser.xul">
++    <RDF:li>chrome://inspector/content/tasksOverlay.xul</RDF:li>
++    <RDF:li>chrome://chatzilla/content/browserOverlay.xul</RDF:li>
++    <RDF:li>chrome://layoutdebug/content/layoutdebug-overlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://browser/content/pageInfo.xul">
++    <RDF:li>chrome://pippki/content/PageInfoOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/browser/skin/stylesheets.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/browser/skin/stylesheets.rdf
+--- firefox-1.0/chrome/overlayinfo/browser/skin/stylesheets.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/browser/skin/stylesheets.rdf	2004-11-30 13:03:18.784251552 -0800
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://browser/content/browser.xul">
++    <RDF:li>chrome://chatzilla/skin/browserOverlay.css</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/communicator/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/communicator/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/communicator/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/communicator/content/overlays.rdf	2004-11-30 13:03:18.801248968 -0800
+@@ -0,0 +1,22 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://communicator/content/tasksOverlay.xul">
++    <RDF:li>chrome://wallet/content/walletTasksOverlay.xul</RDF:li>
++    <RDF:li>chrome://cview/content/cviewOverlay.xul</RDF:li>
++    <RDF:li>chrome://tasks/content/tasksOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://communicator/content/contentAreaContextOverlay.xul">
++    <RDF:li>chrome://cookie/content/cookieContextOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://communicator/content/pref/preftree.xul">
++    <RDF:li>chrome://cookie/content/cookiePrefsOverlay.xul</RDF:li>
++    <RDF:li>chrome://wallet/content/walletPrefsOverlay.xul</RDF:li>
++    <RDF:li>chrome://content-packs/content/prefOverlay.xul</RDF:li>
++    <RDF:li>chrome://chatzilla/content/prefsOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://communicator/content/utilityOverlay.xul">
++    <RDF:li>chrome://help/content/helpMenuOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/editor/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/editor/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/editor/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/editor/content/overlays.rdf	2004-11-30 13:03:18.777252616 -0800
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://editor/content/editorTasksOverlay.xul">
++    <RDF:li>chrome://chatzilla/content/chatzillaOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/global/skin/stylesheets.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/global/skin/stylesheets.rdf
+--- firefox-1.0/chrome/overlayinfo/global/skin/stylesheets.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/global/skin/stylesheets.rdf	2004-11-30 13:03:18.786251248 -0800
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://global/content/customizeToolbar.xul">
++    <RDF:li>chrome://chatzilla/skin/browserOverlay.css</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/inspector/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/inspector/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/inspector/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/inspector/content/overlays.rdf	2004-11-30 13:03:18.768253984 -0800
+@@ -0,0 +1,18 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://inspector/content/commandOverlay.xul">
++    <RDF:li>chrome://inspector/content/viewers/dom/commandOverlay.xul</RDF:li>
++    <RDF:li>chrome://inspector/content/viewers/styleRules/commandOverlay.xul</RDF:li>
++    <RDF:li>chrome://inspector/content/search/modules/commandOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://inspector/content/popupOverlay.xul">
++    <RDF:li>chrome://inspector/content/viewers/dom/popupOverlay.xul</RDF:li>
++    <RDF:li>chrome://inspector/content/viewers/styleRules/popupOverlay.xul</RDF:li>
++    <RDF:li>chrome://inspector/content/search/modules/popupOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://inspector/content/keysetOverlay.xul">
++    <RDF:li>chrome://inspector/content/viewers/dom/keysetOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/messenger/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/messenger/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/messenger/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/messenger/content/overlays.rdf	2004-11-30 13:03:18.737258696 -0800
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://messenger/content/mailWindowOverlay.xul">
++    <RDF:li>chrome://cookie/content/cookieContextOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/chrome/overlayinfo/navigator/content/overlays.rdf /usr/lib/firefox-1.0/chrome/overlayinfo/navigator/content/overlays.rdf
+--- firefox-1.0/chrome/overlayinfo/navigator/content/overlays.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/chrome/overlayinfo/navigator/content/overlays.rdf	2004-11-30 13:03:18.752256416 -0800
+@@ -0,0 +1,15 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Seq RDF:about="chrome://navigator/content/pageInfo.xul">
++    <RDF:li>chrome://p3p/content/pageInfoOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://navigator/content/navigator.xul">
++    <RDF:li>chrome://wallet/content/walletNavigatorOverlay.xul</RDF:li>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="chrome://navigator/content/navigatorOverlay.xul">
++    <RDF:li>chrome://cookie/content/cookieNavigatorOverlay.xul</RDF:li>
++    <RDF:li>chrome://cookie/content/cookieTasksOverlay.xul</RDF:li>
++  </RDF:Seq>
++</RDF:RDF>
+diff -urpN firefox-1.0/extensions/Extensions.rdf /usr/lib/firefox-1.0/extensions/Extensions.rdf
+--- firefox-1.0/extensions/Extensions.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/extensions/Extensions.rdf	2004-11-30 13:07:09.909115232 -0800
+@@ -0,0 +1,24 @@
++<?xml version="1.0"?>
++<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
++         xmlns:NC="http://home.netscape.com/NC-rdf#"
++         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++  <RDF:Description RDF:about="urn:mozilla:theme:{972ce4c6-7e08-4474-a285-3208198ce6fd}"
++                   em:version="2.0"
++                   em:name="Firefox (default)"
++                   em:description="The default theme"
++                   em:creator="Gerich and Horlander"
++                   em:internalName="classic/1.0"
++                   em:locked="true"
++                   em:contributor="Mozilla Contributors">
++    <em:targetApplication RDF:resource="rdf:#$lA+UH"/>
++  </RDF:Description>
++  <RDF:Seq RDF:about="urn:mozilla:theme:root">
++    <RDF:li RDF:resource="urn:mozilla:theme:{972ce4c6-7e08-4474-a285-3208198ce6fd}"/>
++  </RDF:Seq>
++  <RDF:Seq RDF:about="urn:mozilla:extension:root">
++  </RDF:Seq>
++  <RDF:Description RDF:about="rdf:#$lA+UH"
++                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
++                   em:minVersion="1.0"
++                   em:maxVersion="1.0" />
++</RDF:RDF>
+diff -urpN firefox-1.0/extensions/installed-extensions-processed.txt /usr/lib/firefox-1.0/extensions/installed-extensions-processed.txt
+--- firefox-1.0/extensions/installed-extensions-processed.txt	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/extensions/installed-extensions-processed.txt	2004-11-30 13:07:09.889118272 -0800
+@@ -0,0 +1 @@
++theme,{972ce4c6-7e08-4474-a285-3208198ce6fd}
+diff -urpN firefox-1.0/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf /usr/lib/firefox-1.0/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
+--- firefox-1.0/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf	1969-12-31 16:00:00.000000000 -0800
++++ /usr/lib/firefox-1.0/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf	2004-11-30 13:07:09.893117664 -0800
+@@ -0,0 +1,34 @@
++<?xml version="1.0"?>
++
++<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
++     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
++
++  <Description about="urn:mozilla:install-manifest">
++    <em:id>{972ce4c6-7e08-4474-a285-3208198ce6fd}</em:id>
++    <em:version>2.0</em:version>
++    
++    <!-- Target Application this theme can install into, 
++        with minimum and maximum supported versions. --> 
++    <em:targetApplication>
++      <Description>
++        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
++        <em:minVersion>1.0</em:minVersion>
++        <em:maxVersion>1.0</em:maxVersion>
++      </Description>
++    </em:targetApplication>
++    
++    <!-- Front End MetaData -->
++    <em:name>Firefox (default)</em:name>
++    <em:description>The default theme</em:description>
++
++    <em:locked>true</em:locked>
++
++    <!-- Front End Integration Hooks (used by Theme Manager)-->
++    <!-- XXXben - preprocess this file to use different info for mac version -->
++    <em:creator>Gerich and Horlander</em:creator>
++    <em:contributor>Mozilla Contributors</em:contributor>
++
++    <em:internalName>classic/1.0</em:internalName>
++  </Description>      
++
++</RDF>

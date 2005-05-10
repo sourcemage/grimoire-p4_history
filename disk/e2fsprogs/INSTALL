@@ -1,0 +1,8 @@
+make    install                                  &&
+make    install-libs                             &&
+
+install  -d  ${INSTALL_ROOT}/usr/include/uuid       &&
+install  -m  644  lib/uuid/libuuid.a                \
+                  ${INSTALL_ROOT}/usr/lib           &&
+install  -m  644  lib/uuid/uuid.h                   \
+                  ${INSTALL_ROOT}/usr/include/uuid

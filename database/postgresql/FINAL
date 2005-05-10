@@ -1,0 +1,7 @@
+if    [  "$POSTGRES_BOOT"  =  "y"  ]
+then  echo
+	  echo  "You need to run initdb and edit postgresql.conf manually."
+      echo  "The PGDATA directory defaults to /var/lib/postgres."
+      echo  "Logs are written to /var/log/postgres."
+      echo
+fi

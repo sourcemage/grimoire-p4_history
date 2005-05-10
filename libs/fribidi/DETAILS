@@ -1,0 +1,15 @@
+           SPELL=fribidi
+         VERSION=0.10.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
+        WEB_SITE=http://fribidi.sourceforge.net
+          MD5[0]=359681e9597a31d90245acbb1e1d13a7
+      LICENSE[0]=LGPL
+         ENTERED=20030201
+         UPDATED=20030201
+           SHORT="fribidi is a library for rendering bidirectional Unicode text."
+cat << EOF
+fribidi is a library for rendering bidirectional Unicode text.
+EOF
