@@ -6,5 +6,5 @@ function default_configure_apr ()
   message 'APR and APU are used by Apache 2 spells (HTTPD)'
   message 'Do *not* select APR 1.x if you plan to use apache2 spell (HTTPD 2.0)'
   config_query_list APR_BRANCH 'What branch would you like to use?' '0.9.x' '1.x'
-  config_query APR_LATEST 'Would you like to use the latest source code that may not build?' n
+  config_query APR_LATEST 'Would you like to use the latest source code (may not build)?' n
 }
