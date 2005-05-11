@@ -1,7 +1,12 @@
 invoke_gcc
-# fails to compile with -DPIC -fPIC
-CFLAGS=${CFLAGS/-DPIC/}  &&
-CFLAGS=${CFLAGS/-fPIC/}  &&
+
+# fails to compile with -DPIC -fPIC except on systems that need -fPIC
+if [[ "$HOST" == x86_64-* ]]; then
+  CFLAGS=${CFLAGS/-mmx/}
+else
+  CFLAGS=${CFLAGS/-DPIC/}  &&
+  CFLAGS=${CFLAGS/-fPIC/}
+fi &&
 
 if ! echo $CFLAGS | grep -q -- "-O."; then
   CFLAGS="$CFLAGS -O2"
