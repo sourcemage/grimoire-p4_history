@@ -6,4 +6,6 @@ if  (echo $CFLAGS | grep -q -- "-Os"); then
   export CFLAGS="-O2 ${CFLAGS//-Os/}"
 fi  &&
 
+patch -p1 < $SCRIPT_DIRECTORY/shared-Xau.patch &&
+
 make  World
