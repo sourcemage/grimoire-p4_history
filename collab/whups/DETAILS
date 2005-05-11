@@ -1,10 +1,10 @@
            SPELL=whups
-         VERSION=$(date +%Y%m%d)
+         VERSION=HEAD
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
-          MD5[0]="IGNORE"
-  FORCE_DOWNLOAD="on"
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
         WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20050228
          UPDATED=20050420

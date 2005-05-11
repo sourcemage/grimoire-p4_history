@@ -1,4 +1,6 @@
-scons PREFIX=/usr /usr
+scons PREFIX=/usr CCFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" /usr &&
 
-cp -r src/include/xmms /usr/include  &&
-cp -r src/include/internal /usr/include
+# TODO don't install stuff into /usr/local/etc
+cp -fR src/include/xmms     /usr/include/ &&
+cp -fR src/include/internal /usr/include/xmms/ &&
+cp -f  doc/xmms2.1          /usr/share/man/man1/

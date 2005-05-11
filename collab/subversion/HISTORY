@@ -1,3 +1,25 @@
+2005-05-11 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 1.2-rc3;
+	* CONFIGURE: bindings are enabled if language is installed.
+
+2005-04-28 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 1.2-rc2; add option to check out of repository;
+	* TRIGGERS: check self on `neon' or `db' cast;
+	* FINAL: delete, don't ask to restart the server anymore;
+	* CONFIGURE: ask about latest source and language bindings;
+	* DEPENDS: rewrite for more flexibility; add more options;
+	* BUILD: no longer attempt to check the client; use default_build.
+
+2005-04-17 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: removed --enable-dso from configure options as it breaks the
+	  compile
+	* BUILD, INSTALL: build and install language bindings for ruby, perl
+	  and python where applicable
+
+2005-04-11 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 1.2.0-rc1;
+	* WIP: create to postpone moving into test until 1.2.0.
+
 2005-04-08 Sergey Lipnevich <sergey@sourcemage.org>
 	* TRIGGERS: cast Subversion after apr-util.
 

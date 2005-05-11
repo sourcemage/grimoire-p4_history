@@ -1,22 +1,23 @@
            SPELL=gcj
-         VERSION=3.4.3
+         VERSION=4.0.0
           SOURCE=gcc-core-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
    SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
    SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
-          MD5[0]='58e07da3cf68f06976d82ac1baf3d1bd'
+          MD5[0]=2125831b2f545dc0f84b1ff8f8517cd5
          SOURCE2=gcc-java-$VERSION.tar.bz2
   SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
   SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
-          MD5[1]=83775b6d9b02f08a6a81181bef39b8b6
+          MD5[1]=dc95d097c862129bf00d4a83626f05c0
          SOURCE3=gcc-g++-$VERSION.tar.bz2
   SOURCE3_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
   SOURCE3_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
-          MD5[2]=ec57f855cfc677fc552c1f683aeb57ad
+          MD5[2]=ee0492fd7e6da0c51f4c912f50ff54bb
       LICENSE[0]=GPL
         WEB_SITE=http://gcc.gnu.org/
          ENTERED=20040705
          UPDATED=20041107
+           TMPFS=off
             DOCS="$DOCS INSTALL"
            SHORT="the GNU java compiler"
 cat << EOF

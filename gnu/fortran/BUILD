@@ -9,7 +9,7 @@ $SOURCE_DIRECTORY/configure                                \
              --mandir=${INSTALL_ROOT}/usr/share/man        \
              --enable-threads=posix                        \
              --with-system-zlib                            \
-             --enable-languages=c++                        \
+             --enable-languages=f95                        \
              $GCC_MULTILIB                                 \
              $OPTS                                         &&
 
