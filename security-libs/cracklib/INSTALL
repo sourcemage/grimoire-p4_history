@@ -1,7 +1,11 @@
-mkdir -p ${INSTALL_ROOT}/usr/share/dict &&
-mkdir -p ${INSTALL_ROOT}/usr/share/cracklib &&
-cp ${SOURCE_CACHE}/allwords ${INSTALL_ROOT}/usr/share/cracklib/     &&
-sedit 's/^DICTPATH=/DICTPATH=$(INSTALL_ROOT)/g' Makefile &&
-sedit 's/^SRCDICTS=/SRCDICTS=$(INSTALL_ROOT)/g' Makefile &&
-make INSTALL_ROOT=${INSTALL_ROOT} install               &&
-cp ${SOURCE_DIRECTORY}/cracklib/libcrack.a ${INSTALL_ROOT}/usr/lib/
+sedit  's/DICTPATH=/DICTPATH=$(INSTALL_ROOT)/g'  Makefile  &&
+sedit  's/SRCDICTS=/SRCDICTS=$(INSTALL_ROOT)/g'  Makefile  &&
+make  INSTALL_ROOT=${INSTALL_ROOT}  install                &&
+cp  ${SOURCE_DIRECTORY}/cracklib/libcrack.a                \
+    ${INSTALL_ROOT}/usr/lib/                               &&
+ 
+mkdir  -p  ${INSTALL_ROOT}/var/cache/cracklib              &&
+cp  ${INSTALL_ROOT}/usr/share/dict/pw_dict.pwd             \
+    ${INSTALL_ROOT}/var/cache/cracklib/cracklib_dict.pwd   &&
+cp  ${INSTALL_ROOT}/usr/share/dict/pw_dict.pwi             \
+    ${INSTALL_ROOT}/var/cache/cracklib/cracklib_dict.pwi
