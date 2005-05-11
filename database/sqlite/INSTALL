@@ -1,0 +1,7 @@
+default_install &&
+
+if ! [[ -f $INSTALL_ROOT/usr/include/sqlite.h  ]] &&
+     [[ -f $INSTALL_ROOT/usr/include/sqlite3.h ]]
+then
+  ln -fns sqlite3.h $INSTALL_ROOT/usr/include/sqlite.h
+fi
