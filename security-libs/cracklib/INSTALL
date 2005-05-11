@@ -1,2 +1,4 @@
-default_install                                                       &&
+sedit 's/DICTPATH=/DICTPATH=$(INSTALL_ROOT)/g' Makefile &&
+sedit 's/SRCDICTS=/SRCDICTS=$(INSTALL_ROOT)/g' Makefile &&
+make INSTALL_ROOT=${INSTALL_ROOT} install               &&
 cp ${SOURCE_DIRECTORY}/cracklib/libcrack.a ${INSTALL_ROOT}/usr/lib/
