@@ -3,4 +3,6 @@ if [ "$CVS" = "y" ]; then
      ./autogen.sh
 fi  &&
 
+[[ "$HOST" == x86_64-* ]] && OPTS="$OPTS --disable-mmx"
+
 default_build
