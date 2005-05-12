@@ -14,6 +14,7 @@ fi                                                                   &&
             --enable-xml-messages                        \
             --enable-default-catalog=/etc/sgml/catalog   \
             --enable-default-search-path=/usr/share/sgml \
+            --enable-splibdir=${INSTALL_ROOT}/usr/lib    \
             $OPTS                                        &&
 
 make pkgdatadir=/usr/share/sgml/OpenSP
