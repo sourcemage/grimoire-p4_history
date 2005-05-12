@@ -1,7 +1,7 @@
-export    CFLAGS="${CFLAGS/-funroll-loops/} -O3"
-export  CXXFLAGS="${CXXFLAGS/-funroll-loops/} -O3"
-export    CFLAGS="${CFLAGS/-DPIC -fPIC/}"
-export  CXXFLAGS="${CXXFLAGS/-DPIC -fPIC/}"
+CFLAGS="${CFLAGS/-funroll-loops/} -O3"
+if [[ "$HOST" != x86_64-* ]]; then
+  CFLAGS="${CFLAGS/-DPIC -fPIC/}"
+fi
 
 sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
 sedit  's:-Werror::'  libavformat/Makefile  &&
