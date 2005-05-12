@@ -4,10 +4,10 @@ fi  &&
 
 ./configure                                  \
    --build=$BUILD                            \
-   --bindir=${INSTALL_ROOT}/bin              \
-   --prefix=${INSTALL_ROOT}/usr              \
-   --mandir=${INSTALL_ROOT}/usr/share/man    \
-   --infodir=${INSTALL_ROOT}/usr/share/info  \
+   --bindir=${TRACK_ROOT}/bin              \
+   --prefix=${TRACK_ROOT}/usr              \
+   --mandir=${TRACK_ROOT}/usr/share/man    \
+   --infodir=${TRACK_ROOT}/usr/share/info  \
    $OPTS                                     &&
 
-make  $MAKEFLAG
+make  $MAKEFLAG DESTDIR=$INSTALL_ROOT

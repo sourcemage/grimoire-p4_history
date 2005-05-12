@@ -1,7 +1,10 @@
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
+
+
 ./configure  --build=${BUILD}              \
-             --prefix=${INSTALL_ROOT}/usr  \
-             --bindir=${INSTALL_ROOT}/bin  \
-             --infodir=${INSTALL_ROOT}/usr/share/info \
-             --mandir=${INSTALL_ROOT}/usr/share/man   \
+             --prefix=${TRACK_ROOT}/usr  \
+             --bindir=${TRACK_ROOT}/bin  \
+             --infodir=${TRACK_ROOT}/usr/share/info \
+             --mandir=${TRACK_ROOT}/usr/share/man   \
              ${OPTS}  &&
-make
+make DESTDIR=$INSTALL_ROOT

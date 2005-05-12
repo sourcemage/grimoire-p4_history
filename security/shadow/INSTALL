@@ -1,4 +1,4 @@
-  default_install                                         &&
+  make install DESTDIR=$INSTALL_ROOT                      &&
   cd  etc                                                 &&
 
   [  -e  ${INSTALL_ROOT}/etc/limits           ]  \

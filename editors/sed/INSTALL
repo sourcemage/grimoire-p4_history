@@ -1,4 +1,4 @@
-  default_install                                        &&
+  make install DESTDIR=$INSTALL_ROOT &&
   ### /bin/sed is "protected" but it is from an "old" install
   ### just incase it has been removed I copy it first 
   ### so the cast will complete.

@@ -1,4 +1,4 @@
-default_install  &&
+make install DESTDIR=$INSTALL_ROOT &&
 
 if  [  !  -e  /etc/filesystems  ];  then
   cp  ${SCRIPT_DIRECTORY}/filesystems  /etc

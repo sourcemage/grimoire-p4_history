@@ -16,6 +16,7 @@ ln  -fns  bash  $INSTALL_ROOT/bin/rbash  &&
 
 cd  doc  &&
 
+mkdir -p ${INSTALL_ROOT}/usr/share/man/man1 &&
 for  MANPAGE  in  `ls  *.1`;  do
   gzip  -9  $MANPAGE  &&
   cp  $MANPAGE.gz  ${INSTALL_ROOT}/usr/share/man/man1

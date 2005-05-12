@@ -1,6 +1,11 @@
+OPTS="$OPTS --build=${BUILD}"
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
+
 ./configure  --build=$BUILD                       \
-             --prefix=${INSTALL_ROOT}/usr         \
-             --sysconfdir=${INSTALL_ROOT}/etc     \
-             --localstatedir=${INSTALL_ROOT}/var  \
+             --prefix=${TRACK_ROOT}/usr         \
+             --sysconfdir=${TRACK_ROOT}/etc     \
+             --localstatedir=${TRACK_ROOT}/var  \
              $OPTS                                &&
-make 
+
+make DESTDIR=$INSTALL_ROOT
+

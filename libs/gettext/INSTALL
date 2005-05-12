@@ -1,5 +1,5 @@
 make_single      &&
-default_install  &&
+make install DESTDIR=$INSTALL_ROOT &&
 
 #
 # Install headers so libintl.h doesn't get overwritten
@@ -22,7 +22,7 @@ fi  &&
 
 if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
   cd  gettext-tools/doc  &&
-  make  install-pdf      &&
-  make  install-ps       &&
-  make  install-dvi
+  make  install-pdf DESTDIR=$INSTALL_ROOT     &&
+  make  install-ps  DESTDIR=$INSTALL_ROOT     &&
+  make  install-dvi DESTDIR=$INSTALL_ROOT
 fi

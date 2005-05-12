@@ -1,7 +1,7 @@
 ./configure  --host=$HOST                              \
              --build=$BUILD                            \
              --prefix=/usr                             \
-             --datadir=/usr/share/misc                 \
-             --mandir=/usr/share/man                   \
+             --datadir=$TRACK_ROOT/usr/share/misc      \
+             --mandir=$TRACK_ROOT/usr/share/man        \
              $OPTS                                     &&
-make
+make DESTDIR=$INSTALL_ROOT
