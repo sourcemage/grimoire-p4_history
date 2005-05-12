@@ -24,7 +24,7 @@ fi
 
 [ "$THREADED" == "y" ] && CONFIG_OPTS="$CONFIG_OPTS -Dusethreads"
 [ "$OLD_CUSTOM" != "y" ] && [ "NEW_CUSTOM" != "y" ] && CONFIG_OPTS="-d -e $CONFIG_OPTS"
-./Configure $CONFIG_OPTS $PERL_PATHS &&
+./Configure -Doptimize="$CFLAGS" $CONFIG_OPTS $PERL_PATHS &&
 if [ "$NEW_CUSTOM"  ==  "y" ]; then
    cp config.sh $CONFIG
 fi &&
