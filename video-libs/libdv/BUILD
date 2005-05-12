@@ -11,5 +11,7 @@ else
   patch  -p1  <  $SCRIPT_DIRECTORY/libdv-no-mxx.patch
 fi
 
+[[ "$HOST" == x86_64-* ]] && patch -p3 < $SCRIPT_DIRECTORY/libdv-0.104-amd64reloc.patch
+
 export CFLAGS="$CFLAGS -O3"      && # fix compile issues
 default_build
