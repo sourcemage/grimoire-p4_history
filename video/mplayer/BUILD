@@ -1,4 +1,6 @@
 invoke_gcc
+# needed so it actually uses gcc 3.4
+OPTS="$OPTS --cc=gcc"  &&
 # fixes bug #6833
 patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
 
