@@ -1,5 +1,3 @@
-# this is so OPTS and MOZILLA_EXT get picked up correctly
-. $SPELL_CONFIG
 depends zip &&
 depends perl &&
 
@@ -15,10 +13,10 @@ optional_depends libmng                           \
                  'for MNG picture format support' &&
 optional_depends  gnome-vfs2 "" "--disable-gnomevfs" "for smb:// url support (if enabled in gnome-vfs)"  &&
 
-if echo "$OPTS" | grep -q 'enable-svg-renderer-cairo'; then
+if  [  "$MOZILLA_RENDER"  == "cairo"  ];  then
   depends cairo
 fi &&
 
-if echo "$MOZILLA_EXT" | grep -q 'enigmail'; then
+if  [  "$MOZILLA_ENIGMAIL"  ==  "y"  ];  then
   depends gnupg
 fi
