@@ -1,0 +1,11 @@
+#
+# when gpg runs for the first time it only creates ~/.gnupg and does not do anything else
+# we need gpg to be able to verify gpg signatures immediately
+#
+if  !  [  -d  /root/.gnupg  ];  then
+  mkdir  -p         /root  &&
+  chown  root:root  /root  &&
+  chmod  0750       /root  &&
+
+  gpg  --list-keys  >  /dev/null  2>&1
+fi
