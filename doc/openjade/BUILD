@@ -7,6 +7,7 @@
             --enable-default-catalog=/etc/sgml/catalog   \
             --enable-default-search-path=/usr/share/sgml \
             --datadir=/usr/share/sgml/OpenJade           \
+            --enable-splibdir=${INSTALL_ROOT}/usr/lib    \
             $OPTS                                        &&
 
 make
