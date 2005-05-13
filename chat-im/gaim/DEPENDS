@@ -10,7 +10,7 @@ optional_depends  evolution2                                             \
                   "--disable-gevolution"                           \
                   "for gevolution plugin"  &&
 
-optional_depends  MOZILLA-NSS                                            \
+optional_depends  nss                                                    \
                   "--enable-nss=yes"                                     \
                   "--enable-nss=no"                                      \
                   "for gaim-encryption plugin , or MSN's new protool 9"  &&
@@ -39,6 +39,11 @@ optional_depends  nas                                 \
                   "--enable-nas"                      \
                   "--disable-nas"                     \
                   "for Network Audio System support"  &&
+
+optional_depends  perl                 \
+                  '--enable-perl'      \
+                  '--disable-perl'     \
+                  'for Perl scripting' &&
 
 optional_depends  tcl                          \
                   ""                           \

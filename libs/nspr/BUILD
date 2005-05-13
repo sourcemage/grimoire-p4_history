@@ -1,2 +1,2 @@
-OPTS="$OPTS --with-mozilla" &&
+OPTS="$OPTS --with-mozilla --enable-optimize" &&
 default_build

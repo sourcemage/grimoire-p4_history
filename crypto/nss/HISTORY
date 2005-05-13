@@ -1,3 +1,10 @@
+2005-05-12 Sergey Lipnevich <sergey@sourcemage.org>
+	* DEPENDS: depends on NSPR;
+	* DETAILS: set proper versions of sources; adjust CVS URLs;
+	* PRE_BUILD,BUILD,INSTALL: exclude NSPR;
+	* PROVIDES: remove as there's no need to provide NSS anymore;
+	* mozilla-nspr.pc: moved to nspr.
+
 2005-03-20 Ladislav Hagara <hgr@vabo.cz>
 	* BUILD: fixed NSS_LINUX_VERSION again [Bug 8133]
 	  now should work also with 2.6.11.x kernels
