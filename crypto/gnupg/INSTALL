@@ -1,10 +1,6 @@
 default_install  &&
 
+#
 # gpg is installed as setuid(root) to avoid swapping out of sensitive data
-chmod u+s $INSTALL_ROOT/usr/bin/gpg
-
-# when gpg runs for the first time it only creates ~/.gnupg and does not do anything else
-# we need gpg to be able to verify gpg signatures immediately
-if ! [ -d /root/.gnupg ] ; then
-  gpg --list-keys > /dev/null 2>&1
-fi
+#
+chmod  u+s  $INSTALL_ROOT/usr/bin/gpg
