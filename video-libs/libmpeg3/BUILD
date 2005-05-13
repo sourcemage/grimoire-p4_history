@@ -2,7 +2,7 @@ invoke_gcc
 
 # fails to compile with -DPIC -fPIC except on systems that need -fPIC
 if [[ "$HOST" == x86_64-* ]]; then
-  CFLAGS=${CFLAGS/-mmx/}
+  CFLAGS=${CFLAGS/-mmmx/}
 else
   CFLAGS=${CFLAGS/-DPIC/}  &&
   CFLAGS=${CFLAGS/-fPIC/}
