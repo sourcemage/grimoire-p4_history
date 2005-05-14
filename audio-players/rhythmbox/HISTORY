@@ -1,3 +1,12 @@
+2005-05-13 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Converted to config_query (now DEPENDS works for xine-lib)
+	  Use RHYTHMBOX_ instead of XINE_ for variables
+	  config_uery_option for iPod support and Multimedia Keys support
+	  Default to using xine-lib (I've always had bad luck with gstreamer)
+	* DEPENDS: Use RHYTHMBOX_FLAC for flac (from CONFIGURE)
+	  Added proper flags for gstreamer/xine support
+	* BUILD: Pass CONFIGURE flags to OPTS
+
 2004-10-05 Robin Cook <rcook@wyrms.net>
 	* DETAILS: updated VERSION to 0.8.8
 	  update MD5

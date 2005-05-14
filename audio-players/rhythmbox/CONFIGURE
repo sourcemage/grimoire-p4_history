@@ -1,15 +1,8 @@
-if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
+config_query  RHYTHMBOX_BACKEND  "Use ${SPELL_COLOR}xine-lib${DEFAULT_COLOR} backend instead of ${SPELL_COLOR}gstreamer${DEFAULT_COLOR}?"  y  &&
+config_query  RHYTHMBOX_FLAC     "Enable ${SPELL_COLOR}flac${DEFAULT_COLOR} support?"  y  &&
 
-  if    query  "Use xine-lib backend instead of gstreamer?" n
-  then  echo  "XINE_BACKEND=y"  >>  ${SPELL_CONFIG}
-  else  echo  "XINE_BACKEND=n"  >>  ${SPELL_CONFIG}
-  fi  &&
+config_query_option  RHYTHMBOX_IPOD  "Enable Apple iPod support?"  y  \
+                     '--enable-ipod'  '--disable-ipod'                &&
 
-  if query "flac support?" "y"
-  then
-      depends flac "--enable-flac" &&
-      depends libid3tag
-  fi
-
-  echo  "CONFIGURED='y'"  >>  ${SPELL_CONFIG}
-fi
+config_query_option  RHYTHMBOX_MMKEY  "Enable Multimedia Keys support?"  y  \
+                     '--enable-mmkeys'  '--disable-mmkeys'

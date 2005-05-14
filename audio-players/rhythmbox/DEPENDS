@@ -1,13 +1,26 @@
-depends  libgnomeui   &&
-if  [  "$XINE_BACKEND"  =  "y"  ];  then
-  depends  xine-lib '--enable-xine'
+depends  libgnomeui  &&
+
+if  [  "$RHYTHMBOX_BACKEND"  =  "y"  ];  then
+  depends  xine-lib     '--with-player=xine --with-metadata=xine'
 else
-  depends  gst-plugins
+  depends  gst-plugins  '--with-player=gstreamer --with-metadata=gstreamer'
 fi  &&
+
+if  [  "$RHYTHMBOX_FLAC"  ==  "y"  ];  then
+  depends  flac       '--enable-flac'  &&
+  depends  libid3tag
+fi  &&
+
 optional_depends  "libvorbis"           \
                   "--enable-vorbis"     \
                   "--disable-vorbis"    \
-                  "for vorbis support"
+                  "for vorbis support"  &&
+
+optional_depends  nautilus2                  \
+                  "--enable-nautilus-menu"   \
+                  "--disable-nautilus-menu"  \
+                  "for Nautilus menus"
+
 # disabled, needs musicbrainz >= 2.0
 #optional_depends  "musicbrainz"            \
 #                  "--enable-musicbrainz"   \
