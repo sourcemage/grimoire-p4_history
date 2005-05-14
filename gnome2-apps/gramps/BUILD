@@ -7,4 +7,4 @@ fi                             &&
 
 make_single                    &&
 default_build                  &&
-make-_normal
+make_normal

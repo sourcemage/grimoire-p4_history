@@ -1,16 +1,8 @@
-depends  gtk+2          &&
-depends  pygtk2         &&
-depends  libgnomeui     &&
-depends  pyorbit        &&
-depends  gnome-python2  &&
-depends  scrollkeeper   &&
+depends  libgnomeui          &&
+depends  gnome-python2       &&
+depends  scrollkeeper        &&
 
-optional_depends  swig                     \
-                  ""                       \
-                  ""                       \
-                  "for scripting support"  &&
-
-optional_depends  pil                        \
-                  ""                         \
-                  ""                         \
-                  "to display family trees"
+optional_depends graphviz                  \
+                 ""                        \
+                 ""                        \
+                 "Enable graph creation"   
