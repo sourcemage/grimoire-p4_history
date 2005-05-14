@@ -1,5 +1,10 @@
 2005-05-13 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Made cairo the default (libart usually gives me problems)
 	* DEPENDS: Forgot to update DEPENDS properly
+	* BUILD: Remove debugging echos
+	  Apply CONFIGURE options (e.g. MOZILLA_CRYPTO)
+	  Apply libart/cairo flags to OPTS
+	  Only do the enigmail export fix if building enigmail
 
 2005-05-12 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to Mozilla 1.7.8 and Enigmail 0.91.0;

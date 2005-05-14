@@ -5,7 +5,12 @@ if  [  "$MOZILLA_ENIGMAIL"  ==  'y'  ];  then
 fi  &&
 
 if  [  "$MOZILLA_RENDER"  ==  'libart_svg'  ];  then
-  export MOZ_INTERNAL_LIBART_LGPL=1
+  export MOZ_INTERNAL_LIBART_LGPL=1   &&
+  OPTS="--enable-svg-renderer-libart  \
+        $OPTS"
+else
+  OPTS="--enable-svg-renderer-cairo  \
+        $OPTS"
 fi  &&
 
 #
@@ -14,10 +19,6 @@ fi  &&
 if  echo  $LDFLAGS  |  grep  -q  --  '-s';  then
   OPTS="$OPTS  --enable-strip"
 fi  &&
-
-echo OPTS = $OPTS > /tmp/mozilla.opts
-echo MOZILLA_EXT = $MOZILLA_EXT >> /tmp/mozilla.opts
-echo MOZ_INTERNAL_LIBART_LGPL = $MOZ_INTERNAL_LIBART_LGPL >> /tmp/mozilla.opts
 
 #
 # No fast optimization for Mozilla, bit us so many times...
@@ -38,17 +39,28 @@ CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
                          --disable-tests                        \
                          --disable-installer                    \
                          --disable-pedantic                     \
+                                   $MOZILLA_CRYPTO              \
+                                   $MOZILLA_MAILNEWS            \
+                                   $MOZILLA_CHAT                \
+                                   $MOZILLA_CALENDAR            \
+                                   $MOZILLA_COMPOSER            \
+                                   $MOZILLA_MATHML              \
+                                   $MOZILLA_LDAP                \
+                                   $MOZILLA_JS                  \
+                                   $MOZILLA_XINERAMA            \
                                    $OPTS                        &&
 
-#
-# fix a problem of enigmail not compiling
-# because S/MIME IDL files are not exported
-#
-if  !  make export;  then
-  pushd  mailnews/extensions/smime/public  &&
-  make  export                             &&
-  popd                                     &&
-  make  export
+if  [  "$MOZILLA_ENIGMAIL"  ==  "y"  ];  then
+  #
+  # fix a problem of enigmail not compiling
+  # because S/MIME IDL files are not exported
+  #
+  if  !  make export;  then
+    pushd  mailnews/extensions/smime/public  &&
+    make  export                             &&
+    popd                                     &&
+    make  export
+  fi
 fi  &&
 
 make_single  &&
