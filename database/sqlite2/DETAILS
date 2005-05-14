@@ -1,9 +1,9 @@
-           SPELL=sqlite
-         VERSION=3.2.1
-          MD5[0]='c000df3650cb9f91ed2c152136716ed1'
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+           SPELL=sqlite2
+         VERSION=2.8.16
+          MD5[0]=bdc7404d93a436c3dcc709364a9c18c3
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL//2/}-$VERSION
        BUILD_API=2
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=${SPELL//2/}-$VERSION.tar.gz
    SOURCE_URL[0]=http://www.hwaci.com/sw/sqlite/$SOURCE
       LICENSE[0]=PD
         WEB_SITE=http://www.hwaci.com/sw/sqlite/
