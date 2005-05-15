@@ -1,5 +1,5 @@
            SPELL=cdrdao
-         VERSION=${VERSION:=1.1.9}
+         VERSION=${VERSION:=1.2.0}
 if  [  "$CVS"  ==  "y"  ];  then
          VERSION=cvs
   FORCE_DOWNLOAD=1 
@@ -11,7 +11,7 @@ else
           SOURCE=$SPELL-$VERSION.tar.gz 
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE 
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION 
-          MD5[0]=07b83dccd4d719356a742bc9f34496c7
+          MD5[0]=da40d7ff25c5a9ef7e7cc2298ec1ee87
 fi
         WEB_SITE=http://cdrdao.sourceforge.net/index.html
          ENTERED=20020201

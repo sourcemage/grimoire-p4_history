@@ -1,7 +1,6 @@
 ##### Patch needed for building on x86_64 ######
 ARCH=$(uname -m)                                                        &&
 if [ "${ARCH:0:6}" = "x86_64" ]; then 
-    patch -p1 < $SCRIPT_DIRECTORY/cdrdao-1.1.9-cast.patch               && 
     cd scsilib/RULES                                                    && 
     cp i686-linux-cc.rul x86_64-linux-cc.rul                            && 
     cd $SOURCE_DIRECTORY 
