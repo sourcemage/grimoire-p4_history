@@ -1,2 +1,2 @@
-make install                                                        &&
-make -e TEXMF=$DEST_DIR${INSTALL_ROOT}/usr/share/texmf install-tex
+make install  DESTDIR=$INSTALL_ROOT &&
+make DESTDIR=/root/mychroot TEXMF=/usr/share/texmf install-tex

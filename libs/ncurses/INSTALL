@@ -22,11 +22,15 @@ then
 fi &&
 
 # now make install can succeed
-make_normal    &&
-make  install  &&
+make_normal &&
+make install DESTDIR=$INSTALL_ROOT
 
 # Check for cross install and copy headers if needed.
-if [ "$CROSS_INSTALL" = "on" ]; then
-  mv -f ${INSTALL_ROOT}/usr/include/ncurses/* ${INSTALL_ROOT}/usr/include/  &&
-  rm -rf ${INSTALL_ROOT}/usr/include/ncurses
-fi
+#
+# the following code does nothing other than fail headers arent
+# installed to /usr/include/ncurses as far as i can tell
+#   --afrayedknot 5-12-2005
+#if [ "$CROSS_INSTALL" = "on" ]; then
+  #mv -f ${INSTALL_ROOT}/usr/include/ncurses/* ${INSTALL_ROOT}/usr/include/  &&
+  #rm -rf ${INSTALL_ROOT}/usr/include/ncurses
+#fi

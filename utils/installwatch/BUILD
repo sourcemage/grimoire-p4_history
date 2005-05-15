@@ -10,5 +10,5 @@ patch -p1 < "${SCRIPT_DIRECTORY}/installwatch-syslog.diff" &&
 # define LIB
 
 LIB="${LIB:-/lib}"
-make PREFIX="${INSTALL_ROOT}/usr" LIBDIR="${INSTALL_ROOT}/usr/${LIB}"
+make PREFIX="${TRACK_ROOT}/usr" LIBDIR="${TRACK_ROOT}/usr/${LIB}"
 

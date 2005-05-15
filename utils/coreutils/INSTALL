@@ -5,7 +5,7 @@ export PATH="$SOURCE_DIRECTORY/src:$PATH"    &&
 #horrible hack, some of my best work ;-)
 ./src/ginstall  src/ginstall                 \
                 ${INSTALL_ROOT}/bin/install  &&
-make    install                              &&
+make    install  DESTDIR=$INSTALL_ROOT       &&
 
 #some problems with everything in /bin
 for i in \

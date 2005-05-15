@@ -13,10 +13,14 @@
   # change MD5_CRYPT_ENAB  to yes
   sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" etc/login.defs.linux &&
 
-  default_build
-#  ./configure  --build=$BUILD        \
-#               --prefix=${INSTALL_ROOT}/usr         \
-#               --sysconfdir=${INSTALL_ROOT}/etc     \
-#               --localstatedir=${INSTALL_ROOT}/var  \
-#               $OPTS                 &&
-#  make
+  OPTS="$OPTS --build=${BUILD}"
+  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
+
+  ./configure --prefix=${TRACK_ROOT}/usr  \
+          --sysconfdir=${TRACK_ROOT}/etc  \
+       --localstatedir=${TRACK_ROOT}/var  \
+              --mandir=${TRACK_ROOT}/usr/share/man   \
+             --infodir=${TRACK_ROOT}/usr/share/info  \
+                       $OPTS                 &&
+  make DESTDIR=$INSTALL_ROOT
+

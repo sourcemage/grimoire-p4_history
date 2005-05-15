@@ -1,10 +1,10 @@
 mkdir  buildit
 cd     buildit
-#                --build=$BUILD                \
 
 ../configure  --host=$HOST                  \
+              --build=$BUILD                \
               --prefix=/usr                 \
-              --infodir=${INSTALL_ROOT}/usr/share/info     \
-              --mandir=${INSTALL_ROOT}/usr/share/man       \
+              --infodir=${TRACK_ROOT}/usr/share/info     \
+              --mandir=${TRACK_ROOT}/usr/share/man       \
               $OPTS  &&
-make
+make DESTDIR=$INSTALL_ROOT

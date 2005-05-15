@@ -5,12 +5,12 @@ export CC=gcc                                           &&
 
 ./configure  --build=$BUILD                             \
               --host=$HOST                              \
-            --prefix=${INSTALL_ROOT}/usr                \
-        --sysconfdir=${INSTALL_ROOT}/etc                \
-           --infodir=${INSTALL_ROOT}/usr/share/info     \
-            --mandir=${INSTALL_ROOT}/usr/share/man      \
+            --prefix=${TRACK_ROOT}/usr                \
+        --sysconfdir=${TRACK_ROOT}/etc                \
+           --infodir=${TRACK_ROOT}/usr/share/info     \
+            --mandir=${TRACK_ROOT}/usr/share/man      \
              --with-included-gettext                    \
-        --includedir=${INSTALL_ROOT}/usr/local/include  \
+        --includedir=${TRACK_ROOT}/usr/local/include  \
              $OPTS                                      &&
 make                                                    &&
 

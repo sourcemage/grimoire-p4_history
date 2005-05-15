@@ -1,5 +1,5 @@
-make    install                                  &&
-make    install-libs                             &&
+make    install  DESTDIR=$INSTALL_ROOT &&
+make    install-libs DESTDIR=$INSTALL_ROOT  &&
 
 install  -d  ${INSTALL_ROOT}/usr/include/uuid       &&
 install  -m  644  lib/uuid/libuuid.a                \
