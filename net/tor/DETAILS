@@ -1,0 +1,17 @@
+           SPELL=tor
+         VERSION=0.0.9.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://tor.eff.org/dist/$SOURCE
+          MD5[0]=52481d690f35c276b7d49821efb9e882
+      LICENSE[0]=PD
+        WEB_SITE=http://tor.eff.org
+       BUILD_API=2
+         ENTERED=20050415
+         UPDATED=20050510
+           SHORT="An anonymous Internet communication system"
+
+cat << EOF
+An implementation of version 2 Onion Routing which is
+a connection-oriented anonymizing communication service. 
+EOF
