@@ -1,0 +1,36 @@
+I don't know what sergey is doing with this but I got lots of errors trying
+to cast this...
+
+I fixed PRE_BUILD so it at least gets to the compile
+
+========= COMPILE ERROR =============
+Using gcc version: 4.0.0
+Installing in dir: /usr/src/nss-3.10
+nss    3.10
+cd ../coreconf ;  /usr/bin/make
+make[1]: Entering directory `/usr/src/nss-3.10/coreconf'
+cd nsinstall; /usr/bin/make export
+make[2]: Entering directory `/usr/src/nss-3.10/coreconf/nsinstall'
+make[2]: Nothing to be done for `export'.
+make[2]: Leaving directory `/usr/src/nss-3.10/coreconf/nsinstall'
+cd nsinstall; /usr/bin/make libs
+make[2]: Entering directory `/usr/src/nss-3.10/coreconf/nsinstall'
+gcc -o Linux2.6_x86_glibc_PTH_OPT.OBJ/nsinstall.o -c -O2 -fPIC -DLINUX1_2 -Di386  -D_XOPEN_SOURCE -DLINUX2_1 -ansi -Wall -pipe -DLINUX -Dlinux -D_POSIX_SOURCE -D _BSD_SOURCE -DHAVE_STRERROR -O -march=pentium4m -mmmx -mfpmath=sse -msse -msse2 -pipe -Os -I/usr/include/nspr -DXP_UNIX -UDEBUG -DNDEBUG -D_REENTRANT -I/usr/src /nss-3.10/Linux2.6_x86_glibc_PTH_OPT.OBJ/include  -I/usr/src/nss-3.10/public/cor econf -I/usr/src/nss-3.10/private/coreconf  nsinstall.c
+gcc -o Linux2.6_x86_glibc_PTH_OPT.OBJ/pathsub.o -c -O2 -fPIC -DLINUX1_2 -Di386 - D_XOPEN_SOURCE -DLINUX2_1 -ansi -Wall -pipe -DLINUX -Dlinux -D_POSIX_SOURCE -D_B SD_SOURCE -DHAVE_STRERROR -O -march=pentium4m -mmmx -mfpmath=sse -msse -msse2 -p ipe -Os -I/usr/include/nspr -DXP_UNIX -UDEBUG -DNDEBUG -D_REENTRANT -I/usr/src/n ss-3.10/Linux2.6_x86_glibc_PTH_OPT.OBJ/include  -I/usr/src/nss-3.10/public/corec onf -I/usr/src/nss-3.10/private/coreconf  pathsub.c
+gcc -o Linux2.6_x86_glibc_PTH_OPT.OBJ/nsinstall -O2 -fPIC -DLINUX1_2 -Di386 -D_X OPEN_SOURCE -DLINUX2_1 -ansi -Wall -pipe -DLINUX -Dlinux -D_POSIX_SOURCE -D_BSD_ SOURCE -DHAVE_STRERROR -O -march=pentium4m -mmmx -mfpmath=sse -msse -msse2 -pipe  -Os -I/usr/include/nspr -DXP_UNIX -UDEBUG -DNDEBUG -D_REENTRANT -I/usr/src/nss- 3.10/Linux2.6_x86_glibc_PTH_OPT.OBJ/include  -I/usr/src/nss-3.10/public/coreconf  -I/usr/src/nss-3.10/private/coreconf  Linux2.6_x86_glibc_PTH_OPT.OBJ/nsinstall. o Linux2.6_x86_glibc_PTH_OPT.OBJ/pathsub.o -s   -lpthread  -ldl -lc
+true -m 775 Linux2.6_x86_glibc_PTH_OPT.OBJ/nsinstall /usr/src/nss-3.10/Linux2.6_ x86_glibc_PTH_OPT.OBJ/bin
+make[2]: Leaving directory `/usr/src/nss-3.10/coreconf/nsinstall'
+make[1]: Leaving directory `/usr/src/nss-3.10/coreconf'
+cd ../dbm ; /usr/bin/make export libs
+make[1]: Entering directory `/usr/src/nss-3.10/dbm'
+cd include; /usr/bin/make export
+make[2]: Entering directory `/usr/src/nss-3.10/dbm/include'
+Creating /usr/src/nss-3.10/public/dbm
+/usr/bin/make: *** No rule to make target nsres.h.  Stop.
+make[2]: *** [nsres.h] Error 1
+make[2]: Leaving directory `/usr/src/nss-3.10/dbm/include'
+make[1]: Leaving directory `/usr/src/nss-3.10/dbm'
+make[1]: *** [export] Error 2
+make: *** [build_dbm] Error 2
+ ! Problem Detected !
+ 
