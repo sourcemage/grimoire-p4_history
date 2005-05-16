@@ -1,5 +1,5 @@
-OPTS="$FINDUTILS_OPTS $OPTS"  &&
-[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}" &&
+OPTS="$FINDUTILS_OPTS $OPTS"
+[[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
 
 ./configure --build=${BUILD} \
             --prefix=${TRACK_ROOT}/usr  \
