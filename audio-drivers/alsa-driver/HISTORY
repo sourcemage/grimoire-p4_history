@@ -1,5 +1,10 @@
 2005-05-16 Eric Sandall <eric@sandall.us>
 	* INSTALL: Check if /etc/devfs.conf exists before grepping it
+	  Thanks to David Kowis
+	* FINAL: Removed message (been over a month ;))
+	  Remove extra "&&" that makes FINAL (and alsa-driver) fail if
+	  /etc/sysconfig/alsa doesn't exist (provided by alsa-lib)
+	  Thanks to David Kowis
 	* FIXME: This spell needs to be install_rootified
 
 2005-03-17 Eric Sandall <eric@sandall.us>
