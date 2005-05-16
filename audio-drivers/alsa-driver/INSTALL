@@ -19,8 +19,9 @@ EOF
 
 dconf()
 {
-if  [  -z  `grep  alsa  /etc/devfsd.conf`  ];  then
-  cat >> /etc/devfsd.conf <<EOF
+if  [  -f  /etc/devfsd.conf  ];  then
+  if  [  -z  `grep  alsa  /etc/devfsd.conf`  ];  then
+    cat >> /etc/devfsd.conf <<EOF
 
 # some MODLOAD
 LOOKUP          midi            MODLOAD
@@ -42,8 +43,9 @@ UNREGISTER      ^sound/midi$    CFUNCTION GLOBAL unlink midi
 REGISTER        ^sound/amidi$   CFUNCTION GLOBAL mksymlink $devname amidi
 UNREGISTER      ^sound/amidi$   CFUNCTION GLOBAL unlink amidi
 EOF
-else
-  echo "devfsd.conf already configured, skipping"
+  else
+    echo "devfsd.conf already configured, skipping"
+  fi
 fi
 }
 
