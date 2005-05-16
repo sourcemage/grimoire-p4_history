@@ -2,8 +2,8 @@ depends autoconf &&
 depends libtool &&
 depends bison &&
 
-depends apr '--with-apr=/usr' &&
-depends apr-util '--with-apr-util=/usr' &&
+depends APR '--with-apr=/usr' &&
+depends APU '--with-apr-util=/usr' &&
 
 if [[ "$SVN_HEAD" == y ]]; then
   depends python
