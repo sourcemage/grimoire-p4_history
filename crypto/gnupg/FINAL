@@ -4,8 +4,8 @@
 #
 if  !  [  -d  /root/.gnupg  ];  then
   mkdir  -p         /root/.gnupg  &&
-  chown  root:root  /root         &&
-  chmod  0750       /root         &&
+  chown  root:root  /root/.gnupg  &&
+  chmod  0750       /root/.gnupg  &&
 
   gpg  --list-keys  >  /dev/null  2>&1
 fi
