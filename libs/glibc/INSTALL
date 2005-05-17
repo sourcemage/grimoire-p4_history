@@ -1,21 +1,28 @@
 cd $SOURCE_DIRECTORY.bld  &&
-if  [  "$CROSS_INSTALL"  =  "on"  ];  then
-  echo "prefix = ${INSTALL_ROOT}/usr" > configparms                               &&
-  echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                             &&
-  echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                        &&
-  echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                          &&
-  echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                  &&
-  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                       &&
-  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                   &&
 
-  if  [  "$GLIBC_NPTL"  =  "y"  ];  then
-    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/nptl/Makefile  &&
-    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/nptl/Makefile
-  else
-    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/linuxthreads/Makefile  &&
-    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
-  fi
-fi  &&
+#
+# the following conditional is commented out because the
+# make install install_root="${INSTALL_ROOT}"
+# does what it does already.
+#
+
+#if  [  "$CROSS_INSTALL"  =  "on"  ];  then
+#  echo "prefix = ${INSTALL_ROOT}/usr" > configparms                               &&
+#  echo "slibdir = ${INSTALL_ROOT}/lib" >> configparms                             &&
+#  echo "rootsbindir = ${INSTALL_ROOT}/sbin" >> configparms                        &&
+#  echo "sysconfdir = ${INSTALL_ROOT}/etc" >> configparms                          &&
+#  echo "infodir = ${INSTALL_ROOT}/usr/share/info" >> configparms                  &&
+#  sedit "s/\$(slibdir)/\/lib/g" $SOURCE_DIRECTORY/Makerules                       &&
+#  sedit "s/\$(libdir)/\/usr\/lib/g" $SOURCE_DIRECTORY/Makerules                   &&
+#
+#  if  [  "$GLIBC_NPTL"  =  "y"  ];  then
+#    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/nptl/Makefile  &&
+#    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/nptl/Makefile
+#  else
+#    sedit  "s/\$(slibdir)/\/lib/g"      $SOURCE_DIRECTORY/linuxthreads/Makefile  &&
+#    sedit  "s/\$(libdir)/\/usr\/lib/g"  $SOURCE_DIRECTORY/linuxthreads/Makefile
+#  fi
+#fi  &&
 
 #
 # glibc only installs these if the file differs
@@ -34,6 +41,11 @@ done  &&
 # install
 #
 make  install install_root="${INSTALL_ROOT}" &&
+if [[ "$HOST" == x86_64-* ]]; then
+  [ -d /lib64 -a ! -f /lib64/ld-linux-x86-64.so.2 -a -f /lib/ld-linux-x86-64.so.2 ] &&
+    ln -s /lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
+  true  # see bug 8626 for info about this conditional
+fi &&
 (  ldconfig  ||  true  )  &&
 
 #

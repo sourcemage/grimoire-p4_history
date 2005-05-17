@@ -1,4 +1,15 @@
 make_single  &&
+
+if [ "$GLIBC_NOLIB64" = "y" ]; then
+  # install x86_64 linker to lib instead of lib64
+  sedit "s/lib64/lib/"  sysdeps/unix/sysv/linux/x86_64/ldconfig.h &&
+  sedit "s/264/2/" sysdeps/unix/sysv/linux/x86_64/ldd-rewrite.sed
+fi                                                              &&
+
+# install x86_64 libraries to lib instead of lib64
+sedit "s/| x86_64//"       sysdeps/unix/sysv/linux/configure    &&
+sedit "s/| x86_64//"       sysdeps/unix/sysv/linux/configure.in &&
+
 #
 # bug#5570 ccache sometimes has trouble correctly recognising minor differences 
 # in configurations and doesn't force recompile when it should. This stops it from
