@@ -1,7 +1,10 @@
-  sedit  's:$(prefix)/info:$(prefix)/share/info:'  Makefile.in  &&
-  sedit  's:$(prefix)/man:$(prefix)/share/man:'    Makefile.in  &&
-  ./configure  --build=$BUILD                \
-               --prefix=${TRACK_ROOT}/usr  \
-               --bindir=${TRACK_ROOT}/bin  &&
-  patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch && 
-  make
+  OPTS="$OPTS --build=${BUILD}"
+  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
+
+  ./configure --prefix=${TRACK_ROOT}/usr  \
+          --sysconfdir=${TRACK_ROOT}/etc  \
+       --localstatedir=${TRACK_ROOT}/var  \
+              --mandir=${TRACK_ROOT}/usr/share/man   \
+             --infodir=${TRACK_ROOT}/usr/share/info  \
+                       $OPTS                 &&
+  make DESTDIR=$INSTALL_ROOT
