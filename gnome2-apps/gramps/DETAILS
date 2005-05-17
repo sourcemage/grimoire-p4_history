@@ -1,20 +1,15 @@
            SPELL=gramps
-if [ "${DEVEL}" == "y"  ]; then
          VERSION=2.0.0
-          MD5[0]='b52cccda48399e6005e604b5fc02a59c'
-else
-         VERSION=2.0.0
-          MD5[0]='b52cccda48399e6005e604b5fc02a59c'
-fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-      LICENSE[0]="GPL"
-       BUILD_API=2
-            DOCS="FAQ NEWS README ChangeLog"
+          MD5[0]='b52cccda48399e6005e604b5fc02a59c'
         WEB_SITE=http://gramps.sourceforge.net/
          ENTERED=20030216
          UPDATED=20050514
+      LICENSE[0]="GPL"
+       BUILD_API=2
+            DOCS="FAQ NEWS README ChangeLog"
            SHORT="Gnome2 genealogy program written in Python"
 cat << EOF
 Gramps (Genealogical Research and Analysis Management Programming System) 
