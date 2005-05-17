@@ -1,0 +1,959 @@
+Index: src/grg_prefs_io.c
+===================================================================
+--- src/grg_prefs_io.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_prefs_io.c	(.../no-depr-widgets)	(revision 11)
+@@ -33,6 +33,7 @@
+ #include "grg_prefs_io.h"
+ #include "grg_defs.h"
+ #include "gringotts.h"
++#include "grg_safe.h"
+ 
+ gint
+ grg_save_prefs (void)
+Index: src/grg_widgets.c
+===================================================================
+--- src/grg_widgets.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_widgets.c	(.../no-depr-widgets)	(revision 11)
+@@ -20,6 +20,7 @@
+  */
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #include <gtk/gtk.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+@@ -27,6 +28,8 @@
+ #include "grg_defs.h"
+ #include "grg_pix.h"
+ #include "../pixmaps/gringotts.xpm"
++#include "gringotts.h"
++#include "grg_widgets.h"
+ 
+ gboolean mapIsUTF = FALSE;
+ 
+@@ -297,8 +300,9 @@
+ }
+ 
+ static gboolean
+-exit_wait_timed (GtkWidget * w)
++exit_wait_timed (gpointer void_w)
+ {
++    GtkWidget * w = (GtkWidget *)void_w;
+ 	gtk_dialog_response (GTK_DIALOG (w), GTK_RESPONSE_DELETE_EVENT);
+ 	return FALSE;
+ }
+@@ -336,7 +340,7 @@
+ 
+ 	gtk_widget_show_all (wait);
+ 
+-	gtk_timeout_add (GRG_VISUAL_LATENCY, (GtkFunction) exit_wait_timed,
++	g_timeout_add (GRG_VISUAL_LATENCY, exit_wait_timed,
+ 			 wait);
+ 	gtk_dialog_run (GTK_DIALOG (wait));
+ 
+@@ -359,7 +363,7 @@
+ 	g_list_free (child1);
+ 	g_list_free (child2);
+ 
+-	gtk_timeout_add (GRG_VISUAL_LATENCY, (GtkFunction) exit_wait_timed,
++	g_timeout_add (GRG_VISUAL_LATENCY, exit_wait_timed,
+ 			 wait);
+ 	gtk_dialog_run (GTK_DIALOG (wait));
+ }
+@@ -401,3 +405,27 @@
+ 		i++;
+ 	}
+ }
++
++GtkWidget * 
++grg_toolbar_insert_stock(GtkToolbar *toolbar,
++    const gchar *stock_id,
++    const char *tooltip_text,
++    const char *tooltip_private_text,
++    GtkSignalFunc callback,
++    gpointer user_data,
++    gint position)
++{
++    GtkToolItem * item;
++
++    item = gtk_tool_button_new_from_stock(stock_id);
++
++    gtk_tool_item_set_tooltip (item, tooltips,
++            tooltip_text, tooltip_private_text);
++
++    g_signal_connect (item, "clicked",
++			          callback, user_data);
++
++    gtk_toolbar_insert (toolbar, item, position);
++
++    return GTK_WIDGET (item);
++}
+Index: src/grg_entries.c
+===================================================================
+--- src/grg_entries.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_entries.c	(.../no-depr-widgets)	(revision 11)
+@@ -380,7 +380,7 @@
+ void
+ grg_entries_print (gint ennum, gchar * enpage)
+ {
+-	gchar *utfenpage;
++	gchar *utfenpage = NULL;
+ 	guint ulen;
+ 	if (ennum < 0 && enpage == NULL)
+ 	{
+@@ -442,11 +442,13 @@
+ 	{
+ 		struct grg_attachment *att =
+ 			(struct grg_attachment *) attlist->data;
++        void * void_origfile;
+ 		guchar *origfile, *b64file, *append;
+ 
+-		grg_get_content (att, (void **) &origfile, NULL);
++		grg_get_content (att, &void_origfile, NULL);
++        origfile = (guchar*)void_origfile;
+ 		b64file = grg_encode64 (origfile, att->filedim, NULL);
+-		GRGFREE (origfile, att->filedim);
++		GRGFREE (void_origfile, att->filedim);
+ 		append = g_strdup_printf (XML_ATT_FORMAT, attachments,
+ 					  att->filename, att->comment,
+ 					  b64file);
+Index: src/grg_widgets.h
+===================================================================
+--- src/grg_widgets.h	(.../original-1.2.8)	(revision 11)
++++ src/grg_widgets.h	(.../no-depr-widgets)	(revision 11)
+@@ -22,6 +22,8 @@
+ #ifndef GRG_WIDGETS_H
+ #define GRG_WIDGETS_H
+ 
++#include "grg_defs.h"
++
+ gboolean mapIsUTF;
+ 
+ //Shows and manages a dialog that asks for a string.
+@@ -36,8 +38,8 @@
+ 		 GtkWidget * parent);
+ 
+ //Asks a question for a boolean answer.
+-gboolean grg_ask_dialog (gchar * title, gchar * question, gboolean allowcanc,
+-			 GtkWidget * parent);
++grg_response grg_ask_dialog (gchar * title, gchar * question, 
++        gboolean allowcanc, GtkWidget * parent);
+ 
+ //Associates the Gringotts icon with the given window.
+ void grg_window_set_icon (GtkWindow * w);
+@@ -55,4 +57,15 @@
+ //callback to submit a form when enter is pressed
+ gboolean return_submit (GtkWidget * w, GdkEventKey * ev, GtkWidget * w2);
+ 
++GtkWidget * 
++grg_toolbar_insert_stock(GtkToolbar *toolbar,
++    const gchar *stock_id,
++    const char *tooltip_text,
++    const char *tooltip_private_text,
++    GtkSignalFunc callback,
++    gpointer user_data,
++    gint position);
++
++extern GtkTooltips * tooltips;
++
+ #endif
+Index: src/grg_list.c
+===================================================================
+--- src/grg_list.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_list.c	(.../no-depr-widgets)	(revision 11)
+@@ -25,6 +25,7 @@
+ #include "grg_entries.h"
+ #include "grg_defs.h"
+ #include "grg_pix.h"
++#include "grg_widgets.h"
+ 
+ enum
+ {
+@@ -238,13 +239,15 @@
+ 	tbar = gtk_toolbar_new ();
+ 	gtk_toolbar_set_orientation (GTK_TOOLBAR (tbar),
+ 				     GTK_ORIENTATION_VERTICAL);
++#if 0
+ 	gtk_toolbar_set_icon_size (GTK_TOOLBAR (tbar),
+ 				   GTK_ICON_SIZE_LARGE_TOOLBAR);
+-	bup = gtk_toolbar_insert_stock (GTK_TOOLBAR (tbar), GTK_STOCK_GO_UP,
++#endif
++	bup = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), GTK_STOCK_GO_UP,
+ 					_("Move up"), "",
+ 					(GtkSignalFunc) move_row,
+ 					GINT_TO_POINTER (TRUE), -1);
+-	bdown = gtk_toolbar_insert_stock (GTK_TOOLBAR (tbar),
++	bdown = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar),
+ 					  GTK_STOCK_GO_DOWN, _("Move down"),
+ 					  "", (GtkSignalFunc) move_row,
+ 					  GINT_TO_POINTER (FALSE), -1);
+Index: src/grg_prefs.c
+===================================================================
+--- src/grg_prefs.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_prefs.c	(.../no-depr-widgets)	(revision 11)
+@@ -326,9 +326,14 @@
+ static void
+ modify_font (GtkWidget * data, gpointer value)
+ {
+-	GtkWidget *font_selector, *wait;
++	GtkWidget *font_selector;
++#if 0
++    GtkWidget *wait;
++#endif
+ 	gint response;
++#if 0
+ 	gchar *selection = NULL;
++#endif
+ 	PangoFontDescription *pfd;
+ 
+ 	font_selector = gtk_font_selection_dialog_new ("Select a font...");
+Index: src/gringotts.c
+===================================================================
+--- src/gringotts.c	(.../original-1.2.8)	(revision 11)
++++ src/gringotts.c	(.../no-depr-widgets)	(revision 11)
+@@ -49,22 +49,22 @@
+ 
+ //appends a stock item to a toolbar
+ #define	TOOLBAR_INS_STOCK(tbar, stock, callback, tooltip) \
+-	gtk_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
++	grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
+ 		"", (GtkSignalFunc) callback, NULL, -1)
+ 
+ //appends a stock item to a toolbar, assigning it to a widget
+ #define	TOOLBAR_INS_STOCK_WIDGET(tbar, stock, callback, tooltip, wid) \
+-	wid = gtk_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
++	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
+ 		"", (GtkSignalFunc) callback, NULL, -1)
+ 
+ //appends a stock item to a toolbar, assigning it to a widget and passing a value to the callback
+ #define	TOOLBAR_INS_STOCK_WIDGET_SIGNAL(tbar, stock, callback, tooltip, signal, wid) \
+-	wid = gtk_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
++	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
+ 		"", (GtkSignalFunc) callback, GINT_TO_POINTER (signal), -1)
+ 
+ //appends a space to a toolbar
+ #define TOOLBAR_INS_SPACE(tbar) \
+-	gtk_toolbar_append_space (GTK_TOOLBAR (tbar))
++	my_toolbar_append_space (GTK_TOOLBAR (tbar))
+ 
+ /* - some menu buttons are never deactivated (i.e. Quit), so their widgets aren't really needed
+  */
+@@ -81,7 +81,9 @@
+ // main toolbar 
+ static GtkWidget *tnew, *topen, *tsave, *tclose;
+ static GtkWidget *tadd, *trem, *tcut, *tcopy, *tpast, *tfind, *tpref;
+-static GtkWidget *batadd, *batrem, *batsav, *batinf, *batchco, *combo_attach;
++static GtkWidget *batadd, *batrem, *batsav, *batinf, *batchco;
++static GtkComboBox *combo_attach;
++static GtkListStore * combo_attach_list_store;
+ 
+ static guchar *grgfile = NULL, *caption = NULL;
+ static gboolean started = FALSE, gtk_loop_started = FALSE;
+@@ -94,6 +96,18 @@
+ GRG_CTX gctx = NULL;
+ glong pwdbirth = 0;
+ 
++GtkTooltips * tooltips = NULL;
++
++static void
++my_toolbar_append_space (GtkToolbar * toolbar)
++{
++    GtkToolItem * separator;
++
++    separator = gtk_separator_tool_item_new();
++
++    gtk_toolbar_insert (toolbar, separator, -1);
++}
++
+ /*
+  * nyi:
+  *
+@@ -298,12 +312,7 @@
+ static void
+ update_combo_attach (void)
+ {
+-	GtkWidget *old =
+-		gtk_option_menu_get_menu (GTK_OPTION_MENU (combo_attach));
+-	GtkWidget *new = grg_attachment_get_menu ();
+-	gtk_widget_destroy (old);
+-	gtk_option_menu_remove_menu (GTK_OPTION_MENU (combo_attach));
+-	gtk_option_menu_set_menu (GTK_OPTION_MENU (combo_attach), new);
++    grg_attachment_fill_combo_box (combo_attach);
+ }
+ 
+ void set_editor_font (const guchar * font_desc);
+@@ -354,7 +363,7 @@
+ 	gtk_widget_set_sensitive (batsav, isAttachSelected);
+ 	gtk_widget_set_sensitive (batinf, isAttachSelected);
+ 	gtk_widget_set_sensitive (batchco, isAttachSelected);
+-	gtk_widget_set_sensitive (combo_attach, isAttachSelected);
++	gtk_widget_set_sensitive (GTK_WIDGET (combo_attach), isAttachSelected);
+ 
+ 	gtk_label_set_text (GTK_LABEL (title),
+ 			    isStuffed ? grg_entries_get_ID () : GRG_CAP_NAME
+@@ -972,7 +981,9 @@
+ static void
+ save_as (const gchar * fpath)
+ {
++#if 0
+ 	GtkWidget *wait;
++#endif
+ 	gchar *tmpfile;
+ 	gint err, fd;
+ 	gboolean is_current = STR_EQ (fpath, grgfile);	//Am I saving the current file?
+@@ -1240,12 +1251,15 @@
+ destroy_splash (GtkWidget * w, GdkEvent * ev, GtkWidget * w2)
+ {
+ 	gtk_widget_destroy (w2);
+-	gtk_timeout_remove (tout);
++	g_source_remove (tout);
+ }
+ 
+ static gboolean
+-destroy_splash_timed (GtkWidget * w)
++destroy_splash_timed (gpointer void_w)
+ {
++    GtkWidget * w;
++
++    w = (GtkWidget *)void_w;
+ 	gtk_widget_destroy (w);
+ 	return FALSE;
+ }
+@@ -1282,8 +1296,8 @@
+ 	g_signal_connect (G_OBJECT (spebox), "button-press-event",
+ 			  G_CALLBACK (destroy_splash), spwin);
+ 
+-	tout = gtk_timeout_add (GRG_SPLASH_TIMEOUT,
+-				(GtkFunction) destroy_splash_timed, spwin);
++	tout = g_timeout_add (GRG_SPLASH_TIMEOUT,
++				(GSourceFunc) destroy_splash_timed, spwin);
+ 
+ 	return spwin;
+ }
+@@ -1450,7 +1464,10 @@
+ 	GtkSizeGroup *resizer;
+ 	gchar *str, *fdesc;
+ 	PangoFontDescription *pfd;
++    GtkCellRenderer *cell;
+ 
++    tooltips = gtk_tooltips_new();
++
+ 	// window
+ 	win1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+ 	grg_window_set_icon (GTK_WINDOW (win1));
+@@ -1482,7 +1499,7 @@
+ 	// the title widget
+ 	title = gtk_label_new ("");
+ 	gtk_misc_set_alignment (GTK_MISC (title), 0.1, 0.5);
+-	btitle = gtk_button_new_with_mnemonic (_("_Edit..."));
++	btitle = gtk_button_new_with_mnemonic (_("E_dit..."));
+ 	g_signal_connect (G_OBJECT (btitle), "clicked", G_CALLBACK (retitle),
+ 			  NULL);
+ 	pfd = pango_font_description_new ();
+@@ -1496,8 +1513,6 @@
+ 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_nav), GTK_TOOLBAR_ICONS);
+ 	gtk_toolbar_set_orientation (GTK_TOOLBAR (tbar_nav),
+ 				     GTK_ORIENTATION_VERTICAL);
+-	gtk_toolbar_set_icon_size (GTK_TOOLBAR (tbar_nav),
+-				   GTK_ICON_SIZE_LARGE_TOOLBAR);
+ 	handle_nav = gtk_handle_box_new ();
+ 	gtk_handle_box_set_handle_position (GTK_HANDLE_BOX (handle_nav),
+ 					    GTK_POS_TOP);
+@@ -1532,16 +1547,24 @@
+ 
+ 	//the "main" toolbar
+ 	tbar_main = gtk_toolbar_new ();
+-	gtk_toolbar_set_icon_size (GTK_TOOLBAR (tbar_main),
+-				   GTK_ICON_SIZE_LARGE_TOOLBAR);
+ 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_main), GTK_TOOLBAR_ICONS);
+ 	handle_main = gtk_handle_box_new ();
+ 	gtk_container_add (GTK_CONTAINER (handle_main), tbar_main);
+ 
+ 	str = grg_get_security_text (_("Security level: %s"));
+-	gtk_toolbar_append_item (GTK_TOOLBAR (tbar_main), _("Security"), str,
+-				 NULL, grg_get_security_button (),
+-				 grg_security_monitor, NULL);
++
++    {
++        GtkToolItem * button;
++        button = gtk_tool_button_new (grg_get_security_button(), _("Security"));
++
++        gtk_tool_item_set_tooltip (button, tooltips,
++            str, NULL);
++        
++        g_signal_connect (button, "clicked",
++            grg_security_monitor, NULL);
++        
++        gtk_toolbar_insert (GTK_TOOLBAR (tbar_main), button, -1);
++    }
+ 	g_free (str);
+ 
+ 	TOOLBAR_INS_SPACE (tbar_main);
+@@ -1593,8 +1616,6 @@
+ 
+ 	//attachment handling toolbar
+ 	tbar_attach = gtk_toolbar_new ();
+-	gtk_toolbar_set_icon_size (GTK_TOOLBAR (tbar_attach),
+-				   GTK_ICON_SIZE_LARGE_TOOLBAR);
+ 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_attach), GTK_TOOLBAR_ICONS);
+ 	handle_attach = gtk_handle_box_new ();
+ 	gtk_container_add (GTK_CONTAINER (handle_attach), tbar_attach);
+@@ -1603,10 +1624,19 @@
+ 			    1);
+ 	gtk_box_pack_start (GTK_BOX (scrollbox), scroll, TRUE, TRUE, 1);
+ 
+-	gtk_toolbar_append_widget (GTK_TOOLBAR (tbar_attach),
+-				   gtk_label_new (_("Attached files")), "",
+-				   "");
++    {
++        GtkToolItem * button;
+ 
++        button = gtk_tool_item_new ();
++        gtk_container_add (GTK_CONTAINER (button), 
++                gtk_label_new (_("Attached files")));
++        
++        gtk_tool_item_set_tooltip (button, tooltips,
++            "", "");
++
++        gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
++    }
++
+ /*	TOOLBAR_INS_STOCK (tbar_attach, GTK_STOCK_DIALOG_WARNING, attach_warn,
+ 			   _("Important informations\non this feature"));*/
+ 	TOOLBAR_INS_STOCK_WIDGET (tbar_attach, GTK_STOCK_ADD, attach_file,
+@@ -1623,12 +1653,33 @@
+ 				  change_attach_comment, _("Change comment"),
+ 				  batchco);
+ 
+-	combo_attach = gtk_option_menu_new ();
+-	gtk_option_menu_set_menu (GTK_OPTION_MENU (combo_attach),
+-				  grg_attachment_get_menu ());
+-	gtk_toolbar_append_widget (GTK_TOOLBAR (tbar_attach), combo_attach,
+-				   _("List of attached files"), "");
++    combo_attach_list_store =
++        gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
++    combo_attach =
++        GTK_COMBO_BOX (gtk_combo_box_new_with_model (
++                GTK_TREE_MODEL (combo_attach_list_store)
++                ));
+ 
++    cell = gtk_cell_renderer_text_new ();
++    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo_attach), cell, TRUE);
++    gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_attach), cell,
++                                    "text", ATTACHMENT_TITLE,
++                                    NULL);
++
++    grg_attachment_fill_combo_box (combo_attach);
++    {
++        GtkToolItem * button;
++
++        button = gtk_tool_item_new ();
++        gtk_container_add (GTK_CONTAINER (button), 
++                GTK_WIDGET (combo_attach));
++        
++        gtk_tool_item_set_tooltip (button, tooltips,
++            _("List of attached files"), "");
++
++        gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
++    }
++
+ 	vbox = gtk_vbox_new (FALSE, 1);
+ 	gtk_widget_show (vbox);
+ 
+Index: src/grg_popt.c
+===================================================================
+--- src/grg_popt.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_popt.c	(.../no-depr-widgets)	(revision 11)
+@@ -21,6 +21,8 @@
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
++#include <unistd.h>
++#include <stdlib.h>
+ 
+ #include <glib.h>
+ #include <popt.h>
+@@ -29,6 +31,9 @@
+ #include "gringotts.h"
+ #include "grg_pwd.h"
+ #include "grg_popt.h"
++#include "grg_safe.h"
++#include "grg_entries.h"
++#include "grg_widgets.h"
+ 
+ #include <libgringotts.h>
+ 
+Index: src/gringotts.h
+===================================================================
+--- src/gringotts.h	(.../original-1.2.8)	(revision 11)
++++ src/gringotts.h	(.../no-depr-widgets)	(revision 11)
+@@ -104,4 +104,6 @@
+ guchar *get_editor_font (void);
+ void set_editor_font (const guchar * font_desc);
+ 
++void update (void);
++
+ #endif
+Index: src/grg_attachs.c
+===================================================================
+--- src/grg_attachs.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_attachs.c	(.../no-depr-widgets)	(revision 11)
+@@ -33,6 +33,8 @@
+ #include "grg_entries.h"
+ #include "gringotts.h"
+ #include "grg_widgets.h"
++#include "grg_safe.h"
++#include "grg_attachs.h"
+ 
+ gint current_attach_ID;
+ 
+@@ -351,9 +353,21 @@
+ }
+ 
+ static void
+-set_ID (gpointer ignore, gpointer ID)
++set_ID (gpointer ignore, gpointer void_combo_attach)
+ {
+-	current_attach_ID = GPOINTER_TO_INT (ID);
++    GtkComboBox * combo_attach;
++    GtkTreeIter iter;
++
++    combo_attach = (GtkComboBox *)void_combo_attach;
++
++    if (gtk_combo_box_get_active_iter (combo_attach, &iter))
++    {
++        GValue value = { 0, };
++        
++        gtk_tree_model_get_value (gtk_combo_box_get_model (combo_attach),
++                &iter, ATTACHMENT_ID, &value);
++        current_attach_ID = g_value_get_int (&value);
++    }
+ }
+ 
+ static gchar *
+@@ -395,58 +409,67 @@
+ 	return ret;
+ }
+ 
+-GtkWidget *
+-grg_attachment_get_menu (void)
++void
++grg_attachment_fill_combo_box (GtkComboBox * combo_attach)
+ {
+-	GList *ceal;
+-	GtkWidget *menu = gtk_menu_new ();
++    GList *ceal;
+ 
+-	if (current)
+-		ceal = ((struct grg_entry *) current->data)->attach;
+-	else
+-		ceal = NULL;
++    if (current)
++        ceal = ((struct grg_entry *) current->data)->attach;
++    else
++        ceal = NULL;
+ 
+-	if (!ceal)
+-	{
+-		GtkWidget *menu_item =
+-			gtk_menu_item_new_with_label (_
+-						      ("<no file attached>"));
++    if (!ceal)
++    {
++        GtkTreeIter iter;
++        GtkTreeModel *model;
+ 
+-		gtk_widget_show (menu_item);
+-		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
++        model = gtk_combo_box_get_model(combo_attach);
++        gtk_list_store_clear (GTK_LIST_STORE (model));
++        
++        gtk_list_store_append (GTK_LIST_STORE (model), &iter);
++        gtk_list_store_set (GTK_LIST_STORE (model), &iter,
++                ATTACHMENT_TITLE, _("<no file attached>"),
++                ATTACHMENT_ID, (-1),
++                -1
++                );
++        gtk_combo_box_set_active_iter (combo_attach, &iter);
++        gtk_widget_set_sensitive (GTK_WIDGET (combo_attach), FALSE);
++        current_attach_ID = -1;
++    }
++    else
++    {
++        GtkTreeIter iter;
++        GtkTreeModel *model;
++        model = gtk_combo_box_get_model(combo_attach);
++        gtk_list_store_clear (GTK_LIST_STORE (model));
++        
++        current_attach_ID =
++            ((struct grg_attachment *) ceal->data)->ID;
++        while (ceal)
++        {
++            struct grg_attachment *att =
++                (struct grg_attachment *) ceal->data;
++            gchar *lbl;
+ 
+-		g_signal_connect (G_OBJECT (menu_item), "activate",
+-				  G_CALLBACK (set_ID), GINT_TO_POINTER (-1));
+-		current_attach_ID = -1;
+-	}
+-	else
+-	{
+-		current_attach_ID =
+-			((struct grg_attachment *) ceal->data)->ID;
+-		while (ceal)
+-		{
+-			struct grg_attachment *att =
+-				(struct grg_attachment *) ceal->data;
+-			gchar *lbl;
+-			GtkWidget *menu_item;
++            lbl = gen_index_string (att->filename, att->filedim);
+ 
+-			lbl = gen_index_string (att->filename, att->filedim);
++            gtk_list_store_append (GTK_LIST_STORE (model), &iter);
++            gtk_list_store_set (GTK_LIST_STORE (model), &iter,
++                ATTACHMENT_TITLE, lbl,
++                ATTACHMENT_ID, (att->ID),
++                -1
++                );
+ 
+-			menu_item = gtk_menu_item_new_with_label (lbl);
++            GRGAFREE (lbl);
+ 
+-			GRGAFREE (lbl);
++            ceal = ceal->next;
++        }
++        g_signal_connect (G_OBJECT (combo_attach), "changed",
++                          G_CALLBACK (set_ID),
++                          (gpointer)combo_attach);
+ 
+-			gtk_widget_show (menu_item);
+-			gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+-					       menu_item);
++        gtk_widget_set_sensitive (GTK_WIDGET (combo_attach), TRUE);
++    }
++}
+ 
+-			g_signal_connect (G_OBJECT (menu_item), "activate",
+-					  G_CALLBACK (set_ID),
+-					  GINT_TO_POINTER (att->ID));
+-
+-			ceal = ceal->next;
+-		}
+-	}
+-
+-	return menu;
+-}
+Index: src/grg_menus.c
+===================================================================
+--- src/grg_menus.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_menus.c	(.../no-depr-widgets)	(revision 11)
+@@ -27,6 +27,7 @@
+ #include "grg_defs.h"
+ #include "grg_safe.h"
+ #include "grg_entries_vis.h"
++#include "grg_widgets.h"
+ 
+ #include <gdk/gdkkeysyms.h>
+ 
+@@ -106,18 +107,18 @@
+ 	wid = gtk_tearoff_menu_item_new ();
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (file), wid);
+ 
+-	NEW_MENU_ITEM (bnew, _("New"), do_new, NULL, file, GTK_STOCK_NEW,
++	NEW_MENU_ITEM (bnew, _("_New"), do_new, NULL, file, GTK_STOCK_NEW,
+ 		       GDK_N, GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (file);
+-	NEW_MENU_ITEM (bopen, _("Open"), meta_load, NULL, file,
++	NEW_MENU_ITEM (bopen, _("_Open"), meta_load, NULL, file,
+ 		       GTK_STOCK_OPEN, GDK_O, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bsave, _("Save"), save, NULL, file, GTK_STOCK_SAVE,
++	NEW_MENU_ITEM (bsave, _("_Save"), save, NULL, file, GTK_STOCK_SAVE,
+ 		       GDK_S, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bsas, _("Save As"), meta_save_as, NULL, file,
++	NEW_MENU_ITEM (bsas, _("Save _As"), meta_save_as, NULL, file,
+ 		       GTK_STOCK_SAVE_AS, GDK_A, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (brev, _("Revert"), revert, NULL, file,
++	NEW_MENU_ITEM (brev, _("_Revert"), revert, NULL, file,
+ 		       GTK_STOCK_REVERT_TO_SAVED, GDK_R, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bclose, _("Close"), file_close, NULL, file,
++	NEW_MENU_ITEM (bclose, _("_Close"), file_close, NULL, file,
+ 		       GTK_STOCK_CLOSE, GDK_W, GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (file);
+ 	recent = grg_recent_dox;
+@@ -128,11 +129,11 @@
+ 		i++;
+ 	}
+ 	NEW_MENU_SEPARATOR (file);
+-	NEW_MENU_ITEM (bquit, _("Quit"), meta_quit, NULL, file,
++	NEW_MENU_ITEM (bquit, _("_Quit"), meta_quit, NULL, file,
+ 		       GTK_STOCK_QUIT, GDK_Q, GDK_CONTROL_MASK);
+ 
+ 
+-	wid = gtk_menu_item_new_with_label (_("File"));
++	wid = gtk_menu_item_new_with_mnemonic (_("_File"));
+ 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), file);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), wid);
+ 
+@@ -150,27 +151,27 @@
+ 	NEW_MENU_ITEM (brem, _("Remove"), del, NULL, edit, GTK_STOCK_REMOVE,
+ 		       GDK_E, GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (edit);
+-	NEW_MENU_ITEM (bcut, _("Cut"), cucopa, GINT_TO_POINTER (GRG_CUT),
++	NEW_MENU_ITEM (bcut, _("Cu_t"), cucopa, GINT_TO_POINTER (GRG_CUT),
+ 		       edit, GTK_STOCK_CUT, GDK_X, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bcop, _("Copy"), cucopa, GINT_TO_POINTER (GRG_COPY),
++	NEW_MENU_ITEM (bcop, _("_Copy"), cucopa, GINT_TO_POINTER (GRG_COPY),
+ 		       edit, GTK_STOCK_COPY, GDK_C, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bpaste, _("Paste"), cucopa,
++	NEW_MENU_ITEM (bpaste, _("_Paste"), cucopa,
+ 		       GINT_TO_POINTER (GRG_PASTE), edit, GTK_STOCK_PASTE,
+ 		       GDK_V, GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (edit);
+-	NEW_MENU_ITEM (bfind, _("Find"), find, GINT_TO_POINTER (FALSE), edit,
++	NEW_MENU_ITEM (bfind, _("_Find"), find, GINT_TO_POINTER (FALSE), edit,
+ 		       GTK_STOCK_FIND, GDK_F, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bfinda, _("Find again"), find, GINT_TO_POINTER (TRUE),
++	NEW_MENU_ITEM (bfinda, _("Find a_gain"), find, GINT_TO_POINTER (TRUE),
+ 		       edit, GTK_STOCK_FIND, GDK_F3, 0);
+ 	NEW_MENU_SEPARATOR (edit);
+-	NEW_MENU_ITEM (bpwd, _("Change Password"), chpwd, NULL, edit,
++	NEW_MENU_ITEM (bpwd, _("Change Pass_word"), chpwd, NULL, edit,
+ 		       GTK_STOCK_CONVERT, GDK_C,
+ 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (edit);
+-	NEW_MENU_ITEM (bpref, _("Preferences"), launch_prefs, NULL, edit,
++	NEW_MENU_ITEM (bpref, _("P_references"), launch_prefs, NULL, edit,
+ 		       GTK_STOCK_PREFERENCES, GDK_P, GDK_CONTROL_MASK);
+ 
+-	wid = gtk_menu_item_new_with_label (_("Edit"));
++	wid = gtk_menu_item_new_with_mnemonic (_("_Edit"));
+ 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), edit);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), wid);
+ 
+@@ -183,25 +184,25 @@
+ 	wid = gtk_tearoff_menu_item_new ();
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (nav), wid);
+ 
+-	NEW_MENU_ITEM (bmfirst, _("First"), move_around,
++	NEW_MENU_ITEM (bmfirst, _("_First"), move_around,
+ 		       GINT_TO_POINTER (GRG_MV_FIRST), nav,
+ 		       GTK_STOCK_GOTO_FIRST, GDK_I, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bmback, _("Back"), move_around,
++	NEW_MENU_ITEM (bmback, _("_Back"), move_around,
+ 		       GINT_TO_POINTER (GRG_MV_PREV), nav, GTK_STOCK_GO_BACK,
+ 		       GDK_K, GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bmfor, _("Forward"), move_around,
++	NEW_MENU_ITEM (bmfor, _("For_ward"), move_around,
+ 		       GINT_TO_POINTER (GRG_MV_NEXT), nav,
+ 		       GTK_STOCK_GO_FORWARD, GDK_W,
+ 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (bmlast, _("Last"), move_around,
++	NEW_MENU_ITEM (bmlast, _("_Last"), move_around,
+ 		       GINT_TO_POINTER (GRG_MV_LAST), nav,
+ 		       GTK_STOCK_GOTO_LAST, GDK_T, GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (nav);
+-	NEW_MENU_ITEM (bmind, _("Index"), meta_list, NULL, nav,
++	NEW_MENU_ITEM (bmind, _("_Index"), meta_list, NULL, nav,
+ 		       GTK_STOCK_INDEX, GDK_X,
+ 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+ 
+-	wid = gtk_menu_item_new_with_mnemonic (_("Navigation"));
++	wid = gtk_menu_item_new_with_mnemonic (_("_Navigation"));
+ 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), nav);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), wid);
+ 
+@@ -218,7 +219,7 @@
+ 		       GTK_STOCK_CLEAR, GDK_D,
+ 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+ 
+-	wid = gtk_menu_item_new_with_mnemonic (_("Tools"));
++	wid = gtk_menu_item_new_with_mnemonic (_("_Tools"));
+ 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), tools);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), wid);
+ 
+@@ -231,19 +232,19 @@
+ 	wid = gtk_tearoff_menu_item_new ();
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (help), wid);
+ 
+-	NEW_MENU_ITEM (babo, _("Security monitor"), grg_security_monitor,
++	NEW_MENU_ITEM (babo, _("_Security monitor"), grg_security_monitor,
+ 		       NULL, help, GTK_STOCK_HELP, GDK_S,
+ 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (help);
+-	NEW_MENU_ITEM (babo, "README", readme, NULL, help, GTK_STOCK_HELP,
++	NEW_MENU_ITEM (babo, "_README", readme, NULL, help, GTK_STOCK_HELP,
+ 		       GDK_R, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+-	NEW_MENU_ITEM (babo, "FAQ", faq, NULL, help, GTK_STOCK_HELP,
++	NEW_MENU_ITEM (babo, "_FAQ", faq, NULL, help, GTK_STOCK_HELP,
+ 		       GDK_F, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+ 	NEW_MENU_SEPARATOR (help);
+-	NEW_MENU_ITEM (babo, _("About"), about, NULL, help, GTK_STOCK_HELP,
++	NEW_MENU_ITEM (babo, _("_About"), about, NULL, help, GTK_STOCK_HELP,
+ 		       GDK_B, GDK_CONTROL_MASK);
+ 
+-	wid = gtk_menu_item_new_with_label (_("Help"));
++	wid = gtk_menu_item_new_with_mnemonic (_("_Help"));
+ 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), help);
+ 	gtk_menu_item_set_right_justified (GTK_MENU_ITEM (wid), TRUE);
+ 	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), wid);
+Index: src/Makefile.am
+===================================================================
+--- src/Makefile.am	(.../original-1.2.8)	(revision 11)
++++ src/Makefile.am	(.../no-depr-widgets)	(revision 11)
+@@ -6,8 +6,8 @@
+ 	-DG_DISABLE_DEPRECATED 					\
+ 	-DGDK_PIXBUF_DISABLE_DEPRECATED 		\
+ 	-DGDK_DISABLE_DEPRECATED 				\
+-	-DGTK_DISABLE_DEPRECATED -Wpointer-arith
+-#	-Wstrict-prototypes -Wall
++	-DGTK_DISABLE_DEPRECATED -Wpointer-arith  \
++	-Werror-implicit-function-declaration -Wstrict-prototypes -Wall
+ 
+ bin_PROGRAMS = gringotts
+ 
+Index: src/grg_pwd.c
+===================================================================
+--- src/grg_pwd.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_pwd.c	(.../no-depr-widgets)	(revision 11)
+@@ -97,7 +97,7 @@
+ static GRG_KEY
+ read_pwd_file (const gchar * path, GtkWidget * dlg, gboolean X)
+ {
+-	GtkWidget *wait;
++	GtkWidget *wait = NULL;
+ 	gint fd, len;
+ 	gchar *pwd, *upath;
+ 	GRG_KEY key;
+@@ -140,7 +140,7 @@
+ static GRG_KEY
+ read_pwd_disk (GtkWidget * dlg, gboolean X)
+ {
+-	GtkWidget *wait;
++	GtkWidget *wait = NULL;
+ 	gint fd, len;
+ 	gchar *file;
+ 	GRG_KEY key = NULL;
+@@ -243,7 +243,7 @@
+ 	case TYPE_PWD:
+ 	{
+ 		gint bout;
+-		gchar *sq;
++		gchar *sq = NULL;
+ 
+ 		if (!mapIsUTF)
+ 			sq = g_locale_from_utf8 (gtk_entry_get_text
+Index: src/grg_entries_vis.c
+===================================================================
+--- src/grg_entries_vis.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_entries_vis.c	(.../no-depr-widgets)	(revision 11)
+@@ -25,6 +25,7 @@
+ #include "gringotts.h"
+ #include "grg_entries.h"
+ #include "grg_prefs.h"
++#include "grg_widgets.h"
+ 
+ static GtkClipboard *clip = NULL;
+ static gboolean isThereAClip = FALSE;
+@@ -35,10 +36,12 @@
+  * Sorry for the many commented pieces of code. It's work in progress...
+  *************/
+ 
+-static current_mode = SIMPLE_ENTRY;
++static int current_mode = SIMPLE_ENTRY;
+ 
+ static GtkTextBuffer *entryBuf = NULL;
++#if 0
+ static GtkListStore *mdl = NULL;
++#endif
+ static GtkWidget *simpleSheet = NULL/*, *structSheet = NULL*/;
+ static gulong simpleSigID = 0/*, structSigID = 0*/;
+ 
+@@ -227,6 +230,14 @@
+ 						  g_utf8_strlen (needle, -1));
+ 			gtk_text_buffer_move_mark (entryBuf, endsel,
+ 						   &position);
++
++            /*
++             * Make sure that the text-view window scrolls to view the current 
++             * selection.
++             * */
++            gtk_text_view_scroll_mark_onscreen (GTK_TEXT_VIEW (simpleSheet),
++				gtk_text_buffer_get_mark (entryBuf,
++				"insert"));
+ 			break;
+ 		}
+ 		else
+Index: src/grg_recent_dox.c
+===================================================================
+--- src/grg_recent_dox.c	(.../original-1.2.8)	(revision 11)
++++ src/grg_recent_dox.c	(.../no-depr-widgets)	(revision 11)
+@@ -30,6 +30,7 @@
+ #include "grg_recent_dox.h"
+ #include "grg_menus.h"
+ #include "grg_defs.h"
++#include "grg_safe.h"
+ 
+ GSList *grg_recent_dox = NULL;
+ 
+Index: src/grg_attachs.h
+===================================================================
+--- src/grg_attachs.h	(.../original-1.2.8)	(revision 11)
++++ src/grg_attachs.h	(.../no-depr-widgets)	(revision 11)
+@@ -37,7 +37,14 @@
+ gboolean grg_save_attachment (gchar * path, GtkWidget * parent);
+ void grg_info_attachment (GtkWidget * parent);
+ void grg_attach_list_free (GList * ceal);
+-GtkWidget *grg_attachment_get_menu (void);
+ 
++enum
++{
++  ATTACHMENT_TITLE,
++  ATTACHMENT_ID
++};
++
++void grg_attachment_fill_combo_box (GtkComboBox * combo_attach);
++
+ gboolean grg_attachment_change_comment (GtkWidget * parent);
+ #endif
+Index: BUGS
+===================================================================
+--- BUGS	(.../original-1.2.8)	(revision 11)
++++ BUGS	(.../no-depr-widgets)	(revision 11)
+@@ -5,9 +5,17 @@
+ program lives always on the edge... :(
+ 
+ If you open the pref windows and press OK without change anything, the file
+-becomes saveable even if you didn't actually make any modify. I'm sorry, but
+-the severity of the problem isn't worth the complexity of the fix, IMHO.
++becomes saveable even if you didn't actually make any modification. I'm sorry, 
++but the severity of the problem isn't worth the complexity of the fix, IMHO.
+ 
+ When opening files with non-latin1 filenames, the title of the window in some
+ cases (i.e. in RH 8.0+) won't display properly. This seems to be more GTK+ than
+ Gringotts-related.
++
++If you open a file, and switching to a different sheet, without making
++modifications and saving it again, and then re-open it - then gringotts will
++load the original sheet. This is because the current sheet identifier is stored
++in the file, and the file is not saved. For now, a temporary workaround is to
++make a small and meaningless modification in the new sheet, and then save the
++file.
++
+Index: autogen.sh
+===================================================================
+--- autogen.sh	(.../original-1.2.8)	(revision 0)
++++ autogen.sh	(.../no-depr-widgets)	(revision 11)
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++aclocal
++automake
++autoconf
++
+
+Property changes on: autogen.sh
+___________________________________________________________________
+Name: svn:executable
+   + *
+
