@@ -8,6 +8,10 @@ export  MOZ_THUNDERBIRD="1"   &&
 export  CFLAGS="${CFLAGS//-O3/-O2}"      &&
 export  CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
+# these two are simply bugs in the Makefile-s
+sedit 's#-lgfxshared_s#-L../shared -lgfxshared_s#g' gfx/src/gtk/Makefile.in &&
+sedit 's#-lxprintutil#-L../xprintutil -lxprintutil#g' gfx/src/gtk/Makefile.in &&
+
 if  [  "$THUNDERBIRD_MATHML"  =  "y"  ];  then
   OPTS="${OPTS}  --enable-mathml"
 else
@@ -18,6 +22,8 @@ if  grep  -q  "\-s"  ${LDFLAGS}
 then
   OPTS="${OPTS}  --enable-strip"
 fi  &&
+
+mozilla_remove_nspr_nss &&
 
 cp mail/config/mozconfig .mozconfig &&
 
