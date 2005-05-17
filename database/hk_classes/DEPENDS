@@ -1,16 +1,36 @@
-depends  g++  &&
+depends  g++ &&
 
-optional_depends  ODBC-MGR            \
-                  ""                  \
-                  ""                  \
-                  "database manager"  &&
+optional_depends  ODBC-MGR               \
+                  ""                     \
+                  "--without-odbc"       \
+                  "ODBC database manager"  &&
 
-optional_depends  SQL                \
-                  ""                 \
-                  ""                 \
-                  "database engine"  &&
+#optional_depends  firebird               \
+#                  "--with-firebird-dir=/usr/firebird" \
+#                  "--without-firebird"   \
+#                  "database engine"      &&
 
-optional_depends  python               \
-                  ""                   \
-                  ""                   \
+optional_depends  mysql                  \
+                  ""                     \
+                  ""                     \
+                  "database engine"      &&
+
+optional_depends  postgresql             \
+                  ""                     \
+                  "--without-postgres"   \
+                  "database engine"      &&
+
+optional_depends  sqlite                  \
+                  ""                      \
+                  "--without-sqlite3"     \
+                  "sqlite v3"             &&
+
+optional_depends  sqlite2                 \
+                  ""                      \
+                  "--without-sqlite"      \
+                  "sqlite v2"             &&
+
+optional_depends  python                  \
+                  ""                      \
+                  ""                      \
                   "scripting support"
