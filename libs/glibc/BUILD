@@ -18,9 +18,10 @@ else
                --enable-kernel=2.4"
 fi  &&
 
-if  !  echo  "$CFLAGS"  |  grep  -q  --  "-O";  then
-  export  CFLAGS="$CFLAGS  -Os"
-fi  &&
+#
+# Fixes Bug #8595
+#
+CFLAGS="-Os $CFLAGS"  &&
 
 export  CFLAGS="${CFLAGS/-ffast-math/}"  &&
 export  CC=gcc                           &&

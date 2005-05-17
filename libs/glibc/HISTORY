@@ -1,3 +1,11 @@
+2005-05-16 Eric Sandall <eric@sandall.us>
+	* BUILD: # Something adds "-O" to CFLAGS so the prior check didn't work
+	  Now we just put "-Os" first in CFLAGS so the user's CFLAGS override
+	  ours if they want something other than "tiny", however, I noticed that
+	  my compile log still shows "-O -Os", so glibc still puts "-O" in even
+	  if we already have optimizations, but luckily the let ours override
+	  theirs (Fixes Bug #8595)
+
 2005-04-25 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated 2.6 glibc headers to 2.6.11.2
 	  Updated UPDATED as these headers fix a compile problem with
