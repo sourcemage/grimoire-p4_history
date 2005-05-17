@@ -1,24 +1,25 @@
-depends AppConfig &&
-depends CGI       &&
-depends File-Spec &&
+depends appconfig &&
+depends perl-cgi  &&
+depends file-spec &&
 
 # DBD-mysql in turn depends on perl, mysql and DBI
-depends DBI              &&
-depends DBD-mysql        &&
+depends dbi              &&
+depends dbd-mysql        &&
 
 # Template-Toolkit depends on AppConfig which is required
-depends Template-Toolkit &&
+depends template-toolkit &&
 
-depends Data-ShowTable   &&
-depends Date-Parse       &&
+depends data-showtable   &&
+depends date-parse       &&
 
-optional_depends patchutils '' '' 'for interdiff, patch differencing utility' &&
-
-optional_depends GD               '' '' 'for charting'                       &&
-optional_depends GD-Graph         '' '' 'for charting'                       &&
-optional_depends GD-Text          '' '' 'for charting'                       &&
-optional_depends Chart            '' '' 'for bug charting'                   &&
-optional_depends MIME-Tools       '' '' 'for contrib/bug_email.pl interface' &&
+# optional utilities
+optional_depends patchutils       '' '' 'for interdiff (patch differencing)' &&
+# optional dependencies from perl-cpan grouped together
+optional_depends perl-gd          '' '' 'for charting'                       &&
+optional_depends gd-graph         '' '' 'for charting'                       &&
+optional_depends gd-text          '' '' 'for charting'                       &&
+optional_depends chart            '' '' 'for bug charting'                   &&
+optional_depends mime-tools       '' '' 'for contrib/bug_email.pl interface' &&
 optional_depends xml-parser-expat '' '' 'for bug data interchange'           &&
-optional_depends Net-LDAP         '' '' 'for LDAP authentication'            &&
-optional_depends PatchReader      '' '' 'for convenient patch presentation'
+optional_depends net-ldap         '' '' 'for LDAP authentication'            &&
+optional_depends patchreader      '' '' 'for convenient patch presentation'

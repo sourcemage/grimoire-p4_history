@@ -1,10 +1,10 @@
            SPELL=cdrtools
-         VERSION=2.01
+         VERSION=2.01.01a03
            ALPHA=$([ "${VERSION//a/}" != "$VERSION" ] && echo 1)
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION%a*}
    SOURCE_URL[0]=ftp://ftp.berlios.de/pub/cdrecord/${ALPHA:+alpha/}${SOURCE}
-          MD5[0]=5bd4f42c725bbc96f19c77f770ef625a
+          MD5[0]='3a21defacafb6ee1214291d6d786eedb'
         WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
          ENTERED=20010922
          UPDATED=20050423

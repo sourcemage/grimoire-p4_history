@@ -23,18 +23,12 @@ if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox-$VERSION  ];  then
   mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox-$VERSION
 fi  &&
 
-if  [  !  -d  ${INSTALL_ROOT}/usr/include/firefox/nss  ];  then
-  mkdir  -p  ${INSTALL_ROOT}/usr/include/firefox/nss
-fi  &&
-
 ln  -fns   $FIREFOX_HOME  $FIREFOX_HOME-$VERSION           &&
 ln  -fns   ${INSTALL_ROOT}/usr/share/idl/firefox-$VERSION  \
            ${INSTALL_ROOT}/usr/share/idl/firefox           &&
 ln  -fns   ${INSTALL_ROOT}/usr/include/firefox-$VERSION    \
            ${INSTALL_ROOT}/usr/include/firefox             &&
 make  install                                              &&
-cp  -vfL   dist/public/nss/*.h                             \
-           ${INSTALL_ROOT}/usr/include/firefox/nss         &&
 
 #
 # Don't do this!
