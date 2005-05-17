@@ -1,10 +1,10 @@
            SPELL=gdl
-	 VERSION=$(date +%Y%m%d)
-	  MD5[0]=IGNORE
-          SOURCE=$SPELL-cvs.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:gdl
-  FORCE_DOWNLOAD=1
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+         VERSION=0.5.0
+          BRANCH=$(echo $VERSION | cut -d. -f1,2)
+          MD5[0]=d56b4a6ffd5d99b0482000c83e70dfcc
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]="GPL"
        BUILD_API=2
         WEB_SITE=http://gdl.gnome.org
