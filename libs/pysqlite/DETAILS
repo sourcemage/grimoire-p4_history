@@ -1,0 +1,17 @@
+           SPELL=pysqlite
+         VERSION=2.0.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+            DOCS='LICENSE'
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://initd.org/pub/software/$SPELL/releases/${VERSION%.*}/$VERSION/$SOURCE
+          MD5[0]='bc4c125e94050fc1b99e49ca0366816f'
+        WEB_SITE=http://$SPELL.org/
+         ENTERED=20050516
+         UPDATED=20050516
+      LICENSE[0]=PYTHON
+       BUILD_API=2
+           SHORT='PySQLite is a Python DB-API 2.0 interface for SQLite'
+cat << EOF
+SQLite is a powerful embedded relational database engine. PySQLite makes it
+available to Python developers via the Database API 2.0.
+EOF
