@@ -1,3 +1,7 @@
+2005-05-17 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* INSTALL: don't mkdir /var/mail and then later try to symlink it,
+	  this leads to /var/mail/mail being a broken symlink
+
 2005-05-13 Eric Sandall <eric@sandall.us>
 	* DETAILS,PRE_BUILD,BUILD,INSTALL: Created
 
