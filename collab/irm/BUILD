@@ -8,7 +8,7 @@ if  [  "${SPELL_ROOT}"  ==  ""  ];  then
   SPELL_ROOT=/usr/share
 fi                                                                       &&
 [ -f ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/config/database.ini ]	 &&
-cp  -ruv  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/config/config.inc.php /tmp      &&
+cp  -ruv  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/config/database.ini /tmp      &&
 
 echo  "${SPELL} previous config/database.ini was copied over to /tmp"         
 true
