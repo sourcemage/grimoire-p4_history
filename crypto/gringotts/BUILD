@@ -1,5 +1,3 @@
-patch -p0 < $SCRIPT_DIRECTORY/gringotts-shlomif-patch-rev3.diff  &&
-
 if [ "$ROOT_FILTER" == "y" ]; then
   OPTS="$OPTS --enable-root-filter"
 fi  &&
