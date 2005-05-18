@@ -2,11 +2,10 @@
        BUILD_API=2
 
 if [ "$DEVEL" == "y" ];then
-         VERSION=2.2.7
+         VERSION=2.3.0
           SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]=21051ed641c998c0123a0bee58ab6768
+          MD5[0]=4d64659576bcb4b853a12ef08985cdbb
    SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/$SOURCE
-#   SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v2.2/testing/$SOURCE
 else
          VERSION=2.2.7
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -19,7 +18,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20010922
          UPDATED=20030610
       LICENSE[0]=GPL
-           SHORT="GIMP is the GNU Image Manipulation Program"
+           SHORT="GNU Image Manipulation Program"
 cat << EOF
 The GIMP is the GNU Image Manipulation Program. It is a freely
 distributed piece of software suitable for such tasks as photo
