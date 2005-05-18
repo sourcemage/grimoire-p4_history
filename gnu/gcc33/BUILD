@@ -1,6 +1,13 @@
 # fix bug #7205
 sedit  's:#!/bin/sh:#!/bin/bash:'  $SOURCE_DIRECTORY/configure  &&
 
+# GCC 3.3 doesn't know arch=pentium4m, replace with pentium4,
+# same for pentium3m
+CFLAGS=${CFLAGS/pentium4m/pentium4}      &&
+CXXFLAGS=${CXXFLAGS/pentium4m/pentium4}  &&
+CFLAGS=${CFLAGS/pentium-m/pentium3}      &&
+CXXFLAGS=${CFLAGS/pentium-m/pentium3}    &&
+
 cd $SOURCE_DIRECTORY.bld                                  &&
 $SOURCE_DIRECTORY/configure                               \
              --host=$HOST                                 \
