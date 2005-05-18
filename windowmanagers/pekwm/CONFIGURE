@@ -6,14 +6,6 @@ if  !  grep  -q  "HARBOUR"  $SPELL_CONFIG  ;  then
   fi
 fi
 
-if  !  grep  -q  "IMLIB"  $SPELL_CONFIG  ;  then
-  if  query  "Enable imlib2 support?"  y  ;  then
-    echo  "IMLIB=y"  >>  $SPELL_CONFIG
-  else
-    echo  "IMLIB=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
 if  !  grep  -q  "XINERAMA"  $SPELL_CONFIG  ;  then
   if  query  "Enable xinerama support?"  n  ;  then
     echo  "XINERAMA=y"  >>  $SPELL_CONFIG
