@@ -1,4 +1,10 @@
 2005-05-18 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* adduser: create directories that may not exist
+	* CONFIGURE: ask for pam
+	* INSTALL: comment unnecessary lines in /etc/login.defs when using shadow
+	* pam.d/userdel added
+
+2005-05-18 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* FINAL: use pwconv and grpconv to create or update necessary file for shadow
 	* PRE_REMOVE: pwunconv and grpunconv to restore files
 

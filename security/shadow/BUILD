@@ -13,6 +13,8 @@
   # change MD5_CRYPT_ENAB  to yes
   sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" etc/login.defs.linux &&
 
+  [ $LINUX_PAM = "y" ] && OPTS="$OPTS --with-libpam"
+
   OPTS="$OPTS --build=${BUILD}"
   [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
 

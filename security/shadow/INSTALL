@@ -15,3 +15,36 @@
   cp  $SCRIPT_DIRECTORY/adduser  ${INSTALL_ROOT}/usr/sbin  &&
   cp  $SCRIPT_DIRECTORY/deluser  ${INSTALL_ROOT}/usr/sbin
 
+  # change MD5_CRYPT_ENAB to yes in the current /etc/login.defs
+  sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" ${INSTALL_ROOT}/etc/login.defs &&
+
+  if [ $LINUX_PAM = "y" ]; then
+     #Removing unnecessary lines from /etc/login.defs
+     sedit "s:^\s*\(FAIL_DELAY.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(FAILLOG_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(LASTLOG_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(MAIL_CHECK_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(OBSCURE_CHECKS_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PORTTIME_CHECKS_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(QUOTAS_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(FTMP_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(NOLOGINS_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(MAIL_DIR.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(ENV_SUPATH.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(ENV_PATH.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_MAX_DAYS.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_MIN_DAYS.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_MIN_LEN.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_WARN_AGE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(SU_WHEEL_ONLY.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(CRACKLIB_DICTPATH.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_CHANGE_TRIES.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(PASS_ALWAYS_WARN.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(CHFN_AUTH.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(DEFAULT_HOME.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(ENVIRON_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(ENV_TZ.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(ENV_HZ.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(QMAIL_DIR.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
+     sedit "s:^\s*\(MAIL_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs
+  fi 

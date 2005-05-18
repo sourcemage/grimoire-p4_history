@@ -8,12 +8,14 @@ if  [  "$UID"  ==  0  ];  then
     NEWSER=$1
   fi
 
+  [ -d ${INSTALL_ROOT}/home ] || mkdir ${INSTALL_ROOT}/home
   groupadd     $NEWSER
   useradd  -m  $NEWSER  -g  $NEWSER -s /bin/bash
 
-  touch                 /var/spool/mail/$NEWSER
-  chown   $NEWSER:mail  /var/spool/mail/$NEWSER
-  chmod   0660          /var/spool/mail/$NEWSER
+  [ -d ${INSTALL_ROOT}/var/spool/mail ] || mkdir -p ${INSTALL_ROOT}/var/spool/mail
+  touch                 ${INSTALL_ROOT}/var/spool/mail/$NEWSER
+  chown   $NEWSER:mail  ${INSTALL_ROOT}/var/spool/mail/$NEWSER
+  chmod   0660          ${INSTALL_ROOT}/var/spool/mail/$NEWSER
   passwd  $NEWSER
 
 echo "default shell for $NEWSER has been set to /bin/bash. Edit /etc/passwd to change this"
