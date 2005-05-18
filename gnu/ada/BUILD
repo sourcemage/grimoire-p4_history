@@ -6,7 +6,10 @@ make  ins-all  prefix=$SOURCE_DIRECTORY/gnat-bin       &&
 PATH=$SOURCE_DIRECTORY/gnat-bin/bin:$PATH              &&
 CFLAGS=""                                              &&
 
-cd $SOURCE_DIRECTORY.bld                                  &&
+# take multilib option from GCC
+source $DEPENDS_CONFIG/gcc.p &&
+
+cd $SOURCE_DIRECTORY.bld                                   &&
 $SOURCE_DIRECTORY/configure                                \
              --host=$HOST                                  \
              --prefix=${INSTALL_ROOT}/usr                  \
@@ -15,6 +18,7 @@ $SOURCE_DIRECTORY/configure                                \
              --enable-threads=posix                        \
              --with-system-zlib                            \
              --enable-languages=ada                        \
+             $GCC_MULTILIB                                 \
              $OPTS                                         &&
 
 CFLAGS="$OLD_CFLAGS"  &&
