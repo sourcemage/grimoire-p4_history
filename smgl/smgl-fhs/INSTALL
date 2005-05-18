@@ -6,13 +6,11 @@
 #
 function  fhs_mkdir()
 {
-  mkdir  -p  $INSTALL_ROOT/$1         &&
-  chown  root:root  $INSTALL_ROOT/$1  &&
   if  [  -z  $2  ]
   then
-    chmod  0755  $INSTALL_ROOT/$1
+    install  -d  -o root  -g root  -m 0755  $INSTALL_ROOT/$1
   else
-    chmod  $2    $INSTALL_ROOT/$1
+    install  -d  -o root  -g root  -m $2    $INSTALL_ROOT/$1
   fi
 }
 
@@ -20,12 +18,12 @@ function  fhs_mkdir()
 # http://www.pathname.com/fhs/2.2/fhs-3.html
 #
 for  root_directory  in  bin  etc  boot  dev  home  lib  mnt  opt  sbin  \
-                         tmp  usr  var
+                         usr  var
 do
   fhs_mkdir  /$root_directory
 done  &&
 
-chmod  o+t  $INSTALL_ROOT/tmp  &&
+fhs_mkdir /tmp 1777
 
 #
 # http://www.pathname.com/fhs/2.2/fhs-3.7.html
@@ -92,7 +90,7 @@ done  &&
 # http://www.pathname.com/fhs/2.2/fhs-5.html
 #
 for  var_directory  in  account  cache  crash  games  lib  lock  log  \
-                        opt  run  spool  tmp  yp
+                        opt  run  spool  yp
 do
   fhs_mkdir  /var/$var_directory
 done  &&
@@ -100,7 +98,7 @@ done  &&
 #
 # This is the permission set I have on mine
 #
-chmod  0777  $INSTALL_ROOT/var/tmp  &&
+fhs_mkdir /var/tmp  1777  &&
 
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.5.html
