@@ -12,4 +12,6 @@ if [ "$EOPTS" == "y" ]; then
    OPTS="$OPTS --enable-extra-optimization"
 fi &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal
