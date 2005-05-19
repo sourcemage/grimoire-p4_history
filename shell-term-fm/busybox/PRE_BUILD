@@ -11,7 +11,7 @@ else
   cp  ${SCRIPT_DIRECTORY}/busybox.config  .config  
 fi  &&
 
-if  [  "$BB_CONFIG"  =  "y"  ];  then
+if  [  "$BB_CONFIG"  =  "y"  ] && [ $RECONFIGURE ];  then
   VOYEUR="on"         &&
   make  "menuconfig"
 fi  &&
