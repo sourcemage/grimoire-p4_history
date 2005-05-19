@@ -1,0 +1,16 @@
+# the mk_initrd scripts have to take one argument:
+# $1 is the kernel version
+# 
+# also it's the scripts responsibility to create the filesystem for the initrd
+# under ${BUILD_DIRECTORY}/initrd
+# 
+
+DEFAULT_INITRD="mk_initrd.rescue++"
+
+ M_NAMES[0]=mk_initrd.rescue++
+  M_DESC[0]="Contains: Busybox, Kernel Modules and Bootable"
+M_SBDESC[0]="Add init=/linuxrc root=/dev/ram0 real_root=/dev/<root_dev> to your kernel command line when using this initrd"
+
+ M_NAMES[1]=mk_initrd.rescue
+  M_DESC[1]="Contains: Busybox, Kernel Modules, and linuxrc -> bin/ash"
+M_SBDESC[1]="Add init=/linuxrc root=/dev/ram0 to your kernel command line"
