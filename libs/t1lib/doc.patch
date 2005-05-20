@@ -1,0 +1,17 @@
+--- doc/t1lib_doc.tex	2003-03-02 23:08:14.000000000 +0100
++++ doc/t1lib_doc.tex.updated	2005-05-20 00:56:15.000000000 +0200
+@@ -33,11 +33,9 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% Added by NGUYEN-DAI Quy and edited by RMz)
+ %%
+-\ifx\pdfoutput\undefined
+-  \usepackage[dvips]{graphicx}
+-%  \usepackage[dvips,a4paper,breaklinks]{hyperref}
+-\else
+-  \usepackage[pdftex]{graphicx}
++\usepackage{graphicx}
++\usepackage{ifpdf}
++\ifpdf
+   \usepackage[pdftex,a4paper,pageanchor,hyperfigures,breaklinks,%
+               colorlinks,citecolor=blue,urlcolor=red,linkcolor=magenta]{hyperref}
+   \pdfcompresslevel=9
