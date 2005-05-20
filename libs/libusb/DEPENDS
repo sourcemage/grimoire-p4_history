@@ -1,8 +1,15 @@
-depends g++              &&
-optional_depends openjade "--enable-build-docs" \
-                         "--disable-build-docs" \
-                         "to build doucumentation"  &&
-optional_depends doxygen "" \
-                         "" \
-                         "to build C++ API documentation"
+depends  g++  &&
+
+#
+# Fix Bug #8283
+#
+#optional_depends  openjade                   \
+#                  "--enable-build-docs"      \
+#                  "--disable-build-docs"     \
+#                  "to build doucumentation"  &&
+
+optional_depends  doxygen                           \
+                  ""                                \
+                  ""                                \
+                  "to build C++ API documentation"
 
