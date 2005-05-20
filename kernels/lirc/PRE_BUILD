@@ -1,0 +1,14 @@
+default_pre_build &&
+  # patch setup to show less menue options
+  # and to skip menue if config is allready there
+cd $SOURCE_DIRECTORY &&
+  patch -p0 < $SCRIPT_DIRECTORY/setup.diff &&
+
+  if  [  -f   $CONFIG_CACHE/lirc.config  ];  then
+    cp $CONFIG_CACHE/lirc.config .setup.config
+  else
+    ./setup.sh &&
+    cp .setup.config $CONFIG_CACHE/lirc.config
+  fi
+
+  ./setup.sh
