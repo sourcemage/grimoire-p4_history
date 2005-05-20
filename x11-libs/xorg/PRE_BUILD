@@ -3,7 +3,9 @@ unpack  $SOURCE  ${MD5[0]}          &&
 
 if [[ "$X_LATEST" = n ]]; then
    cd ${SOURCE_DIRECTORY}/extras/Xpm/lib &&
-   patch -p0 < ${SCRIPT_DIRECTORY}/xpm-sec10.diff
+   patch -p0 < ${SCRIPT_DIRECTORY}/xpm-sec10.diff &&
+   cd ${SOURCE_DIRECTORY} &&
+   patch -p0 < ${SCRIPT_DIRECTORY}/evdev-for-6.8.2-2.patch
 fi &&
 
 cp  $SOURCE_DIRECTORY/config/cf/xorgsite.def  \
