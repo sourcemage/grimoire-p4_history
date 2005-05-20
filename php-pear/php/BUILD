@@ -52,6 +52,7 @@ fi  &&
                    --with-pear                     \
             --with-layout=GNU                      \
                           $OPTS                    &&
+invoke_gcc &&
 make                                               &&
 
 # safety precaution against earlier PHP installations removing httpd.conf
