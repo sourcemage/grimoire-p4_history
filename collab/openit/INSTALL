@@ -14,9 +14,7 @@ cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/                        &&
 if [ -e /tmp/settings.ini ]; then            
 	cp  -v  /tmp/settings.ini ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/    
 	echo "A previous settings.ini copied from /tmp back into new installation."
-	echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
-else
-	echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
-	echo  "Please refer to ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/doc/install.txt for further install instructions."
-fi
+fi									 &&
+
+echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
 
