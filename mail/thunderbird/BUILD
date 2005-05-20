@@ -53,6 +53,7 @@ cp mail/config/mozconfig .mozconfig &&
              --disable-pedantic                           \
              --disable-installer                          \
              --disable-debug                              \
+             --disable-ldap                               \
              --disable-jsd                                \
              --enable-reorder                             \
              --enable-cpp-rtti                            \
