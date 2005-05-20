@@ -14,10 +14,7 @@ cp  -r  *  ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/                        &&
 if [ -e /tmp/database.ini ]; then            
 	cp  -v  /tmp/database.ini ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/    
 	echo "A previous database.ini copied from /tmp back into new installation."
-	echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
-else
-	echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
-	echo  "Modify ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/config/database.ini for your database."
-	echo  Once database is created and database.ini is configured, go to ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}/admin.php to create tables and continue setup."
-fi
+fi									 &&
+
+echo  "${SPELL} was installed in ${INSTALL_ROOT}${SPELL_ROOT}/${SPELL}"
 
