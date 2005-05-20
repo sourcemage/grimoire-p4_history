@@ -12,8 +12,8 @@ cut_label()  {
 
 root_dev()
 {
-	ROOT_DEV=$( cat /proc/mounts | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
-	BOOT_DEV=$( cat /proc/mounts | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	ROOT_DEV=$( mount | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
+	BOOT_DEV=$( mount | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
 	ROOT_DEV=${ROOT_DEV/\/dev\//}
 	BOOT_DEV=${BOOT_DEV/\/dev\//}
 }
@@ -257,10 +257,8 @@ case  `uname -m`  in
             then
 	      boot_loader="lilo"
               update_lilo
-            fi
-            if  [  -f  /boot/grub/menu.lst  ]
-            then
+            else  [  -f  /boot/grub/menu.lst  ]
 	      boot_loader="grub"
               update_grub
-            fi             ;;
+	    fi;;
 esac
