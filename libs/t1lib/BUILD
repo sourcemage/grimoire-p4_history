@@ -1,3 +1,6 @@
+# fix tex documentation, bug #8939
+patch  -p0  <  $SCRIPT_DIRECTORY/doc.patch  &&
+
 if [ "$DOCUMENTATION" = "n" ]; then
 
   ./configure --prefix=${INSTALL_ROOT}/usr  \
