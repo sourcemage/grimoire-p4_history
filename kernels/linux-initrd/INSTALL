@@ -39,7 +39,7 @@ if [ "$SPLASH_IMAGE" == "y" ] ; then
     INITRD_NAME="initrd.splash"
   fi &&
   mkdir -p ${INSTALL_ROOT}/etc/bootsplash/themes                                       &&
-  cp -rv $THEME ${INSTALL_ROOT}/etc/bootsplash/themes/$THEME                           &&
+  cp -rv $THEME ${INSTALL_ROOT}/etc/bootsplash/themes/                           &&
   touch ${INSTALL_ROOT}/boot/${INITRD_NAME}                                            &&
 
   for file in $(find ${INSTALL_ROOT}/etc/bootsplash/themes/$THEME/config -type f); do
