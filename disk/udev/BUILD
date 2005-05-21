@@ -11,6 +11,6 @@ fi &&
 
 if ( echo ${OPTS} |grep -q UDEV_SYSLOG ); then
 sedit "s/^USE_LOG = true/USE_LOG = false/" Makefile
-fi
+fi  &&
 
 make
