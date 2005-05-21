@@ -3,6 +3,8 @@
 	  devices to group audio and mode 0660 instead of specifying that for
 	  every one of them, create /dev/psaux symlink for compatibility,
 	  add a generic RUN rule that emulates the old /etc/dev.d behaviour
+	* INSTALL: make /etc/dev.d/snd/controlC0/alsa.dev executable so it
+	  actually gets run by the RUN rule
 
 2005-05-21 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: updated to 058

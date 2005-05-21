@@ -36,4 +36,5 @@
   done  &&
 
   install_config_file $SCRIPT_DIRECTORY/udev.missing  ${UDEV_CFG}/udev.missing      &&
-  install_config_file etc/dev.d/snd/controlC0/alsa.dev ${SND_DFILE}
+  install_config_file etc/dev.d/snd/controlC0/alsa.dev ${SND_DFILE}  &&
+  chmod +x ${SND_DFILE}
