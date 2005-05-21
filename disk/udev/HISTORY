@@ -1,3 +1,9 @@
+2005-05-21 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* rules.d/50-default.rules: use a SUBSYSTEM rule to set all audio
+	  devices to group audio and mode 0660 instead of specifying that for
+	  every one of them, create /dev/psaux symlink for compatibility,
+	  add a generic RUN rule that emulates the old /etc/dev.d behaviour
+
 2005-05-21 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: updated to 058
 	* BUILD: add missing &&
@@ -6,8 +12,8 @@
 	* DETAILS: updated to 057
 	* rules.d/50-default.rules
 	* INSTALL: uses rules.d/50-default.rules instead of rules.d/udev.rules
- 	* FINAL: added, old udev.rules is now renamed rules.d/00-local.rules
-      	  That prevents this file to be deleted on the second cast.
+	* FINAL: added, old udev.rules is now renamed rules.d/00-local.rules
+	  That prevents this file to be deleted on the second cast.
 
 2005-04-15 Arjan Bouter <abouter@sourcemage.org>
 	* INSTALL: fixed the install_config_file for udev.conf
@@ -16,8 +22,8 @@
 
 2005-04-09 Flavien Bridault <disk@sourcemage.org>
 	* PREPARE: made executable, changed $UDEV_UPDATE to $UDEV_UPDATE2
-          to avoid that last udev config update setting is used
-    	* INSTALL: small fix, missing '&&'
+	  to avoid that last udev config update setting is used
+	* INSTALL: small fix, missing '&&'
 
 2005-04-09 Arjan Bouter <abouter@sourcemage.org>
 	* DETAILS,INSTALL,udev.conf: moved rules to rules.d
