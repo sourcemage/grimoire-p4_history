@@ -1,0 +1,570 @@
+--- configure.in.orig	2005-05-15 02:07:35.000000000 -0400
++++ configure.in	2005-05-21 16:23:56.000000000 -0400
+@@ -25,11 +25,14 @@
+ PANGO_REQUIRED=1.1.1
+ PCRE_REQUIRED=3.9
+ LIBDEVHELP_REQUIRED=0.9
+-LIBGTODO_REQUIRED=0.15
+ GDL_REQUIRED=0.5.0
+ GNOMEBUILD_REQUIRED=0.1.1
+ LIBGLADEUI_REQUIRED=3.0.0
+ LIBGRAPHVIZ_REQUIRED=2.2.1
++NEON_REQUIRED=0.24.5
++SUBVERSION_REQUIRED=1.0.2
++
++dnl LIBGTODO_REQUIRED=0.15
+ 
+ AC_SUBST(GLIB_REQUIRED)
+ AC_SUBST(GOBJECT_REQUIRED)
+@@ -52,57 +55,51 @@
+ AC_SUBST(VTE_NEW_REQUIRED)
+ AC_SUBST(PCRE_REQUIRED)
+ AC_SUBST(LIBDEVHELP_REQUIRED)
+-AC_SUBST(LIBGTODO_REQUIRED)
+ AC_SUBST(GDL_REQUIRED)
+ AC_SUBST(GNOMEBUILD_REQUIRED)
+ AC_SUBST(LIBGLADEUI_REQUIRED)
+ AC_SUBST(LIBGRAPHVIZ_REQUIRED)
++AC_SUBST(NEON_REQUIRED)
++AC_SUBST(SUBVERSION_REQUIRED)
++
++dnl AC_SUBST(LIBGTODO_REQUIRED)
+ 
+ AM_INIT_AUTOMAKE(anjuta, $ANJUTA_VERSION)
+ AM_CONFIG_HEADER(config.h)
++AM_MAINTAINER_MODE
+ 
+ CFLAGS_WARNINGS="-Wall -Wmissing-prototypes -Wmissing-declarations -Wparentheses -Wpointer-arith"
+-CFLAGS_DISABLE_CHECKS="-DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS"
+-CFLAGS_OPTIMIZE="-Os -s"
+-CXXFLAGS_OPTIMIZE="-Os -s -fno-exceptions -fno-check-new"
++CXXFLAGS_WARNINGS="-Wall -Wparentheses -Wpointer-arith"
++
+ if test "x$GCC" = xyes; then
+     CFLAGS_WARNINGS=""
+-    CFLAGS_OPTIMIZE=""
+-    CXXFLAGS_OPTIMIZE=""
++    CXXFLAGS_WARNINGS=""
+ fi
+ 
+-CFLAGS="$CFLAGS -O0 -g $CFLAGS_WARNINGS"
+-CXXFLAGS="$CXXFLAGS -O0 -g $CFLAGS_WARNINGS"
++AM_CFLAGS="$AM_CFLAGS -O0 -g $CFLAGS_WARNINGS"
++AM_CXXFLAGS="$AM_CXXFLAGS -O0 -g $CXXFLAGS_WARNINGS"
+ 
+ dnl Enable debugging mode
+ AC_ARG_ENABLE(debug,
+-      [  --enable-debug           Enable debug messages],
+-      CFLAGS="$CFLAGS -DDEBUG"
+-      CXXFLAGS="$CXXFLAGS -DDEBUG")
+-
+-dnl Enable profiling mode
+-AC_ARG_ENABLE(gprof,
+-      [  --enable-gprof           Enable profiling with gprof],
+-      CFLAGS="$CFLAGS -pg"
+-      CXXFLAGS="$CXXFLAGS -pg"
+-      LDFLAGS="$LDFLAGS -pg")
+-
+-dnl Enable release builds
+-AC_ARG_ENABLE(final,
+-      [  --enable-final           Build release executables (GCC only)],
+-      CFLAGS="$CFLAGS"
+-      CXXFLAGS="$CXXFLAGS")
+-
+-dnl Enable stripped and fully optimized output
+-AC_ARG_ENABLE(optimize,
+-      [  --enable-optimize           Enable stripped and full optimization],
+-      CFLAGS="$CFLAGS -DNDEBUG ${CFLAGS_OPTIMIZE} ${CFLAGS_DISABLE_CHECKS}"
+-      CXXFLAGS="$CXXFLAGS -DNDEBUG ${CXXFLAGS_OPTIMIZE} ${CFLAGS_DISABLE_CHECKS}")
++  [  --enable-debug           Enable debug messages],
++  AM_CFLAGS="$AM_CFLAGS -DDEBUG"
++  AM_CXXFLAGS="$AM_CXXFLAGS -DDEBUG")
++AC_SUBST(AM_CFLAGS)
++AC_SUBST(AM_CXXFLAGS)
++
++dnl Disable deprecated APIs
++AC_ARG_ENABLE(deprecated,
++  [  --disable-deprecated     Disable deprecated APIs],
++  [ if test "$enableval" = "no"; then
++    DEPRECATED_FLAGS="-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED -DBONOBO_DISABLE_DEPRECATED -DBONOBO_UI_DISABLE_DEPRECATED"
++  fi ],
++  [ DEPRECATED_FLAGS="" ])
++AC_SUBST(DEPRECATED_FLAGS)
+ 
+ dnl Enable versioned user preferences directory
+ AC_ARG_WITH(pref-suffix,
+-      [  --with-pref-suffix=VALUE       	Suffix to add to user preferences dir.],
+-      PREF_SUFFIX="$withval")
++  [  --with-pref-suffix=VALUE Suffix to add to user preferences dir.],
++  PREF_SUFFIX="$withval")
+ 
+ AC_SUBST(PREF_SUFFIX)
+ AC_DEFINE_UNQUOTED(PREF_SUFFIX,
+@@ -117,6 +114,7 @@
+ AC_PROG_CXX
+ AC_ISC_POSIX
+ AC_HEADER_STDC
++AM_DISABLE_STATIC
+ AM_PROG_LIBTOOL
+ 
+ AC_TYPE_SIGNAL
+@@ -247,23 +245,54 @@
+ 
+ dnl Check for Glade3
+ dnl ---------------------
+-PKG_CHECK_MODULES(PLUGIN_GLADE, [libgladeui-1.0 >= $LIBGLADEUI_REQUIRED], [libgladeui_found="yes"], [libgladeui_found="no"])
++
++AC_ARG_ENABLE(plugin-glade,
++  [  --disable-plugin-glade        Disable glade plugin support in Anjuta.],
++  [ if test "$enableval" = "no"; then
++        user_disabled_glade=1
++    fi ],
++  [ user_disabled_glade=0 ] )
++
++AC_MSG_CHECKING(if glade plugin is disabled)
++if test "$user_disabled_glade" = 1; then
++	AC_MSG_RESULT(yes)
++	libgladeui_found="no"
++else
++	AC_MSG_RESULT(no)
++	PKG_CHECK_MODULES(PLUGIN_GLADE, [libgladeui-1.0 >= $LIBGLADEUI_REQUIRED], [libgladeui_found="yes"], [libgladeui_found="no"])
++	AC_SUBST(PLUGIN_GLADE_CFLAGS)
++	AC_SUBST(PLUGIN_GLADE_LIBS)
++fi
++
+ AM_CONDITIONAL(HAVE_PLUGIN_GLADE, [test x$libgladeui_found = xyes])
+-AC_SUBST(PLUGIN_GLADE_CFLAGS)
+-AC_SUBST(PLUGIN_GLADE_LIBS)
+ 
+ dnl Check for graphviz (class inheritance plugin)
+-dnl ----------------------------------------------
++dnl --------------------------------------------------------------------------
+ dnl FIXME: For some strange reason graphviz-devel rpm install the *.pc files
+ dnl in /usr/lib/graphviz/pkgconfig, instead of usual /usr/lib/pkgconfig. This
+ dnl makes pkgconfig check fail if we don't add the above path in
+ dnl PKG_CONFIG_PATH. We have added both /usr/lib/graphviz/pkgconfig and
+ dnl /usr/local/lib/pkgconfig paths. If graphviz is installed in other prefix
+-dnl (other than /usr or /usr/local), following pkgconfig check will fail.
+-dnl ----------------------------------------------
+-PKG_CONFIG_PATH="/usr/local/lib/graphviz/pkgconfig:/usr/lib/graphviz/pkgconfig:$PKG_CONFIG_PATH"
+-PKG_CHECK_MODULES(PLUGIN_CLASS_INHERITANCE, [libdotneato >= $LIBGRAPHVIZ_REQUIRED libdotgen >= $LIBGRAPHVIZ_REQUIRED], [libgraphviz_found="yes"], [libgraphviz_found="no"])
+-AM_CONDITIONAL(HAVE_PLUGIN_CLASS_INHERITANCE, [test x$libgraphviz_found = xyes])
++dnl (other than /usr or /usr/local or the current installation prefix),
++dnl following pkgconfig check will fail.
++dnl --------------------------------------------------------------------------
++PKG_CONFIG_PATH="/usr/lib/graphviz/pkgconfig:$PKG_CONFIG_PATH"
++PKG_CONFIG_PATH="/usr/local/lib/graphviz/pkgconfig:$PKG_CONFIG_PATH"
++PKG_CONFIG_PATH="/usr/lib64/graphviz/pkgconfig:$PKG_CONFIG_PATH"
++PKG_CONFIG_PATH="/usr/local/lib64/graphviz/pkgconfig:$PKG_CONFIG_PATH"
++
++anjuta_save_prefix="$prefix"
++test "x$prefix" = xNONE && prefix=$ac_default_prefix
++graphviz_pkgconfig=`eval echo ${libdir}/graphviz/pkgconfig`
++PKG_CONFIG_PATH="$graphviz_pkgconfig:$PKG_CONFIG_PATH"
++prefix="$anjuta_save_prefix"
++
++PKG_CHECK_MODULES(PLUGIN_CLASS_INHERITANCE,
++  [libdotneato >= $LIBGRAPHVIZ_REQUIRED libdotgen >= $LIBGRAPHVIZ_REQUIRED],
++  [libgraphviz_found="yes"],
++  [libgraphviz_found="no"])
++AM_CONDITIONAL(HAVE_PLUGIN_CLASS_INHERITANCE,
++  [test x$libgraphviz_found = xyes])
+ AC_SUBST(PLUGIN_CLASS_INHERITANCE_CFLAGS)
+ AC_SUBST(PLUGIN_CLASS_INHERITANCE_LIBS)
+ 
+@@ -310,6 +339,7 @@
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
+ AM_GLIB_GNU_GETTEXT
++AM_GLIB_DEFINE_LOCALEDIR(PACKAGE_LOCALE_DIR)
+ 
+ dnl gtk-doc
+ dnl GTK_DOC_CHECK([1.0])
+@@ -597,69 +627,6 @@
+ dnl  (stolen from kdevelop ;-)
+ dnl  **********************************************************
+ 
+-AC_MSG_CHECKING(for svn libraries)
+-
+-APR_CONFIGS="apr-config /usr/local/apr/bin/apr-config"
+-SVN_SUBDIR="svn"
+-AC_ARG_WITH(apr-config,
+-[[  --with-apr-config=FILE    Use the given path to apr-config when determining
+-							APR configuration; defaults to "apr-config"]],
+-[
+-if test "$withval" != "yes" -a "$withval" != ""; then
+-APR_CONFIGS=$withval
+-	fi
+-])
+-AC_MSG_CHECKING([for APR])
+-APR_CONFIG=""
+-for VALUE in $APR_CONFIGS ; do
+-		if $VALUE --cflags > /dev/null; then
+-				APR_CONFIG=$VALUE
+-				break
+-		fi
+-done
+-test $VALUE && APR_CONFIG=$VALUE
+-if test $APR_CONFIG ; then
+-	AC_MSG_RESULT([found])
+-else
+-	AC_MSG_RESULT([not found])
+-		SVN_SUBDIR=
+-dnl    AC_MSG_ERROR([APR is required. Try --with-apr-config.])
+-fi
+-		
+-APR_CFLAGS="`$APR_CONFIG --cflags`"
+-APR_INCLUDE="`$APR_CONFIG --includes`"
+-APR_LIBS="`$APR_CONFIG --link-ld --libs`"
+-
+-dnl
+-dnl APR util
+-dnl
+-
+-APU_CONFIGS="apu-config /usr/local/apr/bin/apu-config"
+-AC_ARG_WITH(apu-config,
+-[[  --with-apu-config=FILE    Use the given path to apu-config when determining
+-							APR util configuration; defaults to "apu-config"]],
+-[
+-	if test "$withval" != "yes" -a "$withval" != ""; then
+-		APU_CONFIGS=$withval
+-	fi
+-])
+-AC_MSG_CHECKING([for APR util])
+-APU_CONFIG=""
+-for VALUE in $APU_CONFIGS ; do
+-		if $VALUE --includes > /dev/null; then
+-				APU_CONFIG=$VALUE
+-				break
+-		fi
+-done
+-if test $APU_CONFIG ; then
+-	AC_MSG_RESULT([found])
+-else
+-	AC_MSG_RESULT([not found])
+-		SVN_SUBDIR=
+-fi
+-APR_INCLUDE="$APR_INCLUDE `$APU_CONFIG --includes`"
+-APR_LIBS="$APR_LIBS `$APU_CONFIG --link-ld --libs`"
+-
+ AC_MSG_CHECKING(for Subversion svn-config)
+ AC_ARG_WITH(subversion-dir,
+ 		[  --with-subversion-dir=DIR           where Subversion is installed ],
+@@ -676,13 +643,14 @@
+ 
+ AC_SUBST(SVNCONFIG)
+ if test -x "$SVNCONFIG"; then
+-		SVNLD="`$SVNCONFIG --ldflags`"
+-		SVN_LIB="`$SVNCONFIG --libs --cflags` -lsvn_client-1"
++		SVNLD="`$SVNCONFIG --ldflags 2> /dev/null`"
++		SVN_LIB="`$SVNCONFIG --libs --cflags 2> /dev/null` -lsvn_client-1"
+ 		dnl ugly hack for subversion svn-config problems in 0.14.x, to be removed when svn-config is fixed
+-		SVN_INCLUDE="`$SVNCONFIG --includes` -I$_SVNCONFIG/include/subversion-1/"
++		SVN_INCLUDE="`$SVNCONFIG --includes 2> /dev/null` -I$_SVNCONFIG/include/subversion-1/"
+ 		AC_MSG_RESULT(yes)
+ else
+ 		AC_MSG_RESULT(not found)
++		
+ 		dnl just a fallback to debian's config so that it works for me :)
+ 		AC_ARG_WITH(svn-include,
+ 								[[  --with-svn-include=DIR   Use the given path to the subversion headers.]],
+@@ -706,7 +674,6 @@
+ 				AC_MSG_RESULT([found])
+ 		else
+ 				AC_MSG_RESULT([not found])
+-				SVN_SUBDIR=
+ 		fi
+ 		SVN_LIBS="/usr/local/lib /usr/lib"
+ 		AC_ARG_WITH(svn-lib,
+@@ -719,7 +686,7 @@
+ 		AC_MSG_CHECKING([for Subversion libraries])
+ 		SVN_LIB=""
+ 		for VALUE in $SVN_LIBS ; do
+-				if ls $VALUE/libsvn_client-1.* 1>/dev/null 2>1; then
++				if ls $VALUE/libsvn_client-1.* 1>/dev/null 2>&1; then
+ 						SVN_LIB=$VALUE
+ 						break
+ 				fi
+@@ -728,123 +695,170 @@
+ 				AC_MSG_RESULT([found])
+ 		else
+ 				AC_MSG_RESULT([not found])
+-				SVN_SUBDIR=
+ 		fi
+ fi
+ 
++dnl ******************************************************************
++dnl Check for extra libs required by subversion.
++dnl FIXME: This should actually be done by subversion and not by us.
++dnl ******************************************************************
++
++AC_ARG_ENABLE(plugin-subversion,
++  [  --disable-plugin-subversion        Disable subversion support in Anjuta.],
++  [ if test "$enableval" = "no"; then
++        user_disabled_subversion=1
++    fi ],
++  [ user_disabled_subversion=0 ] )
+ 
+-NEON_CONFIGS="neon-config"
+-AC_ARG_WITH(neon-config,
+-[[  --with-neon-config=FILE    Use the given path to neon-config when determining
+-							Neon configuration; defaults to "neon-config"]],
+-[
++AC_MSG_CHECKING(if subversion support is disabled)
++if test "$user_disabled_subversion" = 1; then
++	AC_MSG_RESULT(yes)
++	SVN_INCLUDE=""
++	SVN_LIB=""
++else
++	AC_MSG_RESULT(no)
++fi
++
++if test -n "$SVN_INCLUDE" ; then
++	dnl ------------------------------------
++	dnl APR. Required by subversion (devel)
++	dnl ------------------------------------
++	
++	APR_CONFIGS="apr-config /usr/local/apr/bin/apr-config"
++	AC_ARG_WITH(apr-config,
++	[[  --with-apr-config=FILE    Use the given path to apr-config when determining
++								APR configuration; defaults to "apr-config"]],
++	[
+ 	if test "$withval" != "yes" -a "$withval" != ""; then
+-		NEON_CONFIGS=$withval
++	  APR_CONFIGS=$withval
+ 	fi
+-])
+-AC_MSG_CHECKING([for Neon])
+-NEON_CONFIG=""
+-for VALUE in $NEON_CONFIGS ; do
+-		if $VALUE --cflags > /dev/null; then
+-				NEON_CONFIG=$VALUE
+-				break
++	])
++	AC_MSG_CHECKING([for APR])
++	APR_CONFIG=""
++	for VALUE in $APR_CONFIGS ; do
++			if $VALUE --cflags > /dev/null 2>&1 ; then
++					APR_CONFIG=$VALUE
++					break
++			fi
++	done
++	test $VALUE && APR_CONFIG=$VALUE
++	if test $APR_CONFIG ; then
++		AC_MSG_RESULT([found])
++		APR_CFLAGS="`$APR_CONFIG --cflags`"
++		APR_INCLUDE="`$APR_CONFIG --includes`"
++		APR_LIBS="`$APR_CONFIG --link-ld --libs`"
++	else
++		AC_MSG_RESULT([not found])
++		dnl AC_MSG_ERROR([APR is required. Try --with-apr-config.])
++	fi
++	
++	dnl -----------------------------------------
++	dnl APR util. Required by subversion (devel)
++	dnl------------------------------------------
++	
++	APU_CONFIGS="apu-config /usr/local/apr/bin/apu-config"
++	AC_ARG_WITH(apu-config,
++	[[  --with-apu-config=FILE    Use the given path to apu-config when determining
++								APR util configuration; defaults to "apu-config"]],
++	[
++		if test "$withval" != "yes" -a "$withval" != ""; then
++			APU_CONFIGS=$withval
+ 		fi
+-done
+-if test $NEON_CONFIG ; then
+-	AC_MSG_RESULT([found])
+-else
+-	AC_MSG_RESULT([not found])
+-		SVN_SUBDIR=
++	])
++	AC_MSG_CHECKING([for APR util])
++	APU_CONFIG=""
++	for VALUE in $APU_CONFIGS ; do
++			if $VALUE --includes > /dev/null 2>&1 ; then
++					APU_CONFIG=$VALUE
++					break
++			fi
++	done
++	if test $APU_CONFIG ; then
++		AC_MSG_RESULT([found])
++		APR_INCLUDE="$APR_INCLUDE `$APU_CONFIG --includes`"
++		APR_LIBS="$APR_LIBS `$APU_CONFIG --link-ld --libs`"
++	else
++		AC_MSG_RESULT([not found])
++	fi
++	
++	dnl -----------------------------------------
++	dnl NEON. Required by subversion (devel)
++	dnl------------------------------------------
++
++	dnl Check for neon. It is required by subversion libs, but for
++	dnl for some strange reason it's not in it's dependencies.
++	dnl subversion plugin will be disabled if neon (devel) is not
++	dnl installed, even if subversion (devel) is installed.
++
++	NEON_CONFIGS="neon-config"
++	AC_ARG_WITH(neon-config,
++	[[  --with-neon-config=FILE    Use the given path to neon-config when determining
++								Neon configuration; defaults to "neon-config"]],
++	[
++		if test "$withval" != "yes" -a "$withval" != ""; then
++			NEON_CONFIGS=$withval
++		fi
++	])
++	AC_MSG_CHECKING([for Neon])
++	NEON_CONFIG=""
++	for VALUE in $NEON_CONFIGS ; do
++			if $VALUE --cflags > /dev/null 2>&1 ; then
++					NEON_CONFIG=$VALUE
++					break
++			fi
++	done
++	if test $NEON_CONFIG ; then
++		AC_MSG_RESULT([found])
++	else
++		AC_MSG_RESULT([not found])
++		SVN_INCLUDE=""
++		SVN_LIB=""
++	fi
+ fi
+ 
+-SVN_LIB="-L$SVN_LIB $APR_LIBS -lsvn_client-1"
+-SVN_INCLUDE="-I$SVN_INCLUDE $APR_INCLUDE"
+-SVN_CFLAGS="$APR_CFLAGS"
++dnl ------------------------------------------
++dnl Finally prepare subversion build flags
++dnl ------------------------------------------
++
++if test -n "$SVN_INCLUDE" ; then
++	SVN_INCLUDE="-I$SVN_INCLUDE $APR_INCLUDE"
++	SVN_LIB="-L$SVN_LIB $APR_LIBS -lsvn_client-1"
++	SVN_CFLAGS="$APR_CFLAGS"
++fi
+ 
+ AM_CONDITIONAL(BUILD_SVN, [test -n "$SVN_INCLUDE"])
+-
+ AC_SUBST(SVN_INCLUDE)
+ AC_SUBST(SVN_LIB)
+ AC_SUBST(SVN_CFLAGS)
+ 
+-dnl ***************************************************************************
+-dnl Checks for Additional stuffs
+-dnl ***************************************************************************
+-
+-dnl Set PACKAGE_LOCALE_DIR in config.h.
+-if test "x${prefix}" = "xNONE"; then
+-  AC_DEFINE_UNQUOTED(PACKAGE_LOCALE_DIR, "${ac_default_prefix}/${DATADIRNAME}/locale", [Package local directory])
+-else
+-  AC_DEFINE_UNQUOTED(PACKAGE_LOCALE_DIR, "${prefix}/${DATADIRNAME}/locale", [Package local directory])
+-fi
++dnl *********************************************************************
++dnl Set PACKAGE DIRs in config.h
++dnl *********************************************************************
++
++anjuta_save_prefix="$prefix"
++anjuta_save_exec_prefix="$exec_prefix"
++test "x$prefix" = xNONE && prefix=$ac_default_prefix
++test "x$exec_prefix" = xNONE && exec_prefix=$prefix
+ 
+-dnl Set PACKAGE SOURCE DIR in config.h.
+ packagesrcdir=`cd $srcdir && pwd`
+-
+-dnl Set PACKAGE PREFIX
+-if test "x${prefix}" = "xNONE"; then
+-  packageprefix=${ac_default_prefix}
+-else
+-  packageprefix=${prefix}
+-fi
+-
+-dnl Set PACKAGE DATA & DOC DIR
+-systemdatadir=share
+-packagedatadir=share/${PACKAGE}
+-packagedocdir=share/doc/${PACKAGE}
+-packageplugindir=lib/${PACKAGE}/plugins/${VERSION}
+-
+-dnl Set PACKAGE DIRs in config.h.
+-packagepixmapsdir=share/pixmaps/${PACKAGE}
+-packagehelpdir=share/gnome/help/${PACKAGE}
+-packagemenudir=share/gnome/apps
+-packageplugindir=lib/${PACKAGE}
+-
+-dnl Subst PACKAGE_DATA_DIR.
+-NO_PREFIX_PACKAGE_DATA_DIR="${packagedatadir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_DATA_DIR)
+-PACKAGE_DATA_DIR="${packageprefix}/${packagedatadir}"
+-AC_SUBST(PACKAGE_DATA_DIR)
+-SYSTEM_DATA_DIR="${packageprefix}/${systemdatadir}"
+-AC_SUBST(SYSTEM_DATA_DIR)
+-
+-dnl Subst PACKAGE_DOC_DIR.
+-NO_PREFIX_PACKAGE_DOC_DIR="${packagedocdir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_DOC_DIR)
+-PACKAGE_DOC_DIR="${packageprefix}/${packagedocdir}"
+-AC_SUBST(PACKAGE_DOC_DIR)
+-
+-dnl Subst PACKAGE_PIXMAPS_DIR.
+-NO_PREFIX_PACKAGE_PIXMAPS_DIR="${packagepixmapsdir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_PIXMAPS_DIR)
+-PACKAGE_PIXMAPS_DIR="${packageprefix}/${packagepixmapsdir}"
+-AC_SUBST(PACKAGE_PIXMAPS_DIR)
+-
+-dnl Subst PACKAGE_HELP_DIR.
+-NO_PREFIX_PACKAGE_HELP_DIR="${packagehelpdir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_HELP_DIR)
+-PACKAGE_HELP_DIR="${packageprefix}/${packagehelpdir}"
+-AC_SUBST(PACKAGE_HELP_DIR)
+-
+-dnl Subst PACKAGE_MENU_DIR.
+-NO_PREFIX_PACKAGE_MENU_DIR="${packagemenudir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_MENU_DIR)
+-PACKAGE_MENU_DIR="${packageprefix}/${packagemenudir}"
+-AC_SUBST(PACKAGE_MENU_DIR)
+-
+-dnl Subst PACKAGE_PLUGIN_DIR.
+-NO_PREFIX_PACKAGE_PLUGIN_DIR="${packageplugindir}"
+-AC_SUBST(NO_PREFIX_PACKAGE_PLUGIN_DIR)
+-PACKAGE_PLUGIN_DIR="${packageprefix}/${packageplugindir}"
+-AC_SUBST(PACKAGE_PLUGIN_DIR)
+-
+-AC_DEFINE_UNQUOTED(SYSTEM_DATA_DIR, "${packageprefix}/${systemdatadir}", [System data directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${packageprefix}/${packagedatadir}", [Package data directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_DOC_DIR, "${packageprefix}/${packagedocdir}", [Package doc directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_PIXMAPS_DIR, "${packageprefix}/${packagepixmapsdir}", [Package pixmaps directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_HELP_DIR, "${packageprefix}/${packagehelpdir}", [Package help directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packageprefix}/${packagemenudir}", [Package program menu directory])
+-AC_DEFINE_UNQUOTED(PACKAGE_PLUGIN_DIR, "${packageprefix}/${packageplugindir}", [Package plugins directory])
++systemdatadir=`eval echo ${datadir}`
++packagedatadir=`eval echo ${datadir}/${PACKAGE}`
++packagedocdir=`eval echo ${datadir}/doc/${PACKAGE}`
++packageplugindir=`eval echo ${libdir}/${PACKAGE}`
++packagepixmapsdir=`eval echo ${datadir}/pixmaps/${PACKAGE}`
++packagehelpdir=`eval echo ${datadir}/gnome/help/${PACKAGE}`
++packagemenudir=`eval echo ${datadir}/gnome/apps`
++
++prefix="$anjuta_save_prefix"
++exec_prefix="$anjuta_save_exec_prefix"
++
++AC_DEFINE_UNQUOTED(SYSTEM_DATA_DIR, "${systemdatadir}", [System data directory])
++AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${packagedatadir}", [Package data directory])
++AC_DEFINE_UNQUOTED(PACKAGE_DOC_DIR, "${packagedocdir}", [Package doc directory])
++AC_DEFINE_UNQUOTED(PACKAGE_PIXMAPS_DIR, "${packagepixmapsdir}", [Package pixmaps directory])
++AC_DEFINE_UNQUOTED(PACKAGE_HELP_DIR, "${packagehelpdir}", [Package help directory])
++AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packagemenudir}", [Package program menu directory])
++AC_DEFINE_UNQUOTED(PACKAGE_PLUGIN_DIR, "${packageplugindir}", [Package plugins directory])
+ AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", [Package source code directory])
+ 
+ dnl --------- help outputs -----------
+@@ -959,7 +973,10 @@
+         echo "Building subversion plugin: ............................YES"
+ else
+         echo "Building subversion plugin: ............................NO"
+-		echo "        Requires subversion; http://subversion.org"
++		echo "        Requires apr (>= 0.9.4); http://subversion.org"
++		echo "        Requires apr-util (>= 0.9.4); http://subversion.org"
++		echo "        Requires neon (>= 0.24.5); http://subversion.org"
++		echo "        Requires subversion (>= 1.0.2); http://subversion.org"
+ fi
+ 
+ if [ test x$libgladeui_found = xyes ]; then
