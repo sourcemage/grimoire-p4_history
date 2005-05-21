@@ -1,7 +1,8 @@
 depends  autoconf  &&
 depends  automake  &&
 depends  libtool   &&
-depends  g++       &&
+depends  gcc34     &&
+#depends g++       &&
 
 if [ "$XMMS" = "y" ]; then
   depends  xmms  '--with-xmms'  &&
