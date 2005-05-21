@@ -12,7 +12,7 @@ show_themes()  {
 filesys_available() {
   local f_sys
   for f_sys in mkfs mkfs.ext2 mkfs.ext3 mkisofs mkfs.cramfs mkfs.minix mksquashfs ; do
-    if which $f_sys 2>&1 /dev/null ; then
+    if which $f_sys > /dev/null 2>&1 ; then
       echo $f_sys
       echo "\"file system\""
       echo "\"stuff about the filesystem crap\""
