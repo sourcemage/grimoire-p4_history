@@ -58,6 +58,7 @@ create_defaults()
 {
 	arch_default
 	kernel_arch=$KERNEL_ARCH
+	# add variables that I need
 	persistent_add kernel_arch
 	persistent_add mode
 	persistent_add reconf
@@ -72,8 +73,9 @@ create_defaults()
 		persistent_load
 		persistent_remove MAKEMODE
 		persistent_remove UPDATE_BL
-		persistent_save
-		persistent_load
+		persistent_remove CONFIG_RESTORE
+		#persistent_save
+		#persistent_load
 		mode="oldktree"
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
 	then
@@ -81,8 +83,9 @@ create_defaults()
 		persistent_load
 		persistent_remove MAKEMODE
 		persistent_remove UPDATE_BL
-		persistent_save
-		persistent_load
+		persistent_remove CONFIG_RESTORE
+		#persistent_save
+		#persistent_load
 		mode="newktree"
 	else
 		mode="newktree"
@@ -328,38 +331,41 @@ restore_config()
 	. ${SCRIPT_DIRECTORY}/DETAILS
 	while true
 	do
-		menu_option=$( $dialog --title "Config Restore" \
+		CONFIG_RESTORE=$( $dialog --title "Config Restore" \
 			--item-help --menu \
-			"Restore Config To /usr/src/linux/.config From:" 0 0 0 \
-			"/proc/config.gz" "Restore" "Save /proc/config.gz to ${CONFIG_CACHE}/kernel.config" \
-			"/boot/config-$VERSION" "Restore" "Save /boot/config-$VERSION to ${CONFIG_CACHE}/kernel.config" \
-			"Custom" "Restore" "Save custom config file to ${CONFIG_CACHE}/kernel.config" \
+			"Restore Config From:" 0 0 0 \
+			"/proc/config.gz" "Restore" "Save /proc/config.gz your kernel tree" \
+			"/boot/config-$VERSION" "Restore" "Save /boot/config-$VERSION to your kernel tree" \
+			"Custom" "Restore" "Save custom config file to your kernel tree" \
 			)
 		retval="$?"
 		if [ "$retval" == "0" ]
 		then
-			case "${menu_option}" in
-				"/proc/config.gz")
-					if [ -f ${menu_option} ]
-					then
-						zcat /proc/config.gz > /usr/src/linux/.config
-					fi
-					;;
-				"/boot/config-$VERSION")
-					if [ -f ${menu_option} ]
-					then
-						cp /boot/config-$VERSION /usr/src/linux/.config
-					fi
-					;;
+			persistent_add CONFIG_RESTORE
+			case "${CONFIG_RESTORE}" in
+			#	"/proc/config.gz")
+			#		if [ -f ${from_option} ]
+			#		then
+			#			zcat /proc/config.gz > /usr/src/linux/.config
+			#		fi
+			#		;;
+			#	"/boot/config-$VERSION")
+			#		if [ -f ${from_option} ]
+			#		then
+			#			cp /boot/config-$VERSION /usr/src/linux/.config
+			#		fi
+			#		;;
 				"Custom")
-					menu_option=$( $dialog --title "Config Restore" \
+					CONFIG_RESTORE=$( $dialog --title "Config Restore" \
 						--nocancel --inputbox \
 						"Enter Custom File to Save to /usr/src/linux/.config" \
-						0 0 ${menu_option} )
-					if [ -f ${menu_option} ]
-					then
-						cp ${menu_option} /usr/src/linux/.config
-					fi
+						0 0 ${from_option} )
+			#		if [ -f ${from_option} ]
+			#		then
+			#			cp ${from_option} /usr/src/linux/.config
+			#		fi
+					;;
+					*)
 					;;
 			esac
 			break
