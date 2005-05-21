@@ -3,7 +3,8 @@ cd  $SOURCE_DIRECTORY                                                   &&
 
 patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-bounced-checks.patch       &&
 patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-i2o-raid.patch             &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-nxstack.patch              &&
+patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.97-PIC.patch			&&
+patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.97-nxstack.patch              &&
 
 if  [  "$GRUB_REISER4"  =  "y"  ];  then
 	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-reiser4-20040130.patch
