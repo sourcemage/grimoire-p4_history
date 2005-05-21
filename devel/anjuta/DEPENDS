@@ -2,12 +2,16 @@ depends  libgnomeprintui  &&
 depends  gnome-vfs2       &&
 depends  pcre             &&
 depends  vte              &&
+depends  gdl              &&
+depends  autogen          &&
+depends  devhelp          &&
+depends  gnome-build      &&
+depends  subversion       &&
 
 if  [  "$CVS_CHECKOUT"  ==  "y"  ];  then
   depends  gdl          &&
   depends  devhelp      &&
-  depends  gnome-build  &&
-  depends  autogen
+  depends  gnome-build
 fi  &&
 
 optional_depends  gdb                     \
