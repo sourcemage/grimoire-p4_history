@@ -6,27 +6,28 @@
 KERNEL="device-mapper", NAME="mapper/control"
 
 # alsa devices
-KERNEL="controlC[0-9]*", NAME="snd/%k", GROUP="audio", MODE="0660"
-KERNEL="hw[CD0-9]*",     NAME="snd/%k", GROUP="audio", MODE="0660"
-KERNEL="pcm[CD0-9cp]*",  NAME="snd/%k", GROUP="audio", MODE="0660"
-KERNEL="midi[CD0-9]*",   NAME="snd/%k", GROUP="audio", MODE="0660"
-KERNEL="timer",          NAME="snd/%k", GROUP="audio", MODE="0660"
-KERNEL="seq",            NAME="snd/%k", GROUP="audio", MODE="0660"
+SUBSYSTEM="sound", GROUP="audio", MODE="0660"
+KERNEL="controlC[0-9]*", NAME="snd/%k"
+KERNEL="hw[CD0-9]*",     NAME="snd/%k"
+KERNEL="pcm[CD0-9cp]*",  NAME="snd/%k"
+KERNEL="midi[CD0-9]*",   NAME="snd/%k"
+KERNEL="timer",          NAME="snd/%k"
+KERNEL="seq",            NAME="snd/%k"
 
 # sound devices
-KERNEL="admmidi"	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="adsp",		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="amidi"		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="adsp[0-9]*",	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="audio",		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="dmmidi"		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="audio[0-9]*",	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="dsp",		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="dsp[0-9]*",	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="mixer",		NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="mixer[0-9]*",	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="sequencer",	NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
-KERNEL="sequencer[0-9]*", NAME="sound/%k", SYMLINK="%k", GROUP="audio", MODE="0660"
+KERNEL="admmidi"	NAME="sound/%k", SYMLINK="%k"
+KERNEL="adsp",		NAME="sound/%k", SYMLINK="%k"
+KERNEL="amidi"		NAME="sound/%k", SYMLINK="%k"
+KERNEL="adsp[0-9]*",	NAME="sound/%k", SYMLINK="%k"
+KERNEL="audio",		NAME="sound/%k", SYMLINK="%k"
+KERNEL="dmmidi"		NAME="sound/%k", SYMLINK="%k"
+KERNEL="audio[0-9]*",	NAME="sound/%k", SYMLINK="%k"
+KERNEL="dsp",		NAME="sound/%k", SYMLINK="%k"
+KERNEL="dsp[0-9]*",	NAME="sound/%k", SYMLINK="%k"
+KERNEL="mixer",		NAME="sound/%k", SYMLINK="%k"
+KERNEL="mixer[0-9]*",	NAME="sound/%k", SYMLINK="%k"
+KERNEL="sequencer",	NAME="sound/%k", SYMLINK="%k"
+KERNEL="sequencer[0-9]*", NAME="sound/%k", SYMLINK="%k"
 
 # input devices
 KERNEL="mice",		NAME="input/%k", MODE="0644"
@@ -34,7 +35,7 @@ KERNEL="mouse*",	NAME="input/%k", MODE="0644"
 KERNEL="event*",	NAME="input/%k", MODE="0644"
 KERNEL="js*",		NAME="input/%k", MODE="0644"
 KERNEL="ts*",		NAME="input/%k", MODE="0644"
-KERNEL="psaux"		NAME="input/%k", MODE="0644"
+KERNEL="psaux"		NAME="input/%k", SYMLINK="%k", MODE="0644"
 
 # misc devices
 KERNEL="console"	NAME="%k", MODE="0600"
@@ -66,3 +67,5 @@ KERNEL="nvidia*"	NAME="%k", MODE="0660", GROUP="video"
 
 #framebuffer devices
 KERNEL="fb[0-9]",          NAME="%k", MODE="0660", GROUP="video"
+
+KERNEL="*", RUN="/etc/dev.d/${DEVNAME}/*.dev", RUN="/etc/dev.d/${SUBSYSTEM}/*.dev", RUN="/etc/dev.d/default/*.dev"
