@@ -5,11 +5,4 @@ optional_depends  pcre                                                       \
                   "--disable-pcre"                                           \
                   "Enable support for Perl compatible regular expressions."  &&
 
-if  [  "$CVS" ==  "y"  ]
-then  
-	depends  cvs &&
-	depends  automake &&
-	depends  libtool &&
-	depends  imlib2
-fi
-
+depends  automake 
