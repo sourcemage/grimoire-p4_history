@@ -3,10 +3,12 @@ sedit  's/ARCHFLAGS="-mcpu=i786 -march=$arch"/ARCHFLAGS=""/'  configure  &&
 sedit  's/ARCHFLAGS="-mcpu=i686 -march=$arch"/ARCHFLAGS=""/'  configure  &&
 sedit  's/ARCHFLAGS="-mcpu=i586 -march=$arch"/ARCHFLAGS=""/'  configure  &&
 
-# fails to compile with -DPIC and -fPIC
-CFLAGS=${CFLAGS/-DPIC/}
-CFLAGS=${CFLAGS/-fPIC/}
-CXXFLAGS=$CFLAGS
+# fails to compile with -DPIC and -fPIC except on AMD64
+if [[ "$HOST" != x86_64-* ]]; then
+  CFLAGS=${CFLAGS/-DPIC/}  &&
+  CFLAGS=${CFLAGS/-fPIC/}  &&
+  CXXFLAGS=$CFLAGS
+fi  &&
 
 # gcc 3.4 fix
 sedit  's/KEEP_SOURCE:/KEEP_SOURCE: ;/'  lavtools/lavpipe.c   &&
