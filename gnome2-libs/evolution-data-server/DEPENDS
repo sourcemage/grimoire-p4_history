@@ -7,7 +7,7 @@ optional_depends  "openldap" \
                   "--with-openldap=no" \
                   "Enable OpenLDAP support" &&
 
-optional_depends  "MOZILLA-NSS" \
+optional_depends  nss \
                   "--enable-nss=yes --enable-smime=yes" \
                   "--enable-nss=no --enable-smime=no"   \
                   "Attempt use use Mozlla libnss for SSL and SMIME support?" &&
