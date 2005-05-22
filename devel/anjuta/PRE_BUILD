@@ -1,3 +1,6 @@
 default_pre_build &&
-cd ${SOURCE_DIRECTORY} &&
-patch -p0 < ${SCRIPT_DIRECTORY}/anjuta.config.patch
+if [ "$CVS_CHECKOUT" == "n" ]
+then
+   cd ${SOURCE_DIRECTORY} &&
+   patch -p0 < ${SCRIPT_DIRECTORY}/anjuta.config.patch
+fi
