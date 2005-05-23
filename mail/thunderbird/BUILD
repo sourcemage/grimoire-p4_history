@@ -1,3 +1,4 @@
+THUNDERBIRD_HOME=${INSTALL_ROOT}/usr/lib/thunderbird &&
 export  MOZILLA_OFFICIAL="1"  &&
 export  BUILD_OFFICIAL="1"    &&
 export  MOZ_THUNDERBIRD="1"   &&
@@ -16,7 +17,7 @@ if  [  "$THUNDERBIRD_MATHML"  =  "y"  ];  then
   OPTS="${OPTS}  --enable-mathml"
 else
   OPTS="${OPTS}  --disable-mathml"
-fi
+fi &&
 
 if  grep  -q  "\-s"  ${LDFLAGS}
 then
@@ -24,8 +25,6 @@ then
 fi  &&
 
 mozilla_remove_nspr_nss &&
-
-cp mail/config/mozconfig .mozconfig &&
 
 # Note: --enable-extensions and --enable-necko-protocols are inherited from
 # mozconfig.  Don't set them in ./configure unless you *really* know what
@@ -44,19 +43,41 @@ cp mail/config/mozconfig .mozconfig &&
 #            --disable-activex-scripting                  \
 #            --disable-plugins                            \
 #            --enable-image-decoders=default,-xbm         \
-./configure  --prefix=${INSTALL_ROOT}/usr                 \
-             --with-user-appdir=.thunderbird              \
-             --with-pthreads                              \
-             --disable-accessibility                      \
-             --disable-logging                            \
-             --disable-calendar                           \
-             --disable-pedantic                           \
-             --disable-installer                          \
-             --disable-debug                              \
-             --disable-ldap                               \
-             --disable-jsd                                \
-             --enable-reorder                             \
-             --enable-cpp-rtti                            \
-             --enable-optimize="$CFLAGS"                  \
-             $OPTS                                        &&
-make  MOZ_THUNDERBIRD=1
+
+./configure --prefix=${INSTALL_ROOT}/usr \
+            --with-user-appdir=.thunderbird              \
+            --with-default-mozilla-five-home=$THUNDERBIRD_HOME \
+            --enable-application=mail \
+            --enable-extensions=wallet,spellcheck,xmlextras,webservices \
+            --enable-crypto \
+            --enable-xft \
+            --enable-xinerama \
+            --enable-optimize \
+            --enable-reorder \
+            --enable-strip \
+            --enable-cpp-rtti \
+            --enable-single-profile \
+            --enable-necko-protocols=http,file,jar,viewsource,res,data \
+            --enable-image-decoders=default,-xbm \
+            --disable-freetype2 \
+            --disable-accessibility \
+            --disable-debug \
+            --disable-ldap  \
+            --disable-tests \
+            --disable-logging \
+            --disable-pedantic \
+            --disable-installer \
+            --disable-profilesharing \
+            --disable-oji \
+            --disable-plugins \
+            --disable-necko-disk-cache \
+              $OPTS                                        &&
+
+make &&
+
+if [ "$BUILD_ENIGMAIL" == "y" ]; then
+   build/autoconf/make-makefile extensions/ipc extensions/enigmail &&
+   make -C extensions/ipc &&
+   make -C extensions/enigmail
+fi
+
