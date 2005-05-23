@@ -1,5 +1,5 @@
            SPELL=subversion
-         VERSION=1.2.0-rc4
+         VERSION=1.2.0
 if [[ "$SVN_HEAD" == y ]]; then VERSION=${VERSION%.*}-HEAD; fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 if [[ "$SVN_HEAD" == y ]]; then
@@ -7,7 +7,7 @@ if [[ "$SVN_HEAD" == y ]]; then
           MD5[0]=IGNORE
 else
    SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
-          MD5[0]='5f3c183e60f054d34388bccd3de34543'
+          MD5[0]='3c5893e2a9680604dd3d76698549f835'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://subversion.tigris.org/
