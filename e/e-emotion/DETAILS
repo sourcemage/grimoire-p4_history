@@ -1,9 +1,9 @@
            SPELL=e-emotion
 if [ "$EMOTION_CVS" == "y" ]; then
-         VERSION=cvs
-          SOURCE=$SPELL-$VERSION.tar.bz2
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/emotion
           MD5[0]=IGNORE
 else
