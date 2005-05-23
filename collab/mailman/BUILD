@@ -9,7 +9,7 @@ function mk_mailman_dir() {
   local TAG=${2:-unclassified}  &&
 
   message "${MESSAGE_COLOR}Preparing ${TAG} directory ${DIRECTORY}${DEFAULT_COLOR}"  &&
-  if [ ! -d $DIRECTORY ]; then mkdir -p $DIRECTORY; fi  &&
+  if [[ ! -d $DIRECTORY ]]; then mkdir -p $DIRECTORY; fi  &&
   chown -R mailman.mailman $DIRECTORY                   &&
   chmod -R a+rx,g+ws $DIRECTORY
 }
@@ -20,8 +20,6 @@ sedit  's: -f $(PACKAGEDIR)/mm_cfg.py: -e $(PACKAGEDIR)/mm_cfg.py:' Mailman/Make
 
 # This has to happen before 'configure' otherwise it fails
 mk_mailman_dir $MAILMAN_SPOOL 'spool' &&
-
-patch -p2 < $SPELL_DIRECTORY/mailman.driver.security.patch  &&
 
 ./configure  --build=$BUILD           \
             --prefix=$MAILMAN_PREFIX  \
