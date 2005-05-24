@@ -5,6 +5,8 @@
 	* BUILD, pkgconfig.patch: fix the pkgconfig files so they use the
 	  system installed mozilla-nspr.pc and mozilla-nss.pc and don't install
 	  their own
+	* BUILD: call make with NSPR_CONFIG=$INSTALL_ROOT/usr/bin/nspr-config
+	  so mozilla-config is generated correctly
 
 2005-05-23 Sergey Lipnevich <sergey@sourcemage.org>
 	* CONFIGURE: question about crypto moved to DEPENDS; remove LDAP;

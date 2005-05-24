@@ -73,4 +73,6 @@ if  [[  "$MOZILLA_ENIGMAIL"  ==  'y'  ]];  then
   fi
 fi  &&
 
-make
+# the NSPR_CONFIG=... is needed so mozilla-config gets generated correctly,
+# probably a bug in configure, but that's the easiest fix I found
+make  NSPR_CONFIG=$INSTALL_ROOT/usr/bin/nspr-config
