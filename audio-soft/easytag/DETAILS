@@ -1,10 +1,10 @@
            SPELL=easytag
 if [ "$GETDEVEL" == "y" ]; then
-         VERSION=1.99.3
-          MD5[0]='e5df5bdcbd5d8d8cdc0dd8b295afb83a'
+         VERSION=1.99.4
+          MD5[0]='d761e28ae0f88e7c8856e4a73c2bb9db'
 else
-         VERSION=1.0
-          MD5[0]='4e2de25e76425b38cd41bee6764686c7'
+         VERSION=1.1
+          MD5[0]='fd33736bcc63f695203750ad70e4c687'
 fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -15,8 +15,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20041029
            SHORT="Utility for maintaining audio file Tags"
 cat << EOF
-EasyTAG is an utility for viewing and editing tags for 
-MP3, MP2, FLAC, Ogg Vorbis, MusePack and Monkey's Audio 
-files. Its simple and nice GTK+ interface makes tagging 
+EasyTAG is an utility for viewing and editing tags for
+MP3, MP2, FLAC, Ogg Vorbis, MusePack and Monkey's Audio
+files. Its simple and nice GTK+ interface makes tagging
 easier under GNU/Linux
 EOF
