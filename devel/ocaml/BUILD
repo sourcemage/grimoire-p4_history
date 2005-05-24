@@ -5,6 +5,7 @@
              ${OPTS}                                 &&
 
 make_single                                          &&
+invoke_gcc                                           &&
 make  world                                          &&
 make  opt                                            &&
 make  opt.opt                                        &&
