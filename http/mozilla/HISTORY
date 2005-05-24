@@ -1,3 +1,13 @@
+2005-05-23 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: question about crypto moved to DEPENDS; remove LDAP;
+	* DEPENDS: include optional nss dependency;
+	* BUILD: use common Mozilla fix-up routine for NSPR and NSS;
+	* gcc4.patch,security_manager_makefile.diff: integrate from Firefox.
+
+2005-05-14 Sergey Lipnevich <sergey@sourcemage.org>
+	* PRE_BUILD,gcc4.patch: integrate patch from Firefox;
+	* DEPENDS: remove NSS.
+
 2005-05-13 Eric Sandall <eric@sandall.us>
 	* CONFIGURE: Made cairo the default (libart usually gives me problems)
 	* DEPENDS: Forgot to update DEPENDS properly

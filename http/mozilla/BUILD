@@ -1,10 +1,10 @@
 MOZILLA_HOME=$INSTALL_ROOT/usr/lib/mozilla    &&
 
-if  [  "$MOZILLA_ENIGMAIL"  ==  'y'  ];  then
+if  [[  "$MOZILLA_ENIGMAIL"  ==  'y'  ]];  then
   MOZILLA_EXT="$MOZILLA_EXT,ipc,enigmail"
 fi  &&
 
-if  [  "$MOZILLA_RENDER"  ==  'libart_svg'  ];  then
+if  [[  "$MOZILLA_RENDER"  ==  'libart_svg'  ]];  then
   export MOZ_INTERNAL_LIBART_LGPL=1   &&
   OPTS="--enable-svg-renderer-libart  \
         $OPTS"
@@ -26,6 +26,12 @@ fi  &&
 CFLAGS="${CFLAGS//-O3/-O2}"      &&
 CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 
+# these two are simply bugs in the Makefile-s
+sedit 's#-lgfxshared_s#-L../shared -lgfxshared_s#g' gfx/src/gtk/Makefile.in &&
+sedit 's#-lxprintutil#-L../xprintutil -lxprintutil#g' gfx/src/gtk/Makefile.in &&
+
+mozilla_remove_nspr_nss &&
+
 ./configure               --prefix=$INSTALL_ROOT/usr            \
                           --mandir=$INSTALL_ROOT/usr/share/man  \
   --with-default-mozilla-five-home=$MOZILLA_HOME                \
@@ -38,22 +44,23 @@ CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
                          --disable-debug                        \
                          --disable-tests                        \
                          --disable-installer                    \
+                         --disable-ldap                         \
                          --disable-pedantic                     \
-                                   $MOZILLA_CRYPTO              \
                                    $MOZILLA_MAILNEWS            \
                                    $MOZILLA_CHAT                \
                                    $MOZILLA_CALENDAR            \
                                    $MOZILLA_COMPOSER            \
                                    $MOZILLA_MATHML              \
-                                   $MOZILLA_LDAP                \
                                    $MOZILLA_JS                  \
                                    $MOZILLA_XINERAMA            \
                                    $OPTS                        &&
 
-if  [  "$MOZILLA_ENIGMAIL"  ==  "y"  ];  then
+make_single  &&
+
+if  [[  "$MOZILLA_ENIGMAIL"  ==  'y'  ]];  then
   #
   # fix a problem of enigmail not compiling
-  # because S/MIME IDL files are not exported
+  # because S/MIME IDL files are not exported in advance
   #
   if  !  make export;  then
     pushd  mailnews/extensions/smime/public  &&
@@ -63,5 +70,4 @@ if  [  "$MOZILLA_ENIGMAIL"  ==  "y"  ];  then
   fi
 fi  &&
 
-make_single  &&
 make

@@ -1,11 +1,8 @@
-config_query_option  MOZILLA_CRYPTO  'Build support for HTTPS, IMAPS, and POP3S (recommended)?'  y  \
-                     '--enable-crypto'  '--disable-crypto'                                          && 
-
 config_query_option  MOZILLA_MAILNEWS  'Build Mail/News client?'     y  \
                      '--enable-mailnews'  '--disable-mailnews'          && 
 
 if  [  "$MOZILLA_MAILNEWS"  ==  '--enable-mailnews'  ];  then
-  config_query  MOZILLA_ENIGMAIL  'Enable Enigmail encryption extension?'  y
+  config_query  MOZILLA_ENIGMAIL  'Enable Enigmail encryption extension (must select crypto support below)?'  y
 else
   persistent_add  MOZILLA_ENIGMAIL  &&
   MOZILLA_ENIGMAIL="n"
@@ -25,12 +22,6 @@ config_query_option  MOZILLA_MATHML    'Enable MathML?'              y  \
 
 config_query_list    MOZILLA_RENDER    'Use which renderer?'            \
                      'cairo'  'libart_svg'                              &&
-
-#
-# This doesn't seem to need 'openldap' installed
-#
-config_query_option  MOZILLA_LDAP  'Enable LDAP:// schema support?'  y  \
-                     '--enable-ldap'  '--disable-ldap'                  &&
 
 config_query_option  MOZILLA_JS    'Build JavaScript profile tool?'  n  \
                      '--enable-xpctools'  '--disable-xpctools'          &&
