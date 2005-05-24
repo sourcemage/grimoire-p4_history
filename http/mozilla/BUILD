@@ -32,6 +32,9 @@ sedit 's#-lxprintutil#-L../xprintutil -lxprintutil#g' gfx/src/gtk/Makefile.in &&
 
 mozilla_remove_nspr_nss &&
 
+# fixup the pkgconfig files to use the system nspr/nss ones too
+patch  -p0  <  $SCRIPT_DIRECTORY/pkgconfig.patch  &&
+
 ./configure               --prefix=$INSTALL_ROOT/usr            \
                           --mandir=$INSTALL_ROOT/usr/share/man  \
   --with-default-mozilla-five-home=$MOZILLA_HOME                \

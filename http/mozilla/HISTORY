@@ -2,6 +2,9 @@
 	* CONFIGURE, BUILD: make svg support optional
 	* INSTALL: remove setup of nss stuff, that's part of the nss spell now,
 	  don't add /usr/lib/mozilla to /etc/ld.so.conf, that's unnecessary
+	* BUILD, pkgconfig.patch: fix the pkgconfig files so they use the
+	  system installed mozilla-nspr.pc and mozilla-nss.pc and don't install
+	  their own
 
 2005-05-23 Sergey Lipnevich <sergey@sourcemage.org>
 	* CONFIGURE: question about crypto moved to DEPENDS; remove LDAP;
