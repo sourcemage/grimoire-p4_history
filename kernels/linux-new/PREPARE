@@ -343,27 +343,11 @@ restore_config()
 		then
 			persistent_add CONFIG_RESTORE
 			case "${CONFIG_RESTORE}" in
-			#	"/proc/config.gz")
-			#		if [ -f ${from_option} ]
-			#		then
-			#			zcat /proc/config.gz > /usr/src/linux/.config
-			#		fi
-			#		;;
-			#	"/boot/config-$VERSION")
-			#		if [ -f ${from_option} ]
-			#		then
-			#			cp /boot/config-$VERSION /usr/src/linux/.config
-			#		fi
-			#		;;
 				"Custom")
 					CONFIG_RESTORE=$( $dialog --title "Config Restore" \
 						--nocancel --inputbox \
 						"Enter Custom File to Save to /usr/src/linux/.config" \
 						0 0 ${from_option} )
-			#		if [ -f ${from_option} ]
-			#		then
-			#			cp ${from_option} /usr/src/linux/.config
-			#		fi
 					;;
 					*)
 					;;
