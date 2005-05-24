@@ -74,8 +74,6 @@ create_defaults()
 		persistent_remove MAKEMODE
 		persistent_remove UPDATE_BL
 		persistent_remove CONFIG_RESTORE
-		#persistent_save
-		#persistent_load
 		mode="oldktree"
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
 	then
@@ -84,8 +82,6 @@ create_defaults()
 		persistent_remove MAKEMODE
 		persistent_remove UPDATE_BL
 		persistent_remove CONFIG_RESTORE
-		#persistent_save
-		#persistent_load
 		mode="newktree"
 	else
 		mode="newktree"
@@ -347,7 +343,7 @@ restore_config()
 					CONFIG_RESTORE=$( $dialog --title "Config Restore" \
 						--nocancel --inputbox \
 						"Enter Custom File to Save to /usr/src/linux/.config" \
-						0 0 ${from_option} )
+						0 0 ${CONFIG_RESTORE} )
 					;;
 					*)
 					;;
