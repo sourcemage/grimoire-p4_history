@@ -1,0 +1,33 @@
+           SPELL=multisync
+         VERSION=0.82-1
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+          MD5[0]='1da012fdf4ba9cfe413f31d2d329f36b'
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://www.multisync.org/
+         ENTERED=20050524
+         UPDATED=20050524
+           SHORT='MultiSync synchronizes PIM data between computers, PDAs, etc.'
+cat << EOF
+MultiSync is a free modular program to synchronize calendars, addressbooks and
+other PIM data between programs on your computer and other computers, mobile
+devices, PDAs or cell phones. MultiSync works on any Gnome platform, such as
+Linux.
+Currently MultiSync has plugins for:
+* Ximian Evolution synchronization, supporting calendar, ToDos and contacts;
+  Multisync also support Evolution 2;
+* IrMC Mobile Client synchronization (supported by e.g. SonyEricsson
+  T68i/T610/Z600, Siemens S55 phones etc.) via Bluetooth or IR on Linux, or
+  cable connection;
+* Windows CE / Pocket PC synchronization. This plugin is part of the SynCE
+  project;
+* Opie and Zaurus synchronization;
+* SyncML support (supported by e.g. SonyEricsson P800/P900 and many other
+  phones and devices, for example the SyncML server Sync4j). SyncML also allows
+  you to do remote connection of two MultiSync programs via an encrypted
+  connection over the net;
+* Palm synchronization;
+* LDAP synchronization;
+* Backup of your PIM data.
+EOF
