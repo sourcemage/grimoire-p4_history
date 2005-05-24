@@ -22,8 +22,7 @@ then
 	message "${MESSAGE_COLOR}Okay ${LINUX_SOURCE_DIRECTORY} does exist${DEFAULT_COLOR}" 
 elif [[ "$mode" == "oldktree" ]]
 then
-	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't \
-	exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
+	message "${PROBLEM_COLOR}Ah, ${LINUX_SOURCE_DIRECTORY} doesn't exist\nGoing to newktree mode${DEFAULT_COLOR}" &&
 	mode="newktree"
 else
 	message "${MESSAGE_COLOR}Using ${LINUX_SOURCE_DIRECTORY} for new build${DEFAULT_COLOR}"
@@ -88,7 +87,30 @@ then
         message $TXTMESSAGE &&
         sleep 5
 fi &&
+if [[ "$CONFIG_RESTORE" != "" ]]
+then
 
+	case "${CONFIG_RESTORE}" in
+		"/proc/config.gz")
+			if [ -f ${CONFIG_RESTORE} ]
+			then
+				zcat /proc/config.gz > .config
+			fi
+			;;
+		"/boot/config-$VERSION")
+			if [ -f ${CONFIG_RESTORE} ]
+			then
+				cp /boot/config-$VERSION .config
+			fi
+			;;
+		"Custom")
+			if [ -f ${CONFIG_RESTORE} ]
+			then
+				cp ${CONFIG_RESTORE} .config
+			fi
+			;;
+	esac
+fi
 if [[ "$reconf" == "true" ]]
 then
 	if [[ "$MAKEMODE" == "menuconfig" ]]
