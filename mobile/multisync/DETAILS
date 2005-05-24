@@ -1,13 +1,17 @@
            SPELL=multisync
          VERSION=0.82-1
-       BUILD_API=2
+   SYNCE_VERSION=0.8.9
           SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=synce-multisync_plugin-$SYNCE_VERSION.tar.gz
           MD5[0]='1da012fdf4ba9cfe413f31d2d329f36b'
+          MD5[1]='e269fec5132a5d1beeb76c0360501905'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/synce/$SOURCE2
         WEB_SITE=http://www.multisync.org/
          ENTERED=20050524
          UPDATED=20050524
+       BUILD_API=2
            SHORT='MultiSync synchronizes PIM data between computers, PDAs, etc.'
 cat << EOF
 MultiSync is a free modular program to synchronize calendars, addressbooks and
