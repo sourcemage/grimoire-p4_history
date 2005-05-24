@@ -8,7 +8,7 @@ if  [[  "$MOZILLA_RENDER"  ==  'libart_svg'  ]];  then
   export MOZ_INTERNAL_LIBART_LGPL=1   &&
   OPTS="--enable-svg-renderer-libart  \
         $OPTS"
-else
+elif [[  "$MOZILLA_RENDER"  ==  'cairo'  ]];  then
   OPTS="--enable-svg-renderer-cairo  \
         $OPTS"
 fi  &&

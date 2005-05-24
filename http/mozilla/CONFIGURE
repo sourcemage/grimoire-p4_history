@@ -20,8 +20,8 @@ config_query_option  MOZILLA_COMPOSER  'Build Composer component?'   y  \
 config_query_option  MOZILLA_MATHML    'Enable MathML?'              y  \
                      '--enable-mathml'  '--disable-mathml'              &&
 
-config_query_list    MOZILLA_RENDER    'Use which renderer?'            \
-                     'cairo'  'libart_svg'                              &&
+config_query_list    MOZILLA_RENDER    'Possible SVG renderers:'        \
+                     'none'  'cairo'  'libart_svg'                      &&
 
 config_query_option  MOZILLA_JS    'Build JavaScript profile tool?'  n  \
                      '--enable-xpctools'  '--disable-xpctools'          &&
