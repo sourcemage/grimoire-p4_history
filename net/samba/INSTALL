@@ -1,14 +1,20 @@
 make_normal                              &&
 default_install                          &&
-popd                                     &&
 
-mkdir  -p  /usr/share/samba/codepages    &&
-mkdir  -p  /var/{spool,cache,log}/samba  &&
+if  [  "$SAMBA_CIFS"  ==  "y"  ];  then
+  install  -m  755  client/mount.cifs              \
+                    $INSTALL_ROOT/sbin/mount.cifs
+fi  &&
 
-mkdir  -m 700  -p  /etc/samba/private  &&
-if  [  !  -f  /etc/samba/private/smbpasswd  ];  then
-  touch       /etc/samba/private/smbpasswd  &&
-  chmod  600  /etc/samba/private/smbpasswd
+popd  &&
+
+mkdir  -p  $INSTALL_ROOT/usr/share/samba/codepages    &&
+mkdir  -p  $INSTALL_ROOT/var/{spool,cache,log}/samba  &&
+
+mkdir  -m  700  -p  $INSTALL_ROOT/etc/samba/private  &&
+if  [  !  -f  $INSTALL_ROOT/etc/samba/private/smbpasswd  ];  then
+  touch       $INSTALL_ROOT/etc/samba/private/smbpasswd  &&
+  chmod  600  $INSTALL_ROOT/etc/samba/private/smbpasswd
 fi  &&
 
 #
@@ -16,27 +22,37 @@ fi  &&
 #
 if  [  -f  source/nsswitch/libnss_winbind.so  ]
 then
-  echo  "Installing nsswitch/libnss_winbind.so to /lib"                  &&
-  cp  source/nsswitch/libnss_winbind.so  /lib                            &&
-  echo  "Symlinking /lib/libnss_winbind.so.2 to /lib/libnss_winbind.so"  &&
-  ln  -sf  /lib/libnss_winbind.so                                        \
-           /lib/libnss_winbind.so.2
+  echo  "Installing nsswitch/libnss_winbind.so to $INSTALL_ROOT/lib"  &&
+  install  -m  644  source/nsswitch/libnss_winbind.so                 \
+                    $INSTALL_ROOT/lib                                 &&
+  echo  "Symlinking libnss_winbind.so.2 to libnss_winbind.so"         &&
+  pushd  $INSTALL_ROOT/lib                                            &&
+  ln  -sf  libnss_winbind.so                                          \
+           libnss_winbind.so.2                                        &&
+  popd
 fi  &&
 
 if  [  -f  source/nsswitch/libnss_wins.so  ]
 then
-  echo  "Installing nsswitch/libnss_wins.so to /lib"               &&
-  cp  source/nsswitch/libnss_wins.so  /lib                         &&
-  echo  "Symlinking /lib/libnss_wins.so.2 to /lib/libnss_wins.so"  &&
-  ln  -sf  /lib/libnss_wins.so                                     \
-           /lib/libnss_wins.so.2
+  echo  "Installing nsswitch/libnss_wins.so to $INSTALL_ROOT/lib"  &&
+  install  -m  644  source/nsswitch/libnss_wins.so                 \
+                    $INSTALL_ROOT/lib                              &&
+  echo  "Symlinking libnss_wins.so.2 to libnss_wins.so"            &&
+  pushd  $INSTALL_ROOT/lib                                         &&
+  ln  -sf  libnss_wins.so                                          \
+           libnss_wins.so.2                                        &&
+  popd
 fi  &&
 
-cp  -f  examples/smb.conf.default  /etc/samba/  &&
-if                       [  !  -f  /etc/samba/smb.conf  ];  then
-  cp  /etc/samba/smb.conf.default  /etc/samba/smb.conf
-fi &&
+install_config_file  examples/smb.conf.default  /etc/samba/smb.conf.default  &&
+install_config_file  examples/smb.conf.default  /etc/samba/smb.conf          &&
 
-if [ "$SUID" = "y" ]; then
-  chmod u+s ${INSTALL_ROOT}/usr/bin/smbmnt ${INSTALL_ROOT}/usr/bin/smbumount
+if  [  "$SAMBA_SUID"  =  "y"  ];  then
+  chmod  u+s  ${INSTALL_ROOT}/usr/bin/smbmnt     \
+              ${INSTALL_ROOT}/usr/bin/smbumount  \
+              ${INSTALL_ROOT}/sbin/mount.smbfs   &&
+
+  if  [  "$SAMBA_CIFS"  ==  "y"  ];  then
+    chmod  u+s  ${INSTALL_ROOT}/sbin/mount.cifs
+  fi
 fi
