@@ -1,8 +1,8 @@
 2005-05-24 David Brown <dmlb2000@excite.com>
 	* BUILD: added invoke_gcc
-	* DETAILS: depends on gcc 3.4
+	* DETAILS: depends on gcc 3.4 but only for libselinux patch
 	* pam-selinux.patch: updated
-	* DEPENDS: depends on gcc34
+	* DEPENDS: depends on gcc34 but only for libselinux patch
 	* INSTALL: added the pam_selinux.so load on the login file in /etc/pam.d
 	* WIP: added don't want people screwing over others computers until
 	  we know it works

@@ -1,10 +1,10 @@
 depends autoconf                               &&
 if [ "${PAM_SELINUX}" == "y" ]; then
-  depends libselinux
+  depends libselinux &&
+  depends gcc34
 fi                                             &&
 
 depends cracklib                               &&
-depends gcc34                                  &&
 
 optional_depends  tetex                     \
                   ""                        \
