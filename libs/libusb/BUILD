@@ -1,4 +1,4 @@
-OPTS="--disable-build-docs  \
-      $OPTS"                &&
+OPTS="$LIBUSB_DOC  \
+      $OPTS"       &&
 
 default_build

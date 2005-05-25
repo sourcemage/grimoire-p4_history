@@ -1,0 +1,18 @@
+Doesn't seem to install the docs and has this "error" (See Bug #8283):
+Making all in doc
+make[2]: Entering directory `/usr/src/libusb-0.1.10a/doc'
+rm -rf html
+mkdir html
+jade -t sgml -d ./website.dsl\#html ./manual.sgml
+jade:./website.dsl:2:95:W: cannot generate system identifier for public text "-/
+/Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN"
+jade:./website.dsl:18:37:E: no style-specification or external-specification wit
+h ID "DOCBOOK"
+libusb Developers GuideJohannesErdfeltjohannes@erdfelt.com0.3Ju
+...
+obtained from other applications.gPhoto uses libusb to communicate with 
+digital still cameras.rio500 utils uses libusb to communicate with SONICblue Rio
+ 500 Digital Audio Player.make[2]: Leaving directory `/usr/src/libusb-0.1.10a/do
+c'
+make[1]: Leaving directory `/usr/src/libusb-0.1.10a'
+....
