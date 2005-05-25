@@ -48,25 +48,20 @@ get_oolanguages()  {
 	message  "${MESSAGE_COLOR}Using existing config${DEFAULT_COLOR}"
     fi
     
-echo LANGUAGE=$LANGUAGE
 echo LANGUAGE=$LANGUAGE >> $CFG
-echo DICTIONARY=$DICTIONARY
 echo DICTIONARY=$DICTIONARY >> $CFG
 
 }
 
+
 if [ "$OPENOFFICE_VERSION" != "stable" ]; then
-    config_query_option OPENOFFICE_OPTS "OO.o includes self-packaging code, that requires epm, however epm is useless for large scale package building. Disable?" y \
-	"--disable-epm" \
-	"--enable-epm"
-                                   
     CFG=$SPELL_CONFIG
     
     config_query  OO_CONFIGURE  "Reconfigure?"  n  &&
-    get_oolanguages  &&
+    get_oolanguages
     
     .  $CFG
-
+config_query_list  OPENOFFICE_EPM  "OO.o includes some self packaging code, that requires epm, however epm is useless for large scale package building." external internal none
 else
     LANGUAGE=ALL
     DICTIONARY=ALL

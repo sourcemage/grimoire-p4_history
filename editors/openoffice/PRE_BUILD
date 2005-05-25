@@ -2,22 +2,12 @@ if [ "$OPENOFFICE_VERSION" != "stable" ]; then
   mk_source_dir	$SOURCE_DIRECTORY  4g	&&
   unpack		$SOURCE	${MD5[0]}	&&
   cd $SOURCE_DIRECTORY &&
-#  unpack $SOURCE2 ${MD5[1]} &&
-#  unpack $SOURCE3 ${MD5[2]} &&
-#  unpack $SOURCE4 ${MD5[3]} &&
-#  unpack $SOURCE5 ${MD5[4]} &&
-#  unpack $SOURCE6 ${MD5[5]} &&
 #
 # Apply Patches, hopefully to be fixed before the final release.
 #
   echo "Applying Patches" &&
 #  cd xmloff/source/draw/ &&
   patch -p1 < $SCRIPT_DIRECTORY/process.c.patch
-#  patch -p0 < $SOURCE_CACHE/$SOURCE5
-#  patch -p0 < $SOURCE_CACHE/$SOURCE6
-#  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
-#  patch -p0 < $SOURCE_CACHE/$SOURCE3 &&
-#  patch -p0 < $SOURCE_CACHE/$SOURCE4
 #  cd $SOURCE_DIRECTORY
 else
   mk_source_dir	$SOURCE_DIRECTORY  4g	&&

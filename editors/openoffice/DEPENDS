@@ -177,8 +177,7 @@ optional_depends  neon                     \
 # What is epm?
 # Where does one get it?#
 #
-optional_depends epm \
-		""   \
-		"--with-epm=internal" \
-		"use epm already on system"
+if [ "$OPENOFFICE_EPM" == "external" ]; then
+depends epm "--enable-epm"
+fi
 fi

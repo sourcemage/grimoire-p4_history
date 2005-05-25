@@ -1,19 +1,19 @@
             SPELL=openoffice
 if [ "$OPENOFFICE_VERSION" == "cvs" ]; then
-          VERSION=1.9.100
+          VERSION=1.9.105
          VERSION2=m`echo ${VERSION} | cut -d. -f3`
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
-           SOURCE=SRC680_${VERSION2}.tar.bz2
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/openoffice-cvs
+           SOURCE=openoffice-cvs.tar.bz2
     SOURCE_URL[0]=cvs://:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs:OpenOffice:SRC680_${VERSION2}
            MD5[0]="IGNORE"
 elif [ "$OPENOFFICE_VERSION" == "devel" ]; then
-	  VERSION=1.9.100
+	  VERSION=1.9.104
          VERSION2=m`echo ${VERSION} | cut -d. -f3`
            SOURCE=OOo_${VERSION}_src.tar.gz
     SOURCE_URL[0]=http://openoffice.mirrors.tds.net/pub/openoffice/developer/680_${VERSION2}/$SOURCE
     SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/developer/680_${VERSION2}/$SOURCE
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
-           MD5[0]=3d5dca1afe5afb2752b6dbd849aa6eca
+           MD5[0]=9b3ec4acfdf55894a0510ae75ccdad7c
 else
           VERSION=1.1.4
            SOURCE=OOo_${VERSION}_source.tar.gz
@@ -22,6 +22,7 @@ else
     SOURCE_URL[0]=http://openoffice.mirrors.pair.com/stable/$VERSION/$SOURCE
     SOURCE_URL[1]=http://www.mirror.ac.uk/mirror/sunsite.dk/openoffice/stable/$VERSION/$SOURCE
     SOURCE_URL[2]=http://www.ring.gr.jp/archives/misc/openoffice/stable/$VERSION/$SOURCE
+     GCC_VERSION=3.3
 fi
          WEB_SITE=http://www.openoffice.org/
        LICENSE[0]=GPL

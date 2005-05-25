@@ -1,64 +1,25 @@
-#------------------------------------------------------
-##
-## Force the system to use gcc33
-##
-## I really don't understand what this code does.
-##
-## Copied from libgcc2 from sorcery
-##
-##
-#------------------------------------------------------
 
 
-#---------------------------------------------------------------------
-## @param new path to add
-## @param old path
-## @Stdout new path
-## Echos the old path with new path prepended, separated with a ':'
-#---------------------------------------------------------------------
-function gcc33_prepend_path()  {
-
-  if    test  -z  $2
-  then  echo $1
-  else  echo $1:$2
-  fi
-
-}
-
-#---------------------------------------------------------------------
-## @param path
-##
-## Alters the environment so that gcc33 will be used for compiling and
-## building spells when the "gcc" command is used.
-##
-#---------------------------------------------------------------------
-function gcc33_add_paths()  {
-
-  export  PATH=$(  gcc33_prepend_path  $1/bin  $PATH  )
-  export  LD_LIBRARY_PATH=$(  gcc33_prepend_path  $1/lib  $LD_LIBRARY_PATH  )
-  export  LD_RUN_PATH=$(  gcc33_prepend_path  $1/lib  $LD_RUN_PATH  )
-  export  INFOPATH=$(  gcc33_prepend_path  $1/info  $INFOPATH  )
-  export  CPPFLAGS="-I $1/include  $CPPFLAGS"
-
-}
 
 if [ "$OPENOFFICE_VERSION" == "stable" ]; then
-gcc33_add_paths  /opt/gcc33
-echo  "Using gcc version: `gcc  -dumpversion`"
+invoke_gcc
+optimize
 fi
-
-#---------------------------------------------------------------------
-##
-## End Messy USEGCC33 hack
-##
-#---------------------------------------------------------------------
 
 
 ### configure
 	cd $SOURCE_DIRECTORY/config_office/               &&
 	export CXXFLAGS="${CXXFLAGS} -I/usr/X11R6/include -I/usr/include/nspr -I/usr/include/nss"       &&
 export CFLAGS="${CFLAGS} -I/usr/include/nspr -I/usr/include/nss" &&
-
+if [ "$OPENOFFICE_VERSION" == "stable" ]; then
+optimize
+fi
+if [ "$OPENOFFICE_EPM" == "internal" ]; then
+OPTS="${OPTS} --enable-epm --with-epm=internal"
+fi
+if [ "$OPENOFFICE_EPM" == "none" ]; then
+OPTS="${OPTS} --disable-epm"
+fi
 echo OPTS=$OPTS &&
 	./configure                                       \
 		--with-lang=${LANGUAGE}                   \
@@ -68,12 +29,10 @@ echo OPTS=$OPTS &&
 		--localstatedir=${INSTALL_ROOT}/var       \
                 --mandir=${INSTALL_ROOT}/usr/share/man    \
                 --infodir=${INSTALL_ROOT}/usr/share/info  \
+                --disable-mozilla                         \
 		$OPENOFFICE_OPTS $OPTS                    &&
 
 	cd $SOURCE_DIRECTORY &&
-#sedit  "s:setenv LINK \"gcc\":&\nsetenv CFLAGS \"$CFLAGS\"       \
-#          \nsetenv CXXFLAGS \"$CXXFLAGS\":"   LinuxIntelEnv.Set  &&
-
   ./bootstrap                                                                       &&
   tcsh -c "source LinuxIntelEnv.Set && \
            env && \
