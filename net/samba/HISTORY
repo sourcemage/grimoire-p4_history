@@ -1,3 +1,20 @@
+2005-05-24 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Prepended variables with SAMBA_
+	  Request suid bit for all mount tools (smbmount, smbumount,
+	  mount.smbfs, and mount.cifs (new))
+	  Query for disk-quota support
+	* DEPENDS: Renamed AD to SAMBA_AD
+	  Default to building Active Directory support if both openldap and
+	  krb5 are installed
+	* BUILD: Let user specified opts in OPTS override our defaults
+	  Apply SAMBA_QUOTA flag
+	* INSTALL: Use SAMBA_SUID instead of SUID
+	  chmod u+s mount.cifs and mount.smbfs
+	  Use install_config_file for smb.conf and smb.conf.default
+	  Properly use INSTALL_ROOT throughout
+	  Use `install` instead of `cp` for libraries
+	* services: Removed (swat entry added to iana-etc)
+
 2005-04-15 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: 3.0.14a
 
