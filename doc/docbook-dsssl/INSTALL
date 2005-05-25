@@ -1,12 +1,6 @@
-install -d ${INSTALL_ROOT}/usr/share/sgml/docbook/dsssl-stylesheets/${VERSION}             &&
-install -d ${INSTALL_ROOT}/usr/share/doc/docbook-dsssl-${VERSION}                          &&
+install -m 755 bin/collateindex.pl ${INSTALL_ROOT}/usr/bin                                 &&
+install -m 644 bin/collateindex.pl.1 ${INSTALL_ROOT}/usr/share/man/man1                    &&
 
-install bin/collateindex.pl ${INSTALL_ROOT}/usr/bin                                        &&
-install bin/collateindex.pl.1 ${INSTALL_ROOT}/usr/share/man/man1                           &&
+install -d -m 755 ${INSTALL_ROOT}/usr/share/sgml/docbook/dsssl-stylesheets/${VERSION}      &&
 
-install -m 644 catalog ${INSTALL_ROOT}/usr/share/sgml/docbook/dsssl-stylesheets/${VERSION} &&
-install -m 644 VERSION ${INSTALL_ROOT}/usr/share/sgml/docbook/dsssl-stylesheets/${VERSION} &&
-
-cp -a common contrib docsrc dtds frames html images lib olink print                        \
-      ${INSTALL_ROOT}/usr/share/sgml/docbook/dsssl-stylesheets/${VERSION}                  &&
-cp -a doc/* ${INSTALL_ROOT}/usr/share/doc/docbook-dsssl-${VERSION}
+cp -R * /usr/share/sgml/docbook/dsssl-stylesheets/${VERSION}
