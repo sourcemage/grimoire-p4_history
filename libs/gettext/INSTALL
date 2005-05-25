@@ -9,7 +9,7 @@ rm  -f  ${INSTALL_ROOT}/usr/local/include/libintl.h  &&
 if  [  -f  ${INSTALL_ROOT}/usr/local/include/gettext-po.h  ];  then
   mv  ${INSTALL_ROOT}/usr/local/include/gettext-po.h   \
       ${INSTALL_ROOT}/usr/include/
-fi
+fi  &&
 
 if  echo  $OPTS  |  grep  -q  --  "enable-libasprintf";  then
   if  [  -f  ${INSTALL_ROOT}/usr/local/include/autosprintf.h  ];  then
