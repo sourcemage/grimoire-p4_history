@@ -10,4 +10,5 @@
   sedit  "s/read yes//"     conf/install_conf          &&
   sedit  "s/read yes//"  modules/install_conf          &&
   sedit  "s/PSER=.*/PSER=/"  Make.Rules                &&
+  invoke_gcc &&
   make
