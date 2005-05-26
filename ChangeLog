@@ -1,3 +1,49 @@
+2005-05-26 Seth Woolley <seth@tautology.org>
+	* stable/0.0 branched from stable-rc/0.0
+	* stable version 0.0.0 released upon the world
+	* Release Notes, copied below:
+	  = http://wiki.sourcemage.org/index.php?page=Stable0.0Notes
+	* Major improvements:
+	  = lots of testing and much improved stable release process
+	  = lots of spell lowercasing improvements
+	  = spells now can pick their family of compiler version to use
+	  = x86_64 testing and porting work on much of grimoire
+	  = new glibc and binutils
+	  = half of all casts according to ledger have been tested and 
+	    are at least known to compile
+	* Major Known Issues:
+	  = compiling backwards from UTF-8 ncurses to non-wide ncurses 
+	    causes problems due to an ABI incompatibility
+	* Medium Known Issues:
+	  = bash.static on x86_64 doesn't seem to work
+	  = grub on x86_64 doesn't work (but lilo works great)
+	  = use -fPIC custom cflags (or the prelink optimization option) 
+	    for x86_64 until it's added to archspecs
+	  = compiling a split-gcc spell (such as g++) not the same 
+	    version as gcc will cause them to prematurely fail
+	  = compiling perl with db requires --cflags -lpthread until 
+	    [bug 8970] is fixed
+	  = firefox spell infrastructure isn't stable yet, use test 
+	    grimoire for now
+	* Minor Known Issues:
+	  = "stable-rc is the new test grimoire"
+	  = spurious reports of gettext having issues with certain doc 
+	    spells installed, please report if you find
+	  = libusb won't build documentation for now due to [bug 8283]
+	  = other minor bugs still in stable: [bugzilla stable bugs]
+	* In The Pipeline:
+	  = cross installing improvements to basesystem for easier 
+	    chroot generation
+	  = lib64 purge from gcc/glibc and other core spells 80% done in 
+	    test grimoire
+	  = ISO releases
+	  = improved readline and ncurses update process with bash
+	  = third generation linux spell
+	  = improved firefox spell infrastructure
+	  = lint checking of spells will be done in the future
+	  = prometheus will either be resurrected or rewritten -- debate 
+	    ensues
+
 2005-05-18 Eric Sandall <eric@sandall.us>
 	* net/EthStatus: Removed deprecated spell
 	* php-pear/pear-pear: Renamed to php-pear/pear ;)
