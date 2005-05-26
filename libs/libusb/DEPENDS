@@ -4,7 +4,7 @@ depends  g++  &&
 # Fix Bug #8283
 #
 if  [  "$LIBUSB_DOC"  ==  '--enable-build-docs'  ];  then
-  depends  openjade          &&
+  depends  docbook-dsssl          &&
   depends  docbook-sgml-dtd
 fi  &&
 
