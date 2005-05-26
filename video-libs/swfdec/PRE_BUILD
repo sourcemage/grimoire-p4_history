@@ -1,4 +1,4 @@
 default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
-# remove -Werror so it works with gcc 4.0
-sedit  's/$SWF_DEBUG $GLIB_CFLAGS/$GLIB_CFLAGS/'  configure
+# fix broken mozilla detection
+sedit  's/MOZILLA_CFLAGS=".*"/MOZILLA_CFLAGS="$(mozilla-config --cflags plugin)"/'  configure
