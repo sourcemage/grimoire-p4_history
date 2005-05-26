@@ -1,0 +1,8 @@
+if  spell_ok  openjade           &&
+    spell_ok  docbook-sgml-dtd;  then
+  config_query_option  LIBUSB_DOC  "Enable building of documentation?"  y  \
+                       '--enable-build-docs'  '--disable-build-docs'
+else
+  config_query_option  LIBUSB_DOC  "Enable building of documentation?"  n  \
+                       '--enable-build-docs'  '--disable-build-docs'
+fi
