@@ -1,16 +1,35 @@
 Spells that have been dropped:
 ------------------------------
-control-center          gnome-python            mac-fdisk               xfsdump
-gnome-vfs               
-eroaster                gtktalog                vcdimager
-fuse-python             
+mac-fdisk               xfsdump
+gtktalog               	vcdimager
+eroaster                
 
+--- Non-disk section spells ---
+gnome-python
+gnome-vfs
 
 Spells that encountered problems:
 ---------------------------------
-btmgr           davfs           gcc2            hfsutils        mdadm           sfs
-devfsd          pygtk           gcombust        netatalk        udftools
-gnome-libs      xfsprogs        fuse            libcdio         reiser4progs    yaboot
+hfsutils        sfs				
+gcombust        netatalk        udftools
+xfsprogs        yaboot
 
+--- Non-disk section spells ---
+gcc2
+pygtk
+gnome-libs
 
-GCC3.4
+-------------------------------------------------------------------------------------
+Notes :
+-------------------------------------------------------------------------------------
+udftools (bug report on sourceforge):
+
+That fails to compile in file wrudf/wrudf.c on this line :
+
+(char *)spm += spm->partitionMapLength;
+
+gcc claims "undefined lvalue in assignment"
+
+Removing the cast '(char *)' get the stuff compiling, but I'm not sure that it is 
+correct at execution
+-------------------------------------------------------------------------------------
