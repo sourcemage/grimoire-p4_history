@@ -1,0 +1,26 @@
+depends  libtool  &&
+depends  automake  &&
+depends  autoconf  &&
+depends  X11-LIBS  &&
+depends  gcc34 &&
+depends  OPENGL  &&
+
+optional_depends  "libpng"                    \
+                  "--enable-png"              \
+                  "--disable-png"             \
+                  "for PNG graphics support"  &&
+
+optional_depends  "jpeg"                       \
+                  "--enable-jpeg"              \
+                  "--disable-jpeg"             \
+                  "for JPEG graphics support"  &&
+
+optional_depends  "libungif"                  \
+                  "--enable-gif"              \
+                  "--disable-gif"             \
+                  "for GIF graphics support"  &&
+
+optional_depends  "tiff"                       \
+                  "--enable-tiff"              \
+                  "--disable-tiff"             \
+                  "for TIFF graphics support"

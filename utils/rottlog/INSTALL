@@ -1,0 +1,15 @@
+  default_install                                  &&
+  cp $SCRIPT_DIRECTORY/sample* /etc/rottlog	   &&
+  cp $SCRIPT_DIRECTORY/syslogd /etc/rottlog	   &&
+  mkdir -p /usr/share/doc/rottlog                  &&
+  mkdir -p /var/run/rottlog                        &&
+  cp $SCRIPT_DIRECTORY/README.SOURCEMAGE /usr/share/doc/rottlog &&
+  if [ -d /etc/cron.daily ]
+  then
+    if [ -e /etc/cron.daily/rottlog.daily ]
+    then
+      true
+    else
+		cp $SCRIPT_DIRECTORY/rottlog.daily /etc/cron.daily/rottlog.daily
+    fi
+  fi

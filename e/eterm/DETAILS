@@ -1,0 +1,24 @@
+           SPELL=eterm
+       BUILD_API=2
+         VERSION=0.9.3
+          SOURCE=Eterm-$VERSION.tar.gz
+         SOURCE2=Eterm-bg-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Eterm-$VERSION
+   SOURCE_URL[0]=http://www.eterm.org/download/$SOURCE
+  SOURCE2_URL[0]=http://www.eterm.org/download/$SOURCE2
+        WEB_SITE=http://www.eterm.org
+         ENTERED=20010922
+         UPDATED=20011125
+          MD5[0]=82608c929fb4feaf7b51a37efb42a3e7
+          MD5[1]=de6eda43385a20d7f5de8a855eb2c193
+      LICENSE[0]=BSD
+           SHORT="Eterm is a vt102 terminal emulator."
+cat << EOF
+Eterm is a vt102 terminal emulator intended as a replacement for
+xterm. It is designed with a Freedom of Choice philosophy, leaving as
+much power, flexibility, and freedom as possible in the hands of the
+user. It is designed to look good and work well, but takes a
+feature-rich approach rather than one of minimalism. Current features
+include color support, background images (all Imlib-supported
+formats), theme support, and pseudo-transparency.
+EOF

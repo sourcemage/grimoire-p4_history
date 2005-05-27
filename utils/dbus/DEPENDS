@@ -1,0 +1,41 @@
+depends  expat  &&
+
+optional_depends  doxygen                                \
+                  "--enable-doxygen-docs"                \
+                  "--disable-doxygen-docs"               \
+                  "Build DOXYGEN documentation"          &&
+
+optional_depends  xmlto                                  \
+                  "--enable-xml-docs"                    \
+                  "--disable-xml-docs"                   \
+                  "Build XML Documentation"              &&
+
+optional_depends  qt-x11                                 \
+                  "--enable-qt"                          \
+                  "--disable-qt"                         \
+                  "Enable Qt-friendly client library"    &&
+
+optional_depends  glib2                                  \
+                  "--enable-glib"                        \
+                  "--disable-glib"                       \
+                  "Enable GLib-friendly client library"  &&
+
+optional_depends  gtk+2                                  \
+                  "--enable-gtk"                         \
+                  "--disable-gtk"                        \
+                  "Enable GTK-requiring executables"     &&
+
+optional_depends  gtk-sharp                              \
+                  "--enable-mono"                        \
+                  "--disable-mono"                       \
+                  "Build mono bindings"                  &&
+
+optional_depends  monodoc                           \
+                  "--enable-mono-docs"              \
+                  "--disable-mono-docs"             \
+                  "for mono binding documentation"  &&
+
+optional_depends  pyrex                                  \
+                  "--enable-python"                      \
+                  "--disable-python"                     \
+                  "Build Python bindings"

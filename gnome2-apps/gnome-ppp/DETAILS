@@ -1,0 +1,22 @@
+           SPELL=gnome-ppp
+         VERSION=0.3.19
+          BRANCH=`echo $VERSION | cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.gnome-ppp.org/download/$BRANCH/$SOURCE
+          MD5[0]='f2b42066d70fb240ba3db6888582fef3'
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://www.gnome-ppp.org
+         ENTERED=20041002
+         UPDATED=20050201
+           SHORT="GNOME PPP is a modem dialup tool"
+cat << EOF
+GNOME PPP is a modem dialup tool designed to integrate nicely 
+into GNOME 2 Desktop Environment. It is very similar to GPPP 
+dialup utility created for GNOME 1 and KDE equivalent, KPPP. 
+Since it is a graphical frontend for excellent WvDial, very 
+little knowledge is needed to setup dialup connection using 
+GNOME PPP. It features ease of use, auto detection of your 
+modem and connection monitoring.
+EOF

@@ -1,0 +1,172 @@
+diff -uNr shadow-4.0.5.orig/man/es/Makefile.am shadow-4.0.5/man/es/Makefile.am
+--- shadow-4.0.5.orig/man/es/Makefile.am	2004-01-14 15:11:25.000000000 +0100
++++ shadow-4.0.5/man/es/Makefile.am	2004-10-31 08:33:28.976767088 +0100
+@@ -3,7 +3,6 @@
+ 
+ man_MANS = \
+ 	login.1 \
+-	passwd.1 \
+-	su.1
++	passwd.1 
+ 
+ EXTRA_DIST = $(man_MANS)
+diff -uNr shadow-4.0.5.orig/man/es/Makefile.in shadow-4.0.5/man/es/Makefile.in
+--- shadow-4.0.5.orig/man/es/Makefile.in	2004-10-26 03:34:06.000000000 +0200
++++ shadow-4.0.5/man/es/Makefile.in	2004-10-31 08:35:12.217072176 +0100
+@@ -172,8 +172,7 @@
+ target_alias = @target_alias@
+ man_MANS = \
+ 	login.1 \
+-	passwd.1 \
+-	su.1
++	passwd.1 
+ 
+ EXTRA_DIST = $(man_MANS)
+ all: all-am
+diff -uNr shadow-4.0.5.orig/man/hu/Makefile.am shadow-4.0.5/man/hu/Makefile.am
+--- shadow-4.0.5.orig/man/hu/Makefile.am	2004-01-14 15:11:26.000000000 +0100
++++ shadow-4.0.5/man/hu/Makefile.am	2004-10-31 08:33:47.841899152 +0100
+@@ -8,8 +8,7 @@
+ 	login.1 \
+ 	newgrp.1 \
+ 	passwd.1 \
+-	sg.1 \
+-	su.1
++	sg.1
+ 
+ EXTRA_DIST = $(man_MANS)
+- 
+\ No newline at end of file
++ 
+diff -uNr shadow-4.0.5.orig/man/hu/Makefile.in shadow-4.0.5/man/hu/Makefile.in
+--- shadow-4.0.5.orig/man/hu/Makefile.in	2004-10-26 03:34:06.000000000 +0200
++++ shadow-4.0.5/man/hu/Makefile.in	2004-10-31 08:35:36.060447432 +0100
+@@ -177,8 +177,7 @@
+ 	login.1 \
+ 	newgrp.1 \
+ 	passwd.1 \
+-	sg.1 \
+-	su.1
++	sg.1 
+ 
+ EXTRA_DIST = $(man_MANS)
+ all: all-am
+diff -uNr shadow-4.0.5.orig/man/ja/Makefile.am shadow-4.0.5/man/ja/Makefile.am
+--- shadow-4.0.5.orig/man/ja/Makefile.am	2004-10-26 03:28:33.000000000 +0200
++++ shadow-4.0.5/man/ja/Makefile.am	2004-10-31 08:37:24.428972912 +0100
+@@ -34,8 +34,6 @@
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/man/ja/Makefile.in shadow-4.0.5/man/ja/Makefile.in
+--- shadow-4.0.5.orig/man/ja/Makefile.in	2004-10-26 03:34:07.000000000 +0200
++++ shadow-4.0.5/man/ja/Makefile.in	2004-10-31 08:37:44.287953888 +0100
+@@ -206,8 +206,6 @@
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/man/Makefile.am shadow-4.0.5/man/Makefile.am
+--- shadow-4.0.5.orig/man/Makefile.am	2004-10-26 03:28:08.000000000 +0200
++++ shadow-4.0.5/man/Makefile.am	2004-10-31 08:38:22.836093680 +0100
+@@ -37,8 +37,6 @@
+ 	sg.1 \
+ 	shadow.3 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/man/Makefile.in shadow-4.0.5/man/Makefile.in
+--- shadow-4.0.5.orig/man/Makefile.in	2004-10-26 03:34:05.000000000 +0200
++++ shadow-4.0.5/man/Makefile.in	2004-10-31 08:38:46.245534904 +0100
+@@ -221,8 +221,6 @@
+ 	sg.1 \
+ 	shadow.3 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/man/pl/Makefile.am shadow-4.0.5/man/pl/Makefile.am
+--- shadow-4.0.5.orig/man/pl/Makefile.am	2004-10-26 03:28:39.000000000 +0200
++++ shadow-4.0.5/man/pl/Makefile.am	2004-10-31 08:39:36.920831088 +0100
+@@ -34,8 +34,6 @@
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/man/pl/Makefile.in shadow-4.0.5/man/pl/Makefile.in
+--- shadow-4.0.5.orig/man/pl/Makefile.in	2004-10-26 03:34:07.000000000 +0200
++++ shadow-4.0.5/man/pl/Makefile.in	2004-10-31 08:39:26.391431800 +0100
+@@ -206,8 +206,6 @@
+ 	pwunconv.8 \
+ 	sg.1 \
+ 	shadow.5 \
+-	su.1 \
+-	suauth.5 \
+ 	useradd.8 \
+ 	userdel.8 \
+ 	usermod.8 \
+diff -uNr shadow-4.0.5.orig/src/Makefile.am shadow-4.0.5/src/Makefile.am
+--- shadow-4.0.5.orig/src/Makefile.am	2004-10-26 02:41:25.000000000 +0200
++++ shadow-4.0.5/src/Makefile.am	2004-10-31 08:45:35.894258832 +0100
+@@ -40,11 +40,11 @@
+ 	usermod \
+ 	vipw
+ 
+-noinst_PROGRAMS = id sulogin
++noinst_PROGRAMS = id sulogin su
+ 
+ # id and groups are from gnu, sulogin from sysvinit
+ 
+-suidbins = su
++suidbins = 
+ suidubins = chage chfn chsh expiry gpasswd newgrp passwd
+ 
+ LDADD = $(top_builddir)/libmisc/libmisc.a \
+diff -uNr shadow-4.0.5.orig/src/Makefile.in shadow-4.0.5/src/Makefile.in
+--- shadow-4.0.5.orig/src/Makefile.in	2004-10-26 03:34:09.000000000 +0200
++++ shadow-4.0.5/src/Makefile.in	2004-10-31 08:50:28.904714472 +0100
+@@ -38,7 +38,7 @@
+ POST_UNINSTALL = :
+ build_triplet = @build@
+ host_triplet = @host@
+-bin_PROGRAMS = groups$(EXEEXT) login$(EXEEXT) su$(EXEEXT)
++bin_PROGRAMS = groups$(EXEEXT) login$(EXEEXT)
+ ubin_PROGRAMS = faillog$(EXEEXT) lastlog$(EXEEXT) chage$(EXEEXT) \
+ 	chfn$(EXEEXT) chsh$(EXEEXT) expiry$(EXEEXT) gpasswd$(EXEEXT) \
+ 	newgrp$(EXEEXT) passwd$(EXEEXT)
+@@ -48,7 +48,7 @@
+ 	newusers$(EXEEXT) pwck$(EXEEXT) pwconv$(EXEEXT) \
+ 	pwunconv$(EXEEXT) useradd$(EXEEXT) userdel$(EXEEXT) \
+ 	usermod$(EXEEXT) vipw$(EXEEXT)
+-noinst_PROGRAMS = id$(EXEEXT) sulogin$(EXEEXT)
++noinst_PROGRAMS = id$(EXEEXT) sulogin$(EXEEXT) su$(EXEEXT)
+ subdir = src
+ DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+@@ -350,7 +350,7 @@
+ 
+ 
+ # id and groups are from gnu, sulogin from sysvinit
+-suidbins = su
++suidbins = 
+ suidubins = chage chfn chsh expiry gpasswd newgrp passwd
+ LDADD = $(top_builddir)/libmisc/libmisc.a \
+ 	$(top_builddir)/lib/libshadow.la

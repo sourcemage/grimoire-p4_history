@@ -1,0 +1,131 @@
+    SPELL=linux
+
+# Load local config
+if [ -f $DEPENDS_CONFIG/$SPELL ]; then
+  source $DEPENDS_CONFIG/$SPELL
+fi
+
+#
+# oldconfig needs to be seen when asking for input
+#
+if  [  "$OLD_CONFIG"  ==  "y"  ]
+then
+  VOYEUR="on"
+fi
+
+# This is for the web scripts that parse the version number
+VERSION=2.6.11.10
+
+# Load list with Kernel Versions, and then overwrite the version to use
+# Kernel Version: either a Variable (LATEST_...) or a version number itself. otherwise default to LATEST_2_4)
+# This is done in one line so the web scripts don't recognize it.
+source ${SCRIPT_DIRECTORY}/KERNELS && VERSION=${!KERNEL_VERSION=${KERNEL_VERSION=${LATEST_2_6}}}
+
+# --- Parse version number ---
+
+RELEASE=${VERSION%%-*}
+PRERELEASE=${RELEASE}
+MAJOR=${RELEASE%%\.*}
+MAJOR_TAIL=${VERSION#$MAJOR\.}
+MINOR=${MAJOR_TAIL%%\.*}
+TREE=$MAJOR.$MINOR
+TAIL=${VERSION#$RELEASE}
+
+while [[ $TAIL == -* ]]
+do
+  PATCH=${TAIL##*-}
+  TAIL=${TAIL%-$PATCH}
+  PATCHES="$PATCH $PATCHES"
+  if [[ $PATCH == ac* ]]; then
+    AC_PATCH=$PATCH
+  elif [[ $PATCH == dj* ]]; then
+    DJ_PATCH=$PATCH
+  elif [[ $PATCH == pre* ]] || [[ $PATCH == rc* ]]; then
+    RELEASE=${TREE}.$((${PRERELEASE#${TREE}.*}-1))  # Reduce Version number by one
+    PREPATCH=$PATCH
+  elif [[ $PATCH == test* ]]; then
+    PREPATCH=$PATCH
+  elif [[ $PATCH == mm* ]]; then
+    MM_PATCH=$PATCH
+  else
+    echo "Failed parsing patches"  &&
+    return  1
+  fi
+done
+
+SOURCE="linux-${RELEASE}.tar.bz2"
+SOURCE_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/linux-${RELEASE}.tar.bz2"
+SOURCE2="linux-${RELEASE}.tar.bz2.sign"
+SOURCE2_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/linux-${RELEASE}.tar.bz2.sign"
+
+# summon doesn't allow gaps in the SOURCE-numbers
+SOURCE3=" "
+SOURCE4=" "
+SOURCE5=" "
+SOURCE6=" "
+SOURCE7=" "
+
+if [[ "${PREPATCH}" != "" ]]; then
+  if [[ "$PREPATCH" == test* ]]; then 
+    SOURCE="linux-${PRERELEASE}-${PREPATCH}.tar.bz2"
+    SOURCE_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/linux-${PRERELEASE}-${PREPATCH}.tar.bz2"
+    SOURCE2="${SOURCE}.sign"
+    SOURCE2_URL="${SOURCE_URL}.sign"
+  else
+    SOURCE4="patch-${PRERELEASE}-${PREPATCH}.bz2"
+    SOURCE4_URL="${KERNEL_URL}/pub/linux/kernel/v${TREE}/testing/patch-${PRERELEASE}-${PREPATCH}.bz2"
+    SOURCE5="${SOURCE4}.sign"
+    SOURCE5_URL="${SOURCE4_URL}.sign"
+  fi
+fi
+
+if [[ "${AC_PATCH}" != "" ]]; then
+  SOURCE6="patch-${VERSION}.bz2"
+  if  [  !  -z  $PREPATCH  ];  then
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/alan/linux-${TREE}/${PRERELEASE}-${PREPATCH}/patch-${VERSION}.bz2"
+else
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/alan/linux-${TREE}/${PRERELEASE}/patch-${VERSION}.bz2"
+  fi
+  SOURCE7="${SOURCE6}.sign"
+  SOURCE7_URL="${SOURCE6_URL}.sign"
+fi
+
+if [[ "${DJ_PATCH}" != "" ]]; then
+  SOURCE6="patch-${VERSION}.diff.bz2"
+  if  [  !  -z  $PREPATCH  ];  then
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}-${PREPATCH}/patch-${VERSION}.diff.bz2"
+  else
+    SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/davej/patches/${TREE}/${RELEASE}/patch-${VERSION}.diff.bz2"
+  fi
+  SOURCE7="${SOURCE6}.sign"
+  SOURCE7_URL="${SOURCE6_URL}.sign"
+fi
+
+if [[ "${MM_PATCH}" != "" ]]; then
+  SOURCE6="${VERSION}.bz2"
+  SOURCE6_URL="${KERNEL_URL}/pub/linux/kernel/people/akpm/patches/${TREE}/${VERSION%-mm*}/${VERSION}/${VERSION}.bz2"
+  SOURCE7="${SOURCE6}.sign"
+  SOURCE7_URL="${SOURCE6_URL}.sign"
+fi
+
+if [ -f ${SPELL_CONFIG}.DETAILS ] ; then
+  source ${SPELL_CONFIG}.DETAILS
+fi
+
+
+WEB_SITE=http://www.kernel.org
+ENTERED=20020819
+UPDATED=20040616
+         ARCHIVE="off"
+SHORT="linux is the kernel - the core of the GNU/Linux operating system."
+LICENSE[0]=GPL
+cat << EOF
+Linux is a clone of the Unix kernel, written from scratch by Linus
+Torvalds with assistance from a loosely-knit team of hackers across the
+Net. It aims towards POSIX and Single UNIX Specification compliance. It
+has all the features you would expect in a modern fully-fledged Unix
+kernel, including true multitasking, virtual memory, shared libraries,
+demand loading, shared copy-on-write executables, proper memory
+management, and TCP/IP networking.
+EOF
+

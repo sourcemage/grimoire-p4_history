@@ -1,0 +1,17 @@
+depends g++        &&
+if  spell_ok  kdelibs;  then
+  if  query  "Do you want full KDE support (window management, dialog boxes, etc.) built into Rekall (answer no for base Qt only)? " y;  then
+    depends  kdelibs  "--with-gui=kde"
+  else
+    depends  qt-x11   "--with-gui=qt3"
+  fi
+else
+  if  query  "Do you want full KDE support (window management, dialog boxes, etc.) built into Rekall (answer no for base Qt only)? " n;  then
+    depends  kdelibs  "--with-gui=kde"
+  else
+    depends  qt-x11   "--with-gui=qt3"
+  fi
+fi                                                                                              &&
+
+optional_depends "postgresql" "--enable-pgsql" "--disable-pgsql" "PostgreSQL database support"  &&
+optional_depends "mysql"      "--enable-mysql" "--disable-mysql" "MySQL database support"	

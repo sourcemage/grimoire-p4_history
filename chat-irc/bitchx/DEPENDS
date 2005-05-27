@@ -1,0 +1,10 @@
+depends gcc33                                 &&
+optional_depends  "gnome-libs"     \
+                  ""               \
+                  ""               \
+                  "for an gnome x11 version"  &&
+
+optional_depends  "esound"          \
+                  "--enable-sound"  \
+                  ""                \
+                  "for sound only available with gnome version"

@@ -1,0 +1,75 @@
+#! /bin/sh
+# $Id: pop3d-ssl.in,v 1.8 2002/10/25 12:19:50 mrsam Exp $
+#
+# Copyright 1998 - 2000 Double Precision, Inc.
+# See COPYING for distribution information.
+
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+
+.  /etc/init.d/smgl_functions
+
+prefix=/usr
+exec_prefix=/usr
+libexecdir=${exec_prefix}/libexec
+sbindir=${exec_prefix}/sbin
+bindir="/usr/bin"
+
+.  /etc/courier/pop3d
+.  /etc/courier/pop3d-ssl
+
+case  $1  in
+	start)
+		LIBAUTHMODULES=""
+		for  f  in  `builtin  echo  $AUTHMODULES`;  do
+			LIBAUTHMODULES="$LIBAUTHMODULES  $libexecdir/authlib/$f"
+		done
+		exec  /usr/bin/env  -  PATH="$PATH"  SHELL="$SHELL"      \
+			/bin/sh  -c  "  set  -a;                             \
+			prefix=/usr;                                         \
+			exec_prefix=/usr;                                    \
+			sbindir=${exec_prefix}/sbin;                         \
+			bindir=/usr/bin;                                     \
+			libexecdir=${exec_prefix}/libexec;                   \
+			.  /etc/courier/pop3d;                               \
+			.  /etc/courier/pop3d-ssl;                           \
+			POP3_TLS=1;                                          \
+			export  POP3_TLS;                                    \
+			POP3_STARTTLS=NO;                                    \
+			export  POP3_STARTTLS;                               \
+			POP3_TLS_REQUIRED=0;                                 \
+			export  POP3_TLS_REQUIRED;                           \
+			${exec_prefix}/sbin/couriertcpd                      \
+				-address=$SSLADDRESS                             \
+				-stderrlogger=${exec_prefix}/sbin/courierlogger  \
+				-stderrloggername=pop3d-ssl                      \
+				-maxprocs=$MAXDAEMONS                            \
+				-maxperip=$MAXPERIP                              \
+				-pid=$SSLPIDFILE                                 \
+				$TCPDOPTS                                        \
+				$SSLPORT                                         \
+				$COURIERTLS                                      \
+				-server                                          \
+				-tcpd                                            \
+			$libexecdir/courier/courierpop3login                 \
+				$LIBAUTHMODULES                                  \
+			$libexecdir/courier/courierpop3d                     \
+				Maildir"
+		exit  0
+		;;
+
+	stop)
+		${exec_prefix}/sbin/couriertcpd  -pid=$SSLPIDFILE  -stop
+		exit  0
+		;;
+
+	restart)
+		${exec_prefix}/sbin/couriertcpd  -pid=$SSLPIDFILE  -restart
+		exit  0
+		;;
+
+	*)
+		echo  "Usage: $0 (start | stop | restart)"
+		exit  1
+		;;
+esac

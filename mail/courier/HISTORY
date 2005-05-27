@@ -1,0 +1,81 @@
+2005-01-29 Arjan Bouter <abouter@sourcemage.org>
+	* INSTALL: spell_installed -> spell_ok conversion
+
+2004-09-13 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: depends on any provider of FAM
+
+2004-06-11 Jason Flatt <jflatt@sourcemage.org>
+	* DETAILS: Version bump to 0.45.6.
+
+2004-05-16 Jason Flatt <jflatt@sourcemage.org>
+	* DETAILS: Version bump to 0.45.5.
+
+2004-04-17 Jason Flatt <jflatt@sourcemage.org>
+	* init.d/courier-authdaemon: Added unset command to eliminate startup
+	  errors.
+
+2004-04-05 Jason Flatt <jflatt@sourcemage.org>
+	* DETAILS: Version bump to 0.45.4. Removed MAINTAINER.
+	* BUILD, PREPARE: Removed PREPARE and put create_account in BUILD
+	  where it belongs.
+	  Removed disable-root-check.patch command.
+	* CONFIGURE: Added a check for a previous configuration, so it
+	  doesn't ask every time w/o the -r in cast.
+	* DEPENDS: Changed the default answer to installing GDBM over Berkley
+	  DB.
+	* disable-root-check.patch: Removed as it is no longer needed.
+	* init.d/courier-authdaemon: Corrected a bug in the stopping of the
+	  script.
+
+2004-03-30 Seth Woolley <seth@tautology.org>
+	* DETAILS: Version bump to 0.45.1
+	* BUILD: commented out disable-root-check.patch
+
+2003-12-06 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 0.44.2.
+	* BUILD, disable-root-check.patch: Fix for a ./configure bug.
+
+2003-11-10 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 0.44.0.
+	* init.d/*: Added 'builtin's for 'echo's.
+
+2003-11-02 Eric Sandall <eric@sandall.us>
+	* PROVIDES: Upper-case provides
+	* HISTORY: Formatted to Guru Handbook
+
+2003-10-17 Ladislav Hagara <hgr@vabo.cz>
+	* PROVIDES: mail-transport-agent -> MAIL-TRANSPORT-AGENT
+
+2003-09-21 Jason Flatt <jason@flattfamily.com>
+	* Remove files and code for automatically starting on completion of cast.
+	* DEPENDS: Made some minor modifications
+
+2003-09-19 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version update to 0.43.2
+	* init.d/*: update init scripts for
+	  simpleinit-msb (bug # 4295).
+
+2003-08-10 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Revert on_dispel Linux-PAM cast_self
+	  (doesn't work the way it is documented)
+
+2003-07-26 hgg <hgreig@bigpond.net.au>
+	* TRIGGERS: Update for Linux-PAM
+
+2003-05-30 Jason Flatt <jason@flattfamily.com>
+	* DETAILS: Version bump to 0.42.2
+	* Bug fixes and code clean up.
+	* BUILD: Added ${INSTALL_ROOT}.
+
+2003-04-22 Jason Flatt <jason@flattfamily.com>
+	* CONFLICTS: Added
+	* BUILD: Added LDFLAGS line to eliminate the combreloc
+	  option during compile.
+	  Added code to copy PAM files.
+	* PREPARE: Removed combreloc check and warning
+	* PRE_REMOVE: Added so the Courier tasks get stopped
+	  before the scripts get removed.
+
+2003-04-17 Jason Flatt <jason@flattfamily.com>
+	* Created this spell.
+

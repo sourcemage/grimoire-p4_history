@@ -1,0 +1,17 @@
+depends  libgcrypt  &&
+depends  opencdk    &&
+
+optional_depends  "zlib"                          \
+                  ""                              \
+                  "--without-zlib"                \
+                  "for zlib compression support"  &&
+
+optional_depends  "libtasn1"                      \
+                  ""                              \
+                  "--with-included-libtasn1"      \
+                  "to use external libtasn1"      &&
+
+optional_depends  "lzo"                           \
+                  ""                              \
+                  "--with-included-lzo"           \
+                  "to use external liblzo"

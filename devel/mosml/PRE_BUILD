@@ -1,0 +1,6 @@
+MAKEPATCH="${SCRIPT_DIRECTORY}/makefile.diff"
+
+mk_source_dir ${SOURCE_DIRECTORY} &&
+unpack $SOURCE ${MD5[0]} &&
+cd ${SOURCE_DIRECTORY}/src/ &&
+patch -p0 <$MAKEPATCH

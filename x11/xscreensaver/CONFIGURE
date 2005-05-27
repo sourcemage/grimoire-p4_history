@@ -1,0 +1,8 @@
+message  "${MESSAGE_COLOR}The xscreensaver demo program allows you to"    \
+         "browse among the different effects available in xscreensaver."  \
+         "Enabling this adds dependencies on gtk+2 and"                   \
+         "libglade2${DEFAULT_COLOR}"                                      &&
+
+config_query_option  XSCSV_GTK  "Enable xscreensaver-demo?"  y  \
+                     "--with-gtk  --with-xml"                   \
+                     "--without-gtk  --without-xml"

@@ -1,0 +1,57 @@
+           SPELL=mutt
+ PATCH_DIRECTORY=${SCRIPT_DIRECTORY}/patches
+
+   case ${BRANCH} in
+
+      cvs)
+
+         VERSION=cvs
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous:anonymous@cvs.mutt.org:/home/roessler/cvs:mutt
+  FORCE_DOWNLOAD=on 
+          MD5[0]="IGNORE"
+
+      ;;
+      devel)
+
+         VERSION=1.5.9
+          MD5[0]=61f6db7e1cd11f24adf5d181b4d95b8f
+          SOURCE=${SPELL}-${VERSION}i.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/devel/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+
+      ;;
+      *)
+
+         VERSION=1.4.2.1
+          MD5[0]=f068f31af619676fcc4dd2c51a919689
+          SOURCE=${SPELL}-${VERSION}i.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+
+      ;;
+   esac
+
+        WEB_SITE=http://www.mutt.org/
+         ENTERED=20010922
+         UPDATED=20020530
+         LICENSE=GPL
+       BUILD_API=2
+           SHORT="mutt is a text-based MIME mail client."
+cat << EOF
+
+Mutt is a small but very powerful text-based MIME mail client. It is
+highly configurable, and is well-suited to the mail power user with
+advanced features like key bindings, keyboard macros, mail threading,
+regular expression searches, and a powerful pattern matching language
+for selecting groups of messages.
+
+This spell contains various optional patches for each branch of mutt.
+For details on any of the patches, see:
+
+http://wiki.mutt.org/index.cgi?PatchList
+
+EOF

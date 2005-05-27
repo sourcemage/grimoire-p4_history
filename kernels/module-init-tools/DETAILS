@@ -1,0 +1,40 @@
+# old modutils data
+
+if [ "$OLD_TOO" == "y" ]; then
+           SPELL2=modutils
+         VERSION2=2.4.27
+          SOURCE2=${SPELL2}-${VERSION2}.tar.bz2
+SOURCE_DIRECTORY2=${BUILD_DIRECTORY}/${SPELL2}-${VERSION2}
+   SOURCE2_URL[0]=${KERNEL_URL}/pub/linux/utils/kernel/${SPELL2}/v2.4/${SOURCE2}
+   SOURCE2_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/kernel/${SPELL2}/v2.4/${SOURCE2}
+           MD5[1]=19cb2921671875fac4e2126b4a0e5c76
+        WEB_SITE2=http://freshmeat.net/projects/modutils/
+       LICENSE[1]=GPL
+fi
+
+# new module-init-tools data
+
+           SPELL=module-init-tools
+         VERSION=3.2-pre3
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/kernel/module-init-tools/$SOURCE
+          MD5[0]=54a1f0cf8d7c75ea0ac1b0faba55503e
+        WEB_SITE=http://www.kernel.org/
+         ENTERED=20030410
+         UPDATED=20040629
+      LICENSE[0]=GPL
+      LICENSE[1]=UNKNOWN
+           SHORT="Module-init-tools for 2.6.x kernel modules"
+cat << EOF
+
+This module-init-tools spell will work with 2.6.x kernels and install 
+will create modprobe.conf from your old modules.conf file. Also the old
+/sbin/{depmod|modprobe|insmod|etc...} and man related manual pages will 
+be moved to .old files thus preserving your commands if you want to 
+revert back. 
+
+Good luck and happy kernel hacking!
+
+EOF

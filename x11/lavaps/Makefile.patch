@@ -1,0 +1,11 @@
+--- Makefile.orig	2004-06-07 18:23:45.038250280 +0200
++++ Makefile	2004-06-07 18:24:24.418263608 +0200
+@@ -842,7 +842,7 @@
+ 
+ install-schemas:
+ 	-mkdir -p `echo $(GCONF_SCHEMA_CONFIG_SOURCE) | sed s/xml:://`
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA)
++	GCONF_CONFIG_SOURCE="$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA)"
+ 
+ install-data-local:: install-schemas
+ 

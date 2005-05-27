@@ -1,0 +1,98 @@
+#! /bin/sh
+#
+#  $Id: esmtpd-ssl.in,v 1.3 2002/07/09 19:38:18 mrsam Exp $
+#
+#  Copyright 1998 - 2002 Double Precision, Inc.  See COPYING for
+#  distribution information.
+#
+#  This is a simple script to start/stop the smtp port daemon, courieresmtpd.
+#
+#  Argument "start" starts the daemon.
+#  Argument "stop" stops the daemon (just the listening daemon).
+#  Argument "restart" rereads the smtpaccess.dat file.
+
+
+
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+#PROVIDES=mta
+
+.  /etc/init.d/smgl_functions
+
+
+
+prefix="/usr"
+exec_prefix="/usr"
+sysconfdir="/etc/courier"
+sbindir="/usr/sbin"
+libexecdir="${exec_prefix}/libexec"
+
+.  ${sysconfdir}/esmtpd
+.  ${sysconfdir}/esmtpd-ssl
+
+export  PATH
+export  SHELL
+
+case  $1  in
+	start)
+		cd ${prefix}
+		if  test  "$AUTHMODULES"  !=  "";  then
+			authstart="${libexecdir}/courier/modules/esmtp/authstart"
+			if  test  -x  "$authstart";  then
+				AUTHMODULES="$authstart  $AUTHMODULES"
+			else
+				# not installed/disabled
+				ESMTPAUTH=""
+				AUTHMODULES=""
+			fi
+		fi
+		if  test  "$ACCESSFILE"  !=  "";  then
+			if  test  !  -f  "${ACCESSFILE}.dat";  then
+				ACCESSFILE=""
+			else
+				ACCESSFILE="-access=${ACCESSFILE}.dat"
+			fi
+		fi
+		ulimit  -d  "$ULIMIT"
+		/usr/bin/env  -  /bin/sh  -c  "  set  -a;       \
+		.  ${sysconfdir}/esmtpd;                    \
+		.  ${sysconfdir}/esmtpd-ssl;                \
+		ESMTP_TLS=1;                                \
+		export  ESMTP_TLS;                          \
+		${sbindir}/couriertcpd                      \
+				-stderrlogger=${sbindir}/courierlogger  \
+				-stderrloggername=esmtpd-ssl            \
+				-maxprocs=$MAXDAEMONS                   \
+				-maxperip=$MAXPERIP                     \
+				-maxperc=$MAXPERC                       \
+				-pid=$SSLPIDFILE                        \
+				$TCPDOPTS                               \
+				-user=$MAILUSER                         \
+				-group=$MAILGROUP                       \
+				$BLACKLISTS                             \
+				$ACCESSFILE                             \
+				-address=$SSLADDRESS                    \
+				$SSLPORT                                \
+				$COURIERTLS                             \
+				-server                                 \
+				-tcpd                                   \
+			${sbindir}/courieresmtpd                    \
+				$AUTHMODULES"
+		exit  0
+		;;
+
+	stop)
+		${sbindir}/couriertcpd  -pid=$SSLPIDFILE  -stop
+		exit  0
+		;;
+
+	restart)
+		${sbindir}/couriertcpd  -pid=$SSLPIDFILE  -restart
+		exit  0
+		;;
+
+	*)
+		echo  "Usage: $0 (start | stop | restart)"
+		exit  1
+		;;
+esac

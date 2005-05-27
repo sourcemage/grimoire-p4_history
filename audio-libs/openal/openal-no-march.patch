@@ -1,0 +1,25 @@
+--- linux/configure.in	2004-09-18 12:19:54.657606848 -0700
++++ linux/configure.in	2004-09-18 12:21:46.908542112 -0700
+@@ -87,22 +87,6 @@
+ 
+ CFLAGS="-O6 -fexpensive-optimizations -funroll-all-loops -funroll-loops -fomit-frame-pointer -finline-functions -ffast-math $CFLAGS"
+ 
+-dnl add -march
+-case "$target" in
+-    *i386*)
+-    CFLAGS="$CFLAGS -march=i386" ;;
+-    *i486*)
+-    CFLAGS="$CFLAGS -march=i486" ;;
+-    *i586*)
+-    CFLAGS="$CFLAGS -march=i586" ;;
+-    *i686*)
+-    CFLAGS="$CFLAGS -march=i686" ;;
+-    mips*)
+-    CFLAGS="$CFLAGS -march=mips" ;;
+-    *)
+-    echo "Unknown target $target" ;;
+-esac
+-
+ fi
+ 
+ dnl keep CFLAGS variable if set, otherwise set it to just debug

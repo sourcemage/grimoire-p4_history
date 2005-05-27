@@ -1,0 +1,19 @@
+           SPELL=sed
+         VERSION=4.1.4
+       BUILD_API=2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${GNU_URL}/sed/${SOURCE}
+          MD5[0]=adc9a47efa2f6c0d566ae7dd01a3b744
+        WEB_SITE=http://www.gnu.org/software/sed/sed.html
+         ENTERED=20010922
+         UPDATED=20030923
+      LICENSE[0]=GPL
+           SHORT="sed is a stream-oriented non-interactive text editor."
+cat << EOF
+sed - A stream-oriented non-interactive text editor
+Takes text input, performs some operation (or set of operations) on it
+and outputs the modified text. Sed is typically used for extracting part
+of a file using pattern matching or substituting multiple occurances of
+a string within a file.
+EOF

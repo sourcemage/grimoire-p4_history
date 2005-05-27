@@ -1,0 +1,12 @@
+diff -Naur exmms-0.2.orig/src/Makefile exmms-0.2/src/Makefile
+--- exmms-0.2.orig/src/Makefile	2005-03-08 18:03:56.938508840 -0800
++++ exmms-0.2/src/Makefile	2005-03-08 18:04:05.850154064 -0800
+@@ -115,7 +115,7 @@
+ INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
+ LDFLAGS = 
+ LIBOBJS = 
+-LIBS =   -L/usr/lib -lImlib -z combreloc -s -ljpeg -ltiff -lungif -lpng -lz -lm -lXext -L/usr/X11R6/lib -lSM -lICE -lXext -lX11
++LIBS =   -L/usr/lib -lImlib -z combreloc -s -ljpeg -ltiff -lungif -lpng -lz -lm -lXext -L/usr/X11R6/lib -lSM -lICE -lXext -lX11 -lGL
+ LIBTOOL = $(SHELL) $(top_builddir)/libtool
+ LN_S = ln -s
+ LTLIBOBJS = 

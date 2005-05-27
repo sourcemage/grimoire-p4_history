@@ -1,0 +1,10 @@
+--- parse.y.old	2002-12-03 01:04:51.000000000 -0800
++++ parse.y	2002-12-03 01:05:07.000000000 -0800
+@@ -672,7 +672,6 @@
+ 				yyerror (PARSE_Y_WRONG_NROFF);
+ 			    free ((char *) $2);
+ 			    }
+-		;
+ 		|	TEXCHARS STRING
+ 			    {
+ 			    if (strlen ((char *) $2)

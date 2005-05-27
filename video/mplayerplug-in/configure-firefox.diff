@@ -1,0 +1,50 @@
+diff -Naur mplayerplug-in.orig/configure mplayerplug-in/configure
+--- mplayerplug-in.orig/configure	2005-02-15 23:21:45.938001200 -0800
++++ mplayerplug-in/configure	2005-02-15 23:22:08.706539856 -0800
+@@ -2872,23 +2872,23 @@
+   else
+      PKG_CONFIG_MIN_VERSION=0.9.0
+      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+-        echo "$as_me:$LINENO: checking for mozilla-plugin" >&5
+-echo $ECHO_N "checking for mozilla-plugin... $ECHO_C" >&6
++        echo "$as_me:$LINENO: checking for firefox-plugin" >&5
++echo $ECHO_N "checking for firefox-plugin... $ECHO_C" >&6
+ 
+-        if $PKG_CONFIG --exists "mozilla-plugin" ; then
++        if $PKG_CONFIG --exists "firefox-plugin" ; then
+             echo "$as_me:$LINENO: result: yes" >&5
+ echo "${ECHO_T}yes" >&6
+             succeeded=yes
+ 
+             echo "$as_me:$LINENO: checking MOZPLUG_CFLAGS" >&5
+ echo $ECHO_N "checking MOZPLUG_CFLAGS... $ECHO_C" >&6
+-            MOZPLUG_CFLAGS=`$PKG_CONFIG --cflags "mozilla-plugin"`
++            MOZPLUG_CFLAGS=`$PKG_CONFIG --cflags "firefox-plugin"`
+             echo "$as_me:$LINENO: result: $MOZPLUG_CFLAGS" >&5
+ echo "${ECHO_T}$MOZPLUG_CFLAGS" >&6
+ 
+             echo "$as_me:$LINENO: checking MOZPLUG_LIBS" >&5
+ echo $ECHO_N "checking MOZPLUG_LIBS... $ECHO_C" >&6
+-            MOZPLUG_LIBS=`$PKG_CONFIG --libs "mozilla-plugin"`
++            MOZPLUG_LIBS=`$PKG_CONFIG --libs "firefox-plugin"`
+             echo "$as_me:$LINENO: result: $MOZPLUG_LIBS" >&5
+ echo "${ECHO_T}$MOZPLUG_LIBS" >&6
+         else
+@@ -2896,7 +2896,7 @@
+             MOZPLUG_LIBS=""
+             ## If we have a custom action on failure, don't print errors, but
+             ## do set a variable so people can do so.
+-            MOZPLUG_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "mozilla-plugin"`
++            MOZPLUG_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "firefox-plugin"`
+ 
+         fi
+ 
+@@ -2909,7 +2909,7 @@
+   fi
+ 
+   if test $succeeded = yes; then
+-      MOZPLUG_CFLAGS="${MOZPLUG_CFLAGS} -I`$PKG_CONFIG --variable=includedir mozilla-plugin`"
++      MOZPLUG_CFLAGS="${MOZPLUG_CFLAGS} -I`$PKG_CONFIG --variable=includedir firefox-plugin`"
+   else
+      { { echo "$as_me:$LINENO: error: Unable to find gecko sdk" >&5
+ echo "$as_me: error: Unable to find gecko sdk" >&2;}

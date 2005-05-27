@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DESCRIPTION="PacketCD writing"
+SHORT="PacketCD writing"
+HELP="http://w1.894.telia.com/~u89404340/patches/packet/"
+VERSIONS="2.6.6
+2.6.5
+2.6.3
+2.6.2-rc2
+2.6.1-rc1-2
+2.6.1-rc1"
+
+MD5S[0]=33fa8b9e390534ed8e63becef1684504
+MD5S[1]=84281ecbfdfe529d123847c188fe0e80
+MD5S[2]=5714ea582a87acb1015df2f913f45569
+MD5S[3]=396af9fe54b6be64a705c3706c83d83a
+MD5S[4]=ba907f3ca25bf8edcdd90f3701e7db5d
+MD5S[5]=bb40a7ed37cb12e292f71c04dbb9a564
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=packet-${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://w1.894.telia.com/~u89404340/patches/packet/2.6/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

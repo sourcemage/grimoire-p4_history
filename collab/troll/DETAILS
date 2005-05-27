@@ -1,0 +1,26 @@
+           SPELL=troll
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=0.0.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=afc637e6e59a493d0afdeec1f9b236fc
+fi
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20050228
+         UPDATED=20050228
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde NNTP news client"
+cat << EOF
+Troll is an NTTP client, supporting newsreading, posting, subscribing to
+groups, and full MIME support of NNTP messages.
+WARNING: Alpha quality software!
+EOF

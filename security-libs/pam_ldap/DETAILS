@@ -1,0 +1,15 @@
+           SPELL=pam_ldap
+         VERSION=176
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.padl.com/download/$SOURCE
+          MD5[0]='8a2278d951db250c3ef7054a9ea802c8'
+        WEB_SITE=http://www.padl.com/OSS/pam_ldap.html
+         ENTERED=20020210
+         UPDATED=20030810
+           SHORT='PAM Ldap module'
+cat << EOF
+pam_ldap is a pam/ldap module that supports password changes, V2
+clients, Netscapes SSL, ypldapd, Netscape Directory Server password
+policies, access authorization, crypted hashes, etc.
+EOF

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# jbernardoe03@sourcemage.org
+# removed all previous patches, as the latest ones aren't gzipped anymore
+
+DESCRIPTION="ACPI patch"
+SHORT="Advanced Configuration and Power Interface"
+HELP="Committed to the development of fundamental ACPI (Advanced Configuration and Power Interface) components for Linux. This includes a generic ACPI table parser, AML interpreter, bus and device drivers, policy, user interface, and support tools.
+http://sourceforge.net/projects/acpi/"
+
+VERSIONS="20030916-2.6.0-test5
+20030916-2.4.22
+20030916-2.4.23-pre4"
+
+MD5S[0]=d3451206905381c2a81244d3887f5f81
+MD5S[1]=9265cd8e50838b8b7b1043629ab3a885
+MD5S[2]=ff218fa8d4de46d74a4dc6dca2e40981
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=acpi-${!PATCH}.diff
+SOURCE${COUNTER}_URL=\$SOURCEFORGE_URL/acpi/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

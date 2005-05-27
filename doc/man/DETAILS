@@ -1,0 +1,25 @@
+           SPELL=man
+         VERSION=1.5p
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KERNEL_URL/pub/linux/utils/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.kernel.org/pub/linux/utils/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.win.tue.nl/pub/linux-local/utils/$SPELL/$SOURCE
+          MD5[0]=7e87855d654813dbfeaa8090053d6cc6
+        WEB_SITE=unknown
+         ENTERED=20010922
+         UPDATED=20050510
+      LICENSE[0]=GPL
+           SHORT="man displays the on-line manual pages."
+cat << EOF
+man - Display the on-line manual.
+ 
+This package provides the man command. 
+This utility is the primary way of examining 
+the on-line help files (manual pages). Other 
+utilities provided include the whatis and 
+apropos commands for searching the manual page
+database, the manpath utility for determining 
+the manual page search path, and the maintenance 
+utilities mandb, catman and zsoelim.
+EOF

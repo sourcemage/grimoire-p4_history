@@ -1,0 +1,20 @@
+--- /usr/src/perl-5.8.6/perlio.c.bak	2004-09-10 00:06:52.000000000 -0700
++++ /usr/src/perl-5.8.6/perlio.c	2005-02-07 10:15:49.357376344 -0800
+@@ -454,7 +454,7 @@
+     va_list ap;
+     dSYS;
+     va_start(ap, fmt);
+-    if (!dbg) {
++    if (!dbg && !PL_tainting && PL_uid == PL_euid && PL_gid == PL_egid) {
+ 	char *s = PerlEnv_getenv("PERLIO_DEBUG");
+ 	if (s && *s)
+ 	    dbg = PerlLIO_open3(s, O_WRONLY | O_CREAT | O_APPEND, 0666);
+@@ -471,7 +471,7 @@
+ 	s = CopFILE(PL_curcop);
+ 	if (!s)
+ 	    s = "(none)";
+-	sprintf(buffer, "%s:%" IVdf " ", s, (IV) CopLINE(PL_curcop));
++	sprintf(buffer, "%.40s:%" IVdf " ", s, (IV) CopLINE(PL_curcop));
+ 	len = strlen(buffer);
+ 	vsprintf(buffer+len, fmt, ap);
+ 	PerlLIO_write(dbg, buffer, strlen(buffer));

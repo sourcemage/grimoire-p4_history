@@ -1,0 +1,22 @@
+default_install                                                 &&
+#touch $INSTALL_ROOT/usr/share/man/whatis                        &&
+
+#if [ ! -h ${INSTALL_ROOT}/usr/share/man/whatis ]; then
+#    touch ${INSTALL_ROOT}/var/cache/whatis &&
+#    if [ -f ${INSTALL_ROOT}/usr/share/man/whatis ]; then
+#        mv -f   ${INSTALL_ROOT}/usr/share/man/whatis \
+#                ${INSTALL_ROOT}/var/cache/whatis
+#    fi  &&
+#    ln -fs  ${INSTALL_ROOT}/var/cache/whatis \
+#            ${INSTALL_ROOT}/usr/share/man/whatis
+#fi                                                              &&
+
+if spell_ok less; then
+    sedit "s/PAGER		\/bin\/less -is/PAGER		\/bin\/less -isR/" \
+          ${INSTALL_ROOT}/usr/share/misc/man.conf
+fi                                                              &&
+
+# compatibility (xman)
+pushd $INSTALL_ROOT/etc                                         &&
+ln -fs ../usr/share/misc/man.conf man.conf                      &&
+popd

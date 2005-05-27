@@ -1,0 +1,21 @@
+           SPELL=gtk-gnutella
+         VERSION=0.95.3
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]='8b195fa2dbf714f1aadd15eba8d59fae'
+        WEB_SITE=http://gtk-gnutella.sourceforge.net/
+         ENTERED=20011022
+         UPDATED=20020426
+            DOCS="ChangeLog LICENSE README"
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A peer-to-peer program"
+cat << EOF
+Gtk-Gnutella is a clone of Gnutella (see gnutella.wego.com).
+It's a Unix clone, and it needs GTK+ (1.2 or above). Gnome is not
+needed.
+It is currently developed and tested under Linux (Debian 2.2).
+It is known to run at least on Linux and FreeBSD (on 80x86 machines).
+It is released under the GNU Public License (GPL).
+EOF

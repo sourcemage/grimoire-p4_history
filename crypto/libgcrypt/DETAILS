@@ -1,0 +1,17 @@
+           SPELL=libgcrypt
+         VERSION=1.2.1
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/libgcrypt/$SOURCE
+          MD5[0]=989e0e605af2d04e192a4213efdf56bd
+        WEB_SITE=http://www.gnu.org/directory/security/libgcrypt.html
+         ENTERED=20020212
+         UPDATED=20020212
+      LICENSE[0]=GPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="libgcrypt is a general purpose crypto library"
+cat << EOF
+Libgcrypt is a general purpose crypto library based on the code used
+in GnuPG
+EOF

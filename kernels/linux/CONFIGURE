@@ -1,0 +1,19 @@
+config_query  OLD_CONFIG     "Make oldconfig?"                n
+
+if  [  "$OLD_CONFIG"  ==  "y"  ];  then
+  persistent_add  USE_GUI  &&
+  USE_GUI="n"
+else
+  config_query  USE_GUI        "Use a GUI configuration tool?"  n
+fi  &&
+
+if  [  -d ${INSTALL_ROOT}/usr/src/linux-${VERSION}  ]
+then
+  message  "${MESSAGE_COLOR}Existing Linux source tree found (/usr/src/linux-${VERSION})."
+  message  "If you don't want to do a whole rebuild from fresh sources you can reuse the existing ones if you haven't changed what patches you've applied.${DEFAULT_COLOR}"
+  config_query  REUSE_SOURCE   "Reuse existing source tree?"    y
+else
+  persistent_add  REUSE_SOURCE  &&
+  REUSE_SOURCE="n"
+fi
+

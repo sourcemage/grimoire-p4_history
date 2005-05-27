@@ -1,0 +1,37 @@
+           SPELL=fvwm
+if [ "${RELEASE}" = "stable" ]; then
+         VERSION=2.4.19
+          MD5[0]=ba147117979a92e710fb76e6f20b4496
+elif [ "${RELEASE}" = "cvs" ]; then
+         VERSION=$(date +%Y%m%d)
+          MD5[0]=IGNORE
+else
+         VERSION=2.5.12
+          MD5[0]=b5875e3547a7ba8dee80db596d154f09
+fi
+
+if [ "${RELEASE}" = "cvs" ]; then
+          SOURCE=fvwm-cvs.tar.gz
+   SOURCE_URL[0]=cvs://:pserver:anonymous:guest@cvs.fvwm.org:/home/cvs/fvwm:fvwm
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/fvwm-cvs
+  FORCE_DOWNLOAD=on
+else
+          SOURCE=fvwm-${VERSION}.tar.gz
+   SOURCE_URL[0]=ftp://ftp.fvwm.org/pub/fvwm/version-2/${SOURCE}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/fvwm-${VERSION}
+fi
+
+        WEB_SITE=http://www.fvwm.org
+         ENTERED=20040524
+         UPDATED=20041104
+      LICENSE[0]=GPL
+      LICENSE[1]=MIT
+       BUILD_API=2
+           SHORT="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
+cat << EOF
+FVWM is a multiple large virtual desktop window manager originally
+derived from twm. FVWM is intended to have a small memory footprint and
+a rich feature set, be extremely customizable and extendable and have a
+high degree of Motif mwm compatibility. FVWM is highly extensible
+through its module interface.
+EOF

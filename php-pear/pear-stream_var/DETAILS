@@ -1,0 +1,17 @@
+           SPELL=pear-stream_var
+    PEAR_PACKAGE=Stream_Var
+         VERSION=0.2.1
+          MD5[0]='0d1c17cf4dab4b18b2bcf845c868ca13'
+         UPDATED=20050408
+      LICENSE[0]=PHP
+           SHORT='PEAR: Allows stream based access to any variable.'
+cat << EOF
+Stream_Var can be registered as a stream with
+stream_register_wrapper() and allows stream
+based acces to variables in any scope. Arrays
+are treated as directories, so it's possible to
+replace temporary directories and files in your
+application with variables.
+EOF
+
+source $SECTION_DIRECTORY/PEAR_DETAILS

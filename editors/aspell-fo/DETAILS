@@ -1,0 +1,17 @@
+           SPELL=aspell-fo
+       BUILD_API=2
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
+         VERSION=0.2.22
+          SOURCE=new_${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/new_${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://${LANGUAGE_CODE}.speling.org/filer/${SOURCE}
+          MD5[0]=8355bc4b624262b11c13612f58aa192b
+        WEB_SITE=http://fo.speling.org/
+      LICENSE[0]=GPL
+         ENTERED=20011028
+         UPDATED=20011028
+           SHORT="Faroese aspell dictionary"
+cat << EOF
+Faroese aspell dictionary
+EOF
+

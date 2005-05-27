@@ -1,0 +1,29 @@
+if [ "$OPENOFFICE_DEVEL" == "y" ]; then
+  default_pre_build
+else
+  mk_source_dir	$SOURCE_DIRECTORY  4g	&&
+  cd		$SOURCE_DIRECTORY
+  unpack		$SOURCE	${MD5[0]}	&&
+
+# set OO to use our optimizations
+#
+  cd $SOURCE_DIRECTORY &&
+  sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi3.mk  &&
+  sedit  "s:\-mcpu-pentiumpro::"                solenv/inc/unxlngi4.mk  &&
+  sedit  "s:^CFLAGSOPT=.*:CFLAGSOPT=$CFLAGS:g"  solenv/inc/unxlngi4.mk  &&
+
+# fix db java problem (hopefully)
+#
+# This looks ugly
+#
+#
+  cd $SOURCE_DIRECTORY/berkeleydb/download/ &&
+  tar -xzf db-4.2.52.NC.tar.gz &&
+  mv db-4.2.52.NC db &&
+  patch -p0 < $SCRIPT_DIRECTORY/javafix.diff &&
+  mv db db-4.2.52.NC &&
+  tar -czf db-4.2.52.NC.tar.gz db-4.2.52.NC &&
+  rm -rf db-4.2.52.NC &&
+  cd $SOURCE_DIRECTORY &&
+  patch sot/source/sdstor/stgole.cxx < ${SCRIPT_DIRECTORY}/heap_overflow.patch
+fi

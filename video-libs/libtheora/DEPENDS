@@ -1,0 +1,12 @@
+depends  libogg  &&
+
+optional_depends  sdl                \
+                  ""                 \
+                  ""                 \
+                  "for SDL support"
+
+if [ "$THEORA_SVN" = "y" ]; then
+  depends  SVN       &&
+  depends  automake  &&
+  depends  libtool
+fi

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+DESCRIPTION="security fix for ptrace exploit"
+SHORT="security fix for ptrace exploit"
+HELP="Vulnerability: CAN-2003-0127 
+The Linux 2.2 and Linux 2.4 kernels have a flaw in ptrace. This hole allows local users to obtain full privileges. Remote exploitation of this hole is not possible. Linux 2.5 is not believed to be vulnerable. 
+
+Linux 2.2.25 has been released to correct Linux 2.2
+This patch is for 2.4.20
+
+note: grsecurity allready contains this fix
+      openMosix patch is reported to conflict with this patch
+"
+VERSIONS="2.4.20"
+
+MD5S[0]=3c090873b417274fd5d9e459da1271bc
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-2.4.20-ptrace.patch
+SOURCE${COUNTER}_URL=http://www.hardrock.org/kernel/2.4.20/linux-2.4.20-ptrace.patch" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

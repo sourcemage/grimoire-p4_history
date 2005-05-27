@@ -1,0 +1,149 @@
+if  !  grep  -q  "IPV6"  $SPELL_CONFIG;  then
+  if    query  "Enable IPV6 support?" y
+    then  echo   "IPV6=y"  >>  $SPELL_CONFIG
+    else  echo   "IPV6=n"  >>  $SPELL_CONFIG
+  fi
+fi
+
+##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
+if  spell_ok  linux-pam;  then
+  if  query  "Use the PAM library for authentication? "  y;  then
+    AUTHPAM=y
+    AUTHPWD=n
+    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+    AUTHSHADOW=n
+    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+  else
+    AUTHPAM=n
+    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+    AUTHPWD=n
+    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+    AUTHSHADOW=n
+    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+  fi
+else
+  if  query  "Use the PAM library for authentication? "  n;  then
+    AUTHPAM=y
+    AUTHPWD=n
+    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+    AUTHSHADOW=n
+    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+  else
+    AUTHPAM=n
+    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+
+    ##  Use authshadow instead of authpwd on systems that use the shadow password file.
+    if  [  -e  /etc/shadow  ];  then
+      if  query  "Use shadow passwords for authentication? "  y;  then
+        AUTHSHADOW=y
+        AUTHPWD=n
+        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      else
+        AUTHSHADOW=n
+        echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+        AUTHPWD=n
+        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      fi
+    else
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+
+      if  [  -e  /etc/passwd  ];  then
+        if  query  "Authenticate against the system passwd file? "  y;  then
+          AUTHPWD=y
+        else
+          AUTHPWD=n
+          echo  'OPTS="${OPTS}  --without-authpwd"'  >>  ${SPELL_CONFIG}
+        fi
+      fi
+    fi
+  fi
+fi
+
+if  spell_ok  db  ||  spell_ok  gdbm;  then
+  if  query  "Authenticate from a GDBM/DB database? "  y;  then
+    AUTHUSERDB=y
+  else
+    AUTHUSERDB=n
+    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  y;  then
+    AUTHCRAM=y
+  else
+    AUTHCRAM=n
+    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+  fi
+else
+  if  query  "Authenticate from a GDBM/DB database? "  n;  then
+    AUTHUSERDB=y
+  else
+    AUTHUSERDB=n
+    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  n;  then
+    AUTHCRAM=y
+  else
+    AUTHCRAM=n
+    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+  fi
+fi
+
+if  spell_ok  openldap;  then
+  if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
+    AUTHLDAP=y
+  else
+    AUTHLDAP=n
+    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+  fi
+else
+  if  query  "Authenticate from an account file stored in an LDAP directory? "  n;  then
+    AUTHLDAP=y
+  else
+    AUTHLDAP=n
+    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+  fi
+fi
+
+if  spell_ok  mysql;  then
+  if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
+    AUTHMYSQL=y
+  else
+    AUTHMYSQL=n
+    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+  fi
+else
+  if  query  "Authenticate from an account file stored in a MySQL database? "  n;  then
+    AUTHMYSQL=y
+  else
+    AUTHMYSQL=n
+    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+  fi
+fi
+
+if  spell_ok  postgresql;  then
+  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
+    AUTHPGSQL=y
+  else
+    AUTHPGSQL=n
+    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+  fi
+else
+  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  n;  then
+    AUTHPGSQL=y
+  else
+    AUTHPGSQL=n
+    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+  fi
+fi
+
+if  query  "Use the authdaemond authentication proxy process? "  y;  then
+  AUTHDAEMOND=y
+else
+  AUTHDAEMOND=n
+  echo  'OPTS="${OPTS}  --without-authdaemond"'  >>  ${SPELL_CONFIG}
+fi
+
+AUTHVCHKPW=n
+echo  'OPTS="${OPTS}  --without-authvchkpw"'  >>  ${SPELL_CONFIG}

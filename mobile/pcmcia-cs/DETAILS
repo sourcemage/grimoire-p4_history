@@ -1,0 +1,20 @@
+           SPELL=pcmcia-cs
+         VERSION=3.2.8
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=2cd1246fdf1359cf2816bdac13a8fa0e
+        WEB_SITE=http://pcmcia-cs.sourceforge.net
+         ENTERED=20011014
+         UPDATED=20040224
+           SHORT="pcmcia-cs is the pcmcia support package."
+cat << EOF
+Card Services for Linux is a complete PCMCIA or PC Card support
+package. It includes a set of loadable kernel modules that implement
+a version of the Card Services applications program interface, a set
+of client drivers for specific cards, and a card manager daemon that
+can respond to card insertion and removal events, loading and
+unloading drivers on demand. It supports hot swapping of most card
+types, so cards can be safely inserted and ejected at any time.
+EOF

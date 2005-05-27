@@ -1,0 +1,18 @@
+           SPELL=libpng
+         VERSION=1.2.8
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=159e7db3eaf0c910263681753952933f
+      LICENSE[0]=ZLIB
+        WEB_SITE=http://www.libpng.org/pub/png/libpng.html
+         ENTERED=20010922
+         UPDATED=20040815
+       BUILD_API=2
+           SHORT="libpng is a library that supports the PNG graphics format."
+cat << EOF
+The PNG library is a collection of routines used to create and
+manipulate PNG format graphics files. The PNG format was designed as a
+replacement for GIF and, to a lesser extent, TIFF, with many
+improvements and extensions.
+EOF

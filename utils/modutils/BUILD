@@ -1,0 +1,19 @@
+(
+
+  ./configure  --build=$BUILD  $OPTS	&&
+  make                         		&&
+  prepare_install              		&&
+  make    install
+
+)  > $C_FIFO 2>&1  &&  (
+
+  mkdir  -p  /etc/modules.d
+  touch      /etc/modules
+  touch      /etc/modules.conf
+
+  echo  "Customize /etc/modules.conf
+         Execute depmod.
+         List all modules that should load
+         during boot in /etc/modules"
+
+)

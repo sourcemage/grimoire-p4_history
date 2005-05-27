@@ -1,0 +1,5 @@
+cd      $BUILD_DIRECTORY      &&
+unpack  $SOURCE  ${MD5[0]}    &&
+unpack  $SOURCE2  ${MD5[1]}   &&
+cd  $SOURCE_DIRECTORY         &&
+patch  -p1  <  $SOURCE2_DIRECTORY/freeswan.diff

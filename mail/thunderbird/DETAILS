@@ -1,0 +1,31 @@
+           SPELL=thunderbird
+          VERSION=1.0.2
+          SOURCE=$SPELL-$VERSION-source.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/mozilla
+   SOURCE_URL[0]=http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$VERSION/source/$SOURCE
+          MD5[0]=646f4e518b1779d8a5d748979a91f7fe
+if  [ "$BUILD_ENIGMAIL" = "y" ];  then
+ENIGMAIL_VERSION=0.91.0
+     IPC_VERSION=1.1.3
+         SOURCE2=enigmail-$ENIGMAIL_VERSION.tar.gz
+         SOURCE3=ipc-$IPC_VERSION.tar.gz
+  SOURCE2_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE2
+  SOURCE2_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE2
+  SOURCE2_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURCE2
+  SOURCE3_URL[0]=http://downloads.mozdev.org/enigmail/src/$SOURCE3
+  SOURCE3_URL[1]=http://www.mozdev.org.uk/rsync/enigmail/src/$SOURCE3
+  SOURCE3_URL[2]=ftp://mozdev.secsup.org/pub/software/mozdev/enigmail/src/$SOURCE3
+          MD5[1]=6c7f7327ef0311d437442a95e9d86217
+          MD5[2]=deeb695310f5afe8af37a9639e63324f
+      LICENSE[1]=MPL
+      LICENSE[2]=MPL
+fi
+        WEB_SITE=http://www.mozilla.org/products/thunderbird/
+         ENTERED=20041028
+         UPDATED=20041028
+      LICENSE[0]=MOZILLA
+       BUILD_API=2
+           SHORT="Mozilla Mail Client"
+cat << EOF
+The new mail client, based on mozilla source
+EOF

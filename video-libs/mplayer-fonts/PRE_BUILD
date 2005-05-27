@@ -1,0 +1,15 @@
+mk_source_dir  $SOURCE_DIRECTORY    &&
+cd             $SOURCE_DIRECTORY    &&
+if [ "$ISO88591" == "y" ] ;then
+  unpack         $SOURCE   ${MD5[0]}
+fi &&
+if [ "$ISO88592" == "y" ] ;then
+  unpack         $SOURCE2  ${MD5[1]}
+fi &&
+if [ "$ISO88597" == "y" ] ;then
+  unpack         $SOURCE3  ${MD5[2]}
+fi &&
+if [ "$CP1250" == "y" ] ;then
+  unpack         $SOURCE4  ${MD5[3]}
+fi
+

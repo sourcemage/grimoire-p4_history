@@ -1,0 +1,10 @@
+--- Makefile.in	2002-04-22 21:51:55.000000000 +0000
++++ Makefile.in	2002-12-24 07:54:58.000000000 +0000
+@@ -61,6 +61,7 @@
+ 
+ install:	all
+ 	$(INSTALL) ijs_client_example$(EXE) -c $(bindir)/ijs_client_example$(EXE)
++	$(INSTALL) ijs_server_example$(EXE) -c $(bindir)/ijs_server_example$(EXE)
+ 	$(INSTALL) ijs-config -c $(bindir)/ijs-config
+ 	$(INSTALL) libijs.a $(libdir)/libijs.a
+ 	$(INSTALL) libijs$(SHARED_OBJ) $(libdir)/libijs$(SHARED_OBJ)

@@ -1,0 +1,33 @@
+           SPELL=httpd-dev
+if [[ "$HTTPD_CHECKOUT" == y ]]; then
+  if [[ "$HTTPD_DAILY" == y ]]; then
+         VERSION=2.1-$(date +%Y%m%d)
+  else
+         VERSION=2.1-SVN
+  fi
+          MD5[0]=IGNORE
+   SOURCE_URL[0]=svn://svn.apache.org/repos/asf/httpd/httpd/trunk:${SPELL%-*}-trunk
+  FORCE_DOWNLOAD=1
+          SOURCE=${SPELL%-*}-trunk.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-trunk
+else
+         VERSION=2.1.4-alpha
+          MD5[0]='b8ed8cb99453336b03920a56c355a55b'
+          SOURCE=${SPELL%-*}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
+   SOURCE_URL[0]=http://httpd.apache.org/dev/dist/$SOURCE
+fi
+        WEB_SITE=http://httpd.apache.org/
+     GATHER_DOCS=off
+       BUILD_API=2
+         ENTERED=20020802
+         UPDATED=20050122
+           SHORT='Apache 2.1 HTTP server development trunk'
+cat << EOF
+This is the development snapshot of Apache 2 HTTP server taken directly from
+the CVS repository. It is also guaranteed to build all available modules, so
+if there is a module that can be built but is not, please report a bug.
+
+Apache is the world's most popular HTTP server, being quite possibly the best
+around in terms of functionality, efficiency, security and speed.
+EOF

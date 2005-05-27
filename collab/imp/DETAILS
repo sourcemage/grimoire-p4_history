@@ -1,0 +1,26 @@
+           SPELL=imp
+if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]="IGNORE"
+  FORCE_DOWNLOAD="on"
+else
+         VERSION=4.0.2
+          SOURCE=$SPELL-h3-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-h3-$VERSION
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+          MD5[0]=81de9a9b31a550c682e88c7cac83d7fa
+fi
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20020428
+         UPDATED=20030108
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde webmail access to IMAP and POP3 accounts"
+cat << EOF
+IMP (Internet Messaging Program) provides webmail access to any IMAP or POP3
+mailbox, and handles internet standard MIME attachments, user defined filters,
+preferences, and more.
+EOF

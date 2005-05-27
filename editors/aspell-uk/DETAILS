@@ -1,0 +1,17 @@
+           SPELL=aspell-uk
+         VERSION=0.51-0
+       BUILD_API=2
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
+          SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
+   SOURCE_URL[0]=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+          MD5[0]=bc226a9358bc2cdc98ca23d04644907f
+        WEB_SITE=http://sv.speling.org/
+      LICENSE[0]=GPL
+         ENTERED=20011028
+         UPDATED=20011028
+           SHORT="Ukranian aspell dictionary"
+cat << EOF
+Ukranian aspell dictionary
+EOF

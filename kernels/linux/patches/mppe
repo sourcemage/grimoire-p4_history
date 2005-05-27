@@ -1,0 +1,23 @@
+#!/bin/bash
+# 
+#
+
+DESCRIPTION="mppe"
+SHORT="PPP MPPE compression (encryption)"
+HELP="Allows connection to a PPTP based Virtual Private Network (VPN) as used by employers and some cable and ADSL internet service providers with MPPE.
+
+http://pptpclient.sourceforge.net/
+
+NOTE: On the above url you don't get a patch, but a tarball with several apps, and a script that patches the kernel.
+This patch is done using that script on kernel 2.4.21 and doing a diff.
+"
+
+VERSIONS="2.4.21-mppe-20030610"
+MD5S[0]=b3246c0b13c1f37edf10ecba109f75e4
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=linux-${!PATCH}.patch.bz2
+SOURCE${COUNTER}_URL=http://download.sourcemage.org/distro/kernel/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

@@ -1,0 +1,19 @@
+           SPELL=whups
+         VERSION=HEAD
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20050228
+         UPDATED=20050420
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Horde project management system"
+cat << EOF
+The Web Horde User Problem Solver, besides being a contrived acronym,
+is a project to bring together bug tracking, a web interface to source
+control, and a FAQ system under one framework.
+WARNING: Beta quality software!
+EOF

@@ -1,0 +1,22 @@
+           SPELL=mathomatic
+         VERSION=12.3
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.panix.com/~gesslein/$SOURCE
+          MD5[0]=ecf4ff02fe625cf71eb78dd6048c8366
+        WEB_SITE=http://mathomatic.orgserve.de/math/
+         ENTERED=20041204
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="A general purpose CAS (Computer Algebra System)"
+cat << EOF
+Mathomatic is a symbolic interpreter that can:
+ * Solve, simplify, and compare algebraic equations,
+ * Combine simultaneous equations,
+ * Perform calculus transformations,
+ * Help with finite series analysis,
+ * Generate the sensitivity formula for one or more variables in an equation,
+ * Act like a double precision floating point calculator,
+ * Perform complex number and polynomial arithmetic,
+ * Generate efficient C or Java code from equations. 
+EOF

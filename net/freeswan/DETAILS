@@ -1,0 +1,32 @@
+            SPELL=freeswan
+          VERSION=2.05
+         VERSION2=1.5.3
+           SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE2=x509-${VERSION2}-$SPELL-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE2_DIRECTORY=$BUILD_DIRECTORY/x509-${VERSION2}-$SPELL-$VERSION
+    SOURCE_URL[0]=ftp://ftp.xs4all.nl/pub/crypto/freeswan/$SOURCE
+   SOURCE2_URL[0]=http://www.strongsec.com/freeswan/$SOURCE2
+           MD5[0]=0a052469fa219ee7a0f132c436faba4e
+           MD5[1]=82723eb144c84564fe87e360ce7113e6
+       LICENSE[0]=GPL
+         WEB_SITE=http://www.freeswan.org/
+        WEB_SITE2=http://www.strongsec.com/freeswan/
+          ENTERED=20031123
+          UPDATED=20031123
+            SHORT="Linux FreeS/WAN is an implementation of IPSEC & IKE for Linux."
+cat << EOF
+Linux FreeS/WAN is an implementation of IPSEC & IKE for Linux.
+
+IPSEC is Internet Protocol SECurity. It uses strong cryptography to provide
+both authentication and encryption services. Authentication ensures that
+packets are from the right sender and have not been altered in transit.
+Encryption prevents unauthorised reading of packet contents.
+
+These services allow you to build secure tunnels through untrusted networks.
+Everything passing through the untrusted net is encrypted by the IPSEC gateway
+machine and decrypted by the gateway at the other end. The result is Virtual
+Private Network or VPN. This is a network which is effectively private even
+though it includes machines at several different sites connected by the
+insecure Internet. 
+EOF

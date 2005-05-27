@@ -1,0 +1,13 @@
+config_query  KDE_DEBUG  "Enable debug code?"             n  &&
+
+message  "${MESSAGE_COLOR}Final code builds size optimized apps (experimental - needs lots of memory)"  \
+         "Final code can send files up to 250Mb if used with distcc${DEFAULT_COLOR}"  &&
+
+config_query  KDE_FINAL  "Enable final code?"             n  &&
+
+#
+# Final code makes objects up to 250Mb
+#
+config_query  KDE_DISTCC  "Enable distcc?"  y
+
+#config_query  KDE_DNOTIFY  "Use Linux directory notifications?"  n

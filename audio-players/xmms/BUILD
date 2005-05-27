@@ -1,0 +1,21 @@
+if [ `echo $ARCHITECTURE | tail -c 3` == "86" ] ; then
+	 OPTS="$OPTS  --enable-simd"
+else 
+         OPTS="$OPTS  --disable-simd" 
+fi &&
+
+#if [ `uname -m` != "ppc" ]
+#then
+#  OPTS="$OPTS  --enable-simd" 
+#else
+#  OPTS="$OPTS  --disable-simd"
+#fi  &&
+
+if  [  "$IPV6"  ==  "y"  ]
+then
+  OPTS="$OPTS  --enable-ipv6"
+else
+  OPTS="$OPTS  --disable-ipv6"
+fi  &&
+
+default_build

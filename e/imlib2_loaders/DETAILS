@@ -1,0 +1,25 @@
+           SPELL=imlib2_loaders
+if [ "$IMLIB2_LOADERS_CVS" != "y" ]; then
+         VERSION=1.2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
+          MD5[0]=5f23a3415996a09e1e345cda3e6776ba
+else
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/imlib2_loaders
+  FORCE_DOWNLOAD=on
+          MD5[0]=IGNORE
+fi
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://enlightenment.org
+         ENTERED=20011101
+         UPDATED=20020510
+	LICENSE[0]=GPL
+           SHORT="imlib2_loaders contains loaders for imlib2."
+cat << EOF
+This package contains image loader plugins for Imlib 2 that are not
+dis-tributed together with the Imlib 2 package itself. More about 
+Imlib 2 can be found on http://www.rasterman.com/imlib.html.
+EOF

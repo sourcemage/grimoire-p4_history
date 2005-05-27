@@ -1,0 +1,20 @@
+           SPELL=idesk
+         VERSION=0.7.0
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/idesk/${SOURCE}
+          MD5[0]='c820aabdb22b871e4f101d79c2210b92'
+         ENTERED=20040328
+         UPDATED=20050326
+      LICENSE[0]=BSD
+           SHORT="iDesk gives users of minimal wm's icons on their desktop."
+cat << EOF
+iDesk gives users of minimal wm's (fluxbox, pekwm, windowmaker...) icons
+on their desktop. The icon graphics are either from a png or svg (vector)
+file and support some eyecandy effects like transparency. Each icon can be
+confgured to run one or more shell commands and the actions which run those
+commands are completely configurable. In a nutshell if you want icons on
+your desktop and you don't have or dont't want KDE or gnome doing it, you
+can use idesk.
+EOF
+

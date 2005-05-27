@@ -1,0 +1,16 @@
+           SPELL=setools
+         VERSION=1.5.1
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.nsa.gov/selinux/archives/${SOURCE}
+          MD5[0]=ae3875b1b712e987f2f6f27445fc9497
+        WEB_SITE=http://www.nsa.gov/selinux/
+         ENTERED=20040616
+         UPDATED=20050223
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="NSA SELinux policy analysis and user management tools"
+cat << EOF
+Tresys policy analysis and user management tools. The archive also includes a spec file.
+EOF
+

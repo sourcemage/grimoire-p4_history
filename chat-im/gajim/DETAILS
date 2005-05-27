@@ -1,0 +1,23 @@
+           SPELL=gajim
+         VERSION=0.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[1]=http://www.gajim.org/downloads/$SOURCE
+          MD5[0]='c31e2e3ffb571706a9d5da9e29f1b0e5'
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://www.gajim.org/
+         ENTERED=20050415
+         UPDATED=20050415
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Gajim is an Instant Messenger program"
+cat << EOF
+Gajim is a Jabber client based on a plugin system. At this time, 2 
+plugins have been written: one in GTK2 and one that log messages.
+Here is an exhaustive list of Gajim features:
+    * Tabbed chat windows
+    * Groupchat Support (With MUC protocol)
+    * Emoticons, URL grabber
+    * Systray icon
+    * GPG Support
+    * Multiple Accounts Support
+EOF

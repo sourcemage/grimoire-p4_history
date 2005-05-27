@@ -1,0 +1,19 @@
+#!/bin/bash
+# by Jose Bernardo Silva <jbernardo@sourcemage.org>
+#
+
+DESCRIPTION="CpuFreq Patch"
+SHORT="Support for mobile CPUs"
+HELP="CPUFreq is a patch to get the 2.5.x kernels mobile cpu support to the 2.4.x series. It allows cpu frequency scalling for mobile CPUs."
+VERSIONS="2.4.21-1
+2.4.21-2"
+MD5S[0]=72658e783c44e855572abe6c8e3d1042
+MD5S[1]=29a08bf7beaba91687139a5a50ece87b
+
+
+if [[ "$1" == "CONFIG" ]]; then
+echo "
+SOURCE${COUNTER}=cpufreq-${!PATCH}.gz
+SOURCE${COUNTER}_URL=http://www.codemonkey.org.uk/projects/cpufreq/\$SOURCE${COUNTER}" >> ${SPELL_CONFIG}.DETAILS
+source $SCRIPT_DIRECTORY/MD5PATCH
+fi

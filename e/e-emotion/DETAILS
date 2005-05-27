@@ -1,0 +1,24 @@
+           SPELL=e-emotion
+if [ "$EMOTION_CVS" == "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/emotion
+          MD5[0]=IGNORE
+else
+         VERSION=0.0.1
+          SOURCE=emotion-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/emotion-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE	
+          MD5[0]=57f8205a620c65d3aaa63c0750a39d50
+fi 
+       BUILD_API=2
+      LICENSE[0]=BSD
+        WEB_SITE=http://enlightenment.org/pages/emotion.html
+         ENTERED=20040619
+         UPDATED=20040619
+           SHORT="media library"
+cat << EOF
+Emotion is a Media Library.
+EOF

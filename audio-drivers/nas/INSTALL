@@ -1,0 +1,5 @@
+make install     &&
+make install.man &&
+if ! [[ -f /etc/nas/nasd.conf ]]; then
+  cp /etc/nas/nasd.conf.eg /etc/nas/nasd.conf
+fi

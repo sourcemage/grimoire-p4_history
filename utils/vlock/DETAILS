@@ -1,0 +1,20 @@
+           SPELL=vlock
+         VERSION=1.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://tsx-11.mit.edu/pub/linux/sources/usr.bin/$SOURCE
+        WEB_SITE=http://freshmeat.net/projects/vlock/
+          MD5[0]="3683d7f3686ba432562aa3e4df0a6275"
+         ENTERED=20020815
+         UPDATED=20030810
+      MAINTAINER=insomniac@japh.nl
+           SHORT="vlock lets you lock your pc so you can walk away while leaving stuff running"
+
+cat << EOF
+
+vlock locks virtual consoles, as well as normal TTYs. It can prevent console
+switching, and it supports PAM authentication by default. Ideal for work 
+environments, lan parties, or anywhere you'll want to be able to walk away from
+your computer while leaving things running.
+
+EOF

@@ -1,0 +1,36 @@
+if  [  "$UTF8"  ==  "y"  ]
+then
+  MVERSION=${VERSION/.*/}
+  for  i  in  libformw  libmenuw  libncursesw  libpanelw
+  do
+    ln  -sf  $i.a                   \
+             $INSTALL_ROOT/lib/${i/w/}.a              &&
+    ln  -sf  $i.so                  \
+             $INSTALL_ROOT/lib/${i/w/}.so             &&
+    ln  -sf  $i.so.${MVERSION}      \
+             $INSTALL_ROOT/lib/${i/w/}.so.$MVERSION   &&
+    ln  -sf  $i.so.${VERSION}       \
+             $INSTALL_ROOT/lib/${i/w/}.so.${VERSION}  &&
+    ln  -sf  ${i}_g.a               \
+             $INSTALL_ROOT/lib/${i/w/}_g.a
+  done  &&
+
+  ln  -sf  libcursesw.so    \
+           $INSTALL_ROOT/lib/libcurses.so     &&
+  ln  -sf  libncurses++w.a  \
+           $INSTALL_ROOT/lib/libncurses++.a
+fi &&
+
+# now make install can succeed
+make_normal &&
+make install DESTDIR=$INSTALL_ROOT
+
+# Check for cross install and copy headers if needed.
+#
+# the following code does nothing other than fail headers arent
+# installed to /usr/include/ncurses as far as i can tell
+#   --afrayedknot 5-12-2005
+#if [ "$CROSS_INSTALL" = "on" ]; then
+  #mv -f ${INSTALL_ROOT}/usr/include/ncurses/* ${INSTALL_ROOT}/usr/include/  &&
+  #rm -rf ${INSTALL_ROOT}/usr/include/ncurses
+#fi

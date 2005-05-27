@@ -1,0 +1,27 @@
+depends  g++     &&
+depends  boost   &&
+depends  sdl     &&
+depends  zlib    &&
+depends  libpng  &&
+depends  jpeg    &&
+
+if  [  "$OPENVRML_JS"     =  "y"  -o  \
+       "$OPENVRML_JAVA"   =  "y"      ];  then
+  depends  JAVA             &&
+  depends  MOZILLA-BROWSER
+fi  &&
+
+optional_depends  gzip                         \
+                  "--enable-gzip"              \
+                  "--disable-gzip"             \
+                  "for GZIPped world support"  &&
+
+optional_depends  MOZILLA-BROWSER                      \
+                  "--enable-mozilla-plugin"            \
+                  "--disable-mozilla-plugin"           \
+                  "for Mozilla plug-in (experimental"  &&
+
+optional_depends  OPENGL                   \
+                  "--enable-gl-renderer"   \
+                  "--disable-gl-renderer"  \
+                  "for OpenGL renderer"

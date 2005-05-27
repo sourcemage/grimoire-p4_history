@@ -1,0 +1,21 @@
+depends  kdenetwork  &&
+depends  tmake       &&
+depends  automake    &&
+
+source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
+
+optional_depends  JAVA                \
+                  ""                  \
+                  "--without-java"    \
+                  "for Java support"  &&
+
+optional_depends  python                 \
+                  ""                     \
+                  ""                     \
+                  "for Python bindings"  &&
+
+optional_depends  mono                                               \
+                  "--with-cs-compiler=mcs  --with-mcs=/usr/bin/mcs"  \
+                  "--without-mcs"                                    \
+                  "for C#/QT# bindings"
+
