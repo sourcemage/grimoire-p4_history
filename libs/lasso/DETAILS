@@ -1,0 +1,21 @@
+           SPELL=lasso
+         VERSION=0.6.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://labs.libre-entreprise.org/download/$SPELL/$SOURCE
+          MD5[0]='34a2d48ba8ab8a57b95f7d62563ba0df'
+        WEB_SITE=http://lasso.entrouvert.org/
+         ENTERED=20050528
+         UPDATED=20050528
+      LICENSE[0]=GPL
+     GATHER_DOCS=no
+       BUILD_API=2
+           SHORT='Lasso implements the Liberty Alliance standards'
+cat << EOF
+Lasso is a free software C library aiming to implement the Liberty Alliance
+standards; it defines processes for federated identities, single sign-on and
+related protocols. Lasso is built on top of libxml2, XMLSec and OpenSSL and is
+licensed under the GNU General Public License (with an OpenSSL exception).
+
+See also http://www.projectliberty.org/.
+EOF
