@@ -1,5 +1,0 @@
-157c157,158
-< 		AC_MSG_FAILURE([cannot find libtermcap]))
----
-> 		AC_CHECK_LIB(ncurses, tgetstr, [LIBS="$LIBS -lncurses"],
->                         AC_MSG_FAILURE([cannot find termcap])))
