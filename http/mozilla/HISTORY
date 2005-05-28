@@ -1,3 +1,47 @@
+2005-05-24 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE, BUILD: make svg support optional
+	* INSTALL: remove setup of nss stuff, that's part of the nss spell now,
+	  don't add /usr/lib/mozilla to /etc/ld.so.conf, that's unnecessary
+	* BUILD, pkgconfig.patch: fix the pkgconfig files so they use the
+	  system installed mozilla-nspr.pc and mozilla-nss.pc and don't install
+	  their own
+	* BUILD: call make with NSPR_CONFIG=$INSTALL_ROOT/usr/bin/nspr-config
+	  so mozilla-config is generated correctly
+
+2005-05-23 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: question about crypto moved to DEPENDS; remove LDAP;
+	* DEPENDS: include optional nss dependency;
+	* BUILD: use common Mozilla fix-up routine for NSPR and NSS;
+	* gcc4.patch,security_manager_makefile.diff: integrate from Firefox.
+
+2005-05-14 Sergey Lipnevich <sergey@sourcemage.org>
+	* PRE_BUILD,gcc4.patch: integrate patch from Firefox;
+	* DEPENDS: remove NSS.
+
+2005-05-13 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Made cairo the default (libart usually gives me problems)
+	* DEPENDS: Forgot to update DEPENDS properly
+	* BUILD: Remove debugging echos
+	  Apply CONFIGURE options (e.g. MOZILLA_CRYPTO)
+	  Apply libart/cairo flags to OPTS
+	  Only do the enigmail export fix if building enigmail
+
+2005-05-12 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to Mozilla 1.7.8 and Enigmail 0.91.0;
+	* DEPENDS: use NSPR and NSS spells;
+	* PROVIDES: no longer provides NSS.
+
+2005-05-05 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Converted to config_query* and removed configure_optional
+	* DEPENDS: Use variables from CONFIGURE
+	  Added dependency (and flag) on freetype2
+	* PRE_BUILD: Use variables from CONFIGURE
+	* BUILD: Use variables from CONFIGURE
+	  Only use --enable-strip if the user is using -s in LDFLAGS (strip)
+	* INSTALL: Install profile to INSTALL_ROOT/etc/profile.d
+	* FIXME: This spell is broken with INSTALL_ROOT (check ./configure in
+	  BUILD and the symlink generation in INSTALL)
+
 2005-04-23 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, gcc4.patch: fix compilation with gcc 4.0
 

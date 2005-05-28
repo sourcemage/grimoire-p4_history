@@ -14,8 +14,10 @@ if gcc -dumpversion | grep -q "^4"; then
   patch  -p0  <  $SCRIPT_DIRECTORY/gcc4.patch
 fi  &&
 
+#
 # Enigmail extensions
-if  echo  "$MOZILLA_EXT"  |  grep  -q  'enigmail';  then
+#
+if  [  "$MOZILLA_ENIGMAIL"  ==  'y'  ];  then
   cd  $SOURCE_DIRECTORY/extensions  &&
   unpack  $SOURCE2  ${MD5[1]}       &&
   unpack  $SOURCE3  ${MD5[2]}
