@@ -1,3 +1,4 @@
+invoke_gcc                              &&
 # at present the build only works for everything in one directory 
 # tree /usr/firebird
 
@@ -36,4 +37,8 @@
 	--prefix=$PREFIX 		\
 	--with-editline			\
 	$OPTS					&&
-  make
+  make                                          &&
+# prepare an install image
+  cd gen                                        &&
+  ./install/makeInstallImage.sh
+
