@@ -1,12 +1,12 @@
            SPELL=wmpasman
-         VERSION=0.8.3
+         VERSION=0.8.4.1
+     GCC_VERSION=3.3
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
         WEB_SITE=http://sourceforge.net/projects/wmpasman/
-          MD5[0]=60c3548e2bb0bd88afbd5073c2460bb3
-          MD5[1]=60c3548e2bb0bd88afbd5073c2460bb3
+          MD5[0]=39bc5a7c4b912304c9e211627253d3db
     MENU_ITEM[0]="wmpasman"
     MENU_EXEC[0]="wmpasman"
     MENU_DESC[0]="WMPasMan is a password manager"
@@ -18,3 +18,4 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 cat << EOF
 wmpasman stores your passwords, and makes them available for pasting (both via the middle-click PRIMARY selection and the CLIPBOARD selection) at the click of a button. It also contains a digital clock. Access is controlled by a passphrase.
 EOF
+
