@@ -1,9 +1,26 @@
+2005-05-11 Eric Sandall <eric@sandall.us>
+	* This fixes Bug #8861 and #8849
+	* CONFIGURE: Converted to config_query
+	  Remove check for /usr/bin/vi as it could be a prior cast of
+	  vim/gvim providing this
+	  Removed NLS query and GUI query
+	  Remove query for Sun's Workshop (requires MOTIF; use gvim))
+	* DEPENDS: Optionally depends on gettext (for NLS)
+	  Updated GUI dependency for config_query_list responses
+	* BUILD: Use OPTS to pass CONFIGURE options
+	  Use default_build
+	  Build vim and then make distclean and gvim, if a GUI is wanted
+	  Disable Sun's Workshop and GUI support for non-GUI vim
+	* INSTALL: Make symlink not refer to INSTALL_ROOT
+	  Needs make_single during installation
+
 2005-04-23 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* INSTALL: remove the broken gvim.desktop install part
 
 2005-01-13 Pieter Lenaerts <e-type@cwazy.co.uk>
 	* CONFLICTS: deleted
-	* CONFIGURE: added config_query for vi symlink + test for symlink present
+	* CONFIGURE: added config_query for vi symlink + test for symlink
+	  present
 	* INSTALL: installs vi symlink and gvim.desktop needed if needed
 	* added gvim.desktop
 
@@ -90,7 +107,7 @@
 	* DETAILS: Removed defunct ftp.de.vim.org as a SOURCE_URL
 
 2002-04-07 Eric Sandall <sandalle@yahoo.com>
-	* DETAILS: Cleaned up again with version idea from Sergey Lipnevich
+	* DETAILS: Cleaned up again with version idea from Sergey A. Lipnevich
 	* DETAILS: Added ny.us mirror (again provided by Sergey)
 	* PRE_BUILD: Removed as it's outdated (as pointed out by Sergey)
 

@@ -1,53 +1,19 @@
-if  !  grep  -q  CONFIGURED  $SPELL_CONFIG;  then
-  if      query  "Support NLS?" y
-    then  echo   'OPTS="$OPTS  --enable-nls"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-nls"'  >>  $SPELL_CONFIG
-  fi
+config_query_option  GVIM_MULTIBYTE  "Enable multi-byte editing?"     y  \
+              "--enable-multibyte"  "--disable-multibyte"                &&
 
-  if      query  "multibyte editing support?" y
-    then  echo   'OPTS="$OPTS  --enable-multibyte"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-multibyte"'  >>  $SPELL_CONFIG
-  fi
+config_query_option  GVIM_HANGUL     "Enable Hangul input?" n            \
+              "--enable-hangulinput"  "--disable-hangulinput"            &&
 
-  if      query  "Sun Visual Workshop support?" n
-    then  echo   'OPTS="$OPTS  --enable-workshop"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-workshop"'  >>  $SPELL_CONFIG
-  fi
+message  "${MESSAGE_COLOR}${SPELL_COLOR}vim${DEFAULT_COLOR}${MESSAGE_COLOR} will be built twice if you choose to build a GUI${DEFAULT_COLOR}"  &&
+config_query_list  GVIM_GUI  "Which GUI interface to use?"         \
+                   none  gtk2  gtk+  gnome2  gnome  motif  athena  &&
 
-  if      query  "Hangul input support?" n
-    then  echo   'OPTS="$OPTS  --enable-hangulinput"'   >>  $SPELL_CONFIG
-  else    echo   'OPTS="$OPTS  --disable-hangulinput"'  >>  $SPELL_CONFIG
-  fi
+if  [  "$GVIM_GUI"  ==  "motif"  ];  then
+  config_query_option  GVIM_SUN  "Enable Sun visual Workshop support?"  y  \
+                "--enable-workshop"  "--disable-workshop"
+else
+  persistent_add  GVIM_SUN       &&
+  GVIM_SUN="--disable-workshop"
+fi  &&
 
-  echo  'CONFIGURED="y"'  >>  $SPELL_CONFIG
-fi
-
-if  !  grep  -q  GUI=  $SPELL_CONFIG;  then
-  if    query  "Choose a GUI to build?" n;  then
-    GUI=`$DIALOGPROG  --backtitle  "VIM GUI configuration"            \
-                      --stdout                                            \
-                      --title      "Select the GUI that should be built"  \
-                      --menu                                              \
-                      ""                                                  \
-                      0 40 7                                             \
-                      no            "None"                                \
-                      gtk           "Gtk"                                 \
-                      gnome         "Gnome" \
-                      gtk2          "Gtk 2" \
-                      gnome2        "Gnome 2" \
-                      motif         "Motif" \
-                      athena        "Athena"`
-  [  -z  $GUI  ]  &&  GUI=no
-  else
-    GUI=no
-  fi
-  echo  "GUI=$GUI"  >>  $SPELL_CONFIG
-fi
-config_query MAKE_SYMLINK "Would you like to have /usr/bin/vi as a symlink to /usr/bin/vim?" n
-if [ "${MAKE_SYMLINK}" == "y" ] ; then
-    if [ -e ${INSTALL_ROOT}/bin/vi ] ; then
-        echo "VI is already provided by elvis." &&
-        echo "To have vim as provider of vi, recast elvis with the vi symlink option disabled, then recast vim." &&
-        MAKE_SYMLINK="n"
-    fi
-fi
+config_query  GVIM_SYMLINK  "Symlink vi to vim?"  n
