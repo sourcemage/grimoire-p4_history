@@ -4,7 +4,7 @@ depends  tetex     &&
 depends  g++       &&
 
 if  [  "$LYX_GUI"  =  "xforms"  ];  then
-  depends  xforms  --with-frontend=xforms
+  depends  xforms  "--with-frontend=xforms"
 elif  [  "$LYX_GUI"  =  "qt-x11"  ];  then
   depends  qt-x11  "--with-frontend=qt                  \
                     --with-qt-includes=/usr/include/qt  \
@@ -39,7 +39,7 @@ optional_depends  cvs "" ""                                               \
                   "for CVS revision control of files"                    &&
 optional_depends  rcs "" ""                                               \
                   "for RCS revision control of files"                    &&
-optional_depends  latex-xft-fonts                                         \
+optional_depends  latex-xft-fonts "" ""                                   \
                   "ttf fonts with math symbols - used at least by the QT frontend" &&
 optional_depends  POSTSCRIPT-INTERPRETER "" ""                            \
                   "for Postscript and pdf formats support."              &&
