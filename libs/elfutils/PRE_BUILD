@@ -1,0 +1,6 @@
+default_pre_build &&
+cd ${SOURCE_DIRECTORY} &&
+patch -p1 < ${SCRIPT_DIRECTORY}/patches/elfutils-0.108-portability.patch &&
+patch -p1 < ${SCRIPT_DIRECTORY}/patches/elfutils-0.108.robustify.patch &&
+patch -p1 < ${SCRIPT_DIRECTORY}/patches/elfutils-0.108-robustify2.patch
+
