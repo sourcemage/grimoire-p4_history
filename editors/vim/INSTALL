@@ -21,10 +21,12 @@ if  [  "$GVIM_GUI"  !=  "none"  ];  then
 
   #
   # Install vim (the vim binary this installs will be the GUI version)
-  # so we'll replace it later
+  # so we'll replace it later. Install gvim.desktop.
   #
   install  -m  0755  src/vim  $INSTALL_ROOT/usr/bin/gvim  &&
   default_install                                         &&
+  mkdir -p ${INSTALL_ROOT}/usr/share/applications         &&
+  cp ${SCRIPT_DIRECTORY}/gvim.desktop ${INSTALL_ROOT}/usr/share/applications  &&
 
   #
   # Now install the non-X vim binary, which default_install wrote with the X
