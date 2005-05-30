@@ -229,6 +229,22 @@ run_install()
   fi
 }
 
+run_spellinstall()
+{
+  (
+    unset -f echo
+    . /etc/sorcery/config
+    SPELL="$1"
+    SPELL_CONFIG=$DEPENDS_CONFIG/$SPELL
+    SCRIPT_DIRECTORY="`codex_find_spell_by_name $SPELL`"
+    persistent_load
+    query_services
+    install_xinetd
+    install_initd
+    init_post_install
+  )
+}
+
 run_rmservice()
 {
   if run_services | grep -qF "$1" ; then initctl -c "$1" ; else exit 1; fi
@@ -267,6 +283,7 @@ smgl_telinit()
     runlevel)      shift; run_runlevel_display       ;;
     move)          shift; run_move         "$1" "$2" ;;
     install)       shift; run_install      "$1" "$2" ;;
+    spellinstall)  shift; run_spellinstall "$1"      ;;
     services)      shift; run_services               ;;
     rmservice)     shift; run_rmservice    "$1"      ;;
     insservice)    shift; run_insservice   "$1" "$2" ;;
@@ -286,6 +303,7 @@ telinit runlevels                    list all runlevels
 telinit runlevel                     print the highest completed runlevel
 telinit move <script> <rlvl>         move <script> to runlevel <rlvl>
 telinit install <file> <rlvl>        install <file> into runlevel <rlvl>
+telinit spellinstall <spell>         install <spell>'s init or xinetd scripts
 EOF
     exit 1
     ;;
