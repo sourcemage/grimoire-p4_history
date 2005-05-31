@@ -1,3 +1,4 @@
+invoke_gcc                                       &&
 ./configure  --build=$BUILD                      \
              --prefix=/usr                       \
              --sysconfdir=/etc                   \
