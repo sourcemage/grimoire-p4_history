@@ -2,18 +2,9 @@ source $DEPENDS_CONFIG/apr.p
 
            SPELL=apr-util
 # APR_BRANCH replaces APR_VERSION; remove APR_VERSION in May, 2005
-case "${APR_BRANCH:-$APR_VERSION}" in
-  0.9*)
-         VERSION=0.9.6
-          MD5[0]=b000af2465752d54c93c6c74cd7775fb 
-       REPOS_URI=branches/0.9.x
-    ;;
-  *)
          VERSION=1.1.2
           MD5[0]='f38f0f2274970359336527b2d6de13a1'
        REPOS_URI=branches/1.1.x
-    ;;
-esac
 # APR_LATEST replaces APR_CVS; remove APR_CVS in May, 2005
 if [[ "${APR_LATEST:-APR_CVS}" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
