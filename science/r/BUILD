@@ -4,7 +4,8 @@ if  gaze installed xfree86|grep -c -q 4.4;  then
   mv /tmp/dataentry.c ${SOURCE_DIRECTORY}/src/modules/X11/
 fi &&
 
-export FPICFLAGS="-fPIC"
+export FPICFLAGS="-fPIC" &&
+export F77=$(which gfortran) &&
 OPTS="$OPTS --enable-linux-fs" &&
 
 default_build
