@@ -1,8 +1,11 @@
 default_install &&
 
-    # many are still looking for ./build and apr-config
-    ln -fns build-1 $INSTALL_ROOT/usr/share/apache2/build &&
-    ln -fns apr-1-config $INSTALL_ROOT/usr/bin/apr-config
+# APR_BRANCH replaces APR_VERSION; remove APR_VERSION in May, 2005
+    # fix build chain
+    FIX_PATH_REGEX='s|/usr/src/apr-[^/"]*|/usr/share/apache2|' &&
+    sedit $FIX_PATH_REGEX $INSTALL_ROOT/usr/bin/apr-config &&
+    sedit $FIX_PATH_REGEX $INSTALL_ROOT/usr/share/apache2/build/apr_rules.mk &&
+    ln -fns build/libtool $INSTALL_ROOT/usr/share/apache2/libtool
 cd build &&
 cp -fv                \
   apr_common.m4       \
@@ -17,7 +20,6 @@ cp -fv                \
   $INSTALL_ROOT/usr/share/apache2/build/ &&
 
 # in APR 1.x, gen-build.py is needed to build from latest source
-# in APR 1.0, this file doesn't exist
 if [[ -f gen-build.py ]]; then
   cp -fv gen-build.py $INSTALL_ROOT/usr/share/apache2/build/
 fi
