@@ -129,4 +129,7 @@ then
 	else
 		ARCH=${kernel_arch} make $MAKEMODE
 	fi
+else
+	# run oldconfig just to make sure it's got a correct config
+	yes '' | make oldconfig
 fi
