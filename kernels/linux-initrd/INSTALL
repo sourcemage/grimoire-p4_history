@@ -46,4 +46,6 @@ if [ "$SPLASH_IMAGE" == "y" ] ; then
     splash -s -f $file >> ${INSTALL_ROOT}/boot/${INITRD_NAME}
   done &&
   mv ${INSTALL_ROOT}/boot/${INITRD_NAME} ${INSTALL_ROOT}/boot/${INITRD_NAME}-${THEME}
+  message "${PROBLEM_COLOR}Please make sure the bootsplash.conf has the right boot theme or boot splash will not work correctly next reboot${DEFAULT_COLOR}"
+  install_config_file "$SCRIPT_DIRECTORY/bootsplash" "/etc/sysconfig/bootsplash"
 fi

@@ -14,3 +14,7 @@ M_SBDESC[0]="Add init=/linuxrc root=/dev/ram0 real_root=/dev/<root_dev> to your 
  M_NAMES[1]=mk_initrd.rescue
   M_DESC[1]="Contains: Busybox, Kernel Modules, and linuxrc -> bin/ash"
 M_SBDESC[1]="Add init=/linuxrc root=/dev/ram0 to your kernel command line"
+
+ M_NAMES[2]=mk_initrd.selinux
+  M_DESC[2]="Contains: Same as rescue++ only loads selinux policy on startup"
+M_SBDESC[2]="Same kernel commandline as rescue++ add selinux_policy=<policy>"
