@@ -1,0 +1,28 @@
+           SPELL=wmii
+         VERSION=1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://wmi.modprobe.de/download/$SOURCE
+          MD5[0]=366f1a4e6def3b805c69d80e28f3f275
+        WEB_SITE=http://wmi.modprobe.de/
+         ENTERED=20050602
+         UPDATED=20050602
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="window manager improved 2 (wmii) is an improved,
+modularized and lightweight X11 window manager which supports tabbed,
+tiled and conventional window management through layouts."
+cat << EOF
+window manager improved 2 (wmii) is an improved, modularized and
+lightweight X11 window manager which supports tabbed, tiled and
+conventional window management through layouts.
+If it is built with cairo support, it also provides
+anti-aliased font rendering.
+wmii consists of components that are independent processes and
+communicate via a socket-based virtual filesystem which is oriented
+on the "everything is file" paradigm of the plan9 operating system.
+The core distribution of wmii contains the window manager itself,
+a master file system routing utility (wmifs), a generic bar (wmibar),
+a shortcut handler (wmikeys), and a generic interaction menu (wmiinput)
+beside several tiny utilities like wmir, wmiplumb, and wmiwarp.
+EOF
