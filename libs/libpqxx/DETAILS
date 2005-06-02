@@ -1,14 +1,14 @@
            SPELL=libpqxx
-         VERSION=2.0.0
+         VERSION=2.5.3
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://gborg.postgresql.org/pub/$SPELL/stable/$SOURCE
-          MD5[0]=729e09d5cf4aeb69206fe151af44cef0
+          MD5[0]=dbfe48d8988bb830101edd6c77d8c27f
       LICENSE[0]=BSD
         WEB_SITE=http://gborg.postgresql.org/project/libpqxx/projdisplay.php
          ENTERED=20030223
          UPDATED=20031006
-      MAINTAINER=vydra@fria.fri.utc.sk
+      BUILD_API=2
            SHORT="C++ client API for PostgreSQL."
 cat << EOF
 C++ client API for PostgreSQL. The standard front-end (in the sense 
