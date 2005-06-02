@@ -1,19 +1,31 @@
-config_query  OLD_CONFIG     "Make oldconfig?"                n
+case ${KERNEL_VERSION} in
+	2.6*)
+		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
+					"menuconfig" \
+					"oldconfig" \
+					"xconfig" \
+					"defconfig" \
+					"gconfig" \
+					"allmodconfig" \
+					"allyesconfig" \
+					"allnoconfig" 
+		;;
+	2.[24]*)
+		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
+					"menuconfig" \
+					"xconfig" \
+					"oldconfig" 
+		;;
+	2.0*)
+		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
+					"menuconfig" \
+					"xconfig"
+		;;
+esac
 
-if  [  "$OLD_CONFIG"  ==  "y"  ];  then
-  persistent_add  USE_GUI  &&
-  USE_GUI="n"
-else
-  config_query  USE_GUI        "Use a GUI configuration tool?"  n
-fi  &&
-
-if  [  -d ${INSTALL_ROOT}/usr/src/linux-${VERSION}  ]
+if [[ $MAKEMODE == "menuconfig" || $MAKEMODE == "oldconfig" ]]
 then
-  message  "${MESSAGE_COLOR}Existing Linux source tree found (/usr/src/linux-${VERSION})."
-  message  "If you don't want to do a whole rebuild from fresh sources you can reuse the existing ones if you haven't changed what patches you've applied.${DEFAULT_COLOR}"
-  config_query  REUSE_SOURCE   "Reuse existing source tree?"    y
-else
-  persistent_add  REUSE_SOURCE  &&
-  REUSE_SOURCE="n"
+	VOYEUR="on"
 fi
 
+config_query UPDATE_BL "Would you like to have $SPELL update your bootloader?" n
