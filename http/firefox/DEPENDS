@@ -4,7 +4,9 @@ depends  jpeg    '--with-system-jpeg'  &&
 depends  libpng  '--with-system-png'   &&
 depends  zip                           &&
 depends  perl                          &&
-depends  nss     '--with-system-nspr'  &&
+depends  nspr    '--with-system-nspr'  &&
+
+optional_depends nss '--enable-crypto' '--disable-crypto' 'for encrypted communications (https://)'  &&
 
 if  [  "$FIREFOX_GTK"  =  "2.x"  ];  then
   depends  gtk+2 '--enable-default-toolkit=gtk2 --enable-xft --disable-freetype2' &&    # doesn't work
