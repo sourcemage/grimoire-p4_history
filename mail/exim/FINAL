@@ -1,5 +1,5 @@
-chgrp  -R  mail   /var/spool/mail  &&
-chmod  -R  g+rw   /var/spool/mail  &&
+chgrp  -R  mail   $INSTALL_ROOT/var/spool/mail  &&
+chmod  -R  g+rw   $INSTALL_ROOT/var/spool/mail  &&
 
 EXIM_SCHEDULE="0 * * * * /usr/sbin/exim  -q"  &&
 
@@ -17,14 +17,6 @@ then
  grep  -v  exim`\n$EXIM_SCHEDULE"  |
  crontab -
 fi  &&
-
-if  [  "$EXIM_SKIPRESTORE"  ==  "y"  ]
-then
-  message "${MESSAGE_COLOR}Restore skipped. (you can still use $exim_backup_file later yourself)"  &&
-  message " ${DEFAULT_COLOR}"
-else
-  tar -C / -xjvPf $exim_backup_file
-fi
 
 message  "${MESSAGE_COLOR}Be sure to verify your mail server still relays as"  \
          "exim updates like to change the relay ACLs${DEFAULT_COLOR}"
