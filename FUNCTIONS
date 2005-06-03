@@ -228,6 +228,15 @@ function  install_www_files ()
       chown  www-data:www-data    "$WWW_DEST/$www_file"
     fi
   done
+  #
+  # Warning message about new location for www files
+  # Remove around 2005-08-02 (one month in test, another in stable, supposedly)
+  #
+  message  "${MESSAGE_COLOR}Your web files have been moved out of the"        \
+           "APACHE specific locations (apache2/htdocs, httpd/htdocs, etc.)"   \
+           "and into a shared, non-DocumentRoot $INSTALL_ROOT/usr/share/www"  \
+           "directory. You can modify your web server to point there for"     \
+           "these files now.${DEFAULT_COLOR}"
 }
 
 #---------------------------------------------------------------------
