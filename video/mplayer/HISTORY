@@ -1,3 +1,10 @@
+2005-06-03 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: only apply mplayer-headers.patch to non cvs version
+
+2005-05-11 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: add --cc=gcc to OPTS, otherwise cvs mplayer tries to compile
+	  with gcc 4.0 which breaks badly
+
 2005-05-01 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* shared-ffmpeg.patch: added another fix to make cvs mplayer compile
 	  again (ae_lavc.c not getting compiled)
@@ -278,7 +285,7 @@
 2002-06-10 Unet <unet@sourcemage.org>
 	* DETAILS: Updated to 0.90pre5, added MAINTAINER and LICENSE field
 
-2002-05-31 Arwed v.Merkatz <v.merkatz@gmx.net>
+2002-05-31 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* ALL: Cleaned up the spell and fixed some issues:
 	  The fonts get installed when the gui isn't build (the fonts actually
 	  don't have anything to do with the gui, they are used for subtitles

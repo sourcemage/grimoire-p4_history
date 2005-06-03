@@ -1,6 +1,6 @@
 invoke_gcc
-# fixes bug #6833
-patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
+# needed so it actually uses gcc 3.4
+OPTS="$OPTS --cc=gcc"  &&
 
 # mp3lib doesn't work with gcc 3.3.2 and -fomit-frame-pointer
 # with gcc 3.4 -fomit-frame-pointer works and is needed to compile
@@ -12,6 +12,8 @@ patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
   patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
 else
+  # fixes bug #6833
+  patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
   OPTS="$OPTS --enable-libavcodec"
 fi  &&
 
