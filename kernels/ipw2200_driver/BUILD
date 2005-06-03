@@ -2,5 +2,5 @@ message "${PROBLEM_COLOR}ATTENTION, ${DEFAULT_COLOR}You need these kernel module
 message "${PROBLEM_COLOR}firmware_class \nARC4 cipher algorithm (crypto lib support) \nCRC32 (also in crypto lib support)\n${DEFAULT_COLOR}"
 
 
-make   
+make KVER=$(installed_version linux) 
 
