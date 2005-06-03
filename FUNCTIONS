@@ -186,20 +186,48 @@ function config_query_long_string() {
 }
 
 #---------------------------------------------------------------------
-## @param files
-## @param relative path to files
+## @param Directory with files we might want to install
+## @param Destination directory (optional)
 ##
-## Installs files to $INSTALL_ROOT/usr/share/www/$SPELL
+## Installs files to WWW_DEST ($INSTALL_ROOT/usr/share/www/$SPELL) and
+## sets up proper www-data permissions
+## Optionally the second parameter will override WWW_DATA (and make
+## sure INSTALL_ROOT exists only once in the WWW_DATA)
 #---------------------------------------------------------------------
 function  install_www_files ()
 {
-  local  WWW_DEST="$INSTALL_ROOT/usr/share/www"  &&
-  install  -m 644  -o www-data  -g www-data  -d  \
-           $WWW_DEST                             &&
-  install  -m 644  -o www-data  -g www-data  -d  \
-           $WWW_DEST/$SPELL                      &&
-  install  -m 644  -o www-data  -g www-data  $@  \
-           $WWW_DEST/$SPELL
+  if  [  !  -z  $2  ];  then
+    #
+    # Just in case the destination already includes INSTALL_ROOT, remove it
+    #
+    local  WWW_DEST="$INSTALL_ROOT/${2/\$INSTALL_ROOT/}"
+  else
+    local  WWW_DEST="$INSTALL_ROOT/usr/share/www/$SPELL"
+  fi  &&
+
+  #
+  # Make sure WWW_DEST exists
+  #
+  if  [  !  -d  "$WWW_DEST"  ];  then
+    if  [  !  -d  "${WWW_DEST/\/$SPELL/}"  ];  then
+      mkdir  -p  "${WWW_DEST/\/$SPELL/}"                   &&
+      chmod  0755                 "${WWW_DEST/\/$SPELL/}"  &&
+      chown  www-data:www-data    "${WWW_DEST/\/$SPELL/}"
+    fi  &&
+
+    mkdir  -p  "$WWW_DEST"                   &&
+    chmod  0755                 "$WWW_DEST"  &&
+    chown  www-data:www-data    "$WWW_DEST"
+  fi  &&
+
+  # find $@ | while read file; do install ... $file ...; done
+  # find  $1  -type  -f  |  while  read  file;  do
+  for  www_file  in  `find  $1  -type  f`;  do
+    if  install_config_file  "$www_file"   "$WWW_DEST/$www_file";  then
+      chmod  0644                 "$WWW_DEST/$www_file"  &&
+      chown  www-data:www-data    "$WWW_DEST/$www_file"
+    fi
+  done
 }
 
 #---------------------------------------------------------------------
