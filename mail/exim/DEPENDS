@@ -19,12 +19,7 @@ else
 fi  &&
 
 # The spell only mentioned xfree86, haven't tested with others
-if  spell_ok  xfree86        ||
-    spell_ok  xfree86-4.3    ||
-    spell_ok  xfree86-devel  ||
-    spell_ok  xdirectfb      ||
-    spell_ok  xfree86-libs   ||
-    spell_ok  xorg
+if  provider_ok  X11-LIBS
 then
   config_query  EXIM_XFREE86  "Build X11 exim monitor?"  y
 else
