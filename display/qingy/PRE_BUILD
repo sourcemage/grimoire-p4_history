@@ -1,5 +1,7 @@
 default_pre_build                                                      &&
 patch -p0 < ${SCRIPT_DIRECTORY}/shutdown.patch                         &&
+patch  $SOURCE_DIRECTORY/media/Makefile.in                             \
+       $SCRIPT_DIRECTORY/config.patch                                  &&
 cd ${SOURCE_DIRECTORY}                                                 &&
 if ! ( echo $OPTS | grep -q "enable-emacs" ); then
   rm  media/sessions/emacs                                             &&
