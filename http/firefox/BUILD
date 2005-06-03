@@ -43,11 +43,11 @@ cp browser/config/mozconfig .mozconfig &&
   --enable-single-profile                         \
   $OPTS                                           &&
 
+make_single                                       &&
+make                                              &&
+
 # fix pkgconfig files so that other spell using them can build properly
 # these files will be renamed to firefox-{nspr,nss}.pc during installation
-cp -f $GRIMOIRE/libs/nspr/mozilla-nspr.pc build/unix/mozilla-nspr.pc &&
-cp -f $GRIMOIRE/crypto/nss/mozilla-nss.pc build/unix/mozilla-nss.pc  &&
-sedit 's|Requires:\s*firefox-nspr.*$|Requires: mozilla-nspr|g' build/unix/mozilla-xpcom.pc.in &&
-
-make_single                                       &&
-make
+cp -f $GRIMOIRE/libs/nspr/mozilla-nspr.pc build/unix/firefox-nspr.pc &&
+cp -f $GRIMOIRE/crypto/nss/mozilla-nss.pc build/unix/firefox-nss.pc  &&
+sedit 's|Requires:\s*firefox-nspr.*$|Requires: mozilla-nspr|g' build/unix/firefox-xpcom.pc
