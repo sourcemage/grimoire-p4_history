@@ -13,14 +13,18 @@ VENDORMAN3DIR="${INSTALL_ROOT}/usr/share/vendor_perl/man/man3"     &&
 
 PERL_PATHS="-Dprefix=/usr \
            -Dvendorprefix=/usr -Dvendorman1dir=$VENDORMAN1DIR -Dvendorman3dir=$VENDORMAN3DIR \
-           -Dsiteprefix=/usr -Dsiteman1dir=$SITEMAN1DIR -Dsiteman3dir=$SITEMAN3DIR "
+           -Dsiteprefix=/usr -Dsiteman1dir=$SITEMAN1DIR -Dsiteman3dir=$SITEMAN3DIR " &&
 
-CONFIG_OPTS="-Ui_db -Dlibperl=libperl.so -Ulocincpth="
+CONFIG_OPTS="-Ui_db -Duseshrplib -Ulocincpth=" &&
+
+if glibc_is_nptl; then
+  LDFLAGS="$LDFLAGS -lpthread"
+fi &&
 
 if [ "$OLD_CUSTOM" == "y" ]; then 
    CONFIG_OPTS="-S "
    cp $CONFIG ./config.sh
-fi
+fi &&
 
 [ "$THREADED" == "y" ] && CONFIG_OPTS="$CONFIG_OPTS -Dusethreads"
 [ "$OLD_CUSTOM" != "y" ] && [ "NEW_CUSTOM" != "y" ] && CONFIG_OPTS="-d -e $CONFIG_OPTS"

@@ -1,3 +1,10 @@
+2005-06-04 Seth Woolley <seth@tautology.org>
+	* DETAILS: Updated UPDATED so that everybody gets the libperl.so intead of .a
+
+2005-05-26 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* BUILD: Use -Duseshrplib (bug #8960) in configure options
+	* BUILD: Add -lpthread to $LDFLAGS when glibc_is_nptl (this should fix bug #8970)
+		 
 2005-05-12 Andrew Stitt <astitt@sourcemage.org>
 	* INSTALL: Update to install into a chroot correctly, bug 8853.
 
