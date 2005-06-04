@@ -1,1 +1,6 @@
-optional_depends libusb "--enable-usbdropdir=/usr/lib/pcsc-lite/drivers" "" "Support for USB cardreaders"
+depends  g++  &&
+
+optional_depends  libusb                                            \
+                  "--enable-usbdropdir=/usr/lib/pcsc-lite/drivers"  \
+                  ""                                                \
+                  "Support for USB cardreaders"
