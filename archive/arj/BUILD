@@ -1,3 +1,4 @@
+  CFLAGS="-O1"                                  &&
   cd gnu					&&
 
   autoconf					&&
