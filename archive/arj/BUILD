@@ -1,4 +1,4 @@
-  CFLAGS="-O1"                                  &&
+  CFLAGS="$CFLAGS -fno-unit-at-a-time"          &&
   cd gnu					&&
 
   autoconf					&&
