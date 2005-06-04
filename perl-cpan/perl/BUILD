@@ -17,6 +17,10 @@ PERL_PATHS="-Dprefix=/usr \
 
 CONFIG_OPTS="-Ui_db -Dlibperl=libperl.so -Ulocincpth="
 
+if glibc_is_nptl; then
+  LDFLAGS="$LDFLAGS -lpthread"
+fi
+
 if [ "$OLD_CUSTOM" == "y" ]; then 
    CONFIG_OPTS="-S "
    cp $CONFIG ./config.sh
