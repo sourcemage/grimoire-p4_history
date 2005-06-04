@@ -1,3 +1,39 @@
+2005-06-03 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 2.2.3
+	  Removed TLS/SSL support as it's now built-in
+	  Removed outdated and broken PostgreSQL support
+	  Updated VDA patch to 2.2.3 (SOURCE renamed to -vda instead of -trash)
+	  Re-worded SHORT
+	  Removed deprecated MENU_* entries
+	* PREPARE: Added to not update if postfix is running (See:
+	  http://postfix.thecabal.org/download/official/postfix-2.2.3.RELEASE_NOTES)
+	* CONFIGURE: Removed backup/restore query
+	  Removed prior postfix installation checks
+	  Removed commented out PostgreSQL query
+	  Cleanup alias message
+	  Prefixed all query variables with POSTFIX_
+	* DEPENDS: Removed commented out PostgreSQL dependency
+	  Prefixed all query variables with POSTFIX_
+	* PRE_BUILD: Use default_pre_build
+	  Only has SOURCE2 (VDA patch) to uncompress now
+	  Apply config.patch to postfix-install
+	* BUILD: Removed commented out PostgreSQL code
+	  Removed SSL_TLS checks
+	  Fixed man pages to install to $INSTALL_ROOT/usr/share/man
+	  Prefixed all query variables with POSTFIX_
+	  SSL CCARGS now uses -DUSE_TLS instead of -DHAS_SSL
+	  SSL config now assumes includes are in /usr/include/openssl
+	* PRE_REMOVE: Removed (more ugly backup code)
+	* INSTALL: install_rootify symlinks
+	  Removed incorrect install_root usage in config files
+	* FINAL: Removed TLS/SSL warning
+	  Removed PostgreSQL information
+	  Removed ugly backup hack
+	  Removed 2.x.x config file update (install_config_file now makes this
+	  mostly useless as you can install the new one, look at a diff, or make
+	  a backup of the new one and compare later)
+	* config.patch: Added to modify postfix-install to not install config files
+
 2005-03-27 Jeremy Blosser <jblosser-smgl@sourcemage.org>
 	* CONFIGURE: Fix the inverted logic in the postfix/main.cf detection
 	  message
