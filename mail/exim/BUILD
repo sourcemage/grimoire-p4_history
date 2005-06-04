@@ -1,38 +1,31 @@
-EXIM_IVER=$( installed_version  exim |  cut  -c1  )  &&
-if    [  "$EXIM_IVER"  ==  "3"  ]
-then  if    [  -e  /etc/exim.conf  ]
-      then  mv     /etc/exim.conf  /etc/exim.conf.$EXIM_IVER
-      fi
-fi  &&
-
 create_account  exim  &&
 create_account  mail  &&
 
-mkdir  -p             /var/spool/mail            &&
-chmod  1777           /var/spool/mail            &&
-chown      exim:exim  /var/spool/mail            &&
+mkdir  -p         $INSTALL_ROOT/var/spool/mail  &&
+chmod  1777       $INSTALL_ROOT/var/spool/mail  &&
+chown  exim:exim  $INSTALL_ROOT/var/spool/mail  &&
 
-if  [  -e  /var/spool/mail/db  ]
+if  [  -e  $INSTALL_ROOT/var/spool/mail/db  ]
 then
-  chown  -R  exim:exim  /var/spool/mail/db
+  chown  -R  exim:exim  $INSTALL_ROOT/var/spool/mail/db
 fi  &&
 
-if  [  -e  /var/spool/mail/input  ]
+if  [  -e  $INSTALL_ROOT/var/spool/mail/input  ]
 then
-  chown  -R  exim:exim  /var/spool/mail/input
+  chown  -R  exim:exim  $INSTALL_ROOT/var/spool/mail/input
 fi  &&
 
-if  [  -e  /var/spool/mail/log  ]
+if  [  -e  $INSTALL_ROOT/var/spool/mail/log  ]
 then
-  chown  -R  exim:exim  /var/spool/mail/log
+  chown  -R  exim:exim  $INSTALL_ROOT/var/spool/mail/log
 fi  &&
 
-if  [  -e  /var/spool/mail/msglog  ]
+if  [  -e  $INSTALL_ROOT/var/spool/mail/msglog  ]
 then
-  chown  -R  exim:exim  /var/spool/mail/msglog
+  chown  -R  exim:exim  $INSTALL_ROOT/var/spool/mail/msglog
 fi  &&
 
-chgrp  -R  exim  /var/spool/mail  &&
+chgrp  -R  exim  $INSTALL_ROOT/var/spool/mail  &&
 
 mkdir  -p  Local  &&
 
@@ -159,15 +152,8 @@ then
   EXTRALIBS="$EXTRALIBS  -ldl"
 fi  &&
 
-if  !  -z  $LOOKUP_LIBS
-then
-  echo  "LOOKUP_LIBS=$LOOKUP_LIBS"  >>  Local/Makefile
-fi  &&
-
-if  !  -z  $EXTRALIBS
-then
-  echo  "EXTRALIBS=$EXTRALIBS"  >>  Local/Makefile
-fi  &&
+echo  "LOOKUP_LIBS=$LOOKUP_LIBS"  >>  Local/Makefile  &&
+echo  "EXTRALIBS=$EXTRALIBS"  >>  Local/Makefile  &&
 
 if  [  "$EXIM_FROZEN"  ==  "y"  ]
 then

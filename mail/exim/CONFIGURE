@@ -1,6 +1,3 @@
-persistent_add  exim_backup_file  &&
-
-config_query EXIM_BACKUPCFG "Backup $SPELL config?"                        y  &&
 config_query EXIM_MAILDIR   "Support maildir for appendfile transport?"    n  &&
 config_query EXIM_MAILSTORE "Support mailstore for appendfile transport?"  n  &&
 config_query EXIM_MBX       "Support MBX for appendfile transport?"        n  &&
@@ -15,20 +12,4 @@ config_query EXIM_SCAN      "Enable content scanning (exiscan)?"           n  &&
 config_query EXIM_MD5       "Enable cram/md5 authentication?"              n  &&
 config_query EXIM_PLAINTEXT "Enable plaintext authentication?"             n  &&
 config_query EXIM_SPA       "Enable SPA authentication?"                   n  &&
-config_query EXIM_FROZEN    "Enable moving frozen messages?"               n  &&
-
-# look for a backup file
-exim_backup_file=`ls -t -1 -r /etc/$SPELL-backup* | tail -n 1`  &&
-
-if [ "$exim_backup_file" != "" ]; then
-  message "${MESSAGE_COLOR} "                                                           &&
-  message "Found $exim_backup_file as your latest postfix configuration backup..."           &&
-  message "You should restore backup settings if you went throught a sorcery rebuild."  &&
-  message "If this is a simple cast, or sorcery update, don't use it."                  &&
-  message " ${DEFAULT_COLOR}"                                                           &&
-
-  config_query  EXIM_SKIPRESTORE  "Skip restoring backup settings ?"  y
-else
-  persistent_add  EXIM_SKIPRESTORE  &&
-  SKIPRESTORE="y"
-fi
+config_query EXIM_FROZEN    "Enable moving frozen messages?"               n

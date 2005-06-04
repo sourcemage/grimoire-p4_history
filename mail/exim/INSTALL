@@ -1,29 +1,40 @@
 make_normal      &&
 make    install  &&
 
-touch  /var/log/exim_main /var/log/exim_panic /var/log/exim_reject  &&
-chown  exim.exim /var/log/exim_main /var/log/exim_panic /var/log/exim_reject  &&
+touch  $INSTALL_ROOT/var/log/exim_main    \
+       $INSTALL_ROOT/var/log/exim_panic   \
+       $INSTALL_ROOT/var/log/exim_reject  &&
+
+chown  exim.exim  $INSTALL_ROOT/var/log/exim_main    \
+                  $INSTALL_ROOT/var/log/exim_panic   \
+                  $INSTALL_ROOT/var/log/exim_reject  &&
 
 # copy usefull convert tool
 message "Look @ /usr/doc/exim/doc for convert tools..."  &&
 cp -v src/convert*.src doc/  &&
 
-ln     -sf  ../sbin/exim   /usr/lib/sendmail     &&
-ln     -sf  exim           /usr/sbin/sendmail    &&
-ln     -sf  exim           /usr/sbin/mailq       &&
-ln     -sf  exim           /usr/sbin/rsmtp       &&
-ln     -sf  exim           /usr/sbin/rmail       &&
-ln     -sf  exim           /usr/sbin/runq        &&
-ln     -sf  exim           /usr/sbin/newaliases  &&
+pushd  $INSTALL_ROOT/                            &&
+ln     -sf  usr/sbin/exim   usr/lib/sendmail     &&
+ln     -sf  usr/sbin/exim   usr/sbin/sendmail    &&
+ln     -sf  usr/sbin/exim   usr/sbin/mailq       &&
+ln     -sf  usr/sbin/exim   usr/sbin/rsmtp       &&
+ln     -sf  usr/sbin/exim   usr/sbin/rmail       &&
+ln     -sf  usr/sbin/exim   usr/sbin/runq        &&
+ln     -sf  usr/sbin/exim   usr/sbin/newaliases  &&
+popd                                             &&
 
-if    !  touch  /etc/aliases
-then  rm  -f    /etc/aliases  &&
-      touch     /etc/aliases
+if  install_config_file  src/configure.default         \
+                         $INSTALL_ROOT/etc/exim.conf;  then
+  sedit  "s:var/mail:var/spool/mail:"         \
+         $INSTALL_ROOT/etc/exim.conf          &&
+  sedit  "s/\# group = exim/  group = exim/"  \
+         $INSTALL_ROOT/etc/exim.conf          &&
+  sedit  "s/\# mode = 0660/  mode = 0660/"    \
+         $INSTALL_ROOT/etc/exim.conf
 fi  &&
 
-sedit  "s:var/mail:var/spool/mail:"         /etc/exim.conf  &&
-sedit  "s/\# group = exim/  group = exim/"  /etc/exim.conf  &&
-sedit  "s/\# mode = 0660/  mode = 0660/"    /etc/exim.conf  &&
+install_config_file  src/aliases.default        \
+                     $INSTALL_ROOT/etc/aliases  &&
 
 # install man page
-cp  $SOURCE_DIRECTORY/doc/exim.8  /usr/man/man8/exim.8
+cp  $SOURCE_DIRECTORY/doc/exim.8  $INSTALL_ROOT/usr/share/man/man8/exim.8
