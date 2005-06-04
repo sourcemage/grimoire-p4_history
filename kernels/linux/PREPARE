@@ -65,7 +65,7 @@ create_defaults()
 	persistent_add kver
 	persistent_add patches
 	persistent_add selected_patches
-	VERSION="`gaze version linux-new | awk 'NR == 3 {print $4}'`"
+	VERSION="`gaze version $SPELL | awk 'NR == 3 {print $4}'`"
 	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p \
@@ -75,9 +75,9 @@ create_defaults()
 		persistent_remove UPDATE_BL
 		persistent_remove CONFIG_RESTORE
 		mode="oldktree"
-	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ]
+	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ]
 	then
-		cp ${BUILD_DIRECTORY}/linux-$(installed_version linux-new)/.spell-config.p ${SPELL_CONFIG}.p
+		cp ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
 		persistent_remove MAKEMODE
 		persistent_remove UPDATE_BL
@@ -367,7 +367,7 @@ options_menu()
 			"Arch" "Selection" "Select Arch Default is $ARCH" \
 			"Config" "Restoration" "Optional config restoration" \
 			"Other" "Packages" "Make an RPM or Debian Package" \
-			"Initrd" "Creation" "Make an bootable initrd" 
+			"Make" "Options" "Options passed to make for compiling" 
 			)
 		retval="`echo $?`"
 		if [[ "$retval" == "0" ]]
@@ -385,9 +385,9 @@ options_menu()
 				"Config")
 					restore_config
 					;;
-				"Initrd")
-					echo "Not implemented yet"
-					sleep 5
+				"Make")
+					EXTRA_MAKE_OPTIONS=$($dialog --inputbox "These Options are passed to make when compiling your kernel\nFor Example\nV=1 will change the 2.6 output to look more like the 2.4 output\nEXTRA_CFLAGS=$CFLAGS will add sorcery cflags to your kernel" 0 0 "")
+					persistent_add EXTRA_MAKE_OPTIONS
 					;;
 				*) break ;;
 			esac
