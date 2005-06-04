@@ -367,7 +367,7 @@ options_menu()
 			"Arch" "Selection" "Select Arch Default is $ARCH" \
 			"Config" "Restoration" "Optional config restoration" \
 			"Other" "Packages" "Make an RPM or Debian Package" \
-			"Initrd" "Creation" "Make an bootable initrd" 
+			"Make" "Options" "Options passed to make for compiling" 
 			)
 		retval="`echo $?`"
 		if [[ "$retval" == "0" ]]
@@ -385,9 +385,9 @@ options_menu()
 				"Config")
 					restore_config
 					;;
-				"Initrd")
-					echo "Not implemented yet"
-					sleep 5
+				"Make")
+					EXTRA_MAKE_OPTIONS=$($dialog --inputbox "These Options are passed to make when compiling your kernel\nFor Example\nV=1 will change the 2.6 output to look more like the 2.4 output\nEXTRA_CFLAGS=$CFLAGS will add sorcery cflags to your kernel" 0 0 "")
+					persistent_add EXTRA_MAKE_OPTIONS
 					;;
 				*) break ;;
 			esac
