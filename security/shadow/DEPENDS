@@ -1,2 +1,2 @@
-[ $LINUX_PAM = "y" ] && depends  "linux-pam"
+[ "$LINUX_PAM" = "y" ] && depends  "linux-pam"
 optional_depends  "libselinux"  "--with-selinux"  ""  "for selinux support"

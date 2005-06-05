@@ -18,7 +18,7 @@
   # change MD5_CRYPT_ENAB to yes in the current /etc/login.defs
   sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" ${INSTALL_ROOT}/etc/login.defs &&
 
-  if [ $LINUX_PAM = "y" ]; then
+  if [ "$LINUX_PAM" = "y" ]; then
      #Removing unnecessary lines from /etc/login.defs
      sedit "s:^\s*\(FAIL_DELAY.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
      sedit "s:^\s*\(FAILLOG_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
@@ -47,4 +47,7 @@
      sedit "s:^\s*\(ENV_HZ.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
      sedit "s:^\s*\(QMAIL_DIR.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs &&
      sedit "s:^\s*\(MAIL_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs
+     sedit "s:^\s*\(MOTD_FILE.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs
+     sedit "s:^\s*\(MD5_CRYPT_ENAB.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs
+     sedit "s:^\s*\(ULIMIT.*\):#\1:g" ${INSTALL_ROOT}/etc/login.defs
   fi 
