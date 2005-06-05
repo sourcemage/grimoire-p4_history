@@ -10,7 +10,8 @@ case "$VERSION" in
     ARCH="$kernel_arch" make dep    &&
     case  $kernel_arch  in
       sparc*)  ARCH="$kernel_arch"  make $EXTRA_MAKE_OPTIONS vmlinux  ||  return  1  ;;
-         ppc)  ARCH="$kernel_arch"  make $EXTRA_MAKE_OPTIONS vmlinux  ||  return  1  ;;
+         ppc)  CFLAGS=${CFLAGS/-s/} 
+	       ARCH="$kernel_arch"  make $EXTRA_MAKE_OPTIONS vmlinux  ||  return  1  ;;
           sh)  ARCH="$kernel_arch"  make $EXTRA_MAKE_OPTIONS zImage  ||  return  1  ;;
            *)  ARCH="$kernel_arch"  make $EXTRA_MAKE_OPTIONS bzImage  ||  return  1  ;;
     esac  &&
