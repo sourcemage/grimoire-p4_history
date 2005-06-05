@@ -1,10 +1,10 @@
            SPELL=valgrind
 if [ "$CVS" != "y" ]; then
-         VERSION=2.2.0
+         VERSION=2.4.0
           SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=http://developer.kde.org/~sewardj/$SOURCE
-          MD5[0]=b126a4498e83d8ccb0e526501183f293
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE_URL[0]=http://valgrind.org/downloads/$SOURCE
+          MD5[0]='b0f2de740585bd76e41acf90f5f92efb'
+          SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 else
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-cvs.tar.bz2
