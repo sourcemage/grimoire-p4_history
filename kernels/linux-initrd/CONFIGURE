@@ -79,7 +79,7 @@ if [ "$FILE_SYSTEM" == "y" ] ; then
 		            '$MY_TMP`                                         
   fi &&
   persistent_add FILESYS_TYPE &&
-  if [ -z $MKINITRD_SCIRPT ] ; then
+  if [ -z $MKINITRD_SCRIPT ] ; then
     MKINITRD_SCRIPT=$DEFAULT_INITRD
   fi &&
   MY_TMP=`show_initrds`
