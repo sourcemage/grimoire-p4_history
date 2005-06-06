@@ -14,7 +14,8 @@ do
   sedit  "s/ $i//g" Makefile.in
 done                                                        &&
 ./configure --prefix=${INSTALL_ROOT}/usr                    \
-            --bindir=${INSTALL_ROOT}/usr/bin                &&
+            --bindir=${INSTALL_ROOT}/usr/bin                \
+            $OPTS                                           &&
 make_single                                                 &&
 make                                                        &&
 make_normal
