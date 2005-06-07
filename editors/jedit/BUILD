@@ -1,1 +1,1 @@
-ant dist
+/opt/ant/bin/ant dist
