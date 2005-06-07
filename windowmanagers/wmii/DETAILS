@@ -1,9 +1,16 @@
            SPELL=wmii
+if [ "$SNAP" = "y" ]; then
+         VERSION=1-20050606
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://wmi.modprobe.de/snaps/$SOURCE
+          MD5[0]='323fe5c329646db58ee6023a80d57157'
+else
          VERSION=1
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://wmi.modprobe.de/download/$SOURCE
-          MD5[0]=366f1a4e6def3b805c69d80e28f3f275
+          MD5[0]='366f1a4e6def3b805c69d80e28f3f275'
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://wmi.modprobe.de/
          ENTERED=20050602
          UPDATED=20050602
