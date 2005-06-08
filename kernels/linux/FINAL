@@ -21,7 +21,7 @@ then
 			fi
 			;;
 		*)
-			if [ -f /sbin/lilo.conf ] ; then
+			if [ -f /etc/lilo.conf ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt" "/etc/lilo.conf.tmplt"
 			elif [ -f /boot/grub/menu.lst ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/menu.lst.tmplt" "/boot/grub/menu.lst.tmplt"
