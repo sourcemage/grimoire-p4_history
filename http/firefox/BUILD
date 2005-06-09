@@ -40,8 +40,14 @@ cp browser/config/mozconfig .mozconfig &&
   --disable-pedantic                              \
   --disable-mailnews                              \
   --disable-composer                              \
-  --enable-crypto                                 \
   --enable-single-profile                         \
   $OPTS                                           &&
+
 make_single                                       &&
-make
+make                                              &&
+
+# fix pkgconfig files so that other spell using them can build properly
+# these files will be renamed to firefox-{nspr,nss}.pc during installation
+cp -f $GRIMOIRE/libs/nspr/mozilla-nspr.pc build/unix/firefox-nspr.pc &&
+cp -f $GRIMOIRE/crypto/nss/mozilla-nss.pc build/unix/firefox-nss.pc  &&
+sedit 's|Requires:\s*firefox-nspr.*$|Requires: mozilla-nspr|g' build/unix/firefox-xpcom.pc
