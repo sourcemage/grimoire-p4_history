@@ -1,6 +1,8 @@
 invoke_gcc
 CFLAGS="${CFLAGS/-funroll-loops/}"
-CFLAGS="${CFLAGS/-DPIC -fPIC/}"
+if ! [[ "${HOST%%-*}" == x86_64 ]]; then
+  CFLAGS="${CFLAGS/-DPIC -fPIC/}"
+fi &&
 if echo $CFLAGS | grep -q pentium4; then
   CFLAGS="${CFLAGS/-O3/} -O2"
 fi
