@@ -1,7 +1,3 @@
-# MIT krb5 Security Advisory 2005-001
-# Buffer overflows in telnet client
-patch --verbose krb5-1.4/src/appl/telnet/telnet/telnet.c < $SCRIPT_DIRECTORY/2005-001-patch_1.4.txt  &&
-
 if [ "$KRB4" == "y" ]; then
     OPTS="$OPTS --with-krb4"
 else
