@@ -13,27 +13,32 @@ if  [  "$KDENETWORK_KOPETE"  ==  "y"  ];  then
   fi
 fi  &&
 
+optional_depends  openssl                         \
+                  '--with-ssl'                    \
+                  '--without-ssl'                 \
+                  'to use encrypted connections'  &&
+
 optional_depends  ppp                   \
-                  ""                    \
-                  ""                    \
-                  "for dialup support"  &&
+                  ''                    \
+                  ''                    \
+                  'for dialup support'  &&
 
 optional_depends  openslp                                                 \
-                  "--enable-slp"                                          \
-                  "--disable-slp"                                         \
-                  "to enable browsing to find available remote desktops"  &&
+                  '--enable-slp'                                          \
+                  '--disable-slp'                                         \
+                  'to enable browsing to find available remote desktops'  &&
 
 optional_depends  wireless_tools                                           \
-                  ""                                                       \
-                  ""                                                       \
-                  "needed to build KWiFiManager and the KWireless applet"  &&
+                  ''                                                       \
+                  ''                                                       \
+                  'needed to build KWiFiManager and the KWireless applet'  &&
 
-optional_depends  xmms                                                     \
-                  ""                                                       \
-                  ""                                                       \
-                  "needed for Kopete NowListening plugin to support xmms"  &&
+optional_depends  xmms                                                       \
+                  ''                                                         \
+                  ''                                                         \
+                  'needed for Kopetes NowListening plugin to support xmms'  &&
 
 optional_depends  lisa                                \
-                  ""                                  \
-                  ""                                  \
-                  "for LAN network browsing support"
+                  ''                                  \
+                  ''                                  \
+                  'for LAN network browsing support'
