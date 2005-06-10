@@ -1,21 +1,10 @@
-if  [  "$KDE_DEBUG"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-debug"
-else
-  OPTS="$OPTS  --disable-debug"
-fi  &&
-
-if  [  "$KDE_FINAL"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-final"
-else
-  OPTS="$OPTS  --disable-final"
-fi  &&
-
-#if  [  "$KDE_DNOTIFY"  =  "y"  ];  then
-#  OPTS="$OPTS  --enable-dnotify"
-#else
-#  OPTS="$OPTS  --disable-dnotify"
-#fi  &&
-
-OPTS="$OPTS  --with-distribution"  &&
+OPTS="$KDE_DEBUG                         \
+      $KDE_FINAL                         \
+      $KDE_DNOTIFY                       \
+      $KDE_LDFLAGS                       \
+      --with-distribution                \
+      --disable-dependency-tracking      \
+      kde_confdir=$INSTALL_ROOT/etc/kde  \
+      $OPTS"                             &&
 
 default_build
