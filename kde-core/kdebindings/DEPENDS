@@ -37,10 +37,10 @@ optional_depends  ruby                 \
 
 optional_depends  gtk+                     \
                   ''                       \
-                  ''                       \
+                  '--disable-gtktest'      \
                   'for GTK+ 1.x bindings'  &&
 
-optional_depends  glib                 \
-                  ''                   \
-                  ''                   \
+optional_depends  glib                  \
+                  ''                    \
+                  '--disable-glibtest'  \
                   'for GLIB bindings'
