@@ -7,23 +7,23 @@ then
 	message "${PROBLEM_COLOR}updates properly, You Have Been Warned!!${DEFAULT_COLOR}"
 	case "`uname -m`" in
 		powerpc)
-			if [ -f /etc/yaboot.conf ] ; then
+			if [ -f /etc/yaboot.conf ] && [ ! -z $(installed_version yaboot) ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/yaboot.conf.tmplt" "/etc/yaboot.conf.tmplt"
 			else
 				NO_CONFIG="true"
 			fi
 			;;
 		sparc*)
-			if [ -f /etc/silo.conf ] ; then
+			if [ -f /etc/silo.conf ] && [ ! -z $(installed_version silo) ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/silo.conf.tmplt" "/etc/silo.conf.tmplt"
 			else
 				NO_CONFIG="true"
 			fi
 			;;
 		*)
-			if [ -f /etc/lilo.conf ] ; then
+			if [ -f /etc/lilo.conf ] && [ ! -z $(installed_version lilo) ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt" "/etc/lilo.conf.tmplt"
-			elif [ -f /boot/grub/menu.lst ] ; then
+			elif [ -f /boot/grub/menu.lst ] && [ ! -z $(installed_version grub) ] ; then
 				install_config_file "$SCRIPT_DIRECTORY/templates/menu.lst.tmplt" "/boot/grub/menu.lst.tmplt"
 			else
 				NO_CONFIG="true"
