@@ -1,3 +1,16 @@
+2005-06-09 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED
+
+2005-06-06 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Use --with-pythondir to give path to python libs
+	  Optionally depends on OPENGL, perl, ruby, glib, and gtk+
+	* PRE_BUILD: Apply parallel-make.diff
+	* BUILD: Pass --with-smoke=kde to OPTS
+	  Removed make_single and make_normal
+	* parallel-make.diff: Patch from http://bugs.kde.org/show_bug.cgi?id=92362
+	  that allows kdebindings to build in parallel
+	  Updated patch for kdebindings 3.4.1
+
 2005-05-31 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 3.4.1
 

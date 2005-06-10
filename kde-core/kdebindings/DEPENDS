@@ -4,18 +4,43 @@ depends  automake    &&
 
 source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
 
-optional_depends  JAVA                \
-                  ""                  \
-                  "--without-java"    \
-                  "for Java support"  &&
+optional_depends  OPENGL                 \
+                  '--with-gl'            \
+                  '--without-gl'         \
+                  'for 3D OpenGL modes'  &&
 
-optional_depends  python                 \
-                  ""                     \
-                  ""                     \
-                  "for Python bindings"  &&
+optional_depends  JAVA                \
+                  ''                  \
+                  '--without-java'    \
+                  'for Java support'  &&
+
+optional_depends  python                                                  \
+                  "--with-pythondir=/usr/share/python$(installed_version  \
+                   python | cut -d. -f1,2)"                               \
+                  ''                                                      \
+                  'for Python bindings'                                   &&
 
 optional_depends  mono                                               \
-                  "--with-cs-compiler=mcs  --with-mcs=/usr/bin/mcs"  \
-                  "--without-mcs"                                    \
-                  "for C#/QT# bindings"
+                  '--with-cs-compiler=mcs  --with-mcs=/usr/bin/mcs'  \
+                  '--without-mcs'                                    \
+                  'for C#/QT# bindings'
 
+optional_depends  perl                 \
+                  ''                   \
+                  ''                   \
+                  'for Perl bindings'  &&
+
+optional_depends  ruby                 \
+                  ''                   \
+                  ''                   \
+                  'for Ruby bindings'  &&
+
+optional_depends  gtk+                     \
+                  ''                       \
+                  ''                       \
+                  'for GTK+ 1.x bindings'  &&
+
+optional_depends  glib                 \
+                  ''                   \
+                  ''                   \
+                  'for GLIB bindings'

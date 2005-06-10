@@ -1,5 +1,13 @@
 depends  kdelibs  &&
 
-optional_depends  flite  ""  ""  "for flite text-to-speech support"
+source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
 
+optional_depends  flite                               \
+                  '--enable-kttsd-flite'              \
+                  '--disable-kttsd-flite'             \
+                  'for flite text-to-speech support'  &&
 
+optional_depends  gstreamer                     \
+                  '--enable-kttsd-gstreamer'    \
+                  '--disable-kttsd-gstreamer'   \
+                  'for GStreamer audio plugin'
