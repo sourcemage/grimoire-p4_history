@@ -1,3 +1,15 @@
+2005-06-10 Eric Sandall <eric@sandall.us>
+	* kde-core/{KDE_BUILD,KDE_CONFIGURE},
+	  kde-apps/{KDE_BUILD,KDE_CONFIGURE}: Don't change config_query types
+	  and still use the same variable name (e.g. KDE_DEBUG was
+	  config_query, but then I changed it to config_query_option, so now if
+	  you don't use `cast -r <kde spell>` you'll get a "n" or "y" in your
+	  KDE_DEBUG variable along with the --*-debug flag, which'll break
+	  ./configure (thanks to George Sherwood for finding this problem)
+	  So I've renamed the variables that used to use config_query and now
+	  use config_query_option (KDE_DEBUG and KDE_FINAL only) and updated
+	  http://wiki.sourcemage.org/index.php?page=CONFIGURE
+
 2005-06-08 Ladislav Hagara <hgr@vabo.cz>
 	* x11-libs/MesaLib: removed deprecated spell
 
@@ -5,18 +17,20 @@
 	* kde-core/KDE_CONFIGURE: Added query for new ldflags support.
 	  Change most queries to config_query_option (since they have flags).
 	* kde-core/KDE_BUILD: Pass query flags to OPTS (simplified KDE_BUILD).
-	  Pass --disable-dependency-tracking to speed up builds (enabling this is
-	  only useful if you're going to be compiling in the same tree more than
-	  once).
-	  Pass kde_confdir=$INSTALL_ROOT/etc/kde so that config files are installed
-	  into /etc/kde instead of /usr/share/config. I haven't tested this with
-	  anything other than the default INSTALL_ROOT so I'm not sure if packages
-	  will load correctly (since they may have INSTALL_ROOT built into their
-	  config), but the files do need to go to INSTALL_ROOT/etc/kde, not
+	  Pass --disable-dependency-tracking to speed up builds (enabling this
+	  is only useful if you're going to be compiling in the same tree more
+	  than once).
+	  Pass kde_confdir=$INSTALL_ROOT/etc/kde so that config files are
+	  installed into /etc/kde instead of /usr/share/config. I haven't
+	  tested this with anything other than the default INSTALL_ROOT so I'm
+	  not sure if packages will load correctly (since they may have
+	  INSTALL_ROOT built into their config), but the files do need to go to
+	  INSTALL_ROOT/etc/kde, not
 	  TRACK_ROOT/etc/kde.
 	* kde-apps/ChangeLog: Pulled entries into ChangeLog and removed
 	  kde-apps/ChangeLog
-	* kde-apps/{KDE_BUILD,KDE_CONFIGURE,KDE_DEPENDS: Synced with kde-core files
+	* kde-apps/{KDE_BUILD,KDE_CONFIGURE,KDE_DEPENDS: Synced with kde-core
+	  files
 
 2005-06-05 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* Added spell utils/nut
