@@ -1,3 +1,19 @@
+2005-06-06 Eric Sandall <eric@sandall.us>
+	* kde-core/KDE_CONFIGURE: Added query for new ldflags support.
+	  Change most queries to config_query_option (since they have flags).
+	* kde-core/KDE_BUILD: Pass query flags to OPTS (simplified KDE_BUILD).
+	  Pass --disable-dependency-tracking to speed up builds (enabling this is
+	  only useful if you're going to be compiling in the same tree more than
+	  once).
+	  Pass kde_confdir=$INSTALL_ROOT/etc/kde so that config files are installed
+	  into /etc/kde instead of /usr/share/config. I haven't tested this with
+	  anything other than the default INSTALL_ROOT so I'm not sure if packages
+	  will load correctly (since they may have INSTALL_ROOT built into their
+	  config), but the files do need to go to INSTALL_ROOT/etc/kde, not
+	  TRACK_ROOT/etc/kde.
+	* kde-apps/ChangeLog: Pulled entries into ChangeLog and removed
+	  kde-apps/ChangeLog
+
 2005-06-05 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* Added spell utils/nut
 
@@ -433,6 +449,15 @@
 2004-10-30 George Sherwood <george@beernabeer.com>
 	* chat-im/gabber: removed deprecated spell
 
+2004-10-18 Eric Sandall <eric@sandall.us>
+	* kde/kdelibs/CONFIGURE: Removed commented out code
+	* kde/KDE_BUILD, KDE_CONFIGURE: Remove unset hack and use config_query instead of
+	  config_query_option
+	* kde/KDE_CONFIGURE: Added commented out dnotify support (untested)
+
+2004-10-16 Eric Sandall <eric@sandall.us>
+	* kde/KDE_BUILD: Remove debugging code
+
 2004-10-15 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* graphics-libs/glut: spell moved to z-rejected, it's not free
 
@@ -459,6 +484,14 @@
 	* e/estyle: removed deprecated spell, merged into etox
 	* crypto/newpg: removed deprecated spell, merged into gnupg-exp
 	* crypto/kgpg: removed deprecated spell, merged into kdeutils
+
+2004-09-23 Eric Sandall <eric@sandall.us>
+	* kde/KDE_CONFIGURE: Converted to config_query
+	  Renamed DEVEL to use KDE_DEVEL
+	* kde/KDE_DEPENDS, KDE_DETAILS, KDE_BUILD: Added for KDE-generic scripts
+	* KDE now defaults to using distcc and disabling final
+	  (the KDE docs say final is experimental, why do we use it by default?)
+	  Fixes Bug #6356
 
 2004-09-15 Eric Sandall <eric@sandall.us>
 	* libs/ACE: Removed deprecated spell
@@ -522,6 +555,27 @@
 	* doc/TeX-misc: Removed deprecated spell
 	* doc/teTeX-texmf: Removed deprecated spell
 	* doc/teTeX: Removed deprecated spell
+
+2004-08-20 Eric Schabell <eschabell@sourcemage.org>
+	* kde/kde-profile: entire depends tree kde 3.3!
+	* kde/arts: upgraded stable to 1.3.0 release. 
+	* kde/kdelibs: upgraded to kde 3.3.
+	* kde/kdebase: upgraded to kde 3.3.
+	* kde/kdeaddons: upgraded to kde 3.3.
+	* kde/kdeadmin: upgraded to kde 3.3.
+	* kde/kdeartwork: upgraded to kde 3.3.
+	* kde/kdenetwork: upgraded to kde 3.3.
+	* kde/kdebindings: upgraded to kde 3.3.
+	* kde/kdeedu: upgraded to kde 3.3.
+	* kde/kdegames: upgraded to kde 3.3.
+	* kde/kdegraphics: upgraded to kde 3.3.
+	* kde/kdemultimedia: upgraded to kde 3.3.
+	* kde/kdepim: upgraded to kde 3.3.
+	* kde/kdesdk: upgraded to kde 3.3.
+	* kde/kdetoys: upgraded to kde 3.3.
+	* kde/kdeutils: upgraded to kde 3.3.
+	* kde/kdevelop: upgraded to kde 3.3 (v3.1.0).
+	* kde/kdewebdev: upgraded to kde 3.3.
 
 2004-08-06 Eric Sandall <eric@sandall.us>
 	* devel/FlowDesigner: Removed deprecated spell
@@ -691,6 +745,15 @@
 
 2004-06-04 Jason Flatt <jflatt@sorcemage.org>
 	* kernels/splashutils: Renamed to kernels/bootsplash
+
+2004-06-03 Treeve Jelbert <treeve01@pi.be>
+	* kde/*: most of the spells in the kde section have now been converted to
+	  BUILD_API=2 this means that sorcery-1.10 is required most of the kde
+	  spells now have a configure option to allow the user to choose either
+	  the stable or development verion of kde. the default is the stable
+	  version.
+	  Currently version 3.2.2  and 3.2.90 are provided 3.2.2 has problems with
+	  gcc-3.4.0, whereas 3.2.90 builds correctly
 
 2004-05-24 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* video/MPlayer-cvs: removed deprecated MPlayer-cvs spell, MPlayer

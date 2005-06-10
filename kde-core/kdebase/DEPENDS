@@ -10,42 +10,47 @@ depends  kdelibs  &&
 
 source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
 
+optional_depends  OPENGL                 \
+                  '--with-gl'            \
+                  '--without-gl'         \
+                  'for 3D OpenGL modes'  &&
+
+optional_depends  shadow                         \
+                  '--with-shadow'                \
+                  '--without-shadow'             \
+                  'for shadow password support'  &&
+
 optional_depends  linux-pam                 \
-                  "--with-pam=yes"          \
-                  "--with-pam=no"           \
-                  "for PAM authentication"  &&
+                  '--with-pam=yes'          \
+                  '--with-pam=no'           \
+                  'for PAM authentication'  &&
 
 optional_depends  openldap                   \
-                  "--with-ldap"              \
-                  "--without-ldap"           \
-                  "for LDAP authentication"  &&
-
-optional_depends  cdparanoia              \
-                  ""                      \
-                  ""                      \
-                  "to rip compact disks"  &&
-
-optional_depends  lame                    \
-                  ""                      \
-                  ""                      \
-                  "to rip compact disks"  &&
+                  '--with-ldap'              \
+                  '--without-ldap'           \
+                  'for LDAP authentication'  &&
 
 optional_depends  JAVA                      \
-                  ""                        \
-                  "--without-java"          \
-                  "for JavaScript support"  &&
+                  ''                        \
+                  '--without-java'          \
+                  'for JavaScript support'  &&
 
 optional_depends  libraw1394              \
-                  ""                      \
-                  ""                      \
-                  "for firewire support"  &&
+                  ''                      \
+                  ''                      \
+                  'for firewire support'  &&
 
 optional_depends  cyrus-sasl                       \
-                  ""                               \
-                  ""                               \
-                  "for Cyrus SASL authentication"  &&
+                  ''                               \
+                  ''                               \
+                  'for Cyrus SASL authentication'  &&
+
+optional_depends  openssl                         \
+                  '--with-ssl'                    \
+                  '--without-ssl'                 \
+                  'to use encrypted connections'  &&
 
 optional_depends  hal                                 \
-                  ""                                  \
-                  ""                                  \
-                  "for automatic hardware detection"
+                  '--with-hal'                        \
+                  '--without-hal'                     \
+                  'for automatic hardware detection'

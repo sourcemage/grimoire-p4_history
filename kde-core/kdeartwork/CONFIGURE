@@ -1,9 +1,4 @@
-source $SECTION_DIRECTORY/KDE_CONFIGURE
+source  $SECTION_DIRECTORY/KDE_CONFIGURE  &&
 
-#
-# Fails when disabling OpenGL
-#
-#config_query_option  KDEARTWORK_GL             \
-#                     "Enable 3D GL modes?"  y  \
-#                     "--with-gl"               \
-#                     "--without-gl"
+config_query_option  KDEARTWORK_DPMS  'Enable DPMS power saving?'  y  \
+                     '--with-dpms'  '--without-dpms'

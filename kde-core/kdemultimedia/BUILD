@@ -1,1 +1,4 @@
+OPTS="$KDEMULTIMEDIA_CDDA  \
+      $OPTS"               &&
+
 source  $SECTION_DIRECTORY/KDE_BUILD
