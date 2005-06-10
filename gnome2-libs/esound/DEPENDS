@@ -3,10 +3,10 @@ depends "audiofile" &&
 optional_depends alsa-lib                          \
 		 "--enable-alsa"                   \
 		 "--disable-alsa"                  \
-		 "Enable use of alsa sound driver" &&
+		 "Enable use of alsa sound driver" 
 
-optional_depends arts                              \
-                 "--enable-arts"                   \
-                 "--disable-arts"                  \
-                 "Enable use of arts sound driver"
+#optional_depends arts                              \
+#                 "--enable-arts"                   \
+#                 "--disable-arts"                  \
+#                 "Enable use of arts sound driver"
 
