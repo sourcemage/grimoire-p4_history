@@ -1,7 +1,7 @@
-diff -Naur qingy-0.5.3.orig/media/Makefile.in qingy-0.5.3/media/Makefile.in
---- qingy-0.5.3.orig/media/Makefile.in	2005-06-02 16:31:09.438777192 -0700
-+++ qingy-0.5.3/media/Makefile.in	2005-06-02 16:41:19.050102184 -0700
-@@ -254,42 +254,6 @@
+diff -Naur qingy-0.6.0.orig/media/Makefile.in qingy-0.6.0/media/Makefile.in
+--- qingy-0.6.0.orig/media/Makefile.in	2005-06-11 09:45:28.085391488 -0700
++++ qingy-0.6.0/media/Makefile.in	2005-06-11 09:45:59.110674928 -0700
+@@ -257,42 +257,6 @@
  
  clean-lisp:
  	-rm -f elc-stamp $(ELCFILES)
@@ -44,7 +44,7 @@ diff -Naur qingy-0.5.3.orig/media/Makefile.in qingy-0.5.3/media/Makefile.in
  
  # This directory's subdirectories are mostly independent; you can cd
  # into them and run `make' without going through this Makefile.
-@@ -507,8 +471,7 @@
+@@ -510,8 +474,7 @@
  
  info-am:
  
@@ -54,7 +54,7 @@ diff -Naur qingy-0.5.3.orig/media/Makefile.in qingy-0.5.3/media/Makefile.in
  
  install-exec-am:
  
-@@ -534,8 +497,7 @@
+@@ -537,8 +500,7 @@
  
  ps-am:
  
@@ -64,7 +64,7 @@ diff -Naur qingy-0.5.3.orig/media/Makefile.in qingy-0.5.3/media/Makefile.in
  
  uninstall-info: uninstall-info-recursive
  
-@@ -545,18 +507,18 @@
+@@ -548,18 +510,18 @@
  	distclean-recursive distclean-tags distdir dvi dvi-am \
  	dvi-recursive info info-am info-recursive install install-am \
  	install-data install-data-am install-data-recursive \
