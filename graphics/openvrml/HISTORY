@@ -1,3 +1,12 @@
+2005-06-10 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.15.8
+	* CONFIGURE: Converted to config_query_option (renamed variables)
+	  Enable all working queries by default
+	* DEPENDS: Clean up for new config_query_options
+	  Depends on fontconfig if enabling text
+	* BUILD: Pass options to OPTS from CONFIGURE and append $OPTS last
+	  Explicity disable Script node Java support
+
 2005-02-02 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated to 0.15.6
 	* DEPENDS: Enabled mozilla plugin
@@ -14,8 +23,8 @@
 	* CONFIGURE,DEPENDS,BUILD: Removed MOZJS, it's deprecated
 	  See the lookat bug below
 	  Enable lookat
-	* 1098805.patch: Added to fix --disable-script-node-javascript until 0.15.5
-	  comes out
+	* 1098805.patch: Added to fix --disable-script-node-javascript until
+	  0.15.5 comes out
 	* PRE_BUILD: Apply 1098805.patch
 
 2005-01-08 Eric Sandall <eric@sandall.us>

@@ -5,10 +5,14 @@ depends  zlib    &&
 depends  libpng  &&
 depends  jpeg    &&
 
-if  [  "$OPENVRML_JS"     =  "y"  -o  \
-       "$OPENVRML_JAVA"   =  "y"      ];  then
+if  [  "$OPENVRML_JS_OPTION"     ==  '--enable-script-node-javascript'  -o  \
+       "$OPENVRML_JAVA_OPTION"   ==  '--enable-script-node-java'        ];  then
   depends  JAVA             &&
   depends  MOZILLA-BROWSER
+fi  &&
+
+if  [  "$OPENVRML_TEXT_OPTION"  ==  '--enable-text-node'  ];  then
+  depends  fontconfig
 fi  &&
 
 optional_depends  gzip                         \
