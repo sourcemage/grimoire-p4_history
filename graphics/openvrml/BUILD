@@ -8,6 +8,7 @@ OPTS="--disable-tests             \
       $OPENVRML_JAVA_OPTION       \
       $OPENVRML_JS_OPTION         \
       $OPENVRML_LOOKAT_OPTION     \
+      $OPENVRML_MOZILLA_PLUGIN    \
       $OPTS"                      &&
 
 default_build

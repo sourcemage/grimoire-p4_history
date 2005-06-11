@@ -15,17 +15,22 @@ if  [  "$OPENVRML_TEXT_OPTION"  ==  '--enable-text-node'  ];  then
   depends  fontconfig
 fi  &&
 
+if  [  "$OPENVRML_MOZILLA_PLUGIN"  ==  '--enable-mozilla-plugin'  ];  then
+  depends  MOZILLA-BROWSER  &&
+  depends  gtk+2
+fi  &&
+
 optional_depends  gzip                         \
                   "--enable-gzip"              \
                   "--disable-gzip"             \
                   "for GZIPped world support"  &&
 
-optional_depends  MOZILLA-BROWSER                      \
-                  "--enable-mozilla-plugin"            \
-                  "--disable-mozilla-plugin"           \
-                  "for Mozilla plug-in (experimental"  &&
-
 optional_depends  OPENGL                   \
                   "--enable-gl-renderer"   \
                   "--disable-gl-renderer"  \
-                  "for OpenGL renderer"
+                  "for OpenGL renderer"    &&
+
+optional_depends  doxygen                    \
+                  ''                         \
+                  ''                         \
+                  'for extra documentation'

@@ -2,8 +2,11 @@
 	* DETAILS: Updated to 0.15.8
 	* CONFIGURE: Converted to config_query_option (renamed variables)
 	  Enable all working queries by default
+	  Query for mozilla plug-in
 	* DEPENDS: Clean up for new config_query_options
 	  Depends on fontconfig if enabling text
+	  Optionally depends on doxygen and gtk+2 (for mozilla plug-in)
+	  Change optional depends on MOZILLA-BROWSER to a check for the query
 	* BUILD: Pass options to OPTS from CONFIGURE and append $OPTS last
 	  Explicity disable Script node Java support
 
