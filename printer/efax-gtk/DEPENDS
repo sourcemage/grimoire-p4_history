@@ -1,2 +1,12 @@
-depends  efax    &&
-depends  gtkmm2
+depends  gtk+2                   &&
+depends  POSTSCRIPT-INTERPRETER  &&
+
+optional_depends  gettext                        \
+                  '--enable-nls'                 \
+                  '--disable-nls'                \
+                  'for Native Language Support'  &&
+
+optional_depends  nail                   \
+                  ''                     \
+                  ''                     \
+                  'for mail_fax script'
