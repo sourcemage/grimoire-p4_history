@@ -1,3 +1,14 @@
+2005-06-11 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.6.0
+	* CONFIGURE: Added query for communication encryption, screen savers,
+	  optimizations, and static builds
+	  Removed power keys option (now customizable in the config)
+	* DEPENDS: Added optional dependency on shadow
+	  Added flags for gpm locking
+	* BUILD: Pass query flags to OPTS
+	  Have OPTS passed last so user config overrides our settings
+	* config.patch,shutdown.patch: Updated to 0.6.0
+
 2005-06-02 Eric Sandall <eric@sandall.us>
 	* PRE_BUILD: Patch $SOURCE_DIRECTORY/media/Makefile.in with our
 	  config.patch
