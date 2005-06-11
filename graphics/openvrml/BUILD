@@ -1,17 +1,13 @@
 #
 # Tests need some "DejaGNU" package...
 #
-OPTS="--disable-tests          \
-      $OPENVRML_IMAGE_OPTION   \
-      $OPENVRML_TEXT_OPTION    \
-      $OPENVRML_JAVA_OPTION    \
-      $OPENVRML_JS_OPTION      \
-      $OPENVRML_LOOKAT_OPTION  \
-      $OPTS"                   &&
-
-#
-# Mozilla plugin is broken with mozilla 1.7.5
-#
-#OPTS="$OPTS  --disable-mozilla-plugin"  &&
+OPTS="--disable-tests             \
+      --disable-script-node-java  \
+      $OPENVRML_IMAGE_OPTION      \
+      $OPENVRML_TEXT_OPTION       \
+      $OPENVRML_JAVA_OPTION       \
+      $OPENVRML_JS_OPTION         \
+      $OPENVRML_LOOKAT_OPTION     \
+      $OPTS"                      &&
 
 default_build
