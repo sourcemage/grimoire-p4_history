@@ -1,2 +1,2 @@
-  default_install &&
-  mkdir -p /etc/ndiswrapper
+make KVERS=$(get_kernel_version) install &&
+mkdir -p /etc/ndiswrapper
