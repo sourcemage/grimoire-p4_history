@@ -1,10 +1,10 @@
            SPELL=gimp
        BUILD_API=2
 
-if [ "$DEVEL" == "y" ];then
-         VERSION=2.3.0
+if [ "$GIMP_DEVEL" == "y" ];then
+         VERSION=2.3.1
           SOURCE=$SPELL-$VERSION.tar.bz2
-          MD5[0]=4d64659576bcb4b853a12ef08985cdbb
+          MD5[0]=c9f5e9ab791d40846e2aa780517a24a4
    SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/$SOURCE
 else
          VERSION=2.2.7
