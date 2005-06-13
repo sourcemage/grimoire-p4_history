@@ -1,3 +1,7 @@
+if [ "$GIMP_DEVEL" == "y" ];then
+  depends pygtk2
+fi  &&
+
 depends  gtk+2        &&
 depends  libart_lgpl  &&
 depends  xml-parser-expat &&
