@@ -1,3 +1,4 @@
+invoke_gcc           &&
 mkdir  -p  ${INSTALL_ROOT}/var/chroot/ntp/
 
 create_account  ntp  &&
