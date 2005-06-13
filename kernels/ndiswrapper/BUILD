@@ -1,2 +1,1 @@
-  export KVER=$(installed_version linux) &&
-  CC=gcc make 
+make CC=gcc KVERS=$(get_kernel_version)
