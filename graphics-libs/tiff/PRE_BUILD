@@ -1,3 +1,5 @@
-default_pre_build &&
-cd ${SOURCE_DIRECTORY} &&
-patch -p0 < ${SCRIPT_DIRECTORY}/patches/tiff-3.7.2-buffer_check.patch
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+aclocal                &&
+autoconf               &&
+patch  -p0  <  $SCRIPT_DIRECTORY/patches/tiff-3.7.2-buffer_check.patch
