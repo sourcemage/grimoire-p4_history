@@ -1,3 +1,8 @@
+2005-06-13 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added BUILD_API=2
+	* DEPENDS: Depends on automake (Bug #8957) and pkgconfig
+	* BUILD: Run aclocal && autoconf before default_build (Bug #8957)
+
 2004-12-14 Eric Sandall <eric@sandall.us>
 	* PRE_BUILD: Apply g++ removal patch:
 	* g++.patch.bz2: Remove g++ checks from configure, otherwise
