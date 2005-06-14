@@ -13,6 +13,13 @@ if  [[ $HOST != $BUILD ]]; then
   CROSS_COMPILE="${HOST}-"
 fi
 
+case "${HOST}" in
+  powerpc-*)
+    # we need to remove -s from LDFLAGS on powerpc
+    unset LDFLAGS
+    ;;
+esac
+
 echo "ARCH is '${ARCH}', CROSS_COMPILE is '${CROSS_COMPILE}'"
 
 run_make() {
