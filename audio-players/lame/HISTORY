@@ -1,3 +1,10 @@
+2005-06-13 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on automake (Bug #8957)
+	* BUILD: Run aclocal && autoconf before default_build (Bug #8957)
+	  Remove references to gtk+. I don't know wtf this is doing here, but
+	  lame doesn't seem to use it even though it has many checks for it.
+	* g++.patch.bz2,PRE_BUILD: Removed (Bug #8957)
+
 2004-12-14 Eric Sandall <eric@sandall.us>
 	* PRE_BUILD: Apply g++ removal patch:
 	* g++.patch.bz2: Remove g++ checks from configure, otherwise
