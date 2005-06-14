@@ -1,11 +1,2 @@
-### krusader requires that KDEDIR be set to .configure 
-  export KDEDIR=/usr &&
-
-  ./configure --prefix=${INSTALL_ROOT}/usr  \
-          --sysconfdir=${INSTALL_ROOT}/etc  \
-       --localstatedir=${INSTALL_ROOT}/var  \
-              --mandir=${INSTALL_ROOT}/usr/share/man   \
-             --infodir=${INSTALL_ROOT}/usr/share/info  \
-                       $OPTS                 &&
-  make &&
-  unset KDEDIR
+OPTS="$OPTS  --disable-final"                                   &&
+KDEDIR=$INSTALL_ROOT/usr  source  $SECTION_DIRECTORY/KDE_BUILD

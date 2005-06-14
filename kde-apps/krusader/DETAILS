@@ -1,14 +1,15 @@
+source  $SECTION_DIRECTORY/KDE_DETAILS
            SPELL=krusader
-         VERSION=1.50
+         VERSION=1.60.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]=494f5ce7458afdfa2ecddd1ec08a3008
         WEB_SITE=http://krusader.sourceforge.net
-      BUILD_API=2
          ENTERED=20011126
          UPDATED=20030725
-          MD5[0]='b29deeb813c06a10bf5df5452ceb3abb'
       LICENSE[0]=GPL
+       BUILD_API=2
            SHORT="KDE Twin-Panel filemanager"
 cat << EOF
 Krusader is an "old-school" file manager. Its twin-panel look follows in
