@@ -1,10 +1,12 @@
            SPELL=xsvg
-         VERSION=0.2.0
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://cairographics.org/snapshots/$SOURCE
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+#   SOURCE_URL[0]=http://cairographics.org/snapshots/$SOURCE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.cairographics.org:/cvs/cairo:xsvg
+  FORCE_DOWNLOAD=on
         WEB_SITE=http://www.xsvg.org
-          MD5[0]=bb583726f442d95ed0a30ea1725a9822
+          MD5[0]=IGNORE
       LICENSE[0]=BSD
          ENTERED=20040617
          UPDATED=20040617
