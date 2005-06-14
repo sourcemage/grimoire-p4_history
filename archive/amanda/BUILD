@@ -9,4 +9,6 @@ OPTS="$OPTS                 \
       --with-user=backup    \
       --with-group=backup"  &&
 
-default_build
+make_single    &&
+default_build  &&
+make_normal
