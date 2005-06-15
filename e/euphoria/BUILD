@@ -1,2 +1,1 @@
-./autogen.sh   &&
-default_build
+sedit "s:/local::" Rakefile
