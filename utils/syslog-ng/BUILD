@@ -1,10 +1,10 @@
 sedit  "s/-O2/$CFLAGS/"  configure
 
 ./configure  --build=$BUILD                            \
-             --prefix=${INSTALL_ROOT}/usr              \
-             --sysconfdir=${INSTALL_ROOT}/etc          \
-             --localstatedir=${INSTALL_ROOT}/var/run   \
-             --sbindir=${INSTALL_ROOT}/sbin            \
+             --prefix=${TRACK_ROOT}/usr              \
+             --sysconfdir=${TRACK_ROOT}/etc          \
+             --localstatedir=${TRACK_ROOT}/var/run   \
+             --sbindir=${TRACK_ROOT}/sbin            \
              $OPTS                                     &&
 
-make
+make DESTDIR=${INSTALL_ROOT}
