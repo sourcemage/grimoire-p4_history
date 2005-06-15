@@ -1,5 +1,4 @@
-make install DESTDIR=${INSTALL_ROOT}
-
+make install DESTDIR=${INSTALL_ROOT} &&
 if  [  !  -f  ${INSTALL_ROOT}/etc/syslog-ng/syslog-ng.conf  ];
 then
 
