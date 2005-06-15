@@ -6,9 +6,9 @@ if  !  [  -d  ${INSTALL_ROOT}/root/.gnupg  ];  then
   mkdir  -p         ${INSTALL_ROOT}/root/.gnupg  &&
   chown  root:root  ${INSTALL_ROOT}/root/.gnupg  &&
   chmod  0750       ${INSTALL_ROOT}/root/.gnupg  &&
-  #export HOME=${INSTALL_ROOT}/root &&
+  export HOME=${INSTALL_ROOT}/root &&
   gpg  --list-keys  >  /dev/null  2>&1
-  #export HOME=/root
+  export HOME=/root
 fi &&
 if  !  [  -d  /root/.gnupg  ];  then
   mkdir  -p         /root/.gnupg  &&
