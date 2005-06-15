@@ -32,7 +32,7 @@ if [[ "$mode" == "newktree" ]]
 then
 	mk_source_dir $LINUX_SOURCE_DIRECTORY &&
 	cd $LINUX_SOURCE_DIRECTORY &&
-	unpack_file '' &&
+	unpack ${SOURCE} ${MD5[0]} &&
 	mv ./*/* ./ &&
 	
 	. ${SCRIPT_DIRECTORY}/latest.defaults &&
