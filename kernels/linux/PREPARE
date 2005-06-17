@@ -679,6 +679,7 @@ calculate_depends()
 	# create Makefile
 	dependslist=""
 	new_patches_list=""
+	all_patches_list=""
 	. $latestdefaults
 	if [[ "$selected_patches" != "" ]]
 	then
@@ -688,7 +689,7 @@ calculate_depends()
 			case "${patch}" in
 				LATEST*)
 					source_patch ${!patch}
-					patch=${!patch}
+					#patch=${!patch}
 				;;
 				*)
 					source_patch ${patch}
@@ -697,14 +698,30 @@ calculate_depends()
 			if [ "$post_patch" != "" ]
 			then
 				new_patches_list="${new_patches_list}${patch} ${post_patch} "
+				case "${patch}" in
+					LATEST*)
+						all_patches_list="${all_patches_list}${!patch} ${post_patch} "
+					;;
+					*)
+						all_patches_list="${all_patches_list}${patch} ${post_patch} "
+					;;
+				esac
 			else
 				new_patches_list="${new_patches_list}${patch} "
+				case "${patch}" in
+					LATEST*)
+						all_patches_list="${all_patches_list}${!patch} "
+					;;
+					*)
+						all_patches_list="${all_patches_list}${patch} "
+					;;
+				esac
 			fi
 		done
 		rm $dependsmakefile
 		(
 		makefile_targets="all "
-		echo "all: $new_patches_list"
+		echo "all: $all_patches_list"
 		echo ""
 		for i in $new_patches_list
 		do
@@ -724,24 +741,37 @@ rec_dep_make()
 	case "$1" in
 		LATEST*)
 			source_patch ${!1}
-			;;
+			if [[ "${depends}" == "" ]] 
+			then
+				makefile_targets="${makefile_targets} ${!1} "
+				echo "${!1}:"
+				echo "	@echo -n \"${1} \""
+				echo ""
+			else
+				makefile_targets="${makefile_targets} ${!1} ${depends} "
+				echo "${!1}: ${depends}"
+				echo "	@echo -n \"${1} \""
+				echo ""
+				rec_dep_make ${depends}
+			fi	
+		;;
 		*)
 			source_patch ${1}
-			;;
+			if [[ "${depends}" == "" ]] 
+			then
+				makefile_targets="${makefile_targets} ${1} "
+				echo "${1}:"
+				echo "	@echo -n \"${1} \""
+				echo ""
+			else
+				makefile_targets="${makefile_targets} ${1} ${depends} "
+				echo "${1}: ${depends}"
+				echo "	@echo -n \"${1} \""
+				echo ""
+				rec_dep_make ${depends}
+			fi
+		;;
 	esac
-	if [[ "${depends}" == "" ]] 
-	then
-		makefile_targets="${makefile_targets} ${1} "
-		echo "${1}:"
-		echo "	@echo -n \"${1} \""
-		echo ""
-	else
-		makefile_targets="${makefile_targets} ${1} ${depends} "
-		echo "${1}: ${depends}"
-		echo "	@echo -n \"${1} \""
-		echo ""
-		rec_dep_make ${depends}
-	fi
 }
 
 # created details.defaults file to be sourced by DETAILS file for VERSION SOURCE_URL SOURCE
@@ -754,6 +784,8 @@ create_details()
 		*ktree)
 			# add required smgl patches
 			patches=""
+			patchvercheck=""
+			basekver=""
 			calculate_depends
 			(
 			depends=""
@@ -778,11 +810,17 @@ create_details()
 				echo "SOURCE${counter}_URL=\$source_url"
 				echo 'TXTMESSAGE="${TXTMESSAGE}${txtmessage} "'
 				echo 'SHORT="${SHORT}${short} "'
+				if [[ "" != "$patchversion" && "$patchvercheck" == "" ]]
+				then
+					basekver="$appliedkernels"
+					echo 'PATCHVER=${patchversion}'
+					patchvercheck="done"
+				fi
 				counter="`expr $counter + 1`"
 			done
-			if [[ "$appliedkernels" != "" && "$patchversion" != "" ]]
+			if [[ "$basekver" != "" ]]
 			then
-				kver="appliedkernels"
+				kver="$basekver"
 			fi
                         case "$kver" in
 				2.[0-9]*)
@@ -808,10 +846,10 @@ create_details()
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
-			if [[ ${patchversion} ]]
-			then
-				echo 'PATCHVER=${patchversion}'
-			fi
+			#if [[ ${patchversion} ]]
+			#then
+			#	echo 'PATCHVER=${patchversion}'
+			#fi
 			) > $detailsdefaults
 			;;
 		*)

@@ -1,3 +1,10 @@
+2005-06-16 David Brown <dmlb2000@excite.com>
+	* PREPARE: fixed bug where the appliedkernels var would be used improperly.
+	  basically bug went like this, select a patch that changed the kernel
+	  version then select a patch that had more than one appliedkernels version
+	  it would then use that variable instead of the one for the first patch.
+	  Yeah complicated.
+
 2005-06-16 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* latest.defaults: updated latest to grsecurity-2.1.6-2.6.11.12-200506141713.patch
 	* info/patches/grsecurity_2_6/grsecurity-2.1.6-2.6.11.12-200506141713.patch: added
