@@ -1,0 +1,4 @@
+default_pre_build &&
+cd ${SOURCE_DIRECTORY} &&
+patch -p1 < ${SCRIPT_DIRECTORY}/patches/tcpdump-3.8.3-DoS.patch &&
+patch -p0 < ${SCRIPT_DIRECTORY}/patches/tcpdump-bgp-infinite-loop2.patch
