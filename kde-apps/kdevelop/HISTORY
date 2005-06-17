@@ -1,3 +1,13 @@
+2005-06-17 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 3.2.1
+	  SOURCE_URL is for 3.4.1 branch of KDE now
+	* CONFIGURE: Converted to config_query
+	  Removed queries for g++ and g77 support (moved to DEPENDS)
+	* DEPENDS: Added optional dependencies on g++, g77, GHC
+	* BUILD: Remove commented out code
+	  Pass user $OPTS last
+	  Pass flags from CONFIGURE into $OPTS
+
 2005-03-30 Andrew Stitt <astitt@sourcemage.org>
 	* BUILD: remove relative paths to grimoire libraries
 	* CONFIGURE: remove relative paths to grimoire libraries
