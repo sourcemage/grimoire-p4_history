@@ -340,12 +340,12 @@ get_running_kernel_config()
 		# apparently you don't have proc mount
 		KVER=$(uname -r)
 	fi
-	if [ -f /boot/config-$KVER ] ; then
+	if [ -f /proc/config.gz ] ; then
+		echo $(zgrep "^$1=" /proc/config.gz | awk -F= '{ print $2 }')
+	elif [ -f /boot/config-$KVER ] ; then
 		echo $(grep "^$1=" /boot/config-$KVER | awk -F= '{ print $2 }')
 	elif [ -f /usr/src/linux-$KVER/.config ] ; then
 		echo $(grep "^$1=" /usr/src/linux-$KVER/.config | awk -F= '{ print $2 }')
-	elif [ -f /proc/config.gz ] ; then
-		echo $(zgrep "^$1=" /proc/config.gz | awk -F= '{ print $2 }')
 	else
 		echo "-1"
 	fi
