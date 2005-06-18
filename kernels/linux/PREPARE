@@ -784,7 +784,6 @@ create_details()
 		*ktree)
 			# add required smgl patches
 			patches=""
-			patchvercheck=""
 			basekver=""
 			calculate_depends
 			(
@@ -810,11 +809,11 @@ create_details()
 				echo "SOURCE${counter}_URL=\$source_url"
 				echo 'TXTMESSAGE="${TXTMESSAGE}${txtmessage} "'
 				echo 'SHORT="${SHORT}${short} "'
-				if [[ "" != "$patchversion" && "$patchvercheck" == "" ]]
+				if [[ "" != "$patchversion" ]]
 				then
 					basekver="$appliedkernels"
 					echo 'PATCHVER=${patchversion}'
-					patchvercheck="done"
+					patchversion=""
 				fi
 				counter="`expr $counter + 1`"
 			done
