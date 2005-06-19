@@ -1,5 +1,5 @@
 config_query_option  OPENVRML_MOZILLA_PLUGIN  'Build mozilla plug-in?'  y  \
-                     '--enable-mozilla-plugin'  --disable-mozilla-plugin'  &&
+                     '--enable-mozilla-plugin'  '--disable-mozilla-plugin'  &&
 
 config_query_option  OPENVRML_IMAGE_OPTION                   \
                      'Enable ImageTexture node support?'  y  \
@@ -10,7 +10,7 @@ config_query_option  OPENVRML_TEXT_OPTION   'Enable Text node support?'  y  \
               '--enable-text-node'  '--disable-text-node'                   &&
 
 #config_query_option  OPENVRML_JAVA_OPTION  'Enable Script node Java support'  \
-#                     n  '--enable-script-node-java'                           \
+#                     '--enable-script-node-java'                           \
 #                     '--disable-script-node-java'                             &&
 
 config_query_option  OPENVRML_JS_OPTION                           \
@@ -20,3 +20,4 @@ config_query_option  OPENVRML_JS_OPTION                           \
 
 config_query_option  OPENVRML_LOOKAT_OPTION  'Enable lookat?'  y  \
               '--enable-lookat'  '--disable-lookat'
+
