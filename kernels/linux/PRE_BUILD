@@ -47,7 +47,7 @@ then
 		esac &&
 		pval=1 &&
 		md5sum=""
-		tmp=$(find ${SCRIPT_DIRECTORY}/info/patches/*/${patch})
+		tmp=$(find ${SCRIPT_DIRECTORY}/info/patches/*/${patch} | head -n1)
 		. $tmp
 		. `dirname $tmp`/.info
 		if [ "$md5sum" != "" ]
