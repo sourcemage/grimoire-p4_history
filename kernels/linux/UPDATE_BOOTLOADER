@@ -69,34 +69,17 @@ update_lilo()  {
   if  !  grep  -q  "${VERSION}$"  /etc/lilo.conf;  then
 
     rm  -rf  /etc/lilo.conf.new
-    cp  /etc/lilo.conf  /etc/lilo.conf.old
+    cp  -a /etc/lilo.conf  /etc/lilo.conf.old
 
-    (( IMAGE_COUNT=0  ))
-
-    for  LINE  in  `cat /etc/lilo.conf`;  do
-
-      if   echo  $LINE  |  grep  -q  "image"  ||
-           echo  $LINE  |  grep  -q  "other"  ;  then
-        if  (( IMAGE_COUNT  == 0  ));  then
-          echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
-        fi
-        ((  IMAGE_COUNT++  ))
-      fi
-
-      if  ((  IMAGE_COUNT == 14  ));  then
-        break
-      fi
-    
-      echo  $LINE  >>  /etc/lilo.conf.new
-
-    done
-
-    if  ((  IMAGE_COUNT ==  0  ));  then
-      echo  -e  "`template_entry`"  >>  /etc/lilo.conf.new
-    fi
-
-    mv  /etc/lilo.conf.new  /etc/lilo.conf
-
+    IMAGE_COUNT=0 
+    awk -F= 'BEGIN { output=0 } \
+         $1 ~ /image/ { output=1 } \
+	 { if( output == 0 ) print $0 }' /etc/lilo.conf > /etc/lilo.conf.new
+    (template_entry)  >>  /etc/lilo.conf.new
+    awk -F= 'BEGIN { output=1 } \
+         $1 ~ /image/ { output=0 } \
+	 { if( output == 0 ) print $0 }' /etc/lilo.conf >> /etc/lilo.conf.new
+    cat /etc/lilo.conf.new > /etc/lilo.conf  
   fi
 
   /sbin/lilo
