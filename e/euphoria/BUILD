@@ -1,1 +1,2 @@
-sedit "s:/local::" Rakefile
+sedit "s:local/::" bin/euphoria  &&
+rake
