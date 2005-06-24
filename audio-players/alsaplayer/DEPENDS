@@ -25,6 +25,11 @@ optional_depends  "id3lib"            \
                   "--disable-id3lib"  \
                   "for ID3 tags"      &&
 
+optional_depends  "libid3tag"          \
+                  ""                   \
+                  ""                   \
+                  "for ID3 library support"   &&
+
 optional_depends  "xosd"                \
                   "--enable-xosd"       \
                   "--disable-xosd"      \
