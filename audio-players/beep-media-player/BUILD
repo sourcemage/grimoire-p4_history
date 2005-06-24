@@ -1,5 +1,5 @@
 if [ "$CVS" = "y" ]; then
-   ./scripts/gen-auto-scripts.sh -n $OPTS
+   ./autogen.sh -n $OPTS
 fi &&
 
 if [ "$ONEPLUGINDIR" = "y" ]; then
