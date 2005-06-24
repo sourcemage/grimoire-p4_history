@@ -1,3 +1,4 @@
+invoke_gcc                                          &&
 [[  $CROSS_INSTALL  ==  on  ]]  &&  OPTS="$OPTS  -host  ${HOST}"
 
 ./configure  -prefix  ${INSTALL_ROOT}/usr            \
