@@ -1,3 +1,4 @@
+invoke_gcc                                          &&
 [[  $CROSS_INSTALL  ==  on  ]]  &&  OPTS="$OPTS  -host  ${HOST}"
 
 ./configure  -prefix  ${INSTALL_ROOT}/usr            \
@@ -5,7 +6,6 @@
              ${OPTS}                                 &&
 
 make_single                                          &&
-invoke_gcc                                           &&
 make  world                                          &&
 make  opt                                            &&
 make  opt.opt                                        &&
