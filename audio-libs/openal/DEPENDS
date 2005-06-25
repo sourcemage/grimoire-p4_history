@@ -1,4 +1,6 @@
-depends  CVS       &&
+if [ "$OPENAL_CVS" == "y" ] ; then
+	depends  CVS       
+fi &&
 depends  autoconf  &&
 depends  automake  && 
 depends  libtool   &&
