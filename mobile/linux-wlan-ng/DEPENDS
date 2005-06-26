@@ -1,7 +1,2 @@
-. ${SPELL_CONFIG}
-if [ "$PCMCIA" == "y" ]
-then
-  depends pcmcia-cs
-fi				&&
-optional_depends hotplug "" "" \
-		"for easier support of pluggable devices"
+optional_depends pcmcia-cs "" "" "For pcmcia-cs cards" &&
+optional_depends hotplug "" "" "Ror easier support of pluggable devices"
