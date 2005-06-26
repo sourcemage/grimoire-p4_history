@@ -3,7 +3,7 @@ mk_source_dir  $SOURCE_DIRECTORY  		&&
 unpack         $SOURCE ${MD5[0]}		&&
 if [ "${PCMCIA}" == "y" ]
 then
-  echo using pcmcia				&&
+  message "${MESSAGE_COLOR}using pcmcia${DEFAULT_COLOR}"	&&
   VV=`installed_version pcmcia-cs`		&&
   mk_source_dir  pcmcia-cs-${VV} 			&&
   unpack pcmcia-cs-$VV.tar.gz $(echo "$(gaze DETAILS pcmcia-cs)" \
