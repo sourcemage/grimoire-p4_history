@@ -6,11 +6,4 @@ create_account clamav				&&
 
 #gpg 	--keyring $SCRIPT_DIRECTORY/clam.gpg	\
 #	--verify $SOURCE_CACHE/$SOURCE2 	&&
-default_pre_build                        	&&
-case $CLAMDMAIL in
-y|Y|j|J)
-	cd $SOURCE_DIRECTORY 				&&
-	unpack $SOURCE2 ${MD5[1]}			&&
-        patch -p0 < $SPELL_DIRECTORY/clamdmail-patches   ;;
-*) true;;
-esac
+default_pre_build
