@@ -1,3 +1,10 @@
+2005-06-27 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 0.8.2
+	* DEPENDS: added optional_depends on dirac and libpng
+	* BUILD: add -I/usr/include/dirac to CPPFLAGS so dirac is found
+	* PRE_BUILD: added sedit to fix png detection/linking
+	* PRE_BUILD, ffmpeg-api.patch: removed patch
+
 2005-05-27 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, DEPENDS, PRE_BUILD, mozilla-plugin.patch:
 	  support both firefox and mozilla, fixes bug #7713
