@@ -1,3 +1,13 @@
+2005-06-24 Eric Sandall <eric@sandall.us>
+	* PRE_BUILD: Patches moved from BUILD
+	  Apply contrib.patch
+	* BUILD: Pass --sysconfdir to OPTS
+	  Use default_build
+	  Removed patches
+	* DETAILS: Shortened SHORT
+	* contrib.patch: Install a2ps.el and a2ps-print.el to @datadir@/@PACKAGE@,
+	  and not '/'
+
 2005-04-10 David Brown <dmlb2000@excite.com>
 	* BUILD: added config.sub.patch for x86-64 support
 	* DETAILS: converted to build api 2
