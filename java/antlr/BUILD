@@ -1,18 +1,18 @@
-(
+if [ -f /etc/profile.d/java.sh ]; then
+  . /etc/profile.d/java.sh
+fi                                      &&
+. $SECTION_DIRECTORY/java-functions   &&
+  
+set_java_env  &&
 
-  . $SECTION_DIRECTORY/java-functions
-    
-  set_java_env				&&
-  
-  export PATH=$PATH:$JAVA_HOME/bin	&&
-  export CLASSPATH=.			&&
-  
-  java antlr.build.Tool build		&&
-  java antlr.build.Tool jar		&&
-  
-  prepare_install							&&
-  
-  extract_oth_src   ${SPELL} ${SPELL}-${VERSION}  $SOURCE_DIRECTORY     &&
-  register_oth_jar  ${SPELL}-${VERSION}/antlr.jar        antlr.jar   
+cd $SOURCE_DIRECTORY  &&
 
-)  >  $C_FIFO  2>&1
+./configure   --prefix=${INSTALL_ROOT}/usr  \
+          --sysconfdir=${INSTALL_ROOT}/etc  \
+       --localstatedir=${INSTALL_ROOT}/var  \
+              --mandir=${INSTALL_ROOT}/usr/share/man   \
+             --infodir=${INSTALL_ROOT}/usr/share/info  \
+                       $OPTS                 &&
+
+make           &&
+make install
