@@ -580,10 +580,11 @@ function cfg_hostname_enter() {
 #---
 function cfg_hostname_choose() {
 
-  local HOSTNAMELIST=`cat /usr/share/netconf/$1`
+  local HOSTNAMELIST=`cat /usr/share/netconf/$1 | awk '{print $1; print "\"\""}'`
 
   eval $DIALOG '  --title "Select hostname from $1 area"  \
            --ok-label  "Select"            \
+           --stdout                        \
            --menu                          \
            ""                              \
            0 0 0                           \
@@ -598,7 +599,24 @@ function cfg_hostname_choose() {
 #---
 function cfg_hostname_area() {
 
-  cfg_hostname_choose Matrix
+  local HOSTNAMEAREALIST=`ls /usr/share/netconf | awk '{print $1; print "\"\""}'`
+
+  HOSTNAMEAREA=`eval $DIALOG '  --title "Select hostname area"  \
+           --ok-label  "Select"            \
+           --stdout                        \
+           --menu                          \
+           ""                              \
+           0 0 0                           \
+           '$HOSTNAMEAREALIST`
+
+  COMMAND=`cfg_hostname_choose $HOSTNAMEAREA`
+
+        # check if user accepted their changes
+        if [ $? -eq 0 ] && [ ${#COMMAND} -gt 0 ]; then
+                curhostname="$COMMAND"
+                echo "$curhostname" > $HOSTNAMEFN
+                mangle_hosts
+        fi
 
 }
 
