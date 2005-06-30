@@ -1,5 +1,9 @@
 if  [[  $(uname -r)  =  2.6.*  ]];  then
-  config_query  GLIBC_NPTL  "As you are running a 2.6 kernel, would you like to use the new nptl (Native Posix Thread Libary)?"  y
+  if  test  "$HOST" == "i386-pc-linux-gnu"; then
+    config_set_option GLIBC_NPTL n
+  else
+    config_query  GLIBC_NPTL  "As you are running a 2.6 kernel, would you like to use the new nptl (Native Posix Thread Libary)?"  y
+  fi
 fi  &&
 
 config_query  GLIBC_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the  native charset data?"  n
