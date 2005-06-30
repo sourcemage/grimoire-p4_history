@@ -46,6 +46,11 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2005-06-30  Ladislav Hagara <hgr@vabo.cz>
+#    - SourceMage -> Source Mage
+#    - cfg_hostname renamed to cfg_hostname_enter
+#    - added new cfg_hostname, cfg_hostname_area and cfg_hostname_choose
+#
 # 2005-04-07  Arjan Bouter <abouter@sourcemage.org>
 #    - added cfg_wifi_{defaultkey,enckey,setkeys}
 #    - added cfg_{mac,custom}
@@ -524,7 +529,7 @@ function check_hostname() {
 
 }
 
-#--- cfg_hostname()
+#--- cfg_hostname_enter()
 ##
 ## Prompts the user for the hostname for this machine.
 ## It defaults to the current hostname, or 'sourcemage'
@@ -535,7 +540,7 @@ function check_hostname() {
 ## @Global      HOSTNAMEFN: path to hostname file
 ## @External    cat, dialog
 #---
-function cfg_hostname() {
+function cfg_hostname_enter() {
 
 	local curhostname
 
@@ -566,6 +571,73 @@ function cfg_hostname() {
 	fi
 
 }
+
+#--- cfg_hostname_choose()
+##
+## Prompts the user to select the hostname from a list of
+## proposed hostnames.
+##
+#---
+function cfg_hostname_choose() {
+
+  local HOSTNAMELIST=`cat /usr/share/netconf/$1`
+
+  eval $DIALOG '  --title "Select hostname from $1 area"  \
+           --ok-label  "Select"            \
+           --menu                          \
+           ""                              \
+           0 0 0                           \
+           '$HOSTNAMELIST
+
+}
+
+#--- cfg_hostname_area()
+##
+## Prompts the user to select the hostname areas.
+##
+#---
+function cfg_hostname_area() {
+
+  cfg_hostname_choose Matrix
+
+}
+
+#--- cfg_hostname()
+##
+## Prompts the user for the hostname setting.
+## Two options are presented:
+## <ul>
+##       <li>Enter a hostname</li>
+##       <li>Choose from a list of proposed hostnames<li>
+## </ul>
+##
+## @Global      HOSTNAMEFN: path to hostname file
+## @External    cat, dialog
+#---
+function cfg_hostname() {
+
+        COMMAND=`$DIALOG --backtitle "$BACKTITLE"                             \
+                         --stdout                                             \
+                         --title "Configure hostname"                         \
+                         --ok-label       "$BTN_SELECT"                       \
+                         --cancel-label   "$BTN_BACK"                         \
+                         --menu                                               \
+                         "Choose how to configure the hostname."              \
+                         0 0 0                                                \
+                         "Enter"  "Enter a hostname"                          \
+                         "Choose" "Choose from a list of proposed hostnames"`
+
+        if [ $? != 0 ]; then
+                return 0
+        fi
+
+        case $COMMAND in
+                'Enter')  cfg_hostname_enter  ;;
+                'Choose') cfg_hostname_area   ;;
+        esac
+        return 0
+}
+
 
 #--- mangle_hosts()
 ##
