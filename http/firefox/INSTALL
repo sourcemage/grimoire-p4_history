@@ -62,6 +62,11 @@ fi  &&
 # Fix for starting firefox without running as root first
 # Bug #7114 (thanks to Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
 #
+# first remove the files the patch creates so patch doesn't fail, see bug #8874
+while read firefox_remove_file; do
+  rm  -f  $FIREFOX_HOME/$firefox_remove_file
+done < $SCRIPT_DIRECTORY/init-files  &&
+# now patch
 patch  -d  $FIREFOX_HOME           -p1  -N      \
        <  $SCRIPT_DIRECTORY/firefox-init.patch  &&
 
