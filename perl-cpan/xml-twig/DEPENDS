@@ -1,5 +1,11 @@
-depends  perl &&
-depends  xml-parser-expat &&
+depends  xml-parser-expat  &&
 
-optional_depends  Text-Iconv  ""  ""  "for fast encoding translations" &&
-optional_depends  WeakRef     ""  ""  "to improve memory management & avoid memory leaks"
+optional_depends  text-iconv                        \
+                  ''                                \
+                  ''                                \
+                  'for fast encoding translations'  &&
+
+optional_depends  weakref                                                \
+                  ''                                                     \
+                  ''                                                     \
+                  'to improve memory management and avoid memory leaks'
