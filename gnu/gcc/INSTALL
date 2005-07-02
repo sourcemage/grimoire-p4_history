@@ -13,8 +13,8 @@ if [[ "$HOST" == x86_64-* ]]; then
 fi
 
 # make some extra symlinks
-ln -sf ${INSTALL_ROOT}/usr/bin/gcc ${INSTALL_ROOT}/usr/bin/cc     &&
-ln -sf ${INSTALL_ROOT}/usr/bin/cpp ${INSTALL_ROOT}/lib            &&
+ln -sf gcc ${INSTALL_ROOT}/usr/bin/cc     &&
+ln -sf ${TRACK_ROOT}/usr/bin/cpp ${INSTALL_ROOT}/lib            &&
 
 # set up specs file handling
 local SPECSDIR=${INSTALL_ROOT}/usr/lib/gcc/$HOST/$VERSION         &&
