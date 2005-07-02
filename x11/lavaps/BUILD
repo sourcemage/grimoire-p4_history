@@ -13,6 +13,4 @@ fi  &&
              --disable-schemas-install         \
              $OPTS                             &&
 
-patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.patch  &&
-
 make
