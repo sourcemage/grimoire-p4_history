@@ -27,6 +27,7 @@ if  [  "$GLIBC_NPTL"  =  "y"  ];  then
                --enable-kernel=2.6"
 else
   OPTS="$OPTS  --enable-add-ons=linuxthreads  \
+               --without-__thread \
                --enable-kernel=2.4"
 fi  &&
 

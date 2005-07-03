@@ -86,7 +86,7 @@ fi                                                          &&
 pinfo "Other stuff..."                                      &&
 
 # Proper shutdown procedure
-ln -fsv /etc/sysconfig/shutdown ${INSTALL_ROOT}/etc/shutdown.conf  &&
+ln -fsv ${TRACK_ROOT}/etc/sysconfig/shutdown ${INSTALL_ROOT}/etc/shutdown.conf  &&
 
 # Yeah, I know
 ln  -sfv  /bin/true  $RD/rc  &&
