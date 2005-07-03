@@ -1,0 +1,33 @@
+           SPELL=redact
+         VERSION=0.1.3
+          SOURCE=redact-0.1.3.tar.gz
+   SOURCE_URL[1]=ftp://code-monkey.de/pub/redact/redact-0.1.3.tar.gz
+          MD5[0]=792de48b0a8c07df7eec2bf8baedff8c
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://code-monkey.de/projects/redact.html
+         ENTERED=20050703
+         UPDATED=20050703
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Redact is an Edje compiler written in Ruby."
+cat << EOF
+Redact is an Edje compiler written in Ruby.
+
+Unlike the official Edje compiler, edje_cc, Redact doesnât read EDC code â
+it reads Ruby code instead. This means that Redact will allow you to write
+Edjes in a full-blown programming language.
+
+So why is this a good thing?
+
+With edje_cc, the only way to automate the creation of parts and/or programs
+is to use CPP macros, which are very limited feature-wise and hard to debug.
+
+Also, it means that syntax errors wonât go unnoticed anymore :)
+
+Status
+
+Redact supports most of edje_ccâs features. Itâs lacking support for image
+compression options and the âfillâ parameters for image descriptions. And
+probably other minor stuff.  Thatâs not an excuse for you not to try out
+Redact though! :)
+EOF
