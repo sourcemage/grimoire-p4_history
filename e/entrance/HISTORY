@@ -1,7 +1,8 @@
 2005-07-03 Eric Sandall <eric@sandall.us>
 	* BUILD: Tell ./autogen.sh to not run its own configure
-	* CONFIGURE: Query for PAM or shadow support
-	* DEPENDS: Depend on linux-pam for PAM or shadow for shadow
+	  Pass default authentication method to OPTS
+	* CONFIGURE: Query for PAM or shadow support as default authentication
+	* DEPENDS: Optionally depends on linux-pam and shadow for authentication
 	* CONFLICTS: Conflicts with linux-pam-headers if using shadow
 
 2005-05-09 Ladislav Hagara <hgr@vabo.cz>

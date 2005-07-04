@@ -1,5 +1,2 @@
-if  provider_ok  LINUX-PAM-HEADERS;  then
-  config_query  ENTRANCE_PAM  "Use Linux Pluggable Authentication Modules (otherwise uses shadow)?"  y
-else
-  config_query  ENTRANCE_PAM  "Use Linux Pluggable Authentication Modules (otherwise uses shadow)?"  n
-fi
+config_query_list  ENTRANCE_AUTH  "Which authentication method to use by default?"  \
+                                  'shadow'  'pam'
