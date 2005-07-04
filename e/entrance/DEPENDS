@@ -1,3 +1,9 @@
 depends  edb     &&
 depends  edje    &&
-depends  esmart
+depends  esmart  &&
+
+if  [  "$ENTRANCE_PAM"  ==  "y"  ];  then
+  depends  linux-pam  '--with-auth-mode=pam'
+else
+  depends  shadow  '--with-auth-mode=shadow'
+fi

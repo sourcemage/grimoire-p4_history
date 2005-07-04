@@ -1,2 +1,2 @@
-./autogen.sh  &&
+NOCONFIGURE="no"  ./autogen.sh  &&
 default_build
