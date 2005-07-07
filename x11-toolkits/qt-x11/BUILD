@@ -13,6 +13,7 @@ OPTS="$QT_IPV6    \
       $QT_GIF     \
       $OPTS"      &&
 
+invoke_gcc                                                                     &&
 echo  "yes"  |  ./configure                                                    \
                              -prefix $INSTALL_ROOT/usr/lib/qt                  \
                              -bindir $INSTALL_ROOT/usr/bin                     \
@@ -25,5 +26,4 @@ echo  "yes"  |  ./configure                                                    \
                              -platform linux-g++                               \
                              $OPTS                                             &&
 
-invoke_gcc  &&
 make
