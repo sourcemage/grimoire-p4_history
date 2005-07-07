@@ -1,14 +1,14 @@
            SPELL=pgadmin3
-         VERSION=1.0.2
+         VERSION=1.2.2
+          MD5[0]='3b4ac6570caa8823ee3c63cc58133322'
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp3.us.postgresql.org/pub/postgresql/pgadmin3/release/src/${SOURCE}
-          MD5[0]=b27992d6464065834f5a1c73dadef42a
-        WEB_SITE=http://www.pgadmin.org/pgadmin3/
+   SOURCE_URL[0]=ftp://ftp.postgresql.org/pub/pgadmin3/release/v$VERSION/src/$SOURCE
+        WEB_SITE=http://www.pgadmin.org/
          ENTERED=20030704
-         UPDATED=20030817
+         UPDATED=20050707
       LICENSE[0]=ART
-           SHORT='pgAdmin is a comprehensive PostgreSQL database design and management system'
+           SHORT='pgAdmin is a PostgreSQL design and management system'
 cat << EOF
 pgAdmin boasts the following features and more:
 
