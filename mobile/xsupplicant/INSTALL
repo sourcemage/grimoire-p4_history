@@ -1,2 +1,5 @@
 default_install &&
-cp -v etc/*.conf ${INSTALL_ROOT}/etc
+for file in etc/*.conf ;
+do
+	install_config_file $file ${INSTALL_ROOT}/etc/$file 
+done
