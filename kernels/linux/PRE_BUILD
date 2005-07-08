@@ -36,7 +36,7 @@ then
 	unpack_file '' &&
 	mv ./*/* ./ &&
 	
-	. ${SCRIPT_DIRECTORY}/latest.defaults &&
+	. ${SPELL_DIRECTORY}/latest.defaults &&
 	for patch in $patches
 	do
 		case "$patch" in
@@ -48,7 +48,7 @@ then
 		esac &&
 		pval=1 &&
 		md5sum=""
-		tmp=$(find ${SCRIPT_DIRECTORY}/info/patches/*/${patch} | head -n1)
+		tmp=$(find ${SPELL_DIRECTORY}/info/patches/*/${patch} | head -n1)
 		. $tmp
 		. `dirname $tmp`/.info
 		if [ "$md5sum" != "" ]
