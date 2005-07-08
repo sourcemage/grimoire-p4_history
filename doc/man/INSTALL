@@ -19,4 +19,6 @@ fi                                                              &&
 # compatibility (xman)
 pushd $INSTALL_ROOT/etc                                         &&
 ln -fs ../usr/share/misc/man.conf man.conf                      &&
-popd
+popd                                                            &&
+
+install -m 644  $SCRIPT_DIRECTORY/man.sh $INSTALL_ROOT/etc/profile.d
