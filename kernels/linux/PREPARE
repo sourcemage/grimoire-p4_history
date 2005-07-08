@@ -1,16 +1,16 @@
 
 # kernel information directory
-kernelsdir="${SCRIPT_DIRECTORY}/info/kernels"
+kernelsdir="${SPELL_DIRECTORY}/info/kernels"
 # patches information directory
-patchesdir="${SCRIPT_DIRECTORY}/info/patches"
+patchesdir="${SPELL_DIRECTORY}/info/patches"
 # sourced from DETAILS to create SOURCE_URL SOURCE
 # KERNEL_VERSION environmental vars
 detailsdefaults="${CONFIG_CACHE}/details.defaults"
 dependsmakefile="${CONFIG_CACHE}/makefile.patches"
 # Latest versions of your favorite kernel sources and patches
-latestdefaults="${SCRIPT_DIRECTORY}/latest.defaults"
+latestdefaults="${SPELL_DIRECTORY}/latest.defaults"
 # debug log duh ;)
-debug="${SCRIPT_DIRECTORY}/debug.log"
+debug="${SPELL_DIRECTORY}/debug.log"
 
 # Source info for patch
 source_patch()
@@ -325,7 +325,7 @@ build_dir_menu()
 # restore a config file from a different location
 restore_config()
 {
-	. ${SCRIPT_DIRECTORY}/DETAILS
+	. ${SPELL_DIRECTORY}/DETAILS
 	while true
 	do
 		CONFIG_RESTORE=$( $dialog --title "Config Restore" \
@@ -801,7 +801,7 @@ create_details()
 						echo "PATCH[${counter}]=${patch}"
 						;;
 				esac
-				echo -n '. ${SCRIPT_DIRECTORY}/info/patches/*/${PATCH['
+				echo -n '. ${SPELL_DIRECTORY}/info/patches/*/${PATCH['
 				echo -n $counter
 				echo ']}'
 				echo "SOURCE${counter}=\$source"
@@ -825,7 +825,7 @@ create_details()
 				2.[0-9]*)
 					. $kernelsdir/${kver}
 					echo "KERNEL_VERSION=$kver"
-					echo '. ${SCRIPT_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo '. ${SPELL_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"
@@ -836,7 +836,7 @@ create_details()
 				*)
 					. $kernelsdir/${!kver}
 					echo "KERNEL_VERSION=\$$kver"
-					echo '. ${SCRIPT_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo '. ${SPELL_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
 					echo "SOURCE=\$source"
 					echo "MD5[0]=\$md5sum"
 					echo "SOURCE_URL=\$source_url"

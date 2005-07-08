@@ -8,23 +8,23 @@ then
 	case "`uname -m`" in
 		powerpc)
 			if [ -f /etc/yaboot.conf ] && [ ! -z $(installed_version yaboot) ] ; then
-				install_config_file "$SCRIPT_DIRECTORY/templates/yaboot.conf.tmplt" "/etc/yaboot.conf.tmplt"
+				install_config_file "$SPELL_DIRECTORY/templates/yaboot.conf.tmplt" "/etc/yaboot.conf.tmplt"
 			else
 				NO_CONFIG="true"
 			fi
 			;;
 		sparc*)
 			if [ -f /etc/silo.conf ] && [ ! -z $(installed_version silo) ] ; then
-				install_config_file "$SCRIPT_DIRECTORY/templates/silo.conf.tmplt" "/etc/silo.conf.tmplt"
+				install_config_file "$SPELL_DIRECTORY/templates/silo.conf.tmplt" "/etc/silo.conf.tmplt"
 			else
 				NO_CONFIG="true"
 			fi
 			;;
 		*)
 			if [ -f /etc/lilo.conf ] && [ ! -z $(installed_version lilo) ] ; then
-				install_config_file "$SCRIPT_DIRECTORY/templates/lilo.conf.tmplt" "/etc/lilo.conf.tmplt"
+				install_config_file "$SPELL_DIRECTORY/templates/lilo.conf.tmplt" "/etc/lilo.conf.tmplt"
 			elif [ -f /boot/grub/menu.lst ] && [ ! -z $(installed_version grub) ] ; then
-				install_config_file "$SCRIPT_DIRECTORY/templates/menu.lst.tmplt" "/boot/grub/menu.lst.tmplt"
+				install_config_file "$SPELL_DIRECTORY/templates/menu.lst.tmplt" "/boot/grub/menu.lst.tmplt"
 			else
 				NO_CONFIG="true"
 			fi
@@ -32,8 +32,8 @@ then
 	esac
 	if [ "$NO_CONFIG" == "false" ] ; then
 		export VERSION &&
-		export SCRIPT_DIRECTORY &&
-		$SCRIPT_DIRECTORY/UPDATE_BOOTLOADER 
+		export SPELL_DIRECTORY &&
+		$SPELL_DIRECTORY/UPDATE_BOOTLOADER 
 	else
 		message "${PROBLEM_COLOR}AH! No bootloader config file for your system${DEFAULT_COLOR}"
 		message "${PROBLEM_COLOR}Abandoning update bootloader script${DEFAULT_COLOR}"
