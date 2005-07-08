@@ -1,6 +1,11 @@
 2005-07-08 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* audio-players/rippperX: renamed to audio-players/ripperx
 
+2005-07-08 Sergey Lipnevich <sergey@sourcemage.org>
+	* perl-cpan/PERL_BUILD: use PERL_OPTS;
+	* perl-cpan/FUNCTIONS: create default_build_perl routine;
+	* perl-cpan/{image-info,gd-graph3d}: add new spells.
+
 2005-06-20 Andrew Stitt <astitt@sourcemage.org>
 	* FUNCTIONS: Add a compatibility unpack_file function in case someone
 	  uses an early adopter but has not updated sorcery.
@@ -482,6 +487,10 @@
 2004-11-17 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* xfce/xfce4-themes, xfce/xffm-icons: deprecated spells
 
+2004-11-10 Treeve Jelbert <treeve 01@pi.be>
+	* move db spell from libs
+	* delete unixODBC picoODBC DBD-InterBase DBD-SQLite picoSQL
+
 2004-11-04 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* FUNCTIONS: added function glibc_is_nptl to detect NPTL support in
 	  glibc
@@ -670,6 +679,10 @@
 	* video-libs/MPlayer-fonts: Renamed to video-libs/mplayer-fonts
 	* video-libs/MPlayer-gui: Renamed to video-libs/mplayer-gui
 
+2004-07-23 Treeve Jelbert <treeve 01@pi.be>
+	* delete jaybird spell
+	  it was misnamed and incomplete
+
 2004-07-21 Eric Sandall <eric@sandall.us>
 	* gnome2-apps/abiword2: Removed (has been deprecated for months...)
 
@@ -838,6 +851,9 @@
 	  /etc/profile.d/profile. It would be extremely wise to check it has
 	  worked before logging out or rebooting
 
+2004-01-15 Eric Sandall <eric@sandall.us>
+	* MAINTAINER: Added Treeve as maintainer. ;)
+
 2004-01-08 hgg <hgreig@bigpond.net.au>
 	* libnjb-cvs: removed, dispel libnjb-cvs, then cast -r -c libnjb to
 	  choose cvs version if wanted
@@ -847,9 +863,15 @@
 	* ChangeLog: Added
 	* GRIMOIRE: optional_requires is now in all grimoires
 
+2003-11-16 Treeve Jelbert <treeve 01@pi.be>
+	* database: move unixODBC from kde section; add tora, pico SQL;
+
+2003-11-16 Treeve Jelbert <treeve 01@pi.be>
+	* database: new section; add firebird spell;
+	  will ultimately move many database type spells here.
+
 2003-10-03  hgg <hgreig@bigpond.net.au>
 	* GRIMOIRE: test grimoire now has support for optional_requires to allow
 	  full use of xfree86-devel or xfree86-libs or xdirectfb spells to
 	  provide x11-{libs,server}.  THE CATCH IS YOU MUST USE DEVEL SORCERY
 	  OR YOU WILL GET NOTHING BUT ERRORS DURING CAST.
-
