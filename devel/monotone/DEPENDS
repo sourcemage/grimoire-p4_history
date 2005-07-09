@@ -9,9 +9,9 @@ optional_depends  gettext                        \
 optional_depends  lua                            \
                   "--with-bundled-lua=no"        \
                   "--with-bundled-lua=yes"       \
-                  'system-installed lua'         &&
+                  'system-installed lua'
 
-optional_depends  sqlite                         \
-                  "--with-bundled-sqlite=no"     \
-                  "--with-bundled-sqlite=yes"    \
-                  'system-installed sqlite'
+#optional_depends  sqlite                         \
+#                  "--with-bundled-sqlite=no"     \
+#                  "--with-bundled-sqlite=yes"    \
+#                  'system-installed sqlite'
