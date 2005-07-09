@@ -55,6 +55,10 @@ then
 		then
 			unpack ${source} ${md5sum}
 		fi &&
+		if [[ "${source_gpg}" != "" ]]
+		then
+			unpack_gpg "${source}" "${source_gpg}"
+		fi &&
 		if [ "${source}" != "" ]
 		then
 			cp -v ${SOURCE_CACHE}/${source} ./ &&
