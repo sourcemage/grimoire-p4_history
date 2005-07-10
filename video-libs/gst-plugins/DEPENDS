@@ -101,6 +101,9 @@ optional_depends  "libmpcdec"               \
 optional_depends  "libdts"             \
                   ""  "--disable-dts"  \
                   "for dts audio decoder"  &&
+optional_depends  "wavpack"                \
+                  ""  "--disable-wavpack"  \
+                  "for wavpack decoder"    &&
 
 # image codecs
 optional_depends  "jpeg"                \
