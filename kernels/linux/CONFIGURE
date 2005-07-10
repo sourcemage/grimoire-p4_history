@@ -28,4 +28,5 @@ then
 	VOYEUR="on"
 fi
 
-config_query UPDATE_BL "Would you like to have $SPELL update your bootloader?" n
+config_query UPDATE_BL "Would you like to have $SPELL update your bootloader?" n &&
+config_query CONFIG_KERNEL "Would you like to run make $MAKEMODE on every cast regardless of the -r switch?" n
