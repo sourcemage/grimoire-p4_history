@@ -39,6 +39,7 @@ then
 	. ${SPELL_DIRECTORY}/latest.defaults &&
 	for patch in $patches
 	do
+		source_gpg=""
 		case "$patch" in
 			LATEST*)
 				patch=${!patch}
@@ -53,7 +54,11 @@ then
 		. `dirname $tmp`/.info
 		if [ "$md5sum" != "" ]
 		then
-			unpack ${source} ${md5sum}
+			unpack ${source} ${md5sum} || return 1
+		fi &&
+		if [[ "${source_gpg}" != "" ]]
+		then
+			unpack_gpg "${source}" "${source_gpg}" || return 1
 		fi &&
 		if [ "${source}" != "" ]
 		then
@@ -112,7 +117,7 @@ then
 			;;
 	esac
 fi &&
-if [[ "$reconf" == "true" ]]
+if [[ "$reconf" == "true" ]] || [[ "$CONFIG_KERNEL" == "y" ]]
 then
 	if [[ "$MAKEMODE" == "menuconfig" ]]
 	then

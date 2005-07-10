@@ -87,7 +87,7 @@ create_defaults()
 		mode="newktree"
 		reconf="true"
 		kver="LATEST_2_6"
-		selected_patches="maintenance_patches"
+		selected_patches="LATEST_maintenance_patches"
 		patches=""
 	fi
 	if [[ $RECONFIGURE ]]
@@ -791,6 +791,7 @@ create_details()
 			echo 'TXTMESSAGE=""'
 			for patch in $patches
 			do
+				source_gpg=""
 				case "$patch" in
 					LATEST*)
 						source_patch ${!patch}
@@ -815,7 +816,17 @@ create_details()
 					echo 'PATCHVER=${patchversion}'
 					patchversion=""
 				fi
-				counter="`expr $counter + 1`"
+				if [[ "$source_gpg" != "" ]] 
+				then
+					echo "SOURCE${counter}_GPG=\$source_gpg"
+					if [[ "$gpg_source_url" != "" ]]
+					then
+						counter=$(( $counter + 1 ))
+						echo "SOURCE${counter}=\${source_gpg/*:}"
+						echo "SOURCE${counter}_URL=\$gpg_source_url"
+					fi
+				fi
+				counter=$(( $counter + 1 ))
 			done
 			if [[ "$basekver" != "" ]]
 			then
