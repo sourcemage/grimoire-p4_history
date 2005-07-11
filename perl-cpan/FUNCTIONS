@@ -1,2 +1,4 @@
-perl Makefile.PL INSTALLDIRS=vendor
-make               
+function default_build_perl () {
+   perl Makefile.PL INSTALLDIRS=vendor $PERL_OPTS &&
+   make
+}     
