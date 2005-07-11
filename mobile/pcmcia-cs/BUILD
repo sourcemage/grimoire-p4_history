@@ -7,9 +7,18 @@ then
 fi
 
 sedit "s:install_sysv$:true:"  etc/install-etc  &&
-if [[ $(uname -r) == 2.6.* ]]
+if [[ -d ${BUILD_DIRECTORY}/linux-$(uname -r) ]]
+then
+	KVER=$(uname -r)
+	KDIR=${BUILD_DIRECTORY}/linux-$(uname -r)
+elif [[ -d ${BUILD_DIRECTORY}/linux-$(get_kernel_version) ]]
+then
+	KVER=$(get_kernel_version)
+	KDIR=${BUILD_DIRECTORY}/linux-$(get_kernel_version)
+fi
+if [[ ${KVER} == 2.6.* ]]
 then 
-  ./Configure --kernel=${INSTALL_ROOT}/usr/src/linux-$(uname -r) --srctree -n 
+  ./Configure --kernel=${KDIR} --srctree -n 
 else 
   make    oldconfig
 fi                 &&
