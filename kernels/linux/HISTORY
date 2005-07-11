@@ -1,8 +1,12 @@
 2005-07-10 David Brown <dmlb2000@excite.com>
 	* PREPARE: fixed logic error it's LATEST_<patch dir> not <patch dir>
+	  and added the removal of CONFIG_KERNEL when the spell config gets
+	  copied
 	* PRE_BUILD: added the check for CONFIG_KERNEL
 	* CONFIGURE: added question for CONFIG_KERNEL this is for the iso team
 	  primarily
+	* info/patches/xbox_linux/linux-2.6.12-xbox.patch: added
+	* info/patches-sigs/xbox_linux/linux-2.6.12-xbox.patch.gz.sig: added
 
 2005-07-09 David Brown <dmlb2000@excite.com>
 	* PRE_BUILD: cleared the source_gpg so it doesn't get used on patches
