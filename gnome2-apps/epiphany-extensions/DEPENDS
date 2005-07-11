@@ -1,3 +1,8 @@
 depends epiphany &&
-depends GECKO
+depends GECKO    &&
+
+optional_depends opensp                                      \
+                 "--with-opensp=yes"                         \
+                 "--with-opensp=no"                          \
+                 "Attempt to use OpenSP for SGML validation"
 
