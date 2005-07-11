@@ -1,1 +1,6 @@
-Weird error on including libxml2's headers...
+gcc -O -march=k8 -mmmx -mfpmath=sse -msse -msse2 -m3dnow -m64 -pipe -DPIC -fPIC -O3 -DCRACKLIB_DICTPATH='"/usr/lib/cracklib/pw_dict"'  -DHAVE_CONFIG_H -D_FILE_OFFSET_BITS=64  -I/usr/include/libxml2 -std=c89 -pedantic -Wall -DLOCALEDIR='"/usr/share/locale"' -c interface_gui.c
+interface_gui.c: In function 'interfaceLoop':
+interface_gui.c:1684: error: 'struct SEntry' has no member named 'preProcessFunction'
+interface_gui.c:1686: error: 'struct SEntry' has no member named 'preProcessData'
+ ! Problem Detected !
+ make: *** [interface_gui.o] Error 1
