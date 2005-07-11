@@ -13,5 +13,6 @@ else
         sedit  "s/@DB_LIBS@/-ldb-4/"  doc/Makefile.in
   else  sedit  "s/@DB_LIBS@/-ldb-3/"  doc/Makefile.in
   fi  &&
+  OPTS="$OPTS --disable-error-on-warning" &&
   default_build
 fi
