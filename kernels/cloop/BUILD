@@ -1,1 +1,1 @@
-make KERNEL_DIR=/usr/src/linux-`uname -r`
+make KERNEL_DIR=/usr/src/linux-$(get_kernel_version)
