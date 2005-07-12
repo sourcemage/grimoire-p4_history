@@ -66,6 +66,7 @@ done
 
 # Copy kernel modules
 cp -a ${INSTALL_ROOT}/lib/modules/$1 ${BUILD_DIRECTORY}/initrd/lib/modules/
+cp -a ${INSTALL_ROOT}/lib/firmware ${BUILD_DIRECTORY}/initrd/lib/firmware
 
 # cp console null hd's
 cp -a ${INSTALL_ROOT}/dev/console ${BUILD_DIRECTORY}/initrd/dev/
