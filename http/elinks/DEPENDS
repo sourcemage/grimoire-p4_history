@@ -1,7 +1,10 @@
-depends zlib  '--with-zlib'  &&
+optional_depends  zlib                                 \
+                  '--with-zlib'                        \
+                  '--without-zlib'                     \
+                  'for zlib compression support'       &&
 
 optional_depends  bzip2                                \
-                  gaze'--with-bzlib'                   \
+                  '--with-bzlib'                       \
                   '--without-bzlib'                    \
                   'for BZIP2 compression support'      &&
 
@@ -15,7 +18,8 @@ optional_depends  openssl                              \
                   '--without-openssl'                  \
                   'encryption for HTTPS'               &&
 
-# doesn't build now; if uncommenting, also remove --without-gnutls from BUILD and uncomment line in TRIGGERS
+# Only builds against OLD gnutls (1.0); if uncommenting, also remove
+# --without-gnutls from BUILD and uncomment line in TRIGGERS
 #optional_depends  gnutls                               \
 #                  '--with-gnutls'                      \
 #                  '--without-gnutls'                   \

@@ -1,7 +1,3 @@
-if [ "$ELINKS_CVS" = 'y' ]; then                                                    
-  ./autogen.sh
-fi &&
-
 OPTS="$OPTS
   --enable-exmode
   --enable-fastmem
