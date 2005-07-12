@@ -31,7 +31,7 @@ WX=`wx-config --cxxflags`
 # You may need to change wxgtk-2.4-config to wx-config or similar
 COMPILE_FLAGS=-DIBPP_LINUX -DIBPP_GCC -I. -I../res -I$(IBPP_INC) $(WX)
 # determine installed version of library
-LINK_FLAGS=`wx-config --libs` -lwx_gtk2_stc-`wx-config --version|cut -c-3`
+LINK_FLAGS=`wx-config --libs` -lwx_gtk2u_stc-`wx-config --version|cut -c-3`
 
 
 # Name of the executable
