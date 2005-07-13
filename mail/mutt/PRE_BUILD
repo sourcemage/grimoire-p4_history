@@ -27,7 +27,7 @@ for PATCH in ${REAL_PATCHES}; do
   fi
 done &&
 
-if [ ! -z "${REAL_PATCHES}" ]; then
+if [ ! -z "${REAL_PATCHES}" ] || [ ! -x ./configure ]; then
   ./prepare
 fi  &&
 
