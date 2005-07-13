@@ -1,6 +1,11 @@
 persistent_add TMP_MUTT_OPTS &&
 TMP_MUTT_OPTS="" &&
 
+optional_depends   "MAIL-TRANSPORT-AGENT"                       \
+                   ""                                           \
+                   ""                                           \
+                   "to send mail"                               &&
+                    
 if [ "${BRANCH}" == "cvs" ]; then 
 	depends "CVS"
 fi &&
