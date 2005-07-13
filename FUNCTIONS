@@ -151,7 +151,7 @@ function remove_shell ()
 
   #removing shell from /etc/shells
   if  [  -f  /etc/shells  ]  ;  then
-    cat /etc/shells|grep -v "$2" > /etc/shells.tmp &&
+    cat /etc/shells|grep -v "^$2$" > /etc/shells.tmp &&
     mv /etc/shells.tmp /etc/shells
   fi
 
