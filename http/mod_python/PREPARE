@@ -6,4 +6,4 @@ else
   message "${PROBLEM_COLOR}Could not determine Apache version!${DEFAULT_COLOR}"
   return 1
 fi
-echo "MOD_PYTHON_BRANCH=$MOD_PYTHON_BRANCH" >> $SPELL_CONFIG
+persistent_add MOD_PYTHON_BRANCH
