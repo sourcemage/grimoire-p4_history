@@ -118,7 +118,7 @@ function install_shell ()
 
   #installing shell into /etc/shells
   message "installing $1 into /etc/shells"
-  if ! ( grep -q "${2}" ${INSTALL_ROOT}/etc/shells ) ; then
+  if ! ( grep -q "^${2}$" ${INSTALL_ROOT}/etc/shells ) ; then
     echo "$2" >> ${INSTALL_ROOT}/etc/shells
   fi || return 1
 
@@ -151,7 +151,7 @@ function remove_shell ()
 
   #removing shell from /etc/shells
   if  [  -f  /etc/shells  ]  ;  then
-    cat /etc/shells|grep -v "$2" > /etc/shells.tmp &&
+    grep -v "^$2$" /etc/shells > /etc/shells.tmp &&
     mv /etc/shells.tmp /etc/shells
   fi
 

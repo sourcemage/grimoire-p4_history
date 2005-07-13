@@ -1,3 +1,16 @@
+2005-07-13 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED
+	  Shortened SHORT
+	* BUILD: Use default_build
+	  Set bindir to /bin (shells should be available before
+	  /usr is mounted)
+	* INSTALL: Use TRACK_ROOT for install_shell
+	  install_rootify the csh -> tcsh symlink
+	  Remove tcsh.old if it gets created
+	  Removed install_shell (we don't want /etc/shells tracked)
+	* FINAL: Run install_shell for new $TRACK_ROOT/bin/tcsh
+	  Run remove_shell to remove old $TRACK_ROOT/usr/bin/tcsh
+
 2005-04-07 Arjan Bouter <abouter@sourcemage.org>
 	* DETAILS: version bump to 6.14
 

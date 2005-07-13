@@ -1,4 +1,4 @@
-  ./configure  --prefix=/usr      \
-               --mandir=/usr/man  \
-           $OPTS                  &&
-  make 
+OPTS="--bindir=$INSTALL_ROOT/bin  \
+      $OPTS"                      &&
+
+default_build
