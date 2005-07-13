@@ -118,7 +118,7 @@ function install_shell ()
 
   #installing shell into /etc/shells
   message "installing $1 into /etc/shells"
-  if ! ( grep -q "${2}" ${INSTALL_ROOT}/etc/shells ) ; then
+  if ! ( grep -q "^${2}$" ${INSTALL_ROOT}/etc/shells ) ; then
     echo "$2" >> ${INSTALL_ROOT}/etc/shells
   fi || return 1
 
