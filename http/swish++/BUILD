@@ -2,8 +2,7 @@
 patch  -p1  <  $SCRIPT_DIRECTORY/$SPELL.diff  &&
 
 # switch to GCC 3.4 manually, GCC_VERSION in DETAILS doesn't work
-gcc2_add_paths /opt/gcc34 &&
-use_gcc 3.4 &&
+invoke_gcc &&
 
 make_single  &&
 make         &&
