@@ -15,6 +15,7 @@ checkfs()
   [ -e /forcefsck    ]  &&  FORCE="-f"
   [ "$SOFTFIX" = yes ]  &&  FIX="-a"
   [ "$FSCKFIX" = yes ]  &&  FIX="-y"
+  [ -z  "$FIX"       ]  &&  FIX="-n" # need at least -n, -y, or -a for non-tty fsck
   [ "$FORCE"   = yes ]  &&  FORCE="-f"
 
   echo "Checking file systems..."
