@@ -1,18 +1,21 @@
-2005-07-13 David Brown <dmlb2000@excite.com>
-	* info/patches/mppe_mppc_patches/linux-2.6.12-mppe-mppc-1.3.patch: added
-	* info/patches-sigs/mppe_mppc_patches/linux-2.6.12-mppe-mppc-1.3.patch.sig: added
+2005-07-13 Eric Sandall <eric@sandall.us>
+	* info/patches/gensplash/{fbsplash-0.9.2-2.6.11.patch,
+	  fbsplash-0.9.2-r2-2.6.12-rc3.patch}: Older versions are stored in archive
+	* info/patches/gensplash/{fbsplash-0.9.2-r4-2.6.13-rc1.patch,
+	  fbsplash-0.9.2-r3-2.6.12-rc3.patch}: Added
 
 2005-07-13 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.13-rc3
 	* info/patches/PRE_2_6/patch-2.6.13-rc3: added
-
-2005-07-12 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-cko2
-	* info/patches/cko_patches/patch-2.6.12-cko2: added
+	* info/patches/mppe_mppc_patches/linux-2.6.12-mppe-mppc-1.3.patch: added
+	* info/patches-sigs/mppe_mppc_patches/linux-2.6.12-mppe-mppc-1.3.patch.sig:
+	  added
 
 2005-07-12 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.13-rc2-mm2
+	  updated latest to patch-2.6.12-cko2
 	* info/patches/mm_patches/2.6.13-rc2-mm2: added
+	* info/patches/cko_patches/patch-2.6.12-cko2: added
 
 2005-07-10 David Brown <dmlb2000@excite.com>
 	* PREPARE: fixed logic error it's LATEST_<patch dir> not <patch dir>
@@ -28,36 +31,32 @@
 	* PRE_BUILD: cleared the source_gpg so it doesn't get used on patches
 	  that don't have it.
 	* info/patches-sigs/squashfs_patches/squashfs2.2-patch.bz2.sig: added
-	* info/patches-sigs/sws2_patches/software-suspend-2.1.9.5-for-2.6.12.patch.bz2.sig: added
+	* info/patches-sigs/sws2_patches/software-suspend-2.1.9.5-for-2.6.12.patch.bz2.sig:
+	  added
 	* info/patches/squashfs_patches/squashfs2.2-patch: added
 	* info/patches/sws2_patches/.info: added
 	* info/patches/sws2_patches/software-suspend-2.1.9.5-for-2.6.12.patch: added
 
 2005-07-08 David Brown <dmlb2000@excite.com>
-	* info/patches/nsa_patches/2.6.12-selinux1.patch: added
-	* PREPARE: added gpg signing for patchfiles
-	* PRE_BUILD: added the gpg check for the files
-
-2005-07-08 David Brown <dmlb2000@excite.com>
 	* DETAILS, PREPARE, PRE_BUILD, FINAL: exchanged SCRIPT_DIRECTORY for
 	  SPELL_DIRECTORY
+	* PREPARE: added gpg signing for patchfiles
+	* PRE_BUILD: added the gpg check for the files
+	* info/patches/nsa_patches/2.6.12-selinux1.patch: added
 
 2005-07-07 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.13-rc2-mm1
 	* info/patches/mm_patches/2.6.13-rc2-mm1: added
 
 2005-07-06 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.13-rc1-mm1, ck patches and ck
-	  server patches
-	* info/patches/mm_patches/2.6.13-rc1-mm1: added
-	* info/patches/ck_patches/patch-2.6.12-ck3: added
-	* info/patches/ck_server_patches/patch-2.6.12-ck3-server: added
-
-2005-07-06 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.12.2 and patch-2.6.13-rc2
+	  updated latest to 2.6.13-rc1-mm1, ck patches and ck server patches
 	* info/patches/maintenance_patches/patch-2.6.12.2: added
 	* info/patches/PRE_2_6/patch-2.6.13-rc1: added
 	* info/patches/PRE_2_6/patch-2.6.13-rc2: added
+	* info/patches/mm_patches/2.6.13-rc1-mm1: added
+	* info/patches/ck_patches/patch-2.6.12-ck3: added
+	* info/patches/ck_server_patches/patch-2.6.12-ck3-server: added
 
 2005-06-28 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.12-cko1
@@ -81,20 +80,14 @@
 	* info/patches/maintenance_patches/patch-2.6.12.1: added
 
 2005-06-21 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-ck2-server
-	* info/patches/ck_server_patches/patch-2.6.12-ck2-server: added
-
-2005-06-21 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-ck1-server
-	* info/patches/ck_server_patches/patch-2.6.12-ck1-server: added
-
-2005-06-21 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-ck2
-	* info/patches/ck_patches/patch-2.6.12-ck2: added
-
-2005-06-21 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.12-ck1
+	  updated latest to patch-2.6.12-ck2
+	  updated latest to patch-2.6.12-ck1-server
+	  updated latest to patch-2.6.12-ck2-server
+	* info/patches/ck_server_patches/patch-2.6.12-ck1-server: added
+	* info/patches/ck_server_patches/patch-2.6.12-ck2-server: added
 	* info/patches/ck_patches/patch-2.6.12-ck1: added
+	* info/patches/ck_patches/patch-2.6.12-ck2: added
 
 2005-06-20 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-mm1
@@ -105,20 +98,15 @@
 	* PRE_BUILD: added && so it will fail all the way thru the file
 
 2005-06-18 David Brown <dmlb2000@excite.com>
+	* UPDATE_BOOTLOADER: fixed handling of lilo.conf file it doesn't change
+	  permissions (bug #6709)
 	* latest.defaults: updated latest to patch-2.6.12
+	* info/patches/PRE_2_6/patch-2.6.12: added
+	* info/kernels/2.6.12: added
 	* info/patches/maintenance_patches/patch-2.6.12: added
 	* PRE_BUILD: added a head -n 1 to the find incase there are two files
 	  of the same name like the dummy patch files for PRE_2_6 and 
 	  maintenance_patches
-
-2005-06-18 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12
-	* info/patches/PRE_2_6/patch-2.6.12: added
-	* info/kernels/2.6.12: added
-
-2005-06-18 David Brown <dmlb2000@excite.com>
-	* UPDATE_BOOTLOADER: fixed handling of lilo.conf file it doesn't change
-	  permissions (bug #6709)
 
 2005-06-16 David Brown <dmlb2000@excite.com>
 	* PREPARE: fixed bug where the appliedkernels var would be used improperly.
@@ -128,20 +116,18 @@
 	  Yeah complicated. And reverted one of my changes later thanks dkowis :\
 
 2005-06-16 Thomas Houssin <Thomas.Houssin@sourcemage.org>
-	* latest.defaults: updated latest to grsecurity-2.1.6-2.6.11.12-200506141713.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.6-2.6.11.12-200506141713.patch: added
-
-2005-06-12 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck10-server
-	* info/patches/ck_server_patches/patch-2.6.11-ck10-server: added
-
-2005-06-12 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck10
-	* info/patches/ck_patches/patch-2.6.11-ck10: added
+	* latest.defaults: updated latest to
+	  grsecurity-2.1.6-2.6.11.12-200506141713.patch
+	* info/patches/grsecurity_2_6/grsecurity-2.1.6-2.6.11.12-200506141713.patch:
+	  added
 
 2005-06-12 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.11.12
+	  updated latest to patch-2.6.11-ck10
+	  updated latest to patch-2.6.11-ck10-server
 	* info/patches/maintenance_patches/patch-2.6.11.12: added
+	* info/patches/ck_patches/patch-2.6.11-ck10: added
+	* info/patches/ck_server_patches/patch-2.6.11-ck10-server: added
 
 2005-05-10 David Brown <dmlb2000@excite.com>
 	* PREPARE: added fix so the default kernel when users run for the first
@@ -187,8 +173,10 @@
 	* volatiles: added to remove tracking of /lib/modules/*/modules.*
 
 2005-06-02 Thomas Houssin <Thomas.Houssin@sourcemage.org>
-	* latest.defaults: updated latest to grsecurity-2.1.5-2.6.11.11-200505121617.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.5-2.6.11.11-200505121617.patch: added
+	* latest.defaults: updated latest to
+	  grsecurity-2.1.5-2.6.11.11-200505121617.patch
+	* info/patches/grsecurity_2_6/grsecurity-2.1.5-2.6.11.11-200505121617.patch:
+	  added
 
 2005-06-01 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc5-mm2
@@ -198,24 +186,20 @@
 	* PRE_BUILD: added the make oldconfig call if reconf is not true
 
 2005-05-30 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck9-server
-	* info/patches/ck_server_patches/patch-2.6.11-ck9-server: added
-
-2005-05-30 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.11-ck9
+	  updated latest to patch-2.6.11-ck9-server
 	* info/patches/ck_patches/patch-2.6.11-ck9: added
+	* info/patches/ck_server_patches/patch-2.6.11-ck9-server: added
 
 2005-05-27 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.11.11
 	* info/patches/maintenance_patches/patch-2.6.11.11: added
 
 2005-05-25 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.12-rc5-mm1
-	* info/patches/mm_patches/2.6.12-rc5-mm1: added
-
-2005-05-25 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.12-rc5
+	  updated latest to 2.6.12-rc5-mm1
 	* info/patches/PRE_2_6/patch-2.6.12-rc5: added
+	* info/patches/mm_patches/2.6.12-rc5-mm1: added
 
 2005-05-23 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.11-ck8
@@ -228,7 +212,6 @@
 	* info/patches/PRE_2_6/patch-2.6.11.*: moved to maintenance_patches
 	* info/patches/maintenance_patches/patch-2.6.11.*: added from PRE_2_6
 	* latest.defaults: added the LATEST_maintenance_patches var
-
 
 2005-05-19 David Brown <dmlb2000@excite.com>
 	* UPDATE_BOOTLOADER: added check for config file depending on what it is
@@ -244,54 +227,37 @@
 	* info/patches/mm_patches/2.6.12-rc4-mm2: added
 
 2005-05-16 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to grsecurity-2.1.5-2.6.11.9-200505121617.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.5-2.6.11.9-200505121617.patch: added
-
-2005-05-16 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to reiser4-for-2.6.11-3
+	  updated latest to grsecurity-2.1.5-2.6.11.9-200505121617.patch
 	* info/patches/reiser4_patches/reiser4-for-2.6.11-3: added
-
-2005-05-14 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11.9
-	* info/patches/PRE_2_6/patch-2.6.11.9: added
+	* info/patches/grsecurity_2_6/grsecurity-2.1.5-2.6.11.9-200505121617.patch:
+	  added
 
 2005-05-14 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc4-mm1
+	  updated latest to patch-2.6.11.9
 	* info/patches/mm_patches/2.6.12-rc4-mm1: added
+	* info/patches/PRE_2_6/patch-2.6.11.9: added
 
 2005-05-08 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.12-rc4
 	* info/patches/PRE_2_6/patch-2.6.12-rc4: added
 
 2005-05-06 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.11-selinux1-nfs1.patch
-	* info/patches/nsa_patches/2.6.11-selinux1-nfs1.patch: added
-
-2005-05-06 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.11-selinux1.patch
-	* info/patches/nsa_patches/2.6.11-selinux1.patch: added
-
-2005-05-06 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-cko5
-	* info/patches/cko_patches/patch-2.6.11-cko5: added
-
-2005-05-06 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to patch-2.6.11-ck7
-	* info/patches/ck_patches/patch-2.6.11-ck7: added
-	* info/patches/ck_patches/patch-2.6.11-ck6: added
+	  updated latest to patch-2.6.11-cko5
+	  updated latest to 2.6.11-selinux1.patch
+	  updated latest to 2.6.11-selinux1-nfs1.patch
 	* info/patches/ck_patches/patch-2.6.11-ck5: added
+	* info/patches/ck_patches/patch-2.6.11-ck6: added
+	* info/patches/ck_patches/patch-2.6.11-ck7: added
+	* info/patches/cko_patches/patch-2.6.11-cko5: added
+	* info/patches/nsa_patches/2.6.11-selinux1.patch: added
+	* info/patches/nsa_patches/2.6.11-selinux1-nfs1.patch: added
 
 2005-05-04 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc3-mm3
 	* info/patches/mm_patches/2.6.12-rc3-mm3: added
-
-2005-05-02 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.12-rc3-mm2
-	* info/patches/mm_patches/2.6.12-rc3-mm2: added
-
-2005-05-02 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to fbsplash-0.9.2-r2-2.6.12-rc3.patch
-	* info/patches/gensplash_patches/fbsplash-0.9.2-r2-2.6.12-rc3.patch: added
 
 2005-05-02 Eric Sandall <eric@sandall.us>
 	* templates/menu.lst.tmplt: Source Mage not Sourcemage :)
@@ -302,21 +268,21 @@
 	* UPDATE_BOOTLOADER: added the install of the template files #8784
 	  and fixed cat /proc/mounts | grep / producing two lines
 	* FINAL: added install of the template files #8784
+	* latest.defaults: updated latest to fbsplash-0.9.2-r2-2.6.12-rc3.patch
+	  updated latest to 2.6.12-rc3-mm2
+	* info/patches/gensplash_patches/fbsplash-0.9.2-r2-2.6.12-rc3.patch: added
+	* info/patches/mm_patches/2.6.12-rc3-mm2: added
 
 2005-05-01 David Brown <dmlb2000@excite.com>
 	* mk_initrd: Works!!! kernel commandline: root=/dev/ram0
 	  real_root=/dev/<root-dev> init=/linuxrc
 
 2005-04-30 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.12-rc3-mm1
-	* info/patches/mm_patches/2.6.12-rc3-mm1: added
-
-2005-04-30 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11.8
-	* info/patches/PRE_2_6/patch-2.6.11.8: added
-
-2005-04-30 David Brown <dmlb2000@excite.com>
 	* mk_initrd: trying to get busybox to work right getting closer
+	* latest.defaults: updated latest to patch-2.6.11.8
+	  updated latest to 2.6.12-rc3-mm1
+	* info/patches/PRE_2_6/patch-2.6.11.8: added
+	* info/patches/mm_patches/2.6.12-rc3-mm1: added
 
 2005-04-29 David Brown <dmlb2000@excite.com>
 	* UPDATE_BOOTLOADER: fixed typoe for aquiring BOOT_DEV var
@@ -347,32 +313,24 @@
 	* BUILD: added capability to eventually push our CFLAGS to the kernel
 
 2005-04-11 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-cko4
-	* info/patches/cko_patches/patch-2.6.11-cko4: added
-
-2005-04-11 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck4
-	* info/patches/ck_patches/patch-2.6.11-ck4: added
-
-2005-04-11 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.12-rc2-mm3
-	* info/patches/mm_patches/2.6.12-rc2-mm3: added
-
-2005-04-11 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc2-mm2
+	  updated latest to 2.6.12-rc2-mm3
+	  updated latest to patch-2.6.11-ck4
+	  updated latest to patch-2.6.11-cko4
 	* info/patches/mm_patches/2.6.12-rc2-mm2: added
+	* info/patches/mm_patches/2.6.12-rc2-mm3: added
+	* info/patches/ck_patches/patch-2.6.11-ck4: added
+	* info/patches/cko_patches/patch-2.6.11-cko4: added
 
 2005-04-06 David Brown <dmlb2000@excite.com>
 	* PREPARE: fixed problem with no valid source trees
 
 2005-04-05 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.12-rc2-mm1
+	* latest.defaults: updated latest to patch-2.6.12-rc2
+	  updated latest to 2.6.12-rc2-mm1
+	* info/patches/PRE_2_6/patch-2.6.12-rc2: added
 	* info/patches/mm_patches/2.6.12-rc2-mm1: added
 	* PREPARE, PRE_BUILD: added gpg checking of the linux base tar ball
-
-2005-04-05 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-rc2
-	* info/patches/PRE_2_6/patch-2.6.12-rc2: added
 
 2005-04-03 David Brown <dmlb2000@excite.com>
 	* PREPARE: finished up basic CUSTOM kernel section, however, it only
@@ -409,29 +367,23 @@
 	* info/patches/*/.info: added if not there
 
 2005-03-27 David Brown <dmlb2000@excite.com>
+	* DETAILS: fixed bug 8498 TMPFS problem also cleaned up added more
+	  commenting
+	  added UPDATED var
 	* latest.defaults: updated latest to patch-2.6.11-ac6
 	* info/patches/ac_patches/patch-2.6.11-ac6: added
 	* info/patches/ac_patches/patch-2.6.11-ac2: deleted
-	* DETAILS: added UPDATED var
-
-2005-03-27 David Brown <dmlb2000@excite.com>
-	* DETAILS: fixed bug 8498 TMPFS problem also cleaned up added more
-	  commenting
-
-2005-03-25 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck3
-	* info/patches/ck_patches/patch-2.6.11-ck3: added
-	* info/patches/ck_patches/patch-2.6.11-rc1-ck2: deleted
-
-2005-03-25 David Brown <dmlb2000@excite.com>
-	* info/patches/PRE_2_6/patch-2.6.11.6: added
-	* info/patches/PRE_2_6/patch-2.6.11.2: deleted
-	* info/kernels/2.6.11.6: added
 
 2005-03-25 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc1-mm3
-	* info/patches/mm_patches/2.6.12-rc1-mm3: added
+	  updated latest to patch-2.6.11-ck3
 	* info/patches/mm_patches/2.6.11-rc2-mm2: deleted
+	* info/patches/mm_patches/2.6.12-rc1-mm3: added
+	* info/patches/PRE_2_6/patch-2.6.11.2: deleted
+	* info/patches/PRE_2_6/patch-2.6.11.6: added
+	* info/kernels/2.6.11.6: added
+	* info/patches/ck_patches/patch-2.6.11-rc1-ck2: deleted
+	* info/patches/ck_patches/patch-2.6.11-ck3: added
 
 2005-03-24 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.12-rc1-mm2
@@ -459,20 +411,16 @@
 	  patchversion var
 
 2005-03-17 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.12-rc1
+	* latest.defaults: updated latest to 2.6.11-mm4
+	  updated latest to patch-2.6.11-ac4
+	  updated latest to patch-2.6.12-rc1
+	* info/patches/mm_patches/2.6.11-rc1-mm1: deleted
+	* info/patches/mm_patches/2.6.11-mm4: added
+	* info/updatepatch: added EMAIL var for history entry
+	* info/patches/ac_patches/patch-2.6.10-ac9: deleted
+	* info/patches/ac_patches/patch-2.6.11-ac4: added
 	* info/patches/PRE_2_6/patch-2.6.12-rc1: added
 	* info/patches/PRE_2_6/patch-2.6.11-rc2: deleted
-
-2005-03-17 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ac4
-	* info/patches/ac_patches/patch-2.6.11-ac4: added
-	* info/patches/ac_patches/patch-2.6.10-ac9: deleted
-
-2005-03-17 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.11-mm4
-	* info/patches/mm_patches/2.6.11-mm4: added
-	* info/patches/mm_patches/2.6.11-rc1-mm1: deleted
-	* info/updatepatch: added EMAIL var for history entry
 
 2005-03-17 Eric Sandall <eric@sandall.us>
 	* latest.defaults: Latest PRE_2_6 is 2.6.11.4
@@ -492,55 +440,44 @@
 	  what it does
 
 2005-03-12 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.10-as7
-	* info/patches/as_patches/patch-2.6.10-as7: added
-
-2005-03-12 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to grsecurity-2.1.3-2.6.11-200503111604.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.3-2.6.11-200503111604.patch: added
-
-2005-03-12 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.11-mm3
+	  updated latest to patch-2.6.10-as7
+	  updated latest to grsecurity-2.1.3-2.6.11-200503111604.patch
 	* info/patches/mm_patches/2.6.11-mm3: added
 	* info/patches/mm_patches/2.6.10-rc3-mm1: deleted
-
-2005-03-11 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-cko2
-	* info/patches/cko_patches/patch-2.6.11-cko2: added
+	* info/patches/grsecurity_2_6/grsecurity-2.1.3-2.6.11-200503111604.patch:
+	  added
+	* info/patches/as_patches/patch-2.6.10-as7: added
 
 2005-03-11 David Brown <dmlb2000@excite.com>
 	* info/patches/ac_patches/.info: added
 	* info/patches/ac_patches/*: edit to include the .info file
 	* CONFIGURE: edit to remove the stop for sorcery rebuild
 	* PRE_BUILD: printed off the linux-source-directory for debugging
+	* latest.defaults: updated latest to patch-2.6.11-cko2
+	* info/patches/cko_patches/patch-2.6.11-cko2: added
 
 2005-03-10 Ladislav Hagara <hgr@vabo.cz>
 	* info/kernels/2.6.11.2: fixed md5sum
 
 2005-03-09 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to 2.6.11-mm2
-	* info/patches/mm_patches/2.6.11-mm2: added
-	* info/patches/mm_patches/2.6.10-rc2-mm4: deleted
-
-2005-03-09 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ac2
-	* info/patches/ac_patches/patch-2.6.11-ac2: added
-	* info/patches/ac_patches/patch-2.6.9-ac14: deleted
-
-2005-03-09 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck2
+	* latest.defaults: updated latest to patch-2.6.11.2
+	  updated latest to patch-2.6.11-ck2
+	  udpated latest 2.6 kernel to 2.6.11 then if you /need/ the patches
+	    2.6.11.[12] they are available...
+	  updated latest to patch-2.6.11-ac2
+	  updated latest to 2.6.11-mm2
+	* info/patches/PRE_2_6/patch-2.6.11.2: added
+	* info/patches/PRE_2_6/patch-2.6.10-rc3: deleted
 	* info/patches/ck_patches/patch-2.6.11-ck2: added
 	* info/patches/ck_patches/patch-2.6.11-rc1-ck1: deleted
 	* PREPARE: updated to be a more recursive depends creation
 	* info/patches/PRE_2_6/patch-2.6.11.[12]: updated to be patches instead
 	  dummy patch files
-	* latest.defaults: udpated latest 2.6 kernel to 2.6.11 then if you /need/
-	  the patches 2.6.11.[12] they are available...
-
-2005-03-09 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11.2
-	* info/patches/PRE_2_6/patch-2.6.11.2: added
-	* info/patches/PRE_2_6/patch-2.6.10-rc3: deleted
+	* info/patches/ac_patches/patch-2.6.11-ac2: added
+	* info/patches/ac_patches/patch-2.6.9-ac14: deleted
+	* info/patches/mm_patches/2.6.11-mm2: added
+	* info/patches/mm_patches/2.6.10-rc2-mm4: deleted
 
 2005-03-08 Eric Sandall <eric@sandall.us>
 	* info/patches/bootsplash/bootsplash-3.1.4-2.6.11.diff: Works with 2.6.11.1
@@ -560,25 +497,23 @@
 	* info/patches/ac_patches/patch-2.6.10-ac8: deleted
 
 2005-03-05 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to grsecurity-2.1.2-2.6.11-200503051216.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.2-2.6.11-200503051216.patch: added
+	* latest.defaults: updated latest to
+	  grsecurity-2.1.2-2.6.11-200503051216.patch
+	* info/patches/grsecurity_2_6/grsecurity-2.1.2-2.6.11-200503051216.patch:
+	  added
 
 2005-03-05 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Doesn't really depend on perl
 	* INSTALL: Don't fail if /usr/src/linux doesn't exist
 
 2005-03-04 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to wbsd-2.6.11-1.patch
-	* info/patches/wbsd_patches/wbsd-2.6.11-1.patch: added
-
-2005-03-04 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to kernel-source-2.6.10_2.6.10-5.diff
+	* latest.defaults: updated latest to patch-2.6.10-as6
+	  updated latest to kernel-source-2.6.10_2.6.10-5.diff
+	  updated latest to wbsd-2.6.11-1.patch
+	* info/patches/as_patches/patch-2.6.10-as6: added
 	* info/patches/debian_patches/kernel-source-2.6.10_2.6.10-5.diff: added
 	* PRE_BUILD: added check for debian patches
-
-2005-03-04 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.10-as6
-	* info/patches/as_patches/patch-2.6.10-as6: added
+	* info/patches/wbsd_patches/wbsd-2.6.11-1.patch: added
 
 2005-03-04 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.11-mm1
@@ -586,8 +521,10 @@
 	* info/patches/mm_patches/2.6.10-rc2-mm3: deleted
 
 2005-03-03 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to grsecurity-2.1.1-2.6.10-as2-200501242254.patch
-	* info/patches/grsecurity_2_6/grsecurity-2.1.1-2.6.10-as2-200501242254.patch: added
+	* latest.defaults: updated latest to
+	  grsecurity-2.1.1-2.6.10-as2-200501242254.patch
+	* info/patches/grsecurity_2_6/grsecurity-2.1.1-2.6.10-as2-200501242254.patch:
+	  added
 
 2005-03-03 Eric Sandall <eric@sandall.us>
 	* info/patches/bootsplash_patches/bootsplash-3.1.4-2.6.11.diff: Added
@@ -595,21 +532,15 @@
 	* info/patches/mppe_mppc_patches/linux-2.4.29-mppe-mppc-1.3.patch: Added
 
 2005-03-02 David Brown <dmlb2000@excite.com>
-	* info/patches/reiser4_patches/reiser4-2.6.10-2: added
-
-2005-03-02 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-cko1
-	* info/patches/cko_patches/patch-2.6.11-cko1: added
-
-2005-03-02 David Brown <dmlb2000@excite.com>
-	* latest.defaults: updated latest to patch-2.6.11-ck1
-	* info/patches/ck_patches/patch-2.6.11-ck1: added
-	* info/patches/ck_patches/2.6.11-rc2-ck1.diff: deleted
-
-2005-03-02 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated latest to 2.6.11-rc5-mm1
+	  updated latest to patch-2.6.11-ck1
+	  updated latest to patch-2.6.11-cko1
 	* info/patches/mm_patches/2.6.11-rc5-mm1: added
 	* info/patches/mm_patches/2.6.10-mm2: deleted
+	* info/patches/ck_patches/patch-2.6.11-ck1: added
+	* info/patches/ck_patches/2.6.11-rc2-ck1.diff: deleted
+	* info/patches/cko_patches/patch-2.6.11-cko1: added
+	* info/patches/reiser4_patches/reiser4-2.6.10-2: added
 
 2005-03-03 David Brown <dmlb2000@excite.com>
 	* latest.defaults: updated PRE_2_6 patch to 2.6.11
@@ -748,32 +679,26 @@
 	* info/patches/bootsplash/bootsplash-3.1.4-2.6.10.diff,
 	  info/patches/bootsplash/bootsplash-3.1.4-sp3-2.6.9-rc4.diff: Fixed URL
 	* PREPARE: Reverse listing of patches (so newest are at the top)
-	* INSTALL: Use ln -sfn for symlink and LINUX_SOURCE_DIRECTORY instead of linux-VERSION
+	* INSTALL: Use ln -sfn for symlink and LINUX_SOURCE_DIRECTORY instead of
+	  linux-VERSION
 	* POST_INSTALL: Use LINUX_SOURCE_DIRECTORY for copying .spell-config.p
 	* HISTORY: Formatted to Guru Handbook
 
 2005-01-05 David Brown <dmlb2000@excite.com>
-	* PRE_BUILD: added different config for different kernels
-	* PREPARE: changed created config files to config cache instead of script
-	  directory
-
-2005-01-05 David Brown <dmlb2000@excite.com>
 	* ALL: Updated everything under the face of the sun
 	* PREPARE: changed dir structure
+	  changed created config files to config cache instead of script directory
 	* latest.defaults: updated to 2.6.10
 	* INSTALL PRE_BUILD BUILD functions: removed exit replace with return made
 	  spell work for 2.[246] kernels
-
-2004-12-19 David Brown <dmlb2000@excite.com>
-	* info/kernels: added all the 2.6 kernel info
-	* PREPARE: changes so you don't get patches in the new kernels dialog
+	* PRE_BUILD: added different config for different kernels
 
 2004-12-19 David Brown <dmlb2000@excite.com>
 	* ALL: new linux spell, let me know what you think likes and dislikes,
 	  please rip into my code add stuff if you like
-
-+++++++++++++ OLD LINUX HISTORY FILE ++++++++++++++++
-
+	* info/kernels: added all the 2.6 kernel info
+	* PREPARE: changes so you don't get patches in the new kernels dialog
+	* Including old linux HISTORY file below...:
 
 2005-05-29 Ladislav Hagara <hgr@vabo.cz>
 	* KERNELS: 2.6.11.11, 2.6.12-rc5, 2.4.31-rc1, 2.6.12-rc5-mm1
