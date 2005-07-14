@@ -1,2 +1,5 @@
-sedit  "s/-O2/$CFLAGS/"  configure
+sedit  's/-O2//'  configure.in  &&
+aclocal              &&
+automake  --foreign  &&
+autoconf             &&
 default_build
