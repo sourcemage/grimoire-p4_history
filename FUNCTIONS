@@ -151,8 +151,7 @@ function remove_shell ()
 
   #removing shell from /etc/shells
   if  [  -f  /etc/shells  ]  ;  then
-    grep -v "^$2$" /etc/shells > /etc/shells.tmp &&
-    mv /etc/shells.tmp /etc/shells
+    sedit "\:^$2$:d"  /etc/shells
   fi
 
   # and optionally from qingy's session dir
