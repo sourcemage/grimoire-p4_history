@@ -13,7 +13,10 @@ checkfs()
 {
   [ -e /fastboot     ]  &&  return
   [ -e /forcefsck    ]  &&  FORCE="-f"
-  [ "$FSCKFIX" = yes ]  &&  FIX="-y"  ||  FIX="-a"
+  [ "$SOFTFIX" = yes ]  &&  FIX="-a"
+  [ "$FSCKFIX" = yes ]  &&  FIX="-y"
+  [ -z  "$FIX"       ]  &&  FIX="-n" # need at least -n, -y, or -a for non-tty fsck
+  [ "$FORCE"   = yes ]  &&  FORCE="-f"
 
   echo "Checking file systems..."
   /sbin/fsck -T -C -A $FIX $FORCE
@@ -51,6 +54,13 @@ start()
   echo "Mounting root file system read only..."
   mount   -n  -o  remount,ro  /
   evaluate_retval || exit 1
+
+  if optional_executable /sbin/vgscan && optional_executable /sbin/vgchange ; then
+    echo -n "Scanning for and initializing all available LVM volume groups..."
+    /sbin/vgscan       --ignorelockingfailure   &&
+    /sbin/vgchange -ay --ignorelockingfailure
+    evaluate_retval
+  fi
 
   checkfs
 

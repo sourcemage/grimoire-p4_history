@@ -237,11 +237,12 @@ run_spellinstall()
     SPELL="$1"
     SPELL_CONFIG=$DEPENDS_CONFIG/$SPELL
     SCRIPT_DIRECTORY="`codex_find_spell_by_name $SPELL`"
-    persistent_load
-    query_services
-    install_xinetd
-    install_initd
-    init_post_install
+    persistent_load   &&
+    query_services    &&
+    install_xinetd    &&
+    install_initd     &&
+    init_post_install &&
+    persistent_save
   )
 }
 
