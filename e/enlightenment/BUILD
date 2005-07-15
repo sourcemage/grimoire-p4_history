@@ -1,4 +1,4 @@
-if [ "$DR17" = "y" ]; then
+if [ "$DR17" = "y" ] || [ "$DR16_CVS" = "y" ]; then
   ./autogen.sh
 fi  &&
 
