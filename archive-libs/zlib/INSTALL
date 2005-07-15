@@ -1,7 +1,5 @@
-CFLAGS="$CFLAGS -DPIC -fPIC"               &&
-
-make    install                            &&
-./configure  --prefix=${INSTALL_ROOT}/usr  \
-      $OPTS                                &&
-make                                       &&
-make    install
+cd $SOURCE_DIRECTORY.static &&
+make    DESTDIR=$INSTALL_ROOT install &&
+cd $SOURCE_DIRECTORY &&
+make DESTDIR=$INSTALL_ROOT install &&
+rm_source_dir $SOURCE_DIRECTORY.static
