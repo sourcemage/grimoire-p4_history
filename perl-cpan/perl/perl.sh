@@ -1,2 +1,2 @@
 #!/bin/bash
-MANPATH="${INSTALL_ROOT}/usr/share/site_perl/man:${INSTALL_ROOT}/usr/share/vendor_perl/man"
+MANPATH="${MANPATH}:/usr/share/site_perl/man:/usr/share/vendor_perl/man"
