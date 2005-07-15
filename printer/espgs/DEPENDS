@@ -1,6 +1,12 @@
 depends  ghostscript-fonts-std  &&
 depends  jpeg                   &&
-depends  X11-LIBS               &&
+depends  libpng                 &&
+depends  zlib                   &&
+
+optional_depends  X11-LIBS               \
+                  ''                     \
+                  ''                     \
+                  'for X11 GUI support'  &&
 
 if  [  "$ESPGS_OMNI"  ==  "y"  ];  then
   depends  glib2
@@ -24,14 +30,4 @@ optional_depends  "cups"                        \
 optional_depends  "ghostscript-fonts-other"  \
                   ""                         \
                   ""                         \
-                  "for additional fonts"     &&
-
-optional_depends  "zlib"                                            \
-                  ""                                                \
-                  ""                                                \
-                  "to compress data for smaller memory/disk usage"  &&
-
-optional_depends  "libpng"                                                             \
-                  ""                                                                   \
-                  ""                                                                   \
-                  "for the Ghostscript PNG output drivers (which also requires ZLIB)"
+                  "for additional fonts"
