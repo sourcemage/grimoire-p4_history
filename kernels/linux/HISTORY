@@ -3,6 +3,10 @@
 	* info/patches/mm_patches/2.6.13-rc3-mm1: added
 	* info/patches/reiser4_patches/reiser4-for-2.6.12-3.patch: added
         * info/patches-sigs/reiser4_patches/reiser4-for-2.6.12-3.patch.gz.sig: added
+	* PREPARE: switched out the var dialog for an array and added evals to 
+	  the dialog calls so the under-scores can be removed. Also moved the
+	  removal of the CONFIGURE vars to a different location so cast -c does
+	  not reask the questions with defaults.
 
 2005-07-13 Eric Sandall <eric@sandall.us>
 	* info/patches/gensplash/{fbsplash-0.9.2-2.6.11.patch,
