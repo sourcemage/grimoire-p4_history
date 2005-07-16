@@ -187,7 +187,7 @@ clean_menu()
         do
                 eval 'menu_option=$( "${dialog[@]}" --title "Clean Menu" \
 			--item-help --menu \
-			"Which Kenrel" 0 0 0 '`list_usr_src`' )'
+			"Which Kernel" 0 0 0 '`list_usr_src`' )'
 		retval="$?"
 		if [[ "$retval" == "0" && "$menu_option" != "No" ]]
 		then
