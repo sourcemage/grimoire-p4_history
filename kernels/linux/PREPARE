@@ -784,6 +784,7 @@ create_details()
 			for patch in $patches
 			do
 				source_gpg=""
+				gpg_source_url=""
 				case "$patch" in
 					LATEST*)
 						source_patch ${!patch}
