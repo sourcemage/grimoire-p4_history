@@ -1,12 +1,17 @@
            SPELL=amarok
+ if [ "$AMAROK_DEVEL" == "y" ]; then
+         VERSION=1.3-beta2
+         MD5[0]=9fd6d51d0c8c7d6625203620f1d84610
+ else
          VERSION=1.2.4
+         MD5[0]='7d13cf0b3bd308b66168245538bd9102'
+ fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%_RC*}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
-          MD5[0]='7d13cf0b3bd308b66168245538bd9102'
         WEB_SITE=http://amarok.sourceforge.net/
          ENTERED=20040105
-         UPDATED=20040105
+         UPDATED=20050716
        GCC_VERSION=3.4
        BUILD_API=2
       LICENSE[0]=GPL
