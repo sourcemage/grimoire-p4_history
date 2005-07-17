@@ -1,4 +1,6 @@
 default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
 # fix broken mozilla detection
-sedit  's/MOZILLA_CFLAGS=".*"/MOZILLA_CFLAGS="$(mozilla-config --cflags plugin)"/'  configure
+sedit  's/MOZILLA_CFLAGS=".*"/MOZILLA_CFLAGS="$(mozilla-config --cflags plugin)"/'  configure  &&
+# work around a pkg-config bug
+sedit  "s/--define-variable=prefix='\${prefix}'//"  configure
