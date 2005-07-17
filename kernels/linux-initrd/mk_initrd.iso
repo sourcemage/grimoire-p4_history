@@ -8,7 +8,7 @@
 
 # make basic dir structure
 cd ${BUILD_DIRECTORY}/initrd
-mkdir bin dev etc etc.ro lib proc sbin var sys usr mnt initrd
+mkdir bin dev etc etc.ro lib proc sbin var sys usr mnt initrd cdrom
 cd var
 mkdir lock log
 cd ../lib
@@ -109,7 +109,6 @@ mkdir \$udev_root/pts
 # =================================================== #
 # /sbin/modprobe ipv6
 
-modprobe iso9660
 # =================================================== #
 # Don't edit past here unless you really know what    #
 # you are doing                                       #
@@ -119,18 +118,23 @@ for RC in /etc/hotplug/*.rc
 do
 	\$RC start
 done
+modprobe ide-cd
+modprobe sr_mod
+modprobe isofs
+modprobe loop
+modprobe cryptoloop
 echo "Getting cdrom dev"
 real_root="\`cat /proc/cmdline | awk '{ for ( i = 1; i <= NF; i++ )  
 						if ( \$i ~ /cdrom=.*/ )
 							print \$i
 					}' | awk -F= '{ print \$2 }'\`"
 for cd_dev in /proc/ide/hd* ; do
-	if test "`cat \${cd_dev}/media`" == "cdrom" ; then
+	if test "\`cat \${cd_dev}/media\`" == "cdrom" ; then
 		if test -z \$found ; then
 			real_root="\${cd_dev/\/proc\/ide\//}"
 			real_root="/dev/\${real_root}"
 			echo "checking cdrom \${real_root}"
-			number="\`echo \$real_root | sed 's/\/dev\/hd[a-z]//g'\`"
+			number="0"
 			real_dev="\`echo \$real_root | sed 's/[0-9]//g'\`"
 			letter="\`echo \$real_dev | sed 's/\/dev\/hd//g'\`"
 			if test \$letter = a || test \$letter = b ; then
@@ -153,7 +157,7 @@ for cd_dev in /proc/ide/hd* ; do
 			fi
 			minor="\`expr \$minor + \$number\`"
 			mknod  \$real_root b \$major \$minor
-			mount -n iso9660 \$real_root /cdrom
+			mount -t iso9660 \$real_root /cdrom
 			if test -f /cdrom/isoroot ; then
 				echo "found \$real_root"
 				found="true"
@@ -165,7 +169,7 @@ for cd_dev in /proc/ide/hd* ; do
 done
 mknod /dev/loop0 b 7 0
 losetup /dev/loop0 /cdrom/isoroot
-mount /dev/loop0 /mnt
+mount -rn /dev/loop0 /mnt
 echo "0x100" > /proc/sys/kernel/real-root-dev
 umount -n /proc
 umount -n /sys
