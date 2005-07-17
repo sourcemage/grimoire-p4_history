@@ -1,3 +1,4 @@
+. $GRIMOIRE/FUNCTIONS
 show_themes()  {
   local COUNT_THEMES=${#T_NAMES[@]}
   local INDEX=0
@@ -46,20 +47,9 @@ which_theme() {
 . $SCRIPT_DIRECTORY/themes &&
 . $SCRIPT_DIRECTORY/mkinfo &&
 
-KVERSION=$(installed_version linux) &&
-if [ "$KVERSION" == "" ] ; then
-  KVERSION=$(installed_version linux-new) 
-fi &&
-if [ "$KVERSION" == "" ] ; then
-  message "${PROBLEM_COLOR}You don't have linux or linux-new installed...${DEFAULT_COLOR}" &&
-  message "${PROBLEM_COLOR}Quiting due to lack of kernel version...${DEFAULT_COLOR}" &&
-  return 1
-else
-  message "${MESSAGE_COLOR}Using kernel version $KVERSION for the initrd.${DEFAULT_COLOR}"
-fi &&
-
-persistent_add KVERSION
-
+KVERSION=$(get_kernel_version) &&
+message "${MESSAGE_COLOR}Using kernel version $KVERSION for the initrd.${DEFAULT_COLOR}" &&
+persistent_add KVERSION &&
 config_query FILE_SYSTEM "Would you like to create a filesystem on the front of the initrd?" y &&
 #set -x
 if [ "$FILE_SYSTEM" == "y" ] ; then
