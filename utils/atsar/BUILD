@@ -7,7 +7,7 @@
   make                   &&
   prepare_install        &&
 
-  mkdir  /var/log/atsar  &&
+  mkdir  -p /var/log/atsar  &&
 
 #  needed only for FTP and HTTP accounting
 #
