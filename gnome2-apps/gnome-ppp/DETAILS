@@ -1,15 +1,15 @@
            SPELL=gnome-ppp
-         VERSION=0.3.19
+         VERSION=0.3.23
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
-          SOURCE=$SPELL-$VERSION.tar.gz
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.gnome-ppp.org/download/$BRANCH/$SOURCE
-          MD5[0]='f2b42066d70fb240ba3db6888582fef3'
+   SOURCE_URL[0]=http://www.icmreza.co.yu/blogs/vladecks/wp-content/projects/gnome-ppp/download/$BRANCH/$SOURCE
+          MD5[0]='a54b61b902ea5538d627a2b0ebbf2228'
       LICENSE[0]=GPL
        BUILD_API=2
-        WEB_SITE=http://www.gnome-ppp.org
+        WEB_SITE=http://www.icmreza.co.yu/blogs/vladecks/en/?page_id=4
          ENTERED=20041002
-         UPDATED=20050201
+         UPDATED=20050714
            SHORT="GNOME PPP is a modem dialup tool"
 cat << EOF
 GNOME PPP is a modem dialup tool designed to integrate nicely 
