@@ -1,5 +1,6 @@
 default_install &&
 for file in etc/*.conf ;
 do
-	install_config_file $file ${INSTALL_ROOT}/etc/$file 
+	# $file includes etc in its name
+	install_config_file $file ${INSTALL_ROOT}/$file 
 done
