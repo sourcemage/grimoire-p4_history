@@ -1,2 +1,5 @@
-depends  attr  &&
+if  [  "$CVS"  ==  "y"  ]
+then  depends  CVS
+fi  				&&
+depends  attr  		&&
 depends  dmapi
