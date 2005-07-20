@@ -21,9 +21,11 @@
 
   make                                                                   &&
   prepare_install                                                        &&
-#  mkdir   -p  ${INSTALL_ROOT}/usr/share/courier                          &&
+# mkdir   -p  ${INSTALL_ROOT}/usr/share/courier                          &&
   make    install                                                        &&
-  make    install-configure
+  make    install-configure                                              &&
+
+  ln -s $INSTALL_ROOT/usr/bin/sendmail $INSTALL_ROOT/usr/lib/sendmail   &&
 
   if  [  "${AUTHPAM}"  ==  "y"  ];  then
     cp  ${SCRIPT_DIRECTORY}/pam.d/*  ${INSTALL_ROOT}/etc/pam.d
