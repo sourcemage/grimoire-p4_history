@@ -24,6 +24,9 @@ if [ "$FIREFOX_CVS" == "y" ]; then
   OPTS="$OPTS --enable-application=browser"
 fi &&
 cp browser/config/mozconfig .mozconfig &&
+# append typeaheadfind extension name to enable it
+sedit 's/enable-extensions=.*/\0,typeaheadfind/g' .mozconfig &&
+
 ./configure                                       \
   --prefix=${INSTALL_ROOT}/usr                    \
   --with-user-appdir=.firefox                     \
