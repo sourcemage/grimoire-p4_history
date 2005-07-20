@@ -3,7 +3,6 @@ invoke_gcc                                       &&
              --prefix=/usr                       \
              --sysconfdir=/etc                   \
              --localstatedir=/var                \
-             --with-appspath=/usr/share/GNUstep  \
+             --with-gnustepdir=/usr/share/GNUstep \
              $OPTS                               &&
-make_single                                      &&
 make
