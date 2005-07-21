@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PIDFILE=/usr/var/nagios.lock
+PROGRAM=/usr/nagios/bin/nagios
+ARGS="-d /etc/nagios/nagios.cfg"
+RUNLEVEL=3
+NEEDS="+network +remote_fs"
+
+. /etc/init.d/smgl_init

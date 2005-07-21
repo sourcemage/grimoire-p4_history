@@ -1,0 +1,16 @@
+            SPELL=nagios
+          VERSION=1.2,1.4
+           SOURCE=$SPELL-1.2.tar.gz
+		SOURCE2=$SPELL-plugins-1.4.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.2
+       SOURCE_URL=$SOURCEFORGE_URL/$SPELL/$SOURCE
+	 SOURCE2_URL=$SOURCEFORGE_URL/${SPELL}plug/$SOURCE2
+         WEB_SITE=http://www.nagios.org/
+           MD5[0]=9123a4381e15c5f7b6ae12d899f5dea0
+		 MD5[1]=3c58fd108a0a71619cf602412dc3b77a
+          LICENSE=GPL
+        BUILD_API=2
+            SHORT="Nagios is an open source host, service and network monitoring program."
+cat << EOF
+Nagios® is a host and service monitor designed to inform you of network problems before your clients, end-users or managers do. It has been designed to run under the Linux operating system, but works fine under most *NIX variants as well. The monitoring daemon runs intermittent checks on hosts and services you specify using external "plugins" which return status information to Nagios. When problems are encountered, the daemon can send notifications out to administrative contacts in a variety of different ways (email, instant message, SMS, etc.). Current status information, historical logs, and reports can all be accessed via a web browser.
+EOF
