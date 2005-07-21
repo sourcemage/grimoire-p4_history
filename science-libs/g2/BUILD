@@ -1,0 +1,3 @@
+./configure &&
+make depend &&
+make
