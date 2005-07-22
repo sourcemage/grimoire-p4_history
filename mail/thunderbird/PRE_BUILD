@@ -1,10 +1,13 @@
 default_pre_build                                  &&
 cd  $SOURCE_DIRECTORY                              &&
-patch  -p1  <  ${SCRIPT_DIRECTORY}/freetype.patch
+patch  -p1  <  ${SCRIPT_DIRECTORY}/freetype.patch  &&
+
+if use_gcc ^4; then
+  patch  -p1  <  $SCRIPT_DIRECTORY/gcc4.patch
+fi &&
 
 if  [ "$BUILD_ENIGMAIL" = "y" ];  then
   cd  $SOURCE_DIRECTORY/extensions  &&
   unpack  $SOURCE2  ${MD5[1]}       &&
   unpack  $SOURCE3  ${MD5[2]}
 fi
-
