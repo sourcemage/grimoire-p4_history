@@ -45,4 +45,7 @@ cd  $SOURCE_DIRECTORY                                                       &&
 patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch  &&
 if use_gcc ^4; then
   patch  -p1  <  $SCRIPT_DIRECTORY/gcc4.patch
-fi
+fi &&
+
+# Typeaheadfind patch
+patch -p0 < $SCRIPT_DIRECTORY/typeaheadfind.diff
