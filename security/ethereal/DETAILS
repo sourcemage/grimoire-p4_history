@@ -1,0 +1,21 @@
+           SPELL=ethereal
+         VERSION=0.10.11
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.ethereal.com/distribution/$SOURCE
+   SOURCE_URL[1]=http://www.ethereal.com/distribution/old-versions/$SOURCE
+          MD5[0]='c3e3074056262267c78acd9b9b6c331c'
+        WEB_SITE=http://www.ethereal.com/
+         ENTERED=20020116
+         UPDATED=20020821
+      LICENSE[0]=GPL
+           SHORT="A network protocol analyzer"
+cat << EOF
+Ethereal is a free network protocol analyzer for Unix and Windows. 
+It allows you to examine data from a live network or from a capture file
+on disk.  You  can interactively browse the capture data, viewing
+summary and detail information for each packet.  Ethereal has several
+powerful features, including a rich display filter language and the
+ability to view the reconstructed stream of a TCP session.
+EOF

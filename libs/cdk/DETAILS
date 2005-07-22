@@ -1,0 +1,20 @@
+           SPELL=cdk
+         VERSION=4.9.11-20041224
+          SOURCE=$SPELL-$VERSION.tgz
+   SOURCE_URL[0]=ftp://invisible-island.net/cdk/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          MD5[0]=442b51b580c39f5e96f0d0fdfc977855
+        WEB_SITE=http://dickey.his.com/cdk/cdk.html
+    DISTCC_HOSTS=
+          CCACHE=off
+         ENTERED=20041014
+         UPDATED=20041014
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="C based curses widget library"
+cat << EOF
+CDK is a C based curses widget library. CDK sits on top of the curses 
+library and provides 21 ready to use widgets for rapid application 
+development of text based interfaces. CDK delivers many of the common 
+widget types required for a robust interface.
+EOF

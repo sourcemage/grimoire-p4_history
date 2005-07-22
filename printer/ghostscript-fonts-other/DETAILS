@@ -1,0 +1,23 @@
+           SPELL=ghostscript-fonts-other
+         VERSION=6.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/fonts
+   SOURCE_URL[0]=$SOURCEFORGE_URL/ghostscript/$SOURCE
+        WEB_SITE=http://www.ghostscript.com
+      LICENSE[0]=GPL
+          MD5[0]=ecb0f113cf4da0d1dd3af50b2a30066e
+         ENTERED=20010922
+         UPDATED=20010922
+         ARCHIVE="off"
+      MAINTAINER=jason@flattfamily.com
+           SHORT="Optional fonts for ghostscript."
+cat << EOF
+
+Ghostscript is the name of a set of software that provides:
+    * An interpreter for the PostScript language and the PDF file format,
+    * A set of C procedures (the Ghostscript library) that implement the
+      graphics capabilities that appear as primitive operations in the
+      PostScript language, and
+    * A wide variety of output drivers for various file formats and printers.
+
+EOF

@@ -1,0 +1,19 @@
+           SPELL=lcrack
+         VERSION=20030404
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://usuarios.lycos.es/reinob/lcrack/$SOURCE
+          MD5[0]=94cd232e1d5cc794e4a184c75b9c5675
+        WEB_SITE=http://usuarios.lycos.es/reinob/
+         ENTERED=20030410
+         UPDATED=20030410
+      LICENSE[0]=GPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="lcrack - Lepton's Crack is a generic password cracker"
+cat << EOF
+Lepton's Crack is a generic password cracker, easily customizable with a simple plug-in system.
+
+It can perform a dictionary-based (wordlist) attack, as well as a brute-force (incremental) password scan.
+
+Currently the formats supported are: standard MD4 hash, standard MD5 hash, NT MD4/Unicode, Lotus Domino HTTP password (R4) and SHA-1.
+EOF

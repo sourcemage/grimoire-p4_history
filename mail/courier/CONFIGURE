@@ -1,0 +1,260 @@
+if ! grep -q 'CONFIGURED=\"y\"' ${DEPENDS_CONFIG}/courier; then
+  if  query  "Do you want to install and configure the webmail portion of Courier? "  y;  then
+    INSTALL_WEBMAIL=y
+  else
+    INSTALL_WEBMAIL=n
+  fi
+
+  if  query  "Do you want to install and configure the IMAP portion of Courier? "  y;  then
+    INSTALL_IMAP=y
+    echo  'OPTS="${OPTS}  --enable-workarounds-for-imap-client-bugs"'  >>  ${SPELL_CONFIG}
+  else
+    INSTALL_IMAP=n
+    echo  'OPTS="${OPTS}  --disable-utf7-folder-encoding"'             >>  ${SPELL_CONFIG}
+  fi
+
+  ##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
+  if  spell_ok  linux-pam;  then
+    if  query  "Use the PAM library for authentication? "  y;  then
+      AUTHPAM=y
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    else
+      AUTHPAM=n
+      echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Use the PAM library for authentication? "  n;  then
+      AUTHPAM=y
+      AUTHPWD=n
+      echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+      AUTHSHADOW=n
+      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+    else
+      AUTHPAM=n
+      echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
+
+      ##  Use authshadow instead of authpwd on systems that use the shadow password file.
+      if  [  -e  /etc/shadow  ];  then
+        if  query  "Use shadow passwords for authentication? "  y;  then
+          AUTHSHADOW=y
+          AUTHPWD=n
+          echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+        else
+          AUTHSHADOW=n
+          echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+          AUTHPWD=n
+          echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
+        fi
+      else
+        AUTHSHADOW=n
+        echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
+
+        if  [  -e  /etc/passwd  ];  then
+          if  query  "Authenticate against the system passwd file? "  y;  then
+            AUTHPWD=y
+          else
+            AUTHPWD=n
+            echo  'OPTS="${OPTS}  --without-authpwd"'  >>  ${SPELL_CONFIG}
+          fi
+        fi
+      fi
+    fi
+  fi
+
+  if  spell_ok  db  ||  spell_ok  gdbm;  then
+    if  query  "Authenticate from a GDBM/DB database? "  y;  then
+      AUTHUSERDB=y
+    else
+      AUTHUSERDB=n
+      echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  y;  then
+      AUTHCRAM=y
+    else
+      AUTHCRAM=n
+      echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Authenticate from a GDBM/DB database? "  n;  then
+      AUTHUSERDB=y
+    else
+      AUTHUSERDB=n
+      echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  n;  then
+      AUTHCRAM=y
+    else
+      AUTHCRAM=n
+      echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  spell_ok  openldap;  then
+    if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
+      AUTHLDAP=y
+    else
+      AUTHLDAP=n
+      echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Authenticate from an account file stored in an LDAP directory? "  n;  then
+      AUTHLDAP=y
+    else
+      AUTHLDAP=n
+      echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  spell_ok  mysql;  then
+    if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
+      AUTHMYSQL=y
+    else
+      AUTHMYSQL=n
+      echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Authenticate from an account file stored in a MySQL database? "  n;  then
+      AUTHMYSQL=y
+    else
+      AUTHMYSQL=n
+      echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  spell_ok  postgresql;  then
+    if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
+      AUTHPGSQL=y
+    else
+      AUTHPGSQL=n
+      echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+    fi
+  else
+    if  query  "Authenticate from an account file stored in a PostgreSQL database? "  n;  then
+      AUTHPGSQL=y
+    else
+      AUTHPGSQL=n
+      echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  query  "Use the authdaemond authentication proxy process? "  y;  then
+    AUTHDAEMOND=y
+  else
+    AUTHDAEMOND=n
+    echo  'OPTS="${OPTS}  --without-authdaemond"'  >>  ${SPELL_CONFIG}
+  fi
+
+  AUTHVCHKPW=n
+  echo  'OPTS="${OPTS}  --without-authvchkpw"'  >>  ${SPELL_CONFIG}
+
+  if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
+    if  query  "Do you want to enable spell checking in Courier's webmail? "  y;  then
+      SPELL_CHECK=y
+
+      if  !  spell_ok  aspell;  then
+        if  !  spell_ok  ispell;  then
+          if  query  "Do you want to install aspell?  If yes, press 'y'.  If not, press 'n' and ispell will be installed. "  n;  then
+            SPELL_CHECKER=aspell
+          else
+            SPELL_CHECKER=ispell
+          fi
+        fi
+      fi
+    else
+      SPELL_CHECK=n
+      echo  'OPTS="${OPTS}  --without-ispell"'  >>  ${SPELL_CONFIG}
+    fi
+  else
+    SPELL_CHECK=n
+    echo  'OPTS="${OPTS}  --without-ispell"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Do you want to be able to send e-mails by fax? "  n;  then
+    SEND_FAXES=y
+  fi
+
+
+
+  if  query  "Attempt to install support for IPv6?  (If IPv6 is not detected, Courier will not install support for it.) "  n;  then
+    echo  'OPTS="${OPTS}  --with-ipv6"'     >>  ${SPELL_CONFIG}
+  else
+    echo  'OPTS="${OPTS}  --without-ipv6"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Are you running a network without access to a DNS server? "  n;  then
+    echo  'OPTS="${OPTS}  --without-tcpddns"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Do you wish to disable the automatic syncing of the mail queue?  This may increase performance, but will reduce reliability unless the queue is installed on a reliable disk array or a network file server. "  n;  then
+    echo  'OPTS="${OPTS}  --without-explicitsync"'  >>  ${SPELL_CONFIG}
+  else
+    if  query  "Do you also wish to sync the mail queue's parent directory? "  n;  then
+      echo  'OPTS="${OPTS}  --with-dirsync"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  query  "Normally, in addition to accepting mail that's addressed to <user@domain.com>, Courier can accept mail that's addressed to <user-xxx@domain.com>, for arbitrary values of xxx.  Do you wish to disable this feature? "  n;  then
+    echo  'OPTS="${OPTS}  --disable-local-extensions"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  query  "Do you wish for Courier to be paranoid when negotiating specific ESMTP extensions with remote servers? "  n;  then
+    echo  'OPTS="${OPTS}  --with-paranoid-smtpext"'  >>  ${SPELL_CONFIG}
+  fi
+
+  if  [  "${INSTALL_IMAP}"  ==  "y"  ];  then
+    if  query  "Do you to disable the automatic renaming of the IMAP Sent folder every month? "  n;  then
+      echo  'OPTS="${OPTS}  --disable-autorenamesent"'  >>  ${SPELL_CONFIG}
+    fi
+
+    if  query  "Do you wish to include the Trash folder in the IMAP quota usage? "  n;  then
+      echo  'OPTS="${OPTS}  --with-trashquota"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  if  [  "${INSTALL_WEBMAIL}"  ==  "y"  ];  then
+    if  query  "Do you wish to disable the ability of the end-user to change their password within Webmail? "  n;  then
+      echo  'OPTS="${OPTS}  --disable-changepass"'  >>  ${SPELL_CONFIG}
+      #  W   - disable the ability to change login passwords in the webmail server. Use this if you don't want to install the authdaemon.passwd utility (which is installed suid root) that is used to change login passwords.
+    fi
+
+    if  query  "Would you like to enable SSL for the Webmail server? "  y;  then
+      echo  'OPTS="${OPTS}  --enable-https=auto"'  >>  ${SPELL_CONFIG}
+    fi
+  fi
+
+  echo 'CONFIGURED="y"' >> ${SPELL_CONFIG}
+fi
+
+#  --enable-mimecharset=charset - specifies the default character set Courier uses when adding MIME headers to a message. If not specified, us-ascii will be used.
+#  --enable-mimetypes=file:file:file - this is a colon-separated list of all of your mime.types files. The mime.types configuration files are used to map file extension to their corresponding MIME content types. The configuration script will look in several directories where mime.types usually exists. You can use this option to explicitly specify a list of mime.types files to be used, instead of the default.
+#  --with-locking-method=function - Select a file locking function. Available functions are: fcntl, lockf, and flock. Not every function is available on every platform. If this option is not present, configure will choose the first locking function that's available. You can select a specific locking function by using this option. This affects both the locking used for delivering mail to mailbox files, and for other kinds of locking that Courier uses internally.
+#  --with-random=/dev/path
+#  --without-random - for authenticating, Courier sometimes needs a good source of random noise. If configure finds /dev/urandom, it will use that. If your random device is named otherwise, specify it using this option. If you don't want to use a random device, specify --without-random, and Courier will generate some noise on its own. Courier will generate noise based on the output of a random ps command, and several other, hopefully unpredictable, sources.
+#  --without-certdb - do not install a default set of trusted X.509 root CA certs (in order to validate the remote server's X.509 certificate). See "Configure ESMTP authentication and SSL" for more information.
+#  --with-certdb=pathname - do not install the default set, but put pathname as the default location of the root CA database, into the configuration file. This is a convenient option to have Courier use an external, previously installed, root CA database.
+#  --with-waitfunc=wait
+#  --with-waitfunc=wait3 - specifies the system call to use to asynchronously reap child processes. This is a sticky one, because the behavior of the wait and wait3 system calls varies greatly depending on the level of each individual system's POSIX compliance. The configure script will attempt to compile and run some test programs in order to attempt to figure out which system call actually works. If the configure script fails, or if it selects a wrong function (which will be evident when mail delivery stops, and you have a bunch of zombies that are not being reaped), you might have to manually specify it using either option. In that case, however, you should also examine the test programs, investigate what went wrong, and patch the test programs to give a correct result for your system.
+#  --enable-imageurl=/url - use /url/ as the URL to the static images displayed by the webmail server. HTML pages are dynamically generated by the webmail server CGI, but they also include some static icons. The webmail CGI will use /url as the URL to the directory containing the static images. The default URL is "/webmail", which means that the static images must be installed in the <DocumentRoot>/webmail directory. This is a manual process that is described in more detail in the "Configure the webmail server" section, below.
+#  --enable-https
+#  --enable-https=login
+#  --with-maxargsize=bytes
+#  --with-maxformargsize=bytes - sets an upper limit on the size of CGI arguments. Normally there's no reason to modify the defaults (500,000 and 2,000,000 bytes). The latter is generally the maximum allowed size of an attachment. The former is generally the maximum allowed size of a message.
+#  --with-cachedir=dir
+#  --with-cacheowner=userid - the webmail server uses a cache of currently active logins. The webmail server binary, is executed for each and every HTTP request, and the user's maildir needs to be quickly located each time. Because hitting the authentication module can be expensive (think MySQL/PostgreSQL/LDAP query for every HTTP request!) the webmail server will cache this information in order to avoid having your authentication server brought down to its knees. By default, the directory /usr/lib/courier/var/webmail-logincache will be used, owned by the bin user. These options can be used to specify a different location for the webmail login cache directory.
+#  --with-calendarpurge=N - if calendaring is enabled, purge expired calendar events after N days (default: 30).
+#  --enable-unicode - include the ability in the IMAP server to search and sort messages in character sets besides the default ISO-8859-1/US-ASCII. All character set tables supported by Courier's IMAP server will be included. See "Configure the IMAP server" and "Configure the webmail server" for more information. Additionally, all unicode tables will also be included in the webmail server. Keep this in mind because the full unicode table set is quite large.
+#  --enable-unicode=charset,charset,... - include ability to search and sort messages, but only for these character sets. Also, include only these character sets in the webmail server. See "Configure the IMAP server" and "Configure the webmail server" for more information.
+#  --enable-hardtimeout=7200 - set the hard timeout for webmail sessions (in seconds). The default is 2 hours. webmail sessions are unequivocally logged out after the indicated time interval.
+#  --enable-softtimeout=1200 - set the inactivity timeout for webmail sessions (in seconds). The default is 20 minutes. webmail sessions are logged out if there's no activity for the indicated time interval.
+#  --with-qdircount=n - set n to be the number of mail queue subdirectories. In order to improve the speed of access to the mail queue, messages are stored in subdirectories, hashed by the message queue number. n specifies how many subdirectories will be created. If this option is not specified, 100 subdirectories will be used. WARNING: once you've installed Courier once, if you decide to reconfigure and reinstall, you MUST use the same subdirectory count (by default, or explicitly), otherwise you'll end up with a big mess on your hands if you have ANY messages in the mail queue. If you need to change this option, wait for all messages in the queue to be flushed out, and reinstall with an empty mail queue.
+#  --without-gzip - if the configuration script finds the gzip utility, the webmail server will automatically use gzip compression for some large web pages (if the client browser supports gzip compression). Use this option to turn off gzip compression.
+#  --enable-bannerprog=pathname - advanced option that sets a banner program that the webmail server will execute. This program should print HTML, on standard output, to generate a typical banner.

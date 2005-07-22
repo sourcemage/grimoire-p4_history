@@ -1,0 +1,19 @@
+           SPELL=libao
+         VERSION=0.8.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.xiph.org/ao/src/$SOURCE
+        WEB_SITE=http://www.xiph.org/ao/
+         ENTERED=20010922
+         UPDATED=20020725
+      LICENSE[0]=LGPL
+      MAINTAINER=unet@sourcemage.org
+          MD5[0]=7411a1141459b6ae6b0bbfb38bc8de60
+            DOCS="CHANGES COPYING README"
+           SHORT="libao is a way to easily add cross-platform audio output to your program."
+cat << EOF
+libao is a way to easily add cross-platform audio output to your
+program. Output devices are implemented as dynamic plugins, and support
+for OSS, ESD, ALSA, aRTs, Solaris, and Irix outputs are currently
+supported.
+EOF

@@ -1,0 +1,22 @@
+           SPELL=Storable
+         VERSION=2.08
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/A/AM/AMS/$SOURCE
+          MD5[0]="d812289ee271f4bfe5623b82f778af18"
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?dist=Storable"
+         ENTERED=20020404
+         UPDATED=20020404
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="persistency for perl data structures"
+cat << EOF
+
+The Storable extension brings persistency to your data.
+
+You may recursively store to disk any data structure, no
+matter how complex and circular it is, provided it contains
+only SCALAR, ARRAY, HASH (possibly tied) and references
+(possibly blessed) to those items.
+
+EOF

@@ -1,0 +1,13 @@
+depends  kdebase   &&
+depends  iptables  &&
+
+optional_depends  "tcpdump"  \
+                  ""         \
+                  ""         \
+                  "for network traffic monitoring"  &&
+
+optional_depends  "nmap"  \
+                  ""      \
+                  ""      \
+                  "for network port scanning"
+

@@ -1,0 +1,22 @@
+           SPELL=scite
+         VERSION=1.63
+       BUILD_API=2
+          SOURCE=${SPELL}${VERSION/\./}.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=$SOURCEFORGE_URL/scintilla/$SOURCE
+          MD5[0]='ffc0412c4509fe2773a52754b3d935bc'
+        WEB_SITE=http://www.scintilla.org/
+         ENTERED=20030220
+         UPDATED=20031121
+      LICENSE[0]=BSD
+           SHORT='Scintilla - source code editing component, SciTE - text editor'
+
+cat << EOF
+As well as features found in standard text editing components, Scintilla includes 
+features especially useful when editing and debugging source code. These include 
+support for syntax styling, error indicators, code completion and call tips. The 
+selection margin can contain markers like those used in debuggers to indicate 
+breakpoints and the current line. Styling choices are more open than with many 
+editors, allowing the use of proportional fonts, bold and italics, multiple 
+foreground and background colours and multiple fonts.
+EOF

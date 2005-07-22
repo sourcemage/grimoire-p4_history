@@ -1,0 +1,131 @@
+#!/bin/bash
+
+. /etc/sysconfig/alsa
+
+PROGRAM=/bin/false
+RUNLEVEL=3
+NEEDS="+remote_fs"
+
+alsactl=/usr/sbin/alsactl
+asoundcfg=/etc/asound.state
+aconnect=/usr/bin/aconnect
+alsascrdir=/etc/alsa.d
+lsmod=/sbin/lsmod
+
+. /etc/init.d/smgl_init
+
+# modprobe returns 255 when failed..
+probe_module()
+{
+   /sbin/modprobe $*
+   test $? = 0 && return 0
+   return 1
+}
+
+start() {
+  [ $START_ALSA == no ]  &&  exit 0
+
+  #
+  # insert all sound modules
+  #
+  for card in $CARDS; do
+    echo "Loading driver for $card..."
+    probe_module snd-$card
+    evaluate_retval
+  done
+
+  #
+  # insert sequencer modules
+  #
+  if [ $START_ALSA_SEQ == yes -a -r /proc/asound/seq/drivers ]; then
+    cut -d , -f 1 /proc/asound/seq/drivers | \
+    while read t ; do
+      if [ ! -z $t ]; then
+        echo "Loading sequencer: $t "
+        /sbin/modprobe $t
+        evaluate_retval
+      fi
+    done
+  fi
+
+  #
+  # load oss emulation
+  #
+  if [ $OSS == yes ]; then
+    echo "Loading OSS pcm emulation..."
+    /sbin/modprobe snd-pcm-oss
+    evaluate_retval
+    echo "Loading OSS mixer emulation..."
+    /sbin/modprobe snd-mixer-oss
+    evaluate_retval
+  fi
+  
+  #
+  # restore driver settings
+  #
+  if [ -d /proc/asound ]; then
+    if [ ! -r $asoundcfg ]; then
+      echo "No mixer config in $asoundcfg, you have to unmute your card!"
+    else
+      if [ -x $alsactl ]; then
+        echo "Restoring alsa settings..."
+	sleep 5
+        $alsactl -F -f $asoundcfg restore
+        evaluate_retval
+      fi
+    fi
+  fi
+}
+
+stop() {
+  #
+  # store driver settings
+  #
+  echo "Storing alsa settings..."
+  [ -x $alsactl ]  &&  $alsactl -f $asoundcfg store
+  evaluate_retval
+
+  #
+  # mute master to avoid clicks at unload
+  #
+  /usr/bin/amixer set Master mute >/dev/null 2>&1
+
+  #
+  # remove all sound modules
+  #
+  $lsmod | grep -E "^snd" | grep -Ev "(snd-page-alloc|snd_page_alloc)" | while read line; do
+     module=$(builtin echo $line | cut -d ' ' -f1)  &&
+     echo "Unloading module: $module"       &&
+     /sbin/rmmod $module                    &&
+     evaluate_retval || break
+  done &&
+
+  
+  # remove the 2.2 soundcore module (if possible)
+  if $lsmod | grep -E "^soundcore " > /dev/null; then
+    echo "Unloading module: soundcore"
+    /sbin/rmmod soundcore 2> /dev/null
+    evaluate_retval
+  fi &&
+  
+  if $lsmod | grep -E "^gameport " > /dev/null; then
+    echo "Unloading module: gameport"
+    /sbin/rmmod gameport 2> /dev/null
+    evaluate_retval
+  fi
+
+  exit_code=$?
+  if [ "$exit_code" != "0" ]; then
+    /usr/bin/amixer set Master unmute >/dev/null 2>&1
+  fi
+  exit $exit_code
+}
+
+status()
+{
+  if [ -d /proc/asound ]; then
+    echo "ALSA sound driver loaded."
+  else
+    echo "ALSA sound driver not loaded."
+  fi
+}

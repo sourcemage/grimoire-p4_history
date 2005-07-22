@@ -1,0 +1,31 @@
+            SPELL=openoffice
+if [ "$OPENOFFICE_DEVEL" == "y" ]; then
+	  VERSION=2.0bc
+           SOURCE=OOo_${VERSION}_src.tar.gz
+    SOURCE_URL[0]=http://openoffice.mirrors.pair.com/contrib/rc/${VERSION}/$SOURCE
+    SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/rc/${VERSION}/$SOURCE
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/OOo_${VERSION}_src
+           MD5[0]=a0725ac522dc481257d88e9277c646fe
+else
+          VERSION=1.1.4
+           SOURCE=OOo_${VERSION}_source.tar.gz
+  	   MD5[0]=b664bcb74b2cc30eded10a7bf4115229
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/oo-${VERSION}_src
+    SOURCE_URL[0]=http://openoffice.mirrors.pair.com/stable/$VERSION/$SOURCE
+    SOURCE_URL[1]=http://www.mirror.ac.uk/mirror/sunsite.dk/openoffice/stable/$VERSION/$SOURCE
+    SOURCE_URL[2]=http://www.ring.gr.jp/archives/misc/openoffice/stable/$VERSION/$SOURCE
+fi
+         WEB_SITE=http://www.openoffice.org/
+       LICENSE[0]=GPL
+          ENTERED=20021127
+          UPDATED=20050417
+           CCACHE=off
+       MAKE_NJOBS=1
+	BUILD_API=2
+            SHORT="Popular Open Source office productivity suite."
+cat << EOF
+OpenOffice.org is the Open Source project through which Sun Microsystems is releasing the technology 
+for the popular StarOffice productivity suite.
+EOF
+
+#[ -f $CONFIG_CACHE/oo.languages ] && . $CONFIG_CACHE/oo.languages || true

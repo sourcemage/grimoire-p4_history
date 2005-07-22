@@ -1,0 +1,6 @@
+mk_source_dir                  &&
+unpack $SOURCE  ${MD5[0]}      &&
+cd $SOURCE_DIRECTORY           &&
+unpack $SOURCE2 ${MD5[0]}      &&
+cp -rf dbm-$DBM_VERSION/* dbm/ &&
+rm -rf dbm-$DBM_VERSION/

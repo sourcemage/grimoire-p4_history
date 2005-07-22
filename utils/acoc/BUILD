@@ -1,0 +1,16 @@
+(
+
+  RUBYDIR=/usr/lib/ruby/1.8/term/  &&
+
+  prepare_install  &&
+
+  install -m 0755 acoc      /usr/bin  &&
+  install -m 0644 acoc.conf /etc      &&
+
+  install -m 0644 acoc.1      /usr/share/man/man1  &&
+  install -m 0644 acoc.conf.5 /usr/share/man/man5  &&
+
+  mkdir -p $RUBYDIR  &&
+  install -m 0644 extra/ansicolor.rb $RUBYDIR
+
+) > $C_FIFO 2>&1

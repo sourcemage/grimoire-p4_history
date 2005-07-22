@@ -1,0 +1,33 @@
+depends  ghostscript-fonts-std  &&
+depends  jpeg                   &&
+depends  libpng                 &&
+depends  zlib                   &&
+
+optional_depends  X11-LIBS               \
+                  ''                     \
+                  ''                     \
+                  'for X11 GUI support'  &&
+
+if  [  "$ESPGS_OMNI"  ==  "y"  ];  then
+  depends  glib2
+fi  &&
+
+optional_depends  "gtk+"                                                                                   \
+                  "--with-x --x-libraries=/usr/X11/lib/"                                                   \
+                  ""                                                                                       \
+                  "for the Ghostscript display device so you can preview PS and PDF files on your screen"  &&
+
+optional_depends  "cups"                        \
+                  "--enable-cups"               \
+                  "--disable-cups"              \
+                  "CUPS print spooler support"  &&
+
+#optional_depends  "gimp-print"                                         \
+#                  "--with-gimp-print"                                  \
+#                  ""                                                   \
+#                  "for including the GIMP-print (stp) driver support"  &&
+
+optional_depends  "ghostscript-fonts-other"  \
+                  ""                         \
+                  ""                         \
+                  "for additional fonts"

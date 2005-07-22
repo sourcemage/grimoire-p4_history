@@ -1,0 +1,20 @@
+           SPELL=ispell	
+         VERSION=3.2.06
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://fmg-www.cs.ucla.edu/geoff/tars/$SOURCE
+   SOURCE_URL[1]=http://lever.cs.ucla.edu/geoff/tars/$SOURCE
+          MD5[0]=5dfa2330ca5b8c1d0ef98b5ecef93a17
+        WEB_SITE=http://ficus-www.cs.ucla.edu/ficus-members/geoff/${SPELL}.html
+      LICENSE[0]=UNKNOWN
+         ENTERED=20020615
+         UPDATED=20031119
+      MAKE_NJOBS=1
+      MAINTAINER=eric@schabell.com
+           SHORT="Ispell is an interactive spell-checking program."
+cat << EOF
+International Ispell is an interactive spell-checking program for Unix 
+which supports a large number of European languages. An emacs interface 
+is available as well as the standard command-line mode.
+EOF

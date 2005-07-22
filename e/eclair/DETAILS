@@ -1,0 +1,16 @@
+           SPELL=eclair
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/eclair
+  FORCE_DOWNLOAD="on"
+          MD5[0]=IGNORE
+        WEB_SITE=http://www.enlightenment.org/
+         ENTERED=20050523
+         UPDATED=20050523
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="EFL powered media player"
+cat << EOF
+Eclair is an EFL powered media player.
+EOF

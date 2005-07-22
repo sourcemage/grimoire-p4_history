@@ -1,0 +1,12 @@
+depends  fontconfig  &&
+depends  X11-LIBS    &&
+depends  automake    &&
+depends  glib2
+
+#
+# For DirectFB support with gtk+-directfb
+#
+#optional_depends  X11-LIBS                 \
+#                  "--with-x"               \
+#                  "--without-x"            \
+#                  "for X library support"

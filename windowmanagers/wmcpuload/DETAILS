@@ -1,0 +1,25 @@
+           SPELL=wmcpuload
+         VERSION=1.0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.sh.rim.or.jp/~ssato/src/$SOURCE
+   SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
+        WEB_SITE=http://www.sh.rim.or.jp/~ssato/dockapp/index.shtml#wmcpuload
+          MD5[0]=d22da688f050b58c39702f83a005a829
+          MD5[1]=d22da688f050b58c39702f83a005a829
+    MENU_ITEM[0]="wmcpuload"
+    MENU_EXEC[0]="wmcpuload"
+    MENU_DESC[0]="WMCPULoad: Dockapp [WindowMaker and more] to monitor CPU usage"
+      LICENSE[0]=GPL
+         ENTERED=20020203
+         UPDATED=20020324
+      MAINTAINER=doubletwist@spack.nu
+           SHORT="WMCPULoad: Dockapp [WindowMaker and more] to monitor CPU usage"
+cat << EOF
+WMCPULoad is a program to monitor CPU usage. It is a dockapp that is supported by X window managers such as Window Maker, AfterStep, BlackBox, and Enlightenment.
+
+It displays the current usage, expressed as a percentile and a chart, and has an LCD look-alike user interface. The back-light may be turned on/off by clicking the mouse button over the application. If the CPU usage hits a certain threshold, an alarm-mode will alert you by turning back-light on.
+
+It runs under GNU/Linux / FreeBSD / OpenBSD / Solaris / Cygwin
+
+EOF

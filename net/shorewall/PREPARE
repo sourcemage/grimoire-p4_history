@@ -1,0 +1,7 @@
+if [[ $( installed_version shorewall ) == 2.0.* ]] ; then
+  message "If you wish to upgrade from Shorewall 2.0.x to 2.2.x, please read"
+  message "http://shorewall.net/pub/shorewall/2.2/shorewall-2.2.0/releasenotes.txt"
+  message "for upgrade instructions."
+fi
+
+config_query_list USEVER "Which version do you wish to use?" "2.0.x" "2.2.x"

@@ -1,0 +1,19 @@
+           SPELL=x86info
+         VERSION=1.13
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.codemonkey.org.uk/projects/x86info/$SOURCE
+          MD5[0]=68c152fb1aa32edf474e8244ac2a5870
+        WEB_SITE=http://www.codemonkey.org.uk/
+         ENTERED=20011122
+         UPDATED=20030808
+         ARCHIVE="off"
+         LICENSE=GPL
+           SHORT="x86info probes the CPU registers"
+cat << EOF
+Unlike other cpuinfo tools which just parse /proc/cpuinfo, x86info
+probes the CPU registers to find out a lot more information. It can
+discover the contents of model-specific registers, discover CPU silicon
+revisions, and lots more.
+EOF

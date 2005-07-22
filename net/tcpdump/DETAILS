@@ -1,0 +1,21 @@
+           SPELL=tcpdump
+         VERSION=3.9.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.tcpdump.org/release/$SOURCE
+   SOURCE_URL[1]=http://the-other.wiretapped.net/security/packet-capture/libpcap/$SOURCE
+          MD5[0]=857d079a2fe2bd5bab93537a645be7a5
+        WEB_SITE=http://www.tcpdump.org/
+         ENTERED=20011004
+         UPDATED=20050617
+      LICENSE[0]=BSD
+           SHORT="tcpdump is CLI packet sniffer network debugging tool"
+cat << EOF
+tcpdump is a CLI based packet sniffer/network debugging tool.
+
+tcpdump is extensively used by networking guys to find out what's wrong
+or rather what's not right :)
+
+refer to the website for detail information
+
+EOF

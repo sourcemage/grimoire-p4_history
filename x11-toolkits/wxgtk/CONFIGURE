@@ -1,0 +1,6 @@
+config_query GTKVERSION 'Do you want to build with gtk+ instead of gtk+2?' n &&
+
+# may need to ask question about this
+# note: don't add `xrc' here, it's just a resource directory
+WX_CONTRIB='animate gizmos ogl stc' &&
+persistent_add WX_CONTRIB

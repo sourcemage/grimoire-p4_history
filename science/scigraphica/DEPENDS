@@ -1,0 +1,16 @@
+depends  gtk+        &&
+depends  gtk+extra   &&
+depends  python      &&
+depends  numpy       &&
+depends  termcap     &&
+depends  gdk-pixbuf  &&
+depends  libxml      &&
+
+if  spell_ok  gnome-libs;  then
+  depends  gnome-print
+else
+   optional_depends  gnome-print                   \
+                     ""                            \
+                     ""                            \
+                     "for GNOME printing support"
+fi

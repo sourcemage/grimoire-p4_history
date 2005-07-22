@@ -1,0 +1,117 @@
+
+(
+### simple script to generate the /etc/profile.d/* files 
+pop_script() {
+echo -e "#!/bin/bash 
+# First check if this variable is already set 
+# then if not set, check it (maybe), then set it \n
+if  [ -z \"\$$i\" ] ; then 
+\tvar=val 
+fi 
+export $i" 
+}
+### simple script to generate for a preload.sh file
+popld_script() {
+echo -e "#!/bin/bash 
+# First check if this file exists 
+# then preload it \n
+if  [ -f val ] ; then 
+\t$i=\$$i:val 
+export $i
+fi" 
+}
+
+pop_two() {
+echo -e "\nif  [ -z \"\$$i\" ] ; then 
+\tvar=val 
+fi 
+export $i" 
+}
+
+### clean up the file by only writing this once
+todays_sedit() {
+sedit "s:var=val:$(grep -o $i=.*$ $OLDPRO):" $*
+}
+todaysld_sedit() {
+sedit "s:val:$(grep -o $i=.*$ $OLDPRO| cut -d= -f2):g" $*
+}
+  mkdir  -p  ${INSTALL_ROOT}/etc/skel
+  mkdir  -p  ${INSTALL_ROOT}/etc/profile.d
+  pop_script > $SOURCE_DIRECTORY/dummy && cp -f $SOURCE_DIRECTORY/dummy ${INSTALL_ROOT}/etc/profile.d/dummy 
+
+  if  ! [  -e  ${INSTALL_ROOT}/etc/profile  ] 
+  then cp  -f $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
+  fi
+  ### change from recursion to iteration (nitpick)
+  sedit "s/recursion/iteration/" ${INSTALL_ROOT}/etc/profile &&
+  if ! grep -q iteration ${INSTALL_ROOT}/etc/profile; 
+  then  cp -f ${INSTALL_ROOT}/etc/profile ${INSTALL_ROOT}/etc/profile.d/  
+        cp  -f $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
+        ### set two variables that are a lot shorter than the full path
+        PROFD=${INSTALL_ROOT}/etc/profile.d                               
+        OLDPRO=${INSTALL_ROOT}/etc/profile.d/profile
+        ### begin parsing old file for common entries
+        i=JAVA_HOME &&
+                 grep -q $i $OLDPRO && pop_script >> $PROFD/java.sh && todays_sedit $PROFD/java.sh &&
+ 		echo -e "export PATH=\$PATH:\$$i/bin" >> $PROFD/java.sh
+        i=ANT_HOME &&
+                 grep -q $i $OLDPRO && pop_script >> $PROFD/ant.sh && todays_sedit $PROFD/ant.sh &&
+		 echo -e "export PATH=\$PATH:\$$i/bin" >> $PROFD/ant.sh
+        i=P4CONFIG &&
+                 grep -q $i $OLDPRO && pop_script >> $PROFD/p4.sh && todays_sedit $PROFD/p4.sh 
+        i=EDITOR &&
+                 pop_script >> $PROFD/editor.sh &&
+                 if grep -q $i $OLDPRO ; then  sedit "s/var=val/$(grep -o $i=.*$ $OLDPRO)/" $PROFD/editor.sh 
+                 else sedit "s/var=val/EDITOR=nano/" $PROFD/editor.sh ; fi
+        i=LANG &&
+                 grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 if [ -f $PROFD/lc.sh ] ; then
+                     i=LC_ALL ; grep -q $i $OLDPRO && pop_two >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 else  i=LC_ALL ; grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 fi 
+                 if [ -f $PROFD/lc.sh ] ; then
+                        i=LC ; grep -q "$i=" $OLDPRO && pop_two >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 else i=LC ; grep -q $i $OLDPRO && pop_script >> $PROFD/lc.sh && todays_sedit $PROFD/lc.sh  
+                 fi  
+        i=INPUTRC &&
+                 grep -q $i $OLDPRO && pop_script >> $PROFD/inputrc.sh && todays_sedit $PROFD/inputrc.sh
+        i=LD_PRELOAD &&
+                 grep -q $i $OLDPRO && popld_script >> $PROFD/preload.sh && todaysld_sedit $PROFD/preload.sh
+        i=alias &&
+                 grep  $i $OLDPRO | grep -qv color=auto && grep -e $i $OLDPRO | grep -v color=auto >> $PROFD/local-alias.sh
+        ### should be all done so thank the user and wave goodbye
+        message  "${PROBLEM_COLOR}The default /etc/profile has changed. it now reads files in /etc/profile.d.
+An attempt has been made to convert your old file, and it has been moved to /etc/profile.d/profile 
+Please check your new /etc/profile.d/* entries and if correct you may remove the old(moved) /etc/profile.d/profile 
+A sample script has been installed as \"/etc/profile.d/dummy\" ${DEFAULT_COLOR}"
+  fi 
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_profile  ] || ! grep -q iteration ${INSTALL_ROOT}/etc/skel/.bash_profile 
+
+  then  cp   ${INSTALL_ROOT}/etc/profile  ${INSTALL_ROOT}/etc/skel/.bash_profile
+  fi
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_logout   ]
+  then  cp   $SCRIPT_DIRECTORY/bash_logout  ${INSTALL_ROOT}/etc/skel/.bash_logout
+  fi
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bashrc  ]
+  then  ln  -sf  .bash_profile  ${INSTALL_ROOT}/etc/skel/.bashrc
+  fi
+
+
+) &&
+
+### put the recursion stuff into users files
+for i in ${INSTALL_ROOT}/home/*/.bash_profile /root/.bash_profile ;
+   do sedit "s/recursion/iteration/" $i &&
+      if ! grep -q iteration $i; then cat >> $i <<EOF
+#iteration
+for i in /etc/profile.d/*.sh ; do
+    if [ -r "\$i" ]; then
+        . \$i
+    fi
+done
+EOF
+fi
+true
+done

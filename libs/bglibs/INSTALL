@@ -1,0 +1,6 @@
+rm -f conf_home.c insthier.o installer instcheck &&
+mkdir -p "${INSTALL_ROOT}/usr/lib/bglibs"        &&
+echo "${INSTALL_ROOT}/usr/lib/bglibs" >conf-home &&
+make installer instcheck                         &&
+./installer                                      &&
+./instcheck

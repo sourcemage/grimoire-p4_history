@@ -1,0 +1,18 @@
+message  "${MESSAGE_COLOR}The MySQL daemon needs to be running to create the database${DEFAULT_COLOR}"
+config_query  DRUPAL_CREATEDB  "Create drupal database?"  n
+
+if  [  "$DRUPAL_CREATEDB"  ==  "y"  ];  then
+  if  spell_installed  mysql;  then
+    config_query  DRUPAL_MYSQL  "Add drupal to your mysql database?"  y
+  else
+    peristent_add  DRUPAL_MYSQL  &&
+    DRUPAL_MYSQL="n"
+  fi  &&
+
+  if  spell_installed  postgresql;  then
+    config_query  DRUPAL_PGSQL  "Add drupal to your postgresql database?"  y
+  else
+    persistent_add  DRUPAL_PGSQL  &&
+    DRUPAL_PGSQL="n"
+  fi
+fi

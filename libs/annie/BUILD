@@ -1,0 +1,31 @@
+(
+ prepare_install                             &&
+ make lib                                    &&
+ cp -a lib/* /usr/lib                        &&
+ mkdir -p /usr/include/annie                 &&
+ cp -a include/* /usr/include/annie          &&
+ if spell_ok doxygen 
+  then 
+  make docs                                          &&
+  mkdir -p /usr/doc/annie                            &&
+  cp -a doc/* /usr/doc/annie               
+ fi                                          &&
+ if grep -q "utils"  ${SPELL_CONFIG}
+  then 
+  make utils
+  mkdir -p /usr/share/annie /usr/share/annie/bin/ \
+  /usr/share/annie/bin/utils                         &&
+  cp -a bin/* /usr/share/annie/bin/utils             &&
+  ln -s /usr/share/annie/bin/utils/* /usr/bin        &&
+  rm bin/*
+ fi                                          &&
+ if grep -q "examples"  ${SPELL_CONFIG}
+  then
+  make examples                                      &&
+  mkdir -p /usr/share/annie /usr/share/annie/examples \
+  /usr/share/annie/bin /usr/share/annie/bin/examples &&
+  cp -a examples/* /usr/share/annie/examples         &&
+  cp -a bin /usr/share/annie/bin/examples            &&
+  ln -s /usr/share/annie/bin/examples/* /usr/bin 
+ fi                                             
+) > $C_FIFO 2>&1

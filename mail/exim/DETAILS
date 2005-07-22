@@ -1,0 +1,40 @@
+           SPELL=exim
+         VERSION=4.50
+          SOURCE=exim-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.us.exim.org/ftp/exim4/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/exim4/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.demon.co.uk/pub/mirrors/exim/exim4/$SOURCE
+   SOURCE_URL[3]=ftp://ftp.doc.cs.univ-paris8.fr/mirrors/ftp.exim.org/exim4/$SOURCE
+   SOURCE_URL[4]=http://exim.psshee.com/ftp/exim4/$SOURCE
+   SOURCE_URL[5]=ftp://ftp.fsckit.net/pub/exim/exim4/$SOURCE
+   SOURCE_URL[6]=ftp://sunsite.dk/mirrors/exim/exim4/$SOURCE
+   SOURCE_URL[7]=ftp://ftp.is.co.za/networking/mail/mta/exim/exim4/$SOURCE
+   SOURCE_URL[8]=ftp://mirror.direct.ca/pub/exim/exim4/$SOURCE
+   SOURCE_URL[9]=ftp://gd.tuwien.ac.at/infosys/mail/exim/exim4/$SOURCE
+  SOURCE_URL[10]=http://ftp.esat.net/pub/networking/mail/mta/exim/exim4/$SOURCE
+  SOURCE_URL[11]=ftp://ftp.tin.org/pub/mail/exim/exim4/$SOURCE
+  SOURCE_URL[12]=ftp://sunsite.icm.edu.pl/pub/unix/mail/exim/exim4/$SOURCE
+  SOURCE_URL[13]=ftp://ftp.nl.uu.net/pub/unix/mail/exim/exim4/$SOURCE
+  SOURCE_URL[14]=ftp://ftp.fu-berlin.de/unix/mail/exim/exim4/$SOURCE
+  SOURCE_URL[15]=ftp://sunsite.cnlab-switch.ch/mirror/exim/exim4/$SOURCE
+  SOURCE_URL[16]=ftp://ftp.clockerz.net/pub/exim/exim4/$SOURCE
+  SOURCE_URL[17]=ftp://nagoya.linux.or.jp/mirror/exim/exim4/$SOURCE
+  SOURCE_URL[18]=ftp://ftp.demon.nl/pub/mirrors/exim/exim4/$SOURCE
+  SOURCE_URL[19]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
+          MD5[0]=04a9bf1f61687ebf94eabfe71af205f6
+        WEB_SITE=http://www.exim.org
+         ENTERED=20020227
+         UPDATED=20050302
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="An e-mail server"
+cat << EOF
+Exim is a message transfer agent (MTA) developed at the University of
+Cambridge for use on Unix systems connected to the Internet. It is
+freely available under the terms of the GNU General Public Licence. In
+style it is similar to Smail 3, but its facilities are more extensive,
+and in particular it has some defences against mail bombs and
+unsolicited junk mail in the form of options for refusing messages from
+particular hosts, networks, or senders.
+EOF

@@ -1,0 +1,16 @@
+           SPELL=envision
+       BUILD_API=2
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/envision
+  FORCE_DOWNLOAD="on"
+          MD5[0]=IGNORE
+      LICENSE[0]=BSD
+        WEB_SITE=http://www.enlightenment.org/
+         ENTERED=20040715
+         UPDATED=20040715
+           SHORT="video player using enlightenment libraries"
+cat << EOF
+Envision is a video player using enlightenment libraries.
+EOF

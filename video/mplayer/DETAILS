@@ -1,0 +1,38 @@
+           SPELL=mplayer
+if [ "$CVS" = "y" ]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@mplayerhq.hu:/cvsroot/mplayer:main
+          MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
+         VERSION=1.0pre7
+          SOURCE=MPlayer-$VERSION.tar.bz2
+   SOURCE_URL[0]=ftp://mplayerhq.hu/MPlayer/releases/$SOURCE
+          MD5[0]=ebd4df6d543ca0dc7c1955ba6b443f5b
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/MPlayer-$VERSION
+fi
+        WEB_SITE=http://www.mplayerhq.hu
+      LICENSE[0]=GPL
+         ENTERED=20010922
+         UPDATED=20050420
+            DOCS="$DOCS etc/*.conf"
+     GCC_VERSION=3.4
+           SHORT="MPlayer is a movie and animation player."
+cat << EOF
+MPlayer is a movie player for LINUX (runs on many other Unices, and non-x86
+CPUs, see the documentation). It plays most MPEG, VOB, AVI, VIVO, ASF/WMV,
+QT/MOV, FLI, NuppelVideo, yuv4mpeg, FILM, RoQ, OGG and some RealMedia files,
+supported by many native, XAnim, and Win32 DLL codecs.
+You can watch VideoCD, SVCD, DVD, 3ivx, FLI, and even DivX movies too (and you
+don't need the avifile library at all!).
+Another big feature of mplayer is the wide range of supported output drivers.
+It works with X11, Xv, DGA, OpenGL, SVGAlib, fbdev, AAlib, but you can use SDL
+(and this way all drivers of SDL), VESA (on every VESA compatible card,even
+without X!), and some lowlevel card-specific drivers (for Matrox, 3Dfx and
+Radeon) too! Most of them supports software or hardware scaling, so you can
+enjoy movies in fullscreen.
+MPlayer supports displaying through some hardware MPEG decoder boards, such as the DVB and  DXR3/Hollywood+ !
+And what about the nice big antialiased shaded subtitles (9 supported types!!!) with european/ISO 8859-1,2 (hungarian, english, czech, etc), cyrillic, korean fonts, and OSD? 
+EOF

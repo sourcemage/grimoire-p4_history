@@ -1,0 +1,16 @@
+           SPELL=e_utils
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/e_utils
+  FORCE_DOWNLOAD=on
+          MD5[0]=IGNORE
+        WEB_SITE=http://enlightenment.org/
+         ENTERED=20050107
+         UPDATED=20050107
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="a collection of utils for enlightenment 0.17"
+cat << EOF
+e_util is a collection of utils for enlightenment 0.17.
+EOF

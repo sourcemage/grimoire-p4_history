@@ -1,0 +1,13 @@
+depends  edb     &&
+depends  edje    &&
+depends  esmart  &&
+
+optional_depends  linux-pam                                    \
+                  ''                                           \
+                  ''                                           \
+                  'for Linux Pluggable Authentication Module'  &&
+
+optional_depends  shadow                       \
+                  ''                           \
+                  ''                           \
+                  'for shadow authentication'

@@ -1,0 +1,22 @@
+           SPELL=mailman
+         VERSION=2.1.6rc4
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          MD5[0]='51ff4a747d89aabcfd985ad0ad8a3a12'
+        WEB_SITE=http://www.list.org/
+         ENTERED=20020430
+         UPDATED=20050215
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="GNU mailing list manager"
+cat << EOF
+Mailman is software to help manage email discussion lists,
+much like Majordomo and Smartmail. Unlike most similar
+products, Mailman gives each mailing list a web page, and
+allows users to subscribe, unsubscribe, etc. over the web.
+Even the list manager can administer his or her list
+entirely from the web. Mailman also integrates most things
+people want to do with mailing lists, including archiving,
+mail to news gateways, and so on.
+EOF

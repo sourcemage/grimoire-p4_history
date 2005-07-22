@@ -1,0 +1,16 @@
+           SPELL=enterminus
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/proto/enterminus
+  FORCE_DOWNLOAD=on
+          MD5[0]=IGNORE
+        WEB_SITE=http://enlightenment.org/
+         ENTERED=20050530
+         UPDATED=20050530
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="An EFL Based Terminal"
+cat << EOF
+Enterminus is an EFL Based Terminal.
+EOF

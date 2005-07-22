@@ -1,0 +1,17 @@
+           SPELL=guile-www
+         VERSION=2.12
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.glug.org/people/ttn/software/guile-www/$SOURCE
+        WEB_SITE=http://www.glug.org/people/ttn/software/guile-www/
+          MD5[0]=9f0c364725c1e3bdadd33ae0982a18a0
+      LICENSE[0]=GPL
+         ENTERED=20041107
+         UPDATED=20041107
+       BUILD_API=2
+           SHORT="A set of Guile Scheme modules to facilitate HTTP."
+cat << EOF
+Guile-WWW is a set of Guile Scheme modules providing support for navigating
+HTTP connections, parsing URLs, handling CGI operations and fetching WWW
+resources. 
+EOF

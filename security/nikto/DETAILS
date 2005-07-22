@@ -1,0 +1,20 @@
+           SPELL=nikto
+         VERSION=1.34
+          SOURCE=${SPELL}-current.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.cirt.net/${SPELL}/${SOURCE}
+          MD5[0]=16a80015e990ed797f85d225da11f976
+        WEB_SITE=http://www.cirt.net/code/nikto.shtml
+         ENTERED=20030727
+         UPDATED=20050501
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Web server scanner."
+cat << EOF
+Nikto is a web server scanner which performs comprehensive
+tests against web servers for multiple items, including over
+3100 potentially dangerous files/CGIs, versions on over 625
+servers, and problems on over 230 servers. Scan items and
+plugins are frequently updated and can be automatically
+updated (if desired).
+EOF

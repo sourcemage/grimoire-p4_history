@@ -1,0 +1,26 @@
+           SPELL=hddtemp
+         VERSION=0.3-beta13
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+         SOURCE2=${SPELL}.db
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.guzu.net/linux/${SOURCE}
+  SOURCE2_URL[0]=http://www.guzu.net/linux/${SOURCE2}
+        WEB_SITE=http://www.guzu.net/linux/hddtemp.php
+         ENTERED=20020721
+         UPDATED=20041012
+          MD5[0]='f2687c80d793a5b45d7e592480d4c31c'
+          MD5[1]=IGNORE
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+      MAINTAINER=josebernardo1@yahoo.com
+       BUILD_API=2
+  FORCE_DOWNLOAD="yes"
+           SHORT="HDDtemp is tool that give you the temperature of your IDE hard drive by reading S.M.A.R.T. informations."
+cat << EOF
+
+HDDtemp is tool that give you the temperature of your IDE hard drive by
+reading S.M.A.R.T. informations (that support this feature). Only moderns hard
+drives have a temperature sensor. SCSI doesn't allow reading S.M.A.R.T.
+informations.
+
+EOF

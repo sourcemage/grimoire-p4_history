@@ -1,0 +1,16 @@
+           SPELL=entice
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/entice
+  FORCE_DOWNLOAD="on"
+          MD5[0]=IGNORE
+        WEB_SITE=http://www.enlightenment.org/pages/entice.html
+         ENTERED=20040311
+         UPDATED=20040311
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Image viewer using enlightenment libraries"
+cat << EOF
+Entice is an image viewer using enlightenment libraries.
+EOF

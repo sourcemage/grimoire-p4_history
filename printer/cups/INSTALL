@@ -1,0 +1,13 @@
+if  !  [  -d  ${INSTALL_ROOT}/etc/rc.d  ]   &&
+    !  [  -h  ${INSTALL_ROOT}/etc/rc.d  ];
+then
+    ln  -s .  ${INSTALL_ROOT}/etc/rc.d
+fi            &&
+
+make install  &&
+
+if  spell_ok  samba;  then
+  if  !  [  -e  ${INSTALL_ROOT}/usr/lib/cups/backend/smb  ];  then
+    ln  -s  ${INSTALL_ROOT}/usr/bin/smbspool  ${INSTALL_ROOT}/usr/lib/cups/backend/smb
+  fi
+fi

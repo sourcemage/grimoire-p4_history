@@ -1,0 +1,80 @@
+#! /bin/sh
+# $Id: pop3d.in,v 1.13 2002/10/25 12:19:50 mrsam Exp $
+#
+# Copyright 1998 - 2000 Double Precision, Inc.  See COPYING for
+# distribution information.
+#
+# Sample script to start Courier's pop3 daemon.
+#
+# This script should work for most systems.  Authenticate via the PAM library,
+# /etc/shadow, or fallback to /etc/passwd
+#
+# You must run this as root, and as a daemon process.
+
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+
+.  /etc/init.d/smgl_functions
+
+prefix="/usr"
+exec_prefix="/usr"
+sysconfdir="/etc/courier"
+sbindir="${exec_prefix}/sbin"
+bindir="/usr/bin"
+libexecdir="${exec_prefix}/libexec"
+
+.  ${sysconfdir}/pop3d-ssl
+.  ${sysconfdir}/pop3d
+
+export  PATH
+export  SHELL
+
+case  "$1"  in
+	start)
+		cd  /usr
+		AUTHMODULELIST=""
+		for  f  in  $AUTHMODULES;  do
+			AUTHMODULELIST="$AUTHMODULELIST  $libexecdir/authlib/$f"
+		done
+		AUTHMODULELIST="`builtin  echo  $AUTHMODULELIST`"
+		/usr/bin/env  -  /bin/sh  -c  "  set -a;             \
+			prefix=/usr;                                     \
+			exec_prefix=/usr;                                \
+			sbindir=${exec_prefix}/sbin;                     \
+			bindir=/usr/bin;                                 \
+			libexecdir=${exec_prefix}/libexec;               \
+			.  /etc/courier/pop3d;                           \
+			.  /etc/courier/pop3d-ssl;                       \
+			TLS_PROTOCOL=$TLS_STARTTLS_PROTOCOL;             \
+			${exec_prefix}/sbin/couriertcpd                  \
+				-address=$ADDRESS                            \
+				-stderrlogger=${sbindir}/courierlogger       \
+				-stderrloggername=pop3d                      \
+				-maxprocs=$MAXDAEMONS                        \
+				-maxperip=$MAXPERIP                          \
+				-pid=$PIDFILE                                \
+				$TCPDOPTS                                    \
+				-address=$ADDRESS                            \
+				$PORT                                        \
+			${exec_prefix}/libexec/courier/courierpop3login  \
+				$AUTHMODULELIST                              \
+			${exec_prefix}/libexec/courier/courierpop3d      \
+				Maildir"
+		exit  0
+		;;
+
+	 stop)
+		${sbindir}/couriertcpd  -pid=$PIDFILE  -stop
+		exit  0
+		;;
+
+	restart)
+		${sbindir}/couriertcpd  -pid=$PIDFILE  -restart
+		exit  0
+		;;
+
+	*)
+		echo  "Usage: $0 (start | stop | restart)"
+		exit  1
+		;;
+esac

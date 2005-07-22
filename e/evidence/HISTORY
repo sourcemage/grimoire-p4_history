@@ -1,0 +1,32 @@
+2005-02-09 Eric Sandall <eric@sandall.us>
+	* DEPENDS: libextractor is not for "blah"
+
+2005-02-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Set VERSION according to CVS or not (has stable releases now)
+	  Added 0.9.8 stable release
+	  Added FORCE_DOWNLOAD="on" for CVS version
+	* PREPARE: Added query for using CVS
+	* CONFIGURE: Added queries for POSIX ACL and Attribute, icon views,
+	  thumbnails, and iconsets
+	* DEPENDS: Added optional dependencies on curl, glib2, dbus, kdelibs, file,
+	  ecore, edje, libgnomecanvas, gnome-vfs2, libvorbis, id3lib, libextractor,
+	  freetype2, gtk+2, libgnomeui, taglib, and doodle
+	  Enable evas2 canvas (theming) with the evas dependency
+	  Added dependencies on eet and edb
+	* PRE_BUILD,BUILD: Run ./autogen.sh here
+	* BUILD: Pass flags from CONFIGURE to OPTS
+	  Set CFLAGS and CXXFLAGS so all the headers can be found
+
+2005-01-03 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added BUILD_API=2
+	* BUILD: Converted to build_api 2
+
+2004-05-17 Ladislav Hagara <hgr@vabo.cz>
+	* DEPENDS: added evas [Bug 6460]
+
+2004-04-29 Ladislav Hagara <hgr@vabo.cz>
+	* DEPENDS: created and added libtool into it
+
+2004-03-11 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS, BUILD, HISTORY: created this spell
+
