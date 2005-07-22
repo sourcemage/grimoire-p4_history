@@ -1,0 +1,38 @@
+make[4]: Entering directory `/usr/src/libextractor-0.5.2/src/plugins/thumbnail'
+if /bin/sh ../../../libtool --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../../../src/include -I../../../src/include -DX
+THREADS -D_REENTRANT -DXUSE_MTSAFE_API -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/X11R6/include -I/usr/inc
+lude/atk-1.0 -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/include/freetype2/config -I/usr/include/glib-2.0 -
+I/usr/lib/glib-2.0/include      -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   -fno-strict-aliasing -O -march=x86
+-64 -mmmx -mfpmath=sse -msse -msse2 -m3dnow -m64 -fPIC -DPIC -pipe -DPIC -fPIC -O3 -MT thumbnailextractor.lo -MD -MP -MF
+ ".deps/thumbnailextractor.Tpo" -c -o thumbnailextractor.lo thumbnailextractor.c; \
+then mv -f ".deps/thumbnailextractor.Tpo" ".deps/thumbnailextractor.Plo"; else rm -f ".deps/thumbnailextractor.Tpo"; exi
+t 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../../../src/include -I../../../src/include -DXTHREADS -D_REENTRANT -DXUSE_MTSAFE_API -I/
+usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/X11R6/include -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 -I/u
+sr/include/freetype2 -I/usr/include/freetype2/config -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/
+glib-2.0 -I/usr/lib/glib-2.0/include -fno-strict-aliasing -O -march=x86-64 -mmmx -mfpmath=sse -msse -msse2 -m3dnow -m64
+-fPIC -DPIC -pipe -DPIC -fPIC -O3 -MT thumbnailextractor.lo -MD -MP -MF .deps/thumbnailextractor.Tpo -c thumbnailextract
+or.c  -fPIC -DPIC -o .libs/thumbnailextractor.o
+thumbnailextractor.c: In function 'libextractor_thumbnail_extract':
+thumbnailextractor.c:120: warning: pointer targets in passing argument 2 of 'gdk_pixbuf_loader_write' differ in signedne
+ss
+/bin/sh ../../../libtool --mode=link gcc -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   -fno-strict-aliasing -O -
+march=x86-64 -mmmx -mfpmath=sse -msse -msse2 -m3dnow -m64 -fPIC -DPIC -pipe -DPIC -fPIC -O3  -z combreloc -s -o libextra
+ctor_thumbnail.la -rpath /usr/lib/libextractor ../../../src/main/libextractor.la -Wl,-Bstatic -Wl,-lgobject-2.0 -Wl,-lgl
+ib-2.0 -Wl,-Bdynamic -Wl,-Bsymbolic -avoid-version -module thumbnailextractor.lo -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -
+lgdk_pixbuf-2.0 -lm -lpangoxft-1.0 -lpangox-1.0 -lpango-1.0 -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0
+gcc -shared  .libs/thumbnailextractor.o  -Wl,--rpath -Wl,/usr/src/libextractor-0.5.2/src/main/.libs ../../../src/main/.l
+ibs/libextractor.so /usr/lib/libgtk-x11-2.0.so /usr/lib/libgdk-x11-2.0.so /usr/lib/libatk-1.0.so /usr/lib/libgdk_pixbuf-
+2.0.so -lm /usr/lib/libpangoxft-1.0.so /usr/lib/libpangox-1.0.so /usr/lib/libpango-1.0.so /usr/lib/libgobject-2.0.so /usr/lib/libgmodule-2.0.so -ldl /usr/lib/libglib-2.0.so  -march=x86-64 -mmmx -mfpmath=sse -msse -msse2 -m3dnow -m64 -Wl,-Bstatic -Wl,-lgobject-2.0 -Wl,-lglib-2.0 -Wl,-Bdynamic -Wl,-Bsymbolic -Wl,-soname -Wl,libextractor_thumbnail.so -o .libs/libextractor_thumbnail.so
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.0.1/../../../../x86_64-unknown-linux-gnu/bin/ld: cannot find -lgobject-2.0
+collect2: ld returned 1 exit status
+make[4]: *** [libextractor_thumbnail.la] Error 1
+make[3]: *** [all-recursive] Error 1
+make[2]: *** [all-recursive] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all-recursive] Error 1
+make[4]: Leaving directory `/usr/src/libextractor-0.5.2/src/plugins/thumbnail'
+make[3]: Leaving directory `/usr/src/libextractor-0.5.2/src/plugins/thumbnail'
+make[2]: Leaving directory `/usr/src/libextractor-0.5.2/src/plugins'
+make[1]: Leaving directory `/usr/src/libextractor-0.5.2/src'

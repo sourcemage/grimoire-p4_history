@@ -1,22 +1,17 @@
   # gcc 3.4 fix
-  sedit  "s:extern char://extern char:"  libmisc/xmalloc.c
+#  sedit  "s:extern char://extern char:"  libmisc/xmalloc.c
 
 #  Every new version of shadow arrives with bugs.  :(
-  sedit  "s/-lpam_misc/-lpam_misc -lpam/"  configure
-  sedit  "s/ln -s/ln -sf/g"  configure
-  sedit  "s/ln -s/ln -sf/g"  aclocal.m4
+#  sedit  "s/-lpam_misc/-lpam_misc -lpam/"  configure
+#  sedit  "s/ln -s/ln -sf/g"  configure
+#  sedit  "s/ln -s/ln -sf/g"  aclocal.m4
 
   # Do not compile/install su, coreutils provides that
   # Bug #4008
   patch  -p1  <  ${SCRIPT_DIRECTORY}/su.patch  &&
 
-  # change MD5_CRYPT_ENAB  to yes
-  sedit "s:#MD5_CRYPT_ENAB.*$:MD5_CRYPT_ENAB  yes:g" etc/login.defs.linux &&
-
-  [ "$LINUX_PAM" = "y" ] && OPTS="$OPTS --with-libpam"
-
-  OPTS="$OPTS --build=${BUILD}"
-  [[ $CROSS_INSTALL == on ]] && OPTS="$OPTS --host=${HOST}"
+  OPTS="$OPTS --enable-shadowgrp --build=${BUILD}" &&
+  if [[ $CROSS_INSTALL == on ]]; then OPTS="$OPTS --host=${HOST}"; fi &&
 
   ./configure --prefix=${TRACK_ROOT}/usr  \
           --sysconfdir=${TRACK_ROOT}/etc  \
