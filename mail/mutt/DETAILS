@@ -7,30 +7,38 @@
 
          VERSION=cvs
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous:anonymous@cvs.mutt.org:/home/roessler/cvs:mutt
   FORCE_DOWNLOAD=on 
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvs
           MD5[0]="IGNORE"
 
       ;;
       devel)
 
          VERSION=1.5.9
-          MD5[0]=61f6db7e1cd11f24adf5d181b4d95b8f
           SOURCE=${SPELL}-${VERSION}i.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+         SOURCE2=${SOURCE}.asc
    SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/devel/${SOURCE}
    SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.asc
+  SOURCE2_URL[1]=${SOURCE_URL[1]}.asc
+      SOURCE_GPG=mutt.gpg:${SOURCE2}
+     SOURCE2_GPG=signature
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 
       ;;
       *)
 
          VERSION=1.4.2.1
-          MD5[0]=f068f31af619676fcc4dd2c51a919689
           SOURCE=${SPELL}-${VERSION}i.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+         SOURCE2=${SOURCE}.asc
    SOURCE_URL[0]=ftp://ftp.mutt.org/mutt/${SOURCE}
    SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.asc
+  SOURCE2_URL[1]=${SOURCE_URL[1]}.asc
+      SOURCE_GPG=mutt-old.gpg:${SOURCE2}
+     SOURCE2_GPG=signature
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 
       ;;
    esac
