@@ -1,4 +1,4 @@
-patch  -p1  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
+patch  -p0  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 
 sedit "s:prefix =:prefix = ${INSTALL_ROOT}:" Makefile   &&
 IR=`echo $INSTALL_ROOT | sed 's/\\//\\\\\\//g'`         &&
