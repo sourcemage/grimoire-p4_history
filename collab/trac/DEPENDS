@@ -1,6 +1,7 @@
 depends clearsilver &&
-depends sqlite &&
+depends pysqlite &&
 depends subversion &&
 depends python &&
 
-optional_depends mod_python '' '' 'for faster execution'
+optional_depends mod_python '' '' 'for faster execution' &&
+optional_depends docutils   '' '' 'for reStructuredText (RST) support in wiki'
