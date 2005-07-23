@@ -1,3 +1,24 @@
+2005-07-23 David Brown <dmlb2000@gmail.com>
+	* BUILD: added building of the helper scripts provided in extras/run_directory
+	  also removed all sedit's to make build much cleaner
+	* udev_logger.c: added because the helper scripts don't compile with SYS_LOG
+	  support otherwise
+	* DEPENDS: modified to add the correct options to OPT so sedits aren't needed
+	* DETAILS: added REALEASE-NOTES to DOCS and made it gpg check the source
+	* Makefile.patch: removed the removing of the config install, the makefile
+	  checks if the file exists before it tries to install it.
+	* INSTALL: installed our config files first so the Makefile patch hunk can
+	  be removed
+	* rules/50-default.rules: added udev.d and hotplug.d hooks
+
+2005-07-15 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: updated to 063
+
+2005-07-12 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: updated to 062
+	* Makefile.patch: updated
+	* BUILD: change patch level
+
 2005-05-21 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* rules.d/50-default.rules: use a SUBSYSTEM rule to set all audio
 	  devices to group audio and mode 0660 instead of specifying that for

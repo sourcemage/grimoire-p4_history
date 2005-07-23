@@ -69,3 +69,11 @@ KERNEL="nvidia*"	NAME="%k", MODE="0660", GROUP="video"
 KERNEL="fb[0-9]",          NAME="%k", MODE="0660", GROUP="video"
 
 KERNEL="*", RUN="/etc/dev.d/${DEVNAME}/*.dev", RUN="/etc/dev.d/${SUBSYSTEM}/*.dev", RUN="/etc/dev.d/default/*.dev"
+
+# be backward compatible for a while with the /etc/dev.d and /etc/hotplug.d/ systems
+# run /etc/hotplug.d/ stuff only if we came from a hotplug event, not for udevstart
+ENV{UDEVD_EVENT}=="1", RUN+="/sbin/udev_run_hotplugd"
+
+# always run /etc/dev.d/ stuff for now.
+RUN+="/sbin/udev_run_devd"
+

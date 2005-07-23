@@ -1,22 +1,24 @@
-diff -uNr udev-048.orig/Makefile udev-048/Makefile
---- udev-048.orig/Makefile	2004-12-10 00:45:48.224822032 +0100
-+++ udev-048/Makefile	2004-12-10 00:45:48.224822000 +0100
-@@ -421,8 +421,7 @@
- 	- rm $(mandir)/man8/udevd.8
- 	- rm $(mandir)/man8/udevsend.8
+--- Makefile.orig	2005-07-12 22:58:48.000000000 -0700
++++ Makefile	2005-07-12 22:58:09.000000000 -0700
+@@ -143,7 +143,8 @@
+ 	udev_db.o		\
+ 	udev_rules.o		\
+ 	udev_rules_parse.o	\
+-	udev_libc_wrapper.o
++	udev_libc_wrapper.o	\
++	udev_logger.o
  
--install: install-config install-man install-dev.d all
--	$(INSTALL) -d $(DESTDIR)$(udevdir)
-+install: install-man install-dev.d all
- 	$(INSTALL) -d $(DESTDIR)$(hotplugdir)
- 	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
- 	$(INSTALL_PROGRAM) -D $(DAEMON) $(DESTDIR)$(sbindir)/$(DAEMON)
-@@ -431,10 +430,6 @@
+ OBJS = \
+ 	udev.a			\
+--- Makefile.orig	2005-07-07 22:00:50.000000000 +0000
++++ Makefile	2005-07-13 09:27:00.000000000 +0000
+@@ -375,11 +374,6 @@
+ 	$(INSTALL_PROGRAM) -D $(INFO) $(DESTDIR)$(usrbindir)/$(INFO)
  	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
- 	- ln -f -s $(sbindir)/udev $(DESTDIR)$(sbindir)/$(STARTER)
- 	- ln -f -s $(sbindir)/$(SENDER) $(DESTDIR)$(hotplugdir)/10-udev.hotplug
+ 	$(INSTALL_PROGRAM) -D $(STARTER) $(DESTDIR)$(sbindir)/$(STARTER)
 -ifndef DESTDIR
 -	- killall $(DAEMON)
+-	- $(sbindir)/$(DAEMON) --daemon
 -	- rm -rf $(udevdb)
 -endif
  	@extras="$(EXTRAS)" ; for target in $$extras ; do \
