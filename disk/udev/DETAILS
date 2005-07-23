@@ -3,11 +3,12 @@
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${KERNEL_URL}/pub/linux/utils/kernel/hotplug/${SOURCE}
-          MD5[0]=a61577a3329726c9ea34c9a19460879f
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         WEB_SITE=http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+       BUILD_API=2
          ENTERED=20030725
          UPDATED=20050423
-            DOCS="ChangeLog COPYING FAQ README docs/*"
+            DOCS="ChangeLog COPYING FAQ README docs/* REALEASE-NOTES"
       LICENSE[0]=GPL
            SHORT="Devfs in userspace using sysfs and hotplug"
 cat << EOF

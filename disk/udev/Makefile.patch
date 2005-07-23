@@ -1,15 +1,17 @@
+--- Makefile.orig	2005-07-12 22:58:48.000000000 -0700
++++ Makefile	2005-07-12 22:58:09.000000000 -0700
+@@ -143,7 +143,8 @@
+ 	udev_db.o		\
+ 	udev_rules.o		\
+ 	udev_rules_parse.o	\
+-	udev_libc_wrapper.o
++	udev_libc_wrapper.o	\
++	udev_logger.o
+ 
+ OBJS = \
+ 	udev.a			\
 --- Makefile.orig	2005-07-07 22:00:50.000000000 +0000
 +++ Makefile	2005-07-13 09:27:00.000000000 +0000
-@@ -366,8 +366,7 @@
- 	- rm $(mandir)/man8/udevd.8
- 	- rm $(mandir)/man8/udevsend.8
- 
--install: install-config install-man all
--	$(INSTALL) -d $(DESTDIR)$(udevdir)
-+install: install-man all
- 	$(INSTALL_PROGRAM) -D $(ROOT) $(DESTDIR)$(sbindir)/$(ROOT)
- 	$(INSTALL_PROGRAM) -D $(DAEMON) $(DESTDIR)$(sbindir)/$(DAEMON)
- 	$(INSTALL_PROGRAM) -D $(SENDER) $(DESTDIR)$(sbindir)/$(SENDER)
 @@ -375,11 +374,6 @@
  	$(INSTALL_PROGRAM) -D $(INFO) $(DESTDIR)$(usrbindir)/$(INFO)
  	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)

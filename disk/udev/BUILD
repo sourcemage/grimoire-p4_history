@@ -1,16 +1,4 @@
-patch  -p0  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
-
-sedit "s:prefix =:prefix = ${INSTALL_ROOT}:" Makefile   &&
-IR=`echo $INSTALL_ROOT | sed 's/\\//\\\\\\//g'`         &&
-sedit "s/^exec_prefix.*$/exec_prefix = $IR/" Makefile   &&
-sedit "s/^V=false$/V=true/" Makefile                    &&
-
-if ( echo ${OPTS} |grep -q UDEV_SELINUX ); then
-sedit "s/^USE_SELINUX = false/USE_SELINUX = true/" Makefile
-fi &&
-
-if ( echo ${OPTS} |grep -q UDEV_SYSLOG ); then
-sedit "s/^USE_LOG = true/USE_LOG = false/" Makefile
-fi  &&
-
-make
+patch  -p0 <$SCRIPT_DIRECTORY/Makefile.patch  &&
+cp -v ${SCRIPT_DIRECTORY}/udev_logger.c ${SOURCE_DIRECTORY} &&
+make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS}  &&
+make -C extras/run_directory prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ LDFLAGS="${LDFLAGS} -lc"
