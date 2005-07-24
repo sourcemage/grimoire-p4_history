@@ -1,0 +1,26 @@
+           SPELL=elinks
+if [ "$ELINKS_CVS" == 'y' ]; then
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.elinks.or.cz:/var/cvs/elinks:elinks
+          MD5[0]=IGNORE
+else
+         VERSION=0.10.5
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://elinks.or.cz/download/$SOURCE
+          MD5[0]='c6e453a86e97c5da17d5baa17ea5965d'
+fi
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://elinks.or.cz/
+         ENTERED=20050711
+         UPDATED=20050711
+         LICENSE=GPL
+       BUILD_API=2
+           SHORT='ELinks is a feature-rich text mode web browser'
+cat << EOF
+ELinks is an advanced and well-established feature-rich text mode web
+(HTTP/FTP/..) browser.  ELinks can render both frames and tables, is highly
+customizable and can be extended via Lua or Guile scripts.  It is very portable
+and runs on a variety of platforms.  It originates from the Links project
+written by Mikulas Patocka.
+EOF
