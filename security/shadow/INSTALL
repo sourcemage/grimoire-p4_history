@@ -1,24 +1,16 @@
-  make install DESTDIR=$INSTALL_ROOT                      &&
-  cd  etc                                                 &&
+make install DESTDIR=$INSTALL_ROOT                      &&
+cd  etc                                                 &&
 
-  [  -e  ${INSTALL_ROOT}/etc/limits           ]  \
-  ||  cp  limits            ${INSTALL_ROOT}/etc            &&
-  [  -e  ${INSTALL_ROOT}/etc/login.access     ]  \
-  ||  cp  login.access      ${INSTALL_ROOT}/etc            &&
-  [  -e  ${INSTALL_ROOT}/etc/login.defs.linux ]  \
-  ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc            &&
-  [  -e  ${INSTALL_ROOT}/etc/login.defs       ]  \
-  ||  cp  login.defs.linux  ${INSTALL_ROOT}/etc/login.defs &&
-  [  -e  ${INSTALL_ROOT}/etc/default          ]  \
-  ||  mkdir                 ${INSTALL_ROOT}/etc/default    &&
+[  -e  ${INSTALL_ROOT}/etc/limits           ]  \
+||  cp  limits            ${INSTALL_ROOT}/etc            &&
+[  -e  ${INSTALL_ROOT}/etc/login.access     ]  \
+||  cp  login.access      ${INSTALL_ROOT}/etc            &&
+[  -e  ${INSTALL_ROOT}/etc/login.defs.linux ]  \
+||  cp  login.defs.linux  ${INSTALL_ROOT}/etc            &&
+[  -e  ${INSTALL_ROOT}/etc/login.defs       ]  \
+||  cp  login.defs.linux  ${INSTALL_ROOT}/etc/login.defs &&
+[  -e  ${INSTALL_ROOT}/etc/default          ]  \
+||  mkdir                 ${INSTALL_ROOT}/etc/default    &&
 
-  cp  $SCRIPT_DIRECTORY/adduser  ${INSTALL_ROOT}/usr/sbin  &&
-  cp  $SCRIPT_DIRECTORY/deluser  ${INSTALL_ROOT}/usr/sbin
-
-# Login.defs variables that control functionality duplicated by PAM, where removed here. However,
-# they appear not to be relevant anyway as follows from login.defs manpage:
-#   Much of the functionality that used to be provided by the shadow password suite  is  now  handled  by
-#   PAM.  Thus, /etc/login.defs is no longer used by programs such as: login(1), passwd(1), su(1). Please
-#   refer to the corresponding PAM configuration files instead.
-# Additionally, these variables have their default values, so removing them from login.defs did not
-# disable related functionality per se.
+cp  $SCRIPT_DIRECTORY/adduser  ${INSTALL_ROOT}/usr/sbin  &&
+cp  $SCRIPT_DIRECTORY/deluser  ${INSTALL_ROOT}/usr/sbin
