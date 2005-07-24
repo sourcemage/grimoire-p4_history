@@ -1,5 +1,4 @@
           SPELL=gaim-encryption
-        VERSION=${VERSION:=2.38}
 if  [  "$CVS"  ==  "y"  ];  then
         VERSION=cvs
          SOURCE=$SPELL-$VERSION.tar.gz
@@ -7,7 +6,8 @@ if  [  "$CVS"  ==  "y"  ];  then
   FORCE_DOWNLOAD=1
           MD5[0]="IGNORE"
 else
-         SOURCE=$SPELL-$VERSION.tar.gz
+        VERSION=2.38 
+        SOURCE=$SPELL-$VERSION.tar.gz
   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
          MD5[0]='15dd9c2d22b389784560668795c2b0c3'
 fi
