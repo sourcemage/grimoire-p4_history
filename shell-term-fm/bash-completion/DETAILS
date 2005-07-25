@@ -1,15 +1,15 @@
            SPELL=bash-completion
-         VERSION=20050121
+         VERSION=20050721
+          MD5[0]='380dab15bd1951699934c54b467ed28d'
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/bash_completion
    SOURCE_URL[0]=http://www.caliban.org/files/bash/$SOURCE
-          MD5[0]='472a22512c8f8803f4703bc47c460b53'
         WEB_SITE=http://www.caliban.org/bash/index.shtml#completion
         BUILD_API=2
          ENTERED=20020215
          UPDATED=20040127
       LICENSE[0]=GPL
-           SHORT="bash programmable completion."
+           SHORT="bash programmable completion"
 cat << EOF
 bash programmable completion.
 Since v2.04, bash has allowed you to intelligently program and extend
@@ -31,4 +31,3 @@ NOTE: The code to start completion is installed in /etc/profile.d/bash_completio
       The SMGL specific completions are adapted from a patch by 
       Lunar_fr (lunar@l-a-p.org).
 EOF
-
