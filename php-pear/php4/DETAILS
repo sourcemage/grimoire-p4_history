@@ -1,5 +1,6 @@
            SPELL=php4
-         VERSION=4.3.11
+         VERSION=4.4.0
+          MD5[0]='8e2c4beaa39c514fba4fd821e2e6924e'
           SOURCE=php-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/php-$VERSION
 if [ "${VERSION//RC/}" == "$VERSION" ]; then
@@ -7,7 +8,6 @@ if [ "${VERSION//RC/}" == "$VERSION" ]; then
 else
    SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
 fi
-          MD5[0]=bc6d2bd58d3df62c9caf3ff2c6ee0983 
         WEB_SITE=http://www.php.net/
          ENTERED=20011024
          UPDATED=20040330
