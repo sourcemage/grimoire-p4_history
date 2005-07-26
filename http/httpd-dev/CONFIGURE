@@ -116,6 +116,8 @@ if [[ "$HTTPD_CHECKOUT" == y ]]; then
   config_query HTTPD_DAILY 'Code updates daily (on invocation of "sorcery system-update")?' n
 fi
 
+config_query_list HTTPD_MPM 'Select built-in MPM (worker recommended)' worker prefork
+
 # Perform the configuration
 if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
   local oldIFS=$IFS
