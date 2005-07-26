@@ -1,0 +1,21 @@
+           SPELL=cpm
+         VERSION=0.14beta
+          MD5[0]='e6d0e1685fc10c56e427e00642613690'
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.harry-b.de/downloads/$SOURCE
+        WEB_SITE='http://www.harry-b.de/dokuwiki/doku.php?id=harry:cpm#console_password_manager_cpm'
+         ENTERED=20050517
+         UPDATED=20050525
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT='cpm is a small console tool to manage passwords'
+cat << EOF
+cpm is a small console tool to manage passwords and store them public key
+encrypted in a file - even for more than one person. The encryption is handled
+via GnuPG so you can access the programs data via gpg as well, in case you want
+to have a look inside. The data is stored as XML so it's even possible to reuse
+the data for some other purpose. The software uses CDK (ncurses) to handle the
+user interface, libxml2 to store the information and the library GpgMe to
+encrypt and decrypt the data securely.
+EOF
