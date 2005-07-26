@@ -1,0 +1,16 @@
+           SPELL=glom
+         VERSION=0.8.37
+          MD5[0]='245c55dbea036c5908acaa8d6021c0f8'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://ftp.gnome.org/pub/GNOME/sources/glom/${VERSION%.*}/$SOURCE"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE="http://www.$SPELL.org/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='GPL'
+         UPDATED=20050726
+       BUILD_API=2
+           SHORT='A simple GUI database environment'
+cat << EOF
+Glom allows you to design database table definitions and the relationships between them. It also allows you to edit and search the data in those tables.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor
