@@ -23,6 +23,5 @@
     --enable-storage="$STORAGE" \
     --enable-authreg="$AUTHREG" \
     --enable-debug \
-    --with-libiconv-prefix=${INSTALL_ROOT}/usr \
     $OPTS &&
   make
