@@ -8,12 +8,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20050115
          UPDATED=20050115
        BUILD_API=2
-           SHORT="installwatch is a utility for tracking files during the installation of software."
+           SHORT="zengarden is a utility for tracking files during the installation of software."
 cat << EOF
-Installwatch is a simple utility which keeps track of which files are 
-created and modified during the installation of a new program. It's
-fast and easy to use. It doesn't require a "pre-install" phase
-because it monitors processes while they run. Installwatch works with 
-every dynamically linked ELF program, by intercepting system calls
-that cause file system alterations.
+zengarden is a tool that watches over the installation and building of
+source archives.  It is a fork of installwatch that has been heavily updated
+with modern features.  It can prevent build tools from interfering with
+files outside the build directory and create a virtual chroot to perform
+installations in or backup the files the install overwrites.
 EOF
