@@ -1,0 +1,1177 @@
+diff -Naur libgui-0.0.3.orig/gui/commonlistbox.h libgui-0.0.3/gui/commonlistbox.h
+--- libgui-0.0.3.orig/gui/commonlistbox.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/commonlistbox.h	2005-07-27 10:45:15.099331000 -0700
+@@ -46,10 +46,10 @@
+     CSimpleList<CIdString *> m_Strings;
+     bool m_bInternalSelect;
+  protected:
+-    virtual void SelectionChanged() = NULL;
+-    virtual Widget InternalList() = NULL;
++    virtual void SelectionChanged() = 0;
++    virtual Widget InternalList() = 0;
+     virtual void InternalCreate(unsigned long lStyle);
+-    virtual void InternalListCreate(unsigned long lStyle)=NULL;
++    virtual void InternalListCreate(unsigned long lStyle)=0;
+ 		
+     inline Widget List() { return m_List; }
+ 		
+diff -Naur libgui-0.0.3.orig/gui/dialog.h libgui-0.0.3/gui/dialog.h
+--- libgui-0.0.3.orig/gui/dialog.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/dialog.h	2005-07-27 10:45:15.099331000 -0700
+@@ -81,7 +81,7 @@
+  public:
+     enum {IDOK=-1, IDCANCEL=-2, IDYES=-3, IDNO=-4};
+     virtual Widget Container() const;
+-    virtual Widget Frame()=NULL;
++    virtual Widget Frame()=0;
+     inline Widget Separator() { return m_wdgSeparator; }
+     void SetCaption(const char *strCaption);
+     const char *Caption();
+diff -Naur libgui-0.0.3.orig/gui/graphicalobjectcontext.h libgui-0.0.3/gui/graphicalobjectcontext.h
+--- libgui-0.0.3.orig/gui/graphicalobjectcontext.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/graphicalobjectcontext.h	2005-07-27 10:45:15.099331000 -0700
+@@ -42,7 +42,7 @@
+  public:
+     CGraphicalObjectContext(void *pObject);
+ 
+-    virtual GOC Type()=NULL;
++    virtual GOC Type()=0;
+ 
+     inline void *Object() { return m_pObject; }
+  private:
+diff -Naur libgui-0.0.3.orig/gui/guielement.h libgui-0.0.3/gui/guielement.h
+--- libgui-0.0.3.orig/gui/guielement.h	2005-07-27 10:11:23.584369250 -0700
++++ libgui-0.0.3/gui/guielement.h	2005-07-27 10:45:15.095330750 -0700
+@@ -57,7 +57,7 @@
+     CGuiElement(Widget wdgParent, unsigned long lStyle=0L, int nId=0);
+     CGuiElement(unsigned long lStyle = 0L, int nId=0);
+ 		
+-    virtual void InternalCreate(unsigned long lStyle) = NULL;
++    virtual void InternalCreate(unsigned long lStyle) = 0;
+     virtual void InternalDestroy();
+     virtual void PostCreate();
+ 
+@@ -68,7 +68,7 @@
+     Widget ApplicationShell(Widget wdgParent);
+  public:
+     virtual ~CGuiElement();
+-    virtual Widget Container() const = NULL;
++    virtual Widget Container() const = 0;
+     virtual void SetCaption(const char *strCaption);
+     virtual const char *Caption();
+     virtual void SetDimensions(int nX, int nY, int nWidth, int nHeight);
+diff -Naur libgui-0.0.3.orig/gui/labelledfield.h libgui-0.0.3/gui/labelledfield.h
+--- libgui-0.0.3.orig/gui/labelledfield.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/labelledfield.h	2005-07-27 10:45:15.099331000 -0700
+@@ -42,9 +42,9 @@
+     void Create(unsigned long lStyle = 0L, Arg *args=NULL, Cardinal argcount=0);
+  protected:
+     virtual void InternalCreate(unsigned long lStyle=0L);
+-    virtual Widget Field()=NULL;
++    virtual Widget Field()=0;
+     inline Widget LabelParent() {return m_wdgForm;}
+-    virtual void CreateField()=NULL;
++    virtual void CreateField()=0;
+  private:
+     Widget m_wdgForm;
+     Widget m_wdgParent;
+diff -Naur libgui-0.0.3.orig/gui/mainframe.h libgui-0.0.3/gui/mainframe.h
+--- libgui-0.0.3.orig/gui/mainframe.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/mainframe.h	2005-07-27 10:45:15.103331250 -0700
+@@ -72,9 +72,9 @@
+     virtual void InternalCreateMenu(Widget menu_bar);
+     virtual void InternalDestroy();
+ 
+-    virtual const char *Version() const=NULL;
+-    virtual const char *Title() const=NULL;
+-    virtual const char *PropertiesName() const=NULL;
++    virtual const char *Version() const=0;
++    virtual const char *Title() const=0;
++    virtual const char *PropertiesName() const=0;
+     virtual void CreateToolBar(CToolBar *pToolBar);
+ 
+     inline CToolBar *ToolBar() const { return m_pToolBar; }
+diff -Naur libgui-0.0.3.orig/gui/table.C libgui-0.0.3/gui/table.C
+--- libgui-0.0.3.orig/gui/table.C	1969-12-31 16:00:00.000000000 -0800
++++ libgui-0.0.3/gui/table.C	2005-07-27 10:45:20.759684750 -0700
+@@ -0,0 +1,1066 @@
++/*******************************************************************************
++ *
++ * libbasic Version 0.0.1
++ *
++ * libbasic is a simple framework of foundation classes written in C++.
++ *
++ * The full text of the GNU General Public License can be found in the doc 
++ * directory.
++ *
++ * Copyright (C) 2002, 2003 Stefan Hoefer
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *
++ * You can contact Stefan Hoefer via email at stefan@hoefer.ch
++ *
++ ******************************************************************************/
++
++#include "table.h"
++#include "stdiostring.h"
++#include <errno.h>
++#include <string.h>
++
++extern int errno;
++
++enum {TAG_TABLE_TYPE};
++
++#define TABLE_HEADER_END "%%%TABLE-BODY%%%"
++#define TABLE_MAGIC      "%%%TABLE-HEADER%%%"
++
++#define BOF_INDEX -1
++#define EOF_INDEX 999999999
++#define HEADERLENGTH 256
++
++CTable::CTable(const CTable &Table)
++    : CStdioFile()
++{
++    *this = Table;
++    SetWritten(false);
++}
++
++CTable::CTable()
++{
++    Initialize();
++}
++
++CTable::~CTable()
++{
++    Close();
++}
++
++CTable::CTable(const char *strRoot)
++{
++    m_strRoot = strRoot;
++    if (m_strRoot.Right(1) != "/")
++    {
++	m_strRoot += "/";
++    }
++
++    Initialize();
++}
++
++void CTable::operator=(const CTable &Table)
++{
++    CStdioFile::operator=(Table);
++
++    m_nCurrentIndex = Table.m_nCurrentIndex;
++    m_lTop = Table.m_lTop;
++    m_nTableType = Table.m_nTableType;
++    m_strRoot = Table.m_strRoot;
++    m_bCached = Table.m_bCached;
++    m_bWritten = Table.m_bWritten;
++    m_Record = Table.m_Record;
++}
++
++void CTable::Initialize()
++{
++    m_nCurrentIndex = -1;
++    m_lTop = -1;
++    m_nTableType = -1;
++    //m_lFirstGap = -1;
++    m_bCached = false;
++    m_bWritten = false;
++}
++
++CTable::TABLESTATUS CTable::Open(const char *strPath)
++{
++    CStrings strFullPath = FullPath(strPath);
++
++    if (IsOpen())
++    {
++	Close();
++    }
++
++    if (Exist((const char *)strFullPath))
++    {
++	CStdioFile::Open((const char *)strFullPath, "r+");
++	//fseek(Deskriptor(), 0, SEEK_SET);
++    }
++
++    if (!IsOpen())
++    {
++	return TS_NOTOPEN;
++    }
++    else
++    {
++	if (!ReadHeader())
++	{
++	    return TS_NOTABLE;
++	}
++
++	m_nCurrentIndex = 0;
++	m_lTop = ftell(Deskriptor());
++	Top();
++
++	return TS_OK;
++    }
++}
++
++void CTable::Close()
++{
++    if (IsOpen())
++    {
++	Flush();
++	CStdioFile::Close();
++	Initialize();
++    }
++}
++
++bool CTable::ReadHeader()
++{
++    CStrings strLine;
++    bool bReadOn = true;
++    bool bSuccess = true;
++
++    if (!ReadLine(strLine, true))
++    {
++        bSuccess = false;
++    }
++    else
++    {
++	if (strLine != TABLE_MAGIC)
++	{
++	    bSuccess = false;
++	}
++    }
++
++    while (bReadOn && bSuccess)
++    {
++	bool bRead = ReadLine(strLine, true);
++
++	if (bRead)
++	{
++	    if (strLine == TABLE_HEADER_END)
++	    {
++		bReadOn = false;
++		m_lTop = ftell(Deskriptor());
++		m_nCurrentIndex = 1;
++	    }
++	    else
++	    {
++		if (IsTableType(strLine))
++		{
++		    SetTableType(TableType(strLine));
++		}
++		/*else if (IsFirstGap(strLine))
++		  {
++		  SetFirstGap(FirstGap(strLine));
++		  }*/
++	    }
++	}
++	else
++	{
++	    bSuccess = false;
++	}
++    }
++
++    return bSuccess;
++}
++
++/*long CTable::FirstGap(CString &strLine)
++{
++    return atol(strLine.Mid(2));
++}*/
++
++int CTable::TableType(CStrings &strLine)
++{
++    return atoi(strLine.Mid(2));
++}
++
++bool CTable::IsTableType(CStrings &strLine)
++{
++    return (atoi((const char *)strLine.Left(2)) == TAG_TABLE_TYPE);
++}
++
++/*bool CTable::IsFirstGap(CString &strLine)
++{
++    return (atoi((const char *)strLine.Left(2)) == TAG_FIRST_GAP);
++}*/
++
++void CTable::Create(const char *strPath, int nTableType)
++{
++    CStrings strFullPath = FullPath(strPath);
++    CStdioFile file;
++
++    if (!file.Exist(strFullPath))
++    {
++	if (file.Open(strFullPath, "w"))
++	{
++	    CStrings strHeaderLine;
++
++	    strHeaderLine.Format("%02d%d",TAG_TABLE_TYPE, nTableType);
++	    int nNumber = HEADERLENGTH - strHeaderLine.Length()-1;
++
++	    for (int nIndex = 0; nIndex < nNumber; nIndex++)
++	    {
++		strHeaderLine += ' ';
++	    }
++	    strHeaderLine += '\n';
++
++	    ASSERT(strHeaderLine.Length() == HEADERLENGTH);
++
++	    file.WriteFormatLine("%s\n", TABLE_MAGIC);
++	    file.WriteLine(strHeaderLine);
++	    file.WriteFormatLine("%s\n", TABLE_HEADER_END);
++	    file.Close();
++	}
++    }
++}
++
++CStrings CTable::FullPath(const char *strPath)
++{
++    CStrings strFullPath = m_strRoot+strPath;
++}
++
++void CTable::Flush()
++{
++    if (!Deleted())
++    {
++	if (Cached() && Written())
++	{
++	    WriteBack();
++	}
++    }
++
++    CFile::Flush();
++}
++
++CTable::TABLESTATUS CTable::Seek(int nId, int nSecondId)
++{
++    if (!IsOpen())
++    {
++	return TS_NOTABLE;
++    }
++    else
++    {
++	for (Top(); !Bof()&&!Eof()&&!((CurrentId() == nId) && (SecondId() == nSecondId)); Skip(1)); 
++     
++	if (Eof() || Bof())
++	{
++	    return TS_NOTFOUND;
++	}
++	else
++	{
++	    return TS_OK;
++	}
++    }
++}
++
++void CTable::Cache()
++{
++    if (!Cached() && !Eof() && !Bof())
++    {
++	long lCurPos = ftell(Deskriptor());
++
++	m_Record.Load(Deskriptor());
++
++	int nResult = fseek(Deskriptor(), lCurPos, SEEK_SET);
++#ifdef _DEBUG
++	if (nResult)
++	{
++	    puts(strerror(errno));
++	}
++#endif
++	SetCached(true);
++	SetWritten(false);
++    }
++}
++
++int CTable::CurrentId()
++{
++    Cache();
++
++    return m_Record.Id();
++}
++
++int CTable::SecondId()
++{
++    Cache();
++
++    return m_Record.SecondId();
++}
++
++void CTable::WriteBack()
++{
++    ASSERT(Cached() && Written());
++    
++    CStrings strData = m_Record.Data();
++    SetWritten(false);
++
++    int nNewSize = m_Record.Size();
++    int nId = m_Record.Id();
++    int nSecondId = m_Record.SecondId();
++
++    if (!RecordFits(m_Record)) // Save the record "as is" in its Slot
++    {
++	nNewSize = strData.Length();
++	nNewSize += nNewSize>>3;
++
++	if (CurrentRecordAtEndOfFile()) // The record can be extended at will
++	{
++	    //Nothing needs to be done.
++	}
++	else // The record has to be moved to the end of the file.
++	{
++	    Seek(nId, nSecondId);
++	    DeleteRecord();
++	    AppendRecord(nId, nSecondId, nNewSize);
++	    Seek(nId, nSecondId);
++	}
++    }
++
++    if (strData.Length() != nNewSize)
++    {
++	strData = strData.Left(strData.Length()-2);
++	int nLength = strData.Length();
++
++	for (int nIndex = 0; nIndex < nNewSize-nLength-2; nIndex++)
++	{
++	    strData += '\n';
++	}
++
++	strData += "}\n";
++    }
++
++    ASSERT(strData.Length() == nNewSize);
++
++#ifdef _DEBUG
++
++    long lPos = ftell(Deskriptor());
++    ASSERT(lPos >= HEADERLENGTH);
++
++#endif
++
++    WriteLine(strData);
++}
++
++bool CTable::RecordFits(CRecord &m_Record)
++{
++    return (m_Record.Size() >= m_Record.ActualSize());
++}
++
++bool CTable::CurrentRecordAtEndOfFile()
++{
++    if (Eof() || Bof())
++    {
++	return false;
++    }
++    else
++    {
++	long lPos = ftell(Deskriptor());
++
++	CStdioString string;
++
++	bool bEndOfFile = true;
++
++	string.ReadLine(Deskriptor());
++
++	while (bEndOfFile && string.ReadLine(Deskriptor()))
++	{
++	    if (string[0] == '{')
++	    {
++		bEndOfFile = false;
++	    }
++	}
++
++	fseek(Deskriptor(), lPos, SEEK_SET);
++	    
++	return bEndOfFile;
++    }
++}
++
++bool CTable::Deleted()
++{
++    if(!Eof() && !Bof())
++    {
++	bool bDeleted = false;
++
++	if (fgetc(Deskriptor()) == '#')
++	{
++	    bDeleted = true;
++	}
++
++	fseek(Deskriptor(), -1, SEEK_CUR);
++
++	return bDeleted;
++    }
++    else
++    {
++	return false;
++    }
++}
++
++void CTable::DeleteRecord()
++{
++    if (!Eof() && !Bof())
++    {
++	fputc('#', Deskriptor());
++	fseek(Deskriptor(), -1, SEEK_CUR);
++    }
++}
++
++void CTable::WriteLine(const char *strLine)
++{
++    long lPos = ftell(Deskriptor());
++
++    fputs(strLine, Deskriptor());
++
++    fseek(Deskriptor(), lPos, SEEK_SET);
++    fflush(Deskriptor());
++}
++
++void CTable::AppendRecord(int nId, int nSecondId, int nNewSize)
++{
++    Flush();
++
++    ASSERT(nId > 0);
++
++    // Make the record of initial size nNewSize.
++
++    CStrings strLine;
++    strLine.Format("{%d,%d\n", nId, nSecondId);
++
++    int nSize = nNewSize-strLine.Length()-2;
++
++    for (int nIndex = 0; nIndex < nSize; nIndex++)
++    {
++	strLine += '\n';
++    }
++
++    strLine += "}\n";
++
++    Bottom();
++
++    bool bEof = Eof();
++
++    long lPos = ftell(Deskriptor());
++
++    fseek(Deskriptor(), 0, SEEK_END);
++
++    ASSERT(strLine.Length() == nNewSize);
++
++    WriteLine(strLine);
++    fseek(Deskriptor(), lPos, SEEK_SET);
++
++    if (!bEof)
++    {
++	Skip(1);
++    }
++    else
++    {
++	SetCurrentIndex(CurrentIndex()+1);
++	ASSERT(CurrentIndex() > 0);
++    }
++}
++
++bool CTable::Eof()
++{
++    long lPos = ftell(Deskriptor());
++    fseek(Deskriptor(), 0, SEEK_END);
++    bool bEof = (ftell(Deskriptor()) == lPos);
++
++    if (!bEof)
++    {
++	fseek(Deskriptor(), lPos, SEEK_SET);
++    }
++
++    return bEof;
++}
++
++bool CTable::Bof()
++{
++    return ftell(Deskriptor()) < m_lTop;
++}
++
++void CTable::SetCurrentIndex(int nCurrentIndex) 
++{ 
++    if (nCurrentIndex != m_nCurrentIndex)
++    {
++	m_nCurrentIndex = nCurrentIndex;
++	SetCached(false);
++    }
++}
++
++CTable::TABLESTATUS CTable::Skip(int nSkip)
++{
++    Flush();
++
++    //for (int nIndex = 0; (nIndex < abs(nSkip)) && !Eof() && !Bof() ; nIndex++)
++    for (int nIndex = 0; (nIndex < abs(nSkip)) ; nIndex++)
++    {
++        SkipRecord(nSkip>=0);
++    }
++
++    if (Eof())
++    {
++	return TS_EOF;
++    }
++    else if (Bof())
++    {
++	return TS_BOF;
++    }
++    else
++    {
++	return TS_OK;
++    }
++}
++
++void CTable::SkipRecord(bool bForward)
++{
++    ASSERT(!Written());
++
++    if (bForward)
++    {
++	if (Eof())
++	{
++	    return;
++	}
++	else if (Bof())
++	{
++	    Top();
++	}
++	else
++	{
++	    CStdioString string;
++
++	    string.ReadLine(Deskriptor());
++
++	    bool bReadOn = true;
++
++	    do
++	    {
++		long lPos = ftell(Deskriptor());
++
++		bReadOn = string.ReadLine(Deskriptor());
++
++		if (bReadOn && (string[0] == '{'))
++		{
++		    fseek(Deskriptor(), lPos, SEEK_SET);
++		    bReadOn = false;
++		}
++	    } while (bReadOn);
++	}
++    }
++    else
++    {
++	if (Bof())
++	{
++	    return;
++	}
++	else
++	{
++	    fseek(Deskriptor(), -1, SEEK_CUR);
++
++	    bool bReadOn = true;
++
++	    while (bReadOn)
++	    {
++		fseek(Deskriptor(), -1, SEEK_CUR);
++
++		long lPos = ftell(Deskriptor());
++
++		if (lPos < m_lTop)
++		{
++		    bReadOn = false;
++		}
++
++		if (bReadOn)
++		{
++		    if (fgetc(Deskriptor()) == '\n')
++		    {
++			if (fgetc(Deskriptor()) == '{')
++			{
++			    fseek(Deskriptor(), -1, SEEK_CUR);
++			    bReadOn = false;
++			}
++			else
++			{
++			    fseek(Deskriptor(), -2, SEEK_CUR);
++			}
++		    }
++		    else
++		    {
++			fseek(Deskriptor(), -1, SEEK_CUR);
++		    }
++		}
++	    }
++	}
++    }
++
++    if (Bof())
++    {
++	SetCurrentIndex(BOF_INDEX);
++    }
++    else if (Eof())
++    {
++	SetCurrentIndex(EOF_INDEX);
++    }
++    else
++    {
++	if (bForward)
++	{
++	    SetCurrentIndex(CurrentIndex()+1);
++	}
++	else
++	{
++	    SetCurrentIndex(CurrentIndex()-1);
++	}
++
++	ASSERT(CurrentIndex()>0);
++    }
++}
++
++void CTable::Top()
++{
++    if ((CurrentIndex() != 1) || Bof())
++    {
++	Flush();
++	fseek(Deskriptor(), m_lTop, SEEK_SET);
++
++	if (Eof())
++	{
++	    SetCurrentIndex(0);
++	}
++	else
++	{
++	    SetCurrentIndex(1);
++
++	    if (fgetc(Deskriptor()) == '#')
++	    {
++		SetCurrentIndex(0);
++
++		Skip(1);
++	    }
++	    else
++	    {
++		fseek(Deskriptor(), -1, SEEK_CUR);
++	    }
++	}
++    }
++}
++
++void CTable::Bottom()
++{
++    if (Eof())
++    {
++	Top();
++    }
++    else
++    {
++	Flush();
++    }
++    if (!Eof() && !Bof())
++    {
++	while(!CurrentRecordAtEndOfFile())
++	{
++	    Skip(1);
++	}
++    }
++}
++
++CTable::TABLESTATUS CTable::Set(int nId, double dData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CStrings strData;
++	strData.Format("%f", dData);
++
++	m_Record.Set(nId, strData);
++	
++	SetWritten(true);
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Set(int nId, const char *strData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	m_Record.Set(nId, strData);
++	
++	SetWritten(true);
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Set(int nId, int nData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CStrings strData;
++	strData.Format("%d", nData);
++
++	m_Record.Set(nId, strData);
++	
++	SetWritten(true);
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Set(int nId, const CDate &dtData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CDate date = dtData;
++
++	m_Record.Set(nId, (const char *)(CStrings)date);
++	
++	SetWritten(true);
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Get(int nId, double &dData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++    dData = 0.;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CStrings strData;
++
++	if (!m_Record.Get(nId, strData))
++	{
++	    status = CTable::TS_NOTFOUND;
++	}
++	else
++	{
++	    dData = atof((const char *)strData);
++	}
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Get(int nId, CStrings &strData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    strData = "";
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	if (!m_Record.Get(nId, strData))
++	{
++	    status = CTable::TS_NOTFOUND;
++	}
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Get(int nId, int &nData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    nData = 0;
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CStrings strData;
++
++	if (!m_Record.Get(nId, strData))
++	{
++	    status = CTable::TS_NOTFOUND;
++	}
++	else
++	{
++	    nData = atoi((const char *)strData);
++	}
++    }
++
++    return status;
++}
++
++CTable::TABLESTATUS CTable::Get(int nId, CDate &dtData)
++{
++    CTable::TABLESTATUS status = CTable::TS_OK;
++
++    dtData.SetDate(1,1,1970);
++
++    if (!IsOpen())
++    {
++	status = CTable::TS_NOTABLE;
++    }
++    else if (Bof())
++    {
++	status = CTable::TS_BOF;
++    }
++    else if (Eof())
++    {
++	status = CTable::TS_EOF;
++    }
++    else
++    {
++	Cache();
++
++	CStrings strData;
++
++	if (!m_Record.Get(nId, strData))
++	{
++	    status = CTable::TS_NOTFOUND;
++	}
++	else
++	{
++	    dtData = strData;
++	}
++    }
++
++    return status;
++}
++
++bool CTable::FindFirst(int nId, int nSecondId)
++{
++    for (Top(); !Eof(); Skip())
++    {
++	bool bFound = true;
++
++	if (nId >= 0)
++	{
++	    bFound = (CurrentId() == nId);
++	}	
++
++	if (bFound && (nSecondId >= 0))
++	{
++	    bFound = (SecondId() == nSecondId);
++	}
++
++	if (bFound)
++	{
++	    return !Bof();
++	}
++    }
++
++    return false;
++}
++
++bool CTable::FindNext(int nId, int nSecondId)
++{
++    if (!Eof())
++    {
++	for (Skip(); !Eof(); Skip())
++	{
++	    bool bFound = true;
++
++	    if (nId >= 0)
++	    {
++		bFound = (CurrentId() == nId);
++	    }	
++
++	    if (bFound && (nSecondId >= 0))
++	    {
++		bFound = (SecondId() == nSecondId);
++	    }
++
++	    if (bFound)
++	    {
++		return true;
++	    }
++	}
++    }
++
++    return false;
++}
++
++CTable::TABLESTATUS CTable::Get(int nId, bool &bData) 
++{ 
++    int nData; 
++    TABLESTATUS Status = Get(nId, nData); 
++    bData = !!nData; 
++    return Status; 
++}
++
++int CTable::NextId()
++{
++    int nCurrentId = CurrentId();
++    int nSecondId = SecondId();
++
++    int nHighestId = 1;
++
++    for (Top(); !Eof() && !Bof(); Skip(1))
++    {
++	if (CurrentId() >= nHighestId)
++	{
++	    nHighestId = CurrentId() + 1;
++	}
++    }
++
++    Seek(nCurrentId, nSecondId);
++
++    return nHighestId;
++}
++
++
++int CTable::NextSecondId(int nId)
++{
++    int nCurrentId = CurrentId();
++    int nSecondId = SecondId();
++
++    int nHighestId = 1;
++
++    if (FindFirst(nId))
++    {
++	do
++	{
++	    if (SecondId() >= nHighestId)
++	    {
++		nHighestId = SecondId() + 1;
++	    }
++	} while(FindNext(nId));
++    }
++
++    Seek(nCurrentId, nSecondId);
++
++    return nHighestId;
++}
++
++
++
++
++
++
++
++
++
+diff -Naur libgui-0.0.3.orig/gui/textcontrol.h libgui-0.0.3/gui/textcontrol.h
+--- libgui-0.0.3.orig/gui/textcontrol.h	2005-07-27 10:11:23.580369000 -0700
++++ libgui-0.0.3/gui/textcontrol.h	2005-07-27 10:45:15.103331250 -0700
+@@ -40,8 +40,8 @@
+     CStrings m_strText;
+  protected:
+     inline void SetTextControl(Widget wdgTextField) { m_wdgTextField = wdgTextField; }
+-    virtual void InternalSetText(char *strText)=NULL;
+-    virtual char *InternalText()=NULL;
++    virtual void InternalSetText(char *strText)=0;
++    virtual char *InternalText()=0;
+     virtual void InternalDestroy();
+  public:
+     virtual Widget Container() const;
