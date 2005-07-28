@@ -1,6 +1,6 @@
-diff -Naur libgui-0.0.3.orig/gui/commonlistbox.h libgui-0.0.3/gui/commonlistbox.h
---- libgui-0.0.3.orig/gui/commonlistbox.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/commonlistbox.h	2005-07-27 10:45:15.099331000 -0700
+diff -Naur libgui-0.0.4.orig/gui/commonlistbox.h libgui-0.0.4/gui/commonlistbox.h
+--- libgui-0.0.4.orig/gui/commonlistbox.h	2005-07-28 08:32:22.660747250 -0700
++++ libgui-0.0.4/gui/commonlistbox.h	2005-07-28 08:37:35.088272750 -0700
 @@ -46,10 +46,10 @@
      CSimpleList<CIdString *> m_Strings;
      bool m_bInternalSelect;
@@ -15,9 +15,9 @@ diff -Naur libgui-0.0.3.orig/gui/commonlistbox.h libgui-0.0.3/gui/commonlistbox.
  		
      inline Widget List() { return m_List; }
  		
-diff -Naur libgui-0.0.3.orig/gui/dialog.h libgui-0.0.3/gui/dialog.h
---- libgui-0.0.3.orig/gui/dialog.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/dialog.h	2005-07-27 10:45:15.099331000 -0700
+diff -Naur libgui-0.0.4.orig/gui/dialog.h libgui-0.0.4/gui/dialog.h
+--- libgui-0.0.4.orig/gui/dialog.h	2005-07-28 08:32:22.664747500 -0700
++++ libgui-0.0.4/gui/dialog.h	2005-07-28 08:37:35.088272750 -0700
 @@ -81,7 +81,7 @@
   public:
      enum {IDOK=-1, IDCANCEL=-2, IDYES=-3, IDNO=-4};
@@ -27,9 +27,9 @@ diff -Naur libgui-0.0.3.orig/gui/dialog.h libgui-0.0.3/gui/dialog.h
      inline Widget Separator() { return m_wdgSeparator; }
      void SetCaption(const char *strCaption);
      const char *Caption();
-diff -Naur libgui-0.0.3.orig/gui/graphicalobjectcontext.h libgui-0.0.3/gui/graphicalobjectcontext.h
---- libgui-0.0.3.orig/gui/graphicalobjectcontext.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/graphicalobjectcontext.h	2005-07-27 10:45:15.099331000 -0700
+diff -Naur libgui-0.0.4.orig/gui/graphicalobjectcontext.h libgui-0.0.4/gui/graphicalobjectcontext.h
+--- libgui-0.0.4.orig/gui/graphicalobjectcontext.h	2005-07-28 08:32:22.660747250 -0700
++++ libgui-0.0.4/gui/graphicalobjectcontext.h	2005-07-28 08:37:35.092273000 -0700
 @@ -42,7 +42,7 @@
   public:
      CGraphicalObjectContext(void *pObject);
@@ -39,30 +39,118 @@ diff -Naur libgui-0.0.3.orig/gui/graphicalobjectcontext.h libgui-0.0.3/gui/graph
  
      inline void *Object() { return m_pObject; }
   private:
-diff -Naur libgui-0.0.3.orig/gui/guielement.h libgui-0.0.3/gui/guielement.h
---- libgui-0.0.3.orig/gui/guielement.h	2005-07-27 10:11:23.584369250 -0700
-+++ libgui-0.0.3/gui/guielement.h	2005-07-27 10:45:15.095330750 -0700
-@@ -57,7 +57,7 @@
-     CGuiElement(Widget wdgParent, unsigned long lStyle=0L, int nId=0);
+diff -Naur libgui-0.0.4.orig/gui/guielement.h libgui-0.0.4/gui/guielement.h
+--- libgui-0.0.4.orig/gui/guielement.h	2005-07-28 08:32:22.664747500 -0700
++++ libgui-0.0.4/gui/guielement.h	2005-07-28 08:43:13.217404500 -0700
+@@ -58,7 +58,7 @@
      CGuiElement(unsigned long lStyle = 0L, int nId=0);
  		
+     // STH sandalle SF virtual void InternalCreate(unsigned long lStyle) = 0;
 -    virtual void InternalCreate(unsigned long lStyle) = NULL;
 +    virtual void InternalCreate(unsigned long lStyle) = 0;
      virtual void InternalDestroy();
      virtual void PostCreate();
  
-@@ -68,7 +68,7 @@
-     Widget ApplicationShell(Widget wdgParent);
-  public:
-     virtual ~CGuiElement();
--    virtual Widget Container() const = NULL;
+diff -Naur libgui-0.0.4.orig/gui/guielement.h~ libgui-0.0.4/gui/guielement.h~
+--- libgui-0.0.4.orig/gui/guielement.h~	1969-12-31 16:00:00.000000000 -0800
++++ libgui-0.0.4/gui/guielement.h~	2005-07-28 08:37:24.839632250 -0700
+@@ -0,0 +1,93 @@
++/*******************************************************************************
++ *
++ * libgui
++ *
++ * libgui is a simple framework of GUI classes for X11/Motif widgets written in C++.
++ *
++ * The full text of the GNU General Public License can be found in the doc 
++ * directory.
++ *
++ * Copyright (C) 2002, 2003 Stefan Hoefer
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *
++ * You can contact Stefan Hoefer via email at stefan@hoefer.ch
++ *
++ ******************************************************************************/
++
++#ifndef GUIELEMENT_H
++
++#define GUIELEMENT_H
++
++#include <Xm/Xm.h>
++#include <basic/idstring.h>
++#include <basic/messageclient.h>
++
++class CGuiElement : public CMessageClient
++{
++ private:
++    Widget m_wdgParent;
++    Widget m_wdgContainer;
++    bool m_bCreated;
++    bool m_bBeingDestroyed;
++    bool m_bContainerDestroyed;
++    unsigned long m_lStyle;
++    //bool m_bWorkaroundXtDestroyWidget;
++ private:
++    inline void SetCreated(bool bCreated = true ) { m_bCreated = bCreated; }
++    inline void SetBeingDestroyed(bool bBeingDestroyed = true) { m_bBeingDestroyed = bBeingDestroyed; }
++
++    static void HandleDestroy(Widget w, XtPointer client_data, XmAnyCallbackStruct *call_data);
++
++    inline void SetContainerDestroyed(bool bDestroyed=true) { m_bContainerDestroyed = bDestroyed; }
++    inline bool ContainerDestroyed() const { return m_bContainerDestroyed; }
++ protected:
++    CGuiElement(Widget wdgParent, unsigned long lStyle=0L, int nId=0);
++    CGuiElement(unsigned long lStyle = 0L, int nId=0);
++		
++    // STH sandalle SF virtual void InternalCreate(unsigned long lStyle) = 0;
++    virtual void InternalCreate(unsigned long lStyle) = NULL;
++    virtual void InternalDestroy();
++    virtual void PostCreate();
++
++    XtAppContext ApplicationContext();
++    inline void SetStyle(unsigned long lStyle) { m_lStyle = lStyle; }
++    //bool WorkaroundXtDestroyWidget();
++    //void SetWorkaroundXtDestroyWidget();
++    Widget ApplicationShell(Widget wdgParent);
++ public:
++    virtual ~CGuiElement();
++    // STH sandalle SF virtual Widget Container() const = NULL;
 +    virtual Widget Container() const = 0;
-     virtual void SetCaption(const char *strCaption);
-     virtual const char *Caption();
-     virtual void SetDimensions(int nX, int nY, int nWidth, int nHeight);
-diff -Naur libgui-0.0.3.orig/gui/labelledfield.h libgui-0.0.3/gui/labelledfield.h
---- libgui-0.0.3.orig/gui/labelledfield.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/labelledfield.h	2005-07-27 10:45:15.099331000 -0700
++    virtual void SetCaption(const char *strCaption);
++    virtual const char *Caption();
++    virtual void SetDimensions(int nX, int nY, int nWidth, int nHeight);
++    virtual void Dimensions(int &nX, int &nY, int &nWidth, int &nHeight);
++		
++    void Create(unsigned long lStyle = 0L, Arg *pargs=NULL, Cardinal pargcount=0);
++    void Create(Widget wdgParent, unsigned long lStyle = 0L, Arg *pargs=NULL, Cardinal pargcount=0);
++    virtual void Destroy();
++    inline Widget Parent() const { return m_wdgParent; }
++    inline bool Created() const { return m_bCreated; }
++    inline unsigned long Style() const { return m_lStyle; }
++    inline bool BeingDestroyed() const { return m_bBeingDestroyed; }
++    void Manage();
++    void Unmanage();
++    void Enable(bool bEnable=true);
++    void Sync();
++};
++
++#endif
++
+diff -Naur libgui-0.0.4.orig/gui/labelledfield.h libgui-0.0.4/gui/labelledfield.h
+--- libgui-0.0.4.orig/gui/labelledfield.h	2005-07-28 08:32:22.664747500 -0700
++++ libgui-0.0.4/gui/labelledfield.h	2005-07-28 08:37:35.092273000 -0700
 @@ -42,9 +42,9 @@
      void Create(unsigned long lStyle = 0L, Arg *args=NULL, Cardinal argcount=0);
   protected:
@@ -75,9 +163,9 @@ diff -Naur libgui-0.0.3.orig/gui/labelledfield.h libgui-0.0.3/gui/labelledfield.
   private:
      Widget m_wdgForm;
      Widget m_wdgParent;
-diff -Naur libgui-0.0.3.orig/gui/mainframe.h libgui-0.0.3/gui/mainframe.h
---- libgui-0.0.3.orig/gui/mainframe.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/mainframe.h	2005-07-27 10:45:15.103331250 -0700
+diff -Naur libgui-0.0.4.orig/gui/mainframe.h libgui-0.0.4/gui/mainframe.h
+--- libgui-0.0.4.orig/gui/mainframe.h	2005-07-28 08:32:22.664747500 -0700
++++ libgui-0.0.4/gui/mainframe.h	2005-07-28 08:37:35.092273000 -0700
 @@ -72,9 +72,9 @@
      virtual void InternalCreateMenu(Widget menu_bar);
      virtual void InternalDestroy();
@@ -91,9 +179,9 @@ diff -Naur libgui-0.0.3.orig/gui/mainframe.h libgui-0.0.3/gui/mainframe.h
      virtual void CreateToolBar(CToolBar *pToolBar);
  
      inline CToolBar *ToolBar() const { return m_pToolBar; }
-diff -Naur libgui-0.0.3.orig/gui/table.C libgui-0.0.3/gui/table.C
---- libgui-0.0.3.orig/gui/table.C	1969-12-31 16:00:00.000000000 -0800
-+++ libgui-0.0.3/gui/table.C	2005-07-27 10:45:20.759684750 -0700
+diff -Naur libgui-0.0.4.orig/gui/table.C libgui-0.0.4/gui/table.C
+--- libgui-0.0.4.orig/gui/table.C	1969-12-31 16:00:00.000000000 -0800
++++ libgui-0.0.4/gui/table.C	2005-07-28 08:40:15.634306250 -0700
 @@ -0,0 +1,1066 @@
 +/*******************************************************************************
 + *
@@ -338,7 +426,7 @@ diff -Naur libgui-0.0.3.orig/gui/table.C libgui-0.0.3/gui/table.C
 +
 +CStrings CTable::FullPath(const char *strPath)
 +{
-+    CStrings strFullPath = m_strRoot+strPath;
++    return (CStrings strFullPath = m_strRoot+strPath);
 +}
 +
 +void CTable::Flush()
@@ -1161,9 +1249,9 @@ diff -Naur libgui-0.0.3.orig/gui/table.C libgui-0.0.3/gui/table.C
 +
 +
 +
-diff -Naur libgui-0.0.3.orig/gui/textcontrol.h libgui-0.0.3/gui/textcontrol.h
---- libgui-0.0.3.orig/gui/textcontrol.h	2005-07-27 10:11:23.580369000 -0700
-+++ libgui-0.0.3/gui/textcontrol.h	2005-07-27 10:45:15.103331250 -0700
+diff -Naur libgui-0.0.4.orig/gui/textcontrol.h libgui-0.0.4/gui/textcontrol.h
+--- libgui-0.0.4.orig/gui/textcontrol.h	2005-07-28 08:32:22.660747250 -0700
++++ libgui-0.0.4/gui/textcontrol.h	2005-07-28 08:37:35.096273250 -0700
 @@ -40,8 +40,8 @@
      CStrings m_strText;
   protected:

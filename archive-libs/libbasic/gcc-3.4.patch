@@ -1,24 +1,7 @@
-diff -Naur libbasic-0.0.3.orig/basic/basiclist.h libbasic-0.0.3/basic/basiclist.h
---- libbasic-0.0.3.orig/basic/basiclist.h	2005-07-27 09:35:45.222730000 -0700
-+++ libbasic-0.0.3/basic/basiclist.h	2005-07-27 09:41:46.737323250 -0700
-@@ -147,27 +147,27 @@
-     node *zeiger,*source,*dest;
-     int i;
- 
--    zeiger = get_field();
-+    zeiger = this->get_field();
-     i = 0;
--    while(i<card()&&!internal_equality(*zeiger,x))
-+    while(i<this->card()&&!internal_equality(*zeiger,x))
-     {
-       	zeiger++;
-       	i++;
-     }
- 
--    if(i<card())
-+    if(i<this->card())
-     {
-       	dest = zeiger;
+diff -Naur libbasic-0.0.4.orig/basic/basiclist.h libbasic-0.0.4/basic/basiclist.h
+--- libbasic-0.0.4.orig/basic/basiclist.h	2005-07-28 08:21:44.652874250 -0700
++++ libbasic-0.0.4/basic/basiclist.h	2005-07-28 08:25:18.970268250 -0700
+@@ -165,7 +165,7 @@
        	source = zeiger+1;
        	i++;
  
@@ -27,71 +10,3 @@ diff -Naur libbasic-0.0.3.orig/basic/basiclist.h libbasic-0.0.3/basic/basiclist.
        	{
  	    i++;
  	    *dest++ = *source++;
-       	}
- 
--      	ReduceCardBy1();
-+      	this->ReduceCardBy1();
- 
-       	return 1;
-     }
-@@ -190,10 +190,10 @@
-     node *zeiger;
-     int i;
- 
--    zeiger = get_field();
-+    zeiger = this->get_field();
-     i = 0;
-       
--    while(i<card())
-+    while(i<this->card())
-     {
- 	if(internal_equality(*zeiger,x))
- 	{
-diff -Naur libbasic-0.0.3.orig/basic/table.C libbasic-0.0.3/basic/table.C
---- libbasic-0.0.3.orig/basic/table.C	2005-07-27 09:35:45.218729750 -0700
-+++ libbasic-0.0.3/basic/table.C	2005-07-27 09:45:52.984712750 -0700
-@@ -239,9 +239,9 @@
-     }
- }
- 
--CStrings CTable::FullPath(const char *strPath) return strFullPath
-+CStrings CTable::FullPath(const char *strPath)
- {
--    strFullPath = m_strRoot+strPath;
-+    CStrings strFullPath = m_strRoot+strPath;
- }
- 
- void CTable::Flush()
-diff -Naur libbasic-0.0.3.orig/basic/basicstack.h libbasic-0.0.3/basic/basicstack.h
---- libbasic-0.0.3.orig/basic/basicstack.h	2005-07-27 10:18:29.014957000 -0700
-+++ libbasic-0.0.3/basic/basicstack.h	2005-07-27 10:19:00.584930000 -0700
-@@ -50,7 +50,7 @@
- template <class element>
- element basic_stack<element>::top() const
- {
--    return last();
-+    return this->last();
- }
- 
- template <class element>
-@@ -64,7 +64,7 @@
- {
-     element n;
- 
--    n = last();
-+    n = this->last();
-     if(n)
-     {
- 	*this -= n;
-diff -Naur libbasic-0.0.3.orig/basic/ctree.h libbasic-0.0.3/basic/ctree.h
---- libbasic-0.0.3.orig/basic/ctree.h	2005-07-27 10:43:05.979261500 -0700
-+++ libbasic-0.0.3/basic/ctree.h	2005-07-27 10:43:41.705494250 -0700
-@@ -50,7 +50,7 @@
-     inline T &Node() { return m_Node; }
-     inline CTreeNode<T> *Parent() { return m_Parent;}
- 		
--    inline CTreeNode<T> *Child(int nIndex) { return operator[](nIndex); }
-+    inline CTreeNode<T> *Child(int nIndex) { return this->operator[](nIndex); }
- 		
-     CTreeNode(CTreeNode<T> *Parent = NULL);
-     virtual ~CTreeNode();
