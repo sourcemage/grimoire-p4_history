@@ -1,2 +1,2 @@
-OPTS="${OPTS} ${OPT}"
+OPTS="${OPT} ${OPTS}"
 default_build
