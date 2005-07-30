@@ -28,12 +28,13 @@ depends  tcsh                                      &&
 #                  "Use tcsh shell for compiling (safer)" &&
 
 if [ $OPENOFFICE_VERSION != "stable" ]; then
-depends  "JAVA" "--enable-java --with-jdk-home=${JAVA_HOME}"
+depends  "JAVA" "--enable-java --with-jdk-home=${JAVA_HOME}"  'z-rejected'
 else
-optional_depends "JAVA-1.4" \
-	"--enable-java --with-jdk-home=${JAVA_HOME}" \
-	"--disable-java" \
-	"To enable java support"
+optional_depends  'JAVA-1.4'                      \
+	"--enable-java --with-jdk-home=${JAVA_HOME}"  \
+	'--disable-java'                              \
+	'To enable java support'                      \
+    'z-rejected'
 fi
 #
 # We now have stlport 5 in the grimoire
