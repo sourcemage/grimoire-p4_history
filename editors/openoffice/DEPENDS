@@ -28,10 +28,11 @@ depends  tcsh                                      &&
 # If someone can figure out how to get it to work I'll add
 # support
 #
-optional_depends  "JAVA-1.4"                                   \
+optional_depends  'JAVA-1.4'                                   \
                   "--enable-java --with-jdk-home=${JAVA_HOME}" \
-                  "--disable-java"                             \
-                  "Build with Java support."                   &&
+                  '--disable-java'                             \
+                  'Build with Java support'                    \
+                  'z-rejected'                                 &&
 #
 # We now have stlport 5 in the grimoire
 # This will no longer work

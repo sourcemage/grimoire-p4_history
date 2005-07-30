@@ -26,9 +26,10 @@ optional_depends  ruby                                      \
                   "to include Ruby support"                 &&
 
 optional_depends  JAVA                       \
-                  "--with-java"              \
-                  "--without-java"           \
-                  "to include Java support"  &&
+                  '--with-java'              \
+                  '--without-java'           \
+                  'to include Java support'  \
+                  'z-rejected'               &&
 
 optional_depends  guile                                       \
                   "--with-guile=$INSTALL_ROOT/usr/bin/guile"  \
