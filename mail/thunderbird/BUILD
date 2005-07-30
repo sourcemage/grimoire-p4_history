@@ -13,15 +13,14 @@ export  CXXFLAGS="${CXXFLAGS//-O3/-O2}"  &&
 sedit 's#-lgfxshared_s#-L../shared -lgfxshared_s#g' gfx/src/gtk/Makefile.in &&
 sedit 's#-lxprintutil#-L../xprintutil -lxprintutil#g' gfx/src/gtk/Makefile.in &&
 
-if  [  "$THUNDERBIRD_MATHML"  =  "y"  ];  then
-  OPTS="${OPTS}  --enable-mathml"
+if  [[  "$THUNDERBIRD_MATHML"  ==  'y'  ]];  then
+  OPTS="$OPTS  --enable-mathml"
 else
-  OPTS="${OPTS}  --disable-mathml"
+  OPTS="$OPTS  --disable-mathml"
 fi &&
 
-if  grep  -q  "\-s"  ${LDFLAGS}
-then
-  OPTS="${OPTS}  --enable-strip"
+if  echo $LDFLAGS | grep  -q  '\-s'; then
+  OPTS="$OPTS  --enable-strip"
 fi  &&
 
 mozilla_remove_nspr_nss &&
@@ -75,9 +74,8 @@ mozilla_remove_nspr_nss &&
 
 make &&
 
-if [ "$BUILD_ENIGMAIL" == "y" ]; then
+if [[ "$BUILD_ENIGMAIL" == 'y' ]]; then
    build/autoconf/make-makefile extensions/ipc extensions/enigmail &&
    make -C extensions/ipc &&
    make -C extensions/enigmail
 fi
-
