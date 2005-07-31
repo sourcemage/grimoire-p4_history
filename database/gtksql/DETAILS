@@ -1,0 +1,32 @@
+           SPELL=gtksql
+         VERSION=0.4.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://gtksql.sourceforge.net/
+
+    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          LICENCE=GPL
+           MD5[0]=1f8edfc65111b4935f211f496071371c
+        BUILD_API=2
+          ENTERED=20030205
+          UPDATED=20031011
+SHORT="a graphical database query tool"
+cat << EOF
+GtkSQL is a graphical database query tool. It currently supports the
+PostgreSQL and MySQL databases. 
+
+
+It is similar to PostgreSQL's psql, or the Microsoft Query Analyser.
+It is a free tool released under the GNU GPL license. 
+
+
+Its main features are : 
+
+multiple SQL buffers 
+SQL keywords, table names and fields auto-completion 
+displays table definition 
+PostgreSQL and MySQL support (and easy addition of other databases) 
+
+GtkSQL is written using the Gimp ToolKit (GTK), and should run on any 
+system that has GTK installed. 
+EOF
