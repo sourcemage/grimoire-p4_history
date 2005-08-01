@@ -28,7 +28,7 @@ depends  tcsh                                      &&
 #                  "Use tcsh shell for compiling (safer)" &&
 
 if [ $OPENOFFICE_VERSION != "stable" ]; then
-depends  "JAVA" "--enable-java --with-jdk-home=${JAVA_HOME}"  'z-rejected'
+depends  "JAVA" "--enable-java --with-jdk-home=${JAVA_HOME}"  ''  'z-rejected'
 else
 optional_depends  'JAVA-1.4'                      \
 	"--enable-java --with-jdk-home=${JAVA_HOME}"  \

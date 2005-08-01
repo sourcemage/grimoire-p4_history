@@ -7,7 +7,7 @@ depends  jpeg    &&
 
 if  [  "$OPENVRML_JS_OPTION"     ==  '--enable-script-node-javascript'  -o  \
        "$OPENVRML_JAVA_OPTION"   ==  '--enable-script-node-java'        ];  then
-  depends  JAVA             ''  'z-rejected'  &&
+  depends  JAVA             ''  ''  'z-rejected'  &&
   depends  MOZILLA-BROWSER
 fi  &&
 
