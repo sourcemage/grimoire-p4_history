@@ -1,0 +1,63 @@
+diff -u -r1.74.2.23 ChangeLog
+--- ChangeLog	14 Jul 2005 23:58:09 -0000
++++ ChangeLog	31 Jul 2005 16:29:53 -0000
+@@ -1,3 +1,6 @@
++	[dsalt]
++	* Delay application of slider settings until a stream is started.
++
+ 0.4.6:	[dsalt]
+ 	* Cope better with different window managers (full-screen toolbar).
+ 	* Fixed a few small string-related bugs in the browser plugin.
+
+diff -u -r1.116.2.3 main.c
+--- src/main.c	6 Jul 2005 19:13:44 -0000
++++ src/main.c	31 Jul 2005 16:29:55 -0000
+@@ -411,6 +411,7 @@
+     playlist_logo ();
+ 
+   post_init_configure ();
++  g_idle_add ((GSourceFunc) ui_post_init, NULL);
+   server_start ();
+ 
+   gdk_threads_enter();
+
+diff -u -r1.50.2.3 utils.c
+--- src/utils.c	6 Jul 2005 19:13:45 -0000
++++ src/utils.c	31 Jul 2005 16:29:56 -0000
+@@ -613,11 +613,7 @@
+     starts[item] = start;
+ 
+     if (ranges[item].param)
+-    {
+       inits[item] = start = xine_get_param (stream, ranges[item].param);
+-      if (item != Control_VOLUME)
+-        xine_set_param (stream, ranges[item].param, start);
+-    }
+ 
+     c_adjustments[item] =
+       gtk_adjustment_new (start, ranges[item].min, ranges[item].max + 1,
+@@ -861,3 +857,13 @@
+     toolbar_visible = (entry.num_value >> 1) & 1;
+   }
+ }
++
++void ui_post_init (void)
++{
++  int i;
++  gdk_threads_enter ();
++  for (i = 0; i < G_N_ELEMENTS (ranges); ++i)
++    if (ranges[i].param && i != Control_VOLUME)
++      xine_set_param (stream, ranges[i].param, starts[i]);
++  gdk_threads_leave ();
++}
+
+diff -u -r1.26.2.2 utils.h
+--- src/utils.h	6 Jul 2005 19:13:45 -0000
++++ src/utils.h	31 Jul 2005 16:29:56 -0000
+@@ -149,5 +149,6 @@
+ void window_check_vis (gboolean force);
+ 
+ void ui_init (void);
++void ui_post_init (void);
+ 
+ #endif
