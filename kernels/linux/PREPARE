@@ -98,7 +98,7 @@ create_defaults()
 }
 
 # dialog command works even if you add --nocancel as part of the arguments
-dialog=( "dialog" "--stdout" "--cancel-label" "Save and Exit" )
+dialog=( "dialog" "--stdout" )
 
 # simply list ${BUILD_DIRECTORY} linux sources 
 list_usr_src()
@@ -129,7 +129,7 @@ main_menu()
 	do
 		command=$( "${dialog[@]}" --title "New or Used Kernel Tree" \
 		--item-help --default-item "$mode" \
-		--menu \
+		--cancel-label "Exit" --menu \
 		"Would you like to use a new kernel tree or an existing one?\nThe Current kernel is $kver\nThe current selected patches: ${selected_patches}" 0 0 0 \
 		"newktree" "New Kernel Tree" "I want to use a new kernel tree"  \
 		"oldktree" "Old Kernel Tree" "I want to use an old kernel tree"  \
@@ -449,7 +449,7 @@ new_tree_menu()
 		done
 		menu="CUSTOM Linux_Kernel Enter_your_own_version $( awk -F= '$1 ~ /LATEST_2/ {print $1 " Linux_Kernel " $2 }' $latestdefaults ) ${menu}"
 		command=$( "${dialog[@]}" --title "Select Kernel Version" \
-		--item-help --default-item "$kver" --menu \
+		--item-help --cancel-label "Exit" --default-item "$kver" --menu \
 		"Select a kernel version to use" 0 0 0 \
 		$menu )
 		retval="$?"
@@ -570,7 +570,8 @@ patch_menu()
 			menu='"No Patches Available Sorry"'
 		fi
 		eval 'command=$( "${dialog[@]}" --title "Select Patches" \
-			--help-button --menu \
+			--help-button --cancel-label "Commit" \
+			--ok-label "Toggle" --menu \
 			"Currently selected kernel: $1\nCurrently selected patches: $new_patch_list" 0 0 0 '${menu}' )'
 		retval="$?"
 		if [[ "$retval" == "0" && "$command" != "No_Patches" ]]
@@ -581,7 +582,8 @@ patch_menu()
 				*)
 					. $patchesdir/$command/.info	
 					command=$( "${dialog[@]}" --title "Select Patches" \
-						--item-help --menu \
+						--item-help --cancel-label "Commit" \
+						--ok-label "Toggle" --menu \
 						"$help\n\nCurrently seleted kernel: $1\nCurrently selected patches: $new_patch_list" 0 0 0 \
 						$(list_specific_patch_dir $1 $command) )
 					;;
