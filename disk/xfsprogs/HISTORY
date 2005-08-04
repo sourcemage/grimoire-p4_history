@@ -1,3 +1,13 @@
+2005-08-04 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: Removed cvs source, tarball now compiles with gcc >= 4.0
+	  Updated to 2.6.36
+	* PREPARE: Removed
+	* DEPENDS: Removed CVS depends
+	* BUILD: Removed cvs version building, added --libexecdir=/usr/lib to
+	  $OPTS so that xfsdump can compile later
+	* INSTALL: Corrected a broken library symlink caused by the change 
+	  mentionned right above
+
 2005-07-30 Eric Sandall <eric@sandall.us>
 	* Applied Benoit's 2004-10-10 patch from Bug #4047 while keeping
 	  Flavien's prior updates. Modifies BUILD and INSTALL
