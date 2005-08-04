@@ -1,3 +1,26 @@
+2005-08-04 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: Removed cvs source, tarball now compiles with gcc >= 4.0
+	  Updated to 2.6.36
+	* PREPARE: Removed
+	* DEPENDS: Removed CVS depends
+	* BUILD: Removed cvs version building, added --libexecdir=/usr/lib to
+	  $OPTS so that xfsdump can compile later
+	* INSTALL: Corrected a broken library symlink caused by the change 
+	  mentionned right above
+
+2005-07-30 Eric Sandall <eric@sandall.us>
+	* Applied Benoit's 2004-10-10 patch from Bug #4047 while keeping
+	  Flavien's prior updates. Modifies BUILD and INSTALL
+	* DETAILS: Removed BUILD_API=2 (section is build_api 2)
+	  Renamed CVS to XFSPROGS_CVS
+	* CONFIGURE: Renamed CVS to XFSPROGS_CVS
+	  Shortened query and put question mark at end of the sentence
+	* PREPARE,DEPENDS: Renamed CVS to XFSPROGS_CVS
+	* BUILD: Renamed CVS to XFSPROGS_CVS
+	  Removed removal of 'configure' for non-CVS builds
+	  No longer apply Makefile.patch
+	* Makefile.patch: Removed
+
 2005-07-19 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS: Added cvs source, since only cvs version will compile with
 	  gcc >= 4.0
@@ -7,6 +30,10 @@
 
 2005-05-09 Flavien Bridault <disk@sourcemage.org>
 	* BUILD: Corrected bug #8802 that created a /-DNDEBUG file
+
+2004-10-10 Benoit PAPILLAULT <benoit.papillault@sourcemage.org>
+	* DETAILS: Updated to use BUILD_API=2
+	* BUILD/INSTALL: Updated to use standard ./configure options
 
 2005-01-28 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS, BUILD: Converted to BUILD_API 2
