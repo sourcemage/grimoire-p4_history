@@ -1,3 +1,1 @@
-./configure  --prefix=/usr         \
-             $OPTS                 &&
-make
+make prefix=/usr
