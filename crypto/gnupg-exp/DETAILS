@@ -1,15 +1,21 @@
            SPELL=gnupg-exp
-         VERSION=1.9.17
+         VERSION=1.9.18
        BUILD_API=2
+
           SOURCE=gnupg-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnupg-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/gnupg/$SOURCE
-          MD5[0]=c72d24b40a021c180cacbf81f3aaeeae
+      SOURCE_GPG="GnuPG.gpg:$SOURCE.sig"
+
+         SOURCE2=$SOURCE.sig
+  SOURCE2_URL[0]=$SOURCE_URL.sig
+  SOURCE2_IGNORE=signature
+
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnupg-$VERSION
         WEB_SITE=http://www.gnupg.org
          ENTERED=20040224
          UPDATED=20040224
       LICENSE[0]=GPL
-           SHORT="gnupg-exp is an experimental version of gnupg"
+           SHORT="experimental version of gnupg"
 cat << EOF
 gnupg-exp is an experimental version of gnupg.
 
