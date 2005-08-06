@@ -5,9 +5,7 @@ sedit "s#-O2#$CFLAGS#" mkspecs/linux-cxx/qmake.conf &&
 export QTDIR=$SOURCE_DIRECTORY  &&
 export LD_LIBRARY_PATH=$SOURCE_DIRECTORY/lib:$LD_LIBRARY_PATH &&
 
-OPTS="$QT_IPV6    \
-      $QT_DEBUG   \
-      $QT_THREAD  \
+OPTS="$QT_DEBUG   \
       $QT_NIS     \
       $QT_XRAMA   \
       $QT_GIF     \
