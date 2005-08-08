@@ -1,2 +1,2 @@
-patch -p1 < $SCRIPT_DIRECTORY/qt.patch &&
+sed -i "/update-menus/D" Makefile.in	&&
 default_build
