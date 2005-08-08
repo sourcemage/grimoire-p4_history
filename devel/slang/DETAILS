@@ -1,15 +1,16 @@
            SPELL=slang
-         VERSION=1.4.9
+         VERSION=2.0.4
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://space.mit.edu/pub/davis/slang/v1.4/$SOURCE
-          MD5[0]=f69d0223a17a2effb4413d7094bc50ca
+   SOURCE_URL[0]=ftp://space.mit.edu/pub/davis/slang/v2.0/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v2.0/$SOURCE
+          MD5[0]=c3a5a38c2853b7dfa65cee1f182adca0
       LICENSE[0]=GPL
-      LICENSE[1]=ART
-        WEB_SITE=http://space.mit.edu/~davis/slang
+        WEB_SITE=http://www.jedsoft.org/slang/
+       BUILD_API=2
          ENTERED=20010922
          UPDATED=20020214
-           SHORT="slang is a powerful interpreted language."
+           SHORT="a powerful interpreted language."
 cat << EOF
 S-Lang is a powerful interpreted language that may be embedded into an
 application to make it extensible. Examples of applications that take
