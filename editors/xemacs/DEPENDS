@@ -4,10 +4,14 @@ depends  db           &&
 depends  xemacs-base  &&
 depends  efs
 
-optional_depends  "lesstif"                                       \
-                  ""                                              \
-                  "--with-dialogs=athena  --with-widgets=athena"  \
-                  "for OSF/Motif standard GUI"                    &&
+if  [  "${XEMACS_GTK}" == "y"  ] ; then
+    depends gtk+
+else
+    optional_depends  "lesstif"                                          \
+                      ""                                                 \
+                      "--enable-dialogs=athena  --enable-widgets=athena" \
+                      "for OSF/Motif standard GUI"
+fi &&
 
 optional_depends  "libpng"                             \
                   "--with-png"                         \
