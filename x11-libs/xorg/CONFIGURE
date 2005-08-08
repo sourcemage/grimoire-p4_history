@@ -149,25 +149,25 @@ initialize()  {
 
   BACKTITLE="Source Mage XOrg host.def Configuration Menu"
 
-   ON_CARD_DRIVERS="vga vesa v4l"
-  OFF_CARD_DRIVERS="apm ark ati chips cirrus cyrix dummy fbdev GlideDriver
+   ON_CARD_DRIVERS="apm ark ati chips cirrus cyrix fbdev GlideDriver
                     glint i128 i740 i810 mga neomagic nsc nv rendition
                     s3virge savage siliconmotion sis sunbw2 suncg3 suncg6
-                    suncg14 sunffb sunleo suntcx tdfx tga trident tseng
-                    via vmware"
+                    suncg14 sunleo suntcx tdfx tga trident tseng
+                    via vmware vga vesa v4l"
+  OFF_CARD_DRIVERS="dummy sunffb"
       CARD_DRIVERS="$ON_CARD_DRIVERS  $OFF_CARD_DRIVERS"
 
    ON_DEVEL_CARD_DRIVERS=""
   OFF_DEVEL_CARD_DRIVERS="imstt newport"
       DEVEL_CARD_DRIVERS="$ON_DEVEL_CARD_DRIVERS  $OFF_DEVEL_CARD_DRIVERS"
 
-   ON_DRI=""
-  OFF_DRI="gamma i810 i915 mga r128 r200 radeon sis tdfx"
+   ON_DRI="gamma i810 i915 mga r128 r200 radeon sis tdfx"
+  OFF_DRI=""
       DRI="$ON_DRI  $OFF_DRI"
 
    ON_DEVEL_DRI=""
   OFF_DEVEL_DRI="ffb mach64 savage unichrome"
-      DEVEL_DIR="$ON_DEVEL_DRI  $OFF_DEVEL_DRI"
+      DEVEL_DRI="$ON_DEVEL_DRI  $OFF_DEVEL_DRI"
 
 
    ON_INPUT_DRIVERS="mouse keyboard"
@@ -180,32 +180,31 @@ initialize()  {
   YES_FONT_OPTIONS="MakeLocalFontDir Build75DpiFonts Build100DpiFonts
                     BuildType1Fonts BuildTrueTypeFonts BuildCIDFonts
                     GzipFontCompression CompressAllFonts BuildXF86BigfontExt
-                    BuildCID BuildFreeType BuildCyrillicFonts"
-   NO_FONT_OPTIONS="UseKoi8RForCyrillic
+                    BuildCID BuildFreeType BuildCyrillicFonts
                     BuildLatin2Fonts BuildArabicFonts BuildThaiFonts
                     BuildGreekFonts BuildHebrewFonts BuildJapaneseFonts
                     BuildKoreanFonts BuildBethMarduthoFonts BuildEthiopicFonts
                     BuildChineseFonts BuildISO8859_2Fonts BuildISO8850_3Fonts
                     BuildISO8859_4Fonts BuildISO8859_9Fonts BuildISO8859_10Fonts
                     BuildISO8859_13Fonts BuildISO8859_14Fonts
-                    BuildISO8859_15Fonts BuildISO8859_16Fonts
-                    BuildBuiltinFonts BuildFontServer InstallFSConfig
-                    BuildSpeedo BuildSpeedoFonts BuildType1"
+                    BuildISO8859_15Fonts BuildISO8859_16Fonts BuildSpeedo
+                    BuildSpeedoFonts BuildType1 UseKoi8RForCyrillic"
+   NO_FONT_OPTIONS="BuildBuiltinFonts BuildFontServer InstallFSConfig"
       FONT_OPTIONS="$YES_FONT_OPTIONS  $NO_FONT_OPTIONS"
 
-#    YES_EXTENSIONS="BuildXF86RushExt BuildDBElib BuildRECORDlib BuildXKBlib 
-#                    BuildScreenSaverExt BuildXInputExt BuildXinerama BuildGlxExt
-#                    BuildRender BuildXF86VidModeExt BuildXF86MiscExt
-#                    BuildXF86DGA BuildDPMSExt BuildXvMCExt BuildXResExt"
-#     NO_EXTENSIONS="JoystickSupport"
-#        EXTENSIONS="$YES_EXTENSIONS  $NO_EXTENSIONS"
+    YES_EXTENSIONS="BuildXF86RushExt BuildDBElib BuildRECORDlib BuildXKBlib 
+                    BuildScreenSaverExt BuildXInputExt BuildXinerama BuildGlxExt
+                    BuildRender BuildXF86VidModeExt BuildXF86MiscExt
+                    BuildXF86DGA BuildDPMSExt BuildXvMCExt BuildXResExt"
+     NO_EXTENSIONS="JoystickSupport"
+        EXTENSIONS="$YES_EXTENSIONS  $NO_EXTENSIONS"
 
-#     YES_LIBRARIES="BuildGLULibrary BuildOSMesaLib BuildScreenSaverLibrary
-#                    BuildXF86MiscLibrary BuildXF86DGALibrary BuildXVLibrary
-#                    BuildXF86VidModeLibrary BuildXvMCLibrary BuildGLXLibrary
-#                    BuildXResLibrary"
-#      NO_LIBRARIES=""
-#         LIBRARIES="$YES_LIBRARIES  $NO_LIBRARIES"
+     YES_LIBRARIES="BuildGLULibrary BuildOSMesaLib BuildScreenSaverLibrary
+                    BuildXF86MiscLibrary BuildXF86DGALibrary BuildXVLibrary
+                    BuildXF86VidModeLibrary BuildXvMCLibrary BuildGLXLibrary
+                    BuildXResLibrary"
+      NO_LIBRARIES=""
+         LIBRARIES="$YES_LIBRARIES  $NO_LIBRARIES"
 
   YES_MISC_OPTIONS="HasShm BuildXF86DRI BuildXF86OldDRMCompat UseRgbTxt
                     InstallXinitConfig InstallXdmConfig XnestServer"
@@ -293,21 +292,21 @@ generate_host_def()  {
     echo  "#define $ITEM  NO"
   done  &&
 
-#  for  ITEM  in  $YES_EXTENSIONS;  do
-#    echo  "#define $ITEM  YES"
-#  done  &&
+  for  ITEM  in  $YES_EXTENSIONS;  do
+    echo  "#define $ITEM  YES"
+  done  &&
 
-#  for  ITEM  in  $NO_EXTENSIONS;  do
-#    echo  "#define $ITEM  NO"
-#  done  &&
+  for  ITEM  in  $NO_EXTENSIONS;  do
+    echo  "#define $ITEM  NO"
+  done  &&
 
-#  for  ITEM  in  $YES_LIBRARIES;  do
-#    echo  "#define $ITEM  YES"
-#  done  &&
+  for  ITEM  in  $YES_LIBRARIES;  do
+    echo  "#define $ITEM  YES"
+  done  &&
 
-#  for  ITEM  in  $NO_LIBRARIES;  do
-#    echo  "#define $ITEM  NO"
-#  done  &&
+  for  ITEM  in  $NO_LIBRARIES;  do
+    echo  "#define $ITEM  NO"
+  done  &&
 
 if  !  spell_ok  g++;  then
   echo  "#define  BuildGLXLibrary  NO"  &&
@@ -386,55 +385,55 @@ select_misc_options() {
 
 }
 
-#select_extensions() {
-#
-#  TITLE="Select Extensions"
-#  CHECKLIST="`build_checklist  ON   Option  $YES_EXTENSIONS`
-#             `build_checklist  OFF  Option   $NO_EXTENSIONS`"
-#  HELP="Key:  [X] = on, [ ] = off"
-#
-#  if  ON_EXTENSIONS=`dialog  --backtitle  "$BACKTITLE"  \
-#                             --title      "$TITLE"      \
-#                             --stdout                   \
-#                             --separate-output          \
-#                             --checklist  "$HELP"       \
-#                             18 55 10                   \
-#                             $CHECKLIST`
-#  then
-#    YES_EXTENSIONS=$ON_EXTENSIONS
-#     NO_EXTENSIONS=$EXTENSIONS
-#
-#    for  ITEM  in  $YES_EXTENSIONS;  do
-#      NO_EXTENSIONS=`echo  $NO_EXTENSIONS  |  sed  s/$ITEM//`
-#    done
-#  fi
-#
-#}
+select_extensions() {
 
-#select_libraries() {
-#
-#  TITLE="Select Libraries"
-#  CHECKLIST="`build_checklist  ON   Option  $YES_LIBRARIES`
-#             `build_checklist  OFF  Option   $NO_LIBRARIES`"
-#  HELP="Key:  [X] = on, [ ] = off"
-#
-#  if  ON_LIBRARIES=`dialog  --backtitle  "$BACKTITLE"  \
-#                            --title      "$TITLE"      \
-#                            --stdout                   \
-#                            --separate-output          \
-#                            --checklist  "$HELP"       \
-#                            18 55 10                   \
-#                            $CHECKLIST`
-#  then
-#    YES_LIBRARIES=$ON_LIBRARIES
-#     NO_LIBRARIES=$LIBRARIES
-#
-#    for  ITEM  in  $YES_LIBRARIES;  do
-#      NO_LIBRARIES=`echo  $NO_LIBRARIES  |  sed  s/$ITEM//`
-#    done
-#  fi
-#
-#}
+  TITLE="Select Extensions"
+  CHECKLIST="`build_checklist  ON   Option  $YES_EXTENSIONS`
+             `build_checklist  OFF  Option   $NO_EXTENSIONS`"
+  HELP="Key:  [X] = on, [ ] = off"
+
+  if  ON_EXTENSIONS=`dialog  --backtitle  "$BACKTITLE"  \
+                             --title      "$TITLE"      \
+                             --stdout                   \
+                             --separate-output          \
+                             --checklist  "$HELP"       \
+                             18 55 10                   \
+                             $CHECKLIST`
+  then
+    YES_EXTENSIONS=$ON_EXTENSIONS
+     NO_EXTENSIONS=$EXTENSIONS
+
+    for  ITEM  in  $YES_EXTENSIONS;  do
+      NO_EXTENSIONS=`echo  $NO_EXTENSIONS  |  sed  s/$ITEM//`
+    done
+  fi
+
+}
+
+select_libraries() {
+
+  TITLE="Select Libraries"
+  CHECKLIST="`build_checklist  ON   Option  $YES_LIBRARIES`
+             `build_checklist  OFF  Option   $NO_LIBRARIES`"
+  HELP="Key:  [X] = on, [ ] = off"
+
+  if  ON_LIBRARIES=`dialog  --backtitle  "$BACKTITLE"  \
+                            --title      "$TITLE"      \
+                            --stdout                   \
+                            --separate-output          \
+                            --checklist  "$HELP"       \
+                            18 55 10                   \
+                            $CHECKLIST`
+  then
+    YES_LIBRARIES=$ON_LIBRARIES
+     NO_LIBRARIES=$LIBRARIES
+
+    for  ITEM  in  $YES_LIBRARIES;  do
+      NO_LIBRARIES=`echo  $NO_LIBRARIES  |  sed  s/$ITEM//`
+    done
+  fi
+
+}
 
 configure_host_def()  {
 
@@ -465,6 +464,8 @@ configure_host_def()  {
                      "DevelDriDrivers"  "Select Development DRI Drivers"   \
                      "XInputDrivers"    "Select Input Drivers"             \
                      "Fonts"            "Select Font Options"              \
+                     "Extensions"       "Select X Extensions"              \
+                     "Libraries"        "Select X Libraries"               \
                      "Misc"             "Set other Options"                \
                      "Save"             "Save current configuration"       \
                      "Edit"             "Edit host.def"                    \
@@ -483,6 +484,8 @@ configure_host_def()  {
       DevelDriDrivers)  select_devel_dridrivers      ;;
         XInputDrivers)  select_input_drivers         ;;
                 Fonts)  select_font_options          ;;
+           Extensions)  select_extensions            ;;
+            Libraries)  select_libraries             ;;
                  Misc)  select_misc_options          ;;
     esac
   done
