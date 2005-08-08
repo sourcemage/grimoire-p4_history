@@ -1,15 +1,16 @@
            SPELL=newt
-         VERSION=0.51.4
-          SOURCE=$SPELL-$VERSION-1.src.rpm
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.redhat.com/pub/redhat/linux/current/en/os/i386/SRPMS/$SOURCE
-   SOURCE_URL[1]=ftp://mirror.mcs.anl.gov/pub/redhat/redhat/linux/current/en/os/i386/SRPMS/$SOURCE
-          MD5[0]=7a152a52f0b942b190006b04e076a9f7
+         VERSION=0.51.6-7
+          SOURCE=$SPELL-$VERSION.src.rpm
+local RHL_DIR
+          RHL_DIR=pub/fedora/linux/core/4/SRPMS
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION//-*}
+   SOURCE_URL[0]=ftp://download.fedora.redhat.com/$RHL_DIR/$SOURCE
+   SOURCE_URL[1]=ftp://mirror.mcs.anl.gov/$RHL_DIR/$SOURCE
+          MD5[0]=f14e1e62f478839f61262c8ab462c5f3
       LICENSE[0]=LGPL
         WEB_SITE=http://www.redhat.com/
          ENTERED=20020316
          UPDATED=20020316
-      MAINTAINER=djcomputer@gmx.net
            SHORT="A development library for text mode user interfaces."
 cat << EOF
 Newt is a programming library for color text mode,
