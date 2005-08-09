@@ -1,3 +1,13 @@
+2005-08-07 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* TRIGGERS: Added, on_cast linux cast_self
+	* BUILD: Added --with-kernel to OPTS using get_kernel_version so it
+	  builds against the latest installed kernel instead of the running
+	  one
+	* DETAILS: Derive VERSION for CVS branch from date
+	* DEPENDS: Added, depends on CVS if using the CVS version
+	* PRE_BUILD: Created, move CVS makeconf.sh from BUILD to here so
+	  CONFIG_LOC will work
+
 2005-07-20 Alex S. Tsamutali <astsmtl@gmail.com>
 	* DETAILS: 2.3.0
 
