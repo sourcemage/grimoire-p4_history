@@ -1,8 +1,14 @@
 # temporary, to migrate old branch preference
 if  [ "${CVS}" == "y" ]; then
-  persistent_add BRANCH
-  BRANCH="cvs"
+  persistent_add BRANCH &&
+  BRANCH="cvs" &&
   persistent_remove CVS
-fi
+fi &&
 
-config_query_list BRANCH "Build which version?" stable devel cvs
+config_query_list BRANCH "Build which version?" stable devel cvs &&
+
+if [ "${BRANCH}" == "cvs" ]; then
+  config_query  MUTT_CVS_AUTOUPDATE                                     \
+                "Update to the latest CVS automatically on every cast?" \
+                n
+fi

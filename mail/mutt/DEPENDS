@@ -79,8 +79,7 @@ if list_find "${MUTT_OPTS}" "--enable-imap"; then
 fi &&
 
 if [ ! -z "${REAL_PATCHES}" ] || [ "${BRANCH}" == "cvs" ]; then
-  depends "automake" &&
-  depends "autoconf"
+  depends "automake"
 fi &&
 
 for PATCH in ${REAL_PATCHES}; do
