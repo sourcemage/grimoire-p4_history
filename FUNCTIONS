@@ -267,7 +267,7 @@ function mozilla_remove_nspr_nss() {
 ## Returns the kernel version checks linux then linux-new (for now) and
 ## then uname for the kernel version
 #-------------------------------------------------------------------------
-get_kernel_version()
+function get_kernel_version()
 {
 	local KVER=$(installed_version linux)
 	if [[ $KVER ]] ; then
@@ -289,7 +289,7 @@ get_kernel_version()
 ## to use this function simply call then change the variables listed ro have
 ## any call to uname return that value
 #--------------------------------------------------------------------------
-invoke_uname_change()
+function invoke_uname_change()
 {
 	if [[ $(installed_version unamechange) ]] ; then
 		export UNAME_CHANGE_SYSNAME=$(uname -s)
@@ -308,7 +308,7 @@ invoke_uname_change()
 ## invoke_uname_change unset's all environmental vars and returns
 ## LD_PRELOAD back to normal
 #-------------------------------------------------------------------------
-devoke_uname_change()
+function devoke_uname_change()
 {
 	if [[ $(installed_version unamechange) ]] ; then
 		unset UNAME_CHANGE_SYSNAME
@@ -328,7 +328,7 @@ devoke_uname_change()
 ##
 ## $1 string Config variable to look for
 #-----------------------------------------------------------------------
-get_running_kernel_config()
+function get_running_kernel_config()
 {
 	local KVER
 	# use proc interface because even inside a uname change invoke this
@@ -356,7 +356,7 @@ get_running_kernel_config()
 ##
 ## $1 string Config var to look for
 #-------------------------------------------------------------------------
-get_sorcery_kernel_config()
+function get_sorcery_kernel_config()
 {
 	local KVER=$(get_kernel_version)
 	if [ -f /boot/config-$KVER ] ; then
