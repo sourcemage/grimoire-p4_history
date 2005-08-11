@@ -13,4 +13,4 @@ if /usr/lib/firefox/firefox-bin -remote "ping()" > /dev/null 2>&1 ; then
 		remote='-remote xfeDoCommand(openBrowser)'
 	fi
 fi
-LD_LIBRARY_PATH=/usr/lib/firefox  /usr/lib/firefox/firefox-bin $remote "$@"
+/usr/lib/firefox/firefox-bin $remote "$@"
