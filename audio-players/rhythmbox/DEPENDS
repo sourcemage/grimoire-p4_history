@@ -1,9 +1,11 @@
-depends  libgnomeui  &&
+depends  totem  &&
 
-if  [  "$RHYTHMBOX_BACKEND"  =  "y"  ];  then
-  depends  xine-lib     '--with-player=xine --with-metadata=xine'
+depends  gst-plugins  &&
+
+if  [  "$RHYTHMBOX_DBUS"  =  "y"  ];  then
+  depends  dbus			'--with-dbus --without-bonobo'
 else
-  depends  gst-plugins  '--with-player=gstreamer --with-metadata=gstreamer'
+  depends  libbonobo	'--without-dbus --with-bonobo'
 fi  &&
 
 if  [  "$RHYTHMBOX_FLAC"  ==  "y"  ];  then
@@ -16,13 +18,7 @@ optional_depends  "libvorbis"           \
                   "--disable-vorbis"    \
                   "for vorbis support"  &&
 
-optional_depends  nautilus2                  \
-                  "--enable-nautilus-menu"   \
-                  "--disable-nautilus-menu"  \
-                  "for Nautilus menus"
-
-# disabled, needs musicbrainz >= 2.0
-#optional_depends  "musicbrainz"            \
-#                  "--enable-musicbrainz"   \
-#                  "--disable-musicbrainz"  \
-#                  "for metadata download support"
+optional_depends  nautilus-cd-burner         \
+                  "--with-cd-burner"		 \
+                  "--without-cd-burner"		 \
+                  "for CD burner support"
