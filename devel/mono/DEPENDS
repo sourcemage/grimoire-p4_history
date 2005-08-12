@@ -5,7 +5,12 @@ optional_depends  libgc                                 \
                   ""                                    \
                   "To use the Boehm garbage collector"  &&
 
-optional_depends  icu                 \
-                  ""                  \
-                  ""                  \
-                  "for i18n support"
+optional_depends  icu                                   \
+                  ""                                    \
+                  ""                                    \
+                  "for i18n support"                    &&
+
+optional_depends  libgdiplus                            \
+                  "--with-libgdiplus=installed"         \
+		  ""                                    \
+		  "For System.Drawing tests"            
