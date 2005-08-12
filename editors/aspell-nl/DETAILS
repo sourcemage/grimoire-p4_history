@@ -1,15 +1,19 @@
            SPELL=aspell-nl
+       BUILD_API=2
+   ASPELL_BRANCH=
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
          VERSION=0.50-2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$GNU_URL/aspell/dict/nl/$SOURCE
-          MD5[0]=969641309f96344b38e0b65ad479fdb4
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
+          SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+      SOURCE_URL=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+      SOURCE_GPG=gurus.gpg:${SOURCE}.sig
         WEB_SITE=http://aspell.sourceforge.net
+      LICENSE[0]=GPL
          ENTERED=20011028
          UPDATED=20011028
-      LICENSE[0]=UNKNOWN
-       BUILD_API=2
            SHORT="Dutch aspell dictionary"
 cat << EOF
 Dutch aspell dictionary
 EOF
+
