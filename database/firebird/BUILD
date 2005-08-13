@@ -1,4 +1,6 @@
-invoke_gcc                              &&
+# apply gcc4 patch
+bzcat $SPELL_DIRECTORY/*.bz2 | patch -p1 &&
+#invoke_gcc                              &&
 # at present the build only works for everything in one directory 
 # tree /usr/firebird
 
