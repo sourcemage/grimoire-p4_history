@@ -79,9 +79,9 @@ create_defaults()
 		mode="newktree"
 	else
 		# we don't have any configuration
-		[ -z $mode ] && mode="newktree"
-		[ -z $kver ] && kver="LATEST_2_6"
-		[ -z $selected_patches ] && selected_patches="LATEST_maintenance_patches"
+		[ -z "$mode" ] && mode="newktree"
+		[ -z "$kver" ] && kver="LATEST_2_6"
+		[ -z "$selected_patches" ] && selected_patches="LATEST_maintenance_patches"
 	fi
 	if [[ $RECONFIGURE ]]
 	then
