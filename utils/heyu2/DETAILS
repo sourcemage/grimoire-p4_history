@@ -1,12 +1,12 @@
            SPELL=heyu2
-         VERSION=alpha-5
-          SOURCE=$SPELL.$VERSION.tgz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL.$VERSION.2.dir
+         VERSION=2.0beta.2
+          SOURCE=${SPELL//2}-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL//2}-$VERSION
    SOURCE_URL[0]=http://heyu.tanj.com/heyu2/$SOURCE
-          MD5[0]=788d80f4c6fe146d24b472fcf302455b
+          MD5[0]=d9722b5fdb06583138f2d30a61a50162
         WEB_SITE=http://heyu.tanj.com/heyu2/
          ENTERED=20040117
-         UPDATED=
+         UPDATED=20050813
 	    DOCS="README* *.txt *.sample"
            SHORT='HEYU software for CM11A Home Automation'
 cat << EOF
