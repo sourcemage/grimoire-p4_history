@@ -1,0 +1,48 @@
+diff -Nur ruby-1.8.2.orig/ext/digest/md5/md5ossl.h ruby-1.8.2/ext/digest/md5/md5ossl.h
+--- ruby-1.8.2.orig/ext/digest/md5/md5ossl.h	2002-09-26 18:27:23.000000000 +0200
++++ ruby-1.8.2/ext/digest/md5/md5ossl.h	2005-08-14 15:30:40.000000000 +0200
+@@ -3,6 +3,7 @@
+ #ifndef MD5OSSL_H_INCLUDED
+ #define MD5OSSL_H_INCLUDED
+ 
++#include <sys/types.h>
+ #include <openssl/md5.h>
+ 
+ void MD5_End(MD5_CTX *pctx, unsigned char *hexdigest);
+diff -Nur ruby-1.8.2.orig/ext/digest/rmd160/rmd160ossl.h ruby-1.8.2/ext/digest/rmd160/rmd160ossl.h
+--- ruby-1.8.2.orig/ext/digest/rmd160/rmd160ossl.h	2002-09-26 19:26:46.000000000 +0200
++++ ruby-1.8.2/ext/digest/rmd160/rmd160ossl.h	2005-08-14 15:30:40.000000000 +0200
+@@ -3,6 +3,7 @@
+ #ifndef RMD160OSSL_H_INCLUDED
+ #define RMD160OSSL_H_INCLUDED
+ 
++#include <sys/types.h>
+ #include <openssl/ripemd.h>
+ 
+ #define RMD160_CTX	RIPEMD160_CTX
+diff -Nur ruby-1.8.2.orig/ext/digest/sha1/sha1ossl.h ruby-1.8.2/ext/digest/sha1/sha1ossl.h
+--- ruby-1.8.2.orig/ext/digest/sha1/sha1ossl.h	2002-09-26 19:44:33.000000000 +0200
++++ ruby-1.8.2/ext/digest/sha1/sha1ossl.h	2005-08-14 15:30:40.000000000 +0200
+@@ -3,6 +3,7 @@
+ #ifndef SHA1OSSL_H_INCLUDED
+ #define SHA1OSSL_H_INCLUDED
+ 
++#include <sys/types.h>
+ #include <openssl/sha.h>
+ 
+ #define SHA1_CTX	SHA_CTX
+diff -Nur ruby-1.8.2.orig/ext/openssl/ossl_x509store.c ruby-1.8.2/ext/openssl/ossl_x509store.c
+--- ruby-1.8.2.orig/ext/openssl/ossl_x509store.c	2004-12-19 09:28:32.000000000 +0100
++++ ruby-1.8.2/ext/openssl/ossl_x509store.c	2005-08-14 15:31:56.000000000 +0200
+@@ -538,7 +538,11 @@
+ 
+     if(NIL_P(time)) {
+ 	GetX509StCtx(self, store);
++#if OPENSSL_VERSION_NUMBER >= 0x0090800fL
++	store->param->flags &= ~X509_V_FLAG_USE_CHECK_TIME;
++#else
+ 	store->flags &= ~X509_V_FLAG_USE_CHECK_TIME;
++#endif
+     }
+     else {
+ 	long t = NUM2LONG(rb_Integer(time));
