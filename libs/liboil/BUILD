@@ -1,6 +1,7 @@
-# fix configure so it doesn't ignore CFLAGS and so it always sets -mmmx
-# (the cpu is detected at runtime, but -mmmx is necessary to compile)
-patch  configure  $SCRIPT_DIRECTORY/liboil-configure-fix.diff  &&
+# fix configure so it uses -mmmx, necessary to compile on gcc 4.0.x
+if use_gcc ^4; then
+  patch  configure  $SCRIPT_DIRECTORY/liboil-configure-fix.diff
+fi  &&
 make_single    &&
 default_build  &&
 make_normal
