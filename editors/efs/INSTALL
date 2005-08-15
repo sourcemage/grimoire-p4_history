@@ -1,3 +1,2 @@
-mkdir  -p     /usr/lib/xemacs/xemacs-packages  &&
-cd            /usr/lib/xemacs/xemacs-packages  &&
-unpack        ${SOURCE}  ${MD5[0]}
+mkdir  -p     ${INSTALL_ROOT}/usr/lib/xemacs/xemacs-packages  &&
+cp -rv ${SOURCE_DIRECTORY}/* ${INSTALL_ROOT}/usr/lib/xemacs/xemacs-packages
