@@ -10,17 +10,22 @@ depends  udev     &&
 #
 # expat should have --with-expat or --without-expat but there is an bug in configure.
 #
-optional_depends  expat               \
-                  ""                  \
-                  ""                  \
-                  "Enable expat use"  &&
+optional_depends  expat                     \
+                  ""                        \
+                  ""                        \
+                  "Enable expat use"        &&
 
 optional_depends  doxygen                   \
                   "--enable-doxygen-docs"   \
                   "--disable-doxygen-docs"  \
                   "Generate Doxygen docs"   &&
 
-optional_depends  pciutils                 \
-                  "--with-hwdata"          \
-                  "--without-hwdata"       \
+optional_depends  docbook-utils             \
+                  "--enable-docbook-docs"   \
+                  "--disable-docbook-docs"  \
+                  "Build Docbook Docs"      &&
+
+optional_depends  pciutils                  \
+                  "--with-hwdata"           \
+                  "--without-hwdata"        \
                   "for PCI hardware data"
