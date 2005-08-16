@@ -1,12 +1,6 @@
 OPTS="$MSQL_SERVER $MSQL_INNODB $OPTS"             &&
 
-#if  [  "$MSQL_SERVER"  !=  "--without-server"  ];  then
-  create_account mysql                             &&
-#fi                                                 &&
-
-#if [ "$DEVEL" == "y" ];then
-#  sed -i "42s|/usr||" cmd-line-utils/libedit/makelist     
-#fi                                                 &&
+create_account mysql                               &&
 
 LD_PRELOAD_OLD="$LD_PRELOAD"                       &&
 unset  LD_PRELOAD                                  &&
@@ -17,8 +11,8 @@ if glibc_is_nptl; then
   export CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
 fi  &&
 OPTS="$OPTS --with-mysqld-user=mysql  --without-bench \
-        --enable-assembler --enable-thread-safe-client"
-default_build
+        --enable-assembler --enable-thread-safe-client" &&
+default_build                                      &&
 
 #./configure  --build=$BUILD                        \
 #            --prefix=$INSTALL_ROOT/usr             \
