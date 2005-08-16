@@ -1,9 +1,9 @@
-           SPELL=aspell-uk
+           SPELL=aspell-sw
        BUILD_API=2
    ASPELL_BRANCH=
 DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
    LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
-         VERSION=0.51-0
+         VERSION=0.50-0
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
           SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
       SOURCE_URL=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
@@ -13,10 +13,10 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUA
   SOURCE2_IGNORE=signature
         WEB_SITE=http://aspell.sourceforge.net
       LICENSE[0]=GPL
-         ENTERED=
-         UPDATED=
-           SHORT="Ukranian aspell dictionary"
+         ENTERED=20050816
+         UPDATED=20050816
+           SHORT="Swahili aspell dictionary"
 cat << EOF
-Ukranian aspell dictionary
+Swahili aspell dictionary
 EOF
 
