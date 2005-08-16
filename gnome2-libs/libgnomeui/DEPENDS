@@ -1,5 +1,10 @@
 depends libbonoboui      &&
 depends libglade2        &&
 depends gnome-keyring    &&
-depends gnome-icon-theme
+depends gnome-icon-theme &&
+
+optional_depends gtk-doc                            \
+                 "--enable-gtk-doc"                 \
+                 "--disable-gtk-doc"                \
+                 "Build documentation with gtk-doc"
 

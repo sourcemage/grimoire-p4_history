@@ -1,10 +1,10 @@
            SPELL=gnome-games2
-         VERSION=2.10.2
+         VERSION=2.11.4
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
 	  SOURCE=gnome-games-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnome-games-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gnome-games/$BRANCH/$SOURCE
-          MD5[0]='7c6e3a81f8a413f64055736165187710'
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
       LICENSE[1]=FDL
         WEB_SITE=http://www.gnome.org

@@ -1,0 +1,17 @@
+           SPELL=libxft
+         VERSION=2.1.7
+          SOURCE=libXft-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/libXft-$VERSION
+   SOURCE_URL[0]=http://xlibs.freedesktop.org/release/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+        WEB_SITE=http://xorg.freedesktop.org/
+         ENTERED=20050815
+         UPDATED=20050815
+      LICENSE[0]=XCL
+       BUILD_API=2
+           SHORT="Library connect X apps to FreeType"
+cat << EOF
+Xft version 2.1 is the first stand alone release of Xft, a library that
+connects X applications with the FreeType font rasterization library. Xft
+uses fontconfig to locate fonts so it has no configuration files.
+EOF

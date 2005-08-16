@@ -1,4 +1,14 @@
 depends libgnomeui    &&
 depends libwnck       &&
 depends gnome-menus   &&
-depends gnome-desktop
+depends gnome-desktop &&
+
+optional_depends evolution-data-server                       \
+                 "--enable-eds"                              \
+                 "--disable-eds"                             \
+                 "Enable evolution-data-server dependencies" &&
+
+optional_depends gtk-doc                                     \
+                 "--enable-gtk-doc"                          \
+                 "--disable-gtk-doc"                         \
+                 "Build documentation with gtk-doc"

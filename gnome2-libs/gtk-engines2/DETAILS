@@ -4,10 +4,8 @@
           SOURCE=gtk-engines-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk-engines-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gtk-engines/$BRANCH/$SOURCE
-   SOURCE_URL[1]=ftp.gnome.org/pub/GNOME/sources/gtk-engines/$BRANCH/$SOURCE
-          MD5[0]='cff3cf57e39a3cb383aba9cfb0ac8b87'
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
-       BUILD_API=2
         WEB_SITE=http://www.gtk.org
          ENTERED=20020509
          UPDATED=20050414

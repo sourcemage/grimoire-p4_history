@@ -1,8 +1,13 @@
-depends  libgnomeui  &&
+depends  libgnomeui     &&
+depends  GECKO          &&
+depends  iso-codes      &&
+depends  libmusicbrainz &&
 optional_depends  nautilus2   "--enable-nautilus"  "--disable-nautilus"  "for nautilus plugin"  &&
 optional_depends  nautilus-cd-burner ""  ""  "for more comfortable optical device chooser"  &&
 optional_depends  lirc  "--enable-lirc"  "--disable-lirc"  "for remote control"  &&
+optional_depends  nvtv "--enable-nvtv"  "--disable-nvtv"  "Enable support for TV-output with nvtv?" &&
 if    [  "$GSTREAMER"  =  "y"  ]
 then  depends  gst-plugins "--enable-gstreamer"
 else  depends  xine-lib
 fi
+
