@@ -1,5 +1,6 @@
 cd  ${LINUX_SOURCE_DIRECTORY}          &&
 echo  "This is the version: $VERSION"  &&
+if [[ -z "$INTERNAL_ISO_VAR" ]] ; then
 case "$VERSION" in
   2.6*)
     echo "making for a 2.6 kernel"  &&
@@ -22,3 +23,9 @@ case "$VERSION" in
     return 1
   ;;
 esac
+else
+  # This is for the iso team don't touch
+  make scripts/ &&
+  make include/linux/version.h &&
+  make include/asm || return 1
+fi

@@ -1,43 +1,9 @@
-cut_label()  {
-
-  if    ((  $(  echo  $1  |  wc  -c  )  >  15  ));  then
-    echo  "$1"            |
-    sed   "s/linux-//"    |
-    cut   -c1-15
-  else
-    echo  "$1"
-  fi
-
-}
-
 root_dev()
 {
 	ROOT_DEV=$( mount | grep ' / ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
 	BOOT_DEV=$( mount | grep ' /boot ' | awk ' $1 ~ /\/dev\/*/ {print $1}')
 	ROOT_DEV=${ROOT_DEV/\/dev\//}
 	BOOT_DEV=${BOOT_DEV/\/dev\//}
-}
-# deprecated for template_entry
-lilo_image_entry()  {
-
-if  grep  -q  password  /etc/lilo.conf
-then
-  cat  <<  EOF
-
-image			=	/boot/vmlinubz-$VERSION
-	label		=	$(  cut_label linux-$VERSION  )
-	read-only
-	restricted
-EOF
-else
-  cat  <<  EOF
-
-image			=	/boot/vmlinubz-$VERSION
-	label		=	$(  cut_label linux-$VERSION  )
-	read-only
-EOF
-fi
-
 }
 
 
@@ -165,35 +131,6 @@ update_yaboot()  {
 
 }
 
-
-# deprecated for template_entry
-grub_image_entry() {
-
-local KERNEL=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
-KERNEL=${KERNEL%\/vm*}
-
-local GROOT=$(grep "^root\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2-16)
-if [[ $GROOT != "" ]]
-then
-	GROOT="root $GROOT"
-fi
-local KROOT=$(grep root= /boot/grub/menu.lst|head -1|cut -d' ' -f3|cut -d= -f2)
-
-local KEXTRA=$(grep "^kernel\W" /boot/grub/menu.lst|head -1|cut -d' ' -f4-16)
-
-local KINITRD=$(grep "^initrd\W" /boot/grub/menu.lst|head -1|cut -d' ' -f2)
-if [[ $KINITRD != "" ]]
-then
-	KINITRD="initrd $KINITRD"
-fi
-cat << EOF
-title Source Mage GNU/Linux Kernel $VERSION
-$GROOT
-kernel $KERNEL/vmlinubz-$VERSION root=$KROOT $KEXTRA
-$KINITRD
-EOF
-
-}
 
 update_grub() {
 
