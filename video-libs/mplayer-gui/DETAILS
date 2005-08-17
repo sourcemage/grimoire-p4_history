@@ -1,11 +1,11 @@
            SPELL=mplayer-gui
-         VERSION=1.1
+         VERSION=1.4
           SOURCE=Blue-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://mplayerhq.hu/MPlayer/Skin/$SOURCE
+   SOURCE_URL[0]=ftp://ftp2.mplayerhq.hu/MPlayer/Skin/$SOURCE
         WEB_SITE=http://www.mplayerhq.hu
       LICENSE[0]=GPL
-          MD5[0]=a13eb04dc46f8e43ad8c4b6ddc90c7cc
+      SOURCE_GPG="gurus.gpg:$SOURCE.sig"
          ENTERED=20020924
          UPDATED=20030127
          ARCHIVE="off"
