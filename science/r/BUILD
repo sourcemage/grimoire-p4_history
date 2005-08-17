@@ -5,7 +5,8 @@ if  gaze installed xfree86|grep -c -q 4.4;  then
 fi &&
 
 export FPICFLAGS="-fPIC" &&
-export F77=$(which gfortran) &&
+# Sergey change : export F77=$(which gfortran) &&
+export F77=g77 &&
 OPTS="$OPTS --enable-linux-fs" &&
 
 default_build
