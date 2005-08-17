@@ -1,2 +1,2 @@
-OPTS="$OPTS --enable-dvi"  &&
+OPTS="$OPTS --enable-dvi --enable-pixbuf"  &&
 default_build
