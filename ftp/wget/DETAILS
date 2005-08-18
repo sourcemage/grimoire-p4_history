@@ -1,15 +1,20 @@
            SPELL=wget
-         VERSION=1.10
+         VERSION=1.10.1
+       BUILD_API=2
+
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
-          MD5[0]=76eabac2e78bc5d533fc87fc594a3c87
+      SOURCE_GPG="wget.gpg:$SOURCE.sig"
+
+         SOURCE2=$SOURCE.sig
+  SOURCE2_URL[0]=$SOURCE_URL.sig
+  SOURCE2_IGNORE=signature
+
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://sunsite.dk/wget/
          ENTERED=20010922
          UPDATED=20041210
       LICENSE[0]=GPL
-       BUILD_API=2
            SHORT="wget retreives files from web and ftp sites."
 cat << EOF
 Wget - Retrieves files from the Web
