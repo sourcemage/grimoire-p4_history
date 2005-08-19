@@ -1,5 +1,10 @@
-depends  eet   &&
-depends  evas  &&
+depends  eet       &&
+depends  evas      &&
+
+if [ "$ECORE_CVS" = "y" ]; then
+  depends  libtool   &&
+  depends  automake
+fi  &&
 
 optional_depends  openssl                           \
                   "--enable-openssl"                \
