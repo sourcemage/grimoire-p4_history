@@ -2,5 +2,5 @@ default_pre_build     &&
 cd $SOURCE_DIRECTORY  &&
 
 if [ "$ECORE_CVS" == "y" ]; then
-  ./autogen.sh
+  NOCONFIGURE="X"  ./autogen.sh
 fi
