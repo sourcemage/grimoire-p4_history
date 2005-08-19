@@ -13,7 +13,7 @@ checkfs()
 {
   [ -e /fastboot     ]  &&  return
   [ -e /forcefsck    ]  &&  FORCE="-f"
-  [ "$SOFTFIX" = yes ]  &&  FIX="-a"
+  [ "$NOSOFTFIX" != yes ]  &&  FIX="-a"
   [ "$FSCKFIX" = yes ]  &&  FIX="-y"
   [ -z  "$FIX"       ]  &&  FIX="-n" # need at least -n, -y, or -a for non-tty fsck
   [ "$FORCE"   = yes ]  &&  FORCE="-f"

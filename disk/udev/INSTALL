@@ -39,5 +39,5 @@ install_config_file $SCRIPT_DIRECTORY/udev.missing  ${UDEV_CFG}/udev.missing    
 install_config_file extras/run_directory/dev.d/snd/controlC0/alsa.dev ${SND_DFILE} &&
 chmod +x ${SND_DFILE} &&
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS} install   &&
-make -C extras/run_directory prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
+make EXTRAS="extras/run_directory" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
 V=true ${OPTS} install 
