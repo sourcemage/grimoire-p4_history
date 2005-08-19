@@ -1,5 +1,5 @@
 cd $SOURCE_DIRECTORY.static &&
-make    DESTDIR=$INSTALL_ROOT install &&
+make prefix=$INSTALL_ROOT/usr install &&
 cd $SOURCE_DIRECTORY &&
-make DESTDIR=$INSTALL_ROOT install &&
+make prefix=$INSTALL_ROOT/usr install &&
 rm_source_dir $SOURCE_DIRECTORY.static
