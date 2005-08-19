@@ -23,14 +23,50 @@ optional_depends  dvd+rw-tools      \
                   ""                \
                   "to burn dvd\'s"  &&
 
+optional_depends  "libsndfile"                  \
+                  "--with-sndfile"              \
+                  "--without-sndfile"           \
+                  "for WAV/AIFF file support"  &&
+
+optional_depends  "flac"                \
+                  "--with-flac"         \
+                  "--without-flac"      \
+                  "for FLAC audio decoding"  &&
+
 optional_depends  libmad              \
-                  ""                  \
-                  ""                  \
-                  "for MP3 decoding"  &&
+                  "--with-libmad"     \
+                  "--without-libmad"  \
+                  "for MP3 decoding using libmad"  &&
+
+optional_depends  lame                      \
+                  "--with-lame"             \
+                  "--without-lame"          \
+                  "for MP3 decoding using lame"  &&
+
+optional_depends  libmpcdec	            \
+                  "--with-musepack"         \
+                  "--without-musepack"      \
+                  "for MusePack decoding"  &&
 
 optional_depends  libvorbis                 \
-                  ""                        \
-                  ""                        \
+                  "--with-oggvorbis"        \
+                  "--without-oggvorbis"     \
+                  "For Ogg Vorbis support"  &&
+
+optional_depends  "libmusicbrainz"              \
+                  "--with-musicbrainz"          \
+                  "--without-musicbrainz"       \
+                  "for music metadata lookup"  &&
+
+optional_depends  LIBAVCODEC                    \
+                  "--with-ffmpeg"               \
+                  "--without-ffmpeg"            \
+                  "for FFMPEG support"          \
+                  &&
+
+optional_depends  libvorbis                 \
+                  "--with-oggvorbis"        \
+                  "--without-oggvorbis "    \
                   "For Ogg Vorbis support"  &&
 
 optional_depends  transcode                                               \
@@ -46,4 +82,9 @@ optional_depends  emovix                            \
 optional_depends  vcdimager-unstable                   \
                   ""                                   \
                   ""                                   \
-                  "For (VCD) format from mpeg videos"
+                  "For (VCD) format from mpeg videos" &&
+
+optional_depends hal                           \
+                 "--with-hal"                \
+                 "--without-hal"               \
+                 "Enable HAL support"
