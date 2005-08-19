@@ -1,15 +1,5 @@
 --- Makefile.old	2005-08-13 19:10:50.000000000 +0200
 +++ Makefile	2005-08-16 23:33:58.000000000 +0200
-@@ -148,7 +148,8 @@
- 	udev_utils.o			\
- 	udev_utils_file.o		\
- 	udev_utils_run.o		\
--	udev_libc_wrapper.o
-+	udev_libc_wrapper.o		\
-+	udev_logger.o
- 
- OBJS = \
- 	udev.a			\
 @@ -387,11 +388,6 @@
  	$(INSTALL_PROGRAM) -D $(INFO) $(DESTDIR)$(usrbindir)/$(INFO)
  	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
