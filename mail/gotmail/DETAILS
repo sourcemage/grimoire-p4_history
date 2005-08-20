@@ -1,18 +1,17 @@
            SPELL=gotmail
-         VERSION=0.8.1
+         VERSION=0.8.4
           SOURCE=${SPELL}-${VERSION}.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
 #   SOURCE_URL[0]=http://savannah.nongnu.org/download/gotmail/stable.pkg/$VERSION/$SOURCE
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=efeacb393692c55ddd0911b35eb32ac7
+          MD5[0]='f93b057ad9cdb8571b2ee9ef2bab0567'
 #   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
 #          MD5[1]=${MD5[0]}
-        WEB_SITE=http://www.nongnu.org/gotmail
+        WEB_SITE=http://sourceforge.net/projects/gotmail
          ENTERED=20020716
          UPDATED=20050403
        BUILD_API=2
          LICENSE=http://www.nongnu.org/gotmail
-      MAINTAINER=dufflebunk@dufflebunk.homeip.net
            SHORT="Utility to download mail from Hotmail accounts"
 cat << EOF
 Gotmail is a utility to non-interactively download email from a Hotmail
