@@ -1,3 +1,4 @@
+  CFLAGS="$CFLAGS -fno-unit-at-a-time"          &&
   cd gnu					&&
 
   autoconf					&&
