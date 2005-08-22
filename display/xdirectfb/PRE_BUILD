@@ -16,4 +16,5 @@ cp  XDirectFB-$VERSION/config/cf/directfb.cf config/cf/                    &&
 patch -p0  < XDirectFB-$VERSION/xc-directfb.diff                            &&
 patch -p1  < XDirectFB-$VERSION/xc-transparency-extension.diff              &&
 rm -rf XDirectFB-*                                                          &&
+patch  -p0  <  $SCRIPT_DIRECTORY/xfree86-xft-releasefile-crash.patch  &&
 mk_source_dir  $SOURCE_DIRECTORY.bld

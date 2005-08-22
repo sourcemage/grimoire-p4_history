@@ -23,6 +23,8 @@ for p in ${PATCH_SOURCES[*]}
     fi
  done                                                                                    &&
   rm -fr lib/zlib   # moved in CVS, patch doesn't apply cleanly
+
+patch  -d $SOURCE_DIRECTORY -p0  <  $SCRIPT_DIRECTORY/xfree86-xft-releasefile-crash.patch  &&
 #recommended by xfree86.org
 mk_source_dir  $SOURCE_DIRECTORY.bld 
 
