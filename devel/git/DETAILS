@@ -1,15 +1,18 @@
-                 SPELL=git
-             BUILD_API=2
-               VERSION=0.7
-	        SOURCE=$SPELL-$VERSION.tar.bz2
-		MD5[0]=44220abd126e7892b52a1f92402e40d4 
-            SOURCE_URL=$KERNEL_URL/pub/software/scm/git/$SOURCE
-      SOURCE_DIRECTORY=${BUILD_DIRECTORY}/$SPELL-$VERSION
-              WEB_SITE=http://www.kernel.org
-               ENTERED=20050506
-	       UPDATED=20050506
-                 SHORT="The scm used by the kernel developers"
-            LICENSE[0]=GPL
+           SPELL=git
+         VERSION=0.99.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SOURCE.sign
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+      SOURCE_GPG="kernel.gpg:${SOURCE}.sign"
+      SOURCE_URL=$KERNEL_URL/pub/software/scm/git/$SOURCE
+     SOURCE2_URL=$KERNEL_URL/pub/software/scm/git/$SOURCE2
+  SOURCE2_IGNORE=signature
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://git.or.cz/
+         ENTERED=20050506
+         UPDATED=20050506
+           SHORT="SCM used by the kernel developers"
 cat << EOF
 This is the Source Code Management system that kernel.org uses for the linux
 kernel, the reason for this move was because they were using bitkeeper (a 
@@ -24,4 +27,3 @@ do.
 Let the flames begin. 
 -Linus
 EOF
-
