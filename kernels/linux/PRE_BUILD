@@ -103,16 +103,10 @@ then
 				zcat /proc/config.gz > .config
 			fi
 			;;
-		"/boot/config-$VERSION")
+		*)
 			if [ -f ${CONFIG_RESTORE} ]
 			then
 				cp /boot/config-$VERSION .config
-			fi
-			;;
-		"Custom")
-			if [ -f ${CONFIG_RESTORE} ]
-			then
-				cp ${CONFIG_RESTORE} .config
 			fi
 			;;
 	esac
