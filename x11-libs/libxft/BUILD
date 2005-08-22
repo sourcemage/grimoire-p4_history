@@ -1,2 +1,0 @@
-./configure --prefix=/usr/X11R6  &&
-make
