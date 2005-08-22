@@ -1,9 +1,12 @@
            SPELL=ion
-         VERSION=3ds-20050728
+         VERSION=3ds-20050820
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=${SOURCE}.asc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://iki.fi/tuomov/ion/dl/$SOURCE
-          MD5[0]=9374c7cd25bb30b4583d4661e6b39e71
+      SOURCE_URL=http://iki.fi/tuomov/ion/dl/$SOURCE
+     SOURCE2_URL=${SOURCE_URL}.asc
+      SOURCE_GPG=ion.gpg:${SOURCE}.asc
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://iki.fi/tuomov/ion/
          ENTERED=20020127
          UPDATED=20040409
