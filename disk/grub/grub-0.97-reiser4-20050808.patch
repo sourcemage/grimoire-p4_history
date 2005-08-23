@@ -1,19 +1,6 @@
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/INSTALL grub-0.96-reiser4/INSTALL
---- grub-0.96/INSTALL	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/INSTALL	2005-01-30 14:36:41.000000000 +0300
-@@ -207,6 +207,9 @@ operates.
- `--disable-reiserfs'
-      Omit the ReiserFS support in Stage 2.
- 
-+`--disable-reiser4'
-+     Omit the Reiser4 support in Stage 2.
-+
- `--disable-vstafs'
-      Omit the VSTa filesystem support in Stage 2.
- 
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/config.h.in grub-0.96-reiser4/config.h.in
---- grub-0.96/config.h.in	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/config.h.in	2005-01-30 14:46:43.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/config.h.in grub-0.97-1/config.h.in
+--- grub-0.97/config.h.in	2005-05-08 06:48:19.000000000 +0400
++++ grub-0.97-1/config.h.in	2005-08-05 22:48:24.000000000 +0400
 @@ -27,9 +27,16 @@
  /* Define to 1 if you have the <inttypes.h> header file. */
  #undef HAVE_INTTYPES_H
@@ -31,9 +18,9 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
  /* Define to 1 if you have the <memory.h> header file. */
  #undef HAVE_MEMORY_H
  
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/configure.ac grub-0.96-reiser4/configure.ac
---- grub-0.96/configure.ac	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/configure.ac	2005-02-03 18:24:05.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/configure.ac grub-0.97-1/configure.ac
+--- grub-0.97/configure.ac	2005-05-08 06:36:03.000000000 +0400
++++ grub-0.97-1/configure.ac	2005-08-05 22:48:24.000000000 +0400
 @@ -263,6 +263,77 @@ if test x"$enable_reiserfs" != xno; then
    FSYS_CFLAGS="$FSYS_CFLAGS -DFSYS_REISERFS=1"
  fi
@@ -112,9 +99,9 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
  AC_ARG_ENABLE(vstafs,
    [  --disable-vstafs        disable VSTa FS support in Stage 2])
  
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/docs/grub.texi grub-0.96-reiser4/docs/grub.texi
---- grub-0.96/docs/grub.texi	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/docs/grub.texi	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/docs/grub.texi grub-0.97-1/docs/grub.texi
+--- grub-0.97/docs/grub.texi	2005-05-08 06:59:59.000000000 +0400
++++ grub-0.97-1/docs/grub.texi	2005-08-05 22:48:24.000000000 +0400
 @@ -283,7 +283,7 @@ devices, partitions, and files in a dire
  Support multiple filesystem types transparently, plus a useful explicit
  blocklist notation. The currently supported filesystem types are
@@ -132,131 +119,32 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
  @itemx vstafs_stage1_5
  @itemx xfs_stage1_5
  
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/grub/Makefile.am grub-0.96-reiser4/grub/Makefile.am
---- grub-0.96/grub/Makefile.am	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/grub/Makefile.am	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/grub/Makefile.am grub-0.97-1/grub/Makefile.am
+--- grub-0.97/grub/Makefile.am	2005-02-02 23:38:19.000000000 +0300
++++ grub-0.97-1/grub/Makefile.am	2005-08-05 22:48:24.000000000 +0400
 @@ -16,4 +16,4 @@ AM_CPPFLAGS = -DGRUB_UTIL=1 -DFSYS_EXT2F
- AM_CFLAGS = $(GRUB_CFLAGS) -fwritable-strings
+ AM_CFLAGS = $(GRUB_CFLAGS)
  
  grub_SOURCES = main.c asmstub.c
 -grub_LDADD = ../stage2/libgrub.a  ../lib/libcommon.a $(GRUB_LIBS)
 +grub_LDADD = ../stage2/libgrub.a  ../lib/libcommon.a $(GRUB_LIBS) $(REISER4_LIBS)
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/Makefile.am grub-0.96-reiser4/stage2/Makefile.am
---- grub-0.96/stage2/Makefile.am	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/stage2/Makefile.am	2005-01-30 14:42:55.000000000 +0300
-@@ -13,17 +13,25 @@ EXTRA_DIST = setjmp.S apm.S $(noinst_SCR
- # For <stage1.h>.
- INCLUDES = -I$(top_srcdir)/stage1
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/INSTALL grub-0.97-1/INSTALL
+--- grub-0.97/INSTALL	2005-05-08 06:43:15.000000000 +0400
++++ grub-0.97-1/INSTALL	2005-08-05 22:48:24.000000000 +0400
+@@ -207,6 +207,9 @@ operates.
+ `--disable-reiserfs'
+      Omit the ReiserFS support in Stage 2.
  
-+if ENABLE_REISER4_SUPPORT
-+REISER4_STAGE1_5 = reiser4_stage1_5
-+REISER4_STAGE1_5_EXEC = reiser4_stage1_5.exec
-+else
-+REISER4_STAGE1_5 =
-+REISER4_STAGE1_5_EXEC =
-+endif
++`--disable-reiser4'
++     Omit the Reiser4 support in Stage 2.
 +
- # The library for /sbin/grub.
- noinst_LIBRARIES = libgrub.a
- libgrub_a_SOURCES = boot.c builtins.c char_io.c cmdline.c common.c \
- 	disk_io.c fsys_ext2fs.c fsys_fat.c fsys_ffs.c fsys_iso9660.c \
--	fsys_jfs.c fsys_minix.c fsys_reiserfs.c fsys_ufs2.c \
-+	fsys_jfs.c fsys_minix.c fsys_reiserfs.c fsys_reiser4.c fsys_ufs2.c \
- 	fsys_vstafs.c fsys_xfs.c gunzip.c md5.c serial.c stage2.c \
- 	terminfo.c tparm.c
- libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
- 	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_FFS=1 \
- 	-DFSYS_ISO9660=1 -DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 \
--	-DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
-+	$(REISER4_CFLAGS) -DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
- 	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1 \
- 	-fwritable-strings
+ `--disable-vstafs'
+      Omit the VSTa filesystem support in Stage 2.
  
-@@ -35,24 +43,26 @@ EXTRA_PROGRAMS = nbloader.exec pxeloader
- if DISKLESS_SUPPORT
- pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
- 	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
--	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5 \
--	nbgrub pxegrub
-+	reiserfs_stage1_5 $(REISER4_STAGE1_5) ufs2_stage1_5 \
-+	vstafs_stage1_5 xfs_stage1_5 nbgrub pxegrub
- noinst_DATA = pre_stage2 start start_eltorito nbloader pxeloader diskless
- noinst_PROGRAMS = pre_stage2.exec start.exec start_eltorito.exec \
- 	e2fs_stage1_5.exec fat_stage1_5.exec ffs_stage1_5.exec \
- 	iso9660_stage1_5.exec jfs_stage1_5.exec minix_stage1_5.exec \
--	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
--	xfs_stage1_5.exec nbloader.exec pxeloader.exec diskless.exec
-+	reiserfs_stage1_5.exec $(REISER4_STAGE1_5_EXEC) ufs2_stage1_5.exec \
-+	vstafs_stage1_5.exec xfs_stage1_5.exec nbloader.exec pxeloader.exec \
-+	diskless.exec
- else
- pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
- 	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
--	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5
-+	reiserfs_stage1_5 $(REISER4_STAGE1_5) ufs2_stage1_5 \
-+	vstafs_stage1_5 xfs_stage1_5
- noinst_DATA = pre_stage2 start start_eltorito
- noinst_PROGRAMS = pre_stage2.exec start.exec start_eltorito.exec \
- 	e2fs_stage1_5.exec fat_stage1_5.exec ffs_stage1_5.exec \
- 	iso9660_stage1_5.exec jfs_stage1_5.exec minix_stage1_5.exec \
--	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
--	xfs_stage1_5.exec
-+	reiserfs_stage1_5.exec $(REISER4_STAGE1_5_EXEC) ufs2_stage1_5.exec \
-+	vstafs_stage1_5.exec xfs_stage1_5.exec
- endif
- MOSTLYCLEANFILES = $(noinst_PROGRAMS)
- 
-@@ -80,7 +90,7 @@ else
- HERCULES_FLAGS =
- endif
- 
--STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin -nostdinc \
-+STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin \
- 	$(NETBOOT_FLAGS) $(SERIAL_FLAGS) $(HERCULES_FLAGS)
- 
- STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000
-@@ -90,14 +100,17 @@ STAGE1_5_COMPILE = $(STAGE2_COMPILE) -DN
- pre_stage2_exec_SOURCES = asm.S bios.c boot.c builtins.c char_io.c \
- 	cmdline.c common.c console.c disk_io.c fsys_ext2fs.c \
- 	fsys_fat.c fsys_ffs.c fsys_iso9660.c fsys_jfs.c fsys_minix.c \
--	fsys_reiserfs.c fsys_ufs2.c fsys_vstafs.c fsys_xfs.c gunzip.c \
--	hercules.c md5.c serial.c smp-imps.c stage2.c terminfo.c tparm.c
-+	fsys_reiserfs.c fsys_reiser4.c fsys_ufs2.c fsys_vstafs.c \
-+	fsys_xfs.c gunzip.c hercules.c md5.c serial.c smp-imps.c \
-+	stage2.c terminfo.c tparm.c
- pre_stage2_exec_CFLAGS = $(STAGE2_COMPILE) $(FSYS_CFLAGS)
- pre_stage2_exec_CCASFLAGS = $(STAGE2_COMPILE) $(FSYS_CFLAGS)
- pre_stage2_exec_LDFLAGS = $(PRE_STAGE2_LINK)
- 
- if NETBOOT_SUPPORT
--pre_stage2_exec_LDADD = ../netboot/libdrivers.a
-+pre_stage2_exec_LDADD = ../netboot/libdrivers.a $(REISER4_LIBS)
-+else
-+pre_stage2_exec_LDADD = $(REISER4_LIBS)
- endif
- 
- if DISKLESS_SUPPORT
-@@ -191,6 +204,16 @@ reiserfs_stage1_5_exec_CCASFLAGS = $(STA
- 	-DNO_BLOCK_FILES=1
- reiserfs_stage1_5_exec_LDFLAGS = $(STAGE1_5_LINK)
- 
-+# For reiser4_stage1_5 target.
-+reiser4_stage1_5_exec_SOURCES = start.S asm.S common.c char_io.c \
-+	disk_io.c stage1_5.c fsys_reiser4.c bios.c
-+reiser4_stage1_5_exec_CFLAGS = $(STAGE1_5_COMPILE) $(REISER4_CFLAGS) \
-+	-DNO_BLOCK_FILES=1
-+reiser4_stage1_5_exec_CCASFLAGS = $(STAGE1_5_COMPILE) $(REISER4_CFLAGS) \
-+	-DNO_BLOCK_FILES=1
-+reiser4_stage1_5_exec_LDFLAGS = $(STAGE1_5_LINK)
-+reiser4_stage1_5_exec_LDADD = $(REISER4_LIBS)
-+
- # For vstafs_stage1_5 target.
- vstafs_stage1_5_exec_SOURCES = start.S asm.S common.c char_io.c \
- 	disk_io.c stage1_5.c fsys_vstafs.c bios.c
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/builtins.c grub-0.96-reiser4/stage2/builtins.c
---- grub-0.96/stage2/builtins.c	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/stage2/builtins.c	2005-01-30 14:36:41.000000000 +0300
-@@ -3868,6 +3868,7 @@ setup_func (char *arg, int flags)
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/builtins.c grub-0.97-1/stage2/builtins.c
+--- grub-0.97/stage2/builtins.c	2005-02-16 00:58:23.000000000 +0300
++++ grub-0.97-1/stage2/builtins.c	2005-08-05 22:48:24.000000000 +0400
+@@ -3880,6 +3880,7 @@ setup_func (char *arg, int flags)
      {"jfs",      "/jfs_stage1_5"},
      {"minix",    "/minix_stage1_5"},
      {"reiserfs", "/reiserfs_stage1_5"},
@@ -264,10 +152,9 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
      {"vstafs",   "/vstafs_stage1_5"},
      {"xfs",      "/xfs_stage1_5"}
    };
-;
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/disk_io.c grub-0.96-reiser4/stage2/disk_io.c
---- grub-0.96/stage2/disk_io.c	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/stage2/disk_io.c	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/disk_io.c grub-0.97-1/stage2/disk_io.c
+--- grub-0.97/stage2/disk_io.c	2004-05-23 20:35:24.000000000 +0400
++++ grub-0.97-1/stage2/disk_io.c	2005-08-05 22:48:24.000000000 +0400
 @@ -63,6 +63,9 @@ struct fsys_entry fsys_table[NUM_FSYS + 
  # ifdef FSYS_REISERFS
    {"reiserfs", reiserfs_mount, reiserfs_read, reiserfs_dir, 0, reiserfs_embed},
@@ -278,9 +165,9 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
  # ifdef FSYS_VSTAFS
    {"vstafs", vstafs_mount, vstafs_read, vstafs_dir, 0, 0},
  # endif
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/filesys.h grub-0.96-reiser4/stage2/filesys.h
---- grub-0.96/stage2/filesys.h	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/stage2/filesys.h	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/filesys.h grub-0.97-1/stage2/filesys.h
+--- grub-0.97/stage2/filesys.h	2004-05-14 23:36:43.000000000 +0400
++++ grub-0.97-1/stage2/filesys.h	2005-08-05 22:48:24.000000000 +0400
 @@ -77,6 +77,16 @@ int reiserfs_embed (int *start_sector, i
  #define FSYS_REISERFS_NUM 0
  #endif
@@ -309,9 +196,9 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
  #endif
  
  /* defines for the block filesystem info area */
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/fsys_reiser4.c grub-0.96-reiser4/stage2/fsys_reiser4.c
---- grub-0.96/stage2/fsys_reiser4.c	1970-01-01 03:00:00.000000000 +0300
-+++ grub-0.96-reiser4/stage2/fsys_reiser4.c	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/fsys_reiser4.c grub-0.97-1/stage2/fsys_reiser4.c
+--- grub-0.97/stage2/fsys_reiser4.c	1970-01-01 03:00:00.000000000 +0300
++++ grub-0.97-1/stage2/fsys_reiser4.c	2005-08-05 22:48:24.000000000 +0400
 @@ -0,0 +1,260 @@
 +/* 
 + *  fsys_reiser4.c -- reiser4 filesystem support.
@@ -573,9 +460,121 @@ diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='
 +	return needed_sectors <= ((REISER4_MASTER_OFFSET >> SECTOR_BITS) - 1);
 +}
 +#endif /* FSYS_REISER4 */
-diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure grub-0.96/stage2/shared.h grub-0.96-reiser4/stage2/shared.h
---- grub-0.96/stage2/shared.h	2005-02-03 18:49:50.000000000 +0300
-+++ grub-0.96-reiser4/stage2/shared.h	2005-01-30 14:36:41.000000000 +0300
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/Makefile.am grub-0.97-1/stage2/Makefile.am
+--- grub-0.97/stage2/Makefile.am	2005-02-02 23:37:35.000000000 +0300
++++ grub-0.97-1/stage2/Makefile.am	2005-08-05 22:48:24.000000000 +0400
+@@ -13,17 +13,25 @@ EXTRA_DIST = setjmp.S apm.S $(noinst_SCR
+ # For <stage1.h>.
+ INCLUDES = -I$(top_srcdir)/stage1
+ 
++if ENABLE_REISER4_SUPPORT
++REISER4_STAGE1_5 = reiser4_stage1_5
++REISER4_STAGE1_5_EXEC = reiser4_stage1_5.exec
++else
++REISER4_STAGE1_5 =
++REISER4_STAGE1_5_EXEC =
++endif
++
+ # The library for /sbin/grub.
+ noinst_LIBRARIES = libgrub.a
+ libgrub_a_SOURCES = boot.c builtins.c char_io.c cmdline.c common.c \
+ 	disk_io.c fsys_ext2fs.c fsys_fat.c fsys_ffs.c fsys_iso9660.c \
+-	fsys_jfs.c fsys_minix.c fsys_reiserfs.c fsys_ufs2.c \
++	fsys_jfs.c fsys_minix.c fsys_reiserfs.c fsys_reiser4.c fsys_ufs2.c \
+ 	fsys_vstafs.c fsys_xfs.c gunzip.c md5.c serial.c stage2.c \
+ 	terminfo.c tparm.c
+ libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
+ 	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_FFS=1 \
+ 	-DFSYS_ISO9660=1 -DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 \
+-	-DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
++	$(REISER4_CFLAGS) -DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
+ 	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1
+ 
+ # Stage 2 and Stage 1.5's.
+@@ -34,24 +42,26 @@ EXTRA_PROGRAMS = nbloader.exec pxeloader
+ if DISKLESS_SUPPORT
+ pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
+ 	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+-	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5 \
+-	nbgrub pxegrub
++	reiserfs_stage1_5 $(REISER4_STAGE1_5) ufs2_stage1_5 \
++	vstafs_stage1_5 xfs_stage1_5 nbgrub pxegrub
+ noinst_DATA = pre_stage2 start start_eltorito nbloader pxeloader diskless
+ noinst_PROGRAMS = pre_stage2.exec start.exec start_eltorito.exec \
+ 	e2fs_stage1_5.exec fat_stage1_5.exec ffs_stage1_5.exec \
+ 	iso9660_stage1_5.exec jfs_stage1_5.exec minix_stage1_5.exec \
+-	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
+-	xfs_stage1_5.exec nbloader.exec pxeloader.exec diskless.exec
++	reiserfs_stage1_5.exec $(REISER4_STAGE1_5_EXEC) ufs2_stage1_5.exec \
++	vstafs_stage1_5.exec xfs_stage1_5.exec nbloader.exec pxeloader.exec \
++	diskless.exec
+ else
+ pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 \
+ 	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+-	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5
++	reiserfs_stage1_5 $(REISER4_STAGE1_5) ufs2_stage1_5 \
++	vstafs_stage1_5 xfs_stage1_5
+ noinst_DATA = pre_stage2 start start_eltorito
+ noinst_PROGRAMS = pre_stage2.exec start.exec start_eltorito.exec \
+ 	e2fs_stage1_5.exec fat_stage1_5.exec ffs_stage1_5.exec \
+ 	iso9660_stage1_5.exec jfs_stage1_5.exec minix_stage1_5.exec \
+-	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
+-	xfs_stage1_5.exec
++	reiserfs_stage1_5.exec $(REISER4_STAGE1_5_EXEC) ufs2_stage1_5.exec \
++	vstafs_stage1_5.exec xfs_stage1_5.exec
+ endif
+ MOSTLYCLEANFILES = $(noinst_PROGRAMS)
+ 
+@@ -79,7 +89,7 @@ else
+ HERCULES_FLAGS =
+ endif
+ 
+-STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin -nostdinc \
++STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin \
+ 	$(NETBOOT_FLAGS) $(SERIAL_FLAGS) $(HERCULES_FLAGS)
+ 
+ STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000
+@@ -89,14 +99,17 @@ STAGE1_5_COMPILE = $(STAGE2_COMPILE) -DN
+ pre_stage2_exec_SOURCES = asm.S bios.c boot.c builtins.c char_io.c \
+ 	cmdline.c common.c console.c disk_io.c fsys_ext2fs.c \
+ 	fsys_fat.c fsys_ffs.c fsys_iso9660.c fsys_jfs.c fsys_minix.c \
+-	fsys_reiserfs.c fsys_ufs2.c fsys_vstafs.c fsys_xfs.c gunzip.c \
+-	hercules.c md5.c serial.c smp-imps.c stage2.c terminfo.c tparm.c
++	fsys_reiserfs.c fsys_reiser4.c fsys_ufs2.c fsys_vstafs.c \
++	fsys_xfs.c gunzip.c hercules.c md5.c serial.c smp-imps.c \
++	stage2.c terminfo.c tparm.c
+ pre_stage2_exec_CFLAGS = $(STAGE2_COMPILE) $(FSYS_CFLAGS)
+ pre_stage2_exec_CCASFLAGS = $(STAGE2_COMPILE) $(FSYS_CFLAGS)
+ pre_stage2_exec_LDFLAGS = $(PRE_STAGE2_LINK)
+ 
+ if NETBOOT_SUPPORT
+-pre_stage2_exec_LDADD = ../netboot/libdrivers.a
++pre_stage2_exec_LDADD = ../netboot/libdrivers.a $(REISER4_LIBS)
++else
++pre_stage2_exec_LDADD = $(REISER4_LIBS)
+ endif
+ 
+ if DISKLESS_SUPPORT
+@@ -190,6 +203,16 @@ reiserfs_stage1_5_exec_CCASFLAGS = $(STA
+ 	-DNO_BLOCK_FILES=1
+ reiserfs_stage1_5_exec_LDFLAGS = $(STAGE1_5_LINK)
+ 
++# For reiser4_stage1_5 target.
++reiser4_stage1_5_exec_SOURCES = start.S asm.S common.c char_io.c \
++	disk_io.c stage1_5.c fsys_reiser4.c bios.c
++reiser4_stage1_5_exec_CFLAGS = $(STAGE1_5_COMPILE) $(REISER4_CFLAGS) \
++	-DNO_BLOCK_FILES=1
++reiser4_stage1_5_exec_CCASFLAGS = $(STAGE1_5_COMPILE) $(REISER4_CFLAGS) \
++	-DNO_BLOCK_FILES=1
++reiser4_stage1_5_exec_LDFLAGS = $(STAGE1_5_LINK)
++reiser4_stage1_5_exec_LDADD = $(REISER4_LIBS)
++
+ # For vstafs_stage1_5 target.
+ vstafs_stage1_5_exec_SOURCES = start.S asm.S common.c char_io.c \
+ 	disk_io.c stage1_5.c fsys_vstafs.c bios.c
+diff -upNr --exclude=Makefile.in --exclude='*.info' --exclude='*.m4' --exclude='*cache' --exclude=configure --exclude=.deps grub-0.97/stage2/shared.h grub-0.97-1/stage2/shared.h
+--- grub-0.97/stage2/shared.h	2004-06-19 20:40:09.000000000 +0400
++++ grub-0.97-1/stage2/shared.h	2005-08-05 22:48:24.000000000 +0400
 @@ -207,11 +207,12 @@ extern char *grub_scratch_mem;
  #define STAGE2_ID_FAT_STAGE1_5		3
  #define STAGE2_ID_MINIX_STAGE1_5	4

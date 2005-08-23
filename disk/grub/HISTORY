@@ -1,3 +1,17 @@
+2005-08-23 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS: Updated to 0.97
+	* grub-0.96-nxstack.patch: deleted
+	* grub-0.97-nxstack.patch: added
+	* grub-0.97-PIC.patch: added
+	* grub-0.96-reiser4-20040130.patch: removed
+	* grub-0.97-reiser4-20050808.patch: added
+	* grub-0.96-graphics-for-reiser4.patch: added, this is the same as
+	  grub-0.96-graphics.patch except that I modified stage2/Makefile.am 
+	  diff to apply successfully after reiser4 patch :-)
+	* PRE_BUILD: updated to apply patches, reiser4 no more conflicts 
+	  with graphics patch
+	* CONFIGURE: Removed reiser4 warning
+
 2005-06-17 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* DETAILS : reverted useless BUILD_API=2 change
 

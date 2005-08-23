@@ -7,7 +7,8 @@ patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.97-PIC.patch			&&
 patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.97-nxstack.patch              &&
 
 if  [  "$GRUB_REISER4"  =  "y"  ];  then
-	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-reiser4-20040130.patch
+	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.97-reiser4-20050808.patch	&&
+	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-graphics-for-reiser4.patch	
 else
 	patch  -p1  <  ${SCRIPT_DIRECTORY}/grub-0.96-graphics.patch
 fi
