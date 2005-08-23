@@ -44,6 +44,6 @@ ln -sf config-${VERSION} \
 ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` ${BUILD_DIRECTORY}/linux && 
 # for people with boot partitions so grub can still find the kernel
 # if they reference /boot/vmlinubz in their menu.lst
-ln -sf . ${INSTALL_ROOT}/boot/boot
+ln -sfn . ${INSTALL_ROOT}/boot/boot
 fi 
 
