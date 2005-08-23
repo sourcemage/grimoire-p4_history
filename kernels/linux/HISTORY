@@ -1,7 +1,18 @@
 2005-08-22 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.13-rc6-mm2
+	* info/patches/mm_patches/2.6.13-rc6-mm2: added
+
+2005-08-22 David Brown <dmlb2000@gmail.com>
 	* latest.defaults: updated latest to patch-2.6.12-ck6
 	* info/patches/ck_patches/patch-2.6.12-ck6: added
-	* PRE_BUILD: fixed case statement of RESTORE_CONFIG (part of bug 9557)
+	* info/patches/ck_server_patches/patch-2.6.12-ck6-server: added
+	* PRE_BUILD: fixed case statement of RESTORE_CONFIG and fixed patching 
+	  to improve new libunpack usage
+	* PREPARE: fixed create_details to use new libunpack vars
+	* INSTALL: changes symlinks around to work
+	* CONFIGURE: removed CONFIG_KERNEL question also added few more config
+	  styles
+	  fixed bugs #9560 #9526 part of #9557 and #9572 hopefully...
 
 2005-08-19 David Brown <dmlb2000@gmail.com>
 	* latest.defaults: updated latest to patch-2.6.12-nitro5

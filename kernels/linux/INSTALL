@@ -17,32 +17,33 @@ case  ${kernel_arch}  in
 	ppc)
 		cp ${LINUX_SOURCE_DIRECTORY}/vmlinux \
 		${INSTALL_ROOT}/boot/vmlinux-$VERSION &&
-		ln -sf ${INSTALL_ROOT}/boot/vmlinux-${VERSION} \
+		ln -sf vmlinux-${VERSION} \
 		${INSTALL_ROOT}/boot/vmlinux
 		;;
 	sparc*)
 		gzip -c9 ${LINUX_SOURCE_DIRECTORY}/vmlinux > \
 		${INSTALL_ROOT}/boot/vmlinuz-$VERSION &&
-		ln -sf ${INSTALL_ROOT}/boot/vmlinuz-${VERSION} \
+		ln -sf vmlinuz-${VERSION} \
 		${INSTALL_ROOT}/boot/vmlinuz
 		;;
 	*)
 		cp ${LINUX_SOURCE_DIRECTORY}/arch/${kernel_arch}/boot/bzImage \
 		${INSTALL_ROOT}/boot/vmlinubz-$VERSION &&
-		ln -sf ${INSTALL_ROOT}/boot/vmlinubz-${VERSION} \
+		ln -sf vmlinubz-${VERSION} \
 		${INSTALL_ROOT}/boot/vmlinubz
 	;;
 esac &&
 message "${MESSAGE_COLOR}Copying and linking System.map${DEFAULT_COLOR}" &&
 cp ${LINUX_SOURCE_DIRECTORY}/System.map ${INSTALL_ROOT}/boot/System.map-${VERSION} &&
-ln -sf ${INSTALL_ROOT}/boot/System.map-${VERSION} \
+ln -sf System.map-${VERSION} \
 	${INSTALL_ROOT}/boot/System.map &&
 message "${MESSAGE_COLOR}Copying and linking .config${DEFAULT_COLOR}" &&
 cp ${LINUX_SOURCE_DIRECTORY}/.config ${INSTALL_ROOT}/boot/config-${VERSION} &&
-ln -sf ${INSTALL_ROOT}/boot/config-${VERSION} \
+ln -sf config-${VERSION} \
 	${INSTALL_ROOT}/boot/config &&
+ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` ${BUILD_DIRECTORY}/linux && 
+# for people with boot partitions so grub can still find the kernel
+# if they reference /boot/vmlinubz in their menu.lst
+ln -sf . ${INSTALL_ROOT}/boot/boot
+fi 
 
-cd ${BUILD_DIRECTORY} &&
-rm  -f  linux  &&
-ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` linux 
-fi
