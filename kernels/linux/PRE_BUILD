@@ -35,49 +35,26 @@ then
 	cd $LINUX_SOURCE_DIRECTORY &&
 	unpack_file '' &&
 	mv ./*/* ./ &&
-	
 	. ${SPELL_DIRECTORY}/latest.defaults &&
-	for patch in $patches
+	local count=3
+	local source="SOURCE${count}"
+	local source_check="SOURCE${count}_IGNORE"
+	while [[ "${!source_check}" != "signature" && ! -z "${!source}" ]]
 	do
-		source_gpg=""
-		case "$patch" in
-			LATEST*)
-				patch=${!patch}
-				;;
-			*)
-				;;
-		esac &&
 		pval=1 &&
-		md5sum=""
-		tmp=$(find ${SPELL_DIRECTORY}/info/patches/*/${patch} | head -n1)
-		. $tmp
-		. `dirname $tmp`/.info
-		if [ "$md5sum" != "" ]
-		then
-			unpack ${source} ${md5sum} || return 1
-		fi &&
-		if [[ "${source_gpg}" != "" ]]
-		then
-			unpack_gpg "${source}" "${source_gpg}" || return 1
-		fi &&
-		if [ "${source}" != "" ]
-		then
-			cp -v ${SOURCE_CACHE}/${source} ./ &&
-			linux_new_uncompress ./${source} &&
-			message "${MESSAGE_COLOR}Patching ${patch}${DEFAULT_COLOR}" &&
-			patch -p${pval} <${patch} || return 1
-			if [ "`echo $patch | grep 'kernel-source'`" != "" ]
-			then
-				override_version="$VERSION"
-				home="$LINUX_SOURCE_DIRECTORY/debian/patches"
-				export override_version &&
-				export home &&
-				sh debian/apply &&
-				unset home &&
-				unset override_version
-			fi
-		fi
-	done &&
+		patch="PATCH[${count}]"
+		tmp=$(find ${SPELL_DIRECTORY} -name ${!patch} | head -n 1) &&
+		. ${tmp} &&
+		cd ${LINUX_SOURCE_DIRECTORY} &&
+		unpack_file "$count" &&
+		cp -v ${SOURCE_CACHE}/${source} ./ &&
+		linux_new_uncompress ./${source} &&
+		message "${MESSAGE_COLOR}Patching ${!patch}${DEFAULT_COLOR}" &&
+		patch -p${pval} <${!patch} || return 1
+		(( count++ ))
+		source="SOURCE${count}"
+		source_check="SOURCE${count}_IGNORE"
+	done &&	
 	make mrproper 
 elif [[ "$mode" == "oldktree" ]]
 then
@@ -113,23 +90,34 @@ then
 fi &&
 if [[ "$reconf" == "true" ]] || [[ "$CONFIG_KERNEL" == "y" ]]
 then
-	if [[ "$MAKEMODE" == "menuconfig" ]]
-	then
-		MENUCONFIG_EXIT="n" &&
-		while [[ "$MENUCONFIG_EXIT" == "n" ]]
-		do
-			ARCH=${kernel_arch} make $MAKEMODE &&
-			if query "Do you really want to exit menuconfig?" y 
-			then
-				MENUCONFIG_EXIT="y" 
-			else
-				MENUCONFIG_EXIT="n"
-			fi 
-		done
-	else
+	case "$MAKEMODE" in
+		menuconfig)
+			MENUCONFIG_EXIT="n" &&
+			while [[ "$MENUCONFIG_EXIT" == "n" ]]
+			do
+				ARCH=${kernel_arch} make $MAKEMODE &&
+				if query "Do you really want to exit menuconfig?" y 
+				then
+					MENUCONFIG_EXIT="y" 
+				else
+					MENUCONFIG_EXIT="n"
+				fi 
+			done
+		;;
+		smgl-update-defaults)
+			yes '' | make oldconfig
+		;;
+		*)
 		ARCH=${kernel_arch} make $MAKEMODE
-	fi
+	esac
 else
-	# run oldconfig just to make sure it's got a correct config
-	yes '' | make oldconfig
+	case "$MAKEMODE" in
+		defconfig|allyesconfig|allnoconfig|allmodconfig|randconfig)
+			make $MAKEMODE
+		;;
+		*)
+			# run oldconfig just to make sure it's got a correct config
+			yes '' | make silentoldconfig
+		;;
+	esac
 fi
