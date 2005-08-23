@@ -1,8 +1,1 @@
-cp -fv _spe/spe $INSTALL_ROOT/usr/bin/ &&
-chmod 0755      $INSTALL_ROOT/usr/bin/spe &&
-rm     _spe/spe &&
-
-# it's weird to take Python's site-packages directory from current system and
-# install the files into the same directory in $INSTALL_ROOT, but I don't see
-# a better way
-cp -frv _spe "$INSTALL_ROOT$PYTHON_LIB"
+python setup.py install
