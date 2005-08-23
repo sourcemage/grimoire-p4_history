@@ -1,3 +1,26 @@
+2005-08-24 Duane Malcolm <d.malcolm@auckland.ac.nz>
+	* science/qalculate: major version update which splits package into
+	a library and gtk and kde gui's. New spells for these gui packages
+	are being added, qalculate-gtk and qalculate-kde. qalculate-kde
+	will come later, once it works.
+	* science/qalculate-gtk: new spell
+
+2005-08-20 Jason Flatt <jflatt@sourcemage.org>
+	* kde-look/KDE_BUILD, KDE_CONFIGURE, KDE_DEPENDS: Added to handle a
+	  few bugs and for consistancy with the other kde-* sections.
+
+2005-08-18 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* gnu.gpg: Added, this is a "stripped" version of the ftp.gnu.org
+	  gnu-keyring.gpg, created via 'gpg --no-default-keyring --keyring
+	  ./gnu-keyring.gpg --export --export-options export-minimal
+	  >./gnu.gpg'.  The original filesize was 353,913 bytes, the sha1sum
+	  was '29ae4b6097e6e7d76a75b8a3fbf420cfcd9927d8'.  All the keys in this
+	  ring have been verified against pgp.mit.edu and subkeys.pgp.net
+	  except for 0x0E89DA12 (does not exist on either keyserver) and
+	  0xB565716F (verified on subkeys.gpg.net, does not exist on
+	  pgp.mit.edu).  Efforts to also verify these keys on the Web or via
+	  email with upstream have not been successful so far.
+
 2005-08-18 Ladislav Hagara <hgr@vabo.cz>
 	* smgl/smgl-ledger: new spell
 	  Don't hesitate to cast it and upload your stats.
