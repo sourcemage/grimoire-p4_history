@@ -11,6 +11,7 @@ if glibc_is_nptl; then
   export CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
 fi  &&
 OPTS="$OPTS --with-mysqld-user=mysql  --without-bench \
+        --localstatedir=/var/lib/mysql                \
         --enable-assembler --enable-thread-safe-client" &&
 default_build                                      &&
 
