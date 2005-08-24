@@ -34,9 +34,23 @@ NEEDS="+network +remote_fs"
 
 . /etc/init.d/smgl_init
 
+# Remove stale pid files.
+cleanpids()
+{
+  for f in `find $PIDDIR -name "*.pid" 2>/dev/null`; do
+    p="`cat $f`"
+    if [ "x`ps -p $p -o comm= 2>/dev/null`" != "xopenvpn" ]; then
+      rm -f "$f"
+    fi
+  done
+}
+
 # Track pids by known tunnels instead of all running procs.
 getpids()
 {
+  # status() should perhaps handle this differently, but for now always clean.
+  cleanpids
+
   pidflist="`find $PIDDIR -name "*.pid" 2>/dev/null`"
   pidlist="$(for f in $pidflist; do if [ -s $f ]; then cat $f; fi; done)"
 }
