@@ -1,4 +1,4 @@
- create_account "jabberd" &&
+ create_account "jabber" &&
 
   for f in $(find . -name "*" -type f); do
     sedit 's|/jabberd/log|/log/jabberd|' $f
