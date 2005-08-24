@@ -1,6 +1,6 @@
-if [ "$SUID" = "no" ]
+if echo $OPTS | grep 'enable-setuid'
 then
-  make    install
-else
   make    suidinstall
+else
+  make    install
 fi

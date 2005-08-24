@@ -8,7 +8,14 @@ optional_depends  ncurses                             \
                   "--disable-curses --disable-panel"  \
                   "for ncurses UI"                    &&
 
-optional_depends  imagemagick            \
-                  ""                     \
-                  ""                     \
-                  "for imaging support"
+depends  imagemagick                                  &&
+optional_depends  gmp                                          &&
+optional_depends ethereal                             \
+                 "--with-ethereal=/usr"               \
+		 "--without-ethereal"                 \
+		 "support ethereal wiretap for replaying logs" &&
+
+if echo $OPT | grep 'enable-syspcap' > /dev/null 2>&1
+then
+	depends libpcap
+fi
