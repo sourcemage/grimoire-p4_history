@@ -1,0 +1,10 @@
+OPTS="$KDE_DEBUG_OPTION                  \
+      $KDE_FINAL_OPTION                  \
+      $KDE_DNOTIFY                       \
+      $KDE_LDFLAGS                       \
+      --with-distribution                \
+      --disable-dependency-tracking      \
+      kde_confdir=$INSTALL_ROOT/etc/kde  \
+      $OPTS"                             &&
+
+default_build
