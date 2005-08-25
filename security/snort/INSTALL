@@ -19,7 +19,7 @@ for  FILE  in  *conf* unicode.map  ;  do
   fi
 done  &&
 
-cd  ../rules  &&
+cd  $SOURCE_DIRECTORY/rules  &&
 
 for  FILE  in  *.rules  ;  do
   if  [  !  -f  /etc/snort/$FILE  ]  ;  then
