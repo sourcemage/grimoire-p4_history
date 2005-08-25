@@ -1,3 +1,11 @@
+2005-08-24 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* files/auto_init: Explicitly call start and stop via bash in
+	  _restart() (bug 9412), support flexible init script functions via
+	  $FUNCS variable (bug 9413).
+	* files/smgl_init: Set default $FUNCS for above.
+	* files/smgl_functions: Implement KILLDELAY wait loop after
+	  'kill -$fallback' in killproc() (bug 9418).
+
 2005-08-18 David Brown <dmlb2000@gmail.com>
 	* init.d/devices: removed call to udevd and devfsd initscripts added
 	  for respective spells

@@ -191,6 +191,11 @@ killproc()
 
       if [ -n "$fallback" ] ; then kill -$fallback $pid 2>/dev/null ; fi
 
+      for ((i=0; $i<$KILLDELAY; i=$i+1)) ; do
+        kill -0 $pid 2>/dev/null || break
+        sleep 1
+      done
+
       kill -0 $pid 2>/dev/null && failure=1
     done
 
