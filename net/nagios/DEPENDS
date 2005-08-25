@@ -1,3 +1,9 @@
+if [ -n "{$HTML_URL}" ]
+then
+   depends WEBSERVER
+   depends gd
+fi
+
 optional_depends "fping"  ""  ""                                         \
                  "To be able to use fping to check host status"          &&
 optional_depends "qstat"  ""  ""                                         \

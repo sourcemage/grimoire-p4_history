@@ -1,9 +1,7 @@
 if [ ! -z "$HTML_URL" ]; then
 	if query  "Will you be using the CGIs"  y
-		then depends WEBSERVER
-		depends gd
-		config_query_string HTML_URL "What will be the base HTML url?" "/nagios"
+        then
+        	config_query_string HTML_URL "What will be the base HTML url?" "/nagios"
 		config_query_string CGI_URL "What will be the base CGI url?" "/nagios/cgi-bin"
-		OPTS="$OPTS --with-htmlurl=$HTML_URL --with-cgiurl=$CGI_URL"
 	fi
 fi
