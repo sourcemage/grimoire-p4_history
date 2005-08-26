@@ -1,4 +1,8 @@
-depends  expat  &&
+if [ "$XMLTYPE" == "y" ]; then
+   depends libxml2
+else
+   depends  expat
+fi                                                       &&
 
 optional_depends  doxygen                                \
                   "--enable-doxygen-docs"                \
@@ -25,17 +29,17 @@ optional_depends  gtk+2                                  \
                   "--disable-gtk"                        \
                   "Enable GTK-requiring executables"     &&
 
-optional_depends  gtk-sharp-2                              \
+optional_depends  gtk-sharp                              \
                   "--enable-mono"                        \
                   "--disable-mono"                       \
                   "Build mono bindings"                  &&
 
-optional_depends  monodoc                           \
-                  "--enable-mono-docs"              \
-                  "--disable-mono-docs"             \
-                  "for mono binding documentation"  &&
+optional_depends  monodoc                                \
+                  "--enable-mono-docs"                   \
+                  "--disable-mono-docs"                  \
+                  "for mono binding documentation"       &&
 
 optional_depends  pyrex                                  \
                   "--enable-python"                      \
                   "--disable-python"                     \
-                  "Build Python bindings"
+                  "Build Python bindings"                
