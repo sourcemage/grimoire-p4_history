@@ -3,5 +3,6 @@
              --sbindir=${INSTALL_ROOT}/sbin    \
              --libdir=${INSTALL_ROOT}/lib      \
              --sysconfdir=${INSTALL_ROOT}/etc  \
+             --enable-static_link              \
              ${OPTS}                           &&
 make

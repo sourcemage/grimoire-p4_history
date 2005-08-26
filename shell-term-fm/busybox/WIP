@@ -1,7 +1,0 @@
-heck, this fails...
-ar cru /usr/src/busybox-1.01/applets/applets.a /usr/src/busybox-1.01/applets/applets.o /usr/src/busybox-1.01/applets/busybox.o
-gcc -I/usr/src/busybox-1.01/include -I/usr/src/busybox-1.01/include -I/usr/src/busybox-1.01/libbb -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Wall -Wstrict-prototypes -Wshadow -Os -fomit-frame-pointer -D_GNU_SOURCE -DNDEBUG     -c -o /usr/src/busybox-1.01/archival/gzip.o /usr/src/busybox-1.01/archival/gzip.c
-/usr/src/busybox-1.01/archival/gzip.c:1624: warning: type qualifiers ignored on function return type
-/usr/src/busybox-1.01/archival/gzip.c:2147: error: conflicting types for 'build_bl_tree'
-/usr/src/busybox-1.01/archival/gzip.c:1624: error: previous declaration of 'build_bl_tree' was here
-make: *** [/usr/src/busybox-1.01/archival/gzip.o] Error 1
