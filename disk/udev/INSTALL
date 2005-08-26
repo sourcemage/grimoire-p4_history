@@ -40,4 +40,13 @@ install_config_file extras/run_directory/dev.d/snd/controlC0/alsa.dev ${SND_DFIL
 chmod +x ${SND_DFILE} &&
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS} install   &&
 make EXTRAS="extras/run_directory" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
-V=true ${OPTS} install 
+  V=true ${OPTS} install &&
+
+if [[ "$UDEV_STATIC" == 'y' ]]; then
+  pushd __static__ &&
+  # we are not supposed to use `make install'
+  for __FILE in $UDEV_STATIC_TARGET; do
+    install -D $__FILE $INSTALL_ROOT/usr/sbin/$__FILE.static
+  done &&
+  popd
+fi
