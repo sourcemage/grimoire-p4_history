@@ -1,6 +1,6 @@
 local FR_DEST                             &&
 FR_DEST=${TRACK_ROOT}/usr/lib/flamerobin  &&
 mkdir -p $FR_DEST                         &&
-cp -aR flamerobin *.xml html-templates ${FR_DEST} &&
-cd ${TRACK_ROOT}/usr/bin                  &&
-ln -s  $FR_DEST/flamerobin
+cp -aR flamerobin confdefs docs html-templates ${FR_DEST} 
+#cd ${TRACK_ROOT}/usr/bin                  &&
+#ln -s  $FR_DEST/flamerobin
