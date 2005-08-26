@@ -1,8 +1,12 @@
            SPELL=mcron
          VERSION=1.0.1
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://ftp.gnu.org/pub/gnu/mcron/$SOURCE
+  SOURCE2_URL[0]=http://ftp.gnu.org/pub/gnu/mcron/$SOURCE2
+      SOURCE_GPG=gnu-verified.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://www.gnu.org/software/mcron/
          ENTERED=20040515
          UPDATED=20041122
