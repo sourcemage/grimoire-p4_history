@@ -6,24 +6,41 @@ PROGRAM=/bin/false
 RUNLEVEL=3
 NEEDS="+remote_fs"
 
-alsactl=/usr/sbin/alsactl
-asoundcfg=/etc/asound.state
-aconnect=/usr/bin/aconnect
-alsascrdir=/etc/alsa.d
-lsmod=/sbin/lsmod
+declare -r ASOUNDCFG=/etc/asound.state
 
 . /etc/init.d/smgl_init
 
 # modprobe returns 255 when failed..
-probe_module()
-{
+probe_module() {
    /sbin/modprobe $*
    test $? = 0 && return 0
    return 1
 }
 
+# unload the module if loaded
+# loops through all of the matches even if some fail to unload
+# $1 -- inclusion pattern
+# $2 -- exclusion pattern (optional)
+remove_module_pattern() {
+  local __LIST=$(/sbin/lsmod | grep -E "$1")
+  [[ -z "$__LIST" ]] && return
+
+  if [[ -n "$2" ]]; then
+    __LIST=$(builtin echo $__LIST | grep -Ev "$2")
+  fi
+  [[ -z "$__LIST" ]] && return
+
+  local __MOD=
+  builtin echo $__LIST | while read __MOD; do
+    __MOD=${__MOD%% *}
+    echo "Unloading module: $__MOD"
+    /sbin/rmmod $__MOD
+    evaluate_retval
+  done
+}
+
 start() {
-  [ $START_ALSA == no ]  &&  exit 0
+  [[ "$START_ALSA" == no ]]  &&  exit 0
 
   #
   # insert all sound modules
@@ -37,12 +54,19 @@ start() {
   #
   # insert sequencer modules
   #
-  if [ $START_ALSA_SEQ == yes -a -r /proc/asound/seq/drivers ]; then
-    cut -d , -f 1 /proc/asound/seq/drivers | \
-    while read t ; do
-      if [ ! -z $t ]; then
-        echo "Loading sequencer: $t "
-        /sbin/modprobe $t
+  if [[ "$START_ALSA_SEQ" == yes ]] && [[ -r /proc/asound/seq/drivers ]]; then
+    local __LINE=
+    cat /proc/asound/seq/drivers | while read __LINE; do
+      if [[ -z "$__LINE" ]]; then
+        continue
+      fi
+
+      local __MOD=${__LINE%%,*}
+      if [[ "$__LINE" =~ ',loaded' ]]; then
+        echo "Built-in sequencer: $__MOD"
+      else
+        echo "Loading sequencer: $__MOD..."
+        /sbin/modprobe $__MOD
         evaluate_retval
       fi
     done
@@ -51,7 +75,7 @@ start() {
   #
   # load oss emulation
   #
-  if [ $OSS == yes ]; then
+  if [[ "$OSS" == yes ]]; then
     echo "Loading OSS pcm emulation..."
     /sbin/modprobe snd-pcm-oss
     evaluate_retval
@@ -63,16 +87,14 @@ start() {
   #
   # restore driver settings
   #
-  if [ -d /proc/asound ]; then
-    if [ ! -r $asoundcfg ]; then
-      echo "No mixer config in $asoundcfg, you have to unmute your card!"
+  if [[ -d /proc/asound ]]; then
+    if ! [[ -r "$ASOUNDCFG" ]]; then
+      echo "No mixer config in $ASOUNDCFG, you have to unmute your card!"
     else
-      if [ -x $alsactl ]; then
-        echo "Restoring alsa settings..."
-	sleep 5
-        $alsactl -F -f $asoundcfg restore
-        evaluate_retval
-      fi
+      echo "Restoring settings..."
+      sleep 5
+      /usr/sbin/alsactl -F -f $ASOUNDCFG restore
+      evaluate_retval
     fi
   fi
 }
@@ -81,8 +103,8 @@ stop() {
   #
   # store driver settings
   #
-  echo "Storing alsa settings..."
-  [ -x $alsactl ]  &&  $alsactl -f $asoundcfg store
+  echo "Saving settings..."
+  /usr/sbin/alsactl -f $ASOUNDCFG store
   evaluate_retval
 
   #
@@ -93,39 +115,24 @@ stop() {
   #
   # remove all sound modules
   #
-  $lsmod | grep -E "^snd" | grep -Ev "(snd-page-alloc|snd_page_alloc)" | while read line; do
-     module=$(builtin echo $line | cut -d ' ' -f1)  &&
-     echo "Unloading module: $module"       &&
-     /sbin/rmmod $module                    &&
-     evaluate_retval || break
-  done &&
-
+  remove_module_pattern "^snd" "(snd-page-alloc|snd_page_alloc)"
   
   # remove the 2.2 soundcore module (if possible)
-  if $lsmod | grep -E "^soundcore " > /dev/null; then
-    echo "Unloading module: soundcore"
-    /sbin/rmmod soundcore 2> /dev/null
-    evaluate_retval
-  fi &&
-  
-  if $lsmod | grep -E "^gameport " > /dev/null; then
-    echo "Unloading module: gameport"
-    /sbin/rmmod gameport 2> /dev/null
-    evaluate_retval
-  fi
+  remove_module_pattern "^soundcore "
+
+  remove_module_pattern "^gameport "
 
   exit_code=$?
-  if [ "$exit_code" != "0" ]; then
+  if [[ "$exit_code" -ne 0 ]]; then
     /usr/bin/amixer set Master unmute >/dev/null 2>&1
   fi
   exit $exit_code
 }
 
-status()
-{
-  if [ -d /proc/asound ]; then
-    echo "ALSA sound driver loaded."
+status() {
+  if [[ -d /proc/asound ]]; then
+    echo "Sound driver loaded."
   else
-    echo "ALSA sound driver not loaded."
+    echo "Sound driver not loaded."
   fi
 }
