@@ -1,9 +1,12 @@
            SPELL=automake-1.8
          VERSION=1.8.5
           SOURCE=automake-$VERSION.tar.bz2
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/automake-$VERSION
    SOURCE_URL[0]=http://ftp.gnu.org/gnu/automake/$SOURCE
-          MD5[0]='05abfc25d1797382041fbd29d361677e'
+  SOURCE2_URL[0]=http://ftp.gnu.org/gnu/automake/$SOURCE2
+      SOURCE_GPG=gnu-verified.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
       LICENSE[0]=GPL
        BUILD_API=2
         WEB_SITE=http://www.gnu.org/software/automake/

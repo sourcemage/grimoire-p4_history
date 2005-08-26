@@ -1,9 +1,12 @@
            SPELL=m4
          VERSION=1.4.3
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-          MD5[0]=8338cf9e5667cff83beb49983a17f03d
+  SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2
+      SOURCE_GPG=gnu.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://www.gnu.org/software/m4/
          ENTERED=20010922
          UPDATED=20040517

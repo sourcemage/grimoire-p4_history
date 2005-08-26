@@ -2,9 +2,12 @@
          VERSION=1.5.18
        BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-          MD5[0]=fbbe8d0fb5aa6a7d537d8c978d5e999e
+  SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2
+      SOURCE_GPG=gnu-verified.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://www.gnu.org/software/libtool/
          ENTERED=20010922
          UPDATED=20040308

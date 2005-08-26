@@ -1,9 +1,12 @@
            SPELL=gcl
          VERSION=2.6.6
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.gnu.org/pub/gnu/gcl/$SOURCE
-          MD5[0]='3efd1ddc4a71059680af0cad1a861aff'
+  SOURCE2_URL[0]=ftp://ftp.gnu.org/pub/gnu/gcl/$SOURCE2
+      SOURCE_GPG=gnu-verified.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://www.gnu.org/software/gcl/gcl.html
         BUILD_API=2
          ENTERED=20020312

@@ -1,9 +1,12 @@
            SPELL=findutils
          VERSION=4.2.23
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-          MD5[0]=3a87472257e23c56192fe1bc3dbe9bda
+  SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2
+      SOURCE_GPG=gnu-verified.gpg:$SOURCE2
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://www.gnu.org/software/findutils
          ENTERED=20010922
          UPDATED=20050309
