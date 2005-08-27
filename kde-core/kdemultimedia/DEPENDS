@@ -1,6 +1,10 @@
 depends  kdebase  &&
 depends  libpng   &&
 
+if [ "$XINELIB" == "y" ]; then
+   depends  xine-lib
+fi                                      &&
+
 source  $SECTION_DIRECTORY/KDE_DEPENDS  &&
 
 optional_depends  lame                    \
@@ -22,11 +26,6 @@ optional_depends  libmad                                  \
                   '--with-libmad'                         \
                   '--without-libmad'                      \
                   'for high-quality MPEG audio decoding'  &&
-
-optional_depends  xine-lib                      \
-                  ''                            \
-                  '--disable-xinetest'          \
-                  'for XINE video integration'  &&
 
 optional_depends  speex                             \
                   '--with-speex'                    \
@@ -78,7 +77,3 @@ optional_depends  trm                                               \
                   ''                                                \
                   'for relatable TRM acoustic fingerprint support'
 
-#multi_optional_depends  arts  alsa                  \
-#                        '--with-arts-alsa'          \
-#                        '--without-arts-alsa'       \
-#                        'for ALSA support in aRts'
