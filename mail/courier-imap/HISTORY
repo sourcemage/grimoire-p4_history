@@ -1,9 +1,18 @@
+2005-07-22 Jason Flatt <jflatt@sourcemage.org>
+	* BUILD, DEPENDS, DETAILS: Version bump to 4.0.3.
+	* BUILD, CONFIGURE, DEPENDS, DETAILS, INSTALL: Convert to BUILD_API 2.
+	* BUILD, CONFIGURE, DEPENDS: Convert to use config_query*.
+	* TRIGGERS: Moved to the courier-authlib spell.
+	* HISTORY: Correct some white space.
+	* DETAILS: Converted from MD5 to GPG checking.
+	* DETAILS: Removed the invalid SOURCE_URL[1] field.
+
 2005-02-17 Jeremy Blosser <jblosser-smgl@firinn.org>
 	* init.d/*: Changed -stderrlogger=${exec_prefix}/courierlogger to
 	  ${exec_prefix}/sbin/courierlogger to re(?)fix bug #7060
 
 2005-01-29 Arjan Bouter <abouter@sourcemage.org>
-	* BUILD, DEPENDS, CONFIGURE:
+        * BUILD, DEPENDS, CONFIGURE:
 	  spell_installed -> spell_ok conversion
 
 2005-01-22 Rafael George <george.rafael@gmail.com>
@@ -20,7 +29,7 @@
 	  Removed MAINTAINER
 	  Shortened SHORT
 	* init.d/*: Changed -stderrlogger=${libexecdir}/courierlogger to use
-	  exec_prefix instead of libexecdir (Bug #7060)
+	  exec_prefix instead of libexecdir  (Bug #7060)
 
 2004-06-11 Jason Flatt <jflatt@sourcemage.org>
 	* DETAILS: Version bump to 3.0.5.
