@@ -1,34 +1,49 @@
-(
+create_account  courier                                       &&
 
-  create_account  courier                                                &&
+case  "${COURIER_SSLWEBMAIL}"  in
+    yes)                   OPTS="$OPTS  --enable-https"
+                           ;;
+    login_only)            OPTS="$OPTS  --enable-https=login"
+                           ;;
+    user_decides_via_url)  OPTS="$OPTS  --enable-https=auto"
+                           ;;
+    deafult)               OPTS="$OPTS  --enable-https=login  \
+                                        --enable-https=auto"
+                           ;;
+    no)                    OPTS="$OPTS  --disable-https"
+                           ;;
+esac                                                          &&
 
-  LDFLAGS=${LDFLAGS//-z combreloc/}                                      &&
+if  [  "${COURIER_IMAPBUGS}"    ==  "--enable-workarounds-for-imap-client-bugs"  ]   ||
+       "${COURIER_TRASHQUOTA}"  ==  "--with-trashquota"                          ];  then
+    ##  Add the options that do not break 'make check':
+    OPTS="${OPTS}                                             \
+          ${COURIER_OPTS}                                     \
+             --sysconfdir=${INSTALL_ROOT}/etc/courier         \
+          --localstatedir=${INSTALL_ROOT}/var/courier         \
+          --with-shellpath=${PATH}                            \
+          --disable-root-check                                \
+          --with-mailuser=courier                             \
+          --with-mailgroup=courier"                           &&
+    default_build                                             &&
+    make    check                                             &&
+    ##  Add the options that break 'make check':
+    OPTS="${OPTS}                                             \
+          ${COURIER_IMAPBUGS}                                 \
+          ${COURIER_TRASHQUOTA}"                              &&
+    default_build
+else
+    OPTS="${OPTS}                                             \
+          ${COURIER_OPTS}                                     \
+             --sysconfdir=${INSTALL_ROOT}/etc/courier         \
+          --localstatedir=${INSTALL_ROOT}/var/courier         \
+          --with-shellpath=${PATH}                            \
+          --disable-root-check                                \
+          --with-mailuser=courier                             \
+          --with-mailgroup=courier                            \
+          ${COURIER_IMAPBUGS}                                 \
+          ${COURIER_TRASHQUOTA}"                              &&
+    default_build                                             &&
+    make    check
+fi
 
-  ./configure                                                            \
-               --prefix=${INSTALL_ROOT}/usr                              \
-               --datadir=${INSTALL_ROOT}/usr/share/courier               \
-               --sysconfdir=${INSTALL_ROOT}/etc/courier                  \
-               --localstatedir=${INSTALL_ROOT}/var/courier               \
-               --disable-root-check                                      \
-               --with-mailuser=courier                                   \
-               --with-mailgroup=courier                                  \
-               --with-shellpath=${PATH}                                  \
-               ${OPTS}                                                   &&
-
-  sedit  "s:-z combreloc::g"  ${SOURCE_DIRECTORY}/authlib/config.log     &&
-  sedit  "s:-z combreloc::g"  ${SOURCE_DIRECTORY}/authlib/config.status  &&
-  sedit  "s:-z combreloc::g"  ${SOURCE_DIRECTORY}/authlib/Makefile       &&
-
-  make                                                                   &&
-  prepare_install                                                        &&
-# mkdir   -p  ${INSTALL_ROOT}/usr/share/courier                          &&
-  make    install                                                        &&
-  make    install-configure                                              &&
-
-  ln -s $INSTALL_ROOT/usr/bin/sendmail $INSTALL_ROOT/usr/lib/sendmail   &&
-
-  if  [  "${AUTHPAM}"  ==  "y"  ];  then
-    cp  ${SCRIPT_DIRECTORY}/pam.d/*  ${INSTALL_ROOT}/etc/pam.d
-  fi
-
-)  >  $C_FIFO  2>&1
