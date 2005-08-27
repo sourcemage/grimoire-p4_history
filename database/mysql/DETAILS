@@ -1,10 +1,10 @@
            SPELL=mysql
 if [ "$DEVEL" == "y" ];then
          VERSION=5.0.11-beta
-          MD5[0]=e222c5c1f26bba4c30d0243696454822
+          SOURCE_GPG="gurus.gpg:mysql-5.0.11-beta.tar.gz.sig"
 else
-         VERSION=4.1.13
-          MD5[0]=1324043aaea57471a2083e91b6cb9f83
+         VERSION=4.1.14
+          SOURCE_GPG="gurus.gpg:mysql-4.1.14.tar.gz.sig"
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
