@@ -4,12 +4,15 @@ if  [  "$GAIM_CVS"  ==  "y"  ]; then
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim:gaim
   FORCE_DOWNLOAD=1
-          MD5[0]="IGNORE"
+          SOURCE_IGNORE=volatile          
 else
           VERSION=1.5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE2=${SOURCE}.asc
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-           SOURCE_GPG="gurus.gpg:gaim-1.5.0.tar.bz2.sig"
+   SOURCE2_URL[0]=${SOURCE_URL}.asc
+   SOURCE2_IGNORE=signature
+           SOURCE_GPG="gaim.gpg:${SOURCE}.asc"
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim.sourceforge.net/
