@@ -1,3 +1,11 @@
+2005-08-25 Robin Cook <rcook@wyrms.net>
+	* DETAILS: updated VERSION to 1.0.0
+	  change SOURCE_URL
+	* DEPENDS: added gtk-doc as optional depends
+	* PRE_BUILD: removed as patch no longer needed
+	* CONFIGURE: added to query about PDF and PS backends
+	* BUILD: set OPTS by queries
+
 2005-08-22 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, cairo_font_from_face.patch: fix a crasher bug causing
 	  poppler to segfault on every pdf file
