@@ -1,3 +1,16 @@
+2005-08-27 Sergey Lipnevich <sergey@sourcemage.org>
+	* mk_initrd.lvm: add the LVM script that also puts UDEV on initrd;
+	  this script uses Busybox's ash for the initrd's linuxrc script,
+	  because the bash.static binary segfaults upon returning from an
+	  external command (e.g. ls), on amd64 with gcc 3.4 or 4;
+	* DEPENDS: bootsplash may not be selected; add device mapper and LVM;
+	* BUILD: fix a problem with $EDITOR that hit me with newly installed SMGL;
+	  a few tiny improvements;
+	* DETAILS: increase UPDATED; don't gather docs, there're none;
+	* INSTALL: simpler calculation of image name;
+	* PRE_BUILD: bootsplash may not be selected;
+	* mkinfo: add a new script.
+
 2005-07-16 David Brown <dmlb2000@excite.com>
 	* mk_initrd.iso: fixed syntax error and updated so it
 	  works better

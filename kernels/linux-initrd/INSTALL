@@ -1,5 +1,5 @@
 if [ "$FILE_SYSTEM" == "y" ] ; then
-  INITRD_NAME="initrd-$KVERSION-`echo ${MKINITRD_SCRIPT} | cut -d. -f2`"
+  INITRD_NAME="initrd-$KVERSION-${MKINITRD_SCRIPT#*.}"
   case "$FILESYS_TYPE" in
     mkfs.cramfs)
       message "${MESSAGE_COLOR}Using cramfs to make initrd${DEFAULT_COLOR}" &&
