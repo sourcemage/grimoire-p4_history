@@ -14,9 +14,9 @@ exec_prefix="/usr"
 sysconfdir="/etc"
 sbindir="/usr/sbin"
 
-if test ! -f /etc/authlib/authdaemonrc
+if test ! -f /etc/courier/authlib/authdaemonrc
 then
-	echo "/etc/authlib/authdaemonrc does not exist, forgot make install-configure?"
+	echo "/etc/courier/authlib/authdaemonrc does not exist, forgot make install-configure?"
 	exit 1
 fi
 
