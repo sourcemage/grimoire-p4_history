@@ -1,5 +1,10 @@
-depends  bootsplash &&
-if [ "$FILE_SYSTEM" == "y" ] ; then
+if [[ "$SPLASH_IMAGE" = 'y' ]]; then
+  depends  bootsplash
+fi &&
+if [[ "$FILE_SYSTEM" == 'y' ]]; then
   depends  busybox
+fi &&
+if [[ "${MKINITRD_SCRIPT#*.}" == 'lvm' ]]; then
+  depends  device-mapper &&
+  depends  lvm
 fi
-

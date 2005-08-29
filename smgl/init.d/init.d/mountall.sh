@@ -57,7 +57,7 @@ start()
 
   if optional_executable /sbin/vgscan && optional_executable /sbin/vgchange ; then
     echo -n "Scanning for and initializing all available LVM volume groups..."
-    /sbin/vgscan       --ignorelockingfailure   &&
+    /sbin/vgscan       --ignorelockingfailure  --mknodes  &&
     /sbin/vgchange -ay --ignorelockingfailure
     evaluate_retval
   fi

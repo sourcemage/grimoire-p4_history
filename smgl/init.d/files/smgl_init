@@ -26,6 +26,9 @@
 # Reset some environment variables so the script won't get any surprises
 PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 
+# Set the default list of init script functions.
+FUNCS="start stop restart reload force-reload status"
+
 # /usr/bin/basename might not be available
 # $1 - path
 basename()
