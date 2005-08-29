@@ -12,5 +12,6 @@ patch -p0 << EOF
  XAWLIBDIR = -L/usr/X11R6/lib
 EOF
 
-xmkmf  -a
+invoke_gcc &&
+xmkmf  -a  &&
 make 
