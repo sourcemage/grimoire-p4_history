@@ -30,8 +30,7 @@ exit 1
 fi
 p4 edit latest.defaults
 p4 edit HISTORY
-sed "s/=$2 */=$3/g" latest.defaults > latest.defaults.new
-mv -v latest.defaults.new latest.defaults
+sed -i "s/=$2 *^/=$3/g" latest.defaults 
 p4 integ info/patches/$1/$2 info/patches/$1/$3
 p4 edit info/patches/$1/$3
 if [ "$4" != "" ]
