@@ -51,7 +51,7 @@ if  [  "${COURIER_IMAP}"  ==  "y"  ];  then
 
     config_query_option  COURIER_IMAPBUGS                                                                                          \
                          "Do you want to enable workarounds for some IMAP clients that have a buggy implementation of IMAP4rev1?"  \
-                         y                                                                                                         \
+                         n                                                                                                         \
                          "--enable-workarounds-for-imap-client-bugs"                                                               \
                          "--disable-workarounds-for-imap-client-bugs"                                                              &&
 
@@ -72,13 +72,13 @@ fi                                                                              
 
 config_query  COURIER_WEBMAIL  "Do you want to install and configure the webmail portion of Courier? "  y  &&
 if  [  "${COURIER_WEBMAIL}"  ==  "y"  ];  then
-    config_query_list  COURIER_SSLWEBMAIL                                          \
-                       "Would you like to enable SSL for the Webmail server? "  y  \
-                       yes                                                         \
-                       courier_default                                             \
-                       login_only                                                  \
-                       user_decides_via_url                                        \
-                       no                                                          &&
+    config_query_list  COURIER_SSLWEBMAIL                                        \
+                       "Would you like to enable SSL for the Webmail server? "   \
+                       yes                                                       \
+                       courier_default                                           \
+                       login_only                                                \
+                       user_decides_via_url                                      \
+                       no                                                        &&
 
     config_query_option  COURIER_SPELLCHECK                                                \
                          "Do you want to enable spell checking in Courier's webmail? "  y  \

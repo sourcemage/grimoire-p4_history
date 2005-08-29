@@ -1,3 +1,13 @@
+2005-08-28 Jason Flatt <jflatt@sourcemage.org>
+	* init.d/courier-authlib: Deleted. Now provided by the courier-authlib
+	  spell.
+	* init.d/*: Replaced all init scripts with new ones for the latest
+	  version of Courier.
+	* BUILD: Removed the 'make check' function, since it did not work with
+	  root accounts.
+	* CONFIGURE: Fixed an config_query error in the Web mail question.
+	* PRE_REMOVE: Removed, no longer necessary.
+
 2005-07-22 Jason Flatt <jflatt@sourcemage.org>
 	* DETAILS: Version bump to 0.48.2.
 	  Added BUILD_API=2.

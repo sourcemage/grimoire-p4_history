@@ -14,36 +14,16 @@ case  "${COURIER_SSLWEBMAIL}"  in
                            ;;
 esac                                                          &&
 
-if  [  "${COURIER_IMAPBUGS}"    ==  "--enable-workarounds-for-imap-client-bugs"  ]   ||
-       "${COURIER_TRASHQUOTA}"  ==  "--with-trashquota"                          ];  then
-    ##  Add the options that do not break 'make check':
-    OPTS="${OPTS}                                             \
-          ${COURIER_OPTS}                                     \
-             --sysconfdir=${INSTALL_ROOT}/etc/courier         \
-          --localstatedir=${INSTALL_ROOT}/var/courier         \
-          --with-shellpath=${PATH}                            \
-          --disable-root-check                                \
-          --with-mailuser=courier                             \
-          --with-mailgroup=courier"                           &&
-    default_build                                             &&
-    make    check                                             &&
-    ##  Add the options that break 'make check':
-    OPTS="${OPTS}                                             \
-          ${COURIER_IMAPBUGS}                                 \
-          ${COURIER_TRASHQUOTA}"                              &&
-    default_build
-else
-    OPTS="${OPTS}                                             \
-          ${COURIER_OPTS}                                     \
-             --sysconfdir=${INSTALL_ROOT}/etc/courier         \
-          --localstatedir=${INSTALL_ROOT}/var/courier         \
-          --with-shellpath=${PATH}                            \
-          --disable-root-check                                \
-          --with-mailuser=courier                             \
-          --with-mailgroup=courier                            \
-          ${COURIER_IMAPBUGS}                                 \
-          ${COURIER_TRASHQUOTA}"                              &&
-    default_build                                             &&
-    make    check
-fi
+OPTS="${OPTS}                                                 \
+      ${COURIER_OPTS}                                         \
+      ${COURIER_IMAPBUGS}                                     \
+      ${COURIER_TRASHQUOTA}                                   \
+         --sysconfdir=${INSTALL_ROOT}/etc/courier             \
+      --localstatedir=${INSTALL_ROOT}/var/courier             \
+      --with-shellpath=${PATH}                                \
+      --disable-root-check                                    \
+      --with-mailuser=courier                                 \
+      --with-mailgroup=courier"                               &&
+
+default_build
 
