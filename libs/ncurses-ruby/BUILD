@@ -1,3 +1,2 @@
 ruby extconf.rb         &&
-make                    &&
-make install
+make
