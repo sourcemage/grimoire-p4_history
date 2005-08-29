@@ -4,11 +4,9 @@ depends  tetex     &&
 depends  g++       &&
 
 if  [  "$LYX_GUI"  =  "xforms"  ];  then
-  depends  xforms  "--with-frontend=xforms"
+  depends  xforms
 elif  [  "$LYX_GUI"  =  "qt-x11"  ];  then
-  depends  qt-x11  "--with-frontend=qt                  \
-                    --with-qt-includes=/usr/include/qt  \
-                    --with-qt-libraries=/usr/lib/qt"
+  depends  qt-x11  
 fi  &&
 
 optional_depends  python                                      \
@@ -74,4 +72,6 @@ optional_depends  wv "" ""                                                \
 optional_depends  xdvi "" ""                                              \
                   "for dvi viewer integration."                          &&
 optional_depends  xpdf "" ""                                              \
-                  "for xpdf .pdf viewer integration."
+                  "for xpdf .pdf viewer integration."                    &&
+optional_depends  GECKO "" ""                                             \
+                  "for html previewing."
