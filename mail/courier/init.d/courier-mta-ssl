@@ -11,6 +11,11 @@
 #  Argument "stop" stops the daemon (just the listening daemon).
 #  Argument "restart" rereads the smtpaccess.dat file.
 
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+
+.  /etc/init.d/smgl_functions
+
 prefix="/usr"
 exec_prefix="/usr"
 sysconfdir="/etc/courier"

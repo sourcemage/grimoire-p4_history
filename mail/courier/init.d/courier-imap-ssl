@@ -5,6 +5,11 @@
 # See COPYING for distribution information.
 
 
+RUNLEVEL=3
+NEEDS="+network +remotefs"
+
+.  /etc/init.d/smgl_functions
+
 prefix=/usr
 exec_prefix=/usr
 sbindir=${exec_prefix}/sbin
