@@ -1,12 +1,12 @@
-diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
---- librsvg-2.11.0.orig/configure	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/configure	2005-08-28 10:12:33.000000000 -0500
+diff -u -a -b -B -r librsvg-2.11.1/configure librsvg-2.11.1.mod/configure
+--- librsvg-2.11.1/configure	2005-08-29 10:08:11.000000000 -0500
++++ librsvg-2.11.1.mod/configure	2005-08-29 13:13:32.000000000 -0500
 @@ -463,7 +463,7 @@
  # include <unistd.h>
  #endif"
  
--ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS GDK_PIXBUF_REQUIRED GLIB_REQUIRED LIBART_REQUIRED LIBXML_REQUIRED PANGOFT2_REQUIRED POPT_REQUIRED LIBRSVG_MAJOR_VERSION LIBRSVG_MINOR_VERSION LIBRSVG_MICRO_VERSION VERSION_INFO INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP build build_cpu build_vendor build_os host host_cpu host_vendor host_os EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB DLLTOOL ac_ct_DLLTOOL AS ac_ct_AS OBJDUMP ac_ct_OBJDUMP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL PLATFORM_WIN32_TRUE PLATFORM_WIN32_FALSE OS_WIN32_TRUE OS_WIN32_FALSE PKG_CONFIG GLIB_CFLAGS GLIB_LIBS FREETYPE_CONFIG FREETYPE_LIBS FREETYPE_CFLAGS LIBRSVG_CFLAGS LIBRSVG_LIBS POPT_LIBS LIBGSF_CFLAGS LIBGSF_LIBS WITH_LIBGSF_TRUE WITH_LIBGSF_FALSE LIBGSFPKG LIBGNOME_VFS_CFLAGS LIBGNOME_VFS_LIBS WITH_LIBGNOME_VFS_TRUE WITH_LIBGNOME_VFS_FALSE LIBGNOME_VFSPKG LIBCROCO_CFLAGS LIBCROCO_LIBS LIBCROCOPKG GTK_CFLAGS GTK_LIBS GTK_VERSION HAVE_GTK_TRUE HAVE_GTK_FALSE GNOME_PRINT_CFLAGS GNOME_PRINT_LIBS GDK_X11_CFLAGS GDK_X11_LIBS X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS ENABLE_GTK_ENGINE_TRUE ENABLE_GTK_ENGINE_FALSE QUERYLOADERS ENABLE_PIXBUF_LOADER_TRUE ENABLE_PIXBUF_LOADER_FALSE MOZILLA_CONFIG MOZILLA_CFLAGS MOZILLA_LIBS WITH_MOZILLA_TRUE WITH_MOZILLA_FALSE HTML_DIR GTKDOC DB2HTML HAVE_DOCBOOK_TRUE HAVE_DOCBOOK_FALSE ENABLE_GTK_DOC_TRUE ENABLE_GTK_DOC_FALSE LIBOBJS LTLIBOBJS'
-+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS GDK_PIXBUF_REQUIRED GLIB_REQUIRED LIBART_REQUIRED LIBXML_REQUIRED PANGOFT2_REQUIRED POPT_REQUIRED LIBRSVG_MAJOR_VERSION LIBRSVG_MINOR_VERSION LIBRSVG_MICRO_VERSION VERSION_INFO INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP build build_cpu build_vendor build_os host host_cpu host_vendor host_os EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB DLLTOOL ac_ct_DLLTOOL AS ac_ct_AS OBJDUMP ac_ct_OBJDUMP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL PLATFORM_WIN32_TRUE PLATFORM_WIN32_FALSE OS_WIN32_TRUE OS_WIN32_FALSE PKG_CONFIG GLIB_CFLAGS GLIB_LIBS FREETYPE_CONFIG FREETYPE_LIBS FREETYPE_CFLAGS LIBRSVG_CFLAGS LIBRSVG_LIBS POPT_LIBS LIBGSF_CFLAGS LIBGSF_LIBS WITH_LIBGSF_TRUE WITH_LIBGSF_FALSE LIBGSFPKG LIBGNOME_VFS_CFLAGS LIBGNOME_VFS_LIBS WITH_LIBGNOME_VFS_TRUE WITH_LIBGNOME_VFS_FALSE LIBGNOME_VFSPKG LIBCROCO_CFLAGS LIBCROCO_LIBS LIBCROCOPKG GTK_CFLAGS GTK_LIBS GTK_VERSION HAVE_GTK_TRUE HAVE_GTK_FALSE GNOME_PRINT_CFLAGS GNOME_PRINT_LIBS GDK_X11_CFLAGS GDK_X11_LIBS X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS ENABLE_GTK_ENGINE_TRUE ENABLE_GTK_ENGINE_FALSE QUERYLOADERS ENABLE_PIXBUF_LOADER_TRUE ENABLE_PIXBUF_LOADER_FALSE FIREFOX_CONFIG FIREFOX_CFLAGS FIREFOX_LIBS WITH_FIREFOX_TRUE WITH_FIREFOX_FALSE HTML_DIR GTKDOC DB2HTML HAVE_DOCBOOK_TRUE HAVE_DOCBOOK_FALSE ENABLE_GTK_DOC_TRUE ENABLE_GTK_DOC_FALSE LIBOBJS LTLIBOBJS'
+-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS GDK_PIXBUF_REQUIRED GLIB_REQUIRED LIBART_REQUIRED LIBXML_REQUIRED PANGOFT2_REQUIRED POPT_REQUIRED LIBRSVG_MAJOR_VERSION LIBRSVG_MINOR_VERSION LIBRSVG_MICRO_VERSION VERSION_INFO INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP build build_cpu build_vendor build_os host host_cpu host_vendor host_os EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB DLLTOOL ac_ct_DLLTOOL AS ac_ct_AS OBJDUMP ac_ct_OBJDUMP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL PLATFORM_WIN32_TRUE PLATFORM_WIN32_FALSE OS_WIN32_TRUE OS_WIN32_FALSE PKG_CONFIG GLIB_CFLAGS GLIB_LIBS FREETYPE_CONFIG FREETYPE_LIBS FREETYPE_CFLAGS LIBRSVG_CFLAGS LIBRSVG_LIBS POPT_LIBS LIBGSF_CFLAGS LIBGSF_LIBS WITH_LIBGSF_TRUE WITH_LIBGSF_FALSE LIBGSFPKG LIBGNOME_VFS_CFLAGS LIBGNOME_VFS_LIBS WITH_LIBGNOME_VFS_TRUE WITH_LIBGNOME_VFS_FALSE LIBGNOME_VFSPKG LIBCROCO_CFLAGS LIBCROCO_LIBS LIBCROCOPKG GTK_CFLAGS GTK_LIBS GTK_VERSION HAVE_GTK_TRUE HAVE_GTK_FALSE GNOME_PRINT_CFLAGS GNOME_PRINT_LIBS GDK_X11_CFLAGS GDK_X11_LIBS X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS ENABLE_GTK_ENGINE_TRUE ENABLE_GTK_ENGINE_FALSE QUERYLOADERS ENABLE_PIXBUF_LOADER_TRUE ENABLE_PIXBUF_LOADER_FALSE MOZILLA_CONFIG MOZILLA_CFLAGS MOZILLA_LIBS WITH_MOZILLA_TRUE WITH_MOZILLA_FALSE HTML_DIR GTKDOC DB2HTML HAVE_DOCBOOK_TRUE HAVE_DOCBOOK_FALSE ENABLE_GTK_DOC_TRUE ENABLE_GTK_DOC_FALSE LIBOBJS LTLIBOBJS'
++ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS GDK_PIXBUF_REQUIRED GLIB_REQUIRED LIBART_REQUIRED LIBXML_REQUIRED PANGOFT2_REQUIRED POPT_REQUIRED LIBRSVG_MAJOR_VERSION LIBRSVG_MINOR_VERSION LIBRSVG_MICRO_VERSION VERSION_INFO INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP build build_cpu build_vendor build_os host host_cpu host_vendor host_os EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB DLLTOOL ac_ct_DLLTOOL AS ac_ct_AS OBJDUMP ac_ct_OBJDUMP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL PLATFORM_WIN32_TRUE PLATFORM_WIN32_FALSE OS_WIN32_TRUE OS_WIN32_FALSE PKG_CONFIG GLIB_CFLAGS GLIB_LIBS FREETYPE_CONFIG FREETYPE_LIBS FREETYPE_CFLAGS LIBRSVG_CFLAGS LIBRSVG_LIBS POPT_LIBS LIBGSF_CFLAGS LIBGSF_LIBS WITH_LIBGSF_TRUE WITH_LIBGSF_FALSE LIBGSFPKG LIBGNOME_VFS_CFLAGS LIBGNOME_VFS_LIBS WITH_LIBGNOME_VFS_TRUE WITH_LIBGNOME_VFS_FALSE LIBGNOME_VFSPKG LIBCROCO_CFLAGS LIBCROCO_LIBS LIBCROCOPKG GTK_CFLAGS GTK_LIBS GTK_VERSION HAVE_GTK_TRUE HAVE_GTK_FALSE GNOME_PRINT_CFLAGS GNOME_PRINT_LIBS GDK_X11_CFLAGS GDK_X11_LIBS X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS ENABLE_GTK_ENGINE_TRUE ENABLE_GTK_ENGINE_FALSE QUERYLOADERS ENABLE_PIXBUF_LOADER_TRUE ENABLE_PIXBUF_LOADER_FALSE FIREFOX_CONFIG FIREFOX_CFLAGS FIREFOX_LIBS WITH_FIREFOX_TRUE WITH_FIREFOX_FALSE HTML_DIR GTKDOC DB2HTML HAVE_DOCBOOK_TRUE HAVE_DOCBOOK_FALSE ENABLE_GTK_DOC_TRUE ENABLE_GTK_DOC_FALSE LIBOBJS LTLIBOBJS'
  ac_subst_files=''
  
  # Initialize some variables set by options.
@@ -19,7 +19,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
    --enable-gtk-doc        use gtk-doc to build documentation default=yes
  
  Optional Packages:
-@@ -24415,28 +24415,28 @@
+@@ -24101,28 +24101,28 @@
  ##################################################
  ##################################################
  
@@ -62,7 +62,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
    ;;
    *)
    as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-@@ -24446,22 +24446,22 @@
+@@ -24132,22 +24132,22 @@
    test -z "$as_dir" && as_dir=.
    for ac_exec_ext in '' $ac_executable_extensions; do
    if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
@@ -91,7 +91,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  else
    echo "$as_me:$LINENO: result: no" >&5
  echo "${ECHO_T}no" >&6
-@@ -24469,9 +24469,9 @@
+@@ -24155,9 +24155,9 @@
  
     fi
  
@@ -104,7 +104,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
     else
  
    succeeded=no
-@@ -24527,31 +24527,31 @@
+@@ -24213,31 +24213,31 @@
    else
       PKG_CONFIG_MIN_VERSION=0.9.0
       if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
@@ -153,7 +153,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  
          fi
  
-@@ -24564,27 +24564,27 @@
+@@ -24250,27 +24250,27 @@
    fi
  
    if test $succeeded = yes; then
@@ -191,7 +191,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  fi
  
  
-@@ -25138,10 +25138,10 @@
+@@ -24824,10 +24824,10 @@
  Usually this means the macro was only invoked conditionally." >&2;}
     { (exit 1); exit 1; }; }
  fi
@@ -205,7 +205,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  Usually this means the macro was only invoked conditionally." >&2;}
     { (exit 1); exit 1; }; }
  fi
-@@ -25830,11 +25830,11 @@
+@@ -25515,11 +25515,11 @@
  s,@QUERYLOADERS@,$QUERYLOADERS,;t t
  s,@ENABLE_PIXBUF_LOADER_TRUE@,$ENABLE_PIXBUF_LOADER_TRUE,;t t
  s,@ENABLE_PIXBUF_LOADER_FALSE@,$ENABLE_PIXBUF_LOADER_FALSE,;t t
@@ -222,7 +222,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  s,@HTML_DIR@,$HTML_DIR,;t t
  s,@GTKDOC@,$GTKDOC,;t t
  s,@DB2HTML@,$DB2HTML,;t t
-@@ -26574,7 +26574,7 @@
+@@ -26259,7 +26259,7 @@
  
  	Build GdkPixbuf loader:         ${enable_pixbuf_loader}
  	Build theme engine:             ${enable_gtk_theme}
@@ -231,9 +231,9 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure librsvg-2.11.0.mod/configure
  	Handle svgz files:              ${test_gsf}
  	Use Gnome VFS:                  ${test_gnome_vfs}
  	Use libcroco for css parsing:   ${test_croco}
-diff -u -a -b -B -r librsvg-2.11.0.orig/configure.in librsvg-2.11.0.mod/configure.in
---- librsvg-2.11.0.orig/configure.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/configure.in	2005-08-28 10:11:34.000000000 -0500
+diff -u -a -b -B -r librsvg-2.11.1/configure.in librsvg-2.11.1.mod/configure.in
+--- librsvg-2.11.1/configure.in	2005-08-27 15:32:35.000000000 -0500
++++ librsvg-2.11.1.mod/configure.in	2005-08-29 13:12:35.000000000 -0500
 @@ -315,33 +315,33 @@
  ##################################################
  ##################################################
@@ -294,10 +294,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/configure.in librsvg-2.11.0.mod/configur
  	Handle svgz files:              ${test_gsf}
  	Use Gnome VFS:                  ${test_gnome_vfs}
  	Use libcroco for css parsing:   ${test_croco}
-diff -u -a -b -B -r librsvg-2.11.0.orig/data/Makefile.in librsvg-2.11.0.mod/data/Makefile.in
---- librsvg-2.11.0.orig/data/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/data/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -138,9 +138,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/data/Makefile.in librsvg-2.11.1.mod/data/Makefile.in
+--- librsvg-2.11.1/data/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/data/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -310,7 +310,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/data/Makefile.in librsvg-2.11.0.mod/data
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -169,8 +169,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -321,10 +321,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/data/Makefile.in librsvg-2.11.0.mod/data
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/doc/Makefile.in librsvg-2.11.0.mod/doc/Makefile.in
---- librsvg-2.11.0.orig/doc/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/doc/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -136,9 +136,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/doc/Makefile.in librsvg-2.11.1.mod/doc/Makefile.in
+--- librsvg-2.11.1/doc/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/doc/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -126,9 +126,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -337,7 +337,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/doc/Makefile.in librsvg-2.11.0.mod/doc/M
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -167,8 +167,8 @@
+@@ -157,8 +157,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -348,10 +348,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/doc/Makefile.in librsvg-2.11.0.mod/doc/M
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/gdk-pixbuf-loader/Makefile.in librsvg-2.11.0.mod/gdk-pixbuf-loader/Makefile.in
---- librsvg-2.11.0.orig/gdk-pixbuf-loader/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/gdk-pixbuf-loader/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -160,9 +160,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/gdk-pixbuf-loader/Makefile.in librsvg-2.11.1.mod/gdk-pixbuf-loader/Makefile.in
+--- librsvg-2.11.1/gdk-pixbuf-loader/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/gdk-pixbuf-loader/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -364,7 +364,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gdk-pixbuf-loader/Makefile.in librsvg-2.
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -191,8 +191,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -375,10 +375,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gdk-pixbuf-loader/Makefile.in librsvg-2.
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/gtk-2.0/Makefile.in librsvg-2.11.0.mod/gtk-engine/examples/bubble/gtk-2.0/Makefile.in
---- librsvg-2.11.0.orig/gtk-engine/examples/bubble/gtk-2.0/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/gtk-engine/examples/bubble/gtk-2.0/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -138,9 +138,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/gtk-engine/examples/bubble/gtk-2.0/Makefile.in librsvg-2.11.1.mod/gtk-engine/examples/bubble/gtk-2.0/Makefile.in
+--- librsvg-2.11.1/gtk-engine/examples/bubble/gtk-2.0/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/gtk-engine/examples/bubble/gtk-2.0/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -391,7 +391,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/gtk-2.0/Makef
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -169,8 +169,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -402,10 +402,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/gtk-2.0/Makef
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/Makefile.in librsvg-2.11.0.mod/gtk-engine/examples/bubble/Makefile.in
---- librsvg-2.11.0.orig/gtk-engine/examples/bubble/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/gtk-engine/examples/bubble/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -147,9 +147,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/gtk-engine/examples/bubble/Makefile.in librsvg-2.11.1.mod/gtk-engine/examples/bubble/Makefile.in
+--- librsvg-2.11.1/gtk-engine/examples/bubble/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/gtk-engine/examples/bubble/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -418,7 +418,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/Makefile.in l
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -178,8 +178,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -429,10 +429,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/bubble/Makefile.in l
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/Makefile.in librsvg-2.11.0.mod/gtk-engine/examples/Makefile.in
---- librsvg-2.11.0.orig/gtk-engine/examples/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/gtk-engine/examples/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -143,9 +143,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/gtk-engine/examples/Makefile.in librsvg-2.11.1.mod/gtk-engine/examples/Makefile.in
+--- librsvg-2.11.1/gtk-engine/examples/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/gtk-engine/examples/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -445,7 +445,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/Makefile.in librsvg-
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -174,8 +174,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -456,10 +456,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/examples/Makefile.in librsvg-
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/Makefile.in librsvg-2.11.0.mod/gtk-engine/Makefile.in
---- librsvg-2.11.0.orig/gtk-engine/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/gtk-engine/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -170,9 +170,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/gtk-engine/Makefile.in librsvg-2.11.1.mod/gtk-engine/Makefile.in
+--- librsvg-2.11.1/gtk-engine/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/gtk-engine/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -472,7 +472,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/Makefile.in librsvg-2.11.0.mo
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -201,8 +201,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -483,10 +483,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/gtk-engine/Makefile.in librsvg-2.11.0.mo
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/Makefile.in librsvg-2.11.0.mod/Makefile.in
---- librsvg-2.11.0.orig/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -244,9 +244,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/Makefile.in librsvg-2.11.1.mod/Makefile.in
+--- librsvg-2.11.1/Makefile.in	2005-08-29 10:08:09.000000000 -0500
++++ librsvg-2.11.1.mod/Makefile.in	2005-08-29 13:00:44.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -499,7 +499,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/Makefile.in librsvg-2.11.0.mod/Makefile.
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -275,8 +275,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -510,9 +510,9 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/Makefile.in librsvg-2.11.0.mod/Makefile.
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-diff -u -a -b -B -r librsvg-2.11.0.orig/moz-plugin/Makefile.am librsvg-2.11.0.mod/moz-plugin/Makefile.am
---- librsvg-2.11.0.orig/moz-plugin/Makefile.am	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/moz-plugin/Makefile.am	2005-08-28 09:34:12.000000000 -0500
+diff -u -a -b -B -r librsvg-2.11.1/moz-plugin/Makefile.am librsvg-2.11.1.mod/moz-plugin/Makefile.am
+--- librsvg-2.11.1/moz-plugin/Makefile.am	2005-03-09 18:25:18.000000000 -0600
++++ librsvg-2.11.1.mod/moz-plugin/Makefile.am	2005-08-29 13:00:44.000000000 -0500
 @@ -1,12 +1,12 @@
 -plugindir = $(libdir)/mozilla/plugins/
 +plugindir = $(libdir)/firefox/plugins/
@@ -529,10 +529,10 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/moz-plugin/Makefile.am librsvg-2.11.0.mo
  
  libmozsvgdec_la_SOURCES = moz-plugin.c
  libmozsvgdec_la_LDFLAGS = -module -avoid-version 
-diff -u -a -b -B -r librsvg-2.11.0.orig/moz-plugin/Makefile.in librsvg-2.11.0.mod/moz-plugin/Makefile.in
---- librsvg-2.11.0.orig/moz-plugin/Makefile.in	2005-08-28 09:15:18.000000000 -0500
-+++ librsvg-2.11.0.mod/moz-plugin/Makefile.in	2005-08-28 09:34:12.000000000 -0500
-@@ -158,9 +158,9 @@
+diff -u -a -b -B -r librsvg-2.11.1/moz-plugin/Makefile.in librsvg-2.11.1.mod/moz-plugin/Makefile.in
+--- librsvg-2.11.1/moz-plugin/Makefile.in	2005-08-29 10:08:10.000000000 -0500
++++ librsvg-2.11.1.mod/moz-plugin/Makefile.in	2005-08-29 13:07:36.000000000 -0500
+@@ -124,9 +124,9 @@
  MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
  MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
  MAKEINFO = @MAKEINFO@
@@ -545,7 +545,7 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/moz-plugin/Makefile.in librsvg-2.11.0.mo
  OBJDUMP = @OBJDUMP@
  OBJEXT = @OBJEXT@
  OS_WIN32_FALSE = @OS_WIN32_FALSE@
-@@ -189,8 +189,8 @@
+@@ -155,8 +155,8 @@
  WITH_LIBGNOME_VFS_TRUE = @WITH_LIBGNOME_VFS_TRUE@
  WITH_LIBGSF_FALSE = @WITH_LIBGSF_FALSE@
  WITH_LIBGSF_TRUE = @WITH_LIBGSF_TRUE@
@@ -556,18 +556,20 @@ diff -u -a -b -B -r librsvg-2.11.0.orig/moz-plugin/Makefile.in librsvg-2.11.0.mo
  X_CFLAGS = @X_CFLAGS@
  X_EXTRA_LIBS = @X_EXTRA_LIBS@
  X_LIBS = @X_LIBS@
-@@ -239,10 +239,10 @@
+@@ -204,12 +204,12 @@
  sharedstatedir = @sharedstatedir@
  sysconfdir = @sysconfdir@
  target_alias = @target_alias@
 -plugindir = $(libdir)/mozilla/plugins/
 -@WITH_MOZILLA_FALSE@plugin_LTLIBRARIES = 
--@WITH_MOZILLA_TRUE@plugin_LTLIBRARIES = libmozsvgdec.la
--INCLUDES = $(MOZILLA_CFLAGS) -DBINDIR=\"$(bindir)/\" $(GDK_X11_CFLAGS)
 +plugindir = $(libdir)/firefox/plugins/
 +@WITH_FIREFOX_FALSE@plugin_LTLIBRARIES = 
+ 
+-@WITH_MOZILLA_TRUE@plugin_LTLIBRARIES = libmozsvgdec.la
 +@WITH_FIREFOX_TRUE@plugin_LTLIBRARIES = libmozsvgdec.la
+ 
+-INCLUDES = $(MOZILLA_CFLAGS) -DBINDIR=\"$(bindir)/\" $(GDK_X11_CFLAGS)
 +INCLUDES = $(FIREFOX_CFLAGS) -DBINDIR=\"$(bindir)/\" $(GDK_X11_CFLAGS)
+ 
  libmozsvgdec_la_SOURCES = moz-plugin.c
  libmozsvgdec_la_LDFLAGS = -module -avoid-version 
- libmozsvgdec_la_LIBADD = $(GLIB_LIBS)
