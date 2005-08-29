@@ -1,13 +1,13 @@
            SPELL=subversion
-         VERSION=1.2.1
+         VERSION=1.2.3
 if [[ "$SVN_HEAD" == y ]]; then VERSION=${VERSION%.*}-HEAD; fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 if [[ "$SVN_HEAD" == y ]]; then
    SOURCE_URL[0]=svn://svn.collab.net/repos/svn/trunk/:$SPELL-$VERSION
-          MD5[0]=IGNORE
+   SOURCE_IGNORE='repository checkout'
 else
    SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
-          MD5[0]='bc2550b6c43c1d7c25870833ae5e395b'
+     SOURCE_HASH='sha1:513a217ba4a8045ea3daba5c3b0816f80ce0041b'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://subversion.tigris.org/
