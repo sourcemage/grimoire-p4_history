@@ -85,7 +85,7 @@ required_executable $PROGRAM
 
 [ -z "$NAME" ] && NAME=$( basename $PROGRAM )
 
-if builtin echo " $FUNCS " | grep -qE -e "[[:space:]]$1[[:space:]]"; then
+if /bin/expr " $FUNCS " : ".*[[:space:]]$1[[:space:]]" >/dev/null; then
   case $1 in
     start)        run_func $1           ;;
     stop)         run_func $1           ;;
