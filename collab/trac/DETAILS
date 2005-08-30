@@ -6,7 +6,7 @@ if [[ "$TRAC_HEAD" == n ]]; then
    SOURCE_URL[0]="http://ftp.edgewall.com/pub/trac/$SOURCE"
 else
          VERSION=HEAD
-   SOURCE_IGNORE='repository checkout'
+   SOURCE_IGNORE='volatile'
           SOURCE="$SPELL-$VERSION.tar.bz2"
    SOURCE_URL[0]="svn://svn.edgewall.com/repos/trac/trunk/:$SPELL-$VERSION"
   FORCE_DOWNLOAD=on

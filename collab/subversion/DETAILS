@@ -4,7 +4,7 @@ if [[ "$SVN_HEAD" == y ]]; then VERSION=${VERSION%.*}-HEAD; fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 if [[ "$SVN_HEAD" == y ]]; then
    SOURCE_URL[0]=svn://svn.collab.net/repos/svn/trunk/:$SPELL-$VERSION
-   SOURCE_IGNORE='repository checkout'
+   SOURCE_IGNORE='volatile'
 else
    SOURCE_URL[0]=http://subversion.tigris.org/tarballs/$SOURCE
      SOURCE_HASH='sha1:513a217ba4a8045ea3daba5c3b0816f80ce0041b'
