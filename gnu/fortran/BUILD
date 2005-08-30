@@ -1,11 +1,3 @@
-local OLD_CFLAGS="$CFLAGS"  &&
-# setup bootstrap ada compiler
-cd $SOURCE_DIRECTORY/gnat-3.15p-i686-pc-linux-gnu-bin  &&
-mkdir -p  $SOURCE_DIRECTORY/gnat-bin                   &&
-make  ins-all  prefix=$SOURCE_DIRECTORY/gnat-bin       &&
-PATH=$SOURCE_DIRECTORY/gnat-bin/bin:$PATH              &&
-CFLAGS=""                                              &&
-
 # take multilib option from GCC
 source $DEPENDS_CONFIG/gcc.p &&
 
@@ -17,11 +9,9 @@ $SOURCE_DIRECTORY/configure                                \
              --mandir=${INSTALL_ROOT}/usr/share/man        \
              --enable-threads=posix                        \
              --with-system-zlib                            \
-             --enable-languages=ada                        \
+             --enable-languages=f95                        \
              $GCC_MULTILIB                                 \
              $OPTS                                         &&
 
-CFLAGS="$OLD_CFLAGS"  &&
-# bootstrapping with gnat-bin needs different CFLAGS for the stage1 compile
-make CFLAGS="" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
+make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
      profiledbootstrap

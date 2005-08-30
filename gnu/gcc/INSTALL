@@ -1,5 +1,8 @@
 # this seems to be needed, otherwise it wants to recompile it and fails
 touch gcc/genmodes &&
+
+# in some weird cases, this actually fails with multiple jobs
+make_single &&
 make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"  \
      install-no-fixedincludes  &&
 

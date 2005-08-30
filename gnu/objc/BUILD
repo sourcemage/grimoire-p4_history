@@ -1,4 +1,7 @@
-cd $SOURCE_DIRECTORY.bld                                  &&
+# take multilib option from GCC
+source $DEPENDS_CONFIG/gcc.p &&
+
+cd $SOURCE_DIRECTORY.bld                                   &&
 $SOURCE_DIRECTORY/configure                                \
              --host=$HOST                                  \
              --prefix=${INSTALL_ROOT}/usr                  \
@@ -7,6 +10,7 @@ $SOURCE_DIRECTORY/configure                                \
              --enable-threads=posix                        \
              --with-system-zlib                            \
              --enable-languages=objc                       \
+             $GCC_MULTILIB                                 \
              $OPTS                                         &&
 
 make CFLAGS="$CFLAGS" BOOT_CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
