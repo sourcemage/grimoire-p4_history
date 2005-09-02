@@ -1,0 +1,27 @@
+=======================
+ Configuration summary
+=======================
+
+module events = ON_OPEN ON_EXEC
+devfs support = no
+rsbac support = no
+stacking support = yes
+local __d_path() = yes
+module debug = no
+library 1.x compatibility = yes
+
+/usr/bin/make -C /lib/modules/2.6.12.5/build SUBDIRS="/usr/src/dazuko-2.1.0-pre8" 
+modules
+make[1]: Entering directory `/usr/src/linux-2.6.12.5'
+  CC [M]  /usr/src/dazuko-2.1.0-pre8/dazuko_core.o
+  CC [M]  /usr/src/dazuko-2.1.0-pre8/dazuko_transport.o
+  CC [M]  /usr/src/dazuko-2.1.0-pre8/dazuko_linux26_lsm.o
+  CC [M]  /usr/src/dazuko-2.1.0-pre8/dazuko_linux26.o
+/usr/src/dazuko-2.1.0-pre8/dazuko_linux26.c: In function 'xp_wait_until_condition':
+/usr/src/dazuko-2.1.0-pre8/dazuko_linux26.c:172: error: too few arguments to 
+function 'try_to_freeze'
+make[2]: *** [/usr/src/dazuko-2.1.0-pre8/dazuko_linux26.o] Error 1
+make[1]: Leaving directory `/usr/src/linux-2.6.12.5'
+make[1]: *** [_module_/usr/src/dazuko-2.1.0-pre8] Error 2
+make: *** [dummy_rule] Error 2
+
