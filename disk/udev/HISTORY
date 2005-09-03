@@ -1,3 +1,7 @@
+2005-09-03 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* init.d/udevd: s/REQUIRED/RECOMMENDED/, REQUIRED doesn't exist and
+	  udevd isn't ESSENTIAL
+
 2005-08-26 Sergey Lipnevich <sergey@sourcemage.org>
 	* CONFIGURE,PRE_BUILD,BUILD,INSTALL: add option to create statically linked
 	  binaries; move patching to PRE_BUILD.
@@ -15,7 +19,7 @@
 
 2005-08-18 Flavien Bridault <disk@sourcemage.org>
 	* rules/50-default.rules: added /dev/net/tun device (bug #9478)
- 
+
 2005-08-17 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS: updated to 067, use vendor GPG key now
 	  removed BUILD_API=2, PLEASE DON'T ADD IT ONCE AGAIN !! Import API_VERSION file
