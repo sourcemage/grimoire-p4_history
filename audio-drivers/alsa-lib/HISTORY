@@ -1,3 +1,7 @@
+2005-09-02 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Removed, alsa-lib does not need alsa-utils, alsa-utils needs
+	  alsa-lib and alsa-utils installs amixer and alsactl, not alsa-lib
+
 2005-08-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* init.d/alsa: don't load drivers that are in kernel; don't check for tools
 	  from `alsa-utils'; move rmmod-related actions into a function; remove
