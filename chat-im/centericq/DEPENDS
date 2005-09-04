@@ -1,5 +1,13 @@
 depends  ncurses  &&
-optional_depends "curl"              \
-                 ""                   \
-                 "--disable-msn"      \
-                 "curl required for msn support"
+optional_depends  openssl       \
+         "--with-ssl"           \
+         "--without-ssl"        \
+         "for ssl support in Jabber"   &&
+optional_depends  gpgme           \
+         "--with-gpgme=/usr"  \
+         ""                       \
+         "for ssl support in Jabber"   &&
+optional_depends  jpeg        \
+         ""                      \
+         "--without-libjpeg"     \
+         "for Gadu-Gadu registration"
