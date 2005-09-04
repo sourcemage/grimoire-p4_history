@@ -1,6 +1,8 @@
 echo $(get_running_kernel_config CONFIG_PCCARD)
 if [[ $(get_running_kernel_config CONFIG_PCCARD) != "y" ]] &&
-   [[ $(get_running_kernel_config CONFIG_PCCARD) != "m" ]]
+   [[ $(get_running_kernel_config CONFIG_PCCARD) != "m" ]] &&
+   [[ $(get_sorcery_kernel_config CONFIG_PCCARD) != "y" ]] &&
+   [[ $(get_sorcery_kernel_config CONFIG_PCCARD) != "m" ]]
 then
 	message "${PROBLEM_COLOR}You don't have CONFIG_PCCARD enabled in your kernel${DEFAULT_COLOR}" &&
 	return 1
