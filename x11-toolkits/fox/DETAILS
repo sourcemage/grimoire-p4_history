@@ -3,11 +3,11 @@ if    [  "$REL"  =  "old"  ];  then
          VERSION=1.0.52
           MD5[0]='9b5e3cbad0e625ac20e67692ef2b9326'
 elif  [  "$REL"  =  "devel"  ];  then
-         VERSION=1.3.17
-          MD5[0]=948532da5c72f914df9f62c894e39054
+         VERSION=1.5.8
+     SOURCE_HASH=sha1:4bbe31e3eb0464a235330be117c45239dad53562
 else
-         VERSION=1.4.16
-          MD5[0]=00f3fa468e00395560da58844f8b959e
+         VERSION=1.4.17
+     SOURCE_HASH=sha1:d3636ad3e1e6b3ba66ce88af9063030469f55e89
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
