@@ -11,7 +11,7 @@ if [ "${VERSION/[a-z]*/}" != "${OLD_SPELL_VERSION/[a-z]*/}" ] &&
   rm wget                                   &&
   cp -vf $SOURCE_DIRECTORY/lib{ssl,crypto}.so* "$INSTALL_ROOT/usr/lib/" &&
   make wget                                 && # race to get a good wget back in place
-  install -m 755 wget /usr/bin/wget         &&  
+  install -m 755 wget "$INSTALL_ROOT/usr/bin/wget"                      &&  
   cd -                                      &&
   ldconfig                                  
 fi                                          &&
