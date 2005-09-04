@@ -14,3 +14,13 @@ sedit  "s/chmod 644\(.*pkgconfig\)/chmod 755\1/"  Makefile  &&
 
 make_single  &&
 make
+
+local OLD_SPELL_VERSION=""
+spell_ok $SPELL && OLD_SPELL_VERSION="$(installed_version $SPELL)"
+if [ "${VERSION/[a-z]*/}" != "${OLD_SPELL_VERSION/[a-z]*/}" ] &&
+     grep -q '^wget:openssl:on' "$DEPENDS_STATUS" # any internal sorcery interface to this data?
+  then
+  message "Building wget now so that it doesn't get borked" &&
+  summon wget                            &&
+  delve -c start BUILD wget
+fi
