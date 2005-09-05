@@ -22,6 +22,8 @@ make         && {
     then
     message "Building wget now so that it doesn't get borked" &&
     summon wget                               &&
+    RUN_COMPILER_DIR="${RUN_COMPILER_DIR:-/var/lib/sorcery/build}" &&
+    PATH="${PATH//$RUN_COMPILER_DIR:/}"                            &&
     delve -c start BUILD wget                 && # this links against old libraries still
     local TEMPWGET_DIR="$BUILD_DIRECTORY/wget-$(gaze version wget |
                         head -n 3 | tail -n 1 | awk '{ print $4 }')" &&
