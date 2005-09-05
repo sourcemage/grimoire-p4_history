@@ -1,3 +1,11 @@
+2005-09-04 Eric Sandall <eric@sandall.us>
+	* Makefile.patch: Removed (outdated)
+	* BUILD: Use sedit to add -lGL to LIBS instead of patching src/Makefile
+	  Use default_build code for ./autogen.sh
+	  Added comment about why we're using ./autogen.sh here
+	  Set EROOT and EBIN so the binary goes in /usr/bin instead of
+	  /usr/enlightenment/bin
+
 2005-03-09 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: fixed SOURCE_URL[0], removed redundant SOURCE_URL[1]
 	  removed MENU_* items
