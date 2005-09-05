@@ -6,9 +6,16 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
           MD5[0]=7a93001c0967561dc8453a3b609d0c60
 
 if [[ ! -x /usr/bin/ghc ]] ; then
-         SOURCE2=$SPELL-$VERSION-i386-unknown-linux.tar.bz2
+
+            ARCH="$(uname -m)" 
+
+  [[ "$ARCH" = i686 ]] && ARCH=i386
+
+         SOURCE2=$SPELL-$VERSION-$ARCH-unknown-linux.tar.bz2
   SOURCE2_URL[0]=http://www.haskell.org/ghc/dist/$VERSION/$SOURCE2
+
           MD5[1]=d3c755e58fe01c542ef17b385e051781
+  [ "$ARCH" = "x86_64" ] && MD5[1]=e2cc023dc361b303ba9de9948a004932
 fi
 
       LICENSE[0]=BSD
