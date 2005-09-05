@@ -1,5 +1,6 @@
 # take multilib option from GCC
 source $DEPENDS_CONFIG/gcc.p &&
+sedit "s/lib64/lib/" gcc/config/i386/linux64.h             &&
 
 cd $SOURCE_DIRECTORY.bld                                   &&
 $SOURCE_DIRECTORY/configure                                \

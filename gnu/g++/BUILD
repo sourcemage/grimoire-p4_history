@@ -1,5 +1,6 @@
 # take multilib option (and nolib64 option) from GCC
 source $DEPENDS_CONFIG/gcc.p &&
+sedit "s/lib64/lib/" gcc/config/i386/linux64.h             &&
 
 if [ "GCC_NOLIB64" = "y" ]; then
   # tell gcc (g++) to target binaries to expect the linker in /lib instead of /lib64
