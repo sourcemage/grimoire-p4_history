@@ -1,19 +1,11 @@
            SPELL=dazuko
-#if ! [ "$(uname -r|cut -f1,2 -d.)" == "2.6" ]; then
-#         VERSION=2.0.2
-#else
-         VERSION=2.0.6
-#fi
+         VERSION=2.1.0-pre9
+          MD5[0]=5e35d7e3b196595d5768f050dbf0f27c
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.dazuko.org/files/$SOURCE
         WEB_SITE=http://dazuko.org
          ENTERED=20040926
-#if [ "$VERSION" == "2.0.2" ]; then
-#          MD5[0]="5bf4d11b21a62bc3ade75f2810c854d6"
-#else
-          MD5[0]=995bf023c37ec25fd89c252a87e840be
-#fi
            SHORT="File access monitoring module."
        BUILD_API=2
       LICENSE[0]=GPL
