@@ -1,10 +1,13 @@
-message  "${MESSAGE_COLOR}Use devel fox for tempo and pitch changing${DEFAULT_COLOR}"  &&
-
 depends  fox        &&
 depends  libvorbis  &&
 depends  audiofile  &&
 depends  flac       &&
-depends  fftw2      &&
+depends  fftw2-double      &&
+
+optional_depends  libsndtouch                  \
+                  ""                           \
+                  ""                           \
+                  "for tempo and pitch changing"  &&
 
 optional_depends  ladspa                       \
                   "--enable-ladspa"            \
@@ -14,4 +17,9 @@ optional_depends  ladspa                       \
 optional_depends  JACK-DRIVER         \
                   "--enable-jack"     \
                   "--disable-jack"    \
-                  "for jack support"
+                  "for jack support"           &&
+
+optional_depends  cdrdao              \
+                  ""                  \
+                  ""                  \
+                  "for burning audio files to CD"
