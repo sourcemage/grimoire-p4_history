@@ -1,0 +1,4 @@
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+# fix install location for jay manpage
+sedit  's:/man/man1:/share/man/man1:'  mcs/jay/Makefile
