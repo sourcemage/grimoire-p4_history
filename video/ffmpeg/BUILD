@@ -10,13 +10,14 @@ fi
 patch  -p1  <  $SCRIPT_DIRECTORY/gcc-3.4.patch  &&
 
 sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
-./configure  --prefix=${INSTALL_ROOT}/usr  \
-             --enable-shared               \
-             --enable-pp                   \
-             --enable-shared-pp            \
-             --enable-gpl                  \
-             --enable-a52                  \
-             $OPTS                         &&
+./configure  --prefix=${INSTALL_ROOT}/usr            \
+             --mandir=${INSTALL_ROOT}/usr/share/man  \
+             --enable-shared                         \
+             --enable-pp                             \
+             --enable-shared-pp                      \
+             --enable-gpl                            \
+             --enable-a52                            \
+             $OPTS                                   &&
 cd  libavcodec/libpostproc  &&
 make                        &&
 cd  $SOURCE_DIRECTORY       &&
