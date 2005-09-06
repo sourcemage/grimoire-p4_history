@@ -1,12 +1,11 @@
            SPELL=libbonoboui
-         VERSION=2.10.0
+         VERSION=2.10.1
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-          MD5[0]='935eac225e6abd6b025ea2c1d1605f36'
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
-       BUILD_API=2
         WEB_SITE=http://www.ximian.com/devzone/tech/bonobo.html
          ENTERED=20020509
          UPDATED=20050708
