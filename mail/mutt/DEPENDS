@@ -1,6 +1,11 @@
 persistent_add TMP_MUTT_OPTS &&
 TMP_MUTT_OPTS="" &&
 
+optional_depends   "MAIL-TRANSPORT-AGENT"                       \
+                   ""                                           \
+                   ""                                           \
+                   "to send mail"                               &&
+                    
 if [ "${BRANCH}" == "cvs" ]; then 
 	depends "CVS"
 fi &&
@@ -52,11 +57,6 @@ if list_find "${MUTT_OPTS}" "--enable-pop" || list_find "${MUTT_OPTS}" "--enable
                    "--with-ssl"                                 \
                    ""                                           \
                    "to enable SSL support for POP/IMAP"         &&
-
-  optional_depends "nss"                                        \
-                   "--with-nss"                                 \
-                   ""                                           \
-                   "to enable SSL support for POP/IMAP via NSS" &&
 
   if [ "${BRANCH}" != "stable" ]; then
     optional_depends "gnutls"                                   \
