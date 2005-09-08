@@ -1,10 +1,10 @@
            SPELL=gqview
-if [ "$RELEASE" = "stable" ]; then
-         VERSION=2.0.1
-          MD5[0]=50bbfa87108155f11f89aa4742175c67
-elif [ "$RELEASE" = "unstable" ]; then
+if [ "$GQVIEW_DEVEL" == "y" ]; then
          VERSION=2.1.1
           MD5[0]=9460b2014d9c06b731a308bf0d2cc8ce
+else
+         VERSION=2.0.1
+          MD5[0]=50bbfa87108155f11f89aa4742175c67
 fi
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
