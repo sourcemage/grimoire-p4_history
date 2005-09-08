@@ -11,10 +11,13 @@ optional_depends  readline                           \
                   '--without-readline'               \
                   'for better command-line support'  &&
 
-optional_depends  mpich2                                   \
-                  '--with-mpi'                             \
-                  '--without-mpi'                          \
-                  'for Message Passing Interface support'  &&
+#
+# Can't find the MPI libraries
+#
+#optional_depends  mpich2                                   \
+#                  '--with-mpi'                             \
+#                  '--without-mpi'                          \
+#                  'for Message Passing Interface support'  &&
 
 #
 # Untested
