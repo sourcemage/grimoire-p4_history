@@ -1,3 +1,4 @@
+invoke_gcc			  &&
 if [ "$XMLTYPE" == "y" ]; then
    OPTS="$OPTS --with-xml=libxm"
 else
