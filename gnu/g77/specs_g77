@@ -1,14 +1,11 @@
 @f77-cpp-input:
-cc1 -E -traditional-cpp -D_LANGUAGE_FORTRAN %(cpp_options) %{E|M|MM:%(cpp_debug_options)} %{!M:%{!MM:%{!E: -o %|.f |\n f951 %|.f %{!ffree-form:-ffixed-form} %(cc1_options) %{J*} %{I*} %{!fsyntax-only:%(invoke_as)}}}}
+cc1 -E -traditional-cpp -D_LANGUAGE_FORTRAN %(cpp_options) %{E|M|MM:%(cpp_debug_options)} %{!M:%{!MM:%{!E: -o %|.f |\n f771 %|.f %(cc1_options) %{I*} %{!fsyntax-only:%(invoke_as)}}}}
 
-@f95-cpp-input:
-cc1 -E -traditional-cpp -D_LANGUAGE_FORTRAN %(cpp_options) %{E|M|MM:%(cpp_debug_options)} %{!M:%{!MM:%{!E: -o %|.f95 |\n f951 %|.f95 %(cc1_options) %{J*} %{I*} %{!fsyntax-only:%(invoke_as)}}}}
+@ratfor:
+%{C:%{!E:%eGCC does not support -C without using -E}} %{CC:%{!E:%eGCC does not support -CC without using -E}} ratfor %{C} %{CC} %{v} %{E:%W{o*}} %{!E: %{!pipe:-o %g.f} %i |\n f771 %m.f %(cc1_options) %{I*} %{!fsyntax-only:%(invoke_as)}}
 
 @f77:
-%{!E:f951 %i %{!ffree-form:-ffixed-form} %(cc1_options) %{J*} %{I*} %{!fsyntax-only:%(invoke_as)}}
-
-@f95:
-%{!E:f951 %i %(cc1_options) %{J*} %{I*} %{!fsyntax-only:%(invoke_as)}}
+%{!M:%{!MM:%{!E:f771 %i %(cc1_options) %{I*} %{!fsyntax-only:%(invoke_as)}}}}
 
 .F:
 @f77-cpp-input
@@ -19,11 +16,8 @@ cc1 -E -traditional-cpp -D_LANGUAGE_FORTRAN %(cpp_options) %{E|M|MM:%(cpp_debug_
 .FPP:
 @f77-cpp-input
 
-.F90:
-@f95-cpp-input
-
-.F95:
-@f95-cpp-input
+.r:
+@ratfor
 
 .f:
 @f77
@@ -34,8 +28,3 @@ cc1 -E -traditional-cpp -D_LANGUAGE_FORTRAN %(cpp_options) %{E|M|MM:%(cpp_debug_
 .FOR:
 @f77
 
-.f90:
-@f95
-
-.f95:
-@f95
