@@ -1,13 +1,9 @@
-depends  gconf2            &&
-depends  libbonobo         &&
-depends  gnome-mime-data2  &&
-depends  shared-mime-info  &&
+depends  gconf2              &&
+depends  neon                &&
+depends  libbonobo           &&
+depends  gnome-mime-data2    &&
+depends  shared-mime-info    &&
 depends  desktop-file-utils  &&
-
-optional_depends  neon                                      \
-                  "--enable-http-neon"                      \
-                  "--diable-http-neon"                      \
-                  "Build new neon http module"              &&
 
 optional_depends  samba                                     \
                   "--enable-samba"                          \
