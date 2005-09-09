@@ -1,4 +1,3 @@
-
 (
 ### simple script to generate the /etc/profile.d/* files 
 pop_script() {
@@ -39,9 +38,17 @@ sedit "s:val:$(grep -o $i=.*$ $OLDPRO| cut -d= -f2):g" $*
   mkdir  -p  ${INSTALL_ROOT}/etc/profile.d
   pop_script > $SOURCE_DIRECTORY/dummy && cp -f $SOURCE_DIRECTORY/dummy ${INSTALL_ROOT}/etc/profile.d/dummy 
 
-  if  ! [  -e  ${INSTALL_ROOT}/etc/profile  ] 
-  then cp  -f $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
-  fi
+  if  ! [  -e  ${INSTALL_ROOT}/etc/profile  ];  then
+    install  -m 0755  $SCRIPT_DIRECTORY/profile  ${INSTALL_ROOT}/etc
+  fi  &&
+
+  #
+  # Bug #9672
+  #
+  if  ! [  -e  ${INSTALL_ROOT}/etc/bashrc  ];  then
+    install  -m 0755  $SCRIPT_DIRECTORY/bashrc  ${INSTALL_ROOT}/etc
+  fi  &&
+
   ### change from recursion to iteration (nitpick)
   sedit "s/recursion/iteration/" ${INSTALL_ROOT}/etc/profile &&
   if ! grep -q iteration ${INSTALL_ROOT}/etc/profile; 
@@ -85,19 +92,32 @@ An attempt has been made to convert your old file, and it has been moved to /etc
 Please check your new /etc/profile.d/* entries and if correct you may remove the old(moved) /etc/profile.d/profile 
 A sample script has been installed as \"/etc/profile.d/dummy\" ${DEFAULT_COLOR}"
   fi 
-  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_profile  ] || ! grep -q iteration ${INSTALL_ROOT}/etc/skel/.bash_profile 
+  #
+  # Bug #9673
+  #
+  if    !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_profile  ]
+    ||  !  grep -q iteration ${INSTALL_ROOT}/etc/skel/.bash_profile;  then
+    install  -m 0755  ${SCRIPT_DIRECTORY}/skel/bash_profile   \
+                      ${INSTALL_ROOT}/etc/skel/.bash_profile
+  fi  &&
 
-  then  cp   ${INSTALL_ROOT}/etc/profile  ${INSTALL_ROOT}/etc/skel/.bash_profile
+  #
+  # Bug #9626
+  #
+  if    [  -e  ${INSTALL_ROOT}/etc/skel/.bashrc  ]
+    &&  [  -h  ${INSTALL_ROOT}/etc/skel/.bashrc  ];  then
+      rm  -f  ${INSTALL_ROOT}/etc/skel/.bashrc
+  fi  &&
+
+  if  !   [  -e  ${INSTALL_ROOT}/etc/skel/.bashrc  ];  then
+    install  -m 0755  ${SCRIPT_DIRECTORY}/skel/bashrc  \
+                      ${INSTALL_ROOT}/etc/skel/.bashrc
+  fi  &&
+
+  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_logout  ];  then
+    install  -m 0755  ${SCRIPT_DIRECTORY}/bash_logout        \
+                      ${INSTALL_ROOT}/etc/skel/.bash_logout
   fi
-
-  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bash_logout   ]
-  then  cp   $SCRIPT_DIRECTORY/bash_logout  ${INSTALL_ROOT}/etc/skel/.bash_logout
-  fi
-
-  if  !  [  -e  ${INSTALL_ROOT}/etc/skel/.bashrc  ]
-  then  ln  -sf  .bash_profile  ${INSTALL_ROOT}/etc/skel/.bashrc
-  fi
-
 
 ) &&
 

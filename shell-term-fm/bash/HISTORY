@@ -1,3 +1,13 @@
+2005-09-08 Eric Sandall <eric@sandall.us>
+	* profile,bash_logout: Removed execute bit
+	* bashrc: Branched from profile
+	  Don't run iteration code (Bug #9672)
+	* skel/bashrc: Added (Bug #9672)
+	* skel/bash_profile: Added (Bug #9673)
+	* FINAL: Install skel* files as $INSTALL_ROOT/etc/skel/.${FILE}
+	  Install $SCRIPT_DIRECTORY/bashrc to $INSTALL_ROOT/etc/bashrc
+	  Use `install` to install scripts
+
 2005-08-28 Sergey Lipnevich <sergey@sourcemage.org>
 	* BUILD: clean after static build; remove leading tabs;
 	* INSTALL: install static binary into /sbin and make a compatibility link.
