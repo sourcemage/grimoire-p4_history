@@ -4,6 +4,10 @@ depends  gal2             &&
 depends  scrollkeeper     &&
 depends  libgsf           &&
 
+if [[ "$DEVEL" == y ]]; then
+  depends goffice
+fi &&
+ 
 optional_depends  libbonobo             \
                   "--with-bonobo"       \
                   "--without-bonobo"    \
