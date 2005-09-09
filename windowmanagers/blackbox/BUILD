@@ -1,3 +1,7 @@
+if [  "${BLACKBOX_CVS}" == "y"  ] ; then
+  aclocal &&
+  ./mk.sh
+fi                                     &&
 sedit '30a\
 #include <cassert>\' src/Window.cc     &&
 export 	LC_ALL=en_US	               &&
