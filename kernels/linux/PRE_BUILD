@@ -38,22 +38,25 @@ then
 	. ${SPELL_DIRECTORY}/latest.defaults &&
 	local count=3
 	local source="SOURCE${count}"
-	local source_check="SOURCE${count}_IGNORE"
-	while [[ "${!source_check}" != "signature" && ! -z "${!source}" ]]
+	local source_check="PATCH[${count}]"
+	while [[ ! -z "${!source_check}" ]]
 	do
 		pval=1 &&
 		patch="PATCH[${count}]"
 		tmp=$(find ${SPELL_DIRECTORY} -name ${!patch} | head -n 1) &&
 		. ${tmp} &&
 		cd ${LINUX_SOURCE_DIRECTORY} &&
-		unpack_file "$count" &&
-		cp -v ${SOURCE_CACHE}/${source} ./ &&
-		linux_new_uncompress ./${source} &&
-		message "${MESSAGE_COLOR}Patching ${!patch}${DEFAULT_COLOR}" &&
-		patch -p${pval} <${!patch} || return 1
+		if [[ ! -z "$source" ]]
+		then
+			unpack_file "$count" &&
+			cp -v ${SOURCE_CACHE}/${source} ./ &&
+			linux_new_uncompress ./${source} &&
+			message "${MESSAGE_COLOR}Patching ${!patch}${DEFAULT_COLOR}" &&
+			patch -p${pval} <${!patch} || return 1
+		fi
 		(( count++ ))
 		source="SOURCE${count}"
-		source_check="SOURCE${count}_IGNORE"
+		source_check="PATCH[${count}]"
 	done &&	
 	make mrproper 
 elif [[ "$mode" == "oldktree" ]]
