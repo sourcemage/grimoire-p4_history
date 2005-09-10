@@ -1,3 +1,22 @@
+2005-09-09 Eric Sandall <eric@sandall.us>
+	* DETAILS: Don't explicitly list GNU_URL mirrors
+	  Updated UPDATED to force testing of my changes =}
+	  Updated to GPG keys
+	* PRE_BUILD: Use `unpack_file 2` for SOURCE2
+	* FINAL: Fix a syntax error in my bug fixes (\ to continue a line for ||
+	  and &&)
+	  Clean up some formatting
+
+2005-09-08 Eric Sandall <eric@sandall.us>
+	* profile,bash_logout: Removed execute bit
+	* bashrc: Branched from profile
+	  Don't run iteration code (Bug #9672)
+	* skel/bashrc: Added (Bug #9672)
+	* skel/bash_profile: Added (Bug #9673)
+	* FINAL: Install skel* files as $INSTALL_ROOT/etc/skel/.${FILE}
+	  Install $SCRIPT_DIRECTORY/bashrc to $INSTALL_ROOT/etc/bashrc
+	  Use `install` to install scripts
+
 2005-08-28 Sergey Lipnevich <sergey@sourcemage.org>
 	* BUILD: clean after static build; remove leading tabs;
 	* INSTALL: install static binary into /sbin and make a compatibility link.
@@ -22,13 +41,13 @@
 	* INSTALL: create restricted shell as link to bash.
 
 2005-02-16 Seth Woolley <seth@tautology.org>
-	* FINAL: added true so that a missing /root/.bash_profile or no 
-	  /home/*/.bash_profile don't break FINAL. This change doesn't 
+	* FINAL: added true so that a missing /root/.bash_profile or no
+	  /home/*/.bash_profile don't break FINAL. This change doesn't
 	  affect compilation, only installing, so no UPDATED.
 
 2005-01-21 Unet <unet@sourcemage.org>
 	* BUILD: Added bash-3.0-display_wrap-1.patch
-	  (Fixes a display issue which will only show 33 characters 
+	  (Fixes a display issue which will only show 33 characters
 	  then wrap to the next line)
 
 2005-01-12 Eric Sandall <eric@sandall.us>
