@@ -3,18 +3,22 @@ case ${KERNEL_VERSION} in
 		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
 					"menuconfig" \
 					"oldconfig" \
+					"silentoldconfig" \
 					"xconfig" \
 					"defconfig" \
 					"gconfig" \
 					"allmodconfig" \
 					"allyesconfig" \
-					"allnoconfig" 
+					"allnoconfig" \
+					"randconfig" \
+					"smgl-update-defaults"
 		;;
 	2.[24]*)
 		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
 					"menuconfig" \
 					"xconfig" \
-					"oldconfig" 
+					"oldconfig" \
+					"smgl-update-defaults"
 		;;
 	2.0*)
 		config_query_list MAKEMODE "What make configuration tool would you like to use?" \
@@ -28,5 +32,4 @@ then
 	VOYEUR="on"
 fi
 
-config_query UPDATE_BL "Would you like to have $SPELL update your bootloader?" n &&
-config_query CONFIG_KERNEL "Would you like to run make $MAKEMODE on every cast regardless of the -r switch?" n
+config_query UPDATE_BL "Would you like to have $SPELL update your bootloader?" n 
