@@ -1,4 +1,4 @@
-sedit  "s/read a/a=0/"  scripts/adsl-setup.in
+sedit  "s/read a/a=0/"  scripts/pppoe-setup.in
 sedit  's:docdir=.*:docdir=@prefix@/share/doc/rp-pppoe:'  src/Makefile.in
 cd  src
 ./configure  --build=$BUILD                        \
