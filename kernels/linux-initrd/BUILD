@@ -1,3 +1,4 @@
+KVERSION=$(get_kernel_version)
 if [[ "$FILE_SYSTEM" == 'y' ]] ; then
   export BUILD_DIRECTORY INSTALL_ROOT &&
   message "${MESSAGE_COLOR}Entering ${MKINITRD_SCRIPT}${DEFAULT_COLOR}" &&
