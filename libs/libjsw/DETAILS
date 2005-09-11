@@ -3,10 +3,11 @@
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://wolfpack.twu.net/users/wolfpack/${SOURCE}
-          MD5[0]=d07ae37c6172e39945d07dce07305155
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         WEB_SITE=http://wolfpack.twu.net/libjsw/
          ENTERED=20050109
       LICENSE[0]=GPL
+     GCC_VERSION=1.5.5
        BUILD_API=2
            SHORT="Joystick Driver Wrapper Library and Calibrator"
 cat << EOF
