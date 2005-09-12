@@ -31,7 +31,7 @@
 -#STANDALONE_OPTIONS += -DAPG_USE_CRACKLIB '-DCRACKLIB_DICTPATH=${CRACKLIB_DICTPATH}' -I/usr/local/include -L/usr/local/lib
 -#CLISERV_OPTIONS += -DAPG_USE_CRACKLIB '-DCRACKLIB_DICTPATH=${CRACKLIB_DICTPATH}' -I/usr/local/include -L/usr/local/lib
 -#APG_CLIBS += -lcrack
-+CRACKLIB_DICTPATH = "/usr/lib/cracklib"
++CRACKLIB_DICTPATH = "/usr/lib/cracklib/pw_dict"
 +STANDALONE_OPTIONS += -DAPG_USE_CRACKLIB '-DCRACKLIB_DICTPATH=${CRACKLIB_DICTPATH}' -I/usr/local/include -L/usr/local/lib
 +CLISERV_OPTIONS += -DAPG_USE_CRACKLIB '-DCRACKLIB_DICTPATH=${CRACKLIB_DICTPATH}' -I/usr/local/include -L/usr/local/lib
 +APG_CLIBS += -lcrack
