@@ -1,13 +1,5 @@
-(
+OPTS="${OPTS}                               \
+      --with-media=${ENSCRIPT_MEDIA_SIZE}"  &&
 
-  ./configure  --build=$BUILD                       \
-               --prefix=${INSTALL_ROOT}/usr         \
-               --sysconfdir=${INSTALL_ROOT}/etc     \
-               --localstatedir=${INSTALL_ROOT}/var  \
-               --with-media=Letter                  \
-               $OPTS                                &&
-  make                                              &&
-  prepare_install                                   &&
-  make    install
+default_build
 
-) > $C_FIFO 2>&1
