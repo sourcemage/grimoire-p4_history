@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROGRAM=/usr/bin/pg_ctl
+PROGRAM=/usr/bin/postmaster
 RUNLEVEL=3
 NEEDS="+remote_fs"
 
@@ -10,10 +10,11 @@ NEEDS="+remote_fs"
 start()
 {
   echo "Starting postmaster..."
-  if  [  -z  "$PORT"  ];  then
-    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start"
+  cd "$DBPATH" &&
+  if  [[  -z  "$PORT"  ]];  then
+    su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' start"
   else
-    su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE start -o \"-i -p $PORT\""
+    su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' start -o \"-i -p '$PORT'\""
   fi
   evaluate_retval
 }
@@ -21,7 +22,7 @@ start()
 stop()
 {
   echo "Stopping postmaster..."
-  su $USER -c "$PROGRAM -D $DBPATH -l $LOGFILE -m fast stop"
+  su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' -m fast stop"
   evaluate_retval
 }
 
