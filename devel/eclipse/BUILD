@@ -1,3 +1,21 @@
+#
+# Setup ANT_HOME if we haven't relogged since installing ant
+#
+echo  ANT_HOME = $ANT_HOME  &&
+
+if  [  -z  $ANT_HOME  ];  then
+  if  [  -f  $TRACK_ROOT/etc/profile.d/ant.sh  ];  then
+    .  $TRACK_ROOT/etc/profile.d/ant.sh
+  else
+    #
+    # ant must not be installed
+    #
+    message  "${PROBLEM_COLOR}The package ${SPELL_COLOR}ant${DEFAULT_COLOR}"  \
+             "${PROBLEM_COLOR} is not installed.${DEFAULT_COLOR}"             &&
+    return  1
+  fi
+fi  &&
+
 # TODO define arch and windowing system
 # possible values are in ./build
 ws=gtk                                                               &&
