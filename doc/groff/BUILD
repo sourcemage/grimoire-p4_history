@@ -7,10 +7,6 @@
              --mandir=$INSTALL_ROOT/usr/share/man   \
              $OPTS                                  &&
 
-if  ! spell_ok netpbm; then
-    patch  < $SCRIPT_DIRECTORY/groff.patch
-fi                                                  &&
-
 make_single                                         &&
 make                                                &&
 make_normal
