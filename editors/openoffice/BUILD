@@ -1,6 +1,3 @@
-
-
-
 if [ "$OPENOFFICE_VERSION" == "stable" ]; then
 invoke_gcc
 optimize
@@ -19,6 +16,9 @@ OPTS="${OPTS} --enable-epm --with-epm=internal"
 fi
 if [ "$OPENOFFICE_EPM" == "none" ]; then
 OPTS="${OPTS} --disable-epm"
+fi
+if [ "$OPENOFFICE_VERSION" == "devel" ]; then
+OPTS="${OPTS} --with-build-version=Built_by_Source_Mage"
 fi
 echo OPTS=$OPTS &&
 	./configure                                       \

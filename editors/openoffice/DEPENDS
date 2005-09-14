@@ -181,4 +181,7 @@ optional_depends  neon                     \
 if [ "$OPENOFFICE_EPM" == "external" ]; then
 depends epm "--enable-epm"
 fi
+if [ "$OPENOFFICE_EPM" != "none" ]; then
+depends rpm
+fi
 fi

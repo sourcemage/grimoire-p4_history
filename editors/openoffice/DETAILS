@@ -1,19 +1,12 @@
             SPELL=openoffice
-if [ "$OPENOFFICE_VERSION" == "cvs" ]; then
-          VERSION=1.9.105
-         VERSION2=m`echo ${VERSION} | cut -d. -f3`
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/openoffice-cvs
-           SOURCE=openoffice-cvs.tar.bz2
-    SOURCE_URL[0]=cvs://:pserver:anoncvs@anoncvs.services.openoffice.org:/cvs:OpenOffice:SRC680_${VERSION2}
-           MD5[0]="IGNORE"
-elif [ "$OPENOFFICE_VERSION" == "devel" ]; then
-	  VERSION=1.9.104
-         VERSION2=m`echo ${VERSION} | cut -d. -f3`
+if [ "$OPENOFFICE_VERSION" == "devel" ]; then
+	  VERSION=2.0beta2
+#         VERSION2=m`echo ${VERSION} | cut -d. -f3`
            SOURCE=OOo_${VERSION}_src.tar.gz
-    SOURCE_URL[0]=http://openoffice.mirrors.tds.net/pub/openoffice/developer/680_${VERSION2}/$SOURCE
-    SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/developer/680_${VERSION2}/$SOURCE
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/SRC680_${VERSION2}
-           MD5[0]=9b3ec4acfdf55894a0510ae75ccdad7c
+    SOURCE_URL[0]=ftp://openoffice.mirrors.pair.com/stable/2.0beta2/$SOURCE
+    SOURCE_URL[1]=ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/stable/${VERSION}/$SOURCE
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/OOo_${VERSION}
+           MD5[0]=b45a6b8400bfca4b72497a6fb341a797
 else
           VERSION=1.1.4
            SOURCE=OOo_${VERSION}_source.tar.gz
