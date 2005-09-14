@@ -1,5 +1,5 @@
 invoke_gcc
-patch  -p1  <  $SCRIPT_DIRECTORY/cinelerra-shared.patch  &&
-patch  -p0  <  $SCRIPT_DIRECTORY/gcc-3.4.patch           &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/cinelerra-2.0-shared.patch  &&
 ./configure  &&
 make
+
