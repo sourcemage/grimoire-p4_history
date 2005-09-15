@@ -1,1 +1,6 @@
-config_query_list  UFRAW_VERSION  "Which version do you wish to use? (Use stable unless you want to actively help get this working, or are just plain crazy)" devel stable
+config_query  UFRAW_CVS  "Use CVS version" n
+if [ "$UFRAW_CVS" == "y" ]; then
+  config_query  UFRAW_CVS_AUTOUPDATE                                    \
+                "Update to the latest CVS automatically on every cast?" \
+                n
+fi

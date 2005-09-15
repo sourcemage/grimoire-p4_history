@@ -1,1 +1,5 @@
+if [ "$UFRAW_CVS" == "y" ]; then
+default_install
+else
 make install-admin
+fi

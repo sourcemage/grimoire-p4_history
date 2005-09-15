@@ -1,5 +1,4 @@
-if [ "$UFRAW_VERSION" == "devel" ]; then
-./autogen.sh &&
+if [ "$UFRAW_CVS" == "y" ]; then
 default_build
 else
 export PREFIX=/usr
