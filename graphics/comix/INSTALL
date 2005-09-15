@@ -1,4 +1,3 @@
-cp -v $SOURCE_DIRECTORY/comix /usr/bin                         &&
-cp -v $SOURCE_DIRECTORY/comix.desktop /usr/share/applications  && 
-cp -v $SOURCE_DIRECTORY/comix.png /usr/share/pixmaps
-
+install -m 755 comix /usr/bin   &&
+install -m 755 comix.desktop /usr/share/applications  &&
+install -m 755 comix.png /usr/share/pixmaps
