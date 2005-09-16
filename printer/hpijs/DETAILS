@@ -11,6 +11,13 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        BUILD_API=2
            SHORT="Hewlett Packard's drivers for HP Inkjet printers."
 cat << EOF
+PLEASE NOTE:
+HP are replacing hpijs with hplip for most of their printers. hplip also
+supports their printer/scanner multifunction devices. You probably want to
+cast hplip rather than hpijs, but you should check the list of the few devices
+that still need hpijs at hpinkjet.sourceforge.net to be sure.
+
+
 These are HP's open source printer drivers for their inkjet printers.  For
 further information on getting your HP inkjet working under linux, see
 http://www.linuxprinting.org.  If you find your ghostscript does not support
