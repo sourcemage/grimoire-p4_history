@@ -111,7 +111,7 @@ done  &&
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.14.html
 #
-for  spool_directory  in  lpd  mqueue  news  rwho  uucp
+for  spool_directory  in  lpd  mail  mqueue  news  rwho  uucp
 do
   fhs_mkdir  /var/spool/$spool_directory
 done  &&
@@ -119,10 +119,12 @@ done  &&
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.11.html
 #
-pushd  $INSTALL_ROOT/var  &&
-ln  -sf  spool/mail       \
-         mail             &&
-popd                      &&
+pushd  $INSTALL_ROOT/var      &&
+if  [  !  -e  mail  ];  then
+  ln  -sf  spool/mail         \
+           mail
+fi                            &&
+popd                          &&
 
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.8.html
