@@ -9,10 +9,10 @@ optional_depends  openssl                         \
                   '--without-ssl'                 \
                   'to use encrypted connections'  &&
 
-optional_depends  cyrus-sasl                                       \
-                  ''                                               \
-                  ''                                               \
-                  'for SASL authentication support (RECOMMENDED)'  &&
+optional_depends  cyrus-sasl                                 \
+                  ''                                         \
+                  ''                                         \
+                  'for SASL and SMTP support (RECOMMENDED)'  &&
 
 config_query ENCRYPTION  \
              'Would you like to enable encryption support in KMail?' y
