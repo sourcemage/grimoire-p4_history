@@ -8,11 +8,11 @@ if [ "$OPENOFFICE_VERSION" == "devel" ]; then
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/OOo_${VERSION}
            MD5[0]=b45a6b8400bfca4b72497a6fb341a797
 else
-          VERSION=1.1.4
-           SOURCE=OOo_${VERSION}_source.tar.gz
-  	   MD5[0]=b664bcb74b2cc30eded10a7bf4115229
- SOURCE_DIRECTORY=$BUILD_DIRECTORY/oo-${VERSION}_src
-    SOURCE_URL[0]=http://openoffice.mirrors.pair.com/stable/$VERSION/$SOURCE
+          VERSION=1.1.5
+           SOURCE=OOo_${VERSION}_src.tar.gz
+      SOURCE_HASH=sha1:55b316209eaabf151a59ead2abc3c621502058ea
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/OOo_${VERSION}
+SOURCE_URL[0]=http://openoffice.mirrors.pair.com/ftp/stable/$VERSION/$SOURCE
     SOURCE_URL[1]=http://www.mirror.ac.uk/mirror/sunsite.dk/openoffice/stable/$VERSION/$SOURCE
     SOURCE_URL[2]=http://www.ring.gr.jp/archives/misc/openoffice/stable/$VERSION/$SOURCE
      GCC_VERSION=3.3

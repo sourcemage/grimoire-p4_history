@@ -11,9 +11,7 @@ if [ "$OPENOFFICE_VERSION" != "stable" ]; then
 #  cd $SOURCE_DIRECTORY
 else
   mk_source_dir	$SOURCE_DIRECTORY  4g	&&
-  cd		$SOURCE_DIRECTORY &&
-  unpack		$SOURCE	${MD5[0]}	&&
-  patch sot/source/sdstor/stgole.cxx < ${SCRIPT_DIRECTORY}/heap_overflow.patch
+  unpack_file  ''  &&
 
 # set OO to use our optimizations
 #
