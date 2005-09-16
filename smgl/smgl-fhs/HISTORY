@@ -1,3 +1,7 @@
+2005-09-15 Jeremy Blosser <jblosser-smgl@firinn.org>
+	* INSTALL: Create /var/spool/mail before symlinking to it.  Make sure
+	  /var/mail doesn't exist before trying to create a symlink.
+
 2005-05-18 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* INSTALL: install /tmp with world write permissions and sticky bit,
 	  use 'install' instead of mkdir + chown + chmod
