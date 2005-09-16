@@ -9,8 +9,4 @@ if  [  -f  /etc/profile.d/ant.sh  ];  then
   source  /etc/profile.d/ant.sh
 fi
 
-#
-# Uncomment if you really want to try to debug the devel 2.0 version
-#
-#
-# config_query  OPENOFFICE_DEVEL  "Build the devel version? (Say no unless you want to actively help get this working)"  n
+config_query_list  OPENOFFICE_VERSION  "Which version do you wish to use? (Use stable unless you want to actively help get this working, or are just plain crazy)" devel stable

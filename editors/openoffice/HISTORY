@@ -1,12 +1,62 @@
-2005-07-30 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Added grimoire dependency on z-rejected  (Bug #9281)
+2005-09-15 George Sherwood <george@beernabeer.com>
+	* DETAILS: Updated to version 1.1.5, SOURCE_URL, SOURCE_DIRECTORY
+	* PRE_BUILD: use new SOURCE_HASH checking
+	* CONFIGURE: make OPENOFFICE_VERSION always = stable
 
-2005-04-17 Thomas Houssin <Thomas.Houssin@sourcemage.org>
-	* PRE_BUILD: added security fix (heap overflow vulnerability)
+2005-08-01 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Fixed number of parameters to depends (thanks Andrew Stitt)
+
+2005-07-30 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added grimoire dependency on z-rejected (Bug #9281)
+
+2005-05-24 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated cvs to 1.9.105, devel to 1.9.104
+
+2005-05-11 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated cvs branch to 1.9.102
+
+2005-05-04 Geoffrey Derber <gderber@sourcemage.org>
+	* BUILD: removed industrial and crystal image configure options
+
+2005-05-03 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: update cvs branch to 1.9.100
+	* PRE_BUILD: remove previous patches.
+	* DEPENDS: added dependency on CVS for cvs branch
+
+2005-04-26 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: added some patches to the SOURCE# listing
+	* PRE_BUILD: apply said patches
+
+2005-04-22 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS, PRE_BUILD, CONFIGURE, DEPENDS, BUILD, PREPARE:
+		modified to allow a CVS branch of openoffice
+		for the insane
+
+2005-04-21 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated to devel branch 1.9.95
+
+2005-04-14 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated devel branch to 1.9.93
+	* subtotal.hxx.patch: added
+	* BUILD: removed setjmp.h from includes
+	* PRE_BUILD: javafix.diff applied to devel branch
+		as well now
+
+2005-03-22 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated devel branch to 1.9.m87
+
+2005-03-14 Geoffrey Derber <gderber@sourcemage.org>
+	* BUILD: added setjmp.h to includes
+	* PRE_BUILD: preventive bugfixing for the 2.0branch
+	* DETAILS: added TMPFS=off
+
+2005-03-11 Geoffrey Derber <gderber@sourcemage.org>
+	* DETAILS: updated devel branch to 1.9.m84
 
 2005-03-07 Geoffrey Derber <gderber@sourcemage.org>
 	* DEPENDS: removed optional JAVA
 		added optional JAVA-1.4
+		added bison
 
 2005-03-03 Geoffrey Derber <gderber@sourcemage.org>
 	* PREPARE, DETAILS, DEPENDS, CONFIGURE, PRE_BUILD, BUILD:
@@ -16,11 +66,7 @@
 	* PREPARE: ensure that ANT_HOME and JAVA_HOME are set
 	* INSTALL: fix variable name so symlinks are correctly made
 	* BUILD: added code to force usage of gcc 3.3
-		removed hgg's code
 	* javafix.diff: created applied to the included berkleydb version
-	* Python-2.3.2.patch, db.patch, fix-j2sdk+kernel.patch, freetype.patch, python.patch, openssl.patch: removed no longer working or used
-	* oo.dict: added (used for the devel branch only)
-	* all: hope I didn't leave anything out	
 
 2005-01-23 Geoffrey Derber <gderber@sourcemage.org>
 	* DEPENDS: Linux-PAM renamed linux-pam
