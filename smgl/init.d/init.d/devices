@@ -18,11 +18,7 @@ start_devfs()
   echo "Telling init to reopen file descriptors"
   kill -USR1 1
 
-  if [ -x "/sbin/devfsd" ] ; then
-    echo "Starting devfsd"
-    /sbin/devfsd /dev
-    evaluate_retval
-  else
+  if [ ! -x "/sbin/devfsd" ] ; then
     ln -sf /proc/self/fd /dev/fd
     ln -sf /dev/fd/0 /dev/stdin
     ln -sf /dev/fd/1 /dev/stdout
@@ -74,8 +70,6 @@ start_udev()
   fi
   echo "Telling init to reopen file descriptors"
   kill -USR1 1
-  echo "Starting udevd"
-  /sbin/udevd &
 ) }
 
 start_static()

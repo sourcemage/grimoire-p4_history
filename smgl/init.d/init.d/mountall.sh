@@ -13,7 +13,7 @@ checkfs()
 {
   [ -e /fastboot     ]  &&  return
   [ -e /forcefsck    ]  &&  FORCE="-f"
-  [ "$SOFTFIX" = yes ]  &&  FIX="-a"
+  [ "$NOSOFTFIX" != yes ]  &&  FIX="-a"
   [ "$FSCKFIX" = yes ]  &&  FIX="-y"
   [ -z  "$FIX"       ]  &&  FIX="-n" # need at least -n, -y, or -a for non-tty fsck
   [ "$FORCE"   = yes ]  &&  FORCE="-f"
@@ -57,7 +57,7 @@ start()
 
   if optional_executable /sbin/vgscan && optional_executable /sbin/vgchange ; then
     echo -n "Scanning for and initializing all available LVM volume groups..."
-    /sbin/vgscan       --ignorelockingfailure   &&
+    /sbin/vgscan       --ignorelockingfailure  --mknodes  &&
     /sbin/vgchange -ay --ignorelockingfailure
     evaluate_retval
   fi

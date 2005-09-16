@@ -36,9 +36,9 @@ _stop() {
 _restart() {
 
   echo "Restarting $NAME..."
-  $0 stop
+  bash $0 stop
   sleep 2
-  $0 start
+  bash $0 start
 
 }
 
@@ -61,7 +61,7 @@ _status() {
 
 _usage() {
 
-  echo "Usage: $0 {start|stop|restart|reload|force-reload|status}"
+  echo "Usage: $0 {$(builtin echo $FUNCS | sed -e 's/ /|/g')}"
 
 }
 
@@ -71,8 +71,11 @@ run_func() {
   # If for example start exists then run it, otherwise run _start
   if type -t $1 > /dev/null; then
     $1
-  else
+  elif type -t _$1 > /dev/null; then
     _$1
+  else
+    echo "Error: no $1 function found!"
+    exit 2
   fi
 }
 
@@ -82,17 +85,20 @@ required_executable $PROGRAM
 
 [ -z "$NAME" ] && NAME=$( basename $PROGRAM )
 
-case $1 in
-  start)        run_func $1           ;;
-  stop)         run_func $1           ;;
-  restart)      run_func $1           ;;
-  reload)       run_func $1           ;;
-  force-reload) run_func force_reload ;;
-  status)       run_func $1           ;;
-  *)            run_func usage
-                exit 2
-                ;;
-esac
+if /bin/expr " $FUNCS " : ".*[[:space:]]$1[[:space:]]" >/dev/null; then
+  case $1 in
+    start)        run_func $1           ;;
+    stop)         run_func $1           ;;
+    restart)      run_func $1           ;;
+    reload)       run_func $1           ;;
+    force-reload) run_func force_reload ;;
+    status)       run_func $1           ;;
+    *)            run_func $1           ;;
+  esac
+else
+  run_func usage
+  exit 2
+fi 
 
 exit $?
 
