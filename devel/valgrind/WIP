@@ -2,6 +2,6 @@
 valgrind crashes on the cpuid instruction, which means it crashes for everything
 linked to libcrypto.so.0.9.8 on my box, see
 http://bugs.kde.org/show_bug.cgi?id=112789
-The SVN version seems to require gcc 4.0.x, at least it failed when I tried it
-with gcc 3.4.4
+'make check' requires gcc 4.0.x, fails to compile some test program when using
+gcc 3.4.4
 -- alley_cat
