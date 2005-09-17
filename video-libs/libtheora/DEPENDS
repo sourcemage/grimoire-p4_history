@@ -7,7 +7,7 @@ optional_depends  sdl                \
                   "for SDL support"
 
 if [ "$THEORA_SVN" = "y" ]; then
-  depends  SVN       &&
-  depends  automake  &&
+  depends  subversion  &&
+  depends  automake    &&
   depends  libtool
 fi
