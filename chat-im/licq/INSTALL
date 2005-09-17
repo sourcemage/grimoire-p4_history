@@ -1,4 +1,4 @@
-        if [ "$CVS" == "y" ]; then
+        if [ "$LICQ_CVS" == "y" ]; then
 	  cd $SOURCE_DIRECTORY/licq-data-cvs   &&
 	  mkdir -p /usr/share/licq/qt-gui      &&
 	  for i in $(find $SOURCE_DIRECTORY/licq-data-cvs -path "*CVS" -type d);\
