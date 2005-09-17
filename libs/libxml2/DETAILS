@@ -1,10 +1,10 @@
            SPELL=libxml2
-         VERSION=2.6.20
+         VERSION=2.6.21
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://xmlsoft.org/sources/$SOURCE
    SOURCE_URL[1]=$GNOME_URL/sources/$SPELL/${VERSION%\.*}/$SOURCE
-          MD5[0]='dac0107d3b3302dff40fe009d4dd8ff5'
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=BSD
        BUILD_API=2
         WEB_SITE=http://xmlsoft.org
