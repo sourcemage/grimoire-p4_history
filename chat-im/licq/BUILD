@@ -1,4 +1,4 @@
-  if [ "$CVS" == "y" ]; then
+  if [ "$LICQ_CVS" == "y" ]; then
 	make -f Makefile.cvs
   fi &&
   ./configure  --prefix=/usr		\
@@ -9,7 +9,7 @@
 
   if [ "$CDK" == "y" ]; then
   cd  $SOURCE_DIRECTORY/plugins/console     &&
-  if [ "$CVS" == "y" ]; then
+  if [ "$LICQ_CVS" == "y" ]; then
 	  make -f Makefile.cvs
   fi        &&
   ./configure  --prefix=/usr		\
@@ -20,7 +20,7 @@
 
   if  [ "$QTGUI" == "y" ];  then
 	cd  $SOURCE_DIRECTORY/plugins/qt-gui	                      &&
-	if [ "$CVS" == "y" ]; then
+	if [ "$LICQ_CVS" == "y" ]; then
 		make -f Makefile.cvs
 	fi                                                            &&
 	./configure  --prefix=/usr		\
@@ -31,7 +31,7 @@
    fi                                 &&
 
 	  cd $SOURCE_DIRECTORY/plugins/email                          &&
-       if [ "$CVS" == "y" ]; then
+       if [ "$LICQ_CVS" == "y" ]; then
 	  make -f Makefile.cvs 
        fi                                                            &&
 	  ./configure --prefix=/usr \
@@ -41,7 +41,7 @@
 	  make                                                        &&
 
           cd $SOURCE_DIRECTORY/plugins/msn           &&
-       if [ "$CVS" == "y" ]; then
+       if [ "$LICQ_CVS" == "y" ]; then
 	  make -f Makefile.cvs 
        fi                                            &&   
 	  ./configure --prefix=/usr \
@@ -52,7 +52,7 @@
 
 
 	  cd $SOURCE_DIRECTORY/plugins/auto-reply                     &&
-       if [ "$CVS" == "y" ]; then
+       if [ "$LICQ_CVS" == "y" ]; then
 	  make -f Makefile.cvs
        fi                                                             &&
 	  ./configure --prefix=/usr \
@@ -62,7 +62,7 @@
 	  make                                                        &&
 
 	  cd $SOURCE_DIRECTORY/plugins/rms                            &&
-       if [ "$CVS" == "y" ]; then
+       if [ "$LICQ_CVS" == "y" ]; then
 	  make -f Makefile.cvs
        fi
 	  ./configure --prefix=/usr \

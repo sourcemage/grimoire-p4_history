@@ -1,6 +1,10 @@
            SPELL=licq
-if [ "$CVS" = "y" ]; then
+if [ "$LICQ_CVS" == "y" ]; then
+  if [ "$LICQ_CVS_AUTOUPDATE" == "y" ]; then
 		 VERSION=$(date +%Y%m%d)
+  else
+                 VERSION=cvs
+  fi
 		  SOURCE=$SPELL-cvs.tar.bz2
 		 SOURCE2=$SPELL-data-cvs.tar.bz2
 		 SOURCE3=$SPELL-plugins-cvs.tar.bz2
@@ -19,7 +23,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.sourceforge.net/licq/$SOURCE
           MD5[0]='cd77f68a0aff26ef4f6a29d3da9b5886'
 fi
-if [ "$XOSD" = "y" ]; then
+if [ "$XOSD" == "y" ]; then
 	SOURCE4_NAME=osd
  SOURCE4_VERSION=1.2.7.5
 		 SOURCE4=$SOURCE4_NAME-$SOURCE4_VERSION.tgz
