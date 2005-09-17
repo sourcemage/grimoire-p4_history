@@ -1,20 +1,24 @@
            SPELL=valgrind
-if [ "$CVS" != "y" ]; then
-         VERSION=2.4.0
-          SOURCE=$SPELL-$VERSION.tar.bz2
-          SOURCE_URL[0]=http://valgrind.org/downloads/$SOURCE
-          MD5[0]='b0f2de740585bd76e41acf90f5f92efb'
-          SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-else
+if [ "$VALGRIND_SVN" == "y" ]; then
+  if [ "$VALGRIND_SVN_AUTOUPDATE" == "y" ]; then
          VERSION=$(date +%Y%m%d)
-          SOURCE=$SPELL-cvs.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.kde.org:/home/kde:valgrind
-          MD5[0]=IGNORE
+  else
+         VERSION=svn
+  fi
+          SOURCE=$SPELL-svn.tar.bz2
+   SOURCE_URL[0]=svn://svn.valgrind.org/valgrind/trunk:$SPELL-svn
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_IGNORE=volatile
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-svn
+else
+         VERSION=3.0.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://valgrind.org/downloads/$SOURCE
+      SOURCE_GPG="gurus.gpg:$SOURCE.sig"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 fi
       LICENSE[0]=GPL
-        WEB_SITE=http://valgrind.kde.org
+        WEB_SITE=http://valgrind.org
          ENTERED=20020731
          UPDATED=20020731
        BUILD_API=2
