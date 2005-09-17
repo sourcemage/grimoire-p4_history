@@ -6,12 +6,7 @@
 #
 function  fhs_mkdir()
 {
-  if  [  -z  $2  ]
-  then
-    install  -d  -o root  -g root  -m 0755  $INSTALL_ROOT/$1
-  else
-    install  -d  -o root  -g root  -m $2    $INSTALL_ROOT/$1
-  fi
+  install  -d  -o ${3:-root}  -g ${4:-root}  -m ${2:-0755}  $INSTALL_ROOT/$1
 }
 
 #
@@ -116,13 +111,17 @@ do
   fhs_mkdir  /var/spool/$spool_directory
 done  &&
 
+fhs_mkdir  /var/spool/mail  3775 root mail &&
+
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.11.html
 #
-pushd  $INSTALL_ROOT/var  &&
-ln  -sf  spool/mail       \
-         mail             &&
-popd                      &&
+pushd  $INSTALL_ROOT/var      &&
+if  [  !  -e  mail  ];  then
+  ln  -sf  spool/mail         \
+           mail
+fi                            &&
+popd                          &&
 
 #
 # http://www.pathname.com/fhs/2.2/fhs-5.8.html
