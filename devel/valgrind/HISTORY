@@ -2,6 +2,10 @@
 	* DETAILS: updated to 3.0.1
 	* PREPARE, PRE_BUILD, DEPENDS, DETAILS: switch devel version to
 	  subversion instead of cvs, follow our multi-version standard
+	* PRE_BUILD, crasher-fix.patch: added a patch to fix a crasher bug
+	  (see http://bugs.kde.org/show_bug.cgi?id=112789)
+	* BUILD: removed, 'make check' doesn't compile with gcc 3.4.4 and
+	  doesn't seem to do much useful
 
 2005-06-05 George Sherwood <george@beernabeer.com>
 	* DETAILS: Updated to 2.4.0 and SOURCE_URL
