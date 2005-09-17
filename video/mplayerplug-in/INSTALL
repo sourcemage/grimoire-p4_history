@@ -1,7 +1,10 @@
+local DEST
 if test "$(get_spell_provider $SPELL GECKO)" = "firefox"; then
-  export DEST=$INSTALL_ROOT/usr/lib/firefox/plugins
+  DEST=$INSTALL_ROOT/usr/lib/firefox/plugins
 else
-  export DEST=$INSTALL_ROOT/usr/lib/mozilla/plugins
+  DEST=$INSTALL_ROOT/usr/lib/mozilla/plugins
 fi  &&
-make install  &&
-unset DEST
+install  -m 0755  *.so *.xpt  $DEST  &&
+install_config_file  mplayerplug-in.conf  /etc/mplayerplug-in.conf    &&
+install_config_file  mplayerplug-in.types  /etc/mplayerplug-in.types  &&
+make -C po install
