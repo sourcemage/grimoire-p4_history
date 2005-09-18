@@ -1,149 +1,57 @@
-if  !  grep  -q  "IPV6"  $SPELL_CONFIG;  then
-  if    query  "Enable IPV6 support?" y
-    then  echo   "IPV6=y"  >>  $SPELL_CONFIG
-    else  echo   "IPV6=n"  >>  $SPELL_CONFIG
-  fi
-fi
-
-##  authpam MUST be used instead of authpwd or authshadow on systems that use PAM authentication.
-if  spell_ok  linux-pam;  then
-  if  query  "Use the PAM library for authentication? "  y;  then
-    AUTHPAM=y
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-  else
-    AUTHPAM=n
-    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Use the PAM library for authentication? "  n;  then
-    AUTHPAM=y
-    AUTHPWD=n
-    echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-    AUTHSHADOW=n
-    echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-  else
-    AUTHPAM=n
-    echo  'OPTS="${OPTS}  --without-authpam"'     >>  ${SPELL_CONFIG}
-
-    ##  Use authshadow instead of authpwd on systems that use the shadow password file.
-    if  [  -e  /etc/shadow  ];  then
-      if  query  "Use shadow passwords for authentication? "  y;  then
-        AUTHSHADOW=y
-        AUTHPWD=n
-        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-      else
-        AUTHSHADOW=n
-        echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-        AUTHPWD=n
-        echo  'OPTS="${OPTS}  --without-authpwd"'     >>  ${SPELL_CONFIG}
-      fi
-    else
-      AUTHSHADOW=n
-      echo  'OPTS="${OPTS}  --without-authshadow"'  >>  ${SPELL_CONFIG}
-
-      if  [  -e  /etc/passwd  ];  then
-        if  query  "Authenticate against the system passwd file? "  y;  then
-          AUTHPWD=y
-        else
-          AUTHPWD=n
-          echo  'OPTS="${OPTS}  --without-authpwd"'  >>  ${SPELL_CONFIG}
-        fi
-      fi
+if  spell_ok  db
+then
+    if  spell_ok  gdbm
+    then
+        config_query_option  CIMAP_DB                                                                                                                                                                                             \
+                             "You have both GDBM and Berkeley DB libraries installed.  Do you want to use GDBM with Courier?  (Courier will automatically choose GDBM over Berkely DB.  Answer 'n' to use Berkely DB instead.) "  \
+                             y                                                                                                                                                                                                    \
+                             "--with-db=gdbm"                                                                                                                                                                                     \
+                             "--with-db=db"
     fi
-  fi
-fi
-
-if  spell_ok  db  ||  spell_ok  gdbm;  then
-  if  query  "Authenticate from a GDBM/DB database? "  y;  then
-    AUTHUSERDB=y
-  else
-    AUTHUSERDB=n
-    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
-  fi
-
-  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  y;  then
-    AUTHCRAM=y
-  else
-    AUTHCRAM=n
-    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
-  fi
 else
-  if  query  "Authenticate from a GDBM/DB database? "  n;  then
-    AUTHUSERDB=y
-  else
-    AUTHUSERDB=n
-    echo  'OPTS="${OPTS}  --without-authuserdb"'  >>  ${SPELL_CONFIG}
-  fi
+    if  !  spell_ok  gdbm
+    then
+        config_query_option  CIMAP_DB                                                                                                                             \
+                             "Either GDBM or Berkeley DB library must be installed.  Do you want to install GDBM?  (Answer 'n' to install Berkely DB instead.) "  \
+                             y                                                                                                                                    \
+                             "--with-db=gdbm"                                                                                                                     \
+                             "--with-db=db"
+    fi
+fi  &&
 
-  if  query  "Authenticate from a GDBM/DB database using CRAM-MD5 or CRAM-SHA1 authentication? "  n;  then
-    AUTHCRAM=y
-  else
-    AUTHCRAM=n
-    echo  'OPTS="${OPTS}  --without-authcram"'    >>  ${SPELL_CONFIG}
-  fi
-fi
+config_query_option  CIMAP_IPV6              \
+                     "Enable IPV6 support?"  \
+                     y                       \
+                     "--with-ipv6"           \
+                     "--without-ipv6"        &&
 
-if  spell_ok  openldap;  then
-  if  query  "Authenticate from an account file stored in an LDAP directory? "  y;  then
-    AUTHLDAP=y
-  else
-    AUTHLDAP=n
-    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from an account file stored in an LDAP directory? "  n;  then
-    AUTHLDAP=y
-  else
-    AUTHLDAP=n
-    echo  'OPTS="${OPTS}  --without-authldap"'    >>  ${SPELL_CONFIG}
-  fi
-fi
+config_query_option  CIMAP_UNICODE                                                                                                    \
+                     "Include the ability to search and sort messages in character sets other than the default ISO-8859-1/US-ASCII?"  \
+                     n                                                                                                                \
+                     "--enable-unicode"                                                                                               \
+                     "--disable-unicode"                                                                                              &&
 
-if  spell_ok  mysql;  then
-  if  query  "Authenticate from an account file stored in a MySQL database? "  y;  then
-    AUTHMYSQL=y
-  else
-    AUTHMYSQL=n
-    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from an account file stored in a MySQL database? "  n;  then
-    AUTHMYSQL=y
-  else
-    AUTHMYSQL=n
-    echo  'OPTS="${OPTS}  --without-authmysql"'  >>  ${SPELL_CONFIG}
-  fi
-fi
+config_query_option  CIMAP_IMAPBUGS                                                                                   \
+                     "Enable workaround for broken IMAP clients (currently Netscape Messenger and Sun's StarOffice)?"  \
+                     n                                                                                                 \
+                     "--enable-workarounds-for-imap-client-bugs"                                                       \
+                     "--disable-workarounds-for-imap-client-bugs"                                                      &&
 
-if  spell_ok  postgresql;  then
-  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  y;  then
-    AUTHPGSQL=y
-  else
-    AUTHPGSQL=n
-    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
-  fi
-else
-  if  query  "Authenticate from an account file stored in a PostgreSQL database? "  n;  then
-    AUTHPGSQL=y
-  else
-    AUTHPGSQL=n
-    echo  'OPTS="${OPTS}  --without-authpgsql"'  >>  ${SPELL_CONFIG}
-  fi
-fi
+config_query_option  CIMAP_TRASHQUOTA                                                                              \
+                     "Include deleted messages, and the Trash folder, in the estimated quota usage for maildirs?"  \
+                     n                                                                                             \
+                     "--with-trashquota"                                                                           \
+                     "--without-trashquota"                                                                        &&
 
-if  query  "Use the authdaemond authentication proxy process? "  y;  then
-  AUTHDAEMOND=y
-else
-  AUTHDAEMOND=n
-  echo  'OPTS="${OPTS}  --without-authdaemond"'  >>  ${SPELL_CONFIG}
-fi
+config_query_option  CIMAP_DIRSYNC                                      \
+                     "Explicitly sync the maildir's parent directory?"  \
+                     n                                                  \
+                     "--with-dirsync"                                   \
+                     "--without-dirsync"                                &&
 
-AUTHVCHKPW=n
-echo  'OPTS="${OPTS}  --without-authvchkpw"'  >>  ${SPELL_CONFIG}
+config_query_option  CIMAP_SMAP                                                                                              \
+                     "Enable support for SMAP, an experimental mail access protocol, dubbed 'Simple Mail Access Protocol'?"  \
+                     n                                                                                                       \
+                     "--with-smap"                                                                                           \
+                     "--without-smap"
+
