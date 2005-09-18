@@ -1,15 +1,7 @@
- unset CFLAGS
- unset CXXFLAGS
- ./configure  --build=$BUILD             \
-              --prefix=/usr              \
-              --sysconfdir=/etc          \
-              --infodir=/usr/share/info  \
-              --mandir=/usr/share/man    \
-              --localstatedir=/var       \
-               $OPTS                     &&
+OPTS="${OPTS}                                    \
+      ${MAILDROP_AUTHLIB}                        \
+      ${MAILDROP_TRASHQUOTA}                     \
+      ${MAILDROP_DIRSYNC}"                       &&
 
-  if [ "$MAILDIR" == "y" ];then
-    sedit "s;/var/spool/mail;./Maildir/;" maildrop/config.h
-  fi
+default_build
 
-  make
