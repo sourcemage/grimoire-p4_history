@@ -6,10 +6,10 @@ if  [  "$CVS"  ==  "y"  ];  then
           MD5[0]="IGNORE"
   FORCE_DOWNLOAD="on"
 else
-         VERSION=2.1.2
+         VERSION=2.2.2
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=0c9122184bbe112dc7054926e9a3975c
+     SOURCE_HASH=sha1:e97da53ca7d35c7c22ebff575f95cf1c31128b33
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://libnjb.sourceforge.net/
