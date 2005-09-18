@@ -30,9 +30,9 @@ case  ${kernel_arch}  in
 		;;
 	*)
 		cp ${LINUX_SOURCE_DIRECTORY}/arch/${kernel_arch}/boot/bzImage \
-		${INSTALL_ROOT}/boot/vmlinubz-$VERSION &&
-		ln -sf vmlinubz-${VERSION} \
-		${INSTALL_ROOT}/boot/vmlinubz
+		${INSTALL_ROOT}/boot/vmlinuz-$VERSION &&
+		ln -sf vmlinuz-${VERSION} \
+		${INSTALL_ROOT}/boot/vmlinuz
 	;;
 esac &&
 message "${MESSAGE_COLOR}Copying and linking System.map${DEFAULT_COLOR}" &&
@@ -43,9 +43,8 @@ message "${MESSAGE_COLOR}Copying and linking .config${DEFAULT_COLOR}" &&
 cp ${LINUX_SOURCE_DIRECTORY}/.config ${INSTALL_ROOT}/boot/config-${VERSION} &&
 ln -sf config-${VERSION} \
 	${INSTALL_ROOT}/boot/config &&
-ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` ${BUILD_DIRECTORY}/linux && 
 # for people with boot partitions so grub can still find the kernel
-# if they reference /boot/vmlinubz in their menu.lst
+# if they reference /boot/vmlinuz in their menu.lst
 ln -sfn . ${INSTALL_ROOT}/boot/boot
-fi 
-
+fi &&
+ln -sfn `basename ${LINUX_SOURCE_DIRECTORY}` ${BUILD_DIRECTORY}/linux 
