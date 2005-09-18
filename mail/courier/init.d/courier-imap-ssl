@@ -1,8 +1,9 @@
 #! /bin/sh
-# $Id: imapd-ssl.rc.in,v 1.13 2002/12/24 02:35:50 mrsam Exp $
+# $Id: imapd-ssl.rc.in,v 1.22 2005/07/02 22:53:19 mrsam Exp $
 #
-# Copyright 1998 - 2000 Double Precision, Inc.
+# Copyright 1998 - 2005 Double Precision, Inc.
 # See COPYING for distribution information.
+
 
 RUNLEVEL=3
 NEEDS="+network +remotefs"
@@ -13,60 +14,46 @@ prefix=/usr
 exec_prefix=/usr
 sbindir=${exec_prefix}/sbin
 bindir=/usr/bin
+sysconfdir=/etc/courier
 
-.  /etc/courier/imapd
-.  /etc/courier/imapd-ssl
+if test ! -f /etc/courier/imapd
+then
+	echo "/etc/courier/imapd does not exist, forgot make install-configure?"
+	exit 1
+fi
 
-case  $1  in
-	start)
-		LIBAUTHMODULES=""
-		for  f  in  `builtin  echo  $AUTHMODULES`;  do
-			LIBAUTHMODULES="$LIBAUTHMODULES  ${exec_prefix}/libexec/authlib/$f"
-		done
-		ulimit  -v  $IMAP_ULIMITD
-		/usr/bin/env  -  /bin/sh  -c  "  set  -a;                \
-			prefix=/usr;                                         \
-			exec_prefix=/usr;                                    \
-			sbindir=${exec_prefix}/sbin;                         \
-			bindir=/usr/bin;                                     \
-			.  /etc/courier/imapd;                               \
-			.  /etc/courier/imapd-ssl;                           \
-			IMAP_TLS=1;                                          \
-			export  IMAP_TLS;                                    \
-			${exec_prefix}/sbin/couriertcpd                      \
-				-address=$SSLADDRESS                             \
-				-stderrlogger=${exec_prefix}/sbin/courierlogger  \
-				-stderrloggername=imapd-ssl                      \
-				-maxprocs=$MAXDAEMONS                            \
-				-maxperip=$MAXPERIP                              \
-				-pid=$SSLPIDFILE                                 \
-				$TCPDOPTS                                        \
-				$SSLPORT                                         \
-				$COURIERTLS                                      \
-				-server                                          \
-				-tcpd                                            \
-			${exec_prefix}/libexec/courier/imaplogin             \
-				$LIBAUTHMODULES                                  \
-			/usr/bin/imapd                                       \
-				Maildir"
-		exit  0
-		;;
+if test ! -f /etc/courier/imapd-ssl
+then
+	echo "/etc/courier/imapd-ssl does not exist, forgot make install-configure?"
+	exit 1
+fi
 
-	stop)
-		${exec_prefix}/sbin/couriertcpd  -pid=$SSLPIDFILE  -stop
-		exit  0
-		;;
+. /etc/courier/imapd
+. /etc/courier/imapd-ssl
 
-	restart)
-		${exec_prefix}/sbin/couriertcpd  -pid=$SSLPIDFILE  -restart
-#		$0  stop
-#		sleep  2
-#		$0  start
-		exit  0
-		;;
-
-	*)
-		echo  "Usage: $0 (start | stop | restart)"
-		exit  1
-		;;
+case $1 in
+start)
+	umask $IMAP_UMASK
+	ulimit -v $IMAP_ULIMITD
+	/bin/env -i /bin/sh -c " set -a ;
+		prefix=/usr ; \
+		exec_prefix=/usr ; \
+		sbindir=${exec_prefix}/sbin ; \
+		bindir=/usr/bin ; \
+		. /etc/courier/imapd ; \
+		. /etc/courier/imapd-ssl ; \
+		PROXY_HOSTNAME=$PROXY_HOSTNAME ; \
+		IMAP_TLS=1; \
+		/usr/sbin/courierlogger -pid=$SSLPIDFILE -start $SSLLOGGEROPTS \
+		${exec_prefix}/sbin/couriertcpd -address=$SSLADDRESS \
+			-maxprocs=$MAXDAEMONS -maxperip=$MAXPERIP \
+			$TCPDOPTS \
+			$SSLPORT $COURIERTLS -server -tcpd \
+				${exec_prefix}/libexec/courier/imaplogin \
+				/usr/bin/imapd ${MAILDIRPATH}"
+	;;
+stop)
+	/usr/sbin/courierlogger -pid=$SSLPIDFILE -stop
+	;;
 esac
+exit 0

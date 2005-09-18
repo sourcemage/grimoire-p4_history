@@ -1,8 +1,8 @@
 #! /bin/sh
 #
-#  $Id: esmtpd.in,v 1.15 2001/08/05 20:34:11 mrsam Exp $
+#  $Id: esmtpd.in,v 1.18 2005/02/16 23:42:13 mrsam Exp $
 #
-#  Copyright 1998 - 2000 Double Precision, Inc.  See COPYING for
+#  Copyright 1998 - 2005 Double Precision, Inc.  See COPYING for
 #  distribution information.
 #
 #  This is a simple script to start/stop the smtp port daemon, courieresmtpd.
@@ -13,7 +13,6 @@
 
 RUNLEVEL=3
 NEEDS="+network +remotefs"
-#PROVIDES=mta
 
 .  /etc/init.d/smgl_functions
 
@@ -21,90 +20,72 @@ prefix="/usr"
 exec_prefix="/usr"
 sysconfdir="/etc/courier"
 sbindir="/usr/sbin"
-configfiles="${sysconfdir}/esmtpd"
 
-.  ${sysconfdir}/esmtpd
-cd  ${prefix}  ||  exit  1
-
-#case  `basename  $0`  in
-#		esmtpd.sh)
-#				configfiles="${sysconfdir}/esmtpd"
-#				.  ${sysconfdir}/esmtpd
-#				;;
-#
-#	esmtpd-msa.sh)
-#				configfiles="${sysconfdir}/esmtpd ${sysconfdir}/esmtpd-msa"
-#				.  ${sysconfdir}/esmtpd
-#				.  ${sysconfdir}/esmtpd-msa
-#				;;
-#
-#			 *)
-#				echo  "Usage: esmtpd | esmtpd-msa <start | stop | restart>"  >&2
-#				exit  1
-#				;;
+cd ${prefix} || exit 1
+#case `basename $0` in
+#esmtpd)
+#	configfiles="${sysconfdir}/esmtpd"
+#	. ${sysconfdir}/esmtpd
+#	;;
+#esmtpd-msa)
+#	configfiles="${sysconfdir}/esmtpd ${sysconfdir}/esmtpd-msa"
+#	. ${sysconfdir}/esmtpd
+#	. ${sysconfdir}/esmtpd-msa
+#	;;
+#*)
+#	echo "Must be invoked as esmtpd or esmtpd-msa" >&2
+#	exit 1
+#	;;
 #esac
 
-case  $1  in
-	start)
-		if  test  "${ACCESSFILE}"  !=  "";  then
-			if  test  !  -f  "$ACCESSFILE.dat";  then
-				ACCESSFILE=""
-			else
-				ACCESSFILE="-access=${ACCESSFILE}.dat"
-			fi
-		fi
-		if  test  "$ADDRESS"  !=  "";  then
-			ADDRESS="-address=$ADDRESS"
-		fi
-		TCPDOPTS="$TCPDOPTS        \
-			-user=$MAILUSER        \
-			-group=$MAILGROUP      \
-			$ADDRESS               \
-			$BLACKLISTS            \
-			$ACCESSFILE            \
-			-maxprocs=$MAXDAEMONS  \
-			-maxperc=$MAXPERC      \
-			-maxperip=$MAXPERIP    \
-			-pid=$PIDFILE"
-		if  test  "$AUTHMODULES"  !=  "";  then
-			authstart="${exec_prefix}/libexec/courier/modules/esmtp/authstart"
-			if  test  -x  "$authstart";  then
-				AUTHMODULES="$authstart  $AUTHMODULES"
-			else
-				# not installed/disabled
-				ESMTPAUTH=""
-				AUTHMODULES=""
-			fi
-		fi
-
-		(
-			builtin  echo  prefix=${prefix}
-			builtin  echo  exec_prefix=${exec_prefix}
-			builtin  echo  sysconfdir=${sysconfdir}
-			builtin  echo  sbindir=${sbindir}
-			builtin  echo  set  -a
-			for  f  in  $configfiles;  do
-				builtin  echo  .  $f
-			done
-			builtin  echo  "ulimit  -d  $ULIMIT"
-			builtin  echo  ${sbindir}/couriertcpd  $TCPDOPTS $PORT                               \
-				${sbindir}/courieresmtpd  $AUTHMODULES  '>/dev/null  2>&1  </dev/null'
-		)  |  /usr/bin/env  -  /bin/sh
-		exit  0
-		;;
-
-	stop)
-		${sbindir}/couriertcpd  -pid=$PIDFILE  -stop
-		exit  0
-		;;
-
-	restart)
-		${sbindir}/couriertcpd  -pid=$PIDFILE  -restart
-		exit  0
-		;;
-
-	*)
-		echo  "Usage: esmtpd | esmtpd-msa (start | stop | restart)"
-		exit  1
-		;;
+case $1 in
+start)
+	;;
+stop)
+	${sbindir}/couriertcpd -pid=$PIDFILE -stop
+	exit 0
+	;;
+restart)
+	${sbindir}/couriertcpd -pid=$PIDFILE -restart
+	exit 0
+	;;
+*)
+	exit 0
+	;;
 esac
+
+if test "${ACCESSFILE}" != ""
+then
+	if test ! -f "$ACCESSFILE.dat"
+	then
+		ACCESSFILE=""
+	else
+		ACCESSFILE="-access=${ACCESSFILE}.dat"
+	fi
+fi
+
+if test "$ADDRESS" != ""
+then
+	ADDRESS="-address=$ADDRESS"
+fi
+
+TCPDOPTS="$TCPDOPTS -user=$MAILUSER -group=$MAILGROUP $ADDRESS $BLACKLISTS $ACCESSFILE -maxprocs=$MAXDAEMONS -maxperc=$MAXPERC -maxperip=$MAXPERIP -pid=$PIDFILE"
+
+(
+	builtin echo prefix=${prefix}
+	builtin echo exec_prefix=${exec_prefix}
+	builtin echo sysconfdir=${sysconfdir}
+	builtin echo sbindir=${sbindir}
+
+	builtin echo set -a
+	for f in $configfiles
+	do
+		builtin echo . $f
+	done
+
+	builtin echo "ulimit -d $ULIMIT"
+	builtin echo ${sbindir}/couriertcpd $TCPDOPTS $PORT \
+		${sbindir}/courieresmtpd'>/dev/null 2>&1 </dev/null'
+
+) | /bin/env -i /bin/sh
+exit 0

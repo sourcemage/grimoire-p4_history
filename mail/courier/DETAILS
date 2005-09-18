@@ -1,14 +1,17 @@
            SPELL=courier
-         VERSION=0.45.6
+         VERSION=0.52.0
           SOURCE=${SPELL}-${VERSION}.tar.bz2
+         SOURCE2=${SOURCE}.sig
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+  SOURCE2_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE2}
+      SOURCE_GPG="courier.gpg:${SOURCE2}"
         WEB_SITE=http://www.courier-mta.org/
       LICENSE[0]=GPL
-          MD5[0]='ba6cdd93c256632c81ceab674b7d606c'
+       BUILD_API=2
          ENTERED=20030417
          UPDATED=20030810
-           SHORT="The Courier mail transfer agent (MTA) is an integrated mail/groupware server."
+           SHORT="An integrated POP3/IMAP/SMTP mail/groupware server."
 cat << EOF
 
 The Courier mail transfer agent (MTA) is an integrated mail/groupware server
