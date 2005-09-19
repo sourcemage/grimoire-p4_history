@@ -12,9 +12,9 @@ start()
   echo "Starting postmaster..."
   cd "$DBPATH" &&
   if  [[  -z  "$PORT"  ]];  then
-    su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' start"
+    su "$USER" -c "pg_ctl -D '$DBPATH' -l '$LOGFILE' start"
   else
-    su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' start -o \"-i -p '$PORT'\""
+    su "$USER" -c "pg_ctl -D '$DBPATH' -l '$LOGFILE' start -o \"-i -p '$PORT'\""
   fi
   evaluate_retval
 }
@@ -22,7 +22,8 @@ start()
 stop()
 {
   echo "Stopping postmaster..."
-  su "$USER" -c "'$PROGRAM' -D '$DBPATH' -l '$LOGFILE' -m fast stop"
+  cd "$DBPATH" &&
+  su "$USER" -c "pg_ctl -D '$DBPATH' -m fast stop"
   evaluate_retval
 }
 
