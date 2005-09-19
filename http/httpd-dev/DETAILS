@@ -11,11 +11,11 @@ if [[ "$HTTPD_CHECKOUT" == y ]]; then
           SOURCE=${SPELL%-*}-trunk.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-trunk
 else
-         VERSION=2.1.6-alpha
-          MD5[0]='87e395a15eb1c875bdc6a41db7fd25fc'
+         VERSION=2.1.7-beta
+     SOURCE_HASH='sha1:b9e77d455be6244427658234f98b856fe02eacf7'
           SOURCE=${SPELL%-*}-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%-*}-$VERSION
-   SOURCE_URL[0]=http://httpd.apache.org/dev/dist/$SOURCE
+   SOURCE_URL[0]="$APACHE_URL/httpd/$SOURCE"
 fi
         WEB_SITE=http://httpd.apache.org/
      GATHER_DOCS=off

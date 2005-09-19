@@ -1,7 +1,7 @@
            SPELL=apr
-         VERSION=1.1.1
-          MD5[0]='d58de691e1ac1a6b347908d7c0fffa13'
-       REPOS_URI=branches/1.1.x
+         VERSION=1.2.1
+     SOURCE_HASH='sha1:ebb2073ac8e4d5daafa510dac885b86bf5e5943d'
+       REPOS_URI="branches/${VERSION%.*}.x"
 # APR_LATEST replaces APR_CVS; remove APR_CVS in May, 2005
 if [[ "${APR_LATEST:-APR_CVS}" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
