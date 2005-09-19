@@ -1,6 +1,5 @@
-mk_source_dir  $SOURCE_DIRECTORY  &&
-unpack  $SOURCE  ${MD5[0]}        &&
-cd  $SOURCE_DIRECTORY             &&
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
 
 # fixes the "nsBuildID.h: No such file or directory" problem
 patch  -p1  < $SCRIPT_DIRECTORY/xpfe-bootstrap.diff     &&
@@ -17,8 +16,8 @@ fi  &&
 #
 if  [[  "$MOZILLA_ENIGMAIL"  ==  'y'  ]];  then
   cd  $SOURCE_DIRECTORY/extensions  &&
-  unpack  $SOURCE2  ${MD5[1]}       &&
-  unpack  $SOURCE3  ${MD5[2]}
+  unpack_file  3                    &&
+  unpack_file  5
 fi  &&
 
 # remove /root/.mozconfig, it causes too much trouble
