@@ -8,6 +8,6 @@ fi &&
 
 if  [ "$BUILD_ENIGMAIL" = "y" ];  then
   cd  $SOURCE_DIRECTORY/extensions  &&
-  unpack  $SOURCE2  ${MD5[1]}       &&
-  unpack  $SOURCE3  ${MD5[2]}
+  unpack_file  3  &&
+  unpack_file  5
 fi
