@@ -1,3 +1,9 @@
+2005-09-19 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED
+	* init.d/cpufreqd: Use killproc $PROGRAM instead of killall $NAME
+	  (killall is from psmisc and would require another dependency)
+	  Use stop/start for restart()
+
 2005-09-05 Treeve Jelbert <treeve01@pi.be>
 	* DEPENDS: add cpufrequtils
 	  fixes bug #9710
