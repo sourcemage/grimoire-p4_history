@@ -6,10 +6,10 @@ if  [  "$CVS"  ==  "y"  ];  then
           MD5[0]="IGNORE"
   FORCE_DOWNLOAD="on"
 else
-         VERSION=2.2.2
+         VERSION=2.2.3
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-     SOURCE_HASH=sha1:e97da53ca7d35c7c22ebff575f95cf1c31128b33
+     SOURCE_HASH=sha1:9d6258a59bd18b315546088fcbb67bb9d46fc04e
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://libnjb.sourceforge.net/
@@ -19,5 +19,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        BUILD_API=2
            SHORT="Libraries for the Nomad Jukebox"
 cat << EOF
-libnjb is a C library and API for communicating with the Creative Nomad JukeBox digital audio player under BSD and Linux.
+libnjb is a C library and API for communicating with the Creative Nomad 
+JukeBox digital audio player under BSD and Linux.
 EOF
