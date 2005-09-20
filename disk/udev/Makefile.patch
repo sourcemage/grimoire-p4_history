@@ -1,14 +1,15 @@
---- Makefile.old	2005-08-13 19:10:50.000000000 +0200
-+++ Makefile	2005-08-16 23:33:58.000000000 +0200
-@@ -387,11 +388,6 @@
- 	$(INSTALL_PROGRAM) -D $(INFO) $(DESTDIR)$(usrbindir)/$(INFO)
- 	$(INSTALL_PROGRAM) -D $(TESTER) $(DESTDIR)$(usrbindir)/$(TESTER)
- 	$(INSTALL_PROGRAM) -D $(STARTER) $(DESTDIR)$(sbindir)/$(STARTER)
+--- Makefile.old	2005-09-20 09:08:33.939855500 +0200
++++ Makefile	2005-09-20 09:09:41.912103500 +0200
+@@ -386,11 +386,7 @@
+ 		echo $$target; \
+ 		$(MAKE) prefix=$(prefix) -C $$target $@; \
+ 	done;
 -ifndef DESTDIR
--	- killall $(DAEMON)
+-	- killall udevd
 -	- rm -rf $(udevdb)
--	- $(sbindir)/$(DAEMON) --daemon
+-	- $(sbindir)/udevd --daemon
 -endif
- 	@extras="$(EXTRAS)" ; for target in $$extras ; do \
- 		echo $$target ; \
- 		$(MAKE) prefix=$(prefix) LD="$(LD)" SYSFS="$(SYSFS)" \
++
+ .PHONY: install-bin
+ 
+ uninstall-bin:
