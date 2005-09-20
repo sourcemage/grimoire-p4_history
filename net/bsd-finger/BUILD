@@ -1,5 +1,8 @@
-patch -p1  <  $SCRIPT_DIRECTORY/bsd-finger-0.17.patch  &&
+./configure --prefix=$INSTALL_ROOT/usr                                 \
+                     $OPTS                                             &&
 
-./configure  --prefix=/usr  \
-             $OPTS          &&
+sedit                                                                  \
+  "s@MANDIR=$INSTALL_ROOT/usr/man@MANDIR=$INSTALL_ROOT/usr/share/man@" \
+  MCONFIG  &&
+
 make
