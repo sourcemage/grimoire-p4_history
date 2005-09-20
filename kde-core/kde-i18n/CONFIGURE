@@ -39,9 +39,10 @@ get_kdelanguages()  {
         i=$[$i+1]
       done
     else
-      echo  SOURCE=$SPELL-$VERSION.tar.bz2             >>  $CFG  &&
-      echo  SOURCE_URL[0]=${SITE/$SPELL\//}/\$SOURCE   >>  $CFG  &&
-      echo  MD5[0]="b178f0c33f5f1c70d3bc1e9d31cd7cae"  >>  $CFG
+       "${MESSAGE_COLOR}ALL is not a valid option${DEFAULT_COLOR}"
+#      echo  SOURCE=$SPELL-$VERSION.tar.bz2             >>  $CFG  &&
+#      echo  SOURCE_URL[0]=${SITE/$SPELL\//}/\$SOURCE   >>  $CFG  &&
+#      echo  MD5[0]="b178f0c33f5f1c70d3bc1e9d31cd7cae"  >>  $CFG
     fi
   else
     message  "${MESSAGE_COLOR}Using existing config${DEFAULT_COLOR}"  &&
