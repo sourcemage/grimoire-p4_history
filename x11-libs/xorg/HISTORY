@@ -1,3 +1,28 @@
+2005-09-20 Thomas Houssin <Thomas.Houssin@sourcemage.org>
+	* PRE_BUILD, CAN-2005-2495.patch: Added from http://www.freshports.org/x11-servers/xorg-server-snap/
+		security fix, see CAN-2005-2495
+
+2005-08-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PRE_BUILD, xorg-x11-6.8.2-xft-releasefile-crash.patch:
+	  fix a crasher bug that affects gnome-font-viewer (control-center2)
+
+2005-08-05 Eric Sandall <eric@sandall.us>
+	* CONFIGURE: Enable all video drivers and dri drivers (other than
+	  developmental versions) by default (Bug #9389)
+	  Enable all fonts by default (similar to Bug #9389)
+	  Uncommented Extension and Library code for more options
+
+2005-08-05 David Brown <dmlb2000@gmail.com>
+	* volatiles: added every line for every file that nvidia removes
+
+2005-06-15 David Brown <dmlb2000@excite.com>
+	* volatiles: added headers that nvidia_headers moves to list
+
+2005-05-20 Geoffrey Derber <gderber@sourcemage.org>
+	* PRE_BUILD: added evdev patch
+	* evdev-for-6.8.2-2.patch: added, allows usage of
+	  evdev as a driver
+
 2005-05-19 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, DEPENDS, DETAILS: use gcc 3.4 for the 6.8.2 release
 	* volatiles: added libglx.so, libGLcore.so (nvidia_driver),
