@@ -35,7 +35,7 @@ start (){
   TMPFILE=/tmp/portsentry.ignore.tmp
 
   for i in `/sbin/ifconfig -a | grep inet | awk '{print $2}' | sed 's/addr://'` ; do
-    echo $i >> $TMPFILE
+    builtin echo $i >> $TMPFILE
   done
 
   if [ -f $SENTRYDIR/always_ignore ]; then
@@ -61,7 +61,7 @@ start (){
 
 stop() {
   echo  "Stopping portsentry..."
-  kill $(cat $PIDFILE)
+  kill $(pidof portsentry)
   evaluate_retval
   RETVAL=$?
   [ $RETVAL -eq 0 ] && rm -f /var/lock/portsentry
