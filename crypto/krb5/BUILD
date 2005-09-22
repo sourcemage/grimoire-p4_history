@@ -6,12 +6,6 @@ fi
 
 cd  $SPELL-$VERSION/src                 &&
 
-# Buffer overflow, heap corruption in KDC.
-patch -p0 < $SCRIPT_DIRECTORY/2005-002-patch_1.4.1.txt  &&
-
-# Double-free in krb5_recvauth.
-patch -p0 < $SCRIPT_DIRECTORY/2005-003-patch_1.4.1.txt  &&
-
 ./configure  --enable-dns-for-kdc       \
              --enable-dns-for-realm     \
              --infodir=/usr/share/info  \
