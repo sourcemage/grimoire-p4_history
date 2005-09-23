@@ -1,6 +1,10 @@
-if [ "$DR17" = "y"  ] ; then
-        depends  edje
-fi
+depends  imlib2  &&
 
-optional_depends  esound  ""  ""  "for sound support"  &&
-depends  imlib2
+if  [  "$ENLIGHTENMENT"  ==  "y"  ];  then
+  depends  edje  &&
+  depends  CVS
+elif  [  "$ENLIGHTENMENT16_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi  &&
+
+optional_depends  esound  ""  ""  "for sound support"
