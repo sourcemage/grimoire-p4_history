@@ -3,7 +3,8 @@ depends  evas  &&
 
 if [ "$ECORE_CVS" = "y" ]; then
   depends  libtool   &&
-  depends  automake
+  depends  automake  &&
+  depends  CVS
 fi  &&
 
 optional_depends  openssl                           \
