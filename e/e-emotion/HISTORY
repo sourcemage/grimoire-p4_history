@@ -1,3 +1,13 @@
+2005-09-21 Eric Sandall <eric@sandall.us>
+	* Renamed variables from EMOTION to EEMOTION (there is an emotion
+	  package)
+	* PREPARE,DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	  Removed BUILD_API=2, section-wide now
+	* DEPENDS: Added missing dependency on CVS if needed
+	* BUILD,PRE_BUILD: BUILD renamed to PRE_BUILD
+	  Use NOCONFIGURE=ON ./autogen.sh
+
 2005-08-25 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated UPDATED
 	* PREPARE: Needs to default to CVS version for ewl
