@@ -1,9 +1,11 @@
 unset LANG
 
-# save current version so we can do a TRIGGERS
+if ! declare -f up_trigger > /dev/null; then
+# save current version so we can do a TRIGGERS, only on sorcery < 1.13
 #
 persistent_add PREVIOUS_VERSION	&&
-PREVIOUS_VERSION="`installed_version perl`"  &&
+PREVIOUS_VERSION="`installed_version perl`"
+fi  &&
 CONFIG="$DEPENDS_CONFIG/perl_config.sh"     &&
 
 SITEMAN1DIR="${INSTALL_ROOT}/usr/share/site_perl/man/man1"     &&
