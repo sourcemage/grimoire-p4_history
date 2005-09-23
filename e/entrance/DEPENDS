@@ -3,12 +3,8 @@ depends  edje    &&
 depends  esmart  &&
 depends  CVS     &&
 
-optional_depends  linux-pam                                    \
-                  ''                                           \
-                  ''                                           \
-                  'for Linux Pluggable Authentication Module'  &&
-
-optional_depends  shadow                       \
-                  ''                           \
-                  ''                           \
-                  'for shadow authentication'
+if  [  "$ENTRANCE_AUTH"  ==  "shadow"  ];  then
+  depends  shadow
+else
+  depends  linux-pam
+fi
