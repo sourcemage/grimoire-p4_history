@@ -1,5 +1,9 @@
            SPELL=ewler
+if  [  "$EWLER_CVS_AUTOUPDATE"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/ewler
@@ -9,7 +13,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
          ENTERED=20040609
          UPDATED=20040609
       LICENSE[0]=BSD
-       BUILD_API=2
            SHORT="an user interface design tool"
 cat << EOF
 Ewler is an user interface design tool to help speed development of ewl applications.
