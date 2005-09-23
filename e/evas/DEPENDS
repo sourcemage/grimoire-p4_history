@@ -1,6 +1,10 @@
 depends  automake  &&
 depends  libtool   &&
 
+if  [  "$EVAS_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi  &&
+
 optional_depends  X11-LIBS                               \
                   "--enable-software-x11  --with-x"      \
                   "--disable-software-x11  --without-x"  \

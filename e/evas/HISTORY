@@ -1,10 +1,20 @@
+2005-09-21 Eric Sandall <eric@sandall.us>
+	* PREPARE,DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	  Removed BUILD_API=2, section-wide now
+	* DEPENDS: Added missing dependency on CVS if needed
+	* PRE_BUILD: BUILD branched to PRE_BUILD
+	  Use NOCONFIGURE=ON ./autogen.sh
+	* BUILD: Remove autogen.sh code
+	  Have OPTS passed last so user-defined options override ours
+
 2005-09-08 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: removed cairo, evas release never supported it and evas cvs
 	  doesn't support it anymore
 
 2005-01-22 Eric Sandall <eric@sandall.us>
-	* DEPENDS: Added optional dependency on directfb, X11-LIBS, fbset, OPENGL,
-	  cairo, libpng, jpeg, and valgrind
+	* DEPENDS: Added optional dependency on directfb, X11-LIBS, fbset,
+	  OPENGL, cairo, libpng, jpeg, and valgrind
 	  Made eet and edb optional
 	* CONFIGURE: Added queries for scale sample, scale smooth, small dither
 	  mask, yuv, and buffer
