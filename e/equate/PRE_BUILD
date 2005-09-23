@@ -1,4 +1,4 @@
-default_pre_build              &&
-cd  $SOURCE_DIRECTORY          &&
-touch  ChangeLog               &&
-NOCONFIGURE="X"  ./autogen.sh
+default_pre_build             &&
+cd  $SOURCE_DIRECTORY         &&
+touch  ChangeLog              &&
+NOCONFIGURE=ON  ./autogen.sh
