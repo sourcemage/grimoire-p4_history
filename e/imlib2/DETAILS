@@ -5,16 +5,18 @@ if  [  "$IMLIB2_CVS"  ==  "y"  ];  then
   else
          VERSION=cvs
   fi
-          SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/imlib2
           MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
 else
          VERSION=1.2.1
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
           MD5[0]=38301fe0065dacbd06a2049cc1b6abfc
-fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+fi
         WEB_SITE=http://enlightenment.org
          ENTERED=20010922
          UPDATED=20021025

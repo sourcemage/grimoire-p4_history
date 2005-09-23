@@ -1,3 +1,5 @@
-[[ "$HOST" == x86_64-* ]] && OPTS="$OPTS --disable-mmx"  &&
+if [[ "$HOST" == x86_64-* ]]; then
+  OPTS="$OPTS --disable-mmx"
+fi  &&
 
 default_build
