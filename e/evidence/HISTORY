@@ -1,3 +1,13 @@
+2005-09-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	  Shortened SHORT
+	  Removed BUILD_API=2, section-wide now
+	* PREPARE,DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	* DEPENDS: Added missing dependency on CVS if needed
+	* PRE_BUILD: Use NOCONFIGURE=ON ./autogen.sh
+
 2005-02-09 Eric Sandall <eric@sandall.us>
 	* DEPENDS: libextractor is not for "blah"
 
@@ -8,9 +18,9 @@
 	* PREPARE: Added query for using CVS
 	* CONFIGURE: Added queries for POSIX ACL and Attribute, icon views,
 	  thumbnails, and iconsets
-	* DEPENDS: Added optional dependencies on curl, glib2, dbus, kdelibs, file,
-	  ecore, edje, libgnomecanvas, gnome-vfs2, libvorbis, id3lib, libextractor,
-	  freetype2, gtk+2, libgnomeui, taglib, and doodle
+	* DEPENDS: Added optional dependencies on curl, glib2, dbus, kdelibs,
+	  file, ecore, edje, libgnomecanvas, gnome-vfs2, libvorbis, id3lib,
+	  libextractor, freetype2, gtk+2, libgnomeui, taglib, and doodle
 	  Enable evas2 canvas (theming) with the evas dependency
 	  Added dependencies on eet and edb
 	* PRE_BUILD,BUILD: Run ./autogen.sh here

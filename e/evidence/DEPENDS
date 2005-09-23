@@ -20,6 +20,8 @@ depends  edb                               &&
 #fi  &&
 
 if  [  "$EVIDENCE_CVS"  ==  "y"  ];  then
+  depends  CVS  &&
+
   optional_depends  doodle                               \
                     "--enable-doodle"                    \
                     "--disable-doodle"                   \

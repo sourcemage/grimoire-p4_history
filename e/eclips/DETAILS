@@ -1,5 +1,9 @@
            SPELL=eclips
+if  [  "$ECLIPS_CVS_AUTOUPDATE"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/eclips
@@ -9,7 +13,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
          ENTERED=20040423
          UPDATED=20040423
       LICENSE[0]=BSD
-       BUILD_API=2
            SHORT="an image viewer"
 cat << EOF
 Eclips is an image viewer based on the EFL (Enlightenment Foundation Libraries).

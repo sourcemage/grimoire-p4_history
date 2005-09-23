@@ -1,5 +1,9 @@
            SPELL=evoak
+if  [  "$EVOAK_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+else
          VERSION=cvs
+fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/evoak
@@ -8,7 +12,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20040608
          UPDATED=20040608
       LICENSE[0]=BSD
-       BUILD_API=2
            SHORT="a canvas server"
 cat << EOF
 Evoak is a canvas server. This is similar to an X server that serves out a

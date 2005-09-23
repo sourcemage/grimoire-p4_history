@@ -1,6 +1,4 @@
-default_pre_build     &&
-cd $SOURCE_DIRECTORY  &&
-
-sedit "s/root//" autogen.sh  &&
-
-./autogen.sh
+default_pre_build               &&
+cd  $SOURCE_DIRECTORY           &&
+sedit  "s/root//"  autogen.sh   &&
+NOCONFIGURE=ON  ./autogen.sh

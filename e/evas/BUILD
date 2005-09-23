@@ -1,36 +1,31 @@
 if  [  "$EVAS_BUFFER"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-buffer"
+  OPTS="--enable-buffer  $OPTS"
 else
-  OPTS="$OPTS  --disable-buffer"
+  OPTS="--disable-buffer  $OPTS"
 fi  &&
 
 if  [  "$EVAS_SCALE_SAMPLE"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-scale-sample"
+  OPTS="--enable-scale-sample  $OPTS"
 else
-  OPTS="$OPTS  --disable-scale-sample"
+  OPTS="--disable-scale-sample  $OPTS"
 fi  &&
 
 if  [  "$EVAS_SCALE_SMOOTH"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-scale-smooth"
+  OPTS="--enable-scale-smooth  $OPTS"
 else
-  OPTS="$OPTS  --disable-scale-smooth"
+  OPTS="--disable-scale-smooth  $OPTS"
 fi  &&
 
 if  [  "$EVAS_YUV"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-convert-yuv"
+  OPTS="--enable-convert-yuv  $OPTS"
 else
-  OPTS="$OPTS  --disable-convert-yuv"
+  OPTS="--disable-convert-yuv  $OPTS"
 fi  &&
 
 if  [  "$EVAS_DITHER_MASK"  =  "y"  ];  then
-  OPTS="$OPTS  --enable-small-dither-mask"
+  OPTS="--enable-small-dither-mask  $OPTS"
 else
-  OPTS="$OPTS  --disable-small-dither-mask"
+  OPTS="--disable-small-dither-mask  $OPTS"
 fi  &&
 
-if [ "$EVAS_CVS" = "y" ]; then
-  ./autogen.sh   &&
-  default_build
-else
-  default_build
-fi
+default_build

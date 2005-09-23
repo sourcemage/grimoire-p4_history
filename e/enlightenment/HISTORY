@@ -1,3 +1,13 @@
+2005-09-21 Eric Sandall <eric@sandall.us>
+	* Renamed DR17 to ENLIGHTENMENT_CVS
+	* PREPARE,DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	  Removed BUILD_API=2, section-wide now
+	* DEPENDS: Added missing dependency on CVS if needed
+	* BUILD,PRE_BUILD: BUILD renamed to PRE_BUILD
+	  Use NOCONFIGURE=ON ./autogen.sh
+	  Pass OPTS last
+
 2005-07-15 Ladislav Hagara <hgr@vabo.cz>
 	* PREPARE, DETAILS, BUILD: tested and submitted to grimoire [Bug 9206]
 

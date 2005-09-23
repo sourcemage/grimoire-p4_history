@@ -1,2 +1,6 @@
 depends  automake  &&
-depends  libtool
+depends  libtool   &&
+
+if  [  "$EMBRYO_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi

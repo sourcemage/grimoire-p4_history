@@ -1,5 +1,9 @@
            SPELL=evfs
+if  [  "$EVFS_CVS_AUTOUPDATE"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/evfs
@@ -9,7 +13,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
          ENTERED=20050916
          UPDATED=20050916
       LICENSE[0]=BSD
-       BUILD_API=2
            SHORT="E Virtual Filesystem"
 cat << EOF
 E Virtual Filesystem
