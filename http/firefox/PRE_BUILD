@@ -12,7 +12,7 @@ if  [  "$FIREFOX_CVS"  =  "y"   ]              &&
              "$for ${SPELL_COLOR}$SPELL${DEFAULT_COLOR}"                    &&
     tar  jxf  $SOURCE_CACHE/$FIREFOX_TARBALL
 else
-  unpack  ${SOURCE}   ${MD5[0]}                             
+  unpack_file  ''
 fi                                                                          &&
 
 #

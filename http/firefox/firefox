@@ -6,5 +6,11 @@
 # based on the information from this thread:
 # http://lists.freebsd.org/pipermail/freebsd-gnome/2004-October/008443.html
 #
-
-LD_LIBRARY_PATH=/usr/lib/firefox  /usr/lib/firefox/firefox-bin "$@"
+export LD_LIBRARY_PATH=/usr/lib/firefox 
+remote=""
+if /usr/lib/firefox/firefox-bin -remote "ping()" > /dev/null 2>&1 ; then 
+	if [[ -z "$@" ]] ; then
+		remote='-remote xfeDoCommand(openBrowser)'
+	fi
+fi
+/usr/lib/firefox/firefox-bin $remote "$@"
