@@ -1,9 +1,9 @@
 depends perl &&
-depends LWP &&
-depends URI &&
-depends HTML-Parser &&
-depends HTML-Tagset &&
-depends MIME-Types &&
+depends lwp &&
+depends uri &&
+depends html-parser &&
+depends html-tagset &&
+depends mime-types &&
 
 optional_depends zlib \
                  '--with-zlib' \
@@ -17,10 +17,10 @@ optional_depends pcre \
                  "--with-pcre=$INSTALL_ROOT/usr" \
                  '--without-pcre' \
                  'for regular expression support' &&
-optional_depends MIME-Types '' '' 'to use MIME types in indexing' &&
-optional_depends HTML-Template '' '' 'to use with swish.cgi to generate output (instead of Template-Toolkit' &&
-optional_depends Template-Toolkit '' '' 'to use with swish.cgi to generate output (instead of HTML::Template)' &&
-optional_depends MP3-Tag '' '' 'to index MP3 files' &&
+optional_depends mime-types '' '' 'to use mime types in indexing' &&
+optional_depends html-template '' '' 'to use with swish.cgi to generate output (instead of template-toolkit' &&
+optional_depends template-toolkit '' '' 'to use with swish.cgi to generate output (instead of html::template)' &&
+optional_depends mp3-tag '' '' 'to index mp3 files' &&
 optional_depends xpdf '' '' 'to index PDF documents' &&
 optional_depends catdoc '' '' 'to index Word documents'
 
