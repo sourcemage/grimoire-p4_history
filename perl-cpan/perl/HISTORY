@@ -1,3 +1,10 @@
+2005-09-23 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* UP_TRIGGERS: added to cleanly recast all perl modules on a version
+	  upgrade, meant to replace the rebuild_modules hack when sorcery 1.13
+	  gets released
+	* BUILD, CONFIGURE, TRIGGERS: only do the whole rebuild_modules logic
+	  if the 'up_trigger' function isn't defined (sorcery <= 1.12.x)
+
 2005-08-01 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* Updated UPDATED, so that everyboy gets the previous fix
 
