@@ -1,17 +1,17 @@
            SPELL=xmms2
 if [[ "$XMMS2_SNAPSHOT" == "y" ]]
 then
-         VERSION=200508092121
-          SOURCE=${SPELL}.git-snapshot-${VERSION}.tar.gz
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}.git-snapshot-${VERSION}
-   SOURCE_URL[0]=http://git.xmms.se/snapshots/xmms2.git/${SOURCE}
-          MD5[0]=dfdd50573ffdc681de993a6c1b24bfdc
+         VERSION=4699cda2ad6a1cb36c49bc8d07aace2d1b795edf
+          SOURCE=${SPELL}-devel.git-snapshot-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-devel.git-snapshot-${VERSION}
+   SOURCE_URL[0]=http://git.xmms.se/snapshot.cgi/${SOURCE}
+     SOURCE_HASH=sha512:b3da749c1da72e15e1335068971e5046296478b7675dce496380ec899c51cb1656cd751d508b3220901996fe39b56f9c2f9def71c976c6a717c5d2d686f42b21
 else
          VERSION=0.1DR2.2
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-     SOURCE_HASH=sha1:913a7bf908eb6164ef4b8920f6e239f34fb2d45c
+     SOURCE_HASH=sha512:a3f632e826d96ec62c32afafc850f9b506f262b7ae1265a0cb13591fe0d9a34cfe40f405c80decb95e07b182b81680d688784724b5d38c48ebe47eb48b85412b
 fi
         WEB_SITE=http://wiki.xmms2.xmms.se/index.php/Main_Page
             DOCS='COPYING README'
