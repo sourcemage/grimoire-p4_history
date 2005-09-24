@@ -1,21 +1,21 @@
            SPELL=unison
-         VERSION=2.10.2
 if [ "$BETA" == "y" ]; then
-	VERSION=2.12.0
-	SOURCE=$SPELL-$VERSION.tar.gz
-	MD5[0]=a0a593726d34e84d6fef9afd361ab935
-SOURCE_URL[0]=http://www.cis.upenn.edu/~bcpierce/unison/download/beta-test/latest/$SOURCE
+         VERSION=2.17.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha1:03e02df5499b2c9db79ac895ca7c2d5d59b1f294
+   SOURCE_URL[0]=http://www.cis.upenn.edu/~bcpierce/unison/download/releases/beta/$SOURCE
 else
-          SOURCE=$SPELL-$VERSION.tar.gz   
-SOURCE_URL[0]=http://www.cis.upenn.edu/~bcpierce/unison/download/stable/latest/$SOURCE
-          MD5[0]=2e7b69e4f4f646a4625d0dfd614bee7c
+         VERSION=2.13.16
+          SOURCE=$SPELL-$VERSION.tar.gz      
+   SOURCE_URL[0]=http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/$SOURCE
+     SOURCE_HASH=sha1:3f119f6a6e8bc5ade8933d4693075a768f0abf9a
 fi
-        SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.cis.upenn.edu/~bcpierce/unison/
          ENTERED=20040521
          UPDATED=20040521
       LICENSE[0]=GPL
-      BUILD_API=2
+       BUILD_API=2
            SHORT="Unison is a file-synchronization tool"
 cat << EOF
 Unison is a file-synchronization tool. It allows two replicas of a
