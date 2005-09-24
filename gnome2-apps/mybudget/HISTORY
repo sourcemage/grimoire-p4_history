@@ -1,10 +1,8 @@
 2005-09-21 Eric Sandall <eric@sandall.us>
-	* Bug #8835
-	* DETAILS: Updated UPDATED
-	  Removed SOURCE information
-	* DEPENDS: Depends only on mybudget
-	* PRE_BUILD,BUILD,INSTALL: Run only `true`
-	* TRIGGERS: Dispel self (thanks Arwed)
+	* DETAILS: Renamed to mybudget (Bug #8835)
+	  Changed SOURCE and SOURCE_DIRECTORY to use myBudget
+	  Updated UPDATED
+	* CONFLICTS: Auto-conflicts with myBudget
 
 2004-12-16 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Removed Python (pygtk2 already depends on it)
