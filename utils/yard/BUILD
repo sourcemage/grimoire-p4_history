@@ -1,5 +1,3 @@
-(
-
   # Fix for Sorcery not having a 'man' group
   sedit  's/--group=man/--group=root/g'  doc/Makefile.in  &&
 
@@ -7,7 +5,4 @@
   zcat ${SCRIPT_DIRECTORY}/Makefile.in.patch.gz  |  patch  -p0
 
   ./configure  --prefix=/  &&
-  make                     &&
-  make  install
-
-)  > $C_FIFO  2>&1
+  make
