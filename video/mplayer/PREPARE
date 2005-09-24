@@ -1,1 +1,6 @@
-config_query CVS "Build CVS version?" n
+config_query  MPLAYER_CVS  "Build CVS version?"  n
+if  [ "$MPLAYER_CVS" == "y" ];  then
+  config_query  MPLAYER_CVS_AUTOUPDATE  \
+                "Update to the latest CVS on every cast?"  \
+                n
+fi
