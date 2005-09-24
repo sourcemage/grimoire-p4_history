@@ -1,0 +1,16 @@
+g++ -shared -Wl,-soname,libnvparse.so -DYY_NO_UNPUT -DUNIX -Wall -g 
+nvparse.o nvparse_extensions.o nvparse_errors.o rc1.0_combiners.o 
+rc1.0_final.o rc1.0_general.o ts1.0_inst.o ts1.0_inst_list.o 
+_ts1.0_parser.o _ts1.0_lexer.o _rc1.0_lexer.o _rc1.0_parser.o 
+_vs1.0_lexer.o _vs1.0_parser.o _ps1.0_lexer.o _ps1.0_parser.o 
+vs1.0_inst.o  vs1.0_inst_list.o ps1.0_program.o vsp1.0_impl.o 
+vcp1.0_impl.o vp1.0_impl.o -o ../lib/libnvparse.so -L/usr/X11R6/lib -lGL 
+-lGLU -lglut
+/usr/lib/gcc/i686-pc-linux-gnu/3.4.4/../../../../i686-make[1]: Leaving 
+directory `/usr/src/nvparse/src'
+ ! Problem Detected !
+pc-linux-gnu/bin/ld: cannot find -lglut
+collect2: ld returned 1 exit status
+make[1]: *** [compile] Error 1
+make: *** [default] Error 2
+
