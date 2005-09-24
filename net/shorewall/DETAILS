@@ -1,25 +1,19 @@
            SPELL=shorewall
-
-if [[ $USEVER == "2.0.x" ]] ; then
-         VERSION=2.0.16
-          SOURCE=$SPELL-$VERSION.tgz
-   SOURCE_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
-   SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
-   SOURCE_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/2.0/$SPELL-$VERSION/$SOURCE
-          MD5[0]=078eba4d5094d4af61ba9a2a23d12beb
-else
-         VERSION=2.4.0
-          SOURCE=$SPELL-$VERSION.tgz
+         VERSION=2.4.4
+          SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SPELL-$VERSION.tar.bz2.asc
    SOURCE_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[1]=http://www.shorewall.net/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE
    SOURCE_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE
-          MD5[0]=81ef4003b4160dbffce3f187772c2491 
-fi
-
+  SOURCE2_URL[0]=http://slovakia.shorewall.net/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE2
+  SOURCE2_URL[1]=http://www.shorewall.net/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE2
+  SOURCE2_URL[2]=http://shorewall.infohiiway.com/pub/$SPELL/2.4/$SPELL-$VERSION/$SOURCE2
+      SOURCE_GPG=shorewall.gpg.key:$SOURCE2
+     SOURCE_HASH=sha1:ee6495e9ded8e4660137d95689c1f1599dfbbe3d
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.shorewall.net/
          ENTERED=20020513
-         UPDATED=20041129
+         UPDATED=20050717
       LICENSE[0]=GPL
        BUILD_API=2
            SHORT="Iptable based firewall"
