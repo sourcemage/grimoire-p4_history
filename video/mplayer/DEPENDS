@@ -1,10 +1,15 @@
-depends  gcc34  &&
-if    [  "$GUI"  =  "y"  ]
-then  depends  gtk+         &&
+if [ "$MPLAYER_CVS" == "n" ]; then
+  depends  gcc34
+fi  &&
+if  [ "$MPLAYER_GUI" == "gtk+" ]
+then  depends  gtk+  '--enable-gui  --enable-old-gtk'  &&
+      depends  mplayer-gui
+elif  [ "$MPLAYER_GUI" == "gtk+2" ]
+then  depends  gtk+2  '--enable-gui'  &&
       depends  mplayer-gui
 fi  &&
 
-if [ "$CVS" = "y" ]; then
+if [ "$MPLAYER_CVS" == "y" ]; then
   depends  CVS                              &&
   optional_depends  ffmpeg-cvs              \
                     "--disable-libavcodec"  \
@@ -13,7 +18,7 @@ if [ "$CVS" = "y" ]; then
 fi  &&
 
 # audio codecs
-optional_depends  libvorbis "" "--disable-vorbis" "to play ogg/vorbis audio"  &&
+optional_depends  libvorbis "--disable-internal-tremor" "" "to use external libvorbis to play ogg/vorbis audio"  &&
 optional_depends  libmad "" "--disable-mad" "to play mp3 audio using libmad"  &&
 optional_depends  xmms "--enable-xmms" "" "for xmms input plugin support"  &&
 optional_depends  faad2 "--enable-external-faad" "" "to use shared faad for AAC decoding"  &&

@@ -1,9 +1,13 @@
            SPELL=mplayer
-if [ "$CVS" = "y" ]; then
+if  [ "$MPLAYER_CVS" == "y" ];  then
+  if  [ "$MPLAYER_CVS_AUTOUPDATE" == "y" ];  then
          VERSION=$(date +%Y%m%d)
+  else
+         VERSION=cvs
+  fi
           SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@mplayerhq.hu:/cvsroot/mplayer:main
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
@@ -14,13 +18,13 @@ else
    SOURCE_URL[2]=ftp://ftp5.mplayerhq.hu/MPlayer/releases/$SOURCE
      SOURCE_HASH=sha1:dcaced128167f15d094c9b63ca8b3dfd8f583e32
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/MPlayer-$VERSION
+     GCC_VERSION=3.4
 fi
         WEB_SITE=http://www.mplayerhq.hu
       LICENSE[0]=GPL
          ENTERED=20010922
          UPDATED=20050420
             DOCS="$DOCS etc/*.conf"
-     GCC_VERSION=3.4
            SHORT="MPlayer is a movie and animation player."
 cat << EOF
 MPlayer is a movie player for LINUX (runs on many other Unices, and non-x86
