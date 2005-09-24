@@ -1,14 +1,14 @@
-SPELL=lockexec
-VERSION=0.3.1
-SOURCE=$SPELL-0.3.tar.gz
+           SPELL=lockexec
+         VERSION=0.3.1
+          SOURCE=$SPELL-0.3.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-WEB_SITE=http://lockexec.sourceforge.net/
-ENTERED=20021001
-UPDATED=20021001
-MD5[0]=c65dbc069f510b225e328b7f417672fc
-MAINTAINER=wandre-l@netcourrier.com
-SHORT="lockfile management and control."
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+        WEB_SITE=http://lockexec.sourceforge.net/
+         ENTERED=20021001
+         UPDATED=20021001
+          MD5[0]=c65dbc069f510b225e328b7f417672fc
+       BUILD_API=2
+           SHORT="lockfile management and control."
 cat << EOF
 The normal lock file mechanism available at the shell level in unix is the
 'lockfile' command. It works by checking existence of a series of files to
