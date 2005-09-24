@@ -1,22 +1,27 @@
            SPELL=elinks
-if [ "$ELINKS_CVS" == 'y' ]; then
+if  [  "$ELINKS_CVS"  ==  'y'  ];  then
+  if  [  "$ELINKS_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+  else
          VERSION=cvs
-          SOURCE=$SPELL-$VERSION.tar.bz2
+  fi
+          SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.elinks.or.cz:/var/cvs/elinks:elinks
           MD5[0]=IGNORE
+  FORCE_DOWNLOAD=on
 else
-         VERSION=0.10.5
+         VERSION=0.10.6
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=http://elinks.or.cz/download/$SOURCE
-          MD5[0]='c6e453a86e97c5da17d5baa17ea5965d'
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://elinks.or.cz/
          ENTERED=20050711
          UPDATED=20050711
-         LICENSE=GPL
+      LICENSE[0]=GPL
        BUILD_API=2
-           SHORT='ELinks is a feature-rich text mode web browser'
+           SHORT='Feature-rich text mode web browser'
 cat << EOF
 ELinks is an advanced and well-established feature-rich text mode web
 (HTTP/FTP/..) browser.  ELinks can render both frames and tables, is highly
