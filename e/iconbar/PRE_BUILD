@@ -1,2 +1,3 @@
-./autogen.sh   &&
-default_build
+default_pre_build             &&
+cd  $SOURCE_DIRECTORY         &&
+NOCONFIGURE=ON  ./autogen.sh
