@@ -1,10 +1,10 @@
            SPELL=mdbtools
 if [[ "$MDBTOOLS_CVS" == "n" ]] ; then
-         VERSION=0.5
+         VERSION=0.6pre1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/mdbtools/$SOURCE
-          MD5[0]=fded0fb2e0265c69d3d1c9423b9228c7
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 else
 	 VERSION=`date +%Y%m%d`
 	  SOURCE=${SPELL}.tar.bz2
