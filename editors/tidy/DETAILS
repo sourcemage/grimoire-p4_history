@@ -1,12 +1,24 @@
            SPELL=tidy
-         VERSION=050826
+if [  "${TIDY_CVS}" == "y"  ] ; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvsroot.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/tidy:tidy
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvsroot
+
+else
+        VERSION=050921
 #
 # Do *not* remove the version from the SOURCE.
 #
           SOURCE=${SPELL}_src_$VERSION.tgz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
    SOURCE_URL[0]=http://tidy.sourceforge.net/src/${SOURCE}
-   SOURCE_HASH=sha1:eb9c091321fa08401ff08e6fd63e8d2a4d275feb  
+     SOURCE_HASH=sha256:aef754e01b69b65201a1179c73c639bab2298ccc58c6826aebad3d050a01ac35
+          MD5[0]=2d027de300bb0a854b35c0bd08710619
+fi
+
         WEB_SITE=http://tidy.sourceforge.net/
          ENTERED=20021002
          UPDATED=20040811
