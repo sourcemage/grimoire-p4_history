@@ -1,15 +1,14 @@
-invoke_gcc			  &&
-if [ "$XMLTYPE" == "y" ]; then
-   OPTS="$OPTS --with-xml=libxm"
-else
-   OPTS="$OPTS --with-xml=expat"
-fi                                &&
+invoke_gcc  &&
 
-if [ "$SELINUX" == "y" ]; then
-   OPTS="$OPTS --enable-selinux"
-fi                                &&
+if [ "$DBUS_SELINUX" == "y" ]; then
+   OPTS="--enable-selinux  $OPTS"
+fi  &&
 
-create_account  messagebus        &&
-make_single                       &&
-default_build                     &&
+OPTS="$DBUS_GTK2   \
+      $DBUS_PYREX  \
+      $OPTS"       &&
+
+create_account  messagebus  &&
+make_single                 &&
+default_build               &&
 make_normal
