@@ -1,5 +1,3 @@
-(
-
   sedit  "s:\=pentium4:\=${ARCHITECTURE}:"  Makefile      &&
   sedit  "s:-O3 -march=\$(MARCH):${CXXFLAGS}:"  Makefile  &&
   for i in `grep libevocosm\/ * | cut -d: -f1 | uniq`
@@ -9,8 +7,4 @@
 
   make  clean                 &&
   make                        &&
-  make  docs                  &&
-  prepare_install             &&
-  make  install  PREFIX=/usr
-
-)  >  ${C_FIFO}  2>&1
+  make  docs
