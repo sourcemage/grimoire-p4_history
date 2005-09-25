@@ -1,5 +1,13 @@
 2005-09-24 Eric Sandall <eric@sandall.us>
+	* PRE_BUILD: Use mk_source_dir instead of mkdir
 	* BUILD: Remove debugging echo
+	* INSTALL: Use INSTALL_ROOT
+	  Re-source etc/profile.d/java.sh in case Java version changed
+	  since last login
+	  Setup jre symlink for Java
+	  Use SOURCE_DIRECTORY instead of BUILD_DIRECTORY/SPELL-VERSION
+	* TRIGGERS: On cast a provider of JAVA, recast self to setup jre
+	  symlink
 
 2005-09-12 Eric Sandall <eric@sandall.us>
 	* BUILD: Setup ANT_HOME if we haven't relogged since installing ant

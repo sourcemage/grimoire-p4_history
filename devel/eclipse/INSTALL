@@ -1,5 +1,9 @@
-cd /usr/share                             &&
-tar zxvf $BUILD_DIRECTORY/$SPELL-$VERSION/result/linux-$ws-$arch-sdk.tar.gz  &&
-cd $BUILD_DIRECTORY/$SPELL-$VERSION        &&
-cp -v eclipse-script   /usr/bin/eclipse
+if  [  -f  $TRACK_ROOT/etc/profile.d/java.sh  ];  then
+  source  $TRACK_ROOT/etc/profile.d/java.sh
+fi  &&
 
+cd $INSTALL_ROOT/usr/share                                    &&
+tar zxvf $SOURCE_DIRECTORY/result/linux-$ws-$arch-sdk.tar.gz  &&
+cd $SOURCE_DIRECTORY                                          &&
+cp -v eclipse-script   $INSTALL_ROOT/usr/bin/eclipse          &&
+ln -sf  $JAVA_HOME  $INSTALL_ROOT/usr/share/eclipse/jre
