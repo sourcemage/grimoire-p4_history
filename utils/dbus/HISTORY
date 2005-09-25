@@ -1,5 +1,29 @@
+2005-09-24 Eric Sandall <eric@sandall.us>
+	* PREPARE: Renamed XMLTYPE to DBUS_XMLTYPE
+	* CONFIGURE: Renamed SELINUX to DBUS_SELINUX
+	  Add config_query_options for DBUS_PYREX and DBUS_GTK2
+	* DEPENDS: Renamed XMLTYPE to DBUS_XMLTYPE
+	  Removed TABs
+	  Removed optional dependencies on pyrex and gtk+2 (now use query
+	  information to determine their dependencies)
+	  Only optionally depend on glib2 if neither gtk+2 nor pyrex are wanted
+	  Formatted to Guru Handbook
+	  Added optional dependency on gcj (commented out - doesn't work)
+	  Pass libxml/expat parameters via depends
+	  Fixed --with-xml=libxm -> --with-xml=libxml
+	* BUILD: Renamed SELINUX to DBUS_SELINUX
+	  Removed XMLTYPE checks (now done via dependency information)
+	  Pass OPTS last so that user-defined options override ours
+	  Removed TABs
+	  Add DBUS_PYREX and DBUS_GTK2 flags to OPTS
+
 2005-08-26 George Sherwood <george@beernabeer.com>
 	* DEPENDS: replaced gtk-sharp with gtk-sharp-2. Needed for dbus-sharp
+
+2005-08-05 Flavien Bridault <disk@sourcemage.org>
+	* DETAILS, BUILD: use GCC_VERSION 3.4 (compile failed with python
+	  bindings)
+	* DEPENDS: depends gcc34
 
 2005-04-07 Eric Sandall <eric@sandall.us>
 	* DETAILS: Removed MAKE_NJOBS=1
