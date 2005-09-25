@@ -1,8 +1,6 @@
 #
 # Setup ANT_HOME if we haven't relogged since installing ant
 #
-echo  ANT_HOME = $ANT_HOME  &&
-
 if  [  -z  $ANT_HOME  ];  then
   if  [  -f  $TRACK_ROOT/etc/profile.d/ant.sh  ];  then
     .  $TRACK_ROOT/etc/profile.d/ant.sh
