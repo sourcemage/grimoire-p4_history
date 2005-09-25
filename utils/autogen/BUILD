@@ -1,2 +1,4 @@
 OPTS="--with-gnu-ld --with-pic $OPTS"  &&
-default_build
+make_single                            &&
+default_build                          &&
+make_normal
