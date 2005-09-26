@@ -1,6 +1,11 @@
 depends pkgconfig &&
 depends perl      &&
 
+optional_depends gettext                            \
+                 ""                                 \
+                 "--with-libiconv=no"               \
+                 "Build with gettext?"              &&
+
 optional_depends gtk-doc                            \
                  "--enable-gtk-doc"                 \
                  "--disable-gtk-doc"                \
