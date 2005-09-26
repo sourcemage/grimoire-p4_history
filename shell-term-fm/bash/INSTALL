@@ -44,21 +44,23 @@ for i in dummy editor.sh lc.sh;  do
   fi
 done  &&
 
-if  install_config_file  profile  $INSTALL_ROOT/etc/profile;  then
+if  install_config_file  $SCRIPT_DIRECTORY/profile   \
+                         $INSTALL_ROOT/etc/profile;  then
   chmod  0755  $INSTALL_ROOT/etc/profile
 fi  &&
 
 #
 # Bug #9672
 #
-if  install_config_file  bashrc  $INSTALL_ROOT/etc/bashrc;  then
+if  install_config_file  $SCRIPT_DIRECTORY/bashrc   \
+                         $INSTALL_ROOT/etc/bashrc;  then
   chmod  0755  $INSTALL_ROOT/etc/bashrc
 fi  &&
 
 #
 # Bug #9673
 #
-if  install_config_file  skel/bash_profile
+if  install_config_file  $SCRIPT_DIRECTORY/skel/bash_profile    \
                          $INSTALL_ROOT/etc/skel/.bash_profile;  then
   chmod  0755  $INSTALL_ROOT/etc/skel/.bash_profile
 fi  &&
@@ -71,11 +73,12 @@ if  [  -h  $INSTALL_ROOT/etc/skel/.bashrc  ];  then
   rm  -f  $INSTALL_ROOT/etc/skel/.bashrc
 fi  &&
 
-if  install_config_file  skel/bashrc  $INSTALL_ROOT/etc/skel/.bashrc;  then
+if  install_config_file  $SCRIPT_DIRECTORY/skel/bashrc    \
+                         $INSTALL_ROOT/etc/skel/.bashrc;  then
   chmod  0755  $INSTALL_ROOT/etc/skel/.bashrc
 fi  &&
 
-if  install_config_file  skel/bash_logout
+if  install_config_file  $SCRIPT_DIRECTORY/skel/bash_logout    \
                          $INSTALL_ROOT/etc/skel/.bash_logout;  then
   chmod  0755  $INSTALL_ROOT/etc/skel/.bash_logout
 fi
