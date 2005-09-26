@@ -11,6 +11,4 @@
 sedit  's:-lgobject-2.0:-L/usr/lib &:'  src/plugins/ole2/Makefile  &&
 sedit  's:-lglib-2.0:-L/usr/lib &:'     src/plugins/ole2/Makefile  &&
 
-make_single  &&
-make         &&
-make_normal
+make         
