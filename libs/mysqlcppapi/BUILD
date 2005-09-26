@@ -1,5 +1,4 @@
-(
-  OPTS="$OPTS --with-mysql=/usr"
+
+  OPTS="$OPTS --with-mysql=$INSTALL_ROOT/usr"
   default_build
-) > $C_FIFO 2>&1
 
