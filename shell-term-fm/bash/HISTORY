@@ -1,3 +1,17 @@
+2005-09-25 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated UPDATED
+	* bashrc: Set PS1 (doesn't fall over from profile, thanks Arwed)
+	* bash_logout: Moved to skel/bash_logout with the other skeleton files
+	* INSTALL,FINAL: Move installation of shell files from FINAL to INSTALL
+	  and use install_config_file so they're tracked (Bug #9473)
+	  Added profile.d/ with all the profile.d scripts (dummy, editor.sh,
+	  lc.sh) and removed the pop_script(), popld_script, pop_two(),
+	  todays_sedit(), and todasld_sedit() scripts
+	  Install all profile.d files with install_config_file
+	  Removed recursion -> iteration code (install_config_file will now
+	  let the user know there's been a change)
+	  Removed FINAL
+
 2005-09-24 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated UPDATED
 	* skel/bashrc,bashrc: Should not set PATH, otherwise paths set with

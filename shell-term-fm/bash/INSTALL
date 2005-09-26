@@ -27,5 +27,59 @@ for  MANPAGE  in  `ls  *.1`;  do
 done  &&
 
 cp  bashref.info  ${INSTALL_ROOT}/usr/share/info/bash.info  &&
-install-info  --info-dir=${INSTALL_ROOT}/usr/share/info  \
-               ${INSTALL_ROOT}/usr/share/info/bash.info
+install-info  --info-dir=${INSTALL_ROOT}/usr/share/info     \
+               ${INSTALL_ROOT}/usr/share/info/bash.info     &&
+
+#
+# Install login setup scripts (Bug #9473) here instead of in FINAL
+#
+
+#
+# Install etc/profile.d scripts
+#
+for i in  do;
+  if  install_config_file  $SCRIPT_DIRECTORY/profile.d/$i  \
+                       $INSTALL_ROOT/etc/profile.d/$i      ;then
+    chmod  0755  $INSTALL_ROOT/etc/profile.d/$i
+  fi
+done  &&
+
+if  install_config_file  profile  $INSTALL_ROOT/etc/profile;  then
+  chmod  0755  $INSTALL_ROOT/etc/profile
+fi  &&
+
+#
+# Bug #9672
+#
+if  install_config_file  bashrc  $INSTALL_ROOT/etc/bashrc;  then
+  chmod  0755  $INSTALL_ROOT/etc/bashrc
+fi  &&
+
+#
+# Bug #9673
+#
+if  install_config_file  skel/bash_profile
+                         $INSTALL_ROOT/etc/skel/.bash_profile;  then
+  chmod  0755  $INSTALL_ROOT/etc/skel/.bash_profile
+fi  &&
+
+#
+# Bug #9626
+# bashrc should not symlink to bash_profile
+#
+if  [  -h  $INSTALL_ROOT/etc/skel/.bashrc  ];  then
+  rm  -f  $INSTALL_ROOT/etc/skel/.bashrc  &&
+fi  &&
+
+if  install_config_file  skel/bashrc  $INSTALL_ROOT/etc/skel/.bashrc;  then
+  chmod  0755  $INSTALL_ROOT/etc/skel/.bashrc
+fi  &&
+
+if  install_config_file  skel/bash_logout
+                         $INSTALL_ROOT/etc/skel/.bash_logout;  then
+  chmod  0755  $INSTALL_ROOT/etc/skel/.bash_logout
+fi
+
+#
+# End Bug #9473
+#
