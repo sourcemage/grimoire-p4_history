@@ -1,14 +1,14 @@
            SPELL=mono
-         VERSION=1.1.8.1
+         VERSION=1.1.8.3
           BRANCH=`echo ${VERSION} | cut -f 1,2 -d .`
        BUILD_API=2
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=http://go-mono.com/sources/${SPELL}-${BRANCH}/${SOURCE}
-          MD5[0]=53fb3e5e9f1dfb3fa9d926a8ea53eeb1  
+      SOURCE_URL=http://go-mono.com/sources/${SPELL}-${BRANCH}/${SOURCE}
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig" 
         WEB_SITE=http://www.mono-project.com
          ENTERED=20020625
-         UPDATED=20020625
+         UPDATED=20050926
       LICENSE[0]=LGPL
            SHORT="The Mono implementation of the Microsoft .NET runtime"
 cat << EOF
