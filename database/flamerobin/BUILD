@@ -1,5 +1,5 @@
-patch -p0 < $SPELL_DIRECTORY/bk.diff &&
-bakefile -f autoconf flamerobin.bkl  &&
+#patch -p0 < $SPELL_DIRECTORY/bk.diff &&
+#bakefile -f autoconf flamerobin.bkl  &&
 mkdir release       &&
 cd release          &&
 ln -s ../configure  &&
