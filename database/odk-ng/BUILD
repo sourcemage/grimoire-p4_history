@@ -1,4 +1,3 @@
-cd odkda                   &&
 chmod u+x ./compile.sh     &&
 ./compile.sh               &&
 if spell_ok g++; then
@@ -13,10 +12,4 @@ if spell_ok mono; then
   ./compile.sh             &&
   cd ..
 fi
-#
-#  default_build
-#  ./configure --prefix=${INSTALL_ROOT}/usr $OPTS &&
-#  make                   &&
-#  prepare_install        &&
-#  make    install        
 
