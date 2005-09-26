@@ -68,7 +68,7 @@ fi  &&
 # bashrc should not symlink to bash_profile
 #
 if  [  -h  $INSTALL_ROOT/etc/skel/.bashrc  ];  then
-  rm  -f  $INSTALL_ROOT/etc/skel/.bashrc  &&
+  rm  -f  $INSTALL_ROOT/etc/skel/.bashrc
 fi  &&
 
 if  install_config_file  skel/bashrc  $INSTALL_ROOT/etc/skel/.bashrc;  then
