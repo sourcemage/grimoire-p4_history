@@ -2,4 +2,9 @@ depends  g++         &&
 depends  libgnomeui  &&
 depends  libavc1394  &&
 depends  libsamplerate  &&
-depends  libdv 
+
+if [ "$KINO_FFMPEG" == "y" ]; then
+   depends  LIBAVCODEC
+else
+   depends  libdv
+fi
