@@ -1,3 +1,8 @@
+2005-09-26 Flavien Bridault <disk@sourcemage.org>
+	* cdrtools-2.01.01a01-scanbus.patch, cdrtools-2.01.01a03-rezero.patch: added
+	* BUILD: Apply the two patches above, allow for a non-root user to burn,
+	  and without the SUID bit (that was broken since 2.6.11 kernels iirc)
+
 2005-05-17 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 2.01.01a3;
 	* PRE_BUILD,cdrtools-debug.diff: deleted as the hole was fixed;
@@ -5,7 +10,7 @@
 
 2005-04-23 Flavien Bridault <disk@sourcemage.org>
 	* FINAL: Removed udev rules creation in /etc/udev/udev.rules
-    * INSTALL: Added udev rules file installation in /etc/udev/rules.d/10-cdrtools
+	* INSTALL: Added udev rules file installation in /etc/udev/rules.d/10-cdrtools
 
 2005-04-22 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* PRE_BUILD: Apply security patch 'cdrtools-debug.diff'
