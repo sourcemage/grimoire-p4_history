@@ -1,15 +1,15 @@
            SPELL=pygame
-         VERSION=1.6
+         VERSION=1.7.1release
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.pygame.org/ftp/$SOURCE
-          MD5[0]=d982ffaf073bc07c862f4706385e93e0
+     SOURCE_HASH=sha1:cf6940e3ec4f48930ef8e4600c6decfa13ebbbea
       LICENSE[0]=LGPL
+       BUILD_API=2
         WEB_SITE=http://www.pygame.org
          ENTERED=20020411
          UPDATED=20020527
            SHORT="SDL bindings for Python"
-      MAINTAINER=anders@bruun-olsen.net
 cat << EOF
 Pygame is a set of Python modules designed for writing games. 
 It is written on top of the excellent SDL library. This allows 
