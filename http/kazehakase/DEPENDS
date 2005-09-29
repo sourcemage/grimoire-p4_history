@@ -4,5 +4,5 @@ if [ "${KZ_CVS}" == "y" ]
 then
   depends CVS
 fi &&
-depends MOZILLA-BROWSER &&
-depends gnutls
+depends GECKO &&
+optional_depends gnutls "--enable-ssl" "--disable-ssl" "TLS/SSL Support"
