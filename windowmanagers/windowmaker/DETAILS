@@ -1,12 +1,29 @@
            SPELL=windowmaker
+
+if [[ "${WINDOWMAKER_CVS}" == "y" ]] ; then
+
+    if  [[ "${WINDOWMAKER_CVS_AUTOUPDATE}" == "y" ]]
+    then VERSION=$(date +%Y%m%d)
+    else VERSION=cvs
+    fi
+
+          SOURCE=windowmaker-cvsroot.tar.bz2
+      SOURCE_URL=cvs://:pserver:anoncvs@cvs.windowmaker.org:/cvsroot:wm
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvsroot
+
+else
          VERSION=0.92.0
      GCC_VERSION=3.4
           SOURCE=WindowMaker-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/WindowMaker-$VERSION
    SOURCE_URL[0]=ftp://www.windowmaker.org/pub/source/release/$SOURCE
    SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
-        WEB_SITE=http://www.windowmaker.org
+     SOURCE_HASH=sha256:b431ce9f47c5d4cd52ab5b8298cff56fd5700d6e6052b149e19b6c567e526db1
           MD5[0]=800b36719dc214e107f4d80e95d22ca3
+fi
+        WEB_SITE=http://www.windowmaker.org
       LICENSE[0]=GPL
       LICENSE[1]=http://windowmaker.org/disclaimer.html
        BUILD_API=2
