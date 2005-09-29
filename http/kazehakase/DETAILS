@@ -1,16 +1,21 @@
            SPELL=kazehakase
-if [ "${CVS}" == "y" ]
+if [ "${KZ_CVS}" == "y" ]
 then
+  if [ "${KZ_CVS_AUTOUPDATE}" == "y" ]
+  then
+         VERSION=$(date +%Y%m%d)
+  else
          VERSION=cvs
-          SOURCE=${SPELL}-${VERSION}.tar.bz2
+  fi
+          SOURCE=${SPELL}-cvs.tar.bz2
   FORCE_DOWNLOAD=ON
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.jp:/cvsroot/kazehakase:kazehakase
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=unversioned
 else
-         VERSION=0.2.9
+         VERSION=0.3.1
           SOURCE=${SPELL}-${VERSION}.tar.gz
-   SOURCE_URL[0]=http://osdn.dl.sourceforge.jp/kazehakase/15824/${SOURCE}
-          MD5[0]=a7ab49cdf33aab0ccc07bcec3653183c
+   SOURCE_URL[0]=http://osdn.dl.sourceforge.jp/kazehakase/16705/${SOURCE}
+     SOURCE_HASH=sha512:b997005e7f89a2e4cd222d04f39d9d8957e6a0d681bf8d6ad870f795272d6b07daeffb95f4f624e0489dc94cc097c7424887f26d445826e3a92855add84a9008
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://kazehakase.sourceforge.jp
