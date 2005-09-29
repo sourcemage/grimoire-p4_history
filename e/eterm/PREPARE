@@ -1,0 +1,7 @@
+config_query ETERM_CVS "Use CVS version?" n &&
+
+if  [  "$ETERM_CVS"  ==  "y"  ];  then
+  config_query  ETERM_CVS_AUTOUPDATE                                     \
+                "Update to the latest CVS automatically on every cast?"  \
+                n
+fi
