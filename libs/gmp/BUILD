@@ -1,3 +1,7 @@
+if [[ "${GMP_CXX}" == "y" ]]
+then OPTS="${OPTS} --enable-cxx"
+fi  &&
+
 default_build &&
 
 # GMP authors suggest that the GMP binaries are not to be used
