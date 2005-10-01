@@ -1,18 +1,15 @@
            SPELL=wmweather+
-         VERSION=2.5
+         VERSION=2.9
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/wmweatherplus/$SOURCE
    SOURCE_URL[1]=http://download.sourcemage.org/mirror/$SOURCE
         WEB_SITE=http://sourceforge.net/projects/wmweatherplus/
-          MD5[0]=72159d10561dd13a8c743bcd5932007d
-    MENU_ITEM[0]="wmweather+"
-    MENU_EXEC[0]="wmweather+"
-    MENU_DESC[0]="WMWeather+ is an advanced weather service"
+     SOURCE_HASH=sha256:f53d3242cc8ff00e880829ef32a6cc2da49b6e1d3b5e97ba2e64703b9b89e9a3
+          MD5[0]=16565337e24badf40d07b908a142ac53
          ENTERED=20020911
          UPDATED=20030130
       LICENSE[0]=GPL
-      MAINTAINER=eric@sandall.us
            SHORT="WMWeather+ is an advanced weather service"
 cat << EOF
 wmweather+ will download the National Weather Service METAR bulletins, ANV and MRF forecasts, and any weather map for display in a WindowMaker dockapp. Think wmweather with a smaller font, forecasts, a weather map, and a sky condition display.
