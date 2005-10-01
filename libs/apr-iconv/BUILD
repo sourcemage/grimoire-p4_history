@@ -1,6 +1,4 @@
-(
-
-  patch -p1 < $SCRIPT_DIRECTORY/Makefile.diff &&
+#  patch -p1 < $SCRIPT_DIRECTORY/Makefile.diff &&
 
   ./buildconf --with-apr=/usr/share/apache2 &&
 
@@ -13,8 +11,4 @@
     --localstatedir=/var \
     --enable-layout=GNU \
     $OPTS &&
-  make &&
-  prepare_install &&
-  make install
-
-) >$C_FIFO 2>&1
+  make
