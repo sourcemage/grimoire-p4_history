@@ -1,7 +1,6 @@
-OPTS="${OPTS}                 \
-      ${MAILDROP_AUTHLIB}     \
+OPTS="${MAILDROP_AUTHLIB}     \
       ${MAILDROP_TRASHQUOTA}  \
-      ${MAILDROP_DIRSYNC}"    &&
+      ${MAILDROP_DIRSYNC}     \
+      ${OPTS}"                &&
 
 default_build
-
