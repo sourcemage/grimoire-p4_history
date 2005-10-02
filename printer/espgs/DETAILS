@@ -1,13 +1,14 @@
            SPELL=espgs
-         VERSION=8.15rc4
+         VERSION=8.15.1
+     SOURCE_HASH=sha512:5b8ce4ae94240df82e2d3e23ff33e78971002890023dae62c8748c5c3f50c226ee96b8f606c182711cbd928daed9faf6ea5220bb3185bd9f40bf3b318bb1a316
           SOURCE=${SPELL}-${VERSION}-source.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 #   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-   SOURCE_URL[0]=http://ftp.easysw.com/pub/ghostscript/test/${SOURCE}                         #  USA, California
-#   SOURCE_URL[0]=ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/ghostscript/${SOURCE}  #  Finland
+   SOURCE_URL[0]=http://ftp.easysw.com/pub/ghostscript/$VERSION/${SOURCE}                         
+#  USA, California
+   SOURCE_URL[1]=ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/ghostscript/$VERSION/${SOURCE}  #  Finland
         WEB_SITE=http://www.cups.org
       LICENSE[0]=GPL
-          MD5[0]=0823978dee6bc747250832acc539d74d
        BUILD_API=2
          ENTERED=20020613
          UPDATED=20040402
