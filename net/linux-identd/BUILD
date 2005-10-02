@@ -1,8 +1,3 @@
-(
-
+  sedit "s:MANDIR = /usr/man:MANDIR = $INSTALL_ROOT/usr/share/man:" Makefile  &&
   export  CEXTRAS="$CFLAGS"  &&
-  make                       &&
-  prepare_install            &&
-  make    install
-
-) > $C_FIFO 2>&1
+  make
