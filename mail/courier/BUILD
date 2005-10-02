@@ -14,8 +14,7 @@ case  "${COURIER_SSLWEBMAIL}"  in
                            ;;
 esac                                                          &&
 
-OPTS="${OPTS}                                                 \
-      ${COURIER_OPTS}                                         \
+OPTS="${COURIER_OPTS}                                         \
       ${COURIER_IMAPBUGS}                                     \
       ${COURIER_TRASHQUOTA}                                   \
          --sysconfdir=${INSTALL_ROOT}/etc/courier             \
@@ -23,7 +22,7 @@ OPTS="${OPTS}                                                 \
       --with-shellpath=${PATH}                                \
       --disable-root-check                                    \
       --with-mailuser=courier                                 \
-      --with-mailgroup=courier"                               &&
+      --with-mailgroup=courier                                \
+      ${OPTS}"                                                &&
 
 default_build
-

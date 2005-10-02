@@ -1,5 +1,4 @@
-OPTS="$OPTS                                               \
-         --sysconfdir=${INSTALL_ROOT}/etc/${SPELL}        \
+OPTS="   --sysconfdir=${INSTALL_ROOT}/etc/${SPELL}        \
       --localstatedir=${INSTALL_ROOT}/var/${SPELL}        \
             --datadir=${INSTALL_ROOT}/usr/share/$SPELL    \
          --libexecdir=${INSTALL_ROOT}/usr/libexec/$SPELL  \
@@ -10,7 +9,7 @@ OPTS="$OPTS                                               \
       $CIMAP_DIRSYNC                                      \
       $CIMAP_SMAP                                         \
       $CIMAP_IMAPBUGS                                     \
-      $CIMAP_TRASHQUOTA"                                  &&
+      $CIMAP_TRASHQUOTA                                   \
+      $OPTS"                                              &&
 
 default_build
-
