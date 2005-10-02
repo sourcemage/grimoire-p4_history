@@ -1,3 +1,5 @@
+OPTS="$OPTS $DSPAM_DAEMON" &&
+
 STORAGE_DRIVERS='hash_drv' &&
 if [[ "$DSPAM_SQLITE" == y ]]; then STORAGE_DRIVERS="$STORAGE_DRIVERS,sqlite3_drv"; fi &&
 if [[ "$DSPAM_DB"     == y ]]; then STORAGE_DRIVERS="$STORAGE_DRIVERS,libdb4_drv" ; fi &&
