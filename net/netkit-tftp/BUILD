@@ -1,8 +1,3 @@
-(
-
-  ./configure  --prefix=/usr  $OPTS	&&
-  make                        		&&
-  prepare_install             		&&
-  make    install
-
-) > $C_FIFO 2>&1
+sedit "s:PREFIX/man:PREFIX/share/man:" configure  &&  
+./configure  --prefix=$INSTALL_ROOT/usr $OPTS &&
+  make
