@@ -1,2 +1,1 @@
-
-Gmake.linux
+./Gmake.linux
