@@ -1,4 +1,3 @@
-(
 #
 #  cc  $CFLAGS  -Wall -o gridentd gridentd.c  &&
 #  prepare_install                            &&
@@ -6,5 +5,3 @@
 #
   prepare_install &&
   false
-
-) > $C_FIFO 2>&1
