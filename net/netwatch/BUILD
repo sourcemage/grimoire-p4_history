@@ -1,16 +1,6 @@
-(
-  patch -p1 < $SCRIPT_DIRECTORY/netwatch-1.0b.pre3-SGL.patch &&
-  
-  ./configure	--prefix=/usr		\
-		--sysconfdir=/etc	\
-		--localstatedir=/var	\
+  ./configure	--prefix=$INSTALL_ROOT/usr		\
+		--sysconfdir=$INSTALL_ROOT/etc	\
+		--localstatedir=$INSTALL_ROOT/var	\
+                --mandir=$INSTALL_ROOT/share/man        \
 		$OPTS                  &&
-  make netwatch                        &&
-  prepare_install                      &&
-  make    install
-  
-) > $C_FIFO 2>&1 &&  (
-
- [  -e  /etc/netwatch.conf  ]  ||  cp netwatch.conf.eg /etc/netwatch.conf
-
-)
+  make netwatch 
