@@ -1,11 +1,29 @@
            SPELL=aspell-da
        BUILD_API=2
-         VERSION=1.5.0
-          SOURCE=new_${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/new_${SPELL}-${VERSION}
-   SOURCE_URL[0]=http://da.speling.org/filer/${SOURCE}
-          MD5[0]=964ade232f484a34eef77b1f54237df5
-        WEB_SITE=http://da.speling.org/
+DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
+   LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
+
+   if [  "${USE_SPELING_ORG}"  ==  "y"  ] ; then
+         VERSION=1.7.1
+          SOURCE=new_${DICTIONARY_SPELL}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/new_${DICTIONARY_SPELL}-${LANGUAGE_CODE}-${VERSION}
+      SOURCE_URL=http://${LANGUAGE_CODE}.speling.org/filer/${SOURCE}
+     SOURCE_HASH=sha256:9da14afb49482cd56968008e2216f8b65263a4f849a665a9b599fb09a1af0d2e
+             MD5=02f0fc99ca95599df954aab2e82ef25f
+         WEBSITE=http://da.speling.org
+else
+   ASPELL_BRANCH=5
+         VERSION=1.4.42-1
+          SOURCE=${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${DICTIONARY_SPELL}${ASPELL_BRANCH}-${LANGUAGE_CODE}-${VERSION}
+      SOURCE_URL=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE}
+      SOURCE_GPG=aspell.gpg:${SOURCE}.sig
+         SOURCE2=${SOURCE}.sig
+     SOURCE2_URL=${GNU_URL}/${DICTIONARY_SPELL}/dict/${LANGUAGE_CODE}/${SOURCE2}
+  SOURCE2_IGNORE=signature
+        WEB_SITE=http://aspell.sourceforge.net
+fi
+
       LICENSE[0]=GPL
          ENTERED=20011028
          UPDATED=20011028
@@ -13,3 +31,4 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/new_${SPELL}-${VERSION}
 cat << EOF
 Danish aspell dictionary
 EOF
+
