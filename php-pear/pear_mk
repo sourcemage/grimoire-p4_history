@@ -126,7 +126,7 @@ function update_details_checksum() {
 
 # walk DETAILS files and update the checksums
 function update_checksums() {
-  find "$MY_DIRECTORY" -type f -and -path '*/PEAR-*/DETAILS' | while read LINE; do
+  find "$MY_DIRECTORY" -type f -and -path '*/pear-*/DETAILS' | while read LINE; do
     update_details_checksum "$LINE"
   done
 }

@@ -1,4 +1,4 @@
-#!/bin/gawk
+#!/bin/gawk -f
 
 function trim(line,     trimmed_line) {
   trimmed_line = line
@@ -38,5 +38,5 @@ function trim(line,     trimmed_line) {
 END {
   print "EOF"
   print ""
-  print "source $SECTION_DIRECTORY/PEAR_DETAILS"
+  print "source  $SECTION_DIRECTORY/PEAR_DETAILS"
 }
