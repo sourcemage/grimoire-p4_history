@@ -39,7 +39,7 @@ fi  &&
 
 if  [  "$POSTFIX_VDA"  ==  "y"  ];  then
     message "${MESSAGE_COLOR}Trying to patch Postfix with VDA support${DEFAULT_COLOR}"  &&
-    patch -Np1 < $SOURCE2_DIRECTORY/$NAME2   || PATCH_FAILED=true  &&
+    gzip -cd $SOURCE_CACHE/$SOURCE2 | patch -Np1   || PATCH_FAILED=true  &&
     if [ "$PATCH_FAILED" == "true" ]; then
       message "${MESSAGE_COLOR}Patch failed... please do a cast -r -c postfix"  &&
       message "and answer no to the VDA patch question.${DEFAULT_COLOR}"  &&

@@ -1,4 +1,10 @@
-make  upgrade  &&
+if  [[  -z  "$POSTFIX_PREVIOUS_VERSION"  ]];  then
+  message 'Performing fresh install...'  &&
+  make  install
+else
+  message 'Performing upgrade...'  &&
+  make  upgrade
+fi  &&
 
 pushd  $INSTALL_ROOT/usr/sbin       &&
 ln  -sf  sendmail  ../lib/sendmail  &&

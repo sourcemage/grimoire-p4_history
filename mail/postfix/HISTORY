@@ -1,3 +1,10 @@
+2005-10-02 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 2.2.5;
+	* PRE_BUILD: use unpack_file to check integrity (doesn't actually unpack);
+	  disable config patch because both `make install|upgrade' fail with it.
+	* BUILD: decompress the patch file manually before applying;
+	* CONFIGURE,INSTALL: use `install' target for new installs.
+
 2005-07-20 Jeremy Blosser <jblosser-smgl@firinn.org>
 	* PROVIDES: Provides SENDMAIL
 	* CONFLICTS: Conflicts with other providers of SENDMAIL

@@ -36,4 +36,7 @@ else
 fi  &&
 
 config_query  POSTFIX_VDA  \
-              "Apply Virtual Delivery Agent (VDA) patch (EXPERIMENTAL)?"  n
+              "Apply Virtual Delivery Agent (VDA) patch (EXPERIMENTAL)?"  n  &&
+
+POSTFIX_PREVIOUS_VERSION=$(installed_version  postfix)  &&
+persistent_add  POSTFIX_PREVIOUS_VERSION

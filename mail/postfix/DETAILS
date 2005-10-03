@@ -1,5 +1,8 @@
             SPELL=postfix
-          VERSION=2.2.3
+          VERSION=2.2.5
+         VERSION2=$VERSION-vda
+      SOURCE_HASH='sha1:5e86340e6ccff5a9141c259a6b65f72b7396483d'
+     SOURCE2_HASH='sha1:ba74c42d8bab9d4ae9a0c6e572ae3e7f5a4a1c27'
            SOURCE=$SPELL-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
@@ -21,17 +24,13 @@
    SOURCE_URL[16]=ftp://ftp.utoronto.ca/mirror/packages/postfix/official/$SOURCE
    SOURCE_URL[17]=ftp://postfix.webweaver.net/official/$SOURCE
    SOURCE_URL[18]=ftp://ftp.arnes.si/packages/postfix-release/official/$SOURCE
-           MD5[0]=cd5d088b41002d481e5f0406ec363979
 #
 # VDA patch
 #
-         VERSION2=2.2.3-vda
             NAME2=$SPELL-$VERSION2.patch
           SOURCE2=$NAME2.gz
-SOURCE5_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE2_URL[0]=http://web.onda.com.br/nadal/postfix/VDA/$SOURCE2
    SOURCE2_URL[1]=http://ftp.oav.net/others/postfix/VDA/$SOURCE2
-           MD5[1]=50dafdd3cf2ac3fe86d5cda69458ef26
 #
 # Postfix main site
 #

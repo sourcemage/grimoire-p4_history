@@ -10,7 +10,7 @@ if [[ "$HOST" == x86_64-* ]]; then
   [ -d /lib64 -a ! -f /lib/ld-linux-x86-64.so.2 -a -f /lib64/ld-linux-x86-64.so.2 ] &&
     ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2
   true  # see bug 8626 for info about this conditional
-fi
+fi &&
 
 # make some extra symlinks
 ln -sf gcc ${INSTALL_ROOT}/usr/bin/cc     &&
