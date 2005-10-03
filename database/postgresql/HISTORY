@@ -1,3 +1,10 @@
+2005-09-12 Sergey Lipnevich <sergey@sourcemage.org>
+	* init.d/postgresql: use /usr/bin/postmaster so that `status' works; change
+	  to data directory before starting postmaster, because default user
+	  `postgres' doesn't have access to root's home directory which is the
+	  directory used when init system runs; also quote all variables to avoid
+	  any potential errors.
+
 2005-05-21 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: Updated to 8.0.3
 	  major security fix

@@ -1,12 +1,10 @@
 source $DEPENDS_CONFIG/apr.p
 
            SPELL=apr-util
-# APR_BRANCH replaces APR_VERSION; remove APR_VERSION in May, 2005
-         VERSION=1.1.2
-          MD5[0]='f38f0f2274970359336527b2d6de13a1'
-       REPOS_URI=branches/1.1.x
-# APR_LATEST replaces APR_CVS; remove APR_CVS in May, 2005
-if [[ "${APR_LATEST:-APR_CVS}" == y ]]; then
+         VERSION=1.2.1
+     SOURCE_HASH='sha1:c3060c5895523a7c892605c55eb79b4e3613fe9b'
+       REPOS_URI="branches/${VERSION%.*}.x"
+if [[ "$APR_LATEST" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
           MD5[0]=IGNORE
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/apr/$SPELL/$REPOS_URI:$SPELL-$VERSION
