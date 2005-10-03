@@ -1,9 +1,9 @@
 #!/bin/sh
-declare -r MY_NAME=$(basename "$0")
-declare -r MY_DIRECTORY=${0%\/$MY_NAME}
+declare -r MY_NAME=$(basename "$0") &&
+declare -r MY_DIRECTORY=${0%\/$MY_NAME} &&
 
-# standard PEAR packages included with the PHP distribution as of PHP 4.3.2
-declare -ar PEAR_STANDARD=(Archive_Tar Console_Getopt DB HTTP Mail Net_SMTP Net_Socket PEAR XML_Parser XML_RPC)
+# standard PEAR packages included with the PHP distribution as of PHP 5.0.5
+declare -ar PEAR_STANDARD=(Archive_Tar Console_Getopt HTML_Template_IT Net_UserAgent_Detect PEAR XML_RPC) &&
 
 function say() {
   echo "$MY_NAME: $*"
@@ -12,9 +12,14 @@ function say() {
 # walks through the array and returns true if the package is found
 function is_standard_package() {
   for p in ${PEAR_STANDARD[*]}; do
-    [ "$1" == "$p" ] && return
+    [[ "$1" == "$p" ]] && return
   done
   false
+}
+
+# convert input to lower case
+function tolower() {
+  tr '[:upper:]' '[:lower:]'
 }
 
 # extracts version from a DETAILS file; pass the path inside
@@ -24,7 +29,7 @@ function get_version_from_details() {
 
 # extracts PEAR package name from a DETAILS file; pass the path inside
 function get_pear_package_from_details() {
-  gawk -F '-' '/SPELL=/ { print $2 }' "$1"
+  gawk -F '=' '/PEAR_PACKAGE=/ { print $2 }' "$1"
 }
 
 #extract spell name from DETAILS
@@ -44,32 +49,32 @@ function info_to_depends() {
 
 # replaces spell's file with the new ones, mostly the same except for DETAILS and DEPENDS
 function create_spell_for_package() {
-  local SPELL="PEAR-$1"
-  local DIR="$MY_DIRECTORY/$SPELL"
-  local DEP="$DIR/DEPENDS"
+  local SPELL=$(echo "PEAR-$1" | tolower) &&
+  local DIR="$MY_DIRECTORY/$SPELL" &&
+  local DEP="$DIR/DEPENDS" &&
 
   say "Creating/updating spell '$SPELL' in directory '$DIR'..." &&
   mkdir -p "$DIR" &&
   info_to_details "$1" > "$DIR/DETAILS" &&
-  if ! [ -x "$DEP" ]; then
+  if ! [[ -x "$DEP" ]]; then
     info_to_depends "$1" > "$DEP"
   fi &&
-  echo 'source $SECTION_DIRECTORY/PEAR_PRE_BUILD' > "$DIR/PRE_BUILD" &&
-  echo 'source $SECTION_DIRECTORY/PEAR_INSTALL' > "$DIR/INSTALL" &&
+  echo 'source  $SECTION_DIRECTORY/PEAR_PRE_BUILD' > "$DIR/PRE_BUILD" &&
+  echo 'source  $SECTION_DIRECTORY/PEAR_INSTALL' > "$DIR/INSTALL" &&
   chmod +x "$DIR/DETAILS" "$DEP" "$DIR/PRE_BUILD" "$DIR/INSTALL"
 }
 
 ## usage: update_spell_for_package <1:PEAR package> <2:new version>
 function update_spell_for_package() {
-  local SPELL="PEAR-$1"
-  local DIR="$MY_DIRECTORY/$SPELL"
-  local DET="$DIR/DETAILS"
+  local SPELL=$(echo "PEAR-$1" | tolower) &&
+  local DIR="$MY_DIRECTORY/$SPELL" &&
+  local DET="$DIR/DETAILS" &&
 
-  if ! [ -x "$DET" ]; then
+  if ! [[ -x "$DET" ]]; then
     create_spell_for_package "$1"
   else
     local VER=$(get_version_from_details "$DET") &&
-    if [ "$2" != "$VER" ]; then
+    if [[ "$2" != "$VER" ]]; then
       say "New version '$2' available for '$SPELL'..." &&
       create_spell_for_package "$1"
     fi
@@ -78,12 +83,12 @@ function update_spell_for_package() {
 
 # walk through remote packages and update each
 function update_packages() {
-  local INDEX=0
-  local LINE
+  local INDEX=0 &&
+  local LINE= &&
 
   pear remote-list | while read LINE; do
     # skip first three lines
-    if [ $((++INDEX)) -lt 4 ]; then
+    if [[ $((++INDEX)) -lt 4 ]]; then
       continue
     fi &&
     # determine package name and version, and update
@@ -100,22 +105,21 @@ function update_packages() {
 ## usage update_checksum <1:DETAILS path>
 function update_details_checksum() {
   local SPELL=$(get_spell_from_details "$1") &&
-
   local PKG=$(get_pear_package_from_details "$1") &&
   local VER=$(get_version_from_details "$1") &&
   local FILE="/var/spool/sorcery/$PKG-$VER.tgz" &&
 
-  [ -n "$PKG" ] &&
-  [ -n "$VER" ] &&
-  if ! [ -r "$FILE" ]; then
+  [[ -n "$PKG" ]] &&
+  [[ -n "$VER" ]] &&
+  if ! [[ -r "$FILE" ]]; then
     summon "$SPELL"
   fi &&
-  [ -r "$FILE" ] &&
-  local SUM=$(gzip -cd "$FILE" | md5sum | cut -d ' ' -f 1) &&
+  [[ -r "$FILE" ]] &&
+  local SUM=$(sha1sum "$FILE" | cut -d ' ' -f 1) &&
 
   local T="$1-$$-$RANDOM" &&
   cp "$1" "$T" &&
-  sed -e "s|\\(MD5\\[0\\]\\)=.*|\\1='$SUM'|" "$T" > "$1" &&
+  sed -e "s|\\(SOURCE_HASH\\)=.*|\\1='sha1:$SUM'|" "$T" > "$1" &&
   rm "$T" &&
   say "Updated checksum in '$1'..."
 }
@@ -128,11 +132,11 @@ function update_checksums() {
 }
 
 function main() {
-  if [ $# == 2 ]; then # two options
+  if [[ $# == 2 ]]; then # two options
     update_spell_for_package "$1" "$2" &&
     scribe reindex &&
     update_details_checksum "$MY_DIRECTORY/PEAR-$1/DETAILS"
-  elif [ $# == 0 ]; then # no options
+  elif [[ $# == 0 ]]; then # no options
     say 'Updating ALL packages...' &&
     update_packages &&
     scribe reindex &&
@@ -142,15 +146,15 @@ function main() {
   fi
 }
 
-say 'PEAR to SMGL (Package to Spell) Translation Script'
+say 'PEAR to SMGL (Package to Spell) Translation Script' &&
 
-[ -z "$MY_DIRECTORY" ] && (
+[[ -z "$MY_DIRECTORY" ]] && (
   say "Couldn't determine the base directory..." &&
   exit 1
 )
 say "Base directory is '$MY_DIRECTORY'..."
 
-if [ "$UID" == 0 ]; then
+if [[ "$UID" == 0 ]]; then
   main $*
 else
   say 'Enter the root password, please'

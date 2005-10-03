@@ -8,11 +8,12 @@ function trim(line,     trimmed_line) {
 }
 /^Latest/ {
   print "         VERSION=" $2
-  print "          MD5[0]=''"
+  print "     SOURCE_HASH=''"
   print "         UPDATED=" strftime("%Y%m%d")
 }
 /^Package/ {
-  print "           SPELL=PEAR-" $2
+  print "           SPELL=pear-" tolower($2)
+  print "    PEAR_PACKAGE=" $2
   print "        WEB_SITE=http://pear.php.net/package/" $2 "/"
 }
 /^License/ {
