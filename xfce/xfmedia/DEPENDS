@@ -7,4 +7,8 @@ optional_depends  startup-notification              \
 optional_depends  dbus              \
                   "--enable-dbus"   \
                   "--disable-dbus"  \
-                  "for dbus remoting support"
+                  "for dbus remoting support"  &&
+optional_depends  taglib              \
+                  "--with-taglib"     \
+                  "--without-taglib"  \
+                  "for metadata editing support"
