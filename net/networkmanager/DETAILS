@@ -1,10 +1,22 @@
            SPELL=networkmanager
+if  [  "$NETWORKMANAGER_CVS"  ==  "y"  ];  then
+  if  [  "$NETWORKMANAGER_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+  else
+         VERSION=cvs
+  fi
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:NetworkManager
+   SOURCE_IGNORE=volatile
+else
          VERSION=0.4.cvs20050506
           BRANCH=`echo $VERSION | cut -d. -f1,2`
           SOURCE=NetworkManager-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/NetworkManager-$BRANCH
    SOURCE_URL[0]=http://people.redhat.com/dcbw/NetworkManager/$BRANCH/$SOURCE
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+fi
       LICENSE[0]=GPL
        BUILD_API=2
         WEB_SITE=http://people.redhat.com/dcbw/NetworkManager/

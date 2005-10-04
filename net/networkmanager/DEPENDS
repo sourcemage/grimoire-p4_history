@@ -8,6 +8,10 @@ depends  libpanelappletmm  &&
 depends  dbus              &&
 depends  hal               &&
 
+if  [  "$NETWORKMANAGER_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi  &&
+
 optional_depends  libgcrypt                   \
                   '--with-gcrypt'             \
                   '--without-gcrypt'          \
