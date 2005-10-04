@@ -1,27 +1,33 @@
 depends automake &&
 depends autoconf &&
 depends libmcrypt &&
-if [ "$CS_GSSAPI" == "y" ]; then
-  depends krb5
+
+optional_depends openssl '--with-openssl=/bin' '--without-openssl' 'for OpenSSL' &&
+
+if [[ "$CS_KERBEROS" == 'y' ]]; then
+  optional_depends krb5 \
+                   '--enable-gssapi=/usr' \
+                   '--disable-gssapi' \
+                   'for Kerberos authentication' &&
+  optional_depends krb4 \
+                   '--enable-krb4' \
+                   '--disable-krb4' \
+                   'for Kerberos 4 authentication (not recommended)'
 fi &&
-if [ "$CS_DB" == "y" ]; then
-  depends db
+if [[ "$CS_MECH" =~ 'saslauthd' ]]; then
+  case "$CS_SASLD" in
+    shadow)   ;; # TODO, didn't find appropriate option for configure
+    PAM)      optional_depends linux-pam '--with-pam=/usr'  '--without-pam'  'saslauthd PAM backend' ;;
+    LDAP)     optional_depends openldap  '--with-ldap=/usr' '--without-ldap' 'saslauthd LDAP backend';;
+    KERBEROS) ;; # TODO, what's special about this one?
+  esac
 fi &&
-if [ "$CS_GDBM" == "y" ]; then
-  depends gdbm
-fi &&
-if [ "$CS_SQLITE" == "y" ]; then
-  depends sqlite
-fi &&
-if [ "$CS_MYSQL" == "y" ]; then
-  depends mysql
-fi &&
-if [ "$CS_PSQL" == "y" ]; then
-  depends postgresql
-fi &&
-if [ "$CS_SASLD" == "LDAP" ]; then
-  depends openldap
-fi &&
-if [ "$CS_SASLD" == "PAM" ]; then
-  depends linux-pam
+if [[ "$CS_MECH" =~ 'auxprop' ]]; then
+  case "$CS_DB" in
+    berkeley) depends db   '--with-dblib=berkeley';;
+	gdbm)     depends gdbm '--with-dblib=gdbm'    ;;
+  esac &&
+  optional_depends sqlite2    '--enable-sql --with-sqlite=/usr' '--without-sqlite' 'auxprop SQLite backend' &&
+  optional_depends mysql      '--enable-sql --with-mysql=/usr'  '--without-mysql'  'auxprop MySQL backend'  &&
+  optional_depends postgresql '--enable-sql --with-pgsql=/usr'  '--without-pgsql'  'auxprop PostgreSQL backend'
 fi

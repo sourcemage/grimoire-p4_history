@@ -15,10 +15,10 @@ optional_depends  cyrus-sasl  '--with-cyrus-sasl'  '--without-cyrus-sasl'       
 if echo $OPENLDAP_SLAPD | grep -q enable; then
   case "$SLAPD_LDBM" in
   db)
-    depends  db    '--enable-ldbm=mod --with-ldbm-api=berkeley'
+    depends  db    '--enable-ldbm=mod --enable-ldbm-api=berkeley'
     ;;
   gdbm)
-    depends  gdbm  '--enable-ldbm=mod --with-ldbm-api=gdbm'
+    depends  gdbm  '--enable-ldbm=mod --enable-ldbm-api=gdbm'
     ;;
   esac
 

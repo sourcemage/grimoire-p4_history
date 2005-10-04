@@ -1,15 +1,15 @@
            SPELL=trac
-if [[ "$TRAC_HEAD" == n ]]; then
-         VERSION=0.8.4
-     SOURCE_HASH='sha1:4497b4b8b3c717fcb22860a320c4162abdffac9b'
-          SOURCE="$SPELL-$VERSION.tar.gz"
-   SOURCE_URL[0]="http://ftp.edgewall.com/pub/trac/$SOURCE"
-else
+if [[ "$TRAC_HEAD" == y ]]; then
          VERSION=HEAD
    SOURCE_IGNORE='volatile'
           SOURCE="$SPELL-$VERSION.tar.bz2"
    SOURCE_URL[0]="svn://svn.edgewall.com/repos/trac/trunk/:$SPELL-$VERSION"
   FORCE_DOWNLOAD=on
+else
+         VERSION=0.9b2
+     SOURCE_HASH='sha1:89109c3c502822d41b7424c4d30d807985b20c46'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://ftp.edgewall.com/pub/trac/$SOURCE"
 fi
 SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
         WEB_SITE="http://www.edgewall.com/$SPELL/"

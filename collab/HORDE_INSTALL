@@ -3,21 +3,23 @@
 #
 # We don't need to use INSTALL_ROOT as install_www_files does this for us
 #
-HORDE_CONFIG_DIR=/etc/horde            &&
-    HORDE_PREFIX=""                    &&
-       HORDE_DIR=/usr/share/www/horde  &&
+HORDE_PREFIX=  &&
+if  [  "$SPELL"  !=  'horde'  ];  then
+  HORDE_PREFIX="/$SPELL"
+fi  &&
+HORDE_CONFIG_DIR="$INSTALL_ROOT/etc/horde$HORDE_PREFIX"  &&
+HORDE_WWW_DIR="/usr/share/www/horde$HORDE_PREFIX"  &&
 
-if  [  "$SPELL"  !=  "horde"  ];  then
-  HORDE_CONFIG_DIR="$HORDE_CONFIG_DIR/$SPELL"  &&
-      HORDE_PREFIX="/$SPELL"                   &&
-         HORDE_DIR="$HORDE_DIR/$SPELL"
+#
+# if `php' returned error, simply check if the output is present.
+# `php -m' appears to always return a bad status code.
+#
+if  !  PHP_MODULES=$(php -m 2>/dev/null);  then
+  [[  -n  "$PHP_MODULES"  ]]
 fi  &&
 
-PHP_MODULES=$(php -m 2>/dev/null)  &&
-
-message  "${MESSAGE_COLOR}Checking for necessary modules in ${SPELL_COLOR}"  \
-         "php${DEFAULT_COLOR}\n${MESSAGE_COLOR}Checking for gettext in"      \
-         "${SPELL_COLOR}php${DEFAULT_COLOR}"                                 &&
+message  "${MESSAGE_COLOR}Checking for gettext in ${SPELL_COLOR}php"         \
+         "${DEFAULT_COLOR}"                                                  &&
 echo  "$PHP_MODULES"  |  grep  -q  gettext                                   &&
 
 message  "${MESSAGE_COLOR}Checking for imap in ${SPELL_COLOR}php"            \
@@ -26,32 +28,33 @@ echo  "$PHP_MODULES"  |  grep  -q  imap                                      &&
 
 message  "${MESSAGE_COLOR}Checking for xml in ${SPELL_COLOR}php"             \
          "${DEFAULT_COLOR}"                                                  &&
-echo  "$PHP_MODULES"  |  grep  -q  xml
+echo  "$PHP_MODULES"  |  grep  -q  xml                                       &&
+
+message  "${MESSAGE_COLOR}Checking for dom in ${SPELL_COLOR}php"             \
+         "${DEFAULT_COLOR}"                                                  &&
+echo  "$PHP_MODULES"  |  grep  -q  dom                                       &&
 
 #
 # kill remnants of CVS, if any
 #
-rm  -fr  $(find  ./  -type  d  -and  -name  CVS)         &&
-rm  -fr  $(find  ./  -type  f  -and  -name  .cvsignore)  &&
-
-#
-# replace all occurrences of
-#   dirname(__FILE__) . '/..
-# to references to HORDE_BASE
-#
-message  "${MESSAGE_COLOR}Applying changes necessary to relocate"            \
-         "$HORDE_DIR/config directory to $HORDE_CONFIG_DIR${DEFAULT_COLOR}"  &&
-pushd  config  &&
-for  horde_files  in  *.php*;  do
-  sedit  "s|dirname(__FILE__) \. '\/\.\.|HORDE_BASE . '$HORDE_PREFIX|"  \
-         $horde_files
-done  &&
-popd  &&
+find  ./  -type  d  -and  -name  CVS         -exec  rm  -frv  {}  ';'  &&
+find  ./  -type  f  -and  -name  .cvsignore  -exec  rm  -fv   {}  ';'  &&
 
 #
 # deal with configuration files and directory
 #
-if  [  -d  "$SOURCE_DIRECTORY/config"  ];  then
+if  [[  -d  config  ]]  &&  pushd  config;  then
+  #
+  # replace all occurrences of
+  #   dirname(__FILE__) . '/..
+  # to references to HORDE_BASE
+  #
+  message  "${MESSAGE_COLOR}Applying changes necessary to relocate"            \
+           "\`$HORDE_WWW_DIR/config' directory to \`$HORDE_CONFIG_DIR'${DEFAULT_COLOR}"  &&
+  for  _PHP  in  *.php*;  do
+    sedit  "s|dirname(__FILE__) \. '\/\.\.|HORDE_BASE . '$HORDE_PREFIX|"  "$_PHP"
+  done  &&
+
   #
   # Configuration scripts include definition of multiple `fileroot' fields,
   # and we need to make sure that these definitions are not based on __FILE__
@@ -59,59 +62,48 @@ if  [  -d  "$SOURCE_DIRECTORY/config"  ];  then
   # /etc/... won't work
   #
   message "${MESSAGE_COLOR}Checking that configuration modules do not"  \
-          "reference __FILE__...${DEFAULT_COLOR}"                       &&
-  !  grep  'fileroot'  ./config/*  |  grep  -q  '__FILE__'  &&
+          "reference \`__FILE__'...${DEFAULT_COLOR}"                    &&
+  !  grep  'fileroot'  *  |  grep  -q  '__FILE__'  &&
 
-  message "${MESSAGE_COLOR}Moving configuration to '$HORDE_CONFIG_DIR'..."  \
+  message "${MESSAGE_COLOR}Moving configuration to \`$HORDE_CONFIG_DIR'..."  \
           "${DEFAULT_COLOR}"                                                &&
-  mkdir  -p  "$HORDE_CONFIG_DIR"                 &&
-  chmod  0755  "$HORDE_CONFIG_DIR"               &&
+  mkdir  -p                 "$HORDE_CONFIG_DIR"  &&
+  chmod  0755               "$HORDE_CONFIG_DIR"  &&
   chown  www-data:www-data  "$HORDE_CONFIG_DIR"  &&
   # no configuration files are overwritten, all Horde packages come with
   # config/*.conf.dist files, which have to be updated
-  for  horde_config  in  `ls  config`;  do
-    install_config_file  config/$horde_config                       \
-                         "$HORDE_CONFIG_DIR/$horde_config"          &&
-    install_config_file  config/$horde_config                       \
-                         "$HORDE_CONFIG_DIR/${horde_config%.dist}"
+  for  _CFG  in  *.php.dist;  do
+    # `dist' files are supposed to be tracked
+    cp  -fv              "$_CFG"  "$HORDE_CONFIG_DIR/$_CFG"  &&
+    install_config_file  "$_CFG"  "$HORDE_CONFIG_DIR/${_CFG%.dist}"
   done  &&
+  popd  &&
   rm  -rf  config
 fi  &&
 
-message  "${MESSAGE_COLOR}Copying files to '$HORDE_DIR'...${DEFAULT_COLOR}"  &&
-install_www_files  ./  "$HORDE_DIR"
+if  [[  -d  scripts/ldap  ]]  &&  pushd  scripts/ldap;  then
+  SLAPD_SCHEMA="$INSTALL_ROOT/etc/openldap/schema"  &&
+  for  _SCHEMA  in  *.schema;  do
+    # create directory only if any schema files are present
+    mkdir -p "$SLAPD_SCHEMA"  &&
+    # no need for install_config_file, schema is not supposed to be edited
+    cp  -fv  "$_SCHEMA"  "$SLAPD_SCHEMA/$(basename $_SCHEMA)"
+  done  &&
+  popd  &&
+  rm  -fr  scripts/ldap
+fi &&
+
+message  "${MESSAGE_COLOR}Copying files to '$HORDE_WWW_DIR'...${DEFAULT_COLOR}"  &&
+install_www_files  ./  "$HORDE_WWW_DIR"  &&
 
 #
 # we create a link to a full-path target, so no relative path dangers here
 #
-pushd  "$HORDE_DIR"  &&
-ln  -fns  "$HORDE_CONFIG_DIR"  "config"  &&
-popd  &&
+ln  -fnsv  "$HORDE_CONFIG_DIR"  "$HORDE_WWW_DIR/config"
 
-  SLAPD_CONF=$INSTALL_ROOT/etc/openldap/slapd.conf  &&
-SLAPD_SCHEMA=$INSTALL_ROOT/etc/openldap/schema      &&
-
-if  [  "$SPELL"  ==  'horde'  ]  &&
-    spell_ok  openldap           &&
-    [  -r  "$SLAPD_CONF"      ]  &&
-    [  -d "$SLAPD_SCHEMA"     ]; then
-  SUFFIX=$(gawk '/^suffix\W+/ { match($0, /^suffix\W+"?([^"]+)"?\W*$/, a); print a[1]; nextfile; }' "$SLAPD_CONF")
-message  "${MESSAGE_COLOR}Found LDAP database suffix:${DEFAULT_COLOR} '$SUFFIX'..."  &&
-
-  for  ldap_schema  in  `ls  scripts/ldap/*.schema`;  do
-    install_config_file  scripts/ldap/$i  "$SLAPD_SCHEMA/$i"
-  done  &&
-
-  #
-  # We don't want to modify a config without the admin's permission
-  #
-  if  !  grep  -q  --  "horde.schema"  "$SLAPD_CONF";  then
-    CONTENTS=$(gawk -f "$SCRIPT_DIRECTORY/addschema.gawk" "$SLAPD_CONF")  &&
-    echo  "$CONTENTS"  >  "$SOURCE_DIRECTORY/slapd.conf"                  &&
-    if  install_config_file  "$SOURCE_DIRECTORY/slapd.conf"  "$SLAPD_CONF"
-    then
-      message  "${MESSAGE_COLOR}Horde schema added to $SLAPD_CONF..."       \
-               "You'll want to restart slapd${DEFAULT_COLOR}"
-    fi
-  fi
-fi
+# this code works but is not used so it's commented; if SUFFIX is necessary, uncomment
+#SLAPD_CONF="$INSTALL_ROOT/etc/openldap/slapd.conf"  &&
+#if  spell_ok  openldap  &&  [  -r  "$SLAPD_CONF"  ];  then
+#  SUFFIX=$(gawk '/^suffix\W+/ { match($0, /^suffix\W+"?([^"]+)"?\W*$/, a); print a[1]; nextfile; }' "$SLAPD_CONF") &&
+#  message  "${MESSAGE_COLOR}Found LDAP database suffix:${DEFAULT_COLOR} '$SUFFIX'..."
+#fi
