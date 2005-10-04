@@ -1,10 +1,11 @@
+         VERSION=1.0.0
+     SOURCE_HASH='sha1:0eb3a6444ae7e862baa8c32cd8ec513f1b4fb0dc'
+         UPDATED=20051003
            SPELL=pear-net_smartirc
     PEAR_PACKAGE=Net_SmartIRC
-         VERSION=0.5.5p1
-          MD5[0]='c06a3f7444e987093d3584847cda71cc'
-         UPDATED=20050408
+        WEB_SITE=http://pear.php.net/package/Net_SmartIRC/
       LICENSE[0]=LGPL
-           SHORT='PEAR: Class for communication with IRC networks'
+           SHORT='PEAR: Net_SmartIRC is a PHP class for communication'
 cat << EOF
 Net_SmartIRC is a PHP class for communication
 with IRC networks,
@@ -13,18 +14,18 @@ It's an API that handles all IRC protocol
 messages.
 This class is designed for creating IRC bots,
 chats and show irc related info on webpages.
-
 Full featurelist of Net_SmartIRC
 -------------------------------------
 - full object oriented programmed
 - every received IRC message is parsed into an
 ircdata object
 (it contains following info: from, nick,
-ident, host, channel, message, type, rawmessage)
+ident, host, channel, message, type,
+rawmessage)
 - actionhandler for the API
 on different types of messages
-(channel/notice/query/kick/join..) callbacks can
-be registered
+(channel/notice/query/kick/join..) callbacks
+can be registered
 - messagehandler for the API
 class based messagehandling, using IRC reply
 codes
@@ -39,12 +40,13 @@ collisions
 (destination can be file, stdout, syslog or
 browserout)
 - supports fsocks and PHP socket extension
-- supports PHP 4.1.x to 4.3.2 (also PHP 5.0.0b1)
+- supports PHP 4.1.x to 4.3.2 (also PHP
+5.0.0b1)
 - sendbuffer with a queue that has 3 priority
 levels (high, medium, low) plus a bypass level
 (critical)
-- channel syncing (tracking of users/modes/topic
-etc in objects)
+- channel syncing (tracking of
+users/modes/topic etc in objects)
 - user syncing (tracking the user in channels,
 nick/ident/host/realname/server/hopcount in
 objects)
@@ -85,4 +87,4 @@ whowas
 quit
 EOF
 
-source $SECTION_DIRECTORY/PEAR_DETAILS
+source  $SECTION_DIRECTORY/PEAR_DETAILS

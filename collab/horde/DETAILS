@@ -1,21 +1,22 @@
            SPELL=horde
-if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+if  [[  "$HORDE_DEVEL"  ==  'y'  ]];  then
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
-          MD5[0]=IGNORE
-  FORCE_DOWNLOAD="on"
+   SOURCE_IGNORE='volatile'
+  FORCE_DOWNLOAD='on'
 else
-         VERSION=3.0.4
+         VERSION=3.0.5
+     SOURCE_HASH='sha1:b98d30a4ac13f7f968e42999152b895b72e2f64b'
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
-          MD5[0]=7d7e4ed415ef941576a63893d0e9c8b5
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.horde.org/horde/
          ENTERED=20020428
          UPDATED=20030108
       LICENSE[0]=LGPL
+     GATHER_DOCS=off
        BUILD_API=2
            SHORT="General-purpose web application framework in PHP"
 cat << EOF

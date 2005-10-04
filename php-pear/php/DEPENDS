@@ -1,10 +1,13 @@
-depends  APACHE  &&
 depends  flex    &&
-depends  gcc34   &&
 
 # Officially ZLib is optional, but we require it because some other
 # optional extensions depend on it, and it"s omnipresent anyway.
 depends  zlib  "--with-zlib --with-zlib-dir=/usr"  &&
+
+case  "$PHP4_APACHE"  in
+  handler)  depends  APACHE;;
+  filter)   depends  APACHE2;;
+esac  &&
 
 optional_depends  C-CLIENT            \
                   "--with-imap"       \
@@ -77,6 +80,11 @@ optional_depends  gdbm                                            \
                   "--without-gdbm"                                \
                   "database routines that use extensive hashing"  &&
 
+optional_depends  sqlite                                          \
+                  '--with-sqlite --enable-sqlite-utf8'            \
+                  '--without-sqlite'                              \
+                  'for SQLite support'                            &&
+
 optional_depends  mm                                              \
                   "--with-mm=/usr"                                \
                   "--without-mm"                                  \
@@ -91,11 +99,6 @@ optional_depends  expat                                 \
                   "--enable-xml --with-expat-dir=/usr"  \
                   "--disable-xml"                       \
                   "for XML parsing"                     &&
-
-optional_depends  sablot                                   \
-                  "--enable-xslt --with-xslt-sablot=/usr"  \
-                  "--disable-xslt"                         \
-                  "for XSLT support"                       &&
 
 optional_depends  libxml2                \
                   "--with-dom=/usr"      \

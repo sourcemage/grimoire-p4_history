@@ -1,22 +1,23 @@
            SPELL=kronolith
-if  [  "$HORDE_DEVEL"  ==  "y"  ];  then
+if  [[  "$HORDE_DEVEL"  ==  'y'  ]];  then
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
-          MD5[0]="IGNORE"
-  FORCE_DOWNLOAD="on"
+   SOURCE_IGNORE='volatile'
+  FORCE_DOWNLOAD='on'
 else
-         VERSION=2.0.3
+         VERSION=2.0.4-rc1
+     SOURCE_HASH='sha1:85e7cfbd1cd21f78a8555be185f94003b37588c6'
           SOURCE=$SPELL-h3-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-h3-$VERSION
    SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
-          MD5[0]=53d203f7431df451f238ebd942c4235f
 fi
         WEB_SITE=http://www.horde.org/$SPELL/
          ENTERED=20020427
          UPDATED=20030108
       LICENSE[0]=GPL
+     GATHER_DOCS=off
        BUILD_API=2
            SHORT="Horde calendar application"
 cat << EOF

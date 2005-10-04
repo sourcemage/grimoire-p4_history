@@ -1,25 +1,29 @@
-OPTS="$OPTS $CYRUSSASLPLAIN"
-
-if [ "$SASLAUTHD" == "y" ]; then
+if [[ "$CS_MECH" =~ 'saslauthd' ]]; then
   OPTS="$OPTS --with-saslauthd=/var/run/saslauthd"
-elif [ "$SASLDB" == "y" ]; then
-  OPTS="$OPTS --with-dbpath=/etc/sasldb"
 fi &&
 
-./configure            \
-  --build=$BUILD       \
-  --prefix=$INSTALL_ROOT/usr        \
-  --sysconfdir=$INSTALL_ROOT/etc    \
-  --localstatedir=$INSTALL_ROOT/var \
-  --disable-krb4       \
-  --disable-plain      \
-  --disable-sample     \
-  --enable-shared      \
-  --with-gnu-ld        \
-  $OPTS                &&
-make                   &&
+if [[ "$CS_DB" == none ]]; then
+  OPTS="$OPTS --with-dblib=none"
+fi &&
 
-if [ "$SASLAUTHD" == "y" ]; then
+OPTS="$OPTS \
+  $CS_PLAIN \
+  $CS_LOGIN \
+  $CS_CRAM \
+  $CS_DIGEST \
+  $CS_OTP \
+  $CS_SRP \
+  $CS_ANON \
+  $CS_NTLM \
+  $CS_APOP \
+  --disable-sample \
+"
+
+sedit 's|extern sasl_global_callbacks_t global_callbacks;||g'           lib/saslint.h &&
+sedit 's|^\(sasl_global_callbacks_t\s\+global_callbacks;\)|static \1|g' lib/server.c  &&
+default_build &&
+
+if [[ "$CS_MECH" =~ 'saslauthd' ]]; then
   pushd saslauthd    &&
   make testsaslauthd &&
   popd

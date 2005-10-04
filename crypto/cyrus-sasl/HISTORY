@@ -1,8 +1,19 @@
+2005-10-03 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE,DEPENDS: options are now managed by sorcery where possible;
+	* BUILD:  patch for weird logical error;
+	  use default_build and add options from CONFIGURE;
+	* WIP: removed; I think the spell is OK, although there are TODOs left.
+
 2005-06-10 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: 2.1.21
 
 2005-04-06 Ladislav Hagara <hgr@vabo.cz>
 	* FINAL: added [ -f .../saslauthd ] due to changes in new sorcery [Bug 8567]
+
+2005-03-26 Arjan Bouter <abouter@sourcemage.org>
+	* major rewrite of this spell as it was hell to configure
+	  with all the default options enabled.
+	* new version only builds the selected functionality.
 
 2005-03-11 Ladislav Hagara <hgr@vabo.cz>
 	* PREPARE, BUILD: added support for PLAIN authentication
