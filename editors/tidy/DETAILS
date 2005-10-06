@@ -1,0 +1,35 @@
+           SPELL=tidy
+if [  "${TIDY_CVS}" == "y"  ] ; then
+
+  if [ "${TIDY_CVS_AUTOUPDATE}" == "y" ]
+  then   VERSION=$(date +%Y%m%d)
+  else   VERSION=cvs
+  fi
+
+          SOURCE=$SPELL-cvsroot.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/tidy:tidy
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvsroot
+
+else
+        VERSION=050921
+#
+# Do *not* remove the version from the SOURCE.
+#
+          SOURCE=${SPELL}_src_$VERSION.tgz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+   SOURCE_URL[0]=http://tidy.sourceforge.net/src/${SOURCE}
+     SOURCE_HASH=sha256:aef754e01b69b65201a1179c73c639bab2298ccc58c6826aebad3d050a01ac35
+          MD5[0]=2d027de300bb0a854b35c0bd08710619
+fi
+
+        WEB_SITE=http://tidy.sourceforge.net/
+         ENTERED=20021002
+         UPDATED=20040811
+      LICENSE[0]=W3C
+      MAINTAINER=bluebird@optushome.com.au
+           SHORT="Tidy cleans up bad HTML"
+cat << EOF
+Tidy is able to fix up a wide range of problems and to bring to your attention things that you need to work on yourself. Each item found is listed with the line number and column so that you can see where the problem lies in your markup. Tidy won't generate a cleaned up version when there are problems that it can't be sure of how to handle. These are logged as "errors" rather than "warnings".
+EOF

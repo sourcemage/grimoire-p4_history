@@ -1,0 +1,44 @@
+depends  bc        &&
+depends  zlib      &&
+depends  X11-LIBS  &&
+
+if  [  "$SCSV_GTK"  =  "y"  ];  then
+  depends  gtk+2      &&
+  depends  libxml2    &&
+  depends  libglade2
+fi  &&
+
+optional_depends  linux-pam                                     \
+                  "--with-pam"                                  \
+                  "--without-pam"                               \
+                  "for Pluggable Authentication Modules (PAM)"  &&
+
+optional_depends  krb5                                   \
+                  "--with-kerberos"                      \
+                  "--without-kerberos"                   \
+                  "for Kerberos authentication support"  &&
+
+optional_depends  shadow                                        \
+                  "--with-shadow"                               \
+                  "--without-shadow"                            \
+                  "for shadow password authentication support"  &&
+
+optional_depends  GLUT                                   \
+                  "--with-gl"                            \
+                  "--without-gl"                         \
+                  "for OpenGL demos which require GLUT"  &&
+
+optional_depends  fortune                      \
+                  "--with-fortune"             \
+                  "--without-fortune"          \
+                  "for fortune text messages"  &&
+
+optional_depends  jpeg                      \
+                  "--with-jpeg"             \
+                  "--without-jpeg"          \
+                  "for JPEG image support"  &&
+
+optional_depends  gdk-pixbuf                      \
+                  "--with-pixbuf"                 \
+                 "--without-pixbuf"               \
+                  "for GDK-Pixbuf image support"

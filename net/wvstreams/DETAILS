@@ -1,0 +1,29 @@
+           SPELL=wvstreams
+
+if [ "$GETCVS" == "y" ]; then
+         VERSION=cvs
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=cvs://:pserver:anon@cvs.nitmtl.ca:/cvsroot:wvstreams
+          MD5[0]='IGNORE'
+  FORCE_DOWNLOAD=1
+else
+         VERSION=4.0.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://people.nit.ca/~sfllaw/${SOURCE}
+          MD5[0]=99c11b5a8974c2a13e4090835efe5a4f
+fi
+
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://open.nit.ca/wiki/?page=WvStreams
+         ENTERED=20040601
+         UPDATED=20041013
+           SHORT="A network programming library written in C++."
+cat << EOF
+WvStreams is a network programming library in C++. WvStreams aims to be an
+efficient, secure, easy-to-use, and OS-independent library for doing network
+applications development, and we think that it has pretty much lived up to
+those goals.
+EOF

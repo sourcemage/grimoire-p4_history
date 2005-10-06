@@ -1,0 +1,9 @@
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
+if [ "$MPLAYER_CVS" = "y" ]; then
+  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
+else
+  # fixes bug #6833
+  patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch
+fi

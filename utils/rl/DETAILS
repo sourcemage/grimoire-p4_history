@@ -1,0 +1,18 @@
+           SPELL=rl
+         VERSION=0.2.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://tiefighter.et.tudelft.nl/~arthur/rl/$SOURCE
+          MD5[0]=88d7972485e5ab8929a6499ec3df4818
+        WEB_SITE=http://tiefighter.et.tudelft.nl/~arthur/rl/
+         ENTERED=20050206
+         UPDATED=20050206
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Randomize Lines"
+cat << EOF
+rl is a command-line tool that reads lines from an input file or stdin,
+randomizes the lines and outputs a specified number of lines.  It does this
+with only a single pass over the input while trying to use as little memory as
+possible.
+EOF

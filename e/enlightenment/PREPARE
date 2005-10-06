@@ -1,0 +1,17 @@
+config_query  ENLIGHTENMENT_CVS  "Do you want to try DR17 (a.k.a. E17)?"  n
+
+if  [  "$ENLIGHTENMENT_CVS"  ==  "y"  ];  then
+  config_query  ENLIGHTENMENT_CVS_AUTOUPDATE                                \
+                "Update to the latest CVS automatically on every cast?"  n
+fi  &&
+
+if  [  "$ENLIGHTENMENT_CVS"  ==  "n"  ];  then
+  config_query  ENLIGHTENMENT16_CVS                                          \
+                "Do you want to use the DR16 development version from CVS?"  \
+                n  &&
+
+  if  [  "$ENLIGHTENMENT16_CVS"  ==  "y"  ];  then
+    config_query  ENLIGHTENMENT16_CVS_AUTOUPDATE                              \
+                  "Update to the latest CVS automatically on every cast?"  n
+  fi
+fi

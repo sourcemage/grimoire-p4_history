@@ -1,0 +1,27 @@
+            SPELL=nss
+          VERSION=3.10
+          CVS_TAG=NSS_${VERSION//./_}_RTM
+      DBM_VERSION=1.61+
+           SOURCE=$SPELL-$VERSION.tar.bz2
+          SOURCE2=dbm-$DBM_VERSION.tar.bz2
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot:mozilla/security:$CVS_TAG
+   SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot:mozilla/dbm:$CVS_TAG
+         WEB_SITE=http://www.mozilla.org/projects/security/pki/nss/
+          ENTERED=20030919
+          UPDATED=20050512
+           MD5[0]=IGNORE
+           MD5[1]=IGNORE
+       LICENSE[0]=MPL
+        BUILD_API=2
+      GATHER_DOCS=off
+            SHORT='Network Security Services (NSS)'
+cat << EOF
+Network Security Services (NSS) is a set of libraries designed to support
+cross-platform development of security-enabled client and server applications.
+Applications built with NSS can support SSL v2 and v3, TLS, PKCS #5, PKCS #7,
+PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates, and other security
+standards.
+
+Needed by gaim-encryption.
+EOF

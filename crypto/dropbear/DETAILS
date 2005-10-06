@@ -1,0 +1,15 @@
+           SPELL=dropbear
+         VERSION=0.45
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://matt.ucc.asn.au/dropbear/releases/$SOURCE
+          MD5[0]=85c53b6079831f1b0a25a5b1438ef54d
+        WEB_SITE=http://matt.ucc.asn.au/dropbear/dropbear.html
+         ENTERED=20050310
+         UPDATED=20050310
+      LICENSE[0]=MIT
+           SHORT="A relatively small SSH 2 server and client"
+cat << EOF
+Dropbear is an SSH 2 server and client that is designed to be small enough to be used in low-memory embedded environments, while still being functional and secure enough for general use.
+EOF

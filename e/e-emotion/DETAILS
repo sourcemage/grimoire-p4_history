@@ -1,0 +1,27 @@
+           SPELL=e-emotion
+if  [  "$EEMOTION_CVS"  ==  "y"  ];  then
+  if  [  "$EEMOTION_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+  else
+         VERSION=cvs
+  fi
+          SOURCE=$SPELL-cvs.tar.bz2
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/emotion
+          MD5[0]=IGNORE
+else
+         VERSION=0.0.1
+          SOURCE=emotion-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/emotion-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE	
+          MD5[0]=57f8205a620c65d3aaa63c0750a39d50
+fi 
+      LICENSE[0]=BSD
+        WEB_SITE=http://enlightenment.org/Libraries/Emotion/index.html
+         ENTERED=20040619
+         UPDATED=20050825
+           SHORT="Evas smart-object video library"
+cat << EOF
+Emotion is an Evas smart-object library providing video capabilities. Emotion leverages libxine 1.0 and integrates seemlessly with the rest of the EFL. Because its based on libxine, any format that it supports (Theora, DiVX, MPEG2, etc) is avalible using Emotion.
+EOF

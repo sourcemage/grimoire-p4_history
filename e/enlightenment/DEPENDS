@@ -1,0 +1,10 @@
+depends  imlib2  &&
+
+if  [  "$ENLIGHTENMENT_CVS"  ==  "y"  ];  then
+  depends  edje  &&
+  depends  CVS
+elif  [  "$ENLIGHTENMENT16_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi  &&
+
+optional_depends  esound  ""  ""  "for sound support"

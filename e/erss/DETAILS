@@ -1,0 +1,19 @@
+           SPELL=erss
+if  [  "$ERSS_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/erss
+  FORCE_DOWNLOAD="on"
+          MD5[0]=IGNORE
+        WEB_SITE=http://enlightenment.org/pages/erss.html
+         ENTERED=20040311
+         UPDATED=20040311
+      LICENSE[0]=BSD
+           SHORT="erss ..."
+cat << EOF
+erss ...
+EOF

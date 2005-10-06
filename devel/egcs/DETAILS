@@ -1,0 +1,22 @@
+           SPELL=egcs
+         VERSION=1.1.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://mirrors.rcn.net/pub/sourceware/gcc/old-releases/egcs/${SOURCE}
+   SOURCE_URL[1]=ftp://ftp.gwdg.de/pub/misc/gcc/old-releases/egcs/${SOURCE}
+   SOURCE_URL[2]=ftp://ftp.mirror.ac.uk/sites/sources.redhat.com/pub/gcc/old-releases/egcs/${SOURCE}
+          MD5[0]=1ec8cede6af54c43fb8d85401d427f1a
+      LICENSE[0]=GPL
+        WEB_SITE=http://gcc.gnu.org/egcs-1.1
+         ENTERED=20020517
+         UPDATED=20020517
+      MAINTAINER=zoran@idi.ntnu.no
+           SHORT="egcs is the Experimental GNU compiler system."
+
+cat << EOF
+egcs - the Experimental GNU Compiler System
+This is the last release of the EGCS project, which was developed in
+parallel with GCC until it took over the GCC project. In many cases,
+it still produces more optimized code than gcc. 
+This spell does not replace the current gcc: it will install in /opt/egcs.
+EOF

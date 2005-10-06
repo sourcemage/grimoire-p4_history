@@ -1,0 +1,120 @@
+diff -Naur yafray-0.0.6-2.orig/src/loader/gram_loader.h yafray-0.0.6-2/src/loader/gram_loader.h
+--- yafray-0.0.6-2.orig/src/loader/gram_loader.h	2005-02-02 10:48:36.336898104 -0800
++++ yafray-0.0.6-2/src/loader/gram_loader.h	2005-02-02 11:05:55.501921008 -0800
+@@ -24,6 +24,8 @@
+ 
+ #include "gram_lex.h"
+ 
++#include <iostream>
++
+ struct sym_t
+ {
+ 	std::string name;
+@@ -86,7 +88,7 @@
+ 
+ 	if(!parser.parse())
+ 	{
+-		cout<<"Error en linea "<<parser.line()<<" columna "<<parser.col()
++		std::cout<<"Error en linea "<<parser.line()<<" columna "<<parser.col()
+ 						<<" token "<<parser.text()<<"\n";
+ 		error=true;
+ 		return;
+@@ -117,7 +119,7 @@
+ 		{
+ 			if(ic>=MAX_PROD)
+ 			{
+-				cout<<"Warning: reached maximal production lenght\n";
++				std::cout<<"Warning: reached maximal production lenght\n";
+ 				error=true;
+ 				break;
+ 			}
+@@ -131,7 +133,7 @@
+ 			{
+ 				if(tokens.find((*s)->name)==tokens.end())
+ 				{
+-					cout<<"Error, undefined token "<<(*s)->name<<"\n";
++					std::cout<<"Error, undefined token "<<(*s)->name<<"\n";
+ 					error=true;
+ 					continue;
+ 				}
+@@ -145,7 +147,7 @@
+ 			np.join=joins[(*p)->func];
+ 		else
+ 		{
+-			cout<<"Warning: undefined join function "<<(*p)->func<<"\n";
++			std::cout<<"Warning: undefined join function "<<(*p)->func<<"\n";
+ 			error=true;
+ 			np.join=NULL;
+ 		}
+diff -Naur yafray-0.0.6-2.orig/src/yafraycore/buffer.h yafray-0.0.6-2/src/yafraycore/buffer.h
+--- yafray-0.0.6-2.orig/src/yafraycore/buffer.h	2005-02-02 10:48:36.329899168 -0800
++++ yafray-0.0.6-2/src/yafraycore/buffer.h	2005-02-02 11:06:03.800659408 -0800
+@@ -28,6 +28,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <iostream>
+ 
+ __BEGIN_YAFRAY
+ 
+@@ -40,7 +41,7 @@
+ 			data = new T1 [x*y*T2*sizeof(T1)];
+ 			if (data==NULL)
+ 			{
+-				cerr << "Error allocating memory in cBuffer\n";
++				std::cerr << "Error allocating memory in cBuffer\n";
+ 				exit(1);
+ 			}
+ 			mx = x;
+@@ -56,7 +57,7 @@
+ 			data = new T1 [x*y*T2*sizeof(T1)];
+ 			if(data==NULL)
+ 			{
+-				cerr << "Error allocating memory in cBuffer\n";
++				std::cerr << "Error allocating memory in cBuffer\n";
+ 				exit(1);
+ 			}
+ 			mx = x;
+@@ -68,8 +69,8 @@
+ 
+ 		gBuf_t & operator = (const gBuf_t &source)
+ 		{
+-			if ((mx!=source.mx) || (my!=source.my)) cerr << "Error, trying to assign buffers of a diferent size\n";
+-			if ((data == NULL) || (source.data == NULL)) cerr << "Assigning unallocated buffers\n";
++			if ((mx!=source.mx) || (my!=source.my)) std::cerr << "Error, trying to assign buffers of a diferent size\n";
++			if ((data == NULL) || (source.data == NULL)) std::cerr << "Assigning unallocated buffers\n";
+ 			int total = mx*my*T2*sizeof(T1);
+ 			for(int i=0;i<total;++i)
+ 				data[i] = source.data[i];
+@@ -152,7 +153,7 @@
+ 	data=new T [x*y];
+ 	if(data==NULL)
+ 	{
+-		cout<<"Error allocating memory in cBuffer\n";
++		std::cout<<"Error allocating memory in cBuffer\n";
+ 		exit(1);
+ 	}
+ 	mx=x;
+@@ -174,7 +175,7 @@
+ 	data=new T [x*y];
+ 	if(data==NULL)
+ 	{
+-		cout<<"Error allocating memory in cBuffer\n";
++		std::cout<<"Error allocating memory in cBuffer\n";
+ 		exit(1);
+ 	}
+ 	mx=x;
+@@ -186,11 +187,11 @@
+ {
+ 	if( (mx!=source.mx) || (my!=source.my) )
+ 	{
+-		cout<<"Error, trying to assign  buffers of a diferent size\n";
++		std::cout<<"Error, trying to assign  buffers of a diferent size\n";
+ 	}
+ 	if( (data == NULL) || (source.data == NULL) )
+ 	{
+-		cout<<"Assigning unallocated buffers\n";
++		std::cout<<"Assigning unallocated buffers\n";
+ 	}
+ 	int total=mx*my;
+ 	for(int i=0;i<total;++i) data[i]=source.data[i];

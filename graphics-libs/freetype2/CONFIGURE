@@ -1,0 +1,8 @@
+if  !  grep  -q  "BYTECODE="  $SPELL_CONFIG;  then
+
+  if    query  "Enable bytecode interpreter?"  n
+  then  echo   "BYTECODE=y"  >>  $SPELL_CONFIG
+  else  echo   "BYTECODE=n"  >>  $SPELL_CONFIG
+  fi
+
+fi
