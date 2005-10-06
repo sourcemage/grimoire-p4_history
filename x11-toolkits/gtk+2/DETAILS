@@ -1,5 +1,5 @@
            SPELL=gtk+2
-         VERSION=2.8.4
+         VERSION=2.8.6
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=gtk+-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk+-$VERSION
@@ -7,7 +7,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/gtk+-$VERSION
    SOURCE_URL[1]=$GNOME_URL/sources/gtk+/$BRANCH/$SOURCE
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=LGPL
-       BUILD_API=2
         WEB_SITE=http://www.gtk.org
          ENTERED=20020314
          UPDATED=20050616
