@@ -1,2 +1,3 @@
 default_pre_install        &&
-create_account "haldaemon"
+create_account "haldaemon" &&
+usermod -G disk,cdrom,floppy,burning haldaemon
