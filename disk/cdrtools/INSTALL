@@ -37,27 +37,27 @@ check_cdr_perms()  {
 		    message ""
 		    ;;
 	    udev)   
-            local UDEV_RULES_DIR="${INSTALL_ROOT}/etc/udev/rules.d"
-            local TMP_RULES_FILE="/tmp/10-cdrtools.rules"    
+	            local UDEV_RULES_DIR="${INSTALL_ROOT}/etc/udev/rules.d"
+        	    local TMP_RULES_FILE="/tmp/80-cdrtools.rules"    
 		    local UDEV_GROUP_STRING
 		    local UDEV_MODE_STRING
 		    		    
 		    for DEV in ${CDR_DEVICES}; do
 			
-                if [ $1 == "burning" ]; then
-                    UDEV_GROUP_STRING="GROUP=\"burning\""
-                    UDEV_MODE_STRING="MODE=\"0660\""
-                else
-                    UDEV_GROUP_STRING="GROUP=\"root\""
-                    UDEV_MODE_STRING="MODE=\"0600\""
-                fi
+                	if [ $1 == "burning" ]; then
+                    		UDEV_GROUP_STRING="GROUP=\"burning\""
+                    		UDEV_MODE_STRING="MODE=\"0660\""
+                	else
+                    		UDEV_GROUP_STRING="GROUP=\"root\""
+                    		UDEV_MODE_STRING="MODE=\"0600\""
+                	fi
 			
-			    echo "BUS=\"ide\", KERNEL=\"${DEV}\",NAME=\"%k\", ${UDEV_GROUP_STRING}, ${UDEV_MODE_STRING}" >> ${TMP_RULES_FILE}
-			    message "Added permissions for cdrom recorder device /dev/${DEV}"
+			echo "BUS=\"ide\", KERNEL=\"${DEV}\",NAME=\"%k\", ${UDEV_GROUP_STRING}, ${UDEV_MODE_STRING}" >> ${TMP_RULES_FILE}
+			message "Added permissions for cdrom recorder device /dev/${DEV}"
 		    done
             
-            install_config_file $TMP_RULES_FILE $UDEV_RULES_DIR/$(basename $TMP_RULES_FILE)
-            rm -f $TMP_RULES_FILE
+		    install_config_file $TMP_RULES_FILE $UDEV_RULES_DIR/$(basename $TMP_RULES_FILE)
+            	    rm -f $TMP_RULES_FILE
 		    udevstart
 		    ;;
 	esac
@@ -71,7 +71,7 @@ make  INS_BASE=${INSTALL_ROOT}/usr install                  &&
 case ${PERM} in
   burning_group_users_with_suid_bit) 	create_group burning
 					chown  root:burning ${INSTALL_ROOT}/usr/bin/cdrecord
-				    chmod  4710 ${INSTALL_ROOT}/usr/bin/cdrecord
+                			chmod  4710 ${INSTALL_ROOT}/usr/bin/cdrecord
 					check_cdr_perms burning
 					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
   burning_group_users) 			create_group burning
@@ -79,7 +79,7 @@ case ${PERM} in
 					chmod  0750 ${INSTALL_ROOT}/usr/bin/cdrecord
 					check_cdr_perms burning
 					message "\nDon't forget to add the users allowed to burn in the burning group\n";;
-  root_only) 		chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
+  root_only) 				chown  root:root ${INSTALL_ROOT}/usr/bin/cdrecord
 					chmod  0700 ${INSTALL_ROOT}/usr/bin/cdrecord
 					check_cdr_perms root;;
 esac
