@@ -28,4 +28,9 @@ optional_depends  docbook-utils             \
 optional_depends  pciutils                  \
                   "--with-hwdata"           \
                   "--without-hwdata"        \
-                  "for PCI hardware data"
+                  "for PCI hardware data"   &&
+
+optional_depends  usbutils                  \
+                  "--with-hwdata"           \
+                  "--without-hwdata"        \
+                  "for USB hardware data"
