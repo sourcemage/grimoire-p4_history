@@ -1,6 +1,6 @@
            SPELL=firebird
        BUILD_API=2
-case $WHICH in 
+case $FB_VER in 
    cvs)
          VERSION=HEAD
           SOURCE=${SPELL}-$VERSION.tar.bz2
@@ -9,26 +9,25 @@ case $WHICH in
           MD5[0]=IGNORE
   FORCE_DOWNLOAD=on
 ;;
-   stable)
-         VERSION=1.5.2.4731
-          SOURCE=${SPELL}-${VERSION}.tar.bz2
-   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
-          MD5[0]=c365d4ff5d70f1e999d81f9dbcc8e88d
-;;
    devel)
 #        /bin/echo no development version currently available!
 #        return 1
          VERSION=1.5.2.4731
+     SOURCE_HASH=sha512:1ab995c4dabd8a9acc0ec190e41ac33ab9d69f91c6ed8f30411fe99795a230e5372a1b01825f73dbd861018caa7f33e783c5e08dbb810ff9a54e28d07773e285
           SOURCE=${SPELL}-${VERSION}.tar.bz2
    SOURCE_URL[0]=http://www.firebirdsql.org/download/prerelease/$SOURCE
    SOURCE_URL[1]=http://firebird.sourceforge.net/download/prerelease/$SOURCE
-          MD5[0]=c365d4ff5d70f1e999d81f9dbcc8e88d
+;;
+         *)   #stable
+         VERSION=1.5.2.4731
+     SOURCE_HASH=sha512:1ab995c4dabd8a9acc0ec190e41ac33ab9d69f91c6ed8f30411fe99795a230e5372a1b01825f73dbd861018caa7f33e783c5e08dbb810ff9a54e28d07773e285
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+   SOURCE_URL[0]=$SOURCEFORGE_URL/firebird/$SOURCE
 ;;
 esac
-#     GCC_VERSION=3.4
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-$VERSION
         WEB_SITE=http://www.firebirdsql.org
-         LICENSE=MPL
+         LICENSE=IDPL
          ENTERED=20031111
          UPDATED=20040720
  	    DOCS="ChangeLog doc/WhatsNew doc/*.txt"

@@ -29,8 +29,7 @@ NEEDS="+network  +remote_fs"
 case $1 in
 	start)
 		echo "Starting Firebird Super Server"
-#	        /bin/echo '$FB -start -forever' | su $FBRunUser
-                su $FBRunUser -c "$FB -start -forever"
+                su "$FBRunUser" -m -c "$FB -start -forever"
 		evaluate_retval
 		;;
 	stop)
