@@ -71,11 +71,14 @@ if  [[  -d  config  ]]  &&  pushd  config;  then
   chmod  0755               "$HORDE_CONFIG_DIR"  &&
   chown  www-data:www-data  "$HORDE_CONFIG_DIR"  &&
   # no configuration files are overwritten, all Horde packages come with
-  # config/*.conf.dist files, which have to be updated
-  for  _CFG  in  *.php.dist;  do
-    # `dist' files are supposed to be tracked
-    cp  -fv              "$_CFG"  "$HORDE_CONFIG_DIR/$_CFG"  &&
-    install_config_file  "$_CFG"  "$HORDE_CONFIG_DIR/${_CFG%.dist}"
+  # *.conf.dist, *.xml, and maybe other files, which have to be updated
+  for  _CFG  in  *;  do
+    # standard files are simply updated
+    cp  -fv  "$_CFG"  "$HORDE_CONFIG_DIR/$_CFG"  &&
+    # these are configuration files
+	if  [[  "$_CFG"  =~  '\.dist$'  ]]; then
+      install_config_file  "$_CFG"  "$HORDE_CONFIG_DIR/${_CFG%.dist}"
+    fi
   done  &&
   popd  &&
   rm  -rf  config
