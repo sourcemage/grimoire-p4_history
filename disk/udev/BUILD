@@ -1,6 +1,10 @@
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS}  &&
 make EXTRAS="extras/run_directory" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} DEST_DIR="./" V=true &&
 
+if [[ "$UDEV_EXTRAS" == 'y' ]]; then
+  make EXTRAS="extras/ata_id extras/cdrom_id extras/dasd_id extras/edd_id extras/firmware extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} DEST_DIR="./" V=true 
+fi
+
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   pushd __static__ &&
   # we are not going to use `make install' so no need to set its parameters
