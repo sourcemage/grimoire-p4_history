@@ -44,6 +44,10 @@ start_udev()
   ln -s /dev/fd/2 $udev_root/stderr
   mkdir $udev_root/shm
   mkdir $udev_root/pts
+
+  # Now uses udevsend as the hotplug multiplexer
+  echo "Setting udevsend as hotplug agent"
+  sysctl -w kernel.hotplug="/sbin/udevsend" > /dev/null 2>&1
   # propogate /udev from /sys - we only need this while we do not
   # have initramfs and an early user-space with which to do early
   # device bring up
