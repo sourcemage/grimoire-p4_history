@@ -1,4 +1,3 @@
-depends gcc34           &&
 depends libsoup         &&
 depends popt            &&
 depends libgnome        &&
@@ -8,8 +7,10 @@ optional_depends  "openldap" \
                   "--with-openldap=no" \
                   "Enable OpenLDAP support" &&
 
-optional_depends  nss \
-                  "--enable-nss=yes --enable-smime=yes" \
+optional_depends  "nss" \
+                  "--enable-nss=yes --enable-smime=yes \
+		   --with-nspr-includes=/usr/include/nspr \
+		   --with-nss-includes=/usr/include/nss" \
                   "--enable-nss=no --enable-smime=no"   \
                   "Attempt use use Mozlla libnss for SSL and SMIME support?" &&
 

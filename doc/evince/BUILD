@@ -1,3 +1,2 @@
-patch  -p0  <  $SCRIPT_DIRECTORY/dvi-fix.patch  &&
-OPTS="$OPTS --enable-dvi"  &&
+OPTS="$OPTS --enable-dvi --enable-pixbuf"  &&
 default_build

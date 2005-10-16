@@ -6,4 +6,9 @@ depends  pango      &&
 optional_depends  pygtk2                              \
                   "--enable-python"                   \
                   "--disable-python"                  \
-                  "to build python bindings for vte"
+                  "to build python bindings for vte"  &&
+
+optional_depends  gtk-doc                             \
+                  "--enable-gtk-doc"                  \
+                  "--disable-gtk-doc"                 \
+                  "Build documentation with gtk-doc"

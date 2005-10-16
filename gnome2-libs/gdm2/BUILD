@@ -7,6 +7,23 @@ fi                                                                      &&
 
 OPTS="$OPTS --enable-authentication-scheme=$SCHEME"                     &&
 
+if [ "$XDMCP" == "y" ]; then
+   OPTS="$OPTS --with-xdmcp=yes"
+else
+   OPTS="$OPTS --with-xdmcp=no"
+fi                                                                      &&
+
+if [ "$SELINUX" == "y" ]; then
+   OPTS="$OPTS --with-selinux"
+fi                                                                      &&
+
+if [ "$IPV6" == "y" ]; then
+   OPTS="$OPTS --enable-ipv6=yes"
+else
+   OPTS="$OPTS --enable-ipv6=no"
+fi                                                                      &&
+
+
 LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"                                     &&
 
 patch  -p0  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch   &&

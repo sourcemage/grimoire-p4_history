@@ -1,0 +1,15 @@
+* Needs testing to see if it breaks anything
+
+* Working on Bug #9538 -sandalle
+* Trying to build monodoc doesn't work:
+checking for mono... /usr/bin/mono
+checking for mcs... /usr/bin/mcs
+checking for gacutil... /usr/bin/gacutil
+checking for monodoc >= 0.16... yes
+checking MONODOC_DEPENDENCY_CFLAGS...  
+checking MONODOC_DEPENDENCY_LIBS... /r:/usr/lib/mono/monodoc/monodoc.dll  
+checking for monodoc... no
+configure: error: Building Mono docs explicitly required, but monodoc not found
+
+with monodoc 1.0.7 installed
+* optional gcj dependency is untested

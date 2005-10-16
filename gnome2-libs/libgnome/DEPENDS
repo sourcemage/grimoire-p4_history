@@ -4,4 +4,9 @@ depends  libxslt       &&
 depends  libxml2       &&
 depends  gconf2        &&
 depends  libbonobo     &&
-depends  gnome-vfs2 
+depends  gnome-vfs2    &&
+
+optional_depends gtk-doc                            \
+                 "--enable-gtk-doc"                 \
+                 "--disable-gtk-doc"                \
+                 "Build documentation with gtk-doc"
