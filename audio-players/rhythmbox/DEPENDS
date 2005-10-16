@@ -2,11 +2,11 @@ depends  totem  &&
 
 depends  gst-plugins  &&
 
-if  [  "$RHYTHMBOX_DBUS"  =  "y"  ];  then
-  depends  dbus			'--with-dbus --without-bonobo'
-else
-  depends  libbonobo	'--without-dbus --with-bonobo'
-fi  &&
+#if  [  "$RHYTHMBOX_DBUS"  =  "y"  ];  then
+#  depends  dbus			'--with-dbus --without-bonobo'
+#else
+  depends  libbonobo	'--without-dbus --with-bonobo'  &&
+#fi  &&
 
 if  [  "$RHYTHMBOX_FLAC"  ==  "y"  ];  then
   depends  flac       '--enable-flac'  &&
