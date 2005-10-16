@@ -7,3 +7,4 @@ if [[ "$UDEV_STATIC" == 'y' ]]; then
   persistent_add UDEV_STATIC_TARGET &&
   message "${MESSAGE_COLOR}Static utilities (with suffix .static): $UDEV_STATIC_TARGET${DEFAULT_COLOR}"
 fi
+config_query UDEV_EXTRAS 'Do you want to compile extras helpers?' y

@@ -1,3 +1,12 @@
+2005-10-10 Flavien Bridault <disk@sourcemage.org>
+	* CONFIGURE, BUILD, INSTALL: ask to compile extra helpers
+	* INSTALL: Corrected a bug preventing /sbin/udev_run_hotplugd
+	  to install correctly
+	* init.d/50-default.rules: added disk, cdrom and burning group management,
+	  removed udev_run_devd launching, added an explicit rule to call
+	  'alsactl restore'
+	* FINAL: ensure that the burning group exists
+
 2005-09-20 Flavien Bridault <disk@sourcemage.org>
         * DETAILS: updated to 070
 	* Makefile.patch: updated
