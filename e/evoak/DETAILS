@@ -4,9 +4,10 @@ if  [  "$EVOAK_CVS_AUTOUPDATE"  ==  "y"  ];  then
 else
          VERSION=cvs
 fi
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/evoak
+  FORCE_DOWNLOAD=on
           MD5[0]=IGNORE
         WEB_SITE=http://enlightenment.org/
          ENTERED=20040608
