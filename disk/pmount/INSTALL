@@ -1,1 +1,8 @@
-make PREFIX=/usr install
+make PREFIX=/usr install			&&
+create_group plugdev				&&
+chgrp plugdev ${INSTALL_ROOT}/usr/bin/pmount \
+	${INSTALL_ROOT}/usr/bin/pmount-hal \
+	${INSTALL_ROOT}/usr/bin/pumount  	&&			
+chmod 4750 ${INSTALL_ROOT}/usr/bin/pmount \
+	   ${INSTALL_ROOT}/usr/bin/pumount
+message "\nDon't forget to add the users allowed to pmount in plugdev group\n"
