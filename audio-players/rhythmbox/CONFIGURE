@@ -1,4 +1,6 @@
-config_query  RHYTHMBOX_DBUS	"Do you want to use D-BUS activation instead of bonobo?"	n  &&
+#current version doesn't work with dbus 0.50
+#commented out until fixes are in place to allow GNOME 2.12
+#config_query  RHYTHMBOX_DBUS	"Do you want to use D-BUS activation instead of bonobo?"	n  &&
 config_query  RHYTHMBOX_FLAC	"Enable ${SPELL_COLOR}flac${DEFAULT_COLOR} support?"  y  &&
 
 config_query_option  RHYTHMBOX_IPOD  "Enable Apple iPod support?"  y  \
