@@ -40,6 +40,12 @@ optional_depends  zlib                                      \
                   "--without-zlib"                          \
                   "Enable zlib support"                     &&
 
+optional_depends  pmount  									\
+                "--with-hal-mount=\"/usr/bin/pmount-hal %h\" \
+                 --with-hal-umount=\"/usr/bin/pumount %d\"" \
+                "" 											\
+                "Use pmount to mount devices?"				&&
+
 optional_depends  gtk-doc                                   \
                   "--enable-gtk-doc"                        \
                   "--disable-gtk-doc"                       \
