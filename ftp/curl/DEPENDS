@@ -9,6 +9,6 @@ optional_depends  openssl                          \
                   "for https encrypted transport"  &&
 
 optional_depends  libidn                                   \
-                  ''                                       \
+                  "--with-libidn=$INSTALL_ROOT/usr"        \
                   '--without-libidn'                       \
                   'for International Domain Name support'
