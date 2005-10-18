@@ -5,6 +5,10 @@ depends  gnome-mime-data2    &&
 depends  shared-mime-info    &&
 depends  desktop-file-utils  &&
 
+if [ "$VFS_PMOUNT" == "y" ]; then
+   depends  pmount
+fi                           &&
+
 optional_depends  samba                                     \
                   "--enable-samba"                          \
                   "--disable-samba"                         \
@@ -39,11 +43,6 @@ optional_depends  zlib                                      \
                   "--with-zlib"                             \
                   "--without-zlib"                          \
                   "Enable zlib support"                     &&
-
-optional_depends  pmount                                    \
-                  "--with-hal-mount=\"/usr/bin/pmount-hal %h\" --with-hal-umount=\"/usr/bin/pumount %d\"" \
-                  ""                                        \
-                  "Use pmount to mount devices?"            &&
 
 optional_depends  gtk-doc                                   \
                   "--enable-gtk-doc"                        \
