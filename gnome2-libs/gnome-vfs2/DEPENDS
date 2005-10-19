@@ -34,10 +34,15 @@ optional_depends  hal                                       \
                   "--disable-hal"                           \
                   "Enable hal support"                      &&
 
-optional_depends  "howl"                                    \
+optional_depends  howl                                      \
                   "--enable-howl"                           \
                   "--disable-howl"                          \
                   "for automatic network service discovery" &&
+
+optional_depends  pmount                                    \
+                  "PMOUNT_ON"                               \
+                  ""                                        \
+                  "Use for pmount for automount"            &&
 
 optional_depends  zlib                                      \
                   "--with-zlib"                             \

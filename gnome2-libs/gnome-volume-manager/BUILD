@@ -1,6 +1,4 @@
-if [ "$GVM_PMOUNT" == "y" ]; then
-   OPTS="$OPTS --with-mount-command=\"/usr/bin/pmount-hal %h\" --with-unmount-command=\"/usr/bin/pumount %d\""
-fi  &&
+OPTS=$(echo $OPTS|sed s!PMOUNT_ON!--with-hal-mount=\"/usr/bin/pmount-hal %h\" --with-hal-umount=\"/usr/bin/pumount %d\"!')
 
 make_single    &&
 eval "./configure --prefix=${INSTALL_ROOT}/usr  \
