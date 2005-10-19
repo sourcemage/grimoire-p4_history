@@ -5,6 +5,10 @@ depends  gnome-mime-data2    &&
 depends  shared-mime-info    &&
 depends  desktop-file-utils  &&
 
+if [ "$VFS_PMOUNT" == "y" ]; then
+   depends  pmount
+fi                           &&
+
 optional_depends  samba                                     \
                   "--enable-samba"                          \
                   "--disable-samba"                         \
@@ -30,20 +34,20 @@ optional_depends  hal                                       \
                   "--disable-hal"                           \
                   "Enable hal support"                      &&
 
-optional_depends  "howl"                                    \
+optional_depends  howl                                      \
                   "--enable-howl"                           \
                   "--disable-howl"                          \
                   "for automatic network service discovery" &&
+
+optional_depends  pmount                                    \
+                  "PMOUNT_ON"                               \
+                  ""                                        \
+                  "Use for pmount for automount"            &&
 
 optional_depends  zlib                                      \
                   "--with-zlib"                             \
                   "--without-zlib"                          \
                   "Enable zlib support"                     &&
-
-optional_depends  pmount                                    \
-                  "--with-hal-mount=\"/usr/bin/pmount-hal %h\" --with-hal-umount=\"/usr/bin/pumount %d\"" \
-                  ""                                        \
-                  "Use pmount to mount devices?"            &&
 
 optional_depends  gtk-doc                                   \
                   "--enable-gtk-doc"                        \

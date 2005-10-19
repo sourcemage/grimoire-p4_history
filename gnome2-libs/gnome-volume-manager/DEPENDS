@@ -3,7 +3,7 @@ depends dbus       &&
 depends libgnomeui &&
 depends libglade2  &&
 
-optional_depends  pmount  \
-		  "--with-mount-command=\"/usr/bin/pmount-hal %h\" --with-unmount-command=\"/usr/bin/pumount %d\"" \
-		  ""      \
-		  "Use pmount to automount devices?" 
+optional_depends pmount            \
+                 "PMOUNT_ON"       \
+                 ""                \
+                 "Use for pmount"
