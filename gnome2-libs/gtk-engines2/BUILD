@@ -1,40 +1,40 @@
-if [ "$CLEARLOOKS" == "n" ]; then
+if [ "$CLEARLOOKS" == "y" ]; then
    OPTS="$OPTS --disable-clearlooks"
 fi                                        &&
 
-if [ "$CRUX" == "n" ]; then
+if [ "$CRUX" == "y" ]; then
    OPTS="$OPTS --disable-crux"
 fi                                        &&
 
-if [ "$HC" == "n" ]; then
+if [ "$HC" == "y" ]; then
    OPTS="$OPTS --disable-hc"
 fi                                        &&
 
-if [ "$INDUSTRIAL" == "n" ]; then
+if [ "$INDUSTRIAL" == "y" ]; then
    OPTS="$OPTS --disable-industrial"
 fi                                        &&
 
-if [ "$LIGHTHOUSE" == "n" ]; then
+if [ "$LIGHTHOUSE" == "y" ]; then
    OPTS="$OPTS --disable-lighthouseblue"
 fi                                        &&
 
-if [ "$METAL" == "n" ]; then
+if [ "$METAL" == "y" ]; then
    OPTS="$OPTS --disable-metal"
 fi                                        &&
 
-if [ "$MIST" == "n" ]; then
+if [ "$MIST" == "y" ]; then
    OPTS="$OPTS --disable-mist"
 fi                                        &&
 
-if [ "$REDMOND" == "n" ]; then
+if [ "$REDMOND" == "y" ]; then
    OPTS="$OPTS --disable-redmond"
 fi                                        &&
 
-if [ "$SMOOTH" == "n" ]; then
+if [ "$SMOOTH" == "y" ]; then
    OPTS="$OPTS --disable-smooth"
 fi                                        &&
 
-if [ "$THINICE" == "n" ]; then
+if [ "$THINICE" == "y" ]; then
    OPTS="$OPTS --disable-thinice"
 fi                                        &&
 
