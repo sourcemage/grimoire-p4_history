@@ -1,9 +1,5 @@
            SPELL=gnumeric2
-if [[ "$DEVEL" == "y" ]]; then
-         VERSION=1.5.90
-else
-         VERSION=1.4.3
-fi
+         VERSION=1.6.0
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=gnumeric-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnumeric-$VERSION
