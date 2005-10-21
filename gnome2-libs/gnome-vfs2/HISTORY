@@ -1,3 +1,10 @@
+2005-10-20 Eric Sandall <eric@sandall.us>
+	* PREPARE: Removed
+	* CONFIGURE,DEPENDS: Use config_query_list to enforce only selecting
+	  SSL (openssl), TLS (gnutls), or none
+	* BUILD: Pass OPTS last for IPV6
+	  Disable both openssl and gnutls if the user doesn't want either
+
 2005-10-19 Robin Cook <rcook@wyrms.net>
 	* BUILD: added missing '
 
