@@ -9,20 +9,16 @@ if [ "$VFS_PMOUNT" == "y" ]; then
    depends  pmount
 fi                           &&
 
+if    [  "$GNOME_VFS_CRYPTO"  ==  "openssl"  ];  then
+  depends  openssl  '--enable-openssl  --disable-gnutls'
+elif  [  "$GNOME_VFS_CRYPTO"  ==  "gnutls"   ];  then
+  depends  gnutls  '--disable-openssl  --enable-gnutls'
+fi  &&
+
 optional_depends  samba                                     \
                   "--enable-samba"                          \
                   "--disable-samba"                         \
                   "Build with Samba support"                &&
-
-optional_depends  openssl                                   \
-                  "--enable-openssl"                        \
-                  "--disable-openssl"                       \
-                  "for ssl support"                         &&
-
-optional_depends  gnutls                                    \
-                  "--enable-gnutls"                         \
-                  "--disable-gnutls"                        \
-                  "Build with gnutls support"               &&
 
 optional_depends  FAM                                       \
                   ""                                        \
