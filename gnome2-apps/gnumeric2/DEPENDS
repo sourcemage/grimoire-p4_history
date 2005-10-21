@@ -2,37 +2,27 @@ depends  libole2-2        &&
 depends  gal2             &&
 depends  scrollkeeper     &&
 depends  libgsf           &&
-
-if [[ "$DEVEL" == y ]]; then
-  depends goffice         &&
+depends goffice           &&
   
-  optional_depends  gtk+2                              \
-                    "--with-gtk"                       \
-                    "--without-gtk"                    \
-                    "Build UI?"                        &&
+optional_depends  gtk+2                                \
+                  "--with-gtk"                         \
+                  "--without-gtk"                      \
+                  "Build UI?"                          &&
 
-  optional_depends  libgnomeprintui                    \
-                    "--with-gnome"                     \
-                    "--without-gnome"                  \
-                    "Build GNOME extensions?"          &&
+optional_depends  libgnomeprintui                      \
+                  "--with-gnome"                       \
+                  "--without-gnome"                    \
+                  "Build GNOME extensions?"            &&
 
-  optional_depends  perl                               \
-                    "--with-perl"                      \
-                    "--without-perl"                   \
-                    "Compile the Perl plugin loader?"  &&
+optional_depends  perl                                 \
+                  "--with-perl"                        \
+                  "--without-perl"                     \
+                  "Compile the Perl plugin loader?"    &&
 
-  optional_depends  psiconv                            \
-                    "--with-psiconv"                   \
-                    "--without-psiconv"                \
-                    "Compile with psiconv?"            
-else
-  depends libgnomeprintui                              &&
-
-  optional_depends  libbonobo                          \
-                    "--with-bonobo"                    \
-                    "--without-bonobo"                 \
-                    "Add bonobo support"               
-fi &&
+optional_depends  psiconv                              \
+                  "--with-psiconv"                     \
+                  "--without-psiconv"                  \
+                  "Compile with psiconv?"              &&
  
 optional_depends  libgda2                              \
                   "--with-gda"                         \
