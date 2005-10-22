@@ -1,10 +1,10 @@
            SPELL=mod_perl
-if [ "$MOD_PERL_2" == 'y' ]; then
-         VERSION=2.0.1
-     SOURCE_HASH='sha1:173bc012a00fbe0ee8c51d6ce18c2fa7c33249b3'
-else
+if [ "$MOD_PERL_2" == 'n' ]; then
          VERSION=1.29
           MD5[0]='c489fa1a8c6535e0181a287d9f62171b'
+else
+         VERSION=2.0.2
+     SOURCE_HASH=sha512:04113645f8e6636294e84a9811ad0e66ee5551030b2e998e575405877b1f635d44011ac1a5c14c845f7d32a4e819da6a8be4089f959ba74896ada21d2a1a5c49
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
