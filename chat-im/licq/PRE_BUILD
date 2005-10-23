@@ -1,5 +1,9 @@
 mk_source_dir $SOURCE_DIRECTORY  &&
 unpack_file '' &&
+if [ "$LICQ_CVS" == "n" ]; then
+        cd $SOURCE_DIRECTORY  &&
+        patch -p0 < $SCRIPT_DIRECTORY/licq-email.patch
+fi   &&
 if [ "$LICQ_CVS" == "y" ]; then
 	cd $SOURCE_DIRECTORY			 &&
 	unpack		  $SOURCE2 ${MD5[1]} &&
