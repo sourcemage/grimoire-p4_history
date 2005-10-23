@@ -1,4 +1,4 @@
-make PREFIX=/usr install			&&
+make PREFIX=$INSTALL_ROOT/usr install		&&
 create_group plugdev				&&
 chgrp plugdev ${INSTALL_ROOT}/usr/bin/pmount \
 	${INSTALL_ROOT}/usr/bin/pmount-hal \
