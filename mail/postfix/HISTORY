@@ -1,3 +1,14 @@
+2005-10-24 Eric Sandall <eric@sandall.us>
+	* DETAILS: Now uses vendor postfix.gpg for verification
+	  SOURCE2 (postfix-vda) now SOURCE3
+	  Changed sha1 hash to sha512 (via GPG) for SOURCE3
+	* postfix.gpg: Added
+	  Verified with http://pgp.mit.edu:11371/pks/lookup?op=get&search=0xC12BCD99
+	  and http://souptonuts.sourceforge.net/postfix_tutorial.html
+	* PRE_BUILD: SOURCE2 moved to SOURCE3
+	* INSTALL: `make install` asks questions, let's give it some
+	* FINAL: Missed renaming ALIAS to POSTFIX_ALIAS
+
 2005-10-02 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 2.2.5;
 	* PRE_BUILD: use unpack_file to check integrity (doesn't actually unpack);

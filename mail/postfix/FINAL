@@ -1,10 +1,12 @@
-source /etc/sorcery/local/depends/postfix  &&
+source  /etc/sorcery/local/depends/postfix  &&
 
-message "${MESSAGE_COLOR}If this is the first cast of postfix,"
-message "you may want to run newaliases to make it work right now.${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}If this is the first cast of postfix,"     \
+        "you may want to run newaliases to make it work rightnow."  \
+        "${DEFAULT_COLOR}"                                          &&
 
-if  [  "$ALIAS"  ==  "n"  ];  then
-  message "${MESSAGE_COLOR}Don't forget to run newaliases to apply your changes on the alias file.${DEFAULT_COLOR}"
+if  [  "$POSTFIX_ALIAS"  ==  "n"  ];  then
+  message  "${MESSAGE_COLOR}Don't forget to run newaliases to apply your"  \
+           "changes on the alias file.${DEFAULT_COLOR}"
 else
   newaliases
 fi
