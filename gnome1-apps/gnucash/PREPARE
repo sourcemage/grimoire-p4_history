@@ -1,1 +1,6 @@
-config_query  CVS  "Use CVS for GNOME2 gnucash?"  n
+config_query  GNUCASH_CVS  "Use CVS for GNOME2 gnucash?"  n  &&
+
+if  [  "$GNUCASH_CVS"  ==  "y"  ];  then
+  config_query  GNUCASH_CVS_AUTOUPDATE                                      \
+                "Update to latest CVS automatically on system updates?"  n
+fi
