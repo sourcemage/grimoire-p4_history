@@ -2,7 +2,7 @@ config_query  RHYTHMBOX_DBUS	"Do you want to use D-BUS activation instead of bon
 config_query  RHYTHMBOX_FLAC	"Enable ${SPELL_COLOR}flac${DEFAULT_COLOR} support?"  y  &&
 
 config_query_option  RHYTHMBOX_IPOD  "Enable Apple iPod support?"  y  \
-                     '--enable-ipod'  '--disable-ipod'                &&
+                     '--with-ipod'  '--without-ipod'                &&
 
 config_query_option  RHYTHMBOX_MMKEY  "Enable Multimedia Keys support?"  y  \
                      '--enable-mmkeys'  '--disable-mmkeys'
