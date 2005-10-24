@@ -2,7 +2,9 @@
 	* DETAILS: updated to 071
 	* BUILD, INSTALL: made cdrom_id non-optional as we use it in default rules
 	* INSTALL: Removed manual install of /sbin/udev_run_hotplugd
-	* init.d/50-default.rules: added symlinks creation for cdroms using cdrom_id 
+	* init.d/50-default.rules: added symlinks creation for cdroms using cdrom_id,
+	  permissions for cdrecorders are setup here now,
+	  switched to '==' : == compares and = sets
 
 2005-10-10 Flavien Bridault <disk@sourcemage.org>
 	* CONFIGURE, BUILD, INSTALL: ask to compile extra helpers

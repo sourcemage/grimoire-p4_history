@@ -36,30 +36,7 @@ check_cdr_perms()  {
 		    message "if you use an IDE cd recorder"
 		    message ""
 		    ;;
-	    udev)   
-	            local UDEV_RULES_DIR="${INSTALL_ROOT}/etc/udev/rules.d"
-        	    local TMP_RULES_FILE="/tmp/80-cdrtools.rules"    
-		    local UDEV_GROUP_STRING
-		    local UDEV_MODE_STRING
-		    		    
-		    for DEV in ${CDR_DEVICES}; do
-			
-                	if [ $1 == "burning" ]; then
-                    		UDEV_GROUP_STRING="GROUP=\"burning\""
-                    		UDEV_MODE_STRING="MODE=\"0660\""
-                	else
-                    		UDEV_GROUP_STRING="GROUP=\"root\""
-                    		UDEV_MODE_STRING="MODE=\"0600\""
-                	fi
-			
-			echo "BUS=\"ide\", KERNEL=\"${DEV}\",NAME=\"%k\", ${UDEV_GROUP_STRING}, ${UDEV_MODE_STRING}" >> ${TMP_RULES_FILE}
-			message "Added permissions for cdrom recorder device /dev/${DEV}"
-		    done
-            
-		    install_config_file $TMP_RULES_FILE $UDEV_RULES_DIR/$(basename $TMP_RULES_FILE)
-            	    rm -f $TMP_RULES_FILE
-		    udevstart
-		    ;;
+	    udev)   ;; # Udev default rules handle this now
 	esac
     else
 	message "No CD recorder device found, please adjust its permissions manually"
