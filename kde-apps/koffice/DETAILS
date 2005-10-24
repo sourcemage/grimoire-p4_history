@@ -1,16 +1,15 @@
 source  $SECTION_DIRECTORY/KDE_DETAILS
            SPELL=koffice
-         VERSION=1.4.0a
+         VERSION=1.4.2
+     SOURCE_HASH=sha512:19dfdff6ee9ef98508b5e7145f040b6a7a9fd357237d5ee1993250882ffe91381a21cadf3bb26ff15bb2da8e0ce256ee103361d712370148166c5df87050be05
        BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/koffice-1.4/src/$SOURCE
-          MD5[0]='7e65ad168e8662251ba06d8bfdf4761a'
+   SOURCE_URL[0]=$KDE_URL/stable/$SPELL-$VERSION/src/$SOURCE
         WEB_SITE=http://www.koffice.org
          ENTERED=20020405
          UPDATED=20050609
       LICENSE[0]=GPL
-GCC_VERSION=3.4
            SHORT="Full office suite"
 cat << EOF
 KOffice is a free, integrated office suite for KDE, the K Desktop Environment.
