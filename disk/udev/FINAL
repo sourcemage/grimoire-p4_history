@@ -3,5 +3,8 @@ if [ -f ${UDEV_CFG}/udev.rules ];then
     install_config_file ${UDEV_CFG}/udev.rules ${UDEV_CFG}/rules.d/00-local.rules       &&
     rm -f ${UDEV_CFG}/udev.rules
 fi
-#Ensure the that burning group exists as we use it in default rules
+#Ensure that all groups used in 50-default.rules exist
+create_group disk
+create_group cdrom
+create_group floppy
 create_group burning
