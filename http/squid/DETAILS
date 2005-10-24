@@ -1,9 +1,11 @@
            SPELL=squid
-         VERSION=2.5.STABLE11
+         VERSION=2.5.STABLE12
           SOURCE=$SPELL-$VERSION.tar.bz2
+         SOURCE2=$SOURCE.asc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.squid-cache.org/Versions/v${VERSION%%\.*}/${VERSION%\.*}/$SOURCE
-     SOURCE_HASH=sha1:0142bde507ea0f30f1ad9548d901b3acf2d5e771
+      SOURCE_URL=http://www.squid-cache.org/Versions/v${VERSION%%\.*}/${VERSION%\.*}/$SOURCE
+     SOURCE2_URL=http://www.squid-cache.org/Versions/v${VERSION%%\.*}/${VERSION%\.*}/$SOURCE2
+      SOURCE_GPG=squid.gpg:$SOURCE2
         WEB_SITE=http://www.squid-cache.org/
          ENTERED=20011214
          UPDATED=20040616
