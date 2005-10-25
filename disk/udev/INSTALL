@@ -39,14 +39,11 @@ install_config_file $SCRIPT_DIRECTORY/udev.missing  ${UDEV_CFG}/udev.missing    
 install_config_file extras/run_directory/dev.d/snd/controlC0/alsa.dev ${SND_DFILE} &&
 chmod +x ${SND_DFILE} &&
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS} install   &&
-make EXTRAS="extras/run_directory" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
+make EXTRAS="extras/run_directory extras/cdrom_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
   V=true ${OPTS} install &&
 if [[ "$UDEV_EXTRAS" == 'y' ]]; then
-  make EXTRAS="extras/ata_id extras/cdrom_id extras/dasd_id extras/edd_id extras/firmware extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} V=true install 
+  make EXTRAS="extras/ata_id id extras/dasd_id extras/edd_id extras/firmware extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} V=true install 
 fi
-
-# There is a bug in udev 0.70 with installing udev_run_hotplugd, install it manually
-install -m755 extras/run_directory/udev_run_hotplugd /sbin
 
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   pushd __static__ &&
