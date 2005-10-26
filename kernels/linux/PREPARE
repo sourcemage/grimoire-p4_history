@@ -848,7 +848,7 @@ create_details()
 				echo -n '. ${SPELL_DIRECTORY}/info/patches/*/${PATCH['
 				echo -n ${patch/*:}
 				echo ']}'
-				echo "SOURCE${counter}=\${source_gpg/*:}"
+				echo "SOURCE${counter}=\$(echo \$source_gpg | cut -d: -f2)"
 				echo "SOURCE${counter}_URL=\$gpg_source_url"
 				echo "SOURCE${counter}_IGNORE=signature"
 				(( counter++ ))
@@ -865,7 +865,7 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "SOURCE_URL=\$source_url"
 					echo "SOURCE2=\${source}.sign"
-					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}"
+					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}:ESTABLISHED_UPSTREAM_KEY"
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 				*)
@@ -875,7 +875,7 @@ create_details()
 					echo "SOURCE=\$source"
 					echo "SOURCE_URL=\$source_url"
 					echo "SOURCE2=\${source}.sign"
-					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}"
+					echo "SOURCE_GPG=kernel.gpg:\${SOURCE2}:ESTABLISHED_UPSTREAM_KEY"
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
