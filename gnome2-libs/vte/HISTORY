@@ -1,3 +1,14 @@
+2005-10-27 Eric Sandall <eric@sandall.us>
+	* BUILD: Remove query checking code (now using config_query_option)
+	  Renamed XFT2 to VTE_XFT2 and PANGOX to VTE_PANGOX
+	  Add CONFIGURE flags to the end of OPTS
+	* CONFIGURE: Renamed XFT2 to VTE_XFT2 and PANGOX to VTE_PANGOX
+	  Removed query for GLX
+	  Changed queries for XFT2 and PANGOX to config_query_options
+	  Changed text for PANGOX (for X fonts with Pango)
+	* DEPENDS: Added optional dependency on OPENGL (for GLX)
+	  Added flags to dependency on pango (for PANGOX)
+
 2005-08-27 Robin Cook <rcook@wyrms.net>
 	* DETAILS: updated VERSION to 0.11.15
 

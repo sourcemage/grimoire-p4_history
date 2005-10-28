@@ -1,3 +1,5 @@
-config_query XFT2   "Enable drawing using XFT2?" y    &&
-config_query PANGOX "Enable drawing using PangoX?" y  &&
-config_query GLX    "Enable drawing with glX?" y
+config_query_option  VTE_XFT2   'Enable drawing using XFT2?'  y  \
+                     '--with-xft2'  '--without-xft2'             &&
+
+config_query_option  VTE_PANGOX  'Enable X fonts with Pango?'  y  \
+                     '--with-pangox'  '--without-pangox'
