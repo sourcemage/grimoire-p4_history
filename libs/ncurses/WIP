@@ -1,0 +1,24 @@
+http://bugs.sourcemage.org/show_bug.cgi?id=10004
+
+issues with the 5.5 upgrade:
+
+============================================
+sh ./run_tic.sh
+** Building terminfo database, please wait...
+Running tic to install /usr/share/terminfo ...
+
+        You may see messages regarding extended capabilities, e.g., AX.
+        These are extended terminal capabilities which are compiled
+        using
+                tic -x
+        If you have ncurses 4.2 applications, you should read the INSTALL
+        document, and install the terminfo without the -x option.
+
+tic: symbol lookup error: tic: undefined symbol: _nc_check_termtype2
+? tic could not build /usr/share/terminfo
+make[1]: Leaving directory `/usr/src/ncurses-5.5/misc'
+make[1]: *** [install.data] Error 1
+make: *** [install] Error 2
+============================================
+
+http://lists.gnu.org/archive/html/bug-ncurses/2005-08/msg00022.html
