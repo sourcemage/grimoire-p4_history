@@ -1,0 +1,28 @@
+           SPELL=mimp
+if  [[  "$HORDE_DEVEL"  ==  'y'  ]];  then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:cvsread:horde@anoncvs.horde.org:/repository:$SPELL:HEAD
+   SOURCE_IGNORE='volatile'
+  FORCE_DOWNLOAD='on'
+else
+         VERSION=1.0-alpha
+     SOURCE_HASH='sha512:f9784ba6d7e256ad7e032a62efbb5d58bf8b725a2b13ac754e9cfd64d6689bb40f9ec177ac72b84875121581dbc3de5d95175bc48b3e3c5efed78044cd4abf99'
+          SOURCE=$SPELL-h3-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-h3-$VERSION
+   SOURCE_URL[0]=ftp://ftp.horde.org/pub/$SPELL/$SOURCE
+fi
+        WEB_SITE=http://www.horde.org/$SPELL/
+         ENTERED=20051028
+         UPDATED=20051028
+      LICENSE[0]=GPL
+     GATHER_DOCS=off
+       BUILD_API=2
+           SHORT='A version of IMP for mobile devices'
+cat << EOF
+MIMP is a project to create a version of IMP suitable for mobile devices such as
+WAP phones or PDAs. Basic IMP functionality is implemented including mailbox
+viewing and paging, viewing messages, deleting, replying, forwarding, and
+composing new messages.
+EOF
