@@ -1,9 +1,13 @@
 depends  CVS     &&
 depends  ecore   &&
-depends  ewl     &&
 depends  evfs    &&
 depends  imlib2  &&
 depends  libpng  &&
+
+optional_depends  ewl                     \
+                  ''                      \
+                  ''                      \
+                  'for E Widget support'  &&
 
 optional_depends  etk                         \
                   ''                          \
