@@ -3,4 +3,8 @@ cd ${SOURCE_DIRECTORY} &&
 if [ "${KZ_CVS}" == "y" ]
 then
   NOCONFIGURE=1 ./autogen.sh
+fi &&
+if [ "${KZ_CVS}" == "n" ]
+then
+  ln -s /usr/share/automake-1.9/mkinstalldirs mkinstalldirs
 fi
