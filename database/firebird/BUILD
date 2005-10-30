@@ -1,10 +1,9 @@
   PREFIX=${INSTALL_ROOT}/usr/firebird           &&
-  OPTS="${OPTS} ${FB_SS} --with-editline"       &&
+  OPTS="${OPTS} ${FB_SS} ${FB_EDIT}"            &&
 
   NOCONFIGURE=1 . ./autogen.sh			&&
   ./configure 				\
 	--prefix=$PREFIX 		\
-	--with-editline			\
 	$OPTS					&&
   make                                          &&
 # prepare an install image
