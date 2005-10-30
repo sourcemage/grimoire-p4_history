@@ -4,7 +4,8 @@ if  [  "$ETERM_CVS"  !=  "y"  ];  then
           SOURCE=Eterm-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/Eterm-$VERSION
    SOURCE_URL[0]=http://www.eterm.org/download/$SOURCE
-          MD5[0]=82608c929fb4feaf7b51a37efb42a3e7
+   SOURCE_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 else
   if  [  "$ETERM_CVS_AUTOUPDATE"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
@@ -15,16 +16,17 @@ else
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs/
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:eterm/Eterm
   FORCE_DOWNLOAD=on
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
 fi
          SOURCE2=Eterm-bg-0.9.3.tar.gz
   SOURCE2_URL[0]=http://www.eterm.org/download/$SOURCE2
-          MD5[1]=de6eda43385a20d7f5de8a855eb2c193
+  SOURCE2_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE2_GPG="gurus.gpg:${SOURCE2}.sig"
         WEB_SITE=http://www.eterm.org
          ENTERED=20010922
          UPDATED=20011125
       LICENSE[0]=BSD
-           SHORT="Eterm is a vt102 terminal emulator."
+           SHORT='vt102 terminal emulator'
 cat << EOF
 Eterm is a vt102 terminal emulator intended as a replacement for
 xterm. It is designed with a Freedom of Choice philosophy, leaving as
