@@ -1,2 +1,3 @@
-cd src                          &&
-make                            
+export CFLAGS="${CFLAGS//-[fD]PIC/}" &&
+cd src &&
+make
