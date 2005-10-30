@@ -4,7 +4,7 @@ mkdir -p $TMPSTAGING/lib                 &&
 MVERSION=${VERSION/.*/}                  &&
 
 {
-  make  install DESTDIR="$TMPSTAGING"    &&
+  make  install.libs DESTDIR="$TMPSTAGING"  &&
   # setting these off to the side -- they are protected as well
   mv $INSTALL_ROOT/lib/libcurses* $TMPSTAGING/lib
   true # but we don't care if there is nothing there (e.g. chroot install)
