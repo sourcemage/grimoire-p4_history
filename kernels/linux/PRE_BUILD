@@ -32,6 +32,7 @@ case "$mode" in
 		message "${MESSAGE_COLOR}Using ${LINUX_SOURCE_DIRECTORY} for new build${DEFAULT_COLOR}"
 		;;
 	"expert")
+		LINUX_SOURCE_DIRECTORY=$old_src_tree
 		if [[ -d ${LINUX_SOURCE_DIRECTORY} ]]
 		then
 			message "${MESSAGE_COLOR}Using ${LINUX_SOURCE_DIRECTORY} for expert build${DEFAULT_COLOR}"
@@ -84,8 +85,7 @@ case "${mode}" in
 		;;
 	"expert")
 		message "${MESSAGE_COLOR}mode is expert${DEFAULT_COLOR}" &&
-		cd $old_src_tree
-		LINUX_SOURCE_DIRECTORY=$old_src_tree
+		cd $LINUX_SOURCE_DIRECTORY
 		;;
 	*)
 		message "${PROBLEM_COLOR}I don't know what $mode is${DEFAULT_COLOR}" &&
