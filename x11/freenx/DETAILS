@@ -1,0 +1,15 @@
+           SPELL=freenx
+         VERSION=0.4.4
+          SOURCE=freenx-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+#   SOURCE_URL[0]=http://download.berlios.de/freenx/${SOURCE}
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.freenx.berlios.de:/cvsroot/freenx:${SPELL}
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://freenx.berlios.de/
+         ENTERED=20050102
+      LICENSE[0]=GPL2
+       BUILD_API=2
+           SHORT="freenx is an GPL front end to NoMachine NX"
+cat << EOF
+FreeNX make the GPLed parts of NoMachine NX useful.
+EOF
