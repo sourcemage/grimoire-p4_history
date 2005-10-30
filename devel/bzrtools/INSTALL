@@ -1,4 +1,1 @@
-local  PYTHON_BRANCH=`installed_version  python|cut -d. -f1,2`  &&
-BZRTOOLS_PLUGIN_PATH=$INSTALL_ROOT/usr/lib/python${PYTHON_BRANCH}/site-packages/bzrlib/plugins/$SPELL  &&
-mkdir  -p  $BZRTOOLS_PLUGIN_PATH  &&
-cp  -a  *  $BZRTOOLS_PLUGIN_PATH
+python  setup.py  install
