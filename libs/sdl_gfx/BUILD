@@ -1,7 +1,7 @@
 unset  CFLAGS
 
 if [ "$MMX" == "n" ]; then
-  OPTS="$OPTS --disable-mmx"
+  OPTS="--disable-mmx  ${OPTS}"
 fi                                 &&
 
 ./configure  --build=$BUILD        \
