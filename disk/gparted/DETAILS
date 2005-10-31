@@ -1,0 +1,16 @@
+           SPELL=gparted
+         VERSION=0.0.8
+          SOURCE=gparted-0.0.8.tar.bz2
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/gparted/gparted-0.0.8.tar.bz2
+  SOURCE_HASH[0]=sha512:06485ad19fb4561bef4a49f8fb6475a67cc752962d91fe24639dd6ac0dfa46e79b6e9901752e71148d5e870959830afc94b5f52ff55bdc9d0007e6717320fc8c        
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://gparted.sourceforge.net
+         ENTERED=20051031
+         UPDATED=20051031
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Gnome Partition Editor, frontend to parted."
+cat << EOF
+GParted is a Partition Magic clone written in C++. It tries to keep the GUI
+as simple as possible and to conform to the Gnome HIG.
+EOF
