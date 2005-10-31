@@ -1,10 +1,9 @@
            SPELL=wmii
 if [ "$SNAP" = "y" ]; then
-         VERSION=20051017
+         VERSION=20051031
           SOURCE=$SPELL-$VERSION.tar.gz
-   SOURCE_URL[0]=http://wmi.modprobe.de/snaps/$SOURCE
-     SOURCE_HASH=sha512:34ebbf8c65adfacee496a93071aff0be3dab657133149983d11756262ba3eed9f9472732a6be388049df735b158bd1826e20f1459cd97f20bdf128e92be4b85a
-          MD5[0]='9bb1dcef43ce34e441962f32fef13a9a'
+   SOURCE_URL[0]=http://wmii.de/snaps/$SOURCE
+     SOURCE_HASH=sha512:a53d276ff172b48eb152fcbec9a862b5be44d073582aee4b0ff0b218e5ec9274ba7f77167acb82e2be084c5a8b32af49c1965517f0a12a36c5905098bf57fffa
 else
          VERSION=2
           SOURCE=$SPELL-$VERSION.tar.bz2
@@ -12,7 +11,7 @@ else
           MD5[0]='0257b20c74e22e30b74864fd57340101'
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-        WEB_SITE=http://wmi.modprobe.de/
+        WEB_SITE=http://wmii.de/
          ENTERED=20050602
          UPDATED=20050602
       LICENSE[0]=GPL
