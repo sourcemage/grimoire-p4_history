@@ -1,9 +1,9 @@
            SPELL=lighttpd
-         VERSION=1.4.6
-     SOURCE_HASH='sha1:d880958aaf080abb672ba2b675fbfeb446be84ea'
+         VERSION=1.4.7-20051101-0957
+     SOURCE_HASH='sha512:0d396b0d98f0892562a67d5c5244beb23ee36806500b7cbc9eed634f5280bbe058e96aba311e941701678a4839dbd08623f5475c864e3651121c010ccf8b74b2'
           SOURCE="$SPELL-$VERSION.tar.gz"
    SOURCE_URL[0]="http://www.lighttpd.net/download/$SOURCE"
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%%-*}
         WEB_SITE="http://www.$SPELL.net/"
    FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
       LICENSE[0]='BSD'
