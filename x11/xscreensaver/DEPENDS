@@ -3,8 +3,8 @@ depends  zlib      &&
 depends  X11-LIBS  &&
 
 if  [  "$XSCSV_GTK"  ==  "y"  ];  then
-  depends  gtk+2      &&
-  depends  libxml2    &&
+  depends  gtk+2     '--with-gtk' &&
+  depends  libxml2   '--with-xml' &&
   depends  libglade2
 fi  &&
 
