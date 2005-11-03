@@ -6,8 +6,9 @@ if  [  "$EVIDENCE_CVS"  ==  "y"  ];  then
          VERSION=cvs
   fi
           SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/evidence:evidence
-          MD5[0]=IGNORE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/evidence:$SPELL
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD="on"
 else
          VERSION=0.9.8
