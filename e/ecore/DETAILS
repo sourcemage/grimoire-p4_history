@@ -8,8 +8,9 @@ if  [  "$ECORE_CVS"  ==  "y"  ];  then
           SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/ecore
-          MD5[0]=IGNORE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_IGNORE=volatile
 else
          VERSION=1.0.0_pre7
           SOURCE=$SPELL-$VERSION.tar.gz

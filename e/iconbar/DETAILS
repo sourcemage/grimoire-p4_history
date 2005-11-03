@@ -6,9 +6,10 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/iconbar
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/apps/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/$SPELL
   FORCE_DOWNLOAD="on"
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
         WEB_SITE=http://www.rephorm.com/rephorm/code/iconbar
          ENTERED=20040311
          UPDATED=20040311

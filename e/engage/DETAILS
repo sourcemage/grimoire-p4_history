@@ -6,9 +6,10 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/engage
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/$SPELL
   FORCE_DOWNLOAD="on"
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
         WEB_SITE=http://enlightenment.org/Applications/Engage/
          ENTERED=20040415
          UPDATED=20040415
