@@ -2,23 +2,29 @@
 if [[ "$X_LATEST" = y ]]; then
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-cvs.tar.bz2
+	 SOURCE2=sis_drv_src_current.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.freedesktop.org:/cvs/xorg:xc
+  SOURCE2_URL[0]=http://www.winischhofer.net/sis/$SOURCE2
           MD5[0]=IGNORE
+          MD5[1]=IGNORE
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
          VERSION=6.8.2
         XVERSION=X11R${VERSION}
           SOURCE=${XVERSION}-src.tar.bz2
+	SOURCE2=sis_drv_src_current.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
    SOURCE_URL[0]=http://xorg.freedesktop.org/${XVERSION}/src-single/$SOURCE
    SOURCE_URL[1]=ftp://ftp.x.org/pub/${XVERSION}/src-single/$SOURCE
+  SOURCE2_URL[0]=http://www.winischhofer.net/sis/$SOURCE2
           MD5[0]=207d5f0d3bf72cfb4fe2ad5b2b9d3322
+          MD5[1]=IGNORE
      GCC_VERSION=3.4
 fi
         WEB_SITE=http://xorg.freedesktop.org/
          ENTERED=20040407
-         UPDATED=20050920
+         UPDATED=20051104
       LICENSE[0]=XCL
        BUILD_API=2
            SHORT="X.Org is an Open Source version of the X Window System"
