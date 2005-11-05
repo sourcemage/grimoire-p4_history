@@ -2,9 +2,9 @@
        BUILD_API=2
 
 if [ "$GIMP_DEVEL" == "y" ];then
-         VERSION=2.3.4
+         VERSION=2.3.5
           SOURCE=$SPELL-$VERSION.tar.bz2
-     SOURCE_HASH=sha512:47a10b94da73c9ccc40f267cc2d07c2616e3e962ffabdfd55dc47615177421eb8dd038a9dc478304ed03b7dc6ad6305985b2f1b373b1a3eeb37d14238cbf04b9
+     SOURCE_HASH=sha512:91a9a8612dceb5e6a2912c0f1fc0f43e93251c82773aa523ffd46f620df3699f70c05647f218042125a3bcca5c8fcf6822c26fde6a9c19371b04efd528056c98
    SOURCE_URL[0]=ftp://ftp.gimp.org/pub/gimp/v${VERSION%.*}/$SOURCE
 else
          VERSION=2.2.9
