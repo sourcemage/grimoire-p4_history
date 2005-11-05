@@ -37,11 +37,11 @@ fi  &&
 cd  $SOURCE_DIRECTORY                               &&
 patch  -p1  <  $SCRIPT_DIRECTORY/glibcshared.patch  &&
 patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.patch     &&
-patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-symbols.patch &&
-patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-wcstol_l.patch &&
-patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-string.patch &&
-patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-gcc4_fix_elf-1.patch &&
-patch  -p5  <  $SCRIPT_DIRECTORY/glibc-2.3.4-allow-gcc-4.0-iconvdata.patch &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-symbols.patch &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-wcstol_l.patch &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-allow-gcc4-string.patch &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/glibc-2.3.5-gcc4_fix_elf-1.patch &&
+#patch  -p5  <  $SCRIPT_DIRECTORY/glibc-2.3.4-allow-gcc-4.0-iconvdata.patch &&
 
 # disabled libgd detection/building memusagestat for now until a better
 # fix has been found, bug #8277
