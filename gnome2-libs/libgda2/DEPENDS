@@ -38,7 +38,12 @@ if [ "$GDA_DEVEL" == "y" ]; then
 optional_depends  mdbtools                               \
                   "--with-mdb"                           \
                   "--without-mdb"                        \
-                  "Enable MDBTools support (MS Access)"  
+                  "Enable MDBTools support (MS Access)"  &&
+
+optional_depends  gtk-sharp-2                            \
+                  ""                                     \
+                  ""                                     \
+                  "Build Mono bindings?"                 
 
 else
 
@@ -53,11 +58,6 @@ optional_depends  openldap                               \
                   "--with-ldap"                          \
                   "--without-ldap"                       \
                   "Enable LDAP DB Support"               &&
-
-optional_depends  gtk-sharp                              \
-                  ""                                     \
-                  ""                                     \
-                  "Build Mono bindings?"                 &&
 
 optional_depends  "gtk-doc"                              \
                   "--enable-gtk-doc"                     \
