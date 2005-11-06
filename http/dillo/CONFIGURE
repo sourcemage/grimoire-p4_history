@@ -1,0 +1,38 @@
+if [[ "$I18NPATCH" == "y" ]]
+then
+  config_query_option DILLO_TABS \
+                      "--enable-tabs" \
+                      "--disable-tabs" \
+                      "Tab support" \
+                      y &&
+  config_query_option DILLO_AA \
+                      "--enable-anti-alias" \
+                      "--disable-anti-alias" \
+                      "Anti-aliasing with xft" \
+                      y
+fi &&
+config_query_option DILLO_IPV6 \
+                    "--enable-ipv6" \
+                    "--disable-ipv6" \
+                    "IPV6 support" \
+                    n &&
+config_query_option DILLO_RTFL \
+                    "--enable-rtfl" \
+                    "--disable-rtfl" \
+                    "Build with rtfl messages(whatever those are)" \
+                    n &&
+config_query_option DILLO_COOKIES \
+                    "--enable-cookies" \
+                    "--disable-cookies" \
+                    "Cookie support" \
+                    y &&
+config_query_option DILLO_METAREF \
+                    "--enable-meta-refresh" \
+                    "--disable-meta-refresh" \
+                    "Allow meta refresh" \
+                    n &&
+config_query_option DILLO_NLS \
+                    "--enable-nls" \
+                    "--disable-nls" \
+                    "Use native language support" \
+                    y
