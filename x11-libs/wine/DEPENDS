@@ -29,4 +29,10 @@ optional_depends  winedoc                   \
 optional_depends  docbook-utils     \
                   ""                \
                   ""                \
-                  "for building wine documentation"
+                  "for building wine documentation"  &&
+
+optional_depends  msttf                                  \
+                  ''                                     \
+                  ''                                     \
+                  'for proper MS TrueType font support'  \
+                  'z-rejected'
