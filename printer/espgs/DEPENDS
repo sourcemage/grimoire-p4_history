@@ -1,16 +1,19 @@
+depends  g++                    &&
 depends  ghostscript-fonts-std  &&
 depends  jpeg                   &&
 depends  libpng                 &&
+depends  tiff                   &&
+depends  X11-LIBS               &&
 depends  zlib                   &&
-
-optional_depends  X11-LIBS               \
-                  ''                     \
-                  ''                     \
-                  'for X11 GUI support'  &&
 
 if  [  "$ESPGS_OMNI"  ==  "y"  ];  then
   depends  glib2
 fi  &&
+
+#optional_depends  X11-LIBS               \
+#                  ''                     \
+#                  ''                     \
+#                  'for X11 GUI support'  &&
 
 optional_depends  "gtk+"                                                                                   \
                   "--with-x --x-libraries=/usr/X11/lib/"                                                   \
@@ -22,10 +25,10 @@ optional_depends  "cups"                        \
                   "--disable-cups"              \
                   "CUPS print spooler support"  &&
 
-#optional_depends  "gimp-print"                                         \
-#                  "--with-gimp-print"                                  \
-#                  ""                                                   \
-#                  "for including the GIMP-print (stp) driver support"  &&
+optional_depends  "ijs"                             \
+                  "--with-ijs"                      \
+                  "--without-ijs"                   \
+                  "for IJS print protocol support"  &&
 
 optional_depends  "ghostscript-fonts-other"  \
                   ""                         \
