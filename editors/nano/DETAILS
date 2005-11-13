@@ -1,11 +1,12 @@
            SPELL=nano
        BUILD_API=2
-         VERSION=1.3.8
+         VERSION=1.3.9
           BRANCH=`echo  ${VERSION}|cut -d . -f1,2`
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.nano-editor.org/dist/v${BRANCH}/${SOURCE}
-          MD5[0]='84ca13e021e504031b483674fd2da2b2'
+     SOURCE_HASH=sha512:55355e15285330957940ecf3c8211e09b1dc56a54b0e04b9d95d3497b85cb8a34b3af3d3fd178e5200632926b3daa641d9078aeff412e214ea8238a4f7b77f83
+          MD5[0]=816373e5120fb10721e20583cb008549
         WEB_SITE=http://www.nano-editor.org
          ENTERED=20010922
          UPDATED=20020414
