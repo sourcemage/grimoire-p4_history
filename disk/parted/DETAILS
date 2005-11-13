@@ -1,9 +1,12 @@
            SPELL=parted
-         VERSION=1.6.25
+         VERSION=1.6.25.1
           SOURCE=${SPELL}-${VERSION}.tar.gz
+         SOURCE2=${SOURCE}.sig
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=${GNU_URL}/${SPELL}/${SOURCE}
-  SOURCE_HASH[0]=sha512:0d017c848127b655a96cdac3ae30cfdc32db727948f2ac24ac549519995a311cce5e87294b11e38268672b9990f6ce19b70afffce37ea5f205e864afe5b0b84f
+     SOURCE2_URL=${SOURCE_URL}.sig
+  SOURCE2_IGNORE=signature
+      SOURCE_GPG="gnu.gpg:${SOURCE}.sig"
         WEB_SITE=http://www.gnu.org/software/parted
          ENTERED=20010922
          UPDATED=20030802
