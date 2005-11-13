@@ -1,1 +1,7 @@
-depends m4 
+depends  g++  &&
+depends  m4   &&
+
+optional_depends  gettext                        \
+                  '--enable-nls'                 \
+                  '--disable-nls'                \
+                  'for Native Language Support'
