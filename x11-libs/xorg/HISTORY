@@ -1,13 +1,20 @@
+2005-11-12 Eric Sandall <eric@sandall.us>
+	* PRE_BUILD: Converted to unpack_file() (for GPG/Hash checks)
+	  Use pushd/popd
+	  Removed debugging echo and TABs
+	  A little cleanup of the formatting
+
 2005-11-04 Jose Bernardo Silva <jbernardo@sourcemage.org>
 	* PREPARE, CONFIGURE, DETAILS: Added hash instead of md5,
-          encapsulated SOURCE2 related stuff with a if, moved query to prepare
+	  encapsulated SOURCE2 related stuff with a if, moved query to prepare
 
 2005-11-04 Jose Bernardo Silva <jbernardo@sourcemage.org>
 	* PRE_BUILD, CONFIGURE, DETAILS: Added sis drivers, as per bug #9091
 
 2005-09-20 Thomas Houssin <Thomas.Houssin@sourcemage.org>
-	* PRE_BUILD, CAN-2005-2495.patch: Added from http://www.freshports.org/x11-servers/xorg-server-snap/
-		security fix, see CAN-2005-2495
+	* PRE_BUILD, CAN-2005-2495.patch: Added from
+	  http://www.freshports.org/x11-servers/xorg-server-snap/ security fix,
+	  see CAN-2005-2495
 
 2005-08-22 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, xorg-x11-6.8.2-xft-releasefile-crash.patch:
