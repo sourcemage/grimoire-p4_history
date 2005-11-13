@@ -1,9 +1,9 @@
            SPELL=mysql
-if [ "$DEVEL" == "y" ];then
-         VERSION=5.0.15
+if [ "$OLD" == "y" ];then
+         VERSION=4.1.15
           SOURCE_GPG="gurus.gpg:${SPELL}-${VERSION}.tar.gz.sig"
 else
-         VERSION=4.1.15
+         VERSION=5.0.15
           SOURCE_GPG="gurus.gpg:${SPELL}-${VERSION}.tar.gz.sig"
 fi
           SOURCE=$SPELL-$VERSION.tar.gz
