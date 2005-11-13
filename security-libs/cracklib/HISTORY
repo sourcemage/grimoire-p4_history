@@ -1,3 +1,9 @@
+2005-11-13 Eric Sandall <eric@sandall.us>
+	* INSTALL: Make INSTALL_ROOT/var/cache/cracklib and install symlinks to
+	  cracklib_dict.pwi and cracklib_dict.pwd into it (otherwise passwd fails
+	  because it can't find them)
+	  Don't remove this again
+
 2005-08-27 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on autoconf and automake
 	* PRE_BUILD: Fixed to not need C++
