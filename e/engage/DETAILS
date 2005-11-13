@@ -6,14 +6,21 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/engage
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/$SPELL
   FORCE_DOWNLOAD="on"
-          MD5[0]=IGNORE
-        WEB_SITE=http://enlightenment.org/
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://enlightenment.org/Applications/Engage/
          ENTERED=20040415
          UPDATED=20040415
       LICENSE[0]=BSD
-           SHORT="engage ..."
+           SHORT='Enlightenment e17 iconbar, box, panel, and system tray'
 cat << EOF
-engage ...
+Engage is an application that takes a new approach to handling your iconbars,
+icon boxes and panels. All you need to know about your applications is now in
+one convenient location. It can launch applications, notify if applications are
+running, contain the icons of iconified windows and maintain a "system tray"
+for applications supporting the standard. Another feature is that it can embed
+other "edje" files such as the clocks pictured below. Engage really is the tidy
+way to manage all of your applications.
 EOF

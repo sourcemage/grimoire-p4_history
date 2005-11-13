@@ -7,13 +7,16 @@ fi
           SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/etox
-          MD5[0]=IGNORE
-        WEB_SITE=http://www.enlightenment.org/pages/etox.html
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://enlightenment.org/Libraries/Etox/
          ENTERED=20040311
          UPDATED=20040311
       LICENSE[0]=BSD
-           SHORT="Etox is a text layout abstraction, built on top of Evas."
+           SHORT="Text layout abstraction, built on top of Evas."
 cat << EOF
-Etox is a type setting and text layout library based on Evas. Etox helps you when it comes to displaying, moving, resizing, layering, clipping, aligning and coloring fonts in different styles, and more.
+Etox is a type setting and text layout library based on Evas. Etox helps you
+when it comes to displaying, moving, resizing, layering, clipping, aligning and
+coloring fonts in different styles, and more.
 EOF

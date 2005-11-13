@@ -6,14 +6,20 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/erss
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:misc/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:misc/$SPELL
   FORCE_DOWNLOAD="on"
-          MD5[0]=IGNORE
-        WEB_SITE=http://enlightenment.org/pages/erss.html
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://enlightenment.org/Applications/Erss/
          ENTERED=20040311
          UPDATED=20040311
       LICENSE[0]=BSD
-           SHORT="erss ..."
+           SHORT='Enlightenment e17 RSS feed watcher'
 cat << EOF
-erss ...
+eRSS is a simple tool for watching RSS v1 (RDF) and v2 (XML) feeds. By creating
+simple config files you can definate how each feed is monitored, by including a
+clock, spedifying what information is displayed, the feed title, and how often
+its updated. Feeds can be displayed either bordered (a conventional window) or
+borderless for embedding in your desktop (pictured below). Each feed is its own
+proccess allowing you to start and stop different feeds individually.
 EOF

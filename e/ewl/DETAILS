@@ -6,14 +6,18 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/ewl
-          MD5[0]=IGNORE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_IGNORE=volatile
       LICENSE[0]=BSD
   FORCE_DOWNLOAD=on
-        WEB_SITE=http://www.enlightenment.org/pages/ewl.html
+        WEB_SITE=http://enlightenment.org/Libraries/Ewl/
          ENTERED=20040311
          UPDATED=20040311
            SHORT="The Enlightenment Widget Library"
 cat << EOF
-The Enlightenment Widget Library, a simple-to-use general purpose widget library based on the Evas canvas. This library is still in development but already has demo applications and solid documentation, so feel free to try the CVS sources.
+The Enlightenment Widget Library, a simple-to-use general purpose widget
+library based on the Evas canvas. This library is still in development but
+already has demo applications and solid documentation, so feel free to try the
+CVS sources.
 EOF

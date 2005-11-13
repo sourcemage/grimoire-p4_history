@@ -7,8 +7,9 @@ if  [  "$IMLIB2_CVS"  ==  "y"  ];  then
   fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/imlib2
-          MD5[0]=IGNORE
+   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
+   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 else
          VERSION=1.2.1
@@ -17,11 +18,11 @@ else
           MD5[0]=38301fe0065dacbd06a2049cc1b6abfc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
 fi
-        WEB_SITE=http://enlightenment.org
+        WEB_SITE=http://enlightenment.org/Libraries/Imlib2/
          ENTERED=20010922
          UPDATED=20021025
       LICENSE[0]=BSD
-           SHORT="imlib2 is the successor to imlib graphics library."
+           SHORT="Successor to imlib graphics library"
 cat << EOF
 Imlib2 is the successor to Imlib. It is NOT a newer version -- it is a
 completely new library. Imlib 2 can be installed alongside Imlib 1.x
