@@ -6,6 +6,8 @@ sedit  's:<config.h>:\"config.h\":'  threeDKit/3dkit.c      &&
 sedit  's:<config.h>:\"config.h\":'  threeDKit/triangl.c    &&
 sedit  's:<config.h>:\"config.h\":'  threeDKit/wrapsurf.c   &&
 
+sedit  's:$(prefix)/man:$(prefix)/share/man:'  Makefile.cfg       &&
+
 # Disable kernel module support while building stages
 sedit  's:installmodule ::'  Makefile                                  &&
 
