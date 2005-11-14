@@ -17,7 +17,7 @@ else
   # GTK+2 bindings need glib2
   # Bug #9538
   #
-  if  [  "$DBUS_GTK2"  ==  'y'  ];  then
+  if  [  "$DBUS_GTK2"  ==  '--enable-gtk'  ];  then
     depends  glib2  '--enable-glib'  &&
     depends  gtk+2
   fi  &&
@@ -26,7 +26,7 @@ else
   # Python bindings need glib2
   # Bug #9538
   #
-  if  [  "$DBUS_PYREX"  ==  'y'  ];  then
+  if  [  "$DBUS_PYREX"  ==  '--enable-python'  ];  then
     depends  glib2  '--enable-glib'  &&
     depends  pyrex
   fi
