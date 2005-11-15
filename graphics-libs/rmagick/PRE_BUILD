@@ -1,0 +1,9 @@
+default_pre_build     &&
+cd $SOURCE_DIRECTORY  &&
+# it's a hack for make Rmagick install properly with graphviz (if any)
+if [[ `Magick-config --ldflags | grep -o L/usr/lib/graphviz` = L/usr/lib/graphviz && `Magick-config --libs |\
+grep -o lgvc` = lgvc ]] ; then
+patch -p0 < $SCRIPT_DIRECTORY/configure.ac.patch &&
+( autoreconf; true; )
+fi  &&
+OPTS="$OPTS --with-doc-dir=${INSTALL_ROOT}/usr/share/doc/$SPELL"
