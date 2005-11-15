@@ -13,15 +13,15 @@ if [  "${TIDY_CVS}" == "y"  ] ; then
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvsroot
 
 else
-        VERSION=050921
+        VERSION=051025
 #
 # Do *not* remove the version from the SOURCE.
 #
           SOURCE=${SPELL}_src_$VERSION.tgz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
-   SOURCE_URL[0]=http://tidy.sourceforge.net/src/${SOURCE}
-     SOURCE_HASH=sha256:aef754e01b69b65201a1179c73c639bab2298ccc58c6826aebad3d050a01ac35
-          MD5[0]=2d027de300bb0a854b35c0bd08710619
+   SOURCE_URL[0]=http://tidy.sourceforge.net/src/old/${SOURCE}
+     SOURCE_HASH=sha512:cc44229e24c3a07c9701dfafd9cdd6d4463317d43259ec0647791586bb54b0caadda1cf1986643cbe4c383cdaed2061f4c2b8208edfeb9508fe4fd87c78e32bb
+          MD5[0]=102d99a8d102f95a4f30cbbdad65f123
 fi
 
         WEB_SITE=http://tidy.sourceforge.net/
