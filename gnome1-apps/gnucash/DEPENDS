@@ -1,5 +1,6 @@
 if  [  "$GNUCASH_CVS"  ==  "y"  ];  then
   depends  libgnome  &&
+  depends  gtkhtml2  &&
 
   optional_depends  SQL                \
                     "--with-sql"       \
