@@ -1,14 +1,16 @@
            SPELL=leafpad
-         VERSION=0.8.4
+         VERSION=0.8.5
           SOURCE=$SPELL-$VERSION.tar.gz
          SOURCE2=${SOURCE}.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://savannah.nongnu.org/download/${SPELL}/${SOURCE}
      SOURCE2_URL=${SOURCE_URL[0]}.sig
+      SOURCE_GPG=leafpad-keyring.gpg:${SOURCE}.sig
+     SOURCE_HASH=sha512:e9b090ce5670c68b88df57d23003983689db1d52b266e73b04a7e636226b4275f49aafccdf2f5a90c9b02cb4dbf1d8a4da31df34b79da5a0e5cc9ac556667e57
+          MD5[0]=6a59fbd3b082b15439d1dca2f17ca0b7
         WEB_SITE=http://tarot.freeshell.org/leafpad/
          ENTERED=20040716
          UPDATED=20040716
-      SOURCE_GPG=leafpad-keyring.gpg:${SOURCE}.sig
       LICENSE[0]=GPL
            SHORT="GTK+2 based notepad clone"
 cat << EOF
