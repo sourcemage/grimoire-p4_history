@@ -1,37 +1,22 @@
            SPELL=multisync
-         VERSION=0.82-1
-   SYNCE_VERSION=0.8.9
-          SOURCE=$SPELL-$VERSION.tar.bz2
-         SOURCE2=synce-multisync_plugin-$SYNCE_VERSION.tar.gz
-          MD5[0]='1da012fdf4ba9cfe413f31d2d329f36b'
-          MD5[1]='e269fec5132a5d1beeb76c0360501905'
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-  SOURCE2_URL[0]=$SOURCEFORGE_URL/synce/$SOURCE2
-        WEB_SITE=http://www.multisync.org/
-         ENTERED=20050524
-         UPDATED=20050524
+         VERSION=0.90.18
+     SOURCE_HASH=sha512:fa3fc1f9274d7772422c00ad1e5c7358bb267adcb2c406d9b83b7f346a922dd9ec1f63ae7ef7abd075cb3320ec6a593e6bb2f1a2bcbacc1506b8b1f1f219c7b1
        BUILD_API=2
-           SHORT='MultiSync synchronizes PIM data between computers, PDAs, etc.'
+          SOURCE="$SPELL-$VERSION.tar.gz?rev=&format=raw"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+#        WEB_SITE=http://$SPELL.SourceForge.net
+#        WEB_SITE=http://www.multisync.org/news.php
+        WEB_SITE=http://www.opensync.org
+#   SOURCE_URL[0]=http://.../$SOURCE
+   SOURCE_URL[0]="$WEB_SITE/attachment/wiki/download/$SOURCE"
+http://www.opensync.org/attachment/wiki/download/multisync-0.90.18.tar.gz?rev=&format=raw
+      LICENSE[0]=GPL
+         ENTERED=20051116
+         UPDATED=20051116
+SHORT="UI for oOpenSync"
 cat << EOF
-MultiSync is a free modular program to synchronize calendars, addressbooks and
-other PIM data between programs on your computer and other computers, mobile
-devices, PDAs or cell phones. MultiSync works on any Gnome platform, such as
-Linux.
-Currently MultiSync has plugins for:
-* Ximian Evolution synchronization, supporting calendar, ToDos and contacts;
-  Multisync also support Evolution 2;
-* IrMC Mobile Client synchronization (supported by e.g. SonyEricsson
-  T68i/T610/Z600, Siemens S55 phones etc.) via Bluetooth or IR on Linux, or
-  cable connection;
-* Windows CE / Pocket PC synchronization. This plugin is part of the SynCE
-  project;
-* Opie and Zaurus synchronization;
-* SyncML support (supported by e.g. SonyEricsson P800/P900 and many other
-  phones and devices, for example the SyncML server Sync4j). SyncML also allows
-  you to do remote connection of two MultiSync programs via an encrypted
-  connection over the net;
-* Palm synchronization;
-* LDAP synchronization;
-* Backup of your PIM data.
+UI for oOpenSync
+MultiSync is a program to synchronize calendars, addressbooks and other PIM data between 
+programs on your computer and other computers, mobile devices, PDAs or cell phones. 
 EOF
