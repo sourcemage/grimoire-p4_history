@@ -1,0 +1,35 @@
+g++ -c -pipe -w -O -march=pentium3 -mmmx -mfpmath=sse -msse -pipe -O3 -D_REENTRANT  
+-DQT_NO_DEBUG -DQT_THREAD_SUPPORT -DQT_SHARED -I/usr/share/qt/mkspecs/default -I. 
+-I.. -I../../../../include -I../../../../include/cc++2 -I../../../../include 
+-I/usr/include/qt -I.ui/ -I. -I.moc/ -o .obj/historylistview.o historylistview.cpp
+historylistview.cpp: In constructor 
+'HistoryListViewItem::HistoryListViewItem(QListView*, const t_call_record&, QString, 
+QString, QString, QString, QString, QString, QString)':
+historylistview.cpp:24: error: no matching function for call to 
+'QListViewItem::QListViewItem(QListView*&, std::string, QString&, QString&, 
+QString&, QString&, QString&, QString&, QString&)'
+/usr/include/qt/qlistview.h:94: note: candidates are: 
+QListViewItem::QListViewItem(QListViewItem*, QListViewItem*, QString, QString, 
+QString, QString, QString, QString, QString, QString)
+/usr/include/qt/qlistview.h:89: note:                 
+QListViewItem::QListViewItem(QListView*, QListViewItem*, QString, QString, QString, 
+QString, QString, QString, QString, QString)
+/usr/include/qt/qlistview.h:83: note:                 
+QListViewItem::QListViewItem(QListViewItem*, QString, QString, QString, QString, 
+QString, QString, QString, QString)
+/usr/include/qt/qlistview.h:78: note:                 
+QListViewItem::QListViewItem(QListView*, QString, QString, QString, QString, 
+QString, QString, QString, QString)
+/usr/include/qt/qlistview.h:72: note:                 
+QListViewItem::QListViewItem(QListViewItem*, QListViewItem*)
+/usr/include/qt/qlistview.h:71: note:                 
+QListViewItem::QListViewItem(QListView*, QListViewItem*)
+/usr/include/qt/qlistview.h:70: note:                 
+QListViewItem::QListViewItem(QListViewItem*)
+/usr/include/qt/qlistview.h:69: note:                 
+QListViewItem::QListViewItem(QListView*)
+/usr/include/qt/qlistview.h:64: note:                 
+QListViewItem::QListViewItem(const QListViewItem&)
+make[3]: *** [.obj/historylistview.o] Error 1
+make[3]: Leaving directory `/usr/src/twinkle-0.4/src/gui'
+
