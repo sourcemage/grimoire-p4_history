@@ -3,6 +3,7 @@
 if [[ "$SVN_HEAD" == y ]]; then VERSION=${VERSION%.*}-HEAD; fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 if [[ "$SVN_HEAD" == y ]]; then
+    SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]=svn://svn.collab.net/repos/svn/trunk/:$SPELL-$VERSION
    SOURCE_IGNORE='volatile'
 else
