@@ -1,6 +1,6 @@
            SPELL=locale
          VERSION=0.0.1
-   GLIBC_VERSION=2.3.5
+   GLIBC_VERSION=$(installed_version glibc)
          ARCHIVE=off
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/glibc-$GLIBC_VERSION
           SOURCE=glibc-$GLIBC_VERSION.tar.bz2
