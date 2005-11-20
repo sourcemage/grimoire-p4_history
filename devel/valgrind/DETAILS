@@ -6,6 +6,7 @@ if [ "$VALGRIND_SVN" == "y" ]; then
          VERSION=svn
   fi
           SOURCE=$SPELL-svn.tar.bz2
+    SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]=svn://svn.valgrind.org/valgrind/trunk:$SPELL-svn
   FORCE_DOWNLOAD=on
    SOURCE_IGNORE=volatile

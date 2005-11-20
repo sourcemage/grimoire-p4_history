@@ -1,8 +1,13 @@
            SPELL=trac
-if [[ "$TRAC_HEAD" == y ]]; then
+if [[ "${TRAC_HEAD}" == "y" ]]; then
+  if [[ "${TRAC_HEAD_AUTOUPDATE}" == "y" ]]; then
+         VERSION=$(date +%Y%m%d)
+  else
          VERSION=HEAD
+  fi
    SOURCE_IGNORE='volatile'
           SOURCE="$SPELL-$VERSION.tar.bz2"
+    SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]="svn://svn.edgewall.com/repos/trac/trunk/:$SPELL-$VERSION"
   FORCE_DOWNLOAD=on
 else
