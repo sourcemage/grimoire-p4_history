@@ -1,9 +1,22 @@
            SPELL=libexif
-         VERSION=0.6.12
-          SOURCE=$SPELL-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-           MD5[0]='c38bd9129223fe85444e03e12a7cdc91'
+if [ "$LIBEXIF_CVS" == "y" ]; then
+  if [ "$LIBEXIF_CVS_AUTOUPDATE" == "y" ]; then
+          VERSION=$(date +%Y%m%d)
+  else
+          VERSION=cvs
+  fi
+           SOURCE=$SPELL-cvs.tar.bz2
+    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/libexif:libexif
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+    SOURCE_IGNORE=volatile
+   FORCE_DOWNLOAD=on
+else
+          VERSION=0.6.12
+           SOURCE=$SPELL-$VERSION.tar.bz2
+    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      SOURCE_HASH=sha512:7f2373bc0ad2c67c3f8eb31ef9421d3da739b706d665ab021b93232c44da93e42f3f7551681dfe487ab6d1a0e861b25a62ae50345f896ae5745a833b38082b41
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+fi
        LICENSE[0]=GPL
         BUILD_API=2
          WEB_SITE=http://libexif.sourceforge.net/
