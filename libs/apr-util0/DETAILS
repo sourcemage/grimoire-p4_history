@@ -7,6 +7,7 @@ source $DEPENDS_CONFIG/apr0.p
 if [[ "$APR_LATEST" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
           MD5[0]=IGNORE
+    SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/apr/$SPELL/$REPOS_URI:$SPELL-$VERSION
 fi
           SOURCE=apr-util-$VERSION.tar.bz2

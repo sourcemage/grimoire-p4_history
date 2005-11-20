@@ -5,6 +5,7 @@
 if [[ "${APR_LATEST:-APR_CVS}" == y ]]; then
          VERSION=${VERSION%\.*}-HEAD
           MD5[0]=IGNORE
+    SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/apr/$SPELL/$REPOS_URI:$SPELL-$VERSION
 fi
           SOURCE=apr-$VERSION.tar.bz2
