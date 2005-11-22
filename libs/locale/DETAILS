@@ -6,7 +6,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/glibc-$GLIBC_VERSION
           SOURCE=glibc-$GLIBC_VERSION.tar.bz2
    SOURCE_URL[0]=$GNU_URL/glibc/$SOURCE
    SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/glibc/$SOURCE
-          MD5[0]=7a4d72785558166614fe3ae9910b832e
+     SOURCE_HASH=`cat $SECTION_DIRECTORY/glibc/DETAILS | grep SOURCE_HASH | cut -d = -f 2`
         WEB_SITE=http://www.gnu.org/software/libc
       LICENSE[0]=LGPL
        BUILD_API=2
