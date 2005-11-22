@@ -1,3 +1,13 @@
+2005-11-22 Seth Woolley <seth@tautology.org>
+	* DEPENDS,BUILD: BETTERFIX implemented (wtf are you smoking sandalle)
+
+2005-11-12 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added optional dependency on gettext
+	  This version (2.1) checks for g++, notes it doesn't find it (if not
+	  there), but then still goes on to compile the g++ binaries, thus failing.
+	  QUICKFIX: depend on g++
+	  BETTERFIX: Fix the build scripts
+
 2005-09-21 Ladislav Hagara <hgr@vabo.cz>
 	* DETAILS: 2.1, md5 -> sha1
 
