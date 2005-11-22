@@ -1,10 +1,9 @@
            SPELL=bittorrent
-         VERSION=4.1.6
+         VERSION=4.1.8
           SOURCE=BitTorrent-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/BitTorrent-${VERSION}
    SOURCE_URL[0]=http://www.bittorrent.com/dl/$SOURCE
-     SOURCE_HASH=sha512:707227f54b0daac23fe4e82873474ab9d8b7091927ce96b0c1ef2ae79113cf990a2194526465672261aa408a13dbeae25dd9f70b1a4fcd3d7b73730c3f87406e
-          MD5[0]='10331ae1ed0d24a16670581eb7b41ee0'
+     SOURCE_HASH=sha512:21f7e929dc69b189d60e3b06d0f2cec37112a06abefe268136dc30bd6fdfcd476dd05b04e173c0f8a8096a574da9b03357abcca33c939f3c8b28c8805a95fec5
         WEB_SITE=http://www.bittorrent.com
          ENTERED=20030410
          UPDATED=20041206
@@ -12,5 +11,10 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/BitTorrent-${VERSION}
        BUILD_API=2
            SHORT="BitTorrent P2P network"
 cat << EOF
-BitTorrent is a protocol for distributing files. It identifies content by url and is designed to integrate seamlessly with the web. Its advantage over plain http is that when multiple downloads of the same file happen concurrently, the downloaders upload to each other, making it possible for the file source to support very large numbers of downloaders with only a modest increase in its load.
+BitTorrent is a protocol for distributing files. It identifies content 
+by url and is designed to integrate seamlessly with the web. Its 
+advantage over plain http is that when multiple downloads of the same 
+file happen concurrently, the downloaders upload to each other, making it 
+possible for the file source to support very large numbers of downloaders 
+with only a modest increase in its load.
 EOF
