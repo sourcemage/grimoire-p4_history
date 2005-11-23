@@ -1,5 +1,10 @@
-           SPELL=mount
-         VERSION=0.0.3
+           SPELL=e_module-mount
+         VERSION=0.0.6
+          SOURCE=mount-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/mount
+   SOURCE_URL[0]=http://get-e.org/Resources/Modules/_files/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=BSD
         WEB_SITE=http://get-e.org/Resources/Modules/
          ENTERED=20051111
          UPDATED=20051123
