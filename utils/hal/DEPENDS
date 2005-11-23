@@ -1,4 +1,4 @@
-depends  glib     &&
+depends  glib2    &&
 depends  gawk     &&
 depends  libtool  &&
 depends  python   &&
@@ -25,12 +25,23 @@ optional_depends  docbook-utils             \
                   "--disable-docbook-docs"  \
                   "Build Docbook Docs"      &&
 
-optional_depends  pciutils                  \
-                  "--with-hwdata"           \
-                  "--without-hwdata"        \
-                  "for PCI hardware data"   &&
+optional_depends  libusb                    \
+                  ""  \
+                  ""  \
+                  "usb support"             &&
 
-optional_depends  usbutils                  \
-                  "--with-hwdata"           \
+optional_depends  hwdata                    \
+                  "--with-hwdata=/usr/share/hwdata"  \
                   "--without-hwdata"        \
-                  "for USB hardware data"
+                  "for PCI/USB hardware data"
+
+#optional_depends  pciutils                  \
+#                  "--with-hwdata"           \
+#                  "--without-hwdata"        \
+#                  "for PCI hardware data"   &&
+
+#optional_depends  usbutils                  \
+#                  "--with-hwdata"           \
+#                  "                "        \
+#                  "for USB hardware data"
+
