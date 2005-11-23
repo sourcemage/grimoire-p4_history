@@ -1,5 +1,9 @@
-           SPELL=slideshow
+           SPELL=e_module-slideshow
          VERSION=0.0.5
+          SOURCE=slideshow-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/slideshow
+   SOURCE_URL[0]=http://get-e.org/Resources/Modules/_files/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=BSD
         WEB_SITE=http://get-e.org/Resources/Modules/
          ENTERED=20051111
