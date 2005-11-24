@@ -1,1 +1,1 @@
-make
+make CFLAGS="-fPIC -DPIC $CFLAGS" 
