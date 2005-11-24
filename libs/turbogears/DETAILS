@@ -1,0 +1,24 @@
+           SPELL=turbogears
+         VERSION=0.8a4
+     SOURCE_HASH='sha512:73d169a4de8114a57fb3b2a2671e9dd29b581f28af393beef1d2dc5c143a070197853c126902ead5c3bc3244e0ca00e9f1c4b38f57fd502465e5a0a9b5673b74'
+          SOURCE="TurboGears-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://www.turbogears.org/download/eggs/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/TurboGears-$VERSION"
+        WEB_SITE="http://www.$SPELL.org/"
+      LICENSE[0]='MIT'
+         UPDATED=20051123
+            DOCS='docs/* *.txt'
+       BUILD_API=2
+           SHORT='Easy to use Web megaframework'
+cat << EOF
+TurboGears brings together four major pieces to create an easy to install, easy
+to use web megaframework. It covers everything from front end (MochiKit
+JavaScript for the browser, Kid for templates in Python) to the controllers
+(CherryPy) to the back end (SQLObject).
+
+The TurboGears project is focused on providing documentation and integration
+with these tools without losing touch with the communities that already exist
+around those tools.
+
+TurboGears is easy to use for a wide range of web applications.
+EOF
