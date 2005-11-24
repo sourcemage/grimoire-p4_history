@@ -1,0 +1,18 @@
+           SPELL=kid
+         VERSION=0.7.1
+     SOURCE_HASH='sha512:3e7536539280bb7779cc962b8c75fc29f88c20b91362d54e60a74e9d72fab4e8ae2e2e119ba05e26cedf90aec0bb55957fed0fe9f67c65a472fc964d2812eebd'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://lesscode.org/dist/kid/$VERSION/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+        WEB_SITE="http://$SPELL.lesscode.org/"
+      LICENSE[0]='MIT'
+         UPDATED=20051123
+            DOCS='doc/* ChangeLog* COPYING* HISTORY* README*'
+       BUILD_API=2
+           SHORT='Simple template language for XML-based vocabularies'
+cat << EOF
+Kid is a simple template language for XML based vocabularies written in Python.
+It was spawned as a result of a kinky love triangle between XSLT, TAL, and PHP.
+We believe many of the best features of these languages live on in Kid with
+much of the limitations and complexity stamped out.
+EOF
