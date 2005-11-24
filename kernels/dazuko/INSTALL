@@ -3,4 +3,5 @@ install -d /lib/modules/`uname -r`/security &&
   install dazuko.ko /lib/modules/`uname -r`/security
  else
   install dazuko.o /lib/modules/`uname -r`/security
- fi
+ fi      &&
+ cp dazuko*.h $INSTALL_ROOT/usr/include
