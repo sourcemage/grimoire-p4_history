@@ -1,10 +1,10 @@
            SPELL=gmime
-         VERSION=2.1.16
+         VERSION=2.1.17
           BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://spruce.sourceforge.net/$SPELL/sources/v${BRANCH}/$SOURCE
-          SOURCE_HASH=sha1:f737173125d9e5b60a6322318b6fdd7d4a1ab72b
+     SOURCE_HASH=sha512:3107dc15e4d9d598ddf9636f1e8f95a6a7c8c9c5cddade83b2f5b0733ba461615e322c5b2a7ba4e679f121047cfc98084ed7891917f0ce62a4361f80c2498c36
       LICENSE[0]=GPL
        BUILD_API=2
         WEB_SITE=http://spruce.sourceforge.net/gmime/
