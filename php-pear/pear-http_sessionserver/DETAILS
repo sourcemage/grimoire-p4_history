@@ -1,0 +1,23 @@
+         VERSION=0.4.0
+     SOURCE_HASH='sha512:e59525729caaaf5843074cc4846ce03d7d8d11c4448de888171a0118c97d4eb8db2c026f041cd36f1499d399769be411cb58b27faccbae56679b41d8b1e3ba79'
+         UPDATED=20051125
+           SPELL=pear-http_sessionserver
+    PEAR_PACKAGE=HTTP_SessionServer
+        WEB_SITE=http://pear.php.net/package/HTTP_SessionServer/
+      LICENSE[0]=PHP
+           SHORT='PEAR: Daemon to store session data that can be'
+cat << EOF
+HTTP_SessionServer is a simple PHP based daemon
+that helps you maintaining state between
+physically different hosts.
+HTTP_SessionServer implements a very simple
+protocol to store and retrieve data on the
+server. The storage backend is driver based and
+supports your local filesystem as well as
+PEAR::DB as a container.
+HTTP_SessionServer comes with a matching client
+implementation using Net_Socket as well as a
+session save handler.
+EOF
+
+source  $SECTION_DIRECTORY/PEAR_DETAILS

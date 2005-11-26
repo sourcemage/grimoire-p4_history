@@ -1,5 +1,0 @@
-default_pre_build &&
-if ! [[ "$PHP_RC" == y ]]; then
-  cd $SOURCE_DIRECTORY &&
-  patch -p1 < $SCRIPT_DIRECTORY/TSRMLS_SET_CTX.diff
-fi
