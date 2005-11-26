@@ -1,3 +1,7 @@
+2005-11-26 David Brown <dmlb2000@gmail.com>
+	* PRE_BUILD: make sure the source directory doesn't have group and other
+	  write permissions (chmod og-w -R $LINUX_SOURCE_DIRECTORY)
+
 2005-11-25 David Brown <dmlb2000@gmail.com>
 	* FINAL: removed the notice about the linux kernel name change
 	* PREPARE: did some 'refactoring' of the source_patch and source_info

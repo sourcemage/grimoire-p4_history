@@ -77,6 +77,7 @@ case "${mode}" in
 			source="SOURCE${count}"
 			source_check="PATCH[${count}]"
 		done &&	
+		chmod og-w -R $LINUX_SOURCE_DIRECTORY &&
 		make mrproper 
 		;;
 	"oldktree")
