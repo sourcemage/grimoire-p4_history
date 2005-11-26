@@ -1,4 +1,5 @@
-depends  glib      &&
+depends  g++       &&
+depends  glib2     &&
 depends  jpeg      &&
 depends  X11-LIBS  &&
 depends  nasm      &&
@@ -13,7 +14,7 @@ optional_depends  libdv                   \
                   ""                      \
                   "for dv video support"  &&
 
-optional_depends  gtk+                    \
+optional_depends  gtk+2                   \
                   ""                      \
                   ""                      \
                   "for glav gui support"  &&
