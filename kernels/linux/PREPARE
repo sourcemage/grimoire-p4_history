@@ -15,13 +15,29 @@ debug="${SPELL_DIRECTORY}/debug.log"
 # Source info for patch
 source_patch()
 {	
-	local tmp=$(find $patchesdir/*/$1)
-	. $tmp
+	local tmploc
+	case $1 in
+		LATEST*)
+			tmploc=$(find $patchesdir/*/${!1} | head -n 1)
+			;;
+		*)
+			tmploc=$(find $patchesdir/*/${1} | head -n 1)
+	esac &&
+	[ -f $tmploc ] && . $tmploc
 }
+
 source_info()
 {
-	local tmp=$(find $patchesdir/*/$1)
-	[ -f `dirname $tmp`/.info ] && . `dirname $tmp`/.info
+	local tmploc
+	case $1 in
+		LATEST*)
+			tmploc=$(find $patchesdir/*/${!1} | head -n 1)
+			;;
+		*)
+			tmploc=$(find $patchesdir/*/$1 | head -n 1)
+			;;
+	esac &&
+	[ -f `dirname $tmp`/.info ] && . `dirname $tmploc`/.info
 }
 
 # Create the default KERNEL_ARCH variable
@@ -71,7 +87,12 @@ create_defaults()
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p \
 		   ${SPELL_CONFIG}.p
 		persistent_load
-		mode="oldktree"
+		# when loading we don't want to switch to oldktree if the mode
+		# of the tree was expert
+		if [[ "$mode" != "expert" ]]
+		then
+			mode="oldktree"
+		fi
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ${SPELL_CONFIG}.p
@@ -100,9 +121,40 @@ create_defaults()
 # dialog command works even if you add --nocancel as part of the arguments
 dialog=( "dialog" "--stdout" )
 
+get_usr_src_kver()
+{
+	local spell_config=$1
+	local newkver
+	local ret
+	. $spell_config
+	calculate_depends > /dev/null
+	if [[ ! -z $patches ]]
+	then
+		for patch in $patches
+		do
+			source_patch ${patch}
+			if [[ ! -z $patchversion ]]
+			then
+				newkver=$patchversion
+			fi
+		done
+		echo $newkver
+	else
+		case $kver in
+			LATEST*)
+				echo ${!kver}
+				;;
+			*)
+				echo $kver
+				;;
+		esac
+	fi
+}
+
 # simply list ${BUILD_DIRECTORY} linux sources 
 list_usr_src()
 {
+	local tmpkver
 	if find ${BUILD_DIRECTORY}/linux*/.spell-config.p >> /dev/null 2>&1 
 	then
 		linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux*`"
@@ -111,7 +163,18 @@ list_usr_src()
 			if [ -d $linuxsrc ] && [ -f $linuxsrc/.spell-config.p ]
 			then
 				echo "$linuxsrc"
-				echo "\"Source Tree\""
+				if grep -q 'LATEST' $linuxsrc/.spell-config.p
+				then
+					tmpkver=`get_usr_src_kver $linuxsrc/.spell-config.p`
+					if [[ "${BUILD_DIRECTORY}/linux-$tmpkver" == "$linuxsrc" ]]
+					then
+						echo "\"Source Tree is updated\""
+					else
+						echo "\"Source Tree updating to $tmpkver\""
+					fi
+				else
+					echo "\"Source Tree\""
+				fi
 				echo "\"Use ${linuxsrc} as the source tree\""
 			fi
 		done
@@ -276,7 +339,9 @@ arch_menu()
 		"sh"                 "SuperH processors sh4 is 32-bit, sh5 is 64-bit"   "SH4 and SH5 32-bit mode" \
 		"sparc"              "Sun SPARC 32-bit processors"                      "Sun SPARC 32-bit" \
 		"sparc64"            "Sun SPARC 64-bit processors"                      "Sun SPARC 64-bit" \
-		"x86_64"             "AMD x86-64 64-bit Hammer/Opteron/Athlon64 chips"  "AMD x86-64 Hammer"
+		"x86_64"             "AMD x86-64 64-bit Hammer/Opteron/Athlon64 chips"  "AMD x86-64 Hammer" \
+		"um"                 "User Mode Linux arch used for creating UML kernels" "User Mode Linux" \
+		"xen"                "Xen kernel arch used for creating Xen kernels" "Xen Kernel"
 		)
 		retval=$?
 		if [[ "$retval" == "0" ]]
@@ -405,45 +470,14 @@ custom_kernel()
 	then
 		kver=$command
 		old_src_tree="/usr/src/linux-${kver}"
+		persistent_add old_src_tree
+		reconf="true"
+		persistent_remove MAKEMODE
+		persistent_remove UPDATE_BL
+		persistent_remove CONFIG_KERNEL
 		selected_patches=""
 		patches=""
 	fi
-#	case "$command" in
-#		LATEST_2*)
-#			kver="$command"
-#			;;
-#		LATEST*)
-#			selected_patches="$command"
-#			;;
-#		*)
-#			release=${command%%-*}
-#			prerelease=${release}
-#			major=${release%%\.*}
-#			major_tail=${command#$major\.}
-#			minor=${major_tail%%\.*}
-#			tree=$major.$minor
-#			tail=${command#$release}
-#			selected_patches=""
-#			while [[ $tail == -* ]]
-#			do
-#				patch=${tail##*-}
-#				tail=${tail%-$patch}
-#				echo $patch
-#				if [[ $patch == ac* ]] || [[ $patch == ck* ]]; then
-#					selected_patches="patch-${release}-${patch} ${selected_patches}"
-#				elif [[ $patch == pre* ]] || [[ $patch == rc* ]]; then
-#					release=${tree}.$((${prerelease#${tree}.*}-1))  # Reduce Version number by one
-#					selected_patches="patch-${prerelease}-${patch} ${selected_patches}"
-#				elif [[ $patch == mm* ]]; then
-#					selected_patches="${command} ${selected_patches}"
-#				else
-#					echo "Failed parsing patches"  &&
-#					return  1
-#				fi
-#				
-#			done
-#			;;
-#	esac
 }
 
 # create a new linux source tree
@@ -493,24 +527,16 @@ new_tree_menu()
 patch_list()
 {
 	. $latestdefaults
-	case "$1" in
-		LATEST*)
-			argv1=${!1}
-			;;
-		*)
-			argv1=$1
-			;;
-	esac
 	patches="`ls -1 $patchesdir/`"
 	for patch in $patches
 	do
 		tmp="LATEST_$patch"
 		if [ "${!tmp}" != "" ]
 		then
-			source_patch ${!tmp}
+			source_patch ${tmp}
 			for applied in $appliedkernels
 			do
-				if [ $applied == $argv1 ]
+				if [[ $applied == $1  || $applied == ${!1} ]]
 				then
 					echo LATEST_$patch
 					echo ${!tmp}
@@ -525,7 +551,7 @@ patch_list()
 			source_patch $patchver
 			for applied in $appliedkernels
 			do
-				if [ $argv1 == $applied ]
+				if [[ $applied == $1 || $applied == ${!1} ]]
 				then
 					found="true"
 				fi
@@ -543,21 +569,13 @@ patch_list()
 list_specific_patch_dir()
 {
 	. $latestdefaults
-	case $1 in
-		LATEST*)
-			argv1=${!1}
-			;;
-		*)
-			argv1=$1
-			;;
-	esac
 	patchvers="`ls -1r $patchesdir/$2`"
 	for patchver in $patchvers
 	do
 		source_patch $patchver
 		for applied in $appliedkernels
 		do
-			if [ $argv1 == $applied ]
+			if [[ $applied == $1 || $applied == ${!1} ]]
 			then
 				echo $patchver
 				echo PATCH
@@ -624,14 +642,7 @@ patch_menu()
 			then
 				tmp=${command/HELP /}
 				. $latestdefaults 
-				case "${tmp}" in
-					LATEST*)
-						source_info ${!tmp}
-						;;
-					*)
-						source_info $tmp
-						;;
-				esac
+				source_info ${tmp}
 				"${dialog[@]}" --msgbox "Selecting this will keep the kernel tree updated.\n$help" 0 0
 			else
 				tmp=${command/HELP /}
@@ -654,7 +665,9 @@ old_src_menu()
 				--item-help \
 				--default-item "$BUILD_DIRECTORY/$old_src_tree"\
 				--menu \
-				"Select Old Source Tree" 0 0 0 '`list_usr_src`' )'
+				"Select Old Source Tree\nSome source trees may \
+need updating" \
+				0 0 0 '`list_usr_src`' )'
 		retval="$?"
 		if [[ "$retval" == "0" && "$old_src_tree" != "No" ]]
 		then
@@ -692,15 +705,7 @@ calculate_depends()
 		# check for post patches and add those to the new_patches_list
 		for patch in $selected_patches
 		do
-			case "${patch}" in
-				LATEST*)
-					source_patch ${!patch}
-					#patch=${!patch}
-				;;
-				*)
-					source_patch ${patch}
-				;;
-			esac
+			source_patch ${patch}
 			if [ "$post_patch" != "" ]
 			then
 				new_patches_list="${new_patches_list}${patch} ${post_patch} "
@@ -746,7 +751,7 @@ rec_dep_make()
 	depends=""
 	case "$1" in
 		LATEST*)
-			source_patch ${!1}
+			source_patch ${1}
 			if [[ "${depends}" == "" ]] 
 			then
 				makefile_targets="${makefile_targets} ${!1} "
@@ -803,13 +808,12 @@ create_details()
 				source_gpg=""
 				gpg_source_url=""
 				md5sum=""
+				source_patch $patch
 				case "$patch" in
 					LATEST*)
-						source_patch ${!patch}
 						echo "PATCH[${counter}]=\$${patch}"
 						;;
 					*)
-						source_patch ${patch}
 						echo "PATCH[${counter}]=${patch}"
 						;;
 				esac
@@ -848,13 +852,12 @@ create_details()
 			do
 				source_gpg=""
 				gpg_source_url=""
+				source_patch ${patch/:*}
 				case "${patch/:*}" in
 					LATEST*)
 						tmp=${patch/:*}
-						source_patch ${!tmp}
 						;;
 					*)
-						source_patch ${patch/:*}
 						;;
 				esac &&
 				echo -n '. ${SPELL_DIRECTORY}/info/patches/*/${PATCH['
@@ -891,13 +894,12 @@ create_details()
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
-			#if [[ ${patchversion} ]]
-			#then
-			#	echo 'PATCHVER=${patchversion}'
-			#fi
 			) > $detailsdefaults
 			;;
 		expert)
+			# shouldn't have any source information when expert
+			# is being used
+			echo "KERNEL_VERSION=$kver" > $detailsdefaults
 			;;
 		*)
 			echo "I don't know what the hell is $mode"
