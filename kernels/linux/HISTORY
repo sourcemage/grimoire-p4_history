@@ -1,3 +1,19 @@
+2005-11-26 David Brown <dmlb2000@gmail.com>
+	* PRE_BUILD: make sure the source directory doesn't have group and other
+	  write permissions (chmod og-w -R $LINUX_SOURCE_DIRECTORY)
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* FINAL: removed the notice about the linux kernel name change
+	* PREPARE: did some 'refactoring' of the source_patch and source_info
+	  functions
+	  added some info if the old source tree is going to update
+	  removed the source info from the expert mode so it won't download 
+	  anything
+	  added the xen and um arches to the arch menu
+	  removed old commented code from the creation of expert mode
+	* PRE_BUILD: fixed the propogation of the error when gpg checking fails
+	  and made sure it returns an error when unpacking fails
+
 2005-11-25 David Brown <dmlb2000@gmail.com>
 	* latest.defaults: updated latest to patch-2.6.14-cks6
 	* info/patches/ck_server_patches/patch-2.6.14-cks6: added
