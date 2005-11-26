@@ -1,7 +1,8 @@
-cd  $SOURCE_DIRECTORY  &&
+CFLAGS="${CFLAGS/-DPIC/}"  &&
+CFLAGS="${CFLAGS/-fPIC/}"  &&
 
-mkdir  bld                                         &&
-cd     bld                                         &&
-../platforms/unix/config/configure  --prefix=/usr  \
-  --enable-mpg-mmx                                 &&
+cd  $SOURCE_DIRECTORY      &&
+mkdir  bld                 &&
+cd     bld                 &&
+../platforms/unix/config/configure  --prefix=/usr  &&
 make
