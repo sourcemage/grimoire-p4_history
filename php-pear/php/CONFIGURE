@@ -18,8 +18,9 @@ config_query_option  PHP4_PCNTL     "Enable experimental pcntl support (CLI/CGI 
                      "--enable-pcntl"                                      \
                      "--disable-pcntl"                                     &&
 
+# needs --enable-force-cgi-redirect in BUILD
 config_query_option  PHP4_FCGI      'Enable FastCGI module?'            y  \
-                     '--enable-fastcgi --enable-force-cgi-redirect'        \
+                     '--enable-fastcgi'                                    \
                      '--disable-fastcgi'                                   &&
 
 config_query_list    PHP4_APACHE    'Which Apache module to build?'        \
