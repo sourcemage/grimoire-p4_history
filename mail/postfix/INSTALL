@@ -11,8 +11,8 @@ else
   make  upgrade
 fi  &&
 
-pushd  $INSTALL_ROOT/usr/sbin       &&
-ln  -sf  sendmail  ../lib/sendmail  &&
+pushd  $INSTALL_ROOT/usr       &&
+ln  -fnsv  ../sbin/sendmail  lib/sendmail  &&
 popd                                &&
 
 pushd  $INSTALL_ROOT/etc           &&
