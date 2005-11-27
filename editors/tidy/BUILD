@@ -1,2 +1,2 @@
-source ./build/gnuauto/setup.sh &&
+sh build/gnuauto/setup.sh &&
 default_build
