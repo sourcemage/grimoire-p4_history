@@ -1,2 +1,5 @@
 cp *.sh /usr/bin             &&
-generate-smgl-docs.sh    
+if  [  "${RUN_BASHDOC}"  ==  "y"  ]
+then
+  generate-smgl-docs.sh    
+fi
