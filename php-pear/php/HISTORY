@@ -1,3 +1,24 @@
+2005-11-25 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade both RC and release versions to 5.1.0;
+	* PRE_BUILD,TSRMLS_SET_CTX.diff: remove patch;
+	* CONFIGURE: don't use an option that is in BUILD already.
+
+2005-10-03 Sergey Lipnevich <sergey@sourcemage.org>
+	* FINAL: no need to patch httpd.conf, php does that now;
+	* CONFIGURE: add --enable-force-cgi-redirect for FastCGI;
+	* PREPARE: add a question about RC version;
+	* DETAILS: upgrade to stable to 5.0.5 and RC to 5.1.0RC1;
+	* DEPENDS: no longer uses Sablotron; add SQLite;
+	* PRE_BUILD,TSRMLS_SET_CTX.diff: backport definition from 5.1; curl
+	  extension wouldn't build without this.
+
+2005-10-02 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: ask about FastCGI and Apache;
+	* DEPENDS: only depend on APACHE if configured; remove GCC 3.4;
+	* BUILD: add FastCGI option; conditionally build HTTPD handler or filter
+	  module;
+	* DETAILS: remove GCC 3.4.
+
 2005-05-15 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: added dependency on gcc34
 

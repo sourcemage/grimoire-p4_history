@@ -1,16 +1,20 @@
            SPELL=php
-         VERSION=5.0.4
+if [[ "$PHP_RC" == y ]]; then
+         VERSION=5.1.0	# last was 5.1.0RC6
+     SOURCE_HASH='sha512:85ab298421bb01b3cfa2d1f2bccd117c48538ba36fa94370f1efd1c02b183bda79b805abe378e4c0797c441dd0771996ac0b26a5163a1a812453a82f9afbecc6'
+else
+         VERSION=5.1.0
+     SOURCE_HASH='sha512:85ab298421bb01b3cfa2d1f2bccd117c48538ba36fa94370f1efd1c02b183bda79b805abe378e4c0797c441dd0771996ac0b26a5163a1a812453a82f9afbecc6'
+fi
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-if [ "${VERSION//RC/}" == "$VERSION" ]; then
+#if [ "${VERSION//RC/}" == "$VERSION" ]; then
    SOURCE_URL[0]=http://static.php.net/www.php.net/distributions/$SOURCE
-else
-   SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
-fi
-          MD5[0]=85bbf50516c50144237fd7d357e50c8c
+#else
+#   SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
+#fi
        BUILD_API=2
         WEB_SITE=http://www.php.net/
-     GCC_VERSION=3.4
          ENTERED=20011024
          UPDATED=20040330
       LICENSE[0]=http://www.php.net/license/3_0.txt

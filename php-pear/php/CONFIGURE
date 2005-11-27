@@ -12,4 +12,16 @@ config_query_option  PHP4_CALENDAR  "Enable calendar support?"          y  \
 
 config_query_option  PHP4_PCRE      "Enable perl regular expressions?"  y  \
                      "--with-pcre-regex"                                   \
-                     "--without-pcre-regex"
+                     "--without-pcre-regex"                                &&
+
+config_query_option  PHP4_PCNTL     "Enable experimental pcntl support (CLI/CGI only)" n \
+                     "--enable-pcntl"                                      \
+                     "--disable-pcntl"                                     &&
+
+# needs --enable-force-cgi-redirect in BUILD
+config_query_option  PHP4_FCGI      'Enable FastCGI module?'            y  \
+                     '--enable-fastcgi'                                    \
+                     '--disable-fastcgi'                                   &&
+
+config_query_list    PHP4_APACHE    'Which Apache module to build?'        \
+                     handler filter none
