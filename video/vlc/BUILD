@@ -7,9 +7,12 @@ fi  &&
 
 export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
 
-if test "$(get_spell_provider $SPELL GECKO)" = firefox; then
-  OPTS="$OPTS MOZILLA_CONFIG=/usr/bin/firefox-config"
-fi  &&
+#Doesn't work with current version of hal
+export OPTS="$OPTS --disable-hal"  &&
+
+#if test "$(get_spell_provider $SPELL GECKO)" = firefox; then
+#  OPTS="$OPTS MOZILLA_CONFIG=/usr/bin/firefox-config XPIDL=/usr/lib/firefox/xpidl"
+#fi  &&
 
 # needs to be exported so vlc configure sees it, no idea why
 export CPPFLAGS="$CPPFLAGS -I/usr/include/dirac"  &&
