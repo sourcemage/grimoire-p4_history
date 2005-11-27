@@ -6,7 +6,9 @@ OPTS="$OPTS           \
       $PHP4_CALENDAR  \
       $PHP4_PCRE      \
       $PHP4_PCNTL     \
-      $PHP4_FTP"      &&
+      $PHP4_FTP       \
+      $PHP4_FCGI      \
+"  &&
 
 #
 # Setup SSL IMAP if wanted
@@ -17,15 +19,22 @@ if  echo  $OPTS  |  grep  -q  --  --with-imap;  then
   fi
 fi  &&
 
-if  httpd  -v  |  grep  -q  "Apache/2\.";  then
-  message  "${MESSAGE_COLOR}Configuring for Apache 2.x${DEFAULT_COLOR}"  &&
-  OPTS="$OPTS  --with-apxs2"                                             &&
-  # fix the "missing APR include files" error
-  CFLAGS="$CFLAGS  -I/usr/include/apr"
-else
-  message  "${MESSAGE_COLOR}Configuring for Apache 1.x${DEFAULT_COLOR}"  &&
-  OPTS="$OPTS  --with-apxs"
-fi  &&
+case "$PHP4_APACHE" in
+  handler)
+    if  httpd  -v  |  grep  -q  "Apache/2\.";  then
+      message  "${MESSAGE_COLOR}Configuring for Apache 2.x${DEFAULT_COLOR}"  &&
+      OPTS="$OPTS  --with-apxs2"
+      # fix the "missing APR include files" error
+      #CFLAGS="$CFLAGS  -I/usr/include/apr"
+    else
+      message  "${MESSAGE_COLOR}Configuring for Apache 1.x${DEFAULT_COLOR}"  &&
+      OPTS="$OPTS  --with-apxs"
+    fi
+    ;;
+  filter)
+    OPTS="$OPTS --with-apxs2filter"
+    ;;
+esac  &&
 
 ./configure      --prefix=${INSTALL_ROOT}/usr      \
              --sysconfdir=${INSTALL_ROOT}/etc      \

@@ -1,3 +1,18 @@
+2005-11-06 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 4.4.1, which includes security fixes.
+
+2005-10-03 Sergey Lipnevich <sergey@sourcemage.org>
+	* FINAL: no need to patch httpd.conf, php does that now.
+
+2005-09-18 Sergey Lipnevich <sergey@sourcemage.org>
+	* CONFIGURE: ask about FastCGI and Apache;
+	* DEPENDS: only depend on APACHE if configured;
+	* BUILD: add FastCGI option; conditionally build HTTPD handler or filter
+	  module.
+
+2005-07-25 Sergey Lipnevich <sergey@sourcemage.org>
+	* DETAILS: upgrade to 4.4.0; use build API 2 that was lost somehow.
+
 2005-04-13 Sergey Lipnevich <sergey@sourcemage.org>
 	* DEPENDS: C-CLIENT moves to z-rejected grimoire.
 
