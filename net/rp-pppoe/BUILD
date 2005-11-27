@@ -1,4 +1,5 @@
-sedit  "s/read a/a=0/"  scripts/pppoe-setup.in
+#sedit  "s/read a/a=0/"  scripts/pppoe-setup.in 
+sedit '140,150 s/echo/$ECHO/' scripts/pppoe-start.in #so it works in sorcery polluted invocations
 sedit  's:docdir=.*:docdir=@prefix@/share/doc/rp-pppoe:'  src/Makefile.in
 cd  src
 ./configure  --build=$BUILD                        \
