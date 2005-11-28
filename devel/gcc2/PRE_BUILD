@@ -9,6 +9,6 @@ mk_source_dir  $SOURCE_DIRECTORY.bld  &&
 cd             $SOURCE_DIRECTORY      &&
 
 if    [  "$PASCAL"  ]
-then  unpack  $SOURCE2  ${MD5[1]}     &&
+then  unpack_file 2     &&
       mv      gpc-20020510/p  gcc
 fi

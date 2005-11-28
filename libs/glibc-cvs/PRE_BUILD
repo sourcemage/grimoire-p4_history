@@ -10,7 +10,7 @@ cd      $SOURCE_DIRECTORY                           &&
 #
 # Unpack glibc-kernel-headers
 #
-unpack  $SOURCE2  ${MD5[1]}                         &&
+unpack_file 2                         &&
 cd  $GLIBC_HEADERS_DIR                              &&
 patch  -p1  <  $SCRIPT_DIRECTORY/config.h.patch     &&
 cd  $GLIBC_HEADERS_DIR/include                      &&
