@@ -6,5 +6,9 @@ cd  $SOURCE_DIRECTORY           &&
 #sedit  '46,48d'  autogen.sh     &&
 #chmod +x autogen.sh             &&
 #NOCONFIGURE="ON"  ./autogen.sh
-cp makefiles/makefile.linux makefile  &&
-sedit "s|/local||" makefile
+#cp makefiles/makefile.linux makefile  &&
+#sedit "s|/local||" makefile
+ln -s makefiles/configure.in    &&
+ln -s makefiles/Makefile.am     &&
+autoreconf --install
+
