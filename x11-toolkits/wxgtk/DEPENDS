@@ -1,10 +1,6 @@
 depends  g++  &&
 
-if [ "$GTKVERSION" == y ]; then
-  depends  gtk+   '--with-gtk=1'
-else
-  depends  gtk+2  '--with-gtk=2  --enable-unicode'
-fi &&
+depends  gtk+2 
 
 depends  X11-LIBS  '--with-x  --with-libxpm'  &&
 
