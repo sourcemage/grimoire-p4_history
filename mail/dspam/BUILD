@@ -16,4 +16,7 @@ OPTS="$OPTS --with-storage-driver=$STORAGE_DRIVERS" &&
 if [[ "$DSPAM_VIRTUAL_USERS" == 'y' ]]; then OPTS="$OPTS --enable-virtual-users" ; fi &&
 OPTS="$OPTS $DSPAM_LARGE_SCALE $DSPAM_DOMAIN_SCALE" &&
 
+# no need for $INSTALL_ROOT here
+OPTS="$OPTS --with-logdir=/var/log" &&
+
 default_build
