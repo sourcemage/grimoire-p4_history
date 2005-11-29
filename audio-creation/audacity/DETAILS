@@ -1,17 +1,31 @@
            SPELL=audacity
-if [ "$CVS" = "y" ]; then
+if [ "$REL" == "cvs" ]; then
+    if [ "$AUD_CVS_AUTOUPDATE" == "y" ]; then
          VERSION=$(date +%Y%m%d)
+    else
+         VERSION=cvs
+    fi
           SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]="cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/audacity:audacity"
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
-         VERSION=1.2.3
+     if [ "$REL" == "beta" ]; then
+         VERSION=1.3.0
           SOURCE=$SPELL-src-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-$VERSION
+      SOURCE_URL=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:3174cfecd9bc31d38e8e8152936976968d2ddc0018c33070548c5a56dc2f672aba0e10e05e4bac1d5a0a54f9b125190b00d0996bd289dd909fcea90819edc77f     
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-$VERSION-beta
+     else
+         VERSION=1.2.4
+          SOURCE=$SPELL-src_$VERSIOM.tar.gz  
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          MD5[0]=d7b8133b5275e12ba70653c6d38da4db
+     SOURCE_HASH=sha512:d0fa72eaa38812fbaa8db29862e74ebc431961379a70c9f2496e2aede0042269afbf0da7d56f4926ea79fa5164ac56a48e3e21d2e3050f7e7d8aa15c3d1a756f 
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-src-$VERSION
+    
+fi
+     
 fi
         WEB_SITE=http://audacity.sourceforge.net/
          ENTERED=20011217
