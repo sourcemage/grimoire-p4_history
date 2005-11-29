@@ -1,7 +1,7 @@
-if  [  "$HISCORES"  ==  "y"  &&  -f  $TRACK_ROOT/var/games/*.scores  ];  then
+if  [  "$HISCORES"  ==  "y" ] && ls $INSTALL_ROOT/var/games/*.scores > /dev/null;  then
   message  "${YELLOW}${BOLD}Saving score files${DEFAULT}"  &&
   mkdir  -p  /tmp/${SPELL}.bkup                            &&
-  cp  $TRACK_ROOT/var/games/*.scores  /tmp/${SPELL}.bkup
+  cp  $INSTALL_ROOT/var/games/*.scores  /tmp/${SPELL}.bkup
 fi  &&
 
 default_pre_install
