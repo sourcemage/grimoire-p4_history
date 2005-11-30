@@ -1,13 +1,13 @@
            SPELL=fvwm
 if [ "${RELEASE}" = "stable" ]; then
          VERSION=2.4.19
-          MD5[0]=ba147117979a92e710fb76e6f20b4496
+     SOURCE_HASH=sha512:acadaf8f966a153df4f88cd5a21c1f1f7513fcbbaa6107748229cb7a546d9c06d72b40e773ff722365f313d57e708a4a907a1626419fb36c8e200b3d87845ce0
 elif [ "${RELEASE}" = "cvs" ]; then
          VERSION=$(date +%Y%m%d)
           MD5[0]=IGNORE
 else
          VERSION=2.5.13
-          MD5[0]=738f98f21a6f86c89f6e970a39694a1a
+     SOURCE_HASH=sha512:ba7f7b5297faa3dc22616ff306ebb5a6bc74ce78be5eac040c25876e39e6a15940dbde0640501c891b1ec7009c014b330782c1f124778f9b2b512c968bb5a890
 fi
 
 if [ "${RELEASE}" = "cvs" ]; then
