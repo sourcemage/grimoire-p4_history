@@ -1,2 +1,2 @@
-scons softphone-runtime
+scons softphone softphone-runtime
 
