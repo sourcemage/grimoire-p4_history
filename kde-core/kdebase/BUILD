@@ -1,4 +1,4 @@
-OPTS="$OPTS  $KDEBASE_DPMS  $KDEBASE_XDMCP --without-hal"  &&
+OPTS="$OPTS  $KDEBASE_DPMS  $KDEBASE_XDMCP"  &&
 
 #
 # Kerberos has linking errors :(
