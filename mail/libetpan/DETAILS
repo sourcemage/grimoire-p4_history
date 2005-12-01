@@ -3,7 +3,7 @@ if [ "$CVS" = "y" ]; then
          VERSION=cvs
           SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/libetpan:libetpan
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else

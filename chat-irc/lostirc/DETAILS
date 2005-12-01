@@ -6,7 +6,7 @@ if [ "$CVS" == "y" ]; then
    
 SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/lostirc:lostirc
    FORCE_DOWNLOAD=1
-          MD5[0]="IGNORE"
+   SOURCE_IGNORE=volatile
 else
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE

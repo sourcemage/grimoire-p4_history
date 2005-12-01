@@ -11,9 +11,9 @@ if [ "$LICQ_CVS" == "y" ]; then
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq
   SOURCE2_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq-data
   SOURCE3_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/licq:licq-plugins
-          MD5[0]=IGNORE
-          MD5[1]=IGNORE
-          MD5[2]=IGNORE
+   SOURCE_IGNORE=volatile
+  SOURCE2_IGNORE=volatile
+  SOURCE3_IGNORE=volatile
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else

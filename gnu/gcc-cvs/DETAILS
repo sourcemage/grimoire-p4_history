@@ -3,7 +3,7 @@
           SOURCE=gcc-core-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-core-$VERSION
    SOURCE_URL[0]=cvs://:ext:anoncvs@savannah.gnu.org:/cvsroot/gcc:gcc
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
       LICENSE[0]=GPL
        BUILD_API=2
   FORCE_DOWNLOAD=1

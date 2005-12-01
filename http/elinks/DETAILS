@@ -7,7 +7,7 @@ if  [  "$ELINKS_CVS"  ==  'y'  ];  then
   fi
           SOURCE=$SPELL-cvs.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.elinks.or.cz:/var/cvs/elinks:elinks
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 else
          VERSION=0.10.6

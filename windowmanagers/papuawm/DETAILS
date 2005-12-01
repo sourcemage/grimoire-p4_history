@@ -10,7 +10,7 @@ fi
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
        SOURCE_HINTS=old_svn_compat
       SOURCE_URL=svn://lillesvin.linux.dk:8080/svn/${SPELL}/trunk/:${SPELL}
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=ON
 else
          VERSION=0.4
