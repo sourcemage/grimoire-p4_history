@@ -3,7 +3,7 @@ if [ "$FAAD_CVS" = "y" ]; then
          VERSION=$(date +%Y%m%d)
           SOURCE=$SPELL-cvs.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/faac:faad2
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else

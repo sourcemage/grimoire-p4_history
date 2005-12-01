@@ -5,7 +5,7 @@ if [ "$GETCVS" == "y" ]; then
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=cvs://:pserver:anon@cvs.nitmtl.ca:/cvsroot:wvstreams
-          MD5[0]='IGNORE'
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=1
 else
          VERSION=4.0.1

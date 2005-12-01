@@ -4,7 +4,7 @@ if [ "$CVS" == "y" ]; then
           SOURCE=$SPELL-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:gnomemeeting
   FORCE_DOWNLOAD=1
-          MD5[0]="IGNORE"
+   SOURCE_IGNORE=volatile
 else
          VERSION=1.2.2
           SOURCE=$SPELL-$VERSION.tar.gz

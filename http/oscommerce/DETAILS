@@ -5,8 +5,8 @@ if  [  "$CVS"  ==  "y"  ];  then
          SOURCE2=$SPELL-admin-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:cvs:cvs@cvs.oscommerce.com:/pack/cvsroots/oscommerce:catalog
   SOURCE2_URL[0]=cvs://:pserver:cvs:cvs@cvs.oscommerce.com:/pack/cvsroots/oscommerce:admin
-          MD5[0]=IGNORE
-          MD5[1]=IGNORE
+   SOURCE_IGNORE=volatile
+  SOURCE2_IGNORE=volatile
 else
          VERSION=2.2ms2
           SOURCE=$SPELL-$VERSION.tar.gz

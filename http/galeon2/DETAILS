@@ -4,7 +4,7 @@ if [ "$CVS" = "y" ]; then
           SOURCE=galeon-$VERSION.tar.bz2
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:galeon
   FORCE_DOWNLOAD=1
-          MD5[0]='IGNORE'
+   SOURCE_IGNORE=volatile
 else
          VERSION=1.3.21
           SOURCE=galeon-$VERSION.tar.bz2

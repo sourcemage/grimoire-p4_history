@@ -4,7 +4,7 @@ if  [  "$CVS"  ==  "y"  ];  then
          SOURCE=$SPELL-$VERSION.tar.gz
   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gaim-encryption:encrypt
   FORCE_DOWNLOAD=1
-          MD5[0]="IGNORE"
+   SOURCE_IGNORE=volatile
 else
         VERSION=2.38 
         SOURCE=$SPELL-$VERSION.tar.gz

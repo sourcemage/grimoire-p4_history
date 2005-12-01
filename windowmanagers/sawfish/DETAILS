@@ -2,7 +2,7 @@
 
 if [ "${SAWFISH_CVS}"=="y" ] ; then
          VERSION=$(date +%Y%m%d)
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
           SOURCE=sawfish-cvs.tar.gz
    SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:sawfish
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/sawfish-cvs

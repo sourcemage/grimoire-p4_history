@@ -6,7 +6,7 @@ case $FB_VER in
           SOURCE=${SPELL}-$VERSION.tar.bz2
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
    SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 ;;
    devel)

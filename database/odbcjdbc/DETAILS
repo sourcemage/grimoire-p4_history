@@ -10,7 +10,7 @@ case $WHICH in
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELLX}-$VERSION
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot  
    SOURCE_URL[0]=$SFCVS/firebird:$SPELLX:$VERSION
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
 ;;
   stable)

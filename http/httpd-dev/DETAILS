@@ -5,7 +5,7 @@ if [[ "$HTTPD_CHECKOUT" == y ]]; then
   else
          VERSION=2.1-SVN
   fi
-          MD5[0]=IGNORE
+   SOURCE_IGNORE=volatile
     SOURCE_HINTS=old_svn_compat
    SOURCE_URL[0]=svn://svn.apache.org/repos/asf/httpd/httpd/trunk:${SPELL%-*}-trunk
   FORCE_DOWNLOAD=1
