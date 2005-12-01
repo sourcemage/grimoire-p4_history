@@ -49,9 +49,9 @@ optional_depends  cyrus-sasl                       \
 optional_depends  openssl                         \
                   '--with-ssl'                    \
                   '--without-ssl'                 \
-                  'to use encrypted connections'  
+                  'to use encrypted connections'  &&
 
-#optional_depends  hal                                 \
-#                  '--with-hal'                        \
-#                  '--without-hal'                     \
-#                  'for automatic hardware detection'
+optional_depends  hal                                 \
+                  '--with-hal'                        \
+                  '--without-hal'                     \
+                  'for automatic hardware detection'
