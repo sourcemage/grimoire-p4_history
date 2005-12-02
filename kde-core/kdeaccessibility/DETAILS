@@ -1,13 +1,13 @@
            SPELL=kdeaccessibility
-         VERSION=3.4.3
+         VERSION=3.5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-     SOURCE_HASH=sha512:cc86f57f723ef9aab30fa4e090e5b172483f4c03ea1ef1881dbcf009b115877b22e446be0b294b934b87d8e22e4bd106287957b4f2170b93ef32c7d1a24052ba
+   SOURCE_URL[0]=$KDE_URL/stable/3.5/src/$SOURCE
       LICENSE[0]=GPL
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         WEB_SITE=http://accessibility.kde.org/aids/
          ENTERED=20040113
-         UPDATED=20050609
+         UPDATED=20051201
        BUILD_API=2
            SHORT="KDE Accessibility Aids"
 cat << EOF

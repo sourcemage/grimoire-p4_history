@@ -1,15 +1,15 @@
 source  $SECTION_DIRECTORY/KDE_DETAILS
 
            SPELL=kdebindings
-         VERSION=3.4.3
+         VERSION=3.5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-     SOURCE_HASH=sha512:18ccfbd7abc11f02bb12985012e530bda1257a7efc901f0f5c6de45761737a9eedcc6cdbe76ed6f3bef0ddf11c3bc0cdabc1d937af5accc0a4eb877b94ba9469
+   SOURCE_URL[0]=$KDE_URL/stable/3.5/src/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
        BUILD_API=2
         WEB_SITE=http://www.kde.org/
          ENTERED=20010922
-         UPDATED=20050609
+         UPDATED=20051202
       LICENSE[0]=GPL
        BUILD_API=2
            SHORT="DCOP bindings and kdejava bindings for KDE"
