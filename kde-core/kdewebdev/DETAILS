@@ -1,15 +1,15 @@
 source  $SECTION_DIRECTORY/KDE_DETAILS
 
            SPELL=kdewebdev
-         VERSION=3.4.3
+         VERSION=3.5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-     SOURCE_HASH=sha512:f3aea646e2b56684043e2c2ba4cf236ea52feb7bf30bde63eafad8b3d42bd52019e5a2a1035affba0c653b8cb515f26747fa5b5d1833ce6cc0b5d3598e88a960
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20040820
-         UPDATED=20050609
+         UPDATED=20051202
       LICENSE[0]=GPL
            SHORT="Various tools, including quanta, for web development for KDE."
 cat << EOF
