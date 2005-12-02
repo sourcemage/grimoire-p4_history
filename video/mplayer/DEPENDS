@@ -30,11 +30,11 @@ optional_depends  lame "" "" "to encode files with mp3 audio (mencoder)"  &&
 # video codecs
 optional_depends  libtheora "" "--disable-theora" "for Theora video support"  &&
 optional_depends  zlib "" "" "to play movies using losless compression algorithms"  &&
-optional_depends  win32codecs "" "--disable-win32" "to use windows codec DLLs for video decoding"  &&
+optional_depends  win32codecs "" "--disable-win32" "to use windows codec DLLs for video decoding" "z-rejected"  &&
 optional_depends  libdv "" "--disable-libdv" "to play files encoded with libdv (used by most digital camcorders)"  &&
-optional_depends  quicktime-codecs "" "--disable-qtx" "for some audio/video codecs sometimes used in quicktime files"  &&
-optional_depends  real-codecs "" "--disable-real" "to decode RealMedia files"  &&
-optional_depends  xanim-codecs "" "--disable-xanim" "for additional codecs (intel indeo, ...)"  &&
+optional_depends  quicktime-codecs "" "--disable-qtx" "for some audio/video codecs sometimes used in quicktime files" "z-rejected"  &&
+optional_depends  real-codecs "" "--disable-real" "to decode RealMedia files" "z-rejected" &&
+optional_depends  xanim-codecs "" "--disable-xanim" "for additional codecs (intel indeo, ...)" "z-rejected" &&
 optional_depends  xvid "" "--disable-xvid" "for encoding with the xvid codec (distribution in USA and Japan is forbidden)"  &&
 
 # audio devices

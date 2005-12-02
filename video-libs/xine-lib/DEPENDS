@@ -16,9 +16,9 @@ optional_depends  "flac"  ""  ""  "for FLAC audio decoding"  &&
 optional_depends  "libogg"  ""  ""  "for OGG/OGM file support"  &&
 optional_depends  "libvorbis"  ""  ""  "for OGG/Vorbis audio support"  &&
 optional_depends  "libmng"  ""  ""  "for MNG file support"  &&
-optional_depends  "win32codecs"  ""  ""  "to use win32 dlls for video/audio decoding"  &&
-optional_depends  "quicktime-codecs" "" "" "for addtional video/audio codecs used in quicktime files"  &&
-optional_depends  "real-codecs" "" "" "for RealMedia decoding"  &&
+optional_depends  "win32codecs"  ""  ""  "to use win32 dlls for video/audio decoding" "z-rejected" &&
+optional_depends  "quicktime-codecs" "" "" "for addtional video/audio codecs used in quicktime files" "z-rejected"  &&
+optional_depends  "real-codecs" "" "" "for RealMedia decoding" "z-rejected" &&
 optional_depends  "ffmpeg-cvs" "--with-external-ffmpeg=/usr" "" "to use external libavcodec"  &&
 optional_depends  "libtheora" "" "" "for OGG/Theora video support"  &&
 optional_depends  "libdvdcss"  ""  ""  "to play encrypted DVDs"  &&
