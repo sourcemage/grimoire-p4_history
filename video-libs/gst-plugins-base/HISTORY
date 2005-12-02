@@ -1,5 +1,12 @@
 2005-12-02 Arwed v. Merkatz <v.merkatz@gmx.net>
-	* DEPENDS: depends on gstreamer-0.8
+	* DETAILS: branched from gst-plugins, renamed to gst-plugins-base,
+	  updated to 0.9.7
+	* DEPENDS: removed everything except gstreamer, added dependency on
+	  liboil, optional_dependencies on X11-LIBS, alsa-lib, cdparanoia,
+	  gnome-vfs2, libvisual, libogg, pango, libvorbis, libtheora and gtk-doc
+	* BUILD: removed nvidia_driver workaround and mad option
+	* gst-plugins-wavpack.patch, disable_x.diff, CONFIGURE, FINAL,
+	  POST_REMOVE, POST_RESURRECT: removed
 
 2005-11-14 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD, disable_x.diff: fix configure to work without
