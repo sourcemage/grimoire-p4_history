@@ -1,15 +1,15 @@
 source  $SECTION_DIRECTORY/KDE_DETAILS
 
            SPELL=kdeaddons
-         VERSION=3.4.3
+         VERSION=3.5.0
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=$KDE_URL/stable/$VERSION/src/$SOURCE
-     SOURCE_HASH=sha512:f2c6e2ee97c99e0b2e90cce8b4fd5168105d02d0705c967133b2c4cf921de7c1753f547a35114e0fef54291de6590f56b379027fe3904e655070ceee7fe05ac1
+   SOURCE_URL[0]=$KDE_URL/stable/3.5/src/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
        BUILD_API=2
         WEB_SITE=http://www.kde.org
          ENTERED=20010922
-         UPDATED=20050609
+         UPDATED=20051202
 	   LICENSE[0]=GPL
            SHORT="Plugins for kate, kicker, konqueror, noatun, knewsticker."
 cat << EOF
