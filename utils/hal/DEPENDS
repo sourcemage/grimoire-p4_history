@@ -6,9 +6,6 @@ depends  dbus     &&
 depends  hotplug  &&
 depends  libcap   &&
 depends  udev     &&
-if [ "$PMOUNT" == "y" ]; then
-depends	pmount
-fi
 
 #
 # expat should have --with-expat or --without-expat but there is an bug in configure.

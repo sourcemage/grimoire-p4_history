@@ -5,9 +5,4 @@ create_account  haldaemon                          &&
 #
 create_group  cdrom                                &&
 create_group  burning                              &&
-usermod  -G  disk,cdrom,floppy,burning  haldaemon  &&
-if [ "$PMOUNT" == "y" ]; then
-   usermod -G plugdev -a haldaemon                 &&
-   mkdir -p /etc/hal/device.d                      &&
-   ln -sfn /usr/bin/pmount-hal /etc/hal/device.d/60-pmount.hal
-fi                          
+usermod  -G  disk,cdrom,floppy,burning  haldaemon
