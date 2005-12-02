@@ -6,9 +6,9 @@ if [ "$SNAP" = "y" ]; then
      SOURCE_HASH=sha512:f0474687d76fe2a3b91a03f2ad2a012c4d83db4999f44fef7e3f9dc30cf2ca6fa66b36bc6eb411976a67ee97ffa2396457cb69b990a32df4747ef9b735fe03fd
 else
          VERSION=2
-          SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=http://wmi.modprobe.de/download/$SOURCE
-          MD5[0]='0257b20c74e22e30b74864fd57340101'
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=http://wmii.de/download/$SOURCE
+     SOURCE_HASH=sha512:02a380cfb1a415c913871e3cbcbfe1b5494354cc74597ac3e27edc2aa67e7c60f0716f66f7bed72b21c1bed3b9e3abd7a314769cc684122a163c91ab53040f9a
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://wmii.de/
