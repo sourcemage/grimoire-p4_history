@@ -1,9 +1,12 @@
            SPELL=lids
-         VERSION=${LIDS_VERSION}
+	LIV=2.2.1
+	LKV=2.6.13
+	TOOLVER=2.2.6.1
+         VERSION=${LIV}-${LKV}
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.lids.org/download/$LKS/$LKV/$SOURCE
-          MD5[0]='2bb57581853514607cd6053a65895f3a'
+ 	SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.lids.org/download/v2.6/$LKV/$SOURCE
+	SOURCE_HASH[0]=
         WEB_SITE=http://www.lids.org
          ENTERED=20041217
          UPDATED=20041217
