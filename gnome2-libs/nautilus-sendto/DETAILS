@@ -1,15 +1,15 @@
            SPELL=nautilus-sendto
-         VERSION=0.3
+         VERSION=0.4
           BRANCH=`echo $VERSION|cut -d . -f 1,2` 
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-     SOURCE_HASH=sha512:207c8e5c69aefb5cf3d6f175c963ebf3020a5ad3e8f1a633f79aac2ae5c79de544523becb1649af469d429fc0e7f0ff43518d73ab280c87e42d81c1acd254d91
+     SOURCE_HASH=sha512:95c1d6cb33d1bac3c086e9d8dfe64275c0fbf865b178adc6835a5e51a7406d6f688788949ccce4a509b3a05225a712127d2f8d9d4579e0e526238062557add91
       LICENSE[0]=LGPL
         WEB_SITE=http://www.gnome.org
          ENTERED=20050208
          UPDATED=20050208
-           SHORT="Nauilus extension"
+           SHORT="Nautilus extension to send attachments"
 cat << EOF
-Nautilus extension
+Nautilus extension to send attachments
 EOF
