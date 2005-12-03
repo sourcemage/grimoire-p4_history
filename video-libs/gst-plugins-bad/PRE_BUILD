@@ -1,0 +1,4 @@
+default_pre_build      &&
+cd  $SOURCE_DIRECTORY  &&
+# fix so wavpack plugin gets built
+sedit  's/^SUBDIRS = \\/SUBDIRS = $(WAVPACK_DIR) \\/'  ext/Makefile.in
