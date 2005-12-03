@@ -32,6 +32,7 @@ patch  -p0  <  $SCRIPT_DIRECTORY/dont-install-broken-pam-config.patch   &&
               --prefix=${INSTALL_ROOT}/usr                              \
               --sysconfdir=${INSTALL_ROOT}/etc                          \
               --localstatedir=${INSTALL_ROOT}/var                       \
+	      --mandir=${INSTALL_ROOT}/usr/share/man			\
               $OPTS                                                     &&
 
 sedit 's#$(LINK)#$(LINK) $(LIBS)#' daemon/Makefile                      &&
