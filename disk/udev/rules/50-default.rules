@@ -82,6 +82,8 @@ KERNEL=="ptmx",		NAME="%k", MODE="0666"
 
 # printer
 KERNEL=="lp*",          NAME="%k", MODE="0660"
+# HP printers
+BUS=="usb", KERNEL=="lp[0-9]*", SYMLINK="usb%k"
 
 # v4l devices
 KERNEL=="video[0-9]*",  NAME="v4l/video%n", SYMLINK="video%n", GROUP="video", MODE="0660"
