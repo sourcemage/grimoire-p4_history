@@ -23,6 +23,9 @@ else
    OPTS="$OPTS --enable-ipv6=no"
 fi                                                                      &&
 
+if [ "$DBUSLAUNCH" == "y" ]; then
+   patch -p0 < $SCRIPT_DIRECTORY/Xsession-dbus.patch
+fi                                                                      &&
 
 LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"                                     &&
 
