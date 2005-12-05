@@ -1,0 +1,14 @@
+## default build for Python spell
+function default_build() {
+  python setup.py build
+}
+
+## default install for Python spell
+## INSTALL_ROOT is used here only if not empty, because some spells can't
+## install with "--root '/'" option.
+function default_install() {
+  if [[ -n "$INSTALL_ROOT" ]]; then
+    local __install_root="--root '$INSTALL_ROOT/'"
+  fi &&
+  python setup.py install $__install_root
+}
