@@ -1,5 +1,6 @@
            SPELL=psyco
-         VERSION=1.4
+         VERSION=1.5
+     SOURCE_HASH='sha512:84518c777b7d00a70db7254a5509def130caddde3288492de05d4496901d2580939634f79240d37a813c938e2df81cecb605290128115b7c2dae6b33abb57b98'
           SOURCE=$SPELL-$VERSION-src.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
@@ -7,7 +8,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
        BUILD_API=2
          ENTERED=20040217
          UPDATED=20050403
-    SOURCE_HASH=sha512:71ecaef0a949caf940d1bebae4a8f60f74129c53dcf0257b1c07f6c2d4d2dff2b0c3985985ef251ecdf74e1675dacb5ddf170ccc7c87e7b79a9b2eec935da1fe
            SHORT="Psyco is a Python extension module which can massively speed up the execution of any Python code."
 cat << EOF
 Think of Psyco as a kind of just-in-time (JIT) compiler, a little bit like
