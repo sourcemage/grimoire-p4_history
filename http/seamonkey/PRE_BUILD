@@ -1,0 +1,5 @@
+default_pre_build      &&
+# remove /root/.mozconfig, it causes too much trouble
+if  [  -f  /root/.mozconfig  ];  then
+  rm  -f  /root/.mozconfig
+fi
