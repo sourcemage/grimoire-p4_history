@@ -1,0 +1,16 @@
+           SPELL=libgpod
+         VERSION=0.2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/gtkpod/$SOURCE
+     SOURCE_HASH=sha512:947c3f2a7744edec143f92fd1c89f228cf145d0373bc110845b34a435e18bfd6938a156e7d971ba653741e4dae562f37296d053f56d368cc988e10a77107ac33
+        WEB_SITE=http://www.gtkpod.org/
+         ENTERED=20051206
+         UPDATED=20051206
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="a shared library to access the contents of an iPod"
+cat << EOF
+libgpod is a shared library to access the contents of an iPod. This 
+library is based on code used in the gtkpod project.
+EOF
