@@ -13,6 +13,11 @@ if  [  "$RHYTHMBOX_FLAC"  ==  "y"  ];  then
   depends  libid3tag
 fi  &&
 
+optional_depends  "libgpod"             \
+                  "--with-ipod"         \
+                  "--without-ipod"      \
+                  "for Apple iPod support" &&
+
 optional_depends  "libvorbis"           \
                   "--enable-vorbis"     \
                   "--disable-vorbis"    \
