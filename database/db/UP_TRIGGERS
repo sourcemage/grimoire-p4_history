@@ -1,0 +1,9 @@
+# up_trigger everything on minor version updates as most stuff links to libdb-$MAJOR.$MINOR.so
+
+local OLD_SPELL_VERSION=""
+spell_ok  $SPELL  &&  OLD_SPELL_VERSION="$(installed_version $SPELL)"  &&
+if test ${VERSION:0:3} != ${OLD_SPELL_VERSION:0:3}; then
+  for each in $(gaze depends $SPELL | cut -f1 -d:); do
+    up_trigger $each cast_self
+  done
+fi
