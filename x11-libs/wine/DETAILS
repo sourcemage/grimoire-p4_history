@@ -1,15 +1,15 @@
            SPELL=wine
-         VERSION=0.9.2
-     SOURCE_HASH=sha512:1d37d6a6eb504c7c4d59c0a7ca993b46e63d3482d1aba4df0c9af8b7bc3451a0b9ba5ffb054ed3e47e21585b1c62d0fe52b96ce3ed67d1c368c0293e0ae3ecce
+         VERSION=0.9.3
           SOURCE=wine-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://www.ibiblio.org/pub/linux/system/emulators/$SPELL/$SOURCE
-        WEB_SITE=http://www.winehq.com/
-         ENTERED=20010925
-         UPDATED=20020319
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=LGPL
        BUILD_API=2
+        WEB_SITE=http://www.winehq.com/
+         UPDATED=20020319
+         ENTERED=20010925
            SHORT="Wine Is Not an Emulator"
 cat << EOF
 Wine Is Not an Emulator. It is an alternative
