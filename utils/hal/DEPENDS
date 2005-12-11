@@ -3,7 +3,7 @@ depends  gawk     &&
 depends  libtool  &&
 depends  python   &&
 depends  dbus     &&
-depends  hotplug  &&
+#depends  hotplug  &&
 depends  libcap   &&
 depends  udev     &&
 
@@ -34,14 +34,4 @@ optional_depends  hwdata                    \
                   "--with-hwdata=/usr/share/hwdata"  \
                   "--without-hwdata"        \
                   "for PCI/USB hardware data"
-
-#optional_depends  pciutils                  \
-#                  "--with-hwdata"           \
-#                  "--without-hwdata"        \
-#                  "for PCI hardware data"   &&
-
-#optional_depends  usbutils                  \
-#                  "--with-hwdata"           \
-#                  "                "        \
-#                  "for USB hardware data"
 
