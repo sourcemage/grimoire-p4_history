@@ -1,5 +1,0 @@
-config_query  NMAPFE  "Do you want nmap frontend to be built?" n &&
-if [ "$NMAPFE" == "y" ]; then
- config_query_list  NMAPFE_GTK  "Nmap frontend depends on either gtk+ or gtk+2" gtk+ gtk+2
-fi
-

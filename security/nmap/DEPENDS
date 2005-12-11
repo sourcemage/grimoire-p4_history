@@ -1,9 +1,2 @@
 depends g++     &&
-if [ "$NMAPFE" == "y" ]; then
- if [ "$NMAPFE_GTK" == "gtk+" ]; then
-  depends gtk+
- fi                                  &&
- if [ "$NMAPFE_GTK" == "gtk+2" ]; then
-  depends gtk+2
- fi
-fi
+optional_depends "gtk+2" '--with-nmapfe' '--without-nmapfe' 'for nmapfe support'
