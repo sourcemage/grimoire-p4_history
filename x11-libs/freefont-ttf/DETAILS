@@ -1,15 +1,17 @@
            SPELL=freefont-ttf
-         VERSION=20020306
+         VERSION=20051206
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=ftp://ftp.gnu.org/savannah/files/freefont/$SOURCE
+         SOURCE2=$SOURCE.sig
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/freefont-$VERSION
+   SOURCE_URL[0]=http://download.savannah.nongnu.org/releases/freefont/$SOURCE
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.sig
 	WEB_SITE=http://savannah.nongnu.org/projects/freefont/
          ENTERED=20040927
          UPDATED=20040927
-     SOURCE_HASH=sha512:eefa1219d36800ef7e11e32456acd63970b3c39c082df2bb3a344dfe11ae2fc51ad7c73553f615468021ad7f7d5d6ab1632e8634fb1d97ba9c96c815585cd721
+      SOURCE_GPG=primoz.peterlin.gpg:$SOURCE.sig:UPSTREAM_KEY
+  SOURCE2_IGNORE=signature
       LICENSE[0]=GPL
        BUILD_API=2
-      MAINTAINER=cykl@mAdchAt.org
            SHORT="provide a set of free outline (i.e. OpenType) fonts"
 
 cat << EOF
