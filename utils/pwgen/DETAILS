@@ -1,0 +1,20 @@
+           SPELL=pwgen
+         VERSION=2.04
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
+        WEB_SITE=http://pwgen.sourceforge.net
+     SOURCE_HASH=sha512:45991bd94195fa730b19b5786c48d02adf111882a79b68158b27098bd07f2e9cb16650d6d707fc879359ab28bfe03754f891cbf0a0e1b385a6fba7595d189266 
+      LICENSE[0]=GPL
+         ENTERED=20040529
+         UPDATED=20041204
+       BUILD_API=2
+           SHORT="Automatic Password generation."
+
+cat << EOF
+pwgen generates random, meaningless but pronounceable passwords.
+These passwords contain either only lowercase letters, or upper
+and lower case mixed, or digits thrown in.
+Uppercase letters and digits are placed in a way that eases
+remembering their position when memorizing only the word.
+EOF
