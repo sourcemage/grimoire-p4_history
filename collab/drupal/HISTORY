@@ -1,3 +1,13 @@
+2005-12-12 Jason FLatt <jflatt@sourcemage.org>
+	* CONFIGURE, DEPENDS: Changed database dependency to only allow
+	  choosing MySQL or PostgeSQL.
+	* DEPENDS: Changed PHP to php4, since Drupal does not work w/PHP 5.1.
+	  Changed MAIL-TRANSPORT-AGENT from optional to required.
+	  Reordered depends.
+	* DETAILS: Added SECURITY_PATCH=1.
+	* PRE_INSTALL: Added code lifted from FUNCTIONS to help in the config
+	  file recovery process.
+
 2005-12-11 Jason FLatt <jflatt@sourcemage.org>
 	* CONFIGURE, INSTALL: Added optional install path.
 	* CONFIGURE: Added some missing &&.
