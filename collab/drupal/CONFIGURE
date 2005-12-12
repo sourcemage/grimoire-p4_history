@@ -1,5 +1,10 @@
-message  "${MESSAGE_COLOR}The MySQL daemon needs to be running to create the database${DEFAULT_COLOR}"
-config_query  DRUPAL_CREATEDB  "Create drupal database?"  n
+.  $GRIMOIRE/FUNCTIONS                                                                                           &&
+config_query_string  DRUPAL_INSTALL_PATH                                                                         \
+                     "What path do you wish to use for installation (the spell name will be added at the end)?"  \
+                     "usr/share/www"                                                                             &&
+
+message  "${MESSAGE_COLOR}The MySQL daemon needs to be running to create the database${DEFAULT_COLOR}"           &&
+config_query  DRUPAL_CREATEDB  "Create drupal database?"  n                                                      &&
 
 if  [  "$DRUPAL_CREATEDB"  ==  "y"  ];  then
   if  spell_installed  mysql;  then
