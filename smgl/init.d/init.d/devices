@@ -45,9 +45,20 @@ start_udev()
   mkdir $udev_root/shm
   mkdir $udev_root/pts
 
-  # Now uses udevsend as the hotplug multiplexer
-  echo "Setting udevsend as hotplug agent"
-  sysctl -w kernel.hotplug="/sbin/udevsend" > /dev/null 2>&1
+  KVERREL=`uname -r`
+  KVER=${KVERREL%-*}
+#  KVER_MAJOR=${KVER%.*}
+  KVER_MINOR=${KVER##*.}
+
+  # kernel 2.6.15-rc1 and higher don't use hotplug
+  if [ $KVER_MINOR -ge 15 ]; then
+    echo "don't need hotplug for this kernel"
+  else
+      # Now uses udevsend as the hotplug multiplexer
+    echo "Setting udevsend as hotplug agent"
+    sysctl -w kernel.hotplug="/sbin/udevsend" > /dev/null 2>&1
+  fi
+
   # propogate /udev from /sys - we only need this while we do not
   # have initramfs and an early user-space with which to do early
   # device bring up
