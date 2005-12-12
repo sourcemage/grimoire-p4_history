@@ -53,6 +53,7 @@ start_udev()
   # kernel 2.6.15-rc1 and higher don't use hotplug
   if [ $KVER_MINOR -ge 15 ]; then
     echo "don't need hotplug for this kernel"
+    sysctl -w kernel.hotplug="" > /dev/null 2>&1
   else
       # Now uses udevsend as the hotplug multiplexer
     echo "Setting udevsend as hotplug agent"
