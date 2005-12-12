@@ -1,4 +1,4 @@
-install_www_files  ./  &&
+install_www_files  ./  ${INSTALL_ROOT}${DRUPAL_INSTALL_PATH}/${SPELL}           &&
 
 if  [  "$DRUPAL_CREATEDB"  ==  "y"  ];  then
   if  [  "$DRUPAL_MYSQL"  ==  "y"  ];  then
