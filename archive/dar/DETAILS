@@ -1,6 +1,6 @@
            SPELL=dar
-         VERSION=2.2.2
-     SOURCE_HASH=sha512:13d1b8d46470540f0e9485cef3f1a8834b20c7061bd4956818a4c066efbe2174f8d0809d889bb52406bc5982a4c93417f52ff01d0e94377fb950d2aa3b9f416c
+         VERSION=2.2.5
+     SOURCE_HASH='sha512:466cb7f104f24e47233699b035e3182b0947523fe16bc2af96c7eb8a1b8db7e7f23821abeee62e7c2a15444518038a6f8816c199a3a2346b67825a2c20568bf9'
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=${SOURCEFORGE_URL}/$SPELL/$SOURCE
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
@@ -9,7 +9,6 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
          UPDATED=20050401
       LICENSE[0]=GPL
        BUILD_API=2
-     GCC_VERSION=3.4
            SHORT="dar is a shell command that backs up directory trees and files."
 cat << EOF
 dar is a shell command that backs up directory trees and files. It has been tested under Linux, Windows, Solaris, FreeBSD, and NetBSD, and is released under the GNU General Public License (GPL). Since version 2.0.0 an Application Interface (API) is available, opening the way for external/independent Graphical User Interfaces (GUIs) like kdar. This API relies on the libdar library, which is the core part of DAR programs; as such, the API is released under the GPL. Consequently, to use the API, your program must be released under the GPL as well. 
