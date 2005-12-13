@@ -1,12 +1,12 @@
             SPELL=nspr
-          VERSION=4.5.0
-           SOURCE=$SPELL-$VERSION.tar.bz2
+          VERSION=4.6
+           SOURCE=$SPELL-$VERSION.tar.gz
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot:mozilla/nsprpub:FIREFOX_1_0_5_RELEASE
+SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$VERSION/src/$SOURCE
          WEB_SITE=http://www.mozilla.org/projects/nspr/
           ENTERED=20050512
           UPDATED=20050716
-    SOURCE_IGNORE=volatile
+	SOURCE_HASH=sha1:f9bc9b1d8a97788df27c1dd39b41f2b93a5e7161
        LICENSE[0]=MPL
         BUILD_API=2
       GATHER_DOCS=no

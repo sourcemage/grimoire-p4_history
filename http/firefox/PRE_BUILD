@@ -42,10 +42,26 @@ fi                                                                          &&
 cd  $SOURCE_DIRECTORY                                                       &&
 
 # Patches for freetype 2.1.8 and gcc 3.4
-patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch  &&
-if use_gcc ^4; then
-  patch  -p1  <  $SCRIPT_DIRECTORY/gcc4.patch
-fi &&
+#patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch  &&
+#if use_gcc ^4; then
+#  patch  -p1  <  $SCRIPT_DIRECTORY/gcc4.patch
+#fi &&
 
 # Typeaheadfind patch
-patch -p0 < $SCRIPT_DIRECTORY/typeaheadfind.diff
+#patch -p0 < $SCRIPT_DIRECTORY/typeaheadfind.diff
+
+# 1.5 patches
+# 1) visibility
+patch -p0 < $SCRIPT_DIRECTORY/firefox-1.1-visibility.patch
+# 2) removing pangoxft
+patch -p1 < $SCRIPT_DIRECTORY/firefox-nopangoxft.patch
+# 3) no crash uri loader with gnome-vfs
+patch -p0 < $SCRIPT_DIRECTORY/firefox-1.1-uriloader.patch
+# 4) typeahead
+patch -p1 < $SCRIPT_DIRECTORY/embed-typeaheadfind-1.patch
+patch -p1 < $SCRIPT_DIRECTORY/mozilla-firefox-1.5-gtk.patch
+# 5) sec fix
+patch -p0 < $SCRIPT_DIRECTORY/mozilla-firefox-1.5-history.patch
+patch -p0 < $SCRIPT_DIRECTORY/mozilla-firefox-1.5-mork.patch
+
+
