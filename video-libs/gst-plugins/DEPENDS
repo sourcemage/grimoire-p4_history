@@ -19,6 +19,9 @@ optional_depends  "cdparanoia"                \
 optional_depends  "libogg"             \
                   ""  "--disable-ogg"  \
                   "for OGG muxer/demuxer"  &&
+optional_depends  "libmms"                \
+                  ""  "--disable-libmms"  \
+                  "to support mms:// playback"  &&
 
 # audio output
 optional_depends  "alsa-lib"            \
