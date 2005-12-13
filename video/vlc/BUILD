@@ -7,9 +7,6 @@ fi  &&
 
 export OPTS="$OPTS --disable-dependency-tracking --enable-release"  &&
 
-#Doesn't work with current version of hal
-export OPTS="$OPTS --disable-hal"  &&
-
 if test "$(get_spell_provider $SPELL GECKO)" = firefox; then
   OPTS="$OPTS MOZILLA_CONFIG=/usr/bin/firefox-config XPIDL=/usr/lib/firefox/xpidl XPIDL_INCL=-I/usr/share/idl/firefox"  &&
   CPPFLAGS="$CPPFLAGS -I/usr/include/nspr"
