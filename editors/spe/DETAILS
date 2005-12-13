@@ -1,18 +1,23 @@
            SPELL=spe
-         VERSION=0.8.0.c-wx2.6.1.0.-bl2.35
-     SOURCE_HASH='sha512:9326e9a22e2f5a9939888b16e1a88cceb9c55385b697584f5ce3ac788e704164fc07c92bb194b284f2f27f938d2c5b70609e543817d9021b4dacb599b2504205'
-          SOURCE="SPE-$VERSION.tar.gz"
-   SOURCE_URL[0]="http://download.berlios.de/python/$SOURCE"
-   SOURCE_URL[1]="$SOURCEFORGE_URL/$SPELL/$SOURCE"
-SOURCE_DIRECTORY="$BUILD_DIRECTORY/SPE-$VERSION"
-        WEB_SITE="http://pythonide.stani.be/"
-   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
-      LICENSE[0]='GPL'
+         VERSION=0.8.1.a-wx2.6.1.0.-bl2.35
+     SOURCE_HASH=sha512:36eccf070ace3a6d82e38184885bd28b941dcabef28fa9154cf2a89347b91b6d9feffd9f927ebe30e6539e5570357012cd654b14f4c8fbd011868361b423e3f2
+          SOURCE=SPE-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://download.berlios.de/python/${SOURCE}
+   SOURCE_URL[1]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/SPE-${VERSION}
+        WEB_SITE=http://pythonide.stani.be/
+   FRESHMEAT_URL=http://freshmeat.net/projects/${SPELL}/
+      LICENSE[0]=GPL
          UPDATED=20050808
        BUILD_API=2
      GATHER_DOCS=off
            SHORT='A Python IDE with wxGlade, Pychecker, UML, and Blender support'
 cat << EOF
-Spe is a Python IDE with auto-indentation, auto completion, call tips, syntax coloring, syntax highlighting, UML, a class explorer, source index, an auto todo list, sticky notes, integrated pycrust shell, a Python file browser, a recent file browser, drag and drop, and context help. It also includes Blender support a 3D object browser and the ability to run interactively inside Blender. It includes the wxGlade GUI designer, the PyChecker source code doctor, and Kiki regular expression console.
+Spe is a Python IDE with auto-indentation, auto completion, call tips, syntax
+coloring, syntax highlighting, UML, a class explorer, source index, an auto todo
+list, sticky notes, integrated pycrust shell, a Python file browser, a recent
+file browser, drag and drop, and context help. It also includes Blender support
+a 3D object browser and the ability to run interactively inside Blender. It
+includes the wxGlade GUI designer, the PyChecker source code doctor, and Kiki
+regular expression console.
 EOF
-## Auto-generated from Freshmeat.net's project descriptor
