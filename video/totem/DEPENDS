@@ -1,6 +1,9 @@
 depends  libgnomeui     &&
 depends  iso-codes      &&
-depends  libmusicbrainz &&
+optional_depends  libmusicbrainz           \
+                  "--enable-musicbrainz"   \
+                  "--disable-musicbrainz"  \
+                  "for musicbrainz support"  &&
 optional_depends  GECKO                \
                   "--enable-mozilla"   \
                   "--disable-mozilla"  \
