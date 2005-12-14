@@ -4,12 +4,10 @@
   fi
   export HAVE_PS2PDF=no
 
-  autoconf                                             &&
+# autoconf                                             &&
   ./configure  --enable-read-both-confs $OPTS          &&
   sedit  "s/examples//"  Makefile                      &&
   sedit  "s/read yes//"     conf/install_conf          &&
-  sedit  "s/read yes//"  modules/install_conf          &&
-  sedit  "s/PSER=.*/PSER=/"  Make.Rules                &&
   if [ "$PAM_SELINUX" == "y" ] ; then
     invoke_gcc
   fi &&
