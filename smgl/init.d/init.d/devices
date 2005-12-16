@@ -45,10 +45,11 @@ start_udev()
   mkdir $udev_root/shm
   mkdir $udev_root/pts
 
-  KVERREL=`uname -r`
-  KVER=${KVERREL%-*}
+  KVER_MINOR=`uname -r | cut -d. -f3`
+#  KVERREL=`uname -r`
+#  KVER=${KVERREL%-*}
 #  KVER_MAJOR=${KVER%.*}
-  KVER_MINOR=${KVER##*.}
+#  KVER_MINOR=${KVER##*.}
 
   # kernel 2.6.15-rc1 and higher don't use hotplug
   if [ $KVER_MINOR -ge 15 ]; then
