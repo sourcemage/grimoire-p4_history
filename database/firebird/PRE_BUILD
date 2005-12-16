@@ -15,11 +15,11 @@ bzcat $SPELL_DIRECTORY/*.bz2 | patch -p1 &&
         builds/posix/prefix.linux        &&
 
 # make this compatible with smgl init system
-  if [ "$FB_VER" == "cvs" ];then
-    SCRIPT=builds
-  else
-    SCRIPT=src
-  fi                                      &&
+#  if [ "$FB_VER" == "cvs" ];then
+#    SCRIPT=builds
+#  else
+    SCRIPT=src                             &&
+#  fi                                      &&
   sed -e "s:rc\.d/::;s:d/f:d/runlevels/\%3/f:" -i \
      $SCRIPT/install/arch-specific/linux/misc/changeDBAPassword.sh.in
 
