@@ -7,7 +7,6 @@ if [ ! "${RELEASE}" = "stable" ]; then
         "Enable Xrender alpha-blend rendering?" y \
         "--enable-xrender"                        \
         "--disable-xrender"                       &&
-    config_query FVWM_TRANSLUCENCY_PATCH "Apply menu translucency patch?" y
 fi &&
 config_query_option FVWM_OPTS                         \
                         "Enable Session Managment?" y \

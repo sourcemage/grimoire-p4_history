@@ -1,6 +1,0 @@
-default_pre_build &&
-cd ${SOURCE_DIRECTORY} &&
-if [ "${FVWM_TRANSLUCENCY_PATCH}" == "y" ]
-then
-    patch -p1 < ${SPELL_DIRECTORY}/fvwm-2.5.11-translucent-menus.diff
-fi
