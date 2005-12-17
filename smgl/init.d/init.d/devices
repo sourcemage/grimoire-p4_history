@@ -45,11 +45,9 @@ start_udev()
   mkdir $udev_root/shm
   mkdir $udev_root/pts
 
-  KVER_MINOR=`uname -r | cut -d. -f3`
-#  KVERREL=`uname -r`
-#  KVER=${KVERREL%-*}
-#  KVER_MAJOR=${KVER%.*}
-#  KVER_MINOR=${KVER##*.}
+# strip out wierd kernel versions, such as 2.6.14.4-skas3-v8.2 or 2.6.15-rc5
+# these now parse to 14 or 15
+  KVER_MINOR=`uname -r | cut -d. -f3` | cut -d- -f1
 
   # kernel 2.6.15-rc1 and higher don't use hotplug
   if [ $KVER_MINOR -ge 15 ]; then
