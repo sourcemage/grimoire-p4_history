@@ -8,4 +8,7 @@ if  !  [  -d  $INSTALL_ROOT/usr/share/xsessions  ];  then
 fi  &&
 
 install  -m  755  $SCRIPT_DIRECTORY/${SPELL}.desktop  \
-                  $INSTALL_ROOT/usr/share/xsessions
+                  $INSTALL_ROOT/usr/share/xsessions   &&
+
+install  -m  755  $SCRIPT_DIRECTORY/e17update  \
+                  $INSTALL_ROOT/usr/sbin

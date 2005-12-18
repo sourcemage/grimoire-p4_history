@@ -1,9 +1,17 @@
 depends  imlib2  &&
 
+#
+# Remove on 2006-01-18
+#
+if  [  "$E17_UPDATE"  ==  "y"  ];  then
+  depends  e17
+fi  &&
+
+#
+# End e17 spell switch
+#
+
 if  [  "$ENLIGHTENMENT_CVS"  ==  "y"  ];  then
-  depends  edje  &&
-  depends  CVS
-elif  [  "$ENLIGHTENMENT16_CVS"  ==  "y"  ];  then
   depends  CVS
 fi  &&
 
