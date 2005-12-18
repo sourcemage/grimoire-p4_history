@@ -1,6 +1,6 @@
---- buildconfigs/mk.linux-2.6-xen0~	2005-03-10 11:52:16.000000000 -0800
-+++ buildconfigs/mk.linux-2.6-xen0	2005-03-19 13:00:37.693046024 -0800
-@@ -9,16 +9,21 @@
+--- buildconfigs/mk.linux-2.6-xen0.org	2005-11-15 10:56:54.922253032 +0100
++++ buildconfigs/mk.linux-2.6-xen0	2005-11-15 10:59:00.387179464 +0100
+@@ -9,16 +9,20 @@
  
  include buildconfigs/Rules.mk
  
@@ -20,7 +20,6 @@
  
 +xenify: $(LINUX_DIR)/include/linux/autoconf.h
 +
-+
- $(LINUX_DIR)/include/linux/autoconf.h: pristine-linux-$(LINUX_VER)
+ $(LINUX_DIR)/include/linux/autoconf.h: ref-$(OS)-$(LINUX_VER)/.valid-ref
  	rm -rf $(LINUX_DIR)
- 	cp -al $< $(LINUX_DIR)
+ 	cp -al $(<D) $(LINUX_DIR)
