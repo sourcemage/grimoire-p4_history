@@ -12,7 +12,9 @@ latestdefaults="${SPELL_DIRECTORY}/latest.defaults"
 # debug log duh ;)
 debug="${SPELL_DIRECTORY}/debug.log"
 
-# Source info for patch
+# Source patch info for the patch
+# this is used for getting specific information about the source name source url
+# verification checking what the dependancies are, things like that.
 source_patch()
 {	
 	local tmploc
@@ -26,6 +28,9 @@ source_patch()
 	[ -f $tmploc ] && . $tmploc
 }
 
+# Source info for patch
+# this is used for general info about the patch, what the patch is, contains,
+# made by, things like that.
 source_info()
 {
 	local tmploc
@@ -69,44 +74,79 @@ arch_default()
 }
 
 # create the defaults file from scratch
-# do this with every -r command
+# do this with every command
 create_defaults()
 {
 	arch_default
 	kernel_arch=$KERNEL_ARCH
 	# add variables that I need
+	
+	# what arch the kernel is being made for
 	persistent_add kernel_arch
+	
+	# what are we doing, 
+	# making a new kernel tree: newktree
+	# recompiling an old kernel tree: oldktree
+	# using a custom existing kernel tree: expert
 	persistent_add mode
+
+	# internal semi-copy of RECONFIGURE so that the spell can call
+	# menuconfig in PRE_BUILD
 	persistent_add reconf
+
+	# kernel version for the base kernel source, or in case of expert the
+	# full kernel version of the source tree
 	persistent_add kver
+
+	# list of final patches after depends resolution
 	persistent_add patches
+
+	# list of patches that the user selected
 	persistent_add selected_patches
+
+	# make sure that the state of the spell is good when we compile
+	# since users can put the spell into a state where it will always fail
+	# do some sanity checks to get a working installed configuration
+
+	# check if the grimoire version was completed successfully and load
+	# it's set of persistent vars and change the mode to oldktree if the
+	# mode that made the kernel wasn't expert
 	VERSION="`gaze version $SPELL | awk 'NR == 3 {print $4}'`"
 	if [ -f ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-${VERSION}/.spell-config.p \
 		   ${SPELL_CONFIG}.p
 		persistent_load
-		# when loading we don't want to switch to oldktree if the mode
-		# of the tree was expert
 		if [[ "$mode" != "expert" ]]
 		then
 			mode="oldktree"
 		fi
+	
+	# upgrade path: if the installed version of the spell was installed
+	# successfully then use it's persistent vars and switch to newktree
+	# so the update can be performed.
 	elif [ -f ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ]
 	then
 		cp ${BUILD_DIRECTORY}/linux-$(installed_version $SPELL)/.spell-config.p ${SPELL_CONFIG}.p
 		persistent_load
 		mode="newktree"
+		
+	# we don't have any configuration and we need to set some sane defaults
+	# so that things won't break.
+	# these defaults are the vanilla kernel with the latest maintenance
+	# patches
 	else
-		# we don't have any configuration
 		[ -z "$mode" ] && mode="newktree"
 		[ -z "$kver" ] && kver="LATEST_2_6"
 		[ -z "$selected_patches" ] && selected_patches="LATEST_maintenance_patches"
 	fi
+
+	# check RECONFIGURE for cast -r linux and set reconf appropriately
+	# since the questions afterwards are saved with the persistent vars we
+	# need to remove them from the persistent var table so that the 
+	# questions will be asked again.
 	if [[ $RECONFIGURE ]]
 	then
-		#remove some vars so the questions get asked again
 		persistent_remove MAKEMODE &&
 		persistent_remove UPDATE_BL &&
 		persistent_remove CONFIG_KERNEL 
@@ -114,6 +154,8 @@ create_defaults()
 	else
 		reconf="false"
 	fi
+
+	# do this just to make sure
 	persistent_save
 	persistent_load
 }
@@ -121,6 +163,10 @@ create_defaults()
 # dialog command works even if you add --nocancel as part of the arguments
 dialog=( "dialog" "--stdout" )
 
+# used for checking the current version against the updated version in the
+# spell
+# output is the kernel version that is the updated version of the spell...
+# might need to be modified...
 get_usr_src_kver()
 {
 	local spell_config=$1
@@ -152,9 +198,16 @@ get_usr_src_kver()
 }
 
 # simply list ${BUILD_DIRECTORY} linux sources 
+# these source directories are only spells that have been successfully installed
+# this is accomplished by puting the persistent config file when that kernel was
+# installed into the source directory
+# also the check is done to determine the version of each linux source to see if
+# the kernel source needs updating
 list_usr_src()
 {
 	local tmpkver
+	local linuxsrcs
+	local linuxsrc
 	if find ${BUILD_DIRECTORY}/linux*/.spell-config.p >> /dev/null 2>&1 
 	then
 		linuxsrcs="`ls -1d ${BUILD_DIRECTORY}/linux*`"
@@ -791,9 +844,19 @@ create_details()
 {
 	. $latestdefaults
 	local counter="3"
+	local patches 
+	local basekver 
+	local source_gpg
+	local source_gpg_list 
+	local source_gpg_list_url
+	local gpg_source_url
+	local version_append_list
+	local depends
+	local patch
+	local md5sum
+	local sha1sum
 	case "$mode" in
 		*ktree)
-			# add required smgl patches
 			patches=""
 			basekver=""
 			source_gpg_list=""
@@ -803,11 +866,20 @@ create_details()
 			depends=""
 			echo 'TXTMESSAGE=""'
 			
+			# deal with the basic sources for the patches
+			# involes the main source for each patch and figuring
+			# out the base kernel version to use
 			for patch in $patches
 			do
+				source=""
+				source_url=""
 				source_gpg=""
 				gpg_source_url=""
 				md5sum=""
+				sha1sum=""
+				appliedkernels=""
+				patchversion=""
+				appendversion=""
 				source_patch $patch
 				case "$patch" in
 					LATEST*)
@@ -827,8 +899,12 @@ create_details()
 				if [[ "" != "$patchversion" ]]
 				then
 					basekver="$appliedkernels"
-					echo 'PATCHVER=${patchversion}'
+					echo 'KERNEL_VERSION=${patchversion}'
 					patchversion=""
+				fi
+				if [[ "$appendversion" != "" ]]
+				then
+					version_append_list="${version_append_list}${patch}:${counter} "
 				fi
 				if [[ "$source_gpg" != "" ]] 
 				then
@@ -848,6 +924,16 @@ create_details()
 				fi
 				(( counter++ ))
 			done
+			# deal with the version appending
+			for patch in $version_append_list
+			do
+				echo -n '. ${SPELL_DIRECTORY}/info/patches/*/${PATCH['
+				echo -n ${patch/*:}
+				echo ']}'
+				echo 'KERNEL_VERSION=${KERNEL_VERSION}${appendversion}'
+			done
+			# deal with the signatures for each patch if there is
+			# any
 			for patch in $source_gpg_list_url 
 			do
 				source_gpg=""
@@ -875,8 +961,7 @@ create_details()
                         case "$kver" in
 				2.[0-9]*)
 					. $kernelsdir/${kver}
-					echo "KERNEL_VERSION=$kver"
-					echo '. ${SPELL_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo ". \${SPELL_DIRECTORY}/info/kernels/${kver}"
 					echo "SOURCE=\$source"
 					echo "SOURCE_URL=\$source_url"
 					echo "SOURCE2=\${source}.sign"
@@ -885,8 +970,7 @@ create_details()
 					;;
 				*)
 					. $kernelsdir/${!kver}
-					echo "KERNEL_VERSION=\$$kver"
-					echo '. ${SPELL_DIRECTORY}/info/kernels/${KERNEL_VERSION}'
+					echo ". \${SPELL_DIRECTORY}/info/kernels/\$$kver"
 					echo "SOURCE=\$source"
 					echo "SOURCE_URL=\$source_url"
 					echo "SOURCE2=\${source}.sign"
