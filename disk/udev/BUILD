@@ -3,12 +3,12 @@ make EXTRAS="extras/run_directory extras/cdrom_id" prefix=${INSTALL_ROOT}/ exec_
 
 if [[ "$UDEV_EXTRAS" == 'y' ]]; then
   make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/firmware extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} DEST_DIR="./" V=true 
-fi
+fi &&
 
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   pushd __static__ &&
   # we are not going to use `make install' so no need to set its parameters
-  message "${MESSAGE_COLOR}Building static utilities: $UDEV_STATIC_TARGET${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}Building static utilities: $UDEV_STATIC_TARGET${DEFAULT_COLOR}" &&
   make USE_STATIC=true V=true $OPTS $UDEV_STATIC_TARGET &&
   popd
 fi
