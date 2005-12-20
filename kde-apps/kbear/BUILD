@@ -1,2 +1,2 @@
-touch `find ./ -name *.ui`  &&
-default_build
+touch  `find ./ -name *.ui`           &&
+source  $SECTION_DIRECTORY/KDE_BUILD
