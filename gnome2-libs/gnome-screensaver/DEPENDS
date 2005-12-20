@@ -4,6 +4,16 @@ depends libglade2        &&
 depends libgnomeui       &&
 depends control-center2  &&
 
+optional_depends libexif                                                 \
+                 "--with-libexif"                                        \
+                 "--without-libexif"                                     \
+                 "Enable EXIF support"                                   &&
+
+optional_depends gdm2                                                    \
+                 "--with-gdm-config=/etc/gdm"                            \
+                 "--without-gdm"                                         \
+                 "Enable GDM2 support"                                   &&
+
 optional_depends linux-pam                                               \
                  "--enable-pam --with-pam-prefix=/etc/pam.d"             \
                  "--disable-pam"                                         \

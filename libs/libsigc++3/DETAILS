@@ -1,5 +1,5 @@
            SPELL=libsigc++3
-         VERSION=2.0.16
+         VERSION=2.0.17
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=libsigc++-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/libsigc++-$VERSION
@@ -10,7 +10,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/libsigc++-$VERSION
          ENTERED=20020523
          UPDATED=20050708
       LICENSE[0]=LGPL
-       BUILD_API=2
            SHORT="Callback system for use in widget libraries"
 cat << EOF
 Libsigc++ implements a full callback system for use in widget libraries,

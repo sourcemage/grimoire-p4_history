@@ -1,12 +1,12 @@
            SPELL=devhelp
-         VERSION=0.10
+         VERSION=0.11
           BRANCH=`echo $VERSION | cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${GNOME_URL}/sources/${SPELL}/${BRANCH}/${SOURCE}
    SOURCE_URL[1]=http://afs.codefactory.se/ftp/pub/software/devhelp/source/$SOURCE
    SOURCE_URL[2]=ftp://ftp.codefactory.se/pub/software/devhelp/source/$SOURCE
-     SOURCE_HASH=sha512:13e70c77609f3828daf770fd4560f92cc9a1b3072d9b2bbb447d7a0d78d02a0886b1afb7b46531659a5dc54c85088f4755f48aaf563afe3fe2425d96838fc593
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
         WEB_SITE=http://www.imendio.com/projects/devhelp/
          ENTERED=20020303
