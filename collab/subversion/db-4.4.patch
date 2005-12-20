@@ -1,0 +1,12 @@
+diff -Naur subversion-1.3.0-rc4.orig/configure.in subversion-1.3.0-rc4/configure.in
+--- subversion-1.3.0-rc4.orig/configure.in	2005-12-19 16:34:22.689151392 -0800
++++ subversion-1.3.0-rc4/configure.in	2005-12-19 16:34:35.710171896 -0800
+@@ -267,7 +267,7 @@
+ esac
+ # Look for libdb4.so first:
+ SVN_LIB_BERKELEY_DB($SVN_FS_WANT_DB_MAJOR, $SVN_FS_WANT_DB_MINOR,
+-                    $SVN_FS_WANT_DB_PATCH, [db4 db])
++                    $SVN_FS_WANT_DB_PATCH, [db-4.2 db-4.0 db-4 db-4.1 db4 db])
+
+ dnl I18n -------------------
+
