@@ -1,16 +1,20 @@
 patch -p1 < $SCRIPT_DIRECTORY/javafix.diff &&
 sedit 's|\(docdir\w*=\w*[^/]*\)/docs|\1/share/doc/db|' dist/Makefile.in &&
 
-#  patch -p0 < $SOURCE_CACHE/$SOURCE2 &&
-#  patch -p0 < $SOURCE_CACHE/$SOURCE3 &&
+OPTS="$OPTS $DB_JSUP $TESTS"  &&
 
-#  if echo "$OPTS" | grep -q 'enable-java'; then
-OPTS="$OPTS $JSUP $TESTS"
-if  [  "JSUP"  ==  "enable-java"  ];  then
-  if  [  -z  $JAVA_HOME  ];  then
-    if  [  -f  $TRACK_ROOT/etc/profile.d/java.sh  ];  then
-      source  $TRACK_ROOT/etc/profile.d/java.sh
-    fi
+echo TRACK_ROOT = $TRACK_ROOT > /tmp/db.j &&
+
+if  [  "$DB_JSUP"  ==  "--enable-java"  ];  then
+  echo DB_JSUP = $DB_JSUP >> /tmp/db.j &&
+  if  [  -f  $TRACK_ROOT/etc/profile.d/java.sh  ];  then
+    source  $TRACK_ROOT/etc/profile.d/java.sh  &&
+    echo JAVA_HOME = $JAVA_HOME  >> /tmp/db.j &&
+    echo PATH = $PATH  >> /tmp/db.j
+  else
+    message  "${PROBLEM_COLOR}The provider ${SPELL_COLOR}JAVA${DEFAULT_COLOR}" \
+             "${PROBLEM_COLOR} is not installed.${DEFAULT_COLOR}"             &&
+    return  1
   fi
 fi  &&
 
