@@ -1,3 +1,5 @@
-depends  tcl  &&
-depends  tk   &&
+if test "$RP_PPPOE_GUI" = "y"; then
+  depends  tcl  &&
+  depends  tk
+fi  &&
 depends  ppp
