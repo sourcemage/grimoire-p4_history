@@ -1,60 +1,61 @@
-config_query LATEST_MD5 "Install latest version for Digest-MD5" y
-config_query LATEST_FILESPEC "Install latest version for File-Spec" y
-config_query LATEST_CGI "Install latest version for CGI" y
-config_query LATEST_FILTERSIMPLE "Install latest version for Filter-Simple" y
-config_query LATEST_LIBNET "Install latest version for libnet" y
-config_query LATEST_NETPING "Install latest version for Net-Ping " y
-config_query LATEST_TEXTBALANCED "Install latest version for Text-Balanced" y
-config_query LATEST_MIMEBASE64 "Install latest version for MIME-Base64" y
+config_query LATEST_MD5          "Install latest version of digest-md5"    y  &&
+config_query LATEST_FILESPEC     "Install latest version of file-spec"     y  &&
+config_query LATEST_CGI          "Install latest version of perl-cgi"      y  &&
+config_query LATEST_FILTERSIMPLE "Install latest version of filter-simple" y  &&
+config_query LATEST_LIBNET       "Install latest version of libnet"        y  &&
+config_query LATEST_NETPING      "Install latest version of net-ping "     y  &&
+config_query LATEST_TEXTBALANCED "Install latest version of text-balanced" y  &&
+config_query LATEST_MIMEBASE64   "Install latest version of mime-base64"   y  &&
 
 #Emptying DEPENDS
-echo "" > $SCRIPT_DIRECTORY/DEPENDS
+echo "" > $SCRIPT_DIRECTORY/DEPENDS  &&
 
 if [ $LATEST_MD5 = "y" ]; then
    echo "depends digest-md5 &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
    spell_installed digest-md5 && dispel digest-md5
-fi
+fi  &&
 
 if [ $LATEST_FILESPEC = "y" ]; then
-   echo "depends File-Spec &&" >> $SCRIPT_DIRECTORY/DEPENDS
+   echo "depends file-spec &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
-   spell_installed File-Spec && dispel File-Spec
-fi
+   spell_installed file-spec && dispel file-spec
+fi  &&
 
 if [ $LATEST_CGI = "y" ]; then
    echo "depends perl-cgi &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
    spell_installed perl-cgi && dispel perl-cgi
-fi
+fi  &&
 
 if [ $LATEST_FILTERSIMPLE = "y" ]; then
-   echo "depends Filter-Simple &&" >> $SCRIPT_DIRECTORY/DEPENDS
+   echo "depends filter-simple &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
-   spell_installed Filter-Simple && dispel Filter-Simple
-fi
+   spell_installed filter-simple && dispel filter-simple
+fi  &&
 
 if [ $LATEST_LIBNET = "y" ]; then
    echo "depends perl-libnet &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
    spell_installed perl-libnet && dispel perl-libnet
-fi
+fi  &&
 
 if [ $LATEST_NETPING = "y" ]; then
-   echo "depends Net-Ping &&" >> $SCRIPT_DIRECTORY/DEPENDS
+   echo "depends net-ping &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
-   spell_installed Net-Ping && dispel Net-Ping
-fi
+   spell_installed net-ping && dispel net-ping
+fi  &&
 
 if [ $LATEST_TEXTBALANCED = "y" ]; then
-   echo "depends Text-Balanced &&" >> $SCRIPT_DIRECTORY/DEPENDS
+   echo "depends text-balanced &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
-   spell_installed Text-Balanced && dispel Text-Balanced
-fi
+   spell_installed text-balanced && dispel text-balanced
+fi  &&
 
 if [ $LATEST_MIMEBASE64 = "y" ]; then
-   echo "depends MIME-Base64 &&" >> $SCRIPT_DIRECTORY/DEPENDS
+   echo "depends mime-base64 &&" >> $SCRIPT_DIRECTORY/DEPENDS
 else
-   spell_installed MIME-Base64 && dispel MIME-Base64
-fi
+   spell_installed mime-base64 && dispel mime-base64
+fi  &&
+
 echo "true" >> $SCRIPT_DIRECTORY/DEPENDS
