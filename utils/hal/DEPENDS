@@ -1,20 +1,21 @@
-depends  glib2    &&
-depends  gawk     &&
-depends  libtool  &&
-depends  python   &&
-depends  dbus     &&
-#depends  hotplug  &&
-depends  libcap   &&
-depends  udev     &&
+depends  dbus               &&
+depends  gawk               &&
+depends  glib2              &&
+#depends  hotplug            &&
+depends  intltool           &&
+depends  libcap             &&
+depends  libtool            &&
+depends  python             &&
+depends  udev               &&
 depends  xml-parser-expat   &&
 
 #
 # expat should have --with-expat or --without-expat but there is an bug in configure.
 #
-optional_depends  expat                     \
-                  ""                        \
-                  ""                        \
-                  "Enable expat use"        &&
+optional_depends  expat               \
+                  ""                  \
+                  ""                  \
+                  "Enable expat use"  &&
 
 optional_depends  doxygen                   \
                   "--enable-doxygen-docs"   \
@@ -26,13 +27,12 @@ optional_depends  docbook-utils             \
                   "--disable-docbook-docs"  \
                   "Build Docbook Docs"      &&
 
-optional_depends  libusb                    \
-                  ""  \
-                  ""  \
-                  "usb support"             &&
+optional_depends  libusb         \
+                  ""             \
+                  ""             \
+                  "usb support"  &&
 
-optional_depends  hwdata                    \
+optional_depends  hwdata                             \
                   "--with-hwdata=/usr/share/hwdata"  \
-                  "--without-hwdata"        \
+                  "--without-hwdata"                 \
                   "for PCI/USB hardware data"
-
