@@ -1,3 +1,14 @@
+2005-12-19 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on a Java Developer Kit (needs the jar tool) not just
+	  any JAVA (e.g. Java Runtime Environments won't work)
+	* BUILD: Always source ant.sh and java.sh since ANT_HOME and JAVA_HOME
+	  could be set for a no longer installed program (e.g. changing from
+	  jre1.5-bin to jdk1.5-bin would leave JAVA_HOME set to the wrong location).
+	  Error out if Java is selected, but not available.
+	  JSUP renamed to DB_JSUP, but this file was missed during the rename...
+	  DB_JSUP check needs to check '--enable-java', not 'enable-java'
+	  Missing '$' before DB_JSUP for checking the variable
+
 2005-12-09 Eric Sandall <eric@sandall.us>
 	* TRIGGERS: Added trigger for jre1.5-bin
 
