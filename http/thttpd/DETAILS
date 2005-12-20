@@ -1,12 +1,13 @@
            SPELL=thttpd
          VERSION=2.25b
           SOURCE=$SPELL-$VERSION.tar.gz
-          MD5[0]='20bf46c87deac2a50012f3dea5d33bff'
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.acme.com/software/$SPELL/$SPELL-$VERSION.tar.gz
+#     SOURCE_HASH=sha512:1b7ca7db009b4b2e0700ce8e4d1edb1b7a9edff821400229d33c8ccc095d48ab7cd0dc8e2252e0fd82d45eb52ce2461675d6ca6f8092880ea4931a58b8cbf405
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=BSD
+       BUILD_API=2
         WEB_SITE=http://www.acme.com/software/$SPELL/
-      MAINTAINER=seth@tautology.org
-         LICENSE=BSD
          ENTERED=20021006
          UPDATED=20031028
            SHORT="tiny/turbo/throttling HTTP server"
