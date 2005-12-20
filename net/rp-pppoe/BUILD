@@ -1,4 +1,6 @@
 cd  src        &&
 default_build  &&
-cd  ../gui     &&
-make
+if test "$RP_PPPOE_GUI" = "y"; then
+  cd  ../gui     &&
+  make
+fi
