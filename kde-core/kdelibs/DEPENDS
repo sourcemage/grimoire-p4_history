@@ -87,4 +87,9 @@ optional_depends  doxygen                  \
 optional_depends  libidn                                   \
                   ''                                       \
                   ''                                       \
-                  'for International Domain Name support'
+                  'for International Domain Name support'  &&
+
+optional_depends  acl                               \
+                  '--with-acl'                      \
+                  '--without-acl'                   \
+                  'to manage access control lists'
