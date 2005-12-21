@@ -1,10 +1,20 @@
            SPELL=wine
+if  [  "$WINE_CVS"  ==  "y"  ];  then
+  if  [  "$WINE_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+  else
+         VERSION=cvs
+  fi
+   SOURCE_URL[0]=cvs://:pserver:cvs:cvs@cvs.winehq.org:/home/wine:wine
+   SOURCE_IGNORE=volatile
+else
          VERSION=0.9.3
-          SOURCE=wine-$VERSION.tar.bz2
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://www.ibiblio.org/pub/linux/system/emulators/$SPELL/$SOURCE
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+fi
+          SOURCE=wine-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=LGPL
        BUILD_API=2
         WEB_SITE=http://www.winehq.com/
