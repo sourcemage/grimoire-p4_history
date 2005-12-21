@@ -1,3 +1,3 @@
-OPTS="--disable-debug --disable-warnings --without-hal ${OPTS}"   &&
+OPTS="--disable-debug --disable-warnings ${OPTS}"   &&
 default_build
 
