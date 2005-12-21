@@ -6,7 +6,7 @@ if [ ! "${RELEASE}" = "stable" ]; then
     config_query_option FVWM_OPTS                 \
         "Enable Xrender alpha-blend rendering?" y \
         "--enable-xrender"                        \
-        "--disable-xrender"                       &&
+        "--disable-xrender"
 fi &&
 config_query_option FVWM_OPTS                         \
                         "Enable Session Managment?" y \
