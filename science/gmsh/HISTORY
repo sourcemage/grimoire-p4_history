@@ -1,3 +1,16 @@
+2005-12-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 1.61.3
+	  Use GPG verification
+	  Changed LICENSE to LICENSE[0]
+	  Changed LICENSE2 to LICENSE[1]
+	  Removed MAINTAINER
+	  Shortened SHORT
+	* CONFIGURE: Converted to config_query
+	* DEPENDS: Formatted to Grimoire Guru Handbook
+	  Added --enable option for fltk
+	* PRE_BUILD: Use CONFIGURE response, no need to cd to SOURCE_DIRECTORY
+	* BUILD: Fails to compile with multiple make jobs, use make_single
+
 2005-11-29 Seth Woolley <seth@tautology.org>
 	* DETAILS: MD5 -> SHA512
 
