@@ -1,15 +1,16 @@
+config_query LOCALE_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the native charset data?" y
 #
 # Don't use config_query here or you'll regret it ;)
 # If you do, after a user says 'y' to configuring the locales,
 # every subsequent recast will also pop up the locales menu until
-# glibc is recast with `cast -r glibc`, which would also remove
+# locale is recast with `cast -r locale`, which would also remove
 # the selected locales and you'd need to reconfigure them again...
 #
 if  query  "Would you like to select locales?"  n;  then
   local  GLIBC_LOCALES_LIST                            &&
   persistent_add  GLIBC_LOCALES                        &&
   GLIBC_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales`  &&
-  BACKTITLE="Glibc Configuration"                      &&
+  BACKTITLE="Locale Configuration"                     &&
       TITLE="Locale Selection"                         &&
        HELP="Translated messages are automatically installed, but the locale database that controls other behavior is not.  
 Please select desired locale or locales.

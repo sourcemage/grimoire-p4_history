@@ -1,3 +1,21 @@
+2005-12-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: don't need glibc sources, actually archive stuff
+	* PREPARE, CONFIGURE: moved UTF8 query to CONFIGURE, removed PRE_BUILD
+	* INSTALL: removed cd to glibc source dir
+
+2005-11-23 Pol Vinogradov <vin.public@gmail.com>
+	* DETAILS: changed GLIBC_VERSION not to use $()
+	* TRIGGERS: added to cast after each glibc's cast
+
+2005-11-23 Pol Vinogradov <vin.public@gmail.com>
+	* DETAILS: MD5[0] replaced by SOURCE_HASH, SOURCE_HASH has glibc's hash directly from spell
+	* PREPARE: added message for notifying about ARCHIVE=off
+	* HISTORY: deleted 1 tab ;)
+
+2005-11-21 Pol Vinogradov <vin.public@gmail.com>
+	* CONFIGURE: some cosmetic cleanup
+	* DETAILS: changed GLIBC_VERSION to $(installed_version glibc) to be updated with glibc
+
 2005-09-09 Pol Vinogradov <vin.public@gmail.com>
 	* DETAILS: changed VERSION to GLIBC_VERSION and new VERSION is 
 	  set to 0.0.1
