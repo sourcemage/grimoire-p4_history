@@ -1,5 +1,29 @@
+2005-12-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PRE_BUILD: fix linux/agpgart.h header
+	* DETAILS: set PATCHLEVEL=1 for NPTL glibc
+	* PRE_BUILD, glibc-2.3.4-allow-gcc-4.0-iconvdata.patch,
+	  glibc-2.3.5-allow-gcc4-string.patch,
+	  glibc-2.3.5-allow-gcc4-symbols.patch,
+	  glibc-2.3.5-allow-gcc4-wcstol_l.patch,
+	  glibc-2.3.5-gcc4_fix_elf-1.patch, csu_makefile.patch:
+	  removed unused patches
+
+2005-12-02 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512 (again)
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
 2005-11-28 Seth Woolley <seth@tautology.org>
 	* PRE_BUILD: unpack api update
+
+2005-11-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: fixed SOURCE_URL (it's in the releases dir, not snapshots)
+
+2005-11-04 George Sherwood <george@beernabeer.com>
+	* DETAILS: Updated to 2.3.6
+	* PRE_BUILD: Removed 2.3.5 specific patches
+	* WIP: Added to start testing of 2.3.6
 
 2005-09-13 Seth Woolley <seth@tautology.org>
 	* PRE_BUILD,glibc-2.3.5-fix-_dl_next_tls_modid-assert.patch:
@@ -7,6 +31,17 @@
 
 2005-08-16 George Sherwood <george@beernabeer.com>
 	* locales:  Added ru_RU/KOI8-R
+
+2005-07-30 David Brown <dmlb2000@gmail.com>
+	* BUILD: removed invoke_gcc command
+	* DEPENDS: removed gcc34 from depends
+	* PRE_BUILD: added patching of all added patches
+	* DETAILS: updated to snapshot of glibc
+	* glibc-2.3.4-allow-gcc-4.0-iconvdata.patch: added
+	* glibc-2.3.5-allow-gcc4-string.patch: added
+	* glibc-2.3.5-allow-gcc4-symbols.patch: added
+	* glibc-2.3.5-allow-gcc4-wcstol_l.patch: added
+	* glibc-2.3.5-gcc4_fix_elf-1.patch: added
 
 2005-07-07 Eric Sandall <eric@sandall.us>
 	* DETAILS: Updated headers to 2.6.12.0
