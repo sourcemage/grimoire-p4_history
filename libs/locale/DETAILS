@@ -1,12 +1,6 @@
            SPELL=locale
          VERSION=0.0.1
-   GLIBC_VERSION=`installed_version glibc`
-         ARCHIVE=off
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/glibc-$GLIBC_VERSION
-          SOURCE=glibc-$GLIBC_VERSION.tar.bz2
-   SOURCE_URL[0]=$GNU_URL/glibc/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/glibc/$SOURCE
-     SOURCE_HASH=`cat $SECTION_DIRECTORY/glibc/DETAILS | grep SOURCE_HASH | cut -d = -f 2`
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.gnu.org/software/libc
       LICENSE[0]=LGPL
        BUILD_API=2
