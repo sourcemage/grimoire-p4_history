@@ -226,6 +226,7 @@ generate_host_def()  {
   echo  "#define DefaultCDebugFlags    $CFLAGS"
   echo  "#define OptimizedCDebugFlags  $CFLAGS"
   echo  "#define InstallFontconfigLibrary NO"
+  echo  "#define BuildXterm YES"
 
   # Build only shared libraries, don't create static archive .a files
   echo  '#define ForceNormalLib  NO'

@@ -16,6 +16,12 @@ if  !  grep  -q  InstallFontconfigLibrary  \
          >>  $SOURCE_DIRECTORY/config/cf/host.def
 fi  &&
 
+if  !  grep  -q  BuildXterm  \
+                 $SOURCE_DIRECTORY/config/cf/host.def;  then
+   echo  "#define BuildXterm YES"     \
+         >>  $SOURCE_DIRECTORY/config/cf/host.def
+fi  &&
+
 echo  "#define HasMotif NO"   >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
 echo  "#define HasMotif2 NO"  >>  $SOURCE_DIRECTORY/config/cf/host.def  &&
 
