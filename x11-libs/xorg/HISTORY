@@ -1,3 +1,19 @@
+2005-12-23 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* CONFIGURE, PRE_BUILD: #define BuildXterm YES so xterm gets built
+
+2005-12-22 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 6.9.0
+	* CAN-2005-2495.patch, evdev-for-6.8.2-2.patch,
+	  shared-Xau.patch, xorg-x11-6.8.2-xft-releasefile-crash.patch,
+	  xpm-sec10.diff, BUILD, PRE_BUILD: removed obsolete patches
+	* PREPARE, DETAILS, PRE_BUILD: removed external sis drivers, part of
+	  xorg now
+	* BUILD, DEPENDS, DETAILS: don't require gcc34 anymore
+	* CONFIGURE: updated OFF_INPUT_DRIVERS and *_CARD_DRIVERS according to
+	  http://ftp.x.org/pub/X11R6.9.0/doc/html/RELNOTES3.html
+	* CONFIGURE, PREPARE: removed the MakeDllModules and DoLoadableServer
+	  host.def switches, they're the default on linux now
+
 2005-11-12 Eric Sandall <eric@sandall.us>
 	* PRE_BUILD: Converted to unpack_file() (for GPG/Hash checks)
 	  Use pushd/popd
