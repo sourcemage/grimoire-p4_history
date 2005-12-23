@@ -1,6 +1,6 @@
 #scons install
 install -m 755 src/yafray ${TRACK_ROOT}/usr/bin/yafray &&
-install -m 644 src/gram.yafray ${TRACK_ROOT}/usr/etc/gram.yafray                         &&
+install -m 644 src/gram.yafray ${TRACK_ROOT}/etc/gram.yafray                         &&
 install -m 644 src/yafraycore/libyafraycore.so ${TRACK_ROOT}/usr/lib/libyafraycore.so                    &&
 install -m 644 src/interface/libyafrayplugin.so ${TRACK_ROOT}/usr/lib/libyafrayplugin.so                  &&
 install -d -m 644 ${TRACK_ROOT}/usr/lib/yafray                           &&
