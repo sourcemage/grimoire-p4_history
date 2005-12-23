@@ -4,11 +4,11 @@ DICTIONARY_SPELL=`echo ${SPELL} | cut -d - -f 1`
    LANGUAGE_CODE=`echo ${SPELL} | cut -d - -f 2`
 
    if [  "${USE_SPELING_ORG}"  ==  "y"  ] ; then
-         VERSION=0.2.22
+         VERSION=0.2.24
           SOURCE=new_${DICTIONARY_SPELL}-${LANGUAGE_CODE}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/new_${DICTIONARY_SPELL}-${LANGUAGE_CODE}-${VERSION}
       SOURCE_URL=http://${LANGUAGE_CODE}.speling.org/filer/${SOURCE}
-     SOURCE_HASH=sha512:0bbf82c4fb5bd4609702b8f6f54ff419bfdf218d7302521630e3188831038832a5799a7a1b414287c898435455279263b7f9e678cce9845c9346d1f14cc412ea
+     SOURCE_HASH=sha512:64ac114a2549f34bc1911610eef051e589e69ad51e6229f11fcbeb7acd2ff91428af6dbd3a29961201bac0936abb399af4670a73789bc65e4791bc2e66189834
          WEBSITE=http://fo.speling.org
 else
    ASPELL_BRANCH=5
@@ -30,4 +30,3 @@ fi
 cat << EOF
 Faroese aspell dictionary
 EOF
-
