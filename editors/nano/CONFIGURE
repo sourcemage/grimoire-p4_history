@@ -4,7 +4,7 @@ config_query_list NANO_CONFIG                                                 \
 	"standard" "all" "choose"                                             &&
 if [[ "${NANO_CONFIG}" == "all" ]]
 then NANO_OPTS="--enable-all"
-elif [[ "${NANO_CONFIG}"=="choose" ]] ; then
+elif [[ "${NANO_CONFIG}" == "choose" ]] ; then
 	config_query NANO_LARGE "Enable support for large files?" y
 	config_query NANO_NLS "Enable National Language support?" y
 	config_query NANO_BROWSER "Enable mini file-browser?" y
