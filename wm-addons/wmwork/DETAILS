@@ -1,18 +1,17 @@
            SPELL=wmwork
-         VERSION=0.2.4
+         VERSION=0.2.5
        BUILD_API=2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.godisch.de/debian/wmwork/$SOURCE
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+         SOURCE2=${SOURCE}.asc
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.godisch.de/debian/wmwork/${SOURCE}
+     SOURCE2_URL=${SOURCE_URL}.asc
         WEB_SITE=http://www.godisch.de/debian/wmwork
-     SOURCE_HASH=sha512:0b0beccaf1347c35e727fa0ff61bc41a46c6549ef74b95bacab237bde8e6b9e3c37968cfbdb69d72e305548a85ad2a32bc56e86798eca8298fb357b2ec4d46df
-    MENU_ITEM[0]="wmwork"
-    MENU_EXEC[0]="wmwork"
-    MENU_DESC[0]="Time Mgmt applet"
+      SOURCE_GPG="martin_godisch.gpg:${SOURCE}.asc"
+  SOURCE2_IGNORE=signature
       LICENSE[0]=GPL
          ENTERED=20030610
          UPDATED=20030610
-      MAINTAINER=eschabell@sourcemage.org
            SHORT="WindowMaker dockapp that helps keep track of time."
 cat << EOF
 WindowMaker dockapp that helps keep track of time.
