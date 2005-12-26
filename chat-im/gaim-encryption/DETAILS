@@ -6,10 +6,10 @@ if  [  "$CVS"  ==  "y"  ];  then
   FORCE_DOWNLOAD=1
    SOURCE_IGNORE=volatile
 else
-         VERSION=3.0beta1 
+         VERSION=3.0beta2 
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-     SOURCE_HASH=sha512:168c87b3ddf8192e58a48ee91dbecffe434172bf7fdee97c1a4e989bfa2110164369c4582e6a9ec2a5fd5fbfee672a9f795b4481c0348c9fd02a9716263a6d52
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://gaim-encryption.sourceforge.net/
