@@ -1,14 +1,12 @@
            SPELL=amsn
-         VERSION=0_94
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=0.95
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/amsn/$SOURCE
         WEB_SITE=http://amsn.sourceforge.net
-	BUILD_API=2
-	 ENTERED=
+	 ENTERED=20021220
 	 UPDATED=20040531
-     SOURCE_HASH=sha512:e869b9b2ee00a1b58161bec91c5239357618aa950eb7dfec1b93ff807971a247b0d551974150cf4e40d335ff1f52455ec9523d00e067c783f6b1fcfba8a472b7
-      MAINTAINER=lkthomashk@yahoo.com.hk
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
            SHORT="99.99% identical to MSN messenger, no ads and GPL licensed"
 cat << EOF
 AMSN is an MSN messanger, it's using tk as the base, if you don't want
