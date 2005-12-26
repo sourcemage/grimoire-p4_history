@@ -1,0 +1,323 @@
+diff -ur gxine-0.5.3.orig/aclocal.m4 gxine-0.5.3/aclocal.m4
+--- gxine-0.5.3.orig/aclocal.m4	2005-12-24 21:38:49.000000000 +0000
++++ gxine-0.5.3/aclocal.m4	2005-12-25 13:47:13.000000000 +0000
+@@ -10186,12 +10186,18 @@
+ 
+     if test x"$JS_CFLAGS" = x; then
+ 
+-      # Try libsmjs/libjs
+-
+-      # Note: this could be confused with NGS JS
+       if test x"$JS_CFLAGS" = x; then
++	# Note: this could be confused with NGS JS
+       	PKG_CHECK_MODULES([JS],[libjs],[],[AC_MSG_RESULT([no])])
+       fi
++      if test x"$JS_CFLAGS" = x; then
++      	PKG_CHECK_MODULES([JS],[mozilla-js],[],[AC_MSG_RESULT([no])])
++      fi
++      if test x"$JS_CFLAGS" = x; then
++      	PKG_CHECK_MODULES([JS],[firefox-js],[],[AC_MSG_RESULT([no])])
++      fi
++
++      # Try libsmjs/libjs
+ 
+       if test x"$JS_CFLAGS" = x; then
+ 	dnl Debian
+@@ -10216,10 +10222,6 @@
+       # Try Mozilla
+ 
+       if test x"$JS_CFLAGS" = x; then
+-      	PKG_CHECK_MODULES([JS],[mozilla-js],[],[AC_MSG_RESULT([no])])
+-      fi
+-
+-      if test x"$JS_CFLAGS" = x; then
+ 	dnl Mozilla packages
+ 	dnl /usr/include/mozilla/js/, /usr/lib/libmozjs.so
+ 	spidermonkey_locate([mozilla/js/], [mozjs])
+diff -ur gxine-0.5.3.orig/configure gxine-0.5.3/configure
+--- gxine-0.5.3.orig/configure	2005-12-24 21:38:58.000000000 +0000
++++ gxine-0.5.3/configure	2005-12-25 13:47:19.000000000 +0000
+@@ -26394,10 +26394,8 @@
+ 
+     if test x"$JS_CFLAGS" = x; then
+ 
+-      # Try libsmjs/libjs
+-
+-      # Note: this could be confused with NGS JS
+       if test x"$JS_CFLAGS" = x; then
++	# Note: this could be confused with NGS JS
+ 
+ pkg_failed=no
+ echo "$as_me:$LINENO: checking for JS" >&5
+@@ -26470,6 +26468,154 @@
+ 	:
+ fi
+       fi
++      if test x"$JS_CFLAGS" = x; then
++
++pkg_failed=no
++echo "$as_me:$LINENO: checking for JS" >&5
++echo $ECHO_N "checking for JS... $ECHO_C" >&6
++
++if test -n "$PKG_CONFIG"; then
++    if test -n "$JS_CFLAGS"; then
++        pkg_cv_JS_CFLAGS="$JS_CFLAGS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"mozilla-js\"") >&5
++  ($PKG_CONFIG --exists --print-errors "mozilla-js") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; then
++  pkg_cv_JS_CFLAGS=`$PKG_CONFIG --cflags "mozilla-js" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++if test -n "$PKG_CONFIG"; then
++    if test -n "$JS_LIBS"; then
++        pkg_cv_JS_LIBS="$JS_LIBS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"mozilla-js\"") >&5
++  ($PKG_CONFIG --exists --print-errors "mozilla-js") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; then
++  pkg_cv_JS_LIBS=`$PKG_CONFIG --libs "mozilla-js" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        JS_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "mozilla-js"`
++        else
++	        JS_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "mozilla-js"`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$JS_PKG_ERRORS" >&5
++
++	echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++elif test $pkg_failed = untried; then
++	echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++else
++	JS_CFLAGS=$pkg_cv_JS_CFLAGS
++	JS_LIBS=$pkg_cv_JS_LIBS
++        echo "$as_me:$LINENO: result: yes" >&5
++echo "${ECHO_T}yes" >&6
++	:
++fi
++      fi
++      if test x"$JS_CFLAGS" = x; then
++
++pkg_failed=no
++echo "$as_me:$LINENO: checking for JS" >&5
++echo $ECHO_N "checking for JS... $ECHO_C" >&6
++
++if test -n "$PKG_CONFIG"; then
++    if test -n "$JS_CFLAGS"; then
++        pkg_cv_JS_CFLAGS="$JS_CFLAGS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"firefox-js\"") >&5
++  ($PKG_CONFIG --exists --print-errors "firefox-js") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; then
++  pkg_cv_JS_CFLAGS=`$PKG_CONFIG --cflags "firefox-js" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++if test -n "$PKG_CONFIG"; then
++    if test -n "$JS_LIBS"; then
++        pkg_cv_JS_LIBS="$JS_LIBS"
++    else
++        if test -n "$PKG_CONFIG" && \
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"firefox-js\"") >&5
++  ($PKG_CONFIG --exists --print-errors "firefox-js") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; then
++  pkg_cv_JS_LIBS=`$PKG_CONFIG --libs "firefox-js" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++    fi
++else
++	pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        JS_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "firefox-js"`
++        else
++	        JS_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "firefox-js"`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$JS_PKG_ERRORS" >&5
++
++	echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++elif test $pkg_failed = untried; then
++	echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++else
++	JS_CFLAGS=$pkg_cv_JS_CFLAGS
++	JS_LIBS=$pkg_cv_JS_LIBS
++        echo "$as_me:$LINENO: result: yes" >&5
++echo "${ECHO_T}yes" >&6
++	:
++fi
++      fi
++
++      # Try libsmjs/libjs
+ 
+       if test x"$JS_CFLAGS" = x; then
+ 			echo "$as_me:$LINENO: checking for smjs/jsapi.h" >&5
+@@ -26763,80 +26909,6 @@
+       # Try Mozilla
+ 
+       if test x"$JS_CFLAGS" = x; then
+-
+-pkg_failed=no
+-echo "$as_me:$LINENO: checking for JS" >&5
+-echo $ECHO_N "checking for JS... $ECHO_C" >&6
+-
+-if test -n "$PKG_CONFIG"; then
+-    if test -n "$JS_CFLAGS"; then
+-        pkg_cv_JS_CFLAGS="$JS_CFLAGS"
+-    else
+-        if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"mozilla-js\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "mozilla-js") 2>&5
+-  ac_status=$?
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); }; then
+-  pkg_cv_JS_CFLAGS=`$PKG_CONFIG --cflags "mozilla-js" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+-    fi
+-else
+-	pkg_failed=untried
+-fi
+-if test -n "$PKG_CONFIG"; then
+-    if test -n "$JS_LIBS"; then
+-        pkg_cv_JS_LIBS="$JS_LIBS"
+-    else
+-        if test -n "$PKG_CONFIG" && \
+-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"mozilla-js\"") >&5
+-  ($PKG_CONFIG --exists --print-errors "mozilla-js") 2>&5
+-  ac_status=$?
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); }; then
+-  pkg_cv_JS_LIBS=`$PKG_CONFIG --libs "mozilla-js" 2>/dev/null`
+-else
+-  pkg_failed=yes
+-fi
+-    fi
+-else
+-	pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        JS_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "mozilla-js"`
+-        else
+-	        JS_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "mozilla-js"`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$JS_PKG_ERRORS" >&5
+-
+-	echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6
+-elif test $pkg_failed = untried; then
+-	echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6
+-else
+-	JS_CFLAGS=$pkg_cv_JS_CFLAGS
+-	JS_LIBS=$pkg_cv_JS_LIBS
+-        echo "$as_me:$LINENO: result: yes" >&5
+-echo "${ECHO_T}yes" >&6
+-	:
+-fi
+-      fi
+-
+-      if test x"$JS_CFLAGS" = x; then
+ 			echo "$as_me:$LINENO: checking for mozilla/js/jsapi.h" >&5
+ echo $ECHO_N "checking for mozilla/js/jsapi.h... $ECHO_C" >&6
+ if test "${ac_cv_header_mozilla_js_jsapi_h+set}" = set; then
+diff -ur gxine-0.5.3.orig/m4/_js.m4 gxine-0.5.3/m4/_js.m4
+--- gxine-0.5.3.orig/m4/_js.m4	2005-12-24 19:14:36.000000000 +0000
++++ gxine-0.5.3/m4/_js.m4	2005-12-25 13:47:03.000000000 +0000
+@@ -41,12 +41,18 @@
+ 
+     if test x"$JS_CFLAGS" = x; then
+ 
+-      # Try libsmjs/libjs
+-
+-      # Note: this could be confused with NGS JS
+       if test x"$JS_CFLAGS" = x; then
++	# Note: this could be confused with NGS JS
+       	PKG_CHECK_MODULES([JS],[libjs],[],[AC_MSG_RESULT([no])])
+       fi
++      if test x"$JS_CFLAGS" = x; then
++      	PKG_CHECK_MODULES([JS],[mozilla-js],[],[AC_MSG_RESULT([no])])
++      fi
++      if test x"$JS_CFLAGS" = x; then
++      	PKG_CHECK_MODULES([JS],[firefox-js],[],[AC_MSG_RESULT([no])])
++      fi
++
++      # Try libsmjs/libjs
+ 
+       if test x"$JS_CFLAGS" = x; then
+ 	dnl Debian
+@@ -71,10 +77,6 @@
+       # Try Mozilla
+ 
+       if test x"$JS_CFLAGS" = x; then
+-      	PKG_CHECK_MODULES([JS],[mozilla-js],[],[AC_MSG_RESULT([no])])
+-      fi
+-
+-      if test x"$JS_CFLAGS" = x; then
+ 	dnl Mozilla packages
+ 	dnl /usr/include/mozilla/js/, /usr/lib/libmozjs.so
+ 	spidermonkey_locate([mozilla/js/], [mozjs])
