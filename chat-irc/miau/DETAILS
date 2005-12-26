@@ -1,14 +1,13 @@
            SPELL=miau
-         VERSION=0.5.4
+         VERSION=0.6.0
           SOURCE=${SPELL}-${VERSION}.tar.bz2
    SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
-     SOURCE_HASH=sha512:68dc64bce764f73e11b0fddc350ae79c6a06b7a98947c86c2ff41f96fc85516796db9f27a273016fd49b1f913340fc0e7ab39601bab80ac46028782268b1c3d1
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
         WEB_SITE=http://miau.sourceforge.net/
          ENTERED=20050802
          UPDATED=20050802
       LICENSE[0]=GPL
-       BUILD_API=2
            SHORT="A small but fully featured IRC bouncer."
 cat << EOF
 miau is a small, fully featured IRC bouncer. Features include so-called
