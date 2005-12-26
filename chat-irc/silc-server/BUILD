@@ -1,5 +1,3 @@
-create_account "silcd"  &&
-
  if [ "$IPV6" == "y" ]
       then OPTS="$OPTS --enable-ipv6"
  fi
