@@ -1,0 +1,41 @@
+diff -u -r1.44 -r1.45
+--- libetpan/etpan-ng/src/etpan-thread-manager.c	2005/02/06 01:10:00	1.44
++++ libetpan/etpan-ng/src/etpan-thread-manager.c	2005/12/26 16:27:07	1.45
+@@ -30,7 +30,7 @@
+  */
+ 
+ /*
+- * $Id: etpan-thread-manager.c,v 1.44 2005/02/06 01:10:00 hoa Exp $
++ * $Id: etpan-thread-manager.c,v 1.45 2005/12/26 16:27:07 hoa Exp $
+  */
+ 
+ #include "etpan-thread-manager.h"
+@@ -2876,7 +2876,7 @@
+   r = etpan_get_mime(op->thread_data->manager->app, folder,
+       content, content_len, 0, &attached_mime);
+ #endif
+-  r = mailprivacy_get_mime(privacy, 0, content, content_len, &attached_mime);
++  r = mailprivacy_get_mime(privacy, 0, 1, content, content_len, &attached_mime);
+   
+ #if 0
+   etpan_msg_fetch_result_free(op->thread_data->manager->app,
+diff -u -r1.32 -r1.33
+--- libetpan/etpan-ng/src/etpan-msg-list-app.c	2005/02/06 23:48:56	1.32
++++ libetpan/etpan-ng/src/etpan-msg-list-app.c	2005/12/26 16:27:07	1.33
+@@ -30,7 +30,7 @@
+  */
+ 
+ /*
+- * $Id: etpan-msg-list-app.c,v 1.32 2005/02/06 23:48:56 hoa Exp $
++ * $Id: etpan-msg-list-app.c,v 1.33 2005/12/26 16:27:07 hoa Exp $
+  */
+ 
+ #include "etpan-msg-list-app.h"
+@@ -1847,6 +1847,7 @@
+   state->folder_name = NULL;
+   state->path_description = NULL;
+   state->last_poll_date = (time_t) -1;
++  state->new_selection = 0;
+   
+   return NO_ERROR;
+ 

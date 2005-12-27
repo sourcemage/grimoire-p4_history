@@ -1,5 +1,8 @@
-default_pre_build &&
-cd ${SOURCE_DIRECTORY} &&
+default_pre_build             &&
+cd ${SOURCE_DIRECTORY}        &&
 if [ "$CVS" = "y" ]; then
   NOCONFIGURE=Y ./autogen.sh
+fi                            &&
+if [ "$CVS" = "n" ]; then
+  patch -p2 < ${SCRIPT_DIRECTORY}/api.fix.patch
 fi
