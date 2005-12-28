@@ -1,7 +1,8 @@
 default_pre_build &&
-if [ "$LIBEXIF_CVS" == "y" ]; then
+#if [ "$LIBEXIF_CVS" == "y" ]; then
   cd "$SOURCE_DIRECTORY" &&
-  NOCONFIGURE=ON ./autogen.sh
-else
-patch -p0 <$SCRIPT_DIRECTORY/patch-libexif-exif-data.c
-fi
+  sedit "s/doc b/b/" Makefile.am &&
+  NOCONFIGURE=ON ./autogen.sh &&
+#else
+#fi  &&
+patch -p0 <$SCRIPT_DIRECTORY/exif-utils.h.patch  
