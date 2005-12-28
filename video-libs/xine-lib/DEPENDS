@@ -22,6 +22,10 @@ optional_depends  "ffmpeg-cvs" "--with-external-ffmpeg=/usr" "" "to use external
 optional_depends  "libtheora" "" "" "for OGG/Theora video support"  &&
 optional_depends  "libdvdcss"  ""  ""  "to play encrypted DVDs"  &&
 optional_depends  "speex"  ""  ""  "for speech compression"  &&
+optional_depends  "imagemagick"            \
+                  "--enable-imagemagick"   \
+                  "--disable-imagemagick"  \
+                  "for image loader"       &&
 
 # input plugins
 optional_depends  "gnome-vfs2"  ""  ""  "for gnome-vfs input support"  &&
