@@ -1,9 +1,10 @@
-depends  xml-parser-expat &&
-depends  gettext          &&
-depends  poppler          &&
-depends  libgnomeprintui  &&
-depends  gnome-vfs2       &&
-depends  dbus             &&
+depends  dbus              &&
+depends  gettext           &&
+depends  gnome-doc-utils   &&
+depends  gnome-vfs2        &&
+depends  libgnomeprintui   &&
+depends  poppler           &&
+depends  xml-parser-expat  &&
 
 optional_depends  POSTSCRIPT-INTERPRETER              \
                   ""                                  \
@@ -28,4 +29,4 @@ optional_depends  djvulibre                           \
 optional_depends  nautilus2                           \
                   "--enable-nautilus"                 \
                   "--disable-nautilus"                \
-                  "Enable Nautilus plugin"            
+                  "Enable Nautilus plugin"
