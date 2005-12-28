@@ -1,4 +1,4 @@
 default_pre_build       &&
 cd ${SOURCE_DIRECTORY}  &&
-
-patch -p1 < $SCRIPT_DIRECTORY/053-ffjs-fix.patch    
+patch -p0 < $SCRIPT_DIRECTORY/spidermonkey-hack.patch  &&
+autoconf
