@@ -216,18 +216,7 @@ list_usr_src()
 			if [ -d $linuxsrc ] && [ -f $linuxsrc/.spell-config.p ]
 			then
 				echo "$linuxsrc"
-				if grep -q 'LATEST' $linuxsrc/.spell-config.p
-				then
-					tmpkver=`get_usr_src_kver $linuxsrc/.spell-config.p`
-					if [[ "${BUILD_DIRECTORY}/linux-$tmpkver" == "$linuxsrc" ]]
-					then
-						echo "\"Source Tree is updated\""
-					else
-						echo "\"Source Tree updating to $tmpkver\""
-					fi
-				else
-					echo "\"Source Tree\""
-				fi
+				echo "\"Source Tree\""
 				echo "\"Use ${linuxsrc} as the source tree\""
 			fi
 		done
@@ -724,24 +713,44 @@ need updating" \
 		retval="$?"
 		if [[ "$retval" == "0" && "$old_src_tree" != "No" ]]
 		then
-			cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
-			tmp=$old_src_tree
-			persistent_load
-			persistent_add old_src_tree
-			mode="oldktree"
-			old_src_tree=$tmp
-			reconf="true"
-			persistent_remove MAKEMODE
-			persistent_remove UPDATE_BL
-			persistent_remove CONFIG_KERNEL
-			persistent_save
-			persistent_load
+			if [[ "${old_src_tree}" == "${BUILD_DIRECTORY}/linux" && -L "${old_src_tree}" ]]
+			then
+				old_src_tree="`readlink -f ${old_src_tree}`"
+			fi
+			if [[ "${old_src_tree}" != "${BUILD_DIRECTORY}/linux-`get_usr_src_kver ${old_src_tree}/.spell-config.p`" ]]
+			then
+				if dialog --yesno "${old_src_tree} will be updated to `get_usr_src_kver ${old_src_tree}/.spell-config.p`.\nDo you want to continue?" 0 0
+				then
+					load_old_src_tree
 
-			break
+					break
+				fi
+			else
+				load_old_src_tree
+
+				break
+			fi
 		else
 			break
 		fi
 	done
+}
+
+load_old_src_tree()
+{
+	local tmp
+	cp ${old_src_tree}/.spell-config.p ${SPELL_CONFIG}.p
+	tmp=$old_src_tree
+	persistent_load
+	persistent_add old_src_tree
+	mode="oldktree"
+	old_src_tree=$tmp
+	reconf="true"
+	persistent_remove MAKEMODE
+	persistent_remove UPDATE_BL
+	persistent_remove CONFIG_KERNEL
+	persistent_save
+	persistent_load
 }
 
 # if any of the patches needs any other patches applied before it is
