@@ -1,0 +1,10 @@
+unset REBUILD_ALL
+
+config_query DOCU        "Build and install documentation?" y
+
+if [ $(gaze -q installed gnustep-base) != $VERSION ];
+then 
+    message "${MESSAGE_COLOR} Changes in gnustep base lib (AppKit) require"
+    message "a full gnustep world rebuild. ${DEFAULT_COLOR}"
+    config_query REBUILD_ALL "Do you want me to rebuild all gnustep spells?" n
+fi
