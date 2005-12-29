@@ -1,0 +1,4 @@
+if [ -n "$REBUILD_ALL" -a "$REBUILD_ALL" = "y" ]; 
+then
+    on_cast gnustep-base "run_script ${SCRIPT_DIRECTORY}/rebuild_gnustepworld"
+fi
