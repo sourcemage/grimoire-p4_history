@@ -1,0 +1,13 @@
+#!/bin/sh
+
+SPELL_LIST=""
+
+for  spell  in `gaze section gnustep-libs; gaze section gnustep-apps` 
+do
+  if [ $spell != gnustep-base ]
+  then
+      gaze installed  $spell  &&  SPELL_LIST="$SPELL_LIST $spell"
+  fi
+done
+
+cast -c $SPELL_LIST
