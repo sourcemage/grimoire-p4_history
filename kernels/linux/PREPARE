@@ -568,6 +568,12 @@ new_tree_menu()
 # find all patches list the directories and LATEST patches for the kernel version $1
 patch_list()
 {
+	local tmp
+	local found
+	local patchvers
+	local patchver
+	local patches
+	local patch
 	. $latestdefaults
 	patches="`ls -1 $patchesdir/`"
 	for patch in $patches
