@@ -1,13 +1,10 @@
 SPELL_LIST=""
 
-if [ $(gaze -q installed gnustep-base) != $VERSION ];
+if [ $(installed_version gnustep-base) != $VERSION ];
 then
-    for  spell  in `gaze section gnustep-libs; gaze section gnustep-apps` 
+    for  spell  in `gaze depends gnustep-base 1|cut -d":" -f1` 
     do
-      if [ $spell != gnustep-base ]
-      then
-	  gaze installed  $spell  &&  SPELL_LIST="$SPELL_LIST $spell"
-      fi
+      SPELL_LIST="$SPELL_LIST $spell"
     done
-    cast -c $SPELL_LIST
+    up_trigger $SPELL_LIST
 fi
