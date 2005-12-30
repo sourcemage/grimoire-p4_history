@@ -6,12 +6,7 @@ fi                                             &&
 
 depends cracklib                               &&
 
-optional_depends  tetex                     \
-                  ""                        \
-                  ""                        \
-                  "to build documentation"     &&
-
-optional_depends  linuxdoc-tools            \
-                  ""                        \
-                  ""                        \
-                  "to build documentation"
+if [ "${PAM_DOCS}" == "y" ]; then
+  depends tetex                                &&
+  depends linuxdoc-tools                       
+fi 
