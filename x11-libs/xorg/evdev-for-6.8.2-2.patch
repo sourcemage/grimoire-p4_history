@@ -1,8 +1,3 @@
- config/cf/linux.cf                                |    8 
- programs/Xserver/hw/xfree86/input/evdev/Imakefile |   24 
- programs/Xserver/hw/xfree86/input/evdev/evdev.c   |  698 ++++++++++++++++++++++
- 3 files changed, 729 insertions(+), 1 deletion(-)
-
 --- programs/Xserver/hw/xfree86/input/evdev/Imakefile.orig	2005-05-12 22:41:01.000000000 -0400
 +++ programs/Xserver/hw/xfree86/input/evdev/Imakefile	2005-05-12 22:41:27.000000000 -0400
 @@ -0,0 +1,25 @@
@@ -31,9 +26,9 @@
 +DependTarget()
 +
 +InstallDriverSDKObjectModule($(DRIVER),$(DRIVERSDKMODULEDIR),input)
---- programs/Xserver/hw/xfree86/input/evdev/evdev.c.orig	2005-05-12 22:41:01.000000000 -0400
-+++ programs/Xserver/hw/xfree86/input/evdev/evdev.c	2005-05-12 22:41:27.000000000 -0400
-@@ -0,0 +1,698 @@
+--- programs/Xserver/hw/xfree86/input/evdev/evdev.c.orig	2005-12-30 18:27:47.000000000 +0100
++++ programs/Xserver/hw/xfree86/input/evdev/evdev.c	2005-09-24 00:32:23.000000000 +0200
+@@ -0,0 +1,751 @@
 +/*
 + * Copyright © 2004 Red Hat, Inc.
 + *
@@ -59,6 +54,10 @@
 + * Author:  Kristian Høgsberg (krh@redhat.com)
 + */
 +
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
 +#include <X11/keysym.h>
 +#include <X11/XF86keysym.h>
 +#include <X11/extensions/XIproto.h>
@@ -81,6 +80,20 @@
 +
 +#include <xf86Module.h>
 +
++/* 2.4 compatibility */
++#ifndef EVIOCGRAB
++#define EVIOCGRAB _IOW('E', 0x90, int)
++#endif
++
++#ifndef BTN_TASK
++#define BTN_TASK 0x117
++#endif
++
++#ifndef EV_SYN
++#define EV_SYN EV_RST
++#endif
++/* end compat */
++
 +#define ArrayLength(a) (sizeof(a) / (sizeof((a)[0])))
 +
 +#define MIN_KEYCODE 8
@@ -97,6 +110,10 @@
 +#define MODEFLAG	8
 +#define COMPOSEFLAG	16
 +
++typedef struct {
++    int kernel24;
++} EvdevRec, *EvdevPtr;
++
 +static int wheel_up_button = 4;
 +static int wheel_down_button = 5;
 +static int wheel_left_button = 6;
@@ -111,6 +128,22 @@
 +        xf86PostButtonEvent(pInfo->dev, 0, button, 1, 0, 0);
 +        xf86PostButtonEvent(pInfo->dev, 0, button, 0, 0, 0);
 +    }
++}
++
++static void
++PostKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value)
++{
++    /* filter repeat events for chording keys */
++    if (value == 2 &&
++        (ev->code == KEY_LEFTCTRL || ev->code == KEY_RIGHTCTRL ||
++         ev->code == KEY_LEFTSHIFT || ev->code == KEY_RIGHTSHIFT ||
++         ev->code == KEY_LEFTALT || ev->code == KEY_RIGHTALT ||
++         ev->code == KEY_LEFTMETA || ev->code == KEY_RIGHTMETA ||
++         ev->code == KEY_CAPSLOCK || ev->code == KEY_NUMLOCK ||
++         ev->code == KEY_SCROLLLOCK)) /* XXX windows keys? */
++        return;
++
++    xf86PostKeyboardEvent(pInfo->dev, ev->code + MIN_KEYCODE, value);
 +}
 +
 +static void
@@ -178,13 +211,13 @@
 +            case BTN_EXTRA:
 +            case BTN_FORWARD:
 +            case BTN_BACK:
++            case BTN_TASK:
 +                xf86PostButtonEvent(pInfo->dev, 0, ev.code - BTN_LEFT + 5,
 +                                    value, 0, 0);
 +                break;
 +
 +            default:
-+                xf86PostKeyboardEvent(pInfo->dev,
-+                                      ev.code + MIN_KEYCODE, value);
++                PostKbdEvent(pInfo, &ev, value);
 +            }
 +            break;
 +
@@ -464,23 +497,14 @@
 +EvdevAddButtonClass(DeviceIntPtr device)
 +{
 +    CARD8 map[32];
-+    char key_bitmask[(KEY_MAX + 7) / 8];
 +    InputInfoPtr pInfo;
-+    int i = 0, n = 0;
++    int i;
 +
 +    pInfo = device->public.devicePrivate;
 +
-+    if (ioctl(pInfo->fd,
-+        EVIOCGBIT(EV_KEY, sizeof(key_bitmask)), key_bitmask) < 0) {
-+            xf86Msg(X_ERROR, "ioctl EVIOCGBIT failed: %s\n", strerror(errno));
-+            n = ArrayLength(map);
-+    } else {
-+        for (n = 0; n < ArrayLength(map); n++)
-+            if (!TestBit(n + BTN_MOUSE, key_bitmask))
-+                break;
-+    }
++    /* FIXME: count number of actual buttons */
 +
-+    for (i = 0; i < n; i++)
++    for (i = 0; i < ArrayLength(map); i++)
 +        map[i] = i;
 +
 +    /* Linux reports BTN_LEFT, BTN_RIGHT, BTN_MIDDLE, which should map
@@ -488,7 +512,7 @@
 +    map[2] = 3;
 +    map[3] = 2;
 +
-+    if (!InitButtonClassDeviceStruct(device, n, map))
++    if (!InitButtonClassDeviceStruct(device, ArrayLength(map), map))
 +        return !Success;
 +
 +    pInfo->flags |= XI86_POINTER_CAPABLE | XI86_SEND_DRAG_EVENTS;
@@ -522,8 +546,10 @@
 +EvdevProc(DeviceIntPtr device, int what)
 +{
 +    InputInfoPtr pInfo;
++    EvdevPtr pEvdev;
 +
 +    pInfo = device->public.devicePrivate;
++    pEvdev = pInfo->private;
 +
 +    switch (what)
 +    {
@@ -531,7 +557,7 @@
 +	return EvdevInit(device);
 +
 +    case DEVICE_ON:
-+        if (ioctl(pInfo->fd, EVIOCGRAB, (void *)1))
++        if (!pEvdev->kernel24 && ioctl(pInfo->fd, EVIOCGRAB, (void *)1))
 +            xf86Msg(X_WARNING, "%s: Grab failed (%s)\n", pInfo->name,
 +                    strerror(errno));
 +        xf86AddEnabledDevice(pInfo);
@@ -539,7 +565,7 @@
 +	break;
 +	    
 +    case DEVICE_OFF:
-+        if (ioctl(pInfo->fd, EVIOCGRAB, (void *)0))
++        if (!pEvdev->kernel24 && ioctl(pInfo->fd, EVIOCGRAB, (void *)0))
 +            xf86Msg(X_WARNING, "%s: Release failed (%s)\n", pInfo->name,
 +                    strerror(errno));
 +        xf86RemoveEnabledDevice(pInfo);
@@ -567,23 +593,31 @@
 +        return FALSE;
 +}
 +
-+static void
++static int
 +EvdevProbe(InputInfoPtr pInfo)
 +{
 +    char key_bitmask[(KEY_MAX + 7) / 8];
 +    char rel_bitmask[(REL_MAX + 7) / 8];
 +    int i, has_axes, has_buttons, has_keys;
++    EvdevPtr pEvdev = pInfo->private;
++
++    if (ioctl(pInfo->fd, EVIOCGRAB, (void *)1) && errno == EINVAL) {
++        /* keyboards are unsafe in 2.4 */
++        pEvdev->kernel24 = 1;
++    } else {
++        ioctl(pInfo->fd, EVIOCGRAB, (void *)0);
++    }
 +
 +    if (ioctl(pInfo->fd, 
 +              EVIOCGBIT(EV_REL, sizeof(rel_bitmask)), rel_bitmask) < 0) {
 +        xf86Msg(X_ERROR, "ioctl EVIOCGBIT failed: %s\n", strerror(errno));
-+        return;
++        return 1;
 +    }
 +
 +    if (ioctl(pInfo->fd,
 +              EVIOCGBIT(EV_KEY, sizeof(key_bitmask)), key_bitmask) < 0) {
 +        xf86Msg(X_ERROR, "ioctl EVIOCGBIT failed: %s\n", strerror(errno));
-+        return;
++        return 1;
 +    }
 +
 +    has_axes = FALSE;
@@ -616,19 +650,25 @@
 +	    XI86_CONFIGURED;
 +	pInfo->type_name = XI_MOUSE;
 +    }
-+    
++
 +    if (has_keys) {
-+        xf86Msg(X_INFO, "%s: Configuring as keyboard\n", pInfo->name);
-+	pInfo->flags |= XI86_KEYBOARD_CAPABLE | XI86_CONFIGURED;
-+	pInfo->type_name = XI_KEYBOARD;
++        if (pEvdev->kernel24) {
++            xf86Msg(X_INFO, "%s: Kernel < 2.6 is too old, ignoring keyboard\n",
++                    pInfo->name);
++        } else {
++            xf86Msg(X_INFO, "%s: Configuring as keyboard\n", pInfo->name);
++            pInfo->flags |= XI86_KEYBOARD_CAPABLE | XI86_CONFIGURED;
++	    pInfo->type_name = XI_KEYBOARD;
++        }
 +    }
 +
 +    if ((pInfo->flags & XI86_CONFIGURED) == 0) {
 +        xf86Msg(X_WARNING, "%s: Don't know how to use device\n",
 +		pInfo->name);
++        return 1;
 +    }
 +
-+    return;
++    return 0;
 +}
 +
 +static InputInfoPtr
@@ -637,6 +677,7 @@
 +    InputInfoPtr pInfo;
 +    MessageType deviceFrom = X_CONFIG;
 +    const char *device;
++    EvdevPtr pEvdev;
 +
 +    if (!(pInfo = xf86AllocateInput(drv, 0)))
 +	return NULL;
@@ -659,12 +700,17 @@
 +    pInfo->always_core_feedback = 0;
 +    pInfo->conf_idev = dev;
 +
++    if (!(pEvdev = xcalloc(sizeof(*pEvdev), 1)))
++        return pInfo;
++    pInfo->private = pEvdev;
++
 +    xf86CollectInputOptions(pInfo, NULL, NULL);
 +    xf86ProcessCommonOptions(pInfo, pInfo->options); 
 +
 +    device = xf86CheckStrOption(dev->commonOptions, "Device", NULL);
 +    if (!device) {
 +        xf86Msg(X_ERROR, "%s: No device specified.\n", pInfo->name);
++        xfree(pEvdev);
 +        return pInfo;
 +    }
 +	
@@ -676,15 +722,17 @@
 +
 +    if (pInfo->fd < 0) {
 +        xf86Msg(X_ERROR, "Unable to open evdev device \"%s\".\n", device);
++        xfree(pEvdev);
 +        return pInfo;
 +    }
 +
-+    EvdevProbe(pInfo);
++    if (EvdevProbe(pInfo))
++        xfree(pEvdev);
 +
 +    return pInfo;
 +}
 +
-+InputDriverRec EVDEV = {
++_X_EXPORT InputDriverRec EVDEV = {
 +    1,
 +    "evdev",
 +    NULL,
@@ -725,7 +773,7 @@
 +    {0, 0, 0, 0}
 +};
 +
-+XF86ModuleData evdevModuleData =
++_X_EXPORT XF86ModuleData evdevModuleData =
 +{
 +    &EvdevVersionRec,
 +    EvdevPlug,
