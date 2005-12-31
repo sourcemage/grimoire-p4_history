@@ -39,8 +39,4 @@ then
 		message "${PROBLEM_COLOR}Abandoning update bootloader script${DEFAULT_COLOR}"
 	fi
 fi
-echo '' && echo ''
-message "${MESSAGE_COLOR}The kernel will now install the kernel as ${PROBLEM_COLOR}vmlinu\[zx\]${MESSAGE_COLOR} not vmlinubz as per bug 8440${DEFAULT_COLOR}" &&
-echo '' && echo '' &&
-printf '\a' && sleep 3 &&
 cp  ${SPELL_CONFIG}.p ${LINUX_SOURCE_DIRECTORY}/.spell-config.p

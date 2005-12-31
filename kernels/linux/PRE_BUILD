@@ -52,7 +52,7 @@ case "${mode}" in
 	"newktree")
 		mk_source_dir $LINUX_SOURCE_DIRECTORY &&
 		cd $LINUX_SOURCE_DIRECTORY &&
-		unpack_file '' &&
+		unpack_file '' || return 1
 		mv ./*/* ./ &&
 		. ${SPELL_DIRECTORY}/latest.defaults &&
 		local count=3
@@ -67,16 +67,17 @@ case "${mode}" in
 			cd ${LINUX_SOURCE_DIRECTORY} &&
 			if [[ ! -z "$source" ]]
 			then
-				unpack_file "$count" &&
+				unpack_file "$count" || return 1
 				cp -v ${SOURCE_CACHE}/${source} ./ &&
 				linux_new_uncompress ./${source} &&
 				message "${MESSAGE_COLOR}Patching ${!patch}${DEFAULT_COLOR}" &&
-				patch -p${pval} <${!patch} || return 1
-			fi
+				patch -p${pval} <${!patch}
+			fi &&
 			(( count++ ))
 			source="SOURCE${count}"
 			source_check="PATCH[${count}]"
 		done &&	
+		chmod og-w -R $LINUX_SOURCE_DIRECTORY &&
 		make mrproper 
 		;;
 	"oldktree")

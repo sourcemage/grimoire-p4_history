@@ -1,3 +1,130 @@
+2005-12-29 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.4.33-pre1
+	* info/patches/PRE_2_4/patch-2.4.33-pre1: added
+	* PREPARE: added more local declairations
+
+2005-12-28 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14.5
+	* info/patches/maintenance_patches/patch-2.6.14.5: added
+
+2005-12-28 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.15-rc7
+	* info/patches/PRE_2_6/patch-2.6.15-rc7: added
+
+2005-12-20 David Brown <dmlb2000@gmail.com>
+	* PREPARE: removed the output of the kernel tree update for old_src_tree
+	  and added a yesno dialog that asks if the user would like the tree to
+	  be updated
+
+2005-12-18 David Brown <dmlb2000@gmail.com>
+	* DETAILS: removed PATCHVER switched to just using KERNEL_VERSION in the
+	  details.defaults file for handling the version of the spell
+	* PREPARE: added documentation for variables and the appendversion var
+	  for patch files so that the skas patches can work
+	* info/patches/skas_patches/skas-2.6.14-v8.2.patch: added appendversion
+	  and source_gpg information
+	* info/patches-sigs/skas_patches/skas_2.6.14-v8.2.patch.bz2.sig: added
+
+2005-12-18 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.15-rc6
+	* info/patches/PRE_2_6/patch-2.6.15-rc6: added
+
+2005-12-15 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.15-rc5-mm3
+	* info/patches/mm_patches/2.6.15-rc5-mm3: added
+
+2005-12-14 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14-cks7
+	* info/patches/ck_server_patches/patch-2.6.14-cks7: added
+
+2005-12-14 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14-ck7
+	* info/patches/ck_patches/patch-2.6.14-ck7: added
+
+2005-12-14 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14.4
+	* info/patches/maintenance_patches/patch-2.6.14.4: added
+
+2005-12-11 David Brown <dmlb2000@gmail.com>
+	* info/patches-sigs/sws2_patches/software-suspend-2.2-rc14-for-2.6.15-rc5.patch.bz2.sig: added
+	* info/patches/sws2_patches/software-suspend-2.2-rc14-for-2.6.15-rc5.patch: added
+
+2005-12-11 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.15-rc5-mm2
+	* info/patches/mm_patches/2.6.15-rc5-mm2: added
+
+2005-12-05 David Brown <dmlb2000@gmail.com>
+	* info/patches-sigs/sws2_patches/software-suspend-2.2-rc14-for-2.6.14.patch.bz2.sig: added
+	* info/patches/sws2_patches/software-suspend-2.2-rc14-for-2.6.14.patch: added
+
+2005-12-04 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.15-rc5-mm1
+	* info/patches/mm_patches/2.6.15-rc5-mm1: added
+
+2005-12-04 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.15-rc5
+	* info/patches/PRE_2_6/patch-2.6.15-rc5: added
+
+2005-11-30 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.15-rc4
+	* info/patches/PRE_2_6/patch-2.6.15-rc4: added
+
+2005-11-30 David Brown <dmlb2000@gmail.com>
+	* info/patches/tarpit_patches/tarpit-for-2.6.14-1.patch: added
+	* info/patches-sigs/tarpit_patches/tarpit-for-2.6.14-1.patch.bz2: added
+
+2005-11-30 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.15-rc3-mm1
+	* info/patches/mm_patches/2.6.15-rc3-mm1: added
+
+2005-11-28 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.15-rc3
+	* info/patches/PRE_2_6/patch-2.6.15-rc3: added
+
+2005-11-28 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to grsecurity-2.1.7-2.4.32-200511131857.patch
+	* info/patches/grsecurity_2_4/grsecurity-2.1.7-2.4.32-200511131857.patch: added
+
+2005-11-28 David Brown <dmlb2000@gmail.com>
+	* info/kernels/2.6.32: added
+	* latest.defaults: updated 2.4 kernel
+
+2005-11-28 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to grsecurity-2.1.7-2.6.14.3-200511261227.patch
+	* info/patches/grsecurity_2_6/grsecurity-2.1.7-2.6.14.3-200511261227.patch: added
+
+2005-11-26 David Brown <dmlb2000@gmail.com>
+	* PRE_BUILD: make sure the source directory doesn't have group and other
+	  write permissions (chmod og-w -R $LINUX_SOURCE_DIRECTORY)
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* FINAL: removed the notice about the linux kernel name change
+	* PREPARE: did some 'refactoring' of the source_patch and source_info
+	  functions
+	  added some info if the old source tree is going to update
+	  removed the source info from the expert mode so it won't download 
+	  anything
+	  added the xen and um arches to the arch menu
+	  removed old commented code from the creation of expert mode
+	* PRE_BUILD: fixed the propogation of the error when gpg checking fails
+	  and made sure it returns an error when unpacking fails
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14-cks6
+	* info/patches/ck_server_patches/patch-2.6.14-cks6: added
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14-ck6
+	* info/patches/ck_patches/patch-2.6.14-ck6: added
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to 2.6.15-rc2-mm1
+	* info/patches/mm_patches/2.6.15-rc2-mm1: added
+
+2005-11-25 David Brown <dmlb2000@gmail.com>
+	* latest.defaults: updated latest to patch-2.6.14.3
+	* info/patches/maintenance_patches/patch-2.6.14.3: added
+
 2005-11-20 David Brown <dmlb2000@gmail.com>
 	* latest.defaults: updated latest to grsecurity-2.1.7-2.6.14.2-200511150641.patch
 	* info/patches/grsecurity_2_6/grsecurity-2.1.7-2.6.14.2-200511150641.patch: added
