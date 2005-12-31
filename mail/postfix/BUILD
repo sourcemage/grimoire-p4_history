@@ -31,10 +31,22 @@ if  [  "$POSTFIX_MYSQL"  ==  "y"  ];  then
   message "${MESSAGE_COLOR}MySQL detected: Using MySQL ${DEFAULT_COLOR}"
 fi  &&
 
+if  [  "$POSTGRES"  ==  "y"  ];  then
+  AUXLIBS="$AUXLIBS -L/usr/lib -lpq"  &&
+  CCARGS="$CCARGS -DHAS_PGSQL -I/usr/include/pgsql"    &&
+  message "${MESSAGE_COLOR}PostgreSQL detected: Using PostgresSQL ${DEFAULT_COLOR}"
+fi  &&
+
 if  [  "$POSTFIX_SSL"  ==  "y"  ];  then
   AUXLIBS="$AUXLIBS -lssl -lcrypto"  &&
   CCARGS="$CCARGS -DUSE_TLS"         &&
-  message "${MESSAGE_COLOR}OpenSSL detected: Using OpenSSL ${DEFAULT_COLOR}"
+  message "${MESSAGE_COLOR}OpenSSL detected: Using OpenSSL for SSL ${DEFAULT_COLOR}"
+fi  &&
+
+if  [  "$SSL_TLS"  ==  "y"  ];  then
+  AUXLIBS="$AUXLIBS -lssl -lcrypto"                  &&
+  CCARGS="$CCARGS -DUSE_TLS -I/usr/include/openssl"  &&
+  message "${MESSAGE_COLOR}OpenSSL detected: Using OpenSSL for TLS ${DEFAULT_COLOR}"
 fi  &&
 
 if  [  "$POSTFIX_VDA"  ==  "y"  ];  then

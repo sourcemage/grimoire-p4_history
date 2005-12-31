@@ -23,10 +23,23 @@ else
   config_query  POSTFIX_SSL  "Add SSL support?"  n
 fi  &&
 
+# SSL and TLS libs both come from openssl :)
+if  spell_ok  openssl;  then
+  config_query  SSL_TLS  "Add TLS support?"  y
+else
+  config_query  SSL_TLS  "Add TLS support?"  n
+fi  &&
+
 if  spell_ok  openldap;  then
   config_query  POSTFIX_LDAP  "Add LDAP support?"  y
 else
   config_query  POSTFIX_LDAP  "Add LDAP support?"  n
+fi  &&
+
+if  spell_ok  postgresql;  then
+  config_query  POSTGRES  "Add Postgresql support?"  y
+else
+  config_query  POSTGRES  "Add Postgresql support?"  n
 fi  &&
 
 if  spell_ok  cyrus-sasl;  then

@@ -1,7 +1,9 @@
             SPELL=postfix
-          VERSION=2.2.5
+          VERSION=2.2.7
          VERSION2=$VERSION-vda
            SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE2_IGNORE=signature
+       SOURCE_GPG=wietse.pgp:$SOURCE2:ESTABLISHED_UPSTREAM_KEY
           SOURCE2=$SOURCE.sig
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
@@ -23,23 +25,44 @@
    SOURCE_URL[16]=ftp://ftp.utoronto.ca/mirror/packages/postfix/official/$SOURCE
    SOURCE_URL[17]=ftp://postfix.webweaver.net/official/$SOURCE
    SOURCE_URL[18]=ftp://ftp.arnes.si/packages/postfix-release/official/$SOURCE
-   SOURCE2_URL[0]=${SOURCE_URL}.sig
-   SOURCE2_IGNORE=signature
-       SOURCE_GPG="postfix.gpg:$SOURCE2"
+#Signature URLs
+   SOURCE2_URL[0]=${SOURCE_URL[0]}.sig
+   SOURCE2_URL[1]=${SOURCE_URL[1]}.sig
+   SOURCE2_URL[2]=${SOURCE_URL[2]}.sig
+   SOURCE2_URL[3]=${SOURCE_URL[3]}.sig
+   SOURCE2_URL[4]=${SOURCE_URL[4]}.sig
+   SOURCE2_URL[5]=${SOURCE_URL[5]}.sig
+   SOURCE2_URL[6]=${SOURCE_URL[6]}.sig
+   SOURCE2_URL[7]=${SOURCE_URL[7]}.sig
+   SOURCE2_URL[8]=${SOURCE_URL[8]}.sig
+   SOURCE2_URL[9]=${SOURCE_URL[9]}.sig
+  SOURCE2_URL[10]=${SOURCE_URL[10]}.sig
+  SOURCE2_URL[11]=${SOURCE_URL[11]}.sig
+  SOURCE2_URL[12]=${SOURCE_URL[12]}.sig
+  SOURCE2_URL[13]=${SOURCE_URL[13]}.sig
+  SOURCE2_URL[14]=${SOURCE_URL[14]}.sig
+  SOURCE2_URL[15]=${SOURCE_URL[15]}.sig
+  SOURCE2_URL[16]=${SOURCE_URL[16]}.sig
+  SOURCE2_URL[17]=${SOURCE_URL[17]}.sig
+  SOURCE2_URL[18]=${SOURCE_URL[18]}.sig
+
 #
 # VDA patch
 #
-            NAME2=$SPELL-$VERSION2.patch
-          SOURCE3=$NAME2.gz
+         VERSION3=2.2.5-vda
+            NAME3=$SPELL-$VERSION3.patch
+          SOURCE3=$NAME3.gz
+SOURCE3_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE3_URL[0]=http://web.onda.com.br/nadal/postfix/VDA/$SOURCE3
    SOURCE3_URL[1]=http://ftp.oav.net/others/postfix/VDA/$SOURCE3
-      SOURCE3_GPG="gurus.gpg:${SOURCE3}.sig"
+   SOURCE3_HASH=sha512:ee1e175ad258b88454327914fc18ef50948dcec3e52d52feb0e112b88dee85bce5376ba2eb625998fa877a2473473c997188f7dec0ecf7bf1880ef194de85706:WORKS_FOR_ME
+
 #
 # Postfix main site
 #
          WEB_SITE=http://www.postfix.org/
           ENTERED=20020125
-          UPDATED=20030822
+          UPDATED=20051230
        LICENSE[0]=IBMPL
         BUILD_API=2
             SHORT="MTA alternative to Sendmail"
