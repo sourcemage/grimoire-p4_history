@@ -1,3 +1,18 @@
+2006-01-01 Neuron <vlmarek@volny.cz>
+	* DETAILS: updated description a bit
+	* DETAILS: increased PATCHLEVEL and touched UPDATED to have more
+	  testing
+	* BUILD: cleanup $BUILD_DIRECTORY/{build,lib} first, as there may be
+	  old data
+	* BUILD: Removed old and unused scons options
+	* DEPENDS, CONFIGURE, BUILD: FTGL is now included (it's branched and
+	  modified FTGL not the original thing), so build it unconditionally
+	* DEPENDS: Remove libogg and libvorbis, as they are not used
+	* DEPENDS: Remove previously commented dependencies
+	* INSTALL: Respect INSTALL_ROOT
+	* INSTALL: Missing &&
+	* FINAL: also remove $BUILD_DIRECTORY/lib
+
 2005-12-26 George Sherwood <george@beernabeer.com>
 	* DETAILS: Updated to 2.40, Updated BUILD_DIRECTORY
 
