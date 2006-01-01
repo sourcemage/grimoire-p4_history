@@ -96,6 +96,6 @@ cp  ${SCRIPT_DIRECTORY}/${SPELL}.sh  $INSTALL_ROOT/etc/profile.d  &&
 install  -m  755  -o  root  -g  root  $SCRIPT_DIRECTORY/firefox  \
          $INSTALL_ROOT/usr/bin
 
-gedit "s/mozilla-nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-nss.pc
-gedit "s/nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-js.pc
-gedit "s/nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-xpcom.pc
+sedit "s/mozilla-nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-nss.pcs
+sedit "s/nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-js.pc
+sedit "s/nspr/firefox-nspr/" ${INSTALL_ROOT}/usr/lib/pkgconfig/firefox-xpcom.pc
