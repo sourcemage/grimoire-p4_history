@@ -1,6 +1,6 @@
-diff -urN coreutils-5.3.0/man/Makefile.am coreutils/man/Makefile.am
---- coreutils-5.3.0/man/Makefile.am	2004-11-25 07:33:13.000000000 -0500
-+++ coreutils/man/Makefile.am	2005-10-02 23:39:06.000000000 -0400
+diff -Naur coreutils-5.2.1.orig/man/Makefile.am coreutils-5.2.1/man/Makefile.am
+--- coreutils-5.2.1.orig/man/Makefile.am	2005-04-28 15:02:49.000000000 -0700
++++ coreutils-5.2.1/man/Makefile.am	2005-04-28 15:31:26.000000000 -0700
 @@ -3,7 +3,7 @@
    basename.1 cat.1 chgrp.1 chmod.1 chown.1 chroot.1 cksum.1 comm.1 \
    cp.1 csplit.1 cut.1 date.1 dd.1 df.1 dir.1 dircolors.1 dirname.1 du.1 \
@@ -18,19 +18,19 @@ diff -urN coreutils-5.3.0/man/Makefile.am coreutils/man/Makefile.am
  id.1:		$(common_dep)	$(srcdir)/id.x		../src/id.c
  install.1:	$(common_dep)	$(srcdir)/install.x	../src/install.c
  join.1:		$(common_dep)	$(srcdir)/join.x	../src/join.c
-diff -urN coreutils-5.3.0/man/Makefile.in coreutils/man/Makefile.in
---- coreutils-5.3.0/man/Makefile.in	2005-01-04 04:41:12.000000000 -0500
-+++ coreutils/man/Makefile.in	2005-10-02 23:39:32.000000000 -0400
-@@ -63,7 +63,7 @@
- 	$(top_srcdir)/m4/fsusage.m4 $(top_srcdir)/m4/ftruncate.m4 \
+diff -Naur coreutils-5.2.1.orig/man/Makefile.in coreutils-5.2.1/man/Makefile.in
+--- coreutils-5.2.1.orig/man/Makefile.in	2005-04-28 15:02:49.000000000 -0700
++++ coreutils-5.2.1/man/Makefile.in	2005-04-28 15:31:41.000000000 -0700
+@@ -59,7 +59,7 @@
+ 	$(top_srcdir)/m4/ftruncate.m4 \
  	$(top_srcdir)/m4/getcwd-path-max.m4 $(top_srcdir)/m4/getcwd.m4 \
  	$(top_srcdir)/m4/getdate.m4 $(top_srcdir)/m4/getgroups.m4 \
 -	$(top_srcdir)/m4/gethostname.m4 $(top_srcdir)/m4/getline.m4 \
 +	$(top_srcdir)/m4/getline.m4 \
  	$(top_srcdir)/m4/getndelim2.m4 $(top_srcdir)/m4/getopt.m4 \
  	$(top_srcdir)/m4/getpagesize.m4 $(top_srcdir)/m4/getpass.m4 \
- 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/gettime.m4 \
-@@ -280,7 +280,7 @@
+ 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/gettimeofday.m4 \
+@@ -266,7 +266,7 @@
    basename.1 cat.1 chgrp.1 chmod.1 chown.1 chroot.1 cksum.1 comm.1 \
    cp.1 csplit.1 cut.1 date.1 dd.1 df.1 dir.1 dircolors.1 dirname.1 du.1 \
    echo.1 env.1 expand.1 expr.1 factor.1 false.1 fmt.1 fold.1 groups.1 \
@@ -39,7 +39,7 @@ diff -urN coreutils-5.3.0/man/Makefile.in coreutils/man/Makefile.in
    link.1 ln.1 logname.1 \
    ls.1 md5sum.1 mkdir.1 mkfifo.1 mknod.1 mv.1 nice.1 nl.1 nohup.1 od.1 \
    paste.1 pathchk.1 pinky.1 pr.1 printenv.1 printf.1 ptx.1 pwd.1 readlink.1 \
-@@ -548,7 +548,6 @@
+@@ -535,7 +535,6 @@
  groups.1:	$(common_dep)	$(srcdir)/groups.x	../src/groups.sh
  head.1:		$(common_dep)	$(srcdir)/head.x	../src/head.c
  hostid.1:	$(common_dep)	$(srcdir)/hostid.x	../src/hostid.c
@@ -47,9 +47,9 @@ diff -urN coreutils-5.3.0/man/Makefile.in coreutils/man/Makefile.in
  id.1:		$(common_dep)	$(srcdir)/id.x		../src/id.c
  install.1:	$(common_dep)	$(srcdir)/install.x	../src/install.c
  join.1:		$(common_dep)	$(srcdir)/join.x	../src/join.c
-diff -urN coreutils-5.3.0/src/Makefile.am coreutils/src/Makefile.am
---- coreutils-5.3.0/src/Makefile.am	2004-12-14 18:52:44.000000000 -0500
-+++ coreutils/src/Makefile.am	2005-10-02 23:39:42.000000000 -0400
+diff -Naur coreutils-5.2.1.orig/src/Makefile.am coreutils-5.2.1/src/Makefile.am
+--- coreutils-5.2.1.orig/src/Makefile.am	2005-04-28 15:02:49.000000000 -0700
++++ coreutils-5.2.1/src/Makefile.am	2005-04-28 15:07:23.000000000 -0700
 @@ -9,7 +9,7 @@
    cat cksum comm csplit cut expand fmt fold head join md5sum \
    nl od paste pr ptx sha1sum sort split sum tac tail tr tsort unexpand uniq wc \
@@ -59,9 +59,9 @@ diff -urN coreutils-5.3.0/src/Makefile.am coreutils/src/Makefile.am
    test true tty whoami yes \
    $(OPTIONAL_BIN_PROGS) $(DF_PROG)
  
-diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
---- coreutils-5.3.0/src/Makefile.in	2005-01-04 05:08:17.000000000 -0500
-+++ coreutils/src/Makefile.in	2005-10-02 23:40:39.000000000 -0400
+diff -Naur coreutils-5.2.1.orig/src/Makefile.in coreutils-5.2.1/src/Makefile.in
+--- coreutils-5.2.1.orig/src/Makefile.in	2005-04-28 15:02:49.000000000 -0700
++++ coreutils-5.2.1/src/Makefile.in	2005-04-28 15:19:51.000000000 -0700
 @@ -16,7 +16,7 @@
  
  
@@ -71,7 +71,7 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  
  srcdir = @srcdir@
  top_srcdir = @top_srcdir@
-@@ -57,7 +57,7 @@
+@@ -56,7 +56,7 @@
  	tail$(EXEEXT) tr$(EXEEXT) tsort$(EXEEXT) unexpand$(EXEEXT) \
  	uniq$(EXEEXT) wc$(EXEEXT) basename$(EXEEXT) date$(EXEEXT) \
  	dirname$(EXEEXT) echo$(EXEEXT) env$(EXEEXT) expr$(EXEEXT) \
@@ -80,16 +80,7 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  	kill$(EXEEXT) logname$(EXEEXT) pathchk$(EXEEXT) \
  	printenv$(EXEEXT) printf$(EXEEXT) pwd$(EXEEXT) seq$(EXEEXT) \
  	sleep$(EXEEXT) tee$(EXEEXT) test$(EXEEXT) true$(EXEEXT) \
-@@ -92,7 +92,7 @@
- 	$(top_srcdir)/m4/fsusage.m4 $(top_srcdir)/m4/ftruncate.m4 \
- 	$(top_srcdir)/m4/getcwd-path-max.m4 $(top_srcdir)/m4/getcwd.m4 \
- 	$(top_srcdir)/m4/getdate.m4 $(top_srcdir)/m4/getgroups.m4 \
--	$(top_srcdir)/m4/gethostname.m4 $(top_srcdir)/m4/getline.m4 \
-+	$(top_srcdir)/m4/getline.m4 \
- 	$(top_srcdir)/m4/getndelim2.m4 $(top_srcdir)/m4/getopt.m4 \
- 	$(top_srcdir)/m4/getpagesize.m4 $(top_srcdir)/m4/getpass.m4 \
- 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/gettime.m4 \
-@@ -321,11 +321,6 @@
+@@ -320,11 +320,6 @@
  hostid_LDADD = $(LDADD)
  hostid_DEPENDENCIES = ../lib/libfetish.a $(am__DEPENDENCIES_1) \
  	../lib/libfetish.a
@@ -101,7 +92,16 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  id_SOURCES = id.c
  id_OBJECTS = id.$(OBJEXT)
  id_LDADD = $(LDADD)
-@@ -610,7 +605,7 @@
+@@ -625,7 +620,7 @@
+ @AMDEP_TRUE@	./$(DEPDIR)/factor.Po ./$(DEPDIR)/false.Po \
+ @AMDEP_TRUE@	./$(DEPDIR)/fmt.Po ./$(DEPDIR)/fold.Po \
+ @AMDEP_TRUE@	./$(DEPDIR)/head.Po ./$(DEPDIR)/hostid.Po \
+-@AMDEP_TRUE@	./$(DEPDIR)/hostname.Po ./$(DEPDIR)/id.Po \
++@AMDEP_TRUE@	./$(DEPDIR)/id.Po \
+ @AMDEP_TRUE@	./$(DEPDIR)/install.Po ./$(DEPDIR)/join.Po \
+ @AMDEP_TRUE@	./$(DEPDIR)/kill.Po ./$(DEPDIR)/lbracket.Po \
+ @AMDEP_TRUE@	./$(DEPDIR)/link.Po ./$(DEPDIR)/ln.Po \
+@@ -666,7 +661,7 @@
  	$(chown_SOURCES) chroot.c cksum.c comm.c $(cp_SOURCES) \
  	csplit.c cut.c date.c dd.c df.c $(dir_SOURCES) dircolors.c \
  	dirname.c du.c echo.c env.c expand.c expr.c factor.c false.c \
@@ -110,7 +110,7 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  	id.c join.c kill.c link.c ln.c logname.c $(ls_SOURCES) \
  	$(md5sum_SOURCES) mkdir.c mkfifo.c mknod.c $(mv_SOURCES) \
  	nice.c nl.c nohup.c od.c paste.c pathchk.c pinky.c pr.c \
-@@ -624,7 +619,7 @@
+@@ -680,7 +675,7 @@
  	$(chown_SOURCES) chroot.c cksum.c comm.c $(cp_SOURCES) \
  	csplit.c cut.c date.c dd.c df.c $(dir_SOURCES) dircolors.c \
  	dirname.c du.c echo.c env.c expand.c expr.c factor.c false.c \
@@ -119,7 +119,7 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  	id.c join.c kill.c link.c ln.c logname.c $(ls_SOURCES) \
  	$(md5sum_SOURCES) mkdir.c mkfifo.c mknod.c $(mv_SOURCES) \
  	nice.c nl.c nohup.c od.c paste.c pathchk.c pinky.c pr.c \
-@@ -1053,9 +1048,6 @@
+@@ -1083,9 +1078,6 @@
  hostid$(EXEEXT): $(hostid_OBJECTS) $(hostid_DEPENDENCIES) 
  	@rm -f hostid$(EXEEXT)
  	$(LINK) $(hostid_LDFLAGS) $(hostid_OBJECTS) $(hostid_LDADD) $(LIBS)
@@ -129,7 +129,7 @@ diff -urN coreutils-5.3.0/src/Makefile.in coreutils/src/Makefile.in
  id$(EXEEXT): $(id_OBJECTS) $(id_DEPENDENCIES) 
  	@rm -f id$(EXEEXT)
  	$(LINK) $(id_LDFLAGS) $(id_OBJECTS) $(id_LDADD) $(LIBS)
-@@ -1304,7 +1296,6 @@
+@@ -1333,7 +1325,6 @@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fold.Po@am__quote@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/head.Po@am__quote@
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hostid.Po@am__quote@
