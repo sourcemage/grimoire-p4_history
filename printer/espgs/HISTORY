@@ -1,3 +1,9 @@
+2006-01-02 Robin Cook <rcook@wyrms.net>
+	* DETAILS: moved Omni driver info from PREPARE to here as it was causing
+	  summons to fail as it did not have the PREPARE info.  It was also
+	  redundant
+	* PREPARE: deleted info moved to DETAILS
+
 2005-12-16 Sergey Lipnevich <sergey@sourcemage.org>
 	* PRE_BUILD: disable defining `malloc' as `rpl_malloc' because there's no
 	  such function defined in the code.
