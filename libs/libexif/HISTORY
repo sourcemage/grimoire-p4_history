@@ -1,3 +1,9 @@
+2006-01-02 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added dependencies on automake, autoconf and libtool for cvs
+	  version, added optional_depends on doxygen
+	* PRE_BUILD: changed to sedit the Makefile.in for non-cvs so it doesn't
+	  require all those tools, only sedit if doxygen isn't installed
+
 2006-01-02 Treeve Jelbert <treeve01@pi.be>
 	* PRE_BUILD: add execute bit
 	  fixes bug #10321
