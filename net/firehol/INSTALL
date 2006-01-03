@@ -1,4 +1,5 @@
 IR=$INSTALL_ROOT
+mkdir -p $IR/etc/firehol  &&
 install -m 754 firehol.sh $IR/etc/init.d/runlevels/%3/smgl-firehol &&
 install -m 644 examples/* $IR/etc/firehol/ &&
 install man/firehol.1 $IR/usr/man/man1 &&
