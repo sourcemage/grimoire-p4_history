@@ -8,7 +8,7 @@ else
          VERSION=1.5
           SOURCE=$SPELL-$VERSION-source.tar.bz2
          SOURCE2=${SOURCE}.asc
-      SOURCE_GPG="mozilla.gpg:${SOURCE2}"
+      SOURCE_GPG="firefox.gpg:${SOURCE2}:UPSTREAM_KEY"
   SOURCE2_IGNORE=signature
    SOURCE_URL[0]=ftp://ftp.mozilla.org/pub/mozilla.org/$SPELL/releases/$VERSION/source/$SOURCE
    SOURCE_URL[1]=ftp://ftp.access.ch/mirror/mozilla/$SPELL/releases/$VERSION/source/$SOURCE
