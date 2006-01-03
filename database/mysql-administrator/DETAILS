@@ -1,0 +1,17 @@
+           SPELL=mysql-administrator
+         VERSION=1.1.5
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://mirror.services.wisc.edu/mysql/Downloads/MySQLAdministrationSuite/${SOURCE}
+     SOURCE_HASH=sha512:39fc933b72096cb5f82c100f64be7fce41b1a4d6718558788a3744e9d31d815876db5bba42f25675cecb6b4dfeba6de96c74d2c837f41f878abef1947c0a02db
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://www.mysql.com/products/tools/administrator/index.html
+         ENTERED=20060103
+         UPDATED=20060103
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="MySQL Administrator is a GUI frontend for MySQL RDBMS"
+cat << EOF
+MySQL Administrator is a program for performing administrative operations, such as configuring your MySQL server, 
+monitoring its status and performance, starting and stopping it, managing users and connections, performing backups, and 
+a number of other administrative tasks
+EOF
