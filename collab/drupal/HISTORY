@@ -1,3 +1,13 @@
+2006-01-02 Jason Flatt <jflatt@sourcemage.org>
+	* DEPENDS: Changed php4 back to PHP, as I discovered that Drupal can
+	  work w/PHP 5+.
+	* PRE_INSTALL: Removed, 'cause it didn't actually work.
+	* PREPARE: Added, 'cause I couldn't get anything else to work
+	  reasonably well, and I'm tired of messing with the spell.  :^)
+
+2005-12-14 Jason FLatt <jflatt@sourcemage.org>
+	* DETAILS: Version bump to 4.6.5.
+
 2005-12-12 Jason FLatt <jflatt@sourcemage.org>
 	* CONFIGURE, DEPENDS: Changed database dependency to only allow
 	  choosing MySQL or PostgeSQL.
