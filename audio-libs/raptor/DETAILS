@@ -1,14 +1,16 @@
            SPELL=raptor
-         VERSION=1.4.7
+         VERSION=1.4.8
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://www.redland.opensource.ac.uk/dist/source/$SOURCE
-     SOURCE_HASH=sha512:5244ece26d790e2a076f29271004eef582d1e4461e542ce5a04963a5c44d4a2f4cf15aa1fc7dcdaefd80010af3e267c21339e3f388414508a893c7ad3bc9db23
-        WEB_SITE=http://www.redland.opensource.ac.uk/raptor/
-         ENTERED=20031207
-         UPDATED=20040527
+   SOURCE_URL[0]=$SOURCEFORGE_URL/librdf/$SOURCE
+   SOURCE_URL[1]=http://download.librdf.org/source/$SOURCE
+#     SOURCE_HASH=sha512:5244ece26d790e2a076f29271004eef582d1e4461e542ce5a04963a5c44d4a2f4cf15aa1fc7dcdaefd80010af3e267c21339e3f388414508a893c7ad3bc9db23
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]="LGPL APACHE2"
        BUILD_API=2
+        WEB_SITE=http://librdf.org/raptor/
+         ENTERED=20031207
+         UPDATED=20040527
            SHORT="C library that parses RDF syntaxes into RDF triples"
 cat << EOF
 Raptor is a free software/Open Source C library that parses RDF syntaxes 
