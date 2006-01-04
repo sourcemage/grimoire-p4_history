@@ -1,24 +1,17 @@
            SPELL=xdaliclock
-         VERSION=2.20
+         VERSION=2.22
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.jwz.org/xdaliclock/$SOURCE
-     SOURCE_HASH=sha512:fc9bf6d91d205c718d8333ebb86bc6d140eb35da24ee842c510d76debc40172ce9710b3667024967128d33281ca6daba72e0f389609b8fff7c363eb1c6e11b24
+     SOURCE_HASH=sha512:43207e9e759034229830bc3e2931f82f21134726e6f8190364b283d44fb360a583a1e2b8289231caad2de5f49fc8a357a8a227f22a6d2c56d715a894ae214ada
       LICENSE[0]=MIT
         WEB_SITE=http://www.jwz.org/xdaliclock/
        BUILD_API=2
          ENTERED=20020728
          UPDATED=20020728
-    MENU_ITEM[0]="Dali Clock"
-    MENU_EXEC[0]="xdaliclock"
-    MENU_DESC[0]="Dali Clock is a digital clock"
-
            SHORT="A digital clock for the X Window System"
-
 cat << EOF
-
 Dali Clock is a digital clock for the X Window System 
 and the Palm Pilot. When a digit changes, it "melts" 
 into its new shape.
-
 EOF
