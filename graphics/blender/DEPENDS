@@ -5,14 +5,16 @@ depends  zlib     &&
 depends  python   &&
 depends  jpeg     &&
 
-[ $OPENAL == y ] && depends  openal   &&
+if [ $OPENAL == y ]; then
+   depends  openal
+fi                                        &&
 
 optional_depends  libpng                  \
                   ""                      \
                   ""                      \
                   "for PNG file support"  &&
 
-optional_depends  yafray                 \
-                  ""                     \
-                  ""                     \
+optional_depends  yafray                  \
+                  ""                      \
+                  ""                      \
                   "for Yafray raytracing"
