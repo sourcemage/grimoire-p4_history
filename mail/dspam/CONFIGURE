@@ -9,7 +9,7 @@ fi
 
 config_query_option DSPAM_DAEMON 'Enable daemon mode?' y '--enable-daemon' '--disable-daemon'
 config_query_option DSPAM_LARGE_SCALE 'Enable large scale mode?' y '--enable-large-scale' ''
-if [[ "$DSPAM_LARGE_SCALE" != n ]] ; then
+if [[ -z "$DSPAM_LARGE_SCALE"  ]] ; then
   config_query_option DSPAM_DOMAIN_SCALE 'Enable domain scale mode?' n '--enable-domain-scale' ''
 fi
 
