@@ -72,7 +72,13 @@ case "${mode}" in
 				linux_new_uncompress ./${source} &&
 				message "${MESSAGE_COLOR}Patching ${!patch}${DEFAULT_COLOR}" &&
 				patch -p${pval} <${!patch}
-			fi &&
+				rc=$? 
+				if [[ $rc != 0 ]] 
+				then
+					message "${PROBLEM_COLOR}Bah, patch ${!patch} failed${DEFAULT_COLOR}" &&
+					return 1
+				fi 
+			fi
 			(( count++ ))
 			source="SOURCE${count}"
 			source_check="PATCH[${count}]"
