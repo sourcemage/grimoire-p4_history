@@ -1,0 +1,23 @@
+           SPELL=multitail
+         VERSION=3.8.3
+          SOURCE=${SPELL}-${VERSION}.tgz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.vanheusden.com/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:3583963e858273123c1116f07307e1bcf3ec06dc4529c3df904cc3e3a5912f311553cc5b7c897d27b5bd0ec4f0232936b10bec23b6b07b0bcd10cdeac352d69e
+        WEB_SITE=http://www.vanheusden.com/multitail/
+         ENTERED=20060105
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="tail muliple files at once"
+cat << EOF
+MultiTail lets you view one or multiple files like the original tail 
+program. The difference is that it creates multiple windows on your
+console (with ncurses). Merging of 2 or more log files is possible.
+It can also use colors while displaying the log files (through regular
+expressions) for faster recognition of what is important. It can also
+filter lines (again with regular expressions). It has interactive menus for
+editing given regular expressions and deleting and adding windows. One can
+also have windows with the output of shell scripts and other software.
+When viewing the output of external software, MultiTail can mimic the
+functionality of tools like 'watch'.
+EOF
