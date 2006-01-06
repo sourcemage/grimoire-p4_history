@@ -870,12 +870,14 @@ create_details()
 	local patch
 	local md5sum
 	local sha1sum
+	local patch_det_version="false"
 	case "$mode" in
 		*ktree)
 			patches=""
 			basekver=""
 			source_gpg_list=""
 			source_gpg_list_url=""
+			
 			calculate_depends
 			(
 			depends=""
@@ -916,10 +918,12 @@ create_details()
 					basekver="$appliedkernels"
 					echo 'KERNEL_VERSION=${patchversion}'
 					patchversion=""
+					patch_det_version="true"
 				fi
 				if [[ "$appendversion" != "" ]]
 				then
 					version_append_list="${version_append_list}${patch}:${counter} "
+					patch_det_version="true"
 				fi
 				if [[ "$source_gpg" != "" ]] 
 				then
@@ -993,6 +997,12 @@ create_details()
 					echo "SOURCE2_URL=\${source_url}.sign"
 					;;
 			esac
+			# if there are no patches then KERNEL_VERSION isn't put in the details.defaults file so
+			# you have to check to make sure KERNEL_VERSION is in the file and used
+			if [[ "$patch_det_version" == "false" ]]
+			then
+				echo 'KERNEL_VERSION=${version}'
+			fi
 			) > $detailsdefaults
 			;;
 		expert)
