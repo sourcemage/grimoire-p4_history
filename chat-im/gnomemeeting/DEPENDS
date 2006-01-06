@@ -8,7 +8,8 @@ else
 fi                                       &&
 
 if [ "$CVS" == "y" ]; then
-   depends automake-1.7
+   depends automake-1.7                  &&
+   depends opal
 fi                                       &&
 
 optional_depends "sdl"                   \
