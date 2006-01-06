@@ -3,6 +3,7 @@ if [ "$CVS" == "y" ]; then
          VERSION=cvs
           SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE_URL[0]=http://snapshots.seconix.com/cvs/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
   FORCE_DOWNLOAD=1
    SOURCE_IGNORE=volatile
 else
