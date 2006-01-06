@@ -1,10 +1,10 @@
            SPELL=gob2
-         VERSION=2.0.12
+         VERSION=2.0.14
 	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/gob2/$BRANCH/$SOURCE
-     SOURCE_HASH=sha512:b714ae990af7c65604633050486384bfc22145dee26d364e9b1ec5ee3411b08874f283f751a52e61346b1a1425f7ef4ae155c1ab2e5c0d34ab73df7a038d7a4e
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
       LICENSE[1]=LGPL
         WEB_SITE=http://www.5z.com/jirka/gob.html
