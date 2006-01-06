@@ -1,3 +1,8 @@
+2006-01-06 David Brown <dmlb2000@gmail.com>
+	* PREPARE: if no patches are selected then KERNEL_VERSION
+	  doesn't appear in details.defaults so it defaults to
+	  the latest maintenance which isn't what the user selected
+
 2006-01-05 David Brown <dmlb2000@gmail.com>
 	* PRE_BUILD: fixed infinate loop when patch fails
 	* info/patches-sigs/mm_patches/2.6.15-mm1-smgl1.bz2.sig: added
