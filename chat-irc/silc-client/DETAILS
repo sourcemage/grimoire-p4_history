@@ -1,13 +1,12 @@
            SPELL=silc-client
-         VERSION=1.0.2
+         VERSION=1.0.3
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.silcnet.org/silc/client/sources/$SOURCE
         WEB_SITE=http://www.silcnet.org
-	BUILD_API=2
          ENTERED=20020303
          UPDATED=20020421
-     SOURCE_HASH=sha512:1b0fda19b65d777f88195e446e9fc31c74c7afe40e34e7ca0f86316e3605c536c217ad1dd1c0bc3a70877dc5ac20aa06a219928046f2bc103d2833f0a175181d
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
            SHORT="silc is a IRC-like client for encrypted conferencing."
 cat << EOF
