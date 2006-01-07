@@ -1,16 +1,17 @@
            SPELL=tla
-         VERSION=1.3.3
+         VERSION=1.3.4
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://regexps.srparish.net/src/tla/$SOURCE
-   SOURCE_URL[1]=$GNU_URL/gnu-arch/$SOURCE
-     SOURCE_HASH=sha512:258526e2e9d956079d4f67e96689d65a659f10d10298fbdc4a6476de0a127896637d7c5025314f85a1b1249ef5a42aaa0c2d954db5dd067eed2b164860cf0c1e
+   SOURCE_URL[0]=$GNU_URL/gnu-arch/$SOURCE
+  SOURCE2_URL[0]=$GNU_URL/gnu-arch/$SOURCE2
+      SOURCE_GPG="gnu.gpg:${SOURCE2}"
+    DISTCC_HOSTS=
+      LICENSE[0]=GPL
+       BUILD_API=2
         WEB_SITE=http://www.gnuarch.org
          ENTERED=20030617
          UPDATED=20050509
-      LICENSE[0]=GPL
-       BUILD_API=2
-    DISTCC_HOSTS=
           CCACHE=
            SHORT="C implementation of the Arch revision control system"
 cat << EOF
