@@ -5,7 +5,7 @@ if [ "$FAAD_CVS" = "y" ]; then
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/faac:faad2
    SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
 else
          VERSION=2.0
           SOURCE=$SPELL-$VERSION.tar.gz
