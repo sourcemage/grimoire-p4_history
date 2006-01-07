@@ -7,6 +7,9 @@
 #
 # Released under the GNU GPLv2
 #
+# 2006-01-07 Eric Sandall <eric@sandall.us>
+#   * Added code to allow download only of sources
+#
 # Usage: e17update
 #
 
@@ -15,12 +18,32 @@
 #
 source  /etc/sorcery/config  &&
 
-message  "${MESSAGE_COLOR}Building list of packages to update..."  \
-         "${DEFAULT_COLOR}"                                        &&
-for e_spell in `gaze section e`;  do
-  if  [[  `installed_version  $e_spell`  ==  "cvs"  ]];  then
-    update_spells="$update_spells $e_spell"
-  fi
-done  &&
+function get_spell_list () {
+  message  "${MESSAGE_COLOR}Building list of packages to update..."  \
+           "${DEFAULT_COLOR}"                                        &&
+  for e_spell in `gaze section e`;  do
+    if  [[  `installed_version  $e_spell`  ==  "cvs"  ]];  then
+      update_spells="$update_spells $e_spell"
+    fi
+  done
+}
 
-cast  -c  $update_spells
+if    [  "$#"  ==  '0'  ];  then
+  get_spell_list  &&
+  cast  -c  $update_spells
+elif  [  "$#"  ==  '1'  ];  then
+  case $1 in
+      -h|--help) echo  "usage: $0 [option]"
+                 echo  "-s|--summon  Do a CVS checkout only (using summon)";
+                 echo  "-h|--help    Print this help message";
+                 ;;
+    -s|--summon) get_spell_list  &&
+                 summon -d $update_spells;
+                 ;;
+              *) echo  "Invalid option: $1";
+                 ;;
+  esac
+else
+  echo  "Invalid options: $@"
+fi
+
