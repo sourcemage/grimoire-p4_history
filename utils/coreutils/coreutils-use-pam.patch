@@ -247,7 +247,7 @@ diff -Naur coreutils-5.2.0/src/su.c coreutils/src/su.c
 +  env = pam_getenvlist(pamh);
 +  if(env) {
 +    while(*env) {
-+      xputenv(*env);
++      putenv(*env);
 +      env++;
 +    }
 +  }
