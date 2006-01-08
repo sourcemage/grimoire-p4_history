@@ -4,6 +4,9 @@ cd  $SOURCE_DIRECTORY             &&
 
 cp  $SOURCE_DIRECTORY/config/cf/xorgsite.def  \
     $SOURCE_DIRECTORY/config/cf/host.def      &&
+# the default xorgsite.def contains BuildXterm commented, so add it explicitly
+echo  "#define BuildXterm YES"  \
+      >> $SOURCE_DIRECTORY/config/cf/host.def  &&
 
 if    [  -f  $CONFIG_CACHE/host.def  ];  then
   cp     $CONFIG_CACHE/host.def                \
