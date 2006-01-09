@@ -1,0 +1,19 @@
+           SPELL=acpitool
+         VERSION=0.4.1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://freeunix.dyndns.org:8000/ftp_site/pub/unix/acpitool/$SOURCE
+     SOURCE_HASH=sha512:cb3af1e62965adebcde53cd523fc545229ddf1fe5ded9071393574ee596bc0aedef6b7cb79b34d4a3cf89a58a8124d1daf0e5022f8a3fa9220ec79e31ed1e6db
+        WEB_SITE=http://freeunix.dyndns.org:8000/site2/acpitool.shtml
+       BUILD_API=2
+         ENTERED=20060109
+         UPDATED=20060109
+      LICENSE[0]=GPL
+           SHORT="Linux ACPI client"
+cat << EOF
+AcpiTool is (yet another) Linux ACPI client. It's a small command-line 
+application, intended to be a replacement for the apm tool. The primary target 
+audience are laptop users, since these people are most interested in stuff 
+like battery status, thermal status and the ability to put their precious 
+laptop to sleep. Most of this does not apply to desktop systems.
+EOF
