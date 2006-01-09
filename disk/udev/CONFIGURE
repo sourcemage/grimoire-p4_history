@@ -1,3 +1,4 @@
+config_query UDEV_PERSIST 'install persistent disk rules?' n &&
 config_query UDEV_STATIC 'Create static binaries in addition to dynamically linked ones?' n &&
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   if [[ -z "$UDEV_STATIC_TARGET" ]]; then
