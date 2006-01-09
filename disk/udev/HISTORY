@@ -4,6 +4,16 @@
 	* rules.d/50-default.rules: added firmware loader for 2.6.15
 	* DETAILS: updated date so it will be cast
 
+2006-01-05 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: fix typo (RELEASE)
+	  set PATCHLEVEL
+	* rule/50-default.rules: add MODALIAS rule
+	  this should allow modules to be loaded automatically
+	* udev.conf: remove junk
+	* CONFIGURE: query for persistent-disk.rules
+	* INSTALL: remove obsolete code, simplify it
+	  install persistent-disk.rules
+
 2005-12-23 Flavien Bridault <disk@sourcemage.org>
 	* FINAL: ensure that the video group exists
 
