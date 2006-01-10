@@ -9,3 +9,10 @@ create_group cdrom
 create_group floppy
 create_group burning
 create_group video
+
+# warn of coming changes
+cat << EOF
+MODALIAS and $modalias is not needed and will be removed from one of
+the next udev versions, replace it in all rules with ENV{MODALIAS} or
+the sysfs "modalias" value.
+EOF
