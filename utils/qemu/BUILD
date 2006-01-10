@@ -1,3 +1,4 @@
+invoke_gcc &&
 message "Target list:$QEMU_ARCHS"  &&
 
  ./configure --build=$BUILD \
