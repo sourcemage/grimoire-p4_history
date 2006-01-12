@@ -11,4 +11,9 @@ optional_depends  gettext                           \
 optional_depends  gtk-doc                   \
                   '--enable-docs-build'     \
                   '--disable-docs-build'    \
-                  'to build documentation'
+                  'to build documentation'  &&
+
+optional_depends  valgrind              \
+                  '--enable-valgrind'   \
+                  '--disable-valgrind'  \
+                  'for enhanced valgrind support'
