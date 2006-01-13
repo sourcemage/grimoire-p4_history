@@ -749,7 +749,10 @@ load_old_src_tree()
 	tmp=$old_src_tree
 	persistent_load
 	persistent_add old_src_tree
-	mode="oldktree"
+	if [[ $mode != "expert" ]]
+	then
+		mode="oldktree"
+	fi
 	old_src_tree=$tmp
 	reconf="true"
 	persistent_remove MAKEMODE
