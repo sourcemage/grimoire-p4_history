@@ -1,0 +1,29 @@
+depends  jpeg        &&
+depends  libpng      &&
+depends  zlib        &&
+depends  X11-SERVER  &&
+
+optional_depends  libxml2                               \
+                  '--disable-xml --disable-xml-reader'  \
+                  '--enable-xml --enable-xml-reader'    \
+                  'for XML and XML socket support'      &&
+
+optional_depends  OPENGL                    \
+                  '--disable-opengl'        \
+                  '--enable-opengl'         \
+                  'Allow OpenGL rendering'  &&
+
+optional_depends  GECKO                      \
+                  '--disable-plugin'         \
+                  '--enable-plugin'          \
+                  'for GECKO-based plug-in'  &&
+
+optional_depends  sdl                       \
+                  ''                        \
+                  ''                        \
+                  'for SDL output support'  &&
+
+optional_depends  sdl_mixer                       \
+                  ''                              \
+                  ''                              \
+                  'for SDL sound mixing support'
