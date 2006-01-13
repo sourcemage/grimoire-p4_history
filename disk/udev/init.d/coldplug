@@ -1,0 +1,33 @@
+#!/bin/bash
+
+PROGRAM=/bin/true
+RUNLEVEL=S
+RECOMMENDED=yes
+
+#. /etc/init.d/smgl_init
+if [ "$1" == "start" ];then
+        list=$(echo /sys/bus/*/devices/*/uevent)
+        list="$list $(echo /sys/class/*/*/uevent)"
+        list="$list $(echo /sys/block/*/uevent /sys/block/*/*/uevent)"
+        for i in $list; do
+            case "$i" in
+                */device/uevent|*\**)
+                    continue
+                    ;;
+                */class/mem/*|*/class/tty/*)
+                    first="$first $i"
+                    ;;
+                */block/md*)
+                    last="$last $i"
+                    ;;
+                */*)
+                    default="$default $i"
+                    ;;
+            esac
+        done
+
+        # trigger the sorted events
+        for i in $first $default $last; do
+            echo "add" > "$i"
+        done
+fi
