@@ -5,7 +5,6 @@ if [[ "$X_LATEST" = n ]]; then
    cd ${SOURCE_DIRECTORY}/extras/Xpm/lib &&
    patch -p0 < ${SCRIPT_DIRECTORY}/xpm-sec10.diff &&
    cd ${SOURCE_DIRECTORY} &&
-   patch -p0 < ${SCRIPT_DIRECTORY}/evdev-for-6.8.2-2.patch  &&
    patch -p1 < ${SCRIPT_DIRECTORY}/xorg-x11-6.8.2-xft-releasefile-crash.patch &&
    patch -p0 < ${SCRIPT_DIRECTORY}/CAN-2005-2495.patch
 fi &&
