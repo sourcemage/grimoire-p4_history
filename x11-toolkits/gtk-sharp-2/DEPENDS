@@ -6,47 +6,35 @@ depends  pango     &&
 depends  gtk+2     &&
 depends  mono      &&
 depends  libxml2   &&
+depends  gconf2    &&
 
-optional_depends  libart_lgpl                           \
-                  "" ""                                 \
-                  "Enable libart support"               &&
+if [ "$GTKSHARP2_LIBART" == "y" ]; then
+   depends libart_lgpl
+fi                                         &&
 
-optional_depends  librsvg2                              \
-                  "" ""                                 \
-                  "Enable librsvg support"              &&
+if [ "$GTKSHARP2_LIBRSVG" == "y" ]; then
+   depends librsvg2
+fi                                         &&
 
-optional_depends  gconf2                                \
-                  "" ""                                 \
-                  "Enable GConf2 support"               &&
+if [ "$GTKSHARP2_GNOME" == "y" ]; then
+   depends libgnomecanvas                  &&
+   depends libgnomeui                      &&
+   depends libgnomeprintui                 &&
+   depends gnome-panel
+fi                                         &&
 
-optional_depends  atk                                   \
-                  "" ""                                 \
-                  "Enable ATK support"                  &&
+if [ "$GTKSHARP2_GTKHTML" == "y" ]; then
+   depends gtkhtml2
+fi                                         &&
 
-optional_depends  "libgnomeui"                          \
-                  "" ""                                 \
-                  "for GNOME support"                   &&
+if [ "$GTKSHARP2_VTE" == "y" ]; then
+   depends vte
+fi                                         &&
 
-optional_depends  "libgnomecanvas"                      \
-                  "" ""                                 \
-                  "for GNOME support"                   &&
+if [ "$GTKSHARP2_VFS" == "y" ]; then
+   depends gnome-vfs2
+fi                                         &&
 
-optional_depends  "libgda2"                             \
-                  "" ""                                 \
-                  "for GNU Access Database support"     &&
-
-optional_depends  "libglade2"                           \
-                  "" ""                                 \
-                  "for GTK+/GNOME GUI builder support"  &&
-
-optional_depends  "libgnomedb"                          \
-                  "" ""                                 \
-                  "for GNOME db widget support"         &&
-
-optional_depends  vte                                   \
-                  "" ""                                 \
-                  "Enable vte support"                  &&
-
-optional_depends  "gtkhtml2"                            \
-                  "" ""                                 \
-                  "for gtk html widget support (needed for monodoc)"
+if [ "$GTKSHARP2_LIBGLADE" == "y" ]; then
+   depends libglade2
+fi
