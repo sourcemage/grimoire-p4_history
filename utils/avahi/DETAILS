@@ -1,0 +1,22 @@
+           SPELL=avahi
+         VERSION=0.6.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://avahi.org/download/$SOURCE
+     SOURCE_HASH=sha512:4f8f112aadc5a54734d8bc13df7b87de481fced77e2822f59d926dce15274632c5bdc1e0acb6e5441f9f906d1ae80f6019027aa0e3cc81ff2564ebb3d82d9294
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://avahi.org
+         ENTERED=20060114
+         UPDATED=20060114
+           SHORT="facilitates service discovery on a local network"
+cat << EOF
+Avahi is a system which facilitates service discovery on a local 
+network. This means that you can plug your laptop or computer into a 
+network and instantly be able to view other people who you can chat 
+with, find printers to print to or find files being shared. This kind of 
+technology is already found in MacOS X (branded 'Rendezvous', 'Bonjour' 
+and sometimes 'Zeroconf') and is very convenient. Avahi is mainly based 
+on Lennart Poettering's flexmdns mDNS implemenation for Linux which has 
+been discontinued in favour of Avahi.
+EOF
