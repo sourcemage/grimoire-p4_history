@@ -1,7 +1,4 @@
 default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
-# fix gacutil to remove old symlinks from /usr/lib/mono/$PACKAGE/package.dll
-# before installing the new one
-patch  -p1  <  $SCRIPT_DIRECTORY/gacutil-fix-1.1.9.2.patch  &&
 # fix install location for jay manpage
 sedit  's:/man/man1:/share/man/man1:'  mcs/jay/Makefile
