@@ -4,18 +4,18 @@ depends  zlib        &&
 depends  X11-SERVER  &&
 
 optional_depends  libxml2                               \
-                  '--disable-xml --disable-xml-reader'  \
                   '--enable-xml --enable-xml-reader'    \
+                  '--disable-xml --disable-xml-reader'  \
                   'for XML and XML socket support'      &&
 
 optional_depends  OPENGL                    \
-                  '--disable-opengl'        \
                   '--enable-opengl'         \
+                  '--disable-opengl'        \
                   'Allow OpenGL rendering'  &&
 
 optional_depends  GECKO                      \
-                  '--disable-plugin'         \
                   '--enable-plugin'          \
+                  '--disable-plugin'         \
                   'for GECKO-based plug-in'  &&
 
 optional_depends  sdl                       \
