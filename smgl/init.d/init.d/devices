@@ -60,6 +60,8 @@ start_udev()
       # Now uses udevsend as the hotplug multiplexer
     echo "Setting udevsend as hotplug agent"
     sysctl -w kernel.hotplug="/sbin/udevsend" > /dev/null 2>&1
+    echo "Creating initial udev device nodes"
+    /sbin/udevstart
   fi
 
   if [ -f /etc/udev/udev.missing ]; then
