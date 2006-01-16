@@ -3,9 +3,14 @@
 PROGRAM=/bin/true
 RUNLEVEL=S
 RECOMMENDED=yes
+NEEDS="+local_fs"
 
-#. /etc/init.d/smgl_init
-if [ "$1" == "start" ];then
+# source function library
+. /etc/init.d/smgl_init
+
+
+start() {
+echo "starting coldplug"
         list=$(echo /sys/bus/*/devices/*/uevent)
         list="$list $(echo /sys/class/*/*/uevent)"
         list="$list $(echo /sys/block/*/uevent /sys/block/*/*/uevent)"
@@ -30,4 +35,5 @@ if [ "$1" == "start" ];then
         for i in $first $default $last; do
             echo "add" > "$i"
         done
-fi
+echo "coldplug complete"
+}
