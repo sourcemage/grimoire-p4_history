@@ -1,8 +1,9 @@
            SPELL=setuptools
-         VERSION=0.6a8
-     SOURCE_HASH='sha512:3df5eae4445ea852ae5bc64b2ad757652fe2ce2668b3b30a4c2873f0d9bca43d0df3f722382c1f7345d7667bfdddac658c0cbd1af2216c724c172d8cbc4d1cec'
+  CHEESESHOP_PKG=$SPELL
+         VERSION=0.6a9
+     SOURCE_HASH='sha512:0f309f7702f1433ea0616a0bc11b46596993f38f4fe06fd8ec6f8b58c0400921e8adb0a3e284e4abfa785bc9d6bcba14569e7d9de359811c75153c09f96223f3'
           SOURCE="$SPELL-$VERSION.zip"
-   SOURCE_URL[0]="http://cheeseshop.python.org/packages/source/s/$SPELL/$SOURCE"
+   SOURCE_URL[0]="http://cheeseshop.python.org/packages/source/${CHEESESHOP_PKG:0:1}/${CHEESESHOP_PKG}/$SOURCE"
 SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
         WEB_SITE="http://peak.telecommunity.com/DevCenter/$SPELL"
        WEB_SITE2="http://www.python.org/pypi/$SPELL/"
