@@ -1,17 +1,20 @@
-         VERSION=0.5.1
-     SOURCE_HASH='sha512:bbf66c6e847ba1836bc7d86957919291a0bd86ecbb28586f1e9d87fdd8786d22ff34e7e428800872b6f21d18e7a324c50360bb459d0d3b5530bf83f3e72787c8'
-         UPDATED=20051125
+         VERSION=0.5.2
+     SOURCE_HASH='sha512:5fb083b1d9a50ba698b79c87732aee056a3bc604ceceaec831a2a7eab1ff3e5587cdd56625957f1dd6150abd58821f5ca3bde0a387e108d2319d24835c641cc3'
+         UPDATED=20060115
            SPELL=pear-validate_ptbr
     PEAR_PACKAGE=Validate_ptBR
         WEB_SITE=http://pear.php.net/package/Validate_ptBR/
-      LICENSE[0]=PHP
-           SHORT='PEAR: Validation class for ptBR'
+      LICENSE[0]=New
+           SHORT='PEAR: Validation class for Brazil'
 cat << EOF
-Package containes locale validation for ptBR
-such as:
+Package contains locale validation for ptBR such
+as:
 * Postal Code
 * CNPJ
 * CPF
+* Region (brazilian states)
+* Phone Number
+* Vehicle's plate
 EOF
 
 source  $SECTION_DIRECTORY/PEAR_DETAILS
