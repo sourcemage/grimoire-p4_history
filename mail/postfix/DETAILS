@@ -2,9 +2,9 @@
           VERSION=2.2.8
          VERSION2=$VERSION-vda
            SOURCE=$SPELL-$VERSION.tar.gz
-   SOURCE2_IGNORE=signature
-       SOURCE_GPG=wietse.pgp:$SOURCE2:ESTABLISHED_UPSTREAM_KEY
           SOURCE2=$SOURCE.sig
+       SOURCE_GPG=wietse.pgp:$SOURCE2:ESTABLISHED_UPSTREAM_KEY
+   SOURCE2_IGNORE=signature
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
     SOURCE_URL[1]=ftp://ftp.oav.net/postfix/official/$SOURCE
