@@ -33,7 +33,7 @@ echo "starting coldplug"
 
         # trigger the sorted events
         for i in $first $default $last; do
-            echo "add" > "$i"
+            builtin echo "add" > "$i"
         done
 echo "coldplug complete"
 }
