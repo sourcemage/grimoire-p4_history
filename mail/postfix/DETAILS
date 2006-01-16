@@ -1,5 +1,5 @@
             SPELL=postfix
-          VERSION=2.2.7
+          VERSION=2.2.8
          VERSION2=$VERSION-vda
            SOURCE=$SPELL-$VERSION.tar.gz
    SOURCE2_IGNORE=signature
@@ -49,13 +49,13 @@
 #
 # VDA patch
 #
-         VERSION3=2.2.5-vda
+         VERSION3=$VERSION-vda
             NAME3=$SPELL-$VERSION3.patch
           SOURCE3=$NAME3.gz
 SOURCE3_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE3_URL[0]=http://web.onda.com.br/nadal/postfix/VDA/$SOURCE3
    SOURCE3_URL[1]=http://ftp.oav.net/others/postfix/VDA/$SOURCE3
-   SOURCE3_HASH=sha512:ee1e175ad258b88454327914fc18ef50948dcec3e52d52feb0e112b88dee85bce5376ba2eb625998fa877a2473473c997188f7dec0ecf7bf1880ef194de85706:WORKS_FOR_ME
+     SOURCE3_HASH='sha512:706b42260fc82df18ffffe4db6133cbce11a006fd239086e90ec89be8e36f6d4b08375b9d43506edf54be23ed767fee810117bfc992fd72e913354d68c3047db:WORKS_FOR_ME'
 
 #
 # Postfix main site
