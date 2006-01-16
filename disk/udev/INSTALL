@@ -1,7 +1,6 @@
 install -d ${INSTALL_ROOT}/sys     &&
 UDEV_CFG=${INSTALL_ROOT}/etc/udev  &&
 DEV_DDIR=/etc/dev.d                &&
-#SND_DFILE=${DEV_DDIR}/snd/controlC0/alsa.dev &&
 mkdir  -p  ${UDEV_CFG}/rules.d     &&
 
 for file in $SCRIPT_DIRECTORY/udev.{conf,missing} ; do
@@ -15,23 +14,21 @@ done  &&
 # install some of the suse rules
 for file in etc/udev/suse/40-alsa.rules ; do
         install_config_file $file ${UDEV_CFG}/rules.d/$(basename $file)
-done
-
-#install_config_file extras/run_directory/dev.d/snd/controlC0/alsa.dev ${SND_DFILE} &&
-#chmod +x ${SND_DFILE} &&
+done  &&
 
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS} install   &&
 make EXTRAS="extras/run_directory extras/cdrom_id extras/firmware" \
   prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
   V=true ${OPTS} install &&
 if [[ "$UDEV_EXTRAS" == 'y' ]]; then
-  make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/floppy extras/path_id extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} V=true install 
+  make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} V=true install   &&
+  install  extras/path_id  ${INSTALL_ROOT}/sbin  &&
 
-if [[ "$UDEV_PERSIST" == 'y' ]];then
-for file in etc/udev/persistent-disk.rules ; do
-	install_config_file $file ${UDEV_CFG}/rules.d/60-$(basename $file)
-done
-fi 
+  if [[ "$UDEV_PERSIST" == 'y' ]];then
+    for file in etc/udev/persistent-disk.rules ; do
+	    install_config_file $file ${UDEV_CFG}/rules.d/60-$(basename $file)
+    done
+  fi 
 
 fi  &&
 
