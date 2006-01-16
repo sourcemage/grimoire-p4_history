@@ -3,7 +3,9 @@
 	  claim success if it failed (which it did)
 	* CONFIGURE: force UDEV_EXTRAS if persistent disk rules are chosen
 	* init.d/coldplug: use 'builtin echo' instead of 'echo' so it actually
-	  works and doesn't take 1+ minutes
+	  works, move script to runlevel %DEV as it replaces udevstart
+	* init.d/coldplug, init.d/udevd: make scripts ESSENTIAL as they're
+	  necessary for a working system if udev is used
 	* DETAILS: update PATCHLEVEL
 
 2006-01-18 Treeve Jelbert <treeve01@pi.be>

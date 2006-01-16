@@ -55,18 +55,13 @@ start_udev()
   # kernel 2.6.15-rc1 and higher don't use hotplug
   if [ $SUBLEVEL -ge 15 -a $PATCHLEVEL -ge 6 ]; then
     echo "don't need hotplug for this kernel"
-    echo > /proc/sys/kernel/hotplug
+    builtin echo > /proc/sys/kernel/hotplug
   else
       # Now uses udevsend as the hotplug multiplexer
     echo "Setting udevsend as hotplug agent"
     sysctl -w kernel.hotplug="/sbin/udevsend" > /dev/null 2>&1
   fi
 
-  # propogate /udev from /sys - we only need this while we do not
-  # have initramfs and an early user-space with which to do early
-  # device bring up
-  echo "Creating initial udev device nodes"
-  /sbin/udevstart
   if [ -f /etc/udev/udev.missing ]; then
     echo "Processing /etc/udev/udev.missing"
     cd /dev
