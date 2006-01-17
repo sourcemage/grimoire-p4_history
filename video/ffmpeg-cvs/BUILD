@@ -9,7 +9,6 @@ sedit  's:-Werror::'  libavformat/Makefile  &&
              --mandir=${INSTALL_ROOT}/usr/share/man  \
              --enable-shared                         \
              --enable-pp                             \
-             --enable-shared-pp                      \
              --enable-gpl                            \
              $OPTS                         &&
 cd  libavcodec/libpostproc  &&
