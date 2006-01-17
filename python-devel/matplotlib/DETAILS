@@ -1,0 +1,17 @@
+           SPELL=matplotlib
+         VERSION=0.86.1
+     SOURCE_HASH='sha512:4b19262c87dbdaae3f4051bf3f4d74699baf301801b4bb17b44ea10905a96173e3f368703d6fff7c63106914262faf6bf5cc85483d4172e452e895a1f00b8dc8'
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      LICENSE[0]=PYTHON
+        WEB_SITE=http://$SPELL.sourceforge.net/
+       BUILD_API=2
+         UPDATED=20060116
+           SHORT='Matplotlib is a pure python plotting library'
+cat << EOF
+Matplotlib is a pure python plotting library with the goal of making
+publication quality plots using a syntax familiar to matlab users. The library
+uses Numeric for handling large data sets and supports a variety of output
+backends.
+EOF

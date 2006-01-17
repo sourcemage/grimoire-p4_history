@@ -1,1 +1,5 @@
-depends wxpython
+depends numpy &&
+depends wxpython &&
+
+#optional_depends matplotlib '' '' 'for charting module' &&
+optional_depends cheetah    '' '' 'for generator module'
