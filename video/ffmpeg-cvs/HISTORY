@@ -1,3 +1,17 @@
+2006-01-17 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: removed --enable-shared-pp, not used anymore and breaks the
+	  compile
+
+2005-12-20 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PRE_BUILD, bswap-fix.patch: fix the bswap.h header
+
+2005-09-06 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: add --mandir switch to configure so man pages go to
+	  /usr/share/man instead of /usr/man
+
+2005-08-05 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* INSTALL: copy bswap.h from libavutil instead of libavcodec
+
 2005-05-12 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: don't fiddle with CXXFLAGS, they're unused anyway,
 	  don't remove -DPIC -fPIC on x86_64, fixes bug #8851

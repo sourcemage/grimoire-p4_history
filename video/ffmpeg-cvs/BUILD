@@ -5,11 +5,11 @@ fi
 
 sedit  's:-lpostproc:-Llibpostproc -lpostproc:'  libavcodec/Makefile  &&
 sedit  's:-Werror::'  libavformat/Makefile  &&
-./configure  --prefix=${INSTALL_ROOT}/usr  \
-             --enable-shared               \
-             --enable-pp                   \
-             --enable-shared-pp            \
-             --enable-gpl                  \
+./configure  --prefix=${INSTALL_ROOT}/usr            \
+             --mandir=${INSTALL_ROOT}/usr/share/man  \
+             --enable-shared                         \
+             --enable-pp                             \
+             --enable-gpl                            \
              $OPTS                         &&
 cd  libavcodec/libpostproc  &&
 make                        &&
