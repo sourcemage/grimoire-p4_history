@@ -1,11 +1,26 @@
-depends  zlib    &&
-depends  libpng  &&
-depends  jpeg    &&
-
 # for configuration
 depends autoconf &&
 depends automake &&
 depends libtool &&
+
+depends  zlib    &&
+depends  libpng  &&
+depends  jpeg    &&
+
+# for ps2pdf
+depends POSTSCRIPT-INTERPRETER &&
+
+depends gd '--without-mylibgd' &&
+
+# not listed in "configure --help" but nevertheless processed
+optional_depends PHP '--with-php' '--without-php' 'for PHP bindings' &&
+optional_depends perl '--with-perl' '--without-perl' 'for Perl bindings' &&
+optional_depends JAVA '--with-java' '--without-java' 'for Java bindings' &&
+optional_depends ruby '--with-ruby' '--without-ruby' 'for Ruby bindings' &&
+optional_depends python '--with-python' '--without-python' 'for Python bindings' &&
+optional_depends ocaml '--with-ocaml' '--without-ocaml' 'for Ocaml bindings' &&
+optional_depends CSHARP '--with-csharp' '--without-csharp' 'for C# bindings' &&
+optional_depends guile '--with-guile' '--without-guile' 'for Guile bindings' &&
 
 optional_depends  freetype2           \
                   ""                  \
@@ -15,4 +30,9 @@ optional_depends  freetype2           \
 optional_depends  tk                    \
                   ""                    \
                   ""                    \
-                  "for tcldot support"
+                  "for tcldot support"  &&
+
+optional_depends  expat  \
+                  ""     \
+                  ""     \
+                  "for dot2gxl/gxl2dot utilities"
