@@ -28,4 +28,5 @@ fi  &&
 
 if  [  "$FIREFOX_CVS"  ==  "y"  ];  then
   depends  CVS
-fi
+fi  &&
+optional_depends  cairo  "--enable-system-cairo --enable-svg --enable-svg-renderer=cairo"  ""  "for native SVG rendering"
