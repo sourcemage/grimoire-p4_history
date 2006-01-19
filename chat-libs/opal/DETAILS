@@ -7,10 +7,10 @@ if [ "$CVS" == "y" ]; then
    SOURCE_IGNORE=volatile
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
 else
-         VERSION=cvs
+         VERSION=2.1.2
           SOURCE=${SPELL}-${VERSION}.tar.gz
-   SOURCE_URL[0]=http://snapshots.seconix.com/cvs/$SOURCE
-   SOURCE_IGNORE=volatile
+   SOURCE_URL[0]=http://www.ekiga.org/downloads/sources/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
 fi
       LICENSE[0]=GPL
