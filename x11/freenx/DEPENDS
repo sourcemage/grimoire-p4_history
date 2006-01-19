@@ -1,2 +1,5 @@
 depends  nx  &&
-depends  CVS
+
+if  [  "$FREENX_CVS"  ==  "y"  ];  then
+  depends  CVS
+fi
