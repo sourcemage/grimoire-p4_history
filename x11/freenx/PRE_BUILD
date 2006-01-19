@@ -1,4 +1,7 @@
 default_pre_build &&
-cd  ${SOURCE_DIRECTORY}  &&
-patch  -p0 < ${SPELL_DIRECTORY}/netcat.diff  &&
-patch  -p0 < ${SPELL_DIRECTORY}/nx150backend.diff
+
+if  [  "$FREENX_CVS"  ==  "y"  ];  then
+  cd  $SOURCE_DIRECTORY                              &&
+  patch  -p0  <  $SPELL_DIRECTORY/netcat.diff        &&
+  patch  -p0  <  $SPELL_DIRECTORY/nx150backend.diff
+fi
