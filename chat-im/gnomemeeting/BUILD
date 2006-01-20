@@ -4,5 +4,5 @@ if [ "$GTK_ONLY" == "y" ]; then
 else
      echo "Building with gnome support"
 fi &&
-./configure --prefix=${INSTALL_ROOT}/usr --sysconfdir=${INSTALL_ROOT}/etc  &&
+./configure --prefix=${INSTALL_ROOT}/usr --sysconfdir=${INSTALL_ROOT}/etc  $OPTS &&
 make
