@@ -14,7 +14,7 @@ if [[ $CROSS_INSTALL == on ]]; then OPTS="$OPTS --host=${HOST}"; fi &&
 make DESTDIR=$INSTALL_ROOT                 &&
 
 # patch login.defs.linux so that spurious messages don't show up during login
-if gaze depends linux-pam | grep -q $SPELL; then
+if echo $OPTS | grep -q -- '--with-libpam'; then
   sedit '
 s|^CHFN_AUTH|#\0|g
 s|^CRACKLIB_DICTPATH|#\0|g
@@ -36,4 +36,8 @@ s|^PORTTIME_CHECKS_ENAB|#\0|g
 s|^QUOTAS_ENAB|#\0|g
 s|^SU_WHEEL_ONLY|#\0|g
 ' ./etc/login.defs.linux
+else
+  sedit '
+s|^#MD5_CRYPT_ENAB.*|MD5_CRYPT_ENAB yes|
+' etc/login.defs
 fi
