@@ -19,4 +19,8 @@ optional_depends "arts"                  \
 optional_depends "howl"                  \
                  ""                      \
                  "--disable-howl"        \
-                 "Required to build HOWL component"
+                 "Required to build HOWL component"   &&
+optional_depends "avahi"                 \
+                 ""                      \
+                 "--disable-avahi"       \
+                 "for avahi support"
