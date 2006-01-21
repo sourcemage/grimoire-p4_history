@@ -1,0 +1,10 @@
+--- sample-config/httpd.conf.in.orig	2005-11-26 16:47:52.000000000 -0600
++++ sample-config/httpd.conf.in	2006-01-20 18:33:54.000000000 -0600
+@@ -6,6 +6,7 @@
+ # configuration file.  Customize the paths, etc. as
+ # needed to fit your system.
+ 
++Alias /nagios "@datadir@"
+ ScriptAlias @cgiurl@ "@sbindir@"
+ 
+ <Directory "@sbindir@">
