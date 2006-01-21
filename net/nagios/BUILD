@@ -1,5 +1,5 @@
 if [ "$NAGIOS_HTML" == "y" ]; then
-   local HTML_DIR=${INSTALL_ROOT}/usr/share/nagios/htdoc"    &&
+   local HTML_DIR="${INSTALL_ROOT}/usr/share/nagios/htdoc"   &&
    local CGI_DIR="${INSTALL_ROOT}/usr/share/nagios/cgi-bin"
 fi                                                           &&
 

@@ -1,3 +1,33 @@
+2006-01-20 Robin Cook <rcook@wyrms.net>
+	* DETAILS: actuallf make VERSION to 2.0rc2
+	* BUILD: fixed typo
+
+2006-01-20 Robin Cook <rcook@wyrms.net>
+	* DETAILS: version 2.0rc2
+	  removed SOURCE2 to its own spell
+	  converted SOURCE_HASH to GPG
+	  removed BUILD_API
+	  cleaned up long description
+	* CONFIGURE: removed url queries
+	  added BROKER, PERL, and HTML queries
+	* DEPENDS: changed the beginning if statement
+	  removed the plugins optional depends
+	  added MAIL_TRANSPORT_AGENT optional
+	* PRE_BUILD: removed unpacking of second source
+	  added applying patch
+	* BUILD: added the HTML/CGI path
+	  modified configure options
+	  removed plugin build code
+	  added creating nagcmd account
+	* INSTALL: added default_install
+	  removed the plugins lines
+	  added installing the httpd config file
+	  create needed directories
+	* FINAL: removed the plugins lines
+	  added usermod commands
+	* init.d: changed paths to new locations
+	* WIP: deleted
+
 2005-11-29 Seth Woolley <seth@tautology.org>
 	* DETAILS: MD5 -> SHA512
 
