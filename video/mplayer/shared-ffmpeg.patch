@@ -1,11 +1,10 @@
 diff -Nur mplayer-cvs/configure mplayer-cvs.fixes/configure
 --- mplayer-cvs/configure	2005-05-01 18:33:50.000000000 +0200
 +++ mplayer-cvs.fixes/configure	2005-05-01 19:25:31.000000000 +0200
-@@ -5778,7 +5778,10 @@
- elif test "$_libavcodecso" = yes ; then
+@@ -6104,7 +6104,9 @@
    _def_libavcodec='#define USE_LIBAVCODEC 1'
    _def_libavcodecso='#define USE_LIBAVCODEC_SO 1'
-+  _def_ffpostprocess='#define FF_POSTPROCESS 1'
+   _def_ffpostprocess='#define FF_POSTPROCESS 1'
 +  _def_haveffpostprocess='yes'
    _ld_libavcodec='-lavcodec'
 +  _libavcodec='yes'

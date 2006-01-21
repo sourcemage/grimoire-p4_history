@@ -1,3 +1,12 @@
+2006-01-21 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* PRE_BUILD: add missing '&&' so it fails again on failing patches
+	* shared-ffmpeg.patch: updated for latest cvs, fixes bug #10430
+
+2006-01-14 Robin Cook <rcook@wyrms.net>
+	* PRE_BUILD: do sedit on configure to set gui as the configure seems
+	  to be broken processing some configure options
+	* BUILD: added missing $OPTS
+
 2005-11-20 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* shared-ffmpeg.patch: updated so it applies to the latest cvs again
 
