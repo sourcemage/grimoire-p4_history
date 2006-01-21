@@ -10,7 +10,12 @@ fi &&
 
 patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
+  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch    &&
+  OPTS="$OPTS --with-extraincdir=/usr/include/ffmpeg"  &&
+  if  [ "$GUI" == "y" ]; then
+    sedit "s|_gui=no|_gui=yes|" configure    &&
+    sedit "s|_gtk1=no|_gtk1=yes|" configure
+  fi            
 else
   # fixes bug #6833
   patch  -p1  <  $SCRIPT_DIRECTORY/mplayer-headers.patch  &&
