@@ -1,26 +1,31 @@
 # disable emacs, bug #8592
 sedit  's/EMACS = @EMACS@/EMACS = no/'  gettext-tools/misc/Makefile.in  &&
 
-export CC=gcc                                           &&
+export  CC=gcc  &&
 
-./configure  --build=$BUILD                             \
-              --host=$HOST                              \
+make_single  &&
+
+./configure  --build=$BUILD                           \
+              --host=$HOST                            \
             --prefix=${TRACK_ROOT}/usr                \
         --sysconfdir=${TRACK_ROOT}/etc                \
            --infodir=${TRACK_ROOT}/usr/share/info     \
             --mandir=${TRACK_ROOT}/usr/share/man      \
-             --with-included-gettext                    \
+             --with-included-gettext                  \
         --includedir=${TRACK_ROOT}/usr/local/include  \
-             $OPTS                                      &&
-make                                                    &&
+             $OPTS                                    &&
 
-if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
-  cd  gettext-tools/doc  &&
-  make  dvi              &&
-  make  ps               &&
-  make  pdf              &&
-  cd  -
-fi  &&
+make  &&
+
+#if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
+#  cd  gettext-tools/doc  &&
+#  make  dvi              &&
+#  make  ps               &&
+#  make  pdf              &&
+#  cd  -
+#fi  &&
+
+make_normal  &&
 
 #
 # Remove libintl.h from old log files
