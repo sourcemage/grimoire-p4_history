@@ -17,13 +17,13 @@ make_single  &&
 
 make  &&
 
-if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
-  cd  gettext-tools/doc  &&
-  make  dvi              &&
-  make  ps               &&
-  make  pdf              &&
-  cd  -
-fi  &&
+#if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
+#  cd  gettext-tools/doc  &&
+#  make  dvi              &&
+#  make  ps               &&
+#  make  pdf              &&
+#  cd  -
+#fi  &&
 
 make_normal  &&
 
