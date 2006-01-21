@@ -2,7 +2,7 @@ default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
 patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$MPLAYER_CVS" = "y" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch
+  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch  &&
   
   if  [ "$MPLAYER_GUI" == "gtk+" ]; then
     sedit "s|_gui=no|_gui=yes|" configure    &&
