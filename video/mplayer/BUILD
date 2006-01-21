@@ -5,7 +5,7 @@ OPTS="$OPTS --cc=gcc"  &&
 if [ "$MPLAYER_CVS" != "y" ]; then
   OPTS="$OPTS --enable-libavcodec"
 else
-  OPTS="--with-extraincdir=/usr/include/ffmpeg"
+  OPTS="$OPTS --with-extraincdir=/usr/include/ffmpeg"
 fi  &&
 
 # remove --enable-old-gtk for 1.0pre7try2 as it doesn't know that option
