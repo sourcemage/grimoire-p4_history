@@ -1,16 +1,22 @@
            SPELL=nagios
-         VERSION=1.2
-          SOURCE=$SPELL-${VERSION}.tar.gz
-         SOURCE2=$SPELL-plugins-1.4.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-1.2
-      SOURCE_URL=$SOURCEFORGE_URL/$SPELL/$SOURCE
-     SOURCE2_URL=$SOURCEFORGE_URL/${SPELL}plug/$SOURCE2
-        WEB_SITE=http://www.nagios.org/
-     SOURCE_HASH=sha512:9d236d880cd066c5ea8d9d7caf4194ec61276bb54c5ce1c0f917a203c316aaf7af7c8f28c387cebdb03da7339e34d18797ed2dce541bc87bc64edf73fd37bbe5
-    SOURCE2_HASH=sha512:f331d3709267041a066507c9bc0dc1b6bcdbe985da1e6235f364e893ace15bbd9803926d243de3ed5bc1a11a41fd865c26f890c643eb880b0660e2fd294e8ebc
+         VERSION=2.0b5
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+      SOURCE_URL=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
          LICENSE=GPL
-       BUILD_API=2
-           SHORT="A host/network monitoring program."
+        WEB_SITE=http://www.nagios.org/
+    ENTERED_DATE=20051129
+    UPDATED_DATE=20051129
+           SHORT="A host/network monitoring program." 
 cat << EOF
-Nagios® is a host and service monitor designed to inform you of network problems before your clients, end-users or managers do. It has been designed to run under the Linux operating system, but works fine under most *NIX variants as well. The monitoring daemon runs intermittent checks on hosts and services you specify using external "plugins" which return status information to Nagios. When problems are encountered, the daemon can send notifications out to administrative contacts in a variety of different ways (email, instant message, SMS, etc.). Current status information, historical logs, and reports can all be accessed via a web browser.
+Nagios is a host and service monitor designed to inform you of network 
+problems before your clients, end-users or managers do. It has been 
+designed to run under the Linux operating system, but works fine under most 
+*NIX variants as well. The monitoring daemon runs intermittent checks on hosts 
+and services you specify using external "plugins" which return status 
+information to Nagios. When problems are encountered, the daemon can send 
+notifications out to administrative contacts in a variety of different ways 
+(email, instant message, SMS, etc.). Current status information, historical 
+logs, and reports can all be accessed via a web browser. 
 EOF

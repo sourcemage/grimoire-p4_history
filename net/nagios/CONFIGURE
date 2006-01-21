@@ -1,7 +1,10 @@
-if [ ! -z "$HTML_URL" ]; then
-	if query  "Will you be using the CGIs"  y
-        then
-        	config_query_string HTML_URL "What will be the base HTML url?" "/nagios"
-		config_query_string CGI_URL "What will be the base CGI url?" "/nagios/cgi-bin"
-	fi
-fi
+config_query_option NAGIOS_BROKER                      \
+   "Enable integration of event broker routines?" y    \
+   "--enable-event-broker" "--disable-event-broker"    &&
+
+config_query_option NAGIOS_PERL                        \
+   "Enable embedded PERL interpreter?" n               \
+   "--enable-embedded-perl --with-perlcache"           \
+   "--disable-embedded-perl --without-per/cache"       &&
+
+config_query NAGIOS_HTML "Install html and cgi files?" y

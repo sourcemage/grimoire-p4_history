@@ -1,20 +1,9 @@
-if [ -n "{$HTML_URL}" ]
-then
+if [ "$NAGIOS_HTML" == "y" ]; then
    depends WEBSERVER
    depends gd
-fi
+fi  
 
-optional_depends "fping"  ""  ""                                         \
-                 "To be able to use fping to check host status"          &&
-optional_depends "qstat"  ""  ""                                         \
-                 "To be able to use qstat to check game server status"   &&
-optional_depends "net-snmp"  ""  ""                                      \
-                 "To be able to check host status using snmp"            &&
-optional_depends "perl-snmp"  ""  ""                                     \
-                 "Provides additional check using snmp"                  &&
-optional_depends "openldap"  ""  ""                                      \
-                 "To be able to check ldap server status"                &&
-optional_depends "mysql"  ""  ""                                         \
-                 "To be able to check mysql server status"               &&
-optional_depends "postgresql"  ""  ""                                    \
-                 "To be able to check postgresql server status"
+optional_depends MAIL_TRANSPORT_AGENT    \
+                 "--with-mail"           \
+                 "--without-mail"        \
+                 "Enable mail support?"  
