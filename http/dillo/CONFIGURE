@@ -21,11 +21,14 @@ config_query_option DILLO_RTFL                                     \
                     n                                              \
                     "--enable-rtfl"                                \
                     "--disable-rtfl"                               &&
-config_query_option DILLO_COOKIES                                  \
-                    "Cookie support"                               \
-                    y                                              \
-                    "--enable-cookies"                             \
-                    "--disable-cookies"                            &&
+#This is broken so forced on
+DILLO_COOKIES="--enable-cookies"                                   &&
+persistent_add DILLO_COOKIES                                       &&
+#config_query_option DILLO_COOKIES                                  \
+#                    "Cookie support"                               \
+#                    y                                              \
+#                    "--enable-cookies"                             \
+#                    "--disable-cookies"                            &&
 config_query_option DILLO_METAREF                                  \
                     "Allow meta refresh"                           \
                     n                                              \
