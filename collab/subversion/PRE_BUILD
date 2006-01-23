@@ -1,9 +1,0 @@
-default_pre_build                      &&
-
-if  [  "$SVN_HEAD"  ==  "n"  ];  then
-  patch  $SOURCE_DIRECTORY/configure.in  \
-         $SCRIPT_DIRECTORY/db-4.4.patch  &&
-  pushd  $SOURCE_DIRECTORY               &&
-  NOCONFIGURE="NO"  ./autogen.sh         &&
-  popd
-fi
