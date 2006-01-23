@@ -1,14 +1,15 @@
      TRAC_PLUGIN=graphvizplugin
            SPELL=trac-$TRAC_PLUGIN
-         VERSION=0.4
-     SOURCE_HASH='sha512:3a497b2e6d09c45a12b6e0169e4e55b7d78b7d4544b9b7f28743f66f260225b1f203d931f6f550be1a9d95e68721d34d403aabb1cba7d44ef6dbb05d8329b445'
-          SOURCE="$TRAC_PLUGIN.zip"
-   SOURCE_URL[0]="http://trac-hacks.swapoff.org/download/$SOURCE"
-SOURCE_DIRECTORY="$BUILD_DIRECTORY/$TRAC_PLUGIN"
+         VERSION=$(date +%Y%m%d)
+   SOURCE_IGNORE='volatile'
+          SOURCE="$TRAC_PLUGIN-$VERSION.tar.bz2"
+    TRAC_VERSION=0.9
+   SOURCE_URL[0]="svn://trac-hacks.swapoff.org/svn/$TRAC_PLUGIN/$TRAC_VERSION/:$SPELL-$VERSION"
+    SOURCE_HINTS=old_svn_compat
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$TRAC_PLUGIN-$VERSION"
         WEB_SITE='http://trac-hacks.swapoff.org/wiki/GraphvizPlugin'
       LICENSE[0]='?'
          UPDATED=20051215
-#           DOCS='docs/* *.txt'
        BUILD_API=2
            SHORT='Inline creation of diagrams for abstract graphs and networks using Graphviz'
 cat << EOF
