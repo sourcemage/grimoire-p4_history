@@ -10,7 +10,6 @@ fi &&
 
 patch  Makefile  $SCRIPT_DIRECTORY/Makefile.patch  &&
 if [ "$CVS" = "y" ]; then
-  patch -p1 < $SCRIPT_DIRECTORY/shared-ffmpeg.patch    &&
   OPTS="$OPTS --with-extraincdir=/usr/include/ffmpeg"  &&
   if  [ "$GUI" == "y" ]; then
     sedit "s|_gui=no|_gui=yes|" configure    &&
