@@ -1,6 +1,6 @@
            SPELL=fetchmail
-         VERSION=6.2.9-rc9
-     SOURCE_HASH='sha512:539492ad1915ab2da25e25da29dd8356239d94add6b9d8acf9195681ea7c833d0374d14365d0e4394f4b715f8b6e1527923682c7319579518d3f73d61f4f2e16'
+         VERSION=6.3.2
+     SOURCE_HASH='sha512:3d9160f4d79d62d2def814100ebd8a0525fa81eb676b646cf3641040e210838932ab38b4e05d19bfbfd0bbc31432681807c6f7e96a12a638ea0a83fef46e3085'
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.berlios.de/$SPELL/$SOURCE
@@ -9,9 +9,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20051003
       LICENSE[0]=GPL
            SHORT='Fetchmail is a remote-mail retrieval and forwarding utility'
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
 cat << EOF
 Fetchmail is a free, full-featured, robust, well-documented remote-mail
 retrieval and forwarding utility intended to be used over on-demand TCP/IP links
