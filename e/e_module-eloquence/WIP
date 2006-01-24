@@ -1,5 +1,0 @@
-Fails with:
-gcc -shared  .libs/e_mod_main.o .libs/e_mod_config.o .libs/xmms.o .libs/bmp.o .libs/bmpx.o .libs/audacious.o .libs/amarok.o .libs/mpd.o  -L/usr/lib /usr/lib/libglib-2.0.so -L/usr/X11R6/lib /usr/lib/libgtk.so /usr/lib/libgdk.so /usr/lib/libgmodule.so /usr/lib/libglib.so -ldl -lXext -lX11 -lm /usr/lib/libxmms.so /usr/lib/libe.so -L/usr/src/ecore-cvs/src/lib/ecore/.libs -L/usr/src/ecore-cvs/src/lib/ecore_txt/.libs -L/usr/src/ecore-cvs/src/lib/ecore_job/.libs -L/usr/src/ecore-cvs/src/lib/ecore_x/.libs -L/usr/src/ecore-cvs/src/lib/ecore_con/.libs  -march=pentium4 -mmmx -mfpmath=sse -msse -msse2 @dlopen_libs@ -Wl,-soname -Wl,module.so -o .libs/module.so
-gcc: @dlopen_libs@: No such file or directory
-make[2]: *** [module.la] Error 1
-make[2]: Leaving directory `/usr/src/eloquence-0.4.5/src'
