@@ -1,4 +1,4 @@
-if [ ! "${RELEASE}" = "stable" ]; then
+if [ ! "${FVWM_RELEASE}" = "stable" ]; then
     config_query_option FVWM_OPTS                 \
         "Enable NLS?" y                           \
         "--enable-nls"                            \
