@@ -1,0 +1,14 @@
+problems with "cast -r -c mcrypt":
+
+checking for libmcrypt - version >= 2.5.0... yes
+checking for mhash_keygen in -lmhash... yes
+checking whether mhash >= 0.8.15... no
+configure: error: "You need at least libmhash 0.8.15 to compile this program. http://mhash.sf.net/"
+
+php 5.1.2 fails because of missing header
+/usr/include/mhash.h:4:30: error: mutils/mincludes.h: No such file or directory
+In file included from /usr/include/mutils/mtypes.h:24,
+                      /usr/include/mhash.h:6,
+                      /usr/src/php-5.1.2/ext/mhash/mhash.c:31
+
+This in also the problem with mcrypt and it builds with this fix applied
