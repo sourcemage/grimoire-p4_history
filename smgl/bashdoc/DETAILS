@@ -1,16 +1,15 @@
            SPELL=bashdoc
        BUILD_API=2
-         VERSION=0.1.4
+         VERSION=0.1.7
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://download.sourcemage.org/distro/misc/${SOURCE}
-     SOURCE_HASH=sha512:25bb365d7a65271f24d260bf3a89c9e3e3956113882872c6e98255522de285da207590a3e861de80a6691b8e9f0dec3391a4a009ea5e304e22065658ace67b36
-       WEB_SITE=http://wiki.sourcemage.org/bashdoc
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+        WEB_SITE=http://wiki.sourcemage.org/bashdoc
          ENTERED=20040223
          UPDATED=20040910
          LICENSE=GPL
-           SHORT="A tool for generating Bash documentation from our libraries."
-	
+           SHORT="A tool for generating Bash documentation from the Source Mage libraries."
 cat << EOF
 This spell installs bashdoc tooling for generationg Bash documentation from
 code. It also runs a script generate and install all Source Mage GNU/Linux
