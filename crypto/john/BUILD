@@ -7,9 +7,9 @@
 
   if grep mmx /proc/cpuinfo > /dev/null
   then
-    make linux-x86-mmx-elf
+    make linux-x86-mmx
   else
-    make linux-x86-any-elf
+    make linux-x86-any
   fi &&
 
   prepare_install
@@ -20,6 +20,6 @@
   cp  -d  john  mailer  unshadow  unique  unafs  /usr/sbin
 
   mkdir  -p                /usr/share/john
-  cp  *.chr  *.lst  *.ini  /usr/share/john
+  cp  *.chr  *.lst  *.conf  /usr/share/john
 
 )
