@@ -16,6 +16,9 @@ for file in etc/udev/suse/40-alsa.rules ; do
         install_config_file $file ${UDEV_CFG}/rules.d/$(basename $file)
 done  &&
 
+# udevstart and udevsend are nolonger installed by default. we still need them
+install udevsend udevstart  ${INSTALL_ROOT}/sbin &&
+
 make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS} install   &&
 make EXTRAS="extras/run_directory extras/cdrom_id extras/firmware" \
   prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ \
