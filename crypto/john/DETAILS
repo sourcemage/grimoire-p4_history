@@ -1,5 +1,6 @@
            SPELL=john
          VERSION=1.7
+       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.openwall.com/john/d/$SOURCE
@@ -8,7 +9,6 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20011216
          UPDATED=20011216
       LICENSE[0]=GPL
-      MAINTAINER=hgr@vabo.cz
            SHORT="John the Ripper is a fast password cracker."
 cat << EOF
 John the Ripper is a fast password cracker, currently available
