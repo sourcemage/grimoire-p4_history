@@ -1,3 +1,4 @@
+create_group scanner
 if [ "$USEFORK" == "y" ]; then
    OPTS="$OPTS --enable-fork-process"
 else
