@@ -1,3 +1,8 @@
 default_install &&
+if spell_ok hotplug ; then
+cd $SOURCE_DIRECTORY  &&
+cp tools/hotplug/libsane.usermap  $INSTALL_ROOT/etc/hotplug/usb  &&
+cp tools/hotplug/libusbscanner  $INSTALL_ROOT/etc/hotplug/usb
+fi  &&
 mkdir -p -m 1770 /var/lock/sane/ &&
 chown root:users /var/lock/sane/
