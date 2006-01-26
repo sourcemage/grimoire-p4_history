@@ -1,23 +1,19 @@
            SPELL=fetchmail
-         VERSION=6.2.5.2
-          SOURCE=$SPELL-$VERSION.tar.gz
+         VERSION=6.3.2
+  SECURITY_PATCH=1
+     SOURCE_HASH='sha512:3d9160f4d79d62d2def814100ebd8a0525fa81eb676b646cf3641040e210838932ab38b4e05d19bfbfd0bbc31432681807c6f7e96a12a638ea0a83fef46e3085'
+          SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://download.berlios.de/fetchmail/fetchmail-6.2.5.2.tar.gz
-   SOURCE_URL[1]=ftp://download.sourcemage.org/pub/linux/distributions/sourcemage/mirror/$SOURCE
-          MD5[0]=cd76823c6b10cf8b2dbbbe710e620577
-        WEB_SITE=http://catb.org/%7Eesr/fetchmail
+   SOURCE_URL[0]=http://download.berlios.de/$SPELL/$SOURCE
+        WEB_SITE=http://fetchmail.berlios.de/
          ENTERED=20010922
-         UPDATED=20020624
-      MAINTAINER=marcg@phreaker.net
-      LICENSE[0]=http://catb.org/%7Eesr/fetchmail
-           SHORT="Fetchmail is a powerful MTA that's easy to configure."
-    MENU_ITEM[0]=${SPELL}
-    MENU_EXEC[0]=${SPELL}
-    MENU_DESC[0]=${SHORT}
+         UPDATED=20051003
+      LICENSE[0]=GPL
+           SHORT='Fetchmail is a remote-mail retrieval and forwarding utility'
 cat << EOF
-Fetchmail is a remote mail retrieval and forwarding utility intended to
-be used over on-demand TCP/IP links (such as SLIP or PPP connections).
-It supports every remote-mail protocol now in use on the Internet:
-POP2, POP3, RPOP, APOP, KPOP, all flavors of IMAP, ETRN, and ODMR. It
-can even support IPv6 and IPSEC.
+Fetchmail is a free, full-featured, robust, well-documented remote-mail
+retrieval and forwarding utility intended to be used over on-demand TCP/IP links
+(such as SLIP or PPP connections). It supports every remote-mail protocol now in
+use on the Internet: POP2, POP3, RPOP, APOP, KPOP, all flavors of IMAP, and
+ESMTP ETRN. It can even support IPv6 and IPSEC.
 EOF
