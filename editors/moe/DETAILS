@@ -1,15 +1,23 @@
            SPELL=moe
+
+if [[ "${MOE_DEVEL}" == "y" ]] ; then
+         VERSION=0.6-rc2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+      SOURCE_URL=http://es.geocities.com/ant_diaz2001/${SOURCE}
+     SOURCE_HASH=sha512:3806a87bb6ae1a7fa7e6db441a8c9b1baa09601f05c0765fc2c72e8460f4f428ffe26c871c67697deb83f8dd65ad067aad9f3f1b95ed65e1befbf1e584027917
+
+else
          VERSION=0.5
        BUILD_API=2
           SOURCE=${SPELL}-${VERSION}.tar.bz2
          SOURCE2=${SOURCE}.sig
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
-   SOURCE_URL[0]=${GNU_URL}/${SPELL}/${SOURCE}
+      SOURCE_URL=${GNU_URL}/${SPELL}/${SOURCE}
      SOURCE2_URL=${SOURCE_URL}.sig
       SOURCE_GPG=gnu.gpg:${SOURCE}.sig
-     SOURCE_HASH=sha512:3e0ad41c44fb1985cddd472c139b7e075737216b22328a0604407ef1ce76a6b336e95556e86ab2ffa103792181c5e7e6778ec965d176fb44e0a7ff3579a104bf
-     SOURCE_HASH=sha512:3e0ad41c44fb1985cddd472c139b7e075737216b22328a0604407ef1ce76a6b336e95556e86ab2ffa103792181c5e7e6778ec965d176fb44e0a7ff3579a104bf
   SOURCE2_IGNORE=signature
+fi
+
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
         WEB_SITE=http://www.gnu.org/software/moe/moe.html
          ENTERED=20050930
          UPDATED=20050930
