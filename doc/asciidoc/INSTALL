@@ -1,0 +1,21 @@
+mv -v asciidoc.py asciidoc
+install --group=root --mode=755 --owner=root -p --target-directory=/usr/bin ./asciidoc ./a2x
+install --group=root --mode=644 --owner=root -d /etc/asciidoc
+install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc ./*.conf
+install --group=root --mode=644 --owner=root -d /etc/asciidoc/filters
+install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc/filters ./filters/code-filter.conf 
+install --group=root --mode=755 --owner=root -p --target-directory=/etc/asciidoc/filters ./filters/code-filter.py
+install --group=root --mode=644 --owner=root -d /etc/asciidoc/docbook-xsl 
+install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc/docbook-xsl ./docbook-xsl/*
+install --group=root --mode=644 --owner=root -d /etc/asciidoc/stylesheets
+install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc/stylesheets ./stylesheets/*.css
+install --group=root --mode=644 --owner=root -d /etc/asciidoc/images/icons
+for file in images/icons/* ; do
+	if [ -d $file ] ; then
+		install --group=root --mode=644 --owner=root -d /etc/asciidoc/$file
+		install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc/$file $file/*
+	elif [ -f $file ] ; then
+		install --group=root --mode=644 --owner=root -p --target-directory=/etc/asciidoc/$(dirname $file) $file
+	fi 
+done
+
