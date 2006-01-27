@@ -13,4 +13,5 @@ fi  &&
 scons \
 	$USE_OPENAL                        \
 	USE_INTERNATIONAL=1                \
+	BUILD_BLENDER_PLAYER=1             \
 	BUILD_GAMEENGINE=1
