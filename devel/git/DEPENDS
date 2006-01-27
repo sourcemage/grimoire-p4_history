@@ -1,3 +1,8 @@
 depends  openssl  &&
 depends  rsync    &&
-depends  curl
+depends  curl     &&
+if [[ $GIT_DOCS == "y" ]]
+then
+	depends xmlto    &&
+	depends asciidoc 
+fi
