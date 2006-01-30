@@ -1,3 +1,15 @@
+2006-01-30 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: added two sedits to remove -D_IO_MTSAFE_IO as that breaks
+	  the compile on a current glibc, added a hack to convince sorcery
+	  of giving us gcc2 compatible CFLAGS/CXXFLAGS
+	* INSTALL: added to create some compatibility symlinks
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
+2005-11-28 Seth Woolley <seth@tautology.org>
+	* PRE_BUILD: unpack api update
+
 2004-09-01 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* POST_REMOVE, FINAL: POST_REMOVE renamed to FINAL
 	* BUILD, INSTALL: converted to BUILD_API 2, use $INSTALL_ROOT
