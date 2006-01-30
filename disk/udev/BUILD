@@ -1,8 +1,13 @@
-make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true ${OPTS}  &&
-make EXTRAS="extras/run_directory extras/cdrom_id extras/firmware" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} DEST_DIR="./" V=true &&
+make prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ V=true   \
+     ${OPTS} ${UDEV_DEBUG} &&
+make EXTRAS="extras/run_directory extras/cdrom_id extras/firmware" \
+     prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS}  \
+     ${UDEV_DEBUG} DEST_DIR="./" V=true &&
 
 if [[ "$UDEV_EXTRAS" == 'y' ]]; then
-  make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} DEST_DIR="./" V=true 
+  make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/floppy extras/scsi_id extras/usb_id extras/volume_id" \
+       prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} \
+       ${UDEV_DEBUG} DEST_DIR="./" V=true 
 fi &&
 
 if [[ "$UDEV_STATIC" == 'y' ]]; then
