@@ -7,9 +7,8 @@ OPTS="$OPTS
   --with-libiconv-prefix=$INSTALL_ROOT/usr
   --enable-geometry
   --enable-xrc
-  --enable-unicode
-  --with-gtk=2
-" &&
+  --disable-unicode
+  --with-gtk=1" &&
 default_build &&
 for COMPONENT in $WX_CONTRIB; do
   make -C contrib/src/$COMPONENT
