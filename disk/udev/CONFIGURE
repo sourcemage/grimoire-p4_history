@@ -1,5 +1,6 @@
 config_query UDEV_PERSIST 'install persistent disk rules?' n &&
 config_query UDEV_STATIC 'Create static binaries in addition to dynamically linked ones?' n &&
+config_query_option UDEV_DEBUG 'Compile extra debugging messages?' n 'DEBUG=true' 'DEBUG=false' &&
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   if [[ -z "$UDEV_STATIC_TARGET" ]]; then
     # add more UDEV utilities here as necessary, space-separated
