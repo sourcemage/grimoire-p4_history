@@ -1,11 +1,14 @@
            SPELL=raptor
          VERSION=1.4.8
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.asc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/librdf/$SOURCE
    SOURCE_URL[1]=http://download.librdf.org/source/$SOURCE
-#     SOURCE_HASH=sha512:5244ece26d790e2a076f29271004eef582d1e4461e542ce5a04963a5c44d4a2f4cf15aa1fc7dcdaefd80010af3e267c21339e3f388414508a893c7ad3bc9db23
-      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/librdf/$SOURCE2
+  SOURCE2_URL[1]=http://download.librdf.org/source/$SOURCE2
+  SOURCE2_IGNORE=signature
+      SOURCE_GPG="raptor.gpg:$SOURCE2:UPSTREAM_KEY"
       LICENSE[0]="LGPL APACHE2"
        BUILD_API=2
         WEB_SITE=http://librdf.org/raptor/
