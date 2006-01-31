@@ -1,12 +1,11 @@
            SPELL=fxscintilla
          VERSION=1.63
           SOURCE=${SPELL}-${VERSION}.tar.gz
-#        SOURCE2=${SOURCE}.sig
+         SOURCE2=${SOURCE}.sig
    SOURCE_URL[0]=http://download.savannah.nongnu.org/releases/${SPELL}/${SOURCE}
-# SOURCE2_URL[0]=http://download.savannah.nongnu.org/releases/${SPELL}/${SOURCE2}
-#     SOURCE_GPG=gnu.gpg:${SOURCE2}
-# SOURCE2_IGNORE=signature
-     SOURCE_HASH=sha512:01e8eb2be23099d35d11acc1e528a230bc1c090b0955dc78ec36fe9e54ea56a705aeb0881a4ae2e13175bc7927a76c1dc1763a7f76d3c0d77226b8ad9a0923eb
+  SOURCE2_URL[0]=http://download.savannah.nongnu.org/releases/${SPELL}/${SOURCE2}
+      SOURCE_GPG="fxscintilla.gpg:${SOURCE2}:UPSTREAM_KEY"
+  SOURCE2_IGNORE=signature
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
         WEB_SITE=http://www.nongnu.org/${SPELL}
          ENTERED=20060128
