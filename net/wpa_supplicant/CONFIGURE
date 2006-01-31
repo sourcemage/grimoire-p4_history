@@ -19,4 +19,19 @@ config_query WAP_EAP "WAP-Enterprise support" n
 if [ "$WAP_EAP" == "y" ];then
   config_query CONFIG_EAP_TTLS "EAP-TTLS support?" n
   config_query CONFIG_EAP_PEAP "EAP-PEAP support?" n
+  config_query CONFIG_IEEE8021X_EAPOL "IEEE8021X_EAPOL support?" n
+  config_query CONFIG_EAP_MD5 "EAP_MD5 support?" n
+  config_query CONFIG_EAP_MSCHAPV2 "EAP_MSCHAPV2 support?" n
+  config_query CONFIG_EAP_TLS "EAP_TLS support?" n
+  config_query CONFIG_EAP_GTC "EAP_GTC support?" n
+  config_query CONFIG_EAP_OTP "EAP_OTP support?" n
+  config_query CONFIG_EAP_SIM "EAP_SIM support?" n
+  config_query CONFIG_EAP_AKA "EAP_AKA support?" n
+  config_query CONFIG_EAP_PSK "EAP_PSK support?" n
+  config_query CONFIG_EAP_PAX "EAP_PAX support?" n
+  config_query CONFIG_EAP_LEAP "EAP_LEAP support?" n
+  
+config_query CONFIG_PCSC "GSM/UMTS ?" n
 fi
+
+
