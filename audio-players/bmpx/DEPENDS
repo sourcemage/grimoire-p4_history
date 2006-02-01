@@ -5,15 +5,23 @@ depends libglade2  &&
 depends gtk-doc    &&
 depends taglib     &&
 depends FAM        &&
-depends dbus       &&
+depends neon       &&
 
-# Commented out until gstreamer 0.9x is in the grimoire
-#
-#if   [ "$BMPX_BACKEND"  ==  "gstreamer" ];  then
-#  depends  gstreamer "--enable-gst --disable-xine"
-#elif [ "$BMPX_BACKEND"  ==  "xine-lib"  ];  then
-  depends  xine-lib "--enable-xine --disable-gst"
-#fi                                                           &&
+if [ "$BMPX_BACKEND"  ==  "gstreamer" ];  then
+   depends  gstreamer "--enable-gst --disable-xine"
+elif [ "$BMPX_BACKEND"  ==  "xine-lib"  ];  then
+   depends  xine-lib "--enable-xine --disable-gst"
+fi                                                            &&
+
+optional_depends gconf2                                       \
+                 "--with-gconf"                               \
+                 "--without-gconf"                            \
+                 "Enable startup-notification support"        &&
+
+optional_depends startup-notification                         \
+                 "--with-sn"                                  \
+                 "--without-sn"                               \
+                 "Enable startup-notification support"        &&
 
 optional_depends curl                                         \
                  "--with-libcurl"                             \

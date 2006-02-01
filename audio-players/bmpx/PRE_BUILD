@@ -1,0 +1,7 @@
+default_pre_build       &&
+cd ${SOURCE_DIRECTORY}  &&
+
+if [ "${BMPX_DEVEL}" == "n" ]; then
+   patch -p0 < ${SCRIPT_DIRECTORY}/configure.ac.diff  &&
+   autoconf
+fi
