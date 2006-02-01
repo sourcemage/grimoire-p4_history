@@ -1,14 +1,13 @@
            SPELL=fftw
-         VERSION=3.0.1
+         VERSION=3.1
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.fftw.org/pub/fftw/$SOURCE
-     SOURCE_HASH=sha512:a3558e8afc1fe7e1f95ce7da2b2b305c5f18ecfc5384b58e011663ada7d9afcaa13b954079decd9e93f1955ca2e3b6f8939a90717cefaaa6f87093fe4341f6e9
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
         WEB_SITE=http://www.fftw.org/
          ENTERED=20011207
          UPDATED=20050613
-       BUILD_API=2
            SHORT="Fast Fourier Tranform C Library"
 cat << EOF
 FFTW is a fast C FFT library. It includes complex, real, and parallel 
