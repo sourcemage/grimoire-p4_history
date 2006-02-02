@@ -1,0 +1,18 @@
+           SPELL=pyparsing
+         VERSION=1.4
+     SOURCE_HASH='sha512:f0eaf3f5b51a7f8dbf21030697330f80f34f5286ef56801c6153ca72a9d7fb7189074ad5990320eb2edd2b3eabc8301d281e4e77bc80fea378e16bd9927e1f4c'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+#           DOCS='NEWS README* docs/*'
+        WEB_SITE="http://$SPELL.sourceforge.net/"
+      LICENSE[0]='MIT'
+         UPDATED=20060201
+       BUILD_API=2
+           SHORT='pyparsing is a general parsing module for Python'
+cat << EOF
+pyparsing is a general parsing module for Python. Grammars are implemented
+directly in the client code using parsing objects, instead of externally, as
+with lex/yacc-type tools. Includes simple examples for parsing SQL, CORBA IDL,
+and 4-function math.
+EOF
