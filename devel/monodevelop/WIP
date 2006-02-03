@@ -1,0 +1,5 @@
+Still fails to build with mono 1.1.13:
+./MonoDevelop.Projects/Combine.cs(20,18): error CS0234: The type or namespace name `FilePermissions' does not exist in the namespace `Mono.Unix'. Are you missing an assembly reference?
+./MonoDevelop.Projects/Combine.cs(20,1): error CS0246: The type or namespace name `Mono.Unix.FilePermissions' could not be found. Are you missing a using directive or an assembly reference?
+Compilation failed: 2 error(s), 0 warnings
+make[3]: *** [../../../build/AddIns/MonoDevelop.Projects.dll] Error 1
