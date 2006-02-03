@@ -1,8 +1,0 @@
-LD_LIBRARY_PATH=/usr/src/perl-5.8.7 ./miniperl -Ilib configpm --heavy=lib/Config_heavy.pl configpm.tmp
-Can't locate unicore/PVA.pl in @INC (@INC contains: lib /usr/lib/perl5/site_perl/5.8.7/x86_64-linux-thread-multi /usr/lib/perl5/site_perl/5.8.7 /usr/lib/perl5/site_perl/5.8.6/x86_64-linux-thread-multi /usr/lib/perl5/site_perl/5.8.6 /usr/lib/perl5/site_perl /usr/lib/perl5/vendor_perl/5.8.7/x86_64-linux-thread-multi /usr/lib/perl5/vendor_perl/5.8.7 /usr/lib/perl5/vendor_perl/5.8.6/x86_64-linux-thread-multi /usr/lib/perl5/vendor_perl/5.8.6 /usr/lib/perl5/vendor_perl /usr/lib/perl5/5.8.7/x86_64-linux-thread-multi /usr/lib/perl5/5.8.7 .) at lib/utf8_heavy.pl line 80, <DATA> line 22.
-make: *** [lib/Config.pm] Error 2
-
-PVA.pl is not part of the original tarball, it's probably supposed to be
-generated or reused from earlier installation of Perl. It is present at
-/usr/lib/perl5/5.8.6/unicore/PVA.pl from Perl 5.8.6, but the compile fails
-whether Perl 5.8.6 is present or dispelled.
