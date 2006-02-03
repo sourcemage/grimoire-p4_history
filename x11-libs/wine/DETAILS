@@ -9,14 +9,14 @@ if  [  "$WINE_CVS"  ==  "y"  ];  then
    SOURCE_URL[0]=cvs://:pserver:cvs:cvs@cvs.winehq.org:/home/wine:wine
    SOURCE_IGNORE=volatile
 else
-         VERSION=0.9.6
+         VERSION=0.9.7
           SOURCE=wine-$VERSION.tar.bz2
          SOURCE2=$SOURCE.sign
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
    SOURCE_URL[1]=http://www.ibiblio.org/pub/linux/system/emulators/$SPELL/$SOURCE
   SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE2
   SOURCE2_URL[1]=http://www.ibiblio.org/pub/linux/system/emulators/$SPELL/$SOURCE2
-      SOURCE_GPG="wine.gpg:$SOURCE.sign"
+      SOURCE_GPG="wine.gpg:$SOURCE.sign:UPSTREAM_KEY"
   SOURCE2_IGNORE=signature
 fi
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
