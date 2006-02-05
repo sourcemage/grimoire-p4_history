@@ -2,24 +2,24 @@
   default_pre_build                      &&
   cd $SOURCE_DIRECTORY                   &&
 
-# apply gcc4 patch
-bzcat $SPELL_DIRECTORY/*.bz2 | patch -p1 &&
-
 # at present the build only works for everything in one directory
 # tree /usr/firebird
 
-  local SCRIPT                           &&
-  sed -i -e \
-"s/-O3 -march=i586 -mcpu=i686//;s/-ggdb//;s/-shared/-shared $LDFLAGS/" \
-       -e "s/-fno-builtin//;s/-fno-omit-frame-pointer//"      \
-        builds/posix/prefix.linux        &&
+# remove supplied ICU & editline packages
+  rm -rf extern                            &&
+# fix for gcc4 and smgl issues
+  local PATCH                              &&
+  case "$FB_VER" in
+	cvs|devel)
+          PATCH=fb2.patch.bz2
+            ;;
+	*)
+         PATCH=fb15.patch.bz2
+            ;;
+  esac                                      &&
+#apply patches
+  bzcat $SPELL_DIRECTORY/$PATCH | patch -p1 &&
 
-# make this compatible with smgl init system
-#  if [ "$FB_VER" == "cvs" ];then
-#    SCRIPT=builds
-#  else
-    SCRIPT=src                             &&
-#  fi                                      &&
-  sed -e "s:rc\.d/::;s:d/f:d/runlevels/\%3/f:" -i \
-     $SCRIPT/install/arch-specific/linux/misc/changeDBAPassword.sh.in
+# run autogen
+  NOCONFIGURE=1 . ./autogen.sh
 

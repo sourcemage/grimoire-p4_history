@@ -1,3 +1,20 @@
+2006-02-04 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: cvs version is now firebird2 T2_0_0_Beta2
+	* PRE_BUILD: 
+          add autogen
+	  apply fb{15,2}.patch
+	  remove sed stmts
+	* BUILD: remove autogen
+	  add ICU_FLAGS; set other LDFLAGS (-ledit, -lpthread)
+	* FINAL INSTALL volatiles: firebird2 uses different security db
+	* DEPENDS: firebird2 depends on icu
+	  optional libedit
+	* CONFIGURE: remove editline query, now in DEPENDS
+	* PREPARE: warn of major changes
+	* fb*.patch.bz2: add
+	* firebird-1.5.2-gcc4.patch.bz2: delete
+	* UP_TRIGGERS: added, to detect changed  libfb* libraries
+
 2006-01-25 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 1.5.3.4870
 	* INSTALL volatiles: adjust

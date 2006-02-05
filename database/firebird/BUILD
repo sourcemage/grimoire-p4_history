@@ -1,7 +1,14 @@
   PREFIX=${INSTALL_ROOT}/usr/firebird           &&
-  OPTS="${OPTS} ${FB_SS} ${FB_EDIT}"            &&
+  OPTS="${OPTS} ${FB_SS}"                       &&
+  if spell_ok icu; then
+    ICU_FLAGS=`icu-config --ldflags-libsonly`   &&
+    LDFLAGS="$LDFLAGS $ICU_FLAGS"
+  fi                                            &&
+  if spell_ok libedit; then
+    LDFLAGS="$LDFLAGS -ledit"
+  fi                                            &&
+  LDFLAGS="$LDFLAGS -lpthread"                  &&
 
-  NOCONFIGURE=1 . ./autogen.sh			&&
   ./configure 				\
 	--prefix=$PREFIX 		\
 	$OPTS					&&
