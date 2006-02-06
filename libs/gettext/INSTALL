@@ -18,12 +18,11 @@ if  echo  $OPTS  |  grep  -q  --  "enable-libasprintf";  then
   fi
 else
   rm  -f  ${INSTALL_ROOT}/usr/local/include/autosprintf.h
-fi
-#fi  &&
+fi  &&
 
-#if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
-#  cd  gettext-tools/doc  &&
-#  make  install-pdf DESTDIR=$INSTALL_ROOT     &&
-#  make  install-ps  DESTDIR=$INSTALL_ROOT     &&
-#  make  install-dvi DESTDIR=$INSTALL_ROOT
-#fi
+if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
+  cd  gettext-tools/doc  &&
+  make  install-pdf DESTDIR=$INSTALL_ROOT     &&
+  make  install-ps  DESTDIR=$INSTALL_ROOT     &&
+  make  install-dvi DESTDIR=$INSTALL_ROOT
+fi
