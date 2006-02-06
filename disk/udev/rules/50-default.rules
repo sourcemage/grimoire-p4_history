@@ -100,7 +100,8 @@ KERNEL=="fb[0-9]",      NAME="%k", MODE="0660", GROUP="video"
 # Network devices
 KERNEL=="tun",          NAME="net/%k"
 
+SUBSYSTEM=="firmware", ACTION="add", RUN+="/lib/udev/firmware_helper"
+
 # be backward compatible for a while with the /etc/hotplug.d/ system
 # run /etc/hotplug.d/ stuff only if we came from a hotplug event, not for udevstart
 ENV{UDEVD_EVENT}=="1",  RUN="udev_run_hotplugd $env{SUBSYSTEM}"
-SUBSYSTEM=="firmware", ACTION="add", RUN+="/lib/udev/firmware_helper"
