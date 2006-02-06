@@ -10,6 +10,6 @@ optional_depends  CSHARP              \
                   "--disable-csharp"  \
                   " for C# bindings"
 
-#if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
-#  depends  tetex
-#fi
+if  [  "$GETTEXT_TETEX"  ==  "y"  ];  then
+  depends  tetex
+fi
