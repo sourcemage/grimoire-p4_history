@@ -1,4 +1,9 @@
-2006-01-31 Treeve Jelbert <treeve01@pi.be>
+2006-02-06 Flavien Bridault <disk@sourcemage.org>
+	* init.d/50-default.rules: swapped firmware rule and udev_run_hotplugd
+	  rule, so that it hotplug do not try to load the firmwares. Should solve
+	  bug #10436
+	
+ 2006-01-31 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 084
 	* rules/50*: adjust udev_run* command
 	* FINAL: warn of changes affecting udev_run* commands
