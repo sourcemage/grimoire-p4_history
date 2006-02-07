@@ -1,8 +1,11 @@
-depends  flex                 &&
-depends  mktemp               &&
+depends  flex    &&
+depends  gnupg   &&
+depends  mktemp  &&
+
 if [ "$OLD_TOO" == "y" ]; then
-  depends bison
-fi
+  depends  bison
+fi  &&
+
 if [ "$GZIP_MODS" == "y" ] ; then
-  depends zlib '--enable-zlib'
+  depends  zlib  '--enable-zlib'
 fi
