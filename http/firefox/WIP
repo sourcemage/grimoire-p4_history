@@ -11,3 +11,10 @@ make[2]: *** [libs] Error 2
 make[1]: *** [tier_9] Error 2
 make: *** [default] Error 2
 make[3]: Leaving directory `/usr/src/mozilla/netwerk/cache'
+===============================================================
+
+2006-02-07 Arwed v. Merkatz
+
+- compiles for me, do you have a current nspr (4.6) installed?
+- still WIP because updating this leads to /usr/lib/libnssckbi.so being lost
+  due to installwatch stupidly tracking it because of the symlink in INSTALL
