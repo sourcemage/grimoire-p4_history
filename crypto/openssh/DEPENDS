@@ -1,8 +1,10 @@
-depends  zlib     &&
+depends  gnupg    &&
 depends  openssl  &&
+depends  zlib     &&
+
 if [ "$SELINUX" == "y" ] ; then
   depends libselinux
-fi &&
+fi  &&
 
 optional_depends  "tcp_wrappers"         \
                   "--with-tcp-wrappers"  \

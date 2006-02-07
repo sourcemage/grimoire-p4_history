@@ -1,8 +1,17 @@
-#KVER=`uname -r|cut -c-6`   &&
+depends  gnupg  &&
+
 KVER=`installed_version linux |cut -c-6`  &&
-echo depends kver=$KVER  &&
+
 if [[ "$KVER" < "2.6.13" ]]; then
   depends  hotplug 
 fi  &&
-optional_depends libselinux "USE_SELINUX=true" "USE_SELINUX=false" "For selinux support"
-optional_depends SYSTEM-LOGGER "USE_LOG=true" "USE_LOG=false" "For logging through syslog"
+
+optional_depends  libselinux             \
+                  "USE_SELINUX=true"     \
+                  "USE_SELINUX=false"    \
+                  "For selinux support"  &&
+
+optional_depends  SYSTEM-LOGGER                 \
+                  "USE_LOG=true"                \
+                  "USE_LOG=false"               \
+                  "For logging through syslog"

@@ -1,12 +1,13 @@
-depends autoconf                               &&
-if [ "${PAM_SELINUX}" == "y" ]; then
-  depends libselinux &&
-  depends gcc34
-fi                                             &&
+depends  autoconf  &&
+depends  cracklib  &&
+depends  gnupg     &&
 
-depends cracklib                               &&
+if [ "${PAM_SELINUX}" == "y" ]; then
+  depends  libselinux  &&
+  depends  gcc34
+fi  &&
 
 if [ "${PAM_DOCS}" == "y" ]; then
-  depends tetex                                &&
-  depends linuxdoc-tools                       
-fi 
+  depends  tetex           &&
+  depends  linuxdoc-tools                       
+fi
