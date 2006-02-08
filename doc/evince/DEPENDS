@@ -5,10 +5,11 @@ depends  gnome-vfs2        &&
 depends  libgnomeprintui   &&
 depends  poppler           &&
 depends  xml-parser-expat  &&
+depends  gnome-keyring     &&
 
 optional_depends  POSTSCRIPT-INTERPRETER              \
-                  ""                                  \
-                  ""                                  \
+                  "--enable-ps"                       \
+                  "--disable-ps"                      \
                   "for postscript support"            &&
 
 optional_depends  tiff                                \
