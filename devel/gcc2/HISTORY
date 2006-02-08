@@ -1,3 +1,8 @@
+2006-02-08 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* POST_REMOVE: removed, breaks dispel of gcc2
+	* REPAIR^fca7f4ae3861d294aab10cf1ab4b982b^POST_REMOVE: replace the
+	  POST_REMOVE in tablet by an empty one so gcc2 can be dispelled
+
 2006-01-30 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD: added two sedits to remove -D_IO_MTSAFE_IO as that breaks
 	  the compile on a current glibc, added a hack to convince sorcery
