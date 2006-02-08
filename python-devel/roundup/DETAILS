@@ -1,0 +1,17 @@
+           SPELL=roundup
+  CHEESESHOP_PKG=$SPELL
+         VERSION=1.0.1
+     SOURCE_HASH='sha512:a971f9034ce109db2f546037d68e1345fe0de3e33ff84af2b4d43983e696672d146f5bedc0d8275f118a1af2b76680308f0e505b6888148ef815b9b1941d521e'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://cheeseshop.python.org/packages/source/${CHEESESHOP_PKG:0:1}/$CHEESESHOP_PKG/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+        WEB_SITE="http://$SPELL.sf.net/"
+      LICENSE[0]='PYTHON'
+         UPDATED=20060208
+       BUILD_API=2
+           SHORT='Roundup is a simple-to-use and -install issue-tracking system'
+cat << EOF
+Roundup is a simple-to-use and -install issue-tracking system with command-line,
+web and e-mail interfaces. It is based on the winning design from Ka-Ping Yee in
+the Software Carpentry "Track" design competition.
+EOF
