@@ -1,8 +1,8 @@
 depends  X11-LIBS                                           &&
-if [[ "${ICE_GNOME1}"=="y" ]]
+if [[ "${ICE_GNOME1}" == "y" ]]
 then depends gnome-libs
 fi                                                          &&
-if [[ "${ICE_GNOME2}"=="y" ]]
+if [[ "${ICE_GNOME2}" == "y" ]]
 then depends gnome-desktop
 fi                                                          &&
 
