@@ -1,3 +1,6 @@
+2006-02-08 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on smgl-fhs (for directory structure)
+
 2006-02-07 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS: update PATCHLEVEL
 
@@ -10,7 +13,7 @@
 	* init.d/50-default.rules: swapped firmware rule and udev_run_hotplugd
 	  rule, so that it hotplug do not try to load the firmwares. Should solve
 	  bug #10436
-	
+
 2006-01-31 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 084
 	* rules/50*: adjust udev_run* command
@@ -31,7 +34,7 @@
 
 2006-01-22 Flavien Bridault <disk@sourcemage.org>
 	* init.d/50-default.rules: removed main default rule as it is redundant
-	  and cause troubles with local rules (bug #10373 and #10197) 
+	  and cause troubles with local rules (bug #10373 and #10197)
 	* DETAILS: updated PATCHLEVEL
 
 2006-01-17 Ladislav Hagara <hgr@vabo.cz>
@@ -117,7 +120,7 @@
 
 2005-12-03 Flavien Bridault <disk@sourcemage.org>
 	* init.d/50-default.rules: added a rule which creates a symlink
-	  for HP printers (bug #7736) 
+	  for HP printers (bug #7736)
 
 2005-11-22 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* PRE_BUILD: fixed static udevstart compile
@@ -129,8 +132,8 @@
 	* DETAILS: updated to 071
 	* BUILD, INSTALL: made cdrom_id non-optional as we use it in default rules
 	* INSTALL: Removed manual install of /sbin/udev_run_hotplugd
-	* init.d/50-default.rules: added symlinks creation for cdroms using cdrom_id,
-	  permissions for cdrecorders are setup here now,
+	* init.d/50-default.rules: added symlinks creation for cdroms using
+	  cdrom_id, permissions for cdrecorders are setup here now,
 	  switched to '==' : == compares and = sets
 
 2005-10-10 Flavien Bridault <disk@sourcemage.org>
@@ -143,7 +146,7 @@
 	* FINAL: ensure that the burning group exists
 
 2005-09-20 Flavien Bridault <disk@sourcemage.org>
-        * DETAILS: updated to 070
+	* DETAILS: updated to 070
 	* Makefile.patch: updated
 
 2005-09-04 David Brown <dmlb2000@gmail.com>
@@ -173,10 +176,11 @@
 
 2005-08-17 Flavien Bridault <disk@sourcemage.org>
 	* DETAILS: updated to 067, use vendor GPG key now
-	  removed BUILD_API=2, PLEASE DON'T ADD IT ONCE AGAIN !! Import API_VERSION file
-	  of the disk section in your local grimoire instead !
+	  removed BUILD_API=2, PLEASE DON'T ADD IT ONCE AGAIN !! Import API_VERSION
+	  file of the disk section in your local grimoire instead !
 	* Makefile.patch: updated to work with new version
-	* INSTALL: udev.rules.devfs renamed to udev-devfs.rules in udev package, updated
+	* INSTALL: udev.rules.devfs renamed to udev-devfs.rules in udev package,
+	  updated
 	  alsa.dev moved in extras dir, updated
 	* udev-064.tar.bz2.sig: removed
 	* kernel.gpg: added
@@ -188,8 +192,8 @@
 	* udev-063.tar.bz2.sig: removed
 
 2005-07-23 David Brown <dmlb2000@gmail.com>
-	* BUILD: added building of the helper scripts provided in extras/run_directory
-	  also removed all sedit's to make build much cleaner
+	* BUILD: added building of the helper scripts provided in
+	  extras/run_directory also removed all sedit's to make build much cleaner
 	* udev_logger.c: added because the helper scripts don't compile with SYS_LOG
 	  support otherwise
 	* DEPENDS: modified to add the correct options to OPT so sedits aren't needed

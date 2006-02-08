@@ -1,3 +1,6 @@
+2006-02-08 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on smgl-fhs (for directory structure)
+
 2006-02-06 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Depends on gnupg (for SOURCE verification)
 
@@ -73,7 +76,7 @@
 	* POST_REMOVE: delete
 
 2004-03-13 hgg <hgreig@bigpond.net.au>
-	* BUILD: revert previous, LDFLAGS not honoured, 
+	* BUILD: revert previous, LDFLAGS not honoured,
 	  pity because stripping debugging at least halves the disk footprint
 
 2004-03-13 hgg <hgreig@bigpond.net.au>
@@ -173,7 +176,7 @@
 2002-05-26 Julian v. Bock <julian@wongr.net>
 	* DETAILS: update spell for gcc-3.1; remove pascal stuff.
 	* BUILD: remove pascal stuff; remove --enable-shared; add
-	  *-enable-threads=posix; build everything in a separate directory.
+	  --enable-threads=posix; build everything in a separate directory.
 	* CONFIGURE: add Ada 95 frontend; remove pascal frontend; add
 	  configure options for all frontends but C and C++.
 	* PRE_BUILD: remove.
@@ -194,7 +197,7 @@
 
 2002-04-23 Julian v. Bock <julian@wongr.net>
 	* BUILD: add pascal fix by Lyon Lemmens; don't use
-	  *-enable-languages.
+	  --enable-languages.
 
 2002-04-18 Julian v. Bock <julian@wongr.net>
 	* DETAILS: set PASCAL_VERSION to 20020410.
