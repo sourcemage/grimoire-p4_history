@@ -1,9 +1,10 @@
-depends  gnupg  &&
+depends  gnupg     &&
+depends  smgl-fhs  &&
 
 KVER=`installed_version linux |cut -c-6`  &&
 
 if [[ "$KVER" < "2.6.13" ]]; then
-  depends  hotplug 
+  depends  hotplug
 fi  &&
 
 optional_depends  libselinux             \

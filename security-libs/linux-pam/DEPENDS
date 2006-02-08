@@ -1,6 +1,7 @@
 depends  autoconf  &&
 depends  cracklib  &&
 depends  gnupg     &&
+depends  smgl-fhs  &&
 
 if [ "${PAM_SELINUX}" == "y" ]; then
   depends  libselinux  &&
@@ -9,5 +10,5 @@ fi  &&
 
 if [ "${PAM_DOCS}" == "y" ]; then
   depends  tetex           &&
-  depends  linuxdoc-tools                       
+  depends  linuxdoc-tools
 fi
