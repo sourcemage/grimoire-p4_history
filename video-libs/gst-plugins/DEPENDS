@@ -16,6 +16,9 @@ optional_depends  "libcdio"             \
 optional_depends  "cdparanoia"                \
                   ""  "--disable-cdparanoia"  \
                   "for audio cd support through cdparanoia"  &&
+optional_depends  "libcdaudio"             \
+                  ""  "--disable-cdaudio"  \
+                  "for direct audio cd playback (passthrough)"  &&
 optional_depends  "libogg"             \
                   ""  "--disable-ogg"  \
                   "for OGG muxer/demuxer"  &&
