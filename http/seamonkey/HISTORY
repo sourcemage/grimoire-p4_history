@@ -1,3 +1,11 @@
+2006-02-08 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: added dependency on nspr
+	* PRE_BUILD: run mozilla_remove_nspr_nss, we use the system ones now
+	* PRE_BUILD, seamonkey-visibility.patch: same patch as for firefox,
+	  fails to build with nspr removed from the source tree otherwise
+	* INSTALL: fix up pkgconfig files to depend on the one from
+	  standalone nspr
+
 2006-02-01 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DETAILS: updated to 1.0
 
