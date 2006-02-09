@@ -10,6 +10,10 @@ optional_depends  cairo                          \
                   "--enable-cairo"               \
                   "--disable-cairo"              \
                   "for subtitle/text rendering"  &&
+optional_depends  libcdio                 \
+                  "--enable-cdio"         \
+                  "--disable-cdio"        \
+                  "for audio cd reading"  &&
 optional_depends  esound                  \
                   "--enable-esd"          \
                   "--disable-esd"         \
