@@ -10,30 +10,31 @@ function default_build ()
 	message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"
 	message "Rebuild gnustep-make${DEFAULT_COLOR}"
 	exit 1
-    fi                                                                   
+    fi                                                                   &&
 
     if [ -f ./configure ]
     then
 	./configure                                                      \
 	$OPTS                                                            
-    fi
+    fi                                                                   &&
 
-    make
+    make                                                                 &&
 
     if [ "$GNUSTEP_BUILD_DOC" == "y" ]
     then
 	cd Documentation                                                 &&
-	make
+	make                                                             &&
 	cd ../                                        
     fi
 }
+
 
 # ------------------------------------------------------------------------------
 ## Replace sorcerys default_install with a custom one
 # ------------------------------------------------------------------------------
 function default_install ()
 {
-    make GNUSTEP_INSTALLATION_DIR=$GNUSTEP_SYSTEM_ROOT install           
+    make GNUSTEP_INSTALLATION_DIR=$GNUSTEP_SYSTEM_ROOT install           &&
 
     if [ "$GNUSTEP_BUILD_DOC" == "y" ]
     then
