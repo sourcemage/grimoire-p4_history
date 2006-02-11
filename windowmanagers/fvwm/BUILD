@@ -1,4 +1,4 @@
-if [ "${RELEASE}" = "cvs" ]; then
+if [[ "${FVWM_RELEASE}" == "cvs" ]]; then
     aclocal                &&
     autoheader             &&
     automake --add-missing &&

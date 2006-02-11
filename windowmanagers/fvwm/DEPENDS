@@ -10,13 +10,13 @@ optional_depends "readline" "--with-readline-library --without-termcap-library" 
 # as soon as there is an rplay spell insert this optional dependency:
 # optional_depends "rplay" "" "--without-rplay-library" "support sound"
 
-if [ ! "${RELEASE}" = "stable" ]; then
+if [ ! "${FVWM_RELEASE}" = "stable" ]; then
     optional_depends "perl" "--enable-perllib" "--disable-perllib" "install perl bindings"                &&
     optional_depends "fribidi" "--enable-bidi" "--disable-bidi" "bidirectional writing support"           &&
     optional_depends "libpng" "" "--without-png-library" "png image support"
 fi &&
 
-if [ "${RELEASE}" = "cvs" ]; then
+if [ "${FVWM_RELEASE}" = "cvs" ]; then
     depends CVS      &&
     depends automake &&
     depends autoconf

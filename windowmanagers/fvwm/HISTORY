@@ -1,33 +1,65 @@
-2005-07-21 Pieter Lenaerts <e-type@cwazy.co.uk>
+2006-02-11 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: set SOURCE and SOURCE_DIRECTORY to fvwm-cvs for cvs version
+	  if AUTOUPDATE is set too, so it doesn't re-download every time
+	* PREPARE: default to the old $RELEASE value for $FVWM_RELEASE so
+	  upgrades from the old version keep the preference
+
+2006-01-25 Florian Franzmann <siflfran@hawo.stw.uni-erlangen.de>
+	* CONFIGURE, DEPENDS, DETAILS: changed $RELEASE to $FVWM_RELEASE
+
+2006-01-22 Pieter Lenaerts <e-type@sourcemage.org>
+	* PREPARE, DETAILS, BUILD: changed $RELEASE to $FVWM_RELEASE
+	* PREPARE, DETAILS: added autoupdate option
+	* DETAILS: made test trees more consistent, updated to 2.5.16
+
+2006-01-10 Pieter Lenaerts <e-type@sourcemage.org>
+	* DETAILS: cvs version uses .bz2 tarballs
+
+2005-12-21 Pieter Lenaerts <e-type@sourcemage.org>
+	* corrected '&&' in CONFIGURE
+
+2005-12-16 Pieter Lenaerts <e-type@sourcemage.org>
+	* removed translucency patch, removed PRE_BUILD, edited CONFIGURE
+
+2005-12-13 Pieter Lenaerts <e-type@sourcemage.org>
+	* DETAILS: udpated unstable to 2.5.14
+
+2005-11-30 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 IGNORE to SOURCE_HASH volatile
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
+2005-07-21 Pieter Lenaerts <e-type@sourcemage.org>
 	* DETAILS: updated to 2.5.13
 
-2005-06-25 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-06-25 Pieter Lenaerts <e-type@sourcemage.org>
 	* CONFIGURE: added translucency patch question
 	* added PRE_BUILD: apply translucency patch
 	* added fvwm-2.5.11-translucent-menus.diff
 	  patch proposed by Walter Palagi <lepaca@evilmail.com>
 
-2005-05-29 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-05-29 Pieter Lenaerts <e-type@sourcemage.org>
 	* CONFIGURE: using $FVWM_OPTS instead of $OPTS
 	* BUILD: added line passing $FVWM_OPTS to $OPTS
 
 2005-03-17 Arjan Bouter <abouter@sourcemage.org>
 	* INSTALL: edited to call install_wmfiles
 
-2005-02-28 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-02-28 Pieter Lenaerts <e-type@sourcemage.org>
 	* BUILD, PREPARE, CONFIGURE: executable
 	* HISTORY: corrected previous entries
 
-2005-02-28 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-02-28 Pieter Lenaerts <e-type@sourcemage.org>
 	* BUILD, CONFLICTS, PREPARE: executable
 
-2005-02-23 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-02-23 Pieter Lenaerts <e-type@sourcemage.org>
 	* BUILD, CONFIGURE, PREPARE: executable, right now I hope
 
-2005-02-07 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-02-07 Pieter Lenaerts <e-type@sourcemage.org>
 	* BUILD, CONFIGURE, PREPARE: executable
 
-2005-01-26 Pieter Lenaerts <e-type@cwazy.co.uk>
+2005-01-26 Pieter Lenaerts <e-type@sourcemage.org>
 	* Minor corrections to Florian's enhancements
 	* Integrated spell
 
@@ -39,7 +71,7 @@
 	* CONFIGURE: support for NLS, Xrender, Session Managment, shaped windows,
 	  xinerama
 
-2004-10-01 Pieter Lenaerts <e-type@cwazy.co.uk>
+2004-10-01 Pieter Lenaerts <e-type@sourcemage.org>
 	* DETAILS: version 2.4.19, added $BRANCH in source url
 
 2004-07-21 Arjan Bouter <a_bouter@ezrs.com>

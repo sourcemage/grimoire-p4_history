@@ -1,4 +1,4 @@
-if [ ! "${RELEASE}" = "stable" ]; then
+if [ ! "${FVWM_RELEASE}" = "stable" ]; then
     config_query_option FVWM_OPTS                 \
         "Enable NLS?" y                           \
         "--enable-nls"                            \
@@ -6,8 +6,7 @@ if [ ! "${RELEASE}" = "stable" ]; then
     config_query_option FVWM_OPTS                 \
         "Enable Xrender alpha-blend rendering?" y \
         "--enable-xrender"                        \
-        "--disable-xrender"                       &&
-    config_query FVWM_TRANSLUCENCY_PATCH "Apply menu translucency patch?" y
+        "--disable-xrender"
 fi &&
 config_query_option FVWM_OPTS                         \
                         "Enable Session Managment?" y \
