@@ -1,0 +1,19 @@
+depends opensc  &&
+
+optional_depends libusb                        \
+                 "--enable-libusb"             \
+                 "--disable-libusb"            \
+                 "Enable libusb support?"      &&
+
+optional_depends gwenhywfar                    \
+                 "--enable-gwenhywfar"         \
+                 "--disable-gwenhywfar"        \
+                 "Enable gwenhywfar support?"  &&
+
+optional_depends openssl                       \
+                 "--enable-ssl"                \
+                 "--disable-ssl"               \
+                 "Enable SSL features"            
+
+
+
