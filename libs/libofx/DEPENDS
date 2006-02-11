@@ -1,4 +1,7 @@
-depends gcc34  &&
+if [ "${LIBOFX_CVS}" == "n" ]; then
+   depends gcc34
+fi  &&
+
 depends g++    &&
 depends curl   &&
 depends opensp
