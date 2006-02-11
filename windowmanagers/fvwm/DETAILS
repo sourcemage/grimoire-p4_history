@@ -28,14 +28,13 @@ fi
 
 if [[ "${FVWM_RELEASE}" != "cvs" ]] ; then
           SOURCE=fvwm-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/fvwm-${VERSION}
    SOURCE_URL[0]=ftp://ftp.fvwm.org/pub/fvwm/version-2/${SOURCE}
-
 else
-          SOURCE=fvwm-${VERSION}.tar.bz2
+          SOURCE=fvwm-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/fvwm-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous:guest@cvs.fvwm.org:/home/cvs/fvwm:fvwm
 fi
-
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/fvwm-${VERSION}
         WEB_SITE=http://www.fvwm.org
          ENTERED=20040524
          UPDATED=20041104
