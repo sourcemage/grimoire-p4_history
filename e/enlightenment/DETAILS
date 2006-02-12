@@ -5,37 +5,27 @@ if  [  "$ENLIGHTENMENT_CVS"  ==  "y"  ];  then
   else
          VERSION=cvs
   fi
-          SOURCE=$SPELL-0.17-cvs.tar.bz2
-  FORCE_DOWNLOAD=on
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-0.17-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/apps/e
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/e
-   SOURCE_IGNORE=volatile
-elif  [  "$ENLIGHTENMENT16_CVS"  ==  "y"  ];  then
-  if  [  "$ENLIGHTENMENT_CVS_AUTOUPDATE"  ==  "y"  ];  then
-         VERSION=0.16-$(date +%Y%m%d)
-  else
-         VERSION=cvs
-  fi
           SOURCE=$SPELL-0.16-cvs.tar.bz2
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-0.16-cvs
    SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e16/e
    SOURCE_IGNORE=volatile
 else
-         VERSION=0.16.7.2
-          SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+         VERSION=0.16.8
+          SOURCE=e16-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/e16-${VERSION%-*}
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-     SOURCE_HASH=sha512:f22046ee3a0ea36250fca2b4d9978a0a1718f41ff620909c050333c5e45310a786153375b0ce646a88f8864c652e803e77e80d495091da82da4734030cd7c96e
+     #SOURCE_HASH=sha512:f22046ee3a0ea36250fca2b4d9978a0a1718f41ff620909c050333c5e45310a786153375b0ce646a88f8864c652e803e77e80d495091da82da4734030cd7c96e
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 fi
-        WEB_SITE=http://www.enlightenment.org/
       LICENSE[0]=BSD
+      PATCHLEVEL=2
+        WEB_SITE=http://www.enlightenment.org/
          ENTERED=20010922
          UPDATED=20040517
-           SHORT="Themeable, fast, flexible X11 windows Manager"
+           SHORT="E16 is a themeable, fast, flexible X11 windows Manager"
 cat << EOF
-Enlightenment is a themeable, fast, flexible, and powerful window
+Enlightenment 16 is a themeable, fast, flexible, and powerful window
 manager that is designed to be as configurable as possible in both look
 and feel. In addition, Enlightenment provides an applet API that
 provides functionality somewhere between the GNOME applet system and
