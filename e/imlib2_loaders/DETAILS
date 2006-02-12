@@ -6,8 +6,7 @@ if  [  "$IMLIB2_LOADERS_CVS"  ==  "y"  ];  then
          VERSION=cvs
   fi
           SOURCE=$SPELL-$VERSION.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
   FORCE_DOWNLOAD=on
    SOURCE_IGNORE=volatile
 else
