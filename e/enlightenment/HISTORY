@@ -1,3 +1,8 @@
+2006-02-13 Eric Sandall <eric@sandall.us>
+	* DEPENDS,UP_TRIGGERS: Moved casting of e17 to UP_TRIGGERS from DEPENDS so
+	  that e17 is cast /after/ enlightenment (to avoid enlightenment removing
+	  files it tracked when it installed DR17).  Bug #10522.
+
 2006-02-10 Eric Sandall <eric@sandall.us>
 	* PREPARE: Removed extraneous '&&' that broke the if/fi
 	  Update removal date
@@ -15,6 +20,24 @@
 	* enlightenment.desktop: Removed, now e16 installs e16.desktop for us
 	* TODO: Rename this to e16 and have enlightenment a 'profile' package for
 	  both e16 and e17
+
+2005-12-18 Eric Sandall <eric@sandall.us>
+	* PREPARE: Removed e17 queries
+	  Save user choices to e17.p
+	  Removed e17 saved queries
+	  Renamed ENLIGHTENMENT16* to ENLIGHTENMENT*
+	  Added temporary E17_UPDATE variable
+	* DETAILS: ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	  Added PATCHLEVEL=1
+	  Modified SHORT and long descriptions to mention E16
+	* DEPENDS: Remove e17 dependencies
+	  Added dependency on e17 if this was for building e17
+	  ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	* PRE_BUILD: Removed e17 check
+	  ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	* INSTALL: Removed e17update script installation
+	* FINAL: Removed E17_UPDATE variable
+	* e17update: Removed
 
 2005-11-29 Seth Woolley <seth@tautology.org>
 	* DETAILS: MD5 -> SHA512
