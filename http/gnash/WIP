@@ -5,3 +5,8 @@ g++: .: linker input file unused because linking not done
 cc1plus: .: No such file or directory
 make[2]: *** [config.lo] Error 1
 make[2]: Leaving directory `/usr/src/gnash-0.7/libbase'
+
+
+GECKO providers don't work as expected, currently the configure checks for firefox-config, then for mozilla-config, so if only seamonkey is installed, the plugin won't be built.
+
+fails to use libxml2 correctly here if built by the spell, a manual configure --enable-xml --enable-xmlreader works
