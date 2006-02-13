@@ -1,15 +1,15 @@
            SPELL=gnucash
-if  [  "$GNUCASH_CVS"  ==  "y"  ];  then
-  if  [  "$GNUCASH_CVS_AUTOUPDATE"  ==  "y"  ];  then
+if  [  "$GNUCASH_SVN"  ==  "y"  ];  then
+  if  [  "$GNUCASH_SVN_AUTOUPDATE"  ==  "y"  ];  then
          VERSION=$(date +%Y%m%d)
   else
-         VERSION=cvs
+         VERSION=svn
   fi
-          SOURCE=$SPELL-cvs.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:cvs:guest@cvs.gnucash.org:/home/cvs/cvsroot:gnucash:gnucash-gnome2-dev
+          SOURCE=$SPELL-svn.tar.bz2
+   SOURCE_URL[0]=svn_http://svn.gnucash.org/repo/gnucash/trunk:${SPELL}-svn
   FORCE_DOWNLOAD="on"
    SOURCE_IGNORE=volatile
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-svn
 else
          VERSION=1.8.12
           SOURCE=$SPELL-$VERSION.tar.gz

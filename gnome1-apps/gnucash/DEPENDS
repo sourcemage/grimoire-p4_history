@@ -1,4 +1,5 @@
-if  [  "$GNUCASH_CVS"  ==  "y"  ];  then
+if  [  "$GNUCASH_SVN"  ==  "y"  ];  then
+  depends  subversion     &&
   depends  perl           &&
   depends  pkgconfig      &&
   depends  gtkhtml2       &&
