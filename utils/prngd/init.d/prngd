@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PIDFILE=/var/run/prng/prngd.pid
+SEEDFILE=/var/run/prng/prngd-seed
+PROGRAM=/usr/sbin/prngd
+ARGS="-p '$PIDFILE' -s '$SEEDFILE'"
+RUNLEVEL=2
+NEEDS=''
+
+. /etc/init.d/smgl_init

@@ -4,6 +4,12 @@
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.dovecot.org/releases/$SOURCE
+if [[ "$DOVECOT_EXT_LDA" == 'y' ]]; then
+        VERSION2=20060209
+    SOURCE2_HASH='sha512:24801489d2572672e25e21c8d28990de7add4da9cc0ff0f39ec9033c4a45af6818ace255745386184d5892affc5660276f6020a4eef10f97e5521e3e503efdd3'
+         SOURCE2=$SPELL-lda-$VERSION2.tar.gz
+  SOURCE2_URL[0]=http://dovecot.org/nightly/lda/$SOURCE2
+fi
          ENTERED=20030224
          UPDATED=20041110
        BUILD_API=2
