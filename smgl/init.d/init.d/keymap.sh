@@ -20,12 +20,15 @@ start()
     evaluate_retval
   fi
 
-  if [ "$CONSOLECHARS_ARGS" ] ; then
+  if [[ "$CONSOLECHARS_ARGS" && "$TTY_NUMS" ]] ; then
     required_executable /usr/bin/consolechars
 
-    echo "Setting console settings..."
-    /usr/bin/consolechars $CONSOLECHARS_ARGS
-    evaluate_retval
+    for n in $TTY_NUMS ; do
+      echo "Setting console settings for $n console..."
+      /usr/bin/consolechars $CONSOLECHARS_ARGS --tty=/dev/tty$n
+      evaluate_retval
+    done
+
   fi
 }
 
