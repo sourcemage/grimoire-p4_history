@@ -15,21 +15,31 @@ start()
   /bin/loadkeys $KEYMAP
   evaluate_retval
 
-  if [ "$ENABLE_EURO" = "yes" ] ; then
+  if [ -e "/usr/bin/consolechars" ] && [ "$ENABLE_EURO" = "yes" ] ; then
     /bin/loadkeys euro.inc
     evaluate_retval
   fi
 
-  if [[ "$CONSOLECHARS_ARGS" && "$TTY_NUMS" ]] ; then
+  if [ -e "/usr/bin/consolechars" ] &&
+     [[ "$CONSOLECHARS_ARGS" && "$TTY_NUMS" ]] ; then
     required_executable /usr/bin/consolechars
-
     for n in $TTY_NUMS ; do
-      echo "Setting console settings for $n console..."
+      echo "Setting console settings for tty$n..."
       /usr/bin/consolechars $CONSOLECHARS_ARGS --tty=/dev/tty$n
       evaluate_retval
     done
-
   fi
+
+  if [ -e "/usr/bin/setfont" ] &&
+     [[ "$SETFONT_ARGS" && "$TTY_NUMS" ]] ; then
+    required_executable /usr/bin/setfont
+    for n in $TTY_NUMS ; do
+      echo "Setting console settings for tty$n..."
+      /usr/bin/setfont $SETFONT_ARGS -C $n
+      evaluate_retval
+    done
+  fi
+
 }
 
 stop()
