@@ -35,7 +35,7 @@ start()
     required_executable /usr/bin/setfont
     for n in $TTY_NUMS ; do
       echo "Setting console settings for tty$n..."
-      /usr/bin/setfont $SETFONT_ARGS -C $n
+      /usr/bin/setfont $SETFONT_ARGS -C /dev/tty$n
       evaluate_retval
     done
   fi
