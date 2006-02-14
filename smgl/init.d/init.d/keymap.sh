@@ -7,6 +7,7 @@ RECOMMENDED=yes
 
 . /etc/init.d/smgl_init
 . /etc/sysconfig/keymap
+. /etc/sysconfig/devices
 
 start()
 {
@@ -15,31 +16,74 @@ start()
   /bin/loadkeys $KEYMAP
   evaluate_retval
 
-  if [ -e "/usr/bin/consolechars" ] && [ "$ENABLE_EURO" = "yes" ] ; then
-    /bin/loadkeys euro.inc
-    evaluate_retval
+  if [[ "$DEVICES" == "devfs" ]]
+  then
+    DEV_TTY="vc/"
+  else
+    DEV_TTY="tty"
   fi
 
-  if [ -e "/usr/bin/consolechars" ] &&
-     [[ "$CONSOLECHARS_ARGS" && "$TTY_NUMS" ]] ; then
+  if [ -e "/usr/bin/consolechars" ]
+  then
     required_executable /usr/bin/consolechars
-    for n in $TTY_NUMS ; do
-      echo "Setting console settings for tty$n..."
-      /usr/bin/consolechars $CONSOLECHARS_ARGS --tty=/dev/tty$n
-      evaluate_retval
-    done
-  fi
-
-  if [ -e "/usr/bin/setfont" ] &&
-     [[ "$SETFONT_ARGS" && "$TTY_NUMS" ]] ; then
+    CONSOLE_TOOLS="console-tools"
+  elif [ -e "/usr/bin/setfont" ]
+  then
     required_executable /usr/bin/setfont
-    for n in $TTY_NUMS ; do
-      echo "Setting console settings for tty$n..."
-      /usr/bin/setfont $SETFONT_ARGS -C /dev/tty$n
-      evaluate_retval
-    done
+    CONSOLE_TOOLS="kbd"
+  fi
+  if [[ "$UNICODE_START" ]]
+  then
+    required_executable /usr/bin/unicode_start
+    kbd_mode -u
+    dumpkeys | loadkeys --unicode
   fi
 
+  if [[ "$CONSOLE_TOOLS" == "console-tools" ]]
+  then
+    if [ "$ENABLE_EURO" = "yes" ]
+    then
+      /bin/loadkeys euro.inc
+      evaluate_retval
+    fi
+
+    if [[ "$TTY_NUMS" ]]
+    then
+      for n in $TTY_NUMS
+      do
+        echo "Setting console settings for $DEV_TTY$n..."
+        if [[ "$UNICODE_START" ]]
+        then
+          /bin/echo -ne "\033%G" > /dev/$DEV_TTY$n
+          /usr/bin/consolechars $CONSOLECHARS_ARGS --tty=/dev/$DEV_TTY$n
+          evaluate_retval
+        else
+          /usr/bin/consolechars $CONSOLECHARS_ARGS --tty=/dev/$DEV_TTY$n
+          evaluate_retval
+        fi
+      done
+    fi
+  fi
+
+  if [[ "$CONSOLE_TOOLS" == "kbd" ]]
+  then
+    if [[ "$TTY_NUMS" ]]
+    then
+      for n in $TTY_NUMS 
+      do
+        echo "Setting console settings for $DEV_TTY$n..."
+        if [[ "$UNICODE_START" ]]
+        then
+          /bin/echo -ne "\033%G" > /dev/$DEV_TTY$n
+          /usr/bin/setfont $SETFONT_ARGS -C /dev/$DEV_TTY$n
+          evaluate_retval
+        else
+          /usr/bin/setfont $SETFONT_ARGS -C /dev/tty$n
+          evaluate_retval
+        fi          
+      done
+    fi
+  fi
 }
 
 stop()
