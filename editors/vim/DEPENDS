@@ -33,6 +33,11 @@ optional_depends  gpm                          \
                   "--disable-gpm"              \
                   "for console mouse support"  &&
 
+optional_depends acl                           \
+                 "--enable-acl"                \
+                 "--disable-acl"               \
+                 "would you like file system access control list support?" &&
+
 if    [  "$GVIM_GUI"  =  "gtk"     ];  then
   depends  gtk+
 elif  [  "$GVIM_GUI"  =  "gnome"   ];  then
