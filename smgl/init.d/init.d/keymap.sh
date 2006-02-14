@@ -78,7 +78,7 @@ start()
           /usr/bin/setfont $SETFONT_ARGS -C /dev/$DEV_TTY$n
           evaluate_retval
         else
-          /usr/bin/setfont $SETFONT_ARGS -C /dev/tty$n
+          /usr/bin/setfont $SETFONT_ARGS -C /dev/$DEV_TTY$n
           evaluate_retval
         fi          
       done
