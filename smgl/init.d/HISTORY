@@ -1,3 +1,18 @@
+2006-02-14 Andrew "ruskie" Levstik <ruskie@mages.ath.cx>
+	* WIP: removed
+	* init.d/keymap.conf: added UNICODE_START
+	* init.d/keymap.sh: support for starting unicode_start
+
+2006-02-14 Juuso Alasuutari <juuso.alasuutari@tamperelainen.org>
+	* init.d/keymap.conf: added new variable SETFONT_ARGS for 
+	  setfont support from kbd spell
+	* init.d/keymap.sh: support for both consolechars and setfont 
+	  with separate argument variables
+
+2006-02-14 Pol Vinogradov <vin.public@gmail.com>
+	* init.d/keymap.sh, init.d/keymap.conf: added posibility to set
+		CONSOLECHARS_ARGS for many consoles, not only the first one
+
 2006-01-18 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* init.d/devices: re-enable udevstart for now, coldplug needs to wait
 	  for the required disc devices to come up so mountall.sh doesn't fail.
