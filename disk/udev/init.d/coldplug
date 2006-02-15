@@ -37,3 +37,9 @@ echo "starting coldplug"
         done
 echo "coldplug complete"
 }
+
+stop() { exit 0; }
+restart() { exit 3; }
+reload() { exit 3; }
+force_reload() { exit 3; }
+status() { exit 3; }
