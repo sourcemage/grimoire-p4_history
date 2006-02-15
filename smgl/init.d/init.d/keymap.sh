@@ -47,7 +47,7 @@ start()
       evaluate_retval
     fi
 
-    if [[ "$TTY_NUMS" ]]
+    if [[ "$TTY_NUMS" ]] && [[ "$CONSOLECHARS_ARGS" ]]
     then
       for n in $TTY_NUMS
       do
@@ -67,7 +67,7 @@ start()
 
   if [[ "$CONSOLE_TOOLS" == "kbd" ]]
   then
-    if [[ "$TTY_NUMS" ]]
+    if [[ "$TTY_NUMS" ]] && [[ "$SETFONT_ARGS" ]]
     then
       for n in $TTY_NUMS 
       do
