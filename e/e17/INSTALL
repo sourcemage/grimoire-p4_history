@@ -1,7 +1,6 @@
 default_install  &&
 
-install  -m  755  $SCRIPT_DIRECTORY/start${SPELL}  \
-                  $INSTALL_ROOT/usr/bin            &&
+install_wmfiles  &&
 
 install  -m  755  $SCRIPT_DIRECTORY/e17update  \
                   $INSTALL_ROOT/usr/sbin
