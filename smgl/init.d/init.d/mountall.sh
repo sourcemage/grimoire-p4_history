@@ -91,7 +91,7 @@ start()
   evaluate_retval
 
   echo "Cleaning out /tmp..."
-  [ -d /var/run ] && rm -rf /tmp/*
+  [ -d /tmp ] && rm -rf /tmp/*
   evaluate_retval
 
   echo "Creating /var/run/utmp..."
