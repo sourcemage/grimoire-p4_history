@@ -2,7 +2,6 @@ default_install           &&
 make install-commandmode  &&
 make install-config       &&
 
-/bin/install -d -v -o nagios -g nagios ${INSTALL_ROOT}/var/run/nagios  &&
 /bin/install -d -v -o nagios -g nagios ${INSTALL_ROOT}/var/lib/nagios  &&
 /bin/install -d -v -o nagios -g nagios ${INSTALL_ROOT}/var/log/nagios  &&
 
