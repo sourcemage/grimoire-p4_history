@@ -1,11 +1,10 @@
            SPELL=gnomeicu
-         VERSION=0.99.5
+         VERSION=0.99.10
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-     SOURCE_HASH=sha512:69545a21dc3a9a7c16c95005baee1b28daa8d4cae63e2771d086e9eff1c272343c3448bc84693e54a9c0966bb34d04a72c40fd25812f139a68965aadf6819a7b
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         WEB_SITE=http://gnomeicu.sourceforge.net/index.php
-         BUILD_API=2
          ENTERED=20010922
          UPDATED=20020314
       LICENSE[0]=GPL
