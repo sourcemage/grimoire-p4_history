@@ -1,9 +1,10 @@
 default_pre_build                                                    &&
 cd  ${SOURCE_DIRECTORY}                                              &&
 
-export S_KERNELRELEASE=get_kernel_version                            &&
+S_KERNELRELEASE=get_kernel_version                                   &&
+export S_KERNELRELEASE                                               &&
 
-if [[ ${S_KERNELRELEASE} == 2.6.15* ]];  then
+if [[ $(get_kernel_version) == 2.6.15* ]];  then
    patch -p2 < ${SCRIPT_DIRECTORY}/svgalib_helper-2.6.15.diff
 fi                                                                   &&
 
