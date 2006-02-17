@@ -1,12 +1,13 @@
            SPELL=camstream
-         VERSION=0.26.3
+         VERSION=0.27pre1
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-060217
    SOURCE_URL[O]=http://www.smcc.demon.nl/camstream/download/$SOURCE
         WEB_SITE=http://www.smcc.demon.nl/camstream/index.html
          ENTERED=20040209
          UPDATED=20040209
-     SOURCE_HASH=sha512:718be6cfa86124cbcdb7098146b8a6035459bc449d37a8365d79ba247a9afad11e5bd836145cab7d274560a2e6f1915ff4fa07ac6030401546d0e659b695e7a0
+      SOURCE_GPG=gurus.gpg:$SOURCE.sig:WORKS_FOR_ME
       LICENSE[O]=GPL
            SHORT="CamStream is (going to be) a collection of tools for webcams and other video-devices"
 cat << EOF
