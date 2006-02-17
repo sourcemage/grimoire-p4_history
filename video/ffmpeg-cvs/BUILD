@@ -11,7 +11,4 @@ sedit  's:-Werror::'  libavformat/Makefile  &&
              --enable-pp                             \
              --enable-gpl                            \
              $OPTS                         &&
-cd  libavcodec/libpostproc  &&
-make                        &&
-cd  $SOURCE_DIRECTORY       &&
 make
