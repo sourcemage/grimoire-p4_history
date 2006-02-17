@@ -1,5 +1,9 @@
            SPELL=ffmpeg-cvs
+if test "$FFMPEG_CVS_AUTOUPDATE" = "y"; then
          VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
           SOURCE=$SPELL.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
    SOURCE_URL[0]=cvs://:pserver:anonymous@mplayerhq.hu:/cvsroot/ffmpeg:ffmpeg
