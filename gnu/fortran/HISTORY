@@ -1,3 +1,9 @@
+2006-02-19 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD: persistent_read the CFLAGS and LDFLAGS of gcc and use them,
+	  fixes bug #10087, persistent_read GCC_MULTILIB instead of sourcing
+	  gcc.p
+	* POST_RESURRECT: setup specs file after resurrection (bug #8726)
+
 2005-10-02 Sergey Lipnevich <sergey@sourcemage.org>
 	* DETAILS: upgrade to 4.0.2;
 	* PRE_BUILD: use unpack_file API.

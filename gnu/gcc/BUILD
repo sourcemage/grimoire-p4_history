@@ -5,6 +5,12 @@ if [[ "$GCC_NOLIB64" == 'y' ]]; then
   sedit "s/lib64/lib/" gcc/config/i386/t-linux64           
 fi                                                        &&
 
+# store CFLAGS and LDFLAGS persistently so they can be read by the other
+# split spells later, see bug #10087
+GCC_CFLAGS="$CFLAGS"                   &&
+GCC_LDFLAGS="$LDFLAGS"                 &&
+persistent_add GCC_CFLAGS GCC_LDFLAGS  &&
+
 cd $SOURCE_DIRECTORY.bld                                  &&
 $SOURCE_DIRECTORY/configure                                \
              --host=$HOST                                  \

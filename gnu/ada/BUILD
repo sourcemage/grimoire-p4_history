@@ -1,3 +1,10 @@
+# take multilib option from GCC
+# ignore return value as it is only available on x86_64
+persistent_read  gcc  GCC_MULTILIB  GCC_MULTILIB
+# get CFLAGS and LDFLAGS gcc was compiled with, see bug #10087
+persistent_read  gcc  GCC_CFLAGS   CFLAGS   &&
+persistent_read  gcc  GCC_LDFLAGS  LDFLAGS  &&
+
 local OLD_CFLAGS="$CFLAGS"  &&
 # setup bootstrap ada compiler
 cd $SOURCE_DIRECTORY/gnat-3.15p-i686-pc-linux-gnu-bin  &&
@@ -5,9 +12,6 @@ mkdir -p  $SOURCE_DIRECTORY/gnat-bin                   &&
 make  ins-all  prefix=$SOURCE_DIRECTORY/gnat-bin       &&
 PATH=$SOURCE_DIRECTORY/gnat-bin/bin:$PATH              &&
 CFLAGS=""                                              &&
-
-# take multilib option from GCC
-source $DEPENDS_CONFIG/gcc.p &&
 
 cd $SOURCE_DIRECTORY.bld                                   &&
 $SOURCE_DIRECTORY/configure                                \

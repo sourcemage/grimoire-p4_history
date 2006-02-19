@@ -1,5 +1,11 @@
 # take multilib option (and nolib64 option) from GCC
-source $DEPENDS_CONFIG/gcc.p &&
+# ignore return value as they are only available on x86_64
+persistent_read  gcc  GCC_MULTILIB  GCC_MULTILIB
+persistent_read  gcc  GCC_NOLIB64   GCC_NOLIB64
+# get CFLAGS and LDFLAGS gcc was compiled with, see bug #10087
+persistent_read  gcc  GCC_CFLAGS   CFLAGS   &&
+persistent_read  gcc  GCC_LDFLAGS  LDFLAGS  &&
+
 sedit "s/lib64/lib/" gcc/config/i386/linux64.h             &&
 
 if [[ "$GCC_NOLIB64" == 'y' ]]; then

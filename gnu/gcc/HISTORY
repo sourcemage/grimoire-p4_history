@@ -1,3 +1,13 @@
+2006-02-19 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* BUILD, EXPORTS: store CFLAGS and LDFLAGS as GCC_*
+	  persistent_variables, used to fix bug #10087
+	* INSTALL: touch $SPECSDIR/specs to make sure it's tracked by
+	  installwatch (bug #8726)
+	* POST_RESURRECT: setup specs file after resurrection (bug #8726)
+	* EXPORTS: export GCC_MULTILIB and GCC_NOLIB64 so the split spells
+	  can cleanly read them instead of using hacks
+	* DETAILS: PATCHLEVEL++
+
 2006-02-12 George Sherwood <george@beernabeer.com>
 	* volatiles, REPAIR^none^volatiles: Added to prevent cleanse 
 	  failing on chainges to specs file.

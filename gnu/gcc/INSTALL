@@ -20,4 +20,6 @@ ln -sf ${TRACK_ROOT}/usr/bin/cpp ${INSTALL_ROOT}/lib            &&
 local SPECSDIR=${INSTALL_ROOT}/usr/lib/gcc/$HOST/$VERSION         &&
 mkdir -p $SPECSDIR/specs-local                                    &&
 cp  gcc/specs  $SPECSDIR/specs-local/specs-gcc                    &&
+# make sure installwatch tracks it, the cat alone doesn't do that
+touch  $SPECSDIR/specs                                            &&
 cat  $SPECSDIR/specs-local/* > $SPECSDIR/specs
