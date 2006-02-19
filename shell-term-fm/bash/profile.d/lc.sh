@@ -5,67 +5,21 @@
 
 . /etc/sysconfig/locale
 
-if [[ -z $LANG ]]
-then
-  export LANG
-fi
+function export_if_set() {
 
-if [[ -z $LC_CTYPE ]]
-then
-  export LC_CTYPE
-fi
+#if the variable whose name is in $1 is not empty
 
-if [[ -z $LC_NUMERIC ]]
+if [[ -n ${!1} ]] 
 then
-  export LC_NUMERIC
+  export $1
 fi
+}
 
-if [[ -z $LC_TIME ]]
-then
-  export LC_TIME
-fi
+LOCALE_VARS="LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE \
+LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME \
+LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_ALL"
 
-if [[ -z $LC_COLLAT ]]
-then
-  export LC_COLLAT
-fi
-
-if [[ -z $LC_MONETARY ]]
-then
-  export LC_MONETARY
-fi
-
-if [[ -z $LC_MESSAGES ]]
-then
-  export LC_MESSAGES
-fi
-
-if [[ -z $LC_PAPER ]]
-then
-  export LC_PAPER
-fi
-
-if [[ -z $LC_NAME ]]
-then
-  export LC_NAME
-fi
-
-if [[ -z $LC_ADDRESS ]]
-then
-  export LC_ADDRESS
-fi
-
-if [[ -z $LC_TELEPHONE ]]
-then
-  export LC_TELEPHONE
-fi
-
-if [[ -z $LC_MEASUREMENT ]]
-then
-  export LC_MEASUREMENT
-fi
-
-if [[ -z $LC_ALL ]]
-then
-  export LC_ALL
-fi
+for i in $LOCALE_VARS
+do
+  export_if_set "$i"
+done
