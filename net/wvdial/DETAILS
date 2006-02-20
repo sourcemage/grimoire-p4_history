@@ -1,9 +1,12 @@
            SPELL=wvdial
-         VERSION=1.54.0
+         VERSION=1.55
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=${SOURCE}.asc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://open.nit.ca/download/$SOURCE
-     SOURCE_HASH=sha512:7fd00741f876b6511f68625900949901891a26711bddc0059df2df1588f6d52c22019057efa6b4936b7cf554a14f41bba172d05fccc385d8973911c8bc2ac38d
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.asc
+      SOURCE_GPG=sfllaw.gpg:$SOURCE.asc:UPSTREAM_KEY
+  SOURCE2_IGNORE=signature
         WEB_SITE=http://open.nit.ca/wiki/?page=WvDial
          ENTERED=20040601
          UPDATED=20040601

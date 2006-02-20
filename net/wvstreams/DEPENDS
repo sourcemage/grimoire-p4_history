@@ -3,20 +3,10 @@ depends openssl &&
 depends zlib    &&
 depends xplc    &&
 
-optional_depends FAM                                       \
-                 "--with-fam"                              \
-                 "--without-fam"                           \
-                 "Enable FAM support"                      &&
-# Fails to build with fftw2 at the moment.
-# Uncomment if you want to test on your system
-#optional_depends fftw2                                     \
-#                 "--with-fftw"                             \
-#                 "--without-fftw"                          \
-#                 "Enable FFTW2 support"                    &&
-optional_depends gdbm                                      \
-                 "--with-gdbm"                             \
-                 "--without-gdbm"                          \
-                 "Enable GDBM support"                     &&
+optional_depends qdbm                                      \
+                 "--with-qdbm"                             \
+                 "--without-qdbm"                          \
+                 "Enable QDBM support"                     &&
 optional_depends linux-pam                                 \
                  "--with-pam"                              \
                  "--without-pam"                           \
@@ -33,18 +23,6 @@ optional_depends qt-x11                                    \
                  "--with-qt"                               \
                  "--without-qt"                            \
                  "Enable Qt support"                       &&
-optional_depends libogg                                    \
-                 "--with-ogg"                              \
-                 "--without-ogg"                           \
-                 "Enable Ogg support for Vorbis and Speex" &&
-optional_depends libvorbis                                 \
-                 "--with-vorbis"                           \
-                 "--without-vorbis"                        \
-                 "Enable Vorbis support"                   &&
-optional_depends speex                                     \
-                 "--with-speex"                            \
-                 "--without-speex"                         \
-                 "Enable Speex support"                    &&
 optional_depends valgrind                                  \
                  ""                                        \
                  ""                                        \
