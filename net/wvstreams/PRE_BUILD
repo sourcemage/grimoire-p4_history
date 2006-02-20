@@ -1,6 +1,6 @@
 default_pre_build &&
 
-if [ "$GETCVS" == "y" ]; then
+if [ "$WVSTREAMS_CVS" == "y" ]; then
    cd $SOURCE_DIRECTORY
    autoheader
    autoconf

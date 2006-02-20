@@ -1,18 +1,24 @@
            SPELL=wvstreams
-
-if [ "$GETCVS" == "y" ]; then
+if [ "$WVSTREAMS_CVS" == "y" ]; then
+  if [ "$WVSTREAMS_CVS_AUTOUPDATE" == "y" ]; then
+         VERSION=$(date +%Y%m%d)
+  else
          VERSION=cvs
-          SOURCE=${SPELL}-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+  fi
+          SOURCE=${SPELL}-cvs.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-cvs
    SOURCE_URL[0]=cvs://:pserver:anon@cvs.nitmtl.ca:/cvsroot:wvstreams
-          MD5[0]='IGNORE'
-  FORCE_DOWNLOAD=1
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD=on
 else
-         VERSION=4.0.1
+         VERSION=4.2.2
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=${SOURCE}.asc
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://people.nit.ca/~sfllaw/${SOURCE}
-          MD5[0]=99c11b5a8974c2a13e4090835efe5a4f
+   SOURCE_URL[0]=http://open.nit.ca/download/$SOURCE
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.asc
+      SOURCE_GPG=sfllaw.gpg:$SOURCE.asc:UPSTREAM_KEY
+  SOURCE2_IGNORE=signature
 fi
 
       LICENSE[0]=GPL
