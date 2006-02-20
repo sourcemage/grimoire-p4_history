@@ -1,0 +1,32 @@
+           SPELL=ddclient
+         VERSION=3.6.5
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://ddclient.sourceforge.net/
+     SOURCE_HASH=sha512:e0b295c56675bc098db55410a864b832e11780e63c174dd23cead8feeaa96bcbba524b9da6de45ce74027f261f12f98e8dc117b42a87b5fc6ed0e2f885fde68f
+         ENTERED=20020423
+         UPDATED=20030822
+      LICENSE[0]=GPL
+       BUILD_API=2
+            DOCS="$DOCS sample-*"
+           SHORT="client for some dynamic DNS services"
+cat << EOF
+ddclient is a Perl client used to update dynamic DNS
+entries for accounts on many dynamic DNS services.
+
+Dynamic DNS services currently supported include:
+
+DynDNS.org - See http://www.dyndns.org for details on
+             obtaining a free account.
+Hammernode - See http://www.hn.org for details on obtaining
+             a free account.
+Zoneedit   - See http://www.zoneedit.com for details.
+EasyDNS    - See http://www.easydns.com for details.
+
+Also include is support for DSL Reports host monitoring
+service. [Highly recommended]
+See http://dslreports.com for details.
+
+DDclient now supports many of cable/dsl broadband routers.
+EOF

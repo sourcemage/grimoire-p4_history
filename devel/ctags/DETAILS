@@ -1,0 +1,20 @@
+           SPELL=ctags
+         VERSION=5.5.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:6b0bc9393797ecfd78d745ced53c3be5abc883acce33def04f19083859ec915d97a283e35e41ba41c1178a9b7bb9e5cb0953af2dbb8f2ef6541ec02d323206e9
+      LICENSE[0]=GPL
+        WEB_SITE=http://ctags.sourceforge.net/
+         ENTERED=20020208
+         UPDATED=20020208
+           SHORT="Exuberant ctags."
+      MAINTAINER="gerrit.germis@pi.be"
+cat << EOF
+FILE
+Ctags generates an index (or tag) file of language objects found in source 
+files that allows these items to be quickly and easily located by a text 
+editor or other utility. A tag signifies a language object for which an 
+index entry is available (or, alternatively, the index entry created for 
+that object). 
+EOF

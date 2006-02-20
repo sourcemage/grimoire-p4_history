@@ -1,0 +1,19 @@
+	BUILD_API=2
+           SPELL=pod-html
+         VERSION=0.04
+          SOURCE=PodToHTML-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/PodToHTML-$VERSION
+     SOURCE_HASH=sha512:9ca4d925d12f43fb73c93ea9c9e5b2b6f6e3428de08ad4c54dcf5dff72e0c3db2aafbc42e7b071ee5555a797a8cfe558a9c5ad1b49e256f678b35139edb2d110
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/NI-S/$SOURCE
+         LICENSE=ART
+        WEB_SITE=http://search.cpan.org/search?dist=PodToHTML
+         ENTERED=20020731
+         UPDATED=20020731
+           SHORT="PodToHTML generates HTML from one or several POD files."
+cat << EOF
+PodToHTML generates HTML from one or (more typically) several files
+containg POD documentation.
+It uses Pod::Parser to parse the PODs and HTML::Element to represent the 
+HTML as it is generated. 
+The distribution also includes Pod::Links for parsing L<> constructs.
+EOF

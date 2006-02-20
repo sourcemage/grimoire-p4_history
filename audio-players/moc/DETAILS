@@ -1,0 +1,33 @@
+           SPELL=moc
+if [ "$DEV" == "y" ]; then
+         VERSION=2.4.0-alpha1
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=ftp://ftp.daper.net/pub/soft/moc/unstable/$SOURCE
+     SOURCE_HASH=sha512:862639c711734e967ae22446cb698f106d4c8a40fcb815a0fe47bd2fc2eb1ee32039ac31de307e8c448a15ed1cd7d8f769f898e72f0d8c43fd3f299b3da3e4cb:UPSTREAM_HASH
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-DEVEL
+else
+         VERSION=2.3.2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=ftp://ftp.daper.net/pub/soft/moc/stable/$SOURCE
+     SOURCE_HASH=sha512:ceb44fd784d4e9887cfdca5d0b23a6b674a3c33c78185c797bb63b2116187629f6ce283c6aded90e83c86b6c0502af360fca29b1127f0239ad7e30506c121f3c:UPSTREAM_HASH
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+fi
+        WEB_SITE=http://moc.daper.net/
+         ENTERED=20050706
+         UPDATED=20050706
+      LICENSE[0]=GPLv2
+           SHORT="MOC (music on console) is a console audio player"
+cat << EOF
+MOC (music on console) is a console audio player for LINUX/UNIX designed 
+to be powerful and easy to use.  You just need to select a file from 
+some directory using the menu similar to Midnight Commander, and 
+MOC will start playing all files in this directory beginning from 
+the chosen file. There is no need to create play lists like in other players.
+If you want to combine some files from one or few directories on one 
+play list, you can do this. The play list will be remembered between 
+runs or you can save it as an m3u file to load it whenever you want.
+
+MOC plays smoothly, regardless of system or I/O load because it uses
+the output buffer in a separate thread. 
+EOF
+

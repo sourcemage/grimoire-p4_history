@@ -1,0 +1,28 @@
+           SPELL=xml-parser-expat
+         VERSION=2.34
+          SOURCE=XML-Parser-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/XML-Parser-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/M/MS/MSERGEANT/$SOURCE
+     SOURCE_HASH=sha512:58ad1feb0b693d012a2e7ebecafce87c02b469ab7feaeb4034721bc8d056a902f508df2a4902203c3fd1df2fb565bcca412f1c73c895824fbbc9d00f374e42bd
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=XML::Parser::Expat"
+         ENTERED=20020314
+         UPDATED=20020403
+       BUILD_API=2
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Flexible fast parser with plug-in styles"
+cat << EOF
+
+This module provides ways to parse XML documents. It is
+built on top of the XML::Parser::Expat manpage, which is a
+lower level interface to James Clark's expat library. Each
+call to one of the parsing methods creates a new instance
+of XML::Parser::Expat which is then used to parse the doc­
+ument.  Expat options may be provided when the XML::Parser
+object is created.  These options are then passed on to
+the Expat object on each parse call.  They can also be
+given as extra arguments to the parse methods, in which
+case they override options given at XML::Parser creation
+time.
+
+EOF

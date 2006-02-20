@@ -1,0 +1,18 @@
+           SPELL=mtx
+         VERSION=052
+          SOURCE=${SPELL}${VERSION}.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://icking-music-archive.org/software/mtx/$SOURCE
+     SOURCE_HASH=sha512:8a57e5f123f45390ab95be7b7036c57c5bc9424dca8b56cb426eeded96ae9f170ea7844133fa5290042502dfa1fe20a8e6eac79a5321488a31b6cc418b83cf8d
+        WEB_SITE='http://icking-music-archive.org/software/indexmt6.html#mtx'
+         ENTERED=20020629
+         UPDATED=20020813
+            DOCS="source $DOCS"
+         LICENSE=GPL
+           SHORT="A pre-processor for pmx."
+cat << EOF
+M-Tx is a preprocessor for PMX that facilitates inputting lyrics. It builds the
+PMX input file based on a language very similar to PMX. M-Tx includes most of
+PMX's functionality, but it also permits in-line PMX commands to give access to
+virtually all of PMX.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=phpldapadmin
+         VERSION=0.9.7.2
+     SOURCE_HASH='sha512:647e7906462163c140723bcb3fa2711c0e4b1a492639188d730108b520c90758b6d1786b002f981285b8407f874a279a433172a85daf22140e36e810bbc9862b'
+          SOURCE=$SPELL-$VERSION.tar.gz
+      LICENSE[0]=GPL
+     GATHER_DOCS=off
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://$SPELL.sf.net/
+         ENTERED=20040128
+         UPDATED=20040128
+       BUILD_API=2
+           SHORT='PHP-based LDAP directory management package'
+cat << EOF
+phpLDAPadmin is a web-based LDAP administration tool for managing
+your LDAP server. With it you can browse your LDAP tree, view LDAP
+schema, perform searches, create, delete, copy and edit LDAP entries.
+You can even copy entries between servers.
+EOF

@@ -1,0 +1,25 @@
+           SPELL=typo3
+         VERSION=3.8.0
+     SOURCE_HASH=sha512:0232b6adc173a84e21c7bd5ee8b7b92e859f3d1c4b6bb0f0641cd7a71b26109a619d3fd0bceb1aeafd60a03533b88b4a71ba67589bada7c0b36e4813af24105c
+    SOURCE2_HASH=sha512:11dfd22feb34b00b45eea2e8fdca065fcf5a2bc2ad5f53740d859dddaba81c58de2f92df07fce0e18acb6b3fd0f9b65b94821415cceceba7502997b22d40a419
+    SOURCE3_HASH=sha512:12d0ba174b5ae92052912e5279fff7bedd1394c7315d02f1aa071eb81005727c7112111c713ae2be4791420595d924b47e456852156030c6b9f0a3a3353d9956
+    SOURCE4_HASH=sha512:cf09645c7d1b1585a6dc5edbab962eac45c621310da9f66366657bd90cd478c91d436a5d96eef6d39662695e3d41da7a591a81af4ebb52f6027d1cb22199b65a
+          SOURCE="${SPELL}_src-$VERSION.tar.gz"
+         SOURCE2="dummy-$VERSION.tar.gz"
+         SOURCE3="quickstart-$VERSION.tar.gz"
+         SOURCE4="testsite-$VERSION.tar.gz"
+   SOURCE_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE"
+  SOURCE2_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE2"
+  SOURCE3_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE3"
+  SOURCE4_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE4"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+        WEB_SITE="http://$SPELL.org/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='GPL'
+         UPDATED=20050725
+       BUILD_API=2
+           SHORT='A free, professional Web content management system'
+cat << EOF
+TYPO3 is a Web content management system which features automatic creation of navigational menus, headlines, and other dynamic graphical elements, automatic conversion and scaling of images, the ability to present different templates based on variables such as client browser or country code, support for multiple templates on a site, and a built-in password-protection option. Pages can be timed to be shown on a certain date, be hidden on a certain date or just temporarily hidden. TYPO3 supports search in SQL-databases and redesigning of a website at once is just a matter of creating a single new template.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor

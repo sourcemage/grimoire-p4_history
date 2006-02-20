@@ -1,0 +1,20 @@
+           SPELL=xml-writer
+         VERSION=0.600
+     SOURCE_HASH=sha512:81b5e62b037f636323138fe83f01b08b076b258cc753e9b947262736c138feb1bff26e5eae5492be0630eea5e3a5f7b1c4a8bb573de85918583ecf9678aa1590
+          SOURCE=XML-Writer-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/XML-Writer-$VERSION
+        WEB_SITE=http://xml-writer-perl.berlios.de/
+   SOURCE_URL[0]=http://download.berlios.de/xml-writer-perl/$SOURCE
+   SOURCE_URL[1]=http://search.cpan.org/CPAN/authors/id/J/JO/JOSEPHW/$SOURCE
+         ENTERED=20020314
+         UPDATED=20020315
+      LICENSE[0]=ART
+       BUILD_API=2
+           SHORT="Module for writing XML documents"
+cat << EOF
+XML::Writer is a helper module for Perl programs that
+write an XML document.  The module handles all escaping
+for attribute values and character data and constructs
+different types of markup, such as tags, comments, and
+processing instructions.
+EOF

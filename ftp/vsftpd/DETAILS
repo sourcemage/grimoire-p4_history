@@ -1,0 +1,17 @@
+           SPELL=vsftpd
+         VERSION=2.0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://vsftpd.beasts.org/users/cevans/$SOURCE
+     SOURCE_HASH=sha512:67fc6a855c0017ea49bed71860763d3dd620b1f1bd4270ca3d4ae68ba708285c705c7916c7c8622ad2ab25940325427da0320e2eb292a575e7f1c750930cb125
+        WEB_SITE=http://vsftpd.beasts.org/
+         ENTERED=20030107
+         UPDATED=20040709
+      LICENSE[0]="GPL"
+       BUILD_API=2
+           SHORT="Very secure ftp daemon"
+cat << EOF
+vsftpd is a GPL licensed FTP server for UNIX systems. It is secure and
+extremely fast. Several large sites ( redhat.com, suse.com, openbsd.org ) use
+it. It was written from scratch with security in mind.
+EOF

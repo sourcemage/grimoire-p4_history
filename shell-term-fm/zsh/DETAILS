@@ -1,0 +1,22 @@
+           SPELL=zsh
+         VERSION=4.2.6
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.demon.nl/pub/mirrors/zsh/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.fu-berlin.de/pub/unix/shells/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.cs.elte.hu/pub/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:dcb5efddb542fce7a48f3eb1a64e35816ef3b82e5358988a6cc0aa15e7c36ee66a29a6f9c48760f996c96d18c70dc8efccb6610cad8d6975fbdff3d5c808a9ab
+        WEB_SITE=http://www.zsh.org/
+         ENTERED=20011112
+         UPDATED=20050408
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Shell designed for interactive use"
+cat << EOF
+Zsh is a UNIX command interpreter (shell) which of the standard
+shells most resembles the Korn shell (ksh). It includes enhancements
+of many types, notably in the command-line editor, options for
+customising its behaviour, filename globbing, features to make
+C-shell (csh) users feel more at home and extra features drawn from
+tcsh.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=htdig
+         VERSION=3.2.0b5
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:6ad4674dba04920e18353da2acf89bcf2c4d3db09131e87f92185ca4943740982906390903bf8c73af8de4e4221b6fbb06b0417a01894a2c5eeb50cbfd12eeaa
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+#   SOURCE_URL[0]=http://www.htdig.org/files/snapshots/$SOURCE
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+#   SOURCE_URL[1]=http://www.htdig.org/files/$SOURCE
+        WEB_SITE=http://www.htdig.org/
+         ENTERED=20020207
+         UPDATED=20020726
+           SHORT='The ht://Dig system is a complete world wide web indexing and searching system'
+cat << EOF
+The ht://Dig system is a complete world wide web indexing and searching system
+for a domain or intranet. This system is not meant to replace the need for
+powerful internet-wide search systems like Lycos, Infoseek, Google
+and AltaVista. Instead it is meant to cover the search needs for a single 
+company, campus, or even a particular sub section of a web site.
+EOF

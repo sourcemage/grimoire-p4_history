@@ -1,0 +1,15 @@
+           SPELL=haddock
+         VERSION=0.6
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.haskell.org/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:1f61f3e5d3afe796f696762351b4708400ca52d7d7ce845fd2ecf07c867881400188dad90f8f012db594af41df3d5bcf8fec19efcd237f947ebd2bac6c554287
+      LICENSE[0]=BSD
+        WEB_SITE=http://www.haskell.org/haddock
+         ENTERED=20050306
+         UPDATED=20050306
+           SHORT="A Haskell Documentation Tool"
+cat << EOF
+This is Haddock, a tool for automatically generating documentation from annotated Haskell source code. It is primarily intended for documenting libraries, but it should be useful for any kind of Haskell code.
+EOF

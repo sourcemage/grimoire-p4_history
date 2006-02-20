@@ -1,0 +1,29 @@
+           SPELL=bashish
+         VERSION=1.9.24
+  THEMES_VERSION=1.1.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+	 SOURCE2=$SPELL-themes-${THEMES_VERSION}.tar.gz 
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+   SOURCE_URL[1]=http://osdn.dl.sourceforge.net/sourceforge/${SPELL}/${SOURCE}
+  SOURCE2_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE2}
+  SOURCE2_URL[1]=http://osdn.dl.sourceforge.net/sourceforge/${SPELL}/${SOURCE2}
+        WEB_SITE=http://bashish.sourceforge.net/
+      BUILD_API=2
+         ENTERED=20020911
+         UPDATED=20030725
+     SOURCE_HASH=sha512:33a5f768d55cb058a5f78a5567977c453a495458396cb783828c19da31c9e09849d0be6a5d55d74fa2a5b90d4d3f0a89585cc94c62098027d1be4833e15c2c40
+    SOURCE2_HASH=sha512:4e24c7372e1c0e16a45923e7f7aa7c11f61b931620e73dc13ee6eb5b55bf31bece575fa55860204bb41654a268b7fc716f3e43bcecf8dd33d428732927ddcdd8
+      LICENSE[0]=GPL
+           SHORT="Bashish is a theme engine for the console."
+cat << EOF
+Bashish is a theme engine for the console.
+It lets you customize title, prompt, background, foreground, colors, 
+font and a lot of other things. Bashish is also very configurable, 
+you can turn on and off nearly all features.
+A large collection of themes, including "classic" os-themes, artistic 
+themes, functional is attatched to the package.
+All themes are switched on the fly by using the "changetheme" command, 
+you don't need to restart the terminal for changes to take effect.
+Bashish aims to be easy to use even for the novice user.
+EOF

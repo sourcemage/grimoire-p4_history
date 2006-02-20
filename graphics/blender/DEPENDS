@@ -1,0 +1,20 @@
+depends  scons    && #for building it.
+depends  sdl      &&
+depends  GLUT     &&
+depends  zlib     &&
+depends  python   &&
+depends  jpeg     &&
+
+if [ $OPENAL == y ]; then
+   depends  openal
+fi                                        &&
+
+optional_depends  libpng                  \
+                  ""                      \
+                  ""                      \
+                  "for PNG file support"  &&
+
+optional_depends  yafray                  \
+                  ""                      \
+                  ""                      \
+                  "for Yafray raytracing"

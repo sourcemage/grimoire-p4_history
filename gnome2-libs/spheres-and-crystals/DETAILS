@@ -1,0 +1,26 @@
+           SPELL=spheres-and-crystals
+         VERSION=0.7
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/librsvg/${SOURCE}
+     SOURCE_HASH=sha512:5de23d91dceff6db73c1c6aad40e332a59b013c4e16fbdffed70b3397aa6988f23f196698d8806f9759de73c7012fd0da5703dc7369c00975eb27bfe21635a8b
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://librsvg.sourceforge.net/
+         ENTERED=20030203
+         UPDATED=20030325
+           SHORT="GNOME 2.2 theme to test the limits of librsvg"
+cat << EOF
+Spheres and Crystals SVG is a metatheme for GNOME 2.2 we developed 
+to test the limits of librsvg. The aim of this theme is to eventually 
+only use SVG files. Currently that is only partially true as the GTK+ 
+theme and the Metacity theme are using pixmaps, but we hope to fix 
+this in a later release.
+
+The Spheres and Crystals theme uses icons or part of icons from many 
+resources. The buttons in the GUI uses the BlueSphere SVG icons and 
+the filesystem icons are a mix of Crystal SVG, BlueSphere and parts 
+taken from Gorilla SVG theme. A big thanks goes to Vadim Plessky, 
+Everaldo Coelho and Jakub 'Jimmac' Steiner who are the primary forces 
+behind these icon sets.
+EOF

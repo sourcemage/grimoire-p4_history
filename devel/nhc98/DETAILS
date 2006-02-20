@@ -1,0 +1,20 @@
+           SPELL=nhc98
+         VERSION=1.16
+          SOURCE=${SPELL}src-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.cs.york.ac.uk/pub/haskell/nhc98/$SOURCE
+     SOURCE_HASH=sha512:c8f5b3706feb8d9cb345990e61667ec208f85c6ba9af763c55bf46db20ce5f2e547d749a514eb7fa06efd7b372757f31b0e53e82b2638ecb43fbaa3d79f80981
+        WEB_SITE=http://www.cs.york.ac.uk/fp/nhc98/
+       BUILD_API=2
+         ENTERED=20020325
+         UPDATED=20020325
+      LICENSE[0]=http://www.cs.york.ac.uk/fp/nhc98/copyright.html
+           SHORT="nhc98 is a fully-fledged compiler for Haskell 98"
+cat << EOF
+nhc98 is a fully-fledged compiler for Haskell 98, the standard lazy
+functional programming language. Written in Haskell, it is small and
+very portable, and aims to produce small executables that run in small
+amounts of memory. Is a pattern becoming obvious here? :-) It also
+comes with extensive tool support for automatic compilation, foreign
+language interfacing, heap and time profiling, tracing, and debugging.
+EOF

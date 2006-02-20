@@ -1,0 +1,19 @@
+           SPELL=mcrypt
+         VERSION=2.6.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:bb06f6caa73485351dd30f28d24e0064955c2f1efed1d9dec58d8a86be2eff12cf8df247014d702b186f7042edb00539406a4362d5dc1fad4f6add807bbfff12
+        WEB_SITE=http://mcrypt.sourceforge.net/
+         ENTERED=20011123
+         UPDATED=20020320
+      MAINTAINER=hgr@vabo.cz
+      LICENSE[0]=GPL
+           SHORT="mcrypt is intended to be a replacement of the old unix crypt"
+cat << EOF
+MCrypt is a program for encrypting files or streams. It is intended
+to be a replacement for the old UNIX crypt. It uses well-known and
+well-tested algorithms like DES, BLOWFISH, TWOFISH, ARCFOUR,
+CAST-128, and more in several modes (CBC, CFB, etc.). It also has a
+compatibility mode with the old UNIX crypt and Solaris des.
+EOF

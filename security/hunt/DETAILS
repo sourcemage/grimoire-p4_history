@@ -1,0 +1,25 @@
+           SPELL=hunt
+         VERSION=1.5
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://lin.fsid.cvut.cz/~kra/hunt/$SOURCE
+     SOURCE_HASH=sha512:b016f7ae0ac7568b4a5006b7c5e6f3e80df71a67d94a1e62afc46fb0f10cb661df7e3bff1f0229836a2247ef368dc2681ad955821e97cb6a91fcfe489b871a61
+        WEB_SITE=http://lin.fsid.cvut.cz/~kra/hunt/
+         ENTERED=20030419
+         UPDATED=20030419
+      LICENSE[0]=GPL
+      MAINTAINER=marcg@phreaker.net
+           SHORT="Hunt is a program for intruding into a connection."
+cat << EOF
+Hunt is a program for intruding into a connection, watching it and resetting 
+it. It has several features, which I didn't find in any product like
+Juggernaut or T-sight that inspired me in my development.
+Note that hunt is operating on Ethernet and is best used for connections
+which can be watched through it. However, it is possible to do something
+even for hosts on another segments or hosts that are on switched ports. 
+The hunt doesn't distinguish between local network connections and connections
+going to/from Internet. It can handle all connections it sees.
+
+Connection hijacking is aimed primarily at the telnet or rlogin traffic but 
+it can be used for another traffic too.
+EOF

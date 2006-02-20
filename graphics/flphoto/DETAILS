@@ -1,0 +1,46 @@
+           SPELL=flphoto
+         VERSION=1.2
+          SOURCE=$SPELL-$VERSION-source.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/fltk/$SOURCE
+     SOURCE_HASH=sha512:8dfe3e47fe4c67226d611562d0c4d2c020b6efb5ddf442ecf19dc7f192dc772413b85176c7ebf40bd0ce404b4b39fcd1910e40a16be9eb6ed4a10fc1d261a7a9
+        WEB_SITE=http://www.easysw.com/~mike/flphoto/
+         ENTERED=20030324
+         UPDATED=20030909
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Basic image management and display program"
+cat << EOF
+flPhoto is a basic image management and display program based on the
+FLTK toolkit. It can read, write, and display digital camera EXIF
+information and supports the following image file formats:
+
+BMP
+CRW
+JPEG
+PhotoCD
+PNG
+TIFF (Not Yet Implemented)
+
+flPhoto organizes image files into albums which can be:
+
+Printed
+Viewed as a slideshow
+Exported to web pages
+
+Images can be imported individually, by directory, or from digital
+cameras using the gPhoto library.
+
+
+Image files can be transformed and touched-up; the following image
+operations are available:
+
+Crop
+Rotate
+Scale
+Auto-Correct
+Adjust Brightness and Contrast
+Remove Red Eye
+Sharpen
+Blur
+EOF

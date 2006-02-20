@@ -1,0 +1,18 @@
+           SPELL=swatch
+         VERSION=3.0.8
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:e2f1e192e13f990e8389fe2a176779c880e8e63867dbf616628ee8314b4c0a81bd3496c0a572d8fb488c4d30b6f6c37b0c10debcc1720adf2c28ab12e9c4caab
+      LICENSE[0]=GPL2
+         ENTERED=20030726
+         UPDATED=20030726
+        WEB_SITE=http://swatch.sourceforge.net/
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="Swatch is the active log file monitoring tool."
+cat << EOF
+Swatch is the active log file monitoring tool. Swatch started 
+out as the "simple watchdog" for activly monitoring log files 
+produced by UNIX's syslog facility. It has since been evolving 
+into a utility that can monitor just about any type of log. 
+EOF

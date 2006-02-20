@@ -1,0 +1,21 @@
+           SPELL=drip
+         VERSION=0.9.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://drip.sourceforge.net/files/$SOURCE
+        WEB_SITE=http://drip.sf.net
+         ENTERED=20021004
+         UPDATED=20040920
+     SOURCE_HASH=sha512:132e7eda670d861a86f90d2099773379b5e5e482a5e8981b02753aec9ec58b9eb2b3080c7564f29f2659ade37006462091d2347efcec4fbab196154bd32fdd6e
+      LICENSE[0]=GPL
+       BUILD_API=2
+     GCC_VERSION=3.4
+           SHORT="DVD Transcoder for Unix"
+cat << EOF
+Drip is a DVD to DIVX conversion application. It's made up out two
+applications: a DVD reader and a DIVX encoder. The reader is a GUI for the
+GNOME environment, the DIVX encoder a text mode tool. You wont have to learn to
+use the textmode tool, because the GUI also is a frontend for it.
+EOF
+
+  

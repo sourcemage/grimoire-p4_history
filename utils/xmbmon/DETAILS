@@ -1,0 +1,19 @@
+           SPELL=xmbmon
+         VERSION=205
+          SOURCE=$SPELL$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL$VERSION
+   SOURCE_URL[0]=http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:0ee2f3616976af6edc3777391f657d12670be1557f726f67f51edc23866d96d5cd4cfa9ac8aaad52cce2bdd2b9c616efd6edba1a019e4360a0fcaae0aef99a9c
+        WEB_SITE=http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/
+         ENTERED=20040515
+         UPDATED=20050924
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Monitoring program for motherboards"
+cat << EOF
+xmbmon is a monitoring program for motherboards which can monitor the CPU
+temperatures and the frequency of CPU cooling fans, etc. The package includes
+"mbmon", which can be used at the commandline to report the temperatures,
+voltages, and RPM (rounds per minute) of the fans, and "xmbmon", which displays
+the three temperatures and a core voltage as simple curves.
+EOF

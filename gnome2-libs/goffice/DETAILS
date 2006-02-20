@@ -1,0 +1,15 @@
+           SPELL=goffice
+         VERSION=0.2.0
+          BRANCH=${VERSION%\.*}
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=LGPL
+        WEB_SITE=http://www.gnome.org/
+         ENTERED=20050530
+         UPDATED=20050613
+           SHORT='GOffice shared functionality'
+cat << EOF
+GOffice shared functionality.
+EOF

@@ -1,0 +1,17 @@
+           SPELL=lumiere
+         VERSION=0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://savannah.nongnu.org/download/lumiere/lumiere.pkg/0.4/$SOURCE
+        WEB_SITE=http://www.nongnu.org/lumiere
+     SOURCE_HASH=sha512:1c90d1c514f5be6fc520d3b922e2f044a539630fecc494f5903c3ce75c64b599f16c35c4a756401fb7c065aa6f40e02a7e548038c7118f1bac2388d4d847a0a6
+      LICENSE[0]=GPL
+         ENTERED=20030102
+         UPDATED=20030102
+      MAINTAINER=v.merkatz@gmx.net
+           SHORT=" Lumiere is a GNOME frontend to mplayer the great movie player for *nix."
+cat << EOF
+ Lumiere is a GNOME frontend to mplayer the great movie player for *nix.
+
+Mplayer is really good, but unfortunately it is a bit difficult to use because it is a command line only (mostly, if you want most options...) program. I wanted to integrate it into the GNOME as a Bonobo component so that I could preview, or even view media files (mostly videos) from within the Nautilus file manager.
+EOF

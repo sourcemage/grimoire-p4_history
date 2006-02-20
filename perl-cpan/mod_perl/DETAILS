@@ -1,0 +1,27 @@
+           SPELL=mod_perl
+if [ "$MOD_PERL_2" == 'n' ]; then
+         VERSION=1.29
+     SOURCE_HASH=sha512:482cded39b587694af5d9a153d74a099ffb15c3fb4c1bcc4ddb1edb5bdb6e307e848525b6e56cfe74afe0698a981ab6bb1963f498f985fe2a0531246634045c1
+else
+         VERSION=2.0.2
+     SOURCE_HASH=sha512:04113645f8e6636294e84a9811ad0e66ee5551030b2e998e575405877b1f635d44011ac1a5c14c845f7d32a4e819da6a8be4089f959ba74896ada21d2a1a5c49
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://search.cpan.org/CPAN/authors/id/G/GO/GOZER/$SOURCE
+   SOURCE_URL[1]=http://perl.apache.org/dist/$SOURCE
+        WEB_SITE=http://perl.apache.org/
+         ENTERED=20010922
+         UPDATED=20050523
+      LICENSE[0]=APACHE
+       BUILD_API=2
+           SHORT="Incoporates PERL into the Apache HTTP server"
+cat << EOF
+The Apache/Perl integration project brings together the full power of
+the Perl programming language and the Apache HTTP server. With mod_perl
+it is possible to write Apache modules entirely in Perl. In addition,
+the persistent interpreter embedded in the server avoids the overhead of
+starting an external interpreter and the penalty of Perl start-up time.
+
+See also http://search.cpan.org/~gozer/mod_perl-$VERSION/
+EOF

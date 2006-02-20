@@ -1,0 +1,56 @@
+           SPELL=xmms2
+if [[ "$XMMS2_SNAPSHOT" == "y" ]]
+then
+         VERSION=3cf52aff457e68d9adb95b27743855af5277f0fd
+          SOURCE=${SPELL}-devel.git-snapshot-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-devel.git-snapshot-${VERSION}
+   SOURCE_URL[0]=http://git.xmms.se/snapshot.cgi/${SOURCE}
+     SOURCE_HASH=sha512:675c24344f8b663e2b68b705943d103f4d4eace8681db9c873423efe3bda3563b5a5f0919573f6bee538fb46af3c16174f5f2767358054ecdf95ad6c0e5fcee5
+else
+         VERSION=0.2DrBombay
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:b5dbc36991dbc81eee648bb123778101cb8b1ab859c14fc898ab04c41e518a136d3a040546cdeff0dec4a0c8f9fc050c7d0158db33dfda996b3bb5f8a9382ddb:UPSTREAM_HASH
+fi
+        WEB_SITE=http://wiki.xmms2.xmms.se/index.php/Main_Page
+            DOCS='COPYING README'
+         ENTERED=20040527
+         UPDATED=20050430
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="XMMS2 is a redesign of the XMMS music player."
+cat << EOF
+It features a client-server model, allowing multiple (even simultaneous!) user
+interfaces, both textual and graphical. All common audio formats are supported
+using plugins. On top of this, there is a flexible media library to organize
+your music.
+
+List of features currently offered by XMMS2:
+
+Client-server model 
+
+* Allows XMMS2 to have various multiple interfaces (as clients).
+   o Command line interfaces
+   o GTK clients (matching GNOME & XFCE4 look and feel)
+   o KDE clients (matching KDE look and feel)
+* Network transparency means you can run and control XMMS2 remotely, (e.g. run
+XMMS2 on your 'media box' and control it over network using a bluetooth-enabled
+PDA (TCP))
+
+Wide format support 
+
+Can play FLAC, mp3, MOD, SID, speex, ogg vorbis, wave files.
+
+Clean separation of transport and decoder subsystems 
+
+Allows for more flexible access to media. (e.g. play mp3 files from a Samba
+share without having to mount it on the local filesystem)
+
+Medialib 
+
+Database-driven media library stores metadata about songs as they're played,
+so songs can be quickly recalled and new playlists easily made.
+
+Visualisation support 
+EOF

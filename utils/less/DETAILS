@@ -1,0 +1,22 @@
+           SPELL=less
+         VERSION=394
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.greenwoodsoftware.com/$SPELL/$SOURCE
+   SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+        WEB_SITE=http://www.greenwoodsoftware.com/less
+     SOURCE_HASH=sha512:88a13ee89b7ee49a09f373977ed8450f93a3b5b8fe2cc4fa531f0f4236621216f4eb89d48105d9e7699d35c9f80f42da95196d851e89c8cdaeee3f89aa628c0f
+         ENTERED=20010922
+         UPDATED=20021007
+       BUILD_API=2
+           SHORT="less is a paginator that allows backward and forward movement."
+cat << EOF
+less - Display paginator
+'Less' is a paginator file similar to 'more,' but that allows backward
+as well as forward movement through the file. In addition, it doesn't
+have to read the entire input file before starting, so it starts large
+files faster than text editors like vi. Less uses termcap (or terminfo
+on some terminals) so it can run on a variety of terminals; there is
+even limited support for hard copy terminals.
+EOF

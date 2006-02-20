@@ -1,0 +1,18 @@
+           SPELL=gdkxft
+         VERSION=1.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:f2f5c09e016f964fa3345d6ed2b3a57b97e4c7b598561160f5f443c0e59d07bf27351a621049e84cac0c5e6cf5b1287e669e0414f769c1727ca8d7fdcd5fbc8d
+      LICENSE[0]=LGPL
+        WEB_SITE=http://gdkxft.sourceforge.net/
+       BUILD_API=2
+         ENTERED=20011115
+         UPDATED=20020130
+           SHORT="Gdkxft transparently adds anti-aliased font support to gtk+-1.2."
+cat << EOF
+Gdkxft transparently adds anti-aliased font support to gtk+-1.2. Once
+you have installed it, you can run any (well, nearly any) existing gtk+
+binary and see anti-aliased fonts in the gtk widgets. You don't need to
+recompile gtk+ or your applications.
+EOF

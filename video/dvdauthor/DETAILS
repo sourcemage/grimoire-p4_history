@@ -1,0 +1,16 @@
+           SPELL=dvdauthor
+         VERSION=0.6.11
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+     SOURCE_HASH=sha512:ce81d099fde5f1fd9ce1cb24ebe8655b66f805a4ab42375c9e8c8eb3197f1febc9be51cf8fd83427457f45b530d23a3adaff6645e5efe84cf541d9e7cf8bb98f
+        WEB_SITE=http://dvdauthor.sourceforge.net/
+         ENTERED=20030921
+         UPDATED=20040501
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Program to generate a DVD movie from MPEG2 stream"
+cat << EOF
+dvdauthor is a program that will generate a DVD movie from a valid
+mpeg2 stream that should play when you put it in a DVD player.
+EOF

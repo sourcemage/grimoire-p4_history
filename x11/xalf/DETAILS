@@ -1,0 +1,19 @@
+           SPELL=xalf
+         VERSION=0.12
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+  SOURCE_URL[0]=http://www.lysator.liu.se/~astrand/projects/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:dd371725c31bba57bd445c9e44f0aa79a4d9cd018f9c7861625505b9d371f7e360ec07b88ed10800a743e2210dbb694a4817cde6c5bcb47355c717e877f83fe5
+        WEB_SITE=http://www.lysator.liu.se/~astrand/projects/xalf
+         ENTERED=20011124
+         UPDATED=20011124
+         LICENSE=GPL
+      MAINTAINER=b.nitzler@umea.bonet.se
+	   SHORT="xalf provides feedback when starting X11 applications"
+cat << EOF
+Xalf is a small utility to provide feedback when starting X11
+applications. Feedback can be given via four different indicators: an 
+invisible window (to be used in conjunction with a task pager like
+GNOME's tasklist_applet or KDE's Taskbar), an generic splashscreen,
+an hourglass attached to the mouse cursor, or an animated star.
+EOF

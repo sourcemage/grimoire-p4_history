@@ -1,0 +1,19 @@
+           SPELL=time
+         VERSION=1.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:d759b651e343beddc0b3bd06af85881486b72319c979a2e7f752d5a34edd8b7c1c19391c5c7a2e8f6685746cc7a046bf2c8e082b31458a1dd043ed90a4cebcd1
+        WEB_SITE=http://www.gnu.org/directory/GNU/time.html
+       BUILD_API=2
+         ENTERED=20040604
+         UPDATED=20040604
+      LICENSE[0]=GPL
+           SHORT="GNU time"
+cat << EOF
+The 'time' command runs another program, then displays information about the 
+resources used by that program, collected by the system while the program 
+was running. You can select which information is reported and the format 
+in which it is shown, or have 'time' save the information in a file 
+instead of displaying it on the screen.
+EOF

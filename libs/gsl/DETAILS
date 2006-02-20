@@ -1,0 +1,32 @@
+           SPELL=gsl
+         VERSION=1.6
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:ca51a62b6537ae6d33a54dd8d0f606de40a539322afd4a78fd18787f9556ca976226354b766f486fa28aa9348b9bf8145593214fdf85afef207d6c3dc23b84b4
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnu.org/software/gsl
+         ENTERED=20020308
+         UPDATED=20040523
+           SHORT="The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers."
+
+cat << EOF
+The GNU Scientific Library (GSL) is a modern numerical library for C
+and C++ programmers.  The routines have been written from scratch over
+a five year period by the GSL team using modern coding
+conventions. The complete range of subject areas covered by the
+library includes, Complex Numbers Roots of Polynomials Special
+Functions Vectors and Matrices Permutations Sorting BLAS Support
+Linear Algebra Eigensystems Fast Fourier Transforms Quadrature Random
+Numbers Quasi-Random Sequences Random Distributions Statistics
+Histograms N-Tuples Monte Carlo Integration Simulated Annealing
+Differential Equations Interpolation Numerical Differentiation
+Chebyshev Approximation Series Acceleration Discrete Hankel Transforms
+Root-Finding Minimization Least-Squares Fitting Physical Constants
+IEEE Floating-Point.
+
+Unlike the licenses of proprietary numerical libraries the license of
+GSL does not restrict scientific cooperation.  It allows you to share
+your programs freely with others.
+EOF

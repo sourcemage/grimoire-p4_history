@@ -1,0 +1,18 @@
+           SPELL=hydan
+         VERSION=0.13
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://crazyboy.com/hydan/$SOURCE
+     SOURCE_HASH=sha512:6ef6548b08272caab4f902b300558d5dcf501604927d886e841e1246caf10c3995a4dbd64fb1bf9f75c13fbb33161e1e6941d691339928749013613a35b3ec45
+        WEB_SITE=http://crazyboy.com/hydan/
+         ENTERED=20040816
+         UPDATED=20040816
+           SHORT="steganographically conceals a message into an application"
+cat << EOF
+Hydan steganographically conceals a message into an
+application. It exploits redundancy in the i386 instruction
+set by defining sets of functionally equivalent instructions.
+It then encodes information in machine code by using the
+appropriate instructions from each set.
+EOF

@@ -1,0 +1,18 @@
+           SPELL=xdtv
+         VERSION=2.1.1
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/xawdecode/${SOURCE}
+     SOURCE_HASH=sha512:1aba05fed402593a73e33bd9af10b2127ade6a4c7cb4148ade9cc221a4cc28496fd9293d7a9e169efe465aa71da230df1f4eb452eb92ab5517a9511ee458dc5b
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://xawdecode.sourceforge.net/
+         ENTERED=20050601
+         UPDATED=20050601
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="XdTV is a software that allows you to watch/record TV"
+cat << EOF
+XdTV is a software that allows you to watch TV. It interacts with AleVT
+for Teletext and Nxtvepg for NextView. It uses the video4linux API. It can
+use deinterlacing filters and record video files with the ffmpeg, xvid,
+and divx codecs.
+EOF

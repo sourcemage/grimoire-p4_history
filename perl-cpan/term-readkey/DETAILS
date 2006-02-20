@@ -1,0 +1,25 @@
+	BUILD_API=2
+           SPELL=term-readkey
+         VERSION=2.21
+          SOURCE=TermReadKey-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/TermReadKey-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/J/JS/JSTOWE/$SOURCE
+     SOURCE_HASH=sha512:ad74ae0893427d786b73e49f5e8affa48e8a58cb2e3f6b05b7ba4ade1ff3b5fc77551203ac1c4b886ac36927ae1a09db12f127581591c85a69db8e9cf65d79ef
+         LICENSE=PD
+        WEB_SITE="http://search.cpan.org/search?module=Term::ReadKey"
+         ENTERED=20020312
+         UPDATED=20020324
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Read keystrokes and change terminal modes"
+cat << EOF
+
+Term::ReadKey is a compiled perl module dedicated to pro­
+viding simple control over terminal driver modes (cbreak,
+raw, cooked, etc.,) support for non-blocking reads, if the
+architecture allows, and some generalized handy functions
+for working with terminals. One of the main goals is to
+have the functions as portable as possible, so you can
+just plug in "use Term::ReadKey" on any architecture and
+have a good likelyhood of it working.
+
+EOF

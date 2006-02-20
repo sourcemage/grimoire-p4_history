@@ -1,0 +1,22 @@
+           SPELL=qwt
+         VERSION=4.2.0rc2
+		  QWTVER=4.2.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:7a91f6c6251ff492684069343e8017343f76c35510a2010ac4fa69e7954b30ec76cebcc3bf4418e91daedaedadb6909eea9c17fcb99a92ea30fe99127d35bdb7
+        WEB_SITE=http://qwt.sourceforge.net
+         ENTERED=20041022
+         UPDATED=20041022
+      LICENSE[0]=http://qwt.sourceforge.net/qwtlicense.html
+       BUILD_API=2
+           SHORT="Qt Widgets for Technical Applications"
+cat << EOF
+The Qwt library contains GUI Components and
+utility classes which are primarily useful
+for programs with a technical background.
+Beside a 2D plot widget it provides scales,
+sliders, dials, compasses, thermometers,
+wheels and knobs to control or display values,
+arrays, or ranges of type double.
+EOF

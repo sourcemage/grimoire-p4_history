@@ -1,0 +1,41 @@
+           SPELL=bind
+         VERSION=9.3.2
+     SOURCE_HASH=sha512:2d389962bd984f99da068d311a2e21fe58ff5c32a1e78e0fa2f3b981b039a11ce14fd3d2d655cd4af28b77af829cd8756560a82c0b071171ba79e1baa764a712
+          SOURCE=$SPELL-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+      SOURCE_URI=$VERSION/$SOURCE
+   SOURCE_URL[0]=ftp://ftp.epix.net/pub/isc/bind9/$SOURCE_URI
+   SOURCE_URL[1]=http://isc.software-archive.net/bind9/$SOURCE_URI
+   SOURCE_URL[2]=ftp://ftp.isc.org/isc/bind${VERSION}/$SOURCE_URI
+        WEB_SITE=http://www.isc.org/products/BIND/
+         ENTERED=20010922
+         UPDATED=20030918
+      LICENSE[0]=ISC
+       BUILD_API=2
+     GCC_VERSION=3.4
+           SHORT="DNS server and dig utility"
+cat << EOF
+ISC BIND
+BIND (Berkeley Internet Name Domain) is an implementation of the Domain
+Name System (DNS) protocols and provides an openly redistributable
+reference implementation of the major components of the Domain Name
+System, including:
+    * a Domain Name System server (named)
+    * a Domain Name System resolver library
+    * tools for verifying the proper operation of the DNS server
+[ISC]
+ISC BIND
+BIND (Berkeley Internet Name Domain) is an implementation of the Domain
+Name System (DNS) protocols and provides an openly redistributable
+reference implementation of the major components of the Domain Name
+System, including:
+    * a Domain Name System server (named)
+    * a Domain Name System resolver library
+    * tools for verifying the proper operation of the DNS server
+The BIND DNS Server is used on the vast majority of name serving
+machines on the Internet, providing a robust and stable architecture on
+top of which an organization's naming architecture can be built. The
+resolver library included in the BIND distribution provides the standard
+APIs for translation between domain names and Internet addresses and is
+intended to be linked with applications requiring name service.
+EOF

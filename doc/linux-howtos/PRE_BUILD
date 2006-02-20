@@ -1,0 +1,31 @@
+mk_source_dir  $SOURCE_DIRECTORY    &&
+cd             $SOURCE_DIRECTORY    &&
+unpack_file     &&
+
+if test "$PS" == "y"; then
+    mkdir ps
+    cd ps
+    unpack_file 2
+    cd ..
+fi
+
+if test "$PDF" == "y"; then
+    mkdir pdf
+    cd pdf
+    unpack_file 3
+    cd ..
+fi
+
+if test "$HTML_MULTI" == "y"; then
+    mkdir html
+    cd html
+    unpack_file 4
+    cd ..
+fi
+
+if test "$HTML_SINGLE" == "y"; then
+    mkdir html-single
+    cd html-single
+    unpack_file 5
+    cd ..
+fi

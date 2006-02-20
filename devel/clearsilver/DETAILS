@@ -1,0 +1,16 @@
+           SPELL=clearsilver
+         VERSION=0.10.2
+     SOURCE_HASH=sha512:ed0144039a902d51949158c7dd565e75fbe5cc02b8670ceb78787f7b85f9fae8cbf7986f3ac6b9198ac7618c0e2dcbcb190f657e8e3930ca0d4bcaf0122513a6
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://www.clearsilver.net/downloads/$SOURCE"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE="http://www.$SPELL.net/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='The Apache License'
+         UPDATED=20050720
+       BUILD_API=2
+           SHORT='A fast, language-neutral HTML template system'
+cat << EOF
+ClearSilver is a high-performance, powerful, and language-neutral HTML template system. It enforces a separation between presentation code and application logic which makes writing, debugging, and maintaining Web pages easier. It can be used from C/C++, Python, Perl, Java, and Ruby. It runs on Windows and Unix.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor

@@ -1,0 +1,18 @@
+           SPELL=squirrelmail-notes
+         VERSION=1.0-1.2.11
+          SOURCE=notes.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/notes-$VERSION
+   SOURCE_URL[0]=http://www.squirrelmail.org/plugins/$SOURCE
+     SOURCE_HASH=sha512:f516e745e8704d3555e4da2010f2ca913cde3a5eed027c32ba041c4611bc46c9ff19e6d74b7f72578aaadddc9c679a3fc85f84b546ea6bfe3468469e7bacedd6
+        WEB_SITE=http://www.squirrelmail.org/plugin_view.php?id=79
+         ENTERED=20020717
+         UPDATED=20050103
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Personal note plugin for SquirrelMail"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+cat << EOF
+Allows you to create little notes on site, for easy reminders or quick saving of information for future use.
+EOF

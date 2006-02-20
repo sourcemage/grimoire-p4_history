@@ -1,0 +1,20 @@
+           SPELL=gnuplot
+         VERSION=4.0.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnuplot.info/pub/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.irisa.fr/pub/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:14d3693f872036dab23c85f3495c823dc3f76a9d87e23ea3ce9848de90a3047d8f30fefbb775b2828efa726af33efb88a72312aa5c2644e52d1a93e444f40a7d
+        WEB_SITE=http://www.gnuplot.info
+         ENTERED=20020210
+         UPDATED=20020807
+      LICENSE[0]=PD
+       BUILD_API=2
+           SHORT="a mathematical function plotting tool"
+cat << EOF
+gnuplot plots 2d and 3d graphs, from a data file or with a formula.
+It has an interactive mode with online help, or it can be used
+non-interactively. gnuplot does function fitting to data sets, 
+and it does output to many terminals, among which are PostScript,
+X11 display, PNG, and GIF (via the old gd library).
+EOF

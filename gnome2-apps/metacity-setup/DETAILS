@@ -1,0 +1,17 @@
+           SPELL=metacity-setup
+         VERSION=0.7.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://metacity-setup.sourceforge.net
+      MAINTAINER=jon-sven@frisurf.no
+         SOURCE_HASH=sha512:bf032bfd964136c510e97ff923171f3e926985527823cb202544e016f112bfc2a32e0612bd6bca9bbb8d2e6ff1d1403120bf18ac770e550cf9ef69a973f38e5e
+      LICENSE[0]=GPL
+         ENTERED=20020528
+         UPDATED=20020528
+           SHORT="Configuration tool for the Metacity window manager"
+cat << EOF
+This program is simply a much easier way to configure Metacity then
+having to use gconftool or gconf-editor.  It allows you to change
+themes, focus settings, and the number of workspaces.
+EOF

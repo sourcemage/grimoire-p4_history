@@ -1,0 +1,24 @@
+           SPELL=webcleaner
+         VERSION=2.19
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:2f50aaa70a02c2d3ce58ee59dab8b2c146d13c429c594d4ea5d8c3ffb201d897813a99c382e98fd5ec4b601d149c391d3233fafa19415868903da69f4393229b
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://webcleaner.sourceforge.net/
+         ENTERED=20020409
+         UPDATED=20020811
+           SHORT='WebCleaner is a filtering HTTP proxy'
+cat << EOF
+WebCleaner is a filtering HTTP proxy.
+Features
+* disable animated GIFs;
+* compress documents on-the-fly (with gzip);
+* remove/add HTTP headers;
+* remove unwanted HTML (adverts, javascript, ...);
+* customizable to suit your (filtering) needs;
+* HTTP/1.1 support;
+* Proxy Authentication (requires HTTP/1.1 capable browser);
+* JavaScript support.
+EOF

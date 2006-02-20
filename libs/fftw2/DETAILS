@@ -1,0 +1,21 @@
+           SPELL=fftw2
+         VERSION=2.1.5
+          SOURCE=fftw-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/fftw-$VERSION
+   SOURCE_URL[0]=ftp://ftp.fftw.org/pub/fftw/$SOURCE
+     SOURCE_HASH=sha512:8724a7f66aa19b271aa0ffb0e3762919f08082ac4400f52d11b50aef9b9d23a7d4fc5d6b2eae0ac166e2bb30a4d38a52c878e8bf8e24aba01ab1c3ddf5ebec15
+        WEB_SITE=http://www.fftw.org/
+         ENTERED=20011207
+         UPDATED=20050613
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Fast Fourier Tranform C Library"
+cat << EOF
+FFTW is a fast C FFT library. It includes complex, real, and parallel 
+transforms, and can handle arbitrary array sizes efficiently. FFTW is 
+typically faster than other publically-available FFT implementations, 
+and is even competitive with vendor-tuned libraries (benchmarks are
+available at the homepage). To achieve this performance, FFTW uses
+novel code-generation and runtime self-optimization techniques (along 
+with many other tricks).
+EOF

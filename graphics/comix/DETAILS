@@ -1,0 +1,26 @@
+           SPELL=comix
+         VERSION=2.8
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:94e991e81cf6d20ec95c42dbcf26d54b5c62e61836c6700914c2bf35358b2d4810e174036614abf8c3c4d97c413a53215b4f325fbc906557d2259d3cb63a69d5
+        WEB_SITE=http://comix.sourceforge.net/
+         ENTERED=20050904
+         UPDATED=20050904
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Comix is a comic book viewer"
+cat << EOF
+Comix is a comic book viewer. It reads zip, rar, tar, tar.gz and tar.bz2 archives (often called 
+.cbz, .cbr and .cbt) as well as normal image files. It is written in Python and has a simple 
+user interface using PyGTK.
+
+Features: 
+* Fullscreen mode.
+* Fit-to-screen mode.
+* Image zooming and scrolling.
+* Double page mode.
+* Can read right-to-left to fit manga etc.
+* Save window position/size for future sessions.
+* And more!
+EOF

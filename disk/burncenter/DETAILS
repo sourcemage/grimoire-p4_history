@@ -1,0 +1,22 @@
+           SPELL=burncenter
+         VERSION=3.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://alx14.free.fr/burncenter/download/$SOURCE
+        WEB_SITE=http://alx14.free.fr/burncenter/
+         ENTERED=20050119
+         UPDATED=20050119
+  SOURCE_HASH[0]=sha512:61c5c8f520acba1138bb039127439e7919e9d8dc77e39bb547e0fb6d25b595cfd23cca77b0040293ced494d13f02a1cf12fb3be97ae1ed7b73b7b22fd1ed2cce       
+      LICENSE[0]=GPL
+           SHORT="Text-based interface to cd-burning tools"
+cat << EOF
+Burncenter is a very easy-to-use perl module, and text-based interface to cd-burning tools under UNIX (cdrecord/burncd, cdda2wav, mkisofs). 
+
+Features
+
+    * easy to use text interface
+    * transparent multi-session support
+    * creation of audio cd from WAVE or MP3 files, or from playlists
+    * data and audio cd copy support
+    * cdrw support (fast and complete blanking)
+EOF

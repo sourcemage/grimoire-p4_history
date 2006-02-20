@@ -1,0 +1,18 @@
+       BUILD_API=2
+           SPELL=text-formattable
+         VERSION=1.00
+          SOURCE=Text-FormatTable-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Text-FormatTable-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/D/DS/DSCHWEI/$SOURCE
+     SOURCE_HASH=sha512:a3aa06a3406561f4243d7e6a9deb0e689d38c4d5b1bccdcf0fd5d83aa36238c9ac380fc23dd9508c4e965fe08fe349bc1400ba05ac9093b9eb6ec36819ff7e8e
+         LICENSE=MIT
+        WEB_SITE=http://search.cpan.org/search?dist=Text-FormatTable
+         ENTERED=20030817
+         UPDATED=20030817
+           SHORT="render simple tables"
+cat << EOF
+Text::FormatTable renders simple tables as text. You pass to the constructor
+a table format specification similar to LaTeX (e.g. "r|l|l") and you call
+methods to fill the table data and insert rules. After the data is filled,
+you render the table as text.
+EOF

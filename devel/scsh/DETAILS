@@ -1,0 +1,22 @@
+           SPELL=scsh
+         VERSION=0.6.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.scsh.net/pub/scsh/0.6/scsh-$VERSION.tar.gz
+     SOURCE_HASH=sha512:c6dce0c82f3f9dd09160976180ce2b76645335911dca12e4fdec1b4a93cbab05743a59b59be91573f834c0856f0311b97e824d1c71396e0b9d32087fac7538e2
+        WEB_SITE=http://www.scsh.net
+         ENTERED=20020310
+         UPDATED=20031212
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Unix shell embedded in Scheme"
+cat << EOF
+Scsh is a Unix shell embedded in Scheme. It provides full access to
+POSIX as well as extensions common to most Unix implementations. Scsh
+also features many abstractions to ease system programming: process
+abstraction, event-based interrupt handling, sophisticated I/O support
+and enables concurrent system programming.
+Scsh is built on top of Scheme 48, a portable R5RS compliant Scheme
+implementation with byte-code compilation, user-level threads, and
+many useful extensions.
+EOF

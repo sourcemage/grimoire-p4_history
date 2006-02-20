@@ -1,0 +1,22 @@
+           SPELL=rcs
+         VERSION=5.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:e9c4149eab79c088f75e8883f4b78067b216f16879d84f4a21885029a8c960432e3ecfec35e2616e3f2b0b29c27ea6a6c654777bbb9849a0f30f1e12c7de49e1
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnu.org
+       BUILD_API=2
+         ENTERED=20011013
+         UPDATED=20011013
+           SHORT="Revision Control Software"
+cat << EOF
+RCS -Revision Control SOftware,
+ are used for keeping revisions of files etc.
+VERY good idea for system maintenance, BIND zone
+and source code files so that you could keep a tab
+on what happen when (Or could go back a couple of revisions
+if something goes BAD :()
+
+EOF

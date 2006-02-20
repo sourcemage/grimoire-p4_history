@@ -1,0 +1,17 @@
+           SPELL=gd
+         VERSION=2.0.33
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.boutell.com/gd/http/$SOURCE
+     SOURCE_HASH=sha512:79b4af3db6b3a182fd09d6e1622b82971d140b5807107659d4102a1c28176512f59d4845146679f3cb7435efc6cd52ba1efd8154cf6f99f940fcbb10d74e650e
+        WEB_SITE=http://www.boutell.com/gd/
+         ENTERED=20011108
+         UPDATED=20021025
+      LICENSE[0]=GPL
+         BUILD_API=2
+           SHORT="GD Graphics Library"
+cat << EOF
+GD Graphics Library is used for creating graphics from a set of commands.
+Typically used in webpages for dynamic graphs etc.
+See RRDTool for good use of GD :)
+EOF

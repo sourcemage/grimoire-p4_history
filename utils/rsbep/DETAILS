@@ -1,0 +1,16 @@
+           SPELL=rsbep
+         VERSION=0.0.5
+       BUILD_API=2
+          SOURCE=$SPELL$VERSION.tgz
+     SOURCE_HASH=sha512:1e77d837a6c22f9bcc448ac8c23a4d5f73723af2590ebdc3eb90067edca9b7ac3fba62ce265bdcc4ea75b4055e2640d6788d8268c31a3c35c39d1d712bfef559
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}$VERSION
+   SOURCE_URL[0]=http://www.s.netic.de/gfiala/$SOURCE
+        WEB_SITE=http://www.s.netic.de/gfiala/dvbackup.html
+         ENTERED=20041122
+         UPDATED=20041122
+           SHORT='Reed-Solomon and Burst Error Protection'
+cat << EOF
+Rsbep (Reed-Solomon and Burst Error Protection) however wraps
+the data in additional FEC-blocks (Reed-Solomon code from Phil
+Carn) and thus gives you additional security to your data.
+EOF

@@ -1,0 +1,17 @@
+           SPELL=boost-jam
+         VERSION=3.1.11
+     SOURCE_HASH=sha512:48beb1cba0b3da0da4031990bb2ec1007a78bbf3321212a661dbdfa02bc2d2e74beaa318638cc2afca70adfd13555437a10948547c50a150cb235313c01f8137
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL/-jam/}/${SOURCE}
+        WEB_SITE=http://www.boost.org/
+         ENTERED=20031013
+         UPDATED=20031013
+      LICENSE[0]=http://www.boost.org/more/lib_guide.htm#License
+      MAINTAINER=eric@sandall.us
+     GATHER_DOCS=off
+       BUILD_API=2
+           SHORT="Manageable build system to replace make"
+cat << EOF
+Jam is a make(1) replacement that makes building simple things simple and building complicated things manageable.
+EOF

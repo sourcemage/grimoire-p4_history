@@ -1,0 +1,23 @@
+           SPELL=libiodbc
+         VERSION=3.52.4
+     SOURCE_HASH=sha512:2b27db4f5d2e6789af1913cd9ede1d155248b43468130806678e60391baa957b33aa8ccf239bac494ebb5502a50f49414c53a9fffb31680bc6fbb28da04865c9
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[1]=$SOURCEFORGE_URL/iodbc/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.iodbc.org/
+      LICENSE[0]=BSD
+      LICENSE[1]=LGPL
+         ENTERED=20050707
+         UPDATED=20050707
+       BUILD_API=2
+           SHORT='ODBC driver manager and SDK'
+cat << EOF
+ODBC is the acronym for Open DataBase Connectivity, a Microsoft Universal
+Data Access standard that started life as the Windows implementation of the
+X/Open SQL Call Level Interface specification. Since its inception in 1992 it
+has rapidly become the industry standard interface for developing database
+independent applications. Is is also the emerging standard interface for
+SQL based database engines replacing many of the first generation Embedded
+SQL and proprietary call level interfaces provided by database engine and
+database connectivity middleware vendors alike.
+EOF

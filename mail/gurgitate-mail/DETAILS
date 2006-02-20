@@ -1,0 +1,23 @@
+           SPELL=gurgitate-mail
+         VERSION=1.5.3
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://www.dagbrown.com/software/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:9c87b5c413b2699d0360d6ee8322f696ce16b5bd6ce6acd67fbfde1fc9b57743e9380f3b791e1ef00a28a7a4adeb30d8f2b0a7f07672458e3e97cbaaa0325df5:UPSTREAM_HASH
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+        WEB_SITE=http://www.dagbrown.com/software/gurgitate-mail/
+         ENTERED=20050903
+         UPDATED=20050903
+      LICENSE[0]=http://www.ruby-lang.org/en/LICENSE.txt
+       BUILD_API=2
+           SHORT="A MDA in Ruby."
+cat << EOF
+Gurgitate-mail is a mail filter. It has two major features going for it:
+
+    * It's small and easy to use * It has configuration files in Ruby,
+    which is approximately eight thousand times easier
+to read and write than Procmail's line noise, and yet much more powerful. (I
+have to admit, it was originally inspired by elm's old "filter" program,
+which also had rules files with human-readable syntax.) The caveat with
+"more powerful" is that it's even easier to shoot yourself in the foot,
+because a rules file is just a bunch of code in a Real Programming Language.
+EOF

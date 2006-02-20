@@ -1,0 +1,17 @@
+           SPELL=wtf
+         VERSION=20051104
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.mu.org/~mux/wtf/$SOURCE
+     SOURCE_HASH=sha512:5d9d1d55778f52578322091ff587c24fa9141b6d59f389b1e8a38888e305dd0400fd6083eb77760d382827aff3e473c2b48681eb4464e8fadf7aed3eb07da417
+        WEB_SITE=http://www.mu.org/~mux/wtf/
+         ENTERED=20050831
+         UPDATED=20050831
+         LICENSE=PD
+           SHORT="translates acronyms for you"
+cat << EOF
+The wtf utility displays the expansion of the acronyms specified on the
+command line.  If the acronym is unknown, wtf will check to see if the
+acronym is known by the whatis(1) command.
+EOF

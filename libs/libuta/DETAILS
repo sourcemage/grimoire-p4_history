@@ -1,0 +1,21 @@
+           SPELL=libuta
+         VERSION=0.4.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:21d7a72ea923932ded71b7894920fee64f2022b0b79dbfa311f9a2dee5a8a98d7831cd2c733991edf2aa81a659c666fc7eb811134065f823551cb7a58d0905ba
+      LICENSE[0]=LGPL
+        WEB_SITE=http://libuta.sourceforge.net/
+       BUILD_API=2
+     GCC_VERSION=33
+         ENTERED=20020624
+         UPDATED=20020624
+           SHORT="Graphical User Interface library for C++ that uses SDL"
+cat << EOF
+libuta is a Graphical User Interface library for C++ that uses SDL (Simple
+Directmedia Layer) as its output layer. It allows application and game
+programmers to put together portable graphical applications easily. libuta
+has a range of already implemented widgets and uses libsigc++ as a signal
+dispatching system. It also performs resource management and has a sound
+system.
+EOF

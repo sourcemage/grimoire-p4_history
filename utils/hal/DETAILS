@@ -1,0 +1,16 @@
+           SPELL=hal
+         VERSION=0.5.5.1
+     SOURCE_HASH=sha512:7027e52889c9ddfdfc49058599e8ffe445a6400373eee2ba119c25fd4c1b32b93aaceab56acbfeddda706310230da1b9836796264a71e08ec8d5ae0f6000b084
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://freedesktop.org/~david/dist/$SOURCE
+#     SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+        WEB_SITE=http://freedesktop.org/Software/hal
+         ENTERED=20040904
+         UPDATED=20051202
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A hardware abstraction layer library"
+cat << EOF
+A hardware abstraction layer library from freedesktop.org
+EOF

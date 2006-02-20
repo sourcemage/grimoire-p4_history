@@ -1,0 +1,33 @@
+           SPELL=gnomesword
+         VERSION=2.1.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://gnomesword.sourceforge.net
+        BUILD_API=2
+         ENTERED=20050531
+         UPDATED=20050531
+     SOURCE_HASH=sha512:3bc149913843a6adb1b4c42477e968ebef71706ff9e7358182e1f99b3246fc1cb55d2023a91ae4bfb21a7240339b74f35b484a3fd3f5d1bbb874fb01d8260413
+      LICENSE[0]=GPL
+           SHORT="Sword frontend for GNOME"
+cat << EOF
+Gnomesword is a Bible study application for GNOME, a graphical desktop
+enviroment which is available for several Unix and Linux flavors. It 
+is based on SWORD by the CrossWire Bible Society, a framework providing 
+the possibility to study the Bible and additional information
+like commentaries, dictionaries and other texts using your computer.
+
+Features
+
+   * Search Bible and Commentary
+   * Search Personal notes
+   * Add personal notes to verses
+   * Bookmark Bible passages
+   * Bookmark Commentaries
+   * Bookmark Lexicons and Dictionaries
+   * Interlinear Page - Display up to five versions
+   * StudyPad for keeping notes
+   * Spellcheck for StudyPad and Personal notes (uses gnome-spell)
+   * Uses modules from the SWORD Project
+   * Support for Sword Bible, Commentary, Lexicon and General Book modules
+EOF

@@ -1,0 +1,32 @@
+           SPELL=moe
+
+if [[ "${MOE_DEVEL}" == "y" ]] ; then
+         VERSION=0.6-rc2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+      SOURCE_URL=http://es.geocities.com/ant_diaz2001/${SOURCE}
+     SOURCE_HASH=sha512:3806a87bb6ae1a7fa7e6db441a8c9b1baa09601f05c0765fc2c72e8460f4f428ffe26c871c67697deb83f8dd65ad067aad9f3f1b95ed65e1befbf1e584027917
+
+else
+         VERSION=0.6
+       BUILD_API=2
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+         SOURCE2=${SOURCE}.sig
+      SOURCE_URL=${GNU_URL}/${SPELL}/${SOURCE}
+     SOURCE2_URL=${SOURCE_URL}.sig
+      SOURCE_GPG=gnu.gpg:${SOURCE}.sig
+  SOURCE2_IGNORE=signature
+fi
+
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://www.gnu.org/software/moe/moe.html
+         ENTERED=20050930
+         UPDATED=20050930
+      LICENSE[0]=GPL
+           SHORT="A powerful and user-friendly text editor"
+cat << EOF
+GNU Moe is a powerful, 8-bit clean, text editor for ISO-8859-15 and ASCII
+character encodings. It has a modeless, user-friendly interface, online help,
+multiple windows, unlimited undo/redo capability, unlimited line length, global
+search/replace, block operations, automatic indentation, word wrapping,
+directory browser, duplicate removal from prompt histories...
+EOF

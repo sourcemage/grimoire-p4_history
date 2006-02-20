@@ -1,0 +1,16 @@
+            SPELL=watchfile
+          VERSION=0.1
+           SOURCE=$SPELL-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+    SOURCE_URL[0]=http://www.communityprojects.org/apps/$SPELL/$SOURCE
+         WEB_SITE=http://www.communityprojects.org/apps/$SPELL/
+      SOURCE_HASH=sha512:abbf7e471713eb995dc6922eda655fb97f95d771b3b131e1c43257007560bea68ca5d6d64011448942eea776cddf46073d8dc41d97995d576770080c4d4e79f7
+          ENTERED=20020827
+          UPDATED=20020827
+        BUILD_API=2
+            SHORT="watchfile - monitor a file"
+cat << EOF
+watchfile will monitor a specified file and will exit with a status of 
+'0' when the file no longer exists. 
+EOF
+

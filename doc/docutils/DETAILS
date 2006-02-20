@@ -1,0 +1,25 @@
+           SPELL=docutils
+         VERSION=0.3.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://$SPELL.sourceforge.net
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://unc.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+         LICENSE=GPL
+     SOURCE_HASH=sha512:136a1fdb563e3a99951a7f33e83c44a8423bb41234bf2db3465cfbfeb3d9c0639590b36468fd6fba7eb38479b66d08bb43398f71e7f46314aa3aedeab77ed3a6
+         ENTERED=20040509
+         UPDATED=20050104
+           SHORT="Tools for processing plaintext documentation into useful formats."
+cat << EOF
+The purpose of the Docutils project is to create a set of tools
+for processing plaintext documentation into useful formats, such as HTML,
+XML, and TeX. Includes reStructuredText, the easy to read, easy to use,
+what-you-see-is-what-you-get plaintext markup language.
+
+Several sources are or will be supported:
+ - Standalone files (implemented).
+ - Inline documentation from Python modules and packages, extracted
+   with namespace context.
+ - PEPs (Python Enhancement Proposals) (implemented).
+And others as discovered.
+EOF

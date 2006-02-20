@@ -1,0 +1,19 @@
+source  $SECTION_DIRECTORY/KDE_DETAILS
+
+           SPELL=kdegraphics
+         VERSION=3.5.1
+     SOURCE_HASH=sha512:761a357e37126da6e15c049d92076ee5110bfd6f3a3c4accdf8082053aaf3de5cb3362f302d0faa09596b5f95d1e89b2793f8db459286aa7f9c6cc057eba3e78
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$KDE_URL/stable/${VERSION//.0/}/src/$SOURCE
+       BUILD_API=2
+        WEB_SITE=http://www.kde.org
+         ENTERED=20010922
+         UPDATED=20051202
+  SECURITY_PATCH=1
+      LICENSE[0]=GPL
+           SHORT="Graphics related programs for KDE."
+cat << EOF
+Various graphics programs such as a PostScript previewer, DVI
+previewer, and a drawing program.
+EOF

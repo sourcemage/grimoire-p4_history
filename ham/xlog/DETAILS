@@ -1,0 +1,23 @@
+           SPELL=xlog
+         VERSION=1.2.1
+          SOURCE=${SPELL}\_$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/x/xlog/$SOURCE
+        WEB_SITE=http://packages.debian.org/unstable/hamradio/xlog.html
+       BUILD_API=2
+      LICENSE[0]=GPL
+     SOURCE_HASH=sha512:45f09a1f7daff1529e628324019ced8f58415517c4c48d42f6b0905225e50de2562547b8a9bfabd13efe45b2278727f6be50fdbce4612a03c9507143deaa608b
+         ENTERED=20011110
+         UPDATED=20011228
+          SHORT="xlog is a ham radio logging program for X"
+cat << EOF
+
+Xlog will display a log with the most recent contacts added to the top.  You
+can add, delete and edit log entries.  The log is saved into a text file.
+When clicking on the log column called "Call", you can sort the log either
+ascending, descending or by entry.  Xlog is able to do DXCC lookups and will
+display country information, CQ and ITU zone, location in latitude and
+longitude and distance and heading in kilometers or miles, both for short and
+long path.
+
+EOF

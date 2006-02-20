@@ -1,0 +1,23 @@
+           SPELL=gcombust
+         VERSION=0.1.55
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.abo.fi/~jmunsin/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:aac9581172f990e4d4ac5e075b6feca35035ce10e2d2159fd28808b917409232a785405603e4c62c9d26f8a864bdb6ea3a499ebe0f160ea6e64f63f6ab27822c
+        WEB_SITE=http://www.abo.fi/~jmunsin/${SPELL}
+         ENTERED=20011105
+         UPDATED=20020221
+      LICENSE[0]=GPL
+    MENU_ITEM[0]="Gcombust CD/ISO creator"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+           SHORT="gcombust is a gtk+ frontend for mkisofs, mkhybrid, cdrecord, and cdlabelegen."
+
+cat << EOF
+gcombust is a GTK+ frontend for mkisofs, mkhybrid, cdrecord, and
+cdlabelgen. It's written in C. It has primitive support for
+controlling the directory (root) structure and size of an image
+without copying files/symlinking or writing 10 lines of arguments. It 
+can also maximize disk usage by hinting at which directories/files to 
+use.
+EOF

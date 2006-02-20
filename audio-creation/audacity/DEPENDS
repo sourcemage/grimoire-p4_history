@@ -1,0 +1,10 @@
+depends  zip    &&
+if [ "$REL" == "current" ]; then
+  depends  wxgtk-no-unicode
+else
+  depends wxgtk
+fi &&
+depends  lame   &&
+if [ "$REL" == "cvs" ]; then
+   depends CVS
+fi

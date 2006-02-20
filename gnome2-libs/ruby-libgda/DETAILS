@@ -1,0 +1,16 @@
+           SPELL=ruby-libgda
+         VERSION=0.14.1
+          SOURCE=ruby-gnome2-all-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ruby-gnome2-all-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/ruby-gnome2/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=GPL
+        WEB_SITE=http://ruby-gnome2.sourceforge.net
+         ENTERED=20031130
+         UPDATED=20040821
+            DOCS="libgda/README libgda/COPYING.LIB libgda/ChangeLog
+                  libgda/sample AUTHORS NEWS"
+           SHORT="Ruby binding for libgda2"
+cat << EOF
+Ruby/Libgda is a Ruby binding of libgda2.
+EOF

@@ -1,0 +1,10 @@
+cd $BUILD_DIRECTORY              &&
+unpack_file                      &&
+
+if  [  "$GMSH_TRIANGLE"  ==  "y"  ];  then
+  mkdir -p $SOURCE_DIRECTORY/tmp &&
+  cd $SOURCE_DIRECTORY/tmp       &&
+  unpack_file 2                  &&
+  cp triangle.c ../Triangle      &&
+  cp triangle.h ../Triangle
+fi

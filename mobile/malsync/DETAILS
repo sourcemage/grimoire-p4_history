@@ -1,0 +1,22 @@
+           SPELL=malsync
+         VERSION=2.2.0
+       BUILD_API=2
+          SOURCE=${SPELL}_${VERSION}.src.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+   SOURCE_URL[0]=http://www.tomw.org/malsync/${SOURCE}
+     SOURCE_HASH=sha512:09d58a5e29a9d02a01245a3707c6f59d4a7a6e94e911a9147d1e543b1de198fab7fa0270eaa4b1a0aa65474f68a6e4b0fdbf8d35ec0b37b1503f23b7c6d77978
+        WEB_SITE=http://www.tomw.org/malsync/
+            DOCS="Doc/*"
+      LICENSE[0]=GPL
+         ENTERED=20030601
+         UPDATED=20030601
+           SHORT="MalSync is a CLI tool that allows Palm PDAs to sync to the AvantGo.com server."
+cat << EOF
+MALSync is a bare bones utility to enable people who have Palm OS devices to
+sync to Mobile Application Link (MAL) compliant servers.  AvantGo
+(www.avantgo.com) and Puma Technologies (www.pumatech.com) are the first two
+companies committing to producing servers which speak this protocol.  This
+utility will allow a user to sync with multiple servers, simultaneously or
+separately.  The AvantGo.com service (www.avantgo.com) is the first such
+server.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=rdate
+         VERSION=1.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:635993c99b08c2feb4e9e6855b18be10259f16de5ae09b2b88c62f98736c5a5d9e3e48a9362eb46697763ab4023f276524d974090570c7819e17f9e4039b67fa
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.corpit.ru/ftp/rdate/$SPELL-$VERSION.tar.gz
+       BUILD_API=2
+        WEB_SITE=http://www.corpit.ru/
+         ENTERED=20020213
+         UPDATED=20030920
+           SHORT="rdate synchronizes system clocks with another networked box."
+cat << EOF
+The rdate utility retrieves the date and time from another machine on
+your network, using the protocol described in RFC 868.  If you run
+rdate as root, it will set your machine's local time to the time of
+the machine that you queried.  Note that rdate isn't scrupulously
+accurate.  If you are worried about milliseconds, install the ntp
+package, which includes the ntp daemon, instead.
+EOF

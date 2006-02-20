@@ -1,0 +1,17 @@
+           SPELL=gnome-audio
+         VERSION=1.4.0
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+     SOURCE_HASH=sha512:12ceb3420c3dcae538f4b5a90fbae7dfdad1e1a470fe10a3c67bc188b4989dda450038be35ec91b074f2c957be8fbbfb052934a36c686bc953d1498d64f5191b
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+      LICENSE[0]=PD
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="This package contains a collection of sounds for use with Gnome."
+cat << EOF
+This package contains a collection of sounds for use with Gnome.
+EOF

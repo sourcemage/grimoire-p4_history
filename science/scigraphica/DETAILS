@@ -1,0 +1,23 @@
+            SPELL=scigraphica
+          VERSION=2.1.0
+           SOURCE=$SPELL-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+         WEB_SITE=http://$SPELL.sourceforge.net
+       LICENSE[0]=GPL
+      SOURCE_HASH=sha512:3a9fec1989c437e7a19f68ed087b594d3177d5085fd5426091b9e463255d96153343b2c2ade721419a0f0dc83393bd0ea5d9884ae048abf308a3775c1545f6c2
+          ENTERED=20020319
+          UPDATED=20020319
+        BUILD_API=2
+       MAINTAINER=avitzour@princeton.edu
+            SHORT="Microcal Origin clone"
+
+cat << EOF
+SciGraphica is a scientific application for data analysis and technical 
+graphics. It pretends to be a clone of the popular commercial (and expensive) 
+application "Microcal Origin". It fully supplies plotting features for 2D, 
+3D and polar charts. The aim is to obtain a fully-featured, cross-plattform, 
+user-friendly, self-growing scientific application. It is free and open-source,
+released under the GPL license. 
+
+EOF

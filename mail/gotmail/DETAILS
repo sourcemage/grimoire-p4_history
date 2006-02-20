@@ -1,0 +1,19 @@
+           SPELL=gotmail
+         VERSION=0.8.7.1
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:ca3d792646be0dc3cfa5d171e18e92c69247d5edc78308521936403c0d6da02d460b6aee8186722d160dc93e94893671d7d2868df6cf66cdae719e90bfe1495a
+        WEB_SITE=http://sourceforge.net/projects/gotmail
+         ENTERED=20020716
+         UPDATED=20050403
+       BUILD_API=2
+         LICENSE=http://www.nongnu.org/gotmail
+           SHORT="Utility to download mail from Hotmail accounts"
+cat << EOF
+Gotmail is a utility to non-interactively download email from a Hotmail
+account. It can download messages from all folders, messages from
+certain folders, or new messages only. There are options to delete
+downloaded messages or mark them as read. Gotmail can forward messages
+to other email addresses or save them as local mbox-style mailboxes.
+EOF

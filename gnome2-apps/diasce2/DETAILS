@@ -1,0 +1,20 @@
+           SPELL=diasce2
+         VERSION=1.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/diasce/$SOURCE
+   SOURCE_URL[1]=http://diasce.es.gnome.org/downloads/$SOURCE
+     SOURCE_HASH=sha512:66e0f5e01e93c92c7427c713881611028bb8fb910eac01dfae480c59eb96c8731dfd7fd55e2d2e5c40f9b233994227294bf9805db5983400b72a479bd9913c5a
+      LICENSE[0]="GPL"
+        WEB_SITE=http://diasce.es.gnome.org/index_en.php
+         ENTERED=20020907
+         UPDATED=20040418
+      MAINTAINER=rcook@wyrms.net
+           SHORT="DiaSCE is C, C++ code editor for Gnome."
+cat << EOF
+DiaSCE is C, C++ code editor for Gnome. It pretends to be a complement 
+to Glade, so it doesn't include an environment for GUI's development. 
+It has neither a debugger or other kind of tool to help debugging. 
+The goal is to provide light code editor that doesn't need too many 
+resources.
+EOF

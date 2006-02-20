@@ -1,0 +1,20 @@
+           SPELL=cppunit
+         VERSION=1.10.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:33360a1a39e4fca10b906d7e52ea6dbbfafee374c6f7de816da61f5778a21b87be66218b9c08674b436ea2d92d5607a37ee6188c4c7f0858211cb22f1eae33eb
+      LICENSE[0]=LGPL
+        WEB_SITE=http://cppunit.sourceforge.net/cppunit-wiki/FrontPage
+       BUILD_API=2
+         ENTERED=20030827
+         UPDATED=20030827
+           SHORT="CppUnit is the C++ port of the famous JUnit framework for unit testing."
+cat << EOF
+CppUnit is the C++ port of the famous JUnit framework for unit testing. Test output 
+is in XML or text format for automatic testing and GUI based for supervised tests.
+
+Automated unit-level testing is an essential ingredient to continuous
+integration and Extreme Programming. Remember, "The fewer test cases you write, 
+the less stable your code base becomes."
+EOF

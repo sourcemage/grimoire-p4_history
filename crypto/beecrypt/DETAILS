@@ -1,0 +1,16 @@
+           SPELL=beecrypt
+         VERSION=4.1.2
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:52f035e531477fde44624216510c737ae0b60159802aae388df6ff988e116f0238a9b2eaa900abae54a7e74e235d4fce2eb8cecafac3a709a10cdc0f18f874f1
+        WEB_SITE=http://www.gnu.org/directory/security/crypt/BeeCrypt.html
+      MAINTAINER=hgr@vabo.cz
+         ENTERED=20030909
+         UPDATED=20030909
+      LICENSE[0]=LGPL
+           SHORT="beecrypt is a cryptography library"
+cat << EOF
+BeeCrypt is a cryptography library that contains highly optimized C and assembler implementations of many well-known algorithms including Blowfish, MD5, SHA-1, Diffie-Hellman, and ElGamal. Unlike some other crypto libraries, BeeCrypt is not designed to solve one specific problem, like file encryption, but to be a general purpose toolkit which can be used in a variety of applications. There are also no patent or royalty issues associated with BeeCrypt.
+EOF

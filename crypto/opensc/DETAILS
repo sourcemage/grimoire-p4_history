@@ -1,0 +1,15 @@
+           SPELL=opensc
+         VERSION=0.10.1
+       BUILD_API=2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.opensc-project.org/files/opensc/${SOURCE}
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+        WEB_SITE=http://www.opensc-project.org
+         ENTERED=20040224
+         UPDATED=20040224
+      LICENSE[0]=LGPL
+           SHORT="opensc is a library for accessing SmartCard devices"
+cat << EOF
+OpenSC is a library for accessing SmartCard devices.
+EOF

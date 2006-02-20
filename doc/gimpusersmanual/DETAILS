@@ -1,0 +1,20 @@
+           SPELL=gimpusersmanual
+         VERSION=SecondEdition
+          SOURCE=GimpUsersManual_${VERSION}-PDF.pdf
+         SOURCE2=GimpUsersManual_${VERSION}-PDF_Color.pdf
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/GimpUsersManual
+   SOURCE_URL[0]=ftp://manual.gimp.org/pub/manual/$SOURCE
+   SOURCE_URL[1]=http://www.mirror.ac.uk/sites/manual.gimp.org/pub/manual/$SOURCE
+  SOURCE2_URL[0]=ftp://manual.gimp.org/pub/manual/$SOURCE2
+  SOURCE2_URL[1]=http://www.mirror.ac.uk/sites/manual.gimp.org/pub/manual/$SOURCE2
+     SOURCE_HASH=sha512:54f807b552308052a72b68168106272e8931b22b933792023ff1e48d5ab0501727a6e29a767c8dcfc5f9ef33a6322199cf8ad07cc879164c5dedd9406c692681
+    SOURCE2_HASH=sha512:2ffca7fda7b855ad0fbd927bcce6ef908897f1ae00c30745736786dab8988a8fd0d933742c1a0060eedd05c014fa986ead05db05b1b097d699c8c4f39102ea53
+        WEB_SITE=http://manual.gimp.org
+         ENTERED=20020601
+         UPDATED=20020601
+         ARCHIVE="off"
+      LICENSE[0]=OPL
+           SHORT="The Official GIMP manual"
+cat << EOF
+The Official GIMP manual
+EOF

@@ -1,0 +1,18 @@
+           SPELL=gnome-mag
+         VERSION=0.12.3
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=LGPL
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020509
+         UPDATED=20050318
+           SHORT="gnome-mag provides a set of magnification services"
+cat << EOF
+gnome-mag provides a command-line interface for standalone use,
+although its primary goal is to provide a set of magnification
+services for use by other client applications and assistive
+technologies.
+EOF

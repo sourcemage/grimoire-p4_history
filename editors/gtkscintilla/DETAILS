@@ -1,0 +1,21 @@
+           SPELL=gtkscintilla
+         VERSION=0.8.2
+          SOURCE=GtkScintilla-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/GtkScintilla-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/moleskine/$SOURCE
+     SOURCE_HASH=sha512:ae23254a28a75ed10b857a13165d7a72538499a8ce5065a8023301fa9ba2058b41f1576cb5d40994df4eb00002006469034c42f8106821e812ce73e89b5d69e4
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.micampe.it/software/moleskine/
+       BUILD_API=2
+         ENTERED=20020318
+         UPDATED=20020318
+           SHORT="Wrapper library for a free source code editing component"
+cat << EOF
+This is GtkScintilla, a wrapper for Scintilla (www.scintilla.org).
+Scintilla includes features especially useful when editing and
+debugging source code. These include support for syntax styling,
+error indicators, code completion and call tips.
+Styling choices are more open than with many editors,
+allowing the use of proportional fonts, bold and italics,
+multiple foreground and background colours and multiple fonts.
+EOF

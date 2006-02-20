@@ -1,0 +1,24 @@
+         VERSION=1.6.0
+     SOURCE_HASH='sha512:0abf4472cd30ee8b1df9243fb61f93eea717e41a062707b2dd9be2f1cf61239fd226ee1ca154bdab466edcf8a45b70fccc8ea816b6f39a8ff237456dc91bb3c7'
+         UPDATED=20051003
+           SPELL=pear-pear_info
+    PEAR_PACKAGE=PEAR_Info
+        WEB_SITE=http://pear.php.net/package/PEAR_Info/
+      LICENSE[0]=PHP
+           SHORT='PEAR: Show Information about your PEAR install and its'
+cat << EOF
+This package generates a comprehensive
+information page for your current PEAR install.
+* The format for the page is similar to that
+for phpinfo() except using PEAR colors.
+* Has complete PEAR Credits (based on the
+packages you have installed).
+* Will show if there is a newer version than
+the one presently installed (and what its state
+is)
+* Each package has an anchor in the form
+pkg_PackageName - where PackageName is a
+case-sensitive PEAR package name
+EOF
+
+source  $SECTION_DIRECTORY/PEAR_DETAILS

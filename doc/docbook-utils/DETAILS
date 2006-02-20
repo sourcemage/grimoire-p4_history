@@ -1,0 +1,30 @@
+           SPELL=docbook-utils
+         VERSION=0.6.14
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/$SOURCE
+     SOURCE_HASH=sha512:8052316a643b5eaa6c0373a9ed7f2406e7c3cb3da9d3c955a271c89813a8f3196fcd9e6c8385c7b6b7ecb916515e3ec7897aece4473989f0e4dc52a2bc8bbfdf
+      LICENSE[0]=UNKNOWN
+        WEB_SITE=http://docbook.sourceforge.net
+         ENTERED=20041023
+         UPDATED=20050924
+           SHORT="DocBook Utilities"
+cat << EOF
+DocBook Utilities
+
+docbook2{dvi,html,man,pdf,ps,rtf,tex,texi,txt}
+
+The docbook2{format} scripts are simple one-line wrappers to jw. 
+They are provided as easy-to-remember names used to convert 
+DocBook or other SGML files to the respective format.
+
+jw is a script used to convert DocBook or other SGML files to 
+various output formats. It hides most of OpenJade's complexity 
+and adds comfortable features.
+
+sgmldiff is used to compare two SGML files and only return the 
+differences in the markup. This is especially useful to compare 
+files that should be identical except for language differences 
+in the content.
+
+EOF

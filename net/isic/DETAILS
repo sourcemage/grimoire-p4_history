@@ -1,0 +1,18 @@
+           SPELL=isic
+         VERSION=0.06
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.packetfactory.net/projects/ISIC/$SOURCE
+     SOURCE_HASH=sha512:860aad7cfd2f4b78f1eefceee8fcddff751440c23d2217fb480b54beeb2ff6e597c6a6299ed324f3c7cbd142b050213c6029401451c913a48165d057974f788f
+      LICENSE[0]=BSD
+        WEB_SITE=http://www.packetfactory.net/projects/ISIC
+       BUILD_API=2
+         ENTERED=20050528
+         UPDATED=20050528
+           SHORT="IP Stack Integrity Checker"
+
+cat << EOF
+ISIC is a suite of utilities to exercise the stability of
+an IP Stack and its component stacks (TCP, UDP, ICMP et. al.)
+It generates piles of pseudo random packets of the target protocol.
+EOF

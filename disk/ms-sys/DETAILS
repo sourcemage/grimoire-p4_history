@@ -1,0 +1,16 @@
+           SPELL=ms-sys
+         VERSION=2.1.2
+          SOURCE=${SPELL}-${VERSION}.tgz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+  SOURCE_HASH[0]=sha512:3988dda87d3d8b5c1f4864467deef07e35d1d8a8a4fbe2ef402a55bed57d3592881e1198ba4b1afe3731a82a4c587a9ba44fd555826c22f22fbd70a46ac52fcc
+        WEB_SITE=http://ms-sys.sourceforge.net
+         ENTERED=20030224
+         UPDATED=20030224
+      LICENSE[0]=GPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="ms-sys - program for writing Microsoft compatible boot records"
+cat << EOF
+This is a Linux program for writing Microsoft compatible boot records. The program does the same as Microsoft "fdisk /mbr" to a hard disk or "sys d:"
+to a floppy or FAT32 partition except that it does not copy any system files, only the boot record is written. 
+EOF

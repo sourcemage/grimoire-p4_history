@@ -1,0 +1,19 @@
+           SPELL=progsreiserfs
+         VERSION=0.3.0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://reiserfs.linux.kiev.ua/$SOURCE
+     SOURCE_HASH=sha512:8628d9def28be1f7bcd7a2a68ebfa099d4c0aa4ae0ef65e44a73b08ef392d7cec94d1c2a5d505c3ffd7cc348f512309c450be8ac6162a35d4c49f3e071503cfd
+        WEB_SITE=http://reiserfs.linux.kiev.ua/
+      LICENSE[0]=GPL
+         ENTERED=20031001
+         UPDATED=20031001
+           SHORT="progsreiserfs is a library and utilities for reiserfs"
+cat << EOF
+This is a library for reiserfs filesystem access and manipulation.
+The primary goal is to develop the nice, full functionality library 
+which might be linked against any projects which needed reiserfs filesystem 
+access. There are GNU Parted, GNU GRUB, Yaboot, Partimage, EVMS, etc.
+
+progsreiserfs supports versions 3.5, 3.6 with standard and relocated journal.
+EOF

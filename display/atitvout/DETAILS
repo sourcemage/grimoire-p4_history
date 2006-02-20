@@ -1,0 +1,16 @@
+           SPELL=atitvout
+         VERSION=0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.stud.uni-hamburg.de/users/lennart/projects/atitvout/${SOURCE}
+     SOURCE_HASH=sha512:b2bf906d4348318f38c1ba7a1246dc9047519aa2952d3db49062184e32bd6f03a968ae2bacc6ac579f9369e6686920ce9cfa32f19a3abfa47e4a2a5050f60729
+        WEB_SITE=http://www.stud.uni-hamburg.de/users/lennart/projects/atitvout/
+         ENTERED=20040411
+         UPDATED=20040411
+      LICENSE[0]=GPL
+           SHORT="TV Out support for ATI cards"
+cat << EOF
+This utility program may be used for executing several configuration commands for the TV Out connector of ATI Rage Mobility P/M graphics boards under GNU/Linux on x86. It is intended primarily to enable TV Out support after bootup and for switching the used TV standard from NTSC to PAL.
+
+The utility makes use of x86-VESA-BIOS-calls and thus is not portable to other architectures like PPC: No TV-Out on Macs with this tool.
+EOF

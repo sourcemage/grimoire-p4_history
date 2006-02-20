@@ -1,0 +1,17 @@
+           SPELL=xoverkill
+         VERSION=1.01
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=http://www.chaostech.org/~mjmt/xoverkill/$SOURCE
+     SOURCE_HASH=sha512:93f960215bc2078b524e2016d60aba90ce131763a36e505346f4184536549c6d6334e89a5bfa1d9fdf976349b0868f54533253066ae8618422a78331132cda5a
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.chaostech.org/~mjmt/xoverkill/
+         ENTERED=20050318
+         UPDATED=20050318
+      LICENSE[0]=PD
+       BUILD_API=2
+           SHORT='xkill on steroids'
+cat << EOF
+xoverkill is a more satisfying alternative to xkill, since it draws an 
+animated explosions. If possible, it uses the _NET_WM_PID property to 
+properly kill the process.
+EOF

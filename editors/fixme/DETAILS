@@ -1,0 +1,23 @@
+           SPELL=fixme
+         VERSION=2.2
+          SOURCE=$SPELL.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=$CTAN_URL/macros/latex/contrib/$SOURCE
+   SOURCE_URL[1]=http://theory.uwinnipeg.ca/scripts/CTAN/macros/latex/contrib/$SOURCE
+     SOURCE_HASH=sha512:3b1bbe0a6863f42724ae61f87e24bd13faba7839ac8b820967672abd890444b18f46f43733f6469a3e1902d2253dbd38099129fb10b3964d569969c67cc833fe
+        WEB_SITE=http://www.ctan.org/tex-archive/help/Catalogue/entries/fixme.html
+       BUILD_API=2
+         ENTERED=20030511
+         UPDATED=20030511
+      LICENSE[0]=LPPL
+           SHORT="TeX package for making fixme notes."
+cat << EOF
+This package provides you with a way of inserting fixme notes in your
+documents. Such notes can appear inline, as marginal notes, footnotes,
+index entries, in the log file and as warnings on stdout. It is also
+possible to summarize them in a list. When you switch from draft to
+final mode, any remaining fixme note will be logged, but removed from
+the document's body.
+Additionally, critical notes will abort compilation with an informative
+message. FiXme also comes with support for AUC-TeX.
+EOF

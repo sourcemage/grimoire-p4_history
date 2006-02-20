@@ -1,0 +1,21 @@
+           SPELL=vserver
+         VERSION=0.22
+          SOURCE=${SPELL}-${VERSION}.src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=ftp://ftp.solucorp.qc.ca/pub/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:9871a4fdfc667740530153a21b05a9f9f034fc0d1d11ceea17be43f5f41b144a76858b9ac9f0408b1d347c7f7e43231583816b865a52ce216c43888e4c74bd08
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.solucorp.qc.ca/miscprj/s_context.hc
+         ENTERED=20030325
+         UPDATED=20030325
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="Virtual private servers and security contexts utilities."
+cat << EOF
+VServer virtual servers operate like a normal Linux server, but allow many 
+independent servers to be run simultaneously in one box. These can involve 
+normal services such as telnet, mail, Web, and SQL servers - in most cases 
+using a standard configuration. The services are unaware of the virtual 
+server concept. Each virtual server has its own user account database and 
+root password. Each vserver uses standard packages and runs at the same 
+speed as a non-VServer installation.
+EOF

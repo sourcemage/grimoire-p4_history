@@ -1,0 +1,6 @@
+mk_source_dir  $SOURCE_DIRECTORY  &&
+cd             $SOURCE_DIRECTORY  &&
+unpack_file  &&
+cd $SOURCE_DIRECTORY   &&
+patch  -p1  <  $SCRIPT_DIRECTORY/nc.patch &&
+sedit  "s/CFLAGS = -O/CFLAGS = $CFLAGS/"    Makefile

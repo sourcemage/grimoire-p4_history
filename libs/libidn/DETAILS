@@ -1,0 +1,24 @@
+           SPELL=libidn
+         VERSION=0.6.1
+     SOURCE_HASH='sha512:3ce81e055798a6aba6d695e90a23b66f1d766d6a4688f89f1cf57c01f12adc35f0034bd8e9e4094cd93ccfa806b6ed423bea2551c6fb6af14d84eaacc34c9941'
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://josefsson.org/libidn/releases/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/libidn/
+         ENTERED=20040824
+         UPDATED=20040824
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="Internationalized Domain Names (IDN) implementation."
+cat << EOF
+GNU Libidn is an implementation of the Stringprep, Punycode and IDNA 
+specifications defined by the IETF Internationalized Domain Names (IDN) 
+working group, used for internationalized domain names. The package is 
+available under the GNU Lesser General Public License.
+
+The library contains a generic Stringprep implementation that does 
+Unicode 3.2 NFKC normalization, mapping and prohibitation of characters, 
+and bidirectional character handling. Profiles for iSCSI, Kerberos 5, 
+Nameprep, SASL and XMPP are included. Punycode and ASCII Compatible 
+Encoding (ACE) via IDNA are supported.
+EOF

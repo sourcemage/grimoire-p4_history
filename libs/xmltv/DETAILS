@@ -1,0 +1,24 @@
+           SPELL=xmltv
+         VERSION=0.5.42
+    SOURCE_HASH=sha512:9891a3c5fbda3ba84f259fb8126718c13236198b1da9dad226dc32361f0126dd0336635610226af070f625b9e27003fe2b79b60e3afa9021ad6a2d3666695bd4
+       BUILD_API=2
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/$SOURCE
+        WEB_SITE=http://membled.com/work/apps/xmltv/
+         ENTERED=20040222
+         UPDATED=20040222
+         LICENSE=GPL
+           SHORT="Downloads local tv listing and places them in xml format"
+cat << EOF
+XMLTV is a set of utilities to manage your TV viewing. They work with
+TV listings stored in the XMLTV format, which is based on XML. The idea
+is to separate out the backend (getting the listings) from the frontend
+(displaying them for the user), and to implement useful operations like
+picking out your favourite programmes as filters that read and write
+XML documents.
+
+At present there are backends grabbing TV listings for Canada, the
+USA, the UK, Germany, Austria, Finland, New Zealand, Spain, Italy,
+the Netherlands, Hungary, and Denmark.
+EOF

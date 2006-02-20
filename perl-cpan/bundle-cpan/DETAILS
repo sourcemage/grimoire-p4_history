@@ -1,0 +1,29 @@
+           SPELL=bundle-cpan
+         VERSION=1.76
+#          SOURCE=CPAN-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/CPAN-$VERSION
+#   SOURCE_URL[0]=http://www.cpan.org/authors/id/A/AN/ANDK/$SOURCE
+#     SOURCE_HASH=sha512:847c62b194e2791d0abd2f430d52f45e7c6eb86101b14cd5a6845bc7602557db8d240d0e07e66578d2b7eb1cbec9322731830c9260a6f56ea579fbdccb44090c
+         BUILD_API=2
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=Bundle::CPAN"
+         ENTERED=20020312
+         UPDATED=20050224
+           SHORT="Tools for the Comprehensive Perl Archive Network (CPAN)"
+cat << EOF
+
+This bundle contains verything necessary to use the CPAN
+package manager.
+
+    modules
+    ~~~~~~~
+    MD5
+    File::Spec
+    Compress::Zlib
+    Archive::Tar
+    Term::ReadKey
+    Term::ReadLine::Perl
+    CPAN::WAIT
+    CPAN
+
+EOF

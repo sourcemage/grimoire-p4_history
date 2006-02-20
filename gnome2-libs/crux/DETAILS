@@ -1,0 +1,17 @@
+           SPELL=crux
+         VERSION=1.9.5
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+#          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+#   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+#   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+#     SOURCE_HASH=sha512:424c36ef2d013af976cb4f9eedcc3bc58ca319c40e11fd8dd516591b2a3d5e44826106e32e8ba71af36d8b39742103376e17b5702a78bf8a472387f887277d09
+        WEB_SITE=http://www.gtk.org
+      MAINTAINER=jon-sven@frisurf.no
+      LICENSE[0]=GPL
+         ENTERED=20020512
+         UPDATED=20040806
+           SHORT="This is a GTK+ 2.0 theme engine."
+cat << EOF
+This is a GTK+ 2.0 theme engine.
+EOF

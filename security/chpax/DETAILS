@@ -1,0 +1,27 @@
+           SPELL=chpax
+         VERSION=0.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=chpax.sh
+         SOURCE3=chpax.cfg
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://pax.grsecurity.net/$SOURCE
+  SOURCE2_URL[0]=http://pax.grsecurity.net/$SOURCE2
+  SOURCE3_URL[0]=http://pax.grsecurity.net/$SOURCE3
+     SOURCE_HASH=sha512:ba922fdd1c21f91376d948694dae3ec42aa30f8f234cbd3e081ff5e1c30f8b3c257fe26ec53563b6e3d62ec8885f36dcf68b66a0172e6abd8f997120a1bc5433
+    SOURCE2_HASH=sha512:85f0c662400eec12b6b35da1ec7d158a7cafe5595374aa47668da51e5aa1062505af15b58cfa03b226b9487f93a101fc9c8ea0277f1821880608daa7841b3f45
+    SOURCE3_HASH=sha512:10d69d3f707c85148ece4dbf6dc73dfdd1dd1a495990d26d7eacef5aa5f2d816908bfca782ef72dce703e147d8f15a570369ff64a2066c9ab804304ef26a4e09
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+      LICENSE[2]=GPL
+         ENTERED=20030923
+         UPDATED=20031008
+        WEB_SITE=http://pax.grsecurity.net/
+      MAINTAINER=seth@tautology.org
+           SHORT="PaX utility for non-executable stack protection"
+cat << EOF
+This is the main chpax program.  Use chpax.sh to use chpax to set 
+chpax.cfg options.
+
+You need these if you are using grsecurity kernel and want to use things
+like X, java, alsamixer, amixer, and localedef.
+EOF

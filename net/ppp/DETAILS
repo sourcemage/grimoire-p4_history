@@ -1,0 +1,21 @@
+           SPELL=ppp
+         VERSION=2.4.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.samba.org/pub/ppp/$SOURCE
+   SOURCE_URL[1]=ftp://cs.anu.edu.au/pub/software/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:221f0925ec8bb73df740cd563a34f387ce8bf2417d2797e7f360563d8de6524e1cdf058c185eaefc9cb3703828d32c6f1b74595916683e08168ce792c5f8333e
+      LICENSE[0]=http://va.samba.org/ppp/README.html
+      PATCHLEVEL=1
+       BUILD_API=2
+        WEB_SITE=http://www.samba.org/ppp/
+         ENTERED=20010922
+         UPDATED=20020807
+           SHORT="Server/client for for point to point protocol."
+cat << EOF
+PPP Daemon for Linux, Solaris 2, *BSD, SunOS 4, Digital Unix, SVR4,
+NeXTStep, and Ultrix. This allows Unix machines to connect to the
+internet through dialup lines, using the PPP protocol, as a PPP server
+or client. Works with 'chat', 'dip', and 'diald', among (many) others.
+Supports IP, TCP, UDP and (for Linux) IPX (Novell).
+EOF

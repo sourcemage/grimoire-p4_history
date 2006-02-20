@@ -1,0 +1,21 @@
+             SPELL=madwifi
+           VERSION=cvs-current
+         BUILD_API=2
+            SOURCE=$SPELL-$VERSION.tar.bz2
+  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+     SOURCE_URL[0]=http://madwifi.otaku42.de/$SOURCE
+          WEB_SITE=http://madwifi.sourceforge.net/
+           ENTERED=20041122
+           UPDATED=20041122
+       SOURCE_HASH=sha512:605917a4d76226a2c7a42f72591e2925c5f049df1d1655037f5005f2a52bf086506c490a33c20f7c3c41d3adbb8f096a70d0aaebc2bdfb0c0fa861dcd714761b
+        LICENSE[0]=GPL
+             SHORT="Module for Atheros wifi cards"
+cat << EOF
+MADWiFi is short for Multiband Atheros Driver for WiFi.
+In other words: this project provides a Linux kernel driver for
+Atheros-based Wireless LAN devices. The driver works such that
+your WLAN card will appear as normal network interface in the system.
+Additionally there is support for the Wireless Extensions API.
+This allows you to configure the device using the usual tools
+(ifconfig, iwconfig and friends).
+EOF

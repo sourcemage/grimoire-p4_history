@@ -1,0 +1,23 @@
+           SPELL=daemon
+         VERSION=0.6.3
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://libslack.org/${SPELL}/download/${SOURCE}
+        WEB_SITE=http://libslack.org/daemon/
+      LICENSE[0]=GPL
+     SOURCE_HASH=sha512:c8906f27ba2e9f5dee09e4abd34ea3d9a53e696a81c57018a22c4bc72b780a95abde57cd70d8b7a0c465609b56ab9fea29df8d6e85317628c441d728aa655776
+         ENTERED=20031002
+         UPDATED=20031002
+       BUILD_API=2
+           SHORT="Daemon turns other processes into daemons."
+cat << EOF
+
+Daemon turns other process into daemons.  There are many tasks that need to be
+performed to correctly set up a daemon process.  This can be tedious.  Daemon
+performs these tasks for other processes.  This is useful for writing daemons
+in languages other than C, C++ or Perl (e.g. /bin/sh, Java).
+
+If you want to write daemons in languages that can link against C functions
+(e.g. C, C++), see libslack which contains the core functionality of daemon.
+
+EOF

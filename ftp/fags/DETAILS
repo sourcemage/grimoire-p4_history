@@ -1,0 +1,25 @@
+           SPELL=fags
+         VERSION=0.2.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:bb0d32a7e20a9b69b5ca8c980f754d089b2ba62eadb2584b447f1373fa81bfa70fe2b11868384469fcb003f10c20ac08387cf0662a4c5790e5aa3c3c74d00f74
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.tty0.org/files/fags/$SOURCE
+        WEB_SITE=http://www.tty0.org/page/fags/
+       BUILD_API=2
+         ENTERED=20020519
+         UPDATED=20020522
+           SHORT="an open source AudioGalaxy client"
+cat << EOF
+FAGS (Free AudioGalaxy Satellite) is an open source
+AudioGalaxy client for Linux and BSD (and possibly other
+UNIXes). It supports downloading and uploading of files
+(including resume), sharing of multiple directories,
+sharing of MP3 and OGG files, protocol version 0.608W,
+and asynchronous socket I/O.
+
+If you don't know what AudioGalaxy is I suggest you take a
+look at http://www.audiogalaxy.com/
+
+This spell has an option to install system-wide, with an
+init script and own user.
+EOF

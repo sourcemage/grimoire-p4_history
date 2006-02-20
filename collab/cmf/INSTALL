@@ -1,0 +1,4 @@
+ZPROV=`get_spell_provider $SPELL ZOPE`            &&
+DEST=/usr/lib/$ZPROV/lib/python/Products/         &&
+mkdir  -p      $DEST                              &&
+cp     -a  {C,D}*  $DEST

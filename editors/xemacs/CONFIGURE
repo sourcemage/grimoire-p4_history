@@ -1,0 +1,84 @@
+# graphics toolkits
+config_query "XEMACS_GTK" "Would you like to use gtk+?" y               &&
+config_query "XEMACS_TOOLBAR" "Do you want toolbars?" y                 &&
+config_query "XEMACS_DRAGNDROP" "Do you want drag'n drop support?" y    &&
+if [[ "$XEMACS_GTK" == "y" ]] ; then
+    config_query "XEMACS_GNOME" "Would you like to use GNOME?" y
+else
+    config_query "XEMACS_MOTIF" "Would you like to use MOTIF?" y         &&
+    if [[ "$XEMACS_MOTIF" == "y" ]] ; then
+        config_query "XEMACS_MENUBARS" "Do you want menubars?" y        &&
+        config_query "XEMACS_SCROLLBARS" "Do you want scrollbars?" y    &&
+        config_query "XEMACS_DIALOGS" "Do you want dialogs?" Y
+    fi
+fi &&
+
+# misc options
+config_query "XEMACS_TTY" "Do you want TTY support?" y                  &&
+config_query "XEMACS_POP" "Do you want POP support?" y                  &&
+config_query "XEMACS_SWS" "Do you want Sun Workshop support?" y         &&
+
+# sound options, these look like they should be optional depends, but there has
+# to be a comma seperated list passed to --enable-sound=TYPES
+config_query "XEMACS_SOUND" "Do you want sound support?" y              &&
+if [[ "$XEMACS_SOUND" == "y" ]] ; then
+    config_query "XEMACS_NATIVE" "Do you want to use native sound?" y   &&
+    config_query "XEMACS_ESD" "Do you want to use esound?" y            &&
+    config_query "XEMACS_NAS" "Do you want to use nas sound?" y
+fi &&
+
+# assemble an XEMACS_OPTS variable to pass on to OPTS in build
+if [[ "$XEMACS_GNOME" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-gnome"
+else XEMACS_OPTS="$XEMACS_OPTS --without-gnome"
+fi &&
+if [[ "$XEMACS_TOOLBAR" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-toolbars"
+else XEMACS_OPTS="$XEMACS_OPTS --without-toolbars"
+fi &&
+if [[ "$XEMACS_DRAGNDROP" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-dragndrop"
+else XEMACS_OPTS="$XEMACS_OPTS --without-dragndrop"
+fi &&
+if [[ "$XEMACS_MENUBARS" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --enable-menubars=lucid"
+else XEMACS_OPTS="$XEMACS_OPTS --enable-menubars=no"
+fi &&
+if [[ "$XEMACS_SCROLLBARS" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --enable-scrollbars=lucid"
+else XEMACS_OPTS="$XEMACS_OPTS --enable-scrollbars=no"
+fi &&
+if [[ "$XEMACS_DIALOGS" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --enable-dialogs=lucid"
+else XEMACS_OPTS="$XEMACS_OPTS --enable-dialogs=no"
+fi &&
+if [[ "$XEMACS_TTY" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-tty"
+else XEMACS_OPTS="$XEMACS_OPTS --without-tty"
+fi &&
+if [[ "$XEMACS_POP" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-pop"
+else XEMACS_OPTS="$XEMACS_OPTS --without-pop"
+fi &&
+if [[ "$XEMACS_SWS" == "y" ]]
+then XEMACS_OPTS="$XEMACS_OPTS --with-workshop"
+else XEMACS_OPTS="$XEMACS_OPTS --without-workshop"
+fi &&
+
+# sound options
+if [[ "$XEMACS_SOUND" == "y" ]] ; then
+    if [[ "$XEMACS_NATIVE" == "y" ]]
+    then XEMACS_SOUND_OPTS="native,"
+    else XEMACS_SOUND_OPTS="nonative,"
+    fi &&
+    if [[ "$XEMACS_NAS" == "y" ]]
+    then XEMACS_SOUND_OPTS="nas,"
+    else XEMACS_SOUND_OPTS="nonas,"
+    fi &&
+    if [[ "$XEMACS_ESD" == "y" ]]
+    then XEMACS_SOUND_OPTS="esd"
+    else XEMACS_SOUND_OPTS="noesd"
+    fi &&
+    XEMACS_OPTS="$XEMACS_OPTS --enable-sound=$XEMACS_SOUND_OPTS"
+else XEMACS_OPTS="$XEMACS_OPTS --disable-sound"
+fi

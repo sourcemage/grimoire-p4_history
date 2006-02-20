@@ -1,0 +1,14 @@
+           SPELL=mac-fdisk
+         VERSION=0.1.orig
+          SOURCE=${SPELL}_${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/m/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:1263e60a18111162f5ef439b5f9615cef9de94e7836cb998782a6e6d3bcf92a69e49566b33c7330bdea05de5e6ca83f7920c6707f342ce515440160695f07120
+      LICENSE[0]=GPL
+        WEB_SITE=http://penguinppc.org/projects/yaboot/doc/mac-fdisk-basics.shtml
+         ENTERED=20040102
+         UPDATED=20040102
+           SHORT="mac-fdisk is the fdisk version for ppc"
+cat << EOF
+mac-fdisk is fdisk for ppc, allows you to create partition table and bootstrap partitions.
+EOF

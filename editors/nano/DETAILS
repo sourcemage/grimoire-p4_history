@@ -1,0 +1,35 @@
+           SPELL=nano
+       BUILD_API=2
+         VERSION=1.3.10
+          BRANCH=`echo  ${VERSION}|cut -d . -f1,2`
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.nano-editor.org/dist/v${BRANCH}/${SOURCE}
+     SOURCE_HASH=sha512:1bd2e7ea583042db843d5b4facd7bcdd3d5c730487b58f1a157106ca998cd48ba510939a6e501954bdf26dbdd7c8523b2c5093d209f387f333110e4393cc0daa
+        WEB_SITE=http://www.nano-editor.org
+         ENTERED=20010922
+         UPDATED=20020414
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="nano is a superior clone of the pico text editor."
+cat << EOF
+The nano project was started because of a few problems with the
+wonderfully easy-to-use and friendly Pico text editor. GNU nano
+features:
+
+* Autoconf support.
+* Truly free license (GNU GPL).
+* Goto-line# command w/o flag.
+* Case sensitive search function.
+* Interactive search and replace.
+* 2/3 - 1/8 size of Pico binary.
+* Slang and ncurses support.
+* Autoindent abillity.
+* Displayed tab width option.
+* Regular expression search and replace.
+* Toggles for cmdline flags via Meta keys.
+* Tab completion when reading/writing files.
+The main disadvantage is lack of mailer integration, but this is also a
+strength.  GNU nano aims to emulate Pico and perhaps provide extra
+functionality.
+EOF

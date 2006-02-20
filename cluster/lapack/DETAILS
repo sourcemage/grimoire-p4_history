@@ -1,0 +1,32 @@
+            SPELL=lapack
+          VERSION=3.0
+           SOURCE=$SPELL.tgz
+          SOURCE2=manpages.tgz
+      SOURCE_HASH=sha512:17df6cfc50a5fa4ab91c67633f0e08fda0ca83a6d5c98955ca8749590a34fac26e9e19566b11c01aa8a906785eacb890eb1a0828b237302e2873f71bdf1145aa
+     SOURCE2_HASH=sha512:289c23d622b5c5469ba841b095f71fccb1742789316a5853147b88dbf39ec6b95aeb61214b994d108b6085b0c3963988a51c029868ebbfcc7d6d64a58881feba
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/LAPACK
+SOURCE2_DIRECTORY=$BUILD_DIRECTORY/LAPACK/man
+    SOURCE_URL[0]=http://www.netlib.org/$SPELL/$SOURCE
+   SOURCE2_URL[0]=http://www.netlib.org/$SPELL/$SOURCE2
+         WEB_SITE=http://www.netlib.org/lapack
+          ENTERED=20020519
+          UPDATED=20020519
+       MAINTAINER=zoran@idi.ntnu.no
+          LICENSE=http://netlib2.cs.utk.edu/lapack/faq.html#1.2
+            SHORT="Linear Algebra PACKage (Fortran version)"
+
+cat << EOF
+LAPACK provides routines for solving systems of simultaneous 
+linear equations, least-squares solutions of linear systems 
+of equations, eigenvalue problems, and singular value problems. 
+The associated matrix factorizations (LU, Cholesky, QR, SVD, 
+Schur, generalized Schur) are also provided, as are related 
+computations such as reordering of the Schur factorizations 
+and estimating condition numbers. Dense and banded matrices 
+are handled, but not general sparse matrices. In all areas, 
+similar functionality is provided for real and complex matrices, 
+in both single and double precision.
+
+Contains also the BLAS (Basic Linear Algebra Subprograms)
+library (Fortran version).
+EOF

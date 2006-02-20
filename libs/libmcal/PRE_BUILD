@@ -1,0 +1,6 @@
+mk_source_dir $SOURCE_DIRECTORY &&
+unpack_file  &&
+cd $SOURCE_DIRECTORY &&
+unpack_file 2 &&
+mv mcal-drivers/* ./ &&
+rmdir mcal-drivers

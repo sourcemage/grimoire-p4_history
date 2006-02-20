@@ -1,0 +1,20 @@
+           SPELL=bottlerocket
+         VERSION=0.04c
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:37673bd9a519307f0ae3003f3a458dbb99d4fd0c96ebaa664f4967fe45b20c1132828c3c7a31e769157e6034c43c9cdcd1ecac8c6791812d2a04e93d4c0c6888
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://mlug.missouri.edu/~tymm/$SOURCE
+        WEB_SITE=http://mlug.missouri.edu/~tymm/
+       BUILD_API=2
+         ENTERED=20011104
+         UPDATED=20021111
+           SHORT="BottleRocket is an interface to the X10 FireCracker home automation kit."
+cat << EOF
+BottleRocket is an interface to the X10 FireCracker home automation
+kit.  The FireCracker kit consists of a dongle-like RF transmitter
+that connects to the serial port of a PC, and a receiver that plugs
+into a wall socket and intercepts the signals, passing them on
+through house wiring to other units that turn appliances on/off or
+dim/brighten lamps.  It doesn't support any kind of 2-way
+communication, unlike some of the other X10 products.
+EOF

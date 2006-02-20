@@ -1,0 +1,15 @@
+           SPELL=smgl-archspecs
+         VERSION=0.5
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://smgl.positivism.org:8080/files/$SOURCE
+      SOURCE_GPG=swoolley-63C1E02F.gpg:${SOURCE}.sig
+        WEB_SITE=http://www.sourcemage.org/
+         ENTERED=20050411
+         UPDATED=20050411
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Source Mage GNU/Linux architecture specifications"
+cat << EOF
+Architecture specifications for Source Mage GNU/Linux.
+EOF

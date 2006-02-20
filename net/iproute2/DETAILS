@@ -1,0 +1,21 @@
+           SPELL=iproute2
+         VERSION=2.6.14-051107
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://developer.osdl.org/dev/iproute2/download/$SOURCE
+     SOURCE_HASH=sha512:66c2cc9aaa342f532dedf099826ee42735bcb16186f81744f3aace8c16e366b7e77b072b1e4fda1e30c948ca0749353a8f7fe18b0cc642058c5f758080c6e09b
+        WEB_SITE=http://linux-net.osdl.org/index.php/Iproute2
+         ENTERED=20020528
+         UPDATED=20040704
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Userland tools for the kernel network traffic control code"
+cat << EOF
+iproute2 contains the programs ip, rtmon, and tc. These programs
+allow you to specify rules for policy routing and traffic shaping
+on Linux machines which are being used as routers. A common usage
+would be to prevent upstream bandwidth saturation on asymmetric
+links such as cable modems.
+The HOWTO on lartc.org provides a decent introduction to
+iproute2 and other components of a fully-functional Linux router.
+EOF

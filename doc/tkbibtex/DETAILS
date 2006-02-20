@@ -1,0 +1,22 @@
+           SPELL=tkbibtex
+         VERSION=10
+          SOURCE=$SPELL
+         SOURCE2=${SPELL}.1
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://www.cat.csiro.au/cmst/staff/pic/tkbibtex/$SOURCE
+  SOURCE2_URL[0]=http://www.cat.csiro.au/cmst/staff/pic/tkbibtex/$SOURCE2
+        WEB_SITE=http://www.cat.csiro.au/cmst/staff/pic/tkbibtex.html
+     SOURCE_HASH=sha512:447cd89a35877464ea2f11d21ad405777d9d8876dfd6e1b9acb49d5fbdb7c93c03c6da389649ded57f5f2ae1cc597a7028a64456a0c255a4aea3111d1d273b9c
+    SOURCE2_HASH=sha512:20d3f8515226ced2ce056f850477c0ddb100657e640739fb50f268c51de17bafd90b16bc8d192687e17f736f01284ca6e83481b0259718b1a446705107c109fd
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+     GATHER_DOCS="off"
+         ENTERED=20031029
+         UPDATED=20031029
+      MAINTAINER=eschabell@sourcemage.org
+           SHORT="tkbibtex is a portable editor and browser for BibTeX format file."
+cat << EOF
+tkbibtex is a portable editor and browser for BibTeX format file. It is written 
+in Tcl/Tk and runs under Unix or Windows based wish interpreters. It is inspired 
+by, or modeled on, an old OpenWindows application called bibcard.
+EOF

@@ -1,0 +1,22 @@
+           SPELL=libpcapnav
+         VERSION=0.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/netdude/$SOURCE
+     SOURCE_HASH=sha512:ccc496bd7a8e5c75f79fe55e52a91cfd2d5fabc2be64d24379456097d2054ce1b50f3a1745eb9f87db3b53b02e7944b0cbcf757d825018e6a2a78d3f3712416d
+        WEB_SITE=http://netdude.sourceforge.net/
+      LICENSE[0]=BSD
+         ENTERED=20030923
+         UPDATED=20030923
+           SHORT="A libpcap wrapper library."
+cat << EOF
+A libpcap wrapper library that allows navigation to arbitrary locations in a
+tcpdump trace file between reads. The API is intentionally much like that of
+the pcap library. You can navigate in trace files both in time and space: you
+can jump to a packet which is at appr. 2/3 of the trace, or you can jump as
+closely as possible to a packet with a given timestamp, and then read packets
+from there. In addition, the API provides convenience functions for
+manipulating timeval structures.
+
+Source: http://netdude.sourceforge.net/doco/libpcapnav/0.1/c16.html#AEN20
+EOF

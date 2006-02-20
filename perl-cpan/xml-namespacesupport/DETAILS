@@ -1,0 +1,21 @@
+	BUILD_API=2
+           SPELL=xml-namespacesupport
+         VERSION=1.08
+          SOURCE=XML-NamespaceSupport-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/XML-NamespaceSupport-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/R/RB/RBERJON/$SOURCE
+     SOURCE_HASH=sha512:5ba748263d78cb87a567caf9ce5448d121417bb582c42886412587af0171bceae3c7da3dcefe1fc5d66f707d722225cafa4d93d6e9b346ebe5e6dcdd5d4f3e2e
+         LICENSE=
+        WEB_SITE=http://search.cpan.org/search?dist=xml-namespacesupport
+         ENTERED=20020722
+         UPDATED=20020722
+      MAINTAINER=sergey@sourcemage.org
+           SHORT="XML::NamespaceSupport - a simple generic namespace support class"
+cat << EOF
+This module offers a simple to process namespaced XML names (unames) from
+within any application that may need them. It also helps maintain a prefix to
+namespace URI map, and provides a number of basic checks.
+The model for this module is SAX2's NamespaceSupport class, readable at
+http://www.megginson.com/SAX/Java/javadoc/org/xml/sax/helpers/NamespaceSupport.html.
+It adds a few perlisations where we thought it appropriate.
+EOF

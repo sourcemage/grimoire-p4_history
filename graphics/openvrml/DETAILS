@@ -1,0 +1,20 @@
+           SPELL=openvrml
+         VERSION=0.15.8
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:d371d5264f0ddf922d3964d39a8ab8893db5d2ac7a4e4af32379866a0ee26601bce9b1947b4ee38e35e89363f1d121087fe3c5ef2a399de3d3e05b32ed94e39a
+        WEB_SITE=http://$SPELL.sourceforge.net/
+         ENTERED=20011021
+         UPDATED=20030125
+      LICENSE[0]="GPL LGPL"
+       BUILD_API=2
+           SHORT="Library for reading and displaying VRML97"
+cat << EOF
+OpenVRML is a C++ class library that allows applications to read
+VRML97 .wrl files and view their geometries.  It is also working
+toward full ISO VRML97 Specification compliance.  While still in
+development, the codebase is quite stable and featureful.
+
+Lookat, a basic VRML viewer, is included.
+EOF

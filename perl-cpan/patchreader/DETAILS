@@ -1,0 +1,20 @@
+	BUILD_API=2
+           SPELL=patchreader
+         VERSION=0.9.5
+          SOURCE=PatchReader-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/PatchReader-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/J/JK/JKEISER/$SOURCE
+     SOURCE_HASH=sha512:fa1163425c25092f57503b965b8e61843d9f9cb478b19f772f56a5f6f37c052435e7a9eb0f526befc645cbc22126de080401b65de0d56d02047d3601e1c0209c
+         LICENSE=
+        WEB_SITE=http://search.cpan.org/~jkeiser/patchreader/
+         ENTERED=20031124
+         UPDATED=20031124
+      MAINTAINER=sergey@sourcemage.org
+           SHORT='patchreader is a set of utilities for doing various things with a patch'
+cat << EOF
+patchreader is a set of utilities for reading in, transforming, and doing
+various other things with a patch.  It basically allows you to create a chain of
+readers that can read a patch, remove files from a patch, add CVS context, fix
+up the patch root according to CVS, and output the patch as raw unified or
+through a template processor (used in some places to output a patch as HTML).
+EOF

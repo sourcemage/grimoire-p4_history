@@ -1,0 +1,16 @@
+           SPELL=bpod
+         VERSION=1.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.ision.nl/users/redlemon/sourcemage/$SOURCE
+     SOURCE_HASH=sha512:5341d2e3178e72e42993c25dc7fe041141c2b4612970a65b46843944a3cffd6c1ca3f7e32c93761707344f8fd020021b6345ec9e53afbe6ee76ca26b574249d4
+         ENTERED=20020319
+         UPDATED=20020321
+         LICENSE=GPL
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="bpod is a inline documentation extractor"
+cat << EOF
+This program allows you to write inline documentation in anything
+that uses the hash character (#) as comment delimiter. The documentaion
+must be in perl POD format.
+EOF

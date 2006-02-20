@@ -1,0 +1,17 @@
+           SPELL=rx
+         VERSION=1.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/gnu/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:51081327046a8a11ab94a7d7653077b867ace1281a9b4f77de0457f65b57ba710fb6d47a13fce291d9606aec281d66c11b938161ce9a2764b6f1c3d71e844b2c
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnu.org/rx/rx.html
+         ENTERED=20020128
+         UPDATED=20020128
+       BUILD_API=2
+           SHORT="rx: a fast replacement for the GNU regex library."
+cat << EOF
+a fast implementation of the regular expression matching functions
+specified by POSIX.2
+EOF

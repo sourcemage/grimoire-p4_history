@@ -1,0 +1,16 @@
+           SPELL=pureadmin
+         VERSION=0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/purify/$SOURCE
+  SOURCE_HASH[0]=sha512:0a1dcfc1a68855cf732681add9242afa0f725d9f98914aa1fd16b543288cd5a974f7c5b1bc6303c4fa1022564444c90d2c0ee9c775a267c17e1d332a99234a2e
+        WEB_SITE=http://purify.sourceforge.net/
+         ENTERED=20040321
+         UPDATED=20040321
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="pureadmin is a GUI for pure-ftpd"
+cat << EOF
+PureAdmin is a graphical tool used to make the management of PureFTPd a little easier.
+It uses the GTK+2.x widgets for its GUI and thus are not dependent on a specific desktop environment such as GNOME or KDE. It is, however, designed with the GNOME Human Interface Guidelines in mind so it should integrate nicely with at least GNOME.
+EOF

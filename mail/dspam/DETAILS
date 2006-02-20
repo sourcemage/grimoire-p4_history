@@ -1,0 +1,21 @@
+           SPELL=dspam
+         VERSION=3.6.4
+     SOURCE_HASH='sha512:a5e5e63c5fbbb5d2e8ff3743949b3cf6c09d09f8b1baf4b8abfeb9c585181123ee679d73a34fdae065b8a87e79e44795c193cf5c1102e15100175c8cd5095b4c'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://dspam.nuclearelephant.com/sources/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+        WEB_SITE="http://$SPELL.nuclearelephant.com/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='GPL'
+         UPDATED=20050807
+       BUILD_API=2
+           SHORT='A server-side anti-spam agent for UNIX email servers'
+cat << EOF
+DSPAM is a server-side statistical anti-spam agent for Unix email servers. It masquerades
+as the email server's local delivery agent and effectively filters spam using a combination
+of de-obfuscation techniques, specialized algorithms, and statistical analysis. The result
+is an administratively maintenance-free, self-learning anti-spam tool. DSPAM has yielded
+real-world success rates beyond 99.9% accuracy with less than a 0.01% chance of false
+positives.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor

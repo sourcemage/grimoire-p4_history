@@ -1,0 +1,28 @@
+source $SECTION_DIRECTORY/KDE_DETAILS
+           SPELL=kbarcode
+         VERSION=1.9.10
+     SOURCE_HASH=sha512:34eedc0b0f63cb6e817dad3465137867c3ddee1d905f6bb07f03ea13856be653e6bfcbe83806b5fab3e624d65187459f3d9f712cc141b759a1dfcc46c1681995
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.kbarcode.net/
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      LICENSE[0]=GPL
+       BUILD_API=2
+         ENTERED=20030812
+         UPDATED=20030901
+SHORT="barcode and label printing application for KDE 3"
+cat << EOF
+KBarcode is a barcode and label printing application for KDE 3. It can be 
+used to print every thing from simple business cards up to complex labels 
+with several barcodes (e.g. article descriptions). 
+
+KBarcode comes with an easy to use WYSIWYG label designer, a setup 
+wizard, batch import of labels (directly from the delivery note), 
+thousands of predefined labels, database managment tools and translations 
+in many languages. Even printing more than 10.000 labels in one go is no 
+problem for KBarcode. 
+
+Additionally it is a simply xbarcode replacement for the creation of 
+barcodes. All major types of barcodes like EAN, UPC, CODE39 and ISBN are 
+supported. 
+EOF

@@ -1,0 +1,18 @@
+           SPELL=gtklookat
+         VERSION=0.13.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openvrml/$SOURCE
+        WEB_SITE=http://openvrml.sourceforge.net/
+         ENTERED=20011021
+         UPDATED=20030125
+     SOURCE_HASH=sha512:3195642dfbd1f53ba8c075a454e28b44f2b108af4936853eb64bc3afac429780dadaa7111c80d9cb9f05b532f79723b8ae918edbb47822d76b69413f33c7451f
+      LICENSE[0]=GPL
+      MAINTAINER=unet@sourcemage.org
+           SHORT="gtklookat: a GTK+ VRML viewer."
+cat << EOF
+Gtklookat provides a viewer with a little more functionality than the basic
+'lookat' binary available with OpenVRML.  Gtklookat allows you to load / reload
+wrl files, jump to viewpoints, and several other conveniences over Glut-based
+lookat.
+EOF

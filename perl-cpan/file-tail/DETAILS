@@ -1,0 +1,21 @@
+           SPELL=file-tail
+         VERSION=0.98
+          SOURCE=File-Tail-$VERSION.tar.gz
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/File-Tail-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/modules/by-module/File/${SOURCE}
+     SOURCE_HASH=sha512:e986c5ef5b790121f06691539c968efe930269bc01ee57027d9abede4fe45843a817f2d0b38e28846eeea171ac9df07de05e49ca43cb715760ff21acb721bfe7
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=File::Tail"
+         ENTERED=20030726
+         UPDATED=20030726
+      MAINTAINER="vvydra@sourcemage.org"
+           SHORT="Reading of files which are continously appended to."
+cat << EOF
+The File::Tail module is designed for reading files which are continously
+appended to (the name comes from the tail -f directive). Usualy such files are
+logfiles of some description.
+
+The module tries hard not to busy wait on the file, dynamicaly calcultaing 
+how long it should wait before it pays to try reading the file again.
+EOF

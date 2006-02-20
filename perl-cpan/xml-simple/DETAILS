@@ -1,0 +1,21 @@
+	BUILD_API=2
+           SPELL=xml-simple
+         VERSION=2.09
+          SOURCE=XML-Simple-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/XML-Simple-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/G/GR/GRANTM/$SOURCE
+     SOURCE_HASH=sha512:e76d9dcbe7cc16b8fff9feba060d687f3adf185525969ad2ef030d3d760eb5b0635f4ec84867da91971d2e4165044d7218927ece2a11b963ea2396483ad90297
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=XML::Simple"
+         ENTERED=20030122
+         UPDATED=20030122
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="XML::Simple - Easy API to maintain XML (esp config files)"
+cat << EOF
+
+The XML::Simple module provides a simple API layer on top of an
+underlying XML parsing module (either XML::Parser or one of the
+SAX2 parser modules).  Two functions are exported: "XMLin()" and
+"XMLout()".
+
+EOF

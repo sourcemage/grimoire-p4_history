@@ -1,0 +1,17 @@
+           SPELL=gnome-volume-manager
+         VERSION=1.5.3
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20020507
+         UPDATED=20051022
+           SHORT="Volume Manager for GNOME"
+cat << EOF
+gnome-volume-manager is a desktop-level daemon that enforces volume-related
+policy in response to events received from HAL.  Its goal is to implement all
+functionality as a state-machine in response to asynchronous events from HAL.
+EOF

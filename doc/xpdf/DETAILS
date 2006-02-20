@@ -1,0 +1,21 @@
+           SPELL=xpdf
+         VERSION=3.01pl1
+          SOURCE=$SPELL-3.01.tar.gz
+         SOURCE2=$SPELL-$VERSION.patch
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-3.01
+   SOURCE_URL[0]=ftp://ftp.foolabs.com/pub/xpdf/$SOURCE
+  SOURCE2_URL[1]=ftp://ftp.foolabs.com/pub/xpdf/$SOURCE2
+        WEB_SITE=http://www.foolabs.com/xpdf
+     SOURCE_HASH=sha512:add411b8c27caeb32360c82c7b6e81245633c404681890d3bf662d5fe425bdbef6be0c61eded074db2823cf9c399722cbedf8d765dcde94049d7fae77b45c81e
+    SOURCE2_HASH=sha512:d056df64c03363e75fad51d7d613a903d1e832c2fb2e8338d553f6263465673b4c67d343171feaeb2c8ac53785910ab301a20c53b94c25a0742ded860e5db393
+         ENTERED=20010923
+         UPDATED=20050817
+         LICENSE=GPL
+           SHORT="xpdf: a PDF viewer for X11R6."
+cat << EOF
+Xpdf is a viewer for Portable Document Format (PDF) files. It also
+comes with two other programs: pdftops and pdftotext which convert
+PDF files to postscript and plain text respectively. Xpdf is designed 
+to be small and efficient. It does not use the Motif or Xt libraries. 
+It uses standard X fonts.
+EOF

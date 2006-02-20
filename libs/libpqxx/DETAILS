@@ -1,0 +1,18 @@
+           SPELL=libpqxx
+         VERSION=2.5.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://gborg.postgresql.org/pub/$SPELL/stable/$SOURCE
+     SOURCE_HASH=sha512:5ea36a1898550e92ebfa062d226a704648886918fdedd6fff5bf3c2f919d3c3cceae1411da55c136330862fa528fab06f9037b5b961d689036e8633a94407b69
+      LICENSE[0]=BSD
+        WEB_SITE=http://gborg.postgresql.org/project/libpqxx/projdisplay.php
+         ENTERED=20030223
+         UPDATED=20031006
+      BUILD_API=2
+           SHORT="C++ client API for PostgreSQL."
+cat << EOF
+C++ client API for PostgreSQL. The standard front-end (in the sense 
+of "language binding") for writing C++ programs that use PostgreSQL.
+Supersedes older libpq++ interface. Requires an up-to-date 
+C++ compiler, like gcc 2.95 or better.
+EOF

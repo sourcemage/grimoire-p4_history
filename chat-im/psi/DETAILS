@@ -1,0 +1,30 @@
+           SPELL=psi
+       BUILD_API=2
+if [ "$DEVEL" == "y" ]; then
+         VERSION=0.10
+          SOURCE=$SPELL-$VERSION.tar.bz2
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+   SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+else
+         VERSION=0.10
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+   SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/${SPELL}/${SOURCE}
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+fi
+        WEB_SITE=http://psi.affinix.com/
+	 LICENSE=GPL
+         ENTERED=20020806
+         UPDATED=20040420
+           SHORT="Psi is a client for the Jabber system."
+cat << EOF
+Psi is a client for the Jabber system. Written in C++ and based on the 
+Qt library, there are versions available for Linux (and other flavors of 
+unix/X11), Microsoft Windows, and Apple MacOS X. 
+
+Psi is released under the GNU General Public License, so you know 
+that it's truly free, and will remain so.
+
+EOF

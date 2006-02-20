@@ -1,0 +1,20 @@
+           SPELL=gnomeicu
+         VERSION=0.99.10
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+        WEB_SITE=http://gnomeicu.sourceforge.net/index.php
+         ENTERED=20010922
+         UPDATED=20020314
+      LICENSE[0]=GPL
+           SHORT="GnomeICU is a clone of Mirabilis' popular ICQ written with GTK."
+cat << EOF
+GnomeICU is a clone of Mirabilis' popular ICQ written with GTK.
+The original source was taken from Matt Smith's mICQ.  This is ment as
+a replacement for the JavaICQ, which is slow and buggy.  If you would
+like to contribute, please contact Jeremy Wise ( jwise@pathwaynet.com ).
+You may also want to visit The ICQ Protocol Site at:
+[ http://www.student.nada.kth.se/~d95-mih/icq/ ] for information about
+the ICQ protocol and mailing list.
+EOF

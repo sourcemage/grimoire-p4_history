@@ -1,0 +1,25 @@
+           SPELL=mysql
+if [ "$OLD" == "y" ];then
+         VERSION=4.1.15
+      SOURCE_GPG="gurus.gpg:${SPELL}-${VERSION}.tar.gz.sig"
+else
+         VERSION=5.0.18
+     SOURCE_HASH=sha512:748c5f06ef351b9c0a1da0d96c072b1dc5bf52f714aa5f3c5d468e3b32fd1f61c0f03970238f12d9512e2017265a6ed80fcf884577e366cd98f21a23293ff03d
+fi
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+      SOURCE_URI=MySQL-${VERSION%\.*}/$SOURCE
+   SOURCE_URL[0]=ftp://mirror.mcs.anl.gov/pub/mysql/Downloads/$SOURCE_URI
+   SOURCE_URL[1]=http://mysql.he.net/Downloads/$SOURCE_URI
+   SOURCE_URL[2]=ftp://ftp.mysql.com/$SOURCE_URI
+        WEB_SITE=http://www.mysql.com/
+         ENTERED=20011114
+         UPDATED=20050906
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Widely used and fast SQL database server"
+cat << EOF
+MySQL is a widely used and fast SQL database server. It is a
+client/server implementation that consists of a server daemon (mysqld)
+and many different client programs/libraries.
+EOF

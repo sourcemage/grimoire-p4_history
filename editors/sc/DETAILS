@@ -1,0 +1,16 @@
+           SPELL=sc
+         VERSION=7.16
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.ibiblio.org/pub/Linux/apps/financial/spreadsheet/${SOURCE}
+     SOURCE_HASH=sha512:efa495ba21d01b578a53f09101ccc28b564437317e0860904ad59136a24df9619dfc8715339296ae1567eaa8d620cdabc9bc2784962bc1c93e3bbd086856407b
+        WEB_SITE=http://freshmeat.net/projects/sc/
+         ENTERED=20050123
+         UPDATED=20050123
+         LICENSE=PD
+       BUILD_API=2
+           SHORT="A text-based spreadsheet program."
+cat << EOF
+sc is the Spreadsheet Calculator, a curses-based spreadsheet program that uses
+key bindings similar to vi and less.
+EOF

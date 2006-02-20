@@ -1,0 +1,26 @@
+           SPELL=gnustep-renaissance
+         VERSION=0.8.0
+          SOURCE=Renaissance-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Renaissance-$VERSION
+   SOURCE_URL[0]=http://www.gnustep.it/Renaissance/Download/$SOURCE
+        WEB_SITE=http://www.gnustep.org
+     SOURCE_HASH=sha512:3e297bdedfa8f862f60e92c48c5e78f8c20d85344854d6273f7d2e7f5d87c164a5cc0a98dc7a13b9384e7f145b081e296b08287b064324914f6049178af91e5a
+      LICENSE[0]=LGPL
+         ENTERED=20050908
+         UPDATED=20050908
+       BUILD_API=2
+           SHORT="GNUstep Renaissance gui in simple and intuitive XML."
+
+cat << EOF
+In short, GNUstep Renaissance allows you to describe your user
+interfaces (that is, the windows in your application, and the buttons,
+boxes, textfields, etc in the windows) in simple and intuitive XML
+files, using an open, standard format describing the logic of the
+interface.  GNUstep Renaissance can then, at run time, generate the
+user interfaces (using the native host OpenStep-like libraries) by
+reading the XML files.  The connections between the objects created
+from the XML files, and the other objects in the application are done
+via outlets (as traditionally in OpenStep); a new quick and intuitive
+syntax has been developed to make creating outlets as easy as
+possible.
+EOF

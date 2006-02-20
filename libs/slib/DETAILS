@@ -1,0 +1,19 @@
+           SPELL=slib
+         VERSION=3a1
+     SOURCE_HASH=sha512:a8d196594d112d240f0e2e552cee67c02b682396afc74727c0337f2e1331f0d04d3ad3a86ddc14ebbe7c0cfe3287cb4024489097aa406f7c79da67f6c2dad1d6
+          SOURCE=$SPELL$VERSION.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://swissnet.ai.mit.edu/ftpdir/scm/$SOURCE
+   SOURCE_URL[1]=http://www.ibiblio.org/pub/gnu/slib/$SOURCE
+        WEB_SITE=http://www-swiss.ai.mit.edu/~jaffer/SLIB.html
+         ENTERED=20011105
+         UPDATED=20020510
+      LICENSE[0]=http://www-swiss.ai.mit.edu/~jaffer/SLIB_COPYING.txt
+       BUILD_API=2
+           SHORT="Scheme library"
+cat << EOF
+SLIB is a portable scheme library providing compatibility and utility functions
+for standard Scheme implementations.
+
+Slib is a scheme library - Miscellanous use scheme functions for gnuCash
+EOF

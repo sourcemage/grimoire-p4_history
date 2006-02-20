@@ -1,0 +1,17 @@
+           SPELL=tsclient
+         VERSION=0.132
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.gnomepro.com/tsclient/$SOURCE
+     SOURCE_HASH=sha512:9cac1ae7ad4c57b10b4a78948ff2d5e90a9bec57ef802d6c58f269f886625897516604f00402ee0c252de5783c54b66c6a3cde596634122fb055556bb881dc65
+        WEB_SITE=http://www.gnomepro.com/tsclient/
+         ENTERED=20040203
+         UPDATED=20040203
+       BUILD_API=2
+           SHORT="Frontend for rdesktop and other remote desktop tools."
+cat << EOF
+Terminal Server Client (tsclient) is a frontend for rdesktop and other remote
+desktop tools. It can read and write Microsoft .rdp files and looks and
+functions very much like the Microsoft RDP Client. It features a Gnome panel
+applet to quickly launch saved .rdp files.
+EOF

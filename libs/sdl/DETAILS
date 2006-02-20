@@ -1,0 +1,20 @@
+           SPELL=sdl
+         VERSION=1.2.9
+     SOURCE_HASH=sha512:4d42ba892d67067cbc413b4c1c1fa49689049fe054b539f4e86bebcd3dc164a50ccbce8996eb25aab30dcb11435cb83a903ea763562c20b02d47688f91ae3ba5
+          SOURCE=SDL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/SDL-$VERSION
+   SOURCE_URL[0]=http://www.libsdl.org/release/$SOURCE
+        WEB_SITE=http://www.libsdl.org
+         ENTERED=20010922
+         UPDATED=20040216
+      LICENSE[0]=LGPL
+       BUILD_API=2
+     GCC_VERSION=3.4
+            DOCS="docs/html docs/index.html COPYING README*"
+           SHORT="Portable game library for low-level access to hardware."
+cat << EOF
+SDL is a library that allows you portable low-level access to a video
+framebuffer, audio output, mouse, and keyboard. With SDL, it is easy to
+write portable games which run on Linux (x86, Sparc, PPC, Alpha),
+Solaris (Sparc), Win32 (95, 98, NT), BeOS (x86), and MacOS (PPC).
+EOF

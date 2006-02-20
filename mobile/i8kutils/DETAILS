@@ -1,0 +1,18 @@
+           SPELL=i8kutils
+         VERSION=1.25
+       BUILD_API=2
+          SOURCE=${SPELL}_${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/i/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:6a057a72025dd4f0e67cd30c5a601b513631262f123a146399ead2a65d4816ff4d5f4edd91edffe7ba5de4bba6157eac169e5e4b4653b7fa692dc80aae475dc2
+        WEB_SITE=http://people.debian.org/~dz/i8k/
+         ENTERED=20030221
+         UPDATED=20030221
+      LICENSE[0]=GPL
+           SHORT="This is a collection of utilities to control Dell laptops."
+cat << EOF
+This package contains a kernel driver and user-space programs for accessing
+the SMM BIOS of Dell Inspiron and Latitude laptops. The SMM BIOS is used on
+many recent laptops to implement APM functionalities and to access custom
+hardware, for example the cooling fans and volume buttons.
+EOF

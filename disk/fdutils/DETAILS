@@ -1,0 +1,26 @@
+           SPELL=fdutils
+         VERSION=5.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://fdutils.linux.lu/$SOURCE
+     SOURCE_HASH=sha512:3c2dde9d2e14f771f6916851827df5b2dde62e3522b6ceb411bf0772800a4d8ed4721d99ad170b81de0cc8dba41a60817232993f3d69eb07141e1929ac626570
+        WEB_SITE=http://fdutils.linux.lu/
+      LICENSE[0]=GPL
+         ENTERED=20020106
+         UPDATED=20020106
+           SHORT="The fdutils package contains utilities for configuring and debugging the Linux floppy driver, for formatting extra capacity disks (up to 1992K on a high density disk), and for sending raw commands to the floppy controller."
+cat << EOF
+ Fdutils includes the following items:
+
+    * superformat: formats high capacity disks of (up to 1992k for high density disks or up to 3984k for extra density disks)
+    * fdmount: automatically mounts/unmounts disks when they are inserted/removed.
+    * xdfcopy: formats, reads and writes OS/2's XDF disks.
+    * MAKEFLOPPIES: creates the floppy devices in /dev
+    * getfdprm: prints the current disk geometry (number of sectors, track and heads etc)
+    * setfdprm: sets the current disk geometry
+    * fdrawcmd: sends raw commands to the floppy driver
+    * floppycontrol: configure the floppy driver
+    * General documentation about the floppy driver
+
+
+EOF

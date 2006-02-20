@@ -1,0 +1,30 @@
+           SPELL=isdn4k-utils
+
+if [ "$GETCVS" == "y" ] ; then
+         VERSION=cvs
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=cvs://:pserver:guest:readonly@cvs.isdn4linux.de:/i4ldev:isdn4k-utils
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD=1
+else
+         VERSION=v3.2p1
+          SOURCE=$SPELL.$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=ftp://ftp.isdn4linux.de/pub/isdn4linux/utils/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.nvg.unit.no/pub/linux/isdn/utils/$SOURCE
+     SOURCE_HASH=sha512:ada3f74b5c9d3312a2ba05f07a946276b5cf2ddfd6590bf4025dc782bd339bf354f6ce2090e6aa7bc8ab0252ed5804794b66bd59aeb2c5a3093d4dac86badb44
+fi
+
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.isdn4linux.org/
+         ENTERED=20011022
+         UPDATED=20011022
+       BUILD_API=2
+           SHORT="isdn4k-utils contains utilitiles to make use of ISDN specific features."
+cat << EOF
+Isdn4linux is a set of kernel modules which are part of the Linux
+kernel. It consists of the main module isdn and the actual hardware
+driver that control some specific card. In addition, the package
+isdn4k-utils contains utilities to make use of ISDN specific features.
+EOF

@@ -1,0 +1,17 @@
+     SPELL=epm
+     VERSION=3.7
+     SOURCE=$SPELL-$VERSION-source.tar.bz2
+     SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+     SOURCE_URL[0]=ftp://ftp2.easysw.com/pub/epm/3.7/$SOURCE
+     SOURCE_URL[1]=ftp://ftp3.easysw.com/pub/epm/3.7/$SOURCE
+ SOURCE_HASH=sha512:eecac776729a5e78f6ef04e816ef4740358fd6a5a8dccfc4dd55df11f6b2b23e285a6e54a51aff5f116fddd6a28c1bee702ff9316d01d5db9a27c8499b7d40a1
+     LICENSE[0]=GPL
+     WEBSITE=http://www.easysw.com/epm/
+     BUILD_API=2
+     ENTERED=20050505
+     UPDATED=20050505
+     SHORT="EPM is a software/file packaging program"
+cat << EOF
+EPM is a free UNIX software/file packaging program that generates 
+distribution archives from a list of files.
+EOF

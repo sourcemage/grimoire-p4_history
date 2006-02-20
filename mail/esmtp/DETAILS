@@ -1,0 +1,15 @@
+		SPELL=esmtp
+	      VERSION=0.5.1
+               SOURCE=$SPELL-$VERSION.tar.bz2
+            BUILD_API=2
+        SOURCE_URL[0]=$SOURCEFORGE_URL/esmtp/$SOURCE
+     SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+             WEB_SITE=http://esmtp.sourceforge.net
+              ENTERED=20040907
+          SOURCE_HASH=sha512:9d2818db373f52148d7e6fc162db87917c0663d284aa725d459e7b5179c44c2e1982c287830e63167cbe61c1ee5d624493e62c627647fb835af0db2b3db3acfb
+	      LICENSE=GPL
+	        SHORT="esmtp is a user configurable relay-only (MTA)"
+
+cat << EOF
+esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax. It's based on libESMTP supporting the AUTH (including the CRAM-MD5 and NTLM SASL mechanisms) and the StartTLS SMTP extensions.
+EOF

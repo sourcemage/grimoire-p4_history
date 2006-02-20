@@ -1,0 +1,16 @@
+           SPELL=lkl
+         VERSION=0.0.4
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+   SOURCE_URL[0]=http://www.spine-group.org/counter/count.php?n=lkl
+     SOURCE_HASH=sha512:0ac0d89b3caa50349f05f3ee43929ecf4e434bc49d6f4a9f49d94d150d09dd87f381fbe4d882b07eb119785a564e274095d60dc14c1f807a092acfd41cbeda7f
+      LICENSE[0]=GPL2
+         ENTERED=20030730
+         UPDATED=20030730
+        WEB_SITE=http://www.spine-group.org/toolIG.htm
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="LKL is a userspace keylogger."
+cat << EOF
+LKL is a userspace keylogger that runs under linux--x86/arch.LKL 
+sniffs and logs everything pass tought the hardware keyboard port (0x60).
+EOF

@@ -1,0 +1,21 @@
+           SPELL=wipe
+         VERSION=2.2.0
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:5d156712b07b579018324b714dad2d3fae3c3cac1a9b1fd76ec44596b9d738bb3e460dedf23898e12ed87ee5dced28d1792c905c9869756914e21ad95efbbbbb
+        WEB_SITE=http://wipe.sourceforge.net
+      MAINTAINER=hgr@vabo.cz
+      LICENSE[0]=GPL
+         ENTERED=20020611
+         UPDATED=20020611
+           SHORT="wipe - secure file wiping utility"
+cat << EOF
+Recovery of supposedly erased data from magnetic media is
+easier than what many people would like to believe. A
+technique called Magnetic Force Microscopy (MFM) allows any
+moderately funded opponent recover the last two or three
+layers of data written to disk. Wipe repeadetly overwrites
+special patterns to the files to be destroyed, using the
+fsync() call and/or the O_SYNC bit to force disk access.
+EOF

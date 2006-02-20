@@ -1,0 +1,18 @@
+           SPELL=nbtscan
+         VERSION=1.5.1
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}a
+   SOURCE_URL[0]=http://www.inetcat.org/software/${SOURCE}
+     SOURCE_HASH=sha512:2e2ac6a3ce7b188552c4f5f82b1e2bb99049bd0cd6f69361c59066c0b262d9311186aabc0c03c3096b7d2c48276052b1ddf230eba43051e221019c9bf223ae3e
+      LICENSE[0]=GPL2
+         ENTERED=20030730
+         UPDATED=20030730
+        WEB_SITE=http://www.inetcat.org/software/nbtscan.html
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="NBTscan scann IP networks for NetBIOS name information."
+cat << EOF
+NBTscan is a program for scanning IP networks for NetBIOS name information. 
+It sends NetBIOS status query to each address in supplied range and lists 
+received information in human readable form. For each responded host it 
+lists IP address, NetBIOS computer name, logged-in user name and MAC address.
+EOF

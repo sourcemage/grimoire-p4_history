@@ -1,0 +1,17 @@
+           SPELL=diffstat
+         VERSION=1.39
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://dickey.his.com/diffstat/$SOURCE
+     SOURCE_HASH=sha512:b423e6b747b9ab6d0dfead14405771c0147827728c5281c87f21201160e3e0ce4deef22817e555fb33f36792bbeeae82e6e93f718b7dffc5ed539bce50fdaf71
+        WEB_SITE=http://dickey.his.com/diffstat/diffstat.html
+         ENTERED=20040529
+         UPDATED=20040529
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Displays a histogram of changes to a file"
+cat << EOF
+Diffstat reads the output of the diff command and displays a histogram of the
+insertions, deletions, and modifications in each file. Diffstat is commonly
+used to provide a summary of the changes in large, complex patch files.
+EOF

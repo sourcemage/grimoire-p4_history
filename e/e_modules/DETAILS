@@ -1,0 +1,19 @@
+           SPELL=e_modules
+if  [  "$E_MODULES_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:$SPELL
+  FORCE_DOWNLOAD=on
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://enlightenment.org/
+         ENTERED=20050703
+         UPDATED=20050916
+      LICENSE[0]=BSD
+           SHORT="a collection of modules for enlightenment 0.17"
+cat << EOF
+e_modules is a collection of modules for enlightenment 0.17.
+EOF

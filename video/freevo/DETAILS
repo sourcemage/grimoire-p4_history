@@ -1,0 +1,25 @@
+           SPELL=freevo
+         VERSION=1.5.2
+          SOURCE=${SPELL}-$VERSION.tar.gz
+     SOURCE_HASH=sha512:902d319830ae62676ad3b5c114a93f887d05c6a9c91dd79b2506c46ba18bffa06bf6e2e19b1a15818c39a1fb11adda7d6099299497967d48894fd7907a8b92b5
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/$SOURCE
+        WEB_SITE=http://freevo.org
+         ENTERED=20040222
+         UPDATED=20040222
+      LICENSE[0]=GPL
+           SHORT="freevo is a free pvr, similiar in function to TiVo"
+cat << EOF
+Freevo is an open-source home theatre PC platform based on Linux and
+a number of open-source audio/video tools. MPlayer and/or Xine can be
+used to play audio and video files in most popular formats. Freevo can
+be used both for a standalone PVR computer with a TV+remote, as well as
+on a regular desktop computer using the monitor and keyboard.
+
+Freevo is easy to download and install for new users. Most hardware is
+supported (graphic boards, sound cards and video capture devices).
+
+The Freevo core is under heavy development. It is mostly written in the
+Python programming language which is very well suited for high-level
+control applications like Freevo.
+EOF

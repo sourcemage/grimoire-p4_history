@@ -1,0 +1,19 @@
+           SPELL=gtk-engines
+         VERSION=0.12
+	  BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+     SOURCE_HASH=sha512:e47824410b85bd629b1e2365586d14f4fbabe402d8f2b483a1fca75b3af4b534bb79de87e5e7ab29c884725889bfc17fab2c61842cd585092263d0619a6d0dd0
+      MAINTAINER=jon-sven@frisurf.no
+        WEB_SITE=http://www.gnome.org
+      LICENSE[0]=GPL
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="gtk-engines contains engines for use with GTK"
+cat << EOF
+GTK-engines
+GTK+ is a multi-platform toolkit for creating graphical user
+interfaces, primarily designed for the X Window System.
+EOF

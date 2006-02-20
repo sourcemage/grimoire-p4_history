@@ -1,0 +1,19 @@
+           SPELL=desktop-file-utils
+         VERSION=0.10
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://www.freedesktop.org/software/${SPELL}/releases/$SOURCE
+     SOURCE_HASH=sha512:e79d18c657562f596c298f1bab3a43a268fd1432caf03c5b5473f264f8add17c502cafb34f0842265969f2a95a9b4301f4d2382de1d07d69d38cee34dc1595bf
+        WEB_SITE=http://www.freedesktop.org/
+       BUILD_API=2
+         ENTERED=20031028
+         UPDATED=20031028
+         LICENSE=GPL
+           SHORT="Utilities for manipulating desktop files"
+cat << EOF
+desktop-file-utils contains a couple of command line utilities for working 
+with desktop entries. It requires GLib and popt to compile,
+because the implementation requires Unicode utilities and such.
+
+Right now the only documentation is "desktop-file-install --help". desktop-file-validate takes a single argument, the file to validate.
+EOF

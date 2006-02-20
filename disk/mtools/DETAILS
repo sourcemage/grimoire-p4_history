@@ -1,0 +1,17 @@
+           SPELL=mtools
+         VERSION=3.9.10
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://mtools.linux.lu/${SOURCE}
+     SOURCE_HASH=sha512:60218faee3c05235379afa46a3e6b6f1c6b1c18efabf91167f3b743503ad6e7c2565a0b9185de2bbec07e15921d8c014b3477f99d26a1f060b103cca6f2365ee
+        WEB_SITE=http://mtools.linux.lu
+      LICENSE[0]=GPL
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="mtools is a collection of utilities to access MS-DOS disks."
+cat << EOF
+Mtools is a collection of utilities to access MS-DOS disks from Unix
+without mounting them. It supports Win'95 style long file names, OS/2
+Xdf disks, ZIP/JAZ disks and 2m disks (store up to 1992k on a high
+density 3 1/2 disk).
+EOF

@@ -1,0 +1,21 @@
+           SPELL=w3c-libwww
+         VERSION=5.4.0
+          SOURCE=$SPELL-$VERSION.tgz
+     SOURCE_HASH=sha512:edc87430ca3061e7ea0a9d216a29eec8889c36d4dde59262d0751aea842f1682f1ae8a89bbcb0092d7e298643660ed1c7f9bec007fed8b1f84f3e6eb7e97c24b
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.w3.org/Library/Distribution/$SOURCE
+        WEB_SITE=http://www.w3.org
+         ENTERED=20011106
+         UPDATED=20030916
+      MAINTAINER=eric@schabell.com
+           SHORT="libwww is a general-purpose Web API provided by W3C."
+cat << EOF
+Libwww is a general-purpose Web API provided by W3C written in C for
+Unix and Windows (Win32). With a highly extensible and layered API,
+it can accommodate many different types of applications including
+robots, GUI apps, automated tools, etc. The goal of libwww is to
+provide an environment for experimenting with Web applications, cool
+extensions and new features. It contains modules for handling HTTP,
+HTML, URIs and for many other parts of the Web. Libwww is highly
+focused on performance, modularity, and extensibility.
+EOF

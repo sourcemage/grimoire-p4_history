@@ -1,0 +1,18 @@
+depends mftrace			&&
+depends guile			&&
+depends flex			&&
+depends tetex			&&
+depends texinfo			&&
+depends gcc			&&
+depends python			&&
+depends bison			&&
+depends xdvi			&&
+depends POSTSCRIPT-INTERPRETER	&&
+depends fontforge		&&
+
+if [ $HTMLDOC == y ]
+then
+	depends netpbm		&&
+	depends imagemagick
+fi 
+

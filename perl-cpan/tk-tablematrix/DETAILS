@@ -1,0 +1,35 @@
+       BUILD_API=2
+           SPELL=tk-tablematrix
+         VERSION=1.2
+          SOURCE=Tk-TableMatrix-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Tk-TableMatrix-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/C/CE/CERNEY/$SOURCE
+     SOURCE_HASH=sha512:78fef968c4a078233971ca7731d41a7d74d4d02b7abf7bb7e0a167d3cb2f20bcc46671e1acf7043d0fca1b1d57b5f8bed6bf59a333178f224731202281ce16e4
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=XML::Simple"
+         ENTERED=20030830
+         UPDATED=20030830
+           SHORT="Tk::TableMatrix is a table/matrix widget extension to perl/tk"
+cat << EOF
+Tk::TableMatrix is a table/matrix widget extension to perl/tk
+for displaying data in a table (or spreadsheet) format.
+The basic features of the widget are:
+
+ * multi-line cells
+ * support for embedded windows (one per cell)
+ * row & column spanning
+ * variable width columns / height rows (interactively resizable)
+ * row and column titles
+ * multiple data sources ((perl hash|| perl callback) &| internal 
+caching)
+ * supports standard Tk reliefs, fonts, colors, etc.
+ * x/y scrollbar support
+ * 'tag' styles per row, column or cell to change visual appearance
+ * in-cell editing - returns value back to data source
+ * support for disabled (read-only) tables or cells (via tags)
+ * multiple selection modes, with "active" cell
+ * multiple drawing modes to get optimal performance for larger tables
+ * optional 'flashes' when things update
+ * cell validation support
+
+EOF

@@ -1,0 +1,29 @@
+           SPELL=bwidget
+         VERSION=1.6.0
+          SOURCE=BWidget-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/BWidget-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/tcllib/$SOURCE
+     SOURCE_HASH=sha512:258591beacbf0e4fa1a8e83844f55b453dc8586c66ae3d0204e6278d19f174e25830a8ed9dc72b582e7f319bfed43b623af5489efc84a3a3743b8c86f787d334
+        WEB_SITE=http://tcllib.sourceforge.net
+         ENTERED=20050228
+         UPDATED=20050228
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A widget set that goes with tcllib"
+cat << EOF
+BWidget includes a number of helpful gui widgets for tcl:
+Label (widget with state option, dynamic help and drag and drop facilities), Entry 
+(Entry widget with state option, dynamic help and drag and drop facilities), Button 
+(Button widget with enhanced options), ArrowButton (Button widget with an arrow shape), 
+ProgressBar (Progress indicator widget), ScrollView (Display the visible area of a 
+scrolled window), Separator (3D separator widget), MainFrame (Manage toplevel with 
+menu, toolbar and statusbar), LabelFrame (Frame with a Label), TitleFrame (Frame 
+with a title), ScrolledWindow (Generic scrolled widget), ScrollableFrame (Scrollable 
+frame containing widget), PanedWindow (Tiled layout manager widget), ButtonBox (Set of 
+buttons with horizontal or vertical layout), PagesManager (Pages manager widget), 
+NoteBook (Notebook manager widget), Dialog (Dialog abstraction with custom buttons), 
+LabelEntry (Entry widget), ComboBox (ComboBox widget), SpinBox (SpinBox widget), Tree 
+(Tree widget), ListBox (ListBox widget), MessageDlg (Message dialog box), ProgressDlg 
+(Progress indicator dialog box), PasswdDlg (Login/Password dialog box), SelectFontH 
+(Font selection widget), SelectColor (Color selection widget)
+EOF

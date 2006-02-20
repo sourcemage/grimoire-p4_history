@@ -1,0 +1,35 @@
+           SPELL=jikes
+         VERSION=1.22
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+            DOCS='COPYING NEWS README doc/license.htm'
+     SOURCE_HASH=sha512:6b318f49f075da0cf0558512748bd77072f5b5b0428160538bcba01201c94719ec0f4b0cd0159ddb04fb3a86c323c8f11f09dc4b31cf880fb94e00c1ee0bbc58
+      LICENSE[0]=IBMPL
+        WEB_SITE=http://$SPELL.sf.net/
+         ENTERED=20020119
+         UPDATED=20050428
+       BUILD_API=2
+           SHORT='Jikes is a Java-to-bytecode compiler'
+cat << EOF
+Jikes is a compiler that translates JavaTM source files as defined in 
+The Java Language Specification into the bytecoded instruction set and
+binary format defined in The Java Virtual Machine Specification.
+
+You may wonder why the world needs another Java compiler, considering 
+that Sun provides javac free with its SDK. Jikes has four advantages 
+that make it a valuable contribution to the Java community.
+
+ * Open source. Jikes is OSI Certified Open Source Software. OSI 
+   Certified is a certification mark of the Open Source Initiative.
+ * Strictly Java compatible. Jikes strives to adhere to both The Java 
+   Language Specification and The Java Virtual Machine Specification 
+   as tightly as possible, and does not support subsets, supersets, 
+   or other variations of the language. The FAQ describes some of the
+   side effects of this strict language conformance.
+ * High performance. Jikes is a high performance compiler, making it 
+   ideal for use with larger projects.
+ * Dependency analysis. Jikes performs a dependency analysis on your 
+   code that provides two very useful features: Incremental builds and
+   makefile generation.
+EOF

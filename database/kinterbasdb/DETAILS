@@ -1,0 +1,20 @@
+           SPELL=kinterbasdb
+         VERSION=3.2a1
+     SOURCE_HASH=sha512:fd86836aacd26ef3395e4a96af378acd1017dd921b602f3f4a68d83676803d5f4c4705715077be380ad876ac767b358147bbf91f4db7fe614229addbcbcafbc0
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://kinterbasdb.sourceforge.net/
+         LICENSE=BSD
+         ENTERED=20030813
+         UPDATED=20030915
+           SHORT="KInterbasDB allows use of Firebird database in Python"
+cat << EOF
+KInterbasDB is a Python extension package that implements Python 
+Database API 2.0-compliant support for the open source relational 
+database Firebird and some versions of its proprietary cousin Borland® 
+Interbase®. In addition to the minimal feature set of the standard 
+Python DB API, KInterbasDB also exposes the entire native client API 
+of the database engine. 
+EOF

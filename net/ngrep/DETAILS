@@ -1,0 +1,18 @@
+           SPELL=ngrep
+         VERSION=1.44-1
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%-*}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:5a761e8af9148b397bffdb22e561bdb44f196c09f9fc8fd057d227cc0ada4a994ec3b98298e8487980ba3bebe62ba5596b8c5d0121e6ffe6bfc0ffa3922f8c91
+        WEB_SITE=http://ngrep.sourceforge.net
+         ENTERED=20011109
+         UPDATED=20020101
+           SHORT="ngrep is utility that can be used to analyze network packets."
+cat << EOF
+ngrep strives to provide most of GNU grep's common features, applying them to
+the network layer.  ngrep is a pcap-aware tool that will allow you to specify 
+extended regular or hexadecimal expressions to match against data payloads of
+packets.  It currently recognizes TCP, UDP, and ICMP across Ethernet, PPP, SLIP,FDDI, Token Ring, and null interfaces, and understands bpf filter logic in the
+same fashion as more common packet sniffing tools, such as tcpdump and snoop.
+EOF

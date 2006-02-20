@@ -1,0 +1,22 @@
+           SPELL=dnsmasq
+         VERSION=2.20
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.thekelleys.org.uk/dnsmasq/$SOURCE
+   SOURCE_URL[1]=http://www.thekelleys.org.uk/dnsmasq/archive/$SOURCE
+     SOURCE_HASH=sha512:c5d6325b4e1cef04aa33a9752521ed51a92b79ac78998d0ba337278dad857828cd471845466656d0df687c7ff3353fc92402dbaf952e3962b9d59e2c26e7bcf4
+        WEB_SITE=http://www.thekelleys.org.uk/dnsmasq/doc.html
+         ENTERED=20020225
+         UPDATED=20030822
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="dnsmasq is small nameserver"
+
+cat << EOF
+Dnsmasq is small utility designed to provide DNS (domain name) services to a 
+small network connected to the internet via a NAT (network address translation, 
+AKA ip-masquerade) firewall and a modem, cable-modem or ADSL connection. 
+Since a NAT firewall will pass DNS queries it's perfectly possible for all the 
+machines on such a network to be configured to talk directly to the ISP's name 
+server, and the HOWTO recommends doing exactly that.
+EOF

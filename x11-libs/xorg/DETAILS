@@ -1,0 +1,39 @@
+           SPELL=xorg
+if [[ "$X_LATEST" = y ]]; then
+         VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.bz2
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.freedesktop.org:/cvs/xorg:xc
+   SOURCE_IGNORE=volatile
+  FORCE_DOWNLOAD[0]=on
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
+         VERSION=6.9.0
+        XVERSION=X11R${VERSION}
+          SOURCE=${XVERSION}-src.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/xc
+   SOURCE_URL[0]=http://xorg.freedesktop.org/${XVERSION}/src-single/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.x.org/pub/${XVERSION}/src-single/$SOURCE
+#     SOURCE_HASH=sha512:8fe05f9e4ca1eb44fd344ce226c023a5904c0d94af9e769f8d24ea64f4695ed6904b2238acc16bea00637852de7cbd3241cb59f1af66e1d147dc4897308419bb
+      SOURCE_GPG=gurus.gpg:$SOURCE.sig:WORKS_FOR_ME
+fi
+        WEB_SITE=http://xorg.freedesktop.org/
+         ENTERED=20040407
+         UPDATED=20051104
+      LICENSE[0]=XCL
+       BUILD_API=2
+           SHORT="X.Org is an Open Source version of the X Window System"
+cat << EOF
+The XOrg Foundation, (a.k.a. X.org) has changed to an Open Source model to
+maintain the official Public Implementation of X11.
+
+The XOrg Foundation invites anyone who has an interest to join in. Anyone
+may create and work on a branch in the repository. See XOrgRepository for
+more information about the XOrg Foundation repository.
+
+The repository consists of an imported XFree86 tree that is very close to
+their 4.4 release. Just before its 4.4 release, XFree86 adopted a new
+licensing scheme incompatible with the GPL. For this reason, we have
+recreated its tree as closely as possible without importing files affected
+by the new license. Our tree is being referred to as simply "XOrg", and a
+public release will be made shortly.
+EOF

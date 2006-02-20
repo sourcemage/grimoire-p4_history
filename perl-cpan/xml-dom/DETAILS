@@ -1,0 +1,22 @@
+	BUILD_API=2
+           SPELL=xml-dom
+         VERSION=1.43
+          SOURCE=XML-DOM-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/XML-DOM-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/T/TJ/TJMATHER/$SOURCE
+     SOURCE_HASH=sha512:43187b6864737c70784969892899d2a0a4ad17fba172f7ca21c2d35a4824e997b5b5d827c6b7ab9e14f906573688ef1eb348f940828cc257097d9e6eca095463
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?dist=xml-dom"
+         ENTERED=20020405
+         UPDATED=20020424
+      MAINTAINER=djcomputer@gmx.net
+           SHORT="Perl module for building DOM Level 1 compliant document structures"
+cat << EOF
+This is a Perl extension to XML::Parser. It adds a new
+'Style' to XML::Parser, called 'Dom', that allows
+XML::Parser to build an Object Oriented datastructure 
+with a DOM Level 1 compliant interface.
+
+For a description of the DOM (Document Object Model), see
+http://www.w3.org/DOM/
+EOF

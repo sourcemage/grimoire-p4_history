@@ -1,0 +1,23 @@
+           SPELL=chart
+         VERSION=2.3
+          SOURCE=Chart-$VERSION.tar.gz
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Chart-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/C/CH/CHARTGRP/$SOURCE
+     SOURCE_HASH=sha512:9f2b584f7a877fb5b75f392aafab89581b7145630e0671ff69af4a5536ce16f3f9e6d541a46b83b03262d6a9f073d26490fb8c4c1db30cfa3a537b682bd09957
+         LICENSE=ART
+        WEB_SITE=http://search.cpan.org/search?dist=$SPELL
+         ENTERED=20020512
+         UPDATED=20050220
+           SHORT="Chart - a series of charting modules"
+cat << EOF
+This module is an attempt to build a general purpose graphing module that is
+easily modified and expanded. I borrowed most of the API from Martien
+Verbruggen's GIFgraph module. I liked most of GIFgraph, but I thought it was
+to difficult to modify, and it was missing a few things that I needed, most
+notably legends. So I decided to write a new module from scratch, and I've
+designed it from the bottom up to be easy to modify. Like GIFgraph, Chart
+uses Lincoln Stein's GD module for all of its graphics primitives calls.
+
+David Bonner (dbonner@cs.bu.edu)
+EOF

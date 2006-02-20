@@ -1,0 +1,27 @@
+           SPELL=weechat
+if [ "$WEECHAT_DEVEL" == "y" ]; then
+  if [ "$WEECHAT_DEVEL_AUTOUPDATE" == "y" ]; then
+         VERSION=$(date +%Y%m%d)
+  else
+         VERSION=devel
+  fi
+          SOURCE=weechat-devel.tar.gz
+  FORCE_DOWNLOAD=on
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/weechat-devel
+   SOURCE_IGNORE=volatile
+else
+         VERSION=0.1.7
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+fi
+   SOURCE_URL[1]=http://weechat.flashtux.org/download/$SOURCE
+        WEB_SITE=http://weechat.flashtux.org/index.php?lang=en
+         ENTERED=20050320
+         UPDATED=20050320
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Weechat is a nucurses based IRC program"
+cat << EOF
+Weechat is an ncurses based IRC Chat program.
+EOF

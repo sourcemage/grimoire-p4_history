@@ -1,0 +1,17 @@
+           SPELL=mysql-ruby
+         VERSION=2.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.tmtm.org/downloads/mysql/ruby/$SOURCE
+        WEB_SITE=http://www.tmtm.org/en/mysql/ruby/README.html
+     SOURCE_HASH=sha512:9e59133e3087cfb96ac228bae4c2f22f9b5d93794fd235d66e9c6cf505f3351189495b20e25d2e637d528e3dfab8877f9b216b6a97bf87216f892f8f9b6c9807
+      LICENSE[0]=GPL
+       BUILD_API=2
+         ENTERED=20050506
+         UPDATED=20050506
+            DOCS="README.html COPYING tommy.css"
+           SHORT="This is MySQL API module for Ruby."
+cat << EOF
+This is MySQL API module for Ruby. It provides the same functions for 
+Ruby programs that the MySQL C API does for C programs
+EOF

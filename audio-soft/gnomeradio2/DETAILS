@@ -1,0 +1,18 @@
+           SPELL=gnomeradio2
+         VERSION=1.6
+          SOURCE=${SPELL%2}-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL%2}-$VERSION
+   SOURCE_URL[0]=http://www.wh-hms.uni-ulm.de/~mfcn/shared/${SPELL%2}/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.wh-hms.uni-ulm.de/~mfcn/gnomeradio/
+         ENTERED=20040322
+         UPDATED=20051031
+           SHORT="FM radio tuner for the GNOME"
+cat << EOF
+Gnomeradio is a FM radio tuner for the GNOME desktop
+(version 1 and 2). It should work with every FM tuner card
+that is supported by video4linux. Remote controls are
+supported via (optional) lirc-support. Gnomeradio can
+also record radio as a Wave, MP3 or Ogg files.
+EOF

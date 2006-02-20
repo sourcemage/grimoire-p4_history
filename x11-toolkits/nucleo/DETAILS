@@ -1,0 +1,16 @@
+           SPELL=nucleo
+         VERSION=0.1-20040721
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}-${VERSION/-*/}
+   SOURCE_URL[0]=http://insitu.lri.fr/~chapuis/software/metisse/${SOURCE}
+        WEB_SITE=http://insitu.lri.fr/~chapuis/metisse/
+     SOURCE_HASH=sha512:2bed9661c37ecd5b0d0ab9c903015637e4942d879d3df3998d7dbc5010aaf9ba019507520fa68a0de49d7d10781de7091831bca1b6a0d8bfcba56d3d46eac8da
+         ENTERED=20040715
+         UPDATED=20040715
+      LICENSE[0]=LGPL
+       BUILD_API=2
+           SHORT="Video and human-computer interaction toolkit"
+cat << EOF
+Núcleo, a toolkit for exploring new uses of video and new
+human-computer interaction techniques.
+EOF

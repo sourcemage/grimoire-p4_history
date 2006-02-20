@@ -1,0 +1,24 @@
+           SPELL=nasm
+         VERSION=0.98.39
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/nasm/$SOURCE
+     SOURCE_HASH=sha512:e2eec385ac80d6de953479647dbf66e7ff4f713245e5e23a9a1f3ea3c1d4b76485f68b87a4279a8b7ca7ee103f0538e59afb709d4bf998418c6aa8a805350109
+      LICENSE[0]=LGPL
+        WEB_SITE=http://nasm.sourceforge.net
+         ENTERED=20010922
+         UPDATED=20050127
+           SHORT="80x86 assembler designed for portability/modularity."
+cat << EOF
+NASM is an 80x86 assembler designed for portability and modularity.
+It's syntax is designed to be simple and easy to understand, similar
+to Intel's but less complex.
+
+It supports a range of object file formats, including Linux and NetBSD/
+FreeBSD a.out and ELF, COFF, Microsoft 16-bit OBJ and Win32. It will also
+output plain binary files.
+
+It supports Pentium, P6, MMX, 3DNow!, SSE and SSE2 opcodes, and has macro
+capability. It includes a disassembler as well.
+EOF

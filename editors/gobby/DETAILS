@@ -1,0 +1,18 @@
+           SPELL=gobby
+         VERSION=0.2.2
+       BUILD_API=2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://releases.0x539.de/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha256:56c4dcf121eb496ac0b1d212783e3c7f01e427359a768ffa952355093a985eda
+     SOURCE_HASH=sha512:17f331f4033af6c016983b09e0a023d2f9edff1ef629d5fb8b5ae23cf64ccfb629c4b238e94cf7b68701ce1b14e05df40100eb59cbe52275c6d517cc6d54939b
+        WEB_SITE=http://gobby.0x539.de/index.html
+         ENTERED=20050930
+         UPDATED=20050930
+      LICENSE[0]=GPL
+           SHORT="collaborative editor"
+cat << EOF
+Gobby is a free collaborative editor based on libobby, a library which provides
+synced document buffers. It supports multiple documents in one session and a
+multi-user chat.
+EOF

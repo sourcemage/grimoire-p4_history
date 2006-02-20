@@ -1,0 +1,21 @@
+           SPELL=fluidsynth
+         VERSION=1.0.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+SOURCE_URL[0]=http://savannah.nongnu.org/download/fluid/stable.pkg/$VERSION/$SOURCE
+SOURCE_URL[1]=http://resonance.org/~josh/fluidsynth/$SOURCE
+     SOURCE_HASH=sha512:1ffb71085eac6eaab9215e5568f332de81e82272c8e368790255c890c3d096d6b1193cb8bffc176c863284291ff204823d459f3c5190e4e11bd7b85db1604cf4
+        WEB_SITE=http://www.fluidsynth.org
+         ENTERED=20031119
+         UPDATED=20031119  
+      LICENSE[0]=GPL
+      MAINTAINER=audio@sourcemage.org
+        SHORT="fluidsynth is a sf2 player"
+cat << EOF
+FluidSynth is a real-time software synthesizer based on the SoundFont 
+2 specifications. It is a "software synthesizer". FluidSynth can read 
+MIDI events from the MIDI input device and render them to the audio 
+device. It can also play MIDI files.
+EOF
+
+

@@ -1,0 +1,22 @@
+           SPELL=swish++
+         VERSION=6.1.2
+     SOURCE_HASH=sha512:1372c0c8e796652c9e7d2eccabc94ef2e8e1c375095feebe5d7aa1dd6d50a1b4909c74ede99892fc7ad6249833d3ff29db2648c108d96a13bf4932648dfa4e77
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://homepage.mac.com/pauljlucas/software/$SOURCE
+        WEB_SITE=http://homepage.mac.com/pauljlucas/software/swish/
+         ENTERED=20031104
+         UPDATED=20050705
+      LICENSE[0]=GPL
+       BUILD_API=2
+     GCC_VERSION=3.4
+           SHORT='Unix-based file indexing and searching engine'
+cat << EOF
+SWISH++ is a Unix-based file indexing and searching engine (typically
+used to index and search files on web sites). It was based on SWISH-E
+although SWISH++ is a complete rewrite. SWISH++ was developed to
+circumvent my difficulties with using the SWISH-E package.
+Features include lightning-fast indexing, handles large collections
+of files, tools included to index non-text files such as Microsoft
+Office documents, near instantaneous searches, and more...
+EOF

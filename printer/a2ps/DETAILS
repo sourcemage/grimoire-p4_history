@@ -1,0 +1,19 @@
+           SPELL=a2ps
+         VERSION=4.13b
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-4.13
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:34e466c56640c04397a4764053e20d5cc816766523c9e97f94d2e3aaa6ab890b3ce9e25f2dbcd1dccb74d05c6c797cb12f3cd119f1b99ba6d3158d11b6c2647e
+        WEB_SITE=http://www.gnu.org/directory/GNU/a2ps.html
+         ENTERED=20010922
+         UPDATED=20050627
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Any to PostScript filter"
+cat << EOF
+a2ps is an Any to PostScript filter.  Of course it processes plain text files,
+but also pretty prints quite a few popular languages (66).  Moreover it has
+the ability to delegate the processing of some files to other filters (such as
+groff, texi2dvi, dvips, gzip etc.), which allows a uniform treatment (n-up,
+page selection etc.) of heterogeneous files.
+EOF

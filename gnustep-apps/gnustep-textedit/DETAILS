@@ -1,0 +1,23 @@
+           SPELL=gnustep-textedit
+if [ "$GTEXTEDIT_CVS_AUTOUPDATE" == "y" ];
+then
+         VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
+          SOURCE=TextEdit-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/TextEdit-cvs
+   SOURCE_URL[0]=cvs://:pserver:anoncvs@cvs.savannah.gnu.org:/cvsroot/backbone:System
+        WEB_SITE=http://www.nongnu.org/backbone
+   SOURCE_IGNORE=volatile
+      LICENSE[0]=GPL
+  FORCE_DOWNLOAD=1
+         ENTERED=20050908
+         UPDATED=20050908
+       BUILD_API=2
+           SHORT="GNUstep text editor."
+
+cat << EOF
+GNUstep text editor.
+EOF
+

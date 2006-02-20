@@ -1,0 +1,26 @@
+           SPELL=gnustep-gdl2
+         VERSION=0.9.1
+          SOURCE=gdl2-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gdl2-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnustep.org/pub/gnustep/libs/$SOURCE
+        WEB_SITE=http://www.gnustep.org
+     SOURCE_HASH=sha512:08984a04f53df2b676752590dd528766ee1f05a759ed05316259a4f1f7706d1903833096d16521ab6964e29fd887e4fdaa36cef687d0ae1716f078f6e1fe7edd
+      LICENSE[0]=LGPL
+         ENTERED=20050908
+         UPDATED=20050908
+       BUILD_API=2
+           SHORT="The GNUstep Database Library 2 (GDL2)."
+     TAR_OPTIONS="--no-same-owner"
+
+cat << EOF
+The GNUstep Database Library 2 (GDL2) is a set of libraries to map
+Objective-C objects to rows of relational database management systems
+(RDBMS).  It aims to be compatible with Enterprise Objects Framework
+(EOF) as released with WebObjects 4.5 from Apple Inc.  It requires the
+GNUstep Make Package 1.9.1 and the Base Library 1.9.1.  Alternatively
+it is meant to work with other OpenStep-like implementations like
+Cocoa together with the GNUstep BaseAdditions Library 1.9.1.  For UI
+applications which may want to use adaptor specific login panels, you
+should also install the GNUstep GUI Library 0.9.2 and the GNUstep
+Backend Library 0.9.2.  These should also work with AppKit.
+EOF

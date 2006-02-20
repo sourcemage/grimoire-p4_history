@@ -1,0 +1,25 @@
+2006-02-10 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed broken thinktux mirror
+
+2005-12-15 Eric Sandall <eric@sandall.us>
+	* DETAILS: e_modules is now it's own repository and outside of e17/
+	  (thanks to devilhorns from Get-E.org ;))
+
+2005-11-01 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added CVS mirror (faster than SourceForge, but 30 minutes behind)
+	  SOURCE_URL now uses $SPELL
+	  Changed MD5[0]=IGNORE to SOURCE_IGNORE=volatile
+
+2005-09-21 Eric Sandall <eric@sandall.us>
+	* PREPARE,DETAILS: Updated to proper multi-version support
+	  See http://www.sourcemage.org/grimoire/spell_multi_version
+	  Removed BUILD_API=2, section-wide now
+	* DEPENDS: Added missing dependency on CVS if needed
+	* PRE_BUILD: Use NOCONFIGURE=ON ./autogen.sh
+
+2005-09-16 Arjan Bouter <abouter@sourcemage.org>
+	* DEPENDS: added a dependency on esmart
+
+2005-07-03 Andrew "ruskie" Levstik <ruskie@mages.ath.cx>
+	* DETAILS, HISTORY, PRE_BUILD, DEPENDS: Created
+

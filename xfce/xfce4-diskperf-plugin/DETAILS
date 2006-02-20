@@ -1,0 +1,21 @@
+           SPELL=xfce4-diskperf-plugin
+         VERSION=1.5
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.berlios.de/xfce-goodies/$SOURCE
+        WEB_SITE=http://xfce-goodies.berlios.de
+     SOURCE_HASH=sha512:0a9329377de6eed061f53201528501ea3cb3ed4363f98194b3b355a3105f813bc99f989a21b3fc5fc819e376bc6f7d434c47f7171da85e78376c7ccbd1dc4504
+      LICENSE[0]=BSD
+         ENTERED=20031009
+         UPDATED=20031009
+           SHORT="disk performance monitor for the XFce4 panel"
+cat << EOF
+The DiskPerf plugin displays disk/partition performance based on the
+rsect/wsect data provided by recent Linux kernels (at least 2.4.20 - I think -
+compiled wit h CONFIG_BLK_STATS turned on, or possibly older kernel patched
+with "Disk extended statistics" in /proc/partitions).
+
+To know if your system provides such statistics:
+        - less /proc/partitions
+        - check that there are rsect/wsect data
+EOF

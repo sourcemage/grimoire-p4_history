@@ -1,0 +1,21 @@
+           SPELL=gnustep-base
+         VERSION=1.11.2
+      PATCHLEVEL=1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.gnustep.org/pub/gnustep/core/$SOURCE
+        WEB_SITE=http://www.gnustep.org
+     SOURCE_HASH=sha512:73753f7e3a7e51f0f33f876aec949774dd73645c72e5300a3349d941a6423162e84fbe8beca0302d4f8cf943b5a40f4d76648713de509b646a52d20af032eaef
+      LICENSE[0]=LGPL
+         ENTERED=20050908
+         UPDATED=20050908
+       BUILD_API=2
+           SHORT="GNUstep implementation of OPENSTEP base libs."
+
+cat << EOF
+The GNUstep Base Library is a library of general-purpose, non-graphical
+Objective C objects.  For example, it includes classes for strings,
+object collections, byte streams, typed coders, invocations,
+notifications, notification dispatchers, moments in time, network ports,
+remote object messaging support (distributed objects), and event loops.
+EOF

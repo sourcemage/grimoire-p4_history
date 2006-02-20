@@ -1,0 +1,25 @@
+           SPELL=reiserfsprogs
+         VERSION=3.6.19
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.namesys.com/pub/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.roedu.net/pub/mirrors/ftp.namesys.com/pub/reiserfsprogs/$SOURCE
+   SOURCE_URL[2]=http://gd.tuwien.ac.at/utils/fs/reiserfs/${SPELL}/${SOURCE}
+   SOURCE_URL[3]=http://www.go.dlr.de/linux/src/${SOURCE}
+   SOURCE_URL[4]=http://fresh.t-systems-sfr.com/linux/src/${SOURCE}
+     SOURCE_HASH=sha512:d7a98e2fd029c0a9f764a635bdad84fc6acaeae2353c17c4a9a38aee39cc84c9e98c3680e511f1efa2092af652f9a517375fe7d973e91a7d2e8b9df403894494
+        WEB_SITE=http://www.namesys.com/
+         ENTERED=20010922
+         UPDATED=20031029
+      LICENSE[0]=GPL
+           SHORT="Tools for using reiser file system."
+cat << EOF
+reiserfs is a revolutionary new approach to file system design which
+stores not just filenames but the files themselves in a B*-tree. It is a
+generation ahead of alternatives which use older plain B-tree
+technology, and cannot store the files themselves in the tree. Reiserfs
+doesn't suffer from log congestion either, you can effectively use it
+for quickly creating a 100,000 entry directory, and it is fairly unique
+in that.
+This spell will install the tools for using reiser file system on your box.
+EOF

@@ -1,0 +1,29 @@
+depends  totem  &&
+
+depends  gst-plugins  &&
+
+if  [  "$RHYTHMBOX_DBUS"  =  "y"  ];  then
+  depends  dbus			'--with-dbus --without-bonobo'
+else
+  depends  libbonobo	'--without-dbus --with-bonobo'
+fi  &&
+
+if  [  "$RHYTHMBOX_FLAC"  ==  "y"  ];  then
+  depends  flac       '--enable-flac'  &&
+  depends  libid3tag
+fi  &&
+
+optional_depends  "libgpod"             \
+                  "--with-ipod"         \
+                  "--without-ipod"      \
+                  "for Apple iPod support" &&
+
+optional_depends  "libvorbis"           \
+                  "--enable-vorbis"     \
+                  "--disable-vorbis"    \
+                  "for vorbis support"  &&
+
+optional_depends  nautilus-cd-burner         \
+                  "--with-cd-burner"		 \
+                  "--without-cd-burner"		 \
+                  "for CD burner support"

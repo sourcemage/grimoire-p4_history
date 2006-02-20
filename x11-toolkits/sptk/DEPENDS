@@ -1,0 +1,19 @@
+optional_depends  fltk \
+                  "--enable-fltk" \
+                  "--disable-fltk" \
+                  "gui support"          &&
+
+optional_depends  sqlite  \
+                  "--enable-sqlite" \
+                  "--disable-sqlite" \
+                  "sqlite3 database support" &&
+
+optional_depends  unixodbc  \
+                  "--enable-odbc" \
+                  "--disable-odbc" \
+                  "ODBC database support" &&
+
+optional_depends  aspell            \
+                  ""                \
+                  ""                \
+                  "spell checking"

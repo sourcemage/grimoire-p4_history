@@ -1,0 +1,14 @@
+depends          gnustep-base    &&
+depends          tiff            &&
+depends          libpng          &&
+optional_depends libungif        &&
+optional_depends aspell          &&
+optional_depends cups            &&
+optional_depends audiofile       &&
+optional_depends portaudio       &&
+
+if [ "$GNUSTEP_BUILD_DOC" == "y" ]; 
+then
+	depends tetex           &&
+	depends texinfo
+fi

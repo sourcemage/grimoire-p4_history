@@ -1,0 +1,23 @@
+           SPELL=unionfs
+         VERSION=1.1.1
+     SOURCE_HASH=sha512:b5f582c4b3495a91f2e70f0545d4df47936c7aca6cebf09b076852d5edd12b77c9c07aa6a2ef367fcee352baa7484264dfc5b653053cd57c7a51e12dc0eb04e4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.fsl.cs.sunysb.edu/pub/unionfs/$SOURCE
+        WEB_SITE=http://www.fsl.cs.sunysb.edu/project-unionfs.html
+         ENTERED=20050811
+         UPDATED=20050811
+       BUILD_API=2
+           SHORT="Stackable Unification File System"
+      LICENSE[0]=GPL
+cat << EOF
+Unionfs is a stackable unification file system, which can appear to
+merge the contents of several directories (branches), while keeping
+their physical content separate.  Unionfs is useful for unified source
+tree management, merged contents of split CD-ROM, merged separate
+software package directories, data grids, and more.  Unionfs allows
+any mix of read-only and read-write branches, as well as insertion and
+deletion of branches anywhere in the fan-out.  To maintain Unix
+semantics, Unionfs handles elimination of duplicates, partial-error
+conditions, and more.
+EOF

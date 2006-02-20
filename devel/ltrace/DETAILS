@@ -1,0 +1,19 @@
+           SPELL=ltrace
+         VERSION=0.3.36
+       BUILD_API=2
+          SOURCE=${SPELL}_$VERSION.orig.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://ftp.debian.org/debian/pool/main/l/ltrace/$SOURCE
+     SOURCE_HASH=sha512:1901167ec6553c1b1834ce457ad267a55be81d8a3b96559c0e54e2ab9ba48466ea1a00c8bc5cb93fae2d6aa2da06d3ee8bae698c3f6e63db606e6b88218a2d84
+      LICENSE[0]=GPL
+        WEB_SITE=http://packages.debian.org/unstable/utils/ltrace.html
+         ENTERED=20020413
+         UPDATED=20020413
+           SHORT="ltrace is a debugging program which runs a specified command until it exits."
+cat << EOF
+ltrace is a debugging program which runs a specified command until it exits. 
+While the command is executing, ltrace intercepts and records the dynamic 
+library calls which are called by the executed process and the signals 
+received by that process. It can also intercept and print the system calls
+executed by the program.
+EOF

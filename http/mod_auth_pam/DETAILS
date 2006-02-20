@@ -1,0 +1,18 @@
+           SPELL=mod_auth_pam
+         VERSION=2.0-1.1.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+   SOURCE_URL[0]=http://pam.sourceforge.net/mod_auth_pam/dist/$SOURCE
+     SOURCE_HASH=sha512:57575136e51e089a3839c519b0621322bf5a9a88ebf34ce924e38c583dec5201bc7d04392b0c6686e3179551e37d8111fe3511b2d1dad50e1d0baeef93ccd912
+        WEB_SITE=http://pam.sourceforge.net/mod_auth_pam/
+         ENTERED=20030203
+         UPDATED=20030810
+      LICENSE[0]="BSD GPL"
+       BUILD_API=2
+           SHORT="The PAM authentication module for Apache HTTP Server"
+cat << EOF
+The PAM authentication module implements Basic authentication on top of the
+Pluggable Authentication Module library. Thereby it supports standard unix
+passwd, shadow, NIS, SMB auth and radius authentication transparently and
+easily interchangeable, wherever the HTTP protocol allows it.
+EOF

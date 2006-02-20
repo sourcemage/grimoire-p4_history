@@ -1,0 +1,20 @@
+           SPELL=bdb
+         VERSION=0.5.8
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://moulon.inra.fr/pub/ruby/$SOURCE
+     SOURCE_HASH=sha512:2ab7ebd16d6f3246d77739fdb44846af116a190026c8c7470bc08dfe9689781db10ecda1fc161d19b1df5e063df33149b02dbf33ef5154fe63fe2406a5bb3f37
+        WEB_SITE=http://moulon.inra.fr/ruby/bdb.html
+         ENTERED=20041207
+         UPDATED=20060119
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Berkeley DB is an embedded database system"
+cat << EOF
+Berkeley DB is an embedded database system that supports keyed access to data.
+
+The library includes support for the following access methods:
+  * B+tree: Stores keys in sorted order, using a default function that does lexicographical ordering of keys.
+  * Hashing: Stores records in a hash table for fast searches based on strict equality, using a default that hashes on the key as a bit string.  Extended Linear Hashing modifies the hash function used by the table as new records are inserted, in order to keep buckets underfull in the steady state.
+  * Fixed and Variable-Length Records: Stores fixed- or variable-length records in sequential order.  Record numbers may be immutable, requiring that new records be added only at the end of the database, or mutable, permitting new records to be inserted between existing records.
+EOF

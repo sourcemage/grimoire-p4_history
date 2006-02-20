@@ -1,0 +1,20 @@
+            SPELL=openflower
+          VERSION=v0.3
+           SOURCE=$SPELL-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+         WEB_SITE=http://openflower.sourceforge.net/
+       LICENSE[0]=GPL
+      SOURCE_HASH=sha512:c861ccad070407b27e7cafe480fa12ebfd02e079bf571985939b2a94f4bb587e70c2a7da447b0b0bca890f7df1ca855ae3a83c67312bbf279a7e4e407329a1b0
+          ENTERED=20050111
+          UPDATED=20050111
+        BUILD_API=2
+       MAINTAINER=d.malcolm@auckland.ac.nz
+            SHORT="OpenFlower is an open source CFD software"
+
+cat << EOF
+OpenFlower is an open source CFD software (FLOW solvER, literally) 
+written in C++. It is mainly devoted to the resolution of the 
+turbulent unsteady incompressible Navier-Stokes equations.
+EOF
+

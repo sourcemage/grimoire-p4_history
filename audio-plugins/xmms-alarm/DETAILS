@@ -1,0 +1,16 @@
+           SPELL=xmms-alarm
+         VERSION=0.3.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.snika.uklinux.net/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:7c795fa35cabce1d444a82f2c17b81b4289a965d2e192bfeca71d766966d0c61903d767b02e5e7ac5343e8f1db9e62db3ab264b068d284842508201e6496550f
+        WEB_SITE=http://www.snika.uklinux.net/?p=xmms-alarm
+         ENTERED=20020406
+         UPDATED=20021010
+      LICENSE[0]=GPL
+      MAINTAINER=unet@sourcemage.org
+           SHORT="A XMMS alarm plugin."
+cat << EOF
+An alarm plugin to use with XMMS that fades up the volume in the morning
+and wakes you up.
+EOF

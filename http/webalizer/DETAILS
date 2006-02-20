@@ -1,0 +1,15 @@
+           SPELL=webalizer
+         VERSION=2.01-10
+          SOURCE=$SPELL-$VERSION-src.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.mrunix.net/pub/webalizer/$SOURCE
+     SOURCE_HASH=sha512:5eb0c6344d99f92f8b2f72db533b61e7f79f18b94b1adbadc704f0a0b72998042d53daa1a2b8c92975be91ed25252f21ba99a1852365bccdc2338eb5041d6ff9
+        WEB_SITE=http://www.mrunix.net/webalizer/
+         ENTERED=20020217
+         UPDATED=20020807
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Web log visualizer"
+cat << EOF
+Webalizer parses your log files and creates beautiful HTML-Pages.
+EOF

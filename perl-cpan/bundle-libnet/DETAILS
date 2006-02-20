@@ -1,0 +1,36 @@
+           SPELL=bundle-libnet
+         VERSION=1.19
+#          SOURCE=libnet-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/libnet-$VERSION
+#   SOURCE_URL[0]=http://www.cpan.org/authors/id/G/GB/GBARR/$SOURCE
+#     SOURCE_HASH=sha512:15a6d6df5bb5eeeaf8b1744cf21523d43e3ad1217470bd5b538b225c53bc9881d8740d1b866e40fdff1f3d59b5cbbb25c732d78e76fe3b1e42b333444602d954
+       BUILD_API=2
+         LICENSE=ART
+        WEB_SITE="http://search.cpan.org/search?module=Bundle::libnet"
+         ENTERED=20020312
+         UPDATED=20050224
+           SHORT="Network protocols for perl"
+cat << EOF
+
+This bundle contains perl interfaces to the most common
+network protocols:
+
+    modules
+    ~~~~~~~
+    Net::Cmd
+    Net::Config
+    Net::Domain
+    Net::FTP
+    Net::FTP::A
+    Net::FTP::E
+    Net::FTP::I
+    Net::FTP::L
+    Net::FTP::dataconn
+    Net::NNTP
+    Net::Netrc
+    Net::POP3
+    Net::SMTP
+    Net::Time
+    Net::Telnet
+
+EOF

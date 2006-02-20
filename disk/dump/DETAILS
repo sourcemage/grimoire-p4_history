@@ -1,0 +1,18 @@
+           SPELL=dump
+         VERSION=0.4b40
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:afa29ee992f33c3b2129cb57e04b99d7d23337fc167a2a294024fb13025777698da9f4791505b3272480098f622b52165b70f99128b3daf41d9b16c79628e45e
+        WEB_SITE=http://sourceforge.net/projects/dump/
+         ENTERED=20020201
+         UPDATED=20020218
+      LICENSE[0]=http://www.freebsd.org/copyright/freebsd-license.html
+           SHORT="dump and restore utilities for ext2 and ext3 filesystems"
+cat << EOF
+dump and restore facilitate backups to tapedrive from ext2 and ext3
+filesystems.  If you are using another filesystem (e.g. XFS, Reiser)
+you will not want to use these utilities, but rather versions specific
+to those filesystems (e.g. xfs-dump/xfs-restore, etc.) packaged
+separately.
+EOF

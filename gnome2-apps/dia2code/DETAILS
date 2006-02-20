@@ -1,0 +1,24 @@
+           SPELL=dia2code
+         VERSION=0.8.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://flow.dl.sourceforge.net/sourceforge/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:fcc8f821a90c70b74403c08b022693ea2b185db95c4c1e7df7aa32fc1a70a53fb25276f34dee0277bf55f9d5960a31005dc00d15a220d07cc8be8bf5fb75bb37
+        WEB_SITE=http://dia2code.sourceforge.net
+      LICENSE[0]=GPL
+       BUILD_API=2
+         ENTERED=20030820
+         UPDATED=20030820
+      MAINTAINER=eschabell@sourcemage.org
+           SHORT="Dia2Code is a small utility used to generate code from a Dia diagram."
+cat << EOF
+Dia2Code is a small utility used to generate code from a Dia diagram. 
+
+Dia is a program to make diagrams. If you didn't know it, you might 
+consider checking its homepage first. 
+
+Dia2Code basically reads a Dia diagram file that contains an UML class 
+diagram and creates files in the language of choice that contain the 
+bare bones of the classes represented in the diagram. 
+EOF

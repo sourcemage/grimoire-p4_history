@@ -1,0 +1,21 @@
+           SPELL=httptunnel
+         VERSION=3.3
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.nocrew.org/software/httptunnel/$SOURCE
+     SOURCE_HASH=sha512:84503e27e84cd39441a7592d6446e30fce07a54b940e4398407dc105fabc6c8f96d3b5d05137d6dab22b2088c5b114728551337429748c900bd6fe7d6b6109e5
+        WEB_SITE=http://www.nocrew.org/software/httptunnel.html
+      MAINTAINER=hgr@vabo.cz
+         ENTERED=20020513
+         UPDATED=20020513
+           SHORT="httptunnel creates a virtual data connection tunnelled in HTTP requests"
+cat << EOF
+httptunnel creates a bidirectional virtual data 
+connection tunnelled in HTTP requests. The HTTP 
+requests can be sent via an HTTP proxy if so desired. 
+
+This can be useful for users behind restrictive 
+firewalls. If WWW access is allowed through a HTTP 
+proxy, it's possible to use httptunnel and, say, telnet 
+or PPP to connect to a computer outside the firewall. 
+EOF

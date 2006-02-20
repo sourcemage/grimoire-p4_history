@@ -1,0 +1,21 @@
+           SPELL=gnome-libs
+         VERSION=1.4.2
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+     SOURCE_HASH=sha512:f145a3707c0777a0f864f37935819a8425be8d2f5622ef8f514282840032902c03a3a9ea6e9fc82a83f1302f6a400d74aefb3b6ba503f846c02e2ec699e5d3ef
+      LICENSE[0]=GPL
+      LICENSE[1]=LGPL
+       BUILD_API=2
+     GCC_VERSION=3.4
+        WEB_SITE=http://www.gnome.org
+         ENTERED=20010922
+         UPDATED=20021103
+           SHORT="gnome-libs provides the libraries essential to most gnome programs."
+cat << EOF
+gnome-libs
+These are the GNOME libraries, the foundation for most of the
+application of the GNOME project.
+EOF

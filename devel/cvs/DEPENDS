@@ -1,0 +1,7 @@
+depends  gnupg     &&
+depends  smgl-fhs  &&
+
+optional_depends  zlib                                 \
+                  '--with-external-zlib'               \
+                  '--without-external-zlib'            \
+                  'for system-installed zlib package'

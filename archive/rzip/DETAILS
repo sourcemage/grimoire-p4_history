@@ -1,0 +1,18 @@
+           SPELL=rzip
+         VERSION=2.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://rzip.samba.org/ftp/rzip/$SOURCE
+     SOURCE_HASH=sha512:de0fef3cadca480baa0a6112850037f3adc7eb2638dd230f8f3adc75189f4b2cb06d42dfeaf50bc2c632c5857b53f90deac4fdd1f0b68d547ed17e0c3ef3cd92
+        WEB_SITE=http://rzip.samba.org
+         ENTERED=20041114
+         UPDATED=20041114
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="A file compression program for large files"
+cat << EOF
+rzip is a compression program, similar in functionality
+to gzip or bzip2, but able to take advantage long distance
+redundancies in files, which can sometimes allow rzip to
+produce much better compression ratios than other programs.
+EOF

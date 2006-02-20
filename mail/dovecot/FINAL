@@ -1,0 +1,4 @@
+mkdir -p /var/log/dovecot
+
+message "${MESSAGE_COLOR}Use the following script to generate certificates for IMAP and POP3:${DEFAULT_COLOR}"
+message "${MESSAGE_COLOR}sudo $GRIMOIRE_DIR/http/httpd-dev/mksscert.sh <imap|pop3>${DEFAULT_COLOR}"

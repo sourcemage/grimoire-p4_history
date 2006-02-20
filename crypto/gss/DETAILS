@@ -1,0 +1,16 @@
+           SPELL=gss
+         VERSION=0.0.16
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://josefsson.org/gss/releases/$SOURCE
+   SOURCE_URL[1]=ftp://alpha.gnu.org/gnu/gss/$SOURCE
+     SOURCE_HASH=sha512:69bd5554017dee88d2d9f90c757c6a3c7dac3b5779dd3cc327e669c1e6fe77aaba5599cc52b32f8e9d13f09c1a0000b40cc37d3c419c5163cc720e8b551fe629
+        WEB_SITE=http://www.gnu.org/software/gss/
+         ENTERED=20031013
+         UPDATED=20031013
+      LICENSE[0]=GPL
+           SHORT="Generic Security Service (GSS-API) implementation"
+cat << EOF
+GSS is an implementation of the Generic Security Service Application Program Interface (GSS-API, RFC 2743/2744). GSS-API is used by network servers (e.g., IMAP, SMTP) to provide security services, e.g., authenticate clients against servers. GSS consists of a library and a manual.
+EOF

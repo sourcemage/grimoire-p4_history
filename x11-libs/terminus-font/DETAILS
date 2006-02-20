@@ -1,0 +1,27 @@
+           SPELL=terminus-font
+         VERSION=4.14
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.is-vn.bg/hamster/${SOURCE}
+     SOURCE_HASH=sha512:bd91e30699c1edbd03977763a43a5a9fb0916ce1b925497c65e14553aaa469fd9815d1cafed38be3b43e0e9b9bcf25d1670944f607050a7c245679879a150acd
+        WEB_SITE=http://www.is-vn.bg/hamster/jimmy-en.html
+       BUILD_API=2
+         ENTERED=20050720
+         UPDATED=20050720
+      LICENSE[0]=GPL
+           SHORT="a clean fixed width font"
+cat << EOF
+Terminus Font is designed for long (8 and more hours per day) work
+with computers. Version 4.14 contains 603 characters, covering code
+pages ISO8859-1/2/5/9/13/15/16, Windows-1250/1251/1252/1254/1257,
+IBM-437/852/855/866, KOI8-R/U/E/F, Bulgarian-MIK, Paratype-PT154/PT254,
+Macintosh-Ukrainian and Esperanto, and also the vt100 and xterm 
+pseudographic characters.
+
+The sizes present are 6x12, 8x14, 8x16, 10x20, 12x24, 14x28 and 16x32.
+The styles are normal and bold (except for 6x12), plus EGA/VGA-bold for
+8x14 and 8x16.
+
+Compilation and installation on Linux console, BSD console (not tested)
+and X11 Window System are supported.
+EOF

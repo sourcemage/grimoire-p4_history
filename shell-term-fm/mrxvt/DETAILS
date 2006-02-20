@@ -1,0 +1,20 @@
+           SPELL=mrxvt
+         VERSION=0.4.2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/materm/$SOURCE
+     SOURCE_HASH=sha512:2ca3cd98f8fc78a231c587c3ffdcebfd02362f16f53a1c58fdb75c1ff07932888ba024eec7ef22b282ade71911f16701c99bd1c7ef7a9d208aacc70dcce7da04
+        WEB_SITE=http://materm.sourceforge.net/
+       BUILD_API=2
+         ENTERED=20041110
+         UPDATED=20041110
+      LICENSE[0]=GPL
+           SHORT="multi-tabbed terminal emulator"
+cat << EOF
+Mrxvt is a multi-tabbed (like gnome-terminal/konsole) terminal emulator
+for the X Window System. It targets to be light-weight, so the desktop
+environment, like CDE, KDE or GTK is not required in order to run it.
+It achieves this without losing the common useful features, like image
+and pseudo-transparent background, multi-style scrollbars, XIM and CJK
+support, etc.
+EOF

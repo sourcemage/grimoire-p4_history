@@ -1,0 +1,19 @@
+           SPELL=bsd-finger
+         VERSION=0.17
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/$SOURCE
+     SOURCE_HASH=sha512:07570a9a5797579273938ef728f222f483c733e78eb6acb00e2bce9ff9df29aa85ed715872032701c8f67fcbc7cf5501f12dc2b8234c30df7d25f50cc38359b0
+        WEB_SITE=http://www.linux.org.uk
+         ENTERED=20020528
+         UPDATED=20020903
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Finger client and server"
+cat << EOF
+This is bsd-finger for Linux.
+
+Contents: 
+	finger		Program for printing user information
+	fingerd		Daemon for remote finger access
+EOF

@@ -1,0 +1,20 @@
+           SPELL=patch
+         VERSION=2.5.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:2697fe590762d19f659aa11fd272e6565eedcc2599e56357bac95a9147e82559e64c2e4fcb74076c6134fee942903b02bd070d2df425cc9a9342b5d7da04cb3f
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.gnu.org/software/patch/patch.html
+       BUILD_API=2
+         ENTERED=20010922
+         UPDATED=20010922
+           SHORT="patch applies a patch to a file"
+cat << EOF
+patch - Applies a patch to a file
+GNU version of Larry Wall's program that takes "diff's" output and
+applies it to an original file to generate a modified version of that
+file. Normally, the patched versions are put in place of the originals.
+Backups can be made.
+EOF

@@ -1,0 +1,17 @@
+           SPELL=ttf-bitstream-vera
+         VERSION=1.10
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${GNOME_URL}/sources/$SPELL/$BRANCH/$SOURCE
+     SOURCE_HASH=sha512:75b481553dbe27711ff779c13990397f76d59de819085e55092fb2ee86d2780232512487a5dce33b29e38edfcc73e34efbba07f7016e7ff4e59bb35301e7a392
+      LICENSE[0]=http://www.gnome.org/fonts/
+       BUILD_API=2
+        WEB_SITE=http://www.gnome.org/fonts/
+         ENTERED=20030423
+         UPDATED=20030423
+           SHORT="the Bitstream Vera fonts are a set of free high quality fonts"
+cat << EOF
+The Bitstream Vera fonts are a set of 10 high quality truetype fonts released
+under a free license.
+EOF

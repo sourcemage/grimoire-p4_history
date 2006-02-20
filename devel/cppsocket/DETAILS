@@ -1,0 +1,17 @@
+           SPELL=cppsocket
+         VERSION=0.8.4
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:dad708af26655cb34b4a52dddf98eba66a691d045af3ebccd24dd52cabca383db2e4d744e604cf3426fff83e15562b7b92e1275de13abebc57d1cac8bdb0c4e2
+        WEB_SITE=http://sourceforge.net/projects/${SPELL}
+         ENTERED=20030204
+         UPDATED=20030204
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Small C++ library for socket programming"
+cat << EOF
+CPPSocket is a small Classlibrary for C++ that supports an easy usage
+of socket-programming for networking-software. It provides a simple
+object-oriented interface to the classic C Library calls.
+EOF

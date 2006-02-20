@@ -1,0 +1,17 @@
+            SPELL=nmix
+          VERSION=0.0.1
+           SOURCE=${SPELL}-$VERSION.tar.gz
+ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL
+    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+         WEB_SITE=http://sourceforge.net/projects/nmix/
+      MAINTAINER=afrayedknot@thefrayedknot.armory.com
+         LICENSE[0]=GPL
+        SOURCE_HASH=sha512:34aeaa739daf10435d5762e7d971ad38a9075646987542f5b5aeaea9287af8683f07dfad9855ea7eaa2ec295ec695afcb942fe27dfb6dc6c404e4ae631548e02
+         ENTERED=20020911
+         UPDATED=20020911
+            SHORT="A simple ncurses audio mixer"
+cat << EOF
+nmix is a simple console based mixer. It uses the ncurses library and
+is perfect for users that dont want all the overhead of a GUI or extra
+features, or who just want their mixer in an xterm or on a vc.
+EOF

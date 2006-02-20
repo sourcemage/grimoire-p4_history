@@ -1,0 +1,18 @@
+           SPELL=libmpeg3
+         VERSION=1.5.4
+          SOURCE=$SPELL-$VERSION-src.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/heroines/$SOURCE
+        WEB_SITE=http://heroinewarrior.com
+     SOURCE_HASH=sha512:966bec7d33f85d2f0b89fbe1f6dfc3d712306e6ca95e9e8d56690e5033a765417f4cbccc61202a26a720bfc3ce8f7c1778cd6bed1837be974a0c51ba824d441a
+      LICENSE[0]=LGPL
+         ENTERED=20030425
+         UPDATED=20030425
+     GCC_VERSION=3.4
+           SHORT="Libmpeg3 supports advanced editing and manipulation of MPEG streams"
+cat << EOF
+Libmpeg3 supports advanced editing and manipulation of MPEG streams. MPEG is
+normally a last mile format but with libmpeg3 you can edit it like a first mile
+solution. Unless you have a need for MPEG editing and copying, you're better
+off using a consumer library like FFMPEG.
+EOF

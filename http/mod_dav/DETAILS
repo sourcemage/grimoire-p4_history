@@ -1,0 +1,20 @@
+           SPELL=mod_dav
+         VERSION=1.0.3-1.3.6
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.webdav.org/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:9f2320a1862278fb668120d617742bf6dd688b4355de76782c214b9e82066573430d0c9099f4a25050b0e3032ca399e96c4cd0ac4af686d813e4eb8f6beb19ab
+      LICENSE[0]=BSD
+        WEB_SITE=http://www.webdav.org/mod_dav/
+      MAINTAINER=sam@sourcemage.sk
+         ENTERED=20030312
+         UPDATED=20030403
+           SHORT='Apache  module to provide DAV capabilities (RFC 2518) for your Apache web server'
+cat << EOF
+mod_dav enables Apache to understand the WebDAV protocol (extensions to HTTP). 
+WebDAV stands for "Web-based Distributed Authoring and Versioning", and 
+is defined by RFC 2518. WebDAV is intended to replace proprietary authoring 
+protocols such as those used by Frontpage or NetObjects' Fusion, but is also 
+a complete set of protocols for manipulating a webserver's files and 
+directories, and their properties.
+EOF

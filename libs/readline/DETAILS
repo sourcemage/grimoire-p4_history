@@ -1,0 +1,23 @@
+           SPELL=readline
+         VERSION=5.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.gnu.org/pub/gnu/$SPELL/$SOURCE
+   SOURCE_URL[2]=ftp://ftp.cwru.edu/pub/bash/$SOURCE
+     SOURCE_HASH=sha512:0b0fd8af5e898593380e8534579c8b056bb88753213dab75451421c16e553c6c60f617a96d94eb6e368b9dfb64daeaa7ade9e29d7c183da3df5fbec70ba3675a
+      LICENSE[0]=GPL
+        WEB_SITE=http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+         ENTERED=20010922
+         UPDATED=20040517
+       BUILD_API=2
+           SHORT="readline lets users edit command lines as they are typed in."
+cat << EOF
+readline - Lets users edit command lines as they are typed in
+The Readline library provides a set of functions for use by applications
+that allow users to edit command lines as they are typed in. Both Emacs
+and vi editing modes are available. The Readline library includes
+additional functions to maintain a list of previously-entered command
+lines, to recall and perhaps reedit those lines, and perform csh-like
+history expansion on previous commands.
+EOF

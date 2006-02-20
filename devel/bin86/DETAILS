@@ -1,0 +1,18 @@
+           SPELL=bin86
+         VERSION=0.16.17
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.cix.co.uk/~mayday/dev86/$SOURCE
+     SOURCE_HASH=sha512:154b367772cca27f1ff65c6f5db21e20223e90a87129f0308d8a03d99c0a8df6918eafa8e5cb889909aca8f637b7aa24ea1a14a44e5f2d9ccd9af511c01374bd
+        WEB_SITE=http://www.cix.co.uk/~mayday
+         ENTERED=20010922
+         UPDATED=20020418
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="a86 and ld86, 8086/80386 assembler and loader."
+cat << EOF
+as86 and ld86 provide a complete 8086 assembler and loader which can
+generate 32-bit code for the 386+ processors. These tools are used to
+create the 16-bit bootsector and setup binaries for linux. The syntax is
+not compatible with the GNU assembler.
+EOF

@@ -1,0 +1,26 @@
+           SPELL=magicfilter
+         VERSION=1.2
+          SOURCE=${SPELL}_$VERSION.orig.tar.gz
+         SOURCE2=${SPELL}_${VERSION}-55.diff.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION.orig
+   SOURCE_URL[0]=ftp://ftp.debian.org/debian/pool/main/m/$SPELL/$SOURCE
+  SOURCE2_URL[0]=ftp://ftp.debian.org/debian/pool/main/m/$SPELL/$SOURCE2
+        WEB_SITE=http://www.pell.portland.or.us/~orc/Code/magicfilter
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+     SOURCE_HASH=sha512:60552a80a1008ce64d8d31192e24f526c071bcf187f7f01685cb98b21d7b821853c21d1028cddd324bc44a9cba1b8d315b8301164d9cb261ee3c3d48788212b2
+    SOURCE2_HASH=sha512:a3ad35bcbef1ff0035e9308d7172e3f565d3a9dbdc680d397bc51ca7d7e0aca89aa13e1b9b70edc1d6d3ad6357782cbe7a1da5f16ad0960fddc5b0089d325289
+         ENTERED=20010922
+         UPDATED=20020324
+      MAINTAINER=jason@flattfamily.com
+           SHORT="magicfilter is an extensible and customizable automatic printer filter."
+cat << EOF
+
+magicfilter is an extensible and customizable automatic printer filter.  It
+selects an appropriate conversion technique for the input data by seeking for
+magic numbers, and then utilizing the appropriate conversion utility.  It is
+primarily intended for use as the "input filter" by the lpd print spooler.
+The options accepted by magicfilter are exactly the ones passed to the input
+filter by lpd.
+
+EOF

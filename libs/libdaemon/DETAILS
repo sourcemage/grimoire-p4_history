@@ -1,0 +1,27 @@
+           SPELL=libdaemon
+         VERSION=0.10
+     SOURCE_HASH=sha512:44dbeeef2ea99374136a0a7aaa94737c39e5fee6c5b8b21638924e228f2c41a2cb4d9d39e89610998e280b4585c00d505e7817383e38723e651964eb3d25ab6b
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://0pointer.de/lennart/projects/libdaemon/
+   SOURCE_URL[0]=$WEB_SITE/${SOURCE}
+      LICENSE[0]=GPL
+         ENTERED=20031017
+         UPDATED=20031017
+           SHORT='a lightweight C library for writing UNIX daemons'
+cat << EOF
+libdaemon is a lightweight C library which eases the writing of UNIX daemons.
+It consists of the following parts:
+
+* A wrapper around fork() which does the correct daemonization procedure of a
+  process
+* A wrapper around syslog() for simpler and compatible log output to Syslog or
+  STDERR
+* An API for writing PID files
+* An API for serializing UNIX signals into a pipe for usage with select() or
+  poll()
+
+Routines like these are included in most of the daemon software available. It
+is not that simple to get it done right and code duplication cannot be a goal.
+EOF

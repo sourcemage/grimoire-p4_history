@@ -1,0 +1,17 @@
+depends  gcc34                                    &&
+
+depends  zlib                                     &&
+depends  jpeg                                     &&
+depends  tiff                                     &&
+depends  libpng                                   &&
+
+optional_depends  "linux-pam"                     \
+                  "--enable-pam"                  \
+                  "--disable-pam"                 \
+                  "for pluggable authentication"  &&
+
+optional_depends  "openssl"                       \
+                  "--enable-ssl"                  \
+                  "--disable-ssl"                 \
+                  "for encrypted communications"
+

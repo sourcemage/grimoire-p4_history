@@ -1,0 +1,24 @@
+           SPELL=ncurses
+         VERSION=5.5
+     SOURCE_HASH=sha512:da7db6d9bab916898a07784c50898b68fcc55af4c08c8a4f3ac704e3c7acf99faf16ea4644651fe40140aadabc96341e88be022b0d79ce6bf74c33e381f9588e
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://invisible-island.net/ncurses/$SOURCE
+   SOURCE_URL[1]=$GNU_URL/$SPELL/$SOURCE
+        WEB_SITE=http://www.gnu.org/software/ncurses/ncurses.html
+         ENTERED=20010922
+         UPDATED=20050503
+      LICENSE[0]=MIT
+       BUILD_API=2
+           SHORT="Displays and updates text on text-only terminals"
+cat << EOF
+ncurses - Displays and updates text on text-only terminals.
+The ncurses (new curses) library is a free software emulation of curses
+in System V Release 4.0 and more. It uses terminfo format, supports pads
+and color and multiple highlights and forms chracters and function-key
+mapping, and has all the other SYSV-curses enhancements over BSD curses.
+It should port easily to any ANSI/POSIX-conforming UNIX-like system.
+The distribution includes the library and support utilities, including a
+terminfo compiler tic, a decompiler infocmp, clear, tput, tset, and a
+termcap conversion tool captoinfo.
+EOF

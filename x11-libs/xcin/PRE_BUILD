@@ -1,0 +1,13 @@
+mk_source_dir $SOURCE_DIRECTORY &&
+unpack_file  &&
+cd $SOURCE_DIRECTORY &&
+patch -p1<$SCRIPT_DIRECTORY/xcin-fixlocale.patch &&
+
+if query "Build Chewing input method module? " y; then
+  cd $SOURCE_DIRECTORY/src/Cinput &&
+  unpack_file 2 &&
+  cd chewing &&
+  ./patch_chewing &&
+  cd $SOURCE_DIRECTORY &&
+  patch -p1<$SCRIPT_DIRECTORY/xcin-fixchewingconflict.patch
+fi

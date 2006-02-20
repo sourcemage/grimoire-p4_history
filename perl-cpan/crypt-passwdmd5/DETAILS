@@ -1,0 +1,18 @@
+           SPELL=crypt-passwdmd5
+         VERSION=1.2
+          SOURCE=Crypt-PasswdMD5-$VERSION.tar.gz
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Crypt-PasswdMD5-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/L/LU/LUISMUNOZ/$SOURCE
+     SOURCE_HASH=sha512:23d694bf2406858005a1b948319afedabba8472c5afdf82bf991071cdff60a8e54fa1cf27a68d33d5df81c6e027067b9cc59bf82428a2f9d1b5dd5f18bf08daa
+         LICENSE=PD
+        WEB_SITE="http://search.cpan.org/search?module=Crypt::PasswdMD5"
+         ENTERED=20020320
+         UPDATED=20020320
+      MAINTAINER="redlemon@knoware.nl"
+           SHORT="Interoperable MD5-based crypt() function"
+cat << EOF
+The "unix_md5_crypt()" provides a crypt()-compatible
+interface to the rather new MD5-based crypt() function
+found in modern operating systems.
+EOF

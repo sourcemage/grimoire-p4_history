@@ -1,0 +1,25 @@
+           SPELL=solfege
+         VERSION=3.0.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://www.solfege.org
+         ENTERED=20031206
+         UPDATED=20031206
+     SOURCE_HASH=sha512:2f517d0b024996b4df9b0f9b6058791c9b2d5cd69f8ef84628e2c3cccd74dbb8fee1be2afb5f95fe2b015176a5c0039eeff97bd45ec95fc62077d5f311861163
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="GNU Solfege is a computer program written to help you practice ear training."
+cat << EOF
+GNU Solfege is a computer program written to help you practice ear 
+training. It can be useful when practicing the simple and mechanical 
+exercises. These are the exercises written so far: 
+Recognise melodic and harmonic intervals
+Compare interval sizes
+Sing the intervals the computer asks for
+Identify chords
+Sing chords
+Scales
+Dictation
+Remembering rhythmic patterns
+EOF

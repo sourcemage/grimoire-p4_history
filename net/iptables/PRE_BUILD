@@ -1,0 +1,6 @@
+default_pre_build &&
+if [ "$GRSEC_PATCH" == "y" ]
+then
+	unpack_file 3 &&
+	patch -p0 <${SOURCE_CACHE}/$SOURCE3
+fi

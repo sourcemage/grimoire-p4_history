@@ -1,0 +1,20 @@
+           SPELL=ksorcery
+         VERSION=0.2.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:4ab303f13210ddce904bf0ea876b3319f05cf3b812e66fc6b9973628c968f2b7ca833ae456172a5deafb94a720afcabd88fa6ad904bdd6bf8cd4947f9e538168
+        WEB_SITE=http://ksorcery.sourceforge.net/
+         ENTERED=20030104
+         UPDATED=20020104
+      LICENSE[0]=GPL
+    MENU_ITEM[0]="Sorcery GUI"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+      MAINTAINER=zach@firstwavedesign.com
+           SHORT="Ksorcery - a KDE frontend for sorcery"
+cat << EOF
+Ksorcery is a KDE frontend for sorcery.  It allows you to browse your spells' DETAILS and also you can cast, dispel, or summon spells.
+
+Note: sometimes it will not work until you run the command "kbuildsycoca", this fixes something that it needs within the kde framework.
+EOF

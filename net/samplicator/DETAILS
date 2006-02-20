@@ -1,0 +1,16 @@
+           SPELL=samplicator
+         VERSION=1.3.2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.switch.ch/tf-tant/floma/sw/samplicator/$SOURCE
+     SOURCE_HASH=sha512:7acc78faa3bc860e3c3190f0d0d65550090197212b9b436d294b65d06dc37855c211d285906cf9e8182b65c4a1ef0b65687e7120572b18c8b695aefc4684ffd9
+        WEB_SITE=http://www.switch.ch/tf-tant/floma/sw/samplicator/
+         ENTERED=20011108
+         UPDATED=20011108
+           SHORT="UDP Samplicator"
+cat << EOF
+UDP Samplicator receives UDP datagrams on a given port and resends those
+datagrams to a specified set of receivers. In addition, a sampling
+divisor N may be specified individually for each receiver, which will
+then only receive one in N of the received packets.
+EOF

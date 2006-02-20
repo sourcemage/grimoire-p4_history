@@ -1,0 +1,22 @@
+           SPELL=screen
+         VERSION=4.0.2
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.uni-erlangen.de/pub/utilities/${SPELL}/${SOURCE}
+   SOURCE_URL[1]=ftp://ftp.sourcemage.sk/sources/${SOURCE}
+   SOURCE_URL[2]=$GNU_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:a003f2703659644a08436f8c3c8ca4000f35309f1615a2e7a1a1c774f88e9a6129c93a933debf9aa6b3265a177b67a1f4dc94dd10680ed34279c4c1d6255521e
+        BUILD_API=2
+        WEB_SITE=http://www.gnu.org/software/screen
+         ENTERED=20010922
+         UPDATED=20040517
+      LICENSE[0]=GPL2
+           SHORT="screen multiplexes a physical terminal"
+cat << EOF
+Screen is a full-screen window manager that multiplexes a physical
+terminal between several processes, typically interactive shells.
+Each virtual terminal provides the functions of the DEC VT100
+terminal and, in addition, several control functions from the
+ANSI X3.64 (ISO 6429) and ISO 2022 standards (e.g., insert/delete
+line and support for multiple character sets).
+EOF

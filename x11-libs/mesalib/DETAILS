@@ -1,0 +1,26 @@
+           SPELL=mesalib
+         VERSION=6.4.2
+          SOURCE=MesaLib-$VERSION.tar.bz2
+         SOURCE2=libGLw.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Mesa-$VERSION
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/mesa3d/${SOURCE}
+  SOURCE2_URL[0]=${SOURCEFORGE_URL}/mesa3d/${SOURCE2}
+     SOURCE_HASH=sha512:06ff93745b128fde207ad8bcbdacb31832c81cec08af95e2053521dd9e51684bc3cdb9ef3976adeb13a9997dbd340ec28e3c703cb31dc4eeb3e6bacd2fa831b8
+    SOURCE2_HASH=sha512:9e9a652e7e316daaff071b7153423bba070ca121a0bca75d1a54f055d6a4586b7b97a9214e188811f164940467ce7f9782667264f34acaff11cd1dfc789f6ca7
+        WEB_SITE=http://mesa3d.sourceforge.net/
+         ENTERED=20021120
+         UPDATED=20030913
+      LICENSE[0]=GPL
+      LICENSE[1]=http://oss.sgi.com/projects/FreeB/
+       BUILD_API=2
+           SHORT="Mesa implementation of the OpenGL(TM) API"
+cat << EOF
+Mesa is a 3-D graphics library with an API which is very similar to
+that of OpenGL.* To the extent that Mesa utilizes the OpenGL command
+syntax or state machine, it is being used with authorization from
+Silicon Graphics, Inc.(SGI). However, the author does not possess an
+OpenGL license from SGI, and makes no claim that Mesa is in any way a
+compatible replacement for OpenGL or associated with SGI. Those who
+want a licensed implementation of OpenGL should contact a licensed
+vendor.
+EOF

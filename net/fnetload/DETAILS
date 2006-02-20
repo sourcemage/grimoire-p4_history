@@ -1,0 +1,15 @@
+           SPELL=fnetload
+         VERSION=0.1.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://fog.sourceforge.net/$SOURCE
+     SOURCE_HASH=sha512:93cf596f14a670df144599b548cf50d58f5c6a26edd43d5b4872cae054aea632841bbeebb311a25ed4d1c0bc4bcd0e11a1ad4fe14d5a5c0ae673450697f5090a
+        WEB_SITE=http://fog.sourceforge.net
+         ENTERED=20020214
+         UPDATED=20020214
+           SHORT="Fog Net Load is a tool to monitor the traffic load on your network interfaces."
+cat << EOF
+Fog Net Load is a tool to monitor the traffic load on your network interfaces.
+It checks /proc/net/dev every second and builds a graphical representation of 
+the values found there.
+EOF

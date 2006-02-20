@@ -1,0 +1,19 @@
+           SPELL=sshfs-fuse
+         VERSION=1.4
+  SOURCE_HASH[0]=sha512:fe0d72402a69c499e59fa723f39bb4aa44afc2df2cb74475e4fe3c3cc32edd1ea690e400a08b4fb054794c7f9d0859004a796737206c52d0263b8353f44cfb3c
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/fuse/$SOURCE
+        WEB_SITE=http://fuse.sourceforge.net/sshfs.html
+         ENTERED=20050206
+         UPDATED=20050206
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="FUSE client based on the SSH file transfer protocol"
+cat << EOF
+This is a filesystem client based on the SSH File Transfer Protocol.
+Since most SSH servers already support this protocol it is very easy
+to set up: i.e. on the server side there's nothing to do.  On the
+client side mounting the filesystem is as easy as logging into the
+server with ssh.
+EOF

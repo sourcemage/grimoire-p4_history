@@ -1,0 +1,20 @@
+           SPELL=arx
+         VERSION=2.2.4
+     SOURCE_HASH=sha512:9595243f6542b63c4f724e58d2f58bc672b3465c22905f60c00c7df1823ff8bc6a925681405aa21547c6cf1844b6ddd4eafb7470396f610df65efc65a16ccac0
+          SOURCE=ArX-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/ArX-$VERSION
+   SOURCE_URL[0]=http://savannah.nongnu.org/download/arx/$SOURCE
+        WEB_SITE=http://www.nongnu.org/arx/
+         ENTERED=20050227
+         UPDATED=20050227
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Easy to use distributed revision control system"
+cat << EOF
+ArX is a Revision Control System (RCS), like CVS, Subversion, or GNU
+arch. It manages "archives" (collections of files), such as source
+code files for a software project. It tracks the history of each file,
+along with change comments, version tags, forks and branches, etc. It
+can store files and documents of any kind, but the largest benefits are
+with text files, rather than binary files.
+EOF

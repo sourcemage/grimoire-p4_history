@@ -1,0 +1,15 @@
+           SPELL=pam_passwdqc
+         VERSION=1.0.2
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.openwall.com/pam/modules/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:8496d8a06156fa4015cd576b7f358da14fb7cacf6c1e5f17c738824ca483fcc82f975f0caf69feaa6501e3dcefa59c884fbb2b61759fdb9e0f4ae42da785f0c0
+        WEB_SITE=http://www.openwall.com/passwdqc/
+         ENTERED=20020919
+         UPDATED=20030810
+      LICENSE[0]=BSD
+           SHORT="Pluggable password strength checking for your servers"
+cat << EOF
+pam_passwdqc is a simple password strength checking module for PAM-aware password changing programs, such as passwd(1). In addition to checking regular passwords, it offers support for passphrases and can provide randomly generated passwords. All features are optional and can be (re-)configured without rebuilding. 
+EOF

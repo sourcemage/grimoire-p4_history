@@ -1,0 +1,10 @@
+depends  gcc34   &&
+depends  imlib   &&
+depends  zlib    &&
+depends  orbit   &&
+depends  db      &&
+
+optional_depends  esound                                  \
+                  ''                                      \
+                  '--disable-esdtest'                     \
+                  'for Enlightened Sound Daemon support'

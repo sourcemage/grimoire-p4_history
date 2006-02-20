@@ -1,0 +1,17 @@
+           SPELL=yiff
+         VERSION=2.14.2
+          SOURCE=${SPELL}-${VERSION}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=http://wolfpack.twu.net/users/wolfpack/${SOURCE}
+     SOURCE_HASH=sha512:4f9ca3954c6991529ec33e61115b158a78854d5ae7e8820585c67e7a878e539d8f08ac0a14d1eb256a078d72793ab852564ad80d39418478cc7a6454439dbcd0
+        WEB_SITE=http://wolfpack.twu.net/YIFF/
+         ENTERED=20050110
+      LICENSE[0]=GPL2
+       BUILD_API=2
+           SHORT="a network transparent multiclient sound server"
+cat << EOF
+YIFF is a network transparent multiclient sound server for Linux games and applications.
+The YIFF server comes with a GUI interface and a documented library. It gives you full
+control over the sound card, including explicit cycle rate tunning, mixers if any, and
+buffer fragmentation sizes.
+EOF

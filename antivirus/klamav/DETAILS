@@ -1,0 +1,16 @@
+           SPELL=klamav
+         VERSION=0.35.1
+     SOURCE_HASH=sha512:1da0efef3ca06fa316240153857adbe5e61fc47f47d73c4d59d54eaf2d06cae0525021e63549949d42eb0611886e0729c3f5e077fe1be65b10abdff766903c63
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION-source.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION-source
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://SourceForge.net/projects/$SPELL
+          LICENSE=GPL
+             DOCS="NEWS README"
+          ENTERED=20040916
+          UPDATED=20040916
+SHORT="KDE interface to clamav"
+cat << EOF
+KDE interface to clamav
+EOF

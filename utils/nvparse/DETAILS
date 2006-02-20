@@ -1,0 +1,18 @@
+           SPELL=nvparse
+         VERSION=5
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
+   SOURCE_URL[0]=$SOURCEFORGE_URL/osgnv/${SOURCE}
+     SOURCE_HASH=sha512:2ead23629acdd933a890f9dcbd251189514220d1dfb8a92d99b6cad0c30d682160c1447568bba6804c3e4f6251963572ccbd4878b40521d27b2cc60894a17de2
+      LICENSE[0]=UNKNOWN
+        WEB_SITE=http://web.tiscali.it/areavr/osgNV/
+       BUILD_API=2
+         ENTERED=20021127
+         UPDATED=20030726
+           SHORT="Improved version of NVIDIAs nvparse library"
+cat << EOF
+A library from nVIDIA; the original version of nvparse had some problems on 
+Linux, so we have slightly modified it. It is strongly recommended 
+that you download our version of nvparse and remove any other potentially 
+conflicting versions of the same library.
+EOF

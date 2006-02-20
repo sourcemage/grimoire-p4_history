@@ -1,0 +1,20 @@
+           SPELL=bladeenc
+         VERSION=0.94.2
+          SOURCE=$SPELL-$VERSION-src-stable.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://bladeenc.mp3.no/source/$SOURCE
+        WEB_SITE=http://bladeenc.mp3.no
+         ENTERED=20010922
+         UPDATED=20030713
+   SOURCE_HASH=sha512:570202a201c3582483078248fae7330d978d69018e4367d51322f84f26875cf84250de6c46527d11624cd6f19d4a98e30421447358b15ce9f256cade28e604ef
+	LICENSE[0]=LGPL
+	MAINTAINER=unet@sourcemage.org
+           SHORT="BladeEnc is an MP3 encoder."
+cat << EOF
+From http://bladeenc.mp3.no/skeleton/intro.html
+BladeEnc is a freeware MP3 encoder.  It is based on the same ISO compression
+routines as mpegEnc, so you can expect roughly the same, or better, quality.
+The main difference is the appearance and speed.  BladeEnc doesn't have a
+nice, user-friendly interface like mpegEnc, but it is more than three times
+faster, and it works with several popular front-end graphical user interfaces.
+EOF

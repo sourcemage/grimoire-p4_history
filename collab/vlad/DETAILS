@@ -1,0 +1,17 @@
+# $Id: DETAILS,v 1.2 2002/10/23 18:55:18 sergeyli Exp $
+           SPELL=vlad
+         VERSION=0.02
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:9c8eee78871d7d3bb790bc0e02ecd69c50392692f984ed2c929cb7f774b79bfe04e12233191a9f6a696d53583fd13373a134b83aae47a299d9f3eec60fa930c3
+      LICENSE[0]=GPL
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://cataclysm.cx/dist/misc/$SPELL/$SOURCE
+        WEB_SITE=http://cataclysm.cx/code/vlad.html
+         ENTERED=20020408
+         UPDATED=20020408
+           SHORT="An ncurses-based LDAP visualization tool"
+cat << EOF
+Vlad is an LDAP visualization tool. It can be used to browse the entries and
+attributes of an LDAP tree.  It has a nice ncurses-based interface, so it does
+not require X.
+EOF

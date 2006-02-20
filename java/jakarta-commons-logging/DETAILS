@@ -1,0 +1,25 @@
+     PKG_PROJECT=jakarta
+      PKG_SUBPRJ=commons
+        PKG_NAME=logging
+           SPELL=${PKG_PROJECT}-${PKG_SUBPRJ}-${PKG_NAME}
+         VERSION=1.0.2
+          SOURCE=${PKG_NAME}-${VERSION}-src.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${PKG_SUBPRJ}-${PKG_NAME}-${VERSION}-src
+   SOURCE_URL[0]=http://www.apache.org/dist/${PKG_PROJECT}/${PKG_SUBPRJ}/${PKG_NAME}/source/$SOURCE
+     SOURCE_HASH=sha512:acabf10b27965cffc71bc920e6643fb66d555b827bd4387c65c8d6c08a9ea79644041321958935da310583567212d46691c925ef2d1879629a8bc473148cf1b2
+      LICENSE[0]=APACHE
+        WEB_SITE=http://jakarta.apache.org/commons/logging.html
+         ENTERED=20030326
+         UPDATED=20030326
+      MAINTAINER=vydra@fria.fri.utc.sk
+           SHORT="Jakarta-Commons Logging Component."
+cat << EOF
+There is a great need for debugging and logging information inside of Commons components 
+such as HTTPClient and DBCP. However, there are many logging APIs out there and it is 
+difficult to choose among them.
+    
+The Logging package is an ultra-thin bridge between different logging libraries. Commons 
+components may use the Logging API to remove compile-time and run-time dependencies on 
+any particular logging package, and contributors may write Log implementations for the 
+library of their choice.
+EOF

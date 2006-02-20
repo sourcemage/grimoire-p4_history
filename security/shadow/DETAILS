@@ -1,0 +1,19 @@
+           SPELL=shadow
+         VERSION=4.0.14
+     SOURCE_HASH='sha512:c97a9f27cc543da535ba9ec8f77ec0da297354c36cb373e183e3d440cef579433a880885caba1a5b2d6a8d6f4c1b74a4c48c45c04efca5c915e05762cfcda2cd'
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=ftp://ftp.pld.org.pl/software/$SPELL/$SOURCE
+        WEB_SITE=http://shadow.pld.org.pl/
+         ENTERED=20050303
+         UPDATED=20050518
+  SECURITY_PATCH=1
+           SHORT="Shadow password file utilities"
+
+cat << EOF
+The Shadow password file utilities package includes the programs
+necessary to convert traditional V7 UNIX password files to the SVR4
+shadow password format, and additional tools to maintain password and
+group files (that work with both shadow and non-shadow passwords).
+EOF

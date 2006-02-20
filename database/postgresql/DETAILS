@@ -1,0 +1,39 @@
+           SPELL=postgresql
+         VERSION=8.1.3
+     SOURCE_HASH=sha512:5edd9669a9ea49e49d50e76ac259404043093da825290c2795f9e8d143596022c2d5adc055c2fda01b8f95d92eb004d0f00cfdcd91c33e543f0e9242bfbb477e
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+      SOURCE_URI=v$VERSION/$SOURCE
+   SOURCE_URL[0]=ftp://ftp9.us.postgresql.org/pub/mirrors/postgresql/source/$SOURCE_URI
+   SOURCE_URL[1]=ftp://ftp10.us.postgresql.org/pub/postgresql/source/$SOURCE_URI
+   SOURCE_URL[2]=ftp://ftp13.us.postgresql.org/mirror/postgresql/source/$SOURCE_URI
+   SOURCE_URL[3]=ftp://ftp15.us.postgresql.org/$SOURCE_URI
+        WEB_SITE=http://www.postgresql.org/
+            DOCS=""
+         ENTERED=20011113
+         UPDATED=20030822
+      LICENSE[0]=BSD
+       BUILD_API=2
+           SHORT="Sophisticated Object-Relational DBMS"
+cat << EOF
+PostgreSQL is a sophisticated Object-Relational DBMS, supporting almost
+all SQL constructs, including subselects, transactions and user defined
+types and functions.
+A point list for some technical features that PostgreSQL offers:
+* Fully ACID compliant
+* ANSI SQL compliant
+* Referential Integrity
+* Replication (non-commercial and commercial solutions)
+* Native interfaces for ODBC, JDBC, C, C++, PHP, Perl, TCL, ECPG, Python, and Ruby
+* Rules, Views, Triggers, Outer Joins, Sub-selects, Sequences, Stored Procedures
+* Support for UNION, UNION ALL and EXCEPT queries
+* Unicode
+* Inheritance
+* An open API
+* Native SSL support, Native Kerberos authentication
+* Better than row-level locking, Functional and Partial indexes
+* Loadable extensions offering SHA1, MD5, XML, and other functionality
+* Tools for generating portable SQL to share with other SQL-compliant systems
+* Extensible data type system
+* Cross-database compatibility functions
+EOF

@@ -1,0 +1,22 @@
+           SPELL=net-snmp
+         VERSION=5.3.0.1
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=ftp://ftp.net-snmp.org/pub/sourceforge/n/ne/net-snmp/$SOURCE
+     SOURCE_HASH=sha512:c0b582c818e9b0c55ecfdc6ace534e87ee75386b8923ba585d58a45d574725382c7962fa0a41086f6e48e4606f04c1ee700f3930de766adc9c97afbc6bcd7d81
+        WEB_SITE=http://www.net-snmp.org/
+         ENTERED=20011108
+         UPDATED=20021007
+      LICENSE[0]=http://www.net-snmp.org/COPYING.txt
+       BUILD_API=2
+           SHORT="SNMP agent, libraries and utilities"
+cat << EOF
+net-snmp provides tools and libraries relating to SNMP (the Simple Network
+Management Protocol) including:
+ - An extensible agent
+ - An SNMP library
+ - tools to request or set information from SNMP agents
+ - tools to generate and handle SNMP traps, etc. 
+
+EOF

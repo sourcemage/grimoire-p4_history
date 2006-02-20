@@ -1,0 +1,18 @@
+           SPELL=vlc
+         VERSION=0.8.4a
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://download.videolan.org/pub/vlc/$VERSION/$SOURCE
+        WEB_SITE=http://www.videolan.org
+      SOURCE_GPG="gurus.gpg:$SOURCE.sig:WORKS_FOR_ME"
+      LICENSE[0]=GPL
+         ENTERED=20011113
+         UPDATED=20040529
+           SHORT="multimedia player"
+cat << EOF
+VLC (initially VideoLAN Client) is a highly portable multimedia player for
+various audio and video formats (MPEG-1, MPEG-2, MPEG-4, DivX, mp3, ogg, ...)
+as well as DVDs, VCDs, and various streaming protocols. It can also be used as
+a server to stream in unicast or multicast in IPv4 or IPv6 on a high-bandwidth
+network. 
+EOF

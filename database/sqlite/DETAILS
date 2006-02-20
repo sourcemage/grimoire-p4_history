@@ -1,0 +1,25 @@
+           SPELL=sqlite
+         VERSION=3.3.4
+     SOURCE_HASH=sha512:673dcc553a684248c0edff80d888bd00b1477b9f34cd33dd0f52970a935b9cd0500034a456311248f86381df729e9eee48d13627b93c22a3b700d7bbf7a84f9f
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=http://www.hwaci.com/sw/sqlite/$SOURCE
+      LICENSE[0]=PD
+        WEB_SITE=http://www.hwaci.com/sw/sqlite/
+         ENTERED=20011016
+         UPDATED=20050430
+           SHORT='An SQL engine in a C library'
+
+cat << EOF
+SQLite is a C library that implements an SQL database engine. A large
+subset of SQL92 is supported. A complete database is stored in a single
+disk file. The API is designed for convenience and ease of use.
+Applications that link against SQLite can enjoy the power and flexiblity
+of an SQL database without the administrative hassles of supporting a
+separate database server. Because it omits the client-server interaction
+overhead and writes directly to disk, SQLite is also faster than the big
+database servers for most operations. In addition to the C library, the
+SQLite distribution includes a command-line tool for interacting with
+SQLite databases and SQLite bindings for Tcl/Tk.
+EOF

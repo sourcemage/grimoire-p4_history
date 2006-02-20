@@ -1,0 +1,16 @@
+mk_source_dir $SOURCE_DIRECTORY &&
+cd $SOURCE_DIRECTORY &&
+unpack_file &&
+mv "${SOURCE%%.tar*}" code &&
+if [[ -z "$TYPO3_SITEPKG" ]]; then
+  mkdir site
+else
+  cd $SOURCE_DIRECTORY &&
+  for N in {2..4}; do
+    eval S="\$SOURCE$N" &&
+    if [[ "$S" =~ "^$TYPO3_SITEPKG-.*" ]]; then
+      unpack_file $N &&
+	  mv "${S%%.tar*}" site
+    fi
+  done
+fi

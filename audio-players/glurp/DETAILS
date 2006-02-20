@@ -1,0 +1,22 @@
+           SPELL=glurp
+         VERSION=0.11.6
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:103ab5e917f7d4f44864f89d79cdab2a363e04eff4121240ef105a9d23370de983c67d04779ec2dcb8ac611873d7bb8e083b72d5c282556b471c3de637b68732
+        WEB_SITE=http://www.musicpd.org
+         ENTERED=20040619
+         UPDATED=20040619
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="gtk+2 frontend for mpd"
+cat << EOF
+A GTK2 based graphical client with simple and clean interface.
+Features:
+* Support for loading/saving playlists
+* File Browser
+* Playlist Quicksearch
+* Supports streams in MPD (MPD 0.11.0 and higher)
+* ID3 Information
+* Single window interface, with possibility to hide the playlist
+EOF

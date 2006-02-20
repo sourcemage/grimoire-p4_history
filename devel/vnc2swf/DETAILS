@@ -1,0 +1,17 @@
+           SPELL=vnc2swf
+         VERSION=0.5.0
+     SOURCE_HASH='sha512:f1551015eaafb7810b5d6367b73605f97bc5c0d4d3449dfe1a98af90f743133c0534c8988ee72ce2fc8599926a5f3ed5a785bf18788522b4a7c3cb8bc0529913'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://www.unixuser.org/~euske/vnc2swf/$SOURCE"
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE="http://www.unixuser.org/~euske/$SPELL/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='GPL'
+         UPDATED=20050722
+       BUILD_API=2
+     GCC_VERSION=3.4
+           SHORT='A tool that records a VNC session as an SWF Flash file'
+cat << EOF
+vnc2swf is a recording tool for VNC that records sessions and generates a Macromedia Flash movie file (SWF). It can be used as an X11 recorder or a Windows desktop recorder.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor

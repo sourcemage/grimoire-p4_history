@@ -1,0 +1,22 @@
+           SPELL=kaffe
+         VERSION=1.1.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/$SOURCE
+     SOURCE_HASH=sha512:83b14a3958b7231be92be2693c7121f8fba625d9ab94badc3242a0aa555276871f4b040077a273ca50cc72938d5e3e2d1f4ecccc7f45e8832c6d6df4317eb726
+      LICENSE[0]=GPL
+        WEB_SITE=http://www.kaffe.org
+         ENTERED=20020321
+         UPDATED=20020321
+      MAINTAINER=sgl-spell-kaffe@tange.dk
+           SHORT="Java virtual machine"
+cat << EOF
+Kaffe is a clean room implementation of the Java virtual machine, plus
+the associated class libraries needed to provide a Java runtime
+environment. The Kaffe virtual machine is free software, licensed
+under the terms of the GNU Public License.
+ 
+Kaffe is a great choice as a base for virtual machine education and/or
+research, or if you need a virtual machine as an integral component of
+an open source or free software Java distribution.
+EOF

@@ -1,0 +1,17 @@
+           SPELL=mp3-tag
+         VERSION=0.40
+          SOURCE=tagged-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/tagged-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/T/TH/THOGEE/$SOURCE
+     SOURCE_HASH=sha512:c5fb67f9633dcc307efbb6558c9eb351056bf9f125a59332550d2d20468eb9c2fc8025c53a885e64e3ed878ec3226e47ae05179428240b6b360d6a48409afbc1
+        WEB_SITE=http://dbi.perl.org
+         ENTERED=20020913
+         UPDATED=20020913
+      LICENSE[0]=ART
+       BUILD_API=2
+           SHORT="MP3::Tag Module"
+cat << EOF
+Tag is a wrapper module to read different tags of mp3 files.  It pro-
+vides an easy way to access the functions of seperate moduls which do
+the handling of reading/writing the tags itself.
+EOF

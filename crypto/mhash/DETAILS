@@ -1,0 +1,22 @@
+           SPELL=mhash
+         VERSION=0.9.4a
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-0.9.4
+#SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:313f2ea32982fa77902b0febafe0e6b152f286133e3fb742105926f8acb4e35532f9bfb29c86c573148efd4a2e8e2cb4b6e500f4d8a3b58ea1b90b23e141b825
+        WEB_SITE=http://mhash.sourceforge.net/
+         ENTERED=20011123
+         UPDATED=20030502
+      LICENSE[0]=LGPL
+      MAINTAINER=hgr@vabo.cz
+           SHORT="Mhash is a free library for hash algorithms"
+cat << EOF
+mhash is a thread-safe hash library implemented in C, and provides a
+uniform interface to a large number of hash algorithms (MD5, SHA-1,
+HAVAL, RIPEMD160, TIGER, GOST). These algorithms can be used to
+compute checksums, message digests, and other signatures. The HMAC
+support implements the basics for message authentication, following
+RFC 2104.
+EOF

@@ -1,0 +1,24 @@
+           SPELL=dirmngr
+         VERSION=0.9.3
+       BUILD_API=2
+
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=ftp://ftp.gnupg.org/gcrypt/alpha/$SPELL/$SOURCE
+      SOURCE_GPG="GnuPG.gpg:$SOURCE.sig"
+
+         SOURCE2=$SOURCE.sig
+  SOURCE2_URL[0]=$SOURCE_URL.sig
+  SOURCE2_IGNORE=signature
+
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.gnupg.org/
+         ENTERED=20050422
+         UPDATED=20050422
+      LICENSE[0]=GPL
+           SHORT="X.509 Directory Manager"
+cat << EOF
+Dirmngr is a server for managing and downloading certificate
+revocation lists (CRLs) for X.509 certificates and for downloading
+the certificates themselves. Dirmngr also handles OCSP requests as
+an alternative to CRLs.
+EOF

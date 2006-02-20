@@ -1,0 +1,34 @@
+           SPELL=xerces-j
+       PKG_SPELL=Xerces-J
+         VERSION=2.6.2
+     PKG_VERSION=${VERSION//\./_}
+          SOURCE=$PKG_SPELL-src.$VERSION.tar.gz
+         SOURCE2=$PKG_SPELL-tools.$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/xerces-$PKG_VERSION
+   SOURCE_URL[0]=http://www.apache.org/dist/xml/$SPELL/source/$SOURCE
+     SOURCE_HASH=sha512:de59e2e231080bc2ed5c6cb3e99091b4f73950976b889f96e6fd36504d0ea60c647a728a57a3454e35e1d61153c592da358e61fdf3575d59833730ac1f1ca505
+      LICENSE[0]=APACHE
+  SOURCE2_URL[0]=http://www.apache.org/dist/xml/$SPELL/source/$SOURCE2
+    SOURCE2_HASH=sha512:dfe4d4c3f8021d37f18f3e5edef7cd23cf6f81033093d15316c43af542e00146a7da4aec478e137f1dca6dd2adc3e6032b241a53f0c438e02daa9c8aeadcc1a3
+      LICENSE[1]=APACHE
+        WEB_SITE=http://xml.apache.org/xerces2-j/index.html
+         ENTERED=20030326
+         UPDATED=20040328
+           SHORT='Xerces2 - implementation of the next generation fully compliant XML parsers'
+cat << EOF
+The Apache Xerces2 parser is the reference implementation of XNI but other parser
+components, configurations, and parsers can be written using the Xerces Native 
+Interface. 
+
+Xerces 2 is a  fully conforming XML Schema processor.
+
+Xerces 2 also provides an experimental implementation of the Document Object 
+Model Level 3 Core and Load/Save Working Drafts.
+
+Xerces is now able to parse documents written according to the  XML 1.1 Candidate 
+Recommendation, except that it does not yet provide an option to enable 
+normalization checking as described in section 2.13 of this specification. It also 
+handles namespaces according to the  XML Namespaces 1.1 Candidate Recommendation, 
+and will correctly serialize XML 1.1 documents if the DOM level 3 load/save API's 
+are in use.
+EOF

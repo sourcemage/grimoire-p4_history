@@ -1,0 +1,16 @@
+           SPELL=clhep
+         VERSION=1.9.1.2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$VERSION
+   SOURCE_URL[0]=http://cern.ch/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:c314819bd8d6017b22bd87c184dccf44f4496d5750c633611949970fa291ef8871e382fe72e8cc8845f64887dbf8368db7309fdc02da11761386027ef9d68a92
+        WEB_SITE=http://proj-clhep.web.cern.ch/proj-clhep/
+         ENTERED=20041222
+      LICENSE[0]="OSI Approved"
+       BUILD_API=2
+           SHORT="A Class Library for High Energy Physics"
+cat << EOF
+CLHep is intended to be a set of HEP-specific foundation and
+utility classes such as random generators, physics vectors,
+geometry, and linear algebra.
+EOF

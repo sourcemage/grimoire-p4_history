@@ -1,0 +1,38 @@
+2005-12-21 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.9.23
+	  Added GPG checking
+	* DEPENDS: Cleaned up formatting
+	  Added optional dependencies on libsvg-cairo, swfdec, and xine-lib
+	  Removed dependencies on freetype2, jpeg, and libpng
+	  Removed setting of avifile version to AVER
+	* BUILD: Use default_build
+	  Moved source code modifications (aclocal/autoconf) to PRE_BUILD
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
+2005-04-24 Eric Sandall <eric@sandall.us>
+	* BUILD: Spell aclocal correctly
+
+2005-04-13 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 0.9.22
+	  Added BUILD_API=2
+	  Shortened SHORT
+	* BUILD: Converted to build_api 2
+	  Run aclocal and autoconf so it doesn't need g++
+	* INSTALL: Branched from BUILD
+	  Converted to build_api 2
+
+2004-08-27 Arjan Bouter <a_bouter@ezrs.com>
+	* changed SDL to sdl in DEPENDS
+	  to reflect lowercase spell-change
+
+2003-09-19 Eric Sandall <eric@sandall.us>
+	* Separated out directfb-extras, as that requires
+	  directfb to be installed.
+	* Some cleanup as well.
+	* Added more optional dependencies
+
+2003-09-16 hgg <hgreig@bigpond.net.au>
+	* Created this spell
+

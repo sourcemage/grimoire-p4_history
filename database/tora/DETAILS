@@ -1,0 +1,19 @@
+           SPELL=tora
+         VERSION=1.3.18
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://tora.sourceforge.net/
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+          LICENSE=GPL
+      SOURCE_HASH=sha512:8ee6bac7aa97053f13cc9b92bd092ce6dc37311b271e8270def96556db54058ac21d94a50c6b91ef4b139046909e7b8e7a1c87e18db664284c433e6d21eca4fe
+          ENTERED=20030211
+          UPDATED=20031020
+SHORT="database admin kit for Oracle, MySql, Postgresql, ..."
+cat << EOF
+A graphical toolkit for database developers and administrators.
+ Tora features a schema browser, SQL worksheet, PL/SQL editor & debugger,
+ storage manager, rollback segment monitor, instance manager, and SQL output
+ viewer. Via qt3 it can access PostgreSQL and MySQL directly. Any other
+ database systems can be accessed via ODBC
+EOF

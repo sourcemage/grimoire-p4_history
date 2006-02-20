@@ -1,0 +1,30 @@
+           SPELL=anjuta
+if [ "$CVS_CHECKOUT" == "y" ]
+then
+	 VERSION=$(date +%Y%m%d)
+          SOURCE=$SPELL-cvs.tar.gz
+  FORCE_DOWNLOAD=1
+   SOURCE_IGNORE=volatile
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.gnome.org:/cvs/gnome:anjuta
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+else
+         VERSION=2.0.1
+     SOURCE_HASH=sha512:e116dbdab00d06948bce435f4f24327e2cd709139e7692ce6740be15fa4be2c4cfa32a1248824fa859acffca69055a2781fbdc2f1a3a4f72930f98e3601a2b6b 
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+fi
+        WEB_SITE=http://anjuta.sourceforge.net/
+         ENTERED=20011124
+         UPDATED=20040207
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="C/C++ IDE for gnome"
+cat << EOF
+Anjuta is a versatile Integrated Development Environment (IDE) for C
+and C++ in GNU/Linux. It has been written for GTK/GNOME, and features 
+a number of advanced programming facilities. These include project
+management, application wizards, an onboard interactive debugger, and 
+a powerful source editor with source browsing and syntax
+highlighting.
+EOF

@@ -1,0 +1,22 @@
+           SPELL=raccess
+         VERSION=0.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://salix.org/$SPELL/$SOURCE
+     SOURCE_HASH=sha512:610c0d4cebf5130eb2de4b64e76ff55210645331ce8a24b6a3e6975f456b6f447e737a59634a052e5bacf74cb300b6ef02d95a5ab133d2af5f7e239ee006675d
+        WEB_SITE=http://salix.org/raccess/
+      MAINTAINER=vydra@fria.fri.utc.sk
+         ENTERED=20020513
+         UPDATED=20020513
+           SHORT="Remote Access Session is a security tool to analyze the integrity of systems."
+cat << EOF
+Remote Access Session is a security tool to analyze the integrity of systems. The program tries
+to gain access to a system using the most advanced techniques of remote intrusion. It can either
+work in normal mode (which is fast) or hard mode (which is more intensive). There is a big 
+difference between Remote Access Session and other remote security audit tools. If Remote Access
+Session finds a remote vulnerability that gives user account or root, it will try to exploit it
+and it will return a shell. This allows a network administrator to discard false positives 
+regarding remote vulnerabilities. It also includes all of the information from service banners 
+in its output. It performs vendor and version detection on Web servers and other common servers, 
+and also attempts remote OS identification. 
+EOF

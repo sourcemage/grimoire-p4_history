@@ -1,0 +1,35 @@
+           SPELL=yencode
+         VERSION=0.46
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.yencode.org/download/source/$SOURCE
+     SOURCE_HASH=sha512:5883ec76f2ef3b857f09c79c63f47e2a1cf0354dbc06ff11cafecfda1112c638283ea3a987f906286ccc9dbe9d57f5f35b06ec1c3404dfc46465e722410d34a8
+        WEB_SITE=http://www.yencode.org
+        BUILD_API=2
+         ENTERED=
+         UPDATED=
+         LICENSE=GPL
+           SHORT="yEnc encoder"
+cat << EOF
+yencode is an encoder/decoder package for the Usenet yEnc encoding format.
+
+The source code is freely available under the GNU General Public License 
+and should work on most modern Unix-like operating systems.
+
+Features:
+
+    * Encoder can output single part or multipart encoded archives of any size.
+    * Smart decoder can handle multiple files, including files specified 
+      out of order or with nonsense file names.
+    * Included Usenet posting software posts files to Usenet quickly and 
+      easily, including automatic retries and resumption of aborted postings, 
+      plus automatic creation of encoded multipart archives and SFV/CRC 
+      checksum files, if desired.
+    * Optional scan mode: automatically locate and decode single or multipart 
+      encoded archives in specified directories or recursively.
+    * Supports SFV file creation for multiple-file archives.
+    * Fully compliant with the current yEnc specifications. 
+
+Note: yEnc is considered harmfull to usenet.
+EOF
+

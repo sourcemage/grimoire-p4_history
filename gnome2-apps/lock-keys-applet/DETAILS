@@ -1,0 +1,17 @@
+           SPELL=lock-keys-applet
+         VERSION=1.0
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://mfcn.ilo.de/led_applet/$SOURCE
+     SOURCE_HASH=sha512:e679f780b8944cbdb2f237528430ec153a43668909ae7283b3e47ae031e45cbf84517898e17f3e255597dcd0a7a7cabd47f3f6892ca60364402527d569cd7b65
+      LICENSE[0]="GPL"
+        WEB_SITE=http://mfcn.ilo.de/led_applet/
+         ENTERED=20020907
+         UPDATED=20030216
+      MAINTAINER=rcook@wyrms.net
+           SHORT="Displays the keyboard LEDs, GNOME2"
+cat << EOF
+Gnome2 applet that shows the status of the CAPS, NUM and SCROLL lock
+keys of your keyboard.  Useful for keyboards that don't have the LEDs
+such as wireless keyboards.
+EOF

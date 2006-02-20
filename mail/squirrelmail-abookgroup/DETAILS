@@ -1,0 +1,18 @@
+           SPELL=squirrelmail-abookgroup
+         VERSION=0.1
+          SOURCE=abook_group.zip
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/squirrelmail-AbookGroup-$VERSION
+   SOURCE_URL[0]=http://dfkjtech.com/~kelvinho/$SOURCE
+     SOURCE_HASH=sha512:504b5135c8a42aab30e34b1707af71c2ef07de14a51aa0619e985cb109503b448394610869847118b49171f67e7ff2f3fb23b0d8b60d3f022aa0398a83342dff
+        WEB_SITE=http://dfkjtech.com/~kelvinho/
+         ENTERED=20020717
+         UPDATED=20050103
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="Address book groups plugin for SquirrelMail"
+    MENU_ITEM[0]=${SPELL}
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+cat << EOF
+Plugin to add address book group capability to SquirrelMail.
+EOF

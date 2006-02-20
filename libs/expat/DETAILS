@@ -1,0 +1,16 @@
+           SPELL=expat
+         VERSION=2.0.0
+     SOURCE_HASH=sha512:f4c1c6cddaf4c3118da4fd66f37e034653d7bdf33f13cbc31942c44a9e1cfb712be31d44b8b7a31892b8a812890861fdecbfd81d2ce8815757e2e526aa65cfec
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+   SOURCE_URL[1]=http://belnet.dl.sourceforge.net/$SPELL/$SOURCE
+      LICENSE[0]=BSD
+        WEB_SITE=http://expat.sourceforge.net
+         ENTERED=20010928
+         UPDATED=20010928
+       BUILD_API=2
+           SHORT="expat is a XML parsing library."
+cat << EOF
+Expat is a fast, non-validating, stream-oriented XML parsing library.
+EOF

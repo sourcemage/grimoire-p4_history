@@ -1,0 +1,15 @@
+           SPELL=libdvb
+         VERSION=0.5.4
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.metzlerbros.org/dvb/$SOURCE
+     SOURCE_HASH=sha512:23fcf588ba974e7b811e4accaa2d86d82bc278327f75f38d1ca01de25d63e07258df06e3b038cc2400f2e813e227c95d322fb3927db76aadbec245ae0e9dd5a8
+      LICENSE[0]=LGPL
+        WEB_SITE=http://www.metzlerbros.org/dvb/index.html
+         ENTERED=20040424
+         UPDATED=20040424
+           SHORT="Library for the manipulation of various MPEG file formats"
+cat << EOF
+libdvb package with added CAM library and libdvbmegtools as well as the dvb-mpegtools
+dvb-mpegtools package for manipulation of various MPEG file formats
+EOF

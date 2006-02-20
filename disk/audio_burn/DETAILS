@@ -1,0 +1,21 @@
+           SPELL=audio_burn
+         VERSION=0.0.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.thecodefactory.org/audio_burn/$SOURCE
+        WEB_SITE=http://www.thecodefactory.org/audio_burn/
+     SOURCE_HASH=sha512:13c44e89ab401e616b9a57728e25f78b79f7b832f74e7286a17e43ab929e477afcb671b6a734888c0ed3a92e4704acc4fd0575f29bd32ea7070f4a0af53ed2fa
+      LICENSE[0]=GPL
+         ENTERED=20040919
+         UPDATED=20040919
+           SHORT="a command-line audio cd burning application"
+cat << EOF
+audio_burn is a command-line audio cd burning application written in C. It uses
+libaudioburn (also written in C) for all of the real work - which in turn uses
+several other Free Software packages and utilities such as:
+oggdec,
+mpg321,
+sox,
+normalize, and
+cdrecord.
+EOF

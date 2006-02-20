@@ -1,0 +1,14 @@
+           SPELL=hotway
+         VERSION=0.7.4
+          SOURCE=${SPELL}d-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/${SPELL}d-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/hotwayd/$SOURCE
+     SOURCE_HASH=sha512:ddbae2dc68d66f6f630e310db60a5528ca8f103c791e2b6018f229db931f526baca54a04acb5e61ea5f4bd66554f72126c02e0d13f944e33e457b54dc2631cdb
+        WEB_SITE=http://hotwayd.sourceforge.net
+         ENTERED=20021214
+         UPDATED=20021214
+         LICENSE=GPL
+           SHORT="The Hotmail POP3 gateway"
+cat << EOF
+Ever wanted to access your hotmail emails using linux (or another unix variant) without having to go through the web interface? Well now it is possible using your favourite standard-POP implementing mail reader. Hotwayd uses the same protocol that Outlook Express uses to access the hotmail servers, HTTPMail. Hotwayd acts as a proxy between your POP mail reader and the HTTPMail hotmail servers. Simply set it up as a service on your machine or another machine on your network and enjoy using POP to collect your hotmail emails.
+EOF

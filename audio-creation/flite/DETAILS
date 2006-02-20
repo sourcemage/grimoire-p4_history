@@ -1,0 +1,14 @@
+           SPELL=flite
+         VERSION=1.2
+          SOURCE=$SPELL-$VERSION-release.tar.bz2
+     SOURCE_HASH=sha512:2521389f5b887b02428516b556f13a78b80a4f29486f1c00aa326fe32521b851cd0d50548243ac4708a698a2b84d8218c8fb915c408ac0c3410a341cb8f36754
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION-release
+   SOURCE_URL[0]=http://www.speech.cs.cmu.edu/$SPELL/packed/$SPELL-$VERSION/$SOURCE
+        WEB_SITE=http://www.speech.cs.cmu.edu/flite/index.html
+         ENTERED=20030502
+         UPDATED=20041012
+       BUILD_API=2
+           SHORT="Flite (festival-lite) is a small, fast run-time synthesis engine"
+cat << EOF
+Flite (festival-lite) is a small, fast run-time synthesis engine developed at CMU and primarily designed for small embedded machines and/or large servers. Flite is designed as an alternative synthesis engine to Festival for voices built using the FestVox suite of voice building tools. 
+EOF

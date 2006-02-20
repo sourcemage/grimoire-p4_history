@@ -1,0 +1,27 @@
+         VERSION=1.0.5
+     SOURCE_HASH='sha512:c516b30197e0e0637543d7c4ef9e224ef612b027849c262f0cefdb83cbe8c46be57dafed848d2385da08bf401547212a2c4d63a800d21302baeebb2f2e49c262'
+         UPDATED=20051108
+           SPELL=pear-html_quickform_controller
+    PEAR_PACKAGE=HTML_QuickForm_Controller
+        WEB_SITE=http://pear.php.net/package/HTML_QuickForm_Controller/
+      LICENSE[0]=PHP
+           SHORT='PEAR: The add-on to HTML_QuickForm package that allows'
+cat << EOF
+The package is essentially an implementation of
+a PageController pattern.
+Architecture:
+* Controller class that examines HTTP requests
+and manages form values persistence across
+requests.
+* Page class (subclass of QuickForm)
+representing a single page of the form.
+* Business logic is contained in subclasses of
+Action class.
+Cool features:
+* Includes several default Actions that allow
+easy building of multipage forms.
+* Includes usage examples for common usage
+cases (single-page form, wizard, tabbed form).
+EOF
+
+source  $SECTION_DIRECTORY/PEAR_DETAILS

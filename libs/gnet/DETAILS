@@ -1,0 +1,18 @@
+           SPELL=gnet
+         VERSION=1.1.9
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://gnetlibrary.org/src/$SOURCE
+     SOURCE_HASH=sha512:5b58a680f11f5cf5f1dd49147e2e0ee9846196dd758dbd7d63940987f9c1d26811363f5ef6b035215bf154cf3761821a36e471126f71bae2c2ceee0e81e9fc12
+      LICENSE[0]=LGPL
+        WEB_SITE=http://gnetlibrary.org
+         ENTERED=20011230
+         UPDATED=20020517
+       BUILD_API=2
+           SHORT="GNet is a simple network library."
+cat << EOF
+GNet is a simple network library. It is written in C, object-oriented, and
+built upon GLib. It is intended to be small, fast, easy-to-use, and easy to
+port. GNet comes with documentation and examples. It is licensed under the
+GNU Library General Public License.
+EOF

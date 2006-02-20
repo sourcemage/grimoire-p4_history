@@ -1,0 +1,21 @@
+depends  bison      &&  # Is this really needed?
+depends  pkgconfig  &&
+
+# test kernel version
+local  GPH_KDEV
+GPH_KVER=`uname -r |cut -c-3`    &&
+if [ $GPH_KVER == "2.6" ];then
+  optional_depends  udev  ""  ""  "for kernel hotplug support" 
+else
+  optional_depends  hotplug  ""  ""  "for kernel hotplug support"  
+fi  &&
+
+
+optional_depends  libexif  "--with-exif"  "--without-exif"  \
+      "extracts additional image information provided by most cameras"  &&
+
+optional_depends  libtool  "--with-ltdl"  "--without-ltdl"  \
+      "an alternative way of opening shared libraries"  &&
+
+optional_depends  libusb  "--with-usb"  "--without-usb"  \
+      "enable use of cameras connected though the USB port"

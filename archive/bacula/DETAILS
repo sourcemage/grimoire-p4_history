@@ -1,0 +1,17 @@
+           SPELL=bacula
+         VERSION=1.38.5
+     SOURCE_HASH='sha512:061e2fcd6876c206d83bab38e211a422d77a5821fc692d19a040fd0ae53a9afff94ece97647ed20417eec845c38fe425a8e8ae8b52ee39495675f03e8c87c1c8'
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://www.bacula.org/
+         ENTERED=20050419
+         UPDATED=20050419
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT='Network backup system'
+cat << EOF
+Bacula is a set of computer programs that permit you (or the system
+administrator) to manage backup, recovery, and verification of computer
+data across a network of computers of different kinds.
+EOF

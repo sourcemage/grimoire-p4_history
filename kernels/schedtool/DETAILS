@@ -1,0 +1,19 @@
+           SPELL=schedtool
+         VERSION=1.2.4
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://freequaos.host.sk/${SPELL}/${SOURCE}
+        WEB_SITE=http://freequaos.host.sk/schedtool/
+         ENTERED=20040718
+         UPDATED=20040718
+      LICENSE[0]=GPL
+     SOURCE_HASH=sha512:2c617f2e15032578a377b39bd41bcdcfd23a068108875a6258856dc225364f1e4a99a9ba6239a2115a4c23e914cce356dd99e5be7b0b8ed0d7ac2ffbcf140212
+           SHORT="schedtool can be used to query or alter a process' scheduling policy under Linux"
+cat << EOF
+schedtool interfaces with the Linux CPU scheduler. It allows the user to set
+and query the CPU-affinity and nice-levels of processes, as well as all
+scheduling policies, like batch or real-time (RR/FIFO) classes and their
+priorities.
+
+EOF

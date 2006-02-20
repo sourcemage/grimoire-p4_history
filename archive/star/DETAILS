@@ -1,0 +1,28 @@
+           SPELL=star
+         VERSION=1.5a70
+     SOURCE_HASH='sha512:1e780ef4999f1454c80aa1e9d9d3e25368d560db035fba8639978dc82d7ae49451a796a8480d2fbb4c4d6d129b165a7503425328e7dba36cc4ca69bbb0a3a756'
+           ALPHA=$([ "${VERSION//a/}" != "$VERSION" ] && echo 1)
+          SOURCE=$SPELL-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-${VERSION%a*}
+   SOURCE_URL[0]=ftp://ftp.berlios.de/pub/$SPELL/${ALPHA:+alpha/}$SOURCE
+        WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/star.html
+         ENTERED=20040718
+         UPDATED=20040718
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT='Unique standard tape archiver'
+cat << EOF
+Star is a very fast tar-like tape archiver with improved functionality.
+Star archives and extracts multiple files to and from a single file
+called a tarfile. A tarfile is usually a magnetic tape, but it can be
+any file. In all cases, appearance of a directory name refers to the
+files and (recursively) sub-directories of that directory.
+
+Star was first created in 1982 to extract tapes on a UNIX clone that
+had no tar command. In 1985 the first fully functional version has been
+released as mtar.
+
+When the old star format extensions have been introduced in 1985, it
+was renamed to star (Schily tar). In 1994, Posix 1003.1-1988 extensions
+were added and star was renamed to star (Standard tar).
+EOF

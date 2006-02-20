@@ -1,0 +1,20 @@
+           SPELL=lavaps
+         VERSION=2.7
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/$SOURCE
+     SOURCE_HASH=sha512:b0c3b16bd2c99ba4d5924a5cf2f26f3fbf3a92f24817d38b773733825b6a5069976a8ae41f375045127269feae45bb2d2fc35cfbee305fe319ff1c3bc979c34c
+        WEB_SITE=http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/index.html
+         ENTERED=20011122
+         UPDATED=20011122
+      LICENSE[0]=GPL
+       BUILD_API=2
+	   SHORT="Interactive process-tracking program like ``top''"
+cat << EOF
+LavaPS is an interactive process-tracking program like ``top'', but with
+a much different attitude. Rather than presenting lots of specific info
+in digital form, it tries to present certain important information in a
+graphical analog form. The idea is that you can run it in the background
+and get a rough idea of what's happening to your system without devoting
+much concentration to the task.
+EOF

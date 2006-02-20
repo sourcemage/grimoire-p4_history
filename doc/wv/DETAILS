@@ -1,0 +1,19 @@
+           SPELL=wv
+         VERSION=1.2.0
+     SOURCE_HASH='sha512:6cdbe78ae7edaf972432bbaf484bf2f82beae8e9320fe82f43c34e8c9f89fe599646a0afc8f52f6090eb1b0bdf39af01b3f941f587812391cc6e2aa950530701'
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/wvware/$SOURCE
+        WEB_SITE=http://wvware.sourceforge.net
+         ENTERED=20011101
+         UPDATED=20040714
+      LICENSE[0]=GPL
+           SHORT='wv is a library for convering Microsoft Word formats to HTML'
+cat << EOF
+wv (formerly known as MSWordView) is a library that understands the
+Microsoft Word 2000, 97, 95 and 6 file formats and is able to convert 
+Word documents into HTML, which can then be read with a browser. It
+also allows other programs access to word documents for the purpose
+of converting them to other formats and is currently being used by
+Abiword as its word importer.
+EOF

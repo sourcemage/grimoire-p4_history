@@ -1,0 +1,15 @@
+mk_source_dir  $SOURCE_DIRECTORY    &&
+unpack_file   &&
+unpack_file 2  &&
+unpack_file 3  &&
+unpack_file 4  &&
+unpack_file 5  &&
+unpack_file 6  &&
+unpack_file 7  &&
+unpack_file 8  &&
+unpack_file 9  &&
+patch  -d xc/lib/font/fontfile/ < $SOURCE_CACHE/$SOURCE9 &&
+patch  -d xc -p0  <  $SCRIPT_DIRECTORY/xfree86-xft-releasefile-crash.patch  &&
+patch  -d xc -p0  <  $SCRIPT_DIRECTORY/CAN-2005-2495.patch  &&
+#recommended by xfree86.org
+mk_source_dir  $SOURCE_DIRECTORY.bld 

@@ -1,0 +1,7 @@
+depends  gnupg     &&
+depends  smgl-fhs  &&
+
+optional_depends  linux-pam                     \
+                  '--enable-pam'                \
+                  ''                            \
+                  "for pam enabled su command"

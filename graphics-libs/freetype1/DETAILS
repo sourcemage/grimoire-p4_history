@@ -1,0 +1,19 @@
+           SPELL=freetype1
+         VERSION=1.3.1
+          SOURCE=freetype-$VERSION.tar.gz
+         SOURCE2=freetype-${VERSION}-macros-fixes.patch.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/freetype-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/freetype/$SOURCE
+  SOURCE2_URL[0]=http://evanidus.ath.cx:8080/l14h/patches/needed-with-gcc-3.3/${SOURCE2}
+        WEB_SITE=http://www.freetype.org
+         ENTERED=20010922
+         UPDATED=20010509
+     SOURCE_HASH=sha512:988acf30f6b8822802532f8af02c7b86da66c84c1097b7ba7a8ef5c3c9841bd2eb7603d0c8d6103b10343bee0b4ece2b45aeccc5a1ef60a8d389f63481dd1770
+    SOURCE2_HASH=sha512:f486106e66c929872ba00e2e24c5ebbb43de0830b4df80906c51bc634e6739360b2281874329c31308c44ab314661f6bf8cee5969ac2bdcef353dfd336e5f534
+      LICENSE[0]=GPL
+      LICENSE[1]=GPL
+       BUILD_API=2
+           SHORT="freetype is a free, quality, portable font engine."
+cat << EOF
+A Free, Quality, and Portable Font Engine
+EOF

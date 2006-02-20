@@ -1,0 +1,18 @@
+           SPELL=cpufreqd
+         VERSION=2.0.0
+     SOURCE_HASH=sha512:9b698f0d1c218f27fcbf245c3ae38c6039c5b4133727c606489c6feb384a96db2f96c2a51e7340083dd37dd3939c57ec8ba2879bb3b46f7b57b64a52b7490a87
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/cpufreqd/$SOURCE
+        WEB_SITE=http://sourceforge.net/projects/cpufreqd/
+         ENTERED=20030606
+         UPDATED=20050919
+      LICENSE[0]=GPL
+           SHORT="CpuFreqD - CPU speedstep daemon"
+cat << EOF
+cpufreqd is meant to be a replacement of the speedstep applet you
+can find on some other OS, it monitors battery level, AC state and
+running programs and adjusts the frequency governor according to
+a set of rules specified in the config file (see cpufreqd.conf (5))
+EOF

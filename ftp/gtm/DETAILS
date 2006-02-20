@@ -1,0 +1,18 @@
+           SPELL=gtm
+         VERSION=0.4.12
+          SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:292253dd043afc3b01dfa2630a133eb97a45a45655d05ec362c4c0057db2668f1d11cdfdb15cae819e291c3ee230790db39d5e8f2c01a224d57e95606a68a3a5
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+        WEB_SITE=http://gtm.sourceforge.net/
+         ENTERED=20011023
+         UPDATED=20011119
+      MAINTAINER=eric@schabell.com
+           SHORT="GTM is the Gnome Transfer Manager"
+cat << EOF
+GTM allows the user to retrieve multiple files from the web. These
+files can be retrieved in multiple parts and each part retrieved on a
+separate session that the user is connected to the Internet. This is
+most useful to users with dialup connections. The program performs these
+tasks using wget  as its back-end.
+EOF

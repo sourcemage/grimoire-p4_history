@@ -1,0 +1,22 @@
+           SPELL=gnumeric2
+         VERSION=1.6.2
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=gnumeric-$VERSION.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/gnumeric-$VERSION
+   SOURCE_URL[0]=$GNOME_URL/sources/gnumeric/$BRANCH/$SOURCE
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+      LICENSE[0]=GPL
+       BUILD_API=2
+        WEB_SITE=http://www.gnome.org/projects/gnumeric
+         ENTERED=20020513
+         UPDATED=20050918
+           SHORT="GNOME spreadsheet"
+cat << EOF
+Gnumeric is intended to be a drop in replacement for commercial
+spreadsheets. We are not attempting to clone existing applications.
+However, we offer a customizable feel that attempts to minimize the
+costs of transition.
+
+Gnumeric will import your existing Excel, 1-2-3, Applix, Sylk, XBase 
+and Oleo files. 
+EOF

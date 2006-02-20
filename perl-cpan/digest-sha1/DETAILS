@@ -1,0 +1,20 @@
+           SPELL=digest-sha1
+         VERSION=2.06
+          SOURCE=Digest-SHA1-$VERSION.tar.gz
+       BUILD_API=2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/Digest-SHA1-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/GAAS/$SOURCE
+     SOURCE_HASH=sha512:b2aca0eaec4a00ae7e77699de9790daf7111df8aa1375269dc7a413c860482564a978a2cc2b87e688b42e6d28d90d9326c10c598eaf51920aeea7ca69c87ef22
+         LICENSE=ART
+        WEB_SITE=http://gisle.aas.no
+      MAINTAINER=bluebird@optushome.net.au
+         ENTERED=20020313
+         UPDATED=20020313
+           SHORT="Perl interface to the SHA-1 Algorithm "
+cat << EOF
+The "Digest::SHA1" module allows you to use the NIST SHA-1
+message digest algorithm from within Perl programs.  The
+algorithm takes as input a message of arbitrary length and
+produces as output a 160-bit "fingerprint" or "message
+digest" of the input.
+EOF

@@ -1,0 +1,19 @@
+           SPELL=xcdroast
+         VERSION=0.98alpha15
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+   SOURCE_URL[0]=${SOURCEFORGE_URL}/${SPELL}/${SOURCE}
+     SOURCE_HASH=sha512:ad9b9d679c5c220c424b04e90113609e5023d730b99fe3ab0007bf05d35dd610edf14da664f37e1def5801e0702a03da2f5b002df0cb9c4f5f5c398c6c8b23a4
+        WEB_SITE=http://www.xcdroast.org/
+      LICENSE[0]=GPL
+         ENTERED=20020210
+         UPDATED=20020510
+    MENU_ITEM[0]="X-CD Roast"
+    MENU_EXEC[0]=${SPELL}
+    MENU_DESC[0]=${SHORT}
+           SHORT="xcdroast is a graphical frontend for cdrecord, mkisofs, and other cdrtools"
+cat << EOF
+X-CD-Roast tries to be the most userfriendly CD-burning software ever.
+It allows even the inexperienced user to create or copy a CD with a few
+mouse clicks in an intuitive and nice looking graphical user interface.   
+EOF

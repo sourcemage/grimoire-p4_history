@@ -1,0 +1,17 @@
+           SPELL=opensp
+         VERSION=1.5.1
+          SOURCE=OpenSP-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/OpenSP-$VERSION
+   SOURCE_URL[0]=$SOURCEFORGE_URL/openjade/$SOURCE
+     SOURCE_HASH=sha512:c89c256d384001d73669181e0894e7ca083bedc3f8bfd77eb7c2d1e9fc5a7c91a33a0bc5ca50491e3a644bb1f58224b027d996e111e5d82d518f5d9f41c8546a
+      LICENSE[0]=BSD
+        WEB_SITE=http://openjade.sourceforge.net
+     GCC_VERSION=3.4
+         ENTERED=20030713
+         UPDATED=20050406
+           SHORT="The OpenJade Group's SGML and XML parsing tools"
+cat << EOF
+This package is a collection of SGML/XML tools called OpenSP. It is a fork from
+James Clark's SP suite. These tools are used to parse, validate, and normalize
+SGML and XML files.
+EOF

@@ -1,0 +1,28 @@
+           SPELL=squirm
+         VERSION=1.23
+       BUILD_API=2
+          SOURCE=$SPELL-$VERSION.tgz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+   SOURCE_URL[0]=http://squirm.foote.com.au/$SOURCE
+        WEB_SITE=http://squirm.foote.com.au/
+         ENTERED=20041026
+         UPDATED=20050309
+     SOURCE_HASH=sha512:62f2aec559fe38091b0ae4b3a79767f2e6ed692ce5c4f154e8d58fdcd940c9ade260e7746c7775693b6db26df4524a28a3c9b8ec0f7306f09898bdac926e2fbf
+      LICENSE[0]=GPL
+           SHORT='Squirm - A Redirector for Squid'
+cat << EOF
+Squirm is a fast & configurable redirector for the Squid
+Internet Object Cache. It requires the GNU Regex Library
+(now included in the Squirm source), and of course,
+a working Squid.
+Squirm has the following features:
+* Very, very fast
+* Virtually no memory usage
+* It can re-read it's config files while running
+  by sending it a HUP signal
+* Interactive test mode for checking new configs
+* Full regular expression matching and replacement
+* Config files for patterns and IP addresses.
+* If you mess up the config file, Squirm runs in Dodo Mode
+  so your squid keeps working :-)
+EOF

@@ -1,0 +1,21 @@
+           SPELL=xml-sax
+           SNAME=XML-SAX
+         VERSION=0.12
+          SOURCE=$SNAME-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SNAME-$VERSION
+   SOURCE_URL[0]=http://www.cpan.org/authors/id/M/MS/MSERGEANT/$SOURCE
+     SOURCE_HASH=sha512:c6e534493eb83e7c300231120b928c619b9832fdc9a6e8ac77cca8729d529df62b55c2b5da3f2e415240671b192ff0f74dd1f62abd15d4dbf572e9b31b55ecad
+        WEB_SITE=http://search.cpan.org/search?dist=XML-SAX
+         ENTERED=20020722
+         UPDATED=20020722
+      LICENSE[0]=ART
+       BUILD_API=2
+           SHORT="Perl SAX2 XML Parser Framework"
+cat << EOF
+XML::SAX consists of several framework classes for using and building Perl SAX2
+XML parsers, filters, and drivers. It is designed around the need to be able to
+"plug in" different SAX parsers to an application without requiring programmer
+intervention. Those of you familiar with the DBI will be right at home. Some of
+the designs come from the Java JAXP specification (SAX part), only without the
+javaness.
+EOF

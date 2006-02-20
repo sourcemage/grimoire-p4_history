@@ -1,0 +1,25 @@
+           SPELL=pxtools
+         VERSION=0.0.20
+          SOURCE=$SPELL-$VERSION.tar.gz
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+        WEB_SITE=http://jan.kneschke.de/projects/pxtools/
+SOURCE_URL[0]=$WEB_SITE/download/$SOURCE
+          LICENSE=GPL
+      SOURCE_HASH=sha512:24d6cb88decc0fcc2b7a052a38507dc4660ca26cec55144eedea3dc37572783d403c6faa13e7e8d0be6fd82b075291269fd1e21b30356945524b83b99e26b232
+          ENTERED=20021201
+          UPDATED=20030723
+	    DOCS="README doc/*.txt"
+SHORT="extract the data from Paradox-database"
+cat << EOF
+The pxTools are a collection of tools to work with a
+Paradox-database. It consists of pxinfo, pxcsvdump, pxxmldump and
+pxsqldump.
+ pxinfo scans the header of a specified database-file and dumps the
+important informations on the screen.
+ pxsqldump is a utility to extract the data from Paradox-database.
+The output is a SQL-dump that can be used to recreate the database in 
+an SQL-enviroment. It dumps the 'CREATE TABLE' and the 'INSERT
+INTO'-commands to create the database.
+ pxcsvdump is the brother of pxsqldump dumps CSV.
+ pxxmldump is another member of the family and procudes XML.
+EOF
