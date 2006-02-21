@@ -1,7 +1,8 @@
   mk_source_dir        $SOURCE_DIRECTORY   &&
-  unpack               $SOURCE ${MD5[0]}   &&
+  unpack_file                              &&
+
   if [ $OLD_TOO == y ]; then
     mk_source_dir        $SOURCE_DIRECTORY2  &&
-    unpack               $SOURCE2 ${MD5[1]}
+    unpack_file 2
   fi
 

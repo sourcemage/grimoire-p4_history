@@ -1,3 +1,23 @@
+2006-02-08 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on smgl-fhs (for directory structure)
+
+2006-02-06 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on gnupg (for SOURCE verification)
+	  Added missing '&&' after OLD_TOO if/fi
+
+2005-12-08 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: 3.2.2
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
+2005-11-28 Seth Woolley <seth@tautology.org>
+	* PRE_BUILD: unpack api update
+
+2005-11-28 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: 3.2.1, md5 -> sha512
+	* PRE_BUILD: unpack -> unpack_file
+
 2005-08-29 Treeve Jelbert <treeve01@pi.be>
 	* DETAILS: version 3.2-pre9
 
@@ -64,7 +84,8 @@
 	* mk.diff: recreate
 
 2004-04-08 hgg <hgreig@bigpond.net.au>
-	* POST_INSTALL: reorder and add / to $INSTALL_ROOT so it won't fail when unset
+	* POST_INSTALL: reorder and add / to $INSTALL_ROOT so it won't fail when
+	  unset
 
 2004-03-25 hgg <hgreig@bigpond.net.au>
 	* BUILD,POST_INSTALL: sick of depmod tracking all my kernels
