@@ -1,10 +1,12 @@
            SPELL=rl
-         VERSION=0.2.2
+         VERSION=0.2.4
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://tiefighter.et.tudelft.nl/~arthur/rl/$SOURCE
-          MD5[0]=88d7972485e5ab8929a6499ec3df4818
-        WEB_SITE=http://tiefighter.et.tudelft.nl/~arthur/rl/
+   SOURCE_URL[0]=http://ch.tudelft.nl/~arthur/rl/$SOURCE
+  SOURCE2_URL[0]=${SOURCE_URL[0]}.sig
+      SOURCE_GPG=arthur.gpg:$SOURCE.sig:UPSTREAM_KEY
+        WEB_SITE=http://ch.tudelft.nl/~arthur/rl/
          ENTERED=20050206
          UPDATED=20050206
       LICENSE[0]=GPL
