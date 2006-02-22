@@ -1,17 +1,18 @@
            SPELL=man-pages
          VERSION=2.24
-       BUILD_API=2
-         ARCHIVE=off
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sign
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$KERNEL_URL/pub/linux/docs/manpages/$SOURCE
-   SOURCE_URL[1]=ftp://ftp.kernel.org/pub/linux/docs/manpages/$SOURCE
-   SOURCE_URL[2]=ftp://ftp.win.tue.nl/pub/linux-local/manpages/$SOURCE
-     SOURCE_HASH=sha512:a714f264c605239543feae5153039a1f8e8543ec8afb5fc1a8e7d51ad799c39bcc65edd7637a3c33ea57c07b8c680fe22f8b4a0fe545a1a44024123870b994f9
+   SOURCE_URL[1]=ftp://ftp.win.tue.nl/pub/linux-local/manpages/$SOURCE
+  SOURCE2_URL[0]=$KERNEL_URL/pub/linux/docs/manpages/$SOURCE2
+      SOURCE_GPG="kernel.gpg:${SOURCE2}"
+      LICENSE[0]=GPL
+       BUILD_API=2
         WEB_SITE=http://www.win.tue.nl/~aeb/linux/man/
+         ARCHIVE=off
          ENTERED=20011003
          UPDATED=20040517
-      LICENSE[0]=GPL
            SHORT="man-pages contains a large collection of man pages."
 cat << EOF
 The manpages package contains a large collection of man pages for Linux
