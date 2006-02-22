@@ -1,0 +1,19 @@
+           SPELL=ephoto
+if  [  "$EPHOTO_CVS_AUTOUPDATE"  ==  "y"  ];  then
+         VERSION=$(date +%Y%m%d)
+else
+         VERSION=cvs
+fi
+          SOURCE=$SPELL-cvs.tar.bz2
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/proto/$SPELL
+  FORCE_DOWNLOAD=on
+   SOURCE_IGNORE=volatile
+        WEB_SITE=http://enlightenment.sourceforge.net/
+         ENTERED=20060222
+         UPDATED=20060222
+      LICENSE[0]=BSD
+           SHORT="a presentation application, written in EWL"
+cat << EOF
+ePhoto is a presentation application, written in EWL.
+EOF
