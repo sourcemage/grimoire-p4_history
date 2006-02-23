@@ -1,3 +1,48 @@
+2006-02-23 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: Updated to 4.1.1
+	  SOURCE renamed
+
+2006-01-23 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: Updated to 4.1.0
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
+2005-08-06 Jose Bernardo Silva <jbernardo@sourcemage.org>
+        * BUILD: removed thread and ipv6 support, would bork if you didn't do a 
+                 "cast -r"
+        * DEPENDS, DETAILS: removed gcc34 dependencies, builds with gcc 4.0.1
+
+2005-07-07 Eric Sandall <eric@sandall.us>
+	* BUILD: invoke_gcc goes before ./configure (Thanks to David Brown)
+
+2005-06-30 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 4.0.0
+	  SOURCE and SOURCE_DIRECTORY now use 'opensource-desktop' instead
+	  of 'free'
+	  Set GCC_VERSION to '34' (should be fixed with gcc 4.0.1)
+	* CONFIGURE: Query (default 'y') to enable GIF support
+	  Removed thread and ipv6 support
+	* DEPENDS: Supports both sqlite and sqlite2
+	  PostgreSQL support now works
+	  Use TRACK_ROOT for library/include locations
+	  Added optional dependency on fontconfig
+	  Added dependency on gcc34
+	  Removed libmng support
+	* BUILD: Install demos and examples (slower, but more complete)
+	  Set install location of examples and demos
+	  Set our platform (linux-g++)
+	  Removed explicit GIF support
+	  Pass QT_GIF to OPTS
+	  Pass OPTS last to OPTS so that user-defined settings override ours
+	  Run `invoke_gcc` before make
+	* INSTALL: Fixed symlink creation for INSTALL_ROOT
+	  Use sedit instead of sed -i
+	  qmake is now installed okay, removed re-install
+	  Removed removal of /usr/share/qt/mkspecs/default/linux*
+	  Removed libqt-mt.so symlinking (no longer valid)
+	  Removed QTDIR fix of qmake.conf (no longer valid)
+
 2005-05-14 Treeve Jelbert <treeve01@pi.be>
 	* DEPENDS: optional depends sqlite2 (not 3)
 	  fixes bug #8867
