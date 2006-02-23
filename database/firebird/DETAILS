@@ -7,12 +7,18 @@ case $FB_VER in
            SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
    SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
    SOURCE_IGNORE=volatile
-#  FORCE_DOWNLOAD=on
+#   FORCE_DOWNLOAD=on
 ;;
    devel)
-         VERSION=na
-        /bin/echo no development version currently available!
-        return 1
+#         VERSION=na
+#        /bin/echo no development version currently available!
+#        return 1
+         VERSION=T2_0_0_Beta2
+          SOURCE=${SPELL}-$VERSION.tar.bz2
+           SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
+   SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
+   SOURCE_IGNORE=volatile
+#  FORCE_DOWNLOAD=on
 #     SOURCE_HASH=sha512:
 #          SOURCE=${SPELL}-${VERSION}.tar.bz2
 #   SOURCE_URL[0]=http://www.firebirdsql.org/download/prerelease/$SOURCE
