@@ -8,6 +8,19 @@ ESSENTIAL=yes
 
 . /etc/init.d/smgl_init
 . /etc/sysconfig/init
+. /etc/sysconfig/mountall
+
+function rek_remove() {
+  for file in "$@"
+  do
+    if [[ -d $file ]]
+    then
+      rek_remove "$file"/*
+    else
+      rm "$file"
+    fi
+  done
+}
 
 checkfs()
 {
@@ -87,12 +100,15 @@ start()
 
 #As per FHS sm bug #10509
   echo "Cleaning out /var/run..."
-  [ -d /var/run ] && rm -rf /var/run/*
+  [ -d /var/run ] && rek_remove /var/run/*
   evaluate_retval
 
-  echo "Cleaning out /tmp..."
-  [ -d /tmp ] && rm -rf /tmp/*
-  evaluate_retval
+  if [[ "$CLEAN_TMP" == "yes" ]]
+  then
+    echo "Cleaning out /tmp..."
+    [ -d /tmp ] && rm -rf /tmp/*
+    evaluate_retval
+  fi
 
   echo "Creating /var/run/utmp..."
   [ -d /var/run ] && touch /var/run/utmp
