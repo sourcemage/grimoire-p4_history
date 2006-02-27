@@ -17,7 +17,7 @@ function recursive_rm() {
     if [ -d $file ] ; then
       recursive_rm "$file"/*
     else
-      rm "$file"
+      rm -f "$file"
     fi
   done
 }
