@@ -10,12 +10,12 @@ ESSENTIAL=yes
 . /etc/sysconfig/init
 . /etc/sysconfig/mountall
 
-function rek_remove() {
+function recursive_rm() {
   for file in "$@"
   do
     if [[ -d $file ]]
     then
-      rek_remove "$file"/*
+      recursive_rm "$file"/*
     else
       rm "$file"
     fi
@@ -100,7 +100,7 @@ start()
 
 #As per FHS sm bug #10509
   echo "Cleaning out /var/run..."
-  [ -d /var/run ] && rek_remove /var/run/*
+  [ -d /var/run ] && recursive_rm /var/run/*
   evaluate_retval
 
   if [[ "$CLEAN_TMP" == "yes" ]]
