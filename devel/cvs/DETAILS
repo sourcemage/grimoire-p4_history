@@ -1,16 +1,17 @@
            SPELL=cvs
-         VERSION=1.12.12
+         VERSION=1.12.13
           SOURCE=$SPELL-$VERSION.tar.bz2
          SOURCE2=$SPELL-$VERSION.tar.bz2.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-      SOURCE_URL=http://ftp.gnu.org/non-gnu/cvs/$SOURCE
-     SOURCE2_URL=http://ftp.gnu.org/non-gnu/cvs/$SOURCE2
-     SOURCE_HASH=sha1:402e81a3d231535a97e4b4f438c0b68920e57d0c
+  SOURCE2_IGNORE=signature
+      SOURCE_URL=http://ftp.gnu.org/non-gnu/cvs/source/feature/$VERSION/$SOURCE
+     SOURCE2_URL=http://ftp.gnu.org/non-gnu/cvs/source/feature/$VERSION/$SOURCE2
       SOURCE_GPG=vendor_cvs.gpg:$SOURCE2
       LICENSE[0]=GPL
         WEB_SITE=http://www.cvshome.org/
          ENTERED=20010922
          UPDATED=20040823
+  SECURITY_PATCH=1
            SHORT='CVS is a Concurrent Versioning System'
 cat << EOF
 CVS is a version control system, which allows you to keep old versions

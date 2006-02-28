@@ -1,3 +1,22 @@
+2006-02-27 George Sherwood <george@beernabeer.com>
+	* DETAILS: Updated SECURITY_PATCH for version update.
+
+2006-02-26 George Sherwood <george@beernabeer.com>
+	* DETAILS: Updated to version 1.12.13.  See SMGLSA-2006:8.
+	  Updated SOURCE_URLS's
+
+2006-02-08 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Depends on smgl-fhs (for directory structure)
+
+2006-02-06 Eric Sandall <eric@sandall.us>
+	* DETAILS: Removed SOURCE_HASH
+	  Added SOURCE2_IGNORE=signature for SOURCE2 GPG signature
+	* DEPENDS: Depends on gnupg (for SOURCE verification)
+
+2005-10-16 Eric Sandall <eric@sandall.us>
+	* DEPENDS: Added optional dependency on zlib (to use internal or
+	  system zlib)
+
 2005-09-15 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* DETAILS: readded GPG
 	* vendor_cvs.gpg: converted to binary
@@ -7,9 +26,9 @@
 
 2005-09-12 Thomas Houssin <Thomas.Houssin@sourcemage.org>
 	* DETAILS: updated to 1.12.12
-	* DETAILS: use SOURCE_HASH and SOURCE_GPG
+	  use SOURCE_HASH and SOURCE_GPG
 	* PRE_BUILD, cvs-insecuretemp_file.patch: added, security fix
-		see CAN-2005-2693
+	  see CAN-2005-2693
 
 2004-08-25 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* POST_REMOVE: infodir is /usr/share/info, not /usr/info
