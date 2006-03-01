@@ -1,8 +1,4 @@
-if  !  grep  -q  "BYTECODE="  $SPELL_CONFIG;  then
-
-  if    query  "Enable bytecode interpreter?"  n
-  then  echo   "BYTECODE=y"  >>  $SPELL_CONFIG
-  else  echo   "BYTECODE=n"  >>  $SPELL_CONFIG
-  fi
-
-fi
+# uses the old value of BYTECODE for backwards compatibility, remove this
+# after a while
+# 2006-03-01 Arwed v. Merkatz
+config_query  FT2_BYTECODE "Enable bytecode interpreter?"  ${BYTECODE:-n}
