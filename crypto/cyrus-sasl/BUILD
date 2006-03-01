@@ -1,5 +1,3 @@
-patch -p1 < $SCRIPT_DIRECTORY/cyrus-sasl-2.1.21-openssl-098.patch &&
-
 if [[ "$CS_MECH" =~ 'saslauthd' ]]; then
   OPTS="$OPTS --with-saslauthd=/var/run/saslauthd"
 fi &&
