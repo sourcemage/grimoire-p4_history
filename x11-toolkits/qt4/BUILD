@@ -13,14 +13,17 @@ OPTS="$QT_DEBUG   \
 
 invoke_gcc                                                                     &&
 echo  "yes"  |  ./configure                                                    \
-                             -prefix $INSTALL_ROOT/usr/lib/qt                  \
-                             -bindir $INSTALL_ROOT/usr/bin                     \
-                             -libdir $INSTALL_ROOT/usr/lib                     \
-                             -docdir $INSTALL_ROOT/usr/share/doc/qt-x11        \
-                             -headerdir $INSTALL_ROOT/usr/include/qt           \
-                             -examplesdir $INSTALL_ROOT/usr/share/qt/examples  \
-                             -demosdir $INSTALL_ROOT/usr/share/qt/demos        \
-                             -datadir $INSTALL_ROOT/usr/share/qt               \
+                             -prefix $INSTALL_ROOT/usr/                        \
+                             -bindir $INSTALL_ROOT/usr/bin/qt4                 \
+                             -libdir $INSTALL_ROOT/usr/lib/qt4                \
+                             -docdir $INSTALL_ROOT/usr/share/doc/qt4          \
+                             -headerdir $INSTALL_ROOT/usr/include/qt4           \
+                             -plugindir $INSTALL_ROOT/usr/lib/qt4/plugins       \
+                             -sysconfdir $INSTALL_ROOT/etc/qt4                  \
+                             -translationdir $INSTALL_ROOT//usr/share/doc/qt4/translations \
+                             -examplesdir $INSTALL_ROOT/usr/share/doc/qt4/examples  \
+                             -demosdir $INSTALL_ROOT/usr/share/doc/qt4/demos        \
+                             -datadir $INSTALL_ROOT/usr/share/qt4               \
                              -platform linux-g++                               \
                              $OPTS                                             &&
 
