@@ -49,6 +49,12 @@ start()
 
     if [[ "$TTY_NUMS" ]] && [[ "$CONSOLECHARS_ARGS" ]]
     then
+      if [[ "$TTY_NUMS" =~ "\*" ]]; then
+        unset TTY_NUMS
+        for a in `grep ^tty.*: /etc/inittab`; do
+          TTY_NUMS="$TTY_NUMS `expr "$a" : 'tty\([0-9]*\):.*'`"
+        done
+      fi
       for n in $TTY_NUMS
       do
         echo "Setting console settings for $DEV_TTY$n..."
@@ -69,7 +75,13 @@ start()
   then
     if [[ "$TTY_NUMS" ]] && [[ "$SETFONT_ARGS" ]]
     then
-      for n in $TTY_NUMS 
+      if [[ "$TTY_NUMS" =~ "\*" ]]; then
+        unset TTY_NUMS
+        for a in `grep ^tty.*: /etc/inittab`; do
+          TTY_NUMS="$TTY_NUMS `expr "$a" : 'tty\([0-9]*\):.*'`"
+        done
+      fi
+      for n in $TTY_NUMS
       do
         echo "Setting console settings for $DEV_TTY$n..."
         if [[ "$UNICODE_START" ]]
