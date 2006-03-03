@@ -1,9 +1,14 @@
-OPTS="$MESALIB_DEBUG     \
-      $MESALIB_TRACE     \
-      $MESALIB_PROFILE   \
-      $MESALIB_OPTIMIZE  \
-      $OPTS"             &&
-
-mkdir  ggi  ggi/demos  ggi/ggiglut                     &&
-touch  ggi/demos/Makefile.in  ggi/ggiglut/Makefile.in  &&
-default_build
+make ${MESALIB_BUILD}                 &&
+if [[ "$MESALIB_DEMOS" == "y" ]]
+then
+#demos want to call them explicitly
+#since some are broken
+  cd $SOURCE_DIRECTORY/progs/xdemos   &&
+  make glthreads glxdemo glxgears     \
+       glxgears_fbconfig glxcontexts  \
+       glxheads glxinfo glxpixmap     \
+       glxpbdemo glxswapcontrol       \
+       manywin offset overlay pbinfo  \
+       pbdemo wincopy xfont           \
+       xrotfontdemo yuvrect_client
+fi
