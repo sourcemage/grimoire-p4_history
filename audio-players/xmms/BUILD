@@ -1,4 +1,4 @@
-if [ `echo $ARCHITECTURE | tail -c 3` == "86" ] ; then
+if [ "${SMGL_COMPAT_ARCHS[1]}" = "ia32" ]; then
 	 OPTS="$OPTS  --enable-simd"
 else 
          OPTS="$OPTS  --disable-simd" 
