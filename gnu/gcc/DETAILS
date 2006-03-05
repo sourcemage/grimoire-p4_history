@@ -1,16 +1,17 @@
            SPELL=gcc
-         VERSION=3.4.5
+         VERSION=4.0.2
+     SOURCE_HASH=sha512:74bfc288ae82fb25c652a42354a4c85403a2cb9bf7983e47c9ca8fb305e6d0fb9d6688f666c7bb0c10e25762d06522a383c1334b824fd5443e590aaa9870ee73
           SOURCE=gcc-core-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
    SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
    SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
-     SOURCE_HASH=sha512:997289b39e5605bac84c2a5d80a4e5dc2d24d4f1c742b494e4fbee4d0f16f64ae9ce860ccdc99c9764a29ec92ad066fd4faf5789fc5d7f49173eace263fe5c01 
       LICENSE[0]=GPL
        BUILD_API=2
         WEB_SITE=http://gcc.gnu.org/
          ENTERED=20040420
          UPDATED=20040619
             DOCS="$DOCS INSTALL"
+      PATCHLEVEL=1
            SHORT="the GNU C compiler"
 cat << EOF
 The GNU C compiler and the core of the GNU compiler collection.

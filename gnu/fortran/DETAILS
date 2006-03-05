@@ -1,21 +1,21 @@
-           SPELL=objc
+           SPELL=fortran
          VERSION=4.0.2
      SOURCE_HASH=sha512:74bfc288ae82fb25c652a42354a4c85403a2cb9bf7983e47c9ca8fb305e6d0fb9d6688f666c7bb0c10e25762d06522a383c1334b824fd5443e590aaa9870ee73
-    SOURCE2_HASH=sha512:1a75764445028e4386902c1c839321196a1d36905ec0dc92c1e5bf064dbff9208e77b4074167cee914f21cd6d4c4931f826359d32bf2d8492ab33ba1b105b441
+    SOURCE2_HASH=sha512:13401e771d4547b2b71e614cd1138ffe0a8d01bb4814b96796a6f39b990395a354e6ee4cdf66b1b55c32fb570fba7f2ed0452cf48da4d9c22e59efc84ceea7a8
           SOURCE=gcc-core-$VERSION.tar.bz2
-         SOURCE2=gcc-$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/gcc-$VERSION
    SOURCE_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE
    SOURCE_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE
+         SOURCE2=gcc-$SPELL-$VERSION.tar.bz2
   SOURCE2_URL[0]=$GNU_URL/gcc/gcc-$VERSION/$SOURCE2
   SOURCE2_URL[1]=ftp://gcc.gnu.org/pub/gcc/releases/gcc-$VERSION/$SOURCE2
       LICENSE[0]=GPL
-      LICENSE[1]=GPL
         WEB_SITE=http://gcc.gnu.org/
-         ENTERED=20040704
-         UPDATED=20040704
+         ENTERED=20040705
+         UPDATED=20040705
             DOCS="$DOCS INSTALL"
-           SHORT="the GNU Objective-C compiler"
+           SHORT="the GNU fortran compiler"
 cat << EOF
-The GNU Objective-C compiler and runtime library.
+The GNU fortran compiler and runtime library.
 EOF
+
