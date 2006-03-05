@@ -54,7 +54,7 @@ function select_list_sub_checkbox() {
     message -n "$msgstr"
     read   -t  $PROMPT_DELAY  answer
     [[ $answer ]] || answer=$default
-    answer=$(echo $answer | sed 's/./& /g')
+    answer=$(echo $answer | sed -e 's,\W,,g' -e 's/./& /g')
     for answer_parsed in $answer
     do
        result="$result $(hash_get $hashname $answer_parsed)"
