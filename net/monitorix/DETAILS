@@ -1,0 +1,16 @@
+           SPELL=monitorix
+         VERSION=0.7.14
+     SOURCE_HASH='sha512:87e5560b79697a272fabd4f701e22ceef2161f7d10292912e288a26270780760694d523685035b5975812321a22ed3736aff3feb3d2ce0323ea0ac5b0db92073'
+          SOURCE="$SPELL-$VERSION.tar.gz"
+   SOURCE_URL[0]="http://www.monitorix.org/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/$SPELL-$VERSION"
+        WEB_SITE="http://www.$SPELL.org"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='GPL'
+         UPDATED=20060117
+       BUILD_API=2
+           SHORT='A Web-based lightweight tool to monitorize one or more Linux servers'
+cat << EOF
+Monitorix is a lightweight system monitoring tool designed to monitor as many services as it can. At this time, it monitors from the CPU load and temperatures to the users on the system. Network device activity and network service demand are also monitored. The current status of any corporate Linux server with Monitorix installed can be accessed via a Web browser.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor
