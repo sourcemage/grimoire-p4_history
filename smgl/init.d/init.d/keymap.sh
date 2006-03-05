@@ -13,7 +13,7 @@ start()
 {
   required_executable /bin/loadkeys
 
-  /bin/loadkeys $KEYMAP
+  /bin/loadkeys $KEYMAP $INCLUDEMAPS
   evaluate_retval
 
   if [[ "$DEVICES" == "devfs" ]]
@@ -41,12 +41,6 @@ start()
 
   if [[ "$CONSOLE_TOOLS" == "console-tools" ]]
   then
-    if [ "$ENABLE_EURO" = "yes" ]
-    then
-      /bin/loadkeys euro.inc
-      evaluate_retval
-    fi
-
     if [[ "$TTY_NUMS" ]] && [[ "$CONSOLECHARS_ARGS" ]]
     then
       if [[ "$TTY_NUMS" =~ "\*" ]]; then
