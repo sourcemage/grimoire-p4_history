@@ -1,3 +1,8 @@
+2006-03-05 Juuso Alasuutari <juuso.alasuutari@tamperelainen.org>
+	* init.d/keymap.sh, keymap.conf: removed ENABLE_EURO, replaced 
+	  with INCLUDEMAPS which is not specific to console-tools and 
+	  allows any include keymaps to be loaded.
+
 2006-03-03 Juuso Alasuutari <juuso.alasuutari@tamperelainen.org>
 	* init.d/keymap.sh: font & unicode are set on all consoles 
 	  listed in /etc/inittab if $TTY_NUMS has "*".
