@@ -11,10 +11,22 @@ RECOMMENDED=yes
 
 start()
 {
-  required_executable /bin/loadkeys
+  if [ -n "$KEYMAP$INCLUDEMAPS" ]; then
+    required_executable /bin/loadkeys
+  fi
 
-  /bin/loadkeys $KEYMAP $INCLUDEMAPS
-  evaluate_retval
+  if [ -n "$KEYMAP" ]; then
+    /bin/loadkeys $KEYMAP
+    evaluate_retval
+  fi
+
+  for a in $INCLUDEMAPS; do
+    /bin/loadkeys $a
+    if [[ $? != 0 ]]; then
+      ! [[ "$a" =~ "\.inc$" ]] && a="$a.inc" && /bin/loadkeys $a
+    fi
+    evaluate_retval
+  done
 
   if [[ "$DEVICES" == "devfs" ]]
   then

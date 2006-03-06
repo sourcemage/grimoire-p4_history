@@ -1,3 +1,9 @@
+2006-03-06 Juuso Alasuutari <juuso.alasuutari@tamperelainen.org>
+	* init.d/keymap.sh: Fixed include map loading to understand 
+	  entries without .inc suffix. Fixed keymap loading to run only 
+	  when $KEYMAP is actually provided; would sit and meditate 
+	  otherwise (at least kbd's loadkeys would).
+
 2006-03-05 Juuso Alasuutari <juuso.alasuutari@tamperelainen.org>
 	* init.d/keymap.sh, keymap.conf: removed ENABLE_EURO, replaced 
 	  with INCLUDEMAPS which is not specific to console-tools and 
