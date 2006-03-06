@@ -20,14 +20,6 @@ start()
     evaluate_retval
   fi
 
-  for a in $INCLUDEMAPS; do
-    /bin/loadkeys $a
-    if [[ $? != 0 ]]; then
-      ! [[ "$a" =~ "\.inc$" ]] && a="$a.inc" && /bin/loadkeys $a
-    fi
-    evaluate_retval
-  done
-
   if [[ "$DEVICES" == "devfs" ]]
   then
     DEV_TTY="vc/"
@@ -53,6 +45,13 @@ start()
 
   if [[ "$CONSOLE_TOOLS" == "console-tools" ]]
   then
+    for a in $INCLUDEMAPS; do
+      ! [[ "$a" =~ "\.gz$" ]] &&
+        ! [[ "$a" =~ "\.inc$" ]] &&
+        a="$a.inc"
+      /bin/loadkeys $a
+      evaluate_retval
+    done
     if [[ "$TTY_NUMS" ]] && [[ "$CONSOLECHARS_ARGS" ]]
     then
       if [[ "$TTY_NUMS" =~ "\*" ]]; then
@@ -79,6 +78,13 @@ start()
 
   if [[ "$CONSOLE_TOOLS" == "kbd" ]]
   then
+    for a in $INCLUDEMAPS; do
+      /bin/loadkeys $a
+      if [[ $? != 0 ]]; then
+        ! [[ "$a" =~ "\.inc$" ]] && a="$a.inc" && /bin/loadkeys $a
+      fi
+      evaluate_retval
+    done
     if [[ "$TTY_NUMS" ]] && [[ "$SETFONT_ARGS" ]]
     then
       if [[ "$TTY_NUMS" =~ "\*" ]]; then
