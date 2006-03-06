@@ -1,8 +1,8 @@
            SPELL=seahorse
          VERSION=0.8.1
-      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
    SOURCE_URL[1]=$SOURCEFORGE_URL/$SPELL/$SOURCE
