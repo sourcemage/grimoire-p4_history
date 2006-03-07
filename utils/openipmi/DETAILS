@@ -1,0 +1,16 @@
+           SPELL=openipmi
+         VERSION=2.0.4
+     SOURCE_HASH='sha512:0b381857e450d81205b74286a12cf8d5c5133721c85207b5b91e272ad0b67b1e1b73d5e77b761e500596f0c634a6fc148a007056602b7fe8d9493062ca5ed36c'
+          SOURCE="OpenIPMI-$VERSION.tar.gz"
+   SOURCE_URL[0]="$SOURCEFORGE_URL/$SPELL/$SOURCE"
+SOURCE_DIRECTORY="$BUILD_DIRECTORY/OpenIPMI-$VERSION"
+        WEB_SITE="http://$SPELL.sourceforge.net/"
+   FRESHMEAT_URL="http://freshmeat.net/projects/$SPELL/"
+      LICENSE[0]='LGPL'
+         UPDATED=20060117
+       BUILD_API=2
+           SHORT='An IPMI device driver and support library'
+cat << EOF
+OpenIPMI is an effort to create a full-function IPMI system to allow full access to all IPMI information on a server and to abstract it to a level that will make it easy to use.
+EOF
+## Auto-generated from Freshmeat.net's project descriptor
