@@ -1,1 +1,1 @@
-make  LIBDIR=/usr/lib  INCLUDEDIR=/usr/include
+make  LIBDIR=${INSTALL_ROOT}/usr/lib  INCLUDEDIR=${INSTALL_ROOT}/usr/include
