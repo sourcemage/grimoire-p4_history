@@ -1,8 +1,0 @@
-default_pre_build  &&
-
-# Backup & remove existing kdm dir to prevent borkage during install
-if [[ $VERSION == `installed_version $SPELL` ]]  &&
-   [ -d $INSTALL_ROOT/usr/share/config/kdm/ ]; then
-  cp -r $INSTALL_ROOT/usr/share/config/kdm/ $TMP_DIR
-  rm $INSTALL_ROOT/usr/share/config/kdm/*
-fi
