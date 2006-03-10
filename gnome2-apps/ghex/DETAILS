@@ -1,10 +1,10 @@
            SPELL=ghex
-         VERSION=2.8.1
+         VERSION=2.8.2
           BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNOME_URL/sources/$SPELL/$BRANCH/$SOURCE
-     SOURCE_HASH=sha512:df1d882fd9b708c7435ee26dee78ac09a3933c567e93cab1b1952a4a49fb23d50691f52e2872b73671cfb6b4e0b579fd9a741de0dd72e4af7945406c554a0902
+      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
       LICENSE[0]=GPL
       BUILD_API=2
         WEB_SITE=http://www.gnome.org
