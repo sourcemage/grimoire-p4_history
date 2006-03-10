@@ -11,7 +11,7 @@ pushd  $INSTALL_ROOT/var/spool  &&
 ln  -s  mqueue  mail  ||  true  &&
 popd                            &&
 
-make  all                             &&
+./Build -f $SOURCE_DIRECTORY/smgl.m4  &&
 cd  cf/cf                             &&
 ln  -s  generic-linux.mc sendmail.mc  &&
 make  all
