@@ -21,6 +21,10 @@ if ! grep -q "DEV" $SPELL_CONFIG
       --stdout \
       --title     'Select your mouse device entry please' \
       --menu      '' 0 100 10 $MOUSEDEV)
+    if [[ "$MOUSEDEV" == "custom" ]]; then
+      echo "Input mouse device:"
+      read MOUSEDEV
+    fi
     echo "DEV=${MOUSEDEV//\"/}" >> $SPELL_CONFIG
 fi
 }
