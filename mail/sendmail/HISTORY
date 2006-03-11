@@ -1,3 +1,18 @@
+2006-03-10 David Kowis <dkowis@shlrm.org>
+	* smgl.m4: A smgl m4 file for making the man pages go where they're supposed
+	  to
+	* PRE_BUILD: added copying the smgl.m4 file to the SOURCE_DIR
+	* BUILD: modified it to use the ./Build script and the smgl.m4 file according to 
+      $SOURCE_DIRECTORY/devtools/README
+	* INSTALL: fixed a symlink issue, so that the symlink is always created
+	  for sendmail
+
+2005-10-24 Eric Sandall <eric@sandall.us>
+	* DETAILS: Updated to 8.13.5
+	  Use vendor sendmail.gpg keyring
+	* sendmail.gpg: Verified with ftp://ftp.sendmail.org/pub/sendmail/PGPKEYS
+	  and http://pgp.mit.edu:11371/pks/lookup?search=sendmail.org&op=index
+
 2005-07-20 Jeremy Blosser <jblosser-smgl@firinn.org>
 	* INSTALL: Add symlink from /usr/sbin/sendmail to /usr/lib/sendmail
 	  per FHS
