@@ -11,7 +11,7 @@ if  [  "$GLIBC_NPTL"  =  "y"  ];  then
   #
   # Unpack glibc-kernel-headers
   #
-  unpack_file 2                                                          &&
+  unpack_file 3                                                          &&
   cd  $GLIBC_HEADERS_DIR                                                 &&
   patch  -p1  <  $SCRIPT_DIRECTORY/config.h.patch                        &&
   cd  $GLIBC_HEADERS_DIR/include                                         &&
@@ -24,20 +24,19 @@ else
   #
   # Now unpack the rest of glibc fixes in the normal location
   #
-  unpack_file 2                                                          &&
+  unpack_file 3                                                          &&
   #
   # Unpack glibc-kernel-headers
   #
   mkdir  -p  $GLIBC_HEADERS_DIR/include                                  &&
   cd  $GLIBC_HEADERS_DIR/include                                         &&
-  unpack_file 3
+  unpack_file 5
 fi                                                                       &&
 
 #
 # Now fixup the normal glibc
 #
 cd  $SOURCE_DIRECTORY                                                    &&
-patch  -p0  <  $SCRIPT_DIRECTORY/kd.h.patch                              &&
 patch  -p1  <  $SCRIPT_DIRECTORY/glibcshared.patch                       &&
 patch  -p0  <  $SCRIPT_DIRECTORY/Makefile.patch                          &&
 
