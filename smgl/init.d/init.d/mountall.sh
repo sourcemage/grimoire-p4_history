@@ -3,6 +3,8 @@
 
 PROGRAM=/bin/false
 RUNLEVEL=S
+NEEDS="+root_fs"
+WANTS="+modules"
 PROVIDES=local_fs
 ESSENTIAL=yes
 
@@ -11,10 +13,8 @@ ESSENTIAL=yes
 . /etc/sysconfig/mountall
 
 function recursive_rm() {
-  for file in "$@"
-  do
-    if [[ -d $file ]]
-    then
+  for file in "$@" ; do
+    if [ -d $file ] ; then
       recursive_rm "$file"/*
     else
       rm -f "$file"
@@ -32,7 +32,7 @@ checkfs()
   [ "$FORCE"   = yes ]  &&  FORCE="-f"
 
   echo "Checking file systems..."
-  /sbin/fsck -T -C -A $FIX $FORCE
+  /sbin/fsck -T -C -A -R $FIX $FORCE
   evaluate_retval
 
   if [ $? -gt 1 ];  then
@@ -54,19 +54,9 @@ start()
   required_executable /bin/mount
   required_executable /sbin/fsck
 
-  #
-  # Prefer the newer mdadm to raidtools
-  #
-  if   [ -f /etc/mdadm.conf ] ; then
-    mdadm  --assemble  --scan
-    mdadm  --follow    --scan  --delay=120  --daemonise  >  /var/run/mdadm.pid
-  elif [ -f /etc/raidtab    ] ; then
-    raidstart  --all
-  fi
-
-  echo "Mounting root file system read only..."
-  mount   -n  -o  remount,ro  /
-  evaluate_retval || exit 1
+  echo "Mounting proc file system..."
+  mount -a -t /proc
+  evaluate_retval
 
   if optional_executable /sbin/vgscan && optional_executable /sbin/vgchange ; then
     echo -n "Scanning for and initializing all available LVM volume groups..."
@@ -76,13 +66,6 @@ start()
   fi
 
   checkfs
-
-  echo "Mounting root file system read/write..."
-  {
-    mount    -n -o remount,rw / &&
-    echo     > /etc/mtab        &&
-    mount    -f -o remount,rw /
-  } || exit 1
 
   if optional_executable /sbin/swapon ; then
     echo -n "Activating swap... "
@@ -103,8 +86,7 @@ start()
   [ -d /var/run ] && recursive_rm /var/run/*
   evaluate_retval
 
-  if [[ "$CLEAN_TMP" == "yes" ]]
-  then
+  if [ "$CLEAN_TMP" == "yes" ] ; then
     echo "Cleaning out /tmp..."
     [ -d /tmp ] && rm -rf /tmp/*
     evaluate_retval
