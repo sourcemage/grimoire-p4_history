@@ -9,6 +9,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20031124
          UPDATED=20031124
       LICENSE[0]=GPL
+        KEYWORDS="filesystem crypto"
            SHORT="cryptofs is a encrypted filesystem for the Linux Userland FileSystem"
 cat << EOF
 CryptoFS will use a normal directory to store files encrypted. The mountpoint will contain the decrypted files. Every file stored in this mountpoint will be written encrypted (data and filename) to the directory that was mounted. If you unmount the directory the encrypted data can only be access by mounting the directory with the correct key again. Like other LUFS filesystems it does not need root access or any complicated setup like creating a filesystem on a encrypted disk using the loop device.
