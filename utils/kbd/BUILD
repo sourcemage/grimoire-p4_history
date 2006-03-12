@@ -1,5 +1,3 @@
-patch  -p1  data/Makefile  $SCRIPT_DIRECTORY/keymaps.diff  &&
-
 ./configure  --prefix=$TRACK_ROOT/usr               \
             --datadir=$TRACK_ROOT/usr/share/$SPELL  \
              --mandir=$TRACK_ROOT/usr/man           &&
