@@ -205,6 +205,11 @@ function  install_www_files ()
   fi  &&
 
   #
+  # Make sure the www-data user exists
+  # Not sure if this will work :/
+  create_account www-data
+
+  #
   # Make sure WWW_DEST exists
   #
   if  [  !  -d  "$WWW_DEST"  ];  then
