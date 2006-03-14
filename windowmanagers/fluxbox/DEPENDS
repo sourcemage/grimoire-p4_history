@@ -2,8 +2,9 @@ depends  X11-LIBS   &&
 depends  freetype2  &&
 depends  g++        &&
 
-if  [  "$FLUXBOX_SVN"  ==  "y"  ];  then
-  depends SVN
+if  [  "$FLUXBOX_SVN"  ==  "y"  ]
+then depends SVN
+else depends gcc34
 fi  &&
 
 optional_depends  kdelibs         \
