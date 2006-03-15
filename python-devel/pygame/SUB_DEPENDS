@@ -3,6 +3,6 @@ case "$THIS_SUB_DEPENDS" in
   IMAGE)   depends sdl_image;;
   MIXER)   depends sdl_mixer;;
   SMPEG)   depends smpeg;;
-  NUMERIC) sub_depends numeric NUMERIC;;
+  NUMERIC) depends numeric NUMERIC;;
   *)       echo "bogus sub_depends: pygame $THIS_SUB_DEPENDS";;
 esac
