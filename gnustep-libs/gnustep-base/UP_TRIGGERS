@@ -5,8 +5,5 @@ fi
 
 if [ $(installed_version gnustep-base) != $VERSION ]
 then
-    for  spell  in `gaze depends gnustep-base 2|cut -d":" -f1` 
-    do
-      up_trigger $spell cast_self	
-    done
+    RECAST_UP="gnustep-base"
 fi
