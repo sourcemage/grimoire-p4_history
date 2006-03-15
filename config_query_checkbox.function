@@ -96,7 +96,7 @@ function real_config_query_checkbox () {
         echo "!!!! WARNING !!!!"
     )
     done
-    echo -e "[[ ${QUERY_COLOR}${QUESTION}${DEFAULT} -> '${QUERY_COLOR}$ANSWER${DEFAULT}' ]]"
+    echo -e "[[ ${QUERY_COLOR}${QUESTION}${DEFAULT_COLOR} -> '${QUERY_COLOR}$ANSWER${DEFAULT_COLOR}' ]]"
   else
     # if there was an answer before, find it
     local defaults default default_num foo
