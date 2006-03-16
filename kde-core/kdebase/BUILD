@@ -11,11 +11,13 @@ OPTS="$OPTS  $KDEBASE_XCONSOLE  $KDEBASE_DPMS  $KDEBASE_XDMCP"  &&
 #  OPTS="$OPTS  --with-krb5auth"
 #fi  &&
 
-source  $SECTION_DIRECTORY/KDE_BUILD &&
+source  $SECTION_DIRECTORY/KDE_BUILD            &&
 
 # Backup existing kdm dir
 if [[ $VERSION == `installed_version $SPELL` ]] &&
    [ -d "$INSTALL_ROOT/usr/share/config/kdm" ]; then
-  echo "Backing up configuration files..."            &&
-  cp -r $INSTALL_ROOT/usr/share/config/kdm $TMP_DIR
+  mkdir -p $TMP_DIR/kdm                         &&
+  echo "Backing up configuration files..."      &&
+  mv $INSTALL_ROOT/usr/share/config/kdm/{background,kdm}rc $TMP_DIR/kdm  &&
+  rm -rf $INSTALL_ROOT/usr/share/config/kdm
 fi

@@ -1,6 +1,0 @@
-# Restore backuped kdm dir
-if [ -d "$TMP_DIR/kdm" ]; then
-  echo "Restoring configuration files..."                &&
-  mv $TMP_DIR/kdm/* $INSTALL_ROOT/usr/share/config/kdm/  &&
-  rm -r $TMP_DIR/kdm
-fi
