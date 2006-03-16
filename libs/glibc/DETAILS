@@ -5,6 +5,7 @@ if  [  "$GLIBC_NPTL"  =  "y"  ];  then
          SOURCE2=linux-libc-headers-$HEADERS_VERSION.tar.bz2
   SOURCE2_URL[0]=http://ep09.pld-linux.org/~mmazur/linux-libc-headers/$SOURCE2
           MD5[1]=f48ca2ea7d90cd88195bcf3643df9c02
+      PATCHLEVEL=1
 else
  HEADERS_VERSION=2.4.24
          SOURCE2=glibc-linuxthreads-$VERSION.tar.bz2
