@@ -1,0 +1,24 @@
+           SPELL=deskbar-applet
+         VERSION=2.14.0.1
+          SOURCE=deskbar-applet-2.14.0.1.tar.bz2
+   SOURCE_URL[0]=http://ftp.gnome.org/pub/GNOME/sources/deskbar-applet/2.14/deskbar-applet-2.14.0.1.tar.bz2
+     SOURCE_HASH=sha512:b08bdc64f06f97de6316536fe020c3e94a218dd2ccfa40fe599f6226b545796a0b1fef898552373e50134eca63adf74108b8c2afa44e4c3b7ec8b3b009d20b8e
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://raphael.slinckx.net/deskbar/
+         ENTERED=20060316
+         UPDATED=20060316
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="applet to allow easy access to various search engines."
+cat << EOF
+This is a Gnome applet to allow easy access to various search engines (like
+Google's Deskbar for Windows).
+
+The goal of DeskbarApplet is to provide an omnipresent versatile search
+interface. By typing search terms into the deskbar entry in your panel you
+are presented with the search results as you type.
+
+Seaches are handled by a series of plugins. DeskbarApplet provides a simple
+interface to manage these plugins to provide you with the search results
+that fit your needs.
+EOF
