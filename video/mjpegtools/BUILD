@@ -11,9 +11,6 @@ if [[ "$HOST" != x86_64-* ]]; then
 fi  &&
 
 OPTS="--without-libquicktime $OPTS"  &&
-# gcc 3.4 fix
-#sedit  's/KEEP_SOURCE:/KEEP_SOURCE: ;/'  lavtools/lavpipe.c   &&
-#sedit  's/(uint8_t \*)/uint8_t */'       mpeg2enc/picture.cc  &&
 make_single                                                   &&
 default_build                                                 &&
 make_normal
