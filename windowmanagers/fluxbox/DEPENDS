@@ -4,7 +4,6 @@ depends  g++        &&
 
 if  [  "$FLUXBOX_SVN"  ==  "y"  ]
 then depends SVN
-else depends gcc34
 fi  &&
 
 optional_depends  kdelibs         \
@@ -20,4 +19,9 @@ optional_depends  gnome-libs        \
 optional_depends  feh                      \
                   ""                       \
                   ""                       \
-                  "Needed for wallpapers"
+                  "Needed for wallpapers"  &&
+
+optional_depends imlib2                    \
+                 "--enable-imlib2"         \
+                 "--disable-imlib2"        \
+                 "Imlib2 (pixmap themes) support?"
