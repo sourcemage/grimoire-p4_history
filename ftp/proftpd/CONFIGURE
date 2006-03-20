@@ -1,3 +1,13 @@
+if [[ $PROFTPD_DEVEL == "n" ]]; then
+  config_query_option PROFTPD_CAPS "Disable capabilities?" n                   \
+  "--disable-cap" ""                                                           &&
+  if [[ -z $PROFTPD_CAPS ]]; then 
+    config_query PROFTPD_NOPRELINK "Disable prelink? (do that if it fails with \
+an asm error)" n 
+  fi
+fi                                                                             &&
+
+#rest of the file still needs to be rewritten properly
 if  !  grep  -q  'CONFIGURED=\"y\"'  ${DEPENDS_CONFIG}/proftpd;  then
   if  query  "enable IPv6 support? " n;  then
     echo  'OPTS="${OPTS} --enable-ipv6"'  >>  ${SPELL_CONFIG}
