@@ -49,7 +49,6 @@ mozilla_remove_nspr_nss &&
             --enable-application=mail \
             --enable-extensions=wallet,spellcheck,xmlextras,webservices \
             --enable-crypto \
-            --enable-xft \
             --enable-xinerama \
             --enable-optimize \
             --enable-reorder \
@@ -58,7 +57,6 @@ mozilla_remove_nspr_nss &&
             --enable-single-profile \
             --enable-necko-protocols=http,file,jar,viewsource,res,data \
             --enable-image-decoders=default,-xbm \
-            --disable-freetype2 \
             --disable-accessibility \
             --disable-debug \
             --disable-ldap  \
