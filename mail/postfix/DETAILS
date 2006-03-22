@@ -1,6 +1,5 @@
             SPELL=postfix
           VERSION=2.2.9
-         VERSION2=$VERSION-vda
            SOURCE=$SPELL-$VERSION.tar.gz
           SOURCE2=$SOURCE.sig
        SOURCE_GPG=wietse.pgp:$SOURCE2:ESTABLISHED_UPSTREAM_KEY
@@ -49,8 +48,8 @@
 #
 # VDA patch
 #
-         VERSION3=2.2.8-vda
-     SOURCE3_HASH='sha512:706b42260fc82df18ffffe4db6133cbce11a006fd239086e90ec89be8e36f6d4b08375b9d43506edf54be23ed767fee810117bfc992fd72e913354d68c3047db:WORKS_FOR_ME'
+         VERSION3=2.2.9-vda
+     SOURCE3_HASH='sha512:1b45cadd920ffd34375b8264d7a02da75dfce21945bd93744f75b8196dbafa7a1fccc4a7927aeb39a990d42307c6a831221fac61aba768d238351242d7add220:WORKS_FOR_ME'
           SOURCE3=$SPELL-$VERSION3.patch.gz
 SOURCE3_DIRECTORY=$SOURCE_DIRECTORY
    SOURCE3_URL[0]=http://web.onda.com.br/nadal/postfix/VDA/$SOURCE3

@@ -4,7 +4,7 @@ echo "$INSTALL_ROOT/usr
 $SOURCE_DIRECTORY/tmp
 $INSTALL_ROOT/etc/postfix
 $INSTALL_ROOT/usr/share/man
-$INSTALL_ROOT/usr/share/docs/postfix"  \
+$INSTALL_ROOT/usr/share/docs/postfix" | \
   make  install
 else
   message 'Performing upgrade...'  &&
