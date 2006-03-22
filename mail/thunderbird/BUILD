@@ -23,8 +23,6 @@ if  echo $LDFLAGS | grep  -q  '\-s'; then
   OPTS="$OPTS  --enable-strip"
 fi  &&
 
-mozilla_remove_nspr_nss &&
-
 # Note: --enable-extensions and --enable-necko-protocols are inherited from
 # mozconfig.  Don't set them in ./configure unless you *really* know what
 # you're doing.
