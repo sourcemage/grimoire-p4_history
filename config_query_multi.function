@@ -7,7 +7,7 @@
 ## item in return_var
 ## 
 #---------------------------------------------------------------------
-function select_list_checkbox()
+function select_list_multi()
 {
     local i
     local foo temp number
@@ -27,14 +27,14 @@ function select_list_checkbox()
         let i++
     done
 
-    local msg="\n${QUERY_COLOR}Which ones do you want? [$default]$DEFAULT_COLOR "
-    select_list_sub_checkbox "$returnvar" select_list_hash "$msg" "$default"
+    local msg="\n${QUERY_COLOR}You can select multiple choices by simply entering the proper numbers and/or chars. \nSelect your choice(es)? [$default]$DEFAULT_COLOR "
+    select_list_sub_multi "$returnvar" select_list_hash "$msg" "$default"
     hash_unset select_list_hash
 }
 
 
 #---------------------------------------------------------------------
-## Modified to fit checkbox selection
+## Modified to fit multi selection
 ## The user should have already printed out the menu, this handles
 ## getting a valid answer from the user.
 ## @param name of return value
@@ -42,7 +42,7 @@ function select_list_checkbox()
 ## @param message to print out for the query
 ## @param default answer
 #---------------------------------------------------------------------
-function select_list_sub_checkbox() {
+function select_list_sub_multi() {
   local returnvar=$1
   local hashname=$2
   local msgstr=$3
@@ -76,7 +76,7 @@ function select_list_sub_checkbox() {
 ## Return variable is also marked as persistent
 ##
 #---------------------------------------------------------------------
-function real_config_query_checkbox () {
+function real_config_query_multi () {
   local ANSWER
   local VARIABLE="$1"
   local QUESTION="$2"
@@ -113,7 +113,7 @@ function real_config_query_checkbox () {
     done
     # we have to ask user
     message "$QUESTION"
-    select_list_checkbox ANSWER "${default_num}" "$@"
+    select_list_multi ANSWER "${default_num}" "$@"
     config_set_option "$VARIABLE" "$ANSWER"
   fi
 
@@ -139,7 +139,7 @@ function real_config_query_checkbox () {
 ## </pre>
 ##
 #---------------------------------------------------------------------
-function config_query_checkbox () {
-    debug "libapi" "config_query_checkbox - $*"
-    real_config_query_checkbox "$@"
+function config_query_multi () {
+    debug "libapi" "config_query_multi - $*"
+    real_config_query_multi "$@"
 }
