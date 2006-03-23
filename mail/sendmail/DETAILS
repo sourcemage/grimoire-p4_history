@@ -1,5 +1,5 @@
            SPELL=sendmail
-         VERSION=8.13.5
+         VERSION=8.13.6
           SOURCE=$SPELL.$VERSION.tar.gz
          SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
@@ -31,6 +31,8 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://www.sendmail.org/
          ENTERED=20020820
          UPDATED=20030917
+        KEYWORDS="mail"
+  SECURITY_PATCH=1
            SHORT="Complex mail transport agent"
 cat << EOF
 Sendmail is a complex, yet powerful Mail-Transport Agent.
