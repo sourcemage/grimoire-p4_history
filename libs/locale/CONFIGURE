@@ -1,4 +1,4 @@
-if [ -z "$LOCAL_UTF" ]; then
+if [ -z "$LOCALE_UTF" ]; then
   LOCALE_UTF=${GLIBC_UTF:-y}
 fi  &&
 config_query LOCALE_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the native charset data?" y  &&
