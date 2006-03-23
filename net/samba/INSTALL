@@ -47,12 +47,9 @@ fi  &&
 install_config_file  examples/smb.conf.default  /etc/samba/smb.conf.default  &&
 install_config_file  examples/smb.conf.default  /etc/samba/smb.conf          &&
 
-# evedently this causes smbmount to belch out
-# "libsmb based programs must *NOT* be setuid root."
-#if  [  "$SAMBA_SUID"  =  "y"  ];  then
-#  chmod  u+s  ${INSTALL_ROOT}/usr/bin/smbmnt     \
-#              ${INSTALL_ROOT}/usr/bin/smbumount  \
-#              ${INSTALL_ROOT}/sbin/mount.smbfs   &&
+if  [  "$SAMBA_SUID"  =  "y"  ];  then
+  chmod  u+s  ${INSTALL_ROOT}/usr/bin/smbmnt     \
+              ${INSTALL_ROOT}/usr/bin/smbumount && 
 
   if  [  "$SAMBA_CIFS"  ==  "y"  ];  then
     chmod  u+s  ${INSTALL_ROOT}/sbin/mount.cifs
