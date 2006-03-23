@@ -1,33 +1,33 @@
 #
 # generate the localedef file from installed specs
 #
-local  GLIBC_INPUTFILE  GLIBC_CHARMAP  GLIBC_LOCALE  &&
-if  [  -z  "$GLIBC_LOCALES"  ];  then
-  local  GLIBC_DESCRIPTION                                                         &&
+local  LOCALE_INPUTFILE  LOCALE_CHARMAP  LOCALE_LOCALE  &&
+if  [  -z  "$LOCALE_LOCALES"  ];  then
+  local  LOCALE_DESCRIPTION                                                         &&
   cat  $SCRIPT_DIRECTORY/locales                 |
-  while  read  GLIBC_LOCALE  GLIBC_DESCRIPTION;  do
-    GLIBC_INPUTFILE=`echo  $GLIBC_LOCALE  |  cut  -d /  -f1`                             &&
-      GLIBC_CHARMAP=`echo  $GLIBC_LOCALE  |  cut  -d /  -f2`                             &&
-    mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$GLIBC_INPUTFILE                     &&
-    echo  "localedef  -f  $GLIBC_CHARMAP  -i  $GLIBC_INPUTFILE  $GLIBC_INPUTFILE"  \
-          " $GLIBC_DESCRIPTION"                                                    &&
-    localedef  --prefix=${INSTALL_ROOT} -i  $GLIBC_INPUTFILE  -f  $GLIBC_CHARMAP   \
-               $GLIBC_INPUTFILE                                                    &&
-    if  [  "$GLIBC_UTF" =  "y"      ]   &&
-    !   [  "$GLIBC_CHARMAP" =  "UTF-8"  ];  then
-       echo  "localedef  -f  UTF-8  -i  $GLIBC_INPUTFILE  $GLIBCINPUTFILE.UTF-8  $GLIBC_DESCRIPTION"  \
+  while  read  LOCALE_LOCALE  LOCALE_DESCRIPTION;  do
+    LOCALE_INPUTFILE=`echo  $LOCALE_LOCALE  |  cut  -d /  -f1`                             &&
+      LOCALE_CHARMAP=`echo  $LOCALE_LOCALE  |  cut  -d /  -f2`                             &&
+    mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$LOCALE_INPUTFILE                     &&
+    echo  "localedef  -f  $LOCALE_CHARMAP  -i  $LOCALE_INPUTFILE  $LOCALE_INPUTFILE"  \
+          " $LOCALE_DESCRIPTION"                                                    &&
+    localedef  --prefix=${INSTALL_ROOT} -i  $LOCALE_INPUTFILE  -f  $LOCALE_CHARMAP   \
+               $LOCALE_INPUTFILE                                                    &&
+    if  [  "$LOCALE_UTF" =  "y"      ]   &&
+    !   [  "$LOCALE_CHARMAP" =  "UTF-8"  ];  then
+       echo  "localedef  -f  UTF-8  -i  $LOCALE_INPUTFILE  $GLIBCINPUTFILE.UTF-8  $LOCALE_DESCRIPTION"  \
              " (UNICODE Charset)"                                                    &&
-       localedef  --prefix=${INSTALL_ROOT}  -i  $GLIBC_INPUTFILE  -f  UTF-8  $GLIBC_INPUTFILE.UTF-8
+       localedef  --prefix=${INSTALL_ROOT}  -i  $LOCALE_INPUTFILE  -f  UTF-8  $LOCALE_INPUTFILE.UTF-8
     fi
   done  ||  true
 else
-  for  LOCALE  in  $GLIBC_LOCALES;  do
+  for  LOCALE  in  $LOCALE_LOCALES;  do
     INPUTFILE=`echo  $LOCALE  |  cut  -d /  -f1`                                   &&
       CHARMAP=`echo  $LOCALE  |  cut  -d /  -f2`                                   &&
     mkdir  -p  ${INSTALL_ROOT}/usr/lib/locale/$INPUTFILE                           &&
     echo  "localedef  -f  $CHARMAP  -i  $INPUTFILE $INPUTFILE"                     &&
     localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  $CHARMAP  $INPUTFILE  &&
-    if  [  "$GLIBC_UTF"      =  "y"     ]   &&
+    if  [  "$LOCALE_UTF"      =  "y"     ]   &&
     !   [  "$CHARMAP"  =  "UTF-8" ];  then
       echo  "localedef  -f  UTF-8  -i  $INPUTFILE  $INPUTFILE.UTF-8"               &&
       localedef  --prefix=${INSTALL_ROOT}  -i  $INPUTFILE  -f  UTF-8  $INPUTFILE.UTF-8
