@@ -19,7 +19,7 @@ fi  &&
 persistent_remove GLIBC_LOCALES  &&
 if  query  "Would you like to select locales?"  n;  then
   local  LOCALE_LOCALES_LIST                            &&
-  persistent_add  LOCALE_LOCALES_LIST                   &&
+  persistent_add  LOCALE_LOCALES                        &&
   LOCALE_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales`  &&
   BACKTITLE="Locale Configuration"                     &&
       TITLE="Locale Selection"                         &&
