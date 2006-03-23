@@ -1,4 +1,8 @@
-config_query LOCALE_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the native charset data?" y
+if [ -z "$LOCALE_UTF" ]; then
+  LOCALE_UTF=${GLIBC_UTF:-y}
+fi  &&
+config_query LOCALE_UTF  "Would you like to generate UTF-8 locale data (Unicode) as well as the native charset data?" y  &&
+persistent_remove GLIBC_UTF              &&
 #
 # Don't use config_query here or you'll regret it ;)
 # If you do, after a user says 'y' to configuring the locales,
@@ -6,20 +10,27 @@ config_query LOCALE_UTF  "Would you like to generate UTF-8 locale data (Unicode)
 # locale is recast with `cast -r locale`, which would also remove
 # the selected locales and you'd need to reconfigure them again...
 #
+if [ -z "$LOCALE_LOCALES" ]; then
+  if  [  "$GLIBC_LOCALES"  ]; then
+    persistent_add LOCALE_LOCALES  &&
+    LOCALE_LOCALES=${GLIBC_LOCALES}
+  fi
+fi  &&
+persistent_remove GLIBC_LOCALES  &&
 if  query  "Would you like to select locales?"  n;  then
-  local  GLIBC_LOCALES_LIST                            &&
-  persistent_add  GLIBC_LOCALES                        &&
-  GLIBC_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales`  &&
+  local  LOCALE_LOCALES_LIST                            &&
+  persistent_add  LOCALE_LOCALES                        &&
+  LOCALE_LOCALES_LIST=`cat  $SCRIPT_DIRECTORY/locales`  &&
   BACKTITLE="Locale Configuration"                     &&
       TITLE="Locale Selection"                         &&
        HELP="Translated messages are automatically installed, but the locale database that controls other behavior is not.  
 Please select desired locale or locales.
 If none are selected then all will be installed."      &&
 
-  GLIBC_LOCALES=`dialog  --backtitle  "$BACKTITLE"  \
+  LOCALE_LOCALES=`dialog  --backtitle  "$BACKTITLE"  \
                          --title      "$TITLE"      \
                          --stdout                   \
                          --checklist  "$HELP"       \
                          0 0 0                      \
-                         $GLIBC_LOCALES_LIST`
+                         $LOCALE_LOCALES_LIST`
 fi
