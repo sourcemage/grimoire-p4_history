@@ -1,9 +1,18 @@
            SPELL=tor
+
+if [ "$TOR_DEVEL" == "y" ]; then
+         VERSION=0.1.1.16-rc
+          SOURCE=$SPELL-$VERSION.tar.gz
+   SOURCE_URL[0]=http://tor.eff.org/dist/$SOURCE
+     SOURCE_HASH=sha512:74eea6fc7dd1fbf1d0a79b30435693261e86267eb0c6df19e0ec5842da3f264596265dc47918ddec864ca7e463f4e5bead4db6033cad5ae8f5f4cb113effad90
+else
          VERSION=0.1.0.17
           SOURCE=$SPELL-$VERSION.tar.gz
-SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://tor.eff.org/dist/$SOURCE
      SOURCE_HASH=sha512:3fd217d20bc1e4c593ebae62c573c18fd96aaef2802b9729456b99369d529747fe8ca258b0bc18dc2e4786ee47257e0874057865daf16197a34a9c2251231b35
+fi
+
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
       LICENSE[0]=BSD
         WEB_SITE=http://tor.eff.org/
        BUILD_API=2
