@@ -1,6 +1,6 @@
-diff -Naur postfix-2.2.3.orig/conf/postfix-files postfix-2.2.3/conf/postfix-files
---- postfix-2.2.3.orig/conf/postfix-files	2005-06-03 13:41:20.000000000 -0700
-+++ postfix-2.2.3/conf/postfix-files	2005-06-03 17:50:01.000000000 -0700
+diff -Nuar postfixmoreold/conf/postfix-files postfixold-2.2.9/conf/postfix-files
+--- postfixmoreold/conf/postfix-files	2005-03-14 07:13:16.000000000 -0600
++++ postfixold-2.2.9/conf/postfix-files	2006-03-24 09:54:51.000000000 -0600
 @@ -41,7 +41,6 @@
  # it is a good idea to "u" all the files that have special ownership or
  # permissions, so that running "make install" fixes any glitches.
@@ -41,9 +41,9 @@ diff -Naur postfix-2.2.3.orig/conf/postfix-files postfix-2.2.3/conf/postfix-file
  $manpage_directory/man1/mailq.1:f:root:-:644
  $manpage_directory/man1/newaliases.1:f:root:-:644
  $manpage_directory/man1/postalias.1:f:root:-:644
-diff -Naur postfix-2.2.3.orig/conf/post-install postfix-2.2.3/conf/post-install
---- postfix-2.2.3.orig/conf/post-install	2005-06-03 13:41:20.000000000 -0700
-+++ postfix-2.2.3/conf/post-install	2005-06-03 21:50:32.000000000 -0700
+diff -Nuar postfixmoreold/conf/post-install postfixold-2.2.9/conf/post-install
+--- postfixmoreold/conf/post-install	2005-04-15 06:52:19.000000000 -0500
++++ postfixold-2.2.9/conf/post-install	2006-03-24 09:54:51.000000000 -0600
 @@ -212,9 +212,8 @@
       create-missing) create=1;;
  	  set-perm*) create=1; set_perms=1;;
@@ -151,9 +151,9 @@ diff -Naur postfix-2.2.3.orig/conf/post-install postfix-2.2.3/conf/post-install
  # Use file/directory status information in $config_directory/postfix-files.
  
  test -n "$create" && {
-diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
---- postfix-2.2.3.orig/postfix-install	2005-06-03 13:41:20.000000000 -0700
-+++ postfix-2.2.3/postfix-install	2005-06-03 21:25:24.000000000 -0700
+diff -Nuar postfixmoreold/postfix-install postfixold-2.2.9/postfix-install
+--- postfixmoreold/postfix-install	2005-02-02 15:39:36.000000000 -0600
++++ postfixold-2.2.9/postfix-install	2006-03-24 09:59:07.000000000 -0600
 @@ -302,9 +302,6 @@
  tempdir_prompt="a directory for scratch files while installing
  Postfix.  You must have write permission in this directory."
@@ -164,7 +164,7 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
  daemon_directory_prompt="the final destination directory for
  installed Postfix daemon programs.  This directory should not be
  in the command search path of any users."
-@@ -354,11 +351,10 @@
+@@ -354,27 +351,28 @@
  
  : ${install_root=/}
  : ${tempdir=`pwd`}
@@ -173,11 +173,45 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
  # Find out the location of installed configuration files.
  
 -test -z "$non_interactive" && for name in install_root tempdir config_directory
-+test -z "$non_interactive" && for name in install_root tempdir
- do
-     while :
-     do
-@@ -387,46 +383,6 @@
+-do
+-    while :
+-    do
+-	echo
+-	eval echo Please specify \$${name}_prompt | ${FMT}
+-	eval echo \$n "$name: [\$$name]\  \$c"
+-	read ans
+-	case $ans in
+-	"") break;;
+-	 *) case $ans in
+-	    /*) eval $name=$ans; break;;
+-	     *) echo; echo $0: Error: $name should be an absolute path name. 1>&2;;
+-	    esac;;
+-	esac
+-    done
+-done
++#test -z "$non_interactive" && for name in install_root tempdir
++#do
++#    while :
++#    do
++#	echo
++#	eval echo Please specify \$${name}_prompt | ${FMT}
++#	eval echo \$n "$name: [\$$name]\  \$c"
++#	read ans
++#	case $ans in
++#	"") break;;
++#	 *) case $ans in
++#	    /*) eval $name=$ans; break;;
++#	     *) echo; echo $0: Error: $name should be an absolute path name. 1>&2;;
++#	    esac;;
++#	esac
++#    done
++#done
++install_root=${INSTALL_ROOT}
++tempdir=${SOURCE_DIRECTORY}
+ 
+ # In case some systems special-case pathnames beginning with //.
+ 
+@@ -387,46 +385,6 @@
      exit 1
  }
  
@@ -224,7 +258,57 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
  # Use built-in defaults as the final source of parameter settings.
  
  for name in daemon_directory command_directory queue_directory mail_owner \
-@@ -504,7 +460,7 @@
+@@ -442,22 +400,33 @@
+ 
+ # Override settings manually.
+ 
+-test -z "$non_interactive" && for name in daemon_directory command_directory \
+-    queue_directory sendmail_path newaliases_path mailq_path mail_owner \
+-    setgid_group html_directory manpage_directory readme_directory
+-do
+-    while :
+-    do
+-	echo
+-	eval echo Please specify \$${name}_prompt | ${FMT}
+-	eval echo \$n "$name: [\$$name]\  \$c"
+-	read ans
+-	case $ans in
+-	"") break;;
+-	 *) eval $name=$ans; break;;
+-	esac
+-    done
+-done
++#test -z "$non_interactive" && for name in daemon_directory command_directory \
++#    queue_directory sendmail_path newaliases_path mailq_path mail_owner \
++#    setgid_group html_directory manpage_directory readme_directory
++#do
++#    while :
++#    do
++#	echo
++#	eval echo Please specify \$${name}_prompt | ${FMT}
++#	eval echo \$n "$name: [\$$name]\  \$c"
++#	read ans
++#	case $ans in
++#	"") break;;
++#	 *) eval $name=$ans; break;;
++#	esac
++#    done
++#done
++daemon_directory=/usr/libexec/postfix
++command_directory=/usr/sbin
++queue_directory=/var/spool/postfix
++sendmail_path=/usr/sbin/sendmail
++newaliases_path=/usr/bin/newaliases
++mailq_path=/usr/bin/mailq
++mail_owner=postfix
++setgid_group=postdrop
++html_directory=/usr/share/doc/postfix/html
++manpage_directory=/usr/share/man
++readme_directory=/usr/share/doc/postfix
+ 
+ # Sanity checks
+ 
+@@ -504,7 +473,7 @@
      }
  done
  
@@ -233,7 +317,7 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
      manpage_directory queue_directory html_directory readme_directory
  do
      eval test -f $install_root\$$path && {
-@@ -571,12 +527,7 @@
+@@ -571,12 +540,7 @@
  
  # Upgrade or first-time installation?
  
@@ -246,7 +330,7 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
  
  # Install files, using information from the postfix-files file.
  
-@@ -657,9 +608,6 @@
+@@ -657,9 +621,6 @@
  	'$command_directory')
  	    compare_or_replace $mode "$owner" "$group" bin/$file \
  		$COMMAND_DIRECTORY/$file || exit 1;;
@@ -256,7 +340,7 @@ diff -Naur postfix-2.2.3.orig/postfix-install postfix-2.2.3/postfix-install
  	'$sendmail_path')
  	    check_parent $SENDMAIL_PATH || exit 1
  	    compare_or_replace $mode "$owner" "$group" bin/sendmail \
-@@ -708,21 +656,6 @@
+@@ -708,21 +669,6 @@
  # Postfix releases, and software should not suddenly be installed in
  # the wrong place when Postfix is being upgraded.
  

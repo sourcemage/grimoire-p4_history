@@ -1,10 +1,5 @@
 if  [[  -z  "$POSTFIX_PREVIOUS_VERSION"  ]];  then
   message 'Performing fresh install...'  &&
-echo "$INSTALL_ROOT/usr
-$SOURCE_DIRECTORY/tmp
-$INSTALL_ROOT/etc/postfix
-$INSTALL_ROOT/usr/share/man
-$INSTALL_ROOT/usr/share/docs/postfix" | \
   make  install
 else
   message 'Performing upgrade...'  &&
@@ -27,10 +22,5 @@ if  [  "$POSTFIX_BENCH"  ==  "y"  ];  then
   cp  src/smtpstone/qmqp-source  $INSTALL_ROOT/usr/sbin  &&
   cp  src/smtpstone/smtp-sink    $INSTALL_ROOT/usr/sbin  &&
   cp  src/smtpstone/smtp-source  $INSTALL_ROOT/usr/sbin
-fi  &&
+fi
 
-mkdir  -p               $INSTALL_ROOT/usr/doc/$SPELL               &&
-cp  -rf  README_FILES   $INSTALL_ROOT/usr/doc/$SPELL/              &&
-cp  -f   INSTALL        $INSTALL_ROOT/usr/doc/$SPELL/README_FILES  &&
-cp  -f   RELEASE_NOTES  $INSTALL_ROOT/usr/doc/$SPELL/README_FILES  &&
-cp  -rf  html           $INSTALL_ROOT/usr/doc/$SPELL/

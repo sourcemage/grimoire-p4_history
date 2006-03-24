@@ -1,3 +1,13 @@
+2006-03-24 David Kowis <dkowis@shlrm.org>
+	* FINAL: removed backup file restoration
+	* BUILD: made the build process work
+	* postfix-install.patch: added this to make it non-interactive no matter what
+	* PRE_BUILD: apply postfix-install.patch instead of config.patch
+	  The postfix spell modifies config upon install to ensure that it'll work 
+	  with any new directives.
+	* DETAILS: added RELEASE_NOTES to the docs
+	* CONFLICTS: made it conflict with itself so that its tracked better.
+	
 2006-03-12 Karsten Behrmann <BearPerson@sourcemage.org>
 	* DETAILS: (automated) Add KEYWORDS
 

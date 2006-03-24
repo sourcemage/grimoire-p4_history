@@ -5,6 +5,7 @@
        SOURCE_GPG=wietse.pgp:$SOURCE2:ESTABLISHED_UPSTREAM_KEY
    SOURCE2_IGNORE=signature
  SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
+             DOCS="${DOCS} RELEASE_NOTES"
     SOURCE_URL[0]=ftp://ftp.porcupine.org/mirrors/postfix-release/official/$SOURCE
     SOURCE_URL[1]=ftp://ftp.oav.net/postfix/official/$SOURCE
     SOURCE_URL[2]=ftp://ftp.doc.cs.univ-paris8.fr/mirrors/ftp.porcupine.org/postfix-release/official/$SOURCE
