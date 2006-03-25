@@ -1,3 +1,4 @@
+create_account boinc '/var/lib/boinc'  &&
 if [[ $BOINC_PARTS == client || $BOINC_PARTS == both ]]
 then
   OPTS="$OPTS --enable-client"
