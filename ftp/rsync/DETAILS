@@ -1,11 +1,11 @@
            SPELL=rsync
-         VERSION=2.6.6
+         VERSION=2.6.7
          PREVIEW=$([ "${VERSION//pre/}" != "$VERSION" ] && echo 1)
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://rsync.samba.org/ftp/rsync/${PREVIEW:+preview/}$SOURCE
    SOURCE_URL[1]=ftp://rsync.samba.org/pub/rsync/${PREVIEW:+preview/}$SOURCE
-     SOURCE_HASH=sha512:be4075f0a115cf5f9913bc8250b9720297fef70009d53c47bee5e60ed420d5efe3a37ec6b12e08c32acab671dc173e9322c909922a22ce03876581fe4a749b30
+     SOURCE_HASH=sha512:04ac5d577bbd06fe21c33e6f0cf964f183832dca4594175f85ada8e1834457b7fe35e7f2f698c6f492f246115f05d3c0f52de275da740fe2afcb0ef2d9634c0e
         WEB_SITE=http://rsync.samba.org/
          ENTERED=20010922
          UPDATED=20040217
