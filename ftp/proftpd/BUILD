@@ -1,11 +1,9 @@
 if [[ $PROFTPD_DEVEL == "n" ]]; then
   if [[ -z $PROFTPD_CAPS ]]; then
-    if [[ $PROFTPD_NOPRELINK == "y" ]]; then
       CFLAGS=${CFLAGS/-fPIC}                                          &&
       CFLAGS=${CFLAGS/-DPIC}                                          &&
       CXXFLAGS=${CXXFLAGS/-fPIC}                                      &&
       CXXFLAGS=${CXXFLAGS/-DPIC}                
-	fi 
   fi
 fi                                                                    &&
 
