@@ -1,4 +1,10 @@
 2006-03-26 David Brown <dmlb2000@gmail.com>
+	* PRE_BUILD: added patch for loss of presision when type casting a void
+	  pointer to an int
+	* shmem-type-cast-presision-loss.patch: the loss of presision shows up
+	  on x86-64 machines where a void pointer is different size from an int
+
+2006-03-26 David Brown <dmlb2000@gmail.com>
 	* DEPENDS: not elif but just plain if
 	* BUILD: added program suffix to because /usr/bin/start
 	  fscks up the init process
