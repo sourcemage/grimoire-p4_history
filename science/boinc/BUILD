@@ -7,5 +7,13 @@ if [[ $BOINC_PARTS == server || $BOINC_PARTS == both ]]
 then
   OPTS="$OPTS --enable-server"
 fi &&
+case "${SMGL_COMPAT_ARCH[0]}" in
+  64)
+    OPTS="$OPTS --enable-bitness=64"
+    ;;
+  32)
+    OPTS="$OPTS --enable-bitness=32"
+    ;;
+esac &&
 OPTS="$OPTS --with-gnu-ld"
 default_build
