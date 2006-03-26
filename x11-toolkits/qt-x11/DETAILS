@@ -1,18 +1,18 @@
            SPELL=qt-x11
          VERSION=3.3.6
-     SOURCE_HASH=sha512:11b15c71547c6ca0a1f87b5faddc66c393a685148e4ffe6acd1fd4e5f691f998fe350458f620c7508a03c74d23c0cb67b593abe31f3719db8fd421519716dcda
           SOURCE=$SPELL-free-$VERSION.tar.bz2
+     SOURCE_HASH=sha512:11b15c71547c6ca0a1f87b5faddc66c393a685148e4ffe6acd1fd4e5f691f998fe350458f620c7508a03c74d23c0cb67b593abe31f3719db8fd421519716dcda
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-free-$VERSION
    SOURCE_URL[0]=ftp://ftp.trolltech.com/qt/source/$SOURCE
    SOURCE_URL[1]=ftp://ftp.silug.org/pub/qt/source/$SOURCE
    SOURCE_URL[2]=ftp://ftp.planetmirror.com.au/pub/trolltech/qt/source/$SOURCE
-        WEB_SITE=http://www.trolltech.com/qt/x11.html
-         ENTERED=20020410
-         UPDATED=20040914
+      PATCHLEVEL=1
       LICENSE[0]=GPL
        BUILD_API=2
-            DOCS="FAQ README README-QT.TXT"
+        WEB_SITE=http://www.trolltech.com/qt/x11.html
         KEYWORDS="qt x11 libs"
+         ENTERED=20020410
+            DOCS="FAQ README README-QT.TXT"
            SHORT="Qt simplifies writing and maintaining GUI applications"
 cat << EOF
 Qt is a toolkit for software developers. Qt simplifies the task of
