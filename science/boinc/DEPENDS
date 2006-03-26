@@ -4,8 +4,9 @@ depends  g++       &&
 depends  curl      &&
 if [[ $BOINC_PARTS == both || $BOINC_PARTS == client ]]
 then
-  depends  wxgtk-no-unicode '--with-wx-config=wx-config' 
-elif [[ $BOINC_PARTS == both || $BOINC_PARTS == server ]]
+  depends  wxgtk-no-unicode '--with-wx-config=wx-config'
+fi
+if [[ $BOINC_PARTS == both || $BOINC_PARTS == server ]]
 then
   depends  mysql 'MYSQL_CONFIG=mysql_config'
 fi
