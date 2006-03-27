@@ -34,12 +34,12 @@ optional_depends  howl                                      \
 optional_depends  gnome-mount                               \
                   ""                                        \
                   ""                                        \
-                  "Use new gnome-mount to mount volumes" y  &&
+                  "Use new gnome-mount to mount volumes"    &&
 
 optional_depends  pmount                                    \
                   "PMOUNT_ON"                               \
                   ""                                        \
-                  "Use pmount to mount volumes" n           &&
+                  "Use pmount to mount volumes (overrided if 'y' to gnome-mount)" &&
 
 optional_depends  zlib                                      \
                   "--with-zlib"                             \
