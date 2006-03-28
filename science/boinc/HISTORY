@@ -1,3 +1,14 @@
+2006-03-28 Eric Sandall <eric@sandall.us>
+	* DETAILS: Added PATCHLEVEL so people get the boinc init script (if they
+	  haven't already) and so people with the current init script get the fixed
+	  version (also so wxgtk-no-unicode gets marked as optional ;)).
+	* DEPENDS: Made wxgtk-no-unicode optional (again...)
+	  Added missing '&&' after first if/fi
+	* init.d/boinc: Fixed missing quote
+	  BOINC_PRAMS -> BOINC_PARMS
+	  Removed unecessary '-r' in rm for PIDFILE
+	  Removed quotes around the `su - boinc -c ...` command
+
 2006-03-26 David Brown <dmlb2000@gmail.com>
 	* PRE_BUILD: added patch for loss of presision when type casting a void
 	  pointer to an int
@@ -19,9 +30,9 @@
 	* FINAL: fixed ending &&
 
 2006-03-25 Robin Cook <rcook@wyrms.net>
-        * BUILD: added create_account
-        * init.d: added to start on boot up
-        * FINAL: added for message
+	* BUILD: added create_account
+	* init.d: added to start on boot up
+	* FINAL: added for message
 
 2006-03-25 Eric Sandall <eric@sandall.us>
 	* DEPENDS: Make wxgtk-no-unicode dependency optional
