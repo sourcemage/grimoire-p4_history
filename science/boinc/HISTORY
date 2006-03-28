@@ -4,6 +4,8 @@
 	  version (also so wxgtk-no-unicode gets marked as optional ;)).
 	* DEPENDS: Made wxgtk-no-unicode optional (again...)
 	  Added missing '&&' after first if/fi
+	  Added dependencies on zlib and openssl
+	  Note that the usage of libdn is through curl, not directly through boinc
 	* init.d/boinc: Fixed missing quote
 	  BOINC_PRAMS -> BOINC_PARMS
 	  Removed unecessary '-r' in rm for PIDFILE
