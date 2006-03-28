@@ -29,17 +29,17 @@ function start()
       chown boinc:boinc ${BOINC_HOME}
       echo "Starting $NAME..."
       cd ${BOINC_HOME}
-      su - ${BOINC_USER} -c "cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} -attach_project ${BOINC_URL} ${BOINC_KEY} ${BOINC_PRAMS} >> ${BOINC_LOG} 2>>${$BOINC_ERROR} &
+      su - ${BOINC_USER} -c "cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} -attach_project ${BOINC_URL} ${BOINC_KEY} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${$BOINC_ERROR}" &
    else
       echo "Starting $NAME..."
       cd ${BOINC_HOME}
-      su - ${BOINC_USER} -c "cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} ${BOINC_PRAMS} >> ${BOINC_LOG} 2>>${BOINC_ERROR}" &
+      su - ${BOINC_USER} -c "cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${BOINC_ERROR}" &
    fi
 }
 
 function stop() {
    echo "Stopping $NAME..."
    killall -HUP ${PROGRAM}
-   rm -rf ${PIDFILE}
+   rm -f ${PIDFILE}
 }
 
