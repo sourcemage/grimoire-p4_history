@@ -2,14 +2,24 @@
 	* DETAILS: Added PATCHLEVEL so people get the boinc init script (if they
 	  haven't already) and so people with the current init script get the fixed
 	  version (also so wxgtk-no-unicode gets marked as optional ;)).
+	  Set PATCHLEVEL=2 for yet more changes/fixes
+	* CONFIGURE: Ask if the user wants boinc_client-cvs setuid (for it to work
+	  'out of the box' this defaults to 'y').
 	* DEPENDS: Made wxgtk-no-unicode optional (again...)
 	  Added missing '&&' after first if/fi
 	  Added dependencies on zlib and openssl
 	  Note that the usage of libdn is through curl, not directly through boinc
-	* init.d/boinc: Fixed missing quote
-	  BOINC_PRAMS -> BOINC_PARMS
+	* PRE_BUILD,BUILD: Moved create_account from BUILD to PRE_BUILD
+	* INSTALL: Setuid/setgid /usr/bin/boinc_client-cvs (if the user wants us to)
+	* init.d/boinc: BOINC_PRAMS -> BOINC_PARMS
 	  Removed unecessary '-r' in rm for PIDFILE
-	  Removed quotes around the `su - boinc -c ...` command
+	  Removed the usage of `su`, the client now runs as the user who runs it
+	  (or 'boinc' if the user answered 'y' to making it setuid)
+	  No longer need to cd to $BOINC_HOME
+	  Replace $NAME with 'boinc' as that's the name of the script, not
+	  boinc_client-cvs
+	  Added restart()
+	* init.d/boinc.conf: Removed BOINC_USER variable (no longer used)
 
 2006-03-26 David Brown <dmlb2000@gmail.com>
 	* PRE_BUILD: added patch for loss of presision when type casting a void
