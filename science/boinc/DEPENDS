@@ -1,7 +1,9 @@
 depends  autoconf  &&
 depends  automake  &&
-depends  g++       &&
 depends  curl      &&
+depends  g++       &&
+depends  openssl   &&
+depends  zlib      &&
 
 if [[ $BOINC_PARTS == both || $BOINC_PARTS == client ]]
 then
