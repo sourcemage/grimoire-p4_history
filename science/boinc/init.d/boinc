@@ -27,19 +27,24 @@ function start()
    if ! [ -e ${BOINC_HOME} ]; then
       mkdir -p ${BOINC_HOME}
       chown boinc:boinc ${BOINC_HOME}
-      echo "Starting $NAME..."
+      echo "Starting boinc..."
       cd ${BOINC_HOME}
-      su - ${BOINC_USER} -c cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} -attach_project ${BOINC_URL} ${BOINC_KEY} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${$BOINC_ERROR} &
+      ${PROGRAM} ${ARGS} -attach_project ${BOINC_URL} ${BOINC_KEY} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${$BOINC_ERROR} &
    else
-      echo "Starting $NAME..."
+      echo "Starting boinc..."
       cd ${BOINC_HOME}
-      su - ${BOINC_USER} -c cd ${BOINC_HOME}; exec ${PROGRAM} ${ARGS} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${BOINC_ERROR} &
+      ${PROGRAM} ${ARGS} ${BOINC_PARMS} >> ${BOINC_LOG} 2>>${BOINC_ERROR} &
    fi
 }
 
 function stop() {
-   echo "Stopping $NAME..."
+   echo "Stopping boinc..."
    killall -HUP ${PROGRAM}
    rm -f ${PIDFILE}
 }
 
+function restart() {
+  stop     &&
+  sleep 2  &&
+  start
+}
