@@ -1,3 +1,12 @@
+2006-03-29 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: removed dependency on quicktime4linux as the spell uses
+	  the included one currently
+	* DETAILS: fixed SOURCE_HASH, bug #10781
+	* CONFLICTS: conflicts with libmpeg3 as it installs the same binaries
+	* BUILD: sedit configure so the included fftw doesn't try to
+	  build fortran wrappers, fixes part of bug #10772, unset CFLAGS,
+	  CXXFLAGS and LDFLAGS, fixes the rest of bug #10772
+
 2005-09-13 George Sherwood <george@beernabeer.com>
 	* DETAILS: Updated to 2.0
 	* DEPENDS: added depends yasm
