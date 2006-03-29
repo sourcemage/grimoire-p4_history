@@ -1,3 +1,16 @@
+2006-03-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DEPENDS: removed dependency on quicktime4linux as the spell uses
+	  the included one currently
+	* CONFLICTS: conflicts with libmpeg3 as it installs the same binaries
+	* PRE_BUILD: sedit configure so the included fftw doesn't try to
+	  build fortran wrappers, fixes part of bug #10772
+	* PRE_BUILD, gcc41.patch, jpeg-mmx-0.1.6-gcc41.patch,
+	  libdv-0.103-mmx.patch:
+	  patches to make it build with gcc > 3.4, fixes rest of bug #10772,
+	  patches courtesy of gentoo and fedora
+	* DEPENDS, DETAILS: don't use gcc 3.4 anymore
+	* BUILD: removed invoke_gcc
+
 2006-03-12 Karsten Behrmann <BearPerson@sourcemage.org>
 	* DETAILS: (automated) Add KEYWORDS
 
@@ -6,7 +19,6 @@
 	* DEPENDS: added depends yasm
 	* cinelerra-2.0-shared.patch: Added but doesn't work yet.
 	* gcc-3.4.patch: removed, not needed
-	* WIP: Added file with explanation.
 
 2005-04-27 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* BUILD, DEPENDS, DETAILS: use gcc 3.4
