@@ -14,7 +14,8 @@ OPTS="$OPTS  $KDEBASE_XCONSOLE  $KDEBASE_DPMS  $KDEBASE_XDMCP"  &&
 source  $SECTION_DIRECTORY/KDE_BUILD            &&
 
 # Backup existing kdm dir
-if [[ $VERSION == `installed_version $SPELL` ]] &&
+OLD_VERSION=$(installed_version $SPELL)         &&
+if [[ ${VERSION:0:3} == ${OLD_VERSION:0:3} ]]   &&
    [ -d "$INSTALL_ROOT/usr/share/config/kdm" ]; then
   mkdir -p $TMP_DIR/kdm                         &&
   echo "Backing up configuration files..."      &&
