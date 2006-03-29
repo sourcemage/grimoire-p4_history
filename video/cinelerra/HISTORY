@@ -1,4 +1,4 @@
-2006-03-28 Arwed v. Merkatz <v.merkatz@gmx.net>
+2006-03-29 Arwed v. Merkatz <v.merkatz@gmx.net>
 	* DEPENDS: removed dependency on quicktime4linux as the spell uses
 	  the included one currently
 	* CONFLICTS: conflicts with libmpeg3 as it installs the same binaries
@@ -9,7 +9,8 @@
 	  patches to make it build with gcc > 3.4, fixes rest of bug #10772,
 	  patches courtesy of gentoo and fedora
 	* DEPENDS, DETAILS: don't use gcc 3.4 anymore
-	* BUILD: removed invoke_gcc
+	* BUILD: removed invoke_gcc, unset CFLAGS, CXXFLAGS and LDFLAGS as they
+	  cause too much trouble
 	* DETAILS: fixed SOURCE_HASH, bug #10781
 
 2006-03-12 Karsten Behrmann <BearPerson@sourcemage.org>
