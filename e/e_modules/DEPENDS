@@ -1,3 +1,7 @@
-depends  enlightenment  &&
+if  [  "$E_MODULES_CVS_AUTOUPDATE"  ==  "y"  ];  then
+  depends e17
+else
+  depends  enlightenment
+fi                      &&
 depends  esmart         &&
 depends  CVS
