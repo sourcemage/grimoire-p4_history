@@ -1,5 +1,6 @@
            SPELL=cups
-         VERSION=1.1.23
+         VERSION=1.2rc1
+     SOURCE_HASH=sha512:3ea9962e70c689a60e394dba0abf6c37fb5e9efa09bfc034e3a846994a87b26ecb7c4bf2b303648a72d4bc543c8eb81b371a9ebcb190a0ce13e678785d1a4905
           SOURCE=$SPELL-$VERSION-source.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=ftp://ftp.easysw.com/pub/${SPELL}/$VERSION/$SOURCE                                     ##  Oregon, USA
@@ -8,12 +9,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[3]=http://www.nu6.org/_/mirror/ftp.easysw.com/pub/ghostscript/${VERSION}/${SOURCE}        ##  Gustavsberg, Sweden
    SOURCE_URL[4]=ftp://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/${SPELL}/${VERSION}/${SOURCE}  ##  Braunschweig, Germany
         WEB_SITE=http://www.cups.org
-      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+#      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
          ENTERED=20010922
          UPDATED=20050221
       LICENSE[0]=http://www.cups.org/faq0003.html
        BUILD_API=2
-     GCC_VERSION=3.4
         KEYWORDS="printer"
            SHORT="Common Unix Printing System is a portable printing layer"
 cat << EOF
