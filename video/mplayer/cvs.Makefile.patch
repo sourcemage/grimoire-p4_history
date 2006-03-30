@@ -1,14 +1,14 @@
---- Makefile~	2006-03-01 15:02:34.000000000 +0100
-+++ Makefile	2006-03-01 15:04:39.000000000 +0100
-@@ -476,11 +476,6 @@
+--- Makefile~	2006-03-30 18:56:17.000000000 +0200
++++ Makefile	2006-03-30 20:53:15.000000000 +0200
+@@ -492,11 +492,6 @@
  	done
  endif
- 	@if test ! -d $(DATADIR) ; then mkdir -p $(DATADIR) ; fi
--	@if test ! -d $(DATADIR)/font ; then mkdir -p $(DATADIR)/font ; fi
+ 	@$(INSTALL) -d $(DATADIR)
+-	@$(INSTALL) -d $(DATADIR)/font
 -	@if test ! -f $(DATADIR)/font/font.desc ; then \
 -	echo "*** Download font at http://www.mplayerhq.hu/dload.html" ; \
 -	echo "*** for OSD/Subtitles support and extract to $(DATADIR)/font/" ; \
 -	fi
  ifeq ($(GUI),yes)
- 	@if test ! -d $(DATADIR)/Skin ; then mkdir -p $(DATADIR)/Skin ; fi
+ 	@$(INSTALL) -d $(DATADIR)/skins
  	@echo "*** Download skin(s) at http://www.mplayerhq.hu/dload.html"
