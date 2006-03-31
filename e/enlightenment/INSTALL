@@ -1,16 +1,2 @@
-default_install                                       &&
-
-install  -m  755  $SCRIPT_DIRECTORY/start${SPELL}     \
-                  $INSTALL_ROOT/usr/bin               &&
-
-if  !  [  -d  $INSTALL_ROOT/usr/share/xsessions  ];  then
-  mkdir  -p  $INSTALL_ROOT/usr/share/xsessions
-fi  &&
-
-install  -m  755  $SCRIPT_DIRECTORY/${SPELL}.desktop  \
-                  $INSTALL_ROOT/usr/share/xsessions   &&
-
-if  [  "$ENLIGHTENMENT_CVS"  ==  "y"  ];  then
-  install  -m  755  $SCRIPT_DIRECTORY/e17update  \
-                    $INSTALL_ROOT/usr/sbin
-fi
+default_install &&
+install_wmfiles
