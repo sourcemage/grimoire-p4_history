@@ -4,7 +4,10 @@ cd  ${SOURCE_DIRECTORY}                                              &&
 S_KERNELRELEASE=get_kernel_version                                   &&
 export S_KERNELRELEASE                                               &&
 
-if [[ $(get_kernel_version) == 2.6.15* ]];  then
+# Apply patch for kernel versions 2.6.15* and newer
+KER=`get_kernel_version`                                             &&
+KER=${KER:0:6}                                                       &&
+if (( ${KER//\./} > 2614 )); then
    patch -p2 < ${SCRIPT_DIRECTORY}/svgalib_helper-2.6.15.diff
 fi                                                                   &&
 
