@@ -38,7 +38,7 @@ elif  [  "$#"  ==  '1'  ];  then
                  echo  "-h|--help    Print this help message";
                  ;;
     -s|--summon) get_spell_list  &&
-                 summon -d $update_spells;
+                 summon  $update_spells;
                  ;;
               *) echo  "Invalid option: $1";
                  ;;
