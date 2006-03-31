@@ -6,13 +6,14 @@ else
 fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/apps/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.enlightenment.org:/var/cvs/e:e17/apps/$SPELL
   FORCE_DOWNLOAD="on"
    SOURCE_IGNORE=volatile
         WEB_SITE=http://www.enlightenment.org/
          ENTERED=20050907
          UPDATED=20050907
       LICENSE[0]=BSD
+        KEYWORDS="enlightenment"
            SHORT="efl based instant messaging program"
 cat << EOF
 efl based instant messaging program
