@@ -1,0 +1,42 @@
+Index: src/EbmlFloat.cpp
+===================================================================
+--- src/EbmlFloat.cpp	(revision 1236)
++++ src/EbmlFloat.cpp	(working copy)
+@@ -70,11 +70,15 @@ uint32 EbmlFloat::RenderData(IOCallback 
+ 
+ 	if (Size == 4) {
+ 		float val = Value;
+-		big_int32 TmpToWrite(*((int32 *) &val));
++		int Tmp;
++		memcpy(&Tmp, &val, 4);
++		big_int32 TmpToWrite(Tmp);
+ 		output.writeFully(&TmpToWrite.endian(), Size);
+ 	} else if (Size == 8) {
+ 		double val = Value;
+-		big_int64 TmpToWrite(*((int64 *) &val));
++		int64 Tmp;
++		memcpy(&Tmp, &val, 8);
++		big_int64 TmpToWrite(Tmp);
+ 		output.writeFully(&TmpToWrite.endian(), Size);
+ 	} 
+ 
+@@ -103,13 +107,17 @@ uint64 EbmlFloat::ReadData(IOCallback & 
+ 			big_int32 TmpRead;
+ 			TmpRead.Eval(Buffer);
+ 			int32 tmpp = int32(TmpRead);
+-			Value = *((float *) &tmpp);
++			float val;
++			memcpy(&val, &tmpp, 4);
++			Value = val;
+ 			bValueIsSet = true;
+ 		} else if (Size == 8) {
+ 			big_int64 TmpRead;
+ 			TmpRead.Eval(Buffer);
+ 			int64 tmpp = int64(TmpRead);
+-			Value = *((double *) &tmpp);
++			double val;
++			memcpy(&val, &tmpp, 8);
++			Value = val;
+ 			bValueIsSet = true;
+ 		}
+ 	}
