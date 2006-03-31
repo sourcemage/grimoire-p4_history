@@ -8,20 +8,20 @@ if  [  "$EDJE_CVS"  ==  "y"  ];  then
           SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.enlightenment.org:/var/cvs/e:e17/libs/$SPELL
    SOURCE_IGNORE=volatile
 else
          VERSION=0.5.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-          MD5[0]=407755b05dd8af807f8bd5d066e870ff
+     SOURCE_HASH=sha512:00d0546f61a8a9c8d138207c4c2408e13c32bbedb4293de03dec14ad1e8d237e9621116952995e6ddb69865e1a008b1dd0500c73f44c2f2c47a225330ad57a0e
 fi
       LICENSE[0]=BSD
         WEB_SITE=http://enlightenment.org/Libraries/Edje/
          ENTERED=20040311
          UPDATED=20040311
+        KEYWORDS="enlightenment"
            SHORT='Enlightenment e17 graphical layout and animation library'
 cat << EOF
 Edje is a complex graphical design & layout library.

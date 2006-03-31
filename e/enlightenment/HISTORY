@@ -1,3 +1,59 @@
+2006-03-30 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: 0.16.8.1
+
+2006-03-28 Ladislav Hagara <hgr@vabo.cz>
+	* DETAILS: new SOURCE_URL, CVS is no longer hosted on SF
+
+2006-03-12 Karsten Behrmann <BearPerson@sourcemage.org>
+	* DETAILS: (automated) Add KEYWORDS
+
+2006-02-15 Arjan Bouter <abouter@sourcemage.org>
+	* INSTALL: added
+
+2006-02-13 Eric Sandall <eric@sandall.us>
+	* DEPENDS,UP_TRIGGERS: Moved casting of e17 to UP_TRIGGERS from DEPENDS so
+	  that e17 is cast /after/ enlightenment (to avoid enlightenment removing
+	  files it tracked when it installed DR17).  Bug #10522.
+
+2006-02-10 Eric Sandall <eric@sandall.us>
+	* PREPARE: Removed extraneous '&&' that broke the if/fi
+	  Update removal date
+	* DETAILS: Updated to 0.16.8
+	  Remove '0.16' from dated CVS VERSION
+	  SOURCE renamed to e16 instead of $SPELL
+	  SOURCE_DIRECTORY renamed to e16 instead of $SPELL
+	  Incremented PATCHLEVEL to 2
+	* DEPENDS: Variable is E17_CONVERT not E17_UPDATE
+	  Update removal date
+	* INSTALL: Removed, e16 now installs the necessary scripts for us
+	* FINAL: Update removal date
+	  Spell persistent correctly
+	* startenlightenment: Removed, now e16 installs a starte16 script for us
+	* enlightenment.desktop: Removed, now e16 installs e16.desktop for us
+	* TODO: Rename this to e16 and have enlightenment a 'profile' package for
+	  both e16 and e17
+
+2005-12-18 Eric Sandall <eric@sandall.us>
+	* PREPARE: Removed e17 queries
+	  Save user choices to e17.p
+	  Removed e17 saved queries
+	  Renamed ENLIGHTENMENT16* to ENLIGHTENMENT*
+	  Added temporary E17_UPDATE variable
+	* DETAILS: ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	  Added PATCHLEVEL=1
+	  Modified SHORT and long descriptions to mention E16
+	* DEPENDS: Remove e17 dependencies
+	  Added dependency on e17 if this was for building e17
+	  ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	* PRE_BUILD: Removed e17 check
+	  ENLIGHTENMENT16_CVS renamed to ENLIGHTENMENT_CVS
+	* INSTALL: Removed e17update script installation
+	* FINAL: Removed E17_UPDATE variable
+	* e17update: Removed
+
+2005-11-29 Seth Woolley <seth@tautology.org>
+	* DETAILS: MD5 -> SHA512
+
 2005-11-01 Eric Sandall <eric@sandall.us>
 	* DETAILS: Added a CVS mirror (faster than SF.net, but 30 minutes behind)
 	  Use SOURCE_IGNORE=volatile instead of MD5[0]=IGNORE

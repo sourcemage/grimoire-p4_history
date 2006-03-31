@@ -8,20 +8,20 @@ if  [  "$EPEG_CVS"  ==  "y"  ];  then
           SOURCE=$SPELL-cvs.tar.bz2
   FORCE_DOWNLOAD=on
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:e17/libs/$SPELL
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:e17/libs/$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.enlightenment.org:/var/cvs/e:e17/libs/$SPELL
    SOURCE_IGNORE=volatile
 else
          VERSION=0.9.0
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$SOURCEFORGE_URL/enlightenment/$SOURCE
-          MD5[0]=1bbe96a4a8a2c1c5fa4ed7f773aeae43
+     SOURCE_HASH=sha512:0eff5e8d26f4a3d010eeb0ae8ab11c4e41753feb7da1c9d31ab60a37a8e3fd50c5fcf4c26009bec761c5147a2e22b8ca837c94494fe3745ee870879221795c58
 fi
       LICENSE[0]=BSD
         WEB_SITE=http://enlightenment.org/Libraries/Epeg/
          ENTERED=20040311
          UPDATED=20040311
+        KEYWORDS="images enlightenment"
            SHORT='Enlightenment e17 JPEG thumbnailing library'
 cat << EOF
 Epeg is the worlds fastest JPEG thumbnailing library on the planet. Thanks to

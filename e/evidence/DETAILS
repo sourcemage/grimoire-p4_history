@@ -6,8 +6,7 @@ if  [  "$EVIDENCE_CVS"  ==  "y"  ];  then
          VERSION=cvs
   fi
           SOURCE=$SPELL-cvs.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:$SPELL
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/evidence:$SPELL
+   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/evidence:$SPELL
    SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD="on"
 else
@@ -21,6 +20,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          ENTERED=20040311
          UPDATED=20040311
       LICENSE[0]=BSD
+        KEYWORDS="filemanager enlightenment"
            SHORT="Enlightened file-manager"
 cat << EOF
 Evidence is a Enlightened file-manager

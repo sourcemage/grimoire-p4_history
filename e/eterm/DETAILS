@@ -14,9 +14,8 @@ else
   fi
           SOURCE=$SPELL-cvs.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-cvs/
-   SOURCE_URL[0]=cvs://:pserver:anonymous@thinktux.net:/root:eterm/Eterm
-   SOURCE_URL[1]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/enlightenment:eterm/Eterm
-  FORCE_DOWNLOAD=on
+   SOURCE_URL[0]=cvs://:pserver:anonymous@anoncvs.enlightenment.org:/var/cvs/e:eterm/Eterm
+ FORCE_DOWNLOAD[1]=on
    SOURCE_IGNORE=volatile
 fi
          SOURCE2=Eterm-bg-0.9.3.tar.gz
@@ -27,6 +26,7 @@ fi
          ENTERED=20010922
          UPDATED=20011125
       LICENSE[0]=BSD
+        KEYWORDS="emulator terminal enlightenment"
            SHORT='vt102 terminal emulator'
 cat << EOF
 Eterm is a vt102 terminal emulator intended as a replacement for
