@@ -1,4 +1,4 @@
-OPTS="$OPTS --enable-waveout --enable-capture --enable-jlib --enable-fft --disable-alsa --enable-optimization" &&
+OPTS="--enable-waveout --enable-capture --enable-fft --disable-alsa --enable-optimization ${OPTS}" &&
 if [ "$OPENAL_CVS" == "y" ]; then
 cd linux
 fi  &&
