@@ -1,5 +1,9 @@
 default_pre_build &&
 cd ${SOURCE_DIRECTORY} &&
-if  [  "$PAN2_CVS"  ==  "y"  ]; then
+if [ "$REL" == "devel" ]; then
+cd pan/data-impl                 &&
+patch -p0 < $SCRIPT_DIRECTORY/pan.patch
+fi  &&
+if  [  "$REL"  ==  "cvs"  ]; then
   NOCONFIGURE=Y  ./autogen.sh
 fi

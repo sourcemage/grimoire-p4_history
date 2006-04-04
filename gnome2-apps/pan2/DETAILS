@@ -1,5 +1,5 @@
            SPELL=pan2
-if [ "$PAN2_CVS" == "y" ]; then
+if [ "$REL" == "cvs" ]; then
   if [ "$PAN2_CVS_AUTOUPDATE" == "y" ]; then
          VERSION=$(date +%Y%m%d)
   else
@@ -10,12 +10,19 @@ if [ "$PAN2_CVS" == "y" ]; then
   FORCE_DOWNLOAD=1
    SOURCE_IGNORE=volatile
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pan2-$VERSION
+elif [ "$REL" == "devel" ]; then
+         VERSION=0.90
+          SOURCE=pan-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://pan.rebelbase.com/download/releases/$VERSION/SOURCE/$SOURCE
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/pan-$VERSION
+     SOURCE_HASH=sha512:e67b11bef469c4ecfe266a4990517044d9113d2b283697917ca431060d4e0bded1080274eba94962ce1d0335032e8a59076733aa723b625e5d25f85dab8e05d7
 else
          VERSION=0.14.2.91
           SOURCE=pan-$VERSION.tar.bz2
    SOURCE_URL[0]=http://pan.rebelbase.com/download/releases/$VERSION/SOURCE/$SOURCE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pan-$VERSION
      SOURCE_HASH=sha512:295fb5e9157768c65957e691d775f7c152f4354ce87db227ce1b5a7c91c3c45346863a26310012eb5ad3a0d75245eba093b98e3406941e18d18a65d5d02bac62
+     GCC_VERSION=3.4
 fi
       LICENSE[0]=GPL
         WEB_SITE=http://pan.rebelbase.com
