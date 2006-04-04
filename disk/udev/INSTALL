@@ -1,6 +1,6 @@
-install -d ${INSTALL_ROOT}/sys           &&
-local UDEV_CFG=${INSTALL_ROOT}/etc/udev  &&
-mkdir  -p  ${UDEV_CFG}/rules.d           &&
+install -d ${INSTALL_ROOT}/sys                &&
+local file UDEV_CFG=${INSTALL_ROOT}/etc/udev  &&
+mkdir  -p  ${UDEV_CFG}/rules.d                &&
 
 install_config_file $SCRIPT_DIRECTORY/udev.conf ${UDEV_CFG}/udev.conf &&
 install_config_file $SCRIPT_DIRECTORY/udev.missing ${UDEV_CFG}/udev.missing &&
@@ -39,6 +39,7 @@ fi  &&
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   pushd __static__ &&
   # we are not supposed to use `make install'
+  local __FILE
   for __FILE in $UDEV_STATIC_TARGET; do
     install -D $__FILE $INSTALL_ROOT/usr/sbin/$__FILE.static
   done &&
