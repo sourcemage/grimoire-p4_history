@@ -4,7 +4,7 @@ config_query_option UDEV_DEBUG 'Compile extra debugging messages?' n 'DEBUG=true
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   if [[ -z "$UDEV_STATIC_TARGET" ]]; then
     # add more UDEV utilities here as necessary, space-separated
-    UDEV_STATIC_TARGET="udevstart"
+    local UDEV_STATIC_TARGET="udevstart"
   fi &&
   persistent_add UDEV_STATIC_TARGET &&
   message "${MESSAGE_COLOR}Static utilities (with suffix .static): $UDEV_STATIC_TARGET${DEFAULT_COLOR}"
