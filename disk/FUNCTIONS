@@ -2,6 +2,62 @@
 
 #---------------------------------------------------------------------
 ##
+## @param module filename
+## Add a file in /etc/modules.d to get some modules autoloaded
+##
+#---------------------------------------------------------------------
+function add_module_autoload()
+{
+  MODULE_FILENAME=${1##*/}
+  
+  if  [  ! -f  $INSTALL_ROOT/etc/modules.d/$MODULE_FILENAME  ];  then
+    mkdir  -p  $INSTALL_ROOT/etc/modules.d  &&
+    cp     $1  $INSTALL_ROOT/etc/modules.d
+  fi  &&
+
+  local MOD="$INSTALL_ROOT/etc/modules.conf"
+  local INC="include  /etc/modules.d/$MODULE_FILENAME"
+
+  grep    -q  "$INC"      $MOD  ||
+  echo        "$INC"  >>  $MOD
+
+  # Avoid that -b option of depmod takes the kernel version as the path for /lib/modules
+  if [ -z $INSTALL_ROOT ]; then
+    depmod  -a  -C $MOD $(get_kernel_version)
+  else
+    depmod  -a  -C $MOD -b $INSTALL_ROOT $(get_kernel_version)
+  fi
+}
+
+#---------------------------------------------------------------------
+##
+## @param module filename
+## Add a file in /etc/modules.d to get some modules autoloaded
+##
+#---------------------------------------------------------------------
+function remove_module_autoload()
+{
+  MODULE_FILENAME=${1##*/}
+
+  MOD="$INSTALL_ROOT/etc/modules.conf"
+  TMP="$INSTALL_ROOT/tmp/modules.conf"
+  INC="include  /etc/modules.d/$MODULE_FILENAME"
+
+  cp           $MOD   $TMP  &&
+  grep    -v  "$INC"  $TMP  >  $MOD  &&
+  rm                  $TMP  &&
+  rm                  $INSTALL_ROOT/etc/modules.d/$MODULE_FILENAME
+  
+  # Avoid that -b option of depmod takes the kernel version as the path for /lib/modules
+  if [ -z $INSTALL_ROOT ]; then
+    depmod  -a  -C $MOD $(get_kernel_version)
+  else
+    depmod  -a  -C $MOD -b $INSTALL_ROOT $(get_kernel_version)
+  fi
+}
+
+#---------------------------------------------------------------------
+##
 ## Detects cd recorders and list them on standard output
 ##
 #---------------------------------------------------------------------
