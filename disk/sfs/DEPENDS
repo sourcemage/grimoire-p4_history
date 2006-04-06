@@ -1,2 +1,6 @@
-depends gmp '--with-gmp=/usr'	&&
-depends gcc33
+depends gmp  &&
+if  [ "$SFS_CVS" == "y" ];  then
+  depends gcc34
+else
+  depends gcc33
+fi
