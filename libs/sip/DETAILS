@@ -1,10 +1,10 @@
            SPELL=sip
-         VERSION=4.4
-     SOURCE_HASH=sha512:7e169485f85366fa09ca3bce927afe97ef32a92603e46682b06d970c8c8cc4f802c6e265e7855afb245258ed85bc4206b669187d8cf6324d6610a4ee9a954433
+         VERSION=4.4.1
        BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=http://www.riverbankcomputing.com/Downloads/sip4/$SOURCE
+      SOURCE_GPG="gurus.gpg:$SOURCE.sig"
       LICENSE[0]=GPL
         WEB_SITE=http://www.riverbankcomputing.co.uk/$SPELL/index.php
          ENTERED=20020721
