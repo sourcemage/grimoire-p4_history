@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 function add_module_autoload()
 {
-  MODULE_FILENAME=${1##*/}
+  local MODULE_FILENAME=${1##*/}
   
   if  [  ! -f  $INSTALL_ROOT/etc/modules.d/$MODULE_FILENAME  ];  then
     mkdir  -p  $INSTALL_ROOT/etc/modules.d  &&
@@ -37,11 +37,11 @@ function add_module_autoload()
 #---------------------------------------------------------------------
 function remove_module_autoload()
 {
-  MODULE_FILENAME=${1##*/}
+  local MODULE_FILENAME=${1##*/}
 
-  MOD="$INSTALL_ROOT/etc/modules.conf"
-  TMP="$INSTALL_ROOT/tmp/modules.conf"
-  INC="include  /etc/modules.d/$MODULE_FILENAME"
+  local MOD="$INSTALL_ROOT/etc/modules.conf"
+  local TMP="$INSTALL_ROOT/tmp/modules.conf"
+  local INC="include  /etc/modules.d/$MODULE_FILENAME"
 
   cp           $MOD   $TMP  &&
   grep    -v  "$INC"  $TMP  >  $MOD  &&
@@ -63,15 +63,16 @@ function remove_module_autoload()
 #---------------------------------------------------------------------
 function cdr_detect()
 {
-  CDROM_INFO_FILE=/proc/sys/dev/cdrom/info
-  CDR_MATCH_STRING="Can write CD-R:"
-  CDROM_DEVICES_MATCH_STRING="drive name:"
+  local CDROM_INFO_FILE=/proc/sys/dev/cdrom/info
+  local CDR_MATCH_STRING="Can write CD-R:"
+  local CDROM_DEVICES_MATCH_STRING="drive name:"
 
-  CDROM_DEVICES_STRING=$(grep "${CDROM_DEVICES_MATCH_STRING}" ${CDROM_INFO_FILE} | tr -d ' ' | tr -s '\t')
-  CDR_STRING=$(grep "${CDR_MATCH_STRING}" ${CDROM_INFO_FILE} | tr -d ' ' | tr -s '\t')
-
+  local CDROM_DEVICES_STRING=$(grep "${CDROM_DEVICES_MATCH_STRING}" ${CDROM_INFO_FILE} | tr -d ' ' | tr -s '\t')
+  local CDR_STRING=$(grep "${CDR_MATCH_STRING}" ${CDROM_INFO_FILE} | tr -d ' ' | tr -s '\t')
+  local CD_RECORDER
+  
   if  [ -n "${CDR_STRING}" ]; then
-    NUM_CDROM_DEVICES=$(echo "${CDR_STRING}" | wc -w )
+    local NUM_CDROM_DEVICES=$(echo "${CDR_STRING}" | wc -w )
 
     for i in $(seq 2 $NUM_CDROM_DEVICES); do
       if [ $(echo "${CDR_STRING}" | cut -f$i) = 1 ]; then
