@@ -94,6 +94,9 @@ KERNEL=="nvidia*"	NAME="%k", MODE="0660", GROUP="video"
 #framebuffer devices
 KERNEL=="fb[0-9]",      NAME="%k", MODE="0660", GROUP="video"
 
+#svgalib devices
+KERNEL=="svga[0-9]",    NAME="%k", MODE="0660", GROUP="video"
+
 # Network devices
 KERNEL=="tun",          NAME="net/%k"
 
