@@ -6,11 +6,12 @@
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
         WEB_SITE=http://tora.sourceforge.net/
    SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
-          LICENSE=GPL
-          ENTERED=20030211
-          UPDATED=20031020
+      LICENSE[0]=GPL
+         ENTERED=20030211
+         UPDATED=20031020
+            DOCS="${DOCS} help/"
         KEYWORDS="postgresql mysql database"
-SHORT="database admin kit for Oracle, MySql, Postgresql, ..."
+           SHORT="database admin kit for Oracle, MySql, Postgresql, ..."
 cat << EOF
 A graphical toolkit for database developers and administrators.
  Tora features a schema browser, SQL worksheet, PL/SQL editor & debugger,
