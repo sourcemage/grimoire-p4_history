@@ -1,6 +1,7 @@
            SPELL=phpmyadmin
-         VERSION=2.7.0-pl2
-     SOURCE_HASH='sha512:cf0c6a137621ffca9874bd6e918112c4e96c44ed1cc2620f59b6fe2a5a6d56c95bb21123f013ceff43497602d0deb8e04d95936e6db6f7c3f085fbb99d632adf'
+         VERSION=2.8.0.3
+  SECURITY_PATCH=1
+     SOURCE_HASH='sha512:78002f28629f02f60da6b9bf7b9bebaa0d49c2276bd1e25132f18a289d5305cbef8e70afebfbc5e8d1d470df5dfc888a065cdc9201eb547a2007e850d5cec0f8'
           SOURCE=phpMyAdmin-$VERSION.tar.bz2
 #     SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/phpMyAdmin-$VERSION
@@ -10,6 +11,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/phpMyAdmin-$VERSION
          UPDATED=20050921
       LICENSE[0]=GPL
        BUILD_API=2
+        KEYWORDS="mysql devel"
            SHORT="PHP/Web-based MySQL server/database management tool"
 cat << EOF
 phpMyAdmin can manage a whole MySQL-server (needs a super-user) but also a
