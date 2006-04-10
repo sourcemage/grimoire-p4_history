@@ -77,9 +77,10 @@ handle_needs()
     if [ -z "$service" ] ; then
       print_error "Provider for facility $facility not configured."
       [ "$1" == "NEEDS" ] && exit 7
+    elif ! need $service ; then
+      print_error "Error running requested service $service."
+      [ "$1" == "NEEDS" ] && exit 7
     fi
-
-    need $service || exit 7
   done
   unset _SUB_NEEDED
 }
