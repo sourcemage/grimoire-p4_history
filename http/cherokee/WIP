@@ -1,0 +1,30 @@
+using gcc-4.1.0
+
+
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -pthread -I.. -DCHEROKEE_COMPILATION 
+-DCHEROKEE_PLUGINDIR="\""/usr/lib/cherokee"\"" 
+-DCHEROKEE_DEPSDIR=\"""/usr/share/cherokee/deps""\" 
+-DCHEROKEE_DATADIR=\"""/usr/share/cherokee""\" -DCHEROKEE_CONFDIR=\""/etc/cherokee"\" 
+-DCHEROKEE_ICONSDIR=\""/usr/share/cherokee/icons"\"     -MT cherokee_logrotate.o -MD 
+-MP -MF ".deps/cherokee_logrotate.Tpo" -c -o cherokee_logrotate.o 
+cherokee_logrotate.c; \
+        then mv -f ".deps/cherokee_logrotate.Tpo" ".deps/cherokee_logrotate.Po"; else 
+rm -f ".deps/cherokee_logrotate.Tpo"; exit 1; fi
+In file included from ../cherokee/cherokee.h:35,
+                 from cherokee_logrotate.c:26:
+../cherokee/util.h:87: warning: 'struct in_addr' declared inside parameter list
+../cherokee/util.h:87: warning: its scope is only this definition or declaration, 
+which is probably not what you want
+/bin/sh ../libtool --tag=CC --mode=link gcc    -z combreloc -s -o cherokee_logrotate  
+cherokee_logrotate.o libcherokee-base.la libcherokee-client.la libcherokee-server.la 
+libcherokee-config.la -ldl
+gcc -z combreloc -s -o .libs/cherokee_logrotate cherokee_logrotate.o  
+./.libs/libcherokee-base.so ./.libs/libcherokee-client.so 
+./.libs/libcherokee-server.so ./.libs/libcherokee-config.so -ldl
+./.libs/libcherokee-base.so: undefined reference to `del_item'
+collect2: ld returned 1 exit status
+make[2]: *** [cherokee_logrotate] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all] Error 2
+make[2]: Leaving directory `/usr/src/cherokee-0.5.1/cherokee'
+
