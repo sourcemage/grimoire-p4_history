@@ -37,8 +37,8 @@ case "$mode" in
 		then
 			message "${MESSAGE_COLOR}Using ${LINUX_SOURCE_DIRECTORY} for expert build${DEFAULT_COLOR}"
 		else
-			message "${PROBLEM_COLOR}Ah ${LINUX_SOURCE_DIRECTORY} doesn't exist, exiting${DEFAULT_COLOR}"
-			return 1
+			message "${PROBLEM_COLOR}Ah ${LINUX_SOURCE_DIRECTORY} isn't set properly going to newktree${DEFAULT_COLOR}"
+			mode="newktree"
 		fi
 		;;
 	*)
