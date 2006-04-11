@@ -410,7 +410,7 @@ function default_install_python() {
 
 disable_pic() {
 if [[ "$SMGL_COMPAT_ARCHS[1]" != "x86_64" ]] ||
-   [[ "$1" == "force ]]
+   [[ "$1" == "force" ]]
 then
 CFLAGS=${CFLAGS/-fPIC}                    &&
 CFLAGS=${CFLAGS/-DPIC}                    &&
