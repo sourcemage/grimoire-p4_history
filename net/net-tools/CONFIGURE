@@ -1,141 +1,90 @@
+#!/bin/bash
 # net-tools CONFIGURE script
 #
 # Created 2006-03-22 by Matthew Clark <MatthewClark@SourceMage.org>
 #
 
-option_list() {
+make_option_list() {
   # Return a dialog-friendly list of modules and attributes
-  for NAME in $OPTIONLIST
-  do
-    source $OPTIONDIR/$NAME
-    echo $NAME
-    echo $QUESTION
-    echo $STATUS
-  done
-}
+  OPTS=()
+  local i=0
+  local FILE QUESTION STATUS
 
-option_config() {
-
-  while true
-  do
-    OUTPUT=$( $DIALOG --title "$TITLE" --nocancel \
-    --checklist "Select which features you'd like supported. If you don't know what these are, then just press OK to build all features." \
-    0 0 0 \
-    $(option_list) )
-
-    RETVAL=$?
-    if [ $RETVAL == 0 ]
-    then
-      FIRSTFIELD=$( echo $OUTPUT | cut -d' ' -f1 )
-      REST=$( echo $OUTPUT | cut -d' ' -f2- )
-
-      # OK was pressed
-      # OUTPUT now contains the list of modules to build
-      output_option_config
-      break
+  for FILE in $OPTIONDIR/* ;do
+    source $FILE
+    OPTS[i++]=${FILE##*/} # strip everything before (including) the last /
+    OPTS[i++]=$QUESTION
+    if [[ $STATUS == "y" ]] ;then
+      OPTS[i++]=on
     else
-      # CANCEL was pressed
-      break
+      OPTS[i++]=off
     fi
   done
 }
 
 output_option_config() {
-  # Function to output the configuration info to $SPELL_CONFIG
+  # Function to save the config info.
 
-  # First we need to strip the quotes out of $OUTPUT
-  OUTPUT=$( echo $OUTPUT | sed -e 's/\"//g' )
+  # Iterate through all the options.
+  # This relies on the fact that the options are in the same
+  # order here as they are in $* ($OUTPUT). They are.
 
-  # Iterate through all the options. TARGET is the
-  # first unmatched option in the list of options
-  # to enable. NAME is the name of the target option
+  local OPTION NAME
 
-  local TARGET=$( echo $OUTPUT | cut -d' ' -f1 )
-  if [ "${TARGET:0:1}" != "m" ]
-  then
-    TARGET=${TARGET:1}
-  fi
-  local NAME
-
-  for OPTION in $OPTIONLIST
+  for OPTION in $OPTIONDIR/*
   do
-    if [ "$TARGET" = "" ] || [ "$TARGET" != "$OPTION" ]
-    then
-      # Disable this option
-      echo "$NAME=n" >> $SPELL_CONFIG
+    NAME=${OPTION##*/}
+    if [ "$NAME" == "$1" ] ;then
+      # it's in the list of enabled options
+      config_set_option $NAME y
+      shift #move on to the next option
     else
-      # Enable this option
-      echo "$NAME=y" >> $SPELL_CONFIG
+      config_set_option $NAME n
     fi
+  done
+}
+
+option_config_menu() {
+  local OPTS TITLE OUTPUT
+
+  make_option_list
+  TITLE="net-conf option selection"
+
+  OUTPUT=$( $DIALOGPROG --title "$TITLE" --backtitle "$TITLE" \
+            --nocancel --stdout --single-quoted --checklist   \
+            "Select which features you'd like supported.
+            If you don't know what these are, then just press OK
+            to build all features."                              \
+            0 0 0 "${OPTS[@]}" ) &&
+
+  # OUTPUT now contains the list of modules to build
+  # Yes, we don't quote $OUTPUT. We want each module as a seperate arg
+  output_option_config $OUTPUT
+
+  # When either of those fail we return failure
+  # and fall back to option_config_list
+}
+
+option_config_list() {
+  local FILE QUESTION STATUS NAME
+
+  for FILE in $OPTIONDIR/* ;do
+    source $FILE
+    NAME=${FILE##*/}
+    config_query $NAME "$QUESTION" $STATUS
   done
 }
 
 
 # Perform the configuration
-if ! grep -q 'CONFIGURED=y' $SPELL_CONFIG; then
-  local oldIFS=$IFS
-  export IFS="
-"
+OPTIONDIR="$SCRIPT_DIRECTORY/options"
 
-  TITLE="net-conf option selection"
-  OPTIONDIR="$SCRIPT_DIRECTORY/options"
-  OPTIONLIST=`ls $OPTIONDIR`
-  DIALOG="dialog
---backtitle
-net-conf option selection
---stdout"
+# I cheat. I'm not really re-using this answer,
+# but it makes for a neat way to skip the prompt on later non-reconf casts.
 
-  if query "Would you like to selection options from the menu? (N will build all options)" n
-  then
+config_query NETTOOLS_CONFIG_GUI \
+  "Would you like to use a dialog menu to select options? (recommended)" n &&
+option_config_menu ||
+option_config_list
 
-    option_config
-    CONFIG_OPTS=$SPELL_CONFIG
-
-  else
-
-    CONFIG_OPTS="
-    GETTEXT=y\n\
-    UNIX=y\n\
-    INET=y\n\
-    INET6=y\n\
-    NOVELL=y\n\
-    APPLETALK=y\n\
-    AFAX25=y\n\
-    AFNETROM=y\n\
-    AFROSE=y\n\
-    AFX25=y\n\
-    AFECONET=y\n\
-    AFASH=y\n\
-    ETHERNET=y\n\
-    ARCNET=y\n\
-    SLIP=y\n\
-    PPP=y\n\
-    IPIP=y\n\
-    STRIP=y\n\
-    TOKEN=y\n\
-    HWAX25=y\n\
-    HWROSE=y\n\
-    HWNETROM=y\n\
-    HWX25=y\n\
-    FRAME=y\n\
-    SIT=y\n\
-    FDDI=y\n\
-    HIPPI=y\n\
-    HWASH=y\n\
-    CISCO=y\n\
-    IRDA=y\n\
-    HWECONET=y\n\
-    IPMASQ=y\n\
-    IPTOOLS=y\n\
-    DECNET=n\n\
-    MII=y\n"
-
-  fi
-
-  # we're gonna disable decnet support without asking -- it's broke 
-  persistent_add DECNET
-  echo 'DECNET=n\nCONFIGURED=y' >> $SPELL_CONFIG
-
-  IFS=$oldIFS
-
-fi
+config_set_option NETTOOLS_CONFIG_GUI n
