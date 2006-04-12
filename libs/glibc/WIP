@@ -1,14 +1,1 @@
 needs some more testing as usual, see TESTS
-
-_very_ bad things happen with this glibc ...
-wget can't find any host anymore:
-arwed@Otherland:~/wget-1.10.2/src$ ./wget ftp://ftp.gnome.org/pub/GNOME/sources/gtk-doc/1.5/gtk-doc-1.5.tar.bz2
---11:59:08--  ftp://ftp.gnome.org/pub/GNOME/sources/gtk-doc/1.5/gtk-doc-1.5.tar.bz2
-           => `gtk-doc-1.5.tar.bz2'
-Resolving ftp.gnome.org... failed: No such file or directory.
-
-Neither can fetchmail:
-fetchmail: couldn't find canonical DNS name of pop.gmx.net (pop.gmx.net)
-
-lftpget, mozilla and others work fine
-this is http://sourceware.org/bugzilla/show_bug.cgi?id=2429

@@ -8,6 +8,8 @@ GLIBC_HEADERS_DIR=$SOURCE_DIRECTORY/linux-libc-headers-$HEADERS_VERSION  &&
 
 if  [  "$GLIBC_NPTL"  =  "y"  ];  then
   cd      $SOURCE_DIRECTORY                                              &&
+  # fix for upstream bug http://sourceware.org/bugzilla/show_bug.cgi?id=2429
+  patch  -p1  <  $SCRIPT_DIRECTORY/nisplus_fix.diff                      &&
   #
   # Unpack glibc-kernel-headers
   #
