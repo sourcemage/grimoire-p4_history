@@ -19,3 +19,5 @@ then
     make_normal                                                       &&
     cd ../
 fi
+
+return 0
