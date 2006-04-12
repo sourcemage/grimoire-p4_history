@@ -9,7 +9,7 @@ function default_build ()
     else
 	message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"
 	message "Rebuild gnustep-make${DEFAULT_COLOR}"
-	exit 1
+	return 1
     fi                                                                   &&
 
     if [ -f ./configure ]
@@ -26,6 +26,7 @@ function default_build ()
 	make                                                             &&
 	cd ../                                        
     fi
+    return 0
 }
 
 
@@ -43,4 +44,5 @@ function default_install ()
 	make GNUSTEP_INSTALLATION_DIR=$GNUSTEP_SYSTEM_ROOT install        &&
 	cd ../
     fi
+    return 0
 }

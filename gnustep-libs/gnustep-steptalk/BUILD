@@ -6,7 +6,7 @@ then
 else
     message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"
     message "Rebuild gnustep-make${DEFAULT_COLOR}"
-    exit 1
+    return 1
 fi                                                                        &&
 
 make_single
@@ -18,3 +18,5 @@ else
     make
 fi
 make_normal
+
+return 0

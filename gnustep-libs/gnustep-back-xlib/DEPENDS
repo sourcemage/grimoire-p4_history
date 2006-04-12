@@ -1,6 +1,6 @@
-depends          gnustep-gui     &&
-depends          X11-LIBS        &&
-optional_depends glitz           &&
+depends          gnustep-gui                               &&
+depends          X11-LIBS                                  &&
+optional_depends glitz       "" "" "Add glitz support."    &&
 
 if [ "$DOCU" == "y" ]; 
 then
