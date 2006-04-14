@@ -1,3 +1,13 @@
+2006-04-14 David Brown <dmlb2000@gmail.com>
+	* PRE_BUILD: removed references to ARCH=kernel_arch see 
+	  http://wiki.kernelnewbies.org/LinuxChanges for 2.6.16 as to why
+	  specifically the PPC section
+	  also change on 4-10 wasn't done right, expert mode should return an
+	  error if the directory doesn't exist but if mode doesn't exist it
+	  should go to newktree
+	* BUILD: same as PRE_BUILD as to kernel arch
+	* INSTALL: same as BUILD
+
 2006-04-13 David Brown <dmlb2000@gmail.com>
 	* latest.defaults: updated latest to patch-2.6.16-cks5
 	* info/patches/ck_server_patches/patch-2.6.16-cks5: added
