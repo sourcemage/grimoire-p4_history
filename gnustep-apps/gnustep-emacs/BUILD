@@ -1,4 +1,2 @@
-cd GNUstep
+cd GNUstep &&
 ./compile
-
-return 0

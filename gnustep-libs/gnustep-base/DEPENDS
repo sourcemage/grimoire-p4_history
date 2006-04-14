@@ -7,6 +7,6 @@ optional_depends gmp     "" "" "Enable gmp support."        &&
 
 if [ "$GNUSTEP_BUILD_DOC" == "y" ] 
 then
-    depends tetex           &&
+    depends tetex                                           &&
     depends texinfo
 fi

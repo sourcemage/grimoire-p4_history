@@ -2,8 +2,8 @@ if [ -f /etc/profile.d/GNUstep.sh ];
 then
     . /etc/profile.d/GNUstep.sh
 else
-    message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"
-    message "Rebuild gnustep-make${DEFAULT_COLOR}"
+    message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"  &&
+    message "Rebuild gnustep-make${DEFAULT_COLOR}"                    &&
     return 1
 fi                                                                    &&
 
@@ -15,14 +15,14 @@ then
     cd Bundles/Emoticon                                               &&
     make                                                              &&
     cd ../../
-fi
+fi                                                                    &&
 
 if [ "$GMFAC" == "y" ];
 then
     cd Bundles/Face                                                   &&
     make                                                              &&
     cd ../../
-fi
+fi                                                                    &&
 
 
 if [ "$GMPGP" == "y" ];
@@ -30,8 +30,6 @@ then
     cd Bundles/PGP                                                    &&
     make                                                              &&
     cd ../../
-fi
+fi                                                                    &&
 
 make_normal
-
-return 0

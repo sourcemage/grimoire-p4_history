@@ -4,6 +4,6 @@ if [ "$GS_USE_APACHE" == "y" ]
 then
 	cd $SOURCE_DIRECTORY/GSWAdaptors/Apache &&
 	./configure                             &&
-	make
+	make                                    &&
 	cd $SOURCE_DIRECTORY
 fi

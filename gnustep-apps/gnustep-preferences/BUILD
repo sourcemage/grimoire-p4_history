@@ -2,15 +2,13 @@ if [ -f /etc/profile.d/GNUstep.sh ];
 then
     . /etc/profile.d/GNUstep.sh
 else
-    message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"
-    message "Rebuild gnustep-make${DEFAULT_COLOR}"
+    message "${ERROR_COLOR}Unable to find /etc/profile.d/GNUstep.sh"  &&
+    message "Rebuild gnustep-make${DEFAULT_COLOR}"                    &&
     return 1
 fi                                                                    &&
 
-cd Applications/Preferences
+cd Applications/Preferences                                           &&
 
-make
+make                                                                  &&
 
 cd ../../
-
-return 0
