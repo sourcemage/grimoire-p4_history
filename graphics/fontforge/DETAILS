@@ -4,8 +4,8 @@
           SOURCE=${SPELL}_full-$VERSION.tar.bz2
          SOURCE2=${SPELL}_htdocs-$DOCS_VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://fontforge.sourceforge.net/$SOURCE
-  SOURCE2_URL[0]=http://fontforge.sourceforge.net/$SOURCE2
+   SOURCE_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE
+  SOURCE2_URL[0]=$SOURCEFORGE_URL/$SPELL/$SOURCE2
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
      SOURCE2_GPG="gurus.gpg:${SOURCE2}.sig"
      #SOURCE_HASH=sha512:4a4be69e6c1f97fc3f325f06df66f3c9671e8d7d8e3c352a3b30c7caf0165b1309b2ee56509c90c05d280f864b518da684afd936feb86f165e25af4c89e28dcf
