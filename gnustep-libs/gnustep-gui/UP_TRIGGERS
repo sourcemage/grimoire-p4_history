@@ -1,7 +1,7 @@
 if [ -z $(installed_version gnustep-base) ]
 then
-    return
-fi
+    return 0
+fi                                                  &&
 
 if [ $(installed_version gnustep-gui) != $VERSION ]
 then
