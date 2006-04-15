@@ -1,0 +1,44 @@
+#!/bin/bash
+
+local dir=$UDEV_CFG/rules.d
+local file=00-bindings.rules
+
+function get_macs() {
+  local a b  &&
+  for a in $(find /sys/class/net -type f -name address); do
+    b="$(cat $a | head -n1)"  &&
+    if [[ $b =~ [^0^:] ]]; then
+      echo -n "$b="  &&
+      a="${a/%\/address}"  &&
+      expr $a : ".*/\(.*\)"
+    fi
+  done
+}
+
+function write_rule() {
+  echo "KERNEL==\"eth*\", SYSFS{address}==\"${1/=/\", NAME=\"}\"" >> $dir/$file
+}
+
+function create_bindings() {
+  local a b c d  &&
+  for a in $(get_macs); do
+    c="$(echo $a | cut -d= -f1)"  &&
+    unset d  &&
+    for b in $(find $dir -maxdepth 1 -type f -name "*.rules"); do
+      if [[ -n $(grep "^[^#]*SYSFS{address}==\"$c\".*NAME=\".*" $b) ]];
+      then
+        d=n  &&
+        echo "Already a rule for $(echo $a | cut -d= -f1) in $b"  &&
+        break
+      fi
+    done  &&
+    if [[ -z $d ]]; then
+      write_rule $a  &&
+      echo "Wrote rule for $(echo $a | cut -d= -f1) in $dir/$file"
+    fi
+  done
+}
+
+message "${MESSAGE_COLOR}Creating bindings for persistent network interface names..."  &&
+create_bindings  &&
+message "Done.${DEFAULT_COLOR}"
