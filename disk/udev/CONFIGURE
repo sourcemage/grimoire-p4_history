@@ -1,4 +1,5 @@
-config_query UDEV_PERSIST 'install persistent disk rules?' n &&
+config_query UDEV_PERSIST 'Install persistent storage rules?' n &&
+config_query UDEV_NETWORK 'Install persistent network interface names?' n &&
 config_query UDEV_STATIC 'Create static binaries in addition to dynamically linked ones?' n &&
 config_query_option UDEV_DEBUG 'Compile extra debugging messages?' n 'DEBUG=true' 'DEBUG=false' &&
 if [[ "$UDEV_STATIC" == 'y' ]]; then
@@ -13,5 +14,5 @@ if [[ "$UDEV_PERSIST" == "y" ]]; then
   UDEV_EXTRAS=y  &&
   persistent_add UDEV_EXTRAS
 else
-  config_query UDEV_EXTRAS 'Do you want to compile extras helpers?' y
+  config_query UDEV_EXTRAS 'Compile extras helpers?' y
 fi

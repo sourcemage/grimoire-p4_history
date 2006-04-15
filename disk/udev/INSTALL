@@ -36,6 +36,11 @@ if [[ "$UDEV_EXTRAS" == 'y' ]]; then
 
 fi  &&
 
+# Install rules to set persistent name bindings for network interfaces
+if [[ $UDEV_NETWORK == y ]]; then
+  . $SCRIPT_DIRECTORY/bindings
+fi  &&
+
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   pushd __static__ &&
   # we are not supposed to use `make install'
