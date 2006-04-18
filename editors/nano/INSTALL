@@ -1,5 +1,9 @@
 make install DESTDIR=$INSTALL_ROOT  &&
 
-if [[ "${NANO_CONFIG}" == "all" || $( echo ${NANO_OPTS} | grep -o enable-nanorc ) = "enable-nanorc" ]] ; then
+if [[ "${NANO_CONFIG}" == "all" || $( echo ${NANO_OPTS} | grep -o enable-nanorc ) = "enable-nanorc" &&
+! "${SPELL_HIGHLIGHT}" == "y" ]] ; then
   install_config_file  doc/nanorc.sample  $INSTALL_ROOT/etc/nanorc
+elif [[ "${SPELL_HIGHLIGHT}" == "y" ]] ; then
+  install_config_file  $SCRIPT_DIRECTORY/spell-config/nanorc  $INSTALL_ROOT/etc/nanorc
 fi
+
