@@ -32,4 +32,10 @@ config_query_option  NANO_OPTS  "Enable use of .nanorc file?"  y              \
                      "--enable-nanorc"  "--disable-nanorc"                    &&
 config_query_option  NANO_OPTS  "Enable UTF-8 support?"  y                    \
                      "--enable-utf8"  "--disable-utf8"
+fi                                                                            &&
+
+if [[ "${NANO_CONFIG}" == "all" || $( echo ${NANO_OPTS} | grep -o enable-color ) = "enable-color" &&
+$( echo ${NANO_OPTS} | grep -o enable-nanorc ) = "enable-nanorc" ]] ; then
+  config_query  SPELL_HIGHLIGHT  "Do you want to enable syntax highlighting of spell files?"  y
 fi
+  
