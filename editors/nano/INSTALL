@@ -1,1 +1,5 @@
-make install DESTDIR=$INSTALL_ROOT
+make install DESTDIR=$INSTALL_ROOT  &&
+
+if [[ "${NANO_CONFIG}" == "all" || $( echo ${NANO_OPTS} | grep -o enable-nanorc ) = "enable-nanorc" ]] ; then
+  install_config_file  doc/nanorc.sample  $INSTALL_ROOT/etc/nanorc
+fi
