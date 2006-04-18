@@ -6,8 +6,7 @@ OPTS="$KDE_DEBUG_OPTION                  \
       --disable-dependency-tracking      \
       $OPTS"                             &&
 
-if [[ -z $QTDIR ]]  &&
-   [[ -f /etc/profile.d/qt.sh ]]; then
+if [[ -f /etc/profile.d/qt.sh ]]; then
   . /etc/profile.d/qt.sh
 fi                                       &&
 
