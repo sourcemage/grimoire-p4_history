@@ -1,3 +1,13 @@
+2006-04-18 Juuso Alasuutari <iuso@sourcemage.org>
+	* CONFIGURE, INSTALL: Undid previous hack in favor of a better 
+	  one. Now interface names are bound if MAC addresses are set 
+	  for them with netconf. Thanks to Mads Laursen for the idea and 
+	  Arwed von Merkatz for pointing out how to do it.
+	* bindings: Deleted
+	* helpers/mac2name: Added, helper script to retrieve interface 
+	  names in exchange for MAC addresses
+	* rules/07-bindings.rules: Added, calls mentioned script
+
 2006-04-15 Juuso Alasuutari <iuso@sourcemage.org>
 	* CONFIGURE: Added prompt to install persistent network 
 	  interface names, made prompts more uniform
