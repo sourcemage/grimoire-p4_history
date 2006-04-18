@@ -1,7 +1,6 @@
 # fix wine build problem
 LDFLAGS=${LDFLAGS//-z combreloc/}               &&
-OPTS="$WINE_OPENGL     \
-      --disable-debug  \
+OPTS="--disable-debug  \
       --disable-trace  \
       $OPTS"           &&
 
