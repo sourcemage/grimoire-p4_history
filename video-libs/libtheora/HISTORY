@@ -1,3 +1,13 @@
+2006-04-19 Arwed v. Merkatz <v.merkatz@gmx.net>
+	* DETAILS: updated to 1.0alpha5
+	* PRE_BUILD, Makefile.in.patch: removed patch for example disabling,
+	  now doesn't try to link an example to libvorbis anymore if libvorbis
+	  isn't installed,
+	  removed aclocal && autoconf call, not necessary to build without
+	  g++ anymore
+	* PREPARE: only offer theora-mmx from svn if we're on ia32 as that's
+	  the only arch where it compiles
+
 2006-03-12 Karsten Behrmann <BearPerson@sourcemage.org>
 	* DETAILS: (automated) Add KEYWORDS
 
