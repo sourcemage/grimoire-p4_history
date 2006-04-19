@@ -11,11 +11,11 @@ if [ "$REL" == "cvs" ]; then
    SOURCE_IGNORE=volatile
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pan2-$VERSION
 elif [ "$REL" == "devel" ]; then
-         VERSION=0.92
+         VERSION=0.93
           SOURCE=pan-$VERSION.tar.bz2
    SOURCE_URL[0]=http://pan.rebelbase.com/download/releases/$VERSION/SOURCE/$SOURCE
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/pan-$VERSION
-     SOURCE_HASH=sha512:9a3f1dda4bc6c6208ad3e80a80e928a7aa2cb3b6d0aebc84db14964df2df499aa2bcf6e9e76997131fe72aea2c74327ada87e0a8b9d1656fecbec4e49b76c2f7
+     SOURCE_HASH=sha512:71d235ed8dfd81861902131b464c08cc67967906fa95e8d7ef46ea2b25cbc6ab0864284cf76afa8874e9c37bc2055afb62d49e3d7ec9f615386fce00142721a9
 else
          VERSION=0.14.2.91
           SOURCE=pan-$VERSION.tar.bz2
