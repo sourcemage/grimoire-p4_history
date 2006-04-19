@@ -25,3 +25,9 @@ make[1]: Leaving directory `/usr/src/gimp-2.2.11'
 make: *** [all] Error 2
  ! Problem Detected !
 Creating compile log /var/log/sorcery/compile/gimp-2.2.11.gz
+
+Devel version is ok.
+
+The problem for the stable version is arch-dependent. It compiles fine on athlon-xp.
+It fails on pentium-m, so I replaced -03 by -Os to get it compiling (-O2 fails too).
+This needs more testing for other archs.
