@@ -1,11 +1,12 @@
            SPELL=php
 if [[ "$PHP_RC" == y ]]; then
-         VERSION=5.1.0	# last was 5.1.0RC6
-     SOURCE_HASH='sha512:85ab298421bb01b3cfa2d1f2bccd117c48538ba36fa94370f1efd1c02b183bda79b805abe378e4c0797c441dd0771996ac0b26a5163a1a812453a82f9afbecc6'
+         VERSION=5.1.2	# last was 5.1.0RC6
+     SOURCE_HASH='sha512:8e7d0779a2e53c0b8287783fe640ec8d608f76f8caafbdec5954784ef0517e55fa8c7752d2ed478845082e90fd05c722a9b4d6394b01ab699c1b60ff54bf6a42'
 else
-         VERSION=5.1.0
-     SOURCE_HASH='sha512:85ab298421bb01b3cfa2d1f2bccd117c48538ba36fa94370f1efd1c02b183bda79b805abe378e4c0797c441dd0771996ac0b26a5163a1a812453a82f9afbecc6'
+         VERSION=5.1.2
+     SOURCE_HASH='sha512:8e7d0779a2e53c0b8287783fe640ec8d608f76f8caafbdec5954784ef0517e55fa8c7752d2ed478845082e90fd05c722a9b4d6394b01ab699c1b60ff54bf6a42'
 fi
+  SECURITY_PATCH=1
           SOURCE=$SPELL-$VERSION.tar.bz2
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 #if [ "${VERSION//RC/}" == "$VERSION" ]; then
@@ -13,11 +14,11 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
 #else
 #   SOURCE_URL[0]=http://downloads.php.net/ilia/$SOURCE
 #fi
-       BUILD_API=2
         WEB_SITE=http://www.php.net/
          ENTERED=20011024
          UPDATED=20040330
       LICENSE[0]=http://www.php.net/license/3_0.txt
+        KEYWORDS="php"
            SHORT="Hypertext Preprocessor (PHP) scripting language"
 cat << EOF
 PHP is a widely-used Open Source general-purpose scripting language
