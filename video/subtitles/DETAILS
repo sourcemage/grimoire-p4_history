@@ -1,13 +1,15 @@
            SPELL=subtitles
-         VERSION=0.07
+         VERSION=0.08
           SOURCE=Subtitles.tar.gz
+      SOURCE_GPG=gurus.gpg:$SOURCE.sig:WORKS_FOR_ME
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/Subtitles-$VERSION
    SOURCE_URL[0]=http://www.karasik.eu.org/software/$SOURCE
+  FORCE_DOWNLOAD=on
         WEB_SITE=http://freshmeat.net/projects/subtitles/
-          MD5[0]=3f7d4cc7f7df2a7b861ff2c0221dec70
       LICENSE[0]=ART
          ENTERED=20050324
          UPDATED=20050324
+        KEYWORDS="video"
            SHORT="subtitle file editing/conversion tool"
 cat << EOF
 Movie files can be viewed with subtitles, which are currently 
