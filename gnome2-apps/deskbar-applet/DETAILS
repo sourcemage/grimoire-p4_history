@@ -1,8 +1,9 @@
            SPELL=deskbar-applet
-         VERSION=2.14.0.1
-          SOURCE=deskbar-applet-2.14.0.1.tar.bz2
-   SOURCE_URL[0]=http://ftp.gnome.org/pub/GNOME/sources/deskbar-applet/2.14/deskbar-applet-2.14.0.1.tar.bz2
-     SOURCE_HASH=sha512:b08bdc64f06f97de6316536fe020c3e94a218dd2ccfa40fe599f6226b545796a0b1fef898552373e50134eca63adf74108b8c2afa44e4c3b7ec8b3b009d20b8e
+         VERSION=2.14.1.1
+          BRANCH=`echo $VERSION|cut -d . -f 1,2`
+          SOURCE=$SPELL-$VERSION.tar.bz2
+   SOURCE_URL[0]=http://ftp.gnome.org/pub/GNOME/sources/$SPELL/$BRANCH/$SOURCE
+     SOURCE_HASH=sha512:4e367415a7972367999a42cec192b2bdbb0227922097b0f16e982e01dd22873f06c615b2bca38b889d6ecf4200566b650e4521d4f8e222cfb95a2bff1a308c47
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
         WEB_SITE=http://raphael.slinckx.net/deskbar/
          ENTERED=20060316
