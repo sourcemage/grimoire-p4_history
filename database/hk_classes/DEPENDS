@@ -1,5 +1,5 @@
 depends  g++ &&
-
+depends  python  &&
 optional_depends  ODBC-MGR               \
                   "--with-odbc"                     \
                   "--without-odbc"       \
@@ -43,9 +43,4 @@ optional_depends  sqlite2                 \
 optional_depends  xbase                   \
                   "--with-xbase"          \
                   "--without-xbase"       \
-                  "xbase plugins"         &&
-
-optional_depends  python                  \
-                  ""                      \
-                  ""                      \
-                  "scripting support"
+                  "xbase plugins"
