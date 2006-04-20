@@ -1,7 +1,1 @@
-make install DESTDIR=$INSTALL_ROOT  &&
-
-if [[ "$NANO_SELECTED_CONFIG" == "nanorc-sample" ]]; then
-  install_config_file  doc/nanorc.sample  $INSTALL_ROOT/etc/nanorc
-else
-  install_config_file  $SCRIPT_DIRECTORY/spell-config/$NANO_SELECTED_CONFIG $INSTALL_ROOT/etc/nanorc
-fi
+make install DESTDIR=$INSTALL_ROOT
