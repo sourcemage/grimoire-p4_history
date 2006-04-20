@@ -8,40 +8,43 @@ config_query_list  DRUPAL_DATABASE_ENGINE                                       
                    mysql                                                                                         \
                    postgresql                                                                                    &&
 
-persistent_add  DRUPAL_CREATEDB  DRUPAL_CONFIGURE                                                                &&
-
-message  "${MESSAGE_COLOR}The MySQL daemon needs to be running to create the database${DEFAULT_COLOR}"           &&
-if  query  "Create the Drupal database?"  n
+if  [  "${DRUPAL_INSTALLED}"  ==  "n"  ]
 then
-  DRUPAL_CREATEDB="y"
-else
-  DRUPAL_CREATEDB="n"
-fi                                                                                                               &&
+  persistent_add  DRUPAL_CREATEDB  DRUPAL_CONFIGURE                                                              &&
 
-if  query  "Update the Drupal configuration file?"  n
-then
-  DRUPAL_CONFIGURE="y"
-else
-  DRUPAL_CONFIGURE="n"
-fi                                                                                                               &&
+  message  "${MESSAGE_COLOR}The MySQL daemon needs to be running to create the database${DEFAULT_COLOR}"         &&
+  if  query  "Create the Drupal database?"  n
+  then
+    DRUPAL_CREATEDB="y"
+  else
+    DRUPAL_CREATEDB="n"
+  fi                                                                                                             &&
 
-if  [  "${DRUPAL_CREATEDB}"  ==  "y"  ]  ||  [  "${DRUPAL_CONFIGURE}"  ==  "y"  ];  then
-  config_query_string  DRUPAL_DATABASE_NAME                                                                      \
-                       "What database name do you wish to use for the database?"                                 \
-                       "drupal"                                                                                  &&
+  if  query  "Update the Drupal configuration file?"  n
+  then
+    DRUPAL_CONFIGURE="y"
+  else
+    DRUPAL_CONFIGURE="n"
+  fi                                                                                                             &&
 
-  config_query_string  DRUPAL_DATABASE_USER                                                                      \
-                       "What user name do you wish to use for the database?"                                     \
-                       "nobody"                                                                                  &&
+  if  [  "${DRUPAL_CREATEDB}"  ==  "y"  ]  ||  [  "${DRUPAL_CONFIGURE}"  ==  "y"  ];  then
+    config_query_string  DRUPAL_DATABASE_NAME                                                                    \
+                         "What database name do you wish to use for the database?"                               \
+                         "drupal"                                                                                &&
 
-  config_query_string  DRUPAL_DATABASE_HOST                                                                      \
-                       "What host name do you wish to use for the database?"                                     \
-                       "localhost"                                                                               &&
+    config_query_string  DRUPAL_DATABASE_USER                                                                    \
+                         "What user name do you wish to use for the database?"                                   \
+                         "nobody"                                                                                &&
 
-  config_query_string  DRUPAL_DATABASE_PASSWORD                                                                  \
-                       "What password do you wish to use for the database?
-Allowed characters include letters, digits, and any of the following:
--_!#$%^&*()+={}[]|<>;:?,.~
-"                                                                                                                \
-                       "password"
+    config_query_string  DRUPAL_DATABASE_HOST                                                                    \
+                         "What host name do you wish to use for the database?"                                   \
+                         "localhost"                                                                             &&
+
+    config_query_string  DRUPAL_DATABASE_PASSWORD                                                                \
+                         "What password do you wish to use for the database?
+  Allowed characters include letters, digits, and any of the following:
+  -_!#$%^&*()+={}[]|<>;:?,.~
+  "                                                                                                              \
+                         "password"
+  fi
 fi
