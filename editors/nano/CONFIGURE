@@ -32,4 +32,16 @@ config_query_option  NANO_OPTS  "Enable use of .nanorc file?"  y              \
                      "--enable-nanorc"  "--disable-nanorc"                    &&
 config_query_option  NANO_OPTS  "Enable UTF-8 support?"  y                    \
                      "--enable-utf8"  "--disable-utf8"
+fi                                                                            &&
+
+if [[ "${NANO_CONFIG}" == "all" ]] || ( list_find "$NANO_OPTS" "--enable-color" && list_find "$NANO_OPTS" "--enable-nanorc" )
+then
+  config_query NANO_PROVIDED_CONFIG "Do you want to install one of the available system-wide nanorc config files" n
+fi                                                                                &&
+
+if [[ "$NANO_PROVIDED_CONFIG" == "y" ]]; then
+  local NANO_AVAILABLE_CONFIG                                                     &&
+  NANO_AVAILABLE_CONFIG="$(ls -1 $SCRIPT_DIRECTORY/spell-config/ | tr "\n" " ")"  &&
+  NANO_AVAILABLE_CONFIG="nanorc-sample $NANO_AVAILABLE_CONFIG"                    &&
+  config_query_list NANO_SELECTED_CONFIG "Which config do you want to choose" $NANO_AVAILABLE_CONFIG
 fi
