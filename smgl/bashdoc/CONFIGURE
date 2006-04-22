@@ -4,5 +4,5 @@ config_query  BASHDOC_DOCDIR  "Do you wish to change the default directory for t
 if  [  "${BASHDOC_DOCDIR}"  ==  "y"  ];  then
     config_query_string  BASHDOC_DOCS_DIR                                                                              \
                          "What path do you wish to use for generated documentation?"                                   \
-                         "usr/doc/sourcemage-docs"
+                         "usr/share/doc/sourcemageapidocs"
 fi
