@@ -1,9 +1,9 @@
            SPELL=libgdiplus
-         VERSION=1.1.13.2
+         VERSION=1.1.15
          BRANCH=`echo $VERSION|cut -d . -f 1,2`
           SOURCE=$SPELL-$VERSION.tar.gz
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
-   SOURCE_URL[0]=http://go-mono.com/sources/libgdiplus-${BRANCH}/${SOURCE}
+   SOURCE_URL[0]=http://go-mono.com/sources/${SPELL}/${SOURCE}
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         WEB_SITE=http://www.mono-project.com/
          ENTERED=20050510
