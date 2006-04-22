@@ -7,9 +7,13 @@ patch  -p0  < $SCRIPT_DIRECTORY/libreg-standalone.diff  &&
 
 patch  -p1  <  $SCRIPT_DIRECTORY/freetype.patch &&
 
+
 if use_gcc ^4; then
   patch  -p0  <  $SCRIPT_DIRECTORY/gcc4.patch
 fi  &&
+
+# fixes a broken upstream Makefile.in
+sedit  's/\\$/ \\/'  extensions/p3p/Makefile.in  &&
 
 #
 # Enigmail extensions
