@@ -1,2 +1,2 @@
-export PKG_CONFIG=$(which pkg-config)  &&
+PKG_CONFIG=$(which pkg-config)  &&
 default_build
