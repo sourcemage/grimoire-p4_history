@@ -1,2 +1,1 @@
-PKG_CONFIG=$(which pkg-config)  &&
-default_build
+PKG_CONFIG=$(which pkg-config)  default_build
