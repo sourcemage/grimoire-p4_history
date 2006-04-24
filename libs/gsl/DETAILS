@@ -1,17 +1,17 @@
            SPELL=gsl
          VERSION=1.8
-       BUILD_API=2
           SOURCE=$SPELL-$VERSION.tar.gz
+         SOURCE2=$SOURCE.sig
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=$GNU_URL/$SPELL/$SOURCE
-     SOURCE_HASH=sha512:6cd00bfab40583c361492ab35e1f1cd4655c23ccf1473dc3c7116c5132bb5d36da5803c55b9f6c0a84e0b74ea03944bf3829c942afac153cde265cf02326a48c
+  SOURCE2_URL[0]=$GNU_URL/$SPELL/$SOURCE2
+      SOURCE_GPG="gnu.gpg:${SOURCE2}:UPSTREAM_KEY"
       LICENSE[0]=GPL
+       BUILD_API=2
+        KEYWORDS="science libs"
         WEB_SITE=http://www.gnu.org/software/gsl
          ENTERED=20020308
-         UPDATED=20040523
-        KEYWORDS="science libs"
-           SHORT="The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers."
-
+           SHORT='A modern numerical library for C and C++ programmers'
 cat << EOF
 The GNU Scientific Library (GSL) is a modern numerical library for C
 and C++ programmers.  The routines have been written from scratch over
