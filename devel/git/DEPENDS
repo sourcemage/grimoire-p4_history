@@ -5,5 +5,5 @@ then
 	depends xmlto    &&
 	depends asciidoc 
 fi &&
-optional_depends  rsync    &&
-optional_depends  rcs      
+optional_depends  rsync '' '' 'For syncing repos with rsync'   &&
+optional_depends  rcs '' '' 'For more merging with rcs'      
