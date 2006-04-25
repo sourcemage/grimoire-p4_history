@@ -1,6 +1,7 @@
            SPELL=hplip
-         VERSION=0.9.6
+         VERSION=0.9.10
           SOURCE=$SPELL-$VERSION.tar.gz
+     SOURCE_HASH=sha512:cb1f4746292dc8e8c8302afe7cc88452ed38ef6efd9d456413e7618913a98af1718b9d3da0892ceab1f15fb1b0b12e36ad4e1d25bb76ca41342ac71a9c7b5e08
 SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
    SOURCE_URL[0]=${SOURCEFORGE_URL}/hpinkjet/$SOURCE
         WEB_SITE=http://hpinkjet.sourceforge.net
@@ -8,7 +9,7 @@ SOURCE_DIRECTORY=$BUILD_DIRECTORY/$SPELL-$VERSION
          UPDATED=20050916
       LICENSE[0]=GPL
        BUILD_API=2
-      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+#      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
         KEYWORDS="printer"
            SHORT="Drivers for HP printers and all-in-one devices"
 cat << EOF
