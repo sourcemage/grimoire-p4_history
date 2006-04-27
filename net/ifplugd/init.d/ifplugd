@@ -18,19 +18,19 @@ required_executable /usr/sbin/ifplugd
 
 start()
 {
-  local MSG STATE
+  local STATE
   for IF in $INTERFACES; do
     echo "Starting daemon on interface $IF..."
     A="`eval builtin echo \$\{ARGS_${IF}\}`"
     [ -z "$A" ] && A="$ARGS"
-    MSG="`$PROGRAM -i $IF $A 2>&1`"
+    $PROGRAM -i $IF $A
     STATE=$?
-    if [ -z "$MSG" ]; then
-      [[ "$STATE" == "1" ]] && echo "Link beat detected." && 
-        echo "Connected." && unset STATE
-      [[ "$STATE" == "2" ]] && echo "Link beat not detected." && 
-        echo "Connected." && unset STATE
-      [[ "$STATE" == "3" ]] && echo "Not connected." && unset STATE
+    if [[ $STATE == 2 ]]; then
+      echo "Link up."
+      unset STATE
+    elif [[ $STATE == 3 ]]; then
+      echo "Link down."
+      unset STATE
     fi
     (exit $STATE)
     evaluate_retval
