@@ -102,10 +102,3 @@ KERNEL=="tun",          NAME="net/%k"
 
 # Load firmware
 SUBSYSTEM=="firmware", ACTION=="add", RUN+="/lib/udev/firmware_helper"
-
-# Autoload modules
-SYSFS{modalias}=="?*", ACTION=="add", RUN+="/sbin/modprobe $env{MODALIAS}"
-
-# Autoload modules that lack aliases but have them defined in 
-# /etc/modprobe.conf
-SUBSYSTEM=="pnp", ENV{MODALIAS}!="?*", RUN+="/bin/sh -c 'while read id; do /sbin/modprobe pnp:d$$id; done < /sys$devpath/id'"

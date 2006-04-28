@@ -11,9 +11,9 @@ done  &&
 
 # install diff default rules on hotplug and non-hotplug systems
 if spell_ok hotplug; then
-  install_config_file $SCRIPT_DIRECTORY/50-default.rules-hotplug ${UDEV_CFG}/rules.d/50-default.rules
+  install_config_file $SCRIPT_DIRECTORY/52-modules.rules-hotplug ${UDEV_CFG}/rules.d/52-modules.rules
 else
-  install_config_file $SCRIPT_DIRECTORY/50-default.rules ${UDEV_CFG}/rules.d/50-default.rules
+  install_config_file $SCRIPT_DIRECTORY/52-modules.rules ${UDEV_CFG}/rules.d/52-modules.rules
 fi
 
 # install alsa rules
