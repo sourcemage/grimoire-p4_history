@@ -1,2 +1,2 @@
-OPTS="$OPTS --enable-dso"  &&
+OPTS="--enable-dso $OPTS"  &&
 build_apr
