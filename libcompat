@@ -1,7 +1,19 @@
 # ignore sub_depends if not supported by sorcery
 declare -f sub_depends &> /dev/null ||
-function sub_depends() {
- :
+{
+  function sub_depends() {
+   :
+  }
+
+  function depends() {
+    [[ $1 == "-sub" ]] && shift 2
+    real_depends "$@"
+  }
+
+  function optional_depends() {
+    [[ $1 == "-sub" ]] && shift 2
+    real_optional_depends "$@"
+  }
 }
 
 # ignore force_depends if not supported by sorcery
