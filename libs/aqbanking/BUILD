@@ -24,14 +24,12 @@ else
 fi                                            &&
 
 if [ "${AQBANKING_KDE}" == "y" ]; then
+   OPTS="${OPTS} --enable-qt3"                &&
    FRONTENDS="${FRONTENDS} kbanking"
 else
    OPTS="${OPTS} --disable-kde3"
 fi                                            &&
 
-if [ "${AQBANKING_QTTHREADS}" == "y" ]; then
-   OPTS="${OPTS} --enable-qt3-treads"
-fi                                            &&
 
 ./configure --build=${BUILD}                           \
             --host=${HOST}                             \
@@ -43,5 +41,4 @@ fi                                            &&
             --with-backends="${BACKENDS}"              \
             --with-frontends="${FRONTENDS}"            \
             $OPTS                                      &&
-
 make

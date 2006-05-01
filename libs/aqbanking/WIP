@@ -1,0 +1,51 @@
+(cd .libs && rm -f libhbciaccjobs.la && ln -s ../libhbciaccjobs.la libhbciaccjobs.la)
+/usr/bin/xmlmerge -v --compact -o accountjobs.xml ./jobgetbalance.xml 
+./jobgettransactions.xml ./jobgetstandingorders.xml ./jobsingletransfer.xml 
+./jobsingledebitnote.xml ./jobinternaltransfer.xml ./jobeutransfer.xml 
+./jobmultitransfer.xml ./jobcreatesto.xml ./jobmodifysto.xml ./jobdeletesto.xml 
+./jobgetdatedxfers.xml ./jobcreatedatedxfer.xml ./jobmodifydatedxfer.xml 
+./jobdeletedatedxfer.xml
+make[8]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin/accountjobs'
+make[7]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin'
+make[6]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin'
+make[5]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci'
+make[8]: *** [accountjobs.xml] Segmentation fault
+make[7]: *** [all-recursive] Error 1
+make[6]: *** [all] Error 2
+make[5]: *** [all-recursive] Error 1
+ ! Problem Detected !
+make[4]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins/backends'
+make[3]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins'
+make[2]: Leaving directory `/usr/src/aqbanking-2.0.0/src'
+make[1]: Leaving directory `/usr/src/aqbanking-2.0.0'
+m
+
+
+
+
+# second attempt
+
+
+creating testlib
+/usr/bin/xmlmerge --compact --header -v header.xml applayer/xml/base.xml 
+accountjobs/accountjobs.xml -o hbci.xml
+BUILD failed!
+root@Sourcemage:/usr/src#  ! Problem Detected !
+make[8]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin'
+make[7]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin'
+make[6]: Leaving directory 
+`/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci/plugin'
+make[5]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins/backends/aqhbci'
+make[4]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins/backends'
+make[3]: Leaving directory `/usr/src/aqbanking-2.0.0/src/plugins'
+make[2]: Leaving directory `/usr/src/aqbanking-2.0.0/src'
+make[1]: Leaving directory `/usr/src/aqbanking-2.0.0'
+make[8]: *** [hbci.xml] Segmentation fault
+make[7]: *** [all-recursive] Error 1
+
+# but doing make manually works!
