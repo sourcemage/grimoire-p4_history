@@ -1,15 +1,14 @@
 # Module loading rules for systems without hotplug
 
-# Check whether we need these rules for this event
-ACTION!="add", GOTO="modprobe_end"
-ENV{PHYSDEVDRIVER}=="?*", SUBSYSTEM!="input", GOTO="modprobe_end"
-
-# Autoload modules with aliases
-SYSFS{modalias}=="?*", RUN+="/sbin/modprobe $env{MODALIAS}"
-
 # Autoload modules that lack aliases but have them defined in 
 # /etc/modprobe.conf
 ENV{MODALIAS}!="?*", SUBSYSTEM=="pnp", RUN+="/bin/sh -c 'while read id; do /sbin/modprobe pnp:d$$id; done < /sys$devpath/id'"
+
+# Check whether we need these rules for this event
+ACTION!="add", GOTO="modprobe_end"
+
+# Autoload modules with aliases
+SYSFS{modalias}=="?*", RUN+="/sbin/modprobe $env{MODALIAS}"
 
 # PCMCIA
 SUBSYSTEM=="pcmcia_socket", RUN+="/sbin/modprobe pcmcia"
