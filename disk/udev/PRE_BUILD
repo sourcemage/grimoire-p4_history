@@ -2,6 +2,9 @@ default_pre_build &&
 cd $SOURCE_DIRECTORY &&
 patch -p0 < $SCRIPT_DIRECTORY/Makefile.patch &&
 
+# Correct typo in alsa rules file
+sedit "s/^0$//" etc/udev/suse/40-alsa.rules
+
 if [[ "$UDEV_STATIC" == 'y' ]]; then
   message "${MESSAGE_COLOR}Setting up static build directory...${DEFAULT_COLOR}" &&
   mkdir __static__ &&
