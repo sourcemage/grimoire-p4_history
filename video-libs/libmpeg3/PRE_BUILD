@@ -1,4 +1,6 @@
 default_pre_build      &&
 cd  $SOURCE_DIRECTORY  &&
 patch -p0 < $SCRIPT_DIRECTORY/Makefile-shared.patch  &&
-patch -p0 < $SCRIPT_DIRECTORY/libmpeg3-fixes.patch
+patch -p0 < $SCRIPT_DIRECTORY/libmpeg3-fixes.patch   &&
+# fix Makefile to work with make 3.81
+sedit  's/\\;/;/g'  Makefile
