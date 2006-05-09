@@ -1,4 +1,6 @@
-depends  openssl  &&
+if [[ $GIT_SHA_OPT == openssl ]] ; then
+  depends  openssl 
+fi &&
 depends  curl     &&
 if [[ $GIT_DOCS == "y" ]]
 then
