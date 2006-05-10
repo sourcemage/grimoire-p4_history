@@ -28,6 +28,16 @@ ENV{ID_CDROM_DVD_R}=="?*",      SYMLINK+="dvdrw%e"
 # permissions for SCSI CD devices
 BUS=="scsi", KERNEL=="s[grt][0-9]*", SYSFS{type}=="5", MODE="0660", GROUP="cdrom"
 
+# tape devices
+KERNEL=="ht*", 		NAME="%k"
+KERNEL=="nht*", 	NAME="%k"
+KERNEL=="pt*", 		NAME="%k"
+KERNEL=="npt*", 	NAME="%k"
+KERNEL=="st*", 		NAME="%k"
+KERNEL=="nst*", 	NAME="%k"
+KERNEL=="osst*", 	NAME="%k"
+KERNEL=="nosst*", 	NAME="%k"
+
 # sound devices
 KERNEL=="admmidi", 		NAME="sound/%k", SYMLINK="%k"
 KERNEL=="adsp", 		NAME="sound/%k", SYMLINK="%k"
@@ -52,22 +62,36 @@ KERNEL=="ts*", 		NAME="input/%k", MODE="0644"
 KERNEL=="psaux", 	NAME="input/%k", SYMLINK="%k", MODE="0644"
 
 # misc devices
+KERNEL="agpgart", 	NAME="misc/%k", SYMLINK="%k"
 KERNEL=="rtc", 		NAME="misc/%k", SYMLINK+="%k", MODE="0644"
 KERNEL=="uinput", 	NAME="misc/%k", SYMLINK+="%k"
 KERNEL=="inotify", 	NAME="misc/%k", SYMLINK+="%k", MODE="0666"
 
-# console
-KERNEL=="console", 	NAME="%k", MODE="0600"
-KERNEL=="ptmx", 	NAME="%k", MODE="0666"
-KERNEL=="tty",		NAME="%k", MODE="0666"
-
 # tty devices
-KERNEL=="ttyS[0-9]*", 	NAME="%k", SYMLINK="tts/%n"
-KERNEL=="ttyUSB[0-9]*", NAME="%k", SYMLINK="tts/USB%n", MODE="0660"
+KERNEL=="console", 	NAME="%k", GROUP="tty", MODE="0600"
+KERNEL=="tty",		NAME="%k", GROUP="tty", MODE="0666"
+KERNEL=="tty[0-9]*", 	NAME="vc/%n",  SYMLINK="%k", GROUP="tty"
+KERNEL=="ttyS[0-9]*", 	NAME="tts/%n", SYMLINK="%k", GROUP="tty"
+KERNEL=="ttyUSB[0-9]*", NAME="tts/USB%n", SYMLINK="%k", GROUP="tty", MODE="0660"
 KERNEL=="ippp0", 	NAME="%k", GROUP="tty"
 KERNEL=="isdn*", 	NAME="%k", GROUP="tty"
 KERNEL=="dcbri*", 	NAME="%k", GROUP="tty"
 KERNEL=="ircomm*", 	NAME="%k", GROUP="tty"
+
+# pty devices
+KERNEL=="ptmx", 		NAME="%k", GROUP="tty", MODE="0666"
+KERNEL=="pty[p-za-e][0-9a-f]*", NAME="pty/m%n", SYMLINK="%k", GROUP="tty"
+KERNEL=="tty[p-za-e][0-9a-f]*", NAME="pty/s%n", SYMLINK="%k", GROUP="tty"
+
+# vc devices
+KERNEL=="vcs", 		NAME="vcc/0", 	SYMLINK="%k", GROUP="tty"
+KERNEL=="vcs[0-9]*", 	NAME="vcc/%n", 	SYMLINK="%k", GROUP="tty"
+KERNEL=="vcsa", 	NAME="vcc/a0", 	SYMLINK="%k", GROUP="tty"
+KERNEL=="vcsa[0-9]*", 	NAME="vcc/a%n", SYMLINK="%k", GROUP="tty"
+
+# capi devices
+KERNEL="capi",          NAME="capi20", SYMLINK="isdn/capi20"
+KERNEL="capi*",         NAME="capi/%n"
 
 # cpu devices
 KERNEL=="cpu[0-9]*", 	NAME="cpu/%n/cpuid"
@@ -150,12 +174,12 @@ KERNEL=="zip*", 	NAME="%k", GROUP="disk"
 # ls120 devices
 KERNEL=="ls120", 	NAME="%k", GROUP="disk"
 
-# printer
+# printer (usb printer rule must be before the rest)
+BUS=="usb", KERNEL=="lp[0-9]*", NAME="usb/%k", GROUP="lp", MODE="0660"
 KERNEL=="lp*", 		NAME="%k", GROUP="lp", MODE="0660"
 KERNEL=="irlpt", 	NAME="%k", GROUP="lp", MODE="0660"
 KERNEL=="usblp", 	NAME="%k", GROUP="lp", MODE="0660"
 KERNEL=="parport*", 	NAME="%k", GROUP="lp", MODE="0660"
-BUS=="usb", KERNEL=="lp[0-9]*", NAME="usb/%k", GROUP="lp", MODE="0660"
 
 # v4l devices
 KERNEL=="video[0-9]*", 	NAME="v4l/video%n", SYMLINK="video%n", GROUP="video", MODE="0660"
@@ -172,6 +196,9 @@ KERNEL=="svga[0-9]", 	NAME="%k", MODE="0660", GROUP="video"
 
 # network devices
 KERNEL=="tun", 		NAME="net/%k"
+KERNEL=="ippp*", 	NAME="net/%k", SYMLINK="%k", MODE="0644"
+KERNEL=="ipstate*", 	NAME="net/%k", SYMLINK="%k", MODE="0660"
+KERNEL=="spx", 		NAME="net/%k", SYMLINK="%k", MODE="0644"
 
 # diskonkey devices
 KERNEL=="diskonkey*", 	NAME="%k", GROUP="disk"
