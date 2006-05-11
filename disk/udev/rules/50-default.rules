@@ -84,14 +84,14 @@ KERNEL=="ts*", 		NAME="input/%k", MODE="0644"
 KERNEL=="psaux", 	NAME="input/%k", SYMLINK="%k", MODE="0644"
 
 # misc devices
-KERNEL="agpgart", 	NAME="misc/%k", SYMLINK="%k"
+KERNEL=="agpgart", 	NAME="misc/%k", SYMLINK="%k"
 KERNEL=="rtc", 		NAME="misc/%k", SYMLINK+="%k", MODE="0644"
 KERNEL=="uinput", 	NAME="misc/%k", SYMLINK+="%k"
 KERNEL=="inotify", 	NAME="misc/%k", SYMLINK+="%k", MODE="0666"
 
 # capi devices
-KERNEL="capi",          NAME="capi20", SYMLINK="isdn/capi20"
-KERNEL="capi*",         NAME="capi/%n"
+KERNEL=="capi",          NAME="capi20", SYMLINK="isdn/capi20"
+KERNEL=="capi*",         NAME="capi/%n"
 
 # cpu devices
 KERNEL=="cpu[0-9]*", 	NAME="cpu/%n/cpuid"
