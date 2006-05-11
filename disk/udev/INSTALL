@@ -42,7 +42,7 @@ $INSTALL_ROOT/lib/udev                              &&
 
 if [[ "$UDEV_EXTRAS" == 'y' ]]; then
   make EXTRAS="extras/ata_id extras/dasd_id extras/edd_id extras/floppy extras/scsi_id extras/usb_id extras/volume_id" prefix=${INSTALL_ROOT}/ exec_prefix=${INSTALL_ROOT}/ ${OPTS} V=true install   &&
-  install  extras/path_id/path_id  ${INSTALL_ROOT}/sbin  &&
+  install  extras/path_id/path_id  ${INSTALL_ROOT}/lib/udev  &&
 
   if [[ "$UDEV_PERSIST" == 'y' ]];then
     install_config_file etc/udev/60-persistent-storage.rules ${UDEV_CFG}/rules.d/60-persistent-storage.rules
