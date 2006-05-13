@@ -1,23 +1,23 @@
-           SPELL=pwlib
+           SPELL=opal
 if [ "$CVS" == "y" ]; then
          VERSION=cvs
           SOURCE=${SPELL}-${VERSION}.tar.gz
-   SOURCE_URL[0]=http://snapshots.seconix.com/cvs/$SOURCE 
+   SOURCE_URL[0]=http://snapshots.seconix.com/cvs/$SOURCE  
   FORCE_DOWNLOAD=1
    SOURCE_IGNORE=volatile
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}
 else
-         VERSION=1.10.0
+         VERSION=2.2.1
           SOURCE=${SPELL}-${VERSION}.tar.gz
-   SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${SOURCE}
-   SOURCE_URL[1]=${SOURCEFORGE_URL}/openh323/${SOURCE}
+   SOURCE_URL[0]=http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/$SOURCE
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
 fi
       LICENSE[0]=GPL
-        WEB_SITE=http://www.openh323.org
-         ENTERED=20040409
-         UPDATED=20040905
+      MAKE_NJOBS=1   
+        WEB_SITE=http://www.gnomemeeting.org
+         ENTERED=20060106
+         UPDATED=20060106
         KEYWORDS="chat libs"
            SHORT="A Portable Text and GUI C/C++ Class Libarary."
 cat << EOF
