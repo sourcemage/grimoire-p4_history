@@ -46,6 +46,14 @@
 #---------------------------------------------------------------------#
 #
 # ------------------------- ChangeLog ------------------------------- #
+# 2006-05-14  Matthew Clark <matthewclark@inlesserterms.net>
+#    - Removed the line that adds hostname to hosts file as
+#      127.0.0.1 (bug 11649)
+#
+# 2006-03-23  Matthew Clark <matthewclark@inlesserterms.net>
+#    - Exported DIALOGRC to make netconf look like all other SMGL
+#      dialogs
+#
 # 2006-03-05  Arjan Bouter <abouter@sourcemage.org>
 #    - Replaced MODE=dynamic with dynamic_set_hostname (default) or
 #      dynamic_get_hostname
@@ -695,7 +703,7 @@ EOF
 	mv $HOSTSFN /tmp/hosts.$$
 	grep -v ^127.0.0.1 /tmp/hosts.$$    >> $HOSTSFN
 	echo "127.0.0.1       localhost"    >> $HOSTSFN
-    echo "127.0.0.1       $curhostname" >> $HOSTSFN
+   #echo "127.0.0.1       $curhostname" >> $HOSTSFN
 	rm -f /tmp/hosts.$$
 }
 
