@@ -1,5 +1,13 @@
+# Does /etc/resolv.conf already exist?
+if [ -s ${INSTALL_ROOT}/etc/resolv.conf ]
+then
+	FILE_EXISTS=1
+else
+	FILE_EXISTS=0
+fi
+
 if  [  "$USE_PEER_DNS"  ==  "y"  ];  then
-  if [ -s ${INSTALL_ROOT}/etc/resolv.conf ]
+  if [ $FILE_EXISTS ]
   then
     cat ${INSTALL_ROOT}/etc/resolv.conf >> /etc/ppp/resolv.conf &&
     mv  ${INSTALL_ROOT}/etc/resolv.conf  \
@@ -21,7 +29,11 @@ message  "${MESSAGE_COLOR}Please edit /etc/ppp/chat/isp and insert your\n"     \
          "Read the man pages on ppp and chat for more information.\n"          \
          "In some cases, perhaps an internal modem on a non-standard port,\n"  \
          "ln -s ttyS04 /dev/modem might work.\n"                               \
-         "\n"                                                                  \
-         "NOTICE: Your current /etc/resolv.conf (if it already existed) has\n" \
-         "been backed up, it's contents have been copied to\n"                 \
-         "/etc/ppp/resolv.conf, and has been replaced by a symbolic link.\n"   \
+         "\n"                                                                 &&
+
+if [ $FILE_EXISTS ]
+then
+message  "NOTICE: Your current ${INSTALL_ROOT}/etc/resolv.conf has been\n"     \
+         "backed up, it's contents have been copied to /etc/ppp/resolv.conf,\n"\
+         "and has been replaced by a symbolic link.\n"
+fi
