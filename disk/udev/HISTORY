@@ -1,5 +1,11 @@
+2006-05-15 Juuso Alasuutari <iuso@sourcemage.org>
+	* PRE_BUILD: Removed fix for typo in alsa rules file, was fixed 
+	  upstream
+	* DEPENDS: Replaced "installed_version linux" with 
+	  "get_kernel_version", fixes conditional for custom kernels
+
 2006-05-15 Flavien Bridault <vlaaad@sourcemage.org>
-	* DETAILS; Updated to 092
+	* DETAILS: Updated to 092
 
 2006-05-12 Juuso Alasuutari <iuso@sourcemage.org>
 	* rules/50-default.rules: Fixed invalid KERNEL fields
