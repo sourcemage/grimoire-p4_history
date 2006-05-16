@@ -1,3 +1,12 @@
+2006-05-16 Treeve Jelbert <treeve01@pi.be>
+	* DETAILS: version 2.0.0.12654-ReleaseCandidate2 (devel)
+	* DEPENDS: devel version no longer needs CVS
+	* PRE_INSTALL: added, to preserve some files (was in INSTALL)
+	* INSTALL: move some code to PRE_INSTALL
+	  no longer create a symlink for libgds.so
+	* BUILD FINAL : use persistent FB_PREFIX
+	* FINAL: there are no example databases
+
 2006-04-28 Treeve Jelbert <treeve01@pi.be>
 	* init.d/firebird2: use pid for start/stop
 	  as of rc2, preferred method of stopping is to kill the pid,
