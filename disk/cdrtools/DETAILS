@@ -1,13 +1,12 @@
            SPELL=cdrtools
-         VERSION=2.01.01a08
+         VERSION=2.01.01a09
            ALPHA=$([ "${VERSION//a/}" != "$VERSION" ] && echo 1)
           SOURCE=${SPELL}-${VERSION}.tar.bz2
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION%a*}
    SOURCE_URL[0]=ftp://ftp.berlios.de/pub/cdrecord/${ALPHA:+alpha/}${SOURCE}
       SOURCE_GPG="gurus.gpg:${SOURCE}.sig:WORKS_FOR_ME"
-        WEB_SITE=http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
+        WEB_SITE=http://cdrecord.berlios.de/old/private/cdrecord.html
          ENTERED=20010922
-         UPDATED=20051025
       LICENSE[0]=GPL
         KEYWORDS="disk"
            SHORT="Create home-burned CDs with a CD-R/CD-RW recorder"
