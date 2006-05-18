@@ -3,8 +3,7 @@ depends taglib  &&
 optional_depends kdebase "" "" "for a konqueror sidebar"  &&
 optional_depends kdemultimedia "" "" "for audiocd: protocol"  &&
 if [ "$AMAROK_DEVEL" == "y" ] ; then
-   optional_depends gstreamer "" "--without-gstreamer10" "for gstreamer audio engine"  &&
-   optional_depends exscalibar "" "--without-exscalibar" "to use moodbar"
+   optional_depends gstreamer "" "--without-gstreamer10" "for gstreamer audio engine"
 else
    optional_depends gstreamer-0.8 "" "--without-gstreamer" "for gstreamer audio engine"
 fi &&
