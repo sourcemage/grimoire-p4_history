@@ -30,4 +30,8 @@ optional_depends  "libdts"        \
 optional_depends  "xvid"           \
                   "--enable-xvid"  \
                   ""               \
-                  "for xvid support"
+                  "for xvid support"  &&
+optional_depends  sdl                 \
+                  ""                  \
+                  "--disable-ffplay"  \
+                  "for ffplay video player"

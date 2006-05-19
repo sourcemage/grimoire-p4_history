@@ -9,4 +9,5 @@ sedit  's:-Werror::'  libavformat/Makefile  &&
              --enable-pp                             \
              --enable-gpl                            \
              $OPTS                         &&
+sedit  's:SDL_LIBS=.*:\0 -L/usr/X11R6/lib -lX11:'  config.mak  &&
 make
