@@ -1,0 +1,14 @@
+           SPELL=aircrack-ng
+         VERSION=0.3
+          SOURCE=${SPELL}-${VERSION}.tar.gz
+   SOURCE_URL[0]=http://download.aircrack-ng.org/$SOURCE
+     SOURCE_HASH=sha512:4c1b8f1eb10bc23393fea5bc52195671f0064a45143561ae0d34961ac789c6e897c3ec7836b09d4414ba6ec39025deaca5d269a5f938f11d1a5eecaa610210e7
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+        WEB_SITE=http://aircrack-ng.org
+         ENTERED=20060519
+      LICENSE[0]=GPL
+       BUILD_API=2
+           SHORT="WEP/WPA key cracker"
+cat << EOF
+Aircrack-ng is a utility to crack WEP and WPA keys for wireless networks
+EOF
