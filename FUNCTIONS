@@ -241,7 +241,7 @@ function  install_www_files ()
   # find  $1  -type  -f  |  while  read  file;  do
   for  www_file  in  `find  $1  -type  f`;  do
     if  install_config_file  "$www_file"   "$WWW_DEST/$www_file";  then
-      chmod  0644                 "$WWW_DEST/$www_file"  &&
+      chmod  u+r,g+r,o-wx         "$WWW_DEST/$www_file"  &&
       chown  www-data:www-data    "$WWW_DEST/$www_file"
     fi
   done
