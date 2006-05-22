@@ -11,7 +11,6 @@ OPTS="$QT_DEBUG   \
       $QT_GIF     \
       $OPTS"      &&
 
-invoke_gcc                                                                     &&
 echo  "yes"  |  ./configure                                                    \
                              -prefix $INSTALL_ROOT/usr/                        \
                              -bindir $INSTALL_ROOT/usr/bin/qt4                 \
