@@ -1,19 +1,17 @@
-# Does /etc/resolv.conf already exist?
-if [ -s ${INSTALL_ROOT}/etc/resolv.conf ]
+# resolv.conv handling
+if  [ "$USE_PEER_DNS"  ==  "y" ]
 then
-	FILE_EXISTS=1
-else
-	FILE_EXISTS=0
-fi
-
-if  [  "$USE_PEER_DNS"  ==  "y"  ];  then
-  if [ $FILE_EXISTS ]
+  if [[ -s ${INSTALL_ROOT}/etc/resolv.conf && ! -h ${INSTALL_ROOT}/etc/resolv.conf ]]
   then
-    cat ${INSTALL_ROOT}/etc/resolv.conf >> /etc/ppp/resolv.conf &&
-    mv  ${INSTALL_ROOT}/etc/resolv.conf  \
-          ${INSTALL_ROOT}/etc/resolv.conf.`date +%Y%m%d%k%M%S | sed 's: ::g'`
+  cat ${INSTALL_ROOT}/etc/resolv.conf >> ${INSTALL_ROOT}/etc/ppp/resolv.conf &&
+  mv  ${INSTALL_ROOT}/etc/resolv.conf                                         \
+      ${INSTALL_ROOT}/etc/resolv.conf.`date +%Y%m%d%k%M%S | sed 's: ::g'`
   fi  &&
-  ln -s  /etc/ppp/resolv.conf  /etc/resolv.conf
+  rm -f  ${INSTALL_ROOT}/etc/resolv.conf                                       &&
+  ln -s  ${INSTALL_ROOT}/etc/ppp/resolv.conf  ${INSTALL_ROOT}/etc/resolv.conf  &&
+  message  "${MESSAGE_COLOR}NOTICE: Your current ${INSTALL_ROOT}/etc/resolv.conf has been\n" \
+           "backed up, it's contents have been copied to /etc/ppp/resolv.conf,\n"            \
+           "and has been replaced by a symbolic link.\n\n"
 fi  &&
 
 message  "${MESSAGE_COLOR}Please edit /etc/ppp/chat/isp and insert your\n"     \
@@ -29,11 +27,4 @@ message  "${MESSAGE_COLOR}Please edit /etc/ppp/chat/isp and insert your\n"     \
          "Read the man pages on ppp and chat for more information.\n"          \
          "In some cases, perhaps an internal modem on a non-standard port,\n"  \
          "ln -s ttyS04 /dev/modem might work.\n"                               \
-         "\n"                                                                 &&
-
-if [ $FILE_EXISTS ]
-then
-message  "NOTICE: Your current ${INSTALL_ROOT}/etc/resolv.conf has been\n"     \
-         "backed up, it's contents have been copied to /etc/ppp/resolv.conf,\n"\
-         "and has been replaced by a symbolic link.\n"
-fi
+         "\n"
