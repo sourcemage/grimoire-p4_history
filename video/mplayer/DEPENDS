@@ -10,7 +10,7 @@ then  depends  gtk+2  '--enable-gui'  &&
 fi  &&
 
 if [ "$MPLAYER_CVS" == "y" ]; then
-  depends  CVS                              &&
+#  depends  CVS                              &&
   optional_depends  ffmpeg-cvs  \
   "--enable-libavcodec_so --enable-libavformat_so --enable-libpostproc_so"     \
   "--disable-libavcodec_so --disable-libavformat_so --disable-libpostproc_so"  \
