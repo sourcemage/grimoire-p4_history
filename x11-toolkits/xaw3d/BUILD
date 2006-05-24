@@ -10,8 +10,8 @@ sedit          's/#define wcsncpy.*$//'           XawI18n.h  &&
 xmkmf                                                        &&
 make  Makefiles                                              &&
 
-if spell_ok xorg-server; then
-   sedit "s:/X11R6::g" Makefile
+if test "$(get_spell_provider $SPELL X11-LIBS)" = xorg-server; then
+sedit "s:/X11R6::g" Makefile
 fi                                                           &&
 
 make
