@@ -1,6 +1,9 @@
 2006-05-26 Treeve Jelbert <treeve01@pi.be>
-	* DETAILS: fix CVS address
-	  bug #11880
+	remove cvs support - bug #11880
+	* DETAILS: remove cvs support
+	* PREPARE, gcc.diff: delete
+	* BUILD, PRE_BUILD:  move patching to PRE_BUILD
+	* INSTALL: add a 'cd'
 
 2006-04-19 Treeve Jelbert <treeve01@pi.be>
 	* DEPENDS: add firebird 
