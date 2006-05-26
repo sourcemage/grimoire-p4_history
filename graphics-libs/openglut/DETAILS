@@ -1,8 +1,8 @@
            SPELL=openglut
 if  [  "$CVS"  ==  "y"  ];  then
-         VERSION=cvs
+         VERSION=sfcvs
           SOURCE=${SPELL}-${VERSION}.tar.bz2
-   SOURCE_URL[0]=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot/openglut:openglut
+   SOURCE_URL[0]=cvs://:pserver:anonymous@openglut.cvs.sourceforge.net:/cvsroot/openglut:openglut
    SOURCE_IGNORE=volatile
   FORCE_DOWNLOAD="on"
 else
