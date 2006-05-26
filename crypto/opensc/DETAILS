@@ -1,10 +1,13 @@
            SPELL=opensc
-         VERSION=0.10.1
+         VERSION=0.11.0
        BUILD_API=2
           SOURCE=${SPELL}-${VERSION}.tar.gz
 SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
    SOURCE_URL[0]=http://www.opensc-project.org/files/opensc/${SOURCE}
-      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+
+     SOURCE_HASH=sha512:f42c4dc0e7c35bc0ac76061f3d7ff352e6444262da968ff4a050f6d4c1b28d7a07b33cd17951d6cb9f5017b8e2ef80966cc2a099aaa84e7a09f3b2900b8da56f
+#      SOURCE_GPG="gurus.gpg:${SOURCE}.sig"
+
         WEB_SITE=http://www.opensc-project.org
          ENTERED=20040224
          UPDATED=20040224
