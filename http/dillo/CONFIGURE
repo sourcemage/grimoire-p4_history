@@ -1,10 +1,10 @@
-if [[ -z $DILLO_TABS ]] ||
-   [[ -z $DILLO_AA ]] ||
-   [[ -z $DILLO_IPV6 ]] ||
-   [[ -z $DILLO_RTFL ]] ||
-   [[ -z $DILLO_COOKIES ]] ||
-   [[ -z $DILLO_METAREF ]] ||
-   [[ -z $DILLO_NLS ]]
+if [[ $DILLO_TABS ]] ||
+   [[ $DILLO_AA ]] ||
+   [[ $DILLO_IPV6 ]] ||
+   [[ $DILLO_RTFL ]] ||
+   [[ $DILLO_COOKIES ]] ||
+   [[ $DILLO_METAREF ]] ||
+   [[ $DILLO_NLS ]]
 then
    #Save old vars
    DILLO_OPTS="$DILLO_TABS $DILLO_AA $DILLO_IPV6 $DILLO_RTFL       \
@@ -42,7 +42,7 @@ config_query_option DILLO_OPTS                                     \
                     "--enable-rtfl"                                \
                     "--disable-rtfl"                               &&
 #This is broken so forced on, 0.8.6 still broken,also dlgui
-DILLO_OPTS="--enable-cookies --disable-dlgui"                      &&
+DILLO_OPTS="$DILLO_OPTS --enable-cookies --disable-dlgui"          &&
 #config_query_option DILLO_OPTS                                     \
 #                    "Cookie support"                               \
 #                    y                                              \
