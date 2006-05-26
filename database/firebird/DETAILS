@@ -4,7 +4,7 @@ case $FB_VER in
    cvs)
          VERSION=HEAD
           SOURCE=${SPELL}-$VERSION.tar.bz2
-           SFCVS=cvs://:pserver:anonymous@cvs.sourceforge.net:/cvsroot
+           SFCVS=cvs://:pserver:anonymous@firebird.cvs.sourceforge.net:/cvsroot
    SOURCE_URL[0]=$SFCVS/firebird:firebird2:$VERSION
    SOURCE_IGNORE=volatile
    FORCE_DOWNLOAD=on
