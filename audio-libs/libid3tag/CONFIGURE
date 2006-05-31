@@ -1,0 +1,19 @@
+config_query_option  EXTRA_OPTS                    \
+                     "Build shared libraries?"  y  \
+                     "--enable-shared"             \
+                     "--disable-shared"            &&
+
+config_query_option  EXTRA_OPTS                    \
+                     "Build static libraries?"  y  \
+                     "--enable-static"             \
+                     "--disable-static"            &&
+
+config_query_option  EXTRA_OPTS                                    \
+                     "Enable debugging (fewer optimizations)?"  n  \
+                     "--enable-debugging"                          \
+                     "--disable-debugging"                         &&
+
+config_query_option  EXTRA_OPTS                              \
+                     "Generate \`gprof' profiling code?"  n  \
+                     "--enable-profiling"                    \
+                     "--disable-profiling"
