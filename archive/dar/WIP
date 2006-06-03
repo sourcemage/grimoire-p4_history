@@ -4,5 +4,102 @@ this version breaks compilation of kdar
 libdar32.so.3 -> libdar32.so.4
 
 
+but 
 
+
+if g++ -DHAVE_CONFIG_H -I. -I. -I.. -I/usr/include/qt -I/usr/X11R6/include   
+-DQT_THREAD_SUPPORT  -D_REENTRANT  -Wnon-virtual-dtor -Wno-long-long -Wundef -ansi 
+-D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -Wchar-subscripts -Wall -W 
+-Wpointer-arith -Wwrite-strings -O2 -O -march=athlon-tbird -mmmx -m3dnow -pipe -O3 
+-Wformat-security -Wmissing-format-attribute -fno-exceptions -fno-check-new 
+-fno-common -DLIBDAR_MODE=64 -fexceptions -MT createArchiveThread.o -MD -MP -MF 
+".deps/createArchiveThread.Tpo" \
+          -c -o createArchiveThread.o `test -f 'createArchiveThread.cpp' || echo 
+'./'`createArchiveThread.cpp; \
+        then mv -f ".deps/createArchiveThread.Tpo" ".deps/createArchiveThread.Po"; \
+        else rm -f ".deps/createArchiveThread.Tpo"; exit 1; \
+        fi
+createArchiveThread.cpp: In member function 'virtual void createArchiveThread::run()':
+createArchiveThread.cpp:81: error: cannot declare variable 'userInteractionDialog' to 
+be of abstract type 'KDarInteraction'
+KDarInteraction.h:31: note:   because the following virtual functions are pure within 
+'KDarInteraction':
+/usr/include/dar/user_interaction.hpp:300: note:        virtual void 
+libdar::user_interaction::inherited_warning(const std::string&)
+createArchiveThread.cpp:136: error: no matching function for call to 
+'libdar::archive::archive(KDarInteraction&, libdar::path&, libdar::path, NULL, 
+libdar::et_mask, libdar::et_mask, std::string, const char* const&, bool, bool, bool, 
+bool, bool, libdar::compression, libdar::U_I, libdar::infinint, libdar::infinint, 
+bool, bool, std::string, libdar::crypto_algo, const char [1], libdar::U_32, 
+libdar::et_mask, libdar::U_I, bool, bool, libdar::infinint, bool, bool&, bool&, 
+libdar::statistics&)'
+/usr/include/dar/archive.hpp:293: note: candidates are: 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, 
+libdar::archive*, libdar::archive*, const libdar::mask&, const libdar::mask&, const 
+std::string&, const std::string&, bool, bool, bool, const libdar::infinint&, bool, 
+libdar::compression, libdar::U_I, const libdar::infinint&, const libdar::infinint&, 
+const libdar::mask&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const libdar::mask&, const libdar::infinint&, bool, bool, bool, 
+libdar::statistics*)
+/usr/include/dar/archive.hpp:223: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, 
+libdar::archive*, const std::string&, const std::string&, bool, bool, bool, const 
+libdar::infinint&, libdar::compression, libdar::U_I, const libdar::infinint&, const 
+libdar::infinint&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, bool)
+/usr/include/dar/archive.hpp:183: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, const 
+libdar::path&, libdar::archive*, const libdar::mask&, const libdar::mask&, const 
+std::string&, const std::string&, bool, bool, bool, const libdar::infinint&, bool, 
+libdar::compression, libdar::U_I, const libdar::infinint&, const libdar::infinint&, 
+const libdar::mask&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const libdar::mask&, const libdar::infinint&, bool, 
+libdar::inode::comparison_fields, const libdar::infinint&, bool, bool, bool, bool, 
+bool, bool, const libdar::infinint&, libdar::statistics*)
+/usr/include/dar/archive.hpp:98: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, const 
+std::string&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const std::string&, const std::string&, const std::string&, bool)
+/usr/include/dar/archive.hpp:51: note:                 libdar::archive::archive(const 
+libdar::archive&)
+createArchiveThread.cpp:178: error: no matching function for call to 
+'libdar::archive::archive(KDarInteraction&, libdar::path&, libdar::path, 
+libdar::archive*&, libdar::et_mask, libdar::et_mask, std::string, const char* const&, 
+bool, bool, bool, bool, bool, libdar::compression, libdar::U_I, libdar::infinint, 
+libdar::infinint, bool, bool, std::string, libdar::crypto_algo, const char [1], 
+libdar::U_32, libdar::et_mask, libdar::U_I, bool, bool, libdar::infinint, bool, bool&, 
+bool&, libdar::statistics&)'
+/usr/include/dar/archive.hpp:293: note: candidates are: 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, 
+libdar::archive*, libdar::archive*, const libdar::mask&, const libdar::mask&, const 
+std::string&, const std::string&, bool, bool, bool, const libdar::infinint&, bool, 
+libdar::compression, libdar::U_I, const libdar::infinint&, const libdar::infinint&, 
+const libdar::mask&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const libdar::mask&, const libdar::infinint&, bool, bool, bool, 
+libdar::statistics*)
+/usr/include/dar/archive.hpp:223: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, 
+libdar::archive*, const std::string&, const std::string&, bool, bool, bool, const 
+libdar::infinint&, libdar::compression, libdar::U_I, const libdar::infinint&, const 
+libdar::infinint&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, bool)
+/usr/include/dar/archive.hpp:183: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, const 
+libdar::path&, libdar::archive*, const libdar::mask&, const libdar::mask&, const 
+std::string&, const std::string&, bool, bool, bool, const libdar::infinint&, bool, 
+libdar::compression, libdar::U_I, const libdar::infinint&, const libdar::infinint&, 
+const libdar::mask&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const libdar::mask&, const libdar::infinint&, bool, 
+libdar::inode::comparison_fields, const libdar::infinint&, bool, bool, bool, bool, 
+bool, bool, const libdar::infinint&, libdar::statistics*)
+/usr/include/dar/archive.hpp:98: note:                 
+libdar::archive::archive(libdar::user_interaction&, const libdar::path&, const 
+std::string&, const std::string&, libdar::crypto_algo, const std::string&, 
+libdar::U_32, const std::string&, const std::string&, const std::string&, bool)
+/usr/include/dar/archive.hpp:51: note:                 libdar::archive::archive(const 
+libdar::archive&)
+make[2]: *** [createArchiveThread.o] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all] Error 2
+make[2]: Leaving directory `/usr/src/kdar-2.0.7/src'
 
