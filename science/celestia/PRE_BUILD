@@ -12,4 +12,8 @@ sedit  "s:CXXFLAGS=\"-O2 -Wall -ffast-math -fexpensive-optimizations:CXXFLAGS=\"
 # Remake ./configure with our changes
 #
 rm  -f  configure  &&
-autoconf 
+autoconf &&
+
+patch -p0 < ${SCRIPT_DIRECTORY}/celestia-1.4.1-gcc-4.1.patch
+
+
