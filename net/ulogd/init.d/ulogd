@@ -18,7 +18,10 @@ status()
 
 start()
 {
-    echo -n "Starting ulogd...\n"
+    echo "Starting ulogd...\n"
+    if [ ! -d /var/log/ulogd ] ; then
+	mkdir -p /var/log/ulogd
+    fi
     $PROGRAM $ARGS
     evaluate_retval
     touch /var/lock/subsys/ulogd
@@ -26,7 +29,7 @@ start()
 
 stop()
 {
-    echo -n "Shutting down ulogd...\n"
+    echo "Shutting down ulogd...\n"
     killall ulogd
     evaluate_retval
     rm -f /var/lock/subsys/ulogd
