@@ -1,1 +1,6 @@
-config_query  XMMS2_SNAPSHOT  "Do you want to build a snapshot version?"  y
+config_query  XMMS2_SNAPSHOT  "Do you want to build a snapshot version?"  y  &&
+if [[ $XMMS2_SNAPSHOT == "y" ]]
+        then
+config_query_list  XMMS2_TREE  "Which tree do you want to use:" \
+                   stable devel anders eleusis jlt juhovh nano theefer tilman tru
+fi
