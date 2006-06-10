@@ -30,3 +30,15 @@ declare -f fast_up_depends &> /dev/null ||
 function fast_up_depends() {
   gaze -q depends --fast "$@"
 }
+
+# fall back to optional_depends if suggest_depends isn't implemented
+declare -f suggest_depends &> /dev/null ||
+function suggest_depends() {
+  optional_depends "$@"
+}
+
+# fall back to depends if runtime_depends isn't implemented
+declare -f runtime_depends &> /dev/null ||
+function runtime_depends() {
+  depends "$@"
+}
