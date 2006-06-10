@@ -1,10 +1,17 @@
            SPELL=xmms2
 if [[ "$XMMS2_SNAPSHOT" == "y" ]]
 then
-         VERSION=HEAD
-          SOURCE=${SPELL}-${XMMS2_TREE}.git-snapshot-${VERSION}.tar.bz2
-SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
+if [[ "$XMMS2_SNAPSHOT_AUTO" == "y" ]]
+then
+         VERSION=$(date +%Y%m%d)
+else
+         VERSION=${XMMS2_TREE_REV}
+fi
+             PKG=${XMMS2_TREE_REV}
+          SOURCE=${SPELL}-${XMMS2_TREE}.git-snapshot-${PKG}.tar.bz2
+SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${PKG}
    SOURCE_URL[0]=http://git.xmms.se/snapshot.cgi/${SOURCE}
+  FORCE_DOWNLOAD=ON
    SOURCE_IGNORE=volatile
 else
          VERSION=0.2DrDolittle
@@ -14,7 +21,6 @@ SOURCE_DIRECTORY=${BUILD_DIRECTORY}/${SPELL}-${VERSION}
      SOURCE_HASH=sha512:48ca9ae0fec99a59e3ceb1c68bd8687d788035612e547af91f86ce8ec2071c611236a5fad188b4e783b64996ffeb4eaedc66f9ec6cef416e27b472928521d371:UPTSREAM_HASH
 fi
         WEB_SITE=http://wiki.xmms2.xmms.se/index.php/Main_Page
-            DOCS='COPYING README'
          ENTERED=20040527
          UPDATED=20050430
       LICENSE[0]=GPL

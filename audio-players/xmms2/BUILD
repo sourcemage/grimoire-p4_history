@@ -1,3 +1,11 @@
-cd  $SOURCE_DIRECTORY/xmms*                                                                    &&
-scons MANDIR=/usr/share/man PREFIX=/usr CCFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" EXCLUDE="$OPTS" &&
-scons MANDIR=/usr/share/man PREFIX=/usr CCFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" EXCLUDE="$OPTS"
+cd  $SOURCE_DIRECTORY/xmms*                 &&
+scons MANDIR=${INSTALL_ROOT}/usr/share/man  \
+      PREFIX=${INSTALL_ROOT}/usr            \
+      CCFLAGS="$CFLAGS"                     \
+      CXXFLAGS="$CXXFLAGS"                  \
+      EXCLUDE="$OPTS"                       &&
+scons MANDIR=${INSTALL_ROOT}/usr/share/man  \
+      PREFIX=${INSTALL_ROOT}/usr            \
+      CCFLAGS="$CFLAGS"                     \
+      CXXFLAGS="$CXXFLAGS"                  \
+      EXCLUDE="$OPTS"
