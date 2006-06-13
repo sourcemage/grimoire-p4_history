@@ -1,9 +1,14 @@
 2006-06-13 Jason Flatt <jflatt@sourcemage.org>
+	* CONFIGURE: Added check for existing install that was in PREPARE.
+	* FINAL: Added check for Drupal version before displaying message.
 	* INSTALL: Modified the parts that create the database and modify the
 	  settings.php file to take into account the two Drupal versions and
 	  the two possible database choices.
 	* PREPARE: Changed the order for version install so that the more
 	  current version is the default.
+	  Removed warning and automatic exit so spell will complete it's cast
+	  (for bug # 11266).
+	  Removed check for existing install.
 
 2006-06-08 John Harding <johnh@kuberaconsulting.com>
 	* DETAILS: Security update, added if statement to allow choice between
@@ -31,7 +36,7 @@
 2006-02-26 Jason Flatt <jflatt@sourcemage.org>
 	* CONFIGURE, INSTALL: Added user options and variables for database
 	  name, user, host and password.
-	  Removed persisntant_add'ed variables in CONFIGURE in favor of using
+	  Removed persistant_add'ed variables in CONFIGURE in favor of using
 	  existing variables for INSTALL.
 	  Added the option for automatically updating the Drupal configuration
 	  file (sites/default/settings/php).
