@@ -8,6 +8,14 @@ config_query_list  DRUPAL_DATABASE_ENGINE                                       
                    mysql                                                                                         \
                    postgresql                                                                                    &&
 
+persistent_add  DRUPAL_INSTALLED                                                                                 &&
+if  spell_ok  ${SPELL}
+then
+  DRUPAL_INSTALLED="y"
+else
+  DRUPAL_INSTALLED="n"
+fi                                                                                                               &&
+
 if  [  "${DRUPAL_INSTALLED}"  ==  "n"  ]
 then
   persistent_add  DRUPAL_CREATEDB  DRUPAL_CONFIGURE                                                              &&
