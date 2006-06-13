@@ -24,7 +24,10 @@ then
   if  query  "Create the Drupal database?"  n
   then
     DRUPAL_CREATEDB="y"                                                                                          &&
-    query_string  MYSQL_PASSWORD  "What is the MySQL password for root (needed to create the database)? If there is no password, just press enter. "  ""
+    if  query  "Do you need a password to create a database w/MySQL?"  y
+    then
+      query_string  MYSQL_PASSWORD  "What is the MySQL password for root (needed to create the database)? If there is no password, just press enter. "  ""
+    fi
   else
     DRUPAL_CREATEDB="n"
   fi                                                                                                             &&
