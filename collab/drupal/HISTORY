@@ -1,9 +1,12 @@
 2006-06-13 Jason Flatt <jflatt@sourcemage.org>
 	* CONFIGURE: Added check for existing install that was in PREPARE.
+	  Added a query for MySQL's root password. 
 	* FINAL: Added check for Drupal version before displaying message.
+	  Added persistent_remove to not keep the MySQL password lying around.
 	* INSTALL: Modified the parts that create the database and modify the
 	  settings.php file to take into account the two Drupal versions and
 	  the two possible database choices.
+	  Added the password to the MySQL database activities.
 	* PREPARE: Changed the order for version install so that the more
 	  current version is the default.
 	  Removed warning and automatic exit so spell will complete it's cast
